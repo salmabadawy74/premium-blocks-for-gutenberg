@@ -1,350 +1,350 @@
 import classnames from "classnames";
 const { __ } = wp.i18n;
 const className = "premium-dheading-block";
-import hexToRgba from 'hex-to-rgba'
+import hexToRgba from "hex-to-rgba";
 
 const attributes = {
     block_id: {
-        type: "string"
+        type: "string",
     },
     contentAlign: {
         type: "string",
-        default: "center"
+        default: "center",
     },
     firstHeading: {
         type: "array",
         source: "children",
         default: "Premium ",
-        selector: ".premium-dheading-block__first"
+        selector: ".premium-dheading-block__first",
     },
     secondHeading: {
         type: "array",
         source: "children",
         default: "Blocks",
-        selector: ".premium-dheading-block__second"
+        selector: ".premium-dheading-block__second",
     },
     titleTag: {
         type: "string",
-        default: "h1"
+        default: "h1",
     },
     display: {
         type: "string",
-        default: "inline"
+        default: "inline",
     },
     firstColor: {
         type: "string",
-        default: "#6ec1e4"
+        default: "#6ec1e4",
     },
     firstSize: {
         type: "number",
-        default: "20"
+        default: "20",
     },
     firstSizeUnit: {
         type: "string",
-        default: 'px'
+        default: "px",
     },
     firstSizeTablet: {
-        type: "number"
+        type: "number",
     },
     firstSizeMobile: {
-        type: "number"
+        type: "number",
     },
     firstFamily: {
-        type: "string"
+        type: "string",
     },
     firstLetter: {
-        type: "number"
+        type: "number",
     },
     firstStyle: {
-        type: "string"
+        type: "string",
     },
     firstUpper: {
-        type: "boolean"
+        type: "boolean",
     },
     firstWeight: {
         type: "number",
-        default: 500
+        default: 500,
     },
     firstBackground: {
-        type: "string"
+        type: "string",
     },
     firstOpacity: {
         type: "number",
-        default: "1"
+        default: "1",
     },
     firstBorderType: {
         type: "string",
-        default: "none"
+        default: "none",
     },
     firstBorderWidth: {
         type: "number",
-        default: "1"
+        default: "1",
     },
     firstBorder: {
         type: "boolean",
-        default: false
+        default: false,
     },
     firstBorderTop: {
-        type: "number"
+        type: "number",
     },
     firstBorderRight: {
-        type: "number"
+        type: "number",
     },
     firstBorderBottom: {
-        type: "number"
+        type: "number",
     },
     firstBorderLeft: {
-        type: "number"
+        type: "number",
     },
     firstBorderRadius: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     firstBorderColor: {
-        type: "string"
+        type: "string",
     },
     firstMarginR: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     firstMarginL: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     firstPadding: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     firstClip: {
         type: "boolean",
-        default: false
+        default: false,
     },
     firstAnim: {
         type: "boolean",
-        default: false
+        default: false,
     },
     firstStroke: {
         type: "boolean",
-        default: false
+        default: false,
     },
     firstClipColor: {
         type: "string",
-        default: "#54595f"
+        default: "#54595f",
     },
     firstShadowColor: {
-        type: "string"
+        type: "string",
     },
     firstShadowBlur: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     firstShadowHorizontal: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     firstShadowVertical: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     secondColor: {
         type: "string",
-        default: "#54595f"
+        default: "#54595f",
     },
     secondSize: {
         type: "number",
-        default: "20"
+        default: "20",
     },
     secondSizeUnit: {
         type: "string",
-        default: 'px'
+        default: "px",
     },
     secondSizeTablet: {
-        type: "number"
+        type: "number",
     },
     secondSizeMobile: {
-        type: "number"
+        type: "number",
     },
     secondFamily: {
-        type: "string"
+        type: "string",
     },
     secondLetter: {
-        type: "number"
+        type: "number",
     },
     secondStyle: {
-        type: "string"
+        type: "string",
     },
     secondUpper: {
-        type: "boolean"
+        type: "boolean",
     },
     secondWeight: {
         type: "number",
-        default: 500
+        default: 500,
     },
     secondBackground: {
-        type: "string"
+        type: "string",
     },
     secondOpacity: {
         type: "number",
-        default: "1"
+        default: "1",
     },
     secondBorderType: {
         type: "string",
-        default: "none"
+        default: "none",
     },
     secondBorderWidth: {
         type: "number",
-        default: "1"
+        default: "1",
     },
     secondBorder: {
         type: "boolean",
-        default: false
+        default: false,
     },
     secondBorderTop: {
-        type: "number"
+        type: "number",
     },
     secondBorderRight: {
-        type: "number"
+        type: "number",
     },
     secondBorderBottom: {
-        type: "number"
+        type: "number",
     },
     secondBorderLeft: {
-        type: "number"
+        type: "number",
     },
     secondBorderRadius: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     secondBorderColor: {
-        type: "string"
+        type: "string",
     },
     secondMarginR: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     secondMarginL: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     secondPadding: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     secondClip: {
         type: "boolean",
-        default: false
+        default: false,
     },
     secondStroke: {
         type: "boolean",
-        default: false
+        default: false,
     },
     secondShadowColor: {
-        type: "string"
+        type: "string",
     },
     secondShadowBlur: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     secondShadowHorizontal: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     secondShadowVertical: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     secondAnim: {
         type: "boolean",
-        default: false
+        default: false,
     },
     secondClipColor: {
         type: "string",
-        default: "#6ec1e4"
+        default: "#6ec1e4",
     },
     link: {
         type: "boolean",
-        default: false
+        default: false,
     },
     target: {
         type: "boolean",
-        default: false
+        default: false,
     },
     headingURL: {
-        type: "string"
+        type: "string",
     },
     containerBack: {
-        type: "string"
+        type: "string",
     },
     containerOpacity: {
         type: "number",
-        default: "1"
+        default: "1",
     },
     imageID: {
-        type: "string"
+        type: "string",
     },
     imageURL: {
-        type: "string"
+        type: "string",
     },
     backgroundRepeat: {
         type: "string",
-        default: "no-repeat"
+        default: "no-repeat",
     },
     backgroundPosition: {
         type: "string",
-        default: "top center"
+        default: "top center",
     },
     backgroundSize: {
         type: "string",
-        default: "auto"
+        default: "auto",
     },
     fixed: {
         type: "boolean",
-        default: false
+        default: false,
     },
     containerBorderType: {
         type: "string",
-        default: "none"
+        default: "none",
     },
     containerBorderWidth: {
         type: "number",
-        default: "1"
+        default: "1",
     },
     containerBorder: {
         type: "boolean",
-        default: false
+        default: false,
     },
     containerBorderTop: {
-        type: "number"
+        type: "number",
     },
     containerBorderRight: {
-        type: "number"
+        type: "number",
     },
     containerBorderBottom: {
         type: "number",
     },
     containerBorderLeft: {
-        type: "number"
+        type: "number",
     },
     containerBorderRadius: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     containerBorderColor: {
-        type: "string"
+        type: "string",
     },
     hideDesktop: {
-        type: 'boolean',
-        default: false
+        type: "boolean",
+        default: false,
     },
     hideTablet: {
-        type: 'boolean',
-        default: false
+        type: "boolean",
+        default: false,
     },
     hideMobile: {
-        type: 'boolean',
-        default: false
-    }
-}
+        type: "boolean",
+        default: false,
+    },
+};
 const new_attributes = {
     firstStyles: {
         type: "array",
@@ -353,31 +353,31 @@ const new_attributes = {
                 firstClip: false,
                 firstAnim: false,
                 firstStroke: false,
-                firstFamily: __('Default', 'premium-blocks-for-gutenebrg'),
-                firstSizeUnit: 'px',
-                firstSize: '',
-                firstSizeMobile: '',
-                firstWeight: '',
-                firstStyle: '',
-                firstLetter: '',
+                firstFamily: __("Default", "premium-blocks-for-gutenebrg"),
+                firstSizeUnit: "px",
+                firstSize: "",
+                firstSizeMobile: "",
+                firstWeight: "",
+                firstStyle: "",
+                firstLetter: "",
                 firstUpper: false,
-                firstColor: '',
-                firstBackground: '',
-                firstOpacity: '1',
+                firstColor: "",
+                firstBackground: "",
+                firstOpacity: "1",
                 firstClipColor: "#54595f",
-                firstBorderType: 'none',
-                firstBorderWidth: '',
-                firstBorderColor: '',
+                firstBorderType: "none",
+                firstBorderWidth: "",
+                firstBorderColor: "",
                 firstBorderRadius: 0,
-                firstShadowColor: '',
+                firstShadowColor: "",
                 firstShadowBlur: 0,
                 firstShadowHorizontal: 0,
                 firstShadowVertical: 0,
                 firstMarginL: 0,
                 firstMarginR: 0,
                 firstPadding: 0,
-            }
-        ]
+            },
+        ],
     },
     secondStyles: {
         type: "array",
@@ -386,93 +386,92 @@ const new_attributes = {
                 secondClip: false,
                 secondAnim: false,
                 secondStroke: false,
-                secondFamily: __('Default', 'premium-blocks-for-gutenberg'),
-                secondSizeUnit: 'px',
-                secondSize: '20',
-                secondSizeTablet: '',
-                secondSizeMobile: '',
-                secondWeight: '',
-                secondStyle: '',
-                secondLetter: '',
+                secondFamily: __("Default", "premium-blocks-for-gutenberg"),
+                secondSizeUnit: "px",
+                secondSize: "20",
+                secondSizeTablet: "",
+                secondSizeMobile: "",
+                secondWeight: "",
+                secondStyle: "",
+                secondLetter: "",
                 secondUpper: false,
                 secondColor: "#54595f",
-                secondBackground: '',
-                secondOpacity: '',
+                secondBackground: "",
+                secondOpacity: "",
                 secondClipColor: "#6ec1e4",
                 secondBorderType: "none",
-                secondBorderWidth: '1',
-                secondBorderColor: '',
-                secondBorderRadius: '0',
-                secondShadowColor: '',
-                secondShadowBlur: '0',
-                secondShadowHorizontal: '0',
-                secondShadowVertical: '0',
-                secondMarginL: '0',
-                secondMarginR: '0',
-                secondPadding: '0',
-
-            }
-        ]
+                secondBorderWidth: "1",
+                secondBorderColor: "",
+                secondBorderRadius: "0",
+                secondShadowColor: "",
+                secondShadowBlur: "0",
+                secondShadowHorizontal: "0",
+                secondShadowVertical: "0",
+                secondMarginL: "0",
+                secondMarginR: "0",
+                secondPadding: "0",
+            },
+        ],
     },
     containerStyles: {
-        type: 'array',
+        type: "array",
         default: [
             {
-                backgroundImageID: '',
-                backgroundImageURL: '',
-                backgroundRepeat: 'no-reapet',
-                backgroundPosition: 'top center',
-                backgroundSize: 'auto',
+                backgroundImageID: "",
+                backgroundImageURL: "",
+                backgroundRepeat: "no-reapet",
+                backgroundPosition: "top center",
+                backgroundSize: "auto",
                 fixed: false,
                 containerBorderType: "none",
                 containerBorderWidth: "1",
-                containerBorderColor: '',
-                containerBorderRadius: '0',
-                containerBack: '',
+                containerBorderColor: "",
+                containerBorderRadius: "0",
+                containerBack: "",
                 containerOpacity: 1,
-                gradientLocationOne: '0',
-                gradientColorTwo: '',
-                gradientLocationTwo: '100',
-                gradientType: 'linear',
-                gradientAngle: '180',
-                gradientPosition: 'center center'
-            }
-        ]
+                gradientLocationOne: "0",
+                gradientColorTwo: "",
+                gradientLocationTwo: "100",
+                gradientType: "linear",
+                gradientAngle: "180",
+                gradientPosition: "center center",
+            },
+        ],
     },
     backgroundType: {
         type: "string",
-        default: ""
+        default: "",
     },
-}
-const deprecated_attributes = Object.assign(attributes, new_attributes)
+};
+const deprecated_attributes = Object.assign(attributes, new_attributes);
 
 const v8Attriutes = {
     block_id: {
-        type: "string"
+        type: "string",
     },
     contentAlign: {
         type: "string",
-        default: "center"
+        default: "center",
     },
     firstHeading: {
         type: "array",
         source: "children",
         default: "Premium ",
-        selector: ".premium-dheading-block__first"
+        selector: ".premium-dheading-block__first",
     },
     secondHeading: {
         type: "array",
         source: "children",
         default: "Blocks",
-        selector: ".premium-dheading-block__second"
+        selector: ".premium-dheading-block__second",
     },
     titleTag: {
         type: "string",
-        default: "h1"
+        default: "h1",
     },
     display: {
         type: "string",
-        default: "inline"
+        default: "inline",
     },
     firstStyles: {
         type: "array",
@@ -481,31 +480,31 @@ const v8Attriutes = {
                 firstClip: false,
                 firstAnim: false,
                 firstStroke: false,
-                firstFamily: __('Default', 'premium-blocks-for-gutenebrg'),
-                firstSizeUnit: 'px',
-                firstSize: '',
-                firstSizeMobile: '',
-                firstWeight: '',
-                firstStyle: '',
-                firstLetter: '',
+                firstFamily: __("Default", "premium-blocks-for-gutenebrg"),
+                firstSizeUnit: "px",
+                firstSize: "",
+                firstSizeMobile: "",
+                firstWeight: "",
+                firstStyle: "",
+                firstLetter: "",
                 firstUpper: false,
-                firstColor: '',
-                firstBackground: '',
-                firstOpacity: '1',
+                firstColor: "",
+                firstBackground: "",
+                firstOpacity: "1",
                 firstClipColor: "#54595f",
-                firstBorderType: 'none',
-                firstBorderWidth: '',
-                firstBorderColor: '',
+                firstBorderType: "none",
+                firstBorderWidth: "",
+                firstBorderColor: "",
                 firstBorderRadius: 0,
-                firstShadowColor: '',
+                firstShadowColor: "",
                 firstShadowBlur: 0,
                 firstShadowHorizontal: 0,
                 firstShadowVertical: 0,
                 firstMarginL: 0,
                 firstMarginR: 0,
                 firstPadding: 0,
-            }
-        ]
+            },
+        ],
     },
     secondStyles: {
         type: "array",
@@ -514,1110 +513,509 @@ const v8Attriutes = {
                 secondClip: false,
                 secondAnim: false,
                 secondStroke: false,
-                secondFamily: __('Default', 'premium-blocks-for-gutenberg'),
-                secondSizeUnit: 'px',
-                secondSize: '20',
-                secondSizeTablet: '',
-                secondSizeMobile: '',
-                secondWeight: '',
-                secondStyle: '',
-                secondLetter: '',
+                secondFamily: __("Default", "premium-blocks-for-gutenberg"),
+                secondSizeUnit: "px",
+                secondSize: "20",
+                secondSizeTablet: "",
+                secondSizeMobile: "",
+                secondWeight: "",
+                secondStyle: "",
+                secondLetter: "",
                 secondUpper: false,
                 secondColor: "#54595f",
-                secondBackground: '',
-                secondOpacity: '',
+                secondBackground: "",
+                secondOpacity: "",
                 secondClipColor: "#6ec1e4",
                 secondBorderType: "none",
-                secondBorderWidth: '1',
-                secondBorderColor: '',
-                secondBorderRadius: '0',
-                secondShadowColor: '',
-                secondShadowBlur: '0',
-                secondShadowHorizontal: '0',
-                secondShadowVertical: '0',
-                secondMarginL: '0',
-                secondMarginR: '0',
-                secondPadding: '0',
-
-            }
-        ]
+                secondBorderWidth: "1",
+                secondBorderColor: "",
+                secondBorderRadius: "0",
+                secondShadowColor: "",
+                secondShadowBlur: "0",
+                secondShadowHorizontal: "0",
+                secondShadowVertical: "0",
+                secondMarginL: "0",
+                secondMarginR: "0",
+                secondPadding: "0",
+            },
+        ],
     },
     containerStyles: {
-        type: 'array',
+        type: "array",
         default: [
             {
-                backgroundImageID: '',
-                backgroundImageURL: '',
-                backgroundRepeat: 'no-reapet',
-                backgroundPosition: 'top center',
-                backgroundSize: 'auto',
+                backgroundImageID: "",
+                backgroundImageURL: "",
+                backgroundRepeat: "no-reapet",
+                backgroundPosition: "top center",
+                backgroundSize: "auto",
                 fixed: false,
                 containerBorderType: "none",
                 containerBorderWidth: "1",
-                containerBorderColor: '',
-                containerBorderRadius: '0',
-                containerBack: '',
+                containerBorderColor: "",
+                containerBorderRadius: "0",
+                containerBack: "",
                 containerOpacity: 1,
-                gradientLocationOne: '0',
-                gradientColorTwo: '',
-                gradientLocationTwo: '100',
-                gradientType: 'linear',
-                gradientAngle: '180',
-                gradientPosition: 'center center'
-            }
-        ]
+                gradientLocationOne: "0",
+                gradientColorTwo: "",
+                gradientLocationTwo: "100",
+                gradientType: "linear",
+                gradientAngle: "180",
+                gradientPosition: "center center",
+            },
+        ],
     },
     containerBorder: {
-        type: 'boolean',
-        default: false
+        type: "boolean",
+        default: false,
     },
     firstBorder: {
-        type: 'boolean',
-        default: false
+        type: "boolean",
+        default: false,
     },
     secondBorder: {
-        type: 'boolean',
-        default: false
+        type: "boolean",
+        default: false,
     },
     containerBorderTop: {
-        type: 'number'
+        type: "number",
     },
     containerBorderRight: {
-        type: 'number'
+        type: "number",
     },
     containerBorderBottom: {
-        type: 'number'
+        type: "number",
     },
     containerBorderLeft: {
-        type: 'number'
+        type: "number",
     },
     firstBorderTop: {
-        type: 'number'
+        type: "number",
     },
     firstBorderRight: {
-        type: 'number'
+        type: "number",
     },
     firstBorderBottom: {
-        type: 'number'
+        type: "number",
     },
     firstBorderLeft: {
-        type: 'number'
+        type: "number",
     },
     secondBorderTop: {
-        type: 'number'
+        type: "number",
     },
     secondBorderRight: {
-        type: 'number'
+        type: "number",
     },
     secondBorderBottom: {
-        type: 'number'
+        type: "number",
     },
     secondBorderLeft: {
-        type: 'number'
+        type: "number",
     },
     link: {
         type: "boolean",
-        default: false
+        default: false,
     },
     target: {
         type: "boolean",
-        default: false
+        default: false,
     },
     headingURL: {
-        type: "string"
+        type: "string",
     },
     hideDesktop: {
-        type: 'boolean',
-        default: false
+        type: "boolean",
+        default: false,
     },
     hideTablet: {
-        type: 'boolean',
-        default: false
+        type: "boolean",
+        default: false,
     },
     hideMobile: {
-        type: 'boolean',
-        default: false
+        type: "boolean",
+        default: false,
     },
     secondBorder: {
-        type: 'boolean',
-        default: false
+        type: "boolean",
+        default: false,
     },
     backgroundType: {
         type: "string",
-        default: ""
-    }
-}
-let deprecated_attributes = {
-    alignContent: {
-        type: "object",
-        default: {
-            'Desktop': 'center',
-            'Tablet': 'center',
-            'Mobile': 'center'
-        }
+        default: "",
     },
-    firstShadow: {
-        type: "object",
-        default: {
-            'color': 'undefined',
-            'blur': '`10',
-            'horizontal': '0',
-            'vertical': '0',
-        }
-    },
-    firstTypography: {
-        type: "object",
-        default: {
-            "fontWeight": '400',
-            'fontStyle': '',
-            'fontFamily': 'Default',
-            'textDecoration': '',
-            'textTransform': "",
-            'fontSize': {
-                'Desktop': '',
-                "Tablet": '',
-                "Mobile": '',
-                "unit": 'px'
-            },
-            'letterSpacing': {
-                'Desktop': "",
-                'Tablet': "",
-                'Mobile': "",
-                'unit': "px",
-            },
-            'lineHeight': {
-                'Desktop': "",
-                'Tablet': "",
-                'Mobile': "",
-                'unit': "px",
-            },
-        }
-    },
-    secondShadow: {
-        type: "object",
-        default: {
-            'color': 'undefined',
-            'blur': '10',
-            'horizontal': '0',
-            'vertical': '0',
-        }
-    },
-    secondTypography: {
-        type: "object",
-        default: {
-            "fontWeight": '',
-            'fontStyle': '',
-            'textTransform': '',
-            'fontFamily': '',
-            'textDecoration': '',
-            'fontSize': {
-                'Desktop': '20',
-                "Tablet": '',
-                "Mobile": '',
-                "unit": 'px'
-            },
-            'letterSpacing': {
-                'Desktop': "",
-                'Tablet': "",
-                'Mobile': "",
-                'unit': "px",
-            },
-            'lineHeight': {
-                'Desktop': "",
-                'Tablet': "",
-                'Mobile': "",
-                'unit': "px",
-            },
-        }
-    },
-    background: {
-        type: "object",
-        default: {
-            'backgroundType': '',
-            'backgroundColor': '',
-            'backgroundImageID': '',
-            'backgroundImageURL': '',
-            'backgroundPosition': '',
-            'backgroundRepeat': '',
-            'backgroundSize': '',
-            'fixed': false,
-            'gradientLocationOne': "0",
-            'gradientColorTwo': '',
-            'gradientLocationTwo': '100',
-            'gradientAngle': '180',
-            'gradientPosition': 'center center',
-            'gradientType': ''
-        }
-    },
-    firstBorder: {
-        type: "object",
-        default: {
-            "borderType": "",
-            "borderColor": "",
-            "borderWidth": {
-                Desktop: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Tablet: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Mobile: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                }
-            },
-            "borderRadius": {
-                Desktop: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Tablet: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Mobile: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                }
-            }
-        }
-    },
-    secondBorder: {
-        type: "object",
-        default: {
-            "borderType": "",
-            "borderColor": "",
-            "borderWidth": {
-                Desktop: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Tablet: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Mobile: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                }
-            },
-            "borderRadius": {
-                Desktop: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Tablet: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Mobile: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                }
-            }
-        }
-    },
-    containerBorder: {
-        type: "object",
-        default: {
-            "borderType": "",
-            "borderColor": "",
-            "borderWidth": {
-                Desktop: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Tablet: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Mobile: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                }
-            },
-            "borderRadius": {
-                Desktop: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Tablet: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                },
-                Mobile: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
-                }
-            }
-        }
-    },
-    firstPadding: {
-        type: "object",
-        default: {
-            Desktop: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Tablet: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Mobile: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            unit: 'px'
-        }
-    },
-    firstMargin: {
-        type: "object",
-        default: {
-            Desktop: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Tablet: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Mobile: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            unit: 'px'
-        }
-    },
-    secondPadding: {
-        type: "object",
-        default: {
-            Desktop: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Tablet: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Mobile: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            unit: 'px'
-        }
-    },
-    secondMargin: {
-        type: "object",
-        default: {
-            Desktop: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Tablet: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            Mobile: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
-            },
-            unit: 'px'
-        }
-    },
-
-
-}
+};
 
 const deprecatedContent = [
     {
-        attributes: Object.assign(deprecated_attributes, v8Attriutes),
-        migrate: attributes => {
-            let new_attributes = {
-                alignContent: {
-                    'Desktop': attributes.contentAlign,
-                    'Tablet': attributes.contentAlign,
-                    'Mobile': attributes.contentAlign
-                },
-                firstShadow: {
-                    'color': attributes.firstStyles[0].firstShadowColor,
-                    'blur': '`10',
-                    'horizontal': '0',
-                    'vertical': '0',
-                },
-                firstTypography: {
-                    type: "object",
-                    default: {
-                        "fontWeight": '400',
-                        'fontStyle': '',
-                        'fontFamily': 'Default',
-                        'textDecoration': '',
-                        'textTransform': "",
-                        'fontSize': {
-                            'Desktop': '',
-                            "Tablet": '',
-                            "Mobile": '',
-                            "unit": 'px'
-                        },
-                        'letterSpacing': {
-                            'Desktop': "",
-                            'Tablet': "",
-                            'Mobile': "",
-                            'unit': "px",
-                        },
-                        'lineHeight': {
-                            'Desktop': "",
-                            'Tablet': "",
-                            'Mobile': "",
-                            'unit': "px",
-                        },
-                    }
-                },
-                secondShadow: {
-                    type: "object",
-                    default: {
-                        'color': 'undefined',
-                        'blur': '10',
-                        'horizontal': '0',
-                        'vertical': '0',
-                    }
-                },
-                secondTypography: {
-                    type: "object",
-                    default: {
-                        "fontWeight": '',
-                        'fontStyle': '',
-                        'textTransform': '',
-                        'fontFamily': '',
-                        'textDecoration': '',
-                        'fontSize': {
-                            'Desktop': '20',
-                            "Tablet": '',
-                            "Mobile": '',
-                            "unit": 'px'
-                        },
-                        'letterSpacing': {
-                            'Desktop': "",
-                            'Tablet': "",
-                            'Mobile': "",
-                            'unit': "px",
-                        },
-                        'lineHeight': {
-                            'Desktop': "",
-                            'Tablet': "",
-                            'Mobile': "",
-                            'unit': "px",
-                        },
-                    }
-                },
-                background: {
-                    type: "object",
-                    default: {
-                        'backgroundType': '',
-                        'backgroundColor': '',
-                        'backgroundImageID': '',
-                        'backgroundImageURL': '',
-                        'backgroundPosition': '',
-                        'backgroundRepeat': '',
-                        'backgroundSize': '',
-                        'fixed': false,
-                        'gradientLocationOne': "0",
-                        'gradientColorTwo': '',
-                        'gradientLocationTwo': '100',
-                        'gradientAngle': '180',
-                        'gradientPosition': 'center center',
-                        'gradientType': ''
-                    }
-                },
-                firstBorder: {
-                    type: "object",
-                    default: {
-                        "borderType": "",
-                        "borderColor": "",
-                        "borderWidth": {
-                            Desktop: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            },
-                            Tablet: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            },
-                            Mobile: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            }
-                        },
-                        "borderRadius": {
-                            Desktop: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            },
-                            Tablet: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            },
-                            Mobile: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            }
-                        }
-                    }
-                },
-                secondBorder: {
-                    type: "object",
-                    default: {
-                        "borderType": "",
-                        "borderColor": "",
-                        "borderWidth": {
-                            Desktop: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            },
-                            Tablet: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            },
-                            Mobile: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            }
-                        },
-                        "borderRadius": {
-                            Desktop: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            },
-                            Tablet: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            },
-                            Mobile: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            }
-                        }
-                    }
-                },
-                containerBorder: {
-                    type: "object",
-                    default: {
-                        "borderType": "",
-                        "borderColor": "",
-                        "borderWidth": {
-                            Desktop: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            },
-                            Tablet: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            },
-                            Mobile: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            }
-                        },
-                        "borderRadius": {
-                            Desktop: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            },
-                            Tablet: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            },
-                            Mobile: {
-                                top: '',
-                                right: '',
-                                bottom: '',
-                                left: ''
-                            }
-                        }
-                    }
-                },
-                firstPadding: {
-                    type: "object",
-                    default: {
-                        Desktop: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        },
-                        Tablet: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        },
-                        Mobile: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        },
-                        unit: 'px'
-                    }
-                },
-                firstMargin: {
-                    type: "object",
-                    default: {
-                        Desktop: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        },
-                        Tablet: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        },
-                        Mobile: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        },
-                        unit: 'px'
-                    }
-                },
-                secondPadding: {
-                    type: "object",
-                    default: {
-                        Desktop: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        },
-                        Tablet: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        },
-                        Mobile: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        },
-                        unit: 'px'
-                    }
-                },
-                secondMargin: {
-                    type: "object",
-                    default: {
-                        Desktop: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        },
-                        Tablet: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        },
-                        Mobile: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        },
-                        unit: 'px'
-                    }
-                },
-            }
-            return Object.assign(attributes, new_attributes)
-
-        },
-        save: props => {
-
-        }
-    },
-    {
         attributes: v8Attriutes,
-        migrate: attributes => {
+        migrate: (attributes) => {
             let newAttributes = {
-                blockId: attributes.accordionId ? `premium-dual-heading-${attributes.accordionId.split('-')[2]}` : '',
+                blockId: attributes.accordionId
+                    ? `premium-dual-heading-${
+                          attributes.accordionId.split("-")[2]
+                      }`
+                    : "",
                 firstBorder: {
-                    "borderType": attributes?.firstStyles?.[0]?.firstBorderType || '',
-                    "borderColor": attributes?.firstStyles?.[0]?.firstBorderColor || '',
-                    "borderWidth": {
+                    borderType:
+                        attributes?.firstStyles?.[0]?.firstBorderType || "",
+                    borderColor:
+                        attributes?.firstStyles?.[0]?.firstBorderColor || "",
+                    borderWidth: {
                         Desktop: {
-                            top: attributes?.firstBorderTop || '',
-                            right: attributes?.firstBorderRight || '',
-                            bottom: attributes?.firstBorderBottom || '',
-                            left: attributes?.firstBorderLeft || ''
+                            top: attributes?.firstBorderTop || "",
+                            right: attributes?.firstBorderRight || "",
+                            bottom: attributes?.firstBorderBottom || "",
+                            left: attributes?.firstBorderLeft || "",
                         },
                         Tablet: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: "",
                         },
                         Mobile: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        }
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: "",
+                        },
                     },
-                    "borderRadius": {
+                    borderRadius: {
                         Desktop: {
-                            top: attributes?.firstStyles?.[0]?.firstBorderRadius || '',
-                            right: attributes?.firstStyles?.[0]?.firstBorderRadius || '',
-                            bottom: attributes?.firstStyles?.[0]?.firstBorderRadius || '',
-                            left: attributes?.firstStyles?.[0]?.firstBorderRadius || ''
+                            top:
+                                attributes?.firstStyles?.[0]
+                                    ?.firstBorderRadius || "",
+                            right:
+                                attributes?.firstStyles?.[0]
+                                    ?.firstBorderRadius || "",
+                            bottom:
+                                attributes?.firstStyles?.[0]
+                                    ?.firstBorderRadius || "",
+                            left:
+                                attributes?.firstStyles?.[0]
+                                    ?.firstBorderRadius || "",
                         },
                         Tablet: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: "",
                         },
                         Mobile: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        }
-                    }
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: "",
+                        },
+                    },
                 },
                 secondBorder: {
-                    "borderType": attributes?.secondStyles?.[0]?.secondBorderType || '',
-                    "borderColor": attributes?.secondStyles?.[0]?.secondBorderColor || '',
-                    "borderWidth": {
+                    borderType:
+                        attributes?.secondStyles?.[0]?.secondBorderType || "",
+                    borderColor:
+                        attributes?.secondStyles?.[0]?.secondBorderColor || "",
+                    borderWidth: {
                         Desktop: {
-                            top: attributes?.secondBorderTop || '',
-                            right: attributes?.secondBorderRight || '',
-                            bottom: attributes?.secondBorderBottom || '',
-                            left: attributes?.secondBorderLeft || ''
+                            top: attributes?.secondBorderTop || "",
+                            right: attributes?.secondBorderRight || "",
+                            bottom: attributes?.secondBorderBottom || "",
+                            left: attributes?.secondBorderLeft || "",
                         },
                         Tablet: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: "",
                         },
                         Mobile: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        }
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: "",
+                        },
                     },
-                    "borderRadius": {
+                    borderRadius: {
                         Desktop: {
-                            top: attributes?.secondStyles?.[0]?.secondBorderRadius || '',
-                            right: attributes?.secondStyles?.[0]?.secondBorderRadius || '',
-                            bottom: attributes?.secondStyles?.[0]?.secondBorderRadius || '',
-                            left: attributes?.secondStyles?.[0]?.secondBorderRadius || ''
+                            top:
+                                attributes?.secondStyles?.[0]
+                                    ?.secondBorderRadius || "",
+                            right:
+                                attributes?.secondStyles?.[0]
+                                    ?.secondBorderRadius || "",
+                            bottom:
+                                attributes?.secondStyles?.[0]
+                                    ?.secondBorderRadius || "",
+                            left:
+                                attributes?.secondStyles?.[0]
+                                    ?.secondBorderRadius || "",
                         },
                         Tablet: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: "",
                         },
                         Mobile: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        }
-                    }
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: "",
+                        },
+                    },
                 },
                 containerBorder: {
-                    "borderType": attributes?.containerStyles?.[0]?.containerBorderType || '',
-                    "borderColor": attributes?.containerStyles?.[0]?.containerBorderColor || '',
-                    "borderWidth": {
+                    borderType:
+                        attributes?.containerStyles?.[0]?.containerBorderType ||
+                        "",
+                    borderColor:
+                        attributes?.containerStyles?.[0]
+                            ?.containerBorderColor || "",
+                    borderWidth: {
                         Desktop: {
-                            top: attributes?.containerBorderTop || '',
-                            right: attributes?.containerBorderRight || '',
-                            bottom: attributes?.containerBorderBottom || '',
-                            left: attributes?.containerBorderLeft || ''
+                            top: attributes?.containerBorderTop || "",
+                            right: attributes?.containerBorderRight || "",
+                            bottom: attributes?.containerBorderBottom || "",
+                            left: attributes?.containerBorderLeft || "",
                         },
                         Tablet: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: "",
                         },
                         Mobile: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        }
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: "",
+                        },
                     },
-                    "borderRadius": {
+                    borderRadius: {
                         Desktop: {
-                            top: attributes?.containerStyles?.[0]?.containerBorderRadius || '',
-                            right: attributes?.containerStyles?.[0]?.containerBorderRadius || '',
-                            bottom: attributes?.containerStyles?.[0]?.containerBorderRadius || '',
-                            left: attributes?.containerStyles?.[0]?.containerBorderRadius || ''
+                            top:
+                                attributes?.containerStyles?.[0]
+                                    ?.containerBorderRadius || "",
+                            right:
+                                attributes?.containerStyles?.[0]
+                                    ?.containerBorderRadius || "",
+                            bottom:
+                                attributes?.containerStyles?.[0]
+                                    ?.containerBorderRadius || "",
+                            left:
+                                attributes?.containerStyles?.[0]
+                                    ?.containerBorderRadius || "",
                         },
                         Tablet: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: "",
                         },
                         Mobile: {
-                            top: '',
-                            right: '',
-                            bottom: '',
-                            left: ''
-                        }
-                    }
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: "",
+                        },
+                    },
                 },
                 firstTypography: {
-                    "fontWeight": attributes?.firstStyles?.[0]?.firstWeight || '',
-                    'fontStyle': attributes?.firstStyles?.[0]?.firstStyle || '',
-                    'textTransform': attributes?.firstStyles?.[0]?.firstUpper || '',
-                    'letterSpacing': attributes?.firstStyles?.[0]?.firstLetter || '',
-                    'fontFamily': attributes?.firstStyles?.[0]?.firstFamily || '',
-                    'lineHeight': '',
-                    'textDecoration': '',
-                    'fontSize': {
-                        'Desktop': attributes?.firstStyles?.[0]?.firstSize || '',
-                        "Tablet": attributes?.firstStyles?.[0]?.firstSizeTablet || '',
-                        "Mobile": attributes?.firstStyles?.[0]?.firstSizeMobile || '',
-                        "unit": attributes?.firstStyles?.[0]?.firstSizeUnit || 'px'
-                    }
+                    fontWeight: attributes?.firstStyles?.[0]?.firstWeight || "",
+                    fontStyle: attributes?.firstStyles?.[0]?.firstStyle || "",
+                    textTransform:
+                        attributes?.firstStyles?.[0]?.firstUpper || "",
+                    letterSpacing:
+                        attributes?.firstStyles?.[0]?.firstLetter || "",
+                    fontFamily: attributes?.firstStyles?.[0]?.firstFamily || "",
+                    lineHeight: "",
+                    textDecoration: "",
+                    fontSize: {
+                        Desktop: attributes?.firstStyles?.[0]?.firstSize || "",
+                        Tablet:
+                            attributes?.firstStyles?.[0]?.firstSizeTablet || "",
+                        Mobile:
+                            attributes?.firstStyles?.[0]?.firstSizeMobile || "",
+                        unit:
+                            attributes?.firstStyles?.[0]?.firstSizeUnit || "px",
+                    },
                 },
                 secondTypography: {
-                    "fontWeight": attributes?.secondStyles?.[0]?.secondWeight || '',
-                    'fontStyle': attributes?.secondStyles?.[0]?.secondStyle || '',
-                    'textTransform': attributes?.secondStyles?.[0]?.secondUpper || '',
-                    'letterSpacing': attributes?.secondStyles?.[0]?.secondLetter || '',
-                    'fontFamily': attributes?.secondStyles?.[0]?.secondFamily || '',
-                    'lineHeight': '',
-                    'textDecoration': '',
-                    'fontSize': {
-                        'Desktop': attributes?.secondStyles?.[0]?.secondSize || '20',
-                        "Tablet": attributes?.secondStyles?.[0]?.secondSizeTablet || '',
-                        "Mobile": attributes?.secondStyles?.[0]?.secondSizeMobile || '',
-                        "unit": attributes?.secondStyles?.[0]?.secondSizeUnit || 'px'
-                    }
+                    fontWeight:
+                        attributes?.secondStyles?.[0]?.secondWeight || "",
+                    fontStyle: attributes?.secondStyles?.[0]?.secondStyle || "",
+                    textTransform:
+                        attributes?.secondStyles?.[0]?.secondUpper || "",
+                    letterSpacing:
+                        attributes?.secondStyles?.[0]?.secondLetter || "",
+                    fontFamily:
+                        attributes?.secondStyles?.[0]?.secondFamily || "",
+                    lineHeight: "",
+                    textDecoration: "",
+                    fontSize: {
+                        Desktop:
+                            attributes?.secondStyles?.[0]?.secondSize || "20",
+                        Tablet:
+                            attributes?.secondStyles?.[0]?.secondSizeTablet ||
+                            "",
+                        Mobile:
+                            attributes?.secondStyles?.[0]?.secondSizeMobile ||
+                            "",
+                        unit:
+                            attributes?.secondStyles?.[0]?.secondSizeUnit ||
+                            "px",
+                    },
                 },
                 background: {
-                    'backgroundType': attributes?.backgroundType || '',
-                    'backgroundColor': attributes?.containerStyles?.[0]?.containerBack || '',
-                    'backgroundImageID': attributes?.containerStyles?.[0]?.backgroundImageID || '',
-                    'backgroundImageURL': attributes?.containerStyles?.[0]?.backgroundImageURL || '',
-                    'backgroundPosition': attributes?.containerStyles?.[0]?.backgroundPosition || '',
-                    'backgroundRepeat': attributes?.containerStyles?.[0]?.backgroundRepeat || '',
-                    'backgroundSize': attributes?.containerStyles?.[0]?.backgroundSize || '',
-                    'fixed': attributes?.containerStyles?.[0]?.fixed || '',
-                    'gradientLocationOne': attributes?.containerStyles?.[0]?.gradientLocationOne || '',
-                    'gradientColorTwo': attributes?.containerStyles?.[0]?.gradientColorTwo || '',
-                    'gradientLocationTwo': attributes?.containerStyles?.[0]?.gradientLocationTwo || '',
-                    'gradientAngle': attributes?.containerStyles?.[0]?.gradientAngle || '',
-                    'gradientPosition': attributes?.containerStyles?.[0]?.gradientPosition || '',
-                    'gradientType': attributes?.containerStyles?.[0]?.gradientType || ''
+                    backgroundType: attributes?.backgroundType || "",
+                    backgroundColor:
+                        attributes?.containerStyles?.[0]?.containerBack || "",
+                    backgroundImageID:
+                        attributes?.containerStyles?.[0]?.backgroundImageID ||
+                        "",
+                    backgroundImageURL:
+                        attributes?.containerStyles?.[0]?.backgroundImageURL ||
+                        "",
+                    backgroundPosition:
+                        attributes?.containerStyles?.[0]?.backgroundPosition ||
+                        "",
+                    backgroundRepeat:
+                        attributes?.containerStyles?.[0]?.backgroundRepeat ||
+                        "",
+                    backgroundSize:
+                        attributes?.containerStyles?.[0]?.backgroundSize || "",
+                    fixed: attributes?.containerStyles?.[0]?.fixed || "",
+                    gradientLocationOne:
+                        attributes?.containerStyles?.[0]?.gradientLocationOne ||
+                        "",
+                    gradientColorTwo:
+                        attributes?.containerStyles?.[0]?.gradientColorTwo ||
+                        "",
+                    gradientLocationTwo:
+                        attributes?.containerStyles?.[0]?.gradientLocationTwo ||
+                        "",
+                    gradientAngle:
+                        attributes?.containerStyles?.[0]?.gradientAngle || "",
+                    gradientPosition:
+                        attributes?.containerStyles?.[0]?.gradientPosition ||
+                        "",
+                    gradientType:
+                        attributes?.containerStyles?.[0]?.gradientType || "",
                 },
                 firstShadow: {
-                    'color': attributes?.firstStyles?.[0]?.firstShadowColor || '',
-                    'blur': attributes?.firstStyles?.[0]?.firstShadowBlur || '',
-                    'horizontal': attributes?.firstStyles?.[0]?.firstShadowHorizontal || '',
-                    'vertical': attributes?.firstStyles?.[0]?.firstShadowVertical || '',
+                    color: attributes?.firstStyles?.[0]?.firstShadowColor || "",
+                    blur: attributes?.firstStyles?.[0]?.firstShadowBlur || "",
+                    horizontal:
+                        attributes?.firstStyles?.[0]?.firstShadowHorizontal ||
+                        "",
+                    vertical:
+                        attributes?.firstStyles?.[0]?.firstShadowVertical || "",
                 },
                 secondShadow: {
-                    'color': attributes?.secondStyles?.[0]?.secondShadowColor || '',
-                    'blur': attributes?.secondStyles?.[0]?.secondShadowBlur || '',
-                    'horizontal': attributes?.secondStyles?.[0]?.secondShadowHorizontal || '',
-                    'vertical': attributes?.secondStyles?.[0]?.secondShadowVertical || '',
+                    color:
+                        attributes?.secondStyles?.[0]?.secondShadowColor || "",
+                    blur: attributes?.secondStyles?.[0]?.secondShadowBlur || "",
+                    horizontal:
+                        attributes?.secondStyles?.[0]?.secondShadowHorizontal ||
+                        "",
+                    vertical:
+                        attributes?.secondStyles?.[0]?.secondShadowVertical ||
+                        "",
                 },
                 firstPadding: {
                     Desktop: {
-                        top: attributes?.firstStyles?.[0]?.firstPadding || '',
-                        right: attributes?.firstStyles?.[0]?.firstPadding || '',
-                        bottom: attributes?.firstStyles?.[0]?.firstPadding || '',
-                        left: attributes?.firstStyles?.[0]?.firstPadding || ''
+                        top: attributes?.firstStyles?.[0]?.firstPadding || "",
+                        right: attributes?.firstStyles?.[0]?.firstPadding || "",
+                        bottom:
+                            attributes?.firstStyles?.[0]?.firstPadding || "",
+                        left: attributes?.firstStyles?.[0]?.firstPadding || "",
                     },
                     Tablet: {
-                        top: '',
-                        right: '',
-                        bottom: '',
-                        left: ''
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: "",
                     },
                     Mobile: {
-                        top: '',
-                        right: '',
-                        bottom: '',
-                        left: ''
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: "",
                     },
-                    unit: 'px'
+                    unit: "px",
                 },
                 firstMargin: {
                     Desktop: {
-                        top: '',
-                        right: attributes?.firstStyles?.[0]?.firstMarginR || '',
-                        bottom: '',
-                        left: attributes?.firstStyles?.[0]?.firstMarginL || ''
+                        top: "",
+                        right: attributes?.firstStyles?.[0]?.firstMarginR || "",
+                        bottom: "",
+                        left: attributes?.firstStyles?.[0]?.firstMarginL || "",
                     },
                     Tablet: {
-                        top: '',
-                        right: '',
-                        bottom: '',
-                        left: ''
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: "",
                     },
                     Mobile: {
-                        top: '',
-                        right: '',
-                        bottom: '',
-                        left: ''
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: "",
                     },
-                    unit: 'px'
+                    unit: "px",
                 },
                 secondPadding: {
                     Desktop: {
-                        top: attributes?.secondStyles?.[0]?.secondPadding || '',
-                        right: attributes?.secondStyles?.[0]?.secondPadding || '',
-                        bottom: attributes?.secondStyles?.[0]?.secondPadding || '',
-                        left: attributes?.secondStyles?.[0]?.secondPadding || ''
+                        top: attributes?.secondStyles?.[0]?.secondPadding || "",
+                        right:
+                            attributes?.secondStyles?.[0]?.secondPadding || "",
+                        bottom:
+                            attributes?.secondStyles?.[0]?.secondPadding || "",
+                        left:
+                            attributes?.secondStyles?.[0]?.secondPadding || "",
                     },
                     Tablet: {
-                        top: '',
-                        right: '',
-                        bottom: '',
-                        left: ''
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: "",
                     },
                     Mobile: {
-                        top: '',
-                        right: '',
-                        bottom: '',
-                        left: ''
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: "",
                     },
-                    unit: 'px'
+                    unit: "px",
                 },
                 secondMargin: {
                     Desktop: {
-                        top: '',
-                        right: attributes?.secondStyles?.[0]?.secondMarginR || '',
-                        bottom: '',
-                        left: attributes?.secondStyles?.[0]?.secondMarginL || ''
+                        top: "",
+                        right:
+                            attributes?.secondStyles?.[0]?.secondMarginR || "",
+                        bottom: "",
+                        left:
+                            attributes?.secondStyles?.[0]?.secondMarginL || "",
                     },
                     Tablet: {
-                        top: '',
-                        right: '',
-                        bottom: '',
-                        left: ''
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: "",
                     },
                     Mobile: {
-                        top: '',
-                        right: '',
-                        bottom: '',
-                        left: ''
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: "",
                     },
-                    unit: 'px'
-                }
-            }
-            return Object.assign(attributes, newAttributes)
+                    unit: "px",
+                },
+            };
+            return Object.assign(attributes, newAttributes);
         },
-        save: props => {
+        save: (props) => {
             const { className } = props;
 
             const {
@@ -1650,7 +1048,7 @@ const deprecatedContent = [
                 firstBorder,
                 secondBorder,
                 containerBorder,
-                backgroundType
+                backgroundType,
             } = props.attributes;
 
             const mainClasses = classnames(
@@ -1658,37 +1056,58 @@ const deprecatedContent = [
                 "premium-dheading-block__container"
             );
             let btnGrad, btnGrad2, btnbg;
-            if (undefined !== backgroundType && 'gradient' === backgroundType) {
-                btnGrad = ('transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack);
-                btnGrad2 = (undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777');
-                if ('radial' === containerStyles[0].gradientType) {
+            if (undefined !== backgroundType && "gradient" === backgroundType) {
+                btnGrad =
+                    "transparent" === containerStyles[0].containerBack ||
+                    undefined === containerStyles[0].containerBack
+                        ? "rgba(255,255,255,0)"
+                        : containerStyles[0].containerBack;
+                btnGrad2 =
+                    undefined !== containerStyles[0].gradientColorTwo &&
+                    undefined !== containerStyles[0].gradientColorTwo &&
+                    "" !== containerStyles[0].gradientColorTwo
+                        ? containerStyles[0].gradientColorTwo
+                        : "#777";
+                if ("radial" === containerStyles[0].gradientType) {
                     btnbg = `radial-gradient(at ${containerStyles[0].gradientPosition}, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
-                } else if ('radial' !== containerStyles[0].gradientType) {
+                } else if ("radial" !== containerStyles[0].gradientType) {
                     btnbg = `linear-gradient(${containerStyles[0].gradientAngle}deg, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
                 }
             } else {
-                btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : ''
+                btnbg = containerStyles[0].backgroundImageURL
+                    ? `url('${containerStyles[0].backgroundImageURL}')`
+                    : "";
             }
 
             return (
                 <div
                     id={`premium-dheading-block-${block_id}`}
-                    className={classnames(className,
-                        "premium-dheading-block__container", `premium-dheading-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`)}
+                    className={classnames(
+                        className,
+                        "premium-dheading-block__container",
+                        `premium-dheading-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`
+                    )}
                     style={{
                         textAlign: contentAlign,
-                        backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
+                        backgroundColor:
+                            backgroundType === "solid"
+                                ? containerStyles[0].containerBack
+                                : "transparent",
                         backgroundImage: btnbg,
                         backgroundRepeat: containerStyles[0].backgroundRepeat,
-                        backgroundPosition: containerStyles[0].backgroundPosition,
+                        backgroundPosition:
+                            containerStyles[0].backgroundPosition,
                         backgroundSize: containerStyles[0].backgroundSize,
-                        backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+                        backgroundAttachment: containerStyles[0].fixed
+                            ? "fixed"
+                            : "unset",
                         borderStyle: containerStyles[0].containerBorderType,
                         borderWidth: containerBorder
                             ? `${containerBorderTop}px ${containerBorderRight}px ${containerBorderBottom}px ${containerBorderLeft}px`
                             : containerStyles[0].containerBorderWidth + "px",
-                        borderRadius: containerStyles[0].containerBorderRadius + "px",
-                        borderColor: containerStyles[0].containerBorderColor
+                        borderRadius:
+                            containerStyles[0].containerBorderRadius + "px",
+                        borderColor: containerStyles[0].containerBorderColor,
                     }}
                 >
                     <div className={`premium-dheading-block__wrap`}>
@@ -1698,25 +1117,35 @@ const deprecatedContent = [
                                 style={{
                                     display: display,
                                     color: firstStyles[0].firstColor,
-                                    backgroundColor: firstStyles[0].firstClip ? "none" : firstStyles[0].firstBackground,
+                                    backgroundColor: firstStyles[0].firstClip
+                                        ? "none"
+                                        : firstStyles[0].firstBackground,
                                     backgroundImage: firstStyles[0].firstClip
                                         ? `linear-gradient(to left, ${firstStyles[0].firstColor}, ${firstStyles[0].firstClipColor})`
                                         : "none",
                                     fontFamily: firstStyles[0].firstFamily,
-                                    letterSpacing: firstStyles[0].firstLetter + "px",
-                                    textTransform: firstStyles[0].firstUpper ? "uppercase" : "none",
+                                    letterSpacing:
+                                        firstStyles[0].firstLetter + "px",
+                                    textTransform: firstStyles[0].firstUpper
+                                        ? "uppercase"
+                                        : "none",
                                     fontStyle: firstStyles[0].firstStyle,
                                     fontWeight: firstStyles[0].firstWeight,
                                     borderStyle: firstStyles[0].firstBorderType,
                                     borderWidth: firstBorder
                                         ? `${firstBorderTop}px ${firstBorderRight}px ${firstBorderBottom}px ${firstBorderLeft}px`
-                                        : firstStyles[0].firstBorderWidth + "px",
-                                    borderRadius: firstStyles[0].firstBorderRadius + "px",
-                                    borderColor: firstStyles[0].firstBorderColor,
+                                        : firstStyles[0].firstBorderWidth +
+                                          "px",
+                                    borderRadius:
+                                        firstStyles[0].firstBorderRadius + "px",
+                                    borderColor:
+                                        firstStyles[0].firstBorderColor,
                                     padding: firstStyles[0].firstPadding + "px",
-                                    marginLeft: firstStyles[0].firstMarginL + "px",
-                                    marginRight: firstStyles[0].firstMarginR + "px",
-                                    textShadow: `${firstStyles[0].firstShadowHorizontal}px ${firstStyles[0].firstShadowVertical}px ${firstStyles[0].firstShadowBlur}px ${firstStyles[0].firstShadowColor}`
+                                    marginLeft:
+                                        firstStyles[0].firstMarginL + "px",
+                                    marginRight:
+                                        firstStyles[0].firstMarginR + "px",
+                                    textShadow: `${firstStyles[0].firstShadowHorizontal}px ${firstStyles[0].firstShadowVertical}px ${firstStyles[0].firstShadowBlur}px ${firstStyles[0].firstShadowColor}`,
                                 }}
                             >
                                 {firstHeading}
@@ -1726,25 +1155,38 @@ const deprecatedContent = [
                                 style={{
                                     display: display,
                                     color: secondStyles[0].secondColor,
-                                    backgroundColor: secondStyles[0].secondClip ? "none" : secondStyles[0].secondBackground,
+                                    backgroundColor: secondStyles[0].secondClip
+                                        ? "none"
+                                        : secondStyles[0].secondBackground,
                                     backgroundImage: secondStyles[0].secondClip
                                         ? `linear-gradient(to left, ${secondStyles[0].secondColor}, ${secondStyles[0].secondClipColor})`
                                         : "none",
                                     fontFamily: secondStyles[0].secondFamily,
-                                    letterSpacing: secondStyles[0].secondLetter + "px",
-                                    textTransform: secondStyles[0].secondUpper ? "uppercase" : "none",
+                                    letterSpacing:
+                                        secondStyles[0].secondLetter + "px",
+                                    textTransform: secondStyles[0].secondUpper
+                                        ? "uppercase"
+                                        : "none",
                                     fontStyle: secondStyles[0].secondStyle,
                                     fontWeight: secondStyles[0].secondWeight,
-                                    borderStyle: secondStyles[0].secondBorderType,
+                                    borderStyle:
+                                        secondStyles[0].secondBorderType,
                                     borderWidth: secondBorder
                                         ? `${secondBorderTop}px ${secondBorderRight}px ${secondBorderBottom}px ${secondBorderLeft}px`
-                                        : secondStyles[0].secondBorderWidth + "px",
-                                    borderRadius: secondStyles[0].secondBorderRadius + "px",
-                                    borderColor: secondStyles[0].secondBorderColor,
-                                    padding: secondStyles[0].secondPadding + "px",
-                                    marginLeft: secondStyles[0].secondMarginL + "px",
-                                    marginRight: secondStyles[0].secondMarginR + "px",
-                                    textShadow: `${secondStyles[0].secondShadowHorizontal}px ${secondStyles[0].secondShadowVertical}px ${secondStyles[0].secondShadowBlur}px ${secondStyles[0].secondShadowColor}`
+                                        : secondStyles[0].secondBorderWidth +
+                                          "px",
+                                    borderRadius:
+                                        secondStyles[0].secondBorderRadius +
+                                        "px",
+                                    borderColor:
+                                        secondStyles[0].secondBorderColor,
+                                    padding:
+                                        secondStyles[0].secondPadding + "px",
+                                    marginLeft:
+                                        secondStyles[0].secondMarginL + "px",
+                                    marginRight:
+                                        secondStyles[0].secondMarginR + "px",
+                                    textShadow: `${secondStyles[0].secondShadowHorizontal}px ${secondStyles[0].secondShadowVertical}px ${secondStyles[0].secondShadowBlur}px ${secondStyles[0].secondShadowColor}`,
                                 }}
                             >
                                 {secondHeading}
@@ -1755,17 +1197,17 @@ const deprecatedContent = [
                                 className={`premium-dheading-block__link`}
                                 href={link && headingURL}
                                 target={target && "_blank"}
-                                rel='noopener noreferrer'
+                                rel="noopener noreferrer"
                             />
                         )}
                     </div>
                 </div>
             );
-        }
-    }
-    , {
+        },
+    },
+    {
         attributes: deprecated_attributes,
-        migrate: attributes => {
+        migrate: (attributes) => {
             let newAttributes = {
                 firstStyles: [
                     {
@@ -1795,7 +1237,7 @@ const deprecatedContent = [
                         firstMarginL: attributes.firstMarginL,
                         firstMarginR: attributes.firstMarginR,
                         firstPadding: attributes.firstPadding,
-                    }
+                    },
                 ],
                 secondStyles: [
                     {
@@ -1821,13 +1263,13 @@ const deprecatedContent = [
                         secondBorderRadius: attributes.secondBorderRadius,
                         secondShadowColor: attributes.secondShadowColor,
                         secondShadowBlur: attributes.secondShadowBlur,
-                        secondShadowHorizontal: attributes.secondShadowHorizontal,
+                        secondShadowHorizontal:
+                            attributes.secondShadowHorizontal,
                         secondShadowVertical: attributes.secondShadowVertical,
                         secondMarginL: attributes.secondMarginL,
                         secondMarginR: attributes.secondMarginR,
                         secondPadding: attributes.secondPadding,
-
-                    }
+                    },
                 ],
                 containerStyles: [
                     {
@@ -1843,19 +1285,19 @@ const deprecatedContent = [
                         containerBorderRadius: attributes.containerBorderRadius,
                         containerBack: attributes.containerBack,
                         containerOpacity: attributes.containerOpacity,
-                        gradientLocationOne: '0',
-                        gradientColorTwo: '',
-                        gradientLocationTwo: '100',
-                        gradientType: 'linear',
-                        gradientAngle: '180',
-                        gradientPosition: 'center center'
-                    }
+                        gradientLocationOne: "0",
+                        gradientColorTwo: "",
+                        gradientLocationTwo: "100",
+                        gradientType: "linear",
+                        gradientAngle: "180",
+                        gradientPosition: "center center",
+                    },
                 ],
-                backgroundType: ''
-            }
-            return Object.assign(attributes, newAttributes)
+                backgroundType: "",
+            };
+            return Object.assign(attributes, newAttributes);
         },
-        save: props => {
+        save: (props) => {
             const { className } = props;
             const {
                 block_id,
@@ -1938,7 +1380,7 @@ const deprecatedContent = [
                 containerOpacity,
                 hideDesktop,
                 hideTablet,
-                hideMobile
+                hideMobile,
             } = props.attributes;
 
             const mainClasses = classnames(
@@ -1965,7 +1407,7 @@ const deprecatedContent = [
                             ? `${containerBorderTop}px ${containerBorderRight}px ${containerBorderBottom}px ${containerBorderLeft}px`
                             : containerBorderWidth + "px",
                         borderRadius: containerBorderRadius + "px",
-                        borderColor: containerBorderColor
+                        borderColor: containerBorderColor,
                     }}
                 >
                     <div className={`premium-dheading-block__wrap`}>
@@ -1978,14 +1420,19 @@ const deprecatedContent = [
                                     backgroundColor: firstClip
                                         ? "none"
                                         : firstBackground
-                                            ? hexToRgba(firstBackground, firstOpacity)
-                                            : "transparent",
+                                        ? hexToRgba(
+                                              firstBackground,
+                                              firstOpacity
+                                          )
+                                        : "transparent",
                                     backgroundImage: firstClip
                                         ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})`
                                         : "none",
                                     fontFamily: firstFamily,
                                     letterSpacing: firstLetter + "px",
-                                    textTransform: firstUpper ? "uppercase" : "none",
+                                    textTransform: firstUpper
+                                        ? "uppercase"
+                                        : "none",
                                     fontStyle: firstStyle,
                                     fontWeight: firstWeight,
                                     borderStyle: firstBorderType,
@@ -1996,7 +1443,7 @@ const deprecatedContent = [
                                     borderColor: firstBorderColor,
                                     padding: firstPadding + "px",
                                     margin: firstMargin + "px",
-                                    textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`
+                                    textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`,
                                 }}
                             >
                                 {firstHeading}
@@ -2009,14 +1456,19 @@ const deprecatedContent = [
                                     backgroundColor: secondClip
                                         ? "none"
                                         : secondBackground
-                                            ? hexToRgba(secondBackground, secondOpacity)
-                                            : "transparent",
+                                        ? hexToRgba(
+                                              secondBackground,
+                                              secondOpacity
+                                          )
+                                        : "transparent",
                                     backgroundImage: secondClip
                                         ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})`
                                         : "none",
                                     fontFamily: secondFamily,
                                     letterSpacing: secondLetter + "px",
-                                    textTransform: secondUpper ? "uppercase" : "none",
+                                    textTransform: secondUpper
+                                        ? "uppercase"
+                                        : "none",
                                     fontStyle: secondStyle,
                                     fontWeight: secondWeight,
                                     borderStyle: secondBorderType,
@@ -2027,7 +1479,7 @@ const deprecatedContent = [
                                     borderColor: secondBorderColor,
                                     padding: secondPadding + "px",
                                     margin: secondMargin + "px",
-                                    textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`
+                                    textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`,
                                 }}
                             >
                                 {secondHeading}
@@ -2043,7 +1495,7 @@ const deprecatedContent = [
                     </div>
                 </div>
             );
-        }
+        },
     },
     {
         attributes: attributes,
@@ -2065,19 +1517,19 @@ const deprecatedContent = [
                 secondBorderBottom: "",
                 secondBorderLeft: "",
                 classMigrate: false,
-                block_id: '',
-                secondSizeUnit: 'px',
-                secondSizeTablet: '',
-                secondSizeMobile: '',
-                firstSizeUnit: 'px',
-                firstSizeTablet: '',
-                firstSizeMobile: '',
+                block_id: "",
+                secondSizeUnit: "px",
+                secondSizeTablet: "",
+                secondSizeMobile: "",
+                firstSizeUnit: "px",
+                firstSizeTablet: "",
+                firstSizeMobile: "",
                 firstOpacity: "",
                 secondOpacity: "",
                 containerOpacity: "",
                 hideDesktop: false,
                 hideTablet: false,
-                hideMobile: false
+                hideMobile: false,
             };
             return Object.assign(attributes, newAttributes);
         },
@@ -2176,14 +1628,18 @@ const deprecatedContent = [
                                 style={{
                                     display: display,
                                     color: firstColor,
-                                    backgroundColor: firstClip ? "none" : firstBackground,
+                                    backgroundColor: firstClip
+                                        ? "none"
+                                        : firstBackground,
                                     backgroundImage: firstClip
                                         ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})`
                                         : "none",
                                     fontSize: firstSize + "px",
                                     fontFamily: firstFamily,
                                     letterSpacing: firstLetter + "px",
-                                    textTransform: firstUpper ? "uppercase" : "none",
+                                    textTransform: firstUpper
+                                        ? "uppercase"
+                                        : "none",
                                     fontStyle: firstStyle,
                                     fontWeight: firstWeight,
                                     border: firstBorderType,
@@ -2202,14 +1658,18 @@ const deprecatedContent = [
                                 style={{
                                     display: display,
                                     color: secondColor,
-                                    backgroundColor: secondClip ? "none" : secondBackground,
+                                    backgroundColor: secondClip
+                                        ? "none"
+                                        : secondBackground,
                                     backgroundImage: secondClip
                                         ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})`
                                         : "none",
                                     fontSize: secondSize + "px",
                                     fontFamily: secondFamily,
                                     letterSpacing: secondLetter + "px",
-                                    textTransform: secondUpper ? "uppercase" : "none",
+                                    textTransform: secondUpper
+                                        ? "uppercase"
+                                        : "none",
                                     fontStyle: secondStyle,
                                     fontWeight: secondWeight,
                                     border: secondBorderType,
@@ -2339,14 +1799,18 @@ const deprecatedContent = [
                                 style={{
                                     display: display,
                                     color: firstColor,
-                                    backgroundColor: firstClip ? "none" : firstBackground,
+                                    backgroundColor: firstClip
+                                        ? "none"
+                                        : firstBackground,
                                     backgroundImage: firstClip
                                         ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})`
                                         : "none",
                                     fontSize: firstSize + "px",
                                     fontFamily: firstFamily,
                                     letterSpacing: firstLetter + "px",
-                                    textTransform: firstUpper ? "uppercase" : "none",
+                                    textTransform: firstUpper
+                                        ? "uppercase"
+                                        : "none",
                                     fontStyle: firstStyle,
                                     fontWeight: firstWeight,
                                     border: firstBorderType,
@@ -2365,14 +1829,18 @@ const deprecatedContent = [
                                 style={{
                                     display: display,
                                     color: secondColor,
-                                    backgroundColor: secondClip ? "none" : secondBackground,
+                                    backgroundColor: secondClip
+                                        ? "none"
+                                        : secondBackground,
                                     backgroundImage: secondClip
                                         ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})`
                                         : "none",
                                     fontSize: secondSize + "px",
                                     fontFamily: secondFamily,
                                     letterSpacing: secondLetter + "px",
-                                    textTransform: secondUpper ? "uppercase" : "none",
+                                    textTransform: secondUpper
+                                        ? "uppercase"
+                                        : "none",
                                     fontStyle: secondStyle,
                                     fontWeight: secondWeight,
                                     border: secondBorderType,
@@ -2489,14 +1957,18 @@ const deprecatedContent = [
                                 style={{
                                     display: display,
                                     color: firstColor,
-                                    backgroundColor: firstClip ? "none" : firstBackground,
+                                    backgroundColor: firstClip
+                                        ? "none"
+                                        : firstBackground,
                                     backgroundImage: firstClip
                                         ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})`
                                         : "none",
                                     fontSize: firstSize + "px",
                                     fontFamily: firstFamily,
                                     letterSpacing: firstLetter + "px",
-                                    textTransform: firstUpper ? "uppercase" : "none",
+                                    textTransform: firstUpper
+                                        ? "uppercase"
+                                        : "none",
                                     fontStyle: firstStyle,
                                     fontWeight: firstWeight,
                                     border: firstBorderType,
@@ -2515,14 +1987,18 @@ const deprecatedContent = [
                                 style={{
                                     display: display,
                                     color: secondColor,
-                                    backgroundColor: secondClip ? "none" : secondBackground,
+                                    backgroundColor: secondClip
+                                        ? "none"
+                                        : secondBackground,
                                     backgroundImage: secondClip
                                         ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})`
                                         : "none",
                                     fontSize: secondSize + "px",
                                     fontFamily: secondFamily,
                                     letterSpacing: secondLetter + "px",
-                                    textTransform: secondUpper ? "uppercase" : "none",
+                                    textTransform: secondUpper
+                                        ? "uppercase"
+                                        : "none",
                                     fontStyle: secondStyle,
                                     fontWeight: secondWeight,
                                     border: secondBorderType,
@@ -2635,13 +2111,17 @@ const deprecatedContent = [
                                 style={{
                                     display: display,
                                     color: firstColor,
-                                    backgroundColor: firstClip ? "none" : firstBackground,
+                                    backgroundColor: firstClip
+                                        ? "none"
+                                        : firstBackground,
                                     backgroundImage: firstClip
                                         ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})`
                                         : "none",
                                     fontSize: firstSize + "px",
                                     letterSpacing: firstLetter + "px",
-                                    textTransform: firstUpper ? "uppercase" : "none",
+                                    textTransform: firstUpper
+                                        ? "uppercase"
+                                        : "none",
                                     fontStyle: firstStyle,
                                     fontWeight: firstWeight,
                                     border: firstBorderType,
@@ -2660,13 +2140,17 @@ const deprecatedContent = [
                                 style={{
                                     display: display,
                                     color: secondColor,
-                                    backgroundColor: secondClip ? "none" : secondBackground,
+                                    backgroundColor: secondClip
+                                        ? "none"
+                                        : secondBackground,
                                     backgroundImage: secondClip
                                         ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})`
                                         : "none",
                                     fontSize: secondSize + "px",
                                     letterSpacing: secondLetter + "px",
-                                    textTransform: secondUpper ? "uppercase" : "none",
+                                    textTransform: secondUpper
+                                        ? "uppercase"
+                                        : "none",
                                     fontStyle: secondStyle,
                                     fontWeight: secondWeight,
                                     border: secondBorderType,
@@ -2773,13 +2257,17 @@ const deprecatedContent = [
                                 style={{
                                     display: display,
                                     color: firstColor,
-                                    backgroundColor: firstClip ? "none" : firstBackground,
+                                    backgroundColor: firstClip
+                                        ? "none"
+                                        : firstBackground,
                                     backgroundImage: firstClip
                                         ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})`
                                         : "none",
                                     fontSize: firstSize + "px",
                                     letterSpacing: firstLetter + "px",
-                                    textTransform: firstUpper ? "uppercase" : "none",
+                                    textTransform: firstUpper
+                                        ? "uppercase"
+                                        : "none",
                                     fontStyle: firstStyle,
                                     fontWeight: firstWeight,
                                     border: firstBorderType,
@@ -2798,13 +2286,17 @@ const deprecatedContent = [
                                 style={{
                                     display: display,
                                     color: secondColor,
-                                    backgroundColor: secondClip ? "none" : secondBackground,
+                                    backgroundColor: secondClip
+                                        ? "none"
+                                        : secondBackground,
                                     backgroundImage: secondClip
                                         ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})`
                                         : "none",
                                     fontSize: secondSize + "px",
                                     letterSpacing: secondLetter + "px",
-                                    textTransform: secondUpper ? "uppercase" : "none",
+                                    textTransform: secondUpper
+                                        ? "uppercase"
+                                        : "none",
                                     fontStyle: secondStyle,
                                     fontWeight: secondWeight,
                                     border: secondBorderType,
@@ -2905,13 +2397,17 @@ const deprecatedContent = [
                                     style={{
                                         display: display,
                                         color: firstColor,
-                                        backgroundColor: firstClip ? "none" : firstBackground,
+                                        backgroundColor: firstClip
+                                            ? "none"
+                                            : firstBackground,
                                         backgroundImage: firstClip
                                             ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})`
                                             : "none",
                                         fontSize: firstSize + "px",
                                         letterSpacing: firstLetter + "px",
-                                        textTransform: firstUpper ? "uppercase" : "none",
+                                        textTransform: firstUpper
+                                            ? "uppercase"
+                                            : "none",
                                         fontStyle: firstStyle,
                                         fontWeight: firstWeight,
                                         border: firstBorderType,
@@ -2930,13 +2426,17 @@ const deprecatedContent = [
                                     style={{
                                         display: display,
                                         color: secondColor,
-                                        backgroundColor: secondClip ? "none" : secondBackground,
+                                        backgroundColor: secondClip
+                                            ? "none"
+                                            : secondBackground,
                                         backgroundImage: secondClip
                                             ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})`
                                             : "none",
                                         fontSize: secondSize + "px",
                                         letterSpacing: secondLetter + "px",
-                                        textTransform: secondUpper ? "uppercase" : "none",
+                                        textTransform: secondUpper
+                                            ? "uppercase"
+                                            : "none",
                                         fontStyle: secondStyle,
                                         fontWeight: secondWeight,
                                         border: secondBorderType,
