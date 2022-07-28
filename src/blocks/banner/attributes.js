@@ -192,7 +192,7 @@ const attributes = {
     border: {
         type: "object",
         default: {
-            borderType: "",
+            borderType: "none",
             borderColor: "",
             borderWidth: {
                 Desktop: {
