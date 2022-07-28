@@ -30,7 +30,7 @@ const attributes = {
     },
     descChecked: {
         type: "boolean",
-        default: false
+        default: true
     },
     priceChecked: {
         type: "boolean",
@@ -53,7 +53,8 @@ const attributes = {
         selector: ".premium-pricing-table__button_link"
     },
     badgeChecked: {
-        type: "boolean"
+        type: "boolean",
+        default: true
     },
 
     listChecked: {
@@ -97,19 +98,29 @@ const attributes = {
     titleTypography: {
         type: "object",
         default: {
-            "fontWeight": '400',
-            'fontStyle': '',
-            'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': 'Default',
-            'lineHeight': '',
-            'textDecoration': '',
-            'fontSize': {
-                'Desktop': '',
-                "Tablet": '',
-                "Mobile": '',
-                "unit": 'px'
-            }
+            fontWeight: "400",
+            fontStyle: "",
+            letterSpacing: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            fontFamily: "Default",
+            lineHeight: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            textDecoration: "",
+            textTransform: "",
+            fontSize: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
         }
     },
     titleTextShadow: {
@@ -144,91 +155,141 @@ const attributes = {
     slashTypography: {
         type: "object",
         default: {
-            "fontWeight": '500',
-            'fontStyle': '',
-            'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': 'Default',
-            'lineHeight': '',
-            'textDecoration': '',
-            'fontSize': {
-                'Desktop': '',
-                "Tablet": '',
-                "Mobile": '',
-                "unit": 'px'
-            }
+            fontWeight: "400",
+            fontStyle: "",
+            letterSpacing: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            fontFamily: "Default",
+            lineHeight: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            textDecoration: "",
+            textTransform: "",
+            fontSize: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
         }
     },
     currTypography: {
         type: "object",
         default: {
-            "fontWeight": '500',
-            'fontStyle': '',
-            'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': 'Default',
-            'lineHeight': '',
-            'textDecoration': '',
-            'fontSize': {
-                'Desktop': '',
-                "Tablet": '',
-                "Mobile": '',
-                "unit": 'px'
-            }
+            fontWeight: "400",
+            fontStyle: "",
+            letterSpacing: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            fontFamily: "Default",
+            lineHeight: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            textDecoration: "",
+            textTransform: "",
+            fontSize: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
         }
     },
     priceTypography: {
         type: "object",
         default: {
-            "fontWeight": '400',
-            'fontStyle': '',
-            'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': 'Default',
-            'lineHeight': '',
-            'textDecoration': '',
-            'fontSize': {
-                'Desktop': '',
-                "Tablet": '',
-                "Mobile": '',
-                "unit": 'px'
-            }
+            fontWeight: "400",
+            fontStyle: "",
+            letterSpacing: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            fontFamily: "Default",
+            lineHeight: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            textDecoration: "",
+            textTransform: "",
+            fontSize: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
         }
     },
     dividerTypography: {
         type: "object",
         default: {
-            "fontWeight": '400',
-            'fontStyle': '',
-            'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': 'Default',
-            'lineHeight': '',
-            'textDecoration': '',
-            'fontSize': {
-                'Desktop': '',
-                "Tablet": '',
-                "Mobile": '',
-                "unit": 'px'
-            }
+            fontWeight: "400",
+            fontStyle: "",
+            letterSpacing: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            fontFamily: "Default",
+            lineHeight: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            textDecoration: "",
+            textTransform: "",
+            fontSize: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
         }
     },
     durationTypography: {
         type: "object",
         default: {
-            "fontWeight": '400',
-            'fontStyle': '',
-            'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': 'Default',
-            'lineHeight': '',
-            'textDecoration': '',
-            'fontSize': {
-                'Desktop': '',
-                "Tablet": '',
-                "Mobile": '',
-                "unit": 'px'
-            }
+            fontWeight: "400",
+            fontStyle: "",
+            letterSpacing: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            fontFamily: "Default",
+            lineHeight: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            textDecoration: "",
+            textTransform: "",
+            fontSize: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
         }
     },
     slashVAlign: {
@@ -285,19 +346,29 @@ const attributes = {
     listTypography: {
         type: "object",
         default: {
-            "fontWeight": '400',
-            'fontStyle': '',
-            'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': 'Default',
-            'lineHeight': '',
-            'textDecoration': '',
-            'fontSize': {
-                'Desktop': '',
-                "Tablet": '',
-                "Mobile": '',
-                "unit": 'px'
-            }
+            fontWeight: "400",
+            fontStyle: "",
+            letterSpacing: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            fontFamily: "Default",
+            lineHeight: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            textDecoration: "",
+            textTransform: "",
+            fontSize: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
         }
     },
     featureAlign: {
@@ -323,19 +394,29 @@ const attributes = {
     descTypography: {
         type: "object",
         default: {
-            "fontWeight": '400',
-            'fontStyle': '',
-            'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': 'Default',
-            'lineHeight': '',
-            'textDecoration': '',
-            'fontSize': {
-                'Desktop': '',
-                "Tablet": '',
-                "Mobile": '',
-                "unit": 'px'
-            }
+            fontWeight: "400",
+            fontStyle: "",
+            letterSpacing: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            fontFamily: "Default",
+            lineHeight: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            textDecoration: "",
+            textTransform: "",
+            fontSize: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
         }
     },
     buttonStyles: {
@@ -354,19 +435,29 @@ const attributes = {
     buttonTypography: {
         type: "object",
         default: {
-            "fontWeight": '900',
-            'fontStyle': '',
-            'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': 'Default',
-            'lineHeight': '',
-            'textDecoration': '',
-            'fontSize': {
-                'Desktop': '',
-                "Tablet": '',
-                "Mobile": '',
-                "unit": 'px'
-            }
+            fontWeight: "400",
+            fontStyle: "",
+            letterSpacing: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            fontFamily: "Default",
+            lineHeight: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            textDecoration: "",
+            textTransform: "",
+            fontSize: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
         }
     },
     badgeStyles: {
@@ -386,19 +477,29 @@ const attributes = {
     badgeTypography: {
         type: "object",
         default: {
-            "fontWeight": '900',
-            'fontStyle': '',
-            'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': 'Default',
-            'lineHeight': '',
-            'textDecoration': '',
-            'fontSize': {
-                'Desktop': '',
-                "Tablet": '',
-                "Mobile": '',
-                "unit": 'px'
-            }
+            fontWeight: "400",
+            fontStyle: "",
+            letterSpacing: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            fontFamily: "Default",
+            lineHeight: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            textDecoration: "",
+            textTransform: "",
+            fontSize: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
         }
     },
     tableStyles: {

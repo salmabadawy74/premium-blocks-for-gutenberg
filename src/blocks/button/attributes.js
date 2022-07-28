@@ -122,19 +122,29 @@ const attributes = {
     typography: {
         type: "object",
         default: {
-            "fontWeight": '',
-            'fontStyle': '',
-            'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': '',
-            'lineHeight': '',
-            'textDecoration': '',
-            'fontSize': {
-                'Desktop': '',
-                "Tablet": '',
-                "Mobile": '',
-                "unit": 'px'
-            }
+            fontWeight: "400",
+            fontStyle: "",
+            letterSpacing: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            fontFamily: "Default",
+            lineHeight: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            textDecoration: "",
+            textTransform: "",
+            fontSize: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
         }
     },
     textShadow: {

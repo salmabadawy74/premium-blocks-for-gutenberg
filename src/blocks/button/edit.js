@@ -9,7 +9,7 @@ import SpacingComponent from "../../components/premium-responsive-spacing";
 import PremiumShadow from "../../components/PremiumShadow";
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
-import { generateBlockId, generateCss } from '../../components/HelperFunction';
+import { generateBlockId, generateCss, typographyCss, borderCss, paddingCss } from '../../components/HelperFunction';
 const { PanelBody, SelectControl, ToggleControl, TabPanel } = wp.components;
 const { Fragment, Component } = wp.element;
 const { InspectorControls, AlignmentToolbar, BlockControls, RichText, URLInput } = wp.blockEditor;
@@ -226,7 +226,11 @@ export class edit extends Component {
             return generateCss(styles);
         }
 
-        const mainClasses = classnames(className, "premium-button");
+        const mainClasses = classnames(className, "premium-button__wrap", {
+            " premium-desktop-hidden": hideDesktop,
+            " premium-tablet-hidden": hideTablet,
+            " premium-mobile-hidden": hideMobile,
+        });
         return [
             isSelected && "block" != btnSize && (
                 <BlockControls key="controls">
@@ -395,10 +399,6 @@ export class edit extends Component {
                                 <PremiumBorder
                                     label={__("Border")}
                                     value={border}
-                                    borderType={border.borderType}
-                                    borderColor={border.borderColor}
-                                    borderWidth={border.borderWidth}
-                                    borderRadius={border.borderRadius}
                                     onChange={(value) => setAttributes({ border: value })}
                                 />
                                 <hr />
@@ -419,14 +419,10 @@ export class edit extends Component {
                 </InspectorControls>
             ),
             <div
-                className={`${mainClasses}__wrap premium-button__${effect} ${blockId} premium-button__${effectDir} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                className={`${mainClasses} premium-button__${effect} ${blockId} premium-button__${effectDir}`}
                 style={{ textAlign: btnAlign }}
             >
-                <style
-                    dangerouslySetInnerHTML={{
-                        __html: loadStyles()
-                    }}
-                />
+                <style>{loadStyles()}</style>
                 <RichText
                     className={`premium-button premium-button__${btnSize}`}
                     value={btnText}
@@ -434,30 +430,11 @@ export class edit extends Component {
                     style={{
                         color: btnStyles[0].textColor,
                         backgroundColor: btnStyles[0].backColor,
-                        fontSize: `${typography?.fontSize?.[this.props.deviceType]}${typography?.fontSize?.unit || 'px'}`,
-                        fontStyle: typography?.fontStyle,
-                        fontFamily: typography?.fontFamily,
-                        fontWeight: typography?.fontWeight,
-                        letterSpacing: typography?.letterSpacing,
-                        textDecoration: typography?.textDecoration,
-                        textTransform: typography?.textTransform,
-                        lineHeight: `${typography?.lineHeight}px`,
                         textShadow: `${textShadow?.horizontal}px ${textShadow?.vertical}px ${textShadow?.blur}px ${textShadow?.color}`,
                         boxShadow: `${boxShadow?.horizontal}px ${boxShadow?.vertical}px ${boxShadow?.blur}px ${boxShadow?.color} ${boxShadow?.position}`,
-                        paddingTop: `${padding?.[this.props.deviceType]?.top}${padding?.unit}`,
-                        paddingRight: `${padding?.[this.props.deviceType]?.right}${padding?.unit}`,
-                        paddingBottom: `${padding?.[this.props.deviceType]?.bottom}${padding?.unit}`,
-                        paddingLeft: `${padding?.[this.props.deviceType]?.left}${padding?.unit}`,
-                        borderStyle: border?.borderType,
-                        borderTopWidth: border?.borderWidth?.[this.props.deviceType]?.top,
-                        borderRightWidth: border?.borderWidth?.[this.props.deviceType]?.right,
-                        borderBottomWidth: border?.borderWidth?.[this.props.deviceType]?.bottom,
-                        borderLeftWidth: border?.borderWidth?.[this.props.deviceType]?.left,
-                        borderColor: border?.borderColor,
-                        borderTopLeftRadius: `${border?.borderRadius?.[this.props.deviceType]?.top || 0}px`,
-                        borderTopRightRadius: `${border?.borderRadius?.[this.props.deviceType]?.right || 0}px`,
-                        borderBottomLeftRadius: `${border?.borderRadius?.[this.props.deviceType]?.bottom || 0}px`,
-                        borderBottomRightRadius: `${border?.borderRadius?.[this.props.deviceType]?.left || 0}px`,
+                        ...typographyCss(typography, this.props.deviceType),
+                        ...paddingCss(padding, this.props.deviceType),
+                        ...borderCss(border, this.props.deviceType),
                     }}
                     keepPlaceholderOnFocus
                 />
