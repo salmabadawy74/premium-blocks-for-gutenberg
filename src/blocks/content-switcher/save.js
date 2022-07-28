@@ -5,6 +5,7 @@ import {
     typographyCss,
     filterJsCss,
     gradientValue,
+    generateCss,
 } from "../../components/HelperFunction";
 
 export default function save(props) {
@@ -36,50 +37,57 @@ export default function save(props) {
         controllerOneBackground,
         switcherBackground,
         containerBackground,
+        switchRadius,
+        switchRadiusUnit,
+        containerRadius,
+        containerRadiusUnit,
     } = attributes;
-
+    const loadStyles = () => {
+        const styles = {};
+        styles[
+            `.${blockId} .premium-content-switcher-toggle-switch-slider:before `
+        ] = {
+            "border-radius": `${containerRadius}${containerRadiusUnit} !important`,
+            "box-shadow": ` ${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position} !important`,
+            "background-color": `${
+                controllerOneBackground.backgroundType == "solid"
+                    ? controllerOneBackground.backgroundColor
+                    : "#6ec1e4"
+            }`,
+            "background-image": `${gradientValue(controllerOneBackground)}`,
+            "background-repeat": `${controllerOneBackground.backgroundRepeat}`,
+            "background-position": `${controllerOneBackground.backgroundPosition}`,
+            "background-size": `${controllerOneBackground.backgroundSize}`,
+            "background-attachment": `${
+                controllerOneBackground.fixed ? "fixed" : "unset"
+            }`,
+        };
+        styles[`.${blockId} .premium-content-switcher-toggle-switch-slider `] =
+            {
+                "border-radius": `${switchRadius}${switchRadiusUnit} !important`,
+                "box-shadow": `${switchShadow.horizontal}px ${switchShadow.vertical}px ${switchShadow.blur}px ${switchShadow.color} ${switchShadow.position} !important`,
+            };
+        return generateCss(styles);
+    };
     return (
         <div
             {...useBlockProps.save({
                 className: classnames(
                     className,
-                    `premium-content-switcher ${blockId} `, {
-                    ' premium-desktop-hidden': hideDesktop,
-                    ' premium-tablet-hidden': hideTablet,
-                    ' premium-mobile-hidden': hideMobile,
-                }
+                    `premium-content-switcher ${blockId} `,
+                    {
+                        " premium-desktop-hidden": hideDesktop,
+                        " premium-tablet-hidden": hideTablet,
+                        " premium-mobile-hidden": hideMobile,
+                    }
                 ),
             })}
         >
-            <style>
-                {`
-                    .${blockId} .premium-content-switcher-toggle-switch-slider:before {
-                        box-shadow: ${containerShadow.horizontal}px ${containerShadow.vertical
-                    }px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position
-                    } !important;
-                        background-color: ${controllerOneBackground.backgroundType === "solid"
-                        ? controllerOneBackground.backgroundColor
-                        : "#6ec1e4"
-                    };
-                        background-image: ${gradientValue(
-                        controllerOneBackground
-                    )};
-                        background-repeat: ${controllerOneBackground.backgroundRepeat
-                    };
-                        background-position: ${controllerOneBackground.backgroundPosition
-                    };
-                        background-size: ${controllerOneBackground.backgroundSize
-                    };
-                        background-attachment: ${controllerOneBackground.fixed ? "fixed" : "unset"
-                    };
-                     }
-                    .${blockId} .premium-content-switcher-toggle-switch-slider {
-                        box-shadow: ${switchShadow.horizontal}px ${switchShadow.vertical
-                    }px ${switchShadow.blur}px ${switchShadow.color} ${switchShadow.position
-                    } !important;
-                    }
-                 `}
-            </style>
+            <style
+                dangerouslySetInnerHTML={{
+                    __html: loadStyles(),
+                }}
+            />
 
             <div
                 className={`premium-content-switcher`}
@@ -87,9 +95,11 @@ export default function save(props) {
                     ...gradientBackground(containerBackground),
                     borderStyle: containerborder?.borderType,
                     borderColor: containerborder?.borderColor,
-                    boxShadow: `${containerBoxShadow?.horizontal || 0}px ${containerBoxShadow?.vertical || 0
-                        }px ${containerBoxShadow?.blur || 0}px ${containerBoxShadow?.color
-                        } ${containerBoxShadow?.position}`,
+                    boxShadow: `${containerBoxShadow?.horizontal || 0}px ${
+                        containerBoxShadow?.vertical || 0
+                    }px ${containerBoxShadow?.blur || 0}px ${
+                        containerBoxShadow?.color
+                    } ${containerBoxShadow?.position}`,
                 })}
             >
                 <div className={`premium-content-switcher-toggle-${display}`}>
@@ -101,8 +111,6 @@ export default function save(props) {
                                 value={firstLabel}
                                 style={filterJsCss({
                                     fontStyle: firstLabelTypography?.fontStyle,
-                                    fontFamily:
-                                        firstLabelTypography?.fontFamily,
                                     fontWeight:
                                         firstLabelTypography?.fontWeight,
                                     textDecoration:
@@ -114,13 +122,18 @@ export default function save(props) {
                                     background: labelStyles?.firstLabelBGColor,
                                     borderStyle: firstLabelborder?.borderType,
                                     borderColor: firstLabelborder?.borderColor,
-                                    boxShadow: `${firstLabelBoxShadow?.horizontal || 0
-                                        }px ${firstLabelBoxShadow?.vertical || 0
-                                        }px ${firstLabelBoxShadow?.blur || 0}px ${firstLabelBoxShadow?.color
-                                        } ${firstLabelBoxShadow?.position}`,
-                                    textShadow: `${firstLabelShadow?.horizontal || 0
-                                        }px ${firstLabelShadow?.vertical || 0}px ${firstLabelShadow?.blur || 0
-                                        }px ${firstLabelShadow?.color}`,
+                                    boxShadow: `${
+                                        firstLabelBoxShadow?.horizontal || 0
+                                    }px ${
+                                        firstLabelBoxShadow?.vertical || 0
+                                    }px ${firstLabelBoxShadow?.blur || 0}px ${
+                                        firstLabelBoxShadow?.color
+                                    } ${firstLabelBoxShadow?.position}`,
+                                    textShadow: `${
+                                        firstLabelShadow?.horizontal || 0
+                                    }px ${firstLabelShadow?.vertical || 0}px ${
+                                        firstLabelShadow?.blur || 0
+                                    }px ${firstLabelShadow?.color}`,
                                 })}
                             />
                         </div>
@@ -162,13 +175,18 @@ export default function save(props) {
                                     background: labelStyles?.secondLabelBGColor,
                                     borderStyle: secondLabelborder?.borderType,
                                     borderColor: secondLabelborder?.borderColor,
-                                    boxShadow: `${secondLabelBoxShadow?.horizontal || 0
-                                        }px ${secondLabelBoxShadow?.vertical || 0
-                                        }px ${secondLabelBoxShadow?.blur || 0}px ${secondLabelBoxShadow?.color
-                                        } ${secondLabelBoxShadow?.position}`,
-                                    textShadow: `${secondLabelShadow?.horizontal || 0
-                                        }px ${secondLabelShadow?.vertical || 0}px ${secondLabelShadow?.blur || 0
-                                        }px ${secondLabelShadow?.color}`,
+                                    boxShadow: `${
+                                        secondLabelBoxShadow?.horizontal || 0
+                                    }px ${
+                                        secondLabelBoxShadow?.vertical || 0
+                                    }px ${secondLabelBoxShadow?.blur || 0}px ${
+                                        secondLabelBoxShadow?.color
+                                    } ${secondLabelBoxShadow?.position}`,
+                                    textShadow: `${
+                                        secondLabelShadow?.horizontal || 0
+                                    }px ${secondLabelShadow?.vertical || 0}px ${
+                                        secondLabelShadow?.blur || 0
+                                    }px ${secondLabelShadow?.color}`,
                                 })}
                             />
                         </div>

@@ -1,7 +1,10 @@
 import classnames from "classnames";
-import { gradientBackground, filterJsCss } from "../../components/HelperFunction";
+import {
+    gradientBackground,
+    filterJsCss,
+} from "../../components/HelperFunction";
 
-const save = props => {
+const save = (props) => {
     const { className } = props;
 
     const {
@@ -25,28 +28,50 @@ const save = props => {
         secondTypography,
         background,
         firstShadow,
-        secondShadow
+        secondShadow,
     } = props.attributes;
 
     return (
         <div
-            className={classnames(className,
-                "premium-dheading-block__container", `${blockId} ${hideDesktop ? hideDesktop : ''} ${hideTablet ? hideTablet : ''} ${hideMobile ? hideMobile : ''}`)}
+            className={classnames(
+                className,
+                "premium-dheading-block__container",
+                `${blockId}`,
+                {
+                    " premium-desktop-hidden": hideDesktop,
+                    " premium-tablet-hidden": hideTablet,
+                    " premium-mobile-hidden": hideMobile,
+                }
+            )}
             style={{
                 textAlign: contentAlign,
                 borderStyle: containerBorder && containerBorder.borderType,
                 borderColor: containerBorder && containerBorder.borderColor,
-                ...gradientBackground(background)
+                ...gradientBackground(background),
             }}
         >
             <div className={`premium-dheading-block__wrap`}>
                 <h2 className={`premium-dheading-block__title`}>
                     <span
-                        className={`premium-dheading-block__first${firstStyles?.[0]?.firstClip ? ` premium-headingc-${firstStyles?.[0]?.firstClip}` : ''}${firstStyles?.[0]?.firstAnim ? ` premium-headinga-${firstStyles?.[0]?.firstAnim}` : ''}${firstStyles?.[0]?.firstStroke ? ` premium-headings-${firstStyles?.[0]?.firstStroke}` : ''}`}
+                        className={`premium-dheading-block__first${
+                            firstStyles?.[0]?.firstClip
+                                ? ` premium-headingc-${firstStyles?.[0]?.firstClip}`
+                                : ""
+                        }${
+                            firstStyles?.[0]?.firstAnim
+                                ? ` premium-headinga-${firstStyles?.[0]?.firstAnim}`
+                                : ""
+                        }${
+                            firstStyles?.[0]?.firstStroke
+                                ? ` premium-headings-${firstStyles?.[0]?.firstStroke}`
+                                : ""
+                        }`}
                         style={filterJsCss({
                             display: display,
                             color: firstStyles[0].firstColor,
-                            backgroundColor: firstStyles[0].firstClip ? "none" : firstStyles[0].firstBackground,
+                            backgroundColor: firstStyles[0].firstClip
+                                ? "none"
+                                : firstStyles[0].firstBackground,
                             backgroundImage: firstStyles[0].firstClip
                                 ? `linear-gradient(to left, ${firstStyles[0].firstColor}, ${firstStyles[0].firstClipColor})`
                                 : "none",
@@ -65,11 +90,25 @@ const save = props => {
                         {firstHeading}
                     </span>
                     <span
-                        className={`premium-dheading-block__second${secondStyles?.[0]?.secondClip ? `${` premium-headingc-${secondStyles?.[0]?.secondClip}`}` : ''}${secondStyles?.[0]?.secondAnim ? ` ${`premium-headinga-${secondStyles?.[0]?.secondAnim} `}` : ''}${secondStyles?.[0]?.secondStroke ? ` premium-headings-${secondStyles?.[0]?.secondStroke}` : ''}`}
+                        className={`premium-dheading-block__second${
+                            secondStyles?.[0]?.secondClip
+                                ? `${` premium-headingc-${secondStyles?.[0]?.secondClip}`}`
+                                : ""
+                        }${
+                            secondStyles?.[0]?.secondAnim
+                                ? ` ${`premium-headinga-${secondStyles?.[0]?.secondAnim} `}`
+                                : ""
+                        }${
+                            secondStyles?.[0]?.secondStroke
+                                ? ` premium-headings-${secondStyles?.[0]?.secondStroke}`
+                                : ""
+                        }`}
                         style={filterJsCss({
                             display: display,
                             color: secondStyles[0].secondColor,
-                            backgroundColor: secondStyles[0].secondClip ? "none" : secondStyles[0].secondBackground,
+                            backgroundColor: secondStyles[0].secondClip
+                                ? "none"
+                                : secondStyles[0].secondBackground,
                             backgroundImage: secondStyles[0].secondClip
                                 ? `linear-gradient(to left, ${secondStyles[0].secondColor}, ${secondStyles[0].secondClipColor})`
                                 : "none",
@@ -80,8 +119,10 @@ const save = props => {
                             textDecoration: secondTypography?.textDecoration,
                             textTransform: secondTypography?.textTransform,
                             lineHeight: `${secondTypography?.lineHeight}px`,
-                            borderStyle: secondBorder && secondBorder.borderType,
-                            borderColor: secondBorder && secondBorder.borderColor,
+                            borderStyle:
+                                secondBorder && secondBorder.borderType,
+                            borderColor:
+                                secondBorder && secondBorder.borderColor,
                             textShadow: `${secondShadow?.horizontal}px ${secondShadow?.vertical}px ${secondShadow?.blur}px ${secondShadow?.color}`,
                         })}
                     >
@@ -93,7 +134,7 @@ const save = props => {
                         className={`premium-dheading-block__link`}
                         href={link && headingURL}
                         target={target && "_blank"}
-                        rel='noopener noreferrer'
+                        rel="noopener noreferrer"
                     />
                 )}
             </div>

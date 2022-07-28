@@ -6,7 +6,7 @@ import AdvancedPopColorControl from "../../components/Color Control/ColorCompone
 import PremiumBackgroundControl from "../../components/Premium-Background-Control";
 const { __ } = wp.i18n;
 const { withSelect } = wp.data;
-import WebfontLoader from "../../components/typography/fontLoader";
+import GoogleFontLoader from "react-google-font-loader";
 import PremiumShadow from "../../components/PremiumShadow";
 import SpacingComponent from "../../components/premium-responsive-spacing";
 import {
@@ -19,6 +19,7 @@ import {
 } from "../../components/HelperFunction";
 import InspectorTabs from "../../components/inspectorTabs";
 import InspectorTab from "../../components/inspectorTab";
+import MultiButtonsControl from "../../components/responsive-radio";
 
 const { Fragment, Component } = wp.element;
 
@@ -106,23 +107,25 @@ class edit extends Component {
         let loadFirstGoogleFonts;
         let loadSecondGoogleFonts;
         if (firstTypography?.fontFamily !== "Default") {
-            const firstConfig = {
-                google: {
-                    families: [firstTypography?.fontFamily],
-                },
-            };
             loadFirstGoogleFonts = (
-                <WebfontLoader config={firstConfig}></WebfontLoader>
+                <GoogleFontLoader
+                    fonts={[
+                        {
+                            font: firstTypography?.fontFamily,
+                        },
+                    ]}
+                />
             );
         }
         if (secondTypography?.fontFamily !== "Default") {
-            const secondConfig = {
-                google: {
-                    families: [secondTypography?.fontFamily],
-                },
-            };
             loadSecondGoogleFonts = (
-                <WebfontLoader config={secondConfig}></WebfontLoader>
+                <GoogleFontLoader
+                    fonts={[
+                        {
+                            font: secondTypography?.fontFamily,
+                        },
+                    ]}
+                />
             );
         }
 
@@ -227,10 +230,6 @@ class edit extends Component {
                                 <PremiumBorder
                                     label={__("Border")}
                                     value={containerBorder}
-                                    borderType={containerBorder.borderType}
-                                    borderColor={containerBorder.borderColor}
-                                    borderWidth={containerBorder.borderWidth}
-                                    borderRadius={containerBorder.borderRadius}
                                     onChange={(value) =>
                                         setAttributes({
                                             containerBorder: value,
@@ -652,9 +651,12 @@ class edit extends Component {
                 className={classnames(
                     className,
                     "premium-dheading-block__container",
-                    `${blockId}${hideDesktop ? ` ${hideDesktop}` : ""}${
-                        hideTablet ? ` ${hideTablet}` : ""
-                    }${hideMobile ? ` ${hideMobile}` : ""}`
+                    `${blockId}`,
+                    {
+                        " premium-desktop-hidden": hideDesktop,
+                        " premium-tablet-hidden": hideTablet,
+                        " premium-mobile-hidden": hideMobile,
+                    }
                 )}
                 style={{
                     textAlign: contentAlign,
