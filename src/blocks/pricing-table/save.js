@@ -57,11 +57,15 @@ const save = props => {
         return generateCss(styles);
     }
 
-    const mainClasses = classnames(className, "premium-pricing-table");
+    const mainClasses = classnames(className, "premium-pricing-table", {
+        " premium-desktop-hidden": hideDesktop,
+        " premium-tablet-hidden": hideTablet,
+        " premium-mobile-hidden": hideMobile,
+    });
 
     return (
         <div
-            className={`${mainClasses} ${blockId} ${hideDesktop || ''} ${hideTablet || ''} ${hideMobile || ''}`}
+            className={`${mainClasses} ${blockId}`}
             style={filterJsCss({
                 textAlign: contentAlign,
                 backgroundColor: tableStyles[0].tableBack,
@@ -92,10 +96,8 @@ const save = props => {
                                 fontStyle: badgeTypography?.fontStyle,
                                 fontFamily: badgeTypography?.fontFamily,
                                 fontWeight: badgeTypography?.fontWeight,
-                                letterSpacing: badgeTypography?.letterSpacing,
                                 textDecoration: badgeTypography?.textDecoration,
                                 textTransform: badgeTypography?.textTransform,
-                                lineHeight: `${badgeTypography?.lineHeight}px`,
                                 width: badgeStyles[0].badgeWidth + "px",
                                 top: badgeStyles[0].badgeTop + "px",
                                 left: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeHorizontal + "px" : "auto",
@@ -123,10 +125,8 @@ const save = props => {
                             fontStyle: titleTypography?.fontStyle,
                             fontFamily: titleTypography?.fontFamily,
                             fontWeight: titleTypography?.fontWeight,
-                            letterSpacing: titleTypography?.letterSpacing,
                             textDecoration: titleTypography?.textDecoration,
                             textTransform: titleTypography?.textTransform,
-                            lineHeight: `${titleTypography?.lineHeight}px`,
                             textShadow: `${titleTextShadow.horizontal}px ${titleTextShadow.vertical}px ${titleTextShadow.blur}px ${titleTextShadow.color}`
                         })}
                     />
@@ -148,10 +148,8 @@ const save = props => {
                                 fontStyle: slashTypography?.fontStyle,
                                 fontFamily: slashTypography?.fontFamily,
                                 fontWeight: slashTypography?.fontWeight,
-                                letterSpacing: slashTypography?.letterSpacing,
                                 textDecoration: slashTypography?.textDecoration,
                                 textTransform: slashTypography?.textTransform,
-                                lineHeight: `${slashTypography?.lineHeight}px`,
                             })}
                         >
                             {priceStyles[0].slashPrice}
@@ -165,10 +163,8 @@ const save = props => {
                                 fontStyle: currTypography?.fontStyle,
                                 fontFamily: currTypography?.fontFamily,
                                 fontWeight: currTypography?.fontWeight,
-                                letterSpacing: currTypography?.letterSpacing,
                                 textDecoration: currTypography?.textDecoration,
                                 textTransform: currTypography?.textTransform,
-                                lineHeight: `${currTypography?.lineHeight}px`,
                             })}
                         >
                             {priceStyles[0].currPrice}
@@ -182,10 +178,8 @@ const save = props => {
                                 fontStyle: priceTypography?.fontStyle,
                                 fontFamily: priceTypography?.fontFamily,
                                 fontWeight: priceTypography?.fontWeight,
-                                letterSpacing: priceTypography?.letterSpacing,
                                 textDecoration: priceTypography?.textDecoration,
                                 textTransform: priceTypography?.textTransform,
-                                lineHeight: `${priceTypography?.lineHeight}px`,
                             })}
                         >
                             {priceStyles[0].valPrice}
@@ -199,10 +193,8 @@ const save = props => {
                                 fontStyle: dividerTypography?.fontStyle,
                                 fontFamily: dividerTypography?.fontFamily,
                                 fontWeight: dividerTypography?.fontWeight,
-                                letterSpacing: dividerTypography?.letterSpacing,
                                 textDecoration: dividerTypography?.textDecoration,
                                 textTransform: dividerTypography?.textTransform,
-                                lineHeight: `${dividerTypography?.lineHeight}px`,
                             })}
                         >
                             {priceStyles[0].divPrice}
@@ -216,10 +208,8 @@ const save = props => {
                                 fontStyle: durationTypography?.fontStyle,
                                 fontFamily: durationTypography?.fontFamily,
                                 fontWeight: durationTypography?.fontWeight,
-                                letterSpacing: durationTypography?.letterSpacing,
                                 textDecoration: durationTypography?.textDecoration,
                                 textTransform: durationTypography?.textTransform,
-                                lineHeight: `${durationTypography?.lineHeight}px`,
                             })}
                         >
                             {priceStyles[0].durPrice}
@@ -241,10 +231,8 @@ const save = props => {
                             fontStyle: listTypography?.fontStyle,
                             fontFamily: listTypography?.fontFamily,
                             fontWeight: listTypography?.fontWeight,
-                            letterSpacing: listTypography?.letterSpacing,
                             textDecoration: listTypography?.textDecoration,
                             textTransform: listTypography?.textTransform,
-                            lineHeight: `${listTypography?.lineHeight}px`,
                         })}
                     >
                         {listItems}
@@ -263,10 +251,8 @@ const save = props => {
                             fontStyle: descTypography?.fontStyle,
                             fontFamily: descTypography?.fontFamily,
                             fontWeight: descTypography?.fontWeight,
-                            letterSpacing: descTypography?.letterSpacing,
                             textDecoration: descTypography?.textDecoration,
                             textTransform: descTypography?.textTransform,
-                            lineHeight: `${descTypography?.lineHeight}px`,
                         })}
                     />
                 </div>
@@ -289,10 +275,8 @@ const save = props => {
                             fontStyle: buttonTypography?.fontStyle,
                             fontFamily: buttonTypography?.fontFamily,
                             fontWeight: buttonTypography?.fontWeight,
-                            letterSpacing: buttonTypography?.letterSpacing,
                             textDecoration: buttonTypography?.textDecoration,
                             textTransform: buttonTypography?.textTransform,
-                            lineHeight: `${buttonTypography?.lineHeight}px`,
                             borderStyle: buttonBorder.borderType,
                             borderColor: buttonBorder.borderColor,
                         })}

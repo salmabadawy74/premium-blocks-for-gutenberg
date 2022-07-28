@@ -360,6 +360,18 @@ const deprecatedContent = [
                     'fontFamily': attributes?.textStyles[0]?.textFontFamily || '',
                     'lineHeight': attributes?.textStyles[0]?.textLine || '',
                     'textDecoration': '',
+                    letterSpacing: {
+                        Desktop: attributes?.textStyles[0]?.textLetter || '',
+                        Tablet: attributes?.textStyles[0]?.textLetter || '',
+                        Mobile: attributes?.textStyles[0]?.textLetter || '',
+                        unit: "px",
+                    },
+                    lineHeight: {
+                        Desktop: attributes?.textStyles[0]?.textLine || '',
+                        Tablet: attributes?.textStyles[0]?.textLine || '',
+                        Mobile: attributes?.textStyles[0]?.textLine || '',
+                        unit: "px",
+                    },
                     'fontSize': {
                         'Desktop': attributes?.textStyles[0]?.textSize || '',
                         "Tablet": attributes?.textStyles[0]?.textSizeTablet || '',

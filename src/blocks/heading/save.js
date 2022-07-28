@@ -1,3 +1,4 @@
+import classnames from "classnames";
 import { generateCss, filterJsCss } from "../../components/HelperFunction";
 const {
     Fragment
@@ -5,7 +6,7 @@ const {
 const { RichText } = wp.blockEditor;
 export default function save(props) {
 
-    const { attributes } = props
+    const { attributes, className } = props
 
     const {
         blockId,
@@ -151,8 +152,6 @@ export default function save(props) {
             'color': `${textStyles[0].textBackColor}`,
             'font-family': `${textTypography?.fontFamily}`,
             'font-weight': `${textTypography?.fontWeight}`,
-            'letter-spacing': `${textTypography?.letterSpacing}`,
-            'line-height': `${textTypography?.lineHeight}`,
             'font-style': `${textTypography?.fontStyle}`,
             'text-transform': `${textTypography?.textTransform}`,
             'text-decoration': `${textTypography?.textDecoration}`,
@@ -177,14 +176,17 @@ export default function save(props) {
 
         return generateCss(styles);
     };
+
+    const mainClasses = classnames(className, {
+        " premium-desktop-hidden": hideDesktop,
+        " premium-tablet-hidden": hideTablet,
+        " premium-mobile-hidden": hideMobile,
+    });
+
     return (
         <div
-            className={`${blockId} ${hideDesktop ? hideDesktop : ''} ${hideTablet ? hideTablet : ''} ${hideMobile ? hideMobile : ''}`}>
-            <style
-                dangerouslySetInnerHTML={{
-                    __html: loadStyles()
-                }}
-            />
+            className={`${blockId} ${mainClasses}`}>
+            <style>{loadStyles()}</style>
             <div className={`premium-title   ${backgroundText ? 'premium-title-bg-text' : ""}`} data-backgroundText={BackText}>
                 <div className={`premium-title-container ${style}`} data-blur-delay={titleStyles[0].animateDelay} data-shiny-dur={titleStyles[0].animateduration}>
                     {React.createElement(titleTag,
@@ -197,10 +199,8 @@ export default function save(props) {
                                 fontStyle: titleTypography?.fontStyle,
                                 fontFamily: titleTypography?.fontFamily,
                                 fontWeight: titleTypography?.fontWeight,
-                                letterSpacing: titleTypography?.letterSpacing,
                                 textDecoration: titleTypography?.textDecoration,
                                 textTransform: titleTypography?.textTransform,
-                                lineHeight: `${titleTypography?.lineHeight}px`,
                                 textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`,
                             })
                         },

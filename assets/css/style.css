@@ -6693,8 +6693,8 @@ button.premium-modal-box-modal-close {
     font-family: "Roboto", Sans-serif;
     font-weight: 600;
     position: relative;
-    margin: 0 !important;
-    padding: 10px !important;
+    margin: 0;
+    padding: 10px;
 }
 
 .premium-title-style1__wrap {
