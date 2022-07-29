@@ -102,6 +102,9 @@
   --navigation-layout-justify: flex-start;
   --navigation-layout-align: center;
 }
+.wp-block-premium-navigation .premium-navigation__submenu-container {
+  background-color: var(--pbBacgroundColor);
+}
 .wp-block-premium-navigation.submenu-box-shadow > div:not(.premium-navigation__responsive-container.is-menu-open) .premium-navigation__submenu-container,
 .wp-block-premium-navigation.submenu-box-shadow .premium-navigation__container .premium-navigation__submenu-container {
   box-shadow: 0 3px 13px 0 rgba(0, 0, 0, 0.2);

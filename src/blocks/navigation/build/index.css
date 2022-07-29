@@ -169,7 +169,7 @@
   margin-left: auto;
 }
 
-.premium-navigation__submenu-container .block-list-appender {
+.premium-navigation__submenu-container > .block-list-appender {
   display: none;
 }
 

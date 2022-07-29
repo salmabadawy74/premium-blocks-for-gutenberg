@@ -2,7 +2,7 @@
     "$schema": "https://schemas.wp.org/trunk/block.json",
     "apiVersion": 2,
     "name": "premium/navigation-link",
-    "title": "Custom Link",
+    "title": "Premium Custom Link",
     "category": "design",
     "parent": ["premium/navigation"],
     "description": "Add a page, link, or another item to your navigation.",

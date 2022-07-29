@@ -2,7 +2,7 @@
     "$schema": "https://schemas.wp.org/trunk/block.json",
     "apiVersion": 2,
     "name": "premium/navigation-submenu",
-    "title": "Submenu",
+    "title": "Premium Submenu",
     "category": "design",
     "parent": ["premium/navigation"],
     "description": "Add a submenu to your navigation.",

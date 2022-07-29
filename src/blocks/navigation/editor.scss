@@ -122,9 +122,10 @@
 }
 
 // Hide when hovering.
-.premium-navigation__submenu-container .block-list-appender {
+.premium-navigation__submenu-container > .block-list-appender {
     display: none;
 }
+
 .premium-navigation__submenu-container .wp-block-group .block-list-appender {
     display: block;
 }

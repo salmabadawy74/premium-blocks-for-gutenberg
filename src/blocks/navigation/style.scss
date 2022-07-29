@@ -21,6 +21,10 @@ $navigation-icon-size: 24px;
 .wp-block-premium-navigation {
     position: relative;
     line-height: 4;
+
+    .premium-navigation__submenu-container {
+        background-color: var(--pbBacgroundColor);
+    }
     &.submenu-box-shadow {
         > div:not(.premium-navigation__responsive-container.is-menu-open),
         .premium-navigation__container {
