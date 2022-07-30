@@ -56,9 +56,6 @@ class edit extends Component {
         }
         this.props.setAttributes({ classMigrate: true })
         // Pushing Style tag for this block css.
-        const $style = document.createElement("style")
-        $style.setAttribute("id", "premium-style-title-" + this.props.clientId)
-        document.head.appendChild($style)
         this.handleStyle = this.handleStyle.bind(this);
         this.getPreviewSize = this.getPreviewSize.bind(this);
     }

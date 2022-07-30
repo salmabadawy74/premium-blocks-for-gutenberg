@@ -25863,9 +25863,6 @@ class edit extends Component {
       classMigrate: true
     }); // Pushing Style tag for this block css.
 
-    const $style = document.createElement("style");
-    $style.setAttribute("id", "premium-style-title-" + this.props.clientId);
-    document.head.appendChild($style);
     this.handleStyle = this.handleStyle.bind(this);
     this.getPreviewSize = this.getPreviewSize.bind(this);
   }
@@ -37172,36 +37169,56 @@ const attributes = {
   titleTypography: {
     type: "object",
     default: {
-      "fontWeight": '',
-      'fontStyle': '',
-      'textTransform': '',
-      'letterSpacing': '',
-      'fontFamily': '',
-      'lineHeight': '',
-      'textDecoration': '',
-      'fontSize': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
+      fontWeight: "400",
+      fontStyle: "",
+      letterSpacing: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      'fontFamily': __('Default', 'premium-blocks-for-gutenberg'),
+      lineHeight: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      textDecoration: "",
+      textTransform: "",
+      fontSize: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
       }
     }
   },
   descriptionTypography: {
     type: "object",
     default: {
-      "fontWeight": '',
-      'fontStyle': '',
-      'textTransform': '',
-      'letterSpacing': '',
-      'fontFamily': '',
-      'lineHeight': '',
-      'textDecoration': '',
-      'fontSize': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
+      fontWeight: "400",
+      fontStyle: "",
+      letterSpacing: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      'fontFamily': __('Default', 'premium-blocks-for-gutenberg'),
+      lineHeight: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
+      },
+      textDecoration: "",
+      textTransform: "",
+      fontSize: {
+        Desktop: "",
+        Tablet: "",
+        Mobile: "",
+        unit: "px"
       }
     }
   },
@@ -37352,7 +37369,7 @@ const attributes = {
   mapBorder: {
     type: "object",
     default: {
-      "borderType": "",
+      "borderType": "none",
       "borderColor": "",
       "borderWidth": {
         Desktop: {
@@ -37400,7 +37417,7 @@ const attributes = {
     type: "object",
     default: {
       'color': '',
-      'blur': '',
+      'blur': '10',
       'horizontal': '',
       'vertical': '',
       'position': ''
@@ -37815,14 +37832,24 @@ const deprecated = [{
         "fontWeight": '',
         'fontStyle': '',
         'textTransform': '',
-        'letterSpacing': '',
         'fontFamily': '',
-        'lineHeight': '',
+        letterSpacing: {
+          Desktop: "",
+          Tablet: "",
+          Mobile: "",
+          unit: "px"
+        },
+        lineHeight: {
+          Desktop: "",
+          Tablet: "",
+          Mobile: "",
+          unit: "px"
+        },
         'textDecoration': '',
         'fontSize': {
-          'Desktop': attributes?.titleSize || '',
-          "Tablet": attributes?.titleSize || '',
-          "Mobile": attributes?.titleSize || '',
+          'Desktop': (attributes === null || attributes === void 0 ? void 0 : attributes.titleSize) || '',
+          "Tablet": (attributes === null || attributes === void 0 ? void 0 : attributes.titleSize) || '',
+          "Mobile": (attributes === null || attributes === void 0 ? void 0 : attributes.titleSize) || '',
           "unit": 'px'
         }
       },
@@ -37830,23 +37857,33 @@ const deprecated = [{
         "fontWeight": '',
         'fontStyle': '',
         'textTransform': '',
-        'letterSpacing': '',
         'fontFamily': '',
-        'lineHeight': '',
         'textDecoration': '',
+        letterSpacing: {
+          Desktop: "",
+          Tablet: "",
+          Mobile: "",
+          unit: "px"
+        },
+        lineHeight: {
+          Desktop: "",
+          Tablet: "",
+          Mobile: "",
+          unit: "px"
+        },
         'fontSize': {
-          'Desktop': attributes?.descSize || '',
-          "Tablet": attributes?.descSize || '',
-          "Mobile": attributes?.descSize || '',
+          'Desktop': (attributes === null || attributes === void 0 ? void 0 : attributes.descSize) || '',
+          "Tablet": (attributes === null || attributes === void 0 ? void 0 : attributes.descSize) || '',
+          "Mobile": (attributes === null || attributes === void 0 ? void 0 : attributes.descSize) || '',
           "unit": 'px'
         }
       },
       descriptionMargin: {
         Desktop: {
-          top: attributes?.gapBetween || '',
-          right: attributes?.gapBetween || '',
-          bottom: attributes?.gapBetween || '',
-          left: attributes?.gapBetween || ''
+          top: (attributes === null || attributes === void 0 ? void 0 : attributes.gapBetween) || '',
+          right: (attributes === null || attributes === void 0 ? void 0 : attributes.gapBetween) || '',
+          bottom: (attributes === null || attributes === void 0 ? void 0 : attributes.gapBetween) || '',
+          left: (attributes === null || attributes === void 0 ? void 0 : attributes.gapBetween) || ''
         },
         Tablet: {
           top: '',
@@ -37864,10 +37901,10 @@ const deprecated = [{
       },
       descriptionPadding: {
         Desktop: {
-          top: attributes?.boxPadding || '',
-          right: attributes?.boxPadding || '',
-          bottom: attributes?.boxPadding || '',
-          left: attributes?.boxPadding || ''
+          top: (attributes === null || attributes === void 0 ? void 0 : attributes.boxPadding) || '',
+          right: (attributes === null || attributes === void 0 ? void 0 : attributes.boxPadding) || '',
+          bottom: (attributes === null || attributes === void 0 ? void 0 : attributes.boxPadding) || '',
+          left: (attributes === null || attributes === void 0 ? void 0 : attributes.boxPadding) || ''
         },
         Tablet: {
           top: '',
@@ -38436,66 +38473,68 @@ class edit extends Component {
     } = this.props.attributes;
 
     const loadStyles = () => {
+      var _titleTypography$font, _titleTypography$font2, _titlePadding$this$pr, _titlePadding$this$pr2, _titlePadding$this$pr3, _titlePadding$this$pr4, _titleMargin$this$pro, _titleMargin$this$pro2, _titleMargin$this$pro3, _titleMargin$this$pro4, _descriptionTypograph, _descriptionTypograph2, _descriptionMargin$th, _descriptionMargin$th2, _descriptionMargin$th3, _descriptionMargin$th4, _descriptionPadding$t, _descriptionPadding$t2, _descriptionPadding$t3, _descriptionPadding$t4, _mapBorder$borderWidt, _mapBorder$borderWidt2, _mapBorder$borderWidt3, _mapBorder$borderWidt4, _mapBorder$borderWidt5, _mapBorder$borderWidt6, _mapBorder$borderWidt7, _mapBorder$borderWidt8, _mapBorder$borderRadi, _mapBorder$borderRadi2, _mapBorder$borderRadi3, _mapBorder$borderRadi4, _mapBorder$borderRadi5, _mapBorder$borderRadi6, _mapBorder$borderRadi7, _mapBorder$borderRadi8, _mapPadding$this$prop, _mapPadding$this$prop2, _mapPadding$this$prop3, _mapPadding$this$prop4, _mapMargin$this$props, _mapMargin$this$props2, _mapMargin$this$props3, _mapMargin$this$props4;
+
       const styles = {};
       styles[`.${blockId} .${className}__title`] = {
         'color': `${titleColor}`,
-        'font-family': `${titleTypography?.fontFamily}!important`,
-        'font-size': `${titleTypography?.fontSize?.[this.props.deviceType]}${titleTypography?.fontSize?.unit}`,
-        'font-weight': `${titleTypography?.fontWeight}!important`,
-        'letter-spacing': `${titleTypography?.letterSpacing}`,
-        'line-height': `${titleTypography?.lineHeight}`,
-        'font-style': `${titleTypography?.fontStyle}`,
-        'text-transform': `${titleTypography?.textTransform}`,
-        'text-decoration': `${titleTypography?.textDecoration}`,
-        'padding-top': `${titlePadding?.[this.props.deviceType]?.top}${titlePadding.unit}!important`,
-        'padding-right': `${titlePadding?.[this.props.deviceType]?.right}${titlePadding.unit}!important`,
-        'padding-bottom': `${titlePadding?.[this.props.deviceType]?.bottom}${titlePadding.unit}!important`,
-        'padding-left': `${titlePadding?.[this.props.deviceType]?.left}${titlePadding.unit}!important`,
-        'margin-top': `${titleMargin?.[this.props.deviceType]?.top}${titleMargin.unit}!important`,
-        'margin-right': `${titleMargin?.[this.props.deviceType]?.right}${titleMargin.unit}!important`,
-        'margin-bottom': `${titleMargin?.[this.props.deviceType]?.bottom}${titleMargin.unit}!important`,
-        'margin-left': `${titleMargin?.[this.props.deviceType]?.left}${titleMargin.unit}!important`
+        'font-family': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily}!important`,
+        'font-size': `${titleTypography === null || titleTypography === void 0 ? void 0 : (_titleTypography$font = titleTypography.fontSize) === null || _titleTypography$font === void 0 ? void 0 : _titleTypography$font[this.props.deviceType]}${titleTypography === null || titleTypography === void 0 ? void 0 : (_titleTypography$font2 = titleTypography.fontSize) === null || _titleTypography$font2 === void 0 ? void 0 : _titleTypography$font2.unit}`,
+        'font-weight': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontWeight}!important`,
+        'letter-spacing': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.letterSpacing}`,
+        'line-height': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.lineHeight}`,
+        'font-style': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontStyle}`,
+        'text-transform': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textTransform}`,
+        'text-decoration': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textDecoration}`,
+        'padding-top': `${titlePadding === null || titlePadding === void 0 ? void 0 : (_titlePadding$this$pr = titlePadding[this.props.deviceType]) === null || _titlePadding$this$pr === void 0 ? void 0 : _titlePadding$this$pr.top}${titlePadding.unit}!important`,
+        'padding-right': `${titlePadding === null || titlePadding === void 0 ? void 0 : (_titlePadding$this$pr2 = titlePadding[this.props.deviceType]) === null || _titlePadding$this$pr2 === void 0 ? void 0 : _titlePadding$this$pr2.right}${titlePadding.unit}!important`,
+        'padding-bottom': `${titlePadding === null || titlePadding === void 0 ? void 0 : (_titlePadding$this$pr3 = titlePadding[this.props.deviceType]) === null || _titlePadding$this$pr3 === void 0 ? void 0 : _titlePadding$this$pr3.bottom}${titlePadding.unit}!important`,
+        'padding-left': `${titlePadding === null || titlePadding === void 0 ? void 0 : (_titlePadding$this$pr4 = titlePadding[this.props.deviceType]) === null || _titlePadding$this$pr4 === void 0 ? void 0 : _titlePadding$this$pr4.left}${titlePadding.unit}!important`,
+        'margin-top': `${titleMargin === null || titleMargin === void 0 ? void 0 : (_titleMargin$this$pro = titleMargin[this.props.deviceType]) === null || _titleMargin$this$pro === void 0 ? void 0 : _titleMargin$this$pro.top}${titleMargin.unit}!important`,
+        'margin-right': `${titleMargin === null || titleMargin === void 0 ? void 0 : (_titleMargin$this$pro2 = titleMargin[this.props.deviceType]) === null || _titleMargin$this$pro2 === void 0 ? void 0 : _titleMargin$this$pro2.right}${titleMargin.unit}!important`,
+        'margin-bottom': `${titleMargin === null || titleMargin === void 0 ? void 0 : (_titleMargin$this$pro3 = titleMargin[this.props.deviceType]) === null || _titleMargin$this$pro3 === void 0 ? void 0 : _titleMargin$this$pro3.bottom}${titleMargin.unit}!important`,
+        'margin-left': `${titleMargin === null || titleMargin === void 0 ? void 0 : (_titleMargin$this$pro4 = titleMargin[this.props.deviceType]) === null || _titleMargin$this$pro4 === void 0 ? void 0 : _titleMargin$this$pro4.left}${titleMargin.unit}!important`
       };
       styles[`.${blockId} .${className}__desc`] = {
         'color': `${descColor}`,
-        'text-align': `${boxAlign?.[this.props.deviceType]}!important`,
-        'font-family': `${descriptionTypography?.fontFamily}`,
-        'font-size': `${descriptionTypography?.fontSize?.[this.props.deviceType]}${descriptionTypography?.fontSize?.unit}`,
-        'font-weight': `${descriptionTypography?.fontWeight}`,
-        'letter-spacing': `${descriptionTypography?.letterSpacing}`,
-        'line-height': `${descriptionTypography?.lineHeight}`,
-        'font-style': `${descriptionTypography?.fontStyle}`,
-        'text-transform': `${descriptionTypography?.textTransform}`,
-        'text-decoration': `${descriptionTypography?.textDecoration}`,
-        'padding-top': `${descriptionMargin?.[this.props.deviceType]?.top}${descriptionMargin.unit}!important`,
-        'padding-right': `${descriptionMargin?.[this.props.deviceType]?.right}${descriptionMargin.unit}!important`,
-        'padding-bottom': `${descriptionMargin?.[this.props.deviceType]?.bottom}${descriptionMargin.unit}!important`,
-        'padding-left': `${descriptionMargin?.[this.props.deviceType]?.left}${descriptionMargin.unit}!important`,
-        'margin-top': `${descriptionPadding?.[this.props.deviceType]?.top}${descriptionPadding.unit}!important`,
-        'margin-right': `${descriptionPadding?.[this.props.deviceType]?.right}${descriptionPadding.unit}!important`,
-        'margin-bottom': `${descriptionPadding?.[this.props.deviceType]?.bottom}${descriptionPadding.unit}!important`,
-        'margin-left': `${descriptionPadding?.[this.props.deviceType]?.left}${descriptionPadding.unit}!important`
+        'text-align': `${boxAlign === null || boxAlign === void 0 ? void 0 : boxAlign[this.props.deviceType]}!important`,
+        'font-family': `${descriptionTypography === null || descriptionTypography === void 0 ? void 0 : descriptionTypography.fontFamily}`,
+        'font-size': `${descriptionTypography === null || descriptionTypography === void 0 ? void 0 : (_descriptionTypograph = descriptionTypography.fontSize) === null || _descriptionTypograph === void 0 ? void 0 : _descriptionTypograph[this.props.deviceType]}${descriptionTypography === null || descriptionTypography === void 0 ? void 0 : (_descriptionTypograph2 = descriptionTypography.fontSize) === null || _descriptionTypograph2 === void 0 ? void 0 : _descriptionTypograph2.unit}`,
+        'font-weight': `${descriptionTypography === null || descriptionTypography === void 0 ? void 0 : descriptionTypography.fontWeight}`,
+        'letter-spacing': `${descriptionTypography === null || descriptionTypography === void 0 ? void 0 : descriptionTypography.letterSpacing}`,
+        'line-height': `${descriptionTypography === null || descriptionTypography === void 0 ? void 0 : descriptionTypography.lineHeight}`,
+        'font-style': `${descriptionTypography === null || descriptionTypography === void 0 ? void 0 : descriptionTypography.fontStyle}`,
+        'text-transform': `${descriptionTypography === null || descriptionTypography === void 0 ? void 0 : descriptionTypography.textTransform}`,
+        'text-decoration': `${descriptionTypography === null || descriptionTypography === void 0 ? void 0 : descriptionTypography.textDecoration}`,
+        'padding-top': `${descriptionMargin === null || descriptionMargin === void 0 ? void 0 : (_descriptionMargin$th = descriptionMargin[this.props.deviceType]) === null || _descriptionMargin$th === void 0 ? void 0 : _descriptionMargin$th.top}${descriptionMargin.unit}!important`,
+        'padding-right': `${descriptionMargin === null || descriptionMargin === void 0 ? void 0 : (_descriptionMargin$th2 = descriptionMargin[this.props.deviceType]) === null || _descriptionMargin$th2 === void 0 ? void 0 : _descriptionMargin$th2.right}${descriptionMargin.unit}!important`,
+        'padding-bottom': `${descriptionMargin === null || descriptionMargin === void 0 ? void 0 : (_descriptionMargin$th3 = descriptionMargin[this.props.deviceType]) === null || _descriptionMargin$th3 === void 0 ? void 0 : _descriptionMargin$th3.bottom}${descriptionMargin.unit}!important`,
+        'padding-left': `${descriptionMargin === null || descriptionMargin === void 0 ? void 0 : (_descriptionMargin$th4 = descriptionMargin[this.props.deviceType]) === null || _descriptionMargin$th4 === void 0 ? void 0 : _descriptionMargin$th4.left}${descriptionMargin.unit}!important`,
+        'margin-top': `${descriptionPadding === null || descriptionPadding === void 0 ? void 0 : (_descriptionPadding$t = descriptionPadding[this.props.deviceType]) === null || _descriptionPadding$t === void 0 ? void 0 : _descriptionPadding$t.top}${descriptionPadding.unit}!important`,
+        'margin-right': `${descriptionPadding === null || descriptionPadding === void 0 ? void 0 : (_descriptionPadding$t2 = descriptionPadding[this.props.deviceType]) === null || _descriptionPadding$t2 === void 0 ? void 0 : _descriptionPadding$t2.right}${descriptionPadding.unit}!important`,
+        'margin-bottom': `${descriptionPadding === null || descriptionPadding === void 0 ? void 0 : (_descriptionPadding$t3 = descriptionPadding[this.props.deviceType]) === null || _descriptionPadding$t3 === void 0 ? void 0 : _descriptionPadding$t3.bottom}${descriptionPadding.unit}!important`,
+        'margin-left': `${descriptionPadding === null || descriptionPadding === void 0 ? void 0 : (_descriptionPadding$t4 = descriptionPadding[this.props.deviceType]) === null || _descriptionPadding$t4 === void 0 ? void 0 : _descriptionPadding$t4.left}${descriptionPadding.unit}!important`
       };
       styles[`.${blockId}`] = {
         'border-color': `${mapBorder.borderColor}`,
         'border-style': `${mapBorder.borderType}`,
-        'border-top-width': `${mapBorder?.borderWidth?.[this.props.deviceType]?.top}px`,
-        'border-right-width': `${mapBorder?.borderWidth?.[this.props.deviceType]?.right}px`,
-        'border-bottom-width': `${mapBorder?.borderWidth?.[this.props.deviceType]?.bottom}px`,
-        'border-left-width': `${mapBorder?.borderWidth?.[this.props.deviceType]?.left}px`,
-        'border-top-left-radius': `${mapBorder?.borderRadius?.[this.props.deviceType]?.top}px`,
-        'border-top-right-radius': `${mapBorder?.borderRadius?.[this.props.deviceType]?.right}px`,
-        'border-bottom-left-radius': `${mapBorder?.borderRadius?.[this.props.deviceType]?.bottom}px`,
-        'border-bottom-right-radius': `${mapBorder?.borderRadius?.[this.props.deviceType]?.left}px`,
-        'padding-top': `${mapPadding?.[this.props.deviceType]?.top}${mapPadding.unit}`,
-        'padding-right': `${mapPadding?.[this.props.deviceType]?.right}${mapPadding.unit}`,
-        'padding-bottom': `${mapPadding?.[this.props.deviceType]?.bottom}${mapPadding.unit}`,
-        'padding-left': `${mapPadding?.[this.props.deviceType]?.left}${mapPadding.unit}`,
-        'margin-top': `${mapMargin?.[this.props.deviceType]?.top}${mapMargin.unit}`,
-        'margin-right': `${mapMargin?.[this.props.deviceType]?.right}${mapMargin.unit}`,
-        'margin-bottom': `${mapMargin?.[this.props.deviceType]?.bottom}${mapMargin.unit}`,
-        'margin-left': `${mapMargin?.[this.props.deviceType]?.left}${mapMargin.unit}`,
-        'box-shadow': `${mapBoxShadow.horizontal}px ${mapBoxShadow.vertical}px ${mapBoxShadow.blur}px ${mapBoxShadow.color} ${mapBoxShadow?.position}`
+        'border-top-width': `${mapBorder === null || mapBorder === void 0 ? void 0 : (_mapBorder$borderWidt = mapBorder.borderWidth) === null || _mapBorder$borderWidt === void 0 ? void 0 : (_mapBorder$borderWidt2 = _mapBorder$borderWidt[this.props.deviceType]) === null || _mapBorder$borderWidt2 === void 0 ? void 0 : _mapBorder$borderWidt2.top}px`,
+        'border-right-width': `${mapBorder === null || mapBorder === void 0 ? void 0 : (_mapBorder$borderWidt3 = mapBorder.borderWidth) === null || _mapBorder$borderWidt3 === void 0 ? void 0 : (_mapBorder$borderWidt4 = _mapBorder$borderWidt3[this.props.deviceType]) === null || _mapBorder$borderWidt4 === void 0 ? void 0 : _mapBorder$borderWidt4.right}px`,
+        'border-bottom-width': `${mapBorder === null || mapBorder === void 0 ? void 0 : (_mapBorder$borderWidt5 = mapBorder.borderWidth) === null || _mapBorder$borderWidt5 === void 0 ? void 0 : (_mapBorder$borderWidt6 = _mapBorder$borderWidt5[this.props.deviceType]) === null || _mapBorder$borderWidt6 === void 0 ? void 0 : _mapBorder$borderWidt6.bottom}px`,
+        'border-left-width': `${mapBorder === null || mapBorder === void 0 ? void 0 : (_mapBorder$borderWidt7 = mapBorder.borderWidth) === null || _mapBorder$borderWidt7 === void 0 ? void 0 : (_mapBorder$borderWidt8 = _mapBorder$borderWidt7[this.props.deviceType]) === null || _mapBorder$borderWidt8 === void 0 ? void 0 : _mapBorder$borderWidt8.left}px`,
+        'border-top-left-radius': `${mapBorder === null || mapBorder === void 0 ? void 0 : (_mapBorder$borderRadi = mapBorder.borderRadius) === null || _mapBorder$borderRadi === void 0 ? void 0 : (_mapBorder$borderRadi2 = _mapBorder$borderRadi[this.props.deviceType]) === null || _mapBorder$borderRadi2 === void 0 ? void 0 : _mapBorder$borderRadi2.top}px`,
+        'border-top-right-radius': `${mapBorder === null || mapBorder === void 0 ? void 0 : (_mapBorder$borderRadi3 = mapBorder.borderRadius) === null || _mapBorder$borderRadi3 === void 0 ? void 0 : (_mapBorder$borderRadi4 = _mapBorder$borderRadi3[this.props.deviceType]) === null || _mapBorder$borderRadi4 === void 0 ? void 0 : _mapBorder$borderRadi4.right}px`,
+        'border-bottom-left-radius': `${mapBorder === null || mapBorder === void 0 ? void 0 : (_mapBorder$borderRadi5 = mapBorder.borderRadius) === null || _mapBorder$borderRadi5 === void 0 ? void 0 : (_mapBorder$borderRadi6 = _mapBorder$borderRadi5[this.props.deviceType]) === null || _mapBorder$borderRadi6 === void 0 ? void 0 : _mapBorder$borderRadi6.bottom}px`,
+        'border-bottom-right-radius': `${mapBorder === null || mapBorder === void 0 ? void 0 : (_mapBorder$borderRadi7 = mapBorder.borderRadius) === null || _mapBorder$borderRadi7 === void 0 ? void 0 : (_mapBorder$borderRadi8 = _mapBorder$borderRadi7[this.props.deviceType]) === null || _mapBorder$borderRadi8 === void 0 ? void 0 : _mapBorder$borderRadi8.left}px`,
+        'padding-top': `${mapPadding === null || mapPadding === void 0 ? void 0 : (_mapPadding$this$prop = mapPadding[this.props.deviceType]) === null || _mapPadding$this$prop === void 0 ? void 0 : _mapPadding$this$prop.top}${mapPadding.unit}`,
+        'padding-right': `${mapPadding === null || mapPadding === void 0 ? void 0 : (_mapPadding$this$prop2 = mapPadding[this.props.deviceType]) === null || _mapPadding$this$prop2 === void 0 ? void 0 : _mapPadding$this$prop2.right}${mapPadding.unit}`,
+        'padding-bottom': `${mapPadding === null || mapPadding === void 0 ? void 0 : (_mapPadding$this$prop3 = mapPadding[this.props.deviceType]) === null || _mapPadding$this$prop3 === void 0 ? void 0 : _mapPadding$this$prop3.bottom}${mapPadding.unit}`,
+        'padding-left': `${mapPadding === null || mapPadding === void 0 ? void 0 : (_mapPadding$this$prop4 = mapPadding[this.props.deviceType]) === null || _mapPadding$this$prop4 === void 0 ? void 0 : _mapPadding$this$prop4.left}${mapPadding.unit}`,
+        'margin-top': `${mapMargin === null || mapMargin === void 0 ? void 0 : (_mapMargin$this$props = mapMargin[this.props.deviceType]) === null || _mapMargin$this$props === void 0 ? void 0 : _mapMargin$this$props.top}${mapMargin.unit}`,
+        'margin-right': `${mapMargin === null || mapMargin === void 0 ? void 0 : (_mapMargin$this$props2 = mapMargin[this.props.deviceType]) === null || _mapMargin$this$props2 === void 0 ? void 0 : _mapMargin$this$props2.right}${mapMargin.unit}`,
+        'margin-bottom': `${mapMargin === null || mapMargin === void 0 ? void 0 : (_mapMargin$this$props3 = mapMargin[this.props.deviceType]) === null || _mapMargin$this$props3 === void 0 ? void 0 : _mapMargin$this$props3.bottom}${mapMargin.unit}`,
+        'margin-left': `${mapMargin === null || mapMargin === void 0 ? void 0 : (_mapMargin$this$props4 = mapMargin[this.props.deviceType]) === null || _mapMargin$this$props4 === void 0 ? void 0 : _mapMargin$this$props4.left}${mapMargin.unit}`,
+        'box-shadow': `${mapBoxShadow.horizontal}px ${mapBoxShadow.vertical}px ${mapBoxShadow.blur}px ${mapBoxShadow.color} ${mapBoxShadow === null || mapBoxShadow === void 0 ? void 0 : mapBoxShadow.position}`
       };
       return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.generateCss)(styles);
     };
@@ -38816,11 +38855,7 @@ class edit extends Component {
       style: {
         height: height + "px"
       }
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
-      dangerouslySetInnerHTML: {
-        __html: loadStyles()
-      }
-    }))];
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, loadStyles()))];
   }
 
 }
@@ -38930,8 +38965,8 @@ function save(props) {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `${className}__wrap ${blockId} ${hideDesktop || ''} ${hideTablet || ''} ${hideMobile || ''}`,
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_1__.filterJsCss)({
-      borderStyle: mapBorder?.borderType,
-      borderColor: mapBorder?.borderColor,
+      borderStyle: mapBorder === null || mapBorder === void 0 ? void 0 : mapBorder.borderType,
+      borderColor: mapBorder === null || mapBorder === void 0 ? void 0 : mapBorder.borderColor,
       boxShadow: `${mapBoxShadow.horizontal}px ${mapBoxShadow.vertical}px ${mapBoxShadow.blur}px ${mapBoxShadow.color} ${mapBoxShadow.position}`
     })
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -38947,25 +38982,21 @@ function save(props) {
     className: `${className}__title`,
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_1__.filterJsCss)({
       color: titleColor,
-      fontStyle: titleTypography?.fontStyle,
-      fontFamily: titleTypography?.fontFamily,
-      fontWeight: titleTypography?.fontWeight,
-      letterSpacing: titleTypography?.letterSpacing,
-      textDecoration: titleTypography?.textDecoration,
-      textTransform: titleTypography?.textTransform,
-      lineHeight: `${titleTypography?.lineHeight}px`
+      fontStyle: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontStyle,
+      fontFamily: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily,
+      fontWeight: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontWeight,
+      textDecoration: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textDecoration,
+      textTransform: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textTransform
     })
   }, markerTitle), markerDesc && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `${className}__desc`,
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_1__.filterJsCss)({
       color: descColor,
-      fontStyle: descriptionTypography?.fontStyle,
-      fontFamily: descriptionTypography?.fontFamily,
-      fontWeight: descriptionTypography?.fontWeight,
-      letterSpacing: descriptionTypography?.letterSpacing,
-      textDecoration: descriptionTypography?.textDecoration,
-      textTransform: descriptionTypography?.textTransform,
-      lineHeight: `${descriptionTypography?.lineHeight}px`
+      fontStyle: descriptionTypography === null || descriptionTypography === void 0 ? void 0 : descriptionTypography.fontStyle,
+      fontFamily: descriptionTypography === null || descriptionTypography === void 0 ? void 0 : descriptionTypography.fontFamily,
+      fontWeight: descriptionTypography === null || descriptionTypography === void 0 ? void 0 : descriptionTypography.fontWeight,
+      textDecoration: descriptionTypography === null || descriptionTypography === void 0 ? void 0 : descriptionTypography.textDecoration,
+      textTransform: descriptionTypography === null || descriptionTypography === void 0 ? void 0 : descriptionTypography.textTransform
     })
   }, markerDesc)))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("script", null, `window.addEventListener('load',function(){
                 if( typeof google === 'undefined' ) return;
@@ -54311,7 +54342,7 @@ const videoBoxAttrs = {
         "Mobile": "",
         "unit": "px"
       },
-      'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+      'fontFamily': __('Default', 'premium-blocks-for-gutenberg'),
       'fontSize': {
         'Desktop': "",
         "Tablet": "",

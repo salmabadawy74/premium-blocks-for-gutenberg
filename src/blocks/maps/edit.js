@@ -560,11 +560,7 @@ class edit extends Component {
                 <div className="map-container" style={{
                     height: height + "px"
                 }} />
-                <style
-                    dangerouslySetInnerHTML={{
-                        __html: loadStyles()
-                    }}
-                />
+                <style>{loadStyles()}</style>
             </div>
         ];
     }

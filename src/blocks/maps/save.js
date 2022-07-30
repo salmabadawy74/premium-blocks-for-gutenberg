@@ -55,10 +55,8 @@ export default function save(props) {
                                     fontStyle: titleTypography?.fontStyle,
                                     fontFamily: titleTypography?.fontFamily,
                                     fontWeight: titleTypography?.fontWeight,
-                                    letterSpacing: titleTypography?.letterSpacing,
                                     textDecoration: titleTypography?.textDecoration,
                                     textTransform: titleTypography?.textTransform,
-                                    lineHeight: `${titleTypography?.lineHeight}px`,
                                 })}
                             >
                                 {markerTitle}
@@ -72,10 +70,8 @@ export default function save(props) {
                                     fontStyle: descriptionTypography?.fontStyle,
                                     fontFamily: descriptionTypography?.fontFamily,
                                     fontWeight: descriptionTypography?.fontWeight,
-                                    letterSpacing: descriptionTypography?.letterSpacing,
                                     textDecoration: descriptionTypography?.textDecoration,
                                     textTransform: descriptionTypography?.textTransform,
-                                    lineHeight: `${descriptionTypography?.lineHeight}px`,
                                 })}
                             >
                                 {markerDesc}
