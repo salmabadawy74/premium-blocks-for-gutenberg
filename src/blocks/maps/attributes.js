@@ -125,37 +125,57 @@ const attributes = {
     titleTypography: {
         type: "object",
         default: {
-            "fontWeight": '',
-            'fontStyle': '',
-            'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': '',
-            'lineHeight': '',
-            'textDecoration': '',
-            'fontSize': {
-                'Desktop': '',
-                "Tablet": '',
-                "Mobile": '',
-                "unit": 'px'
-            }
+            fontWeight: "400",
+            fontStyle: "",
+            letterSpacing: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            'fontFamily': __('Default', 'premium-blocks-for-gutenberg'),
+            lineHeight: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            textDecoration: "",
+            textTransform: "",
+            fontSize: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
         }
     },
     descriptionTypography: {
         type: "object",
         default: {
-            "fontWeight": '',
-            'fontStyle': '',
-            'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': '',
-            'lineHeight': '',
-            'textDecoration': '',
-            'fontSize': {
-                'Desktop': '',
-                "Tablet": '',
-                "Mobile": '',
-                "unit": 'px'
-            }
+            fontWeight: "400",
+            fontStyle: "",
+            letterSpacing: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            'fontFamily': __('Default', 'premium-blocks-for-gutenberg'),
+            lineHeight: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
+            textDecoration: "",
+            textTransform: "",
+            fontSize: {
+                Desktop: "",
+                Tablet: "",
+                Mobile: "",
+                unit: "px",
+            },
         }
     },
     titleMargin: {
@@ -305,7 +325,7 @@ const attributes = {
     mapBorder: {
         type: "object",
         default: {
-            "borderType": "",
+            "borderType": "none",
             "borderColor": "",
             "borderWidth": {
                 Desktop: {
@@ -353,7 +373,7 @@ const attributes = {
         type: "object",
         default: {
             'color': '',
-            'blur': '',
+            'blur': '10',
             'horizontal': '',
             'vertical': '',
             'position': '',

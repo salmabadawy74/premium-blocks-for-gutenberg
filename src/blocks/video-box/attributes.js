@@ -132,7 +132,7 @@ const videoBoxAttrs = {
                 "Mobile": "",
                 "unit": "px"
             },
-            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+            'fontFamily': __('Default', 'premium-blocks-for-gutenberg'),
             'fontSize': {
                 'Desktop': "",
                 "Tablet": "",
