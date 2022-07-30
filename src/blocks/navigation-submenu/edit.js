@@ -540,9 +540,9 @@ function NavigationSubmenuEdit({
 			},
 		},
 		{
-			allowedBlocks: megaMenu ? 'all' : ALLOWED_BLOCKS,
+			allowedBlocks: megaMenu ? true : ALLOWED_BLOCKS,
 			__experimentalDefaultBlock: DEFAULT_BLOCK,
-			__experimentalDirectInsert: true,
+			// __experimentalDirectInsert: true,
 
 			// Ensure block toolbar is not too far removed from item
 			// being edited.
