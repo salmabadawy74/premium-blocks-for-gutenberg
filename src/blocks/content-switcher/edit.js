@@ -61,7 +61,6 @@ function Edit(props) {
             blockId:
                 "premium-content-switcher-" + generateBlockId(props.clientId),
         });
-        setAttributes({ classMigrate: true });
         setClickEvents();
     }, []);
 

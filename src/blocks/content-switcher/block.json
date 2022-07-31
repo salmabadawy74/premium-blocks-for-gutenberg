@@ -21,10 +21,7 @@
         "blockId": {
             "type": "string"
         },
-        "classMigrate": {
-            "type": "boolean",
-            "default": false
-        },
+ 
         "align": {
             "type": "object",
             "default": {
