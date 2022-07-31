@@ -730,10 +730,6 @@ const attributes = {
       lottieURL: '',
       loopLottie: true,
       reverseLottie: false,
-      // iconSize: '',
-      // iconSizeTablet: '',
-      // iconSizeMobile: '',
-      // iconSizeUnit: 'px',
       titleText: __('Modal Box Title', 'premium-blocks-for-gutenberg'),
       showUpperClose: true,
       showLowerClose: true,
@@ -750,7 +746,6 @@ const attributes = {
       showIcon: false,
       icon: '',
       iconPosition: 'before',
-      // iconSize: '50',
       iconSpacing: '',
       btnSize: 'md',
       triggerImgID: '',
@@ -760,10 +755,6 @@ const attributes = {
       triggerLoopLottie: true,
       triggerReverseLottie: false,
       triggerPlayLottie: false,
-      // imageWidth: '',
-      // imageWidthTablet: '',
-      // imageWidthMobile: '',
-      // align: 'center',
       delayTime: 1
     }]
   },
@@ -775,32 +766,19 @@ const attributes = {
       iconColor: '',
       iconHoverColor: '',
       triggerBack: '',
-      triggerHoverBack: '' // blur: '',
-      // bright: '',
-      // contrast: '',
-      // saturation: '',
-      // hue: '',
-      // blurH: '',
-      // brightH: '',
-      // contrastH: '',
-      // saturationH: '',
-      // hueH: ''
-
+      triggerHoverBack: ''
     }]
   },
   headerStyles: {
     type: 'array',
     default: [{
       color: '',
-      backColor: '' // headerSizeUnit: 'px',
-
+      backColor: ''
     }]
   },
   upperStyles: {
     type: "array",
     default: [{
-      // iconWidth: '',
-      // iconWidthUnit: 'px',
       color: '',
       backColor: ''
     }]
@@ -808,8 +786,6 @@ const attributes = {
   lowerStyles: {
     type: 'array',
     default: [{
-      // iconWidth: '',
-      // iconWidthUnit: 'px',
       color: '',
       backColor: ''
     }]
@@ -821,14 +797,6 @@ const attributes = {
       contentText: __('Modal Box Content', 'premium-blocks-for-gutenberg'),
       textColor: '',
       textBackColor: '',
-      // modalWidth: '',
-      // modalWidthTablet: '',
-      // modalWidthMobile: '',
-      // modalWidthUnit: 'px',
-      // modalHeight: '',
-      // modalHeightTablet: '',
-      // modalHeightMobile: '',
-      // modalHeightUnit: 'px',
       footerBackColor: ''
     }]
   },
@@ -880,9 +848,6 @@ const attributes = {
       'vertical': '0'
     }
   },
-  // backgroundType: {
-  //     type: "string"
-  // },
   triggerPadding: {
     type: "object",
     default: {
@@ -1412,7 +1377,7 @@ const attributes = {
       "Desktop": '',
       'Tablet': '',
       'Mobile': '',
-      'unit': ''
+      'unit': 'px'
     }
   },
   modalWidth: {
@@ -1521,6 +1486,9 @@ __webpack_require__.r(__webpack_exports__);
 const {
   __
 } = wp.i18n;
+const {
+  InnerBlocks
+} = wp.blockEditor;
 
 const attributes = {
   block_id: {
@@ -2539,6 +2507,12 @@ const deprecated = [{
 
   migrate: attributes => {
     let newAttributes = {
+      blockId: attributes.block_id ? `premium-modal-box-${attributes.block_id.split('-')[6]}` : '',
+      align: {
+        "Desktop": attributes.triggerSettings[0].align,
+        "Tablet": attributes.triggerSettings[0].align,
+        "Mobile": attributes.triggerSettings[0].align
+      },
       triggerPadding: {
         "Desktop": {
           top: attributes.triggerPaddingT || '',
@@ -2948,9 +2922,19 @@ const deprecated = [{
         "fontWeight": attributes.triggerStyles[0].triggerWeight || '',
         'fontStyle': attributes.triggerStyles[0].triggerStyle || '',
         'textTransform': attributes.triggerStyles[0].triggerUpper || '',
-        'letterSpacing': attributes.triggerStyles[0].triggerSpacing || '',
+        'letterSpacing': {
+          'Desktop': attributes.triggerStyles[0].triggerSpacing || '',
+          "Tablet": attributes.triggerStyles[0].triggerSpacing || '',
+          "Mobile": attributes.triggerStyles[0].triggerSpacing || '',
+          "unit": 'px'
+        },
         'fontFamily': attributes.triggerStyles[0].triggerFamily || '',
-        'lineHeight': '',
+        'lineHeight': {
+          'Desktop': '',
+          "Tablet": '',
+          "Mobile": '',
+          "unit": 'px'
+        },
         'textDecoration': '',
         'fontSize': {
           'Desktop': attributes.triggerStyles[0].triggerSize || '',
@@ -2963,9 +2947,19 @@ const deprecated = [{
         "fontWeight": attributes.headerStyles[0].headerWeight || '',
         'fontStyle': attributes.headerStyles[0].headerStyle || '',
         'textTransform': attributes.headerStyles[0].headerUpper || '',
-        'letterSpacing': attributes.headerStyles[0].headerSpacing || '',
+        'letterSpacing': {
+          'Desktop': attributes.headerStyles[0].headerSpacing || '',
+          "Tablet": attributes.headerStyles[0].headerSpacing || '',
+          "Mobile": attributes.headerStyles[0].headerSpacing || '',
+          "unit": 'px'
+        },
         'fontFamily': attributes.headerStyles[0].headerFamily || '',
-        'lineHeight': '',
+        'lineHeight': {
+          'Desktop': '',
+          "Tablet": '',
+          "Mobile": '',
+          "unit": 'px'
+        },
         'textDecoration': '',
         'fontSize': {
           'Desktop': attributes.headerStyles[0].headerSize || '',
@@ -2978,9 +2972,19 @@ const deprecated = [{
         "fontWeight": attributes.lowerStyles[0].lowerSizeWeight || '',
         'fontStyle': attributes.lowerStyles[0].lowerSizeStyle || '',
         'textTransform': '',
-        'letterSpacing': attributes.lowerStyles[0].lowerSizeSpacing || '',
+        'letterSpacing': {
+          'Desktop': attributes.lowerStyles[0].lowerSizeSpacing || '',
+          "Tablet": attributes.lowerStyles[0].lowerSizeSpacing || '',
+          "Mobile": attributes.lowerStyles[0].lowerSizeSpacing || '',
+          "unit": 'px'
+        },
         'fontFamily': '',
-        'lineHeight': '',
+        'lineHeight': {
+          'Desktop': '',
+          "Tablet": '',
+          "Mobile": '',
+          "unit": 'px'
+        },
         'textDecoration': '',
         'fontSize': {
           'Desktop': attributes.lowerStyles[0].lowerSizeSize || '',
@@ -2993,9 +2997,19 @@ const deprecated = [{
         "fontWeight": attributes.modalStyles[0].modalWeight || '',
         'fontStyle': attributes.modalStyles[0].modalStyle || '',
         'textTransform': attributes.modalStyles[0].modalUpper || '',
-        'letterSpacing': attributes.modalStyles[0].modalSpacing || '',
+        'letterSpacing': {
+          'Desktop': attributes.modalStyles[0].modalSpacing || '',
+          "Tablet": attributes.modalStyles[0].modalSpacing || '',
+          "Mobile": attributes.modalStyles[0].modalSpacing || '',
+          "unit": 'px'
+        },
         'fontFamily': attributes.modalStyles[0].modalFamily || '',
-        'lineHeight': '',
+        'lineHeight': {
+          'Desktop': '',
+          "Tablet": '',
+          "Mobile": '',
+          "unit": 'px'
+        },
         'textDecoration': '',
         'fontSize': {
           'Desktop': attributes.modalStyles[0].modalSize || '',
@@ -3027,6 +3041,41 @@ const deprecated = [{
         'Tablet': attributes.modalStyles[0].modalHeightTablet || '',
         'Mobile': attributes.modalStyles[0].modalHeightMobile || '',
         'unit': attributes.modalStyles[0].modalHeightUnit || 'px'
+      },
+      triggerFilter: {
+        'contrast': attributes.triggerStyles[0].contrast,
+        'blur': attributes.triggerStyles[0].blur,
+        'bright': attributes.triggerStyles[0].bright,
+        'saturation': attributes.triggerStyles[0].saturation,
+        'hue': attributes.triggerStyles[0].hue
+      },
+      triggerHoverFilter: {
+        'contrast': attributes.triggerStyles[0].contrastH,
+        'blur': attributes.triggerStyles[0].blurH,
+        'bright': attributes.triggerStyles[0].brightH,
+        'saturation': attributes.triggerStyles[0].saturationH,
+        'hue': attributes.triggerStyles[0].hueH
+      },
+      hideDesktop: '',
+      hideTablet: '',
+      hideMobile: '',
+      triggerIconSize: {
+        "Desktop": attributes.triggerSettings[0].iconSize || '',
+        'Tablet': '',
+        'Mobile': '',
+        'unit': 'px'
+      },
+      upperIconWidth: {
+        "Desktop": attributes.upperStyles[0].iconWidth || '',
+        'Tablet': '',
+        'Mobile': '',
+        'unit': attributes.upperStyles[0].iconWidthUnit || 'px'
+      },
+      lowerIconWidth: {
+        "Desktop": attributes.upperStyles[0].lowerStyles || '',
+        'Tablet': '',
+        'Mobile': '',
+        'unit': attributes.upperStyles[0].lowerStyles || 'px'
       }
     };
     return Object.assign(attributes, newAttributes);
@@ -3440,6 +3489,21 @@ const edit = props => {
     });
   };
 
+  const saveModalStyles = value => {
+    const newUpdate = modalStyles.map((item, modalIndex) => {
+      if (0 === modalIndex) {
+        item = { ...item,
+          ...value
+        };
+      }
+
+      return item;
+    });
+    setAttributes({
+      modalStyles: newUpdate
+    });
+  };
+
   const loadStyles = () => {
     var _triggerBorderH$borde, _triggerBorderH$borde2, _triggerBorderH$borde3, _triggerBorderH$borde4, _triggerBorderH$borde5, _triggerBorderH$borde6, _triggerBorderH$borde7, _triggerBorderH$borde8, _triggerBorderH$borde9, _triggerBorderH$borde10, _triggerBorderH$borde11, _triggerBorderH$borde12, _triggerBorderH$borde13, _triggerBorderH$borde14, _triggerBorderH$borde15, _triggerBorderH$borde16, _triggerBorderH$borde17, _triggerBorderH$borde18, _triggerBorderH$borde19, _triggerBorderH$borde20, _triggerBorderH$borde21, _triggerBorderH$borde22, _triggerBorderH$borde23, _triggerBorderH$borde24;
 
@@ -3502,7 +3566,6 @@ const edit = props => {
   const headerIconSize = iconSize[currentDevice];
   const modalWidthValue = modalWidth[currentDevice];
   const modalMaxHeight = modalHeight[currentDevice];
-  const triggerSize = imageWidth[currentDevice];
   let loadTriggerGoogleFonts;
   let loadHeaderGoogleFonts;
   let loadModalGoogleFonts;
@@ -3558,7 +3621,9 @@ const edit = props => {
   }, triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
     className: ` premium-modal-box-icon ${triggerSettings[0].icon}`,
     style: {
-      fontSize: `${triggerIconSize[currentDevice]}${triggerIconSize.unit} !important`,
+      fontSize: triggerIconSize[currentDevice] + triggerIconSize.unit,
+      width: triggerIconSize[currentDevice] + triggerIconSize.unit,
+      height: triggerIconSize[currentDevice] + triggerIconSize.unit,
       marginRight: `${triggerSettings[0].iconSpacing}px`,
       color: triggerStyles[0].iconColor
     }
@@ -3576,7 +3641,9 @@ const edit = props => {
   }, triggerSettings[0].btnText), triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "after" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
     className: ` premium-modal-box-icon ${triggerSettings[0].icon}`,
     style: {
-      fontSize: `${triggerIconSize[currentDevice]}${triggerIconSize.unit} !important`,
+      fontSize: triggerIconSize[currentDevice] + triggerIconSize.unit,
+      width: triggerIconSize[currentDevice] + triggerIconSize.unit,
+      height: triggerIconSize[currentDevice] + triggerIconSize.unit,
       marginLeft: `${triggerSettings[0].iconSpacing}px`,
       color: triggerStyles[0].iconColor
     }
@@ -3585,8 +3652,8 @@ const edit = props => {
     onClick: () => setOpenModal(true),
     src: triggerSettings[0].triggerImgURL,
     style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__.borderCss)(triggerBorder, currentDevice),
-      width: `${triggerSize}px`,
-      height: `${triggerSize}px`,
+      width: `${imageWidth[currentDevice]}${imageWidth.unit}`,
+      height: `${imageWidth[currentDevice]}${imageWidth.unit}`,
       boxShadow: `${triggerShadow.horizontal}px ${triggerShadow.vertical}px ${triggerShadow.blur}px ${triggerShadow.color} ${triggerShadow.position}`
     }
   }) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(MediaPlaceholder, {
@@ -3619,8 +3686,8 @@ const edit = props => {
     onClick: () => setOpenModal(true),
     className: `premium-lottie-animation`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_lottie_with_segments__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    height: triggerSize,
-    width: triggerSize,
+    height: `${imageWidth[currentDevice]}${imageWidth.unit}`,
+    width: `${imageWidth[currentDevice]}${imageWidth.unit}`,
     options: {
       loop: triggerSettings[0].triggerLoopLottie,
       path: triggerSettings[0].lottieTriggerURL,
@@ -3677,7 +3744,9 @@ const edit = props => {
   }, contentStyles[0].iconType === "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
     className: contentStyles[0].contentIcon,
     style: {
-      fontSize: `${headerIconSize}${iconSize.unit}`
+      fontSize: `${headerIconSize}${iconSize.unit}`,
+      width: `${headerIconSize}${iconSize.unit}`,
+      height: `${headerIconSize}${iconSize.unit}`
     }
   }), contentStyles[0].iconType === "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: contentStyles[0].contentImgURL,
@@ -3721,11 +3790,18 @@ const edit = props => {
     style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__.paddingCss)(modalPadding, currentDevice),
       background: modalStyles[0].textBackColor
     }
-  }, modalStyles[0].contentType === "text" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+  }, modalStyles[0].contentType === "text" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
+    tagName: 'p',
+    className: `premium-person__name`,
+    value: modalStyles[0].contentText,
+    onChange: value => saveModalStyles({
+      contentText: value
+    }),
     style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__.typographyCss)(modalTypography, currentDevice),
       color: modalStyles[0].textColor
-    }
-  }, modalStyles[0].contentText) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InnerBlocks, null)), contentStyles[0].showLowerClose && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    },
+    keepPlaceholderOnFocus: true
+  }) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InnerBlocks, null)), contentStyles[0].showLowerClose && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-modal-box-modal-footer`,
     style: {
       backgroundColor: modalStyles[0].footerBackColor
@@ -4345,7 +4421,13 @@ const Inspector = _ref => {
     title: __("Header", 'premium-blocks-for-gutenberg'),
     className: "premium-panel-body",
     initialOpen: false
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
+    label: __("Title", 'premium-blocks-for-gutenberg'),
+    value: contentStyles[0].titleText,
+    onChange: value => saveContentStyle({
+      titleText: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
     label: __('Icon Type', 'premium-blocks-for-gutenberg'),
     options: [{
       label: __("None", "premium-blocks-for-gutenberg"),
@@ -4851,6 +4933,9 @@ __webpack_require__.r(__webpack_exports__);
 const {
   InnerBlocks
 } = wp.blockEditor;
+const {
+  RichText
+} = wp.editor;
 
 const save = props => {
   const {
@@ -4879,16 +4964,11 @@ const save = props => {
     headerTypography,
     lowerTypography,
     modalTypography,
-    iconSize,
-    imageWidth,
-    modalWidth,
-    modalHeight,
     triggerFilter,
     triggerHoverFilter,
     hideDesktop,
     hideTablet,
-    hideMobile,
-    align
+    hideMobile
   } = props.attributes;
   const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-modal-box", {
     ' premium-desktop-hidden': hideDesktop,
@@ -4901,15 +4981,7 @@ const save = props => {
     styles[` .${blockId} .premium-modal-trigger-container button.premium-modal-trigger-btn:hover`] = {
       'border-color': `${triggerBorderH && triggerBorderH.borderColor} !important`,
       'background-color': `${triggerStyles[0].triggerHoverBack} !important`,
-      'border-style': `${triggerBorderH && triggerBorderH.borderType} !important` // 'border-top-width': `${triggerBorderH && triggerBorderH.borderWidth[currentDevice].top} px!important`,
-      // 'border-right-width': `${triggerBorderH && triggerBorderH.borderWidth[currentDevice].right} px!important`,
-      // 'border-bottom-width': `${triggerBorderH && triggerBorderH.borderWidth[currentDevice].bottom} px!important`,
-      // 'border-left-width': `${triggerBorderH && triggerBorderH.borderWidth[currentDevice].width} px!important`,
-      // 'border-top-left-radius': `${triggerBorderH?.borderRadius?.[currentDevice]?.top || 0}px!important`,
-      // 'border-top-right-radius': `${triggerBorderH?.borderRadius?.[currentDevice]?.right || 0}px!important`,
-      // 'border-bottom-left-radius': `${triggerBorderH?.borderRadius?.[currentDevice]?.bottom || 0}px!important`,
-      // 'border-bottom-right-radius': `${triggerBorderH?.borderRadius?.[currentDevice]?.left || 0}px!important`,
-
+      'border-style': `${triggerBorderH && triggerBorderH.borderType} !important`
     };
     styles[` .${blockId} .premium-modal-trigger-container button.premium-modal-trigger-btn:hover i`] = {
       'color': `${triggerStyles[0].iconHoverColor} !important`
@@ -4928,27 +5000,11 @@ const save = props => {
     };
     styles[` .${blockId} .premium-modal-trigger-container img:hover`] = {
       'border-color': `${triggerBorderH && triggerBorderH.borderColor} !important`,
-      'border-style': `${triggerBorderH && triggerBorderH.borderType} !important` // 'border-top-width': `${triggerBorderH && triggerBorderH.borderWidth[currentDevice].top} px!important`,
-      // 'border-right-width': `${triggerBorderH && triggerBorderH.borderWidth[currentDevice].right} px!important`,
-      // 'border-bottom-width': `${triggerBorderH && triggerBorderH.borderWidth[currentDevice].bottom} px!important`,
-      // 'border-left-width': `${triggerBorderH && triggerBorderH.borderWidth[currentDevice].width} px!important`,
-      // 'border-top-left-radius': `${triggerBorderH?.borderRadius?.[currentDevice]?.top || 0}px!important`,
-      // 'border-top-right-radius': `${triggerBorderH?.borderRadius?.[currentDevice]?.right || 0}px!important`,
-      // 'border-bottom-left-radius': `${triggerBorderH?.borderRadius?.[currentDevice]?.bottom || 0}px!important`,
-      // 'border-bottom-right-radius': `${triggerBorderH?.borderRadius?.[currentDevice]?.left || 0}px!important`,
-
+      'border-style': `${triggerBorderH && triggerBorderH.borderType} !important`
     };
     styles[` .${blockId} .premium-modal-trigger-container:hover .premium-modal-trigger-text`] = {
       'border-color': `${triggerBorderH && triggerBorderH.borderColor} !important`,
-      'border-style': `${triggerBorderH && triggerBorderH.borderType} !important` // 'border-top-width': `${triggerBorderH && triggerBorderH.borderWidth[currentDevice].top} px!important`,
-      // 'border-right-width': `${triggerBorderH && triggerBorderH.borderWidth[currentDevice].right} px!important`,
-      // 'border-bottom-width': `${triggerBorderH && triggerBorderH.borderWidth[currentDevice].bottom} px!important`,
-      // 'border-left-width': `${triggerBorderH && triggerBorderH.borderWidth[currentDevice].width} px!important`,
-      // 'border-top-left-radius': `${triggerBorderH?.borderRadius?.[currentDevice]?.top || 0}px!important`,
-      // 'border-top-right-radius': `${triggerBorderH?.borderRadius?.[currentDevice]?.right || 0}px!important`,
-      // 'border-bottom-left-radius': `${triggerBorderH?.borderRadius?.[currentDevice]?.bottom || 0}px!important`,
-      // 'border-bottom-right-radius': `${triggerBorderH?.borderRadius?.[currentDevice]?.left || 0}px!important`,
-
+      'border-style': `${triggerBorderH && triggerBorderH.borderType} !important`
     };
     return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.generateCss)(styles);
   };
@@ -4961,50 +5017,47 @@ const save = props => {
       __html: loadStyles()
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `premium-modal-trigger-container` // style={{ textAlign: align }}
-
+    className: `premium-modal-trigger-container`
   }, triggerSettings[0].triggerType === "button" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    className: ` premium-modal-trigger-btn premium-button__${triggerSettings[0].btnSize} `,
-    style: {
+    className: `premium-modal-trigger-btn premium-button__${triggerSettings[0].btnSize} `,
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       backgroundColor: triggerStyles[0].triggerBack,
       borderStyle: triggerBorder.borderType,
       borderColor: triggerBorder.borderColor,
       boxShadow: `${triggerShadow.horizontal}px ${triggerShadow.vertical}px ${triggerShadow.blur}px ${triggerShadow.color} ${triggerShadow.position}`
-    }
+    })
   }, triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
-    className: ` premium-modal-box-icon ${triggerSettings[0].icon}`,
-    style: {
-      // fontSize: `${triggerIconSize[currentDevice]}${triggerIconSize.unit} !important`,
+    className: `premium-modal-box-icon ${triggerSettings[0].icon}`,
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       marginRight: `${triggerSettings[0].iconSpacing}px`,
       color: triggerStyles[0].iconColor
-    }
+    })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    style: {
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       color: triggerStyles[0].color,
       fontFamily: triggerTypography.fontFamily,
       fontWeight: triggerTypography.fontWeight,
       fontStyle: triggerTypography.fontStyle,
       textDecoration: triggerTypography === null || triggerTypography === void 0 ? void 0 : triggerTypography.textDecoration,
       textTransform: triggerTypography === null || triggerTypography === void 0 ? void 0 : triggerTypography.textTransform
-    }
+    })
   }, triggerSettings[0].btnText), triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "after" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
     className: `premium-modal-box-icon ${triggerSettings[0].icon}`,
-    style: {
-      // fontSize: `${triggerIconSize[currentDevice]}${triggerIconSize.unit} !important`,
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       marginLeft: `${triggerSettings[0].iconSpacing}px`,
       color: triggerStyles[0].iconColor
-    }
+    })
   })), triggerSettings[0].triggerType === "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: triggerSettings[0].triggerImgURL,
     className: `premium-modal-trigger-img`,
-    style: {
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       borderStyle: triggerBorder.borderType,
       borderColor: triggerBorder.borderColor,
       boxShadow: `${triggerShadow.horizontal}px ${triggerShadow.vertical}px ${triggerShadow.blur}px ${triggerShadow.color} ${triggerShadow.position}`
-    }
+    })
   }), triggerSettings[0].triggerType === "text" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: `premium-modal-trigger-text`,
-    style: {
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       color: triggerStyles[0].color,
       borderStyle: triggerBorder.borderType,
       borderColor: triggerBorder.borderColor,
@@ -5014,7 +5067,7 @@ const save = props => {
       fontStyle: triggerTypography.fontStyle,
       textDecoration: triggerTypography === null || triggerTypography === void 0 ? void 0 : triggerTypography.textDecoration,
       textTransform: triggerTypography === null || triggerTypography === void 0 ? void 0 : triggerTypography.textTransform
-    }
+    })
   }, triggerSettings[0].triggerText), triggerSettings[0].triggerType === "lottie" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-lottie-animation`,
     "data-lottieurl": triggerSettings[0].lottieTriggerURL,
@@ -5030,39 +5083,38 @@ const save = props => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     role: "presentation",
     className: "premium-popup__modal_wrap_overlay",
-    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.gradientBackground)(modalBackground)
-    }
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({ ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.gradientBackground)(modalBackground)
+    })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-popup__modal_content animated animation-${contentStyles[0].animationType} animation-${contentStyles[0].animationSpeed}`,
     "data-delay": triggerSettings[0].delayTime,
     "data-animation": `${contentStyles[0].animationType} ${contentStyles[0].animationSpeed}`,
-    style: {
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       borderStyle: `${modalBorder.borderType}`,
       borderColor: `${modalBorder.borderColor}`,
       boxShadow: `${modalShadow.horizontal}px ${modalShadow.vertical}px ${modalShadow.blur}px ${modalShadow.color} ${modalShadow.position}`
-    }
+    })
   }, contentStyles[0].showHeader && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-modal-box-modal-header`,
-    style: {
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       backgroundColor: headerStyles[0].backColor,
       borderStyle: headerBorder.borderType,
       borderColor: `${headerBorder.borderColor}`
-    }
+    })
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
     className: `premium-modal-box-modal-title`,
-    style: {
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       color: headerStyles[0].color,
       fontFamily: headerTypography.fontFamily,
       fontWeight: headerTypography.fontWeight,
       fontStyle: headerTypography.fontStyle,
       textDecoration: headerTypography === null || headerTypography === void 0 ? void 0 : headerTypography.textDecoration,
       textTransform: headerTypography === null || headerTypography === void 0 ? void 0 : headerTypography.textTransform
-    }
+    })
   }, contentStyles[0].iconType === "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
     className: contentStyles[0].contentIcon
   }), contentStyles[0].iconType === "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-    src: contentStyles[0].contentImgURL,
-    style: {}
+    src: contentStyles[0].contentImgURL
   }), contentStyles[0].iconType === "lottie" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-lottie-animation`,
     "data-lottieurl": contentStyles[0].lottieURL,
@@ -5071,54 +5123,56 @@ const save = props => {
     "data-trigger": "none"
   }), contentStyles[0].titleText), contentStyles[0].showUpperClose && contentStyles[0].showHeader && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-modal-box-close-button-container",
-    style: {
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       backgroundColor: `${upperStyles[0].backColor}`,
       borderStyle: `${upperBorder.borderType}`,
       borderColor: `${upperBorder.borderColor}`
-    }
+    })
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     type: "button",
     className: "premium-modal-box-modal-close close-button",
-    style: {
-      // fontSize: `${upperIconWidth[currentDevice]}${upperIconWidth.unit}`,
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       color: `${upperStyles[0].color}`
-    },
+    }),
     "data-dismiss": "premium-modal"
   }, "\xD7"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-modal-box-modal-body`,
-    style: {
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       background: modalStyles[0].textBackColor
-    }
-  }, modalStyles[0].contentType === "text" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    style: {
+    })
+  }, modalStyles[0].contentType === "text" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
+    tagName: 'p',
+    className: `premium-person__name`,
+    value: modalStyles[0].contentText,
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       color: modalStyles[0].textColor,
       fontFamily: modalTypography.fontFamily,
       fontWeight: modalTypography.fontWeight,
       fontStyle: modalTypography.fontStyle,
       textDecoration: modalTypography === null || modalTypography === void 0 ? void 0 : modalTypography.textDecoration,
       textTransform: modalTypography === null || modalTypography === void 0 ? void 0 : modalTypography.textTransform
-    }
-  }, modalStyles[0].contentText) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InnerBlocks.Content, null)), contentStyles[0].showLowerClose && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    }),
+    keepPlaceholderOnFocus: true
+  }) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InnerBlocks.Content, null)), contentStyles[0].showLowerClose && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-modal-box-modal-footer`,
-    style: {
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       backgroundColor: modalStyles[0].footerBackColor
-    }
+    })
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: `premium-modal-box-modal-lower-close close-button`,
     role: "button",
     "data-dismiss": "premium-modal",
-    style: {
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       fontWeight: lowerTypography.fontWeight,
       fontFamily: lowerTypography.fontFamily,
       fontStyle: lowerTypography.fontStyle,
       textDecoration: lowerTypography === null || lowerTypography === void 0 ? void 0 : lowerTypography.textDecoration,
       textTransform: lowerTypography === null || lowerTypography === void 0 ? void 0 : lowerTypography.textTransform,
-      // width: `${lowerIconWidth[current]}${lowerIconWidth.unit}`,
       color: `${lowerStyles[0].color}`,
       backgroundColor: `${lowerStyles[0].backColor}`,
       borderStyle: `${lowerBorder.borderType}`,
       borderColor: `${lowerBorder.borderColor}`
-    }
+    })
   }, contentStyles[0].lowerCloseText)))));
 };
 

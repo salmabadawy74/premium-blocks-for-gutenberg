@@ -1,6 +1,7 @@
 import classnames from 'classnames'
-import { gradientBackground, generateCss } from '../../components/HelperFunction';
+import { gradientBackground, generateCss, filterJsCss } from '../../components/HelperFunction';
 const { InnerBlocks } = wp.blockEditor;
+const { RichText } = wp.editor;
 
 const save = props => {
 
@@ -29,16 +30,11 @@ const save = props => {
         headerTypography,
         lowerTypography,
         modalTypography,
-        iconSize,
-        imageWidth,
-        modalWidth,
-        modalHeight,
         triggerFilter,
         triggerHoverFilter,
         hideDesktop,
         hideTablet,
-        hideMobile,
-        align
+        hideMobile
     } = props.attributes;
 
     const mainClasses = classnames(className, "premium-modal-box", {
@@ -52,15 +48,7 @@ const save = props => {
         styles[` .${blockId} .premium-modal-trigger-container button.premium-modal-trigger-btn:hover`] = {
             'border-color': `${triggerBorderH && triggerBorderH.borderColor} !important`,
             'background-color': `${triggerStyles[0].triggerHoverBack} !important`,
-            'border-style': `${triggerBorderH && triggerBorderH.borderType} !important`,
-            // 'border-top-width': `${triggerBorderH && triggerBorderH.borderWidth[currentDevice].top} px!important`,
-            // 'border-right-width': `${triggerBorderH && triggerBorderH.borderWidth[currentDevice].right} px!important`,
-            // 'border-bottom-width': `${triggerBorderH && triggerBorderH.borderWidth[currentDevice].bottom} px!important`,
-            // 'border-left-width': `${triggerBorderH && triggerBorderH.borderWidth[currentDevice].width} px!important`,
-            // 'border-top-left-radius': `${triggerBorderH?.borderRadius?.[currentDevice]?.top || 0}px!important`,
-            // 'border-top-right-radius': `${triggerBorderH?.borderRadius?.[currentDevice]?.right || 0}px!important`,
-            // 'border-bottom-left-radius': `${triggerBorderH?.borderRadius?.[currentDevice]?.bottom || 0}px!important`,
-            // 'border-bottom-right-radius': `${triggerBorderH?.borderRadius?.[currentDevice]?.left || 0}px!important`,
+            'border-style': `${triggerBorderH && triggerBorderH.borderType} !important`
         };
         styles[` .${blockId} .premium-modal-trigger-container button.premium-modal-trigger-btn:hover i`] = {
             'color': `${triggerStyles[0].iconHoverColor} !important`
@@ -79,27 +67,11 @@ const save = props => {
         };
         styles[` .${blockId} .premium-modal-trigger-container img:hover`] = {
             'border-color': `${triggerBorderH && triggerBorderH.borderColor} !important`,
-            'border-style': `${triggerBorderH && triggerBorderH.borderType} !important`,
-            // 'border-top-width': `${triggerBorderH && triggerBorderH.borderWidth[currentDevice].top} px!important`,
-            // 'border-right-width': `${triggerBorderH && triggerBorderH.borderWidth[currentDevice].right} px!important`,
-            // 'border-bottom-width': `${triggerBorderH && triggerBorderH.borderWidth[currentDevice].bottom} px!important`,
-            // 'border-left-width': `${triggerBorderH && triggerBorderH.borderWidth[currentDevice].width} px!important`,
-            // 'border-top-left-radius': `${triggerBorderH?.borderRadius?.[currentDevice]?.top || 0}px!important`,
-            // 'border-top-right-radius': `${triggerBorderH?.borderRadius?.[currentDevice]?.right || 0}px!important`,
-            // 'border-bottom-left-radius': `${triggerBorderH?.borderRadius?.[currentDevice]?.bottom || 0}px!important`,
-            // 'border-bottom-right-radius': `${triggerBorderH?.borderRadius?.[currentDevice]?.left || 0}px!important`,
+            'border-style': `${triggerBorderH && triggerBorderH.borderType} !important`
         };
         styles[` .${blockId} .premium-modal-trigger-container:hover .premium-modal-trigger-text`] = {
             'border-color': `${triggerBorderH && triggerBorderH.borderColor} !important`,
-            'border-style': `${triggerBorderH && triggerBorderH.borderType} !important`,
-            // 'border-top-width': `${triggerBorderH && triggerBorderH.borderWidth[currentDevice].top} px!important`,
-            // 'border-right-width': `${triggerBorderH && triggerBorderH.borderWidth[currentDevice].right} px!important`,
-            // 'border-bottom-width': `${triggerBorderH && triggerBorderH.borderWidth[currentDevice].bottom} px!important`,
-            // 'border-left-width': `${triggerBorderH && triggerBorderH.borderWidth[currentDevice].width} px!important`,
-            // 'border-top-left-radius': `${triggerBorderH?.borderRadius?.[currentDevice]?.top || 0}px!important`,
-            // 'border-top-right-radius': `${triggerBorderH?.borderRadius?.[currentDevice]?.right || 0}px!important`,
-            // 'border-bottom-left-radius': `${triggerBorderH?.borderRadius?.[currentDevice]?.bottom || 0}px!important`,
-            // 'border-bottom-right-radius': `${triggerBorderH?.borderRadius?.[currentDevice]?.left || 0}px!important`,
+            'border-style': `${triggerBorderH && triggerBorderH.borderType} !important`
         };
         return generateCss(styles);
     }
@@ -112,59 +84,56 @@ const save = props => {
                 }}
             />
             <div className={`premium-modal-trigger-container`}
-            // style={{ textAlign: align }}
             >
                 {(triggerSettings[0].triggerType === "button") &&
-                    <button className={` premium-modal-trigger-btn premium-button__${triggerSettings[0].btnSize} `}
-                        style={{
+                    <button className={`premium-modal-trigger-btn premium-button__${triggerSettings[0].btnSize} `}
+                        style={filterJsCss({
                             backgroundColor: triggerStyles[0].triggerBack,
                             borderStyle: triggerBorder.borderType,
                             borderColor: triggerBorder.borderColor,
                             boxShadow: `${triggerShadow.horizontal}px ${triggerShadow.vertical}px ${triggerShadow.blur}px ${triggerShadow.color} ${triggerShadow.position}`,
-                        }}>
+                        })}>
                         {triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" &&
                             <i
-                                className={` premium-modal-box-icon ${triggerSettings[0].icon}`}
-                                style={{
-                                    // fontSize: `${triggerIconSize[currentDevice]}${triggerIconSize.unit} !important`,
+                                className={`premium-modal-box-icon ${triggerSettings[0].icon}`}
+                                style={filterJsCss({
                                     marginRight: `${triggerSettings[0].iconSpacing}px`,
                                     color: triggerStyles[0].iconColor
-                                }}></i>
+                                })}></i>
                         }
                         <span
-                            style={{
+                            style={filterJsCss({
                                 color: triggerStyles[0].color,
                                 fontFamily: triggerTypography.fontFamily,
                                 fontWeight: triggerTypography.fontWeight,
                                 fontStyle: triggerTypography.fontStyle,
                                 textDecoration: triggerTypography?.textDecoration,
                                 textTransform: triggerTypography?.textTransform,
-                            }}>
+                            })}>
                             {triggerSettings[0].btnText}
                         </span>
                         {triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "after" &&
                             <i
                                 className={`premium-modal-box-icon ${triggerSettings[0].icon}`}
-                                style={{
-                                    // fontSize: `${triggerIconSize[currentDevice]}${triggerIconSize.unit} !important`,
+                                style={filterJsCss({
                                     marginLeft: `${triggerSettings[0].iconSpacing}px`,
                                     color: triggerStyles[0].iconColor
-                                }} ></i>
+                                })}></i>
                         }
                     </button>
                 }
                 {triggerSettings[0].triggerType === "image" && (
                     <img src={triggerSettings[0].triggerImgURL} className={`premium-modal-trigger-img`}
-                        style={{
+                        style={filterJsCss({
                             borderStyle: triggerBorder.borderType,
                             borderColor: triggerBorder.borderColor,
                             boxShadow: `${triggerShadow.horizontal}px ${triggerShadow.vertical}px ${triggerShadow.blur}px ${triggerShadow.color} ${triggerShadow.position}`,
-                        }} />
+                        })} />
                 )
                 }
                 {triggerSettings[0].triggerType === "text" && (
                     <span className={`premium-modal-trigger-text`}
-                        style={{
+                        style={filterJsCss({
                             color: triggerStyles[0].color,
                             borderStyle: triggerBorder.borderType,
                             borderColor: triggerBorder.borderColor,
@@ -174,7 +143,7 @@ const save = props => {
                             fontStyle: triggerTypography.fontStyle,
                             textDecoration: triggerTypography?.textDecoration,
                             textTransform: triggerTypography?.textTransform,
-                        }}>
+                        })}>
                         {triggerSettings[0].triggerText}
                     </span>
                 )}
@@ -190,37 +159,35 @@ const save = props => {
             </div>
             <div className="premium-popup__modal_wrap" style={{ display: "none" }} role="dialog">
                 <div role="presentation" className="premium-popup__modal_wrap_overlay"
-                    style={{
+                    style={filterJsCss({
                         ...gradientBackground(modalBackground)
-                    }} >
+                    })}>
                 </div>
                 <div className={`premium-popup__modal_content animated animation-${contentStyles[0].animationType} animation-${contentStyles[0].animationSpeed}`}
                     data-delay={triggerSettings[0].delayTime}
                     data-animation={`${contentStyles[0].animationType} ${contentStyles[0].animationSpeed}`}
-                    style={{
+                    style={filterJsCss({
                         borderStyle: `${modalBorder.borderType}`,
                         borderColor: `${modalBorder.borderColor}`,
                         boxShadow: `${modalShadow.horizontal}px ${modalShadow.vertical}px ${modalShadow.blur}px ${modalShadow.color} ${modalShadow.position}`,
-                    }}>
+                    })}>
                     {contentStyles[0].showHeader && <div className={`premium-modal-box-modal-header`}
-                        style={{
+                        style={filterJsCss({
                             backgroundColor: headerStyles[0].backColor,
                             borderStyle: headerBorder.borderType,
                             borderColor: `${headerBorder.borderColor}`,
-                        }}>
+                        })}>
                         <h3 className={`premium-modal-box-modal-title`}
-                            style={{
+                            style={filterJsCss({
                                 color: headerStyles[0].color,
                                 fontFamily: headerTypography.fontFamily,
                                 fontWeight: headerTypography.fontWeight,
                                 fontStyle: headerTypography.fontStyle,
                                 textDecoration: headerTypography?.textDecoration,
                                 textTransform: headerTypography?.textTransform,
-                            }}>
-                            {contentStyles[0].iconType === "icon" && <i className={contentStyles[0].contentIcon}  ></i>}
-                            {contentStyles[0].iconType === "image" && <img src={contentStyles[0].contentImgURL}
-                                style={{
-                                }}></img>}
+                            })}>
+                            {contentStyles[0].iconType === "icon" && <i className={contentStyles[0].contentIcon}></i>}
+                            {contentStyles[0].iconType === "image" && <img src={contentStyles[0].contentImgURL}></img>}
                             {contentStyles[0].iconType === "lottie" &&
                                 <div className={`premium-lottie-animation`}
                                     data-lottieurl={contentStyles[0].lottieURL}
@@ -234,54 +201,58 @@ const save = props => {
                         </h3>
                         {contentStyles[0].showUpperClose && contentStyles[0].showHeader && (
                             <div className="premium-modal-box-close-button-container"
-                                style={{
+                                style={filterJsCss({
                                     backgroundColor: `${upperStyles[0].backColor}`,
                                     borderStyle: `${upperBorder.borderType}`,
                                     borderColor: `${upperBorder.borderColor}`,
 
-                                }}>
+                                })}>
                                 <button type="button" className="premium-modal-box-modal-close close-button"
-                                    style={{
-                                        // fontSize: `${upperIconWidth[currentDevice]}${upperIconWidth.unit}`,
+                                    style={filterJsCss({
                                         color: `${upperStyles[0].color}`,
 
-                                    }} data-dismiss="premium-modal" >×</button>
+                                    })} data-dismiss="premium-modal" >×</button>
                             </div>
                         )}
                     </div>}
                     <div className={`premium-modal-box-modal-body`}
-                        style={{
-                            background: modalStyles[0].textBackColor,
-                        }}>
-                        {modalStyles[0].contentType === "text" ? <p
-                            style={{
-                                color: modalStyles[0].textColor,
-                                fontFamily: modalTypography.fontFamily,
-                                fontWeight: modalTypography.fontWeight,
-                                fontStyle: modalTypography.fontStyle,
-                                textDecoration: modalTypography?.textDecoration,
-                                textTransform: modalTypography?.textTransform,
-                            }} >{modalStyles[0].contentText}</p> : <InnerBlocks.Content />}
+                        style={filterJsCss({
+                            background: modalStyles[0].textBackColor
+                        })}>
+                        {modalStyles[0].contentType === "text" ?
+                            <RichText.Content
+                                tagName={'p'}
+                                className={`premium-person__name`}
+                                value={modalStyles[0].contentText}
+                                style={filterJsCss({
+                                    color: modalStyles[0].textColor,
+                                    fontFamily: modalTypography.fontFamily,
+                                    fontWeight: modalTypography.fontWeight,
+                                    fontStyle: modalTypography.fontStyle,
+                                    textDecoration: modalTypography?.textDecoration,
+                                    textTransform: modalTypography?.textTransform
+                                })}
+                                keepPlaceholderOnFocus
+                            />
+                            : <InnerBlocks.Content />}
 
                     </div>
                     {contentStyles[0].showLowerClose && (<div className={`premium-modal-box-modal-footer`}
-                        style={{
+                        style={filterJsCss({
                             backgroundColor: modalStyles[0].footerBackColor
-                        }}>
+                        })}>
                         <button className={`premium-modal-box-modal-lower-close close-button`} role="button" data-dismiss="premium-modal"
-                            style={{
+                            style={filterJsCss({
                                 fontWeight: lowerTypography.fontWeight,
                                 fontFamily: lowerTypography.fontFamily,
                                 fontStyle: lowerTypography.fontStyle,
                                 textDecoration: lowerTypography?.textDecoration,
                                 textTransform: lowerTypography?.textTransform,
-                                // width: `${lowerIconWidth[current]}${lowerIconWidth.unit}`,
                                 color: `${lowerStyles[0].color}`,
                                 backgroundColor: `${lowerStyles[0].backColor}`,
                                 borderStyle: `${lowerBorder.borderType}`,
                                 borderColor: `${lowerBorder.borderColor}`,
-                            }}
-                        >
+                            })}>
                             {contentStyles[0].lowerCloseText}
                         </button>
                     </div>)}

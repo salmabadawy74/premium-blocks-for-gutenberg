@@ -338,13 +338,6 @@ const Inspector = ({
                                 ]
                             }
                         />
-                        {/* {modalStyles[0].contentType == "text" && (
-                            <TextControl
-                                label={__("Text", "premium-blocks-for-gutenberg")}
-                                value={modalStyles[0].contentText}
-                                onChange={(value) => saveModalStyles({ contentText: value })}
-                            />
-                        )} */}
                         <SelectControl
                             label={__("Animation", 'premium-blocks-for-gutenberg')}
                             value={contentStyles[0].animationType}
@@ -405,6 +398,11 @@ const Inspector = ({
                             className="premium-panel-body"
                             initialOpen={false}
                         >
+                            <TextControl
+                                label={__("Title", 'premium-blocks-for-gutenberg')}
+                                value={contentStyles[0].titleText}
+                                onChange={(value) => saveContentStyle({ titleText: value })}
+                            />
                             <SelectControl
                                 label={__('Icon Type', 'premium-blocks-for-gutenberg')}
                                 options={[
@@ -468,11 +466,6 @@ const Inspector = ({
                                     />
                                 </Fragment>
                             )}
-                            {/* <TextControl
-                                label={__("Title", 'premium-blocks-for-gutenberg')}
-                                value={contentStyles[0].titleText}
-                                onChange={(value) => saveContentStyle({ titleText: value })}
-                            /> */}
                         </PanelBody>
                     }
                     {contentStyles[0].showLowerClose &&
@@ -903,10 +896,6 @@ const Inspector = ({
                     />
                 </InspectorTab>
             </InspectorTabs>
-
-
-
-
         </InspectorControls >
     )
 }

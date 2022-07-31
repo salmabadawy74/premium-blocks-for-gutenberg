@@ -83,6 +83,18 @@ const edit = props => {
         });
     }
 
+    const saveModalStyles = (value) => {
+        const newUpdate = modalStyles.map((item, modalIndex) => {
+            if (0 === modalIndex) {
+                item = { ...item, ...value };
+            }
+            return item;
+        });
+        setAttributes({
+            modalStyles: newUpdate,
+        });
+    }
+
     const loadStyles = () => {
         const styles = {};
         styles[` .${blockId} .premium-modal-trigger-container button.premium-modal-trigger-btn:hover`] = {
@@ -143,7 +155,6 @@ const edit = props => {
     const headerIconSize = iconSize[currentDevice];
     const modalWidthValue = modalWidth[currentDevice];
     const modalMaxHeight = modalHeight[currentDevice];
-    const triggerSize = imageWidth[currentDevice];
 
     let loadTriggerGoogleFonts;
     let loadHeaderGoogleFonts;
@@ -211,28 +222,13 @@ const edit = props => {
                             <i
                                 className={` premium-modal-box-icon ${triggerSettings[0].icon}`}
                                 style={{
-                                    fontSize: `${triggerIconSize[currentDevice]}${triggerIconSize.unit} !important`,
+                                    fontSize: (triggerIconSize[currentDevice]) + triggerIconSize.unit,
+                                    width: (triggerIconSize[currentDevice]) + triggerIconSize.unit,
+                                    height: (triggerIconSize[currentDevice]) + triggerIconSize.unit,
                                     marginRight: `${triggerSettings[0].iconSpacing}px`,
                                     color: triggerStyles[0].iconColor
                                 }}></i>
                         }
-                        {/* <RichText
-                            tagName={'span'}
-                            className={`premium-person__name`}
-                            value={triggerSettings[0].btnText}
-                            onChange={(newValue) => saveTriggerSettings({ btnText: newValue })}
-                            style={{
-                                color: triggerStyles[0].color,
-                                fontFamily: triggerTypography?.fontFamily,
-                                fontWeight: triggerTypography?.fontWeight,
-                                fontStyle: triggerTypography?.fontStyle,
-                                letterSpacing: triggerTypography?.letterSpacing[currentDevice],
-                                textDecoration: triggerTypography?.textDecoration,
-                                textTransform: triggerTypography?.textTransform,
-                                lineHeight: `${triggerTypography?.lineHeight[currentDevice]}px`,
-                            }}
-                            keepPlaceholderOnFocus
-                        /> */}
                         <span
                             style={{
                                 color: triggerStyles[0].color,
@@ -250,7 +246,9 @@ const edit = props => {
                             <i
                                 className={` premium-modal-box-icon ${triggerSettings[0].icon}`}
                                 style={{
-                                    fontSize: `${triggerIconSize[currentDevice]}${triggerIconSize.unit} !important`,
+                                    fontSize: (triggerIconSize[currentDevice]) + triggerIconSize.unit,
+                                    width: (triggerIconSize[currentDevice]) + triggerIconSize.unit,
+                                    height: (triggerIconSize[currentDevice]) + triggerIconSize.unit,
                                     marginLeft: `${triggerSettings[0].iconSpacing}px`,
                                     color: triggerStyles[0].iconColor
                                 }} ></i>
@@ -266,8 +264,8 @@ const edit = props => {
                                 src={triggerSettings[0].triggerImgURL}
                                 style={{
                                     ...borderCss(triggerBorder, currentDevice),
-                                    width: `${triggerSize}px`,
-                                    height: `${triggerSize}px`,
+                                    width: `${imageWidth[currentDevice]}${imageWidth.unit}`,
+                                    height: `${imageWidth[currentDevice]}${imageWidth.unit}`,
                                     boxShadow: `${triggerShadow.horizontal}px ${triggerShadow.vertical}px ${triggerShadow.blur}px ${triggerShadow.color} ${triggerShadow.position}`,
                                 }}
                             />
@@ -308,8 +306,8 @@ const edit = props => {
                             triggerSettings[0].lottieTriggerURL ?
                                 <div onClick={() => setOpenModal(true)} className={`premium-lottie-animation`}>
                                     <Lottie
-                                        height={triggerSize}
-                                        width={triggerSize}
+                                        height={`${imageWidth[currentDevice]}${imageWidth.unit}`}
+                                        width={`${imageWidth[currentDevice]}${imageWidth.unit}`}
                                         options={{
                                             loop: triggerSettings[0].triggerLoopLottie,
                                             path: triggerSettings[0].lottieTriggerURL,
@@ -368,7 +366,15 @@ const edit = props => {
                                         ...typographyCss(headerTypography, currentDevice),
                                         color: headerStyles[0].color
                                     }}>
-                                    {contentStyles[0].iconType === "icon" && <i className={contentStyles[0].contentIcon} style={{ fontSize: `${headerIconSize}${iconSize.unit}` }} ></i>}
+                                    {contentStyles[0].iconType === "icon" &&
+                                        <i
+                                            className={contentStyles[0].contentIcon}
+                                            style={{
+                                                fontSize: `${headerIconSize}${iconSize.unit}`,
+                                                width: `${headerIconSize}${iconSize.unit}`,
+                                                height: `${headerIconSize}${iconSize.unit}`
+                                            }} ></i>
+                                    }
                                     {contentStyles[0].iconType === "image" && <img src={contentStyles[0].contentImgURL} style={{
                                         width: `${headerIconSize}${iconSize.unit}`,
                                         height: `${headerIconSize}${iconSize.unit}`
@@ -415,11 +421,19 @@ const edit = props => {
                                 ...paddingCss(modalPadding, currentDevice),
                                 background: modalStyles[0].textBackColor
                             }}>
-                            {modalStyles[0].contentType === "text" ? <p
-                                style={{
-                                    ...typographyCss(modalTypography, currentDevice),
-                                    color: modalStyles[0].textColor
-                                }} >{modalStyles[0].contentText}</p> : <InnerBlocks />}
+                            {modalStyles[0].contentType === "text" ?
+                                <RichText
+                                    tagName={'p'}
+                                    className={`premium-person__name`}
+                                    value={modalStyles[0].contentText}
+                                    onChange={(value) => saveModalStyles({ contentText: value })}
+                                    style={{
+                                        ...typographyCss(modalTypography, currentDevice),
+                                        color: modalStyles[0].textColor
+                                    }}
+                                    keepPlaceholderOnFocus
+                                />
+                                : <InnerBlocks />}
 
                         </div>
                         {contentStyles[0].showLowerClose && (<div className={`premium-modal-box-modal-footer`} style={{

@@ -3391,6 +3391,10 @@ a.premium-dheading-block__link:hover {
 
 /**************** Premium Modal Box ****************/
 
+.premium-modal-trigger-container {
+    text-align: center;
+}
+
 .premium-modal-trigger-btn,
 .premium-modal-box-modal-lower-close {
     display: inline-block;

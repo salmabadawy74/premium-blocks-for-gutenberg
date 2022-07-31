@@ -1,4 +1,5 @@
 const { __ } = wp.i18n;
+const { InnerBlocks } = wp.blockEditor;
 import classnames from "classnames"
 
 const attributes = {
@@ -1033,6 +1034,12 @@ const deprecated = [
         },
         migrate: (attributes) => {
             let newAttributes = {
+                blockId: attributes.block_id ? `premium-modal-box-${attributes.block_id.split('-')[6]}` : '',
+                align: {
+                    "Desktop": attributes.triggerSettings[0].align,
+                    "Tablet": attributes.triggerSettings[0].align,
+                    "Mobile": attributes.triggerSettings[0].align,
+                },
                 triggerPadding: {
                     "Desktop": {
                         top: attributes.triggerPaddingT || '',
@@ -1442,9 +1449,19 @@ const deprecated = [
                     "fontWeight": attributes.triggerStyles[0].triggerWeight || '',
                     'fontStyle': attributes.triggerStyles[0].triggerStyle || '',
                     'textTransform': attributes.triggerStyles[0].triggerUpper || '',
-                    'letterSpacing': attributes.triggerStyles[0].triggerSpacing || '',
+                    'letterSpacing': {
+                        'Desktop': attributes.triggerStyles[0].triggerSpacing || '',
+                        "Tablet": attributes.triggerStyles[0].triggerSpacing || '',
+                        "Mobile": attributes.triggerStyles[0].triggerSpacing || '',
+                        "unit": 'px'
+                    },
                     'fontFamily': attributes.triggerStyles[0].triggerFamily || '',
-                    'lineHeight': '',
+                    'lineHeight': {
+                        'Desktop': '',
+                        "Tablet": '',
+                        "Mobile": '',
+                        "unit": 'px'
+                    },
                     'textDecoration': '',
                     'fontSize': {
                         'Desktop': attributes.triggerStyles[0].triggerSize || '',
@@ -1457,9 +1474,19 @@ const deprecated = [
                     "fontWeight": attributes.headerStyles[0].headerWeight || '',
                     'fontStyle': attributes.headerStyles[0].headerStyle || '',
                     'textTransform': attributes.headerStyles[0].headerUpper || '',
-                    'letterSpacing': attributes.headerStyles[0].headerSpacing || '',
+                    'letterSpacing': {
+                        'Desktop': attributes.headerStyles[0].headerSpacing || '',
+                        "Tablet": attributes.headerStyles[0].headerSpacing || '',
+                        "Mobile": attributes.headerStyles[0].headerSpacing || '',
+                        "unit": 'px'
+                    },
                     'fontFamily': attributes.headerStyles[0].headerFamily || '',
-                    'lineHeight': '',
+                    'lineHeight': {
+                        'Desktop': '',
+                        "Tablet": '',
+                        "Mobile": '',
+                        "unit": 'px'
+                    },
                     'textDecoration': '',
                     'fontSize': {
                         'Desktop': attributes.headerStyles[0].headerSize || '',
@@ -1472,9 +1499,19 @@ const deprecated = [
                     "fontWeight": attributes.lowerStyles[0].lowerSizeWeight || '',
                     'fontStyle': attributes.lowerStyles[0].lowerSizeStyle || '',
                     'textTransform': '',
-                    'letterSpacing': attributes.lowerStyles[0].lowerSizeSpacing || '',
+                    'letterSpacing': {
+                        'Desktop': attributes.lowerStyles[0].lowerSizeSpacing || '',
+                        "Tablet": attributes.lowerStyles[0].lowerSizeSpacing || '',
+                        "Mobile": attributes.lowerStyles[0].lowerSizeSpacing || '',
+                        "unit": 'px'
+                    },
                     'fontFamily': '',
-                    'lineHeight': '',
+                    'lineHeight': {
+                        'Desktop': '',
+                        "Tablet": '',
+                        "Mobile": '',
+                        "unit": 'px'
+                    },
                     'textDecoration': '',
                     'fontSize': {
                         'Desktop': attributes.lowerStyles[0].lowerSizeSize || '',
@@ -1487,9 +1524,19 @@ const deprecated = [
                     "fontWeight": attributes.modalStyles[0].modalWeight || '',
                     'fontStyle': attributes.modalStyles[0].modalStyle || '',
                     'textTransform': attributes.modalStyles[0].modalUpper || '',
-                    'letterSpacing': attributes.modalStyles[0].modalSpacing || '',
+                    'letterSpacing': {
+                        'Desktop': attributes.modalStyles[0].modalSpacing || '',
+                        "Tablet": attributes.modalStyles[0].modalSpacing || '',
+                        "Mobile": attributes.modalStyles[0].modalSpacing || '',
+                        "unit": 'px'
+                    },
                     'fontFamily': attributes.modalStyles[0].modalFamily || '',
-                    'lineHeight': '',
+                    'lineHeight': {
+                        'Desktop': '',
+                        "Tablet": '',
+                        "Mobile": '',
+                        "unit": 'px'
+                    },
                     'textDecoration': '',
                     'fontSize': {
                         'Desktop': attributes.modalStyles[0].modalSize || '',
@@ -1521,6 +1568,41 @@ const deprecated = [
                     'Tablet': attributes.modalStyles[0].modalHeightTablet || '',
                     'Mobile': attributes.modalStyles[0].modalHeightMobile || '',
                     'unit': attributes.modalStyles[0].modalHeightUnit || 'px',
+                },
+                triggerFilter: {
+                    'contrast': attributes.triggerStyles[0].contrast,
+                    'blur': attributes.triggerStyles[0].blur,
+                    'bright': attributes.triggerStyles[0].bright,
+                    'saturation': attributes.triggerStyles[0].saturation,
+                    'hue': attributes.triggerStyles[0].hue
+                },
+                triggerHoverFilter: {
+                    'contrast': attributes.triggerStyles[0].contrastH,
+                    'blur': attributes.triggerStyles[0].blurH,
+                    'bright': attributes.triggerStyles[0].brightH,
+                    'saturation': attributes.triggerStyles[0].saturationH,
+                    'hue': attributes.triggerStyles[0].hueH
+                },
+                hideDesktop: '',
+                hideTablet: '',
+                hideMobile: '',
+                triggerIconSize: {
+                    "Desktop": attributes.triggerSettings[0].iconSize || '',
+                    'Tablet': '',
+                    'Mobile': '',
+                    'unit': 'px',
+                },
+                upperIconWidth: {
+                    "Desktop": attributes.upperStyles[0].iconWidth || '',
+                    'Tablet': '',
+                    'Mobile': '',
+                    'unit': attributes.upperStyles[0].iconWidthUnit || 'px',
+                },
+                lowerIconWidth: {
+                    "Desktop": attributes.upperStyles[0].lowerStyles || '',
+                    'Tablet': '',
+                    'Mobile': '',
+                    'unit': attributes.upperStyles[0].lowerStyles || 'px',
                 }
             }
             return Object.assign(attributes, newAttributes)
