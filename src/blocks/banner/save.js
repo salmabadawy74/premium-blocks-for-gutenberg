@@ -1,5 +1,9 @@
 import classnames from "classnames";
-import { generateCss, filterJsCss } from "../../components/HelperFunction";
+import {
+    generateCss,
+    filterJsCss,
+    typographyCss,
+} from "../../components/HelperFunction";
 const { RichText } = wp.blockEditor;
 
 const save = (props) => {
@@ -111,6 +115,10 @@ const save = (props) => {
                                 className={`premium-banner__title`}
                                 value={title}
                                 style={filterJsCss({
+                                    ...typographyCss(
+                                        titleTypography,
+                                        "Desktop"
+                                    ),
                                     textAlign: contentAlign["Desktop"],
                                     color: titleStyles[0].titleColor,
                                     fontStyle: titleTypography.fontStyle,
@@ -135,6 +143,7 @@ const save = (props) => {
                                     fontStyle: descTypography.fontStyle,
                                     fontFamily: descTypography.fontFamily,
                                     fontWeight: descTypography.fontWeight,
+                                    ...typographyCss(descTypography, "Desktop"),
                                     textDecoration:
                                         descTypography.textDecoration,
                                     textTransform: descTypography.textTransform,

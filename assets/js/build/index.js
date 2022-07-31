@@ -10495,7 +10495,7 @@ const save = props => {
     tagName: titleTag.toLowerCase(),
     className: `premium-banner__title`,
     value: title,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({ ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.typographyCss)(titleTypography, "Desktop"),
       textAlign: contentAlign["Desktop"],
       color: titleStyles[0].titleColor,
       fontStyle: titleTypography.fontStyle,
@@ -10517,6 +10517,7 @@ const save = props => {
       fontStyle: descTypography.fontStyle,
       fontFamily: descTypography.fontFamily,
       fontWeight: descTypography.fontWeight,
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.typographyCss)(descTypography, "Desktop"),
       textDecoration: descTypography.textDecoration,
       textTransform: descTypography.textTransform,
       textShadow: `${descTextShadow.horizontal}px ${descTextShadow.vertical}px ${descTextShadow.blur}px ${descTextShadow.color}`
