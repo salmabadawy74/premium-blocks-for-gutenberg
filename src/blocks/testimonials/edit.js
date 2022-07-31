@@ -30,7 +30,6 @@ const { withSelect } = wp.data
 class edit extends Component {
     constructor() {
         super(...arguments);
-        this.getPreviewSize = this.getPreviewSize.bind(this);
     }
 
     componentDidMount() {
@@ -40,21 +39,6 @@ class edit extends Component {
             setAttributes({ blockId: "premium-testimonials-" + generateBlockId(clientId) });
         }
         this.props.setAttributes({ classMigrate: true });
-    }
-
-    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
-        if (device === 'Mobile') {
-            if (undefined !== mobileSize && '' !== mobileSize) {
-                return mobileSize;
-            } else if (undefined !== tabletSize && '' !== tabletSize) {
-                return tabletSize;
-            }
-        } else if (device === 'Tablet') {
-            if (undefined !== tabletSize && '' !== tabletSize) {
-                return tabletSize;
-            }
-        }
-        return desktopSize;
     }
 
     render() {

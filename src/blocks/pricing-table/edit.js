@@ -31,22 +31,6 @@ class PremiumPricingTable extends Component {
             setAttributes({ blockId: "premium-pricing-table-" + generateBlockId(clientId) });
         }
         setAttributes({ classMigrate: true });
-        this.getPreviewSize = this.getPreviewSize.bind(this);
-    }
-
-    getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
-        if (device === 'Mobile') {
-            if (undefined !== mobileSize && '' !== mobileSize) {
-                return mobileSize;
-            } else if (undefined !== tabletSize && '' !== tabletSize) {
-                return tabletSize;
-            }
-        } else if (device === 'Tablet') {
-            if (undefined !== tabletSize && '' !== tabletSize) {
-                return tabletSize;
-            }
-        }
-        return desktopSize;
     }
 
     render() {

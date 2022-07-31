@@ -51,7 +51,7 @@
         "menuBorder": {
             "type": "object",
             "default": {
-                "borderType": "",
+                "borderType": "none",
                 "borderColor": "",
                 "borderWidth": {
                     "Desktop": {
@@ -98,7 +98,7 @@
         "overlayMenuBorder": {
             "type": "object",
             "default": {
-                "borderType": "",
+                "borderType": "none",
                 "borderColor": "",
                 "borderWidth": {
                     "Desktop": {
@@ -145,7 +145,7 @@
         "submenuBorder": {
             "type": "object",
             "default": {
-                "borderType": "",
+                "borderType": "none",
                 "borderColor": "",
                 "borderWidth": {
                     "Desktop": {

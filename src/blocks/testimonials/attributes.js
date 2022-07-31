@@ -26,7 +26,7 @@ const testimonialsAttrs = {
     imgBorder: {
         type: "object",
         default: {
-            "borderType": "",
+            "borderType": "none",
             "borderColor": "",
             "borderWidth": {
                 Desktop: {
@@ -237,12 +237,12 @@ const testimonialsAttrs = {
             'backgroundRepeat': '',
             'backgroundSize': '',
             'fixed': false,
-            'gradientLocationOne': "",
-            'gradientColorTwo': '',
-            'gradientLocationTwo': '',
-            'gradientAngle': '',
-            'gradientPosition': '',
-            'gradientType': ''
+            "gradientLocationOne": "0",
+            "gradientColorTwo": "",
+            "gradientLocationTwo": "100",
+            "gradientAngle": "180",
+            "gradientPosition": "center center",
+            "gradientType": "linear"
         }
     },
     authorTypography: {

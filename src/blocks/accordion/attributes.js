@@ -138,7 +138,7 @@ const attributes = {
     titleBorder: {
         type: "object",
         default: {
-            "borderType": "",
+            "borderType": "none",
             "borderColor": "",
             "borderWidth": {
                 Desktop: {
@@ -185,7 +185,7 @@ const attributes = {
     descBorder: {
         type: "object",
         default: {
-            "borderType": "",
+            "borderType": "none",
             "borderColor": "",
             "borderWidth": {
                 Desktop: {
@@ -232,14 +232,24 @@ const attributes = {
     titleTypography: {
         type: "object",
         default: {
-            "fontWeight": '',
+            "fontWeight": '400',
             'fontStyle': '',
             'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': '',
-            'lineHeight': '',
+            'fontFamily': 'Default',
             'textDecoration': '',
             'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
+            'lineHeight': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
+            'letterSpacing': {
                 'Desktop': '',
                 "Tablet": '',
                 "Mobile": '',
@@ -250,14 +260,24 @@ const attributes = {
     descTypography: {
         type: "object",
         default: {
-            "fontWeight": '',
+            "fontWeight": '400',
             'fontStyle': '',
             'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': '',
-            'lineHeight': '',
+            'fontFamily': 'Default',
             'textDecoration': '',
             'fontSize': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
+            'lineHeight': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
+            'letterSpacing': {
                 'Desktop': '',
                 "Tablet": '',
                 "Mobile": '',
@@ -269,18 +289,18 @@ const attributes = {
         type: "object",
         default: {
             'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
+            'blur': '10',
+            'horizontal': '0',
+            'vertical': '0',
         }
     },
     textShadow: {
         type: "object",
         default: {
             'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
+            'blur': '10',
+            'horizontal': '0',
+            'vertical': '0',
         }
     },
     hideDesktop: {

@@ -75,7 +75,7 @@ const attributes = {
     border: {
         type: "object",
         default: {
-            "borderType": "",
+            "borderType": "none",
             "borderColor": "",
             "borderWidth": {
                 Desktop: {
@@ -151,18 +151,18 @@ const attributes = {
         type: "object",
         default: {
             'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
+            'blur': '10',
+            'horizontal': '0',
+            'vertical': '0',
         }
     },
     boxShadow: {
         type: "object",
         default: {
             'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
+            'blur': '10',
+            'horizontal': '0',
+            'vertical': '0',
             'position': ' '
         }
     },
