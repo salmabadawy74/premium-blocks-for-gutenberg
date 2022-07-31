@@ -147,7 +147,7 @@ const attributes = {
     titleBorder: {
         type: "object",
         default: {
-            borderType: "",
+            borderType: "none",
             borderColor: "",
             borderWidth: {
                 Desktop: {
@@ -195,9 +195,9 @@ const attributes = {
         type: "object",
         default: {
             color: "",
-            blur: "",
-            horizontal: "",
-            vertical: "",
+            blur: "10",
+            horizontal: "0",
+            vertical: "0",
         },
     },
     titleTypography: {
@@ -358,9 +358,9 @@ const attributes = {
         type: "object",
         default: {
             color: "",
-            blur: "",
-            horizontal: "",
-            vertical: "",
+            blur: "10",
+            horizontal: "0",
+            vertical: "0",
         },
     },
     iconPadding: {
@@ -422,12 +422,12 @@ const attributes = {
             backgroundRepeat: "",
             backgroundSize: "",
             fixed: false,
-            gradientLocationOne: "",
-            gradientColorTwo: "",
-            gradientLocationTwo: "",
-            gradientAngle: "",
-            gradientPosition: "",
-            gradientType: "",
+            "gradientLocationOne": "0",
+            "gradientColorTwo": "",
+            "gradientLocationTwo": "100",
+            "gradientAngle": "180",
+            "gradientPosition": "center center",
+            "gradientType": "linear"
         },
     },
     iconSize: {

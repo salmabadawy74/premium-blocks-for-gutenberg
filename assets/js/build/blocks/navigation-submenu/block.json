@@ -77,12 +77,12 @@
         "backgroundRepeat": "",
         "backgroundSize": "",
         "fixed": false,
-        "gradientLocationOne": "",
+        "gradientLocationOne": "0",
         "gradientColorTwo": "",
-        "gradientLocationTwo": "",
-        "gradientAngle": "",
-        "gradientPosition": "",
-        "gradientType": ""
+        "gradientLocationTwo": "100",
+        "gradientAngle": "180",
+        "gradientPosition": "center center",
+        "gradientType": "linear"
       }
     },
     "linkCustomIcon": {
