@@ -29,7 +29,11 @@ export default function save(props) {
         filter,
         filterHover,
     } = attributes;
-    const mainClasses = classnames(className, "premium-lottie-wrap");
+    const mainClasses = classnames(className, "premium-lottie-wrap", {
+        " premium-desktop-hidden": hideDesktop,
+        " premium-tablet-hidden": hideTablet,
+        " premium-mobile-hidden": hideMobile,
+    });
     const loadStyles = () => {
         const styles = {};
         styles[`#premium-lottie-${block_id}  .premium-lottie-animation`] = {
@@ -52,7 +56,7 @@ export default function save(props) {
             <style dangerouslySetInnerHTML={{ __html: loadStyles() }} />
             <div
                 id={`premium-lottie-${block_id}`}
-                className={`premium-lottie-${block_id} ${mainClasses} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                className={`premium-lottie-${block_id} ${mainClasses} `}
             >
                 <div
                     className={`premium-lottie-animation premium-lottie-${render}`}

@@ -50,7 +50,6 @@ export class edit extends Component {
                     "premium-banner-" + generateBlockId(this.props.clientId),
             });
         }
-        this.props.setAttributes({ classMigrate: true });
     }
 
     render() {

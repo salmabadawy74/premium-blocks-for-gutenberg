@@ -2,12 +2,9 @@ const LottieAttr = {
     lottieId: {
         type: "string",
     },
-    block_id: {
+
+    blockId: {
         type: "string",
-    },
-    classMigrate: {
-        type: "boolean",
-        default: false,
     },
     lottieURl: {
         type: "string",
@@ -195,54 +192,5 @@ const LottieAttr = {
             unit: "px",
         },
     },
-
-    // paddingT: {
-    //     type: 'number'
-    // },
-    // paddingR: {
-    //     type: 'number'
-    // },
-    // paddingB: {
-    //     type: 'number'
-    // },
-    // paddingL: {
-    //     type: 'number'
-    // },
-    // borderTop: {
-    //     type: 'number'
-    // },
-    // borderRight: {
-    //     type: 'number'
-    // },
-    // borderBottom: {
-    //     type: 'number'
-    // },
-    // borderLeft: {
-    //     type: 'number'
-    // },
-    // paddingTTablet: {
-    //     type: 'number'
-    // },
-    // paddingRTablet: {
-    //     type: 'number'
-    // },
-    // paddingBTablet: {
-    //     type: 'number'
-    // },
-    // paddingLTablet: {
-    //     type: 'number'
-    // },
-    // paddingTMobile: {
-    //     type: 'number'
-    // },
-    // paddingRMobile: {
-    //     type: 'number'
-    // },
-    // paddingBMobile: {
-    //     type: 'number'
-    // },
-    // paddingLMobile: {
-    //     type: 'number'
-    // },
 };
 export default LottieAttr;

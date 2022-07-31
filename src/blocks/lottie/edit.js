@@ -41,7 +41,6 @@ class edit extends Component {
         const { block_id } = attributes;
 
         setAttributes({ block_id: clientId });
-        setAttributes({ classMigrate: true });
         if (!attributes.lottieId) {
             setAttributes({ lottieId: "premium-lottie-" + block_id });
         }

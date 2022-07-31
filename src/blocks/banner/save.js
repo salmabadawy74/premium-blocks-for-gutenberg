@@ -35,6 +35,7 @@ const save = (props) => {
         descTextShadow,
         containerShadow,
         blockId,
+        contentAlign,
     } = props.attributes;
 
     const mainClasses = classnames(className, "premium-banner", {
@@ -110,6 +111,7 @@ const save = (props) => {
                                 className={`premium-banner__title`}
                                 value={title}
                                 style={filterJsCss({
+                                    textAlign: contentAlign["Desktop"],
                                     color: titleStyles[0].titleColor,
                                     fontStyle: titleTypography.fontStyle,
                                     fontFamily: titleTypography.fontFamily,
@@ -128,6 +130,7 @@ const save = (props) => {
                                 className={`premium-banner__desc`}
                                 value={desc}
                                 style={filterJsCss({
+                                    textAlign: contentAlign["Desktop"],
                                     color: descStyles[0].descColor,
                                     fontStyle: descTypography.fontStyle,
                                     fontFamily: descTypography.fontFamily,

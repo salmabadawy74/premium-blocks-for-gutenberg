@@ -16,7 +16,13 @@ import InsideTabs from "../../components/InsideTabs";
 import InsideTab from "../../components/InsideTab";
 import PremiumShadow from "../../components/PremiumShadow";
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
-import { borderCss, paddingCss, generateBlockId, generateCss, filterJsCss } from "../../components/HelperFunction";
+import {
+    borderCss,
+    paddingCss,
+    generateBlockId,
+    generateCss,
+    filterJsCss,
+} from "../../components/HelperFunction";
 
 const { __ } = wp.i18n;
 
@@ -39,7 +45,6 @@ class edit extends Component {
                 blockId: "premium-image-separator-" + generateBlockId(clientId),
             });
         }
-        setAttributes({ classMigrate: true });
     }
 
     render() {
@@ -96,26 +101,28 @@ class edit extends Component {
             setAttributes({ iconStyles: newUpdate });
         };
 
-
-
         const loadStyles = () => {
             const styles = {};
-            styles[`.${blockId} .premium-image-separator-container:hover img`] = {
-                'filter': `brightness(${imgFilterHover?.bright}% ) contrast(${imgFilterHover?.contrast}% ) saturate(${imgFilterHover?.saturation}% ) blur(${imgFilterHover?.blur}px) hue-rotate(${imgFilterHover?.hue}deg)!important`
-            };
-            styles[` .${blockId} .premium-image-separator-container i:hover`] = {
-                'color': `${iconStyles[0].iconColorHover} !important`,
-                'background-color': `${iconStyles[0].iconBGColorHover} !important`
-            };
+            styles[`.${blockId} .premium-image-separator-container:hover img`] =
+                {
+                    filter: `brightness(${imgFilterHover?.bright}% ) contrast(${imgFilterHover?.contrast}% ) saturate(${imgFilterHover?.saturation}% ) blur(${imgFilterHover?.blur}px) hue-rotate(${imgFilterHover?.hue}deg)!important`,
+                };
+            styles[` .${blockId} .premium-image-separator-container i:hover`] =
+                {
+                    color: `${iconStyles[0].iconColorHover} !important`,
+                    "background-color": `${iconStyles[0].iconBGColorHover} !important`,
+                };
             return generateCss(styles);
-        }
+        };
 
         const mainClasses = classnames(className, "premium-image-separator", {
-            ' premium-desktop-hidden': hideDesktop,
-            ' premium-tablet-hidden': hideTablet,
-            ' premium-mobile-hidden': hideMobile,
+            " premium-desktop-hidden": hideDesktop,
+            " premium-tablet-hidden": hideTablet,
+            " premium-mobile-hidden": hideMobile,
         });
-        let BorderValue = iconStyles[0].advancedBorder ? { borderRadius: iconStyles[0].advancedBorderValue } : borderCss(iconBorder, this.props.deviceType)
+        let BorderValue = iconStyles[0].advancedBorder
+            ? { borderRadius: iconStyles[0].advancedBorderValue }
+            : borderCss(iconBorder, this.props.deviceType);
 
         return [
             isSelected && (
@@ -244,7 +251,10 @@ class edit extends Component {
                                 )}
 
                                 <ResponsiveSingleRangeControl
-                                    label={__("Gutter (%)", 'premium-blocks-for-gutenberg')}
+                                    label={__(
+                                        "Gutter (%)",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     value={gutter}
                                     min="-500"
                                     max="500"
@@ -255,24 +265,49 @@ class edit extends Component {
                                     }
                                     defaultValue={-50}
                                     showUnit={false}
-
                                 />
-                                <p className={`premium_blocks_descrption_range_Control`}>{__('-50% is default. Increase to push the image outside or decrease to pull the image inside.', 'premium-blocks-for-gutenberg')}</p>
+                                <p
+                                    className={`premium_blocks_descrption_range_Control`}
+                                >
+                                    {__(
+                                        "-50% is default. Increase to push the image outside or decrease to pull the image inside.",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                </p>
                                 <ResponsiveRadioControl
-                                    label={__("Alignment", "premium-blocks-for-gutenberg")}
+                                    label={__(
+                                        "Alignment",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     choices={[
-                                        { value: "left", label: __("Left"), icon: Icons.alignLeft },
-                                        { value: "center", label: __("Center"), icon: Icons.alignCenter },
-                                        { value: "right", label: __("Right"), icon: Icons.alignRight },
+                                        {
+                                            value: "left",
+                                            label: __("Left"),
+                                            icon: Icons.alignLeft,
+                                        },
+                                        {
+                                            value: "center",
+                                            label: __("Center"),
+                                            icon: Icons.alignCenter,
+                                        },
+                                        {
+                                            value: "right",
+                                            label: __("Right"),
+                                            icon: Icons.alignRight,
+                                        },
                                     ]}
                                     value={iconAlign}
-                                    onChange={(newValue) => setAttributes({ iconAlign: newValue })}
+                                    onChange={(newValue) =>
+                                        setAttributes({ iconAlign: newValue })
+                                    }
                                     showIcons={true}
                                 />
                                 <ToggleControl
                                     label={__("Link")}
                                     checked={link}
-                                    onChange={(value) => setAttributes({ link: value })}
+                                    onChange={(value) =>
+                                        setAttributes({ link: value })
+                                    }
                                 />
                                 {link && (
                                     <Fragment>
@@ -388,14 +423,22 @@ class edit extends Component {
                                         <InsideTab tabTitle={__("Normal")}>
                                             <PremiumFilters
                                                 value={imgFilter}
-                                                onChange={(value) => setAttributes({ imgFilter: value })}
+                                                onChange={(value) =>
+                                                    setAttributes({
+                                                        imgFilter: value,
+                                                    })
+                                                }
                                             />
                                         </InsideTab>
                                         <InsideTab tabTitle={__("Hover")}>
                                             <PremiumFilters
                                                 label={__("Hover CSS Filters")}
                                                 value={imgFilterHover}
-                                                onChange={(value) => setAttributes({ imgFilterHover: value })}
+                                                onChange={(value) =>
+                                                    setAttributes({
+                                                        imgFilterHover: value,
+                                                    })
+                                                }
                                             />
                                         </InsideTab>
                                     </InsideTabs>
@@ -574,17 +617,17 @@ class edit extends Component {
                                 Mobile={hideMobile}
                                 onChangeDesktop={(value) =>
                                     setAttributes({
-                                        hideDesktop: value
+                                        hideDesktop: value,
                                     })
                                 }
                                 onChangeTablet={(value) =>
                                     setAttributes({
-                                        hideTablet: value
+                                        hideTablet: value,
                                     })
                                 }
                                 onChangeMobile={(value) =>
                                     setAttributes({
-                                        hideMobile: value
+                                        hideMobile: value,
                                     })
                                 }
                             />
@@ -592,9 +635,7 @@ class edit extends Component {
                     </InspectorTabs>
                 </InspectorControls>
             ),
-            <style
-                dangerouslySetInnerHTML={{ __html: loadStyles() }}
-            />,
+            <style dangerouslySetInnerHTML={{ __html: loadStyles() }} />,
             <div
                 className={`${mainClasses} ${blockId}`}
                 style={{ textAlign: iconAlign[this.props.deviceType] }}
@@ -604,13 +645,15 @@ class edit extends Component {
                     style={{
                         textAlign: iconAlign[this.props.deviceType],
                         transform: `translateY(${gutter}%)`,
-                        filter: iconType === "image"
-                            ? `brightness( ${imgFilter?.bright}% ) contrast( ${imgFilter?.contrast}% ) saturate( ${imgFilter?.saturation}% ) blur( ${imgFilter?.blur}px ) hue-rotate( ${imgFilter?.hue}deg )`
-                            : "",
+                        filter:
+                            iconType === "image"
+                                ? `brightness( ${imgFilter?.bright}% ) contrast( ${imgFilter?.contrast}% ) saturate( ${imgFilter?.saturation}% ) blur( ${imgFilter?.blur}px ) hue-rotate( ${imgFilter?.hue}deg )`
+                                : "",
                     }}
                 >
                     {iconType === "icon" && (
-                        <i className={`${iconStyles[0].icon}`}
+                        <i
+                            className={`${iconStyles[0].icon}`}
                             style={{
                                 ...paddingCss(
                                     iconPadding,
@@ -621,10 +664,12 @@ class edit extends Component {
                                     iconSize.unit,
                                 color: iconStyles[0].iconColor,
                                 backgroundColor: iconStyles[0].iconBGColor,
-                                textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical || 0
-                                    }px ${iconShadow.blur || 0}px ${iconShadow.color
-                                    }`,
-                                ...BorderValue
+                                textShadow: `${iconShadow.horizontal || 0}px ${
+                                    iconShadow.vertical || 0
+                                }px ${iconShadow.blur || 0}px ${
+                                    iconShadow.color
+                                }`,
+                                ...BorderValue,
                             }}
                         />
                     )}
@@ -637,14 +682,21 @@ class edit extends Component {
                                         ...BorderValue,
                                         maskSize: `${maskSize}`,
                                         maskPosition: `${maskPosition}`,
-                                        maskImage: imgMaskURL ? `url("${imgMaskURL}")` : "",
-                                        WebkitMaskImage: imgMaskURL ? `url("${imgMaskURL}")` : "",
+                                        maskImage: imgMaskURL
+                                            ? `url("${imgMaskURL}")`
+                                            : "",
+                                        WebkitMaskImage: imgMaskURL
+                                            ? `url("${imgMaskURL}")`
+                                            : "",
                                         WebkitMaskSize: `${maskSize}`,
                                         WebkitMaskPosition: `${maskPosition}`,
                                         objectFit: `${imgFit}`,
-                                        height: (imgHeight[this.props.deviceType] || 200) + iconSize.unit,
+                                        height:
+                                            (imgHeight[this.props.deviceType] ||
+                                                200) + iconSize.unit,
                                         width:
-                                            (iconSize[this.props.deviceType] || 200) + iconSize.unit,
+                                            (iconSize[this.props.deviceType] ||
+                                                200) + iconSize.unit,
                                     }}
                                 />
                             ) : (
