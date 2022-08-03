@@ -8,11 +8,18 @@
         word-break: normal;
         overflow-wrap: break-word;
     }
-    &:not(.is-responsive) {
-        .wp-block-premium-navigation-link {
-            &.heading-item {
-                font-weight: 700;
-                font-size: 1.1em;
+    .wp-block-premium-navigation-link {
+        a {
+            width: 100%;
+        }
+    }
+    .premium-navigation__responsive-container {
+        &:not(.is-menu-open) {
+            .wp-block-premium-navigation-link {
+                &.heading-item a {
+                    font-weight: 700;
+                    font-size: 1.1em;
+                }
             }
         }
     }

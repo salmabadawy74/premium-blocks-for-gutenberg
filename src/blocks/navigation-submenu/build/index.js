@@ -7827,45 +7827,6 @@ const getColors = (menuColors, submenuColors) => {
   return colors;
 };
 
-const getTypography = (menuTypography, submenuTypography) => {
-  const typography = { ...menuTypography
-  };
-
-  if (submenuTypography.size) {
-    typography.size = submenuTypography.size;
-  }
-
-  if (submenuTypography.weight) {
-    typography.weight = submenuTypography.weight;
-  }
-
-  if (submenuTypography.family) {
-    typography.family = submenuTypography.family;
-  }
-
-  if (submenuTypography.letterSpacing) {
-    typography.letterSpacing = submenuTypography.letterSpacing;
-  }
-
-  if (submenuTypography.textTransform) {
-    typography.textTransform = submenuTypography.textTransform;
-  }
-
-  if (submenuTypography.textDecoration) {
-    typography.textDecoration = submenuTypography.textDecoration;
-  }
-
-  if (submenuTypography.lineHeight) {
-    typography.lineHeight = submenuTypography.lineHeight;
-  }
-
-  if (submenuTypography.style) {
-    typography.style = submenuTypography.style;
-  }
-
-  return typography;
-};
-
 function NavigationSubmenuEdit(_ref) {
   let {
     attributes,
@@ -7906,10 +7867,10 @@ function NavigationSubmenuEdit(_ref) {
     submenuColors,
     menuColors,
     submenuWidth,
-    menuTypography,
     submenuTypography: typography,
     overlayMenu,
-    submenuBorder
+    submenuBorder,
+    submenuItemBorder
   } = context;
   const {
     saveEntityRecord
@@ -7939,14 +7900,16 @@ function NavigationSubmenuEdit(_ref) {
     selectedBlockHasDescendants,
     userCanCreatePages,
     userCanCreatePosts,
-    onlyDescendantIsEmptyLink
+    onlyDescendantIsEmptyLink,
+    parents
   } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useSelect)(select => {
     const {
       getClientIdsOfDescendants,
       hasSelectedInnerBlock,
       getSelectedBlockClientId,
       getBlockParentsByBlockName,
-      getBlock
+      getBlock,
+      getBlockParents
     } = select(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__.store);
 
     let _onlyDescendantIsEmptyLink;
@@ -7968,6 +7931,7 @@ function NavigationSubmenuEdit(_ref) {
       isAtMaxNesting: getBlockParentsByBlockName(clientId, _block_json__WEBPACK_IMPORTED_MODULE_17__.name).length >= MAX_NESTING,
       isTopLevelItem: getBlockParentsByBlockName(clientId, _block_json__WEBPACK_IMPORTED_MODULE_17__.name).length === 0,
       isParentOfSelectedBlock: hasSelectedInnerBlock(clientId, true),
+      parents: getBlockParents(clientId, true),
       isImmediateParentOfSelectedBlock: hasSelectedInnerBlock(clientId, false),
       hasDescendants: !!descendants,
       selectedBlockHasDescendants: !!(selectedBlockDescendants !== null && selectedBlockDescendants !== void 0 && selectedBlockDescendants.length),
@@ -7977,11 +7941,9 @@ function NavigationSubmenuEdit(_ref) {
     };
   }, [clientId]);
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    if (!blockId) {
-      setAttributes({
-        blockId: "premium-navigation-submenu-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__.generateBlockId)(clientId)
-      });
-    }
+    setAttributes({
+      blockId: "premium-navigation-submenu-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__.generateBlockId)(clientId)
+    });
   }); // Show the LinkControl on mount if the URL is empty
   // ( When adding a new menu item)
   // This can't be done in the useState call because it conflicts
@@ -8076,28 +8038,11 @@ function NavigationSubmenuEdit(_ref) {
     }
   }
 
-  const defaultSize = {
-    Desktop: "",
-    Tablet: "",
-    Mobile: "",
-    unit: "px"
-  };
   const {
     link: linkColor,
     linkHover: linkHoverColor,
     background: backgroundColor
   } = getColors(menuColors, submenuColors);
-  const {
-    fontSize: fontSizeValue = defaultSize,
-    fontFamily: family,
-    fontWeight: weight,
-    letterSpacing,
-    textTransform,
-    textDecoration,
-    lineHeight,
-    fontStyle
-  } = getTypography(menuTypography, typography);
-  const fontSize = fontSizeValue ? fontSizeValue : defaultSize;
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__.useBlockProps)({
     ref: listItemRef,
     className: classnames__WEBPACK_IMPORTED_MODULE_1___default()('premium-navigation-item', {
@@ -8106,7 +8051,8 @@ function NavigationSubmenuEdit(_ref) {
       'has-link': !!url,
       'has-child': hasDescendants,
       'open-on-click': openSubmenusOnClick,
-      'premiun-mega-menu': megaMenu && overlayMenu !== 'always'
+      'premiun-mega-menu': megaMenu && overlayMenu !== 'always',
+      [blockId]: !!blockId
     }),
     onKeyDown
   });
@@ -8115,6 +8061,27 @@ function NavigationSubmenuEdit(_ref) {
     (0,lodash__WEBPACK_IMPORTED_MODULE_2__.pull)(ALLOWED_BLOCKS, 'premium/navigation-submenu');
   }
 
+  const MegaMenuInnerBlocksProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__.useInnerBlocksProps)({
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()('premium-navigation__submenu-container', {
+      'is-parent-of-selected-block': isParentOfSelectedBlock
+    }),
+    style: {
+      color: linkColor,
+      backgroundColor: backgroundColor,
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__.borderCss)(submenuBorder, deviceType),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__.gradientBackground)(megaMenuBackground),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__.paddingCss)(padding, deviceType),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__.typographyCss)(typography, deviceType)
+    }
+  }, {
+    __experimentalDefaultBlock: DEFAULT_BLOCK,
+    // Ensure block toolbar is not too far removed from item
+    // being edited.
+    // see: https://github.com/WordPress/gutenberg/pull/34615.
+    __experimentalCaptureToolbars: false,
+    renderAppender: isSelected || isImmediateParentOfSelectedBlock && !selectedBlockHasDescendants || // Show the appender while dragging to allow inserting element between item and the appender.
+    hasDescendants ? _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__.InnerBlocks.ButtonBlockAppender : false
+  });
   const innerBlocksProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__.useInnerBlocksProps)({
     className: classnames__WEBPACK_IMPORTED_MODULE_1___default()('premium-navigation__submenu-container', {
       'is-parent-of-selected-block': isParentOfSelectedBlock
@@ -8128,13 +8095,13 @@ function NavigationSubmenuEdit(_ref) {
       ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__.typographyCss)(typography, deviceType)
     }
   }, {
-    allowedBlocks: megaMenu ? true : ALLOWED_BLOCKS,
+    allowedBlocks: ALLOWED_BLOCKS,
     __experimentalDefaultBlock: DEFAULT_BLOCK,
-    // __experimentalDirectInsert: true,
+    __experimentalDirectInsert: true,
     // Ensure block toolbar is not too far removed from item
     // being edited.
     // see: https://github.com/WordPress/gutenberg/pull/34615.
-    __experimentalCaptureToolbars: true,
+    __experimentalCaptureToolbars: false,
     renderAppender: isSelected || isImmediateParentOfSelectedBlock && !selectedBlockHasDescendants || // Show the appender while dragging to allow inserting element between item and the appender.
     hasDescendants ? _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__.InnerBlocks.ButtonBlockAppender : false
   });
@@ -8177,7 +8144,7 @@ function NavigationSubmenuEdit(_ref) {
       left = megaMenuWidth === 'menu-container' ? `-${ref.current.parentElement.parentElement.offsetLeft}` : left;
       submenuElement.style.left = `${megaMenuWidth === 'content' ? left - 9 : left}px`;
     } else {
-      submenuElement.style.left = `0`;
+      submenuElement.style.left = isTopLevelItem ? `0` : '100%';
       submenuElement.style.width = submenuWidth ? `${submenuWidth}px` : `auto`;
     }
   }, [isSelected, megaMenu, megaMenuWidth, submenuWidth, overlayMenu]);
@@ -8203,7 +8170,17 @@ function NavigationSubmenuEdit(_ref) {
     };
     styles[`.${blockId} .premium-navigation__submenu-container a`] = {
       '--pbg-links-color': linkColor,
-      '--pbg-links-hover-color': linkHoverColor
+      '--pbg-links-hover-color': linkHoverColor,
+      'border-style': submenuItemBorder.borderType,
+      'border-top-width': `${submenuItemBorder.borderWidth[deviceType].top || 0}px`,
+      'border-right-width': `${submenuItemBorder.borderWidth[deviceType].right || 0}px`,
+      'border-bottom-width': `${submenuItemBorder.borderWidth[deviceType].bottom || 0}px`,
+      'border-left-width': `${submenuItemBorder.borderWidth[deviceType].left || 0}px`,
+      'border-color': submenuItemBorder.borderColor,
+      'border-top-left-radius': `${submenuItemBorder.borderRadius[deviceType].top || 0}px`,
+      'border-top-right-radius': `${submenuItemBorder.borderRadius[deviceType].right || 0}px`,
+      'border-bottom-left-radius': `${submenuItemBorder.borderRadius[deviceType].bottom || 0}px`,
+      'border-bottom-right-radius': `${submenuItemBorder.borderRadius[deviceType].left || 0}px`
     };
     return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__.generateCss)(styles);
   };
@@ -8333,11 +8310,7 @@ function NavigationSubmenuEdit(_ref) {
     })
   })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_15__["default"], {
     key: 'advance'
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
-    dangerouslySetInnerHTML: {
-      __html: loadStyles()
-    }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ParentElement, {
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ParentElement, {
     className: "premium-navigation-item__content"
   }, linkCustomIcon && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: `pbg-navigation-link-icon ${linkCustomIcon}`
@@ -8412,7 +8385,7 @@ function NavigationSubmenuEdit(_ref) {
       color: badgeColors.text,
       backgroundColor: badgeColors.background
     }
-  }) : ''), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", innerBlocksProps)));
+  }) : ''), !megaMenu && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", innerBlocksProps), megaMenu && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", MegaMenuInnerBlocksProps), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, loadStyles())));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = ((0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.withSelect)((select, props) => {
@@ -10786,7 +10759,7 @@ var r={grad:.9,turn:360,rad:360/(2*Math.PI)},t=function(r){return"string"==typeo
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/navigation-submenu","title":"Premium Submenu","category":"design","parent":["premium/navigation"],"description":"Add a submenu to your navigation.","textdomain":"default","attributes":{"blockId":{"type":"string"},"label":{"type":"string"},"type":{"type":"string"},"description":{"type":"string"},"rel":{"type":"string"},"id":{"type":"number"},"opensInNewTab":{"type":"boolean","default":false},"url":{"type":"string"},"title":{"type":"string"},"kind":{"type":"string"},"isTopLevelItem":{"type":"boolean"},"megaMenu":{"type":"boolean"},"megaMenuWidth":{"type":"string","default":"content"},"megaMenuColumns":{"type":"string","default":"2"},"megaMenuLayout":{"type":"string","default":"equal"},"spacing":{"type":"object","default":{"padding":null,"columnPadding":null}},"megaMenuBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"","gradientColorTwo":"","gradientLocationTwo":"","gradientAngle":"","gradientPosition":"","gradientType":""}},"linkCustomIcon":{"type":"string"},"linkBadge":{"type":"boolean"},"badgeText":{"type":"string"},"badgeColors":{"type":"object","default":{"text":"","background":""}}},"providesContext":{"megaMenu":"megaMenu"},"usesContext":["showSubmenuIcon","openSubmenusOnClick","style","menuColors","submenuColors","submenuWidth","submenuTypography","menuTypography","overlayMenu","submenuBorder"],"supports":{"reusable":false,"html":false},"editorScript":"file:./build/index.js","editorStyle":"file:./build/index.css","style":"file:./build/style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/navigation-submenu","title":"Premium Submenu","category":"design","description":"Add a submenu to your navigation.","textdomain":"default","attributes":{"blockId":{"type":"string"},"label":{"type":"string"},"type":{"type":"string"},"description":{"type":"string"},"rel":{"type":"string"},"id":{"type":"number"},"opensInNewTab":{"type":"boolean","default":false},"url":{"type":"string"},"title":{"type":"string"},"kind":{"type":"string"},"isTopLevelItem":{"type":"boolean"},"megaMenu":{"type":"boolean"},"megaMenuWidth":{"type":"string","default":"content"},"megaMenuColumns":{"type":"string","default":"2"},"megaMenuLayout":{"type":"string","default":"equal"},"spacing":{"type":"object","default":{"padding":null,"columnPadding":null}},"megaMenuBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"","gradientColorTwo":"","gradientLocationTwo":"","gradientAngle":"","gradientPosition":"","gradientType":""}},"linkCustomIcon":{"type":"string"},"linkBadge":{"type":"boolean"},"badgeText":{"type":"string"},"badgeColors":{"type":"object","default":{"text":"","background":""}}},"providesContext":{"megaMenu":"megaMenu"},"usesContext":["showSubmenuIcon","openSubmenusOnClick","style","menuColors","submenuColors","submenuWidth","submenuTypography","menuTypography","overlayMenu","submenuBorder","submenuItemBorder"],"supports":{"reusable":false,"html":false},"editorScript":"file:./build/index.js","editorStyle":"file:./build/index.css","style":"file:./build/style-index.css"}');
 
 /***/ })
 

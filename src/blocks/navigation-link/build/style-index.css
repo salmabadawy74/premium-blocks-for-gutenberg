@@ -5,7 +5,10 @@
   word-break: normal;
   overflow-wrap: break-word;
 }
-.wp-block-premium-navigation:not(.is-responsive) .wp-block-premium-navigation-link.heading-item {
+.wp-block-premium-navigation .wp-block-premium-navigation-link a {
+  width: 100%;
+}
+.wp-block-premium-navigation .premium-navigation__responsive-container:not(.is-menu-open) .wp-block-premium-navigation-link.heading-item a {
   font-weight: 700;
   font-size: 1.1em;
 }

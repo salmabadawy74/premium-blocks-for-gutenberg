@@ -242,42 +242,6 @@ const getColors = (menuColors, submenuColors) => {
 	return colors;
 }
 
-const getTypography = (menuTypography, submenuTypography) => {
-	const typography = { ...menuTypography };
-	if (submenuTypography.size) {
-		typography.size = submenuTypography.size;
-	}
-	if (submenuTypography.weight) {
-		typography.weight = submenuTypography.weight;
-	}
-
-	if (submenuTypography.family) {
-		typography.family = submenuTypography.family;
-	}
-
-	if (submenuTypography.letterSpacing) {
-		typography.letterSpacing = submenuTypography.letterSpacing;
-	}
-
-	if (submenuTypography.textTransform) {
-		typography.textTransform = submenuTypography.textTransform;
-	}
-
-	if (submenuTypography.textDecoration) {
-		typography.textDecoration = submenuTypography.textDecoration;
-	}
-
-	if (submenuTypography.lineHeight) {
-		typography.lineHeight = submenuTypography.lineHeight;
-	}
-
-	if (submenuTypography.style) {
-		typography.style = submenuTypography.style;
-	}
-
-	return typography;
-}
-
 function NavigationSubmenuEdit({
 	attributes,
 	isSelected,
@@ -305,14 +269,15 @@ function NavigationSubmenuEdit({
 		badgeText,
 		badgeColors,
 		linkBadge,
-		blockId
+		blockId,
 	} = attributes;
 	const link = {
 		url,
 		opensInNewTab,
 	};
-	const { showSubmenuIcon, openSubmenusOnClick, submenuColors, menuColors, submenuWidth, menuTypography,
-		submenuTypography: typography, overlayMenu, submenuBorder } = context;
+	const { showSubmenuIcon, openSubmenusOnClick, submenuColors, menuColors, submenuWidth,
+		submenuTypography: typography, overlayMenu, submenuBorder, submenuItemBorder } = context;
+
 	const { saveEntityRecord } = useDispatch(coreStore);
 	const { contentSize } = useSetting('layout');
 	let columnPadding = spacing.columnPadding ? spacing.columnPadding : {};
@@ -338,6 +303,7 @@ function NavigationSubmenuEdit({
 		userCanCreatePages,
 		userCanCreatePosts,
 		onlyDescendantIsEmptyLink,
+		parents
 	} = useSelect(
 		(select) => {
 			const {
@@ -346,6 +312,7 @@ function NavigationSubmenuEdit({
 				getSelectedBlockClientId,
 				getBlockParentsByBlockName,
 				getBlock,
+				getBlockParents
 			} = select(blockEditorStore);
 
 			let _onlyDescendantIsEmptyLink;
@@ -380,6 +347,8 @@ function NavigationSubmenuEdit({
 					clientId,
 					true
 				),
+				parents:
+					getBlockParents(clientId, true),
 				isImmediateParentOfSelectedBlock: hasSelectedInnerBlock(
 					clientId,
 					false
@@ -401,9 +370,7 @@ function NavigationSubmenuEdit({
 	);
 
 	useEffect(() => {
-		if (!blockId) {
-			setAttributes({ blockId: "premium-navigation-submenu-" + generateBlockId(clientId) })
-		}
+		setAttributes({ blockId: "premium-navigation-submenu-" + generateBlockId(clientId) })
 	})
 
 	// Show the LinkControl on mount if the URL is empty
@@ -498,16 +465,7 @@ function NavigationSubmenuEdit({
 		}
 	}
 
-	const defaultSize = {
-		Desktop: "",
-		Tablet: "",
-		Mobile: "",
-		unit: "px"
-	};
-
 	const { link: linkColor, linkHover: linkHoverColor, background: backgroundColor } = getColors(menuColors, submenuColors);
-	const { fontSize: fontSizeValue = defaultSize, fontFamily: family, fontWeight: weight, letterSpacing, textTransform, textDecoration, lineHeight, fontStyle } = getTypography(menuTypography, typography);
-	const fontSize = fontSizeValue ? fontSizeValue : defaultSize;
 	const blockProps = useBlockProps({
 		ref: listItemRef,
 		className: classnames('premium-navigation-item', {
@@ -517,6 +475,7 @@ function NavigationSubmenuEdit({
 			'has-child': hasDescendants,
 			'open-on-click': openSubmenusOnClick,
 			'premiun-mega-menu': megaMenu && overlayMenu !== 'always',
+			[blockId]: !!blockId
 		}),
 		onKeyDown,
 	});
@@ -524,6 +483,39 @@ function NavigationSubmenuEdit({
 	if (isAtMaxNesting) {
 		pull(ALLOWED_BLOCKS, 'premium/navigation-submenu');
 	}
+
+	const MegaMenuInnerBlocksProps = useInnerBlocksProps(
+		{
+			className: classnames('premium-navigation__submenu-container', {
+				'is-parent-of-selected-block': isParentOfSelectedBlock
+			}),
+			style: {
+				color: linkColor,
+				backgroundColor: backgroundColor,
+				...borderCss(submenuBorder, deviceType),
+				...gradientBackground(megaMenuBackground),
+				...paddingCss(padding, deviceType),
+				...typographyCss(typography, deviceType),
+			},
+		},
+		{
+			__experimentalDefaultBlock: DEFAULT_BLOCK,
+
+			// Ensure block toolbar is not too far removed from item
+			// being edited.
+			// see: https://github.com/WordPress/gutenberg/pull/34615.
+			__experimentalCaptureToolbars: false,
+
+			renderAppender:
+				isSelected ||
+					(isImmediateParentOfSelectedBlock &&
+						!selectedBlockHasDescendants) ||
+					// Show the appender while dragging to allow inserting element between item and the appender.
+					hasDescendants
+					? InnerBlocks.ButtonBlockAppender
+					: false,
+		}
+	);
 
 	const innerBlocksProps = useInnerBlocksProps(
 		{
@@ -540,14 +532,14 @@ function NavigationSubmenuEdit({
 			},
 		},
 		{
-			allowedBlocks: megaMenu ? true : ALLOWED_BLOCKS,
+			allowedBlocks: ALLOWED_BLOCKS,
 			__experimentalDefaultBlock: DEFAULT_BLOCK,
-			// __experimentalDirectInsert: true,
+			__experimentalDirectInsert: true,
 
 			// Ensure block toolbar is not too far removed from item
 			// being edited.
 			// see: https://github.com/WordPress/gutenberg/pull/34615.
-			__experimentalCaptureToolbars: true,
+			__experimentalCaptureToolbars: false,
 
 			renderAppender:
 				isSelected ||
@@ -596,7 +588,7 @@ function NavigationSubmenuEdit({
 			left = megaMenuWidth === 'menu-container' ? `-${ref.current.parentElement.parentElement.offsetLeft}` : left;
 			submenuElement.style.left = `${megaMenuWidth === 'content' ? left - 9 : left}px`;
 		} else {
-			submenuElement.style.left = `0`;
+			submenuElement.style.left = isTopLevelItem ? `0` : '100%';
 			submenuElement.style.width = submenuWidth ? `${submenuWidth}px` : `auto`;
 		}
 	}, [isSelected, megaMenu, megaMenuWidth, submenuWidth, overlayMenu])
@@ -619,7 +611,17 @@ function NavigationSubmenuEdit({
 
 		styles[`.${blockId} .premium-navigation__submenu-container a`] = {
 			'--pbg-links-color': linkColor,
-			'--pbg-links-hover-color': linkHoverColor
+			'--pbg-links-hover-color': linkHoverColor,
+			'border-style': submenuItemBorder.borderType,
+			'border-top-width': `${submenuItemBorder.borderWidth[deviceType].top || 0}px`,
+			'border-right-width': `${submenuItemBorder.borderWidth[deviceType].right || 0}px`,
+			'border-bottom-width': `${submenuItemBorder.borderWidth[deviceType].bottom || 0}px`,
+			'border-left-width': `${submenuItemBorder.borderWidth[deviceType].left || 0}px`,
+			'border-color': submenuItemBorder.borderColor,
+			'border-top-left-radius': `${submenuItemBorder.borderRadius[deviceType].top || 0}px`,
+			'border-top-right-radius': `${submenuItemBorder.borderRadius[deviceType].right || 0}px`,
+			'border-bottom-left-radius': `${submenuItemBorder.borderRadius[deviceType].bottom || 0}px`,
+			'border-bottom-right-radius': `${submenuItemBorder.borderRadius[deviceType].left || 0}px`,
 		}
 
 		return generateCss(styles);
@@ -763,11 +765,6 @@ function NavigationSubmenuEdit({
 				</InspectorTabs>
 			</InspectorControls>
 			<div {...blockProps}>
-				<style
-					dangerouslySetInnerHTML={{
-						__html: loadStyles()
-					}}
-				/>
 				{ /* eslint-disable jsx-a11y/anchor-is-valid */}
 				<ParentElement className="premium-navigation-item__content">
 					{ /* eslint-enable */}
@@ -868,7 +865,9 @@ function NavigationSubmenuEdit({
 						style={{ color: badgeColors.text, backgroundColor: badgeColors.background }}
 					/> : ''}
 				</ParentElement>
-				<div {...innerBlocksProps} />
+				{!megaMenu && <div {...innerBlocksProps} />}
+				{megaMenu && <div {...MegaMenuInnerBlocksProps} />}
+				<style>{loadStyles()}</style>
 			</div>
 		</Fragment>
 	);

@@ -36,6 +36,7 @@ import {
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { speak } from '@wordpress/a11y';
+import GoogleFontLoader from "react-google-font-loader";
 
 /**
  * Internal dependencies
@@ -103,6 +104,7 @@ function Navigation({
 		mobileBreakPoint,
 		menuBorder,
 		submenuBorder,
+		submenuItemBorder,
 		overlayMenuBorder,
 		overlayMenuWidth,
 		overlayMenuStyle,
@@ -111,6 +113,34 @@ function Navigation({
 		hideTablet,
 		hideMobile,
 	} = attributes;
+
+	let LoadMenuGoogleFonts;
+	let LoadSubmenuGoogleFonts;
+
+	useEffect(() => {
+		if (typography.fontFamily !== "Default") {
+			LoadMenuGoogleFonts = (
+				<GoogleFontLoader
+					fonts={[
+						{
+							font: typography?.fontFamily,
+						},
+					]}
+				/>
+			);
+		}
+		if (submenuTypography.fontFamily !== "Default") {
+			LoadSubmenuGoogleFonts = (
+				<GoogleFontLoader
+					fonts={[
+						{
+							font: submenuTypography?.fontFamily,
+						},
+					]}
+				/>
+			);
+		}
+	}, [typography, submenuTypography])
 
 	let areaMenu,
 		setAreaMenu = noop;
@@ -923,6 +953,12 @@ function Navigation({
 											value={submenuBorder}
 											onChange={(value) => setAttributes({ submenuBorder: value })}
 										/>
+										<hr />
+										<PremiumBorder
+											label={__("Item Border")}
+											value={submenuItemBorder}
+											onChange={(value) => setAttributes({ submenuItemBorder: value })}
+										/>
 									</PanelBody>
 
 								</>
@@ -974,11 +1010,7 @@ function Navigation({
 				)}
 				{!isLoading && (
 					<TagName {...blockProps}>
-						<style
-							dangerouslySetInnerHTML={{
-								__html: loadStyles()
-							}}
-						/>
+						<style>{loadStyles()}</style>
 						<ResponsiveWrapper
 							id={clientId}
 							onToggle={setResponsiveMenuVisibility}
@@ -1001,6 +1033,8 @@ function Navigation({
 								/>
 							)}
 						</ResponsiveWrapper>
+						{LoadMenuGoogleFonts && <LoadMenuGoogleFonts />}
+						{LoadSubmenuGoogleFonts && <LoadSubmenuGoogleFonts />}
 					</TagName>
 				)}
 			</RecursionProvider>

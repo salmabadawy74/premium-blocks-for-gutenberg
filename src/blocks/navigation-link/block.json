@@ -4,7 +4,6 @@
     "name": "premium/navigation-link",
     "title": "Premium Custom Link",
     "category": "design",
-    "parent": ["premium/navigation"],
     "description": "Add a page, link, or another item to your navigation.",
     "textdomain": "default",
     "attributes": {

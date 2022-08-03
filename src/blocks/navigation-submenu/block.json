@@ -4,7 +4,6 @@
     "name": "premium/navigation-submenu",
     "title": "Premium Submenu",
     "category": "design",
-    "parent": ["premium/navigation"],
     "description": "Add a submenu to your navigation.",
     "textdomain": "default",
     "attributes": {
@@ -113,7 +112,8 @@
         "submenuTypography",
         "menuTypography",
         "overlayMenu",
-        "submenuBorder"
+        "submenuBorder",
+        "submenuItemBorder"
     ],
     "supports": {
         "reusable": false,

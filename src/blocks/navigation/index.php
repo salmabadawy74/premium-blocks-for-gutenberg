@@ -53,6 +53,18 @@ function get_premium_navigation_css( $attributes, $unique_id ) {
 		$css->add_property( 'border-radius', $css->render_spacing( $submenu_border_radius['Desktop'], 'px' ) );
 	}
 
+	if ( isset( $attributes['submenuItemBorder'] ) ) {
+		$submenu_item_border        = $attributes['submenuItemBorder'];
+		$submenu_item_border_width  = $attributes['submenuItemBorder']['borderWidth'];
+		$submenu_item_border_radius = $attributes['submenuItemBorder']['borderRadius'];
+
+		$css->set_selector( '.' . $unique_id . ' .premium-navigation__submenu-container a' );
+		$css->add_property( 'border-style', $css->render_color( $submenu_item_border['borderType'] ) );
+		$css->add_property( 'border-color', $css->render_color( $submenu_item_border['borderColor'] ) );
+		$css->add_property( 'border-width', $css->render_spacing( $submenu_item_border_width['Desktop'], 'px' ) );
+		$css->add_property( 'border-radius', $css->render_spacing( $submenu_item_border_radius['Desktop'], 'px' ) );
+	}
+
 	if ( isset( $attributes['overlayMenuBorder'] ) ) {
 		$overlay_menu_border        = $attributes['overlayMenuBorder'];
 		$overlay_menu_border_width  = $attributes['overlayMenuBorder']['borderWidth'];
@@ -166,6 +178,16 @@ function get_premium_navigation_css( $attributes, $unique_id ) {
 		$css->add_property( 'border-radius', $css->render_spacing( $submenu_border_radius['Tablet'], 'px' ) );
 	}
 
+	if ( isset( $attributes['submenuItemBorder'] ) ) {
+		$submenu_item_border        = $attributes['submenuItemBorder'];
+		$submenu_item_border_width  = $attributes['submenuItemBorder']['borderWidth'];
+		$submenu_item_border_radius = $attributes['submenuItemBorder']['borderRadius'];
+
+		$css->set_selector( '.' . $unique_id . ' .premium-navigation__submenu-container a' );
+		$css->add_property( 'border-width', $css->render_spacing( $submenu_item_border_width['Tablet'], 'px' ) );
+		$css->add_property( 'border-radius', $css->render_spacing( $submenu_item_border_radius['Tablet'], 'px' ) );
+	}
+
 	if ( isset( $attributes['overlayMenuBorder'] ) ) {
 		$overlay_menu_border        = $attributes['overlayMenuBorder'];
 		$overlay_menu_border_width  = $attributes['overlayMenuBorder']['borderWidth'];
@@ -222,6 +244,16 @@ function get_premium_navigation_css( $attributes, $unique_id ) {
 		$css->set_selector( '.' . $unique_id );
 		$css->add_property( 'border-width', $css->render_spacing( $submenu_border_width['Mobile'], 'px' ) );
 		$css->add_property( 'border-radius', $css->render_spacing( $submenu_border_radius['Mobile'], 'px' ) );
+	}
+
+	if ( isset( $attributes['submenuItemBorder'] ) ) {
+		$submenu_item_border        = $attributes['submenuItemBorder'];
+		$submenu_item_border_width  = $attributes['submenuItemBorder']['borderWidth'];
+		$submenu_item_border_radius = $attributes['submenuItemBorder']['borderRadius'];
+
+		$css->set_selector( '.' . $unique_id . ' .premium-navigation__submenu-container a' );
+		$css->add_property( 'border-width', $css->render_spacing( $submenu_item_border_width['Mobile'], 'px' ) );
+		$css->add_property( 'border-radius', $css->render_spacing( $submenu_item_border_radius['Mobile'], 'px' ) );
 	}
 
 	if ( isset( $attributes['overlayMenuBorder'] ) ) {
@@ -301,6 +333,7 @@ function premium_render_block_navigation( $attributes, $content, $block ) {
 	$hide_desktop                 = ( ! empty( $attributes['hideDesktop'] ) ) ? $attributes['hideDesktop'] : false;
 	$hide_mobile                  = ( ! empty( $attributes['hideMobile'] ) ) ? $attributes['hideMobile'] : false;
 	$hide_tablet                  = ( ! empty( $attributes['hideTablet'] ) ) ? $attributes['hideTablet'] : false;
+	$submenu_box_shadow           = ( ! empty( $attributes['submenuShadow'] ) ) ? $attributes['submenuShadow'] : false;
 
 	wp_enqueue_script(
 		'premium-navigation-view',
@@ -423,6 +456,7 @@ function premium_render_block_navigation( $attributes, $content, $block ) {
 		$hide_desktop ? array( 'premium-desktop-hidden' ) : array(),
 		$hide_tablet ? array( 'premium-tablet-hidden' ) : array(),
 		$hide_mobile ? array( 'premium-mobile-hidden' ) : array(),
+		$submenu_box_shadow ? array( 'submenu-box-shadow' ) : array(),
 	);
 
 	$inner_blocks_html = '';
