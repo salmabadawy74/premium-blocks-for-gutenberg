@@ -21,10 +21,6 @@ const attributes = {
             {
                 titleColor: "",
                 titleBack: '',
-                titleShadowColor: '',
-                titleShadowBlur: 0,
-                titleShadowHorizontal: 0,
-                titleShadowVertical: 0,
             }
         ]
     },
@@ -47,10 +43,6 @@ const attributes = {
                 descAlign: 'left',
                 descColor: '',
                 descBack: '',
-                descPaddingT: '',
-                descPaddingR: '',
-                descPaddingB: '',
-                descPaddingL: ''
             }
 
         ]
@@ -70,22 +62,6 @@ const attributes = {
 
     titleEditBorder: {
         type: "boolean"
-    },
-
-    textShadowColor: {
-        type: "string"
-    },
-    textShadowBlur: {
-        type: "number",
-        default: "0"
-    },
-    textShadowHorizontal: {
-        type: "number",
-        default: "0"
-    },
-    textShadowVertical: {
-        type: "number",
-        default: "0"
     },
     titlePadding: {
         type: "object",
@@ -288,19 +264,19 @@ const attributes = {
     titleTextShadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '10',
-            'horizontal': '0',
-            'vertical': '0',
+            color: "undefined",
+            blur: "10",
+            horizontal: "0",
+            vertical: "0",
         }
     },
     textShadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '10',
-            'horizontal': '0',
-            'vertical': '0',
+            color: "undefined",
+            blur: "10",
+            horizontal: "0",
+            vertical: "0",
         }
     },
     hideDesktop: {

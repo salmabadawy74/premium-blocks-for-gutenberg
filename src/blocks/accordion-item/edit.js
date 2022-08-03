@@ -23,9 +23,7 @@ function AccordionItemEdit({
         className: classnames(className, blockId, 'premium-accordion__content_wrap'),
     });
     useEffect(() => {
-        if (!blockId) {
-            setAttributes({ blockId: "premium-accordion-item-" + generateBlockId(clientId) });
-        }
+        setAttributes({ blockId: "premium-accordion-item-" + generateBlockId(clientId) });
     }, [])
 
     useEffect(() => {

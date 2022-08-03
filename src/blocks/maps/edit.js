@@ -43,10 +43,8 @@ class edit extends Component {
     }
 
     componentDidMount() {
-        const { attributes, setAttributes, clientId } = this.props;
-        if (!attributes.blockId) {
-            setAttributes({ blockId: "premium-map-" + generateBlockId(clientId) });
-        }
+        const { setAttributes, clientId } = this.props;
+        setAttributes({ blockId: "premium-map-" + generateBlockId(clientId) });
         this.initMap();
     }
 

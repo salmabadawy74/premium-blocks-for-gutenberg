@@ -250,9 +250,7 @@ class edit extends Component {
         }
 
         // Assigning id in the attribute.
-        if (!this.props.attributes.blockId) {
-            this.props.setAttributes({ blockId: "premium-bullet-list-" + generateBlockId(this.props.clientId) });
-        }
+        this.props.setAttributes({ blockId: "premium-bullet-list-" + generateBlockId(this.props.clientId) });
         this.props.setAttributes({ classMigrate: true })
     }
 

@@ -54,9 +54,8 @@ const SortableItem = SortableElement(
                 )}
             </div>
             <div
-                className={`premium-repeater-item-controls ${
-                    value.edit ? "editable" : ""
-                }`}
+                className={`premium-repeater-item-controls ${value.edit ? "editable" : ""
+                    }`}
             >
                 <TextControl
                     label={__("Fancy String")}
@@ -99,11 +98,9 @@ class Edit extends Component {
     componentDidMount() {
         const { setAttributes, clientId } = this.props;
         // Assigning id in the attribute.
-        if (!this.props.attributes.blockId) {
-            setAttributes({
-                blockId: "premium-fancy-text-" + generateBlockId(clientId),
-            });
-        }
+        setAttributes({
+            blockId: "premium-fancy-text-" + generateBlockId(clientId),
+        });
         setAttributes({ classMigrate: true });
     }
 

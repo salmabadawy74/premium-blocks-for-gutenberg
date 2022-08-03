@@ -27,9 +27,7 @@ class PremiumPricingTable extends Component {
     componentDidMount() {
         const { setAttributes, clientId } = this.props;
         // Assigning id in the attribute.
-        if (!this.props.attributes.blockId) {
-            setAttributes({ blockId: "premium-pricing-table-" + generateBlockId(clientId) });
-        }
+        setAttributes({ blockId: "premium-pricing-table-" + generateBlockId(clientId) });
         setAttributes({ classMigrate: true });
     }
 

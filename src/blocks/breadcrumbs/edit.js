@@ -99,9 +99,7 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
     }
 
     useEffect(() => {
-        if (!blockId) {
-            setAttributes({ blockId: "premium-breadcrumbs-" + generateBlockId(clientId) })
-        }
+        setAttributes({ blockId: "premium-breadcrumbs-" + generateBlockId(clientId) });
     })
 
     const onChangeSpacing = (value) => {

@@ -7977,11 +7977,9 @@ function NavigationSubmenuEdit(_ref) {
     };
   }, [clientId]);
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    if (!blockId) {
-      setAttributes({
-        blockId: "premium-navigation-submenu-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__.generateBlockId)(clientId)
-      });
-    }
+    setAttributes({
+      blockId: "premium-navigation-submenu-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__.generateBlockId)(clientId)
+    });
   }); // Show the LinkControl on mount if the URL is empty
   // ( When adding a new menu item)
   // This can't be done in the useState call because it conflicts
@@ -10786,7 +10784,7 @@ var r={grad:.9,turn:360,rad:360/(2*Math.PI)},t=function(r){return"string"==typeo
 /***/ (function(module) {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/navigation-submenu","title":"Submenu","category":"design","parent":["premium/navigation"],"description":"Add a submenu to your navigation.","textdomain":"default","attributes":{"blockId":{"type":"string"},"label":{"type":"string"},"type":{"type":"string"},"description":{"type":"string"},"rel":{"type":"string"},"id":{"type":"number"},"opensInNewTab":{"type":"boolean","default":false},"url":{"type":"string"},"title":{"type":"string"},"kind":{"type":"string"},"isTopLevelItem":{"type":"boolean"},"megaMenu":{"type":"boolean"},"megaMenuWidth":{"type":"string","default":"content"},"megaMenuColumns":{"type":"string","default":"2"},"megaMenuLayout":{"type":"string","default":"equal"},"spacing":{"type":"object","default":{"padding":null,"columnPadding":null}},"megaMenuBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"","gradientColorTwo":"","gradientLocationTwo":"","gradientAngle":"","gradientPosition":"","gradientType":""}},"linkCustomIcon":{"type":"string"},"linkBadge":{"type":"boolean"},"badgeText":{"type":"string"},"badgeColors":{"type":"object","default":{"text":"","background":""}},"hideDesktop":{"type":"boolean"},"hideTablet":{"type":"boolean"},"hideMobile":{"type":"boolean"}},"providesContext":{"megaMenu":"megaMenu"},"usesContext":["showSubmenuIcon","openSubmenusOnClick","style","menuColors","submenuColors","submenuWidth","submenuTypography","menuTypography","overlayMenu","submenuBorder"],"supports":{"reusable":false,"html":false},"editorScript":"file:./build/index.js","editorStyle":"file:./build/index.css","style":"file:./build/style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/navigation-submenu","title":"Submenu","category":"design","parent":["premium/navigation"],"description":"Add a submenu to your navigation.","textdomain":"default","attributes":{"blockId":{"type":"string"},"label":{"type":"string"},"type":{"type":"string"},"description":{"type":"string"},"rel":{"type":"string"},"id":{"type":"number"},"opensInNewTab":{"type":"boolean","default":false},"url":{"type":"string"},"title":{"type":"string"},"kind":{"type":"string"},"isTopLevelItem":{"type":"boolean"},"megaMenu":{"type":"boolean"},"megaMenuWidth":{"type":"string","default":"content"},"megaMenuColumns":{"type":"string","default":"2"},"megaMenuLayout":{"type":"string","default":"equal"},"spacing":{"type":"object","default":{"padding":null,"columnPadding":null}},"megaMenuBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}},"linkCustomIcon":{"type":"string"},"linkBadge":{"type":"boolean"},"badgeText":{"type":"string"},"badgeColors":{"type":"object","default":{"text":"","background":""}}},"providesContext":{"megaMenu":"megaMenu"},"usesContext":["showSubmenuIcon","openSubmenusOnClick","style","menuColors","submenuColors","submenuWidth","submenuTypography","menuTypography","overlayMenu","submenuBorder"],"supports":{"reusable":false,"html":false},"editorScript":"file:./build/index.js","editorStyle":"file:./build/index.css","style":"file:./build/style-index.css"}');
 
 /***/ })
 

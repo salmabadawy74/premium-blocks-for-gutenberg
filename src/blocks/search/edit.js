@@ -115,9 +115,7 @@ function SearchEdit({
 	}, [insertedInNavigationBlock]);
 
 	useEffect(() => {
-		if (!blockId) {
-			setAttributes({ blockId: "premium-search-" + generateBlockId(clientId) })
-		}
+		setAttributes({ blockId: "premium-search-" + generateBlockId(clientId) });
 	})
 
 	const isButtonPositionInside = 'button-inside' === buttonPosition;

@@ -35,9 +35,7 @@ class edit extends Component {
     componentDidMount() {
         const { setAttributes, clientId } = this.props;
         // Assigning id in the attribute.
-        if (!this.props.attributes.blockId) {
-            setAttributes({ blockId: "premium-testimonials-" + generateBlockId(clientId) });
-        }
+        setAttributes({ blockId: "premium-testimonials-" + generateBlockId(clientId) });
         this.props.setAttributes({ classMigrate: true });
     }
 

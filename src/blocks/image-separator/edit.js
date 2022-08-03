@@ -40,11 +40,9 @@ class edit extends Component {
 
     componentDidMount() {
         const { setAttributes, clientId } = this.props;
-        if (!this.props.attributes.blockId) {
-            setAttributes({
-                blockId: "premium-image-separator-" + generateBlockId(clientId),
-            });
-        }
+        setAttributes({
+            blockId: "premium-image-separator-" + generateBlockId(clientId),
+        });
     }
 
     render() {
@@ -104,14 +102,14 @@ class edit extends Component {
         const loadStyles = () => {
             const styles = {};
             styles[`.${blockId} .premium-image-separator-container:hover img`] =
-                {
-                    filter: `brightness(${imgFilterHover?.bright}% ) contrast(${imgFilterHover?.contrast}% ) saturate(${imgFilterHover?.saturation}% ) blur(${imgFilterHover?.blur}px) hue-rotate(${imgFilterHover?.hue}deg)!important`,
-                };
+            {
+                filter: `brightness(${imgFilterHover?.bright}% ) contrast(${imgFilterHover?.contrast}% ) saturate(${imgFilterHover?.saturation}% ) blur(${imgFilterHover?.blur}px) hue-rotate(${imgFilterHover?.hue}deg)!important`,
+            };
             styles[` .${blockId} .premium-image-separator-container i:hover`] =
-                {
-                    color: `${iconStyles[0].iconColorHover} !important`,
-                    "background-color": `${iconStyles[0].iconBGColorHover} !important`,
-                };
+            {
+                color: `${iconStyles[0].iconColorHover} !important`,
+                "background-color": `${iconStyles[0].iconBGColorHover} !important`,
+            };
             return generateCss(styles);
         };
 
@@ -664,11 +662,9 @@ class edit extends Component {
                                     iconSize.unit,
                                 color: iconStyles[0].iconColor,
                                 backgroundColor: iconStyles[0].iconBGColor,
-                                textShadow: `${iconShadow.horizontal || 0}px ${
-                                    iconShadow.vertical || 0
-                                }px ${iconShadow.blur || 0}px ${
-                                    iconShadow.color
-                                }`,
+                                textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical || 0
+                                    }px ${iconShadow.blur || 0}px ${iconShadow.color
+                                    }`,
                                 ...BorderValue,
                             }}
                         />

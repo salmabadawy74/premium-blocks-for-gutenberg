@@ -5198,11 +5198,7 @@ const attributes = {
     type: "array",
     default: [{
       titleColor: "",
-      titleBack: '',
-      titleShadowColor: '',
-      titleShadowBlur: 0,
-      titleShadowHorizontal: 0,
-      titleShadowVertical: 0
+      titleBack: ''
     }]
   },
   arrowStyles: {
@@ -5221,11 +5217,7 @@ const attributes = {
     default: [{
       descAlign: 'left',
       descColor: '',
-      descBack: '',
-      descPaddingT: '',
-      descPaddingR: '',
-      descPaddingB: '',
-      descPaddingL: ''
+      descBack: ''
     }]
   },
   descAlign: {
@@ -5242,21 +5234,6 @@ const attributes = {
   },
   titleEditBorder: {
     type: "boolean"
-  },
-  textShadowColor: {
-    type: "string"
-  },
-  textShadowBlur: {
-    type: "number",
-    default: "0"
-  },
-  textShadowHorizontal: {
-    type: "number",
-    default: "0"
-  },
-  textShadowVertical: {
-    type: "number",
-    default: "0"
   },
   titlePadding: {
     type: "object",
@@ -5459,19 +5436,19 @@ const attributes = {
   titleTextShadow: {
     type: "object",
     default: {
-      'color': '',
-      'blur': '10',
-      'horizontal': '0',
-      'vertical': '0'
+      color: "undefined",
+      blur: "10",
+      horizontal: "0",
+      vertical: "0"
     }
   },
   textShadow: {
     type: "object",
     default: {
-      'color': '',
-      'blur': '10',
-      'horizontal': '0',
-      'vertical': '0'
+      color: "undefined",
+      blur: "10",
+      horizontal: "0",
+      vertical: "0"
     }
   },
   hideDesktop: {
@@ -6156,61 +6133,59 @@ const deprecated = [{
   },
 
   migrate: attributes => {
-    var _attributes$descStyle, _attributes$descStyle2, _attributes$descStyle3, _attributes$titleStyl, _attributes$titleStyl2, _attributes$titleStyl3, _attributes$titleStyl4;
-
     let newAttributes = {
       blockId: attributes.accordionId ? `premium-accordion-${attributes.accordionId.split('-')[6]}` : '',
       titlePadding: {
         "Desktop": {
-          top: (attributes === null || attributes === void 0 ? void 0 : attributes.titlePaddingT) || '',
-          right: (attributes === null || attributes === void 0 ? void 0 : attributes.titlePaddingR) || '',
-          bottom: (attributes === null || attributes === void 0 ? void 0 : attributes.titlePaddingB) || '',
-          left: (attributes === null || attributes === void 0 ? void 0 : attributes.titlePaddingL) || ''
+          top: attributes?.titlePaddingT || '',
+          right: attributes?.titlePaddingR || '',
+          bottom: attributes?.titlePaddingB || '',
+          left: attributes?.titlePaddingL || ''
         },
         "Tablet": {
-          top: (attributes === null || attributes === void 0 ? void 0 : attributes.titlePaddingTTablet) || '',
-          right: (attributes === null || attributes === void 0 ? void 0 : attributes.titlePaddingRTablet) || '',
-          bottom: (attributes === null || attributes === void 0 ? void 0 : attributes.titlePaddingBTablet) || '',
-          left: (attributes === null || attributes === void 0 ? void 0 : attributes.titlePaddingLTablet) || ''
+          top: attributes?.titlePaddingTTablet || '',
+          right: attributes?.titlePaddingRTablet || '',
+          bottom: attributes?.titlePaddingBTablet || '',
+          left: attributes?.titlePaddingLTablet || ''
         },
         "Mobile": {
-          top: (attributes === null || attributes === void 0 ? void 0 : attributes.titlePaddingTMobile) || '',
-          right: (attributes === null || attributes === void 0 ? void 0 : attributes.titlePaddingRMobile) || '',
-          bottom: (attributes === null || attributes === void 0 ? void 0 : attributes.titlePaddingBMobile) || '',
-          left: (attributes === null || attributes === void 0 ? void 0 : attributes.titlePaddingLMobile) || ''
+          top: attributes?.titlePaddingTMobile || '',
+          right: attributes?.titlePaddingRMobile || '',
+          bottom: attributes?.titlePaddingBMobile || '',
+          left: attributes?.titlePaddingLMobile || ''
         },
         "unit": "px"
       },
       descPadding: {
         "Desktop": {
-          top: (attributes === null || attributes === void 0 ? void 0 : attributes.descPaddingT) || '',
-          right: (attributes === null || attributes === void 0 ? void 0 : attributes.descPaddingR) || '',
-          bottom: (attributes === null || attributes === void 0 ? void 0 : attributes.descPaddingB) || '',
-          left: (attributes === null || attributes === void 0 ? void 0 : attributes.descPaddingL) || ''
+          top: attributes?.descPaddingT || '',
+          right: attributes?.descPaddingR || '',
+          bottom: attributes?.descPaddingB || '',
+          left: attributes?.descPaddingL || ''
         },
         "Tablet": {
-          top: (attributes === null || attributes === void 0 ? void 0 : attributes.descPaddingTTablet) || '',
-          right: (attributes === null || attributes === void 0 ? void 0 : attributes.descPaddingRTablet) || '',
-          bottom: (attributes === null || attributes === void 0 ? void 0 : attributes.descPaddingBTablet) || '',
-          left: (attributes === null || attributes === void 0 ? void 0 : attributes.descPaddingLTablet) || ''
+          top: attributes?.descPaddingTTablet || '',
+          right: attributes?.descPaddingRTablet || '',
+          bottom: attributes?.descPaddingBTablet || '',
+          left: attributes?.descPaddingLTablet || ''
         },
         "Mobile": {
-          top: (attributes === null || attributes === void 0 ? void 0 : attributes.descPaddingTMobile) || '',
-          right: (attributes === null || attributes === void 0 ? void 0 : attributes.descPaddingRMobile) || '',
-          bottom: (attributes === null || attributes === void 0 ? void 0 : attributes.descPaddingBMobile) || '',
-          left: (attributes === null || attributes === void 0 ? void 0 : attributes.descPaddingLMobile) || ''
+          top: attributes?.descPaddingTMobile || '',
+          right: attributes?.descPaddingRMobile || '',
+          bottom: attributes?.descPaddingBMobile || '',
+          left: attributes?.descPaddingLMobile || ''
         },
         "unit": "px"
       },
       titleBorder: {
-        "borderType": (attributes === null || attributes === void 0 ? void 0 : attributes.titleStyles[0].titleBorder) || '',
-        "borderColor": (attributes === null || attributes === void 0 ? void 0 : attributes.titleStyles[0].titleBorderColor) || '',
+        "borderType": attributes?.titleStyles[0].titleBorder || '',
+        "borderColor": attributes?.titleStyles[0].titleBorderColor || '',
         "borderWidth": {
           Desktop: {
-            top: (attributes === null || attributes === void 0 ? void 0 : attributes.titleBorderTop) || '',
-            right: (attributes === null || attributes === void 0 ? void 0 : attributes.titleBorderRight) || '',
-            bottom: (attributes === null || attributes === void 0 ? void 0 : attributes.titleBorderBottom) || '',
-            left: (attributes === null || attributes === void 0 ? void 0 : attributes.titleBorderLeft) || ''
+            top: attributes?.titleBorderTop || '',
+            right: attributes?.titleBorderRight || '',
+            bottom: attributes?.titleBorderBottom || '',
+            left: attributes?.titleBorderLeft || ''
           },
           Tablet: {
             top: '',
@@ -6227,10 +6202,10 @@ const deprecated = [{
         },
         "borderRadius": {
           Desktop: {
-            top: (attributes === null || attributes === void 0 ? void 0 : attributes.titleStyles[0].titleBorderRadius) || '',
-            right: (attributes === null || attributes === void 0 ? void 0 : attributes.titleStyles[0].titleBorderRadius) || '',
-            bottom: (attributes === null || attributes === void 0 ? void 0 : attributes.titleStyles[0].titleBorderRadius) || '',
-            left: (attributes === null || attributes === void 0 ? void 0 : attributes.titleStyles[0].titleBorderRadius) || ''
+            top: attributes?.titleStyles[0].titleBorderRadius || '',
+            right: attributes?.titleStyles[0].titleBorderRadius || '',
+            bottom: attributes?.titleStyles[0].titleBorderRadius || '',
+            left: attributes?.titleStyles[0].titleBorderRadius || ''
           },
           Tablet: {
             top: '',
@@ -6247,14 +6222,14 @@ const deprecated = [{
         }
       },
       descBorder: {
-        "borderType": (attributes === null || attributes === void 0 ? void 0 : attributes.descStyles[0].descBorder) || '',
-        "borderColor": (attributes === null || attributes === void 0 ? void 0 : attributes.descStyles[0].descBorderColor) || '',
+        "borderType": attributes?.descStyles[0].descBorder || '',
+        "borderColor": attributes?.descStyles[0].descBorderColor || '',
         "borderWidth": {
           Desktop: {
-            top: (attributes === null || attributes === void 0 ? void 0 : attributes.descBorderTop) || '',
-            right: (attributes === null || attributes === void 0 ? void 0 : attributes.descBorderRight) || '',
-            bottom: (attributes === null || attributes === void 0 ? void 0 : attributes.descBorderBottom) || '',
-            left: (attributes === null || attributes === void 0 ? void 0 : attributes.descBorderLeft) || ''
+            top: attributes?.descBorderTop || '',
+            right: attributes?.descBorderRight || '',
+            bottom: attributes?.descBorderBottom || '',
+            left: attributes?.descBorderLeft || ''
           },
           Tablet: {
             top: '',
@@ -6271,10 +6246,10 @@ const deprecated = [{
         },
         "borderRadius": {
           Desktop: {
-            top: (attributes === null || attributes === void 0 ? void 0 : attributes.descStyles[0].descBorderRadius) || '',
-            right: (attributes === null || attributes === void 0 ? void 0 : attributes.descStyles[0].descBorderRadius) || '',
-            bottom: (attributes === null || attributes === void 0 ? void 0 : attributes.descStyles[0].descBorderRadius) || '',
-            left: (attributes === null || attributes === void 0 ? void 0 : attributes.descStyles[0].descBorderRadius) || ''
+            top: attributes?.descStyles[0].descBorderRadius || '',
+            right: attributes?.descStyles[0].descBorderRadius || '',
+            bottom: attributes?.descStyles[0].descBorderRadius || '',
+            left: attributes?.descStyles[0].descBorderRadius || ''
           },
           Tablet: {
             top: '',
@@ -6291,51 +6266,51 @@ const deprecated = [{
         }
       },
       titleTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : attributes.titleStyles[0].titleWeight) || '',
-        'fontStyle': (attributes === null || attributes === void 0 ? void 0 : attributes.titleStyles[0].titleStyle) || '',
-        'textTransform': (attributes === null || attributes === void 0 ? void 0 : attributes.titleStyles[0].titleUpper) || '',
-        'letterSpacing': (attributes === null || attributes === void 0 ? void 0 : attributes.titleStyles[0].titleLetter) || '',
+        "fontWeight": attributes?.titleStyles[0].titleWeight || '',
+        'fontStyle': attributes?.titleStyles[0].titleStyle || '',
+        'textTransform': attributes?.titleStyles[0].titleUpper || '',
+        'letterSpacing': attributes?.titleStyles[0].titleLetter || '',
         'fontFamily': '',
-        'lineHeight': (attributes === null || attributes === void 0 ? void 0 : attributes.titleStyles[0].titleLine) || '',
+        'lineHeight': attributes?.titleStyles[0].titleLine || '',
         'textDecoration': '',
         'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : attributes.titleStyles[0].titleSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : attributes.titleStyles[0].titleSize) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : attributes.titleStyles[0].titleSize) || '',
+          'Desktop': attributes?.titleStyles[0].titleSize || '',
+          "Tablet": attributes?.titleStyles[0].titleSize || '',
+          "Mobile": attributes?.titleStyles[0].titleSize || '',
           "unit": 'px'
         }
       },
       descTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : attributes.descStyles[0].descWeight) || '',
-        'fontStyle': (attributes === null || attributes === void 0 ? void 0 : attributes.descStyles[0].descStyle) || '',
-        'textTransform': (attributes === null || attributes === void 0 ? void 0 : attributes.descStyles[0].descUpper) || '',
-        'letterSpacing': (attributes === null || attributes === void 0 ? void 0 : attributes.descStyles[0].descLetter) || '',
+        "fontWeight": attributes?.descStyles[0].descWeight || '',
+        'fontStyle': attributes?.descStyles[0].descStyle || '',
+        'textTransform': attributes?.descStyles[0].descUpper || '',
+        'letterSpacing': attributes?.descStyles[0].descLetter || '',
         'fontFamily': '',
-        'lineHeight': (attributes === null || attributes === void 0 ? void 0 : attributes.descStyles[0].descLine) || '',
+        'lineHeight': attributes?.descStyles[0].descLine || '',
         'textDecoration': '',
         'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : attributes.descStyles[0].descSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : attributes.descStyles[0].descSize) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : attributes.descStyles[0].descSize) || '',
+          'Desktop': attributes?.descStyles[0].descSize || '',
+          "Tablet": attributes?.descStyles[0].descSize || '',
+          "Mobile": attributes?.descStyles[0].descSize || '',
           "unit": 'px'
         }
       },
       descAlign: {
-        Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle = attributes.descStyles[0]) === null || _attributes$descStyle === void 0 ? void 0 : _attributes$descStyle.descAlign) || 'left',
-        Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle2 = attributes.descStyles[0]) === null || _attributes$descStyle2 === void 0 ? void 0 : _attributes$descStyle2.descAlign) || 'left',
-        Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle3 = attributes.descStyles[0]) === null || _attributes$descStyle3 === void 0 ? void 0 : _attributes$descStyle3.descAlign) || 'left'
+        Desktop: attributes?.descStyles[0]?.descAlign || 'left',
+        Tablet: attributes?.descStyles[0]?.descAlign || 'left',
+        Mobile: attributes?.descStyles[0]?.descAlign || 'left'
       },
       titleTextShadow: {
-        'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl = attributes.titleStyles[0]) === null || _attributes$titleStyl === void 0 ? void 0 : _attributes$titleStyl.titleShadowColor) || '',
-        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl2 = attributes.titleStyles[0]) === null || _attributes$titleStyl2 === void 0 ? void 0 : _attributes$titleStyl2.titleShadowBlur) || '',
-        'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl3 = attributes.titleStyles[0]) === null || _attributes$titleStyl3 === void 0 ? void 0 : _attributes$titleStyl3.titleShadowHorizontal) || '',
-        'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl4 = attributes.titleStyles[0]) === null || _attributes$titleStyl4 === void 0 ? void 0 : _attributes$titleStyl4.titleShadowVertical) || ''
+        'color': attributes?.titleStyles[0]?.titleShadowColor || '',
+        'blur': attributes?.titleStyles[0]?.titleShadowBlur || '',
+        'horizontal': attributes?.titleStyles[0]?.titleShadowHorizontal || '',
+        'vertical': attributes?.titleStyles[0]?.titleShadowVertical || ''
       },
       textShadow: {
-        'color': attributes === null || attributes === void 0 ? void 0 : attributes.textShadowColor,
-        'blur': attributes === null || attributes === void 0 ? void 0 : attributes.textShadowBlur,
-        'horizontal': attributes === null || attributes === void 0 ? void 0 : attributes.textShadowHorizontal,
-        'vertical': attributes === null || attributes === void 0 ? void 0 : attributes.textShadowVertical
+        'color': attributes?.textShadowColor,
+        'blur': attributes?.textShadowBlur,
+        'horizontal': attributes?.textShadowHorizontal,
+        'vertical': attributes?.textShadowVertical
       }
     };
     return Object.assign(attributes, newAttributes);
@@ -7046,16 +7021,12 @@ class PremiumAccordion extends Component {
 
   componentDidMount() {
     const {
-      attributes,
       setAttributes,
       clientId
     } = this.props;
-
-    if (!attributes.blockId) {
-      setAttributes({
-        blockId: "premium-accordion-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_13__.generateBlockId)(clientId)
-      });
-    }
+    setAttributes({
+      blockId: "premium-accordion-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_13__.generateBlockId)(clientId)
+    });
 
     if (this.props.attributes.repeaterItems) {
       this.props.insertOnlyAllowedBlock();
@@ -7157,6 +7128,8 @@ class PremiumAccordion extends Component {
     });
 
     const loadStyles = () => {
+      var _titleBorder$borderWi, _titleBorder$borderWi2, _titleBorder$borderWi3, _titleBorder$borderWi4;
+
       const styles = {};
       styles[`.${blockId} .premium-accordion__title_wrap`] = {
         'background-color': titleStyles[0].titleBack,
@@ -7164,16 +7137,16 @@ class PremiumAccordion extends Component {
         'padding-right': titlePaddingRight && `${titlePaddingRight}${titlePadding.unit}`,
         'padding-bottom': titlePaddingBottom && `${titlePaddingBottom}${titlePadding.unit}`,
         'padding-left': titlePaddingLeft && `${titlePaddingLeft}${titlePadding.unit}`,
-        'border-style': titleBorder && titleBorder.borderType,
-        'border-top-width': titleBorder && titleBorder.borderWidth[this.props.deviceType].top,
-        'border-right-width': titleBorder && titleBorder.borderWidth[this.props.deviceType].right,
-        'border-bottom-width': titleBorder && titleBorder.borderWidth[this.props.deviceType].bottom,
-        'border-left-width': titleBorder && titleBorder.borderWidth[this.props.deviceType].left,
-        'border-color': titleBorder && titleBorder.borderColor,
-        'border-top-left-radius': `${titleBorder && titleBorder.borderRadius[this.props.deviceType].top || 0}px`,
-        'border-top-right-radius': `${titleBorder && titleBorder.borderRadius[this.props.deviceType].right || 0}px`,
-        'border-bottom-left-radius': `${titleBorder && titleBorder.borderRadius[this.props.deviceType].bottom || 0}px`,
-        'border-bottom-right-radius': `${titleBorder && titleBorder.borderRadius[this.props.deviceType].left || 0}px`
+        'border-style': titleBorder === null || titleBorder === void 0 ? void 0 : titleBorder.borderType,
+        'border-top-width': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi = titleBorder.borderWidth[this.props.deviceType]) === null || _titleBorder$borderWi === void 0 ? void 0 : _titleBorder$borderWi.top}px`,
+        'border-right-width': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi2 = titleBorder.borderWidth[this.props.deviceType]) === null || _titleBorder$borderWi2 === void 0 ? void 0 : _titleBorder$borderWi2.right}px`,
+        'border-bottom-width': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi3 = titleBorder.borderWidth[this.props.deviceType]) === null || _titleBorder$borderWi3 === void 0 ? void 0 : _titleBorder$borderWi3.bottom}px`,
+        'border-left-width': `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi4 = titleBorder.borderWidth[this.props.deviceType]) === null || _titleBorder$borderWi4 === void 0 ? void 0 : _titleBorder$borderWi4.left}px`,
+        'border-color': titleBorder === null || titleBorder === void 0 ? void 0 : titleBorder.borderColor,
+        'border-top-left-radius': `${(titleBorder === null || titleBorder === void 0 ? void 0 : titleBorder.borderRadius[this.props.deviceType].top) || 0}px`,
+        'border-top-right-radius': `${(titleBorder === null || titleBorder === void 0 ? void 0 : titleBorder.borderRadius[this.props.deviceType].right) || 0}px`,
+        'border-bottom-left-radius': `${(titleBorder === null || titleBorder === void 0 ? void 0 : titleBorder.borderRadius[this.props.deviceType].bottom) || 0}px`,
+        'border-bottom-right-radius': `${(titleBorder === null || titleBorder === void 0 ? void 0 : titleBorder.borderRadius[this.props.deviceType].left) || 0}px`
       };
       styles[`.${blockId} .premium-accordion__icon_wrap svg.premium-accordion__icon`] = {
         fill: arrowStyles[0].arrowColor,
@@ -7202,16 +7175,16 @@ class PremiumAccordion extends Component {
         'padding-right': descPaddingRight && `${descPaddingRight}${descPadding.unit}`,
         'padding-bottom': descPaddingBottom && `${descPaddingBottom}${descPadding.unit}`,
         'padding-left': descPaddingLeft && `${descPaddingLeft}${descPadding.unit}`,
-        'border-style': descBorder && descBorder.borderType,
-        'border-top-width': descBorder && descBorder.borderWidth[this.props.deviceType].top,
-        'border-right-width': descBorder && descBorder.borderWidth[this.props.deviceType].right,
-        'border-bottom-width': descBorder && descBorder.borderWidth[this.props.deviceType].bottom,
-        'border-left-width': descBorder && descBorder.borderWidth[this.props.deviceType].left,
-        'border-color': descBorder && descBorder.borderColor,
-        'border-top-left-radius': `${descBorder && descBorder.borderRadius[this.props.deviceType].top || 0}px`,
-        'border-top-right-radius': `${descBorder && descBorder.borderRadius[this.props.deviceType].right || 0}px`,
-        'border-bottom-left-radius': `${descBorder && descBorder.borderRadius[this.props.deviceType].bottom || 0}px`,
-        'border-bottom-right-radius': `${descBorder && descBorder.borderRadius[this.props.deviceType].left || 0}px`,
+        'border-style': descBorder === null || descBorder === void 0 ? void 0 : descBorder.borderType,
+        'border-top-width': `${descBorder === null || descBorder === void 0 ? void 0 : descBorder.borderWidth[this.props.deviceType].top}px`,
+        'border-right-width': `${descBorder === null || descBorder === void 0 ? void 0 : descBorder.borderWidth[this.props.deviceType].right}px`,
+        'border-bottom-width': `${descBorder === null || descBorder === void 0 ? void 0 : descBorder.borderWidth[this.props.deviceType].bottom}px`,
+        'border-left-width': `${descBorder === null || descBorder === void 0 ? void 0 : descBorder.borderWidth[this.props.deviceType].left}px`,
+        'border-color': descBorder === null || descBorder === void 0 ? void 0 : descBorder.borderColor,
+        'border-top-left-radius': `${(descBorder === null || descBorder === void 0 ? void 0 : descBorder.borderRadius[this.props.deviceType].top) || 0}px`,
+        'border-top-right-radius': `${(descBorder === null || descBorder === void 0 ? void 0 : descBorder.borderRadius[this.props.deviceType].right) || 0}px`,
+        'border-bottom-left-radius': `${(descBorder === null || descBorder === void 0 ? void 0 : descBorder.borderRadius[this.props.deviceType].bottom) || 0}px`,
+        'border-bottom-right-radius': `${(descBorder === null || descBorder === void 0 ? void 0 : descBorder.borderRadius[this.props.deviceType].left) || 0}px`,
         'text-shadow': `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`
       };
       styles[`.${blockId} .premium-accordion__desc_wrap .premium-accordion__desc`] = {
@@ -7268,11 +7241,11 @@ class PremiumAccordion extends Component {
       choices: [{
         value: 'ltr',
         label: __('LTR'),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_12__["default"].leftArrow
+        icon: _components_icons__WEBPACK_IMPORTED_MODULE_12__["default"].arrowLeft
       }, {
         value: 'rtl',
         label: __('RTL'),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_12__["default"].rightArrow
+        icon: _components_icons__WEBPACK_IMPORTED_MODULE_12__["default"].arrowRight
       }],
       value: direction,
       onChange: newEffect => setAttributes({
@@ -8521,40 +8494,38 @@ const deprecatedContent = [{
   },
 
   migrate: attributes => {
-    var _attributes$container, _attributes$container2, _attributes$container3, _attributes$container4, _attributes$container5, _attributes$container6, _attributes$titleStyl, _attributes$titleStyl2, _attributes$titleStyl3, _attributes$titleStyl4, _attributes$titleStyl5, _attributes$descStyle, _attributes$descStyle2, _attributes$descStyle3, _attributes$descStyle4, _attributes$descStyle5, _attributes$titleStyl6, _attributes$titleStyl7, _attributes$titleStyl8, _attributes$titleStyl9, _attributes$descStyle6, _attributes$descStyle7, _attributes$descStyle8, _attributes$descStyle9, _attributes$container7, _attributes$container8, _attributes$container9, _attributes$container10, _attributes$container11;
-
     let newAttributes = {
       blockId: attributes.block_id ? "premium-banner-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_1__.generateBlockId)(attributes.block_id) : '',
       padding: {
         "Desktop": {
-          top: (attributes === null || attributes === void 0 ? void 0 : attributes.paddingT) || '',
-          right: (attributes === null || attributes === void 0 ? void 0 : attributes.paddingR) || '',
-          bottom: (attributes === null || attributes === void 0 ? void 0 : attributes.paddingB) || '',
-          left: (attributes === null || attributes === void 0 ? void 0 : attributes.paddingL) || ''
+          top: attributes?.paddingT || '',
+          right: attributes?.paddingR || '',
+          bottom: attributes?.paddingB || '',
+          left: attributes?.paddingL || ''
         },
         "Tablet": {
-          top: (attributes === null || attributes === void 0 ? void 0 : attributes.paddingTTablet) || '',
-          right: (attributes === null || attributes === void 0 ? void 0 : attributes.paddingRTablet) || '',
-          bottom: (attributes === null || attributes === void 0 ? void 0 : attributes.paddingBTablet) || '',
-          left: (attributes === null || attributes === void 0 ? void 0 : attributes.paddingLTablet) || ''
+          top: attributes?.paddingTTablet || '',
+          right: attributes?.paddingRTablet || '',
+          bottom: attributes?.paddingBTablet || '',
+          left: attributes?.paddingLTablet || ''
         },
         "Mobile": {
-          top: (attributes === null || attributes === void 0 ? void 0 : attributes.paddingTMobile) || '',
-          right: (attributes === null || attributes === void 0 ? void 0 : attributes.paddingRMobile) || '',
-          bottom: (attributes === null || attributes === void 0 ? void 0 : attributes.paddingBMobile) || '',
-          left: (attributes === null || attributes === void 0 ? void 0 : attributes.paddingLMobile) || ''
+          top: attributes?.paddingTMobile || '',
+          right: attributes?.paddingRMobile || '',
+          bottom: attributes?.paddingBMobile || '',
+          left: attributes?.paddingLMobile || ''
         },
         "unit": "px"
       },
       border: {
-        "borderType": (attributes === null || attributes === void 0 ? void 0 : (_attributes$container = attributes.containerStyles) === null || _attributes$container === void 0 ? void 0 : _attributes$container[0].borderType) || '',
-        "borderColor": (attributes === null || attributes === void 0 ? void 0 : (_attributes$container2 = attributes.containerStyles) === null || _attributes$container2 === void 0 ? void 0 : _attributes$container2[0].borderColor) || '',
+        "borderType": attributes?.containerStyles?.[0].borderType || '',
+        "borderColor": attributes?.containerStyles?.[0].borderColor || '',
         "borderWidth": {
           Desktop: {
-            top: (attributes === null || attributes === void 0 ? void 0 : attributes.borderTop) || '',
-            right: (attributes === null || attributes === void 0 ? void 0 : attributes.borderRight) || '',
-            bottom: (attributes === null || attributes === void 0 ? void 0 : attributes.borderBottom) || '',
-            left: (attributes === null || attributes === void 0 ? void 0 : attributes.borderLeft) || ''
+            top: attributes?.borderTop || '',
+            right: attributes?.borderRight || '',
+            bottom: attributes?.borderBottom || '',
+            left: attributes?.borderLeft || ''
           },
           Tablet: {
             top: '',
@@ -8571,10 +8542,10 @@ const deprecatedContent = [{
         },
         "borderRadius": {
           Desktop: {
-            top: (attributes === null || attributes === void 0 ? void 0 : (_attributes$container3 = attributes.containerStyles) === null || _attributes$container3 === void 0 ? void 0 : _attributes$container3[0].borderRadius) || '',
-            right: (attributes === null || attributes === void 0 ? void 0 : (_attributes$container4 = attributes.containerStyles) === null || _attributes$container4 === void 0 ? void 0 : _attributes$container4[0].borderRadius) || '',
-            bottom: (attributes === null || attributes === void 0 ? void 0 : (_attributes$container5 = attributes.containerStyles) === null || _attributes$container5 === void 0 ? void 0 : _attributes$container5[0].borderRadius) || '',
-            left: (attributes === null || attributes === void 0 ? void 0 : (_attributes$container6 = attributes.containerStyles) === null || _attributes$container6 === void 0 ? void 0 : _attributes$container6[0].borderRadius) || ''
+            top: attributes?.containerStyles?.[0].borderRadius || '',
+            right: attributes?.containerStyles?.[0].borderRadius || '',
+            bottom: attributes?.containerStyles?.[0].borderRadius || '',
+            left: attributes?.containerStyles?.[0].borderRadius || ''
           },
           Tablet: {
             top: '',
@@ -8591,53 +8562,53 @@ const deprecatedContent = [{
         }
       },
       titleTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl = attributes.titleStyles) === null || _attributes$titleStyl === void 0 ? void 0 : _attributes$titleStyl[0].titleWeight) || '',
+        "fontWeight": attributes?.titleStyles?.[0].titleWeight || '',
         'fontStyle': '',
         'textTransform': '',
         'letterSpacing': '',
         'fontFamily': '',
-        'lineHeight': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl2 = attributes.titleStyles) === null || _attributes$titleStyl2 === void 0 ? void 0 : _attributes$titleStyl2[0].titleLine) || '',
+        'lineHeight': attributes?.titleStyles?.[0].titleLine || '',
         'textDecoration': '',
         'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl3 = attributes.titleStyles) === null || _attributes$titleStyl3 === void 0 ? void 0 : _attributes$titleStyl3[0].titleSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl4 = attributes.titleStyles) === null || _attributes$titleStyl4 === void 0 ? void 0 : _attributes$titleStyl4[0].titleSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl5 = attributes.titleStyles) === null || _attributes$titleStyl5 === void 0 ? void 0 : _attributes$titleStyl5[0].titleSizeMobile) || '',
+          'Desktop': attributes?.titleStyles?.[0].titleSize || '',
+          "Tablet": attributes?.titleStyles?.[0].titleSizeTablet || '',
+          "Mobile": attributes?.titleStyles?.[0].titleSizeMobile || '',
           "unit": 'px'
         }
       },
       descTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle = attributes.descStyles) === null || _attributes$descStyle === void 0 ? void 0 : _attributes$descStyle[0].descWeight) || '',
+        "fontWeight": attributes?.descStyles?.[0].descWeight || '',
         'fontStyle': '',
         'textTransform': '',
         'letterSpacing': '',
         'fontFamily': '',
-        'lineHeight': (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle2 = attributes.descStyles) === null || _attributes$descStyle2 === void 0 ? void 0 : _attributes$descStyle2[0].descLine) || '',
+        'lineHeight': attributes?.descStyles?.[0].descLine || '',
         'textDecoration': '',
         'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle3 = attributes.descStyles) === null || _attributes$descStyle3 === void 0 ? void 0 : _attributes$descStyle3[0].descSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle4 = attributes.descStyles) === null || _attributes$descStyle4 === void 0 ? void 0 : _attributes$descStyle4[0].descSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle5 = attributes.descStyles) === null || _attributes$descStyle5 === void 0 ? void 0 : _attributes$descStyle5[0].descSizeMobile) || '',
+          'Desktop': attributes?.descStyles?.[0].descSize || '',
+          "Tablet": attributes?.descStyles?.[0].descSizeTablet || '',
+          "Mobile": attributes?.descStyles?.[0].descSizeMobile || '',
           "unit": 'px'
         }
       },
       titleTextShadow: {
-        'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl6 = attributes.titleStyles) === null || _attributes$titleStyl6 === void 0 ? void 0 : _attributes$titleStyl6[0].shadowColor) || '',
-        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl7 = attributes.titleStyles) === null || _attributes$titleStyl7 === void 0 ? void 0 : _attributes$titleStyl7[0].shadowBlur) || '',
-        'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl8 = attributes.titleStyles) === null || _attributes$titleStyl8 === void 0 ? void 0 : _attributes$titleStyl8[0].shadowHorizontal) || '',
-        'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl9 = attributes.titleStyles) === null || _attributes$titleStyl9 === void 0 ? void 0 : _attributes$titleStyl9[0].shadowVertical) || ''
+        'color': attributes?.titleStyles?.[0].shadowColor || '',
+        'blur': attributes?.titleStyles?.[0].shadowBlur || '',
+        'horizontal': attributes?.titleStyles?.[0].shadowHorizontal || '',
+        'vertical': attributes?.titleStyles?.[0].shadowVertical || ''
       },
       descTextShadow: {
-        'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle6 = attributes.descStyles) === null || _attributes$descStyle6 === void 0 ? void 0 : _attributes$descStyle6[0].descShadowColor) || '',
-        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle7 = attributes.descStyles) === null || _attributes$descStyle7 === void 0 ? void 0 : _attributes$descStyle7[0].descShadowBlur) || '',
-        'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle8 = attributes.descStyles) === null || _attributes$descStyle8 === void 0 ? void 0 : _attributes$descStyle8[0].descShadowHorizontal) || '',
-        'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle9 = attributes.descStyles) === null || _attributes$descStyle9 === void 0 ? void 0 : _attributes$descStyle9[0].descShadowVertical) || ''
+        'color': attributes?.descStyles?.[0].descShadowColor || '',
+        'blur': attributes?.descStyles?.[0].descShadowBlur || '',
+        'horizontal': attributes?.descStyles?.[0].descShadowHorizontal || '',
+        'vertical': attributes?.descStyles?.[0].descShadowVertical || ''
       },
       containerShadow: {
-        'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container7 = attributes.containerStyles) === null || _attributes$container7 === void 0 ? void 0 : _attributes$container7[0].containerShadowColor) || '',
-        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container8 = attributes.containerStyles) === null || _attributes$container8 === void 0 ? void 0 : _attributes$container8[0].containerShadowBlur) || '',
-        'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container9 = attributes.containerStyles) === null || _attributes$container9 === void 0 ? void 0 : _attributes$container9[0].containerShadowHorizontal) || '',
-        'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container10 = attributes.containerStyles) === null || _attributes$container10 === void 0 ? void 0 : _attributes$container10[0].containerShadowVertical) || '',
-        'position': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container11 = attributes.containerStyles) === null || _attributes$container11 === void 0 ? void 0 : _attributes$container11[0].containerShadowPosition) || ''
+        'color': attributes?.containerStyles?.[0].containerShadowColor || '',
+        'blur': attributes?.containerStyles?.[0].containerShadowBlur || '',
+        'horizontal': attributes?.containerStyles?.[0].containerShadowHorizontal || '',
+        'vertical': attributes?.containerStyles?.[0].containerShadowVertical || '',
+        'position': attributes?.containerStyles?.[0].containerShadowPosition || ''
       }
     };
     return Object.assign(attributes, newAttributes);
@@ -9766,7 +9737,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/inspectorTab */ "./src/components/inspectorTab.js");
 /* harmony import */ var _components_responsive_radio__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/responsive-radio */ "./src/components/responsive-radio.js");
 /* harmony import */ var _components_icons__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/icons */ "./src/components/icons.js");
-/* harmony import */ var react_google_font_loader__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-google-font-loader */ "./node_modules/react-google-font-loader/build/index.js");
+/* harmony import */ var react_google_font_loader__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-google-font-loader */ "./src/blocks/node_modules/react-google-font-loader/build/index.js");
 /* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
 
 
@@ -9814,11 +9785,9 @@ class edit extends Component {
   }
 
   componentDidMount() {
-    if (!this.props.attributes.blockId) {
-      this.props.setAttributes({
-        blockId: "premium-banner-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_16__.generateBlockId)(this.props.clientId)
-      });
-    }
+    this.props.setAttributes({
+      blockId: "premium-banner-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_16__.generateBlockId)(this.props.clientId)
+    });
   }
 
   render() {
@@ -12615,12 +12584,9 @@ class edit extends Component {
     } // Assigning id in the attribute.
 
 
-    if (!this.props.attributes.blockId) {
-      this.props.setAttributes({
-        blockId: "premium-bullet-list-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.generateBlockId)(this.props.clientId)
-      });
-    }
-
+    this.props.setAttributes({
+      blockId: "premium-bullet-list-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.generateBlockId)(this.props.clientId)
+    });
     this.props.setAttributes({
       classMigrate: true
     });
@@ -15127,16 +15093,12 @@ class edit extends Component {
 
   componentDidMount() {
     const {
-      attributes,
       setAttributes,
       clientId
     } = this.props;
-
-    if (!attributes.blockId) {
-      setAttributes({
-        blockId: "premium-button-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.generateBlockId)(clientId)
-      });
-    }
+    setAttributes({
+      blockId: "premium-button-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.generateBlockId)(clientId)
+    });
   }
 
   render() {
@@ -16613,19 +16575,17 @@ const deprecatedContent = [{
   },
 
   migrate: attributes => {
-    var _attributes$numberSty, _attributes$numberSty2, _attributes$numberSty3, _attributes$numberSty4, _attributes$numberSty5, _attributes$prefixSty, _attributes$prefixSty2, _attributes$prefixSty3, _attributes$prefixSty4, _attributes$prefixSty5, _attributes$prefixSty6, _attributes$suffixSty, _attributes$suffixSty2, _attributes$suffixSty3, _attributes$suffixSty4, _attributes$suffixSty5, _attributes$suffixSty6, _attributes$titleStyl, _attributes$titleStyl2, _attributes$titleStyl3, _attributes$titleStyl4, _attributes$titleStyl5, _attributes$titleStyl6, _attributes$titleStyl7, _attributes$titleStyl8, _attributes$titleStyl9, _attributes$container, _attributes$container2, _attributes$container3, _attributes$container4, _attributes$container5, _attributes$container6, _attributes$container7, _attributes$container8, _attributes$container9, _attributes$container10, _attributes$container11, _attributes$container12, _attributes$container13, _attributes$container14, _attributes$container15, _attributes$container16, _attributes$container17, _attributes$container18, _attributes$container19, _attributes$container20, _attributes$container21, _attributes$container22, _attributes$container23, _attributes$container24;
-
     let newAttributes = {
       blockId: attributes.block_id ? "premium-countup-" + attributes.block_id : '',
       align: {
-        Desktop: (attributes === null || attributes === void 0 ? void 0 : attributes.align) || 'center',
-        Tablet: (attributes === null || attributes === void 0 ? void 0 : attributes.align) || 'center',
-        Mobile: (attributes === null || attributes === void 0 ? void 0 : attributes.align) || 'center'
+        Desktop: attributes?.align || 'center',
+        Tablet: attributes?.align || 'center',
+        Mobile: attributes?.align || 'center'
       },
       selfAlign: {
-        Desktop: (attributes === null || attributes === void 0 ? void 0 : attributes.selfAlign) || 'center',
-        Tablet: (attributes === null || attributes === void 0 ? void 0 : attributes.selfAlign) || 'center',
-        Mobile: (attributes === null || attributes === void 0 ? void 0 : attributes.selfAlign) || 'center'
+        Desktop: attributes?.selfAlign || 'center',
+        Tablet: attributes?.selfAlign || 'center',
+        Mobile: attributes?.selfAlign || 'center'
       },
       padding: {
         "Desktop": {
@@ -16649,81 +16609,81 @@ const deprecatedContent = [{
         "unit": "px"
       },
       numberTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$numberSty = attributes.numberStyles[0]) === null || _attributes$numberSty === void 0 ? void 0 : _attributes$numberSty.numberWeight) || '',
+        "fontWeight": attributes?.numberStyles[0]?.numberWeight || '',
         'fontStyle': '',
         'textTransform': '',
         'letterSpacing': '',
-        'fontFamily': (attributes === null || attributes === void 0 ? void 0 : attributes.counterFamily) || '',
+        'fontFamily': attributes?.counterFamily || '',
         'lineHeight': '',
         'textDecoration': '',
         'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$numberSty2 = attributes.numberStyles[0]) === null || _attributes$numberSty2 === void 0 ? void 0 : _attributes$numberSty2.numberSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$numberSty3 = attributes.numberStyles[0]) === null || _attributes$numberSty3 === void 0 ? void 0 : _attributes$numberSty3.numberSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$numberSty4 = attributes.numberStyles[0]) === null || _attributes$numberSty4 === void 0 ? void 0 : _attributes$numberSty4.numberSizeMobile) || '',
-          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$numberSty5 = attributes.numberStyles[0]) === null || _attributes$numberSty5 === void 0 ? void 0 : _attributes$numberSty5.numberSizeUnit) || 'px'
+          'Desktop': attributes?.numberStyles[0]?.numberSize || '',
+          "Tablet": attributes?.numberStyles[0]?.numberSizeTablet || '',
+          "Mobile": attributes?.numberStyles[0]?.numberSizeMobile || '',
+          "unit": attributes?.numberStyles[0]?.numberSizeUnit || 'px'
         }
       },
       prefixTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$prefixSty = attributes.prefixStyles[0]) === null || _attributes$prefixSty === void 0 ? void 0 : _attributes$prefixSty.prefixWeight) || '',
+        "fontWeight": attributes?.prefixStyles[0]?.prefixWeight || '',
         'fontStyle': '',
         'textTransform': '',
         'letterSpacing': '',
-        'fontFamily': (attributes === null || attributes === void 0 ? void 0 : (_attributes$prefixSty2 = attributes.prefixStyles[0]) === null || _attributes$prefixSty2 === void 0 ? void 0 : _attributes$prefixSty2.prefixFamily) || '',
+        'fontFamily': attributes?.prefixStyles[0]?.prefixFamily || '',
         'lineHeight': '',
         'textDecoration': '',
         'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$prefixSty3 = attributes.prefixStyles[0]) === null || _attributes$prefixSty3 === void 0 ? void 0 : _attributes$prefixSty3.prefixSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$prefixSty4 = attributes.prefixStyles[0]) === null || _attributes$prefixSty4 === void 0 ? void 0 : _attributes$prefixSty4.prefixSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$prefixSty5 = attributes.prefixStyles[0]) === null || _attributes$prefixSty5 === void 0 ? void 0 : _attributes$prefixSty5.prefixSizeMobile) || '',
-          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$prefixSty6 = attributes.prefixStyles[0]) === null || _attributes$prefixSty6 === void 0 ? void 0 : _attributes$prefixSty6.prefixSizeUnit) || 'px'
+          'Desktop': attributes?.prefixStyles[0]?.prefixSize || '',
+          "Tablet": attributes?.prefixStyles[0]?.prefixSizeTablet || '',
+          "Mobile": attributes?.prefixStyles[0]?.prefixSizeMobile || '',
+          "unit": attributes?.prefixStyles[0]?.prefixSizeUnit || 'px'
         }
       },
       suffixTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$suffixSty = attributes.suffixStyles[0]) === null || _attributes$suffixSty === void 0 ? void 0 : _attributes$suffixSty.suffixWeight) || '',
+        "fontWeight": attributes?.suffixStyles[0]?.suffixWeight || '',
         'fontStyle': '',
         'textTransform': '',
         'letterSpacing': '',
-        'fontFamily': (attributes === null || attributes === void 0 ? void 0 : (_attributes$suffixSty2 = attributes.suffixStyles[0]) === null || _attributes$suffixSty2 === void 0 ? void 0 : _attributes$suffixSty2.suffixFamily) || '',
+        'fontFamily': attributes?.suffixStyles[0]?.suffixFamily || '',
         'lineHeight': '',
         'textDecoration': '',
         'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$suffixSty3 = attributes.suffixStyles[0]) === null || _attributes$suffixSty3 === void 0 ? void 0 : _attributes$suffixSty3.suffixSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$suffixSty4 = attributes.suffixStyles[0]) === null || _attributes$suffixSty4 === void 0 ? void 0 : _attributes$suffixSty4.suffixSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$suffixSty5 = attributes.suffixStyles[0]) === null || _attributes$suffixSty5 === void 0 ? void 0 : _attributes$suffixSty5.suffixSizeMobile) || '',
-          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$suffixSty6 = attributes.suffixStyles[0]) === null || _attributes$suffixSty6 === void 0 ? void 0 : _attributes$suffixSty6.suffixSizeUnit) || 'px'
+          'Desktop': attributes?.suffixStyles[0]?.suffixSize || '',
+          "Tablet": attributes?.suffixStyles[0]?.suffixSizeTablet || '',
+          "Mobile": attributes?.suffixStyles[0]?.suffixSizeMobile || '',
+          "unit": attributes?.suffixStyles[0]?.suffixSizeUnit || 'px'
         }
       },
       titleTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl = attributes.titleStyles[0]) === null || _attributes$titleStyl === void 0 ? void 0 : _attributes$titleStyl.titleWeight) || '',
-        'fontStyle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl2 = attributes.titleStyles[0]) === null || _attributes$titleStyl2 === void 0 ? void 0 : _attributes$titleStyl2.titleStyle) || '',
-        'textTransform': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl3 = attributes.titleStyles[0]) === null || _attributes$titleStyl3 === void 0 ? void 0 : _attributes$titleStyl3.titleUpper) || '',
-        'letterSpacing': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl4 = attributes.titleStyles[0]) === null || _attributes$titleStyl4 === void 0 ? void 0 : _attributes$titleStyl4.titleSpacing) || '',
-        'fontFamily': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl5 = attributes.titleStyles[0]) === null || _attributes$titleStyl5 === void 0 ? void 0 : _attributes$titleStyl5.titleFamily) || '',
+        "fontWeight": attributes?.titleStyles[0]?.titleWeight || '',
+        'fontStyle': attributes?.titleStyles[0]?.titleStyle || '',
+        'textTransform': attributes?.titleStyles[0]?.titleUpper || '',
+        'letterSpacing': attributes?.titleStyles[0]?.titleSpacing || '',
+        'fontFamily': attributes?.titleStyles[0]?.titleFamily || '',
         'lineHeight': '',
         'textDecoration': '',
         'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl6 = attributes.titleStyles[0]) === null || _attributes$titleStyl6 === void 0 ? void 0 : _attributes$titleStyl6.titleSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl7 = attributes.titleStyles[0]) === null || _attributes$titleStyl7 === void 0 ? void 0 : _attributes$titleStyl7.titleSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl8 = attributes.titleStyles[0]) === null || _attributes$titleStyl8 === void 0 ? void 0 : _attributes$titleStyl8.titleSizeMobile) || '',
-          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl9 = attributes.titleStyles[0]) === null || _attributes$titleStyl9 === void 0 ? void 0 : _attributes$titleStyl9.titleSizeUnit) || 'px'
+          'Desktop': attributes?.titleStyles[0]?.titleSize || '',
+          "Tablet": attributes?.titleStyles[0]?.titleSizeTablet || '',
+          "Mobile": attributes?.titleStyles[0]?.titleSizeMobile || '',
+          "unit": attributes?.titleStyles[0]?.titleSizeUnit || 'px'
         }
       },
       boxShadow: {
-        'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container = attributes.containerStyles[0]) === null || _attributes$container === void 0 ? void 0 : _attributes$container.shadowColor) || '',
-        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container2 = attributes.containerStyles[0]) === null || _attributes$container2 === void 0 ? void 0 : _attributes$container2.shadowBlur) || '',
-        'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container3 = attributes.containerStyles[0]) === null || _attributes$container3 === void 0 ? void 0 : _attributes$container3.shadowHorizontal) || '',
-        'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container4 = attributes.containerStyles[0]) === null || _attributes$container4 === void 0 ? void 0 : _attributes$container4.shadowVertical) || '',
-        'position': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container5 = attributes.containerStyles[0]) === null || _attributes$container5 === void 0 ? void 0 : _attributes$container5.shadowPosition) || ''
+        'color': attributes?.containerStyles[0]?.shadowColor || '',
+        'blur': attributes?.containerStyles[0]?.shadowBlur || '',
+        'horizontal': attributes?.containerStyles[0]?.shadowHorizontal || '',
+        'vertical': attributes?.containerStyles[0]?.shadowVertical || '',
+        'position': attributes?.containerStyles[0]?.shadowPosition || ''
       },
       border: {
-        "borderType": (attributes === null || attributes === void 0 ? void 0 : (_attributes$container6 = attributes.containerStyles[0]) === null || _attributes$container6 === void 0 ? void 0 : _attributes$container6.borderType) || '',
-        "borderColor": (attributes === null || attributes === void 0 ? void 0 : (_attributes$container7 = attributes.containerStyles[0]) === null || _attributes$container7 === void 0 ? void 0 : _attributes$container7.borderColor) || '',
+        "borderType": attributes?.containerStyles[0]?.borderType || '',
+        "borderColor": attributes?.containerStyles[0]?.borderColor || '',
         "borderWidth": {
           Desktop: {
-            top: (attributes === null || attributes === void 0 ? void 0 : attributes.borderTop) || '',
-            right: (attributes === null || attributes === void 0 ? void 0 : attributes.borderRight) || '',
-            bottom: (attributes === null || attributes === void 0 ? void 0 : attributes.borderBottom) || '',
-            left: (attributes === null || attributes === void 0 ? void 0 : attributes.borderLeft) || ''
+            top: attributes?.borderTop || '',
+            right: attributes?.borderRight || '',
+            bottom: attributes?.borderBottom || '',
+            left: attributes?.borderLeft || ''
           },
           Tablet: {
             top: '',
@@ -16740,10 +16700,10 @@ const deprecatedContent = [{
         },
         "borderRadius": {
           Desktop: {
-            top: (attributes === null || attributes === void 0 ? void 0 : (_attributes$container8 = attributes.containerStyles[0]) === null || _attributes$container8 === void 0 ? void 0 : _attributes$container8.borderRadius) || '',
-            right: (attributes === null || attributes === void 0 ? void 0 : (_attributes$container9 = attributes.containerStyles[0]) === null || _attributes$container9 === void 0 ? void 0 : _attributes$container9.borderRadius) || '',
-            bottom: (attributes === null || attributes === void 0 ? void 0 : (_attributes$container10 = attributes.containerStyles[0]) === null || _attributes$container10 === void 0 ? void 0 : _attributes$container10.borderRadius) || '',
-            left: (attributes === null || attributes === void 0 ? void 0 : (_attributes$container11 = attributes.containerStyles[0]) === null || _attributes$container11 === void 0 ? void 0 : _attributes$container11.borderRadius) || ''
+            top: attributes?.containerStyles[0]?.borderRadius || '',
+            right: attributes?.containerStyles[0]?.borderRadius || '',
+            bottom: attributes?.containerStyles[0]?.borderRadius || '',
+            left: attributes?.containerStyles[0]?.borderRadius || ''
           },
           Tablet: {
             top: '',
@@ -16761,19 +16721,19 @@ const deprecatedContent = [{
       },
       background: {
         'backgroundType': '',
-        'backgroundColor': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container12 = attributes.containerStyles[0]) === null || _attributes$container12 === void 0 ? void 0 : _attributes$container12.containerBack) || '',
-        'backgroundImageID': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container13 = attributes.containerStyles[0]) === null || _attributes$container13 === void 0 ? void 0 : _attributes$container13.backgroundImageID) || '',
-        'backgroundImageURL': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container14 = attributes.containerStyles[0]) === null || _attributes$container14 === void 0 ? void 0 : _attributes$container14.backgroundImageURL) || '',
-        'backgroundPosition': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container15 = attributes.containerStyles[0]) === null || _attributes$container15 === void 0 ? void 0 : _attributes$container15.backgroundPosition) || 'top center',
-        'backgroundRepeat': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container16 = attributes.containerStyles[0]) === null || _attributes$container16 === void 0 ? void 0 : _attributes$container16.backgroundRepeat) || 'no-reapet',
-        'backgroundSize': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container17 = attributes.containerStyles[0]) === null || _attributes$container17 === void 0 ? void 0 : _attributes$container17.backgroundSize) || 'auto',
-        'fixed': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container18 = attributes.containerStyles[0]) === null || _attributes$container18 === void 0 ? void 0 : _attributes$container18.fixed) || false,
-        'gradientLocationOne': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container19 = attributes.containerStyles[0]) === null || _attributes$container19 === void 0 ? void 0 : _attributes$container19.gradientLocationOne) || '0',
-        'gradientColorTwo': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container20 = attributes.containerStyles[0]) === null || _attributes$container20 === void 0 ? void 0 : _attributes$container20.gradientColorTwo) || '',
-        'gradientLocationTwo': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container21 = attributes.containerStyles[0]) === null || _attributes$container21 === void 0 ? void 0 : _attributes$container21.gradientLocationTwo) || '100',
-        'gradientAngle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container22 = attributes.containerStyles[0]) === null || _attributes$container22 === void 0 ? void 0 : _attributes$container22.gradientAngle) || '180',
-        'gradientPosition': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container23 = attributes.containerStyles[0]) === null || _attributes$container23 === void 0 ? void 0 : _attributes$container23.gradientPosition) || 'center center',
-        'gradientType': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container24 = attributes.containerStyles[0]) === null || _attributes$container24 === void 0 ? void 0 : _attributes$container24.gradientType) || 'linear'
+        'backgroundColor': attributes?.containerStyles[0]?.containerBack || '',
+        'backgroundImageID': attributes?.containerStyles[0]?.backgroundImageID || '',
+        'backgroundImageURL': attributes?.containerStyles[0]?.backgroundImageURL || '',
+        'backgroundPosition': attributes?.containerStyles[0]?.backgroundPosition || 'top center',
+        'backgroundRepeat': attributes?.containerStyles[0]?.backgroundRepeat || 'no-reapet',
+        'backgroundSize': attributes?.containerStyles[0]?.backgroundSize || 'auto',
+        'fixed': attributes?.containerStyles[0]?.fixed || false,
+        'gradientLocationOne': attributes?.containerStyles[0]?.gradientLocationOne || '0',
+        'gradientColorTwo': attributes?.containerStyles[0]?.gradientColorTwo || '',
+        'gradientLocationTwo': attributes?.containerStyles[0]?.gradientLocationTwo || '100',
+        'gradientAngle': attributes?.containerStyles[0]?.gradientAngle || '180',
+        'gradientPosition': attributes?.containerStyles[0]?.gradientPosition || 'center center',
+        'gradientType': attributes?.containerStyles[0]?.gradientType || 'linear'
       }
     };
     return Object.assign(attributes, newAttributes);
@@ -18152,7 +18112,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_responsive_radio__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/responsive-radio */ "./src/components/responsive-radio.js");
 /* harmony import */ var _components_icons__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/icons */ "./src/components/icons.js");
 /* harmony import */ var _components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/premium-responsive-spacing */ "./src/components/premium-responsive-spacing.js");
-/* harmony import */ var react_google_font_loader__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-google-font-loader */ "./node_modules/react-google-font-loader/build/index.js");
+/* harmony import */ var react_google_font_loader__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-google-font-loader */ "./src/blocks/node_modules/react-google-font-loader/build/index.js");
 /* harmony import */ var _components_inspectorTabs__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/inspectorTabs */ "./src/components/inspectorTabs.js");
 /* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/inspectorTab */ "./src/components/inspectorTab.js");
 /* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
@@ -18205,13 +18165,9 @@ class edit extends Component {
       setAttributes,
       clientId
     } = this.props;
-
-    if (!this.props.attributes.blockId) {
-      setAttributes({
-        blockId: "premium-countup-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__.generateBlockId)(clientId)
-      });
-    }
-
+    setAttributes({
+      blockId: "premium-countup-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__.generateBlockId)(clientId)
+    });
     setAttributes({
       classMigrate: true
     });
@@ -18933,9 +18889,9 @@ const save = props => {
     className: `${mainClasses}__wrap ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`,
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       flexDirection: flexDir,
-      boxShadow: `${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.horizontal}px ${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.vertical}px ${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.blur}px ${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.color} ${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.position}`,
-      borderStyle: border === null || border === void 0 ? void 0 : border.borderType,
-      borderColor: border === null || border === void 0 ? void 0 : border.borderColor,
+      boxShadow: `${boxShadow?.horizontal}px ${boxShadow?.vertical}px ${boxShadow?.blur}px ${boxShadow?.color} ${boxShadow?.position}`,
+      borderStyle: border?.borderType,
+      borderColor: border?.borderColor,
       ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.gradientBackground)(background)
     })
   }, iconCheck && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -18969,11 +18925,11 @@ const save = props => {
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       color: prefixStyles[0].prefixColor,
       marginRight: prefixStyles[0].prefixGap + "px",
-      fontStyle: prefixTypography === null || prefixTypography === void 0 ? void 0 : prefixTypography.fontStyle,
-      fontFamily: prefixTypography === null || prefixTypography === void 0 ? void 0 : prefixTypography.fontFamily,
-      fontWeight: prefixTypography === null || prefixTypography === void 0 ? void 0 : prefixTypography.fontWeight,
-      textDecoration: prefixTypography === null || prefixTypography === void 0 ? void 0 : prefixTypography.textDecoration,
-      textTransform: prefixTypography === null || prefixTypography === void 0 ? void 0 : prefixTypography.textTransform
+      fontStyle: prefixTypography?.fontStyle,
+      fontFamily: prefixTypography?.fontFamily,
+      fontWeight: prefixTypography?.fontWeight,
+      textDecoration: prefixTypography?.textDecoration,
+      textTransform: prefixTypography?.textTransform
     })
   }, prefixStyles[0].prefixTxt), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: `premium-countup__increment`,
@@ -18981,22 +18937,22 @@ const save = props => {
     "data-delay": delay,
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       color: numberStyles[0].numberColor,
-      fontStyle: numberTypography === null || numberTypography === void 0 ? void 0 : numberTypography.fontStyle,
-      fontFamily: numberTypography === null || numberTypography === void 0 ? void 0 : numberTypography.fontFamily,
-      fontWeight: numberTypography === null || numberTypography === void 0 ? void 0 : numberTypography.fontWeight,
-      textDecoration: numberTypography === null || numberTypography === void 0 ? void 0 : numberTypography.textDecoration,
-      textTransform: numberTypography === null || numberTypography === void 0 ? void 0 : numberTypography.textTransform
+      fontStyle: numberTypography?.fontStyle,
+      fontFamily: numberTypography?.fontFamily,
+      fontWeight: numberTypography?.fontWeight,
+      textDecoration: numberTypography?.textDecoration,
+      textTransform: numberTypography?.textTransform
     })
   }, increment), suffix && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: `premium-countup__suffix`,
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       color: suffixStyles[0].suffixColor,
       marginLeft: suffixStyles[0].suffixGap + "px",
-      fontStyle: suffixTypography === null || suffixTypography === void 0 ? void 0 : suffixTypography.fontStyle,
-      fontFamily: suffixTypography === null || suffixTypography === void 0 ? void 0 : suffixTypography.fontFamily,
-      fontWeight: suffixTypography === null || suffixTypography === void 0 ? void 0 : suffixTypography.fontWeight,
-      textDecoration: suffixTypography === null || suffixTypography === void 0 ? void 0 : suffixTypography.textDecoration,
-      textTransform: suffixTypography === null || suffixTypography === void 0 ? void 0 : suffixTypography.textTransform
+      fontStyle: suffixTypography?.fontStyle,
+      fontFamily: suffixTypography?.fontFamily,
+      fontWeight: suffixTypography?.fontWeight,
+      textDecoration: suffixTypography?.textDecoration,
+      textTransform: suffixTypography?.textTransform
     })
   }, suffixStyles[0].suffixTxt)), titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
     className: `premium-countup__title`,
@@ -19004,11 +18960,11 @@ const save = props => {
       marginTop: titleStyles[0].titleT + "px",
       marginBottom: titleStyles[0].titleB + "px",
       color: titleStyles[0].titleColor,
-      fontStyle: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontStyle,
-      fontFamily: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily,
-      fontWeight: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontWeight,
-      textDecoration: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textDecoration,
-      textTransform: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textTransform
+      fontStyle: titleTypography?.fontStyle,
+      fontFamily: titleTypography?.fontFamily,
+      fontWeight: titleTypography?.fontWeight,
+      textDecoration: titleTypography?.textDecoration,
+      textTransform: titleTypography?.textTransform
     })
   }, titleTxt)), titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
     className: `premium-countup__title`,
@@ -19016,11 +18972,11 @@ const save = props => {
       marginTop: titleStyles[0].titleT + "px",
       marginBottom: titleStyles[0].titleB + "px",
       color: titleStyles[0].titleColor,
-      fontStyle: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontStyle,
-      fontFamily: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily,
-      fontWeight: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontWeight,
-      textDecoration: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textDecoration,
-      textTransform: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textTransform,
+      fontStyle: titleTypography?.fontStyle,
+      fontFamily: titleTypography?.fontFamily,
+      fontWeight: titleTypography?.fontWeight,
+      textDecoration: titleTypography?.textDecoration,
+      textTransform: titleTypography?.textTransform,
       alignSelf: selfAlign
     })
   }, titleTxt));
@@ -20107,19 +20063,17 @@ const v8Attriutes = {
 const deprecatedContent = [{
   attributes: v8Attriutes,
   migrate: attributes => {
-    var _attributes$firstStyl, _attributes$firstStyl2, _attributes$firstStyl3, _attributes$firstStyl4, _attributes$firstStyl5, _attributes$firstStyl6, _attributes$firstStyl7, _attributes$firstStyl8, _attributes$firstStyl9, _attributes$firstStyl10, _attributes$firstStyl11, _attributes$firstStyl12, _attributes$secondSty, _attributes$secondSty2, _attributes$secondSty3, _attributes$secondSty4, _attributes$secondSty5, _attributes$secondSty6, _attributes$secondSty7, _attributes$secondSty8, _attributes$secondSty9, _attributes$secondSty10, _attributes$secondSty11, _attributes$secondSty12, _attributes$container, _attributes$container2, _attributes$container3, _attributes$container4, _attributes$container5, _attributes$container6, _attributes$container7, _attributes$container8, _attributes$container9, _attributes$container10, _attributes$container11, _attributes$container12, _attributes$firstStyl13, _attributes$firstStyl14, _attributes$firstStyl15, _attributes$firstStyl16, _attributes$firstStyl17, _attributes$firstStyl18, _attributes$firstStyl19, _attributes$firstStyl20, _attributes$firstStyl21, _attributes$firstStyl22, _attributes$firstStyl23, _attributes$firstStyl24, _attributes$firstStyl25, _attributes$firstStyl26, _attributes$firstStyl27, _attributes$firstStyl28, _attributes$firstStyl29, _attributes$firstStyl30, _attributes$secondSty13, _attributes$secondSty14, _attributes$secondSty15, _attributes$secondSty16, _attributes$secondSty17, _attributes$secondSty18, _attributes$secondSty19, _attributes$secondSty20, _attributes$secondSty21, _attributes$secondSty22, _attributes$secondSty23, _attributes$secondSty24, _attributes$secondSty25, _attributes$secondSty26, _attributes$secondSty27, _attributes$secondSty28, _attributes$secondSty29, _attributes$secondSty30, _attributes$container13, _attributes$container14, _attributes$container15, _attributes$container16, _attributes$container17, _attributes$container18, _attributes$container19, _attributes$container20, _attributes$container21, _attributes$container22, _attributes$container23, _attributes$container24, _attributes$container25, _attributes$container26, _attributes$container27, _attributes$container28, _attributes$container29, _attributes$container30, _attributes$container31, _attributes$container32, _attributes$container33, _attributes$container34, _attributes$container35, _attributes$container36, _attributes$container37, _attributes$container38, _attributes$firstStyl31, _attributes$firstStyl32, _attributes$firstStyl33, _attributes$firstStyl34, _attributes$firstStyl35, _attributes$firstStyl36, _attributes$firstStyl37, _attributes$firstStyl38, _attributes$secondSty31, _attributes$secondSty32, _attributes$secondSty33, _attributes$secondSty34, _attributes$secondSty35, _attributes$secondSty36, _attributes$secondSty37, _attributes$secondSty38, _attributes$firstStyl39, _attributes$firstStyl40, _attributes$firstStyl41, _attributes$firstStyl42, _attributes$firstStyl43, _attributes$firstStyl44, _attributes$firstStyl45, _attributes$firstStyl46, _attributes$firstStyl47, _attributes$firstStyl48, _attributes$firstStyl49, _attributes$firstStyl50, _attributes$secondSty39, _attributes$secondSty40, _attributes$secondSty41, _attributes$secondSty42, _attributes$secondSty43, _attributes$secondSty44, _attributes$secondSty45, _attributes$secondSty46, _attributes$secondSty47, _attributes$secondSty48, _attributes$secondSty49, _attributes$secondSty50;
-
     let newAttributes = {
       blockId: attributes.accordionId ? `premium-dual-heading-${attributes.accordionId.split('-')[2]}` : '',
       firstBorder: {
-        "borderType": (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl = attributes.firstStyles) === null || _attributes$firstStyl === void 0 ? void 0 : (_attributes$firstStyl2 = _attributes$firstStyl[0]) === null || _attributes$firstStyl2 === void 0 ? void 0 : _attributes$firstStyl2.firstBorderType) || '',
-        "borderColor": (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl3 = attributes.firstStyles) === null || _attributes$firstStyl3 === void 0 ? void 0 : (_attributes$firstStyl4 = _attributes$firstStyl3[0]) === null || _attributes$firstStyl4 === void 0 ? void 0 : _attributes$firstStyl4.firstBorderColor) || '',
+        "borderType": attributes?.firstStyles?.[0]?.firstBorderType || '',
+        "borderColor": attributes?.firstStyles?.[0]?.firstBorderColor || '',
         "borderWidth": {
           Desktop: {
-            top: (attributes === null || attributes === void 0 ? void 0 : attributes.firstBorderTop) || '',
-            right: (attributes === null || attributes === void 0 ? void 0 : attributes.firstBorderRight) || '',
-            bottom: (attributes === null || attributes === void 0 ? void 0 : attributes.firstBorderBottom) || '',
-            left: (attributes === null || attributes === void 0 ? void 0 : attributes.firstBorderLeft) || ''
+            top: attributes?.firstBorderTop || '',
+            right: attributes?.firstBorderRight || '',
+            bottom: attributes?.firstBorderBottom || '',
+            left: attributes?.firstBorderLeft || ''
           },
           Tablet: {
             top: '',
@@ -20136,10 +20090,10 @@ const deprecatedContent = [{
         },
         "borderRadius": {
           Desktop: {
-            top: (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl5 = attributes.firstStyles) === null || _attributes$firstStyl5 === void 0 ? void 0 : (_attributes$firstStyl6 = _attributes$firstStyl5[0]) === null || _attributes$firstStyl6 === void 0 ? void 0 : _attributes$firstStyl6.firstBorderRadius) || '',
-            right: (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl7 = attributes.firstStyles) === null || _attributes$firstStyl7 === void 0 ? void 0 : (_attributes$firstStyl8 = _attributes$firstStyl7[0]) === null || _attributes$firstStyl8 === void 0 ? void 0 : _attributes$firstStyl8.firstBorderRadius) || '',
-            bottom: (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl9 = attributes.firstStyles) === null || _attributes$firstStyl9 === void 0 ? void 0 : (_attributes$firstStyl10 = _attributes$firstStyl9[0]) === null || _attributes$firstStyl10 === void 0 ? void 0 : _attributes$firstStyl10.firstBorderRadius) || '',
-            left: (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl11 = attributes.firstStyles) === null || _attributes$firstStyl11 === void 0 ? void 0 : (_attributes$firstStyl12 = _attributes$firstStyl11[0]) === null || _attributes$firstStyl12 === void 0 ? void 0 : _attributes$firstStyl12.firstBorderRadius) || ''
+            top: attributes?.firstStyles?.[0]?.firstBorderRadius || '',
+            right: attributes?.firstStyles?.[0]?.firstBorderRadius || '',
+            bottom: attributes?.firstStyles?.[0]?.firstBorderRadius || '',
+            left: attributes?.firstStyles?.[0]?.firstBorderRadius || ''
           },
           Tablet: {
             top: '',
@@ -20156,14 +20110,14 @@ const deprecatedContent = [{
         }
       },
       secondBorder: {
-        "borderType": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty = attributes.secondStyles) === null || _attributes$secondSty === void 0 ? void 0 : (_attributes$secondSty2 = _attributes$secondSty[0]) === null || _attributes$secondSty2 === void 0 ? void 0 : _attributes$secondSty2.secondBorderType) || '',
-        "borderColor": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty3 = attributes.secondStyles) === null || _attributes$secondSty3 === void 0 ? void 0 : (_attributes$secondSty4 = _attributes$secondSty3[0]) === null || _attributes$secondSty4 === void 0 ? void 0 : _attributes$secondSty4.secondBorderColor) || '',
+        "borderType": attributes?.secondStyles?.[0]?.secondBorderType || '',
+        "borderColor": attributes?.secondStyles?.[0]?.secondBorderColor || '',
         "borderWidth": {
           Desktop: {
-            top: (attributes === null || attributes === void 0 ? void 0 : attributes.secondBorderTop) || '',
-            right: (attributes === null || attributes === void 0 ? void 0 : attributes.secondBorderRight) || '',
-            bottom: (attributes === null || attributes === void 0 ? void 0 : attributes.secondBorderBottom) || '',
-            left: (attributes === null || attributes === void 0 ? void 0 : attributes.secondBorderLeft) || ''
+            top: attributes?.secondBorderTop || '',
+            right: attributes?.secondBorderRight || '',
+            bottom: attributes?.secondBorderBottom || '',
+            left: attributes?.secondBorderLeft || ''
           },
           Tablet: {
             top: '',
@@ -20180,10 +20134,10 @@ const deprecatedContent = [{
         },
         "borderRadius": {
           Desktop: {
-            top: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty5 = attributes.secondStyles) === null || _attributes$secondSty5 === void 0 ? void 0 : (_attributes$secondSty6 = _attributes$secondSty5[0]) === null || _attributes$secondSty6 === void 0 ? void 0 : _attributes$secondSty6.secondBorderRadius) || '',
-            right: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty7 = attributes.secondStyles) === null || _attributes$secondSty7 === void 0 ? void 0 : (_attributes$secondSty8 = _attributes$secondSty7[0]) === null || _attributes$secondSty8 === void 0 ? void 0 : _attributes$secondSty8.secondBorderRadius) || '',
-            bottom: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty9 = attributes.secondStyles) === null || _attributes$secondSty9 === void 0 ? void 0 : (_attributes$secondSty10 = _attributes$secondSty9[0]) === null || _attributes$secondSty10 === void 0 ? void 0 : _attributes$secondSty10.secondBorderRadius) || '',
-            left: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty11 = attributes.secondStyles) === null || _attributes$secondSty11 === void 0 ? void 0 : (_attributes$secondSty12 = _attributes$secondSty11[0]) === null || _attributes$secondSty12 === void 0 ? void 0 : _attributes$secondSty12.secondBorderRadius) || ''
+            top: attributes?.secondStyles?.[0]?.secondBorderRadius || '',
+            right: attributes?.secondStyles?.[0]?.secondBorderRadius || '',
+            bottom: attributes?.secondStyles?.[0]?.secondBorderRadius || '',
+            left: attributes?.secondStyles?.[0]?.secondBorderRadius || ''
           },
           Tablet: {
             top: '',
@@ -20200,14 +20154,14 @@ const deprecatedContent = [{
         }
       },
       containerBorder: {
-        "borderType": (attributes === null || attributes === void 0 ? void 0 : (_attributes$container = attributes.containerStyles) === null || _attributes$container === void 0 ? void 0 : (_attributes$container2 = _attributes$container[0]) === null || _attributes$container2 === void 0 ? void 0 : _attributes$container2.containerBorderType) || '',
-        "borderColor": (attributes === null || attributes === void 0 ? void 0 : (_attributes$container3 = attributes.containerStyles) === null || _attributes$container3 === void 0 ? void 0 : (_attributes$container4 = _attributes$container3[0]) === null || _attributes$container4 === void 0 ? void 0 : _attributes$container4.containerBorderColor) || '',
+        "borderType": attributes?.containerStyles?.[0]?.containerBorderType || '',
+        "borderColor": attributes?.containerStyles?.[0]?.containerBorderColor || '',
         "borderWidth": {
           Desktop: {
-            top: (attributes === null || attributes === void 0 ? void 0 : attributes.containerBorderTop) || '',
-            right: (attributes === null || attributes === void 0 ? void 0 : attributes.containerBorderRight) || '',
-            bottom: (attributes === null || attributes === void 0 ? void 0 : attributes.containerBorderBottom) || '',
-            left: (attributes === null || attributes === void 0 ? void 0 : attributes.containerBorderLeft) || ''
+            top: attributes?.containerBorderTop || '',
+            right: attributes?.containerBorderRight || '',
+            bottom: attributes?.containerBorderBottom || '',
+            left: attributes?.containerBorderLeft || ''
           },
           Tablet: {
             top: '',
@@ -20224,10 +20178,10 @@ const deprecatedContent = [{
         },
         "borderRadius": {
           Desktop: {
-            top: (attributes === null || attributes === void 0 ? void 0 : (_attributes$container5 = attributes.containerStyles) === null || _attributes$container5 === void 0 ? void 0 : (_attributes$container6 = _attributes$container5[0]) === null || _attributes$container6 === void 0 ? void 0 : _attributes$container6.containerBorderRadius) || '',
-            right: (attributes === null || attributes === void 0 ? void 0 : (_attributes$container7 = attributes.containerStyles) === null || _attributes$container7 === void 0 ? void 0 : (_attributes$container8 = _attributes$container7[0]) === null || _attributes$container8 === void 0 ? void 0 : _attributes$container8.containerBorderRadius) || '',
-            bottom: (attributes === null || attributes === void 0 ? void 0 : (_attributes$container9 = attributes.containerStyles) === null || _attributes$container9 === void 0 ? void 0 : (_attributes$container10 = _attributes$container9[0]) === null || _attributes$container10 === void 0 ? void 0 : _attributes$container10.containerBorderRadius) || '',
-            left: (attributes === null || attributes === void 0 ? void 0 : (_attributes$container11 = attributes.containerStyles) === null || _attributes$container11 === void 0 ? void 0 : (_attributes$container12 = _attributes$container11[0]) === null || _attributes$container12 === void 0 ? void 0 : _attributes$container12.containerBorderRadius) || ''
+            top: attributes?.containerStyles?.[0]?.containerBorderRadius || '',
+            right: attributes?.containerStyles?.[0]?.containerBorderRadius || '',
+            bottom: attributes?.containerStyles?.[0]?.containerBorderRadius || '',
+            left: attributes?.containerStyles?.[0]?.containerBorderRadius || ''
           },
           Tablet: {
             top: '',
@@ -20244,69 +20198,69 @@ const deprecatedContent = [{
         }
       },
       firstTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl13 = attributes.firstStyles) === null || _attributes$firstStyl13 === void 0 ? void 0 : (_attributes$firstStyl14 = _attributes$firstStyl13[0]) === null || _attributes$firstStyl14 === void 0 ? void 0 : _attributes$firstStyl14.firstWeight) || '',
-        'fontStyle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl15 = attributes.firstStyles) === null || _attributes$firstStyl15 === void 0 ? void 0 : (_attributes$firstStyl16 = _attributes$firstStyl15[0]) === null || _attributes$firstStyl16 === void 0 ? void 0 : _attributes$firstStyl16.firstStyle) || '',
-        'textTransform': (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl17 = attributes.firstStyles) === null || _attributes$firstStyl17 === void 0 ? void 0 : (_attributes$firstStyl18 = _attributes$firstStyl17[0]) === null || _attributes$firstStyl18 === void 0 ? void 0 : _attributes$firstStyl18.firstUpper) || '',
-        'letterSpacing': (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl19 = attributes.firstStyles) === null || _attributes$firstStyl19 === void 0 ? void 0 : (_attributes$firstStyl20 = _attributes$firstStyl19[0]) === null || _attributes$firstStyl20 === void 0 ? void 0 : _attributes$firstStyl20.firstLetter) || '',
-        'fontFamily': (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl21 = attributes.firstStyles) === null || _attributes$firstStyl21 === void 0 ? void 0 : (_attributes$firstStyl22 = _attributes$firstStyl21[0]) === null || _attributes$firstStyl22 === void 0 ? void 0 : _attributes$firstStyl22.firstFamily) || '',
+        "fontWeight": attributes?.firstStyles?.[0]?.firstWeight || '',
+        'fontStyle': attributes?.firstStyles?.[0]?.firstStyle || '',
+        'textTransform': attributes?.firstStyles?.[0]?.firstUpper || '',
+        'letterSpacing': attributes?.firstStyles?.[0]?.firstLetter || '',
+        'fontFamily': attributes?.firstStyles?.[0]?.firstFamily || '',
         'lineHeight': '',
         'textDecoration': '',
         'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl23 = attributes.firstStyles) === null || _attributes$firstStyl23 === void 0 ? void 0 : (_attributes$firstStyl24 = _attributes$firstStyl23[0]) === null || _attributes$firstStyl24 === void 0 ? void 0 : _attributes$firstStyl24.firstSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl25 = attributes.firstStyles) === null || _attributes$firstStyl25 === void 0 ? void 0 : (_attributes$firstStyl26 = _attributes$firstStyl25[0]) === null || _attributes$firstStyl26 === void 0 ? void 0 : _attributes$firstStyl26.firstSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl27 = attributes.firstStyles) === null || _attributes$firstStyl27 === void 0 ? void 0 : (_attributes$firstStyl28 = _attributes$firstStyl27[0]) === null || _attributes$firstStyl28 === void 0 ? void 0 : _attributes$firstStyl28.firstSizeMobile) || '',
-          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl29 = attributes.firstStyles) === null || _attributes$firstStyl29 === void 0 ? void 0 : (_attributes$firstStyl30 = _attributes$firstStyl29[0]) === null || _attributes$firstStyl30 === void 0 ? void 0 : _attributes$firstStyl30.firstSizeUnit) || 'px'
+          'Desktop': attributes?.firstStyles?.[0]?.firstSize || '',
+          "Tablet": attributes?.firstStyles?.[0]?.firstSizeTablet || '',
+          "Mobile": attributes?.firstStyles?.[0]?.firstSizeMobile || '',
+          "unit": attributes?.firstStyles?.[0]?.firstSizeUnit || 'px'
         }
       },
       secondTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty13 = attributes.secondStyles) === null || _attributes$secondSty13 === void 0 ? void 0 : (_attributes$secondSty14 = _attributes$secondSty13[0]) === null || _attributes$secondSty14 === void 0 ? void 0 : _attributes$secondSty14.secondWeight) || '',
-        'fontStyle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty15 = attributes.secondStyles) === null || _attributes$secondSty15 === void 0 ? void 0 : (_attributes$secondSty16 = _attributes$secondSty15[0]) === null || _attributes$secondSty16 === void 0 ? void 0 : _attributes$secondSty16.secondStyle) || '',
-        'textTransform': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty17 = attributes.secondStyles) === null || _attributes$secondSty17 === void 0 ? void 0 : (_attributes$secondSty18 = _attributes$secondSty17[0]) === null || _attributes$secondSty18 === void 0 ? void 0 : _attributes$secondSty18.secondUpper) || '',
-        'letterSpacing': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty19 = attributes.secondStyles) === null || _attributes$secondSty19 === void 0 ? void 0 : (_attributes$secondSty20 = _attributes$secondSty19[0]) === null || _attributes$secondSty20 === void 0 ? void 0 : _attributes$secondSty20.secondLetter) || '',
-        'fontFamily': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty21 = attributes.secondStyles) === null || _attributes$secondSty21 === void 0 ? void 0 : (_attributes$secondSty22 = _attributes$secondSty21[0]) === null || _attributes$secondSty22 === void 0 ? void 0 : _attributes$secondSty22.secondFamily) || '',
+        "fontWeight": attributes?.secondStyles?.[0]?.secondWeight || '',
+        'fontStyle': attributes?.secondStyles?.[0]?.secondStyle || '',
+        'textTransform': attributes?.secondStyles?.[0]?.secondUpper || '',
+        'letterSpacing': attributes?.secondStyles?.[0]?.secondLetter || '',
+        'fontFamily': attributes?.secondStyles?.[0]?.secondFamily || '',
         'lineHeight': '',
         'textDecoration': '',
         'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty23 = attributes.secondStyles) === null || _attributes$secondSty23 === void 0 ? void 0 : (_attributes$secondSty24 = _attributes$secondSty23[0]) === null || _attributes$secondSty24 === void 0 ? void 0 : _attributes$secondSty24.secondSize) || '20',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty25 = attributes.secondStyles) === null || _attributes$secondSty25 === void 0 ? void 0 : (_attributes$secondSty26 = _attributes$secondSty25[0]) === null || _attributes$secondSty26 === void 0 ? void 0 : _attributes$secondSty26.secondSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty27 = attributes.secondStyles) === null || _attributes$secondSty27 === void 0 ? void 0 : (_attributes$secondSty28 = _attributes$secondSty27[0]) === null || _attributes$secondSty28 === void 0 ? void 0 : _attributes$secondSty28.secondSizeMobile) || '',
-          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty29 = attributes.secondStyles) === null || _attributes$secondSty29 === void 0 ? void 0 : (_attributes$secondSty30 = _attributes$secondSty29[0]) === null || _attributes$secondSty30 === void 0 ? void 0 : _attributes$secondSty30.secondSizeUnit) || 'px'
+          'Desktop': attributes?.secondStyles?.[0]?.secondSize || '20',
+          "Tablet": attributes?.secondStyles?.[0]?.secondSizeTablet || '',
+          "Mobile": attributes?.secondStyles?.[0]?.secondSizeMobile || '',
+          "unit": attributes?.secondStyles?.[0]?.secondSizeUnit || 'px'
         }
       },
       background: {
-        'backgroundType': (attributes === null || attributes === void 0 ? void 0 : attributes.backgroundType) || '',
-        'backgroundColor': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container13 = attributes.containerStyles) === null || _attributes$container13 === void 0 ? void 0 : (_attributes$container14 = _attributes$container13[0]) === null || _attributes$container14 === void 0 ? void 0 : _attributes$container14.containerBack) || '',
-        'backgroundImageID': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container15 = attributes.containerStyles) === null || _attributes$container15 === void 0 ? void 0 : (_attributes$container16 = _attributes$container15[0]) === null || _attributes$container16 === void 0 ? void 0 : _attributes$container16.backgroundImageID) || '',
-        'backgroundImageURL': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container17 = attributes.containerStyles) === null || _attributes$container17 === void 0 ? void 0 : (_attributes$container18 = _attributes$container17[0]) === null || _attributes$container18 === void 0 ? void 0 : _attributes$container18.backgroundImageURL) || '',
-        'backgroundPosition': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container19 = attributes.containerStyles) === null || _attributes$container19 === void 0 ? void 0 : (_attributes$container20 = _attributes$container19[0]) === null || _attributes$container20 === void 0 ? void 0 : _attributes$container20.backgroundPosition) || '',
-        'backgroundRepeat': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container21 = attributes.containerStyles) === null || _attributes$container21 === void 0 ? void 0 : (_attributes$container22 = _attributes$container21[0]) === null || _attributes$container22 === void 0 ? void 0 : _attributes$container22.backgroundRepeat) || '',
-        'backgroundSize': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container23 = attributes.containerStyles) === null || _attributes$container23 === void 0 ? void 0 : (_attributes$container24 = _attributes$container23[0]) === null || _attributes$container24 === void 0 ? void 0 : _attributes$container24.backgroundSize) || '',
-        'fixed': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container25 = attributes.containerStyles) === null || _attributes$container25 === void 0 ? void 0 : (_attributes$container26 = _attributes$container25[0]) === null || _attributes$container26 === void 0 ? void 0 : _attributes$container26.fixed) || '',
-        'gradientLocationOne': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container27 = attributes.containerStyles) === null || _attributes$container27 === void 0 ? void 0 : (_attributes$container28 = _attributes$container27[0]) === null || _attributes$container28 === void 0 ? void 0 : _attributes$container28.gradientLocationOne) || '',
-        'gradientColorTwo': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container29 = attributes.containerStyles) === null || _attributes$container29 === void 0 ? void 0 : (_attributes$container30 = _attributes$container29[0]) === null || _attributes$container30 === void 0 ? void 0 : _attributes$container30.gradientColorTwo) || '',
-        'gradientLocationTwo': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container31 = attributes.containerStyles) === null || _attributes$container31 === void 0 ? void 0 : (_attributes$container32 = _attributes$container31[0]) === null || _attributes$container32 === void 0 ? void 0 : _attributes$container32.gradientLocationTwo) || '',
-        'gradientAngle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container33 = attributes.containerStyles) === null || _attributes$container33 === void 0 ? void 0 : (_attributes$container34 = _attributes$container33[0]) === null || _attributes$container34 === void 0 ? void 0 : _attributes$container34.gradientAngle) || '',
-        'gradientPosition': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container35 = attributes.containerStyles) === null || _attributes$container35 === void 0 ? void 0 : (_attributes$container36 = _attributes$container35[0]) === null || _attributes$container36 === void 0 ? void 0 : _attributes$container36.gradientPosition) || '',
-        'gradientType': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container37 = attributes.containerStyles) === null || _attributes$container37 === void 0 ? void 0 : (_attributes$container38 = _attributes$container37[0]) === null || _attributes$container38 === void 0 ? void 0 : _attributes$container38.gradientType) || ''
+        'backgroundType': attributes?.backgroundType || '',
+        'backgroundColor': attributes?.containerStyles?.[0]?.containerBack || '',
+        'backgroundImageID': attributes?.containerStyles?.[0]?.backgroundImageID || '',
+        'backgroundImageURL': attributes?.containerStyles?.[0]?.backgroundImageURL || '',
+        'backgroundPosition': attributes?.containerStyles?.[0]?.backgroundPosition || '',
+        'backgroundRepeat': attributes?.containerStyles?.[0]?.backgroundRepeat || '',
+        'backgroundSize': attributes?.containerStyles?.[0]?.backgroundSize || '',
+        'fixed': attributes?.containerStyles?.[0]?.fixed || '',
+        'gradientLocationOne': attributes?.containerStyles?.[0]?.gradientLocationOne || '',
+        'gradientColorTwo': attributes?.containerStyles?.[0]?.gradientColorTwo || '',
+        'gradientLocationTwo': attributes?.containerStyles?.[0]?.gradientLocationTwo || '',
+        'gradientAngle': attributes?.containerStyles?.[0]?.gradientAngle || '',
+        'gradientPosition': attributes?.containerStyles?.[0]?.gradientPosition || '',
+        'gradientType': attributes?.containerStyles?.[0]?.gradientType || ''
       },
       firstShadow: {
-        'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl31 = attributes.firstStyles) === null || _attributes$firstStyl31 === void 0 ? void 0 : (_attributes$firstStyl32 = _attributes$firstStyl31[0]) === null || _attributes$firstStyl32 === void 0 ? void 0 : _attributes$firstStyl32.firstShadowColor) || '',
-        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl33 = attributes.firstStyles) === null || _attributes$firstStyl33 === void 0 ? void 0 : (_attributes$firstStyl34 = _attributes$firstStyl33[0]) === null || _attributes$firstStyl34 === void 0 ? void 0 : _attributes$firstStyl34.firstShadowBlur) || '',
-        'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl35 = attributes.firstStyles) === null || _attributes$firstStyl35 === void 0 ? void 0 : (_attributes$firstStyl36 = _attributes$firstStyl35[0]) === null || _attributes$firstStyl36 === void 0 ? void 0 : _attributes$firstStyl36.firstShadowHorizontal) || '',
-        'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl37 = attributes.firstStyles) === null || _attributes$firstStyl37 === void 0 ? void 0 : (_attributes$firstStyl38 = _attributes$firstStyl37[0]) === null || _attributes$firstStyl38 === void 0 ? void 0 : _attributes$firstStyl38.firstShadowVertical) || ''
+        'color': attributes?.firstStyles?.[0]?.firstShadowColor || '',
+        'blur': attributes?.firstStyles?.[0]?.firstShadowBlur || '',
+        'horizontal': attributes?.firstStyles?.[0]?.firstShadowHorizontal || '',
+        'vertical': attributes?.firstStyles?.[0]?.firstShadowVertical || ''
       },
       secondShadow: {
-        'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty31 = attributes.secondStyles) === null || _attributes$secondSty31 === void 0 ? void 0 : (_attributes$secondSty32 = _attributes$secondSty31[0]) === null || _attributes$secondSty32 === void 0 ? void 0 : _attributes$secondSty32.secondShadowColor) || '',
-        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty33 = attributes.secondStyles) === null || _attributes$secondSty33 === void 0 ? void 0 : (_attributes$secondSty34 = _attributes$secondSty33[0]) === null || _attributes$secondSty34 === void 0 ? void 0 : _attributes$secondSty34.secondShadowBlur) || '',
-        'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty35 = attributes.secondStyles) === null || _attributes$secondSty35 === void 0 ? void 0 : (_attributes$secondSty36 = _attributes$secondSty35[0]) === null || _attributes$secondSty36 === void 0 ? void 0 : _attributes$secondSty36.secondShadowHorizontal) || '',
-        'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty37 = attributes.secondStyles) === null || _attributes$secondSty37 === void 0 ? void 0 : (_attributes$secondSty38 = _attributes$secondSty37[0]) === null || _attributes$secondSty38 === void 0 ? void 0 : _attributes$secondSty38.secondShadowVertical) || ''
+        'color': attributes?.secondStyles?.[0]?.secondShadowColor || '',
+        'blur': attributes?.secondStyles?.[0]?.secondShadowBlur || '',
+        'horizontal': attributes?.secondStyles?.[0]?.secondShadowHorizontal || '',
+        'vertical': attributes?.secondStyles?.[0]?.secondShadowVertical || ''
       },
       firstPadding: {
         Desktop: {
-          top: (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl39 = attributes.firstStyles) === null || _attributes$firstStyl39 === void 0 ? void 0 : (_attributes$firstStyl40 = _attributes$firstStyl39[0]) === null || _attributes$firstStyl40 === void 0 ? void 0 : _attributes$firstStyl40.firstPadding) || '',
-          right: (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl41 = attributes.firstStyles) === null || _attributes$firstStyl41 === void 0 ? void 0 : (_attributes$firstStyl42 = _attributes$firstStyl41[0]) === null || _attributes$firstStyl42 === void 0 ? void 0 : _attributes$firstStyl42.firstPadding) || '',
-          bottom: (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl43 = attributes.firstStyles) === null || _attributes$firstStyl43 === void 0 ? void 0 : (_attributes$firstStyl44 = _attributes$firstStyl43[0]) === null || _attributes$firstStyl44 === void 0 ? void 0 : _attributes$firstStyl44.firstPadding) || '',
-          left: (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl45 = attributes.firstStyles) === null || _attributes$firstStyl45 === void 0 ? void 0 : (_attributes$firstStyl46 = _attributes$firstStyl45[0]) === null || _attributes$firstStyl46 === void 0 ? void 0 : _attributes$firstStyl46.firstPadding) || ''
+          top: attributes?.firstStyles?.[0]?.firstPadding || '',
+          right: attributes?.firstStyles?.[0]?.firstPadding || '',
+          bottom: attributes?.firstStyles?.[0]?.firstPadding || '',
+          left: attributes?.firstStyles?.[0]?.firstPadding || ''
         },
         Tablet: {
           top: '',
@@ -20325,9 +20279,9 @@ const deprecatedContent = [{
       firstMargin: {
         Desktop: {
           top: '',
-          right: (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl47 = attributes.firstStyles) === null || _attributes$firstStyl47 === void 0 ? void 0 : (_attributes$firstStyl48 = _attributes$firstStyl47[0]) === null || _attributes$firstStyl48 === void 0 ? void 0 : _attributes$firstStyl48.firstMarginR) || '',
+          right: attributes?.firstStyles?.[0]?.firstMarginR || '',
           bottom: '',
-          left: (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl49 = attributes.firstStyles) === null || _attributes$firstStyl49 === void 0 ? void 0 : (_attributes$firstStyl50 = _attributes$firstStyl49[0]) === null || _attributes$firstStyl50 === void 0 ? void 0 : _attributes$firstStyl50.firstMarginL) || ''
+          left: attributes?.firstStyles?.[0]?.firstMarginL || ''
         },
         Tablet: {
           top: '',
@@ -20345,10 +20299,10 @@ const deprecatedContent = [{
       },
       secondPadding: {
         Desktop: {
-          top: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty39 = attributes.secondStyles) === null || _attributes$secondSty39 === void 0 ? void 0 : (_attributes$secondSty40 = _attributes$secondSty39[0]) === null || _attributes$secondSty40 === void 0 ? void 0 : _attributes$secondSty40.secondPadding) || '',
-          right: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty41 = attributes.secondStyles) === null || _attributes$secondSty41 === void 0 ? void 0 : (_attributes$secondSty42 = _attributes$secondSty41[0]) === null || _attributes$secondSty42 === void 0 ? void 0 : _attributes$secondSty42.secondPadding) || '',
-          bottom: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty43 = attributes.secondStyles) === null || _attributes$secondSty43 === void 0 ? void 0 : (_attributes$secondSty44 = _attributes$secondSty43[0]) === null || _attributes$secondSty44 === void 0 ? void 0 : _attributes$secondSty44.secondPadding) || '',
-          left: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty45 = attributes.secondStyles) === null || _attributes$secondSty45 === void 0 ? void 0 : (_attributes$secondSty46 = _attributes$secondSty45[0]) === null || _attributes$secondSty46 === void 0 ? void 0 : _attributes$secondSty46.secondPadding) || ''
+          top: attributes?.secondStyles?.[0]?.secondPadding || '',
+          right: attributes?.secondStyles?.[0]?.secondPadding || '',
+          bottom: attributes?.secondStyles?.[0]?.secondPadding || '',
+          left: attributes?.secondStyles?.[0]?.secondPadding || ''
         },
         Tablet: {
           top: '',
@@ -20367,9 +20321,9 @@ const deprecatedContent = [{
       secondMargin: {
         Desktop: {
           top: '',
-          right: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty47 = attributes.secondStyles) === null || _attributes$secondSty47 === void 0 ? void 0 : (_attributes$secondSty48 = _attributes$secondSty47[0]) === null || _attributes$secondSty48 === void 0 ? void 0 : _attributes$secondSty48.secondMarginR) || '',
+          right: attributes?.secondStyles?.[0]?.secondMarginR || '',
           bottom: '',
-          left: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty49 = attributes.secondStyles) === null || _attributes$secondSty49 === void 0 ? void 0 : (_attributes$secondSty50 = _attributes$secondSty49[0]) === null || _attributes$secondSty50 === void 0 ? void 0 : _attributes$secondSty50.secondMarginL) || ''
+          left: attributes?.secondStyles?.[0]?.secondMarginL || ''
         },
         Tablet: {
           top: '',
@@ -21570,7 +21524,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/premium-responsive-tabs */ "./src/components/premium-responsive-tabs.js");
 /* harmony import */ var _components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/Color Control/ColorComponent */ "./src/components/Color Control/ColorComponent.js");
 /* harmony import */ var _components_Premium_Background_Control__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/Premium-Background-Control */ "./src/components/Premium-Background-Control.js");
-/* harmony import */ var react_google_font_loader__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-google-font-loader */ "./node_modules/react-google-font-loader/build/index.js");
+/* harmony import */ var react_google_font_loader__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-google-font-loader */ "./src/blocks/node_modules/react-google-font-loader/build/index.js");
 /* harmony import */ var _components_PremiumShadow__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/PremiumShadow */ "./src/components/PremiumShadow.js");
 /* harmony import */ var _components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/premium-responsive-spacing */ "./src/components/premium-responsive-spacing.js");
 /* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
@@ -21618,12 +21572,9 @@ class edit extends Component {
   }
 
   componentDidMount() {
-    if (!this.props.attributes.blockId) {
-      this.props.setAttributes({
-        blockId: "premium-dual-heading-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_10__.generateBlockId)(this.props.clientId)
-      });
-    }
-
+    this.props.setAttributes({
+      blockId: "premium-dual-heading-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_10__.generateBlockId)(this.props.clientId)
+    });
     this.props.setAttributes({
       classMigrate: true
     });
@@ -23176,7 +23127,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_icons__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/icons */ "./src/components/icons.js");
 /* harmony import */ var _components_inspectorTabs__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/inspectorTabs */ "./src/components/inspectorTabs.js");
 /* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/inspectorTab */ "./src/components/inspectorTab.js");
-/* harmony import */ var react_google_font_loader__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-google-font-loader */ "./node_modules/react-google-font-loader/build/index.js");
+/* harmony import */ var react_google_font_loader__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-google-font-loader */ "./src/blocks/node_modules/react-google-font-loader/build/index.js");
 /* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
 
 
@@ -23275,12 +23226,9 @@ class Edit extends Component {
       clientId
     } = this.props; // Assigning id in the attribute.
 
-    if (!this.props.attributes.blockId) {
-      setAttributes({
-        blockId: "premium-fancy-text-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_14__.generateBlockId)(clientId)
-      });
-    }
-
+    setAttributes({
+      blockId: "premium-fancy-text-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_14__.generateBlockId)(clientId)
+    });
     setAttributes({
       classMigrate: true
     });
@@ -25858,13 +25806,9 @@ class edit extends Component {
       setAttributes,
       clientId
     } = this.props;
-
-    if (!this.props.attributes.blockId) {
-      setAttributes({
-        blockId: "premium-heading-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_14__.generateBlockId)(clientId)
-      });
-    }
-
+    setAttributes({
+      blockId: "premium-heading-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_14__.generateBlockId)(clientId)
+    });
     this.props.setAttributes({
       classMigrate: true
     }); // Pushing Style tag for this block css.
@@ -30972,7 +30916,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_InsideTab__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../components/InsideTab */ "./src/components/InsideTab.js");
 /* harmony import */ var _components_icons__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../components/icons */ "./src/components/icons.js");
 /* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
-/* harmony import */ var react_google_font_loader__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! react-google-font-loader */ "./node_modules/react-google-font-loader/build/index.js");
+/* harmony import */ var react_google_font_loader__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! react-google-font-loader */ "./src/blocks/node_modules/react-google-font-loader/build/index.js");
 
 
 
@@ -31952,11 +31896,11 @@ const save = props => {
     className: `premium-icon-box__title`,
     value: titleText,
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
-      fontStyle: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontStyle,
-      fontFamily: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily,
-      fontWeight: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontWeight,
-      textDecoration: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textDecoration,
-      textTransform: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textTransform,
+      fontStyle: titleTypography?.fontStyle,
+      fontFamily: titleTypography?.fontFamily,
+      fontWeight: titleTypography?.fontWeight,
+      textDecoration: titleTypography?.textDecoration,
+      textTransform: titleTypography?.textTransform,
       color: titleStyles[0].titleColor,
       textShadow: `${titleShadow.horizontal || 0}px ${titleShadow.vertical || 0}px ${titleShadow.blur || 0}px ${titleShadow.color}`
     })
@@ -31967,11 +31911,11 @@ const save = props => {
     className: `premium-icon-box__desc`,
     value: descText,
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
-      fontStyle: descTypography === null || descTypography === void 0 ? void 0 : descTypography.fontStyle,
-      fontFamily: descTypography === null || descTypography === void 0 ? void 0 : descTypography.fontFamily,
-      fontWeight: descTypography === null || descTypography === void 0 ? void 0 : descTypography.fontWeight,
-      textDecoration: descTypography === null || descTypography === void 0 ? void 0 : descTypography.textDecoration,
-      textTransform: descTypography === null || descTypography === void 0 ? void 0 : descTypography.textTransform,
+      fontStyle: descTypography?.fontStyle,
+      fontFamily: descTypography?.fontFamily,
+      fontWeight: descTypography?.fontWeight,
+      textDecoration: descTypography?.textDecoration,
+      textTransform: descTypography?.textTransform,
       color: descStyles[0].descColor
     })
   })), btnChecked && btnText && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -31984,11 +31928,11 @@ const save = props => {
     target: btnTarget ? "_blank" : "_self",
     value: btnText,
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
-      fontStyle: btnTypography === null || btnTypography === void 0 ? void 0 : btnTypography.fontStyle,
-      fontFamily: btnTypography === null || btnTypography === void 0 ? void 0 : btnTypography.fontFamily,
-      fontWeight: btnTypography === null || btnTypography === void 0 ? void 0 : btnTypography.fontWeight,
-      textDecoration: btnTypography === null || btnTypography === void 0 ? void 0 : btnTypography.textDecoration,
-      textTransform: btnTypography === null || btnTypography === void 0 ? void 0 : btnTypography.textTransform,
+      fontStyle: btnTypography?.fontStyle,
+      fontFamily: btnTypography?.fontFamily,
+      fontWeight: btnTypography?.fontWeight,
+      textDecoration: btnTypography?.textDecoration,
+      textTransform: btnTypography?.textTransform,
       color: btnStyles[0].btnColor,
       backgroundColor: btnStyles[0].btnBack,
       borderStyle: btnBorder.borderType,
@@ -34984,12 +34928,9 @@ class edit extends Component {
       setAttributes,
       clientId
     } = this.props;
-
-    if (!this.props.attributes.blockId) {
-      setAttributes({
-        blockId: "premium-image-separator-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.generateBlockId)(clientId)
-      });
-    }
+    setAttributes({
+      blockId: "premium-image-separator-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.generateBlockId)(clientId)
+    });
   }
 
   render() {
@@ -38478,17 +38419,12 @@ class edit extends Component {
 
   componentDidMount() {
     const {
-      attributes,
       setAttributes,
       clientId
     } = this.props;
-
-    if (!attributes.blockId) {
-      setAttributes({
-        blockId: "premium-map-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.generateBlockId)(clientId)
-      });
-    }
-
+    setAttributes({
+      blockId: "premium-map-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.generateBlockId)(clientId)
+    });
     this.initMap();
   }
 
@@ -40501,7 +40437,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
 /* harmony import */ var lodash_times__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! lodash/times */ "./src/blocks/node_modules/lodash/times.js");
 /* harmony import */ var lodash_times__WEBPACK_IMPORTED_MODULE_24___default = /*#__PURE__*/__webpack_require__.n(lodash_times__WEBPACK_IMPORTED_MODULE_24__);
-/* harmony import */ var react_google_font_loader__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! react-google-font-loader */ "./node_modules/react-google-font-loader/build/index.js");
+/* harmony import */ var react_google_font_loader__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! react-google-font-loader */ "./src/blocks/node_modules/react-google-font-loader/build/index.js");
 
 
 
@@ -46150,12 +46086,9 @@ class PremiumPricingTable extends Component {
       clientId
     } = this.props; // Assigning id in the attribute.
 
-    if (!this.props.attributes.blockId) {
-      setAttributes({
-        blockId: "premium-pricing-table-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.generateBlockId)(clientId)
-      });
-    }
-
+    setAttributes({
+      blockId: "premium-pricing-table-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.generateBlockId)(clientId)
+    });
     setAttributes({
       classMigrate: true
     });
@@ -53663,12 +53596,9 @@ class edit extends Component {
       clientId
     } = this.props; // Assigning id in the attribute.
 
-    if (!this.props.attributes.blockId) {
-      setAttributes({
-        blockId: "premium-testimonials-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.generateBlockId)(clientId)
-      });
-    }
-
+    setAttributes({
+      blockId: "premium-testimonials-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.generateBlockId)(clientId)
+    });
     this.props.setAttributes({
       classMigrate: true
     });
@@ -56278,7 +56208,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_InsideTabs__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/InsideTabs */ "./src/components/InsideTabs.js");
 /* harmony import */ var _components_InsideTab__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/InsideTab */ "./src/components/InsideTab.js");
 /* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
-/* harmony import */ var react_google_font_loader__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! react-google-font-loader */ "./node_modules/react-google-font-loader/build/index.js");
+/* harmony import */ var react_google_font_loader__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! react-google-font-loader */ "./src/blocks/node_modules/react-google-font-loader/build/index.js");
 
 
 
@@ -57134,11 +57064,11 @@ const save = props => {
     value: descStyles[0].videoDescText,
     placeholder: "Add caption",
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_4__.filterJsCss)({
-      fontStyle: videoDescTypography === null || videoDescTypography === void 0 ? void 0 : videoDescTypography.fontStyle,
-      fontFamily: videoDescTypography === null || videoDescTypography === void 0 ? void 0 : videoDescTypography.fontFamily,
-      fontWeight: videoDescTypography === null || videoDescTypography === void 0 ? void 0 : videoDescTypography.fontWeight,
-      textDecoration: videoDescTypography === null || videoDescTypography === void 0 ? void 0 : videoDescTypography.textDecoration,
-      textTransform: videoDescTypography === null || videoDescTypography === void 0 ? void 0 : videoDescTypography.textTransform,
+      fontStyle: videoDescTypography?.fontStyle,
+      fontFamily: videoDescTypography?.fontFamily,
+      fontWeight: videoDescTypography?.fontWeight,
+      textDecoration: videoDescTypography?.textDecoration,
+      textTransform: videoDescTypography?.textTransform,
       color: descStyles[0].videoDescColor,
       textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`
     }),
@@ -57684,53 +57614,45 @@ const gradientBackground = value => {
   };
 };
 const borderCss = (value, device) => {
-  var _value$borderWidth, _value$borderWidth$de, _value$borderWidth2, _value$borderWidth2$d, _value$borderWidth3, _value$borderWidth3$d, _value$borderWidth4, _value$borderWidth4$d, _value$borderRadius, _value$borderRadius$d, _value$borderRadius2, _value$borderRadius2$, _value$borderRadius3, _value$borderRadius3$, _value$borderRadius4, _value$borderRadius4$;
-
   return {
-    borderStyle: value === null || value === void 0 ? void 0 : value.borderType,
-    borderTopWidth: value === null || value === void 0 ? void 0 : (_value$borderWidth = value.borderWidth) === null || _value$borderWidth === void 0 ? void 0 : (_value$borderWidth$de = _value$borderWidth[device]) === null || _value$borderWidth$de === void 0 ? void 0 : _value$borderWidth$de.top,
-    borderRightWidth: value === null || value === void 0 ? void 0 : (_value$borderWidth2 = value.borderWidth) === null || _value$borderWidth2 === void 0 ? void 0 : (_value$borderWidth2$d = _value$borderWidth2[device]) === null || _value$borderWidth2$d === void 0 ? void 0 : _value$borderWidth2$d.right,
-    borderBottomWidth: value === null || value === void 0 ? void 0 : (_value$borderWidth3 = value.borderWidth) === null || _value$borderWidth3 === void 0 ? void 0 : (_value$borderWidth3$d = _value$borderWidth3[device]) === null || _value$borderWidth3$d === void 0 ? void 0 : _value$borderWidth3$d.bottom,
-    borderLeftWidth: value === null || value === void 0 ? void 0 : (_value$borderWidth4 = value.borderWidth) === null || _value$borderWidth4 === void 0 ? void 0 : (_value$borderWidth4$d = _value$borderWidth4[device]) === null || _value$borderWidth4$d === void 0 ? void 0 : _value$borderWidth4$d.left,
-    borderColor: value === null || value === void 0 ? void 0 : value.borderColor,
-    borderTopLeftRadius: `${(value === null || value === void 0 ? void 0 : (_value$borderRadius = value.borderRadius) === null || _value$borderRadius === void 0 ? void 0 : (_value$borderRadius$d = _value$borderRadius[device]) === null || _value$borderRadius$d === void 0 ? void 0 : _value$borderRadius$d.top) || 0}px`,
-    borderTopRightRadius: `${(value === null || value === void 0 ? void 0 : (_value$borderRadius2 = value.borderRadius) === null || _value$borderRadius2 === void 0 ? void 0 : (_value$borderRadius2$ = _value$borderRadius2[device]) === null || _value$borderRadius2$ === void 0 ? void 0 : _value$borderRadius2$.right) || 0}px`,
-    borderBottomLeftRadius: `${(value === null || value === void 0 ? void 0 : (_value$borderRadius3 = value.borderRadius) === null || _value$borderRadius3 === void 0 ? void 0 : (_value$borderRadius3$ = _value$borderRadius3[device]) === null || _value$borderRadius3$ === void 0 ? void 0 : _value$borderRadius3$.bottom) || 0}px`,
-    borderBottomRightRadius: `${(value === null || value === void 0 ? void 0 : (_value$borderRadius4 = value.borderRadius) === null || _value$borderRadius4 === void 0 ? void 0 : (_value$borderRadius4$ = _value$borderRadius4[device]) === null || _value$borderRadius4$ === void 0 ? void 0 : _value$borderRadius4$.left) || 0}px`
+    borderStyle: value?.borderType,
+    borderTopWidth: value?.borderWidth?.[device]?.top,
+    borderRightWidth: value?.borderWidth?.[device]?.right,
+    borderBottomWidth: value?.borderWidth?.[device]?.bottom,
+    borderLeftWidth: value?.borderWidth?.[device]?.left,
+    borderColor: value?.borderColor,
+    borderTopLeftRadius: `${value?.borderRadius?.[device]?.top || 0}px`,
+    borderTopRightRadius: `${value?.borderRadius?.[device]?.right || 0}px`,
+    borderBottomLeftRadius: `${value?.borderRadius?.[device]?.bottom || 0}px`,
+    borderBottomRightRadius: `${value?.borderRadius?.[device]?.left || 0}px`
   };
 };
 const paddingCss = (value, device) => {
-  var _value$device, _value$device2, _value$device3, _value$device4, _value$device5, _value$device6, _value$device7, _value$device8;
-
   return {
-    paddingTop: (value === null || value === void 0 ? void 0 : (_value$device = value[device]) === null || _value$device === void 0 ? void 0 : _value$device.top) && `${value === null || value === void 0 ? void 0 : (_value$device2 = value[device]) === null || _value$device2 === void 0 ? void 0 : _value$device2.top}${value === null || value === void 0 ? void 0 : value.unit}`,
-    paddingRight: (value === null || value === void 0 ? void 0 : (_value$device3 = value[device]) === null || _value$device3 === void 0 ? void 0 : _value$device3.right) && `${value === null || value === void 0 ? void 0 : (_value$device4 = value[device]) === null || _value$device4 === void 0 ? void 0 : _value$device4.right}${value === null || value === void 0 ? void 0 : value.unit}`,
-    paddingBottom: (value === null || value === void 0 ? void 0 : (_value$device5 = value[device]) === null || _value$device5 === void 0 ? void 0 : _value$device5.bottom) && `${value === null || value === void 0 ? void 0 : (_value$device6 = value[device]) === null || _value$device6 === void 0 ? void 0 : _value$device6.bottom}${value === null || value === void 0 ? void 0 : value.unit}`,
-    paddingLeft: (value === null || value === void 0 ? void 0 : (_value$device7 = value[device]) === null || _value$device7 === void 0 ? void 0 : _value$device7.left) && `${value === null || value === void 0 ? void 0 : (_value$device8 = value[device]) === null || _value$device8 === void 0 ? void 0 : _value$device8.left}${value === null || value === void 0 ? void 0 : value.unit}`
+    paddingTop: value?.[device]?.top && `${value?.[device]?.top}${value?.unit}`,
+    paddingRight: value?.[device]?.right && `${value?.[device]?.right}${value?.unit}`,
+    paddingBottom: value?.[device]?.bottom && `${value?.[device]?.bottom}${value?.unit}`,
+    paddingLeft: value?.[device]?.left && `${value?.[device]?.left}${value?.unit}`
   };
 };
 const marginCss = (value, device) => {
-  var _value$device9, _value$device10, _value$device11, _value$device12, _value$device13, _value$device14, _value$device15, _value$device16;
-
   return {
-    marginTop: (value === null || value === void 0 ? void 0 : (_value$device9 = value[device]) === null || _value$device9 === void 0 ? void 0 : _value$device9.top) && `${value === null || value === void 0 ? void 0 : (_value$device10 = value[device]) === null || _value$device10 === void 0 ? void 0 : _value$device10.top}${value === null || value === void 0 ? void 0 : value.unit}`,
-    marginRight: (value === null || value === void 0 ? void 0 : (_value$device11 = value[device]) === null || _value$device11 === void 0 ? void 0 : _value$device11.right) && `${value === null || value === void 0 ? void 0 : (_value$device12 = value[device]) === null || _value$device12 === void 0 ? void 0 : _value$device12.right}${value === null || value === void 0 ? void 0 : value.unit}`,
-    marginBottom: (value === null || value === void 0 ? void 0 : (_value$device13 = value[device]) === null || _value$device13 === void 0 ? void 0 : _value$device13.bottom) && `${value === null || value === void 0 ? void 0 : (_value$device14 = value[device]) === null || _value$device14 === void 0 ? void 0 : _value$device14.bottom}${value === null || value === void 0 ? void 0 : value.unit}`,
-    marginLeft: (value === null || value === void 0 ? void 0 : (_value$device15 = value[device]) === null || _value$device15 === void 0 ? void 0 : _value$device15.left) && `${value === null || value === void 0 ? void 0 : (_value$device16 = value[device]) === null || _value$device16 === void 0 ? void 0 : _value$device16.left}${value === null || value === void 0 ? void 0 : value.unit}`
+    marginTop: value?.[device]?.top && `${value?.[device]?.top}${value?.unit}`,
+    marginRight: value?.[device]?.right && `${value?.[device]?.right}${value?.unit}`,
+    marginBottom: value?.[device]?.bottom && `${value?.[device]?.bottom}${value?.unit}`,
+    marginLeft: value?.[device]?.left && `${value?.[device]?.left}${value?.unit}`
   };
 };
 const typographyCss = (value, device) => {
-  var _value$fontSize;
-
   return {
-    fontSize: (value === null || value === void 0 ? void 0 : value.fontSize[device]) && `${value === null || value === void 0 ? void 0 : value.fontSize[device]}${value === null || value === void 0 ? void 0 : (_value$fontSize = value.fontSize) === null || _value$fontSize === void 0 ? void 0 : _value$fontSize.unit}`,
-    fontStyle: value === null || value === void 0 ? void 0 : value.fontStyle,
-    fontFamily: value === null || value === void 0 ? void 0 : value.fontFamily,
-    fontWeight: value === null || value === void 0 ? void 0 : value.fontWeight,
-    letterSpacing: (value === null || value === void 0 ? void 0 : value.letterSpacing[device]) && `${value === null || value === void 0 ? void 0 : value.letterSpacing[device]}px`,
-    textDecoration: value === null || value === void 0 ? void 0 : value.textDecoration,
-    textTransform: value === null || value === void 0 ? void 0 : value.textTransform,
-    lineHeight: (value === null || value === void 0 ? void 0 : value.lineHeight[device]) && `${value === null || value === void 0 ? void 0 : value.lineHeight[device]}px`
+    fontSize: value?.fontSize[device] && `${value?.fontSize[device]}${value?.fontSize?.unit}`,
+    fontStyle: value?.fontStyle,
+    fontFamily: value?.fontFamily,
+    fontWeight: value?.fontWeight,
+    letterSpacing: value?.letterSpacing[device] && `${value?.letterSpacing[device]}px`,
+    textDecoration: value?.textDecoration,
+    textTransform: value?.textTransform,
+    lineHeight: value?.lineHeight[device] && `${value?.lineHeight[device]}px`
   };
 };
 const generateBlockId = clientId => {
@@ -94017,93 +93939,6 @@ module.exports = Function.call.bind(Object.prototype.hasOwnProperty);
 
 /***/ }),
 
-/***/ "./node_modules/react-google-font-loader/build/index.js":
-/*!**************************************************************!*\
-  !*** ./node_modules/react-google-font-loader/build/index.js ***!
-  \**************************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-    value: true
-}));
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-var _react = __webpack_require__(/*! react */ "react");
-
-var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-var createLink = function createLink(fonts, subsets, display) {
-    var families = fonts.reduce(function (acc, font) {
-        var family = font.font.replace(/ +/g, '+');
-        var weights = (font.weights || []).join(',');
-
-        return [].concat(_toConsumableArray(acc), [family + (weights && ':' + weights)]);
-    }, []).join('|');
-
-    var link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = 'https://fonts.googleapis.com/css?family=' + families;
-
-    if (subsets && Array.isArray(subsets) && subsets.length > 0) {
-        link.href += '&subset=' + subsets.join(',');
-    }
-
-    if (display) {
-        link.href += '&display=' + display;
-    }
-
-    return link;
-};
-
-var GoogleFontLoader = function GoogleFontLoader(_ref) {
-    var fonts = _ref.fonts,
-        subsets = _ref.subsets,
-        _ref$display = _ref.display,
-        display = _ref$display === undefined ? null : _ref$display;
-
-    var _useState = (0, _react.useState)(createLink(fonts, subsets, display)),
-        _useState2 = _slicedToArray(_useState, 2),
-        link = _useState2[0],
-        setLink = _useState2[1];
-
-    (0, _react.useEffect)(function () {
-        document.head.appendChild(link);
-
-        return function () {
-            return document.head.removeChild(link);
-        };
-    }, [link]);
-
-    (0, _react.useEffect)(function () {
-        setLink(createLink(fonts, subsets, display));
-    }, [fonts, subsets, display]);
-
-    return null;
-};
-
-GoogleFontLoader.propTypes = {
-    fonts: _propTypes2.default.arrayOf(_propTypes2.default.shape({
-        font: _propTypes2.default.string.isRequired,
-        weights: _propTypes2.default.arrayOf(_propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]))
-    })).isRequired,
-    subsets: _propTypes2.default.arrayOf(_propTypes2.default.string),
-    display: _propTypes2.default.string
-};
-
-exports["default"] = GoogleFontLoader;
-
-/***/ }),
-
 /***/ "./node_modules/react-is/cjs/react-is.development.js":
 /*!***********************************************************!*\
   !*** ./node_modules/react-is/cjs/react-is.development.js ***!
@@ -99881,6 +99716,1196 @@ function toNumber(value) {
 }
 
 module.exports = toNumber;
+
+
+/***/ }),
+
+/***/ "./src/blocks/node_modules/object-assign/index.js":
+/*!********************************************************!*\
+  !*** ./src/blocks/node_modules/object-assign/index.js ***!
+  \********************************************************/
+/***/ (function(module) {
+
+"use strict";
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+
+
+/* eslint-disable no-unused-vars */
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+
+function toObject(val) {
+	if (val === null || val === undefined) {
+		throw new TypeError('Object.assign cannot be called with null or undefined');
+	}
+
+	return Object(val);
+}
+
+function shouldUseNative() {
+	try {
+		if (!Object.assign) {
+			return false;
+		}
+
+		// Detect buggy property enumeration order in older V8 versions.
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
+		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+		test1[5] = 'de';
+		if (Object.getOwnPropertyNames(test1)[0] === '5') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test2 = {};
+		for (var i = 0; i < 10; i++) {
+			test2['_' + String.fromCharCode(i)] = i;
+		}
+		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+			return test2[n];
+		});
+		if (order2.join('') !== '0123456789') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test3 = {};
+		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+			test3[letter] = letter;
+		});
+		if (Object.keys(Object.assign({}, test3)).join('') !==
+				'abcdefghijklmnopqrst') {
+			return false;
+		}
+
+		return true;
+	} catch (err) {
+		// We don't expect any of the above to throw, but better to be safe.
+		return false;
+	}
+}
+
+module.exports = shouldUseNative() ? Object.assign : function (target, source) {
+	var from;
+	var to = toObject(target);
+	var symbols;
+
+	for (var s = 1; s < arguments.length; s++) {
+		from = Object(arguments[s]);
+
+		for (var key in from) {
+			if (hasOwnProperty.call(from, key)) {
+				to[key] = from[key];
+			}
+		}
+
+		if (getOwnPropertySymbols) {
+			symbols = getOwnPropertySymbols(from);
+			for (var i = 0; i < symbols.length; i++) {
+				if (propIsEnumerable.call(from, symbols[i])) {
+					to[symbols[i]] = from[symbols[i]];
+				}
+			}
+		}
+	}
+
+	return to;
+};
+
+
+/***/ }),
+
+/***/ "./src/blocks/node_modules/prop-types/checkPropTypes.js":
+/*!**************************************************************!*\
+  !*** ./src/blocks/node_modules/prop-types/checkPropTypes.js ***!
+  \**************************************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var printWarning = function() {};
+
+if (true) {
+  var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ "./src/blocks/node_modules/prop-types/lib/ReactPropTypesSecret.js");
+  var loggedTypeFailures = {};
+  var has = __webpack_require__(/*! ./lib/has */ "./src/blocks/node_modules/prop-types/lib/has.js");
+
+  printWarning = function(text) {
+    var message = 'Warning: ' + text;
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) { /**/ }
+  };
+}
+
+/**
+ * Assert that the values match with the type specs.
+ * Error messages are memorized and will only be shown once.
+ *
+ * @param {object} typeSpecs Map of name to a ReactPropType
+ * @param {object} values Runtime values that need to be type-checked
+ * @param {string} location e.g. "prop", "context", "child context"
+ * @param {string} componentName Name of the component for error messages.
+ * @param {?Function} getStack Returns the component stack.
+ * @private
+ */
+function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
+  if (true) {
+    for (var typeSpecName in typeSpecs) {
+      if (has(typeSpecs, typeSpecName)) {
+        var error;
+        // Prop type validation may throw. In case they do, we don't want to
+        // fail the render phase where it didn't fail before. So we log it.
+        // After these have been cleaned up, we'll let them throw.
+        try {
+          // This is intentionally an invariant that gets caught. It's the same
+          // behavior as without this statement except with a better message.
+          if (typeof typeSpecs[typeSpecName] !== 'function') {
+            var err = Error(
+              (componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' +
+              'it must be a function, usually from the `prop-types` package, but received `' + typeof typeSpecs[typeSpecName] + '`.' +
+              'This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.'
+            );
+            err.name = 'Invariant Violation';
+            throw err;
+          }
+          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
+        } catch (ex) {
+          error = ex;
+        }
+        if (error && !(error instanceof Error)) {
+          printWarning(
+            (componentName || 'React class') + ': type specification of ' +
+            location + ' `' + typeSpecName + '` is invalid; the type checker ' +
+            'function must return `null` or an `Error` but returned a ' + typeof error + '. ' +
+            'You may have forgotten to pass an argument to the type checker ' +
+            'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' +
+            'shape all require an argument).'
+          );
+        }
+        if (error instanceof Error && !(error.message in loggedTypeFailures)) {
+          // Only monitor this failure once because there tends to be a lot of the
+          // same error.
+          loggedTypeFailures[error.message] = true;
+
+          var stack = getStack ? getStack() : '';
+
+          printWarning(
+            'Failed ' + location + ' type: ' + error.message + (stack != null ? stack : '')
+          );
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Resets warning cache when testing.
+ *
+ * @private
+ */
+checkPropTypes.resetWarningCache = function() {
+  if (true) {
+    loggedTypeFailures = {};
+  }
+}
+
+module.exports = checkPropTypes;
+
+
+/***/ }),
+
+/***/ "./src/blocks/node_modules/prop-types/factoryWithTypeCheckers.js":
+/*!***********************************************************************!*\
+  !*** ./src/blocks/node_modules/prop-types/factoryWithTypeCheckers.js ***!
+  \***********************************************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var ReactIs = __webpack_require__(/*! react-is */ "./src/blocks/node_modules/react-is/index.js");
+var assign = __webpack_require__(/*! object-assign */ "./src/blocks/node_modules/object-assign/index.js");
+
+var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ "./src/blocks/node_modules/prop-types/lib/ReactPropTypesSecret.js");
+var has = __webpack_require__(/*! ./lib/has */ "./src/blocks/node_modules/prop-types/lib/has.js");
+var checkPropTypes = __webpack_require__(/*! ./checkPropTypes */ "./src/blocks/node_modules/prop-types/checkPropTypes.js");
+
+var printWarning = function() {};
+
+if (true) {
+  printWarning = function(text) {
+    var message = 'Warning: ' + text;
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+}
+
+function emptyFunctionThatReturnsNull() {
+  return null;
+}
+
+module.exports = function(isValidElement, throwOnDirectAccess) {
+  /* global Symbol */
+  var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+  var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
+
+  /**
+   * Returns the iterator method function contained on the iterable object.
+   *
+   * Be sure to invoke the function with the iterable as context:
+   *
+   *     var iteratorFn = getIteratorFn(myIterable);
+   *     if (iteratorFn) {
+   *       var iterator = iteratorFn.call(myIterable);
+   *       ...
+   *     }
+   *
+   * @param {?object} maybeIterable
+   * @return {?function}
+   */
+  function getIteratorFn(maybeIterable) {
+    var iteratorFn = maybeIterable && (ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL]);
+    if (typeof iteratorFn === 'function') {
+      return iteratorFn;
+    }
+  }
+
+  /**
+   * Collection of methods that allow declaration and validation of props that are
+   * supplied to React components. Example usage:
+   *
+   *   var Props = require('ReactPropTypes');
+   *   var MyArticle = React.createClass({
+   *     propTypes: {
+   *       // An optional string prop named "description".
+   *       description: Props.string,
+   *
+   *       // A required enum prop named "category".
+   *       category: Props.oneOf(['News','Photos']).isRequired,
+   *
+   *       // A prop named "dialog" that requires an instance of Dialog.
+   *       dialog: Props.instanceOf(Dialog).isRequired
+   *     },
+   *     render: function() { ... }
+   *   });
+   *
+   * A more formal specification of how these methods are used:
+   *
+   *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
+   *   decl := ReactPropTypes.{type}(.isRequired)?
+   *
+   * Each and every declaration produces a function with the same signature. This
+   * allows the creation of custom validation functions. For example:
+   *
+   *  var MyLink = React.createClass({
+   *    propTypes: {
+   *      // An optional string or URI prop named "href".
+   *      href: function(props, propName, componentName) {
+   *        var propValue = props[propName];
+   *        if (propValue != null && typeof propValue !== 'string' &&
+   *            !(propValue instanceof URI)) {
+   *          return new Error(
+   *            'Expected a string or an URI for ' + propName + ' in ' +
+   *            componentName
+   *          );
+   *        }
+   *      }
+   *    },
+   *    render: function() {...}
+   *  });
+   *
+   * @internal
+   */
+
+  var ANONYMOUS = '<<anonymous>>';
+
+  // Important!
+  // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
+  var ReactPropTypes = {
+    array: createPrimitiveTypeChecker('array'),
+    bigint: createPrimitiveTypeChecker('bigint'),
+    bool: createPrimitiveTypeChecker('boolean'),
+    func: createPrimitiveTypeChecker('function'),
+    number: createPrimitiveTypeChecker('number'),
+    object: createPrimitiveTypeChecker('object'),
+    string: createPrimitiveTypeChecker('string'),
+    symbol: createPrimitiveTypeChecker('symbol'),
+
+    any: createAnyTypeChecker(),
+    arrayOf: createArrayOfTypeChecker,
+    element: createElementTypeChecker(),
+    elementType: createElementTypeTypeChecker(),
+    instanceOf: createInstanceTypeChecker,
+    node: createNodeChecker(),
+    objectOf: createObjectOfTypeChecker,
+    oneOf: createEnumTypeChecker,
+    oneOfType: createUnionTypeChecker,
+    shape: createShapeTypeChecker,
+    exact: createStrictShapeTypeChecker,
+  };
+
+  /**
+   * inlined Object.is polyfill to avoid requiring consumers ship their own
+   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+   */
+  /*eslint-disable no-self-compare*/
+  function is(x, y) {
+    // SameValue algorithm
+    if (x === y) {
+      // Steps 1-5, 7-10
+      // Steps 6.b-6.e: +0 != -0
+      return x !== 0 || 1 / x === 1 / y;
+    } else {
+      // Step 6.a: NaN == NaN
+      return x !== x && y !== y;
+    }
+  }
+  /*eslint-enable no-self-compare*/
+
+  /**
+   * We use an Error-like object for backward compatibility as people may call
+   * PropTypes directly and inspect their output. However, we don't use real
+   * Errors anymore. We don't inspect their stack anyway, and creating them
+   * is prohibitively expensive if they are created too often, such as what
+   * happens in oneOfType() for any type before the one that matched.
+   */
+  function PropTypeError(message, data) {
+    this.message = message;
+    this.data = data && typeof data === 'object' ? data: {};
+    this.stack = '';
+  }
+  // Make `instanceof Error` still work for returned errors.
+  PropTypeError.prototype = Error.prototype;
+
+  function createChainableTypeChecker(validate) {
+    if (true) {
+      var manualPropTypeCallCache = {};
+      var manualPropTypeWarningCount = 0;
+    }
+    function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
+      componentName = componentName || ANONYMOUS;
+      propFullName = propFullName || propName;
+
+      if (secret !== ReactPropTypesSecret) {
+        if (throwOnDirectAccess) {
+          // New behavior only for users of `prop-types` package
+          var err = new Error(
+            'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+            'Use `PropTypes.checkPropTypes()` to call them. ' +
+            'Read more at http://fb.me/use-check-prop-types'
+          );
+          err.name = 'Invariant Violation';
+          throw err;
+        } else if ( true && typeof console !== 'undefined') {
+          // Old behavior for people using React.PropTypes
+          var cacheKey = componentName + ':' + propName;
+          if (
+            !manualPropTypeCallCache[cacheKey] &&
+            // Avoid spamming the console because they are often not actionable except for lib authors
+            manualPropTypeWarningCount < 3
+          ) {
+            printWarning(
+              'You are manually calling a React.PropTypes validation ' +
+              'function for the `' + propFullName + '` prop on `' + componentName + '`. This is deprecated ' +
+              'and will throw in the standalone `prop-types` package. ' +
+              'You may be seeing this warning due to a third-party PropTypes ' +
+              'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.'
+            );
+            manualPropTypeCallCache[cacheKey] = true;
+            manualPropTypeWarningCount++;
+          }
+        }
+      }
+      if (props[propName] == null) {
+        if (isRequired) {
+          if (props[propName] === null) {
+            return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required ' + ('in `' + componentName + '`, but its value is `null`.'));
+          }
+          return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required in ' + ('`' + componentName + '`, but its value is `undefined`.'));
+        }
+        return null;
+      } else {
+        return validate(props, propName, componentName, location, propFullName);
+      }
+    }
+
+    var chainedCheckType = checkType.bind(null, false);
+    chainedCheckType.isRequired = checkType.bind(null, true);
+
+    return chainedCheckType;
+  }
+
+  function createPrimitiveTypeChecker(expectedType) {
+    function validate(props, propName, componentName, location, propFullName, secret) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== expectedType) {
+        // `propValue` being instance of, say, date/regexp, pass the 'object'
+        // check, but we can offer a more precise error message here rather than
+        // 'of type `object`'.
+        var preciseType = getPreciseType(propValue);
+
+        return new PropTypeError(
+          'Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'),
+          {expectedType: expectedType}
+        );
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createAnyTypeChecker() {
+    return createChainableTypeChecker(emptyFunctionThatReturnsNull);
+  }
+
+  function createArrayOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside arrayOf.');
+      }
+      var propValue = props[propName];
+      if (!Array.isArray(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
+      }
+      for (var i = 0; i < propValue.length; i++) {
+        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret);
+        if (error instanceof Error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createElementTypeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      if (!isValidElement(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createElementTypeTypeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      if (!ReactIs.isValidElementType(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement type.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createInstanceTypeChecker(expectedClass) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!(props[propName] instanceof expectedClass)) {
+        var expectedClassName = expectedClass.name || ANONYMOUS;
+        var actualClassName = getClassName(props[propName]);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') + ('instance of `' + expectedClassName + '`.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createEnumTypeChecker(expectedValues) {
+    if (!Array.isArray(expectedValues)) {
+      if (true) {
+        if (arguments.length > 1) {
+          printWarning(
+            'Invalid arguments supplied to oneOf, expected an array, got ' + arguments.length + ' arguments. ' +
+            'A common mistake is to write oneOf(x, y, z) instead of oneOf([x, y, z]).'
+          );
+        } else {
+          printWarning('Invalid argument supplied to oneOf, expected an array.');
+        }
+      }
+      return emptyFunctionThatReturnsNull;
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      for (var i = 0; i < expectedValues.length; i++) {
+        if (is(propValue, expectedValues[i])) {
+          return null;
+        }
+      }
+
+      var valuesString = JSON.stringify(expectedValues, function replacer(key, value) {
+        var type = getPreciseType(value);
+        if (type === 'symbol') {
+          return String(value);
+        }
+        return value;
+      });
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of value `' + String(propValue) + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createObjectOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside objectOf.');
+      }
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
+      }
+      for (var key in propValue) {
+        if (has(propValue, key)) {
+          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+          if (error instanceof Error) {
+            return error;
+          }
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createUnionTypeChecker(arrayOfTypeCheckers) {
+    if (!Array.isArray(arrayOfTypeCheckers)) {
+       true ? printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') : 0;
+      return emptyFunctionThatReturnsNull;
+    }
+
+    for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+      var checker = arrayOfTypeCheckers[i];
+      if (typeof checker !== 'function') {
+        printWarning(
+          'Invalid argument supplied to oneOfType. Expected an array of check functions, but ' +
+          'received ' + getPostfixForTypeWarning(checker) + ' at index ' + i + '.'
+        );
+        return emptyFunctionThatReturnsNull;
+      }
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      var expectedTypes = [];
+      for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+        var checker = arrayOfTypeCheckers[i];
+        var checkerResult = checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret);
+        if (checkerResult == null) {
+          return null;
+        }
+        if (checkerResult.data && has(checkerResult.data, 'expectedType')) {
+          expectedTypes.push(checkerResult.data.expectedType);
+        }
+      }
+      var expectedTypesMessage = (expectedTypes.length > 0) ? ', expected one of type [' + expectedTypes.join(', ') + ']': '';
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`' + expectedTypesMessage + '.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createNodeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!isNode(props[propName])) {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`, expected a ReactNode.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function invalidValidatorError(componentName, location, propFullName, key, type) {
+    return new PropTypeError(
+      (componentName || 'React class') + ': ' + location + ' type `' + propFullName + '.' + key + '` is invalid; ' +
+      'it must be a function, usually from the `prop-types` package, but received `' + type + '`.'
+    );
+  }
+
+  function createShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      for (var key in shapeTypes) {
+        var checker = shapeTypes[key];
+        if (typeof checker !== 'function') {
+          return invalidValidatorError(componentName, location, propFullName, key, getPreciseType(checker));
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createStrictShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      // We need to check all keys in case some are required but missing from props.
+      var allKeys = assign({}, props[propName], shapeTypes);
+      for (var key in allKeys) {
+        var checker = shapeTypes[key];
+        if (has(shapeTypes, key) && typeof checker !== 'function') {
+          return invalidValidatorError(componentName, location, propFullName, key, getPreciseType(checker));
+        }
+        if (!checker) {
+          return new PropTypeError(
+            'Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' +
+            '\nBad object: ' + JSON.stringify(props[propName], null, '  ') +
+            '\nValid keys: ' + JSON.stringify(Object.keys(shapeTypes), null, '  ')
+          );
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+
+    return createChainableTypeChecker(validate);
+  }
+
+  function isNode(propValue) {
+    switch (typeof propValue) {
+      case 'number':
+      case 'string':
+      case 'undefined':
+        return true;
+      case 'boolean':
+        return !propValue;
+      case 'object':
+        if (Array.isArray(propValue)) {
+          return propValue.every(isNode);
+        }
+        if (propValue === null || isValidElement(propValue)) {
+          return true;
+        }
+
+        var iteratorFn = getIteratorFn(propValue);
+        if (iteratorFn) {
+          var iterator = iteratorFn.call(propValue);
+          var step;
+          if (iteratorFn !== propValue.entries) {
+            while (!(step = iterator.next()).done) {
+              if (!isNode(step.value)) {
+                return false;
+              }
+            }
+          } else {
+            // Iterator will provide entry [k,v] tuples rather than values.
+            while (!(step = iterator.next()).done) {
+              var entry = step.value;
+              if (entry) {
+                if (!isNode(entry[1])) {
+                  return false;
+                }
+              }
+            }
+          }
+        } else {
+          return false;
+        }
+
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  function isSymbol(propType, propValue) {
+    // Native Symbol.
+    if (propType === 'symbol') {
+      return true;
+    }
+
+    // falsy value can't be a Symbol
+    if (!propValue) {
+      return false;
+    }
+
+    // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
+    if (propValue['@@toStringTag'] === 'Symbol') {
+      return true;
+    }
+
+    // Fallback for non-spec compliant Symbols which are polyfilled.
+    if (typeof Symbol === 'function' && propValue instanceof Symbol) {
+      return true;
+    }
+
+    return false;
+  }
+
+  // Equivalent of `typeof` but with special handling for array and regexp.
+  function getPropType(propValue) {
+    var propType = typeof propValue;
+    if (Array.isArray(propValue)) {
+      return 'array';
+    }
+    if (propValue instanceof RegExp) {
+      // Old webkits (at least until Android 4.0) return 'function' rather than
+      // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
+      // passes PropTypes.object.
+      return 'object';
+    }
+    if (isSymbol(propType, propValue)) {
+      return 'symbol';
+    }
+    return propType;
+  }
+
+  // This handles more types than `getPropType`. Only used for error messages.
+  // See `createPrimitiveTypeChecker`.
+  function getPreciseType(propValue) {
+    if (typeof propValue === 'undefined' || propValue === null) {
+      return '' + propValue;
+    }
+    var propType = getPropType(propValue);
+    if (propType === 'object') {
+      if (propValue instanceof Date) {
+        return 'date';
+      } else if (propValue instanceof RegExp) {
+        return 'regexp';
+      }
+    }
+    return propType;
+  }
+
+  // Returns a string that is postfixed to a warning about an invalid type.
+  // For example, "undefined" or "of type array"
+  function getPostfixForTypeWarning(value) {
+    var type = getPreciseType(value);
+    switch (type) {
+      case 'array':
+      case 'object':
+        return 'an ' + type;
+      case 'boolean':
+      case 'date':
+      case 'regexp':
+        return 'a ' + type;
+      default:
+        return type;
+    }
+  }
+
+  // Returns class name of the object, if any.
+  function getClassName(propValue) {
+    if (!propValue.constructor || !propValue.constructor.name) {
+      return ANONYMOUS;
+    }
+    return propValue.constructor.name;
+  }
+
+  ReactPropTypes.checkPropTypes = checkPropTypes;
+  ReactPropTypes.resetWarningCache = checkPropTypes.resetWarningCache;
+  ReactPropTypes.PropTypes = ReactPropTypes;
+
+  return ReactPropTypes;
+};
+
+
+/***/ }),
+
+/***/ "./src/blocks/node_modules/prop-types/index.js":
+/*!*****************************************************!*\
+  !*** ./src/blocks/node_modules/prop-types/index.js ***!
+  \*****************************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (true) {
+  var ReactIs = __webpack_require__(/*! react-is */ "./src/blocks/node_modules/react-is/index.js");
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = __webpack_require__(/*! ./factoryWithTypeCheckers */ "./src/blocks/node_modules/prop-types/factoryWithTypeCheckers.js")(ReactIs.isElement, throwOnDirectAccess);
+} else {}
+
+
+/***/ }),
+
+/***/ "./src/blocks/node_modules/prop-types/lib/ReactPropTypesSecret.js":
+/*!************************************************************************!*\
+  !*** ./src/blocks/node_modules/prop-types/lib/ReactPropTypesSecret.js ***!
+  \************************************************************************/
+/***/ (function(module) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+
+module.exports = ReactPropTypesSecret;
+
+
+/***/ }),
+
+/***/ "./src/blocks/node_modules/prop-types/lib/has.js":
+/*!*******************************************************!*\
+  !*** ./src/blocks/node_modules/prop-types/lib/has.js ***!
+  \*******************************************************/
+/***/ (function(module) {
+
+module.exports = Function.call.bind(Object.prototype.hasOwnProperty);
+
+
+/***/ }),
+
+/***/ "./src/blocks/node_modules/react-google-font-loader/build/index.js":
+/*!*************************************************************************!*\
+  !*** ./src/blocks/node_modules/react-google-font-loader/build/index.js ***!
+  \*************************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+    value: true
+}));
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _propTypes = __webpack_require__(/*! prop-types */ "./src/blocks/node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var createLink = function createLink(fonts, subsets, display) {
+    var families = fonts.reduce(function (acc, font) {
+        var family = font.font.replace(/ +/g, '+');
+        var weights = (font.weights || []).join(',');
+
+        return [].concat(_toConsumableArray(acc), [family + (weights && ':' + weights)]);
+    }, []).join('|');
+
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css?family=' + families;
+
+    if (subsets && Array.isArray(subsets) && subsets.length > 0) {
+        link.href += '&subset=' + subsets.join(',');
+    }
+
+    if (display) {
+        link.href += '&display=' + display;
+    }
+
+    return link;
+};
+
+var GoogleFontLoader = function GoogleFontLoader(_ref) {
+    var fonts = _ref.fonts,
+        subsets = _ref.subsets,
+        _ref$display = _ref.display,
+        display = _ref$display === undefined ? null : _ref$display;
+
+    var _useState = (0, _react.useState)(createLink(fonts, subsets, display)),
+        _useState2 = _slicedToArray(_useState, 2),
+        link = _useState2[0],
+        setLink = _useState2[1];
+
+    (0, _react.useEffect)(function () {
+        document.head.appendChild(link);
+
+        return function () {
+            return document.head.removeChild(link);
+        };
+    }, [link]);
+
+    (0, _react.useEffect)(function () {
+        setLink(createLink(fonts, subsets, display));
+    }, [fonts, subsets, display]);
+
+    return null;
+};
+
+GoogleFontLoader.propTypes = {
+    fonts: _propTypes2.default.arrayOf(_propTypes2.default.shape({
+        font: _propTypes2.default.string.isRequired,
+        weights: _propTypes2.default.arrayOf(_propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]))
+    })).isRequired,
+    subsets: _propTypes2.default.arrayOf(_propTypes2.default.string),
+    display: _propTypes2.default.string
+};
+
+exports["default"] = GoogleFontLoader;
+
+/***/ }),
+
+/***/ "./src/blocks/node_modules/react-is/cjs/react-is.development.js":
+/*!**********************************************************************!*\
+  !*** ./src/blocks/node_modules/react-is/cjs/react-is.development.js ***!
+  \**********************************************************************/
+/***/ (function(__unused_webpack_module, exports) {
+
+"use strict";
+/** @license React v16.13.1
+ * react-is.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+
+
+if (true) {
+  (function() {
+'use strict';
+
+// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+// nor polyfill, then a plain number is used for performance.
+var hasSymbol = typeof Symbol === 'function' && Symbol.for;
+var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
+var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
+var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
+var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
+var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
+var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
+var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
+// (unstable) APIs that have been removed. Can we remove the symbols?
+
+var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
+var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
+var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
+var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
+var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
+var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
+var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
+var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
+var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
+var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
+var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
+
+function isValidElementType(type) {
+  return typeof type === 'string' || typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
+  type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_RESPONDER_TYPE || type.$$typeof === REACT_SCOPE_TYPE || type.$$typeof === REACT_BLOCK_TYPE);
+}
+
+function typeOf(object) {
+  if (typeof object === 'object' && object !== null) {
+    var $$typeof = object.$$typeof;
+
+    switch ($$typeof) {
+      case REACT_ELEMENT_TYPE:
+        var type = object.type;
+
+        switch (type) {
+          case REACT_ASYNC_MODE_TYPE:
+          case REACT_CONCURRENT_MODE_TYPE:
+          case REACT_FRAGMENT_TYPE:
+          case REACT_PROFILER_TYPE:
+          case REACT_STRICT_MODE_TYPE:
+          case REACT_SUSPENSE_TYPE:
+            return type;
+
+          default:
+            var $$typeofType = type && type.$$typeof;
+
+            switch ($$typeofType) {
+              case REACT_CONTEXT_TYPE:
+              case REACT_FORWARD_REF_TYPE:
+              case REACT_LAZY_TYPE:
+              case REACT_MEMO_TYPE:
+              case REACT_PROVIDER_TYPE:
+                return $$typeofType;
+
+              default:
+                return $$typeof;
+            }
+
+        }
+
+      case REACT_PORTAL_TYPE:
+        return $$typeof;
+    }
+  }
+
+  return undefined;
+} // AsyncMode is deprecated along with isAsyncMode
+
+var AsyncMode = REACT_ASYNC_MODE_TYPE;
+var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
+var ContextConsumer = REACT_CONTEXT_TYPE;
+var ContextProvider = REACT_PROVIDER_TYPE;
+var Element = REACT_ELEMENT_TYPE;
+var ForwardRef = REACT_FORWARD_REF_TYPE;
+var Fragment = REACT_FRAGMENT_TYPE;
+var Lazy = REACT_LAZY_TYPE;
+var Memo = REACT_MEMO_TYPE;
+var Portal = REACT_PORTAL_TYPE;
+var Profiler = REACT_PROFILER_TYPE;
+var StrictMode = REACT_STRICT_MODE_TYPE;
+var Suspense = REACT_SUSPENSE_TYPE;
+var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
+
+function isAsyncMode(object) {
+  {
+    if (!hasWarnedAboutDeprecatedIsAsyncMode) {
+      hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
+
+      console['warn']('The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
+    }
+  }
+
+  return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
+}
+function isConcurrentMode(object) {
+  return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
+}
+function isContextConsumer(object) {
+  return typeOf(object) === REACT_CONTEXT_TYPE;
+}
+function isContextProvider(object) {
+  return typeOf(object) === REACT_PROVIDER_TYPE;
+}
+function isElement(object) {
+  return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+}
+function isForwardRef(object) {
+  return typeOf(object) === REACT_FORWARD_REF_TYPE;
+}
+function isFragment(object) {
+  return typeOf(object) === REACT_FRAGMENT_TYPE;
+}
+function isLazy(object) {
+  return typeOf(object) === REACT_LAZY_TYPE;
+}
+function isMemo(object) {
+  return typeOf(object) === REACT_MEMO_TYPE;
+}
+function isPortal(object) {
+  return typeOf(object) === REACT_PORTAL_TYPE;
+}
+function isProfiler(object) {
+  return typeOf(object) === REACT_PROFILER_TYPE;
+}
+function isStrictMode(object) {
+  return typeOf(object) === REACT_STRICT_MODE_TYPE;
+}
+function isSuspense(object) {
+  return typeOf(object) === REACT_SUSPENSE_TYPE;
+}
+
+exports.AsyncMode = AsyncMode;
+exports.ConcurrentMode = ConcurrentMode;
+exports.ContextConsumer = ContextConsumer;
+exports.ContextProvider = ContextProvider;
+exports.Element = Element;
+exports.ForwardRef = ForwardRef;
+exports.Fragment = Fragment;
+exports.Lazy = Lazy;
+exports.Memo = Memo;
+exports.Portal = Portal;
+exports.Profiler = Profiler;
+exports.StrictMode = StrictMode;
+exports.Suspense = Suspense;
+exports.isAsyncMode = isAsyncMode;
+exports.isConcurrentMode = isConcurrentMode;
+exports.isContextConsumer = isContextConsumer;
+exports.isContextProvider = isContextProvider;
+exports.isElement = isElement;
+exports.isForwardRef = isForwardRef;
+exports.isFragment = isFragment;
+exports.isLazy = isLazy;
+exports.isMemo = isMemo;
+exports.isPortal = isPortal;
+exports.isProfiler = isProfiler;
+exports.isStrictMode = isStrictMode;
+exports.isSuspense = isSuspense;
+exports.isValidElementType = isValidElementType;
+exports.typeOf = typeOf;
+  })();
+}
+
+
+/***/ }),
+
+/***/ "./src/blocks/node_modules/react-is/index.js":
+/*!***************************************************!*\
+  !*** ./src/blocks/node_modules/react-is/index.js ***!
+  \***************************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+"use strict";
+
+
+if (false) {} else {
+  module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ "./src/blocks/node_modules/react-is/cjs/react-is.development.js");
+}
 
 
 /***/ }),

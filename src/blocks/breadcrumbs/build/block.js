@@ -4699,11 +4699,9 @@ function Edit(_ref) {
   };
 
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    if (!blockId) {
-      setAttributes({
-        blockId: "premium-breadcrumbs-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_14__.generateBlockId)(clientId)
-      });
-    }
+    setAttributes({
+      blockId: "premium-breadcrumbs-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_14__.generateBlockId)(clientId)
+    });
   });
 
   const onChangeSpacing = value => {
