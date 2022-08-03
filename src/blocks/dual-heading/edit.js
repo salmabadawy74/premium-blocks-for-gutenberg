@@ -38,13 +38,11 @@ class edit extends Component {
     }
 
     componentDidMount() {
-        if (!this.props.attributes.blockId) {
-            this.props.setAttributes({
-                blockId:
-                    "premium-dual-heading-" +
-                    generateBlockId(this.props.clientId),
-            });
-        }
+        this.props.setAttributes({
+            blockId:
+                "premium-dual-heading-" +
+                generateBlockId(this.props.clientId),
+        });
         this.props.setAttributes({ classMigrate: true });
     }
     render() {
@@ -651,19 +649,16 @@ class edit extends Component {
                 <div className={`premium-dheading-block__wrap`}>
                     <h2 className={`premium-dheading-block__title`}>
                         <RichText
-                            className={`premium-dheading-block__first${
-                                firstStyles?.[0]?.firstClip
+                            className={`premium-dheading-block__first${firstStyles?.[0]?.firstClip
                                     ? ` premium-headingc-${firstStyles?.[0]?.firstClip}`
                                     : ""
-                            }${
-                                firstStyles?.[0]?.firstAnim
+                                }${firstStyles?.[0]?.firstAnim
                                     ? ` premium-headinga-${firstStyles?.[0]?.firstAnim}`
                                     : ""
-                            }${
-                                firstStyles?.[0]?.firstStroke
+                                }${firstStyles?.[0]?.firstStroke
                                     ? ` premium-headings-${firstStyles?.[0]?.firstStroke}`
                                     : ""
-                            }`}
+                                }`}
                             value={firstHeading}
                             onChange={(value) =>
                                 setAttributes({ firstHeading: value })
@@ -698,19 +693,16 @@ class edit extends Component {
                             tagName="span"
                         />
                         <RichText
-                            className={`premium-dheading-block__second${
-                                secondStyles?.[0]?.secondClip
+                            className={`premium-dheading-block__second${secondStyles?.[0]?.secondClip
                                     ? `${` premium-headingc-${secondStyles?.[0]?.secondClip}`}`
                                     : ""
-                            }${
-                                secondStyles?.[0]?.secondAnim
+                                }${secondStyles?.[0]?.secondAnim
                                     ? ` ${`premium-headinga-${secondStyles?.[0]?.secondAnim} `}`
                                     : ""
-                            }${
-                                secondStyles?.[0]?.secondStroke
+                                }${secondStyles?.[0]?.secondStroke
                                     ? ` premium-headings-${secondStyles?.[0]?.secondStroke}`
                                     : ""
-                            }`}
+                                }`}
                             value={secondHeading}
                             onChange={(value) =>
                                 setAttributes({ secondHeading: value })

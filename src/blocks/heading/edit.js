@@ -46,11 +46,9 @@ class edit extends Component {
 
     componentDidMount() {
         const { setAttributes, clientId } = this.props;
-        if (!this.props.attributes.blockId) {
-            setAttributes({
-                blockId: "premium-heading-" + generateBlockId(clientId),
-            });
-        }
+        setAttributes({
+            blockId: "premium-heading-" + generateBlockId(clientId),
+        });
         this.props.setAttributes({ classMigrate: true });
         // Pushing Style tag for this block css.
         const $style = document.createElement("style");
@@ -415,17 +413,17 @@ class edit extends Component {
                 "border-right-width": `${titleBorder?.borderWidth?.[this.props.deviceType]?.right
                     }px!important`,
                 "border-bottom-width": `${titleBorder?.borderWidth?.[this.props.deviceType]
-                        ?.bottom
+                    ?.bottom
                     }px!important`,
                 "border-left-width": `${titleBorder?.borderWidth?.[this.props.deviceType]?.left
                     }px!important`,
                 "border-top-left-radius": `${titleBorder?.borderRadius?.[this.props.deviceType]?.top
                     }px!important`,
                 "border-top-right-radius": `${titleBorder?.borderRadius?.[this.props.deviceType]
-                        ?.right
+                    ?.right
                     }px!important`,
                 "border-bottom-left-radius": `${titleBorder?.borderRadius?.[this.props.deviceType]
-                        ?.bottom
+                    ?.bottom
                     }px!important`,
                 "border-bottom-right-radius": `${titleBorder?.borderRadius?.[this.props.deviceType]?.left
                     }px!important`,
@@ -579,8 +577,8 @@ class edit extends Component {
             styles[`.${blockId} .premium-title-icon`] = {
                 color: `${iconStyles[0].iconColor} !important`,
                 "background-color": `${iconBackground.backgroundType === "solid"
-                        ? iconBackground.backgroundColor
-                        : "transparent"
+                    ? iconBackground.backgroundColor
+                    : "transparent"
                     } !important`,
                 "background-image": `${btnbg} !important`,
                 "background-repeat": `${iconBackground.backgroundRepeat} !important`,

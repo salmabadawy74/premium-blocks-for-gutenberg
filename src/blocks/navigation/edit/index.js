@@ -195,9 +195,7 @@ function Navigation({
 	]);
 
 	useEffect(() => {
-		if (!blockId) {
-			setAttributes({ blockId: "premium-navigation-" + generateBlockId(clientId) })
-		}
+		setAttributes({ blockId: "premium-navigation-" + generateBlockId(clientId) });
 	})
 
 	const {

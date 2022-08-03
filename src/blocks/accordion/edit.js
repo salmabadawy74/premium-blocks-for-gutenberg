@@ -30,10 +30,8 @@ class PremiumAccordion extends Component {
     }
 
     componentDidMount() {
-        const { attributes, setAttributes, clientId } = this.props;
-        if (!attributes.blockId) {
-            setAttributes({ blockId: "premium-accordion-" + generateBlockId(clientId) });
-        }
+        const { setAttributes, clientId } = this.props;
+        setAttributes({ blockId: "premium-accordion-" + generateBlockId(clientId) });
 
         if (this.props.attributes.repeaterItems) {
             this.props.insertOnlyAllowedBlock();
@@ -139,16 +137,16 @@ class PremiumAccordion extends Component {
                 'padding-right': titlePaddingRight && `${titlePaddingRight}${titlePadding.unit}`,
                 'padding-bottom': titlePaddingBottom && `${titlePaddingBottom}${titlePadding.unit}`,
                 'padding-left': titlePaddingLeft && `${titlePaddingLeft}${titlePadding.unit}`,
-                'border-style': titleBorder && titleBorder.borderType,
-                'border-top-width': titleBorder && titleBorder.borderWidth[this.props.deviceType].top,
-                'border-right-width': titleBorder && titleBorder.borderWidth[this.props.deviceType].right,
-                'border-bottom-width': titleBorder && titleBorder.borderWidth[this.props.deviceType].bottom,
-                'border-left-width': titleBorder && titleBorder.borderWidth[this.props.deviceType].left,
-                'border-color': titleBorder && titleBorder.borderColor,
-                'border-top-left-radius': `${titleBorder && titleBorder.borderRadius[this.props.deviceType].top || 0}px`,
-                'border-top-right-radius': `${titleBorder && titleBorder.borderRadius[this.props.deviceType].right || 0}px`,
-                'border-bottom-left-radius': `${titleBorder && titleBorder.borderRadius[this.props.deviceType].bottom || 0}px`,
-                'border-bottom-right-radius': `${titleBorder && titleBorder.borderRadius[this.props.deviceType].left || 0}px`,
+                'border-style': titleBorder?.borderType,
+                'border-top-width': `${titleBorder?.borderWidth[this.props.deviceType]?.top}px`,
+                'border-right-width': `${titleBorder?.borderWidth[this.props.deviceType]?.right}px`,
+                'border-bottom-width': `${titleBorder?.borderWidth[this.props.deviceType]?.bottom}px`,
+                'border-left-width': `${titleBorder?.borderWidth[this.props.deviceType]?.left}px`,
+                'border-color': titleBorder?.borderColor,
+                'border-top-left-radius': `${titleBorder?.borderRadius[this.props.deviceType].top || 0}px`,
+                'border-top-right-radius': `${titleBorder?.borderRadius[this.props.deviceType].right || 0}px`,
+                'border-bottom-left-radius': `${titleBorder?.borderRadius[this.props.deviceType].bottom || 0}px`,
+                'border-bottom-right-radius': `${titleBorder?.borderRadius[this.props.deviceType].left || 0}px`,
             };
 
             styles[`.${blockId} .premium-accordion__icon_wrap svg.premium-accordion__icon`] = {
@@ -180,16 +178,16 @@ class PremiumAccordion extends Component {
                 'padding-right': descPaddingRight && `${descPaddingRight}${descPadding.unit}`,
                 'padding-bottom': descPaddingBottom && `${descPaddingBottom}${descPadding.unit}`,
                 'padding-left': descPaddingLeft && `${descPaddingLeft}${descPadding.unit}`,
-                'border-style': descBorder && descBorder.borderType,
-                'border-top-width': descBorder && descBorder.borderWidth[this.props.deviceType].top,
-                'border-right-width': descBorder && descBorder.borderWidth[this.props.deviceType].right,
-                'border-bottom-width': descBorder && descBorder.borderWidth[this.props.deviceType].bottom,
-                'border-left-width': descBorder && descBorder.borderWidth[this.props.deviceType].left,
-                'border-color': descBorder && descBorder.borderColor,
-                'border-top-left-radius': `${descBorder && descBorder.borderRadius[this.props.deviceType].top || 0}px`,
-                'border-top-right-radius': `${descBorder && descBorder.borderRadius[this.props.deviceType].right || 0}px`,
-                'border-bottom-left-radius': `${descBorder && descBorder.borderRadius[this.props.deviceType].bottom || 0}px`,
-                'border-bottom-right-radius': `${descBorder && descBorder.borderRadius[this.props.deviceType].left || 0}px`,
+                'border-style': descBorder?.borderType,
+                'border-top-width': `${descBorder?.borderWidth[this.props.deviceType].top}px`,
+                'border-right-width': `${descBorder?.borderWidth[this.props.deviceType].right}px`,
+                'border-bottom-width': `${descBorder?.borderWidth[this.props.deviceType].bottom}px`,
+                'border-left-width': `${descBorder?.borderWidth[this.props.deviceType].left}px`,
+                'border-color': descBorder?.borderColor,
+                'border-top-left-radius': `${descBorder?.borderRadius[this.props.deviceType].top || 0}px`,
+                'border-top-right-radius': `${descBorder?.borderRadius[this.props.deviceType].right || 0}px`,
+                'border-bottom-left-radius': `${descBorder?.borderRadius[this.props.deviceType].bottom || 0}px`,
+                'border-bottom-right-radius': `${descBorder?.borderRadius[this.props.deviceType].left || 0}px`,
                 'text-shadow': `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`
             };
 
@@ -227,7 +225,7 @@ class PremiumAccordion extends Component {
                                 />
                                 <hr />
                                 <RadioComponent
-                                    choices={[{ value: 'ltr', label: __('LTR'), icon: Icons.leftArrow }, { value: 'rtl', label: __('RTL'), icon: Icons.rightArrow }]}
+                                    choices={[{ value: 'ltr', label: __('LTR'), icon: Icons.arrowLeft }, { value: 'rtl', label: __('RTL'), icon: Icons.arrowRight }]}
                                     value={direction}
                                     onChange={newEffect => setAttributes({ direction: newEffect })}
                                     label={__("Direction", 'premium-blocks-for-gutenberg')}

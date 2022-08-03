@@ -30,9 +30,7 @@ class edit extends Component {
     }
     componentDidMount() {
         const { setAttributes, clientId } = this.props;
-        if (!this.props.attributes.blockId) {
-            setAttributes({ blockId: "premium-countup-" + generateBlockId(clientId) });
-        }
+        setAttributes({ blockId: "premium-countup-" + generateBlockId(clientId) });
         setAttributes({ classMigrate: true });
     }
 

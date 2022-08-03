@@ -20,10 +20,8 @@ export class edit extends Component {
     }
 
     componentDidMount() {
-        const { attributes, setAttributes, clientId } = this.props;
-        if (!attributes.blockId) {
-            setAttributes({ blockId: "premium-button-" + generateBlockId(clientId) });
-        }
+        const { setAttributes, clientId } = this.props;
+        setAttributes({ blockId: "premium-button-" + generateBlockId(clientId) });
     }
 
     render() {

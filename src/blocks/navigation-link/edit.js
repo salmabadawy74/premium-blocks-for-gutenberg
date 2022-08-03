@@ -383,9 +383,7 @@ export default function NavigationLinkEdit({
 	);
 
 	useEffect(() => {
-		if (!blockId) {
-			setAttributes({ blockId: "premium-navigation-link-" + generateBlockId(clientId) })
-		}
+		setAttributes({ blockId: "premium-navigation-link-" + generateBlockId(clientId) });
 	})
 
 	useEffect(() => {

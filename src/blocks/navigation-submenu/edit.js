@@ -401,9 +401,7 @@ function NavigationSubmenuEdit({
 	);
 
 	useEffect(() => {
-		if (!blockId) {
-			setAttributes({ blockId: "premium-navigation-submenu-" + generateBlockId(clientId) })
-		}
+		setAttributes({ blockId: "premium-navigation-submenu-" + generateBlockId(clientId) });
 	})
 
 	// Show the LinkControl on mount if the URL is empty
