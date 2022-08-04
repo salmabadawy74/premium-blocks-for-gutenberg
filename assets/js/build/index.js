@@ -13917,19 +13917,19 @@ const attributes = {
   textShadow: {
     type: "object",
     default: {
-      'color': '',
-      'blur': '10',
-      'horizontal': '0',
-      'vertical': '0'
+      color: "undefined",
+      blur: "10",
+      horizontal: "0",
+      vertical: "0"
     }
   },
   boxShadow: {
     type: "object",
     default: {
-      'color': '',
-      'blur': '10',
-      'horizontal': '0',
-      'vertical': '0',
+      color: "undefined",
+      blur: "10",
+      horizontal: "0",
+      vertical: "0",
       'position': ' '
     }
   },
