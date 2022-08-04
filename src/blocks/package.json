@@ -11,9 +11,9 @@
         "@wordpress/data": "^6.8.0",
         "@wordpress/element": "^4.4.0",
         "@wordpress/i18n": "^4.6.0",
-        "react": "^16.6.3",
-        "react-dom": "^16.6.3",
-        "react-google-font-loader": "^1.1.0"
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6",
+        "webfontloader": "^1.6.28"
     },
     "scripts": {
         "start:content-switcher": "wp-scripts start content-switcher/block.js --output-path=content-switcher/build",

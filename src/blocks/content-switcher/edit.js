@@ -1,7 +1,12 @@
 import { __ } from "@wordpress/i18n";
 import classnames from "classnames";
 import { withSelect } from "@wordpress/data";
-import { InspectorControls, RichText, useBlockProps, InnerBlocks } from "@wordpress/block-editor";
+import {
+    InspectorControls,
+    RichText,
+    useBlockProps,
+    InnerBlocks,
+} from "@wordpress/block-editor";
 import { Fragment, useEffect, useState, useRef } from "@wordpress/element";
 import { PanelBody, SelectControl, ToggleControl } from "@wordpress/components";
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
@@ -20,8 +25,18 @@ import InsideTabs from "../../components/InsideTabs";
 import InsideTab from "../../components/InsideTab";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import Icons from "../../components/icons";
-import { gradientBackground, borderCss, paddingCss, marginCss, typographyCss, generateBlockId, gradientValue, generateCss } from "../../components/HelperFunction";
-import GoogleFontLoader from "react-google-font-loader";
+import {
+    gradientBackground,
+    borderCss,
+    paddingCss,
+    marginCss,
+    typographyCss,
+    generateBlockId,
+    gradientValue,
+    generateCss,
+} from "../../components/HelperFunction";
+// import GoogleFontLoader from "react-google-font-loader";
+import WebfontLoader from "../../components/typography/fontLoader";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -44,7 +59,8 @@ function Edit(props) {
 
     useEffect(() => {
         setAttributes({
-            blockId: "premium-content-switcher-" + generateBlockId(props.clientId),
+            blockId:
+                "premium-content-switcher-" + generateBlockId(props.clientId),
         });
         setAttributes({ classMigrate: true });
         setClickEvents();
@@ -153,59 +169,76 @@ function Edit(props) {
     let loadSecondLabelGoogleFonts;
 
     if (firstLabelTypography.fontFamily !== "Default") {
+        const config = {
+            google: {
+                families: [firstLabelTypography.fontFamily],
+            },
+        };
         loadFirstLabelGoogleFonts = (
-            <GoogleFontLoader
-                fonts={[
-                    {
-                        font: firstLabelTypography?.fontFamily,
-                    },
-                ]}
-            />
+            <WebfontLoader config={config}></WebfontLoader>
         );
     }
     if (secondLabelTypography.fontFamily !== "Default") {
-        loadSecondLabelGoogleFonts = (
-            <GoogleFontLoader
-                fonts={[
-                    { font: secondLabelTypography?.fontFamily },
-                ]}
-            />
+        const sconfig = {
+            google: {
+                families: [secondLabelTypography.fontFamily],
+            },
+        };
+        loadFirstLabelGoogleFonts = (
+            <WebfontLoader config={sconfig}></WebfontLoader>
         );
     }
     const loadStyles = () => {
         const styles = {};
-        styles[`.${blockId} .premium-content-switcher-toggle-switch-slider:before `] = {
-            'border-radius': `${containerRadius || 50}${containerRadiusUnit} !important`,
-            'box-shadow': ` ${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position} !important`,
-            "background-color": `${controllerOneBackground.backgroundType == 'solid' ? controllerOneBackground.backgroundColor : '#6ec1e4'}`,
-            'background-image': `${gradientValue(controllerOneBackground)}`,
-            'background-repeat': `${controllerOneBackground.backgroundRepeat}`,
-            'background-position': `${controllerOneBackground.backgroundPosition}`,
-            'background-size': `${controllerOneBackground.backgroundSize}`,
-            'background-attachment': `${controllerOneBackground.fixed ? "fixed" : "unset"}`,
+        styles[
+            `.${blockId} .premium-content-switcher-toggle-switch-slider:before `
+        ] = {
+            "border-radius": `${
+                containerRadius || 50
+            }${containerRadiusUnit} !important`,
+            "box-shadow": ` ${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position} !important`,
+            "background-color": `${
+                controllerOneBackground.backgroundType == "solid"
+                    ? controllerOneBackground.backgroundColor
+                    : "#6ec1e4"
+            }`,
+            "background-image": `${gradientValue(controllerOneBackground)}`,
+            "background-repeat": `${controllerOneBackground.backgroundRepeat}`,
+            "background-position": `${controllerOneBackground.backgroundPosition}`,
+            "background-size": `${controllerOneBackground.backgroundSize}`,
+            "background-attachment": `${
+                controllerOneBackground.fixed ? "fixed" : "unset"
+            }`,
         };
-        styles[`.${blockId} .premium-content-switcher-toggle-switch-slider `] = {
-            'border-radius': `${switchRadius}${switchRadiusUnit} !important`,
-            'box-shadow': `${switchShadow.horizontal}px ${switchShadow.vertical}px ${switchShadow.blur}px ${switchShadow.color} ${switchShadow.position} !important`,
+        styles[
+            `.${blockId} .premium-content-switcher-toggle-switch-slider `
+        ] = {
+            "border-radius": `${switchRadius}${switchRadiusUnit} !important`,
+            "box-shadow": `${switchShadow.horizontal}px ${switchShadow.vertical}px ${switchShadow.blur}px ${switchShadow.color} ${switchShadow.position} !important`,
+        };
 
+        styles[
+            `.${blockId} .premium-content-switcher-toggle-inline.premium-content-switcher-first-label `
+        ] = {
+            "margin-right": `${labelSpacing[props.deviceType]}px !important`,
         };
-
-        styles[`.${blockId} .premium-content-switcher-toggle-inline.premium-content-switcher-first-label `] = {
-            'margin-right': `${labelSpacing[props.deviceType]}px !important`,
+        styles[
+            `.${blockId} .premium-content-switcher-toggle-inline.premium-content-switcher-second-label `
+        ] = {
+            "margin-left": `${labelSpacing[props.deviceType]}px !important`,
         };
-        styles[`.${blockId} .premium-content-switcher-toggle-inline.premium-content-switcher-second-label `] = {
-            'margin-left': `${labelSpacing[props.deviceType]}px !important`
+        styles[
+            `.${blockId} .premium-content-switcher-toggle-block.premium-content-switcher-first-label `
+        ] = {
+            "margin-bottom": `${labelSpacing[props.deviceType]}px !important`,
         };
-        styles[`.${blockId} .premium-content-switcher-toggle-block.premium-content-switcher-first-label `] = {
-            'margin-bottom': `${labelSpacing[props.deviceType]}px !important`,
-        };
-        styles[`.${blockId} .premium-content-switcher-toggle-block.premium-content-switcher-second-label `] = {
-            'margin-top': `${labelSpacing[props.deviceType]}px !important`
+        styles[
+            `.${blockId} .premium-content-switcher-toggle-block.premium-content-switcher-second-label `
+        ] = {
+            "margin-top": `${labelSpacing[props.deviceType]}px !important`,
         };
         return generateCss(styles);
-
-
-    }
+    };
     return (
         <Fragment>
             <InspectorControls>
@@ -217,7 +250,10 @@ function Edit(props) {
                             initialOpen={true}
                         >
                             <ToggleControl
-                                label={__("Show Labels", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Show Labels",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 checked={showLabel}
                                 onChange={(newCheck) =>
                                     setAttributes({ showLabel: newCheck })
@@ -226,61 +262,131 @@ function Edit(props) {
                             {showLabel && (
                                 <Fragment>
                                     <RadioComponent
-                                        label={__("HTML Tag", "premium-blocks-for-gutenberg")}
+                                        label={__(
+                                            "HTML Tag",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         choices={[
-                                            { value: "h1", label: __("H1", "premium-blocks-for-gutenberg") },
-                                            { value: "h2", label: __("H2", "premium-blocks-for-gutenberg") },
-                                            { value: "h3", label: __("H3", "premium-blocks-for-gutenberg") },
-                                            { value: "h4", label: __("H4", "premium-blocks-for-gutenberg") },
-                                            { value: "h5", label: __("H5", "premium-blocks-for-gutenberg") },
-                                            { value: "h6", label: __("H6", "premium-blocks-for-gutenberg") },
+                                            {
+                                                value: "h1",
+                                                label: __(
+                                                    "H1",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                            },
+                                            {
+                                                value: "h2",
+                                                label: __(
+                                                    "H2",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                            },
+                                            {
+                                                value: "h3",
+                                                label: __(
+                                                    "H3",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                            },
+                                            {
+                                                value: "h4",
+                                                label: __(
+                                                    "H4",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                            },
+                                            {
+                                                value: "h5",
+                                                label: __(
+                                                    "H5",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                            },
+                                            {
+                                                value: "h6",
+                                                label: __(
+                                                    "H6",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                            },
                                         ]}
                                         value={labelTag}
-                                        onChange={(newValue) => setAttributes({ labelTag: newValue, })}
+                                        onChange={(newValue) =>
+                                            setAttributes({
+                                                labelTag: newValue,
+                                            })
+                                        }
                                     />
                                     <SelectControl
-                                        label={__("Display", "premium-blocks-for-gutenberg")}
+                                        label={__(
+                                            "Display",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         options={DISPLAY}
                                         value={display}
-                                        onChange={(newValue) => setAttributes({ display: newValue })}
+                                        onChange={(newValue) =>
+                                            setAttributes({ display: newValue })
+                                        }
                                     />
                                 </Fragment>
                             )}
                             <ResponsiveRadioControl
-                                label={__("Alignment", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Alignment",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 choices={[
                                     {
                                         value: "left",
-                                        label: __("Left", "premium-blocks-for-gutenberg"),
+                                        label: __(
+                                            "Left",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
                                         icon: Icons.alignLeft,
                                     },
                                     {
                                         value: "center",
-                                        label: __("Center", "premium-blocks-for-gutenberg"),
+                                        label: __(
+                                            "Center",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
                                         icon: Icons.alignCenter,
                                     },
                                     {
                                         value: "right",
-                                        label: __("Right", "premium-blocks-for-gutenberg"),
+                                        label: __(
+                                            "Right",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
                                         icon: Icons.alignRight,
                                     },
                                 ]}
                                 value={align}
-                                onChange={(newValue) => setAttributes({ align: newValue })}
+                                onChange={(newValue) =>
+                                    setAttributes({ align: newValue })
+                                }
                                 showIcons={true}
                             />
                         </PanelBody>
                     </InspectorTab>
                     <InspectorTab key={"style"}>
                         <PanelBody
-                            title={__("Switcher Style", "premium-blocks-for-gutenberg")}
+                            title={__(
+                                "Switcher Style",
+                                "premium-blocks-for-gutenberg"
+                            )}
                             className="premium-panel-body"
                             initialOpen={true}
                         >
                             <ResponsiveRangeControl
-                                label={__("Size", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Size",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 value={switchSize}
-                                onChange={(value) => setAttributes({ switchSize: value })}
+                                onChange={(value) =>
+                                    setAttributes({ switchSize: value })
+                                }
                                 min={1}
                                 max={40}
                                 step={1}
@@ -288,35 +394,66 @@ function Edit(props) {
                                 defaultValue={15}
                                 device="Desktop"
                             />
-                            <h2>{__("Controller Background", "premium-blocks-for-gutenberg")}</h2>
+                            <h2>
+                                {__(
+                                    "Controller Background",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                            </h2>
                             <PremiumBackgroundControl
                                 value={controllerOneBackground}
-                                onChange={(value) => setAttributes({ controllerOneBackground: value })}
+                                onChange={(value) =>
+                                    setAttributes({
+                                        controllerOneBackground: value,
+                                    })
+                                }
                             />
                             <hr />
-                            <h2>{__("Switcher Background", "premium-blocks-for-gutenberg")}</h2>
+                            <h2>
+                                {__(
+                                    "Switcher Background",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                            </h2>
                             <PremiumBackgroundControl
                                 value={switcherBackground}
-                                onChange={(value) => setAttributes({ switcherBackground: value })}
+                                onChange={(value) =>
+                                    setAttributes({ switcherBackground: value })
+                                }
                             />
                             <hr />
                             <PremiumShadow
-                                label={__("Controller Shadow", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Controller Shadow",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 value={containerShadow}
-                                onChange={(value) => setAttributes({ containerShadow: value })}
+                                onChange={(value) =>
+                                    setAttributes({ containerShadow: value })
+                                }
                                 boxShadow={true}
                             />
                             <PremiumShadow
-                                label={__("Switcher Shadow", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Switcher Shadow",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 value={switchShadow}
-                                onChange={(value) => setAttributes({ switchShadow: value })}
+                                onChange={(value) =>
+                                    setAttributes({ switchShadow: value })
+                                }
                                 boxShadow={true}
                             />
                             <hr />
                             <ResponsiveSingleRangeControl
-                                label={__("Controller Border Radius", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Controller Border Radius",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 value={containerRadius}
-                                onChange={(newSize) => setAttributes({ containerRadius: newSize })}
+                                onChange={(newSize) =>
+                                    setAttributes({ containerRadius: newSize })
+                                }
                                 min={1}
                                 max={100}
                                 step={1}
@@ -324,12 +461,21 @@ function Edit(props) {
                                 units={["px", "em", "%"]}
                                 defaultValue={50}
                                 unit={containerRadiusUnit}
-                                onChangeUnit={(newSize) => setAttributes({ containerRadiusUnit: newSize })}
+                                onChangeUnit={(newSize) =>
+                                    setAttributes({
+                                        containerRadiusUnit: newSize,
+                                    })
+                                }
                             />
                             <ResponsiveSingleRangeControl
-                                label={__("Switcher Border Radius", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Switcher Border Radius",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 value={switchRadius}
-                                onChange={(newSize) => setAttributes({ switchRadius: newSize })}
+                                onChange={(newSize) =>
+                                    setAttributes({ switchRadius: newSize })
+                                }
                                 min={1}
                                 max={100}
                                 step={1}
@@ -337,7 +483,9 @@ function Edit(props) {
                                 units={["px", "em", "%"]}
                                 defaultValue={1.5}
                                 unit={switchRadiusUnit}
-                                onChangeUnit={(newSize) => setAttributes({ switchRadiusUnit: newSize })}
+                                onChangeUnit={(newSize) =>
+                                    setAttributes({ switchRadiusUnit: newSize })
+                                }
                             />
                         </PanelBody>
                         {showLabel && (
@@ -347,9 +495,14 @@ function Edit(props) {
                                 initialOpen={false}
                             >
                                 <ResponsiveRangeControl
-                                    label={__("Spacing", "premium-blocks-for-gutenberg")}
+                                    label={__(
+                                        "Spacing",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     value={labelSpacing}
-                                    onChange={(value) => setAttributes({ labelSpacing: value })}
+                                    onChange={(value) =>
+                                        setAttributes({ labelSpacing: value })
+                                    }
                                     min={1}
                                     max={100}
                                     step={1}
@@ -358,92 +511,200 @@ function Edit(props) {
                                     device="Desktop"
                                 />
                                 <InsideTabs>
-                                    <InsideTab tabTitle={__("First Label", "premium-blocks-for-gutenberg")}>
+                                    <InsideTab
+                                        tabTitle={__(
+                                            "First Label",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                    >
                                         <Fragment>
                                             <PremiumTypo
                                                 value={firstLabelTypography}
-                                                onChange={(newValue) => setAttributes({ firstLabelTypography: newValue })}
+                                                onChange={(newValue) =>
+                                                    setAttributes({
+                                                        firstLabelTypography: newValue,
+                                                    })
+                                                }
                                             />
                                             <AdvancedPopColorControl
-                                                label={__("Text Color", "premium-block-for-gutenberg")}
-                                                colorValue={labelStyles.firstLabelColor}
+                                                label={__(
+                                                    "Text Color",
+                                                    "premium-block-for-gutenberg"
+                                                )}
+                                                colorValue={
+                                                    labelStyles.firstLabelColor
+                                                }
                                                 colorDefault={""}
-                                                onColorChange={(newValue) => saveLabelStyles("firstLabelColor", newValue)}
+                                                onColorChange={(newValue) =>
+                                                    saveLabelStyles(
+                                                        "firstLabelColor",
+                                                        newValue
+                                                    )
+                                                }
                                             />
                                             <AdvancedPopColorControl
-                                                label={__("Background Color", "premium-block-for-gutenberg")}
-                                                colorValue={labelStyles.firstLabelBGColor}
+                                                label={__(
+                                                    "Background Color",
+                                                    "premium-block-for-gutenberg"
+                                                )}
+                                                colorValue={
+                                                    labelStyles.firstLabelBGColor
+                                                }
                                                 colorDefault={""}
-                                                onColorChange={(newValue) => saveLabelStyles("firstLabelBGColor", newValue)}
+                                                onColorChange={(newValue) =>
+                                                    saveLabelStyles(
+                                                        "firstLabelBGColor",
+                                                        newValue
+                                                    )
+                                                }
                                             />
                                             <PremiumShadow
-                                                label={__("Text Shadow", "premium-blocks-for-gutenberg")}
+                                                label={__(
+                                                    "Text Shadow",
+                                                    "premium-blocks-for-gutenberg"
+                                                )}
                                                 value={firstLabelShadow}
-                                                onChange={(value) => setAttributes({ firstLabelShadow: value })}
+                                                onChange={(value) =>
+                                                    setAttributes({
+                                                        firstLabelShadow: value,
+                                                    })
+                                                }
                                             />
                                             <PremiumShadow
                                                 value={firstLabelBoxShadow}
-                                                onChange={(value) => setAttributes({ firstLabelBoxShadow: value })}
+                                                onChange={(value) =>
+                                                    setAttributes({
+                                                        firstLabelBoxShadow: value,
+                                                    })
+                                                }
                                                 boxShadow={true}
                                             />
                                             <hr />
                                             <PremiumBorder
-                                                label={__("Border", "premium-blocks-for-gutenberg")}
+                                                label={__(
+                                                    "Border",
+                                                    "premium-blocks-for-gutenberg"
+                                                )}
                                                 value={firstLabelborder}
-                                                onChange={(value) => setAttributes({ firstLabelborder: value, })}
+                                                onChange={(value) =>
+                                                    setAttributes({
+                                                        firstLabelborder: value,
+                                                    })
+                                                }
                                                 device="Desktop"
                                             />
                                             <hr />
                                             <SpacingControl
-                                                label={__("Padding", "premium-blocks-for-gutenberg")}
+                                                label={__(
+                                                    "Padding",
+                                                    "premium-blocks-for-gutenberg"
+                                                )}
                                                 value={firstLabelPadding}
-                                                onChange={(value) => setAttributes({ firstLabelPadding: value })}
+                                                onChange={(value) =>
+                                                    setAttributes({
+                                                        firstLabelPadding: value,
+                                                    })
+                                                }
                                                 showUnits={true}
                                                 responsive={true}
                                                 device="Desktop"
                                             />
                                         </Fragment>
                                     </InsideTab>
-                                    <InsideTab tabTitle={__("Second Label", "premium-blocks-for-gutenberg")}>
+                                    <InsideTab
+                                        tabTitle={__(
+                                            "Second Label",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                    >
                                         <Fragment>
                                             <PremiumTypo
                                                 value={secondLabelTypography}
-                                                onChange={(newValue) => setAttributes({ secondLabelTypography: newValue, })}
+                                                onChange={(newValue) =>
+                                                    setAttributes({
+                                                        secondLabelTypography: newValue,
+                                                    })
+                                                }
                                             />
                                             <AdvancedPopColorControl
-                                                label={__("Text Color", "premium-block-for-gutenberg")}
-                                                colorValue={labelStyles.secondLabelColor}
+                                                label={__(
+                                                    "Text Color",
+                                                    "premium-block-for-gutenberg"
+                                                )}
+                                                colorValue={
+                                                    labelStyles.secondLabelColor
+                                                }
                                                 colorDefault={""}
-                                                onColorChange={(newValue) => saveLabelStyles("secondLabelColor", newValue)}
+                                                onColorChange={(newValue) =>
+                                                    saveLabelStyles(
+                                                        "secondLabelColor",
+                                                        newValue
+                                                    )
+                                                }
                                             />
                                             <AdvancedPopColorControl
-                                                label={__("Background Color", "premium-block-for-gutenberg")}
-                                                colorValue={labelStyles.secondLabelBGColor}
+                                                label={__(
+                                                    "Background Color",
+                                                    "premium-block-for-gutenberg"
+                                                )}
+                                                colorValue={
+                                                    labelStyles.secondLabelBGColor
+                                                }
                                                 colorDefault={""}
-                                                onColorChange={(newValue) => saveLabelStyles("secondLabelBGColor", newValue)}
+                                                onColorChange={(newValue) =>
+                                                    saveLabelStyles(
+                                                        "secondLabelBGColor",
+                                                        newValue
+                                                    )
+                                                }
                                             />
                                             <PremiumShadow
-                                                label={__("Text Shadow", "premium-blocks-for-gutenberg")}
+                                                label={__(
+                                                    "Text Shadow",
+                                                    "premium-blocks-for-gutenberg"
+                                                )}
                                                 value={secondLabelShadow}
-                                                onChange={(value) => setAttributes({ secondLabelShadow: value })}
+                                                onChange={(value) =>
+                                                    setAttributes({
+                                                        secondLabelShadow: value,
+                                                    })
+                                                }
                                             />
                                             <PremiumShadow
                                                 value={secondLabelBoxShadow}
-                                                onChange={(value) => setAttributes({ secondLabelBoxShadow: value })}
+                                                onChange={(value) =>
+                                                    setAttributes({
+                                                        secondLabelBoxShadow: value,
+                                                    })
+                                                }
                                                 boxShadow={true}
                                             />
                                             <hr />
                                             <PremiumBorder
-                                                label={__("Border", "premium-blocks-for-gutenberg")}
+                                                label={__(
+                                                    "Border",
+                                                    "premium-blocks-for-gutenberg"
+                                                )}
                                                 value={secondLabelborder}
-                                                onChange={(value) => setAttributes({ secondLabelborder: value })}
+                                                onChange={(value) =>
+                                                    setAttributes({
+                                                        secondLabelborder: value,
+                                                    })
+                                                }
                                                 device="Desktop"
                                             />
                                             <hr />
                                             <SpacingControl
-                                                label={__("Padding", "premium-blocks-for-gutenberg")}
+                                                label={__(
+                                                    "Padding",
+                                                    "premium-blocks-for-gutenberg"
+                                                )}
                                                 value={secondLabelPadding}
-                                                onChange={(value) => setAttributes({ secondLabelPadding: value })}
+                                                onChange={(value) =>
+                                                    setAttributes({
+                                                        secondLabelPadding: value,
+                                                    })
+                                                }
                                                 showUnits={true}
                                                 responsive={true}
                                                 device="Desktop"
@@ -454,40 +715,64 @@ function Edit(props) {
                             </PanelBody>
                         )}
                         <PanelBody
-                            title={__("Container Style", "premium-blocks-for-gutenberg")}
+                            title={__(
+                                "Container Style",
+                                "premium-blocks-for-gutenberg"
+                            )}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
                             <PremiumBackgroundControl
                                 value={containerBackground}
-                                onChange={(value) => setAttributes({ containerBackground: value })}
+                                onChange={(value) =>
+                                    setAttributes({
+                                        containerBackground: value,
+                                    })
+                                }
                             />
                             <hr />
                             <PremiumShadow
                                 value={containerBoxShadow}
-                                onChange={(value) => setAttributes({ containerBoxShadow: value })}
+                                onChange={(value) =>
+                                    setAttributes({ containerBoxShadow: value })
+                                }
                                 boxShadow={true}
                             />
                             <hr />
                             <PremiumBorder
-                                label={__("Border", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Border",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 value={containerborder}
-                                onChange={(value) => setAttributes({ containerborder: value })}
+                                onChange={(value) =>
+                                    setAttributes({ containerborder: value })
+                                }
                                 device="Desktop"
                             />
                             <hr />
                             <SpacingControl
-                                label={__("Margin", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Margin",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 value={containerMargin}
-                                onChange={(value) => setAttributes({ containerMargin: value })}
+                                onChange={(value) =>
+                                    setAttributes({ containerMargin: value })
+                                }
                                 showUnits={true}
                                 responsive={true}
                                 device="Desktop"
                             />
                             <SpacingControl
-                                label={__("Padding", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Padding",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 value={containerPadding}
-                                onChange={(value) => setAttributes({ containerPadding: value })}
+                                onChange={(value) =>
+                                    setAttributes({ containerPadding: value })
+                                }
                                 showUnits={true}
                                 responsive={true}
                                 device="Desktop"
@@ -499,26 +784,34 @@ function Edit(props) {
                             Desktop={hideDesktop}
                             Tablet={hideTablet}
                             Mobile={hideMobile}
-                            onChangeDesktop={(value) => setAttributes({ hideDesktop: value })}
-                            onChangeTablet={(value) => setAttributes({ hideTablet: value })}
-                            onChangeMobile={(value) => setAttributes({ hideMobile: value })}
+                            onChangeDesktop={(value) =>
+                                setAttributes({ hideDesktop: value })
+                            }
+                            onChangeTablet={(value) =>
+                                setAttributes({ hideTablet: value })
+                            }
+                            onChangeMobile={(value) =>
+                                setAttributes({ hideMobile: value })
+                            }
                         />
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
             <style
                 dangerouslySetInnerHTML={{
-                    __html: loadStyles()
-                }} />
+                    __html: loadStyles(),
+                }}
+            />
             <div
                 {...useBlockProps({
                     className: classnames(
                         className,
-                        `premium-content-switcher ${blockId} `, {
-                        ' premium-desktop-hidden': hideDesktop,
-                        ' premium-tablet-hidden': hideTablet,
-                        ' premium-mobile-hidden': hideMobile,
-                    }
+                        `premium-content-switcher ${blockId} `,
+                        {
+                            " premium-desktop-hidden": hideDesktop,
+                            " premium-tablet-hidden": hideTablet,
+                            " premium-mobile-hidden": hideMobile,
+                        }
                     ),
                 })}
                 style={{
@@ -533,15 +826,31 @@ function Edit(props) {
                         ...marginCss(containerMargin, props.deviceType),
                         ...gradientBackground(containerBackground),
                         textAlign: align[props.deviceType],
-                        boxShadow: `${containerBoxShadow.horizontal || 0}px ${containerBoxShadow.vertical || 0}px ${containerBoxShadow.blur || 0}px ${containerBoxShadow.color} ${containerBoxShadow.position} `,
+                        boxShadow: `${containerBoxShadow.horizontal || 0}px ${
+                            containerBoxShadow.vertical || 0
+                        }px ${containerBoxShadow.blur || 0}px ${
+                            containerBoxShadow.color
+                        } ${containerBoxShadow.position} `,
                     }}
                 >
                     <div
                         className={`premium-content-switcher-toggle-${display} `}
                         style={{
                             textAlign: align[props.deviceType],
-                            justifyContent: align[props.deviceType] == "right" ? "flex-end" : align[props.deviceType] == "left" ? "flex-start" : align[props.deviceType],
-                            alignItems: display == "inline" ? "center" : align[props.deviceType] == "right" ? "flex-end" : align[props.deviceType] == "left" ? "flex-start" : align[props.deviceType],
+                            justifyContent:
+                                align[props.deviceType] == "right"
+                                    ? "flex-end"
+                                    : align[props.deviceType] == "left"
+                                    ? "flex-start"
+                                    : align[props.deviceType],
+                            alignItems:
+                                display == "inline"
+                                    ? "center"
+                                    : align[props.deviceType] == "right"
+                                    ? "flex-end"
+                                    : align[props.deviceType] == "left"
+                                    ? "flex-start"
+                                    : align[props.deviceType],
                         }}
                     >
                         {showLabel && (
@@ -549,18 +858,44 @@ function Edit(props) {
                                 <RichText
                                     tagName={labelTag.toLowerCase()}
                                     className={`premium-content-switcher-${display}-editing`}
-                                    onChange={(newValue) => setAttributes({ firstLabel: newValue })}
+                                    onChange={(newValue) =>
+                                        setAttributes({ firstLabel: newValue })
+                                    }
                                     value={firstLabel}
                                     ref={primaryRef}
                                     style={{
-                                        ...typographyCss(firstLabelTypography, props.deviceType),
-                                        ...borderCss(firstLabelborder, props.deviceType),
-                                        ...paddingCss(firstLabelPadding, props.deviceType),
+                                        ...typographyCss(
+                                            firstLabelTypography,
+                                            props.deviceType
+                                        ),
+                                        ...borderCss(
+                                            firstLabelborder,
+                                            props.deviceType
+                                        ),
+                                        ...paddingCss(
+                                            firstLabelPadding,
+                                            props.deviceType
+                                        ),
                                         margin: 0,
                                         color: labelStyles.firstLabelColor,
-                                        background: labelStyles.firstLabelBGColor,
-                                        textShadow: `${firstLabelShadow.horizontal || 0}px ${firstLabelShadow.vertical || 0}px ${firstLabelShadow.blur || 0}px ${firstLabelShadow.color} `,
-                                        boxShadow: `${firstLabelBoxShadow.horizontal || 0}px ${firstLabelBoxShadow.vertical || 0}px ${firstLabelBoxShadow.blur || 0}px ${firstLabelBoxShadow.color} ${firstLabelBoxShadow.position} `,
+                                        background:
+                                            labelStyles.firstLabelBGColor,
+                                        textShadow: `${
+                                            firstLabelShadow.horizontal || 0
+                                        }px ${
+                                            firstLabelShadow.vertical || 0
+                                        }px ${firstLabelShadow.blur || 0}px ${
+                                            firstLabelShadow.color
+                                        } `,
+                                        boxShadow: `${
+                                            firstLabelBoxShadow.horizontal || 0
+                                        }px ${
+                                            firstLabelBoxShadow.vertical || 0
+                                        }px ${
+                                            firstLabelBoxShadow.blur || 0
+                                        }px ${firstLabelBoxShadow.color} ${
+                                            firstLabelBoxShadow.position
+                                        } `,
                                     }}
                                 />
                             </div>
@@ -568,10 +903,13 @@ function Edit(props) {
                         <div
                             className="premium-content-switcher-toggle-switch"
                             style={{
-                                fontSize: (switchSize[props.deviceType] || 15) + "px"
+                                fontSize:
+                                    (switchSize[props.deviceType] || 15) + "px",
                             }}
                         >
-                            <label className={`premium-content-switcher-toggle-switch-label`}>
+                            <label
+                                className={`premium-content-switcher-toggle-switch-label`}
+                            >
                                 <input
                                     onClick={() => initToggleBox()}
                                     type="checkbox"
@@ -580,7 +918,9 @@ function Edit(props) {
                                 <span
                                     className="premium-content-switcher-toggle-switch-slider round"
                                     style={{
-                                        ...gradientBackground(switcherBackground),
+                                        ...gradientBackground(
+                                            switcherBackground
+                                        ),
                                     }}
                                 ></span>
                             </label>
@@ -596,14 +936,38 @@ function Edit(props) {
                                     value={secondLabel}
                                     ref={secondaryRef}
                                     style={{
-                                        ...typographyCss(secondLabelTypography, props.deviceType),
-                                        ...borderCss(secondLabelborder, props.deviceType),
-                                        ...paddingCss(secondLabelPadding, props.deviceType),
+                                        ...typographyCss(
+                                            secondLabelTypography,
+                                            props.deviceType
+                                        ),
+                                        ...borderCss(
+                                            secondLabelborder,
+                                            props.deviceType
+                                        ),
+                                        ...paddingCss(
+                                            secondLabelPadding,
+                                            props.deviceType
+                                        ),
                                         margin: 0,
                                         color: labelStyles.secondLabelColor,
-                                        background: labelStyles.secondLabelBGColor,
-                                        textShadow: `${secondLabelShadow.horizontal || 0}px ${secondLabelShadow.vertical || 0}px ${secondLabelShadow.blur || 0} px ${secondLabelShadow.color} `,
-                                        boxShadow: `${secondLabelBoxShadow.horizontal || 0}px ${secondLabelBoxShadow.vertical || 0}px ${secondLabelBoxShadow.blur || 0}px ${secondLabelBoxShadow.color} ${secondLabelBoxShadow.position} `,
+                                        background:
+                                            labelStyles.secondLabelBGColor,
+                                        textShadow: `${
+                                            secondLabelShadow.horizontal || 0
+                                        }px ${
+                                            secondLabelShadow.vertical || 0
+                                        }px ${secondLabelShadow.blur || 0} px ${
+                                            secondLabelShadow.color
+                                        } `,
+                                        boxShadow: `${
+                                            secondLabelBoxShadow.horizontal || 0
+                                        }px ${
+                                            secondLabelBoxShadow.vertical || 0
+                                        }px ${
+                                            secondLabelBoxShadow.blur || 0
+                                        }px ${secondLabelBoxShadow.color} ${
+                                            secondLabelBoxShadow.position
+                                        } `,
                                     }}
                                 />
                             </div>
@@ -632,8 +996,9 @@ function Edit(props) {
 }
 
 export default withSelect((select, props) => {
-    const { __experimentalGetPreviewDeviceType = null } =
-        select("core/edit-post");
+    const { __experimentalGetPreviewDeviceType = null } = select(
+        "core/edit-post"
+    );
     let deviceType = __experimentalGetPreviewDeviceType
         ? __experimentalGetPreviewDeviceType()
         : null;
