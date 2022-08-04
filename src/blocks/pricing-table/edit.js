@@ -1006,7 +1006,7 @@ class PremiumPricingTable extends Component {
                             tagName="p"
                             className={`premium-pricing-table__desc`}
                             onChange={newText => setAttributes({ desc: newText })}
-                            placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+                            placeholder={__("Lorem ipsum dolor sit amet, consectetur adipiscing elit")}
                             value={desc}
                             style={{
                                 color: descStyles[0].descColor,

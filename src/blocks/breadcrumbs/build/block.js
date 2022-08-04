@@ -4684,7 +4684,7 @@ function Edit(_ref) {
   }, divider);
   const homeItemType = attributes.homeItemType === 'text' ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Home') : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.Dashicon, {
     style: {
-      lineHeight: 'inherit'
+      lineHeight: 'normal'
     },
     icon: "admin-home"
   });

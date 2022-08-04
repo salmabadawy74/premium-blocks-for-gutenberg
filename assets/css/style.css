@@ -859,8 +859,12 @@ a.premium-dheading-block__link:hover {
 .premium-pricing-table {
     position: relative;
     overflow: hidden;
+    padding: 20px;
 }
 
+.premium-pricing-table .premium-pricing-table__button_link{
+    padding: 10px;
+}
 /**
 * Price
 */
@@ -871,6 +875,8 @@ a.premium-dheading-block__link:hover {
     display: -ms-flex;
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 .premium-pricing-table .premium-pricing-table__price_wrap span:nth-child(-n + 3),

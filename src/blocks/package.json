@@ -20,6 +20,8 @@
         "build:content-switcher": "wp-scripts build content-switcher/block.js --output-path=content-switcher/build",
         "start:breadcrumbs": "wp-scripts start breadcrumbs/block.js --output-path=breadcrumbs/build",
         "build:breadcrumbs": "wp-scripts build breadcrumbs/block.js --output-path=breadcrumbs/build",
+        "start:accordion-item": "wp-scripts start accordion-item/index.js --output-path=accordion-item/build",
+        "build:accordion-item": "wp-scripts build accordion-item/index.js --output-path=accordion-item/build",
         "start:navigation": "wp-scripts start navigation/index.js --output-path=navigation/build",
         "build:navigation": "wp-scripts build navigation/index.js --output-path=navigation/build",
         "start:navigation-submenu": "wp-scripts start navigation-submenu/index.js --output-path=navigation-submenu/build",
