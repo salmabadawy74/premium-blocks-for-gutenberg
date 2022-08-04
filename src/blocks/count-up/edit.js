@@ -16,7 +16,7 @@ import SpacingComponent from '../../components/premium-responsive-spacing';
 import GoogleFontLoader from "react-google-font-loader";
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
-import { gradientBackground, generateBlockId, borderCss, paddingCss, typographyCss } from "../../components/HelperFunction";
+import { gradientBackground, generateBlockId, borderCss, paddingCss, typographyCss, marginCss } from "../../components/HelperFunction";
 
 const { PanelBody, SelectControl, TextControl, ToggleControl } = wp.components;
 
@@ -72,7 +72,16 @@ class edit extends Component {
             titleTypography,
             boxShadow,
             border,
-            background
+            background,
+            prefixPadding,
+            prefixMargin,
+            numberPadding,
+            numberMargin,
+            suffixPadding,
+            suffixMargin,
+            iconMargin,
+            titlePadding,
+            titleMargin,
         } = this.props.attributes;
 
         let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
@@ -204,7 +213,7 @@ class edit extends Component {
             setAttributes({ suffixStyles: newUpdate });
         }
 
-        const mainClasses = classnames(className, {
+        const mainClasses = classnames(className + '__wrap', {
             ' premium-desktop-hidden': hideDesktop,
             ' premium-tablet-hidden': hideTablet,
             ' premium-mobile-hidden': hideMobile,
@@ -412,6 +421,14 @@ class edit extends Component {
                                             onColorChange={newValue => setAttributes({ iconColor: newValue })}
                                         />
                                     )}
+                                    <hr />
+                                    <SpacingComponent
+                                        value={iconMargin}
+                                        responsive={true}
+                                        showUnits={true}
+                                        label={__("Margin", 'premium-blocks-for-gutenberg')}
+                                        onChange={(value) => setAttributes({ iconMargin: value })}
+                                    />
                                 </PanelBody>
                             )}
                             {titleCheck && (
@@ -432,19 +449,19 @@ class edit extends Component {
                                         onColorChange={newValue => saveTitleStyles({ titleColor: newValue })}
                                     />
                                     <hr />
-                                    <ResponsiveSingleRangeControl
-                                        label={__("Margin Top", 'premium-blocks-for-gutenberg')}
-                                        value={titleStyles[0].titleT}
-                                        onChange={newValue => saveTitleStyles({ titleT: newValue })}
-                                        showUnit={false}
-                                        defaultValue={0}
+                                    <SpacingComponent
+                                        value={titleMargin}
+                                        responsive={true}
+                                        showUnits={true}
+                                        label={__("Margin", 'premium-blocks-for-gutenberg')}
+                                        onChange={(value) => setAttributes({ titleMargin: value })}
                                     />
-                                    <ResponsiveSingleRangeControl
-                                        label={__("Margin Bottom", 'premium-blocks-for-gutenberg')}
-                                        value={titleStyles[0].titleB}
-                                        onChange={newValue => saveTitleStyles({ titleB: newValue })}
-                                        showUnit={false}
-                                        defaultValue={0}
+                                    <SpacingComponent
+                                        value={titlePadding}
+                                        responsive={true}
+                                        showUnits={true}
+                                        label={__("Padding", 'premium-blocks-for-gutenberg')}
+                                        onChange={(value) => setAttributes({ titlePadding: value })}
                                     />
                                 </PanelBody>
                             )}
@@ -463,6 +480,21 @@ class edit extends Component {
                                     colorValue={numberStyles[0].numberColor}
                                     colorDefault={''}
                                     onColorChange={newValue => saveNumberStyles({ numberColor: newValue })}
+                                />
+                                <hr />
+                                <SpacingComponent
+                                    value={numberMargin}
+                                    responsive={true}
+                                    showUnits={true}
+                                    label={__("Margin", 'premium-blocks-for-gutenberg')}
+                                    onChange={(value) => setAttributes({ numberMargin: value })}
+                                />
+                                <SpacingComponent
+                                    value={numberPadding}
+                                    responsive={true}
+                                    showUnits={true}
+                                    label={__("Padding", 'premium-blocks-for-gutenberg')}
+                                    onChange={(value) => setAttributes({ numberPadding: value })}
                                 />
                             </PanelBody>
                             {prefix && (
@@ -483,12 +515,19 @@ class edit extends Component {
                                         onColorChange={newValue => savePrefixStyle({ prefixColor: newValue })}
                                     />
                                     <hr />
-                                    <ResponsiveSingleRangeControl
-                                        label={__("Gap After", 'premium-blocks-for-gutenberg')}
-                                        value={prefixStyles[0].prefixGap}
-                                        onChange={newValue => savePrefixStyle({ prefixGap: newValue })}
-                                        showUnit={false}
-                                        defaultValue={2}
+                                    <SpacingComponent
+                                        value={prefixMargin}
+                                        responsive={true}
+                                        showUnits={true}
+                                        label={__("Margin", 'premium-blocks-for-gutenberg')}
+                                        onChange={(value) => setAttributes({ prefixMargin: value })}
+                                    />
+                                    <SpacingComponent
+                                        value={prefixPadding}
+                                        responsive={true}
+                                        showUnits={true}
+                                        label={__("Padding", 'premium-blocks-for-gutenberg')}
+                                        onChange={(value) => setAttributes({ prefixPadding: value })}
                                     />
                                 </PanelBody>
                             )}
@@ -510,12 +549,19 @@ class edit extends Component {
                                         onColorChange={newValue => saveSuffixStyle({ suffixColor: newValue })}
                                     />
                                     <hr />
-                                    <ResponsiveSingleRangeControl
-                                        label={__("Gap Before", 'premium-blocks-for-gutenberg')}
-                                        value={suffixStyles[0].suffixGap}
-                                        onChange={newValue => saveSuffixStyle({ suffixGap: newValue })}
-                                        showUnit={false}
-                                        defaultValue={2}
+                                    <SpacingComponent
+                                        value={suffixMargin}
+                                        responsive={true}
+                                        showUnits={true}
+                                        label={__("Margin", 'premium-blocks-for-gutenberg')}
+                                        onChange={(value) => setAttributes({ suffixMargin: value })}
+                                    />
+                                    <SpacingComponent
+                                        value={suffixPadding}
+                                        responsive={true}
+                                        showUnits={true}
+                                        label={__("Padding", 'premium-blocks-for-gutenberg')}
+                                        onChange={(value) => setAttributes({ suffixPadding: value })}
                                     />
                                 </PanelBody>
                             )}
@@ -541,7 +587,7 @@ class edit extends Component {
                 )}
             </div>,
             <div
-                className={`${mainClasses}__wrap ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+                className={`${mainClasses} ${blockId}`}
                 style={{
                     justifyContent: align?.[this.props.deviceType],
                     flexDirection: flexDir,
@@ -566,7 +612,8 @@ class edit extends Component {
                             alignSelf:
                                 "row-reverse" === flexDir || "row" === flexDir
                                     ? "center"
-                                    : selfAlign?.[this.props.deviceType]
+                                    : selfAlign?.[this.props.deviceType],
+                            ...marginCss(iconMargin, this.props.deviceType)
                         }}
                     >
                         {"icon" === icon && (
@@ -607,7 +654,9 @@ class edit extends Component {
                                 style={{
                                     color: prefixStyles[0].prefixColor,
                                     marginRight: `${prefixStyles[0].prefixGap}px`,
-                                    ...typographyCss(prefixTypography, this.props.deviceType)
+                                    ...typographyCss(prefixTypography, this.props.deviceType),
+                                    ...marginCss(prefixMargin, this.props.deviceType),
+                                    ...paddingCss(prefixPadding, this.props.deviceType)
                                 }}
                                 tagName="p"
                             />
@@ -631,8 +680,9 @@ class edit extends Component {
                                 onChange={value => saveSuffixStyle({ suffixTxt: value })}
                                 style={{
                                     color: suffixStyles[0].suffixColor,
-                                    marginLeft: suffixStyles[0].suffixGap + "px",
-                                    ...typographyCss(suffixTypography, this.props.deviceType)
+                                    ...typographyCss(suffixTypography, this.props.deviceType),
+                                    ...marginCss(suffixMargin, this.props.deviceType),
+                                    ...paddingCss(suffixPadding, this.props.deviceType)
                                 }}
                                 tagName="p"
                             />
@@ -645,9 +695,9 @@ class edit extends Component {
                             onChange={value => setAttributes({ titleTxt: value })}
                             style={{
                                 color: titleStyles[0].titleColor,
-                                marginTop: titleStyles[0].titleT + "px",
-                                marginBottom: titleStyles[0].titleB + "px",
-                                ...typographyCss(titleTypography, this.props.deviceType)
+                                ...typographyCss(titleTypography, this.props.deviceType),
+                                ...marginCss(titleMargin, this.props.deviceType),
+                                ...paddingCss(titlePadding, this.props.deviceType)
                             }}
                             tagName="h3"
                         />
@@ -660,10 +710,10 @@ class edit extends Component {
                         onChange={value => setAttributes({ titleTxt: value })}
                         style={{
                             color: titleStyles[0].titleColor,
-                            marginTop: titleStyles[0].titleT + "px",
-                            marginBottom: titleStyles[0].titleB + "px",
                             ...typographyCss(titleTypography, this.props.deviceType),
-                            alignSelf: selfAlign?.[this.props.deviceType]
+                            alignSelf: selfAlign?.[this.props.deviceType],
+                            ...marginCss(titleMargin, this.props.deviceType),
+                            ...paddingCss(titlePadding, this.props.deviceType)
                         }}
                         tagName="h3"
                     />

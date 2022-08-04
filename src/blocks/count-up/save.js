@@ -106,7 +106,6 @@ const save = props => {
                             className={`premium-countup__prefix`}
                             style={filterJsCss({
                                 color: prefixStyles[0].prefixColor,
-                                marginRight: prefixStyles[0].prefixGap + "px",
                                 fontStyle: prefixTypography?.fontStyle,
                                 fontFamily: prefixTypography?.fontFamily,
                                 fontWeight: prefixTypography?.fontWeight,
@@ -137,7 +136,6 @@ const save = props => {
                             className={`premium-countup__suffix`}
                             style={filterJsCss({
                                 color: suffixStyles[0].suffixColor,
-                                marginLeft: suffixStyles[0].suffixGap + "px",
                                 fontStyle: suffixTypography?.fontStyle,
                                 fontFamily: suffixTypography?.fontFamily,
                                 fontWeight: suffixTypography?.fontWeight,
@@ -153,8 +151,6 @@ const save = props => {
                     <h3
                         className={`premium-countup__title`}
                         style={filterJsCss({
-                            marginTop: titleStyles[0].titleT + "px",
-                            marginBottom: titleStyles[0].titleB + "px",
                             color: titleStyles[0].titleColor,
                             fontStyle: titleTypography?.fontStyle,
                             fontFamily: titleTypography?.fontFamily,
@@ -171,8 +167,6 @@ const save = props => {
                 <h3
                     className={`premium-countup__title`}
                     style={filterJsCss({
-                        marginTop: titleStyles[0].titleT + "px",
-                        marginBottom: titleStyles[0].titleB + "px",
                         color: titleStyles[0].titleColor,
                         fontStyle: titleTypography?.fontStyle,
                         fontFamily: titleTypography?.fontFamily,

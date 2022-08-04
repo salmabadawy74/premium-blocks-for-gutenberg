@@ -65,8 +65,12 @@ const attributes = {
         type: "string",
     },
     selfAlign: {
-        type: "string",
-        default: "center",
+        type: "object",
+        default: {
+            Desktop: "center",
+            Tablet: "center",
+            Mobile: "center",
+        },
     },
     titleCheck: {
         type: "boolean",
@@ -109,8 +113,6 @@ const attributes = {
         default: [
             {
                 titleColor: "",
-                titleT: 1,
-                titleB: 1,
                 titleColor: "",
             },
         ],
@@ -121,7 +123,6 @@ const attributes = {
             {
                 suffixTxt: "Suffix",
                 suffixColor: "",
-                suffixGap: 2,
             },
         ],
     },
@@ -131,7 +132,6 @@ const attributes = {
             {
                 prefixTxt: "Prefix",
                 prefixColor: "",
-                prefixGap: 2,
             },
         ],
     },
@@ -339,12 +339,252 @@ const attributes = {
             backgroundRepeat: "",
             backgroundSize: "",
             fixed: false,
-            gradientLocationOne: "",
-            gradientColorTwo: "",
-            gradientLocationTwo: "",
-            gradientAngle: "",
-            gradientPosition: "",
-            gradientType: "",
+            "gradientLocationOne": "0",
+            "gradientColorTwo": "",
+            "gradientLocationTwo": "100",
+            "gradientAngle": "180",
+            "gradientPosition": "center center",
+            "gradientType": "linear"
+        },
+    },
+    prefixPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            unit: "px",
+        },
+    },
+    prefixMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "2",
+                right: "2",
+                bottom: "2",
+                left: "2",
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            unit: "px",
+        },
+    },
+    padding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            unit: "px",
+        },
+    },
+    numberPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            unit: "px",
+        },
+    },
+    numberMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "2",
+                right: "2",
+                bottom: "2",
+                left: "2",
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            unit: "px",
+        },
+    },
+    suffixPadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            unit: "px",
+        },
+    },
+    suffixMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "2",
+                right: "2",
+                bottom: "2",
+                left: "2",
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            unit: "px",
+        },
+    },
+    iconMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "2",
+                right: "2",
+                bottom: "2",
+                left: "2",
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            unit: "px",
+        },
+    },
+    titlePadding: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            unit: "px",
+        },
+    },
+    titleMargin: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "1",
+                right: "",
+                bottom: "1",
+                left: "",
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            unit: "px",
         },
     },
 };
