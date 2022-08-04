@@ -91,7 +91,7 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
     const divider = attributes.divider ? attributes.divider : "»";
     const prefix = attributes.prefix;
     const separator = <span class="breadcrumb-sep" style={{ padding: '0 .4em' }}>{divider}</span>;
-    const homeItemType = attributes.homeItemType === 'text' ? __('Home') : <Dashicon style={{ lineHeight: 'inherit' }} icon='admin-home' />;
+    const homeItemType = attributes.homeItemType === 'text' ? __('Home') : <Dashicon style={{ lineHeight: 'normal' }} icon='admin-home' />;
     const setColor = (color, value) => {
         const newColors = { ...colors };
         newColors[color] = value;

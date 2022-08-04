@@ -2,10 +2,10 @@ import {
     useEffect,
     useState
 } from '@wordpress/element';
-import { withSelect } from '@wordpress/data';
+import { withSelect, useSelect } from '@wordpress/data';
 import { generateBlockId } from '../../components/HelperFunction';
 import classnames from "classnames";
-import { RichText, InnerBlocks, useBlockProps } from '@wordpress/block-editor';
+import { RichText, InnerBlocks, useBlockProps, store as blockEditorStore } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 
 function AccordionItemEdit({
@@ -41,6 +41,20 @@ function AccordionItemEdit({
         }
     }, [titleTag, contentType, direction, arrowStyles]);
 
+    const {
+        isInnerBlockSelected,
+    } = useSelect(
+        (select) => {
+            const { hasSelectedInnerBlock } = select(
+                blockEditorStore
+            );
+            return {
+                isInnerBlockSelected: hasSelectedInnerBlock(clientId, true),
+            };
+        },
+        [clientId]
+    );
+
     return <div {...blockProps}>
         <div
             className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowStyles[0].arrowPos}`}
@@ -68,7 +82,7 @@ function AccordionItemEdit({
                 </svg>
             </div>
         </div>
-        {isSelected && (
+        {(isSelected || isInnerBlockSelected) && (
             <div
                 className={`premium-accordion__desc_wrap`}
             >

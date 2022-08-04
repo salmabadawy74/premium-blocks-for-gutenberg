@@ -116,6 +116,11 @@ class PBG_Blocks_Helper {
 		add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
 		add_action( 'wp_head', array( $this, 'frontend_gfonts' ), 90 );
 		add_action( 'wp_footer', array( $this, 'frontend_footer_gfonts' ), 90 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'load_dashicons_front_end' ) );
+	}
+
+	function load_dashicons_front_end() {
+		wp_enqueue_style( 'dashicons' );
 	}
 
 	/**

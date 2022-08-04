@@ -21,7 +21,8 @@ const attributes = {
     desc: {
         type: "array",
         source: "children",
-        selector: ".premium-pricing-table__desc"
+        selector: ".premium-pricing-table__desc",
+        default: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit")
     },
 
     titleChecked: {
@@ -64,7 +65,8 @@ const attributes = {
     listItems: {
         type: "array",
         source: "children",
-        selector: ".premium-pricing-table__list"
+        selector: ".premium-pricing-table__list",
+        default: [__("List Item #1")]
     },
     blockId: {
         type: "string"
@@ -619,10 +621,10 @@ const attributes = {
         type: "object",
         default: {
             Desktop: {
-                top: '',
-                right: '',
-                bottom: '',
-                left: ''
+                top: '20',
+                right: '20',
+                bottom: '20',
+                left: '20'
             },
             Tablet: {
                 top: '',

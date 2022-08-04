@@ -39,7 +39,6 @@ const save = (props) => {
         descTextShadow,
         containerShadow,
         blockId,
-        contentAlign,
     } = props.attributes;
 
     const mainClasses = classnames(className, "premium-banner", {
@@ -64,11 +63,7 @@ const save = (props) => {
             <div
                 className={`${mainClasses} premium-banner__responsive_${responsive}  ${blockId}`}
             >
-                <style
-                    dangerouslySetInnerHTML={{
-                        __html: loadStyles(),
-                    }}
-                />
+                <style>{loadStyles()}</style>
                 <div
                     className={`premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`}
                     style={filterJsCss({
@@ -119,7 +114,6 @@ const save = (props) => {
                                         titleTypography,
                                         "Desktop"
                                     ),
-                                    textAlign: contentAlign["Desktop"],
                                     color: titleStyles[0].titleColor,
                                     fontStyle: titleTypography.fontStyle,
                                     fontFamily: titleTypography.fontFamily,
@@ -138,7 +132,6 @@ const save = (props) => {
                                 className={`premium-banner__desc`}
                                 value={desc}
                                 style={filterJsCss({
-                                    textAlign: contentAlign["Desktop"],
                                     color: descStyles[0].descColor,
                                     fontStyle: descTypography.fontStyle,
                                     fontFamily: descTypography.fontFamily,
