@@ -6,7 +6,7 @@
  */
 
 function get_trigger_css_style( $attr, $unique_id ) {
-	$block_helpers          = new PBG_Blocks_Helper();
+	$block_helpers          = pbg_blocks_helper();
 	$css                    = new Premium_Blocks_css();
 	$media_query            = array();
 	$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
@@ -183,7 +183,7 @@ function should_render_trigger_inline( $name, $unique_id ) {
 		$css = get_trigger_css_style( $attributes, $unique_id );
 
 		if ( ! empty( $css ) ) {
-			$block_helpers = new PBG_Blocks_Helper();
+			$block_helpers = pbg_blocks_helper();
 			if ( should_render_inline( 'trigger', $unique_id ) ) {
 				$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
 			} else {

@@ -7,7 +7,7 @@
  */
 
 function get_content_switcher_css_style( $attributes, $unique_id ) {
-	$block_helpers          = new pbg_blocks_helper();
+	$block_helpers          = pbg_blocks_helper();
 	$css                    = new Premium_Blocks_css();
 	$media_query            = array();
 	$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
@@ -302,7 +302,7 @@ function render_block_pbg_content_switcher( $attributes, $content ) {
 		// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
 		$css = get_content_switcher_css_style( $attributes, $unique_id );
 		if ( ! empty( $css ) ) {
-			$block_helpers = new pbg_blocks_helper();
+			$block_helpers = pbg_blocks_helper();
 			if ( should_render_inline( 'content-switcher', $unique_id ) ) {
 				$content = '<style id="pbg-blocks-style' . esc_attr( $unique_id ) . '">' . $css . '</style>' . $content;
 			} else {
