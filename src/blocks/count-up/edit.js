@@ -13,10 +13,10 @@ import Icons from "../../components/icons";
 const { __ } = wp.i18n;
 const { withSelect } = wp.data
 import SpacingComponent from '../../components/premium-responsive-spacing';
-import GoogleFontLoader from "react-google-font-loader";
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import { gradientBackground, generateBlockId, borderCss, paddingCss, typographyCss } from "../../components/HelperFunction";
+import WebfontLoader from "../../components/typography/fontLoader";
 
 const { PanelBody, SelectControl, TextControl, ToggleControl } = wp.components;
 
@@ -121,43 +121,43 @@ class edit extends Component {
         let loadSuffixGoogleFonts;
         let loadPrefixGoogleFonts;
 
-        if (numberTypography.fontFamily !== 'Default') {
-            loadCounterGoogleFonts = (
-                <GoogleFontLoader fonts={[
-                    {
-                        font: numberTypography?.fontFamily,
-                    },
-                ]
-                } />
-            )
-        }
-        if (titleTypography.fontFamily !== "Default") {
-            loadTitleGoogleFonts = (
-                <GoogleFontLoader fonts={[
-                    {
-                        font: titleTypography?.fontFamily,
-                    }]
-                } />
-            )
-        }
-        if (suffixTypography.fontFamily !== "Default") {
-            loadSuffixGoogleFonts = (
-                <GoogleFontLoader fonts={[
-                    {
-                        font: suffixTypography?.fontFamily,
-                    }]
-                } />
-            )
-        }
-        if (prefixTypography.fontFamily !== "Default") {
-            loadPrefixGoogleFonts = (
-                <GoogleFontLoader fonts={[
-                    {
-                        font: prefixTypography?.fontFamily,
-                    }]
-                } />
-            )
-        }
+        // if (numberTypography.fontFamily !== 'Default') {
+        //     loadCounterGoogleFonts = (
+        //         <GoogleFontLoader fonts={[
+        //             {
+        //                 font: numberTypography?.fontFamily,
+        //             },
+        //         ]
+        //         } />
+        //     )
+        // }
+        // if (titleTypography.fontFamily !== "Default") {
+        //     loadTitleGoogleFonts = (
+        //         <GoogleFontLoader fonts={[
+        //             {
+        //                 font: titleTypography?.fontFamily,
+        //             }]
+        //         } />
+        //     )
+        // }
+        // if (suffixTypography.fontFamily !== "Default") {
+        //     loadSuffixGoogleFonts = (
+        //         <GoogleFontLoader fonts={[
+        //             {
+        //                 font: suffixTypography?.fontFamily,
+        //             }]
+        //         } />
+        //     )
+        // }
+        // if (prefixTypography.fontFamily !== "Default") {
+        //     loadPrefixGoogleFonts = (
+        //         <GoogleFontLoader fonts={[
+        //             {
+        //                 font: prefixTypography?.fontFamily,
+        //             }]
+        //         } />
+        //     )
+        // }
 
         const saveNumberStyles = (value) => {
             const newUpdate = numberStyles.map((item, index) => {

@@ -22,7 +22,6 @@ import InsideTab from "../../components/InsideTab";
 import Icons from "../../components/icons";
 import { gradientBackground, borderCss, paddingCss, marginCss, typographyCss, generateBlockId, generateCss } from "../../components/HelperFunction";
 const { __ } = wp.i18n;
-import GoogleFontLoader from "react-google-font-loader";
 const { PanelBody, SelectControl, ToggleControl, TextControl } = wp.components;
 const { Fragment, Component } = wp.element;
 const { withSelect } = wp.data;
@@ -220,40 +219,40 @@ class edit extends Component {
         let loadDescriptionGoogleFonts;
         let loadButtonGoogleFonts;
 
-        if (titleTypography.fontFamily !== "Default") {
-            loadTitleGoogleFonts = (
-                <GoogleFontLoader
-                    fonts={[
-                        {
-                            font: titleTypography.fontFamily,
-                        },
-                    ]}
-                />
-            );
-        }
-        if (descTypography.fontFamily !== "Default") {
+        // if (titleTypography.fontFamily !== "Default") {
+        //     loadTitleGoogleFonts = (
+        //         <GoogleFontLoader
+        //             fonts={[
+        //                 {
+        //                     font: titleTypography.fontFamily,
+        //                 },
+        //             ]}
+        //         />
+        //     );
+        // }
+        // if (descTypography.fontFamily !== "Default") {
 
-            loadDescriptionGoogleFonts = (
-                <GoogleFontLoader
-                    fonts={[
-                        {
-                            font: descTypography.fontFamily,
-                        },
-                    ]}
-                />
-            );
-        }
-        if (btnTypography.fontFamily !== "Default") {
+        //     loadDescriptionGoogleFonts = (
+        //         <GoogleFontLoader
+        //             fonts={[
+        //                 {
+        //                     font: descTypography.fontFamily,
+        //                 },
+        //             ]}
+        //         />
+        //     );
+        // }
+        // if (btnTypography.fontFamily !== "Default") {
 
-            loadButtonGoogleFonts = (
-                <GoogleFontLoader
-                    fonts={[
-                        {
-                            font: btnTypography.fontFamily,
-                        },
-                    ]}
-                />);
-        }
+        //     loadButtonGoogleFonts = (
+        //         <GoogleFontLoader
+        //             fonts={[
+        //                 {
+        //                     font: btnTypography.fontFamily,
+        //                 },
+        //             ]}
+        //         />);
+        // }
 
         const mainClasses = classnames(className, "premium-icon-box", {
             ' premium-desktop-hidden': hideDesktop,

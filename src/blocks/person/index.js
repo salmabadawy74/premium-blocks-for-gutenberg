@@ -10,7 +10,7 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 registerBlockType("premium/person", {
-    title: __("Team Members"),
+    title: __("Team Members", "premium-blocks-for-gutenberg"),
     description: __('Show off your team members along with social links using Premium Team Members Block', 'premium-block-for-gutenberg'),
     icon: PBG_Block_Icons.team,
     category: "premium-blocks",

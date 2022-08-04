@@ -2,7 +2,7 @@
 import classnames from "classnames";
 import Lottie from 'react-lottie-with-segments';
 import Inspector from "./inspector";
-import GoogleFontLoader from "react-google-font-loader";
+import WebfontLoader from "../../components/typography/fontLoader";
 import { gradientBackground, generateBlockId, generateCss, borderCss, paddingCss, marginCss, typographyCss } from "../../components/HelperFunction";
 
 const { __ } = wp.i18n;
@@ -159,45 +159,57 @@ const edit = props => {
     let loadTriggerGoogleFonts;
     let loadHeaderGoogleFonts;
     let loadModalGoogleFonts;
-    if (triggerTypography.fontFamily !== 'Default') {
+    let loadLowerGoogleFonts;
+
+    if (triggerTypography.fontFamily !== "Default") {
+        const gconfig = {
+            google: {
+                families: [triggerTypography?.fontFamily],
+            },
+        };
         loadTriggerGoogleFonts = (
-            <GoogleFontLoader
-                fonts={[
-                    {
-                        font: triggerTypography.fontFamily
-                    }
-                ]}
-            />
+            <WebfontLoader config={gconfig}></WebfontLoader>
         );
     }
-    if (headerTypography.fontFamily !== 'Default') {
+
+    if (headerTypography.fontFamily !== "Default") {
+        const gconfig = {
+            google: {
+                families: [headerTypography?.fontFamily],
+            },
+        };
         loadHeaderGoogleFonts = (
-            <GoogleFontLoader
-                fonts={[
-                    {
-                        font: headerTypography.fontFamily
-                    }
-                ]}
-            />
+            <WebfontLoader config={gconfig}></WebfontLoader>
         );
     }
-    if (modalTypography.fontFamily !== 'Default') {
+
+    if (modalTypography.fontFamily !== "Default") {
+        const gconfig = {
+            google: {
+                families: [modalTypography?.fontFamily],
+            },
+        };
         loadModalGoogleFonts = (
-            <GoogleFontLoader
-                fonts={[
-                    {
-                        font: modalTypography.fontFamily
-                    }
-                ]}
-            />
+            <WebfontLoader config={gconfig}></WebfontLoader>
         );
     }
+
+    if (lowerTypography.fontFamily !== "Default") {
+        const gconfig = {
+            google: {
+                families: [lowerTypography?.fontFamily],
+            },
+        };
+        loadLowerGoogleFonts = (
+            <WebfontLoader config={gconfig}></WebfontLoader>
+        );
+    }
+
     return [
         isSelected && (
             <Inspector
                 attributes={props.attributes}
                 setAttributes={setAttributes}
-
             />
         ),
         <div className={`${mainClasses} ${blockId}`} data-trigger={triggerSettings[0].triggerType}>
@@ -209,7 +221,7 @@ const edit = props => {
             <div className={`premium-modal-trigger-container`} style={{ textAlign: align[currentDevice] }}>
                 {(triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === "load") &&
                     <button
-                        className={` premium-modal-trigger-btn premium-button__${triggerSettings[0].btnSize} `}
+                        className={`premium-modal-trigger-btn premium-button__${triggerSettings[0].btnSize} `}
                         onClick={() => setOpenModal(true)}
                         style={{
                             ...paddingCss(triggerPadding, currentDevice),
@@ -220,7 +232,7 @@ const edit = props => {
                         }}>
                         {triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" &&
                             <i
-                                className={` premium-modal-box-icon ${triggerSettings[0].icon}`}
+                                className={`premium-modal-box-icon ${triggerSettings[0].icon}`}
                                 style={{
                                     fontSize: (triggerIconSize[currentDevice]) + triggerIconSize.unit,
                                     width: (triggerIconSize[currentDevice]) + triggerIconSize.unit,
@@ -244,7 +256,7 @@ const edit = props => {
                         </span>
                         {triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "after" &&
                             <i
-                                className={` premium-modal-box-icon ${triggerSettings[0].icon}`}
+                                className={`premium-modal-box-icon ${triggerSettings[0].icon}`}
                                 style={{
                                     fontSize: (triggerIconSize[currentDevice]) + triggerIconSize.unit,
                                     width: (triggerIconSize[currentDevice]) + triggerIconSize.unit,
@@ -333,7 +345,6 @@ const edit = props => {
                                     })}
                                 />
                         }
-
                     </Fragment>
                 )}
             </div>
@@ -424,7 +435,6 @@ const edit = props => {
                             {modalStyles[0].contentType === "text" ?
                                 <RichText
                                     tagName={'p'}
-                                    className={`premium-person__name`}
                                     value={modalStyles[0].contentText}
                                     onChange={(value) => saveModalStyles({ contentText: value })}
                                     style={{
@@ -436,23 +446,26 @@ const edit = props => {
                                 : <InnerBlocks />}
 
                         </div>
-                        {contentStyles[0].showLowerClose && (<div className={`premium-modal-box-modal-footer`} style={{
-                            backgroundColor: modalStyles[0].footerBackColor
-                        }}>
-                            <button className={`premium-modal-box-modal-lower-close close-button`} role="button" data-dismiss="premium-modal"
-                                onClick={() => setOpenModal(false)}
+                        {contentStyles[0].showLowerClose && (
+                            <div className={`premium-modal-box-modal-footer`}
                                 style={{
-                                    ...typographyCss(lowerTypography, currentDevice),
-                                    ...paddingCss(lowerPadding, currentDevice),
-                                    ...borderCss(lowerBorder, currentDevice),
-                                    width: `${lowerIconWidth[currentDevice]}${lowerIconWidth.unit}`,
-                                    color: `${lowerStyles[0].color}`,
-                                    backgroundColor: `${lowerStyles[0].backColor}`
-                                }}
-                            >
-                                {contentStyles[0].lowerCloseText}
-                            </button>
-                        </div>)}
+                                    backgroundColor: modalStyles[0].footerBackColor
+                                }}>
+                                <button className={`premium-modal-box-modal-lower-close close-button`} role="button" data-dismiss="premium-modal"
+                                    onClick={() => setOpenModal(false)}
+                                    style={{
+                                        ...typographyCss(lowerTypography, currentDevice),
+                                        ...paddingCss(lowerPadding, currentDevice),
+                                        ...borderCss(lowerBorder, currentDevice),
+                                        width: `${lowerIconWidth[currentDevice]}${lowerIconWidth.unit}`,
+                                        color: `${lowerStyles[0].color}`,
+                                        backgroundColor: `${lowerStyles[0].backColor}`
+                                    }}
+                                >
+                                    {contentStyles[0].lowerCloseText}
+                                </button>
+                            </div>
+                        )}
                     </div>
                 </div>
 
@@ -460,6 +473,7 @@ const edit = props => {
             {loadTriggerGoogleFonts}
             {loadHeaderGoogleFonts}
             {loadModalGoogleFonts}
+            {loadLowerGoogleFonts}
         </div >
     ];
 };

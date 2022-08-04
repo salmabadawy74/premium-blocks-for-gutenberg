@@ -260,7 +260,6 @@ const Inspector = ({
                         {triggerSettings[0].triggerType === "lottie" && (
                             <Fragment>
                                 {JsonUploadEnabled == 1 ? '' : <p>{__('Make Sure that allow "JSON file Upload " from ', 'premium-blocks-for-gutenberg')} <ExternalLink href={window.PremiumBlocksSettings.settingPath}>plugin Settings</ExternalLink></p>}
-
                                 <ToggleControl
                                     label={__("Loop", 'premium-blocks-for-gutenberg')}
                                     checked={triggerSettings[0].triggerLoopLottie}
@@ -525,12 +524,12 @@ const Inspector = ({
                                     units={["px", "em", "rem"]}
                                 />
                             )}
-                            {(triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === 'text') && (<Fragment>
+                            {(triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === 'text') && (
                                 <PremiumTypo
                                     value={triggerTypography}
                                     onChange={newValue => setAttributes({ triggerTypography: newValue })}
                                 />
-                            </Fragment>)}
+                            )}
                             {triggerSettings[0].triggerType === "button" &&
                                 <InsideTabs>
                                     <InsideTab tabTitle={__("Normal", 'premium-blocks-for-gutenberg')}>
@@ -692,6 +691,10 @@ const Inspector = ({
                                     showUnit={true}
                                 />)
                             }
+                            <PremiumTypo
+                                value={headerTypography}
+                                onChange={newValue => setAttributes({ headerTypography: newValue })}
+                            />
                             <AdvancedPopColorControl
                                 label={__("Color", 'premium-blocks-for-gutenberg')}
                                 colorValue={headerStyles[0].color}
@@ -703,10 +706,6 @@ const Inspector = ({
                                 colorValue={headerStyles[0].backColor}
                                 colorDefault={''}
                                 onColorChange={(newValue) => saveHeaderStyles({ backColor: newValue })}
-                            />
-                            <PremiumTypo
-                                value={headerTypography}
-                                onChange={newValue => setAttributes({ headerTypography: newValue })}
                             />
                             <PremiumBorder
                                 label={__("Border", "premium-blocks-for-gutenberg")}
@@ -736,7 +735,7 @@ const Inspector = ({
                                 label={__("Color", 'premium-blocks-for-gutenberg')}
                                 colorValue={upperStyles[0].color}
                                 colorDefault={''}
-                                onColorChange={newValue => saveUpperStyles({ color: newValue || "transparent", })}
+                                onColorChange={newValue => saveUpperStyles({ color: newValue || "transparent" })}
                             />
                             <AdvancedPopColorControl
                                 label={__(`Background Color`, 'premium-blocks-for-gutenberg')}

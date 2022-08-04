@@ -551,7 +551,7 @@ const attributes = {
     triggerTypography: {
         type: "object",
         default: {
-            "fontWeight": '',
+            "fontWeight": '400',
             'fontStyle': '',
             'textTransform': '',
             'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
@@ -579,7 +579,7 @@ const attributes = {
     headerTypography: {
         type: "object",
         default: {
-            "fontWeight": '',
+            "fontWeight": '300',
             'fontStyle': '',
             'textTransform': '',
             'letterSpacing': {

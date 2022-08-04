@@ -68,7 +68,7 @@ const save = props => {
         videoURL && (
             <div
                 className={classnames(className,
-                    "premium-video-box", `video-overlay-${overlay} ${blockId} premium-aspect-ratio-${ratioValue}`, {
+                    "premium-video-box", `${blockId} video-overlay-${overlay} premium-aspect-ratio-${ratioValue}`, {
                     ' premium-desktop-hidden': hideDesktop,
                     ' premium-tablet-hidden': hideTablet,
                     ' premium-mobile-hidden': hideMobile,

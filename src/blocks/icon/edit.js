@@ -157,9 +157,9 @@ const edit = (props) => {
                             <ResponsiveRadioControl
                                 label={__("Alignment", "premium-blocks-for-gutenberg")}
                                 choices={[
-                                    { value: "left", label: __("Left"), icon: Icons.alignLeft },
-                                    { value: "center", label: __("Center"), icon: Icons.alignCenter },
-                                    { value: "right", label: __("Right"), icon: Icons.alignRight },
+                                    { value: "left", label: __("Left", "premium-blocks-for-gutenberg"), icon: Icons.alignLeft },
+                                    { value: "center", label: __("Center", "premium-blocks-for-gutenberg"), icon: Icons.alignCenter },
+                                    { value: "right", label: __("Right", "premium-blocks-for-gutenberg"), icon: Icons.alignRight },
                                 ]}
                                 value={iconAlign}
                                 onChange={(newValue) => setAttributes({ iconAlign: newValue })}
@@ -173,8 +173,19 @@ const edit = (props) => {
                             className="premium-panel-body"
                             initialOpen={true}
                         >
+                            <ResponsiveRangeControl
+                                label={__("Size", "premium-blocks-for-gutenberg")}
+                                value={iconSize}
+                                onChange={(value) => setAttributes({ iconSize: value })}
+                                min={0}
+                                max={300}
+                                step={1}
+                                showUnit={true}
+                                units={["px", "em", "rem"]}
+                                defaultValue={50}
+                            />
                             <InsideTabs>
-                                <InsideTab tabTitle={__("Normal")}>
+                                <InsideTab tabTitle={__("Normal", "premium-blocks-for-gutenberg")}>
                                     <Fragment>
                                         <AdvancedPopColorControl
                                             label={__("Color", "premium-blocks-for-gutenberg")}
@@ -190,7 +201,7 @@ const edit = (props) => {
                                         />
                                     </Fragment>
                                 </InsideTab>
-                                <InsideTab tabTitle={__("Hover")}>
+                                <InsideTab tabTitle={__("Hover", "premium-blocks-for-gutenberg")}>
                                     <Fragment>
                                         <AdvancedPopColorControl
                                             label={__("Hover Color", "premium-blocks-for-gutenberg")}
@@ -213,17 +224,6 @@ const edit = (props) => {
                                     </Fragment>
                                 </InsideTab>
                             </InsideTabs>
-                            <ResponsiveRangeControl
-                                label={__("Size", "premium-blocks-for-gutenberg")}
-                                value={iconSize}
-                                onChange={(value) => setAttributes({ iconSize: value })}
-                                min={0}
-                                max={300}
-                                step={1}
-                                showUnit={true}
-                                units={["px", "em", "rem"]}
-                                defaultValue={50}
-                            />
                             <PremiumShadow
                                 label={__("Text Shadow", "premium-blocks-for-gutenberg")}
                                 value={iconShadow}
@@ -326,7 +326,7 @@ const edit = (props) => {
             >
                 {iconType === "fa" && 1 != FontAwesomeEnabled && (
                     <p className={`premium-icon__alert`}>
-                        {__("Please Enable Font Awesome Icons from Plugin settings")}
+                        {__("Please Enable Font Awesome Icons from Plugin settings", "premium-blocks-for-gutenberg")}
                     </p>
                 )}
                 <div className={`premium-icon__${hoverEffect}`}>

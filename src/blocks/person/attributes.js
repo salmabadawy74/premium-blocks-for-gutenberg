@@ -218,8 +218,18 @@ const attributes = {
             "fontWeight": '',
             'fontStyle': '',
             'textTransform': '',
-            'letterSpacing': '',
-            'lineHeight': '',
+            'letterSpacing': {
+                'Desktop': '',
+                "Tablet": "",
+                "Mobile": "",
+                unit: 'px'
+            },
+            'lineHeight': {
+                'Desktop': '',
+                "Tablet": "",
+                "Mobile": "",
+                unit: 'px'
+            },
             'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
             'fontSize': {
                 'Desktop': '',
@@ -235,8 +245,18 @@ const attributes = {
             "fontWeight": '',
             'fontStyle': '',
             'textTransform': '',
-            'letterSpacing': '',
-            'lineHeight': '',
+            'letterSpacing': {
+                'Desktop': '',
+                "Tablet": "",
+                "Mobile": "",
+                unit: 'px'
+            },
+            'lineHeight': {
+                'Desktop': '',
+                "Tablet": "",
+                "Mobile": "",
+                unit: 'px'
+            },
             'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
             'fontSize': {
                 'Desktop': '',
@@ -252,8 +272,18 @@ const attributes = {
             "fontWeight": '',
             'fontStyle': '',
             'textTransform': '',
-            'letterSpacing': '',
-            'lineHeight': '',
+            'letterSpacing': {
+                'Desktop': '',
+                "Tablet": "",
+                "Mobile": "",
+                unit: 'px'
+            },
+            'lineHeight': {
+                'Desktop': '',
+                "Tablet": "",
+                "Mobile": "",
+                unit: 'px'
+            },
             'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
             'fontSize': {
                 'Desktop': "",
@@ -414,6 +444,8 @@ const attributes = {
         type: "object",
         default: {
             Desktop: '200',
+            'Tablet': '200',
+            'Mobile': '200',
             unit: 'px'
         }
     },
@@ -421,6 +453,8 @@ const attributes = {
         type: "object",
         default: {
             Desktop: '200',
+            'Tablet': '200',
+            'Mobile': '200',
             unit: 'px'
         }
     },

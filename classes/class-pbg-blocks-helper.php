@@ -200,8 +200,6 @@ class PBG_Blocks_Helper {
 			PREMIUM_BLOCKS_VERSION
 		);
 
-		$gfonts_path      = PREMIUM_BLOCKS_URL . 'assets/gfonts.php';
-		$gfont_names_path = PREMIUM_BLOCKS_URL . 'assets/gfonts-names.php';
 		wp_localize_script(
 			'pbg-blocks-js',
 			'PremiumBlocksSettings',
