@@ -91,7 +91,6 @@ export default function save(props) {
                                                 backgroundColor: bulletIconStyles?.[0]?.bulletIconBackgroundColor,
                                                 borderStyle: bulletIconBorder?.borderType,
                                                 borderColor: bulletIconBorder?.borderColor,
-                                                verticalAlign: 'middle'
                                             })}
                                         />
                                     </span>
@@ -107,7 +106,6 @@ export default function save(props) {
                                             overflow: 'hidden',
                                             borderStyle: bulletIconBorder?.borderType,
                                             borderColor: bulletIconBorder?.borderColor,
-                                            verticalAlign: 'middle'
                                         })}
                                     />
                                 }
@@ -136,6 +134,7 @@ export default function save(props) {
                                     >
                                         <div className={`premium-bullet-list__content-wrap`} style={filterJsCss({
                                             display: iconPosition == "before" ? "flex" : "inline-flex",
+                                            flexDirection: iconPosition == "top" ? "column" : iconPosition == "after" ? 'row-reverse' : "",
                                         })}>
                                             <span className={`premium-bullet-list__icon-wrap`}
                                                 style={filterJsCss({
@@ -154,7 +153,7 @@ export default function save(props) {
                                                         textDecoration: titleTypography?.textDecoration,
                                                         textTransform: titleTypography?.textTransform,
                                                         color: titleStyles?.[0]?.titleColor,
-                                                        textShadow: `${titlesTextShadow?.titleshadowHorizontal}px ${titlesTextShadow?.titleshadowVertical}px ${titlesTextShadow?.titleshadowBlur}px ${titlesTextShadow?.titleshadowColor}`
+                                                        textShadow: `${titlesTextShadow.horizontal}px ${titlesTextShadow.vertical}px ${titlesTextShadow.blur}px ${titlesTextShadow.color}`,
                                                     })} />
                                             </div>
                                         </div>
@@ -200,13 +199,13 @@ export default function save(props) {
                                                         value={repeaterBulletList?.[index]?.label}
                                                         className='premium-bullet-list__label'
                                                         style={filterJsCss({
-                                                            fontFamily: titleFont,
-                                                            fontWeight: titleStyles?.[0]?.titleWeight,
-                                                            fontStyle: titleStyles?.[0]?.titleStyle,
-                                                            textTransform: titleStyles?.[0]?.titleUpper ? "uppercase" : "none",
-                                                            fontFamily: titleStyles?.[0]?.titleFontFamily,
+                                                            fontStyle: titleTypography?.fontStyle,
+                                                            fontFamily: titleTypography?.fontFamily,
+                                                            fontWeight: titleTypography?.fontWeight,
+                                                            textDecoration: titleTypography?.textDecoration,
+                                                            textTransform: titleTypography?.textTransform,
                                                             color: titleStyles?.[0]?.titleColor,
-                                                            textShadow: `${titlesTextShadow?.titleshadowHorizontal}px ${titlesTextShadow?.titleshadowVertical}px ${titlesTextShadow?.titleshadowBlur}px ${titlesTextShadow?.titleshadowColor}`
+                                                            textShadow: `${titlesTextShadow.horizontal}px ${titlesTextShadow.vertical}px ${titlesTextShadow.blur}px ${titlesTextShadow.color}`,
                                                         })} />
                                                 </div>
                                             </div>

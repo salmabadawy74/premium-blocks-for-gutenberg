@@ -5503,12 +5503,18 @@ class PBG_Blocks_Helper {
 			$align      = $css->get_responsive_css( $attr['bulletAlign'], 'Desktop' );
 			$flex_align = 'left' === $align ? 'flex-start' : 'center';
 			$flex_align = 'right' === $align ? 'flex-end' : $flex_align;
+			$vertival_align = 'flex-start' === $align ? 'top' : 'middle';
+			$vertival_align = 'flex-end' === $align ? 'bottom' : $vertival_align;
 
 			$css->set_selector( $unique_id . ' .premium-bullet-list__icon-wrap' );
 			$css->add_property( 'align-self', $flex_align );
-			$css->add_property( 'text-align', $align );
+			if(!str_contains($align , 'flex')){
+				$css->add_property( 'text-align', $align );
+			}
 			$css->add_property( 'justify-content', $flex_align );
 			$css->add_property( 'align-items', $flex_align );
+			$css->set_selector( $unique_id . ' .premium-bullet-list__icon-wrap .premium-bullet-list__content-icon i' );
+			$css->add_property( 'vertical-align', $vertival_align );
 		}
 
 		if ( isset( $attr['align'] ) ) {
@@ -5613,7 +5619,7 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['titlemargin'] ) ) {
 			$title_margin = $attr['titlemargin'];
-			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap, ' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' );
+			$css->set_selector( $unique_id . ' .premium-bullet-list__label-wrap' );
 			$css->add_property( 'margin', $css->render_spacing( $title_margin['Desktop'], $title_margin['unit'] ) );
 		}
 
@@ -5624,12 +5630,18 @@ class PBG_Blocks_Helper {
 			$align      = $css->get_responsive_css( $attr['bulletAlign'], 'Tablet' );
 			$flex_align = 'left' === $align ? 'flex-start' : 'center';
 			$flex_align = 'right' === $align ? 'flex-end' : $flex_align;
+			$vertival_align = 'flex-start' === $align ? 'top' : 'middle';
+			$vertival_align = 'flex-end' === $align ? 'bottom' : $vertival_align;
 
 			$css->set_selector( $unique_id . ' .premium-bullet-list__icon-wrap' );
 			$css->add_property( 'align-self', $flex_align );
-			$css->add_property( 'text-align', $align );
+			if(!str_contains($align , 'flex')){
+				$css->add_property( 'text-align', $align );
+			}
 			$css->add_property( 'justify-content', $flex_align );
 			$css->add_property( 'align-items', $flex_align );
+			$css->set_selector( $unique_id . ' .premium-bullet-list__icon-wrap .premium-bullet-list__content-icon i' );
+			$css->add_property( 'vertical-align', $vertival_align );
 		}
 
 		if ( isset( $attr['align'] ) ) {
@@ -5733,7 +5745,7 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['titlemargin'] ) ) {
 			$title_margin = $attr['titlemargin'];
-			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap, ' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' );
+			$css->set_selector( $unique_id . ' .premium-bullet-list__label-wrap' );
 			$css->add_property( 'margin', $css->render_spacing( $title_margin['Tablet'], $title_margin['unit'] ) );
 		}
 
@@ -5746,12 +5758,18 @@ class PBG_Blocks_Helper {
 			$align      = $css->get_responsive_css( $attr['bulletAlign'], 'Mobile' );
 			$flex_align = 'left' === $align ? 'flex-start' : 'center';
 			$flex_align = 'right' === $align ? 'flex-end' : $flex_align;
+			$vertival_align = 'flex-start' === $align ? 'top' : 'middle';
+			$vertival_align = 'flex-end' === $align ? 'bottom' : $vertival_align;
 
 			$css->set_selector( $unique_id . ' .premium-bullet-list__icon-wrap' );
 			$css->add_property( 'align-self', $flex_align );
-			$css->add_property( 'text-align', $align );
+			if(!str_contains($align , 'flex')){
+				$css->add_property( 'text-align', $align );
+			}
 			$css->add_property( 'justify-content', $flex_align );
 			$css->add_property( 'align-items', $flex_align );
+			$css->set_selector( $unique_id . ' .premium-bullet-list__icon-wrap .premium-bullet-list__content-icon i' );
+			$css->add_property( 'vertical-align', $vertival_align );
 		}
 
 		if ( isset( $attr['align'] ) ) {
@@ -5856,7 +5874,7 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['titlemargin'] ) ) {
 			$title_margin = $attr['titlemargin'];
-			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap, ' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' );
+			$css->set_selector( $unique_id . ' .premium-bullet-list__label-wrap' );
 			$css->add_property( 'margin', $css->render_spacing( $title_margin['Mobile'], $title_margin['unit'] ) );
 		}
 

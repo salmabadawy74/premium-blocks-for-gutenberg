@@ -279,7 +279,7 @@ const attributes = {
     generalBorder: {
         type: "object",
         default: {
-            "borderType": "",
+            "borderType": "none",
             "borderColor": "",
             "borderWidth": {
                 Desktop: {
@@ -326,7 +326,7 @@ const attributes = {
     bulletIconBorder: {
         type: "object",
         default: {
-            "borderType": "",
+            "borderType": "none",
             "borderColor": "",
             "borderWidth": {
                 Desktop: {
@@ -402,29 +402,29 @@ const attributes = {
     titlesTextShadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
+            color: "undefined",
+            blur: "10",
+            horizontal: "0",
+            vertical: "0",
         }
     },
     boxShadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
+            color: "undefined",
+            blur: "10",
+            horizontal: "0",
+            vertical: "0",
             'position': ' '
         }
     },
     hoverBoxShadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
+            color: "undefined",
+            blur: "10",
+            horizontal: "0",
+            vertical: "0",
             'position': ' '
         }
     },
