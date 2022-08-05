@@ -15,6 +15,7 @@ import SpacingControl from "../../components/premium-responsive-spacing";
 import InsideTabs from "../../components/InsideTabs";
 import InsideTab from "../../components/InsideTab";
 import PremiumShadow from "../../components/PremiumShadow";
+
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import {
     borderCss,
@@ -101,12 +102,14 @@ class edit extends Component {
 
         const loadStyles = () => {
             const styles = {};
-            styles[`.${blockId} .premium-image-separator-container:hover img`] =
-            {
+            styles[
+                `.${blockId} .premium-image-separator-container:hover img`
+            ] = {
                 filter: `brightness(${imgFilterHover?.bright}% ) contrast(${imgFilterHover?.contrast}% ) saturate(${imgFilterHover?.saturation}% ) blur(${imgFilterHover?.blur}px) hue-rotate(${imgFilterHover?.hue}deg)!important`,
             };
-            styles[` .${blockId} .premium-image-separator-container i:hover`] =
-            {
+            styles[
+                ` .${blockId} .premium-image-separator-container i:hover`
+            ] = {
                 color: `${iconStyles[0].iconColorHover} !important`,
                 "background-color": `${iconStyles[0].iconBGColorHover} !important`,
             };
@@ -385,22 +388,25 @@ class edit extends Component {
                                                     value={maskPosition}
                                                     onChange={(newSelect) =>
                                                         setAttributes({
-                                                            maskPosition:
-                                                                newSelect,
+                                                            maskPosition: newSelect,
                                                         })
                                                     }
                                                     options={[
                                                         {
-                                                            label: "Center Center",
-                                                            value: "center center",
+                                                            label:
+                                                                "Center Center",
+                                                            value:
+                                                                "center center",
                                                         },
                                                         {
                                                             label: "Top Center",
                                                             value: "top center",
                                                         },
                                                         {
-                                                            label: "Bottom Center",
-                                                            value: "bottom center",
+                                                            label:
+                                                                "Bottom Center",
+                                                            value:
+                                                                "bottom center",
                                                         },
                                                     ]}
                                                 />
@@ -459,8 +465,7 @@ class edit extends Component {
                                                             newValue
                                                         ) =>
                                                             saveIconStyle({
-                                                                iconColor:
-                                                                    newValue,
+                                                                iconColor: newValue,
                                                             })
                                                         }
                                                     />
@@ -478,8 +483,7 @@ class edit extends Component {
                                                             newValue
                                                         ) =>
                                                             saveIconStyle({
-                                                                iconBGColor:
-                                                                    newValue,
+                                                                iconBGColor: newValue,
                                                             })
                                                         }
                                                     />
@@ -500,8 +504,7 @@ class edit extends Component {
                                                             newValue
                                                         ) =>
                                                             saveIconStyle({
-                                                                iconColorHover:
-                                                                    newValue,
+                                                                iconColorHover: newValue,
                                                             })
                                                         }
                                                         colorDefault={""}
@@ -519,8 +522,7 @@ class edit extends Component {
                                                             newValue
                                                         ) =>
                                                             saveIconStyle({
-                                                                iconBGColorHover:
-                                                                    newValue,
+                                                                iconBGColorHover: newValue,
                                                             })
                                                         }
                                                         colorDefault={""}
@@ -662,9 +664,11 @@ class edit extends Component {
                                     iconSize.unit,
                                 color: iconStyles[0].iconColor,
                                 backgroundColor: iconStyles[0].iconBGColor,
-                                textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical || 0
-                                    }px ${iconShadow.blur || 0}px ${iconShadow.color
-                                    }`,
+                                textShadow: `${iconShadow.horizontal || 0}px ${
+                                    iconShadow.vertical || 0
+                                }px ${iconShadow.blur || 0}px ${
+                                    iconShadow.color
+                                }`,
                                 ...BorderValue,
                             }}
                         />
@@ -736,8 +740,9 @@ class edit extends Component {
 }
 
 export default withSelect((select, props) => {
-    const { __experimentalGetPreviewDeviceType = null } =
-        select("core/edit-post");
+    const { __experimentalGetPreviewDeviceType = null } = select(
+        "core/edit-post"
+    );
     let deviceType = __experimentalGetPreviewDeviceType
         ? __experimentalGetPreviewDeviceType()
         : null;

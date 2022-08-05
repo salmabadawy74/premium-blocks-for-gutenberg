@@ -18,12 +18,17 @@ import InspectorTab from "../../components/inspectorTab";
 import InsideTabs from "../../components/InsideTabs";
 import InsideTab from "../../components/InsideTab";
 import SpacingControl from "../../components/premium-responsive-spacing";
-import { generateBlockId, generateCss } from "../../components/HelperFunction";
+import { generateCss } from "../../components/HelperFunction";
 
 const { InspectorControls } = wp.blockEditor;
 
-const { PanelBody, TextControl, ToggleControl, SelectControl, TabPanel } =
-    wp.components;
+const {
+    PanelBody,
+    TextControl,
+    ToggleControl,
+    SelectControl,
+    TabPanel,
+} = wp.components;
 
 let isLottieUpdated = null;
 
@@ -702,8 +707,9 @@ class edit extends Component {
     }
 }
 export default withSelect((select, props) => {
-    const { __experimentalGetPreviewDeviceType = null } =
-        select("core/edit-post");
+    const { __experimentalGetPreviewDeviceType = null } = select(
+        "core/edit-post"
+    );
     let deviceType = __experimentalGetPreviewDeviceType
         ? __experimentalGetPreviewDeviceType()
         : null;
