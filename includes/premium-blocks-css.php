@@ -523,17 +523,14 @@ class Premium_Blocks_css {
 		if ( empty( $font ) ) {
 			return false;
 		}
-		$size_type = ( isset( $font['fontSize']['unit'] ) && ! empty( $font['fontSize']['unit'] ) ? $font['fontSize']['unit'] : 'px' );
 		if ( isset( $font['fontSize'] ) && isset( $font['fontSize'][$device] ) && ! empty( $font['fontSize'][$device] ) ) {
-			$this->add_property( 'font-size', $font['fontSize'][$device] . $size_type );
+			$this->add_property( 'font-size', $this->render_range($font['fontSize'],$device) );
 		}
-		$line_type = ( isset( $font['lineHeight']['unit']) && ! empty( $font['lineHeight']['unit'] ) ? $font['lineHeight']['unit'] : 'px' );
 		if ( isset( $font['lineHeight'] ) && isset( $font['lineHeight'][$device] ) && ! empty( $font['lineHeight'][$device] ) ) {
-			$this->add_property( 'line-height', $font['lineHeight'][$device] . $line_type );
+			$this->add_property( 'line-height',$this->render_range($font['lineHeight'],$device) );
 		}
-		$letter_type = ( isset( $font['letterSpacing']['unit'] ) && ! empty( $font['letterSpacing']['unit'] ) ? $font['letterSpacing']['unit'] : 'px' );
 		if ( isset( $font['letterSpacing'] ) && isset( $font['letterSpacing'][$device] ) && ! empty( $font['letterSpacing'][$device] ) ) {
-			$this->add_property( 'letter-spacing', $font['letterSpacing'][$device] . $letter_type );
+			$this->add_property( 'letter-spacing', $this->render_range($font['letterSpacing'],$device)  );
 		}
 		$family = ( isset( $font['fontFamily'] ) && ! empty( $font['fontFamily'] ) && 'Default' !== $font['fontFamily'] ? $font['fontFamily'] : '' );
 		if ( ! empty( $family ) ) {
@@ -546,6 +543,7 @@ class Premium_Blocks_css {
 		}
 	
 	}
+
     public function add_gfont( $attr ) {
 
             $defaults = array(
@@ -599,33 +597,15 @@ class Premium_Blocks_css {
 	 * @param bool   $render_zero if 0 should be rendered or not.
 	 * @return string
 	 */
-	public function render_range( $size, $device, $render_zero = true ) {
+	public function render_range( $size, $device ) {
 		if ( empty( $size ) ) {
 			return false;
 		}
-		if ( ! is_array( $size ) ) {
+		if ( ! isset( $size[ $device ] ) ) {
 			return false;
 		}
-		if ( ! isset( $size['size'] ) ) {
-			return false;
-		}
-		if ( ! is_array( $size['size'] ) ) {
-			return false;
-		}
-		if ( ! isset( $size['size'][ $device ] ) ) {
-			return false;
-		}
-		if ( $render_zero ) {
-			if ( ! is_numeric( $size['size'][ $device ] ) ) {
-				return false;
-			}
-		} else {
-			if ( empty( $size['size'][ $device ] ) ) {
-				return false;
-			}
-		}
-		$size_type   = ( isset( $size['unit'] ) && is_array( $size['unit'] ) && isset( $size['unit'][ $device ] ) && ! empty( $size['unit'][ $device ] ) ? $size['unit'][ $device ] : 'px' );
-		$size_string = $size['size'][ $device ] . $size_type;
+		$size_type   = ( isset( $size['unit'])  && ! empty( $size['unit'])? $size['unit'] : 'px' );
+		$size_string = $size[ $device ] . $size_type;
 
 		return $size_string;
 	}

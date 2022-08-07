@@ -484,5 +484,14 @@ const attributes = {
             'hue': '0'
         }
     },
+    imageBorder: {
+        type: "object",
+        default: {
+            Desktop: '0',
+            'Tablet': '0',
+            'Mobile': '0',
+            unit: 'px'
+        }
+    }
 }
 export default attributes

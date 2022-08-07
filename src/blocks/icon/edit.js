@@ -132,7 +132,7 @@ const edit = (props) => {
                                 onChange={(newIcon) => setAttributes({ selectedIcon: newIcon })}
                                 value={selectedIcon}
                                 isMulti={false}
-                                appendTo="body"
+                                // appendTo="body"
                                 noSelectedPlaceholder={__("Select Icon", "premium-blocks-for-gutenberg")}
                             />
                             <ToggleControl

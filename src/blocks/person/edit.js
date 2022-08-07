@@ -202,7 +202,8 @@ class Edit extends Component {
             nameColor,
             titleColor,
             descColor,
-            imageFilter
+            imageFilter,
+            imageBorder
         } = this.props.attributes;
 
         const HOVER = [
@@ -423,9 +424,10 @@ class Edit extends Component {
             styles[` .${blockId} .premium-person__social-List li:hover .premium-social-media-icon`] = {
                 'fill': `${socialIconStyles[0].socialIconHoverColor} !important`,
                 '-webkit-transition': `all .2s ease-in-out !important`,
-                'transition': `all .2s ease-in-out !important`
+                'transition': `all .2s ease-in-out !important`,
             };
             styles[` .${blockId} .premium-person__img_wrap img`] = {
+                'border-radius': `${imageBorder[this.props.deviceType]}${imageBorder.unit} !important`,
                 'height': `${imgHeight[this.props.deviceType]}${imgHeight.unit} !important`,
                 'width': `${imgWidth[this.props.deviceType]}${imgWidth.unit} !important`,
                 'filter': `brightness( ${imageFilter.bright}% ) contrast( ${imageFilter.contrast}% ) saturate( ${imageFilter.saturation}% ) blur( ${imageFilter.blur}px ) hue-rotate( ${imageFilter.hue}deg ) !important`
@@ -556,7 +558,7 @@ class Edit extends Component {
                                     )}
                                     {!value.personImgUrl && (<DefaultImage className={className} />)}
                                 </div>
-                                {effectPersonStyle === "effect2" ? (
+                                {effectPersonStyle === "effect2" && value.socialIcon ? (
                                     <div
                                         className={`premium-person__socialEffect2`}
                                     >
@@ -992,6 +994,17 @@ class Edit extends Component {
                                     options={HOVER}
                                     value={hoverEffectPerson}
                                     onChange={(newEffect) => setAttributes({ hoverEffectPerson: newEffect })}
+                                />
+                                <ResponsiveRangeControl
+                                    label={__("Custom Image Height", "premium-blocks-for-gutenberg")}
+                                    value={imageBorder}
+                                    onChange={(value) => setAttributes({ imageBorder: value })}
+                                    min={1}
+                                    max={100}
+                                    step={1}
+                                    showUnit={true}
+                                    units={["px", "em", "%"]}
+                                    defaultValue={0}
                                 />
                             </PanelBody>
                             {socialIcon && (

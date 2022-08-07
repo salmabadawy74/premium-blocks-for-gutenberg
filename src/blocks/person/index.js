@@ -15,7 +15,7 @@ registerBlockType("premium/person", {
     icon: PBG_Block_Icons.team,
     category: "premium-blocks",
     attributes: attributes,
-    keywords: [__("Team", 'premium-blocks-for-gutenberg'), __("profile", 'premium-blocks-for-gutenberg'), __("member", 'premium-blocks-for-gutenberg')],
+    keywords: [__("Team", 'premium-blocks-for-gutenberg'), __("profile", 'premium-blocks-for-gutenberg'), __("member", 'premium-blocks-for-gutenberg'), __("person", 'premium-blocks-for-gutenberg')],
     supports: {
         inserter: person
     },

@@ -33683,8 +33683,8 @@ const edit = props => {
       selectedIcon: newIcon
     }),
     value: selectedIcon,
-    isMulti: false,
-    appendTo: "body",
+    isMulti: false // appendTo="body"
+    ,
     noSelectedPlaceholder: __("Select Icon", "premium-blocks-for-gutenberg")
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
     label: __("Link", "premium-blocks-for-gutenberg"),
@@ -39345,6 +39345,15 @@ const attributes = {
       'saturation': '100',
       'hue': '0'
     }
+  },
+  imageBorder: {
+    type: "object",
+    default: {
+      Desktop: '0',
+      'Tablet': '0',
+      'Mobile': '0',
+      unit: 'px'
+    }
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (attributes);
@@ -39961,7 +39970,13 @@ const deprecated = [{
       },
       nameColor: attributes.nameStyles[0].nameColor,
       titleColor: attributes.titleStyles[0].titleColor,
-      descColor: attributes.descStyles[0].descColor
+      descColor: attributes.descStyles[0].descColor,
+      imageBorder: {
+        unit: 'px',
+        "Desktop": 0,
+        "Tablet": 0,
+        "Mobile": 0
+      }
     };
     return Object.assign(attributes, newAttributes);
   },
@@ -40399,7 +40414,8 @@ class Edit extends Component {
       nameColor,
       titleColor,
       descColor,
-      imageFilter
+      imageFilter,
+      imageBorder
     } = this.props.attributes;
     const HOVER = [{
       value: "none",
@@ -40575,6 +40591,7 @@ class Edit extends Component {
         'transition': `all .2s ease-in-out !important`
       };
       styles[` .${blockId} .premium-person__img_wrap img`] = {
+        'border-radius': `${imageBorder[this.props.deviceType]}${imageBorder.unit} !important`,
         'height': `${imgHeight[this.props.deviceType]}${imgHeight.unit} !important`,
         'width': `${imgWidth[this.props.deviceType]}${imgWidth.unit} !important`,
         'filter': `brightness( ${imageFilter.bright}% ) contrast( ${imageFilter.contrast}% ) saturate( ${imageFilter.saturation}% ) blur( ${imageFilter.blur}px ) hue-rotate( ${imageFilter.hue}deg ) !important`
@@ -40679,7 +40696,7 @@ class Edit extends Component {
         alt: "Person"
       }), !value.personImgUrl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_default_image__WEBPACK_IMPORTED_MODULE_5__["default"], {
         className: className
-      })), effectPersonStyle === "effect2" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      })), effectPersonStyle === "effect2" && value.socialIcon ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
         className: `premium-person__socialEffect2`
       }, value.socialIcon && socialIconfn(value.items)) : ""), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
         className: `premium-person__info`,
@@ -41140,6 +41157,18 @@ class Edit extends Component {
       onChange: newEffect => setAttributes({
         hoverEffectPerson: newEffect
       })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      label: __("Custom Image Height", "premium-blocks-for-gutenberg"),
+      value: imageBorder,
+      onChange: value => setAttributes({
+        imageBorder: value
+      }),
+      min: 1,
+      max: 100,
+      step: 1,
+      showUnit: true,
+      units: ["px", "em", "%"],
+      defaultValue: 0
     })), socialIcon && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("Social Icon", "premium-blocks-for-gutenberg"),
       className: "premium-panel-body",
@@ -41312,7 +41341,7 @@ registerBlockType("premium/person", {
   icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].team,
   category: "premium-blocks",
   attributes: _attributes__WEBPACK_IMPORTED_MODULE_5__["default"],
-  keywords: [__("Team", 'premium-blocks-for-gutenberg'), __("profile", 'premium-blocks-for-gutenberg'), __("member", 'premium-blocks-for-gutenberg')],
+  keywords: [__("Team", 'premium-blocks-for-gutenberg'), __("profile", 'premium-blocks-for-gutenberg'), __("member", 'premium-blocks-for-gutenberg'), __("person", 'premium-blocks-for-gutenberg')],
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.person
   },

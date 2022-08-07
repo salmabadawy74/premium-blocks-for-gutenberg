@@ -3001,7 +3001,7 @@ class PBG_Blocks_Helper {
 		// icon Styles
 		if ( isset( $attr['iconSize']['Desktop'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > .premium-icon' );
-			$css->add_property( 'font-size', ( ( isset( $attr['iconSize']['Desktop'] ) ? $attr['iconSize']['Desktop'] : '50' ) . ( isset( $attr['iconSize']['unit'] ) ? $attr['iconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'font-size', $css->render_range($attr['iconSize'],'Desktop')  );
 		}
 		if ( isset( $attr['iconMargin'] ) ) {
 			$icon_margin = $attr['iconMargin'];
@@ -3055,7 +3055,7 @@ class PBG_Blocks_Helper {
 		// icon Styles
 		if ( isset( $attr['iconSize']['Tablet'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > .premium-icon' );
-			$css->add_property( 'font-size', ( $attr['iconSize']['Tablet'] . ( isset( $attr['iconSize']['unit'] ) ? $attr['iconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'font-size', $css->render_range($attr['iconSize'],'Tablet')   );
 		}
 		if ( isset( $attr['iconMargin'] ) ) {
 			$wrap_margin = $attr['iconMargin'];
@@ -3110,7 +3110,7 @@ class PBG_Blocks_Helper {
 		// icon Styles
 		if ( isset( $attr['iconSize']['Mobile'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > .premium-icon' );
-			$css->add_property( 'font-size', ( $attr['iconSize']['Mobile'] . ( isset( $attr['iconSize']['unit'] ) ? $attr['iconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'font-size',  $css->render_range($attr['iconSize'],'Mobile')   );
 		}
 		if ( isset( $attr['iconMargin'] ) ) {
 			$icon_margin = $attr['iconMargin'];
@@ -5435,350 +5435,128 @@ class PBG_Blocks_Helper {
 			);
 		}
 		//Container style
-		if ( isset( $attr['boxBorder']['borderWidth']['Desktop']['top'] ) ) {
-			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'border-top-width', ( $attr['boxBorder']['borderWidth']['Desktop']['top'] . 'px' ) );
-		}
-		if ( isset( $attr['boxBorder']['borderWidth']['Desktop']['right'] ) ) {
-			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'border-right-width', ( $attr['boxBorder']['borderWidth']['Desktop']['right'] . 'px' ) );
-		}
-		if ( isset( $attr['boxBorder']['borderWidth']['Desktop']['bottom'] ) ) {
-			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'border-bottom-width', ( $attr['boxBorder']['borderWidth']['Desktop']['bottom'] . 'px' ) );
-		}
-		if ( isset( $attr['boxBorder']['borderWidth']['Desktop']['left'] ) ) {
-			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'border-left-width', ( $attr['boxBorder']['borderWidth']['Desktop']['left'] . 'px' ) );
-		}
-		if ( isset( $attr['boxBorder']['borderRadius']['Desktop']['top'] ) ) {
-			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'border-top-left-radius', ( $attr['boxBorder']['borderRadius']['Desktop']['top'] . 'px' ) );
-		}
-		if ( isset( $attr['boxBorder']['borderRadius']['Desktop']['right'] ) ) {
-			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'border-top-right-radius', ( $attr['boxBorder']['borderRadius']['Desktop']['right'] . 'px' ) );
-		}
-		if ( isset( $attr['boxBorder']['borderRadius']['Desktop']['bottom'] ) ) {
-			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'border-bottom-right-radius', ( $attr['boxBorder']['borderRadius']['Desktop']['bottom'] . 'px' ) );
-		}
-		if ( isset( $attr['boxBorder']['borderRadius']['Desktop']['left'] ) ) {
-			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'border-bottom-left-radius', ( $attr['boxBorder']['borderRadius']['Desktop']['left'] . 'px' ) );
+		if ( isset( $attr['boxBorder'] ) ) {
+			$title_border        = $attr['boxBorder'];
+			$title_border_width  = $attr['boxBorder']['borderWidth'];
+			$title_border_radius = $attr['boxBorder']['borderRadius'];
+
+			$css->set_selector( '.' . $unique_id  );
+			$css->add_property( 'border-width', $css->render_spacing( $title_border_width['Desktop'], 'px' ) );
+			$css->add_property( 'border-radius', $css->render_spacing( $title_border_radius['Desktop'], 'px' ) );
 		}
 
 		//icon Style
-		if ( isset( $attr['playBorder']['borderWidth']['Desktop']['top'] ) ) {
+		if ( isset( $attr['playBorder'] ) ) {
+			$title_border        = $attr['playBorder'];
+			$title_border_width  = $attr['playBorder']['borderWidth'];
+			$title_border_radius = $attr['playBorder']['borderRadius'];
+
 			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'border-top-width', ( $attr['playBorder']['borderWidth']['Desktop']['top'] . 'px' ) );
+			$css->add_property( 'border-width', $css->render_spacing( $title_border_width['Desktop'], 'px' ) );
+			$css->add_property( 'border-radius', $css->render_spacing( $title_border_radius['Desktop'], 'px' ) );
 		}
-		if ( isset( $attr['playBorder']['borderWidth']['Desktop']['right'] ) ) {
+		if ( isset( $attr['playPadding'] ) ) {
+			$desc_padding = $attr['playPadding'];
 			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'border-right-width', ( $attr['playBorder']['borderWidth']['Desktop']['right'] . 'px' ) );
-		}
-		if ( isset( $attr['playBorder']['borderWidth']['Desktop']['bottom'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'border-bottom-width', ( $attr['playBorder']['borderWidth']['Desktop']['bottom'] . 'px' ) );
-		}
-		if ( isset( $attr['playBorder']['borderWidth']['Desktop']['left'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'border-left-width', ( $attr['playBorder']['borderWidth']['Desktop']['left'] . 'px' ) );
-		}
-		if ( isset( $attr['playBorder']['borderRadius']['Desktop']['top'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'border-top-left-radius', ( $attr['playBorder']['borderRadius']['Desktop']['top'] . 'px' ) );
-		}
-		if ( isset( $attr['playBorder']['borderRadius']['Desktop']['right'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'border-top-right-radius', ( $attr['playBorder']['borderRadius']['Desktop']['right'] . 'px' ) );
-		}
-		if ( isset( $attr['playBorder']['borderRadius']['Desktop']['bottom'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'border-bottom-right-radius', ( $attr['playBorder']['borderRadius']['Desktop']['bottom'] . 'px' ) );
-		}
-		if ( isset( $attr['playBorder']['borderRadius']['Desktop']['left'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'border-bottom-left-radius', ( $attr['playBorder']['borderRadius']['Desktop']['left'] . 'px' ) );
-		}
-		if ( isset( $attr['playPadding']['Desktop']['top'] ) && isset( $attr['playPadding']['unit'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'padding-top', ( $attr['playPadding']['Desktop']['top'] . ( isset( $attr['playPadding']['unit'] ) ? $attr['playPadding']['unit'] : 'px' ) . '!important' ) );
-		}
-		if ( isset( $attr['playPadding']['Desktop']['right'] ) && isset( $attr['playPadding']['unit'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'padding-right', ( $attr['playPadding']['Desktop']['right'] . ( isset( $attr['playPadding']['unit'] ) ? $attr['playPadding']['unit'] : 'px' ) . '!important' ) );
-		}
-		if ( isset( $attr['playPadding']['Desktop']['bottom'] ) && isset( $attr['playPadding']['unit'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'padding-bottom', ( $attr['playPadding']['Desktop']['bottom'] . ( isset( $attr['playPadding']['unit'] ) ? $attr['playPadding']['unit'] : 'px' ) . '!important' ) );
-		}
-		if ( isset( $attr['playPadding']['Desktop']['left'] ) && isset( $attr['playPadding']['unit'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'padding-left', ( $attr['playPadding']['Desktop']['left'] . ( isset( $attr['playPadding']['unit'] ) ? $attr['playPadding']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'padding', $css->render_spacing( $desc_padding['Desktop'], $desc_padding['unit'] ) );
 		}
 
 		// Style Description.
-		if ( isset( $attr['videoDescTypography']['fontSize']['Desktop'] ) ) {
+		if ( isset( $attr['videoDescTypography'] ) ) {
+			$desc_typography = $attr['videoDescTypography'];
+
 			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' . '> .premium-video-box__desc_text' );
-			$css->add_property( 'font-size', ( ( isset( $attr['videoDescTypography']['fontSize']['Desktop'] ) ? $attr['videoDescTypography']['fontSize']['Desktop'] : '20' ) . ( isset( $attr['videoDescTypography']['fontSize']['unit'] ) ? $attr['videoDescTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );
+			$css->render_typography( $desc_typography, 'Desktop' );
 		}
-		if ( isset( $attr['videoDescTypography']['lineHeight']['Desktop'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' . '> .premium-video-box__desc_text' );
-			$css->add_property( 'line-height', ( ( isset( $attr['videoDescTypography']['lineHeight']['Desktop'] ) ? $attr['videoDescTypography']['lineHeight']['Desktop'] : '20' ) . ( isset( $attr['videoDescTypography']['lineHeight']['unit'] ) ? $attr['videoDescTypography']['lineHeight']['unit'] : 'px' ) . '!important' ) );
-		}
-		if ( isset( $attr['videoDescTypography']['letterSpacing']['Desktop'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' . '> .premium-video-box__desc_text' );
-			$css->add_property( 'letter-spacing', ( ( isset( $attr['videoDescTypography']['letterSpacing']['Desktop'] ) ? $attr['videoDescTypography']['letterSpacing']['Desktop'] : '20' ) . ( isset( $attr['videoDescTypography']['letterSpacing']['unit'] ) ? $attr['videoDescTypography']['letterSpacing']['unit'] : 'px' ) . '!important' ) );
-		}
-		if ( isset( $attr['descPadding']['Desktop']['top'] ) && isset( $attr['descPadding']['unit'] ) ) {
+		if ( isset( $attr['descPadding'] ) ) {
+			$desc_padding = $attr['descPadding'];
 			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' );
-			$css->add_property( 'padding-top', ( $attr['descPadding']['Desktop']['top'] . ( isset( $attr['descPadding']['unit'] ) ? $attr['descPadding']['unit'] : 'px' ) . '!important' ) );
-		}
-		if ( isset( $attr['descPadding']['Desktop']['right'] ) && isset( $attr['descPadding']['unit'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' );
-			$css->add_property( 'padding-right', ( $attr['descPadding']['Desktop']['right'] . ( isset( $attr['descPadding']['unit'] ) ? $attr['descPadding']['unit'] : 'px' ) . '!important' ) );
-		}
-		if ( isset( $attr['descPadding']['Desktop']['bottom'] ) && isset( $attr['descPadding']['unit'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' );
-			$css->add_property( 'padding-bottom', ( $attr['descPadding']['Desktop']['bottom'] . ( isset( $attr['descPadding']['unit'] ) ? $attr['descPadding']['unit'] : 'px' ) . '!important' ) );
-		}
-		if ( isset( $attr['descPadding']['Desktop']['left'] ) && isset( $attr['descPadding']['unit'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' );
-			$css->add_property( 'padding-left', ( $attr['descPadding']['Desktop']['left'] . ( isset( $attr['descPadding']['unit'] ) ? $attr['descPadding']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'padding', $css->render_spacing( $desc_padding['Desktop'], $desc_padding['unit'] ) );
 		}
 
 		$css->start_media_query( $media_query['tablet'] );
 
 		//Container style
-		if ( isset( $attr['boxBorder']['borderWidth']['Tablet']['top'] ) ) {
-			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'border-top-width', ( $attr['boxBorder']['borderWidth']['Tablet']['top'] . 'px' ) );
-		}
-		if ( isset( $attr['boxBorder']['borderWidth']['Tablet']['right'] ) ) {
-			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'border-right-width', ( $attr['boxBorder']['borderWidth']['Tablet']['right'] . 'px' ) );
-		}
-		if ( isset( $attr['boxBorder']['borderWidth']['Tablet']['bottom'] ) ) {
-			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'border-bottom-width', ( $attr['boxBorder']['borderWidth']['Tablet']['bottom'] . 'px' ) );
-		}
-		if ( isset( $attr['boxBorder']['borderWidth']['Tablet']['left'] ) ) {
-			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'border-left-width', ( $attr['boxBorder']['borderWidth']['Tablet']['left'] . 'px' ) );
-		}
-		if ( isset( $attr['boxBorder']['borderRadius']['Tablet']['top'] ) ) {
-			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'border-top-left-radius', ( $attr['boxBorder']['borderRadius']['Tablet']['top'] . 'px' ) );
-		}
-		if ( isset( $attr['boxBorder']['borderRadius']['Tablet']['right'] ) ) {
-			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'border-top-right-radius', ( $attr['boxBorder']['borderRadius']['Tablet']['right'] . 'px' ) );
-		}
-		if ( isset( $attr['boxBorder']['borderRadius']['Tablet']['bottom'] ) ) {
-			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'border-bottom-right-radius', ( $attr['boxBorder']['borderRadius']['Tablet']['bottom'] . 'px' ) );
-		}
-		if ( isset( $attr['boxBorder']['borderRadius']['Tablet']['left'] ) ) {
-			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'border-bottom-left-radius', ( $attr['boxBorder']['borderRadius']['Tablet']['left'] . 'px' ) );
+		if ( isset( $attr['boxBorder'] ) ) {
+			$title_border        = $attr['boxBorder'];
+			$title_border_width  = $attr['boxBorder']['borderWidth'];
+			$title_border_radius = $attr['boxBorder']['borderRadius'];
+
+			$css->set_selector( '.' . $unique_id  );
+			$css->add_property( 'border-width', $css->render_spacing( $title_border_width['Tablet'], 'px' ) );
+			$css->add_property( 'border-radius', $css->render_spacing( $title_border_radius['Tablet'], 'px' ) );
 		}
 
 		//icon Style
-		if ( isset( $attr['playBorder']['borderWidth']['Tablet']['top'] ) ) {
+		if ( isset( $attr['playBorder'] ) ) {
+			$title_border        = $attr['playBorder'];
+			$title_border_width  = $attr['playBorder']['borderWidth'];
+			$title_border_radius = $attr['playBorder']['borderRadius'];
+
 			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'border-top-width', ( $attr['playBorder']['borderWidth']['Tablet']['top'] . 'px' ) );
+			$css->add_property( 'border-width', $css->render_spacing( $title_border_width['Tablet'], 'px' ) );
+			$css->add_property( 'border-radius', $css->render_spacing( $title_border_radius['Tablet'], 'px' ) );
 		}
-		if ( isset( $attr['playBorder']['borderWidth']['Tablet']['right'] ) ) {
+		if ( isset( $attr['playPadding'] ) ) {
+			$desc_padding = $attr['playPadding'];
 			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'border-right-width', ( $attr['playBorder']['borderWidth']['Tablet']['right'] . 'px' ) );
-		}
-		if ( isset( $attr['playBorder']['borderWidth']['Tablet']['bottom'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'border-bottom-width', ( $attr['playBorder']['borderWidth']['Tablet']['bottom'] . 'px' ) );
-		}
-		if ( isset( $attr['playBorder']['borderWidth']['Tablet']['left'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'border-left-width', ( $attr['playBorder']['borderWidth']['Tablet']['left'] . 'px' ) );
-		}
-		if ( isset( $attr['playBorder']['borderRadius']['Tablet']['top'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'border-top-left-radius', ( $attr['playBorder']['borderRadius']['Tablet']['top'] . 'px' ) );
-		}
-		if ( isset( $attr['playBorder']['borderRadius']['Tablet']['right'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'border-top-right-radius', ( $attr['playBorder']['borderRadius']['Tablet']['right'] . 'px' ) );
-		}
-		if ( isset( $attr['playBorder']['borderRadius']['Tablet']['bottom'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'border-bottom-right-radius', ( $attr['playBorder']['borderRadius']['Tablet']['bottom'] . 'px' ) );
-		}
-		if ( isset( $attr['playBorder']['borderRadius']['Tablet']['left'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'border-bottom-left-radius', ( $attr['playBorder']['borderRadius']['Tablet']['left'] . 'px' ) );
-		}
-		if ( isset( $attr['playPadding']['Tablet']['top'] ) && isset( $attr['playPadding']['unit'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'padding-top', ( $attr['playPadding']['Tablet']['top'] . ( isset( $attr['playPadding']['unit'] ) ? $attr['playPadding']['unit'] : 'px' ) . '!important' ) );
-		}
-		if ( isset( $attr['playPadding']['Tablet']['right'] ) && isset( $attr['playPadding']['unit'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'padding-right', ( $attr['playPadding']['Tablet']['right'] . ( isset( $attr['playPadding']['unit'] ) ? $attr['playPadding']['unit'] : 'px' ) . '!important' ) );
-		}
-		if ( isset( $attr['playPadding']['Tablet']['bottom'] ) && isset( $attr['playPadding']['unit'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'padding-bottom', ( $attr['playPadding']['Tablet']['bottom'] . ( isset( $attr['playPadding']['unit'] ) ? $attr['playPadding']['unit'] : 'px' ) . '!important' ) );
-		}
-		if ( isset( $attr['playPadding']['Tablet']['left'] ) && isset( $attr['playPadding']['unit'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'padding-left', ( $attr['playPadding']['Tablet']['left'] . ( isset( $attr['playPadding']['unit'] ) ? $attr['playPadding']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'padding', $css->render_spacing( $desc_padding['Tablet'], $desc_padding['unit'] ) );
 		}
 
 		// Style Description.
-		if ( isset( $attr['videoDescTypography']['fontSize']['Tablet'] ) ) {
+		if ( isset( $attr['videoDescTypography'] ) ) {
+			$desc_typography = $attr['videoDescTypography'];
+
 			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' . '> .premium-video-box__desc_text' );
-			$css->add_property( 'font-size', ( ( isset( $attr['videoDescTypography']['fontSize']['Tablet'] ) ? $attr['videoDescTypography']['fontSize']['Tablet'] : '20' ) . ( isset( $attr['videoDescTypography']['fontSize']['unit'] ) ? $attr['videoDescTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );
+			$css->render_typography( $desc_typography, 'Tablet' );
 		}
-		if ( isset( $attr['videoDescTypography']['lineHeight']['Tablet'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' . '> .premium-video-box__desc_text' );
-			$css->add_property( 'line-height', ( ( isset( $attr['videoDescTypography']['lineHeight']['Tablet'] ) ? $attr['videoDescTypography']['lineHeight']['Tablet'] : '20' ) . ( isset( $attr['videoDescTypography']['lineHeight']['unit'] ) ? $attr['videoDescTypography']['lineHeight']['unit'] : 'px' ) . '!important' ) );
-		}
-		if ( isset( $attr['videoDescTypography']['letterSpacing']['Tablet'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' . '> .premium-video-box__desc_text' );
-			$css->add_property( 'letter-spacing', ( ( isset( $attr['videoDescTypography']['letterSpacing']['Tablet'] ) ? $attr['videoDescTypography']['letterSpacing']['Tablet'] : '0' ) . ( isset( $attr['videoDescTypography']['letterSpacing']['unit'] ) ? $attr['videoDescTypography']['letterSpacing']['unit'] : 'px' ) . '!important' ) );
-		}
-		if ( isset( $attr['descPadding']['Tablet']['top'] ) && isset( $attr['descPadding']['unit'] ) ) {
+		if ( isset( $attr['descPadding'] ) ) {
+			$desc_padding = $attr['descPadding'];
 			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' );
-			$css->add_property( 'padding-top', ( $attr['descPadding']['Tablet']['top'] . ( isset( $attr['descPadding']['unit'] ) ? $attr['descPadding']['unit'] : 'px' ) . '!important' ) );
-		}
-		if ( isset( $attr['descPadding']['Tablet']['right'] ) && isset( $attr['descPadding']['unit'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' );
-			$css->add_property( 'padding-right', ( $attr['descPadding']['Tablet']['right'] . ( isset( $attr['descPadding']['unit'] ) ? $attr['descPadding']['unit'] : 'px' ) . '!important' ) );
-		}
-		if ( isset( $attr['descPadding']['Tablet']['bottom'] ) && isset( $attr['descPadding']['unit'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' );
-			$css->add_property( 'padding-bottom', ( $attr['descPadding']['Tablet']['bottom'] . ( isset( $attr['descPadding']['unit'] ) ? $attr['descPadding']['unit'] : 'px' ) . '!important' ) );
-		}
-		if ( isset( $attr['descPadding']['Tablet']['left'] ) && isset( $attr['descPadding']['unit'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' );
-			$css->add_property( 'padding-left', ( $attr['descPadding']['Tablet']['left'] . ( isset( $attr['descPadding']['unit'] ) ? $attr['descPadding']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'padding', $css->render_spacing( $desc_padding['Tablet'], $desc_padding['unit'] ) );
 		}
 
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
 
 		//Container style
-		if ( isset( $attr['boxBorder']['borderWidth']['Mobile']['top'] ) ) {
-			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'border-top-width', ( $attr['boxBorder']['borderWidth']['Mobile']['top'] . 'px' ) );
-		}
-		if ( isset( $attr['boxBorder']['borderWidth']['Mobile']['right'] ) ) {
-			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'border-right-width', ( $attr['boxBorder']['borderWidth']['Mobile']['right'] . 'px' ) );
-		}
-		if ( isset( $attr['boxBorder']['borderWidth']['Mobile']['bottom'] ) ) {
-			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'border-bottom-width', ( $attr['boxBorder']['borderWidth']['Mobile']['bottom'] . 'px' ) );
-		}
-		if ( isset( $attr['boxBorder']['borderWidth']['Mobile']['left'] ) ) {
-			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'border-left-width', ( $attr['boxBorder']['borderWidth']['Mobile']['left'] . 'px' ) );
-		}
-		if ( isset( $attr['boxBorder']['borderRadius']['Mobile']['top'] ) ) {
-			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'border-top-left-radius', ( $attr['boxBorder']['borderRadius']['Mobile']['top'] . 'px' ) );
-		}
-		if ( isset( $attr['boxBorder']['borderRadius']['Mobile']['right'] ) ) {
-			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'border-top-right-radius', ( $attr['boxBorder']['borderRadius']['Mobile']['right'] . 'px' ) );
-		}
-		if ( isset( $attr['boxBorder']['borderRadius']['Mobile']['bottom'] ) ) {
-			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'border-bottom-right-radius', ( $attr['boxBorder']['borderRadius']['Mobile']['bottom'] . 'px' ) );
-		}
-		if ( isset( $attr['boxBorder']['borderRadius']['Mobile']['left'] ) ) {
-			$css->set_selector( '.' . $unique_id );
-			$css->add_property( 'border-bottom-left-radius', ( $attr['boxBorder']['borderRadius']['Mobile']['left'] . 'px' ) );
+		if ( isset( $attr['boxBorder'] ) ) {
+			$title_border        = $attr['boxBorder'];
+			$title_border_width  = $attr['boxBorder']['borderWidth'];
+			$title_border_radius = $attr['boxBorder']['borderRadius'];
+
+			$css->set_selector( '.' . $unique_id  );
+			$css->add_property( 'border-width', $css->render_spacing( $title_border_width['Mobile'], 'px' ) );
+			$css->add_property( 'border-radius', $css->render_spacing( $title_border_radius['Mobile'], 'px' ) );
 		}
 
 		//icon Style
-		if ( isset( $attr['playBorder']['borderWidth']['Mobile']['top'] ) ) {
+		if ( isset( $attr['playBorder'] ) ) {
+			$title_border        = $attr['playBorder'];
+			$title_border_width  = $attr['playBorder']['borderWidth'];
+			$title_border_radius = $attr['playBorder']['borderRadius'];
+
 			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'border-top-width', ( $attr['playBorder']['borderWidth']['Mobile']['top'] . 'px' ) );
+			$css->add_property( 'border-width', $css->render_spacing( $title_border_width['Mobile'], 'px' ) );
+			$css->add_property( 'border-radius', $css->render_spacing( $title_border_radius['Mobile'], 'px' ) );
 		}
-		if ( isset( $attr['playBorder']['borderWidth']['Mobile']['right'] ) ) {
+		if ( isset( $attr['playPadding'] ) ) {
+			$desc_padding = $attr['playPadding'];
 			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'border-right-width', ( $attr['playBorder']['borderWidth']['Mobile']['right'] . 'px' ) );
-		}
-		if ( isset( $attr['playBorder']['borderWidth']['Mobile']['bottom'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'border-bottom-width', ( $attr['playBorder']['borderWidth']['Mobile']['bottom'] . 'px' ) );
-		}
-		if ( isset( $attr['playBorder']['borderWidth']['Mobile']['left'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'border-left-width', ( $attr['playBorder']['borderWidth']['Mobile']['left'] . 'px' ) );
-		}
-		if ( isset( $attr['playBorder']['borderRadius']['Mobile']['top'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'border-top-left-radius', ( $attr['playBorder']['borderRadius']['Mobile']['top'] . 'px' ) );
-		}
-		if ( isset( $attr['playBorder']['borderRadius']['Mobile']['right'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'border-top-right-radius', ( $attr['playBorder']['borderRadius']['Mobile']['right'] . 'px' ) );
-		}
-		if ( isset( $attr['playBorder']['borderRadius']['Mobile']['bottom'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'border-bottom-right-radius', ( $attr['playBorder']['borderRadius']['Mobile']['bottom'] . 'px' ) );
-		}
-		if ( isset( $attr['playBorder']['borderRadius']['Mobile']['left'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'border-bottom-left-radius', ( $attr['playBorder']['borderRadius']['Mobile']['left'] . 'px' ) );
-		}
-		if ( isset( $attr['playPadding']['Mobile']['top'] ) && isset( $attr['playPadding']['unit'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'padding-top', ( $attr['playPadding']['Mobile']['top'] . ( isset( $attr['playPadding']['unit'] ) ? $attr['playPadding']['unit'] : 'px' ) . '!important' ) );
-		}
-		if ( isset( $attr['playPadding']['Mobile']['right'] ) && isset( $attr['playPadding']['unit'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'padding-right', ( $attr['playPadding']['Mobile']['right'] . ( isset( $attr['playPadding']['unit'] ) ? $attr['playPadding']['unit'] : 'px' ) . '!important' ) );
-		}
-		if ( isset( $attr['playPadding']['Mobile']['bottom'] ) && isset( $attr['playPadding']['unit'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'padding-bottom', ( $attr['playPadding']['Mobile']['bottom'] . ( isset( $attr['playPadding']['unit'] ) ? $attr['playPadding']['unit'] : 'px' ) . '!important' ) );
-		}
-		if ( isset( $attr['playPadding']['Mobile']['left'] ) && isset( $attr['playPadding']['unit'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__play' );
-			$css->add_property( 'padding-left', ( $attr['playPadding']['Mobile']['left'] . ( isset( $attr['playPadding']['unit'] ) ? $attr['playPadding']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'padding', $css->render_spacing( $desc_padding['Mobile'], $desc_padding['unit'] ) );
 		}
 
 		// Style Description.
-		if ( isset( $attr['videoDescTypography']['fontSize']['Mobile'] ) ) {
+		if ( isset( $attr['videoDescTypography'] ) ) {
+			$desc_typography = $attr['videoDescTypography'];
+
 			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' . '> .premium-video-box__desc_text' );
-			$css->add_property( 'font-size', ( ( isset( $attr['videoDescTypography']['fontSize']['Mobile'] ) ? $attr['videoDescTypography']['fontSize']['Mobile'] : '20' ) . ( isset( $attr['videoDescTypography']['fontSize']['unit'] ) ? $attr['videoDescTypography']['fontSize']['unit'] : 'px' ) . '!important' ) );
+			$css->render_typography( $desc_typography, 'Mobile' );
 		}
-		if ( isset( $attr['videoDescTypography']['lineHeight']['Mobile'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' . '> .premium-video-box__desc_text' );
-			$css->add_property( 'line-height', ( ( isset( $attr['videoDescTypography']['lineHeight']['Mobile'] ) ? $attr['videoDescTypography']['lineHeight']['Mobile'] : '20' ) . ( isset( $attr['videoDescTypography']['lineHeight']['unit'] ) ? $attr['videoDescTypography']['lineHeight']['unit'] : 'px' ) . '!important' ) );
-		}
-		if ( isset( $attr['videoDescTypography']['letterSpacing']['Mobile'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' . '> .premium-video-box__desc_text' );
-			$css->add_property( 'letter-spacing', ( ( isset( $attr['videoDescTypography']['letterSpacing']['Mobile'] ) ? $attr['videoDescTypography']['letterSpacing']['Mobile'] : '0' ) . ( isset( $attr['videoDescTypography']['letterSpacing']['unit'] ) ? $attr['videoDescTypography']['letterSpacing']['unit'] : 'px' ) . '!important' ) );
-		}
-		if ( isset( $attr['descPadding']['Mobile']['top'] ) && isset( $attr['descPadding']['unit'] ) ) {
+		if ( isset( $attr['descPadding'] ) ) {
+			$desc_padding = $attr['descPadding'];
 			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' );
-			$css->add_property( 'padding-top', ( $attr['descPadding']['Mobile']['top'] . ( isset( $attr['descPadding']['unit'] ) ? $attr['descPadding']['unit'] : 'px' ) . '!important' ) );
-		}
-		if ( isset( $attr['descPadding']['Mobile']['right'] ) && isset( $attr['descPadding']['unit'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' );
-			$css->add_property( 'padding-right', ( $attr['descPadding']['Mobile']['right'] . ( isset( $attr['descPadding']['unit'] ) ? $attr['descPadding']['unit'] : 'px' ) . '!important' ) );
-		}
-		if ( isset( $attr['descPadding']['Mobile']['bottom'] ) && isset( $attr['descPadding']['unit'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' );
-			$css->add_property( 'padding-bottom', ( $attr['descPadding']['Mobile']['bottom'] . ( isset( $attr['descPadding']['unit'] ) ? $attr['descPadding']['unit'] : 'px' ) . '!important' ) );
-		}
-		if ( isset( $attr['descPadding']['Mobile']['left'] ) && isset( $attr['descPadding']['unit'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-video-box__desc' );
-			$css->add_property( 'padding-left', ( $attr['descPadding']['Mobile']['left'] . ( isset( $attr['descPadding']['unit'] ) ? $attr['descPadding']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'padding', $css->render_spacing( $desc_padding['Mobile'], $desc_padding['unit'] ) );
 		}
 
 		$css->stop_media_query();
@@ -6263,9 +6041,9 @@ class PBG_Blocks_Helper {
 
 		if (isset($attr['triggerIconSize']['Desktop'])) {
 			$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container'  . ' > .premium-modal-trigger-btn i');
-			$css->add_property('font-size', ((isset($attr['triggerIconSize']['Desktop']) ? $attr['triggerIconSize']['Desktop'] : '20') . (isset($attr['triggerIconSize']['unit']) ? $attr['triggerIconSize']['unit'] : 'px') . '!important'));
-			$css->add_property('width', ((isset($attr['triggerIconSize']['Desktop']) ? $attr['triggerIconSize']['Desktop'] : '20') . (isset($attr['triggerIconSize']['unit']) ? $attr['triggerIconSize']['unit'] : 'px') . '!important'));
-			$css->add_property('height', ((isset($attr['triggerIconSize']['Desktop']) ? $attr['triggerIconSize']['Desktop'] : '20') . (isset($attr['triggerIconSize']['unit']) ? $attr['triggerIconSize']['unit'] : 'px') . '!important'));
+			$css->add_property( 'font-size', $css->render_range($attr['triggerIconSize'],'Desktop') );
+			$css->add_property( 'width', $css->render_range($attr['triggerIconSize'],'Desktop') );
+			$css->add_property( 'height', $css->render_range($attr['triggerIconSize'],'Desktop') );
 		}
 
 		if (isset($attr['triggerBorderH'])) {
@@ -6279,34 +6057,34 @@ class PBG_Blocks_Helper {
 		// style For Icon /Image/Lottie in Header
 		if (isset($attr['iconSize']['Desktop'])) {
 			$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header h3 i' );
-			$css->add_property('font-size', ((isset($attr['iconSize']['Desktop']) ? $attr['iconSize']['Desktop'] : '20') . (isset($attr['iconSize']['unit']) ? $attr['iconSize']['unit'] : 'px') . '!important'));
-			$css->add_property('width', ((isset($attr['iconSize']['Desktop']) ? $attr['iconSize']['Desktop'] : '20') . (isset($attr['iconSize']['unit']) ? $attr['iconSize']['unit'] : 'px') . '!important'));
-			$css->add_property('height', ((isset($attr['iconSize']['Desktop']) ? $attr['iconSize']['Desktop'] : '20') . (isset($attr['iconSize']['unit']) ? $attr['iconSize']['unit'] : 'px') . '!important'));
+			$css->add_property( 'font-size', $css->render_range($attr['iconSize'],'Desktop') );
+			$css->add_property( 'width', $css->render_range($attr['iconSize'],'Desktop') );
+			$css->add_property( 'height', $css->render_range($attr['iconSize'],'Desktop') );
 			
 			$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header h3 img' );
-			$css->add_property('width', ((isset($attr['iconSize']['Desktop']) ? $attr['iconSize']['Desktop'] : '20') . (isset($attr['iconSize']['unit']) ? $attr['iconSize']['unit'] : 'px') . '!important'));
-			$css->add_property('height', ((isset($attr['iconSize']['Desktop']) ? $attr['iconSize']['Desktop'] : '20') . (isset($attr['iconSize']['unit']) ? $attr['iconSize']['unit'] : 'px') . '!important'));
-			
+			$css->add_property( 'width', $css->render_range($attr['iconSize'],'Desktop') );
+			$css->add_property( 'height', $css->render_range($attr['iconSize'],'Desktop') );
+
 			$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header h3 .premium-lottie-animation' );
-			$css->add_property('width', ((isset($attr['iconSize']['Desktop']) ? $attr['iconSize']['Desktop'] : '20') . (isset($attr['iconSize']['unit']) ? $attr['iconSize']['unit'] : 'px') . '!important'));
-			$css->add_property('height', ((isset($attr['iconSize']['Desktop']) ? $attr['iconSize']['Desktop'] : '20') . (isset($attr['iconSize']['unit']) ? $attr['iconSize']['unit'] : 'px') . '!important'));
+			$css->add_property( 'width', $css->render_range($attr['iconSize'],'Desktop') );
+			$css->add_property( 'height', $css->render_range($attr['iconSize'],'Desktop') );
 		}
 
 		// Trigger Style for Image/Lottie
 		if (isset($attr['imageWidth']['Desktop'])){
 			$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container img' );
-			$css->add_property('width', ((isset($attr['imageWidth']['Desktop']) ? $attr['imageWidth']['Desktop'] : '20') . (isset($attr['imageWidth']['unit']) ? $attr['imageWidth']['unit'] : 'px') . '!important'));
-			$css->add_property('height', ((isset($attr['imageWidth']['Desktop']) ? $attr['imageWidth']['Desktop'] : '20') . (isset($attr['imageWidth']['unit']) ? $attr['imageWidth']['unit'] : 'px') . '!important'));
-
+			$css->add_property( 'width', $css->render_range($attr['imageWidth'],'Desktop') );
+			$css->add_property( 'height', $css->render_range($attr['imageWidth'],'Desktop') );
+			
 			$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container ' . '> .premium-lottie-animation' );
-			$css->add_property('width', ((isset($attr['imageWidth']['Desktop']) ? $attr['imageWidth']['Desktop'] : '20') . (isset($attr['imageWidth']['unit']) ? $attr['imageWidth']['unit'] : 'px') . '!important'));
-			$css->add_property('height', ((isset($attr['imageWidth']['Desktop']) ? $attr['imageWidth']['Desktop'] : '20') . (isset($attr['imageWidth']['unit']) ? $attr['imageWidth']['unit'] : 'px') . '!important'));
+			$css->add_property( 'width', $css->render_range($attr['imageWidth'],'Desktop') );
+			$css->add_property( 'height', $css->render_range($attr['imageWidth'],'Desktop') );
 		}
 
 		// Style For Button Trigger
 		if (isset($attr['triggerTypography'])) {
 			$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' . ' > button' );
-			$css->add_property('font-size', ((isset($attr['triggerTypography']['fontSize']['Desktop']) ? $attr['triggerTypography']['fontSize']['Desktop'] : '20') . (isset($attr['triggerTypography']['fontSize']['unit']) ? $attr['triggerTypography']['fontSize']['unit'] : 'px') . '!important'));
+			$css->add_property( 'font-size', $css->render_range($attr['triggerTypography'],'Desktop') );
 
 			$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' . ' > span' );
 			$css->render_typography($attr['triggerTypography'], 'Desktop');
@@ -6395,12 +6173,12 @@ class PBG_Blocks_Helper {
 
 		if (isset($attr['upperIconWidth'])) {
 			$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header' . '> .premium-modal-box-close-button-container button' );
-			$css->add_property('font-size', ((isset($attr['upperIconWidth']['Desktop']) ? $attr['upperIconWidth']['Desktop'] : '20') . (isset($attr['upperIconWidth']['unit']) ? $attr['upperIconWidth']['unit'] : 'px') . '!important'));
+			$css->add_property( 'font-size', $css->render_range($attr['upperIconWidth'],'Desktop') );
 		}
 
 		// Style For font Size in  lower Close Button
 		if (isset($attr['lowerTypography'])) {
-				$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-footer  button' );
+			$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-footer  button' );
 			$css->render_typography($attr['lowerTypography'], 'Desktop');
 		}
 		if (isset($attr['lowerBorder'])) {
@@ -6418,17 +6196,17 @@ class PBG_Blocks_Helper {
 		}
 		if (isset($attr['lowerIconWidth'])) {
 			$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-footer  button' );
-			$css->add_property('width', ((isset($attr['lowerIconWidth']['Desktop']) ? $attr['lowerIconWidth']['Desktop'] : '20') . (isset($attr['lowerIconWidth']['unit']) ? $attr['lowerIconWidth']['unit'] : 'px') . '!important'));
+			$css->add_property( 'width', $css->render_range($attr['lowerIconWidth'],'Desktop') );
 		}
 
 		// Width & Height for Modal
 		if (isset($attr['modalWidth'])) {
 			$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
-			$css->add_property('width', ((isset($attr['modalWidth']['Desktop']) ? $attr['modalWidth']['Desktop'] : '20') . (isset($attr['modalWidth']['unit']) ? $attr['modalWidth']['unit'] : 'px') . '!important'));
+			$css->add_property( 'width', $css->render_range($attr['modalWidth'],'Desktop') );
 		}
 		if (isset($attr['modalHeight'])) {
 			$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
-			$css->add_property('max-height', ((isset($attr['modalHeight']['Desktop']) ? $attr['modalHeight']['Desktop'] : '20') . (isset($attr['modalHeight']['unit']) ? $attr['modalHeight']['unit'] : 'px') . '!important'));
+			$css->add_property( 'max-height', $css->render_range($attr['modalHeight'],'Desktop') );
 		}
 		if (isset($attr['modalMargin'])) {
 			$modal_margin = $attr['modalMargin'];
@@ -6463,9 +6241,9 @@ class PBG_Blocks_Helper {
 
 		if (isset($attr['triggerIconSize']['Tablet'])) {
 			$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container'  . ' > .premium-modal-trigger-btn i');
-			$css->add_property('font-size', ((isset($attr['triggerIconSize']['Tablet']) ? $attr['triggerIconSize']['Tablet'] : '20') . (isset($attr['triggerIconSize']['unit']) ? $attr['triggerIconSize']['unit'] : 'px') . '!important'));
-			$css->add_property('width', ((isset($attr['triggerIconSize']['Tablet']) ? $attr['triggerIconSize']['Tablet'] : '20') . (isset($attr['triggerIconSize']['unit']) ? $attr['triggerIconSize']['unit'] : 'px') . '!important'));
-			$css->add_property('height', ((isset($attr['triggerIconSize']['Tablet']) ? $attr['triggerIconSize']['Tablet'] : '20') . (isset($attr['triggerIconSize']['unit']) ? $attr['triggerIconSize']['unit'] : 'px') . '!important'));
+			$css->add_property( 'font-size', $css->render_range($attr['triggerIconSize'],'Tablet') );
+			$css->add_property( 'width', $css->render_range($attr['triggerIconSize'],'Tablet') );
+			$css->add_property( 'height', $css->render_range($attr['triggerIconSize'],'Tablet') );
 		}
 
 		if (isset($attr['triggerBorderH'])) {
@@ -6479,34 +6257,34 @@ class PBG_Blocks_Helper {
 		// style For Icon /Image/Lottie in Header
 		if (isset($attr['iconSize']['Tablet'])) {
 			$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header h3 i' );
-			$css->add_property('font-size', ((isset($attr['iconSize']['Tablet']) ? $attr['iconSize']['Tablet'] : '20') . (isset($attr['iconSize']['unit']) ? $attr['iconSize']['unit'] : 'px') . '!important'));
-			$css->add_property('width', ((isset($attr['iconSize']['Tablet']) ? $attr['iconSize']['Tablet'] : '20') . (isset($attr['iconSize']['unit']) ? $attr['iconSize']['unit'] : 'px') . '!important'));
-			$css->add_property('height', ((isset($attr['iconSize']['Tablet']) ? $attr['iconSize']['Tablet'] : '20') . (isset($attr['iconSize']['unit']) ? $attr['iconSize']['unit'] : 'px') . '!important'));
+			$css->add_property( 'font-size', $css->render_range($attr['iconSize'],'Tablet') );
+			$css->add_property( 'width', $css->render_range($attr['iconSize'],'Tablet') );
+			$css->add_property( 'height', $css->render_range($attr['iconSize'],'Tablet') );
 			
 			$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header h3 img' );
-			$css->add_property('width', ((isset($attr['iconSize']['Tablet']) ? $attr['iconSize']['Tablet'] : '20') . (isset($attr['iconSize']['unit']) ? $attr['iconSize']['unit'] : 'px') . '!important'));
-			$css->add_property('height', ((isset($attr['iconSize']['Tablet']) ? $attr['iconSize']['Tablet'] : '20') . (isset($attr['iconSize']['unit']) ? $attr['iconSize']['unit'] : 'px') . '!important'));
-			
+			$css->add_property( 'width', $css->render_range($attr['iconSize'],'Tablet') );
+			$css->add_property( 'height', $css->render_range($attr['iconSize'],'Tablet') );
+
 			$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header h3 .premium-lottie-animation' );
-			$css->add_property('width', ((isset($attr['iconSize']['Tablet']) ? $attr['iconSize']['Tablet'] : '20') . (isset($attr['iconSize']['unit']) ? $attr['iconSize']['unit'] : 'px') . '!important'));
-			$css->add_property('height', ((isset($attr['iconSize']['Tablet']) ? $attr['iconSize']['Tablet'] : '20') . (isset($attr['iconSize']['unit']) ? $attr['iconSize']['unit'] : 'px') . '!important'));
+			$css->add_property( 'width', $css->render_range($attr['iconSize'],'Tablet') );
+			$css->add_property( 'height', $css->render_range($attr['iconSize'],'Tablet') );
 		}
 
 		// Trigger Style for Image/Lottie
 		if (isset($attr['imageWidth']['Tablet'])){
 			$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container img' );
-			$css->add_property('width', ((isset($attr['imageWidth']['Tablet']) ? $attr['imageWidth']['Tablet'] : '20') . (isset($attr['imageWidth']['unit']) ? $attr['imageWidth']['unit'] : 'px') . '!important'));
-			$css->add_property('height', ((isset($attr['imageWidth']['Tablet']) ? $attr['imageWidth']['Tablet'] : '20') . (isset($attr['imageWidth']['unit']) ? $attr['imageWidth']['unit'] : 'px') . '!important'));
-
+			$css->add_property( 'width', $css->render_range($attr['imageWidth'],'Tablet') );
+			$css->add_property( 'height', $css->render_range($attr['imageWidth'],'Tablet') );
+			
 			$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container ' . '> .premium-lottie-animation' );
-			$css->add_property('width', ((isset($attr['imageWidth']['Tablet']) ? $attr['imageWidth']['Tablet'] : '20') . (isset($attr['imageWidth']['unit']) ? $attr['imageWidth']['unit'] : 'px') . '!important'));
-			$css->add_property('height', ((isset($attr['imageWidth']['Tablet']) ? $attr['imageWidth']['Tablet'] : '20') . (isset($attr['imageWidth']['unit']) ? $attr['imageWidth']['unit'] : 'px') . '!important'));
+			$css->add_property( 'width', $css->render_range($attr['imageWidth'],'Tablet') );
+			$css->add_property( 'height', $css->render_range($attr['imageWidth'],'Tablet') );
 		}
 
 		// Style For Button Trigger
 		if (isset($attr['triggerTypography'])) {
 			$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' . ' > button' );
-			$css->add_property('font-size', ((isset($attr['triggerTypography']['fontSize']['Tablet']) ? $attr['triggerTypography']['fontSize']['Tablet'] : '20') . (isset($attr['triggerTypography']['fontSize']['unit']) ? $attr['triggerTypography']['fontSize']['unit'] : 'px') . '!important'));
+			$css->add_property( 'font-size', $css->render_range($attr['triggerTypography'],'Tablet') );
 
 			$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' . ' > span' );
 			$css->render_typography($attr['triggerTypography'], 'Tablet');
@@ -6595,7 +6373,7 @@ class PBG_Blocks_Helper {
 
 		if (isset($attr['upperIconWidth'])) {
 			$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header' . '> .premium-modal-box-close-button-container button' );
-			$css->add_property('font-size', ((isset($attr['upperIconWidth']['Tablet']) ? $attr['upperIconWidth']['Tablet'] : '20') . (isset($attr['upperIconWidth']['unit']) ? $attr['upperIconWidth']['unit'] : 'px') . '!important'));
+			$css->add_property( 'font-size', $css->render_range($attr['upperIconWidth'],'Tablet') );
 		}
 
 		// Style For font Size in  lower Close Button
@@ -6618,17 +6396,17 @@ class PBG_Blocks_Helper {
 		}
 		if (isset($attr['lowerIconWidth'])) {
 			$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-footer  button' );
-			$css->add_property('width', ((isset($attr['lowerIconWidth']['Tablet']) ? $attr['lowerIconWidth']['Tablet'] : '20') . (isset($attr['lowerIconWidth']['unit']) ? $attr['lowerIconWidth']['unit'] : 'px') . '!important'));
+			$css->add_property( 'width', $css->render_range($attr['lowerIconWidth'],'Tablet') );
 		}
 
 		// Width & Height for Modal
 		if (isset($attr['modalWidth'])) {
 			$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
-			$css->add_property('width', ((isset($attr['modalWidth']['Tablet']) ? $attr['modalWidth']['Tablet'] : '20') . (isset($attr['modalWidth']['unit']) ? $attr['modalWidth']['unit'] : 'px') . '!important'));
+			$css->add_property( 'width', $css->render_range($attr['modalWidth'],'Tablet') );
 		}
 		if (isset($attr['modalHeight'])) {
 			$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
-			$css->add_property('max-height', ((isset($attr['modalHeight']['Tablet']) ? $attr['modalHeight']['Tablet'] : '20') . (isset($attr['modalHeight']['unit']) ? $attr['modalHeight']['unit'] : 'px') . '!important'));
+			$css->add_property( 'max-height', $css->render_range($attr['modalHeight'],'Tablet') );
 		}
 		if (isset($attr['modalMargin'])) {
 			$modal_margin = $attr['modalMargin'];
@@ -6664,9 +6442,9 @@ class PBG_Blocks_Helper {
 
 		if (isset($attr['triggerIconSize']['Mobile'])) {
 			$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container'  . ' > .premium-modal-trigger-btn i');
-			$css->add_property('font-size', ((isset($attr['triggerIconSize']['Mobile']) ? $attr['triggerIconSize']['Mobile'] : '20') . (isset($attr['triggerIconSize']['unit']) ? $attr['triggerIconSize']['unit'] : 'px') . '!important'));
-			$css->add_property('width', ((isset($attr['triggerIconSize']['Mobile']) ? $attr['triggerIconSize']['Mobile'] : '20') . (isset($attr['triggerIconSize']['unit']) ? $attr['triggerIconSize']['unit'] : 'px') . '!important'));
-			$css->add_property('height', ((isset($attr['triggerIconSize']['Mobile']) ? $attr['triggerIconSize']['Mobile'] : '20') . (isset($attr['triggerIconSize']['unit']) ? $attr['triggerIconSize']['unit'] : 'px') . '!important'));
+			$css->add_property( 'font-size', $css->render_range($attr['triggerIconSize'],'Mobile') );
+			$css->add_property( 'width', $css->render_range($attr['triggerIconSize'],'Mobile') );
+			$css->add_property( 'height', $css->render_range($attr['triggerIconSize'],'Mobile') );
 		}
 
 		if (isset($attr['triggerBorderH'])) {
@@ -6680,34 +6458,34 @@ class PBG_Blocks_Helper {
 		// style For Icon /Image/Lottie in Header
 		if (isset($attr['iconSize']['Mobile'])) {
 			$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header h3 i' );
-			$css->add_property('font-size', ((isset($attr['iconSize']['Mobile']) ? $attr['iconSize']['Mobile'] : '20') . (isset($attr['iconSize']['unit']) ? $attr['iconSize']['unit'] : 'px') . '!important'));
-			$css->add_property('width', ((isset($attr['iconSize']['Mobile']) ? $attr['iconSize']['Mobile'] : '20') . (isset($attr['iconSize']['unit']) ? $attr['iconSize']['unit'] : 'px') . '!important'));
-			$css->add_property('height', ((isset($attr['iconSize']['Mobile']) ? $attr['iconSize']['Mobile'] : '20') . (isset($attr['iconSize']['unit']) ? $attr['iconSize']['unit'] : 'px') . '!important'));
+			$css->add_property( 'font-size', $css->render_range($attr['iconSize'],'Mobile') );
+			$css->add_property( 'width', $css->render_range($attr['iconSize'],'Mobile') );
+			$css->add_property( 'height', $css->render_range($attr['iconSize'],'Mobile') );
 			
 			$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header h3 img' );
-			$css->add_property('width', ((isset($attr['iconSize']['Mobile']) ? $attr['iconSize']['Mobile'] : '20') . (isset($attr['iconSize']['unit']) ? $attr['iconSize']['unit'] : 'px') . '!important'));
-			$css->add_property('height', ((isset($attr['iconSize']['Mobile']) ? $attr['iconSize']['Mobile'] : '20') . (isset($attr['iconSize']['unit']) ? $attr['iconSize']['unit'] : 'px') . '!important'));
-			
+			$css->add_property( 'width', $css->render_range($attr['iconSize'],'Mobile') );
+			$css->add_property( 'height', $css->render_range($attr['iconSize'],'Mobile') );
+
 			$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header h3 .premium-lottie-animation' );
-			$css->add_property('width', ((isset($attr['iconSize']['Mobile']) ? $attr['iconSize']['Mobile'] : '20') . (isset($attr['iconSize']['unit']) ? $attr['iconSize']['unit'] : 'px') . '!important'));
-			$css->add_property('height', ((isset($attr['iconSize']['Mobile']) ? $attr['iconSize']['Mobile'] : '20') . (isset($attr['iconSize']['unit']) ? $attr['iconSize']['unit'] : 'px') . '!important'));
+			$css->add_property( 'width', $css->render_range($attr['iconSize'],'Mobile') );
+			$css->add_property( 'height', $css->render_range($attr['iconSize'],'Mobile') );
 		}
 
 		// Trigger Style for Image/Lottie
 		if (isset($attr['imageWidth']['Mobile'])){
 			$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container img' );
-			$css->add_property('width', ((isset($attr['imageWidth']['Mobile']) ? $attr['imageWidth']['Mobile'] : '20') . (isset($attr['imageWidth']['unit']) ? $attr['imageWidth']['unit'] : 'px') . '!important'));
-			$css->add_property('height', ((isset($attr['imageWidth']['Mobile']) ? $attr['imageWidth']['Mobile'] : '20') . (isset($attr['imageWidth']['unit']) ? $attr['imageWidth']['unit'] : 'px') . '!important'));
-
+			$css->add_property( 'width', $css->render_range($attr['imageWidth'],'Mobile') );
+			$css->add_property( 'height', $css->render_range($attr['imageWidth'],'Mobile') );
+			
 			$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container ' . '> .premium-lottie-animation' );
-			$css->add_property('width', ((isset($attr['imageWidth']['Mobile']) ? $attr['imageWidth']['Mobile'] : '20') . (isset($attr['imageWidth']['unit']) ? $attr['imageWidth']['unit'] : 'px') . '!important'));
-			$css->add_property('height', ((isset($attr['imageWidth']['Mobile']) ? $attr['imageWidth']['Mobile'] : '20') . (isset($attr['imageWidth']['unit']) ? $attr['imageWidth']['unit'] : 'px') . '!important'));
+			$css->add_property( 'width', $css->render_range($attr['imageWidth'],'Mobile') );
+			$css->add_property( 'height', $css->render_range($attr['imageWidth'],'Mobile') );
 		}
 
 		// Style For Button Trigger
 		if (isset($attr['triggerTypography'])) {
 			$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' . ' > button' );
-			$css->add_property('font-size', ((isset($attr['triggerTypography']['fontSize']['Mobile']) ? $attr['triggerTypography']['fontSize']['Mobile'] : '20') . (isset($attr['triggerTypography']['fontSize']['unit']) ? $attr['triggerTypography']['fontSize']['unit'] : 'px') . '!important'));
+			$css->add_property( 'font-size', $css->render_range($attr['triggerTypography'],'Mobile') );
 
 			$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' . ' > span' );
 			$css->render_typography($attr['triggerTypography'], 'Mobile');
@@ -6796,7 +6574,7 @@ class PBG_Blocks_Helper {
 
 		if (isset($attr['upperIconWidth'])) {
 			$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header' . '> .premium-modal-box-close-button-container button' );
-			$css->add_property('font-size', ((isset($attr['upperIconWidth']['Mobile']) ? $attr['upperIconWidth']['Mobile'] : '20') . (isset($attr['upperIconWidth']['unit']) ? $attr['upperIconWidth']['unit'] : 'px') . '!important'));
+			$css->add_property( 'font-size', $css->render_range($attr['upperIconWidth'],'Mobile') );
 		}
 
 		// Style For font Size in  lower Close Button
@@ -6819,17 +6597,17 @@ class PBG_Blocks_Helper {
 		}
 		if (isset($attr['lowerIconWidth'])) {
 			$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-footer  button' );
-			$css->add_property('width', ((isset($attr['lowerIconWidth']['Mobile']) ? $attr['lowerIconWidth']['Mobile'] : '20') . (isset($attr['lowerIconWidth']['unit']) ? $attr['lowerIconWidth']['unit'] : 'px') . '!important'));
+			$css->add_property( 'width', $css->render_range($attr['lowerIconWidth'],'Mobile') );
 		}
 
 		// Width & Height for Modal
 		if (isset($attr['modalWidth'])) {
 			$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
-			$css->add_property('width', ((isset($attr['modalWidth']['Mobile']) ? $attr['modalWidth']['Mobile'] : '20') . (isset($attr['modalWidth']['unit']) ? $attr['modalWidth']['unit'] : 'px') . '!important'));
+			$css->add_property( 'width', $css->render_range($attr['modalWidth'],'Mobile') );
 		}
 		if (isset($attr['modalHeight'])) {
 			$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
-			$css->add_property('max-height', ((isset($attr['modalHeight']['Mobile']) ? $attr['modalHeight']['Mobile'] : '20') . (isset($attr['modalHeight']['unit']) ? $attr['modalHeight']['unit'] : 'px') . '!important'));
+			$css->add_property( 'max-height', $css->render_range($attr['modalHeight'],'Mobile') );
 		}
 		if (isset($attr['modalMargin'])) {
 			$modal_margin = $attr['modalMargin'];
@@ -8088,13 +7866,17 @@ class PBG_Blocks_Helper {
 		}
 
 		//style for image
+		if ( isset( $attr['imageBorder']['Desktop'] ) ) {
+			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap' . ' > img' );
+			$css->add_property( 'border-radius', $css->render_range($attr['imageBorder'],'Desktop') );
+		}
 		if ( isset( $attr['imgHeight']['Desktop'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap' . ' > img' );
-			$css->add_property( 'height', ( $attr['imgHeight']['Desktop'] . ( isset( $attr['imgHeight']['unit'] ) ? $attr['imgHeight']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'height', $css->render_range($attr['imgHeight'],'Desktop') );
 		}
 		if ( isset( $attr['imgWidth']['Desktop'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap' . ' > img' );
-			$css->add_property( 'width', ( $attr['imgWidth']['Desktop'] . ( isset( $attr['imgWidth']['unit'] ) ? $attr['imgWidth']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'width', $css->render_range($attr['imgWidth'],'Desktop') );
 		}
 		
 
@@ -8139,8 +7921,8 @@ class PBG_Blocks_Helper {
 		// Style for Social Icon Effect2.
 		if ( isset( $attr['socialIconSize']['Desktop'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' . ' > .premium-social-media-icon' );
-			$css->add_property( 'width', ( $attr['socialIconSize']['Desktop'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
-			$css->add_property( 'height', ( $attr['socialIconSize']['Desktop'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'width', $css->render_range($attr['socialIconSize'],'Desktop') );
+			$css->add_property( 'height', $css->render_range($attr['socialIconSize'],'Desktop') );
 		}
 		if ( isset( $attr['socialIconPadding'] ) ) {
 			$socialIcon_padding = $attr['socialIconPadding'];
@@ -8166,8 +7948,8 @@ class PBG_Blocks_Helper {
 		// Style for Social Icon Effect1.
 		if ( isset( $attr['socialIconSize']['Desktop'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' . ' > .premium-social-media-icon' );
-			$css->add_property( 'width', ( $attr['socialIconSize']['Desktop'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
-			$css->add_property( 'height', ( $attr['socialIconSize']['Desktop'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'width', $css->render_range($attr['socialIconSize'],'Desktop') );
+			$css->add_property( 'height', $css->render_range($attr['socialIconSize'],'Desktop') );
 		}
 		if ( isset( $attr['socialIconPadding'] ) ) {
 			$socialIcon_padding = $attr['socialIconPadding'];
@@ -8206,13 +7988,17 @@ class PBG_Blocks_Helper {
 		}
 
 		//style for image
+		if ( isset( $attr['imageBorder']['Tablet'] ) ) {
+			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap' . ' > img' );
+			$css->add_property( 'border-radius', $css->render_range($attr['imageBorder'],'Tablet') );
+		}
 		if ( isset( $attr['imgHeight']['Tablet'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap' . ' > img' );
-			$css->add_property( 'height', ( $attr['imgHeight']['Tablet'] . ( isset( $attr['imgHeight']['unit'] ) ? $attr['imgHeight']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'height', $css->render_range($attr['imgHeight'],'Tablet') );
 		}
 		if ( isset( $attr['imgWidth']['Tablet'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap' . ' > img' );
-			$css->add_property( 'width', ( $attr['imgWidth']['Tablet'] . ( isset( $attr['imgWidth']['unit'] ) ? $attr['imgWidth']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'width', $css->render_range($attr['imgWidth'],'Tablet') );
 		}
 
 		// Style for Name.
@@ -8256,8 +8042,8 @@ class PBG_Blocks_Helper {
 		// Style for Social Icon Effect2.
 		if ( isset( $attr['socialIconSize']['Tablet'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' . ' > .premium-social-media-icon' );
-			$css->add_property( 'width', ( $attr['socialIconSize']['Tablet'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
-			$css->add_property( 'height', ( $attr['socialIconSize']['Tablet'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'width', $css->render_range($attr['socialIconSize'],'Tablet') );
+			$css->add_property( 'height', $css->render_range($attr['socialIconSize'],'Tablet') );
 		}
 		if ( isset( $attr['socialIconPadding'] ) ) {
 			$socialIcon_padding = $attr['socialIconPadding'];
@@ -8283,8 +8069,8 @@ class PBG_Blocks_Helper {
 		// Style for Social Icon Effect1.
 		if ( isset( $attr['socialIconSize']['Tablet'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' . ' > .premium-social-media-icon' );
-			$css->add_property( 'width', ( $attr['socialIconSize']['Tablet'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
-			$css->add_property( 'height', ( $attr['socialIconSize']['Tablet'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'width', $css->render_range($attr['socialIconSize'],'Tablet') );
+			$css->add_property( 'height', $css->render_range($attr['socialIconSize'],'Tablet') );
 		}
 		if ( isset( $attr['socialIconPadding'] ) ) {
 			$socialIcon_padding = $attr['socialIconPadding'];
@@ -8325,13 +8111,17 @@ class PBG_Blocks_Helper {
 		}
 
 		//style for image
+		if ( isset( $attr['imageBorder']['Mobile'] ) ) {
+			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap' . ' > img' );
+			$css->add_property( 'border-radius', $css->render_range($attr['imageBorder'],'Mobile') );
+		}
 		if ( isset( $attr['imgHeight']['Mobile'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap' . ' > img' );
-			$css->add_property( 'height', ( $attr['imgHeight']['Mobile'] . ( isset( $attr['imgHeight']['unit'] ) ? $attr['imgHeight']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'height', $css->render_range($attr['imgHeight'],'Mobile') );
 		}
 		if ( isset( $attr['imgWidth']['Mobile'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap' . ' > img' );
-			$css->add_property( 'width', ( $attr['imgWidth']['Mobile'] . ( isset( $attr['imgWidth']['unit'] ) ? $attr['imgWidth']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'width', $css->render_range($attr['imgWidth'],'Mobile') );
 		}
 
 		// Style for Name.
@@ -8375,8 +8165,8 @@ class PBG_Blocks_Helper {
 		// Style for Social Icon Effect2.
 		if ( isset( $attr['socialIconSize']['Mobile'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__socialEffect2' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content ' . ' > .premium-social-media-icon' );
-			$css->add_property( 'width', ( $attr['socialIconSize']['Mobile'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
-			$css->add_property( 'height', ( $attr['socialIconSize']['Mobile'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'width', $css->render_range($attr['socialIconSize'],'Mobile') );
+			$css->add_property( 'height', $css->render_range($attr['socialIconSize'],'Mobile') );
 		}
 		if ( isset( $attr['socialIconPadding'] ) ) {
 			$socialIcon_padding = $attr['socialIconPadding'];
@@ -8402,8 +8192,8 @@ class PBG_Blocks_Helper {
 		// Style for Social Icon Effect1.
 		if ( isset( $attr['socialIconSize']['Mobile'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__info' . ' > div' . ' > .premium-person__social-List' . ' > li' . ' > .premium-person__socialIcon__link_content' . ' > .premium-social-media-icon' );
-			$css->add_property( 'width', ( $attr['socialIconSize']['Mobile'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
-			$css->add_property( 'height', ( $attr['socialIconSize']['Mobile'] . ( isset( $attr['socialIconSize']['unit'] ) ? $attr['socialIconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'width', $css->render_range($attr['socialIconSize'],'Mobile') );
+			$css->add_property( 'height', $css->render_range($attr['socialIconSize'],'Mobile') );
 		}
 		if ( isset( $attr['socialIconPadding'] ) ) {
 			$socialIcon_padding = $attr['socialIconPadding'];
