@@ -749,8 +749,8 @@ class edit extends Component {
                                                     onColorChange={(newValue) =>
                                                         saveButtonStyle({
                                                             btnColor:
-                                                                newValue ||
-                                                                "#000",
+                                                                newValue
+
                                                         })
                                                     }
                                                 />
@@ -786,8 +786,8 @@ class edit extends Component {
                                                     onColorChange={(newValue) =>
                                                         saveButtonStyle({
                                                             btnHoverColor:
-                                                                newValue ||
-                                                                "#000",
+                                                                newValue
+
                                                         })
                                                     }
                                                 />
@@ -1062,18 +1062,18 @@ class edit extends Component {
                                     )}
                                 {(iconType === "dash" ||
                                     1 == FontAwesomeEnabled) && (
-                                    <i
-                                        className={`${selectedIcon} premium-icon-box__icon premium-icon__${hoverEffect}`}
-                                        style={{
-                                            color: iconColor,
-                                            backgroundColor: iconBackColor,
-                                            fontSize:
-                                                (iconSize[
-                                                    this.props.deviceType
-                                                ] || 40) + iconSize.unit,
-                                        }}
-                                    />
-                                )}
+                                        <i
+                                            className={`${selectedIcon} premium-icon-box__icon premium-icon__${hoverEffect}`}
+                                            style={{
+                                                color: iconColor,
+                                                backgroundColor: iconBackColor,
+                                                fontSize:
+                                                    (iconSize[
+                                                        this.props.deviceType
+                                                    ] || 40) + iconSize.unit,
+                                            }}
+                                        />
+                                    )}
                             </Fragment>
                         )}
                         {"image" === iconImage && iconImgUrl && (
@@ -1119,11 +1119,9 @@ class edit extends Component {
                                         this.props.deviceType
                                     ),
                                     color: titleStyles[0].titleColor,
-                                    textShadow: `${
-                                        titleShadow.horizontal || 0
-                                    }px ${titleShadow.vertical || 0}px ${
-                                        titleShadow.blur || 0
-                                    }px ${titleShadow.color}`,
+                                    textShadow: `${titleShadow.horizontal || 0
+                                        }px ${titleShadow.vertical || 0}px ${titleShadow.blur || 0
+                                        }px ${titleShadow.color}`,
                                 }}
                                 keepPlaceholderOnFocus
                             />
@@ -1185,13 +1183,10 @@ class edit extends Component {
                                     ),
                                     color: btnStyles[0].btnColor,
                                     backgroundColor: btnStyles[0].btnBack,
-                                    boxShadow: `${
-                                        btnShadow.horizontal || 0
-                                    }px ${btnShadow.vertical || 0}px ${
-                                        btnShadow.blur || 0
-                                    }px ${btnShadow.color} ${
-                                        btnShadow.position
-                                    }`,
+                                    boxShadow: `${btnShadow.horizontal || 0
+                                        }px ${btnShadow.vertical || 0}px ${btnShadow.blur || 0
+                                        }px ${btnShadow.color} ${btnShadow.position
+                                        }`,
                                 }}
                                 keepPlaceholderOnFocus
                             />

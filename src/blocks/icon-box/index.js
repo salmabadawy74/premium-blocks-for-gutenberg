@@ -12,11 +12,16 @@ const { registerBlockType } = wp.blocks;
 
 
 registerBlockType("premium/icon-box", {
-    title: __("Icon Box"),
+    title: __("Icon Box", 'premium-blocks-for-gutenberg'),
     description: __('Add informative info boxes along with Icon, Description, and CTA using Premium Icon Box Block.', 'premium-block-for-gutenberg'),
     icon: PBG_Block_Icons.icon_box,
     category: "premium-blocks",
     attributes: attributes,
+    keywords: [
+        __("Icon", 'premium-blocks-for-gutenberg'),
+        __("Font Awesome", 'premium-blocks-for-gutenberg'),
+        __("Box", 'premium-blocks-for-gutenberg')
+    ],
     supports: {
         inserter: iconBox
     },

@@ -36,7 +36,7 @@ const attributes = {
         type: "string",
         default: "top"
     },
-    block_id: {
+    blockId: {
         type: "string"
     },
     hideDesktop: {
@@ -76,7 +76,6 @@ const attributes = {
             unit: "px",
         },
     },
-
     margin: {
         type: "object",
         default: {
@@ -101,7 +100,6 @@ const attributes = {
             unit: "px",
         },
     },
-
     boxShadow: {
         type: "object",
         default: {
@@ -166,16 +164,16 @@ const attributes = {
             backgroundColor: "",
             backgroundImageID: "",
             backgroundImageURL: "",
-            backgroundPosition: "",
-            backgroundRepeat: "",
-            backgroundSize: "",
+            backgroundPosition: "center center",
+            backgroundRepeat: "repeat",
+            backgroundSize: "auto",
             fixed: false,
-            gradientLocationOne: "",
+            gradientLocationOne: "0",
             gradientColorTwo: "",
-            gradientLocationTwo: "",
-            gradientAngle: "",
-            gradientPosition: "",
-            gradientType: "",
+            gradientLocationTwo: "100",
+            gradientAngle: "180",
+            gradientPosition: "center center",
+            gradientType: "linear"
         },
     },
 }

@@ -489,6 +489,51 @@ const PBG_Block_Icons = {
     class: "cls-1",
     d: "M13.5,14.22h-6a.75.75,0,1,1,0-1.5h6a.75.75,0,0,1,0,1.5Z",
     transform: "translate(-1.75 -1.72)"
+  }))),
+  section: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    id: "Premium_Blocks",
+    "data-name": "Premium Blocks",
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "21.5",
+    height: "21.5",
+    viewBox: "0 0 21.5 21.5"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("defs", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, `.cls-1{fill:#1a1a1a;}`)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("title", null, "premium-section-block"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("g", {
+    id: "Section"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M2.5,10.25a.76.76,0,0,1-.75-.75V7A5.25,5.25,0,0,1,7,1.75H9.5a.75.75,0,0,1,0,1.5H7A3.75,3.75,0,0,0,3.25,7V9.5A.76.76,0,0,1,2.5,10.25Z",
+    transform: "translate(-1.75 -1.75)"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M22.5,10.25a.76.76,0,0,1-.75-.75V7A3.75,3.75,0,0,0,18,3.25H15.5a.75.75,0,0,1,0-1.5H18A5.26,5.26,0,0,1,23.25,7V9.5A.76.76,0,0,1,22.5,10.25Z",
+    transform: "translate(-1.75 -1.75)"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M18,23.25H16.5a.75.75,0,0,1,0-1.5H18A3.75,3.75,0,0,0,21.75,18V16.5a.75.75,0,0,1,1.5,0V18A5.26,5.26,0,0,1,18,23.25Z",
+    transform: "translate(-1.75 -1.75)"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M9.5,23.25H7A5.26,5.26,0,0,1,1.75,18V15.5a.75.75,0,0,1,1.5,0V18A3.75,3.75,0,0,0,7,21.75H9.5a.75.75,0,0,1,0,1.5Z",
+    transform: "translate(-1.75 -1.75)"
+  }))),
+  lottie: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    id: "Premium_Blocks",
+    "data-name": "Premium Blocks",
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "21.5",
+    height: "21.5",
+    viewBox: "0 0 21.5 21.5"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("defs", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, `.cls-1{fill:#1a1a1a;}`)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("title", null, "premium-lottie-animation-block"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("g", {
+    id: "Lottie_Animations",
+    "data-name": "Lottie Animations"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M15.5,1.75h-6c-5.43,0-7.75,2.32-7.75,7.75v6c0,5.43,2.32,7.75,7.75,7.75h6c5.43,0,7.75-2.32,7.75-7.75v-6C23.25,4.07,20.93,1.75,15.5,1.75ZM21.75,15.5c0,4.61-1.64,6.25-6.25,6.25h-6c-4.61,0-6.25-1.64-6.25-6.25v-6c0-4.61,1.64-6.25,6.25-6.25h6c4.61,0,6.25,1.64,6.25,6.25Z",
+    transform: "translate(-1.75 -1.75)"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M16.51,8.25c-2.66,0-3.64,1.89-4.43,3.41l-.51,1c-.84,1.61-1.47,2.59-3.08,2.59a.79.79,0,0,0-.54.22.77.77,0,0,0,0,1.08H8a.75.75,0,0,0,.53.22c2.66,0,3.64-1.89,4.43-3.41l.51-1c.84-1.61,1.47-2.59,3.08-2.59A.75.75,0,0,0,17,9.55.74.74,0,0,0,17.27,9a.76.76,0,0,0-.76-.76Z",
+    transform: "translate(-1.75 -1.75)"
   })))
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PBG_Block_Icons);
@@ -27469,9 +27514,9 @@ const attributes = {
   align: {
     type: "object",
     default: {
-      "Desktop": "center",
-      "Tablet": "center",
-      "Mobile": "center"
+      Desktop: "center",
+      Tablet: "center",
+      Mobile: "center"
     }
   },
   iconImage: {
@@ -27508,6 +27553,8 @@ const attributes = {
     type: "object",
     default: {
       Desktop: '40',
+      Tablet: '',
+      Mobile: '',
       unit: 'px'
     }
   },
@@ -27581,15 +27628,15 @@ const attributes = {
   },
   hideDesktop: {
     type: 'boolean',
-    default: ''
+    default: false
   },
   hideTablet: {
     type: 'boolean',
-    default: ''
+    default: false
   },
   hideMobile: {
     type: 'boolean',
-    default: ''
+    default: false
   },
   iconOpacity: {
     type: "number",
@@ -27614,13 +27661,10 @@ const attributes = {
   btnStyles: {
     type: 'array',
     default: [{
-      btnBorderWidth: 1,
-      btnBorderRadius: '',
       btnColor: '',
       btnHoverColor: '',
       btnBack: '',
-      btnHoverBack: '',
-      btnOpacity: 1
+      btnHoverBack: ''
     }]
   },
   containerMargin: {
@@ -27868,9 +27912,9 @@ const attributes = {
       'backgroundColor': '',
       'backgroundImageID': '',
       'backgroundImageURL': '',
-      'backgroundPosition': '',
-      'backgroundRepeat': '',
-      'backgroundSize': '',
+      'backgroundPosition': "center center",
+      'backgroundRepeat': "repeat",
+      'backgroundSize': "auto",
       'fixed': false,
       "gradientLocationOne": "0",
       "gradientColorTwo": "",
@@ -31580,7 +31624,7 @@ class edit extends Component {
       colorValue: btnStyles[0].btnColor,
       colorDefault: "",
       onColorChange: newValue => saveButtonStyle({
-        btnColor: newValue || "#000"
+        btnColor: newValue
       })
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_12__["default"], {
       label: __(`Background Color`),
@@ -31596,7 +31640,7 @@ class edit extends Component {
       colorValue: btnStyles[0].btnHoverColor,
       colorDefault: "",
       onColorChange: newValue => saveButtonStyle({
-        btnHoverColor: newValue || "#000"
+        btnHoverColor: newValue
       })
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_12__["default"], {
       label: __("Background Hover Color", "premium-blocks-for-gutenberg"),
@@ -31859,11 +31903,12 @@ const {
   registerBlockType
 } = wp.blocks;
 registerBlockType("premium/icon-box", {
-  title: __("Icon Box"),
+  title: __("Icon Box", 'premium-blocks-for-gutenberg'),
   description: __('Add informative info boxes along with Icon, Description, and CTA using Premium Icon Box Block.', 'premium-block-for-gutenberg'),
   icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__["default"].icon_box,
   category: "premium-blocks",
   attributes: _attributes__WEBPACK_IMPORTED_MODULE_4__["default"],
+  keywords: [__("Icon", 'premium-blocks-for-gutenberg'), __("Font Awesome", 'premium-blocks-for-gutenberg'), __("Box", 'premium-blocks-for-gutenberg')],
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.iconBox
   },
@@ -37152,15 +37197,12 @@ class edit extends Component {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../icons */ "./src/blocks/icons.js");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/blocks/lottie/edit.js");
-/* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./save */ "./src/blocks/lottie/save.js");
-/* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/lottie/deprecated.js");
-/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./attributes */ "./src/blocks/lottie/attributes.js");
-
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit */ "./src/blocks/lottie/edit.js");
+/* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/lottie/save.js");
+/* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/lottie/deprecated.js");
+/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./attributes */ "./src/blocks/lottie/attributes.js");
 
 
 
@@ -37174,19 +37216,19 @@ const {
 } = wp.blocks;
 
 registerBlockType("premium/lottie", {
-  title: __("Lottie Animation"),
-  icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_icons__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    icon: "lottie"
-  }),
+  title: __("Lottie Animation", 'premium-blocks-for-gutenberg'),
+  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_4__["default"].lottie,
   category: "premium-blocks",
-  attributes: _attributes__WEBPACK_IMPORTED_MODULE_6__["default"],
+  attributes: _attributes__WEBPACK_IMPORTED_MODULE_5__["default"],
   supports: {
-    inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_3__.lottie
+    inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_1__.lottie
   },
+  keywords: [__("svg", 'premium-blocks-for-gutenberg'), __("Animation", 'premium-blocks-for-gutenberg'), __("canvas", 'premium-blocks-for-gutenberg')],
+  description: __('Bring life to your Gutenberg web page using Premium Lottie Animation', 'premium-block-for-gutenberg'),
   example: {},
-  edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
-  save: _save__WEBPACK_IMPORTED_MODULE_4__["default"],
-  deprecated: _deprecated__WEBPACK_IMPORTED_MODULE_5__["default"]
+  edit: _edit__WEBPACK_IMPORTED_MODULE_0__["default"],
+  save: _save__WEBPACK_IMPORTED_MODULE_2__["default"],
+  deprecated: _deprecated__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 
 /***/ }),
@@ -50180,7 +50222,7 @@ const attributes = {
     type: "string",
     default: "top"
   },
-  block_id: {
+  blockId: {
     type: "string"
   },
   hideDesktop: {
@@ -50307,16 +50349,16 @@ const attributes = {
       backgroundColor: "",
       backgroundImageID: "",
       backgroundImageURL: "",
-      backgroundPosition: "",
-      backgroundRepeat: "",
-      backgroundSize: "",
+      backgroundPosition: "center center",
+      backgroundRepeat: "repeat",
+      backgroundSize: "auto",
       fixed: false,
-      gradientLocationOne: "",
+      gradientLocationOne: "0",
       gradientColorTwo: "",
-      gradientLocationTwo: "",
-      gradientAngle: "",
-      gradientPosition: "",
-      gradientType: ""
+      gradientLocationTwo: "100",
+      gradientAngle: "180",
+      gradientPosition: "center center",
+      gradientType: "linear"
     }
   }
 };
@@ -50533,7 +50575,317 @@ const new_Attributes = {
   }
 };
 const deprecated_Attributes = Object.assign(attributes, new_Attributes);
+const new_Attributes_0_1 = {
+  blockId: {
+    type: "string"
+  },
+  padding: {
+    type: "object",
+    default: {
+      Desktop: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      Tablet: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      Mobile: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      unit: "px"
+    }
+  },
+  margin: {
+    type: "object",
+    default: {
+      Desktop: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      Tablet: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      Mobile: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      unit: "px"
+    }
+  },
+  boxShadow: {
+    type: "object",
+    default: {
+      color: "undefined",
+      blur: "10",
+      horizontal: "0",
+      vertical: "0",
+      position: " "
+    }
+  },
+  border: {
+    type: "object",
+    default: {
+      borderType: "none",
+      borderColor: "",
+      borderWidth: {
+        Desktop: {
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
+        },
+        Tablet: {
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
+        },
+        Mobile: {
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
+        }
+      },
+      borderRadius: {
+        Desktop: {
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
+        },
+        Tablet: {
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
+        },
+        Mobile: {
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
+        }
+      }
+    }
+  },
+  background: {
+    type: "object",
+    default: {
+      backgroundType: "",
+      backgroundColor: "",
+      backgroundImageID: "",
+      backgroundImageURL: "",
+      backgroundPosition: "center center",
+      backgroundRepeat: "repeat",
+      backgroundSize: "auto",
+      fixed: false,
+      gradientLocationOne: "0",
+      gradientColorTwo: "",
+      gradientLocationTwo: "100",
+      gradientAngle: "180",
+      gradientPosition: "center center",
+      gradientType: "linear"
+    }
+  }
+};
 const deprecatedContent = [{
+  attributes: Object.assign(deprecated_Attributes, new_Attributes_0_1),
+  migrate: attributes => {
+    let newAttributes = {
+      blockId: attributes.block_id ? `premium-container-${attributes.block_id.split('-')[6]}` : '',
+      padding: {
+        Desktop: {
+          top: attributes === null || attributes === void 0 ? void 0 : attributes.paddingTop,
+          right: attributes === null || attributes === void 0 ? void 0 : attributes.paddingRight,
+          bottom: attributes === null || attributes === void 0 ? void 0 : attributes.paddingBottom,
+          left: attributes === null || attributes === void 0 ? void 0 : attributes.paddingLeft
+        },
+        Tablet: {
+          top: attributes === null || attributes === void 0 ? void 0 : attributes.paddingTTablet,
+          right: attributes === null || attributes === void 0 ? void 0 : attributes.paddingRTablet,
+          bottom: attributes === null || attributes === void 0 ? void 0 : attributes.paddingBTablet,
+          left: attributes === null || attributes === void 0 ? void 0 : attributes.paddingLTablet
+        },
+        Mobile: {
+          top: attributes === null || attributes === void 0 ? void 0 : attributes.paddingTMobile,
+          right: attributes === null || attributes === void 0 ? void 0 : attributes.paddingRMobile,
+          bottom: attributes === null || attributes === void 0 ? void 0 : attributes.paddingBMobile,
+          left: attributes === null || attributes === void 0 ? void 0 : attributes.paddingLMobile
+        },
+        unit: "px"
+      },
+      margin: {
+        Desktop: {
+          top: attributes === null || attributes === void 0 ? void 0 : attributes.marginTop,
+          right: attributes === null || attributes === void 0 ? void 0 : attributes.marginRight,
+          bottom: attributes.marginBottom,
+          left: attributes.marginLeft
+        },
+        Tablet: {
+          top: attributes === null || attributes === void 0 ? void 0 : attributes.marginTTablet,
+          right: attributes === null || attributes === void 0 ? void 0 : attributes.marginRTablet,
+          bottom: attributes === null || attributes === void 0 ? void 0 : attributes.marginBTablet,
+          left: attributes === null || attributes === void 0 ? void 0 : attributes.marginLTablet
+        },
+        Mobile: {
+          top: attributes === null || attributes === void 0 ? void 0 : attributes.marginTMobile,
+          right: attributes === null || attributes === void 0 ? void 0 : attributes.marginRMobile,
+          bottom: attributes === null || attributes === void 0 ? void 0 : attributes.marginBMobile,
+          left: attributes === null || attributes === void 0 ? void 0 : attributes.marginLMobile
+        },
+        unit: "px"
+      },
+      boxShadow: {
+        color: attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].shadowColor,
+        blur: attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].shadowBlur,
+        horizontal: attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].shadowHorizontal,
+        vertical: attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].shadowVertical,
+        position: attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].shadowPosition
+      },
+      border: {
+        borderType: attributes === null || attributes === void 0 ? void 0 : attributes.containerStyle[0].borderStyle,
+        borderColor: attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].borderColor,
+        borderWidth: {
+          Desktop: {
+            top: attributes === null || attributes === void 0 ? void 0 : attributes.borderTop,
+            right: attributes === null || attributes === void 0 ? void 0 : attributes.borderRight,
+            bottom: attributes === null || attributes === void 0 ? void 0 : attributes.borderBottom,
+            left: attributes === null || attributes === void 0 ? void 0 : attributes.borderLeft
+          },
+          Tablet: {
+            top: '',
+            right: "",
+            bottom: "",
+            left: ""
+          },
+          Mobile: {
+            top: "",
+            right: "",
+            bottom: "",
+            left: ""
+          }
+        },
+        borderRadius: {
+          Desktop: {
+            top: attributes === null || attributes === void 0 ? void 0 : attributes.containerStyle[0].borderRadius,
+            right: attributes === null || attributes === void 0 ? void 0 : attributes.containerStyle[0].borderRadius,
+            bottom: attributes === null || attributes === void 0 ? void 0 : attributes.containerStyle[0].borderRadius,
+            left: attributes === null || attributes === void 0 ? void 0 : attributes.containerStyle[0].borderRadius
+          },
+          Tablet: {
+            top: "",
+            right: "",
+            bottom: "",
+            left: ""
+          },
+          Mobile: {
+            top: "",
+            right: "",
+            bottom: "",
+            left: ""
+          }
+        }
+      },
+      background: {
+        backgroundType: attributes === null || attributes === void 0 ? void 0 : attributes.backgroundType,
+        backgroundColor: attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].containerBack,
+        backgroundImageID: attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].backgroundImageID,
+        backgroundImageURL: attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].backgroundImageURL,
+        backgroundPosition: attributes === null || attributes === void 0 ? void 0 : attributes.containerStyle[0].backgroundPosition,
+        backgroundRepeat: attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].backgroundRepeat,
+        backgroundSize: attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].backgroundSize,
+        fixed: attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].fixed,
+        gradientLocationOne: attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].gradientLocationOne,
+        gradientColorTwo: attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].gradientColorTwo,
+        gradientLocationTwo: attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].gradientLocationTwo,
+        gradientAngle: attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].gradientAngle,
+        gradientPosition: attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].gradientPosition,
+        gradientType: attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].gradientType
+      }
+    };
+    return Object.assign(attributes, newAttributes);
+  },
+  save: props => {
+    const {
+      stretchSection,
+      innerWidthType,
+      isUpdated,
+      horAlign,
+      height,
+      innerWidth,
+      minHeight,
+      minHeightUnit,
+      vPos,
+      block_id,
+      hideDesktop,
+      hideTablet,
+      hideMobile,
+      containerStyles,
+      borderTop,
+      borderRight,
+      borderBottom,
+      borderLeft,
+      backgroundType
+    } = props.attributes;
+    let btnGrad, btnGrad2, btnbg;
+
+    if (undefined !== backgroundType && 'gradient' === backgroundType) {
+      btnGrad = 'transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack;
+      btnGrad2 = undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777';
+
+      if ('radial' === containerStyles[0].gradientType) {
+        btnbg = `radial-gradient(at ${containerStyles[0].gradientPosition}, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
+      } else if ('radial' !== containerStyles[0].gradientType) {
+        btnbg = `linear-gradient(${containerStyles[0].gradientAngle}deg, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
+      }
+    } else {
+      btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : '';
+    }
+
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: `${className} premium-container__stretch_${stretchSection} premium-container__${innerWidthType} ${hideDesktop} ${hideTablet} ${hideMobile}`,
+      style: {
+        textAlign: horAlign,
+        minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
+        backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
+        borderStyle: containerStyles[0].borderType,
+        borderWidth: isUpdated ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px` : containerStyles[0].borderWidth + "px",
+        borderRadius: containerStyles[0].borderRadius + "px",
+        borderColor: containerStyles[0].borderColor,
+        backgroundImage: btnbg,
+        backgroundRepeat: containerStyles[0].backgroundRepeat,
+        backgroundPosition: containerStyles[0].backgroundPosition,
+        backgroundSize: containerStyles[0].backgroundSize,
+        backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
+        boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`
+      }
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: `premium-container__content_wrap premium-container__${vPos}`,
+      style: {
+        maxWidth: "boxed" == innerWidthType && stretchSection ? innerWidth ? innerWidth + "px" : "1140px" : "100%",
+        minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit
+      }
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: `premium-container__content_inner`
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InnerBlocks.Content, null))));
+  }
+}, {
   attributes: deprecated_Attributes,
   save: props => {
     const {
@@ -51077,40 +51429,29 @@ const {
 const {
   PanelBody,
   ToggleControl,
-  SelectControl,
-  Button,
-  ButtonGroup
+  SelectControl
 } = wp.components;
 const {
-  Fragment
+  Fragment,
+  useEffect
 } = wp.element;
 const {
   withSelect
 } = wp.data;
 const {
-  BlockControls,
-  AlignmentToolbar,
   InnerBlocks,
   InspectorControls
 } = wp.blockEditor;
 const CONTENT = [["core/paragraph", {
   content: __("Insert your text or select a block ", 'premium-blocks-for-gutenberg')
-}]]; // function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
-//     if (device === 'Mobile') {
-//         if (undefined !== mobileSize && '' !== mobileSize) {
-//             return mobileSize;
-//         } else if (undefined !== tabletSize && '' !== tabletSize) {
-//             return tabletSize;
-//         }
-//     } else if (device === 'Tablet') {
-//         if (undefined !== tabletSize && '' !== tabletSize) {
-//             return tabletSize;
-//         }
-//     }
-//     return desktopSize;
-// }
+}]];
 
 const edit = props => {
+  useEffect(() => {
+    setAttributes({
+      blockId: "premium-container-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.generateBlockId)(props.clientId)
+    });
+  }, []);
   const {
     isSelected,
     className,
@@ -51119,18 +51460,16 @@ const edit = props => {
   const {
     stretchSection,
     innerWidthType,
-    isUpdated,
     horAlign,
     height,
     innerWidth,
     minHeight,
     minHeightUnit,
     vPos,
-    block_id,
+    blockId,
     hideDesktop,
     hideTablet,
     hideMobile,
-    containerStyles,
     border,
     padding,
     margin,
@@ -51161,7 +51500,7 @@ const edit = props => {
     value: "bottom",
     label: __("Bottom", 'premium-blocks-for-gutenberg')
   }];
-  const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-container", {
+  const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, blockId, "premium-container", {
     ' premium-desktop-hidden': hideDesktop,
     ' premium-tablet-hidden': hideTablet,
     ' premium-mobile-hidden': hideMobile
@@ -51316,10 +51655,10 @@ const edit = props => {
   })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType} `,
     style: {
-      textAlign: horAlign,
+      textAlign: horAlign[props.deviceType],
       minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
       ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.borderCss)(border, props.deviceType),
-      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.gradientBackground)(background, props.deviceType),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.gradientBackground)(background),
       ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.marginCss)(margin, props.deviceType),
       ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.paddingCss)(padding, props.deviceType),
       boxShadow: `${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.horizontal}px ${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.vertical}px ${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.blur}px ${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.color} ${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.position}`
@@ -51357,15 +51696,12 @@ const edit = props => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/blocks/section/edit.js");
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/blocks/section/save.js");
-/* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/section/deprecated.js");
-/* harmony import */ var _icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../icons */ "./src/blocks/icons.js");
-/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./attributes */ "./src/blocks/section/attributes.js");
-
+/* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit */ "./src/blocks/section/edit.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/section/save.js");
+/* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/section/deprecated.js");
+/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./attributes */ "./src/blocks/section/attributes.js");
+/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
 
 
 
@@ -51379,25 +51715,25 @@ const {
   registerBlockType
 } = wp.blocks;
 registerBlockType("premium/container", {
-  title: __("Section"),
-  icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_icons__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    icon: "section"
-  }),
+  title: __("Section", 'premium-blocks-for-gutenberg'),
+  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__["default"].section,
   category: "premium-blocks",
-  attributes: _attributes__WEBPACK_IMPORTED_MODULE_6__["default"],
+  attributes: _attributes__WEBPACK_IMPORTED_MODULE_4__["default"],
   supports: {
-    inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_1__.container,
+    inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.container,
     align: true,
     align: ["center", "wide", "full"]
   },
+  keywords: [__("section", 'premium-blocks-for-gutenberg'), __("container", 'premium-blocks-for-gutenberg')],
+  description: __('Engage your Gutenberg blocks using Premium Section Block.', 'premium-block-for-gutenberg'),
   example: {
     attributes: {
       minHeight: 200
     }
   },
-  edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
-  save: _save__WEBPACK_IMPORTED_MODULE_3__["default"],
-  deprecated: _deprecated__WEBPACK_IMPORTED_MODULE_4__["default"]
+  edit: _edit__WEBPACK_IMPORTED_MODULE_1__["default"],
+  save: _save__WEBPACK_IMPORTED_MODULE_2__["default"],
+  deprecated: _deprecated__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 
 /***/ }),
@@ -51417,6 +51753,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./src/blocks/node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+
 
 
 const {
@@ -51430,63 +51768,39 @@ const save = props => {
   const {
     stretchSection,
     innerWidthType,
-    isUpdated,
-    horAlign,
     height,
     innerWidth,
     minHeight,
     minHeightUnit,
     vPos,
-    block_id,
+    blockId,
     hideDesktop,
     hideTablet,
     hideMobile,
-    containerStyles,
-    borderTop,
-    borderRight,
-    borderBottom,
-    borderLeft,
-    backgroundType
+    boxShadow,
+    background,
+    border
   } = props.attributes;
-  const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, 'premium-container');
-  let btnGrad, btnGrad2, btnbg;
-
-  if (undefined !== backgroundType && 'gradient' === backgroundType) {
-    btnGrad = 'transparent' === containerStyles[0].containerBack || undefined === containerStyles[0].containerBack ? 'rgba(255,255,255,0)' : containerStyles[0].containerBack;
-    btnGrad2 = undefined !== containerStyles[0].gradientColorTwo && undefined !== containerStyles[0].gradientColorTwo && '' !== containerStyles[0].gradientColorTwo ? containerStyles[0].gradientColorTwo : '#777';
-
-    if ('radial' === containerStyles[0].gradientType) {
-      btnbg = `radial-gradient(at ${containerStyles[0].gradientPosition}, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
-    } else if ('radial' !== containerStyles[0].gradientType) {
-      btnbg = `linear-gradient(${containerStyles[0].gradientAngle}deg, ${btnGrad} ${containerStyles[0].gradientLocationOne}%, ${btnGrad2} ${containerStyles[0].gradientLocationTwo}%)`;
-    }
-  } else {
-    btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : '';
-  }
-
+  const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, blockId, 'premium-container', {
+    ' premium-desktop-hidden': hideDesktop,
+    ' premium-tablet-hidden': hideTablet,
+    ' premium-mobile-hidden': hideMobile
+  });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType} ${hideDesktop} ${hideTablet} ${hideMobile}`,
-    style: {
-      textAlign: horAlign,
+    className: `${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType} `,
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
-      backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
-      borderStyle: containerStyles[0].borderType,
-      borderWidth: isUpdated ? `${borderTop}px ${borderRight}px ${borderBottom}px ${borderLeft}px` : containerStyles[0].borderWidth + "px",
-      borderRadius: containerStyles[0].borderRadius + "px",
-      borderColor: containerStyles[0].borderColor,
-      backgroundImage: btnbg,
-      backgroundRepeat: containerStyles[0].backgroundRepeat,
-      backgroundPosition: containerStyles[0].backgroundPosition,
-      backgroundSize: containerStyles[0].backgroundSize,
-      backgroundAttachment: containerStyles[0].fixed ? "fixed" : "unset",
-      boxShadow: `${containerStyles[0].shadowHorizontal}px ${containerStyles[0].shadowVertical}px ${containerStyles[0].shadowBlur}px ${containerStyles[0].shadowColor} ${containerStyles[0].shadowPosition}`
-    }
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.gradientBackground)(background),
+      borderColor: border === null || border === void 0 ? void 0 : border.borderColor,
+      borderStyle: border === null || border === void 0 ? void 0 : border.borderType,
+      boxShadow: `${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.horizontal}px ${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.vertical}px ${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.blur}px ${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.color} ${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.position}`
+    })
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-container__content_wrap premium-container__${vPos}`,
-    style: {
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       maxWidth: "boxed" == innerWidthType && stretchSection ? innerWidth ? innerWidth + "px" : "1140px" : "100%",
       minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit
-    }
+    })
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-container__content_inner`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InnerBlocks.Content, null))));

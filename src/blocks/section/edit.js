@@ -4,65 +4,43 @@ import PremiumShadow from "../../components/PremiumShadow";
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
 import PremiumBackgroundControl from '../../components/Premium-Background-Control'
-
 import SpacingComponent from '../../components/premium-responsive-spacing';
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 const { __ } = wp.i18n;
 import MultiButtonsControl from '../../components/responsive-radio';
 import Icons from "../../components/icons";
-import { borderCss, gradientBackground, marginCss, paddingCss } from "../../components/HelperFunction";
-
-
-const { PanelBody, ToggleControl, SelectControl, Button, ButtonGroup } = wp.components;
-
-const { Fragment } = wp.element;
+import { borderCss, gradientBackground, marginCss, paddingCss, generateBlockId } from "../../components/HelperFunction";
+const { PanelBody, ToggleControl, SelectControl, } = wp.components;
+const { Fragment, useEffect } = wp.element;
 const { withSelect } = wp.data
-
-
-const {
-    BlockControls,
-    AlignmentToolbar,
-    InnerBlocks,
-    InspectorControls
-} = wp.blockEditor;
+const { InnerBlocks, InspectorControls } = wp.blockEditor;
 
 const CONTENT = [
     ["core/paragraph", { content: __("Insert your text or select a block ", 'premium-blocks-for-gutenberg') }]
 ];
-// function getPreviewSize(device, desktopSize, tabletSize, mobileSize) {
-//     if (device === 'Mobile') {
-//         if (undefined !== mobileSize && '' !== mobileSize) {
-//             return mobileSize;
-//         } else if (undefined !== tabletSize && '' !== tabletSize) {
-//             return tabletSize;
-//         }
-//     } else if (device === 'Tablet') {
-//         if (undefined !== tabletSize && '' !== tabletSize) {
-//             return tabletSize;
-//         }
-//     }
-//     return desktopSize;
-// }
+
 const edit = props => {
+
+    useEffect(() => {
+        setAttributes({ blockId: "premium-container-" + generateBlockId(props.clientId) });
+    }, []);
+
     const { isSelected, className, setAttributes } = props;
 
     const {
         stretchSection,
         innerWidthType,
-        isUpdated,
         horAlign,
         height,
         innerWidth,
         minHeight,
         minHeightUnit,
         vPos,
-        block_id,
+        blockId,
         hideDesktop,
         hideTablet,
         hideMobile,
-        containerStyles,
-
         border,
         padding,
         margin,
@@ -71,45 +49,23 @@ const edit = props => {
     } = props.attributes;
 
     const WIDTH = [
-        {
-            value: "boxed",
-            label: __("Boxed", 'premium-blocks-for-gutenberg')
-        },
-        {
-            value: "full",
-            label: __("Full Width", 'premium-blocks-for-gutenberg')
-        }
+        { value: "boxed", label: __("Boxed", 'premium-blocks-for-gutenberg') },
+        { value: "full", label: __("Full Width", 'premium-blocks-for-gutenberg') }
     ];
     const HEIGHT = [
-        {
-            value: "fit",
-            label: __("Fit to Screen", 'premium-blocks-for-gutenberg')
-        },
-        {
-            value: "min",
-            label: __("Min Height", 'premium-blocks-for-gutenberg')
-        }
+        { value: "fit", label: __("Fit to Screen", 'premium-blocks-for-gutenberg') },
+        { value: "min", label: __("Min Height", 'premium-blocks-for-gutenberg') }
     ];
     const VPOSITION = [
-        {
-            value: "top",
-            label: __("Top", 'premium-blocks-for-gutenberg')
-        },
-        {
-            value: "middle",
-            label: __("Middle", 'premium-blocks-for-gutenberg')
-        },
-        {
-            value: "bottom",
-            label: __("Bottom", 'premium-blocks-for-gutenberg')
-        }
+        { value: "top", label: __("Top", 'premium-blocks-for-gutenberg') },
+        { value: "middle", label: __("Middle", 'premium-blocks-for-gutenberg') },
+        { value: "bottom", label: __("Bottom", 'premium-blocks-for-gutenberg') }
     ];
-    const mainClasses = classnames(className, "premium-container",
-        {
-            ' premium-desktop-hidden': hideDesktop,
-            ' premium-tablet-hidden': hideTablet,
-            ' premium-mobile-hidden': hideMobile,
-        });
+    const mainClasses = classnames(className, blockId, "premium-container", {
+        ' premium-desktop-hidden': hideDesktop,
+        ' premium-tablet-hidden': hideTablet,
+        ' premium-mobile-hidden': hideMobile,
+    });
 
     return [
 
@@ -279,11 +235,10 @@ const edit = props => {
         <div
             className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType} `}
             style={{
-                textAlign: horAlign,
-                minHeight:
-                    "fit" === height ? "100vh" : minHeight + minHeightUnit,
+                textAlign: horAlign[props.deviceType],
+                minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
                 ...borderCss(border, props.deviceType),
-                ...gradientBackground(background, props.deviceType),
+                ...gradientBackground(background),
                 ...marginCss(margin, props.deviceType),
                 ...paddingCss(padding, props.deviceType),
                 boxShadow: `${boxShadow?.horizontal}px ${boxShadow?.vertical}px ${boxShadow?.blur}px ${boxShadow?.color} ${boxShadow?.position}`
@@ -311,7 +266,5 @@ const edit = props => {
 export default withSelect((select, props) => {
     const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
     let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
-    return {
-        deviceType: deviceType
-    }
+    return { deviceType: deviceType }
 })(edit)

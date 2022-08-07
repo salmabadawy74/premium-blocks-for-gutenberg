@@ -1,8 +1,8 @@
-import PbgIcon from "../icons";
 import edit from "./edit";
 import { lottie } from "../../../assets/js/settings";
 import save from "./save";
 import deprecated from './deprecated'
+import PBG_Block_Icons from '../../../blocks-config/block-icons'
 
 const { __ } = wp.i18n;
 
@@ -11,13 +11,19 @@ const { registerBlockType } = wp.blocks;
 import LottieAttr from './attributes'
 
 registerBlockType("premium/lottie", {
-    title: __("Lottie Animation"),
-    icon: <PbgIcon icon="lottie" />,
+    title: __("Lottie Animation", 'premium-blocks-for-gutenberg'),
+    icon: PBG_Block_Icons.lottie,
     category: "premium-blocks",
     attributes: LottieAttr,
     supports: {
         inserter: lottie
     },
+    keywords: [
+        __("svg", 'premium-blocks-for-gutenberg'),
+        __("Animation", 'premium-blocks-for-gutenberg'),
+        __("canvas", 'premium-blocks-for-gutenberg')
+    ],
+    description: __('Bring life to your Gutenberg web page using Premium Lottie Animation', 'premium-block-for-gutenberg'),
     example: {},
     edit: edit,
     save: save,
