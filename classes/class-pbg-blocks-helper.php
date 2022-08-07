@@ -1676,6 +1676,7 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['selfAlign'] ) ) {
 			$align = $css->get_responsive_css( $attr['selfAlign'], 'Desktop' );
+			$align = isset( $attr['flexDir'] ) && ( 'row-reverse' === $attr['flexDir'] || 'row' === $attr['flexDir'] ) ? 'center' : $align;
 
 			$css->set_selector( $unique_id . ' .premium-countup__icon_wrap, ' . $unique_id . ' .premium-countup__info, ' . $unique_id . ' .premium-countup__title' );
 			$css->add_property( 'align-self', $align );
@@ -1700,11 +1701,39 @@ class PBG_Blocks_Helper {
 			$css->render_typography( $attr['numberTypography'], 'Desktop' );
 		}
 
+		if ( isset( $attr['numberMargin'] ) ) {
+			$number_margin = $attr['numberMargin'];
+
+			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
+			$css->add_property( 'margin', $css->render_spacing( $number_margin['Desktop'], $number_margin['unit'] ) );
+		}
+
+		if ( isset( $attr['numberPadding'] ) ) {
+			$number_padding = $attr['numberPadding'];
+
+			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
+			$css->add_property( 'padding', $css->render_spacing( $number_padding['Desktop'], $number_padding['unit'] ) );
+		}
+
 		// Title Style
 		if ( isset( $attr['titleTypography'] ) ) {
 
 			$css->set_selector( $unique_id . ' > .premium-countup__title' );
 			$css->render_typography( $attr['titleTypography'], 'Desktop' );
+		}
+
+		if ( $attr['titleMargin'] ) {
+			$title_margin = $attr['titleMargin'];
+
+			$css->set_selector( $unique_id . ' > .premium-countup__title' );
+			$css->add_property( 'margin', $css->render_spacing( $title_margin['Desktop'], $title_margin['unit'] ) );
+		}
+
+		if ( $attr['titlePadding'] ) {
+			$title_padding = $attr['titlePadding'];
+
+			$css->set_selector( $unique_id . ' > .premium-countup__title' );
+			$css->add_property( 'padding', $css->render_spacing( $title_padding['Desktop'], $title_padding['unit'] ) );
 		}
 
 		// Prefix Style
@@ -1713,10 +1742,38 @@ class PBG_Blocks_Helper {
 			$css->render_typography( $attr['prefixTypography'], 'Desktop' );
 		}
 
+		if ( isset( $attr['prefixMargin'] ) ) {
+			$prefix_margin = $attr['prefixMargin'];
+
+			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
+			$css->add_property( 'margin', $css->render_spacing( $prefix_margin['Desktop'], $prefix_margin['unit'] ) );
+		}
+
+		if ( isset( $attr['prefixPadding'] ) ) {
+			$prefix_padding = $attr['prefixPadding'];
+
+			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
+			$css->add_property( 'padding', $css->render_spacing( $prefix_padding['Desktop'], $prefix_padding['unit'] ) );
+		}
+
 		// Suffix Style
 		if ( isset( $attr['suffixTypography'] ) ) {
 			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
 			$css->render_typography( $attr['suffixTypography'], 'Desktop' );
+		}
+
+		if ( isset( $attr['suffixMargin'] ) ) {
+			$suffix_margin = $attr['suffixMargin'];
+
+			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
+			$css->add_property( 'margin', $css->render_spacing( $suffix_margin['Desktop'], $suffix_margin['unit'] ) );
+		}
+
+		if ( isset( $attr['suffixPadding'] ) ) {
+			$suffix_padding = $attr['suffixPadding'];
+
+			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
+			$css->add_property( 'padding', $css->render_spacing( $prefix_padding['Desktop'], $prefix_padding['unit'] ) );
 		}
 
 		// Container Style
@@ -1724,6 +1781,14 @@ class PBG_Blocks_Helper {
 			$padding = $attr['padding'];
 			$css->set_selector( $unique_id );
 			$css->add_property( 'padding', $css->render_spacing( $padding['Desktop'], $padding['unit'] ) );
+		}
+
+		// Icon.
+		if ( isset( $attr['iconMargin'] ) ) {
+			$icon_margin = $attr['iconMargin'];
+
+			$css->set_selector( $unique_id . ' .premium-countup__icon_wrap' );
+			$css->add_property( 'margin', $css->render_spacing( $icon_margin['Desktop'], $icon_margin['unit'] ) );
 		}
 
 		$css->start_media_query( $media_query['tablet'] );
@@ -1738,14 +1803,18 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['selfAlign'] ) ) {
 			$align = $css->get_responsive_css( $attr['selfAlign'], 'Tablet' );
+			$align = isset( $attr['flexDir'] ) && ( 'row-reverse' === $attr['flexDir'] || 'row' === $attr['flexDir'] ) ? 'center' : $align;
+
 			$css->set_selector( $unique_id . ' .premium-countup__icon_wrap, ' . $unique_id . ' .premium-countup__info, ' . $unique_id . ' .premium-countup__title' );
 			$css->add_property( 'align-self', $align );
 		}
+
 		// Border.
 		if ( isset( $attr['border'] ) ) {
 			$border        = $attr['border'];
 			$border_width  = $attr['border']['borderWidth'];
 			$border_radius = $attr['border']['borderRadius'];
+
 			$css->set_selector( $unique_id );
 			$css->add_property( 'border-width', $css->render_spacing( $border_width['Tablet'], 'px' ) );
 			$css->add_property( 'border-radius', $css->render_spacing( $border_radius['Tablet'], 'px' ) );
@@ -1753,8 +1822,24 @@ class PBG_Blocks_Helper {
 
 		// Number Style
 		if ( isset( $attr['numberTypography'] ) ) {
+
 			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
+
 			$css->render_typography( $attr['numberTypography'], 'Tablet' );
+		}
+
+		if ( isset( $attr['numberMargin'] ) ) {
+			$number_margin = $attr['numberMargin'];
+
+			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
+			$css->add_property( 'margin', $css->render_spacing( $number_margin['Tablet'], $number_margin['unit'] ) );
+		}
+
+		if ( isset( $attr['numberPadding'] ) ) {
+			$number_padding = $attr['numberPadding'];
+
+			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
+			$css->add_property( 'padding', $css->render_spacing( $number_padding['Tablet'], $number_padding['unit'] ) );
 		}
 
 		// Title Style
@@ -1764,18 +1849,58 @@ class PBG_Blocks_Helper {
 			$css->render_typography( $attr['titleTypography'], 'Tablet' );
 		}
 
+		if ( $attr['titleMargin'] ) {
+			$title_margin = $attr['titleMargin'];
+
+			$css->set_selector( $unique_id . ' > .premium-countup__title' );
+			$css->add_property( 'margin', $css->render_spacing( $title_margin['Tablet'], $title_margin['unit'] ) );
+		}
+
+		if ( $attr['titlePadding'] ) {
+			$title_padding = $attr['titlePadding'];
+
+			$css->set_selector( $unique_id . ' > .premium-countup__title' );
+			$css->add_property( 'padding', $css->render_spacing( $title_padding['Tablet'], $title_padding['unit'] ) );
+		}
+
 		// Prefix Style
 		if ( isset( $attr['prefixTypography'] ) ) {
-
 			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
 			$css->render_typography( $attr['prefixTypography'], 'Tablet' );
 		}
 
+		if ( isset( $attr['prefixMargin'] ) ) {
+			$prefix_margin = $attr['prefixMargin'];
+
+			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
+			$css->add_property( 'margin', $css->render_spacing( $prefix_margin['Tablet'], $prefix_margin['unit'] ) );
+		}
+
+		if ( isset( $attr['prefixPadding'] ) ) {
+			$prefix_padding = $attr['prefixPadding'];
+
+			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
+			$css->add_property( 'padding', $css->render_spacing( $prefix_padding['Tablet'], $prefix_padding['unit'] ) );
+		}
+
 		// Suffix Style
 		if ( isset( $attr['suffixTypography'] ) ) {
-
 			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
 			$css->render_typography( $attr['suffixTypography'], 'Tablet' );
+		}
+
+		if ( isset( $attr['suffixMargin'] ) ) {
+			$suffix_margin = $attr['suffixMargin'];
+
+			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
+			$css->add_property( 'margin', $css->render_spacing( $suffix_margin['Tablet'], $suffix_margin['unit'] ) );
+		}
+
+		if ( isset( $attr['suffixPadding'] ) ) {
+			$suffix_padding = $attr['suffixPadding'];
+
+			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
+			$css->add_property( 'padding', $css->render_spacing( $prefix_padding['Tablet'], $prefix_padding['unit'] ) );
 		}
 
 		// Container Style
@@ -1783,6 +1908,14 @@ class PBG_Blocks_Helper {
 			$padding = $attr['padding'];
 			$css->set_selector( $unique_id );
 			$css->add_property( 'padding', $css->render_spacing( $padding['Tablet'], $padding['unit'] ) );
+		}
+
+		// Icon.
+		if ( isset( $attr['iconMargin'] ) ) {
+			$icon_margin = $attr['iconMargin'];
+
+			$css->set_selector( $unique_id . ' .premium-countup__icon_wrap' );
+			$css->add_property( 'margin', $css->render_spacing( $icon_margin['Tablet'], $icon_margin['unit'] ) );
 		}
 
 		$css->stop_media_query();
@@ -1798,6 +1931,7 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['selfAlign'] ) ) {
 			$align = $css->get_responsive_css( $attr['selfAlign'], 'Mobile' );
+			$align = isset( $attr['flexDir'] ) && ( 'row-reverse' === $attr['flexDir'] || 'row' === $attr['flexDir'] ) ? 'center' : $align;
 
 			$css->set_selector( $unique_id . ' .premium-countup__icon_wrap, ' . $unique_id . ' .premium-countup__info, ' . $unique_id . ' .premium-countup__title' );
 			$css->add_property( 'align-self', $align );
@@ -1816,14 +1950,45 @@ class PBG_Blocks_Helper {
 
 		// Number Style
 		if ( isset( $attr['numberTypography'] ) ) {
+
 			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
+
 			$css->render_typography( $attr['numberTypography'], 'Mobile' );
+		}
+
+		if ( isset( $attr['numberMargin'] ) ) {
+			$number_margin = $attr['numberMargin'];
+
+			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
+			$css->add_property( 'margin', $css->render_spacing( $number_margin['Mobile'], $number_margin['unit'] ) );
+		}
+
+		if ( isset( $attr['numberPadding'] ) ) {
+			$number_padding = $attr['numberPadding'];
+
+			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
+			$css->add_property( 'padding', $css->render_spacing( $number_padding['Mobile'], $number_padding['unit'] ) );
 		}
 
 		// Title Style
 		if ( isset( $attr['titleTypography'] ) ) {
+
 			$css->set_selector( $unique_id . ' > .premium-countup__title' );
 			$css->render_typography( $attr['titleTypography'], 'Mobile' );
+		}
+
+		if ( $attr['titleMargin'] ) {
+			$title_margin = $attr['titleMargin'];
+
+			$css->set_selector( $unique_id . ' > .premium-countup__title' );
+			$css->add_property( 'margin', $css->render_spacing( $title_margin['Mobile'], $title_margin['unit'] ) );
+		}
+
+		if ( $attr['titlePadding'] ) {
+			$title_padding = $attr['titlePadding'];
+
+			$css->set_selector( $unique_id . ' > .premium-countup__title' );
+			$css->add_property( 'padding', $css->render_spacing( $title_padding['Mobile'], $title_padding['unit'] ) );
 		}
 
 		// Prefix Style
@@ -1832,10 +1997,38 @@ class PBG_Blocks_Helper {
 			$css->render_typography( $attr['prefixTypography'], 'Mobile' );
 		}
 
+		if ( isset( $attr['prefixMargin'] ) ) {
+			$prefix_margin = $attr['prefixMargin'];
+
+			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
+			$css->add_property( 'margin', $css->render_spacing( $prefix_margin['Mobile'], $prefix_margin['unit'] ) );
+		}
+
+		if ( isset( $attr['prefixPadding'] ) ) {
+			$prefix_padding = $attr['prefixPadding'];
+
+			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
+			$css->add_property( 'padding', $css->render_spacing( $prefix_padding['Mobile'], $prefix_padding['unit'] ) );
+		}
+
 		// Suffix Style
 		if ( isset( $attr['suffixTypography'] ) ) {
 			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
 			$css->render_typography( $attr['suffixTypography'], 'Mobile' );
+		}
+
+		if ( isset( $attr['suffixMargin'] ) ) {
+			$suffix_margin = $attr['suffixMargin'];
+
+			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
+			$css->add_property( 'margin', $css->render_spacing( $suffix_margin['Mobile'], $suffix_margin['unit'] ) );
+		}
+
+		if ( isset( $attr['suffixPadding'] ) ) {
+			$suffix_padding = $attr['suffixPadding'];
+
+			$css->set_selector( $unique_id . '> .premium-countup__info' . ' > .premium-countup__desc' . ' > .premium-countup__suffix' );
+			$css->add_property( 'padding', $css->render_spacing( $prefix_padding['Mobile'], $prefix_padding['unit'] ) );
 		}
 
 		// Container Style
@@ -1843,6 +2036,14 @@ class PBG_Blocks_Helper {
 			$padding = $attr['padding'];
 			$css->set_selector( $unique_id );
 			$css->add_property( 'padding', $css->render_spacing( $padding['Mobile'], $padding['unit'] ) );
+		}
+
+		// Icon.
+		if ( isset( $attr['iconMargin'] ) ) {
+			$icon_margin = $attr['iconMargin'];
+
+			$css->set_selector( $unique_id . ' .premium-countup__icon_wrap' );
+			$css->add_property( 'margin', $css->render_spacing( $icon_margin['Mobile'], $icon_margin['unit'] ) );
 		}
 		$css->stop_media_query();
 		return $css->css_output();
@@ -2199,11 +2400,11 @@ class PBG_Blocks_Helper {
 		}
 
 		// icon Styles
-		if ( isset( $attr['iconSize']) ) {
+		if ( isset( $attr['iconSize'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > .premium-icon' );
-			$css->add_property( 'font-size', $css->render_range($attr['iconSize'],'Desktop')  );
+			$css->add_property( 'font-size', $css->render_range( $attr['iconSize'], 'Desktop' ) );
 
-        }
+		}
 		if ( isset( $attr['iconMargin'] ) ) {
 			$icon_margin = $attr['iconMargin'];
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > .premium-icon' );
@@ -2256,9 +2457,9 @@ class PBG_Blocks_Helper {
 		// icon Styles
 		if ( isset( $attr['iconSize'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > .premium-icon' );
-			$css->add_property( 'font-size', $css->render_range($attr['iconSize'],'Tablet')   );
-		
-        }
+			$css->add_property( 'font-size', $css->render_range( $attr['iconSize'], 'Tablet' ) );
+
+		}
 		if ( isset( $attr['iconMargin'] ) ) {
 			$wrap_margin = $attr['iconMargin'];
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > .premium-icon' );
@@ -2312,7 +2513,7 @@ class PBG_Blocks_Helper {
 		// icon Styles
 		if ( isset( $attr['iconSize'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > .premium-icon' );
-			$css->add_property( 'font-size',  $css->render_range($attr['iconSize'],'Mobile')   );
+			$css->add_property( 'font-size', $css->render_range( $attr['iconSize'], 'Mobile' ) );
 		}
 		if ( isset( $attr['iconMargin'] ) ) {
 			$icon_margin = $attr['iconMargin'];
@@ -5502,15 +5703,15 @@ class PBG_Blocks_Helper {
 
 		// Align.
 		if ( isset( $attr['bulletAlign'] ) ) {
-			$align      = $css->get_responsive_css( $attr['bulletAlign'], 'Desktop' );
-			$flex_align = 'left' === $align ? 'flex-start' : 'center';
-			$flex_align = 'right' === $align ? 'flex-end' : $flex_align;
+			$align          = $css->get_responsive_css( $attr['bulletAlign'], 'Desktop' );
+			$flex_align     = 'left' === $align ? 'flex-start' : 'center';
+			$flex_align     = 'right' === $align ? 'flex-end' : $flex_align;
 			$vertival_align = 'flex-start' === $align ? 'top' : 'middle';
 			$vertival_align = 'flex-end' === $align ? 'bottom' : $vertival_align;
 
 			$css->set_selector( $unique_id . ' .premium-bullet-list__icon-wrap' );
 			$css->add_property( 'align-self', $flex_align );
-			if(!str_contains($align , 'flex')){
+			if ( ! str_contains( $align, 'flex' ) ) {
 				$css->add_property( 'text-align', $align );
 			}
 			$css->add_property( 'justify-content', $flex_align );
@@ -5629,15 +5830,15 @@ class PBG_Blocks_Helper {
 
 		// Align.
 		if ( isset( $attr['bulletAlign'] ) ) {
-			$align      = $css->get_responsive_css( $attr['bulletAlign'], 'Tablet' );
-			$flex_align = 'left' === $align ? 'flex-start' : 'center';
-			$flex_align = 'right' === $align ? 'flex-end' : $flex_align;
+			$align          = $css->get_responsive_css( $attr['bulletAlign'], 'Tablet' );
+			$flex_align     = 'left' === $align ? 'flex-start' : 'center';
+			$flex_align     = 'right' === $align ? 'flex-end' : $flex_align;
 			$vertival_align = 'flex-start' === $align ? 'top' : 'middle';
 			$vertival_align = 'flex-end' === $align ? 'bottom' : $vertival_align;
 
 			$css->set_selector( $unique_id . ' .premium-bullet-list__icon-wrap' );
 			$css->add_property( 'align-self', $flex_align );
-			if(!str_contains($align , 'flex')){
+			if ( ! str_contains( $align, 'flex' ) ) {
 				$css->add_property( 'text-align', $align );
 			}
 			$css->add_property( 'justify-content', $flex_align );
@@ -5757,15 +5958,15 @@ class PBG_Blocks_Helper {
 
 		// Align.
 		if ( isset( $attr['bulletAlign'] ) ) {
-			$align      = $css->get_responsive_css( $attr['bulletAlign'], 'Mobile' );
-			$flex_align = 'left' === $align ? 'flex-start' : 'center';
-			$flex_align = 'right' === $align ? 'flex-end' : $flex_align;
+			$align          = $css->get_responsive_css( $attr['bulletAlign'], 'Mobile' );
+			$flex_align     = 'left' === $align ? 'flex-start' : 'center';
+			$flex_align     = 'right' === $align ? 'flex-end' : $flex_align;
 			$vertival_align = 'flex-start' === $align ? 'top' : 'middle';
 			$vertival_align = 'flex-end' === $align ? 'bottom' : $vertival_align;
 
 			$css->set_selector( $unique_id . ' .premium-bullet-list__icon-wrap' );
 			$css->add_property( 'align-self', $flex_align );
-			if(!str_contains($align , 'flex')){
+			if ( ! str_contains( $align, 'flex' ) ) {
 				$css->add_property( 'text-align', $align );
 			}
 			$css->add_property( 'justify-content', $flex_align );

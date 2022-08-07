@@ -447,10 +447,10 @@ const attributes = {
         type: "object",
         default: {
             Desktop: {
-                top: "2",
+                top: "",
                 right: "2",
-                bottom: "2",
-                left: "2",
+                bottom: "",
+                left: "",
             },
             Tablet: {
                 top: "",
@@ -495,9 +495,9 @@ const attributes = {
         type: "object",
         default: {
             Desktop: {
-                top: "2",
-                right: "2",
-                bottom: "2",
+                top: "",
+                right: "",
+                bottom: "",
                 left: "2",
             },
             Tablet: {

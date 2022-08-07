@@ -30,11 +30,14 @@ const save = props => {
             'border-color': titleBorder && titleBorder.borderColor,
         };
 
-        styles[`.${blockId} .premium-accordion__icon_wrap svg.premium-accordion__icon`] = {
-            fill: arrowStyles[0].arrowColor,
+        styles[`.${blockId} .premium-accordion__icon_wrap`] = {
             'background-color': arrowStyles[0].arrowBack,
             padding: arrowStyles[0].arrowPadding + "px",
             'border-radius': arrowStyles[0].arrowRadius + "px",
+        };
+
+        styles[`.${blockId} .premium-accordion__icon_wrap svg.premium-accordion__icon`] = {
+            fill: arrowStyles[0].arrowColor,
             width: `${arrowStyles[0].arrowSize}px`,
             height: `${arrowStyles[0].arrowSize}px`
         };

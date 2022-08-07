@@ -40,11 +40,15 @@ const save = props => {
 
     let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
 
-    const mainClasses = classnames(className, 'premium-countup');
+    const mainClasses = classnames(className, 'premium-countup__wrap', {
+        ' premium-desktop-hidden': hideDesktop,
+        ' premium-tablet-hidden': hideTablet,
+        ' premium-mobile-hidden': hideMobile,
+    });
 
     return (
         <div
-            className={`${mainClasses}__wrap ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+            className={`${mainClasses} ${blockId}`}
             style={filterJsCss({
                 flexDirection: flexDir,
                 boxShadow: `${boxShadow?.horizontal}px ${boxShadow?.vertical}px ${boxShadow?.blur}px ${boxShadow?.color} ${boxShadow?.position}`,
@@ -65,10 +69,6 @@ const save = props => {
                             "row" === flexDir || "row-reverse" === flexDir
                                 ? iconSpacing + "px"
                                 : "0",
-                        alignSelf:
-                            "row-reverse" === flexDir || "row" === flexDir
-                                ? "center"
-                                : selfAlign
                     })}
                 >
                     {"icon" === icon && (
@@ -93,12 +93,6 @@ const save = props => {
             )}
             <div
                 className={`premium-countup__info`}
-                style={filterJsCss({
-                    alignSelf:
-                        "row-reverse" === flexDir || "row" === flexDir
-                            ? "center"
-                            : selfAlign,
-                })}
             >
                 <div className={`premium-countup__desc`}>
                     {prefix && (
@@ -173,7 +167,6 @@ const save = props => {
                         fontWeight: titleTypography?.fontWeight,
                         textDecoration: titleTypography?.textDecoration,
                         textTransform: titleTypography?.textTransform,
-                        alignSelf: selfAlign
                     })}
                 >
                     {titleTxt}

@@ -6282,9 +6282,19 @@ const deprecated = [{
         "fontWeight": (attributes === null || attributes === void 0 ? void 0 : attributes.titleStyles[0].titleWeight) || '',
         'fontStyle': (attributes === null || attributes === void 0 ? void 0 : attributes.titleStyles[0].titleStyle) || '',
         'textTransform': (attributes === null || attributes === void 0 ? void 0 : attributes.titleStyles[0].titleUpper) || '',
-        'letterSpacing': (attributes === null || attributes === void 0 ? void 0 : attributes.titleStyles[0].titleLetter) || '',
         'fontFamily': '',
-        'lineHeight': (attributes === null || attributes === void 0 ? void 0 : attributes.titleStyles[0].titleLine) || '',
+        'lineHeight': {
+          'Desktop': (attributes === null || attributes === void 0 ? void 0 : attributes.titleStyles[0].titleLine) || '',
+          "Tablet": (attributes === null || attributes === void 0 ? void 0 : attributes.titleStyles[0].titleLine) || '',
+          "Mobile": (attributes === null || attributes === void 0 ? void 0 : attributes.titleStyles[0].titleLine) || '',
+          "unit": 'px'
+        },
+        'letterSpacing': {
+          'Desktop': (attributes === null || attributes === void 0 ? void 0 : attributes.titleStyles[0].titleLetter) || '',
+          "Tablet": (attributes === null || attributes === void 0 ? void 0 : attributes.titleStyles[0].titleLetter) || '',
+          "Mobile": (attributes === null || attributes === void 0 ? void 0 : attributes.titleStyles[0].titleLetter) || '',
+          "unit": 'px'
+        },
         'textDecoration': '',
         'fontSize': {
           'Desktop': (attributes === null || attributes === void 0 ? void 0 : attributes.titleStyles[0].titleSize) || '',
@@ -6297,10 +6307,20 @@ const deprecated = [{
         "fontWeight": (attributes === null || attributes === void 0 ? void 0 : attributes.descStyles[0].descWeight) || '',
         'fontStyle': (attributes === null || attributes === void 0 ? void 0 : attributes.descStyles[0].descStyle) || '',
         'textTransform': (attributes === null || attributes === void 0 ? void 0 : attributes.descStyles[0].descUpper) || '',
-        'letterSpacing': (attributes === null || attributes === void 0 ? void 0 : attributes.descStyles[0].descLetter) || '',
         'fontFamily': '',
-        'lineHeight': (attributes === null || attributes === void 0 ? void 0 : attributes.descStyles[0].descLine) || '',
         'textDecoration': '',
+        'lineHeight': {
+          'Desktop': (attributes === null || attributes === void 0 ? void 0 : attributes.descStyles[0].descLine) || '',
+          "Tablet": (attributes === null || attributes === void 0 ? void 0 : attributes.descStyles[0].descLine) || '',
+          "Mobile": (attributes === null || attributes === void 0 ? void 0 : attributes.descStyles[0].descLine) || '',
+          "unit": 'px'
+        },
+        'letterSpacing': {
+          'Desktop': (attributes === null || attributes === void 0 ? void 0 : attributes.descStyles[0].descLetter) || '',
+          "Tablet": (attributes === null || attributes === void 0 ? void 0 : attributes.descStyles[0].descLetter) || '',
+          "Mobile": (attributes === null || attributes === void 0 ? void 0 : attributes.descStyles[0].descLetter) || '',
+          "unit": 'px'
+        },
         'fontSize': {
           'Desktop': (attributes === null || attributes === void 0 ? void 0 : attributes.descStyles[0].descSize) || '',
           "Tablet": (attributes === null || attributes === void 0 ? void 0 : attributes.descStyles[0].descSize) || '',
@@ -6974,22 +6994,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_premium_border__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/premium-border */ "./src/components/premium-border.js");
 /* harmony import */ var _components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/premium-responsive-spacing */ "./src/components/premium-responsive-spacing.js");
 /* harmony import */ var _components_premium_typo__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/premium-typo */ "./src/components/premium-typo.js");
-/* harmony import */ var _components_PremiumShadow__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/PremiumShadow */ "./src/components/PremiumShadow.js");
-/* harmony import */ var _components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/Color Control/ColorComponent */ "./src/components/Color Control/ColorComponent.js");
-/* harmony import */ var _components_radio_control__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/radio-control */ "./src/components/radio-control.js");
-/* harmony import */ var _components_responsive_radio__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/responsive-radio */ "./src/components/responsive-radio.js");
-/* harmony import */ var _components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/RangeControl/single-range-control */ "./src/components/RangeControl/single-range-control.js");
-/* harmony import */ var _components_inspectorTabs__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/inspectorTabs */ "./src/components/inspectorTabs.js");
-/* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/inspectorTab */ "./src/components/inspectorTab.js");
-/* harmony import */ var _components_icons__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/icons */ "./src/components/icons.js");
-/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
-/* harmony import */ var _components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/premium-responsive-tabs */ "./src/components/premium-responsive-tabs.js");
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_16__);
-/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
-/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_17__);
+/* harmony import */ var _components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/typography/fontLoader */ "./src/components/typography/fontLoader.js");
+/* harmony import */ var _components_PremiumShadow__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/PremiumShadow */ "./src/components/PremiumShadow.js");
+/* harmony import */ var _components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/Color Control/ColorComponent */ "./src/components/Color Control/ColorComponent.js");
+/* harmony import */ var _components_radio_control__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/radio-control */ "./src/components/radio-control.js");
+/* harmony import */ var _components_responsive_radio__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/responsive-radio */ "./src/components/responsive-radio.js");
+/* harmony import */ var _components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/RangeControl/single-range-control */ "./src/components/RangeControl/single-range-control.js");
+/* harmony import */ var _components_inspectorTabs__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/inspectorTabs */ "./src/components/inspectorTabs.js");
+/* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/inspectorTab */ "./src/components/inspectorTab.js");
+/* harmony import */ var _components_icons__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/icons */ "./src/components/icons.js");
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+/* harmony import */ var _components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/premium-responsive-tabs */ "./src/components/premium-responsive-tabs.js");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_17__);
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_18__);
+
 
 
 
@@ -7041,7 +7063,7 @@ class PremiumAccordion extends Component {
       clientId
     } = this.props;
     setAttributes({
-      blockId: "premium-accordion-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_13__.generateBlockId)(clientId)
+      blockId: "premium-accordion-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_14__.generateBlockId)(clientId)
     });
 
     if (this.props.attributes.repeaterItems) {
@@ -7076,6 +7098,31 @@ class PremiumAccordion extends Component {
       hideTablet,
       hideMobile
     } = this.props.attributes;
+    let loadTitleGoogleFonts;
+    let loadDescGoogleFonts;
+
+    if ((titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily) !== 'Default') {
+      const titleConfig = {
+        google: {
+          families: [titleTypography.fontFamily]
+        }
+      };
+      loadTitleGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        config: titleConfig
+      });
+    }
+
+    if ((descTypography === null || descTypography === void 0 ? void 0 : descTypography.fontFamily) !== 'Default') {
+      const descConfig = {
+        google: {
+          families: [descTypography.fontFamily]
+        }
+      };
+      loadDescGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        config: descConfig
+      });
+    }
+
     const INNER_BLOCKS_TEMPLATE = [['premium/accordion-item', {
       title: __('Awesome Title'),
       placeholder: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
@@ -7164,11 +7211,13 @@ class PremiumAccordion extends Component {
         'border-bottom-left-radius': `${(titleBorder === null || titleBorder === void 0 ? void 0 : titleBorder.borderRadius[this.props.deviceType].bottom) || 0}px`,
         'border-bottom-right-radius': `${(titleBorder === null || titleBorder === void 0 ? void 0 : titleBorder.borderRadius[this.props.deviceType].left) || 0}px`
       };
-      styles[`.${blockId} .premium-accordion__icon_wrap svg.premium-accordion__icon`] = {
-        fill: arrowStyles[0].arrowColor,
+      styles[`.${blockId} .premium-accordion__icon_wrap`] = {
         'background-color': arrowStyles[0].arrowBack,
         padding: arrowStyles[0].arrowPadding + "px",
-        'border-radius': arrowStyles[0].arrowRadius + "px",
+        'border-radius': arrowStyles[0].arrowRadius + "px"
+      };
+      styles[`.${blockId} .premium-accordion__icon_wrap svg.premium-accordion__icon`] = {
+        fill: arrowStyles[0].arrowColor,
         width: `${arrowStyles[0].arrowSize}px`,
         height: `${arrowStyles[0].arrowSize}px`
       };
@@ -7215,20 +7264,20 @@ class PremiumAccordion extends Component {
         'line-height': `${descTypography === null || descTypography === void 0 ? void 0 : descTypography.lineHeight[this.props.deviceType]}${descTypography === null || descTypography === void 0 ? void 0 : descTypography.lineHeight.unit}`,
         'text-shadow': `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`
       };
-      return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_13__.generateCss)(styles);
+      return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_14__.generateCss)(styles);
     };
 
     return [isSelected && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, {
       key: "inspector"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_11__["default"], {
       tabs: ['layout', 'style', 'advance']
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_12__["default"], {
       key: 'layout'
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("Title", 'premium-blocks-for-gutenberg'),
       className: "premium-panel-body",
       initialOpen: true
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_radio_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_radio_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
       choices: [{
         value: 'h1',
         label: __('H1')
@@ -7253,15 +7302,15 @@ class PremiumAccordion extends Component {
         titleTag: newValue
       }),
       label: __("Title Tag", 'premium-blocks-for-gutenberg')
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_radio_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_radio_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
       choices: [{
         value: 'ltr',
         label: __('LTR'),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_12__["default"].arrowLeft
+        icon: _components_icons__WEBPACK_IMPORTED_MODULE_13__["default"].arrowLeft
       }, {
         value: 'rtl',
         label: __('RTL'),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_12__["default"].arrowRight
+        icon: _components_icons__WEBPACK_IMPORTED_MODULE_13__["default"].arrowRight
       }],
       value: direction,
       onChange: newEffect => setAttributes({
@@ -7273,7 +7322,7 @@ class PremiumAccordion extends Component {
       title: __("Content", 'premium-blocks-for-gutenberg'),
       className: "premium-panel-body",
       initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_radio_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_radio_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
       choices: [{
         value: 'text',
         label: __('Text')
@@ -7290,7 +7339,7 @@ class PremiumAccordion extends Component {
       title: __("Arrow", 'premium-blocks-for-gutenberg'),
       className: "premium-panel-body",
       initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_radio_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_radio_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
       choices: [{
         value: 'in',
         label: __('In')
@@ -7303,7 +7352,7 @@ class PremiumAccordion extends Component {
         arrowPos: newValue
       }),
       label: __("Position", 'premium-blocks-for-gutenberg')
-    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_12__["default"], {
       key: 'style'
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("Title", 'premium-blocks-for-gutenberg'),
@@ -7315,21 +7364,21 @@ class PremiumAccordion extends Component {
       onChange: newValue => setAttributes({
         titleTypography: newValue
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
       label: __("Text Color", 'premium-blocks-for-gutenberg'),
       colorValue: titleStyles[0].titleColor,
       colorDefault: '',
       onColorChange: value => saveTitleStyles({
         titleColor: value
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
       label: __("Background Color", 'premium-blocks-for-gutenberg'),
       colorValue: titleStyles[0].titleBack,
       colorDefault: '',
       onColorChange: value => saveTitleStyles({
         titleBack: value
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_6__["default"], {
       label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
       boxShadow: false,
       value: titleTextShadow,
@@ -7354,19 +7403,19 @@ class PremiumAccordion extends Component {
       title: __("Content", 'premium-blocks-for-gutenberg'),
       className: "premium-panel-body",
       initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_9__["default"], {
       choices: [{
         value: 'left',
         label: __('Left'),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_12__["default"].alignLeft
+        icon: _components_icons__WEBPACK_IMPORTED_MODULE_13__["default"].alignLeft
       }, {
         value: 'center',
         label: __('Center'),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_12__["default"].alignCenter
+        icon: _components_icons__WEBPACK_IMPORTED_MODULE_13__["default"].alignCenter
       }, {
         value: 'right',
         label: __('Right'),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_12__["default"].alignRight
+        icon: _components_icons__WEBPACK_IMPORTED_MODULE_13__["default"].alignRight
       }],
       value: descAlign,
       onChange: align => setAttributes({
@@ -7380,21 +7429,21 @@ class PremiumAccordion extends Component {
       onChange: newValue => setAttributes({
         descTypography: newValue
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
       label: __("Text Color", 'premium-blocks-for-gutenberg'),
       colorValue: descStyles[0].descColor,
       colorDefault: '',
       onColorChange: value => SaveDescStyles({
         descColor: value
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
       label: __("Background Color", 'premium-blocks-for-gutenberg'),
       colorValue: descStyles[0].descBack,
       colorDefault: '',
       onColorChange: value => SaveDescStyles({
         descBack: value
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null)), "text" === contentType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null)), "text" === contentType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_6__["default"], {
       label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
       boxShadow: false,
       value: textShadow,
@@ -7419,7 +7468,7 @@ class PremiumAccordion extends Component {
       title: __("Arrow", 'premium-blocks-for-gutenberg'),
       className: "premium-panel-body",
       initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_10__["default"], {
       label: __("Size", 'premium-blocks-for-gutenberg'),
       value: arrowStyles[0].arrowSize,
       onChange: newValue => saveArrowStyles({
@@ -7427,21 +7476,21 @@ class PremiumAccordion extends Component {
       }),
       showUnit: false,
       defaultValue: 20
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
       label: __("Arrow Color", 'premium-blocks-for-gutenberg'),
       colorValue: arrowStyles[0].arrowColor,
       colorDefault: '',
       onColorChange: newValue => saveArrowStyles({
         arrowColor: newValue
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
       label: __("Background Color", 'premium-blocks-for-gutenberg'),
       colorValue: arrowStyles[0].arrowBack,
       colorDefault: '',
       onColorChange: newValue => saveArrowStyles({
         arrowBack: newValue
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_10__["default"], {
       label: __("Border Radius", 'premium-blocks-for-gutenberg'),
       value: arrowStyles[0].arrowRadius,
       onChange: newValue => saveArrowStyles({
@@ -7449,7 +7498,7 @@ class PremiumAccordion extends Component {
       }),
       defaultValue: 0,
       showUnit: false
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_10__["default"], {
       label: __("Padding", 'premium-blocks-for-gutenberg'),
       value: arrowStyles[0].arrowPadding,
       onChange: newValue => saveArrowStyles({
@@ -7457,9 +7506,9 @@ class PremiumAccordion extends Component {
       }),
       defaultValue: 0,
       showUnit: false
-    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_12__["default"], {
       key: 'advance'
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_14__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_15__["default"], {
       Desktop: hideDesktop,
       Tablet: hideTablet,
       Mobile: hideMobile,
@@ -7479,12 +7528,12 @@ class PremiumAccordion extends Component {
       template: INNER_BLOCKS_TEMPLATE,
       templateLock: false,
       allowedBlocks: ['premium/accordion-item']
-    })))];
+    }), loadTitleGoogleFonts, loadDescGoogleFonts))];
   }
 
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_17__.compose)([withSelect(select => {
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_18__.compose)([withSelect(select => {
   const {
     __experimentalGetPreviewDeviceType = null
   } = select('core/edit-post');
@@ -7505,10 +7554,10 @@ class PremiumAccordion extends Component {
       } = ownProps;
       const {
         insertBlock
-      } = dispatch(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_16__.store);
+      } = dispatch(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_17__.store);
       const repeaterItems = [...attributes.repeaterItems];
       attributes.repeaterItems.map((item, index) => {
-        const insertedBlock = (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_15__.createBlock)("premium/accordion-item", {
+        const insertedBlock = (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_16__.createBlock)("premium/accordion-item", {
           title: item.titleText,
           description: item.descText
         });
@@ -7623,11 +7672,13 @@ const save = props => {
       'border-style': titleBorder && titleBorder.borderType,
       'border-color': titleBorder && titleBorder.borderColor
     };
-    styles[`.${blockId} .premium-accordion__icon_wrap svg.premium-accordion__icon`] = {
-      fill: arrowStyles[0].arrowColor,
+    styles[`.${blockId} .premium-accordion__icon_wrap`] = {
       'background-color': arrowStyles[0].arrowBack,
       padding: arrowStyles[0].arrowPadding + "px",
-      'border-radius': arrowStyles[0].arrowRadius + "px",
+      'border-radius': arrowStyles[0].arrowRadius + "px"
+    };
+    styles[`.${blockId} .premium-accordion__icon_wrap svg.premium-accordion__icon`] = {
+      fill: arrowStyles[0].arrowColor,
       width: `${arrowStyles[0].arrowSize}px`,
       height: `${arrowStyles[0].arrowSize}px`
     };
@@ -9765,7 +9816,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/inspectorTab */ "./src/components/inspectorTab.js");
 /* harmony import */ var _components_responsive_radio__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/responsive-radio */ "./src/components/responsive-radio.js");
 /* harmony import */ var _components_icons__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/icons */ "./src/components/icons.js");
-/* harmony import */ var react_google_font_loader__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-google-font-loader */ "./node_modules/react-google-font-loader/build/index.js");
+/* harmony import */ var react_google_font_loader__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-google-font-loader */ "./src/blocks/node_modules/react-google-font-loader/build/index.js");
 /* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
 
 
@@ -10654,16 +10705,6 @@ const attributes = {
   titleStyles: {
     type: "array",
     default: [{
-      titleLetter: 0,
-      titleStyle: '',
-      titleUpper: false,
-      titleWeight: 500,
-      titleLine: 0,
-      titleSize: 20,
-      titlefontSizeType: "px",
-      titlefontSizeMobile: 20,
-      titlefontSizeTablet: 20,
-      titleFontFamily: __('Default', 'premium-blocks-for-gutenberg'),
       titleColor: "#6EC1E4",
       titleHoverColor: "",
       titlemarginType: 'px'
@@ -12379,8 +12420,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../components/inspectorTab */ "./src/components/inspectorTab.js");
 /* harmony import */ var _components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../components/premium-responsive-tabs */ "./src/components/premium-responsive-tabs.js");
 /* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
-/* harmony import */ var react_google_font_loader__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! react-google-font-loader */ "./node_modules/react-google-font-loader/build/index.js");
-
 
 
 
@@ -12668,10 +12707,13 @@ class edit extends Component {
     let loadTitleGoogleFonts;
 
     if (titleTypography.fontFamily !== "Default") {
-      loadTitleGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_google_font_loader__WEBPACK_IMPORTED_MODULE_20__["default"], {
-        fonts: [{
-          font: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily
-        }]
+      const fontConfig = {
+        google: {
+          families: [titleTypography.fontFamily]
+        }
+      };
+      loadTitleGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_14__["default"], {
+        config: fontConfig
       });
     }
 
@@ -12925,7 +12967,7 @@ class edit extends Component {
 
       const styles = {};
       styles[`.${blockId} .premium-bullet-list__content-icon i:hover`] = {
-        'background-color': `${bulletIconStyles === null || bulletIconStyles === void 0 ? void 0 : (_bulletIconStyles$ = bulletIconStyles[0]) === null || _bulletIconStyles$ === void 0 ? void 0 : _bulletIconStyles$.bulletIconHoverColor}!important`,
+        'color': `${bulletIconStyles === null || bulletIconStyles === void 0 ? void 0 : (_bulletIconStyles$ = bulletIconStyles[0]) === null || _bulletIconStyles$ === void 0 ? void 0 : _bulletIconStyles$.bulletIconHoverColor}!important`,
         'background-color': `${bulletIconStyles === null || bulletIconStyles === void 0 ? void 0 : (_bulletIconStyles$2 = bulletIconStyles[0]) === null || _bulletIconStyles$2 === void 0 ? void 0 : _bulletIconStyles$2.bulletIconHoverBackgroundColor}!important`
       };
       styles[`.${blockId} .premium-bullet-list__label-wrap .premium-bullet-list__label:hover`] = {
@@ -13592,7 +13634,7 @@ function save(props) {
 
     const styles = {};
     styles[`.${blockId} .premium-bullet-list__content-icon i:hover`] = {
-      'background-color': `${bulletIconStyles === null || bulletIconStyles === void 0 ? void 0 : (_bulletIconStyles$ = bulletIconStyles[0]) === null || _bulletIconStyles$ === void 0 ? void 0 : _bulletIconStyles$.bulletIconHoverColor}!important`,
+      'color': `${bulletIconStyles === null || bulletIconStyles === void 0 ? void 0 : (_bulletIconStyles$ = bulletIconStyles[0]) === null || _bulletIconStyles$ === void 0 ? void 0 : _bulletIconStyles$.bulletIconHoverColor}!important`,
       'background-color': `${bulletIconStyles === null || bulletIconStyles === void 0 ? void 0 : (_bulletIconStyles$2 = bulletIconStyles[0]) === null || _bulletIconStyles$2 === void 0 ? void 0 : _bulletIconStyles$2.bulletIconHoverBackgroundColor}!important`
     };
     styles[`.${blockId} .premium-bullet-list__label-wrap .premium-bullet-list__label:hover`] = {
@@ -15747,8 +15789,12 @@ const attributes = {
     type: "string"
   },
   selfAlign: {
-    type: "string",
-    default: "center"
+    type: "object",
+    default: {
+      Desktop: "center",
+      Tablet: "center",
+      Mobile: "center"
+    }
   },
   titleCheck: {
     type: "boolean",
@@ -15788,8 +15834,6 @@ const attributes = {
     type: "array",
     default: [{
       titleColor: "",
-      titleT: 1,
-      titleB: 1,
       titleColor: ""
     }]
   },
@@ -15797,16 +15841,14 @@ const attributes = {
     type: "array",
     default: [{
       suffixTxt: "Suffix",
-      suffixColor: "",
-      suffixGap: 2
+      suffixColor: ""
     }]
   },
   prefixStyles: {
     type: "array",
     default: [{
       prefixTxt: "Prefix",
-      prefixColor: "",
-      prefixGap: 2
+      prefixColor: ""
     }]
   },
   padding: {
@@ -16013,12 +16055,252 @@ const attributes = {
       backgroundRepeat: "",
       backgroundSize: "",
       fixed: false,
-      gradientLocationOne: "",
-      gradientColorTwo: "",
-      gradientLocationTwo: "",
-      gradientAngle: "",
-      gradientPosition: "",
-      gradientType: ""
+      "gradientLocationOne": "0",
+      "gradientColorTwo": "",
+      "gradientLocationTwo": "100",
+      "gradientAngle": "180",
+      "gradientPosition": "center center",
+      "gradientType": "linear"
+    }
+  },
+  prefixPadding: {
+    type: "object",
+    default: {
+      Desktop: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      Tablet: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      Mobile: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      unit: "px"
+    }
+  },
+  prefixMargin: {
+    type: "object",
+    default: {
+      Desktop: {
+        top: "2",
+        right: "2",
+        bottom: "2",
+        left: "2"
+      },
+      Tablet: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      Mobile: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      unit: "px"
+    }
+  },
+  padding: {
+    type: "object",
+    default: {
+      Desktop: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      Tablet: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      Mobile: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      unit: "px"
+    }
+  },
+  numberPadding: {
+    type: "object",
+    default: {
+      Desktop: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      Tablet: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      Mobile: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      unit: "px"
+    }
+  },
+  numberMargin: {
+    type: "object",
+    default: {
+      Desktop: {
+        top: "",
+        right: "2",
+        bottom: "",
+        left: ""
+      },
+      Tablet: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      Mobile: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      unit: "px"
+    }
+  },
+  suffixPadding: {
+    type: "object",
+    default: {
+      Desktop: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      Tablet: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      Mobile: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      unit: "px"
+    }
+  },
+  suffixMargin: {
+    type: "object",
+    default: {
+      Desktop: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: "2"
+      },
+      Tablet: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      Mobile: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      unit: "px"
+    }
+  },
+  iconMargin: {
+    type: "object",
+    default: {
+      Desktop: {
+        top: "2",
+        right: "2",
+        bottom: "2",
+        left: "2"
+      },
+      Tablet: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      Mobile: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      unit: "px"
+    }
+  },
+  titlePadding: {
+    type: "object",
+    default: {
+      Desktop: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      Tablet: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      Mobile: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      unit: "px"
+    }
+  },
+  titleMargin: {
+    type: "object",
+    default: {
+      Desktop: {
+        top: "1",
+        right: "",
+        bottom: "1",
+        left: ""
+      },
+      Tablet: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      Mobile: {
+        top: "",
+        right: "",
+        bottom: "",
+        left: ""
+      },
+      unit: "px"
     }
   }
 };
@@ -16617,7 +16899,7 @@ const deprecatedContent = [{
   },
 
   migrate: attributes => {
-    var _attributes$numberSty, _attributes$numberSty2, _attributes$numberSty3, _attributes$numberSty4, _attributes$numberSty5, _attributes$prefixSty, _attributes$prefixSty2, _attributes$prefixSty3, _attributes$prefixSty4, _attributes$prefixSty5, _attributes$prefixSty6, _attributes$suffixSty, _attributes$suffixSty2, _attributes$suffixSty3, _attributes$suffixSty4, _attributes$suffixSty5, _attributes$suffixSty6, _attributes$titleStyl, _attributes$titleStyl2, _attributes$titleStyl3, _attributes$titleStyl4, _attributes$titleStyl5, _attributes$titleStyl6, _attributes$titleStyl7, _attributes$titleStyl8, _attributes$titleStyl9, _attributes$container, _attributes$container2, _attributes$container3, _attributes$container4, _attributes$container5, _attributes$container6, _attributes$container7, _attributes$container8, _attributes$container9, _attributes$container10, _attributes$container11, _attributes$container12, _attributes$container13, _attributes$container14, _attributes$container15, _attributes$container16, _attributes$container17, _attributes$container18, _attributes$container19, _attributes$container20, _attributes$container21, _attributes$container22, _attributes$container23, _attributes$container24;
+    var _attributes$numberSty, _attributes$numberSty2, _attributes$numberSty3, _attributes$numberSty4, _attributes$numberSty5, _attributes$prefixSty, _attributes$prefixSty2, _attributes$prefixSty3, _attributes$prefixSty4, _attributes$prefixSty5, _attributes$prefixSty6, _attributes$suffixSty, _attributes$suffixSty2, _attributes$suffixSty3, _attributes$suffixSty4, _attributes$suffixSty5, _attributes$suffixSty6, _attributes$titleStyl, _attributes$titleStyl2, _attributes$titleStyl3, _attributes$titleStyl4, _attributes$titleStyl5, _attributes$titleStyl6, _attributes$titleStyl7, _attributes$titleStyl8, _attributes$titleStyl9, _attributes$titleStyl10, _attributes$titleStyl11, _attributes$container, _attributes$container2, _attributes$container3, _attributes$container4, _attributes$container5, _attributes$container6, _attributes$container7, _attributes$container8, _attributes$container9, _attributes$container10, _attributes$container11, _attributes$container12, _attributes$container13, _attributes$container14, _attributes$container15, _attributes$container16, _attributes$container17, _attributes$container18, _attributes$container19, _attributes$container20, _attributes$container21, _attributes$container22, _attributes$container23, _attributes$container24;
 
     let newAttributes = {
       blockId: attributes.block_id ? "premium-countup-" + attributes.block_id : '',
@@ -16656,9 +16938,19 @@ const deprecatedContent = [{
         "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$numberSty = attributes.numberStyles[0]) === null || _attributes$numberSty === void 0 ? void 0 : _attributes$numberSty.numberWeight) || '',
         'fontStyle': '',
         'textTransform': '',
-        'letterSpacing': '',
         'fontFamily': (attributes === null || attributes === void 0 ? void 0 : attributes.counterFamily) || '',
-        'lineHeight': '',
+        lineHeight: {
+          Desktop: "",
+          Tablet: "",
+          Mobile: "",
+          unit: "px"
+        },
+        letterSpacing: {
+          Desktop: "",
+          Tablet: "",
+          Mobile: "",
+          unit: "px"
+        },
         'textDecoration': '',
         'fontSize': {
           'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$numberSty2 = attributes.numberStyles[0]) === null || _attributes$numberSty2 === void 0 ? void 0 : _attributes$numberSty2.numberSize) || '',
@@ -16671,9 +16963,19 @@ const deprecatedContent = [{
         "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$prefixSty = attributes.prefixStyles[0]) === null || _attributes$prefixSty === void 0 ? void 0 : _attributes$prefixSty.prefixWeight) || '',
         'fontStyle': '',
         'textTransform': '',
-        'letterSpacing': '',
         'fontFamily': (attributes === null || attributes === void 0 ? void 0 : (_attributes$prefixSty2 = attributes.prefixStyles[0]) === null || _attributes$prefixSty2 === void 0 ? void 0 : _attributes$prefixSty2.prefixFamily) || '',
-        'lineHeight': '',
+        lineHeight: {
+          Desktop: "",
+          Tablet: "",
+          Mobile: "",
+          unit: "px"
+        },
+        letterSpacing: {
+          Desktop: "",
+          Tablet: "",
+          Mobile: "",
+          unit: "px"
+        },
         'textDecoration': '',
         'fontSize': {
           'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$prefixSty3 = attributes.prefixStyles[0]) === null || _attributes$prefixSty3 === void 0 ? void 0 : _attributes$prefixSty3.prefixSize) || '',
@@ -16686,9 +16988,19 @@ const deprecatedContent = [{
         "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$suffixSty = attributes.suffixStyles[0]) === null || _attributes$suffixSty === void 0 ? void 0 : _attributes$suffixSty.suffixWeight) || '',
         'fontStyle': '',
         'textTransform': '',
-        'letterSpacing': '',
         'fontFamily': (attributes === null || attributes === void 0 ? void 0 : (_attributes$suffixSty2 = attributes.suffixStyles[0]) === null || _attributes$suffixSty2 === void 0 ? void 0 : _attributes$suffixSty2.suffixFamily) || '',
-        'lineHeight': '',
+        lineHeight: {
+          Desktop: "",
+          Tablet: "",
+          Mobile: "",
+          unit: "px"
+        },
+        letterSpacing: {
+          Desktop: "",
+          Tablet: "",
+          Mobile: "",
+          unit: "px"
+        },
         'textDecoration': '',
         'fontSize': {
           'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$suffixSty3 = attributes.suffixStyles[0]) === null || _attributes$suffixSty3 === void 0 ? void 0 : _attributes$suffixSty3.suffixSize) || '',
@@ -16701,15 +17013,25 @@ const deprecatedContent = [{
         "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl = attributes.titleStyles[0]) === null || _attributes$titleStyl === void 0 ? void 0 : _attributes$titleStyl.titleWeight) || '',
         'fontStyle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl2 = attributes.titleStyles[0]) === null || _attributes$titleStyl2 === void 0 ? void 0 : _attributes$titleStyl2.titleStyle) || '',
         'textTransform': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl3 = attributes.titleStyles[0]) === null || _attributes$titleStyl3 === void 0 ? void 0 : _attributes$titleStyl3.titleUpper) || '',
-        'letterSpacing': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl4 = attributes.titleStyles[0]) === null || _attributes$titleStyl4 === void 0 ? void 0 : _attributes$titleStyl4.titleSpacing) || '',
-        'fontFamily': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl5 = attributes.titleStyles[0]) === null || _attributes$titleStyl5 === void 0 ? void 0 : _attributes$titleStyl5.titleFamily) || '',
-        'lineHeight': '',
+        'fontFamily': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl4 = attributes.titleStyles[0]) === null || _attributes$titleStyl4 === void 0 ? void 0 : _attributes$titleStyl4.titleFamily) || '',
+        lineHeight: {
+          Desktop: "",
+          Tablet: "",
+          Mobile: "",
+          unit: "px"
+        },
+        letterSpacing: {
+          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl5 = attributes.titleStyles[0]) === null || _attributes$titleStyl5 === void 0 ? void 0 : _attributes$titleStyl5.titleSpacing) || '',
+          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl6 = attributes.titleStyles[0]) === null || _attributes$titleStyl6 === void 0 ? void 0 : _attributes$titleStyl6.titleSpacing) || '',
+          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl7 = attributes.titleStyles[0]) === null || _attributes$titleStyl7 === void 0 ? void 0 : _attributes$titleStyl7.titleSpacing) || '',
+          unit: "px"
+        },
         'textDecoration': '',
         'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl6 = attributes.titleStyles[0]) === null || _attributes$titleStyl6 === void 0 ? void 0 : _attributes$titleStyl6.titleSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl7 = attributes.titleStyles[0]) === null || _attributes$titleStyl7 === void 0 ? void 0 : _attributes$titleStyl7.titleSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl8 = attributes.titleStyles[0]) === null || _attributes$titleStyl8 === void 0 ? void 0 : _attributes$titleStyl8.titleSizeMobile) || '',
-          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl9 = attributes.titleStyles[0]) === null || _attributes$titleStyl9 === void 0 ? void 0 : _attributes$titleStyl9.titleSizeUnit) || 'px'
+          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl8 = attributes.titleStyles[0]) === null || _attributes$titleStyl8 === void 0 ? void 0 : _attributes$titleStyl8.titleSize) || '',
+          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl9 = attributes.titleStyles[0]) === null || _attributes$titleStyl9 === void 0 ? void 0 : _attributes$titleStyl9.titleSizeTablet) || '',
+          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl10 = attributes.titleStyles[0]) === null || _attributes$titleStyl10 === void 0 ? void 0 : _attributes$titleStyl10.titleSizeMobile) || '',
+          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl11 = attributes.titleStyles[0]) === null || _attributes$titleStyl11 === void 0 ? void 0 : _attributes$titleStyl11.titleSizeUnit) || 'px'
         }
       },
       boxShadow: {
@@ -16778,6 +17100,69 @@ const deprecatedContent = [{
         'gradientAngle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container22 = attributes.containerStyles[0]) === null || _attributes$container22 === void 0 ? void 0 : _attributes$container22.gradientAngle) || '180',
         'gradientPosition': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container23 = attributes.containerStyles[0]) === null || _attributes$container23 === void 0 ? void 0 : _attributes$container23.gradientPosition) || 'center center',
         'gradientType': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container24 = attributes.containerStyles[0]) === null || _attributes$container24 === void 0 ? void 0 : _attributes$container24.gradientType) || 'linear'
+      },
+      prefixMargin: {
+        "Desktop": {
+          top: attributes.prefixGap || '',
+          right: attributes.prefixGap || '',
+          bottom: attributes.prefixGap || '',
+          left: attributes.prefixGap || ''
+        },
+        "Tablet": {
+          top: '',
+          right: '',
+          bottom: '',
+          left: ''
+        },
+        "Mobile": {
+          top: '',
+          right: '',
+          bottom: '',
+          left: ''
+        },
+        "unit": "px"
+      },
+      suffixMargin: {
+        "Desktop": {
+          top: attributes.suffixGap || '',
+          right: attributes.suffixGap || '',
+          bottom: attributes.suffixGap || '',
+          left: attributes.suffixGap || ''
+        },
+        "Tablet": {
+          top: '',
+          right: '',
+          bottom: '',
+          left: ''
+        },
+        "Mobile": {
+          top: '',
+          right: '',
+          bottom: '',
+          left: ''
+        },
+        "unit": "px"
+      },
+      titleMargin: {
+        "Desktop": {
+          top: attributes.suffixGap || '',
+          right: attributes.suffixGap || '',
+          bottom: attributes.suffixGap || '',
+          left: attributes.suffixGap || ''
+        },
+        "Tablet": {
+          top: '',
+          right: '',
+          bottom: '',
+          left: ''
+        },
+        "Mobile": {
+          top: '',
+          right: '',
+          bottom: '',
+          left: ''
+        },
+        "unit": "px"
       }
     };
     return Object.assign(attributes, newAttributes);
@@ -18159,10 +18544,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_responsive_radio__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/responsive-radio */ "./src/components/responsive-radio.js");
 /* harmony import */ var _components_icons__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/icons */ "./src/components/icons.js");
 /* harmony import */ var _components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/premium-responsive-spacing */ "./src/components/premium-responsive-spacing.js");
-/* harmony import */ var react_google_font_loader__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-google-font-loader */ "./node_modules/react-google-font-loader/build/index.js");
-/* harmony import */ var _components_inspectorTabs__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/inspectorTabs */ "./src/components/inspectorTabs.js");
-/* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/inspectorTab */ "./src/components/inspectorTab.js");
-/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+/* harmony import */ var _components_inspectorTabs__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/inspectorTabs */ "./src/components/inspectorTabs.js");
+/* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/inspectorTab */ "./src/components/inspectorTab.js");
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+/* harmony import */ var _components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../components/typography/fontLoader */ "./src/components/typography/fontLoader.js");
 
 
 
@@ -18213,7 +18598,7 @@ class edit extends Component {
       clientId
     } = this.props;
     setAttributes({
-      blockId: "premium-countup-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__.generateBlockId)(clientId)
+      blockId: "premium-countup-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_16__.generateBlockId)(clientId)
     });
     setAttributes({
       classMigrate: true
@@ -18261,7 +18646,16 @@ class edit extends Component {
       titleTypography,
       boxShadow,
       border,
-      background
+      background,
+      prefixPadding,
+      prefixMargin,
+      numberPadding,
+      numberMargin,
+      suffixPadding,
+      suffixMargin,
+      iconMargin,
+      titlePadding,
+      titleMargin
     } = this.props.attributes;
     let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
     const ICONS = [{
@@ -18297,34 +18691,46 @@ class edit extends Component {
     let loadPrefixGoogleFonts;
 
     if ((numberTypography === null || numberTypography === void 0 ? void 0 : numberTypography.fontFamily) !== 'Default') {
-      loadCounterGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_google_font_loader__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        fonts: [{
-          font: numberTypography === null || numberTypography === void 0 ? void 0 : numberTypography.fontFamily
-        }]
+      const numberConfig = {
+        google: {
+          families: [numberTypography.fontFamily]
+        }
+      };
+      loadCounterGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_17__["default"], {
+        config: numberConfig
       });
     }
 
     if ((titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily) !== "Default") {
-      loadTitleGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_google_font_loader__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        fonts: [{
-          font: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily
-        }]
+      const titleConfig = {
+        google: {
+          families: [titleTypography.fontFamily]
+        }
+      };
+      loadTitleGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_17__["default"], {
+        config: titleConfig
       });
     }
 
     if ((suffixTypography === null || suffixTypography === void 0 ? void 0 : suffixTypography.fontFamily) !== "Default") {
-      loadSuffixGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_google_font_loader__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        fonts: [{
-          font: suffixTypography === null || suffixTypography === void 0 ? void 0 : suffixTypography.fontFamily
-        }]
+      const suffixConfig = {
+        google: {
+          families: [suffixTypography.fontFamily]
+        }
+      };
+      loadSuffixGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_17__["default"], {
+        config: suffixConfig
       });
     }
 
     if ((prefixTypography === null || prefixTypography === void 0 ? void 0 : prefixTypography.fontFamily) !== "Default") {
-      loadPrefixGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_google_font_loader__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        fonts: [{
-          font: prefixTypography === null || prefixTypography === void 0 ? void 0 : prefixTypography.fontFamily
-        }]
+      const prefixConfig = {
+        google: {
+          families: [prefixTypography.fontFamily]
+        }
+      };
+      loadPrefixGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_17__["default"], {
+        config: prefixConfig
       });
     }
 
@@ -18392,13 +18798,13 @@ class edit extends Component {
       ' premium-desktop-hidden': hideDesktop,
       ' premium-tablet-hidden': hideTablet,
       ' premium-mobile-hidden': hideMobile
-    }, "premium-countup"); // const alignProperty = flexDir.includes("column") ? 
+    }, "premium-countup__wrap"); // const alignProperty = flexDir.includes("column") ? 
 
     return [isSelected && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, {
       key: "inspector"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_15__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_14__["default"], {
       tabs: ['layout', 'style', 'advance']
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_16__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_15__["default"], {
       key: 'layout'
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("Counter", 'premium-blocks-for-gutenberg'),
@@ -18545,7 +18951,7 @@ class edit extends Component {
         imageURL: "",
         imageURL: ""
       })
-    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_16__["default"], {
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_15__["default"], {
       key: 'style'
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("Container", 'premium-blocks-for-gutenberg'),
@@ -18597,6 +19003,14 @@ class edit extends Component {
       onColorChange: newValue => setAttributes({
         iconColor: newValue
       })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_13__["default"], {
+      value: iconMargin,
+      responsive: true,
+      showUnits: true,
+      label: __("Margin", 'premium-blocks-for-gutenberg'),
+      onChange: value => setAttributes({
+        iconMargin: value
+      })
     })), titleCheck && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("Title", 'premium-blocks-for-gutenberg'),
       className: "premium-panel-body",
@@ -18613,22 +19027,22 @@ class edit extends Component {
       onColorChange: newValue => saveTitleStyles({
         titleColor: newValue
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
-      label: __("Margin Top", 'premium-blocks-for-gutenberg'),
-      value: titleStyles[0].titleT,
-      onChange: newValue => saveTitleStyles({
-        titleT: newValue
-      }),
-      showUnit: false,
-      defaultValue: 0
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
-      label: __("Margin Bottom", 'premium-blocks-for-gutenberg'),
-      value: titleStyles[0].titleB,
-      onChange: newValue => saveTitleStyles({
-        titleB: newValue
-      }),
-      showUnit: false,
-      defaultValue: 0
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_13__["default"], {
+      value: titleMargin,
+      responsive: true,
+      showUnits: true,
+      label: __("Margin", 'premium-blocks-for-gutenberg'),
+      onChange: value => setAttributes({
+        titleMargin: value
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_13__["default"], {
+      value: titlePadding,
+      responsive: true,
+      showUnits: true,
+      label: __("Padding", 'premium-blocks-for-gutenberg'),
+      onChange: value => setAttributes({
+        titlePadding: value
+      })
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("Number", 'premium-blocks-for-gutenberg'),
       className: "premium-panel-body",
@@ -18644,6 +19058,22 @@ class edit extends Component {
       colorDefault: '',
       onColorChange: newValue => saveNumberStyles({
         numberColor: newValue
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_13__["default"], {
+      value: numberMargin,
+      responsive: true,
+      showUnits: true,
+      label: __("Margin", 'premium-blocks-for-gutenberg'),
+      onChange: value => setAttributes({
+        numberMargin: value
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_13__["default"], {
+      value: numberPadding,
+      responsive: true,
+      showUnits: true,
+      label: __("Padding", 'premium-blocks-for-gutenberg'),
+      onChange: value => setAttributes({
+        numberPadding: value
       })
     })), prefix && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("Prefix", 'premium-blocks-for-gutenberg'),
@@ -18661,14 +19091,22 @@ class edit extends Component {
       onColorChange: newValue => savePrefixStyle({
         prefixColor: newValue
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
-      label: __("Gap After", 'premium-blocks-for-gutenberg'),
-      value: prefixStyles[0].prefixGap,
-      onChange: newValue => savePrefixStyle({
-        prefixGap: newValue
-      }),
-      showUnit: false,
-      defaultValue: 2
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_13__["default"], {
+      value: prefixMargin,
+      responsive: true,
+      showUnits: true,
+      label: __("Margin", 'premium-blocks-for-gutenberg'),
+      onChange: value => setAttributes({
+        prefixMargin: value
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_13__["default"], {
+      value: prefixPadding,
+      responsive: true,
+      showUnits: true,
+      label: __("Padding", 'premium-blocks-for-gutenberg'),
+      onChange: value => setAttributes({
+        prefixPadding: value
+      })
     })), suffix && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("Suffix", 'premium-blocks-for-gutenberg'),
       className: "premium-panel-body",
@@ -18685,15 +19123,23 @@ class edit extends Component {
       onColorChange: newValue => saveSuffixStyle({
         suffixColor: newValue
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
-      label: __("Gap Before", 'premium-blocks-for-gutenberg'),
-      value: suffixStyles[0].suffixGap,
-      onChange: newValue => saveSuffixStyle({
-        suffixGap: newValue
-      }),
-      showUnit: false,
-      defaultValue: 2
-    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_16__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_13__["default"], {
+      value: suffixMargin,
+      responsive: true,
+      showUnits: true,
+      label: __("Margin", 'premium-blocks-for-gutenberg'),
+      onChange: value => setAttributes({
+        suffixMargin: value
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_13__["default"], {
+      value: suffixPadding,
+      responsive: true,
+      showUnits: true,
+      label: __("Padding", 'premium-blocks-for-gutenberg'),
+      onChange: value => setAttributes({
+        suffixPadding: value
+      })
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_15__["default"], {
       key: 'advance'
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_7__["default"], {
       Desktop: hideDesktop,
@@ -18711,21 +19157,22 @@ class edit extends Component {
     })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, iconType === "fa" && 1 != _assets_js_settings__WEBPACK_IMPORTED_MODULE_2__.FontAwesomeEnabled && iconCheck && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
       className: `premium-countup__alert`
     }, __("Please Enable Font Awesome Icons from Plugin settings", 'premium-blocks-for-gutenberg'))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `${mainClasses}__wrap ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`,
+      className: `${mainClasses} ${blockId}`,
       style: {
         justifyContent: align === null || align === void 0 ? void 0 : align[this.props.deviceType],
         flexDirection: flexDir,
         boxShadow: `${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.horizontal}px ${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.vertical}px ${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.blur}px ${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.color} ${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.position}`,
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__.borderCss)(border, this.props.deviceType),
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__.paddingCss)(padding, this.props.deviceType),
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__.gradientBackground)(background)
+        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_16__.borderCss)(border, this.props.deviceType),
+        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_16__.paddingCss)(padding, this.props.deviceType),
+        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_16__.gradientBackground)(background)
       }
     }, iconCheck && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: `premium-countup__icon_wrap`,
       style: {
         marginRight: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
         marginLeft: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
-        alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign === null || selfAlign === void 0 ? void 0 : selfAlign[this.props.deviceType]
+        alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign === null || selfAlign === void 0 ? void 0 : selfAlign[this.props.deviceType],
+        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_16__.marginCss)(iconMargin, this.props.deviceType)
       }
     }, "icon" === icon && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
       className: `premium-countup__icon ${iconClass}`,
@@ -18755,7 +19202,9 @@ class edit extends Component {
       style: {
         color: prefixStyles[0].prefixColor,
         marginRight: `${prefixStyles[0].prefixGap}px`,
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__.typographyCss)(prefixTypography, this.props.deviceType)
+        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_16__.typographyCss)(prefixTypography, this.props.deviceType),
+        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_16__.marginCss)(prefixMargin, this.props.deviceType),
+        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_16__.paddingCss)(prefixPadding, this.props.deviceType)
       },
       tagName: "p"
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
@@ -18766,7 +19215,9 @@ class edit extends Component {
       }),
       style: {
         color: numberStyles[0].numberColor,
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__.typographyCss)(numberTypography, this.props.deviceType)
+        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_16__.typographyCss)(numberTypography, this.props.deviceType),
+        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_16__.marginCss)(numberMargin, this.props.deviceType),
+        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_16__.paddingCss)(numberPadding, this.props.deviceType)
       },
       tagName: "p",
       "data-interval": time,
@@ -18779,8 +19230,9 @@ class edit extends Component {
       }),
       style: {
         color: suffixStyles[0].suffixColor,
-        marginLeft: suffixStyles[0].suffixGap + "px",
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__.typographyCss)(suffixTypography, this.props.deviceType)
+        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_16__.typographyCss)(suffixTypography, this.props.deviceType),
+        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_16__.marginCss)(suffixMargin, this.props.deviceType),
+        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_16__.paddingCss)(suffixPadding, this.props.deviceType)
       },
       tagName: "p"
     })), titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
@@ -18791,9 +19243,9 @@ class edit extends Component {
       }),
       style: {
         color: titleStyles[0].titleColor,
-        marginTop: titleStyles[0].titleT + "px",
-        marginBottom: titleStyles[0].titleB + "px",
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__.typographyCss)(titleTypography, this.props.deviceType)
+        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_16__.typographyCss)(titleTypography, this.props.deviceType),
+        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_16__.marginCss)(titleMargin, this.props.deviceType),
+        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_16__.paddingCss)(titlePadding, this.props.deviceType)
       },
       tagName: "h3"
     })), titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
@@ -18804,10 +19256,10 @@ class edit extends Component {
       }),
       style: {
         color: titleStyles[0].titleColor,
-        marginTop: titleStyles[0].titleT + "px",
-        marginBottom: titleStyles[0].titleB + "px",
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__.typographyCss)(titleTypography, this.props.deviceType),
-        alignSelf: selfAlign === null || selfAlign === void 0 ? void 0 : selfAlign[this.props.deviceType]
+        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_16__.typographyCss)(titleTypography, this.props.deviceType),
+        alignSelf: selfAlign === null || selfAlign === void 0 ? void 0 : selfAlign[this.props.deviceType],
+        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_16__.marginCss)(titleMargin, this.props.deviceType),
+        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_16__.paddingCss)(titlePadding, this.props.deviceType)
       },
       tagName: "h3"
     }), loadCounterGoogleFonts, loadTitleGoogleFonts, loadSuffixGoogleFonts, loadPrefixGoogleFonts)];
@@ -18934,9 +19386,13 @@ const save = props => {
     background
   } = props.attributes;
   let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
-  const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, 'premium-countup');
+  const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, 'premium-countup__wrap', {
+    ' premium-desktop-hidden': hideDesktop,
+    ' premium-tablet-hidden': hideTablet,
+    ' premium-mobile-hidden': hideMobile
+  });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `${mainClasses}__wrap ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`,
+    className: `${mainClasses} ${blockId}`,
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       flexDirection: flexDir,
       boxShadow: `${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.horizontal}px ${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.vertical}px ${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.blur}px ${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.color} ${boxShadow === null || boxShadow === void 0 ? void 0 : boxShadow.position}`,
@@ -18948,8 +19404,7 @@ const save = props => {
     className: `premium-countup__icon_wrap`,
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       marginRight: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
-      marginLeft: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0",
-      alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
+      marginLeft: "row" === flexDir || "row-reverse" === flexDir ? iconSpacing + "px" : "0"
     })
   }, "icon" === icon && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
     className: `premium-countup__icon ${iconClass}`,
@@ -18964,17 +19419,13 @@ const save = props => {
       height: iconSize + "px"
     })
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `premium-countup__info`,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
-      alignSelf: "row-reverse" === flexDir || "row" === flexDir ? "center" : selfAlign
-    })
+    className: `premium-countup__info`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-countup__desc`
   }, prefix && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: `premium-countup__prefix`,
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       color: prefixStyles[0].prefixColor,
-      marginRight: prefixStyles[0].prefixGap + "px",
       fontStyle: prefixTypography === null || prefixTypography === void 0 ? void 0 : prefixTypography.fontStyle,
       fontFamily: prefixTypography === null || prefixTypography === void 0 ? void 0 : prefixTypography.fontFamily,
       fontWeight: prefixTypography === null || prefixTypography === void 0 ? void 0 : prefixTypography.fontWeight,
@@ -18997,7 +19448,6 @@ const save = props => {
     className: `premium-countup__suffix`,
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       color: suffixStyles[0].suffixColor,
-      marginLeft: suffixStyles[0].suffixGap + "px",
       fontStyle: suffixTypography === null || suffixTypography === void 0 ? void 0 : suffixTypography.fontStyle,
       fontFamily: suffixTypography === null || suffixTypography === void 0 ? void 0 : suffixTypography.fontFamily,
       fontWeight: suffixTypography === null || suffixTypography === void 0 ? void 0 : suffixTypography.fontWeight,
@@ -19007,8 +19457,6 @@ const save = props => {
   }, suffixStyles[0].suffixTxt)), titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
     className: `premium-countup__title`,
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
-      marginTop: titleStyles[0].titleT + "px",
-      marginBottom: titleStyles[0].titleB + "px",
       color: titleStyles[0].titleColor,
       fontStyle: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontStyle,
       fontFamily: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily,
@@ -19019,15 +19467,12 @@ const save = props => {
   }, titleTxt)), titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
     className: `premium-countup__title`,
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
-      marginTop: titleStyles[0].titleT + "px",
-      marginBottom: titleStyles[0].titleB + "px",
       color: titleStyles[0].titleColor,
       fontStyle: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontStyle,
       fontFamily: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily,
       fontWeight: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontWeight,
       textDecoration: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textDecoration,
-      textTransform: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textTransform,
-      alignSelf: selfAlign
+      textTransform: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textTransform
     })
   }, titleTxt));
 };
@@ -19154,10 +19599,10 @@ const attributes = {
   secondTypography: {
     type: "object",
     default: {
-      fontWeight: "",
+      fontWeight: "400",
       fontStyle: "",
       textTransform: "",
-      fontFamily: "",
+      fontFamily: "Default",
       textDecoration: "",
       fontSize: {
         Desktop: "20",
@@ -20119,7 +20564,7 @@ const v8Attriutes = {
 const deprecatedContent = [{
   attributes: v8Attriutes,
   migrate: attributes => {
-    var _attributes$firstStyl, _attributes$firstStyl2, _attributes$firstStyl3, _attributes$firstStyl4, _attributes$firstStyl5, _attributes$firstStyl6, _attributes$firstStyl7, _attributes$firstStyl8, _attributes$firstStyl9, _attributes$firstStyl10, _attributes$firstStyl11, _attributes$firstStyl12, _attributes$secondSty, _attributes$secondSty2, _attributes$secondSty3, _attributes$secondSty4, _attributes$secondSty5, _attributes$secondSty6, _attributes$secondSty7, _attributes$secondSty8, _attributes$secondSty9, _attributes$secondSty10, _attributes$secondSty11, _attributes$secondSty12, _attributes$container, _attributes$container2, _attributes$container3, _attributes$container4, _attributes$container5, _attributes$container6, _attributes$container7, _attributes$container8, _attributes$container9, _attributes$container10, _attributes$container11, _attributes$container12, _attributes$firstStyl13, _attributes$firstStyl14, _attributes$firstStyl15, _attributes$firstStyl16, _attributes$firstStyl17, _attributes$firstStyl18, _attributes$firstStyl19, _attributes$firstStyl20, _attributes$firstStyl21, _attributes$firstStyl22, _attributes$firstStyl23, _attributes$firstStyl24, _attributes$firstStyl25, _attributes$firstStyl26, _attributes$firstStyl27, _attributes$firstStyl28, _attributes$firstStyl29, _attributes$firstStyl30, _attributes$secondSty13, _attributes$secondSty14, _attributes$secondSty15, _attributes$secondSty16, _attributes$secondSty17, _attributes$secondSty18, _attributes$secondSty19, _attributes$secondSty20, _attributes$secondSty21, _attributes$secondSty22, _attributes$secondSty23, _attributes$secondSty24, _attributes$secondSty25, _attributes$secondSty26, _attributes$secondSty27, _attributes$secondSty28, _attributes$secondSty29, _attributes$secondSty30, _attributes$container13, _attributes$container14, _attributes$container15, _attributes$container16, _attributes$container17, _attributes$container18, _attributes$container19, _attributes$container20, _attributes$container21, _attributes$container22, _attributes$container23, _attributes$container24, _attributes$container25, _attributes$container26, _attributes$container27, _attributes$container28, _attributes$container29, _attributes$container30, _attributes$container31, _attributes$container32, _attributes$container33, _attributes$container34, _attributes$container35, _attributes$container36, _attributes$container37, _attributes$container38, _attributes$firstStyl31, _attributes$firstStyl32, _attributes$firstStyl33, _attributes$firstStyl34, _attributes$firstStyl35, _attributes$firstStyl36, _attributes$firstStyl37, _attributes$firstStyl38, _attributes$secondSty31, _attributes$secondSty32, _attributes$secondSty33, _attributes$secondSty34, _attributes$secondSty35, _attributes$secondSty36, _attributes$secondSty37, _attributes$secondSty38, _attributes$firstStyl39, _attributes$firstStyl40, _attributes$firstStyl41, _attributes$firstStyl42, _attributes$firstStyl43, _attributes$firstStyl44, _attributes$firstStyl45, _attributes$firstStyl46, _attributes$firstStyl47, _attributes$firstStyl48, _attributes$firstStyl49, _attributes$firstStyl50, _attributes$secondSty39, _attributes$secondSty40, _attributes$secondSty41, _attributes$secondSty42, _attributes$secondSty43, _attributes$secondSty44, _attributes$secondSty45, _attributes$secondSty46, _attributes$secondSty47, _attributes$secondSty48, _attributes$secondSty49, _attributes$secondSty50;
+    var _attributes$firstStyl, _attributes$firstStyl2, _attributes$firstStyl3, _attributes$firstStyl4, _attributes$firstStyl5, _attributes$firstStyl6, _attributes$firstStyl7, _attributes$firstStyl8, _attributes$firstStyl9, _attributes$firstStyl10, _attributes$firstStyl11, _attributes$firstStyl12, _attributes$secondSty, _attributes$secondSty2, _attributes$secondSty3, _attributes$secondSty4, _attributes$secondSty5, _attributes$secondSty6, _attributes$secondSty7, _attributes$secondSty8, _attributes$secondSty9, _attributes$secondSty10, _attributes$secondSty11, _attributes$secondSty12, _attributes$container, _attributes$container2, _attributes$container3, _attributes$container4, _attributes$container5, _attributes$container6, _attributes$container7, _attributes$container8, _attributes$container9, _attributes$container10, _attributes$container11, _attributes$container12, _attributes$firstStyl13, _attributes$firstStyl14, _attributes$firstStyl15, _attributes$firstStyl16, _attributes$firstStyl17, _attributes$firstStyl18, _attributes$firstStyl19, _attributes$firstStyl20, _attributes$firstStyl21, _attributes$firstStyl22, _attributes$firstStyl23, _attributes$firstStyl24, _attributes$firstStyl25, _attributes$firstStyl26, _attributes$firstStyl27, _attributes$firstStyl28, _attributes$firstStyl29, _attributes$firstStyl30, _attributes$firstStyl31, _attributes$firstStyl32, _attributes$firstStyl33, _attributes$firstStyl34, _attributes$secondSty13, _attributes$secondSty14, _attributes$secondSty15, _attributes$secondSty16, _attributes$secondSty17, _attributes$secondSty18, _attributes$secondSty19, _attributes$secondSty20, _attributes$secondSty21, _attributes$secondSty22, _attributes$secondSty23, _attributes$secondSty24, _attributes$secondSty25, _attributes$secondSty26, _attributes$secondSty27, _attributes$secondSty28, _attributes$secondSty29, _attributes$secondSty30, _attributes$secondSty31, _attributes$secondSty32, _attributes$secondSty33, _attributes$secondSty34, _attributes$container13, _attributes$container14, _attributes$container15, _attributes$container16, _attributes$container17, _attributes$container18, _attributes$container19, _attributes$container20, _attributes$container21, _attributes$container22, _attributes$container23, _attributes$container24, _attributes$container25, _attributes$container26, _attributes$container27, _attributes$container28, _attributes$container29, _attributes$container30, _attributes$container31, _attributes$container32, _attributes$container33, _attributes$container34, _attributes$container35, _attributes$container36, _attributes$container37, _attributes$container38, _attributes$firstStyl35, _attributes$firstStyl36, _attributes$firstStyl37, _attributes$firstStyl38, _attributes$firstStyl39, _attributes$firstStyl40, _attributes$firstStyl41, _attributes$firstStyl42, _attributes$secondSty35, _attributes$secondSty36, _attributes$secondSty37, _attributes$secondSty38, _attributes$secondSty39, _attributes$secondSty40, _attributes$secondSty41, _attributes$secondSty42, _attributes$firstStyl43, _attributes$firstStyl44, _attributes$firstStyl45, _attributes$firstStyl46, _attributes$firstStyl47, _attributes$firstStyl48, _attributes$firstStyl49, _attributes$firstStyl50, _attributes$firstStyl51, _attributes$firstStyl52, _attributes$firstStyl53, _attributes$firstStyl54, _attributes$secondSty43, _attributes$secondSty44, _attributes$secondSty45, _attributes$secondSty46, _attributes$secondSty47, _attributes$secondSty48, _attributes$secondSty49, _attributes$secondSty50, _attributes$secondSty51, _attributes$secondSty52, _attributes$secondSty53, _attributes$secondSty54;
 
     let newAttributes = {
       blockId: attributes.accordionId ? `premium-dual-heading-${attributes.accordionId.split('-')[2]}` : '',
@@ -20259,30 +20704,50 @@ const deprecatedContent = [{
         "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl13 = attributes.firstStyles) === null || _attributes$firstStyl13 === void 0 ? void 0 : (_attributes$firstStyl14 = _attributes$firstStyl13[0]) === null || _attributes$firstStyl14 === void 0 ? void 0 : _attributes$firstStyl14.firstWeight) || '',
         'fontStyle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl15 = attributes.firstStyles) === null || _attributes$firstStyl15 === void 0 ? void 0 : (_attributes$firstStyl16 = _attributes$firstStyl15[0]) === null || _attributes$firstStyl16 === void 0 ? void 0 : _attributes$firstStyl16.firstStyle) || '',
         'textTransform': (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl17 = attributes.firstStyles) === null || _attributes$firstStyl17 === void 0 ? void 0 : (_attributes$firstStyl18 = _attributes$firstStyl17[0]) === null || _attributes$firstStyl18 === void 0 ? void 0 : _attributes$firstStyl18.firstUpper) || '',
-        'letterSpacing': (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl19 = attributes.firstStyles) === null || _attributes$firstStyl19 === void 0 ? void 0 : (_attributes$firstStyl20 = _attributes$firstStyl19[0]) === null || _attributes$firstStyl20 === void 0 ? void 0 : _attributes$firstStyl20.firstLetter) || '',
-        'fontFamily': (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl21 = attributes.firstStyles) === null || _attributes$firstStyl21 === void 0 ? void 0 : (_attributes$firstStyl22 = _attributes$firstStyl21[0]) === null || _attributes$firstStyl22 === void 0 ? void 0 : _attributes$firstStyl22.firstFamily) || '',
-        'lineHeight': '',
+        'fontFamily': (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl19 = attributes.firstStyles) === null || _attributes$firstStyl19 === void 0 ? void 0 : (_attributes$firstStyl20 = _attributes$firstStyl19[0]) === null || _attributes$firstStyl20 === void 0 ? void 0 : _attributes$firstStyl20.firstFamily) || '',
         'textDecoration': '',
+        'lineHeight': {
+          'Desktop': '',
+          "Tablet": '',
+          "Mobile": '',
+          "unit": 'px'
+        },
+        'letterSpacing': {
+          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl21 = attributes.firstStyles) === null || _attributes$firstStyl21 === void 0 ? void 0 : (_attributes$firstStyl22 = _attributes$firstStyl21[0]) === null || _attributes$firstStyl22 === void 0 ? void 0 : _attributes$firstStyl22.firstLetter) || '',
+          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl23 = attributes.firstStyles) === null || _attributes$firstStyl23 === void 0 ? void 0 : (_attributes$firstStyl24 = _attributes$firstStyl23[0]) === null || _attributes$firstStyl24 === void 0 ? void 0 : _attributes$firstStyl24.firstLetter) || '',
+          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl25 = attributes.firstStyles) === null || _attributes$firstStyl25 === void 0 ? void 0 : (_attributes$firstStyl26 = _attributes$firstStyl25[0]) === null || _attributes$firstStyl26 === void 0 ? void 0 : _attributes$firstStyl26.firstLetter) || '',
+          "unit": 'px'
+        },
         'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl23 = attributes.firstStyles) === null || _attributes$firstStyl23 === void 0 ? void 0 : (_attributes$firstStyl24 = _attributes$firstStyl23[0]) === null || _attributes$firstStyl24 === void 0 ? void 0 : _attributes$firstStyl24.firstSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl25 = attributes.firstStyles) === null || _attributes$firstStyl25 === void 0 ? void 0 : (_attributes$firstStyl26 = _attributes$firstStyl25[0]) === null || _attributes$firstStyl26 === void 0 ? void 0 : _attributes$firstStyl26.firstSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl27 = attributes.firstStyles) === null || _attributes$firstStyl27 === void 0 ? void 0 : (_attributes$firstStyl28 = _attributes$firstStyl27[0]) === null || _attributes$firstStyl28 === void 0 ? void 0 : _attributes$firstStyl28.firstSizeMobile) || '',
-          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl29 = attributes.firstStyles) === null || _attributes$firstStyl29 === void 0 ? void 0 : (_attributes$firstStyl30 = _attributes$firstStyl29[0]) === null || _attributes$firstStyl30 === void 0 ? void 0 : _attributes$firstStyl30.firstSizeUnit) || 'px'
+          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl27 = attributes.firstStyles) === null || _attributes$firstStyl27 === void 0 ? void 0 : (_attributes$firstStyl28 = _attributes$firstStyl27[0]) === null || _attributes$firstStyl28 === void 0 ? void 0 : _attributes$firstStyl28.firstSize) || '',
+          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl29 = attributes.firstStyles) === null || _attributes$firstStyl29 === void 0 ? void 0 : (_attributes$firstStyl30 = _attributes$firstStyl29[0]) === null || _attributes$firstStyl30 === void 0 ? void 0 : _attributes$firstStyl30.firstSizeTablet) || '',
+          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl31 = attributes.firstStyles) === null || _attributes$firstStyl31 === void 0 ? void 0 : (_attributes$firstStyl32 = _attributes$firstStyl31[0]) === null || _attributes$firstStyl32 === void 0 ? void 0 : _attributes$firstStyl32.firstSizeMobile) || '',
+          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl33 = attributes.firstStyles) === null || _attributes$firstStyl33 === void 0 ? void 0 : (_attributes$firstStyl34 = _attributes$firstStyl33[0]) === null || _attributes$firstStyl34 === void 0 ? void 0 : _attributes$firstStyl34.firstSizeUnit) || 'px'
         }
       },
       secondTypography: {
         "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty13 = attributes.secondStyles) === null || _attributes$secondSty13 === void 0 ? void 0 : (_attributes$secondSty14 = _attributes$secondSty13[0]) === null || _attributes$secondSty14 === void 0 ? void 0 : _attributes$secondSty14.secondWeight) || '',
         'fontStyle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty15 = attributes.secondStyles) === null || _attributes$secondSty15 === void 0 ? void 0 : (_attributes$secondSty16 = _attributes$secondSty15[0]) === null || _attributes$secondSty16 === void 0 ? void 0 : _attributes$secondSty16.secondStyle) || '',
         'textTransform': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty17 = attributes.secondStyles) === null || _attributes$secondSty17 === void 0 ? void 0 : (_attributes$secondSty18 = _attributes$secondSty17[0]) === null || _attributes$secondSty18 === void 0 ? void 0 : _attributes$secondSty18.secondUpper) || '',
-        'letterSpacing': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty19 = attributes.secondStyles) === null || _attributes$secondSty19 === void 0 ? void 0 : (_attributes$secondSty20 = _attributes$secondSty19[0]) === null || _attributes$secondSty20 === void 0 ? void 0 : _attributes$secondSty20.secondLetter) || '',
-        'fontFamily': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty21 = attributes.secondStyles) === null || _attributes$secondSty21 === void 0 ? void 0 : (_attributes$secondSty22 = _attributes$secondSty21[0]) === null || _attributes$secondSty22 === void 0 ? void 0 : _attributes$secondSty22.secondFamily) || '',
-        'lineHeight': '',
+        'fontFamily': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty19 = attributes.secondStyles) === null || _attributes$secondSty19 === void 0 ? void 0 : (_attributes$secondSty20 = _attributes$secondSty19[0]) === null || _attributes$secondSty20 === void 0 ? void 0 : _attributes$secondSty20.secondFamily) || '',
+        'lineHeight': {
+          'Desktop': '',
+          "Tablet": '',
+          "Mobile": '',
+          "unit": 'px'
+        },
+        'letterSpacing': {
+          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty21 = attributes.secondStyles) === null || _attributes$secondSty21 === void 0 ? void 0 : (_attributes$secondSty22 = _attributes$secondSty21[0]) === null || _attributes$secondSty22 === void 0 ? void 0 : _attributes$secondSty22.secondLetter) || '',
+          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty23 = attributes.secondStyles) === null || _attributes$secondSty23 === void 0 ? void 0 : (_attributes$secondSty24 = _attributes$secondSty23[0]) === null || _attributes$secondSty24 === void 0 ? void 0 : _attributes$secondSty24.secondLetter) || '',
+          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty25 = attributes.secondStyles) === null || _attributes$secondSty25 === void 0 ? void 0 : (_attributes$secondSty26 = _attributes$secondSty25[0]) === null || _attributes$secondSty26 === void 0 ? void 0 : _attributes$secondSty26.secondLetter) || '',
+          "unit": 'px'
+        },
         'textDecoration': '',
         'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty23 = attributes.secondStyles) === null || _attributes$secondSty23 === void 0 ? void 0 : (_attributes$secondSty24 = _attributes$secondSty23[0]) === null || _attributes$secondSty24 === void 0 ? void 0 : _attributes$secondSty24.secondSize) || '20',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty25 = attributes.secondStyles) === null || _attributes$secondSty25 === void 0 ? void 0 : (_attributes$secondSty26 = _attributes$secondSty25[0]) === null || _attributes$secondSty26 === void 0 ? void 0 : _attributes$secondSty26.secondSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty27 = attributes.secondStyles) === null || _attributes$secondSty27 === void 0 ? void 0 : (_attributes$secondSty28 = _attributes$secondSty27[0]) === null || _attributes$secondSty28 === void 0 ? void 0 : _attributes$secondSty28.secondSizeMobile) || '',
-          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty29 = attributes.secondStyles) === null || _attributes$secondSty29 === void 0 ? void 0 : (_attributes$secondSty30 = _attributes$secondSty29[0]) === null || _attributes$secondSty30 === void 0 ? void 0 : _attributes$secondSty30.secondSizeUnit) || 'px'
+          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty27 = attributes.secondStyles) === null || _attributes$secondSty27 === void 0 ? void 0 : (_attributes$secondSty28 = _attributes$secondSty27[0]) === null || _attributes$secondSty28 === void 0 ? void 0 : _attributes$secondSty28.secondSize) || '20',
+          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty29 = attributes.secondStyles) === null || _attributes$secondSty29 === void 0 ? void 0 : (_attributes$secondSty30 = _attributes$secondSty29[0]) === null || _attributes$secondSty30 === void 0 ? void 0 : _attributes$secondSty30.secondSizeTablet) || '',
+          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty31 = attributes.secondStyles) === null || _attributes$secondSty31 === void 0 ? void 0 : (_attributes$secondSty32 = _attributes$secondSty31[0]) === null || _attributes$secondSty32 === void 0 ? void 0 : _attributes$secondSty32.secondSizeMobile) || '',
+          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty33 = attributes.secondStyles) === null || _attributes$secondSty33 === void 0 ? void 0 : (_attributes$secondSty34 = _attributes$secondSty33[0]) === null || _attributes$secondSty34 === void 0 ? void 0 : _attributes$secondSty34.secondSizeUnit) || 'px'
         }
       },
       background: {
@@ -20302,23 +20767,23 @@ const deprecatedContent = [{
         'gradientType': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container37 = attributes.containerStyles) === null || _attributes$container37 === void 0 ? void 0 : (_attributes$container38 = _attributes$container37[0]) === null || _attributes$container38 === void 0 ? void 0 : _attributes$container38.gradientType) || ''
       },
       firstShadow: {
-        'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl31 = attributes.firstStyles) === null || _attributes$firstStyl31 === void 0 ? void 0 : (_attributes$firstStyl32 = _attributes$firstStyl31[0]) === null || _attributes$firstStyl32 === void 0 ? void 0 : _attributes$firstStyl32.firstShadowColor) || '',
-        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl33 = attributes.firstStyles) === null || _attributes$firstStyl33 === void 0 ? void 0 : (_attributes$firstStyl34 = _attributes$firstStyl33[0]) === null || _attributes$firstStyl34 === void 0 ? void 0 : _attributes$firstStyl34.firstShadowBlur) || '',
-        'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl35 = attributes.firstStyles) === null || _attributes$firstStyl35 === void 0 ? void 0 : (_attributes$firstStyl36 = _attributes$firstStyl35[0]) === null || _attributes$firstStyl36 === void 0 ? void 0 : _attributes$firstStyl36.firstShadowHorizontal) || '',
-        'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl37 = attributes.firstStyles) === null || _attributes$firstStyl37 === void 0 ? void 0 : (_attributes$firstStyl38 = _attributes$firstStyl37[0]) === null || _attributes$firstStyl38 === void 0 ? void 0 : _attributes$firstStyl38.firstShadowVertical) || ''
+        'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl35 = attributes.firstStyles) === null || _attributes$firstStyl35 === void 0 ? void 0 : (_attributes$firstStyl36 = _attributes$firstStyl35[0]) === null || _attributes$firstStyl36 === void 0 ? void 0 : _attributes$firstStyl36.firstShadowColor) || '',
+        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl37 = attributes.firstStyles) === null || _attributes$firstStyl37 === void 0 ? void 0 : (_attributes$firstStyl38 = _attributes$firstStyl37[0]) === null || _attributes$firstStyl38 === void 0 ? void 0 : _attributes$firstStyl38.firstShadowBlur) || '',
+        'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl39 = attributes.firstStyles) === null || _attributes$firstStyl39 === void 0 ? void 0 : (_attributes$firstStyl40 = _attributes$firstStyl39[0]) === null || _attributes$firstStyl40 === void 0 ? void 0 : _attributes$firstStyl40.firstShadowHorizontal) || '',
+        'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl41 = attributes.firstStyles) === null || _attributes$firstStyl41 === void 0 ? void 0 : (_attributes$firstStyl42 = _attributes$firstStyl41[0]) === null || _attributes$firstStyl42 === void 0 ? void 0 : _attributes$firstStyl42.firstShadowVertical) || ''
       },
       secondShadow: {
-        'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty31 = attributes.secondStyles) === null || _attributes$secondSty31 === void 0 ? void 0 : (_attributes$secondSty32 = _attributes$secondSty31[0]) === null || _attributes$secondSty32 === void 0 ? void 0 : _attributes$secondSty32.secondShadowColor) || '',
-        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty33 = attributes.secondStyles) === null || _attributes$secondSty33 === void 0 ? void 0 : (_attributes$secondSty34 = _attributes$secondSty33[0]) === null || _attributes$secondSty34 === void 0 ? void 0 : _attributes$secondSty34.secondShadowBlur) || '',
-        'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty35 = attributes.secondStyles) === null || _attributes$secondSty35 === void 0 ? void 0 : (_attributes$secondSty36 = _attributes$secondSty35[0]) === null || _attributes$secondSty36 === void 0 ? void 0 : _attributes$secondSty36.secondShadowHorizontal) || '',
-        'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty37 = attributes.secondStyles) === null || _attributes$secondSty37 === void 0 ? void 0 : (_attributes$secondSty38 = _attributes$secondSty37[0]) === null || _attributes$secondSty38 === void 0 ? void 0 : _attributes$secondSty38.secondShadowVertical) || ''
+        'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty35 = attributes.secondStyles) === null || _attributes$secondSty35 === void 0 ? void 0 : (_attributes$secondSty36 = _attributes$secondSty35[0]) === null || _attributes$secondSty36 === void 0 ? void 0 : _attributes$secondSty36.secondShadowColor) || '',
+        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty37 = attributes.secondStyles) === null || _attributes$secondSty37 === void 0 ? void 0 : (_attributes$secondSty38 = _attributes$secondSty37[0]) === null || _attributes$secondSty38 === void 0 ? void 0 : _attributes$secondSty38.secondShadowBlur) || '',
+        'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty39 = attributes.secondStyles) === null || _attributes$secondSty39 === void 0 ? void 0 : (_attributes$secondSty40 = _attributes$secondSty39[0]) === null || _attributes$secondSty40 === void 0 ? void 0 : _attributes$secondSty40.secondShadowHorizontal) || '',
+        'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty41 = attributes.secondStyles) === null || _attributes$secondSty41 === void 0 ? void 0 : (_attributes$secondSty42 = _attributes$secondSty41[0]) === null || _attributes$secondSty42 === void 0 ? void 0 : _attributes$secondSty42.secondShadowVertical) || ''
       },
       firstPadding: {
         Desktop: {
-          top: (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl39 = attributes.firstStyles) === null || _attributes$firstStyl39 === void 0 ? void 0 : (_attributes$firstStyl40 = _attributes$firstStyl39[0]) === null || _attributes$firstStyl40 === void 0 ? void 0 : _attributes$firstStyl40.firstPadding) || '',
-          right: (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl41 = attributes.firstStyles) === null || _attributes$firstStyl41 === void 0 ? void 0 : (_attributes$firstStyl42 = _attributes$firstStyl41[0]) === null || _attributes$firstStyl42 === void 0 ? void 0 : _attributes$firstStyl42.firstPadding) || '',
-          bottom: (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl43 = attributes.firstStyles) === null || _attributes$firstStyl43 === void 0 ? void 0 : (_attributes$firstStyl44 = _attributes$firstStyl43[0]) === null || _attributes$firstStyl44 === void 0 ? void 0 : _attributes$firstStyl44.firstPadding) || '',
-          left: (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl45 = attributes.firstStyles) === null || _attributes$firstStyl45 === void 0 ? void 0 : (_attributes$firstStyl46 = _attributes$firstStyl45[0]) === null || _attributes$firstStyl46 === void 0 ? void 0 : _attributes$firstStyl46.firstPadding) || ''
+          top: (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl43 = attributes.firstStyles) === null || _attributes$firstStyl43 === void 0 ? void 0 : (_attributes$firstStyl44 = _attributes$firstStyl43[0]) === null || _attributes$firstStyl44 === void 0 ? void 0 : _attributes$firstStyl44.firstPadding) || '',
+          right: (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl45 = attributes.firstStyles) === null || _attributes$firstStyl45 === void 0 ? void 0 : (_attributes$firstStyl46 = _attributes$firstStyl45[0]) === null || _attributes$firstStyl46 === void 0 ? void 0 : _attributes$firstStyl46.firstPadding) || '',
+          bottom: (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl47 = attributes.firstStyles) === null || _attributes$firstStyl47 === void 0 ? void 0 : (_attributes$firstStyl48 = _attributes$firstStyl47[0]) === null || _attributes$firstStyl48 === void 0 ? void 0 : _attributes$firstStyl48.firstPadding) || '',
+          left: (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl49 = attributes.firstStyles) === null || _attributes$firstStyl49 === void 0 ? void 0 : (_attributes$firstStyl50 = _attributes$firstStyl49[0]) === null || _attributes$firstStyl50 === void 0 ? void 0 : _attributes$firstStyl50.firstPadding) || ''
         },
         Tablet: {
           top: '',
@@ -20337,9 +20802,9 @@ const deprecatedContent = [{
       firstMargin: {
         Desktop: {
           top: '',
-          right: (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl47 = attributes.firstStyles) === null || _attributes$firstStyl47 === void 0 ? void 0 : (_attributes$firstStyl48 = _attributes$firstStyl47[0]) === null || _attributes$firstStyl48 === void 0 ? void 0 : _attributes$firstStyl48.firstMarginR) || '',
+          right: (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl51 = attributes.firstStyles) === null || _attributes$firstStyl51 === void 0 ? void 0 : (_attributes$firstStyl52 = _attributes$firstStyl51[0]) === null || _attributes$firstStyl52 === void 0 ? void 0 : _attributes$firstStyl52.firstMarginR) || '',
           bottom: '',
-          left: (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl49 = attributes.firstStyles) === null || _attributes$firstStyl49 === void 0 ? void 0 : (_attributes$firstStyl50 = _attributes$firstStyl49[0]) === null || _attributes$firstStyl50 === void 0 ? void 0 : _attributes$firstStyl50.firstMarginL) || ''
+          left: (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl53 = attributes.firstStyles) === null || _attributes$firstStyl53 === void 0 ? void 0 : (_attributes$firstStyl54 = _attributes$firstStyl53[0]) === null || _attributes$firstStyl54 === void 0 ? void 0 : _attributes$firstStyl54.firstMarginL) || ''
         },
         Tablet: {
           top: '',
@@ -20357,10 +20822,10 @@ const deprecatedContent = [{
       },
       secondPadding: {
         Desktop: {
-          top: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty39 = attributes.secondStyles) === null || _attributes$secondSty39 === void 0 ? void 0 : (_attributes$secondSty40 = _attributes$secondSty39[0]) === null || _attributes$secondSty40 === void 0 ? void 0 : _attributes$secondSty40.secondPadding) || '',
-          right: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty41 = attributes.secondStyles) === null || _attributes$secondSty41 === void 0 ? void 0 : (_attributes$secondSty42 = _attributes$secondSty41[0]) === null || _attributes$secondSty42 === void 0 ? void 0 : _attributes$secondSty42.secondPadding) || '',
-          bottom: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty43 = attributes.secondStyles) === null || _attributes$secondSty43 === void 0 ? void 0 : (_attributes$secondSty44 = _attributes$secondSty43[0]) === null || _attributes$secondSty44 === void 0 ? void 0 : _attributes$secondSty44.secondPadding) || '',
-          left: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty45 = attributes.secondStyles) === null || _attributes$secondSty45 === void 0 ? void 0 : (_attributes$secondSty46 = _attributes$secondSty45[0]) === null || _attributes$secondSty46 === void 0 ? void 0 : _attributes$secondSty46.secondPadding) || ''
+          top: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty43 = attributes.secondStyles) === null || _attributes$secondSty43 === void 0 ? void 0 : (_attributes$secondSty44 = _attributes$secondSty43[0]) === null || _attributes$secondSty44 === void 0 ? void 0 : _attributes$secondSty44.secondPadding) || '',
+          right: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty45 = attributes.secondStyles) === null || _attributes$secondSty45 === void 0 ? void 0 : (_attributes$secondSty46 = _attributes$secondSty45[0]) === null || _attributes$secondSty46 === void 0 ? void 0 : _attributes$secondSty46.secondPadding) || '',
+          bottom: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty47 = attributes.secondStyles) === null || _attributes$secondSty47 === void 0 ? void 0 : (_attributes$secondSty48 = _attributes$secondSty47[0]) === null || _attributes$secondSty48 === void 0 ? void 0 : _attributes$secondSty48.secondPadding) || '',
+          left: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty49 = attributes.secondStyles) === null || _attributes$secondSty49 === void 0 ? void 0 : (_attributes$secondSty50 = _attributes$secondSty49[0]) === null || _attributes$secondSty50 === void 0 ? void 0 : _attributes$secondSty50.secondPadding) || ''
         },
         Tablet: {
           top: '',
@@ -20379,9 +20844,9 @@ const deprecatedContent = [{
       secondMargin: {
         Desktop: {
           top: '',
-          right: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty47 = attributes.secondStyles) === null || _attributes$secondSty47 === void 0 ? void 0 : (_attributes$secondSty48 = _attributes$secondSty47[0]) === null || _attributes$secondSty48 === void 0 ? void 0 : _attributes$secondSty48.secondMarginR) || '',
+          right: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty51 = attributes.secondStyles) === null || _attributes$secondSty51 === void 0 ? void 0 : (_attributes$secondSty52 = _attributes$secondSty51[0]) === null || _attributes$secondSty52 === void 0 ? void 0 : _attributes$secondSty52.secondMarginR) || '',
           bottom: '',
-          left: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty49 = attributes.secondStyles) === null || _attributes$secondSty49 === void 0 ? void 0 : (_attributes$secondSty50 = _attributes$secondSty49[0]) === null || _attributes$secondSty50 === void 0 ? void 0 : _attributes$secondSty50.secondMarginL) || ''
+          left: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty53 = attributes.secondStyles) === null || _attributes$secondSty53 === void 0 ? void 0 : (_attributes$secondSty54 = _attributes$secondSty53[0]) === null || _attributes$secondSty54 === void 0 ? void 0 : _attributes$secondSty54.secondMarginL) || ''
         },
         Tablet: {
           top: '',
@@ -21585,7 +22050,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/premium-responsive-tabs */ "./src/components/premium-responsive-tabs.js");
 /* harmony import */ var _components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/Color Control/ColorComponent */ "./src/components/Color Control/ColorComponent.js");
 /* harmony import */ var _components_Premium_Background_Control__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/Premium-Background-Control */ "./src/components/Premium-Background-Control.js");
-/* harmony import */ var react_google_font_loader__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-google-font-loader */ "./node_modules/react-google-font-loader/build/index.js");
+/* harmony import */ var _components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/typography/fontLoader */ "./src/components/typography/fontLoader.js");
 /* harmony import */ var _components_PremiumShadow__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/PremiumShadow */ "./src/components/PremiumShadow.js");
 /* harmony import */ var _components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/premium-responsive-spacing */ "./src/components/premium-responsive-spacing.js");
 /* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
@@ -21687,18 +22152,24 @@ class edit extends Component {
     let loadSecondGoogleFonts;
 
     if ((firstTypography === null || firstTypography === void 0 ? void 0 : firstTypography.fontFamily) !== "Default") {
-      loadFirstGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_google_font_loader__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        fonts: [{
-          font: firstTypography === null || firstTypography === void 0 ? void 0 : firstTypography.fontFamily
-        }]
+      const firstConfig = {
+        google: {
+          families: [firstTypography.fontFamily]
+        }
+      };
+      loadFirstGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        config: firstConfig
       });
     }
 
     if ((secondTypography === null || secondTypography === void 0 ? void 0 : secondTypography.fontFamily) !== "Default") {
-      loadSecondGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_google_font_loader__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        fonts: [{
-          font: secondTypography === null || secondTypography === void 0 ? void 0 : secondTypography.fontFamily
-        }]
+      const secondConfig = {
+        google: {
+          families: [secondTypography.fontFamily]
+        }
+      };
+      loadSecondGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        config: secondConfig
       });
     }
 
@@ -23200,7 +23671,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_icons__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/icons */ "./src/components/icons.js");
 /* harmony import */ var _components_inspectorTabs__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/inspectorTabs */ "./src/components/inspectorTabs.js");
 /* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/inspectorTab */ "./src/components/inspectorTab.js");
-/* harmony import */ var react_google_font_loader__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-google-font-loader */ "./node_modules/react-google-font-loader/build/index.js");
+/* harmony import */ var react_google_font_loader__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-google-font-loader */ "./src/blocks/node_modules/react-google-font-loader/build/index.js");
 /* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
 
 
@@ -25837,6 +26308,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../components/premium-responsive-spacing */ "./src/components/premium-responsive-spacing.js");
 /* harmony import */ var _components_inspectorTabs__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../components/inspectorTabs */ "./src/components/inspectorTabs.js");
 /* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../components/inspectorTab */ "./src/components/inspectorTab.js");
+/* harmony import */ var _components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../components/typography/fontLoader */ "./src/components/typography/fontLoader.js");
+
 
 
 
@@ -26025,6 +26498,31 @@ class edit extends Component {
       titleTypography,
       titleShadow
     } = attributes;
+    let loadTitleGoogleFonts;
+    let loadTextGoogleFonts;
+
+    if ((titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily) !== 'Default') {
+      const titleConfig = {
+        google: {
+          families: [titleTypography.fontFamily]
+        }
+      };
+      loadTitleGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_20__["default"], {
+        config: titleConfig
+      });
+    }
+
+    if ((textTypography === null || textTypography === void 0 ? void 0 : textTypography.fontFamily) !== 'Default') {
+      const textConfig = {
+        google: {
+          families: [textTypography.fontFamily]
+        }
+      };
+      loadTextGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_20__["default"], {
+        config: textConfig
+      });
+    }
+
     const STYLE = [{
       value: "style1",
       label: __("Style 1")
@@ -27090,7 +27588,7 @@ class edit extends Component {
       rel: "noopener noreferrer",
       target: "_self",
       href: `${url}`
-    }))]))))];
+    }))]))), loadTextGoogleFonts, loadTitleGoogleFonts)];
   }
 
 }
@@ -31010,7 +31508,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_InsideTab__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../components/InsideTab */ "./src/components/InsideTab.js");
 /* harmony import */ var _components_icons__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../components/icons */ "./src/components/icons.js");
 /* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
-/* harmony import */ var react_google_font_loader__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! react-google-font-loader */ "./node_modules/react-google-font-loader/build/index.js");
+/* harmony import */ var react_google_font_loader__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! react-google-font-loader */ "./src/blocks/node_modules/react-google-font-loader/build/index.js");
 
 
 
@@ -40585,7 +41083,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
 /* harmony import */ var lodash_times__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! lodash/times */ "./src/blocks/node_modules/lodash/times.js");
 /* harmony import */ var lodash_times__WEBPACK_IMPORTED_MODULE_24___default = /*#__PURE__*/__webpack_require__.n(lodash_times__WEBPACK_IMPORTED_MODULE_24__);
-/* harmony import */ var react_google_font_loader__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! react-google-font-loader */ "./node_modules/react-google-font-loader/build/index.js");
+/* harmony import */ var react_google_font_loader__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! react-google-font-loader */ "./src/blocks/node_modules/react-google-font-loader/build/index.js");
 
 
 
@@ -56421,7 +56919,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_InsideTabs__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/InsideTabs */ "./src/components/InsideTabs.js");
 /* harmony import */ var _components_InsideTab__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/InsideTab */ "./src/components/InsideTab.js");
 /* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
-/* harmony import */ var react_google_font_loader__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! react-google-font-loader */ "./node_modules/react-google-font-loader/build/index.js");
+/* harmony import */ var react_google_font_loader__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! react-google-font-loader */ "./src/blocks/node_modules/react-google-font-loader/build/index.js");
 
 
 
@@ -67308,13 +67806,13 @@ const Social = {
     viewBox: "0 0 56.7 56.7",
     "enable-background": "new 0 0 56.7 56.7"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("g", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-    d: "M28.2,16.7c-7,0-12.8,5.7-12.8,12.8s5.7,12.8,12.8,12.8S41,36.5,41,29.5S35.2,16.7,28.2,16.7z M28.2,37.7 c-4.5,0-8.2-3.7-8.2-8.2s3.7-8.2,8.2-8.2s8.2,3.7,8.2,8.2S32.7,37.7,28.2,37.7z"
+    d: "M28.2,16.7c-7,0-12.8,5.7-12.8,12.8s5.7,12.8,12.8,12.8S41,36.5,41,29.5S35.2,16.7,28.2,16.7z M28.2,37.7\r c-4.5,0-8.2-3.7-8.2-8.2s3.7-8.2,8.2-8.2s8.2,3.7,8.2,8.2S32.7,37.7,28.2,37.7z"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("circle", {
     cx: "41.5",
     cy: "16.4",
     r: "2.9"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-    d: "M49,8.9c-2.6-2.7-6.3-4.1-10.5-4.1H17.9c-8.7,0-14.5,5.8-14.5,14.5v20.5c0,4.3,1.4,8,4.2,10.7c2.7,2.6,6.3,3.9,10.4,3.9 h20.4c4.3,0,7.9-1.4,10.5-3.9c2.7-2.6,4.1-6.3,4.1-10.6V19.3C53,15.1,51.6,11.5,49,8.9z M48.6,39.9c0,3.1-1.1,5.6-2.9,7.3 s-4.3,2.6-7.3,2.6H18c-3,0-5.5-0.9-7.3-2.6C8.9,45.4,8,42.9,8,39.8V19.3c0-3,0.9-5.5,2.7-7.3c1.7-1.7,4.3-2.6,7.3-2.6h20.6 c3,0,5.5,0.9,7.3,2.7c1.7,1.8,2.7,4.3,2.7,7.2V39.9L48.6,39.9z"
+    d: "M49,8.9c-2.6-2.7-6.3-4.1-10.5-4.1H17.9c-8.7,0-14.5,5.8-14.5,14.5v20.5c0,4.3,1.4,8,4.2,10.7c2.7,2.6,6.3,3.9,10.4,3.9\r h20.4c4.3,0,7.9-1.4,10.5-3.9c2.7-2.6,4.1-6.3,4.1-10.6V19.3C53,15.1,51.6,11.5,49,8.9z M48.6,39.9c0,3.1-1.1,5.6-2.9,7.3\r s-4.3,2.6-7.3,2.6H18c-3,0-5.5-0.9-7.3-2.6C8.9,45.4,8,42.9,8,39.8V19.3c0-3,0.9-5.5,2.7-7.3c1.7-1.7,4.3-2.6,7.3-2.6h20.6\r c3,0,5.5,0.9,7.3,2.7c1.7,1.8,2.7,4.3,2.7,7.2V39.9L48.6,39.9z"
   }))),
   linkedin: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
     className: "premium-social-media-icon",
@@ -94235,93 +94733,6 @@ module.exports = Function.call.bind(Object.prototype.hasOwnProperty);
 
 /***/ }),
 
-/***/ "./node_modules/react-google-font-loader/build/index.js":
-/*!**************************************************************!*\
-  !*** ./node_modules/react-google-font-loader/build/index.js ***!
-  \**************************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({
-    value: true
-}));
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-var _react = __webpack_require__(/*! react */ "react");
-
-var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-var createLink = function createLink(fonts, subsets, display) {
-    var families = fonts.reduce(function (acc, font) {
-        var family = font.font.replace(/ +/g, '+');
-        var weights = (font.weights || []).join(',');
-
-        return [].concat(_toConsumableArray(acc), [family + (weights && ':' + weights)]);
-    }, []).join('|');
-
-    var link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = 'https://fonts.googleapis.com/css?family=' + families;
-
-    if (subsets && Array.isArray(subsets) && subsets.length > 0) {
-        link.href += '&subset=' + subsets.join(',');
-    }
-
-    if (display) {
-        link.href += '&display=' + display;
-    }
-
-    return link;
-};
-
-var GoogleFontLoader = function GoogleFontLoader(_ref) {
-    var fonts = _ref.fonts,
-        subsets = _ref.subsets,
-        _ref$display = _ref.display,
-        display = _ref$display === undefined ? null : _ref$display;
-
-    var _useState = (0, _react.useState)(createLink(fonts, subsets, display)),
-        _useState2 = _slicedToArray(_useState, 2),
-        link = _useState2[0],
-        setLink = _useState2[1];
-
-    (0, _react.useEffect)(function () {
-        document.head.appendChild(link);
-
-        return function () {
-            return document.head.removeChild(link);
-        };
-    }, [link]);
-
-    (0, _react.useEffect)(function () {
-        setLink(createLink(fonts, subsets, display));
-    }, [fonts, subsets, display]);
-
-    return null;
-};
-
-GoogleFontLoader.propTypes = {
-    fonts: _propTypes2.default.arrayOf(_propTypes2.default.shape({
-        font: _propTypes2.default.string.isRequired,
-        weights: _propTypes2.default.arrayOf(_propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]))
-    })).isRequired,
-    subsets: _propTypes2.default.arrayOf(_propTypes2.default.string),
-    display: _propTypes2.default.string
-};
-
-exports["default"] = GoogleFontLoader;
-
-/***/ }),
-
 /***/ "./node_modules/react-is/cjs/react-is.development.js":
 /*!***********************************************************!*\
   !*** ./node_modules/react-is/cjs/react-is.development.js ***!
@@ -100099,6 +100510,1196 @@ function toNumber(value) {
 }
 
 module.exports = toNumber;
+
+
+/***/ }),
+
+/***/ "./src/blocks/node_modules/object-assign/index.js":
+/*!********************************************************!*\
+  !*** ./src/blocks/node_modules/object-assign/index.js ***!
+  \********************************************************/
+/***/ ((module) => {
+
+"use strict";
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+
+
+/* eslint-disable no-unused-vars */
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+
+function toObject(val) {
+	if (val === null || val === undefined) {
+		throw new TypeError('Object.assign cannot be called with null or undefined');
+	}
+
+	return Object(val);
+}
+
+function shouldUseNative() {
+	try {
+		if (!Object.assign) {
+			return false;
+		}
+
+		// Detect buggy property enumeration order in older V8 versions.
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
+		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+		test1[5] = 'de';
+		if (Object.getOwnPropertyNames(test1)[0] === '5') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test2 = {};
+		for (var i = 0; i < 10; i++) {
+			test2['_' + String.fromCharCode(i)] = i;
+		}
+		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+			return test2[n];
+		});
+		if (order2.join('') !== '0123456789') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test3 = {};
+		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+			test3[letter] = letter;
+		});
+		if (Object.keys(Object.assign({}, test3)).join('') !==
+				'abcdefghijklmnopqrst') {
+			return false;
+		}
+
+		return true;
+	} catch (err) {
+		// We don't expect any of the above to throw, but better to be safe.
+		return false;
+	}
+}
+
+module.exports = shouldUseNative() ? Object.assign : function (target, source) {
+	var from;
+	var to = toObject(target);
+	var symbols;
+
+	for (var s = 1; s < arguments.length; s++) {
+		from = Object(arguments[s]);
+
+		for (var key in from) {
+			if (hasOwnProperty.call(from, key)) {
+				to[key] = from[key];
+			}
+		}
+
+		if (getOwnPropertySymbols) {
+			symbols = getOwnPropertySymbols(from);
+			for (var i = 0; i < symbols.length; i++) {
+				if (propIsEnumerable.call(from, symbols[i])) {
+					to[symbols[i]] = from[symbols[i]];
+				}
+			}
+		}
+	}
+
+	return to;
+};
+
+
+/***/ }),
+
+/***/ "./src/blocks/node_modules/prop-types/checkPropTypes.js":
+/*!**************************************************************!*\
+  !*** ./src/blocks/node_modules/prop-types/checkPropTypes.js ***!
+  \**************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var printWarning = function() {};
+
+if (true) {
+  var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ "./src/blocks/node_modules/prop-types/lib/ReactPropTypesSecret.js");
+  var loggedTypeFailures = {};
+  var has = __webpack_require__(/*! ./lib/has */ "./src/blocks/node_modules/prop-types/lib/has.js");
+
+  printWarning = function(text) {
+    var message = 'Warning: ' + text;
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) { /**/ }
+  };
+}
+
+/**
+ * Assert that the values match with the type specs.
+ * Error messages are memorized and will only be shown once.
+ *
+ * @param {object} typeSpecs Map of name to a ReactPropType
+ * @param {object} values Runtime values that need to be type-checked
+ * @param {string} location e.g. "prop", "context", "child context"
+ * @param {string} componentName Name of the component for error messages.
+ * @param {?Function} getStack Returns the component stack.
+ * @private
+ */
+function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
+  if (true) {
+    for (var typeSpecName in typeSpecs) {
+      if (has(typeSpecs, typeSpecName)) {
+        var error;
+        // Prop type validation may throw. In case they do, we don't want to
+        // fail the render phase where it didn't fail before. So we log it.
+        // After these have been cleaned up, we'll let them throw.
+        try {
+          // This is intentionally an invariant that gets caught. It's the same
+          // behavior as without this statement except with a better message.
+          if (typeof typeSpecs[typeSpecName] !== 'function') {
+            var err = Error(
+              (componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' +
+              'it must be a function, usually from the `prop-types` package, but received `' + typeof typeSpecs[typeSpecName] + '`.' +
+              'This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.'
+            );
+            err.name = 'Invariant Violation';
+            throw err;
+          }
+          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
+        } catch (ex) {
+          error = ex;
+        }
+        if (error && !(error instanceof Error)) {
+          printWarning(
+            (componentName || 'React class') + ': type specification of ' +
+            location + ' `' + typeSpecName + '` is invalid; the type checker ' +
+            'function must return `null` or an `Error` but returned a ' + typeof error + '. ' +
+            'You may have forgotten to pass an argument to the type checker ' +
+            'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' +
+            'shape all require an argument).'
+          );
+        }
+        if (error instanceof Error && !(error.message in loggedTypeFailures)) {
+          // Only monitor this failure once because there tends to be a lot of the
+          // same error.
+          loggedTypeFailures[error.message] = true;
+
+          var stack = getStack ? getStack() : '';
+
+          printWarning(
+            'Failed ' + location + ' type: ' + error.message + (stack != null ? stack : '')
+          );
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Resets warning cache when testing.
+ *
+ * @private
+ */
+checkPropTypes.resetWarningCache = function() {
+  if (true) {
+    loggedTypeFailures = {};
+  }
+}
+
+module.exports = checkPropTypes;
+
+
+/***/ }),
+
+/***/ "./src/blocks/node_modules/prop-types/factoryWithTypeCheckers.js":
+/*!***********************************************************************!*\
+  !*** ./src/blocks/node_modules/prop-types/factoryWithTypeCheckers.js ***!
+  \***********************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var ReactIs = __webpack_require__(/*! react-is */ "./src/blocks/node_modules/react-is/index.js");
+var assign = __webpack_require__(/*! object-assign */ "./src/blocks/node_modules/object-assign/index.js");
+
+var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ "./src/blocks/node_modules/prop-types/lib/ReactPropTypesSecret.js");
+var has = __webpack_require__(/*! ./lib/has */ "./src/blocks/node_modules/prop-types/lib/has.js");
+var checkPropTypes = __webpack_require__(/*! ./checkPropTypes */ "./src/blocks/node_modules/prop-types/checkPropTypes.js");
+
+var printWarning = function() {};
+
+if (true) {
+  printWarning = function(text) {
+    var message = 'Warning: ' + text;
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+}
+
+function emptyFunctionThatReturnsNull() {
+  return null;
+}
+
+module.exports = function(isValidElement, throwOnDirectAccess) {
+  /* global Symbol */
+  var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+  var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
+
+  /**
+   * Returns the iterator method function contained on the iterable object.
+   *
+   * Be sure to invoke the function with the iterable as context:
+   *
+   *     var iteratorFn = getIteratorFn(myIterable);
+   *     if (iteratorFn) {
+   *       var iterator = iteratorFn.call(myIterable);
+   *       ...
+   *     }
+   *
+   * @param {?object} maybeIterable
+   * @return {?function}
+   */
+  function getIteratorFn(maybeIterable) {
+    var iteratorFn = maybeIterable && (ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL]);
+    if (typeof iteratorFn === 'function') {
+      return iteratorFn;
+    }
+  }
+
+  /**
+   * Collection of methods that allow declaration and validation of props that are
+   * supplied to React components. Example usage:
+   *
+   *   var Props = require('ReactPropTypes');
+   *   var MyArticle = React.createClass({
+   *     propTypes: {
+   *       // An optional string prop named "description".
+   *       description: Props.string,
+   *
+   *       // A required enum prop named "category".
+   *       category: Props.oneOf(['News','Photos']).isRequired,
+   *
+   *       // A prop named "dialog" that requires an instance of Dialog.
+   *       dialog: Props.instanceOf(Dialog).isRequired
+   *     },
+   *     render: function() { ... }
+   *   });
+   *
+   * A more formal specification of how these methods are used:
+   *
+   *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
+   *   decl := ReactPropTypes.{type}(.isRequired)?
+   *
+   * Each and every declaration produces a function with the same signature. This
+   * allows the creation of custom validation functions. For example:
+   *
+   *  var MyLink = React.createClass({
+   *    propTypes: {
+   *      // An optional string or URI prop named "href".
+   *      href: function(props, propName, componentName) {
+   *        var propValue = props[propName];
+   *        if (propValue != null && typeof propValue !== 'string' &&
+   *            !(propValue instanceof URI)) {
+   *          return new Error(
+   *            'Expected a string or an URI for ' + propName + ' in ' +
+   *            componentName
+   *          );
+   *        }
+   *      }
+   *    },
+   *    render: function() {...}
+   *  });
+   *
+   * @internal
+   */
+
+  var ANONYMOUS = '<<anonymous>>';
+
+  // Important!
+  // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
+  var ReactPropTypes = {
+    array: createPrimitiveTypeChecker('array'),
+    bigint: createPrimitiveTypeChecker('bigint'),
+    bool: createPrimitiveTypeChecker('boolean'),
+    func: createPrimitiveTypeChecker('function'),
+    number: createPrimitiveTypeChecker('number'),
+    object: createPrimitiveTypeChecker('object'),
+    string: createPrimitiveTypeChecker('string'),
+    symbol: createPrimitiveTypeChecker('symbol'),
+
+    any: createAnyTypeChecker(),
+    arrayOf: createArrayOfTypeChecker,
+    element: createElementTypeChecker(),
+    elementType: createElementTypeTypeChecker(),
+    instanceOf: createInstanceTypeChecker,
+    node: createNodeChecker(),
+    objectOf: createObjectOfTypeChecker,
+    oneOf: createEnumTypeChecker,
+    oneOfType: createUnionTypeChecker,
+    shape: createShapeTypeChecker,
+    exact: createStrictShapeTypeChecker,
+  };
+
+  /**
+   * inlined Object.is polyfill to avoid requiring consumers ship their own
+   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+   */
+  /*eslint-disable no-self-compare*/
+  function is(x, y) {
+    // SameValue algorithm
+    if (x === y) {
+      // Steps 1-5, 7-10
+      // Steps 6.b-6.e: +0 != -0
+      return x !== 0 || 1 / x === 1 / y;
+    } else {
+      // Step 6.a: NaN == NaN
+      return x !== x && y !== y;
+    }
+  }
+  /*eslint-enable no-self-compare*/
+
+  /**
+   * We use an Error-like object for backward compatibility as people may call
+   * PropTypes directly and inspect their output. However, we don't use real
+   * Errors anymore. We don't inspect their stack anyway, and creating them
+   * is prohibitively expensive if they are created too often, such as what
+   * happens in oneOfType() for any type before the one that matched.
+   */
+  function PropTypeError(message, data) {
+    this.message = message;
+    this.data = data && typeof data === 'object' ? data: {};
+    this.stack = '';
+  }
+  // Make `instanceof Error` still work for returned errors.
+  PropTypeError.prototype = Error.prototype;
+
+  function createChainableTypeChecker(validate) {
+    if (true) {
+      var manualPropTypeCallCache = {};
+      var manualPropTypeWarningCount = 0;
+    }
+    function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
+      componentName = componentName || ANONYMOUS;
+      propFullName = propFullName || propName;
+
+      if (secret !== ReactPropTypesSecret) {
+        if (throwOnDirectAccess) {
+          // New behavior only for users of `prop-types` package
+          var err = new Error(
+            'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+            'Use `PropTypes.checkPropTypes()` to call them. ' +
+            'Read more at http://fb.me/use-check-prop-types'
+          );
+          err.name = 'Invariant Violation';
+          throw err;
+        } else if ( true && typeof console !== 'undefined') {
+          // Old behavior for people using React.PropTypes
+          var cacheKey = componentName + ':' + propName;
+          if (
+            !manualPropTypeCallCache[cacheKey] &&
+            // Avoid spamming the console because they are often not actionable except for lib authors
+            manualPropTypeWarningCount < 3
+          ) {
+            printWarning(
+              'You are manually calling a React.PropTypes validation ' +
+              'function for the `' + propFullName + '` prop on `' + componentName + '`. This is deprecated ' +
+              'and will throw in the standalone `prop-types` package. ' +
+              'You may be seeing this warning due to a third-party PropTypes ' +
+              'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.'
+            );
+            manualPropTypeCallCache[cacheKey] = true;
+            manualPropTypeWarningCount++;
+          }
+        }
+      }
+      if (props[propName] == null) {
+        if (isRequired) {
+          if (props[propName] === null) {
+            return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required ' + ('in `' + componentName + '`, but its value is `null`.'));
+          }
+          return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required in ' + ('`' + componentName + '`, but its value is `undefined`.'));
+        }
+        return null;
+      } else {
+        return validate(props, propName, componentName, location, propFullName);
+      }
+    }
+
+    var chainedCheckType = checkType.bind(null, false);
+    chainedCheckType.isRequired = checkType.bind(null, true);
+
+    return chainedCheckType;
+  }
+
+  function createPrimitiveTypeChecker(expectedType) {
+    function validate(props, propName, componentName, location, propFullName, secret) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== expectedType) {
+        // `propValue` being instance of, say, date/regexp, pass the 'object'
+        // check, but we can offer a more precise error message here rather than
+        // 'of type `object`'.
+        var preciseType = getPreciseType(propValue);
+
+        return new PropTypeError(
+          'Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'),
+          {expectedType: expectedType}
+        );
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createAnyTypeChecker() {
+    return createChainableTypeChecker(emptyFunctionThatReturnsNull);
+  }
+
+  function createArrayOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside arrayOf.');
+      }
+      var propValue = props[propName];
+      if (!Array.isArray(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
+      }
+      for (var i = 0; i < propValue.length; i++) {
+        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret);
+        if (error instanceof Error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createElementTypeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      if (!isValidElement(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createElementTypeTypeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      if (!ReactIs.isValidElementType(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement type.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createInstanceTypeChecker(expectedClass) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!(props[propName] instanceof expectedClass)) {
+        var expectedClassName = expectedClass.name || ANONYMOUS;
+        var actualClassName = getClassName(props[propName]);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') + ('instance of `' + expectedClassName + '`.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createEnumTypeChecker(expectedValues) {
+    if (!Array.isArray(expectedValues)) {
+      if (true) {
+        if (arguments.length > 1) {
+          printWarning(
+            'Invalid arguments supplied to oneOf, expected an array, got ' + arguments.length + ' arguments. ' +
+            'A common mistake is to write oneOf(x, y, z) instead of oneOf([x, y, z]).'
+          );
+        } else {
+          printWarning('Invalid argument supplied to oneOf, expected an array.');
+        }
+      }
+      return emptyFunctionThatReturnsNull;
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      for (var i = 0; i < expectedValues.length; i++) {
+        if (is(propValue, expectedValues[i])) {
+          return null;
+        }
+      }
+
+      var valuesString = JSON.stringify(expectedValues, function replacer(key, value) {
+        var type = getPreciseType(value);
+        if (type === 'symbol') {
+          return String(value);
+        }
+        return value;
+      });
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of value `' + String(propValue) + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createObjectOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside objectOf.');
+      }
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
+      }
+      for (var key in propValue) {
+        if (has(propValue, key)) {
+          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+          if (error instanceof Error) {
+            return error;
+          }
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createUnionTypeChecker(arrayOfTypeCheckers) {
+    if (!Array.isArray(arrayOfTypeCheckers)) {
+       true ? printWarning('Invalid argument supplied to oneOfType, expected an instance of array.') : 0;
+      return emptyFunctionThatReturnsNull;
+    }
+
+    for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+      var checker = arrayOfTypeCheckers[i];
+      if (typeof checker !== 'function') {
+        printWarning(
+          'Invalid argument supplied to oneOfType. Expected an array of check functions, but ' +
+          'received ' + getPostfixForTypeWarning(checker) + ' at index ' + i + '.'
+        );
+        return emptyFunctionThatReturnsNull;
+      }
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      var expectedTypes = [];
+      for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+        var checker = arrayOfTypeCheckers[i];
+        var checkerResult = checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret);
+        if (checkerResult == null) {
+          return null;
+        }
+        if (checkerResult.data && has(checkerResult.data, 'expectedType')) {
+          expectedTypes.push(checkerResult.data.expectedType);
+        }
+      }
+      var expectedTypesMessage = (expectedTypes.length > 0) ? ', expected one of type [' + expectedTypes.join(', ') + ']': '';
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`' + expectedTypesMessage + '.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createNodeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!isNode(props[propName])) {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`, expected a ReactNode.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function invalidValidatorError(componentName, location, propFullName, key, type) {
+    return new PropTypeError(
+      (componentName || 'React class') + ': ' + location + ' type `' + propFullName + '.' + key + '` is invalid; ' +
+      'it must be a function, usually from the `prop-types` package, but received `' + type + '`.'
+    );
+  }
+
+  function createShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      for (var key in shapeTypes) {
+        var checker = shapeTypes[key];
+        if (typeof checker !== 'function') {
+          return invalidValidatorError(componentName, location, propFullName, key, getPreciseType(checker));
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createStrictShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      // We need to check all keys in case some are required but missing from props.
+      var allKeys = assign({}, props[propName], shapeTypes);
+      for (var key in allKeys) {
+        var checker = shapeTypes[key];
+        if (has(shapeTypes, key) && typeof checker !== 'function') {
+          return invalidValidatorError(componentName, location, propFullName, key, getPreciseType(checker));
+        }
+        if (!checker) {
+          return new PropTypeError(
+            'Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' +
+            '\nBad object: ' + JSON.stringify(props[propName], null, '  ') +
+            '\nValid keys: ' + JSON.stringify(Object.keys(shapeTypes), null, '  ')
+          );
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+
+    return createChainableTypeChecker(validate);
+  }
+
+  function isNode(propValue) {
+    switch (typeof propValue) {
+      case 'number':
+      case 'string':
+      case 'undefined':
+        return true;
+      case 'boolean':
+        return !propValue;
+      case 'object':
+        if (Array.isArray(propValue)) {
+          return propValue.every(isNode);
+        }
+        if (propValue === null || isValidElement(propValue)) {
+          return true;
+        }
+
+        var iteratorFn = getIteratorFn(propValue);
+        if (iteratorFn) {
+          var iterator = iteratorFn.call(propValue);
+          var step;
+          if (iteratorFn !== propValue.entries) {
+            while (!(step = iterator.next()).done) {
+              if (!isNode(step.value)) {
+                return false;
+              }
+            }
+          } else {
+            // Iterator will provide entry [k,v] tuples rather than values.
+            while (!(step = iterator.next()).done) {
+              var entry = step.value;
+              if (entry) {
+                if (!isNode(entry[1])) {
+                  return false;
+                }
+              }
+            }
+          }
+        } else {
+          return false;
+        }
+
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  function isSymbol(propType, propValue) {
+    // Native Symbol.
+    if (propType === 'symbol') {
+      return true;
+    }
+
+    // falsy value can't be a Symbol
+    if (!propValue) {
+      return false;
+    }
+
+    // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
+    if (propValue['@@toStringTag'] === 'Symbol') {
+      return true;
+    }
+
+    // Fallback for non-spec compliant Symbols which are polyfilled.
+    if (typeof Symbol === 'function' && propValue instanceof Symbol) {
+      return true;
+    }
+
+    return false;
+  }
+
+  // Equivalent of `typeof` but with special handling for array and regexp.
+  function getPropType(propValue) {
+    var propType = typeof propValue;
+    if (Array.isArray(propValue)) {
+      return 'array';
+    }
+    if (propValue instanceof RegExp) {
+      // Old webkits (at least until Android 4.0) return 'function' rather than
+      // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
+      // passes PropTypes.object.
+      return 'object';
+    }
+    if (isSymbol(propType, propValue)) {
+      return 'symbol';
+    }
+    return propType;
+  }
+
+  // This handles more types than `getPropType`. Only used for error messages.
+  // See `createPrimitiveTypeChecker`.
+  function getPreciseType(propValue) {
+    if (typeof propValue === 'undefined' || propValue === null) {
+      return '' + propValue;
+    }
+    var propType = getPropType(propValue);
+    if (propType === 'object') {
+      if (propValue instanceof Date) {
+        return 'date';
+      } else if (propValue instanceof RegExp) {
+        return 'regexp';
+      }
+    }
+    return propType;
+  }
+
+  // Returns a string that is postfixed to a warning about an invalid type.
+  // For example, "undefined" or "of type array"
+  function getPostfixForTypeWarning(value) {
+    var type = getPreciseType(value);
+    switch (type) {
+      case 'array':
+      case 'object':
+        return 'an ' + type;
+      case 'boolean':
+      case 'date':
+      case 'regexp':
+        return 'a ' + type;
+      default:
+        return type;
+    }
+  }
+
+  // Returns class name of the object, if any.
+  function getClassName(propValue) {
+    if (!propValue.constructor || !propValue.constructor.name) {
+      return ANONYMOUS;
+    }
+    return propValue.constructor.name;
+  }
+
+  ReactPropTypes.checkPropTypes = checkPropTypes;
+  ReactPropTypes.resetWarningCache = checkPropTypes.resetWarningCache;
+  ReactPropTypes.PropTypes = ReactPropTypes;
+
+  return ReactPropTypes;
+};
+
+
+/***/ }),
+
+/***/ "./src/blocks/node_modules/prop-types/index.js":
+/*!*****************************************************!*\
+  !*** ./src/blocks/node_modules/prop-types/index.js ***!
+  \*****************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (true) {
+  var ReactIs = __webpack_require__(/*! react-is */ "./src/blocks/node_modules/react-is/index.js");
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = __webpack_require__(/*! ./factoryWithTypeCheckers */ "./src/blocks/node_modules/prop-types/factoryWithTypeCheckers.js")(ReactIs.isElement, throwOnDirectAccess);
+} else {}
+
+
+/***/ }),
+
+/***/ "./src/blocks/node_modules/prop-types/lib/ReactPropTypesSecret.js":
+/*!************************************************************************!*\
+  !*** ./src/blocks/node_modules/prop-types/lib/ReactPropTypesSecret.js ***!
+  \************************************************************************/
+/***/ ((module) => {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+
+module.exports = ReactPropTypesSecret;
+
+
+/***/ }),
+
+/***/ "./src/blocks/node_modules/prop-types/lib/has.js":
+/*!*******************************************************!*\
+  !*** ./src/blocks/node_modules/prop-types/lib/has.js ***!
+  \*******************************************************/
+/***/ ((module) => {
+
+module.exports = Function.call.bind(Object.prototype.hasOwnProperty);
+
+
+/***/ }),
+
+/***/ "./src/blocks/node_modules/react-google-font-loader/build/index.js":
+/*!*************************************************************************!*\
+  !*** ./src/blocks/node_modules/react-google-font-loader/build/index.js ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+    value: true
+}));
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _react = __webpack_require__(/*! react */ "react");
+
+var _propTypes = __webpack_require__(/*! prop-types */ "./src/blocks/node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var createLink = function createLink(fonts, subsets, display) {
+    var families = fonts.reduce(function (acc, font) {
+        var family = font.font.replace(/ +/g, '+');
+        var weights = (font.weights || []).join(',');
+
+        return [].concat(_toConsumableArray(acc), [family + (weights && ':' + weights)]);
+    }, []).join('|');
+
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css?family=' + families;
+
+    if (subsets && Array.isArray(subsets) && subsets.length > 0) {
+        link.href += '&subset=' + subsets.join(',');
+    }
+
+    if (display) {
+        link.href += '&display=' + display;
+    }
+
+    return link;
+};
+
+var GoogleFontLoader = function GoogleFontLoader(_ref) {
+    var fonts = _ref.fonts,
+        subsets = _ref.subsets,
+        _ref$display = _ref.display,
+        display = _ref$display === undefined ? null : _ref$display;
+
+    var _useState = (0, _react.useState)(createLink(fonts, subsets, display)),
+        _useState2 = _slicedToArray(_useState, 2),
+        link = _useState2[0],
+        setLink = _useState2[1];
+
+    (0, _react.useEffect)(function () {
+        document.head.appendChild(link);
+
+        return function () {
+            return document.head.removeChild(link);
+        };
+    }, [link]);
+
+    (0, _react.useEffect)(function () {
+        setLink(createLink(fonts, subsets, display));
+    }, [fonts, subsets, display]);
+
+    return null;
+};
+
+GoogleFontLoader.propTypes = {
+    fonts: _propTypes2.default.arrayOf(_propTypes2.default.shape({
+        font: _propTypes2.default.string.isRequired,
+        weights: _propTypes2.default.arrayOf(_propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]))
+    })).isRequired,
+    subsets: _propTypes2.default.arrayOf(_propTypes2.default.string),
+    display: _propTypes2.default.string
+};
+
+exports["default"] = GoogleFontLoader;
+
+/***/ }),
+
+/***/ "./src/blocks/node_modules/react-is/cjs/react-is.development.js":
+/*!**********************************************************************!*\
+  !*** ./src/blocks/node_modules/react-is/cjs/react-is.development.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+/** @license React v16.13.1
+ * react-is.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+
+
+if (true) {
+  (function() {
+'use strict';
+
+// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+// nor polyfill, then a plain number is used for performance.
+var hasSymbol = typeof Symbol === 'function' && Symbol.for;
+var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
+var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
+var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
+var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
+var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
+var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
+var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary
+// (unstable) APIs that have been removed. Can we remove the symbols?
+
+var REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;
+var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
+var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
+var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
+var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
+var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
+var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
+var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
+var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
+var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
+var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
+
+function isValidElementType(type) {
+  return typeof type === 'string' || typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
+  type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_RESPONDER_TYPE || type.$$typeof === REACT_SCOPE_TYPE || type.$$typeof === REACT_BLOCK_TYPE);
+}
+
+function typeOf(object) {
+  if (typeof object === 'object' && object !== null) {
+    var $$typeof = object.$$typeof;
+
+    switch ($$typeof) {
+      case REACT_ELEMENT_TYPE:
+        var type = object.type;
+
+        switch (type) {
+          case REACT_ASYNC_MODE_TYPE:
+          case REACT_CONCURRENT_MODE_TYPE:
+          case REACT_FRAGMENT_TYPE:
+          case REACT_PROFILER_TYPE:
+          case REACT_STRICT_MODE_TYPE:
+          case REACT_SUSPENSE_TYPE:
+            return type;
+
+          default:
+            var $$typeofType = type && type.$$typeof;
+
+            switch ($$typeofType) {
+              case REACT_CONTEXT_TYPE:
+              case REACT_FORWARD_REF_TYPE:
+              case REACT_LAZY_TYPE:
+              case REACT_MEMO_TYPE:
+              case REACT_PROVIDER_TYPE:
+                return $$typeofType;
+
+              default:
+                return $$typeof;
+            }
+
+        }
+
+      case REACT_PORTAL_TYPE:
+        return $$typeof;
+    }
+  }
+
+  return undefined;
+} // AsyncMode is deprecated along with isAsyncMode
+
+var AsyncMode = REACT_ASYNC_MODE_TYPE;
+var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
+var ContextConsumer = REACT_CONTEXT_TYPE;
+var ContextProvider = REACT_PROVIDER_TYPE;
+var Element = REACT_ELEMENT_TYPE;
+var ForwardRef = REACT_FORWARD_REF_TYPE;
+var Fragment = REACT_FRAGMENT_TYPE;
+var Lazy = REACT_LAZY_TYPE;
+var Memo = REACT_MEMO_TYPE;
+var Portal = REACT_PORTAL_TYPE;
+var Profiler = REACT_PROFILER_TYPE;
+var StrictMode = REACT_STRICT_MODE_TYPE;
+var Suspense = REACT_SUSPENSE_TYPE;
+var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated
+
+function isAsyncMode(object) {
+  {
+    if (!hasWarnedAboutDeprecatedIsAsyncMode) {
+      hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
+
+      console['warn']('The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
+    }
+  }
+
+  return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
+}
+function isConcurrentMode(object) {
+  return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
+}
+function isContextConsumer(object) {
+  return typeOf(object) === REACT_CONTEXT_TYPE;
+}
+function isContextProvider(object) {
+  return typeOf(object) === REACT_PROVIDER_TYPE;
+}
+function isElement(object) {
+  return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+}
+function isForwardRef(object) {
+  return typeOf(object) === REACT_FORWARD_REF_TYPE;
+}
+function isFragment(object) {
+  return typeOf(object) === REACT_FRAGMENT_TYPE;
+}
+function isLazy(object) {
+  return typeOf(object) === REACT_LAZY_TYPE;
+}
+function isMemo(object) {
+  return typeOf(object) === REACT_MEMO_TYPE;
+}
+function isPortal(object) {
+  return typeOf(object) === REACT_PORTAL_TYPE;
+}
+function isProfiler(object) {
+  return typeOf(object) === REACT_PROFILER_TYPE;
+}
+function isStrictMode(object) {
+  return typeOf(object) === REACT_STRICT_MODE_TYPE;
+}
+function isSuspense(object) {
+  return typeOf(object) === REACT_SUSPENSE_TYPE;
+}
+
+exports.AsyncMode = AsyncMode;
+exports.ConcurrentMode = ConcurrentMode;
+exports.ContextConsumer = ContextConsumer;
+exports.ContextProvider = ContextProvider;
+exports.Element = Element;
+exports.ForwardRef = ForwardRef;
+exports.Fragment = Fragment;
+exports.Lazy = Lazy;
+exports.Memo = Memo;
+exports.Portal = Portal;
+exports.Profiler = Profiler;
+exports.StrictMode = StrictMode;
+exports.Suspense = Suspense;
+exports.isAsyncMode = isAsyncMode;
+exports.isConcurrentMode = isConcurrentMode;
+exports.isContextConsumer = isContextConsumer;
+exports.isContextProvider = isContextProvider;
+exports.isElement = isElement;
+exports.isForwardRef = isForwardRef;
+exports.isFragment = isFragment;
+exports.isLazy = isLazy;
+exports.isMemo = isMemo;
+exports.isPortal = isPortal;
+exports.isProfiler = isProfiler;
+exports.isStrictMode = isStrictMode;
+exports.isSuspense = isSuspense;
+exports.isValidElementType = isValidElementType;
+exports.typeOf = typeOf;
+  })();
+}
+
+
+/***/ }),
+
+/***/ "./src/blocks/node_modules/react-is/index.js":
+/*!***************************************************!*\
+  !*** ./src/blocks/node_modules/react-is/index.js ***!
+  \***************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+if (false) {} else {
+  module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ "./src/blocks/node_modules/react-is/cjs/react-is.development.js");
+}
 
 
 /***/ }),

@@ -2,6 +2,7 @@ import classnames from "classnames";
 import PremiumBorder from "../../components/premium-border";
 import SpacingComponent from "../../components/premium-responsive-spacing";
 import PremiumTypo from "../../components/premium-typo";
+import WebfontLoader from "../../components/typography/fontLoader";
 import PremiumShadow from "../../components/PremiumShadow";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
 import RadioComponent from '../../components/radio-control';
@@ -61,6 +62,32 @@ class PremiumAccordion extends Component {
             hideTablet,
             hideMobile,
         } = this.props.attributes;
+
+        let loadTitleGoogleFonts;
+        let loadDescGoogleFonts;
+        if (titleTypography?.fontFamily !== 'Default') {
+            const titleConfig = {
+                google: {
+                    families: [titleTypography.fontFamily],
+                },
+            }
+            loadTitleGoogleFonts = (
+                <WebfontLoader config={titleConfig}>
+                </WebfontLoader>
+            )
+        }
+
+        if (descTypography?.fontFamily !== 'Default') {
+            const descConfig = {
+                google: {
+                    families: [descTypography.fontFamily],
+                },
+            }
+            loadDescGoogleFonts = (
+                <WebfontLoader config={descConfig}>
+                </WebfontLoader>
+            )
+        }
 
         const INNER_BLOCKS_TEMPLATE = [
             [
@@ -149,11 +176,14 @@ class PremiumAccordion extends Component {
                 'border-bottom-right-radius': `${titleBorder?.borderRadius[this.props.deviceType].left || 0}px`,
             };
 
-            styles[`.${blockId} .premium-accordion__icon_wrap svg.premium-accordion__icon`] = {
-                fill: arrowStyles[0].arrowColor,
+            styles[`.${blockId} .premium-accordion__icon_wrap`] = {
                 'background-color': arrowStyles[0].arrowBack,
                 padding: arrowStyles[0].arrowPadding + "px",
                 'border-radius': arrowStyles[0].arrowRadius + "px",
+            };
+
+            styles[`.${blockId} .premium-accordion__icon_wrap svg.premium-accordion__icon`] = {
+                fill: arrowStyles[0].arrowColor,
                 width: `${arrowStyles[0].arrowSize}px`,
                 height: `${arrowStyles[0].arrowSize}px`
             };
@@ -417,6 +447,8 @@ class PremiumAccordion extends Component {
                         templateLock={false}
                         allowedBlocks={['premium/accordion-item']}
                     />
+                    {loadTitleGoogleFonts}
+                    {loadDescGoogleFonts}
                 </div>
             </Fragment>
         ];

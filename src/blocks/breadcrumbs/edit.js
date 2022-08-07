@@ -30,6 +30,7 @@ import InspectorTab from '../../components/inspectorTab';
 import RadioComponent from '../../components/radio-control';
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import { generateBlockId, generateCss, typographyCss, paddingCss, marginCss } from '../../components/HelperFunction';
+import WebfontLoader from "../../components/typography/fontLoader";
 
 function Edit({ clientId, attributes, setAttributes, context: { postType, postId }, deviceType }) {
     const [fullTitle] = useEntityProp('postType', postType, 'title', postId);
@@ -66,6 +67,19 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
 
     const categoryName = hasPostTerms ? postTerms[0].name : __('Post Category');
     const { textAlign, colors, spacing, typography, breadcrumbsStyle, enablePrefix, blockId, hideDesktop, hideTablet, hideMobile } = attributes;
+    let loadGoogleFonts;
+    if (typography?.fontFamily !== 'Default') {
+        const fontConfig = {
+            google: {
+                families: [typography.fontFamily],
+            },
+        }
+        loadGoogleFonts = (
+            <WebfontLoader config={fontConfig}>
+            </WebfontLoader>
+        )
+    }
+
     let margin = spacing.margin ? spacing.margin : {};
     let padding = spacing.padding ? spacing.padding : {};
     let itemPadding = spacing.itemPadding ? spacing.itemPadding : {};
@@ -211,6 +225,7 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
                         <span>{fullTitle || __('Post Title')}</span>
                     </div>
                 </div>
+                {loadGoogleFonts && loadGoogleFonts}
             </div>
             <InspectorControls>
                 <InspectorTabs tabs={['layout', 'style', 'advance']}>
@@ -223,11 +238,6 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
                                 label={__("Enable Breadcrumbs Prefix", 'premium-blocks-for-gutenberg')}
                                 checked={enablePrefix}
                                 onChange={check => setAttributes({ enablePrefix: check })}
-                            />
-                            <TextControl
-                                label={__('Breadcrumbs Prefix Text', 'premium-blocks-for-gutenberg')}
-                                value={attributes.prefix}
-                                onChange={(val) => setAttributes({ prefix: val })}
                             />
                             <TextControl
                                 label={__('Custom Levels Divider', 'premium-blocks-for-gutenberg')}

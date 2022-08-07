@@ -39,7 +39,7 @@ export default function save(props) {
         const styles = {};
 
         styles[`.${blockId} .premium-bullet-list__content-icon i:hover`] = {
-            'background-color': `${bulletIconStyles?.[0]?.bulletIconHoverColor}!important`,
+            'color': `${bulletIconStyles?.[0]?.bulletIconHoverColor}!important`,
             'background-color': `${bulletIconStyles?.[0]?.bulletIconHoverBackgroundColor}!important`
         };
         styles[`.${blockId} .premium-bullet-list__label-wrap .premium-bullet-list__label:hover`] = {

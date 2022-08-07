@@ -1085,6 +1085,10 @@ a.premium-dheading-block__link:hover {
     padding: 0;
 }
 
+.premium-countup__increment{
+    font-size: 30px;
+}
+
 .premium-countup__wrap .premium-countup__icon {
     display: inline;
 }

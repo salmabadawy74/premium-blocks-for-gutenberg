@@ -17,7 +17,6 @@ import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import { generateBlockId, generateCss, typographyCss, paddingCss, marginCss, borderCss } from '../../components/HelperFunction';
-import GoogleFontLoader from "react-google-font-loader";
 
 const { withSelect } = wp.data
 
@@ -294,17 +293,16 @@ class edit extends Component {
         let loadTitleGoogleFonts;
 
         if (titleTypography.fontFamily !== "Default") {
+            const fontConfig = {
+                google: {
+                    families: [titleTypography.fontFamily],
+                },
+            }
             loadTitleGoogleFonts = (
-                <GoogleFontLoader
-                    fonts={[
-                        {
-                            font: titleTypography?.fontFamily,
-                        },
-                    ]}
-                />
+                <WebfontLoader config={fontConfig}>
+                </WebfontLoader>
             );
         }
-
         const LAYOUT = [
             {
                 label: __("Block", 'premium-blocks-for-gutenberg'),
@@ -610,7 +608,7 @@ class edit extends Component {
             const styles = {};
 
             styles[`.${blockId} .premium-bullet-list__content-icon i:hover`] = {
-                'background-color': `${bulletIconStyles?.[0]?.bulletIconHoverColor}!important`,
+                'color': `${bulletIconStyles?.[0]?.bulletIconHoverColor}!important`,
                 'background-color': `${bulletIconStyles?.[0]?.bulletIconHoverBackgroundColor}!important`
             };
             styles[`.${blockId} .premium-bullet-list__label-wrap .premium-bullet-list__label:hover`] = {

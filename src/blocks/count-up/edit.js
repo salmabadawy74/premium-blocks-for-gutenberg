@@ -13,10 +13,10 @@ import Icons from "../../components/icons";
 const { __ } = wp.i18n;
 const { withSelect } = wp.data
 import SpacingComponent from '../../components/premium-responsive-spacing';
-import GoogleFontLoader from "react-google-font-loader";
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import { gradientBackground, generateBlockId, borderCss, paddingCss, typographyCss, marginCss } from "../../components/HelperFunction";
+import WebfontLoader from "../../components/typography/fontLoader";
 
 const { PanelBody, SelectControl, TextControl, ToggleControl } = wp.components;
 
@@ -133,43 +133,50 @@ class edit extends Component {
         let loadPrefixGoogleFonts;
 
         if (numberTypography?.fontFamily !== 'Default') {
+            const numberConfig = {
+                google: {
+                    families: [numberTypography.fontFamily],
+                },
+            }
             loadCounterGoogleFonts = (
-                <GoogleFontLoader fonts={[
-                    {
-                        font: numberTypography?.fontFamily,
-                    },
-                ]
-                } />
+                <WebfontLoader config={numberConfig}>
+                </WebfontLoader>
             )
         }
 
         if (titleTypography?.fontFamily !== "Default") {
+            const titleConfig = {
+                google: {
+                    families: [titleTypography.fontFamily],
+                },
+            }
             loadTitleGoogleFonts = (
-                <GoogleFontLoader fonts={[
-                    {
-                        font: titleTypography?.fontFamily,
-                    }]
-                } />
+                <WebfontLoader config={titleConfig}>
+                </WebfontLoader>
             )
         }
 
         if (suffixTypography?.fontFamily !== "Default") {
+            const suffixConfig = {
+                google: {
+                    families: [suffixTypography.fontFamily],
+                },
+            }
             loadSuffixGoogleFonts = (
-                <GoogleFontLoader fonts={[
-                    {
-                        font: suffixTypography?.fontFamily,
-                    }]
-                } />
+                <WebfontLoader config={suffixConfig}>
+                </WebfontLoader>
             )
         }
 
         if (prefixTypography?.fontFamily !== "Default") {
+            const prefixConfig = {
+                google: {
+                    families: [prefixTypography.fontFamily],
+                },
+            }
             loadPrefixGoogleFonts = (
-                <GoogleFontLoader fonts={[
-                    {
-                        font: prefixTypography?.fontFamily,
-                    }]
-                } />
+                <WebfontLoader config={prefixConfig}>
+                </WebfontLoader>
             )
         }
 
@@ -213,11 +220,11 @@ class edit extends Component {
             setAttributes({ suffixStyles: newUpdate });
         }
 
-        const mainClasses = classnames(className + '__wrap', {
+        const mainClasses = classnames(className, {
             ' premium-desktop-hidden': hideDesktop,
             ' premium-tablet-hidden': hideTablet,
             ' premium-mobile-hidden': hideMobile,
-        }, "premium-countup");
+        }, "premium-countup__wrap");
 
         // const alignProperty = flexDir.includes("column") ? 
         return [
@@ -667,7 +674,9 @@ class edit extends Component {
                             onChange={value => setAttributes({ increment: value })}
                             style={{
                                 color: numberStyles[0].numberColor,
-                                ...typographyCss(numberTypography, this.props.deviceType)
+                                ...typographyCss(numberTypography, this.props.deviceType),
+                                ...marginCss(numberMargin, this.props.deviceType),
+                                ...paddingCss(numberPadding, this.props.deviceType),
                             }}
                             tagName="p"
                             data-interval={time}

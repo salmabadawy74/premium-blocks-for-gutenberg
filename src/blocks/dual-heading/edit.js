@@ -6,7 +6,7 @@ import AdvancedPopColorControl from "../../components/Color Control/ColorCompone
 import PremiumBackgroundControl from "../../components/Premium-Background-Control";
 const { __ } = wp.i18n;
 const { withSelect } = wp.data;
-import GoogleFontLoader from "react-google-font-loader";
+import WebfontLoader from "../../components/typography/fontLoader";
 import PremiumShadow from "../../components/PremiumShadow";
 import SpacingComponent from "../../components/premium-responsive-spacing";
 import {
@@ -89,25 +89,25 @@ class edit extends Component {
         let loadFirstGoogleFonts;
         let loadSecondGoogleFonts;
         if (firstTypography?.fontFamily !== "Default") {
+            const firstConfig = {
+                google: {
+                    families: [firstTypography.fontFamily],
+                },
+            }
             loadFirstGoogleFonts = (
-                <GoogleFontLoader
-                    fonts={[
-                        {
-                            font: firstTypography?.fontFamily,
-                        },
-                    ]}
-                />
+                <WebfontLoader config={firstConfig}>
+                </WebfontLoader>
             );
         }
         if (secondTypography?.fontFamily !== "Default") {
+            const secondConfig = {
+                google: {
+                    families: [secondTypography.fontFamily],
+                },
+            }
             loadSecondGoogleFonts = (
-                <GoogleFontLoader
-                    fonts={[
-                        {
-                            font: secondTypography?.fontFamily,
-                        },
-                    ]}
-                />
+                <WebfontLoader config={secondConfig}>
+                </WebfontLoader>
             );
         }
 
@@ -650,8 +650,8 @@ class edit extends Component {
                     <h2 className={`premium-dheading-block__title`}>
                         <RichText
                             className={`premium-dheading-block__first${firstStyles?.[0]?.firstClip
-                                    ? ` premium-headingc-${firstStyles?.[0]?.firstClip}`
-                                    : ""
+                                ? ` premium-headingc-${firstStyles?.[0]?.firstClip}`
+                                : ""
                                 }${firstStyles?.[0]?.firstAnim
                                     ? ` premium-headinga-${firstStyles?.[0]?.firstAnim}`
                                     : ""
@@ -694,8 +694,8 @@ class edit extends Component {
                         />
                         <RichText
                             className={`premium-dheading-block__second${secondStyles?.[0]?.secondClip
-                                    ? `${` premium-headingc-${secondStyles?.[0]?.secondClip}`}`
-                                    : ""
+                                ? `${` premium-headingc-${secondStyles?.[0]?.secondClip}`}`
+                                : ""
                                 }${secondStyles?.[0]?.secondAnim
                                     ? ` ${`premium-headinga-${secondStyles?.[0]?.secondAnim} `}`
                                     : ""

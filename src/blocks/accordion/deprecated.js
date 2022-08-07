@@ -802,9 +802,19 @@ const deprecated = [
                     "fontWeight": attributes?.titleStyles[0].titleWeight || '',
                     'fontStyle': attributes?.titleStyles[0].titleStyle || '',
                     'textTransform': attributes?.titleStyles[0].titleUpper || '',
-                    'letterSpacing': attributes?.titleStyles[0].titleLetter || '',
                     'fontFamily': '',
-                    'lineHeight': attributes?.titleStyles[0].titleLine || '',
+                    'lineHeight': {
+                        'Desktop': attributes?.titleStyles[0].titleLine || '',
+                        "Tablet": attributes?.titleStyles[0].titleLine || '',
+                        "Mobile": attributes?.titleStyles[0].titleLine || '',
+                        "unit": 'px'
+                    },
+                    'letterSpacing': {
+                        'Desktop': attributes?.titleStyles[0].titleLetter || '',
+                        "Tablet": attributes?.titleStyles[0].titleLetter || '',
+                        "Mobile": attributes?.titleStyles[0].titleLetter || '',
+                        "unit": 'px'
+                    },
                     'textDecoration': '',
                     'fontSize': {
                         'Desktop': attributes?.titleStyles[0].titleSize || '',
@@ -817,10 +827,20 @@ const deprecated = [
                     "fontWeight": attributes?.descStyles[0].descWeight || '',
                     'fontStyle': attributes?.descStyles[0].descStyle || '',
                     'textTransform': attributes?.descStyles[0].descUpper || '',
-                    'letterSpacing': attributes?.descStyles[0].descLetter || '',
                     'fontFamily': '',
-                    'lineHeight': attributes?.descStyles[0].descLine || '',
                     'textDecoration': '',
+                    'lineHeight': {
+                        'Desktop': attributes?.descStyles[0].descLine || '',
+                        "Tablet": attributes?.descStyles[0].descLine || '',
+                        "Mobile": attributes?.descStyles[0].descLine || '',
+                        "unit": 'px'
+                    },
+                    'letterSpacing': {
+                        'Desktop': attributes?.descStyles[0].descLetter || '',
+                        "Tablet": attributes?.descStyles[0].descLetter || '',
+                        "Mobile": attributes?.descStyles[0].descLetter || '',
+                        "unit": 'px'
+                    },
                     'fontSize': {
                         'Desktop': attributes?.descStyles[0].descSize || '',
                         "Tablet": attributes?.descStyles[0].descSize || '',
