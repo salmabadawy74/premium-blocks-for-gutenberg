@@ -523,17 +523,14 @@ class Premium_Blocks_css {
 		if ( empty( $font ) ) {
 			return false;
 		}
-		$size_type = ( isset( $font['fontSize']['unit'] ) && ! empty( $font['fontSize']['unit'] ) ? $font['fontSize']['unit'] : 'px' );
 		if ( isset( $font['fontSize'] ) && isset( $font['fontSize'][$device] ) && ! empty( $font['fontSize'][$device] ) ) {
-			$this->add_property( 'font-size', $font['fontSize'][$device] . $size_type );
+			$this->add_property( 'font-size', $this->render_range($font['fontSize'],$device) );
 		}
-		$line_type = ( isset( $font['lineHeight']['unit']) && ! empty( $font['lineHeight']['unit'] ) ? $font['lineHeight']['unit'] : 'px' );
 		if ( isset( $font['lineHeight'] ) && isset( $font['lineHeight'][$device] ) && ! empty( $font['lineHeight'][$device] ) ) {
-			$this->add_property( 'line-height', $font['lineHeight'][$device] . $line_type );
+			$this->add_property( 'line-height',$this->render_range($font['lineHeight'],$device) );
 		}
-		$letter_type = ( isset( $font['letterSpacing']['unit'] ) && ! empty( $font['letterSpacing']['unit'] ) ? $font['letterSpacing']['unit'] : 'px' );
 		if ( isset( $font['letterSpacing'] ) && isset( $font['letterSpacing'][$device] ) && ! empty( $font['letterSpacing'][$device] ) ) {
-			$this->add_property( 'letter-spacing', $font['letterSpacing'][$device] . $letter_type );
+			$this->add_property( 'letter-spacing', $this->render_range($font['letterSpacing'],$device)  );
 		}
 		$family = ( isset( $font['fontFamily'] ) && ! empty( $font['fontFamily'] ) && 'Default' !== $font['fontFamily'] ? $font['fontFamily'] : '' );
 		if ( ! empty( $family ) ) {
@@ -546,6 +543,7 @@ class Premium_Blocks_css {
 		}
 	
 	}
+
     public function add_gfont( $attr ) {
 
             $defaults = array(

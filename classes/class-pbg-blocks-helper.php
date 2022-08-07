@@ -2199,10 +2199,11 @@ class PBG_Blocks_Helper {
 		}
 
 		// icon Styles
-		if ( isset( $attr['iconSize']['Desktop'] ) ) {
+		if ( isset( $attr['iconSize']) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > .premium-icon' );
-			$css->add_property( 'font-size', ( ( isset( $attr['iconSize']['Desktop'] ) ? $attr['iconSize']['Desktop'] : '50' ) . ( isset( $attr['iconSize']['unit'] ) ? $attr['iconSize']['unit'] : 'px' ) . '!important' ) );
-		}
+			$css->add_property( 'font-size', $css->render_range($attr['iconSize'],'Desktop')  );
+
+        }
 		if ( isset( $attr['iconMargin'] ) ) {
 			$icon_margin = $attr['iconMargin'];
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > .premium-icon' );
@@ -2253,10 +2254,11 @@ class PBG_Blocks_Helper {
 		}
 
 		// icon Styles
-		if ( isset( $attr['iconSize']['Tablet'] ) ) {
+		if ( isset( $attr['iconSize'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > .premium-icon' );
-			$css->add_property( 'font-size', ( $attr['iconSize']['Tablet'] . ( isset( $attr['iconSize']['unit'] ) ? $attr['iconSize']['unit'] : 'px' ) . '!important' ) );
-		}
+			$css->add_property( 'font-size', $css->render_range($attr['iconSize'],'Tablet')   );
+		
+        }
 		if ( isset( $attr['iconMargin'] ) ) {
 			$wrap_margin = $attr['iconMargin'];
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > .premium-icon' );
@@ -2308,9 +2310,9 @@ class PBG_Blocks_Helper {
 		}
 
 		// icon Styles
-		if ( isset( $attr['iconSize']['Mobile'] ) ) {
+		if ( isset( $attr['iconSize'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > .premium-icon' );
-			$css->add_property( 'font-size', ( $attr['iconSize']['Mobile'] . ( isset( $attr['iconSize']['unit'] ) ? $attr['iconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'font-size',  $css->render_range($attr['iconSize'],'Mobile')   );
 		}
 		if ( isset( $attr['iconMargin'] ) ) {
 			$icon_margin = $attr['iconMargin'];
