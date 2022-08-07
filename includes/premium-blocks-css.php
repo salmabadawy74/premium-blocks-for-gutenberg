@@ -599,33 +599,15 @@ class Premium_Blocks_css {
 	 * @param bool   $render_zero if 0 should be rendered or not.
 	 * @return string
 	 */
-	public function render_range( $size, $device, $render_zero = true ) {
+	public function render_range( $size, $device ) {
 		if ( empty( $size ) ) {
 			return false;
 		}
-		if ( ! is_array( $size ) ) {
+		if ( ! isset( $size[ $device ] ) ) {
 			return false;
 		}
-		if ( ! isset( $size['size'] ) ) {
-			return false;
-		}
-		if ( ! is_array( $size['size'] ) ) {
-			return false;
-		}
-		if ( ! isset( $size['size'][ $device ] ) ) {
-			return false;
-		}
-		if ( $render_zero ) {
-			if ( ! is_numeric( $size['size'][ $device ] ) ) {
-				return false;
-			}
-		} else {
-			if ( empty( $size['size'][ $device ] ) ) {
-				return false;
-			}
-		}
-		$size_type   = ( isset( $size['unit'] ) && is_array( $size['unit'] ) && isset( $size['unit'][ $device ] ) && ! empty( $size['unit'][ $device ] ) ? $size['unit'][ $device ] : 'px' );
-		$size_string = $size['size'][ $device ] . $size_type;
+		$size_type   = ( isset( $size['unit'])  && ! empty( $size['unit'])? $size['unit'] : 'px' );
+		$size_string = $size[ $device ] . $size_type;
 
 		return $size_string;
 	}
