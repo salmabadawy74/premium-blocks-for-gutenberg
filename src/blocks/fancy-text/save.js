@@ -1,12 +1,11 @@
 import classnames from "classnames"
+import { filterJsCss } from '../../components/HelperFunction';
 
 export default function save(props) {
-
     const { attributes, className } = props
 
     const {
-        block_id,
-        align,
+        blockId,
         prefix,
         suffix,
         repeaterFancyText,
@@ -21,33 +20,56 @@ export default function save(props) {
         animationSpeed,
         pauseTime,
         hoverPause,
-        fancyalign,
         hideDesktop,
         hideTablet,
         hideMobile,
         fancyStyles,
-        PreStyles
+        PreStyles,
+        prefixTypography,
+        fancyTextTypography,
+        fancyTextShadow
     } = attributes;
 
+    const mainClasses = classnames(className, "premium-fancy-text", {
+        ' premium-desktop-hidden': hideDesktop,
+        ' premium-tablet-hidden': hideTablet,
+        ' premium-mobile-hidden': hideMobile,
+    });
+
+    const loadStyles = () => {
+        const styles = {};
+        styles[` .${blockId} .premium-fancy-text-title`] = {
+            'color': `${fancyStyles[0].fancyTextColor} !important`,
+            'background-color': `${fancyStyles[0].fancyTextBGColor} !important`
+        };
+        styles[` .${blockId} .typed-cursor`] = {
+            'color': `${fancyStyles[0].cursorColor} !important`,
+            'font-size': `${fancyTextTypography.fontSize[this.props.deviceType]}${fancyTextTypography.fontSize.unit} !important`,
+        };
+        styles[` .${blockId} .premium-fancy-text-suffix-prefix`] = {
+            'color': `${PreStyles[0].textColor} !important`,
+            'background-color': `${PreStyles[0].textBGColor} !important`
+        };
+        return generateCss(styles);
+    }
 
     return (
         <div
-            className={classnames(className, `premium-block-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`)}
-            style={{
-                textAlign: align,
-            }}
+            className={`${mainClasses} ${blockId}`}
         >
+            <style
+                dangerouslySetInnerHTML={{
+                    __html: loadStyles(),
+                }}
+            />
 
             {effect === "typing" ? (
                 <div
-                    id={`premium-fancy-text-${block_id}`}
+                    id={`premium-fancy-text-${blockId}`}
                     className={`premium-fancy-text`}
-                    style={{
-                        textAlign: align,
-                    }}
                     data-effect={`${effect}`}
                     data-strings={`${repeaterFancyText.map(
-                        (item, index) => {
+                        (item) => {
                             return item.title;
                         }
                     )}`}
@@ -59,44 +81,42 @@ export default function save(props) {
                     data-cursorshow={`${cursorShow}`}
                     data-cursormark={`${cursorMark}`}
                 >
-                    <span className={`premium-fancy-text-prefix-text`}
-                        style={{
-                            color: PreStyles[0].textColor,
-                            fontWeight: PreStyles[0].textWeight,
-                            letterSpacing: `${PreStyles[0].textLetter}px`,
-                            textTransform: `${PreStyles[0].textUpper ? "uppercase" : "none"}`,
-                            fontStyle: PreStyles[0].textStyle,
-                            backgroundColor: PreStyles[0].textBGColor
-                        }}
+                    <span className={`premium-fancy-text-suffix-prefix premium-fancy-text-prefix-text`}
+                        style={filterJsCss({
+                            fontStyle: prefixTypography.fontStyle,
+                            fontFamily: prefixTypography.fontFamily,
+                            fontWeight: prefixTypography.fontWeight,
+                            textDecoration: prefixTypography.textDecoration,
+                            textTransform: prefixTypography.textTransform,
+                        })}
                     >
                         {prefix}{" "}
                     </span>
                     <span
-                        className={`premium-fancy-text-title`}
-                        style={{
-                            color: fancyStyles[0].fancyTextColor,
-                            fontWeight: fancyStyles[0].fancyTextWeight,
-                            letterSpacing: `${fancyStyles[0].fancyTextLetter}px`,
-                            textTransform: `${fancyStyles[0].fancyTextUpper ? "uppercase" : "none"}`,
-                            fontStyle: `${fancyStyles[0].fancyTextStyle}`,
-                            backgroundColor: `${fancyStyles[0].fancyTextBGColor}`,
-                            textShadow: `${fancyStyles[0].shadowHorizontal}px ${fancyStyles[0].shadowVertical}px ${fancyStyles[0].shadowBlur}px ${fancyStyles[0].shadowColor}`
-                        }}
+                        className={`premium-fancy-text-title premium-fancy-text-title-type`}
+                        style={filterJsCss({
+                            fontStyle: fancyTextTypography.fontStyle,
+                            fontFamily: fancyTextTypography.fontFamily,
+                            fontWeight: fancyTextTypography.fontWeight,
+                            textDecoration: fancyTextTypography.textDecoration,
+                            textTransform: fancyTextTypography.textTransform,
+                            textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`,
+
+                        })}
                         ref={(el) => {
                             this.el = el;
                         }}
                     >
                         {" "}
                     </span>
-                    <span className={`premium-fancy-text-suffix-text`}
-                        style={{
-                            color: PreStyles[0].textColor,
-                            fontWeight: PreStyles[0].textWeight,
-                            letterSpacing: `${PreStyles[0].textLetter}px`,
-                            textTransform: `${PreStyles[0].textUpper ? "uppercase" : "none"}`,
-                            fontStyle: PreStyles[0].textStyle,
-                            backgroundColor: PreStyles[0].textBGColor
-                        }}
+                    <span className={`premium-fancy-text-suffix-prefix premium-fancy-text-suffix-text`}
+                        style={filterJsCss({
+                            fontStyle: prefixTypography.fontStyle,
+                            fontFamily: prefixTypography.fontFamily,
+                            fontWeight: prefixTypography.fontWeight,
+                            textDecoration: prefixTypography.textDecoration,
+                            textTransform: prefixTypography.textTransform,
+                        })}
                     >
                         {" "}
                         {suffix}
@@ -104,15 +124,11 @@ export default function save(props) {
                 </div>
             ) : (
                 <div
-                    id={`premium-fancy-text-${block_id}`}
+                    id={`premium-fancy-text-${blockId}`}
                     className={`premium-fancy-text premium-fancy-slide`}
-                    style={{
-                        textAlign: align,
-
-                    }}
                     data-effect={`${effect}`}
                     data-strings={`${repeaterFancyText.map(
-                        (item, index) => {
+                        (item) => {
                             return item.title;
                         }
                     )}`}
@@ -120,48 +136,45 @@ export default function save(props) {
                     data-pausetime={`${pauseTime}`}
                     data-hoverpause={`${hoverPause}`}
                 >
-                    <span className={`premium-fancy-text-prefix-text`}
-                        style={{
-                            color: PreStyles[0].textColor,
-                            fontWeight: PreStyles[0].textWeight,
-                            letterSpacing: `${PreStyles[0].textLetter}px`,
-                            textTransform: `${PreStyles[0].textUpper ? "uppercase" : "none"}`,
-                            fontStyle: PreStyles[0].textStyle,
-                            backgroundColor: PreStyles[0].textBGColor
-                        }}
+                    <span className={`premium-fancy-text-suffix-prefix premium-fancy-text-prefix-text`}
+                        style={filterJsCss({
+                            fontStyle: prefixTypography.fontStyle,
+                            fontFamily: prefixTypography.fontFamily,
+                            fontWeight: prefixTypography.fontWeight,
+                            textDecoration: prefixTypography.textDecoration,
+                            textTransform: prefixTypography.textTransform,
+                        })}
                     >
                         {prefix}{" "}
                     </span>
                     <div
-                        className={`premium-fancy-text-title-slide`}
+                        className={`premium-fancy-text-title premium-fancy-text-title-slide`}
                         style={{
-                            textAlign: fancyalign,
-                            color: fancyStyles[0].fancyTextColor,
-                            fontWeight: fancyStyles[0].fancyTextWeight,
-                            letterSpacing: `${fancyStyles[0].fancyTextLetter}px`,
-                            textTransform: `${fancyStyles[0].fancyTextUpper ? "uppercase" : "none"}`,
-                            fontStyle: `${fancyStyles[0].fancyTextStyle}`,
-                            backgroundColor: `${fancyStyles[0].fancyTextBGColor}`,
-                            textShadow: `${fancyStyles[0].shadowHorizontal}px ${fancyStyles[0].shadowVertical}px ${fancyStyles[0].shadowBlur}px ${fancyStyles[0].shadowColor}`
+                            fontStyle: fancyTextTypography.fontStyle,
+                            fontFamily: fancyTextTypography.fontFamily,
+                            fontWeight: fancyTextTypography.fontWeight,
+                            textDecoration: fancyTextTypography.textDecoration,
+                            textTransform: fancyTextTypography.textTransform,
+                            textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`,
+
                         }}
                     >
                         <ul
                             className={`premium-fancy-text-title-slide-list`}
                         >
-                            {repeaterFancyText.map((item, index) => {
+                            {repeaterFancyText.map((item) => {
                                 return <li>{item.title}</li>;
                             })}
                         </ul>
                     </div>
-                    <span className={`premium-fancy-text-suffix-text`}
-                        style={{
-                            color: PreStyles[0].textColor,
-                            fontWeight: PreStyles[0].textWeight,
-                            letterSpacing: `${PreStyles[0].textLetter}px`,
-                            textTransform: `${PreStyles[0].textUpper ? "uppercase" : "none"}`,
-                            fontStyle: PreStyles[0].textStyle,
-                            backgroundColor: PreStyles[0].textBGColor
-                        }}
+                    <span className={`premium-fancy-text-suffix-prefix premium-fancy-text-suffix-text`}
+                        style={filterJsCss({
+                            fontStyle: prefixTypography.fontStyle,
+                            fontFamily: prefixTypography.fontFamily,
+                            fontWeight: prefixTypography.fontWeight,
+                            textDecoration: prefixTypography.textDecoration,
+                            textTransform: prefixTypography.textTransform,
+                        })}
                     >
                         {" "}
                         {suffix}

@@ -429,7 +429,6 @@ class Edit extends Component {
                                                         </Fragment>
                                                     </InsideTab>
                                                 </InsideTabs>
-                                                <hr />
                                                 <PremiumBorder
                                                     label={__('Border', 'premium-blocks-for-gutenberg')}
                                                     value={playBorder}
