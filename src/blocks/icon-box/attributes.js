@@ -14,9 +14,9 @@ const attributes = {
     align: {
         type: "object",
         default: {
-            "Desktop": "center",
-            "Tablet": "center",
-            "Mobile": "center"
+            Desktop: "center",
+            Tablet: "center",
+            Mobile: "center"
         }
     },
     iconImage: {
@@ -53,6 +53,8 @@ const attributes = {
         type: "object",
         default: {
             Desktop: '40',
+            Tablet: '',
+            Mobile: '',
             unit: 'px'
         }
     },
@@ -90,7 +92,6 @@ const attributes = {
         type: "boolean",
         default: true
     },
-
     btnChecked: {
         type: "boolean",
         default: true
@@ -128,15 +129,15 @@ const attributes = {
     },
     hideDesktop: {
         type: 'boolean',
-        default: ''
+        default: false
     },
     hideTablet: {
         type: 'boolean',
-        default: ''
+        default: false
     },
     hideMobile: {
         type: 'boolean',
-        default: ''
+        default: false
     },
     iconOpacity: {
         type: "number",
@@ -166,13 +167,10 @@ const attributes = {
         type: 'array',
         default: [
             {
-                btnBorderWidth: 1,
-                btnBorderRadius: '',
                 btnColor: '',
                 btnHoverColor: '',
                 btnBack: '',
                 btnHoverBack: '',
-                btnOpacity: 1,
             }
         ]
     },
@@ -421,9 +419,9 @@ const attributes = {
             'backgroundColor': '',
             'backgroundImageID': '',
             'backgroundImageURL': '',
-            'backgroundPosition': '',
-            'backgroundRepeat': '',
-            'backgroundSize': '',
+            'backgroundPosition': "center center",
+            'backgroundRepeat': "repeat",
+            'backgroundSize': "auto",
             'fixed': false,
             "gradientLocationOne": "0",
             "gradientColorTwo": "",

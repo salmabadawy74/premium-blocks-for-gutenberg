@@ -3797,6 +3797,7 @@ button.premium-modal-box-modal-close {
     display: flex;
     position: relative;
     z-index: 2;
+    text-align: center;
 }
 
 .wp-block-premium-container::before {
