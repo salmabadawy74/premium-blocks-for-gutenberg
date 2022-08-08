@@ -2387,16 +2387,15 @@ class PBG_Blocks_Helper {
 		// icon style
 		if ( isset( $attr['iconSize']['Desktop'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__icon_wrap' . '> i' );
-			$css->add_property( 'font-size', ( $attr['iconSize']['Desktop'] . ( isset( $attr['iconSize']['unit'] ) ? $attr['iconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'font-size', $css->render_range( $attr['iconSize'],'Desktop' ) );
 		}
 		if ( isset( $attr['iconSize']['Desktop'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__icon_wrap' . '> img' );
-			$css->add_property( 'width', ( $attr['iconSize']['Desktop'] . ( isset( $attr['iconSize']['unit'] ) ? $attr['iconSize']['unit'] : 'px' ) . '!important' ) );
-		}
-		if ( isset( $attr['iconSize']['Desktop'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__icon_wrap' . '> img' );
-			$css->add_property( 'height', ( $attr['iconSize']['Desktop'] . ( isset( $attr['iconSize']['unit'] ) ? $attr['iconSize']['unit'] : 'px' ) . '!important' ) );
-		}
+			$css->add_property( 'width',  $css->render_range( $attr['iconSize'],'Desktop' ) );
+			$css->add_property( 'height',  $css->render_range( $attr['iconSize'],'Desktop' ) );
+
+        }
+	
 
 		// title style
 		if ( isset( $attr['titleTypography'] ) ) {
@@ -2486,16 +2485,15 @@ class PBG_Blocks_Helper {
 		// icon style
 		if ( isset( $attr['iconSize']['Tablet'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__icon_wrap' . '> i' );
-			$css->add_property( 'font-size', ( $attr['iconSize']['Tablet'] . ( isset( $attr['iconSize']['unit'] ) ? $attr['iconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'font-size', $css->render_range( $attr['iconSize'],'Tablet' ) );
 		}
 		if ( isset( $attr['iconSize']['Tablet'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__icon_wrap' . '> img' );
-			$css->add_property( 'width', ( $attr['iconSize']['Tablet'] . ( isset( $attr['iconSize']['unit'] ) ? $attr['iconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'width', $css->render_range( $attr['iconSize'],'Tablet' ) );
+            $css->add_property( 'height', $css->render_range( $attr['iconSize'],'Tablet' ) );
+
 		}
-		if ( isset( $attr['iconSize']['Tablet'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__icon_wrap' . '> img' );
-			$css->add_property( 'height', ( $attr['iconSize']['Tablet'] . ( isset( $attr['iconSize']['unit'] ) ? $attr['iconSize']['unit'] : 'px' ) . '!important' ) );
-		}
+		
 
 		// title style
 		if ( isset( $attr['titleTypography'] ) ) {
@@ -2584,19 +2582,17 @@ class PBG_Blocks_Helper {
 		$css->start_media_query( $media_query['mobile'] );
 
 		// icon style
-		if ( isset( $attr['iconSize']['Mobile'] ) ) {
+		if ( isset( $attr['iconSize'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__icon_wrap' . '> i' );
-			$css->add_property( 'font-size', ( $attr['iconSize']['Mobile'] . ( isset( $attr['iconSize']['unit'] ) ? $attr['iconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'font-size',  $css->render_range( $attr['iconSize'],'Mobile' ) );
 		}
 		if ( isset( $attr['iconSize']['Mobile'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__icon_wrap' . '> img' );
-			$css->add_property( 'width', ( $attr['iconSize']['Mobile'] . ( isset( $attr['iconSize']['unit'] ) ? $attr['iconSize']['unit'] : 'px' ) . '!important' ) );
-		}
-		if ( isset( $attr['iconSize']['Mobile'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__icon_wrap' . '> img' );
-			$css->add_property( 'height', ( $attr['iconSize']['Mobile'] . ( isset( $attr['iconSize']['unit'] ) ? $attr['iconSize']['unit'] : 'px' ) . '!important' ) );
-		}
+			$css->add_property( 'width',  $css->render_range( $attr['iconSize'],'Mobile' ) );
+            $css->add_property( 'height',  $css->render_range( $attr['iconSize'],'Mobile' ) );
 
+		}
+		
 		// title style
 		if ( isset( $attr['titleTypography'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__content_wrap' . '> .premium-icon-box__title_wrap' . '> .premium-icon-box__title' );
