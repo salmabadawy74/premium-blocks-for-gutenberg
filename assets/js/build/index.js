@@ -24757,7 +24757,7 @@ const attributes = {
   titleShadow: {
     type: "object",
     default: {
-      color: "",
+      color: "undefined",
       blur: "10",
       horizontal: "0",
       vertical: "0"
@@ -24875,10 +24875,10 @@ const attributes = {
   textBackshadow: {
     type: "object",
     default: {
-      color: "",
-      blur: "",
-      horizontal: "",
-      vertical: ""
+      color: "undefined",
+      blur: "10",
+      horizontal: "0",
+      vertical: "0"
     }
   },
   horizontalText: {
@@ -24916,7 +24916,7 @@ const attributes = {
   iconshadow: {
     type: "object",
     default: {
-      color: "",
+      color: "undefined",
       blur: "10",
       horizontal: "0",
       vertical: "0"
@@ -31762,7 +31762,6 @@ class edit extends Component {
       });
     }
 
-    console.log(titleTypography);
     const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-icon-box", {
       ' premium-desktop-hidden': hideDesktop,
       ' premium-tablet-hidden': hideTablet,
@@ -38161,10 +38160,10 @@ const attributes = {
   mapBoxShadow: {
     type: "object",
     default: {
-      'color': '',
-      'blur': '10',
-      'horizontal': '',
-      'vertical': '',
+      color: "undefined",
+      blur: "10",
+      horizontal: "0",
+      vertical: "0",
       'position': ''
     }
   }
@@ -38992,19 +38991,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_premium_media_upload__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/premium-media-upload */ "./src/components/premium-media-upload.js");
-/* harmony import */ var _components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/premium-responsive-tabs */ "./src/components/premium-responsive-tabs.js");
-/* harmony import */ var _components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/RangeControl/single-range-control */ "./src/components/RangeControl/single-range-control.js");
-/* harmony import */ var _components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/Color Control/ColorComponent */ "./src/components/Color Control/ColorComponent.js");
-/* harmony import */ var _components_inspectorTabs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/inspectorTabs */ "./src/components/inspectorTabs.js");
-/* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/inspectorTab */ "./src/components/inspectorTab.js");
-/* harmony import */ var _components_responsive_radio__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/responsive-radio */ "./src/components/responsive-radio.js");
-/* harmony import */ var _components_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/icons */ "./src/components/icons.js");
-/* harmony import */ var _components_premium_typo__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/premium-typo */ "./src/components/premium-typo.js");
-/* harmony import */ var _components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/premium-responsive-spacing */ "./src/components/premium-responsive-spacing.js");
-/* harmony import */ var _components_PremiumShadow__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/PremiumShadow */ "./src/components/PremiumShadow.js");
-/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
-/* harmony import */ var _components_premium_border__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/premium-border */ "./src/components/premium-border.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./src/blocks/node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_premium_media_upload__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/premium-media-upload */ "./src/components/premium-media-upload.js");
+/* harmony import */ var _components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/premium-responsive-tabs */ "./src/components/premium-responsive-tabs.js");
+/* harmony import */ var _components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/RangeControl/single-range-control */ "./src/components/RangeControl/single-range-control.js");
+/* harmony import */ var _components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/Color Control/ColorComponent */ "./src/components/Color Control/ColorComponent.js");
+/* harmony import */ var _components_inspectorTabs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/inspectorTabs */ "./src/components/inspectorTabs.js");
+/* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/inspectorTab */ "./src/components/inspectorTab.js");
+/* harmony import */ var _components_responsive_radio__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/responsive-radio */ "./src/components/responsive-radio.js");
+/* harmony import */ var _components_icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/icons */ "./src/components/icons.js");
+/* harmony import */ var _components_premium_typo__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/premium-typo */ "./src/components/premium-typo.js");
+/* harmony import */ var _components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/premium-responsive-spacing */ "./src/components/premium-responsive-spacing.js");
+/* harmony import */ var _components_PremiumShadow__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/PremiumShadow */ "./src/components/PremiumShadow.js");
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+/* harmony import */ var _components_premium_border__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/premium-border */ "./src/components/premium-border.js");
+/* harmony import */ var _components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/typography/fontLoader */ "./src/components/typography/fontLoader.js");
 
 
 
@@ -39019,7 +39021,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const className = "premium-maps";
+
+
+const className = "premium-maps__wrap";
 const {
   __
 } = wp.i18n;
@@ -39060,7 +39064,7 @@ class edit extends Component {
       clientId
     } = this.props;
     setAttributes({
-      blockId: "premium-map-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.generateBlockId)(clientId)
+      blockId: "premium-map-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_13__.generateBlockId)(clientId)
     });
     this.initMap();
   }
@@ -39217,6 +39221,36 @@ class edit extends Component {
       mapBoxShadow,
       maxWidth
     } = this.props.attributes;
+    let loadTitleGoogleFonts;
+    let loadDescriptionGoogleFonts;
+
+    if ((titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily) !== 'Default') {
+      const titleConfig = {
+        google: {
+          families: [titleTypography.fontFamily]
+        }
+      };
+      loadTitleGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_15__["default"], {
+        config: titleConfig
+      });
+    }
+
+    if ((descriptionTypography === null || descriptionTypography === void 0 ? void 0 : descriptionTypography.fontFamily) !== 'Default') {
+      const descriptionConfig = {
+        google: {
+          families: [descriptionTypography.fontFamily]
+        }
+      };
+      loadDescriptionGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_15__["default"], {
+        config: descriptionConfig
+      });
+    }
+
+    const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, {
+      " premium-desktop-hidden": hideDesktop,
+      " premium-tablet-hidden": hideTablet,
+      " premium-mobile-hidden": hideMobile
+    });
 
     const loadStyles = () => {
       var _titleTypography$font, _titleTypography$font2, _titlePadding$this$pr, _titlePadding$this$pr2, _titlePadding$this$pr3, _titlePadding$this$pr4, _titleMargin$this$pro, _titleMargin$this$pro2, _titleMargin$this$pro3, _titleMargin$this$pro4, _descriptionTypograph, _descriptionTypograph2, _descriptionMargin$th, _descriptionMargin$th2, _descriptionMargin$th3, _descriptionMargin$th4, _descriptionPadding$t, _descriptionPadding$t2, _descriptionPadding$t3, _descriptionPadding$t4, _mapBorder$borderWidt, _mapBorder$borderWidt2, _mapBorder$borderWidt3, _mapBorder$borderWidt4, _mapBorder$borderWidt5, _mapBorder$borderWidt6, _mapBorder$borderWidt7, _mapBorder$borderWidt8, _mapBorder$borderRadi, _mapBorder$borderRadi2, _mapBorder$borderRadi3, _mapBorder$borderRadi4, _mapBorder$borderRadi5, _mapBorder$borderRadi6, _mapBorder$borderRadi7, _mapBorder$borderRadi8, _mapPadding$this$prop, _mapPadding$this$prop2, _mapPadding$this$prop3, _mapPadding$this$prop4, _mapMargin$this$props, _mapMargin$this$props2, _mapMargin$this$props3, _mapMargin$this$props4;
@@ -39282,7 +39316,7 @@ class edit extends Component {
         'margin-left': `${mapMargin === null || mapMargin === void 0 ? void 0 : (_mapMargin$this$props4 = mapMargin[this.props.deviceType]) === null || _mapMargin$this$props4 === void 0 ? void 0 : _mapMargin$this$props4.left}${mapMargin.unit}`,
         'box-shadow': `${mapBoxShadow.horizontal}px ${mapBoxShadow.vertical}px ${mapBoxShadow.blur}px ${mapBoxShadow.color} ${mapBoxShadow === null || mapBoxShadow === void 0 ? void 0 : mapBoxShadow.position}`
       };
-      return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.generateCss)(styles);
+      return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_13__.generateCss)(styles);
     };
 
     const TYPES = [{
@@ -39300,9 +39334,9 @@ class edit extends Component {
     }];
     return [typeof google !== "undefined" && isSelected && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, {
       key: "key"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_6__["default"], {
       tabs: ['layout', 'style', 'advance']
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_7__["default"], {
       key: 'layout'
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("Center Location"),
@@ -39335,7 +39369,7 @@ class edit extends Component {
         mapMarker: check
       }),
       help: __("Disable marker is applied on page reload", 'premium-blocks-for-gutenberg')
-    }), mapMarker && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    }), mapMarker && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_4__["default"], {
       label: __("Max Width (PX)", 'premium-blocks-for-gutenberg'),
       value: maxWidth,
       min: "10",
@@ -39369,7 +39403,7 @@ class edit extends Component {
       onChange: newText => setAttributes({
         markerDesc: newText
       })
-    })), markerCustom && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_media_upload__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    })), markerCustom && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_media_upload__WEBPACK_IMPORTED_MODULE_2__["default"], {
       type: "image",
       imageID: markerIconId,
       imageURL: markerIconUrl,
@@ -39394,7 +39428,7 @@ class edit extends Component {
       onChange: newType => setAttributes({
         mapType: newType
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_4__["default"], {
       label: __("Map Height (PX)", 'premium-blocks-for-gutenberg'),
       value: height,
       min: "10",
@@ -39404,7 +39438,7 @@ class edit extends Component {
       }),
       showUnit: false,
       defaultValue: 0
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_4__["default"], {
       label: __("Zoom", 'premium-blocks-for-gutenberg'),
       value: zoom,
       min: "1",
@@ -39458,26 +39492,26 @@ class edit extends Component {
       onChange: newStyle => setAttributes({
         mapStyle: "" !== newStyle ? newStyle : "[]"
       })
-    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_7__["default"], {
       key: 'style'
     }, mapMarker && markerTitle && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
       title: __("Title", 'premium-blocks-for-gutenberg'),
       className: "premium-panel-body",
       initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_10__["default"], {
       components: ["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"],
       value: titleTypography,
       onChange: newValue => setAttributes({
         titleTypography: newValue
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
       label: __("Text Color", 'premium-blocks-for-gutenberg'),
       colorValue: titleColor,
       colorDefault: '',
       onColorChange: newValue => setAttributes({
         titleColor: newValue === undefined ? "transparent" : newValue
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_11__["default"], {
       value: titleMargin,
       responsive: true,
       showUnits: true,
@@ -39485,7 +39519,7 @@ class edit extends Component {
       onChange: value => setAttributes({
         titleMargin: value
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_11__["default"], {
       value: titlePadding,
       responsive: true,
       showUnits: true,
@@ -39497,20 +39531,20 @@ class edit extends Component {
       title: __("Description", 'premium-blocks-for-gutenberg'),
       className: "premium-panel-body",
       initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_10__["default"], {
       components: ["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"],
       value: descriptionTypography,
       onChange: newValue => setAttributes({
         descriptionTypography: newValue
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
       label: __("Text Color", 'premium-blocks-for-gutenberg'),
       colorValue: descColor,
       colorDefault: '',
       onColorChange: newValue => setAttributes({
         descColor: newValue === undefined ? "transparent" : newValue
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_11__["default"], {
       value: descriptionMargin,
       responsive: true,
       showUnits: true,
@@ -39518,7 +39552,7 @@ class edit extends Component {
       onChange: value => setAttributes({
         descriptionMargin: value
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_11__["default"], {
       value: descriptionPadding,
       responsive: true,
       showUnits: true,
@@ -39526,19 +39560,19 @@ class edit extends Component {
       onChange: value => setAttributes({
         descriptionPadding: value
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_8__["default"], {
       choices: [{
         value: 'left',
         label: __('Left'),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_8__["default"].alignLeft
+        icon: _components_icons__WEBPACK_IMPORTED_MODULE_9__["default"].alignLeft
       }, {
         value: 'center',
         label: __('Center'),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_8__["default"].alignCenter
+        icon: _components_icons__WEBPACK_IMPORTED_MODULE_9__["default"].alignCenter
       }, {
         value: 'right',
         label: __('Right'),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_8__["default"].alignRight
+        icon: _components_icons__WEBPACK_IMPORTED_MODULE_9__["default"].alignRight
       }],
       value: boxAlign,
       onChange: align => setAttributes({
@@ -39550,20 +39584,20 @@ class edit extends Component {
       title: __("Map", 'premium-blocks-for-gutenberg'),
       className: "premium-panel-body",
       initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_12__["default"], {
       label: __("Shadow", 'premium-blocks-for-gutenberg'),
       boxShadow: false,
       value: mapBoxShadow,
       onChange: value => setAttributes({
         mapBoxShadow: value
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_14__["default"], {
       label: __("Border"),
       value: mapBorder,
       onChange: value => setAttributes({
         mapBorder: value
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_11__["default"], {
       value: mapMargin,
       responsive: true,
       showUnits: true,
@@ -39571,7 +39605,7 @@ class edit extends Component {
       onChange: value => setAttributes({
         mapMargin: value
       })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_11__["default"], {
       value: mapPadding,
       responsive: true,
       showUnits: true,
@@ -39579,9 +39613,9 @@ class edit extends Component {
       onChange: value => setAttributes({
         mapPadding: value
       })
-    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_7__["default"], {
       key: 'advance'
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_3__["default"], {
       Desktop: hideDesktop,
       Tablet: hideTablet,
       Mobile: hideMobile,
@@ -39595,13 +39629,13 @@ class edit extends Component {
         hideMobile: value ? " premium-mobile-hidden" : ""
       })
     })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `${className}__wrap ${blockId} ${hideDesktop || ''} ${hideTablet || ''} ${hideMobile || ''}`
+      className: `${mainClasses}`
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "map-container",
       style: {
         height: height + "px"
       }
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, loadStyles()))];
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, loadStyles()), loadDescriptionGoogleFonts, loadTitleGoogleFonts)];
   }
 
 }
@@ -39674,9 +39708,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./src/blocks/node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
 
 
-const className = "premium-maps";
+
+const className = "premium-maps__wrap";
 function save(props) {
   const {
     blockId,
@@ -39708,8 +39745,13 @@ function save(props) {
     mapBorder,
     mapBoxShadow
   } = props.attributes;
+  const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, {
+    " premium-desktop-hidden": hideDesktop,
+    " premium-tablet-hidden": hideTablet,
+    " premium-mobile-hidden": hideMobile
+  });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `${className}__wrap ${blockId} ${hideDesktop || ''} ${hideTablet || ''} ${hideMobile || ''}`,
+    className: `${mainClasses}`,
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_1__.filterJsCss)({
       borderStyle: mapBorder === null || mapBorder === void 0 ? void 0 : mapBorder.borderType,
       borderColor: mapBorder === null || mapBorder === void 0 ? void 0 : mapBorder.borderColor,
@@ -52306,10 +52348,6 @@ const testimonialsAttrs = {
     default: [{
       authorTag: "H3",
       authorColor: '',
-      authorLetter: '',
-      authorStyle: '',
-      authorUpper: false,
-      authorWeight: 500,
       authorComTag: "H4"
     }]
   },
@@ -52433,10 +52471,10 @@ const testimonialsAttrs = {
   boxShadow: {
     type: "object",
     default: {
-      'color': '',
-      'blur': '',
-      'horizontal': '',
-      'vertical': '',
+      color: "undefined",
+      blur: "10",
+      horizontal: "0",
+      vertical: "0",
       'position': ' '
     }
   },
@@ -54242,6 +54280,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../components/inspectorTab */ "./src/components/inspectorTab.js");
 /* harmony import */ var _components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../components/premium-responsive-spacing */ "./src/components/premium-responsive-spacing.js");
 /* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+/* harmony import */ var _components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../components/typography/fontLoader */ "./src/components/typography/fontLoader.js");
+
 
 
 
@@ -54267,14 +54307,11 @@ const {
 } = wp.i18n;
 const {
   PanelBody,
-  SelectControl,
   TextControl,
   ToggleControl
 } = wp.components;
 const {
-  BlockControls,
   InspectorControls,
-  AlignmentToolbar,
   RichText
 } = wp.blockEditor;
 const {
@@ -54334,6 +54371,42 @@ class edit extends Component {
       bodyTypography,
       companyTypography
     } = this.props.attributes;
+    let loadAuthorGoogleFonts;
+    let loadBodyGoogleFonts;
+    let loadCompanyGoogleFonts;
+
+    if ((authorTypography === null || authorTypography === void 0 ? void 0 : authorTypography.fontFamily) !== 'Default') {
+      const authorConfig = {
+        google: {
+          families: [authorTypography.fontFamily]
+        }
+      };
+      loadAuthorGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_20__["default"], {
+        config: authorConfig
+      });
+    }
+
+    if ((bodyTypography === null || bodyTypography === void 0 ? void 0 : bodyTypography.fontFamily) !== 'Default') {
+      const bodyConfig = {
+        google: {
+          families: [bodyTypography.fontFamily]
+        }
+      };
+      loadBodyGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_20__["default"], {
+        config: bodyConfig
+      });
+    }
+
+    if ((companyTypography === null || companyTypography === void 0 ? void 0 : companyTypography.fontFamily) !== 'Default') {
+      const companyConfig = {
+        google: {
+          families: [companyTypography.fontFamily]
+        }
+      };
+      loadCompanyGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_20__["default"], {
+        config: companyConfig
+      });
+    }
 
     const saveAuthorStyle = value => {
       const newUpdate = authorStyles.map((item, index) => {
@@ -54759,7 +54832,7 @@ class edit extends Component {
       size: quoteStyles[0].quotSize,
       color: quoteStyles[0].quotColor,
       opacity: quoteStyles[0].quotOpacity
-    }))))];
+    }))), loadAuthorGoogleFonts, loadBodyGoogleFonts, loadCompanyGoogleFonts)];
   }
 
 }
@@ -54917,7 +54990,6 @@ const save = props => {
     value: text,
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__.filterJsCss)({
       color: contentStyle[0].bodyColor,
-      lineHeight: contentStyle[0].bodyLine + "px",
       marginTop: contentStyle[0].bodyTop + "px",
       marginBottom: contentStyle[0].bodyBottom + "px",
       fontStyle: bodyTypography === null || bodyTypography === void 0 ? void 0 : bodyTypography.fontStyle,

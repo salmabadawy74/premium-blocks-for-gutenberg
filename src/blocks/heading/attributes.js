@@ -194,7 +194,7 @@ const attributes = {
     titleShadow: {
         type: "object",
         default: {
-            color: "",
+            color: "undefined",
             blur: "10",
             horizontal: "0",
             vertical: "0",
@@ -314,10 +314,10 @@ const attributes = {
     textBackshadow: {
         type: "object",
         default: {
-            color: "",
-            blur: "",
-            horizontal: "",
-            vertical: "",
+            color: "undefined",
+            blur: "10",
+            horizontal: "0",
+            vertical: "0",
         },
     },
     horizontalText: {
@@ -357,7 +357,7 @@ const attributes = {
     iconshadow: {
         type: "object",
         default: {
-            color: "",
+            color: "undefined",
             blur: "10",
             horizontal: "0",
             vertical: "0",

@@ -254,8 +254,6 @@ class edit extends Component {
                 />);
         }
 
-        console.log(titleTypography);
-
         const mainClasses = classnames(className, "premium-icon-box", {
             ' premium-desktop-hidden': hideDesktop,
             ' premium-tablet-hidden': hideTablet,
