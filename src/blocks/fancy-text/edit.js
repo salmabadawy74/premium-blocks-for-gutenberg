@@ -85,7 +85,26 @@ class Edit extends Component {
     }
 
     componentDidMount() {
-        const { setAttributes, clientId } = this.props;
+        const { setAttributes, attributes, clientId } = this.props;
+
+        if (!attributes.classMigrate) {
+            setAttributes({
+                repeaterFancyText: [
+                    {
+                        title: __("Designer", 'premium-blocks-for-gutenberg'),
+                        edit: false
+                    },
+                    {
+                        title: __("Awesome", 'premium-blocks-for-gutenebrg'),
+                        edit: false
+                    },
+                    {
+                        title: __("Developer", 'premium-blocks-for-gutenberg'),
+                        edit: false
+                    }
+                ]
+            });
+        }
         // Assigning id in the attribute.
         setAttributes({
             blockId: "premium-fancy-text-" + generateBlockId(clientId),
@@ -667,7 +686,7 @@ class Edit extends Component {
                                         <li
                                             style={{
                                                 ...typographyCss(fancyTextTypography, this.props.deviceType),
-                                                textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`,
+                                                textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`
                                             }}
                                         >
                                             {item.title}

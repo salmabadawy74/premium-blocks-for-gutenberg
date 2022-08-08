@@ -30,13 +30,13 @@ const attributes = {
             edit: false
         },
         {
-            title: __("Developer", 'premium-blocks-for-gutenberg'),
-            edit: false
-        },
-        {
             title: __("Awesome", 'premium-blocks-for-gutenebrg'),
             edit: false
         },
+        {
+            title: __("Developer", 'premium-blocks-for-gutenberg'),
+            edit: false
+        }
         ]
     },
     effect: {
@@ -104,10 +104,10 @@ const attributes = {
         type: "array",
         default: [
             {
-                fancyTextColor: '#6ec1e4',
+                fancyTextColor: '',
                 fancyTextBGColor: '',
                 fancyTextBGOpacity: 1,
-                cursorColor: "#6ec1e4"
+                cursorColor: ""
             }
         ]
     },

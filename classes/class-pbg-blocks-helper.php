@@ -989,14 +989,14 @@ class PBG_Blocks_Helper {
 			$fancy_typography = $attr['fancyTextTypography'];
 			$fancy_size       = $fancy_typography['fontSize'];
 
-			$css->set_selector( '.' . $unique_id . ' .premium-fancy-text-title' );
+			$css->set_selector( '.' . $unique_id . '> .premium-fancy-text' . '> .premium-fancy-text-title' );
 			$css->render_typography( $attr['fancyTextTypography'], 'Desktop' );
-			$css->set_selector( '.' . $unique_id . ' .typed-cursor' );
+			$css->set_selector( '.' . $unique_id . '> .premium-fancy-text' . '> .typed-cursor' );
 			$css->add_property( 'font-size', $css->render_range($fancy_size,'Desktop') );
 		}
 		// Suffix, Prefix Style
 		if ( isset( $attr['prefixTypography'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' .premium-fancy-text-suffix-prefix' );
+			$css->set_selector( '.' . $unique_id . '> .premium-fancy-text' . '> .premium-fancy-text-suffix-prefix' );
 			$css->render_typography( $attr['prefixTypography'], 'Desktop' );
 		}
 
@@ -1006,8 +1006,7 @@ class PBG_Blocks_Helper {
 		}
 
 		if ( isset( $attr['fancyTextAlign'] ) ) {
-
-			$css->set_selector( '.' . $unique_id . ' .premium-fancy-text-title-slide' );
+			$css->set_selector( '.' . $unique_id . '> .premium-fancy-text' . '> .premium-fancy-text-title-slide' );
 			$css->add_property( 'text-align', ( $attr['fancyTextAlign']['Desktop'] . '!important' ) );
 		}
 
@@ -1017,15 +1016,15 @@ class PBG_Blocks_Helper {
 			$fancy_typography = $attr['fancyTextTypography'];
 			$fancy_size       = $fancy_typography['fontSize'];
 
-			$css->set_selector( '.' . $unique_id . ' .premium-fancy-text-title' );
+			$css->set_selector( '.' . $unique_id . '> .premium-fancy-text' . '> .premium-fancy-text-title' );
 			$css->render_typography( $attr['fancyTextTypography'], 'Tablet' );
-			$css->set_selector( '.' . $unique_id . ' .typed-cursor' );
+			$css->set_selector( '.' . $unique_id . '> .premium-fancy-text' . '> .typed-cursor' );
 			$css->add_property( 'font-size', $css->render_range($fancy_size,'Tablet') );
 		}
 
 		// Suffix, Prefix Style
 		if ( isset( $attr['prefixTypography'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' .premium-fancy-text-suffix-prefix' );
+			$css->set_selector( '.' . $unique_id . '> .premium-fancy-text' . '> .premium-fancy-text-suffix-prefix' );
 			$css->render_typography( $attr['prefixTypography'], 'Tablet' );
 		}
 
@@ -1035,7 +1034,7 @@ class PBG_Blocks_Helper {
 		}
 
 		if ( isset( $attr['fancyTextAlign'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' .premium-fancy-text-title-slide' );
+			$css->set_selector( '.' . $unique_id . '> .premium-fancy-text' . '> .premium-fancy-text-title-slide' );
 			$css->add_property( 'text-align', ( $attr['fancyTextAlign']['Tablet'] . '!important' ) );
 		}
 
@@ -1046,27 +1045,24 @@ class PBG_Blocks_Helper {
 			$fancy_typography = $attr['fancyTextTypography'];
 			$fancy_size       = $fancy_typography['fontSize'];
 
-			$css->set_selector( '.' . $unique_id . ' .premium-fancy-text-title' );
+			$css->set_selector( '.' . $unique_id . '> .premium-fancy-text' . '> .premium-fancy-text-title' );
 			$css->render_typography( $attr['fancyTextTypography'], 'Mobile' );
-			$css->set_selector( '.' . $unique_id . ' .typed-cursor' );
+			$css->set_selector( '.' . $unique_id . '> .premium-fancy-text' . '> .typed-cursor' );
 			$css->add_property( 'font-size', $css->render_range($fancy_size,'Mobile') );
 		}
 
 		// Suffix, Prefix Style
 		if ( isset( $attr['prefixTypography'] ) ) {
-
-			$css->set_selector( '.' . $unique_id . ' .premium-fancy-text-suffix-prefix' );
+			$css->set_selector( '.' . $unique_id . '> .premium-fancy-text' . '> .premium-fancy-text-suffix-prefix' );
 			$css->render_typography( $attr['prefixTypography'], 'Mobile' );
 		}
 		if ( isset( $attr['fancyContenttAlign'] ) ) {
-
 			$css->set_selector( '.' . $unique_id );
 			$css->add_property( 'text-align', ( $attr['fancyContenttAlign']['Mobile'] . '!important' ) );
 		}
 
 		if ( isset( $attr['fancyTextAlign'] ) ) {
-
-			$css->set_selector( '.' . $unique_id . ' .premium-fancy-text-title-slide' );
+			$css->set_selector( '.' . $unique_id . '> .premium-fancy-text' . '> .premium-fancy-text-title-slide' );
 			$css->add_property( 'text-align', ( $attr['fancyTextAlign']['Mobile'] . '!important' ) );
 		}
 
@@ -5464,14 +5460,6 @@ class PBG_Blocks_Helper {
 		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
 		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 		
-		if ( isset( $attr['videoDescTypography']['fontFamily'] ) ) {
-			$this->add_gfont(
-				array(
-					'fontFamily'  => ( isset( $attr['videoDescTypography']['fontFamily'] ) ? $attr['videoDescTypography']['fontFamily'] : '' ),
-					'fontVariant' => ( isset( $attr['videoDescTypography']['fontWeight'] ) ? $attr['videoDescTypography']['fontWeight'] : '' ),
-					)
-			);
-		}
 		//Container style
 		if ( isset( $attr['boxBorder'] ) ) {
 			$title_border        = $attr['boxBorder'];

@@ -1,5 +1,5 @@
 import classnames from "classnames"
-import { filterJsCss } from '../../components/HelperFunction';
+import { filterJsCss, generateCss } from '../../components/HelperFunction';
 
 export default function save(props) {
     const { attributes, className } = props
@@ -30,7 +30,7 @@ export default function save(props) {
         fancyTextShadow
     } = attributes;
 
-    const mainClasses = classnames(className, "premium-fancy-text", {
+    const mainClasses = classnames(className, {
         ' premium-desktop-hidden': hideDesktop,
         ' premium-tablet-hidden': hideTablet,
         ' premium-mobile-hidden': hideMobile,
@@ -43,8 +43,7 @@ export default function save(props) {
             'background-color': `${fancyStyles[0].fancyTextBGColor} !important`
         };
         styles[` .${blockId} .typed-cursor`] = {
-            'color': `${fancyStyles[0].cursorColor} !important`,
-            'font-size': `${fancyTextTypography.fontSize[this.props.deviceType]}${fancyTextTypography.fontSize.unit} !important`,
+            'color': `${fancyStyles[0].cursorColor} !important`
         };
         styles[` .${blockId} .premium-fancy-text-suffix-prefix`] = {
             'color': `${PreStyles[0].textColor} !important`,
@@ -59,13 +58,12 @@ export default function save(props) {
         >
             <style
                 dangerouslySetInnerHTML={{
-                    __html: loadStyles(),
+                    __html: loadStyles()
                 }}
             />
 
             {effect === "typing" ? (
                 <div
-                    id={`premium-fancy-text-${blockId}`}
                     className={`premium-fancy-text`}
                     data-effect={`${effect}`}
                     data-strings={`${repeaterFancyText.map(
@@ -73,6 +71,7 @@ export default function save(props) {
                             return item.title;
                         }
                     )}`}
+                    id={`premium-fancy-text-${blockId}`}
                     data-typespeed={`${typeSpeed}`}
                     data-backspeed={`${backSpeed}`}
                     data-startdelay={`${startdelay}`}
@@ -83,6 +82,8 @@ export default function save(props) {
                 >
                     <span className={`premium-fancy-text-suffix-prefix premium-fancy-text-prefix-text`}
                         style={filterJsCss({
+                            color: PreStyles[0].textColor,
+                            backgroundColor: PreStyles[0].textBGColor,
                             fontStyle: prefixTypography.fontStyle,
                             fontFamily: prefixTypography.fontFamily,
                             fontWeight: prefixTypography.fontWeight,
@@ -95,6 +96,8 @@ export default function save(props) {
                     <span
                         className={`premium-fancy-text-title premium-fancy-text-title-type`}
                         style={filterJsCss({
+                            color: fancyStyles[0].fancyTextColor,
+                            backgroundColor: fancyStyles[0].fancyTextBGColor,
                             fontStyle: fancyTextTypography.fontStyle,
                             fontFamily: fancyTextTypography.fontFamily,
                             fontWeight: fancyTextTypography.fontWeight,
@@ -111,6 +114,8 @@ export default function save(props) {
                     </span>
                     <span className={`premium-fancy-text-suffix-prefix premium-fancy-text-suffix-text`}
                         style={filterJsCss({
+                            color: PreStyles[0].textColor,
+                            backgroundColor: PreStyles[0].textBGColor,
                             fontStyle: prefixTypography.fontStyle,
                             fontFamily: prefixTypography.fontFamily,
                             fontWeight: prefixTypography.fontWeight,
@@ -138,6 +143,8 @@ export default function save(props) {
                 >
                     <span className={`premium-fancy-text-suffix-prefix premium-fancy-text-prefix-text`}
                         style={filterJsCss({
+                            color: PreStyles[0].textColor,
+                            backgroundColor: PreStyles[0].textBGColor,
                             fontStyle: prefixTypography.fontStyle,
                             fontFamily: prefixTypography.fontFamily,
                             fontWeight: prefixTypography.fontWeight,
@@ -149,7 +156,10 @@ export default function save(props) {
                     </span>
                     <div
                         className={`premium-fancy-text-title premium-fancy-text-title-slide`}
-                        style={{
+                        style={filterJsCss({
+                            overflow: 'visible !important',
+                            color: fancyStyles[0].fancyTextColor,
+                            backgroundColor: `${fancyStyles[0].fancyTextBGColor}`,
                             fontStyle: fancyTextTypography.fontStyle,
                             fontFamily: fancyTextTypography.fontFamily,
                             fontWeight: fancyTextTypography.fontWeight,
@@ -157,7 +167,7 @@ export default function save(props) {
                             textTransform: fancyTextTypography.textTransform,
                             textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`,
 
-                        }}
+                        })}
                     >
                         <ul
                             className={`premium-fancy-text-title-slide-list`}
@@ -169,6 +179,8 @@ export default function save(props) {
                     </div>
                     <span className={`premium-fancy-text-suffix-prefix premium-fancy-text-suffix-text`}
                         style={filterJsCss({
+                            color: PreStyles[0].textColor,
+                            backgroundColor: PreStyles[0].textBGColor,
                             fontStyle: prefixTypography.fontStyle,
                             fontFamily: prefixTypography.fontFamily,
                             fontWeight: prefixTypography.fontWeight,

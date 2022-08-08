@@ -1996,6 +1996,7 @@ a.premium-dheading-block__link:hover {
 .premium-fancy-text-title-slide {
     display: inline-block;
     text-align: center;
+    overflow: visible !important;
 }
 
 .premium-fancy-text-title-slide-list {
