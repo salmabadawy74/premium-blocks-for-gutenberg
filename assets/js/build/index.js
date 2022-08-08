@@ -560,7 +560,7 @@ function renderCustomIcon(svg) {
 
   switch (svg) {
     // Flex Row
-    case 'flex-row-start':
+    case 'flex-column-start':
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
         xmlns: "http://www.w3.org/2000/svg",
@@ -572,7 +572,7 @@ function renderCustomIcon(svg) {
       }));
       break;
 
-    case 'flex-row-end':
+    case 'flex-column-end':
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
         xmlns: "http://www.w3.org/2000/svg",
@@ -584,7 +584,7 @@ function renderCustomIcon(svg) {
       }));
       break;
 
-    case 'flex-row-center':
+    case 'flex-column-center':
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
         xmlns: "http://www.w3.org/2000/svg",
@@ -596,7 +596,7 @@ function renderCustomIcon(svg) {
       }));
       break;
 
-    case 'flex-row-strech':
+    case 'flex-column-strech':
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
         xmlns: "http://www.w3.org/2000/svg",
@@ -608,7 +608,7 @@ function renderCustomIcon(svg) {
       }));
       break;
 
-    case 'flex-row-space-between':
+    case 'flex-column-space-between':
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
         xmlns: "http://www.w3.org/2000/svg",
@@ -620,7 +620,7 @@ function renderCustomIcon(svg) {
       }));
       break;
 
-    case 'flex-row-space-around':
+    case 'flex-column-space-around':
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
         xmlns: "http://www.w3.org/2000/svg",
@@ -632,7 +632,7 @@ function renderCustomIcon(svg) {
       }));
       break;
 
-    case 'flex-row-space-evenly':
+    case 'flex-column-space-evenly':
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
         xmlns: "http://www.w3.org/2000/svg",
@@ -645,7 +645,7 @@ function renderCustomIcon(svg) {
       break;
     // Flex Column
 
-    case 'flex-column-start':
+    case 'flex-row-start':
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
         xmlns: "http://www.w3.org/2000/svg",
@@ -657,7 +657,7 @@ function renderCustomIcon(svg) {
       }));
       break;
 
-    case 'flex-column-end':
+    case 'flex-row-end':
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
         xmlns: "http://www.w3.org/2000/svg",
@@ -669,7 +669,7 @@ function renderCustomIcon(svg) {
       }));
       break;
 
-    case 'flex-column-center':
+    case 'flex-row-center':
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
         xmlns: "http://www.w3.org/2000/svg",
@@ -681,7 +681,7 @@ function renderCustomIcon(svg) {
       }));
       break;
 
-    case 'flex-column-strech':
+    case 'flex-row-strech':
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
         xmlns: "http://www.w3.org/2000/svg",
@@ -693,7 +693,7 @@ function renderCustomIcon(svg) {
       }));
       break;
 
-    case 'flex-column-space-between':
+    case 'flex-row-space-between':
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
         xmlns: "http://www.w3.org/2000/svg",
@@ -705,7 +705,7 @@ function renderCustomIcon(svg) {
       }));
       break;
 
-    case 'flex-column-space-around':
+    case 'flex-row-space-around':
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
         xmlns: "http://www.w3.org/2000/svg",
@@ -717,7 +717,7 @@ function renderCustomIcon(svg) {
       }));
       break;
 
-    case 'flex-column-space-evenly':
+    case 'flex-row-space-evenly':
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
         xmlns: "http://www.w3.org/2000/svg",
@@ -12455,8 +12455,6 @@ const {
   Fragment
 } = wp.element;
 const {
-  BlockControls,
-  AlignmentToolbar,
   InspectorControls,
   RichText
 } = wp.blockEditor;
@@ -36667,8 +36665,7 @@ const {
   PanelBody,
   TextControl,
   ToggleControl,
-  SelectControl,
-  TabPanel
+  SelectControl
 } = wp.components;
 let isLottieUpdated = null;
 
@@ -36687,16 +36684,13 @@ class edit extends Component {
       clientId,
       attributes
     } = this.props;
-    const {
-      block_id
-    } = attributes;
     setAttributes({
-      block_id: clientId
+      blockId: "premium-lottie-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.generateBlockId)(clientId)
     });
 
     if (!attributes.lottieId) {
       setAttributes({
-        lottieId: "premium-lottie-" + block_id
+        lottieId: "premium-lottie-" + clientId
       });
     }
 
@@ -36734,15 +36728,15 @@ class edit extends Component {
 
   initLottieAnimation() {
     const {
-      block_id,
+      blockId,
       trigger,
       bottom,
       top
     } = this.props.attributes;
-    let lottieContainer = document.getElementById(`premium-lottie-${block_id}`);
+    let lottieContainer = document.getElementById(`${blockId}`);
 
     if (lottieContainer !== null) {
-      let lottieContainer = document.getElementById(`premium-lottie-${block_id}`),
+      let lottieContainer = document.getElementById(`${blockId}`),
           scrollElement = document.querySelector(".interface-interface-skeleton__content"),
           animate = this.lottieplayer.current;
       document.addEventListener("load", initScroll);
@@ -36784,7 +36778,7 @@ class edit extends Component {
     } = this.props;
     const {
       lottieId,
-      block_id,
+      blockId,
       lottieURl,
       lottieJson,
       loop,
@@ -36867,7 +36861,7 @@ class edit extends Component {
     }
 
     const reversedir = reverse ? -1 : 1;
-    const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-lottie-wrap", {
+    const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-lottie-wrap", blockId, {
       " premium-desktop-hidden": hideDesktop,
       " premium-tablet-hidden": hideTablet,
       " premium-mobile-hidden": hideMobile
@@ -36881,15 +36875,15 @@ class edit extends Component {
       var _border$borderWidth, _border$borderWidth$t, _border$borderWidth2, _border$borderWidth2$, _border$borderWidth3, _border$borderWidth3$, _border$borderWidth4, _border$borderWidth4$, _border$borderRadius, _border$borderRadius$, _border$borderRadius2, _border$borderRadius3, _border$borderRadius4, _border$borderRadius5, _border$borderRadius6, _border$borderRadius7;
 
       const styles = {};
-      styles[`#premium-lottie-${block_id} .premium-lottie-animation svg`] = {
+      styles[`#${blockId} .premium-lottie-animation svg`] = {
         width: `${size[this.props.deviceType]}${size["unit"]} !important`,
         height: `
                 ${size[this.props.deviceType]}${size["unit"]} !important`
       };
-      styles[`#premium-lottie-${block_id}`] = {
+      styles[`#${blockId}`] = {
         "text-align": `${lottieAlign[this.props.deviceType]}`
       };
-      styles[`#premium-lottie-${block_id}  .premium-lottie-animation`] = {
+      styles[`#${blockId} .premium-lottie-animation`] = {
         "background-color": `${lottieStyles[0].backColor}`,
         filter: ` brightness( ${filter === null || filter === void 0 ? void 0 : filter.bright}% ) contrast( ${filter === null || filter === void 0 ? void 0 : filter.contrast}% ) saturate( ${filter === null || filter === void 0 ? void 0 : filter.saturation}% ) blur( ${filter === null || filter === void 0 ? void 0 : filter.blur}px ) hue-rotate( ${filter === null || filter === void 0 ? void 0 : filter.hue}deg )`,
         "border-style": `${border === null || border === void 0 ? void 0 : border.borderType}`,
@@ -36908,7 +36902,7 @@ class edit extends Component {
         "padding-left": `${paddingLeft}${padding === null || padding === void 0 ? void 0 : padding.unit} !important`,
         transform: `rotate(${rotate}deg) !important`
       };
-      styles[`#premium-lottie-${block_id}  .premium-lottie-animation:hover`] = {
+      styles[`#${blockId}  .premium-lottie-animation:hover`] = {
         "background-color": `${lottieStyles[0].backHColor}`,
         filter: `brightness( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.bright}% ) contrast( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.contrast}% ) saturate( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.saturation}% ) blur( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.blur}px ) hue-rotate( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.hue}deg ) !important`
       };
@@ -37144,8 +37138,8 @@ class edit extends Component {
         __html: loadStyles()
       }
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      id: `premium-lottie-${block_id}`,
-      className: `premium-lottie-${block_id} ${mainClasses} `,
+      id: `${blockId}`,
+      className: ` ${mainClasses} `,
       "data-lottieURl": lottieURl,
       "data-trigger": trigger,
       "data-start": bottom,
@@ -37262,7 +37256,7 @@ function save(props) {
   } = props;
   const {
     lottieId,
-    block_id,
+    blockId,
     lottieURl,
     loop,
     reverse,
@@ -37284,7 +37278,7 @@ function save(props) {
     filter,
     filterHover
   } = attributes;
-  const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-lottie-wrap", {
+  const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-lottie-wrap", blockId, {
     " premium-desktop-hidden": hideDesktop,
     " premium-tablet-hidden": hideTablet,
     " premium-mobile-hidden": hideMobile
@@ -37292,14 +37286,14 @@ function save(props) {
 
   const loadStyles = () => {
     const styles = {};
-    styles[`#premium-lottie-${block_id}  .premium-lottie-animation`] = {
+    styles[`#${blockId}  .premium-lottie-animation`] = {
       "background-color": `${lottieStyles[0].backColor}`,
       filter: ` brightness( ${filter === null || filter === void 0 ? void 0 : filter.bright}% ) contrast( ${filter === null || filter === void 0 ? void 0 : filter.contrast}% ) saturate( ${filter === null || filter === void 0 ? void 0 : filter.saturation}% ) blur( ${filter === null || filter === void 0 ? void 0 : filter.blur}px ) hue-rotate( ${filter === null || filter === void 0 ? void 0 : filter.hue}deg )`,
       "border-style": `${border === null || border === void 0 ? void 0 : border.borderType}`,
       "border-color": `${border === null || border === void 0 ? void 0 : border.borderColor}`,
       transform: `rotate(${rotate}deg) !important`
     };
-    styles[`#premium-lottie-${block_id}  .premium-lottie-animation:hover`] = {
+    styles[`#${blockId}  .premium-lottie-animation:hover`] = {
       "background-color": `${lottieStyles[0].backHColor}`,
       filter: `brightness( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.bright}% ) contrast( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.contrast}% ) saturate( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.saturation}% ) blur( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.blur}px ) hue-rotate( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.hue}deg ) !important`
     };
@@ -37311,8 +37305,8 @@ function save(props) {
       __html: loadStyles()
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    id: `premium-lottie-${block_id}`,
-    className: `premium-lottie-${block_id} ${mainClasses} `
+    id: `${blockId}`,
+    className: `${mainClasses} `
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-lottie-animation premium-lottie-${render}`,
     "data-lottieURl": lottieURl,

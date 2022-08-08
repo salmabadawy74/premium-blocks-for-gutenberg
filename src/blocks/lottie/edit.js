@@ -18,7 +18,7 @@ import InspectorTab from "../../components/inspectorTab";
 import InsideTabs from "../../components/InsideTabs";
 import InsideTab from "../../components/InsideTab";
 import SpacingControl from "../../components/premium-responsive-spacing";
-import { generateCss } from "../../components/HelperFunction";
+import { generateCss, generateBlockId } from "../../components/HelperFunction";
 
 const { InspectorControls } = wp.blockEditor;
 
@@ -27,7 +27,6 @@ const {
     TextControl,
     ToggleControl,
     SelectControl,
-    TabPanel,
 } = wp.components;
 
 let isLottieUpdated = null;
@@ -43,11 +42,12 @@ class edit extends Component {
 
     componentDidMount() {
         const { setAttributes, clientId, attributes } = this.props;
-        const { block_id } = attributes;
+        setAttributes({
+            blockId: "premium-lottie-" + generateBlockId(clientId),
+        });
 
-        setAttributes({ block_id: clientId });
         if (!attributes.lottieId) {
-            setAttributes({ lottieId: "premium-lottie-" + block_id });
+            setAttributes({ lottieId: "premium-lottie-" + clientId });
         }
         this.onSelectLottieJSON = this.onSelectLottieJSON.bind(this);
         this.initLottieAnimation = this.initLottieAnimation.bind(this);
@@ -70,14 +70,14 @@ class edit extends Component {
     }
 
     initLottieAnimation() {
-        const { block_id, trigger, bottom, top } = this.props.attributes;
+        const { blockId, trigger, bottom, top } = this.props.attributes;
         let lottieContainer = document.getElementById(
-            `premium-lottie-${block_id}`
+            `${blockId}`
         );
         if (lottieContainer !== null) {
             let lottieContainer = document.getElementById(
-                    `premium-lottie-${block_id}`
-                ),
+                `${blockId}`
+            ),
                 scrollElement = document.querySelector(
                     ".interface-interface-skeleton__content"
                 ),
@@ -116,7 +116,7 @@ class edit extends Component {
         const { attributes, setAttributes, className } = this.props;
         const {
             lottieId,
-            block_id,
+            blockId,
             lottieURl,
             lottieJson,
             loop,
@@ -196,7 +196,7 @@ class edit extends Component {
             stopAnimation = false;
         }
         const reversedir = reverse ? -1 : 1;
-        const mainClasses = classnames(className, "premium-lottie-wrap", {
+        const mainClasses = classnames(className, "premium-lottie-wrap", blockId, {
             " premium-desktop-hidden": hideDesktop,
             " premium-tablet-hidden": hideTablet,
             " premium-mobile-hidden": hideMobile,
@@ -209,46 +209,37 @@ class edit extends Component {
         const loadStyles = () => {
             const styles = {};
             styles[
-                `#premium-lottie-${block_id} .premium-lottie-animation svg`
+                `#${blockId} .premium-lottie-animation svg`
             ] = {
-                width: `${size[this.props.deviceType]}${
-                    size["unit"]
-                } !important`,
+                width: `${size[this.props.deviceType]}${size["unit"]
+                    } !important`,
                 height: `
                 ${size[this.props.deviceType]}${size["unit"]} !important`,
             };
-            styles[`#premium-lottie-${block_id}`] = {
+            styles[`#${blockId}`] = {
                 "text-align": `${lottieAlign[this.props.deviceType]}`,
             };
-            styles[`#premium-lottie-${block_id}  .premium-lottie-animation`] = {
+            styles[`#${blockId} .premium-lottie-animation`] = {
                 "background-color": `${lottieStyles[0].backColor}`,
                 filter: ` brightness( ${filter?.bright}% ) contrast( ${filter?.contrast}% ) saturate( ${filter?.saturation}% ) blur( ${filter?.blur}px ) hue-rotate( ${filter?.hue}deg )`,
                 "border-style": `${border?.borderType}`,
                 "border-color": `${border?.borderColor}`,
-                "border-top-width": `${
-                    border?.borderWidth?.[this.props.deviceType]?.top
-                }px!important`,
-                "border-right-width": `${
-                    border?.borderWidth?.[this.props.deviceType]?.right
-                }px!important`,
-                "border-bottom-width": `${
-                    border?.borderWidth?.[this.props.deviceType]?.bottom
-                }px!important`,
-                "border-left-width": `${
-                    border?.borderWidth?.[this.props.deviceType]?.left
-                }px!important`,
-                "border-top-left-radius": `${
-                    border?.borderRadius?.[this.props.deviceType]?.top
-                }px!important`,
-                "border-top-right-radius": `${
-                    border?.borderRadius?.[this.props.deviceType]?.right
-                }px!important`,
-                "border-bottom-left-radius": `${
-                    border?.borderRadius?.[this.props.deviceType]?.bottom
-                }px!important`,
-                "border-bottom-right-radius": `${
-                    border?.borderRadius?.[this.props.deviceType]?.left
-                }px!important`,
+                "border-top-width": `${border?.borderWidth?.[this.props.deviceType]?.top
+                    }px!important`,
+                "border-right-width": `${border?.borderWidth?.[this.props.deviceType]?.right
+                    }px!important`,
+                "border-bottom-width": `${border?.borderWidth?.[this.props.deviceType]?.bottom
+                    }px!important`,
+                "border-left-width": `${border?.borderWidth?.[this.props.deviceType]?.left
+                    }px!important`,
+                "border-top-left-radius": `${border?.borderRadius?.[this.props.deviceType]?.top
+                    }px!important`,
+                "border-top-right-radius": `${border?.borderRadius?.[this.props.deviceType]?.right
+                    }px!important`,
+                "border-bottom-left-radius": `${border?.borderRadius?.[this.props.deviceType]?.bottom
+                    }px!important`,
+                "border-bottom-right-radius": `${border?.borderRadius?.[this.props.deviceType]?.left
+                    }px!important`,
                 "padding-top": `${paddingTop}${padding?.unit} !important`,
                 "padding-right": `${paddingRight}${padding?.unit} !important`,
                 "padding-bottom": `${paddingBottom}${padding?.unit} !important`,
@@ -256,7 +247,7 @@ class edit extends Component {
                 transform: `rotate(${rotate}deg) !important`,
             };
             styles[
-                `#premium-lottie-${block_id}  .premium-lottie-animation:hover`
+                `#${blockId}  .premium-lottie-animation:hover`
             ] = {
                 "background-color": `${lottieStyles[0].backHColor}`,
                 filter: `brightness( ${filterHover?.bright}% ) contrast( ${filterHover?.contrast}% ) saturate( ${filterHover?.saturation}% ) blur( ${filterHover?.blur}px ) hue-rotate( ${filterHover?.hue}deg ) !important`,
@@ -291,9 +282,9 @@ class edit extends Component {
                                 help={
                                     loop
                                         ? __(
-                                              "This option works only on the preview page",
-                                              "premium-blocks-for-gutenberg"
-                                          )
+                                            "This option works only on the preview page",
+                                            "premium-blocks-for-gutenberg"
+                                        )
                                         : ""
                                 }
                             />
@@ -659,8 +650,8 @@ class edit extends Component {
             <style dangerouslySetInnerHTML={{ __html: loadStyles() }} />,
 
             <div
-                id={`premium-lottie-${block_id}`}
-                className={`premium-lottie-${block_id} ${mainClasses} `}
+                id={`${blockId}`}
+                className={` ${mainClasses} `}
                 data-lottieURl={lottieURl}
                 data-trigger={trigger}
                 data-start={bottom}

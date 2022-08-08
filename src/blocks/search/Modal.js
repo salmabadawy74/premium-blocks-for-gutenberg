@@ -1,6 +1,4 @@
-import {
-    Button,
-} from '@wordpress/components';
+import { Button } from '@wordpress/components';
 
 const Modal = props => {
     return <div className={`premium-search-modal${props.isOpen ? ' open' : ''}`}>

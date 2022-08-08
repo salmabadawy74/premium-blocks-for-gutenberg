@@ -7,7 +7,7 @@ export default function save(props) {
 
     const {
         lottieId,
-        block_id,
+        blockId,
         lottieURl,
         loop,
         reverse,
@@ -29,25 +29,25 @@ export default function save(props) {
         filter,
         filterHover,
     } = attributes;
-    const mainClasses = classnames(className, "premium-lottie-wrap", {
+    const mainClasses = classnames(className, "premium-lottie-wrap", blockId, {
         " premium-desktop-hidden": hideDesktop,
         " premium-tablet-hidden": hideTablet,
         " premium-mobile-hidden": hideMobile,
     });
     const loadStyles = () => {
         const styles = {};
-        styles[`#premium-lottie-${block_id}  .premium-lottie-animation`] = {
+        styles[`#${blockId}  .premium-lottie-animation`] = {
             "background-color": `${lottieStyles[0].backColor}`,
             filter: ` brightness( ${filter?.bright}% ) contrast( ${filter?.contrast}% ) saturate( ${filter?.saturation}% ) blur( ${filter?.blur}px ) hue-rotate( ${filter?.hue}deg )`,
             "border-style": `${border?.borderType}`,
             "border-color": `${border?.borderColor}`,
             transform: `rotate(${rotate}deg) !important`,
         };
-        styles[`#premium-lottie-${block_id}  .premium-lottie-animation:hover`] =
-            {
-                "background-color": `${lottieStyles[0].backHColor}`,
-                filter: `brightness( ${filterHover?.bright}% ) contrast( ${filterHover?.contrast}% ) saturate( ${filterHover?.saturation}% ) blur( ${filterHover?.blur}px ) hue-rotate( ${filterHover?.hue}deg ) !important`,
-            };
+        styles[`#${blockId}  .premium-lottie-animation:hover`] =
+        {
+            "background-color": `${lottieStyles[0].backHColor}`,
+            filter: `brightness( ${filterHover?.bright}% ) contrast( ${filterHover?.contrast}% ) saturate( ${filterHover?.saturation}% ) blur( ${filterHover?.blur}px ) hue-rotate( ${filterHover?.hue}deg ) !important`,
+        };
         return generateCss(styles);
     };
 
@@ -55,8 +55,8 @@ export default function save(props) {
         <Fragment>
             <style dangerouslySetInnerHTML={{ __html: loadStyles() }} />
             <div
-                id={`premium-lottie-${block_id}`}
-                className={`premium-lottie-${block_id} ${mainClasses} `}
+                id={`${blockId}`}
+                className={`${mainClasses} `}
             >
                 <div
                     className={`premium-lottie-animation premium-lottie-${render}`}

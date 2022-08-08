@@ -3278,10 +3278,12 @@ class PBG_Blocks_Helper {
 	 * @param string $content option for content of block.
 	 */
 	public function get_lottie_css( $attributes, $content ) {
-		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
-			$unique_id = $attributes['block_id'];
-		} else {
-			$unique_id = rand( 100, 10000 );
+			if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
+			$unique_id = "#premium-lottie-{$attributes['block_id']}";
+		}
+
+		if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
+			$unique_id = ".{$attributes['blockId']}";
 		}
 		if ( $this->it_is_not_amp() ) {
 			wp_enqueue_script(
@@ -3292,8 +3294,10 @@ class PBG_Blocks_Helper {
 				true
 			);
 		}
-		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
-		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
+        	$style_unique_id = rand( 100, 10000 );
+
+		$style_id = 'pbg-blocks-style' . esc_attr( $style_unique_id );
+        		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
 			$css = $this->get_lottie_css_style( $attributes, $unique_id );
 			if ( ! empty( $css ) ) {
 				if ( $this->should_render_inline( 'accordion', $unique_id ) ) {
@@ -3324,12 +3328,12 @@ class PBG_Blocks_Helper {
 		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 
 		if ( isset( $attr['lottieAlign'] ) ) {
-			$css->set_selector( '#premium-lottie-' . $unique_id );
+			$css->set_selector(  $unique_id );
 			$css->add_property( 'text-align', ( $attr['lottieAlign']['Desktop'] ) );
 		}
 
 		if ( isset( $attr['size'] ) ) {
-			$css->set_selector( '#premium-lottie-' . $unique_id . '> .premium-lottie-svg svg' );
+			$css->set_selector(  $unique_id . '> .premium-lottie-svg svg' );
 			$css->add_property( 'width', ( $attr['size']['Desktop'] . $attr['size']['unit'] ) );
 			$css->add_property( 'height', ( $attr['size']['Desktop'] . $attr['size']['unit'] ) );
 			$css->set_selector( '#premium-lottie-' . $unique_id . '> .premium-lottie-canvas' );
@@ -3338,7 +3342,7 @@ class PBG_Blocks_Helper {
 		}
 
 		if ( isset( $attr['padding'] ) ) {
-			$css->set_selector( '#premium-lottie-' . $unique_id . ' .premium-lottie-animation' );
+			$css->set_selector(  $unique_id . ' .premium-lottie-animation' );
 			$css->add_property( 'padding', $css->render_spacing( $attr['padding']['Desktop'], $attr['padding']['unit'] ) );
 		}
 
@@ -3346,28 +3350,28 @@ class PBG_Blocks_Helper {
 			$lottie_border        = $attr['border'];
 			$lottie_border_width  = $lottie_border['borderWidth'];
 			$lottie_border_radius = $lottie_border['borderRadius'];
-			$css->set_selector( '#premium-lottie-' . $unique_id . ' .premium-lottie-animation' );
+			$css->set_selector( $unique_id . ' .premium-lottie-animation' );
 			$css->add_property( 'border-width', $css->render_spacing( $lottie_border_width['Desktop'], 'px' ) );
 			$css->add_property( 'border-radius', $css->render_spacing( $lottie_border_radius['Desktop'], 'px' ) );
 		}
 
 		$css->start_media_query( $media_query['tablet'] );
 		if ( isset( $attr['lottieAlign'] ) ) {
-			$css->set_selector( '#premium-lottie-' . $unique_id );
+			$css->set_selector(  $unique_id );
 			$css->add_property( 'text-align', ( $attr['lottieAlign']['Tablet'] ) );
 		}
 
 		if ( isset( $attr['size'] ) ) {
-			$css->set_selector( '#premium-lottie-' . $unique_id . '> .premium-lottie-svg svg' );
+			$css->set_selector(  $unique_id . '> .premium-lottie-svg svg' );
 			$css->add_property( 'width', ( $attr['size']['Tablet'] . $attr['size']['unit'] ) );
 			$css->add_property( 'height', ( $attr['size']['Tablet'] . $attr['size']['unit'] ) );
-			$css->set_selector( '#premium-lottie-' . $unique_id . '> .premium-lottie-canvas' );
+			$css->set_selector(  $unique_id . '> .premium-lottie-canvas' );
 			$css->add_property( 'width', ( $attr['size']['Tablet'] . $attr['size']['unit'] ) );
 			$css->add_property( 'height', ( $attr['size']['Tablet'] . $attr['size']['unit'] ) );
 		}
 
 		if ( isset( $attr['padding'] ) ) {
-			$css->set_selector( '#premium-lottie-' . $unique_id . ' .premium-lottie-animation' );
+			$css->set_selector( $unique_id . ' .premium-lottie-animation' );
 			$css->add_property( 'padding', $css->render_spacing( $attr['padding']['Tablet'], $attr['padding']['unit'] ) );
 		}
 
@@ -3375,28 +3379,28 @@ class PBG_Blocks_Helper {
 			$lottie_border        = $attr['border'];
 			$lottie_border_width  = $lottie_border['borderWidth'];
 			$lottie_border_radius = $lottie_border['borderRadius'];
-			$css->set_selector( '#premium-lottie-' . $unique_id . ' .premium-lottie-animation' );
+			$css->set_selector(  $unique_id . ' .premium-lottie-animation' );
 			$css->add_property( 'border-width', $css->render_spacing( $lottie_border_width['Tablet'], 'px' ) );
 			$css->add_property( 'border-radius', $css->render_spacing( $lottie_border_radius['Tablet'], 'px' ) );
 		}
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
 		if ( isset( $attr['lottieAlign'] ) ) {
-			$css->set_selector( '#premium-lottie-' . $unique_id );
+			$css->set_selector(  $unique_id );
 			$css->add_property( 'text-align', ( $attr['lottieAlign']['Mobile'] ) );
 		}
 
 		if ( isset( $attr['size'] ) ) {
-			$css->set_selector( '#premium-lottie-' . $unique_id . '> .premium-lottie-svg svg' );
+			$css->set_selector(  $unique_id . '> .premium-lottie-svg svg' );
 			$css->add_property( 'width', ( $attr['size']['Mobile'] . $attr['size']['unit'] ) );
 			$css->add_property( 'height', ( $attr['size']['Mobile'] . $attr['size']['unit'] ) );
-			$css->set_selector( '#premium-lottie-' . $unique_id . '> .premium-lottie-canvas' );
+			$css->set_selector(  $unique_id . '> .premium-lottie-canvas' );
 			$css->add_property( 'width', ( $attr['size']['Mobile'] . $attr['size']['unit'] ) );
 			$css->add_property( 'height', ( $attr['size']['Mobile'] . $attr['size']['unit'] ) );
 		}
 
 		if ( isset( $attr['padding'] ) ) {
-			$css->set_selector( '#premium-lottie-' . $unique_id . ' .premium-lottie-animation' );
+			$css->set_selector(  $unique_id . ' .premium-lottie-animation' );
 			$css->add_property( 'padding', $css->render_spacing( $attr['padding']['Mobile'], $attr['padding']['unit'] ) );
 		}
 
@@ -3404,7 +3408,7 @@ class PBG_Blocks_Helper {
 			$lottie_border        = $attr['border'];
 			$lottie_border_width  = $lottie_border['borderWidth'];
 			$lottie_border_radius = $lottie_border['borderRadius'];
-			$css->set_selector( '#premium-lottie-' . $unique_id . ' .premium-lottie-animation' );
+			$css->set_selector(  $unique_id . ' .premium-lottie-animation' );
 			$css->add_property( 'border-width', $css->render_spacing( $lottie_border_width['Mobile'], 'px' ) );
 			$css->add_property( 'border-radius', $css->render_spacing( $lottie_border_radius['Mobile'], 'px' ) );
 		}
