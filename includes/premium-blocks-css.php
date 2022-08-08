@@ -561,28 +561,7 @@ class Premium_Blocks_css {
 	}
 
 
-	/**
-	 * Add google font to array.
-	 *
-	 * @param string $font_name the font name.
-	 * @param string $variant the font variant.
-	 * @param string $subset the font subset.
-	 */
-	public function maybe_add_google_font( $font_name, $font_variant = null, $subset = null ) {
-		// Check if the font has been added yet.
-		if ( ! array_key_exists( $font_name, self::$google_fonts ) ) {
-			$add_font                         = array(
-				'fontfamily'   => $font_name,
-				'fontvariants' => ( isset( $font_variant ) && ! empty( $font_variant ) ? array( $font_variant ) : array() ),
-				'fontsubsets'  => ( isset( $subset ) && ! empty( $subset ) ? array( $subset ) : array() ),
-			);
-			self::$google_fonts[ $font_name ] = $add_font;
-		} else {
-			if ( ! in_array( $font_variant, self::$google_fonts[ $font_name ]['fontvariants'], true ) ) {
-				array_push( self::$google_fonts[ $font_name ]['fontvariants'], $font_variant );
-			}
-		}
-	}
+
 
 	/**
 	 * Resets the css variable
@@ -627,15 +606,5 @@ class Premium_Blocks_css {
 		return $this->_output;
 	}
 	
-	public function get_responsive_value( $values, $side = '', $device = 'Desktop', $unit = 'px' ) {
-		return isset( $values[ $device ][ $side ] ) && $values[ $device ][ $side ] ? "{$values[ $device ][ $side ]}{$unit}" : '';
-	}
-	
-	public function get_responsive_size_value( $values, $device = 'Desktop', $unit = 'px' ) {
-		return isset( $values[ $device ] ) && $values[ $device ] ? "{$values[ $device ]}{$unit}" : '';
-	}
-	
-	public function get_responsive_css( $values, $device = 'Desktop' ) {
-		return isset( $values[ $device ] ) && $values[ $device ] ? "{$values[ $device ]}" : '';
-	}
+
 }

@@ -2,7 +2,7 @@ function renderCustomIcon(svg) {
     let customSVG = '';
     switch (svg) {
         // Flex Row
-        case 'flex-row-start':
+        case 'flex-column-start':
             customSVG = (
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
                     <title>justify-start</title>
@@ -10,7 +10,7 @@ function renderCustomIcon(svg) {
                 </svg>
             );
             break;
-        case 'flex-row-end':
+        case 'flex-column-end':
             customSVG = (
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
                     <title>justify-end</title>
@@ -18,7 +18,7 @@ function renderCustomIcon(svg) {
                 </svg>
             );
             break;
-        case 'flex-row-center':
+        case 'flex-column-center':
             customSVG = (
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
                     <title>justify-center</title>
@@ -27,7 +27,7 @@ function renderCustomIcon(svg) {
 
             );
             break;
-        case 'flex-row-strech':
+        case 'flex-column-strech':
             customSVG = (
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
                     <title>shrink</title>
@@ -35,7 +35,7 @@ function renderCustomIcon(svg) {
                 </svg>
             );
             break;
-        case 'flex-row-space-between':
+        case 'flex-column-space-between':
             customSVG = (
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
                     <title>justify-space-between</title>
@@ -43,7 +43,7 @@ function renderCustomIcon(svg) {
                 </svg>
             );
             break;
-        case 'flex-row-space-around':
+        case 'flex-column-space-around':
             customSVG = (
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
                     <title>justify-space-around</title>
@@ -51,7 +51,7 @@ function renderCustomIcon(svg) {
                 </svg>
             );
             break;
-        case 'flex-row-space-evenly':
+        case 'flex-column-space-evenly':
             customSVG = (
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
                     <title>justify-space-evenly</title>
@@ -60,7 +60,7 @@ function renderCustomIcon(svg) {
             );
             break;
         // Flex Column
-        case 'flex-column-start':
+        case 'flex-row-start':
             customSVG = (
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
                     <title>justify-start</title>
@@ -69,7 +69,7 @@ function renderCustomIcon(svg) {
 
             );
             break;
-        case 'flex-column-end':
+        case 'flex-row-end':
             customSVG = (
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
                     <title>justify-end</title>
@@ -77,7 +77,7 @@ function renderCustomIcon(svg) {
                 </svg>
             );
             break;
-        case 'flex-column-center':
+        case 'flex-row-center':
             customSVG = (
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
                     <title>justify-center</title>
@@ -86,7 +86,7 @@ function renderCustomIcon(svg) {
 
             );
             break;
-        case 'flex-column-strech':
+        case 'flex-row-strech':
             customSVG = (
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
                     <title>grow</title>
@@ -95,7 +95,7 @@ function renderCustomIcon(svg) {
 
             );
             break;
-        case 'flex-column-space-between':
+        case 'flex-row-space-between':
             customSVG = (
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
                     <title>justify-space-between</title>
@@ -103,7 +103,7 @@ function renderCustomIcon(svg) {
                 </svg>
             );
             break;
-        case 'flex-column-space-around':
+        case 'flex-row-space-around':
             customSVG = (
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
                     <title>justify-space-around</title>
@@ -111,7 +111,7 @@ function renderCustomIcon(svg) {
                 </svg>
             );
             break;
-        case 'flex-column-space-evenly':
+        case 'flex-row-space-evenly':
             customSVG = (
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
                     <title>justify-space-evenly</title>

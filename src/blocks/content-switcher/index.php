@@ -16,15 +16,15 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 	$unique_id              = $attributes['blockId'];
 
 	// Container styles
-	if ( isset( $attributes['align']['Desktop'] ) ) {
+	if ( isset( $attributes['align'] ) ) {
 		$css->set_selector( '.' . $unique_id );
 		$css->add_property( 'text-align', ( $attributes['align']['Desktop'] . '!important' ) );
 	}
-	if ( isset( $attributes['align']['Desktop'] ) ) {
+	if ( isset( $attributes['align'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' );
 		$css->add_property( 'text-align', ( $attributes['align']['Desktop'] . '!important' ) );
 	}
-	if ( isset( $attributes['align']['Desktop'] ) ) {
+	if ( isset( $attributes['align'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] );
 		$css->add_property( 'text-align', ( $attributes['align']['Desktop'] . '!important' ) );
 		$css->add_property( 'justify-content', ( $attributes['align']['Desktop'] == 'right' ? 'flex-end' : ( $attributes['align']['Desktop'] == 'left' ? 'flex-start' : $attributes['align']['Desktop'] ) . '!important' ) );
@@ -35,7 +35,7 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$css->add_property( 'padding', $css->render_spacing( $attributes['containerPadding']['Desktop'], $attributes['containerPadding']['unit'] ) );
 	}
 
-	if ( isset( $attributes['containerMargin']['Desktop'] ) ) {
+	if ( isset( $attributes['containerMargin'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' );
 		$css->add_property( 'margin', $css->render_spacing( $attributes['containerMargin']['Desktop'], $attributes['containerMargin']['unit'] ) );
 	}

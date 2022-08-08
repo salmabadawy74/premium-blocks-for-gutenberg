@@ -24,7 +24,7 @@ const { __ } = wp.i18n
 
 const { Component, Fragment } = wp.element
 
-const { BlockControls, AlignmentToolbar, InspectorControls, RichText } = wp.blockEditor
+const { InspectorControls, RichText } = wp.blockEditor
 
 const { PanelBody, SelectControl, TabPanel, TextControl, ToggleControl, Tooltip } = wp.components
 
