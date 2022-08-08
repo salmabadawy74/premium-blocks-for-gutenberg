@@ -50216,7 +50216,8 @@ const attributes = {
     type: "number"
   },
   minHeightUnit: {
-    type: "string"
+    type: "string",
+    default: 'px'
   },
   vPos: {
     type: "string",
