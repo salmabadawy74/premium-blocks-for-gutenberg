@@ -16,19 +16,8 @@ class PBG_Blocks_Helper {
 	 */
 	private static $instance = null;
 
-	/**
-	 * Google fonts to enqueue
-	 *
-	 * @var array
-	 */
-	public static $gfonts = array();
 
-	/**
-	 * Google fonts to enqueue
-	 *
-	 * @var array
-	 */
-	public static $footer_gfonts = array();
+
 	/**
 	 * Blocks
 	 *
@@ -114,8 +103,7 @@ class PBG_Blocks_Helper {
 		add_action( 'wp_enqueue_scripts', array( $this, 'generate_stylesheet' ), 20 );
 		// Enqueue Generated stylesheet to WP Head.
 		add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
-		add_action( 'wp_head', array( $this, 'frontend_gfonts' ), 90 );
-		add_action( 'wp_footer', array( $this, 'frontend_footer_gfonts' ), 90 );
+	
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_dashicons_front_end' ) );
 	}
 
@@ -792,98 +780,6 @@ class PBG_Blocks_Helper {
 		return false;
 	}
 
-	/**
-	 * Adds Google fonts for loading later
-	 *
-	 * @param array $attr the blocks attr.
-	 */
-	public function add_gfont( $attr ) {
-		$defaults = array(
-			'googleFont'     => true,
-			'loadGoogleFont' => true,
-			'fontFamily'     => '',
-			'fontVariant'    => '',
-		);
-		$attr     = wp_parse_args( $attr, $defaults );
-
-		if ( true == $attr['googleFont'] && true == $attr['loadGoogleFont'] && ! empty( $attr['fontFamily'] ) ) {
-			// Check if the font has been added yet.
-			if ( ! array_key_exists( $attr['fontFamily'], self::$gfonts ) ) {
-				$add_font                            = array(
-					'fontfamily'   => $attr['fontFamily'],
-					'fontvariants' => ( isset( $attr['fontVariant'] ) && ! empty( $attr['fontVariant'] ) ? array( $attr['fontVariant'] ) : array() ),
-				);
-				self::$gfonts[ $attr['fontFamily'] ] = $add_font;
-				// Check if wp_head has already run in which case we need to add to footer fonts.
-				if ( did_action( 'wp_body_open' ) >= 1 ) {
-					self::$footer_gfonts[ $attr['fontFamily'] ] = $add_font;
-				}
-			} else {
-				if ( isset( $attr['fontVariant'] ) && ! empty( $attr['fontVariant'] ) ) {
-					if ( ! in_array( $attr['fontVariant'], self::$gfonts[ $attr['fontFamily'] ]['fontvariants'], true ) ) {
-						array_push( self::$gfonts[ $attr['fontFamily'] ]['fontvariants'], $attr['fontVariant'] );
-						if ( did_action( 'wp_body_open' ) >= 1 ) {
-							if ( ! array_key_exists( $attr['fontFamily'], self::$footer_gfonts ) ) {
-								$add_font                                   = array(
-									'fontfamily'   => $attr['fontFamily'],
-									'fontvariants' => ( isset( $attr['fontVariant'] ) && ! empty( $attr['fontVariant'] ) ? array( $attr['fontVariant'] ) : array() ),
-								);
-								self::$footer_gfonts[ $attr['fontFamily'] ] = $add_font;
-							} else {
-								array_push( self::$footer_gfonts[ $attr['fontFamily'] ]['fontvariants'], $attr['fontVariant'] );
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-
-	/**
-	 * Load Google Font
-	 *
-	 * @since 1.9.2
-	 *
-	 * @access public
-	 */
-	public function frontend_gfonts() {
-		if ( empty( self::$gfonts ) ) {
-			return;
-		}
-		$print_google_fonts = apply_filters( 'pbg_blocks_print_google_fonts', true );
-		if ( ! $print_google_fonts ) {
-			return;
-		}
-		$this->load_google_font( self::$gfonts );
-	}
-
-	/**
-	 * Print Google Font
-	 *
-	 * @since 1.9.2
-	 *
-	 * @access public
-	 *
-	 * @param object $gfont for google Font.
-	 */
-	public function load_google_font( $gfonts ) {
-		$link    = '';
-		$subsets = array();
-		foreach ( $gfonts as $key => $gfont_values ) {
-			if ( ! empty( $link ) ) {
-				$link .= '%7C'; // Append a new font to the string.
-			}
-			$link .= $gfont_values['fontfamily'];
-			if ( ! empty( $gfont_values['fontvariants'] ) ) {
-				$link .= ':';
-				$link .= implode( ',', $gfont_values['fontvariants'] );
-			}
-		}
-		if ( apply_filters( 'pbg_display_swap_google_fonts', true ) ) {
-			$link .= '&amp;display=swap';
-		}
-		echo '<link href="//fonts.googleapis.com/css?family=' . esc_attr( str_replace( '|', '%7C', $link ) ) . '" rel="stylesheet">';
-	}
 
 	/**
 	 * Get Accordion Block Content & Style
