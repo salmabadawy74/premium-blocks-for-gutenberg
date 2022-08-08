@@ -432,62 +432,8 @@ class Premium_Blocks_css {
 		return $this;
 	}
 
-	/**
-	 * Generates the font family output.
-	 *
-	 * @param array $font an array of font settings.
-	 * @return string
-	 */
 	
 	
-	/**
-	 * Outputs a string if set.
-	 *
-	 * @param array  $string a string setting.
-	 * @param string $unit if needed add unit.
-	 * @return string
-	 */
-	public function render_string( $string = null, $unit = null ) {
-		if ( empty( $string ) ) {
-			return false;
-		}
-		$string = $string . ( isset( $unit ) && ! empty( $unit ) ? $unit : '' );
-
-		return $string;
-	}
-	/**
-	 * Outputs a string if set.
-	 *
-	 * @param array  $number a string setting.
-	 * @param string $unit if needed add unit.
-	 * @return string
-	 */
-	public function render_number( $number = null, $unit = null ) {
-		if ( ! is_numeric( $number ) ) {
-			return false;
-		}
-		$number = $number . ( isset( $unit ) && ! empty( $unit ) ? $unit : '' );
-
-		return $number;
-	}
-
-    	/**
-	 * Generates the size output.
-	 *
-	 * @param array $size an array of size settings.
-	 * @return string
-	 */
-	public function render_size( $size ) {
-		if ( empty( $size ) ) {
-			return false;
-		}
-
-		$size_number = ( isset( $size['size'] ) && ! empty( $size['size'] ) ? $size['size'] : '0' );
-		$size_unit   = ( isset( $size['unit'] ) && ! empty( $size['unit'] ) ? $size['unit'] : 'px' );
-
-		$size_string = $size_number . $size_unit;
-		return $size_string;
-	}
 
     /**
 	 * Generates the measure output.
@@ -546,6 +492,8 @@ class Premium_Blocks_css {
 		}
 	
 	}
+
+
     public function add_gfont( $attr ) {
 
             $defaults = array(
