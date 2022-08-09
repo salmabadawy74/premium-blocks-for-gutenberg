@@ -372,10 +372,10 @@ const attributes = {
     mapBoxShadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '10',
-            'horizontal': '',
-            'vertical': '',
+            color: "undefined",
+            blur: "10",
+            horizontal: "0",
+            vertical: "0",
             'position': '',
         }
     },

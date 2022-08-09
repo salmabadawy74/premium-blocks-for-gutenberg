@@ -15,15 +15,13 @@ import {
     generateBlockId,
     generateCss,
     typographyCss,
-    paddingCss,
-    marginCss,
-    borderCss,
 } from "../../components/HelperFunction";
 import Icons from "../../components/icons";
 import MultiButtonsControl from "../../components/responsive-radio";
 import SpacingComponent from "../../components/premium-responsive-spacing";
 import InspectorTabs from "../../components/inspectorTabs";
 import InspectorTab from "../../components/inspectorTab";
+import WebfontLoader from "../../components/typography/fontLoader";
 
 const { __ } = wp.i18n;
 
@@ -184,6 +182,32 @@ class edit extends Component {
             titleTypography,
             titleShadow,
         } = attributes;
+
+        let loadTitleGoogleFonts;
+        let loadTextGoogleFonts;
+        if (titleTypography?.fontFamily !== 'Default') {
+            const titleConfig = {
+                google: {
+                    families: [titleTypography.fontFamily],
+                },
+            }
+            loadTitleGoogleFonts = (
+                <WebfontLoader config={titleConfig}>
+                </WebfontLoader>
+            )
+        }
+
+        if (textTypography?.fontFamily !== 'Default') {
+            const textConfig = {
+                google: {
+                    families: [textTypography.fontFamily],
+                },
+            }
+            loadTextGoogleFonts = (
+                <WebfontLoader config={textConfig}>
+                </WebfontLoader>
+            )
+        }
 
         const STYLE = [
             {
@@ -2011,6 +2035,8 @@ class edit extends Component {
                         )}
                     </div>
                 </div>
+                {loadTextGoogleFonts}
+                {loadTitleGoogleFonts}
             </div>,
         ];
     }

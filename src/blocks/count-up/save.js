@@ -40,11 +40,15 @@ const save = props => {
 
     let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
 
-    const mainClasses = classnames(className, 'premium-countup');
+    const mainClasses = classnames(className, 'premium-countup__wrap', {
+        ' premium-desktop-hidden': hideDesktop,
+        ' premium-tablet-hidden': hideTablet,
+        ' premium-mobile-hidden': hideMobile,
+    });
 
     return (
         <div
-            className={`${mainClasses}__wrap ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+            className={`${mainClasses} ${blockId}`}
             style={filterJsCss({
                 flexDirection: flexDir,
                 boxShadow: `${boxShadow?.horizontal}px ${boxShadow?.vertical}px ${boxShadow?.blur}px ${boxShadow?.color} ${boxShadow?.position}`,
@@ -65,10 +69,6 @@ const save = props => {
                             "row" === flexDir || "row-reverse" === flexDir
                                 ? iconSpacing + "px"
                                 : "0",
-                        alignSelf:
-                            "row-reverse" === flexDir || "row" === flexDir
-                                ? "center"
-                                : selfAlign
                     })}
                 >
                     {"icon" === icon && (
@@ -93,12 +93,6 @@ const save = props => {
             )}
             <div
                 className={`premium-countup__info`}
-                style={filterJsCss({
-                    alignSelf:
-                        "row-reverse" === flexDir || "row" === flexDir
-                            ? "center"
-                            : selfAlign,
-                })}
             >
                 <div className={`premium-countup__desc`}>
                     {prefix && (
@@ -106,7 +100,6 @@ const save = props => {
                             className={`premium-countup__prefix`}
                             style={filterJsCss({
                                 color: prefixStyles[0].prefixColor,
-                                marginRight: prefixStyles[0].prefixGap + "px",
                                 fontStyle: prefixTypography?.fontStyle,
                                 fontFamily: prefixTypography?.fontFamily,
                                 fontWeight: prefixTypography?.fontWeight,
@@ -137,7 +130,6 @@ const save = props => {
                             className={`premium-countup__suffix`}
                             style={filterJsCss({
                                 color: suffixStyles[0].suffixColor,
-                                marginLeft: suffixStyles[0].suffixGap + "px",
                                 fontStyle: suffixTypography?.fontStyle,
                                 fontFamily: suffixTypography?.fontFamily,
                                 fontWeight: suffixTypography?.fontWeight,
@@ -153,8 +145,6 @@ const save = props => {
                     <h3
                         className={`premium-countup__title`}
                         style={filterJsCss({
-                            marginTop: titleStyles[0].titleT + "px",
-                            marginBottom: titleStyles[0].titleB + "px",
                             color: titleStyles[0].titleColor,
                             fontStyle: titleTypography?.fontStyle,
                             fontFamily: titleTypography?.fontFamily,
@@ -171,15 +161,12 @@ const save = props => {
                 <h3
                     className={`premium-countup__title`}
                     style={filterJsCss({
-                        marginTop: titleStyles[0].titleT + "px",
-                        marginBottom: titleStyles[0].titleB + "px",
                         color: titleStyles[0].titleColor,
                         fontStyle: titleTypography?.fontStyle,
                         fontFamily: titleTypography?.fontFamily,
                         fontWeight: titleTypography?.fontWeight,
                         textDecoration: titleTypography?.textDecoration,
                         textTransform: titleTypography?.textTransform,
-                        alignSelf: selfAlign
                     })}
                 >
                     {titleTxt}

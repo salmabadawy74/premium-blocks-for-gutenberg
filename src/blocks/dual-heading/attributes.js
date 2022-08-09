@@ -107,10 +107,10 @@ const attributes = {
     secondTypography: {
         type: "object",
         default: {
-            fontWeight: "",
+            fontWeight: "400",
             fontStyle: "",
             textTransform: "",
-            fontFamily: "",
+            fontFamily: "Default",
             textDecoration: "",
             fontSize: {
                 Desktop: "20",

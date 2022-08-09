@@ -619,9 +619,19 @@ const deprecatedContent = [
                     "fontWeight": attributes?.numberStyles[0]?.numberWeight || '',
                     'fontStyle': '',
                     'textTransform': '',
-                    'letterSpacing': '',
                     'fontFamily': attributes?.counterFamily || '',
-                    'lineHeight': '',
+                    lineHeight: {
+                        Desktop: "",
+                        Tablet: "",
+                        Mobile: "",
+                        unit: "px",
+                    },
+                    letterSpacing: {
+                        Desktop: "",
+                        Tablet: "",
+                        Mobile: "",
+                        unit: "px",
+                    },
                     'textDecoration': '',
                     'fontSize': {
                         'Desktop': attributes?.numberStyles[0]?.numberSize || '',
@@ -634,9 +644,19 @@ const deprecatedContent = [
                     "fontWeight": attributes?.prefixStyles[0]?.prefixWeight || '',
                     'fontStyle': '',
                     'textTransform': '',
-                    'letterSpacing': '',
                     'fontFamily': attributes?.prefixStyles[0]?.prefixFamily || '',
-                    'lineHeight': '',
+                    lineHeight: {
+                        Desktop: "",
+                        Tablet: "",
+                        Mobile: "",
+                        unit: "px",
+                    },
+                    letterSpacing: {
+                        Desktop: "",
+                        Tablet: "",
+                        Mobile: "",
+                        unit: "px",
+                    },
                     'textDecoration': '',
                     'fontSize': {
                         'Desktop': attributes?.prefixStyles[0]?.prefixSize || '',
@@ -649,9 +669,19 @@ const deprecatedContent = [
                     "fontWeight": attributes?.suffixStyles[0]?.suffixWeight || '',
                     'fontStyle': '',
                     'textTransform': '',
-                    'letterSpacing': '',
                     'fontFamily': attributes?.suffixStyles[0]?.suffixFamily || '',
-                    'lineHeight': '',
+                    lineHeight: {
+                        Desktop: "",
+                        Tablet: "",
+                        Mobile: "",
+                        unit: "px",
+                    },
+                    letterSpacing: {
+                        Desktop: "",
+                        Tablet: "",
+                        Mobile: "",
+                        unit: "px",
+                    },
                     'textDecoration': '',
                     'fontSize': {
                         'Desktop': attributes?.suffixStyles[0]?.suffixSize || '',
@@ -664,9 +694,19 @@ const deprecatedContent = [
                     "fontWeight": attributes?.titleStyles[0]?.titleWeight || '',
                     'fontStyle': attributes?.titleStyles[0]?.titleStyle || '',
                     'textTransform': attributes?.titleStyles[0]?.titleUpper || '',
-                    'letterSpacing': attributes?.titleStyles[0]?.titleSpacing || '',
                     'fontFamily': attributes?.titleStyles[0]?.titleFamily || '',
-                    'lineHeight': '',
+                    lineHeight: {
+                        Desktop: "",
+                        Tablet: "",
+                        Mobile: "",
+                        unit: "px",
+                    },
+                    letterSpacing: {
+                        Desktop: attributes?.titleStyles[0]?.titleSpacing || '',
+                        Tablet: attributes?.titleStyles[0]?.titleSpacing || '',
+                        Mobile: attributes?.titleStyles[0]?.titleSpacing || '',
+                        unit: "px",
+                    },
                     'textDecoration': '',
                     'fontSize': {
                         'Desktop': attributes?.titleStyles[0]?.titleSize || '',
@@ -741,6 +781,69 @@ const deprecatedContent = [
                     'gradientAngle': attributes?.containerStyles[0]?.gradientAngle || '180',
                     'gradientPosition': attributes?.containerStyles[0]?.gradientPosition || 'center center',
                     'gradientType': attributes?.containerStyles[0]?.gradientType || 'linear'
+                },
+                prefixMargin: {
+                    "Desktop": {
+                        top: attributes.prefixGap || '',
+                        right: attributes.prefixGap || '',
+                        bottom: attributes.prefixGap || '',
+                        left: attributes.prefixGap || ''
+                    },
+                    "Tablet": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Mobile": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "unit": "px"
+                },
+                suffixMargin: {
+                    "Desktop": {
+                        top: attributes.suffixGap || '',
+                        right: attributes.suffixGap || '',
+                        bottom: attributes.suffixGap || '',
+                        left: attributes.suffixGap || ''
+                    },
+                    "Tablet": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Mobile": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "unit": "px"
+                },
+                titleMargin: {
+                    "Desktop": {
+                        top: attributes.suffixGap || '',
+                        right: attributes.suffixGap || '',
+                        bottom: attributes.suffixGap || '',
+                        left: attributes.suffixGap || ''
+                    },
+                    "Tablet": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Mobile": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "unit": "px"
                 },
             }
             return Object.assign(attributes, newAttributes)

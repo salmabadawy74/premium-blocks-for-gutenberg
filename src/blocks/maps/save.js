@@ -1,6 +1,7 @@
-import { generateCss, filterJsCss } from "../../components/HelperFunction";
+import { filterJsCss } from "../../components/HelperFunction";
+import classnames from "classnames";
 
-const className = "premium-maps";
+const className = "premium-maps__wrap";
 
 export default function save(props) {
     const {
@@ -34,8 +35,14 @@ export default function save(props) {
         mapBoxShadow,
     } = props.attributes;
 
+    const mainClasses = classnames(className, {
+        " premium-desktop-hidden": hideDesktop,
+        " premium-tablet-hidden": hideTablet,
+        " premium-mobile-hidden": hideMobile,
+    });
+
     return (
-        <div className={`${className}__wrap ${blockId} ${hideDesktop || ''} ${hideTablet || ''} ${hideMobile || ''}`} style={filterJsCss({
+        <div className={`${mainClasses}`} style={filterJsCss({
             borderStyle: mapBorder?.borderType,
             borderColor: mapBorder?.borderColor,
             boxShadow: `${mapBoxShadow.horizontal}px ${mapBoxShadow.vertical}px ${mapBoxShadow.blur}px ${mapBoxShadow.color} ${mapBoxShadow.position}`,

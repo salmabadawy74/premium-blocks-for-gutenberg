@@ -4566,6 +4566,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_radio_control__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/radio-control */ "../components/radio-control.js");
 /* harmony import */ var _components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/premium-responsive-tabs */ "../components/premium-responsive-tabs.js");
 /* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/HelperFunction */ "../components/HelperFunction.js");
+/* harmony import */ var _components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/typography/fontLoader */ "../components/typography/fontLoader.js");
 
 
 /**
@@ -4585,6 +4586,7 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * Internal dependencies
  */
+
 
 
 
@@ -4654,6 +4656,19 @@ function Edit(_ref) {
     hideTablet,
     hideMobile
   } = attributes;
+  let loadGoogleFonts;
+
+  if ((typography === null || typography === void 0 ? void 0 : typography.fontFamily) !== 'Default') {
+    const fontConfig = {
+      google: {
+        families: [typography.fontFamily]
+      }
+    };
+    loadGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_15__["default"], {
+      config: fontConfig
+    });
+  }
+
   let margin = spacing.margin ? spacing.margin : {};
   let padding = spacing.padding ? spacing.padding : {};
   let itemPadding = spacing.itemPadding ? spacing.itemPadding : {};
@@ -4803,7 +4818,7 @@ function Edit(_ref) {
     onClick: event => event.preventDefault()
   }, categoryName, separator))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-breadcrumbs-item"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, fullTitle || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Post Title'))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_10__["default"], {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, fullTitle || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Post Title')))), loadGoogleFonts && loadGoogleFonts), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_10__["default"], {
     tabs: ['layout', 'style', 'advance']
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_11__["default"], {
     key: 'layout'
@@ -4815,12 +4830,6 @@ function Edit(_ref) {
     checked: enablePrefix,
     onChange: check => setAttributes({
       enablePrefix: check
-    })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.TextControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Breadcrumbs Prefix Text', 'premium-blocks-for-gutenberg'),
-    value: attributes.prefix,
-    onChange: val => setAttributes({
-      prefix: val
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.TextControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Custom Levels Divider', 'premium-blocks-for-gutenberg'),
@@ -12353,6 +12362,123 @@ const FontsList = _ref3 => {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (FontsList);
+
+/***/ }),
+
+/***/ "../components/typography/fontLoader.js":
+/*!**********************************************!*\
+  !*** ../components/typography/fontLoader.js ***!
+  \**********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var webfontloader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! webfontloader */ "../../node_modules/webfontloader/webfontloader.js");
+/* harmony import */ var webfontloader__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(webfontloader__WEBPACK_IMPORTED_MODULE_0__);
+if (googlefonts === undefined) {
+  var googlefonts = [];
+}
+
+const {
+  Component
+} = wp.element;
+
+const statuses = {
+  inactive: "inactive",
+  active: "active",
+  loading: "loading"
+};
+
+const noop = () => {};
+
+class WebfontLoader extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      status: undefined,
+      mounted: false
+    };
+
+    this.handleLoading = () => {
+      this.setState({
+        status: statuses.loading
+      });
+    };
+
+    this.addFont = font => {
+      if (!googlefonts.includes(font)) {
+        googlefonts.push(font);
+      }
+    };
+
+    this.handleActive = () => {
+      this.setState({
+        status: statuses.active
+      });
+    };
+
+    this.handleInactive = () => {
+      this.setState({
+        status: statuses.inactive
+      });
+    };
+
+    this.loadFonts = () => {
+      if (this.state.mounted) {
+        if (!googlefonts.includes(this.props.config.google.families[0])) {
+          webfontloader__WEBPACK_IMPORTED_MODULE_0___default().load({ ...this.props.config,
+            loading: this.handleLoading,
+            active: this.handleActive,
+            inactive: this.handleInactive,
+            context: frames["editor-canvas"]
+          });
+          this.addFont(this.props.config.google.families[0]);
+        }
+      }
+    };
+  }
+
+  componentDidMount() {
+    this.setState({
+      mounted: true
+    });
+    this.loadFonts();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const {
+      onStatus,
+      config
+    } = this.props;
+
+    if (prevState.status !== this.state.status) {
+      onStatus(this.state.status);
+    }
+
+    if (prevProps.config !== config) {
+      this.loadFonts();
+    }
+  }
+
+  componentWillUnmount() {
+    this.setState({
+      mounted: false
+    });
+  }
+
+  render() {
+    const {
+      children
+    } = this.props;
+    return children || null;
+  }
+
+}
+
+WebfontLoader.defaultProps = {
+  onStatus: noop
+};
+/* harmony default export */ __webpack_exports__["default"] = (WebfontLoader);
 
 /***/ }),
 
