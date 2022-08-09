@@ -790,10 +790,20 @@ const deprecatedContent = [
                     "fontWeight": attributes?.firstStyles?.[0]?.firstWeight || '',
                     'fontStyle': attributes?.firstStyles?.[0]?.firstStyle || '',
                     'textTransform': attributes?.firstStyles?.[0]?.firstUpper || '',
-                    'letterSpacing': attributes?.firstStyles?.[0]?.firstLetter || '',
                     'fontFamily': attributes?.firstStyles?.[0]?.firstFamily || '',
-                    'lineHeight': '',
                     'textDecoration': '',
+                    'lineHeight': {
+                        'Desktop': '',
+                        "Tablet": '',
+                        "Mobile": '',
+                        "unit": 'px'
+                    },
+                    'letterSpacing': {
+                        'Desktop': attributes?.firstStyles?.[0]?.firstLetter || '',
+                        "Tablet": attributes?.firstStyles?.[0]?.firstLetter || '',
+                        "Mobile": attributes?.firstStyles?.[0]?.firstLetter || '',
+                        "unit": 'px'
+                    },
                     'fontSize': {
                         'Desktop': attributes?.firstStyles?.[0]?.firstSize || '',
                         "Tablet": attributes?.firstStyles?.[0]?.firstSizeTablet || '',
@@ -805,9 +815,19 @@ const deprecatedContent = [
                     "fontWeight": attributes?.secondStyles?.[0]?.secondWeight || '',
                     'fontStyle': attributes?.secondStyles?.[0]?.secondStyle || '',
                     'textTransform': attributes?.secondStyles?.[0]?.secondUpper || '',
-                    'letterSpacing': attributes?.secondStyles?.[0]?.secondLetter || '',
                     'fontFamily': attributes?.secondStyles?.[0]?.secondFamily || '',
-                    'lineHeight': '',
+                    'lineHeight': {
+                        'Desktop': '',
+                        "Tablet": '',
+                        "Mobile": '',
+                        "unit": 'px'
+                    },
+                    'letterSpacing': {
+                        'Desktop': attributes?.secondStyles?.[0]?.secondLetter || '',
+                        "Tablet": attributes?.secondStyles?.[0]?.secondLetter || '',
+                        "Mobile": attributes?.secondStyles?.[0]?.secondLetter || '',
+                        "unit": 'px'
+                    },
                     'textDecoration': '',
                     'fontSize': {
                         'Desktop': attributes?.secondStyles?.[0]?.secondSize || '20',

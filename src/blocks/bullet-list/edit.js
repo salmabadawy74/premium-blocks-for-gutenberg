@@ -290,6 +290,19 @@ class edit extends Component {
             hideMobile,
         } = attributes
 
+        let loadTitleGoogleFonts;
+
+        if (titleTypography.fontFamily !== "Default") {
+            const fontConfig = {
+                google: {
+                    families: [titleTypography.fontFamily],
+                },
+            }
+            loadTitleGoogleFonts = (
+                <WebfontLoader config={fontConfig}>
+                </WebfontLoader>
+            );
+        }
         const LAYOUT = [
             {
                 label: __("Block", 'premium-blocks-for-gutenberg'),
@@ -591,25 +604,11 @@ class edit extends Component {
             });
         }
 
-        let loadTitleGoogleFonts;
-
-        if (titleStyles[0].titleFontFamily !== "Default") {
-            const titleConfig = {
-                google: {
-                    families: [titleStyles[0].titleFontFamily],
-                },
-            }
-            loadTitleGoogleFonts = (
-                <WebfontLoader config={titleConfig}>
-                </WebfontLoader>
-            )
-        }
-
         const loadStyles = () => {
             const styles = {};
 
             styles[`.${blockId} .premium-bullet-list__content-icon i:hover`] = {
-                'background-color': `${bulletIconStyles?.[0]?.bulletIconHoverColor}!important`,
+                'color': `${bulletIconStyles?.[0]?.bulletIconHoverColor}!important`,
                 'background-color': `${bulletIconStyles?.[0]?.bulletIconHoverBackgroundColor}!important`
             };
             styles[`.${blockId} .premium-bullet-list__label-wrap .premium-bullet-list__label:hover`] = {
@@ -691,30 +690,16 @@ class edit extends Component {
                                     onChange={(align) => setAttributes({ align: align })}
                                     label={__("Align", "premium-blocks-for-gutenberg")}
                                     showIcons={true} />
+
+
                                 <div>
-                                    <label>{__('Bullet Alignment')}</label>
-                                    {iconPosition !== 'top' ? <div className="bullet-list-button-list">
-                                        <Tooltip text={__('Top')}>
-                                            <button
-                                                onClick={() => setAttributes({ bulletAlign: 'flex-start' })}
-                                                className={"bullet-list-button" + (bulletAlign?.[currentDevice] === 'flex-start' ? ' active' : '')}
-                                            >{icons.vertical_top}</button>
-                                        </Tooltip>
-
-                                        <Tooltip text={__('Middle')} >
-                                            <button
-                                                onClick={() => setAttributes({ bulletAlign: 'center' })}
-                                                className={"bullet-list-button" + (bulletAlign?.[currentDevice] === 'center' ? ' active' : '')}
-                                            >{icons.vertical_middle}</button>
-                                        </Tooltip>
-
-                                        <Tooltip text={__('Bottom')} >
-                                            <button
-                                                onClick={() => setAttributes({ bulletAlign: 'flex-end' })}
-                                                className={"bullet-list-button" + (bulletAlign?.[currentDevice] === 'flex-end' ? ' active' : '')}
-                                            >{icons.vertical_bottom}</button>
-                                        </Tooltip>
-                                    </div> :
+                                    {iconPosition !== 'top' ? <MultiButtonsControl
+                                        choices={[{ value: 'flex-start', label: __('Top'), icon: icons.vertical_top }, { value: 'center', label: __('Center'), icon: icons.vertical_middle }, { value: 'flex-end', label: __('Bottom'), icon: icons.vertical_bottom }]}
+                                        value={bulletAlign}
+                                        onChange={(align) => setAttributes({ bulletAlign: align })}
+                                        label={__("Bullet Alignment", "premium-blocks-for-gutenberg")}
+                                        showIcons={true} />
+                                        :
                                         <MultiButtonsControl
                                             choices={[{ value: 'left', label: __('Left'), icon: Icons.alignLeft }, { value: 'center', label: __('Center'), icon: Icons.alignCenter }, { value: 'right', label: __('Right'), icon: Icons.alignRight }]}
                                             value={bulletAlign}
@@ -1082,7 +1067,7 @@ class edit extends Component {
                             />
                         </InspectorTab>
                     </InspectorTabs>
-                </InspectorControls>
+                </InspectorControls >
             ),
             <div className={classnames(className, blockId, {
                 " premium-desktop-hidden": hideDesktop,
@@ -1163,7 +1148,6 @@ class edit extends Component {
                                             justifyContent: align?.[currentDevice] == "right" ? align?.[currentDevice] : align?.[currentDevice],
                                             display: iconPosition == "before" ? "flex" : "inline-flex",
                                             flexDirection: iconPosition == "top" ? align?.[currentDevice] == "right" ? "column" : "column" : iconPosition == "after" ? 'row-reverse' : "",
-                                            ...marginCss(titlemargin, currentDevice),
                                         }}>
                                             {icon.showBulletIcon && <span className={`premium-bullet-list__icon-wrap`}
                                                 style={{
@@ -1181,6 +1165,7 @@ class edit extends Component {
                                                     fontSize: `${TitleSize}${titleTypography?.fontSize.unit}`,
                                                     fontFamily: titleTypography?.fontFamily,
                                                     fontWeight: titleTypography?.fontWeight,
+                                                    ...marginCss(titlemargin, currentDevice),
                                                 }}
                                             >
                                                 <RichText
@@ -1192,7 +1177,7 @@ class edit extends Component {
                                                     multiline={false}
                                                     style={{
                                                         color: titleStyles[0].titleColor,
-                                                        textShadow: `${titlesTextShadow.titleshadowHorizontal}px ${titlesTextShadow.titleshadowVertical}px ${titlesTextShadow.titleshadowBlur}px ${titlesTextShadow.titleshadowColor}`,
+                                                        textShadow: `${titlesTextShadow.horizontal}px ${titlesTextShadow.vertical}px ${titlesTextShadow.blur}px ${titlesTextShadow.color}`,
                                                         ...typographyCss(titleTypography, currentDevice)
                                                     }}
                                                 />

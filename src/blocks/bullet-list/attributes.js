@@ -95,16 +95,6 @@ const attributes = {
     titleStyles: {
         type: "array",
         default: [{
-            titleLetter: 0,
-            titleStyle: '',
-            titleUpper: false,
-            titleWeight: 500,
-            titleLine: 0,
-            titleSize: 20,
-            titlefontSizeType: "px",
-            titlefontSizeMobile: 20,
-            titlefontSizeTablet: 20,
-            titleFontFamily: __('Default', 'premium-blocks-for-gutenberg'),
             titleColor: "#6EC1E4",
             titleHoverColor: "",
             titlemarginType: 'px'
@@ -279,7 +269,7 @@ const attributes = {
     generalBorder: {
         type: "object",
         default: {
-            "borderType": "",
+            "borderType": "none",
             "borderColor": "",
             "borderWidth": {
                 Desktop: {
@@ -326,7 +316,7 @@ const attributes = {
     bulletIconBorder: {
         type: "object",
         default: {
-            "borderType": "",
+            "borderType": "none",
             "borderColor": "",
             "borderWidth": {
                 Desktop: {
@@ -402,29 +392,29 @@ const attributes = {
     titlesTextShadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
+            color: "undefined",
+            blur: "10",
+            horizontal: "0",
+            vertical: "0",
         }
     },
     boxShadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
+            color: "undefined",
+            blur: "10",
+            horizontal: "0",
+            vertical: "0",
             'position': ' '
         }
     },
     hoverBoxShadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
+            color: "undefined",
+            blur: "10",
+            horizontal: "0",
+            vertical: "0",
             'position': ' '
         }
     },

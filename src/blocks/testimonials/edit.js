@@ -17,12 +17,13 @@ import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import SpacingComponent from "../../components/premium-responsive-spacing";
 import { generateBlockId, gradientBackground, typographyCss, paddingCss, marginCss, borderCss } from '../../components/HelperFunction';
+import WebfontLoader from "../../components/typography/fontLoader";
 
 const { __ } = wp.i18n;
 
-const { PanelBody, SelectControl, TextControl, ToggleControl } = wp.components;
+const { PanelBody, TextControl, ToggleControl } = wp.components;
 
-const { BlockControls, InspectorControls, AlignmentToolbar, RichText } = wp.blockEditor;
+const { InspectorControls, RichText } = wp.blockEditor;
 
 const { Component } = wp.element;
 const { withSelect } = wp.data
@@ -66,6 +67,45 @@ class edit extends Component {
             bodyTypography,
             companyTypography,
         } = this.props.attributes;
+
+        let loadAuthorGoogleFonts;
+        let loadBodyGoogleFonts;
+        let loadCompanyGoogleFonts;
+        if (authorTypography?.fontFamily !== 'Default') {
+            const authorConfig = {
+                google: {
+                    families: [authorTypography.fontFamily],
+                },
+            }
+            loadAuthorGoogleFonts = (
+                <WebfontLoader config={authorConfig}>
+                </WebfontLoader>
+            )
+        }
+
+        if (bodyTypography?.fontFamily !== 'Default') {
+            const bodyConfig = {
+                google: {
+                    families: [bodyTypography.fontFamily],
+                },
+            }
+            loadBodyGoogleFonts = (
+                <WebfontLoader config={bodyConfig}>
+                </WebfontLoader>
+            )
+        }
+
+        if (companyTypography?.fontFamily !== 'Default') {
+            const companyConfig = {
+                google: {
+                    families: [companyTypography.fontFamily],
+                },
+            }
+            loadCompanyGoogleFonts = (
+                <WebfontLoader config={companyConfig}>
+                </WebfontLoader>
+            )
+        }
 
         const saveAuthorStyle = (value) => {
             const newUpdate = authorStyles.map((item, index) => {
@@ -426,6 +466,9 @@ class edit extends Component {
                         />
                     </span>
                 </div>
+                {loadAuthorGoogleFonts}
+                {loadBodyGoogleFonts}
+                {loadCompanyGoogleFonts}
             </div>
         ];
     }
