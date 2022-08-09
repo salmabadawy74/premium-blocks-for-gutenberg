@@ -3985,7 +3985,7 @@ class PBG_Blocks_Helper {
 		// Icon Style.
 		if ( isset( $attr['iconSize'] ) ) {
 			$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . '>i' );
-			$css->add_property( 'font-size', ( ( isset( $attr['iconSize']['Desktop'] ) ? $attr['iconSize']['Desktop'] : '200' ) . ( isset( $attr['iconSize']['unit'] ) ? $attr['iconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'font-size', $css->render_range( $attr['iconSize'],'Desktop' ) );
 		}
 
 		if ( isset( $attr['iconPadding'] ) ) {
@@ -4001,12 +4001,12 @@ class PBG_Blocks_Helper {
 		// Image style
 		if ( isset( $attr['iconSize'] ) ) {
 			$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . ' > img' );
-			$css->add_property( 'width', ( ( isset( $attr['iconSize']['Desktop'] ) ? $attr['iconSize']['Desktop'] : '200' ) . ( isset( $attr['iconSize']['unit'] ) ? $attr['iconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'width',  $css->render_range( $attr['iconSize'],'Desktop' ) );
 		}
 
 		if ( isset( $attr['imgHeight'] ) ) {
 			$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . ' > img' );
-			$css->add_property( 'height', ( ( isset( $attr['imgHeight']['Desktop'] ) ? $attr['imgHeight']['Desktop'] : '200' ) . ( isset( $attr['imgHeight']['unit'] ) ? $attr['imgHeight']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'height', $css->render_range( $attr['iconSize'],'Desktop' ) );
 		}
 
 		if ( isset( $attr['iconBorder'] ) && ( $attr['iconStyles'][0]['advancedBorder'] == false ) ) {
@@ -4040,7 +4040,7 @@ class PBG_Blocks_Helper {
 		// Icon Style.
 		if ( isset( $attr['iconSize'] ) ) {
 			$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . '>i' );
-			$css->add_property( 'font-size', ( ( isset( $attr['iconSize']['Tablet'] ) ? $attr['iconSize']['Tablet'] : '200' ) . ( isset( $attr['iconSize']['unit'] ) ? $attr['iconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'font-size', $css->render_range( $attr['iconSize'],'Tablet' ) );
 		}
 
 		if ( isset( $attr['iconPadding'] ) ) {
@@ -4057,12 +4057,12 @@ class PBG_Blocks_Helper {
 		// Image style
 		if ( isset( $attr['iconSize']['Tablet'] ) ) {
 			$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . ' > img' );
-			$css->add_property( 'width', ( ( isset( $attr['iconSize']['Tablet'] ) ? $attr['iconSize']['Tablet'] : '200' ) . ( isset( $attr['iconSize']['unit'] ) ? $attr['iconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'width',$css->render_range( $attr['iconSize'],'Tablet' ) );
 		}
 
 		if ( isset( $attr['imgHeight']['Tablet'] ) ) {
 			$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . ' > img' );
-			$css->add_property( 'height', ( ( isset( $attr['imgHeight']['Tablet'] ) ? $attr['imgHeight']['Tablet'] : '200' ) . ( isset( $attr['imgHeight']['unit'] ) ? $attr['imgHeight']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'height', $css->render_range( $attr['iconSize'],'Tablet' ) );
 		}
 
 		if ( isset( $attr['iconBorder'] ) && ( $attr['iconStyles'][0]['advancedBorder'] == false ) ) {
@@ -4088,7 +4088,7 @@ class PBG_Blocks_Helper {
 		// Icon Style.
 		if ( isset( $attr['iconSize'] ) ) {
 			$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . '>i' );
-			$css->add_property( 'font-size', ( ( isset( $attr['iconSize']['Mobile'] ) ? $attr['iconSize']['Mobile'] : '200' ) . ( isset( $attr['iconSize']['unit'] ) ? $attr['iconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'font-size',$css->render_range( $attr['iconSize'],'Mobile' ) );
 		}
 
 		if ( isset( $attr['iconPadding'] ) ) {
@@ -4105,17 +4105,12 @@ class PBG_Blocks_Helper {
 		// Image style
 		if ( isset( $attr['iconSize'] ) ) {
 			$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . ' > img' );
-			$css->add_property( 'width', ( ( isset( $attr['iconSize']['Mobile'] ) ? $attr['iconSize']['Mobile'] : '200' ) . ( isset( $attr['iconSize']['unit'] ) ? $attr['iconSize']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'width', $css->render_range( $attr['iconSize'],'Mobile' ));
 		}
 
 		if ( isset( $attr['imgHeight'] ) ) {
 			$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . ' > img' );
-			$css->add_property( 'height', ( ( isset( $attr['imgHeight']['Mobile'] ) ? $attr['imgHeight']['Mobile'] : '200' ) . ( isset( $attr['imgHeight']['unit'] ) ? $attr['imgHeight']['unit'] : 'px' ) . '!important' ) );
-		}
-
-		if ( isset( $attr['imgHeight'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . ' > img' );
-			$css->add_property( 'height', ( ( isset( $attr['imgHeight']['Mobile'] ) ? $attr['imgHeight']['Mobile'] : '200' ) . ( isset( $attr['imgHeight']['unit'] ) ? $attr['imgHeight']['unit'] : 'px' ) . '!important' ) );
+			$css->add_property( 'height', $css->render_range( $attr['iconSize'],'Mobile' ) );
 		}
 
 		if ( isset( $attr['iconBorder'] ) && ( $attr['iconStyles'][0]['advancedBorder'] == false ) ) {
