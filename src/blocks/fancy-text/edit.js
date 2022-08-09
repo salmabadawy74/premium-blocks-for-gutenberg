@@ -85,31 +85,13 @@ class Edit extends Component {
     }
 
     componentDidMount() {
-        const { setAttributes, attributes, clientId } = this.props;
-
-        if (!attributes.classMigrate) {
-            setAttributes({
-                repeaterFancyText: [
-                    {
-                        title: __("Designer", 'premium-blocks-for-gutenberg'),
-                        edit: false
-                    },
-                    {
-                        title: __("Awesome", 'premium-blocks-for-gutenebrg'),
-                        edit: false
-                    },
-                    {
-                        title: __("Developer", 'premium-blocks-for-gutenberg'),
-                        edit: false
-                    }
-                ]
-            });
-        }
+        const { setAttributes, clientId } = this.props;
         // Assigning id in the attribute.
         setAttributes({
             blockId: "premium-fancy-text-" + generateBlockId(clientId),
         });
         setAttributes({ classMigrate: true });
+        this.renderFancyText();
     }
 
     componentDidUpdate() {
@@ -634,6 +616,7 @@ class Edit extends Component {
                             className={`premium-fancy-text-title premium-fancy-text-title-type`}
                             ref={(el) => {
                                 this.el = el;
+                                console.log("🚀 ~ file: edit.js ~ line 619 ~ Edit ~ render ~ el", el)
                             }}
                             style={{
                                 ...typographyCss(fancyTextTypography, this.props.deviceType),

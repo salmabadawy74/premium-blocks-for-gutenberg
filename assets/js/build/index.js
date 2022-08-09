@@ -23480,25 +23480,8 @@ class Edit extends Component {
   componentDidMount() {
     const {
       setAttributes,
-      attributes,
       clientId
-    } = this.props;
-
-    if (!attributes.classMigrate) {
-      setAttributes({
-        repeaterFancyText: [{
-          title: __("Designer", 'premium-blocks-for-gutenberg'),
-          edit: false
-        }, {
-          title: __("Awesome", 'premium-blocks-for-gutenebrg'),
-          edit: false
-        }, {
-          title: __("Developer", 'premium-blocks-for-gutenberg'),
-          edit: false
-        }]
-      });
-    } // Assigning id in the attribute.
-
+    } = this.props; // Assigning id in the attribute.
 
     setAttributes({
       blockId: "premium-fancy-text-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_13__.generateBlockId)(clientId)
@@ -23506,6 +23489,7 @@ class Edit extends Component {
     setAttributes({
       classMigrate: true
     });
+    this.renderFancyText();
   }
 
   componentDidUpdate() {
@@ -24020,6 +24004,7 @@ class Edit extends Component {
       className: `premium-fancy-text-title premium-fancy-text-title-type`,
       ref: el => {
         this.el = el;
+        console.log("🚀 ~ file: edit.js ~ line 619 ~ Edit ~ render ~ el", el);
       },
       style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_13__.typographyCss)(fancyTextTypography, this.props.deviceType),
         textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`
@@ -24198,12 +24183,12 @@ function save(props) {
       __html: loadStyles()
     }
   }), effect === "typing" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    id: `premium-fancy-text-${blockId}`,
     className: `premium-fancy-text`,
     "data-effect": `${effect}`,
-    "data-strings": `${repeaterFancyText.map(item => {
+    "data-strings": `${repeaterFancyText.map((item, index) => {
       return item.title;
     })}`,
-    id: `premium-fancy-text-${blockId}`,
     "data-typespeed": `${typeSpeed}`,
     "data-backspeed": `${backSpeed}`,
     "data-startdelay": `${startdelay}`,
@@ -24252,7 +24237,7 @@ function save(props) {
     id: `premium-fancy-text-${blockId}`,
     className: `premium-fancy-text premium-fancy-slide`,
     "data-effect": `${effect}`,
-    "data-strings": `${repeaterFancyText.map(item => {
+    "data-strings": `${repeaterFancyText.map((item, index) => {
       return item.title;
     })}`,
     "data-animationspeed": `${animationSpeed}`,
@@ -24271,8 +24256,7 @@ function save(props) {
     })
   }, prefix, " "), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-fancy-text-title premium-fancy-text-title-slide`,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
-      overflow: 'visible !important',
+    style: {
       color: fancyStyles[0].fancyTextColor,
       backgroundColor: `${fancyStyles[0].fancyTextBGColor}`,
       fontStyle: fancyTextTypography.fontStyle,
@@ -24281,10 +24265,10 @@ function save(props) {
       textDecoration: fancyTextTypography.textDecoration,
       textTransform: fancyTextTypography.textTransform,
       textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`
-    })
+    }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
     className: `premium-fancy-text-title-slide-list`
-  }, repeaterFancyText.map(item => {
+  }, repeaterFancyText.map((item, index) => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, item.title);
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: `premium-fancy-text-suffix-prefix premium-fancy-text-suffix-text`,

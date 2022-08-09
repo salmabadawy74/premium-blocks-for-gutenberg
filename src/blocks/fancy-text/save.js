@@ -64,14 +64,14 @@ export default function save(props) {
 
             {effect === "typing" ? (
                 <div
+                    id={`premium-fancy-text-${blockId}`}
                     className={`premium-fancy-text`}
                     data-effect={`${effect}`}
                     data-strings={`${repeaterFancyText.map(
-                        (item) => {
+                        (item, index) => {
                             return item.title;
                         }
                     )}`}
-                    id={`premium-fancy-text-${blockId}`}
                     data-typespeed={`${typeSpeed}`}
                     data-backspeed={`${backSpeed}`}
                     data-startdelay={`${startdelay}`}
@@ -133,7 +133,7 @@ export default function save(props) {
                     className={`premium-fancy-text premium-fancy-slide`}
                     data-effect={`${effect}`}
                     data-strings={`${repeaterFancyText.map(
-                        (item) => {
+                        (item, index) => {
                             return item.title;
                         }
                     )}`}
@@ -156,8 +156,7 @@ export default function save(props) {
                     </span>
                     <div
                         className={`premium-fancy-text-title premium-fancy-text-title-slide`}
-                        style={filterJsCss({
-                            overflow: 'visible !important',
+                        style={{
                             color: fancyStyles[0].fancyTextColor,
                             backgroundColor: `${fancyStyles[0].fancyTextBGColor}`,
                             fontStyle: fancyTextTypography.fontStyle,
@@ -167,12 +166,12 @@ export default function save(props) {
                             textTransform: fancyTextTypography.textTransform,
                             textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`,
 
-                        })}
+                        }}
                     >
                         <ul
                             className={`premium-fancy-text-title-slide-list`}
                         >
-                            {repeaterFancyText.map((item) => {
+                            {repeaterFancyText.map((item, index) => {
                                 return <li>{item.title}</li>;
                             })}
                         </ul>
