@@ -1,7 +1,7 @@
 :root {
     --pbBacgroundColor: rgb(242, 242, 242);
     --pbBorderColor: #e1e1e1;
-    --pbiconHoverColor:#696969:
+    --pbiconHoverColor: #696969:
 }
 
 
@@ -99,17 +99,18 @@ a.premium-dheading-block__link:hover {
 
 /**************** Premium Banner ***********************/
 /*******************************************************/
-.premium-banner__bg-overlay{
+.premium-banner__bg-overlay {
     position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        -webkit-transition: all .4s;
-        -o-transition: all .4s;
-        transition: all .4s;
-        z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-transition: all .4s;
+    -o-transition: all .4s;
+    transition: all .4s;
+    z-index: 2;
 }
+
 .premium-banner .premium-banner__img,
 .premium-banner .premium-banner__inner {
     display: block;
@@ -159,9 +160,11 @@ a.premium-dheading-block__link:hover {
     text-align: left;
 
 }
+
 .premium-banner .premium-banner__desc_wrap {
     text-align: left;
 }
+
 .premium-banner .premium-banner__inner .premium-banner__content {
     z-index: 3;
     padding: 15px;
@@ -862,9 +865,10 @@ a.premium-dheading-block__link:hover {
     padding: 20px;
 }
 
-.premium-pricing-table .premium-pricing-table__button_link{
+.premium-pricing-table .premium-pricing-table__button_link {
     padding: 10px;
 }
+
 /**
 * Price
 */
@@ -1002,11 +1006,11 @@ a.premium-dheading-block__link:hover {
     text-align: center;
 }
 
-.premium-testimonial__img_wrap{
+.premium-testimonial__img_wrap {
     overflow: hidden;
 }
 
-.premium-testimonial__img_wrap .premium-testimonial__img{
+.premium-testimonial__img_wrap .premium-testimonial__img {
     max-width: 100%;
 }
 
@@ -1107,7 +1111,8 @@ a.premium-dheading-block__link:hover {
 .premium-icon-container {
     text-align: center;
 }
-.premium-icon__container .premium-icon.dashicons{
+
+.premium-icon__container .premium-icon.dashicons {
     font-size: 50px;
 }
 
@@ -1682,7 +1687,7 @@ a.premium-dheading-block__link:hover {
     justify-content: space-between;
 }
 
-.premium-accordion__title_wrap{
+.premium-accordion__title_wrap {
     border: 1px solid var(--pbBorderColor);
 }
 
@@ -1778,24 +1783,24 @@ a.premium-dheading-block__link:hover {
     transition: all 0.3s ease-in-out;
 }
 
-.premium-icon-box__title{
+.premium-icon-box__title {
     font-size: 32px;
     font-weight: bold;
 }
 
-.premium-icon-box__desc{
+.premium-icon-box__desc {
     font-size: 16px;
 }
 
-.premium-icon-box__title_wrap{
+.premium-icon-box__title_wrap {
     margin: 1em 0;
 }
 
-.premium-icon-box__btn_wrap{
+.premium-icon-box__btn_wrap {
     margin: 1em 0;
 }
 
-.premium-icon-box__btn_wrap a{
+.premium-icon-box__btn_wrap a {
     padding: 10px 20px;
     background-color: var(--pbBacgroundColor);
 }
@@ -2008,7 +2013,6 @@ a.premium-dheading-block__link:hover {
 */
 /**************** Premium Fancy Text *****************/
 /*******************************************************/
-
 .typed-cursor {
     opacity: 1;
     -webkit-animation: blink_cursor 0.7s infinite;
@@ -2062,7 +2066,8 @@ a.premium-dheading-block__link:hover {
 
 .premium-fancy-text-title-slide-list {
     list-style: none !important;
-    margin: 0px 5px;;
+    margin: 0px 5px;
+    position: relative !important;
 }
 
 .premium-fancy-slide .typed-cursor {
@@ -2083,14 +2088,17 @@ a.premium-dheading-block__link:hover {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
+
 .premium-lottie-wrap .premium-lottie-animation svg,
-.premium-lottie-wrap .premium-lottie-animation.premium-lottie-canvas{
+.premium-lottie-wrap .premium-lottie-animation.premium-lottie-canvas {
     width: 200px;
     height: 200px;
 }
-.premium-lottie-wrap{
+
+.premium-lottie-wrap {
     text-align: center;
 }
+
 .premium-lottie-wrap .premium-lottie-animation .premium-lottie-inner {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
@@ -2148,7 +2156,7 @@ a.premium-dheading-block__link:hover {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     font-style: normal !important;
-    font-size:200px;
+    font-size: 200px;
 }
 
 .premium-image-separator-container img {
@@ -2284,7 +2292,7 @@ a.premium-dheading-block__link:hover {
     margin-right: auto;
     width: 200px;
     height: 200px;
-    border-radius: 100%;
+    border-radius: 0%;
     -o-object-fit: cover;
     object-fit: cover;
     -webkit-transition: all 0.5s ease-in-out;
@@ -3438,6 +3446,10 @@ a.premium-dheading-block__link:hover {
 }
 
 /**************** Premium Modal Box ****************/
+
+.premium-modal-trigger-container {
+    text-align: center;
+}
 
 .premium-modal-trigger-btn,
 .premium-modal-box-modal-lower-close {

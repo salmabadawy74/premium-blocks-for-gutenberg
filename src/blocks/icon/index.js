@@ -11,7 +11,7 @@ const { registerBlockType } = wp.blocks;
 
 
 registerBlockType("premium/icon", {
-    title: __("Icon"),
+    title: __("Icon", "premium-blocks-for-gutenberg"),
     description: __('Decorate your Gutenberg website using Premium Icon Block.', 'premium-block-for-gutenberg'),
     icon: PBG_Block_Icons.icon,
     category: "premium-blocks",

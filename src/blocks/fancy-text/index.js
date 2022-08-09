@@ -9,12 +9,10 @@ const { __ } = wp.i18n;
 
 const { registerBlockType } = wp.blocks;
 
-
-
 registerBlockType("premium/fancy-text", {
-    title: __("Fancy Text"),
-    description: __('Insert animated headlines across your Gutenberg page using Premium Fancy Text Block.'),
-    keywords: ["fancy-text", "animated-text", "animated"],
+    title: __("Fancy Text", 'premium-blocks-for-gutenberg'),
+    description: __('Insert animated headlines across your Gutenberg page using Premium Fancy Text Block.', 'premium-blocks-for-gutenberg'),
+    keywords: [__("fancy-text", 'premium-blocks-for-gutenberg'), __("animated-text", 'premium-blocks-for-gutenberg'), __("animated", 'premium-blocks-for-gutenberg')],
     icon: PBG_Block_Icons.fancyText,
     category: "premium-blocks",
     attributes: attributes,

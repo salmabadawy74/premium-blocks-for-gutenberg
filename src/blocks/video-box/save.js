@@ -55,7 +55,7 @@ const save = props => {
         }
     };
 
-    const renderCss = () => {
+    const loadStyles = () => {
         const styles = {};
         styles[` .${blockId} .premium-video-box__play:hover`] = {
             'color': `${playStyles[0].playHoverColor} !important`,
@@ -68,7 +68,7 @@ const save = props => {
         videoURL && (
             <div
                 className={classnames(className,
-                    "premium-video-box", `video-overlay-${overlay} ${blockId} premium-aspect-ratio-${ratioValue}`, {
+                    "premium-video-box", `${blockId} video-overlay-${overlay} premium-aspect-ratio-${ratioValue}`, {
                     ' premium-desktop-hidden': hideDesktop,
                     ' premium-tablet-hidden': hideTablet,
                     ' premium-mobile-hidden': hideMobile,
@@ -83,7 +83,7 @@ const save = props => {
             >
                 <style
                     dangerouslySetInnerHTML={{
-                        __html: renderCss()
+                        __html: loadStyles()
                     }}
                 />
                 <div className={`premium-video-box__container`}>

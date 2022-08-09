@@ -67,6 +67,8 @@ const attributes = {
         type: "object",
         default: {
             Desktop: '50',
+            'Tablet': '50',
+            'Mobile': '50',
             unit: 'px'
         }
     },
@@ -271,12 +273,12 @@ const attributes = {
             'backgroundRepeat': '',
             'backgroundSize': '',
             'fixed': false,
-            'gradientLocationOne': "",
+            'gradientLocationOne': "0",
             'gradientColorTwo': '',
-            'gradientLocationTwo': '',
-            'gradientAngle': '',
-            'gradientPosition': '',
-            'gradientType': ''
+            "gradientLocationTwo": "100",
+            "gradientAngle": "180",
+            "gradientPosition": "center center",
+            "gradientType": "linear"
         }
     },
     containerShadow: {

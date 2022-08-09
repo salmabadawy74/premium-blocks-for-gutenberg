@@ -1,12 +1,11 @@
 import classnames from "classnames"
-import { filterJsCss } from '../../components/HelperFunction';
+import { filterJsCss, generateCss } from '../../components/HelperFunction';
 
 export default function save(props) {
     const { attributes, className } = props
 
     const {
         blockId,
-        contentAlign,
         prefix,
         suffix,
         repeaterFancyText,
@@ -21,7 +20,6 @@ export default function save(props) {
         animationSpeed,
         pauseTime,
         hoverPause,
-        fancyalign,
         hideDesktop,
         hideTablet,
         hideMobile,
@@ -31,26 +29,43 @@ export default function save(props) {
         fancyTextTypography,
         fancyTextShadow
     } = attributes;
-    const mainClasses = classnames(className, "");
-    const renderCss = (
-        <style>
-            {`
-                .${blockId} .typed-cursor {
-                    color: ${fancyStyles[0].cursorColor};
-                }
-            `}
-        </style>
-    );
+
+    const mainClasses = classnames(className, {
+        ' premium-desktop-hidden': hideDesktop,
+        ' premium-tablet-hidden': hideTablet,
+        ' premium-mobile-hidden': hideMobile,
+    });
+
+    const loadStyles = () => {
+        const styles = {};
+        styles[` .${blockId} .premium-fancy-text-title`] = {
+            'color': `${fancyStyles[0].fancyTextColor} !important`,
+            'background-color': `${fancyStyles[0].fancyTextBGColor} !important`
+        };
+        styles[` .${blockId} .typed-cursor`] = {
+            'color': `${fancyStyles[0].cursorColor} !important`
+        };
+        styles[` .${blockId} .premium-fancy-text-suffix-prefix`] = {
+            'color': `${PreStyles[0].textColor} !important`,
+            'background-color': `${PreStyles[0].textBGColor} !important`
+        };
+        return generateCss(styles);
+    }
+
     return (
         <div
-        className={`${mainClasses} ${blockId} ${hideDesktop} ${hideTablet} ${hideMobile}`}
+            className={`${mainClasses} ${blockId}`}
         >
-            {renderCss}
+            <style
+                dangerouslySetInnerHTML={{
+                    __html: loadStyles()
+                }}
+            />
 
             {effect === "typing" ? (
                 <div
-                id={`premium-fancy-text-${blockId}`}
-                className={`premium-fancy-text`}
+                    id={`premium-fancy-text-${blockId}`}
+                    className={`premium-fancy-text`}
                     data-effect={`${effect}`}
                     data-strings={`${repeaterFancyText.map(
                         (item, index) => {

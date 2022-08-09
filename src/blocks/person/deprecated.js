@@ -568,12 +568,12 @@ const deprecated = [
                     },
                 },
                 imgHeight: {
-                    unit: 'px',
-                    "Desktop": 200
+                    unit: '%',
+                    "Desktop": 100
                 },
                 imgWidth: {
-                    unit: 'px',
-                    "Desktop": 200
+                    unit: '%',
+                    "Desktop": 100
                 },
                 socialIcon: false,
                 hideDesktop: '',
@@ -588,7 +588,13 @@ const deprecated = [
                 },
                 nameColor: attributes.nameStyles[0].nameColor,
                 titleColor: attributes.titleStyles[0].titleColor,
-                descColor: attributes.descStyles[0].descColor
+                descColor: attributes.descStyles[0].descColor,
+                imageBorder: {
+                    unit: 'px',
+                    "Desktop": 0,
+                    "Tablet": 0,
+                    "Mobile": 0
+                },
             }
             return Object.assign(attributes, newAttributes)
         },
