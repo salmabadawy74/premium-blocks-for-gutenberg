@@ -12,7 +12,7 @@ import InspectorTabs from "../../components/inspectorTabs";
 import InspectorTab from "../../components/inspectorTab";
 import MultiButtonsControl from "../../components/responsive-radio";
 import Icons from "../../components/icons";
-import GoogleFontLoader from "react-google-font-loader";
+import WebfontLoader from "../../components/typography/fontLoader";
 
 import {
     borderCss,
@@ -229,25 +229,23 @@ export class edit extends Component {
         let loadDesciptionGoogleFonts;
 
         if (titleTypography.fontFamily !== "Default") {
+            const gconfig = {
+                google: {
+                    families: [titleTypography?.fontFamily],
+                },
+            };
             loadTitleGoogleFonts = (
-                <GoogleFontLoader
-                    fonts={[
-                        {
-                            font: titleTypography?.fontFamily,
-                        },
-                    ]}
-                />
+                <WebfontLoader config={gconfig}></WebfontLoader>
             );
         }
         if (descTypography.fontFamily !== "Default") {
+            const dconfig = {
+                google: {
+                    families: [descTypography.fontFamily],
+                },
+            };
             loadDesciptionGoogleFonts = (
-                <GoogleFontLoader
-                    fonts={[
-                        {
-                            font: descTypography.fontFamily,
-                        },
-                    ]}
-                />
+                <WebfontLoader config={dconfig}></WebfontLoader>
             );
         }
         return [
