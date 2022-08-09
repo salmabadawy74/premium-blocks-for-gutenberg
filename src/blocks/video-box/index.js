@@ -45,12 +45,12 @@ const onChangeVideoURL = (type, URL) => {
 export default onChangeVideoURL;
 
 registerBlockType("premium/video-box", {
-    title: __("Video Box"),
+    title: __("Video Box", 'premium-block-for-gutenberg'),
     description: __('Embed YouTube, Vimeo, Dailymotion, or upload a Custom Video using Premium Video Box Block.', 'premium-block-for-gutenberg'),
     icon: PBG_Block_Icons.video_box,
     category: "premium-blocks",
     attributes: videoBoxAttrs,
-    keywords: [__("video")],
+    keywords: [__("video", 'premium-blocks-for-gutenberg')],
     supports: {
         inserter: videoBox
     },

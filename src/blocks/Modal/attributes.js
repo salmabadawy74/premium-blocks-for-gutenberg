@@ -1,7 +1,7 @@
 const { __ } = wp.i18n;
 
 const attributes = {
-    block_id: {
+    blockId: {
         type: 'string'
     },
     contentStyles: {
@@ -16,10 +16,6 @@ const attributes = {
                 lottieURL: '',
                 loopLottie: true,
                 reverseLottie: false,
-                iconSize: '',
-                iconSizeTablet: '',
-                iconSizeMobile: '',
-                iconSizeUnit: 'px',
                 titleText: __('Modal Box Title', 'premium-blocks-for-gutenberg'),
                 showUpperClose: true,
                 showLowerClose: true,
@@ -38,7 +34,6 @@ const attributes = {
                 showIcon: false,
                 icon: '',
                 iconPosition: 'before',
-                iconSize: '50',
                 iconSpacing: '',
                 btnSize: 'md',
                 triggerImgID: '',
@@ -48,10 +43,6 @@ const attributes = {
                 triggerLoopLottie: true,
                 triggerReverseLottie: false,
                 triggerPlayLottie: false,
-                imageWidth: '',
-                imageWidthTablet: '',
-                imageWidthMobile: '',
-                align: 'center',
                 delayTime: 1
             }
         ]
@@ -65,17 +56,7 @@ const attributes = {
                 iconColor: '',
                 iconHoverColor: '',
                 triggerBack: '',
-                triggerHoverBack: '',
-                blur: '',
-                bright: '',
-                contrast: '',
-                saturation: '',
-                hue: '',
-                blurH: '',
-                brightH: '',
-                contrastH: '',
-                saturationH: '',
-                hueH: ''
+                triggerHoverBack: ''
             }
         ]
     },
@@ -84,16 +65,13 @@ const attributes = {
         default: [
             {
                 color: '',
-                backColor: '',
-                headerSizeUnit: 'px',
+                backColor: ''
             }
         ]
     },
     upperStyles: {
         type: "array",
         default: [{
-            iconWidth: '',
-            iconWidthUnit: 'px',
             color: '',
             backColor: '',
 
@@ -103,8 +81,6 @@ const attributes = {
         type: 'array',
         default: [
             {
-                iconWidth: '',
-                iconWidthUnit: 'px',
                 color: '',
                 backColor: '',
             }
@@ -118,14 +94,6 @@ const attributes = {
                 contentText: __('Modal Box Content', 'premium-blocks-for-gutenberg'),
                 textColor: '',
                 textBackColor: '',
-                modalWidth: '',
-                modalWidthTablet: '',
-                modalWidthMobile: '',
-                modalWidthUnit: 'px',
-                modalHeight: '',
-                modalHeightTablet: '',
-                modalHeightMobile: '',
-                modalHeightUnit: 'px',
                 footerBackColor: '',
             }
         ]
@@ -141,45 +109,42 @@ const attributes = {
             'backgroundRepeat': '',
             'backgroundSize': '',
             'fixed': false,
-            'gradientLocationOne': "",
+            'gradientLocationOne': "0",
             'gradientColorTwo': '',
-            'gradientLocationTwo': '',
-            'gradientAngle': '',
-            'gradientPosition': '',
-            'gradientType': ''
+            'gradientLocationTwo': '100',
+            'gradientAngle': '180',
+            "gradientPosition": "center center",
+            "gradientType": "linear"
         }
     },
     modalShadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
+            'color': 'undefined',
+            'blur': '10',
+            'horizontal': '0',
+            'vertical': '0',
             'position': ' '
         }
     },
     triggerShadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
+            'color': 'undefined',
+            'blur': '10',
+            'horizontal': '0',
+            'vertical': '0',
             'position': ' '
         }
     },
     triggerTextShadow: {
         type: "object",
         default: {
-            'color': '',
-            'blur': '',
-            'horizontal': '',
-            'vertical': '',
+            'color': 'undefined',
+            'blur': '10',
+            'horizontal': '0',
+            'vertical': '0'
         }
-    },
-    backgroundType: {
-        type: "string"
     },
     triggerPadding: {
         type: "object",
@@ -304,7 +269,7 @@ const attributes = {
     triggerBorder: {
         type: "object",
         default: {
-            "borderType": "",
+            borderType: "none",
             "borderColor": "",
             "borderWidth": {
                 Desktop: {
@@ -351,7 +316,7 @@ const attributes = {
     triggerBorderH: {
         type: "object",
         default: {
-            "borderType": "",
+            borderType: "none",
             "borderColor": "",
             "borderWidth": {
                 Desktop: {
@@ -398,7 +363,7 @@ const attributes = {
     headerBorder: {
         type: "object",
         default: {
-            "borderType": "",
+            borderType: "none",
             "borderColor": "",
             "borderWidth": {
                 Desktop: {
@@ -445,7 +410,7 @@ const attributes = {
     upperBorder: {
         type: "object",
         default: {
-            "borderType": "",
+            borderType: "none",
             "borderColor": "",
             "borderWidth": {
                 Desktop: {
@@ -492,7 +457,7 @@ const attributes = {
     lowerBorder: {
         type: "object",
         default: {
-            "borderType": "",
+            borderType: "none",
             "borderColor": "",
             "borderWidth": {
                 Desktop: {
@@ -539,7 +504,7 @@ const attributes = {
     modalBorder: {
         type: "object",
         default: {
-            "borderType": "",
+            borderType: "none",
             "borderColor": "",
             "borderWidth": {
                 Desktop: {
@@ -586,13 +551,23 @@ const attributes = {
     triggerTypography: {
         type: "object",
         default: {
-            "fontWeight": '',
+            "fontWeight": '400',
             'fontStyle': '',
             'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': '',
-            'lineHeight': '',
+            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
             'textDecoration': '',
+            'letterSpacing': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
+            'lineHeight': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
             'fontSize': {
                 'Desktop': '',
                 "Tablet": '',
@@ -604,12 +579,22 @@ const attributes = {
     headerTypography: {
         type: "object",
         default: {
-            "fontWeight": '',
+            "fontWeight": '300',
             'fontStyle': '',
             'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': '',
-            'lineHeight': '',
+            'letterSpacing': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
+            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+            'lineHeight': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
             'textDecoration': '',
             'fontSize': {
                 'Desktop': '',
@@ -625,9 +610,19 @@ const attributes = {
             "fontWeight": '',
             'fontStyle': '',
             'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': '',
-            'lineHeight': '',
+            'letterSpacing': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
+            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+            'lineHeight': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
             'textDecoration': '',
             'fontSize': {
                 'Desktop': '',
@@ -643,9 +638,19 @@ const attributes = {
             "fontWeight": '',
             'fontStyle': '',
             'textTransform': '',
-            'letterSpacing': '',
-            'fontFamily': '',
-            'lineHeight': '',
+            'letterSpacing': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
+            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+            'lineHeight': {
+                'Desktop': '',
+                "Tablet": '',
+                "Mobile": '',
+                "unit": 'px'
+            },
             'textDecoration': '',
             'fontSize': {
                 'Desktop': '',
@@ -670,7 +675,7 @@ const attributes = {
             "Desktop": '',
             'Tablet': '',
             'Mobile': '',
-            'unit': '',
+            'unit': 'px',
         }
     },
     modalWidth: {
@@ -683,6 +688,73 @@ const attributes = {
         }
     },
     modalHeight: {
+        type: "object",
+        default: {
+            "Desktop": '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px',
+        }
+    },
+    triggerFilter: {
+        type: "object",
+        default: {
+            'contrast': '100',
+            'blur': '0',
+            'bright': '100',
+            'saturation': '100',
+            'hue': '0'
+        }
+    },
+    triggerHoverFilter: {
+        type: "object",
+        default: {
+            'contrast': '100',
+            'blur': '0',
+            'bright': '100',
+            'saturation': '100',
+            'hue': '0'
+        }
+    },
+    align: {
+        type: "object",
+        default: {
+            "Desktop": "center",
+            "Tablet": "center",
+            "Mobile": "center"
+        }
+    },
+    hideDesktop: {
+        type: 'boolean',
+        default: ''
+    },
+    hideTablet: {
+        type: 'boolean',
+        default: ''
+    },
+    hideMobile: {
+        type: 'boolean',
+        default: ''
+    },
+    triggerIconSize: {
+        type: "object",
+        default: {
+            "Desktop": '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px',
+        }
+    },
+    upperIconWidth: {
+        type: "object",
+        default: {
+            "Desktop": '',
+            'Tablet': '',
+            'Mobile': '',
+            'unit': 'px',
+        }
+    },
+    lowerIconWidth: {
         type: "object",
         default: {
             "Desktop": '',

@@ -35,7 +35,7 @@ const save = props => {
     return (
         <div
             className={classnames(className,
-                "premium-icon", `premium-icon__container ${blockId}`, {
+                "premium-icon", `${blockId} premium-icon__container`, {
                 ' premium-desktop-hidden': hideDesktop,
                 ' premium-tablet-hidden': hideTablet,
                 ' premium-mobile-hidden': hideMobile,

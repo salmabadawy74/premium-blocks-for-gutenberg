@@ -19,10 +19,10 @@ import ResponsiveRadioControl from "../../components/responsive-radio";
 import InsideTabs from "../../components/InsideTabs";
 import InsideTab from "../../components/InsideTab";
 import Icons from "../../components/icons";
-import Social from "../../components/social-media"
-import { borderCss, paddingCss, marginCss, typographyCss, generateBlockId, generateCss } from "../../components/HelperFunction";
+import Social from "../../components/social-media";
 import times from "lodash/times";
-import GoogleFontLoader from "react-google-font-loader";
+import WebfontLoader from "../../components/typography/fontLoader";
+import { borderCss, paddingCss, marginCss, typographyCss, generateBlockId, generateCss } from "../../components/HelperFunction";
 
 const { withSelect } = wp.data;
 
@@ -122,7 +122,7 @@ class Edit extends Component {
         }
         // Assigning id in the attribute.
         this.props.setAttributes({
-            blockId: "premium-person-" + generateBlockId(this.props.clientId),
+            blockId: "premium-person-" + generateBlockId(this.props.clientId)
         });
         this.props.setAttributes({ classMigrate: true });
     }
@@ -202,7 +202,8 @@ class Edit extends Component {
             nameColor,
             titleColor,
             descColor,
-            imageFilter
+            imageFilter,
+            imageBorder
         } = this.props.attributes;
 
         const HOVER = [
@@ -383,38 +384,35 @@ class Edit extends Component {
         let loadDescriptionGoogleFonts;
 
         if (nameTypography.fontFamily !== "Default") {
+            const gconfig = {
+                google: {
+                    families: [nameTypography?.fontFamily],
+                },
+            };
             loadNameGoogleFonts = (
-                <GoogleFontLoader
-                    fonts={[
-                        {
-                            font: nameTypography.fontFamily,
-                        }
-                    ]}
-                />
+                <WebfontLoader config={gconfig}></WebfontLoader>
             );
         }
 
         if (titleTypography.fontFamily !== "Default") {
+            const gconfig = {
+                google: {
+                    families: [titleTypography?.fontFamily],
+                },
+            };
             loadTitleGoogleFonts = (
-                <GoogleFontLoader
-                    fonts={[
-                        {
-                            font: titleTypography.fontFamily,
-                        }
-                    ]}
-                />
+                <WebfontLoader config={gconfig}></WebfontLoader>
             );
         }
 
         if (descTypography.fontFamily !== "Default") {
+            const gconfig = {
+                google: {
+                    families: [descTypography?.fontFamily],
+                },
+            };
             loadDescriptionGoogleFonts = (
-                <GoogleFontLoader
-                    fonts={[
-                        {
-                            font: descTypography.fontFamily,
-                        }
-                    ]}
-                />
+                <WebfontLoader config={gconfig}></WebfontLoader>
             );
         }
 
@@ -426,9 +424,10 @@ class Edit extends Component {
             styles[` .${blockId} .premium-person__social-List li:hover .premium-social-media-icon`] = {
                 'fill': `${socialIconStyles[0].socialIconHoverColor} !important`,
                 '-webkit-transition': `all .2s ease-in-out !important`,
-                'transition': `all .2s ease-in-out !important`
+                'transition': `all .2s ease-in-out !important`,
             };
             styles[` .${blockId} .premium-person__img_wrap img`] = {
+                'border-radius': `${imageBorder[this.props.deviceType]}${imageBorder.unit} !important`,
                 'height': `${imgHeight[this.props.deviceType]}${imgHeight.unit} !important`,
                 'width': `${imgWidth[this.props.deviceType]}${imgWidth.unit} !important`,
                 'filter': `brightness( ${imageFilter.bright}% ) contrast( ${imageFilter.contrast}% ) saturate( ${imageFilter.saturation}% ) blur( ${imageFilter.blur}px ) hue-rotate( ${imageFilter.hue}deg ) !important`
@@ -559,15 +558,15 @@ class Edit extends Component {
                                     )}
                                     {!value.personImgUrl && (<DefaultImage className={className} />)}
                                 </div>
-                                {effectPersonStyle === "effect2" ? (
+                                {effectPersonStyle === "effect2" && value.socialIcon ? (
                                     <div
                                         className={`premium-person__socialEffect2`}
                                     >
                                         {value.socialIcon && socialIconfn(value.items)}
                                     </div>
                                 ) : (
-                                        ""
-                                    )}
+                                    ""
+                                )}
                             </div>
                             <div
                                 className={`premium-person__info`}
@@ -631,8 +630,8 @@ class Edit extends Component {
                                         {value.socialIcon && socialIconfn(value.items)}
                                     </div>
                                 ) : (
-                                        ""
-                                    )}
+                                    ""
+                                )}
                             </div>
                         </div>
                     ))}
@@ -729,7 +728,7 @@ class Edit extends Component {
             return (
                 <PanelBody
                     key={index}
-                    title={__(`Person #${index + 1} Setting`)}
+                    title={__(`Person #${index + 1} Setting`, "premium-blocks-for-gutenberg")}
                     initialOpen={false}
                 >
                     <PremiumMediaUpload
@@ -787,7 +786,7 @@ class Edit extends Component {
                     <InspectorTabs tabs={["layout", "style", "advance"]}>
                         <InspectorTab key={"layout"}>
                             <PanelBody
-                                title={__("General Settings")}
+                                title={__("General Settings", "premium-blocks-for-gutenberg")}
                                 className="premium-panel-body"
                                 initialOpen={true}
                             >
@@ -808,8 +807,8 @@ class Edit extends Component {
                                         options={ROWS}
                                     />
                                 ) : (
-                                        ""
-                                    )}
+                                    ""
+                                )}
                                 <SelectControl
                                     label={__("Style", "premium-block-for-gutenberg")}
                                     value={effectPersonStyle}
@@ -860,7 +859,7 @@ class Edit extends Component {
                         </InspectorTab>
                         <InspectorTab key={"style"}>
                             <PanelBody
-                                title={__("Name")}
+                                title={__("Name", "premium-blocks-for-gutenberg")}
                                 className="premium-panel-body"
                                 initialOpen={true}
                             >
@@ -888,7 +887,7 @@ class Edit extends Component {
                                 />
                             </PanelBody>
                             <PanelBody
-                                title={__("Title")}
+                                title={__("Title", "premium-blocks-for-gutenberg")}
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
@@ -930,7 +929,7 @@ class Edit extends Component {
                                 />
                             </PanelBody>
                             <PanelBody
-                                title={__("Description")}
+                                title={__("Description", "premium-blocks-for-gutenberg")}
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
@@ -960,7 +959,7 @@ class Edit extends Component {
                                 />
                             </PanelBody>
                             <PanelBody
-                                title={__("Image Style")}
+                                title={__("Image Style", "premium-blocks-for-gutenberg")}
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
@@ -996,10 +995,21 @@ class Edit extends Component {
                                     value={hoverEffectPerson}
                                     onChange={(newEffect) => setAttributes({ hoverEffectPerson: newEffect })}
                                 />
+                                <ResponsiveRangeControl
+                                    label={__("Custom Image Height", "premium-blocks-for-gutenberg")}
+                                    value={imageBorder}
+                                    onChange={(value) => setAttributes({ imageBorder: value })}
+                                    min={1}
+                                    max={100}
+                                    step={1}
+                                    showUnit={true}
+                                    units={["px", "em", "%"]}
+                                    defaultValue={0}
+                                />
                             </PanelBody>
                             {socialIcon && (
                                 <PanelBody
-                                    title={__("Social Icon")}
+                                    title={__("Social Icon", "premium-blocks-for-gutenberg")}
                                     className="premium-panel-body"
                                     initialOpen={false}
                                 >
@@ -1071,7 +1081,7 @@ class Edit extends Component {
                                 </PanelBody>
                             )}
                             <PanelBody
-                                title={__("Content")}
+                                title={__("Content", "premium-blocks-for-gutenberg")}
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
@@ -1093,8 +1103,8 @@ class Edit extends Component {
                                         min={15}
                                     />
                                 ) : (
-                                        ""
-                                    )}
+                                    ""
+                                )}
                                 <SpacingControl
                                     label={__("Padding", "premium-blocks-for-gutenberg")}
                                     value={contentPadding}

@@ -132,7 +132,7 @@ const videoBoxAttrs = {
                 "Mobile": "",
                 "unit": "px"
             },
-            'fontFamily': __('Default', 'premium-blocks-for-gutenberg'),
+            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
             'fontSize': {
                 'Desktop': "",
                 "Tablet": "",
@@ -286,7 +286,7 @@ const videoBoxAttrs = {
     descShadow: {
         type: "object",
         default: {
-            'color': 'undefinded',
+            'color': 'undefined',
             'blur': 10,
             'horizontal': '0',
             'vertical': '0'
@@ -295,7 +295,7 @@ const videoBoxAttrs = {
     boxShadow: {
         type: "object",
         default: {
-            'color': 'undefinded',
+            'color': 'undefined',
             'blur': 10,
             'horizontal': '0',
             'vertical': '0',

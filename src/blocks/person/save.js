@@ -1,6 +1,6 @@
 import classnames from 'classnames'
 import DefaultImage from "../../components/default-image";
-import Social from "../../components/social-media"
+import Social from "../../components/social-media";
 import { filterJsCss, generateCss } from '../../components/HelperFunction'
 const { __ } = wp.i18n;
 
@@ -272,7 +272,7 @@ const save = props => {
     return (
         <div
             className={classnames(className,
-                "premium-person", `premium-person__${effect} ${blockId} premium-person__${effectDir}`, {
+                "premium-person", `${blockId} premium-person__${effect} premium-person__${effectDir}`, {
                 ' premium-desktop-hidden': hideDesktop,
                 ' premium-tablet-hidden': hideTablet,
                 ' premium-mobile-hidden': hideMobile,

@@ -15,7 +15,7 @@ import InspectorTab from '../../components/inspectorTab';
 import InsideTabs from '../../components/InsideTabs'
 import InsideTab from '../../components/InsideTab';
 import { borderCss, paddingCss, typographyCss, generateBlockId, generateCss } from '../../components/HelperFunction'
-import GoogleFontLoader from "react-google-font-loader";
+import WebfontLoader from "../../components/typography/fontLoader";
 
 const { withSelect } = wp.data
 
@@ -195,18 +195,17 @@ class Edit extends Component {
 
         let loadDescriptionGoogleFonts;
         if (videoDescTypography.fontFamily !== "Default") {
+            const gconfig = {
+                google: {
+                    families: [videoDescTypography?.fontFamily],
+                },
+            };
             loadDescriptionGoogleFonts = (
-                <GoogleFontLoader
-                    fonts={[
-                        {
-                            font: videoDescTypography.fontFamily,
-                        },
-                    ]}
-                />
+                <WebfontLoader config={gconfig}></WebfontLoader>
             );
         }
 
-        const renderCss = () => {
+        const loadStyles = () => {
             const styles = {};
             styles[` .${blockId} .premium-video-box__play:hover`] = {
                 'color': `${playStyles[0].playHoverColor} !important`,
@@ -234,7 +233,7 @@ class Edit extends Component {
                                 {videoURL && <button className="lottie-remove" onClick={(e) => {
                                     e.preventDefault();
                                     setAttributes({ videoURL: '' })
-                                }}>{__('Remove Video')}</button>}
+                                }}>{__('Remove Video', 'premium-blocks-for-gutenberg')}</button>}
                                 {"self" === videoType && (
                                     <PremiumMediaUpload
                                         type="video"
@@ -368,8 +367,22 @@ class Edit extends Component {
                                         />
                                         {playIcon && (
                                             <Fragment>
+                                                <ResponsiveSingleRangeControl
+                                                    label={__("Size (PX)", 'premium-blocks-for-gutenberg')}
+                                                    value={playStyles[0].playSize}
+                                                    onChange={newValue => savePlayStyles({ playSize: newValue === undefined ? 20 : newValue })}
+                                                    showUnit={false}
+                                                    defaultValue={0}
+                                                />
+                                                <ResponsiveSingleRangeControl
+                                                    label={__("Vertical Offset (%)", 'premium-blocks-for-gutenberg')}
+                                                    value={playStyles[0].playTop}
+                                                    onChange={newValue => savePlayStyles({ playTop: newValue === undefined ? 50 : newValue })}
+                                                    showUnit={false}
+                                                    defaultValue={0}
+                                                />
                                                 <InsideTabs>
-                                                    <InsideTab tabTitle={__('Normal')}>
+                                                    <InsideTab tabTitle={__('Normal', 'premium-blocks-for-gutenberg')}>
                                                         <Fragment>
                                                             <AdvancedPopColorControl
                                                                 label={__("Icon Color", 'premium-blocks-for-gutenberg')}
@@ -378,7 +391,7 @@ class Edit extends Component {
                                                                 onColorChange={newValue => savePlayStyles({ playColor: newValue, })}
                                                             />
                                                             <AdvancedPopColorControl
-                                                                label={__(`Background Color`)}
+                                                                label={__(`Background Color`, 'premium-blocks-for-gutenberg')}
                                                                 colorValue={playStyles[0].playBack}
                                                                 onColorChange={newvalue => { savePlayStyles({ playBack: newvalue }) }}
                                                                 colorDefault={``}
@@ -391,7 +404,7 @@ class Edit extends Component {
                                                                     onColorChange={newValue => saveDescritionStyle({ videoDescColor: newValue, })}
                                                                 />
                                                                 <AdvancedPopColorControl
-                                                                    label={__(`Background Color`)}
+                                                                    label={__(`Background Color`, 'premium-blocks-for-gutenberg')}
                                                                     colorValue={descStyles[0].videoDescBack}
                                                                     onColorChange={newvalue => { saveDescritionStyle({ videoDescBack: newvalue, }) }}
                                                                     colorDefault={``}
@@ -399,7 +412,7 @@ class Edit extends Component {
                                                             </Fragment>
                                                         </Fragment>
                                                     </InsideTab>
-                                                    <InsideTab tabTitle={__('Hover')}>
+                                                    <InsideTab tabTitle={__('Hover', 'premium-blocks-for-gutenberg')}>
                                                         <Fragment>
                                                             <AdvancedPopColorControl
                                                                 label={__("Icon Hover Color", 'premium-blocks-for-gutenberg')}
@@ -416,21 +429,6 @@ class Edit extends Component {
                                                         </Fragment>
                                                     </InsideTab>
                                                 </InsideTabs>
-                                                <ResponsiveSingleRangeControl
-                                                    label={__("Size (PX)", 'premium-blocks-for-gutenberg')}
-                                                    value={playStyles[0].playSize}
-                                                    onChange={newValue => savePlayStyles({ playSize: newValue === undefined ? 20 : newValue })}
-                                                    showUnit={false}
-                                                    defaultValue={0}
-                                                />
-                                                <ResponsiveSingleRangeControl
-                                                    label={__("Vertical Offset (%)", 'premium-blocks-for-gutenberg')}
-                                                    value={playStyles[0].playTop}
-                                                    onChange={newValue => savePlayStyles({ playTop: newValue === undefined ? 50 : newValue })}
-                                                    showUnit={false}
-                                                    defaultValue={0}
-                                                />
-                                                <hr />
                                                 <PremiumBorder
                                                     label={__('Border', 'premium-blocks-for-gutenberg')}
                                                     value={playBorder}
@@ -491,7 +489,7 @@ class Edit extends Component {
                         <Placeholder
                             label={__('Video Box ', 'premium-blocks-for-gutenberg')}
                             instructions={__(
-                                "Enter video ID, for example: z1hQgVpfTKU or Embed URL"
+                                "Enter video ID, for example: z1hQgVpfTKU or Embed URL", 'premium-blocks-for-gutenberg'
                             )}
                             className={className}
                         >
@@ -526,7 +524,7 @@ class Edit extends Component {
                         <div
                             ref={this.videoboxRef}
                             className={classnames(className,
-                                "premium-video-box", `video-overlay-${overlay} ${blockId} premium-aspect-ratio-${ratioValue}`, {
+                                "premium-video-box", `${blockId} video-overlay-${overlay} premium-aspect-ratio-${ratioValue}`, {
                                 ' premium-desktop-hidden': hideDesktop,
                                 ' premium-tablet-hidden': hideTablet,
                                 ' premium-mobile-hidden': hideMobile,
@@ -540,7 +538,7 @@ class Edit extends Component {
                         >
                             <style
                                 dangerouslySetInnerHTML={{
-                                    __html: renderCss()
+                                    __html: loadStyles()
                                 }}
                             />
                             <div className={`premium-video-box__container`}>
