@@ -5314,9 +5314,17 @@ class PBG_Blocks_Helper {
 		}
 
 		//style for image
-		if ( isset( $attr['imageBorder']['Desktop'] ) ) {
+		if ( isset( $attr['imageBorder'] ) ) {
+            $image_border=$attr['imageBorder'];
+            $image_border_width=$image_border['borderWidth'];
+            $image_border_radius=$image_border['borderRadius'];
 			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap' . ' > img' );
-			$css->add_property( 'border-radius', $css->render_range($attr['imageBorder'],'Desktop') );
+			$css->add_property( 'border-radius', $css->render_spacing($image_border_radius['Desktop'],'px') );
+            $css->add_property( 'border-color',$image_border['borderColor']);
+			$css->add_property( 'border-style', $image_border['borderType'] );
+
+			$css->add_property( 'border-width', $css->render_spacing($image_border_width['Desktop'],'px') );
+
 		}
 		if ( isset( $attr['imgHeight']['Desktop'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap' . ' > img' );
@@ -5436,9 +5444,13 @@ class PBG_Blocks_Helper {
 		}
 
 		//style for image
-		if ( isset( $attr['imageBorder']['Tablet'] ) ) {
+		if ( isset( $attr['imageBorder'] ) ) {
+            $image_border=$attr['imageBorder'];
+            $image_border_width=$image_border['borderWidth'];
+            $image_border_radius=$image_border['borderRadius'];
 			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap' . ' > img' );
-			$css->add_property( 'border-radius', $css->render_range($attr['imageBorder'],'Tablet') );
+			$css->add_property( 'border-radius', $css->render_spacing($image_border_radius['Tablet'],'px') );
+			$css->add_property( 'border-width', $css->render_spacing($image_border_width['Tablet'],'px') );
 		}
 		if ( isset( $attr['imgHeight']['Tablet'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap' . ' > img' );
@@ -5559,9 +5571,13 @@ class PBG_Blocks_Helper {
 		}
 
 		//style for image
-		if ( isset( $attr['imageBorder']['Mobile'] ) ) {
+		if ( isset( $attr['imageBorder'] ) ) {
+            $image_border=$attr['imageBorder'];
+            $image_border_width=$image_border['borderWidth'];
+            $image_border_radius=$image_border['borderRadius'];
 			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap' . ' > img' );
-			$css->add_property( 'border-radius', $css->render_range($attr['imageBorder'],'Mobile') );
+			$css->add_property( 'border-radius', $css->render_spacing($image_border_radius['Mobile'],'px') );
+			$css->add_property( 'border-width', $css->render_spacing($image_border_width['Mobile'],'px') );
 		}
 		if ( isset( $attr['imgHeight']['Mobile'] ) ) {
 			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap' . ' > img' );

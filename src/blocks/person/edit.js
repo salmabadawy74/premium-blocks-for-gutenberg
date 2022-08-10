@@ -427,7 +427,16 @@ class Edit extends Component {
                 'transition': `all .2s ease-in-out !important`,
             };
             styles[` .${blockId} .premium-person__img_wrap img`] = {
-                'border-radius': `${imageBorder[this.props.deviceType]}${imageBorder.unit} !important`,
+                "border-style": `${imageBorder?.borderType}`,
+                "border-color": `${imageBorder?.borderColor}`,
+                "border-top-width": `${imageBorder?.borderWidth?.[this.props.deviceType]?.top}px!important`,
+                "border-right-width": `${imageBorder?.borderWidth?.[this.props.deviceType]?.right}px!important`,
+                "border-bottom-width": `${imageBorder?.borderWidth?.[this.props.deviceType]?.bottom}px!important`,
+                "border-left-width": `${imageBorder?.borderWidth?.[this.props.deviceType]?.left}px!important`,
+                "border-top-left-radius": `${imageBorder?.borderRadius?.[this.props.deviceType]?.top}px!important`,
+                "border-top-right-radius": `${imageBorder?.borderRadius?.[this.props.deviceType]?.right}px!important`,
+                "border-bottom-left-radius": `${imageBorder?.borderRadius?.[this.props.deviceType]?.bottom}px!important`,
+                "border-bottom-right-radius": `${imageBorder?.borderRadius?.[this.props.deviceType]?.left}px!important`,
                 'height': `${imgHeight[this.props.deviceType]}${imgHeight.unit} !important`,
                 'width': `${imgWidth[this.props.deviceType]}${imgWidth.unit} !important`,
                 'filter': `brightness( ${imageFilter.bright}% ) contrast( ${imageFilter.contrast}% ) saturate( ${imageFilter.saturation}% ) blur( ${imageFilter.blur}px ) hue-rotate( ${imageFilter.hue}deg ) !important`
@@ -995,7 +1004,7 @@ class Edit extends Component {
                                     value={hoverEffectPerson}
                                     onChange={(newEffect) => setAttributes({ hoverEffectPerson: newEffect })}
                                 />
-                                <ResponsiveRangeControl
+                                {/* <ResponsiveRangeControl
                                     label={__("Custom Image Height", "premium-blocks-for-gutenberg")}
                                     value={imageBorder}
                                     onChange={(value) => setAttributes({ imageBorder: value })}
@@ -1005,6 +1014,11 @@ class Edit extends Component {
                                     showUnit={true}
                                     units={["px", "em", "%"]}
                                     defaultValue={0}
+                                /> */}
+                                <PremiumBorder
+
+                                    value={imageBorder}
+                                    onChange={(value) => setAttributes({ imageBorder: value })}
                                 />
                             </PanelBody>
                             {socialIcon && (

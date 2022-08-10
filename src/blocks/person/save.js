@@ -43,7 +43,8 @@ const save = props => {
         nameColor,
         titleColor,
         descColor,
-        imageFilter
+        imageFilter,
+        imageBorder
     } = props.attributes;
 
     const iconsList = [
@@ -175,6 +176,7 @@ const save = props => {
         ))}
         </ul>
     }
+
     const content = () => {
         return <div className={`premium-person-content ${multiPersonChecked > 1 ? `premium-person__${rowPerson}` : ""}`}
         > {multiPersonContent.map((value) => (
@@ -188,9 +190,16 @@ const save = props => {
                                 className={`premium-person__img`}
                                 src={`${value.personImgUrl}`}
                                 alt="Person"
+                                style={filterJsCss({
+                                    borderStyle: imageBorder?.borderType,
+                                    borderColor: imageBorder?.borderColor
+                                })}
                             />
                         )}
-                        {!value.personImgUrl && <DefaultImage className={className} />}
+                        {!value.personImgUrl && <DefaultImage className={className} style={filterJsCss({
+                            borderStyle: imageBorder?.borderType,
+                            borderColor: imageBorder?.borderColor
+                        })} />}
                     </div>
                     {effectPersonStyle === 'effect2' ? <div className={`premium-person__socialEffect2`}>{value.socialIcon && (
                         socialIconfn(value.items)
@@ -268,6 +277,8 @@ const save = props => {
         ))}
         </div>
     }
+
+    console.log(imageBorder)
 
     return (
         <div
