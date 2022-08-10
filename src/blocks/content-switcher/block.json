@@ -57,19 +57,18 @@
         "labelStyles": {
             "type": "object",
             "default": {
-                "firstLabelColor": "rgb(84, 89, 95)",
-                "secondLabelColor": "rgb(84, 89, 95)",
+                "firstLabelColor": "",
+                "secondLabelColor": "",
                 "firstLabelBGColor": "",
                 "secondLabelBGColor": ""
             }
         },
         "firstStateColor": {
-            "type": "string",
-            "default": "#6ec1e4"
+            "type": "string"
+            
         },
         "secondStateColor": {
-            "type": "string",
-            "default": "#6ec1e4"
+            "type": "string"
         },
         "switcherBGColor": {
             "type": "string",
@@ -261,9 +260,9 @@
                     "unit": "px"
                 },
                 "fontSize": {
-                    "Desktop": 20,
-                    "Tablet": 20,
-                    "Mobile": 20,
+                    "Desktop": "",
+                    "Tablet": "",
+                    "Mobile": "",
                     "unit": "px"
                 }
             }
@@ -336,9 +335,9 @@
                     "unit": "px"
                 },
                 "fontSize": {
-                    "Desktop": 20,
-                    "Tablet": 20,
-                    "Mobile": 20,
+                    "Desktop":"",
+                    "Tablet": "",
+                    "Mobile": "",
                     "unit": "px"
                 }
                 

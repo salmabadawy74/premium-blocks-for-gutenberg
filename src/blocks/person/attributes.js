@@ -74,7 +74,7 @@ const attributes = {
     },
     effectPersonStyle: {
         type: "string",
-        default: "effect1"
+        default: "effect2"
     },
     rowPerson: {
         type: "string",
@@ -206,16 +206,16 @@ const attributes = {
     socialIconSize: {
         type: "object",
         default: {
-            Desktop: '20',
-            Tablet: '20',
-            Mobile: '20',
+            Desktop: '',
+            Tablet: '',
+            Mobile: '',
             unit: 'px'
         }
     },
     titleTypography: {
         type: "object",
         default: {
-            "fontWeight": '',
+            "fontWeight": '400',
             'fontStyle': '',
             'textTransform': '',
             'letterSpacing': {
@@ -230,7 +230,7 @@ const attributes = {
                 "Mobile": "",
                 unit: 'px'
             },
-            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+            'fontFamily': __('Default', 'premium-blocks-for-gutenberg'),
             'fontSize': {
                 'Desktop': '',
                 "Tablet": "",
@@ -242,7 +242,7 @@ const attributes = {
     descTypography: {
         type: "object",
         default: {
-            "fontWeight": '',
+            "fontWeight": '400',
             'fontStyle': '',
             'textTransform': '',
             'letterSpacing': {
@@ -257,7 +257,7 @@ const attributes = {
                 "Mobile": "",
                 unit: 'px'
             },
-            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+            'fontFamily': __('Default', 'premium-blocks-for-gutenberg'),
             'fontSize': {
                 'Desktop': '',
                 "Tablet": '',
@@ -269,7 +269,7 @@ const attributes = {
     nameTypography: {
         type: "object",
         default: {
-            "fontWeight": '',
+            "fontWeight": '400',
             'fontStyle': '',
             'textTransform': '',
             'letterSpacing': {
@@ -284,7 +284,7 @@ const attributes = {
                 "Mobile": "",
                 unit: 'px'
             },
-            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+            'fontFamily': __('Default', 'premium-blocks-for-gutenberg'),
             'fontSize': {
                 'Desktop': "",
                 "Tablet": "",
@@ -420,10 +420,10 @@ const attributes = {
         type: "object",
         default: {
             Desktop: {
-                top: "0",
-                right: "0",
-                bottom: "0",
-                left: "0"
+                top: "",
+                right: "",
+                bottom: "",
+                left: ""
             },
             Tablet: {
                 top: "",
@@ -443,19 +443,19 @@ const attributes = {
     imgHeight: {
         type: "object",
         default: {
-            Desktop: '200',
-            'Tablet': '200',
-            'Mobile': '200',
-            unit: 'px'
+            'Desktop': '400',
+            'Tablet': '400',
+            'Mobile': '400',
+            'unit': 'px'
         }
     },
     imgWidth: {
         type: "object",
         default: {
-            Desktop: '200',
-            'Tablet': '200',
-            'Mobile': '200',
-            unit: 'px'
+            'Desktop': '100',
+            'Tablet': '100',
+            'Mobile': '100',
+            unit: '%'
         }
     },
     socialIcon: {
@@ -487,11 +487,50 @@ const attributes = {
     imageBorder: {
         type: "object",
         default: {
-            Desktop: '0',
-            'Tablet': '0',
-            'Mobile': '0',
-            unit: 'px'
+            borderColor: "",
+            borderType: "none",
+            borderRadius: {
+                Desktop: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Tablet: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Mobile: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                }
+            },
+            borderWidth: {
+                Desktop: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Tablet: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                },
+                Mobile: {
+                    top: "",
+                    right: "",
+                    bottom: "",
+                    left: ""
+                }
+            }
         }
+
     }
 }
 export default attributes
