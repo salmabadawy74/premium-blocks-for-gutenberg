@@ -23,6 +23,7 @@ import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 import PremiumTypo from "../../components/premium-typo";
+import WebfontLoader from "../../components/typography/fontLoader";
 import { 
     borderCss,
     generateBlockId,
@@ -31,7 +32,7 @@ import {
     typographyCss,
 } from '../../components/HelperFunction';
 import Icons from "../../components/icons";
-import GoogleFontLoader from "react-google-font-loader";
+//import GoogleFontLoader from "react-google-font-loader";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -148,17 +149,19 @@ function Edit(props) {
     
     let loadLabelGoogleFonts;
 
-    if (labelTypography.fontFamily !== "Default") {
-        loadLabelGoogleFonts = (
-            <GoogleFontLoader
-                fonts={[
-                    {
-                        font: labelTypography?.fontFamily,
-                    },
-                ]}
-            />
-        );
-    }
+        if (labelTypography?.fontFamily !== 'Default') {
+            const labelConfig = {
+                google: {
+                    families: [labelTypography.fontFamily],
+                },
+            }
+            loadLabelGoogleFonts = (
+                <WebfontLoader config={labelConfig}>
+                </WebfontLoader>
+            )
+        }
+
+
 
 
 
