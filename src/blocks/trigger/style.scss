@@ -229,9 +229,11 @@ $pbBorderColor: #e1e1e1;
 	}
 	.toggle-button[data-style="outline"] {
 		padding: 10px;
+		border: 1px solid $pbBorderColor;
 	}
 	.toggle-button[data-style="solid"] {
 		padding: 10px;
+		border-width: 0px;
 	}
 	.toggle-button[data-style="simple"],
 	.toggle-button[data-style="simple"]:hover {
