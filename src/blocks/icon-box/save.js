@@ -99,6 +99,7 @@ const save = props => {
                     <div className={`premium-icon-box__icon_wrap premium-icon-box__icon_${iconVPos}`}>
                         {"icon" === iconImage && selectedIcon && (
                             <i
+                                alt={`icon-box`}
                                 className={`${selectedIcon} premium-icon-box__icon premium-icon__${hoverEffect}`}
                                 style={filterJsCss({
                                     color: iconColor,

@@ -4052,7 +4052,7 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['iconStyles'][0]['advancedBorder'] ) ) {
 			$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . '> i' );
-			$css->add_property( 'border-radius', $css->render_color( $attr['iconStyles'][0]['advancedBorder'] ? $attr['iconStyles'][0]['advancedBorderValue'] . '!important' : '' ) );
+			$css->add_property( 'border-radius',  $attr['iconStyles'][0]['advancedBorder'] ? $attr['iconStyles'][0]['advancedBorderValue'] . '!important' : ''  );
 		}
 
 		$css->start_media_query( $media_query['tablet'] );
@@ -5327,11 +5327,11 @@ class PBG_Blocks_Helper {
 
 		}
 		if ( isset( $attr['imgHeight']['Desktop'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap' . ' > img' );
+			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap' );
 			$css->add_property( 'height', $css->render_range($attr['imgHeight'],'Desktop') );
 		}
 		if ( isset( $attr['imgWidth']['Desktop'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap' . ' > img' );
+			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap'  );
 			$css->add_property( 'width', $css->render_range($attr['imgWidth'],'Desktop') );
 		}
 		
@@ -5453,11 +5453,11 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'border-width', $css->render_spacing($image_border_width['Tablet'],'px') );
 		}
 		if ( isset( $attr['imgHeight']['Tablet'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap' . ' > img' );
+			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap' );
 			$css->add_property( 'height', $css->render_range($attr['imgHeight'],'Tablet') );
 		}
 		if ( isset( $attr['imgWidth']['Tablet'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap' . ' > img' );
+			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap' );
 			$css->add_property( 'width', $css->render_range($attr['imgWidth'],'Tablet') );
 		}
 
@@ -5579,12 +5579,12 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'border-radius', $css->render_spacing($image_border_radius['Mobile'],'px') );
 			$css->add_property( 'border-width', $css->render_spacing($image_border_width['Mobile'],'px') );
 		}
-		if ( isset( $attr['imgHeight']['Mobile'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap' . ' > img' );
+		if ( isset( $attr['imgHeight'] ) ) {
+			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap'  );
 			$css->add_property( 'height', $css->render_range($attr['imgHeight'],'Mobile') );
 		}
-		if ( isset( $attr['imgWidth']['Mobile'] ) ) {
-			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap' . ' > img' );
+		if ( isset( $attr['imgWidth'] ) ) {
+			$css->set_selector( '.' . $unique_id . ' > .premium-person-content' . ' > .premium-person__inner' . ' > .premium-person__img__container' . ' > .premium-person__img_wrap'  );
 			$css->add_property( 'width', $css->render_range($attr['imgWidth'],'Mobile') );
 		}
 

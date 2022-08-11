@@ -185,6 +185,9 @@ const save = props => {
                     <div
                         className={`premium-person__img_wrap`}
                     >
+                        {effectPersonStyle === 'effect2' ? <div className={`premium-person__socialEffect2`}>{value.socialIcon && (
+                            socialIconfn(value.items)
+                        )}</div> : ""}
                         {value.personImgUrl && (
                             <img
                                 className={`premium-person__img`}
@@ -196,14 +199,9 @@ const save = props => {
                                 })}
                             />
                         )}
-                        {!value.personImgUrl && <DefaultImage className={className} style={filterJsCss({
-                            borderStyle: imageBorder?.borderType,
-                            borderColor: imageBorder?.borderColor
-                        })} />}
+                        {!value.personImgUrl && <DefaultImage className={className} />}
                     </div>
-                    {effectPersonStyle === 'effect2' ? <div className={`premium-person__socialEffect2`}>{value.socialIcon && (
-                        socialIconfn(value.items)
-                    )}</div> : ""}
+
                 </div>
                 <div
                     className={`premium-person__info`}

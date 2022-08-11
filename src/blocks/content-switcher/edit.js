@@ -195,7 +195,7 @@ function Edit(props) {
             "box-shadow": ` ${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position} !important`,
             "background-color": `${controllerOneBackground.backgroundType == "solid"
                 ? controllerOneBackground.backgroundColor
-                : "#6ec1e4"
+                : "#793dc3"
                 }`,
             "background-image": `${gradientValue(controllerOneBackground)}`,
             "background-repeat": `${controllerOneBackground.backgroundRepeat}`,

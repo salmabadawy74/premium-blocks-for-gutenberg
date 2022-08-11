@@ -1063,6 +1063,7 @@ class edit extends Component {
                                 {(iconType === "dash" ||
                                     1 == FontAwesomeEnabled) && (
                                         <i
+                                            alt={`icon-box`}
                                             className={`${selectedIcon} premium-icon-box__icon premium-icon__${hoverEffect}`}
                                             style={{
                                                 color: iconColor,

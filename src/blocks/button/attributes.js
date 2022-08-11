@@ -65,7 +65,7 @@ const attributes = {
             {
                 textColor: '',
                 textHoverColor: '',
-                backColor: '',
+                backColor: 'rgb(242, 242, 242)',
                 backOpacity: 1,
                 backHoverColor: '',
                 borderHoverColor: '',
@@ -150,7 +150,7 @@ const attributes = {
     textShadow: {
         type: "object",
         default: {
-            'color': '',
+            'color': 'undefined',
             'blur': '10',
             'horizontal': '0',
             'vertical': '0',
@@ -159,7 +159,7 @@ const attributes = {
     boxShadow: {
         type: "object",
         default: {
-            'color': '',
+            'color': 'undefined',
             'blur': '10',
             'horizontal': '0',
             'vertical': '0',
