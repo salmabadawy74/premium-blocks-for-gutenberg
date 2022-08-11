@@ -19,6 +19,7 @@ registerBlockType(name, {
      * @see ./edit.js
      */
     icon: PBG_Block_Icons.content_switcher,
+
     edit,
     save
 });

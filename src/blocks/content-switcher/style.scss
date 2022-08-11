@@ -37,7 +37,7 @@
         -webkit-transition: 0.4s;
         transition: 0.4s;
         border-radius: 1.5em;
-        background: #f2f2f2;
+        background: rgb(242, 242, 242);
 
         &::before {
             position: absolute;
@@ -54,7 +54,7 @@
             -moz-transform: translateX(0);
             -ms-transform: translateX(0);
             transform: translateX(0);
-            background: #6ec1e4;
+            background: #793dc3;
         }
     }
 

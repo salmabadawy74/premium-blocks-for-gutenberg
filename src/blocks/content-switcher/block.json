@@ -72,7 +72,7 @@
         },
         "switcherBGColor": {
             "type": "string",
-            "default": "#f2f2f2"
+            "default": "rgb(242, 242, 242)"
         },
         "firstLabelPadding": {
             "type": "object",
@@ -483,7 +483,7 @@
             "type": "object",
             "default": {
                 "backgroundType": "",
-                "backgroundColor": "",
+                "backgroundColor": "#793dc3",
                 "backgroundImageID": "",
                 "backgroundImageURL": "",
                 "backgroundPosition":  "center center",
@@ -502,7 +502,7 @@
             "type": "object",
             "default": {
                 "backgroundType": "",
-                "backgroundColor": "",
+                "backgroundColor": "rgb(242, 242, 242)",
                 "backgroundImageID": "",
                 "backgroundImageURL": "",
                 "backgroundPosition": "",

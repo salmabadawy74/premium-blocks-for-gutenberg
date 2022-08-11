@@ -62,7 +62,8 @@ const attributes = {
         type: "number"
     },
     iconColor: {
-        type: "string"
+        type: "string",
+        default: '#793dc3'
     },
     iconBackColor: {
         type: "string"
@@ -169,7 +170,7 @@ const attributes = {
             {
                 btnColor: '',
                 btnHoverColor: '',
-                btnBack: '',
+                btnBack: 'rgb(242, 242, 242)',
                 btnHoverBack: '',
             }
         ]

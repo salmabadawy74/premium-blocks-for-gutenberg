@@ -14060,7 +14060,7 @@ const attributes = {
     default: [{
       textColor: '',
       textHoverColor: '',
-      backColor: '',
+      backColor: 'rgb(242, 242, 242)',
       backOpacity: 1,
       backHoverColor: '',
       borderHoverColor: ''
@@ -14144,7 +14144,7 @@ const attributes = {
   textShadow: {
     type: "object",
     default: {
-      'color': '',
+      'color': 'undefined',
       'blur': '10',
       'horizontal': '0',
       'vertical': '0'
@@ -14153,7 +14153,7 @@ const attributes = {
   boxShadow: {
     type: "object",
     default: {
-      'color': '',
+      'color': 'undefined',
       'blur': '10',
       'horizontal': '0',
       'vertical': '0',
@@ -28214,7 +28214,8 @@ const attributes = {
     type: "number"
   },
   iconColor: {
-    type: "string"
+    type: "string",
+    default: '#793dc3'
   },
   iconBackColor: {
     type: "string"
@@ -28315,7 +28316,7 @@ const attributes = {
     default: [{
       btnColor: '',
       btnHoverColor: '',
-      btnBack: '',
+      btnBack: 'rgb(242, 242, 242)',
       btnHoverBack: ''
     }]
   },
@@ -32441,6 +32442,7 @@ class edit extends Component {
     }, "icon" === iconImage && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, iconType === "fa" && 1 != _assets_js_settings__WEBPACK_IMPORTED_MODULE_2__.FontAwesomeEnabled && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
       className: `premium-icon-box__alert`
     }, __("Please Enable Font Awesome Icons from Plugin settings")), (iconType === "dash" || 1 == _assets_js_settings__WEBPACK_IMPORTED_MODULE_2__.FontAwesomeEnabled) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+      alt: `icon-box`,
       className: `${selectedIcon} premium-icon-box__icon premium-icon__${hoverEffect}`,
       style: {
         color: iconColor,
@@ -32684,6 +32686,7 @@ const save = props => {
   }, iconChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-icon-box__icon_wrap premium-icon-box__icon_${iconVPos}`
   }, "icon" === iconImage && selectedIcon && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+    alt: `icon-box`,
     className: `${selectedIcon} premium-icon-box__icon premium-icon__${hoverEffect}`,
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       color: iconColor,
@@ -41839,6 +41842,10 @@ class Edit extends Component {
         '-webkit-transition': `all .2s ease-in-out !important`,
         'transition': `all .2s ease-in-out !important`
       };
+      styles[` .${blockId} .premium-person__img_wrap `] = {
+        'height': `${imgHeight[this.props.deviceType]}${imgHeight.unit} !important`,
+        'width': `${imgWidth[this.props.deviceType]}${imgWidth.unit} !important`
+      };
       styles[` .${blockId} .premium-person__img_wrap img`] = {
         "border-style": `${imageBorder === null || imageBorder === void 0 ? void 0 : imageBorder.borderType}`,
         "border-color": `${imageBorder === null || imageBorder === void 0 ? void 0 : imageBorder.borderColor}`,
@@ -41850,8 +41857,6 @@ class Edit extends Component {
         "border-top-right-radius": `${imageBorder === null || imageBorder === void 0 ? void 0 : (_imageBorder$borderRa3 = imageBorder.borderRadius) === null || _imageBorder$borderRa3 === void 0 ? void 0 : (_imageBorder$borderRa4 = _imageBorder$borderRa3[this.props.deviceType]) === null || _imageBorder$borderRa4 === void 0 ? void 0 : _imageBorder$borderRa4.right}px!important`,
         "border-bottom-left-radius": `${imageBorder === null || imageBorder === void 0 ? void 0 : (_imageBorder$borderRa5 = imageBorder.borderRadius) === null || _imageBorder$borderRa5 === void 0 ? void 0 : (_imageBorder$borderRa6 = _imageBorder$borderRa5[this.props.deviceType]) === null || _imageBorder$borderRa6 === void 0 ? void 0 : _imageBorder$borderRa6.bottom}px!important`,
         "border-bottom-right-radius": `${imageBorder === null || imageBorder === void 0 ? void 0 : (_imageBorder$borderRa7 = imageBorder.borderRadius) === null || _imageBorder$borderRa7 === void 0 ? void 0 : (_imageBorder$borderRa8 = _imageBorder$borderRa7[this.props.deviceType]) === null || _imageBorder$borderRa8 === void 0 ? void 0 : _imageBorder$borderRa8.left}px!important`,
-        'height': `${imgHeight[this.props.deviceType]}${imgHeight.unit} !important`,
-        'width': `${imgWidth[this.props.deviceType]}${imgWidth.unit} !important`,
         'filter': `brightness( ${imageFilter.bright}% ) contrast( ${imageFilter.contrast}% ) saturate( ${imageFilter.saturation}% ) blur( ${imageFilter.blur}px ) hue-rotate( ${imageFilter.hue}deg ) !important`
       };
       styles[` .${blockId} .premium-social-media-icon`] = {
@@ -41948,15 +41953,15 @@ class Edit extends Component {
         className: `premium-person__img__container`
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
         className: `premium-person__img_wrap`
-      }, value.personImgUrl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      }, effectPersonStyle === "effect2" && value.socialIcon ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        className: `premium-person__socialEffect2`
+      }, value.socialIcon && socialIconfn(value.items)) : "", value.personImgUrl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
         className: `premium-person__img`,
         src: `${value.personImgUrl}`,
         alt: "Person"
       }), !value.personImgUrl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_default_image__WEBPACK_IMPORTED_MODULE_5__["default"], {
         className: className
-      })), effectPersonStyle === "effect2" && value.socialIcon ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: `premium-person__socialEffect2`
-      }, value.socialIcon && socialIconfn(value.items)) : ""), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
         className: `premium-person__info`,
         style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_25__.paddingCss)(contentPadding, this.props.deviceType),
           background: contentColor ? contentColor : "#f2f2f2",
@@ -42406,7 +42411,7 @@ class Edit extends Component {
       max: 500,
       step: 1,
       showUnit: true,
-      units: ["px", "em", "%"],
+      units: ["px", "em"],
       defaultValue: 200
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
       label: __("Image Hover Effect", "premium-block-for-gutenberg"),
@@ -42787,7 +42792,9 @@ const save = props => {
       className: `premium-person__img__container`
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: `premium-person__img_wrap`
-    }, value.personImgUrl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    }, effectPersonStyle === 'effect2' ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: `premium-person__socialEffect2`
+    }, value.socialIcon && socialIconfn(value.items)) : "", value.personImgUrl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
       className: `premium-person__img`,
       src: `${value.personImgUrl}`,
       alt: "Person",
@@ -42796,14 +42803,8 @@ const save = props => {
         borderColor: imageBorder === null || imageBorder === void 0 ? void 0 : imageBorder.borderColor
       })
     }), !value.personImgUrl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_default_image__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      className: className,
-      style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_4__.filterJsCss)({
-        borderStyle: imageBorder === null || imageBorder === void 0 ? void 0 : imageBorder.borderType,
-        borderColor: imageBorder === null || imageBorder === void 0 ? void 0 : imageBorder.borderColor
-      })
-    })), effectPersonStyle === 'effect2' ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `premium-person__socialEffect2`
-    }, value.socialIcon && socialIconfn(value.items)) : ""), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: className
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: `premium-person__info`,
       style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_4__.filterJsCss)({
         background: contentColor ? contentColor : "#f2f2f2",

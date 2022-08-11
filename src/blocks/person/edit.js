@@ -426,6 +426,12 @@ class Edit extends Component {
                 '-webkit-transition': `all .2s ease-in-out !important`,
                 'transition': `all .2s ease-in-out !important`,
             };
+            styles[` .${blockId} .premium-person__img_wrap `] = {
+                'height': `${imgHeight[this.props.deviceType]}${imgHeight.unit} !important`,
+                'width': `${imgWidth[this.props.deviceType]}${imgWidth.unit} !important`,
+
+            };
+
             styles[` .${blockId} .premium-person__img_wrap img`] = {
                 "border-style": `${imageBorder?.borderType}`,
                 "border-color": `${imageBorder?.borderColor}`,
@@ -437,8 +443,6 @@ class Edit extends Component {
                 "border-top-right-radius": `${imageBorder?.borderRadius?.[this.props.deviceType]?.right}px!important`,
                 "border-bottom-left-radius": `${imageBorder?.borderRadius?.[this.props.deviceType]?.bottom}px!important`,
                 "border-bottom-right-radius": `${imageBorder?.borderRadius?.[this.props.deviceType]?.left}px!important`,
-                'height': `${imgHeight[this.props.deviceType]}${imgHeight.unit} !important`,
-                'width': `${imgWidth[this.props.deviceType]}${imgWidth.unit} !important`,
                 'filter': `brightness( ${imageFilter.bright}% ) contrast( ${imageFilter.contrast}% ) saturate( ${imageFilter.saturation}% ) blur( ${imageFilter.blur}px ) hue-rotate( ${imageFilter.hue}deg ) !important`
             };
             styles[` .${blockId} .premium-social-media-icon`] = {
@@ -446,6 +450,7 @@ class Edit extends Component {
                 'height': `${socialIconSize[this.props.deviceType]}${socialIconSize.unit} !important`,
                 'width': `${socialIconSize[this.props.deviceType]}${socialIconSize.unit} !important`,
             };
+
             return generateCss(styles);
         }
 
@@ -475,11 +480,9 @@ class Edit extends Component {
             let array = multiPersonContent
                 .map((cont) => cont)
                 .filter((f) => f.id == i + 1);
-
             let newData = array[0].items.filter((b) => {
                 return b;
             });
-
             array[0].items = newData;
             multiPersonContent[i] = array[0];
             setAttributes((multiPersonContent[i] = array[0]));
@@ -558,6 +561,15 @@ class Edit extends Component {
                         >
                             <div className={`premium-person__img__container`}>
                                 <div className={`premium-person__img_wrap`}>
+                                    {effectPersonStyle === "effect2" && value.socialIcon ? (
+                                        <div
+                                            className={`premium-person__socialEffect2`}
+                                        >
+                                            {value.socialIcon && socialIconfn(value.items)}
+                                        </div>
+                                    ) : (
+                                        ""
+                                    )}
                                     {value.personImgUrl && (
                                         <img
                                             className={`premium-person__img`}
@@ -567,15 +579,7 @@ class Edit extends Component {
                                     )}
                                     {!value.personImgUrl && (<DefaultImage className={className} />)}
                                 </div>
-                                {effectPersonStyle === "effect2" && value.socialIcon ? (
-                                    <div
-                                        className={`premium-person__socialEffect2`}
-                                    >
-                                        {value.socialIcon && socialIconfn(value.items)}
-                                    </div>
-                                ) : (
-                                    ""
-                                )}
+
                             </div>
                             <div
                                 className={`premium-person__info`}
@@ -995,7 +999,7 @@ class Edit extends Component {
                                     max={500}
                                     step={1}
                                     showUnit={true}
-                                    units={["px", "em", "%"]}
+                                    units={["px", "em"]}
                                     defaultValue={200}
                                 />
                                 <SelectControl
