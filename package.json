@@ -1,6 +1,6 @@
 {
     "name": "premium-blocks-for-gutenberg",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "description": "**Contributors:** [leap13](https://profiles.wordpress.org/leap13)  \r **Tags:** gutenberg, gutenberg addon, gutenberg addons, gutenberg blocks, gutenberg free blocks  \r **Donate link:** http://leap13.com  \r **Requires at least:** 4.5  \r **Tested up to:** 5.9.3  \r **Requires PHP:** 5.4  \r **Stable tag:** 1.9.8  \r **License:** GPL v3.0  \r **License URI:** https://opensource.org/licenses/GPL-3.0",
     "main": "src/index.js",
     "scripts": {
@@ -30,6 +30,7 @@
     "dependencies": {
         "@fonticonpicker/react-fonticonpicker": "^1.2.0",
         "@wordpress/compose": "^3.2.0",
+        "@wordpress/icons": "^9.6.0",
         "@wordpress/scripts": "^19.2.3",
         "axios": "^0.25.0",
         "bezier-easing": "^2.1.0",
