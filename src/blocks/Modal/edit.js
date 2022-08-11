@@ -12,7 +12,7 @@ const { InnerBlocks, MediaPlaceholder } = wp.blockEditor;
 const { RichText } = wp.editor;
 
 
-const edit = props => {
+const Edit = props => {
 
     const [openModal, setOpenModal] = useState(false)
     const { isSelected, setAttributes, className } = props;
@@ -484,4 +484,4 @@ export default withSelect((select) => {
     return {
         deviceType: deviceType
     }
-})(edit)
+})(Edit)

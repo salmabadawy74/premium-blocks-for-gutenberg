@@ -1283,7 +1283,7 @@ const attributes = {
       "fontWeight": '400',
       'fontStyle': '',
       'textTransform': '',
-      'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+      'fontFamily': __('Default', 'premium-blocks-for-gutenberg'),
       'textDecoration': '',
       'letterSpacing': {
         'Desktop': '',
@@ -1317,7 +1317,7 @@ const attributes = {
         "Mobile": '',
         "unit": 'px'
       },
-      'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+      'fontFamily': __('Default', 'premium-blocks-for-gutenberg'),
       'lineHeight': {
         'Desktop': '',
         "Tablet": '',
@@ -1345,7 +1345,7 @@ const attributes = {
         "Mobile": '',
         "unit": 'px'
       },
-      'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+      'fontFamily': __('Default', 'premium-blocks-for-gutenberg'),
       'lineHeight': {
         'Desktop': '',
         "Tablet": '',
@@ -1373,7 +1373,7 @@ const attributes = {
         "Mobile": '',
         "unit": 'px'
       },
-      'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+      'fontFamily': __('Default', 'premium-blocks-for-gutenberg'),
       'lineHeight': {
         'Desktop': '',
         "Tablet": '',
@@ -3440,7 +3440,7 @@ const {
   RichText
 } = wp.editor;
 
-const edit = props => {
+const Edit = props => {
   const [openModal, setOpenModal] = useState(false);
   const {
     isSelected,
@@ -3876,7 +3876,7 @@ const edit = props => {
   return {
     deviceType: deviceType
   };
-})(edit));
+})(Edit));
 
 /***/ }),
 
@@ -4035,7 +4035,9 @@ const Inspector = _ref => {
     lowerIconWidth,
     hideDesktop,
     hideTablet,
-    hideMobile
+    hideMobile,
+    triggerFilter,
+    triggerHoverFilter
   } = attributes;
 
   const saveContentStyle = value => {
@@ -4576,17 +4578,17 @@ const Inspector = _ref => {
     }),
     defaultValue: 0,
     showUnit: false
-  })), (triggerSettings[0].triggerType === "image" || triggerSettings[0].triggerType === "lottie") && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  })), (triggerSettings[0].triggerType === "image" || triggerSettings[0].triggerType === "lottie") && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
     label: __("Size", 'premium-blocks-for-gutenberg'),
     value: imageWidth,
-    min: "1",
-    max: "800",
     onChange: newValue => setAttributes({
       imageWidth: newValue
     }),
-    defaultValue: 0,
+    units: ['px', 'em', '%'],
     showUnit: true,
-    units: ["px", "em", "rem"]
+    min: "1",
+    max: "800",
+    defaultValue: 0
   }), (triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === 'text') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_6__["default"], {
     value: triggerTypography,
     onChange: newValue => setAttributes({
@@ -5065,7 +5067,7 @@ const save = props => {
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-modal-trigger-container`
-  }, triggerSettings[0].triggerType === "button" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+  }, (triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === "load") && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: `premium-modal-trigger-btn premium-button__${triggerSettings[0].btnSize} `,
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       backgroundColor: triggerStyles[0].triggerBack,
@@ -34459,10 +34461,6 @@ const imageSeparatorAttrs = {
   blockId: {
     type: "string"
   },
-  classMigrate: {
-    type: "boolean",
-    default: false
-  },
   iconAlign: {
     type: "object",
     default: {
@@ -34497,21 +34495,21 @@ const imageSeparatorAttrs = {
   imgFilter: {
     type: "object",
     default: {
-      'contrast': '100',
-      'blur': '0',
-      'bright': '100',
-      'saturation': '100',
-      'hue': '0'
+      contrast: "100",
+      blur: "0",
+      bright: "100",
+      saturation: "100",
+      hue: "0"
     }
   },
   imgFilterHover: {
     type: "object",
     default: {
-      'contrast': '100',
-      'blur': '0',
-      'bright': '100',
-      'saturation': '100',
-      'hue': '0'
+      contrast: "100",
+      blur: "0",
+      bright: "100",
+      saturation: "100",
+      hue: "0"
     }
   },
   linkTarget: {
@@ -34520,10 +34518,10 @@ const imageSeparatorAttrs = {
   },
   imgFit: {
     type: "string",
-    value: 'fill'
+    value: "fill"
   },
   imgMask: {
-    type: 'boolean',
+    type: "boolean",
     default: false
   },
   imgMaskURL: {
@@ -34543,101 +34541,99 @@ const imageSeparatorAttrs = {
   iconStyles: {
     type: "array",
     default: [{
-      icon: "fa fa-bars",
-      iconColor: "#6ec1e4",
-      iconBGColor: "#54595f",
-      iconColorHover: '',
-      iconBGColorHover: '',
-      iconPadding: ".1",
-      iconPaddingTablet: ".1",
-      iconPaddingType: "em",
-      iconPaddingMobile: ".1",
       advancedBorder: false,
-      advancedBorderValue: '',
+      icon: "fa fa-bars",
+      iconColor: "",
+      iconBGColor: "",
+      iconColorHover: "",
+      iconBGColorHover: "",
+      advancedBorderValue: "",
       imgHeightType: "px"
     }]
   },
   iconSize: {
     type: "object",
     default: {
-      Desktop: '200',
-      unit: 'px'
+      Desktop: "200",
+      Tablet: "200",
+      Mobile: "200",
+      unit: "px"
     }
   },
   imgHeight: {
     type: "object",
     default: {
-      Desktop: '200',
-      unit: 'px'
+      Desktop: "200",
+      unit: "px"
     }
   },
   iconBorder: {
     type: "object",
     default: {
-      "borderType": "none",
-      "borderColor": "",
-      "borderWidth": {
+      borderType: "none",
+      borderColor: "",
+      borderWidth: {
         Desktop: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
         },
         Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
         },
         Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
         }
       },
-      "borderRadius": {
+      borderRadius: {
         Desktop: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
         },
         Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
         },
         Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
+          top: "",
+          right: "",
+          bottom: "",
+          left: ""
         }
       }
     }
   },
   hideDesktop: {
-    type: 'boolean',
-    default: ''
+    type: "boolean",
+    default: ""
   },
   hideTablet: {
-    type: 'boolean',
-    default: ''
+    type: "boolean",
+    default: ""
   },
   hideMobile: {
-    type: 'boolean',
-    default: ''
+    type: "boolean",
+    default: ""
   },
   iconPadding: {
     type: "object",
     default: {
       Desktop: {
-        top: "",
-        right: "",
-        bottom: "",
-        left: ""
+        top: ".1",
+        right: ".1",
+        bottom: ".1",
+        left: ".1"
       },
       Tablet: {
         top: "",
@@ -34651,16 +34647,16 @@ const imageSeparatorAttrs = {
         bottom: "",
         left: ""
       },
-      unit: "px"
+      unit: "em"
     }
   },
   iconShadow: {
     type: "object",
     default: {
-      'color': '',
-      'blur': '',
-      'horizontal': '',
-      'vertical': ''
+      color: "undefined",
+      blur: "10",
+      horizontal: "0",
+      vertical: "0"
     }
   }
 };
@@ -35153,7 +35149,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_InsideTabs__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/InsideTabs */ "./src/components/InsideTabs.js");
 /* harmony import */ var _components_InsideTab__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/InsideTab */ "./src/components/InsideTab.js");
 /* harmony import */ var _components_PremiumShadow__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../components/PremiumShadow */ "./src/components/PremiumShadow.js");
-/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+/* harmony import */ var _components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../components/RangeControl/single-range-control */ "./src/components/RangeControl/single-range-control.js");
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+
 
 
 
@@ -35194,7 +35192,7 @@ const {
   withSelect
 } = wp.data;
 
-class edit extends Component {
+class Edit extends Component {
   constructor() {
     super(...arguments);
   }
@@ -35204,15 +35202,8 @@ class edit extends Component {
       setAttributes,
       clientId
     } = this.props;
-
-    if (!this.props.attributes.blockId) {
-      setAttributes({
-        blockId: "premium-image-separator-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.generateBlockId)(clientId)
-      });
-    }
-
     setAttributes({
-      classMigrate: true
+      blockId: "premium-image-separator-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.generateBlockId)(clientId)
     });
   }
 
@@ -35277,36 +35268,39 @@ class edit extends Component {
     const loadStyles = () => {
       const styles = {};
       styles[`.${blockId} .premium-image-separator-container:hover img`] = {
-        'filter': `brightness(${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.bright}% ) contrast(${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.contrast}% ) saturate(${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.saturation}% ) blur(${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.blur}px) hue-rotate(${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.hue}deg)!important`
+        filter: `brightness(${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.bright}% ) contrast(${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.contrast}% ) saturate(${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.saturation}% ) blur(${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.blur}px) hue-rotate(${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.hue}deg)!important`
       };
-      styles[` .${blockId} .premium-image-separator-container i:hover`] = {
-        'color': `${iconStyles[0].iconColorHover} !important`,
-        'background-color': `${iconStyles[0].iconBGColorHover} !important`
+      styles[`.${blockId} .premium-image-separator-container i:hover`] = {
+        color: `${iconStyles[0].iconColorHover} !important`,
+        "background-color": `${iconStyles[0].iconBGColorHover} !important`
       };
-      return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.generateCss)(styles);
+      return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.generateCss)(styles);
     };
 
     const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-image-separator", {
-      ' premium-desktop-hidden': hideDesktop,
-      ' premium-tablet-hidden': hideTablet,
-      ' premium-mobile-hidden': hideMobile
+      " premium-desktop-hidden": hideDesktop,
+      " premium-tablet-hidden": hideTablet,
+      " premium-mobile-hidden": hideMobile
     });
+    let BorderValue = iconStyles[0].advancedBorder ? {
+      borderRadius: iconStyles[0].advancedBorderValue
+    } : (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.borderCss)(iconBorder, this.props.deviceType);
     return [isSelected && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_3__["default"], {
       tabs: ["layout", "style", "advance"]
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_4__["default"], {
       key: "layout"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Separator"),
+      title: __("Separator", "premium-blocks-for-gutenberg"),
       className: "premium-panel-body",
       initialOpen: true
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
-      label: __("Separator Type"),
+      label: __("Separator Type", "premium-blocks-for-gutenberg"),
       value: iconType,
       onChange: newSelect => setAttributes({
         iconType: newSelect
       }),
       options: ICON
-    }), iconType === "icon" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, __("Icon")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)((_fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_5___default()), {
+    }), iconType === "icon" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, __("Icon", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)((_fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_5___default()), {
       icons: _components_premium_icons_list__WEBPACK_IMPORTED_MODULE_2__["default"],
       value: iconStyles[0].icon,
       onChange: value => saveIconStyle({
@@ -35314,7 +35308,7 @@ class edit extends Component {
       }),
       isMulti: false,
       appendTo: "body",
-      noSelectedPlaceholder: __("Select Icon")
+      noSelectedPlaceholder: __("Select Icon", "premium-blocks-for-gutenberg")
     })) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_media_upload__WEBPACK_IMPORTED_MODULE_9__["default"], {
       type: "image",
       imageID: imageID,
@@ -35354,7 +35348,7 @@ class edit extends Component {
       max: 1000,
       step: 1
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
-      label: __("Image Fit"),
+      label: __("Image Fit", "premium-blocks-for-gutenberg"),
       value: imgFit,
       onChange: newSelect => setAttributes({
         imgFit: newSelect
@@ -35369,27 +35363,31 @@ class edit extends Component {
         label: __("Contain", "premium-blocks-for-gutenberg"),
         value: "contain"
       }]
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
-      label: __("Gutter (%)"),
-      type: "Number",
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_18__["default"], {
+      label: __("Gutter (%)", "premium-blocks-for-gutenberg"),
       value: gutter,
+      min: "-500",
+      max: "500",
       onChange: newValue => setAttributes({
         gutter: parseInt(newValue)
       }),
-      help: "-50% is default. Increase to push the image outside or decrease to pull the image inside."
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      defaultValue: -50,
+      showUnit: false
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+      className: `premium_blocks_descrption_range_Control`
+    }, __("-50% is default. Increase to push the image outside or decrease to pull the image inside.", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_10__["default"], {
       label: __("Alignment", "premium-blocks-for-gutenberg"),
       choices: [{
         value: "left",
-        label: __("Left"),
+        label: __("Left", "premium-blocks-for-gutenberg"),
         icon: _components_icons__WEBPACK_IMPORTED_MODULE_11__["default"].alignLeft
       }, {
         value: "center",
-        label: __("Center"),
+        label: __("Center", "premium-blocks-for-gutenberg"),
         icon: _components_icons__WEBPACK_IMPORTED_MODULE_11__["default"].alignCenter
       }, {
         value: "right",
-        label: __("Right"),
+        label: __("Right", "premium-blocks-for-gutenberg"),
         icon: _components_icons__WEBPACK_IMPORTED_MODULE_11__["default"].alignRight
       }],
       value: iconAlign,
@@ -35398,25 +35396,25 @@ class edit extends Component {
       }),
       showIcons: true
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __("Link"),
+      label: __("Link", "premium-blocks-for-gutenberg"),
       checked: link,
       onChange: value => setAttributes({
         link: value
       })
-    }), link && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, __("URL")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
+    }), link && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, __("URL", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
       value: url,
       onChange: value => setAttributes({
         url: value
       }),
-      placeholder: __("Enter URL")
+      placeholder: __("Enter URL", "premium-blocks-for-gutenberg")
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __("Open links in new tab"),
+      label: __("Open links in new tab", "premium-blocks-for-gutenberg"),
       checked: linkTarget,
       onChange: newValue => setAttributes({
         linkTarget: newValue
       })
     })), iconType === "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __("Mask Image Shape"),
+      label: __("Mask Image Shape", "premium-blocks-for-gutenberg"),
       checked: imgMask,
       onChange: newValue => setAttributes({
         imgMask: newValue
@@ -35436,57 +35434,57 @@ class edit extends Component {
         imgMaskID: ""
       })
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
-      label: __("Mask Size"),
+      label: __("Mask Size", "premium-blocks-for-gutenberg"),
       value: maskSize,
       onChange: newSelect => setAttributes({
         maskSize: newSelect
       }),
       options: [{
-        label: "Contain",
+        label: __("Contain", "premium-blocks-for-gutenberg"),
         value: "contain"
       }, {
-        label: "Cover",
+        label: __("Cover", "premium-blocks-for-gutenberg"),
         value: "cover"
       }]
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
-      label: __("Mask Position"),
+      label: __("Mask Position", "premium-blocks-for-gutenberg"),
       value: maskPosition,
       onChange: newSelect => setAttributes({
         maskPosition: newSelect
       }),
       options: [{
-        label: "Center Center",
+        label: __("Center Center", "premium-blocks-for-gutenberg"),
         value: "center center"
       }, {
-        label: "Top Center",
+        label: __("Top Center", "premium-blocks-for-gutenberg"),
         value: "top center"
       }, {
-        label: "Bottom Center",
+        label: __("Bottom Center", "premium-blocks-for-gutenberg"),
         value: "bottom center"
       }]
     }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_4__["default"], {
       key: "style"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Separator"),
+      title: __("Separator", "premium-blocks-for-gutenberg"),
       className: "premium-panel-body",
       initialOpen: true
     }, iconType === "image" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTabs__WEBPACK_IMPORTED_MODULE_15__["default"], null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_16__["default"], {
-      tabTitle: __("Normal")
+      tabTitle: __("Normal", "premium-blocks-for-gutenberg")
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_filters__WEBPACK_IMPORTED_MODULE_8__["default"], {
       value: imgFilter,
       onChange: value => setAttributes({
         imgFilter: value
       })
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_16__["default"], {
-      tabTitle: __("Hover")
+      tabTitle: __("Hover", "premium-blocks-for-gutenberg")
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_filters__WEBPACK_IMPORTED_MODULE_8__["default"], {
-      label: __("Hover CSS Filters"),
+      label: __("Hover CSS Filters", "premium-blocks-for-gutenberg"),
       value: imgFilterHover,
       onChange: value => setAttributes({
         imgFilterHover: value
       })
     }))) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTabs__WEBPACK_IMPORTED_MODULE_15__["default"], null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_16__["default"], {
-      tabTitle: __("Normal")
+      tabTitle: __("Normal", "premium-blocks-for-gutenberg")
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
       label: __("Color", "premium-blocks-for-gutenberg"),
       colorDefault: "",
@@ -35502,7 +35500,7 @@ class edit extends Component {
         iconBGColor: newValue
       })
     }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_16__["default"], {
-      tabTitle: __("Hover")
+      tabTitle: __("Hover", "premium-blocks-for-gutenberg")
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
       label: __("Hover Color", "premium-blocks-for-gutenberg"),
       colorValue: iconStyles[0].iconColorHover,
@@ -35532,7 +35530,7 @@ class edit extends Component {
       showUnits: true,
       responsive: true
     })), !iconStyles[0].advancedBorder && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_13__["default"], {
-      label: __("Border"),
+      label: __("Border", "premium-blocks-for-gutenberg"),
       value: iconBorder,
       onChange: value => setAttributes({
         iconBorder: value
@@ -35559,13 +35557,13 @@ class edit extends Component {
       Tablet: hideTablet,
       Mobile: hideMobile,
       onChangeDesktop: value => setAttributes({
-        hideDesktop: value ? " premium-desktop-hidden" : ""
+        hideDesktop: value
       }),
       onChangeTablet: value => setAttributes({
-        hideTablet: value ? " premium-tablet-hidden" : ""
+        hideTablet: value
       }),
       onChangeMobile: value => setAttributes({
-        hideMobile: value ? " premium-mobile-hidden" : ""
+        hideMobile: value
       })
     })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
       dangerouslySetInnerHTML: {
@@ -35585,17 +35583,16 @@ class edit extends Component {
       }
     }, iconType === "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
       className: `${iconStyles[0].icon}`,
-      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.borderCss)(iconBorder, this.props.deviceType),
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.paddingCss)(iconPadding, this.props.deviceType),
+      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.paddingCss)(iconPadding, this.props.deviceType),
         fontSize: (iconSize[this.props.deviceType] || 200) + iconSize.unit,
         color: iconStyles[0].iconColor,
         backgroundColor: iconStyles[0].iconBGColor,
         textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical || 0}px ${iconShadow.blur || 0}px ${iconShadow.color}`,
-        borderRadius: iconStyles[0].advancedBorder ? iconStyles[0].advancedBorderValue : `${iconBorder.borderRadius[this.props.deviceType].top}px`
+        ...BorderValue
       }
     }), iconType === "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, imageURL ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
       src: imageURL,
-      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.borderCss)(iconBorder, this.props.deviceType),
+      style: { ...BorderValue,
         maskSize: `${maskSize}`,
         maskPosition: `${maskPosition}`,
         maskImage: imgMaskURL ? `url("${imgMaskURL}")` : "",
@@ -35604,8 +35601,7 @@ class edit extends Component {
         WebkitMaskPosition: `${maskPosition}`,
         objectFit: `${imgFit}`,
         height: (imgHeight[this.props.deviceType] || 200) + iconSize.unit,
-        width: (iconSize[this.props.deviceType] || 200) + iconSize.unit,
-        borderRadius: iconStyles[0].advancedBorder ? iconStyles[0].advancedBorderValue : `${iconBorder.borderRadius[this.props.deviceType].top}px`
+        width: (iconSize[this.props.deviceType] || 200) + iconSize.unit
       }
     }) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(MediaPlaceholder, {
       labels: {
@@ -35632,7 +35628,7 @@ class edit extends Component {
 
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (withSelect((select, props) => {
+/* harmony default export */ __webpack_exports__["default"] = (withSelect(select => {
   const {
     __experimentalGetPreviewDeviceType = null
   } = select("core/edit-post");
@@ -35640,7 +35636,7 @@ class edit extends Component {
   return {
     deviceType: deviceType
   };
-})(edit));
+})(Edit));
 
 /***/ }),
 
@@ -35671,11 +35667,12 @@ const {
   registerBlockType
 } = wp.blocks;
 registerBlockType("premium/image-separator", {
-  title: __("Image Separator"),
-  description: __('Separate between your Gutenberg sections using Premium Image Separator Block.'),
+  title: __("Image Separator", "premium-blocks-for-gutenberg"),
+  description: __('Separate between your Gutenberg sections using Premium Image Separator Block.', "premium-blocks-for-gutenberg"),
   icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].image_separator,
   category: "premium-blocks",
   attributes: _attributes__WEBPACK_IMPORTED_MODULE_4__["default"],
+  keywords: [__("image", "premium-blocks-for-gutenberg"), __("seperator", "premium-blocks-for-gutenberg")],
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.imageSeparator
   },
@@ -35757,10 +35754,10 @@ function save(props) {
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-image-separator-container`,
-    style: {
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       transform: `translateY(${gutter}%)`,
       filter: iconType === 'image' ? `brightness( ${imgFilter === null || imgFilter === void 0 ? void 0 : imgFilter.bright}% ) contrast( ${imgFilter === null || imgFilter === void 0 ? void 0 : imgFilter.contrast}% ) saturate( ${imgFilter === null || imgFilter === void 0 ? void 0 : imgFilter.saturation}% ) blur( ${imgFilter === null || imgFilter === void 0 ? void 0 : imgFilter.blur}px ) hue-rotate( ${imgFilter === null || imgFilter === void 0 ? void 0 : imgFilter.hue}deg )` : ""
-    }
+    })
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     className: "premium-image-separator-link",
     href: link && url,
@@ -35768,18 +35765,18 @@ function save(props) {
     rel: "noopener noreferrer"
   }, iconType === 'icon' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
     className: `${iconStyles[0].icon}`,
-    style: {
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       color: iconStyles[0].iconColor,
       backgroundColor: iconStyles[0].iconBGColor,
       borderColor: iconBorder.borderColor,
       borderStyle: iconBorder.borderType,
       textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical || 0}px ${iconShadow.blur || 0}px ${iconShadow.color}`
-    }
+    })
   }), iconType === 'image' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: imageURL,
-    style: {
-      borderColor: iconBorder.borderColor,
-      borderStyle: iconBorder.borderType,
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+      borderColor: iconStyles[0].advancedBorder ? "" : iconBorder.borderColor,
+      borderStyle: iconStyles[0].advancedBorder ? "" : iconBorder.borderType,
       maskSize: `${maskSize}`,
       maskPosition: `${maskPosition}`,
       maskImage: imgMaskURL ? `url("${imgMaskURL}")` : '',
@@ -35787,7 +35784,7 @@ function save(props) {
       WebkitMaskSize: `${maskSize}`,
       WebkitMaskPosition: `${maskPosition}`,
       objectFit: `${imgFit}`
-    }
+    })
   }))));
 }
 

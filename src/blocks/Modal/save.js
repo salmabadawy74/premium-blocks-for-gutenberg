@@ -85,7 +85,7 @@ const save = props => {
             />
             <div className={`premium-modal-trigger-container`}
             >
-                {(triggerSettings[0].triggerType === "button") &&
+                {(triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === "load") &&
                     <button className={`premium-modal-trigger-btn premium-button__${triggerSettings[0].btnSize} `}
                         style={filterJsCss({
                             backgroundColor: triggerStyles[0].triggerBack,

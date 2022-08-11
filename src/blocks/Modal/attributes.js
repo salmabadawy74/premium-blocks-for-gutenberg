@@ -554,7 +554,7 @@ const attributes = {
             "fontWeight": '400',
             'fontStyle': '',
             'textTransform': '',
-            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+            'fontFamily': __('Default', 'premium-blocks-for-gutenberg'),
             'textDecoration': '',
             'letterSpacing': {
                 'Desktop': '',
@@ -588,7 +588,7 @@ const attributes = {
                 "Mobile": '',
                 "unit": 'px'
             },
-            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+            'fontFamily': __('Default', 'premium-blocks-for-gutenberg'),
             'lineHeight': {
                 'Desktop': '',
                 "Tablet": '',
@@ -616,7 +616,7 @@ const attributes = {
                 "Mobile": '',
                 "unit": 'px'
             },
-            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+            'fontFamily': __('Default', 'premium-blocks-for-gutenberg'),
             'lineHeight': {
                 'Desktop': '',
                 "Tablet": '',
@@ -644,7 +644,7 @@ const attributes = {
                 "Mobile": '',
                 "unit": 'px'
             },
-            'fontFamily': __('Default', 'premium - blocks -for-gutenberg'),
+            'fontFamily': __('Default', 'premium-blocks-for-gutenberg'),
             'lineHeight': {
                 'Desktop': '',
                 "Tablet": '',

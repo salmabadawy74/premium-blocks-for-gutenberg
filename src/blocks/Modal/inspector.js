@@ -72,6 +72,8 @@ const Inspector = ({
         hideDesktop,
         hideTablet,
         hideMobile,
+        triggerFilter,
+        triggerHoverFilter
     } = attributes;
 
     const saveContentStyle = (value) => {
@@ -513,15 +515,15 @@ const Inspector = ({
                                 </Fragment>
                             )}
                             {(triggerSettings[0].triggerType === "image" || triggerSettings[0].triggerType === "lottie") && (
-                                <ResponsiveSingleRangeControl
+                                <ResponsiveRangeControl
                                     label={__("Size", 'premium-blocks-for-gutenberg')}
                                     value={imageWidth}
+                                    onChange={newValue => setAttributes({ imageWidth: newValue })}
+                                    units={['px', 'em', '%']}
+                                    showUnit={true}
                                     min="1"
                                     max="800"
-                                    onChange={newValue => setAttributes({ imageWidth: newValue })}
                                     defaultValue={0}
-                                    showUnit={true}
-                                    units={["px", "em", "rem"]}
                                 />
                             )}
                             {(triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === 'text') && (

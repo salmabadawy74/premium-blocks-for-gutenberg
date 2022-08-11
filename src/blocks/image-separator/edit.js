@@ -15,12 +15,9 @@ import SpacingControl from "../../components/premium-responsive-spacing";
 import InsideTabs from "../../components/InsideTabs";
 import InsideTab from "../../components/InsideTab";
 import PremiumShadow from "../../components/PremiumShadow";
-import {
-    borderCss,
-    paddingCss,
-    generateBlockId,
-    generateCss
-} from "../../components/HelperFunction";
+
+import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
+import { borderCss, paddingCss, generateBlockId, generateCss } from "../../components/HelperFunction";
 
 const { __ } = wp.i18n;
 
@@ -31,19 +28,16 @@ const { MediaPlaceholder, InspectorControls } = wp.editor;
 const { PanelBody, SelectControl, TextControl, ToggleControl } = wp.components;
 const { withSelect } = wp.data;
 
-class edit extends Component {
+class Edit extends Component {
     constructor() {
         super(...arguments);
     }
 
     componentDidMount() {
         const { setAttributes, clientId } = this.props;
-        if (!this.props.attributes.blockId) {
-            setAttributes({
-                blockId: "premium-image-separator-" + generateBlockId(clientId),
-            });
-        }
-        setAttributes({ classMigrate: true });
+        setAttributes({
+            blockId: "premium-image-separator-" + generateBlockId(clientId),
+        });
     }
 
     render() {
@@ -100,25 +94,27 @@ class edit extends Component {
             setAttributes({ iconStyles: newUpdate });
         };
 
-
-
         const loadStyles = () => {
             const styles = {};
             styles[`.${blockId} .premium-image-separator-container:hover img`] = {
-                'filter': `brightness(${imgFilterHover?.bright}% ) contrast(${imgFilterHover?.contrast}% ) saturate(${imgFilterHover?.saturation}% ) blur(${imgFilterHover?.blur}px) hue-rotate(${imgFilterHover?.hue}deg)!important`
+                filter: `brightness(${imgFilterHover?.bright}% ) contrast(${imgFilterHover?.contrast}% ) saturate(${imgFilterHover?.saturation}% ) blur(${imgFilterHover?.blur}px) hue-rotate(${imgFilterHover?.hue}deg)!important`,
             };
-            styles[` .${blockId} .premium-image-separator-container i:hover`] = {
-                'color': `${iconStyles[0].iconColorHover} !important`,
-                'background-color': `${iconStyles[0].iconBGColorHover} !important`
+            styles[`.${blockId} .premium-image-separator-container i:hover`] = {
+                color: `${iconStyles[0].iconColorHover} !important`,
+                "background-color": `${iconStyles[0].iconBGColorHover} !important`
             };
             return generateCss(styles);
-        }
+        };
 
         const mainClasses = classnames(className, "premium-image-separator", {
-            ' premium-desktop-hidden': hideDesktop,
-            ' premium-tablet-hidden': hideTablet,
-            ' premium-mobile-hidden': hideMobile,
+            " premium-desktop-hidden": hideDesktop,
+            " premium-tablet-hidden": hideTablet,
+            " premium-mobile-hidden": hideMobile,
         });
+
+        let BorderValue = iconStyles[0].advancedBorder
+            ? { borderRadius: iconStyles[0].advancedBorderValue }
+            : borderCss(iconBorder, this.props.deviceType);
 
         return [
             isSelected && (
@@ -126,32 +122,26 @@ class edit extends Component {
                     <InspectorTabs tabs={["layout", "style", "advance"]}>
                         <InspectorTab key={"layout"}>
                             <PanelBody
-                                title={__("Separator")}
+                                title={__("Separator", "premium-blocks-for-gutenberg")}
                                 className="premium-panel-body"
                                 initialOpen={true}
                             >
                                 <SelectControl
-                                    label={__("Separator Type")}
+                                    label={__("Separator Type", "premium-blocks-for-gutenberg")}
                                     value={iconType}
-                                    onChange={(newSelect) =>
-                                        setAttributes({ iconType: newSelect })
-                                    }
+                                    onChange={(newSelect) => setAttributes({ iconType: newSelect })}
                                     options={ICON}
                                 />
                                 {iconType === "icon" ? (
                                     <Fragment>
-                                        <p>{__("Icon")}</p>
+                                        <p>{__("Icon", "premium-blocks-for-gutenberg")}</p>
                                         <FontIconPicker
                                             icons={iconsList}
                                             value={iconStyles[0].icon}
-                                            onChange={(value) =>
-                                                saveIconStyle({ icon: value })
-                                            }
+                                            onChange={(value) => saveIconStyle({ icon: value })}
                                             isMulti={false}
                                             appendTo="body"
-                                            noSelectedPlaceholder={__(
-                                                "Select Icon"
-                                            )}
+                                            noSelectedPlaceholder={__("Select Icon", "premium-blocks-for-gutenberg")}
                                         />
                                     </Fragment>
                                 ) : (
@@ -212,7 +202,7 @@ class edit extends Component {
                                             step={1}
                                         />
                                         <SelectControl
-                                            label={__("Image Fit")}
+                                            label={__("Image Fit", "premium-blocks-for-gutenberg")}
                                             value={imgFit}
                                             onChange={(newSelect) =>
                                                 setAttributes({
@@ -220,63 +210,44 @@ class edit extends Component {
                                                 })
                                             }
                                             options={[
-                                                {
-                                                    label: __(
-                                                        "Cover",
-                                                        "premium-blocks-for-gutenberg"
-                                                    ),
-                                                    value: "cover",
-                                                },
-                                                {
-                                                    label: __(
-                                                        "Fill",
-                                                        "premium-blocks-for-gutenberg"
-                                                    ),
-                                                    value: "fill",
-                                                },
-                                                {
-                                                    label: __(
-                                                        "Contain",
-                                                        "premium-blocks-for-gutenberg"
-                                                    ),
-                                                    value: "contain",
-                                                },
+                                                { label: __("Cover", "premium-blocks-for-gutenberg"), value: "cover" },
+                                                { label: __("Fill", "premium-blocks-for-gutenberg"), value: "fill" },
+                                                { label: __("Contain", "premium-blocks-for-gutenberg"), value: "contain" },
                                             ]}
                                         />
                                     </Fragment>
                                 )}
-                                <TextControl
-                                    label={__("Gutter (%)")}
-                                    type="Number"
+
+                                <ResponsiveSingleRangeControl
+                                    label={__(
+                                        "Gutter (%)",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     value={gutter}
+                                    min="-500"
+                                    max="500"
                                     onChange={(newValue) =>
                                         setAttributes({
                                             gutter: parseInt(newValue),
                                         })
                                     }
-                                    help="-50% is default. Increase to push the image outside or decrease to pull the image inside."
+                                    defaultValue={-50}
+                                    showUnit={false}
                                 />
-                                <ResponsiveRadioControl
-                                    label={__(
-                                        "Alignment",
+                                <p
+                                    className={`premium_blocks_descrption_range_Control`}
+                                >
+                                    {__(
+                                        "-50% is default. Increase to push the image outside or decrease to pull the image inside.",
                                         "premium-blocks-for-gutenberg"
                                     )}
+                                </p>
+                                <ResponsiveRadioControl
+                                    label={__("Alignment", "premium-blocks-for-gutenberg")}
                                     choices={[
-                                        {
-                                            value: "left",
-                                            label: __("Left"),
-                                            icon: Icons.alignLeft,
-                                        },
-                                        {
-                                            value: "center",
-                                            label: __("Center"),
-                                            icon: Icons.alignCenter,
-                                        },
-                                        {
-                                            value: "right",
-                                            label: __("Right"),
-                                            icon: Icons.alignRight,
-                                        },
+                                        { value: "left", label: __("Left", "premium-blocks-for-gutenberg"), icon: Icons.alignLeft },
+                                        { value: "center", label: __("Center", "premium-blocks-for-gutenberg"), icon: Icons.alignCenter },
+                                        { value: "right", label: __("Right", "premium-blocks-for-gutenberg"), icon: Icons.alignRight }
                                     ]}
                                     value={iconAlign}
                                     onChange={(newValue) =>
@@ -285,7 +256,7 @@ class edit extends Component {
                                     showIcons={true}
                                 />
                                 <ToggleControl
-                                    label={__("Link")}
+                                    label={__("Link", "premium-blocks-for-gutenberg")}
                                     checked={link}
                                     onChange={(value) =>
                                         setAttributes({ link: value })
@@ -293,16 +264,16 @@ class edit extends Component {
                                 />
                                 {link && (
                                     <Fragment>
-                                        <p>{__("URL")}</p>
+                                        <p>{__("URL", "premium-blocks-for-gutenberg")}</p>
                                         <TextControl
                                             value={url}
                                             onChange={(value) =>
                                                 setAttributes({ url: value })
                                             }
-                                            placeholder={__("Enter URL")}
+                                            placeholder={__("Enter URL", "premium-blocks-for-gutenberg")}
                                         />
                                         <ToggleControl
-                                            label={__("Open links in new tab")}
+                                            label={__("Open links in new tab", "premium-blocks-for-gutenberg")}
                                             checked={linkTarget}
                                             onChange={(newValue) =>
                                                 setAttributes({
@@ -315,7 +286,7 @@ class edit extends Component {
                                 {iconType === "image" && (
                                     <Fragment>
                                         <ToggleControl
-                                            label={__("Mask Image Shape")}
+                                            label={__("Mask Image Shape", "premium-blocks-for-gutenberg")}
                                             checked={imgMask}
                                             onChange={(newValue) =>
                                                 setAttributes({
@@ -345,7 +316,7 @@ class edit extends Component {
                                                 />
 
                                                 <SelectControl
-                                                    label={__("Mask Size")}
+                                                    label={__("Mask Size", "premium-blocks-for-gutenberg")}
                                                     value={maskSize}
                                                     onChange={(newSelect) =>
                                                         setAttributes({
@@ -353,38 +324,31 @@ class edit extends Component {
                                                         })
                                                     }
                                                     options={[
-                                                        {
-                                                            label: "Contain",
-                                                            value: "contain",
-                                                        },
-                                                        {
-                                                            label: "Cover",
-                                                            value: "cover",
-                                                        },
+                                                        { label: __("Contain", "premium-blocks-for-gutenberg"), value: "contain" },
+                                                        { label: __("Cover", "premium-blocks-for-gutenberg"), value: "cover" }
                                                     ]}
                                                 />
 
                                                 <SelectControl
-                                                    label={__("Mask Position")}
+                                                    label={__("Mask Position", "premium-blocks-for-gutenberg")}
                                                     value={maskPosition}
                                                     onChange={(newSelect) =>
                                                         setAttributes({
-                                                            maskPosition:
-                                                                newSelect,
+                                                            maskPosition: newSelect,
                                                         })
                                                     }
                                                     options={[
                                                         {
-                                                            label: "Center Center",
-                                                            value: "center center",
+                                                            label: __("Center Center", "premium-blocks-for-gutenberg"),
+                                                            value: "center center"
                                                         },
                                                         {
-                                                            label: "Top Center",
-                                                            value: "top center",
+                                                            label: __("Top Center", "premium-blocks-for-gutenberg"),
+                                                            value: "top center"
                                                         },
                                                         {
-                                                            label: "Bottom Center",
-                                                            value: "bottom center",
+                                                            label: __("Bottom Center", "premium-blocks-for-gutenberg"),
+                                                            value: "bottom center"
                                                         },
                                                     ]}
                                                 />
@@ -396,30 +360,38 @@ class edit extends Component {
                         </InspectorTab>
                         <InspectorTab key={"style"}>
                             <PanelBody
-                                title={__("Separator")}
+                                title={__("Separator", "premium-blocks-for-gutenberg")}
                                 className="premium-panel-body"
                                 initialOpen={true}
                             >
                                 {iconType === "image" ? (
                                     <InsideTabs>
-                                        <InsideTab tabTitle={__("Normal")}>
+                                        <InsideTab tabTitle={__("Normal", "premium-blocks-for-gutenberg")}>
                                             <PremiumFilters
                                                 value={imgFilter}
-                                                onChange={(value) => setAttributes({ imgFilter: value })}
+                                                onChange={(value) =>
+                                                    setAttributes({
+                                                        imgFilter: value,
+                                                    })
+                                                }
                                             />
                                         </InsideTab>
-                                        <InsideTab tabTitle={__("Hover")}>
+                                        <InsideTab tabTitle={__("Hover", "premium-blocks-for-gutenberg")}>
                                             <PremiumFilters
-                                                label={__("Hover CSS Filters")}
+                                                label={__("Hover CSS Filters", "premium-blocks-for-gutenberg")}
                                                 value={imgFilterHover}
-                                                onChange={(value) => setAttributes({ imgFilterHover: value })}
+                                                onChange={(value) =>
+                                                    setAttributes({
+                                                        imgFilterHover: value,
+                                                    })
+                                                }
                                             />
                                         </InsideTab>
                                     </InsideTabs>
                                 ) : (
                                     <Fragment>
                                         <InsideTabs>
-                                            <InsideTab tabTitle={__("Normal")}>
+                                            <InsideTab tabTitle={__("Normal", "premium-blocks-for-gutenberg")}>
                                                 <Fragment>
                                                     <AdvancedPopColorControl
                                                         label={__(
@@ -435,8 +407,7 @@ class edit extends Component {
                                                             newValue
                                                         ) =>
                                                             saveIconStyle({
-                                                                iconColor:
-                                                                    newValue,
+                                                                iconColor: newValue,
                                                             })
                                                         }
                                                     />
@@ -454,14 +425,13 @@ class edit extends Component {
                                                             newValue
                                                         ) =>
                                                             saveIconStyle({
-                                                                iconBGColor:
-                                                                    newValue,
+                                                                iconBGColor: newValue,
                                                             })
                                                         }
                                                     />
                                                 </Fragment>
                                             </InsideTab>
-                                            <InsideTab tabTitle={__("Hover")}>
+                                            <InsideTab tabTitle={__("Hover", "premium-blocks-for-gutenberg")}>
                                                 <Fragment>
                                                     <AdvancedPopColorControl
                                                         label={__(
@@ -476,8 +446,7 @@ class edit extends Component {
                                                             newValue
                                                         ) =>
                                                             saveIconStyle({
-                                                                iconColorHover:
-                                                                    newValue,
+                                                                iconColorHover: newValue,
                                                             })
                                                         }
                                                         colorDefault={""}
@@ -495,8 +464,7 @@ class edit extends Component {
                                                             newValue
                                                         ) =>
                                                             saveIconStyle({
-                                                                iconBGColorHover:
-                                                                    newValue,
+                                                                iconBGColorHover: newValue,
                                                             })
                                                         }
                                                         colorDefault={""}
@@ -534,7 +502,7 @@ class edit extends Component {
                                 )}
                                 {!iconStyles[0].advancedBorder && (
                                     <PremiumBorder
-                                        label={__("Border")}
+                                        label={__("Border", "premium-blocks-for-gutenberg")}
                                         value={iconBorder}
                                         onChange={(value) =>
                                             setAttributes({ iconBorder: value })
@@ -591,23 +559,17 @@ class edit extends Component {
                                 Mobile={hideMobile}
                                 onChangeDesktop={(value) =>
                                     setAttributes({
-                                        hideDesktop: value
-                                            ? " premium-desktop-hidden"
-                                            : "",
+                                        hideDesktop: value,
                                     })
                                 }
                                 onChangeTablet={(value) =>
                                     setAttributes({
-                                        hideTablet: value
-                                            ? " premium-tablet-hidden"
-                                            : "",
+                                        hideTablet: value,
                                     })
                                 }
                                 onChangeMobile={(value) =>
                                     setAttributes({
-                                        hideMobile: value
-                                            ? " premium-mobile-hidden"
-                                            : "",
+                                        hideMobile: value,
                                     })
                                 }
                             />
@@ -615,9 +577,7 @@ class edit extends Component {
                     </InspectorTabs>
                 </InspectorControls>
             ),
-            <style
-                dangerouslySetInnerHTML={{ __html: loadStyles() }}
-            />,
+            <style dangerouslySetInnerHTML={{ __html: loadStyles() }} />,
             <div
                 className={`${mainClasses} ${blockId}`}
                 style={{ textAlign: iconAlign[this.props.deviceType] }}
@@ -637,25 +597,14 @@ class edit extends Component {
                         <i
                             className={`${iconStyles[0].icon}`}
                             style={{
-                                ...borderCss(iconBorder, this.props.deviceType),
-                                ...paddingCss(
-                                    iconPadding,
-                                    this.props.deviceType
-                                ),
-                                fontSize:
-                                    (iconSize[this.props.deviceType] || 200) +
-                                    iconSize.unit,
+                                ...paddingCss(iconPadding, this.props.deviceType),
+                                fontSize: (iconSize[this.props.deviceType] || 200) + iconSize.unit,
                                 color: iconStyles[0].iconColor,
                                 backgroundColor: iconStyles[0].iconBGColor,
                                 textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical || 0
                                     }px ${iconShadow.blur || 0}px ${iconShadow.color
                                     }`,
-                                borderRadius: iconStyles[0].advancedBorder
-                                    ? iconStyles[0].advancedBorderValue
-                                    : `${iconBorder.borderRadius[
-                                        this.props.deviceType
-                                    ].top
-                                    }px`,
+                                ...BorderValue,
                             }}
                         />
                     )}
@@ -665,10 +614,7 @@ class edit extends Component {
                                 <img
                                     src={imageURL}
                                     style={{
-                                        ...borderCss(
-                                            iconBorder,
-                                            this.props.deviceType
-                                        ),
+                                        ...BorderValue,
                                         maskSize: `${maskSize}`,
                                         maskPosition: `${maskPosition}`,
                                         maskImage: imgMaskURL
@@ -686,13 +632,6 @@ class edit extends Component {
                                         width:
                                             (iconSize[this.props.deviceType] ||
                                                 200) + iconSize.unit,
-                                        borderRadius: iconStyles[0]
-                                            .advancedBorder
-                                            ? iconStyles[0].advancedBorderValue
-                                            : `${iconBorder.borderRadius[
-                                                this.props.deviceType
-                                            ].top
-                                            }px`,
                                     }}
                                 />
                             ) : (
@@ -735,9 +674,10 @@ class edit extends Component {
     }
 }
 
-export default withSelect((select, props) => {
-    const { __experimentalGetPreviewDeviceType = null } =
-        select("core/edit-post");
+export default withSelect((select) => {
+    const { __experimentalGetPreviewDeviceType = null } = select(
+        "core/edit-post"
+    );
     let deviceType = __experimentalGetPreviewDeviceType
         ? __experimentalGetPreviewDeviceType()
         : null;
@@ -745,4 +685,4 @@ export default withSelect((select, props) => {
     return {
         deviceType: deviceType,
     };
-})(edit);
+})(Edit);
