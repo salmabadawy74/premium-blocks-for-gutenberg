@@ -1,5 +1,5 @@
 :root {
-    --pbBacgroundColor: rgb(242, 242, 242);
+    --pbBackgroundColor: rgb(242, 242, 242);
     --pbBorderColor: #e1e1e1;
     --pbiconHoverColor: #696969;
     --pbprimaryColor: #793dc3;
@@ -376,7 +376,7 @@ a.premium-dheading-block__link:hover {
     bottom: 0;
     padding: 15px;
     height: auto;
-    background: var(--pbBacgroundColor);
+    background: var(--pbBackgroundColor);
     color: #3c4a50;
     -webkit-transition: -webkit-transform 0.35s;
     transition: -webkit-transform 0.35s;
@@ -1421,7 +1421,7 @@ a.premium-dheading-block__link:hover {
     -ms-transition: all 0.2s ease-in-out !important;
     -o-transition: all 0.2s ease-in-out !important;
     transition: all 0.2s ease-in-out !important;
-    background: var(--pbBacgroundColor);
+    background: var(--pbBackgroundColor);
     text-decoration: none;
     white-space: normal;
     word-break: break-all;
@@ -1703,7 +1703,7 @@ a.premium-dheading-block__link:hover {
 .premium-accordion .premium-accordion__title_wrap {
     text-align: left;
     cursor: pointer;
-    background-color: var(--pbBacgroundColor);
+    background-color: var(--pbBackgroundColor);
     overflow: hidden;
     z-index: 1;
     position: relative;
@@ -3529,7 +3529,7 @@ a.premium-dheading-block__link:hover {
     user-select: none;
     background-image: none;
     border: 1px solid transparent;
-    background-color: var(--pbBacgroundColor);
+    background-color: var(--pbBackgroundColor);
 }
 
 .premium-modal-trigger-btn > svg,
