@@ -262,6 +262,7 @@ $gray-80: #2c3338;
     z-index: 999;
     overflow-y: auto;
     padding: 20px;
+    border: 1px solid var(--pbBorderColor);
     a {
         display: inline-flex;
         flex-direction: column;

@@ -8,7 +8,7 @@ jQuery(function ($) {
             fancyStrings = strings.split(",")
         if (effect === 'typing') {
             let instance = null;
-            instance = new Typed(`#${id} .premium-fancy-text-title`, {
+            instance = new Typed(`#${id} .premium-fancy-text-title-type`, {
                 strings: fancyStrings,
                 typeSpeed: $elem.data('typespeed'),
                 backSpeed: $elem.data('backspeed'),
