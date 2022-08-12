@@ -154,7 +154,7 @@ function SearchEdit({
 	const buttonPositionControls = [
 		{
 			role: 'menuitemradio',
-			title: __('Button outside'),
+			title: __('Button outside', 'premium-blocks-for-gutenberg'),
 			isActive: buttonPosition === 'button-outside',
 			icon: buttonOutside,
 			onClick: () => {
@@ -165,7 +165,7 @@ function SearchEdit({
 		},
 		{
 			role: 'menuitemradio',
-			title: __('Button inside'),
+			title: __('Button inside', 'premium-blocks-for-gutenberg'),
 			isActive: buttonPosition === 'button-inside',
 			icon: buttonInside,
 			onClick: () => {
@@ -176,7 +176,7 @@ function SearchEdit({
 		},
 		{
 			role: 'menuitemradio',
-			title: __('No button'),
+			title: __('No button', 'premium-blocks-for-gutenberg'),
 			isActive: buttonPosition === 'no-button',
 			icon: noButton,
 			onClick: () => {
@@ -219,7 +219,6 @@ function SearchEdit({
 
 	const onChangeSpacing = (value) => {
 		const newSpacing = { ...spacing, ...value };
-		console.log(newSpacing);
 		setAttributes({ spacing: newSpacing });
 	}
 
@@ -266,12 +265,12 @@ function SearchEdit({
 				type="search"
 				className={textFieldClasses}
 				style={styles}
-				aria-label={__('Optional placeholder text')}
+				aria-label={__('Optional placeholder text', 'premium-blocks-for-gutenberg')}
 				// We hide the placeholder field's placeholder when there is a value. This
 				// stops screen readers from reading the placeholder field's placeholder
 				// which is confusing.
 				placeholder={
-					placeholder ? undefined : __('Optional placeholder…')
+					placeholder ? undefined : __('Optional placeholder…', 'premium-blocks-for-gutenberg')
 				}
 				value={placeholder}
 				onChange={(event) => {
@@ -314,7 +313,7 @@ function SearchEdit({
 						aria-label={
 							buttonText
 								? stripHTML(buttonText)
-								: __('Search')
+								: __('Search', 'premium-blocks-for-gutenberg')
 						}
 						onClick={onClickHandler}
 					>
@@ -325,9 +324,9 @@ function SearchEdit({
 				{!buttonUseIcon && (
 					<RichText
 						className={buttonClasses}
-						aria-label={__('Button text')}
+						aria-label={__('Button text', 'premium-blocks-for-gutenberg')}
 						style={butttonStyles}
-						placeholder={__('Add button text…')}
+						placeholder={__('Add button text…', 'premium-blocks-for-gutenberg')}
 						withoutInteractiveFormatting
 						value={buttonText}
 						onChange={(html) =>
@@ -345,7 +344,7 @@ function SearchEdit({
 			<BlockControls>
 				<ToolbarGroup>
 					<ToolbarButton
-						title={__('Toggle search label')}
+						title={__('Toggle search label', 'premium-blocks-for-gutenberg')}
 						icon={toggleLabel}
 						onClick={() => {
 							setAttributes({
@@ -356,12 +355,12 @@ function SearchEdit({
 					/>
 					{formStyle === 'default' && <ToolbarDropdownMenu
 						icon={getButtonPositionIcon()}
-						label={__('Change button position')}
+						label={__('Change button position', 'premium-blocks-for-gutenberg')}
 						controls={buttonPositionControls}
 					/>}
 					{!hasNoButton && (
 						<ToolbarButton
-							title={__('Use button with icon')}
+							title={__('Use button with icon', 'premium-blocks-for-gutenberg')}
 							icon={buttonWithIcon}
 							onClick={() => {
 								setAttributes({
@@ -379,7 +378,7 @@ function SearchEdit({
 			<InspectorControls>
 				<InspectorTabs tabs={['layout', 'style', 'advance']}>
 					<InspectorTab key={'layout'}>
-						<PanelBody title={__('Display Settings')}>
+						<PanelBody title={__('Display Settings', 'premium-blocks-for-gutenberg')}>
 							<ToggleControl
 								checked={ajaxSearch}
 								onChange={(value) => {
@@ -387,12 +386,12 @@ function SearchEdit({
 										ajaxSearch: value,
 									});
 								}}
-								label={__('Enable Ajax Search')}
+								label={__('Enable Ajax Search', 'premium-blocks-for-gutenberg')}
 							/>
 						</PanelBody>
 					</InspectorTab>
 					<InspectorTab key={'style'}>
-						<PanelBody title={__('General')}>
+						<PanelBody title={__('General', 'premium-blocks-for-gutenberg')}>
 							<SelectControl
 								label={__("From Style", 'premium-blocks-for-gutenberg')}
 								options={[
@@ -595,7 +594,7 @@ function SearchEdit({
 							<SpacingComponent value={buttonPadding} responsive={true} showUnits={true} label={__('Button Padding')} onChange={(value) => onChangeSpacing({ buttonPadding: value })} />
 						</PanelBody>
 						{ajaxSearch && (
-							<PanelBody title={formStyle === 'button' ? __('Modal') : __('Dropdown')}>
+							<PanelBody title={formStyle === 'button' ? __('Modal', 'premium-blocks-for-gutenberg') : __('Dropdown', 'premium-blocks-for-gutenberg')}>
 								<TabPanel
 									className="premium-color-tabpanel"
 									activeClass="active-tab"
@@ -764,8 +763,8 @@ function SearchEdit({
 				<RichText
 					className="wp-block-premium-search__label"
 					style={labelStyles}
-					aria-label={__('Label text')}
-					placeholder={__('Add label…')}
+					aria-label={__('Label text', 'premium-blocks-for-gutenberg')}
+					placeholder={__('Add label…', 'premium-blocks-for-gutenberg')}
 					withoutInteractiveFormatting
 					value={label}
 					onChange={(html) => setAttributes({ label: html })}
@@ -852,7 +851,7 @@ function SearchEdit({
 				<Modal isOpen={isVisibility} setIsOpen={setIsVisibility}>
 					<div className='premium-advanced-search-form'>
 						<div>
-							<input type='search' placeholder={__("Search")} onChange={(e) => inputChangeHandler(e)} />
+							<input type='search' placeholder={__("Search", "premium-blocks-for-gutenberg")} onChange={(e) => inputChangeHandler(e)} />
 							<div className='premium-advanced-search-icon'>
 								<Icon icon={search} />
 							</div>

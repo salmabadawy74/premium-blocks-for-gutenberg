@@ -64,15 +64,18 @@ const attributes = {
     },
     listItems: {
         type: "array",
+        //source: "html",
         source: "children",
         selector: ".premium-pricing-table__list",
-        default: [__("List Item #1")]
+        default: [...Array(3).keys()]
+            .map((i) => `<li>${__(`Item ${i + 1}`)}</li>`)
+            .join()
     },
     blockId: {
         type: "string"
     },
     classMigrate: {
-        type: 'boolean',
+        type: "boolean",
         default: false
     },
     hideDesktop: {
@@ -84,7 +87,7 @@ const attributes = {
         default: false
     },
     hideMobile: {
-        type: 'boolean',
+        type: "boolean",
         default: false
     },
     titleStyles: {
@@ -92,7 +95,7 @@ const attributes = {
         default: [
             {
                 titleTag: 'H2',
-                titleColor: "#6ec1e4",
+                titleColor: "",
                 titleBack: '',
             }
         ]
@@ -128,7 +131,7 @@ const attributes = {
     titleTextShadow: {
         type: "object",
         default: {
-            'color': '',
+            'color': 'transparent',
             'blur': '10',
             'horizontal': '0',
             'vertical': '0'
@@ -358,7 +361,7 @@ const attributes = {
             },
             fontFamily: "Default",
             lineHeight: {
-                Desktop: "",
+                Desktop: "45",
                 Tablet: "",
                 Mobile: "",
                 unit: "px",
@@ -385,7 +388,7 @@ const attributes = {
         type: "array",
         default: [
             {
-                descColor: "#000",
+                descColor: "",
                 descBack: '',
                 descMarginT: 0,
                 descMarginB: 30,
@@ -428,7 +431,7 @@ const attributes = {
                 btnColor: "#fff",
                 btnHoverColor: '',
                 btnWidth: '',
-                btnBack: "#6ec1e4",
+                btnBack: "#793DC3",
                 btnHoverBack: '',
                 btnTarget: true,
             }
@@ -467,12 +470,12 @@ const attributes = {
         default: [
             {
                 badgePos: "right",
-                badgeBack: "#6ec1e4",
+                badgeBack: "#793DC3",
                 badgeColor: '',
                 badgeTop: '',
                 badgeHorizontal: '',
                 badgeWidth: '',
-                badgeText: __("Popular"),
+                badgeText: __("Popular", "premium-blocks-for-gutenberg"),
             }
         ]
     },
@@ -508,7 +511,7 @@ const attributes = {
         type: "array",
         default: [
             {
-                tableBack: '',
+                tableBack: '#f2f2f2',
                 tableOpacity: 1,
             }
         ]
@@ -516,7 +519,7 @@ const attributes = {
     tableBoxShadow: {
         type: "object",
         default: {
-            'color': '',
+            'color': 'transparent',
             'blur': '10',
             'horizontal': '0',
             'vertical': '0',
@@ -719,7 +722,7 @@ const attributes = {
             Desktop: {
                 top: '',
                 right: '',
-                bottom: 10,
+                bottom: 20,
                 left: ''
             },
             Tablet: {

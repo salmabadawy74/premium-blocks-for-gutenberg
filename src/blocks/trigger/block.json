@@ -103,10 +103,10 @@
 				},
 				"borderWidth": {
 					"Desktop": {
-						"top": "1px",
-						"right": "1px",
-						"bottom": "1px",
-						"left": "1px"
+						"top": "",
+						"right": "",
+						"bottom": "",
+						"left": ""
 					},
 					"Tablet": {
 						"top": "",

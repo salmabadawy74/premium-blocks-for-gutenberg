@@ -7,7 +7,7 @@ const attributes = {
         type: "boolean",
         default: ""
     },
-    fancyContenttAlign: {
+    fancyContentAlign: {
         type: "object",
         default: {
             Desktop: "center",
@@ -104,7 +104,7 @@ const attributes = {
         type: "array",
         default: [
             {
-                fancyTextColor: '',
+                fancyTextColor: "#793dc3",
                 fancyTextBGColor: '',
                 fancyTextBGOpacity: 1,
                 cursorColor: ""

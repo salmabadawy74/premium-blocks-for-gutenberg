@@ -15,12 +15,12 @@ function get_trigger_css_style( $attr, $unique_id ) {
 
 	if ( isset( $attr['iconSize'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' .toggle-button svg' );
-		$css->add_property( 'font-size', ( $attr['iconSize']['Desktop'] . 'px' ) );
+		$css->add_property( 'font-size', $css->render_range( $attr['iconSize'], 'Desktop' ) );
 	}
 
-	if( isset( $attr['iconAlignment'])){
+	if ( isset( $attr['iconAlignment'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' .premium-trigger-icon-container' );
-		$css->add_property( 'text-align', $css->render_color($attr['iconAlignment']['Desktop'] ) );
+		$css->add_property( 'text-align', $css->get_responsive_css( $attr['iconAlignment'], 'Desktop' ) );
 	}
 
 	if ( isset( $attr['labelTypography'] ) ) {
@@ -28,11 +28,11 @@ function get_trigger_css_style( $attr, $unique_id ) {
 		$css->set_selector( '.' . $unique_id . ' .trigger-label' );
 		$css->render_typography( $typography, 'Desktop' );
 	}
-	
+
 	if ( isset( $attr['triggerSpacing'] ) ) {
 		$padding = $attr['triggerSpacing'];
 		$css->set_selector( '.' . $unique_id . ' .premium-trigger-canvas-container .premium-popup-content' );
-		$css->add_property( 'padding', $css->render_spacing( $padding['Desktop'] , $padding['unit'] ) );
+		$css->add_property( 'padding', $css->render_spacing( $padding['Desktop'], $padding['unit'] ) );
 	}
 
 	if ( isset( $attr['triggerBorder'] ) ) {
@@ -41,7 +41,7 @@ function get_trigger_css_style( $attr, $unique_id ) {
 		$border_radius = $attr['triggerBorder']['borderRadius'];
 
 		$css->set_selector( '.' . $unique_id . ' .toggle-button[data-style="outline"], ' . '.' . $unique_id . ' .toggle-button[data-style="solid"]' );
-		$css->add_property( 'border-width', $css->render_spacing( $border_width['Desktop'],  'px' ) );
+		$css->add_property( 'border-width', $css->render_spacing( $border_width['Desktop'], 'px' ) );
 		$css->add_property( 'border-radius', $css->render_spacing( $border_radius['Desktop'], 'px' ) );
 	}
 
@@ -58,7 +58,6 @@ function get_trigger_css_style( $attr, $unique_id ) {
 		$css->add_property( 'left', ( $attr['hOffset']['Desktop'] . ( isset( $attr['hOffset']['unit'] ) ? $attr['hOffset']['unit'] : 'px' ) . '!important' ) );
 	}
 
-
 	$css->start_media_query( $media_query['tablet'] );
 
 	if ( isset( $attr['iconSize'] ) ) {
@@ -66,9 +65,9 @@ function get_trigger_css_style( $attr, $unique_id ) {
 		$css->add_property( 'font-size', ( $attr['iconSize']['Tablet'] . 'px' ) );
 	}
 
-	if( isset( $attr['iconAlignment'])){
+	if ( isset( $attr['iconAlignment'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' .premium-trigger-icon-container' );
-		$css->add_property( 'text-align', $css->render_color($attr['iconAlignment']['Tablet'] ) );
+		$css->add_property( 'text-align', $css->get_responsive_css( $attr['iconAlignment'], 'Tablet' ) );
 	}
 
 	if ( isset( $attr['labelTypography'] ) ) {
@@ -80,7 +79,7 @@ function get_trigger_css_style( $attr, $unique_id ) {
 	if ( isset( $attr['triggerSpacing'] ) ) {
 		$padding = $attr['triggerSpacing'];
 		$css->set_selector( '.' . $unique_id . ' .premium-trigger-canvas-container .premium-popup-content' );
-		$css->add_property( 'padding', $css->render_spacing( $padding['Tablet'] , $padding['unit'] ) );
+		$css->add_property( 'padding', $css->render_spacing( $padding['Tablet'], $padding['unit'] ) );
 	}
 	if ( isset( $attr['triggerBorder'] ) ) {
 		$border        = $attr['triggerBorder'];
@@ -88,10 +87,10 @@ function get_trigger_css_style( $attr, $unique_id ) {
 		$border_radius = $attr['triggerBorder']['borderRadius'];
 
 		$css->set_selector( '.' . $unique_id . ' .toggle-button[data-style="outline"], ' . '.' . $unique_id . ' .toggle-button[data-style="solid"]' );
-		$css->add_property( 'border-width', $css->render_spacing( $border_width['Tablet'],  'px' ) );
+		$css->add_property( 'border-width', $css->render_spacing( $border_width['Tablet'], 'px' ) );
 		$css->add_property( 'border-radius', $css->render_spacing( $border_radius['Tablet'], 'px' ) );
 	}
-	
+
 	if ( isset( $attr['vOffset']['Tablet'] ) ) {
 		$css->set_selector( '.' . $unique_id . '.float-position-topright, .' . $unique_id . ' float-position-topleft' );
 		$css->add_property( 'top', ( $attr['vOffset']['Tablet'] . ( isset( $attr['vOffset']['unit'] ) ? $attr['vOffset']['unit'] : 'px' ) . '!important' ) );
@@ -109,14 +108,14 @@ function get_trigger_css_style( $attr, $unique_id ) {
 
 	 $css->start_media_query( $media_query['mobile'] );
 
-	 if ( isset( $attr['iconSize'] ) ) {
+	if ( isset( $attr['iconSize'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' .toggle-button svg' );
 		$css->add_property( 'font-size', ( $attr['iconSize']['Mobile'] . 'px' ) );
 	}
 
-	if( isset( $attr['iconAlignment'])){
+	if ( isset( $attr['iconAlignment'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' .premium-trigger-icon-container' );
-		$css->add_property( 'text-align', $css->render_color($attr['iconAlignment']['Mobile'] ) );
+		$css->add_property( 'text-align', $css->get_responsive_css( $attr['iconAlignment'], 'Mobile' ) );
 	}
 
 	if ( isset( $attr['labelTypography'] ) ) {
@@ -128,7 +127,7 @@ function get_trigger_css_style( $attr, $unique_id ) {
 	if ( isset( $attr['triggerSpacing'] ) ) {
 		$padding = $attr['triggerSpacing'];
 		$css->set_selector( '.' . $unique_id . ' .premium-trigger-canvas-container .premium-popup-content' );
-		$css->add_property( 'padding', $css->render_spacing( $padding['Mobile'] , $padding['unit'] ) );
+		$css->add_property( 'padding', $css->render_spacing( $padding['Mobile'], $padding['unit'] ) );
 	}
 
 	if ( isset( $attr['triggerBorder'] ) ) {
@@ -137,7 +136,7 @@ function get_trigger_css_style( $attr, $unique_id ) {
 		$border_radius = $attr['triggerBorder']['borderRadius'];
 
 		$css->set_selector( '.' . $unique_id . ' .toggle-button[data-style="outline"], ' . '.' . $unique_id . ' .toggle-button[data-style="solid"]' );
-		$css->add_property( 'border-width', $css->render_spacing( $border_width['Mobile'],  'px' ) );
+		$css->add_property( 'border-width', $css->render_spacing( $border_width['Mobile'], 'px' ) );
 		$css->add_property( 'border-radius', $css->render_spacing( $border_radius['Mobile'], 'px' ) );
 	}
 	if ( isset( $attr['vOffset']['Mobile'] ) ) {
@@ -167,7 +166,7 @@ function should_render_trigger_inline( $name, $unique_id ) {
 }
 
 
- function render_block_pbg_trigger( $attributes, $content ) {
+function render_block_pbg_trigger( $attributes, $content ) {
 
 	if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
 		$unique_id = $attributes['blockId'];
@@ -193,11 +192,11 @@ function should_render_trigger_inline( $name, $unique_id ) {
 	};
 	return $content;
 
-	}
+}
 
 
 
- 
+
 /**
  * Registers the `pbg/trigger` block on the server.
  */
@@ -214,10 +213,10 @@ add_action( 'init', 'register_block_pbg_trigger' );
 function trigger_enqueue() {
 	wp_register_script(
 		'premium-trigger-block-script',
-			PREMIUM_BLOCKS_URL . 'src/blocks/trigger/trigger.js',
-			array( 'jquery' ),
-			PREMIUM_BLOCKS_VERSION,
-			true
+		PREMIUM_BLOCKS_URL . 'src/blocks/trigger/trigger.js',
+		array( 'jquery' ),
+		PREMIUM_BLOCKS_VERSION,
+		true
 	);
 }
 add_action( 'enqueue_block_assets', 'trigger_enqueue' );
