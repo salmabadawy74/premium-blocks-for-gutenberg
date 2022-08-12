@@ -329,7 +329,7 @@ const new_Deprecated_Attributes_0_1 = {
             Mobile: "center"
         }
     },
-    fancyContenttAlign: {
+    fancyContentAlign: {
         type: "object",
         default: {
             Desktop: "center",
@@ -405,7 +405,7 @@ const deprecated = [
                     Tablet: attributes.fancyalign,
                     Mobile: attributes.fancyalign
                 },
-                fancyContenttAlign: {
+                fancyContentAlign: {
                     Desktop: attributes.align,
                     Tablet: attributes.align,
                     Mobile: attributes.align,

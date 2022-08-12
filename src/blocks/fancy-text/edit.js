@@ -168,7 +168,7 @@ class Edit extends Component {
             prefixTypography,
             fancyTextTypography,
             fancyTextShadow,
-            fancyContenttAlign,
+            fancyContentAlign,
             fancyTextAlign,
         } = attributes;
 
@@ -374,8 +374,8 @@ class Edit extends Component {
                                         { value: "center", label: __("Center", "premium-block-for-gutenberg"), icon: Icons.alignCenter },
                                         { value: "right", label: __("Right", "premium-block-for-gutenberg"), icon: Icons.alignRight },
                                     ]}
-                                    value={fancyContenttAlign}
-                                    onChange={(newValue) => setAttributes({ fancyContenttAlign: newValue })}
+                                    value={fancyContentAlign}
+                                    onChange={(newValue) => setAttributes({ fancyContentAlign: newValue })}
                                     showIcons={true}
                                 />
                             </PanelBody>
@@ -578,7 +578,7 @@ class Edit extends Component {
             <div
                 className={`${mainClasses} ${blockId}`}
                 style={{
-                    textAlign: fancyContenttAlign[this.props.deviceType]
+                    textAlign: fancyContentAlign[this.props.deviceType]
                 }}
             >
                 <style
@@ -616,7 +616,6 @@ class Edit extends Component {
                             className={`premium-fancy-text-title premium-fancy-text-title-type`}
                             ref={(el) => {
                                 this.el = el;
-                                console.log("🚀 ~ file: edit.js ~ line 619 ~ Edit ~ render ~ el", el)
                             }}
                             style={{
                                 ...typographyCss(fancyTextTypography, this.props.deviceType),

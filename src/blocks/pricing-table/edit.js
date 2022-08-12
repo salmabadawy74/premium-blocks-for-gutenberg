@@ -367,6 +367,11 @@ class PremiumPricingTable extends Component {
                                     className="premium-panel-body"
                                     initialOpen={false}
                                 >
+                                    <TextControl
+                                        label={__("Link URL", 'premium-blocks-for-gutenberg')}
+                                        value={btnLink}
+                                        onChange={newLink => setAttributes({ btnLink: newLink })}
+                                    />
                                     <ToggleControl
                                         label={__("Open Link in a new tab", 'premium-blocks-for-gutenberg')}
                                         checked={buttonStyles[0].btnTarget}
@@ -818,7 +823,7 @@ class PremiumPricingTable extends Component {
                                     <AdvancedPopColorControl
                                         label={__("Background Color", 'premium-blocks-for-gutenberg')}
                                         colorValue={badgeStyles[0].badgeBack}
-                                        colorDefault={''}
+                                        colorDefault={'#793DC3'}
                                         onColorChange={newColor => saveBadgeStyles({ badgeBack: newColor })}
                                     />
                                 </PanelBody>
@@ -985,7 +990,8 @@ class PremiumPricingTable extends Component {
                             tagName="ul"
                             className={`premium-pricing-table__list list-${featureStyles[0].listStyle}`}
                             multiline="li"
-                            placeholder={__("List Item #1")}
+                            //placeholder={__("List Item #1", "premium-blocks-for-gutenberg")}
+                            keepPlaceholderOnFocus={true}
                             value={listItems}
                             onChange={newText => setAttributes({ listItems: newText })}
                             style={{
@@ -1047,10 +1053,10 @@ class PremiumPricingTable extends Component {
                                 }}
                             />
                         </a>
-                        <URLInput
+                        {/* <URLInput
                             value={btnLink}
                             onChange={newLink => setAttributes({ btnLink: newLink })}
-                        />
+                        /> */}
                         <style>{loadStyles()}</style>
                     </div>
                 )}

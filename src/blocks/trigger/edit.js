@@ -23,6 +23,7 @@ import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 import PremiumTypo from "../../components/premium-typo";
+import WebfontLoader from "../../components/typography/fontLoader";
 import { 
     borderCss,
     generateBlockId,
@@ -31,7 +32,7 @@ import {
     typographyCss,
 } from '../../components/HelperFunction';
 import Icons from "../../components/icons";
-import GoogleFontLoader from "react-google-font-loader";
+//import GoogleFontLoader from "react-google-font-loader";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -148,32 +149,24 @@ function Edit(props) {
     
     let loadLabelGoogleFonts;
 
-    if (labelTypography.fontFamily !== "Default") {
-        loadLabelGoogleFonts = (
-            <GoogleFontLoader
-                fonts={[
-                    {
-                        font: labelTypography?.fontFamily,
-                    },
-                ]}
-            />
-        );
-    }
+        if (labelTypography?.fontFamily !== 'Default') {
+            const labelConfig = {
+                google: {
+                    families: [labelTypography.fontFamily],
+                },
+            }
+            loadLabelGoogleFonts = (
+                <WebfontLoader config={labelConfig}>
+                </WebfontLoader>
+            )
+        }
+
+
 
 
 
     return (
         <Fragment>
-            {/* <BlockControls group="block">
-                <AlignmentToolbar
-                    value={iconAlignment}
-                    onChange={(newAlignment) => {
-                        setAttributes({ iconAlignment: newAlignment });
-                    }}
-
-                />
-            </BlockControls> */}
-
             <InspectorControls>
                 <InspectorTabs tabs={['layout', 'style', 'advance']}>
                     <InspectorTab key={'layout'}>
@@ -313,7 +306,8 @@ function Edit(props) {
                         </PanelBody>
                     </InspectorTab>
                     <InspectorTab key={'style'}>
-                        <PanelBody
+
+                            <PanelBody
                             title={__('Trigger', 'premium-blocks-for-gutenberg')}
                             initialOpen={true}
                         >
@@ -328,16 +322,7 @@ function Edit(props) {
                                 units={['px']}
                                 defaultValue={20}
                             />
-                            {attributes.displayTriggerLabel && (
-                            <PremiumTypo
-                                    value={labelTypography}
-                                    onChange={(newValue) =>
-                                        setAttributes({
-                                            labelTypography: newValue,
-                                        })
-                                    }
-                                />
-                            )}
+
                             <TabPanel
                                 className="premium-color-tabpanel"
                                 activeClass="active-tab"
@@ -365,12 +350,6 @@ function Edit(props) {
                                                     colorDefault={''}
                                                     onColorChange={(newValue) => setTriggerStyles('iconColor', newValue)}
                                                 />
-                                                <AdvancedPopColorControl
-                                                    label={__("Label Color", 'premium-blocks-for-gutenberg')}
-                                                    colorValue={triggerStyles.labelColor}
-                                                    colorDefault={''}
-                                                    onColorChange={newValue => setTriggerStyles('labelColor', newValue)}
-                                                />
                                                 {triggerStyles.style === 'solid' &&
                                                     <AdvancedPopColorControl
                                                         label={__("Background Color", 'premium-blocks-for-gutenberg')}
@@ -391,12 +370,6 @@ function Edit(props) {
                                                     colorDefault={''}
                                                     onColorChange={newValue => setTriggerStyles('iconHoverColor', newValue)}
                                                 />
-                                                <AdvancedPopColorControl
-                                                    label={__("Label Hover Color", 'premium-blocks-for-gutenberg')}
-                                                    colorValue={triggerStyles.labelHoverColor}
-                                                    colorDefault={''}
-                                                    onColorChange={newValue => setTriggerStyles('labelHoverColor', newValue)}
-                                                />
                                                 {triggerStyles.style === 'solid' &&
                                                     <AdvancedPopColorControl
                                                         label={__("Background Hover Color", 'premium-blocks-for-gutenberg')}
@@ -415,6 +388,7 @@ function Edit(props) {
                                     );
                                 }}
                             </TabPanel>
+                            
                             {(triggerStyles.style === 'outline' || triggerStyles.style === 'solid') &&
                                 <fragment>
                                     <PremiumBorder
@@ -431,6 +405,71 @@ function Edit(props) {
                                 </fragment>
                             }
                         </PanelBody>
+                        {attributes.displayTriggerLabel && (
+                            <PanelBody
+                            title={__('Label', 'premium-blocks-for-gutenberg')}
+                            initialOpen={false}
+                        >
+                            <PremiumTypo
+                                    value={labelTypography}
+                                    onChange={(newValue) =>
+                                        setAttributes({
+                                            labelTypography: newValue,
+                                        })
+                                    }
+                                />
+                            <TabPanel
+                                className="premium-color-tabpanel"
+                                activeClass="active-tab"
+                                tabs={[
+                                    {
+                                        name: "normal",
+                                        title: "Normal",
+                                        className: "premium-tab",
+                                    },
+                                    {
+                                        name: "hover",
+                                        title: "Hover",
+                                        className: "premium-tab",
+                                    },
+                                ]}
+                            >
+                                {(tab) => {
+                                    let tabout;
+                                    if ("normal" === tab.name) {
+                                        tabout = (
+                                            <Fragment>
+                                                <AdvancedPopColorControl
+                                                    label={__("Label Color", 'premium-blocks-for-gutenberg')}
+                                                    colorValue={triggerStyles.labelColor}
+                                                    colorDefault={''}
+                                                    onColorChange={newValue => setTriggerStyles('labelColor', newValue)}
+                                                />
+                                            </Fragment>
+                                        );
+                                    }
+                                    if ("hover" === tab.name) {
+                                        tabout = (
+                                            <Fragment>
+                                                <AdvancedPopColorControl
+                                                    label={__("Label Hover Color", 'premium-blocks-for-gutenberg')}
+                                                    colorValue={triggerStyles.labelHoverColor}
+                                                    colorDefault={''}
+                                                    onColorChange={newValue => setTriggerStyles('labelHoverColor', newValue)}
+                                                />
+                                            </Fragment>
+                                        );
+                                    }
+                                    return (
+                                        <div>
+                                            {tabout}
+                                        </div>
+                                    );
+                                }}
+                            </TabPanel>
+                            </PanelBody>
+                        )}
+                        
                         <PanelBody
                             title={__('Canvas Area', 'premium-blocks-for-gutenberg')}
                             initialOpen={false}

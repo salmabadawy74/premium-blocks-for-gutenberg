@@ -6,6 +6,10 @@
      useBlockProps
  } from '@wordpress/block-editor';
  import classnames from "classnames";
+ import {
+    generateCss,
+    typographyCss
+} from "../../components/HelperFunction";
  export default function Save(props) {
     const { attributes, className } = props;
     const { 
@@ -32,37 +36,40 @@
          )
      });
 
+     const loadStyles = () => {
+        const styles = {};
+        styles[`.${blockId} .toggle-button:hover`] = {
+            'background-color': `${triggerStyles.iconBgHoverColor} !important`
+        };
+        styles[`.${blockId} .toggle-button:hover svg`] = {
+            'fill': `${triggerStyles.iconHoverColor} !important`
+        }
+        styles[`.${blockId} .toggle-button:hover .trigger-label`] = {
+            'color': `${triggerStyles.labelHoverColor} !important`
+        }
+        styles[`.${blockId} .toggle-button[data-style="solid"`] = {
+            'background-color': `${triggerStyles.iconBgColor} !important`
+        }
+        styles[`.${blockId} .toggle-button[data-style="outline"],.${blockId} .toggle-button[data-style="solid"]`] = {
+            'border-style': `${triggerBorder.borderType}`,
+            'border-color': `${triggerBorder.borderColor}`
+        }
+        styles[`.${blockId} .toggle-button[data-style="outline"]:hover,.${blockId} .toggle-button[data-style="solid"]:hover`] = {
+            'border-color': `${triggerStyles.borderHoverColor} !important`
+        }
+        styles[`.${blockId} .premium-trigger-canvas-container[data-layout="right"] .premium-popup-content,.${blockId} .premium-trigger-canvas-container[data-layout="left"] .premium-popup-content`] = {
+            'width': `${canvasStyles.width}px`
+        }
+        return generateCss(styles);
+    }
+
      return (
-         <div { ...blockProps }>
-             <style>
-            {`
-            .${blockId} .toggle-button:hover {
-                background-color:${triggerStyles.iconBgHoverColor} !important;
-            }
-            .${blockId} .toggle-button:hover svg {
-                fill:${triggerStyles.iconHoverColor} !important;
-            }
-            .${blockId} .toggle-button:hover .trigger-label {
-                color:${triggerStyles.labelHoverColor} !important;
-            }
-            .${blockId} .toggle-button[data-style="solid"] {
-                background-color: ${triggerStyles.iconBgColor} ;
-            }
-            .${blockId} .toggle-button[data-style="outline"], 
-            .${blockId} .toggle-button[data-style="solid"]{
-                border-style: ${triggerBorder.borderType};
-                border-color: ${triggerBorder.borderColor};
-            }
-            .${blockId} .toggle-button[data-style="outline"]:hover,
-            .${blockId} .toggle-button[data-style="solid"]:hover {
-                border-color: ${triggerStyles.borderHoverColor} !important;
-            }
-            .${blockId} .premium-trigger-canvas-container[data-layout="right"] .premium-popup-content,
-            .s${blockId} .premium-trigger-canvas-container[data-layout="left"] .premium-popup-content {
-                width: ${canvasStyles.width}px;
-            }
-        `}
-        </style>  
+         <div { ...blockProps }> 
+        <style
+                dangerouslySetInnerHTML={{
+                    __html: loadStyles()
+                }}
+            />
                         <div className={`premium-trigger-container`}>
                         <div className={`premium-trigger-icon-container has-icon-align-${ iconAlignment }`}>
                             <a className={`toggle-button`} 
@@ -73,6 +80,10 @@
                                 
                             { triggerLabel && displayTriggerLabel && 
                                 <span className='trigger-label' style={{
+                                    ...typographyCss(
+                                        labelTypography,
+                                        "Desktop"
+                                    ),
                                     color: triggerStyles.labelColor,
                                     fontStyle: labelTypography.fontStyle,
                                     fontFamily: labelTypography.fontFamily,

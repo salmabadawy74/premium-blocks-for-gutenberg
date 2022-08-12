@@ -229,9 +229,12 @@ $pbBorderColor: #e1e1e1;
 	}
 	.toggle-button[data-style="outline"] {
 		padding: 10px;
+		border: 1px solid $pbBorderColor;
 	}
 	.toggle-button[data-style="solid"] {
 		padding: 10px;
+		border-width: 0px;
+		background-color: $pbBackgroundColor;
 	}
 	.toggle-button[data-style="simple"],
 	.toggle-button[data-style="simple"]:hover {
@@ -304,15 +307,30 @@ $pbBorderColor: #e1e1e1;
 		}
 	}
 }
-.editor-styles-wrapper {
-	.edit-post-visual-editor__post-title-wrapper,
-	.block-editor-block-list__layout.is-root-container {
-	> .float-position-topleft {
-		margin-top: 61px !important;
+.block-editor__container {
+	.editor-styles-wrapper {
+		.edit-post-visual-editor__post-title-wrapper,
+		.block-editor-block-list__layout.is-root-container {
+		> .float-position-topleft {
+			margin-top: 61px !important;
+		}
+		}
+		.premium-popup-content {
+			margin-top: 61px !important;
+		}
 	}
-	}
-	.premium-popup-content {
-		margin-top: 61px !important;
+}
+.edit-site {
+	.editor-styles-wrapper {
+		.edit-post-visual-editor__post-title-wrapper,
+		.block-editor-block-list__layout.is-root-container {
+		> .float-position-topleft {
+			margin-top: 10px !important;
+		}
+		}
+		.premium-popup-content {
+			margin-top: 10px !important;
+		}
 	}
 }
 @media (min-width: 782px) {
