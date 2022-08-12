@@ -63,13 +63,11 @@ const attributes = {
         default: true
     },
     listItems: {
-        type: "array",
-        //source: "html",
-        source: "children",
+        type: "string",
+        source: "html",
+        multiline: "li",
         selector: ".premium-pricing-table__list",
-        default: [...Array(3).keys()]
-            .map((i) => `<li>${__(`Item ${i + 1}`)}</li>`)
-            .join()
+        default: "",
     },
     blockId: {
         type: "string"
@@ -431,7 +429,7 @@ const attributes = {
                 btnColor: "#fff",
                 btnHoverColor: '',
                 btnWidth: '',
-                btnBack: "#793DC3",
+                btnBack: "rgb(242, 242, 242)",
                 btnHoverBack: '',
                 btnTarget: true,
             }
@@ -471,7 +469,7 @@ const attributes = {
             {
                 badgePos: "right",
                 badgeBack: "#793DC3",
-                badgeColor: '',
+                badgeColor: '#fff',
                 badgeTop: '',
                 badgeHorizontal: '',
                 badgeWidth: '',
@@ -511,7 +509,7 @@ const attributes = {
         type: "array",
         default: [
             {
-                tableBack: '#f2f2f2',
+                tableBack: '',
                 tableOpacity: 1,
             }
         ]
@@ -529,14 +527,14 @@ const attributes = {
     tableBorder: {
         type: "object",
         default: {
-            "borderType": "none",
-            "borderColor": "",
+            "borderType": "solid",
+            "borderColor": "#e1e1e1",
             "borderWidth": {
                 Desktop: {
-                    top: '',
-                    right: '',
-                    bottom: '',
-                    left: ''
+                    top: '1',
+                    right: '1',
+                    bottom: '1',
+                    left: '1'
                 },
                 Tablet: {
                     top: '',
