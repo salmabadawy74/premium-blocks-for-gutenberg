@@ -874,6 +874,7 @@ class PremiumPricingTable extends Component {
                                 placeholder={__("Popular", 'premium-blocks-for-gutenberg')}
                                 value={badgeStyles[0].badgeText}
                                 style={{
+                                    color: badgeStyles[0].badgeColor,
                                     width: badgeStyles[0].badgeWidth + "px",
                                     top: badgeStyles[0].badgeTop + "px",
                                     left: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeHorizontal + "px" : "auto",
@@ -990,7 +991,7 @@ class PremiumPricingTable extends Component {
                             tagName="ul"
                             className={`premium-pricing-table__list list-${featureStyles[0].listStyle}`}
                             multiline="li"
-                            //placeholder={__("List Item #1", "premium-blocks-for-gutenberg")}
+                            placeholder={__("List Item #1", "premium-blocks-for-gutenberg")}
                             keepPlaceholderOnFocus={true}
                             value={listItems}
                             onChange={newText => setAttributes({ listItems: newText })}

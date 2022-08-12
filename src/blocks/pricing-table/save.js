@@ -47,6 +47,8 @@ const save = props => {
         badgeTypography,
     } = props.attributes;
 
+
+    console.log(listItems);
     const loadStyles = () => {
         const styles = {};
 
@@ -222,13 +224,12 @@ const save = props => {
                 <div
                     className={`premium-pricing-table__list_wrap`}
                 >
-                          <RichText.Content 
-                          value={listItems} 
-                          tagName={ul}
-                          multiline="li"
-                          className={`premium-pricing-table__list list-${featureStyles[0].listStyle}`}
-                          onChange={newText => setAttributes({ listItems: newText })}
-                          style={filterJsCss({
+                    <RichText.Content
+                        value={listItems}
+                        tagName={'ul'}
+                        multiline="li"
+                        className={`premium-pricing-table__list list-${featureStyles[0].listStyle}`}
+                        style={filterJsCss({
                             color: featureStyles[0].listColor,
                             background: featureStyles[0].listBack,
                             listStyle: "check" !== featureStyles[0].listStyle ? featureStyles[0].listStyle : "none",
@@ -238,7 +239,7 @@ const save = props => {
                             fontWeight: listTypography?.fontWeight,
                             textDecoration: listTypography?.textDecoration,
                             textTransform: listTypography?.textTransform,
-                        })}/>
+                        })} />
 
                 </div>
             )}

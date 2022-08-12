@@ -882,6 +882,7 @@ a.premium-dheading-block__link:hover {
     position: relative;
     overflow: hidden;
     padding: 20px;
+    border: 1px solid var(--pbBorderColor);
 }
 
 .premium-pricing-table .premium-pricing-table__button_link {
