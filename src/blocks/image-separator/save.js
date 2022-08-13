@@ -49,20 +49,24 @@ export default function save(props) {
     return (
         <div className={`${mainClasses} ${blockId} `}>
             <style dangerouslySetInnerHTML={{ __html: loadStyles() }} />
-            <div className={`premium-image-separator-container`} style={filterJsCss({
-                transform: `translateY(${gutter}%)`,
-                filter: iconType === 'image' ? `brightness( ${imgFilter?.bright}% ) contrast( ${imgFilter?.contrast}% ) saturate( ${imgFilter?.saturation}% ) blur( ${imgFilter?.blur}px ) hue-rotate( ${imgFilter?.hue}deg )` : ""
-            })}
+            <div
+                className={`premium-image-separator-container`}
+                style={filterJsCss({
+                    transform: `translateY(${gutter}%)`,
+                    filter: iconType === 'image' ? `brightness( ${imgFilter?.bright}% ) contrast( ${imgFilter?.contrast}% ) saturate( ${imgFilter?.saturation}% ) blur( ${imgFilter?.blur}px ) hue-rotate( ${imgFilter?.hue}deg )` : ""
+                })}
             >
                 <a className="premium-image-separator-link" href={link && url} target={target} rel="noopener noreferrer">
-                    {iconType === 'icon' && <i className={`${iconStyles[0].icon}`}
-                        style={filterJsCss({
-                            color: iconStyles[0].iconColor,
-                            backgroundColor: iconStyles[0].iconBGColor,
-                            borderColor: iconBorder.borderColor,
-                            borderStyle: iconBorder.borderType,
-                            textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical || 0}px ${iconShadow.blur || 0}px ${iconShadow.color}`,
-                        })} />
+                    {iconType === 'icon' &&
+                        <i
+                            className={`${iconStyles[0].icon}`}
+                            style={filterJsCss({
+                                color: iconStyles[0].iconColor,
+                                backgroundColor: iconStyles[0].iconBGColor,
+                                borderColor: iconBorder.borderColor,
+                                borderStyle: iconBorder.borderType,
+                                textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical || 0}px ${iconShadow.blur || 0}px ${iconShadow.color}`,
+                            })} />
                     }
                     {iconType === 'image' && < img
                         src={imageURL}
