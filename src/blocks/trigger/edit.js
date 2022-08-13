@@ -24,6 +24,7 @@ import InspectorTab from '../../components/inspectorTab';
 import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 import PremiumTypo from "../../components/premium-typo";
 import WebfontLoader from "../../components/typography/fontLoader";
+import ResponsiveRadioControl from "../../components/responsive-radio";
 import { 
     borderCss,
     generateBlockId,
@@ -209,36 +210,17 @@ function Edit(props) {
                                 value={triggerStyles.style}
                                 onChange={newValue => setTriggerStyles('style', newValue)}
                             />
-                            <MultiButtonsControl
-                                    choices={[
-                                        {
-                                            value: "left",
-                                            label: __("Left"),
-                                            icon: Icons.alignLeft,
-                                        },
-                                        {
-                                            value: "center",
-                                            label: __("Center"),
-                                            icon: Icons.alignCenter,
-                                        },
-                                        {
-                                            value: "right",
-                                            label: __("Right"),
-                                            icon: Icons.alignRight,
-                                        },
-                                    ]}
-                                    value={iconAlignment}
-                                    onChange={(align) =>
-                                        setAttributes({
-                                            iconAlignment: align,
-                                        })
-                                    }
-                                    label={__(
-                                        "Alignment",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                    showIcons={true}
-                                />
+                                <ResponsiveRadioControl
+                                label={__("Alignment", "premium-blocks-for-gutenberg")}
+                                choices={[
+                                    { value: "left", label: __("Left", "premium-blocks-for-gutenberg"), icon: Icons.alignLeft },
+                                    { value: "center", label: __("Center", "premium-blocks-for-gutenberg"), icon: Icons.alignCenter },
+                                    { value: "right", label: __("Right", "premium-blocks-for-gutenberg"), icon: Icons.alignRight },
+                                ]}
+                                value={iconAlignment}
+                                onChange={(newValue) => setAttributes({ iconAlignment: newValue })}
+                                showIcons={true}
+                            />
 
                             <ToggleControl
                                 label={__("Float", 'premium-blocks-for-gutenberg')}

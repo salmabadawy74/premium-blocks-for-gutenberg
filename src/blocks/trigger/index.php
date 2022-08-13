@@ -15,7 +15,8 @@ function get_trigger_css_style( $attr, $unique_id ) {
 
 	if ( isset( $attr['iconSize'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' .toggle-button svg' );
-		$css->add_property( 'font-size', $css->render_range( $attr['iconSize'], 'Desktop' ) );
+		// $css->add_property( 'font-size', $css->render_range( $attr['iconSize'], 'Desktop' ) );
+		$css->add_property( 'font-size', ( $attr['iconSize']['Desktop'] . 'px !important' ) );
 	}
 
 	if ( isset( $attr['iconAlignment'] ) ) {
@@ -62,7 +63,8 @@ function get_trigger_css_style( $attr, $unique_id ) {
 
 	if ( isset( $attr['iconSize'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' .toggle-button svg' );
-		$css->add_property( 'font-size', ( $attr['iconSize']['Tablet'] . 'px' ) );
+		// $css->add_property( 'font-size', $css->render_range( $attr['iconSize'], 'Tablet' ) );
+		$css->add_property( 'font-size', ( $attr['iconSize']['Tablet'] . 'px !important' ) );
 	}
 
 	if ( isset( $attr['iconAlignment'] ) ) {
@@ -110,7 +112,8 @@ function get_trigger_css_style( $attr, $unique_id ) {
 
 	if ( isset( $attr['iconSize'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' .toggle-button svg' );
-		$css->add_property( 'font-size', ( $attr['iconSize']['Mobile'] . 'px' ) );
+		// $css->add_property( 'font-size', $css->render_range( $attr['iconSize'], 'Mobile' ) );
+		$css->add_property( 'font-size', ( $attr['iconSize']['Mobile'] . 'px !important' ) );
 	}
 
 	if ( isset( $attr['iconAlignment'] ) ) {

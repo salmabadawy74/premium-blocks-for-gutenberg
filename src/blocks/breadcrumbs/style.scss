@@ -29,13 +29,11 @@
         position: relative;
         padding-right: 30px;
         align-items: center;
+        margin-right: 3px;
         > * {
             line-height: 26px;
-            background-color: var(--item-bg-color, hsla(34, 85%, 35%, 1));
-            padding: 10px;
-        }
-        &:last-child > * {
-            line-height: 36px;
+            background-color: var(--item-bg-color, #f2f2f2);
+            padding: 5px;
         }
         &::before {
             content: " ";
@@ -44,7 +42,7 @@
             height: auto;
             border-top: 50px solid transparent;
             border-bottom: 50px solid transparent;
-            border-left: 30px solid var(--separator-color, #a5630cbf);
+            border-left: 30px solid var(--separator-color, #f2f2f2);
             z-index: 1;
             position: absolute;
             left: calc(100% - 30px);
