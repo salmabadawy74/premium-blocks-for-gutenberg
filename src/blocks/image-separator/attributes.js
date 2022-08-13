@@ -101,7 +101,7 @@ const imageSeparatorAttrs = {
         default: {
             Desktop: "200",
             Tablet: "200",
-            Mobile: "",
+            Mobile: "200",
             unit: "px",
         },
     },

@@ -222,7 +222,6 @@ const save = props => {
                         {modalStyles[0].contentType === "text" ?
                             <RichText.Content
                                 tagName={'p'}
-                                className={`premium-person__name`}
                                 value={modalStyles[0].contentText}
                                 style={filterJsCss({
                                     color: modalStyles[0].textColor,
