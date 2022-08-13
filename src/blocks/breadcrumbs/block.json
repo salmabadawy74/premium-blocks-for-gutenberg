@@ -12,7 +12,7 @@
             "type": "string"
         },
         "textAlign": {
-            "type": "string"
+            "type": "dtring"
         },
         "breadcrumbsStyle": {
             "type": "string",

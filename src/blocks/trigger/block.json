@@ -44,6 +44,8 @@
 			"type": "object", 
 			"default": {
 				"Desktop": "20",
+				"Tablet": "20",
+            	"Mobile": "20",
 				"unit": "px"
 			}
 		},

@@ -32,6 +32,7 @@ import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import { generateBlockId, generateCss, typographyCss, paddingCss, marginCss } from '../../components/HelperFunction';
 import WebfontLoader from "../../components/typography/fontLoader";
 
+
 function Edit({ clientId, attributes, setAttributes, context: { postType, postId }, deviceType }) {
     const [fullTitle] = useEntityProp('postType', postType, 'title', postId);
     const selectedTerm = useSelect(
@@ -66,7 +67,7 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
     });
 
     const categoryName = hasPostTerms ? postTerms[0].name : __('Post Category');
-    const { textAlign, colors, spacing, typography, breadcrumbsStyle, enablePrefix, blockId, hideDesktop, hideTablet, hideMobile } = attributes;
+    const { textAlign, colors, spacing, typography, breadcrumbsStyle, enablePrefix, blockId, hideDesktop, hideTablet, hideMobile, homeItemType } = attributes;
     let loadGoogleFonts;
     if (typography?.fontFamily !== 'Default') {
         const fontConfig = {
@@ -105,7 +106,6 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
     const divider = attributes.divider ? attributes.divider : "»";
     const prefix = attributes.prefix;
     const separator = <span class="breadcrumb-sep" style={{ padding: '0 .4em' }}>{divider}</span>;
-    const homeItemType = attributes.homeItemType === 'text' ? __('Home') : <Dashicon style={{ lineHeight: 'normal' }} icon='admin-home' />;
     const setColor = (color, value) => {
         const newColors = { ...colors };
         newColors[color] = value;
@@ -156,7 +156,7 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
         }
 
         styles[`.${blockId} .premium-breadcrumbs-advanced .premium-breadcrumbs-item > *`] = {
-            'background-color': 'var(--item-bg-color, hsla(34,85%,35%,1))',
+            'background-color': 'var(--item-bg-color, rgb(242, 242, 242))',
             'padding-top': `${itemPadding?.[deviceType]?.top}${itemPadding?.unit}`,
             'padding-right': `${itemPadding?.[deviceType]?.right}${itemPadding?.unit}`,
             'padding-bottom': `${itemPadding?.[deviceType]?.bottom}${itemPadding?.unit}`,
@@ -170,7 +170,7 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
             'height': 'auto',
             'border-top': '50px solid transparent',
             'border-bottom': '50px solid transparent',
-            'border-left': '30px solid var(--separator-color, #a5630cbf)',
+            'border-left': '30px solid var(--separator-color, #f2f2f2)',
             'z-index': '1',
             'position': 'absolute',
             'left': 'calc(100% - 30px)',
@@ -181,7 +181,8 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
 
     return (
         <>
-            <BlockControls group="block">
+
+<BlockControls group="block">
                 <AlignmentControl
                     value={textAlign}
                     onChange={(nextAlign) => {
@@ -206,7 +207,7 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
                             href="#home-pseudo-link"
                             onClick={(event) => event.preventDefault()}
                         >
-                            {homeItemType}
+                            {attributes.homeItemType === 'text' ? __('Home') : <Dashicon style={{ lineHeight: 'normal' }} icon='admin-home' />}
                             {separator}
                         </a>
                     </div>
