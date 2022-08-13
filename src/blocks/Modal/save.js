@@ -85,7 +85,7 @@ const save = props => {
             />
             <div className={`premium-modal-trigger-container`}
             >
-                {(triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === "load") &&
+                {(triggerSettings[0].triggerType === "button") &&
                     <button className={`premium-modal-trigger-btn premium-button__${triggerSettings[0].btnSize} `}
                         style={filterJsCss({
                             backgroundColor: triggerStyles[0].triggerBack,
@@ -222,7 +222,6 @@ const save = props => {
                         {modalStyles[0].contentType === "text" ?
                             <RichText.Content
                                 tagName={'p'}
-                                className={`premium-person__name`}
                                 value={modalStyles[0].contentText}
                                 style={filterJsCss({
                                     color: modalStyles[0].textColor,

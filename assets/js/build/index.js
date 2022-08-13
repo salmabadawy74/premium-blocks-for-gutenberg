@@ -5067,7 +5067,7 @@ const save = props => {
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-modal-trigger-container`
-  }, (triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === "load") && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+  }, triggerSettings[0].triggerType === "button" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: `premium-modal-trigger-btn premium-button__${triggerSettings[0].btnSize} `,
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       backgroundColor: triggerStyles[0].triggerBack,
@@ -5191,7 +5191,6 @@ const save = props => {
     })
   }, modalStyles[0].contentType === "text" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
     tagName: 'p',
-    className: `premium-person__name`,
     value: modalStyles[0].contentText,
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       color: modalStyles[0].textColor,
