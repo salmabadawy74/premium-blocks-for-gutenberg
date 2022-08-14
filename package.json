@@ -25,7 +25,8 @@
         "grunt-contrib-compress": "^1.4.3",
         "grunt-contrib-copy": "^1.0.0",
         "grunt-sass": "^3.1.0",
-        "grunt-wp-readme-to-markdown": "^2.0.1"
+        "grunt-wp-readme-to-markdown": "^2.0.1",
+        "node-sass": "^7.0.1"
     },
     "dependencies": {
         "@fonticonpicker/react-fonticonpicker": "^1.2.0",
@@ -35,9 +36,9 @@
         "bezier-easing": "^2.1.0",
         "classnames": "^2.2.6",
         "colord": "^2.9.2",
+        "grunt-contrib-cssmin": "^4.0.0",
         "hex-to-rgba": "^2.0.1",
         "lodash": "^4.17.21",
-        "node-sass": "^7.0.1",
         "prop-types": "^15.7.2",
         "react": "^16.8.6",
         "react-dom": "^16.8.6",

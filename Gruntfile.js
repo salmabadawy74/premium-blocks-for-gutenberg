@@ -25,11 +25,41 @@ module.exports = function (grunt) {
                     {
                         src: "./assets/sass/editorpanel.scss",
                         dest: "./assets/css/editorpanel.css"
+                    },
+                    {
+                        src: "./assets/css/sass/icon.scss",
+                        dest: "./assets/css/css/icon.css"
+                    },
+                    {
+                        src: "./assets/css/sass/dual-heading.scss",
+                        dest: "./assets/css/css/dual-heading.css"
+                    },
+                    {
+                        src: "./assets/css/sass/banner.scss",
+                        dest: "./assets/css/css/banner.css"
                     }
                 ]
             }
 
         },
+        cssmin: {
+            css: {
+              files: [
+                {
+                  src: "./assets/css/css/icon.css",
+                  dest: "./assets/css/minified/icon.min.css",
+                },
+                {
+                    src: "./assets/css/css/dual-heading.css",
+                    dest: "./assets/css/minified/dual-heading.min.css",
+                },
+                {
+                    src: "./assets/css/css/banner.css",
+                    dest: "./assets/css/minified/banner.min.css",
+                },
+            ],
+        },
+      },
         copy: {
             main: {
                 options: {
@@ -103,6 +133,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-bumpup');
     grunt.loadNpmTasks('grunt-sass');
 
+    grunt.loadNpmTasks("grunt-contrib-cssmin");
+
     grunt.loadNpmTasks("grunt-contrib-copy")
     grunt.loadNpmTasks("grunt-contrib-compress")
     grunt.loadNpmTasks("grunt-contrib-clean")
@@ -110,6 +142,11 @@ module.exports = function (grunt) {
 
     // Run readme task
     grunt.registerTask("readme", ["wp_readme_to_markdown"])
+
+    // SASS compile
+    grunt.registerTask("default", ["sass", "cssmin:css"]);
+    // min all
+    grunt.registerTask("minify", ["cssmin:css"]);
 
     //Run bumpup, readme tasks
     grunt.registerTask("build", (releaseType) => {

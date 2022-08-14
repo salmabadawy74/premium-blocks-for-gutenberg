@@ -4,6 +4,7 @@ import save from "./save";
 import deprecatedContent from "./deprecated";
 import attributes from "./attributes";
 import PBG_Block_Icons from '../../../blocks-config/block-icons'
+import '../../../assets/css/sass/icon.scss';
 
 const { __ } = wp.i18n;
 
