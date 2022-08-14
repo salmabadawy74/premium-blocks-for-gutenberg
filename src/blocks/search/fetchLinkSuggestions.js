@@ -217,7 +217,7 @@ const fetchLinkSuggestions = async (
                                 ? // @ts-ignore fix when we make this a TS file
                                 result.title.rendered
                                 : result.title || ''
-                        ) || __('(no title)'),
+                        ) || __('(no title', "premium-blocks-for-gutenberg"),
                     type: result.subtype || result.type,
                     kind: result?.meta?.kind,
                     _embedded: result?._embedded

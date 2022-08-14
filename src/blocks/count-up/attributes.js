@@ -82,7 +82,7 @@ const attributes = {
     },
     faIcon: {
         type: "string",
-        default: "dashicons-clock",
+        default: "dashicons dashicons-clock",
     },
     counterFamily: {
         type: "string",

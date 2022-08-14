@@ -13,7 +13,7 @@ const { registerBlockType } = wp.blocks;
 
 registerBlockType("premium/heading", {
     title: __("Heading"),
-    description: __('Grab your website visitors’ attention with stylish headings using Premium Heading Block.'),
+    description: __('Grab your website visitors’ attention with stylish headings using Premium Heading Block.', "premium-blocks-for-gutenberg"),
     icon: PBG_Block_Icons.heading,
     category: "premium-blocks",
     attributes: attributes,

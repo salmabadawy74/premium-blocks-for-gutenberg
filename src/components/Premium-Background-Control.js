@@ -37,8 +37,8 @@ export default function PremiumBackgroundControl({ value, onChange, backgroundVe
     const [state, setState] = useState(value)
 
     const gradTypes = [
-        { key: 'linear', name: __('Linear') },
-        { key: 'radial', name: __('Radial') },
+        { key: 'linear', name: __('Linear', "premium-blocks-for-gutenberg") },
+        { key: 'radial', name: __('Radial', "premium-blocks-for-gutenberg") },
     ];
 
     const bgType = [

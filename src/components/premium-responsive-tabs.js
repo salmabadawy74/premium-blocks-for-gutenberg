@@ -22,17 +22,17 @@ function PremiumResponsiveTabs(props) {
             initialOpen={true}
         >
             <ToggleControl
-                label={__('Hide in Desktop')}
+                label={__('Hide in Desktop', "premium-blocks-for-gutenberg")}
                 checked={Desktop}
                 onChange={onChangeDesktop}
             />
             <ToggleControl
-                label={__('Hide in Tablet')}
+                label={__('Hide in Tablet', "premium-blocks-for-gutenberg")}
                 checked={Tablet}
                 onChange={onChangeTablet}
             />
             <ToggleControl
-                label={__('Hide in Mobile')}
+                label={__('Hide in Mobile', "premium-blocks-for-gutenberg")}
                 checked={Mobile}
                 onChange={onChangeMobile}
             />

@@ -10,8 +10,8 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 registerBlockType("premium/accordion", {
-    title: __("Accordion"),
-    description: __('Display collapsed content like FAQs using Premium Accordion Block.'),
+    title: __("Accordion", 'premium-blocks-for-gutenberg'),
+    description: __('Display collapsed content like FAQs using Premium Accordion Block.', 'premium-blocks-for-gutenberg'),
     icon: PBG_Block_Icons.accordion,
     category: "premium-blocks",
     attributes: attributes,

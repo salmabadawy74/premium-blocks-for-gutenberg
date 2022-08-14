@@ -17,6 +17,8 @@ import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import { gradientBackground, generateBlockId, borderCss, paddingCss, typographyCss, marginCss } from "../../components/HelperFunction";
 import WebfontLoader from "../../components/typography/fontLoader";
+import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
+import iconsList from "../../components/premium-icons-list";
 
 const { PanelBody, SelectControl, TextControl, ToggleControl } = wp.components;
 
@@ -260,7 +262,7 @@ class edit extends Component {
                                 )}
                                 {flexDir.includes("reverse") && (
                                     <MultiButtonsControl
-                                        choices={[{ value: 'flex-end', label: __('Left'), icon: Icons.alignLeft }, { value: 'center', label: __('Center'), icon: Icons.alignCenter }, { value: 'flex-start', label: __('Right'), icon: Icons.alignRight }]}
+                                        choices={[{ value: 'flex-end', label: __('Left', "premium-blocks-for-gutenberg"), icon: Icons.alignLeft }, { value: 'center', label: __('Center', "premium-blocks-for-gutenberg"), icon: Icons.alignCenter }, { value: 'flex-start', label: __('Right', "premium-blocks-for-gutenberg"), icon: Icons.alignRight }]}
                                         value={align}
                                         onChange={(align) => setAttributes({ align: align, selfAlign: align })}
                                         label={__("Align", "premium-blocks-for-gutenberg")}
@@ -314,40 +316,17 @@ class edit extends Component {
                                         value={icon}
                                         onChange={newType => setAttributes({ icon: newType })}
                                     />
-                                    {("" !== faIcon || "undefined" !== typeof faIcon) &&
-                                        "icon" === icon && (
-                                            <div className="premium-icon__sidebar_icon">
-                                                <i className={iconClass} />
-                                            </div>
-                                        )}
+
                                     {"icon" === icon && (
                                         <Fragment>
-                                            <SelectControl
-                                                label={__("Icon Type", 'premium-blocks-for-gutenberg')}
-                                                value={iconType}
-                                                options={TYPE}
-                                                onChange={newType => setAttributes({ iconType: newType })}
-                                            />
-                                            <TextControl
-                                                label={__("Icon Class", 'premium-blocks-for-gutenberg')}
+
+                                            <FontIconPicker
+                                                icons={iconsList}
+                                                onChange={(newIcon) => setAttributes({ faIcon: newIcon })}
                                                 value={faIcon}
-                                                help={[
-                                                    __("Get icon class from", 'premium-blocks-for-gutenberg'),
-                                                    <a
-                                                        href={
-                                                            "fa" === iconType
-                                                                ? "https://fontawesome.com/v4.7.0/icons/"
-                                                                : "https://developer.wordpress.org/resource/dashicons/"
-                                                        }
-                                                        target="_blank"
-                                                    >
-                                                        &nbsp;
-                                                        {__("here", 'premium-blocks-for-gutenberg')}
-                                                    </a>,
-                                                    __(" , for example: ", 'premium-blocks-for-gutenberg'),
-                                                    "fa" === iconType ? "address-book" : "dashicons-admin-site"
-                                                ]}
-                                                onChange={newIcon => setAttributes({ faIcon: newIcon })}
+                                                isMulti={false}
+                                                // appendTo="body"
+                                                noSelectedPlaceholder={__("Select Icon", "premium-blocks-for-gutenberg")}
                                             />
                                         </Fragment>
                                     )}

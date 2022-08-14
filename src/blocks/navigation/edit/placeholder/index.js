@@ -14,59 +14,59 @@ import useNavigationEntities from '../../use-navigation-entities';
 import PlaceholderPreview from './placeholder-preview';
 
 export default function NavigationPlaceholder({
-	isSelected,
-	canUserCreateNavigationMenu = false,
-	isResolvingCanUserCreateNavigationMenu,
-	onCreateEmpty,
+    isSelected,
+    canUserCreateNavigationMenu = false,
+    isResolvingCanUserCreateNavigationMenu,
+    onCreateEmpty,
 }) {
-	const { isResolvingMenus, hasResolvedMenus } = useNavigationEntities();
+    const { isResolvingMenus, hasResolvedMenus } = useNavigationEntities();
 
-	useEffect(() => {
-		if (!isSelected) {
-			return;
-		}
+    useEffect(() => {
+        if (!isSelected) {
+            return;
+        }
 
-		if (isResolvingMenus) {
-			speak(__('Loading Navigation block setup options.'));
-		}
+        if (isResolvingMenus) {
+            speak(__('Loading Navigation block setup options.', "premium-blocks-for-gutenberg"));
+        }
 
-		if (hasResolvedMenus) {
-			speak(__('Navigation block setup options ready.'));
-		}
-	}, [isResolvingMenus, isSelected]);
+        if (hasResolvedMenus) {
+            speak(__('Navigation block setup options ready.', "premium-blocks-for-gutenberg"));
+        }
+    }, [isResolvingMenus, isSelected]);
 
-	const isResolvingActions =
-		isResolvingMenus && isResolvingCanUserCreateNavigationMenu;
+    const isResolvingActions =
+        isResolvingMenus && isResolvingCanUserCreateNavigationMenu;
 
-	return (
-		<>
-			<Placeholder className="premium-navigation-placeholder">
-				{
-					// The <PlaceholderPreview> component is displayed conditionally via CSS depending on
-					// whether the block is selected or not. This is achieved via CSS to avoid
-					// component re-renders
-				}
-				<PlaceholderPreview isVisible={!isSelected} />
-				<div
-					aria-hidden={!isSelected ? true : undefined}
-					className="premium-navigation-placeholder__controls"
-				>
-					<div className="premium-navigation-placeholder__actions">
-						<div className="premium-navigation-placeholder__actions__indicator">
-							<Icon icon={navigation} /> {__('Navigation')}
-						</div>
-						{isResolvingActions && <Spinner />}
-						{canUserCreateNavigationMenu && (
-							<Button
-								variant="tertiary"
-								onClick={onCreateEmpty}
-							>
-								{__('Start Menu')}
-							</Button>
-						)}
-					</div>
-				</div>
-			</Placeholder>
-		</>
-	);
+    return (
+        <>
+            <Placeholder className="premium-navigation-placeholder">
+                {
+                    // The <PlaceholderPreview> component is displayed conditionally via CSS depending on
+                    // whether the block is selected or not. This is achieved via CSS to avoid
+                    // component re-renders
+                }
+                <PlaceholderPreview isVisible={!isSelected} />
+                <div
+                    aria-hidden={!isSelected ? true : undefined}
+                    className="premium-navigation-placeholder__controls"
+                >
+                    <div className="premium-navigation-placeholder__actions">
+                        <div className="premium-navigation-placeholder__actions__indicator">
+                            <Icon icon={navigation} /> {__('Navigation', "premium-blocks-for-gutenberg")}
+                        </div>
+                        {isResolvingActions && <Spinner />}
+                        {canUserCreateNavigationMenu && (
+                            <Button
+                                variant="tertiary"
+                                onClick={onCreateEmpty}
+                            >
+                                {__('Start Menu', "premium-blocks-for-gutenberg")}
+                            </Button>
+                        )}
+                    </div>
+                </div>
+            </Placeholder>
+        </>
+    );
 }

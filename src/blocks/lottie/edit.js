@@ -22,17 +22,13 @@ import { generateCss, generateBlockId } from "../../components/HelperFunction";
 
 const { InspectorControls } = wp.blockEditor;
 
-const {
-    PanelBody,
-    TextControl,
-    ToggleControl,
-    SelectControl,
-} = wp.components;
+const { PanelBody, TextControl, ToggleControl, SelectControl } = wp.components;
 
 let isLottieUpdated = null;
 
 class edit extends Component {
     constructor() {
+
         super(...arguments);
         this.lottieplayer = React.createRef();
         this.state = {

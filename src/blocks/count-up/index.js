@@ -14,7 +14,7 @@ const counterAttrs = attributes
 
 registerBlockType("premium/countup", {
     title: __("CountUp"),
-    description: __('Show off your facts and figures in an elegant way using Premium CountUp Block.'),
+    description: __('Show off your facts and figures in an elegant way using Premium CountUp Block.', "premium-blocks-for-gutenberg"),
     icon: PBG_Block_Icons.countup,
     category: "premium-blocks",
     attributes: counterAttrs,

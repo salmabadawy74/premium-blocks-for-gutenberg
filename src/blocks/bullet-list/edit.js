@@ -685,7 +685,7 @@ class edit extends Component {
                                 />
                                 <hr />
                                 <MultiButtonsControl
-                                    choices={[{ value: 'left', label: __('Left'), icon: Icons.alignLeft }, { value: 'center', label: __('Center'), icon: Icons.alignCenter }, { value: 'right', label: __('Right'), icon: Icons.alignRight }]}
+                                    choices={[{ value: 'left', label: __('Left', "premium-blocks-for-gutenberg"), icon: Icons.alignLeft }, { value: 'center', label: __('Center', "premium-blocks-for-gutenberg"), icon: Icons.alignCenter }, { value: 'right', label: __('Right', "premium-blocks-for-gutenberg"), icon: Icons.alignRight }]}
                                     value={align}
                                     onChange={(align) => setAttributes({ align: align })}
                                     label={__("Align", "premium-blocks-for-gutenberg")}
@@ -694,14 +694,14 @@ class edit extends Component {
 
                                 <div>
                                     {iconPosition !== 'top' ? <MultiButtonsControl
-                                        choices={[{ value: 'flex-start', label: __('Top'), icon: icons.vertical_top }, { value: 'center', label: __('Center'), icon: icons.vertical_middle }, { value: 'flex-end', label: __('Bottom'), icon: icons.vertical_bottom }]}
+                                        choices={[{ value: 'flex-start', label: __('Top', "premium-blocks-for-gutenberg"), icon: icons.vertical_top }, { value: 'center', label: __('Center', "premium-blocks-for-gutenberg"), icon: icons.vertical_middle }, { value: 'flex-end', label: __('Bottom', "premium-blocks-for-gutenberg"), icon: icons.vertical_bottom }]}
                                         value={bulletAlign}
                                         onChange={(align) => setAttributes({ bulletAlign: align })}
                                         label={__("Bullet Alignment", "premium-blocks-for-gutenberg")}
                                         showIcons={true} />
                                         :
                                         <MultiButtonsControl
-                                            choices={[{ value: 'left', label: __('Left'), icon: Icons.alignLeft }, { value: 'center', label: __('Center'), icon: Icons.alignCenter }, { value: 'right', label: __('Right'), icon: Icons.alignRight }]}
+                                            choices={[{ value: 'left', label: __('Left', "premium-blocks-for-gutenberg"), icon: Icons.alignLeft }, { value: 'center', label: __('Center', "premium-blocks-for-gutenberg"), icon: Icons.alignCenter }, { value: 'right', label: __('Right', "premium-blocks-for-gutenberg"), icon: Icons.alignRight }]}
                                             value={bulletAlign}
                                             onChange={(align) => setAttributes({ bulletAlign: align })}
                                             label={__("Align Content", "premium-blocks-for-gutenberg")}
@@ -710,14 +710,14 @@ class edit extends Component {
                                 </div>
                                 <hr />
                                 <SelectControl
-                                    label={__("Bullet Position")}
+                                    label={__("Bullet Position", "premium-blocks-for-gutenberg")}
                                     options={POSITION}
                                     value={iconPosition}
                                     onChange={newValue => setAttributes({ iconPosition: newValue })}
                                 />
                                 <hr />
                                 <ToggleControl
-                                    label={__("Divider")}
+                                    label={__("Divider", "premium-blocks-for-gutenberg")}
                                     checked={divider}
                                     onChange={value => setAttributes({ divider: value })}
                                 />
@@ -725,7 +725,7 @@ class edit extends Component {
                         </InspectorTab>
                         <InspectorTab key={'style'}>
                             <PanelBody
-                                title={__("General Style")}
+                                title={__("General Style", "premium-blocks-for-gutenberg")}
                                 className="premium-panel-body"
                                 initialOpen={true}
                             >
@@ -801,20 +801,17 @@ class edit extends Component {
                                 />
                                 <hr />
                                 <PremiumBorder
-                                    label={__("Border")}
+                                    label={__("Border", "premium-blocks-for-gutenberg")}
                                     value={generalBorder}
-                                    borderType={generalBorder?.borderType}
-                                    borderColor={generalBorder?.borderColor}
-                                    borderWidth={generalBorder?.borderWidth}
-                                    borderRadius={generalBorder?.borderRadius}
+
                                     onChange={(value) => setAttributes({ generalBorder: value })}
                                 />
                                 <hr />
-                                <SpacingComponent value={generalmargin} responsive={true} showUnits={true} label={__("Margin")} onChange={(value) => setAttributes({ generalmargin: value })} />
-                                <SpacingComponent value={generalpadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ generalpadding: value })} />
+                                <SpacingComponent value={generalmargin} responsive={true} showUnits={true} label={__("Margin", "premium-blocks-for-gutenberg")} onChange={(value) => setAttributes({ generalmargin: value })} />
+                                <SpacingComponent value={generalpadding} responsive={true} showUnits={true} label={__("Padding", "premium-blocks-for-gutenberg")} onChange={(value) => setAttributes({ generalpadding: value })} />
                             </PanelBody>
                             <PanelBody
-                                title={__("Bullet Style")}
+                                title={__("Bullet Style", "premium-blocks-for-gutenberg")}
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
@@ -910,10 +907,6 @@ class edit extends Component {
                                 <PremiumBorder
                                     label={__("Border")}
                                     value={bulletIconBorder}
-                                    borderType={bulletIconBorder.borderType}
-                                    borderColor={bulletIconBorder.borderColor}
-                                    borderWidth={bulletIconBorder.borderWidth}
-                                    borderRadius={bulletIconBorder.borderRadius}
                                     onChange={(value) => setAttributes({ bulletIconBorder: value })}
                                 />
                                 <hr />
@@ -921,12 +914,11 @@ class edit extends Component {
                                 <SpacingComponent value={bulletIconpadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ bulletIconpadding: value })} />
                             </PanelBody>
                             <PanelBody
-                                title={__("Title Style")}
+                                title={__("Title Style", "premium-blocks-for-gutenberg")}
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
                                 <PremiumTypo
-                                    components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
                                     value={titleTypography}
                                     onChange={newValue => setAttributes({ titleTypography: newValue })}
                                 />
@@ -1000,12 +992,12 @@ class edit extends Component {
                             </PanelBody>
                             {divider &&
                                 <PanelBody
-                                    title={__("Divider")}
+                                    title={__("Divider", "premium-blocks-for-gutenberg")}
                                     className="premium-panel-body"
                                     initialOpen={false}
                                 >
                                     <SelectControl
-                                        label={__("Divider Style")}
+                                        label={__("Divider Style", "premium-blocks-for-gutenberg")}
                                         options={DividerStyle}
                                         value={dividerStyle}
                                         onChange={newValue => setAttributes({ dividerStyle: newValue })}

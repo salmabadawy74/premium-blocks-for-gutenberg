@@ -3,6 +3,10 @@ const attributes = {
     blockId: {
         type: "string"
     },
+    iconType: {
+        type: "string",
+        default: "dash"
+    },
     borderIconBox: {
         type: "boolean",
         default: false

@@ -465,7 +465,7 @@ const new_attributes = {
         default: [
             {
                 titleTag: "H2",
-                titleFont: __('Default', 'premium - blocks -for-gutenberg'),
+                titleFont: __('Default', 'premium-blocks-for-gutenberg'),
                 titleColor: '',
                 titleSize: 20,
                 titleSizeUnit: 'px',

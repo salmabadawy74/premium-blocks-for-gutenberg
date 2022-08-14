@@ -49,7 +49,6 @@ const save = props => {
     return (
         <div
             className={`${mainClasses} premium-button__${effect} ${blockId} premium-button__${effectDir} premium-button-${block_id}`}
-            style={{ textAlign: btnAlign }}
         >
             <style>{loadStyles()}</style>
             <RichText.Content
