@@ -16,87 +16,87 @@ import { __ } from '@wordpress/i18n';
 import OverlayMenuIcon from './overlay-menu-icon';
 
 export default function ResponsiveWrapper({
-	children,
-	id,
-	isOpen,
-	isResponsive,
-	onToggle,
-	isHiddenByDefault,
-	classNames,
-	styles,
-	hasIcon,
+    children,
+    id,
+    isOpen,
+    isResponsive,
+    onToggle,
+    isHiddenByDefault,
+    classNames,
+    styles,
+    hasIcon,
 }) {
-	if (!isResponsive) {
-		return children;
-	}
-	const responsiveContainerClasses = classnames(
-		'premium-navigation__responsive-container',
-		classNames,
-		{
-			'is-menu-open': isOpen,
-			'hidden-by-default': isHiddenByDefault,
-		}
-	);
-	const openButtonClasses = classnames(
-		'premium-navigation__responsive-container-open',
-		{ 'always-shown': isHiddenByDefault }
-	);
+    if (!isResponsive) {
+        return children;
+    }
+    const responsiveContainerClasses = classnames(
+        'premium-navigation__responsive-container',
+        classNames,
+        {
+            'is-menu-open': isOpen,
+            'hidden-by-default': isHiddenByDefault,
+        }
+    );
+    const openButtonClasses = classnames(
+        'premium-navigation__responsive-container-open',
+        { 'always-shown': isHiddenByDefault }
+    );
 
-	const modalId = `${id}-modal`;
+    const modalId = `${id}-modal`;
 
-	const dialogProps = {
-		className: 'premium-navigation__responsive-dialog',
-		...(isOpen && {
-			role: 'dialog',
-			'aria-modal': true,
-			'aria-label': __('Menu'),
-		}),
-	};
+    const dialogProps = {
+        className: 'premium-navigation__responsive-dialog',
+        ...(isOpen && {
+            role: 'dialog',
+            'aria-modal': true,
+            'aria-label': __('Menu', "premium-blocks-for-gutenberg"),
+        }),
+    };
 
-	return (
-		<>
-			{!isOpen && (
-				<Button
-					aria-haspopup="true"
-					aria-label={__('Open menu')}
-					className={openButtonClasses}
-					onClick={() => onToggle(true)}
-				>
-					{hasIcon && <OverlayMenuIcon />}
-					{!hasIcon && (
-						<span className="premium-navigation__toggle_button_label">
-							{__('Menu')}
-						</span>
-					)}
-				</Button>
-			)}
+    return (
+        <>
+            {!isOpen && (
+                <Button
+                    aria-haspopup="true"
+                    aria-label={__('Open menu', "premium-blocks-for-gutenberg")}
+                    className={openButtonClasses}
+                    onClick={() => onToggle(true)}
+                >
+                    {hasIcon && <OverlayMenuIcon />}
+                    {!hasIcon && (
+                        <span className="premium-navigation__toggle_button_label">
+                            {__('Menu', "premium-blocks-for-gutenberg")}
+                        </span>
+                    )}
+                </Button>
+            )}
 
-			<div
-				className={responsiveContainerClasses}
-				style={styles}
-				id={modalId}
-			>
-				<div
-					className="premium-navigation__responsive-close"
-					tabIndex="-1"
-				>
-					<div {...dialogProps}>
-						<Button
-							className="premium-navigation__responsive-container-close"
-							aria-label={__('Close menu')}
-							onClick={() => onToggle(false)}
-						>
-							<Icon icon={close} />
-						</Button>
-						<div
-							className="premium-navigation__responsive-container-content"
-							id={`${modalId}-content`}
-						>
-							{children}
-						</div>
-					</div>
-				</div>
-			</div>
-		</>
-	);
+            <div
+                className={responsiveContainerClasses}
+                style={styles}
+                id={modalId}
+            >
+                <div
+                    className="premium-navigation__responsive-close"
+                    tabIndex="-1"
+                >
+                    <div {...dialogProps}>
+                        <Button
+                            className="premium-navigation__responsive-container-close"
+                            aria-label={__('Close menu', "premium-blocks-for-gutenberg")}
+                            onClick={() => onToggle(false)}
+                        >
+                            <Icon icon={close} />
+                        </Button>
+                        <div
+                            className="premium-navigation__responsive-container-content"
+                            id={`${modalId}-content`}
+                        >
+                            {children}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
 }

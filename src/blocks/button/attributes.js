@@ -16,8 +16,12 @@ const attributes = {
         default: "md"
     },
     btnAlign: {
-        type: "string",
-        default: "center"
+        type: "object",
+        default: {
+            'Desktop': 'center',
+            'Tablet': 'center',
+            'Mobile': 'center'
+        }
     },
     btnLink: {
         type: "string",

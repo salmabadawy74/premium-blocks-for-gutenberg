@@ -78,7 +78,7 @@ const BlockPlaceholder = ({
             { isOpen && (
                 <Modal
                     title={__('Allow JSON Uploads', 'premium-blocks-for-gutenberg')}
-                    closeLabel={__('Close')}
+                    closeLabel={__('Close', "premium-blocks-for-gutenberg")}
                     onRequestClose={() => setOpen(false)}
                     overlayClassName="wp-block-themeisle-blocks-lottie-modal"
                 >

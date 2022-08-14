@@ -18,7 +18,7 @@ const {
 
 registerBlockType("premium/bullet-list", {
     title: __("Bullet List"),
-    description: __('Organize your website’s content with attractive lists using Premium Bullet List Block.'),
+    description: __('Organize your website’s content with attractive lists using Premium Bullet List Block.', "premium-blocks-for-gutenberg"),
     icon: PBG_Block_Icons.bulletList,
     category: "premium-blocks",
     attributes: attributes,

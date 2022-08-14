@@ -93,14 +93,14 @@ class PremiumAccordion extends Component {
             [
                 'premium/accordion-item',
                 {
-                    title: __('Awesome Title'),
+                    title: __('Awesome Title', 'premium-blocks-for-gutenberg'),
                     placeholder: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
                 },
             ],
             [
                 'premium/accordion-item',
                 {
-                    title: __('Awesome Title'),
+                    title: __('Awesome Title', 'premium-blocks-for-gutenberg'),
                     placeholder: __("Cool Description."),
                 },
             ],
@@ -268,7 +268,7 @@ class PremiumAccordion extends Component {
                                 initialOpen={false}
                             >
                                 <RadioComponent
-                                    choices={[{ value: 'text', label: __('Text') }, { value: 'block', label: __('Block') }]}
+                                    choices={[{ value: 'text', label: __('Text', 'premium-blocks-for-gutenberg') }, { value: 'block', label: __('Block', 'premium-blocks-for-gutenberg') }]}
                                     value={contentType}
                                     onChange={newType => setAttributes({ contentType: newType })}
                                     label={__("Type", 'premium-blocks-for-gutenberg')}
@@ -280,7 +280,7 @@ class PremiumAccordion extends Component {
                                 initialOpen={false}
                             >
                                 <RadioComponent
-                                    choices={[{ value: 'in', label: __('In') }, { value: 'out', label: __('Out') }]}
+                                    choices={[{ value: 'in', label: __('In', 'premium-blocks-for-gutenberg') }, { value: 'out', label: __('Out', 'premium-blocks-for-gutenberg') }]}
                                     value={arrowStyles[0].arrowPos}
                                     onChange={(newValue) => saveArrowStyles({ arrowPos: newValue })}
                                     label={__("Position", 'premium-blocks-for-gutenberg')}
@@ -333,9 +333,9 @@ class PremiumAccordion extends Component {
                                 initialOpen={false}
                             >
                                 <MultiButtonsControl
-                                    choices={[{ value: 'left', label: __('Left'), icon: Icons.alignLeft },
-                                    { value: 'center', label: __('Center'), icon: Icons.alignCenter },
-                                    { value: 'right', label: __('Right'), icon: Icons.alignRight }]}
+                                    choices={[{ value: 'left', label: __('Left', 'premium-blocks-for-gutenberg'), icon: Icons.alignLeft },
+                                    { value: 'center', label: __('Center', 'premium-blocks-for-gutenberg'), icon: Icons.alignCenter },
+                                    { value: 'right', label: __('Right', 'premium-blocks-for-gutenberg'), icon: Icons.alignRight }]}
                                     value={descAlign}
                                     onChange={(align) => setAttributes({ descAlign: align })}
                                     label={__("Align Content", "premium-blocks-for-gutenberg")}

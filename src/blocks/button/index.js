@@ -11,7 +11,7 @@ const { registerBlockType } = wp.blocks;
 
 registerBlockType("premium/button", {
     title: __("Button"),
-    description: __('Add stylish buttons to your Gutenberg page using Premium Button Block.'),
+    description: __('Add stylish buttons to your Gutenberg page using Premium Button Block.', "premium-blocks-for-gutenberg"),
     icon: PBG_Block_Icons.button,
     category: "premium-blocks",
     attributes: attributes,

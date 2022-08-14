@@ -12,6 +12,10 @@ import InspectorTab from '../../components/inspectorTab';
 import { generateBlockId, generateCss, typographyCss, borderCss, paddingCss } from '../../components/HelperFunction';
 const { PanelBody, SelectControl, ToggleControl, TabPanel } = wp.components;
 const { Fragment, Component } = wp.element;
+import MultiButtonsControl from "../../components/responsive-radio";
+import Icons from "../../components/icons";
+
+
 const { InspectorControls, AlignmentToolbar, BlockControls, RichText, URLInput } = wp.blockEditor;
 const { withSelect } = wp.data
 export class edit extends Component {
@@ -214,14 +218,7 @@ export class edit extends Component {
             " premium-mobile-hidden": hideMobile,
         });
         return [
-            isSelected && "block" != btnSize && (
-                <BlockControls key="controls">
-                    <AlignmentToolbar
-                        value={btnAlign}
-                        onChange={newAlign => setAttributes({ btnAlign: newAlign })}
-                    />
-                </BlockControls>
-            ),
+
             isSelected && (
                 <InspectorControls key={"inspector"}>
                     <InspectorTabs tabs={['layout', 'style', 'advance']}>
@@ -272,6 +269,29 @@ export class edit extends Component {
                                     checked={btnTarget}
                                     onChange={newValue => setAttributes({ btnTarget: newValue })}
                                 />
+                                {"block" != btnSize && (<MultiButtonsControl
+                                    choices={[
+                                        {
+                                            value: "left",
+                                            label: __("Left", 'premium-blocks-for-gutenberg'),
+                                            icon: Icons.alignLeft,
+                                        },
+                                        {
+                                            value: "center",
+                                            label: __("Center", 'premium-blocks-for-gutenberg'),
+                                            icon: Icons.alignCenter,
+                                        },
+                                        {
+                                            value: "right",
+                                            label: __("Right", 'premium-blocks-for-gutenberg'),
+                                            icon: Icons.alignRight,
+                                        },
+                                    ]}
+                                    value={btnAlign}
+                                    onChange={newAlign => setAttributes({ btnAlign: newAlign })}
+                                    label={__("Align Content", "premium-blocks-for-gutenberg")}
+                                    showIcons={true}
+                                />)}
                             </PanelBody>
                         </InspectorTab>
                         <InspectorTab key={'style'}>
@@ -402,7 +422,7 @@ export class edit extends Component {
             ),
             <div
                 className={`${mainClasses} premium-button__${effect} ${blockId} premium-button__${effectDir}`}
-                style={{ textAlign: btnAlign }}
+                style={{ textAlign: btnAlign[this.props.deviceType] }}
             >
                 <style>{loadStyles()}</style>
                 <RichText

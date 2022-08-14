@@ -51,7 +51,10 @@ const PremiumBorder = (props) => {
                         {props.label ? props.label : __('Border', 'premium-blocks-for-gutenberg')}
                     </div>
                     <div className="premium-blocks-border-button-list ">
-                        {[['solid', __('Solid')], ['dotted', __('Dotted')], ['dashed', __('Dashed')], ['double', __('Double')]].map((data, index) => {
+                        {[['solid', __('Solid', "premium-blocks-for-gutenberg")],
+                        ['dotted', __('Dotted', "premium-blocks-for-gutenberg")],
+                        ['dashed', __('Dashed', "premium-blocks-for-gutenberg")],
+                        ['double', __('Double', "premium-blocks-for-gutenberg")]].map((data, index) => {
                             return (
                                 <Tooltip text={data[1]}>
                                     <button className={(borderType == data[0] ? 'active' : '') + ' premium-border-button is-tertiary"'} key={index} onClick={() => onChangeBorder("borderType", data[0])}>

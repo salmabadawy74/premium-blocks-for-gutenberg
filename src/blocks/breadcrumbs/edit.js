@@ -182,7 +182,7 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
     return (
         <>
 
-<BlockControls group="block">
+            <BlockControls group="block">
                 <AlignmentControl
                     value={textAlign}
                     onChange={(nextAlign) => {
@@ -196,7 +196,7 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
                     {enablePrefix && <RichText
                         tagName="span"
                         className={`prefix`}
-                        placeholder={__('You Are Here: ')}
+                        placeholder={__('You Are Here: ', 'premium-blocks-for-gutenberg')}
                         value={prefix}
                         isSelected={false}
                         onChange={newText => setAttributes({ prefix: newText })}
@@ -207,7 +207,7 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
                             href="#home-pseudo-link"
                             onClick={(event) => event.preventDefault()}
                         >
-                            {attributes.homeItemType === 'text' ? __('Home') : <Dashicon style={{ lineHeight: 'normal' }} icon='admin-home' />}
+                            {attributes.homeItemType === 'text' ? __('Home', 'premium-blocks-for-gutenberg') : <Dashicon style={{ lineHeight: 'normal' }} icon='admin-home' />}
                             {separator}
                         </a>
                     </div>
@@ -223,7 +223,7 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
                         </div>
                     </>}
                     <div className='premium-breadcrumbs-item'>
-                        <span>{fullTitle || __('Post Title')}</span>
+                        <span>{fullTitle || __('Post Title', 'premium-blocks-for-gutenberg')}</span>
                     </div>
                 </div>
                 {loadGoogleFonts && loadGoogleFonts}

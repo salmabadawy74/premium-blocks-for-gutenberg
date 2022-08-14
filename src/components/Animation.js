@@ -25,20 +25,20 @@ class Animation extends Component {
 
     _valueChange(value, type) {
         let returnData = value == 'rotate' ? [
-            { label: __('DownLeft'), value: 'DownLeft' },
-            { label: __('DownRight'), value: 'DownRight' },
-            { label: __('UpLeft'), value: 'UpLeft' },
-            { label: __('UpRight'), value: 'UpRight' }
+            { label: __('DownLeft', "premium-blocks-for-gutenberg"), value: 'DownLeft' },
+            { label: __('DownRight', "premium-blocks-for-gutenberg"), value: 'DownRight' },
+            { label: __('UpLeft', "premium-blocks-for-gutenberg"), value: 'UpLeft' },
+            { label: __('UpRight', "premium-blocks-for-gutenberg"), value: 'UpRight' }
         ] : (value == 'slide' || value == 'flip' || value == 'fold') ? [
-            { label: __('Right'), value: 'Right' },
-            { label: __('Left'), value: 'Left' },
-            { label: __('Up'), value: 'Up' },
-            { label: __('Down'), value: 'Down' }] : [
-            { label: __('Center'), value: 'center' },
-            { label: __('Right'), value: 'Right' },
-            { label: __('Left'), value: 'Left' },
-            { label: __('Up'), value: 'Up' },
-            { label: __('Down'), value: 'Down' }]
+            { label: __('Right', "premium-blocks-for-gutenberg"), value: 'Right' },
+            { label: __('Left', "premium-blocks-for-gutenberg"), value: 'Left' },
+            { label: __('Up', "premium-blocks-for-gutenberg"), value: 'Up' },
+            { label: __('Down', "premium-blocks-for-gutenberg"), value: 'Down' }] : [
+            { label: __('Center', "premium-blocks-for-gutenberg"), value: 'center' },
+            { label: __('Right', "premium-blocks-for-gutenberg"), value: 'Right' },
+            { label: __('Left', "premium-blocks-for-gutenberg"), value: 'Left' },
+            { label: __('Up', "premium-blocks-for-gutenberg"), value: 'Up' },
+            { label: __('Down', "premium-blocks-for-gutenberg"), value: 'Down' }]
         if (type == 'data') {
             return returnData
         } else {
@@ -104,7 +104,7 @@ class Animation extends Component {
                         <SelectControl
                             label={__('Repeat', 'premium-blocks-for-gutenberg')}
                             value={value.repeat || 'once'}
-                            options={[{ value: 'once', label: __('Once') }, { value: 'loop', label: __('Loop') }]}
+                            options={[{ value: 'once', label: __('Once', "premium-blocks-for-gutenberg") }, { value: 'loop', label: __('Loop') }]}
                             onChange={val => this.setSettings('repeat', val)}
                         />
                         < ResponsiveSingleRangeControl

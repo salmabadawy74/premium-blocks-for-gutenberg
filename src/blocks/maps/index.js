@@ -8,8 +8,8 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 registerBlockType("premium/maps", {
-    title: __("Maps"),
-    description: __('Embed Google Maps to your Gutenberg page using Premium Maps Block.'),
+    title: __("Maps", "premium-blocks-for-gutenberg"),
+    description: __('Embed Google Maps to your Gutenberg page using Premium Maps Block.', "premium-blocks-for-gutenberg"),
     icon: PBG_Block_Icons.maps,
     category: "premium-blocks",
     supports: {

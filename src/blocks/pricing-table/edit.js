@@ -354,7 +354,7 @@ class PremiumPricingTable extends Component {
                                     initialOpen={false}
                                 >
                                     <MultiButtonsControl
-                                        choices={[{ value: 'left', label: __('Left'), icon: Icons.alignLeft }, { value: 'center', label: __('Center'), icon: Icons.alignCenter }, { value: 'right', label: __('Right'), icon: Icons.alignRight }]}
+                                        choices={[{ value: 'left', label: __('Left', "premium-blocks-for-gutenberg"), icon: Icons.alignLeft }, { value: 'center', label: __('Center', "premium-blocks-for-gutenberg"), icon: Icons.alignCenter }, { value: 'right', label: __('Right', "premium-blocks-for-gutenberg"), icon: Icons.alignRight }]}
                                         value={featureAlign}
                                         onChange={(align) => setAttributes({ featureAlign: align })}
                                         label={__("Align", "premium-blocks-for-gutenberg")}
