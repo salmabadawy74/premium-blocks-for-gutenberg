@@ -363,7 +363,7 @@ const attributes = {
     headerBorder: {
         type: "object",
         default: {
-            borderType: "none",
+            borderType: "",
             "borderColor": "",
             "borderWidth": {
                 Desktop: {

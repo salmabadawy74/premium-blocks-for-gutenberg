@@ -3615,7 +3615,7 @@ button.premium-modal-box-modal-close {
     -ms-flex-align: center;
     align-items: center;
     padding: 5px 5px;
-    border-bottom: 1px solid #e5e5e5 !important;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .premium-modal-box-modal-header .premium-modal-box-modal-close {

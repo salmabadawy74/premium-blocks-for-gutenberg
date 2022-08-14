@@ -4261,9 +4261,9 @@ class PBG_Blocks_Helper {
 		// Style For Button Trigger
 		if (isset($attr['triggerTypography'])) {
 			$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' . ' > button' );
-			$css->add_property( 'font-size', $css->render_range($attr['triggerTypography'],'Desktop') );
+			$css->add_property( 'font-size', $css->render_range($attr['triggerTypography']['fontSize'],'Desktop') );
 
-			$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' . ' > span' );
+			$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' . ' > button' . '> span' );
 			$css->render_typography($attr['triggerTypography'], 'Desktop');
 		}
 		if ( isset( $attr['triggerPadding'] ) ) {
@@ -4461,9 +4461,9 @@ class PBG_Blocks_Helper {
 		// Style For Button Trigger
 		if (isset($attr['triggerTypography'])) {
 			$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' . ' > button' );
-			$css->add_property( 'font-size', $css->render_range($attr['triggerTypography'],'Tablet') );
+			$css->add_property( 'font-size', $css->render_range($attr['triggerTypography']['fontSize'],'Tablet') );
 
-			$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' . ' > span' );
+			$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' . ' > button' . ' > span' );
 			$css->render_typography($attr['triggerTypography'], 'Tablet');
 		}
 		if ( isset( $attr['triggerPadding'] ) ) {
@@ -4662,9 +4662,9 @@ class PBG_Blocks_Helper {
 		// Style For Button Trigger
 		if (isset($attr['triggerTypography'])) {
 			$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' . ' > button' );
-			$css->add_property( 'font-size', $css->render_range($attr['triggerTypography'],'Mobile') );
+			$css->add_property( 'font-size', $css->render_range($attr['triggerTypography']['fontSize'],'Mobile') );
 
-			$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' . ' > span' );
+			$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' . ' > button' . ' > span' );
 			$css->render_typography($attr['triggerTypography'], 'Mobile');
 		}
 		if ( isset( $attr['triggerPadding'] ) ) {
