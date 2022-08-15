@@ -22,9 +22,6 @@ class Premium_Blocks_css {
 	 * @var array
 	 */
 	protected static $google_fonts = array();
-	public static $footer_gfonts   = array();
-	public static $gfonts          = array();
-
 
 	/**
 	 * Stores the final css output with all of its rules for the current selector.
@@ -83,73 +80,6 @@ class Premium_Blocks_css {
 	 */
 	protected $_media_query_output = '';
 
-
-	public function __construct() {
-
-		add_action( 'wp_head', array( $this, 'frontend_gfonts' ), 90 );
-		add_action( 'wp_footer', array( $this, 'frontend_footer_gfonts' ), 90 );
-	}
-
-
-	public function frontend_gfonts() {
-
-		if ( empty( self::$gfonts ) ) {
-			return;
-		}
-		$print_google_fonts = apply_filters( 'pbg_blocks_print_google_fonts', true );
-		if ( ! $print_google_fonts ) {
-			return;
-		}
-		$this->load_google_font( self::$gfonts );
-
-	}
-
-		/**
-		 * Load Google Fonts in Frontend
-		 */
-	public function frontend_footer_gfonts() {
-
-		if ( empty( self::$footer_gfonts ) ) {
-			return;
-		}
-		$print_google_fonts = apply_filters( 'premium_blocks_print_footer_google_fonts', true );
-		if ( ! $print_google_fonts ) {
-			return;
-		}
-		$this->load_google_font( self::$footer_gfonts );
-
-	}
-
-
-		/**
-		 * Print Google Font
-		 *
-		 * @since 1.9.2
-		 *
-		 * @access public
-		 *
-		 * @param object $gfont for google Font.
-		 */
-	public function load_google_font( $gfonts ) {
-
-		$link    = '';
-		$subsets = array();
-		foreach ( $gfonts as $key => $gfont_values ) {
-			if ( ! empty( $link ) ) {
-				$link .= '%7C'; // Append a new font to the string.
-			}
-			$link .= $gfont_values['fontfamily'];
-			if ( ! empty( $gfont_values['fontvariants'] ) ) {
-				$link .= ':';
-				$link .= implode( ',', $gfont_values['fontvariants'] );
-			}
-		}
-		if ( apply_filters( 'pbg_display_swap_google_fonts', true ) ) {
-			$link .= '&amp;display=swap';
-		}
-		echo '<link href="//fonts.googleapis.com/css?family=' . esc_attr( str_replace( '|', '%7C', $link ) ) . '" rel="stylesheet">';
-
-	}
 	/**
 	 * Sets a selector to the object and changes the current selector to a new one
 	 *
@@ -402,7 +332,7 @@ class Premium_Blocks_css {
 	}
 
 	public function render_color( $color, $opacity = null ) {
-		if ( empty( $color ) || 'px' === $color || 'Default' === $color ) {
+		if ( empty( $color ) ) {
 			return false;
 		}
 		return $color;
@@ -432,29 +362,30 @@ class Premium_Blocks_css {
 		return $this;
 	}
 
-
+	/**
+	 * Generates the font family output.
+	 *
+	 * @param array $font an array of font settings.
+	 * @return string
+	 */
 
 
 	/**
-	 * Generates the measure output.
+	 * Generates the font family output.
 	 *
-	 * @param array $measure an array of font settings.
+	 * @param array $font an array of font settings.
 	 * @return string
 	 */
-	public function render_spacing( $measure, $unit = 'px' ) {
-
-		if ( empty( $measure ) ) {
+	public function render_font_weight( $weight ) {
+		if ( empty( $weight ) ) {
 			return false;
 		}
-
-		if ( ! is_numeric( $measure['top'] ) && ! is_numeric( $measure['right'] ) && ! is_numeric( $measure['bottom'] ) && ! is_numeric( $measure['left'] ) ) {
-			return false;
+		if ( 'regular' === $weight ) {
+			$weight_string = 'normal';
+		} else {
+			$weight_string = $weight;
 		}
-
-		$size_string = ( is_numeric( $measure['top'] ) ? $measure['top'] : '0' ) . $unit . ' ' . ( is_numeric( $measure['right'] ) ? $measure['right'] : '0' ) . $unit . ' ' . ( is_numeric( $measure['bottom'] ) ? $measure['bottom'] : '0' ) . $unit . ' ' . ( is_numeric( $measure['left'] ) ? $measure['left'] : '0' ) . $unit;
-
-		return $size_string;
-
+		return $weight_string;
 	}
 
 	/**
@@ -464,78 +395,66 @@ class Premium_Blocks_css {
 	 * @param object $css an object of css output.
 	 * @param string $inherit an string to determine if the font should inherit.
 	 * @return string
+
+	/**
+	 * Generates the font height output.
+	 *
+	 * @param array  $font an array of font settings.
+	 * @param string $device the device this is showing on.
+	 * @return string
 	 */
-	public function render_typography( $font, $device ) {
+	public function render_font_height( $font, $device ) {
 		if ( empty( $font ) ) {
 			return false;
 		}
-		$size_type = ( isset( $font['fontSize']['unit'] ) && ! empty( $font['fontSize']['unit'] ) ? $font['fontSize']['unit'] : 'px' );
-		if ( isset( $font['fontSize'] ) && isset( $font['fontSize'][ $device ] ) && ! empty( $font['fontSize'][ $device ] ) ) {
-			$this->add_property( 'font-size', $font['fontSize'][ $device ] . $size_type );
+		if ( ! is_array( $font ) ) {
+			return false;
 		}
-		$line_type = ( isset( $font['lineHeight']['unit'] ) && ! empty( $font['lineHeight']['unit'] ) ? $font['lineHeight']['unit'] : 'px' );
-		if ( isset( $font['lineHeight'] ) && isset( $font['lineHeight'][ $device ] ) && ! empty( $font['lineHeight'][ $device ] ) ) {
-			$this->add_property( 'line-height', $font['lineHeight'][ $device ] . $line_type );
+		if ( ! isset( $font['lineHeight'] ) ) {
+			return false;
 		}
-		$letter_type = ( isset( $font['letterSpacing']['unit'] ) && ! empty( $font['letterSpacing']['unit'] ) ? $font['letterSpacing']['unit'] : 'px' );
-		if ( isset( $font['letterSpacing'] ) && isset( $font['letterSpacing'][ $device ] ) && ! empty( $font['letterSpacing'][ $device ] ) ) {
-			$this->add_property( 'letter-spacing', $font['letterSpacing'][ $device ] . $letter_type );
+		if ( ! is_array( $font['lineHeight'] ) ) {
+			return false;
 		}
-		$family = ( isset( $font['fontFamily'] ) && ! empty( $font['fontFamily'] ) && 'Default' !== $font['fontFamily'] ? $font['fontFamily'] : '' );
-		if ( ! empty( $family ) ) {
+		if ( ! isset( $font['lineHeight'][ $device ] ) ) {
+			return false;
+		}
+		if ( empty( $font['lineHeight'][ $device ] ) ) {
+			return false;
+		}
+		$font_string = $font['lineHeight'][ $device ] . ( isset( $font['lineType'] ) && ! empty( $font['lineType'] ) ? $font['lineType'] : 'px' );
 
-			$this->add_gfont(
-				array(
-					'fontFamily' => $family,
-				)
-			);
-		}
-
+		return $font_string;
 	}
+	/**
+	 * Outputs a string if set.
+	 *
+	 * @param array  $string a string setting.
+	 * @param string $unit if needed add unit.
+	 * @return string
+	 */
+	public function render_string( $string = null, $unit = null ) {
+		if ( empty( $string ) ) {
+			return false;
+		}
+		$string = $string . ( isset( $unit ) && ! empty( $unit ) ? $unit : '' );
 
+		return $string;
+	}
+	/**
+	 * Outputs a string if set.
+	 *
+	 * @param array  $number a string setting.
+	 * @param string $unit if needed add unit.
+	 * @return string
+	 */
+	public function render_number( $number = null, $unit = null ) {
+		if ( ! is_numeric( $number ) ) {
+			return false;
+		}
+		$number = $number . ( isset( $unit ) && ! empty( $unit ) ? $unit : '' );
 
-	public function add_gfont( $attr ) {
-
-			$defaults = array(
-				'googleFont'     => true,
-				'loadGoogleFont' => true,
-				'fontFamily'     => '',
-				'fontVariant'    => '',
-			);
-			$attr     = wp_parse_args( $attr, $defaults );
-
-			if ( true == $attr['googleFont'] && true == $attr['loadGoogleFont'] && ! empty( $attr['fontFamily'] ) ) {
-				// Check if the font has been added yet.
-				if ( ! array_key_exists( $attr['fontFamily'], self::$gfonts ) ) {
-					$add_font                            = array(
-						'fontfamily'   => $attr['fontFamily'],
-						'fontvariants' => ( isset( $attr['fontVariant'] ) && ! empty( $attr['fontVariant'] ) ? array( $attr['fontVariant'] ) : array() ),
-					);
-					self::$gfonts[ $attr['fontFamily'] ] = $add_font;
-					// Check if wp_head has already run in which case we need to add to footer fonts.
-					if ( did_action( 'wp_body_open' ) >= 1 ) {
-						self::$footer_gfonts[ $attr['fontFamily'] ] = $add_font;
-					}
-				} else {
-					if ( isset( $attr['fontVariant'] ) && ! empty( $attr['fontVariant'] ) ) {
-						if ( ! in_array( $attr['fontVariant'], self::$gfonts[ $attr['fontFamily'] ]['fontvariants'], true ) ) {
-							array_push( self::$gfonts[ $attr['fontFamily'] ]['fontvariants'], $attr['fontVariant'] );
-							if ( did_action( 'wp_body_open' ) >= 1 ) {
-								if ( ! array_key_exists( $attr['fontFamily'], self::$footer_gfonts ) ) {
-									$add_font                                   = array(
-										'fontfamily'   => $attr['fontFamily'],
-										'fontvariants' => ( isset( $attr['fontVariant'] ) && ! empty( $attr['fontVariant'] ) ? array( $attr['fontVariant'] ) : array() ),
-									);
-									self::$footer_gfonts[ $attr['fontFamily'] ] = $add_font;
-								} else {
-									array_push( self::$footer_gfonts[ $attr['fontFamily'] ]['fontvariants'], $attr['fontVariant'] );
-								}
-							}
-						}
-					}
-				}
-			}
-
+		return $number;
 	}
 
 
@@ -547,21 +466,60 @@ class Premium_Blocks_css {
 	 * @param bool   $render_zero if 0 should be rendered or not.
 	 * @return string
 	 */
-	public function render_range( $size, $device ) {
+	public function render_range( $size, $device, $render_zero = true ) {
 		if ( empty( $size ) ) {
 			return false;
 		}
-		if ( ! isset( $size[ $device ] ) ) {
+		if ( ! is_array( $size ) ) {
 			return false;
 		}
-		$size_type   = ( isset( $size['unit'] ) && ! empty( $size['unit'] ) ? $size['unit'] : 'px' );
-		$size_string = $size[ $device ] . $size_type;
+		if ( ! isset( $size['size'] ) ) {
+			return false;
+		}
+		if ( ! is_array( $size['size'] ) ) {
+			return false;
+		}
+		if ( ! isset( $size['size'][ $device ] ) ) {
+			return false;
+		}
+		if ( $render_zero ) {
+			if ( ! is_numeric( $size['size'][ $device ] ) ) {
+				return false;
+			}
+		} else {
+			if ( empty( $size['size'][ $device ] ) ) {
+				return false;
+			}
+		}
+		$size_type   = ( isset( $size['unit'] ) && is_array( $size['unit'] ) && isset( $size['unit'][ $device ] ) && ! empty( $size['unit'][ $device ] ) ? $size['unit'][ $device ] : 'px' );
+		$size_string = $size['size'][ $device ] . $size_type;
 
 		return $size_string;
 	}
 
 
-
+	/**
+	 * Add google font to array.
+	 *
+	 * @param string $font_name the font name.
+	 * @param string $variant the font variant.
+	 * @param string $subset the font subset.
+	 */
+	public function maybe_add_google_font( $font_name, $font_variant = null, $subset = null ) {
+		// Check if the font has been added yet.
+		if ( ! array_key_exists( $font_name, self::$google_fonts ) ) {
+			$add_font                         = array(
+				'fontfamily'   => $font_name,
+				'fontvariants' => ( isset( $font_variant ) && ! empty( $font_variant ) ? array( $font_variant ) : array() ),
+				'fontsubsets'  => ( isset( $subset ) && ! empty( $subset ) ? array( $subset ) : array() ),
+			);
+			self::$google_fonts[ $font_name ] = $add_font;
+		} else {
+			if ( ! in_array( $font_variant, self::$google_fonts[ $font_name ]['fontvariants'], true ) ) {
+				array_push( self::$google_fonts[ $font_name ]['fontvariants'], $font_variant );
+			}
+		}
+	}
 
 	/**
 	 * Resets the css variable
@@ -604,14 +562,6 @@ class Premium_Blocks_css {
 
 		// Output minified css
 		return $this->_output;
-	}
-
-	public function get_responsive_value( $values, $side = '', $device = 'Desktop', $unit = 'px' ) {
-		return isset( $values[ $device ][ $side ] ) && $values[ $device ][ $side ] ? "{$values[ $device ][ $side ]}{$unit}" : '';
-	}
-
-	public function get_responsive_css( $values, $device = 'Desktop' ) {
-		return isset( $values[ $device ] ) && $values[ $device ] ? "{$values[ $device ]}" : '';
 	}
 
 }
