@@ -4,7 +4,7 @@
     "name": "premium/navigation",
     "title": "Mega Menu",
     "category": "premium-blocks",
-    "description": "A collection of blocks that allow visitors to get around your site.",
+    "description": "Create horizontal and vertical mega menus along with advanced customization options using Premium Mega Menu Block.",
     "keywords": ["menu", "navigation", "links"],
     "textdomain": "default",
     "attributes": {

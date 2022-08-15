@@ -34,14 +34,7 @@ import fetchLinkSuggestions from './fetchLinkSuggestions';
 /**
  * Internal dependencies
  */
-import {
-    buttonOnly,
-    buttonOutside,
-    buttonInside,
-    noButton,
-    buttonWithIcon,
-    toggleLabel,
-} from './icons';
+import { buttonOnly, buttonOutside, buttonInside, noButton, buttonWithIcon, toggleLabel } from './icons';
 import Modal from './Modal';
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
 import PremiumBorder from "../../components/premium-border"
@@ -848,7 +841,7 @@ function SearchEdit({
             )}
             {formStyle !== 'default' && renderButton()}
             {formStyle === 'button' && (
-                <Modal isOpen={isVisibility} setIsOpen={setIsVisibility}>
+                <Modal isOpen={false} setIsOpen={setIsVisibility}>
                     <div className='premium-advanced-search-form'>
                         <div>
                             <input type='search' placeholder={__("Search", "premium-blocks-for-gutenberg")} onChange={(e) => inputChangeHandler(e)} />
