@@ -25,7 +25,16 @@
         "start:switcher-child": "wp-scripts start switcher-child/block.js --output-path=switcher-child/build",
         "build:switcher-child": "wp-scripts build switcher-child/block.js --output-path=switcher-child/build",
         "start:trigger": "wp-scripts start trigger/block.js --output-path=trigger/build",
-        "build:trigger": "wp-scripts build trigger/block.js --output-path=trigger/build"
+        "build:trigger": "wp-scripts build trigger/block.js --output-path=trigger/build",
+        "start:navigation": "wp-scripts start navigation/index.js --output-path=navigation/build",
+        "build:navigation": "wp-scripts build navigation/index.js --output-path=navigation/build",
+        "start:navigation:view:build": "wp-scripts build navigation/view.js --output-path=navigation/view",
+        "start:navigation:link": "wp-scripts start navigation-link/index.js --output-path=navigation-link/build",
+        "build:navigation:link": "wp-scripts build navigation-link/index.js --output-path=navigation-link/build",
+        "start:navigation:submenu": "wp-scripts start navigation-submenu/index.js --output-path=navigation-submenu/build",
+        "build:navigation:submenu": "wp-scripts build navigation-submenu/index.js --output-path=navigation-submenu/build",
+        "build:navigation:submenu:view:build": "wp-scripts build navigation-submenu/view.js --output-path=navigation-submenu/view"
+
     },
     "devDependencies": {
         "@wordpress/scripts": "^22.4.0"

@@ -7,6 +7,7 @@
     "editorScript": "file:./build/block.js",
     "style": "file:./build/style-block.css",
     "usesContext": ["postId", "postType", "queryId"],
+    "description":"Allow your Gutenberg website visitors to easily navigate its pages using Premium Breadcrumbs Block",
     "attributes": {
         "blockId": {
             "type": "string"

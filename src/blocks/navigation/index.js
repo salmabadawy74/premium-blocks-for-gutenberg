@@ -3,8 +3,7 @@
  */
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
-import { navigation as icon } from '@wordpress/icons';
-
+import PBG_Block_Icons from '../../../blocks-config/block-icons'
 /**
  * Internal dependencies
  */
@@ -17,7 +16,7 @@ import './style.scss';
 const { name } = metadata;
 
 registerBlockType(name, {
-    icon,
+    icon: PBG_Block_Icons.megaMenu,
     example: {
         innerBlocks: [
             {
