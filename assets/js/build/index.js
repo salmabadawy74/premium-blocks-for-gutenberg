@@ -98159,7 +98159,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _blocks_row__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./blocks/row */ "./src/blocks/row/index.js");
 
 
-_assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.dualHeading === true ? __webpack_require__.e(/*! import() */ "src_blocks_dual-heading_index_js").then(__webpack_require__.bind(__webpack_require__, /*! ./blocks/dual-heading */ "./src/blocks/dual-heading/index.js")) : '';
+_assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.dualHeading ? __webpack_require__.e(/*! import() */ "src_blocks_dual-heading_index_js").then(__webpack_require__.bind(__webpack_require__, /*! ./blocks/dual-heading */ "./src/blocks/dual-heading/index.js")) : '';
 
 
 

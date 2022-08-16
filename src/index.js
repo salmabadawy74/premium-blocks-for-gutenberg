@@ -1,6 +1,6 @@
 import { FontAwesomeEnabled } from "../assets/js/settings";
 import { dualHeading } from "../assets/js/settings";
-dualHeading === true ? import("./blocks/dual-heading") : ''
+dualHeading ? import("./blocks/dual-heading") : ''
 import "./blocks/accordion";
 import "./blocks/banner";
 import "./blocks/button";
