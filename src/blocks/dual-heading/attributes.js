@@ -3,9 +3,13 @@ const attributes = {
     blockId: {
         type: "string",
     },
-    alignContent: {
-        type: "string",
-        default: "center",
+    align: {
+        type: "object",
+        default: {
+            'Desktop': 'center',
+            'Tablet': 'center',
+            'Mobile': 'center'
+        },
     },
     firstHeading: {
         type: "array",

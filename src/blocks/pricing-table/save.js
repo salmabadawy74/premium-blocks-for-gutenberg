@@ -48,7 +48,6 @@ const save = props => {
     } = props.attributes;
 
 
-    console.log(listItems);
     const loadStyles = () => {
         const styles = {};
 

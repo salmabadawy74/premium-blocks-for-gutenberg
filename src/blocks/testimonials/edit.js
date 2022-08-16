@@ -168,7 +168,6 @@ class edit extends Component {
                                 initialOpen={true}
                             >
                                 <p>{__("Author Image", 'premium-blocks-for-gutenberg')}</p>
-                                {!authorImgUrl && <DefaultImage />}
                                 <PremiumMediaUpload
                                     type="image"
                                     imageID={authorImgId}

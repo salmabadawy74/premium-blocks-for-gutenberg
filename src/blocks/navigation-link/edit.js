@@ -513,7 +513,6 @@ export default function NavigationLinkEdit({
         };
     }
 
-    // console.log(context);
     function onKeyDown(event) {
         if (
             isKeyboardEvent.primary(event, 'k') ||

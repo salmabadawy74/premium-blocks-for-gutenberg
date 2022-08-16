@@ -1189,15 +1189,7 @@ class PBG_Blocks_Helper {
 
 		$style_unique_id = rand( 100, 10000 );
 
-		if ( $this->it_is_not_amp() ) {
-			wp_enqueue_script(
-				'pbg-banner',
-				PREMIUM_BLOCKS_URL . 'assets/js/banner.js',
-				array( 'jquery' ),
-				PREMIUM_BLOCKS_VERSION,
-				true
-			);
-		}
+	
 		$style_id = 'pbg-blocks-style' . esc_attr( $style_unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'banner', $unique_id ) ) {
 			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
@@ -4857,15 +4849,7 @@ class PBG_Blocks_Helper {
 
 		$style_unique_id = rand( 100, 10000 );
 
-		if ( $this->it_is_not_amp() ) {
-			wp_enqueue_script(
-				'pbg-bullet-list',
-				PREMIUM_BLOCKS_URL . 'assets/js/bullet-list.js',
-				array( 'jquery' ),
-				PREMIUM_BLOCKS_VERSION,
-				true
-			);
-		}
+	
 		$style_id = 'pbg-blocks-style' . esc_attr( $style_unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'bulletList', $unique_id ) ) {
 			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
@@ -5279,15 +5263,7 @@ class PBG_Blocks_Helper {
 		} else {
 			$unique_id = rand( 100, 10000 );
 		}
-		if ( $this->it_is_not_amp() ) {
-			wp_enqueue_script(
-				'pbg-person',
-				PREMIUM_BLOCKS_URL . 'assets/js/person.js',
-				array( 'jquery' ),
-				PREMIUM_BLOCKS_VERSION,
-				true
-			);
-		}
+	
 		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'person', $unique_id ) ) {
 			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.

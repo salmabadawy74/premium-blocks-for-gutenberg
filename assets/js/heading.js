@@ -2,18 +2,6 @@ jQuery(document).ready(function ($) {
     const $title = $(".premium-title");
     var $titleContainer = $(".premium-title-container");
 
-    const addFontToHead = fontFamily => {
-        const head = document.head;
-        const link = document.createElement("link");
-        link.type = "text/css";
-        link.rel = "stylesheet";
-        link.href =
-            "https://fonts.googleapis.com/css?family=" +
-            fontFamily.replace(/\s+/g, "+") +
-            ":" +
-            "regular";
-        head.appendChild(link);
-    };
     if ($titleContainer.hasClass('style9')) {
         var $style9 = $(".premium-title-style9__wrap");
 
@@ -76,11 +64,5 @@ jQuery(document).ready(function ($) {
         })
     }
 
-    $title.map((index, title) => {
-        let $title = $(title),
-            titleFont = $title.find(".premium-title-text-title").css("font-family")
 
-        addFontToHead(titleFont);
-
-    });
 });
