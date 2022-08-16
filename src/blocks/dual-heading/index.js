@@ -8,6 +8,7 @@ import attributes from "./attributes";
 const { __ } = wp.i18n;
 
 const { registerBlockType } = wp.blocks;
+console.log(dualHeading)
 
 registerBlockType("premium/dheading-block", {
     title: __("Dual Heading", "premium-blocks-for-gutenberg"),

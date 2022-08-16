@@ -1,11 +1,10 @@
 import { FontAwesomeEnabled } from "../assets/js/settings";
 import { dualHeading } from "../assets/js/settings";
-
+dualHeading === true ? import("./blocks/dual-heading") : ''
 import "./blocks/accordion";
 import "./blocks/banner";
 import "./blocks/button";
 import "./blocks/count-up";
-import "./blocks/dual-heading";
 import "./blocks/icon";
 import "./blocks/icon-box";
 import "./blocks/maps";
@@ -21,6 +20,7 @@ import "./blocks/bullet-list";
 import "./blocks/person";
 import "./blocks/heading";
 import "./blocks/row"
+
 window.PremiumOptionsSettings = {
     FontAwesomeEnabled
 }
