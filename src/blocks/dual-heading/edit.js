@@ -49,7 +49,7 @@ class edit extends Component {
         const { setAttributes, isSelected, className } = this.props;
         const {
             blockId,
-            contentAlign,
+            align,
             firstHeading,
             secondHeading,
             display,
@@ -136,16 +136,16 @@ class edit extends Component {
         };
 
         return [
-            isSelected && (
-                <BlockControls key="controls">
-                    <AlignmentToolbar
-                        value={contentAlign}
-                        onChange={(newAlign) =>
-                            setAttributes({ contentAlign: newAlign })
-                        }
-                    />
-                </BlockControls>
-            ),
+            // isSelected && (
+            //     <BlockControls key="controls">
+            //         <AlignmentToolbar
+            //             value={contentAlign}
+            //             onChange={(newAlign) =>
+            //                 setAttributes({ contentAlign: newAlign })
+            //             }
+            //         />
+            //     </BlockControls>
+            // ),
             isSelected && (
                 <InspectorControls key={"inspector"}>
                     <InspectorTabs tabs={["layout", "style", "advance"]}>
@@ -641,7 +641,7 @@ class edit extends Component {
                     }
                 )}
                 style={{
-                    textAlign: contentAlign,
+                    textAlign: align[this.props.deviceType],
                     ...gradientBackground(background),
                     ...borderCss(containerBorder, this.props.deviceType),
                 }}

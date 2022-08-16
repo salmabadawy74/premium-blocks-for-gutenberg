@@ -1,3 +1,5 @@
+import DefaultImage from "./default-image";
+
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 const { Tooltip, Dashicon } = wp.components;
@@ -46,8 +48,9 @@ export default function PremiumMediaUpload(props) {
                     )}
                     {!imageURL && (
                         <div onClick={open} className={"premium-placeholder-image"}>
-                            <Dashicon icon="insert" />
-                            <div>{__("Insert")}</div>
+                            <div className={`premium-blocks-control-media__tools`}>
+                                <div className={`premium-blocks-control-media__tool`}> {__('Choose Image', 'premium-blocks-for-gutenberg')}</div>
+                            </div>
                         </div>
                     )}
                 </Fragment>
