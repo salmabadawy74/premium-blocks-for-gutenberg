@@ -37,6 +37,74 @@ module.exports = function (grunt) {
                     {
                         src: "./assets/css/sass/banner.scss",
                         dest: "./assets/css/css/banner.css"
+                    },
+                    {
+                        src: "./assets/css/sass/pricing-table.scss",
+                        dest: "./assets/css/css/pricing-table.css"
+                    },
+                    {
+                        src: "./assets/css/sass/maps.scss",
+                        dest: "./assets/css/css/maps.css"
+                    },
+                    {
+                        src: "./assets/css/sass/testimonial.scss",
+                        dest: "./assets/css/css/testimonial.css"
+                    },
+                    {
+                        src: "./assets/css/sass/count-up.scss",
+                        dest: "./assets/css/css/count-up.css"
+                    },
+                    {
+                        src: "./assets/css/sass/button.scss",
+                        dest: "./assets/css/css/button.css"
+                    },
+                    {
+                        src: "./assets/css/sass/container.scss",
+                        dest: "./assets/css/css/container.css"
+                    },
+                    {
+                        src: "./assets/css/sass/accordion.scss",
+                        dest: "./assets/css/css/accordion.css"
+                    },
+                    {
+                        src: "./assets/css/sass/icon-box.scss",
+                        dest: "./assets/css/css/icon-box.css"
+                    },
+                    {
+                        src: "./assets/css/sass/video-box.scss",
+                        dest: "./assets/css/css/video-box.css"
+                    },
+                    {
+                        src: "./assets/css/sass/fancy-text.scss",
+                        dest: "./assets/css/css/fancy-text.css"
+                    },
+                    {
+                        src: "./assets/css/sass/lottie.scss",
+                        dest: "./assets/css/css/lottie.css"
+                    },
+                    {
+                        src: "./assets/css/sass/image-separator.scss",
+                        dest: "./assets/css/css/image-separator.css"
+                    },
+                    {
+                        src: "./assets/css/sass/person.scss",
+                        dest: "./assets/css/css/person.css"
+                    },
+                    {
+                        src: "./assets/css/sass/bullet-list.scss",
+                        dest: "./assets/css/css/bullet-list.css"
+                    },
+                    {
+                        src: "./assets/css/sass/modal.scss",
+                        dest: "./assets/css/css/modal.css"
+                    },
+                    {
+                        src: "./assets/css/sass/row.scss",
+                        dest: "./assets/css/css/row.css"
+                    },
+                    {
+                        src: "./assets/css/sass/title.scss",
+                        dest: "./assets/css/css/title.css"
                     }
                 ]
             }
@@ -44,22 +112,90 @@ module.exports = function (grunt) {
         },
         cssmin: {
             css: {
-              files: [
-                {
-                  src: "./assets/css/css/icon.css",
-                  dest: "./assets/css/minified/icon.min.css",
-                },
-                {
-                    src: "./assets/css/css/dual-heading.css",
-                    dest: "./assets/css/minified/dual-heading.min.css",
-                },
-                {
-                    src: "./assets/css/css/banner.css",
-                    dest: "./assets/css/minified/banner.min.css",
-                },
-            ],
+                files: [
+                    {
+                        src: "./assets/css/css/icon.css",
+                        dest: "./assets/css/minified/icon.min.css",
+                    },
+                    {
+                        src: "./assets/css/css/dual-heading.css",
+                        dest: "./assets/css/minified/dual-heading.min.css",
+                    },
+                    {
+                        src: "./assets/css/css/banner.css",
+                        dest: "./assets/css/minified/banner.min.css",
+                    },
+                    {
+                        src: "./assets/css/css/pricing-table.css",
+                        dest: "./assets/css/minified/pricing-table.min.css",
+                    },
+                    {
+                        src: "./assets/css/css/maps.css",
+                        dest: "./assets/css/minified/maps.min.css",
+                    },
+                    {
+                        src: "./assets/css/css/testimonial.css",
+                        dest: "./assets/css/minified/testimonial.min.css",
+                    },
+                    {
+                        src: "./assets/css/css/count-up.css",
+                        dest: "./assets/css/minified/count-up.min.css",
+                    },
+                    {
+                        src: "./assets/css/css/button.css",
+                        dest: "./assets/css/minified/button.min.css",
+                    },
+                    {
+                        src: "./assets/css/css/container.css",
+                        dest: "./assets/css/minified/container.min.css",
+                    },
+                    {
+                        src: "./assets/css/css/accordion.css",
+                        dest: "./assets/css/minified/accordion.min.css",
+                    },
+                    {
+                        src: "./assets/css/css/icon-box.css",
+                        dest: "./assets/css/minified/icon-box.min.css",
+                    },
+                    {
+                        src: "./assets/css/css/video-box.css",
+                        dest: "./assets/css/minified/video-box.min.css",
+                    },
+                    {
+                        src: "./assets/css/css/fancy-text.css",
+                        dest: "./assets/css/minified/fancy-text.min.css",
+                    },
+                    {
+                        src: "./assets/css/css/lottie.css",
+                        dest: "./assets/css/minified/lottie.min.css",
+                    },
+                    {
+                        src: "./assets/css/css/image-separator.css",
+                        dest: "./assets/css/minified/image-separator.min.css",
+                    },
+                    {
+                        src: "./assets/css/css/person.css",
+                        dest: "./assets/css/minified/person.min.css",
+                    },
+                    {
+                        src: "./assets/css/css/bullet-list.css",
+                        dest: "./assets/css/minified/bullet-list.min.css",
+                    },
+                    {
+                        src: "./assets/css/css/modal.css",
+                        dest: "./assets/css/minified/modal.min.css",
+                    },
+                    {
+                        src: "./assets/css/css/row.css",
+                        dest: "./assets/css/minified/row.min.css",
+                    },
+                    {
+                        src: "./assets/css/css/title.css",
+                        dest: "./assets/css/minified/title.min.css",
+                    },
+                ],
+            },
         },
-      },
         copy: {
             main: {
                 options: {

@@ -239,6 +239,108 @@ class PBG_Blocks_Helper {
 			array( 'dashicons' ),
 			PREMIUM_BLOCKS_VERSION
 		);
+		wp_enqueue_style(
+			'pbg-editor-pricing-table-style',
+			PREMIUM_BLOCKS_URL . 'assets/css/minified/pricing-table.min.css',
+			array( 'dashicons' ),
+			PREMIUM_BLOCKS_VERSION
+		);
+		wp_enqueue_style(
+			'pbg-editor-maps-style',
+			PREMIUM_BLOCKS_URL . 'assets/css/minified/maps.min.css',
+			array( 'dashicons' ),
+			PREMIUM_BLOCKS_VERSION
+		);
+		wp_enqueue_style(
+			'pbg-editor-testimonial-style',
+			PREMIUM_BLOCKS_URL . 'assets/css/minified/testimonial.min.css',
+			array( 'dashicons' ),
+			PREMIUM_BLOCKS_VERSION
+		);
+		wp_enqueue_style(
+			'pbg-editor-count-up-style',
+			PREMIUM_BLOCKS_URL . 'assets/css/minified/count-up.min.css',
+			array( 'dashicons' ),
+			PREMIUM_BLOCKS_VERSION
+		);
+		wp_enqueue_style(
+			'pbg-editor-button-style',
+			PREMIUM_BLOCKS_URL . 'assets/css/minified/button.min.css',
+			array( 'dashicons' ),
+			PREMIUM_BLOCKS_VERSION
+		);
+		wp_enqueue_style(
+			'pbg-editor-container-style',
+			PREMIUM_BLOCKS_URL . 'assets/css/minified/container.min.css',
+			array( 'dashicons' ),
+			PREMIUM_BLOCKS_VERSION
+		);
+		wp_enqueue_style(
+			'pbg-editor-accordion-style',
+			PREMIUM_BLOCKS_URL . 'assets/css/minified/accordion.min.css',
+			array( 'dashicons' ),
+			PREMIUM_BLOCKS_VERSION
+		);
+		wp_enqueue_style(
+			'pbg-editor-icon-box-style',
+			PREMIUM_BLOCKS_URL . 'assets/css/minified/icon-box.min.css',
+			array( 'dashicons' ),
+			PREMIUM_BLOCKS_VERSION
+		);
+		wp_enqueue_style(
+			'pbg-editor-video-box-style',
+			PREMIUM_BLOCKS_URL . 'assets/css/minified/video-box.min.css',
+			array( 'dashicons' ),
+			PREMIUM_BLOCKS_VERSION
+		);
+		wp_enqueue_style(
+			'pbg-editor-fancy-text-style',
+			PREMIUM_BLOCKS_URL . 'assets/css/minified/fancy-text.min.css',
+			array( 'dashicons' ),
+			PREMIUM_BLOCKS_VERSION
+		);
+		wp_enqueue_style(
+			'pbg-editor-lottie-style',
+			PREMIUM_BLOCKS_URL . 'assets/css/minified/lottie.min.css',
+			array( 'dashicons' ),
+			PREMIUM_BLOCKS_VERSION
+		);
+		wp_enqueue_style(
+			'pbg-editor-image-separator-style',
+			PREMIUM_BLOCKS_URL . 'assets/css/minified/image-separator.min.css',
+			array( 'dashicons' ),
+			PREMIUM_BLOCKS_VERSION
+		);
+		wp_enqueue_style(
+			'pbg-editor-person-style',
+			PREMIUM_BLOCKS_URL . 'assets/css/minified/person.min.css',
+			array( 'dashicons' ),
+			PREMIUM_BLOCKS_VERSION
+		);
+		wp_enqueue_style(
+			'pbg-editor-bullet-list-style',
+			PREMIUM_BLOCKS_URL . 'assets/css/minified/bullet-list.min.css',
+			array( 'dashicons' ),
+			PREMIUM_BLOCKS_VERSION
+		);
+		wp_enqueue_style(
+			'pbg-editor-modal-style',
+			PREMIUM_BLOCKS_URL . 'assets/css/minified/modal.min.css',
+			array( 'dashicons' ),
+			PREMIUM_BLOCKS_VERSION
+		);
+		wp_enqueue_style(
+			'pbg-editor-row-style',
+			PREMIUM_BLOCKS_URL . 'assets/css/minified/row.min.css',
+			array( 'dashicons' ),
+			PREMIUM_BLOCKS_VERSION
+		);
+		wp_enqueue_style(
+			'pbg-editor-title-style',
+			PREMIUM_BLOCKS_URL . 'assets/css/minified/title.min.css',
+			array( 'dashicons' ),
+			PREMIUM_BLOCKS_VERSION
+		);
 		// wp_enqueue_style(
 		// 	'pbg-editor-style',
 		// 	PREMIUM_BLOCKS_URL . 'assets/css/style.css',
@@ -290,6 +392,22 @@ class PBG_Blocks_Helper {
 		$is_icon_enabled = self::$blocks['icon'];
 		$is_dual_heading_enabled = self::$blocks['dualHeading'];
 		$is_banner_enabled = self::$blocks['banner'];
+		$is_pricing_table_enabled = self::$blocks['pricingTable'];
+		$is_testimonial_enabled = self::$blocks['testimonial'];
+		$is_count_up_enabled = self::$blocks['countUp'];
+		$is_button_enabled = self::$blocks['button'];
+		$is_accordion_enabled = self::$blocks['accordion'];
+		$is_icon_box_enabled = self::$blocks['iconBox'];
+		$is_video_box_enabled = self::$blocks['videoBox'];
+		$is_fancy_text_enabled = self::$blocks['fancyText'];
+		$is_lottie_enabled = self::$blocks['lottie'];
+		$is_image_separator_enabled = self::$blocks['image-separator'];
+		$is_person_enabled = self::$blocks['person'];
+		$is_bullet_list_enabled = self::$blocks['bulletList'];
+		$is_modal_enabled = self::$blocks['modal'];
+		$is_row_enabled = self::$blocks['row'];
+		$is_title_enabled = self::$blocks['heading'];
+
 		// wp_enqueue_style(
 		// 	'pbg-frontend',
 		// 	PREMIUM_BLOCKS_URL . 'assets/css/style.css',
@@ -318,6 +436,159 @@ class PBG_Blocks_Helper {
 			wp_enqueue_style(
 					'pbg-frontend-banner',
 					PREMIUM_BLOCKS_URL . 'assets/css/minified/banner.min.css',
+					array( 'dashicons' ),
+					PREMIUM_BLOCKS_VERSION
+				);
+		}
+
+		if ( $is_pricing_table_enabled ) {
+			wp_enqueue_style(
+					'pbg-frontend-pricing-table',
+					PREMIUM_BLOCKS_URL . 'assets/css/minified/pricing-table.min.css',
+					array( 'dashicons' ),
+					PREMIUM_BLOCKS_VERSION
+				);
+		}
+
+		if ( $is_maps_enabled ) {
+			wp_enqueue_style(
+					'pbg-frontend-maps',
+					PREMIUM_BLOCKS_URL . 'assets/css/minified/maps.min.css',
+					array( 'dashicons' ),
+					PREMIUM_BLOCKS_VERSION
+				);
+		}
+
+		if ( $is_testimonial_enabled ) {
+			wp_enqueue_style(
+					'pbg-frontend-testimonial',
+					PREMIUM_BLOCKS_URL . 'assets/css/minified/testimonial.min.css',
+					array( 'dashicons' ),
+					PREMIUM_BLOCKS_VERSION
+				);
+		}
+
+		if ( $is_count_up_enabled ) {
+			wp_enqueue_style(
+					'pbg-frontend-count-up',
+					PREMIUM_BLOCKS_URL . 'assets/css/minified/count-up.min.css',
+					array( 'dashicons' ),
+					PREMIUM_BLOCKS_VERSION
+				);
+		}
+
+		if ( $is_button_enabled ) {
+			wp_enqueue_style(
+					'pbg-frontend-button',
+					PREMIUM_BLOCKS_URL . 'assets/css/minified/button.min.css',
+					array( 'dashicons' ),
+					PREMIUM_BLOCKS_VERSION
+				);
+		}
+
+		if ( $is_section_enabled ) {
+			wp_enqueue_style(
+					'pbg-frontend-container',
+					PREMIUM_BLOCKS_URL . 'assets/css/minified/container.min.css',
+					array( 'dashicons' ),
+					PREMIUM_BLOCKS_VERSION
+				);
+		}
+
+		if ( $is_accordion_enabled ) {
+			wp_enqueue_style(
+					'pbg-frontend-accordion',
+					PREMIUM_BLOCKS_URL . 'assets/css/minified/accordion.min.css',
+					array( 'dashicons' ),
+					PREMIUM_BLOCKS_VERSION
+				);
+		}
+
+		if ( $is_icon_box_enabled ) {
+			wp_enqueue_style(
+					'pbg-frontend-icon-box',
+					PREMIUM_BLOCKS_URL . 'assets/css/minified/icon-box.min.css',
+					array( 'dashicons' ),
+					PREMIUM_BLOCKS_VERSION
+				);
+		}
+
+		if ( $is_video_box_enabled ) {
+			wp_enqueue_style(
+					'pbg-frontend-video-box',
+					PREMIUM_BLOCKS_URL . 'assets/css/minified/video-box.min.css',
+					array( 'dashicons' ),
+					PREMIUM_BLOCKS_VERSION
+				);
+		}
+
+		if ( $is_fancy_text_enabled ) {
+			wp_enqueue_style(
+					'pbg-frontend-fancy-text',
+					PREMIUM_BLOCKS_URL . 'assets/css/minified/fancy-text.min.css',
+					array( 'dashicons' ),
+					PREMIUM_BLOCKS_VERSION
+				);
+		}
+
+		if ( $is_lottie_enabled ) {
+			wp_enqueue_style(
+					'pbg-frontend-lottie',
+					PREMIUM_BLOCKS_URL . 'assets/css/minified/lottie.min.css',
+					array( 'dashicons' ),
+					PREMIUM_BLOCKS_VERSION
+				);
+		}
+
+		if ( $is_image_separator_enabled ) {
+			wp_enqueue_style(
+					'pbg-frontend-image-separator',
+					PREMIUM_BLOCKS_URL . 'assets/css/minified/image-separator.min.css',
+					array( 'dashicons' ),
+					PREMIUM_BLOCKS_VERSION
+				);
+		}
+
+		if ( $is_person_enabled ) {
+			wp_enqueue_style(
+					'pbg-frontend-person',
+					PREMIUM_BLOCKS_URL . 'assets/css/minified/person.min.css',
+					array( 'dashicons' ),
+					PREMIUM_BLOCKS_VERSION
+				);
+		}
+
+		if ( $is_bullet_list_enabled ) {
+			wp_enqueue_style(
+					'pbg-frontend-bullet-list',
+					PREMIUM_BLOCKS_URL . 'assets/css/minified/bullet-list.min.css',
+					array( 'dashicons' ),
+					PREMIUM_BLOCKS_VERSION
+				);
+		}
+
+		if ( $is_modal_enabled ) {
+			wp_enqueue_style(
+					'pbg-frontend-modal',
+					PREMIUM_BLOCKS_URL . 'assets/css/minified/modal.min.css',
+					array( 'dashicons' ),
+					PREMIUM_BLOCKS_VERSION
+				);
+		}
+
+		if ( $is_row_enabled ) {
+			wp_enqueue_style(
+					'pbg-frontend-row',
+					PREMIUM_BLOCKS_URL . 'assets/css/minified/row.min.css',
+					array( 'dashicons' ),
+					PREMIUM_BLOCKS_VERSION
+				);
+		}
+
+		if ( $is_title_enabled ) {
+			wp_enqueue_style(
+					'pbg-frontend-title',
+					PREMIUM_BLOCKS_URL . 'assets/css/minified/title.min.css',
 					array( 'dashicons' ),
 					PREMIUM_BLOCKS_VERSION
 				);

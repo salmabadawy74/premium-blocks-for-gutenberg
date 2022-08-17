@@ -426,7 +426,7 @@ const attributes = {
         type: "array",
         default: [
             {
-                btnColor: "#fff",
+                btnColor: "",
                 btnHoverColor: '',
                 btnWidth: '',
                 btnBack: "rgb(242, 242, 242)",
