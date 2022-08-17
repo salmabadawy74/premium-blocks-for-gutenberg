@@ -9,6 +9,9 @@ const { withSelect } = wp.data;
 import WebfontLoader from "../../components/typography/fontLoader";
 import PremiumShadow from "../../components/PremiumShadow";
 import SpacingComponent from "../../components/premium-responsive-spacing";
+import MultiButtonsControl from "../../components/responsive-radio";
+import Icons from "../../components/icons";
+
 import {
     gradientBackground,
     generateBlockId,
@@ -25,9 +28,7 @@ const { Fragment, Component } = wp.element;
 const { PanelBody, SelectControl, ToggleControl } = wp.components;
 
 const {
-    BlockControls,
     InspectorControls,
-    AlignmentToolbar,
     RichText,
     URLInput,
 } = wp.blockEditor;
@@ -99,6 +100,7 @@ class edit extends Component {
                 </WebfontLoader>
             );
         }
+
         if (secondTypography?.fontFamily !== "Default") {
             const secondConfig = {
                 google: {
@@ -136,16 +138,6 @@ class edit extends Component {
         };
 
         return [
-            // isSelected && (
-            //     <BlockControls key="controls">
-            //         <AlignmentToolbar
-            //             value={contentAlign}
-            //             onChange={(newAlign) =>
-            //                 setAttributes({ contentAlign: newAlign })
-            //             }
-            //         />
-            //     </BlockControls>
-            // ),
             isSelected && (
                 <InspectorControls key={"inspector"}>
                     <InspectorTabs tabs={["layout", "style", "advance"]}>
@@ -191,6 +183,34 @@ class edit extends Component {
                                         }
                                     />
                                 )}
+                                <MultiButtonsControl
+                                    choices={[
+                                        {
+                                            value: "left",
+                                            label: __("Left"),
+                                            icon: Icons.alignLeft,
+                                        },
+                                        {
+                                            value: "center",
+                                            label: __("Center"),
+                                            icon: Icons.alignCenter,
+                                        },
+                                        {
+                                            value: "right",
+                                            label: __("Right"),
+                                            icon: Icons.alignRight,
+                                        },
+                                    ]}
+                                    value={align}
+                                    onChange={(value) =>
+                                        setAttributes({ align: value })
+                                    }
+                                    label={__(
+                                        "Alignment",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                    showIcons={true}
+                                />
                             </PanelBody>
                         </InspectorTab>
                         <InspectorTab key={"style"}>

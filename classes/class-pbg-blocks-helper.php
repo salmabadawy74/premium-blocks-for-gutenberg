@@ -1812,6 +1812,11 @@ class PBG_Blocks_Helper {
 		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
 		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 
+        if(isset($attr['align'])){
+			$css->set_selector( $unique_id );
+			$css->add_property( 'text-align',  $css->get_responsive_css( $attr['align'], 'Desktop' ) );
+
+        }
 		if ( isset( $attr['containerBorder'] ) ) {
 			$container_border        = $attr['containerBorder'];
 			$container_border_width  = $container_border['borderWidth'];
@@ -1886,6 +1891,12 @@ class PBG_Blocks_Helper {
 		}
 
 		$css->start_media_query( $media_query['tablet'] );
+
+        if(isset($attr['align'])){
+			$css->set_selector( $unique_id );
+			$css->add_property( 'text-align',  $css->get_responsive_css( $attr['align'], 'Tablet' ) );
+
+        }
 
 		if ( isset( $attr['containerBorder'] ) ) {
 			$container_border        = $attr['containerBorder'];
@@ -1971,6 +1982,12 @@ class PBG_Blocks_Helper {
 
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
+
+        if(isset($attr['align'])){
+			$css->set_selector( $unique_id );
+			$css->add_property( 'text-align',  $css->get_responsive_css( $attr['align'], 'Mobile' ) );
+
+        }
 
 		if ( isset( $attr['containerBorder'] ) ) {
 			$container_border        = $attr['containerBorder'];
