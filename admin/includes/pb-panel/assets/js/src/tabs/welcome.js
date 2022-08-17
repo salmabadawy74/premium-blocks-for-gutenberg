@@ -6,11 +6,11 @@ import {
 const { __ } = wp.i18n;
 const { Dashicon } = wp.components;
 import { useState } from "@wordpress/element";
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+// import Swal from 'sweetalert2'
+// import withReactContent from 'sweetalert2-react-content'
 
 const Support = () => {
-    const Alert = withReactContent(Swal)
+    //const Alert = withReactContent(Swal)
     const [email, setEmail] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const submitHandler = async () => {
@@ -18,15 +18,15 @@ const Support = () => {
             return;
         }
         setIsLoading(true);
-        if (!checkEmail(email)) {
-            Alert.fire({
-                icon: 'error',
-                title: __('Invalid Email Address...', 'premium-gutenberg'),
-                text: __('Please enter a valid email address!', 'premium-gutenberg'),
-            })
-            setIsLoading(false);
-            return;
-        }
+        // if (!checkEmail(email)) {
+        //     Alert.fire({
+        //         icon: 'error',
+        //         title: __('Invalid Email Address...', 'premium-gutenberg'),
+        //         text: __('Please enter a valid email address!', 'premium-gutenberg'),
+        //     })
+        //     setIsLoading(false);
+        //     return;
+        // }
 
         const body = new FormData()
         body.append('action', 'pb-mail-subscribe')
@@ -41,21 +41,21 @@ const Support = () => {
 
             if (response.status === 200) {
                 const { success, data: { status } } = await response.json();
-                if (success && status) {
-                    Alert.fire({
-                        icon: 'success',
-                        title: __('Success', 'premium-gutenberg'),
-                        text: __('Thanks for your subscribe!', 'premium-gutenberg'),
-                        timer: 3000
-                    })
-                    setEmail('');
-                } else {
-                    Alert.fire({
-                        icon: 'error',
-                        title: __('Invalid Email Address...', 'premium-gutenberg'),
-                        text: __('Please enter a valid email address!', 'premium-gutenberg'),
-                    })
-                }
+                // if (success && status) {
+                //     Alert.fire({
+                //         icon: 'success',
+                //         title: __('Success', 'premium-gutenberg'),
+                //         text: __('Thanks for your subscribe!', 'premium-gutenberg'),
+                //         timer: 3000
+                //     })
+                //     setEmail('');
+                // } else {
+                //     Alert.fire({
+                //         icon: 'error',
+                //         title: __('Invalid Email Address...', 'premium-gutenberg'),
+                //         text: __('Please enter a valid email address!', 'premium-gutenberg'),
+                //     })
+                // }
             }
         } catch (e) {
             alert(e);

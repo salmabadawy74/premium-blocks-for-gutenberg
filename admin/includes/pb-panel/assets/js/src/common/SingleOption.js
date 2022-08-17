@@ -1,5 +1,11 @@
 import { useState } from '@wordpress/element';
-const { Dashicon, ToggleControl } = wp.components;
+//import { Dashicon, ToggleControl } from '@wordpress/components';
+//const { Dashicon, ToggleControl } = wp.components;
+const {
+    PanelBody,
+    Dashicon,
+    ToggleControl,
+} = wp.components;
 const { __ } = wp.i18n;
 
 function classNames( ...classes ) {
@@ -48,11 +54,18 @@ const SingleOption = ( props ) => {
             )}
         </label>
         <div className="option-actions">
+        <ToggleControl
+            label={__('Hide in Desktop')}
+            //checked={checked}
+            onChange={handleChange}
+        />
+            </div>
+        {/* <div className="option-actions">
             <button className={`pb-button ${btnClasses}`} onClick={() => {
                 handleChange()
             }} disabled={isLoading}>{btnText}</button>
             {value && props.params.url && <a className='pb-button' href={props.params.url}>{__('Customize', 'premium-gutenberg')}</a>}
-        </div>
+        </div> */}
     </div>
 }
 

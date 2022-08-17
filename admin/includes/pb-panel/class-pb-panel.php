@@ -63,6 +63,8 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 			return array_merge( $default_options, $options );
 		}
 
+
+
 		/**
 		 * update_option
 		 *
@@ -71,10 +73,11 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 		public function update_option() {
 			check_ajax_referer( 'pb-panel', 'nonce' );
 
-			$option  = isset( $_POST['option'] ) ? sanitize_text_field( wp_unslash( $_POST['option'] ) ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-			$value   = isset( $_POST['value'] ) ? sanitize_text_field( wp_unslash( $_POST['value'] ) ) : '';
-			$value   = 'true' === $value ? true : false;
-			$options = apply_filters( 'pb_options', get_option( 'pb_options', array() ) );
+			$option = isset( $_POST['option'] ) ? sanitize_text_field( wp_unslash( $_POST['option'] ) ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$value  = isset( $_POST['value'] ) ? sanitize_text_field( wp_unslash( $_POST['value'] ) ) : '';
+			$value  = 'true' === $value ? true : false;
+			// $options = apply_filters( 'pb_options', get_option( 'pb_options', array() ) );
+			$options = get_option( 'pb_options' );
 			$options = ! is_array( $options ) ? array() : $options;
 
 			if ( '' !== $value && '' !== $option ) {
@@ -227,7 +230,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 					'description' => __( 'Desc is here', 'premium-gutenberg' ),
 				),
 			);
-			return apply_filters( 'pb_panel_options', $options );
+				return apply_filters( 'pb_panel_options', $options );
 		}
 
 		/**
@@ -256,12 +259,16 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 				'pb-panel-js',
 				'PremiumBlocksPanelData',
 				array(
-					'options'     => self::panel_options(),
-					'values'      => apply_filters( 'pb_options', get_option( 'pb_options', array() ) ),
-					'ajaxurl'     => admin_url( 'admin-ajax.php' ),
-					'nonce'       => wp_create_nonce( 'pb-panel' ),
-					'system_info' => self::get_system_info(),
-					'images_url'  => PREMIUM_BLOCKS_PANEL_URL . 'assets/images/',
+					'options'       => self::panel_options(),
+					'values'        => apply_filters( 'pb_options', get_option( 'pb_options', array() ) ),
+					// 'values'      => array(
+					// 'options' => get_option( 'pb_options', array() ),
+					// ),
+					'ajaxurl'       => admin_url( 'admin-ajax.php' ),
+					'nonce'         => wp_create_nonce( 'pb-panel' ),
+					'plugins_cache' => Kemet_Panel_Plugins_Data::get_instance()->plugins_status(),
+					'system_info'   => self::get_system_info(),
+					'images_url'    => PREMIUM_BLOCKS_PANEL_URL . 'assets/images/',
 				)
 			);
 		}
