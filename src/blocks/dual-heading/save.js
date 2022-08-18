@@ -78,10 +78,8 @@ const save = (props) => {
                             fontStyle: firstTypography?.fontStyle,
                             fontFamily: firstTypography?.fontFamily,
                             fontWeight: firstTypography?.fontWeight,
-                            letterSpacing: firstTypography?.letterSpacing,
                             textDecoration: firstTypography?.textDecoration,
                             textTransform: firstTypography?.textTransform,
-                            lineHeight: `${firstTypography?.lineHeight}px`,
                             borderStyle: firstBorder && firstBorder.borderType,
                             borderColor: firstBorder && firstBorder.borderColor,
                             textShadow: `${firstShadow?.horizontal}px ${firstShadow?.vertical}px ${firstShadow?.blur}px ${firstShadow?.color}`,
@@ -115,10 +113,8 @@ const save = (props) => {
                             fontStyle: secondTypography?.fontStyle,
                             fontFamily: secondTypography?.fontFamily,
                             fontWeight: secondTypography?.fontWeight,
-                            letterSpacing: secondTypography?.letterSpacing,
                             textDecoration: secondTypography?.textDecoration,
                             textTransform: secondTypography?.textTransform,
-                            lineHeight: `${secondTypography?.lineHeight}px`,
                             borderStyle:
                                 secondBorder && secondBorder.borderType,
                             borderColor:

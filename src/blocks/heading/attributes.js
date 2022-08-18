@@ -83,7 +83,7 @@ const attributes = {
         type: "array",
         default: [
             {
-                titleColor: "#6ec1e4",
+                titleColor: "",
                 shinyColor: "#fff",
                 blurColor: "#000",
                 BGColor: "#54595f",
@@ -350,7 +350,7 @@ const attributes = {
         type: "array",
         default: [
             {
-                iconColor: "#6ec1e4",
+                iconColor: "",
             },
         ],
     },
@@ -508,15 +508,15 @@ const attributes = {
     },
     hideDesktop: {
         type: "boolean",
-        default: false,
+        default: '',
     },
     hideTablet: {
         type: "boolean",
-        default: false,
+        default: '',
     },
     hideMobile: {
         type: "boolean",
-        default: false,
+        default: '',
     },
     z_index: {
         type: "number",
@@ -538,9 +538,6 @@ const attributes = {
     target: {
         type: "boolean",
         default: false,
-    },
-    blend: {
-        type: "string",
     },
     zIndex: {
         type: "number",

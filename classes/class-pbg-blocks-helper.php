@@ -5233,41 +5233,40 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['generalBorder'] ) ) {
 			$general_border        = $attr['generalBorder'];
-			$general_border_width  = $attr['generalBorder']['borderWidth'];
-			$general_border_radius = $attr['generalBorder']['borderRadius'];
+			$general_border_width  = $general_border['borderWidth'];
+			$general_border_radius = $general_border['borderRadius'];
 
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' );
 			$css->add_property( 'border-width', $css->render_spacing( $general_border_width['Desktop'], 'px' ) );
 			$css->add_property( 'border-radius', $css->render_spacing( $general_border_radius['Desktop'], 'px' ) );
 		}
 
-		// style for link
 		// Style for icon.
 		if ( isset( $attr['bulletIconFontSize'] ) ) {
 			$bullet_icon_size = $attr['bulletIconFontSize'];
 
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
-			$css->add_property( 'font-size', $css->get_responsive_size_value( $bullet_icon_size, 'Desktop', $bullet_icon_size['unit'] ) );
+			$css->add_property( 'font-size', $css->render_range($bullet_icon_size,'Desktop') );
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
-			$css->add_property( 'font-size', $css->get_responsive_size_value( $bullet_icon_size, 'Desktop', $bullet_icon_size['unit'] ) );
+			$css->add_property( 'font-size', $css->render_range($bullet_icon_size,'Desktop') );
 		}
 
 		if ( isset( $attr['dividerWidth'] ) ) {
 			$divider_width = $attr['dividerWidth'];
 
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-			$css->add_property( 'width', $css->get_responsive_size_value( $divider_width, 'Desktop', $divider_width['unit'] ) );
+			$css->add_property( 'width', $css->render_range($divider_width,'Desktop') );
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-			$css->add_property( 'width', $css->get_responsive_size_value( $divider_width, 'Desktop', $divider_width['unit'] ) );
+			$css->add_property( 'width', $css->render_range($divider_width,'Desktop') );
 		}
 
 		if ( isset( $attr['dividerHeight'] ) ) {
 			$divider_height = $attr['dividerHeight'];
 
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-			$css->add_property( 'height', $css->get_responsive_size_value( $divider_height, 'Desktop', $divider_height['unit'] ) );
+			$css->add_property( 'height', $css->render_range($divider_height,'Desktop') );
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-			$css->add_property( 'height', $css->get_responsive_size_value( $divider_height, 'Desktop', $divider_height['unit'] ) );
+			$css->add_property( 'height', $css->render_range($divider_height,'Desktop') );
 		}
 
 		if ( isset( $attr['bulletIconpadding'] ) ) {
@@ -5278,8 +5277,8 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['bulletIconBorder'] ) ) {
 			$bullet_icon_border        = $attr['bulletIconBorder'];
-			$bullet_icon_border_width  = $attr['bulletIconBorder']['borderWidth'];
-			$bullet_icon_border_radius = $attr['bulletIconBorder']['borderRadius'];
+			$bullet_icon_border_width  = $bullet_icon_border['borderWidth'];
+			$bullet_icon_border_radius = $bullet_icon_border['borderRadius'];
 
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, ' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
 			$css->add_property( 'border-width', $css->render_spacing( $bullet_icon_border_width['Desktop'], 'px' ) );
@@ -5353,8 +5352,8 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['generalBorder'] ) ) {
 			$general_border        = $attr['generalBorder'];
-			$general_border_width  = $attr['generalBorder']['borderWidth'];
-			$general_border_radius = $attr['generalBorder']['borderRadius'];
+			$general_border_width  = $general_border['borderWidth'];
+			$general_border_radius = $general_border['borderRadius'];
 
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' );
 			$css->add_property( 'border-width', $css->render_spacing( $general_border_width['Tablet'], 'px' ) );
@@ -5366,27 +5365,27 @@ class PBG_Blocks_Helper {
 			$bullet_icon_size = $attr['bulletIconFontSize'];
 
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
-			$css->add_property( 'font-size', $css->get_responsive_size_value( $bullet_icon_size, 'Tablet', $bullet_icon_size['unit'] ) );
+			$css->add_property( 'font-size', $css->render_range($bullet_icon_size,'Tablet') );
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
-			$css->add_property( 'font-size', $css->get_responsive_size_value( $bullet_icon_size, 'Tablet', $bullet_icon_size['unit'] ) );
+			$css->add_property( 'font-size', $css->render_range($bullet_icon_size,'Tablet') );
 		}
 
 		if ( isset( $attr['dividerWidth'] ) ) {
 			$divider_width = $attr['dividerWidth'];
 
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-			$css->add_property( 'width', $css->get_responsive_size_value( $divider_width, 'Tablet', $divider_width['unit'] ) );
+			$css->add_property( 'width', $css->render_range($divider_width,'Tablet') );
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-			$css->add_property( 'width', $css->get_responsive_size_value( $divider_width, 'Tablet', $divider_width['unit'] ) );
+			$css->add_property( 'width', $css->render_range($divider_width,'Tablet') );
 		}
 
 		if ( isset( $attr['dividerHeight'] ) ) {
 			$divider_height = $attr['dividerHeight'];
 
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-			$css->add_property( 'height', $css->get_responsive_size_value( $divider_height, 'Tablet', $divider_height['unit'] ) );
+			$css->add_property( 'height', $css->render_range($divider_height,'Tablet') );
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-			$css->add_property( 'height', $css->get_responsive_size_value( $divider_height, 'Tablet', $divider_height['unit'] ) );
+			$css->add_property( 'height', $css->render_range($divider_height,'Tablet') );
 		}
 
 		// Style for image.
@@ -5398,8 +5397,8 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['bulletIconBorder'] ) ) {
 			$bullet_icon_border        = $attr['bulletIconBorder'];
-			$bullet_icon_border_width  = $attr['bulletIconBorder']['borderWidth'];
-			$bullet_icon_border_radius = $attr['bulletIconBorder']['borderRadius'];
+			$bullet_icon_border_width  = $bullet_icon_border['borderWidth'];
+			$bullet_icon_border_radius = $bullet_icon_border['borderRadius'];
 
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, ' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
 			$css->add_property( 'border-width', $css->render_spacing( $bullet_icon_border_width['Tablet'], 'px' ) );
@@ -5476,8 +5475,8 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['generalBorder'] ) ) {
 			$general_border        = $attr['generalBorder'];
-			$general_border_width  = $attr['generalBorder']['borderWidth'];
-			$general_border_radius = $attr['generalBorder']['borderRadius'];
+			$general_border_width  = $general_border['borderWidth'];
+			$general_border_radius = $general_border['borderRadius'];
 
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' );
 			$css->add_property( 'border-width', $css->render_spacing( $general_border_width['Mobile'], 'px' ) );
@@ -5490,27 +5489,27 @@ class PBG_Blocks_Helper {
 			$bullet_icon_size = $attr['bulletIconFontSize'];
 
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
-			$css->add_property( 'font-size', $css->get_responsive_size_value( $bullet_icon_size, 'Mobile', $bullet_icon_size['unit'] ) );
+			$css->add_property( 'font-size', $css->render_range($bullet_icon_size,'Mobile') );
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i' );
-			$css->add_property( 'font-size', $css->get_responsive_size_value( $bullet_icon_size, 'Mobile', $bullet_icon_size['unit'] ) );
+			$css->add_property( 'font-size', $css->render_range($bullet_icon_size,'Mobile') );
 		}
 
 		if ( isset( $attr['dividerWidth'] ) ) {
 			$divider_width = $attr['dividerWidth'];
 
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-			$css->add_property( 'width', $css->get_responsive_size_value( $divider_width, 'Mobile', $divider_width['unit'] ) );
+			$css->add_property( 'width', $css->render_range($divider_width,'Mobile') );
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-			$css->add_property( 'width', $css->get_responsive_size_value( $divider_width, 'Mobile', $divider_width['unit'] ) );
+			$css->add_property( 'width', $css->render_range($divider_width,'Mobile') );
 		}
 
 		if ( isset( $attr['dividerHeight'] ) ) {
 			$divider_height = $attr['dividerHeight'];
 
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-			$css->add_property( 'height', $css->get_responsive_size_value( $divider_height, 'Mobile', $divider_height['unit'] ) );
+			$css->add_property( 'height', $css->render_range($divider_height,'Mobile') );
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-			$css->add_property( 'height', $css->get_responsive_size_value( $divider_height, 'Mobile', $divider_height['unit'] ) );
+			$css->add_property( 'height', $css->render_range($divider_height,'Mobile') );
 		}
 
 		// Style for image.
@@ -5522,8 +5521,8 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['bulletIconBorder'] ) ) {
 			$bullet_icon_border        = $attr['bulletIconBorder'];
-			$bullet_icon_border_width  = $attr['bulletIconBorder']['borderWidth'];
-			$bullet_icon_border_radius = $attr['bulletIconBorder']['borderRadius'];
+			$bullet_icon_border_width  = $bullet_icon_border['borderWidth'];
+			$bullet_icon_border_radius = $bullet_icon_border['borderRadius'];
 
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, ' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
 			$css->add_property( 'border-width', $css->render_spacing( $bullet_icon_border_width['Mobile'], 'px' ) );
@@ -6068,7 +6067,6 @@ class PBG_Blocks_Helper {
 		// Align.
 		if ( isset( $attr['align'] ) ) {
 			$align = $css->get_responsive_css( $attr['align'], 'Desktop' );
-
 			$css->set_selector( $unique_id . ', ' . $unique_id . ' .premium-title' );
 			$css->add_property( 'text-align', $align );
 		}
@@ -6087,15 +6085,14 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['titleTypography'] ) ) {
 			$typography_title = $attr['titleTypography'];
-
 			$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header, ' . $unique_id . ' .premium-title-style9__wrap .premium-letters-container .premium-title-style9-letter' );
 			$css->render_typography( $typography_title, 'Desktop' );
 		}
 
 		if ( isset( $attr['titleBorder'] ) ) {
 			$title_border        = $attr['titleBorder'];
-			$title_border_width  = $attr['titleBorder']['borderWidth'];
-			$title_border_radius = $attr['titleBorder']['borderRadius'];
+			$title_border_width  = $title_border['borderWidth'];
+			$title_border_radius = $title_border['borderRadius'];
 			$border_left_width   = $css->get_responsive_value( $title_border_width, 'left', 'Desktop', 'px' );
 			$border_bottom_width = $css->get_responsive_value( $title_border_width, 'bottom', 'Desktop', 'px' );
 
@@ -6128,8 +6125,8 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['iconBorder'] ) ) {
 			$icon_border        = $attr['iconBorder'];
-			$icon_border_width  = $attr['iconBorder']['borderWidth'];
-			$icon_border_radius = $attr['iconBorder']['borderRadius'];
+			$icon_border_width  = $icon_border['borderWidth'];
+			$icon_border_radius = $icon_border['borderRadius'];
 
 			$css->set_selector( $unique_id . ' .premium-title-icon' );
 			$css->add_property( 'border-width', $css->render_spacing( $icon_border_width['Desktop'], 'px' ) );
@@ -6140,78 +6137,68 @@ class PBG_Blocks_Helper {
 			$icon_size = $attr['iconSize'];
 
 			$css->set_selector( $unique_id . ' .premium-title-icon' );
-			$css->add_property( 'font-size', $css->get_responsive_size_value( $icon_size, 'Desktop', $icon_size['unit'] ) . '!important' );
+			$css->add_property( 'font-size', $css->render_range($icon_size,'Desktop') );
 			$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-lottie-animation' . ' > svg' );
-			$css->add_property( 'width', $css->get_responsive_size_value( $icon_size, 'Desktop', $icon_size['unit'] ) );
-			$css->add_property( 'height', $css->get_responsive_size_value( $icon_size, 'Desktop', $icon_size['unit'] ) );
+			$css->add_property( 'width', $css->render_range($icon_size,'Desktop') );
+			$css->add_property( 'height', $css->render_range($icon_size,'Desktop') );
 			$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > img' );
-			$css->add_property( 'width', $css->get_responsive_size_value( $icon_size, 'Desktop', $icon_size['unit'] ) );
-			$css->add_property( 'height', $css->get_responsive_size_value( $icon_size, 'Desktop', $icon_size['unit'] ) );
+			$css->add_property( 'width', $css->render_range($icon_size,'Desktop') );
+			$css->add_property( 'height', $css->render_range($icon_size,'Desktop') );
 		}
 
 		// stripeStyles
 		if ( isset( $attr['stripeTopSpacing'] ) ) {
 			$stripe_top_spacing = $attr['stripeTopSpacing'];
-
 			$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-stripe__wrap' );
-			$css->add_property( 'margin-top', $css->get_responsive_size_value( $stripe_top_spacing, 'Desktop', $stripe_top_spacing['unit'] ) );
+			$css->add_property( 'margin-top', $css->get_responsive_value( $stripe_top_spacing, 'top', 'Desktop', $stripe_top_spacing['unit'] ) );
 		}
 
 		if ( isset( $attr['stripeBottomSpacing'] ) ) {
 			$stripe_bottom_spacing = $attr['stripeBottomSpacing'];
-
 			$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-stripe__wrap' );
-			$css->add_property( 'margin-bottom', $css->get_responsive_size_value( $stripe_bottom_spacing, 'Desktop', $stripe_bottom_spacing['unit'] ) );
+			$css->add_property( 'margin-bottom', $css->get_responsive_value( $stripe_bottom_spacing, 'bottom', 'Desktop', $stripe_bottom_spacing['unit'] ) );
 		}
 
 		if ( isset( $attr['stripeWidth'] ) ) {
 			$stripe_width = $attr['stripeWidth'];
-
 			$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-stripe__wrap' . ' > .premium-title-style7-stripe-span' );
-			$css->add_property( 'width', $css->get_responsive_size_value( $stripe_width, 'Desktop', $stripe_width['unit'] ) );
+			$css->add_property( 'width', $css->render_range($stripe_width,'Desktop') );
 		}
 
 		if ( isset( $attr['stripeHeight'] ) ) {
 			$stripe_height = $attr['stripeHeight'];
-
 			$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-stripe__wrap' . ' > .premium-title-style7-stripe-span' );
-			$css->add_property( 'height', $css->get_responsive_size_value( $stripe_height, 'Desktop', $stripe_height['unit'] ) );
+			$css->add_property( 'height', $css->render_range($stripe_height,'Desktop') );
 		}
 
 		// background text
-
 		if ( isset( $attr['verticalText'] ) ) {
 			$vertical_text = $attr['verticalText'];
-
 			$css->set_selector( $unique_id . ' > .premium-title-bg-text:before' );
-			$css->add_property( 'top', $css->get_responsive_size_value( $vertical_text, 'Desktop', $vertical_text['unit'] ) );
+			$css->add_property( 'top', $css->render_range($vertical_text,'Desktop') );
 		}
 
 		if ( isset( $attr['horizontalText'] ) ) {
 			$horizontal_text = $attr['horizontalText'];
-
 			$css->set_selector( $unique_id . ' > .premium-title-bg-text:before' );
-			$css->add_property( 'left', $css->get_responsive_size_value( $horizontal_text, 'Desktop', $horizontal_text['unit'] ) );
+			$css->add_property( 'left', $css->render_range($horizontal_text,'Desktop') );
 		}
 
 		if ( isset( $attr['rotateText'] ) ) {
 			$rotate_text = $attr['rotateText'];
-			$value       = $css->get_responsive_css( $rotate_text, 'Desktop' );
-
+			$value       = $css->render_range( $rotate_text, 'Desktop' );
 			$css->set_selector( $unique_id . ' > .premium-title-bg-text:before' );
 			$css->add_property( 'transform', "rotate({$value}deg)!important" );
 		}
 
 		if ( isset( $attr['strokeFull'] ) ) {
 			$stroke_full = $attr['strokeFull'];
-
 			$css->set_selector( $unique_id . ' > .premium-title-bg-text:before' );
-			$css->add_property( '-webkit-text-stroke-width', $css->get_responsive_css( $stroke_full, 'Desktop' ) );
+			$css->add_property( '-webkit-text-stroke-width', $css->render_range( $stroke_full, 'Desktop' ) );
 		}
 
 		if ( isset( $attr['textTypography'] ) ) {
 			$text_typography = $attr['textTypography'];
-
 			$css->set_selector( $unique_id . ' .premium-title-bg-text:before' );
 			$css->render_typography( $text_typography, 'Desktop' );
 		}
@@ -6221,7 +6208,6 @@ class PBG_Blocks_Helper {
 		// Align.
 		if ( isset( $attr['align'] ) ) {
 			$align = $css->get_responsive_css( $attr['align'], 'Tablet' );
-
 			$css->set_selector( $unique_id . ', ' . $unique_id . ' .premium-title' );
 			$css->add_property( 'text-align', $align );
 		}
@@ -6240,7 +6226,6 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['titleTypography'] ) ) {
 			$typography_title = $attr['titleTypography'];
-
 			$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header, ' . $unique_id . ' .premium-title-style9__wrap .premium-letters-container .premium-title-style9-letter' );
 			$css->render_typography( $typography_title, 'Tablet' );
 		}
@@ -6281,8 +6266,8 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['iconBorder'] ) ) {
 			$icon_border        = $attr['iconBorder'];
-			$icon_border_width  = $attr['iconBorder']['borderWidth'];
-			$icon_border_radius = $attr['iconBorder']['borderRadius'];
+			$icon_border_width  = $icon_border['borderWidth'];
+			$icon_border_radius = $icon_border['borderRadius'];
 
 			$css->set_selector( $unique_id . ' .premium-title-icon' );
 			$css->add_property( 'border-width', $css->render_spacing( $icon_border_width['Tablet'], 'px' ) );
@@ -6293,78 +6278,69 @@ class PBG_Blocks_Helper {
 			$icon_size = $attr['iconSize'];
 
 			$css->set_selector( $unique_id . ' .premium-title-icon' );
-			$css->add_property( 'font-size', $css->get_responsive_size_value( $icon_size, 'Tablet', $icon_size['unit'] ) . '!important' );
+			$css->add_property( 'font-size', $css->render_range($icon_size,'Tablet') );
 			$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-lottie-animation' . ' > svg' );
-			$css->add_property( 'width', $css->get_responsive_size_value( $icon_size, 'Tablet', $icon_size['unit'] ) );
-			$css->add_property( 'height', $css->get_responsive_size_value( $icon_size, 'Tablet', $icon_size['unit'] ) );
+			$css->add_property( 'width', $css->render_range($icon_size,'Tablet') );
+			$css->add_property( 'height', $css->render_range($icon_size,'Tablet') );
 			$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > img' );
-			$css->add_property( 'width', $css->get_responsive_size_value( $icon_size, 'Tablet', $icon_size['unit'] ) );
-			$css->add_property( 'height', $css->get_responsive_size_value( $icon_size, 'Tablet', $icon_size['unit'] ) );
+			$css->add_property( 'width', $css->render_range($icon_size,'Tablet') );
+			$css->add_property( 'height', $css->render_range($icon_size,'Tablet') );
 		}
+
 
 		// stripeStyles
 		if ( isset( $attr['stripeTopSpacing'] ) ) {
 			$stripe_top_spacing = $attr['stripeTopSpacing'];
-
 			$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-stripe__wrap' );
-			$css->add_property( 'margin-top', $css->get_responsive_size_value( $stripe_top_spacing, 'Tablet', $stripe_top_spacing['unit'] ) );
+			$css->add_property( 'margin-top', $css->get_responsive_value( $stripe_top_spacing, 'top', 'Tablet', $stripe_top_spacing['unit'] ) );
 		}
 
 		if ( isset( $attr['stripeBottomSpacing'] ) ) {
 			$stripe_bottom_spacing = $attr['stripeBottomSpacing'];
-
 			$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-stripe__wrap' );
-			$css->add_property( 'margin-bottom', $css->get_responsive_size_value( $stripe_bottom_spacing, 'Tablet', $stripe_bottom_spacing['unit'] ) );
+			$css->add_property( 'margin-bottom', $css->get_responsive_value( $stripe_bottom_spacing, 'bottom', 'Tablet', $stripe_bottom_spacing['unit'] ) );
 		}
 
 		if ( isset( $attr['stripeWidth'] ) ) {
 			$stripe_width = $attr['stripeWidth'];
-
 			$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-stripe__wrap' . ' > .premium-title-style7-stripe-span' );
-			$css->add_property( 'width', $css->get_responsive_size_value( $stripe_width, 'Tablet', $stripe_width['unit'] ) );
+			$css->add_property( 'width', $css->render_range($stripe_width,'Tablet') );
 		}
 
 		if ( isset( $attr['stripeHeight'] ) ) {
 			$stripe_height = $attr['stripeHeight'];
-
 			$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-stripe__wrap' . ' > .premium-title-style7-stripe-span' );
-			$css->add_property( 'height', $css->get_responsive_size_value( $stripe_height, 'Tablet', $stripe_height['unit'] ) );
+			$css->add_property( 'height', $css->render_range($stripe_height,'Tablet') );
 		}
 
 		// background text
-
 		if ( isset( $attr['verticalText'] ) ) {
 			$vertical_text = $attr['verticalText'];
-
 			$css->set_selector( $unique_id . ' > .premium-title-bg-text:before' );
-			$css->add_property( 'top', $css->get_responsive_size_value( $vertical_text, 'Tablet', $vertical_text['unit'] ) );
+			$css->add_property( 'top', $css->render_range($vertical_text,'Tablet') );
 		}
 
 		if ( isset( $attr['horizontalText'] ) ) {
 			$horizontal_text = $attr['horizontalText'];
-
 			$css->set_selector( $unique_id . ' > .premium-title-bg-text:before' );
-			$css->add_property( 'left', $css->get_responsive_size_value( $horizontal_text, 'Tablet', $horizontal_text['unit'] ) );
+			$css->add_property( 'left', $css->render_range($horizontal_text,'Tablet') );
 		}
 
 		if ( isset( $attr['rotateText'] ) ) {
 			$rotate_text = $attr['rotateText'];
-			$value       = $css->get_responsive_css( $rotate_text, 'Tablet' );
-
+			$value       = $css->render_range( $rotate_text, 'Tablet' );
 			$css->set_selector( $unique_id . ' > .premium-title-bg-text:before' );
 			$css->add_property( 'transform', "rotate({$value}deg)!important" );
 		}
 
 		if ( isset( $attr['strokeFull'] ) ) {
 			$stroke_full = $attr['strokeFull'];
-
 			$css->set_selector( $unique_id . ' > .premium-title-bg-text:before' );
-			$css->add_property( '-webkit-text-stroke-width', $css->get_responsive_css( $stroke_full, 'Tablet' ) );
+			$css->add_property( '-webkit-text-stroke-width', $css->render_range( $stroke_full, 'Tablet' ) );
 		}
 
 		if ( isset( $attr['textTypography'] ) ) {
 			$text_typography = $attr['textTypography'];
-
 			$css->set_selector( $unique_id . ' .premium-title-bg-text:before' );
 			$css->render_typography( $text_typography, 'Tablet' );
 		}
@@ -6376,7 +6352,6 @@ class PBG_Blocks_Helper {
 		// Align.
 		if ( isset( $attr['align'] ) ) {
 			$align = $css->get_responsive_css( $attr['align'], 'Mobile' );
-
 			$css->set_selector( $unique_id . ', ' . $unique_id . ' .premium-title' );
 			$css->add_property( 'text-align', $align );
 		}
@@ -6395,15 +6370,14 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['titleTypography'] ) ) {
 			$typography_title = $attr['titleTypography'];
-
 			$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header, ' . $unique_id . ' .premium-title-style9__wrap .premium-letters-container .premium-title-style9-letter' );
 			$css->render_typography( $typography_title, 'Mobile' );
 		}
 
 		if ( isset( $attr['titleBorder'] ) ) {
 			$title_border        = $attr['titleBorder'];
-			$title_border_width  = $attr['titleBorder']['borderWidth'];
-			$title_border_radius = $attr['titleBorder']['borderRadius'];
+			$title_border_width  = $title_border['borderWidth'];
+			$title_border_radius = $title_border['borderRadius'];
 			$border_left_width   = $css->get_responsive_value( $title_border_width, 'left', 'Mobile', 'px' );
 			$border_bottom_width = $css->get_responsive_value( $title_border_width, 'bottom', 'Mobile', 'px' );
 
@@ -6436,9 +6410,8 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['iconBorder'] ) ) {
 			$icon_border        = $attr['iconBorder'];
-			$icon_border_width  = $attr['iconBorder']['borderWidth'];
-			$icon_border_radius = $attr['iconBorder']['borderRadius'];
-
+			$icon_border_width  = $icon_border['borderWidth'];
+			$icon_border_radius = $icon_border['borderRadius'];
 			$css->set_selector( $unique_id . ' .premium-title-icon' );
 			$css->add_property( 'border-width', $css->render_spacing( $icon_border_width['Mobile'], 'px' ) );
 			$css->add_property( 'border-radius', $css->render_spacing( $icon_border_radius['Mobile'], 'px' ) );
@@ -6448,78 +6421,68 @@ class PBG_Blocks_Helper {
 			$icon_size = $attr['iconSize'];
 
 			$css->set_selector( $unique_id . ' .premium-title-icon' );
-			$css->add_property( 'font-size', $css->get_responsive_size_value( $icon_size, 'Mobile', $icon_size['unit'] ) . '!important' );
+			$css->add_property( 'font-size', $css->render_range($icon_size,'Mobile') );
 			$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-lottie-animation' . ' > svg' );
-			$css->add_property( 'width', $css->get_responsive_size_value( $icon_size, 'Mobile', $icon_size['unit'] ) );
-			$css->add_property( 'height', $css->get_responsive_size_value( $icon_size, 'Mobile', $icon_size['unit'] ) );
+			$css->add_property( 'width', $css->render_range($icon_size,'Mobile') );
+			$css->add_property( 'height', $css->render_range($icon_size,'Mobile') );
 			$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > img' );
-			$css->add_property( 'width', $css->get_responsive_size_value( $icon_size, 'Mobile', $icon_size['unit'] ) );
-			$css->add_property( 'height', $css->get_responsive_size_value( $icon_size, 'Mobile', $icon_size['unit'] ) );
+			$css->add_property( 'width', $css->render_range($icon_size,'Mobile') );
+			$css->add_property( 'height', $css->render_range($icon_size,'Mobile') );
 		}
 
 		// stripeStyles
 		if ( isset( $attr['stripeTopSpacing'] ) ) {
 			$stripe_top_spacing = $attr['stripeTopSpacing'];
-
 			$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-stripe__wrap' );
-			$css->add_property( 'margin-top', $css->get_responsive_size_value( $stripe_top_spacing, 'Mobile', $stripe_top_spacing['unit'] ) );
+			$css->add_property( 'margin-top', $css->get_responsive_value( $stripe_top_spacing, 'top', 'Mobile', $stripe_top_spacing['unit'] ) );
 		}
 
 		if ( isset( $attr['stripeBottomSpacing'] ) ) {
 			$stripe_bottom_spacing = $attr['stripeBottomSpacing'];
-
 			$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-stripe__wrap' );
-			$css->add_property( 'margin-bottom', $css->get_responsive_size_value( $stripe_bottom_spacing, 'Mobile', $stripe_bottom_spacing['unit'] ) );
+			$css->add_property( 'margin-bottom', $css->get_responsive_value( $stripe_bottom_spacing, 'bottom', 'Mobile', $stripe_bottom_spacing['unit'] ) );
 		}
 
 		if ( isset( $attr['stripeWidth'] ) ) {
 			$stripe_width = $attr['stripeWidth'];
-
 			$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-stripe__wrap' . ' > .premium-title-style7-stripe-span' );
-			$css->add_property( 'width', $css->get_responsive_size_value( $stripe_width, 'Mobile', $stripe_width['unit'] ) );
+			$css->add_property( 'width', $css->render_range($stripe_width,'Mobile') );
 		}
 
 		if ( isset( $attr['stripeHeight'] ) ) {
 			$stripe_height = $attr['stripeHeight'];
-
 			$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-stripe__wrap' . ' > .premium-title-style7-stripe-span' );
-			$css->add_property( 'height', $css->get_responsive_size_value( $stripe_height, 'Mobile', $stripe_height['unit'] ) );
+			$css->add_property( 'height', $css->render_range($stripe_height,'Mobile') );
 		}
 
 		// background text
-
 		if ( isset( $attr['verticalText'] ) ) {
 			$vertical_text = $attr['verticalText'];
-
 			$css->set_selector( $unique_id . ' > .premium-title-bg-text:before' );
-			$css->add_property( 'top', $css->get_responsive_size_value( $vertical_text, 'Mobile', $vertical_text['unit'] ) );
+			$css->add_property( 'top', $css->render_range($vertical_text,'Mobile') );
 		}
 
 		if ( isset( $attr['horizontalText'] ) ) {
 			$horizontal_text = $attr['horizontalText'];
-
 			$css->set_selector( $unique_id . ' > .premium-title-bg-text:before' );
-			$css->add_property( 'left', $css->get_responsive_size_value( $horizontal_text, 'Mobile', $horizontal_text['unit'] ) );
+			$css->add_property( 'left', $css->render_range($horizontal_text,'Mobile') );
 		}
 
 		if ( isset( $attr['rotateText'] ) ) {
 			$rotate_text = $attr['rotateText'];
-			$value       = $css->get_responsive_css( $rotate_text, 'Mobile' );
-
+			$value       = $css->render_range( $rotate_text, 'Mobile' );
 			$css->set_selector( $unique_id . ' > .premium-title-bg-text:before' );
 			$css->add_property( 'transform', "rotate({$value}deg)!important" );
 		}
 
 		if ( isset( $attr['strokeFull'] ) ) {
 			$stroke_full = $attr['strokeFull'];
-
 			$css->set_selector( $unique_id . ' > .premium-title-bg-text:before' );
-			$css->add_property( '-webkit-text-stroke-width', $css->get_responsive_css( $stroke_full, 'Mobile' ) );
+			$css->add_property( '-webkit-text-stroke-width', $css->render_range( $stroke_full, 'Mobile' ) );
 		}
 
 		if ( isset( $attr['textTypography'] ) ) {
 			$text_typography = $attr['textTypography'];
-
 			$css->set_selector( $unique_id . ' .premium-title-bg-text:before' );
 			$css->render_typography( $text_typography, 'Mobile' );
 		}

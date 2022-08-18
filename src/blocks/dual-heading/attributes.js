@@ -113,7 +113,7 @@ const attributes = {
             fontFamily: "Default",
             textDecoration: "",
             fontSize: {
-                Desktop: "20",
+                Desktop: "",
                 Tablet: "",
                 Mobile: "",
                 unit: "px",
