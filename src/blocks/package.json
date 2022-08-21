@@ -33,8 +33,9 @@
         "build:navigation:link": "wp-scripts build navigation-link/index.js --output-path=navigation-link/build",
         "start:navigation:submenu": "wp-scripts start navigation-submenu/index.js --output-path=navigation-submenu/build",
         "build:navigation:submenu": "wp-scripts build navigation-submenu/index.js --output-path=navigation-submenu/build",
-        "build:navigation:submenu:view:build": "wp-scripts build navigation-submenu/view.js --output-path=navigation-submenu/view"
-
+        "build:navigation:submenu:view:build": "wp-scripts build navigation-submenu/view.js --output-path=navigation-submenu/view",
+        "start:icon": "wp-scripts start icon/index.js --output-path=icon/build",
+        "build:icon": "wp-scripts build icon/index.js --output-path=icon/build"
     },
     "devDependencies": {
         "@wordpress/scripts": "^22.4.0"
