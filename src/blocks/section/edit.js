@@ -7,11 +7,11 @@ import PremiumBackgroundControl from '../../components/Premium-Background-Contro
 import SpacingComponent from '../../components/premium-responsive-spacing';
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
-const { __ } = wp.i18n;
 import MultiButtonsControl from '../../components/responsive-radio';
 import Icons from "../../components/icons";
 import { borderCss, gradientBackground, marginCss, paddingCss, generateBlockId } from "../../components/HelperFunction";
-const { PanelBody, ToggleControl, SelectControl, } = wp.components;
+const { __ } = wp.i18n;
+const { PanelBody, ToggleControl, SelectControl } = wp.components;
 const { Fragment, useEffect } = wp.element;
 const { withSelect } = wp.data
 const { InnerBlocks, InspectorControls } = wp.blockEditor;
@@ -138,17 +138,17 @@ const edit = props => {
                                 choices={[
                                     {
                                         value: "left",
-                                        label: __("Left"),
+                                        label: __("Left", 'premium-blocks-for-gutenberg'),
                                         icon: Icons.alignLeft,
                                     },
                                     {
                                         value: "center",
-                                        label: __("Center"),
+                                        label: __("Center", 'premium-blocks-for-gutenberg'),
                                         icon: Icons.alignCenter,
                                     },
                                     {
                                         value: "right",
-                                        label: __("Right"),
+                                        label: __("Right", 'premium-blocks-for-gutenberg'),
                                         icon: Icons.alignRight,
                                     },
                                 ]}
@@ -180,28 +180,21 @@ const edit = props => {
                             className="premium-panel-body"
                             initialOpen={false}
                         >
-
+                            <PremiumShadow
+                                value={boxShadow}
+                                onChange={(value) => setAttributes({ boxShadow: value })}
+                            />
                             <PremiumBorder
                                 label={__("Border", 'premium-blocks-for-gutenberg')}
                                 value={border}
                                 onChange={(value) => setAttributes({ border: value })}
                             />
-                            <hr />
-                            <PremiumShadow
-                                label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
-                                boxShadow={true}
-                                value={boxShadow}
-                                onChange={(value) => setAttributes({ boxShadow: value })}
-                            />
-
                         </PanelBody>
-
                         <PanelBody
                             title={__("Spacings", 'premium-blocks-for-gutenberg')}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
-
                             <SpacingComponent
                                 value={margin}
                                 responsive={true}
@@ -263,7 +256,7 @@ const edit = props => {
     ];
 };
 
-export default withSelect((select, props) => {
+export default withSelect((select) => {
     const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
     let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
     return { deviceType: deviceType }

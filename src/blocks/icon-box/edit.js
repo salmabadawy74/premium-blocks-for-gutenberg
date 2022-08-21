@@ -35,7 +35,7 @@ const { withSelect } = wp.data;
 const { InspectorControls, RichText } = wp.blockEditor;
 import WebfontLoader from "../../components/typography/fontLoader";
 
-class edit extends Component {
+class Edit extends Component {
     constructor() {
         super(...arguments);
     }
@@ -61,8 +61,8 @@ class edit extends Component {
         };
 
         const saveButtonStyle = (value) => {
-            const newUpdate = btnStyles.map((item, index) => {
-                if (0 === index) {
+            const newUpdate = btnStyles.map((item, indexx) => {
+                if (0 === indexx) {
                     item = { ...item, ...value };
                 }
                 return item;
@@ -71,8 +71,8 @@ class edit extends Component {
         };
 
         const saveDescriptionStyle = (value) => {
-            const newUpdate = descStyles.map((item, index) => {
-                if (0 === index) {
+            const newUpdate = descStyles.map((item, indx) => {
+                if (0 === indx) {
                     item = { ...item, ...value };
                 }
                 return item;
@@ -231,7 +231,7 @@ class edit extends Component {
             const titleconfig = {
                 google: {
                     families: [titleTypography.fontFamily],
-                },
+                }
             };
             loadTitleGoogleFonts = (
                 <WebfontLoader config={titleconfig}></WebfontLoader>
@@ -241,7 +241,7 @@ class edit extends Component {
             const descConfig = {
                 google: {
                     families: [descTypography.fontFamily],
-                },
+                }
             };
             loadDescriptionGoogleFonts = (
                 <WebfontLoader config={descConfig}></WebfontLoader>
@@ -251,7 +251,7 @@ class edit extends Component {
             const btnConfig = {
                 google: {
                     families: [btnTypography.fontFamily],
-                },
+                }
             };
             loadButtonGoogleFonts = (
                 <WebfontLoader config={btnConfig}></WebfontLoader>
@@ -263,6 +263,7 @@ class edit extends Component {
             " premium-tablet-hidden": hideTablet,
             " premium-mobile-hidden": hideMobile,
         });
+
         const loadStyles = () => {
             const styles = {};
             styles[`.${blockId}:hover`] = {
@@ -351,17 +352,17 @@ class edit extends Component {
                                     choices={[
                                         {
                                             value: "left",
-                                            label: __("Left"),
+                                            label: __("Left", "premium-blocks-for-gutenberg"),
                                             icon: Icons.alignLeft,
                                         },
                                         {
                                             value: "center",
-                                            label: __("Center"),
+                                            label: __("Center", "premium-blocks-for-gutenberg"),
                                             icon: Icons.alignCenter,
                                         },
                                         {
                                             value: "right",
-                                            label: __("Right"),
+                                            label: __("Right", "premium-blocks-for-gutenberg"),
                                             icon: Icons.alignRight,
                                         },
                                     ]}
@@ -513,12 +514,12 @@ class edit extends Component {
                                             "premium-blocks-for-gutenberg"
                                         )}
                                         choices={[
-                                            { value: "h1", label: __("H1") },
-                                            { value: "h2", label: __("H2") },
-                                            { value: "h3", label: __("H3") },
-                                            { value: "h4", label: __("H4") },
-                                            { value: "h5", label: __("H5") },
-                                            { value: "h6", label: __("H6") },
+                                            { value: "h1", label: __("H1", "premium-blocks-for-gutenberg") },
+                                            { value: "h2", label: __("H2", "premium-blocks-for-gutenberg") },
+                                            { value: "h3", label: __("H3", "premium-blocks-for-gutenberg") },
+                                            { value: "h4", label: __("H4", "premium-blocks-for-gutenberg") },
+                                            { value: "h5", label: __("H5", "premium-blocks-for-gutenberg") },
+                                            { value: "h6", label: __("H6", "premium-blocks-for-gutenberg") },
                                         ]}
                                         value={titleTag}
                                         onChange={(newValue) =>
@@ -566,7 +567,7 @@ class edit extends Component {
                         <InspectorTab key={"style"}>
                             {iconChecked && (
                                 <PanelBody
-                                    title={__("Icon")}
+                                    title={__("Icon", "premium-blocks-for-gutenberg")}
                                     className="premium-panel-body"
                                     initialOpen={true}
                                 >
@@ -600,7 +601,7 @@ class edit extends Component {
                                         }
                                     />
                                     <AdvancedPopColorControl
-                                        label={__(`Background Color`)}
+                                        label={__(`Background Color`, "premium-blocks-for-gutenberg")}
                                         colorValue={iconBackColor}
                                         onColorChange={(newvalue) =>
                                             setAttributes({
@@ -681,7 +682,7 @@ class edit extends Component {
                             )}
                             {descChecked && (
                                 <PanelBody
-                                    title={__("Description")}
+                                    title={__("Description", "premium-blocks-for-gutenberg")}
                                     className="premium-panel-body"
                                     initialOpen={false}
                                 >
@@ -722,7 +723,7 @@ class edit extends Component {
                             )}
                             {btnChecked && (
                                 <PanelBody
-                                    title={__("Button")}
+                                    title={__("Button", "premium-blocks-for-gutenberg")}
                                     className="premium-panel-body"
                                     initialOpen={false}
                                 >
@@ -735,7 +736,7 @@ class edit extends Component {
                                         }
                                     />
                                     <InsideTabs>
-                                        <InsideTab tabTitle={__("Normal")}>
+                                        <InsideTab tabTitle={__("Normal", "premium-blocks-for-gutenberg")}>
                                             <Fragment>
                                                 <AdvancedPopColorControl
                                                     label={__(
@@ -771,7 +772,7 @@ class edit extends Component {
                                                 />
                                             </Fragment>
                                         </InsideTab>
-                                        <InsideTab tabTitle={__("Hover")}>
+                                        <InsideTab tabTitle={__("Hover", "premium-blocks-for-gutenberg")}>
                                             <Fragment>
                                                 <AdvancedPopColorControl
                                                     label={__(
@@ -843,7 +844,7 @@ class edit extends Component {
                                                             {
                                                                 value: "top",
                                                                 label: __(
-                                                                    "Top"
+                                                                    "Top", "premium-blocks-for-gutenberg"
                                                                 ),
                                                                 icon:
                                                                     Icons.arrowTop,
@@ -851,7 +852,7 @@ class edit extends Component {
                                                             {
                                                                 value: "right",
                                                                 label: __(
-                                                                    "Right"
+                                                                    "Right", "premium-blocks-for-gutenberg"
                                                                 ),
                                                                 icon:
                                                                     Icons.arrowRight,
@@ -859,7 +860,7 @@ class edit extends Component {
                                                             {
                                                                 value: "bottom",
                                                                 label: __(
-                                                                    "Bottom"
+                                                                    "Bottom", "premium-blocks-for-gutenberg"
                                                                 ),
                                                                 icon:
                                                                     Icons.arrowBottom,
@@ -867,7 +868,7 @@ class edit extends Component {
                                                             {
                                                                 value: "left",
                                                                 label: __(
-                                                                    "Left"
+                                                                    "Left", "premium-blocks-for-gutenberg"
                                                                 ),
                                                                 icon:
                                                                     Icons.arrowLeft,
@@ -946,7 +947,7 @@ class edit extends Component {
                                     }
                                 />
                                 <InsideTabs>
-                                    <InsideTab tabTitle={__("Normal")}>
+                                    <InsideTab tabTitle={__("Normal", "premium-blocks-for-gutenberg")}>
                                         <PremiumShadow
                                             value={containerShadow}
                                             onChange={(value) =>
@@ -956,7 +957,7 @@ class edit extends Component {
                                             }
                                         />
                                     </InsideTab>
-                                    <InsideTab tabTitle={__("Hover")}>
+                                    <InsideTab tabTitle={__("Hover", "premium-blocks-for-gutenberg")}>
                                         <PremiumShadow
                                             label={__(
                                                 "Hover Box Shadow",
@@ -1202,7 +1203,7 @@ class edit extends Component {
     }
 }
 
-export default withSelect((select, props) => {
+export default withSelect((select) => {
     const { __experimentalGetPreviewDeviceType = null } = select(
         "core/edit-post"
     );
@@ -1213,4 +1214,4 @@ export default withSelect((select, props) => {
     return {
         deviceType: deviceType,
     };
-})(edit);
+})(Edit);

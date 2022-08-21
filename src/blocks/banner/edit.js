@@ -35,10 +35,9 @@ const {
     ToggleControl,
 } = wp.components;
 
-const { BlockControls, InspectorControls, RichText, MediaPlaceholder } =
-    wp.blockEditor;
+const { BlockControls, InspectorControls, RichText, MediaPlaceholder } = wp.blockEditor;
 
-export class edit extends Component {
+export class Edit extends Component {
     constructor() {
         super(...arguments);
     }
@@ -55,7 +54,6 @@ export class edit extends Component {
             isSelected,
             setAttributes,
             className,
-            clientId: blockID,
             deviceType,
         } = this.props;
 
@@ -75,7 +73,6 @@ export class edit extends Component {
             hovered,
             responsive,
             background,
-            opacity,
             urlCheck,
             target,
             url,
@@ -204,8 +201,8 @@ export class edit extends Component {
         };
 
         const descriptionStyles = (value) => {
-            const newUpdate = descStyles.map((item, index) => {
-                if (0 === index) {
+            const newUpdate = descStyles.map((item, indexx) => {
+                if (0 === indexx) {
                     item = { ...item, ...value };
                 }
                 return item;
@@ -281,7 +278,7 @@ export class edit extends Component {
                                         e.preventDefault();
                                         setAttributes({
                                             imageURL: "",
-                                            imageURL: "",
+                                            imageID: "",
                                         });
                                     }}
                                 >
@@ -412,17 +409,17 @@ export class edit extends Component {
                                     choices={[
                                         {
                                             value: "left",
-                                            label: __("Left"),
+                                            label: __("Left","premium-blocks-for-gutenberg"),
                                             icon: Icons.alignLeft,
                                         },
                                         {
                                             value: "center",
-                                            label: __("Center"),
+                                            label: __("Center","premium-blocks-for-gutenberg"),
                                             icon: Icons.alignCenter,
                                         },
                                         {
                                             value: "right",
-                                            label: __("Right"),
+                                            label: __("Right","premium-blocks-for-gutenberg"),
                                             icon: Icons.alignRight,
                                         },
                                     ]}
@@ -447,12 +444,12 @@ export class edit extends Component {
                             >
                                 <RadioComponent
                                     choices={[
-                                        { label: __("H1"), value: "h1" },
-                                        { label: __("H2"), value: "h2" },
-                                        { label: __("H3"), value: "h3" },
-                                        { label: __("H4"), value: "h4" },
-                                        { label: __("H5"), value: "h5" },
-                                        { label: __("H6"), value: "h6" },
+                                        { label: __("H1","premium-blocks-for-gutenberg"), value: "h1" },
+                                        { label: __("H2","premium-blocks-for-gutenberg"), value: "h2" },
+                                        { label: __("H3","premium-blocks-for-gutenberg"), value: "h3" },
+                                        { label: __("H4","premium-blocks-for-gutenberg"), value: "h4" },
+                                        { label: __("H5","premium-blocks-for-gutenberg"), value: "h5" },
+                                        { label: __("H6","premium-blocks-for-gutenberg"), value: "h6" },
                                     ]}
                                     value={titleTag}
                                     onChange={(newValue) =>
@@ -511,7 +508,6 @@ export class edit extends Component {
                                         })
                                     }
                                 />
-                                <hr />
                                 <AdvancedPopColorControl
                                     label={__(
                                         "Text Color",
@@ -558,13 +554,11 @@ export class edit extends Component {
                                         }
                                     />
                                 )}
-                                <hr />
                                 <PremiumShadow
                                     label={__(
                                         "Text Shadow",
                                         "premium-blocks-for-gutenberg"
                                     )}
-                                    boxShadow={false}
                                     value={titleTextShadow}
                                     onChange={(value) =>
                                         setAttributes({
@@ -603,7 +597,6 @@ export class edit extends Component {
                                         })
                                     }
                                 />
-                                <hr />
                                 <PremiumShadow
                                     label={__(
                                         "Text Shadow",
@@ -625,11 +618,6 @@ export class edit extends Component {
                                 initialOpen={false}
                             >
                                 <PremiumShadow
-                                    label={__(
-                                        "Box Shadow",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                    boxShadow={true}
                                     value={containerShadow}
                                     onChange={(value) =>
                                         setAttributes({
@@ -639,7 +627,7 @@ export class edit extends Component {
                                 />
                                 <hr />
                                 <PremiumBorder
-                                    label={__("Border")}
+                                    label={__("Border","premium-blocks-for-gutenberg")}
                                     value={border}
                                     onChange={(value) =>
                                         setAttributes({ border: value })
@@ -650,7 +638,7 @@ export class edit extends Component {
                                     value={padding}
                                     responsive={true}
                                     showUnits={true}
-                                    label={__("Padding")}
+                                    label={__("Padding","premium-blocks-for-gutenberg")}
                                     onChange={(value) =>
                                         setAttributes({ padding: value })
                                     }
@@ -817,7 +805,7 @@ export class edit extends Component {
         ];
     }
 }
-export default withSelect((select, props) => {
+export default withSelect((select) => {
     const { __experimentalGetPreviewDeviceType = null } =
         select("core/edit-post");
     let deviceType = __experimentalGetPreviewDeviceType
@@ -825,4 +813,4 @@ export default withSelect((select, props) => {
         : null;
 
     return { deviceType: deviceType };
-})(edit);
+})(Edit);

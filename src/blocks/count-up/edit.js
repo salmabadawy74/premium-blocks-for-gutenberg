@@ -10,21 +10,23 @@ import AdvancedPopColorControl from '../../components/Color Control/ColorCompone
 import PremiumBackgroundControl from "../../components/Premium-Background-Control"
 import MultiButtonsControl from '../../components/responsive-radio';
 import Icons from "../../components/icons";
-const { __ } = wp.i18n;
-const { withSelect } = wp.data
 import SpacingComponent from '../../components/premium-responsive-spacing';
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import { gradientBackground, generateBlockId, borderCss, paddingCss, typographyCss, marginCss } from "../../components/HelperFunction";
 import WebfontLoader from "../../components/typography/fontLoader";
+import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
+import iconsList from "../../components/premium-icons-list";
 
+const { __ } = wp.i18n;
+const { withSelect } = wp.data
 const { PanelBody, SelectControl, TextControl, ToggleControl } = wp.components;
 
 const { InspectorControls, RichText } = wp.blockEditor;
 
 const { Fragment, Component } = wp.element;
 
-class edit extends Component {
+class Edit extends Component {
     constructor() {
         super(...arguments);
     }
@@ -116,17 +118,6 @@ class edit extends Component {
             }
         ];
 
-        const TYPE = [
-            {
-                value: "fa",
-                label: __("Font Awesome Icon", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "dash",
-                label: __("Dashicon", 'premium-blocks-for-gutenberg')
-            }
-        ];
-
         let loadCounterGoogleFonts;
         let loadTitleGoogleFonts;
         let loadSuffixGoogleFonts;
@@ -136,7 +127,7 @@ class edit extends Component {
             const numberConfig = {
                 google: {
                     families: [numberTypography.fontFamily],
-                },
+                }
             }
             loadCounterGoogleFonts = (
                 <WebfontLoader config={numberConfig}>
@@ -148,7 +139,7 @@ class edit extends Component {
             const titleConfig = {
                 google: {
                     families: [titleTypography.fontFamily],
-                },
+                }
             }
             loadTitleGoogleFonts = (
                 <WebfontLoader config={titleConfig}>
@@ -160,7 +151,7 @@ class edit extends Component {
             const suffixConfig = {
                 google: {
                     families: [suffixTypography.fontFamily],
-                },
+                }
             }
             loadSuffixGoogleFonts = (
                 <WebfontLoader config={suffixConfig}>
@@ -172,7 +163,7 @@ class edit extends Component {
             const prefixConfig = {
                 google: {
                     families: [prefixTypography.fontFamily],
-                },
+                }
             }
             loadPrefixGoogleFonts = (
                 <WebfontLoader config={prefixConfig}>
@@ -191,8 +182,8 @@ class edit extends Component {
         }
 
         const saveTitleStyles = (value) => {
-            const newUpdate = titleStyles.map((item, index) => {
-                if (0 === index) {
+            const newUpdate = titleStyles.map((item, indexx) => {
+                if (0 === indexx) {
                     item = { ...item, ...value };
                 }
                 return item;
@@ -201,8 +192,8 @@ class edit extends Component {
         }
 
         const savePrefixStyle = (value) => {
-            const newUpdate = prefixStyles.map((item, index) => {
-                if (0 === index) {
+            const newUpdate = prefixStyles.map((item, indx) => {
+                if (0 === indx) {
                     item = { ...item, ...value };
                 }
                 return item;
@@ -211,8 +202,8 @@ class edit extends Component {
         }
 
         const saveSuffixStyle = (value) => {
-            const newUpdate = suffixStyles.map((item, index) => {
-                if (0 === index) {
+            const newUpdate = suffixStyles.map((item, i) => {
+                if (0 === i) {
                     item = { ...item, ...value };
                 }
                 return item;
@@ -226,7 +217,6 @@ class edit extends Component {
             ' premium-mobile-hidden': hideMobile,
         }, "premium-countup__wrap");
 
-        // const alignProperty = flexDir.includes("column") ? 
         return [
             isSelected && (
                 <InspectorControls key={"inspector"}>
@@ -254,15 +244,15 @@ class edit extends Component {
                                     <MultiButtonsControl
                                         choices={[{ value: 'flex-start', label: __('Left', 'premium-blocks-for-gutenberg'), icon: Icons.alignLeft }, { value: 'center', label: __('Center', 'premium-blocks-for-gutenberg'), icon: Icons.alignCenter }, { value: 'flex-end', label: __('Right', 'premium-blocks-for-gutenberg'), icon: Icons.alignRight }]}
                                         value={align}
-                                        onChange={(align) => setAttributes({ align: align, selfAlign: align })}
+                                        onChange={(alignn) => setAttributes({ align: alignn, selfAlign: alignn })}
                                         label={__("Align", "premium-blocks-for-gutenberg")}
                                         showIcons={true} />
                                 )}
                                 {flexDir.includes("reverse") && (
                                     <MultiButtonsControl
-                                        choices={[{ value: 'flex-end', label: __('Left'), icon: Icons.alignLeft }, { value: 'center', label: __('Center'), icon: Icons.alignCenter }, { value: 'flex-start', label: __('Right'), icon: Icons.alignRight }]}
+                                        choices={[{ value: 'flex-end', label: __('Left', "premium-blocks-for-gutenberg"), icon: Icons.alignLeft }, { value: 'center', label: __('Center', "premium-blocks-for-gutenberg"), icon: Icons.alignCenter }, { value: 'flex-start', label: __('Right', "premium-blocks-for-gutenberg"), icon: Icons.alignRight }]}
                                         value={align}
-                                        onChange={(align) => setAttributes({ align: align, selfAlign: align })}
+                                        onChange={(aligns) => setAttributes({ align: aligns, selfAlign: aligns })}
                                         label={__("Align", "premium-blocks-for-gutenberg")}
                                         showIcons={true} />
                                 )}
@@ -314,40 +304,15 @@ class edit extends Component {
                                         value={icon}
                                         onChange={newType => setAttributes({ icon: newType })}
                                     />
-                                    {("" !== faIcon || "undefined" !== typeof faIcon) &&
-                                        "icon" === icon && (
-                                            <div className="premium-icon__sidebar_icon">
-                                                <i className={iconClass} />
-                                            </div>
-                                        )}
+
                                     {"icon" === icon && (
                                         <Fragment>
-                                            <SelectControl
-                                                label={__("Icon Type", 'premium-blocks-for-gutenberg')}
-                                                value={iconType}
-                                                options={TYPE}
-                                                onChange={newType => setAttributes({ iconType: newType })}
-                                            />
-                                            <TextControl
-                                                label={__("Icon Class", 'premium-blocks-for-gutenberg')}
-                                                value={faIcon}
-                                                help={[
-                                                    __("Get icon class from", 'premium-blocks-for-gutenberg'),
-                                                    <a
-                                                        href={
-                                                            "fa" === iconType
-                                                                ? "https://fontawesome.com/v4.7.0/icons/"
-                                                                : "https://developer.wordpress.org/resource/dashicons/"
-                                                        }
-                                                        target="_blank"
-                                                    >
-                                                        &nbsp;
-                                                        {__("here", 'premium-blocks-for-gutenberg')}
-                                                    </a>,
-                                                    __(" , for example: ", 'premium-blocks-for-gutenberg'),
-                                                    "fa" === iconType ? "address-book" : "dashicons-admin-site"
-                                                ]}
-                                                onChange={newIcon => setAttributes({ faIcon: newIcon })}
+                                            <FontIconPicker
+                                                icons={iconsList}
+                                                onChange={(newIcon) => setAttributes({ faIcon: newIcon })}
+                                                value={iconClass}
+                                                isMulti={false}
+                                                noSelectedPlaceholder={__("Select Icon", "premium-blocks-for-gutenberg")}
                                             />
                                         </Fragment>
                                     )}
@@ -365,7 +330,7 @@ class edit extends Component {
                                             onRemoveImage={() =>
                                                 setAttributes({
                                                     imageURL: "",
-                                                    imageURL: ""
+                                                    imageID: ""
                                                 })
                                             }
                                         />
@@ -383,10 +348,7 @@ class edit extends Component {
                                     value={background}
                                     onChange={(value) => setAttributes({ background: value })}
                                 />
-                                <hr />
                                 <PremiumShadow
-                                    label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
-                                    boxShadow={true}
                                     value={boxShadow}
                                     onChange={(value) => setAttributes({ boxShadow: value })}
                                 />
@@ -419,7 +381,6 @@ class edit extends Component {
                                         defaultValue={40}
                                         max={200}
                                     />
-                                    <hr />
                                     {"icon" === icon && (
                                         <AdvancedPopColorControl
                                             label={__("Icon Color", 'premium-blocks-for-gutenberg')}
@@ -428,7 +389,6 @@ class edit extends Component {
                                             onColorChange={newValue => setAttributes({ iconColor: newValue })}
                                         />
                                     )}
-                                    <hr />
                                     <SpacingComponent
                                         value={iconMargin}
                                         responsive={true}
@@ -448,7 +408,6 @@ class edit extends Component {
                                         value={titleTypography}
                                         onChange={newValue => setAttributes({ titleTypography: newValue })}
                                     />
-                                    <hr />
                                     <AdvancedPopColorControl
                                         label={__("Text Color", 'premium-blocks-for-gutenberg')}
                                         colorValue={titleStyles[0].titleColor}
@@ -481,7 +440,6 @@ class edit extends Component {
                                     value={numberTypography}
                                     onChange={newValue => setAttributes({ numberTypography: newValue })}
                                 />
-                                <hr />
                                 <AdvancedPopColorControl
                                     label={__("Number Color", 'premium-blocks-for-gutenberg')}
                                     colorValue={numberStyles[0].numberColor}
@@ -514,7 +472,6 @@ class edit extends Component {
                                         value={prefixTypography}
                                         onChange={newValue => setAttributes({ prefixTypography: newValue })}
                                     />
-                                    <hr />
                                     <AdvancedPopColorControl
                                         label={__("Text Color", 'premium-blocks-for-gutenberg')}
                                         colorValue={prefixStyles[0].prefixColor}
@@ -548,7 +505,6 @@ class edit extends Component {
                                         value={suffixTypography}
                                         onChange={newValue => setAttributes({ suffixTypography: newValue })}
                                     />
-                                    <hr />
                                     <AdvancedPopColorControl
                                         label={__("Text Color", 'premium-blocks-for-gutenberg')}
                                         colorValue={suffixStyles[0].suffixColor}
@@ -737,11 +693,11 @@ class edit extends Component {
 };
 
 
-export default withSelect((select, props) => {
+export default withSelect((select) => {
     const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
     let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 
     return {
         deviceType: deviceType
     }
-})(edit)
+})(Edit)

@@ -276,7 +276,6 @@ const save = props => {
         </div>
     }
 
-    console.log(imageBorder)
 
     return (
         <div

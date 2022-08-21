@@ -27,7 +27,7 @@ const { Component, Fragment } = wp.element;
 
 const { InspectorControls, RichText } = wp.editor;
 
-const { PanelBody, SelectControl, TextControl, Toolbar, ToggleControl } =
+const { PanelBody, SelectControl, TextControl, ToggleControl } =
     wp.components;
 
 let istitleUpdated = null;

@@ -1,12 +1,11 @@
 import classnames from "classnames";
 const { Fragment } = wp.element;
-import { generateBlockId, generateCss } from "../../components/HelperFunction";
+import { generateCss } from "../../components/HelperFunction";
 
 export default function save(props) {
     const { attributes, className } = props;
 
     const {
-        lottieId,
         blockId,
         lottieURl,
         loop,
@@ -29,11 +28,13 @@ export default function save(props) {
         filter,
         filterHover,
     } = attributes;
+
     const mainClasses = classnames(className, "premium-lottie-wrap", blockId, {
         " premium-desktop-hidden": hideDesktop,
         " premium-tablet-hidden": hideTablet,
         " premium-mobile-hidden": hideMobile,
     });
+    
     const loadStyles = () => {
         const styles = {};
         styles[`#${blockId}  .premium-lottie-animation`] = {

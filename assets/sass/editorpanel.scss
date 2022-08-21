@@ -398,9 +398,6 @@ $icon-background: #696969;
     border-top: 0 solid #b4c1ce;
     padding: 0.5em;
     margin-bottom: 1em;
-    &:not(.editable) {
-        display: none;
-    }
 }
 .premium-repeater-item__container {
     display: flex;
@@ -4612,6 +4609,9 @@ i.fipicon-angle-left {
 .premium-repeater-row-controls {
     padding: 12px;
     border-top: 1px solid #e6e6e6;
+    &:not(.editable) {
+		display: none;
+	}
 }
 .block-editor-block-inspector {
     .components-base-control {

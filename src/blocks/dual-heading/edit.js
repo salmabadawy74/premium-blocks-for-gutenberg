@@ -4,11 +4,12 @@ import PremiumTypo from "../../components/premium-typo";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import AdvancedPopColorControl from "../../components/Color Control/ColorComponent";
 import PremiumBackgroundControl from "../../components/Premium-Background-Control";
-const { __ } = wp.i18n;
-const { withSelect } = wp.data;
 import WebfontLoader from "../../components/typography/fontLoader";
 import PremiumShadow from "../../components/PremiumShadow";
 import SpacingComponent from "../../components/premium-responsive-spacing";
+import MultiButtonsControl from "../../components/responsive-radio";
+import Icons from "../../components/icons";
+
 import {
     gradientBackground,
     generateBlockId,
@@ -20,19 +21,19 @@ import {
 import InspectorTabs from "../../components/inspectorTabs";
 import InspectorTab from "../../components/inspectorTab";
 
+const { __ } = wp.i18n;
+const { withSelect } = wp.data;
 const { Fragment, Component } = wp.element;
 
 const { PanelBody, SelectControl, ToggleControl } = wp.components;
 
 const {
-    BlockControls,
     InspectorControls,
-    AlignmentToolbar,
     RichText,
     URLInput,
 } = wp.blockEditor;
 
-class edit extends Component {
+class Edit extends Component {
     constructor() {
         super(...arguments);
     }
@@ -49,7 +50,7 @@ class edit extends Component {
         const { setAttributes, isSelected, className } = this.props;
         const {
             blockId,
-            contentAlign,
+            align,
             firstHeading,
             secondHeading,
             display,
@@ -92,18 +93,19 @@ class edit extends Component {
             const firstConfig = {
                 google: {
                     families: [firstTypography.fontFamily],
-                },
+                }
             }
             loadFirstGoogleFonts = (
                 <WebfontLoader config={firstConfig}>
                 </WebfontLoader>
             );
         }
+
         if (secondTypography?.fontFamily !== "Default") {
             const secondConfig = {
                 google: {
                     families: [secondTypography.fontFamily],
-                },
+                }
             }
             loadSecondGoogleFonts = (
                 <WebfontLoader config={secondConfig}>
@@ -124,8 +126,8 @@ class edit extends Component {
         };
 
         const saveFirstStyle = (value) => {
-            const newUpdate = firstStyles.map((item, index) => {
-                if (0 === index) {
+            const newUpdate = firstStyles.map((item, indexx) => {
+                if (0 === indexx) {
                     item = { ...item, ...value };
                 }
                 return item;
@@ -136,16 +138,6 @@ class edit extends Component {
         };
 
         return [
-            isSelected && (
-                <BlockControls key="controls">
-                    <AlignmentToolbar
-                        value={contentAlign}
-                        onChange={(newAlign) =>
-                            setAttributes({ contentAlign: newAlign })
-                        }
-                    />
-                </BlockControls>
-            ),
             isSelected && (
                 <InspectorControls key={"inspector"}>
                     <InspectorTabs tabs={["layout", "style", "advance"]}>
@@ -191,6 +183,34 @@ class edit extends Component {
                                         }
                                     />
                                 )}
+                                <MultiButtonsControl
+                                    choices={[
+                                        {
+                                            value: "left",
+                                            label: __("Left","premium-blocks-for-gutenberg"),
+                                            icon: Icons.alignLeft,
+                                        },
+                                        {
+                                            value: "center",
+                                            label: __("Center","premium-blocks-for-gutenberg"),
+                                            icon: Icons.alignCenter,
+                                        },
+                                        {
+                                            value: "right",
+                                            label: __("Right","premium-blocks-for-gutenberg"),
+                                            icon: Icons.alignRight,
+                                        },
+                                    ]}
+                                    value={align}
+                                    onChange={(value) =>
+                                        setAttributes({ align: value })
+                                    }
+                                    label={__(
+                                        "Alignment",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                    showIcons={true}
+                                />
                             </PanelBody>
                         </InspectorTab>
                         <InspectorTab key={"style"}>
@@ -210,7 +230,7 @@ class edit extends Component {
                                 />
                                 <hr />
                                 <PremiumBorder
-                                    label={__("Border")}
+                                    label={__("Border","premium-blocks-for-gutenberg")}
                                     value={containerBorder}
                                     onChange={(value) =>
                                         setAttributes({
@@ -228,16 +248,6 @@ class edit extends Component {
                                 initialOpen={false}
                             >
                                 <PremiumTypo
-                                    components={[
-                                        "responsiveSize",
-                                        "weight",
-                                        "family",
-                                        "spacing",
-                                        "style",
-                                        "Upper",
-                                        "line",
-                                        "Decoration",
-                                    ]}
                                     value={firstTypography}
                                     onChange={(newValue) =>
                                         setAttributes({
@@ -245,7 +255,6 @@ class edit extends Component {
                                         })
                                     }
                                 />
-                                <hr />
                                 <ToggleControl
                                     label={__(
                                         "Clipped",
@@ -288,7 +297,6 @@ class edit extends Component {
                                         />
                                     </Fragment>
                                 )}
-                                <hr />
                                 {!firstStyles?.[0]?.firstClip && (
                                     <Fragment>
                                         <AdvancedPopColorControl
@@ -358,7 +366,6 @@ class edit extends Component {
                                                 })
                                             }
                                         />
-                                        <hr />
                                     </Fragment>
                                 )}
                                 <PremiumShadow
@@ -366,7 +373,6 @@ class edit extends Component {
                                         "Text Shadow",
                                         "premium-blocks-for-gutenberg"
                                     )}
-                                    boxShadow={false}
                                     value={firstShadow}
                                     onChange={(value) =>
                                         setAttributes({ firstShadow: value })
@@ -374,22 +380,16 @@ class edit extends Component {
                                 />
                                 <hr />
                                 <PremiumBorder
-                                    label={__("Border")}
+                                    label={__("Border", "premium-blocks-for-gutenberg")}
                                     value={firstBorder}
-                                    borderType={firstBorder.borderType}
-                                    borderColor={firstBorder.borderColor}
-                                    borderWidth={firstBorder.borderWidth}
-                                    borderRadius={firstBorder.borderRadius}
-                                    onChange={(value) =>
-                                        setAttributes({ firstBorder: value })
-                                    }
+                                    onChange={(value) => setAttributes({ firstBorder: value })}
                                 />
                                 <hr />
                                 <SpacingComponent
                                     value={firstMargin}
                                     responsive={true}
                                     showUnits={true}
-                                    label={__("Margin")}
+                                    label={__("Margin", "premium-blocks-for-gutenberg")}
                                     onChange={(value) =>
                                         setAttributes({ firstMargin: value })
                                     }
@@ -398,7 +398,7 @@ class edit extends Component {
                                     value={firstPadding}
                                     responsive={true}
                                     showUnits={true}
-                                    label={__("Padding")}
+                                    label={__("Padding", "premium-blocks-for-gutenberg")}
                                     onChange={(value) =>
                                         setAttributes({ firstPadding: value })
                                     }
@@ -413,16 +413,6 @@ class edit extends Component {
                                 initialOpen={false}
                             >
                                 <PremiumTypo
-                                    components={[
-                                        "responsiveSize",
-                                        "weight",
-                                        "family",
-                                        "spacing",
-                                        "style",
-                                        "Upper",
-                                        "line",
-                                        "Decoration",
-                                    ]}
                                     value={secondTypography}
                                     onChange={(newValue) =>
                                         setAttributes({
@@ -430,7 +420,6 @@ class edit extends Component {
                                         })
                                     }
                                 />
-                                <hr />
                                 <ToggleControl
                                     label={__(
                                         "Clipped",
@@ -475,7 +464,6 @@ class edit extends Component {
                                         />
                                     </Fragment>
                                 )}
-                                <hr />
                                 {!secondStyles?.[0]?.secondClip && (
                                     <Fragment>
                                         <AdvancedPopColorControl
@@ -550,7 +538,6 @@ class edit extends Component {
                                                 })
                                             }
                                         />
-                                        <hr />
                                     </Fragment>
                                 )}
                                 <PremiumShadow
@@ -558,7 +545,6 @@ class edit extends Component {
                                         "Text Shadow",
                                         "premium-blocks-for-gutenberg"
                                     )}
-                                    boxShadow={false}
                                     value={secondShadow}
                                     onChange={(value) =>
                                         setAttributes({ secondShadow: value })
@@ -566,22 +552,16 @@ class edit extends Component {
                                 />
                                 <hr />
                                 <PremiumBorder
-                                    label={__("Border")}
+                                    label={__("Border", "premium-blocks-for-gutenberg")}
                                     value={secondBorder}
-                                    borderType={secondBorder.borderType}
-                                    borderColor={secondBorder.borderColor}
-                                    borderWidth={secondBorder.borderWidth}
-                                    borderRadius={secondBorder.borderRadius}
-                                    onChange={(value) =>
-                                        setAttributes({ secondBorder: value })
-                                    }
+                                    onChange={(value) => setAttributes({ secondBorder: value })}
                                 />
                                 <hr />
                                 <SpacingComponent
                                     value={secondMargin}
                                     responsive={true}
                                     showUnits={true}
-                                    label={__("Margin")}
+                                    label={__("Margin", "premium-blocks-for-gutenberg")}
                                     onChange={(value) =>
                                         setAttributes({ secondMargin: value })
                                     }
@@ -590,7 +570,7 @@ class edit extends Component {
                                     value={secondPadding}
                                     responsive={true}
                                     showUnits={true}
-                                    label={__("Padding")}
+                                    label={__("Padding", "premium-blocks-for-gutenberg")}
                                     onChange={(value) =>
                                         setAttributes({ secondPadding: value })
                                     }
@@ -641,7 +621,7 @@ class edit extends Component {
                     }
                 )}
                 style={{
-                    textAlign: contentAlign,
+                    textAlign: align[this.props.deviceType],
                     ...gradientBackground(background),
                     ...borderCss(containerBorder, this.props.deviceType),
                 }}
@@ -752,7 +732,7 @@ class edit extends Component {
         ];
     }
 }
-export default withSelect((select, props) => {
+export default withSelect((select) => {
     const { __experimentalGetPreviewDeviceType = null } =
         select("core/edit-post");
     let deviceType = __experimentalGetPreviewDeviceType
@@ -762,4 +742,4 @@ export default withSelect((select, props) => {
     return {
         deviceType: deviceType,
     };
-})(edit);
+})(Edit);

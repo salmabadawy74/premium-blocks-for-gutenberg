@@ -28,7 +28,7 @@ const { Component, Fragment } = wp.element
 
 const { InspectorControls, RichText } = wp.blockEditor
 
-const { PanelBody, SelectControl, TabPanel, TextControl, ToggleControl, Tooltip } = wp.components
+const { PanelBody, SelectControl, TextControl, ToggleControl } = wp.components
 
 const ICONTYPE = [
     {
@@ -53,87 +53,90 @@ const SortableItem = SortableElement(({
     toggleIconLink,
     saveLink,
     openLink
-}) => <li tabIndex={0} key={newIndex} style={{ listStyle: 'none' }}>
-        <span className="premium-bulletList__container">
-
-            <span class="dashicons dashicons-menu-alt"></span>
-            <div className="premium-bulletList__content" onClick={() => showContent(newIndex)}>
-                {value.showBulletIcon && <i className={`${value.icon}`} />}
-                <span className={`premium-bulletList__label`}></span>
-                {value.label}
-            </div>
-            <button className="premium-bulletList__trashicon " onClick={() => onRemove(newIndex, value)}>
-                <span class="dashicons dashicons-no-alt"></span>
-            </button>
-        </span>
-        {value.showContent && (
-            <div className="premium-bulletList__link">
-                <TextControl
-                    placeholder={__(`Enter ${value.label} link`)}
-                    value={value.label}
-                    onChange={(val) => changeLabel(val, newIndex)}
-                />
-                <ToggleControl
-                    label={__("Show Bullet")}
-                    checked={value.showBulletIcon}
-                    onChange={valueBullet => toggleShowBulletIcon(valueBullet, newIndex)}
-                />
-                {value.showBulletIcon && <div><SelectControl
-                    label={__("Icon Type", 'premium-blocks-for-gutenberg')}
-                    options={ICONTYPE}
-                    value={value.image_icon}
-                    onChange={valueType => selectIconType(valueType, newIndex)}
-                />
-                    {"icon" == value.image_icon &&
-                        <Fragment>
-                            <p>{__("Icon", 'premium-blocks-for-gutenberg')}</p>
-                            <FontIconPicker
-                                icons={iconsList}
-                                value={value.icon}
-                                onChange={valueIcon => changeIcons(valueIcon, newIndex)}
-                                isMulti={false}
-                                appendTo="body"
-                                noSelectedPlaceholder={__("Select Icon", 'premium-blocks-for-gutenberg')}
-                            />
-                        </Fragment>}
-
-                    {"image" == value.image_icon &&
-                        <Fragment>
-                            <PremiumMediaUpload
-                                type="image"
-                                imageID={value.imageID}
-                                imageURL={value.imageURL}
-                                onSelectMedia={media => selectImage(media, newIndex)}
-                                onRemoveImage={() => removeImage(newIndex)}
-                            />
-                        </Fragment>
-                    }
-                </div>
-                }
-                <hr />
-                <ToggleControl
-                    label={__("Link", 'premium-blocks-for-gutenberg')}
-                    checked={value.disableLink}
-                    onChange={valueLink => toggleIconLink(valueLink, newIndex)}
-                />
-                {value.disableLink &&
-                    <Fragment>
-                        <p>{__("URL", 'premium-blocks-for-gutenberg')}</p>
+}) => <span className="premium-repeater-row-wrapper" tabIndex={0} key={newIndex}>
+            <span className="premium-repeater-row-inner">
+                <span className="premium-repeater-row-tools">
+                    <span className="premium-repeater-item-title" onClick={() => showContent(newIndex)}>
+                        {value.showBulletIcon && <i className={`${value.icon}`} />}
+                        {value.label}
+                    </span>
+                    <div className="premium-repeater-row-item-remove">
+                        <button
+                            className="premium-repeater-item-remove is-tertiary"
+                            onClick={() => onRemove(newIndex, value)}
+                        >
+                            x
+                        </button>
+                    </div>
+                </span>
+                {value.showContent && (
+                    <div className="premium-repeater-row-controls">
                         <TextControl
-                            value={value.link}
-                            onChange={valueURL => saveLink(valueURL, newIndex)}
-                            placeholder={__("Enter URL")}
+                            placeholder={__(`Enter ${value.label} link`)}
+                            value={value.label}
+                            onChange={(val) => changeLabel(val, newIndex)}
                         />
                         <ToggleControl
-                            label={__("Open links in new tab", 'premium-blocks-for-gutenberg')}
-                            checked={value.linkTarget}
-                            onChange={valueTarget => openLink(valueTarget, newIndex)}
+                            label={__("Show Bullet")}
+                            checked={value.showBulletIcon}
+                            onChange={valueBullet => toggleShowBulletIcon(valueBullet, newIndex)}
                         />
-                    </Fragment>
-                }
-            </div>
-        )}
-    </li>);
+                        {value.showBulletIcon && <div><SelectControl
+                            label={__("Icon Type", 'premium-blocks-for-gutenberg')}
+                            options={ICONTYPE}
+                            value={value.image_icon}
+                            onChange={valueType => selectIconType(valueType, newIndex)}
+                        />
+                            {"icon" == value.image_icon &&
+                                <Fragment>
+                                    <p>{__("Icon", 'premium-blocks-for-gutenberg')}</p>
+                                    <FontIconPicker
+                                        icons={iconsList}
+                                        value={value.icon}
+                                        onChange={valueIcon => changeIcons(valueIcon, newIndex)}
+                                        isMulti={false}
+                                        noSelectedPlaceholder={__("Select Icon", 'premium-blocks-for-gutenberg')}
+                                    />
+                                </Fragment>}
+
+                            {"image" == value.image_icon &&
+                                <Fragment>
+                                    <PremiumMediaUpload
+                                        type="image"
+                                        imageID={value.imageID}
+                                        imageURL={value.imageURL}
+                                        onSelectMedia={media => selectImage(media, newIndex)}
+                                        onRemoveImage={() => removeImage(newIndex)}
+                                    />
+                                </Fragment>
+                            }
+                        </div>
+                        }
+                        <hr />
+                        <ToggleControl
+                            label={__("Link", 'premium-blocks-for-gutenberg')}
+                            checked={value.disableLink}
+                            onChange={valueLink => toggleIconLink(valueLink, newIndex)}
+                        />
+                        {value.disableLink &&
+                            <Fragment>
+                                <p>{__("URL", 'premium-blocks-for-gutenberg')}</p>
+                                <TextControl
+                                    value={value.link}
+                                    onChange={valueURL => saveLink(valueURL, newIndex)}
+                                    placeholder={__("Enter URL")}
+                                />
+                                <ToggleControl
+                                    label={__("Open links in new tab", 'premium-blocks-for-gutenberg')}
+                                    checked={value.linkTarget}
+                                    onChange={valueTarget => openLink(valueTarget, newIndex)}
+                                />
+                            </Fragment>
+                        }
+                    </div>
+                )}
+            </span>
+        </span>);
 
 const SortableList = SortableContainer(({
     items,
@@ -149,7 +152,7 @@ const SortableList = SortableContainer(({
     saveLink,
     openLink
 }) => {
-    return (<div > {
+    return (<span className="premium-repeater-rows"> {
         (items).map((value, index) => (
             <SortableItem key={`item-${value}`}
                 index={index}
@@ -171,7 +174,7 @@ const SortableList = SortableContainer(({
                 }
             />
         ))
-    } </div>
+    } </span>
     );
 });
 
@@ -629,11 +632,10 @@ class Edit extends Component {
             };
 
             styles[`.${blockId} .premium-bullet-list-divider-inline:not(:last-child)::after`] = {
-                'border-left-width': `${DividerHeight}${dividerHeight?.unit}`,
+                'border-left-width': `${DividerWidth}${dividerWidth?.unit}`,
                 'border-left-style': dividerStyle,
                 'border-left-color': dividerStyles?.[0]?.dividerColor,
-                'height': `${DividerHeight}${dividerHeight?.unit}`,
-                'width': `${DividerWidth}${dividerWidth?.unit}`,
+                'height': `${DividerHeight}${dividerHeight?.unit}`
             };
 
             return generateCss(styles);

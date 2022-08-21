@@ -29,6 +29,9 @@
   .premium-fancy-slide .typed-cursor {
     visibility: hidden; }
 
+.premium-fancy-text {
+  text-align: center; }
+
 .premium-fancy-text-title-slide {
   display: inline-block;
   text-align: center;

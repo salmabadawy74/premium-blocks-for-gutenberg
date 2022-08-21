@@ -20,7 +20,6 @@
         triggerStyles, 
         canvasStyles, 
         triggerBorder,
-        displayFloat,
         displayTriggerLabel,
         floatPosition,
         hideDesktop,

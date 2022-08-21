@@ -23,7 +23,6 @@ const save = (props) => {
         hovered,
         responsive,
         background,
-        opacity,
         urlCheck,
         target,
         url,
