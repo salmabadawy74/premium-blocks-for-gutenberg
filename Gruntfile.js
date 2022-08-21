@@ -31,16 +31,16 @@ module.exports = function (grunt) {
                         dest: "./assets/css/css/icon.css"
                     },
                     {
-                        src: "./assets/css/sass/dual-heading.scss",
-                        dest: "./assets/css/css/dual-heading.css"
+                        src: "./assets/css/sass/dualHeading.scss",
+                        dest: "./assets/css/css/dualHeading.css"
                     },
                     {
                         src: "./assets/css/sass/banner.scss",
                         dest: "./assets/css/css/banner.css"
                     },
                     {
-                        src: "./assets/css/sass/pricing-table.scss",
-                        dest: "./assets/css/css/pricing-table.css"
+                        src: "./assets/css/sass/pricingTable.scss",
+                        dest: "./assets/css/css/pricingTable.css"
                     },
                     {
                         src: "./assets/css/sass/maps.scss",
@@ -51,8 +51,8 @@ module.exports = function (grunt) {
                         dest: "./assets/css/css/testimonial.css"
                     },
                     {
-                        src: "./assets/css/sass/count-up.scss",
-                        dest: "./assets/css/css/count-up.css"
+                        src: "./assets/css/sass/countUp.scss",
+                        dest: "./assets/css/css/countUp.css"
                     },
                     {
                         src: "./assets/css/sass/button.scss",
@@ -67,16 +67,16 @@ module.exports = function (grunt) {
                         dest: "./assets/css/css/accordion.css"
                     },
                     {
-                        src: "./assets/css/sass/icon-box.scss",
-                        dest: "./assets/css/css/icon-box.css"
+                        src: "./assets/css/sass/iconBox.scss",
+                        dest: "./assets/css/css/iconBox.css"
                     },
                     {
-                        src: "./assets/css/sass/video-box.scss",
-                        dest: "./assets/css/css/video-box.css"
+                        src: "./assets/css/sass/videoBox.scss",
+                        dest: "./assets/css/css/videoBox.css"
                     },
                     {
-                        src: "./assets/css/sass/fancy-text.scss",
-                        dest: "./assets/css/css/fancy-text.css"
+                        src: "./assets/css/sass/fancyText.scss",
+                        dest: "./assets/css/css/fancyText.css"
                     },
                     {
                         src: "./assets/css/sass/lottie.scss",
@@ -91,8 +91,8 @@ module.exports = function (grunt) {
                         dest: "./assets/css/css/person.css"
                     },
                     {
-                        src: "./assets/css/sass/bullet-list.scss",
-                        dest: "./assets/css/css/bullet-list.css"
+                        src: "./assets/css/sass/bulletList.scss",
+                        dest: "./assets/css/css/bulletList.css"
                     },
                     {
                         src: "./assets/css/sass/modal.scss",
@@ -103,8 +103,8 @@ module.exports = function (grunt) {
                         dest: "./assets/css/css/row.css"
                     },
                     {
-                        src: "./assets/css/sass/title.scss",
-                        dest: "./assets/css/css/title.css"
+                        src: "./assets/css/sass/heading.scss",
+                        dest: "./assets/css/css/heading.css"
                     }
                 ]
             }
@@ -118,16 +118,16 @@ module.exports = function (grunt) {
                         dest: "./assets/css/minified/icon.min.css",
                     },
                     {
-                        src: "./assets/css/css/dual-heading.css",
-                        dest: "./assets/css/minified/dual-heading.min.css",
+                        src: "./assets/css/css/dualHeading.css",
+                        dest: "./assets/css/minified/dualHeading.min.css",
                     },
                     {
                         src: "./assets/css/css/banner.css",
                         dest: "./assets/css/minified/banner.min.css",
                     },
                     {
-                        src: "./assets/css/css/pricing-table.css",
-                        dest: "./assets/css/minified/pricing-table.min.css",
+                        src: "./assets/css/css/pricingTable.css",
+                        dest: "./assets/css/minified/pricingTable.min.css",
                     },
                     {
                         src: "./assets/css/css/maps.css",
@@ -138,8 +138,8 @@ module.exports = function (grunt) {
                         dest: "./assets/css/minified/testimonial.min.css",
                     },
                     {
-                        src: "./assets/css/css/count-up.css",
-                        dest: "./assets/css/minified/count-up.min.css",
+                        src: "./assets/css/css/countUp.css",
+                        dest: "./assets/css/minified/countUp.min.css",
                     },
                     {
                         src: "./assets/css/css/button.css",
@@ -154,16 +154,16 @@ module.exports = function (grunt) {
                         dest: "./assets/css/minified/accordion.min.css",
                     },
                     {
-                        src: "./assets/css/css/icon-box.css",
-                        dest: "./assets/css/minified/icon-box.min.css",
+                        src: "./assets/css/css/iconBox.css",
+                        dest: "./assets/css/minified/iconBox.min.css",
                     },
                     {
-                        src: "./assets/css/css/video-box.css",
-                        dest: "./assets/css/minified/video-box.min.css",
+                        src: "./assets/css/css/videoBox.css",
+                        dest: "./assets/css/minified/videoBox.min.css",
                     },
                     {
-                        src: "./assets/css/css/fancy-text.css",
-                        dest: "./assets/css/minified/fancy-text.min.css",
+                        src: "./assets/css/css/fancyText.css",
+                        dest: "./assets/css/minified/fancyText.min.css",
                     },
                     {
                         src: "./assets/css/css/lottie.css",
@@ -178,8 +178,8 @@ module.exports = function (grunt) {
                         dest: "./assets/css/minified/person.min.css",
                     },
                     {
-                        src: "./assets/css/css/bullet-list.css",
-                        dest: "./assets/css/minified/bullet-list.min.css",
+                        src: "./assets/css/css/bulletList.css",
+                        dest: "./assets/css/minified/bulletList.min.css",
                     },
                     {
                         src: "./assets/css/css/modal.css",
@@ -190,8 +190,8 @@ module.exports = function (grunt) {
                         dest: "./assets/css/minified/row.min.css",
                     },
                     {
-                        src: "./assets/css/css/title.css",
-                        dest: "./assets/css/minified/title.min.css",
+                        src: "./assets/css/css/heading.css",
+                        dest: "./assets/css/minified/heading.min.css",
                     },
                 ],
             },

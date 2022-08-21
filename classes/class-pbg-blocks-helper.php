@@ -221,132 +221,6 @@ class PBG_Blocks_Helper {
 				'JsonUploadEnabled' => $allow_json,
 			)
 		);
-		wp_enqueue_style(
-			'pbg-editor-icon-style',
-			PREMIUM_BLOCKS_URL . 'assets/css/minified/icon.min.css',
-			array( 'dashicons' ),
-			PREMIUM_BLOCKS_VERSION
-		);
-		wp_enqueue_style(
-			'pbg-editor-dheading-style',
-			PREMIUM_BLOCKS_URL . 'assets/css/minified/dual-heading.min.css',
-			array( 'dashicons' ),
-			PREMIUM_BLOCKS_VERSION
-		);
-		wp_enqueue_style(
-			'pbg-editor-banner-style',
-			PREMIUM_BLOCKS_URL . 'assets/css/minified/banner.min.css',
-			array( 'dashicons' ),
-			PREMIUM_BLOCKS_VERSION
-		);
-		wp_enqueue_style(
-			'pbg-editor-pricing-table-style',
-			PREMIUM_BLOCKS_URL . 'assets/css/minified/pricing-table.min.css',
-			array( 'dashicons' ),
-			PREMIUM_BLOCKS_VERSION
-		);
-		wp_enqueue_style(
-			'pbg-editor-maps-style',
-			PREMIUM_BLOCKS_URL . 'assets/css/minified/maps.min.css',
-			array( 'dashicons' ),
-			PREMIUM_BLOCKS_VERSION
-		);
-		wp_enqueue_style(
-			'pbg-editor-testimonial-style',
-			PREMIUM_BLOCKS_URL . 'assets/css/minified/testimonial.min.css',
-			array( 'dashicons' ),
-			PREMIUM_BLOCKS_VERSION
-		);
-		wp_enqueue_style(
-			'pbg-editor-count-up-style',
-			PREMIUM_BLOCKS_URL . 'assets/css/minified/count-up.min.css',
-			array( 'dashicons' ),
-			PREMIUM_BLOCKS_VERSION
-		);
-		wp_enqueue_style(
-			'pbg-editor-button-style',
-			PREMIUM_BLOCKS_URL . 'assets/css/minified/button.min.css',
-			array( 'dashicons' ),
-			PREMIUM_BLOCKS_VERSION
-		);
-		wp_enqueue_style(
-			'pbg-editor-container-style',
-			PREMIUM_BLOCKS_URL . 'assets/css/minified/container.min.css',
-			array( 'dashicons' ),
-			PREMIUM_BLOCKS_VERSION
-		);
-		wp_enqueue_style(
-			'pbg-editor-accordion-style',
-			PREMIUM_BLOCKS_URL . 'assets/css/minified/accordion.min.css',
-			array( 'dashicons' ),
-			PREMIUM_BLOCKS_VERSION
-		);
-		wp_enqueue_style(
-			'pbg-editor-icon-box-style',
-			PREMIUM_BLOCKS_URL . 'assets/css/minified/icon-box.min.css',
-			array( 'dashicons' ),
-			PREMIUM_BLOCKS_VERSION
-		);
-		wp_enqueue_style(
-			'pbg-editor-video-box-style',
-			PREMIUM_BLOCKS_URL . 'assets/css/minified/video-box.min.css',
-			array( 'dashicons' ),
-			PREMIUM_BLOCKS_VERSION
-		);
-		wp_enqueue_style(
-			'pbg-editor-fancy-text-style',
-			PREMIUM_BLOCKS_URL . 'assets/css/minified/fancy-text.min.css',
-			array( 'dashicons' ),
-			PREMIUM_BLOCKS_VERSION
-		);
-		wp_enqueue_style(
-			'pbg-editor-lottie-style',
-			PREMIUM_BLOCKS_URL . 'assets/css/minified/lottie.min.css',
-			array( 'dashicons' ),
-			PREMIUM_BLOCKS_VERSION
-		);
-		wp_enqueue_style(
-			'pbg-editor-image-separator-style',
-			PREMIUM_BLOCKS_URL . 'assets/css/minified/image-separator.min.css',
-			array( 'dashicons' ),
-			PREMIUM_BLOCKS_VERSION
-		);
-		wp_enqueue_style(
-			'pbg-editor-person-style',
-			PREMIUM_BLOCKS_URL . 'assets/css/minified/person.min.css',
-			array( 'dashicons' ),
-			PREMIUM_BLOCKS_VERSION
-		);
-		wp_enqueue_style(
-			'pbg-editor-bullet-list-style',
-			PREMIUM_BLOCKS_URL . 'assets/css/minified/bullet-list.min.css',
-			array( 'dashicons' ),
-			PREMIUM_BLOCKS_VERSION
-		);
-		wp_enqueue_style(
-			'pbg-editor-modal-style',
-			PREMIUM_BLOCKS_URL . 'assets/css/minified/modal.min.css',
-			array( 'dashicons' ),
-			PREMIUM_BLOCKS_VERSION
-		);
-		wp_enqueue_style(
-			'pbg-editor-row-style',
-			PREMIUM_BLOCKS_URL . 'assets/css/minified/row.min.css',
-			array( 'dashicons' ),
-			PREMIUM_BLOCKS_VERSION
-		);
-		wp_enqueue_style(
-			'pbg-editor-title-style',
-			PREMIUM_BLOCKS_URL . 'assets/css/minified/title.min.css',
-			array( 'dashicons' ),
-			PREMIUM_BLOCKS_VERSION
-		);
-		// wp_enqueue_style(
-		// 	'pbg-editor-style',
-		// 	PREMIUM_BLOCKS_URL . 'assets/css/style.css',
-		// 	array( 'dashicons' ),
-		// 	PREMIUM_BLOCKS_VERSION
-		// );
 	}
 
 	/**
@@ -362,7 +236,7 @@ class PBG_Blocks_Helper {
 			'allow_json_upload',
 			array(
 				'type'         => 'boolean',
-				'description'  => __( 'Allow JSON Upload to Media Library.', 'otter-blocks' ),
+				'description'  => __( 'Allow JSON Upload to Media Library.', 'premium-blocks-for-gutenberg' ),
 				'show_in_rest' => true,
 				'default'      => false,
 			)
@@ -405,7 +279,7 @@ class PBG_Blocks_Helper {
 		$is_person_enabled = self::$blocks['person'];
 		$is_bullet_list_enabled = self::$blocks['bulletList'];
 		$is_modal_enabled = self::$blocks['modal'];
-		$is_row_enabled = self::$blocks['row'];
+		// $is_row_enabled = self::$blocks['row'];
 		$is_title_enabled = self::$blocks['heading'];
 
 		// wp_enqueue_style(
@@ -423,176 +297,176 @@ class PBG_Blocks_Helper {
 					PREMIUM_BLOCKS_VERSION
 				);
 		}
-		if ( $is_dual_heading_enabled ) {
-			wp_enqueue_style(
-					'pbg-frontend',
-					PREMIUM_BLOCKS_URL . 'assets/css/minified/dual-heading.min.css',
-					array( 'dashicons' ),
-					PREMIUM_BLOCKS_VERSION
-				);
-		}
+		// // if ( $is_dual_heading_enabled ) {
+		// // 	wp_enqueue_style(
+		// // 			'pbg-frontend',
+		// // 			PREMIUM_BLOCKS_URL . 'assets/css/minified/dual-heading.min.css',
+		// // 			array( 'dashicons' ),
+		// // 			PREMIUM_BLOCKS_VERSION
+		// // 		);
+		// // }
 
-		if ( $is_banner_enabled ) {
-			wp_enqueue_style(
-					'pbg-frontend-banner',
-					PREMIUM_BLOCKS_URL . 'assets/css/minified/banner.min.css',
-					array( 'dashicons' ),
-					PREMIUM_BLOCKS_VERSION
-				);
-		}
+		// if ( $is_banner_enabled ) {
+		// 	wp_enqueue_style(
+		// 			'pbg-frontend-banner',
+		// 			PREMIUM_BLOCKS_URL . 'assets/css/minified/banner.min.css',
+		// 			array( 'dashicons' ),
+		// 			PREMIUM_BLOCKS_VERSION
+		// 		);
+		// }
 
-		if ( $is_pricing_table_enabled ) {
-			wp_enqueue_style(
-					'pbg-frontend-pricing-table',
-					PREMIUM_BLOCKS_URL . 'assets/css/minified/pricing-table.min.css',
-					array( 'dashicons' ),
-					PREMIUM_BLOCKS_VERSION
-				);
-		}
+		// if ( $is_pricing_table_enabled ) {
+		// 	wp_enqueue_style(
+		// 			'pbg-frontend-pricing-table',
+		// 			PREMIUM_BLOCKS_URL . 'assets/css/minified/pricing-table.min.css',
+		// 			array( 'dashicons' ),
+		// 			PREMIUM_BLOCKS_VERSION
+		// 		);
+		// }
 
-		if ( $is_maps_enabled ) {
-			wp_enqueue_style(
-					'pbg-frontend-maps',
-					PREMIUM_BLOCKS_URL . 'assets/css/minified/maps.min.css',
-					array( 'dashicons' ),
-					PREMIUM_BLOCKS_VERSION
-				);
-		}
+		// if ( $is_maps_enabled ) {
+		// 	wp_enqueue_style(
+		// 			'pbg-frontend-maps',
+		// 			PREMIUM_BLOCKS_URL . 'assets/css/minified/maps.min.css',
+		// 			array( 'dashicons' ),
+		// 			PREMIUM_BLOCKS_VERSION
+		// 		);
+		// }
 
-		if ( $is_testimonial_enabled ) {
-			wp_enqueue_style(
-					'pbg-frontend-testimonial',
-					PREMIUM_BLOCKS_URL . 'assets/css/minified/testimonial.min.css',
-					array( 'dashicons' ),
-					PREMIUM_BLOCKS_VERSION
-				);
-		}
+		// if ( $is_testimonial_enabled ) {
+		// 	wp_enqueue_style(
+		// 			'pbg-frontend-testimonial',
+		// 			PREMIUM_BLOCKS_URL . 'assets/css/minified/testimonial.min.css',
+		// 			array( 'dashicons' ),
+		// 			PREMIUM_BLOCKS_VERSION
+		// 		);
+		// }
 
-		if ( $is_count_up_enabled ) {
-			wp_enqueue_style(
-					'pbg-frontend-count-up',
-					PREMIUM_BLOCKS_URL . 'assets/css/minified/count-up.min.css',
-					array( 'dashicons' ),
-					PREMIUM_BLOCKS_VERSION
-				);
-		}
+		// if ( $is_count_up_enabled ) {
+		// 	wp_enqueue_style(
+		// 			'pbg-frontend-count-up',
+		// 			PREMIUM_BLOCKS_URL . 'assets/css/minified/count-up.min.css',
+		// 			array( 'dashicons' ),
+		// 			PREMIUM_BLOCKS_VERSION
+		// 		);
+		// }
 
-		if ( $is_button_enabled ) {
-			wp_enqueue_style(
-					'pbg-frontend-button',
-					PREMIUM_BLOCKS_URL . 'assets/css/minified/button.min.css',
-					array( 'dashicons' ),
-					PREMIUM_BLOCKS_VERSION
-				);
-		}
+		// if ( $is_button_enabled ) {
+		// 	wp_enqueue_style(
+		// 			'pbg-frontend-button',
+		// 			PREMIUM_BLOCKS_URL . 'assets/css/minified/button.min.css',
+		// 			array( 'dashicons' ),
+		// 			PREMIUM_BLOCKS_VERSION
+		// 		);
+		// }
 
-		if ( $is_section_enabled ) {
-			wp_enqueue_style(
-					'pbg-frontend-container',
-					PREMIUM_BLOCKS_URL . 'assets/css/minified/container.min.css',
-					array( 'dashicons' ),
-					PREMIUM_BLOCKS_VERSION
-				);
-		}
+		// if ( $is_section_enabled ) {
+		// 	wp_enqueue_style(
+		// 			'pbg-frontend-container',
+		// 			PREMIUM_BLOCKS_URL . 'assets/css/minified/container.min.css',
+		// 			array( 'dashicons' ),
+		// 			PREMIUM_BLOCKS_VERSION
+		// 		);
+		// }
 
-		if ( $is_accordion_enabled ) {
-			wp_enqueue_style(
-					'pbg-frontend-accordion',
-					PREMIUM_BLOCKS_URL . 'assets/css/minified/accordion.min.css',
-					array( 'dashicons' ),
-					PREMIUM_BLOCKS_VERSION
-				);
-		}
+		// if ( $is_accordion_enabled ) {
+		// 	wp_enqueue_style(
+		// 			'pbg-frontend-accordion',
+		// 			PREMIUM_BLOCKS_URL . 'assets/css/minified/accordion.min.css',
+		// 			array( 'dashicons' ),
+		// 			PREMIUM_BLOCKS_VERSION
+		// 		);
+		// }
 
-		if ( $is_icon_box_enabled ) {
-			wp_enqueue_style(
-					'pbg-frontend-icon-box',
-					PREMIUM_BLOCKS_URL . 'assets/css/minified/icon-box.min.css',
-					array( 'dashicons' ),
-					PREMIUM_BLOCKS_VERSION
-				);
-		}
+		// if ( $is_icon_box_enabled ) {
+		// 	wp_enqueue_style(
+		// 			'pbg-frontend-icon-box',
+		// 			PREMIUM_BLOCKS_URL . 'assets/css/minified/icon-box.min.css',
+		// 			array( 'dashicons' ),
+		// 			PREMIUM_BLOCKS_VERSION
+		// 		);
+		// }
 
-		if ( $is_video_box_enabled ) {
-			wp_enqueue_style(
-					'pbg-frontend-video-box',
-					PREMIUM_BLOCKS_URL . 'assets/css/minified/video-box.min.css',
-					array( 'dashicons' ),
-					PREMIUM_BLOCKS_VERSION
-				);
-		}
+		// if ( $is_video_box_enabled ) {
+		// 	wp_enqueue_style(
+		// 			'pbg-frontend-video-box',
+		// 			PREMIUM_BLOCKS_URL . 'assets/css/minified/video-box.min.css',
+		// 			array( 'dashicons' ),
+		// 			PREMIUM_BLOCKS_VERSION
+		// 		);
+		// }
 
-		if ( $is_fancy_text_enabled ) {
-			wp_enqueue_style(
-					'pbg-frontend-fancy-text',
-					PREMIUM_BLOCKS_URL . 'assets/css/minified/fancy-text.min.css',
-					array( 'dashicons' ),
-					PREMIUM_BLOCKS_VERSION
-				);
-		}
+		// if ( $is_fancy_text_enabled ) {
+		// 	wp_enqueue_style(
+		// 			'pbg-frontend-fancy-text',
+		// 			PREMIUM_BLOCKS_URL . 'assets/css/minified/fancy-text.min.css',
+		// 			array( 'dashicons' ),
+		// 			PREMIUM_BLOCKS_VERSION
+		// 		);
+		// }
 
-		if ( $is_lottie_enabled ) {
-			wp_enqueue_style(
-					'pbg-frontend-lottie',
-					PREMIUM_BLOCKS_URL . 'assets/css/minified/lottie.min.css',
-					array( 'dashicons' ),
-					PREMIUM_BLOCKS_VERSION
-				);
-		}
+		// if ( $is_lottie_enabled ) {
+		// 	wp_enqueue_style(
+		// 			'pbg-frontend-lottie',
+		// 			PREMIUM_BLOCKS_URL . 'assets/css/minified/lottie.min.css',
+		// 			array( 'dashicons' ),
+		// 			PREMIUM_BLOCKS_VERSION
+		// 		);
+		// }
 
-		if ( $is_image_separator_enabled ) {
-			wp_enqueue_style(
-					'pbg-frontend-image-separator',
-					PREMIUM_BLOCKS_URL . 'assets/css/minified/image-separator.min.css',
-					array( 'dashicons' ),
-					PREMIUM_BLOCKS_VERSION
-				);
-		}
+		// if ( $is_image_separator_enabled ) {
+		// 	wp_enqueue_style(
+		// 			'pbg-frontend-image-separator',
+		// 			PREMIUM_BLOCKS_URL . 'assets/css/minified/image-separator.min.css',
+		// 			array( 'dashicons' ),
+		// 			PREMIUM_BLOCKS_VERSION
+		// 		);
+		// }
 
-		if ( $is_person_enabled ) {
-			wp_enqueue_style(
-					'pbg-frontend-person',
-					PREMIUM_BLOCKS_URL . 'assets/css/minified/person.min.css',
-					array( 'dashicons' ),
-					PREMIUM_BLOCKS_VERSION
-				);
-		}
+		// if ( $is_person_enabled ) {
+		// 	wp_enqueue_style(
+		// 			'pbg-frontend-person',
+		// 			PREMIUM_BLOCKS_URL . 'assets/css/minified/person.min.css',
+		// 			array( 'dashicons' ),
+		// 			PREMIUM_BLOCKS_VERSION
+		// 		);
+		// }
 
-		if ( $is_bullet_list_enabled ) {
-			wp_enqueue_style(
-					'pbg-frontend-bullet-list',
-					PREMIUM_BLOCKS_URL . 'assets/css/minified/bullet-list.min.css',
-					array( 'dashicons' ),
-					PREMIUM_BLOCKS_VERSION
-				);
-		}
+		// if ( $is_bullet_list_enabled ) {
+		// 	wp_enqueue_style(
+		// 			'pbg-frontend-bullet-list',
+		// 			PREMIUM_BLOCKS_URL . 'assets/css/minified/bullet-list.min.css',
+		// 			array( 'dashicons' ),
+		// 			PREMIUM_BLOCKS_VERSION
+		// 		);
+		// }
 
-		if ( $is_modal_enabled ) {
-			wp_enqueue_style(
-					'pbg-frontend-modal',
-					PREMIUM_BLOCKS_URL . 'assets/css/minified/modal.min.css',
-					array( 'dashicons' ),
-					PREMIUM_BLOCKS_VERSION
-				);
-		}
+		// if ( $is_modal_enabled ) {
+		// 	wp_enqueue_style(
+		// 			'pbg-frontend-modal',
+		// 			PREMIUM_BLOCKS_URL . 'assets/css/minified/modal.min.css',
+		// 			array( 'dashicons' ),
+		// 			PREMIUM_BLOCKS_VERSION
+		// 		);
+		// }
 
-		if ( $is_row_enabled ) {
-			wp_enqueue_style(
-					'pbg-frontend-row',
-					PREMIUM_BLOCKS_URL . 'assets/css/minified/row.min.css',
-					array( 'dashicons' ),
-					PREMIUM_BLOCKS_VERSION
-				);
-		}
+		// if ( $is_row_enabled ) {
+		// 	wp_enqueue_style(
+		// 			'pbg-frontend-row',
+		// 			PREMIUM_BLOCKS_URL . 'assets/css/minified/row.min.css',
+		// 			array( 'dashicons' ),
+		// 			PREMIUM_BLOCKS_VERSION
+		// 		);
+		// }
 
-		if ( $is_title_enabled ) {
-			wp_enqueue_style(
-					'pbg-frontend-title',
-					PREMIUM_BLOCKS_URL . 'assets/css/minified/title.min.css',
-					array( 'dashicons' ),
-					PREMIUM_BLOCKS_VERSION
-				);
-		}
+		// if ( $is_title_enabled ) {
+		// 	wp_enqueue_style(
+		// 			'pbg-frontend-title',
+		// 			PREMIUM_BLOCKS_URL . 'assets/css/minified/title.min.css',
+		// 			array( 'dashicons' ),
+		// 			PREMIUM_BLOCKS_VERSION
+		// 		);
+		// }
 
 		if ( $is_fa_enabled ) {
 			wp_enqueue_style(
@@ -601,25 +475,6 @@ class PBG_Blocks_Helper {
 			);
 		}
 
-		if ( $is_section_enabled ) {
-			wp_enqueue_script(
-				'pbg-section',
-				PREMIUM_BLOCKS_URL . 'assets/js/section.js',
-				array( 'jquery' ),
-				PREMIUM_BLOCKS_VERSION,
-				true
-			);
-
-			$is_rtl = is_rtl() ? true : false;
-
-			wp_localize_script(
-				'pbg-section',
-				'siteDirection',
-				array(
-					'isRTL' => $is_rtl,
-				)
-			);
-		}
 		// Enqueue Google Maps API Script.
 		if ( $is_maps_enabled && $is_enabled ) {
 			if ( ! empty( $api_key ) && '1' != $api_key ) {
@@ -646,12 +501,15 @@ class PBG_Blocks_Helper {
 	 * On init startup.
 	 */
 	public function on_init() {
-		// wp_register_style(
-		// 	'premium-blocks-editor-css',
-		// 	PREMIUM_BLOCKS_URL . 'assets/css/style.css',
-		// 	array( 'dashicons' ),
-		// 	PREMIUM_BLOCKS_VERSION
-		// );
+        foreach ( self::$blocks as $key => $c_block ) {
+            wp_enqueue_style(
+			'pbg-editor-' . $key .'-style',
+			PREMIUM_BLOCKS_URL . 'assets/css/minified/' . $key . '.min.css',
+			array( 'dashicons' ),
+			PREMIUM_BLOCKS_VERSION
+		);
+        }
+     
 
 		if ( ! function_exists( 'register_block_type' ) ) {
 			return;
@@ -661,7 +519,7 @@ class PBG_Blocks_Helper {
 			'premium/accordion',
 			array(
 				'render_callback'  => array( $this, 'get_accordion_css' ),
-				'editor_style'     => 'premium-blocks-editor-css',
+				'editor_style'     => 'pbg-editor-accordion-style',
 				'editor_script'    => 'pbg-blocks-js',
 				'provides_context' => array(
 					'titleTag'    => 'titleTag',
@@ -677,7 +535,7 @@ class PBG_Blocks_Helper {
 			'premium/banner',
 			array(
 				'render_callback' => array( $this, 'get_banner_css' ),
-				'editor_style'    => 'pbg-editor-banner-style',
+				 'editor_style'    => 'pbg-editor-banner-style',
 				'editor_script'   => 'pbg-blocks-js',
 			)
 		);
@@ -686,7 +544,7 @@ class PBG_Blocks_Helper {
 			'premium/button',
 			array(
 				'render_callback' => array( $this, 'get_button_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
+				'editor_style'    => 'pbg-editor-button-style',
 				'editor_script'   => 'pbg-blocks-js',
 			)
 		);
@@ -695,7 +553,7 @@ class PBG_Blocks_Helper {
 			'premium/countup',
 			array(
 				'render_callback' => array( $this, 'get_countup_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
+				'editor_style'    => 'pbg-editor-countUp-style',
 				'editor_script'   => 'pbg-blocks-js',
 			)
 		);
@@ -704,7 +562,7 @@ class PBG_Blocks_Helper {
 			'premium/dheading-block',
 			array(
 				'render_callback' => array( $this, 'get_dual_css' ),
-				'editor_style'    => 'pbg-editor-dheading-style',
+				'editor_style'    => 'pbg-editor-dualHeading-style',
 				'editor_script'   => 'pbg-blocks-js',
 			)
 		);
@@ -713,7 +571,7 @@ class PBG_Blocks_Helper {
 			'premium/fancy-text',
 			array(
 				'render_callback' => array( $this, 'get_fancy_text_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
+				'editor_style'    => 'pbg-editor-fancyText-style',
 				'editor_script'   => 'pbg-blocks-js',
 			)
 		);
@@ -732,7 +590,7 @@ class PBG_Blocks_Helper {
 			'premium/icon-box',
 			array(
 				'render_callback' => array( $this, 'get_iconbox_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
+				'editor_style'    => 'pbg-editor-iconBox-style',
 				'editor_script'   => 'pbg-blocks-js',
 
 			)
@@ -742,7 +600,7 @@ class PBG_Blocks_Helper {
 			'premium/lottie',
 			array(
 				'render_callback' => array( $this, 'get_lottie_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
+				'editor_style'    => 'pbg-editor-lottie-style',
 				'editor_script'   => 'pbg-blocks-js',
 
 			)
@@ -752,7 +610,7 @@ class PBG_Blocks_Helper {
 			'premium/testimonial',
 			array(
 				'render_callback' => array( $this, 'get_testimonial_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
+				'editor_style'    => 'pbg-editor-testimonial-style',
 				'editor_script'   => 'pbg-blocks-js',
 			)
 		);
@@ -761,7 +619,7 @@ class PBG_Blocks_Helper {
 			'premium/video-box',
 			array(
 				'render_callback' => array( $this, 'get_videobox_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
+				'editor_style'    => 'pbg-editor-videoBox-style',
 				'editor_script'   => 'pbg-blocks-js',
 			)
 		);
@@ -770,7 +628,7 @@ class PBG_Blocks_Helper {
 			'premium/pricing-table',
 			array(
 				'render_callback' => array( $this, 'get_pricing_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
+				'editor_style'    => 'pbg-editor-pricingTable-style',
 				'editor_script'   => 'pbg-blocks-js',
 			)
 		);
@@ -778,7 +636,7 @@ class PBG_Blocks_Helper {
 			'premium/container',
 			array(
 				'render_callback' => array( $this, 'get_section_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
+				'editor_style'    => 'pbg-editor-container-style',
 				'editor_script'   => 'pbg-blocks-js',
 			)
 		);
@@ -786,7 +644,7 @@ class PBG_Blocks_Helper {
 			'premium/image-separator',
 			array(
 				'render_callback' => array( $this, 'get_image_seperator_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
+				'editor_style'    => 'pbg-editor-image-separator-style',
 				'editor_script'   => 'pbg-blocks-js',
 			)
 		);
@@ -794,7 +652,7 @@ class PBG_Blocks_Helper {
 			'premium/modal',
 			array(
 				'render_callback' => array( $this, 'get_modal_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
+				'editor_style'    => 'pbg-editor-modal-style',
 				'editor_script'   => 'pbg-blocks-js',
 			)
 		);
@@ -803,7 +661,7 @@ class PBG_Blocks_Helper {
 			'premium/bullet-list',
 			array(
 				'render_callback' => array( $this, 'get_bulletList_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
+				'editor_style'    => 'pbg-editor-bulletList-style',
 				'editor_script'   => 'pbg-blocks-js',
 
 			)
@@ -813,7 +671,7 @@ class PBG_Blocks_Helper {
 			'premium/person',
 			array(
 				'render_callback' => array( $this, 'get_person_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
+				'editor_style'    => 'pbg-editor-person-style',
 				'editor_script'   => 'pbg-blocks-js',
 			)
 		);
@@ -822,7 +680,7 @@ class PBG_Blocks_Helper {
 			'premium/heading',
 			array(
 				'render_callback' => array( $this, 'get_heading_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
+				'editor_style'    => 'pbg-editor-heading-style',
 				'editor_script'   => 'pbg-blocks-js',
 
 			)
@@ -831,7 +689,7 @@ class PBG_Blocks_Helper {
 			'premium/row',
 			array(
 				'render_callback' => array( $this, 'get_row_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
+				'editor_style'    => 'pbg-editor-image-separator-style',
 				'editor_script'   => 'pbg-blocks-js',
 			)
 		);
@@ -840,7 +698,7 @@ class PBG_Blocks_Helper {
 			'premium/maps',
 			array(
 				'render_callback' => array( $this, 'get_maps_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
+				'editor_style'    => 'pbg-editor-maps-style',
 				'editor_script'   => 'pbg-blocks-js',
 
 			)
@@ -1186,7 +1044,7 @@ class PBG_Blocks_Helper {
 		}
 
 		if ( isset( $attr['fancyContentAlign'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-fancy-text');
+			$css->set_selector( '.' . $unique_id );
 			$css->add_property( 'text-align', $css->get_responsive_css( $attr['fancyContentAlign'], 'Desktop' ) );		}
 
 		if ( isset( $attr['fancyTextAlign'] ) ) {
@@ -1213,7 +1071,7 @@ class PBG_Blocks_Helper {
 		}
 
 		if ( isset( $attr['fancyContentAlign'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-fancy-text');
+			$css->set_selector( '.' . $unique_id );
 			$css->add_property( 'text-align', $css->get_responsive_css( $attr['fancyContentAlign'], 'Tablet' ) );		}
 
 		if ( isset( $attr['fancyTextAlign'] ) ) {
@@ -1239,7 +1097,7 @@ class PBG_Blocks_Helper {
 			$css->render_typography( $attr['prefixTypography'], 'Mobile' );
 		}
 		if ( isset( $attr['fancyContentAlign'] ) ) {
-			$css->set_selector( '.' . $unique_id . '> .premium-fancy-text');
+			$css->set_selector( '.' . $unique_id );
 			$css->add_property( 'text-align', $css->get_responsive_css( $attr['fancyContentAlign'], 'Mobile' ) );
 		}
 
@@ -2943,11 +2801,6 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding', $css->render_spacing( $table_padding['Desktop'], $table_padding['unit'] ) );
 		}
 
-		if ( isset( $attr['contentAlign'] ) ) {
-			$css->set_selector( $unique_id );
-			$css->add_property( 'text-align', $css->get_responsive_css( $attr['contentAlign'],'Desktop'  ) );
-		}
-
 		// Button.
 		if ( isset( $attr['buttonBorder'] ) ) {
 			$button_border        = $attr['buttonBorder'];
@@ -2992,12 +2845,6 @@ class PBG_Blocks_Helper {
 
 			$css->set_selector( $unique_id . ' .premium-pricing-table__price_wrap' );
 			$css->add_property( 'margin', $css->render_spacing( $price_margin['Desktop'], $price_margin['unit'] ) );
-		}
-
-		if ( isset( $attr['contentAlign'] ) ) {
-			$css->set_selector( $unique_id . ' .premium-pricing-table__price_wrap' );
-			$css->add_property( 'justify-content', $css->get_responsive_css( $attr['contentAlign'],'Desktop'  ) );
-
 		}
 
 		if ( isset( $attr['slashTypography'] ) ) {
@@ -3145,7 +2992,7 @@ class PBG_Blocks_Helper {
 			$align = $css->get_responsive_css( $attr['featureAlign'], 'Desktop' );
 
 			$css->set_selector( $unique_id . ' .premium-pricing-table__list' );
-			$css->add_property( 'text-align', $align );
+			$css->add_property( 'text-align', $align  .'!important');
 		}
 
 		$css->start_media_query( $media_query['tablet'] );
@@ -3165,11 +3012,6 @@ class PBG_Blocks_Helper {
 			$table_padding = $attr['tablePadding'];
 			$css->set_selector( $unique_id );
 			$css->add_property( 'padding', $css->render_spacing( $table_padding['Tablet'], $table_padding['unit'] ) );
-		}
-
-		if ( isset( $attr['contentAlign'] ) ) {
-			$css->set_selector( $unique_id );
-			$css->add_property( 'text-align', $css->get_responsive_css( $attr['contentAlign'],'Tablet'  ) );
 		}
 
 		// Button.
@@ -3216,12 +3058,6 @@ class PBG_Blocks_Helper {
 
 			$css->set_selector( $unique_id . ' .premium-pricing-table__price_wrap' );
 			$css->add_property( 'margin', $css->render_spacing( $price_margin['Tablet'], $price_margin['unit'] ) );
-		}
-
-		if ( isset( $attr['contentAlign'] ) ) {
-			$css->set_selector( $unique_id . ' .premium-pricing-table__price_wrap' );
-			$css->add_property( 'justify-content', $css->get_responsive_css( $attr['contentAlign'],'Tablet'  ) );
-
 		}
 
 		if ( isset( $attr['slashTypography'] ) ) {
@@ -3369,7 +3205,7 @@ class PBG_Blocks_Helper {
 			$align = $css->get_responsive_css( $attr['featureAlign'], 'Tablet' );
 
 			$css->set_selector( $unique_id . ' .premium-pricing-table__list' );
-			$css->add_property( 'text-align', $align );
+			$css->add_property( 'text-align', $align .'!important');
 		}
 
 		$css->stop_media_query();
@@ -3390,11 +3226,6 @@ class PBG_Blocks_Helper {
 			$table_padding = $attr['tablePadding'];
 			$css->set_selector( $unique_id );
 			$css->add_property( 'padding', $css->render_spacing( $table_padding['Mobile'], $table_padding['unit'] ) );
-		}
-
-		if ( isset( $attr['contentAlign'] ) ) {
-			$css->set_selector( $unique_id );
-			$css->add_property( 'text-align', $css->get_responsive_css( $attr['contentAlign'],'Mobile'  ) );
 		}
 
 		// Button.
@@ -3441,12 +3272,6 @@ class PBG_Blocks_Helper {
 
 			$css->set_selector( $unique_id . ' .premium-pricing-table__price_wrap' );
 			$css->add_property( 'margin', $css->render_spacing( $price_margin['Mobile'], $price_margin['unit'] ) );
-		}
-
-		if ( isset( $attr['contentAlign'] ) ) {
-			$css->set_selector( $unique_id . ' .premium-pricing-table__price_wrap' );
-			$css->add_property( 'justify-content', $css->get_responsive_css( $attr['contentAlign'],'Mobile'  ) );
-
 		}
 
 		if ( isset( $attr['slashTypography'] ) ) {
@@ -3594,7 +3419,7 @@ class PBG_Blocks_Helper {
 			$align = $css->get_responsive_css( $attr['featureAlign'], 'Mobile' );
 
 			$css->set_selector( $unique_id . ' .premium-pricing-table__list' );
-			$css->add_property( 'text-align', $align );
+			$css->add_property( 'text-align', $align .'!important' );
 		}
 
 		$css->stop_media_query();
@@ -3982,6 +3807,26 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
 			$unique_id = ".{$attributes['blockId']}";
+		}
+
+        if ( $this->it_is_not_amp() ) {
+			wp_enqueue_script(
+				'pbg-section',
+				PREMIUM_BLOCKS_URL . 'assets/js/section.js',
+				array( 'jquery' ),
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
+
+			$is_rtl = is_rtl() ? true : false;
+
+			wp_localize_script(
+				'pbg-section',
+				'siteDirection',
+				array(
+					'isRTL' => $is_rtl,
+				)
+			);
 		}
 		$style_unique_id = rand( 100, 10000 );
         $style_id = 'pbg-blocks-style' . esc_attr( $style_unique_id );
@@ -5284,15 +5129,22 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'font-size', $css->render_range($bullet_icon_size,'Desktop') );
 		}
 
-		if ( isset( $attr['bulletIconFontSize'] ) ) {
-			$bullet_image_size = $attr['bulletIconFontSize'];
+		if ( isset( $attr['dividerWidth'] ) ) {
+			$divider_width = $attr['dividerWidth'];
 
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-			$css->add_property( 'width', $css->render_range($bullet_image_size,'Desktop') );
-			$css->add_property( 'height', $css->render_range($bullet_image_size,'Desktop') );
+			$css->add_property( 'width', $css->render_range($divider_width,'Desktop') );
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-			$css->add_property( 'width', $css->render_range($bullet_image_size,'Desktop') );
-			$css->add_property( 'height', $css->render_range($bullet_image_size,'Desktop') );
+			$css->add_property( 'width', $css->render_range($divider_width,'Desktop') );
+		}
+
+		if ( isset( $attr['dividerHeight'] ) ) {
+			$divider_height = $attr['dividerHeight'];
+
+			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'height', $css->render_range($divider_height,'Desktop') );
+			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'height', $css->render_range($divider_height,'Desktop') );
 		}
 
 		if ( isset( $attr['bulletIconpadding'] ) ) {
@@ -5332,31 +5184,6 @@ class PBG_Blocks_Helper {
 			$title_margin = $attr['titlemargin'];
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap, ' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' );
 			$css->add_property( 'margin', $css->render_spacing( $title_margin['Desktop'], $title_margin['unit'] ) );
-		}
-
-		//style for divider
-		if ( isset( $attr['dividerWidth'] ) ) {
-			$divider_width = $attr['dividerWidth'];
-			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list-divider-block:not(:last-child):after' );
-			$css->add_property( 'width', $css->render_range($divider_width,'Desktop') );
-		}
-
-		if ( isset( $attr['dividerHeight'] ) ) {
-			$divider_height = $attr['dividerHeight'];
-			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list-divider-block:not(:last-child):after' );
-			$css->add_property( 'border-top-width', $css->render_range($divider_height,'Desktop') );
-		}
-
-		if ( isset( $attr['dividerWidth'] ) ) {
-			$divider_width = $attr['dividerWidth'];
-			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list-divider-inline:not(:last-child):after' );
-			$css->add_property( 'border-left-width', $css->render_range($divider_width,'Desktop') );
-		}
-
-		if ( isset( $attr['dividerHeight'] ) ) {
-			$divider_height = $attr['dividerHeight'];
-			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list-divider-inline:not(:last-child):after' );
-			$css->add_property( 'height', $css->render_range($divider_height,'Desktop') );
 		}
 
 		$css->start_media_query( $media_query['tablet'] );
@@ -5421,15 +5248,22 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'font-size', $css->render_range($bullet_icon_size,'Tablet') );
 		}
 
-		if ( isset( $attr['bulletIconFontSize'] ) ) {
-			$bullet_image_size = $attr['bulletIconFontSize'];
+		if ( isset( $attr['dividerWidth'] ) ) {
+			$divider_width = $attr['dividerWidth'];
 
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-			$css->add_property( 'width', $css->render_range($bullet_image_size,'Tablet') );
-			$css->add_property( 'height', $css->render_range($bullet_image_size,'Tablet') );
+			$css->add_property( 'width', $css->render_range($divider_width,'Tablet') );
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-			$css->add_property( 'width', $css->render_range($bullet_image_size,'Tablet') );
-			$css->add_property( 'height', $css->render_range($bullet_image_size,'Tablet') );
+			$css->add_property( 'width', $css->render_range($divider_width,'Tablet') );
+		}
+
+		if ( isset( $attr['dividerHeight'] ) ) {
+			$divider_height = $attr['dividerHeight'];
+
+			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'height', $css->render_range($divider_height,'Tablet') );
+			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'height', $css->render_range($divider_height,'Tablet') );
 		}
 
 		// Style for image.
@@ -5470,31 +5304,6 @@ class PBG_Blocks_Helper {
 			$title_margin = $attr['titlemargin'];
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap, ' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' );
 			$css->add_property( 'margin', $css->render_spacing( $title_margin['Tablet'], $title_margin['unit'] ) );
-		}
-
-		//style for divider
-		if ( isset( $attr['dividerWidth'] ) ) {
-			$divider_width = $attr['dividerWidth'];
-			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list-divider-block:not(:last-child):after' );
-			$css->add_property( 'width', $css->render_range($divider_width,'Tablet') );
-		}
-
-		if ( isset( $attr['dividerHeight'] ) ) {
-			$divider_height = $attr['dividerHeight'];
-			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list-divider-block:not(:last-child):after' );
-			$css->add_property( 'border-top-width', $css->render_range($divider_height,'Tablet') );
-		}
-
-		if ( isset( $attr['dividerWidth'] ) ) {
-			$divider_width = $attr['dividerWidth'];
-			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list-divider-inline:not(:last-child):after' );
-			$css->add_property( 'border-left-width', $css->render_range($divider_width,'Tablet') );
-		}
-
-		if ( isset( $attr['dividerHeight'] ) ) {
-			$divider_height = $attr['dividerHeight'];
-			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list-divider-inline:not(:last-child):after' );
-			$css->add_property( 'height', $css->render_range($divider_height,'Tablet') );
 		}
 
 		$css->stop_media_query();
@@ -5563,15 +5372,22 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'font-size', $css->render_range($bullet_icon_size,'Mobile') );
 		}
 
-		if ( isset( $attr['bulletIconFontSize'] ) ) {
-			$bullet_image_size = $attr['bulletIconFontSize'];
+		if ( isset( $attr['dividerWidth'] ) ) {
+			$divider_width = $attr['dividerWidth'];
 
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-			$css->add_property( 'width', $css->render_range($bullet_image_size,'Mobile') );
-			$css->add_property( 'height', $css->render_range($bullet_image_size,'Mobile') );
+			$css->add_property( 'width', $css->render_range($divider_width,'Mobile') );
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
-			$css->add_property( 'width', $css->render_range($bullet_image_size,'Mobile') );
-			$css->add_property( 'height', $css->render_range($bullet_image_size,'Mobile') );
+			$css->add_property( 'width', $css->render_range($divider_width,'Mobile') );
+		}
+
+		if ( isset( $attr['dividerHeight'] ) ) {
+			$divider_height = $attr['dividerHeight'];
+
+			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'height', $css->render_range($divider_height,'Mobile') );
+			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'height', $css->render_range($divider_height,'Mobile') );
 		}
 
 		// Style for image.
@@ -5611,31 +5427,6 @@ class PBG_Blocks_Helper {
 			$title_margin = $attr['titlemargin'];
 			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap, ' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' );
 			$css->add_property( 'margin', $css->render_spacing( $title_margin['Mobile'], $title_margin['unit'] ) );
-		}
-
-		//style for divider
-		if ( isset( $attr['dividerWidth'] ) ) {
-			$divider_width = $attr['dividerWidth'];
-			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list-divider-block:not(:last-child):after' );
-			$css->add_property( 'width', $css->render_range($divider_width,'Mobile') );
-		}
-
-		if ( isset( $attr['dividerHeight'] ) ) {
-			$divider_height = $attr['dividerHeight'];
-			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list-divider-block:not(:last-child):after' );
-			$css->add_property( 'border-top-width', $css->render_range($divider_height,'Mobile') );
-		}
-
-		if ( isset( $attr['dividerWidth'] ) ) {
-			$divider_width = $attr['dividerWidth'];
-			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list-divider-inline:not(:last-child):after' );
-			$css->add_property( 'border-left-width', $css->render_range($divider_width,'Mobile') );
-		}
-
-		if ( isset( $attr['dividerHeight'] ) ) {
-			$divider_height = $attr['dividerHeight'];
-			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list-divider-inline:not(:last-child):after' );
-			$css->add_property( 'height', $css->render_range($divider_height,'Mobile') );
 		}
 
 		$css->stop_media_query();

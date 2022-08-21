@@ -11,6 +11,7 @@ $pbBorderColor: #e1e1e1;
     overflow: hidden;
     padding: 20px;
     border: 1px solid $pbBorderColor;
+    text-align: center;
 
     .premium-pricing-table__button_link {
         padding: 10px;
@@ -104,6 +105,7 @@ $pbBorderColor: #e1e1e1;
         margin: 0 !important;
         padding: 0;
         list-style-position: inside;
+        text-align: center;
     }
 
     .premium-pricing-table__list.list-check {
