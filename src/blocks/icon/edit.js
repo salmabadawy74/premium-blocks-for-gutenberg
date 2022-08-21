@@ -27,7 +27,7 @@ const { InspectorControls } = wp.blockEditor;
 
 const { withSelect } = wp.data;
 
-const edit = (props) => {
+function Edit(props) {
     const { isSelected, setAttributes, className } = props;
 
     useEffect(() => {
@@ -61,7 +61,7 @@ const edit = (props) => {
         containerShadow,
         iconShadow,
     } = props.attributes;
-
+console.log(props.attributes)
     const EFFECTS = [
         {
             value: "none",
@@ -93,23 +93,17 @@ const edit = (props) => {
         },
     ];
 
-    const saveIconStyle = (value) => {
-        const newUpdate = iconStyles.map((item, index) => {
-            if (0 === index) {
-                item = { ...item, ...value };
-            }
-            return item;
-        });
-        setAttributes({
-            iconStyles: newUpdate,
-        });
+    const saveIconStyle = (item, value) => {
+        const newColors = { ...iconStyles };
+        newColors[item] = value;
+        setAttributes({ iconStyles: newColors });
     };
 
     const loadStyles = () => {
         const styles = {};
         styles[` .${blockId} .premium-icon-container i:hover`] = {
-            'color': `${iconStyles[0].iconHoverColor} !important`,
-            'background-color': `${iconStyles[0].iconHoverBack} !important`
+            'color': `${iconStyles.iconHoverColor} !important`,
+            'background-color': `${iconStyles.iconHoverBack} !important`
         };
         return generateCss(styles);
     }
@@ -189,15 +183,15 @@ const edit = (props) => {
                                     <Fragment>
                                         <AdvancedPopColorControl
                                             label={__("Color", "premium-blocks-for-gutenberg")}
-                                            colorValue={iconStyles[0].iconColor}
+                                            colorValue={iconStyles.iconColor}
                                             colorDefault={""}
-                                            onColorChange={(value) => saveIconStyle({ iconColor: value })}
+                                            onColorChange={(value) => saveIconStyle( "iconColor", value )}
                                         />
                                         <AdvancedPopColorControl
                                             label={__("Background Color", "premium-blocks-for-gutenberg")}
-                                            colorValue={iconStyles[0].iconBack}
+                                            colorValue={iconStyles.iconBack}
                                             colorDefault={""}
-                                            onColorChange={(value) => saveIconStyle({ iconBack: value })}
+                                            onColorChange={(value) => saveIconStyle( "iconBack", value )}
                                         />
                                     </Fragment>
                                 </InsideTab>
@@ -205,15 +199,15 @@ const edit = (props) => {
                                     <Fragment>
                                         <AdvancedPopColorControl
                                             label={__("Hover Color", "premium-blocks-for-gutenberg")}
-                                            colorValue={iconStyles[0].iconHoverColor}
+                                            colorValue={iconStyles.iconHoverColor}
                                             colorDefault={""}
-                                            onColorChange={(value) => saveIconStyle({ iconHoverColor: value })}
+                                            onColorChange={(value) => saveIconStyle( "iconHoverColor", value )}
                                         />
                                         <AdvancedPopColorControl
                                             label={__("Hover Background Color", "premium-blocks-for-gutenberg")}
-                                            colorValue={iconStyles[0].iconHoverBack}
+                                            colorValue={iconStyles.iconHoverBack}
                                             colorDefault={""}
-                                            onColorChange={(value) => saveIconStyle({ iconHoverBack: value })}
+                                            onColorChange={(value) => saveIconStyle( "iconHoverBack", value )}
                                         />
                                         <SelectControl
                                             label={__("Hover Effect", "premium-blocks-for-gutenberg")}
@@ -334,8 +328,8 @@ const edit = (props) => {
                         <i
                             className={`premium-icon ${selectedIcon}`}
                             style={{
-                                color: iconStyles[0].iconColor,
-                                backgroundColor: iconStyles[0].iconBack,
+                                color: iconStyles.iconColor,
+                                backgroundColor: iconStyles.iconBack,
                                 fontSize: (iconSize[props.deviceType] || 50) + iconSize.unit,
                                 ...borderCss(iconBorder, props.deviceType),
                                 ...paddingCss(iconPadding, props.deviceType),
@@ -350,7 +344,7 @@ const edit = (props) => {
     ];
 };
 
-export default withSelect((select) => {
+export default withSelect((select, props) => {
     const { __experimentalGetPreviewDeviceType = null } =
         select("core/edit-post");
     let deviceType = __experimentalGetPreviewDeviceType
@@ -360,4 +354,4 @@ export default withSelect((select) => {
     return {
         deviceType: deviceType,
     };
-})(edit);
+})(Edit);

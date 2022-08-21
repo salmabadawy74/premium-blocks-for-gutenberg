@@ -1,27 +1,26 @@
-import { icon } from "../../../assets/js/settings";
-import edit from "./edit";
-import save from "./save";
-import deprecatedContent from "./deprecated";
-import attributes from "./attributes";
+import { registerBlockType } from '@wordpress/blocks';
+
+import { __ } from '@wordpress/i18n';
+
 import PBG_Block_Icons from '../../../blocks-config/block-icons'
 
-const { __ } = wp.i18n;
+/**
+ * Internal dependencies
+ */
+import json from './block.json';
+import edit from './edit';
+import save from './save';
+import deprecatedContent from "./deprecated";
 
-const { registerBlockType } = wp.blocks;
+const { name } = json;
 
-
-registerBlockType("premium/icon", {
-    title: __("Icon", "premium-blocks-for-gutenberg"),
-    description: __('Decorate your Gutenberg website using Premium Icon Block.', 'premium-block-for-gutenberg'),
+registerBlockType(name, {
+    /**
+     * @see ./edit.js
+     */
     icon: PBG_Block_Icons.icon,
-    category: "premium-blocks",
-    attributes: attributes,
-    keywords: [__("Icon", 'premium-blocks-for-gutenberg'), __("Font Awesome", 'premium-blocks-for-gutenberg')],
-    supports: {
-        inserter: icon
-    },
-    example: {},
-    edit: edit,
-    save: save,
+
+    edit,
+    save,
     deprecated: deprecatedContent
 });
