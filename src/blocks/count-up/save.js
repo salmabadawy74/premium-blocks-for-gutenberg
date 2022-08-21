@@ -1,5 +1,6 @@
 import classnames from 'classnames'
 import { gradientBackground, filterJsCss } from "../../components/HelperFunction";
+const { RichText } = wp.blockEditor;
 
 const save = props => {
     const { className } = props;
@@ -18,7 +19,6 @@ const save = props => {
         iconCheck,
         iconSize,
         iconColor,
-        selfAlign,
         titleCheck,
         titleTxt,
         faIcon,
@@ -96,8 +96,10 @@ const save = props => {
             >
                 <div className={`premium-countup__desc`}>
                     {prefix && (
-                        <p
+                        <RichText.Content
                             className={`premium-countup__prefix`}
+                            tagName="p"
+                            value={prefixStyles[0].prefixTxt}
                             style={filterJsCss({
                                 color: prefixStyles[0].prefixColor,
                                 fontStyle: prefixTypography?.fontStyle,
@@ -106,12 +108,12 @@ const save = props => {
                                 textDecoration: prefixTypography?.textDecoration,
                                 textTransform: prefixTypography?.textTransform,
                             })}
-                        >
-                            {prefixStyles[0].prefixTxt}
-                        </p>
+                        />
                     )}
-                    <p
+                    <RichText.Content
                         className={`premium-countup__increment`}
+                        value={`${increment}`}
+                        tagName="p"
                         data-interval={time}
                         data-delay={delay}
                         style={filterJsCss({
@@ -122,12 +124,12 @@ const save = props => {
                             textDecoration: numberTypography?.textDecoration,
                             textTransform: numberTypography?.textTransform,
                         })}
-                    >
-                        {increment}
-                    </p>
+                    />
                     {suffix && (
-                        <p
+                        <RichText.Content
                             className={`premium-countup__suffix`}
+                            value={suffixStyles[0].suffixTxt}
+                            tagName="p"
                             style={filterJsCss({
                                 color: suffixStyles[0].suffixColor,
                                 fontStyle: suffixTypography?.fontStyle,
@@ -136,14 +138,14 @@ const save = props => {
                                 textDecoration: suffixTypography?.textDecoration,
                                 textTransform: suffixTypography?.textTransform,
                             })}
-                        >
-                            {suffixStyles[0].suffixTxt}
-                        </p>
+                        />
                     )}
                 </div>
                 {titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && (
-                    <h3
+                    <RichText.Content
                         className={`premium-countup__title`}
+                        value={titleTxt}
+                        tagName="h3"
                         style={filterJsCss({
                             color: titleStyles[0].titleColor,
                             fontStyle: titleTypography?.fontStyle,
@@ -152,14 +154,14 @@ const save = props => {
                             textDecoration: titleTypography?.textDecoration,
                             textTransform: titleTypography?.textTransform,
                         })}
-                    >
-                        {titleTxt}
-                    </h3>
+                    />
                 )}
             </div>
             {titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && (
-                <h3
+                <RichText.Content
                     className={`premium-countup__title`}
+                    tagName="h3"
+                    value={titleTxt}
                     style={filterJsCss({
                         color: titleStyles[0].titleColor,
                         fontStyle: titleTypography?.fontStyle,
@@ -168,9 +170,7 @@ const save = props => {
                         textDecoration: titleTypography?.textDecoration,
                         textTransform: titleTypography?.textTransform,
                     })}
-                >
-                    {titleTxt}
-                </h3>
+                />
             )}
         </div>
     );

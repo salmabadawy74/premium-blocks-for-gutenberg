@@ -22,7 +22,6 @@ export default function save(props) {
         titleStyles,
         generalStyles,
         generalBorder,
-        titleFont,
         dividerStyles,
         divider,
         dividerStyle,
@@ -101,8 +100,6 @@ export default function save(props) {
                                         src={icon.imageURL}
                                         key={index}
                                         style={filterJsCss({
-                                            width: '20px',
-                                            height: '20px',
                                             overflow: 'hidden',
                                             borderStyle: bulletIconBorder?.borderType,
                                             borderColor: bulletIconBorder?.borderColor,

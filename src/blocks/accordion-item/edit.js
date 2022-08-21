@@ -1,7 +1,4 @@
-import {
-    useEffect,
-    useState
-} from '@wordpress/element';
+import {useEffect} from '@wordpress/element';
 import { withSelect, useSelect } from '@wordpress/data';
 import { generateBlockId } from '../../components/HelperFunction';
 import classnames from "classnames";
@@ -103,7 +100,7 @@ function AccordionItemEdit({
     </div>;
 }
 
-export default withSelect((select, props) => {
+export default withSelect((select) => {
     const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
     let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 

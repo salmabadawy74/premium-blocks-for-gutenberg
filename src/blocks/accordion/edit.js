@@ -13,15 +13,13 @@ import InspectorTab from '../../components/inspectorTab';
 import Icons from "../../components/icons";
 import { generateBlockId, generateCss } from '../../components/HelperFunction';
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import {
-    createBlock,
-} from '@wordpress/blocks';
+import {createBlock} from '@wordpress/blocks';
 import { store as blockEditorStore } from '@wordpress/block-editor';
 const { Component, Fragment } = wp.element;
 const { __ } = wp.i18n;
 const { withSelect, withDispatch } = wp.data
-const { PanelBody, SelectControl } = wp.components;
-const { InspectorControls, RichText, InnerBlocks } = wp.blockEditor;
+const { PanelBody } = wp.components;
+const { InspectorControls, InnerBlocks } = wp.blockEditor;
 import { compose } from '@wordpress/compose';
 
 class PremiumAccordion extends Component {
@@ -69,7 +67,7 @@ class PremiumAccordion extends Component {
             const titleConfig = {
                 google: {
                     families: [titleTypography.fontFamily],
-                },
+                }
             }
             loadTitleGoogleFonts = (
                 <WebfontLoader config={titleConfig}>
@@ -81,7 +79,7 @@ class PremiumAccordion extends Component {
             const descConfig = {
                 google: {
                     families: [descTypography.fontFamily],
-                },
+                }
             }
             loadDescGoogleFonts = (
                 <WebfontLoader config={descConfig}>
@@ -120,8 +118,8 @@ class PremiumAccordion extends Component {
         };
 
         const saveArrowStyles = (value) => {
-            const newUpdate = arrowStyles.map((item, index) => {
-                if (0 === index) {
+            const newUpdate = arrowStyles.map((item, indexx) => {
+                if (0 === indexx) {
                     item = { ...item, ...value };
                 }
                 return item;
@@ -130,8 +128,8 @@ class PremiumAccordion extends Component {
         }
 
         const SaveDescStyles = (value) => {
-            const newUpdate = descStyles.map((item, index) => {
-                if (0 === index) {
+            const newUpdate = descStyles.map((item, indx) => {
+                if (0 === indx) {
                     item = { ...item, ...value };
                 }
                 return item;
@@ -248,14 +246,24 @@ class PremiumAccordion extends Component {
                                 initialOpen={true}
                             >
                                 <RadioComponent
-                                    choices={[{ value: 'h1', label: __('H1') }, { value: 'h2', label: __('H2') }, { value: 'h3', label: __('H3') }, { value: 'h4', label: __('H4') }, { value: 'h5', label: __('H5') }, { value: 'h6', label: __('H6') }]}
+                                    choices={[{
+                                         value: 'h1', label: __('H1', 'premium-blocks-for-gutenberg') }, 
+                                         { value: 'h2', label: __('H2', 'premium-blocks-for-gutenberg') }, 
+                                         { value: 'h3', label: __('H3', 'premium-blocks-for-gutenberg') }, 
+                                         { value: 'h4', label: __('H4', 'premium-blocks-for-gutenberg') }, 
+                                         { value: 'h5', label: __('H5', 'premium-blocks-for-gutenberg') }, 
+                                         { value: 'h6', label: __('H6', 'premium-blocks-for-gutenberg') }
+                                        ]}
                                     value={titleTag}
                                     onChange={(newValue) => setAttributes({ titleTag: newValue })}
                                     label={__("Title Tag", 'premium-blocks-for-gutenberg')}
                                 />
                                 <hr />
                                 <RadioComponent
-                                    choices={[{ value: 'ltr', label: __('LTR'), icon: Icons.arrowLeft }, { value: 'rtl', label: __('RTL'), icon: Icons.arrowRight }]}
+                                    choices={[
+                                        { value: 'ltr', label: __('LTR', 'premium-blocks-for-gutenberg'), icon: Icons.arrowLeft }, 
+                                        { value: 'rtl', label: __('RTL', 'premium-blocks-for-gutenberg'), icon: Icons.arrowRight }
+                                    ]}
                                     value={direction}
                                     onChange={newEffect => setAttributes({ direction: newEffect })}
                                     label={__("Direction", 'premium-blocks-for-gutenberg')}
@@ -294,11 +302,9 @@ class PremiumAccordion extends Component {
                                 initialOpen={true}
                             >
                                 <PremiumTypo
-                                    components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
                                     value={titleTypography}
                                     onChange={newValue => setAttributes({ titleTypography: newValue })}
                                 />
-                                <hr />
                                 <AdvancedPopColorControl
                                     label={__("Text Color", 'premium-blocks-for-gutenberg')}
                                     colorValue={titleStyles[0].titleColor}
@@ -311,21 +317,19 @@ class PremiumAccordion extends Component {
                                     colorDefault={''}
                                     onColorChange={value => saveTitleStyles({ titleBack: value })}
                                 />
-                                <hr />
                                 <PremiumShadow
                                     label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
-                                    boxShadow={false}
                                     value={titleTextShadow}
                                     onChange={(value) => setAttributes({ titleTextShadow: value })}
                                 />
                                 <hr />
                                 <PremiumBorder
-                                    label={__("Border")}
+                                    label={__("Border", 'premium-blocks-for-gutenberg')}
                                     value={titleBorder}
                                     onChange={(value) => setAttributes({ titleBorder: value })}
                                 />
                                 <hr />
-                                <SpacingComponent value={titlePadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ titlePadding: value })} />
+                                <SpacingComponent value={titlePadding} responsive={true} showUnits={true} label={__("Padding", 'premium-blocks-for-gutenberg')} onChange={(value) => setAttributes({ titlePadding: value })} />
                             </PanelBody>
                             <PanelBody
                                 title={__("Content", 'premium-blocks-for-gutenberg')}
@@ -344,11 +348,9 @@ class PremiumAccordion extends Component {
                                 {"text" === contentType && (
                                     <Fragment>
                                         <PremiumTypo
-                                            components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
                                             value={descTypography}
                                             onChange={newValue => setAttributes({ descTypography: newValue })}
                                         />
-                                        <hr />
                                         <AdvancedPopColorControl
                                             label={__("Text Color", 'premium-blocks-for-gutenberg')}
                                             colorValue={descStyles[0].descColor}
@@ -361,14 +363,12 @@ class PremiumAccordion extends Component {
                                             colorDefault={''}
                                             onColorChange={value => SaveDescStyles({ descBack: value })}
                                         />
-                                        <hr />
                                     </Fragment>
                                 )}
                                 {"text" === contentType && (
                                     <Fragment>
                                         <PremiumShadow
                                             label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
-                                            boxShadow={false}
                                             value={textShadow}
                                             onChange={(value) => setAttributes({ textShadow: value })}
                                         />
@@ -381,7 +381,7 @@ class PremiumAccordion extends Component {
                                     onChange={(value) => setAttributes({ descBorder: value })}
                                 />
                                 <hr />
-                                <SpacingComponent value={descPadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ descPadding: value })} />
+                                <SpacingComponent value={descPadding} responsive={true} showUnits={true} label={__("Padding", 'premium-blocks-for-gutenberg')} onChange={(value) => setAttributes({ descPadding: value })} />
                             </PanelBody>
                             <PanelBody
                                 title={__("Arrow", 'premium-blocks-for-gutenberg')}
@@ -395,7 +395,6 @@ class PremiumAccordion extends Component {
                                     showUnit={false}
                                     defaultValue={20}
                                 />
-                                <hr />
                                 <AdvancedPopColorControl
                                     label={__("Arrow Color", 'premium-blocks-for-gutenberg')}
                                     colorValue={arrowStyles[0].arrowColor}
@@ -408,7 +407,6 @@ class PremiumAccordion extends Component {
                                     colorDefault={''}
                                     onColorChange={newValue => saveArrowStyles({ arrowBack: newValue })}
                                 />
-                                <hr />
                                 <ResponsiveSingleRangeControl
                                     label={__("Border Radius", 'premium-blocks-for-gutenberg')}
                                     value={arrowStyles[0].arrowRadius}
@@ -416,7 +414,6 @@ class PremiumAccordion extends Component {
                                     defaultValue={0}
                                     showUnit={false}
                                 />
-                                <hr />
                                 <ResponsiveSingleRangeControl
                                     label={__("Padding", 'premium-blocks-for-gutenberg')}
                                     value={arrowStyles[0].arrowPadding}

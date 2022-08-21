@@ -9,8 +9,12 @@ const attributes = {
         default: false
     },
     contentAlign: {
-        type: "string",
-        default: "center"
+        type: "object",
+        default: {
+            Desktop: 'center',
+            Tablet: 'center',
+            Mobile: 'center',
+        }
     },
     title: {
         type: "array",
@@ -426,7 +430,7 @@ const attributes = {
         type: "array",
         default: [
             {
-                btnColor: "#fff",
+                btnColor: "",
                 btnHoverColor: '',
                 btnWidth: '',
                 btnBack: "rgb(242, 242, 242)",
