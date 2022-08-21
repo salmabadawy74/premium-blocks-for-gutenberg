@@ -9,9 +9,6 @@ import MultiButtonsControl from "../../components/responsive-radio";
 import Icons from "../../components/icons";
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import Placeholder from "./container.js";
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { withSelect } = wp.data;
 import { JsonUploadEnabled } from "../../../assets/js/settings";
 import InspectorTabs from "../../components/inspectorTabs";
 import InspectorTab from "../../components/inspectorTab";
@@ -20,13 +17,16 @@ import InsideTab from "../../components/InsideTab";
 import SpacingControl from "../../components/premium-responsive-spacing";
 import { generateCss, generateBlockId } from "../../components/HelperFunction";
 
+const { __ } = wp.i18n;
+const { Component, Fragment } = wp.element;
+const { withSelect } = wp.data;
 const { InspectorControls } = wp.blockEditor;
 
 const { PanelBody, TextControl, ToggleControl, SelectControl } = wp.components;
 
 let isLottieUpdated = null;
 
-class edit extends Component {
+class Edit extends Component {
     constructor() {
 
         super(...arguments);
@@ -111,7 +111,6 @@ class edit extends Component {
     render() {
         const { attributes, setAttributes, className } = this.props;
         const {
-            lottieId,
             blockId,
             lottieURl,
             lottieJson,
@@ -256,7 +255,7 @@ class edit extends Component {
                 <InspectorTabs tabs={["layout", "style", "advance"]}>
                     <InspectorTab key={"layout"}>
                         <PanelBody
-                            title={__("General Settings")}
+                            title={__("General Settings","premium-blocks-for-gutenberg")}
                             className="premium-panel-body"
                             initialOpen={true}
                         >
@@ -264,7 +263,7 @@ class edit extends Component {
                                 className="lottie-remove"
                                 onClick={handleRemoveLottie}
                             >
-                                {__("Change Animation")}
+                                {__("Change Animation","premium-blocks-for-gutenberg")}
                             </button>
                             <ToggleControl
                                 label={__(
@@ -442,17 +441,17 @@ class edit extends Component {
                                 choices={[
                                     {
                                         value: "left",
-                                        label: __("Left"),
+                                        label: __("Left","premium-blocks-for-gutenberg"),
                                         icon: Icons.alignLeft,
                                     },
                                     {
                                         value: "center",
-                                        label: __("Center"),
+                                        label: __("Center","premium-blocks-for-gutenberg"),
                                         icon: Icons.alignCenter,
                                     },
                                     {
                                         value: "right",
-                                        label: __("Right"),
+                                        label: __("Right","premium-blocks-for-gutenberg"),
                                         icon: Icons.alignRight,
                                     },
                                 ]}
@@ -506,8 +505,8 @@ class edit extends Component {
                                 )}
                                 value={render}
                                 options={[
-                                    { label: "SVG", value: "svg" },
-                                    { label: "Canvas", value: "canvas" },
+                                    { label: __("SVG","premium-blocks-for-gutenberg"), value: "svg" },
+                                    { label: __("Canvas","premium-blocks-for-gutenberg"), value: "canvas" },
                                 ]}
                                 help={__(
                                     `Set render type to canvas if you're having performance issues on the page.
@@ -528,7 +527,7 @@ class edit extends Component {
                             initialOpen={true}
                         >
                             <InsideTabs>
-                                <InsideTab tabTitle={__("Normal")}>
+                                <InsideTab tabTitle={__("Normal","premium-blocks-for-gutenberg")}>
                                     <Fragment>
                                         <AdvancedPopColorControl
                                             label={__(
@@ -556,7 +555,7 @@ class edit extends Component {
                                         />
                                     </Fragment>
                                 </InsideTab>
-                                <InsideTab tabTitle={__("Hover")}>
+                                <InsideTab tabTitle={__("Hover","premium-blocks-for-gutenberg")}>
                                     <Fragment>
                                         <AdvancedPopColorControl
                                             label={__(
@@ -693,7 +692,7 @@ class edit extends Component {
         ];
     }
 }
-export default withSelect((select, props) => {
+export default withSelect((select) => {
     const { __experimentalGetPreviewDeviceType = null } = select(
         "core/edit-post"
     );
@@ -704,4 +703,4 @@ export default withSelect((select, props) => {
     return {
         deviceType: deviceType,
     };
-})(edit);
+})(Edit);

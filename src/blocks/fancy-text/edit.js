@@ -21,45 +21,47 @@ const { PanelBody, SelectControl, TextControl, ToggleControl } = wp.components;
 
 const SortableItem = SortableElement(
     ({ edit, removeItem, newIndex, value, changeFancyValue, items }) => (
-        <div className="premium-repeater-item">
-            <div className={`premium-repeater-item__container ${newIndex}`}>
-                <span className="premium-repeater-item__dragHandle dashicons dashicons-menu-alt"></span>
-                <div
-                    className="premium-repeater-item__content"
-                    onClick={() => edit(newIndex)}
-                >
-                    {value.title}{" "}
-                </div>
+        <span className="premium-repeater-row-wrapper" key={newIndex}>
+            <span className="premium-repeater-row-inner">
+                <span className="premium-repeater-row-tools">
+                    <span className="premium-repeater-item-title"
+                            onClick={() => edit(newIndex)}
+                        >
+                            {value.title}
+                    </span>
 
-                {items.length != 1 ? (
-                    <button
-                        className="premium-repeater-item__trashicon dashicons dashicons-no-alt"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            removeItem(newIndex, value);
-                        }}
-                    ></button>
-                ) : (
-                    ""
-                )}
-            </div>
-            <div
-                className={`premium-repeater-item-controls ${value.edit ? "editable" : ""}`}
-            >
-                <TextControl
-                    label={__("Fancy String", 'premium-blocks-for-gutenberg')}
-                    value={value.title}
-                    onChange={(newText) => changeFancyValue(newText, newIndex)}
-                />
-            </div>
-        </div>
+                    {items.length != 1 ? (
+                        <div className="premium-repeater-row-item-remove">
+                            <button
+                                className="premium-repeater-item-remove is-tertiary"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    removeItem(newIndex, value);
+                                }}
+                            >x</button>
+                        </div>
+                    ) : (
+                        ""
+                    )}
+                </span>
+                <div
+                    className={`premium-repeater-row-controls ${value.edit ? "editable" : ""}`}
+                >
+                    <TextControl
+                        label={__("Fancy String", 'premium-blocks-for-gutenberg')}
+                        value={value.title}
+                        onChange={(newText) => changeFancyValue(newText, newIndex)}
+                    />
+                </div>
+            </span>
+        </span>
     )
 );
 
 const SortableList = SortableContainer(
     ({ items, removeItem, edit, changeFancyValue }) => {
         return (
-            <div>
+            <span className="premium-repeater-rows">
                 {" "}
                 {items.map((value, index) => (
                     <SortableItem
@@ -73,7 +75,7 @@ const SortableList = SortableContainer(
                         items={items}
                     />
                 ))}{" "}
-            </div>
+            </span>
         );
     }
 );
@@ -346,7 +348,6 @@ class Edit extends Component {
                                             edit={(value) => edit(value)}
                                             shouldCancelStart={shouldCancelStart}
                                             changeFancyValue={changeFancyValue}
-                                            helperClass="premium-fancy-text__sortableHelper"
                                         />
                                         <div className="premium-repeater-btn__wrap">
                                             <button

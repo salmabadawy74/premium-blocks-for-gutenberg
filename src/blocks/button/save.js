@@ -1,12 +1,12 @@
 import classnames from 'classnames'
 import { generateCss, filterJsCss } from '../../components/HelperFunction';
 const { RichText } = wp.blockEditor;
+
 const save = props => {
     const { className } = props;
     const {
         btnText,
         btnSize,
-        btnAlign,
         btnLink,
         btnTarget,
         effect,
@@ -23,6 +23,7 @@ const save = props => {
         boxShadow,
         blockId
     } = props.attributes;
+
     const mainClasses = classnames(className, 'premium-button__wrap', {
         " premium-desktop-hidden": hideDesktop,
         " premium-tablet-hidden": hideTablet,

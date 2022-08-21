@@ -90,27 +90,27 @@ export default function save(props) {
         };
         styles[`.${blockId} .premium-title .style1 .premium-title-header`] = {
             'border-color': `${titleBorder.borderColor}!important`,
-            'border-style': `${titleBorder.borderType}!important`,
+            'border-style': `${titleBorder.borderType}`,
         };
 
         styles[`.${blockId} .premium-title .style2`] = {
             'border-color': `${titleBorder.borderColor}!important`,
-            'border-style': `${titleBorder.borderType}!important`,
+            'border-style': `${titleBorder.borderType}`,
         };
 
         styles[`.${blockId} .premium-title .style4`] = {
             'border-color': `${titleBorder.borderColor}!important`,
-            'border-style': `${titleBorder.borderType}!important`,
+            'border-style': `${titleBorder.borderType}`,
         };
 
         styles[`.${blockId} .premium-title .style5`] = {
             'border-color': `${titleBorder.borderColor}!important`,
-            'border-style': `${titleBorder.borderType}!important`,
+            'border-style': `${titleBorder.borderType}`,
         };
 
         styles[`.${blockId} .premium-title .style6`] = {
             'border-color': `${titleBorder.borderColor}!important`,
-            'border-style': `${titleBorder.borderType}!important`,
+            'border-style': `${titleBorder.borderType}`,
         };
 
         styles[`.${blockId} .premium-title-style2__wrap`] = {

@@ -1,5 +1,4 @@
 import classnames from "classnames";
-import { filter } from "lodash";
 import { filterJsCss, generateCss } from "../../components/HelperFunction";
 
 const { RichText } = wp.blockEditor;
@@ -8,7 +7,6 @@ const save = props => {
     const { className } = props;
 
     const {
-        contentAlign,
         title,
         desc,
         titleChecked,
@@ -69,7 +67,6 @@ const save = props => {
         <div
             className={`${mainClasses} ${blockId}`}
             style={filterJsCss({
-                textAlign: contentAlign,
                 backgroundColor: tableStyles[0].tableBack,
                 borderStyle: tableBorder.borderType,
                 borderColor: tableBorder.borderColor,
@@ -92,7 +89,9 @@ const save = props => {
                             borderLeftWidth: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeSize + "px" : "none"
                         })}
                     >
-                        <span
+                        <RichText.Content
+                            tagName='span'
+                            value={badgeStyles[0].badgeText}
                             style={filterJsCss({
                                 color: badgeStyles[0].badgeColor,
                                 fontStyle: badgeTypography?.fontStyle,
@@ -105,9 +104,7 @@ const save = props => {
                                 left: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeHorizontal + "px" : "auto",
                                 right: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeHorizontal + "px" : "auto"
                             })}
-                        >
-                            {badgeStyles[0].badgeText}
-                        </span>
+                        />
                     </div>
                 </div>
             )}
@@ -138,8 +135,7 @@ const save = props => {
                 <div
                     className={`premium-pricing-table__price_wrap`}
                     style={filterJsCss({
-                        backgroundColor: priceStyles[0].priceBack,
-                        justifyContent: contentAlign
+                        backgroundColor: priceStyles[0].priceBack
                     })}
                 >
                     {priceStyles[0].slashPrice && (

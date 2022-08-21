@@ -31,7 +31,7 @@ const { Component, Fragment } = wp.element;
 
 let isMapUpdated = null;
 
-class edit extends Component {
+class Edit extends Component {
     constructor() {
         super(...arguments);
         this.state = {
@@ -50,11 +50,9 @@ class edit extends Component {
         this.initMap();
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        //if (prevProps.attributes !== this.props.attributes) {
+    componentDidUpdate() {
         clearTimeout(isMapUpdated);
         isMapUpdated = setTimeout(this.initMap, 500);
-        //}
     }
 
     initMap() {
@@ -89,6 +87,7 @@ class edit extends Component {
             parseFloat(centerLat),
             parseFloat(centerLng)
         );
+
         if (!map) {
             let mapElem = document.querySelector(`.${blockId} .map-container`);
             map = new google.maps.Map(mapElem, {
@@ -208,7 +207,7 @@ class edit extends Component {
             const titleConfig = {
                 google: {
                     families: [titleTypography.fontFamily],
-                },
+                }
             }
             loadTitleGoogleFonts = (
                 <WebfontLoader config={titleConfig}>
@@ -220,7 +219,7 @@ class edit extends Component {
             const descriptionConfig = {
                 google: {
                     families: [descriptionTypography.fontFamily],
-                },
+                }
             }
             loadDescriptionGoogleFonts = (
                 <WebfontLoader config={descriptionConfig}>
@@ -328,15 +327,15 @@ class edit extends Component {
                     <InspectorTabs tabs={['layout', 'style', 'advance']}>
                         <InspectorTab key={'layout'}>
                             <PanelBody
-                                title={__("Center Location")}
+                                title={__("Center Location", 'premium-blocks-for-gutenberg')}
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
                                 <TextControl
-                                    label={__("Longitude")}
+                                    label={__("Longitude", 'premium-blocks-for-gutenberg')}
                                     value={centerLng}
                                     help={[
-                                        __("Get your location coordinates from"),
+                                        __("Get your location coordinates from", 'premium-blocks-for-gutenberg'),
                                         <a href="https://www.latlong.net/" target="_blank">
                                             &nbsp;
                                             {__("here", 'premium-blocks-for-gutenberg')}
@@ -345,7 +344,7 @@ class edit extends Component {
                                     onChange={newLng => setAttributes({ centerLng: newLng })}
                                 />
                                 <TextControl
-                                    label={__("Latitude")}
+                                    label={__("Latitude", 'premium-blocks-for-gutenberg')}
                                     value={centerLat}
                                     onChange={newLat => setAttributes({ centerLat: newLat })}
                                 />
@@ -487,7 +486,7 @@ class edit extends Component {
                                         __("Get your custom styling from", 'premium-blocks-for-gutenberg'),
                                         <a href="https://snazzymaps.com/" target="_blank">
                                             &nbsp;
-                                            {__("here")}
+                                            {__("here", 'premium-blocks-for-gutenberg')}
                                         </a>
                                     ]}
                                     onChange={newStyle =>
@@ -504,11 +503,9 @@ class edit extends Component {
                                     initialOpen={false}
                                 >
                                     <PremiumTypo
-                                        components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
                                         value={titleTypography}
                                         onChange={newValue => setAttributes({ titleTypography: newValue })}
                                     />
-                                    <hr />
                                     <AdvancedPopColorControl
                                         label={__("Text Color", 'premium-blocks-for-gutenberg')}
                                         colorValue={titleColor}
@@ -517,8 +514,8 @@ class edit extends Component {
                                         }
                                     />
                                     <hr />
-                                    <SpacingComponent value={titleMargin} responsive={true} showUnits={true} label={__("Margin")} onChange={(value) => setAttributes({ titleMargin: value })} />
-                                    <SpacingComponent value={titlePadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ titlePadding: value })} />
+                                    <SpacingComponent value={titleMargin} responsive={true} showUnits={true} label={__("Margin", 'premium-blocks-for-gutenberg')} onChange={(value) => setAttributes({ titleMargin: value })} />
+                                    <SpacingComponent value={titlePadding} responsive={true} showUnits={true} label={__("Padding", 'premium-blocks-for-gutenberg')} onChange={(value) => setAttributes({ titlePadding: value })} />
                                 </PanelBody>
                             )}
                             {mapMarker && markerDesc && (
@@ -528,11 +525,9 @@ class edit extends Component {
                                     initialOpen={false}
                                 >
                                     <PremiumTypo
-                                        components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
                                         value={descriptionTypography}
                                         onChange={newValue => setAttributes({ descriptionTypography: newValue })}
                                     />
-                                    <hr />
                                     <AdvancedPopColorControl
                                         label={__("Text Color", 'premium-blocks-for-gutenberg')}
                                         colorValue={descColor}
@@ -540,8 +535,8 @@ class edit extends Component {
                                         onColorChange={newValue => setAttributes({ descColor: newValue === undefined ? "transparent" : newValue })}
                                     />
                                     <hr />
-                                    <SpacingComponent value={descriptionMargin} responsive={true} showUnits={true} label={__("Margin")} onChange={(value) => setAttributes({ descriptionMargin: value })} />
-                                    <SpacingComponent value={descriptionPadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ descriptionPadding: value })} />
+                                    <SpacingComponent value={descriptionMargin} responsive={true} showUnits={true} label={__("Margin", 'premium-blocks-for-gutenberg')} onChange={(value) => setAttributes({ descriptionMargin: value })} />
+                                    <SpacingComponent value={descriptionPadding} responsive={true} showUnits={true} label={__("Padding", 'premium-blocks-for-gutenberg')} onChange={(value) => setAttributes({ descriptionPadding: value })} />
                                     <hr />
                                     <MultiButtonsControl
                                         choices={[{ value: 'left', label: __('Left', "premium-blocks-for-gutenberg"), icon: Icons.alignLeft }, { value: 'center', label: __('Center', "premium-blocks-for-gutenberg"), icon: Icons.alignCenter }, { value: 'right', label: __('Right', "premium-blocks-for-gutenberg"), icon: Icons.alignRight }]}
@@ -562,15 +557,15 @@ class edit extends Component {
                                     value={mapBoxShadow}
                                     onChange={(value) => setAttributes({ mapBoxShadow: value })}
                                 />
-                                <hr />
+                                <hr/>
                                 <PremiumBorder
-                                    label={__("Border")}
+                                    label={__("Border", 'premium-blocks-for-gutenberg')}
                                     value={mapBorder}
                                     onChange={(value) => setAttributes({ mapBorder: value })}
                                 />
                                 <hr />
-                                <SpacingComponent value={mapMargin} responsive={true} showUnits={true} label={__("Margin")} onChange={(value) => setAttributes({ mapMargin: value })} />
-                                <SpacingComponent value={mapPadding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ mapPadding: value })} />
+                                <SpacingComponent value={mapMargin} responsive={true} showUnits={true} label={__("Margin", 'premium-blocks-for-gutenberg')} onChange={(value) => setAttributes({ mapMargin: value })} />
+                                <SpacingComponent value={mapPadding} responsive={true} showUnits={true} label={__("Padding", 'premium-blocks-for-gutenberg')} onChange={(value) => setAttributes({ mapPadding: value })} />
                             </PanelBody>
                         </InspectorTab>
                         <InspectorTab key={'advance'}>
@@ -599,11 +594,11 @@ class edit extends Component {
         ];
     }
 }
-export default withSelect((select, props) => {
+export default withSelect((select) => {
     const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
     let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 
     return {
         deviceType: deviceType
     }
-})(edit)
+})(Edit)

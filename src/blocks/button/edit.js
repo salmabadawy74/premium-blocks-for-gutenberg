@@ -3,22 +3,25 @@ import PremiumTypo from "../../components/premium-typo";
 import PremiumBorder from "../../components/premium-border";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
-const { __ } = wp.i18n;
 import WebfontLoader from "../../components/typography/fontLoader"
 import SpacingComponent from "../../components/premium-responsive-spacing";
 import PremiumShadow from "../../components/PremiumShadow";
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
+import InsideTabs from "../../components/InsideTabs";
+import InsideTab from "../../components/InsideTab";
 import { generateBlockId, generateCss, typographyCss, borderCss, paddingCss } from '../../components/HelperFunction';
-const { PanelBody, SelectControl, ToggleControl, TabPanel } = wp.components;
-const { Fragment, Component } = wp.element;
 import MultiButtonsControl from "../../components/responsive-radio";
 import Icons from "../../components/icons";
 
+const { __ } = wp.i18n;
 
-const { InspectorControls, AlignmentToolbar, BlockControls, RichText, URLInput } = wp.blockEditor;
+const { PanelBody, SelectControl, ToggleControl } = wp.components;
+const { Fragment, Component } = wp.element;
+const { InspectorControls, RichText, URLInput } = wp.blockEditor;
 const { withSelect } = wp.data
-export class edit extends Component {
+
+export class Edit extends Component {
     constructor() {
         super(...arguments);
     }
@@ -301,110 +304,75 @@ export class edit extends Component {
                                 initialOpen={true}
                             >
                                 <PremiumTypo
-                                    components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
                                     value={typography}
                                     onChange={newValue => setAttributes({ typography: newValue })}
                                 />
-                                <hr />
-                                <strong>{__("Colors", 'premium-blocks-for-gutenberg')}</strong>
-                                <TabPanel
-                                    className="premium-color-tabpanel"
-                                    activeClass="active-tab"
-                                    tabs={[
-                                        {
-                                            name: "normal",
-                                            title: "Normal",
-                                            className: "premium-tab",
-                                        },
-                                        {
-                                            name: "hover",
-                                            title: "Hover",
-                                            className: "premium-tab",
-                                        },
-                                    ]}
-                                >
-                                    {(tab) => {
-                                        let tabout;
-                                        if ("normal" === tab.name) {
-                                            tabout = (
-                                                <Fragment>
-                                                    <AdvancedPopColorControl
-                                                        label={__("Text Color", 'premium-blocks-for-gutenberg')}
-                                                        colorValue={btnStyles[0].textColor}
-                                                        colorDefault={''}
-                                                        onColorChange={newValue => saveBtnStyles({ textColor: newValue, })}
-                                                    />
-                                                    <AdvancedPopColorControl
-                                                        label={__('Background Color', 'premium-blocks-for-gutenberg')}
-                                                        colorValue={btnStyles[0].backColor}
-                                                        colorDefault={''}
-                                                        onColorChange={newvalue => saveBtnStyles({ backColor: newvalue, })}
-                                                    />
-
-                                                </Fragment>
-                                            );
-                                        }
-                                        if ("hover" === tab.name) {
-                                            tabout = (
-                                                <Fragment>
-                                                    <AdvancedPopColorControl
-                                                        label={__("Text Color", 'premium-blocks-for-gutenberg')}
-                                                        colorValue={btnStyles[0].textHoverColor}
-                                                        colorDefault={''}
-                                                        onColorChange={newValue => saveBtnStyles({ textHoverColor: newValue })}
-                                                    />
-                                                    <AdvancedPopColorControl
-                                                        label={"radial" !== effect
-                                                            ? __("Background Color", 'premium-blocks-for-gutenberg')
-                                                            : __("Background Color", 'premium-blocks-for-gutenberg')}
-                                                        colorValue={btnStyles[0].backHoverColor}
-                                                        colorDefault={''}
-                                                        onColorChange={newValue => {
-                                                            saveBtnStyles({
-                                                                backHoverColor: newValue
-                                                            })
-                                                            setAttributes({
-                                                                slideColor: newValue
-                                                            });
-                                                        }}
-                                                    />
-                                                    <AdvancedPopColorControl
-                                                        label={__("Border Color", 'premium-blocks-for-gutenberg')}
-                                                        colorValue={btnStyles[0].borderHoverColor}
-                                                        colorDefault={''}
-                                                        onColorChange={newValue => saveBtnStyles({ borderHoverColor: newValue })}
-                                                    />
-                                                </Fragment>
-                                            );
-                                        }
-                                        return (
-                                            <div>
-                                                {tabout}
-                                            </div>
-                                        );
-                                    }}
-                                </TabPanel>
-                                <hr />
+                                <InsideTabs>
+                                    <InsideTab tabTitle={__("Normal", "premium-blocks-for-gutenberg")}>
+                                        <Fragment>
+                                            <AdvancedPopColorControl
+                                                label={__("Text Color", 'premium-blocks-for-gutenberg')}
+                                                colorValue={btnStyles[0].textColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue => saveBtnStyles({ textColor: newValue, })}
+                                            />
+                                            <AdvancedPopColorControl
+                                                label={__('Background Color', 'premium-blocks-for-gutenberg')}
+                                                colorValue={btnStyles[0].backColor}
+                                                colorDefault={''}
+                                                onColorChange={newvalue => saveBtnStyles({ backColor: newvalue, })}
+                                            />
+                                        </Fragment>
+                                    </InsideTab>
+                                    <InsideTab tabTitle={__("Hover", "premium-blocks-for-gutenberg")}>
+                                        <Fragment>
+                                            <AdvancedPopColorControl
+                                                label={__("Text Color", 'premium-blocks-for-gutenberg')}
+                                                colorValue={btnStyles[0].textHoverColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue => saveBtnStyles({ textHoverColor: newValue })}
+                                            />
+                                            <AdvancedPopColorControl
+                                                label={"radial" !== effect
+                                                    ? __("Background Color", 'premium-blocks-for-gutenberg')
+                                                    : __("Background Color", 'premium-blocks-for-gutenberg')}
+                                                colorValue={btnStyles[0].backHoverColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue => {
+                                                    saveBtnStyles({
+                                                        backHoverColor: newValue
+                                                    })
+                                                    setAttributes({
+                                                        slideColor: newValue
+                                                    });
+                                                }}
+                                            />
+                                            <AdvancedPopColorControl
+                                                label={__("Border Color", 'premium-blocks-for-gutenberg')}
+                                                colorValue={btnStyles[0].borderHoverColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue => saveBtnStyles({ borderHoverColor: newValue })}
+                                            />
+                                        </Fragment>
+                                    </InsideTab>
+                                </InsideTabs>
                                 <PremiumShadow
                                     label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
-                                    boxShadow={false}
                                     value={textShadow}
                                     onChange={(value) => setAttributes({ textShadow: value })}
                                 />
                                 <PremiumShadow
-                                    label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
-                                    boxShadow={true}
                                     value={boxShadow}
                                     onChange={(value) => setAttributes({ boxShadow: value })}
                                 />
                                 <hr />
                                 <PremiumBorder
-                                    label={__("Border")}
+                                    label={__("Border", 'premium-blocks-for-gutenberg')}
                                     value={border}
                                     onChange={(value) => setAttributes({ border: value })}
                                 />
                                 <hr />
-                                <SpacingComponent value={padding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ padding: value })} />
+                                <SpacingComponent value={padding} responsive={true} showUnits={true} label={__("Padding", 'premium-blocks-for-gutenberg')} onChange={(value) => setAttributes({ padding: value })} />
                             </PanelBody>
                         </InspectorTab>
                         <InspectorTab key={'advance'}>
@@ -448,13 +416,13 @@ export class edit extends Component {
             </div>
         ];
     }
-};
+}
 
-export default withSelect((select, props) => {
+export default withSelect((select) => {
     const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
     let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 
     return {
         deviceType: deviceType
     }
-})(edit)
+})(Edit)

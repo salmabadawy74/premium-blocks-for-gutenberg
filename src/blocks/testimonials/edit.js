@@ -28,7 +28,7 @@ const { InspectorControls, RichText } = wp.blockEditor;
 const { Component } = wp.element;
 const { withSelect } = wp.data
 
-class edit extends Component {
+class Edit extends Component {
     constructor() {
         super(...arguments);
     }
@@ -75,7 +75,7 @@ class edit extends Component {
             const authorConfig = {
                 google: {
                     families: [authorTypography.fontFamily],
-                },
+                }
             }
             loadAuthorGoogleFonts = (
                 <WebfontLoader config={authorConfig}>
@@ -87,7 +87,7 @@ class edit extends Component {
             const bodyConfig = {
                 google: {
                     families: [bodyTypography.fontFamily],
-                },
+                }
             }
             loadBodyGoogleFonts = (
                 <WebfontLoader config={bodyConfig}>
@@ -99,7 +99,7 @@ class edit extends Component {
             const companyConfig = {
                 google: {
                     families: [companyTypography.fontFamily],
-                },
+                }
             }
             loadCompanyGoogleFonts = (
                 <WebfontLoader config={companyConfig}>
@@ -120,8 +120,8 @@ class edit extends Component {
         }
 
         const saveContentStyle = (value) => {
-            const newUpdate = contentStyle.map((item, index) => {
-                if (0 === index) {
+            const newUpdate = contentStyle.map((item, indexx) => {
+                if (0 === indexx) {
                     item = { ...item, ...value };
                 }
                 return item;
@@ -132,8 +132,8 @@ class edit extends Component {
         }
 
         const saveCompanyStyle = (value) => {
-            const newUpdate = companyStyles.map((item, index) => {
-                if (0 === index) {
+            const newUpdate = companyStyles.map((item, indx) => {
+                if (0 === indx) {
                     item = { ...item, ...value };
                 }
                 return item;
@@ -142,13 +142,13 @@ class edit extends Component {
         }
 
         const saveQuoteStyles = (value) => {
-            const newUpdate = quoteStyles.map((item, index) => {
-                if (0 === index) {
+            const newUpdate = quoteStyles.map((item, i) => {
+                if (0 === i) {
                     item = { ...item, ...value };
                 }
                 return item;
             });
-            setAttributes({ quoteStyles: newUpdate, });
+            setAttributes({ quoteStyles: newUpdate });
         }
 
         const mainClasses = classnames(className, "premium-testimonial", {
@@ -186,7 +186,14 @@ class edit extends Component {
                                     }}
                                 />
                                 <RadioComponent
-                                    choices={[{ value: 'h1', label: __('H1') }, { value: 'h2', label: __('H2') }, { value: 'h3', label: __('H3') }, { value: 'h4', label: __('H4') }, { value: 'h5', label: __('H5') }, { value: 'h6', label: __('H6') }]}
+                                    choices={[
+                                        { value: 'h1', label: __('H1', 'premium-blocks-for-gutenberg') }, 
+                                        { value: 'h2', label: __('H2', 'premium-blocks-for-gutenberg') }, 
+                                        { value: 'h3', label: __('H3', 'premium-blocks-for-gutenberg') }, 
+                                        { value: 'h4', label: __('H4', 'premium-blocks-for-gutenberg') }, 
+                                        { value: 'h5', label: __('H5', 'premium-blocks-for-gutenberg') }, 
+                                        { value: 'h6', label: __('H6', 'premium-blocks-for-gutenberg') }
+                                    ]}
                                     value={authorStyles[0].authorTag}
                                     onChange={(newValue) => saveAuthorStyle({ authorTag: newValue })}
                                     label={__("Title Tag", 'premium-blocks-for-gutenberg')}
@@ -194,7 +201,7 @@ class edit extends Component {
                                 <MultiButtonsControl
                                     choices={[{ value: 'left', label: __('Left', "premium-blocks-for-gutenberg"), icon: Icons.alignLeft }, { value: 'center', label: __('Center', "premium-blocks-for-gutenberg"), icon: Icons.alignCenter }, { value: 'right', label: __('Right', "premium-blocks-for-gutenberg"), icon: Icons.alignRight }]}
                                     value={align}
-                                    onChange={(align) => setAttributes({ align: align })}
+                                    onChange={(alignn) => setAttributes({ align: alignn })}
                                     label={__("Align Content", "premium-blocks-for-gutenberg")}
                                     showIcons={true} />
                             </PanelBody>
@@ -204,13 +211,20 @@ class edit extends Component {
                                 initialOpen={false}
                             >
                                 <RadioComponent
-                                    choices={[{ value: 'h1', label: __('H1') }, { value: 'h2', label: __('H2') }, { value: 'h3', label: __('H3') }, { value: 'h4', label: __('H4') }, { value: 'h5', label: __('H5') }, { value: 'h6', label: __('H6') }]}
+                                    choices={[
+                                        { value: 'h1', label: __('H1', 'premium-blocks-for-gutenberg') }, 
+                                        { value: 'h2', label: __('H2', 'premium-blocks-for-gutenberg') }, 
+                                        { value: 'h3', label: __('H3', 'premium-blocks-for-gutenberg') }, 
+                                        { value: 'h4', label: __('H4', 'premium-blocks-for-gutenberg') }, 
+                                        { value: 'h5', label: __('H5', 'premium-blocks-for-gutenberg') }, 
+                                        { value: 'h6', label: __('H6', 'premium-blocks-for-gutenberg') }
+                                    ]}
                                     value={authorStyles[0].authorComTag}
                                     onChange={(newValue) => saveAuthorStyle({ authorComTag: newValue })}
                                     label={__("Title Tag", 'premium-blocks-for-gutenberg')}
                                 />
                                 <ToggleControl
-                                    label={__("URL", 'premium-blocks-for-gutenberg')}
+                                    label={__("Link", 'premium-blocks-for-gutenberg')}
                                     checked={companyStyles[0].urlCheck}
                                     onChange={newCheck => saveCompanyStyle({ urlCheck: newCheck })}
                                 />
@@ -248,7 +262,6 @@ class edit extends Component {
                                     />
                                 )}
                                 <PremiumTypo
-                                    components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
                                     value={authorTypography}
                                     onChange={newValue => setAttributes({ authorTypography: newValue })}
                                 />
@@ -260,7 +273,7 @@ class edit extends Component {
                                 />
                                 {authorImgUrl && (
                                     <PremiumBorder
-                                        label={__("Border")}
+                                        label={__("Border", 'premium-blocks-for-gutenberg')}
                                         value={imgBorder}
                                         onChange={(value) => setAttributes({ imgBorder: value })}
                                     />
@@ -272,7 +285,6 @@ class edit extends Component {
                                 initialOpen={false}
                             >
                                 <PremiumTypo
-                                    components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
                                     value={companyTypography}
                                     onChange={newValue => setAttributes({ companyTypography: newValue })}
                                 />
@@ -295,7 +307,6 @@ class edit extends Component {
                                 initialOpen={false}
                             >
                                 <PremiumTypo
-                                    components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
                                     value={bodyTypography}
                                     onChange={newValue => setAttributes({ bodyTypography: newValue })}
                                 />
@@ -305,7 +316,7 @@ class edit extends Component {
                                     colorDefault={''}
                                     onColorChange={newValue => saveContentStyle({ bodyColor: newValue })}
                                 />
-                                <SpacingComponent value={bodyMargin} responsive={true} showUnits={true} label={__("Margin")} onChange={(value) => setAttributes({ bodyMargin: value })} />
+                                <SpacingComponent value={bodyMargin} responsive={true} showUnits={true} label={__("Margin", 'premium-blocks-for-gutenberg')} onChange={(value) => setAttributes({ bodyMargin: value })} />
                             </PanelBody>
                             <PanelBody
                                 title={__("Quotations", 'premium-blocks-for-gutenberg')}
@@ -345,12 +356,10 @@ class edit extends Component {
                                     onChange={(value) => setAttributes({ background: value })}
                                 />
                                 <PremiumShadow
-                                    label={__("Box Shadow", 'premium-blocks-for-gutenberg')}
-                                    boxShadow={true}
                                     value={boxShadow}
                                     onChange={(value) => setAttributes({ boxShadow: value })}
                                 />
-                                <SpacingComponent value={padding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ padding: value })} />
+                                <SpacingComponent value={padding} responsive={true} showUnits={true} label={__("Padding", 'premium-blocks-for-gutenberg')} onChange={(value) => setAttributes({ padding: value })} />
                             </PanelBody>
                         </InspectorTab>
                         <InspectorTab key={'advance'}>
@@ -473,11 +482,11 @@ class edit extends Component {
     }
 };
 
-export default withSelect((select, props) => {
+export default withSelect((select) => {
     const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
     let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 
     return {
         deviceType: deviceType
     }
-})(edit)
+})(Edit)
