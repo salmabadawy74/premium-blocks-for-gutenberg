@@ -84,6 +84,7 @@ if ( ! class_exists( 'PBG_Plugin' ) ) {
 			require_once PREMIUM_BLOCKS_PATH . 'admin/settings/elements.php';
 			require_once PREMIUM_BLOCKS_PATH . 'admin/settings/assets.php';
 			require_once PREMIUM_BLOCKS_PATH . 'admin/includes/pb-panel/helpers/class-premium-blocks-activate.php';
+
 			if ( is_admin() ) {
 				require_once PREMIUM_BLOCKS_PATH . 'admin/reports/deps/data.php';
 				require_once PREMIUM_BLOCKS_PATH . 'admin/includes/rollback.php';
@@ -92,12 +93,10 @@ if ( ! class_exists( 'PBG_Plugin' ) ) {
 				require_once PREMIUM_BLOCKS_PATH . 'admin/reports/about.php';
 				require_once PREMIUM_BLOCKS_PATH . 'admin/includes/notices.php';
 				require_once PREMIUM_BLOCKS_PATH . 'admin/includes/pb-panel/class-pb-panel.php';
-
 			}
 
 			require_once PREMIUM_BLOCKS_PATH . 'classes/class-pbg-blocks-helper.php';
 			require_once PREMIUM_BLOCKS_PATH . 'classes/class-pbg-blocks-loader.php';
-
 			// require_once PREMIUM_BLOCKS_PATH . 'includes/premium-blocks-frontend.php';
 		}
 

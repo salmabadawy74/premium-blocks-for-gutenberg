@@ -10,7 +10,7 @@ export const PanelProvider = (props) => {
     document.dispatchEvent(event);
 
     const pluginsContext = {
-        tabs,
+        tabs
     };
 
     return <PanelContext.Provider value={pluginsContext}>

@@ -18,6 +18,7 @@ const SingleOption = ( props ) => {
 
     const handleChange = async () => {
         setIsLoading(true);
+
         let newValue = !value
         const body = new FormData()
         body.append('action', 'pb-panel-update-option')
@@ -43,7 +44,7 @@ const SingleOption = ( props ) => {
         setIsLoading(false)
     };
 
-    let btnText = value === true ? __('Deactivate', 'premium-gutenberg') : __('Activate', 'premium-gutenberg')
+    let checked = value === true ? true : false
     const btnClasses = value === true ? 'secondary' : 'primary';
     return <div id={props.id}>
         <label>
@@ -56,16 +57,13 @@ const SingleOption = ( props ) => {
         <div className="option-actions">
         <ToggleControl
             label={__('Hide in Desktop')}
-            //checked={checked}
-            onChange={handleChange}
+            checked={checked}
+            onChange={() => {
+                handleChange()
+            }}
         />
             </div>
-        {/* <div className="option-actions">
-            <button className={`pb-button ${btnClasses}`} onClick={() => {
-                handleChange()
-            }} disabled={isLoading}>{btnText}</button>
-            {value && props.params.url && <a className='pb-button' href={props.params.url}>{__('Customize', 'premium-gutenberg')}</a>}
-        </div> */}
+
     </div>
 }
 
