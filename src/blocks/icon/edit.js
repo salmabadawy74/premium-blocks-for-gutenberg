@@ -23,12 +23,12 @@ const { PanelBody, SelectControl, ToggleControl, TextControl } = wp.components;
 
 const { useEffect, Fragment } = wp.element;
 
-const { InspectorControls } = wp.blockEditor;
+const { InspectorControls,useBlockProps } = wp.blockEditor;
 
 const { withSelect } = wp.data;
 
 function Edit(props) {
-    const { isSelected, setAttributes, className } = props;
+    const { setAttributes, className } = props;
 
     useEffect(() => {
         setAttributes({
@@ -61,7 +61,7 @@ function Edit(props) {
         containerShadow,
         iconShadow,
     } = props.attributes;
-console.log(props.attributes)
+
     const EFFECTS = [
         {
             value: "none",
@@ -93,23 +93,29 @@ console.log(props.attributes)
         },
     ];
 
-    const saveIconStyle = (item, value) => {
-        const newColors = { ...iconStyles };
-        newColors[item] = value;
-        setAttributes({ iconStyles: newColors });
+    const saveIconStyle = (value) => {
+        const newUpdate = iconStyles.map((item, index) => {
+            if (0 === index) {
+                item = { ...item, ...value };
+            }
+            return item;
+        });
+        setAttributes({
+            iconStyles: newUpdate,
+        });
     };
 
     const loadStyles = () => {
         const styles = {};
         styles[` .${blockId} .premium-icon-container i:hover`] = {
-            'color': `${iconStyles.iconHoverColor} !important`,
-            'background-color': `${iconStyles.iconHoverBack} !important`
+            'color': `${iconStyles[0].iconHoverColor} !important`,
+            'background-color': `${iconStyles[0].iconHoverBack} !important`
         };
         return generateCss(styles);
     }
 
-    return [
-        isSelected && (
+    return (
+        <Fragment>
             <InspectorControls key={"inspector"}>
                 <InspectorTabs tabs={["layout", "style", "advance"]}>
                     <InspectorTab key={"layout"}>
@@ -183,15 +189,15 @@ console.log(props.attributes)
                                     <Fragment>
                                         <AdvancedPopColorControl
                                             label={__("Color", "premium-blocks-for-gutenberg")}
-                                            colorValue={iconStyles.iconColor}
+                                            colorValue={iconStyles[0].iconColor}
                                             colorDefault={""}
-                                            onColorChange={(value) => saveIconStyle( "iconColor", value )}
+                                            onColorChange={(value) => saveIconStyle({ iconColor: value })}
                                         />
                                         <AdvancedPopColorControl
                                             label={__("Background Color", "premium-blocks-for-gutenberg")}
-                                            colorValue={iconStyles.iconBack}
+                                            colorValue={iconStyles[0].iconBack}
                                             colorDefault={""}
-                                            onColorChange={(value) => saveIconStyle( "iconBack", value )}
+                                            onColorChange={(value) => saveIconStyle({ iconBack: value })}
                                         />
                                     </Fragment>
                                 </InsideTab>
@@ -199,15 +205,15 @@ console.log(props.attributes)
                                     <Fragment>
                                         <AdvancedPopColorControl
                                             label={__("Hover Color", "premium-blocks-for-gutenberg")}
-                                            colorValue={iconStyles.iconHoverColor}
+                                            colorValue={iconStyles[0].iconHoverColor}
                                             colorDefault={""}
-                                            onColorChange={(value) => saveIconStyle( "iconHoverColor", value )}
+                                            onColorChange={(value) => saveIconStyle({ iconHoverColor: value })}
                                         />
                                         <AdvancedPopColorControl
                                             label={__("Hover Background Color", "premium-blocks-for-gutenberg")}
-                                            colorValue={iconStyles.iconHoverBack}
+                                            colorValue={iconStyles[0].iconHoverBack}
                                             colorDefault={""}
-                                            onColorChange={(value) => saveIconStyle( "iconHoverBack", value )}
+                                            onColorChange={(value) => saveIconStyle({ iconHoverBack: value })}
                                         />
                                         <SelectControl
                                             label={__("Hover Effect", "premium-blocks-for-gutenberg")}
@@ -293,20 +299,24 @@ console.log(props.attributes)
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
-        ),
-        <div
-            className={classnames(className,
-                "premium-icon", `${blockId} premium-icon__container`, {
-                ' premium-desktop-hidden': hideDesktop,
-                ' premium-tablet-hidden': hideTablet,
-                ' premium-mobile-hidden': hideMobile,
-            })}
-        >
             <style
                 dangerouslySetInnerHTML={{
-                    __html: loadStyles()
+                    __html: loadStyles(),
                 }}
             />
+            <div
+                {...useBlockProps({
+                    className: classnames(
+                        className,
+                        `premium-icon ${blockId} premium-icon__container`,
+                        {
+                            " premium-desktop-hidden": hideDesktop,
+                            " premium-tablet-hidden": hideTablet,
+                            " premium-mobile-hidden": hideMobile,
+                        }
+                    ),
+                })}
+            >
             <div
                 className={`premium-icon-container`}
                 style={{
@@ -328,8 +338,8 @@ console.log(props.attributes)
                         <i
                             className={`premium-icon ${selectedIcon}`}
                             style={{
-                                color: iconStyles.iconColor,
-                                backgroundColor: iconStyles.iconBack,
+                                color: iconStyles[0].iconColor,
+                                backgroundColor: iconStyles[0].iconBack,
                                 fontSize: (iconSize[props.deviceType] || 50) + iconSize.unit,
                                 ...borderCss(iconBorder, props.deviceType),
                                 ...paddingCss(iconPadding, props.deviceType),
@@ -341,10 +351,11 @@ console.log(props.attributes)
                 </div>
             </div>
         </div>
-    ];
-};
+        </Fragment>
+    );
+}
 
-export default withSelect((select, props) => {
+export default withSelect((select) => {
     const { __experimentalGetPreviewDeviceType = null } =
         select("core/edit-post");
     let deviceType = __experimentalGetPreviewDeviceType
