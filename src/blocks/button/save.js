@@ -1,6 +1,6 @@
 import classnames from 'classnames'
 import { generateCss, filterJsCss } from '../../components/HelperFunction';
-const { RichText } = wp.blockEditor;
+const { RichText, useBlockProps } = wp.blockEditor;
 
 const save = props => {
     const { className } = props;
@@ -24,12 +24,6 @@ const save = props => {
         blockId
     } = props.attributes;
 
-    const mainClasses = classnames(className, 'premium-button__wrap', {
-        " premium-desktop-hidden": hideDesktop,
-        " premium-tablet-hidden": hideTablet,
-        " premium-mobile-hidden": hideMobile,
-    });
-
     const loadStyles = () => {
         const styles = {};
 
@@ -49,7 +43,17 @@ const save = props => {
 
     return (
         <div
-            className={`${mainClasses} premium-button__${effect} ${blockId} premium-button__${effectDir} premium-button-${block_id}`}
+            {...useBlockProps.save({
+                className: classnames(
+                    className,
+                    `premium-button__wrap ${blockId} premium-button__${effect} premium-button__${effectDir} premium-button-${block_id}`,
+                    {
+                        " premium-desktop-hidden": hideDesktop,
+                        " premium-tablet-hidden": hideTablet,
+                        " premium-mobile-hidden": hideMobile,
+                    }
+                ),
+            })}
         >
             <style>{loadStyles()}</style>
             <RichText.Content
