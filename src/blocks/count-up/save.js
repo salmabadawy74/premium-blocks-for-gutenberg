@@ -1,6 +1,6 @@
 import classnames from 'classnames'
 import { gradientBackground, filterJsCss } from "../../components/HelperFunction";
-const { RichText } = wp.blockEditor;
+const { RichText, useBlockProps } = wp.blockEditor;
 
 const save = props => {
     const { className } = props;
@@ -40,15 +40,19 @@ const save = props => {
 
     let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
 
-    const mainClasses = classnames(className, 'premium-countup__wrap', {
-        ' premium-desktop-hidden': hideDesktop,
-        ' premium-tablet-hidden': hideTablet,
-        ' premium-mobile-hidden': hideMobile,
-    });
-
     return (
         <div
-            className={`${mainClasses} ${blockId}`}
+            {...useBlockProps.save({
+                className: classnames(
+                    className,
+                    `premium-countup__wrap ${blockId}`,
+                    {
+                        " premium-desktop-hidden": hideDesktop,
+                        " premium-tablet-hidden": hideTablet,
+                        " premium-mobile-hidden": hideMobile,
+                    }
+                ),
+            })}
             style={filterJsCss({
                 flexDirection: flexDir,
                 boxShadow: `${boxShadow?.horizontal}px ${boxShadow?.vertical}px ${boxShadow?.blur}px ${boxShadow?.color} ${boxShadow?.position}`,
