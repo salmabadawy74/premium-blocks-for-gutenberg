@@ -167,5 +167,4 @@ function render_block_pbg_breadcrumbs( $attributes ) {
 		$breadcrumb->get_trail()
 	);
 }
-
-
+;

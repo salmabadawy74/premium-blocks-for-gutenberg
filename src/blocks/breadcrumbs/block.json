@@ -10,7 +10,7 @@
     "attributes": {
         "blockId": {
             "type": "string"
-        },
+      },
         "textAlign": {
             "type": "dtring"
         },
