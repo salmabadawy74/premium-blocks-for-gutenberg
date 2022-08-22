@@ -11,8 +11,9 @@
         "Font Awesome"
     ],
     "supports": {
+        "anchor": true,
         "html": false
-    },
+      },
     "editorScript": "file:./build/block.js",
     "script": "pbg-blocks-js",
     "editorStyle": "file:./build/index.css",
@@ -50,7 +51,7 @@
             "default": "none"
         },
         "iconStyles": {
-            "type": "object",
+            "type": "array",
             "default": [
                 {
                     "iconColor": "",

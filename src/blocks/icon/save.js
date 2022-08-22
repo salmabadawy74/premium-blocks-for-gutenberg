@@ -26,8 +26,8 @@ const save = props => {
     const loadStyles = () => {
         const styles = {};
         styles[` .${blockId} .premium-icon-container i:hover`] = {
-            'color': `${iconStyles.iconHoverColor} !important`,
-            'background-color': `${iconStyles.iconHoverBack} !important`
+            'color': `${iconStyles[0].iconHoverColor} !important`,
+            'background-color': `${iconStyles[0].iconHoverBack} !important`
         };
         return generateCss(styles);
     }
@@ -65,8 +65,8 @@ const save = props => {
                         <i
                             className={`premium-icon ${selectedIcon}`}
                             style={filterJsCss({
-                                color: iconStyles.iconColor,
-                                backgroundColor: iconStyles.iconBack,
+                                color: iconStyles[0].iconColor,
+                                backgroundColor: iconStyles[0].iconBack,
                                 borderStyle: iconBorder.borderType,
                                 borderColor: iconBorder.borderColor,
                                 textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`
