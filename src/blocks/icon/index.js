@@ -22,9 +22,6 @@ registerBlockType('premium/icon', {
     supports: {
         inserter: icon
     },
-    /**
-     * @see ./edit.js
-     */
     icon: PBG_Block_Icons.icon,
 
     edit,

@@ -48,7 +48,7 @@ class Edit extends Component {
     }
 
     render() {
-        const { isSelected, setAttributes, className, attributes } = this.props;
+        const { setAttributes, className, attributes } = this.props;
 
         const saveTitleStyle = (value) => {
             const newUpdate = titleStyles.map((item, index) => {
@@ -289,8 +289,8 @@ class Edit extends Component {
             return generateCss(styles);
         };
 
-        return [
-            isSelected && (
+        return (
+            <Fragment>
                 <InspectorControls key={"inspector"}>
                     <InspectorTabs tabs={["layout", "style", "advance"]}>
                         <InspectorTab key={"layout"}>
@@ -1033,8 +1033,7 @@ class Edit extends Component {
                         </InspectorTab>
                     </InspectorTabs>
                 </InspectorControls>
-            ),
-            <style>{loadStyles()}</style>,
+            <style>{loadStyles()}</style>
             <div
                 className={`${mainClasses} ${blockId} premium-icon-box-${iconPos} premium-icon-box-${iconHPos} `}
                 style={{
@@ -1198,8 +1197,9 @@ class Edit extends Component {
                 {loadTitleGoogleFonts}
                 {loadDescriptionGoogleFonts}
                 {loadButtonGoogleFonts}
-            </div>,
-        ];
+            </div>
+        </Fragment>
+        );
     }
 }
 

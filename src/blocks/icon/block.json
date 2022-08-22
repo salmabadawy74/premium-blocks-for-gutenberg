@@ -14,10 +14,6 @@
         "anchor": true,
         "html": false
       },
-    "editorScript": "file:./build/block.js",
-    "script": "pbg-blocks-js",
-    "editorStyle": "file:./build/index.css",
-    "style": "file:./build/style-block.css",
     "attributes": {
         "blockId": {
             "type": "string"
