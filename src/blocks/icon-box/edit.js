@@ -1018,17 +1018,17 @@ function Edit(props) {
             </InspectorControls>
         <style>{loadStyles()}</style>
         <div
-        {...useBlockProps({
-            className: classnames(
-                className,
-                `premium-icon-box ${blockId} premium-icon-box-${iconPos} premium-icon-box-${iconHPos}`,
-                {
-                    " premium-desktop-hidden": hideDesktop,
-                    " premium-tablet-hidden": hideTablet,
-                    " premium-mobile-hidden": hideMobile,
-                }
-            ),
-        })}
+            {...useBlockProps({
+                className: classnames(
+                    className,
+                    `premium-icon-box ${blockId} premium-icon-box-${iconPos} premium-icon-box-${iconHPos}`,
+                    {
+                        " premium-desktop-hidden": hideDesktop,
+                        " premium-tablet-hidden": hideTablet,
+                        " premium-mobile-hidden": hideMobile,
+                    }
+                ),
+            })}
             style={{
                 textAlign: align[props.deviceType],
                 ...borderCss(containerBorder, props.deviceType),
