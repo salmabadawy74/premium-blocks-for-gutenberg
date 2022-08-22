@@ -28106,578 +28106,6 @@ function save(props) {
 
 /***/ }),
 
-/***/ "./src/blocks/icon-box/attributes.js":
-/*!*******************************************!*\
-  !*** ./src/blocks/icon-box/attributes.js ***!
-  \*******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-const {
-  __
-} = wp.i18n;
-const attributes = {
-  blockId: {
-    type: "string"
-  },
-  iconType: {
-    type: "string",
-    default: "dash"
-  },
-  borderIconBox: {
-    type: "boolean",
-    default: false
-  },
-  btnBorderIconBox: {
-    type: "boolean",
-    default: false
-  },
-  align: {
-    type: "object",
-    default: {
-      Desktop: "center",
-      Tablet: "center",
-      Mobile: "center"
-    }
-  },
-  iconImage: {
-    type: "string",
-    default: "icon"
-  },
-  iconImgId: {
-    type: "string"
-  },
-  iconImgUrl: {
-    type: "string"
-  },
-  hoverEffect: {
-    type: "string",
-    default: "none"
-  },
-  iconChecked: {
-    type: "boolean",
-    default: true
-  },
-  iconPos: {
-    type: "string",
-    default: "block"
-  },
-  iconHPos: {
-    type: "string",
-    default: "before"
-  },
-  iconVPos: {
-    type: "string",
-    default: "center"
-  },
-  iconSize: {
-    type: "object",
-    default: {
-      Desktop: '40',
-      Tablet: '',
-      Mobile: '',
-      unit: 'px'
-    }
-  },
-  iconRadius: {
-    type: "number"
-  },
-  iconColor: {
-    type: "string",
-    default: '#793dc3'
-  },
-  iconBackColor: {
-    type: "string"
-  },
-  selectedIcon: {
-    type: "string",
-    default: "dashicons dashicons-admin-site"
-  },
-  titleChecked: {
-    type: "boolean",
-    default: true
-  },
-  titleText: {
-    type: "array",
-    source: "children",
-    selector: ".premium-icon-box__title",
-    default: __("Awesome Title", 'premium-blocks-for-gutenberg')
-  },
-  descText: {
-    type: "array",
-    source: "children",
-    selector: ".premium-icon-box__desc",
-    default: "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
-  },
-  descChecked: {
-    type: "boolean",
-    default: true
-  },
-  btnChecked: {
-    type: "boolean",
-    default: true
-  },
-  btnEffect: {
-    type: "string",
-    default: "none"
-  },
-  effectDir: {
-    type: "string",
-    default: "top"
-  },
-  btnTarget: {
-    type: "boolean",
-    default: false
-  },
-  btnText: {
-    type: "array",
-    source: "children",
-    selector: ".premium-icon-box__btn",
-    default: __("Click Here", 'premium-blocks-for-gutenberg')
-  },
-  btnLink: {
-    type: "string",
-    source: "attribute",
-    attribute: "href",
-    selector: ".premium-icon-box__btn"
-  },
-  btnHoverBorder: {
-    type: "string"
-  },
-  classMigrate: {
-    type: "boolean",
-    default: false
-  },
-  hideDesktop: {
-    type: 'boolean',
-    default: false
-  },
-  hideTablet: {
-    type: 'boolean',
-    default: false
-  },
-  hideMobile: {
-    type: 'boolean',
-    default: false
-  },
-  iconOpacity: {
-    type: "number",
-    default: "1"
-  },
-  titleTag: {
-    type: "string",
-    default: "h2"
-  },
-  titleStyles: {
-    type: "array",
-    default: [{
-      titleColor: ''
-    }]
-  },
-  descStyles: {
-    type: "array",
-    default: [{
-      descColor: ''
-    }]
-  },
-  btnStyles: {
-    type: 'array',
-    default: [{
-      btnColor: '',
-      btnHoverColor: '',
-      btnBack: 'rgb(242, 242, 242)',
-      btnHoverBack: ''
-    }]
-  },
-  containerMargin: {
-    type: "object",
-    default: {
-      Desktop: {
-        'top': "",
-        'right': "",
-        'bottom': "",
-        'left': ""
-      },
-      Tablet: {
-        'top': "",
-        'right': "",
-        'bottom': "",
-        'left': ""
-      },
-      Mobile: {
-        'top': "",
-        'right': "",
-        'bottom': "",
-        'left': ""
-      },
-      unit: "px"
-    }
-  },
-  containerPadding: {
-    type: "object",
-    default: {
-      Desktop: {
-        top: "",
-        right: "",
-        bottom: "",
-        left: ""
-      },
-      Tablet: {
-        top: "",
-        right: "",
-        bottom: "",
-        left: ""
-      },
-      Mobile: {
-        top: "",
-        right: "",
-        bottom: "",
-        left: ""
-      },
-      unit: "px"
-    }
-  },
-  titleMargin: {
-    type: "object",
-    default: {
-      Desktop: {
-        top: "",
-        right: "",
-        bottom: "",
-        left: ""
-      },
-      Tablet: {
-        top: "",
-        right: "",
-        bottom: "",
-        left: ""
-      },
-      Mobile: {
-        top: "",
-        right: "",
-        bottom: "",
-        left: ""
-      },
-      unit: "px"
-    }
-  },
-  descMargin: {
-    type: "object",
-    default: {
-      Desktop: {
-        top: "",
-        right: "",
-        bottom: "",
-        left: ""
-      },
-      Tablet: {
-        top: "",
-        right: "",
-        bottom: "",
-        left: ""
-      },
-      Mobile: {
-        top: "",
-        right: "",
-        bottom: "",
-        left: ""
-      },
-      unit: "px"
-    }
-  },
-  btnMargin: {
-    type: "object",
-    default: {
-      Desktop: {
-        top: "",
-        right: "",
-        bottom: "",
-        left: ""
-      },
-      Tablet: {
-        top: "",
-        right: "",
-        bottom: "",
-        left: ""
-      },
-      Mobile: {
-        top: "",
-        right: "",
-        bottom: "",
-        left: ""
-      },
-      unit: "px"
-    }
-  },
-  btnPadding: {
-    type: "object",
-    default: {
-      Desktop: {
-        top: "",
-        right: "",
-        bottom: "",
-        left: ""
-      },
-      Tablet: {
-        top: "",
-        right: "",
-        bottom: "",
-        left: ""
-      },
-      Mobile: {
-        top: "",
-        right: "",
-        bottom: "",
-        left: ""
-      },
-      unit: "px"
-    }
-  },
-  btnBorder: {
-    type: "object",
-    default: {
-      borderColor: "",
-      borderType: "none",
-      borderRadius: {
-        Desktop: {
-          top: "",
-          right: "",
-          bottom: "",
-          left: ""
-        },
-        Tablet: {
-          top: "",
-          right: "",
-          bottom: "",
-          left: ""
-        },
-        Mobile: {
-          top: "",
-          right: "",
-          bottom: "",
-          left: ""
-        }
-      },
-      borderWidth: {
-        Desktop: {
-          top: "",
-          right: "",
-          bottom: "",
-          left: ""
-        },
-        Tablet: {
-          top: "",
-          right: "",
-          bottom: "",
-          left: ""
-        },
-        Mobile: {
-          top: "",
-          right: "",
-          bottom: "",
-          left: ""
-        }
-      }
-    }
-  },
-  containerBorder: {
-    type: "object",
-    default: {
-      borderColor: "",
-      borderType: "none",
-      borderRadius: {
-        Desktop: {
-          top: "",
-          right: "",
-          bottom: "",
-          left: ""
-        },
-        Tablet: {
-          top: "",
-          right: "",
-          bottom: "",
-          left: ""
-        },
-        Mobile: {
-          top: "",
-          right: "",
-          bottom: "",
-          left: ""
-        }
-      },
-      borderWidth: {
-        Desktop: {
-          top: "",
-          right: "",
-          bottom: "",
-          left: ""
-        },
-        Tablet: {
-          top: "",
-          right: "",
-          bottom: "",
-          left: ""
-        },
-        Mobile: {
-          top: "",
-          right: "",
-          bottom: "",
-          left: ""
-        }
-      }
-    }
-  },
-  containerBackground: {
-    type: "object",
-    default: {
-      'backgroundType': '',
-      'backgroundColor': '',
-      'backgroundImageID': '',
-      'backgroundImageURL': '',
-      'backgroundPosition': "center center",
-      'backgroundRepeat': "repeat",
-      'backgroundSize': "auto",
-      'fixed': false,
-      "gradientLocationOne": "0",
-      "gradientColorTwo": "",
-      "gradientLocationTwo": "100",
-      "gradientAngle": "180",
-      "gradientPosition": "center center",
-      "gradientType": "linear"
-    }
-  },
-  titleShadow: {
-    type: "object",
-    default: {
-      'color': 'undefined',
-      'blur': '10',
-      'horizontal': '0',
-      'vertical': '0'
-    }
-  },
-  btnShadow: {
-    type: "object",
-    default: {
-      'color': 'undefined',
-      'blur': '10',
-      'horizontal': '0',
-      'vertical': '0',
-      'position': ' '
-    }
-  },
-  containerShadow: {
-    type: "object",
-    default: {
-      'color': 'undefined',
-      'blur': '10',
-      'horizontal': '0',
-      'vertical': '0',
-      'position': ' '
-    }
-  },
-  containerHoverShadow: {
-    type: "object",
-    default: {
-      'color': 'undefined',
-      'blur': '10',
-      'horizontal': '0',
-      'vertical': '0',
-      'position': ' '
-    }
-  },
-  titleTypography: {
-    type: "object",
-    default: {
-      "fontWeight": '400',
-      'fontStyle': '',
-      'textTransform': '',
-      'fontFamily': 'Default',
-      'textDecoration': '',
-      'fontSize': {
-        'Desktop': '32',
-        "Tablet": '32',
-        "Mobile": '32',
-        "unit": 'px'
-      },
-      'lineHeight': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
-      },
-      'letterSpacing': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
-      }
-    }
-  },
-  descTypography: {
-    type: "object",
-    default: {
-      "fontWeight": '400',
-      'fontStyle': '',
-      'textTransform': '',
-      'fontFamily': 'Default',
-      'textDecoration': '',
-      'fontSize': {
-        'Desktop': '16',
-        "Tablet": '16',
-        "Mobile": '16',
-        "unit": 'px'
-      },
-      'lineHeight': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
-      },
-      'letterSpacing': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
-      }
-    }
-  },
-  btnTypography: {
-    type: "object",
-    default: {
-      "fontWeight": '400',
-      'fontStyle': '',
-      'textTransform': '',
-      'fontFamily': 'Default',
-      'textDecoration': '',
-      'fontSize': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
-      },
-      'lineHeight': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
-      },
-      'letterSpacing': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
-      }
-    }
-  }
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (attributes);
-
-/***/ }),
-
 /***/ "./src/blocks/icon-box/deprecated.js":
 /*!*******************************************!*\
   !*** ./src/blocks/icon-box/deprecated.js ***!
@@ -31750,7 +31178,6 @@ class Edit extends Component {
 
   render() {
     const {
-      isSelected,
       setAttributes,
       className,
       attributes
@@ -31977,7 +31404,7 @@ class Edit extends Component {
       return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_22__.generateCss)(styles);
     };
 
-    return [isSelected && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, {
       key: "inspector"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_17__["default"], {
       tabs: ["layout", "style", "advance"]
@@ -32486,7 +31913,7 @@ class Edit extends Component {
         boxShadow: `${btnShadow.horizontal || 0}px ${btnShadow.vertical || 0}px ${btnShadow.blur || 0}px ${btnShadow.color} ${btnShadow.position}`
       },
       keepPlaceholderOnFocus: true
-    }))), loadTitleGoogleFonts, loadDescriptionGoogleFonts, loadButtonGoogleFonts)];
+    }))), loadTitleGoogleFonts, loadDescriptionGoogleFonts, loadButtonGoogleFonts));
   }
 
 }
@@ -32515,8 +31942,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit */ "./src/blocks/icon-box/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/icon-box/save.js");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/icon-box/deprecated.js");
-/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./attributes */ "./src/blocks/icon-box/attributes.js");
-/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./block.json */ "./src/blocks/icon-box/block.json");
 
 
 
@@ -32529,12 +31956,11 @@ const {
 const {
   registerBlockType
 } = wp.blocks;
-registerBlockType("premium/icon-box", {
+registerBlockType("premium/icon-box", { ..._block_json__WEBPACK_IMPORTED_MODULE_5__,
   title: __("Icon Box", 'premium-blocks-for-gutenberg'),
   description: __('Add informative info boxes along with Icon, Description, and CTA using Premium Icon Box Block.', 'premium-block-for-gutenberg'),
-  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__["default"].icon_box,
+  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_4__["default"].icon_box,
   category: "premium-blocks",
-  attributes: _attributes__WEBPACK_IMPORTED_MODULE_4__["default"],
   keywords: [__("Icon", 'premium-blocks-for-gutenberg'), __("Font Awesome", 'premium-blocks-for-gutenberg'), __("Box", 'premium-blocks-for-gutenberg')],
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.iconBox
@@ -34528,10 +33954,6 @@ __webpack_require__.r(__webpack_exports__);
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_3__.icon
   },
-
-  /**
-   * @see ./edit.js
-   */
   icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_2__["default"].icon,
   edit: _edit__WEBPACK_IMPORTED_MODULE_5__["default"],
   save: _save__WEBPACK_IMPORTED_MODULE_6__["default"],
@@ -100569,6 +99991,17 @@ function _extends() {
 
 /***/ }),
 
+/***/ "./src/blocks/icon-box/block.json":
+/*!****************************************!*\
+  !*** ./src/blocks/icon-box/block.json ***!
+  \****************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/icon-box","title":"Icon Box","category":"premium-blocks","attributes":{"blockId":{"type":"string"},"iconType":{"type":"string","default":"dash"},"borderIconBox":{"type":"boolean","default":false},"btnBorderIconBox":{"type":"boolean","default":false},"align":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"iconImage":{"type":"string","default":"icon"},"iconImgId":{"type":"string"},"iconImgUrl":{"type":"string"},"hoverEffect":{"type":"string","default":"none"},"iconChecked":{"type":"boolean","default":true},"iconPos":{"type":"string","default":"block"},"iconHPos":{"type":"string","default":"before"},"iconVPos":{"type":"string","default":"center"},"iconSize":{"type":"object","default":{"Desktop":"40","Tablet":"","Mobile":"","unit":"px"}},"iconRadius":{"type":"number"},"iconColor":{"type":"string","default":"#793dc3"},"iconBackColor":{"type":"string"},"selectedIcon":{"type":"string","default":"dashicons dashicons-admin-site"},"titleChecked":{"type":"boolean","default":true},"titleText":{"type":"array","source":"children","selector":".premium-icon-box__title","default":"Awesome Title"},"descText":{"type":"array","source":"children","selector":".premium-icon-box__desc","default":"Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."},"descChecked":{"type":"boolean","default":true},"btnChecked":{"type":"boolean","default":true},"btnEffect":{"type":"string","default":"none"},"effectDir":{"type":"string","default":"top"},"btnTarget":{"type":"boolean","default":false},"btnText":{"type":"array","source":"children","selector":".premium-icon-box__btn","default":"Click Here"},"btnLink":{"type":"string","source":"attribute","attribute":"href","selector":".premium-icon-box__btn"},"btnHoverBorder":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"hideDesktop":{"type":"boolean","default":false},"hideTablet":{"type":"boolean","default":false},"hideMobile":{"type":"boolean","default":false},"iconOpacity":{"type":"number","default":"1"},"titleTag":{"type":"string","default":"h2"},"titleStyles":{"type":"array","default":[{"titleColor":""}]},"descStyles":{"type":"array","default":[{"descColor":""}]},"btnStyles":{"type":"array","default":[{"btnColor":"","btnHoverColor":"","btnBack":"rgb(242, 242, 242)","btnHoverBack":""}]},"containerMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"containerPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"titleMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"descMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"btnMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"btnPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"btnBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"containerBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"containerBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}},"titleShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"btnShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}},"containerShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}},"containerHoverShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}},"titleTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","textTransform":"","fontFamily":"Default","textDecoration":"","fontSize":{"Desktop":"32","Tablet":"32","Mobile":"32","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"descTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","textTransform":"","fontFamily":"Default","textDecoration":"","fontSize":{"Desktop":"16","Tablet":"16","Mobile":"16","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"btnTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","textTransform":"","fontFamily":"Default","textDecoration":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}}}}');
+
+/***/ }),
+
 /***/ "./src/blocks/icon/block.json":
 /*!************************************!*\
   !*** ./src/blocks/icon/block.json ***!
@@ -100576,7 +100009,7 @@ function _extends() {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/icon","title":"Icon","icon":"icon","category":"premium-blocks","description":"Decorate your Gutenberg website using Premium Icon Block.","keywords":["Icon","Font Awesome"],"supports":{"anchor":true,"html":false},"editorScript":"file:./build/block.js","script":"pbg-blocks-js","editorStyle":"file:./build/index.css","style":"file:./build/style-block.css","attributes":{"blockId":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"wrapBorder":{"type":"boolean","default":false},"iconType":{"type":"string","default":"dash"},"selectedIcon":{"type":"string","default":"dashicons dashicons-admin-site"},"iconAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"hoverEffect":{"type":"string","default":"none"},"iconStyles":{"type":"array","default":[{"iconColor":"","iconBack":"","iconHoverColor":"","iconHoverBack":"","iconOpacity":"1"}]},"urlCheck":{"type":"boolean"},"link":{"type":"string"},"target":{"type":"boolean"},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"iconSize":{"type":"object","default":{"Desktop":"50","Tablet":"50","Mobile":"50","unit":"px"}},"iconMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"iconPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"wrapMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"wrapPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"iconBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"containerBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"containerBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}},"containerShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}},"iconShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}}}}');
+module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/icon","title":"Icon","icon":"icon","category":"premium-blocks","description":"Decorate your Gutenberg website using Premium Icon Block.","keywords":["Icon","Font Awesome"],"supports":{"anchor":true,"html":false},"attributes":{"blockId":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"wrapBorder":{"type":"boolean","default":false},"iconType":{"type":"string","default":"dash"},"selectedIcon":{"type":"string","default":"dashicons dashicons-admin-site"},"iconAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"hoverEffect":{"type":"string","default":"none"},"iconStyles":{"type":"array","default":[{"iconColor":"","iconBack":"","iconHoverColor":"","iconHoverBack":"","iconOpacity":"1"}]},"urlCheck":{"type":"boolean"},"link":{"type":"string"},"target":{"type":"boolean"},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"iconSize":{"type":"object","default":{"Desktop":"50","Tablet":"50","Mobile":"50","unit":"px"}},"iconMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"iconPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"wrapMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"wrapPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"iconBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"containerBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"containerBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}},"containerShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}},"iconShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}}}}');
 
 /***/ })
 
