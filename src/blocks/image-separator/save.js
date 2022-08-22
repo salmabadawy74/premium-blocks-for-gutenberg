@@ -1,5 +1,7 @@
 import classnames from "classnames";
 import { filterJsCss, generateCss } from "../../components/HelperFunction";
+const { useBlockProps } = wp.blockEditor;
+
 export default function save(props) {
 
     const { className } = props
@@ -28,12 +30,6 @@ export default function save(props) {
 
     let target = (linkTarget) ? "_blank" : "_self";
 
-    const mainClasses = classnames(className, 'premium-image-separator', {
-        ' premium-desktop-hidden': hideDesktop,
-        ' premium-tablet-hidden': hideTablet,
-        ' premium-mobile-hidden': hideMobile,
-    });
-
     const loadStyles = () => {
         const styles = {};
         styles[`.${blockId} .premium-image-separator-container:hover img`] = {
@@ -47,7 +43,19 @@ export default function save(props) {
     }
 
     return (
-        <div className={`${mainClasses} ${blockId} `}>
+        <div 
+            {...useBlockProps.save({
+                className: classnames(
+                    className,
+                    `premium-image-separator ${blockId}`,
+                    {
+                        " premium-desktop-hidden": hideDesktop,
+                        " premium-tablet-hidden": hideTablet,
+                        " premium-mobile-hidden": hideMobile,
+                    }
+                ),
+            })}
+        >
             <style dangerouslySetInnerHTML={{ __html: loadStyles() }} />
             <div
                 className={`premium-image-separator-container`}
