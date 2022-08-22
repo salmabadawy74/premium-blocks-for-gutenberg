@@ -3,17 +3,7 @@
     "version": "0.1.0",
     "name": "premium/icon",
     "title": "Icon",
-    "icon": "icon",
     "category": "premium-blocks",
-    "description": "Decorate your Gutenberg website using Premium Icon Block.",
-    "keywords": [
-        "Icon",
-        "Font Awesome"
-    ],
-    "supports": {
-        "anchor": true,
-        "html": false
-      },
     "attributes": {
         "blockId": {
             "type": "string"

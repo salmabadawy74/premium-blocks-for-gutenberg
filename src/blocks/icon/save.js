@@ -1,4 +1,5 @@
 import classnames from 'classnames'
+import { useBlockProps } from "@wordpress/block-editor";
 import { gradientBackground, filterJsCss, generateCss } from '../../components/HelperFunction'
 
 const save = props => {
@@ -34,11 +35,16 @@ const save = props => {
 
     return (
         <div
-            className={classnames(className,
-                "premium-icon", `${blockId} premium-icon__container`, {
-                ' premium-desktop-hidden': hideDesktop,
-                ' premium-tablet-hidden': hideTablet,
-                ' premium-mobile-hidden': hideMobile,
+            {...useBlockProps.save({
+                className: classnames(
+                    className,
+                    `premium-icon ${blockId} premium-icon__container`,
+                    {
+                        " premium-desktop-hidden": hideDesktop,
+                        " premium-tablet-hidden": hideTablet,
+                        " premium-mobile-hidden": hideMobile,
+                    }
+                ),
             })}
         >
             <style

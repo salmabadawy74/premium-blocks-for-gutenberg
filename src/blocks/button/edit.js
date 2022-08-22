@@ -17,213 +17,205 @@ import Icons from "../../components/icons";
 const { __ } = wp.i18n;
 
 const { PanelBody, SelectControl, ToggleControl } = wp.components;
-const { Fragment, Component } = wp.element;
-const { InspectorControls, RichText, URLInput } = wp.blockEditor;
+const { Fragment, Component, useEffect } = wp.element;
+const { InspectorControls, RichText, URLInput, useBlockProps } = wp.blockEditor;
 const { withSelect } = wp.data
 
-export class Edit extends Component {
-    constructor() {
-        super(...arguments);
+function Edit(props) {
+    const { setAttributes, className, clientId } = props;
+
+    useEffect(() => {
+        setAttributes({
+            blockId: "premium-button-" + generateBlockId(clientId)
+        });
+        setAttributes({ classMigrate: true });
+    }, []);
+
+    const {
+        btnText,
+        btnSize,
+        btnAlign,
+        btnLink,
+        btnTarget,
+        effect,
+        effectDir,
+        slideColor,
+        hideDesktop,
+        hideTablet,
+        hideMobile,
+        border,
+        btnStyles,
+        typography,
+        textShadow,
+        boxShadow,
+        padding,
+        blockId
+    } = props.attributes;
+
+    const SIZE = [
+        {
+            value: "sm",
+            label: __("Small", 'premium-blocks-for-gutenberg')
+        },
+        {
+            value: "md",
+            label: __("Medium", 'premium-blocks-for-gutenberg')
+        },
+        {
+            value: "lg",
+            label: __("Large", 'premium-blocks-for-gutenberg')
+        },
+        {
+            value: "block",
+            label: __("Block", 'premium-blocks-for-gutenberg')
+        }
+    ];
+
+    const DIRECTION = [
+        {
+            value: "top",
+            label: __("Top to Bottom", 'premium-blocks-for-gutenberg')
+        },
+        {
+            value: "bottom",
+            label: __("Bottom to Top", 'premium-blocks-for-gutenberg')
+        },
+        {
+            value: "left",
+            label: __("Left to Right", 'premium-blocks-for-gutenberg')
+        },
+        {
+            value: "right",
+            label: __("Right to Left", 'premium-blocks-for-gutenberg')
+        }
+    ];
+
+    const SHUTTER = [
+        {
+            value: "shutouthor",
+            label: __("Shutter out Horizontal", 'premium-blocks-for-gutenberg')
+        },
+        {
+            value: "shutoutver",
+            label: __("Shutter out Vertical", 'premium-blocks-for-gutenberg')
+        },
+        {
+            value: "scshutoutver",
+            label: __("Scaled Shutter Vertical", 'premium-blocks-for-gutenberg')
+        },
+        {
+            value: "scshutouthor",
+            label: __("Scaled Shutter Horizontal", 'premium-blocks-for-gutenberg')
+        },
+        {
+            value: "dshutinver",
+            label: __("Tilted Left", 'premium-blocks-for-gutenberg')
+        },
+        {
+            value: "dshutinhor",
+            label: __("Tilted Right", 'premium-blocks-for-gutenberg')
+        }
+    ];
+
+    const RADIAL = [
+        {
+            value: "radialin",
+            label: __("Radial In", 'premium-blocks-for-gutenberg')
+        },
+        {
+            value: "radialout",
+            label: __("Radial Out", 'premium-blocks-for-gutenberg')
+        },
+        {
+            value: "rectin",
+            label: __("Rectangle In", 'premium-blocks-for-gutenberg')
+        },
+        {
+            value: "rectout",
+            label: __("Rectangle Out", 'premium-blocks-for-gutenberg')
+        }
+    ];
+
+    const EFFECTS = [
+        {
+            value: "none",
+            label: __("None", 'premium-blocks-for-gutenberg')
+        },
+        {
+            value: "slide",
+            label: __("Slide", 'premium-blocks-for-gutenberg')
+        },
+        {
+            value: "shutter",
+            label: __("Shutter", 'premium-blocks-for-gutenberg')
+        },
+        {
+            value: "radial",
+            label: __("Radial", 'premium-blocks-for-gutenberg')
+        }
+    ];
+
+    const onChangeHover = newValue => {
+        props.setAttributes({ effect: newValue });
+        switch (newValue) {
+            case "slide":
+                props.setAttributes({ effectDir: "top" });
+                break;
+            case "shutter":
+                props.setAttributes({ effectDir: "shutouthor" });
+                break;
+            case "radial":
+                props.setAttributes({ effectDir: "radialin" });
+                break;
+        }
+    };
+
+
+    let loadBtnGoogleFonts
+    if (typography?.fontFamily !== 'Default') {
+        const btnconfig = {
+            google: {
+                families: [typography.fontFamily],
+            }
+        }
+        loadBtnGoogleFonts = (
+            <WebfontLoader config={btnconfig}>
+            </WebfontLoader>
+        )
     }
 
-    componentDidMount() {
-        const { setAttributes, clientId } = this.props;
-        setAttributes({ blockId: "premium-button-" + generateBlockId(clientId) });
+    const saveBtnStyles = (value) => {
+        const newUpdate = btnStyles.map((item, index) => {
+            if (0 === index) {
+                item = { ...item, ...value };
+            }
+            return item;
+        });
+        setAttributes({
+            btnStyles: newUpdate,
+        });
     }
 
-    render() {
-        const { isSelected, setAttributes, className } = this.props;
-        const {
-            btnText,
-            btnSize,
-            btnAlign,
-            btnLink,
-            btnTarget,
-            effect,
-            effectDir,
-            slideColor,
-            hideDesktop,
-            hideTablet,
-            hideMobile,
-            border,
-            btnStyles,
-            typography,
-            textShadow,
-            boxShadow,
-            padding,
-            blockId
-        } = this.props.attributes;
+    const loadStyles = () => {
+        const styles = {};
 
-        const SIZE = [
-            {
-                value: "sm",
-                label: __("Small", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "md",
-                label: __("Medium", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "lg",
-                label: __("Large", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "block",
-                label: __("Block", 'premium-blocks-for-gutenberg')
-            }
-        ];
-
-        const DIRECTION = [
-            {
-                value: "top",
-                label: __("Top to Bottom", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "bottom",
-                label: __("Bottom to Top", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "left",
-                label: __("Left to Right", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "right",
-                label: __("Right to Left", 'premium-blocks-for-gutenberg')
-            }
-        ];
-
-        const SHUTTER = [
-            {
-                value: "shutouthor",
-                label: __("Shutter out Horizontal", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "shutoutver",
-                label: __("Shutter out Vertical", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "scshutoutver",
-                label: __("Scaled Shutter Vertical", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "scshutouthor",
-                label: __("Scaled Shutter Horizontal", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "dshutinver",
-                label: __("Tilted Left", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "dshutinhor",
-                label: __("Tilted Right", 'premium-blocks-for-gutenberg')
-            }
-        ];
-
-        const RADIAL = [
-            {
-                value: "radialin",
-                label: __("Radial In", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "radialout",
-                label: __("Radial Out", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "rectin",
-                label: __("Rectangle In", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "rectout",
-                label: __("Rectangle Out", 'premium-blocks-for-gutenberg')
-            }
-        ];
-
-        const EFFECTS = [
-            {
-                value: "none",
-                label: __("None", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "slide",
-                label: __("Slide", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "shutter",
-                label: __("Shutter", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "radial",
-                label: __("Radial", 'premium-blocks-for-gutenberg')
-            }
-        ];
-
-        const onChangeHover = newValue => {
-            this.props.setAttributes({ effect: newValue });
-            switch (newValue) {
-                case "slide":
-                    this.props.setAttributes({ effectDir: "top" });
-                    break;
-                case "shutter":
-                    this.props.setAttributes({ effectDir: "shutouthor" });
-                    break;
-                case "radial":
-                    this.props.setAttributes({ effectDir: "radialin" });
-                    break;
-            }
+        styles[`.${blockId} .premium-button:hover`] = {
+            'color': `${btnStyles[0].textHoverColor}!important`,
+            'border-color': `${btnStyles[0].borderHoverColor}!important`
+        };
+        styles[`.${blockId}.premium-button__none .premium-button:hover`] = {
+            'background-color': `${btnStyles[0].backHoverColor}!important`
+        };
+        styles[`.${blockId}.premium-button__slide .premium-button::before, .${blockId}.premium-button__shutter .premium-button::before, .${blockId}.premium-button__radial .premium-button::before`] = {
+            'background-color': `${slideColor}`,
         };
 
+        return generateCss(styles);
+    }
 
-        let loadBtnGoogleFonts
-        if (typography?.fontFamily !== 'Default') {
-            const btnconfig = {
-                google: {
-                    families: [typography.fontFamily],
-                },
-            }
-            loadBtnGoogleFonts = (
-                <WebfontLoader config={btnconfig}>
-                </WebfontLoader>
-            )
-        }
-
-        const saveBtnStyles = (value) => {
-            const newUpdate = btnStyles.map((item, index) => {
-                if (0 === index) {
-                    item = { ...item, ...value };
-                }
-                return item;
-            });
-            setAttributes({
-                btnStyles: newUpdate,
-            });
-        }
-
-        const loadStyles = () => {
-            const styles = {};
-
-            styles[`.${blockId} .premium-button:hover`] = {
-                'color': `${btnStyles[0].textHoverColor}!important`,
-                'border-color': `${btnStyles[0].borderHoverColor}!important`
-            };
-            styles[`.${blockId}.premium-button__none .premium-button:hover`] = {
-                'background-color': `${btnStyles[0].backHoverColor}!important`
-            };
-            styles[`.${blockId}.premium-button__slide .premium-button::before, .${blockId}.premium-button__shutter .premium-button::before, .${blockId}.premium-button__radial .premium-button::before`] = {
-                'background-color': `${slideColor}`,
-            };
-
-            return generateCss(styles);
-        }
-
-        const mainClasses = classnames(className, "premium-button__wrap", {
-            " premium-desktop-hidden": hideDesktop,
-            " premium-tablet-hidden": hideTablet,
-            " premium-mobile-hidden": hideMobile,
-        });
-        return [
-
-            isSelected && (
-                <InspectorControls key={"inspector"}>
+    return (
+        <Fragment>
+            <InspectorControls key={"inspector"}>
                     <InspectorTabs tabs={['layout', 'style', 'advance']}>
                         <InspectorTab key={'layout'}>
                             <PanelBody
@@ -387,10 +379,19 @@ export class Edit extends Component {
                         </InspectorTab>
                     </InspectorTabs>
                 </InspectorControls>
-            ),
             <div
-                className={`${mainClasses} premium-button__${effect} ${blockId} premium-button__${effectDir}`}
-                style={{ textAlign: btnAlign[this.props.deviceType] }}
+                {...useBlockProps({
+                    className: classnames(
+                        className,
+                        `premium-button__wrap ${blockId} premium-button__${effect} premium-button__${effectDir}`,
+                        {
+                            " premium-desktop-hidden": hideDesktop,
+                            " premium-tablet-hidden": hideTablet,
+                            " premium-mobile-hidden": hideMobile,
+                        }
+                    ),
+                })}
+                style={{ textAlign: btnAlign[props.deviceType] }}
             >
                 <style>{loadStyles()}</style>
                 <RichText
@@ -402,9 +403,9 @@ export class Edit extends Component {
                         backgroundColor: btnStyles[0].backColor,
                         textShadow: `${textShadow?.horizontal}px ${textShadow?.vertical}px ${textShadow?.blur}px ${textShadow?.color}`,
                         boxShadow: `${boxShadow?.horizontal}px ${boxShadow?.vertical}px ${boxShadow?.blur}px ${boxShadow?.color} ${boxShadow?.position}`,
-                        ...typographyCss(typography, this.props.deviceType),
-                        ...paddingCss(padding, this.props.deviceType),
-                        ...borderCss(border, this.props.deviceType),
+                        ...typographyCss(typography, props.deviceType),
+                        ...paddingCss(padding, props.deviceType),
+                        ...borderCss(border, props.deviceType),
                     }}
                     keepPlaceholderOnFocus
                 />
@@ -414,8 +415,8 @@ export class Edit extends Component {
                 />
                 {loadBtnGoogleFonts}
             </div>
-        ];
-    }
+        </Fragment>
+    );
 }
 
 export default withSelect((select) => {

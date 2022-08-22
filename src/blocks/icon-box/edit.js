@@ -26,7 +26,7 @@ const { __ } = wp.i18n;
 const { PanelBody, SelectControl, ToggleControl, TextControl } = wp.components;
 const { Fragment, useEffect } = wp.element;
 const { withSelect } = wp.data;
-const { InspectorControls, RichText,useBlockProps } = wp.blockEditor;
+const { InspectorControls, RichText, useBlockProps } = wp.blockEditor;
 
 
 function Edit(props) {

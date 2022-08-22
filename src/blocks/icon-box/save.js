@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import { filterJsCss, gradientBackground, generateCss } from '../../components/HelperFunction'
 
-const { RichText } = wp.blockEditor;
+const { RichText, useBlockProps } = wp.blockEditor;
 
 const save = props => {
 
@@ -50,12 +50,6 @@ const save = props => {
         titleTag
     } = props.attributes;
 
-    const mainClasses = classnames(className, 'premium-icon-box', {
-        ' premium-desktop-hidden': hideDesktop,
-        ' premium-tablet-hidden': hideTablet,
-        ' premium-mobile-hidden': hideMobile,
-    });
-
     const loadStyles = () => {
         const styles = {};
         styles[`.${blockId}:hover`] = {
@@ -80,7 +74,17 @@ const save = props => {
 
     return (
         <div
-            className={`${mainClasses} ${blockId} premium-icon-box-${iconPos} premium-icon-box-${iconHPos} `}
+            {...useBlockProps.save({
+                className: classnames(
+                    className,
+                    `premium-icon-box ${blockId} premium-icon-box-${iconPos} premium-icon-box-${iconHPos}`,
+                    {
+                        " premium-desktop-hidden": hideDesktop,
+                        " premium-tablet-hidden": hideTablet,
+                        " premium-mobile-hidden": hideMobile,
+                    }
+                ),
+            })}
         >
             <style
                 dangerouslySetInnerHTML={{
