@@ -21,8 +21,8 @@ const Support = () => {
         // if (!checkEmail(email)) {
         //     Alert.fire({
         //         icon: 'error',
-        //         title: __('Invalid Email Address...', 'premium-gutenberg'),
-        //         text: __('Please enter a valid email address!', 'premium-gutenberg'),
+        //         title: __('Invalid Email Address...', "premium-blocks-for-gutenberg"),
+        //         text: __('Please enter a valid email address!', "premium-blocks-for-gutenberg"),
         //     })
         //     setIsLoading(false);
         //     return;
@@ -44,16 +44,16 @@ const Support = () => {
                 // if (success && status) {
                 //     Alert.fire({
                 //         icon: 'success',
-                //         title: __('Success', 'premium-gutenberg'),
-                //         text: __('Thanks for your subscribe!', 'premium-gutenberg'),
+                //         title: __('Success', "premium-blocks-for-gutenberg"),
+                //         text: __('Thanks for your subscribe!', "premium-blocks-for-gutenberg"),
                 //         timer: 3000
                 //     })
                 //     setEmail('');
                 // } else {
                 //     Alert.fire({
                 //         icon: 'error',
-                //         title: __('Invalid Email Address...', 'premium-gutenberg'),
-                //         text: __('Please enter a valid email address!', 'premium-gutenberg'),
+                //         title: __('Invalid Email Address...', "premium-blocks-for-gutenberg"),
+                //         text: __('Please enter a valid email address!', "premium-blocks-for-gutenberg"),
                 //     })
                 // }
             }
@@ -69,7 +69,7 @@ const Support = () => {
 
     const loadingClass = isLoading ? ' loading' : '';
     return <Container>
-        <h2 className="pb-section-title"><span className='icon'><Dashicon icon="sos" /></span>{__('Have a Question?', 'premium-gutenberg')}</h2>
+        <h2 className="pb-section-title"><span className='icon'><Dashicon icon="sos" /></span>{__('Have a Question?', "premium-blocks-for-gutenberg")}</h2>
         <Grid columns={3} gap={8} className='pb-support'>
             <Card>
                 <div className='pb-card-title'>
@@ -89,13 +89,13 @@ const Support = () => {
                             />
                         </svg>
                     </span>
-                    <h2>{__('Knowledge Base', 'premium-gutenberg')}</h2>
+                    <h2>{__('Knowledge Base', "premium-blocks-for-gutenberg")}</h2>
                 </div>
                 <div className='pb-card-body'>
-                    <p>{__('Pb Theme documentation library will guide you to build your next Pb website easily without any need to touch a single line of code.', 'premium-gutenberg')}</p>
+                    <p>{__('Pb Theme documentation library will guide you to build your next Pb website easily without any need to touch a single line of code.', "premium-blocks-for-gutenberg")}</p>
                 </div>
                 <div className='pb-card-action'>
-                    <a className='pb-button primary' target='_blank' href="https://premiumblocks.io/docs/">{__('Documentation', 'premium-gutenberg')}</a>
+                    <a className='pb-button primary' target='_blank' href="https://premiumblocks.io/docs/">{__('Documentation', "premium-blocks-for-gutenberg")}</a>
                 </div>
             </Card>
             <Card>
@@ -129,13 +129,13 @@ const Support = () => {
                             c7.3,0,13.3-5.9,13.3-13.3S289.9,256,282.5,256z"/>
                         </svg>
                     </span>
-                    <h2>{__('Need Help?', 'premium-gutenberg')}</h2>
+                    <h2>{__('Need Help?', "premium-blocks-for-gutenberg")}</h2>
                 </div>
                 <div className='pb-card-body'>
-                    <p>{__('Have a question? Pb support team is here to help you by answering your questions and handling your issues within 24-48 hours.', 'premium-gutenberg')}</p>
+                    <p>{__('Have a question? Pb support team is here to help you by answering your questions and handling your issues within 24-48 hours.', "premium-blocks-for-gutenberg")}</p>
                 </div>
                 <div className='pb-card-action'>
-                    <a className='pb-button primary' target='_blank' href="https://my.leap13.com/contact-support/">{__('Submit a Ticket', 'premium-gutenberg')}</a>
+                    <a className='pb-button primary' target='_blank' href="https://my.leap13.com/contact-support/">{__('Submit a Ticket', "premium-blocks-for-gutenberg")}</a>
                 </div>
             </Card>
             <Card>
@@ -161,13 +161,13 @@ const Support = () => {
                             c12.8,0,23.2,10.4,23.2,23.2v3.3C315.8,371.2,289.5,388.8,256,388.8z"/>
                         </svg>
                     </span>
-                    <h2>{__('Follow us', 'premium-gutenberg')}</h2>
+                    <h2>{__('Follow us', "premium-blocks-for-gutenberg")}</h2>
                 </div>
                 <div className='pb-card-body'>
-                    <p>{__('Come and join our Facebook group! Share your thoughts, opinions, suggestions, and help others. You will always be more than welcome!', 'premium-gutenberg')}</p>
+                    <p>{__('Come and join our Facebook group! Share your thoughts, opinions, suggestions, and help others. You will always be more than welcome!', "premium-blocks-for-gutenberg")}</p>
                 </div>
                 <div className='pb-card-action'>
-                    <a className='pb-button primary' target='_blank' href="https://www.facebook.com/groups/468885553919377">{__('Facebook Group', 'premium-gutenberg')}</a>
+                    <a className='pb-button primary' target='_blank' href="https://www.facebook.com/groups/468885553919377">{__('Facebook Group', "premium-blocks-for-gutenberg")}</a>
                 </div>
             </Card>
         </Grid>
@@ -177,15 +177,15 @@ const Support = () => {
                     <span className="icon">
                         <Dashicon icon="email" />
                     </span>
-                    <h2>{__('Subscribe to Our Newsletter', 'premium-gutenberg')}</h2>
+                    <h2>{__('Subscribe to Our Newsletter', "premium-blocks-for-gutenberg")}</h2>
                 </div>
                 <div className='pb-card-body'>
-                    <p>{__('Enter your email address and be the first to know the latest features, offers, and updates.', 'premium-gutenberg')}</p>
+                    <p>{__('Enter your email address and be the first to know the latest features, offers, and updates.', "premium-blocks-for-gutenberg")}</p>
                 </div>
                 <div className='pb-card-action pb-subscribe'>
                     <div className="subscribe-form">
                         <input type='text' value={email} onChange={(e) => setEmail(e.target.value)} readOnly={isLoading} />
-                        <button className={`pb-button primary${loadingClass}`} onClick={submitHandler} disabled={isLoading}>{__('Submit', 'premium-gutenberg')}</button>
+                        <button className={`pb-button primary${loadingClass}`} onClick={submitHandler} disabled={isLoading}>{__('Submit', "premium-blocks-for-gutenberg")}</button>
                     </div>
                 </div>
             </Card>

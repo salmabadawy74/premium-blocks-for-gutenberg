@@ -26,7 +26,7 @@ const RendeTabs = () => {
     let defaultTabs = [
         {
             name: 'welcome',
-            title: __('Welcome', 'premium-gutenberg'),
+            title: __('Welcome', "premium-blocks-for-gutenberg"),
             className: 'welcome',
             priority: 5,
             data: {
@@ -36,7 +36,7 @@ const RendeTabs = () => {
         },
         {
             name: 'blocks',
-            title: __('Premium Blocks', 'premium-gutenberg'),
+            title: __('Premium Blocks', "premium-blocks-for-gutenberg"),
             className: 'pblocks',
             priority: 5,
             data: {
@@ -46,7 +46,17 @@ const RendeTabs = () => {
         },
         {
             name: 'system',
-            title: __('System Info', 'premium-gutenberg'),
+            title: __('System Info', "premium-blocks-for-gutenberg"),
+            className: 'system',
+            priority: 30,
+            data: {
+                Component: System,
+                props: {}
+            }
+        },
+        {
+            name: 'settings',
+            title: __('Settings', "premium-blocks-for-gutenberg"),
             className: 'system',
             priority: 30,
             data: {

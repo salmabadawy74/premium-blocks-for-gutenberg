@@ -56,8 +56,10 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 
 		public function add_default_options( $options ) {
 			$default_options = array(
-				'trigger'     => false,
-				'breadcrumbs' => false,
+				'trigger'     => true,
+				'breadcrumbs' => true,
+				'search'      => true,
+				'banner'      => true,
 			);
 
 			return array_merge( $default_options, $options );
@@ -110,10 +112,10 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 					'id'     => 'menu-id',
 					'parent' => null,
 					'group'  => null,
-					'title'  => __( 'Premium Blocks', 'premium-gutenberg' ), // you can use img tag with image link. it will show the image icon Instead of the title.
+					'title'  => __( 'Premium Blocks', 'premium-blocks-for-gutenberg' ), // you can use img tag with image link. it will show the image icon Instead of the title.
 					'href'   => admin_url( 'admin.php?page=pb_panel' ),
 					'meta'   => array(
-						'title' => __( 'Premium Blocks', 'premium-gutenberg' ), // This title will show on hover.
+						'title' => __( 'Premium Blocks', 'premium-blocks-for-gutenberg' ), // This title will show on hover.
 					),
 				)
 			);
@@ -126,8 +128,8 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 		 */
 		public function register_custom_menu_page() {
 			$page = add_menu_page(
-				__( 'PB Settings', 'premium-gutenberg' ),
-				__( 'PB Settings', 'premium-gutenberg' ),
+				__( 'PB Settings', 'premium-blocks-for-gutenberg' ),
+				__( 'PB Settings', 'premium-blocks-for-gutenberg' ),
 				'manage_options',
 				'pb_panel',
 				array( $this, 'render' ),
@@ -220,14 +222,20 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 		public static function panel_options() {
 			$options = array(
 				'trigger'     => array(
-					'type'        => 'pb-button',
-					'label'       => __( 'Trigger', 'premium-gutenberg' ),
-					'description' => __( 'desc is here.', 'premium-gutenberg' ),
+					'type'  => 'pb-button',
+					'label' => __( 'Trigger', 'premium-blocks-for-gutenberg' ),
 				),
 				'breadcrumbs' => array(
-					'type'        => 'pb-button',
-					'label'       => __( 'Breadcrumbs', 'premium-gutenberg' ),
-					'description' => __( 'Desc is here', 'premium-gutenberg' ),
+					'type'  => 'pb-button',
+					'label' => __( 'Breadcrumbs', 'premium-blocks-for-gutenberg' ),
+				),
+				'search'      => array(
+					'type'  => 'pb-button',
+					'label' => __( 'Search', 'premium-blocks-for-gutenberg' ),
+				),
+				'banner'      => array(
+					'type'  => 'pb-button',
+					'label' => __( 'Banner', 'premium-blocks-for-gutenberg' ),
 				),
 			);
 				return apply_filters( 'pb_panel_options', $options );
@@ -259,16 +267,15 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 				'pb-panel-js',
 				'PremiumBlocksPanelData',
 				array(
-					'options'       => self::panel_options(),
-					'values'        => apply_filters( 'pb_options', get_option( 'pb_options', array() ) ),
+					'options'     => self::panel_options(),
+					'values'      => apply_filters( 'pb_options', get_option( 'pb_options', array() ) ),
 					// 'values'      => array(
 					// 'options' => get_option( 'pb_options', array() ),
 					// ),
-					'ajaxurl'       => admin_url( 'admin-ajax.php' ),
-					'nonce'         => wp_create_nonce( 'pb-panel' ),
-					'plugins_cache' => Kemet_Panel_Plugins_Data::get_instance()->plugins_status(),
-					'system_info'   => self::get_system_info(),
-					'images_url'    => PREMIUM_BLOCKS_PANEL_URL . 'assets/images/',
+					'ajaxurl'     => admin_url( 'admin-ajax.php' ),
+					'nonce'       => wp_create_nonce( 'pb-panel' ),
+					'system_info' => self::get_system_info(),
+					'images_url'  => PREMIUM_BLOCKS_PANEL_URL . 'assets/images/',
 				)
 			);
 		}
