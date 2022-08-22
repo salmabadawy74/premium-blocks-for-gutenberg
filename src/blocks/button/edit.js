@@ -17,7 +17,7 @@ import Icons from "../../components/icons";
 const { __ } = wp.i18n;
 
 const { PanelBody, SelectControl, ToggleControl } = wp.components;
-const { Fragment, Component, useEffect } = wp.element;
+const { Fragment, useEffect } = wp.element;
 const { InspectorControls, RichText, URLInput, useBlockProps } = wp.blockEditor;
 const { withSelect } = wp.data
 
