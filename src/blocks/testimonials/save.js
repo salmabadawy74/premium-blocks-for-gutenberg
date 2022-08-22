@@ -3,7 +3,7 @@ import DefaultImage from "../../components/default-image";
 import PremiumUpperQuote from "../../components/testimonials/upper-quote";
 import PremiumLowerQuote from "../../components/testimonials/lower-quote";
 import { filterJsCss, gradientBackground } from '../../components/HelperFunction';
-const { RichText } = wp.blockEditor;
+const { RichText, useBlockProps } = wp.blockEditor;
 
 const save = props => {
 
@@ -31,15 +31,19 @@ const save = props => {
         companyTypography,
     } = props.attributes;
 
-    const mainClasses = classnames(className, 'premium-testimonial', {
-        " premium-desktop-hidden": hideDesktop,
-        " premium-tablet-hidden": hideTablet,
-        " premium-mobile-hidden": hideMobile,
-    });
-
     return (
         <div
-            className={`${mainClasses}__wrap ${blockId}`}
+            {...useBlockProps.save({
+                className: classnames(
+                    className,
+                    `premium-testimonial ${blockId} premium-testimonial__wrap`,
+                    {
+                        " premium-desktop-hidden": hideDesktop,
+                        " premium-tablet-hidden": hideTablet,
+                        " premium-mobile-hidden": hideMobile,
+                    }
+                ),
+            })}
             style={filterJsCss({
                 boxShadow: `${boxShadow?.horizontal}px ${boxShadow?.vertical}px ${boxShadow?.blur}px ${boxShadow?.color} ${boxShadow?.position}`,
                 ...gradientBackground(background),
