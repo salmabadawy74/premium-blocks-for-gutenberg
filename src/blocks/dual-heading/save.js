@@ -1,16 +1,12 @@
 import classnames from "classnames";
-import {
-    gradientBackground,
-    filterJsCss,
-} from "../../components/HelperFunction";
-const { RichText } = wp.blockEditor;
+import { gradientBackground, filterJsCss} from "../../components/HelperFunction";
+const { RichText, useBlockProps } = wp.blockEditor;
 
 const save = (props) => {
     const { className } = props;
 
     const {
         blockId,
-        contentAlign,
         firstHeading,
         secondHeading,
         display,
@@ -29,23 +25,23 @@ const save = (props) => {
         secondTypography,
         background,
         firstShadow,
-        secondShadow,
+        secondShadow
     } = props.attributes;
 
     return (
         <div
-            className={classnames(
-                className,
-                "premium-dheading-block__container",
-                `${blockId}`,
-                {
-                    " premium-desktop-hidden": hideDesktop,
-                    " premium-tablet-hidden": hideTablet,
-                    " premium-mobile-hidden": hideMobile,
-                }
-            )}
+            {...useBlockProps.save({
+                className: classnames(
+                    className,
+                    `premium-dheading-block__container ${blockId}`,
+                    {
+                        " premium-desktop-hidden": hideDesktop,
+                        " premium-tablet-hidden": hideTablet,
+                        " premium-mobile-hidden": hideMobile,
+                    }
+                ),
+            })}
             style={{
-                textAlign: contentAlign,
                 borderStyle: containerBorder && containerBorder.borderType,
                 borderColor: containerBorder && containerBorder.borderColor,
                 ...gradientBackground(background),
