@@ -1,6 +1,7 @@
 import { Fragment, useState } from "@wordpress/element";
 import Container from "../common/Container";
 import OptionsComponent from '../options-component'
+import FilterComponent from '../filter-component'
 const { __ } = wp.i18n;
 const { Dashicon } = wp.components;
 
@@ -14,7 +15,7 @@ const OptionsTab = (props) => {
     return <Fragment>
         <Container>
             <div className='advanced-options options-section'>
-                <h2><span className='icon'><Dashicon icon="screenoptions" /></span>{__('Advanced Settings', 'kemet')}</h2>
+                <FilterComponent/>
                 <OptionsComponent options={options} values={values} onChange={(newVal, optionId) => {
                     handleChange(newVal, optionId)
                 }} />

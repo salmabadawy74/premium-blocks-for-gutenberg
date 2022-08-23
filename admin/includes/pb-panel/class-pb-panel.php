@@ -222,20 +222,24 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 		public static function panel_options() {
 			$options = array(
 				'trigger'     => array(
-					'type'  => 'pb-button',
-					'label' => __( 'Trigger', 'premium-blocks-for-gutenberg' ),
+					'type'          => 'pb-button',
+					'label'         => __( 'Trigger', 'premium-blocks-for-gutenberg' ),
+					'filter_blocks' => array( 'creative', 'all' ),
 				),
 				'breadcrumbs' => array(
-					'type'  => 'pb-button',
-					'label' => __( 'Breadcrumbs', 'premium-blocks-for-gutenberg' ),
+					'type'          => 'pb-button',
+					'label'         => __( 'Breadcrumbs', 'premium-blocks-for-gutenberg' ),
+					'filter_blocks' => array( 'new', 'all' ),
 				),
 				'search'      => array(
-					'type'  => 'pb-button',
-					'label' => __( 'Search', 'premium-blocks-for-gutenberg' ),
+					'type'          => 'pb-button',
+					'label'         => __( 'Search', 'premium-blocks-for-gutenberg' ),
+					'filter_blocks' => array( 'creative', 'all' ),
 				),
 				'banner'      => array(
-					'type'  => 'pb-button',
-					'label' => __( 'Banner', 'premium-blocks-for-gutenberg' ),
+					'type'          => 'pb-button',
+					'label'         => __( 'Banner', 'premium-blocks-for-gutenberg' ),
+					'filter_blocks' => array( 'new', 'all' ),
 				),
 			);
 				return apply_filters( 'pb_panel_options', $options );

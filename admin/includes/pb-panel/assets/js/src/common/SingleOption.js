@@ -46,9 +46,7 @@ const SingleOption = ( props ) => {
     };
 
     let checked = value === true ? true : false
-   // let icon = PBG_Block_Icons.props.id
 
-    const btnClasses = value === true ? 'secondary' : 'primary';
     return <div id={props.id} className="pb-option-element">
         <label>
         <span className="customize-control-icon pb-control-icon">{PBG_Block_Icons[props.id]}</span>   
