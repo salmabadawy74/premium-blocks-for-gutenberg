@@ -60,10 +60,10 @@ function get_premium_search_css( $attributes, $unique_id ) {
 		$border_radius = $attributes['border']['borderRadius'];
 
 		$css->set_selector( '.' . $unique_id . ':not(.wp-block-search__button-inside) .wp-block-premium-search__input, .' . $unique_id . '.wp-block-search__button-inside .wp-block-premium-search__inside-wrapper' );
-		$css->add_property( 'border-style', $css->render_color( $border['borderType'] ) );
-		$css->add_property( 'border-color', $css->render_color( $border['borderColor'] ) );
-		$css->add_property( 'border-width', $css->render_spacing( $border_width['Desktop'], 'px' ) );
-		$css->add_property( 'border-radius', $css->render_spacing( $border_radius['Desktop'], 'px' ) );
+		$css->add_property( 'border-style', $css->render_color( $border['borderType'] ) . '!important' );
+		$css->add_property( 'border-color', $css->render_color( $border['borderColor'] ) . '!important' );
+		$css->add_property( 'border-width', $css->render_spacing( $border_width['Desktop'], 'px' ) . '!important' );
+		$css->add_property( 'border-radius', $css->render_spacing( $border_radius['Desktop'], 'px' ) . '!important' );
 	}
 
 	if ( isset( $attributes['colors'] ) ) {

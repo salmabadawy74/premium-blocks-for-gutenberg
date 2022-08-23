@@ -146,3 +146,18 @@ if (searchBlocks.length > 0) {
         }
     });
 }
+
+function values(obj) {
+    var result = []
+
+    if (typeof obj == 'object' || typeof obj == 'function') {
+        var keys = Object.keys(obj)
+        var len = keys.length
+
+        for (var i = 0; i < len; i++) {
+            result.push(obj[keys[i]])
+        }
+
+        return result
+    }
+}
