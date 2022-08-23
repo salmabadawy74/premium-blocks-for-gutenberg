@@ -219,7 +219,7 @@
             "type": "object",
             "default": {
                 "color": "undefined",
-                "backgroundColor": "10",
+                "blur": "10",
                 "horizontal": "0",
                 "vertical": "0",
                 "position": " "
