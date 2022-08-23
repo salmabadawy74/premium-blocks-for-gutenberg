@@ -18,8 +18,9 @@ import "./blocks/image-separator";
 import "./blocks/bullet-list";
 import "./blocks/person";
 import "./blocks/heading";
-import "./blocks/row"
-import './blocks/breadcrumbs'
+import "./blocks/row";
+import './blocks/breadcrumbs';
+import './blocks/trigger';
 window.PremiumOptionsSettings = {
     FontAwesomeEnabled
 }
