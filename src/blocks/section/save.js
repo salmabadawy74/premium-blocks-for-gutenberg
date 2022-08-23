@@ -1,7 +1,7 @@
 import classnames from 'classnames'
 import { filterJsCss, gradientBackground } from '../../components/HelperFunction';
 
-const { InnerBlocks } = wp.blockEditor;
+const { InnerBlocks, useBlockProps } = wp.blockEditor;
 
 const save = props => {
 
@@ -24,16 +24,19 @@ const save = props => {
         border
     } = props.attributes;
 
-    const mainClasses = classnames(className, blockId, 'premium-container',
-        {
-            ' premium-desktop-hidden': hideDesktop,
-            ' premium-tablet-hidden': hideTablet,
-            ' premium-mobile-hidden': hideMobile,
-        });
-
     return (
         <div
-            className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType} `}
+            {...useBlockProps.save({
+                className: classnames(
+                    className,
+                    `${blockId} premium-container premium-container__stretch_${stretchSection} premium-container__${innerWidthType}`,
+                    {
+                        " premium-desktop-hidden": hideDesktop,
+                        " premium-tablet-hidden": hideTablet,
+                        " premium-mobile-hidden": hideMobile,
+                    }
+                ),
+            })}
             style={filterJsCss({
                 minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
                 ...gradientBackground(background),

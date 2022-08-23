@@ -10,11 +10,12 @@ import InspectorTab from '../../components/inspectorTab';
 import MultiButtonsControl from '../../components/responsive-radio';
 import Icons from "../../components/icons";
 import { borderCss, gradientBackground, marginCss, paddingCss, generateBlockId } from "../../components/HelperFunction";
+
 const { __ } = wp.i18n;
 const { PanelBody, ToggleControl, SelectControl } = wp.components;
 const { Fragment, useEffect } = wp.element;
 const { withSelect } = wp.data
-const { InnerBlocks, InspectorControls } = wp.blockEditor;
+const { InnerBlocks, InspectorControls, useBlockProps } = wp.blockEditor;
 
 const CONTENT = [
     ["core/paragraph", { content: __("Insert your text or select a block ", 'premium-blocks-for-gutenberg') }]
@@ -26,7 +27,7 @@ const edit = props => {
         setAttributes({ blockId: "premium-container-" + generateBlockId(props.clientId) });
     }, []);
 
-    const { isSelected, className, setAttributes } = props;
+    const { className, setAttributes } = props;
 
     const {
         stretchSection,
@@ -61,15 +62,9 @@ const edit = props => {
         { value: "middle", label: __("Middle", 'premium-blocks-for-gutenberg') },
         { value: "bottom", label: __("Bottom", 'premium-blocks-for-gutenberg') }
     ];
-    const mainClasses = classnames(className, blockId, "premium-container", {
-        ' premium-desktop-hidden': hideDesktop,
-        ' premium-tablet-hidden': hideTablet,
-        ' premium-mobile-hidden': hideMobile,
-    });
 
     return [
-
-        isSelected && (
+        <Fragment>
             <InspectorControls key="inspector">
                 <InspectorTabs tabs={['layout', 'style', 'advance']}>
                     <InspectorTab key={'layout'}>
@@ -224,9 +219,18 @@ const edit = props => {
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
-        ),
         <div
-            className={`${mainClasses} premium-container__stretch_${stretchSection} premium-container__${innerWidthType} `}
+            {...useBlockProps({
+                className: classnames(
+                    className,
+                    `${blockId} premium-container premium-container__stretch_${stretchSection} premium-container__${innerWidthType}`,
+                    {
+                        " premium-desktop-hidden": hideDesktop,
+                        " premium-tablet-hidden": hideTablet,
+                        " premium-mobile-hidden": hideMobile,
+                    }
+                ),
+            })}
             style={{
                 textAlign: horAlign[props.deviceType],
                 minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
@@ -253,6 +257,7 @@ const edit = props => {
                 </div>
             </div>
         </div>
+        </Fragment>
     ];
 };
 
