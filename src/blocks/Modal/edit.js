@@ -7,14 +7,14 @@ import { gradientBackground, generateBlockId, generateCss, borderCss, paddingCss
 const { __ } = wp.i18n;
 const { withSelect } = wp.data
 const { Fragment, useEffect, useState } = wp.element;
-const { InnerBlocks, MediaPlaceholder } = wp.blockEditor;
+const { InnerBlocks, MediaPlaceholder, useBlockProps } = wp.blockEditor;
 const { RichText } = wp.editor;
 
 
 const Edit = props => {
 
     const [openModal, setOpenModal] = useState(false)
-    const { isSelected, setAttributes, className } = props;
+    const { setAttributes, className } = props;
     const {
         blockId,
         contentStyles,
@@ -63,12 +63,6 @@ const Edit = props => {
     useEffect(() => {
         setAttributes({ blockId: "premium-modal-box-" + generateBlockId(props.clientId) })
     }, [])
-
-    const mainClasses = classnames(className, "premium-modal-box", {
-        ' premium-desktop-hidden': hideDesktop,
-        ' premium-tablet-hidden': hideTablet,
-        ' premium-mobile-hidden': hideMobile,
-    });
 
     const saveTriggerSettings = (value) => {
         const newUpdate = triggerSettings.map((item, index) => {
@@ -163,8 +157,8 @@ const Edit = props => {
     if (triggerTypography.fontFamily !== "Default") {
         const gconfig = {
             google: {
-                families: [triggerTypography?.fontFamily],
-            },
+                families: [triggerTypography?.fontFamily]
+            }
         };
         loadTriggerGoogleFonts = (
             <WebfontLoader config={gconfig}></WebfontLoader>
@@ -174,8 +168,8 @@ const Edit = props => {
     if (headerTypography.fontFamily !== "Default") {
         const gconfig = {
             google: {
-                families: [headerTypography?.fontFamily],
-            },
+                families: [headerTypography?.fontFamily]
+            }
         };
         loadHeaderGoogleFonts = (
             <WebfontLoader config={gconfig}></WebfontLoader>
@@ -185,8 +179,8 @@ const Edit = props => {
     if (modalTypography.fontFamily !== "Default") {
         const gconfig = {
             google: {
-                families: [modalTypography?.fontFamily],
-            },
+                families: [modalTypography?.fontFamily]
+            }
         };
         loadModalGoogleFonts = (
             <WebfontLoader config={gconfig}></WebfontLoader>
@@ -196,8 +190,8 @@ const Edit = props => {
     if (lowerTypography.fontFamily !== "Default") {
         const gconfig = {
             google: {
-                families: [lowerTypography?.fontFamily],
-            },
+                families: [lowerTypography?.fontFamily]
+            }
         };
         loadLowerGoogleFonts = (
             <WebfontLoader config={gconfig}></WebfontLoader>
@@ -205,13 +199,24 @@ const Edit = props => {
     }
 
     return [
-        isSelected && (
+        <Fragment>
             <Inspector
                 attributes={props.attributes}
                 setAttributes={setAttributes}
             />
-        ),
-        <div className={`${mainClasses} ${blockId}`} data-trigger={triggerSettings[0].triggerType}>
+        <div 
+            {...useBlockProps({
+                className: classnames(
+                    className,
+                    `premium-modal-box ${blockId}`,
+                    {
+                        " premium-desktop-hidden": hideDesktop,
+                        " premium-tablet-hidden": hideTablet,
+                        " premium-mobile-hidden": hideMobile,
+                    }
+                ),
+            })}
+            data-trigger={triggerSettings[0].triggerType}>
             <style
                 dangerouslySetInnerHTML={{
                     __html: loadStyles(),
@@ -474,6 +479,7 @@ const Edit = props => {
             {loadModalGoogleFonts}
             {loadLowerGoogleFonts}
         </div >
+        </Fragment>
     ];
 };
 export default withSelect((select) => {

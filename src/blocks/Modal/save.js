@@ -1,6 +1,6 @@
 import classnames from 'classnames'
 import { gradientBackground, generateCss, filterJsCss } from '../../components/HelperFunction';
-const { InnerBlocks } = wp.blockEditor;
+const { InnerBlocks, useBlockProps } = wp.blockEditor;
 const { RichText } = wp.editor;
 
 const save = props => {
@@ -37,12 +37,6 @@ const save = props => {
         hideMobile
     } = props.attributes;
 
-    const mainClasses = classnames(className, "premium-modal-box", {
-        ' premium-desktop-hidden': hideDesktop,
-        ' premium-tablet-hidden': hideTablet,
-        ' premium-mobile-hidden': hideMobile,
-    });
-
     const loadStyles = () => {
         const styles = {};
         styles[` .${blockId} .premium-modal-trigger-container button.premium-modal-trigger-btn:hover`] = {
@@ -77,7 +71,19 @@ const save = props => {
     }
 
     return (
-        <div className={`${mainClasses} ${blockId}`} data-trigger={triggerSettings[0].triggerType}>
+        <div 
+            {...useBlockProps.save({
+                className: classnames(
+                    className,
+                    `premium-modal-box ${blockId}`,
+                    {
+                        " premium-desktop-hidden": hideDesktop,
+                        " premium-tablet-hidden": hideTablet,
+                        " premium-mobile-hidden": hideMobile,
+                    }
+                ),
+            })}
+            data-trigger={triggerSettings[0].triggerType}>
             <style
                 dangerouslySetInnerHTML={{
                     __html: loadStyles(),

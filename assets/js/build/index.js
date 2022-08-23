@@ -932,775 +932,6 @@ function renderCustomIcon(svg) {
 
 /***/ }),
 
-/***/ "./src/blocks/Modal/attributes.js":
-/*!****************************************!*\
-  !*** ./src/blocks/Modal/attributes.js ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-const {
-  __
-} = wp.i18n;
-const attributes = {
-  blockId: {
-    type: 'string'
-  },
-  contentStyles: {
-    type: 'array',
-    default: [{
-      showHeader: true,
-      iconType: 'none',
-      contentIcon: '',
-      contentImgID: '',
-      contentImgURL: '',
-      lottieURL: '',
-      loopLottie: true,
-      reverseLottie: false,
-      titleText: __('Modal Box Title', 'premium-blocks-for-gutenberg'),
-      showUpperClose: true,
-      showLowerClose: true,
-      lowerCloseText: __('Close', 'premium-blocks-for-gutenberg'),
-      animationType: 'fadeInDown',
-      animationSpeed: 'normal'
-    }]
-  },
-  triggerSettings: {
-    type: "array",
-    default: [{
-      triggerType: 'button',
-      btnText: __('Premium Blocks', 'premium-blocks-for-gutenberg'),
-      showIcon: false,
-      icon: '',
-      iconPosition: 'before',
-      iconSpacing: '',
-      btnSize: 'md',
-      triggerImgID: '',
-      triggerImgURL: '',
-      triggerText: __('Premium Blocks', 'premium-blocks-for-gutenberg'),
-      lottieTriggerURL: '',
-      triggerLoopLottie: true,
-      triggerReverseLottie: false,
-      triggerPlayLottie: false,
-      delayTime: 1
-    }]
-  },
-  triggerStyles: {
-    type: 'array',
-    default: [{
-      color: '',
-      hoverColor: '',
-      iconColor: '',
-      iconHoverColor: '',
-      triggerBack: '',
-      triggerHoverBack: ''
-    }]
-  },
-  headerStyles: {
-    type: 'array',
-    default: [{
-      color: '',
-      backColor: ''
-    }]
-  },
-  upperStyles: {
-    type: "array",
-    default: [{
-      color: '',
-      backColor: ''
-    }]
-  },
-  lowerStyles: {
-    type: 'array',
-    default: [{
-      color: '',
-      backColor: ''
-    }]
-  },
-  modalStyles: {
-    type: "array",
-    default: [{
-      contentType: 'text',
-      contentText: __('Modal Box Content', 'premium-blocks-for-gutenberg'),
-      textColor: '',
-      textBackColor: '',
-      footerBackColor: ''
-    }]
-  },
-  modalBackground: {
-    type: "object",
-    default: {
-      'backgroundType': '',
-      'backgroundColor': '',
-      'backgroundImageID': '',
-      'backgroundImageURL': '',
-      'backgroundPosition': '',
-      'backgroundRepeat': '',
-      'backgroundSize': '',
-      'fixed': false,
-      'gradientLocationOne': "0",
-      'gradientColorTwo': '',
-      'gradientLocationTwo': '100',
-      'gradientAngle': '180',
-      "gradientPosition": "center center",
-      "gradientType": "linear"
-    }
-  },
-  modalShadow: {
-    type: "object",
-    default: {
-      'color': 'undefined',
-      'blur': '10',
-      'horizontal': '0',
-      'vertical': '0',
-      'position': ' '
-    }
-  },
-  triggerShadow: {
-    type: "object",
-    default: {
-      'color': 'undefined',
-      'blur': '10',
-      'horizontal': '0',
-      'vertical': '0',
-      'position': ' '
-    }
-  },
-  triggerTextShadow: {
-    type: "object",
-    default: {
-      'color': 'undefined',
-      'blur': '10',
-      'horizontal': '0',
-      'vertical': '0'
-    }
-  },
-  triggerPadding: {
-    type: "object",
-    default: {
-      Desktop: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Tablet: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Mobile: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      unit: 'px'
-    }
-  },
-  upperPadding: {
-    type: "object",
-    default: {
-      Desktop: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Tablet: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Mobile: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      unit: 'px'
-    }
-  },
-  lowerPadding: {
-    type: "object",
-    default: {
-      Desktop: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Tablet: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Mobile: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      unit: 'px'
-    }
-  },
-  modalPadding: {
-    type: "object",
-    default: {
-      Desktop: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Tablet: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Mobile: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      unit: 'px'
-    }
-  },
-  modalMargin: {
-    type: "object",
-    default: {
-      Desktop: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Tablet: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Mobile: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      unit: 'px'
-    }
-  },
-  triggerBorder: {
-    type: "object",
-    default: {
-      borderType: "none",
-      "borderColor": "",
-      "borderWidth": {
-        Desktop: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        }
-      },
-      "borderRadius": {
-        Desktop: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        }
-      }
-    }
-  },
-  triggerBorderH: {
-    type: "object",
-    default: {
-      borderType: "none",
-      "borderColor": "",
-      "borderWidth": {
-        Desktop: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        }
-      },
-      "borderRadius": {
-        Desktop: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        }
-      }
-    }
-  },
-  headerBorder: {
-    type: "object",
-    default: {
-      borderType: "",
-      "borderColor": "",
-      "borderWidth": {
-        Desktop: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        }
-      },
-      "borderRadius": {
-        Desktop: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        }
-      }
-    }
-  },
-  upperBorder: {
-    type: "object",
-    default: {
-      borderType: "none",
-      "borderColor": "",
-      "borderWidth": {
-        Desktop: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        }
-      },
-      "borderRadius": {
-        Desktop: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        }
-      }
-    }
-  },
-  lowerBorder: {
-    type: "object",
-    default: {
-      borderType: "none",
-      "borderColor": "",
-      "borderWidth": {
-        Desktop: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        }
-      },
-      "borderRadius": {
-        Desktop: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        }
-      }
-    }
-  },
-  modalBorder: {
-    type: "object",
-    default: {
-      borderType: "none",
-      "borderColor": "",
-      "borderWidth": {
-        Desktop: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        }
-      },
-      "borderRadius": {
-        Desktop: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        }
-      }
-    }
-  },
-  triggerTypography: {
-    type: "object",
-    default: {
-      "fontWeight": '400',
-      'fontStyle': '',
-      'textTransform': '',
-      'fontFamily': __('Default', 'premium-blocks-for-gutenberg'),
-      'textDecoration': '',
-      'letterSpacing': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
-      },
-      'lineHeight': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
-      },
-      'fontSize': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
-      }
-    }
-  },
-  headerTypography: {
-    type: "object",
-    default: {
-      "fontWeight": '300',
-      'fontStyle': '',
-      'textTransform': '',
-      'letterSpacing': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
-      },
-      'fontFamily': __('Default', 'premium-blocks-for-gutenberg'),
-      'lineHeight': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
-      },
-      'textDecoration': '',
-      'fontSize': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
-      }
-    }
-  },
-  lowerTypography: {
-    type: "object",
-    default: {
-      "fontWeight": '',
-      'fontStyle': '',
-      'textTransform': '',
-      'letterSpacing': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
-      },
-      'fontFamily': __('Default', 'premium-blocks-for-gutenberg'),
-      'lineHeight': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
-      },
-      'textDecoration': '',
-      'fontSize': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
-      }
-    }
-  },
-  modalTypography: {
-    type: "object",
-    default: {
-      "fontWeight": '',
-      'fontStyle': '',
-      'textTransform': '',
-      'letterSpacing': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
-      },
-      'fontFamily': __('Default', 'premium-blocks-for-gutenberg'),
-      'lineHeight': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
-      },
-      'textDecoration': '',
-      'fontSize': {
-        'Desktop': '',
-        "Tablet": '',
-        "Mobile": '',
-        "unit": 'px'
-      }
-    }
-  },
-  iconSize: {
-    type: "object",
-    default: {
-      "Desktop": '',
-      'Tablet': '',
-      'Mobile': '',
-      'unit': 'px'
-    }
-  },
-  imageWidth: {
-    type: "object",
-    default: {
-      "Desktop": '',
-      'Tablet': '',
-      'Mobile': '',
-      'unit': 'px'
-    }
-  },
-  modalWidth: {
-    type: "object",
-    default: {
-      "Desktop": '',
-      'Tablet': '',
-      'Mobile': '',
-      'unit': 'px'
-    }
-  },
-  modalHeight: {
-    type: "object",
-    default: {
-      "Desktop": '',
-      'Tablet': '',
-      'Mobile': '',
-      'unit': 'px'
-    }
-  },
-  triggerFilter: {
-    type: "object",
-    default: {
-      'contrast': '100',
-      'blur': '0',
-      'bright': '100',
-      'saturation': '100',
-      'hue': '0'
-    }
-  },
-  triggerHoverFilter: {
-    type: "object",
-    default: {
-      'contrast': '100',
-      'blur': '0',
-      'bright': '100',
-      'saturation': '100',
-      'hue': '0'
-    }
-  },
-  align: {
-    type: "object",
-    default: {
-      "Desktop": "center",
-      "Tablet": "center",
-      "Mobile": "center"
-    }
-  },
-  hideDesktop: {
-    type: 'boolean',
-    default: ''
-  },
-  hideTablet: {
-    type: 'boolean',
-    default: ''
-  },
-  hideMobile: {
-    type: 'boolean',
-    default: ''
-  },
-  triggerIconSize: {
-    type: "object",
-    default: {
-      "Desktop": '',
-      'Tablet': '',
-      'Mobile': '',
-      'unit': 'px'
-    }
-  },
-  upperIconWidth: {
-    type: "object",
-    default: {
-      "Desktop": '',
-      'Tablet': '',
-      'Mobile': '',
-      'unit': 'px'
-    }
-  },
-  lowerIconWidth: {
-    type: "object",
-    default: {
-      "Desktop": '',
-      'Tablet': '',
-      'Mobile': '',
-      'unit': 'px'
-    }
-  }
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (attributes);
-
-/***/ }),
-
 /***/ "./src/blocks/Modal/deprecated.js":
 /*!****************************************!*\
   !*** ./src/blocks/Modal/deprecated.js ***!
@@ -3616,14 +2847,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./src/blocks/node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_lottie_with_segments__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-lottie-with-segments */ "./node_modules/react-lottie-with-segments/dist/index.js");
-/* harmony import */ var _inspector__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./inspector */ "./src/blocks/Modal/inspector.js");
-/* harmony import */ var _components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/typography/fontLoader */ "./src/components/typography/fontLoader.js");
-/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./src/blocks/node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./src/blocks/node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_lottie_with_segments__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-lottie-with-segments */ "./node_modules/react-lottie-with-segments/dist/index.js");
+/* harmony import */ var _inspector__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./inspector */ "./src/blocks/Modal/inspector.js");
+/* harmony import */ var _components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/typography/fontLoader */ "./src/components/typography/fontLoader.js");
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+
 
 
 
@@ -3643,7 +2876,8 @@ const {
 } = wp.element;
 const {
   InnerBlocks,
-  MediaPlaceholder
+  MediaPlaceholder,
+  useBlockProps
 } = wp.blockEditor;
 const {
   RichText
@@ -3652,7 +2886,6 @@ const {
 const Edit = props => {
   const [openModal, setOpenModal] = useState(false);
   const {
-    isSelected,
     setAttributes,
     className
   } = props;
@@ -3701,14 +2934,9 @@ const Edit = props => {
   const currentDevice = props.deviceType;
   useEffect(() => {
     setAttributes({
-      blockId: "premium-modal-box-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__.generateBlockId)(props.clientId)
+      blockId: "premium-modal-box-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.generateBlockId)(props.clientId)
     });
   }, []);
-  const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-modal-box", {
-    ' premium-desktop-hidden': hideDesktop,
-    ' premium-tablet-hidden': hideTablet,
-    ' premium-mobile-hidden': hideMobile
-  });
 
   const saveTriggerSettings = value => {
     const newUpdate = triggerSettings.map((item, index) => {
@@ -3796,7 +3024,7 @@ const Edit = props => {
       'border-bottom-left-radius': `${(triggerBorderH === null || triggerBorderH === void 0 ? void 0 : (_triggerBorderH$borde21 = triggerBorderH.borderRadius) === null || _triggerBorderH$borde21 === void 0 ? void 0 : (_triggerBorderH$borde22 = _triggerBorderH$borde21[currentDevice]) === null || _triggerBorderH$borde22 === void 0 ? void 0 : _triggerBorderH$borde22.bottom) || 0}px!important`,
       'border-bottom-right-radius': `${(triggerBorderH === null || triggerBorderH === void 0 ? void 0 : (_triggerBorderH$borde23 = triggerBorderH.borderRadius) === null || _triggerBorderH$borde23 === void 0 ? void 0 : (_triggerBorderH$borde24 = _triggerBorderH$borde23[currentDevice]) === null || _triggerBorderH$borde24 === void 0 ? void 0 : _triggerBorderH$borde24.left) || 0}px!important`
     };
-    return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__.generateCss)(styles);
+    return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.generateCss)(styles);
   };
 
   const headerIconSize = iconSize[currentDevice];
@@ -3813,7 +3041,7 @@ const Edit = props => {
         families: [triggerTypography === null || triggerTypography === void 0 ? void 0 : triggerTypography.fontFamily]
       }
     };
-    loadTriggerGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    loadTriggerGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_5__["default"], {
       config: gconfig
     });
   }
@@ -3824,7 +3052,7 @@ const Edit = props => {
         families: [headerTypography === null || headerTypography === void 0 ? void 0 : headerTypography.fontFamily]
       }
     };
-    loadHeaderGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    loadHeaderGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_5__["default"], {
       config: gconfig
     });
   }
@@ -3835,7 +3063,7 @@ const Edit = props => {
         families: [modalTypography === null || modalTypography === void 0 ? void 0 : modalTypography.fontFamily]
       }
     };
-    loadModalGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    loadModalGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_5__["default"], {
       config: gconfig
     });
   }
@@ -3846,36 +3074,41 @@ const Edit = props => {
         families: [lowerTypography === null || lowerTypography === void 0 ? void 0 : lowerTypography.fontFamily]
       }
     };
-    loadLowerGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    loadLowerGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_5__["default"], {
       config: gconfig
     });
   }
 
-  return [isSelected && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_inspector__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  return [(0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_inspector__WEBPACK_IMPORTED_MODULE_4__["default"], {
     attributes: props.attributes,
     setAttributes: setAttributes
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `${mainClasses} ${blockId}`,
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, useBlockProps({
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, `premium-modal-box ${blockId}`, {
+      " premium-desktop-hidden": hideDesktop,
+      " premium-tablet-hidden": hideTablet,
+      " premium-mobile-hidden": hideMobile
+    })
+  }), {
     "data-trigger": triggerSettings[0].triggerType
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: loadStyles()
     }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-modal-trigger-container`,
     style: {
       textAlign: align[currentDevice]
     }
-  }, (triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === "load") && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+  }, (triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === "load") && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
     className: `premium-modal-trigger-btn premium-button premium-button__${triggerSettings[0].btnSize} `,
     onClick: () => setOpenModal(true),
-    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__.paddingCss)(triggerPadding, currentDevice),
-      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__.borderCss)(triggerBorder, currentDevice),
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.paddingCss)(triggerPadding, currentDevice),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.borderCss)(triggerBorder, currentDevice),
       fontSize: `${triggerTypography.fontSize[currentDevice]}${triggerTypography.fontSize.unit}`,
       backgroundColor: triggerStyles[0].triggerBack,
       boxShadow: `${triggerShadow.horizontal}px ${triggerShadow.vertical}px ${triggerShadow.blur}px ${triggerShadow.color} ${triggerShadow.position}`
     }
-  }, triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+  }, triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("i", {
     className: `premium-modal-box-icon ${triggerSettings[0].icon}`,
     style: {
       fontSize: triggerIconSize[currentDevice] + triggerIconSize.unit,
@@ -3884,7 +3117,7 @@ const Edit = props => {
       marginRight: `${triggerSettings[0].iconSpacing}px`,
       color: triggerStyles[0].iconColor
     }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
     style: {
       color: triggerStyles[0].color,
       fontFamily: triggerTypography === null || triggerTypography === void 0 ? void 0 : triggerTypography.fontFamily,
@@ -3895,7 +3128,7 @@ const Edit = props => {
       textTransform: triggerTypography === null || triggerTypography === void 0 ? void 0 : triggerTypography.textTransform,
       lineHeight: `${triggerTypography === null || triggerTypography === void 0 ? void 0 : triggerTypography.lineHeight[currentDevice]}px`
     }
-  }, triggerSettings[0].btnText), triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "after" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+  }, triggerSettings[0].btnText), triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "after" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("i", {
     className: `premium-modal-box-icon ${triggerSettings[0].icon}`,
     style: {
       fontSize: triggerIconSize[currentDevice] + triggerIconSize.unit,
@@ -3904,16 +3137,16 @@ const Edit = props => {
       marginLeft: `${triggerSettings[0].iconSpacing}px`,
       color: triggerStyles[0].iconColor
     }
-  })), triggerSettings[0].triggerType === "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, triggerSettings[0].triggerImgURL ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+  })), triggerSettings[0].triggerType === "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, triggerSettings[0].triggerImgURL ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("img", {
     className: `premium-modal-trigger-img`,
     onClick: () => setOpenModal(true),
     src: triggerSettings[0].triggerImgURL,
-    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__.borderCss)(triggerBorder, currentDevice),
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.borderCss)(triggerBorder, currentDevice),
       width: `${imageWidth[currentDevice]}${imageWidth.unit}`,
       height: `${imageWidth[currentDevice]}${imageWidth.unit}`,
       boxShadow: `${triggerShadow.horizontal}px ${triggerShadow.vertical}px ${triggerShadow.blur}px ${triggerShadow.color} ${triggerShadow.position}`
     }
-  }) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(MediaPlaceholder, {
+  }) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(MediaPlaceholder, {
     labels: {
       title: __('Premium Modal ', 'premium-blocks-for-gutenberg'),
       instructions: __('Upload an image file, pick one from your media library, or add one with a URL.', 'premium-blocks-for-gutenberg')
@@ -3930,19 +3163,19 @@ const Edit = props => {
         triggerImgURL: media.url
       });
     }
-  })), triggerSettings[0].triggerType === "text" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+  })), triggerSettings[0].triggerType === "text" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
     onClick: () => setOpenModal(true),
     className: `premium-modal-trigger-text`,
-    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__.borderCss)(triggerBorder, currentDevice),
-      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__.paddingCss)(triggerPadding, currentDevice),
-      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__.typographyCss)(triggerTypography, currentDevice),
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.borderCss)(triggerBorder, currentDevice),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.paddingCss)(triggerPadding, currentDevice),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.typographyCss)(triggerTypography, currentDevice),
       color: triggerStyles[0].color,
       textShadow: `${triggerTextShadow.horizontal}px ${triggerTextShadow.vertical}px ${triggerTextShadow.blur}px ${triggerTextShadow.color}`
     }
-  }, triggerSettings[0].triggerText), triggerSettings[0].triggerType === "lottie" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, triggerSettings[0].lottieTriggerURL ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, triggerSettings[0].triggerText), triggerSettings[0].triggerType === "lottie" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, triggerSettings[0].lottieTriggerURL ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     onClick: () => setOpenModal(true),
     className: `premium-lottie-animation`
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_lottie_with_segments__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(react_lottie_with_segments__WEBPACK_IMPORTED_MODULE_3__["default"], {
     height: `${imageWidth[currentDevice]}${imageWidth.unit}`,
     width: `${imageWidth[currentDevice]}${imageWidth.unit}`,
     options: {
@@ -3955,7 +3188,7 @@ const Edit = props => {
     },
     isClickToPauseDisabled: true,
     direction: triggerSettings[0].triggerReverseLottie ? -1 : 1
-  }), " ") : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(MediaPlaceholder, {
+  }), " ") : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(MediaPlaceholder, {
     labels: {
       title: __('Lottie', 'premium-blocks-for-gutenberg'),
       instructions: __('Add Lottie animations and files to your website.', 'premium-blocks-for-gutenberg')
@@ -3969,55 +3202,55 @@ const Edit = props => {
     onSelect: media => saveTriggerSettings({
       lottieTriggerURL: media.url
     })
-  }))), openModal && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }))), openModal && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "premium-popup__modal_wrap",
     role: "dialog"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     role: "presentation",
     className: "premium-popup__modal_wrap_overlay",
     onClick: () => setOpenModal(false),
-    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__.gradientBackground)(modalBackground)
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.gradientBackground)(modalBackground)
     }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-popup__modal_content animated animation-${contentStyles[0].animationType} animation-${contentStyles[0].animationSpeed}`,
     "data-delay": triggerSettings[0].delayTime,
     "data-animation": `${contentStyles[0].animationType} ${contentStyles[0].animationSpeed}`,
-    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__.borderCss)(modalBorder, currentDevice),
-      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__.marginCss)(modalMargin, currentDevice),
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.borderCss)(modalBorder, currentDevice),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.marginCss)(modalMargin, currentDevice),
       width: `${modalWidthValue}${modalWidth.unit}`,
       maxHeight: `${modalMaxHeight}${modalHeight.unit}`,
       boxShadow: `${modalShadow.horizontal}px ${modalShadow.vertical}px ${modalShadow.blur}px ${modalShadow.color} ${modalShadow.position}`
     }
-  }, contentStyles[0].showHeader && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, contentStyles[0].showHeader && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-modal-box-modal-header`,
-    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__.borderCss)(headerBorder, currentDevice),
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.borderCss)(headerBorder, currentDevice),
       backgroundColor: headerStyles[0].backColor
     }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h3", {
     className: `premium-modal-box-modal-title`,
-    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__.typographyCss)(headerTypography, currentDevice),
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.typographyCss)(headerTypography, currentDevice),
       color: headerStyles[0].color
     }
-  }, contentStyles[0].iconType === "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+  }, contentStyles[0].iconType === "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("i", {
     className: contentStyles[0].contentIcon,
     style: {
       fontSize: `${headerIconSize}${iconSize.unit}`,
       width: `${headerIconSize}${iconSize.unit}`,
       height: `${headerIconSize}${iconSize.unit}`
     }
-  }), contentStyles[0].iconType === "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+  }), contentStyles[0].iconType === "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("img", {
     src: contentStyles[0].contentImgURL,
     style: {
       width: `${headerIconSize}${iconSize.unit}`,
       height: `${headerIconSize}${iconSize.unit}`
     }
-  }), contentStyles[0].iconType === "lottie" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), contentStyles[0].iconType === "lottie" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-lottie-animation`,
     style: {
       width: `${headerIconSize}${iconSize.unit}`,
       height: `${headerIconSize}${iconSize.unit}`
     }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_lottie_with_segments__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(react_lottie_with_segments__WEBPACK_IMPORTED_MODULE_3__["default"], {
     options: {
       loop: contentStyles[0].loopLottie,
       path: contentStyles[0].lottieURL,
@@ -4027,13 +3260,13 @@ const Edit = props => {
       }
     },
     direction: contentStyles[0].reverseLottie ? -1 : 1
-  })), contentStyles[0].titleText), contentStyles[0].showUpperClose && contentStyles[0].showHeader && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  })), contentStyles[0].titleText), contentStyles[0].showUpperClose && contentStyles[0].showHeader && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "premium-modal-box-close-button-container",
-    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__.borderCss)(upperBorder, currentDevice),
-      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__.paddingCss)(upperPadding, currentDevice),
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.borderCss)(upperBorder, currentDevice),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.paddingCss)(upperPadding, currentDevice),
       backgroundColor: `${upperStyles[0].backColor}`
     }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
     role: "button",
     className: "premium-modal-box-modal-close close-button",
     onClick: () => setOpenModal(false),
@@ -4042,39 +3275,39 @@ const Edit = props => {
       color: `${upperStyles[0].color}`
     },
     "data-dismiss": "premium-modal"
-  }, "\xD7"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, "\xD7"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-modal-box-modal-body`,
-    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__.paddingCss)(modalPadding, currentDevice),
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.paddingCss)(modalPadding, currentDevice),
       background: modalStyles[0].textBackColor
     }
-  }, modalStyles[0].contentType === "text" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
+  }, modalStyles[0].contentType === "text" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RichText, {
     tagName: 'p',
     value: modalStyles[0].contentText,
     onChange: value => saveModalStyles({
       contentText: value
     }),
-    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__.typographyCss)(modalTypography, currentDevice),
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.typographyCss)(modalTypography, currentDevice),
       color: modalStyles[0].textColor
     },
     keepPlaceholderOnFocus: true
-  }) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InnerBlocks, null)), contentStyles[0].showLowerClose && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InnerBlocks, null)), contentStyles[0].showLowerClose && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-modal-box-modal-footer`,
     style: {
       backgroundColor: modalStyles[0].footerBackColor
     }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
     className: `premium-modal-box-modal-lower-close close-button`,
     role: "button",
     "data-dismiss": "premium-modal",
     onClick: () => setOpenModal(false),
-    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__.typographyCss)(lowerTypography, currentDevice),
-      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__.paddingCss)(lowerPadding, currentDevice),
-      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_5__.borderCss)(lowerBorder, currentDevice),
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.typographyCss)(lowerTypography, currentDevice),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.paddingCss)(lowerPadding, currentDevice),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.borderCss)(lowerBorder, currentDevice),
       width: `${lowerIconWidth[currentDevice]}${lowerIconWidth.unit}`,
       color: `${lowerStyles[0].color}`,
       backgroundColor: `${lowerStyles[0].backColor}`
     }
-  }, contentStyles[0].lowerCloseText)))), loadTriggerGoogleFonts, loadHeaderGoogleFonts, loadModalGoogleFonts, loadLowerGoogleFonts)];
+  }, contentStyles[0].lowerCloseText)))), loadTriggerGoogleFonts, loadHeaderGoogleFonts, loadModalGoogleFonts, loadLowerGoogleFonts))];
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (withSelect(select => {
@@ -4099,7 +3332,7 @@ const Edit = props => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit */ "./src/blocks/Modal/edit.js");
-/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./attributes */ "./src/blocks/Modal/attributes.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./block.json */ "./src/blocks/Modal/block.json");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/blocks/Modal/save.js");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/Modal/deprecated.js");
 /* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
@@ -4115,13 +3348,12 @@ const {
 const {
   registerBlockType
 } = wp.blocks;
-registerBlockType("premium/modal", {
+registerBlockType("premium/modal", { ..._block_json__WEBPACK_IMPORTED_MODULE_2__,
   title: __("Modal Box", 'premium-blocks-for-gutenberg'),
   description: __('Easily, get creative modal popups on your WordPress website using Premium Modal Box Block.', 'premium-block-for-gutenberg'),
   keywords: [__("modal", 'premium-blocks-for-gutenberg'), __("popup", 'premium-blocks-for-gutenberg')],
   icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__["default"].modal,
   category: "premium-blocks",
-  attributes: _attributes__WEBPACK_IMPORTED_MODULE_2__["default"],
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.modal
   },
@@ -5186,16 +4418,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./src/blocks/node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./src/blocks/node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./src/blocks/node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+
 
 
 
 const {
-  InnerBlocks
+  InnerBlocks,
+  useBlockProps
 } = wp.blockEditor;
 const {
   RichText
@@ -5234,11 +4469,6 @@ const save = props => {
     hideTablet,
     hideMobile
   } = props.attributes;
-  const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-modal-box", {
-    ' premium-desktop-hidden': hideDesktop,
-    ' premium-tablet-hidden': hideTablet,
-    ' premium-mobile-hidden': hideMobile
-  });
 
   const loadStyles = () => {
     const styles = {};
@@ -5270,34 +4500,39 @@ const save = props => {
       'border-color': `${triggerBorderH && triggerBorderH.borderColor} !important`,
       'border-style': `${triggerBorderH && triggerBorderH.borderType} !important`
     };
-    return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.generateCss)(styles);
+    return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.generateCss)(styles);
   };
 
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `${mainClasses} ${blockId}`,
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, useBlockProps.save({
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, `premium-modal-box ${blockId}`, {
+      " premium-desktop-hidden": hideDesktop,
+      " premium-tablet-hidden": hideTablet,
+      " premium-mobile-hidden": hideMobile
+    })
+  }), {
     "data-trigger": triggerSettings[0].triggerType
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: loadStyles()
     }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-modal-trigger-container`
-  }, triggerSettings[0].triggerType === "button" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+  }, triggerSettings[0].triggerType === "button" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
     className: `premium-modal-trigger-btn premium-button premium-button__${triggerSettings[0].btnSize} `,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       backgroundColor: triggerStyles[0].triggerBack,
       borderStyle: triggerBorder.borderType,
       borderColor: triggerBorder.borderColor,
       boxShadow: `${triggerShadow.horizontal}px ${triggerShadow.vertical}px ${triggerShadow.blur}px ${triggerShadow.color} ${triggerShadow.position}`
     })
-  }, triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+  }, triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("i", {
     className: `premium-modal-box-icon ${triggerSettings[0].icon}`,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       marginRight: `${triggerSettings[0].iconSpacing}px`,
       color: triggerStyles[0].iconColor
     })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       color: triggerStyles[0].color,
       fontFamily: triggerTypography.fontFamily,
       fontWeight: triggerTypography.fontWeight,
@@ -5305,23 +4540,23 @@ const save = props => {
       textDecoration: triggerTypography === null || triggerTypography === void 0 ? void 0 : triggerTypography.textDecoration,
       textTransform: triggerTypography === null || triggerTypography === void 0 ? void 0 : triggerTypography.textTransform
     })
-  }, triggerSettings[0].btnText), triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "after" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+  }, triggerSettings[0].btnText), triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "after" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("i", {
     className: `premium-modal-box-icon ${triggerSettings[0].icon}`,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       marginLeft: `${triggerSettings[0].iconSpacing}px`,
       color: triggerStyles[0].iconColor
     })
-  })), triggerSettings[0].triggerType === "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+  })), triggerSettings[0].triggerType === "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("img", {
     src: triggerSettings[0].triggerImgURL,
     className: `premium-modal-trigger-img`,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       borderStyle: triggerBorder.borderType,
       borderColor: triggerBorder.borderColor,
       boxShadow: `${triggerShadow.horizontal}px ${triggerShadow.vertical}px ${triggerShadow.blur}px ${triggerShadow.color} ${triggerShadow.position}`
     })
-  }), triggerSettings[0].triggerType === "text" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+  }), triggerSettings[0].triggerType === "text" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
     className: `premium-modal-trigger-text`,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       color: triggerStyles[0].color,
       borderStyle: triggerBorder.borderType,
       borderColor: triggerBorder.borderColor,
@@ -5332,42 +4567,42 @@ const save = props => {
       textDecoration: triggerTypography === null || triggerTypography === void 0 ? void 0 : triggerTypography.textDecoration,
       textTransform: triggerTypography === null || triggerTypography === void 0 ? void 0 : triggerTypography.textTransform
     })
-  }, triggerSettings[0].triggerText), triggerSettings[0].triggerType === "lottie" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, triggerSettings[0].triggerText), triggerSettings[0].triggerType === "lottie" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-lottie-animation`,
     "data-lottieurl": triggerSettings[0].lottieTriggerURL,
     "data-loop": triggerSettings[0].triggerLoopLottie,
     "data-reverse": triggerSettings[0].triggerReverseLottie,
     "data-trigger": triggerSettings[0].triggerPlayLottie ? "hover" : "none"
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "premium-popup__modal_wrap",
     style: {
       display: "none"
     },
     role: "dialog"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     role: "presentation",
     className: "premium-popup__modal_wrap_overlay",
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({ ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.gradientBackground)(modalBackground)
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({ ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.gradientBackground)(modalBackground)
     })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-popup__modal_content animated animation-${contentStyles[0].animationType} animation-${contentStyles[0].animationSpeed}`,
     "data-delay": triggerSettings[0].delayTime,
     "data-animation": `${contentStyles[0].animationType} ${contentStyles[0].animationSpeed}`,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       borderStyle: `${modalBorder.borderType}`,
       borderColor: `${modalBorder.borderColor}`,
       boxShadow: `${modalShadow.horizontal}px ${modalShadow.vertical}px ${modalShadow.blur}px ${modalShadow.color} ${modalShadow.position}`
     })
-  }, contentStyles[0].showHeader && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, contentStyles[0].showHeader && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-modal-box-modal-header`,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       backgroundColor: headerStyles[0].backColor,
       borderStyle: headerBorder.borderType,
       borderColor: `${headerBorder.borderColor}`
     })
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h3", {
     className: `premium-modal-box-modal-title`,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       color: headerStyles[0].color,
       fontFamily: headerTypography.fontFamily,
       fontWeight: headerTypography.fontWeight,
@@ -5375,39 +4610,39 @@ const save = props => {
       textDecoration: headerTypography === null || headerTypography === void 0 ? void 0 : headerTypography.textDecoration,
       textTransform: headerTypography === null || headerTypography === void 0 ? void 0 : headerTypography.textTransform
     })
-  }, contentStyles[0].iconType === "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+  }, contentStyles[0].iconType === "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("i", {
     className: contentStyles[0].contentIcon
-  }), contentStyles[0].iconType === "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+  }), contentStyles[0].iconType === "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("img", {
     src: contentStyles[0].contentImgURL
-  }), contentStyles[0].iconType === "lottie" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), contentStyles[0].iconType === "lottie" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-lottie-animation`,
     "data-lottieurl": contentStyles[0].lottieURL,
     "data-loop": contentStyles[0].loopLottie,
     "data-reverse": contentStyles[0].reverseLottie,
     "data-trigger": "none"
-  }), contentStyles[0].titleText), contentStyles[0].showUpperClose && contentStyles[0].showHeader && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), contentStyles[0].titleText), contentStyles[0].showUpperClose && contentStyles[0].showHeader && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "premium-modal-box-close-button-container",
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       backgroundColor: `${upperStyles[0].backColor}`,
       borderStyle: `${upperBorder.borderType}`,
       borderColor: `${upperBorder.borderColor}`
     })
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
     type: "button",
     className: "premium-modal-box-modal-close close-button",
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       color: `${upperStyles[0].color}`
     }),
     "data-dismiss": "premium-modal"
-  }, "\xD7"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, "\xD7"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-modal-box-modal-body`,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       background: modalStyles[0].textBackColor
     })
-  }, modalStyles[0].contentType === "text" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
+  }, modalStyles[0].contentType === "text" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RichText.Content, {
     tagName: 'p',
     value: modalStyles[0].contentText,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       color: modalStyles[0].textColor,
       fontFamily: modalTypography.fontFamily,
       fontWeight: modalTypography.fontWeight,
@@ -5416,16 +4651,16 @@ const save = props => {
       textTransform: modalTypography === null || modalTypography === void 0 ? void 0 : modalTypography.textTransform
     }),
     keepPlaceholderOnFocus: true
-  }) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InnerBlocks.Content, null)), contentStyles[0].showLowerClose && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InnerBlocks.Content, null)), contentStyles[0].showLowerClose && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-modal-box-modal-footer`,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       backgroundColor: modalStyles[0].footerBackColor
     })
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
     className: `premium-modal-box-modal-lower-close close-button`,
     role: "button",
     "data-dismiss": "premium-modal",
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       fontWeight: lowerTypography.fontWeight,
       fontFamily: lowerTypography.fontFamily,
       fontStyle: lowerTypography.fontStyle,
@@ -10288,7 +9523,7 @@ function Edit(props) {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-banner__bg-overlay",
     style: {
-      backgroundColor: `${background}`
+      backgroundColor: `${background ? background : ''} `
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-banner__img_wrap premium-banner__${height}`,
@@ -96912,6 +96147,17 @@ function _extends() {
 
   return _extends.apply(this, arguments);
 }
+
+/***/ }),
+
+/***/ "./src/blocks/Modal/block.json":
+/*!*************************************!*\
+  !*** ./src/blocks/Modal/block.json ***!
+  \*************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/modal","title":"Modal Box","category":"premium-blocks","attributes":{"blockId":{"type":"string"},"contentStyles":{"type":"array","default":[{"showHeader":true,"iconType":"none","contentIcon":"","contentImgID":"","contentImgURL":"","lottieURL":"","loopLottie":true,"reverseLottie":false,"titleText":"Modal Box Title","showUpperClose":true,"showLowerClose":true,"lowerCloseText":"Close","animationType":"fadeInDown","animationSpeed":"normal"}]},"triggerSettings":{"type":"array","default":[{"triggerType":"button","btnText":"Premium Blocks","showIcon":false,"icon":"","iconPosition":"before","iconSpacing":"","btnSize":"md","triggerImgID":"","triggerImgURL":"","triggerText":"Premium Blocks","lottieTriggerURL":"","triggerLoopLottie":true,"triggerReverseLottie":false,"triggerPlayLottie":false,"delayTime":1}]},"triggerStyles":{"type":"array","default":[{"color":"","hoverColor":"","iconColor":"","iconHoverColor":"","triggerBack":"","triggerHoverBack":""}]},"headerStyles":{"type":"array","default":[{"color":"","backColor":""}]},"upperStyles":{"type":"array","default":[{"color":"","backColor":""}]},"lowerStyles":{"type":"array","default":[{"color":"","backColor":""}]},"modalStyles":{"type":"array","default":[{"contentType":"text","contentText":"Modal Box Content","textColor":"","textBackColor":"","footerBackColor":""}]},"modalBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}},"modalShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":" "}},"triggerShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":" "}},"triggerTextShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"triggerPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"upperPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"lowerPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"modalPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"modalMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"triggerBorder":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"triggerBorderH":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"headerBorder":{"type":"object","default":{"borderType":"","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"upperBorder":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"lowerBorder":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"modalBorder":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"triggerTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","textTransform":"","fontFamily":"Default","textDecoration":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"headerTypography":{"type":"object","default":{"fontWeight":"300","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"lowerTypography":{"type":"object","default":{"fontWeight":"","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"modalTypography":{"type":"object","default":{"fontWeight":"","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"iconSize":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}},"imageWidth":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}},"modalWidth":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}},"modalHeight":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}},"triggerFilter":{"type":"object","default":{"contrast":"100","blur":"0","bright":"100","saturation":"100","hue":"0"}},"triggerHoverFilter":{"type":"object","default":{"contrast":"100","blur":"0","bright":"100","saturation":"100","hue":"0"}},"align":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"triggerIconSize":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}},"upperIconWidth":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}},"lowerIconWidth":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}}}');
 
 /***/ }),
 

@@ -701,7 +701,7 @@ function Edit(props) {
                         <div
                             className="premium-banner__bg-overlay"
                             style={{
-                                backgroundColor: `${background}`,
+                                backgroundColor: `${background ? background : ''} `
                             }}
                         ></div>
                         <div
