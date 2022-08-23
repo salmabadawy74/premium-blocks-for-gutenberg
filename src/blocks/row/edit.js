@@ -1,13 +1,5 @@
 import classnames from "classnames";
-const { __ } = wp.i18n;
-const { compose } = wp.compose;
-const { select, useDispatch, withSelect } = wp.data;
-const { PanelBody, SelectControl, Tooltip, Button, ToggleControl } =
-    wp.components;
-const { useEffect, Fragment } = wp.element;
 import variations from "./variations";
-const { createBlock } = wp.blocks;
-const { InspectorControls, InnerBlocks } = wp.blockEditor;
 import InspectorTabs from "../../components/inspectorTabs";
 import InspectorTab from "../../components/inspectorTab";
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
@@ -28,10 +20,18 @@ import {
     borderCss,
     paddingCss,
     marginCss,
-    gradientValue,
+    gradientValue
 } from "../../components/HelperFunction";
 import PremiumFilters from "../../components/premium-filters";
 import RadioComponent from "../../components/radio-control";
+
+const { __ } = wp.i18n;
+const { compose } = wp.compose;
+const { select, useDispatch, withSelect } = wp.data;
+const { PanelBody, SelectControl, Tooltip, Button, ToggleControl } = wp.components;
+const { useEffect, Fragment } = wp.element;
+const { createBlock } = wp.blocks;
+const { InspectorControls, InnerBlocks } = wp.blockEditor;
 
 let defaultLayout = { Desktop: [100], Tablet: [100], Mobile: [100] };
 
@@ -349,43 +349,43 @@ const edit = (props) => {
     const CustomTag = `${containerTag}`;
     const BLEND = [
         {
-            label: "Normal",
+            label: __("Normal", "premium-blocks-for-gutenberg"),
             value: "normal",
         },
         {
-            label: "Multiply",
+            label: __("Multiply", "premium-blocks-for-gutenberg"),
             value: "multiply",
         },
         {
-            label: "Screen",
+            label: __("Screen", "premium-blocks-for-gutenberg"),
             value: "screen",
         },
         {
-            label: "Overlay",
+            label: __("Overlay", "premium-blocks-for-gutenberg"),
             value: "overlay",
         },
         {
-            label: "Darken",
+            label: __("Darken", "premium-blocks-for-gutenberg"),
             value: "darken",
         },
         {
-            label: "Lighten",
+            label: __("Lighten", "premium-blocks-for-gutenberg"),
             value: "lighten",
         },
         {
-            label: "Color Dodge",
+            label: __("Color Dodge", "premium-blocks-for-gutenberg"),
             value: "color-dodge",
         },
         {
-            label: "Saturation",
+            label: __("Saturation", "premium-blocks-for-gutenberg"),
             value: "saturation",
         },
         {
-            label: "Color",
+            label: __("Color", "premium-blocks-for-gutenberg"),
             value: "color",
         },
         {
-            label: "Luminosity",
+            label: __("Luminosity", "premium-blocks-for-gutenberg"),
             value: "luminosity",
         },
     ];
@@ -397,10 +397,7 @@ const edit = (props) => {
                     <InspectorTab key={"layout"}>
                         <PanelBody
                             initialOpen={true}
-                            title={__(
-                                "General",
-                                "premium-blocks-for-gutenberg"
-                            )}
+                            title={__("General", "premium-blocks-for-gutenberg")}
                         >
                             {isBlockRootParent && (
                                 <Fragment>
@@ -543,15 +540,15 @@ const edit = (props) => {
                                     "premium-blocks-for-gutenberg"
                                 )}
                                 options={[
-                                    { value: "div", label: "div" },
-                                    { value: "header", label: "header" },
-                                    { value: "footer", label: "footer" },
-                                    { value: "main", label: "main" },
-                                    { value: "article", label: "article" },
-                                    { value: "section", label: "section" },
-                                    { value: "aside", label: "aside" },
-                                    { value: "nav", label: "nav" },
-                                    { value: "a", label: "a" },
+                                    { value: "div", label: __("div", "premium-blocks-for-gutenberg") },
+                                    { value: "header", label: __("header", "premium-blocks-for-gutenberg") },
+                                    { value: "footer", label: __("footer", "premium-blocks-for-gutenberg") },
+                                    { value: "main", label: __("main", "premium-blocks-for-gutenberg") },
+                                    { value: "article", label: __("article", "premium-blocks-for-gutenberg") },
+                                    { value: "section", label: __("section", "premium-blocks-for-gutenberg") },
+                                    { value: "aside", label: __("aside", "premium-blocks-for-gutenberg") },
+                                    { value: "nav", label: __("nav", "premium-blocks-for-gutenberg") },
+                                    { value: "a", label: __("a", "premium-blocks-for-gutenberg") },
                                 ]}
                                 value={containerTag}
                                 onChange={(newValue) =>
@@ -902,7 +899,7 @@ const edit = (props) => {
                     </InspectorTab>
                     <InspectorTab key={"style"}>
                         <PanelBody
-                            initialOpen={false}
+                            initialOpen={true}
                             title={__(
                                 "Background",
                                 "premium-blocks-for-gutenberg"
@@ -1039,7 +1036,7 @@ const edit = (props) => {
                                 </InsideTab>
                             </InsideTabs>
                         </PanelBody>
-                        <PanelBody initialOpen={false} title={__("Border")}>
+                        <PanelBody initialOpen={false} title={__("Border","premium-blocks-for-gutenberg")}>
                             <PremiumBorder
                                 value={border}
                                 onChange={(value) =>
@@ -1047,7 +1044,6 @@ const edit = (props) => {
                                 }
                             />
                             <PremiumShadow
-                                boxShadow={true}
                                 value={boxShadow}
                                 onChange={(value) =>
                                     setAttributes({ boxShadow: value })

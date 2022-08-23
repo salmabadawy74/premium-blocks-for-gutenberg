@@ -44060,404 +44060,6 @@ const save = props => {
 
 /***/ }),
 
-/***/ "./src/blocks/row/attributes.js":
-/*!**************************************!*\
-  !*** ./src/blocks/row/attributes.js ***!
-  \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-const attributes = {
-  block_id: {
-    type: 'string'
-  },
-  align: {
-    type: "string",
-    default: 'alignfull'
-  },
-  columns: {
-    type: 'number',
-    default: ''
-  },
-  variationSelected: {
-    type: 'boolean',
-    default: false
-  },
-  isBlockRootParent: {
-    type: 'boolean',
-    default: false
-  },
-  blockDescendants: {
-    type: 'array',
-    default: []
-  },
-  colWidth: {
-    type: 'object',
-    default: {
-      'Desktop': 100,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
-    }
-  },
-  // Dimension
-  padding: {
-    type: 'object',
-    default: {
-      'Desktop': {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      'Tablet': {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      'Mobile': {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      unit: 'px'
-    }
-  },
-  margin: {
-    type: 'object',
-    default: {
-      'Desktop': {
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0
-      },
-      'Tablet': {
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0
-      },
-      'Mobile': {
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0
-      },
-      unit: 'px'
-    }
-  },
-  rowContainer: {
-    type: 'number',
-    default: 0
-  },
-  // Background
-  minHeight: {
-    type: 'object',
-    default: {
-      Desktop: '',
-      Tablet: '',
-      Mobile: "",
-      unit: 'px'
-    }
-  },
-  overflow: {
-    type: "string",
-    value: "default"
-  },
-  backgroundOptions: {
-    type: "object",
-    default: {
-      'backgroundType': '',
-      'backgroundColor': '',
-      'backgroundImageID': '',
-      'backgroundImageURL': '',
-      'backgroundPosition': 'center center',
-      'backgroundRepeat': 'no-repeat',
-      'backgroundSize': 'cover',
-      'fixed': false,
-      'gradientLocationOne': '0',
-      'gradientColorTwo': '',
-      'gradientLocationTwo': '100',
-      'gradientType': 'linear',
-      'gradientAngle': '180',
-      'gradientPosition': 'center center',
-      'videoSource': 'local',
-      'bgExternalVideo': '',
-      'videoURL': '',
-      'videoID': '',
-      'bgVideoFallbackID': '',
-      'bgVideoFallbackURL': ''
-    }
-  },
-  backgroundOverlay: {
-    type: "object",
-    default: {
-      'backgroundType': '',
-      'backgroundColor': '',
-      'backgroundImageID': '',
-      'backgroundImageURL': '',
-      'backgroundPosition': 'center center',
-      'backgroundRepeat': 'no-repeat',
-      'backgroundSize': 'cover',
-      'fixed': false,
-      'gradientLocationOne': '0',
-      'gradientColorTwo': '',
-      'gradientLocationTwo': '100',
-      'gradientType': 'linear',
-      'gradientAngle': '180',
-      'gradientPosition': 'center center'
-    }
-  },
-  backgroundOverlayHover: {
-    type: "object",
-    default: {
-      'backgroundType': '',
-      'backgroundColor': '',
-      'backgroundImageID': '',
-      'backgroundImageURL': '',
-      'backgroundPosition': 'center center',
-      'backgroundRepeat': 'no-repeat',
-      'backgroundSize': 'cover',
-      'fixed': false,
-      'gradientLocationOne': '0',
-      'gradientColorTwo': '',
-      'gradientLocationTwo': '100',
-      'gradientType': 'linear',
-      'gradientAngle': '180',
-      'gradientPosition': 'center center'
-    }
-  },
-  border: {
-    type: 'object',
-    default: {
-      'borderType': 'none',
-      'borderColor': '',
-      'borderWidth': {
-        Desktop: {
-          'top': '',
-          'right': '',
-          'bottom': '',
-          'left': ''
-        },
-        Tablet: {
-          'top': '',
-          'right': '',
-          'bottom': '',
-          'left': ''
-        },
-        Mobile: {
-          'top': '',
-          'right': '',
-          'bottom': '',
-          'left': ''
-        }
-      },
-      'borderRadius': {
-        Desktop: {
-          'top': '',
-          'right': '',
-          'bottom': '',
-          'left': ''
-        },
-        Tablet: {
-          'top': '',
-          'right': '',
-          'bottom': '',
-          'left': ''
-        },
-        Mobile: {
-          'top': '',
-          'right': '',
-          'bottom': '',
-          'left': ''
-        }
-      }
-    }
-  },
-  boxShadow: {
-    type: "object",
-    default: {
-      'color': '',
-      'blur': '',
-      'horizontal': '',
-      'vertical': '',
-      'position': ''
-    }
-  },
-  // Divider
-  shapeTop: {
-    type: 'object',
-    default: {
-      openShape: 0,
-      color: '#006fbf',
-      shapeType: 'top',
-      width: {
-        'Desktop': '',
-        'Tablet': '',
-        'Mobile': '',
-        unit: '%'
-      },
-      height: {
-        'Desktop': '',
-        'Tablet': '',
-        'Mobile': '',
-        unit: 'px'
-      }
-    }
-  },
-  shapeBottom: {
-    type: 'object',
-    default: {
-      openShape: 0,
-      color: '#006fbf',
-      shapeType: 'bottom',
-      width: {
-        'Desktop': '',
-        'Tablet': '',
-        'Mobile': '',
-        unit: '%'
-      },
-      height: {
-        'Desktop': '',
-        'Tablet': '',
-        'Mobile': '',
-        unit: 'px'
-      }
-    }
-  },
-  // Animation
-  animation: {
-    type: "object",
-    default: {}
-  },
-  // Responsive
-  hideTablet: {
-    type: 'boolean',
-    default: false
-  },
-  hideMobile: {
-    type: 'boolean',
-    default: false
-  },
-  // Advanced Settings
-  innerWidthType: {
-    type: "string",
-    default: 'boxed'
-  },
-  innerWidth: {
-    type: "number",
-    default: 1200
-  },
-  columnGutter: {
-    type: 'object',
-    default: {
-      Desktop: 30,
-      Tablet: 30,
-      Mobile: 30,
-      unit: 'px'
-    }
-  },
-  rowGutter: {
-    type: 'object',
-    default: {
-      Desktop: 30,
-      Tablet: 30,
-      Mobile: 30,
-      unit: 'px'
-    }
-  },
-  direction: {
-    type: 'object',
-    default: {
-      'Desktop': '',
-      'Tablet': '',
-      'Mobile': ''
-    }
-  },
-  alignItems: {
-    type: 'object',
-    default: {
-      'Desktop': '',
-      'Tablet': '',
-      'Mobile': ''
-    }
-  },
-  justifyItems: {
-    type: 'object',
-    default: {
-      'Desktop': '',
-      'Tablet': '',
-      'Mobile': ''
-    }
-  },
-  wrapItems: {
-    type: 'object',
-    default: {
-      'Desktop': '',
-      'Tablet': '',
-      'Mobile': ''
-    }
-  },
-  alignContent: {
-    type: 'object',
-    default: {
-      'Desktop': '',
-      'Tablet': '',
-      'Mobile': ''
-    }
-  },
-  containerTag: {
-    type: 'string',
-    default: 'div'
-  },
-  blend: {
-    type: 'string',
-    default: ''
-  },
-  overlayOpacity: {
-    type: 'number'
-  },
-  overlayFilter: {
-    type: 'object',
-    default: {
-      'contrast': '100',
-      'blur': '0',
-      'bright': '100',
-      'saturation': '100',
-      'hue': '0'
-    }
-  },
-  hoverOverlayOpacity: {
-    type: 'number'
-  },
-  hoverOverlayFilter: {
-    type: 'object',
-    default: {
-      'contrast': '100',
-      'blur': '0',
-      'bright': '100',
-      'saturation': '100',
-      'hue': '0'
-    }
-  },
-  blend: {
-    type: 'string'
-  },
-  transition: {
-    type: 'number'
-  }
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (attributes);
-
-/***/ }),
-
 /***/ "./src/blocks/row/edit.js":
 /*!********************************!*\
   !*** ./src/blocks/row/edit.js ***!
@@ -44493,6 +44095,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_radio_control__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../components/radio-control */ "./src/components/radio-control.js");
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const {
   __
 } = wp.i18n;
@@ -44515,7 +44135,6 @@ const {
   useEffect,
   Fragment
 } = wp.element;
-
 const {
   createBlock
 } = wp.blocks;
@@ -44523,23 +44142,6 @@ const {
   InspectorControls,
   InnerBlocks
 } = wp.blockEditor;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 let defaultLayout = {
   Desktop: [100],
   Tablet: [100],
@@ -44811,34 +44413,34 @@ const edit = props => {
 
   const CustomTag = `${containerTag}`;
   const BLEND = [{
-    label: "Normal",
+    label: __("Normal", "premium-blocks-for-gutenberg"),
     value: "normal"
   }, {
-    label: "Multiply",
+    label: __("Multiply", "premium-blocks-for-gutenberg"),
     value: "multiply"
   }, {
-    label: "Screen",
+    label: __("Screen", "premium-blocks-for-gutenberg"),
     value: "screen"
   }, {
-    label: "Overlay",
+    label: __("Overlay", "premium-blocks-for-gutenberg"),
     value: "overlay"
   }, {
-    label: "Darken",
+    label: __("Darken", "premium-blocks-for-gutenberg"),
     value: "darken"
   }, {
-    label: "Lighten",
+    label: __("Lighten", "premium-blocks-for-gutenberg"),
     value: "lighten"
   }, {
-    label: "Color Dodge",
+    label: __("Color Dodge", "premium-blocks-for-gutenberg"),
     value: "color-dodge"
   }, {
-    label: "Saturation",
+    label: __("Saturation", "premium-blocks-for-gutenberg"),
     value: "saturation"
   }, {
-    label: "Color",
+    label: __("Color", "premium-blocks-for-gutenberg"),
     value: "color"
   }, {
-    label: "Luminosity",
+    label: __("Luminosity", "premium-blocks-for-gutenberg"),
     value: "luminosity"
   }];
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -44923,31 +44525,31 @@ const edit = props => {
     label: __("HTML Tag", "premium-blocks-for-gutenberg"),
     options: [{
       value: "div",
-      label: "div"
+      label: __("div", "premium-blocks-for-gutenberg")
     }, {
       value: "header",
-      label: "header"
+      label: __("header", "premium-blocks-for-gutenberg")
     }, {
       value: "footer",
-      label: "footer"
+      label: __("footer", "premium-blocks-for-gutenberg")
     }, {
       value: "main",
-      label: "main"
+      label: __("main", "premium-blocks-for-gutenberg")
     }, {
       value: "article",
-      label: "article"
+      label: __("article", "premium-blocks-for-gutenberg")
     }, {
       value: "section",
-      label: "section"
+      label: __("section", "premium-blocks-for-gutenberg")
     }, {
       value: "aside",
-      label: "aside"
+      label: __("aside", "premium-blocks-for-gutenberg")
     }, {
       value: "nav",
-      label: "nav"
+      label: __("nav", "premium-blocks-for-gutenberg")
     }, {
       value: "a",
-      label: "a"
+      label: __("a", "premium-blocks-for-gutenberg")
     }],
     value: containerTag,
     onChange: newValue => setAttributes({
@@ -45125,7 +44727,7 @@ const edit = props => {
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_4__["default"], {
     key: "style"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-    initialOpen: false,
+    initialOpen: true,
     title: __("Background", "premium-blocks-for-gutenberg")
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Premium_Background_Control__WEBPACK_IMPORTED_MODULE_8__["default"], {
     value: backgroundOptions,
@@ -45204,14 +44806,13 @@ const edit = props => {
     showUnit: false
   })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
     initialOpen: false,
-    title: __("Border")
+    title: __("Border", "premium-blocks-for-gutenberg")
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_9__["default"], {
     value: border,
     onChange: value => setAttributes({
       border: value
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_10__["default"], {
-    boxShadow: true,
     value: boxShadow,
     onChange: value => setAttributes({
       boxShadow: value
@@ -45704,27 +45305,26 @@ const rowIcons = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./attributes */ "./src/blocks/row/attributes.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./block.json */ "./src/blocks/row/block.json");
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit */ "./src/blocks/row/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/row/save.js");
 /* harmony import */ var _variations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./variations */ "./src/blocks/row/variations.js");
 /* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
 
+
+
+
+
 const {
   __
 } = wp.i18n;
-
-
-
 const {
   registerBlockType
 } = wp.blocks;
-
-registerBlockType("premium/row", {
+registerBlockType("premium/row", { ..._block_json__WEBPACK_IMPORTED_MODULE_0__,
   title: __("Container"),
   icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_4__["default"].row,
   category: "premium-blocks",
-  attributes: _attributes__WEBPACK_IMPORTED_MODULE_0__["default"],
   supports: {
     html: false
   },
@@ -96246,6 +95846,17 @@ module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/i
 
 "use strict";
 module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/pricing-table","title":"Pricing Table","category":"premium-blocks","attributes":{"borderUpdated":{"type":"boolean","default":false},"btnBorderUpdated":{"type":"boolean","default":false},"contentAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"title":{"type":"array","source":"children","selector":".premium-pricing-table__title","default":"Pricing Table"},"desc":{"type":"array","source":"children","selector":".premium-pricing-table__desc","default":"Lorem ipsum dolor sit amet, consectetur adipiscing elit"},"titleChecked":{"type":"boolean","default":true},"descChecked":{"type":"boolean","default":true},"priceChecked":{"type":"boolean","default":true},"btnChecked":{"type":"boolean","default":true},"btnText":{"type":"string","default":"Get Started"},"btnLink":{"type":"string","source":"attribute","attribute":"href","selector":".premium-pricing-table__button_link"},"badgeChecked":{"type":"boolean","default":true},"listChecked":{"type":"boolean","default":true},"listItems":{"type":"string","source":"html","multiline":"li","selector":".premium-pricing-table__list","default":""},"blockId":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"hideDesktop":{"type":"boolean","default":false},"hideTablet":{"type":"boolean","default":false},"hideMobile":{"type":"boolean","default":false},"titleStyles":{"type":"array","default":[{"titleTag":"H2","titleColor":"","titleBack":""}]},"titleTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"titleTextShadow":{"type":"object","default":{"color":"transparent","blur":"10","horizontal":"0","vertical":"0"}},"priceStyles":{"type":"array","default":[{"priceBack":"","priceOpacity":1,"slashPrice":"","slashColor":"","currPrice":"$","currColor":"","valPrice":"25","valColor":"","divPrice":"/","divColor":"","durPrice":"m","durColor":"","selectedStyle":"price"}]},"slashTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"currTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"priceTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"dividerTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"durationTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"slashVAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"currVAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"valVAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"divVAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"durVAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"featureStyles":{"type":"array","default":[{"listStyle":"disc","listColor":"","listItemsStyle":"","listBack":""}]},"listTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"45","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"featureAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"descStyles":{"type":"array","default":[{"descColor":"","descBack":"","descMarginT":0,"descMarginB":30,"descPadding":"0"}]},"descTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"buttonStyles":{"type":"array","default":[{"btnColor":"","btnHoverColor":"","btnWidth":"","btnBack":"rgb(242, 242, 242)","btnHoverBack":"","btnTarget":true}]},"buttonTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"badgeStyles":{"type":"array","default":[{"badgePos":"right","badgeBack":"#793DC3","badgeColor":"#fff","badgeTop":"","badgeHorizontal":"","badgeWidth":"","badgeText":"Popular","badgeSize":""}]},"badgeTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"tableStyles":{"type":"array","default":[{"tableBack":"","tableOpacity":1}]},"tableBoxShadow":{"type":"object","default":{"color":"transparent","blur":"10","horizontal":"0","vertical":"0","position":""}},"tableBorder":{"type":"object","default":{"bordertype":"solid","borderColor":"#e1e1e1","borderWidth":{"Desktop":{"top":"1","right":"1","bottom":"1","left":"1"},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"buttonBorder":{"type":"object","default":{"bordertype":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"tablePadding":{"type":"object","default":{"Desktop":{"top":"20","right":"20","bottom":"20","left":"20"},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"titlePadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"titleMargin":{"type":"object","default":{"Desktop":{"top":20,"right":"","bottom":20,"left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"pricePadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"priceMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":20,"left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"featuresListPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"featuresListMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":20,"left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"descriptionPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"descriptionMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":30,"left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"buttonPadding":{"type":"object","default":{"Desktop":{"top":10,"right":10,"bottom":10,"left":10},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"buttonMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}}}}');
+
+/***/ }),
+
+/***/ "./src/blocks/row/block.json":
+/*!***********************************!*\
+  !*** ./src/blocks/row/block.json ***!
+  \***********************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/row","title":"Container","category":"premium-blocks","attributes":{"block_id":{"type":"string"},"align":{"type":"string","default":"alignfull"},"columns":{"type":"number","default":""},"variationSelected":{"type":"boolean","default":false},"isBlockRootParent":{"type":"boolean","default":false},"blockDescendants":{"type":"array","default":[]},"colWidth":{"type":"object","default":{"Desktop":100,"Tablet":100,"Mobile":100,"unit":"%"}},"padding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"margin":{"type":"object","default":{"Desktop":{"top":0,"right":0,"bottom":0,"left":0},"Tablet":{"top":0,"right":0,"bottom":0,"left":0},"Mobile":{"top":0,"right":0,"bottom":0,"left":0},"unit":"px"}},"rowContainer":{"type":"number","default":0},"minHeight":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}},"overflow":{"type":"string","value":"default"},"backgroundOptions":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"center center","backgroundRepeat":"no-repeat","backgroundSize":"cover","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientType":"linear","gradientAngle":"180","gradientPosition":"center center","videoSource":"local","bgExternalVideo":"","videoURL":"","videoID":"","bgVideoFallbackID":"","bgVideoFallbackURL":""}},"backgroundOverlay":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"center center","backgroundRepeat":"no-repeat","backgroundSize":"cover","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientType":"linear","gradientAngle":"180","gradientPosition":"center center"}},"backgroundOverlayHover":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"center center","backgroundRepeat":"no-repeat","backgroundSize":"cover","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientType":"linear","gradientAngle":"180","gradientPosition":"center center"}},"border":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"boxShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":"","position":""}},"shapeTop":{"type":"object","default":{"openShape":0,"color":"#006fbf","shapeType":"top","width":{"Desktop":"","Tablet":"","Mobile":"","unit":"%"},"height":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"shapeBottom":{"type":"object","default":{"openShape":0,"color":"#006fbf","shapeType":"bottom","width":{"Desktop":"","Tablet":"","Mobile":"","unit":"%"},"height":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"animation":{"type":"object","default":{}},"hideTablet":{"type":"boolean","default":false},"hideMobile":{"type":"boolean","default":false},"innerWidthType":{"type":"string","default":"boxed"},"innerWidth":{"type":"number","default":1200},"columnGutter":{"type":"object","default":{"Desktop":30,"Tablet":30,"Mobile":30,"unit":"px"}},"rowGutter":{"type":"object","default":{"Desktop":30,"Tablet":30,"Mobile":30,"unit":"px"}},"direction":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":""}},"alignItems":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":""}},"justifyItems":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":""}},"wrapItems":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":""}},"alignContent":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":""}},"containerTag":{"type":"string","default":"div"},"blend":{"type":"string"},"overlayOpacity":{"type":"number"},"overlayFilter":{"type":"object","default":{"contrast":"100","blur":"0","bright":"100","saturation":"100","hue":"0"}},"hoverOverlayOpacity":{"type":"number"},"hoverOverlayFilter":{"type":"object","default":{"contrast":"100","blur":"0","bright":"100","saturation":"100","hue":"0"}},"transition":{"type":"number"}}}');
 
 /***/ }),
 
