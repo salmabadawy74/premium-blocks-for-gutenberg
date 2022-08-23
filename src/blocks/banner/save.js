@@ -1,10 +1,6 @@
 import classnames from "classnames";
-import {
-    generateCss,
-    filterJsCss,
-    typographyCss,
-} from "../../components/HelperFunction";
-const { RichText } = wp.blockEditor;
+import { generateCss, filterJsCss } from "../../components/HelperFunction";
+const { RichText, useBlockProps } = wp.blockEditor;
 
 const save = (props) => {
     const { className } = props;
@@ -23,7 +19,6 @@ const save = (props) => {
         hovered,
         responsive,
         background,
-        opacity,
         urlCheck,
         target,
         url,
@@ -41,11 +36,6 @@ const save = (props) => {
         blockId,
     } = props.attributes;
 
-    const mainClasses = classnames(className, "premium-banner", {
-        " premium-desktop-hidden": hideDesktop,
-        " premium-tablet-hidden": hideTablet,
-        " premium-mobile-hidden": hideMobile,
-    });
     const loadStyles = () => {
         const styles = {};
 
@@ -61,7 +51,17 @@ const save = (props) => {
     return (
         imageURL && (
             <div
-                className={`${mainClasses} premium-banner__responsive_${responsive}  ${blockId}`}
+                {...useBlockProps.save({
+                    className: classnames(
+                        className,
+                        `premium-banner ${blockId} premium-banner__responsive_${responsive}`,
+                        {
+                            " premium-desktop-hidden": hideDesktop,
+                            " premium-tablet-hidden": hideTablet,
+                            " premium-mobile-hidden": hideMobile,
+                        }
+                    ),
+                })}
             >
                 <style>{loadStyles()}</style>
                 <div
@@ -110,10 +110,6 @@ const save = (props) => {
                                 className={`premium-banner__title`}
                                 value={title}
                                 style={filterJsCss({
-                                    ...typographyCss(
-                                        titleTypography,
-                                        "Desktop"
-                                    ),
                                     color: titleStyles[0].titleColor,
                                     fontStyle: titleTypography.fontStyle,
                                     fontFamily: titleTypography.fontFamily,
@@ -136,9 +132,7 @@ const save = (props) => {
                                     fontStyle: descTypography.fontStyle,
                                     fontFamily: descTypography.fontFamily,
                                     fontWeight: descTypography.fontWeight,
-                                    ...typographyCss(descTypography, "Desktop"),
-                                    textDecoration:
-                                        descTypography.textDecoration,
+                                    textDecoration: descTypography.textDecoration,
                                     textTransform: descTypography.textTransform,
                                     textShadow: `${descTextShadow.horizontal}px ${descTextShadow.vertical}px ${descTextShadow.blur}px ${descTextShadow.color}`,
                                 })}

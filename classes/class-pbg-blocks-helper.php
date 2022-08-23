@@ -1225,16 +1225,13 @@ class PBG_Blocks_Helper {
 		// Style.
 
 		if ( isset( $attr['contentAlign'] ) ) {
-
 			$css->set_selector( $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' );
 			$css->add_property( 'text-align', $css->get_responsive_css( $attr['contentAlign'],'Desktop' ) );
 			$css->set_selector( $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' );
 			$css->add_property( 'text-align', $css->get_responsive_css( $attr['contentAlign'],'Desktop' ) );
-
 		}
 
 		if ( isset( $attr['titleTypography'] ) ) {
-
 			$css->set_selector( $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
 			$css->render_typography( $attr['titleTypography'], 'Desktop' );
 		}
@@ -1246,7 +1243,6 @@ class PBG_Blocks_Helper {
 		}
 
 		// Container Style
-
 		if ( isset( $attr['padding'] ) ) {
 			$padding = $attr['padding'];
 			$css->set_selector( $unique_id );
@@ -1259,9 +1255,7 @@ class PBG_Blocks_Helper {
 			$border_radius = $border['borderRadius'];
 
 			$css->set_selector( $unique_id . ' > .premium-banner__inner' );
-
 			$css->add_property( 'border-width', $css->render_spacing( $border_width['Desktop'], 'px' ) );
-
 			$css->add_property( 'border-radius', $css->render_spacing( $border_radius['Desktop'], 'px' ) );
 		}
 
@@ -1275,7 +1269,6 @@ class PBG_Blocks_Helper {
 		}
 
 		if ( isset( $attr['titleTypography'] ) ) {
-
 			$css->set_selector( $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
 			$css->render_typography( $attr['titleTypography'], 'Tablet' );
 		}
@@ -1299,9 +1292,7 @@ class PBG_Blocks_Helper {
 			$border_radius = $border['borderRadius'];
 
 			$css->set_selector( $unique_id . ' > .premium-banner__inner' );
-
 			$css->add_property( 'border-width', $css->render_spacing( $border_width['Tablet'], 'px' ) );
-
 			$css->add_property( 'border-radius', $css->render_spacing( $border_radius['Tablet'], 'px' ) );
 		}
 
@@ -1310,16 +1301,13 @@ class PBG_Blocks_Helper {
 		$css->start_media_query( $media_query['mobile'] );
 
 		if ( isset( $attr['contentAlign'] ) ) {
-
 			$css->set_selector( $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' );
 			$css->add_property( 'text-align', $css->get_responsive_css( $attr['contentAlign'],'Mobile' ) );
 			$css->set_selector( $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__desc_wrap' );
 		    $css->add_property( 'text-align', $css->get_responsive_css( $attr['contentAlign'],'Mobile' ) );
-
 		}
 
 		if ( isset( $attr['titleTypography'] ) ) {
-
 			$css->set_selector( $unique_id . '> .premium-banner__inner' . ' > .premium-banner__content' . ' > .premium-banner__title_wrap' . ' > .premium-banner__title' );
 			$css->render_typography( $attr['titleTypography'], 'Mobile' );
 		}
@@ -1343,11 +1331,10 @@ class PBG_Blocks_Helper {
 			$border_radius = $border['borderRadius'];
 
 			$css->set_selector( $unique_id . ' > .premium-banner__inner' );
-
 			$css->add_property( 'border-width', $css->render_spacing( $border_width['Mobile'], 'px' ) );
-
 			$css->add_property( 'border-radius', $css->render_spacing( $border_radius['Mobile'], 'px' ) );
 		}
+		
 		$css->stop_media_query();
 		return $css->css_output();
 	}
