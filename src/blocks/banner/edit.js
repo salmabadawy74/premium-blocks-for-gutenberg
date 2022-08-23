@@ -13,257 +13,230 @@ import InspectorTab from "../../components/inspectorTab";
 import MultiButtonsControl from "../../components/responsive-radio";
 import Icons from "../../components/icons";
 import WebfontLoader from "../../components/typography/fontLoader";
-
-import {
-    borderCss,
-    generateBlockId,
-    generateCss,
-    paddingCss,
-    typographyCss,
-} from "../../components/HelperFunction";
+import { borderCss, generateBlockId, generateCss, paddingCss, typographyCss} from "../../components/HelperFunction";
 
 const { withSelect } = wp.data;
 const { __ } = wp.i18n;
-const { Component } = wp.element;
-
+const { Fragment, useEffect } = wp.element;
 const {
     IconButton,
     Toolbar,
     PanelBody,
     SelectControl,
     TextControl,
-    ToggleControl,
+    ToggleControl
 } = wp.components;
 
-const { BlockControls, InspectorControls, RichText, MediaPlaceholder } =
-    wp.blockEditor;
+const { BlockControls, InspectorControls, RichText, MediaPlaceholder, useBlockProps } = wp.blockEditor;
 
-export class edit extends Component {
-    constructor() {
-        super(...arguments);
-    }
+function Edit(props) {
+    const { setAttributes, className, clientId } = props;
 
-    componentDidMount() {
-        this.props.setAttributes({
-            blockId:
-                "premium-banner-" + generateBlockId(this.props.clientId),
+    useEffect(() => {
+        setAttributes({
+            blockId: "premium-banner-" + generateBlockId(clientId)
         });
-    }
+        setAttributes({ classMigrate: true });
+    }, []);
 
-    render() {
-        const {
-            isSelected,
-            setAttributes,
-            className,
-            clientId: blockID,
-            deviceType,
-        } = this.props;
+    const {
+        imageURL,
+        titleStyles,
+        descStyles,
+        title,
+        titleTag,
+        desc,
+        contentAlign,
+        effect,
+        hoverEffect,
+        height,
+        minHeight,
+        verAlign,
+        hovered,
+        responsive,
+        background,
+        urlCheck,
+        target,
+        url,
+        sepColor,
+        filter,
+        hideDesktop,
+        hideTablet,
+        hideMobile,
+        border,
+        padding,
+        titleTypography,
+        descTypography,
+        titleTextShadow,
+        descTextShadow,
+        containerShadow,
+        blockId,
+    } = props.attributes;
 
-        const {
-            imageURL,
-            titleStyles,
-            descStyles,
-            title,
-            titleTag,
-            desc,
-            contentAlign,
-            effect,
-            hoverEffect,
-            height,
-            minHeight,
-            verAlign,
-            hovered,
-            responsive,
-            background,
-            opacity,
-            urlCheck,
-            target,
-            url,
-            sepColor,
-            filter,
-            hideDesktop,
-            hideTablet,
-            hideMobile,
-            border,
-            padding,
-            titleTypography,
-            descTypography,
-            titleTextShadow,
-            descTextShadow,
-            containerShadow,
-            blockId,
-        } = this.props.attributes;
+    const ALIGNS = [
+        {
+            value: "flex-start",
+            label: __("Top", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: "center",
+            label: __("Middle", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: "flex-end",
+            label: __("Bottom", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: "inherit",
+            label: __("Full", "premium-blocks-for-gutenberg"),
+        },
+    ];
 
-        const ALIGNS = [
-            {
-                value: "flex-start",
-                label: __("Top", "premium-blocks-for-gutenberg"),
-            },
-            {
-                value: "center",
-                label: __("Middle", "premium-blocks-for-gutenberg"),
-            },
-            {
-                value: "flex-end",
-                label: __("Bottom", "premium-blocks-for-gutenberg"),
-            },
-            {
-                value: "inherit",
-                label: __("Full", "premium-blocks-for-gutenberg"),
-            },
-        ];
+    const EFFECTS = [
+        {
+            value: "effect1",
+            label: __("Style 1", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: "effect2",
+            label: __("Style 2", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: "effect3",
+            label: __("Style 3", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: "effect4",
+            label: __("Style 4", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: "effect5",
+            label: __("Style 5", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: "effect6",
+            label: __("Style 6", "premium-blocks-for-gutenberg"),
+        },
+    ];
 
-        const EFFECTS = [
-            {
-                value: "effect1",
-                label: __("Style 1", "premium-blocks-for-gutenberg"),
-            },
-            {
-                value: "effect2",
-                label: __("Style 2", "premium-blocks-for-gutenberg"),
-            },
-            {
-                value: "effect3",
-                label: __("Style 3", "premium-blocks-for-gutenberg"),
-            },
-            {
-                value: "effect4",
-                label: __("Style 4", "premium-blocks-for-gutenberg"),
-            },
-            {
-                value: "effect5",
-                label: __("Style 5", "premium-blocks-for-gutenberg"),
-            },
-            {
-                value: "effect6",
-                label: __("Style 6", "premium-blocks-for-gutenberg"),
-            },
-        ];
+    const HOVER = [
+        {
+            value: "none",
+            label: __("None", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: "zoomin",
+            label: __("Zoom In", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: "zoomout",
+            label: __("Zoom Out", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: "scale",
+            label: __("Scale", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: "gray",
+            label: __("Gray Scale", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: "blur",
+            label: __("Blur", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: "bright",
+            label: __("Bright", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: "sepia",
+            label: __("Sepia", "premium-blocks-for-gutenberg"),
+        },
+    ];
 
-        const HOVER = [
-            {
-                value: "none",
-                label: __("None", "premium-blocks-for-gutenberg"),
-            },
-            {
-                value: "zoomin",
-                label: __("Zoom In", "premium-blocks-for-gutenberg"),
-            },
-            {
-                value: "zoomout",
-                label: __("Zoom Out", "premium-blocks-for-gutenberg"),
-            },
-            {
-                value: "scale",
-                label: __("Scale", "premium-blocks-for-gutenberg"),
-            },
-            {
-                value: "gray",
-                label: __("Gray Scale", "premium-blocks-for-gutenberg"),
-            },
-            {
-                value: "blur",
-                label: __("Blur", "premium-blocks-for-gutenberg"),
-            },
-            {
-                value: "bright",
-                label: __("Bright", "premium-blocks-for-gutenberg"),
-            },
-            {
-                value: "sepia",
-                label: __("Sepia", "premium-blocks-for-gutenberg"),
-            },
-        ];
+    const HEIGHT = [
+        {
+            value: "default",
+            label: __("Default", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: "custom",
+            label: __("Custom", "premium-blocks-for-gutenberg"),
+        },
+    ];
 
-        const HEIGHT = [
-            {
-                value: "default",
-                label: __("Default", "premium-blocks-for-gutenberg"),
-            },
-            {
-                value: "custom",
-                label: __("Custom", "premium-blocks-for-gutenberg"),
-            },
-        ];
-
-        const mainClasses = classnames(className, "premium-banner", {
-            " premium-desktop-hidden": hideDesktop,
-            " premium-tablet-hidden": hideTablet,
-            " premium-mobile-hidden": hideMobile,
+    const saveStyles = (value) => {
+        const newUpdate = titleStyles.map((item, index) => {
+            if (0 === index) {
+                item = { ...item, ...value };
+            }
+            return item;
         });
 
-        const saveStyles = (value) => {
-            const newUpdate = titleStyles.map((item, index) => {
-                if (0 === index) {
-                    item = { ...item, ...value };
-                }
-                return item;
-            });
+        setAttributes({ titleStyles: newUpdate });
+    };
 
-            setAttributes({ titleStyles: newUpdate });
+    const descriptionStyles = (value) => {
+        const newUpdate = descStyles.map((item, indexx) => {
+            if (0 === indexx) {
+                item = { ...item, ...value };
+            }
+            return item;
+        });
+        setAttributes({ descStyles: newUpdate });
+    };
+
+    const loadStyles = () => {
+        const styles = {};
+
+        styles[
+            `.${blockId} .premium-banner__effect3 .premium-banner__title_wrap::after`
+        ] = {
+            background: sepColor,
         };
 
-        const descriptionStyles = (value) => {
-            const newUpdate = descStyles.map((item, index) => {
-                if (0 === index) {
-                    item = { ...item, ...value };
-                }
-                return item;
-            });
-            setAttributes({ descStyles: newUpdate });
+        return generateCss(styles);
+    };
+
+    let loadTitleGoogleFonts;
+    let loadDesciptionGoogleFonts;
+
+    if (titleTypography.fontFamily !== "Default") {
+        const gconfig = {
+            google: {
+                families: [titleTypography?.fontFamily]
+            }
         };
-
-        const loadStyles = () => {
-            const styles = {};
-
-            styles[
-                `.${blockId} .premium-banner__effect3 .premium-banner__title_wrap::after`
-            ] = {
-                background: sepColor,
-            };
-
-            return generateCss(styles);
+        loadTitleGoogleFonts = (
+            <WebfontLoader config={gconfig}></WebfontLoader>
+        );
+    }
+    if (descTypography.fontFamily !== "Default") {
+        const dconfig = {
+            google: {
+                families: [descTypography.fontFamily]
+            }
         };
+        loadDesciptionGoogleFonts = (
+            <WebfontLoader config={dconfig}></WebfontLoader>
+        );
+    }
 
-        let loadTitleGoogleFonts;
-        let loadDesciptionGoogleFonts;
-
-        if (titleTypography.fontFamily !== "Default") {
-            const gconfig = {
-                google: {
-                    families: [titleTypography?.fontFamily],
-                },
-            };
-            loadTitleGoogleFonts = (
-                <WebfontLoader config={gconfig}></WebfontLoader>
-            );
-        }
-        if (descTypography.fontFamily !== "Default") {
-            const dconfig = {
-                google: {
-                    families: [descTypography.fontFamily],
-                },
-            };
-            loadDesciptionGoogleFonts = (
-                <WebfontLoader config={dconfig}></WebfontLoader>
-            );
-        }
-        return [
-            isSelected && (
-                <BlockControls key="controls">
-                    <Toolbar>
-                        <IconButton
-                            label={__(
-                                "Refresh this button when it conflict with other buttons styles",
-                                "premium-blocks-for-gutenberg"
-                            )}
-                            icon="update"
-                            className="components-toolbar__control"
-                        />
-                    </Toolbar>
-                </BlockControls>
-            ),
-            isSelected && imageURL && (
+    return (
+        <Fragment>
+            <BlockControls key="controls">
+                <Toolbar>
+                    <IconButton
+                        label={__(
+                            "Refresh this button when it conflict with other buttons styles",
+                            "premium-blocks-for-gutenberg"
+                        )}
+                        icon="update"
+                        className="components-toolbar__control"
+                    />
+                </Toolbar>
+            </BlockControls>
+            {imageURL && (
                 <InspectorControls key={"inspector"}>
                     <InspectorTabs tabs={["layout", "style", "advance"]}>
                         <InspectorTab key={"layout"}>
@@ -281,7 +254,7 @@ export class edit extends Component {
                                         e.preventDefault();
                                         setAttributes({
                                             imageURL: "",
-                                            imageURL: "",
+                                            imageID: "",
                                         });
                                     }}
                                 >
@@ -412,17 +385,17 @@ export class edit extends Component {
                                     choices={[
                                         {
                                             value: "left",
-                                            label: __("Left"),
+                                            label: __("Left","premium-blocks-for-gutenberg"),
                                             icon: Icons.alignLeft,
                                         },
                                         {
                                             value: "center",
-                                            label: __("Center"),
+                                            label: __("Center","premium-blocks-for-gutenberg"),
                                             icon: Icons.alignCenter,
                                         },
                                         {
                                             value: "right",
-                                            label: __("Right"),
+                                            label: __("Right","premium-blocks-for-gutenberg"),
                                             icon: Icons.alignRight,
                                         },
                                     ]}
@@ -447,12 +420,12 @@ export class edit extends Component {
                             >
                                 <RadioComponent
                                     choices={[
-                                        { label: __("H1"), value: "h1" },
-                                        { label: __("H2"), value: "h2" },
-                                        { label: __("H3"), value: "h3" },
-                                        { label: __("H4"), value: "h4" },
-                                        { label: __("H5"), value: "h5" },
-                                        { label: __("H6"), value: "h6" },
+                                        { label: __("H1","premium-blocks-for-gutenberg"), value: "h1" },
+                                        { label: __("H2","premium-blocks-for-gutenberg"), value: "h2" },
+                                        { label: __("H3","premium-blocks-for-gutenberg"), value: "h3" },
+                                        { label: __("H4","premium-blocks-for-gutenberg"), value: "h4" },
+                                        { label: __("H5","premium-blocks-for-gutenberg"), value: "h5" },
+                                        { label: __("H6","premium-blocks-for-gutenberg"), value: "h6" },
                                     ]}
                                     value={titleTag}
                                     onChange={(newValue) =>
@@ -487,7 +460,6 @@ export class edit extends Component {
                                         })
                                     }
                                 />
-
                                 <PremiumFilters
                                     value={filter}
                                     onChange={(value) =>
@@ -507,11 +479,10 @@ export class edit extends Component {
                                     value={titleTypography}
                                     onChange={(newValue) =>
                                         setAttributes({
-                                            titleTypography: newValue,
+                                            titleTypography: newValue
                                         })
                                     }
                                 />
-                                <hr />
                                 <AdvancedPopColorControl
                                     label={__(
                                         "Text Color",
@@ -558,13 +529,11 @@ export class edit extends Component {
                                         }
                                     />
                                 )}
-                                <hr />
                                 <PremiumShadow
                                     label={__(
                                         "Text Shadow",
                                         "premium-blocks-for-gutenberg"
                                     )}
-                                    boxShadow={false}
                                     value={titleTextShadow}
                                     onChange={(value) =>
                                         setAttributes({
@@ -589,7 +558,6 @@ export class edit extends Component {
                                         })
                                     }
                                 />
-                                <hr />
                                 <AdvancedPopColorControl
                                     label={__(
                                         "Text Color",
@@ -603,13 +571,11 @@ export class edit extends Component {
                                         })
                                     }
                                 />
-                                <hr />
                                 <PremiumShadow
                                     label={__(
                                         "Text Shadow",
                                         "premium-blocks-for-gutenberg"
                                     )}
-                                    boxShadow={false}
                                     value={descTextShadow}
                                     onChange={(value) =>
                                         setAttributes({ descTextShadow: value })
@@ -625,11 +591,6 @@ export class edit extends Component {
                                 initialOpen={false}
                             >
                                 <PremiumShadow
-                                    label={__(
-                                        "Box Shadow",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                    boxShadow={true}
                                     value={containerShadow}
                                     onChange={(value) =>
                                         setAttributes({
@@ -639,7 +600,7 @@ export class edit extends Component {
                                 />
                                 <hr />
                                 <PremiumBorder
-                                    label={__("Border")}
+                                    label={__("Border","premium-blocks-for-gutenberg")}
                                     value={border}
                                     onChange={(value) =>
                                         setAttributes({ border: value })
@@ -650,7 +611,7 @@ export class edit extends Component {
                                     value={padding}
                                     responsive={true}
                                     showUnits={true}
-                                    label={__("Padding")}
+                                    label={__("Padding","premium-blocks-for-gutenberg")}
                                     onChange={(value) =>
                                         setAttributes({ padding: value })
                                     }
@@ -681,8 +642,21 @@ export class edit extends Component {
                         </InspectorTab>
                     </InspectorTabs>
                 </InspectorControls>
-            ),
-            !imageURL && (
+            )}
+            <div
+                    {...useBlockProps({
+                        className: classnames(
+                            className,
+                            `premium-banner ${blockId} premium-banner__responsive_${responsive}`,
+                            {
+                                " premium-desktop-hidden": hideDesktop,
+                                " premium-tablet-hidden": hideTablet,
+                                " premium-mobile-hidden": hideMobile,
+                            }
+                        ),
+                    })}
+                >
+            {!imageURL && (
                 <MediaPlaceholder
                     labels={{
                         title: __(
@@ -705,12 +679,11 @@ export class edit extends Component {
                         });
                     }}
                 />
-            ),
-            imageURL && (
+            )}
+            {imageURL && (
                 <div
-                    className={`${mainClasses} premium-banner__responsive_${responsive} ${blockId} `}
                     style={{
-                        ...paddingCss(padding, deviceType),
+                        ...paddingCss(padding, props.deviceType)
                     }}
                 >
                     <style
@@ -722,7 +695,7 @@ export class edit extends Component {
                         className={`premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`}
                         style={{
                             boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
-                            ...borderCss(border, deviceType),
+                            ...borderCss(border, props.deviceType),
                         }}
                     >
                         <div
@@ -761,7 +734,7 @@ export class edit extends Component {
                                 className={`premium-banner__title_wrap`}
                                 style={{
                                     textAlign:
-                                        contentAlign[this.props.deviceType],
+                                        contentAlign[props.deviceType],
                                 }}
                             >
                                 <RichText
@@ -777,7 +750,7 @@ export class edit extends Component {
                                         color: titleStyles[0].titleColor,
                                         ...typographyCss(
                                             titleTypography,
-                                            this.props.deviceType
+                                            props.deviceType
                                         ),
                                         textShadow: `${titleTextShadow?.horizontal}px ${titleTextShadow?.vertical}px ${titleTextShadow?.blur}px ${titleTextShadow?.color}`,
                                     }}
@@ -787,7 +760,7 @@ export class edit extends Component {
                                 className={`premium-banner__desc_wrap`}
                                 style={{
                                     textAlign:
-                                        contentAlign[this.props.deviceType],
+                                        contentAlign[props.deviceType],
                                 }}
                             >
                                 <RichText
@@ -802,7 +775,7 @@ export class edit extends Component {
                                         color: descStyles[0].descColor,
                                         ...typographyCss(
                                             descTypography,
-                                            this.props.deviceType
+                                            props.deviceType
                                         ),
                                         textShadow: `${descTextShadow.horizontal}px ${descTextShadow.vertical}px ${descTextShadow.blur}px ${descTextShadow.color}`,
                                     }}
@@ -813,11 +786,13 @@ export class edit extends Component {
                     {loadTitleGoogleFonts}
                     {loadDesciptionGoogleFonts}
                 </div>
-            ),
-        ];
-    }
+            )}
+            </div>
+        </Fragment>
+    );
 }
-export default withSelect((select, props) => {
+
+export default withSelect((select) => {
     const { __experimentalGetPreviewDeviceType = null } =
         select("core/edit-post");
     let deviceType = __experimentalGetPreviewDeviceType
@@ -825,4 +800,4 @@ export default withSelect((select, props) => {
         : null;
 
     return { deviceType: deviceType };
-})(edit);
+})(Edit);
