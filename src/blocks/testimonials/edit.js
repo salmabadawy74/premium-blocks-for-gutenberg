@@ -416,7 +416,6 @@ function Edit(props) {
                                     tagName="p"
                                     className={`premium-testimonial__text`}
                                     value={text}
-                                    isSelected={false}
                                     placeholder="Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
                                     onChange={newText => setAttributes({ text: newText })}
                                     style={{
@@ -436,12 +435,12 @@ function Edit(props) {
                                 tagName={authorStyles[0].authorTag.toLowerCase()}
                                 className={`premium-testimonial__author`}
                                 value={author}
-                                isSelected={false}
                                 onChange={newText => setAttributes({ author: newText })}
                                 style={{
                                     color: authorStyles[0].authorColor,
                                     ...typographyCss(authorTypography, props.deviceType),
                                 }}
+                                keepPlaceholderOnFocus
                             />
                             <span
                                 className={`premium-testimonial__sep`}
@@ -456,11 +455,11 @@ function Edit(props) {
                                 className={`premium-testimonial__author_comp`}
                                 onChange={newText => setAttributes({ authorCom: newText })}
                                 value={authorCom}
-                                isSelected={false}
                                 style={{
                                     color: companyStyles[0].authorComColor,
                                     ...typographyCss(companyTypography, props.deviceType),
                                 }}
+                                keepPlaceholderOnFocus
                             />
                         </div>
                     </div>

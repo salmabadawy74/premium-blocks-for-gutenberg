@@ -2761,8 +2761,8 @@ class PBG_Blocks_Helper {
 		// Table.
 		if ( isset( $attr['tableBorder'] ) ) {
 			$table_border        = $attr['tableBorder'];
-			$table_border_width  = $attr['tableBorder']['borderWidth'];
-			$table_border_radius = $attr['tableBorder']['borderRadius'];
+			$table_border_width  = $table_border['borderWidth'];
+			$table_border_radius = $table_border['borderRadius'];
 
 			$css->set_selector( $unique_id );
 			$css->add_property( 'border-width', $css->render_spacing( $table_border_width['Desktop'], 'px' ) );
@@ -2780,48 +2780,34 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'text-align', $css->get_responsive_css( $attr['contentAlign'],'Desktop'  ) );
 		}
 
-		// Button.
-		if ( isset( $attr['buttonBorder'] ) ) {
-			$button_border        = $attr['buttonBorder'];
-			$button_border_width  = $attr['buttonBorder']['borderWidth'];
-			$button_border_radius = $attr['buttonBorder']['borderRadius'];
-
-			$css->set_selector( $unique_id . ' .premium-pricing-table__button_link' );
-			$css->add_property( 'border-width', $css->render_spacing( $button_border_width['Desktop'], 'px' ) );
-			$css->add_property( 'border-radius', $css->render_spacing( $button_border_radius['Desktop'], 'px' ) );
-		}
-
+		//title
 		if ( isset( $attr['titlePadding'] ) ) {
 			$title_padding = $attr['titlePadding'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__title' );
 			$css->add_property( 'padding', $css->render_spacing( $title_padding['Desktop'], $title_padding['unit'] ) );
 		}
 
 		if ( isset( $attr['titleMargin'] ) ) {
 			$title_margin = $attr['titleMargin'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__title_wrap' );
 			$css->add_property( 'margin', $css->render_spacing( $title_margin['Desktop'], $title_margin['unit'] ) );
 		}
 
 		if ( isset( $attr['titleTypography'] ) ) {
 			$title_typography = $attr['titleTypography'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__title' );
 			$css->render_typography( $title_typography, 'Desktop' );
 		}
 
+		//price
 		if ( isset( $attr['pricePadding'] ) ) {
 			$price_padding = $attr['pricePadding'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__price_wrap' );
 			$css->add_property( 'padding', $css->render_spacing( $price_padding['Desktop'], $price_padding['unit'] ) );
 		}
 
 		if ( isset( $attr['priceMargin'] ) ) {
 			$price_margin = $attr['priceMargin'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__price_wrap' );
 			$css->add_property( 'margin', $css->render_spacing( $price_margin['Desktop'], $price_margin['unit'] ) );
 		}
@@ -2834,140 +2820,132 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['slashTypography'] ) ) {
 			$slash_typography = $attr['slashTypography'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__slash' );
 			$css->render_typography( $slash_typography, 'Desktop' );
 		}
 
 		if ( isset( $attr['currTypography'] ) ) {
 			$current_typography = $attr['currTypography'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__currency' );
 			$css->render_typography( $current_typography, 'Desktop' );
 		}
 
 		if ( isset( $attr['priceTypography'] ) ) {
 			$price_typography = $attr['priceTypography'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__val' );
 			$css->render_typography( $price_typography, 'Desktop' );
 		}
 
 		if ( isset( $attr['dividerTypography'] ) ) {
 			$divider_typography = $attr['dividerTypography'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__divider' );
 			$css->render_typography( $divider_typography, 'Desktop' );
 		}
 
 		if ( isset( $attr['durationTypography'] ) ) {
 			$duration_typography = $attr['durationTypography'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__dur' );
 			$css->render_typography( $duration_typography, 'Desktop' );
 		}
 
 		if ( isset( $attr['slashVAlign'] ) ) {
 			$slash_align = $css->get_responsive_css( $attr['slashVAlign'], 'Desktop' );
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__slash' );
 			$css->add_property( 'align-self', $slash_align );
 		}
 
 		if ( isset( $attr['currVAlign'] ) ) {
 			$curr_align = $css->get_responsive_css( $attr['currVAlign'], 'Desktop' );
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__currency' );
 			$css->add_property( 'align-self', $curr_align );
 		}
 
 		if ( isset( $attr['valVAlign'] ) ) {
 			$val_align = $css->get_responsive_css( $attr['valVAlign'], 'Desktop' );
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__val' );
 			$css->add_property( 'align-self', $val_align );
 		}
 
 		if ( isset( $attr['divVAlign'] ) ) {
 			$div_align = $css->get_responsive_css( $attr['divVAlign'], 'Desktop' );
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__divider' );
 			$css->add_property( 'align-self', $div_align );
 		}
 
 		if ( isset( $attr['durVAlign'] ) ) {
 			$dur_align = $css->get_responsive_css( $attr['durVAlign'], 'Desktop' );
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__dur' );
 			$css->add_property( 'align-self', $dur_align );
 		}
 
 		if ( isset( $attr['featuresListPadding'] ) ) {
 			$list_padding = $attr['featuresListPadding'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__list_wrap .premium-pricing-table__list' );
 			$css->add_property( 'padding', $css->render_spacing( $list_padding['Desktop'], $list_padding['unit'] ) );
 		}
 
 		if ( isset( $attr['featuresListMargin'] ) ) {
 			$list_margin = $attr['featuresListMargin'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__list_wrap' );
 			$css->add_property( 'margin', $css->render_spacing( $list_margin['Desktop'], $list_margin['unit'] ) );
 		}
 
 		if ( isset( $attr['listTypography'] ) ) {
 			$list_typography = $attr['listTypography'];
-
-			$css->set_selector( $unique_id . ' .premium-pricing-table__list' );
+			$css->set_selector( $unique_id . ' .premium-pricing-table__list_wrap .premium-pricing-table__list' );
 			$css->render_typography( $list_typography, 'Desktop' );
 		}
 
+		//desc
 		if ( isset( $attr['descriptionPadding'] ) ) {
 			$description_padding = $attr['descriptionPadding'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__desc' );
 			$css->add_property( 'padding', $css->render_spacing( $description_padding['Desktop'], $description_padding['unit'] ) );
 		}
 
 		if ( isset( $attr['descriptionMargin'] ) ) {
 			$description_margin = $attr['descriptionMargin'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__desc' );
 			$css->add_property( 'margin', $css->render_spacing( $description_margin['Desktop'], $description_margin['unit'] ) );
 		}
 
 		if ( isset( $attr['descTypography'] ) ) {
 			$desc_typography = $attr['descTypography'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__desc' );
 			$css->render_typography( $desc_typography, 'Desktop' );
 		}
-
+		
+		//button
 		if ( isset( $attr['buttonPadding'] ) ) {
 			$button_padding = $attr['buttonPadding'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__button_link' );
 			$css->add_property( 'padding', $css->render_spacing( $button_padding['Desktop'], $button_padding['unit'] ) );
 		}
 
 		if ( isset( $attr['buttonMargin'] ) ) {
 			$button_margin = $attr['buttonMargin'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__button_link' );
 			$css->add_property( 'margin', $css->render_spacing( $button_margin['Desktop'], $button_margin['unit'] ) );
 		}
 
 		if ( isset( $attr['buttonTypography'] ) ) {
 			$button_typography = $attr['buttonTypography'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__button_link' );
 			$css->render_typography( $button_typography, 'Desktop' );
 		}
 
+		if ( isset( $attr['buttonBorder'] ) ) {
+			$button_border        = $attr['buttonBorder'];
+			$button_border_width  = $button_border['borderWidth'];
+			$button_border_radius = $button_border['borderRadius'];
+
+			$css->set_selector( $unique_id . ' .premium-pricing-table__button_link' );
+			$css->add_property( 'border-width', $css->render_spacing( $button_border_width['Desktop'], 'px' ) );
+			$css->add_property( 'border-radius', $css->render_spacing( $button_border_radius['Desktop'], 'px' ) );
+		}
+
 		if ( isset( $attr['badgeTypography'] ) ) {
 			$badge_typography = $attr['badgeTypography'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__badge span' );
 			$css->render_typography( $badge_typography, 'Desktop' );
 		}
@@ -2975,7 +2953,6 @@ class PBG_Blocks_Helper {
 		// Feature Align.
 		if ( isset( $attr['featureAlign'] ) ) {
 			$align = $css->get_responsive_css( $attr['featureAlign'], 'Desktop' );
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__list' );
 			$css->add_property( 'text-align', $align );
 		}
@@ -2985,8 +2962,8 @@ class PBG_Blocks_Helper {
 		// Table.
 		if ( isset( $attr['tableBorder'] ) ) {
 			$table_border        = $attr['tableBorder'];
-			$table_border_width  = $attr['tableBorder']['borderWidth'];
-			$table_border_radius = $attr['tableBorder']['borderRadius'];
+			$table_border_width  = $table_border['borderWidth'];
+			$table_border_radius = $table_border['borderRadius'];
 
 			$css->set_selector( $unique_id );
 			$css->add_property( 'border-width', $css->render_spacing( $table_border_width['Tablet'], 'px' ) );
@@ -3007,8 +2984,8 @@ class PBG_Blocks_Helper {
 		// Button.
 		if ( isset( $attr['buttonBorder'] ) ) {
 			$button_border        = $attr['buttonBorder'];
-			$button_border_width  = $attr['buttonBorder']['borderWidth'];
-			$button_border_radius = $attr['buttonBorder']['borderRadius'];
+			$button_border_width  = $button_border['borderWidth'];
+			$button_border_radius = $button_border['borderRadius'];
 
 			$css->set_selector( $unique_id . ' .premium-pricing-table__button_link' );
 			$css->add_property( 'border-width', $css->render_spacing( $button_border_width['Tablet'], 'px' ) );
@@ -3017,35 +2994,30 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['titlePadding'] ) ) {
 			$title_padding = $attr['titlePadding'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__title' );
 			$css->add_property( 'padding', $css->render_spacing( $title_padding['Tablet'], $title_padding['unit'] ) );
 		}
 
 		if ( isset( $attr['titleMargin'] ) ) {
 			$title_margin = $attr['titleMargin'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__title_wrap' );
 			$css->add_property( 'margin', $css->render_spacing( $title_margin['Tablet'], $title_margin['unit'] ) );
 		}
 
 		if ( isset( $attr['titleTypography'] ) ) {
 			$title_typography = $attr['titleTypography'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__title' );
 			$css->render_typography( $title_typography, 'Tablet' );
 		}
 
 		if ( isset( $attr['pricePadding'] ) ) {
 			$price_padding = $attr['pricePadding'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__price_wrap' );
 			$css->add_property( 'padding', $css->render_spacing( $price_padding['Tablet'], $price_padding['unit'] ) );
 		}
 
 		if ( isset( $attr['priceMargin'] ) ) {
 			$price_margin = $attr['priceMargin'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__price_wrap' );
 			$css->add_property( 'margin', $css->render_spacing( $price_margin['Tablet'], $price_margin['unit'] ) );
 		}
@@ -3058,140 +3030,120 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['slashTypography'] ) ) {
 			$slash_typography = $attr['slashTypography'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__slash' );
 			$css->render_typography( $slash_typography, 'Tablet' );
 		}
 
 		if ( isset( $attr['currTypography'] ) ) {
 			$current_typography = $attr['currTypography'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__currency' );
 			$css->render_typography( $current_typography, 'Tablet' );
 		}
 
 		if ( isset( $attr['priceTypography'] ) ) {
 			$price_typography = $attr['priceTypography'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__val' );
 			$css->render_typography( $price_typography, 'Tablet' );
 		}
 
 		if ( isset( $attr['dividerTypography'] ) ) {
 			$divider_typography = $attr['dividerTypography'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__divider' );
 			$css->render_typography( $divider_typography, 'Tablet' );
 		}
 
 		if ( isset( $attr['durationTypography'] ) ) {
 			$duration_typography = $attr['durationTypography'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__dur' );
 			$css->render_typography( $duration_typography, 'Tablet' );
 		}
 
 		if ( isset( $attr['slashVAlign'] ) ) {
 			$slash_align = $css->get_responsive_css( $attr['slashVAlign'], 'Tablet' );
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__slash' );
 			$css->add_property( 'align-self', $slash_align );
 		}
 
 		if ( isset( $attr['currVAlign'] ) ) {
 			$curr_align = $css->get_responsive_css( $attr['currVAlign'], 'Tablet' );
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__currency' );
 			$css->add_property( 'align-self', $curr_align );
 		}
 
 		if ( isset( $attr['valVAlign'] ) ) {
 			$val_align = $css->get_responsive_css( $attr['valVAlign'], 'Tablet' );
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__val' );
 			$css->add_property( 'align-self', $val_align );
 		}
 
 		if ( isset( $attr['divVAlign'] ) ) {
 			$div_align = $css->get_responsive_css( $attr['divVAlign'], 'Tablet' );
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__divider' );
 			$css->add_property( 'align-self', $div_align );
 		}
 
 		if ( isset( $attr['durVAlign'] ) ) {
 			$dur_align = $css->get_responsive_css( $attr['durVAlign'], 'Tablet' );
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__dur' );
 			$css->add_property( 'align-self', $dur_align );
 		}
 
 		if ( isset( $attr['featuresListPadding'] ) ) {
 			$list_padding = $attr['featuresListPadding'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__list_wrap .premium-pricing-table__list' );
 			$css->add_property( 'padding', $css->render_spacing( $list_padding['Tablet'], $list_padding['unit'] ) );
 		}
 
 		if ( isset( $attr['featuresListMargin'] ) ) {
 			$list_margin = $attr['featuresListMargin'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__list_wrap' );
 			$css->add_property( 'margin', $css->render_spacing( $list_margin['Tablet'], $list_margin['unit'] ) );
 		}
 
 		if ( isset( $attr['listTypography'] ) ) {
 			$list_typography = $attr['listTypography'];
-
-			$css->set_selector( $unique_id . ' .premium-pricing-table__list' );
+			$css->set_selector( $unique_id . ' .premium-pricing-table__list_wrap .premium-pricing-table__list' );
 			$css->render_typography( $list_typography, 'Tablet' );
 		}
 
 		if ( isset( $attr['descriptionPadding'] ) ) {
 			$description_padding = $attr['descriptionPadding'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__desc' );
 			$css->add_property( 'padding', $css->render_spacing( $description_padding['Tablet'], $description_padding['unit'] ) );
 		}
 
 		if ( isset( $attr['descriptionMargin'] ) ) {
 			$description_margin = $attr['descriptionMargin'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__desc' );
 			$css->add_property( 'margin', $css->render_spacing( $description_margin['Tablet'], $description_margin['unit'] ) );
 		}
 
 		if ( isset( $attr['descTypography'] ) ) {
 			$desc_typography = $attr['descTypography'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__desc' );
 			$css->render_typography( $desc_typography, 'Tablet' );
 		}
 
 		if ( isset( $attr['buttonPadding'] ) ) {
 			$button_padding = $attr['buttonPadding'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__button_link' );
 			$css->add_property( 'padding', $css->render_spacing( $button_padding['Tablet'], $button_padding['unit'] ) );
 		}
 
 		if ( isset( $attr['buttonMargin'] ) ) {
 			$button_margin = $attr['buttonMargin'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__button_link' );
 			$css->add_property( 'margin', $css->render_spacing( $button_margin['Tablet'], $button_margin['unit'] ) );
 		}
 
 		if ( isset( $attr['buttonTypography'] ) ) {
 			$button_typography = $attr['buttonTypography'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__button_link' );
 			$css->render_typography( $button_typography, 'Tablet' );
 		}
 
 		if ( isset( $attr['badgeTypography'] ) ) {
 			$badge_typography = $attr['badgeTypography'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__badge span' );
 			$css->render_typography( $badge_typography, 'Tablet' );
 		}
@@ -3199,7 +3151,6 @@ class PBG_Blocks_Helper {
 		// Feature Align.
 		if ( isset( $attr['featureAlign'] ) ) {
 			$align = $css->get_responsive_css( $attr['featureAlign'], 'Tablet' );
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__list' );
 			$css->add_property( 'text-align', $align );
 		}
@@ -3210,8 +3161,8 @@ class PBG_Blocks_Helper {
 		// Table.
 		if ( isset( $attr['tableBorder'] ) ) {
 			$table_border        = $attr['tableBorder'];
-			$table_border_width  = $attr['tableBorder']['borderWidth'];
-			$table_border_radius = $attr['tableBorder']['borderRadius'];
+			$table_border_width  = $table_border['borderWidth'];
+			$table_border_radius = $table_border['borderRadius'];
 
 			$css->set_selector( $unique_id );
 			$css->add_property( 'border-width', $css->render_spacing( $table_border_width['Mobile'], 'px' ) );
@@ -3232,8 +3183,8 @@ class PBG_Blocks_Helper {
 		// Button.
 		if ( isset( $attr['buttonBorder'] ) ) {
 			$button_border        = $attr['buttonBorder'];
-			$button_border_width  = $attr['buttonBorder']['borderWidth'];
-			$button_border_radius = $attr['buttonBorder']['borderRadius'];
+			$button_border_width  = $button_border['borderWidth'];
+			$button_border_radius = $button_border['borderRadius'];
 
 			$css->set_selector( $unique_id . ' .premium-pricing-table__button_link' );
 			$css->add_property( 'border-width', $css->render_spacing( $button_border_width['Mobile'], 'px' ) );
@@ -3242,35 +3193,30 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['titlePadding'] ) ) {
 			$title_padding = $attr['titlePadding'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__title' );
 			$css->add_property( 'padding', $css->render_spacing( $title_padding['Mobile'], $title_padding['unit'] ) );
 		}
 
 		if ( isset( $attr['titleMargin'] ) ) {
 			$title_margin = $attr['titleMargin'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__title_wrap' );
 			$css->add_property( 'margin', $css->render_spacing( $title_margin['Mobile'], $title_margin['unit'] ) );
 		}
 
 		if ( isset( $attr['titleTypography'] ) ) {
 			$title_typography = $attr['titleTypography'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__title' );
 			$css->render_typography( $title_typography, 'Mobile' );
 		}
 
 		if ( isset( $attr['pricePadding'] ) ) {
 			$price_padding = $attr['pricePadding'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__price_wrap' );
 			$css->add_property( 'padding', $css->render_spacing( $price_padding['Mobile'], $price_padding['unit'] ) );
 		}
 
 		if ( isset( $attr['priceMargin'] ) ) {
 			$price_margin = $attr['priceMargin'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__price_wrap' );
 			$css->add_property( 'margin', $css->render_spacing( $price_margin['Mobile'], $price_margin['unit'] ) );
 		}
@@ -3283,140 +3229,120 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['slashTypography'] ) ) {
 			$slash_typography = $attr['slashTypography'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__slash' );
 			$css->render_typography( $slash_typography, 'Mobile' );
 		}
 
 		if ( isset( $attr['currTypography'] ) ) {
 			$current_typography = $attr['currTypography'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__currency' );
 			$css->render_typography( $current_typography, 'Mobile' );
 		}
 
 		if ( isset( $attr['priceTypography'] ) ) {
 			$price_typography = $attr['priceTypography'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__val' );
 			$css->render_typography( $price_typography, 'Mobile' );
 		}
 
 		if ( isset( $attr['dividerTypography'] ) ) {
 			$divider_typography = $attr['dividerTypography'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__divider' );
 			$css->render_typography( $divider_typography, 'Mobile' );
 		}
 
 		if ( isset( $attr['durationTypography'] ) ) {
 			$duration_typography = $attr['durationTypography'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__dur' );
 			$css->render_typography( $duration_typography, 'Mobile' );
 		}
 
 		if ( isset( $attr['slashVAlign'] ) ) {
 			$slash_align = $css->get_responsive_css( $attr['slashVAlign'], 'Mobile' );
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__slash' );
 			$css->add_property( 'align-self', $slash_align );
 		}
 
 		if ( isset( $attr['currVAlign'] ) ) {
 			$curr_align = $css->get_responsive_css( $attr['currVAlign'], 'Mobile' );
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__currency' );
 			$css->add_property( 'align-self', $curr_align );
 		}
 
 		if ( isset( $attr['valVAlign'] ) ) {
 			$val_align = $css->get_responsive_css( $attr['valVAlign'], 'Mobile' );
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__val' );
 			$css->add_property( 'align-self', $val_align );
 		}
 
 		if ( isset( $attr['divVAlign'] ) ) {
 			$div_align = $css->get_responsive_css( $attr['divVAlign'], 'Mobile' );
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__divider' );
 			$css->add_property( 'align-self', $div_align );
 		}
 
 		if ( isset( $attr['durVAlign'] ) ) {
 			$dur_align = $css->get_responsive_css( $attr['durVAlign'], 'Mobile' );
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__dur' );
 			$css->add_property( 'align-self', $dur_align );
 		}
 
 		if ( isset( $attr['featuresListPadding'] ) ) {
 			$list_padding = $attr['featuresListPadding'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__list_wrap .premium-pricing-table__list' );
 			$css->add_property( 'padding', $css->render_spacing( $list_padding['Mobile'], $list_padding['unit'] ) );
 		}
 
 		if ( isset( $attr['featuresListMargin'] ) ) {
 			$list_margin = $attr['featuresListMargin'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__list_wrap' );
 			$css->add_property( 'margin', $css->render_spacing( $list_margin['Mobile'], $list_margin['unit'] ) );
 		}
 
 		if ( isset( $attr['listTypography'] ) ) {
 			$list_typography = $attr['listTypography'];
-
-			$css->set_selector( $unique_id . ' .premium-pricing-table__list' );
+			$css->set_selector( $unique_id . ' .premium-pricing-table__list_wrap .premium-pricing-table__list' );
 			$css->render_typography( $list_typography, 'Mobile' );
 		}
 
 		if ( isset( $attr['descriptionPadding'] ) ) {
 			$description_padding = $attr['descriptionPadding'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__desc' );
 			$css->add_property( 'padding', $css->render_spacing( $description_padding['Mobile'], $description_padding['unit'] ) );
 		}
 
 		if ( isset( $attr['descriptionMargin'] ) ) {
 			$description_margin = $attr['descriptionMargin'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__desc' );
 			$css->add_property( 'margin', $css->render_spacing( $description_margin['Mobile'], $description_margin['unit'] ) );
 		}
 
 		if ( isset( $attr['descTypography'] ) ) {
 			$desc_typography = $attr['descTypography'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__desc' );
 			$css->render_typography( $desc_typography, 'Mobile' );
 		}
 
 		if ( isset( $attr['buttonPadding'] ) ) {
 			$button_padding = $attr['buttonPadding'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__button_link' );
 			$css->add_property( 'padding', $css->render_spacing( $button_padding['Mobile'], $button_padding['unit'] ) );
 		}
 
 		if ( isset( $attr['buttonMargin'] ) ) {
 			$button_margin = $attr['buttonMargin'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__button_link' );
 			$css->add_property( 'margin', $css->render_spacing( $button_margin['Mobile'], $button_margin['unit'] ) );
 		}
 
 		if ( isset( $attr['buttonTypography'] ) ) {
 			$button_typography = $attr['buttonTypography'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__button_link' );
 			$css->render_typography( $button_typography, 'Mobile' );
 		}
 
 		if ( isset( $attr['badgeTypography'] ) ) {
 			$badge_typography = $attr['badgeTypography'];
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__badge span' );
 			$css->render_typography( $badge_typography, 'Mobile' );
 		}
@@ -3424,7 +3350,6 @@ class PBG_Blocks_Helper {
 		// Feature Align.
 		if ( isset( $attr['featureAlign'] ) ) {
 			$align = $css->get_responsive_css( $attr['featureAlign'], 'Mobile' );
-
 			$css->set_selector( $unique_id . ' .premium-pricing-table__list' );
 			$css->add_property( 'text-align', $align );
 		}

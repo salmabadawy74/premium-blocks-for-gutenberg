@@ -40478,894 +40478,6 @@ const save = props => {
 
 /***/ }),
 
-/***/ "./src/blocks/pricing-table/attributes.js":
-/*!************************************************!*\
-  !*** ./src/blocks/pricing-table/attributes.js ***!
-  \************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-const {
-  __
-} = wp.i18n;
-const attributes = {
-  borderUpdated: {
-    type: "boolean",
-    default: false
-  },
-  btnBorderUpdated: {
-    type: "boolean",
-    default: false
-  },
-  contentAlign: {
-    type: "object",
-    default: {
-      Desktop: 'center',
-      Tablet: 'center',
-      Mobile: 'center'
-    }
-  },
-  title: {
-    type: "array",
-    source: "children",
-    selector: ".premium-pricing-table__title",
-    default: "Pricing Table"
-  },
-  desc: {
-    type: "array",
-    source: "children",
-    selector: ".premium-pricing-table__desc",
-    default: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit")
-  },
-  titleChecked: {
-    type: "boolean",
-    default: true
-  },
-  descChecked: {
-    type: "boolean",
-    default: true
-  },
-  priceChecked: {
-    type: "boolean",
-    default: true
-  },
-  btnChecked: {
-    type: "boolean",
-    default: true
-  },
-  btnText: {
-    type: "string",
-    default: "Get Started"
-  },
-  btnLink: {
-    type: "string",
-    source: "attribute",
-    attribute: "href",
-    selector: ".premium-pricing-table__button_link"
-  },
-  badgeChecked: {
-    type: "boolean",
-    default: true
-  },
-  listChecked: {
-    type: "boolean",
-    default: true
-  },
-  listItems: {
-    type: "string",
-    source: "html",
-    multiline: "li",
-    selector: ".premium-pricing-table__list",
-    default: ""
-  },
-  blockId: {
-    type: "string"
-  },
-  classMigrate: {
-    type: "boolean",
-    default: false
-  },
-  hideDesktop: {
-    type: "boolean",
-    default: false
-  },
-  hideTablet: {
-    type: "boolean",
-    default: false
-  },
-  hideMobile: {
-    type: "boolean",
-    default: false
-  },
-  titleStyles: {
-    type: "array",
-    default: [{
-      titleTag: 'H2',
-      titleColor: "",
-      titleBack: ''
-    }]
-  },
-  titleTypography: {
-    type: "object",
-    default: {
-      fontWeight: "400",
-      fontStyle: "",
-      letterSpacing: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      },
-      fontFamily: "Default",
-      lineHeight: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      },
-      textDecoration: "",
-      textTransform: "",
-      fontSize: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      }
-    }
-  },
-  titleTextShadow: {
-    type: "object",
-    default: {
-      'color': 'transparent',
-      'blur': '10',
-      'horizontal': '0',
-      'vertical': '0'
-    }
-  },
-  priceStyles: {
-    type: "array",
-    default: [{
-      priceBack: '',
-      priceOpacity: 1,
-      slashPrice: '',
-      slashColor: '',
-      currPrice: '$',
-      currColor: '',
-      valPrice: '25',
-      valColor: '',
-      divPrice: "/",
-      divColor: '',
-      durPrice: 'm',
-      durColor: '',
-      selectedStyle: "price"
-    }]
-  },
-  slashTypography: {
-    type: "object",
-    default: {
-      fontWeight: "400",
-      fontStyle: "",
-      letterSpacing: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      },
-      fontFamily: "Default",
-      lineHeight: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      },
-      textDecoration: "",
-      textTransform: "",
-      fontSize: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      }
-    }
-  },
-  currTypography: {
-    type: "object",
-    default: {
-      fontWeight: "400",
-      fontStyle: "",
-      letterSpacing: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      },
-      fontFamily: "Default",
-      lineHeight: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      },
-      textDecoration: "",
-      textTransform: "",
-      fontSize: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      }
-    }
-  },
-  priceTypography: {
-    type: "object",
-    default: {
-      fontWeight: "400",
-      fontStyle: "",
-      letterSpacing: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      },
-      fontFamily: "Default",
-      lineHeight: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      },
-      textDecoration: "",
-      textTransform: "",
-      fontSize: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      }
-    }
-  },
-  dividerTypography: {
-    type: "object",
-    default: {
-      fontWeight: "400",
-      fontStyle: "",
-      letterSpacing: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      },
-      fontFamily: "Default",
-      lineHeight: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      },
-      textDecoration: "",
-      textTransform: "",
-      fontSize: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      }
-    }
-  },
-  durationTypography: {
-    type: "object",
-    default: {
-      fontWeight: "400",
-      fontStyle: "",
-      letterSpacing: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      },
-      fontFamily: "Default",
-      lineHeight: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      },
-      textDecoration: "",
-      textTransform: "",
-      fontSize: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      }
-    }
-  },
-  slashVAlign: {
-    type: "object",
-    default: {
-      Desktop: 'center',
-      Tablet: 'center',
-      Mobile: 'center'
-    }
-  },
-  currVAlign: {
-    type: "object",
-    default: {
-      Desktop: 'center',
-      Tablet: 'center',
-      Mobile: 'center'
-    }
-  },
-  valVAlign: {
-    type: "object",
-    default: {
-      Desktop: 'center',
-      Tablet: 'center',
-      Mobile: 'center'
-    }
-  },
-  divVAlign: {
-    type: "object",
-    default: {
-      Desktop: 'center',
-      Tablet: 'center',
-      Mobile: 'center'
-    }
-  },
-  durVAlign: {
-    type: "object",
-    default: {
-      Desktop: 'center',
-      Tablet: 'center',
-      Mobile: 'center'
-    }
-  },
-  featureStyles: {
-    type: "array",
-    default: [{
-      listStyle: "disc",
-      listColor: '',
-      listItemsStyle: '',
-      listBack: ''
-    }]
-  },
-  listTypography: {
-    type: "object",
-    default: {
-      fontWeight: "400",
-      fontStyle: "",
-      letterSpacing: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      },
-      fontFamily: "Default",
-      lineHeight: {
-        Desktop: "45",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      },
-      textDecoration: "",
-      textTransform: "",
-      fontSize: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      }
-    }
-  },
-  featureAlign: {
-    type: "object",
-    default: {
-      Desktop: 'center',
-      Tablet: 'center',
-      Mobile: 'center'
-    }
-  },
-  descStyles: {
-    type: "array",
-    default: [{
-      descColor: "",
-      descBack: '',
-      descMarginT: 0,
-      descMarginB: 30,
-      descPadding: '0'
-    }]
-  },
-  descTypography: {
-    type: "object",
-    default: {
-      fontWeight: "400",
-      fontStyle: "",
-      letterSpacing: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      },
-      fontFamily: "Default",
-      lineHeight: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      },
-      textDecoration: "",
-      textTransform: "",
-      fontSize: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      }
-    }
-  },
-  buttonStyles: {
-    type: "array",
-    default: [{
-      btnColor: "",
-      btnHoverColor: '',
-      btnWidth: '',
-      btnBack: "rgb(242, 242, 242)",
-      btnHoverBack: '',
-      btnTarget: true
-    }]
-  },
-  buttonTypography: {
-    type: "object",
-    default: {
-      fontWeight: "400",
-      fontStyle: "",
-      letterSpacing: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      },
-      fontFamily: "Default",
-      lineHeight: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      },
-      textDecoration: "",
-      textTransform: "",
-      fontSize: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      }
-    }
-  },
-  badgeStyles: {
-    type: "array",
-    default: [{
-      badgePos: "right",
-      badgeBack: "#793DC3",
-      badgeColor: '#fff',
-      badgeTop: '',
-      badgeHorizontal: '',
-      badgeWidth: '',
-      badgeText: __("Popular", "premium-blocks-for-gutenberg")
-    }]
-  },
-  badgeTypography: {
-    type: "object",
-    default: {
-      fontWeight: "400",
-      fontStyle: "",
-      letterSpacing: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      },
-      fontFamily: "Default",
-      lineHeight: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      },
-      textDecoration: "",
-      textTransform: "",
-      fontSize: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      }
-    }
-  },
-  tableStyles: {
-    type: "array",
-    default: [{
-      tableBack: '',
-      tableOpacity: 1
-    }]
-  },
-  tableBoxShadow: {
-    type: "object",
-    default: {
-      'color': 'transparent',
-      'blur': '10',
-      'horizontal': '0',
-      'vertical': '0',
-      'position': ''
-    }
-  },
-  tableBorder: {
-    type: "object",
-    default: {
-      "borderType": "solid",
-      "borderColor": "#e1e1e1",
-      "borderWidth": {
-        Desktop: {
-          top: '1',
-          right: '1',
-          bottom: '1',
-          left: '1'
-        },
-        Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        }
-      },
-      "borderRadius": {
-        Desktop: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        }
-      }
-    }
-  },
-  buttonBorder: {
-    type: "object",
-    default: {
-      "borderType": "none",
-      "borderColor": "",
-      "borderWidth": {
-        Desktop: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        }
-      },
-      "borderRadius": {
-        Desktop: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        }
-      }
-    }
-  },
-  tablePadding: {
-    type: "object",
-    default: {
-      Desktop: {
-        top: '20',
-        right: '20',
-        bottom: '20',
-        left: '20'
-      },
-      Tablet: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Mobile: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      unit: 'px'
-    }
-  },
-  titlePadding: {
-    type: "object",
-    default: {
-      Desktop: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Tablet: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Mobile: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      unit: 'px'
-    }
-  },
-  titleMargin: {
-    type: "object",
-    default: {
-      Desktop: {
-        top: 20,
-        right: '',
-        bottom: 20,
-        left: ''
-      },
-      Tablet: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Mobile: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      unit: 'px'
-    }
-  },
-  pricePadding: {
-    type: "object",
-    default: {
-      Desktop: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Tablet: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Mobile: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      unit: 'px'
-    }
-  },
-  priceMargin: {
-    type: "object",
-    default: {
-      Desktop: {
-        top: '',
-        right: '',
-        bottom: 20,
-        left: ''
-      },
-      Tablet: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Mobile: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      unit: 'px'
-    }
-  },
-  featuresListPadding: {
-    type: "object",
-    default: {
-      Desktop: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Tablet: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Mobile: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      unit: 'px'
-    }
-  },
-  featuresListMargin: {
-    type: "object",
-    default: {
-      Desktop: {
-        top: '',
-        right: '',
-        bottom: 20,
-        left: ''
-      },
-      Tablet: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Mobile: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      unit: 'px'
-    }
-  },
-  descriptionPadding: {
-    type: "object",
-    default: {
-      Desktop: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Tablet: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Mobile: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      unit: 'px'
-    }
-  },
-  descriptionMargin: {
-    type: "object",
-    default: {
-      Desktop: {
-        top: '',
-        right: '',
-        bottom: 30,
-        left: ''
-      },
-      Tablet: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Mobile: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      unit: 'px'
-    }
-  },
-  buttonPadding: {
-    type: "object",
-    default: {
-      Desktop: {
-        top: 10,
-        right: 10,
-        bottom: 10,
-        left: 10
-      },
-      Tablet: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Mobile: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      unit: 'px'
-    }
-  },
-  buttonMargin: {
-    type: "object",
-    default: {
-      Desktop: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Tablet: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Mobile: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      unit: 'px'
-    }
-  }
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (attributes);
-
-/***/ }),
-
 /***/ "./src/blocks/pricing-table/deprecated.js":
 /*!************************************************!*\
   !*** ./src/blocks/pricing-table/deprecated.js ***!
@@ -44647,25 +43759,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./src/blocks/node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_premium_border__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/premium-border */ "./src/components/premium-border.js");
-/* harmony import */ var _components_premium_typo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/premium-typo */ "./src/components/premium-typo.js");
-/* harmony import */ var _components_PremiumShadow__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/PremiumShadow */ "./src/components/PremiumShadow.js");
-/* harmony import */ var _components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/premium-responsive-tabs */ "./src/components/premium-responsive-tabs.js");
-/* harmony import */ var _components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/RangeControl/single-range-control */ "./src/components/RangeControl/single-range-control.js");
-/* harmony import */ var _components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/Color Control/ColorComponent */ "./src/components/Color Control/ColorComponent.js");
-/* harmony import */ var _components_radio_control__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/radio-control */ "./src/components/radio-control.js");
-/* harmony import */ var _components_icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/icons */ "./src/components/icons.js");
-/* harmony import */ var _components_responsive_radio__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/responsive-radio */ "./src/components/responsive-radio.js");
-/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
-/* harmony import */ var _components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/premium-responsive-spacing */ "./src/components/premium-responsive-spacing.js");
-/* harmony import */ var _components_inspectorTabs__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/inspectorTabs */ "./src/components/inspectorTabs.js");
-/* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/inspectorTab */ "./src/components/inspectorTab.js");
-/* harmony import */ var _components_InsideTabs__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/InsideTabs */ "./src/components/InsideTabs.js");
-/* harmony import */ var _components_InsideTab__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/InsideTab */ "./src/components/InsideTab.js");
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./src/blocks/node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./src/blocks/node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components_premium_border__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/premium-border */ "./src/components/premium-border.js");
+/* harmony import */ var _components_premium_typo__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/premium-typo */ "./src/components/premium-typo.js");
+/* harmony import */ var _components_PremiumShadow__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/PremiumShadow */ "./src/components/PremiumShadow.js");
+/* harmony import */ var _components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/premium-responsive-tabs */ "./src/components/premium-responsive-tabs.js");
+/* harmony import */ var _components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/RangeControl/single-range-control */ "./src/components/RangeControl/single-range-control.js");
+/* harmony import */ var _components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/Color Control/ColorComponent */ "./src/components/Color Control/ColorComponent.js");
+/* harmony import */ var _components_radio_control__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/radio-control */ "./src/components/radio-control.js");
+/* harmony import */ var _components_icons__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/icons */ "./src/components/icons.js");
+/* harmony import */ var _components_responsive_radio__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/responsive-radio */ "./src/components/responsive-radio.js");
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+/* harmony import */ var _components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/premium-responsive-spacing */ "./src/components/premium-responsive-spacing.js");
+/* harmony import */ var _components_inspectorTabs__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/inspectorTabs */ "./src/components/inspectorTabs.js");
+/* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/inspectorTab */ "./src/components/inspectorTab.js");
+/* harmony import */ var _components_InsideTabs__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/InsideTabs */ "./src/components/InsideTabs.js");
+/* harmony import */ var _components_InsideTab__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../components/InsideTab */ "./src/components/InsideTab.js");
+
 
 
 
@@ -44690,7 +43804,7 @@ const {
   __
 } = wp.i18n;
 const {
-  Component,
+  useEffect,
   Fragment
 } = wp.element;
 const {
@@ -44701,1053 +43815,1046 @@ const {
 } = wp.components;
 const {
   InspectorControls,
-  RichText
+  RichText,
+  useBlockProps
 } = wp.blockEditor;
 
-class PremiumPricingTable extends Component {
-  constructor() {
-    super(...arguments);
-  }
-
-  componentDidMount() {
-    const {
-      setAttributes,
-      clientId
-    } = this.props; // Assigning id in the attribute.
-
+function PremiumPricingTable(props) {
+  const {
+    setAttributes,
+    className,
+    clientId
+  } = props;
+  useEffect(() => {
     setAttributes({
-      blockId: "premium-pricing-table-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.generateBlockId)(clientId)
+      blockId: "premium-pricing-table-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.generateBlockId)(clientId)
     });
     setAttributes({
       classMigrate: true
     });
-  }
+  }, []);
+  const {
+    contentAlign,
+    title,
+    desc,
+    titleChecked,
+    descChecked,
+    priceChecked,
+    btnChecked,
+    btnText,
+    btnLink,
+    badgeChecked,
+    listChecked,
+    listItems,
+    blockId,
+    hideDesktop,
+    hideTablet,
+    hideMobile,
+    titleStyles,
+    priceStyles,
+    featureStyles,
+    descStyles,
+    buttonStyles,
+    badgeStyles,
+    tableStyles,
+    titleTextShadow,
+    tableBoxShadow,
+    featureAlign,
+    tableBorder,
+    buttonBorder,
+    tablePadding,
+    titlePadding,
+    titleMargin,
+    pricePadding,
+    priceMargin,
+    featuresListPadding,
+    featuresListMargin,
+    descriptionPadding,
+    descriptionMargin,
+    buttonPadding,
+    buttonMargin,
+    titleTypography,
+    slashTypography,
+    currTypography,
+    priceTypography,
+    dividerTypography,
+    durationTypography,
+    listTypography,
+    descTypography,
+    buttonTypography,
+    badgeTypography,
+    slashVAlign,
+    currVAlign,
+    valVAlign,
+    divVAlign,
+    durVAlign
+  } = props.attributes;
 
-  render() {
-    const {
-      isSelected,
-      setAttributes,
-      className
-    } = this.props;
-    const {
-      contentAlign,
-      title,
-      desc,
-      titleChecked,
-      descChecked,
-      priceChecked,
-      btnChecked,
-      btnText,
-      btnLink,
-      badgeChecked,
-      listChecked,
-      listItems,
-      blockId,
-      hideDesktop,
-      hideTablet,
-      hideMobile,
-      titleStyles,
-      priceStyles,
-      featureStyles,
-      descStyles,
-      buttonStyles,
-      badgeStyles,
-      tableStyles,
-      titleTextShadow,
-      tableBoxShadow,
-      featureAlign,
-      tableBorder,
-      buttonBorder,
-      tablePadding,
-      titlePadding,
-      titleMargin,
-      pricePadding,
-      priceMargin,
-      featuresListPadding,
-      featuresListMargin,
-      descriptionPadding,
-      descriptionMargin,
-      buttonPadding,
-      buttonMargin,
-      titleTypography,
-      slashTypography,
-      currTypography,
-      priceTypography,
-      dividerTypography,
-      durationTypography,
-      listTypography,
-      descTypography,
-      buttonTypography,
-      badgeTypography,
-      slashVAlign,
-      currVAlign,
-      valVAlign,
-      divVAlign,
-      durVAlign
-    } = this.props.attributes;
+  const loadStyles = () => {
+    var _buttonStyles$, _buttonStyles$2;
 
-    const loadStyles = () => {
-      var _buttonStyles$, _buttonStyles$2;
-
-      const styles = {};
-      styles[`.${blockId} .premium-pricing-table__button_link:hover`] = {
-        'color': `${buttonStyles === null || buttonStyles === void 0 ? void 0 : (_buttonStyles$ = buttonStyles[0]) === null || _buttonStyles$ === void 0 ? void 0 : _buttonStyles$.btnHoverColor}!important`,
-        'background': `${buttonStyles === null || buttonStyles === void 0 ? void 0 : (_buttonStyles$2 = buttonStyles[0]) === null || _buttonStyles$2 === void 0 ? void 0 : _buttonStyles$2.btnHoverBack}!important`
-      };
-      return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.generateCss)(styles);
+    const styles = {};
+    styles[`.${blockId} .premium-pricing-table__button_link:hover`] = {
+      'color': `${buttonStyles === null || buttonStyles === void 0 ? void 0 : (_buttonStyles$ = buttonStyles[0]) === null || _buttonStyles$ === void 0 ? void 0 : _buttonStyles$.btnHoverColor}!important`,
+      'background': `${buttonStyles === null || buttonStyles === void 0 ? void 0 : (_buttonStyles$2 = buttonStyles[0]) === null || _buttonStyles$2 === void 0 ? void 0 : _buttonStyles$2.btnHoverBack}!important`
     };
+    return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.generateCss)(styles);
+  };
 
-    const ALIGNS = [{
-      value: "flex-start",
-      label: __("Top", 'premium-blocks-for-gutenberg')
+  const ALIGNS = [{
+    value: "flex-start",
+    label: __("Top", 'premium-blocks-for-gutenberg')
+  }, {
+    value: "center",
+    label: __("Middle", 'premium-blocks-for-gutenberg')
+  }, {
+    value: "flex-end",
+    label: __("Bottom", 'premium-blocks-for-gutenberg')
+  }];
+  const PRICE = [{
+    value: "slash",
+    label: __("Slashed Price", 'premium-blocks-for-gutenberg')
+  }, {
+    value: "curr",
+    label: __("Currency", 'premium-blocks-for-gutenberg')
+  }, {
+    value: "price",
+    label: __("Price", 'premium-blocks-for-gutenberg')
+  }, {
+    value: "divider",
+    label: __("Divider", 'premium-blocks-for-gutenberg')
+  }, {
+    value: "duration",
+    label: __("Duration", 'premium-blocks-for-gutenberg')
+  }];
+  const TYPE = [{
+    value: "none",
+    label: __("None", 'premium-blocks-for-gutenberg')
+  }, {
+    value: "check",
+    label: __("Check Mark", 'premium-blocks-for-gutenberg')
+  }, {
+    value: "disc",
+    label: __("Filled Circle", 'premium-blocks-for-gutenberg')
+  }, {
+    value: "circle",
+    label: __("Outline Circle", 'premium-blocks-for-gutenberg')
+  }, {
+    value: "square",
+    label: __("Square", 'premium-blocks-for-gutenberg')
+  }];
+  const POSITION = [{
+    value: "right",
+    label: __("Right", 'premium-blocks-for-gutenberg')
+  }, {
+    value: "left",
+    label: __("Left", 'premium-blocks-for-gutenberg')
+  }];
+
+  const saveTitleStyles = value => {
+    const newUpdate = titleStyles.map((item, index) => {
+      if (0 === index) {
+        item = { ...item,
+          ...value
+        };
+      }
+
+      return item;
+    });
+    setAttributes({
+      titleStyles: newUpdate
+    });
+  };
+
+  const savePriceStyles = value => {
+    const newUpdate = priceStyles.map((item, indexx) => {
+      if (0 === indexx) {
+        item = { ...item,
+          ...value
+        };
+      }
+
+      return item;
+    });
+    setAttributes({
+      priceStyles: newUpdate
+    });
+  };
+
+  const saveFeatureStyle = value => {
+    const newUpdate = featureStyles.map((item, indx) => {
+      if (0 === indx) {
+        item = { ...item,
+          ...value
+        };
+      }
+
+      return item;
+    });
+    setAttributes({
+      featureStyles: newUpdate
+    });
+  };
+
+  const saveButtonStyle = value => {
+    const newUpdate = buttonStyles.map((item, i) => {
+      if (0 === i) {
+        item = { ...item,
+          ...value
+        };
+      }
+
+      return item;
+    });
+    setAttributes({
+      buttonStyles: newUpdate
+    });
+  };
+
+  const saveBadgeStyles = value => {
+    const newUpdate = badgeStyles.map((item, idx) => {
+      if (0 === idx) {
+        item = { ...item,
+          ...value
+        };
+      }
+
+      return item;
+    });
+    setAttributes({
+      badgeStyles: newUpdate
+    });
+  };
+
+  const saveTableStyles = value => {
+    const newUpdate = tableStyles.map((item, indexTable) => {
+      if (0 === indexTable) {
+        item = { ...item,
+          ...value
+        };
+      }
+
+      return item;
+    });
+    setAttributes({
+      tableStyles: newUpdate
+    });
+  };
+
+  const saveDescriptionStyle = value => {
+    const newUpdate = descStyles.map((item, indexDesc) => {
+      if (0 === indexDesc) {
+        item = { ...item,
+          ...value
+        };
+      }
+
+      return item;
+    });
+    setAttributes({
+      descStyles: newUpdate
+    });
+  };
+
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InspectorControls, {
+    key: "inspector"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_14__["default"], {
+    tabs: ['layout', 'style', 'advance']
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_15__["default"], {
+    key: 'layout'
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelBody, {
+    title: __("Display Options", 'premium-blocks-for-gutenberg'),
+    className: "premium-panel-body",
+    initialOpen: true
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ToggleControl, {
+    label: __("Title", 'premium-blocks-for-gutenberg'),
+    checked: titleChecked,
+    onChange: newValue => setAttributes({
+      titleChecked: newValue
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ToggleControl, {
+    label: __("Price", 'premium-blocks-for-gutenberg'),
+    checked: priceChecked,
+    onChange: newValue => setAttributes({
+      priceChecked: newValue
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ToggleControl, {
+    label: __("Features", 'premium-blocks-for-gutenberg'),
+    checked: listChecked,
+    onChange: newValue => setAttributes({
+      listChecked: newValue
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ToggleControl, {
+    label: __("Description", 'premium-blocks-for-gutenberg'),
+    checked: descChecked,
+    onChange: newValue => setAttributes({
+      descChecked: newValue
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ToggleControl, {
+    label: __("Button", 'premium-blocks-for-gutenberg'),
+    checked: btnChecked,
+    onChange: newValue => setAttributes({
+      btnChecked: newValue
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ToggleControl, {
+    label: __("Badge", 'premium-blocks-for-gutenberg'),
+    checked: badgeChecked,
+    onChange: newValue => setAttributes({
+      badgeChecked: newValue
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    choices: [{
+      value: 'left',
+      label: __('Left', "premium-blocks-for-gutenberg"),
+      icon: _components_icons__WEBPACK_IMPORTED_MODULE_10__["default"].alignLeft
     }, {
-      value: "center",
-      label: __("Middle", 'premium-blocks-for-gutenberg')
+      value: 'center',
+      label: __('Center', "premium-blocks-for-gutenberg"),
+      icon: _components_icons__WEBPACK_IMPORTED_MODULE_10__["default"].alignCenter
     }, {
-      value: "flex-end",
-      label: __("Bottom", 'premium-blocks-for-gutenberg')
-    }];
-    const PRICE = [{
-      value: "slash",
-      label: __("Slashed Price", 'premium-blocks-for-gutenberg')
+      value: 'right',
+      label: __('Right', "premium-blocks-for-gutenberg"),
+      icon: _components_icons__WEBPACK_IMPORTED_MODULE_10__["default"].alignRight
+    }],
+    value: contentAlign,
+    onChange: align => setAttributes({
+      contentAlign: align
+    }),
+    label: __("Content Align", "premium-blocks-for-gutenberg"),
+    showIcons: true
+  })), titleChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelBody, {
+    title: __("Title", 'premium-blocks-for-gutenberg'),
+    className: "premium-panel-body",
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_radio_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    label: __("Heading", 'premium-blocks-for-gutenberg'),
+    choices: [{
+      label: __('H1', 'premium-blocks-for-gutenberg'),
+      value: 'h1'
     }, {
-      value: "curr",
-      label: __("Currency", 'premium-blocks-for-gutenberg')
+      label: __('H2', 'premium-blocks-for-gutenberg'),
+      value: 'h2'
     }, {
-      value: "price",
-      label: __("Price", 'premium-blocks-for-gutenberg')
+      label: __('H3', 'premium-blocks-for-gutenberg'),
+      value: 'h3'
     }, {
-      value: "divider",
-      label: __("Divider", 'premium-blocks-for-gutenberg')
+      label: __('H4', 'premium-blocks-for-gutenberg'),
+      value: 'h4'
     }, {
-      value: "duration",
-      label: __("Duration", 'premium-blocks-for-gutenberg')
-    }];
-    const TYPE = [{
-      value: "none",
-      label: __("None", 'premium-blocks-for-gutenberg')
+      label: __('H5', 'premium-blocks-for-gutenberg'),
+      value: 'h5'
     }, {
-      value: "check",
-      label: __("Check Mark", 'premium-blocks-for-gutenberg')
+      label: __('H6', 'premium-blocks-for-gutenberg'),
+      value: 'h6'
+    }],
+    value: titleStyles[0].titleTag,
+    onChange: newValue => saveTitleStyles({
+      titleTag: newValue
+    })
+  })), priceChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelBody, {
+    title: __("Price", 'premium-blocks-for-gutenberg'),
+    className: "premium-panel-body",
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
+    label: __("Slashed Price", 'premium-blocks-for-gutenberg'),
+    value: priceStyles[0].slashPrice,
+    onChange: value => savePriceStyles({
+      slashPrice: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
+    label: __("Currency", 'premium-blocks-for-gutenberg'),
+    value: priceStyles[0].currPrice,
+    onChange: value => savePriceStyles({
+      currPrice: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
+    label: __("Price", 'premium-blocks-for-gutenberg'),
+    value: priceStyles[0].valPrice,
+    onChange: value => savePriceStyles({
+      valPrice: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
+    label: __("Divider", 'premium-blocks-for-gutenberg'),
+    value: priceStyles[0].divPrice,
+    onChange: value => savePriceStyles({
+      divPrice: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
+    label: __("Duration", 'premium-blocks-for-gutenberg'),
+    value: priceStyles[0].durPrice,
+    onChange: value => savePriceStyles({
+      durPrice: value
+    })
+  })), listChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelBody, {
+    title: __("Features List", 'premium-blocks-for-gutenberg'),
+    className: "premium-panel-body",
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    choices: [{
+      value: 'left',
+      label: __('Left', "premium-blocks-for-gutenberg"),
+      icon: _components_icons__WEBPACK_IMPORTED_MODULE_10__["default"].alignLeft
     }, {
-      value: "disc",
-      label: __("Filled Circle", 'premium-blocks-for-gutenberg')
+      value: 'center',
+      label: __('Center', "premium-blocks-for-gutenberg"),
+      icon: _components_icons__WEBPACK_IMPORTED_MODULE_10__["default"].alignCenter
     }, {
-      value: "circle",
-      label: __("Outline Circle", 'premium-blocks-for-gutenberg')
-    }, {
-      value: "square",
-      label: __("Square", 'premium-blocks-for-gutenberg')
-    }];
-    const POSITION = [{
-      value: "right",
-      label: __("Right", 'premium-blocks-for-gutenberg')
-    }, {
-      value: "left",
-      label: __("Left", 'premium-blocks-for-gutenberg')
-    }];
-
-    const saveTitleStyles = value => {
-      const newUpdate = titleStyles.map((item, index) => {
-        if (0 === index) {
-          item = { ...item,
-            ...value
-          };
-        }
-
-        return item;
-      });
-      setAttributes({
-        titleStyles: newUpdate
-      });
-    };
-
-    const savePriceStyles = value => {
-      const newUpdate = priceStyles.map((item, indexx) => {
-        if (0 === indexx) {
-          item = { ...item,
-            ...value
-          };
-        }
-
-        return item;
-      });
-      setAttributes({
-        priceStyles: newUpdate
-      });
-    };
-
-    const saveFeatureStyle = value => {
-      const newUpdate = featureStyles.map((item, indx) => {
-        if (0 === indx) {
-          item = { ...item,
-            ...value
-          };
-        }
-
-        return item;
-      });
-      setAttributes({
-        featureStyles: newUpdate
-      });
-    };
-
-    const saveButtonStyle = value => {
-      const newUpdate = buttonStyles.map((item, i) => {
-        if (0 === i) {
-          item = { ...item,
-            ...value
-          };
-        }
-
-        return item;
-      });
-      setAttributes({
-        buttonStyles: newUpdate
-      });
-    };
-
-    const saveBadgeStyles = value => {
-      const newUpdate = badgeStyles.map((item, idx) => {
-        if (0 === idx) {
-          item = { ...item,
-            ...value
-          };
-        }
-
-        return item;
-      });
-      setAttributes({
-        badgeStyles: newUpdate
-      });
-    };
-
-    const saveTableStyles = value => {
-      const newUpdate = tableStyles.map((item, indexTable) => {
-        if (0 === indexTable) {
-          item = { ...item,
-            ...value
-          };
-        }
-
-        return item;
-      });
-      setAttributes({
-        tableStyles: newUpdate
-      });
-    };
-
-    const saveDescriptionStyle = value => {
-      const newUpdate = descStyles.map((item, indexDesc) => {
-        if (0 === indexDesc) {
-          item = { ...item,
-            ...value
-          };
-        }
-
-        return item;
-      });
-      setAttributes({
-        descStyles: newUpdate
-      });
-    };
-
-    const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-pricing-table", {
+      value: 'right',
+      label: __('Right', "premium-blocks-for-gutenberg"),
+      icon: _components_icons__WEBPACK_IMPORTED_MODULE_10__["default"].alignRight
+    }],
+    value: featureAlign,
+    onChange: align => setAttributes({
+      featureAlign: align
+    }),
+    label: __("Align", "premium-blocks-for-gutenberg"),
+    showIcons: true
+  })), btnChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelBody, {
+    title: __("Button", 'premium-blocks-for-gutenberg'),
+    className: "premium-panel-body",
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
+    label: __("Link URL", 'premium-blocks-for-gutenberg'),
+    value: btnLink,
+    onChange: newLink => setAttributes({
+      btnLink: newLink
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ToggleControl, {
+    label: __("Open Link in a new tab", 'premium-blocks-for-gutenberg'),
+    checked: buttonStyles[0].btnTarget,
+    onChange: newValue => saveButtonStyle({
+      btnTarget: newValue
+    })
+  })), badgeChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelBody, {
+    title: __("Badge", 'premium-blocks-for-gutenberg'),
+    className: "premium-panel-body",
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    label: __("Text Width", 'premium-blocks-for-gutenberg'),
+    min: "1",
+    max: "200",
+    value: badgeStyles[0].badgeWidth,
+    onChange: newValue => saveBadgeStyles({
+      badgeWidth: newValue
+    }),
+    showUnit: false,
+    defaultValue: 0
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    label: __("Badge Size", 'premium-blocks-for-gutenberg'),
+    value: badgeStyles[0].badgeSize,
+    min: "0",
+    max: "250",
+    onChange: newValue => saveBadgeStyles({
+      badgeSize: newValue
+    }),
+    showUnit: false,
+    defaultValue: 0
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(SelectControl, {
+    label: __("Position", 'premium-blocks-for-gutenberg'),
+    options: POSITION,
+    value: badgeStyles[0].badgePos,
+    onChange: newValue => saveBadgeStyles({
+      badgePos: newValue
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    label: __("Vertical Offset", 'premium-blocks-for-gutenberg'),
+    value: badgeStyles[0].badgeTop,
+    onChange: newValue => saveBadgeStyles({
+      badgeTop: newValue
+    }),
+    showUnit: false,
+    defaultValue: 0
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    label: __("Horizontal Offset", 'premium-blocks-for-gutenberg'),
+    value: badgeStyles[0].badgeHorizontal,
+    min: "1",
+    max: "150",
+    onChange: newValue => saveBadgeStyles({
+      badgeHorizontal: newValue
+    }),
+    showUnit: false,
+    defaultValue: 1
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_15__["default"], {
+    key: 'style'
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelBody, {
+    title: __("Table", 'premium-blocks-for-gutenberg'),
+    className: "premium-panel-body",
+    initialOpen: true
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    label: __(`Background Color`, 'premium-blocks-for-gutenberg'),
+    colorValue: tableStyles[0].tableBack,
+    onColorChange: newvalue => saveTableStyles({
+      tableBack: newvalue
+    }),
+    colorDefault: ``
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    value: tableBoxShadow,
+    onChange: value => setAttributes({
+      tableBoxShadow: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    label: __("Border", 'premium-blocks-for-gutenberg'),
+    value: tableBorder,
+    onChange: value => setAttributes({
+      tableBorder: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    value: tablePadding,
+    responsive: true,
+    showUnits: true,
+    label: __("Padding", 'premium-blocks-for-gutenberg'),
+    onChange: value => setAttributes({
+      tablePadding: value
+    })
+  })), titleChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelBody, {
+    title: __("Title", 'premium-blocks-for-gutenberg'),
+    className: "premium-panel-body",
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    value: titleTypography,
+    onChange: newValue => setAttributes({
+      titleTypography: newValue
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    label: __("Text Color", 'premium-blocks-for-gutenberg'),
+    colorValue: titleStyles[0].titleColor,
+    colorDefault: '',
+    onColorChange: newColor => saveTitleStyles({
+      titleColor: newColor
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    label: __("Background Color", 'premium-blocks-for-gutenberg'),
+    colorValue: titleStyles[0].titleBack,
+    colorDefault: '',
+    onColorChange: newColor => saveTitleStyles({
+      titleBack: newColor
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
+    value: titleTextShadow,
+    onChange: value => setAttributes({
+      titleTextShadow: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    value: titleMargin,
+    responsive: true,
+    showUnits: true,
+    label: __("Margin", 'premium-blocks-for-gutenberg'),
+    onChange: value => setAttributes({
+      titleMargin: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    value: titlePadding,
+    responsive: true,
+    showUnits: true,
+    label: __("Padding", 'premium-blocks-for-gutenberg'),
+    onChange: value => setAttributes({
+      titlePadding: value
+    })
+  })), priceChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelBody, {
+    title: __("Price", 'premium-blocks-for-gutenberg'),
+    className: "premium-panel-body",
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(SelectControl, {
+    label: __("Element", 'premium-blocks-for-gutenberg'),
+    options: PRICE,
+    value: priceStyles[0].selectedStyle,
+    onChange: newElem => savePriceStyles({
+      selectedStyle: newElem
+    })
+  }), "slash" === priceStyles[0].selectedStyle && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    choices: ALIGNS,
+    value: slashVAlign,
+    onChange: align => setAttributes({
+      slashVAlign: align
+    }),
+    label: __("Vertical Align", "premium-blocks-for-gutenberg"),
+    showIcons: false
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    value: slashTypography,
+    onChange: newValue => setAttributes({
+      slashTypography: newValue
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    label: __("Text Color", 'premium-blocks-for-gutenberg'),
+    colorValue: priceStyles[0].slashColor,
+    colorDefault: '',
+    onColorChange: newValue => savePriceStyles({
+      slashColor: newValue === undefined ? "transparent" : newValue
+    })
+  })), "curr" === priceStyles[0].selectedStyle && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    choices: ALIGNS,
+    value: currVAlign,
+    onChange: align => setAttributes({
+      currVAlign: align
+    }),
+    label: __("Vertical Align", "premium-blocks-for-gutenberg"),
+    showIcons: false
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    value: currTypography,
+    onChange: newValue => setAttributes({
+      currTypography: newValue
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    label: __("Text Color", 'premium-blocks-for-gutenberg'),
+    colorValue: priceStyles[0].currColor,
+    colorDefault: '',
+    onColorChange: newValue => savePriceStyles({
+      currColor: newValue === undefined ? "transparent" : newValue
+    })
+  })), "price" === priceStyles[0].selectedStyle && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    choices: ALIGNS,
+    value: valVAlign,
+    onChange: align => setAttributes({
+      valVAlign: align
+    }),
+    label: __("Vertical Align", "premium-blocks-for-gutenberg"),
+    showIcons: false
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    value: priceTypography,
+    onChange: newValue => setAttributes({
+      priceTypography: newValue
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    label: __("Text Color", 'premium-blocks-for-gutenberg'),
+    colorValue: priceStyles[0].valColor,
+    colorDefault: '',
+    onColorChange: newValue => savePriceStyles({
+      valColor: newValue === undefined ? "transparent" : newValue
+    })
+  })), "divider" === priceStyles[0].selectedStyle && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    choices: ALIGNS,
+    value: divVAlign,
+    onChange: align => setAttributes({
+      divVAlign: align
+    }),
+    label: __("Vertical Align", "premium-blocks-for-gutenberg"),
+    showIcons: false
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    value: dividerTypography,
+    onChange: newValue => setAttributes({
+      dividerTypography: newValue
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    label: __("Text Color", 'premium-blocks-for-gutenberg'),
+    colorValue: priceStyles[0].divColor,
+    colorDefault: '',
+    onColorChange: newValue => savePriceStyles({
+      divColor: newValue === undefined ? "transparent" : newValue
+    })
+  })), "duration" === priceStyles[0].selectedStyle && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    choices: ALIGNS,
+    value: durVAlign,
+    onChange: align => setAttributes({
+      durVAlign: align
+    }),
+    label: __("Vertical Align", "premium-blocks-for-gutenberg"),
+    showIcons: false
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    value: durationTypography,
+    onChange: newValue => setAttributes({
+      durationTypography: newValue
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    label: __("Text Color", 'premium-blocks-for-gutenberg'),
+    colorValue: priceStyles[0].durColor,
+    colorDefault: '',
+    onColorChange: newValue => savePriceStyles({
+      durColor: newValue === undefined ? "transparent" : newValue
+    })
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    label: __(`Background Color`, 'premium-blocks-for-gutenberg'),
+    colorValue: priceStyles[0].priceBack,
+    onColorChange: newvalue => savePriceStyles({
+      priceBack: newvalue
+    }),
+    colorDefault: ``
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    value: priceMargin,
+    responsive: true,
+    showUnits: true,
+    label: __("Margin", 'premium-blocks-for-gutenberg'),
+    onChange: value => setAttributes({
+      priceMargin: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    value: pricePadding,
+    responsive: true,
+    showUnits: true,
+    label: __("Padding", 'premium-blocks-for-gutenberg'),
+    onChange: value => setAttributes({
+      pricePadding: value
+    })
+  })), listChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelBody, {
+    title: __("Features List", 'premium-blocks-for-gutenberg'),
+    className: "premium-panel-body",
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(SelectControl, {
+    label: __("List Style", 'premium-blocks-for-gutenberg'),
+    options: TYPE,
+    value: featureStyles[0].listStyle,
+    onChange: newType => saveFeatureStyle({
+      listStyle: newType
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    value: listTypography,
+    onChange: newValue => setAttributes({
+      listTypography: newValue
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    label: __("List Items Color", 'premium-blocks-for-gutenberg'),
+    colorValue: featureStyles[0].listColor,
+    colorDefault: '',
+    onColorChange: newColor => saveFeatureStyle({
+      listColor: newColor
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    label: __("Background Color", 'premium-blocks-for-gutenberg'),
+    colorValue: featureStyles[0].listBack,
+    colorDefault: '',
+    onColorChange: newColor => saveFeatureStyle({
+      listBack: newColor
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    value: featuresListMargin,
+    responsive: true,
+    showUnits: true,
+    label: __("Margin", 'premium-blocks-for-gutenberg'),
+    onChange: value => setAttributes({
+      featuresListMargin: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    value: featuresListPadding,
+    responsive: true,
+    showUnits: true,
+    label: __("Padding", 'premium-blocks-for-gutenberg'),
+    onChange: value => setAttributes({
+      featuresListPadding: value
+    })
+  })), descChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelBody, {
+    title: __("Description", 'premium-blocks-for-gutenberg'),
+    className: "premium-panel-body",
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    value: descTypography,
+    onChange: newValue => setAttributes({
+      descTypography: newValue
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    label: __("Text Color", 'premium-blocks-for-gutenberg'),
+    colorValue: descStyles[0].descColor,
+    colorDefault: '',
+    onColorChange: newColor => saveDescriptionStyle({
+      descColor: newColor
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    label: __("Background Color", 'premium-blocks-for-gutenberg'),
+    colorValue: descStyles[0].descBack,
+    colorDefault: '',
+    onColorChange: newColor => saveDescriptionStyle({
+      descBack: newColor
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    value: descriptionMargin,
+    responsive: true,
+    showUnits: true,
+    label: __("Margin", 'premium-blocks-for-gutenberg'),
+    onChange: value => setAttributes({
+      descriptionMargin: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    value: descriptionPadding,
+    responsive: true,
+    showUnits: true,
+    label: __("Padding", 'premium-blocks-for-gutenberg'),
+    onChange: value => setAttributes({
+      descriptionPadding: value
+    })
+  })), btnChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelBody, {
+    title: __("Button", 'premium-blocks-for-gutenberg'),
+    className: "premium-panel-body",
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    value: buttonTypography,
+    onChange: newValue => setAttributes({
+      buttonTypography: newValue
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_InsideTabs__WEBPACK_IMPORTED_MODULE_16__["default"], null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_17__["default"], {
+    tabTitle: __("Normal", "premium-block-for-gutenberg")
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    label: __("Text Color", 'premium-blocks-for-gutenberg'),
+    colorValue: buttonStyles[0].btnColor,
+    colorDefault: '',
+    onColorChange: newColor => saveButtonStyle({
+      btnColor: newColor
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    label: __("Background Color", 'premium-blocks-for-gutenberg'),
+    colorValue: buttonStyles[0].btnBack,
+    colorDefault: '',
+    onColorChange: newColor => saveButtonStyle({
+      btnBack: newColor
+    })
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_17__["default"], {
+    tabTitle: __("Hover", "premium-block-for-gutenberg")
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    label: __("Text Color", 'premium-blocks-for-gutenberg'),
+    colorValue: buttonStyles[0].btnHoverColor,
+    colorDefault: '',
+    onColorChange: newColor => saveButtonStyle({
+      btnHoverColor: newColor
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    label: __("Background Color", 'premium-blocks-for-gutenberg'),
+    colorValue: buttonStyles[0].btnHoverBack,
+    colorDefault: '',
+    onColorChange: newColor => saveButtonStyle({
+      btnHoverBack: newColor
+    })
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    label: __("Width (%)", 'premium-blocks-for-gutenberg'),
+    value: buttonStyles[0].btnWidth,
+    onChange: newSize => saveButtonStyle({
+      btnWidth: newSize
+    }),
+    showUnit: false,
+    defaultValue: 0
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    label: __("Border", 'premium-blocks-for-gutenberg'),
+    value: buttonBorder,
+    onChange: value => setAttributes({
+      buttonBorder: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    value: buttonMargin,
+    responsive: true,
+    showUnits: true,
+    label: __("Margin", 'premium-blocks-for-gutenberg'),
+    onChange: value => setAttributes({
+      buttonMargin: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    value: buttonPadding,
+    responsive: true,
+    showUnits: true,
+    label: __("Padding", 'premium-blocks-for-gutenberg'),
+    onChange: value => setAttributes({
+      buttonPadding: value
+    })
+  })), badgeChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelBody, {
+    title: __("Badge", 'premium-blocks-for-gutenberg'),
+    className: "premium-panel-body",
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    value: badgeTypography,
+    onChange: newValue => setAttributes({
+      badgeTypography: newValue
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    label: __("Text Color", 'premium-blocks-for-gutenberg'),
+    colorValue: badgeStyles[0].badgeColor,
+    colorDefault: '',
+    onColorChange: newColor => saveBadgeStyles({
+      badgeColor: newColor
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    label: __("Background Color", 'premium-blocks-for-gutenberg'),
+    colorValue: badgeStyles[0].badgeBack,
+    colorDefault: '#793DC3',
+    onColorChange: newColor => saveBadgeStyles({
+      badgeBack: newColor
+    })
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_15__["default"], {
+    key: 'advance'
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    Desktop: hideDesktop,
+    Tablet: hideTablet,
+    Mobile: hideMobile,
+    onChangeDesktop: value => setAttributes({
+      hideDesktop: value ? " premium-desktop-hidden" : ""
+    }),
+    onChangeTablet: value => setAttributes({
+      hideTablet: value ? " premium-tablet-hidden" : ""
+    }),
+    onChangeMobile: value => setAttributes({
+      hideMobile: value ? " premium-mobile-hidden" : ""
+    })
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, useBlockProps({
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, `premium-pricing-table ${blockId}`, {
       " premium-desktop-hidden": hideDesktop,
       " premium-tablet-hidden": hideTablet,
       " premium-mobile-hidden": hideMobile
-    });
-    return [isSelected && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, {
-      key: "inspector"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_13__["default"], {
-      tabs: ['layout', 'style', 'advance']
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_14__["default"], {
-      key: 'layout'
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Display Options", 'premium-blocks-for-gutenberg'),
-      className: "premium-panel-body",
-      initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __("Title", 'premium-blocks-for-gutenberg'),
-      checked: titleChecked,
-      onChange: newValue => setAttributes({
-        titleChecked: newValue
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __("Price", 'premium-blocks-for-gutenberg'),
-      checked: priceChecked,
-      onChange: newValue => setAttributes({
-        priceChecked: newValue
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __("Features", 'premium-blocks-for-gutenberg'),
-      checked: listChecked,
-      onChange: newValue => setAttributes({
-        listChecked: newValue
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __("Description", 'premium-blocks-for-gutenberg'),
-      checked: descChecked,
-      onChange: newValue => setAttributes({
-        descChecked: newValue
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __("Button", 'premium-blocks-for-gutenberg'),
-      checked: btnChecked,
-      onChange: newValue => setAttributes({
-        btnChecked: newValue
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __("Badge", 'premium-blocks-for-gutenberg'),
-      checked: badgeChecked,
-      onChange: newValue => setAttributes({
-        badgeChecked: newValue
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      choices: [{
-        value: 'left',
-        label: __('Left', "premium-blocks-for-gutenberg"),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_9__["default"].alignLeft
-      }, {
-        value: 'center',
-        label: __('Center', "premium-blocks-for-gutenberg"),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_9__["default"].alignCenter
-      }, {
-        value: 'right',
-        label: __('Right', "premium-blocks-for-gutenberg"),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_9__["default"].alignRight
-      }],
-      value: contentAlign,
-      onChange: align => setAttributes({
-        contentAlign: align
-      }),
-      label: __("Content Align", "premium-blocks-for-gutenberg"),
-      showIcons: true
-    })), titleChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Title", 'premium-blocks-for-gutenberg'),
-      className: "premium-panel-body",
-      initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_radio_control__WEBPACK_IMPORTED_MODULE_8__["default"], {
-      label: __("Heading", 'premium-blocks-for-gutenberg'),
-      choices: [{
-        label: __('H1', 'premium-blocks-for-gutenberg'),
-        value: 'h1'
-      }, {
-        label: __('H2', 'premium-blocks-for-gutenberg'),
-        value: 'h2'
-      }, {
-        label: __('H3', 'premium-blocks-for-gutenberg'),
-        value: 'h3'
-      }, {
-        label: __('H4', 'premium-blocks-for-gutenberg'),
-        value: 'h4'
-      }, {
-        label: __('H5', 'premium-blocks-for-gutenberg'),
-        value: 'h5'
-      }, {
-        label: __('H6', 'premium-blocks-for-gutenberg'),
-        value: 'h6'
-      }],
-      value: titleStyles[0].titleTag,
-      onChange: newValue => saveTitleStyles({
-        titleTag: newValue
-      })
-    })), priceChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Price", 'premium-blocks-for-gutenberg'),
-      className: "premium-panel-body",
-      initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
-      label: __("Slashed Price", 'premium-blocks-for-gutenberg'),
-      value: priceStyles[0].slashPrice,
-      onChange: value => savePriceStyles({
-        slashPrice: value
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
-      label: __("Currency", 'premium-blocks-for-gutenberg'),
-      value: priceStyles[0].currPrice,
-      onChange: value => savePriceStyles({
-        currPrice: value
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
-      label: __("Price", 'premium-blocks-for-gutenberg'),
-      value: priceStyles[0].valPrice,
-      onChange: value => savePriceStyles({
-        valPrice: value
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
-      label: __("Divider", 'premium-blocks-for-gutenberg'),
-      value: priceStyles[0].divPrice,
-      onChange: value => savePriceStyles({
-        divPrice: value
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
-      label: __("Duration", 'premium-blocks-for-gutenberg'),
-      value: priceStyles[0].durPrice,
-      onChange: value => savePriceStyles({
-        durPrice: value
-      })
-    })), listChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Features List", 'premium-blocks-for-gutenberg'),
-      className: "premium-panel-body",
-      initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      choices: [{
-        value: 'left',
-        label: __('Left', "premium-blocks-for-gutenberg"),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_9__["default"].alignLeft
-      }, {
-        value: 'center',
-        label: __('Center', "premium-blocks-for-gutenberg"),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_9__["default"].alignCenter
-      }, {
-        value: 'right',
-        label: __('Right', "premium-blocks-for-gutenberg"),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_9__["default"].alignRight
-      }],
-      value: featureAlign,
-      onChange: align => setAttributes({
-        featureAlign: align
-      }),
-      label: __("Align", "premium-blocks-for-gutenberg"),
-      showIcons: true
-    })), btnChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Button", 'premium-blocks-for-gutenberg'),
-      className: "premium-panel-body",
-      initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
-      label: __("Link URL", 'premium-blocks-for-gutenberg'),
-      value: btnLink,
-      onChange: newLink => setAttributes({
-        btnLink: newLink
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __("Open Link in a new tab", 'premium-blocks-for-gutenberg'),
-      checked: buttonStyles[0].btnTarget,
-      onChange: newValue => saveButtonStyle({
-        btnTarget: newValue
-      })
-    })), badgeChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Badge", 'premium-blocks-for-gutenberg'),
-      className: "premium-panel-body",
-      initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      label: __("Text Width", 'premium-blocks-for-gutenberg'),
-      min: "1",
-      max: "200",
-      value: badgeStyles[0].badgeWidth,
-      onChange: newValue => saveBadgeStyles({
-        badgeWidth: newValue
-      }),
-      showUnit: false,
-      defaultValue: 0
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      label: __("Badge Size", 'premium-blocks-for-gutenberg'),
-      value: badgeStyles[0].badgeSize,
-      min: "0",
-      max: "250",
-      onChange: newValue => saveBadgeStyles({
-        badgeSize: newValue
-      }),
-      showUnit: false,
-      defaultValue: 0
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
-      label: __("Position", 'premium-blocks-for-gutenberg'),
-      options: POSITION,
-      value: badgeStyles[0].badgePos,
-      onChange: newValue => saveBadgeStyles({
-        badgePos: newValue
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      label: __("Vertical Offset", 'premium-blocks-for-gutenberg'),
-      value: badgeStyles[0].badgeTop,
-      onChange: newValue => saveBadgeStyles({
-        badgeTop: newValue
-      }),
-      showUnit: false,
-      defaultValue: 0
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      label: __("Horizontal Offset", 'premium-blocks-for-gutenberg'),
-      value: badgeStyles[0].badgeHorizontal,
-      min: "1",
-      max: "150",
-      onChange: newValue => saveBadgeStyles({
-        badgeHorizontal: newValue
-      }),
-      showUnit: false,
-      defaultValue: 1
-    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_14__["default"], {
-      key: 'style'
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Table", 'premium-blocks-for-gutenberg'),
-      className: "premium-panel-body",
-      initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: __(`Background Color`, 'premium-blocks-for-gutenberg'),
-      colorValue: tableStyles[0].tableBack,
-      onColorChange: newvalue => saveTableStyles({
-        tableBack: newvalue
-      }),
-      colorDefault: ``
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      value: tableBoxShadow,
-      onChange: value => setAttributes({
-        tableBoxShadow: value
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      label: __("Border", 'premium-blocks-for-gutenberg'),
-      value: tableBorder,
-      onChange: value => setAttributes({
-        tableBorder: value
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_12__["default"], {
-      value: tablePadding,
-      responsive: true,
-      showUnits: true,
-      label: __("Padding", 'premium-blocks-for-gutenberg'),
-      onChange: value => setAttributes({
-        tablePadding: value
-      })
-    })), titleChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Title", 'premium-blocks-for-gutenberg'),
-      className: "premium-panel-body",
-      initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      value: titleTypography,
-      onChange: newValue => setAttributes({
-        titleTypography: newValue
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: __("Text Color", 'premium-blocks-for-gutenberg'),
-      colorValue: titleStyles[0].titleColor,
-      colorDefault: '',
-      onColorChange: newColor => saveTitleStyles({
-        titleColor: newColor
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: __("Background Color", 'premium-blocks-for-gutenberg'),
-      colorValue: titleStyles[0].titleBack,
-      colorDefault: '',
-      onColorChange: newColor => saveTitleStyles({
-        titleBack: newColor
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      label: __("Text Shadow", 'premium-blocks-for-gutenberg'),
-      value: titleTextShadow,
-      onChange: value => setAttributes({
-        titleTextShadow: value
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_12__["default"], {
-      value: titleMargin,
-      responsive: true,
-      showUnits: true,
-      label: __("Margin", 'premium-blocks-for-gutenberg'),
-      onChange: value => setAttributes({
-        titleMargin: value
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_12__["default"], {
-      value: titlePadding,
-      responsive: true,
-      showUnits: true,
-      label: __("Padding", 'premium-blocks-for-gutenberg'),
-      onChange: value => setAttributes({
-        titlePadding: value
-      })
-    })), priceChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Price", 'premium-blocks-for-gutenberg'),
-      className: "premium-panel-body",
-      initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
-      label: __("Element", 'premium-blocks-for-gutenberg'),
-      options: PRICE,
-      value: priceStyles[0].selectedStyle,
-      onChange: newElem => savePriceStyles({
-        selectedStyle: newElem
-      })
-    }), "slash" === priceStyles[0].selectedStyle && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      choices: ALIGNS,
-      value: slashVAlign,
-      onChange: align => setAttributes({
-        slashVAlign: align
-      }),
-      label: __("Vertical Align", "premium-blocks-for-gutenberg"),
-      showIcons: false
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      value: slashTypography,
-      onChange: newValue => setAttributes({
-        slashTypography: newValue
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: __("Text Color", 'premium-blocks-for-gutenberg'),
-      colorValue: priceStyles[0].slashColor,
-      colorDefault: '',
-      onColorChange: newValue => savePriceStyles({
-        slashColor: newValue === undefined ? "transparent" : newValue
-      })
-    })), "curr" === priceStyles[0].selectedStyle && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      choices: ALIGNS,
-      value: currVAlign,
-      onChange: align => setAttributes({
-        currVAlign: align
-      }),
-      label: __("Vertical Align", "premium-blocks-for-gutenberg"),
-      showIcons: false
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      value: currTypography,
-      onChange: newValue => setAttributes({
-        currTypography: newValue
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: __("Text Color", 'premium-blocks-for-gutenberg'),
-      colorValue: priceStyles[0].currColor,
-      colorDefault: '',
-      onColorChange: newValue => savePriceStyles({
-        currColor: newValue === undefined ? "transparent" : newValue
-      })
-    })), "price" === priceStyles[0].selectedStyle && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      choices: ALIGNS,
-      value: valVAlign,
-      onChange: align => setAttributes({
-        valVAlign: align
-      }),
-      label: __("Vertical Align", "premium-blocks-for-gutenberg"),
-      showIcons: false
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      value: priceTypography,
-      onChange: newValue => setAttributes({
-        priceTypography: newValue
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: __("Text Color", 'premium-blocks-for-gutenberg'),
-      colorValue: priceStyles[0].valColor,
-      colorDefault: '',
-      onColorChange: newValue => savePriceStyles({
-        valColor: newValue === undefined ? "transparent" : newValue
-      })
-    })), "divider" === priceStyles[0].selectedStyle && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      choices: ALIGNS,
-      value: divVAlign,
-      onChange: align => setAttributes({
-        divVAlign: align
-      }),
-      label: __("Vertical Align", "premium-blocks-for-gutenberg"),
-      showIcons: false
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      value: dividerTypography,
-      onChange: newValue => setAttributes({
-        dividerTypography: newValue
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: __("Text Color", 'premium-blocks-for-gutenberg'),
-      colorValue: priceStyles[0].divColor,
-      colorDefault: '',
-      onColorChange: newValue => savePriceStyles({
-        divColor: newValue === undefined ? "transparent" : newValue
-      })
-    })), "duration" === priceStyles[0].selectedStyle && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      choices: ALIGNS,
-      value: durVAlign,
-      onChange: align => setAttributes({
-        durVAlign: align
-      }),
-      label: __("Vertical Align", "premium-blocks-for-gutenberg"),
-      showIcons: false
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      value: durationTypography,
-      onChange: newValue => setAttributes({
-        durationTypography: newValue
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: __("Text Color", 'premium-blocks-for-gutenberg'),
-      colorValue: priceStyles[0].durColor,
-      colorDefault: '',
-      onColorChange: newValue => savePriceStyles({
-        durColor: newValue === undefined ? "transparent" : newValue
-      })
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: __(`Background Color`, 'premium-blocks-for-gutenberg'),
-      colorValue: priceStyles[0].priceBack,
-      onColorChange: newvalue => savePriceStyles({
-        priceBack: newvalue
-      }),
-      colorDefault: ``
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_12__["default"], {
-      value: priceMargin,
-      responsive: true,
-      showUnits: true,
-      label: __("Margin", 'premium-blocks-for-gutenberg'),
-      onChange: value => setAttributes({
-        priceMargin: value
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_12__["default"], {
-      value: pricePadding,
-      responsive: true,
-      showUnits: true,
-      label: __("Padding", 'premium-blocks-for-gutenberg'),
-      onChange: value => setAttributes({
-        pricePadding: value
-      })
-    })), listChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Features List", 'premium-blocks-for-gutenberg'),
-      className: "premium-panel-body",
-      initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
-      label: __("List Style", 'premium-blocks-for-gutenberg'),
-      options: TYPE,
-      value: featureStyles[0].listStyle,
-      onChange: newType => saveFeatureStyle({
-        listStyle: newType
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      value: listTypography,
-      onChange: newValue => setAttributes({
-        listTypography: newValue
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: __("List Items Color", 'premium-blocks-for-gutenberg'),
-      colorValue: featureStyles[0].listColor,
-      colorDefault: '',
-      onColorChange: newColor => saveFeatureStyle({
-        listColor: newColor
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: __("Background Color", 'premium-blocks-for-gutenberg'),
-      colorValue: featureStyles[0].listBack,
-      colorDefault: '',
-      onColorChange: newColor => saveFeatureStyle({
-        listBack: newColor
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_12__["default"], {
-      value: featuresListMargin,
-      responsive: true,
-      showUnits: true,
-      label: __("Margin", 'premium-blocks-for-gutenberg'),
-      onChange: value => setAttributes({
-        featuresListMargin: value
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_12__["default"], {
-      value: featuresListPadding,
-      responsive: true,
-      showUnits: true,
-      label: __("Padding", 'premium-blocks-for-gutenberg'),
-      onChange: value => setAttributes({
-        featuresListPadding: value
-      })
-    })), descChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Description", 'premium-blocks-for-gutenberg'),
-      className: "premium-panel-body",
-      initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      value: descTypography,
-      onChange: newValue => setAttributes({
-        descTypography: newValue
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: __("Text Color", 'premium-blocks-for-gutenberg'),
-      colorValue: descStyles[0].descColor,
-      colorDefault: '',
-      onColorChange: newColor => saveDescriptionStyle({
-        descColor: newColor
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: __("Background Color", 'premium-blocks-for-gutenberg'),
-      colorValue: descStyles[0].descBack,
-      colorDefault: '',
-      onColorChange: newColor => saveDescriptionStyle({
-        descBack: newColor
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_12__["default"], {
-      value: descriptionMargin,
-      responsive: true,
-      showUnits: true,
-      label: __("Margin", 'premium-blocks-for-gutenberg'),
-      onChange: value => setAttributes({
-        descriptionMargin: value
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_12__["default"], {
-      value: descriptionPadding,
-      responsive: true,
-      showUnits: true,
-      label: __("Padding", 'premium-blocks-for-gutenberg'),
-      onChange: value => setAttributes({
-        descriptionPadding: value
-      })
-    })), btnChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Button", 'premium-blocks-for-gutenberg'),
-      className: "premium-panel-body",
-      initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      value: buttonTypography,
-      onChange: newValue => setAttributes({
-        buttonTypography: newValue
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTabs__WEBPACK_IMPORTED_MODULE_15__["default"], null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_16__["default"], {
-      tabTitle: __("Normal", "premium-block-for-gutenberg")
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: __("Text Color", 'premium-blocks-for-gutenberg'),
-      colorValue: buttonStyles[0].btnColor,
-      colorDefault: '',
-      onColorChange: newColor => saveButtonStyle({
-        btnColor: newColor
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: __("Background Color", 'premium-blocks-for-gutenberg'),
-      colorValue: buttonStyles[0].btnBack,
-      colorDefault: '',
-      onColorChange: newColor => saveButtonStyle({
-        btnBack: newColor
-      })
-    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_16__["default"], {
-      tabTitle: __("Hover", "premium-block-for-gutenberg")
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: __("Text Color", 'premium-blocks-for-gutenberg'),
-      colorValue: buttonStyles[0].btnHoverColor,
-      colorDefault: '',
-      onColorChange: newColor => saveButtonStyle({
-        btnHoverColor: newColor
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: __("Background Color", 'premium-blocks-for-gutenberg'),
-      colorValue: buttonStyles[0].btnHoverBack,
-      colorDefault: '',
-      onColorChange: newColor => saveButtonStyle({
-        btnHoverBack: newColor
-      })
-    })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      label: __("Width (%)", 'premium-blocks-for-gutenberg'),
-      value: buttonStyles[0].btnWidth,
-      onChange: newSize => saveButtonStyle({
-        btnWidth: newSize
-      }),
-      showUnit: false,
-      defaultValue: 0
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      label: __("Border", 'premium-blocks-for-gutenberg'),
-      value: buttonBorder,
-      onChange: value => setAttributes({
-        buttonBorder: value
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_12__["default"], {
-      value: buttonMargin,
-      responsive: true,
-      showUnits: true,
-      label: __("Margin", 'premium-blocks-for-gutenberg'),
-      onChange: value => setAttributes({
-        buttonMargin: value
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_12__["default"], {
-      value: buttonPadding,
-      responsive: true,
-      showUnits: true,
-      label: __("Padding", 'premium-blocks-for-gutenberg'),
-      onChange: value => setAttributes({
-        buttonPadding: value
-      })
-    })), badgeChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Badge", 'premium-blocks-for-gutenberg'),
-      className: "premium-panel-body",
-      initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      value: badgeTypography,
-      onChange: newValue => setAttributes({
-        badgeTypography: newValue
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: __("Text Color", 'premium-blocks-for-gutenberg'),
-      colorValue: badgeStyles[0].badgeColor,
-      colorDefault: '',
-      onColorChange: newColor => saveBadgeStyles({
-        badgeColor: newColor
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: __("Background Color", 'premium-blocks-for-gutenberg'),
-      colorValue: badgeStyles[0].badgeBack,
-      colorDefault: '#793DC3',
-      onColorChange: newColor => saveBadgeStyles({
-        badgeBack: newColor
-      })
-    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_14__["default"], {
-      key: 'advance'
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      Desktop: hideDesktop,
-      Tablet: hideTablet,
-      Mobile: hideMobile,
-      onChangeDesktop: value => setAttributes({
-        hideDesktop: value ? " premium-desktop-hidden" : ""
-      }),
-      onChangeTablet: value => setAttributes({
-        hideTablet: value ? " premium-tablet-hidden" : ""
-      }),
-      onChangeMobile: value => setAttributes({
-        hideMobile: value ? " premium-mobile-hidden" : ""
-      })
-    })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `${mainClasses} ${blockId}`,
-      style: {
-        textAlign: contentAlign[this.props.deviceType],
-        backgroundColor: tableStyles[0].tableBack,
-        boxShadow: `${tableBoxShadow.horizontal}px ${tableBoxShadow.vertical}px ${tableBoxShadow.blur}px ${tableBoxShadow.color} ${tableBoxShadow.position}`,
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.borderCss)(tableBorder, this.props.deviceType),
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.paddingCss)(tablePadding, this.props.deviceType)
-      }
-    }, badgeChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `premium-pricing-table__badge_wrap premium-pricing-table__badge_${badgeStyles[0].badgePos}`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `premium-pricing-table__badge`,
-      style: {
-        borderRightColor: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeBack : "transparent",
-        borderTopColor: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeBack : "transparent",
-        borderBottomWidth: badgeStyles[0].badgeSize + "px",
-        borderRightWidth: badgeStyles[0].badgeSize + "px",
-        borderTopWidth: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeSize + "px" : "none",
-        borderLeftWidth: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeSize + "px" : "none"
-      }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
-      tagName: "span",
-      onChange: newText => saveBadgeStyles({
-        badgeText: newText
-      }),
-      placeholder: __("Popular", 'premium-blocks-for-gutenberg'),
-      value: badgeStyles[0].badgeText,
-      style: {
-        color: badgeStyles[0].badgeColor,
-        width: badgeStyles[0].badgeWidth + "px",
-        top: badgeStyles[0].badgeTop + "px",
-        left: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeHorizontal + "px" : "auto",
-        right: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeHorizontal + "px" : "auto",
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.typographyCss)(badgeTypography, this.props.deviceType)
-      }
-    }))), titleChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `premium-pricing-table__title_wrap`,
-      style: {
-        background: titleStyles[0].titleBack,
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.marginCss)(titleMargin, this.props.deviceType)
-      }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
-      tagName: titleStyles[0].titleTag.toLowerCase(),
-      className: `premium-pricing-table__title`,
-      onChange: newText => setAttributes({
-        title: newText
-      }),
-      placeholder: __("Awesome Title", 'premium-blocks-for-gutenberg'),
-      value: title,
-      style: {
-        color: titleStyles[0].titleColor,
-        textShadow: `${titleTextShadow.horizontal}px ${titleTextShadow.vertical}px ${titleTextShadow.blur}px ${titleTextShadow.color}`,
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.paddingCss)(titlePadding, this.props.deviceType),
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.typographyCss)(titleTypography, this.props.deviceType)
-      }
-    })), priceChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `premium-pricing-table__price_wrap`,
-      style: {
-        backgroundColor: priceStyles[0].priceBack,
-        justifyContent: contentAlign[this.props.deviceType],
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.marginCss)(priceMargin, this.props.deviceType),
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.paddingCss)(pricePadding, this.props.deviceType)
-      }
-    }, priceStyles[0].slashPrice && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("strike", {
-      className: `premium-pricing-table__slash`,
-      style: {
-        color: priceStyles[0].slashColor,
-        alignSelf: slashVAlign === null || slashVAlign === void 0 ? void 0 : slashVAlign[this.props.deviceType],
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.typographyCss)(slashTypography, this.props.deviceType)
-      }
-    }, priceStyles[0].slashPrice), priceStyles[0].currPrice && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-      className: `premium-pricing-table__currency`,
-      style: {
-        color: priceStyles[0].currColor,
-        alignSelf: currVAlign === null || currVAlign === void 0 ? void 0 : currVAlign[this.props.deviceType],
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.typographyCss)(currTypography, this.props.deviceType)
-      }
-    }, priceStyles[0].currPrice), priceStyles[0].valPrice && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-      className: `premium-pricing-table__val`,
-      style: {
-        color: priceStyles[0].valColor,
-        alignSelf: valVAlign === null || valVAlign === void 0 ? void 0 : valVAlign[this.props.deviceType],
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.typographyCss)(priceTypography, this.props.deviceType)
-      }
-    }, priceStyles[0].valPrice), priceStyles[0].divPrice && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-      className: `premium-pricing-table__divider`,
-      style: {
-        color: priceStyles[0].divColor,
-        alignSelf: divVAlign === null || divVAlign === void 0 ? void 0 : divVAlign[this.props.deviceType],
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.typographyCss)(dividerTypography, this.props.deviceType)
-      }
-    }, priceStyles[0].divPrice), priceStyles[0].durPrice && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-      className: `premium-pricing-table__dur`,
-      style: {
-        color: priceStyles[0].durColor,
-        alignSelf: durVAlign === null || durVAlign === void 0 ? void 0 : durVAlign[this.props.deviceType],
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.typographyCss)(durationTypography, this.props.deviceType)
-      }
-    }, priceStyles[0].durPrice)), listChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `premium-pricing-table__list_wrap`,
-      style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.marginCss)(featuresListMargin, this.props.deviceType)
-      }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
-      tagName: "ul",
-      className: `premium-pricing-table__list list-${featureStyles[0].listStyle}`,
-      multiline: "li",
-      placeholder: __("List Item #1", "premium-blocks-for-gutenberg"),
-      keepPlaceholderOnFocus: true,
-      value: listItems,
-      onChange: newText => setAttributes({
-        listItems: newText
-      }),
-      style: {
-        color: featureStyles[0].listColor,
-        background: featureStyles[0].listBack,
-        listStyle: "check" !== featureStyles[0].listStyle ? featureStyles[0].listStyle : "none",
-        listStylePosition: "inside",
-        textAlign: (featureAlign === null || featureAlign === void 0 ? void 0 : featureAlign[this.props.deviceType]) || contentAlign[this.props.deviceType],
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.paddingCss)(featuresListPadding, this.props.deviceType),
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.typographyCss)(listTypography, this.props.deviceType)
-      }
-    })), descChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `premium-pricing-table__desc_wrap`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
-      tagName: "p",
-      className: `premium-pricing-table__desc`,
-      onChange: newText => setAttributes({
-        desc: newText
-      }),
-      placeholder: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit"),
-      value: desc,
-      style: {
-        color: descStyles[0].descColor,
-        background: descStyles[0].descBack,
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.marginCss)(descriptionMargin, this.props.deviceType),
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.paddingCss)(descriptionPadding, this.props.deviceType),
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.typographyCss)(descTypography, this.props.deviceType)
-      }
-    })), btnChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `premium-pricing-table__button`,
-      style: {
-        width: buttonStyles[0].btnWidth + "%"
-      }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-      class: `premium-pricing-table__button_link`,
-      href: "{ attributes.btnUrl }",
-      target: buttonStyles[0].btnTarget ? "_blank" : "_self",
-      style: {
-        color: buttonStyles[0].btnColor,
-        background: buttonStyles[0].btnBack ? buttonStyles[0].btnBack : "transparent",
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.marginCss)(buttonMargin, this.props.deviceType),
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.paddingCss)(buttonPadding, this.props.deviceType),
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.borderCss)(buttonBorder, this.props.deviceType),
-        ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_11__.typographyCss)(buttonTypography, this.props.deviceType)
-      }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText, {
-      tagName: "span",
-      onChange: newText => setAttributes({
-        btnText: newText
-      }),
-      value: btnText,
-      style: {
-        textTransform: buttonStyles[0].btnUpper ? "uppercase" : "none"
-      }
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, loadStyles())))];
-  }
-
+    })
+  }), {
+    style: {
+      textAlign: contentAlign[props.deviceType],
+      backgroundColor: tableStyles[0].tableBack,
+      boxShadow: `${tableBoxShadow.horizontal}px ${tableBoxShadow.vertical}px ${tableBoxShadow.blur}px ${tableBoxShadow.color} ${tableBoxShadow.position}`,
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.borderCss)(tableBorder, props.deviceType),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.paddingCss)(tablePadding, props.deviceType)
+    }
+  }), badgeChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: `premium-pricing-table__badge_wrap premium-pricing-table__badge_${badgeStyles[0].badgePos}`
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: `premium-pricing-table__badge`,
+    style: {
+      borderRightColor: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeBack : "transparent",
+      borderTopColor: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeBack : "transparent",
+      borderBottomWidth: badgeStyles[0].badgeSize + "px",
+      borderRightWidth: badgeStyles[0].badgeSize + "px",
+      borderTopWidth: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeSize + "px" : "none",
+      borderLeftWidth: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeSize + "px" : "none"
+    }
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RichText, {
+    tagName: "span",
+    onChange: newText => saveBadgeStyles({
+      badgeText: newText
+    }),
+    placeholder: __("Popular", 'premium-blocks-for-gutenberg'),
+    value: badgeStyles[0].badgeText,
+    style: {
+      color: badgeStyles[0].badgeColor,
+      width: badgeStyles[0].badgeWidth + "px",
+      top: badgeStyles[0].badgeTop + "px",
+      left: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeHorizontal + "px" : "auto",
+      right: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeHorizontal + "px" : "auto",
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.typographyCss)(badgeTypography, props.deviceType)
+    },
+    keepPlaceholderOnFocus: true
+  }))), titleChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: `premium-pricing-table__title_wrap`,
+    style: {
+      background: titleStyles[0].titleBack,
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.marginCss)(titleMargin, props.deviceType)
+    }
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RichText, {
+    tagName: titleStyles[0].titleTag.toLowerCase(),
+    className: `premium-pricing-table__title`,
+    onChange: newText => setAttributes({
+      title: newText
+    }),
+    placeholder: __("Awesome Title", 'premium-blocks-for-gutenberg'),
+    value: title,
+    style: {
+      color: titleStyles[0].titleColor,
+      textShadow: `${titleTextShadow.horizontal}px ${titleTextShadow.vertical}px ${titleTextShadow.blur}px ${titleTextShadow.color}`,
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.paddingCss)(titlePadding, props.deviceType),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.typographyCss)(titleTypography, props.deviceType)
+    },
+    keepPlaceholderOnFocus: true
+  })), priceChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: `premium-pricing-table__price_wrap`,
+    style: {
+      backgroundColor: priceStyles[0].priceBack,
+      justifyContent: contentAlign[props.deviceType],
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.marginCss)(priceMargin, props.deviceType),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.paddingCss)(pricePadding, props.deviceType)
+    }
+  }, priceStyles[0].slashPrice && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("strike", {
+    className: `premium-pricing-table__slash`,
+    style: {
+      color: priceStyles[0].slashColor,
+      alignSelf: slashVAlign === null || slashVAlign === void 0 ? void 0 : slashVAlign[props.deviceType],
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.typographyCss)(slashTypography, props.deviceType)
+    }
+  }, priceStyles[0].slashPrice), priceStyles[0].currPrice && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
+    className: `premium-pricing-table__currency`,
+    style: {
+      color: priceStyles[0].currColor,
+      alignSelf: currVAlign === null || currVAlign === void 0 ? void 0 : currVAlign[props.deviceType],
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.typographyCss)(currTypography, props.deviceType)
+    }
+  }, priceStyles[0].currPrice), priceStyles[0].valPrice && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
+    className: `premium-pricing-table__val`,
+    style: {
+      color: priceStyles[0].valColor,
+      alignSelf: valVAlign === null || valVAlign === void 0 ? void 0 : valVAlign[props.deviceType],
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.typographyCss)(priceTypography, props.deviceType)
+    }
+  }, priceStyles[0].valPrice), priceStyles[0].divPrice && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
+    className: `premium-pricing-table__divider`,
+    style: {
+      color: priceStyles[0].divColor,
+      alignSelf: divVAlign === null || divVAlign === void 0 ? void 0 : divVAlign[props.deviceType],
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.typographyCss)(dividerTypography, props.deviceType)
+    }
+  }, priceStyles[0].divPrice), priceStyles[0].durPrice && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
+    className: `premium-pricing-table__dur`,
+    style: {
+      color: priceStyles[0].durColor,
+      alignSelf: durVAlign === null || durVAlign === void 0 ? void 0 : durVAlign[props.deviceType],
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.typographyCss)(durationTypography, props.deviceType)
+    }
+  }, priceStyles[0].durPrice)), listChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: `premium-pricing-table__list_wrap`,
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.marginCss)(featuresListMargin, props.deviceType)
+    }
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RichText, {
+    tagName: "ul",
+    className: `premium-pricing-table__list list-${featureStyles[0].listStyle}`,
+    multiline: "li",
+    placeholder: __("List Item #1", "premium-blocks-for-gutenberg"),
+    keepPlaceholderOnFocus: true,
+    value: listItems,
+    onChange: newText => setAttributes({
+      listItems: newText
+    }),
+    style: {
+      color: featureStyles[0].listColor,
+      background: featureStyles[0].listBack,
+      listStyle: "check" !== featureStyles[0].listStyle ? featureStyles[0].listStyle : "none",
+      listStylePosition: "inside",
+      textAlign: (featureAlign === null || featureAlign === void 0 ? void 0 : featureAlign[props.deviceType]) || contentAlign[props.deviceType],
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.paddingCss)(featuresListPadding, props.deviceType),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.typographyCss)(listTypography, props.deviceType)
+    },
+    keepPlaceholderOnFocus: true
+  })), descChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: `premium-pricing-table__desc_wrap`
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RichText, {
+    tagName: "p",
+    className: `premium-pricing-table__desc`,
+    onChange: newText => setAttributes({
+      desc: newText
+    }),
+    placeholder: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit"),
+    value: desc,
+    style: {
+      color: descStyles[0].descColor,
+      background: descStyles[0].descBack,
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.marginCss)(descriptionMargin, props.deviceType),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.paddingCss)(descriptionPadding, props.deviceType),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.typographyCss)(descTypography, props.deviceType)
+    },
+    keepPlaceholderOnFocus: true
+  })), btnChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: `premium-pricing-table__button`,
+    style: {
+      width: buttonStyles[0].btnWidth + "%"
+    }
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
+    class: `premium-pricing-table__button_link`,
+    href: "{ attributes.btnUrl }",
+    target: buttonStyles[0].btnTarget ? "_blank" : "_self",
+    style: {
+      color: buttonStyles[0].btnColor,
+      background: buttonStyles[0].btnBack ? buttonStyles[0].btnBack : "transparent",
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.marginCss)(buttonMargin, props.deviceType),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.paddingCss)(buttonPadding, props.deviceType),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.borderCss)(buttonBorder, props.deviceType),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.typographyCss)(buttonTypography, props.deviceType)
+    }
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RichText, {
+    tagName: "span",
+    onChange: newText => setAttributes({
+      btnText: newText
+    }),
+    value: btnText,
+    style: {
+      textTransform: buttonStyles[0].btnUpper ? "uppercase" : "none"
+    },
+    keepPlaceholderOnFocus: true
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", null, loadStyles()))));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (withSelect(select => {
@@ -45775,7 +44882,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/blocks/pricing-table/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/blocks/pricing-table/save.js");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/pricing-table/deprecated.js");
-/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./attributes */ "./src/blocks/pricing-table/attributes.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./block.json */ "./src/blocks/pricing-table/block.json");
 
 
 
@@ -45788,12 +44895,11 @@ const {
 const {
   __
 } = wp.i18n;
-registerBlockType("premium/pricing-table", {
+registerBlockType("premium/pricing-table", { ..._block_json__WEBPACK_IMPORTED_MODULE_5__,
   title: __("Pricing Table"),
   description: __('Display your pricing plans in an elegant way using Premium Pricing Table Block.'),
   icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].pricingTable,
   category: "premium-blocks",
-  attributes: _attributes__WEBPACK_IMPORTED_MODULE_5__["default"],
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.pricingTable
   },
@@ -45815,16 +44921,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./src/blocks/node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./src/blocks/node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./src/blocks/node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+
 
 
 
 const {
-  RichText
+  RichText,
+  useBlockProps
 } = wp.blockEditor;
 
 const save = props => {
@@ -45878,27 +44987,27 @@ const save = props => {
       'color': `${buttonStyles === null || buttonStyles === void 0 ? void 0 : (_buttonStyles$ = buttonStyles[0]) === null || _buttonStyles$ === void 0 ? void 0 : _buttonStyles$.btnHoverColor}!important`,
       'background': `${buttonStyles === null || buttonStyles === void 0 ? void 0 : (_buttonStyles$2 = buttonStyles[0]) === null || _buttonStyles$2 === void 0 ? void 0 : _buttonStyles$2.btnHoverBack}!important`
     };
-    return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.generateCss)(styles);
+    return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.generateCss)(styles);
   };
 
-  const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-pricing-table", {
-    " premium-desktop-hidden": hideDesktop,
-    " premium-tablet-hidden": hideTablet,
-    " premium-mobile-hidden": hideMobile
-  });
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `${mainClasses} ${blockId}`,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, useBlockProps.save({
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, `premium-pricing-table ${blockId}`, {
+      " premium-desktop-hidden": hideDesktop,
+      " premium-tablet-hidden": hideTablet,
+      " premium-mobile-hidden": hideMobile
+    })
+  }), {
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       backgroundColor: tableStyles[0].tableBack,
       borderStyle: tableBorder.borderType,
       borderColor: tableBorder.borderColor,
       boxShadow: `${tableBoxShadow.horizontal}px ${tableBoxShadow.vertical}px ${tableBoxShadow.blur}px ${tableBoxShadow.color} ${tableBoxShadow.position}`
     })
-  }, badgeChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), badgeChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-pricing-table__badge_wrap premium-pricing-table__badge_${badgeStyles[0].badgePos}`
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-pricing-table__badge`,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       borderRightColor: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeBack : "transparent",
       borderTopColor: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeBack : "transparent",
       borderBottomWidth: badgeStyles[0].badgeSize + "px",
@@ -45906,10 +45015,10 @@ const save = props => {
       borderTopWidth: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeSize + "px" : "none",
       borderLeftWidth: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeSize + "px" : "none"
     })
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RichText.Content, {
     tagName: "span",
     value: badgeStyles[0].badgeText,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       color: badgeStyles[0].badgeColor,
       fontStyle: badgeTypography === null || badgeTypography === void 0 ? void 0 : badgeTypography.fontStyle,
       fontFamily: badgeTypography === null || badgeTypography === void 0 ? void 0 : badgeTypography.fontFamily,
@@ -45921,16 +45030,16 @@ const save = props => {
       left: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeHorizontal + "px" : "auto",
       right: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeHorizontal + "px" : "auto"
     })
-  }))), titleChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }))), titleChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-pricing-table__title_wrap`,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       background: titleStyles[0].titleBack
     })
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RichText.Content, {
     tagName: titleStyles[0].titleTag.toLowerCase(),
     className: `premium-pricing-table__title`,
     value: title,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       color: titleStyles[0].titleColor,
       fontStyle: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontStyle,
       fontFamily: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily,
@@ -45939,14 +45048,14 @@ const save = props => {
       textTransform: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textTransform,
       textShadow: `${titleTextShadow.horizontal}px ${titleTextShadow.vertical}px ${titleTextShadow.blur}px ${titleTextShadow.color}`
     })
-  })), priceChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  })), priceChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-pricing-table__price_wrap`,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       backgroundColor: priceStyles[0].priceBack
     })
-  }, priceStyles[0].slashPrice && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("strike", {
+  }, priceStyles[0].slashPrice && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("strike", {
     className: `premium-pricing-table__slash`,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       color: priceStyles[0].slashColor,
       fontStyle: slashTypography === null || slashTypography === void 0 ? void 0 : slashTypography.fontStyle,
       fontFamily: slashTypography === null || slashTypography === void 0 ? void 0 : slashTypography.fontFamily,
@@ -45954,9 +45063,9 @@ const save = props => {
       textDecoration: slashTypography === null || slashTypography === void 0 ? void 0 : slashTypography.textDecoration,
       textTransform: slashTypography === null || slashTypography === void 0 ? void 0 : slashTypography.textTransform
     })
-  }, priceStyles[0].slashPrice), priceStyles[0].currPrice && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+  }, priceStyles[0].slashPrice), priceStyles[0].currPrice && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
     className: `premium-pricing-table__currency`,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       color: priceStyles[0].currColor,
       fontStyle: currTypography === null || currTypography === void 0 ? void 0 : currTypography.fontStyle,
       fontFamily: currTypography === null || currTypography === void 0 ? void 0 : currTypography.fontFamily,
@@ -45964,9 +45073,9 @@ const save = props => {
       textDecoration: currTypography === null || currTypography === void 0 ? void 0 : currTypography.textDecoration,
       textTransform: currTypography === null || currTypography === void 0 ? void 0 : currTypography.textTransform
     })
-  }, priceStyles[0].currPrice), priceStyles[0].valPrice && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+  }, priceStyles[0].currPrice), priceStyles[0].valPrice && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
     className: `premium-pricing-table__val`,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       color: priceStyles[0].valColor,
       fontStyle: priceTypography === null || priceTypography === void 0 ? void 0 : priceTypography.fontStyle,
       fontFamily: priceTypography === null || priceTypography === void 0 ? void 0 : priceTypography.fontFamily,
@@ -45974,9 +45083,9 @@ const save = props => {
       textDecoration: priceTypography === null || priceTypography === void 0 ? void 0 : priceTypography.textDecoration,
       textTransform: priceTypography === null || priceTypography === void 0 ? void 0 : priceTypography.textTransform
     })
-  }, priceStyles[0].valPrice), priceStyles[0].divPrice && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+  }, priceStyles[0].valPrice), priceStyles[0].divPrice && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
     className: `premium-pricing-table__divider`,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       color: priceStyles[0].divColor,
       fontStyle: dividerTypography === null || dividerTypography === void 0 ? void 0 : dividerTypography.fontStyle,
       fontFamily: dividerTypography === null || dividerTypography === void 0 ? void 0 : dividerTypography.fontFamily,
@@ -45984,9 +45093,9 @@ const save = props => {
       textDecoration: dividerTypography === null || dividerTypography === void 0 ? void 0 : dividerTypography.textDecoration,
       textTransform: dividerTypography === null || dividerTypography === void 0 ? void 0 : dividerTypography.textTransform
     })
-  }, priceStyles[0].divPrice), priceStyles[0].durPrice && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+  }, priceStyles[0].divPrice), priceStyles[0].durPrice && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
     className: `premium-pricing-table__dur`,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       color: priceStyles[0].durColor,
       fontStyle: durationTypography === null || durationTypography === void 0 ? void 0 : durationTypography.fontStyle,
       fontFamily: durationTypography === null || durationTypography === void 0 ? void 0 : durationTypography.fontFamily,
@@ -45994,14 +45103,14 @@ const save = props => {
       textDecoration: durationTypography === null || durationTypography === void 0 ? void 0 : durationTypography.textDecoration,
       textTransform: durationTypography === null || durationTypography === void 0 ? void 0 : durationTypography.textTransform
     })
-  }, priceStyles[0].durPrice)), listChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, priceStyles[0].durPrice)), listChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-pricing-table__list_wrap`
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RichText.Content, {
     value: listItems,
     tagName: 'ul',
     multiline: "li",
     className: `premium-pricing-table__list list-${featureStyles[0].listStyle}`,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       color: featureStyles[0].listColor,
       background: featureStyles[0].listBack,
       listStyle: "check" !== featureStyles[0].listStyle ? featureStyles[0].listStyle : "none",
@@ -46012,13 +45121,13 @@ const save = props => {
       textDecoration: listTypography === null || listTypography === void 0 ? void 0 : listTypography.textDecoration,
       textTransform: listTypography === null || listTypography === void 0 ? void 0 : listTypography.textTransform
     })
-  })), descChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  })), descChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-pricing-table__desc_wrap`
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RichText.Content, {
     tagName: "p",
     className: `premium-pricing-table__desc`,
     value: desc,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       color: descStyles[0].descColor,
       background: descStyles[0].descBack,
       fontStyle: descTypography === null || descTypography === void 0 ? void 0 : descTypography.fontStyle,
@@ -46027,17 +45136,17 @@ const save = props => {
       textDecoration: descTypography === null || descTypography === void 0 ? void 0 : descTypography.textDecoration,
       textTransform: descTypography === null || descTypography === void 0 ? void 0 : descTypography.textTransform
     })
-  })), btnChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  })), btnChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-pricing-table__button`,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       width: buttonStyles[0].btnWidth + "%"
     })
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
     class: `premium-pricing-table__button_link`,
     href: btnLink,
     target: buttonStyles[0].btnTarget ? "_blank" : "_self",
     rel: "noopener noreferrer",
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       color: buttonStyles[0].btnColor,
       background: buttonStyles[0].btnBack ? buttonStyles[0].btnBack : "transparent",
       fontStyle: buttonTypography === null || buttonTypography === void 0 ? void 0 : buttonTypography.fontStyle,
@@ -46048,16 +45157,16 @@ const save = props => {
       borderStyle: buttonBorder.borderType,
       borderColor: buttonBorder.borderColor
     })
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RichText.Content, {
     tagName: "span",
     onChange: newText => setAttributes({
       btnText: newText
     }),
     value: btnText,
-    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+    style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       textTransform: buttonStyles[0].btnUpper ? "uppercase" : "none"
     })
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: loadStyles()
     }
@@ -52378,7 +51487,6 @@ function Edit(props) {
     tagName: "p",
     className: `premium-testimonial__text`,
     value: text,
-    isSelected: false,
     placeholder: "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.",
     onChange: newText => setAttributes({
       text: newText
@@ -52398,14 +51506,14 @@ function Edit(props) {
     tagName: authorStyles[0].authorTag.toLowerCase(),
     className: `premium-testimonial__author`,
     value: author,
-    isSelected: false,
     onChange: newText => setAttributes({
       author: newText
     }),
     style: {
       color: authorStyles[0].authorColor,
       ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_20__.typographyCss)(authorTypography, props.deviceType)
-    }
+    },
+    keepPlaceholderOnFocus: true
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
     className: `premium-testimonial__sep`,
     style: {
@@ -52418,11 +51526,11 @@ function Edit(props) {
       authorCom: newText
     }),
     value: authorCom,
-    isSelected: false,
     style: {
       color: companyStyles[0].authorComColor,
       ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_20__.typographyCss)(companyTypography, props.deviceType)
-    }
+    },
+    keepPlaceholderOnFocus: true
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
     className: `premium-testimonial__lower`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_testimonials_lower_quote__WEBPACK_IMPORTED_MODULE_7__["default"], {
@@ -98222,6 +97330,17 @@ module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/i
 
 "use strict";
 module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/image-separator","title":"Image Separator","category":"premium-blocks","attributes":{"blockId":{"type":"string"},"iconAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"iconType":{"type":"string","default":"image"},"imageID":{"type":"number"},"imageURL":{"type":"string","source":"attribute","attribute":"src","selector":".premium-image-separator-container img"},"link":{"type":"boolean"},"url":{"type":"string"},"gutter":{"type":"number","default":-50},"imgFilter":{"type":"object","default":{"contrast":"100","blur":"0","bright":"100","saturation":"100","hue":"0"}},"imgFilterHover":{"type":"object","default":{"contrast":"100","blur":"0","bright":"100","saturation":"100","hue":"0"}},"linkTarget":{"type":"boolean","default":false},"imgFit":{"type":"string","value":"fill"},"imgMask":{"type":"boolean","default":false},"imgMaskURL":{"type":"string"},"imgMaskID":{"type":"number"},"maskSize":{"type":"string","default":"contain"},"maskPosition":{"type":"string","default":"center center"},"iconStyles":{"type":"array","default":[{"advancedBorder":false,"icon":"fa fa-bars","iconColor":"","iconBGColor":"","iconColorHover":"","iconBGColorHover":"","advancedBorderValue":"","imgHeightType":"px"}]},"iconSize":{"type":"object","default":{"Desktop":"200","Tablet":"200","Mobile":"200","unit":"px"}},"imgHeight":{"type":"object","default":{"Desktop":"200","unit":"px"}},"iconBorder":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"iconPadding":{"type":"object","default":{"Desktop":{"top":".1","right":".1","bottom":".1","left":".1"},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"em"}},"iconShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}}}}');
+
+/***/ }),
+
+/***/ "./src/blocks/pricing-table/block.json":
+/*!*********************************************!*\
+  !*** ./src/blocks/pricing-table/block.json ***!
+  \*********************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/pricing-table","title":"Pricing Table","category":"premium-blocks","attributes":{"borderUpdated":{"type":"boolean","default":false},"btnBorderUpdated":{"type":"boolean","default":false},"contentAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"title":{"type":"array","source":"children","selector":".premium-pricing-table__title","default":"Pricing Table"},"desc":{"type":"array","source":"children","selector":".premium-pricing-table__desc","default":"Lorem ipsum dolor sit amet, consectetur adipiscing elit"},"titleChecked":{"type":"boolean","default":true},"descChecked":{"type":"boolean","default":true},"priceChecked":{"type":"boolean","default":true},"btnChecked":{"type":"boolean","default":true},"btnText":{"type":"string","default":"Get Started"},"btnLink":{"type":"string","source":"attribute","attribute":"href","selector":".premium-pricing-table__button_link"},"badgeChecked":{"type":"boolean","default":true},"listChecked":{"type":"boolean","default":true},"listItems":{"type":"string","source":"html","multiline":"li","selector":".premium-pricing-table__list","default":""},"blockId":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"hideDesktop":{"type":"boolean","default":false},"hideTablet":{"type":"boolean","default":false},"hideMobile":{"type":"boolean","default":false},"titleStyles":{"type":"array","default":[{"titleTag":"H2","titleColor":"","titleBack":""}]},"titleTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"titleTextShadow":{"type":"object","default":{"color":"transparent","blur":"10","horizontal":"0","vertical":"0"}},"priceStyles":{"type":"array","default":[{"priceBack":"","priceOpacity":1,"slashPrice":"","slashColor":"","currPrice":"$","currColor":"","valPrice":"25","valColor":"","divPrice":"/","divColor":"","durPrice":"m","durColor":"","selectedStyle":"price"}]},"slashTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"currTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"priceTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"dividerTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"durationTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"slashVAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"currVAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"valVAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"divVAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"durVAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"featureStyles":{"type":"array","default":[{"listStyle":"disc","listColor":"","listItemsStyle":"","listBack":""}]},"listTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"45","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"featureAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"descStyles":{"type":"array","default":[{"descColor":"","descBack":"","descMarginT":0,"descMarginB":30,"descPadding":"0"}]},"descTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"buttonStyles":{"type":"array","default":[{"btnColor":"","btnHoverColor":"","btnWidth":"","btnBack":"rgb(242, 242, 242)","btnHoverBack":"","btnTarget":true}]},"buttonTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"badgeStyles":{"type":"array","default":[{"badgePos":"right","badgeBack":"#793DC3","badgeColor":"#fff","badgeTop":"","badgeHorizontal":"","badgeWidth":"","badgeText":"Popular","badgeSize":""}]},"badgeTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"tableStyles":{"type":"array","default":[{"tableBack":"","tableOpacity":1}]},"tableBoxShadow":{"type":"object","default":{"color":"transparent","blur":"10","horizontal":"0","vertical":"0","position":""}},"tableBorder":{"type":"object","default":{"bordertype":"solid","borderColor":"#e1e1e1","borderWidth":{"Desktop":{"top":"1","right":"1","bottom":"1","left":"1"},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"buttonBorder":{"type":"object","default":{"bordertype":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"tablePadding":{"type":"object","default":{"Desktop":{"top":"20","right":"20","bottom":"20","left":"20"},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"titlePadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"titleMargin":{"type":"object","default":{"Desktop":{"top":20,"right":"","bottom":20,"left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"pricePadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"priceMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":20,"left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"featuresListPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"featuresListMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":20,"left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"descriptionPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"descriptionMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":30,"left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"buttonPadding":{"type":"object","default":{"Desktop":{"top":10,"right":10,"bottom":10,"left":10},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"buttonMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}}}}');
 
 /***/ }),
 

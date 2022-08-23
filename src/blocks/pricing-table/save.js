@@ -1,7 +1,7 @@
 import classnames from "classnames";
 import { filterJsCss, generateCss } from "../../components/HelperFunction";
 
-const { RichText } = wp.blockEditor;
+const { RichText, useBlockProps } = wp.blockEditor;
 
 const save = props => {
     const { className } = props;
@@ -57,15 +57,19 @@ const save = props => {
         return generateCss(styles);
     }
 
-    const mainClasses = classnames(className, "premium-pricing-table", {
-        " premium-desktop-hidden": hideDesktop,
-        " premium-tablet-hidden": hideTablet,
-        " premium-mobile-hidden": hideMobile,
-    });
-
     return (
         <div
-            className={`${mainClasses} ${blockId}`}
+            {...useBlockProps.save({
+                className: classnames(
+                    className,
+                    `premium-pricing-table ${blockId}`,
+                    {
+                        " premium-desktop-hidden": hideDesktop,
+                        " premium-tablet-hidden": hideTablet,
+                        " premium-mobile-hidden": hideMobile,
+                    }
+                ),
+            })}
             style={filterJsCss({
                 backgroundColor: tableStyles[0].tableBack,
                 borderStyle: tableBorder.borderType,
