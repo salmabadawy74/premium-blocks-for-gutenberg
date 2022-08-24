@@ -1,6 +1,5 @@
 import classnames from 'classnames'
-const { __ } = wp.i18n;
-const { InnerBlocks } = wp.blockEditor;
+const { InnerBlocks, useBlockProps } = wp.blockEditor;
 
 const save = props => {
     const { className } = props;
@@ -87,14 +86,20 @@ const save = props => {
         return styleCss;
     }
 
-    const mainClasses = classnames(className, 'premium-accordion', blockId, {
-        ' premium-desktop-hidden': hideDesktop,
-        ' premium-tablet-hidden': hideTablet,
-        ' premium-mobile-hidden': hideMobile,
-    });
-
     return (
-        <div className={`${mainClasses}`}>
+        <div 
+            {...useBlockProps.save({
+                className: classnames(
+                    className,
+                    `premium-accordion ${blockId}`,
+                    {
+                        " premium-desktop-hidden": hideDesktop,
+                        " premium-tablet-hidden": hideTablet,
+                        " premium-mobile-hidden": hideMobile,
+                    }
+                ),
+            })}
+        >
             <style>{loadStyles()}</style>
             <InnerBlocks.Content />
         </div>

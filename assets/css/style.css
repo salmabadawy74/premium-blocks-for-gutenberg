@@ -1707,6 +1707,9 @@ a.premium-dheading-block__link:hover {
 
 /**************** Premium Accordion ********************/
 /*******************************************************/
+.premium-accordion {
+    padding: 15px;
+} 
 .premium-accordion .premium-accordion__title_wrap {
     text-align: left;
     cursor: pointer;
