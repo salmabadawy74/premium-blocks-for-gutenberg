@@ -3612,8 +3612,6 @@ i.fipicon-angle-left:before {
 .premium-repeater-row-controls {
   padding: 12px;
   border-top: 1px solid #e6e6e6; }
-  .premium-repeater-row-controls:not(.editable) {
-    display: none; }
 
 .block-editor-block-inspector .components-base-control {
   margin-bottom: 20px !important; }
