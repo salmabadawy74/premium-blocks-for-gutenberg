@@ -5,7 +5,7 @@ const {
 } = wp.element
 
 const {
-    RichText
+    RichText, useBlockProps
 } = wp.blockEditor
 
 export default function save(props) {
@@ -63,15 +63,19 @@ export default function save(props) {
     }
 
     return (
-        <div className={classnames(
-            className,
-            blockId,
-            {
-                " premium-desktop-hidden": hideDesktop,
-                " premium-tablet-hidden": hideTablet,
-                " premium-mobile-hidden": hideMobile,
-            }
-        )}>
+        <div 
+            {...useBlockProps.save({
+                className: classnames(
+                    className,
+                    `${blockId}`,
+                    {
+                        " premium-desktop-hidden": hideDesktop,
+                        " premium-tablet-hidden": hideTablet,
+                        " premium-mobile-hidden": hideMobile,
+                    }
+                ),
+            })}
+        >
             <style>{loadStyles()}</style>
             <ul className={`premium-bullet-list-${layoutPos} premium-bullet-list`}>
                 {
@@ -184,7 +188,10 @@ export default function save(props) {
                                             target={target}
                                             rel="noopener noreferrer"
                                         >
-                                            <div className={`premium-bullet-list__content-wrap`}>
+                                            <div className={`premium-bullet-list__content-wrap`} style={filterJsCss({
+                                            display: iconPosition == "before" ? "flex" : "inline-flex",
+                                            flexDirection: iconPosition == "top" ? "column" : iconPosition == "after" ? 'row-reverse' : "",
+                                        })}>
                                                 <span className={`premium-bullet-list__icon-wrap`}
                                                     style={filterJsCss({
                                                         overflow: repeaterBulletList?.[index]?.image_icon == 'image' ? "hidden" : "",

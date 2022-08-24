@@ -24,9 +24,9 @@ const { withSelect } = wp.data
 
 const { __ } = wp.i18n
 
-const { Component, Fragment } = wp.element
+const { useEffect, Fragment } = wp.element
 
-const { InspectorControls, RichText } = wp.blockEditor
+const { InspectorControls, RichText, useBlockProps } = wp.blockEditor
 
 const { PanelBody, SelectControl, TextControl, ToggleControl } = wp.components
 
@@ -178,12 +178,12 @@ const SortableList = SortableContainer(({
     );
 });
 
+function Edit(props) {
+    const { setAttributes, className, clientId } = props;
 
-class Edit extends Component {
-
-    componentDidMount() {
-        if (!this.props.attributes.classMigrate) {
-            this.props.setAttributes({
+    useEffect(() => {
+        if (!props.attributes.classMigrate) {
+            setAttributes({
                 repeaterBulletList: [{
                     id: 1,
                     label: "Title #" + 1,
@@ -253,396 +253,392 @@ class Edit extends Component {
                 ]
             })
         }
+        setAttributes({
+            blockId: "premium-bullet-list-" + generateBlockId(clientId)
+        });
+        setAttributes({ classMigrate: true });
+    }, []);
 
-        // Assigning id in the attribute.
-        this.props.setAttributes({ blockId: "premium-bullet-list-" + generateBlockId(this.props.clientId) });
-        this.props.setAttributes({ classMigrate: true })
+    const {
+        blockId,
+        layoutPos,
+        iconPosition,
+        align,
+        repeaterBulletList,
+        bulletAlign,
+        bulletIconStyles,
+        bulletIconBorder,
+        generalmargin,
+        bulletIconmargin,
+        titlemargin,
+        generalpadding,
+        bulletIconpadding,
+        titleStyles,
+        generalStyles,
+        generalBorder,
+        divider,
+        dividerStyle,
+        dividerStyles,
+        titlesTextShadow,
+        boxShadow,
+        hoverBoxShadow,
+        bulletIconFontSize,
+        dividerWidth,
+        dividerHeight,
+        titleTypography,
+        hideDesktop,
+        hideTablet,
+        hideMobile,
+    } = props.attributes
+
+    let loadTitleGoogleFonts;
+
+    if (titleTypography.fontFamily !== "Default") {
+        const fontConfig = {
+            google: {
+                families: [titleTypography.fontFamily],
+            },
+        }
+        loadTitleGoogleFonts = (
+            <WebfontLoader config={fontConfig}>
+            </WebfontLoader>
+        );
+    }
+    const LAYOUT = [
+        {
+            label: __("Block", 'premium-blocks-for-gutenberg'),
+            value: "block"
+        },
+        {
+            label: __("Inline", 'premium-blocks-for-gutenberg'),
+            value: "inline"
+        }
+    ];
+
+    const POSITION = [
+        {
+            label: __("After", 'premium-blocks-for-gutenberg'),
+            value: "after"
+        },
+        {
+            label: __("Before", 'premium-blocks-for-gutenberg'),
+            value: "before"
+        },
+        {
+            label: __("Top", 'premium-blocks-for-gutenberg'),
+            value: "top"
+        }
+    ];
+
+    const DividerStyle = [
+        {
+            label: __("Solid", 'premium-blocks-for-gutenberg'),
+            value: "solid"
+        },
+        {
+            label: __("Double", 'premium-blocks-for-gutenberg'),
+            value: "double"
+        },
+        {
+            label: __("Dotted", 'premium-blocks-for-gutenberg'),
+            value: "dotted"
+        },
+        {
+            label: __("Dashed", 'premium-blocks-for-gutenberg'),
+            value: "dashed"
+        },
+        {
+            label: __("Groove", 'premium-blocks-for-gutenberg'),
+            value: "groove"
+        }
+    ]
+
+    const currentDevice = props.deviceType;
+    const BulletIconSize = bulletIconFontSize?.[currentDevice];
+    const TitleSize = titleTypography ? titleTypography?.fontSize?.[currentDevice] : '';
+    const DividerWidth = dividerWidth?.[currentDevice];
+    const DividerHeight = dividerHeight?.[currentDevice];
+
+    const addNewBulletList = () => {
+        let cloneIcons = [...repeaterBulletList]
+        cloneIcons.push({
+            id: cloneIcons.length + 1,
+            label: "Title ",
+            image_icon: "icon",
+            icon: "fa fa-arrow-circle-right",
+            imageURL: "",
+            imageID: '',
+            icon_color: "",
+            label_color: "",
+            icon_hover_color: "",
+            label_hover_color: "",
+            icon_bg_color: "",
+            icon_bg_hover_color: "",
+            item_bg_color: "",
+            item_bg_hover_color: "",
+            link: "#",
+            target: false,
+            disableLink: false,
+            showContent: false,
+            showBulletIcon: true,
+            linkTarget: false
+        })
+        setAttributes({ repeaterBulletList: cloneIcons })
     }
 
-    render() {
-        const { attributes, setAttributes, isSelected } = this.props
+    const onRemove = (index, item) => {
+        let array = repeaterBulletList.map((bulletList) => {
+            return bulletList
+        }).filter((f, i) => i != index)
 
-        const {
-            blockId,
-            layoutPos,
-            iconPosition,
-            align,
-            className,
-            repeaterBulletList,
-            bulletAlign,
-            bulletIconStyles,
-            bulletIconBorder,
-            generalmargin,
-            bulletIconmargin,
-            titlemargin,
-            generalpadding,
-            bulletIconpadding,
-            titleStyles,
-            generalStyles,
-            generalBorder,
-            divider,
-            dividerStyle,
-            dividerStyles,
-            titlesTextShadow,
-            boxShadow,
-            hoverBoxShadow,
-            bulletIconFontSize,
-            dividerWidth,
-            dividerHeight,
-            titleTypography,
-            hideDesktop,
-            hideTablet,
-            hideMobile,
-        } = attributes
-
-        let loadTitleGoogleFonts;
-
-        if (titleTypography.fontFamily !== "Default") {
-            const fontConfig = {
-                google: {
-                    families: [titleTypography.fontFamily],
-                },
-            }
-            loadTitleGoogleFonts = (
-                <WebfontLoader config={fontConfig}>
-                </WebfontLoader>
-            );
+        let active = array.map((arr, index) => {
+            return arr.default
+        }).filter((f, i) => f != false)
+        if (active.length == 0) {
+            // setAttributes({ tabIndex: index })
         }
-        const LAYOUT = [
-            {
-                label: __("Block", 'premium-blocks-for-gutenberg'),
-                value: "block"
-            },
-            {
-                label: __("Inline", 'premium-blocks-for-gutenberg'),
-                value: "inline"
+        // activeTab(index == 0 ? index : index - 1)
+        setAttributes({
+            repeaterBulletList: array
+        });
+    }
+
+    const onRepeaterChange = (attr, value, index) => {
+        const items = repeaterBulletList;
+        return items.map(function (item, currIndex) {
+            if (index == currIndex) {
+                item[attr] = value;
             }
-        ];
+            return item;
+        });
+    };
 
-        const POSITION = [
-            {
-                label: __("After", 'premium-blocks-for-gutenberg'),
-                value: "after"
-            },
-            {
-                label: __("Before", 'premium-blocks-for-gutenberg'),
-                value: "before"
-            },
-            {
-                label: __("Top", 'premium-blocks-for-gutenberg'),
-                value: "top"
+    const showContent = (index, item) => {
+        return repeaterBulletList.map((item, i) => {
+            if (index == i) {
+                setAttributes({
+                    repeatertabs: onRepeaterChange(
+                        "showContent",
+                        item.showContent ? false : true,
+                        index
+                    )
+                })
             }
-        ];
-
-        const DividerStyle = [
-            {
-                label: __("Solid", 'premium-blocks-for-gutenberg'),
-                value: "solid"
-            },
-            {
-                label: __("Double", 'premium-blocks-for-gutenberg'),
-                value: "double"
-            },
-            {
-                label: __("Dotted", 'premium-blocks-for-gutenberg'),
-                value: "dotted"
-            },
-            {
-                label: __("Dashed", 'premium-blocks-for-gutenberg'),
-                value: "dashed"
-            },
-            {
-                label: __("Groove", 'premium-blocks-for-gutenberg'),
-                value: "groove"
+            else {
+                setAttributes({
+                    repeaterBulletList: onRepeaterChange(
+                        "showContent",
+                        false,
+                        i
+                    )
+                })
             }
-        ]
+        })
+    }
 
-        const currentDevice = this.props.deviceType;
-        const BulletIconSize = bulletIconFontSize?.[currentDevice];
-        const TitleSize = titleTypography ? titleTypography?.fontSize?.[currentDevice] : '';
-        const DividerWidth = dividerWidth?.[currentDevice];
-        const DividerHeight = dividerHeight?.[currentDevice];
+    const changeLabel = (item, index) => {
+        setAttributes({
+            repeaterBulletList: onRepeaterChange(
+                "label",
+                item,
+                index
+            )
+        })
+    }
 
-        const addNewBulletList = () => {
-            let cloneIcons = [...repeaterBulletList]
-            cloneIcons.push({
-                id: cloneIcons.length + 1,
-                label: "Title ",
-                image_icon: "icon",
-                icon: "fa fa-arrow-circle-right",
-                imageURL: "",
-                imageID: '',
-                icon_color: "",
-                label_color: "",
-                icon_hover_color: "",
-                label_hover_color: "",
-                icon_bg_color: "",
-                icon_bg_hover_color: "",
-                item_bg_color: "",
-                item_bg_hover_color: "",
-                link: "#",
-                target: false,
-                disableLink: false,
-                showContent: false,
-                showBulletIcon: true,
-                linkTarget: false
-            })
-            setAttributes({ repeaterBulletList: cloneIcons })
+    const toggleShowBulletIcon = (value, index) => {
+        setAttributes({
+            repeaterBulletList: onRepeaterChange(
+                "showBulletIcon",
+                value,
+                index
+            )
+        })
+    }
+
+    const selectIconType = (value, index) => {
+        setAttributes({
+            repeaterBulletList: onRepeaterChange(
+                "image_icon",
+                value,
+                index
+            )
+        })
+    }
+
+    const changeIcons = (value, index) => {
+        setAttributes({
+            repeaterBulletList: onRepeaterChange(
+                "icon",
+                value,
+                index
+            )
+        })
+    }
+
+    const selectImage = (value, index) => {
+        setAttributes({
+            repeaterBulletList: onRepeaterChange(
+                "imageURL",
+                value.url,
+                index
+            ),
+            repeaterBulletList: onRepeaterChange(
+                "imageID",
+                value.id,
+                index
+            )
+        })
+    }
+
+    const removeImage = (index) => {
+        setAttributes({
+            repeaterBulletList: onRepeaterChange(
+                "imageURL",
+                '',
+                index
+            ),
+            repeaterBulletList: onRepeaterChange(
+                "imageID",
+                '',
+                index
+            ),
+        })
+    }
+
+    const toggleIconLink = (value, index) => {
+        setAttributes({
+            repeaterBulletList: onRepeaterChange(
+                "disableLink",
+                value,
+                index
+            )
+        })
+    }
+
+    const saveLink = (value, index) => {
+        setAttributes({
+            repeaterBulletList: onRepeaterChange(
+                "link",
+                value,
+                index
+            )
+        })
+    }
+
+    const openLink = (value, index) => {
+        setAttributes({
+            repeaterBulletList: onRepeaterChange(
+                "linkTarget",
+                value,
+                index
+            )
+        })
+    }
+
+    const onSortEndSingle = ({
+        oldIndex,
+        newIndex
+    }) => {
+        let arrayItem = repeaterBulletList.map((cont) => (
+            cont
+        ))
+        const array = arrayMove(arrayItem, oldIndex, newIndex)
+        setAttributes({
+            repeaterBulletList:
+                array
+        });
+    };
+
+    const shouldCancelStart = (e) => {
+        // Prevent sorting from being triggered if target is input or button
+        if (['button', 'div', 'input', 'i', 'select', 'option'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
+            return true; // Return true to cancel sorting
         }
+    }
 
-        const onRemove = (index, item) => {
-            let array = repeaterBulletList.map((bulletList) => {
-                return bulletList
-            }).filter((f, i) => i != index)
-
-            let active = array.map((arr, index) => {
-                return arr.default
-            }).filter((f, i) => f != false)
-            if (active.length == 0) {
-                // setAttributes({ tabIndex: index })
+    const saveBulletIconStyles = (value) => {
+        const newUpdate = bulletIconStyles.map((item, index) => {
+            if (0 === index) {
+                item = { ...item, ...value };
             }
-            // activeTab(index == 0 ? index : index - 1)
-            setAttributes({
-                repeaterBulletList: array
-            });
-        }
+            return item;
+        });
+        setAttributes({
+            bulletIconStyles: newUpdate,
+        });
+    }
 
-        const onRepeaterChange = (attr, value, index) => {
-            const items = repeaterBulletList;
-            return items.map(function (item, currIndex) {
-                if (index == currIndex) {
-                    item[attr] = value;
-                }
-                return item;
-            });
+    const saveTitleStyles = (value) => {
+        const newUpdate = titleStyles.map((item, indexx) => {
+            if (0 === indexx) {
+                item = { ...item, ...value };
+            }
+            return item;
+        });
+        setAttributes({
+            titleStyles: newUpdate,
+        });
+    }
+
+    const saveGeneralStyles = (value) => {
+        const newUpdate = generalStyles.map((item, indx) => {
+            if (0 === indx) {
+                item = { ...item, ...value };
+            }
+            return item;
+        });
+        setAttributes({
+            generalStyles: newUpdate,
+        });
+    }
+
+    const saveDividerStyles = (value) => {
+        const newUpdate = dividerStyles.map((item, i) => {
+            if (0 === i) {
+                item = { ...item, ...value };
+            }
+            return item;
+        });
+        setAttributes({
+            dividerStyles: newUpdate,
+        });
+    }
+
+    const loadStyles = () => {
+        const styles = {};
+
+        styles[`.${blockId} .premium-bullet-list__content-icon i:hover`] = {
+            'color': `${bulletIconStyles?.[0]?.bulletIconHoverColor}!important`,
+            'background-color': `${bulletIconStyles?.[0]?.bulletIconHoverBackgroundColor}!important`
+        };
+        styles[`.${blockId} .premium-bullet-list__label-wrap .premium-bullet-list__label:hover`] = {
+            'color': `${titleStyles?.[0]?.titleHoverColor}!important`
+        };
+        styles[`.${blockId} .premium-bullet-list__wrapper:hover`] = {
+            'background-color': `${generalStyles?.[0]?.generalHoverBackgroundColor}!important`,
+            'box-shadow': `${hoverBoxShadow?.horizontal}px ${hoverBoxShadow?.vertical}px ${hoverBoxShadow?.blur}px ${hoverBoxShadow?.color} ${hoverBoxShadow?.position}!important`
         };
 
-        const showContent = (index, item) => {
-            return repeaterBulletList.map((item, i) => {
-                if (index == i) {
-                    setAttributes({
-                        repeatertabs: onRepeaterChange(
-                            "showContent",
-                            item.showContent ? false : true,
-                            index
-                        )
-                    })
-                }
-                else {
-                    setAttributes({
-                        repeaterBulletList: onRepeaterChange(
-                            "showContent",
-                            false,
-                            i
-                        )
-                    })
-                }
-            })
-        }
-
-        const changeLabel = (item, index) => {
-            setAttributes({
-                repeaterBulletList: onRepeaterChange(
-                    "label",
-                    item,
-                    index
-                )
-            })
-        }
-
-        const toggleShowBulletIcon = (value, index) => {
-            setAttributes({
-                repeaterBulletList: onRepeaterChange(
-                    "showBulletIcon",
-                    value,
-                    index
-                )
-            })
-        }
-
-        const selectIconType = (value, index) => {
-            setAttributes({
-                repeaterBulletList: onRepeaterChange(
-                    "image_icon",
-                    value,
-                    index
-                )
-            })
-        }
-
-        const changeIcons = (value, index) => {
-            setAttributes({
-                repeaterBulletList: onRepeaterChange(
-                    "icon",
-                    value,
-                    index
-                )
-            })
-        }
-
-        const selectImage = (value, index) => {
-            setAttributes({
-                repeaterBulletList: onRepeaterChange(
-                    "imageURL",
-                    value.url,
-                    index
-                ),
-                repeaterBulletList: onRepeaterChange(
-                    "imageID",
-                    value.id,
-                    index
-                )
-            })
-        }
-
-        const removeImage = (index) => {
-            setAttributes({
-                repeaterBulletList: onRepeaterChange(
-                    "imageURL",
-                    '',
-                    index
-                ),
-                repeaterBulletList: onRepeaterChange(
-                    "imageID",
-                    '',
-                    index
-                ),
-            })
-        }
-
-        const toggleIconLink = (value, index) => {
-            setAttributes({
-                repeaterBulletList: onRepeaterChange(
-                    "disableLink",
-                    value,
-                    index
-                )
-            })
-        }
-
-        const saveLink = (value, index) => {
-            setAttributes({
-                repeaterBulletList: onRepeaterChange(
-                    "link",
-                    value,
-                    index
-                )
-            })
-        }
-
-        const openLink = (value, index) => {
-            setAttributes({
-                repeaterBulletList: onRepeaterChange(
-                    "linkTarget",
-                    value,
-                    index
-                )
-            })
-        }
-
-        const onSortEndSingle = ({
-            oldIndex,
-            newIndex
-        }) => {
-            let arrayItem = repeaterBulletList.map((cont) => (
-                cont
-            ))
-            const array = arrayMove(arrayItem, oldIndex, newIndex)
-            setAttributes({
-                repeaterBulletList:
-                    array
-            });
+        styles[`.${blockId} .premium-bullet-list-divider-block:not(:last-child)::after`] = {
+            'border-top-width': `${DividerHeight}${dividerHeight?.unit}`,
+            'border-top-style': dividerStyle,
+            'border-top-color': dividerStyles?.[0]?.dividerColor,
+            'width': `${DividerWidth}${dividerWidth?.unit}`,
         };
 
-        const shouldCancelStart = (e) => {
-            // Prevent sorting from being triggered if target is input or button
-            if (['button', 'div', 'input', 'i', 'select', 'option'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
-                return true; // Return true to cancel sorting
-            }
-        }
+        styles[`.${blockId} .premium-bullet-list-divider-inline:not(:last-child)::after`] = {
+            'border-left-width': `${DividerWidth}${dividerWidth?.unit}`,
+            'border-left-style': dividerStyle,
+            'border-left-color': dividerStyles?.[0]?.dividerColor,
+            'height': `${DividerHeight}${dividerHeight?.unit}`
+        };
 
-        const saveBulletIconStyles = (value) => {
-            const newUpdate = bulletIconStyles.map((item, index) => {
-                if (0 === index) {
-                    item = { ...item, ...value };
-                }
-                return item;
-            });
-            setAttributes({
-                bulletIconStyles: newUpdate,
-            });
-        }
+        return generateCss(styles);
+    }
 
-        const saveTitleStyles = (value) => {
-            const newUpdate = titleStyles.map((item, indexx) => {
-                if (0 === indexx) {
-                    item = { ...item, ...value };
-                }
-                return item;
-            });
-            setAttributes({
-                titleStyles: newUpdate,
-            });
-        }
-
-        const saveGeneralStyles = (value) => {
-            const newUpdate = generalStyles.map((item, indx) => {
-                if (0 === indx) {
-                    item = { ...item, ...value };
-                }
-                return item;
-            });
-            setAttributes({
-                generalStyles: newUpdate,
-            });
-        }
-
-        const saveDividerStyles = (value) => {
-            const newUpdate = dividerStyles.map((item, i) => {
-                if (0 === i) {
-                    item = { ...item, ...value };
-                }
-                return item;
-            });
-            setAttributes({
-                dividerStyles: newUpdate,
-            });
-        }
-
-        const loadStyles = () => {
-            const styles = {};
-
-            styles[`.${blockId} .premium-bullet-list__content-icon i:hover`] = {
-                'color': `${bulletIconStyles?.[0]?.bulletIconHoverColor}!important`,
-                'background-color': `${bulletIconStyles?.[0]?.bulletIconHoverBackgroundColor}!important`
-            };
-            styles[`.${blockId} .premium-bullet-list__label-wrap .premium-bullet-list__label:hover`] = {
-                'color': `${titleStyles?.[0]?.titleHoverColor}!important`
-            };
-            styles[`.${blockId} .premium-bullet-list__wrapper:hover`] = {
-                'background-color': `${generalStyles?.[0]?.generalHoverBackgroundColor}!important`,
-                'box-shadow': `${hoverBoxShadow?.horizontal}px ${hoverBoxShadow?.vertical}px ${hoverBoxShadow?.blur}px ${hoverBoxShadow?.color} ${hoverBoxShadow?.position}!important`
-            };
-
-            styles[`.${blockId} .premium-bullet-list-divider-block:not(:last-child)::after`] = {
-                'border-top-width': `${DividerHeight}${dividerHeight?.unit}`,
-                'border-top-style': dividerStyle,
-                'border-top-color': dividerStyles?.[0]?.dividerColor,
-                'width': `${DividerWidth}${dividerWidth?.unit}`,
-            };
-
-            styles[`.${blockId} .premium-bullet-list-divider-inline:not(:last-child)::after`] = {
-                'border-left-width': `${DividerWidth}${dividerWidth?.unit}`,
-                'border-left-style': dividerStyle,
-                'border-left-color': dividerStyles?.[0]?.dividerColor,
-                'height': `${DividerHeight}${dividerHeight?.unit}`
-            };
-
-            return generateCss(styles);
-        }
-
-        return [
-            isSelected && (
+        return (
+            <Fragment>
                 <InspectorControls>
                     <InspectorTabs tabs={['layout', 'style', 'advance']}>
                         <InspectorTab key={'layout'}>
@@ -699,7 +695,6 @@ class Edit extends Component {
                                     label={__("Align", "premium-blocks-for-gutenberg")}
                                     showIcons={true} 
                                     />
-
                                 <div>
                                     {iconPosition !== 'top' ? <MultiButtonsControl
                                         choices={[
@@ -969,13 +964,19 @@ class Edit extends Component {
                         </InspectorTab>
                     </InspectorTabs>
                 </InspectorControls >
-            ),
-            <div className={classnames(className, blockId, {
-                " premium-desktop-hidden": hideDesktop,
-                " premium-tablet-hidden": hideTablet,
-                " premium-mobile-hidden": hideMobile,
-            })}
-                style={{ textAlign: align?.[this.props.deviceType] }}>
+            <div 
+                {...useBlockProps({
+                    className: classnames(
+                        className,
+                        `${blockId}`,
+                        {
+                            " premium-desktop-hidden": hideDesktop,
+                            " premium-tablet-hidden": hideTablet,
+                            " premium-mobile-hidden": hideMobile,
+                        }
+                    ),
+                })}
+                style={{ textAlign: align?.[props.deviceType] }}>
                 <style>{loadStyles()}</style>
                 <ul className={`premium-bullet-list-${layoutPos} premium-bullet-list`}
                     style={{
@@ -1095,9 +1096,8 @@ class Edit extends Component {
                 </ul>
                 {loadTitleGoogleFonts}
             </div>
-
-        ]
-    }
+            </Fragment>
+    );
 }
 
 export default withSelect((select) => {

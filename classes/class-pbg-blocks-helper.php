@@ -5035,12 +5035,21 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding', $css->render_spacing( $bullet_icon_padding['Desktop'], $bullet_icon_padding['unit'] ) );
 		}
 
+		if ( isset( $attr['bulletAlign'] ) ) {
+			$align      = $css->get_responsive_css( $attr['bulletAlign'], 'Desktop' );
+			$flex_align = 'flex-start' === $align ? 'top' : 'middle';
+			$flex_align =  $align === 'flex-end' ? 'bottom' : $flex_align;
+
+			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, ' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img, ' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, ' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'vertical-align', $flex_align );		
+		}
+
 		if ( isset( $attr['bulletIconBorder'] ) ) {
 			$bullet_icon_border        = $attr['bulletIconBorder'];
 			$bullet_icon_border_width  = $bullet_icon_border['borderWidth'];
 			$bullet_icon_border_radius = $bullet_icon_border['borderRadius'];
 
-			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, ' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, ' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img, ' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, ' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
 			$css->add_property( 'border-width', $css->render_spacing( $bullet_icon_border_width['Desktop'], 'px' ) );
 			$css->add_property( 'border-radius', $css->render_spacing( $bullet_icon_border_radius['Desktop'], 'px' ) );
 		}
@@ -5173,12 +5182,21 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding', $css->render_spacing( $bullet_icon_padding['Tablet'], $bullet_icon_padding['unit'] ) );
 		}
 
+		if ( isset( $attr['bulletAlign'] ) ) {
+			$align      = $css->get_responsive_css( $attr['bulletAlign'], 'Tablet' );
+			$flex_align = 'flex-start' === $align ? 'top' : 'middle';
+			$flex_align =  $align === 'flex-end' ? 'bottom' : $flex_align;
+
+			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, ' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img, ' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, ' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'vertical-align', $flex_align );		
+		}
+
 		if ( isset( $attr['bulletIconBorder'] ) ) {
 			$bullet_icon_border        = $attr['bulletIconBorder'];
 			$bullet_icon_border_width  = $bullet_icon_border['borderWidth'];
 			$bullet_icon_border_radius = $bullet_icon_border['borderRadius'];
 
-			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, ' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, ' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img, ' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, ' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
 			$css->add_property( 'border-width', $css->render_spacing( $bullet_icon_border_width['Tablet'], 'px' ) );
 			$css->add_property( 'border-radius', $css->render_spacing( $bullet_icon_border_radius['Tablet'], 'px' ) );
 		}
@@ -5315,12 +5333,21 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding', $css->render_spacing( $bullet_icon_padding['Mobile'], $bullet_icon_padding['unit'] ) );
 		}
 
+		if ( isset( $attr['bulletAlign'] ) ) {
+			$align      = $css->get_responsive_css( $attr['bulletAlign'], 'Mobile' );
+			$flex_align = 'flex-start' === $align ? 'top' : 'middle';
+			$flex_align =  $align === 'flex-end' ? 'bottom' : $flex_align;
+
+			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, ' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img, ' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, ' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->add_property( 'vertical-align', $flex_align );		
+		}
+
 		if ( isset( $attr['bulletIconBorder'] ) ) {
 			$bullet_icon_border        = $attr['bulletIconBorder'];
 			$bullet_icon_border_width  = $bullet_icon_border['borderWidth'];
 			$bullet_icon_border_radius = $bullet_icon_border['borderRadius'];
 
-			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, ' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
+			$css->set_selector( $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, ' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img, ' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > i, ' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > img' );
 			$css->add_property( 'border-width', $css->render_spacing( $bullet_icon_border_width['Mobile'], 'px' ) );
 			$css->add_property( 'border-radius', $css->render_spacing( $bullet_icon_border_radius['Mobile'], 'px' ) );
 		}
