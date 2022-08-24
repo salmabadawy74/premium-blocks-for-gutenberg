@@ -12,12 +12,14 @@ import './style.scss';
 import json from './block.json';
 import edit from './edit';
 
-const { name } = json;
+registerBlockType('premium/breadcrumbs', {
+    ...json,
+    title: __("breadcrumbs", "premium-blocks-for-gutenberg"),
+    category: "premium-blocks",
 
-registerBlockType(name, {
     /**
-     * @see ./edit.js
-     */
+    * @see ./edit.js
+    */
     edit,
 });
 

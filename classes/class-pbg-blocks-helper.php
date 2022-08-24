@@ -82,7 +82,7 @@ class PBG_Blocks_Helper {
 	 */
 	public function __construct() {
 		 // Gets Active Blocks.
-		self::$blocks = PBG_Admin::get_enabled_keys();
+		self::$blocks = apply_filters( 'pb_options', get_option( 'pb_options', array() ) );
 		// Gets Plugin Admin Settings.
 		self::$config = PBG_Settings::get_enabled_keys();
 		$allow_json   = isset( self::$config['premium-upload-json'] ) ? self::$config['premium-upload-json'] : true;
@@ -338,6 +338,24 @@ class PBG_Blocks_Helper {
 		if ( ! function_exists( 'register_block_type' ) ) {
 			return;
 		}
+        foreach ( self::$blocks as $slug => $value ) {
+
+            if ( false === $value ) {
+                continue;
+            }
+            if($slug === 'breadcrumbs'){
+             require_once  PREMIUM_BLOCKS_PATH .'blocks-config/breadcrumbs.php' ;
+register_block_pbg_breadcrumbs(); 
+            }
+         	// register_block_type(
+			// 'premium/'.$slug,
+			// array(
+			// 	'render_callback' => array( $this, 'get_countup_css' ),
+			// 	'editor_style'    => 'premium-blocks-editor-css',
+			// 	'editor_script'   => 'pbg-blocks-js',
+			// )
+		// );
+        }
 
 		register_block_type(
 			'premium/accordion',
@@ -354,15 +372,14 @@ class PBG_Blocks_Helper {
 
 			)
 		);
-
-		register_block_type(
-			'premium/banner',
-			array(
-				'render_callback' => array( $this, 'get_banner_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
-				'editor_script'   => 'pbg-blocks-js',
-			)
-		);
+		// register_block_type(
+		// 	'premium/banner',
+		// 	array(
+		// 		'render_callback' => array( $this, 'get_banner_css' ),
+		// 		'editor_style'    => 'premium-blocks-editor-css',
+		// 		'editor_script'   => 'pbg-blocks-js',
+		// 	)
+		// );
 
 		register_block_type(
 			'premium/button',

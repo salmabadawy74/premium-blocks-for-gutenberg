@@ -5,7 +5,7 @@
  * @package WordPress
  */
 
-require_once PREMIUM_BLOCKS_PATH . 'src/blocks/breadcrumbs/class-pbg-breadcrumb-trail.php';
+require_once PREMIUM_BLOCKS_PATH . 'blocks-config/class-pbg-breadcrumb-trail.php';
 
 function get_breadcrumbs_css( $attributes, $unique_id ) {
 	$block_helpers          = pbg_blocks_helper();
@@ -26,6 +26,7 @@ function get_breadcrumbs_css( $attributes, $unique_id ) {
 		$css->add_property( 'text-decoration', $css->render_color( $typography['textDecoration'] ) );
 		$css->render_typography( $typography, 'Desktop' );
 	}
+
 	if ( isset( $attributes['colors'] ) ) {
 		$color = $attributes['colors'];
 		$css->set_selector( '.' . $unique_id . ' > .premium-breadcrumb-trail' );
@@ -40,6 +41,7 @@ function get_breadcrumbs_css( $attributes, $unique_id ) {
 		$css->set_selector( '.' . $unique_id . '.premium-breadcrumbs-advanced .premium-breadcrumb-trail li' );
 		$css->add_property( '--separator-color', $css->render_color( $color['separator'] ) );
 	}
+
 	if ( isset( $attributes['spacing'] ) ) {
 		$spacing = $attributes['spacing'];
 		if ( $spacing['padding'] ) {
@@ -61,11 +63,13 @@ function get_breadcrumbs_css( $attributes, $unique_id ) {
 	}
 
 	$css->start_media_query( $media_query['tablet'] );
+
 	if ( isset( $attributes['typography'] ) ) {
 		$typography = $attributes['typography'];
 		$css->set_selector( '.' . $unique_id . ' > .premium-breadcrumb-trail, .' . $unique_id . ' > .premium-breadcrumb-trail a, .' . $unique_id . ' > .premium-breadcrumb-trail span' );
 		$css->render_typography( $typography, 'Tablet' );
 	}
+
 	if ( isset( $attributes['spacing'] ) ) {
 		if ( $spacing['padding'] ) {
 			$padding = $spacing['padding'];
@@ -85,13 +89,17 @@ function get_breadcrumbs_css( $attributes, $unique_id ) {
 			$css->add_property( 'padding', $css->render_spacing( $item_padding['Tablet'], $item_padding['unit'] ) );
 		}
 	}
+
 	$css->stop_media_query();
+
 	$css->start_media_query( $media_query['mobile'] );
+
 	if ( isset( $attributes['typography'] ) ) {
 		$typography = $attributes['typography'];
 		$css->set_selector( '.' . $unique_id . ' > .premium-breadcrumb-trail, .' . $unique_id . ' > .premium-breadcrumb-trail a, .' . $unique_id . ' > .premium-breadcrumb-trail span' );
 		$css->render_typography( $typography, 'Mobile' );
 	}
+
 	if ( isset( $attributes['spacing'] ) ) {
 		if ( $spacing['padding'] ) {
 			$padding = $spacing['padding'];
@@ -111,6 +119,7 @@ function get_breadcrumbs_css( $attributes, $unique_id ) {
 			$css->add_property( 'padding', $css->render_spacing( $item_padding['Mobile'], $item_padding['unit'] ) );
 		}
 	}
+
 	$css->stop_media_query();
 
 	return $css->css_output();
@@ -124,6 +133,7 @@ function get_breadcrumbs_css( $attributes, $unique_id ) {
  * @return string The render.
  */
 function render_block_pbg_breadcrumbs( $attributes ) {
+    var_dump( $attributes);
 	$unique_id = rand( 100, 10000 );
 	$id        = 'premium-breadcrumbs-' . esc_attr( $unique_id );
 
@@ -171,11 +181,14 @@ function render_block_pbg_breadcrumbs( $attributes ) {
  * Registers the `pbg/breadcrumbs` block on the server.
  */
 function register_block_pbg_breadcrumbs() {
-	register_block_type_from_metadata(
-		PREMIUM_BLOCKS_PATH . 'src/blocks/breadcrumbs',
-		array(
-			'render_callback' => 'render_block_pbg_breadcrumbs',
-		)
-	);
+        if ( ! function_exists( 'register_block_type' ) ) {
+			return;
+        }
+	    register_block_type(
+			'premium/breadcrumbs',
+			array(
+			'render_callback' => 'render_block_pbg_breadcrumbs',	
+			)
+		);
 }
 add_action( 'init', 'register_block_pbg_breadcrumbs' );

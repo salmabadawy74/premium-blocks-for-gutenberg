@@ -728,7 +728,7 @@ export class edit extends Component {
                         <div
                             className="premium-banner__bg-overlay"
                             style={{
-                                backgroundColor: `${background}`,
+                                backgroundColor: `${background ? background : ''} `,
                             }}
                         ></div>
                         <div

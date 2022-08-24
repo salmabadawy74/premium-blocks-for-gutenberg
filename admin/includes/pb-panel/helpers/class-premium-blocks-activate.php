@@ -29,6 +29,7 @@ final class Premium_Blocks_Activate {
 
 		$enabled_block = apply_filters( 'pb_options', get_option( 'pb_options', array() ) );
 
+
 		if ( is_array( $enabled_block ) && 0 < count( $enabled_block ) ) {
 
 			foreach ( $enabled_block as $slug => $value ) {

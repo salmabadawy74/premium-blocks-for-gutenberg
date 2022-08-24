@@ -36,6 +36,5 @@
     "supports": {
         "anchor": true
     },
-    "usesContext": ["direction", "arrowStyles", "titleTag", "contentType"],
-    "editorScript": "file:./build/index.js"
+    "usesContext": ["direction", "arrowStyles", "titleTag", "contentType"]
 }
