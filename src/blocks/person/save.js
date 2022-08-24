@@ -4,9 +4,7 @@ import Social from "../../components/social-media";
 import { filterJsCss, generateCss } from '../../components/HelperFunction'
 const { __ } = wp.i18n;
 
-const {
-    RichText
-} = wp.editor;
+const { RichText, useBlockProps } = wp.blockEditor;
 
 const save = props => {
 
@@ -279,11 +277,16 @@ const save = props => {
 
     return (
         <div
-            className={classnames(className,
-                "premium-person", `${blockId} premium-person__${effect} premium-person__${effectDir}`, {
-                ' premium-desktop-hidden': hideDesktop,
-                ' premium-tablet-hidden': hideTablet,
-                ' premium-mobile-hidden': hideMobile,
+            {...useBlockProps.save({
+                className: classnames(
+                    className,
+                    `premium-person ${blockId} premium-person__${effect} premium-person__${effectDir}`,
+                    {
+                        " premium-desktop-hidden": hideDesktop,
+                        " premium-tablet-hidden": hideTablet,
+                        " premium-mobile-hidden": hideMobile,
+                    }
+                ),
             })}
         >
             <style

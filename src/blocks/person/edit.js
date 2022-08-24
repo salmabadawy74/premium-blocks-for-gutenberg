@@ -24,14 +24,11 @@ import times from "lodash/times";
 import WebfontLoader from "../../components/typography/fontLoader";
 import { borderCss, paddingCss, marginCss, typographyCss, generateBlockId, generateCss } from "../../components/HelperFunction";
 
-const { withSelect } = wp.data;
-
 const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-
+const { withSelect } = wp.data;
+const { useEffect, Fragment } = wp.element;
 const { PanelBody, SelectControl, ToggleControl, TextControl } = wp.components;
-
-const { InspectorControls, RichText } = wp.editor;
+const { InspectorControls, RichText, useBlockProps } = wp.blockEditor;
 
 const SortableItem = SortableElement(
     ({ onRemove, changeLinkValue, value, addLink, personIndex, newIndex }) => (
@@ -93,14 +90,12 @@ const SortableList = SortableContainer(
     }
 );
 
-class Edit extends Component {
-    constructor() {
-        super(...arguments);
-    }
+function Edit(props) {
+    const { setAttributes, className, clientId } = props;
 
-    componentDidMount() {
-        if (!this.props.attributes.classMigrate) {
-            this.props.setAttributes({
+    useEffect(() => {
+        if (!props.attributes.classMigrate) {
+            setAttributes({
                 multiPersonContent: [
                     {
                         id: 1,
@@ -120,44 +115,11 @@ class Edit extends Component {
                 ],
             });
         }
-        // Assigning id in the attribute.
-        this.props.setAttributes({
-            blockId: "premium-person-" + generateBlockId(this.props.clientId)
-        });
-        this.props.setAttributes({ classMigrate: true });
-    }
-
-    save(value, index) {
-        const { attributes, setAttributes } = this.props;
-        const { multiPersonContent } = attributes;
-
-        let array = [];
-
-        const newItems = multiPersonContent.map((item, thisIndex) => {
-            if (index === thisIndex) {
-                item = { ...item, ...value };
-            }
-            if (item.socialIcon) {
-                array.push(true);
-            }
-            if (array.length != 0) {
-                setAttributes({
-                    socialIcon: true,
-                });
-            } else {
-                setAttributes({
-                    socialIcon: false,
-                });
-            }
-            return item;
-        });
         setAttributes({
-            multiPersonContent: newItems,
+            blockId: "premium-person-" + generateBlockId(clientId)
         });
-    }
-
-    render() {
-        const { isSelected, setAttributes, className } = this.props;
+        setAttributes({ classMigrate: true });
+    }, []);
 
         const {
             blockId,
@@ -204,7 +166,7 @@ class Edit extends Component {
             descColor,
             imageFilter,
             imageBorder
-        } = this.props.attributes;
+        } = props.attributes;
 
         const HOVER = [
             {
@@ -373,12 +335,6 @@ class Edit extends Component {
             },
         ];
 
-        const mainClasses = classnames(className, "premium-person", {
-            ' premium-desktop-hidden': hideDesktop,
-            ' premium-tablet-hidden': hideTablet,
-            ' premium-mobile-hidden': hideMobile,
-        });
-
         let loadTitleGoogleFonts;
         let loadNameGoogleFonts;
         let loadDescriptionGoogleFonts;
@@ -386,8 +342,8 @@ class Edit extends Component {
         if (nameTypography.fontFamily !== "Default") {
             const gconfig = {
                 google: {
-                    families: [nameTypography?.fontFamily],
-                },
+                    families: [nameTypography?.fontFamily]
+                }
             };
             loadNameGoogleFonts = (
                 <WebfontLoader config={gconfig}></WebfontLoader>
@@ -397,8 +353,8 @@ class Edit extends Component {
         if (titleTypography.fontFamily !== "Default") {
             const gconfig = {
                 google: {
-                    families: [titleTypography?.fontFamily],
-                },
+                    families: [titleTypography?.fontFamily]
+                }
             };
             loadTitleGoogleFonts = (
                 <WebfontLoader config={gconfig}></WebfontLoader>
@@ -408,8 +364,8 @@ class Edit extends Component {
         if (descTypography.fontFamily !== "Default") {
             const gconfig = {
                 google: {
-                    families: [descTypography?.fontFamily],
-                },
+                    families: [descTypography?.fontFamily]
+                }
             };
             loadDescriptionGoogleFonts = (
                 <WebfontLoader config={gconfig}></WebfontLoader>
@@ -427,31 +383,59 @@ class Edit extends Component {
                 'transition': `all .2s ease-in-out !important`,
             };
             styles[` .${blockId} .premium-person__img_wrap `] = {
-                'height': `${imgHeight[this.props.deviceType]}${imgHeight.unit} !important`,
-                'width': `${imgWidth[this.props.deviceType]}${imgWidth.unit} !important`,
+                'height': `${imgHeight[props.deviceType]}${imgHeight.unit} !important`,
+                'width': `${imgWidth[props.deviceType]}${imgWidth.unit} !important`,
 
             };
 
             styles[` .${blockId} .premium-person__img_wrap img`] = {
                 "border-style": `${imageBorder?.borderType}`,
                 "border-color": `${imageBorder?.borderColor}`,
-                "border-top-width": `${imageBorder?.borderWidth?.[this.props.deviceType]?.top}px!important`,
-                "border-right-width": `${imageBorder?.borderWidth?.[this.props.deviceType]?.right}px!important`,
-                "border-bottom-width": `${imageBorder?.borderWidth?.[this.props.deviceType]?.bottom}px!important`,
-                "border-left-width": `${imageBorder?.borderWidth?.[this.props.deviceType]?.left}px!important`,
-                "border-top-left-radius": `${imageBorder?.borderRadius?.[this.props.deviceType]?.top}px!important`,
-                "border-top-right-radius": `${imageBorder?.borderRadius?.[this.props.deviceType]?.right}px!important`,
-                "border-bottom-left-radius": `${imageBorder?.borderRadius?.[this.props.deviceType]?.bottom}px!important`,
-                "border-bottom-right-radius": `${imageBorder?.borderRadius?.[this.props.deviceType]?.left}px!important`,
+                "border-top-width": `${imageBorder?.borderWidth?.[props.deviceType]?.top}px!important`,
+                "border-right-width": `${imageBorder?.borderWidth?.[props.deviceType]?.right}px!important`,
+                "border-bottom-width": `${imageBorder?.borderWidth?.[props.deviceType]?.bottom}px!important`,
+                "border-left-width": `${imageBorder?.borderWidth?.[props.deviceType]?.left}px!important`,
+                "border-top-left-radius": `${imageBorder?.borderRadius?.[props.deviceType]?.top}px!important`,
+                "border-top-right-radius": `${imageBorder?.borderRadius?.[props.deviceType]?.right}px!important`,
+                "border-bottom-left-radius": `${imageBorder?.borderRadius?.[props.deviceType]?.bottom}px!important`,
+                "border-bottom-right-radius": `${imageBorder?.borderRadius?.[props.deviceType]?.left}px!important`,
                 'filter': `brightness( ${imageFilter.bright}% ) contrast( ${imageFilter.contrast}% ) saturate( ${imageFilter.saturation}% ) blur( ${imageFilter.blur}px ) hue-rotate( ${imageFilter.hue}deg ) !important`
             };
             styles[` .${blockId} .premium-social-media-icon`] = {
                 'fill': `${socialIconStyles[0].socialIconColor} !important`,
-                'height': `${socialIconSize[this.props.deviceType]}${socialIconSize.unit} !important`,
-                'width': `${socialIconSize[this.props.deviceType]}${socialIconSize.unit} !important`,
+                'height': `${socialIconSize[props.deviceType]}${socialIconSize.unit} !important`,
+                'width': `${socialIconSize[props.deviceType]}${socialIconSize.unit} !important`,
             };
 
             return generateCss(styles);
+        }
+
+        const save = (value, index) => {
+
+            let array = [];
+    
+            const newItems = multiPersonContent.map((item, thisIndex) => {
+                if (index === thisIndex) {
+                    item = { ...item, ...value };
+                }
+                if (item.socialIcon) {
+                    array.push(true);
+                }
+                if (array.length != 0) {
+                    setAttributes({
+                        socialIcon: true,
+                    });
+                } else {
+                    setAttributes({
+                        socialIcon: false,
+                    });
+                }
+                return item;
+            });
+            console.log(newItems)
+            setAttributes({
+                multiPersonContent: newItems,
+            });
         }
 
         const shouldCancelStart = (e) => {
@@ -528,12 +512,12 @@ class Edit extends Component {
                                 className={`premium-person__socialIcon__link_content ${socialIconStyles[0].defaultIconColor ? value.label : ""}`}
                                 href={`${value.value}`}
                                 style={{
-                                    ...borderCss(socialIconBorder, this.props.deviceType),
-                                    ...paddingCss(socialIconPadding, this.props.deviceType),
-                                    ...marginCss(socialIconMargin, this.props.deviceType),
+                                    ...borderCss(socialIconBorder, props.deviceType),
+                                    ...paddingCss(socialIconPadding, props.deviceType),
+                                    ...marginCss(socialIconMargin, props.deviceType),
                                     background: socialIconStyles[0].socialIconBackgroundColor,
                                     color: socialIconStyles[0].socialIconColor,
-                                    fontSize: (socialIconSize[this.props.deviceType] || 20) + socialIconSize.unit
+                                    fontSize: (socialIconSize[props.deviceType] || 20) + socialIconSize.unit
                                 }}
                             >
                                 {(iconsList || []).map((list) => {
@@ -584,7 +568,7 @@ class Edit extends Component {
                             <div
                                 className={`premium-person__info`}
                                 style={{
-                                    ...paddingCss(contentPadding, this.props.deviceType),
+                                    ...paddingCss(contentPadding, props.deviceType),
                                     background: contentColor ? contentColor : "#f2f2f2",
                                     bottom: effectPersonStyle === "effect1" ? bottomInfo + "px" : ""
                                 }}
@@ -594,11 +578,11 @@ class Edit extends Component {
                                         tagName={nameTag.toLowerCase()}
                                         className={`premium-person__name`}
                                         value={value.name}
-                                        onChange={(name) => { this.save({ name: name }, index); }}
+                                        onChange={(name) => { save({ name: name }, index); }}
                                         style={{
-                                            ...paddingCss(namePadding, this.props.deviceType),
+                                            ...paddingCss(namePadding, props.deviceType),
                                             color: nameColor,
-                                            ...typographyCss(nameTypography, this.props.deviceType),
+                                            ...typographyCss(nameTypography, props.deviceType),
                                             alignSelf: nameV,
                                             textShadow: `${nameShadow.horizontal}px ${nameShadow.vertical}px ${nameShadow.blur}px ${nameShadow.color}`,
                                         }}
@@ -610,11 +594,11 @@ class Edit extends Component {
                                         tagName={titleTag.toLowerCase()}
                                         className={`premium-person__title`}
                                         value={value.title}
-                                        onChange={(title) => { this.save({ title: title }, index) }}
+                                        onChange={(title) => { save({ title: title }, index) }}
                                         style={{
-                                            ...marginCss(titleMargin, this.props.deviceType),
-                                            ...paddingCss(titlePadding, this.props.deviceType),
-                                            ...typographyCss(titleTypography, this.props.deviceType),
+                                            ...marginCss(titleMargin, props.deviceType),
+                                            ...paddingCss(titlePadding, props.deviceType),
+                                            ...typographyCss(titleTypography, props.deviceType),
                                             color: titleColor,
                                             alignSelf: titleV,
                                             textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`,
@@ -627,10 +611,10 @@ class Edit extends Component {
                                         tagName="span"
                                         className={`premium-person__desc`}
                                         value={value.desc}
-                                        onChange={(desc) => { this.save({ desc: desc }, index) }}
+                                        onChange={(desc) => { save({ desc: desc }, index) }}
                                         style={{
-                                            ...paddingCss(descPadding, this.props.deviceType),
-                                            ...typographyCss(descTypography, this.props.deviceType),
+                                            ...paddingCss(descPadding, props.deviceType),
+                                            ...typographyCss(descTypography, props.deviceType),
                                             color: descColor,
                                             alignSelf: descV,
                                             textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`,
@@ -749,18 +733,18 @@ class Edit extends Component {
                         imageID={multiPersonContent[index].personImgId}
                         imageURL={multiPersonContent[index].personImgUrl}
                         onSelectMedia={(media) => {
-                            this.save({ personImgUrl: media.url }, index);
-                            this.save({ personImgId: media.id }, index);
+                            save({ personImgId: media.id }, index);
+                            save({ personImgUrl: media.url }, index);
                         }}
                         onRemoveImage={() => {
-                            this.save({ personImgId: "" }, index);
-                            this.save({ personImgUrl: "" }, index);
+                            save({ personImgId: "" }, index);
+                            save({ personImgUrl: "" }, index);
                         }}
                     />
                     <ToggleControl
                         label={__("Enable Social Icons", "premium-block-for-gutenberg")}
                         checked={multiPersonContent[index].socialIcon}
-                        onChange={(value) => { this.save({ socialIcon: value }, index) }}
+                        onChange={(value) => { save({ socialIcon: value }, index) }}
                     />
                     {multiPersonContent[index].socialIcon && (
                         <div className="premium-repeater-rows">
@@ -793,8 +777,8 @@ class Edit extends Component {
             );
         };
 
-        return [
-            isSelected && (
+        return (
+            <Fragment>
                 <InspectorControls key={"inspector"}>
                     <InspectorTabs tabs={["layout", "style", "advance"]}>
                         <InspectorTab key={"layout"}>
@@ -1008,19 +992,7 @@ class Edit extends Component {
                                     value={hoverEffectPerson}
                                     onChange={(newEffect) => setAttributes({ hoverEffectPerson: newEffect })}
                                 />
-                                {/* <ResponsiveRangeControl
-                                    label={__("Custom Image Height", "premium-blocks-for-gutenberg")}
-                                    value={imageBorder}
-                                    onChange={(value) => setAttributes({ imageBorder: value })}
-                                    min={1}
-                                    max={100}
-                                    step={1}
-                                    showUnit={true}
-                                    units={["px", "em", "%"]}
-                                    defaultValue={0}
-                                /> */}
                                 <PremiumBorder
-
                                     value={imageBorder}
                                     onChange={(value) => setAttributes({ imageBorder: value })}
                                 />
@@ -1162,10 +1134,19 @@ class Edit extends Component {
                         </InspectorTab>
                     </InspectorTabs>
                 </InspectorControls>
-            ),
             <div
-                className={`${mainClasses} ${blockId} premium-person__${effect} premium-person__${effectDir}`}
-                style={{ textAlign: align[this.props.deviceType] }}
+                {...useBlockProps({
+                    className: classnames(
+                        className,
+                        `premium-person ${blockId} premium-person__${effect} premium-person__${effectDir}`,
+                        {
+                            " premium-desktop-hidden": hideDesktop,
+                            " premium-tablet-hidden": hideTablet,
+                            " premium-mobile-hidden": hideMobile,
+                        }
+                    ),
+                })}
+                style={{ textAlign: align[props.deviceType] }}
             >
                 <style
                     dangerouslySetInnerHTML={{
@@ -1176,10 +1157,11 @@ class Edit extends Component {
                 {loadNameGoogleFonts}
                 {loadTitleGoogleFonts}
                 {loadDescriptionGoogleFonts}
-            </div>,
-        ];
-    }
+            </div>
+            </Fragment>
+    );
 }
+
 export default withSelect((select) => {
     const { __experimentalGetPreviewDeviceType = null } =
         select("core/edit-post");
