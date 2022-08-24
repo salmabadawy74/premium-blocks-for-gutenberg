@@ -1,5 +1,6 @@
 import classnames from "classnames"
 import { filterJsCss, generateCss } from '../../components/HelperFunction';
+import { useBlockProps } from "@wordpress/block-editor";
 
 export default function save(props) {
     const { attributes, className } = props
@@ -30,12 +31,6 @@ export default function save(props) {
         fancyTextShadow
     } = attributes;
 
-    const mainClasses = classnames(className, {
-        ' premium-desktop-hidden': hideDesktop,
-        ' premium-tablet-hidden': hideTablet,
-        ' premium-mobile-hidden': hideMobile,
-    });
-
     const loadStyles = () => {
         const styles = {};
         styles[` .${blockId} .premium-fancy-text-title`] = {
@@ -54,7 +49,17 @@ export default function save(props) {
 
     return (
         <div
-            className={`${mainClasses} ${blockId}`}
+            {...useBlockProps.save({
+                className: classnames(
+                    className,
+                    `${blockId}`,
+                    {
+                        " premium-desktop-hidden": hideDesktop,
+                        " premium-tablet-hidden": hideTablet,
+                        " premium-mobile-hidden": hideMobile,
+                    }
+                ),
+            })}
         >
             <style
                 dangerouslySetInnerHTML={{
