@@ -1,9 +1,7 @@
 import classnames from "classnames";
 import { generateCss, filterJsCss } from "../../components/HelperFunction";
-const {
-    Fragment
-} = wp.element;
-const { RichText } = wp.blockEditor;
+const { Fragment } = wp.element;
+const { RichText, useBlockProps } = wp.blockEditor;
 export default function save(props) {
 
     const { attributes, className } = props
@@ -177,15 +175,20 @@ export default function save(props) {
         return generateCss(styles);
     };
 
-    const mainClasses = classnames(className, {
-        " premium-desktop-hidden": hideDesktop,
-        " premium-tablet-hidden": hideTablet,
-        " premium-mobile-hidden": hideMobile,
-    });
-
     return (
         <div
-            className={`${blockId} ${mainClasses}`}>
+            {...useBlockProps.save({
+                className: classnames(
+                    className,
+                    `${blockId}`,
+                    {
+                        " premium-desktop-hidden": hideDesktop,
+                        " premium-tablet-hidden": hideTablet,
+                        " premium-mobile-hidden": hideMobile,
+                    }
+                ),
+            })}
+        >
             <style>{loadStyles()}</style>
             <div className={`premium-title   ${backgroundText ? 'premium-title-bg-text' : ""}`} data-backgroundText={BackText}>
                 <div className={`premium-title-container ${style}`} data-blur-delay={titleStyles[0].animateDelay} data-shiny-dur={titleStyles[0].animateduration}>
