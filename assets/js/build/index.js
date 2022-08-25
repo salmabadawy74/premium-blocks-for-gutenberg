@@ -20611,7 +20611,7 @@ const SortableItem = (0,react_sortable_hoc__WEBPACK_IMPORTED_MODULE_7__.Sortable
       removeItem(newIndex, value);
     }
   }, "x")) : ""), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: `premium-repeater-row-controls ${value.edit ? "editable" : ""}`
+    className: `premium-repeater-row-controls premium-repeater-fancy ${value.edit ? "editable" : ""}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
     label: __("Fancy String", 'premium-blocks-for-gutenberg'),
     value: value.title,
@@ -20646,7 +20646,7 @@ function Edit(props) {
     clientId
   } = props;
   const el = React.createRef();
-  console.log(el);
+  const typed = React.useRef(null);
   useEffect(() => {
     setAttributes({
       blockId: "premium-fancy-text-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_14__.generateBlockId)(clientId)
@@ -20656,6 +20656,17 @@ function Edit(props) {
     });
     renderFancyText();
   }, []);
+  useEffect(() => {
+    const {
+      effect
+    } = props.attributes;
+
+    if (effect == "typing") {
+      typed.current.destroy();
+    }
+
+    renderFancyText();
+  }, [props.attributes.effect == "typing", props.attributes.repeaterFancyText]);
 
   const renderFancyText = () => {
     const {
@@ -20685,7 +20696,7 @@ function Edit(props) {
         showCursor: cursorShow,
         cursorChar: cursorMark
       };
-      var typed = new (typed_js__WEBPACK_IMPORTED_MODULE_4___default())(el.current, options);
+      typed.current = new (typed_js__WEBPACK_IMPORTED_MODULE_4___default())(el.current, options);
     }
   }; // componentDidUpdate() {
   //     const { effect } = props.attributes;

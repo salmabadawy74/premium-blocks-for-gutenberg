@@ -2042,12 +2042,6 @@ a.premium-dheading-block__link:hover {
 */
 /**************** Premium Fancy Text *****************/
 /*******************************************************/
-.typed-cursor {
-    opacity: 1;
-    -webkit-animation: blink_cursor 0.7s infinite;
-    animation: blink_cursor 0.7s infinite;
-}
-
 @keyframes blink_cursor {
 
     0%,
@@ -2084,8 +2078,22 @@ a.premium-dheading-block__link:hover {
     }
 }
 
+.typed-cursor {
+    opacity: 1;
+    -webkit-animation: blink_cursor 0.7s infinite;
+    animation: blink_cursor 0.7s infinite;
+}
+
 .premium-fancy-slide {
     display: inline-block;
+}
+
+.premium-fancy-slide .typed-cursor {
+    visibility: hidden;
+}
+
+.premium-fancy-text {
+    text-align: center;
 }
 
 .premium-fancy-text-title-slide {
@@ -2102,10 +2110,6 @@ a.premium-dheading-block__link:hover {
 
 .premium-fancy-text-title-slide-list li {
     line-height: 40px;
-}
-
-.premium-fancy-slide .typed-cursor {
-    visibility: hidden;
 }
 
 /**************** Premium lottie Animation *****************/
