@@ -239,9 +239,17 @@ function Edit(props) {
                                     label={__("Align", "premium-blocks-for-gutenberg")}
                                     showIcons={true} />
                             )}
-                            {flexDir.includes("reverse") && (
+                            {flexDir == 'row-reverse' && (
                                 <MultiButtonsControl
                                     choices={[{ value: 'flex-end', label: __('Left', "premium-blocks-for-gutenberg"), icon: Icons.alignLeft }, { value: 'center', label: __('Center', "premium-blocks-for-gutenberg"), icon: Icons.alignCenter }, { value: 'flex-start', label: __('Right', "premium-blocks-for-gutenberg"), icon: Icons.alignRight }]}
+                                    value={align}
+                                    onChange={(aligns) => setAttributes({ align: aligns, selfAlign: aligns })}
+                                    label={__("Align", "premium-blocks-for-gutenberg")}
+                                    showIcons={true} />
+                            )}
+                            {flexDir == 'column-reverse' && (
+                                <MultiButtonsControl
+                                    choices={[{ value: 'flex-start', label: __('Left', "premium-blocks-for-gutenberg"), icon: Icons.alignLeft }, { value: 'center', label: __('Center', "premium-blocks-for-gutenberg"), icon: Icons.alignCenter }, { value: 'flex-end', label: __('Right', "premium-blocks-for-gutenberg"), icon: Icons.alignRight }]}
                                     value={align}
                                     onChange={(aligns) => setAttributes({ align: aligns, selfAlign: aligns })}
                                     label={__("Align", "premium-blocks-for-gutenberg")}
@@ -541,17 +549,17 @@ function Edit(props) {
                 )}
             </div>
             <div
-            {...useBlockProps({
-                className: classnames(
-                    className,
-                    `${blockId} premium-countup__wrap`,
-                    {
-                        " premium-desktop-hidden": hideDesktop,
-                        " premium-tablet-hidden": hideTablet,
-                        " premium-mobile-hidden": hideMobile,
-                    }
-                ),
-            })}
+                {...useBlockProps({
+                    className: classnames(
+                        className,
+                        `${blockId} premium-countup__wrap`,
+                        {
+                            " premium-desktop-hidden": hideDesktop,
+                            " premium-tablet-hidden": hideTablet,
+                            " premium-mobile-hidden": hideMobile,
+                        }
+                    ),
+                })}
                 style={{
                     justifyContent: align?.[props.deviceType],
                     flexDirection: flexDir,
