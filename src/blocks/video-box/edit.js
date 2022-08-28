@@ -27,41 +27,36 @@ const {
     Button
 } = wp.components;
 
-const { Component, Fragment } = wp.element;
-
-const { InspectorControls, RichText } = wp.blockEditor;
-
+const { useEffect, Fragment, useState } = wp.element;
+const { InspectorControls, RichText, useBlockProps } = wp.blockEditor;
 const { __ } = wp.i18n;
 
 let isBoxUpdated = null;
 
-class Edit extends Component {
-    constructor() {
-        super(...arguments);
-        this.initVideoBox = this.initVideoBox.bind(this);
-        this.videoboxRef = React.createRef()
-        this.state = {
-            url: ''
-        }
-    }
+function Edit(props) {
+    const { setAttributes, className, clientId } = props;
+    const videoboxRef = React.createRef();
+    const [url, setUrl] = useState(null);
 
-    componentDidMount() {
-        const { setAttributes, clientId } = this.props;
-        setAttributes({ blockId: "premium-video-box-" + generateBlockId(clientId) });
-        this.props.setAttributes({ classMigrate: true });
-        this.initVideoBox();
-    }
-
-    componentDidUpdate() {
+    useEffect(() => {
+        setAttributes({
+            blockId: "premium-video-box-" + generateBlockId(clientId)
+        });
+        setAttributes({ classMigrate: true });
+        initVideoBox();
+    }, []);
+    
+    useEffect(() => {
         clearTimeout(isBoxUpdated);
-        isBoxUpdated = setTimeout(this.initVideoBox, 500);
-    }
+        isBoxUpdated = setTimeout(initVideoBox, 500);
+    }, [isBoxUpdated]);
 
-    initVideoBox() {
-        const { blockId, videoURL } = this.props.attributes;
+    const initVideoBox = () => { 
+        const { blockId, videoURL } = props.attributes;
         if (!blockId && !videoURL) return null;
-        let videoBox = this.videoboxRef.current,
+        let videoBox = videoboxRef.current,
             video, src;
+        console.log(videoBox);
         if (videoBox) {
             videoBox.addEventListener("click", () => {
                 videoBox.classList.add("video-overlay-false");
@@ -84,138 +79,134 @@ class Edit extends Component {
                 }, 300);
             });
         }
-
     }
 
-    render() {
-        const { isSelected, setAttributes, className } = this.props;
+    const {
+        blockId,
+        videoType,
+        videoURL,
+        videoID,
+        autoPlay,
+        loop,
+        controls,
+        relatedVideos,
+        mute,
+        overlay,
+        playIcon,
+        playLeft,
+        hideDesktop,
+        hideTablet,
+        hideMobile,
+        ratioValue,
+        overlayStyles,
+        playStyles,
+        descStyles,
+        videoDescTypography,
+        playBorder,
+        boxBorder,
+        playPadding,
+        descPadding,
+        descShadow,
+        boxShadow,
+        overlayFilter
+    } = props.attributes;
 
-        const {
-            blockId,
-            videoType,
-            videoURL,
-            videoID,
-            autoPlay,
-            loop,
-            controls,
-            relatedVideos,
-            mute,
-            overlay,
-            playIcon,
-            playLeft,
-            hideDesktop,
-            hideTablet,
-            hideMobile,
-            ratioValue,
-            overlayStyles,
-            playStyles,
-            descStyles,
-            videoDescTypography,
-            playBorder,
-            boxBorder,
-            playPadding,
-            descPadding,
-            descShadow,
-            boxShadow,
-            overlayFilter
-        } = this.props.attributes;
+    const TYPE = [
+        {
+            value: "youtube",
+            label: __("Youtube", 'premium-blocks-for-gutenberg')
+        },
+        {
+            value: "vimeo",
+            label: __("Vimeo", 'premium-blocks-for-gutenberg')
+        },
+        {
+            value: "daily",
+            label: __("Daily Motion", 'premium-blocks-for-gutenberg')
+        },
+        {
+            value: "self",
+            label: __("Self Hosted", 'premium-blocks-for-gutenberg')
+        }
+    ];
 
-        const TYPE = [
-            {
-                value: "youtube",
-                label: __("Youtube", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "vimeo",
-                label: __("Vimeo", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "daily",
-                label: __("Daily Motion", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "self",
-                label: __("Self Hosted", 'premium-blocks-for-gutenberg')
-            }
-        ];
-
-        const loopVideo = () => {
-            if (videoURL && "youtube" === videoType) {
-                if (videoURL.startsWith("http")) {
-                    return loop
-                        ? `1&playlist=${videoURL.replace(
-                            "https://www.youtube.com/embed/",
-                            ""
-                        )}`
-                        : "0";
-                } else {
-                    return loop ? `1&playlist=${videoURL}` : "0";
-                }
+    const loopVideo = () => {
+        if (videoURL && "youtube" === videoType) {
+            if (videoURL.startsWith("http")) {
+                return loop
+                    ? `1&playlist=${videoURL.replace(
+                        "https://www.youtube.com/embed/",
+                        ""
+                    )}`
+                    : "0";
             } else {
-                return loop ? "1" : "0";
+                return loop ? `1&playlist=${videoURL}` : "0";
             }
-        };
+        } else {
+            return loop ? "1" : "0";
+        }
+    };
 
-        const changeVideoType = (newvalue) => {
-            if (newvalue === "self") {
-                setAttributes({ videoURL: "" })
+    const changeVideoType = (newvalue) => {
+        if (newvalue === "self") {
+            setAttributes({ videoURL: "" })
+        }
+        setAttributes({ videoType: newvalue })
+    }
+
+    const saveOverlayStyles = (value) => {
+        const newUpdate = overlayStyles.map((item, index) => {
+            if (0 === index) {
+                item = { ...item, ...value };
             }
-            setAttributes({ videoType: newvalue })
-        }
+            return item;
+        });
+        setAttributes({ overlayStyles: newUpdate });
+    };
 
-        const saveOverlayStyles = (value) => {
-            const newUpdate = overlayStyles.map((item, index) => {
-                if (0 === index) {
-                    item = { ...item, ...value };
-                }
-                return item;
-            });
-            setAttributes({ overlayStyles: newUpdate });
+    const savePlayStyles = (value) => {
+        const newUpdate = playStyles.map((item, indx) => {
+            if (0 === indx) {
+                item = { ...item, ...value };
+            }
+            return item;
+        });
+        setAttributes({ playStyles: newUpdate });
+    };
+
+    const saveDescritionStyle = (value) => {
+        const newUpdate = descStyles.map((item, indexx) => {
+            if (0 === indexx) {
+                item = { ...item, ...value };
+            }
+            return item;
+        });
+        setAttributes({ descStyles: newUpdate });
+    };
+
+    let loadDescriptionGoogleFonts;
+    if (videoDescTypography.fontFamily !== "Default") {
+        const gconfig = {
+            google: {
+                families: [videoDescTypography?.fontFamily],
+            },
         };
+        loadDescriptionGoogleFonts = (
+            <WebfontLoader config={gconfig}></WebfontLoader>
+        );
+    }
 
-        const savePlayStyles = (value) => {
-            const newUpdate = playStyles.map((item, indx) => {
-                if (0 === indx) {
-                    item = { ...item, ...value };
-                }
-                return item;
-            });
-            setAttributes({ playStyles: newUpdate });
+    const loadStyles = () => {
+        const styles = {};
+        styles[` .${blockId} .premium-video-box__play:hover`] = {
+            'color': `${playStyles[0].playHoverColor} !important`,
+            'background-color': `${playStyles[0].playHoverBackColor} !important`
         };
+        return generateCss(styles);
+    }
 
-        const saveDescritionStyle = (value) => {
-            const newUpdate = descStyles.map((item, indexx) => {
-                if (0 === indexx) {
-                    item = { ...item, ...value };
-                }
-                return item;
-            });
-            setAttributes({ descStyles: newUpdate });
-        };
-
-        let loadDescriptionGoogleFonts;
-        if (videoDescTypography.fontFamily !== "Default") {
-            const gconfig = {
-                google: {
-                    families: [videoDescTypography?.fontFamily],
-                },
-            };
-            loadDescriptionGoogleFonts = (
-                <WebfontLoader config={gconfig}></WebfontLoader>
-            );
-        }
-
-        const loadStyles = () => {
-            const styles = {};
-            styles[` .${blockId} .premium-video-box__play:hover`] = {
-                'color': `${playStyles[0].playHoverColor} !important`,
-                'background-color': `${playStyles[0].playHoverBackColor} !important`
-            };
-            return generateCss(styles);
-        }
-
-        return [
-            isSelected && (
+        return (
+            <Fragment>
                 <InspectorControls key={"inspector"}>
                     <InspectorTabs tabs={['layout', 'style', 'advance']}>
                         <InspectorTab key={'layout'}>
@@ -482,7 +473,6 @@ class Edit extends Component {
                         </InspectorTab>
                     </InspectorTabs>
                 </InspectorControls>
-            ),
             <Fragment>
                 {
                     !videoURL && "self" !== videoType && (
@@ -493,18 +483,18 @@ class Edit extends Component {
                             )}
                             className={className}
                         >
-                            <form onSubmit={() => setAttributes({ videoURL: this.state.url })}>
+                            <form onSubmit={() => setAttributes({ videoURL: url })}>
                                 <input
                                     type="url"
-                                    value={this.state.url}
+                                    value={url}
                                     className="components-placeholder__input"
                                     aria-label={__('Video Box', 'premium-blocks-for-gutenberg')}
                                     placeholder={__('Enter URL to embed here…', 'premium-blocks-for-gutenberg')}
-                                    onChange={e => this.setState({ url: e.target.value })}
+                                    onChange={e => setUrl(e.target.value)}
                                 />
                                 <Button
                                     isPrimary
-                                    disabled={!this.state.url}
+                                    disabled={!url}
                                     type="submit"
                                 >
                                     {__('Embed', 'premium-blocks-for-gutenberg')}
@@ -522,16 +512,21 @@ class Edit extends Component {
                 {videoURL && (
                     <Fragment>
                         <div
-                            ref={this.videoboxRef}
-                            className={classnames(className,
-                                "premium-video-box", `${blockId} video-overlay-${overlay} premium-aspect-ratio-${ratioValue}`, {
-                                ' premium-desktop-hidden': hideDesktop,
-                                ' premium-tablet-hidden': hideTablet,
-                                ' premium-mobile-hidden': hideMobile,
+                            ref={videoboxRef}
+                            {...useBlockProps({
+                                className: classnames(
+                                    className,
+                                    `premium-video-box ${blockId} video-overlay-${overlay} premium-aspect-ratio-${ratioValue}`,
+                                    {
+                                        " premium-desktop-hidden": hideDesktop,
+                                        " premium-tablet-hidden": hideTablet,
+                                        " premium-mobile-hidden": hideMobile,
+                                    }
+                                ),
                             })}
                             data-type={videoType}
                             style={{
-                                ...borderCss(boxBorder, this.props.deviceType),
+                                ...borderCss(boxBorder, props.deviceType),
                                 boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical ||
                                     0}px ${boxShadow.blur || 10}px ${boxShadow.color} ${boxShadow.position}`,
                             }}
@@ -584,8 +579,8 @@ class Edit extends Component {
                                 <div
                                     className={`premium-video-box__play`}
                                     style={{
-                                        ...borderCss(playBorder, this.props.deviceType),
-                                        ...paddingCss(playPadding, this.props.deviceType),
+                                        ...borderCss(playBorder, props.deviceType),
+                                        ...paddingCss(playPadding, props.deviceType),
                                         top: playStyles[0].playTop + "%",
                                         left: playLeft + "%",
                                         color: playStyles[0].playColor,
@@ -603,7 +598,7 @@ class Edit extends Component {
                             <div
                                 className={`premium-video-box__desc`}
                                 style={{
-                                    ...paddingCss(descPadding, this.props.deviceType),
+                                    ...paddingCss(descPadding, props.deviceType),
                                     backgroundColor: descStyles[0].videoDescBack,
                                     borderRadius: descStyles[0].videoDescBorderRadius,
                                     top: descStyles[0].descTop + "%",
@@ -617,7 +612,7 @@ class Edit extends Component {
                                     placeholder="Add caption"
                                     onChange={newText => saveDescritionStyle({ videoDescText: newText })}
                                     style={{
-                                        ...typographyCss(videoDescTypography, this.props.deviceType),
+                                        ...typographyCss(videoDescTypography, props.deviceType),
                                         color: descStyles[0].videoDescColor,
                                         textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`
                                     }}
@@ -629,11 +624,9 @@ class Edit extends Component {
                 )}
                 {loadDescriptionGoogleFonts}
             </Fragment>
-        ];
-
-    }
+        </Fragment>
+    );
 }
-
 export default withSelect((select) => {
     const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
     let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
