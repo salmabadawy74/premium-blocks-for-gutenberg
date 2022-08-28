@@ -18,55 +18,46 @@ import SpacingControl from "../../components/premium-responsive-spacing";
 import { generateCss, generateBlockId } from "../../components/HelperFunction";
 
 const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
+const { useEffect, Fragment, useState, useRef } = wp.element;
 const { withSelect } = wp.data;
-const { InspectorControls } = wp.blockEditor;
-
+const { InspectorControls, useBlockProps } = wp.blockEditor;
 const { PanelBody, TextControl, ToggleControl, SelectControl } = wp.components;
 
 let isLottieUpdated = null;
 
-class Edit extends Component {
-    constructor() {
+function Edit(props) {
+    const { setAttributes, className, clientId, attributes } = props;
+    // const [isJSONAllowed, setPrimary] = useState(false);
+    const lottieplayer = useRef(null);
 
-        super(...arguments);
-        this.lottieplayer = React.createRef();
-        this.state = {
-            isJSONAllowed: false,
-        };
-    }
-
-    componentDidMount() {
-        const { setAttributes, clientId, attributes } = this.props;
+    useEffect(() => {
         setAttributes({
-            blockId: "premium-lottie-" + generateBlockId(clientId),
+            blockId: "premium-lottie-" + generateBlockId(clientId)
         });
-
         if (!attributes.lottieId) {
             setAttributes({ lottieId: "premium-lottie-" + clientId });
         }
-        this.onSelectLottieJSON = this.onSelectLottieJSON.bind(this);
-        this.initLottieAnimation = this.initLottieAnimation.bind(this);
-        this.setState({ isJSONAllowed: Boolean(JsonUploadEnabled) });
-    }
+        onSelectLottieJSON();
+        initLottieAnimation();
+        // setPrimary(Boolean(JsonUploadEnabled))
+    }, []);
 
-    componentDidUpdate() {
+    useEffect(() => {
         clearTimeout(isLottieUpdated);
-        isLottieUpdated = setTimeout(this.initLottieAnimation, 400);
-    }
+        isLottieUpdated = setTimeout(initLottieAnimation, 400);
+    }, [isLottieUpdated]);
 
-    onSelectLottieJSON(media) {
-        const { setAttributes } = this.props;
+    const onSelectLottieJSON = (media) => {
         if (!media || !media.url) {
             setAttributes({ jsonLottie: null });
             return;
         }
         setAttributes({ jsonLottie: media });
         setAttributes({ lottieURl: media.url });
-    }
+    };
 
-    initLottieAnimation() {
-        const { blockId, trigger, bottom, top } = this.props.attributes;
+    const initLottieAnimation = () => {
+        const { blockId, trigger, bottom, top } = props.attributes;
         let lottieContainer = document.getElementById(
             `${blockId}`
         );
@@ -77,7 +68,7 @@ class Edit extends Component {
                 scrollElement = document.querySelector(
                     ".interface-interface-skeleton__content"
                 ),
-                animate = this.lottieplayer.current;
+                animate = lottieplayer.current;
             document.addEventListener("load", initScroll);
             scrollElement.addEventListener("scroll", initScroll);
             function initScroll() {
@@ -106,151 +97,146 @@ class Edit extends Component {
                 }
             }
         }
+    };
+
+    const {
+        blockId,
+        lottieURl,
+        lottieJson,
+        loop,
+        reverse,
+        speed,
+        trigger,
+        bottom,
+        top,
+        scrollSpeed,
+        rotate,
+        lottieAlign,
+        link,
+        url,
+        target,
+        render,
+        hideDesktop,
+        hideTablet,
+        hideMobile,
+        lottieStyles,
+        padding,
+        border,
+        filter,
+        filterHover,
+        size,
+    } = attributes;
+
+    let validJsonPath = "invalid";
+    if (lottieURl && lottieURl.endsWith(".json")) {
+        validJsonPath = "valid";
     }
 
-    render() {
-        const { attributes, setAttributes, className } = this.props;
-        const {
-            blockId,
-            lottieURl,
-            lottieJson,
-            loop,
-            reverse,
-            speed,
-            trigger,
-            bottom,
-            top,
-            scrollSpeed,
-            rotate,
-            lottieAlign,
-            link,
-            url,
-            target,
-            render,
-            hideDesktop,
-            hideTablet,
-            hideMobile,
-            lottieStyles,
-            padding,
-            border,
-            filter,
-            filterHover,
-            size,
-        } = attributes;
-        let validJsonPath = "invalid";
-        if (lottieURl && lottieURl.endsWith(".json")) {
-            validJsonPath = "valid";
-        }
+    if (validJsonPath === "invalid") {
+        return (
+            <div className="premium-lottie-animation-wrap">
+                <Placeholder
+                    className={className}
+                    value={lottieJson}
+                    isJSONAllowed={JsonUploadEnabled == 1 ? true : false}
+                    attributes={attributes}
+                    onSelectURL={(value) =>
+                        setAttributes({ lottieURl: value })
+                    }
+                    onSelect={onSelectLottieJSON}
+                />
+            </div>
+        );
+    }
 
-        if (validJsonPath === "invalid") {
-            return (
-                <div className="premium-lottie-animation-wrap">
-                    <Placeholder
-                        className={className}
-                        value={lottieJson}
-                        isJSONAllowed={JsonUploadEnabled == 1 ? true : false}
-                        attributes={attributes}
-                        onSelectURL={(value) =>
-                            setAttributes({ lottieURl: value })
-                        }
-                        onSelect={this.onSelectLottieJSON}
-                    />
-                </div>
-            );
-        }
+    const handleLottieMouseEnter = () => {
+        lottieplayer.current.anim.play();
+    };
 
-        const handleLottieMouseEnter = () => {
-            this.lottieplayer.current.anim.play();
-        };
+    const handleLottieMouseLeave = () => {
+        lottieplayer.current.anim.pause();
+    };
 
-        const handleLottieMouseLeave = () => {
-            this.lottieplayer.current.anim.pause();
-        };
-
-        const handleRemoveLottie = () => {
-            setAttributes({
-                lottieURl: "",
-            });
-        };
-
-        const saveLottieStyles = (value) => {
-            const newUpdate = lottieStyles.map((item, index) => {
-                if (0 === index) {
-                    item = { ...item, ...value };
-                }
-                return item;
-            });
-            setAttributes({
-                lottieStyles: newUpdate,
-            });
-        };
-
-        let stopAnimation = true;
-
-        if ("none" === trigger || "undefined" === typeof trigger) {
-            stopAnimation = false;
-        }
-        const reversedir = reverse ? -1 : 1;
-        const mainClasses = classnames(className, "premium-lottie-wrap", blockId, {
-            " premium-desktop-hidden": hideDesktop,
-            " premium-tablet-hidden": hideTablet,
-            " premium-mobile-hidden": hideMobile,
+    const handleRemoveLottie = () => {
+        setAttributes({
+            lottieURl: "",
         });
-        const paddingTop = padding?.[this.props.deviceType]?.top;
-        const paddingRight = padding?.[this.props.deviceType]?.right;
-        const paddingBottom = padding?.[this.props.deviceType]?.bottom;
-        const paddingLeft = padding?.[this.props.deviceType]?.left;
+    };
 
-        const loadStyles = () => {
-            const styles = {};
-            styles[
-                `#${blockId} .premium-lottie-animation svg`
-            ] = {
-                width: `${size[this.props.deviceType]}${size["unit"]
-                    } !important`,
-                height: `
-                ${size[this.props.deviceType]}${size["unit"]} !important`,
-            };
-            styles[`#${blockId}`] = {
-                "text-align": `${lottieAlign[this.props.deviceType]}`,
-            };
-            styles[`#${blockId} .premium-lottie-animation`] = {
-                "background-color": `${lottieStyles[0].backColor}`,
-                filter: ` brightness( ${filter?.bright}% ) contrast( ${filter?.contrast}% ) saturate( ${filter?.saturation}% ) blur( ${filter?.blur}px ) hue-rotate( ${filter?.hue}deg )`,
-                "border-style": `${border?.borderType}`,
-                "border-color": `${border?.borderColor}`,
-                "border-top-width": `${border?.borderWidth?.[this.props.deviceType]?.top
-                    }px!important`,
-                "border-right-width": `${border?.borderWidth?.[this.props.deviceType]?.right
-                    }px!important`,
-                "border-bottom-width": `${border?.borderWidth?.[this.props.deviceType]?.bottom
-                    }px!important`,
-                "border-left-width": `${border?.borderWidth?.[this.props.deviceType]?.left
-                    }px!important`,
-                "border-top-left-radius": `${border?.borderRadius?.[this.props.deviceType]?.top
-                    }px!important`,
-                "border-top-right-radius": `${border?.borderRadius?.[this.props.deviceType]?.right
-                    }px!important`,
-                "border-bottom-left-radius": `${border?.borderRadius?.[this.props.deviceType]?.bottom
-                    }px!important`,
-                "border-bottom-right-radius": `${border?.borderRadius?.[this.props.deviceType]?.left
-                    }px!important`,
-                "padding-top": `${paddingTop}${padding?.unit} !important`,
-                "padding-right": `${paddingRight}${padding?.unit} !important`,
-                "padding-bottom": `${paddingBottom}${padding?.unit} !important`,
-                "padding-left": `${paddingLeft}${padding?.unit} !important`,
-                transform: `rotate(${rotate}deg) !important`,
-            };
-            styles[
-                `#${blockId}  .premium-lottie-animation:hover`
-            ] = {
-                "background-color": `${lottieStyles[0].backHColor}`,
-                filter: `brightness( ${filterHover?.bright}% ) contrast( ${filterHover?.contrast}% ) saturate( ${filterHover?.saturation}% ) blur( ${filterHover?.blur}px ) hue-rotate( ${filterHover?.hue}deg ) !important`,
-            };
-            return generateCss(styles);
+    const saveLottieStyles = (value) => {
+        const newUpdate = lottieStyles.map((item, index) => {
+            if (0 === index) {
+                item = { ...item, ...value };
+            }
+            return item;
+        });
+        setAttributes({
+            lottieStyles: newUpdate,
+        });
+    };
+
+    let stopAnimation = true;
+
+    if ("none" === trigger || "undefined" === typeof trigger) {
+        stopAnimation = false;
+    }
+    const reversedir = reverse ? -1 : 1;
+    const paddingTop = padding?.[props.deviceType]?.top;
+    const paddingRight = padding?.[props.deviceType]?.right;
+    const paddingBottom = padding?.[props.deviceType]?.bottom;
+    const paddingLeft = padding?.[props.deviceType]?.left;
+
+    const loadStyles = () => {
+        const styles = {};
+        styles[
+            `#${blockId} .premium-lottie-animation svg`
+        ] = {
+            width: `${size[props.deviceType]}${size["unit"]
+                } !important`,
+            height: `
+            ${size[props.deviceType]}${size["unit"]} !important`,
         };
+        styles[`#${blockId}`] = {
+            "text-align": `${lottieAlign[props.deviceType]}`,
+        };
+        styles[`#${blockId} .premium-lottie-animation`] = {
+            "background-color": `${lottieStyles[0].backColor}`,
+            filter: ` brightness( ${filter?.bright}% ) contrast( ${filter?.contrast}% ) saturate( ${filter?.saturation}% ) blur( ${filter?.blur}px ) hue-rotate( ${filter?.hue}deg )`,
+            "border-style": `${border?.borderType}`,
+            "border-color": `${border?.borderColor}`,
+            "border-top-width": `${border?.borderWidth?.[props.deviceType]?.top
+                }px!important`,
+            "border-right-width": `${border?.borderWidth?.[props.deviceType]?.right
+                }px!important`,
+            "border-bottom-width": `${border?.borderWidth?.[props.deviceType]?.bottom
+                }px!important`,
+            "border-left-width": `${border?.borderWidth?.[props.deviceType]?.left
+                }px!important`,
+            "border-top-left-radius": `${border?.borderRadius?.[props.deviceType]?.top
+                }px!important`,
+            "border-top-right-radius": `${border?.borderRadius?.[props.deviceType]?.right
+                }px!important`,
+            "border-bottom-left-radius": `${border?.borderRadius?.[props.deviceType]?.bottom
+                }px!important`,
+            "border-bottom-right-radius": `${border?.borderRadius?.[props.deviceType]?.left
+                }px!important`,
+            "padding-top": `${paddingTop}${padding?.unit} !important`,
+            "padding-right": `${paddingRight}${padding?.unit} !important`,
+            "padding-bottom": `${paddingBottom}${padding?.unit} !important`,
+            "padding-left": `${paddingLeft}${padding?.unit} !important`,
+            transform: `rotate(${rotate}deg) !important`,
+        };
+        styles[
+            `#${blockId}  .premium-lottie-animation:hover`
+        ] = {
+            "background-color": `${lottieStyles[0].backHColor}`,
+            filter: `brightness( ${filterHover?.bright}% ) contrast( ${filterHover?.contrast}% ) saturate( ${filterHover?.saturation}% ) blur( ${filterHover?.blur}px ) hue-rotate( ${filterHover?.hue}deg ) !important`,
+        };
+        return generateCss(styles);
+    };
 
-        return [
+    return (
+        <Fragment>
             <InspectorControls>
                 <InspectorTabs tabs={["layout", "style", "advance"]}>
                     <InspectorTab key={"layout"}>
@@ -641,17 +627,28 @@ class Edit extends Component {
                         />
                     </InspectorTab>
                 </InspectorTabs>
-            </InspectorControls>,
-            <style dangerouslySetInnerHTML={{ __html: loadStyles() }} />,
-
+            </InspectorControls>
+            <div  
+            {...useBlockProps({
+                className: classnames(
+                    className,
+                    `premium-lottie-wrap ${blockId}`,
+                    {
+                        " premium-desktop-hidden": hideDesktop,
+                        " premium-tablet-hidden": hideTablet,
+                        " premium-mobile-hidden": hideMobile,
+                    }
+                    ),
+                })}
+            >
             <div
                 id={`${blockId}`}
-                className={` ${mainClasses} `}
                 data-lottieURl={lottieURl}
                 data-trigger={trigger}
                 data-start={bottom}
                 data-end={top}
             >
+                <style dangerouslySetInnerHTML={{ __html: loadStyles() }} />
                 <div
                     className={`premium-lottie-animation`}
                     onMouseEnter={
@@ -666,7 +663,7 @@ class Edit extends Component {
                     }
                 >
                     <Lottie
-                        ref={this.lottieplayer}
+                        ref={lottieplayer}
                         options={{
                             loop: loop,
                             path: lottieURl,
@@ -688,9 +685,10 @@ class Edit extends Component {
                         ></a>
                     )}
                 </div>
-            </div>,
-        ];
-    }
+            </div>
+            </div>
+        </Fragment>
+    );
 }
 export default withSelect((select) => {
     const { __experimentalGetPreviewDeviceType = null } = select(

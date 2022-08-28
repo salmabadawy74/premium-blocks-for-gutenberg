@@ -1,6 +1,7 @@
 import classnames from "classnames";
-const { Fragment } = wp.element;
 import { generateCss } from "../../components/HelperFunction";
+import { useBlockProps } from "@wordpress/block-editor";
+const { Fragment } = wp.element;
 
 export default function save(props) {
     const { attributes, className } = props;
@@ -28,12 +29,6 @@ export default function save(props) {
         filter,
         filterHover,
     } = attributes;
-
-    const mainClasses = classnames(className, "premium-lottie-wrap", blockId, {
-        " premium-desktop-hidden": hideDesktop,
-        " premium-tablet-hidden": hideTablet,
-        " premium-mobile-hidden": hideMobile,
-    });
     
     const loadStyles = () => {
         const styles = {};
@@ -57,7 +52,17 @@ export default function save(props) {
             <style dangerouslySetInnerHTML={{ __html: loadStyles() }} />
             <div
                 id={`${blockId}`}
-                className={`${mainClasses} `}
+                {...useBlockProps.save({
+                    className: classnames(
+                        className,
+                        `premium-lottie-wrap ${blockId} `,
+                        {
+                            " premium-desktop-hidden": hideDesktop,
+                            " premium-tablet-hidden": hideTablet,
+                            " premium-mobile-hidden": hideMobile,
+                        }
+                    ),
+                })}
             >
                 <div
                     className={`premium-lottie-animation premium-lottie-${render}`}

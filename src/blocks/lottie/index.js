@@ -8,13 +8,13 @@ const { __ } = wp.i18n;
 
 const { registerBlockType } = wp.blocks;
 
-import LottieAttr from './attributes'
+import json from './block.json';
 
 registerBlockType("premium/lottie", {
+    ...json,
     title: __("Lottie Animation", 'premium-blocks-for-gutenberg'),
     icon: PBG_Block_Icons.lottie,
     category: "premium-blocks",
-    attributes: LottieAttr,
     supports: {
         inserter: lottie
     },

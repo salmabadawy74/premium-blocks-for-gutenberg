@@ -31294,212 +31294,6 @@ function save(props) {
 
 /***/ }),
 
-/***/ "./src/blocks/lottie/attributes.js":
-/*!*****************************************!*\
-  !*** ./src/blocks/lottie/attributes.js ***!
-  \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-const LottieAttr = {
-  lottieId: {
-    type: "string"
-  },
-  blockId: {
-    type: "string"
-  },
-  lottieURl: {
-    type: "string",
-    default: ""
-  },
-  lottieJson: {
-    type: "object"
-  },
-  loop: {
-    type: "boolean",
-    default: true
-  },
-  reverse: {
-    type: "boolean",
-    default: false
-  },
-  speed: {
-    type: "number",
-    default: "1"
-  },
-  trigger: {
-    type: "string",
-    default: "none"
-  },
-  bottom: {
-    type: "number",
-    default: "0"
-  },
-  top: {
-    type: "number",
-    default: "100"
-  },
-  scrollSpeed: {
-    type: "number",
-    default: "4"
-  },
-  rotate: {
-    type: "number",
-    default: 0
-  },
-  lottieAlign: {
-    type: "object",
-    default: {
-      Desktop: "center",
-      Tablet: "center",
-      Mobile: "center"
-    }
-  },
-  link: {
-    type: "boolean",
-    default: false
-  },
-  url: {
-    type: "string"
-  },
-  target: {
-    type: "boolean",
-    default: false
-  },
-  render: {
-    type: "string",
-    default: "svg"
-  },
-  hideDesktop: {
-    type: "boolean",
-    default: false
-  },
-  hideTablet: {
-    type: "boolean",
-    default: false
-  },
-  hideMobile: {
-    type: "boolean",
-    default: false
-  },
-  lottieStyles: {
-    type: "array",
-    default: [{
-      backColor: "",
-      backOpacity: 1,
-      backHColor: "",
-      backHOpacity: 1
-    }]
-  },
-  padding: {
-    type: "object",
-    default: {
-      Desktop: {
-        top: "",
-        right: "",
-        bottom: "",
-        left: ""
-      },
-      Tablet: {
-        top: "",
-        right: "",
-        bottom: "",
-        left: ""
-      },
-      Mobile: {
-        top: "",
-        right: "",
-        bottom: "",
-        left: ""
-      },
-      unit: "px"
-    }
-  },
-  border: {
-    type: "object",
-    default: {
-      borderType: "none",
-      borderColor: "",
-      borderWidth: {
-        Desktop: {
-          top: "",
-          right: "",
-          bottom: "",
-          left: ""
-        },
-        Tablet: {
-          top: "",
-          right: "",
-          bottom: "",
-          left: ""
-        },
-        Mobile: {
-          top: "",
-          right: "",
-          bottom: "",
-          left: ""
-        }
-      },
-      borderRadius: {
-        Desktop: {
-          top: "",
-          right: "",
-          bottom: "",
-          left: ""
-        },
-        Tablet: {
-          top: "",
-          right: "",
-          bottom: "",
-          left: ""
-        },
-        Mobile: {
-          top: "",
-          right: "",
-          bottom: "",
-          left: ""
-        }
-      }
-    }
-  },
-  filter: {
-    type: "object",
-    default: {
-      contrast: "100",
-      blur: "0",
-      bright: "100",
-      saturation: "100",
-      hue: "0"
-    }
-  },
-  filterHover: {
-    type: "object",
-    default: {
-      contrast: "100",
-      blur: "0",
-      bright: "100",
-      saturation: "100",
-      hue: "0"
-    }
-  },
-  size: {
-    type: "object",
-    default: {
-      Desktop: "200",
-      Tablet: "200",
-      Mobile: "200",
-      unit: "px"
-    }
-  }
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LottieAttr);
-
-/***/ }),
-
 /***/ "./src/blocks/lottie/container.js":
 /*!****************************************!*\
   !*** ./src/blocks/lottie/container.js ***!
@@ -32254,14 +32048,17 @@ const {
   __
 } = wp.i18n;
 const {
-  Component,
-  Fragment
+  useEffect,
+  Fragment,
+  useState,
+  useRef
 } = wp.element;
 const {
   withSelect
 } = wp.data;
 const {
-  InspectorControls
+  InspectorControls,
+  useBlockProps
 } = wp.blockEditor;
 const {
   PanelBody,
@@ -32271,21 +32068,18 @@ const {
 } = wp.components;
 let isLottieUpdated = null;
 
-class Edit extends Component {
-  constructor() {
-    super(...arguments);
-    this.lottieplayer = React.createRef();
-    this.state = {
-      isJSONAllowed: false
-    };
-  }
+function Edit(props) {
+  var _padding$props$device, _padding$props$device2, _padding$props$device3, _padding$props$device4;
 
-  componentDidMount() {
-    const {
-      setAttributes,
-      clientId,
-      attributes
-    } = this.props;
+  const {
+    setAttributes,
+    className,
+    clientId,
+    attributes
+  } = props; // const [isJSONAllowed, setPrimary] = useState(false);
+
+  const lottieplayer = useRef(null);
+  useEffect(() => {
     setAttributes({
       blockId: "premium-lottie-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.generateBlockId)(clientId)
     });
@@ -32296,23 +32090,15 @@ class Edit extends Component {
       });
     }
 
-    this.onSelectLottieJSON = this.onSelectLottieJSON.bind(this);
-    this.initLottieAnimation = this.initLottieAnimation.bind(this);
-    this.setState({
-      isJSONAllowed: Boolean(_assets_js_settings__WEBPACK_IMPORTED_MODULE_12__.JsonUploadEnabled)
-    });
-  }
-
-  componentDidUpdate() {
+    onSelectLottieJSON();
+    initLottieAnimation(); // setPrimary(Boolean(JsonUploadEnabled))
+  }, []);
+  useEffect(() => {
     clearTimeout(isLottieUpdated);
-    isLottieUpdated = setTimeout(this.initLottieAnimation, 400);
-  }
+    isLottieUpdated = setTimeout(initLottieAnimation, 400);
+  }, [isLottieUpdated]);
 
-  onSelectLottieJSON(media) {
-    const {
-      setAttributes
-    } = this.props;
-
+  const onSelectLottieJSON = media => {
     if (!media || !media.url) {
       setAttributes({
         jsonLottie: null
@@ -32326,21 +32112,21 @@ class Edit extends Component {
     setAttributes({
       lottieURl: media.url
     });
-  }
+  };
 
-  initLottieAnimation() {
+  const initLottieAnimation = () => {
     const {
       blockId,
       trigger,
       bottom,
       top
-    } = this.props.attributes;
+    } = props.attributes;
     let lottieContainer = document.getElementById(`${blockId}`);
 
     if (lottieContainer !== null) {
       let lottieContainer = document.getElementById(`${blockId}`),
           scrollElement = document.querySelector(".interface-interface-skeleton__content"),
-          animate = this.lottieplayer.current;
+          animate = lottieplayer.current;
       document.addEventListener("load", initScroll);
       scrollElement.addEventListener("scroll", initScroll);
 
@@ -32368,408 +32154,398 @@ class Edit extends Component {
         }
       }
     }
+  };
+
+  const {
+    blockId,
+    lottieURl,
+    lottieJson,
+    loop,
+    reverse,
+    speed,
+    trigger,
+    bottom,
+    top,
+    scrollSpeed,
+    rotate,
+    lottieAlign,
+    link,
+    url,
+    target,
+    render,
+    hideDesktop,
+    hideTablet,
+    hideMobile,
+    lottieStyles,
+    padding,
+    border,
+    filter,
+    filterHover,
+    size
+  } = attributes;
+  let validJsonPath = "invalid";
+
+  if (lottieURl && lottieURl.endsWith(".json")) {
+    validJsonPath = "valid";
   }
 
-  render() {
-    var _padding$this$props$d, _padding$this$props$d2, _padding$this$props$d3, _padding$this$props$d4;
+  if (validJsonPath === "invalid") {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "premium-lottie-animation-wrap"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_container_js__WEBPACK_IMPORTED_MODULE_11__["default"], {
+      className: className,
+      value: lottieJson,
+      isJSONAllowed: _assets_js_settings__WEBPACK_IMPORTED_MODULE_12__.JsonUploadEnabled == 1 ? true : false,
+      attributes: attributes,
+      onSelectURL: value => setAttributes({
+        lottieURl: value
+      }),
+      onSelect: onSelectLottieJSON
+    }));
+  }
 
-    const {
-      attributes,
-      setAttributes,
-      className
-    } = this.props;
-    const {
-      blockId,
-      lottieURl,
-      lottieJson,
-      loop,
-      reverse,
-      speed,
-      trigger,
-      bottom,
-      top,
-      scrollSpeed,
-      rotate,
-      lottieAlign,
-      link,
-      url,
-      target,
-      render,
-      hideDesktop,
-      hideTablet,
-      hideMobile,
-      lottieStyles,
-      padding,
-      border,
-      filter,
-      filterHover,
-      size
-    } = attributes;
-    let validJsonPath = "invalid";
+  const handleLottieMouseEnter = () => {
+    lottieplayer.current.anim.play();
+  };
 
-    if (lottieURl && lottieURl.endsWith(".json")) {
-      validJsonPath = "valid";
-    }
+  const handleLottieMouseLeave = () => {
+    lottieplayer.current.anim.pause();
+  };
 
-    if (validJsonPath === "invalid") {
-      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-        className: "premium-lottie-animation-wrap"
-      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_container_js__WEBPACK_IMPORTED_MODULE_11__["default"], {
-        className: className,
-        value: lottieJson,
-        isJSONAllowed: _assets_js_settings__WEBPACK_IMPORTED_MODULE_12__.JsonUploadEnabled == 1 ? true : false,
-        attributes: attributes,
-        onSelectURL: value => setAttributes({
-          lottieURl: value
-        }),
-        onSelect: this.onSelectLottieJSON
-      }));
-    }
+  const handleRemoveLottie = () => {
+    setAttributes({
+      lottieURl: ""
+    });
+  };
 
-    const handleLottieMouseEnter = () => {
-      this.lottieplayer.current.anim.play();
+  const saveLottieStyles = value => {
+    const newUpdate = lottieStyles.map((item, index) => {
+      if (0 === index) {
+        item = { ...item,
+          ...value
+        };
+      }
+
+      return item;
+    });
+    setAttributes({
+      lottieStyles: newUpdate
+    });
+  };
+
+  let stopAnimation = true;
+
+  if ("none" === trigger || "undefined" === typeof trigger) {
+    stopAnimation = false;
+  }
+
+  const reversedir = reverse ? -1 : 1;
+  const paddingTop = padding === null || padding === void 0 ? void 0 : (_padding$props$device = padding[props.deviceType]) === null || _padding$props$device === void 0 ? void 0 : _padding$props$device.top;
+  const paddingRight = padding === null || padding === void 0 ? void 0 : (_padding$props$device2 = padding[props.deviceType]) === null || _padding$props$device2 === void 0 ? void 0 : _padding$props$device2.right;
+  const paddingBottom = padding === null || padding === void 0 ? void 0 : (_padding$props$device3 = padding[props.deviceType]) === null || _padding$props$device3 === void 0 ? void 0 : _padding$props$device3.bottom;
+  const paddingLeft = padding === null || padding === void 0 ? void 0 : (_padding$props$device4 = padding[props.deviceType]) === null || _padding$props$device4 === void 0 ? void 0 : _padding$props$device4.left;
+
+  const loadStyles = () => {
+    var _border$borderWidth, _border$borderWidth$p, _border$borderWidth2, _border$borderWidth2$, _border$borderWidth3, _border$borderWidth3$, _border$borderWidth4, _border$borderWidth4$, _border$borderRadius, _border$borderRadius$, _border$borderRadius2, _border$borderRadius3, _border$borderRadius4, _border$borderRadius5, _border$borderRadius6, _border$borderRadius7;
+
+    const styles = {};
+    styles[`#${blockId} .premium-lottie-animation svg`] = {
+      width: `${size[props.deviceType]}${size["unit"]} !important`,
+      height: `
+            ${size[props.deviceType]}${size["unit"]} !important`
     };
-
-    const handleLottieMouseLeave = () => {
-      this.lottieplayer.current.anim.pause();
+    styles[`#${blockId}`] = {
+      "text-align": `${lottieAlign[props.deviceType]}`
     };
-
-    const handleRemoveLottie = () => {
-      setAttributes({
-        lottieURl: ""
-      });
+    styles[`#${blockId} .premium-lottie-animation`] = {
+      "background-color": `${lottieStyles[0].backColor}`,
+      filter: ` brightness( ${filter === null || filter === void 0 ? void 0 : filter.bright}% ) contrast( ${filter === null || filter === void 0 ? void 0 : filter.contrast}% ) saturate( ${filter === null || filter === void 0 ? void 0 : filter.saturation}% ) blur( ${filter === null || filter === void 0 ? void 0 : filter.blur}px ) hue-rotate( ${filter === null || filter === void 0 ? void 0 : filter.hue}deg )`,
+      "border-style": `${border === null || border === void 0 ? void 0 : border.borderType}`,
+      "border-color": `${border === null || border === void 0 ? void 0 : border.borderColor}`,
+      "border-top-width": `${border === null || border === void 0 ? void 0 : (_border$borderWidth = border.borderWidth) === null || _border$borderWidth === void 0 ? void 0 : (_border$borderWidth$p = _border$borderWidth[props.deviceType]) === null || _border$borderWidth$p === void 0 ? void 0 : _border$borderWidth$p.top}px!important`,
+      "border-right-width": `${border === null || border === void 0 ? void 0 : (_border$borderWidth2 = border.borderWidth) === null || _border$borderWidth2 === void 0 ? void 0 : (_border$borderWidth2$ = _border$borderWidth2[props.deviceType]) === null || _border$borderWidth2$ === void 0 ? void 0 : _border$borderWidth2$.right}px!important`,
+      "border-bottom-width": `${border === null || border === void 0 ? void 0 : (_border$borderWidth3 = border.borderWidth) === null || _border$borderWidth3 === void 0 ? void 0 : (_border$borderWidth3$ = _border$borderWidth3[props.deviceType]) === null || _border$borderWidth3$ === void 0 ? void 0 : _border$borderWidth3$.bottom}px!important`,
+      "border-left-width": `${border === null || border === void 0 ? void 0 : (_border$borderWidth4 = border.borderWidth) === null || _border$borderWidth4 === void 0 ? void 0 : (_border$borderWidth4$ = _border$borderWidth4[props.deviceType]) === null || _border$borderWidth4$ === void 0 ? void 0 : _border$borderWidth4$.left}px!important`,
+      "border-top-left-radius": `${border === null || border === void 0 ? void 0 : (_border$borderRadius = border.borderRadius) === null || _border$borderRadius === void 0 ? void 0 : (_border$borderRadius$ = _border$borderRadius[props.deviceType]) === null || _border$borderRadius$ === void 0 ? void 0 : _border$borderRadius$.top}px!important`,
+      "border-top-right-radius": `${border === null || border === void 0 ? void 0 : (_border$borderRadius2 = border.borderRadius) === null || _border$borderRadius2 === void 0 ? void 0 : (_border$borderRadius3 = _border$borderRadius2[props.deviceType]) === null || _border$borderRadius3 === void 0 ? void 0 : _border$borderRadius3.right}px!important`,
+      "border-bottom-left-radius": `${border === null || border === void 0 ? void 0 : (_border$borderRadius4 = border.borderRadius) === null || _border$borderRadius4 === void 0 ? void 0 : (_border$borderRadius5 = _border$borderRadius4[props.deviceType]) === null || _border$borderRadius5 === void 0 ? void 0 : _border$borderRadius5.bottom}px!important`,
+      "border-bottom-right-radius": `${border === null || border === void 0 ? void 0 : (_border$borderRadius6 = border.borderRadius) === null || _border$borderRadius6 === void 0 ? void 0 : (_border$borderRadius7 = _border$borderRadius6[props.deviceType]) === null || _border$borderRadius7 === void 0 ? void 0 : _border$borderRadius7.left}px!important`,
+      "padding-top": `${paddingTop}${padding === null || padding === void 0 ? void 0 : padding.unit} !important`,
+      "padding-right": `${paddingRight}${padding === null || padding === void 0 ? void 0 : padding.unit} !important`,
+      "padding-bottom": `${paddingBottom}${padding === null || padding === void 0 ? void 0 : padding.unit} !important`,
+      "padding-left": `${paddingLeft}${padding === null || padding === void 0 ? void 0 : padding.unit} !important`,
+      transform: `rotate(${rotate}deg) !important`
     };
-
-    const saveLottieStyles = value => {
-      const newUpdate = lottieStyles.map((item, index) => {
-        if (0 === index) {
-          item = { ...item,
-            ...value
-          };
-        }
-
-        return item;
-      });
-      setAttributes({
-        lottieStyles: newUpdate
-      });
+    styles[`#${blockId}  .premium-lottie-animation:hover`] = {
+      "background-color": `${lottieStyles[0].backHColor}`,
+      filter: `brightness( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.bright}% ) contrast( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.contrast}% ) saturate( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.saturation}% ) blur( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.blur}px ) hue-rotate( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.hue}deg ) !important`
     };
+    return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.generateCss)(styles);
+  };
 
-    let stopAnimation = true;
-
-    if ("none" === trigger || "undefined" === typeof trigger) {
-      stopAnimation = false;
-    }
-
-    const reversedir = reverse ? -1 : 1;
-    const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-lottie-wrap", blockId, {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_13__["default"], {
+    tabs: ["layout", "style", "advance"]
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_14__["default"], {
+    key: "layout"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+    title: __("General Settings", "premium-blocks-for-gutenberg"),
+    className: "premium-panel-body",
+    initialOpen: true
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "lottie-remove",
+    onClick: handleRemoveLottie
+  }, __("Change Animation", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
+    label: __(`loop`, "premium-blocks-for-gutenberg"),
+    checked: loop,
+    onChange: value => setAttributes({
+      loop: value
+    }),
+    help: loop ? __("This option works only on the preview page", "premium-blocks-for-gutenberg") : ""
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
+    label: __(`Reverse`, "premium-blocks-for-gutenberg"),
+    checked: reverse,
+    onChange: () => setAttributes({
+      reverse: !reverse
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    label: __("Animation Speed", "premium-blocks-for-gutenberg"),
+    value: speed,
+    onChange: newValue => setAttributes({
+      speed: newValue !== "" ? newValue : 1
+    }),
+    showUnit: false,
+    defaultValue: 1,
+    max: 3,
+    min: 0.1,
+    step: 0.1
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
+    label: __("Trigger", "premium-blocks-for-gutenberg"),
+    options: [{
+      value: "none",
+      label: __("None", "premium-blocks-for-gutenberg")
+    }, {
+      value: "hover",
+      label: __("Hover", "premium-blocks-for-gutenberg")
+    }, {
+      value: "scroll",
+      label: __("Scroll", "premium-blocks-for-gutenberg")
+    }, {
+      value: "viewport",
+      label: __("Viewport", "premium-blocks-for-gutenberg")
+    }],
+    value: trigger,
+    onChange: newValue => setAttributes({
+      trigger: newValue
+    })
+  }), "scroll" === trigger && !reverse && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    label: __("Scroll Speed", "premium-blocks-for-gutenberg"),
+    value: scrollSpeed,
+    onChange: newValue => setAttributes({
+      scrollSpeed: newValue
+    }),
+    showUnit: false,
+    defaultValue: 0,
+    min: 1,
+    max: 10,
+    step: 0.1
+  })), (trigger === "viewport" || trigger === "scroll") && !reverse && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    label: __("Bottom", "premium-blocks-for-gutenberg"),
+    value: bottom,
+    onChange: newValue => setAttributes({
+      bottom: newValue
+    }),
+    showUnit: false,
+    defaultValue: "",
+    min: 0,
+    max: 50
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    label: __("Top", "premium-blocks-for-gutenberg"),
+    value: top,
+    onChange: newValue => setAttributes({
+      top: newValue
+    }),
+    showUnit: false,
+    defaultValue: "",
+    min: 50,
+    max: 100
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    label: __("Size", "premium-blocks-for-gutenberg"),
+    value: size,
+    onChange: value => setAttributes({
+      size: value
+    }),
+    min: 0,
+    max: 800,
+    step: 1,
+    showUnit: true,
+    units: ["px", "em", "rem"],
+    defaultValue: 200
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    label: __("Rotate (Degree)", "premium-blocks-for-gutenberg"),
+    value: rotate,
+    min: -180,
+    max: 180,
+    onChange: newValue => setAttributes({
+      rotate: newValue
+    }),
+    showUnit: false,
+    defaultValue: 0
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    choices: [{
+      value: "left",
+      label: __("Left", "premium-blocks-for-gutenberg"),
+      icon: _components_icons__WEBPACK_IMPORTED_MODULE_9__["default"].alignLeft
+    }, {
+      value: "center",
+      label: __("Center", "premium-blocks-for-gutenberg"),
+      icon: _components_icons__WEBPACK_IMPORTED_MODULE_9__["default"].alignCenter
+    }, {
+      value: "right",
+      label: __("Right", "premium-blocks-for-gutenberg"),
+      icon: _components_icons__WEBPACK_IMPORTED_MODULE_9__["default"].alignRight
+    }],
+    value: lottieAlign,
+    onChange: align => setAttributes({
+      lottieAlign: align
+    }),
+    label: __("Alignment", "premium-blocks-for-gutenberg"),
+    showIcons: true
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
+    label: __("Link", "premium-blocks-for-gutenberg"),
+    checked: link,
+    onChange: () => setAttributes({
+      link: !link
+    })
+  }), link && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
+    label: __("URL", "premium-blocks-for-gutenberg"),
+    value: url,
+    onChange: newURL => setAttributes({
+      url: newURL
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
+    label: __("Open link in new tab", "premium-blocks-for-gutenberg"),
+    checked: target,
+    onChange: newValue => setAttributes({
+      target: newValue
+    })
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
+    label: __("Render As", "premium-blocks-for-gutenberg"),
+    value: render,
+    options: [{
+      label: __("SVG", "premium-blocks-for-gutenberg"),
+      value: "svg"
+    }, {
+      label: __("Canvas", "premium-blocks-for-gutenberg"),
+      value: "canvas"
+    }],
+    help: __(`Set render type to canvas if you're having performance issues on the page.
+                    This setting will only take effect once you are on the live page, and not while you're editing.
+                    `, "premium-blocks-for-gutenberg"),
+    onChange: newValue => setAttributes({
+      render: newValue
+    })
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_14__["default"], {
+    key: "style"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+    title: __("Style", "premium-blocks-for-gutenberg"),
+    className: "premium-panel-body",
+    initialOpen: true
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTabs__WEBPACK_IMPORTED_MODULE_15__["default"], null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_16__["default"], {
+    tabTitle: __("Normal", "premium-blocks-for-gutenberg")
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    label: __("Background Color", "premium-blocks-for-gutenberg"),
+    colorValue: lottieStyles[0].backColor,
+    colorDefault: "",
+    onColorChange: newValue => saveLottieStyles({
+      backColor: newValue
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_filters__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    value: filter,
+    onChange: value => setAttributes({
+      filter: value
+    })
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_16__["default"], {
+    tabTitle: __("Hover", "premium-blocks-for-gutenberg")
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    label: __("Background Color", "premium-blocks-for-gutenberg"),
+    colorValue: lottieStyles[0].backHColor,
+    colorDefault: "",
+    onColorChange: newValue => saveLottieStyles({
+      backHColor: newValue
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_filters__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    value: filterHover,
+    onChange: value => setAttributes({
+      filterHover: value
+    })
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    label: __("Border", "premium-blocks-for-gutenberg"),
+    value: border,
+    onChange: value => setAttributes({
+      border: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_17__["default"], {
+    label: __("Padding", "premium-blocks-for-gutenberg"),
+    value: padding,
+    onChange: value => setAttributes({
+      padding: value
+    }),
+    showUnits: true,
+    responsive: true
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_14__["default"], {
+    key: "advance"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    Desktop: hideDesktop,
+    Tablet: hideTablet,
+    Mobile: hideMobile,
+    onChangeDesktop: value => setAttributes({
+      hideDesktop: value ? " premium-desktop-hidden" : ""
+    }),
+    onChangeTablet: value => setAttributes({
+      hideTablet: value ? " premium-tablet-hidden" : ""
+    }),
+    onChangeMobile: value => setAttributes({
+      hideMobile: value ? " premium-mobile-hidden" : ""
+    })
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", useBlockProps({
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, `premium-lottie-wrap ${blockId}`, {
       " premium-desktop-hidden": hideDesktop,
       " premium-tablet-hidden": hideTablet,
       " premium-mobile-hidden": hideMobile
-    });
-    const paddingTop = padding === null || padding === void 0 ? void 0 : (_padding$this$props$d = padding[this.props.deviceType]) === null || _padding$this$props$d === void 0 ? void 0 : _padding$this$props$d.top;
-    const paddingRight = padding === null || padding === void 0 ? void 0 : (_padding$this$props$d2 = padding[this.props.deviceType]) === null || _padding$this$props$d2 === void 0 ? void 0 : _padding$this$props$d2.right;
-    const paddingBottom = padding === null || padding === void 0 ? void 0 : (_padding$this$props$d3 = padding[this.props.deviceType]) === null || _padding$this$props$d3 === void 0 ? void 0 : _padding$this$props$d3.bottom;
-    const paddingLeft = padding === null || padding === void 0 ? void 0 : (_padding$this$props$d4 = padding[this.props.deviceType]) === null || _padding$this$props$d4 === void 0 ? void 0 : _padding$this$props$d4.left;
-
-    const loadStyles = () => {
-      var _border$borderWidth, _border$borderWidth$t, _border$borderWidth2, _border$borderWidth2$, _border$borderWidth3, _border$borderWidth3$, _border$borderWidth4, _border$borderWidth4$, _border$borderRadius, _border$borderRadius$, _border$borderRadius2, _border$borderRadius3, _border$borderRadius4, _border$borderRadius5, _border$borderRadius6, _border$borderRadius7;
-
-      const styles = {};
-      styles[`#${blockId} .premium-lottie-animation svg`] = {
-        width: `${size[this.props.deviceType]}${size["unit"]} !important`,
-        height: `
-                ${size[this.props.deviceType]}${size["unit"]} !important`
-      };
-      styles[`#${blockId}`] = {
-        "text-align": `${lottieAlign[this.props.deviceType]}`
-      };
-      styles[`#${blockId} .premium-lottie-animation`] = {
-        "background-color": `${lottieStyles[0].backColor}`,
-        filter: ` brightness( ${filter === null || filter === void 0 ? void 0 : filter.bright}% ) contrast( ${filter === null || filter === void 0 ? void 0 : filter.contrast}% ) saturate( ${filter === null || filter === void 0 ? void 0 : filter.saturation}% ) blur( ${filter === null || filter === void 0 ? void 0 : filter.blur}px ) hue-rotate( ${filter === null || filter === void 0 ? void 0 : filter.hue}deg )`,
-        "border-style": `${border === null || border === void 0 ? void 0 : border.borderType}`,
-        "border-color": `${border === null || border === void 0 ? void 0 : border.borderColor}`,
-        "border-top-width": `${border === null || border === void 0 ? void 0 : (_border$borderWidth = border.borderWidth) === null || _border$borderWidth === void 0 ? void 0 : (_border$borderWidth$t = _border$borderWidth[this.props.deviceType]) === null || _border$borderWidth$t === void 0 ? void 0 : _border$borderWidth$t.top}px!important`,
-        "border-right-width": `${border === null || border === void 0 ? void 0 : (_border$borderWidth2 = border.borderWidth) === null || _border$borderWidth2 === void 0 ? void 0 : (_border$borderWidth2$ = _border$borderWidth2[this.props.deviceType]) === null || _border$borderWidth2$ === void 0 ? void 0 : _border$borderWidth2$.right}px!important`,
-        "border-bottom-width": `${border === null || border === void 0 ? void 0 : (_border$borderWidth3 = border.borderWidth) === null || _border$borderWidth3 === void 0 ? void 0 : (_border$borderWidth3$ = _border$borderWidth3[this.props.deviceType]) === null || _border$borderWidth3$ === void 0 ? void 0 : _border$borderWidth3$.bottom}px!important`,
-        "border-left-width": `${border === null || border === void 0 ? void 0 : (_border$borderWidth4 = border.borderWidth) === null || _border$borderWidth4 === void 0 ? void 0 : (_border$borderWidth4$ = _border$borderWidth4[this.props.deviceType]) === null || _border$borderWidth4$ === void 0 ? void 0 : _border$borderWidth4$.left}px!important`,
-        "border-top-left-radius": `${border === null || border === void 0 ? void 0 : (_border$borderRadius = border.borderRadius) === null || _border$borderRadius === void 0 ? void 0 : (_border$borderRadius$ = _border$borderRadius[this.props.deviceType]) === null || _border$borderRadius$ === void 0 ? void 0 : _border$borderRadius$.top}px!important`,
-        "border-top-right-radius": `${border === null || border === void 0 ? void 0 : (_border$borderRadius2 = border.borderRadius) === null || _border$borderRadius2 === void 0 ? void 0 : (_border$borderRadius3 = _border$borderRadius2[this.props.deviceType]) === null || _border$borderRadius3 === void 0 ? void 0 : _border$borderRadius3.right}px!important`,
-        "border-bottom-left-radius": `${border === null || border === void 0 ? void 0 : (_border$borderRadius4 = border.borderRadius) === null || _border$borderRadius4 === void 0 ? void 0 : (_border$borderRadius5 = _border$borderRadius4[this.props.deviceType]) === null || _border$borderRadius5 === void 0 ? void 0 : _border$borderRadius5.bottom}px!important`,
-        "border-bottom-right-radius": `${border === null || border === void 0 ? void 0 : (_border$borderRadius6 = border.borderRadius) === null || _border$borderRadius6 === void 0 ? void 0 : (_border$borderRadius7 = _border$borderRadius6[this.props.deviceType]) === null || _border$borderRadius7 === void 0 ? void 0 : _border$borderRadius7.left}px!important`,
-        "padding-top": `${paddingTop}${padding === null || padding === void 0 ? void 0 : padding.unit} !important`,
-        "padding-right": `${paddingRight}${padding === null || padding === void 0 ? void 0 : padding.unit} !important`,
-        "padding-bottom": `${paddingBottom}${padding === null || padding === void 0 ? void 0 : padding.unit} !important`,
-        "padding-left": `${paddingLeft}${padding === null || padding === void 0 ? void 0 : padding.unit} !important`,
-        transform: `rotate(${rotate}deg) !important`
-      };
-      styles[`#${blockId}  .premium-lottie-animation:hover`] = {
-        "background-color": `${lottieStyles[0].backHColor}`,
-        filter: `brightness( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.bright}% ) contrast( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.contrast}% ) saturate( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.saturation}% ) blur( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.blur}px ) hue-rotate( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.hue}deg ) !important`
-      };
-      return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.generateCss)(styles);
-    };
-
-    return [(0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_13__["default"], {
-      tabs: ["layout", "style", "advance"]
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_14__["default"], {
-      key: "layout"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("General Settings", "premium-blocks-for-gutenberg"),
-      className: "premium-panel-body",
-      initialOpen: true
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-      className: "lottie-remove",
-      onClick: handleRemoveLottie
-    }, __("Change Animation", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __(`loop`, "premium-blocks-for-gutenberg"),
-      checked: loop,
-      onChange: value => setAttributes({
-        loop: value
-      }),
-      help: loop ? __("This option works only on the preview page", "premium-blocks-for-gutenberg") : ""
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __(`Reverse`, "premium-blocks-for-gutenberg"),
-      checked: reverse,
-      onChange: () => setAttributes({
-        reverse: !reverse
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      label: __("Animation Speed", "premium-blocks-for-gutenberg"),
-      value: speed,
-      onChange: newValue => setAttributes({
-        speed: newValue !== "" ? newValue : 1
-      }),
-      showUnit: false,
-      defaultValue: 1,
-      max: 3,
-      min: 0.1,
-      step: 0.1
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
-      label: __("Trigger", "premium-blocks-for-gutenberg"),
-      options: [{
-        value: "none",
-        label: __("None", "premium-blocks-for-gutenberg")
-      }, {
-        value: "hover",
-        label: __("Hover", "premium-blocks-for-gutenberg")
-      }, {
-        value: "scroll",
-        label: __("Scroll", "premium-blocks-for-gutenberg")
-      }, {
-        value: "viewport",
-        label: __("Viewport", "premium-blocks-for-gutenberg")
-      }],
-      value: trigger,
-      onChange: newValue => setAttributes({
-        trigger: newValue
-      })
-    }), "scroll" === trigger && !reverse && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      label: __("Scroll Speed", "premium-blocks-for-gutenberg"),
-      value: scrollSpeed,
-      onChange: newValue => setAttributes({
-        scrollSpeed: newValue
-      }),
-      showUnit: false,
-      defaultValue: 0,
-      min: 1,
-      max: 10,
-      step: 0.1
-    })), (trigger === "viewport" || trigger === "scroll") && !reverse && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      label: __("Bottom", "premium-blocks-for-gutenberg"),
-      value: bottom,
-      onChange: newValue => setAttributes({
-        bottom: newValue
-      }),
-      showUnit: false,
-      defaultValue: "",
-      min: 0,
-      max: 50
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      label: __("Top", "premium-blocks-for-gutenberg"),
-      value: top,
-      onChange: newValue => setAttributes({
-        top: newValue
-      }),
-      showUnit: false,
-      defaultValue: "",
-      min: 50,
-      max: 100
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      label: __("Size", "premium-blocks-for-gutenberg"),
-      value: size,
-      onChange: value => setAttributes({
-        size: value
-      }),
-      min: 0,
-      max: 800,
-      step: 1,
-      showUnit: true,
-      units: ["px", "em", "rem"],
-      defaultValue: 200
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      label: __("Rotate (Degree)", "premium-blocks-for-gutenberg"),
-      value: rotate,
-      min: -180,
-      max: 180,
-      onChange: newValue => setAttributes({
-        rotate: newValue
-      }),
-      showUnit: false,
-      defaultValue: 0
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_8__["default"], {
-      choices: [{
-        value: "left",
-        label: __("Left", "premium-blocks-for-gutenberg"),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_9__["default"].alignLeft
-      }, {
-        value: "center",
-        label: __("Center", "premium-blocks-for-gutenberg"),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_9__["default"].alignCenter
-      }, {
-        value: "right",
-        label: __("Right", "premium-blocks-for-gutenberg"),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_9__["default"].alignRight
-      }],
-      value: lottieAlign,
-      onChange: align => setAttributes({
-        lottieAlign: align
-      }),
-      label: __("Alignment", "premium-blocks-for-gutenberg"),
-      showIcons: true
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __("Link", "premium-blocks-for-gutenberg"),
-      checked: link,
-      onChange: () => setAttributes({
-        link: !link
-      })
-    }), link && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
-      label: __("URL", "premium-blocks-for-gutenberg"),
-      value: url,
-      onChange: newURL => setAttributes({
-        url: newURL
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __("Open link in new tab", "premium-blocks-for-gutenberg"),
-      checked: target,
-      onChange: newValue => setAttributes({
-        target: newValue
-      })
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
-      label: __("Render As", "premium-blocks-for-gutenberg"),
-      value: render,
-      options: [{
-        label: __("SVG", "premium-blocks-for-gutenberg"),
-        value: "svg"
-      }, {
-        label: __("Canvas", "premium-blocks-for-gutenberg"),
-        value: "canvas"
-      }],
-      help: __(`Set render type to canvas if you're having performance issues on the page.
-                    This setting will only take effect once you are on the live page, and not while you're editing.
-                    `, "premium-blocks-for-gutenberg"),
-      onChange: newValue => setAttributes({
-        render: newValue
-      })
-    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_14__["default"], {
-      key: "style"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Style", "premium-blocks-for-gutenberg"),
-      className: "premium-panel-body",
-      initialOpen: true
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTabs__WEBPACK_IMPORTED_MODULE_15__["default"], null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_16__["default"], {
-      tabTitle: __("Normal", "premium-blocks-for-gutenberg")
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: __("Background Color", "premium-blocks-for-gutenberg"),
-      colorValue: lottieStyles[0].backColor,
-      colorDefault: "",
-      onColorChange: newValue => saveLottieStyles({
-        backColor: newValue
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_filters__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      value: filter,
-      onChange: value => setAttributes({
-        filter: value
-      })
-    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_16__["default"], {
-      tabTitle: __("Hover", "premium-blocks-for-gutenberg")
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      label: __("Background Color", "premium-blocks-for-gutenberg"),
-      colorValue: lottieStyles[0].backHColor,
-      colorDefault: "",
-      onColorChange: newValue => saveLottieStyles({
-        backHColor: newValue
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_filters__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      value: filterHover,
-      onChange: value => setAttributes({
-        filterHover: value
-      })
-    })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      label: __("Border", "premium-blocks-for-gutenberg"),
-      value: border,
-      onChange: value => setAttributes({
-        border: value
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_17__["default"], {
-      label: __("Padding", "premium-blocks-for-gutenberg"),
-      value: padding,
-      onChange: value => setAttributes({
-        padding: value
-      }),
-      showUnits: true,
-      responsive: true
-    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_14__["default"], {
-      key: "advance"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      Desktop: hideDesktop,
-      Tablet: hideTablet,
-      Mobile: hideMobile,
-      onChangeDesktop: value => setAttributes({
-        hideDesktop: value ? " premium-desktop-hidden" : ""
-      }),
-      onChangeTablet: value => setAttributes({
-        hideTablet: value ? " premium-tablet-hidden" : ""
-      }),
-      onChangeMobile: value => setAttributes({
-        hideMobile: value ? " premium-mobile-hidden" : ""
-      })
-    })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
-      dangerouslySetInnerHTML: {
-        __html: loadStyles()
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    id: `${blockId}`,
+    "data-lottieURl": lottieURl,
+    "data-trigger": trigger,
+    "data-start": bottom,
+    "data-end": top
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
+    dangerouslySetInnerHTML: {
+      __html: loadStyles()
+    }
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `premium-lottie-animation`,
+    onMouseEnter: "hover" === trigger ? handleLottieMouseEnter : () => stopAnimation = true,
+    onMouseLeave: "hover" === trigger ? handleLottieMouseLeave : () => stopAnimation = true
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_lottie_with_segments__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    ref: lottieplayer,
+    options: {
+      loop: loop,
+      path: lottieURl,
+      rendererSettings: {
+        preserveAspectRatio: "xMidYMid",
+        className: "premium-lottie-inner"
       }
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      id: `${blockId}`,
-      className: ` ${mainClasses} `,
-      "data-lottieURl": lottieURl,
-      "data-trigger": trigger,
-      "data-start": bottom,
-      "data-end": top
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `premium-lottie-animation`,
-      onMouseEnter: "hover" === trigger ? handleLottieMouseEnter : () => stopAnimation = true,
-      onMouseLeave: "hover" === trigger ? handleLottieMouseLeave : () => stopAnimation = true
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_lottie_with_segments__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      ref: this.lottieplayer,
-      options: {
-        loop: loop,
-        path: lottieURl,
-        rendererSettings: {
-          preserveAspectRatio: "xMidYMid",
-          className: "premium-lottie-inner"
-        }
-      },
-      isStopped: stopAnimation,
-      speed: speed === "" ? 1 : speed,
-      isClickToPauseDisabled: true,
-      direction: reversedir
-    }), link && url !== " " && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-      rel: "noopener noreferrer",
-      target: target ? "_blank" : "_self",
-      href: "javascript:void(0)"
-    })))];
-  }
-
+    },
+    isStopped: stopAnimation,
+    speed: speed === "" ? 1 : speed,
+    isClickToPauseDisabled: true,
+    direction: reversedir
+  }), link && url !== " " && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    rel: "noopener noreferrer",
+    target: target ? "_blank" : "_self",
+    href: "javascript:void(0)"
+  })))));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (withSelect(select => {
@@ -32797,7 +32573,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/lottie/save.js");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/lottie/deprecated.js");
 /* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
-/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./attributes */ "./src/blocks/lottie/attributes.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./block.json */ "./src/blocks/lottie/block.json");
 
 
 
@@ -32810,11 +32586,10 @@ const {
   registerBlockType
 } = wp.blocks;
 
-registerBlockType("premium/lottie", {
+registerBlockType("premium/lottie", { ..._block_json__WEBPACK_IMPORTED_MODULE_5__,
   title: __("Lottie Animation", 'premium-blocks-for-gutenberg'),
   icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_4__["default"].lottie,
   category: "premium-blocks",
-  attributes: _attributes__WEBPACK_IMPORTED_MODULE_5__["default"],
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_1__.lottie
   },
@@ -32839,17 +32614,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ save)
 /* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./src/blocks/node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./src/blocks/node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./src/blocks/node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
 
 
 const {
   Fragment
 } = wp.element;
-
 function save(props) {
   const {
     attributes,
@@ -32878,11 +32658,6 @@ function save(props) {
     filter,
     filterHover
   } = attributes;
-  const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-lottie-wrap", blockId, {
-    " premium-desktop-hidden": hideDesktop,
-    " premium-tablet-hidden": hideTablet,
-    " premium-mobile-hidden": hideMobile
-  });
 
   const loadStyles = () => {
     const styles = {};
@@ -32897,17 +32672,22 @@ function save(props) {
       "background-color": `${lottieStyles[0].backHColor}`,
       filter: `brightness( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.bright}% ) contrast( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.contrast}% ) saturate( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.saturation}% ) blur( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.blur}px ) hue-rotate( ${filterHover === null || filterHover === void 0 ? void 0 : filterHover.hue}deg ) !important`
     };
-    return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.generateCss)(styles);
+    return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.generateCss)(styles);
   };
 
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: loadStyles()
     }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    id: `${blockId}`,
-    className: `${mainClasses} `
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    id: `${blockId}`
+  }, _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.useBlockProps.save({
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, `premium-lottie-wrap ${blockId} `, {
+      " premium-desktop-hidden": hideDesktop,
+      " premium-tablet-hidden": hideTablet,
+      " premium-mobile-hidden": hideMobile
+    })
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-lottie-animation premium-lottie-${render}`,
     "data-lottieURl": lottieURl,
     "data-trigger": trigger,
@@ -32918,7 +32698,7 @@ function save(props) {
     "data-render": render,
     "data-reverse": reverse,
     "data-scrollSpeed": scrollSpeed
-  }, link && url !== " " && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+  }, link && url !== " " && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
     rel: "noopener noreferrer",
     target: target ? "_blank" : "_self",
     href: url
@@ -93582,6 +93362,17 @@ module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/i
 
 "use strict";
 module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/image-separator","title":"Image Separator","category":"premium-blocks","attributes":{"blockId":{"type":"string"},"iconAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"iconType":{"type":"string","default":"image"},"imageID":{"type":"number"},"imageURL":{"type":"string","source":"attribute","attribute":"src","selector":".premium-image-separator-container img"},"link":{"type":"boolean"},"url":{"type":"string"},"gutter":{"type":"number","default":-50},"imgFilter":{"type":"object","default":{"contrast":"100","blur":"0","bright":"100","saturation":"100","hue":"0"}},"imgFilterHover":{"type":"object","default":{"contrast":"100","blur":"0","bright":"100","saturation":"100","hue":"0"}},"linkTarget":{"type":"boolean","default":false},"imgFit":{"type":"string","value":"fill"},"imgMask":{"type":"boolean","default":false},"imgMaskURL":{"type":"string"},"imgMaskID":{"type":"number"},"maskSize":{"type":"string","default":"contain"},"maskPosition":{"type":"string","default":"center center"},"iconStyles":{"type":"array","default":[{"advancedBorder":false,"icon":"fa fa-bars","iconColor":"","iconBGColor":"","iconColorHover":"","iconBGColorHover":"","advancedBorderValue":"","imgHeightType":"px"}]},"iconSize":{"type":"object","default":{"Desktop":"200","Tablet":"200","Mobile":"200","unit":"px"}},"imgHeight":{"type":"object","default":{"Desktop":"200","unit":"px"}},"iconBorder":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"iconPadding":{"type":"object","default":{"Desktop":{"top":".1","right":".1","bottom":".1","left":".1"},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"em"}},"iconShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}}}}');
+
+/***/ }),
+
+/***/ "./src/blocks/lottie/block.json":
+/*!**************************************!*\
+  !*** ./src/blocks/lottie/block.json ***!
+  \**************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/lottie","title":"Lottie Animation","category":"premium-blocks","attributes":{"lottieId":{"type":"string"},"blockId":{"type":"string"},"lottieURl":{"type":"string","default":""},"lottieJson":{"type":"object"},"loop":{"type":"boolean","default":true},"reverse":{"type":"boolean","default":false},"speed":{"type":"number","default":"1"},"trigger":{"type":"string","default":"none"},"bottom":{"type":"number","default":"0"},"top":{"type":"number","default":"100"},"scrollSpeed":{"type":"number","default":"4"},"rotate":{"type":"number","default":0},"lottieAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"link":{"type":"boolean","default":false},"url":{"type":"string"},"target":{"type":"boolean","default":false},"render":{"type":"string","default":"svg"},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"lottieStyles":{"type":"array","default":[{"backColor":"","backOpacity":1,"backHColor":"","backHOpacity":1}]},"padding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"border":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"filter":{"type":"object","default":{"contrast":"100","blur":"0","bright":"100","saturation":"100","hue":"0"}},"filterHover":{"type":"object","default":{"contrast":"100","blur":"0","bright":"100","saturation":"100","hue":"0"}},"size":{"type":"object","default":{"Desktop":"200","Tablet":"200","Mobile":"200","unit":"px"}}}}');
 
 /***/ }),
 
