@@ -883,6 +883,10 @@ class PBG_Blocks_Helper {
 			$css->set_selector( '.' . $unique_id . '> .premium-fancy-text' . '> .premium-fancy-text-title-slide' );
 			$css->add_property( 'text-align', $css->get_responsive_css( $attr['fancyTextAlign'], 'Desktop' ) );
 		}
+		if ( isset( $attr['fancyContentAlign'] ) ) {
+			$css->set_selector( '.' . $unique_id  );
+			$css->add_property( 'text-align', $css->get_responsive_css( $attr['fancyContentAlign'], 'Desktop' ) );
+		}
 
 		$css->start_media_query( $media_query['tablet'] );
 
@@ -908,7 +912,12 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['fancyTextAlign'] ) ) {
 			$css->set_selector( '.' . $unique_id . '> .premium-fancy-text' . '> .premium-fancy-text-title-slide' );
-			$css->add_property( 'text-align', $css->get_responsive_css( $attr['fancyTextAlign'], 'Tablet' ) );		}
+			$css->add_property( 'text-align', $css->get_responsive_css( $attr['fancyTextAlign'], 'Tablet' ) );
+		}
+		if ( isset( $attr['fancyContentAlign'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'text-align', $css->get_responsive_css( $attr['fancyContentAlign'], 'Tablet' ) );
+		}
 
 		$css->stop_media_query();
 		$css->start_media_query( $media_query['mobile'] );
@@ -936,6 +945,10 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['fancyTextAlign'] ) ) {
 			$css->set_selector( '.' . $unique_id . '> .premium-fancy-text' . '> .premium-fancy-text-title-slide' );
 			$css->add_property( 'text-align', $css->get_responsive_css( $attr['fancyTextAlign'], 'Mobile' ) );
+		}
+		if ( isset( $attr['fancyContentAlign'] ) ) {
+			$css->set_selector( '.' . $unique_id );
+			$css->add_property( 'text-align', $css->get_responsive_css( $attr['fancyContentAlign'], 'Mobile' ) );
 		}
 
 		$css->stop_media_query();
