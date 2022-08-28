@@ -267,8 +267,8 @@ class PBG_Blocks_Helper {
 
 		$api_key = isset( self::$config['premium-map-key'] ) ? self::$config['premium-map-key'] : '';
 
-		$is_maps_enabled    = self::$blocks['maps'];
-		$is_section_enabled = self::$blocks['container'];
+		// $is_maps_enabled    = self::$blocks['maps'];
+		// $is_section_enabled = self::$blocks['container'];
 		wp_enqueue_style(
 			'pbg-frontend',
 			PREMIUM_BLOCKS_URL . 'assets/css/style.css',
@@ -283,7 +283,7 @@ class PBG_Blocks_Helper {
 			);
 		}
 
-		if ( $is_section_enabled ) {
+		// if ( $is_section_enabled ) {
 			wp_enqueue_script(
 				'pbg-section',
 				PREMIUM_BLOCKS_URL . 'assets/js/section.js',
@@ -301,19 +301,19 @@ class PBG_Blocks_Helper {
 					'isRTL' => $is_rtl,
 				)
 			);
-		}
-		// Enqueue Google Maps API Script.
-		if ( $is_maps_enabled && $is_enabled ) {
-			if ( ! empty( $api_key ) && '1' != $api_key ) {
-				wp_enqueue_script(
-					'premium-map-block',
-					'https://maps.googleapis.com/maps/api/js?key=' . $api_key,
-					array(),
-					PREMIUM_BLOCKS_VERSION,
-					false
-				);
-			}
-		}
+		// }
+		// // Enqueue Google Maps API Script.
+		// if ( $is_maps_enabled && $is_enabled ) {
+		// 	if ( ! empty( $api_key ) && '1' != $api_key ) {
+		// 		wp_enqueue_script(
+		// 			'premium-map-block',
+		// 			'https://maps.googleapis.com/maps/api/js?key=' . $api_key,
+		// 			array(),
+		// 			PREMIUM_BLOCKS_VERSION,
+		// 			false
+		// 		);
+		// 	}
+		// }
 		wp_localize_script(
 			'pbg-blocks-js',
 			'PremiumSettings',
@@ -345,205 +345,208 @@ class PBG_Blocks_Helper {
             }
             if($slug === 'breadcrumbs'){
              require_once  PREMIUM_BLOCKS_PATH .'blocks-config/breadcrumbs.php' ;
-register_block_pbg_breadcrumbs(); 
+            register_block_pbg_breadcrumbs(); 
+
             }
-         	// register_block_type(
-			// 'premium/'.$slug,
-			// array(
-			// 	'render_callback' => array( $this, 'get_countup_css' ),
-			// 	'editor_style'    => 'premium-blocks-editor-css',
-			// 	'editor_script'   => 'pbg-blocks-js',
-			// )
-		// );
-        }
+            elseif($slug==='trigger'){
+             require_once  PREMIUM_BLOCKS_PATH .'blocks-config/trigger.php' ;
+                register_block_pbg_trigger();
+            }
+            elseif($slug === 'accordion'){
+                register_block_type(
+                    'premium/accordion',
+                    array(
+                        'render_callback'  => array( $this, 'get_accordion_css' ),
+                        'editor_style'     => 'premium-blocks-editor-css',
+                        'editor_script'    => 'pbg-blocks-js',
+                        'provides_context' => array(
+                            'titleTag'    => 'titleTag',
+                            'contentType' => 'contentType',
+                            'direction'   => 'direction',
+                            'arrowStyles' => 'arrowStyles',
+                        ),
 
-		register_block_type(
-			'premium/accordion',
+                    )
+                );
+            }
+            else{
+         	register_block_type(
+			'premium/'.$slug,
 			array(
-				'render_callback'  => array( $this, 'get_accordion_css' ),
-				'editor_style'     => 'premium-blocks-editor-css',
-				'editor_script'    => 'pbg-blocks-js',
-				'provides_context' => array(
-					'titleTag'    => 'titleTag',
-					'contentType' => 'contentType',
-					'direction'   => 'direction',
-					'arrowStyles' => 'arrowStyles',
-				),
-
+				'render_callback' => array( $this, 'get_'.$slug .'_css' ),
+				'editor_style'    => 'premium-blocks-editor-css',
+				'editor_script'   => 'pbg-blocks-js',
 			)
 		);
+
+            }
+        }
+
+	
+
 		// register_block_type(
-		// 	'premium/banner',
+		// 	'premium/button',
 		// 	array(
-		// 		'render_callback' => array( $this, 'get_banner_css' ),
+		// 		'render_callback' => array( $this, 'get_button_css' ),
 		// 		'editor_style'    => 'premium-blocks-editor-css',
 		// 		'editor_script'   => 'pbg-blocks-js',
 		// 	)
 		// );
 
-		register_block_type(
-			'premium/button',
-			array(
-				'render_callback' => array( $this, 'get_button_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
-				'editor_script'   => 'pbg-blocks-js',
-			)
-		);
+		// register_block_type(
+		// 	'premium/countup',
+		// 	array(
+		// 		'render_callback' => array( $this, 'get_countup_css' ),
+		// 		'editor_style'    => 'premium-blocks-editor-css',
+		// 		'editor_script'   => 'pbg-blocks-js',
+		// 	)
+		// );
 
-		register_block_type(
-			'premium/countup',
-			array(
-				'render_callback' => array( $this, 'get_countup_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
-				'editor_script'   => 'pbg-blocks-js',
-			)
-		);
+		// register_block_type(
+		// 	'premium/dheading-block',
+		// 	array(
+		// 		'render_callback' => array( $this, 'get_dual_css' ),
+		// 		'editor_style'    => 'premium-blocks-editor-css',
+		// 		'editor_script'   => 'pbg-blocks-js',
+		// 	)
+		// );
 
-		register_block_type(
-			'premium/dheading-block',
-			array(
-				'render_callback' => array( $this, 'get_dual_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
-				'editor_script'   => 'pbg-blocks-js',
-			)
-		);
+		// register_block_type(
+		// 	'premium/fancy-text',
+		// 	array(
+		// 		'render_callback' => array( $this, 'get_fancy_text_css' ),
+		// 		'editor_style'    => 'premium-blocks-editor-css',
+		// 		'editor_script'   => 'pbg-blocks-js',
+		// 	)
+		// );
 
-		register_block_type(
-			'premium/fancy-text',
-			array(
-				'render_callback' => array( $this, 'get_fancy_text_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
-				'editor_script'   => 'pbg-blocks-js',
-			)
-		);
+		// register_block_type(
+		// 	'premium/icon',
+		// 	array(
+		// 		'render_callback' => array( $this, 'get_icon_css' ),
+		// 		'editor_style'    => 'premium-blocks-editor-css',
+		// 		'editor_script'   => 'pbg-blocks-js',
 
-		register_block_type(
-			'premium/icon',
-			array(
-				'render_callback' => array( $this, 'get_icon_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
-				'editor_script'   => 'pbg-blocks-js',
+		// 	)
+		// );
 
-			)
-		);
+		// register_block_type(
+		// 	'premium/icon-box',
+		// 	array(
+		// 		'render_callback' => array( $this, 'get_iconbox_css' ),
+		// 		'editor_style'    => 'premium-blocks-editor-css',
+		// 		'editor_script'   => 'pbg-blocks-js',
 
-		register_block_type(
-			'premium/icon-box',
-			array(
-				'render_callback' => array( $this, 'get_iconbox_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
-				'editor_script'   => 'pbg-blocks-js',
+		// 	)
+		// );
 
-			)
-		);
+		// register_block_type(
+		// 	'premium/lottie',
+		// 	array(
+		// 		'render_callback' => array( $this, 'get_lottie_css' ),
+		// 		'editor_style'    => 'premium-blocks-editor-css',
+		// 		'editor_script'   => 'pbg-blocks-js',
 
-		register_block_type(
-			'premium/lottie',
-			array(
-				'render_callback' => array( $this, 'get_lottie_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
-				'editor_script'   => 'pbg-blocks-js',
+		// 	)
+		// );
 
-			)
-		);
+		// register_block_type(
+		// 	'premium/testimonial',
+		// 	array(
+		// 		'render_callback' => array( $this, 'get_testimonial_css' ),
+		// 		'editor_style'    => 'premium-blocks-editor-css',
+		// 		'editor_script'   => 'pbg-blocks-js',
+		// 	)
+		// );
 
-		register_block_type(
-			'premium/testimonial',
-			array(
-				'render_callback' => array( $this, 'get_testimonial_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
-				'editor_script'   => 'pbg-blocks-js',
-			)
-		);
+		// register_block_type(
+		// 	'premium/video-box',
+		// 	array(
+		// 		'render_callback' => array( $this, 'get_videobox_css' ),
+		// 		'editor_style'    => 'premium-blocks-editor-css',
+		// 		'editor_script'   => 'pbg-blocks-js',
+		// 	)
+		// );
 
-		register_block_type(
-			'premium/video-box',
-			array(
-				'render_callback' => array( $this, 'get_videobox_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
-				'editor_script'   => 'pbg-blocks-js',
-			)
-		);
+		// register_block_type(
+		// 	'premium/pricing-table',
+		// 	array(
+		// 		'render_callback' => array( $this, 'get_pricing_css' ),
+		// 		'editor_style'    => 'premium-blocks-editor-css',
+		// 		'editor_script'   => 'pbg-blocks-js',
+		// 	)
+		// );
+		// register_block_type(
+		// 	'premium/container',
+		// 	array(
+		// 		'render_callback' => array( $this, 'get_section_css' ),
+		// 		'editor_style'    => 'premium-blocks-editor-css',
+		// 		'editor_script'   => 'pbg-blocks-js',
+		// 	)
+		// );
+		// register_block_type(
+		// 	'premium/image-separator',
+		// 	array(
+		// 		'render_callback' => array( $this, 'get_image_seperator_css' ),
+		// 		'editor_style'    => 'premium-blocks-editor-css',
+		// 		'editor_script'   => 'pbg-blocks-js',
+		// 	)
+		// );
+		// register_block_type(
+		// 	'premium/modal',
+		// 	array(
+		// 		'render_callback' => array( $this, 'get_modal_css' ),
+		// 		'editor_style'    => 'premium-blocks-editor-css',
+		// 		'editor_script'   => 'pbg-blocks-js',
+		// 	)
+		// );
 
-		register_block_type(
-			'premium/pricing-table',
-			array(
-				'render_callback' => array( $this, 'get_pricing_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
-				'editor_script'   => 'pbg-blocks-js',
-			)
-		);
-		register_block_type(
-			'premium/container',
-			array(
-				'render_callback' => array( $this, 'get_section_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
-				'editor_script'   => 'pbg-blocks-js',
-			)
-		);
-		register_block_type(
-			'premium/image-separator',
-			array(
-				'render_callback' => array( $this, 'get_image_seperator_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
-				'editor_script'   => 'pbg-blocks-js',
-			)
-		);
-		register_block_type(
-			'premium/modal',
-			array(
-				'render_callback' => array( $this, 'get_modal_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
-				'editor_script'   => 'pbg-blocks-js',
-			)
-		);
+		// register_block_type(
+		// 	'premium/bullet-list',
+		// 	array(
+		// 		'render_callback' => array( $this, 'get_bulletList_css' ),
+		// 		'editor_style'    => 'premium-blocks-editor-css',
+		// 		'editor_script'   => 'pbg-blocks-js',
 
-		register_block_type(
-			'premium/bullet-list',
-			array(
-				'render_callback' => array( $this, 'get_bulletList_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
-				'editor_script'   => 'pbg-blocks-js',
+		// 	)
+		// );
 
-			)
-		);
+		// register_block_type(
+		// 	'premium/person',
+		// 	array(
+		// 		'render_callback' => array( $this, 'get_person_css' ),
+		// 		'editor_style'    => 'premium-blocks-editor-css',
+		// 		'editor_script'   => 'pbg-blocks-js',
+		// 	)
+		// );
 
-		register_block_type(
-			'premium/person',
-			array(
-				'render_callback' => array( $this, 'get_person_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
-				'editor_script'   => 'pbg-blocks-js',
-			)
-		);
+		// register_block_type(
+		// 	'premium/heading',
+		// 	array(
+		// 		'render_callback' => array( $this, 'get_heading_css' ),
+		// 		'editor_style'    => 'premium-blocks-editor-css',
+		// 		'editor_script'   => 'pbg-blocks-js',
 
-		register_block_type(
-			'premium/heading',
-			array(
-				'render_callback' => array( $this, 'get_heading_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
-				'editor_script'   => 'pbg-blocks-js',
+		// 	)
+		// );
+		// register_block_type(
+		// 	'premium/row',
+		// 	array(
+		// 		'render_callback' => array( $this, 'get_row_css' ),
+		// 		'editor_style'    => 'premium-blocks-editor-css',
+		// 		'editor_script'   => 'pbg-blocks-js',
+		// 	)
+		// );
 
-			)
-		);
-		register_block_type(
-			'premium/row',
-			array(
-				'render_callback' => array( $this, 'get_row_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
-				'editor_script'   => 'pbg-blocks-js',
-			)
-		);
+		// register_block_type(
+		// 	'premium/maps',
+		// 	array(
+		// 		'render_callback' => array( $this, 'get_maps_css' ),
+		// 		'editor_style'    => 'premium-blocks-editor-css',
+		// 		'editor_script'   => 'pbg-blocks-js',
 
-		register_block_type(
-			'premium/maps',
-			array(
-				'render_callback' => array( $this, 'get_maps_css' ),
-				'editor_style'    => 'premium-blocks-editor-css',
-				'editor_script'   => 'pbg-blocks-js',
-
-			)
-		);
+		// 	)
+		// );
 	}
 
 	/**
@@ -964,6 +967,7 @@ register_block_pbg_breadcrumbs();
 	 * @param string $content for content of block.
 	 */
 	public function get_accordion_css( $attributes, $content ) {
+        var_dump($attributes);
 		if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
 			$unique_id = $attributes['blockId'];
 		} else {
@@ -972,12 +976,19 @@ register_block_pbg_breadcrumbs();
 		if ( $this->it_is_not_amp() ) {
 			wp_enqueue_script(
 				'pbg-accordion',
-				PREMIUM_BLOCKS_URL . 'src/blocks/accordion/view/view.js',
-				array( 'jquery' ),
+				PREMIUM_BLOCKS_URL . 'assets/js/view.js',
 				PREMIUM_BLOCKS_VERSION,
 				true
 			);
+      
+
 		}
+        	wp_enqueue_script(
+				'pbg-accordion',
+				PREMIUM_BLOCKS_URL . 'assets/js/view.js',
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
 		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
 			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.

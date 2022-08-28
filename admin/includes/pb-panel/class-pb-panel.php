@@ -60,6 +60,24 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 				'breadcrumbs' => true,
 				'search'      => true,
 				'banner'      => true,
+                'accordion' =>true,
+                'dualheading'      => true,
+				'pricingtable'      => true,
+				'testimonial'      => true,
+				'countup'      => true,
+				'icon'      => true,
+                'button' =>true,
+                  'container' =>true,
+                  'iconbox' =>true,
+                  'videobox' =>true,
+                  'fancytext' =>true,
+                  'lottie' =>true,
+                 'modal' =>true,
+                 'bulletlist' =>true,
+                 'person' =>true,
+                 'heading' =>true,
+                'imageseparator' =>true,
+                'row'=>true
 			);
 
 			return array_merge( $default_options, $options );
@@ -241,6 +259,97 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 					'label'         => __( 'Banner', 'premium-blocks-for-gutenberg' ),
 					'filter_blocks' => array( 'new', 'all' ),
 				),
+                'accordion'      => array(
+					'type'          => 'pb-button',
+					'label'         => __( 'Accordion', 'premium-blocks-for-gutenberg' ),
+					'filter_blocks' => array( 'new', 'all' ),
+				),
+                 'dualheading'      => array(
+					'type'          => 'pb-button',
+					'label'         => __( 'Dual Heading', 'premium-blocks-for-gutenberg' ),
+					'filter_blocks' => array( 'new', 'all' ),
+				),
+                 'pricingtable'      => array(
+					'type'          => 'pb-button',
+					'label'         => __( 'Pricing Table', 'premium-blocks-for-gutenberg' ),
+					'filter_blocks' => array( 'new', 'all' ),
+				),
+                 'testimonial'      => array(
+					'type'          => 'pb-button',
+					'label'         => __( 'Testimonial', 'premium-blocks-for-gutenberg' ),
+					'filter_blocks' => array( 'new', 'all' ),
+				),
+                   'countup'      => array(
+					'type'          => 'pb-button',
+					'label'         => __( 'Count Up', 'premium-blocks-for-gutenberg' ),
+					'filter_blocks' => array( 'new', 'all' ),
+				),
+                   'icon'      => array(
+					'type'          => 'pb-button',
+					'label'         => __( 'Icon', 'premium-blocks-for-gutenberg' ),
+					'filter_blocks' => array( 'new', 'all' ),
+				),
+                   'button'      => array(
+					'type'          => 'pb-button',
+					'label'         => __( 'Button', 'premium-blocks-for-gutenberg' ),
+					'filter_blocks' => array( 'new', 'all' ),
+				),
+                    'container'      => array(
+					'type'          => 'pb-button',
+					'label'         => __( 'Section', 'premium-blocks-for-gutenberg' ),
+					'filter_blocks' => array( 'new', 'all' ),
+				),
+                    'iconbox'      => array(
+					'type'          => 'pb-button',
+					'label'         => __( 'Icon Box', 'premium-blocks-for-gutenberg' ),
+					'filter_blocks' => array( 'new', 'all' ),
+				),
+                    'videobox'      => array(
+					'type'          => 'pb-button',
+					'label'         => __( 'Video Box', 'premium-blocks-for-gutenberg' ),
+					'filter_blocks' => array( 'new', 'all' ),
+				),
+                    'fancytext'      => array(
+					'type'          => 'pb-button',
+					'label'         => __( 'Fancy Text', 'premium-blocks-for-gutenberg' ),
+					'filter_blocks' => array( 'new', 'all' ),
+				),
+                    'lottie'      => array(
+					'type'          => 'pb-button',
+					'label'         => __( 'Lottie', 'premium-blocks-for-gutenberg' ),
+					'filter_blocks' => array( 'new', 'all' ),
+				),
+                    'modal'      => array(
+					'type'          => 'pb-button',
+					'label'         => __( 'Modal', 'premium-blocks-for-gutenberg' ),
+					'filter_blocks' => array( 'new', 'all' ),
+				),
+                    'bulletlist'      => array(
+					'type'          => 'pb-button',
+					'label'         => __( 'Bullet List', 'premium-blocks-for-gutenberg' ),
+					'filter_blocks' => array( 'new', 'all' ),
+				),
+                    'person'      => array(
+					'type'          => 'pb-button',
+					'label'         => __( 'Person', 'premium-blocks-for-gutenberg' ),
+					'filter_blocks' => array( 'new', 'all' ),
+				),
+                    'heading'      => array(
+					'type'          => 'pb-button',
+					'label'         => __( 'Heading', 'premium-blocks-for-gutenberg' ),
+					'filter_blocks' => array( 'new', 'all' ),
+				),
+                    'imageseparator'      => array(
+					'type'          => 'pb-button',
+					'label'         => __( 'Image Separator', 'premium-blocks-for-gutenberg' ),
+					'filter_blocks' => array( 'new', 'all' ),
+				),
+                'row'      => array(
+					'type'          => 'pb-button',
+					'label'         => __( 'Container', 'premium-blocks-for-gutenberg' ),
+					'filter_blocks' => array( 'new', 'all' ),
+				),
+
 			);
 				return apply_filters( 'pb_panel_options', $options );
 		}

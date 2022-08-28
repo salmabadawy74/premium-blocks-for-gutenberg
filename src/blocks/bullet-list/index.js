@@ -16,7 +16,7 @@ const {
     registerBlockType
 } = wp.blocks;
 
-registerBlockType("premium/bullet-list", {
+registerBlockType("premium/bulletlist", {
     title: __("Bullet List"),
     description: __('Organize your website’s content with attractive lists using Premium Bullet List Block.'),
     icon: PBG_Block_Icons.bulletList,

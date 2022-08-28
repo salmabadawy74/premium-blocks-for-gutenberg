@@ -19,7 +19,11 @@ import "./blocks/bullet-list";
 import "./blocks/person";
 import "./blocks/heading";
 import "./blocks/row";
-import './blocks/breadcrumbs'
+import './blocks/breadcrumbs';
+import './blocks/trigger';
+import './blocks/accordion-item';
+import './blocks/switcher-child';
+import './blocks/content-switcher'
 window.PremiumOptionsSettings = {
     FontAwesomeEnabled
 }

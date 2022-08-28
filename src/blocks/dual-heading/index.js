@@ -9,7 +9,7 @@ const { __ } = wp.i18n;
 
 const { registerBlockType } = wp.blocks;
 
-registerBlockType("premium/dheading-block", {
+registerBlockType("premium/dualheading", {
     title: __("Dual Heading", "premium-blocks-for-gutenberg"),
     description: __(
         "Use Premium Dual Heading Block to create one heading with two different styles."

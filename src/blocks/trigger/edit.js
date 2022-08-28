@@ -1,17 +1,17 @@
-import { __ } from '@wordpress/i18n';
+const { __ } = wp.i18n;
 import classnames from "classnames";
-import {
+const {
     useBlockProps,
     InnerBlocks,
     InspectorControls
-} from '@wordpress/block-editor';
-import {
+} = wp.blockEditor;
+const {
     Fragment,
     useEffect,
     useState
-} from '@wordpress/element';
-import { withSelect } from '@wordpress/data'
-import { PanelBody, TextControl, TabPanel, ToggleControl, SelectControl } from '@wordpress/components';
+} = wp.element;
+const { withSelect } = wp.data
+const { PanelBody, TextControl, TabPanel, ToggleControl, SelectControl } = wp.components;
 import MultiButtonsControl from "../../components/responsive-radio";
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
@@ -25,7 +25,7 @@ import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
 import PremiumTypo from "../../components/premium-typo";
 import WebfontLoader from "../../components/typography/fontLoader";
 import ResponsiveRadioControl from "../../components/responsive-radio";
-import { 
+import {
     borderCss,
     generateBlockId,
     generateCss,
@@ -62,7 +62,7 @@ function Edit(props) {
         setAttributes({ blockId: "premium-trigger-" + generateBlockId(clientId) })
     }, [])
 
-    const { 
+    const {
         triggerLabel,
         iconSize,
         iconAlignment,
@@ -147,20 +147,20 @@ function Edit(props) {
 
         return generateCss(styles);
     };
-    
+
     let loadLabelGoogleFonts;
 
-        if (labelTypography?.fontFamily !== 'Default') {
-            const labelConfig = {
-                google: {
-                    families: [labelTypography.fontFamily],
-                },
-            }
-            loadLabelGoogleFonts = (
-                <WebfontLoader config={labelConfig}>
-                </WebfontLoader>
-            )
+    if (labelTypography?.fontFamily !== 'Default') {
+        const labelConfig = {
+            google: {
+                families: [labelTypography.fontFamily],
+            },
         }
+        loadLabelGoogleFonts = (
+            <WebfontLoader config={labelConfig}>
+            </WebfontLoader>
+        )
+    }
 
 
 
@@ -182,23 +182,23 @@ function Edit(props) {
                             />
 
                             {attributes.displayTriggerLabel && (
-                            <Fragment>
-                                <TextControl
-                                    label={__('Trigger Label', 'premium-blocks-for-gutenberg')}
-                                    value={attributes.triggerLabel}
-                                    onChange={(val) => setAttributes({ triggerLabel: val })}
-                                />
-                                <RadioComponent
-                                    label={__("Label Alignment", 'premium-blocks-for-gutenberg')}
-                                    choices={[
-                                        { value: 'left', label: __('Left'), icon: Icons.alignLeft },
-                                        { value: 'right', label: __('Right'), icon: Icons.alignRight }
-                                    ]}
-                                    value={triggerStyles.labelPosition}
-                                    onChange={newValue => setTriggerStyles('labelPosition', newValue)}
-                                    showIcons={true}
-                                />
-                            </Fragment>
+                                <Fragment>
+                                    <TextControl
+                                        label={__('Trigger Label', 'premium-blocks-for-gutenberg')}
+                                        value={attributes.triggerLabel}
+                                        onChange={(val) => setAttributes({ triggerLabel: val })}
+                                    />
+                                    <RadioComponent
+                                        label={__("Label Alignment", 'premium-blocks-for-gutenberg')}
+                                        choices={[
+                                            { value: 'left', label: __('Left'), icon: Icons.alignLeft },
+                                            { value: 'right', label: __('Right'), icon: Icons.alignRight }
+                                        ]}
+                                        value={triggerStyles.labelPosition}
+                                        onChange={newValue => setTriggerStyles('labelPosition', newValue)}
+                                        showIcons={true}
+                                    />
+                                </Fragment>
                             )}
                             <RadioComponent
                                 label={__("Icon Style", 'premium-blocks-for-gutenberg')}
@@ -210,7 +210,7 @@ function Edit(props) {
                                 value={triggerStyles.style}
                                 onChange={newValue => setTriggerStyles('style', newValue)}
                             />
-                                <ResponsiveRadioControl
+                            <ResponsiveRadioControl
                                 label={__("Alignment", "premium-blocks-for-gutenberg")}
                                 choices={[
                                     { value: "left", label: __("Left", "premium-blocks-for-gutenberg"), icon: Icons.alignLeft },
@@ -289,7 +289,7 @@ function Edit(props) {
                     </InspectorTab>
                     <InspectorTab key={'style'}>
 
-                            <PanelBody
+                        <PanelBody
                             title={__('Trigger', 'premium-blocks-for-gutenberg')}
                             initialOpen={true}
                         >
@@ -370,7 +370,7 @@ function Edit(props) {
                                     );
                                 }}
                             </TabPanel>
-                            
+
                             {(triggerStyles.style === 'outline' || triggerStyles.style === 'solid') &&
                                 <fragment>
                                     <PremiumBorder
@@ -389,10 +389,10 @@ function Edit(props) {
                         </PanelBody>
                         {attributes.displayTriggerLabel && (
                             <PanelBody
-                            title={__('Label', 'premium-blocks-for-gutenberg')}
-                            initialOpen={false}
-                        >
-                            <PremiumTypo
+                                title={__('Label', 'premium-blocks-for-gutenberg')}
+                                initialOpen={false}
+                            >
+                                <PremiumTypo
                                     value={labelTypography}
                                     onChange={(newValue) =>
                                         setAttributes({
@@ -400,58 +400,58 @@ function Edit(props) {
                                         })
                                     }
                                 />
-                            <TabPanel
-                                className="premium-color-tabpanel"
-                                activeClass="active-tab"
-                                tabs={[
-                                    {
-                                        name: "normal",
-                                        title: "Normal",
-                                        className: "premium-tab",
-                                    },
-                                    {
-                                        name: "hover",
-                                        title: "Hover",
-                                        className: "premium-tab",
-                                    },
-                                ]}
-                            >
-                                {(tab) => {
-                                    let tabout;
-                                    if ("normal" === tab.name) {
-                                        tabout = (
-                                            <Fragment>
-                                                <AdvancedPopColorControl
-                                                    label={__("Label Color", 'premium-blocks-for-gutenberg')}
-                                                    colorValue={triggerStyles.labelColor}
-                                                    colorDefault={''}
-                                                    onColorChange={newValue => setTriggerStyles('labelColor', newValue)}
-                                                />
-                                            </Fragment>
+                                <TabPanel
+                                    className="premium-color-tabpanel"
+                                    activeClass="active-tab"
+                                    tabs={[
+                                        {
+                                            name: "normal",
+                                            title: "Normal",
+                                            className: "premium-tab",
+                                        },
+                                        {
+                                            name: "hover",
+                                            title: "Hover",
+                                            className: "premium-tab",
+                                        },
+                                    ]}
+                                >
+                                    {(tab) => {
+                                        let tabout;
+                                        if ("normal" === tab.name) {
+                                            tabout = (
+                                                <Fragment>
+                                                    <AdvancedPopColorControl
+                                                        label={__("Label Color", 'premium-blocks-for-gutenberg')}
+                                                        colorValue={triggerStyles.labelColor}
+                                                        colorDefault={''}
+                                                        onColorChange={newValue => setTriggerStyles('labelColor', newValue)}
+                                                    />
+                                                </Fragment>
+                                            );
+                                        }
+                                        if ("hover" === tab.name) {
+                                            tabout = (
+                                                <Fragment>
+                                                    <AdvancedPopColorControl
+                                                        label={__("Label Hover Color", 'premium-blocks-for-gutenberg')}
+                                                        colorValue={triggerStyles.labelHoverColor}
+                                                        colorDefault={''}
+                                                        onColorChange={newValue => setTriggerStyles('labelHoverColor', newValue)}
+                                                    />
+                                                </Fragment>
+                                            );
+                                        }
+                                        return (
+                                            <div>
+                                                {tabout}
+                                            </div>
                                         );
-                                    }
-                                    if ("hover" === tab.name) {
-                                        tabout = (
-                                            <Fragment>
-                                                <AdvancedPopColorControl
-                                                    label={__("Label Hover Color", 'premium-blocks-for-gutenberg')}
-                                                    colorValue={triggerStyles.labelHoverColor}
-                                                    colorDefault={''}
-                                                    onColorChange={newValue => setTriggerStyles('labelHoverColor', newValue)}
-                                                />
-                                            </Fragment>
-                                        );
-                                    }
-                                    return (
-                                        <div>
-                                            {tabout}
-                                        </div>
-                                    );
-                                }}
-                            </TabPanel>
+                                    }}
+                                </TabPanel>
                             </PanelBody>
                         )}
-                        
+
                         <PanelBody
                             title={__('Canvas Area', 'premium-blocks-for-gutenberg')}
                             initialOpen={false}
@@ -524,9 +524,9 @@ function Edit(props) {
             })}>
                 <div className={`premium-trigger-container`}>
                     <div className={`premium-trigger-icon-container`}
-                    style={{
-                        textAlign: iconAlignment[props.deviceType]
-                    }}>
+                        style={{
+                            textAlign: iconAlignment[props.deviceType]
+                        }}>
                         <a className={`toggle-button ${isEditing ? "toggled" : ""}`}
                             data-style={triggerStyles.style}
                             data-label={triggerStyles.labelPosition}
@@ -535,19 +535,19 @@ function Edit(props) {
                             style={{
                                 ...borderCss(triggerBorder, props.deviceType)
                             }}>
-                            {triggerLabel && displayTriggerLabel && 
+                            {triggerLabel && displayTriggerLabel &&
                                 (<span
                                     className={`trigger-label`}
                                     onChange={onChangeText}
                                     value={triggerLabel}
                                     placeholder={__('Menu', 'premium-blocks-for-gutenberg')}
-                                    style={{ 
+                                    style={{
                                         color: triggerStyles.labelColor,
                                         ...typographyCss(
                                             labelTypography,
                                             props.deviceType
                                         ),
-                                     }}
+                                    }}
                                 >{triggerLabel}</span>)}
                             <svg style={{ fontSize: (iconSize[props.deviceType] || 20) + iconSize.unit, fill: `${triggerStyles.iconColor}` }} height="1.5em" viewBox="0 -53 384 384" width="1.5em" xmlns="http://www.w3.org/2000/svg">
                                 <path d="m368 154.667969h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0"></path>
@@ -581,7 +581,7 @@ function Edit(props) {
                     )}
                 </div>
                 {loadLabelGoogleFonts}
-                </div>
+            </div>
         </Fragment>
     )
 }

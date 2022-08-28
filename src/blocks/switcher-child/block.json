@@ -5,13 +5,12 @@
     "title": "Switcher Child",
     "category": "design",
     "parent": [
-        "premium/content-switcher"
+        "premium/contentswitcher"
     ],
     "description": "Toggle between two different content using Premium Content Switcher Block.",
     "supports": {
         "html": false
     },
-    "editorScript": "file:./build/block.js",
     "attributes": {
         "blockId": {
             "type": "string"

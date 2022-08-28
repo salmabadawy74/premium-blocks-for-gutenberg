@@ -5,26 +5,15 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "@wordpress/block-editor": "^8.5.1",
-        "@wordpress/blocks": "^11.5.0",
-        "@wordpress/components": "^19.8.0",
-        "@wordpress/data": "^6.8.0",
-        "@wordpress/element": "^4.4.0",
-        "@wordpress/i18n": "^4.6.0",
-        "@wordpress/icons": "^9.6.0",
+
         "react": "^16.8.6",
         "react-dom": "^16.8.6",
         "webfontloader": "^1.6.28"
     },
     "scripts": {
-        "start:content-switcher": "wp-scripts start content-switcher/block.js --output-path=content-switcher/build",
-        "build:content-switcher": "wp-scripts build content-switcher/block.js --output-path=content-switcher/build",
+
         "start:search": "wp-scripts start search/index.js --output-path=search/build",
-        "build:search": "wp-scripts build search/index.js --output-path=search/build",
-        "start:switcher-child": "wp-scripts start switcher-child/block.js --output-path=switcher-child/build",
-        "build:switcher-child": "wp-scripts build switcher-child/block.js --output-path=switcher-child/build",
-        "start:trigger": "wp-scripts start trigger/block.js --output-path=trigger/build",
-        "build:trigger": "wp-scripts build trigger/block.js --output-path=trigger/build"
+        "build:search": "wp-scripts build search/index.js --output-path=search/build"
     },
     "devDependencies": {
         "@wordpress/scripts": "^22.4.0"
