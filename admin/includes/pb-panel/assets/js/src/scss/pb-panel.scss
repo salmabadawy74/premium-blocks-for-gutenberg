@@ -29,6 +29,14 @@
   padding-bottom: 20px;
   width: 95%;
   margin: 0px auto;
+  .logo {
+    .cls-1{
+      fill:#4426c7;
+    }
+    .cls-2{
+      fill:#252525;
+    }
+  }
   .pb-dashboard-tab-panel {
       .components-tab-panel__tab-content {
         .pb-container {
@@ -54,9 +62,14 @@
       .components-tab-panel__tabs-item {
         color: #171717;
         cursor: pointer;
-        font-size: 16px;
+        font-size: 15px;
         font-weight: 500;
         position: relative;
+        background: none !important;
+        border: 0;
+        line-height: 52px;
+        box-shadow: none !important;
+        flex: none;
         &:not(:first-child) {
           margin-left: 35px;
         }
@@ -77,15 +90,6 @@
       border-top-left-radius: 20px;
       border-top-right-radius: 20px;
     }
-    .components-tab-panel__tabs-item {
-      background: none !important;
-      border: 0;
-      line-height: 4;
-      height: auto;
-      box-shadow: none !important;
-      flex: none;
-      font-size: 15px;
-    }
   .overlay-actions {
       position: absolute;
       width: 100%;
@@ -100,33 +104,36 @@
       margin-top: 20px;
     }
     .pb-card {
-      display: flex;
-      padding: 40px;
-      height: 100%;
+      padding: 30px;
       box-sizing: border-box;
-      border: 1px dashed #cdcdcd;
+      border: 1px solid #cdcdcd;
+      border-radius: 20px;
+      margin-bottom: 27px;
       .card-body {
-        display: grid;
-        row-gap: 20px;
-        flex: 1;
+        display: flex;
+        gap: 20px;
+        justify-content: center;
       }
     }
     .pb-support {
       .pb-card {
-        text-align: center;
-        .pb-card-title {
+        h2 {
+          margin-top: 0px;
+          margin-bottom: 10px;
+        }
+        .pb-card-icon {
           .icon {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            color: #fff;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: #f9bb32;
-            margin-bottom: 20px;
+            color: #e8e3ff;
+            width: 60px;
+            height: 60px;
+            border-radius: 33%;
+            background-color: #efebff;
+            border: 2px solid #ccc5ed;
             svg {
-              fill: currentColor;
+              fill: #efebff;
             }
           }
           h2 {
@@ -139,6 +146,13 @@
             margin: 0;
           }
         }
+      }
+    }
+    .pb-Subscribe {
+      .pb-card {
+        flex-direction: column;
+        text-align: center;
+        height: 100%;
       }
     }
 

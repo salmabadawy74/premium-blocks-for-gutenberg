@@ -69,29 +69,33 @@ const Support = () => {
 
     const loadingClass = isLoading ? ' loading' : '';
     return <Container>
-        <h2 className="pb-section-title"><span className='icon'><Dashicon icon="sos" /></span>{__('Have a Question?', "premium-blocks-for-gutenberg")}</h2>
-        <Grid columns={3} gap={8} className='pb-support'>
+        <Grid columns={2} gap={8} className='pb-support'>
+            <div className="pb-support">
             <Card>
-                <div className='pb-card-title'>
+                <div className='pb-card-icon'>
                     <span className="icon">
-                        <svg
-                            version="1.1"
-                            id="Layer_1"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width={40}
-                            height={40}
-                            viewBox="0 0 512 512"
-                        >
-                            <path
-                                d="M205.5,308.5l3.1,13.9h94.6l3.1-13.9c2.1-9.4,6.6-18.3,13.6-24.9c18.4-17.4,29.1-41.8,29.1-67.5c0-51.3-41.7-92.8-93-92.9
-                                    c-51.3,0-93,41.6-93,92.9c0,25.7,10.7,50,29,67.5C198.9,290.3,203.4,299.1,205.5,308.5z M213,342.4l6.3,28.3
-                                    c2.4,10.6,11.8,18.2,22.7,18.2h27.8c10.9,0,20.3-7.6,22.7-18.2l6.3-28.3H213z"
-                            />
-                        </svg>
+                    <svg 
+                        width="30" 
+                        height="30" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        xmlns="http://www.w3.org/2000/svg">
+                        <g id="Iconly/Curved/3 User">
+                        <g id="3 User">
+                        <path id="Stroke 1" fill-rule="evenodd" clip-rule="evenodd" d="M11.9724 20.3683C8.73343 20.3683 5.96643 19.8783 5.96643 17.9163C5.96643 15.9543 8.71543 14.2463 11.9724 14.2463C15.2114 14.2463 17.9784 15.9383 17.9784 17.8993C17.9784 19.8603 15.2294 20.3683 11.9724 20.3683Z" stroke="#4426c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Stroke 3" fill-rule="evenodd" clip-rule="evenodd" d="M11.9725 11.4488C14.0985 11.4488 15.8225 9.72576 15.8225 7.59976C15.8225 5.47376 14.0985 3.74976 11.9725 3.74976C9.84645 3.74976 8.12245 5.47376 8.12245 7.59976C8.11645 9.71776 9.82645 11.4418 11.9455 11.4488H11.9725Z" stroke="#4426c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Stroke 5" d="M18.3622 10.3915C19.5992 10.0605 20.5112 8.93254 20.5112 7.58954C20.5112 6.18854 19.5182 5.01854 18.1962 4.74854" stroke="#4426c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Stroke 7" d="M18.9431 13.5444C20.6971 13.5444 22.1951 14.7334 22.1951 15.7954C22.1951 16.4204 21.6781 17.1014 20.8941 17.2854" stroke="#4426c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Stroke 9" d="M5.58372 10.3915C4.34572 10.0605 3.43372 8.93254 3.43372 7.58954C3.43372 6.18854 4.42772 5.01854 5.74872 4.74854" stroke="#4426c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Stroke 11" d="M5.00176 13.5444C3.24776 13.5444 1.74976 14.7334 1.74976 15.7954C1.74976 16.4204 2.26676 17.1014 3.05176 17.2854" stroke="#4426c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                        </g>
+                    </svg>
                     </span>
-                    <h2>{__('Knowledge Base', "premium-blocks-for-gutenberg")}</h2>
+                    
                 </div>
                 <div className='pb-card-body'>
+                    <h2>{__('Need Help?', "premium-blocks-for-gutenberg")}</h2>
                     <p>{__('Pb Theme documentation library will guide you to build your next Pb website easily without any need to touch a single line of code.', "premium-blocks-for-gutenberg")}</p>
                 </div>
                 <div className='pb-card-action'>
@@ -99,39 +103,23 @@ const Support = () => {
                 </div>
             </Card>
             <Card>
-                <div className='pb-card-title'>
+                <div className='pb-card-icon'>
                     <span className="icon">
-                        <svg
-                            version="1.1"
-                            id="Layer_1"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width={40}
-                            height={40}
-                            viewBox="0 0 512 512"
-                        >
-                            <path class="st0" d="M252.8,123.7c-64.4,0-102.9,36-102.9,96.3v23.4c-8.3,6.2-13.3,15.8-13.3,26.4c0,15.6,10.9,28.8,25.5,32.3
-                            c13.2,52.5,47.7,87.2,87.4,87.2c5.5,0,10-4.5,10-10s-4.5-10-10-10c-31.2,0-59.8-32.3-69.5-78.4c-1-4.6-5-7.9-9.7-7.9
-                            c-0.2,0-0.5,0-0.8,0c-7.1-0.2-12.9-6.1-12.9-13.3c0-5.1,2.9-9.6,7.6-11.8c3.5-1.7,5.7-5.2,5.7-9V231c25.6-6.7,41.6-20.4,50.2-29.9
-                            c10.9,6.6,32.4,15.5,69.3,15.5c14.3,0,26.6-1.3,36.5-2.9c1.6,4.7,3.3,11.5,3.3,19.5v66.4c0,16.6-13.3,29.9-29.9,29.9h-12.2
-                            c-3.8-8.1-12-13.3-21-13.3c-12.8,0-23.2,10.4-23.2,23.2c0,12.8,10.4,23.2,23.2,23.2c9,0,17.1-5.2,21-13.3h12.2
-                            c26.3,0,47.9-20.6,49.6-46.5h0.2c14.7,0,26.6-11.9,26.6-26.6v-13.3c0-14.7-11.9-26.6-26.6-26.6V233c0-9.7-1.9-18.3-3.9-24.5
-                            c3.9-2.2,7-5.5,8.8-9.6c2.4-5.4,2.3-11.5-0.2-16.8C336,145.1,299.2,123.7,252.8,123.7z M216.3,256.5c-7.3,0-13.3,5.9-13.3,13.3
-                            s5.9,13.3,13.3,13.3c7.3,0,13.3-5.9,13.3-13.3S223.7,256.5,216.3,256.5z M282.7,256.5c-7.3,0-13.3,6-13.2,13.3
-                            c0,7.1,5.6,12.9,12.7,13.2c0.2,0,0.4,0,0.6,0c7.3,0,13.3-5.9,13.3-13.3S290.1,256.5,282.7,256.5z"/>
-                            <path d="M252.6,123.2c-64.4,0-102.9,36-102.9,96.3v23.4c-8.3,6.2-13.3,15.8-13.3,26.4c0,15.6,10.9,28.8,25.5,32.3
-                            c13.2,52.5,47.7,87.2,87.4,87.2c5.5,0,10-4.5,10-10s-4.5-10-10-10c-31.2,0-59.8-32.3-69.5-78.4c-1-4.6-5-7.9-9.7-7.9
-                            c-0.2,0-0.5,0-0.8,0c-7.1-0.2-12.9-6.1-12.9-13.3c0-5.1,2.9-9.6,7.6-11.8c3.5-1.7,5.7-5.2,5.7-9v-17.9c25.6-6.7,41.6-20.4,50.2-29.9
-                            c10.9,6.6,32.4,15.5,69.3,15.5c14.3,0,26.6-1.3,36.5-2.9c1.6,4.7,3.3,11.5,3.3,19.5v66.4c0,16.6-13.3,29.9-29.9,29.9h-12.2
-                            c-3.8-8.1-12-13.3-21-13.3c-12.8,0-23.2,10.4-23.2,23.2s10.4,23.2,23.2,23.2c9,0,17.1-5.2,21-13.3h12.2c26.3,0,47.9-20.6,49.6-46.5
-                            h0.2c14.7,0,26.6-11.9,26.6-26.6v-13.3c0-14.7-11.9-26.6-26.6-26.6v-3.3c0-9.7-1.9-18.3-3.9-24.5c3.9-2.2,7-5.5,8.8-9.6
-                            c2.4-5.4,2.3-11.5-0.2-16.8C335.8,144.6,299,123.2,252.6,123.2z M216.1,256c-7.3,0-13.3,5.9-13.3,13.3s5.9,13.3,13.3,13.3
-                            c7.3,0,13.3-5.9,13.3-13.3S223.5,256,216.1,256z M282.5,256c-7.3,0-13.3,6-13.2,13.3c0,7.1,5.6,12.9,12.7,13.2c0.2,0,0.4,0,0.6,0
-                            c7.3,0,13.3-5.9,13.3-13.3S289.9,256,282.5,256z"/>
-                        </svg>
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="Iconly/Curved/Paper">
+                        <g id="Paper">
+                        <path id="Stroke 1" d="M14.3053 15.45H8.90527" stroke="#4426c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Stroke 2" d="M12.2604 11.4387H8.90442" stroke="#4426c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Stroke 3" fill-rule="evenodd" clip-rule="evenodd" d="M20.1598 8.3L14.4898 2.9C13.7598 2.8 12.9398 2.75 12.0398 2.75C5.74978 2.75 3.64978 5.07 3.64978 12C3.64978 18.94 5.74978 21.25 12.0398 21.25C18.3398 21.25 20.4398 18.94 20.4398 12C20.4398 10.58 20.3498 9.35 20.1598 8.3Z" stroke="#4426c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Stroke 5" d="M13.9342 2.83276V5.49376C13.9342 7.35176 15.4402 8.85676 17.2982 8.85676H20.2492" stroke="#4426c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                        </g>
+                    </svg>
                     </span>
-                    <h2>{__('Need Help?', "premium-blocks-for-gutenberg")}</h2>
+                    
                 </div>
                 <div className='pb-card-body'>
+                    <h2>{__('Need Help?', "premium-blocks-for-gutenberg")}</h2>
                     <p>{__('Have a question? Pb support team is here to help you by answering your questions and handling your issues within 24-48 hours.', "premium-blocks-for-gutenberg")}</p>
                 </div>
                 <div className='pb-card-action'>
@@ -139,47 +127,48 @@ const Support = () => {
                 </div>
             </Card>
             <Card>
-                <div className='pb-card-title'>
+                <div className='pb-card-icon'>
                     <span className="icon">
-                        <svg
-                            version="1.1"
-                            id="Layer_1"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width={40}
-                            height={40}
-                            viewBox="0 0 512 512"
-                        >
-                            <path id="svgexport-28_2_" d="M163.1,222.8c-18.3,0-33.2,14.9-33.2,33.2s14.9,33.2,33.2,33.2s33.2-14.9,33.2-33.2
-                            S181.4,222.8,163.1,222.8z M256,222.8c-22,0-39.8,17.8-39.8,39.8s17.8,39.8,39.8,39.8s39.8-17.8,39.8-39.8S278,222.8,256,222.8z
-                            M206.1,311.7c-3-1.7-6.4-2.6-9.8-2.6h-66.4c-11,0-19.9,8.9-19.9,19.9v4c0,20.1,23.3,35.9,53.1,35.9c7.9,0,15.7-1.1,23.2-3.5
-                            c-2.2-5.2-3.3-10.8-3.3-16.4v-3.3C183,330.7,192.1,317.2,206.1,311.7z M348.9,222.8c-18.3,0-33.2,14.9-33.2,33.2
-                            s14.9,33.2,33.2,33.2s33.2-14.9,33.2-33.2S367.3,222.8,348.9,222.8z M382.1,309h-66.4c-3.4,0-6.8,0.9-9.8,2.6
-                            c13.9,5.5,23.1,18.9,23.1,33.9v3.3c0,5.6-1.1,11.2-3.3,16.4c7.5,2.4,15.4,3.6,23.2,3.5c29.8,0,53.1-15.7,53.1-35.9v-4
-                            C402,318,393.1,309,382.1,309z M305.8,222.8c-2.6,0-5.2-1-7-2.9l-17-17h-22.4c-12.8,0-23.2-10.4-23.2-23.2v-33.2
-                            c0-12.8,10.4-23.2,23.2-23.2h92.9c12.8,0,23.2,10.4,23.2,23.2v33.2c0,12.8-10.4,23.2-23.2,23.2h-22.4l-17,17
-                            C311,221.8,308.4,222.8,305.8,222.8z M256,388.8c-33.5,0-59.8-17.5-59.8-39.8v-3.3c0-12.8,10.4-23.2,23.2-23.2h73
-                            c12.8,0,23.2,10.4,23.2,23.2v3.3C315.8,371.2,289.5,388.8,256,388.8z"/>
-                        </svg>
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="Iconly/Curved/Ticket Star">
+                        <g id="Ticket Star">
+                        <path id="Stroke 1" fill-rule="evenodd" clip-rule="evenodd" d="M21.4399 13.9939C18.7789 13.9939 18.7789 9.87952 21.4399 9.87952C21.4399 5.11236 21.4399 3.41089 12.0449 3.41089C2.6499 3.41089 2.6499 5.11236 2.6499 9.87952C5.3109 9.87952 5.3109 13.9939 2.6499 13.9939C2.6499 18.762 2.6499 20.4635 12.0449 20.4635C21.4399 20.4635 21.4399 18.762 21.4399 13.9939Z" stroke="#4426c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Stroke 3" fill-rule="evenodd" clip-rule="evenodd" d="M12.0449 9.17114C11.3619 9.17114 11.2969 10.2606 10.8909 10.6462C10.4839 11.0308 9.22087 10.5912 9.04487 11.2743C8.86987 11.9583 10.0069 12.1904 10.1479 12.7768C10.2879 13.3632 9.59387 14.1875 10.1869 14.5986C10.7809 15.0079 11.4199 14.0804 12.0449 14.0804C12.6699 14.0804 13.3089 15.0079 13.9029 14.5986C14.4969 14.1875 13.8019 13.3632 13.9419 12.7768C14.0829 12.1904 15.2199 11.9583 15.0449 11.2743C14.8689 10.5912 13.6059 11.0308 13.1989 10.6462C12.7929 10.2606 12.7279 9.17114 12.0449 9.17114Z" stroke="#4426c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                        </g>
+                    </svg>
+
                     </span>
-                    <h2>{__('Follow us', "premium-blocks-for-gutenberg")}</h2>
+                    
                 </div>
                 <div className='pb-card-body'>
+                    <h2>{__('Follow us', "premium-blocks-for-gutenberg")}</h2>
                     <p>{__('Come and join our Facebook group! Share your thoughts, opinions, suggestions, and help others. You will always be more than welcome!', "premium-blocks-for-gutenberg")}</p>
                 </div>
                 <div className='pb-card-action'>
                     <a className='pb-button primary' target='_blank' href="https://www.facebook.com/groups/468885553919377">{__('Facebook Group', "premium-blocks-for-gutenberg")}</a>
                 </div>
             </Card>
-        </Grid>
-        <Grid columns={1} style={{ marginTop: '30px' }} className='pb-support'>
-            <Card>
-                <div className='pb-card-title'>
+            </div>
+            <div className="pb-Subscribe">
+            <Card className="right-card">
+                <div className='pb-card-icon'>
                     <span className="icon">
-                        <Dashicon icon="email" />
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="Iconly/Curved/Work">
+                        <g id="Work">
+                        <path id="Stroke 1" d="M11.9612 16.5167V13.8887" stroke="#4426c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Stroke 2" d="M21.0895 11.4775L21.0605 11.4985C18.6385 12.9905 15.4405 13.8915 11.9565 13.8915C8.47252 13.8915 5.28352 12.9905 2.86252 11.4985L2.83252 11.4775" stroke="#4426c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Stroke 4" fill-rule="evenodd" clip-rule="evenodd" d="M2.75024 13.3507C2.75024 7.19871 5.05324 5.14771 11.9612 5.14771C18.8702 5.14771 21.1722 7.19871 21.1722 13.3507C21.1722 19.5027 18.8702 21.5537 11.9612 21.5537C5.05324 21.5537 2.75024 19.5027 2.75024 13.3507Z" stroke="#4426c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Stroke 6" d="M15.2239 5.3692V4.7392C15.2239 3.4752 14.3009 2.4502 13.1639 2.4502H10.7589C9.62185 2.4502 8.69885 3.4752 8.69885 4.7392V5.3692" stroke="#4426c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                        </g>
+                    </svg>
                     </span>
-                    <h2>{__('Subscribe to Our Newsletter', "premium-blocks-for-gutenberg")}</h2>
+                    
                 </div>
                 <div className='pb-card-body'>
+                    <h2>{__('Subscribe to Our Newsletter', "premium-blocks-for-gutenberg")}</h2>
                     <p>{__('Enter your email address and be the first to know the latest features, offers, and updates.', "premium-blocks-for-gutenberg")}</p>
                 </div>
                 <div className='pb-card-action pb-subscribe'>
@@ -189,6 +178,7 @@ const Support = () => {
                     </div>
                 </div>
             </Card>
+            </div>
         </Grid>
     </Container>
 }

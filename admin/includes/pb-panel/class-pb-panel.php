@@ -60,6 +60,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 				'breadcrumbs' => true,
 				'search'      => true,
 				'banner'      => true,
+				'button'      => true,
 			);
 
 			return array_merge( $default_options, $options );
@@ -222,24 +223,29 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 		public static function panel_options() {
 			$options = array(
 				'trigger'     => array(
-					'type'          => 'pb-button',
-					'label'         => __( 'Trigger', 'premium-blocks-for-gutenberg' ),
-					'filter_blocks' => array( 'creative', 'all' ),
+					'type'     => 'pb-button',
+					'label'    => __( 'Trigger', 'premium-blocks-for-gutenberg' ),
+					'category' => 'all',
 				),
 				'breadcrumbs' => array(
-					'type'          => 'pb-button',
-					'label'         => __( 'Breadcrumbs', 'premium-blocks-for-gutenberg' ),
-					'filter_blocks' => array( 'new', 'all' ),
+					'type'     => 'pb-button',
+					'label'    => __( 'Breadcrumbs', 'premium-blocks-for-gutenberg' ),
+					'category' => 'new',
 				),
 				'search'      => array(
-					'type'          => 'pb-button',
-					'label'         => __( 'Search', 'premium-blocks-for-gutenberg' ),
-					'filter_blocks' => array( 'creative', 'all' ),
+					'type'     => 'pb-button',
+					'label'    => __( 'Search', 'premium-blocks-for-gutenberg' ),
+					'category' => 'creative',
 				),
 				'banner'      => array(
-					'type'          => 'pb-button',
-					'label'         => __( 'Banner', 'premium-blocks-for-gutenberg' ),
-					'filter_blocks' => array( 'new', 'all' ),
+					'type'     => 'pb-button',
+					'label'    => __( 'Banner', 'premium-blocks-for-gutenberg' ),
+					'category' => 'all',
+				),
+				'button'      => array(
+					'type'     => 'pb-button',
+					'label'    => __( 'Button', 'premium-blocks-for-gutenberg' ),
+					'category' => 'new',
 				),
 			);
 				return apply_filters( 'pb_panel_options', $options );
