@@ -22712,7 +22712,7 @@ function Edit(props) {
   useEffect(() => {
     clearTimeout(istitleUpdated);
     istitleUpdated = setTimeout(handleStyle, 400);
-  }, [props.attributes.titleStyles]); // componentDidUpdate() {
+  }, [istitleUpdated]); // componentDidUpdate() {
   //     clearTimeout(istitleUpdated);
   //     istitleUpdated = setTimeout(this.handleStyle, 400);
   // }
