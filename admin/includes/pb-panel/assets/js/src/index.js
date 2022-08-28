@@ -8,6 +8,7 @@ import PanelContext, { PanelProvider } from './store/panel-store'
 import pushHistory from './common/push-history'
 import './scss/pb-panel.scss'
 import OptionsComponent from './tabs/options'
+import Setting from './tabs/setting';
 
 const { __ } = wp.i18n;
 const { TabPanel, Panel, PanelBody } = wp.components;
@@ -60,7 +61,7 @@ const RendeTabs = () => {
             className: 'system',
             priority: 30,
             data: {
-                Component: System,
+                Component: Setting,
                 props: {}
             }
         }

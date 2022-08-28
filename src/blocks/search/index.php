@@ -210,7 +210,7 @@ function render_block_premium_search( $attributes ) {
 	wp_enqueue_script(
 		'premium-search-view',
 		PREMIUM_BLOCKS_URL . 'src/blocks/search/view/view.js',
-		array(),
+		array( 'wp-element' ),
 		PREMIUM_BLOCKS_VERSION,
 		true
 	);

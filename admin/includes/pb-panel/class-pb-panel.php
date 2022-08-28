@@ -262,6 +262,8 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 					'wp-element',
 					'wp-media-utils',
 					'wp-block-editor',
+					'wp-data',
+					'wp-core-data',
 				),
 				PREMIUM_BLOCKS_VERSION,
 				true
@@ -280,9 +282,12 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 					'nonce'       => wp_create_nonce( 'pb-panel' ),
 					'system_info' => self::get_system_info(),
 					'images_url'  => PREMIUM_BLOCKS_PANEL_URL . 'assets/images/',
+					'apiData'     => get_option( 'pbg_maps_settings', array() ),
+
 				)
 			);
 		}
 	}
-	Pb_Panel::get_instance();
 }
+
+Pb_Panel::get_instance();

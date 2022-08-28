@@ -1,4 +1,3 @@
-import classnames from "classnames";
 import PremiumMediaUpload from "../../components/premium-media-upload";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
@@ -12,9 +11,8 @@ import SpacingComponent from '../../components/premium-responsive-spacing';
 import PremiumShadow from "../../components/PremiumShadow";
 import { generateBlockId, generateCss } from '../../components/HelperFunction';
 import PremiumBorder from "../../components/premium-border";
-import WebfontLoader from "../../components/typography/fontLoader";
 
-const className = "premium-maps__wrap";
+const className = "premium-maps";
 const { __ } = wp.i18n;
 const { withSelect } = wp.data
 const {
@@ -45,8 +43,10 @@ class edit extends Component {
     }
 
     componentDidMount() {
-        const { setAttributes, clientId } = this.props;
-        setAttributes({ blockId: "premium-map-" + generateBlockId(clientId) });
+        const { attributes, setAttributes, clientId } = this.props;
+        if (!attributes.blockId) {
+            setAttributes({ blockId: "premium-map-" + generateBlockId(clientId) });
+        }
         this.initMap();
     }
 
@@ -201,38 +201,6 @@ class edit extends Component {
             mapBoxShadow,
             maxWidth,
         } = this.props.attributes;
-
-        let loadTitleGoogleFonts;
-        let loadDescriptionGoogleFonts;
-        if (titleTypography?.fontFamily !== 'Default') {
-            const titleConfig = {
-                google: {
-                    families: [titleTypography.fontFamily],
-                },
-            }
-            loadTitleGoogleFonts = (
-                <WebfontLoader config={titleConfig}>
-                </WebfontLoader>
-            )
-        }
-
-        if (descriptionTypography?.fontFamily !== 'Default') {
-            const descriptionConfig = {
-                google: {
-                    families: [descriptionTypography.fontFamily],
-                },
-            }
-            loadDescriptionGoogleFonts = (
-                <WebfontLoader config={descriptionConfig}>
-                </WebfontLoader>
-            )
-        }
-
-        const mainClasses = classnames(className, {
-            " premium-desktop-hidden": hideDesktop,
-            " premium-tablet-hidden": hideTablet,
-            " premium-mobile-hidden": hideMobile,
-        });
 
         const loadStyles = () => {
             const styles = {};
@@ -587,14 +555,12 @@ class edit extends Component {
                 </InspectorControls>
             ),
             <div
-                className={`${mainClasses}`}
+                className={`${className}__wrap ${blockId} ${hideDesktop || ''} ${hideTablet || ''} ${hideMobile || ''}`}
             >
                 <div className="map-container" style={{
                     height: height + "px"
                 }} />
                 <style>{loadStyles()}</style>
-                {loadDescriptionGoogleFonts}
-                {loadTitleGoogleFonts}
             </div>
         ];
     }
