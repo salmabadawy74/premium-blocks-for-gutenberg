@@ -101,6 +101,7 @@ function Edit(props) {
         renderFancyText();
     }, [props.attributes.effect == "typing", props.attributes.repeaterFancyText]);
 
+
     const renderFancyText = () => {
         const {
             repeaterFancyText,
@@ -609,6 +610,9 @@ function Edit(props) {
                         data-loop={`${loop}`}
                         data-cursorshow={`${cursorShow}`}
                         data-cursormark={`${cursorMark}`}
+                        style={{
+                            textAlign: fancyContentAlign[props.deviceType]
+                        }}
                     >
                         <span
                             className={`premium-fancy-text-suffix-prefix premium-fancy-text-prefix-text`}
