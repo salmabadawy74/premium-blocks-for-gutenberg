@@ -27,7 +27,7 @@ let isLottieUpdated = null;
 
 function Edit(props) {
     const { setAttributes, className, clientId, attributes } = props;
-    // const [isJSONAllowed, setPrimary] = useState(false);
+    const [isJSONAllowed, setPrimary] = useState(false);
     const lottieplayer = useRef(null);
 
     useEffect(() => {
@@ -39,7 +39,7 @@ function Edit(props) {
         }
         onSelectLottieJSON();
         initLottieAnimation();
-        // setPrimary(Boolean(JsonUploadEnabled))
+        setPrimary(Boolean(JsonUploadEnabled))
     }, []);
 
     useEffect(() => {
@@ -241,7 +241,7 @@ function Edit(props) {
                 <InspectorTabs tabs={["layout", "style", "advance"]}>
                     <InspectorTab key={"layout"}>
                         <PanelBody
-                            title={__("General Settings","premium-blocks-for-gutenberg")}
+                            title={__("General Settings", "premium-blocks-for-gutenberg")}
                             className="premium-panel-body"
                             initialOpen={true}
                         >
@@ -249,7 +249,7 @@ function Edit(props) {
                                 className="lottie-remove"
                                 onClick={handleRemoveLottie}
                             >
-                                {__("Change Animation","premium-blocks-for-gutenberg")}
+                                {__("Change Animation", "premium-blocks-for-gutenberg")}
                             </button>
                             <ToggleControl
                                 label={__(
@@ -427,17 +427,17 @@ function Edit(props) {
                                 choices={[
                                     {
                                         value: "left",
-                                        label: __("Left","premium-blocks-for-gutenberg"),
+                                        label: __("Left", "premium-blocks-for-gutenberg"),
                                         icon: Icons.alignLeft,
                                     },
                                     {
                                         value: "center",
-                                        label: __("Center","premium-blocks-for-gutenberg"),
+                                        label: __("Center", "premium-blocks-for-gutenberg"),
                                         icon: Icons.alignCenter,
                                     },
                                     {
                                         value: "right",
-                                        label: __("Right","premium-blocks-for-gutenberg"),
+                                        label: __("Right", "premium-blocks-for-gutenberg"),
                                         icon: Icons.alignRight,
                                     },
                                 ]}
@@ -491,8 +491,8 @@ function Edit(props) {
                                 )}
                                 value={render}
                                 options={[
-                                    { label: __("SVG","premium-blocks-for-gutenberg"), value: "svg" },
-                                    { label: __("Canvas","premium-blocks-for-gutenberg"), value: "canvas" },
+                                    { label: __("SVG", "premium-blocks-for-gutenberg"), value: "svg" },
+                                    { label: __("Canvas", "premium-blocks-for-gutenberg"), value: "canvas" },
                                 ]}
                                 help={__(
                                     `Set render type to canvas if you're having performance issues on the page.
@@ -513,7 +513,7 @@ function Edit(props) {
                             initialOpen={true}
                         >
                             <InsideTabs>
-                                <InsideTab tabTitle={__("Normal","premium-blocks-for-gutenberg")}>
+                                <InsideTab tabTitle={__("Normal", "premium-blocks-for-gutenberg")}>
                                     <Fragment>
                                         <AdvancedPopColorControl
                                             label={__(
@@ -541,7 +541,7 @@ function Edit(props) {
                                         />
                                     </Fragment>
                                 </InsideTab>
-                                <InsideTab tabTitle={__("Hover","premium-blocks-for-gutenberg")}>
+                                <InsideTab tabTitle={__("Hover", "premium-blocks-for-gutenberg")}>
                                     <Fragment>
                                         <AdvancedPopColorControl
                                             label={__(
@@ -628,64 +628,64 @@ function Edit(props) {
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
-            <div  
-            {...useBlockProps({
-                className: classnames(
-                    className,
-                    `premium-lottie-wrap ${blockId}`,
-                    {
-                        " premium-desktop-hidden": hideDesktop,
-                        " premium-tablet-hidden": hideTablet,
-                        " premium-mobile-hidden": hideMobile,
-                    }
+            <div
+                {...useBlockProps({
+                    className: classnames(
+                        className,
+                        `premium-lottie-wrap ${blockId}`,
+                        {
+                            " premium-desktop-hidden": hideDesktop,
+                            " premium-tablet-hidden": hideTablet,
+                            " premium-mobile-hidden": hideMobile,
+                        }
                     ),
                 })}
             >
-            <div
-                id={`${blockId}`}
-                data-lottieURl={lottieURl}
-                data-trigger={trigger}
-                data-start={bottom}
-                data-end={top}
-            >
-                <style dangerouslySetInnerHTML={{ __html: loadStyles() }} />
                 <div
-                    className={`premium-lottie-animation`}
-                    onMouseEnter={
-                        "hover" === trigger
-                            ? handleLottieMouseEnter
-                            : () => (stopAnimation = true)
-                    }
-                    onMouseLeave={
-                        "hover" === trigger
-                            ? handleLottieMouseLeave
-                            : () => (stopAnimation = true)
-                    }
+                    id={`${blockId}`}
+                    data-lottieURl={lottieURl}
+                    data-trigger={trigger}
+                    data-start={bottom}
+                    data-end={top}
                 >
-                    <Lottie
-                        ref={lottieplayer}
-                        options={{
-                            loop: loop,
-                            path: lottieURl,
-                            rendererSettings: {
-                                preserveAspectRatio: "xMidYMid",
-                                className: "premium-lottie-inner",
-                            },
-                        }}
-                        isStopped={stopAnimation}
-                        speed={speed === "" ? 1 : speed}
-                        isClickToPauseDisabled={true}
-                        direction={reversedir}
-                    />
-                    {link && url !== " " && (
-                        <a
-                            rel="noopener noreferrer"
-                            target={target ? "_blank" : "_self"}
-                            href={"javascript:void(0)"}
-                        ></a>
-                    )}
+                    <style dangerouslySetInnerHTML={{ __html: loadStyles() }} />
+                    <div
+                        className={`premium-lottie-animation`}
+                        onMouseEnter={
+                            "hover" === trigger
+                                ? handleLottieMouseEnter
+                                : () => (stopAnimation = true)
+                        }
+                        onMouseLeave={
+                            "hover" === trigger
+                                ? handleLottieMouseLeave
+                                : () => (stopAnimation = true)
+                        }
+                    >
+                        <Lottie
+                            ref={lottieplayer}
+                            options={{
+                                loop: loop,
+                                path: lottieURl,
+                                rendererSettings: {
+                                    preserveAspectRatio: "xMidYMid",
+                                    className: "premium-lottie-inner",
+                                },
+                            }}
+                            isStopped={stopAnimation}
+                            speed={speed === "" ? 1 : speed}
+                            isClickToPauseDisabled={true}
+                            direction={reversedir}
+                        />
+                        {link && url !== " " && (
+                            <a
+                                rel="noopener noreferrer"
+                                target={target ? "_blank" : "_self"}
+                                href={"javascript:void(0)"}
+                            ></a>
+                        )}
+                    </div>
                 </div>
-            </div>
             </div>
         </Fragment>
     );

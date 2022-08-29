@@ -32076,8 +32076,8 @@ function Edit(props) {
     className,
     clientId,
     attributes
-  } = props; // const [isJSONAllowed, setPrimary] = useState(false);
-
+  } = props;
+  const [isJSONAllowed, setPrimary] = useState(false);
   const lottieplayer = useRef(null);
   useEffect(() => {
     setAttributes({
@@ -32091,7 +32091,8 @@ function Edit(props) {
     }
 
     onSelectLottieJSON();
-    initLottieAnimation(); // setPrimary(Boolean(JsonUploadEnabled))
+    initLottieAnimation();
+    setPrimary(Boolean(_assets_js_settings__WEBPACK_IMPORTED_MODULE_12__.JsonUploadEnabled));
   }, []);
   useEffect(() => {
     clearTimeout(isLottieUpdated);
@@ -49739,7 +49740,6 @@ function Edit(props) {
     let videoBox = videoboxRef.current,
         video,
         src;
-    console.log(videoBox);
 
     if (videoBox) {
       videoBox.addEventListener("click", () => {
@@ -49773,7 +49773,6 @@ function Edit(props) {
     autoPlay,
     loop,
     controls,
-    relatedVideos,
     mute,
     overlay,
     playIcon,
@@ -49810,8 +49809,8 @@ function Edit(props) {
 
   const loopVideo = () => {
     if (videoURL && "youtube" === videoType) {
-      if (videoURL.startsWith("http")) {
-        return loop ? `1&playlist=${videoURL.replace("https://www.youtube.com/embed/", "")}` : "0";
+      if (videoURL.startsWith("http") || videoURL.startsWith("https")) {
+        return loop ? `1&playlist=${videoURL.replace("https://www.youtube.com/watch?v=", "")}` : "0";
       } else {
         return loop ? `1&playlist=${videoURL}` : "0";
       }
@@ -49962,12 +49961,6 @@ function Edit(props) {
     checked: controls,
     onChange: newCheck => setAttributes({
       controls: newCheck
-    })
-  }), "youtube" === videoType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ToggleControl, {
-    label: __("Show Related Videos", 'premium-blocks-for-gutenberg'),
-    checked: relatedVideos,
-    onChange: newCheck => setAttributes({
-      relatedVideos: newCheck
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ToggleControl, {
     label: __("Overlay Image", 'premium-blocks-for-gutenberg'),
@@ -50168,7 +50161,19 @@ function Edit(props) {
     onChangeMobile: value => setAttributes({
       hideMobile: value ? " premium-mobile-hidden" : ""
     })
-  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, !videoURL && "self" !== videoType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Placeholder, {
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, useBlockProps({
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, `premium-video-box ${blockId} video-overlay-${overlay} premium-aspect-ratio-${ratioValue}`, {
+      " premium-desktop-hidden": hideDesktop,
+      " premium-tablet-hidden": hideTablet,
+      " premium-mobile-hidden": hideMobile
+    })
+  }), {
+    "data-type": videoType,
+    ref: videoboxRef,
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.borderCss)(boxBorder, props.deviceType),
+      boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical || 0}px ${boxShadow.blur || 10}px ${boxShadow.color} ${boxShadow.position}`
+    }
+  }), !videoURL && "self" !== videoType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Placeholder, {
     label: __('Video Box ', 'premium-blocks-for-gutenberg'),
     instructions: __("Enter video ID, for example: z1hQgVpfTKU or Embed URL", 'premium-blocks-for-gutenberg'),
     className: className
@@ -50187,20 +50192,7 @@ function Edit(props) {
     isPrimary: true,
     disabled: !url,
     type: "submit"
-  }, __('Embed', 'premium-blocks-for-gutenberg')))), !videoURL && "self" === videoType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, __('Please Click Insert to Select Video ', "premium-blocks-for-gutenberg")), videoURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
-    ref: videoboxRef
-  }, useBlockProps({
-    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, `premium-video-box ${blockId} video-overlay-${overlay} premium-aspect-ratio-${ratioValue}`, {
-      " premium-desktop-hidden": hideDesktop,
-      " premium-tablet-hidden": hideTablet,
-      " premium-mobile-hidden": hideMobile
-    })
-  }), {
-    "data-type": videoType,
-    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.borderCss)(boxBorder, props.deviceType),
-      boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical || 0}px ${boxShadow.blur || 10}px ${boxShadow.color} ${boxShadow.position}`
-    }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", {
+  }, __('Embed', 'premium-blocks-for-gutenberg')))), !videoURL && "self" === videoType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, __('Please Click Insert to Select Video ', "premium-blocks-for-gutenberg")), videoURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: loadStyles()
     }
@@ -50211,7 +50203,7 @@ function Edit(props) {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-video-box-video-container`
   }, "self" !== videoType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("iframe", {
-    src: `${(0,_index__WEBPACK_IMPORTED_MODULE_6__["default"])(videoType, videoURL)}?autoplay=${overlay ? 0 : autoPlay}&loop=${loopVideo()}&mute${"vimeo" == videoType ? "d" : ""}=${mute}&rel=${relatedVideos ? "1" : "0"}&controls=${controls ? "1" : "0"}`,
+    src: `${(0,_index__WEBPACK_IMPORTED_MODULE_6__["default"])(videoType, videoURL)}?autoplay=${overlay ? 0 : autoPlay}&loop=${loopVideo()}&mute${"vimeo" == videoType ? "d" : ""}=${mute}&rel="0"&controls=${controls ? "1" : "0"}`,
     frameborder: "0",
     gesture: "media",
     allow: "encrypted-media",
@@ -50265,7 +50257,7 @@ function Edit(props) {
       textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`
     },
     keepPlaceholderOnFocus: true
-  })))), loadDescriptionGoogleFonts));
+  }))), loadDescriptionGoogleFonts));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (withSelect(select => {
@@ -50403,7 +50395,6 @@ const save = props => {
     autoPlay,
     loop,
     controls,
-    relatedVideos,
     mute,
     overlay,
     playIcon,
@@ -50425,8 +50416,8 @@ const save = props => {
 
   const loopVideo = () => {
     if (videoURL && "youtube" === videoType) {
-      if (videoURL.startsWith("http")) {
-        return loop ? `1&playlist=${videoURL.replace("https://www.youtube.com/embed/", "")}` : "0";
+      if (videoURL.startsWith("http") || videoURL.startsWith("https")) {
+        return loop ? `1&playlist=${videoURL.replace("https://www.youtube.com/watch?v=", "")}` : "0";
       } else {
         return loop ? `1&playlist=${videoURL}` : "0";
       }
@@ -50467,7 +50458,7 @@ const save = props => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-video-box-video-container`
   }, "self" !== videoType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("iframe", {
-    src: `${(0,_index__WEBPACK_IMPORTED_MODULE_2__["default"])(videoType, videoURL)}?autoplay=${overlay ? 0 : autoPlay}&loop=${loopVideo()}&mute${"vimeo" == videoType ? "d" : ""}=${mute}&rel=${relatedVideos ? "1" : "0"}&controls=${controls ? "1" : "0"}`,
+    src: `${(0,_index__WEBPACK_IMPORTED_MODULE_2__["default"])(videoType, videoURL)}?autoplay=${overlay ? 0 : autoPlay}&loop=${loopVideo()}&mute${"vimeo" == videoType ? "d" : ""}=${mute}&rel="0"&controls=${controls ? "1" : "0"}`,
     frameborder: "0",
     gesture: "media",
     allow: "encrypted-media",
@@ -93427,7 +93418,7 @@ module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/t
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/video-box","title":"Video Box","category":"premium-blocks","attributes":{"blockId":{"type":"string"},"borderBoxUpdated":{"type":"boolean","default":false},"videoBoxId":{"type":"string"},"videoType":{"type":"string","default":"youtube"},"videoURL":{"type":"string"},"videoID":{"type":"string"},"autoPlay":{"type":"boolean","default":false},"loop":{"type":"boolean","default":false},"controls":{"type":"boolean","default":true},"relatedVideos":{"type":"boolean","default":false},"mute":{"type":"boolean","default":false},"overlay":{"type":"boolean","default":false},"videoDesc":{"type":"boolean"},"playIcon":{"type":"boolean","default":true},"playLeft":{"type":"number"},"classMigrate":{"type":"boolean","default":false},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"ratioValue":{"type":"string","default":"169"},"overlayStyles":{"type":"array","default":[{"overlayImgID":"","overlayImgURL":""}]},"playStyles":{"type":"array","default":[{"playTop":"","playSize":"","playColor":"","playBack":"","playOpacity":1,"playHoverColor":"","playHoverBackColor":""}]},"descStyles":{"type":"array","default":[{"videoDescText":"","videoDescBorderRadius":"","descLeft":"","descTop":"","videoDescColor":"","videoDescBack":"","videoDescOpacity":1}]},"videoDescTypography":{"type":"object","default":{"fontWeight":500,"fontStyle":"","textTransform":"","textDecoration":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"playBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"100","right":"100","bottom":"100","left":"100"},"Tablet":{"top":"100","right":"100","bottom":"100","left":"100"},"Mobile":{"top":"100","right":"100","bottom":"100","left":"100"}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"boxBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"playPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"descPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"descShadow":{"type":"object","default":{"color":"undefined","blur":10,"horizontal":"0","vertical":"0"}},"boxShadow":{"type":"object","default":{"color":"undefined","blur":10,"horizontal":"0","vertical":"0","position":" "}},"overlayFilter":{"type":"object","default":{"contrast":"100","blur":"0","bright":"100","saturation":"100","hue":"0"}}}}');
+module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/video-box","title":"Video Box","category":"premium-blocks","attributes":{"blockId":{"type":"string"},"borderBoxUpdated":{"type":"boolean","default":false},"videoBoxId":{"type":"string"},"videoType":{"type":"string","default":"youtube"},"videoURL":{"type":"string"},"videoID":{"type":"string"},"autoPlay":{"type":"boolean","default":false},"loop":{"type":"boolean","default":false},"controls":{"type":"boolean","default":true},"mute":{"type":"boolean","default":false},"overlay":{"type":"boolean","default":false},"videoDesc":{"type":"boolean"},"playIcon":{"type":"boolean","default":true},"playLeft":{"type":"number"},"classMigrate":{"type":"boolean","default":false},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"ratioValue":{"type":"string","default":"169"},"overlayStyles":{"type":"array","default":[{"overlayImgID":"","overlayImgURL":""}]},"playStyles":{"type":"array","default":[{"playTop":"","playSize":"","playColor":"","playBack":"","playOpacity":1,"playHoverColor":"","playHoverBackColor":""}]},"descStyles":{"type":"array","default":[{"videoDescText":"","videoDescBorderRadius":"","descLeft":"","descTop":"","videoDescColor":"","videoDescBack":"","videoDescOpacity":1}]},"videoDescTypography":{"type":"object","default":{"fontWeight":500,"fontStyle":"","textTransform":"","textDecoration":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"playBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"100","right":"100","bottom":"100","left":"100"},"Tablet":{"top":"100","right":"100","bottom":"100","left":"100"},"Mobile":{"top":"100","right":"100","bottom":"100","left":"100"}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"boxBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"playPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"descPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"descShadow":{"type":"object","default":{"color":"undefined","blur":10,"horizontal":"0","vertical":"0"}},"boxShadow":{"type":"object","default":{"color":"undefined","blur":10,"horizontal":"0","vertical":"0","position":" "}},"overlayFilter":{"type":"object","default":{"contrast":"100","blur":"0","bright":"100","saturation":"100","hue":"0"}}}}');
 
 /***/ })
 
