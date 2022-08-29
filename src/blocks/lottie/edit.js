@@ -18,7 +18,7 @@ import SpacingControl from "../../components/premium-responsive-spacing";
 import { generateCss, generateBlockId } from "../../components/HelperFunction";
 
 const { __ } = wp.i18n;
-const { useEffect, Fragment, useState, useRef } = wp.element;
+const { useEffect, Fragment } = wp.element;
 const { withSelect } = wp.data;
 const { InspectorControls, useBlockProps } = wp.blockEditor;
 const { PanelBody, TextControl, ToggleControl, SelectControl } = wp.components;
@@ -27,8 +27,8 @@ let isLottieUpdated = null;
 
 function Edit(props) {
     const { setAttributes, className, clientId, attributes } = props;
-    const [isJSONAllowed, setPrimary] = useState(false);
-    const lottieplayer = useRef(null);
+    // const [isJSONAllowed, setPrimary] = useState(false);
+    const lottieplayer = React.createRef();
 
     useEffect(() => {
         setAttributes({
@@ -39,7 +39,7 @@ function Edit(props) {
         }
         onSelectLottieJSON();
         initLottieAnimation();
-        setPrimary(Boolean(JsonUploadEnabled))
+        // setPrimary(Boolean(JsonUploadEnabled))
     }, []);
 
     useEffect(() => {
@@ -134,7 +134,19 @@ function Edit(props) {
 
     if (validJsonPath === "invalid") {
         return (
-            <div className="premium-lottie-animation-wrap">
+            <div
+                {...useBlockProps({
+                    className: classnames(
+                        className,
+                        `premium-lottie-animation-wrap`,
+                        {
+                            " premium-desktop-hidden": hideDesktop,
+                            " premium-tablet-hidden": hideTablet,
+                            " premium-mobile-hidden": hideMobile,
+                        }
+                    ),
+                })}
+            >
                 <Placeholder
                     className={className}
                     value={lottieJson}
@@ -640,51 +652,52 @@ function Edit(props) {
                         }
                     ),
                 })}
+                id={`${blockId}`}
+                data-lottieURl={lottieURl}
+                data-trigger={trigger}
+                data-start={bottom}
+                data-end={top}
             >
+                <style
+                    dangerouslySetInnerHTML={{
+                        __html: loadStyles()
+                    }}
+                />
                 <div
-                    id={`${blockId}`}
-                    data-lottieURl={lottieURl}
-                    data-trigger={trigger}
-                    data-start={bottom}
-                    data-end={top}
+                    className={`premium-lottie-animation`}
+                    onMouseEnter={
+                        "hover" === trigger
+                            ? handleLottieMouseEnter
+                            : () => (stopAnimation = true)
+                    }
+                    onMouseLeave={
+                        "hover" === trigger
+                            ? handleLottieMouseLeave
+                            : () => (stopAnimation = true)
+                    }
                 >
-                    <style dangerouslySetInnerHTML={{ __html: loadStyles() }} />
-                    <div
-                        className={`premium-lottie-animation`}
-                        onMouseEnter={
-                            "hover" === trigger
-                                ? handleLottieMouseEnter
-                                : () => (stopAnimation = true)
-                        }
-                        onMouseLeave={
-                            "hover" === trigger
-                                ? handleLottieMouseLeave
-                                : () => (stopAnimation = true)
-                        }
-                    >
-                        <Lottie
-                            ref={lottieplayer}
-                            options={{
-                                loop: loop,
-                                path: lottieURl,
-                                rendererSettings: {
-                                    preserveAspectRatio: "xMidYMid",
-                                    className: "premium-lottie-inner",
-                                },
-                            }}
-                            isStopped={stopAnimation}
-                            speed={speed === "" ? 1 : speed}
-                            isClickToPauseDisabled={true}
-                            direction={reversedir}
-                        />
-                        {link && url !== " " && (
-                            <a
-                                rel="noopener noreferrer"
-                                target={target ? "_blank" : "_self"}
-                                href={"javascript:void(0)"}
-                            ></a>
-                        )}
-                    </div>
+                    <Lottie
+                        ref={lottieplayer}
+                        options={{
+                            loop: loop,
+                            path: lottieURl,
+                            rendererSettings: {
+                                preserveAspectRatio: "xMidYMid",
+                                className: "premium-lottie-inner",
+                            },
+                        }}
+                        isStopped={stopAnimation}
+                        speed={speed === "" ? 1 : speed}
+                        isClickToPauseDisabled={true}
+                        direction={reversedir}
+                    />
+                    {link && url !== " " && (
+                        <a
+                            rel="noopener noreferrer"
+                            target={target ? "_blank" : "_self"}
+                            href={"javascript:void(0)"}
+                        ></a>
+                    )}
                 </div>
             </div>
         </Fragment>
