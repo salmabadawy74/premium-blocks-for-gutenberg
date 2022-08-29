@@ -18,7 +18,6 @@ const save = props => {
         autoPlay,
         loop,
         controls,
-        relatedVideos,
         mute,
         overlay,
         playIcon,
@@ -40,10 +39,10 @@ const save = props => {
 
     const loopVideo = () => {
         if (videoURL && "youtube" === videoType) {
-            if (videoURL.startsWith("http")) {
+            if (videoURL.startsWith("http") || videoURL.startsWith("https")) {
                 return loop
                     ? `1&playlist=${videoURL.replace(
-                        "https://www.youtube.com/embed/",
+                        "https://www.youtube.com/watch?v=",
                         ""
                     )}`
                     : "0";
@@ -94,7 +93,7 @@ const save = props => {
                                     <iframe
                                         src={`${onChangeVideoURL(videoType, videoURL)}?autoplay=${overlay ? 0 : autoPlay
                                             }&loop=${loopVideo()}&mute${"vimeo" == videoType ? "d" : ""
-                                            }=${mute}&rel=${relatedVideos ? "1" : "0"}&controls=${controls ? "1" : "0"
+                                            }=${mute}&rel="0"&controls=${controls ? "1" : "0"
                                             }`}
                                         frameborder="0"
                                         gesture="media"
