@@ -5,6 +5,7 @@ import {
 } from '@wordpress/components';
 const { __ } = wp.i18n;
 const { Dashicon } = wp.components;
+const iconArrow  = <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="19.5" height="19.5" viewBox="0 0 19.5 19.5"><defs></defs><path class="cls-1" d="M3.35,9A7.51,7.51,0,0,1,9,3.35a13.37,13.37,0,0,1,6.1,0A7.51,7.51,0,0,1,20.65,9a13.37,13.37,0,0,1,0,6.1,7.51,7.51,0,0,1-5.6,5.6,13.37,13.37,0,0,1-6.1,0,7.51,7.51,0,0,1-5.6-5.6A13.37,13.37,0,0,1,3.35,9Z" transform="translate(-2.25 -2.25)"/><path class="cls-2" d="M11,9.5,13.5,12,11,14.5" transform="translate(-2.25 -2.25)"/></svg>
 import { useState } from "@wordpress/element";
 // import Swal from 'sweetalert2'
 // import withReactContent from 'sweetalert2-react-content'
@@ -75,8 +76,8 @@ const Support = () => {
                 <div className='pb-card-icon'>
                     <span className="icon">
                     <svg 
-                        width="30" 
-                        height="30" 
+                        width="35" 
+                        height="35" 
                         viewBox="0 0 24 24" 
                         fill="none" 
                         xmlns="http://www.w3.org/2000/svg">
@@ -95,23 +96,23 @@ const Support = () => {
                     
                 </div>
                 <div className='pb-card-body'>
-                    <h2>{__('Need Help?', "premium-blocks-for-gutenberg")}</h2>
-                    <p>{__('Pb Theme documentation library will guide you to build your next Pb website easily without any need to touch a single line of code.', "premium-blocks-for-gutenberg")}</p>
+                    <h2>{__('Join The Community', "premium-blocks-for-gutenberg")}</h2>
+                    <p>{__('Join our Facebook group and be part of the community. Collaborate, interact, and suggest! You and your thoughts are more than welcome.', "premium-blocks-for-gutenberg")}</p>
                 </div>
                 <div className='pb-card-action'>
-                    <a className='pb-button primary' target='_blank' href="https://premiumblocks.io/docs/">{__('Documentation', "premium-blocks-for-gutenberg")}</a>
+                    <a target='_blank' href="https://www.facebook.com/groups/2339461846127319">{iconArrow}</a>
                 </div>
             </Card>
             <Card>
                 <div className='pb-card-icon'>
                     <span className="icon">
-                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="35" height="35" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g id="Iconly/Curved/Paper">
                         <g id="Paper">
-                        <path id="Stroke 1" d="M14.3053 15.45H8.90527" stroke="#4426c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path id="Stroke 2" d="M12.2604 11.4387H8.90442" stroke="#4426c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         <path id="Stroke 3" fill-rule="evenodd" clip-rule="evenodd" d="M20.1598 8.3L14.4898 2.9C13.7598 2.8 12.9398 2.75 12.0398 2.75C5.74978 2.75 3.64978 5.07 3.64978 12C3.64978 18.94 5.74978 21.25 12.0398 21.25C18.3398 21.25 20.4398 18.94 20.4398 12C20.4398 10.58 20.3498 9.35 20.1598 8.3Z" stroke="#4426c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         <path id="Stroke 5" d="M13.9342 2.83276V5.49376C13.9342 7.35176 15.4402 8.85676 17.2982 8.85676H20.2492" stroke="#4426c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Stroke 1" d="M14.3053 15.45H8.90527" stroke="#4426c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Stroke 2" d="M12.2604 11.4387H8.90442" stroke="#4426c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </g>
                         </g>
                     </svg>
@@ -119,17 +120,17 @@ const Support = () => {
                     
                 </div>
                 <div className='pb-card-body'>
-                    <h2>{__('Need Help?', "premium-blocks-for-gutenberg")}</h2>
-                    <p>{__('Have a question? Pb support team is here to help you by answering your questions and handling your issues within 24-48 hours.', "premium-blocks-for-gutenberg")}</p>
+                    <h2>{__('Learn How to Use Premium Blocks', "premium-blocks-for-gutenberg")}</h2>
+                    <p>{__('Take a step forward to Premium Blocks for Gutenberg. Get started now by visiting the plugin’s knowledge base. ', "premium-blocks-for-gutenberg")}</p>
                 </div>
                 <div className='pb-card-action'>
-                    <a className='pb-button primary' target='_blank' href="https://my.leap13.com/contact-support/">{__('Submit a Ticket', "premium-blocks-for-gutenberg")}</a>
+                    <a target='_blank' href="https://premiumblocks.io/docs/">{iconArrow}</a>
                 </div>
             </Card>
             <Card>
                 <div className='pb-card-icon'>
                     <span className="icon">
-                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="35" height="35" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g id="Iconly/Curved/Ticket Star">
                         <g id="Ticket Star">
                         <path id="Stroke 1" fill-rule="evenodd" clip-rule="evenodd" d="M21.4399 13.9939C18.7789 13.9939 18.7789 9.87952 21.4399 9.87952C21.4399 5.11236 21.4399 3.41089 12.0449 3.41089C2.6499 3.41089 2.6499 5.11236 2.6499 9.87952C5.3109 9.87952 5.3109 13.9939 2.6499 13.9939C2.6499 18.762 2.6499 20.4635 12.0449 20.4635C21.4399 20.4635 21.4399 18.762 21.4399 13.9939Z" stroke="#4426c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -142,11 +143,11 @@ const Support = () => {
                     
                 </div>
                 <div className='pb-card-body'>
-                    <h2>{__('Follow us', "premium-blocks-for-gutenberg")}</h2>
-                    <p>{__('Come and join our Facebook group! Share your thoughts, opinions, suggestions, and help others. You will always be more than welcome!', "premium-blocks-for-gutenberg")}</p>
+                    <h2>{__('Need Help? Open a Support Ticket', "premium-blocks-for-gutenberg")}</h2>
+                    <p>{__('Premium Blocks support team is always here to help, open a support ticket with your inquiry and you will get an answer shortly!', "premium-blocks-for-gutenberg")}</p>
                 </div>
                 <div className='pb-card-action'>
-                    <a className='pb-button primary' target='_blank' href="https://www.facebook.com/groups/468885553919377">{__('Facebook Group', "premium-blocks-for-gutenberg")}</a>
+                    <a target='_blank' href="https://my.leap13.com/contact-support">{iconArrow}</a>
                 </div>
             </Card>
             </div>
@@ -154,13 +155,13 @@ const Support = () => {
             <Card className="right-card">
                 <div className='pb-card-icon'>
                     <span className="icon">
-                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="35" height="35" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g id="Iconly/Curved/Work">
                         <g id="Work">
-                        <path id="Stroke 1" d="M11.9612 16.5167V13.8887" stroke="#4426c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path id="Stroke 2" d="M21.0895 11.4775L21.0605 11.4985C18.6385 12.9905 15.4405 13.8915 11.9565 13.8915C8.47252 13.8915 5.28352 12.9905 2.86252 11.4985L2.83252 11.4775" stroke="#4426c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         <path id="Stroke 4" fill-rule="evenodd" clip-rule="evenodd" d="M2.75024 13.3507C2.75024 7.19871 5.05324 5.14771 11.9612 5.14771C18.8702 5.14771 21.1722 7.19871 21.1722 13.3507C21.1722 19.5027 18.8702 21.5537 11.9612 21.5537C5.05324 21.5537 2.75024 19.5027 2.75024 13.3507Z" stroke="#4426c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         <path id="Stroke 6" d="M15.2239 5.3692V4.7392C15.2239 3.4752 14.3009 2.4502 13.1639 2.4502H10.7589C9.62185 2.4502 8.69885 3.4752 8.69885 4.7392V5.3692" stroke="#4426c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Stroke 1" d="M11.9612 16.5167V13.8887" stroke="#4426c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path id="Stroke 2" d="M21.0895 11.4775L21.0605 11.4985C18.6385 12.9905 15.4405 13.8915 11.9565 13.8915C8.47252 13.8915 5.28352 12.9905 2.86252 11.4985L2.83252 11.4775" stroke="#4426c7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </g>
                         </g>
                     </svg>
@@ -168,13 +169,13 @@ const Support = () => {
                     
                 </div>
                 <div className='pb-card-body'>
-                    <h2>{__('Subscribe to Our Newsletter', "premium-blocks-for-gutenberg")}</h2>
-                    <p>{__('Enter your email address and be the first to know the latest features, offers, and updates.', "premium-blocks-for-gutenberg")}</p>
+                    <h2>{__('Subscribe to Premium Blocks Newsletter', "premium-blocks-for-gutenberg")}</h2>
+                    <p>{__('Sign up to Premium Blocks newsletter and be the first to receive the latest updates, features, and news right under your footsteps!', "premium-blocks-for-gutenberg")}</p>
                 </div>
                 <div className='pb-card-action pb-subscribe'>
                     <div className="subscribe-form">
-                        <input type='text' value={email} onChange={(e) => setEmail(e.target.value)} readOnly={isLoading} />
-                        <button className={`pb-button primary${loadingClass}`} onClick={submitHandler} disabled={isLoading}>{__('Submit', "premium-blocks-for-gutenberg")}</button>
+                        <input type='text' value={email} onChange={(e) => setEmail(e.target.value)} readOnly={isLoading} placeholder="your email address" /><br />
+                        <button className={`pb-button secondary primary${loadingClass}`} onClick={submitHandler} disabled={isLoading}>{__('Submit', "premium-blocks-for-gutenberg")}</button>
                     </div>
                 </div>
             </Card>

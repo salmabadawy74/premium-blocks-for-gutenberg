@@ -6,7 +6,7 @@ const Header = () => {
         <div className='logo'>
             <Logo />
         </div>
-        <a href="https://premiumblocks.io/docs/" className='docs pb-button secondary' target="_blank">{__('Plugin Documentation', "premium-blocks-for-gutenberg")}</a>
+        <a href="https://premiumblocks.io/docs/" className='docs pb-button secondary' target="_blank">{__('Knowledge Base    ', "premium-blocks-for-gutenberg")}</a>
     </div>
 }
 

@@ -48,25 +48,30 @@ const SingleOption = ( props ) => {
     let checked = value === true ? true : false
 
     return <div id={props.id} className="pb-option-element">
-        <label>
-        <span className="customize-control-icon pb-control-icon">{PBG_Block_Icons[props.id]}</span>   
-        <span className="customize-control-title pb-control-title">{props.params.label}</span>
-        <div className="live-preview customize-control-live-preview"><a href={ `https://premiumblocks.io/gutenberg-blocks/${props.id}` } target="_blank" rel="noreferrer">{__( 'live Preview', 'premium-blocks-for-gutenberg' )}</a></div>
-        <div className="guidelines customize-control-guidelines"><a href={ `https://premiumblocks.io/docs/${props.id}` } target="_blank" rel="noreferrer">{__( 'Guidelines', 'premium-blocks-for-gutenberg' )} </a></div>
+        <div className="pb-option-element-body">
+        <div className="icon">
+            <span className="customize-control-icon pb-control-icon">{PBG_Block_Icons[props.id]}</span> 
+        </div>
 
+        <div className="pb-block-details">
+            <h2 className="customize-control-title pb-control-title">{props.params.label}{__(" Gutenberg Block", "premium-blocks-for-gutenberg")}</h2>
+            <div className="pb-block-links">
+                <div className="live-preview customize-control-live-preview"><a href={ `https://premiumblocks.io/gutenberg-blocks/${props.id}` } target="_blank" rel="noreferrer">{__( 'live Preview', 'premium-blocks-for-gutenberg' )}</a></div>
+                <div className="guidelines customize-control-guidelines"><a href={ `https://premiumblocks.io/docs/${props.id}` } target="_blank" rel="noreferrer">{__( 'Guidelines', 'premium-blocks-for-gutenberg' )} </a></div>
+            </div>
+        </div>
             {isLoading && (
                 <Dashicon className='pb-loading' icon='update' />
             )}
-        </label>
         <div className="option-actions">
-        <ToggleControl
-            checked={checked}
-            onChange={() => {
-                handleChange()
-            }}
-        />
-            </div>
-
+            <ToggleControl
+                checked={checked}
+                onChange={() => {
+                    handleChange()
+                }}
+            />
+        </div>
+        </div>
     </div>
 }
 

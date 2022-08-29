@@ -43,6 +43,7 @@
           background-color: #fff;
           border-radius: 20px;
           padding: 45px;
+          color: #252525;
         }
       }
     }
@@ -89,6 +90,7 @@
       border-bottom: 1px solid #d8d9db;
       border-top-left-radius: 20px;
       border-top-right-radius: 20px;
+      margin-top: 30px;
     }
   .overlay-actions {
       position: absolute;
@@ -101,25 +103,55 @@
       background-color: rgba(200, 200, 200, 0.8);
     }
     .components-panel__body {
-      margin-top: 20px;
+      margin-top: 25px;
     }
     .pb-card {
-      padding: 30px;
+      padding: 30px 50px;
       box-sizing: border-box;
       border: 1px solid #cdcdcd;
       border-radius: 20px;
-      margin-bottom: 27px;
+      margin-bottom: 30px;
+      &:last-child {
+        margin-bottom: 0px;
+      }
       .card-body {
         display: flex;
-        gap: 20px;
+        gap: 35px;
         justify-content: center;
+        align-items: center;
+        .pb-card-action {
+          svg {
+            height: 42px;
+            width: 30px;
+          .cls-1,
+          .cls-2{
+            fill:none;
+            stroke:#4426c7;
+            stroke-width:1.5px;
+          }
+          .cls-2{
+            stroke-linecap:round;
+            stroke-linejoin:round;
+          }
+        }
+        &:hover {
+          .cls-1 {
+            fill:#4426c7;
+          }
+          .cls-2{
+            stroke:#ffffff;
+          }
+        }
+        } 
       }
     }
     .pb-support {
       .pb-card {
         h2 {
           margin-top: 0px;
-          margin-bottom: 10px;
+          margin-bottom: 7px;
+          color: #252525;
+          font-size: 16px;
         }
         .pb-card-icon {
           .icon {
@@ -129,7 +161,7 @@
             color: #e8e3ff;
             width: 60px;
             height: 60px;
-            border-radius: 33%;
+            border-radius: 38%;
             background-color: #efebff;
             border: 2px solid #ccc5ed;
             svg {
@@ -153,6 +185,32 @@
         flex-direction: column;
         text-align: center;
         height: 100%;
+        margin-bottom: 0px;
+        .card-body {
+          flex-flow: column;
+          height: 100%;
+          .pb-card-body {
+            padding: 0px 10%;
+          }
+          .subscribe-form {
+            width: 340px;
+            input {
+              box-shadow: none;
+              line-height: 38px;
+              border: 2px solid #dcdcdc;
+              border-radius: 12px;
+              width: 100%;
+              margin-bottom: 20px;
+              &::placeholder {
+                color: #dcdcdc;
+                text-align: center;
+              }
+            }
+            button {
+              width: 100%;
+            }
+          }
+        }
       }
     }
 
@@ -218,18 +276,31 @@
     border: 1px solid #d8d9db;
     padding: 30px;
     border-radius: 20px;
-    display: flex;
-    box-sizing: border-box;
-    column-gap: 16px;
+    .pb-option-element-body {
+      display: flex;
+      box-sizing: border-box;
+      align-items: center;
+      gap: 25px;
+      .option-actions {
+        margin-left: auto;
+      }
+    }
     .pb-control-icon {
       fill: #1a1a1a;
+      svg {
+        width: 28px;
+      }
     }
     .pb-control-title {
-      font-size: 20px;
+      font-size: 16px;
       font-weight: 500;
       letter-spacing: .5px;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
       display: inline-block;
+      margin-top: 0px;
+    }
+    .pb-block-links {
+      display: flex;
     }
   }
   .components-form-toggle {
@@ -346,16 +417,6 @@
     margin-top: 15px;
     color: #2d3747;
     height: 75px;
-  }
-}
-.subscribe-form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 39px;
-  input {
-    height: 100%;
-    border-radius: 0;
   }
 }
 
