@@ -106,7 +106,7 @@
       margin-top: 25px;
     }
     .pb-card {
-      padding: 30px 50px;
+      padding: 30px;
       box-sizing: border-box;
       border: 1px solid #cdcdcd;
       border-radius: 20px;
@@ -120,6 +120,11 @@
         justify-content: center;
         align-items: center;
         .pb-card-action {
+          a {
+            &:focus {
+              box-shadow: none;
+            }
+          }
           svg {
             height: 42px;
             width: 30px;
@@ -274,13 +279,25 @@
   grid-template-columns: repeat(3,1fr);
   .pb-option-element {
     border: 1px solid #d8d9db;
-    padding: 30px;
+    padding: 25px;
     border-radius: 20px;
     .pb-option-element-body {
       display: flex;
       box-sizing: border-box;
       align-items: center;
       gap: 25px;
+      .pb-block-links {
+        .live-preview {
+          margin-right: 5px;
+        }
+        .guidelines {
+          margin-left: 5px;
+        }
+        a {
+          color: blue;
+          text-decoration: none;
+        }
+      }
       .option-actions {
         margin-left: auto;
       }
