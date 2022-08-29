@@ -84,7 +84,7 @@ class PBG_Blocks_Helper {
 		 // Gets Active Blocks.
 		self::$blocks = apply_filters( 'pb_options', get_option( 'pb_options', array() ) );
 		// Gets Plugin Admin Settings.
-		self::$config = PBG_Settings::get_enabled_keys();
+		self::$config =apply_filters( 'pb_options', get_option( 'pb_options', array() ) ) ;
 		$allow_json   = isset( self::$config['premium-upload-json'] ) ? self::$config['premium-upload-json'] : true;
 		if ( $allow_json ) {
 			add_filter( 'upload_mimes', array( $this, 'pbg_mime_types' ) ); // phpcs:ignore WordPressVIPMinimum.Hooks.RestrictedHooks.upload_mimes
