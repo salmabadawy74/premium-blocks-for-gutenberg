@@ -1,26 +1,19 @@
 {
     "apiVersion": 2,
     "version": "0.1.0",
-    "name": "premium/contentsswitcher",
+    "name": "premium/contentswitcher",
     "title": "Content Switcher",
     "icon": "content-switcher",
     "category": "premium-blocks",
     "description": "Toggle between two different content using Premium Content Switcher Block.",
-    "keywords": [
-        "content",
-        "switcher"
-    ],
+    "keywords": ["content","switcher"],
     "supports": {
         "html": false
     },
-    "script": "gpb-content-switcher-block-script",
-    "editorStyle": "file:./build/index.css",
-    "style": "file:./build/style-block.css",
     "attributes": {
         "blockId": {
             "type": "string"
         },
- 
         "align": {
             "type": "object",
             "default": {

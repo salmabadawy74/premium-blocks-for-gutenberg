@@ -17333,7 +17333,7 @@ function Edit(props) {
     className: "premium-content-switcher-two-content",
     ref: contentRef
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.InnerBlocks, {
-    template: [["premium/switcher-child"], ["premium/switcher-child"]],
+    template: [["premium/switcherchild"], ["premium/switcherchild"]],
     templateLock: "all"
   })))), loadFirstLabelGoogleFonts, loadSecondLabelGoogleFonts));
 }
@@ -17358,17 +17358,17 @@ function Edit(props) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./src/blocks/content-switcher/style.scss");
-/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/blocks/content-switcher/block.json");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./edit */ "./src/blocks/content-switcher/edit.js");
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./save */ "./src/blocks/content-switcher/save.js");
-
-
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.scss */ "./src/blocks/content-switcher/style.scss");
+/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./block.json */ "./src/blocks/content-switcher/block.json");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/blocks/content-switcher/edit.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./save */ "./src/blocks/content-switcher/save.js");
+const {
+  __
+} = wp.i18n;
+const {
+  registerBlockType
+} = wp.blocks;
 
 
 /**
@@ -17378,14 +17378,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)("premium/contentswitcher", {
+registerBlockType("premium/contentswitcher", {
   /**
    * @see ./edit.js
    */
-  ..._block_json__WEBPACK_IMPORTED_MODULE_4__,
-  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_3__["default"].content_switcher,
-  edit: _edit__WEBPACK_IMPORTED_MODULE_5__["default"],
-  save: _save__WEBPACK_IMPORTED_MODULE_6__["default"]
+  ..._block_json__WEBPACK_IMPORTED_MODULE_2__,
+  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].content_switcher,
+  edit: _edit__WEBPACK_IMPORTED_MODULE_3__["default"],
+  save: _save__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
 
 /***/ }),
@@ -54297,16 +54297,16 @@ function Edit(props) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./block.json */ "./src/blocks/switcher-child/block.json");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./edit */ "./src/blocks/switcher-child/edit.js");
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./save */ "./src/blocks/switcher-child/save.js");
-
-
+/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block.json */ "./src/blocks/switcher-child/block.json");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/blocks/switcher-child/edit.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/blocks/switcher-child/save.js");
+const {
+  __
+} = wp.i18n;
+const {
+  registerBlockType
+} = wp.blocks;
 
 /**
  * Internal dependencies
@@ -54315,17 +54315,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const {
-  name
-} = _block_json__WEBPACK_IMPORTED_MODULE_3__;
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('premium/switcher-child', {
+registerBlockType('premium/switcherchild', {
   /**
    * @see ./edit.js
    */
-  ..._block_json__WEBPACK_IMPORTED_MODULE_3__,
-  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_2__["default"].content_switcher,
-  edit: _edit__WEBPACK_IMPORTED_MODULE_4__["default"],
-  save: _save__WEBPACK_IMPORTED_MODULE_5__["default"]
+  ..._block_json__WEBPACK_IMPORTED_MODULE_1__,
+  edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
+  save: _save__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 
 /***/ }),
@@ -60063,7 +60059,7 @@ class Edit extends Component {
 
     const loopVideo = () => {
       if (videoURL && "youtube" === videoType) {
-        if (videoURL.startsWith("http")) {
+        if (videoURL.startsWith("https")) {
           return loop ? `1&playlist=${videoURL.replace("https://www.youtube.com/embed/", "")}` : "0";
         } else {
           return loop ? `1&playlist=${videoURL}` : "0";
@@ -70716,28 +70712,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../assets/js/settings */ "./assets/js/settings.js");
 /* harmony import */ var _blocks_accordion__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./blocks/accordion */ "./src/blocks/accordion/index.js");
 /* harmony import */ var _blocks_banner__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./blocks/banner */ "./src/blocks/banner/index.js");
-/* harmony import */ var _blocks_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./blocks/button */ "./src/blocks/button/index.js");
-/* harmony import */ var _blocks_count_up__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./blocks/count-up */ "./src/blocks/count-up/index.js");
-/* harmony import */ var _blocks_dual_heading__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./blocks/dual-heading */ "./src/blocks/dual-heading/index.js");
-/* harmony import */ var _blocks_icon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./blocks/icon */ "./src/blocks/icon/index.js");
-/* harmony import */ var _blocks_icon_box__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./blocks/icon-box */ "./src/blocks/icon-box/index.js");
-/* harmony import */ var _blocks_maps__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./blocks/maps */ "./src/blocks/maps/index.js");
-/* harmony import */ var _blocks_pricing_table__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./blocks/pricing-table */ "./src/blocks/pricing-table/index.js");
-/* harmony import */ var _blocks_section__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./blocks/section */ "./src/blocks/section/index.js");
-/* harmony import */ var _blocks_testimonials__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./blocks/testimonials */ "./src/blocks/testimonials/index.js");
-/* harmony import */ var _blocks_video_box__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./blocks/video-box */ "./src/blocks/video-box/index.js");
-/* harmony import */ var _blocks_fancy_text__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./blocks/fancy-text */ "./src/blocks/fancy-text/index.js");
-/* harmony import */ var _blocks_lottie__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./blocks/lottie */ "./src/blocks/lottie/index.js");
-/* harmony import */ var _blocks_Modal__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./blocks/Modal */ "./src/blocks/Modal/index.js");
-/* harmony import */ var _blocks_image_separator__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./blocks/image-separator */ "./src/blocks/image-separator/index.js");
-/* harmony import */ var _blocks_bullet_list__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./blocks/bullet-list */ "./src/blocks/bullet-list/index.js");
-/* harmony import */ var _blocks_person__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./blocks/person */ "./src/blocks/person/index.js");
-/* harmony import */ var _blocks_heading__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./blocks/heading */ "./src/blocks/heading/index.js");
-/* harmony import */ var _blocks_row__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./blocks/row */ "./src/blocks/row/index.js");
-/* harmony import */ var _blocks_breadcrumbs__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./blocks/breadcrumbs */ "./src/blocks/breadcrumbs/index.js");
-/* harmony import */ var _blocks_trigger__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./blocks/trigger */ "./src/blocks/trigger/index.js");
-/* harmony import */ var _blocks_accordion_item__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./blocks/accordion-item */ "./src/blocks/accordion-item/index.js");
-/* harmony import */ var _blocks_switcher_child__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./blocks/switcher-child */ "./src/blocks/switcher-child/index.js");
+/* harmony import */ var _blocks_switcher_child__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./blocks/switcher-child */ "./src/blocks/switcher-child/index.js");
+/* harmony import */ var _blocks_button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./blocks/button */ "./src/blocks/button/index.js");
+/* harmony import */ var _blocks_count_up__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./blocks/count-up */ "./src/blocks/count-up/index.js");
+/* harmony import */ var _blocks_dual_heading__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./blocks/dual-heading */ "./src/blocks/dual-heading/index.js");
+/* harmony import */ var _blocks_icon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./blocks/icon */ "./src/blocks/icon/index.js");
+/* harmony import */ var _blocks_icon_box__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./blocks/icon-box */ "./src/blocks/icon-box/index.js");
+/* harmony import */ var _blocks_maps__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./blocks/maps */ "./src/blocks/maps/index.js");
+/* harmony import */ var _blocks_pricing_table__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./blocks/pricing-table */ "./src/blocks/pricing-table/index.js");
+/* harmony import */ var _blocks_section__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./blocks/section */ "./src/blocks/section/index.js");
+/* harmony import */ var _blocks_testimonials__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./blocks/testimonials */ "./src/blocks/testimonials/index.js");
+/* harmony import */ var _blocks_video_box__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./blocks/video-box */ "./src/blocks/video-box/index.js");
+/* harmony import */ var _blocks_fancy_text__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./blocks/fancy-text */ "./src/blocks/fancy-text/index.js");
+/* harmony import */ var _blocks_lottie__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./blocks/lottie */ "./src/blocks/lottie/index.js");
+/* harmony import */ var _blocks_Modal__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./blocks/Modal */ "./src/blocks/Modal/index.js");
+/* harmony import */ var _blocks_image_separator__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./blocks/image-separator */ "./src/blocks/image-separator/index.js");
+/* harmony import */ var _blocks_bullet_list__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./blocks/bullet-list */ "./src/blocks/bullet-list/index.js");
+/* harmony import */ var _blocks_person__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./blocks/person */ "./src/blocks/person/index.js");
+/* harmony import */ var _blocks_heading__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./blocks/heading */ "./src/blocks/heading/index.js");
+/* harmony import */ var _blocks_row__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./blocks/row */ "./src/blocks/row/index.js");
+/* harmony import */ var _blocks_breadcrumbs__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./blocks/breadcrumbs */ "./src/blocks/breadcrumbs/index.js");
+/* harmony import */ var _blocks_trigger__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./blocks/trigger */ "./src/blocks/trigger/index.js");
+/* harmony import */ var _blocks_accordion_item__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./blocks/accordion-item */ "./src/blocks/accordion-item/index.js");
 /* harmony import */ var _blocks_content_switcher__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./blocks/content-switcher */ "./src/blocks/content-switcher/index.js");
 
 
@@ -70765,6 +70761,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+i;
 window.PremiumOptionsSettings = {
   FontAwesomeEnabled: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.FontAwesomeEnabled
 };
@@ -103598,7 +103595,7 @@ module.exports = JSON.parse('{"apiVersion":2,"name":"premium/breadcrumbs","title
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/contentsswitcher","title":"Content Switcher","icon":"content-switcher","category":"premium-blocks","description":"Toggle between two different content using Premium Content Switcher Block.","keywords":["content","switcher"],"supports":{"html":false},"script":"gpb-content-switcher-block-script","editorStyle":"file:./build/index.css","style":"file:./build/style-block.css","attributes":{"blockId":{"type":"string"},"align":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"showLabel":{"type":"boolean","default":true},"firstLabel":{"type":"string","default":"Content #1"},"secondLabel":{"type":"string","default":"Content #2"},"display":{"type":"string","default":"inline"},"labelTag":{"type":"string","default":"h3"},"backgroundTypeState2":{"type":"string","default":""},"labelStyles":{"type":"object","default":{"firstLabelColor":"rgb(84, 89, 95)","secondLabelColor":"rgb(84, 89, 95)","firstLabelBGColor":"","secondLabelBGColor":""}},"firstStateColor":{"type":"string","default":"#6ec1e4"},"secondStateColor":{"type":"string","default":"#6ec1e4"},"switcherBGColor":{"type":"string","default":"#f2f2f2"},"firstLabelPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"secondLabelPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"containerPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"containerMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"switchSize":{"type":"object","default":{"Desktop":15}},"containerRadius":{"type":"number","default":50},"containerRadiusUnit":{"type":"string","default":"%"},"switchRadius":{"type":"number","default":"1.5"},"switchRadiusUnit":{"type":"string","default":"em"},"labelSpacing":{"type":"object","default":{"Desktop":"15","Tablet":"","Mobile":""}},"containerShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}},"switchShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}},"firstLabelShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"firstLabelBoxShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}},"firstLabelTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","textTransform":"","textDecoration":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontSize":{"Desktop":20,"Tablet":20,"Mobile":20,"unit":"px"}}},"firstLabelborder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"secondLabelTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","textTransform":"","textDecoration":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontSize":{"Desktop":20,"Tablet":20,"Mobile":20,"unit":"px"}}},"secondLabelShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"secondLabelBoxShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}},"secondLabelborder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"containerBoxShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}},"containerborder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"controllerOneBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"center center","backgroundRepeat":"repeat","backgroundSize":"auto","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}},"switcherBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}},"containerBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}}}}');
+module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/contentswitcher","title":"Content Switcher","icon":"content-switcher","category":"premium-blocks","description":"Toggle between two different content using Premium Content Switcher Block.","keywords":["content","switcher"],"supports":{"html":false},"attributes":{"blockId":{"type":"string"},"align":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"showLabel":{"type":"boolean","default":true},"firstLabel":{"type":"string","default":"Content #1"},"secondLabel":{"type":"string","default":"Content #2"},"display":{"type":"string","default":"inline"},"labelTag":{"type":"string","default":"h3"},"backgroundTypeState2":{"type":"string","default":""},"labelStyles":{"type":"object","default":{"firstLabelColor":"rgb(84, 89, 95)","secondLabelColor":"rgb(84, 89, 95)","firstLabelBGColor":"","secondLabelBGColor":""}},"firstStateColor":{"type":"string","default":"#6ec1e4"},"secondStateColor":{"type":"string","default":"#6ec1e4"},"switcherBGColor":{"type":"string","default":"#f2f2f2"},"firstLabelPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"secondLabelPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"containerPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"containerMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"switchSize":{"type":"object","default":{"Desktop":15}},"containerRadius":{"type":"number","default":50},"containerRadiusUnit":{"type":"string","default":"%"},"switchRadius":{"type":"number","default":"1.5"},"switchRadiusUnit":{"type":"string","default":"em"},"labelSpacing":{"type":"object","default":{"Desktop":"15","Tablet":"","Mobile":""}},"containerShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}},"switchShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}},"firstLabelShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"firstLabelBoxShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}},"firstLabelTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","textTransform":"","textDecoration":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontSize":{"Desktop":20,"Tablet":20,"Mobile":20,"unit":"px"}}},"firstLabelborder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"secondLabelTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","textTransform":"","textDecoration":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontSize":{"Desktop":20,"Tablet":20,"Mobile":20,"unit":"px"}}},"secondLabelShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"secondLabelBoxShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}},"secondLabelborder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"containerBoxShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}},"containerborder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"controllerOneBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"center center","backgroundRepeat":"repeat","backgroundSize":"auto","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}},"switcherBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}},"containerBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}}}}');
 
 /***/ }),
 
@@ -103609,7 +103606,7 @@ module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/c
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/switcher-child","title":"Switcher Child","category":"design","parent":["premium/contentswitcher"],"description":"Toggle between two different content using Premium Content Switcher Block.","supports":{"html":false},"attributes":{"blockId":{"type":"string"}}}');
+module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/switcherchild","title":"Switcher Child","category":"design","parent":["premium/contentswitcher"],"description":"Toggle between two different content using Premium Content Switcher Block.","supports":{"inserter":false},"attributes":{"blockId":{"type":"string"}}}');
 
 /***/ }),
 

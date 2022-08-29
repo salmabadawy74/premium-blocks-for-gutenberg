@@ -1,6 +1,6 @@
-import { registerBlockType } from '@wordpress/blocks';
+const { __ } = wp.i18n;
 
-import { __ } from '@wordpress/i18n';
+const { registerBlockType } = wp.blocks
 import PBG_Block_Icons from '../../../blocks-config/block-icons'
 
 /**
@@ -10,14 +10,12 @@ import json from './block.json';
 import edit from './edit';
 import save from './save';
 
-const { name } = json;
 
-registerBlockType('premium/switcher-child', {
+registerBlockType('premium/switcherchild', {
     /**
      * @see ./edit.js
      */
     ...json,
-    icon: PBG_Block_Icons.content_switcher,
     edit,
     save
 });

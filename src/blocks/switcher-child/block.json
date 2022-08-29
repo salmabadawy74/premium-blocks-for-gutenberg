@@ -1,7 +1,7 @@
 {
     "apiVersion": 2,
     "version": "0.1.0",
-    "name": "premium/switcher-child",
+    "name": "premium/switcherchild",
     "title": "Switcher Child",
     "category": "design",
     "parent": [
@@ -9,7 +9,7 @@
     ],
     "description": "Toggle between two different content using Premium Content Switcher Block.",
     "supports": {
-        "html": false
+        "inserter": false
     },
     "attributes": {
         "blockId": {

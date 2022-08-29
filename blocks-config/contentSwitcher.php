@@ -320,12 +320,15 @@ function render_block_pbg_content_switcher( $attributes, $content ) {
  * Registers the `pbg/content-switcher` block on the server.
  */
 function register_block_pbg_content_switcher() {
-	register_block_type_from_metadata(
-		PREMIUM_BLOCKS_PATH . 'src/blocks/content-switcher',
-		array(
-			'render_callback' => 'render_block_pbg_content_switcher',
-		)
-	);
+	 if ( ! function_exists( 'register_block_type' ) ) {
+			return;
+        }
+	    register_block_type(
+			'premium/contentswitcher',
+			array(
+			'render_callback' => 'render_block_pbg_content_switcher',	
+			)
+		);
 }
 
 add_action( 'init', 'register_block_pbg_content_switcher' );
@@ -333,7 +336,7 @@ add_action( 'init', 'register_block_pbg_content_switcher' );
 function content_switcher_enqueue() {
 	wp_register_script(
 		'gpb-content-switcher-block-script',
-		PREMIUM_BLOCKS_URL . 'src/blocks/content-switcher/content-switcher.js',
+		PREMIUM_BLOCKS_URL . 'assets/js/content-switcher.js',
 		array( 'jquery' ),
 		PREMIUM_BLOCKS_VERSION,
 		true

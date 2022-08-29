@@ -339,7 +339,6 @@ class PBG_Blocks_Helper {
 			return;
 		}
         foreach ( self::$blocks as $slug => $value ) {
-
             if ( false === $value ) {
                 continue;
             }
@@ -351,6 +350,10 @@ class PBG_Blocks_Helper {
             elseif($slug==='trigger'){
              require_once  PREMIUM_BLOCKS_PATH .'blocks-config/trigger.php' ;
                 register_block_pbg_trigger();
+            }elseif($slug === 'contentswitcher'){
+                
+                require_once PREMIUM_BLOCKS_PATH .'blocks-config/contentSwitcher.php';
+                register_block_pbg_content_switcher();
             }
             elseif($slug === 'accordion'){
                 register_block_type(
@@ -382,171 +385,6 @@ class PBG_Blocks_Helper {
             }
         }
 
-	
-
-		// register_block_type(
-		// 	'premium/button',
-		// 	array(
-		// 		'render_callback' => array( $this, 'get_button_css' ),
-		// 		'editor_style'    => 'premium-blocks-editor-css',
-		// 		'editor_script'   => 'pbg-blocks-js',
-		// 	)
-		// );
-
-		// register_block_type(
-		// 	'premium/countup',
-		// 	array(
-		// 		'render_callback' => array( $this, 'get_countup_css' ),
-		// 		'editor_style'    => 'premium-blocks-editor-css',
-		// 		'editor_script'   => 'pbg-blocks-js',
-		// 	)
-		// );
-
-		// register_block_type(
-		// 	'premium/dheading-block',
-		// 	array(
-		// 		'render_callback' => array( $this, 'get_dual_css' ),
-		// 		'editor_style'    => 'premium-blocks-editor-css',
-		// 		'editor_script'   => 'pbg-blocks-js',
-		// 	)
-		// );
-
-		// register_block_type(
-		// 	'premium/fancy-text',
-		// 	array(
-		// 		'render_callback' => array( $this, 'get_fancy_text_css' ),
-		// 		'editor_style'    => 'premium-blocks-editor-css',
-		// 		'editor_script'   => 'pbg-blocks-js',
-		// 	)
-		// );
-
-		// register_block_type(
-		// 	'premium/icon',
-		// 	array(
-		// 		'render_callback' => array( $this, 'get_icon_css' ),
-		// 		'editor_style'    => 'premium-blocks-editor-css',
-		// 		'editor_script'   => 'pbg-blocks-js',
-
-		// 	)
-		// );
-
-		// register_block_type(
-		// 	'premium/icon-box',
-		// 	array(
-		// 		'render_callback' => array( $this, 'get_iconbox_css' ),
-		// 		'editor_style'    => 'premium-blocks-editor-css',
-		// 		'editor_script'   => 'pbg-blocks-js',
-
-		// 	)
-		// );
-
-		// register_block_type(
-		// 	'premium/lottie',
-		// 	array(
-		// 		'render_callback' => array( $this, 'get_lottie_css' ),
-		// 		'editor_style'    => 'premium-blocks-editor-css',
-		// 		'editor_script'   => 'pbg-blocks-js',
-
-		// 	)
-		// );
-
-		// register_block_type(
-		// 	'premium/testimonial',
-		// 	array(
-		// 		'render_callback' => array( $this, 'get_testimonial_css' ),
-		// 		'editor_style'    => 'premium-blocks-editor-css',
-		// 		'editor_script'   => 'pbg-blocks-js',
-		// 	)
-		// );
-
-		// register_block_type(
-		// 	'premium/video-box',
-		// 	array(
-		// 		'render_callback' => array( $this, 'get_videobox_css' ),
-		// 		'editor_style'    => 'premium-blocks-editor-css',
-		// 		'editor_script'   => 'pbg-blocks-js',
-		// 	)
-		// );
-
-		// register_block_type(
-		// 	'premium/pricing-table',
-		// 	array(
-		// 		'render_callback' => array( $this, 'get_pricing_css' ),
-		// 		'editor_style'    => 'premium-blocks-editor-css',
-		// 		'editor_script'   => 'pbg-blocks-js',
-		// 	)
-		// );
-		// register_block_type(
-		// 	'premium/container',
-		// 	array(
-		// 		'render_callback' => array( $this, 'get_section_css' ),
-		// 		'editor_style'    => 'premium-blocks-editor-css',
-		// 		'editor_script'   => 'pbg-blocks-js',
-		// 	)
-		// );
-		// register_block_type(
-		// 	'premium/image-separator',
-		// 	array(
-		// 		'render_callback' => array( $this, 'get_image_seperator_css' ),
-		// 		'editor_style'    => 'premium-blocks-editor-css',
-		// 		'editor_script'   => 'pbg-blocks-js',
-		// 	)
-		// );
-		// register_block_type(
-		// 	'premium/modal',
-		// 	array(
-		// 		'render_callback' => array( $this, 'get_modal_css' ),
-		// 		'editor_style'    => 'premium-blocks-editor-css',
-		// 		'editor_script'   => 'pbg-blocks-js',
-		// 	)
-		// );
-
-		// register_block_type(
-		// 	'premium/bullet-list',
-		// 	array(
-		// 		'render_callback' => array( $this, 'get_bulletList_css' ),
-		// 		'editor_style'    => 'premium-blocks-editor-css',
-		// 		'editor_script'   => 'pbg-blocks-js',
-
-		// 	)
-		// );
-
-		// register_block_type(
-		// 	'premium/person',
-		// 	array(
-		// 		'render_callback' => array( $this, 'get_person_css' ),
-		// 		'editor_style'    => 'premium-blocks-editor-css',
-		// 		'editor_script'   => 'pbg-blocks-js',
-		// 	)
-		// );
-
-		// register_block_type(
-		// 	'premium/heading',
-		// 	array(
-		// 		'render_callback' => array( $this, 'get_heading_css' ),
-		// 		'editor_style'    => 'premium-blocks-editor-css',
-		// 		'editor_script'   => 'pbg-blocks-js',
-
-		// 	)
-		// );
-		// register_block_type(
-		// 	'premium/row',
-		// 	array(
-		// 		'render_callback' => array( $this, 'get_row_css' ),
-		// 		'editor_style'    => 'premium-blocks-editor-css',
-		// 		'editor_script'   => 'pbg-blocks-js',
-		// 	)
-		// );
-
-		// register_block_type(
-		// 	'premium/maps',
-		// 	array(
-		// 		'render_callback' => array( $this, 'get_maps_css' ),
-		// 		'editor_style'    => 'premium-blocks-editor-css',
-		// 		'editor_script'   => 'pbg-blocks-js',
-
-		// 	)
-		// );
 	}
 
 	/**

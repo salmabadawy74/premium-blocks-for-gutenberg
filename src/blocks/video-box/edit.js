@@ -141,7 +141,7 @@ class Edit extends Component {
 
         const loopVideo = () => {
             if (videoURL && "youtube" === videoType) {
-                if (videoURL.startsWith("http")) {
+                if (videoURL.startsWith("https")) {
                     return loop
                         ? `1&playlist=${videoURL.replace(
                             "https://www.youtube.com/embed/",

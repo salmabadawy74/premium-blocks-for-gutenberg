@@ -965,8 +965,8 @@ function Edit(props) {
                         >
                             <InnerBlocks
                                 template={[
-                                    ["premium/switcher-child"],
-                                    ["premium/switcher-child"],
+                                    ["premium/switcherchild"],
+                                    ["premium/switcherchild"],
                                 ]}
                                 templateLock="all"
                             />

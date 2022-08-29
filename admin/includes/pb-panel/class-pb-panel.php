@@ -77,7 +77,8 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
                  'person' =>true,
                  'heading' =>true,
                 'imageseparator' =>true,
-                'row'=>true
+                'row'=>true,
+                'contentswitcher'=>true
 			);
 
 			return array_merge( $default_options, $options );
@@ -349,6 +350,12 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 					'label'         => __( 'Container', 'premium-blocks-for-gutenberg' ),
 					'filter_blocks' => array( 'new', 'all' ),
 				),
+                'contentswitcher'      => array(
+					'type'          => 'pb-button',
+					'label'         => __( 'Content Switcher', 'premium-blocks-for-gutenberg' ),
+					'filter_blocks' => array( 'new', 'all' ),
+				)
+
 
 			);
 				return apply_filters( 'pb_panel_options', $options );
