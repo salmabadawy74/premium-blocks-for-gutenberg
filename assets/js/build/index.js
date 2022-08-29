@@ -34041,9 +34041,11 @@ class Edit extends Component {
     let map = thisMap;
     let infoWindow = thisInfo;
     let latlng = new google.maps.LatLng(parseFloat(centerLat), parseFloat(centerLng));
+    console.log(map);
 
     if (!map) {
-      let mapElem = document.querySelector(`.${blockId} .map-container`);
+      let mapElem = document.getElementsByClassName(`map-container`)[0];
+      console.log(mapElem);
       map = new google.maps.Map(mapElem, {
         zoom: zoom,
         gestureHandling: "cooperative",

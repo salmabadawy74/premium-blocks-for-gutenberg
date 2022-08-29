@@ -87,9 +87,11 @@ class Edit extends Component {
             parseFloat(centerLat),
             parseFloat(centerLng)
         );
-
+        console.log(map)
         if (!map) {
-            let mapElem = document.querySelector(`.${blockId} .map-container`);
+            let mapElem = document.getElementsByClassName(`map-container`)[0];
+            console.log(mapElem)
+
             map = new google.maps.Map(mapElem, {
                 zoom: zoom,
                 gestureHandling: "cooperative",
@@ -557,7 +559,7 @@ class Edit extends Component {
                                     value={mapBoxShadow}
                                     onChange={(value) => setAttributes({ mapBoxShadow: value })}
                                 />
-                                <hr/>
+                                <hr />
                                 <PremiumBorder
                                     label={__("Border", 'premium-blocks-for-gutenberg')}
                                     value={mapBorder}
