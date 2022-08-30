@@ -47317,7 +47317,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './attributes'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block.json */ "./src/blocks/video-box/block.json");
 /* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index */ "./src/blocks/video-box/index.js");
 /* harmony import */ var hex_to_rgba__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! hex-to-rgba */ "./node_modules/hex-to-rgba/build/index.js");
 /* harmony import */ var hex_to_rgba__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(hex_to_rgba__WEBPACK_IMPORTED_MODULE_3__);
@@ -48454,7 +48454,7 @@ const deprecatedContent = [{
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, videoDescText))));
   }
 }, {
-  attributes: Object(function webpackMissingModule() { var e = new Error("Cannot find module './attributes'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
+  attributes: _block_json__WEBPACK_IMPORTED_MODULE_1__,
   save: props => {
     const {
       videoBoxId,
@@ -48598,7 +48598,7 @@ const deprecatedContent = [{
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, videoDescText))));
   }
 }, {
-  attributes: Object(function webpackMissingModule() { var e = new Error("Cannot find module './attributes'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
+  attributes: _block_json__WEBPACK_IMPORTED_MODULE_1__,
   migrate: attributes => {
     let newAttributes = {
       videoDescFamily: ""
@@ -48746,7 +48746,7 @@ const deprecatedContent = [{
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, videoDescText))));
   }
 }, {
-  attributes: Object(function webpackMissingModule() { var e = new Error("Cannot find module './attributes'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
+  attributes: _block_json__WEBPACK_IMPORTED_MODULE_1__,
   save: props => {
     const {
       videoBoxId,
