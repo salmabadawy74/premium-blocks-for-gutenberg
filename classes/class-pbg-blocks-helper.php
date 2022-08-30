@@ -6734,6 +6734,13 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'border-width', $css->render_spacing( $map_border_width['Desktop'], 'px' ) );
 			$css->add_property( 'border-radius', $css->render_spacing( $map_border_radius['Desktop'], 'px' ) );
 		}
+		if ( isset( $attr['mapBorder'] ) ) {
+			$map_border        = $attr['mapBorder'];
+			$map_border_radius = $attr['mapBorder']['borderRadius'];
+
+			$css->set_selector( $unique_id . ' > .map-container' );
+			$css->add_property( 'border-radius', $css->render_spacing( $map_border_radius['Desktop'], 'px' ) );
+		}
 		// Title.
 		if ( isset( $attr['titleTypography'] ) ) {
 			$title_typography = $attr['titleTypography'];
@@ -6800,6 +6807,13 @@ class PBG_Blocks_Helper {
 
 			$css->set_selector( $unique_id );
 			$css->add_property( 'border-width', $css->render_spacing( $map_border_width['Tablet'], 'px' ) );
+			$css->add_property( 'border-radius', $css->render_spacing( $map_border_radius['Tablet'], 'px' ) );
+		}
+		if ( isset( $attr['mapBorder'] ) ) {
+			$map_border        = $attr['mapBorder'];
+			$map_border_radius = $attr['mapBorder']['borderRadius'];
+
+			$css->set_selector( $unique_id . ' > .map-container' );
 			$css->add_property( 'border-radius', $css->render_spacing( $map_border_radius['Tablet'], 'px' ) );
 		}
 		// Title.
@@ -6869,6 +6883,13 @@ class PBG_Blocks_Helper {
 
 			$css->set_selector( $unique_id );
 			$css->add_property( 'border-width', $css->render_spacing( $map_border_width['Mobile'], 'px' ) );
+			$css->add_property( 'border-radius', $css->render_spacing( $map_border_radius['Mobile'], 'px' ) );
+		}
+		if ( isset( $attr['mapBorder'] ) ) {
+			$map_border        = $attr['mapBorder'];
+			$map_border_radius = $attr['mapBorder']['borderRadius'];
+
+			$css->set_selector( $unique_id . ' > .map-container' );
 			$css->add_property( 'border-radius', $css->render_spacing( $map_border_radius['Mobile'], 'px' ) );
 		}
 		// Title.

@@ -24,12 +24,27 @@ const BlockPlaceholder = ({
         return onSelectURL(url);
     };
 
+
     if (isJSONAllowed) {
+        const lottie_url = (
+            <span className="uagb-lottie-instructions">
+                { ' '}
+                { __(
+                    'Add Lottie animations and files to your website. You can see sample Lottie animations',
+                    'premium-blocks-for-gutenberg'
+                )}
+                <a href="https://lottiefiles.com/" target="__blank">
+                    {' '}
+                    {__('here on this')}{' '}
+                </a>
+                { __('website.')}
+            </span>
+        );
         return (
             <MediaPlaceholder
                 labels={{
                     title: __('Lottie', 'premium-blocks-for-gutenberg'),
-                    instructions: __('Add Lottie animations and files to your website.', 'premium-blocks-for-gutenberg')
+                    instructions: lottie_url
                 }}
                 accept={['application/json']}
                 allowedTypes={['application/json']}
