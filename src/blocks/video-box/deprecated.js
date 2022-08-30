@@ -1,4 +1,4 @@
-import videoBoxAttrs from "./attributes";
+import videoBoxAttrs from "./block.json";
 import onChangeVideoURL from "./index";
 import hexToRgba from 'hex-to-rgba'
 import classnames from 'classnames'
