@@ -1,8 +1,13 @@
 module.exports = function (grunt) {
     "use strict";
-
-    const pkgInfo = grunt.file.readJSON('package.json');
     const sass = require('node-sass');
+    const pkgInfo = grunt.file.readJSON('package.json');
+    const blocks = ['accordion', 'banner', 'breadcrumbs', 'bullet-list', 'button', 'content-switcher', 'count-up', 'dual-heading', 'fancy-text', 'heading', 'icon', 'icon-box', 'image-separator', 'lottie', 'maps', 'Modal', 'person', 'pricing-table', 'row', 'section', 'testimonials', 'trigger', 'video-box'];
+    const sassFiles = {};
+
+
+    blocks.map(block => sassFiles[`./assets/css/${block}.css`] = `./src/blocks/${block}/style.scss`);
+
     //Grunt Configuration
     grunt.initConfig({
         pkg: pkgInfo,
@@ -21,14 +26,8 @@ module.exports = function (grunt) {
                 implementation: sass,
             },
             dist: {
-                files: [
-                    {
-                        src: "./assets/sass/editorpanel.scss",
-                        dest: "./assets/css/editorpanel.css"
-                    }
-                ]
+                files: sassFiles
             }
-
         },
         copy: {
             main: {
@@ -110,7 +109,6 @@ module.exports = function (grunt) {
 
     // Run readme task
     grunt.registerTask("readme", ["wp_readme_to_markdown"])
-
     //Run bumpup, readme tasks
     grunt.registerTask("build", (releaseType) => {
 
