@@ -580,37 +580,6 @@ const PBG_Block_Icons = {
     d: "M8.49,16.78A.74.74,0,0,1,8,16.56.75.75,0,0,1,8,15.5l3-3-3-3A.75.75,0,1,1,9,8.44L12.54,12a.75.75,0,0,1,0,1.06L9,16.56A.74.74,0,0,1,8.49,16.78Z",
     transform: "translate(-1.75 -1.75)"
   }))),
-  megaMenu: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
-    id: "Premium_Blocks",
-    "data-name": "Premium Blocks",
-    xmlns: "http://www.w3.org/2000/svg",
-    width: "21.5",
-    height: "21.5",
-    viewBox: "0 0 21.5 21.5"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("defs", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, `.cls-1{fill:#1a1a1a;}`)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("title", null, "premium-mega-menu-block"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("g", {
-    id: "Mega_Menu",
-    "data-name": "Mega Menu"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-    class: "cls-1",
-    d: "M20.27,11.75h-4c-2,0-3-1-3-3v-4c0-2,1-3,3-3h4c2,0,3,1,3,3v4C23.25,10.78,22.28,11.75,20.27,11.75Zm-4-8.5c-1.18,0-1.48.3-1.48,1.48v4c0,1.18.3,1.48,1.48,1.48h4c1.18,0,1.48-.3,1.48-1.48v-4c0-1.18-.3-1.48-1.48-1.48Z",
-    transform: "translate(-1.75 -1.75)"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-    class: "cls-1",
-    d: "M8.81,11.74H4.73c-2,0-3-.89-3-2.73V4.48c0-1.84,1-2.73,3-2.73h4c2,0,3,.89,3,2.73V9a2.64,2.64,0,0,1-.69,2A3,3,0,0,1,8.81,11.74ZM4.73,3.25c-1.33,0-1.48.39-1.48,1.23V9c0,.86.14,1.23,1.48,1.23h4A1.87,1.87,0,0,0,10,10,1.33,1.33,0,0,0,10.25,9V4.48c0-.84-.15-1.23-1.48-1.23Z",
-    transform: "translate(-1.75 -1.75)"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-    class: "cls-1",
-    d: "M8.77,23.25h-4c-2,0-3-1-3-3v-4c0-2,1-3,3-3h4c2,0,3,1,3,3v4C11.75,22.28,10.78,23.25,8.77,23.25Zm-4-8.5c-1.18,0-1.48.3-1.48,1.48v4c0,1.18.3,1.48,1.48,1.48h4c1.18,0,1.48-.3,1.48-1.48v-4c0-1.18-.3-1.48-1.48-1.48Z",
-    transform: "translate(-1.75 -1.75)"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-    class: "cls-1",
-    d: "M21.5,16.75h-6a.75.75,0,0,1,0-1.5h6a.75.75,0,0,1,0,1.5Z",
-    transform: "translate(-1.75 -1.75)"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-    class: "cls-1",
-    d: "M21.5,20.75h-6a.75.75,0,0,1,0-1.5h6a.75.75,0,0,1,0,1.5Z",
-    transform: "translate(-1.75 -1.75)"
-  }))),
   row: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
     id: "Premium_Blocks",
     "data-name": "Premium Blocks",
@@ -32725,405 +32694,6 @@ function save(props) {
 
 /***/ }),
 
-/***/ "./src/blocks/maps/attributes.js":
-/*!***************************************!*\
-  !*** ./src/blocks/maps/attributes.js ***!
-  \***************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-const {
-  __
-} = wp.i18n;
-const attributes = {
-  blockId: {
-    type: "string"
-  },
-  mapStyle: {
-    type: "string",
-    default: "[]"
-  },
-  mapType: {
-    type: "string",
-    default: "roadmap"
-  },
-  height: {
-    type: "number",
-    default: 500
-  },
-  zoom: {
-    type: "number",
-    default: 6
-  },
-  mapTypeControl: {
-    type: "boolean",
-    default: true
-  },
-  zoomControl: {
-    type: "boolean",
-    default: true
-  },
-  fullscreenControl: {
-    type: "boolean",
-    default: true
-  },
-  streetViewControl: {
-    type: "boolean",
-    default: false
-  },
-  scrollwheel: {
-    type: "boolean",
-    default: false
-  },
-  centerLat: {
-    type: "string",
-    default: "40.7569733"
-  },
-  centerLng: {
-    type: "string",
-    default: " -73.98878250000001"
-  },
-  markerOpen: {
-    type: "boolean",
-    default: false
-  },
-  markerTitle: {
-    type: "string",
-    default: __("Awesome Title", 'premium-blocks-for-gutenberg')
-  },
-  markerDesc: {
-    type: "string",
-    default: __("Cool Description", 'premium-blocks-for-gutenberg')
-  },
-  mapMarker: {
-    type: "boolean",
-    default: true
-  },
-  markerIconUrl: {
-    type: "string"
-  },
-  markerIconId: {
-    type: "number",
-    default: ""
-  },
-  markerCustom: {
-    type: "boolean",
-    default: false
-  },
-  maxWidth: {
-    type: "number",
-    default: 300
-  },
-  titleColor: {
-    type: "string",
-    default: "#6ec1e4"
-  },
-  titleSize: {
-    type: "number",
-    default: 20
-  },
-  descColor: {
-    type: "string",
-    default: "#000"
-  },
-  descSize: {
-    type: "number",
-    default: 16
-  },
-  boxAlign: {
-    type: "object",
-    default: {
-      Desktop: "center",
-      Tablet: "center",
-      Mobile: "center"
-    }
-  },
-  boxPadding: {
-    type: "number",
-    default: "0"
-  },
-  gapBetween: {
-    type: "number",
-    default: 5
-  },
-  hideDesktop: {
-    type: 'boolean',
-    default: false
-  },
-  hideTablet: {
-    type: 'boolean',
-    default: false
-  },
-  hideMobile: {
-    type: 'boolean',
-    default: false
-  },
-  titleTypography: {
-    type: "object",
-    default: {
-      fontWeight: "400",
-      fontStyle: "",
-      letterSpacing: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      },
-      'fontFamily': __('Default', 'premium-blocks-for-gutenberg'),
-      lineHeight: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      },
-      textDecoration: "",
-      textTransform: "",
-      fontSize: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      }
-    }
-  },
-  descriptionTypography: {
-    type: "object",
-    default: {
-      fontWeight: "400",
-      fontStyle: "",
-      letterSpacing: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      },
-      'fontFamily': __('Default', 'premium-blocks-for-gutenberg'),
-      lineHeight: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      },
-      textDecoration: "",
-      textTransform: "",
-      fontSize: {
-        Desktop: "",
-        Tablet: "",
-        Mobile: "",
-        unit: "px"
-      }
-    }
-  },
-  titleMargin: {
-    type: "object",
-    default: {
-      Desktop: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Tablet: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Mobile: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      unit: 'px'
-    }
-  },
-  titlePadding: {
-    type: "object",
-    default: {
-      Desktop: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Tablet: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Mobile: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      unit: 'px'
-    }
-  },
-  descriptionMargin: {
-    type: "object",
-    default: {
-      Desktop: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Tablet: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Mobile: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      unit: 'px'
-    }
-  },
-  descriptionPadding: {
-    type: "object",
-    default: {
-      Desktop: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Tablet: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Mobile: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      unit: 'px'
-    }
-  },
-  mapMargin: {
-    type: "object",
-    default: {
-      Desktop: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Tablet: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Mobile: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      unit: 'px'
-    }
-  },
-  mapPadding: {
-    type: "object",
-    default: {
-      Desktop: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Tablet: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      Mobile: {
-        top: '',
-        right: '',
-        bottom: '',
-        left: ''
-      },
-      unit: 'px'
-    }
-  },
-  mapBorder: {
-    type: "object",
-    default: {
-      "borderType": "none",
-      "borderColor": "",
-      "borderWidth": {
-        Desktop: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        }
-      },
-      "borderRadius": {
-        Desktop: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        }
-      }
-    }
-  },
-  mapBoxShadow: {
-    type: "object",
-    default: {
-      color: "undefined",
-      blur: "10",
-      horizontal: "0",
-      vertical: "0",
-      'position': ''
-    }
-  }
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (attributes);
-
-/***/ }),
-
 /***/ "./src/blocks/maps/deprecated.js":
 /*!***************************************!*\
   !*** ./src/blocks/maps/deprecated.js ***!
@@ -33990,48 +33560,36 @@ const {
   ToggleControl
 } = wp.components;
 const {
-  InspectorControls
-} = wp.editor;
-const {
-  Component,
-  Fragment
+  useEffect,
+  Fragment,
+  useState
 } = wp.element;
+const {
+  InspectorControls,
+  useBlockProps
+} = wp.blockEditor;
 let isMapUpdated = null;
 
-class Edit extends Component {
-  constructor() {
-    super(...arguments);
-    this.state = {
-      thisAddress: "",
-      thisMap: null,
-      thisInfo: null,
-      fetching: false
-    };
-    this.initMap = this.initMap.bind(this);
-  }
-
-  componentDidMount() {
-    const {
-      setAttributes,
-      clientId
-    } = this.props;
+function Edit(props) {
+  const {
+    setAttributes,
+    className,
+    clientId
+  } = props;
+  const [thisMap, setMap] = useState(null);
+  const [thisInfo, setInfo] = useState(null);
+  useEffect(() => {
     setAttributes({
       blockId: "premium-map-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_13__.generateBlockId)(clientId)
     });
-    this.initMap();
-  }
-
-  componentDidUpdate() {
+    initMap();
+  }, []);
+  useEffect(() => {
     clearTimeout(isMapUpdated);
-    isMapUpdated = setTimeout(this.initMap, 500);
-  }
+    isMapUpdated = setTimeout(initMap, 500);
+  }, [isMapUpdated]);
 
-  initMap() {
-    if (typeof google === "undefined" || !this.props.attributes.blockId) return null;
-    const {
-      thisMap,
-      thisInfo
-    } = this.state;
+  const initMap = () => {
     const {
       blockId,
       mapStyle,
@@ -34051,15 +33609,14 @@ class Edit extends Component {
       markerIconUrl,
       markerCustom,
       maxWidth
-    } = this.props.attributes;
+    } = props.attributes;
+    if (typeof google === "undefined" || !blockId) return null;
     let map = thisMap;
     let infoWindow = thisInfo;
     let latlng = new google.maps.LatLng(parseFloat(centerLat), parseFloat(centerLng));
-    console.log(map);
 
     if (!map) {
       let mapElem = document.getElementsByClassName(`map-container`)[0];
-      console.log(mapElem);
       map = new google.maps.Map(mapElem, {
         zoom: zoom,
         gestureHandling: "cooperative",
@@ -34072,9 +33629,7 @@ class Edit extends Component {
         center: latlng,
         styles: JSON.parse(mapStyle)
       });
-      this.setState({
-        thisMap: map
-      });
+      setMap(map);
     }
 
     map.setOptions({
@@ -34091,9 +33646,7 @@ class Edit extends Component {
       infoWindow = new google.maps.InfoWindow({
         maxWidth: maxWidth
       });
-      this.setState({
-        thisInfo: infoWindow
-      });
+      setInfo(infoWindow);
     }
 
     if (mapMarker && "" !== markerTitle && "" !== markerDesc) {
@@ -34129,466 +33682,459 @@ class Edit extends Component {
         infoWindow.open(map, marker);
       });
     }
-  }
+  };
 
-  render() {
-    const {
-      isSelected,
-      setAttributes
-    } = this.props;
-    const {
-      blockId,
-      mapStyle,
-      mapType,
-      height,
-      zoom,
-      mapTypeControl,
-      zoomControl,
-      fullscreenControl,
-      streetViewControl,
-      scrollwheel,
-      centerLng,
-      centerLat,
-      markerDesc,
-      markerTitle,
-      markerOpen,
-      mapMarker,
-      markerIconUrl,
-      markerIconId,
-      markerCustom,
-      titleColor,
-      descColor,
-      boxAlign,
-      hideDesktop,
-      hideTablet,
-      hideMobile,
-      titleTypography,
-      descriptionTypography,
-      titleMargin,
-      titlePadding,
-      descriptionMargin,
-      descriptionPadding,
-      mapMargin,
-      mapPadding,
-      mapBorder,
-      mapBoxShadow,
-      maxWidth
-    } = this.props.attributes;
-    let loadTitleGoogleFonts;
-    let loadDescriptionGoogleFonts;
+  const {
+    blockId,
+    mapStyle,
+    mapType,
+    height,
+    zoom,
+    mapTypeControl,
+    zoomControl,
+    fullscreenControl,
+    streetViewControl,
+    scrollwheel,
+    centerLng,
+    centerLat,
+    markerDesc,
+    markerTitle,
+    markerOpen,
+    mapMarker,
+    markerIconUrl,
+    markerIconId,
+    markerCustom,
+    titleColor,
+    descColor,
+    boxAlign,
+    hideDesktop,
+    hideTablet,
+    hideMobile,
+    titleTypography,
+    descriptionTypography,
+    titleMargin,
+    titlePadding,
+    descriptionMargin,
+    descriptionPadding,
+    mapMargin,
+    mapPadding,
+    mapBorder,
+    mapBoxShadow,
+    maxWidth
+  } = props.attributes;
+  let loadTitleGoogleFonts;
+  let loadDescriptionGoogleFonts;
 
-    if ((titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily) !== 'Default') {
-      const titleConfig = {
-        google: {
-          families: [titleTypography.fontFamily]
-        }
-      };
-      loadTitleGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_15__["default"], {
-        config: titleConfig
-      });
-    }
-
-    if ((descriptionTypography === null || descriptionTypography === void 0 ? void 0 : descriptionTypography.fontFamily) !== 'Default') {
-      const descriptionConfig = {
-        google: {
-          families: [descriptionTypography.fontFamily]
-        }
-      };
-      loadDescriptionGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_15__["default"], {
-        config: descriptionConfig
-      });
-    }
-
-    const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, {
-      " premium-desktop-hidden": hideDesktop,
-      " premium-tablet-hidden": hideTablet,
-      " premium-mobile-hidden": hideMobile
-    });
-
-    const loadStyles = () => {
-      var _titleTypography$font, _titleTypography$font2, _titlePadding$this$pr, _titlePadding$this$pr2, _titlePadding$this$pr3, _titlePadding$this$pr4, _titleMargin$this$pro, _titleMargin$this$pro2, _titleMargin$this$pro3, _titleMargin$this$pro4, _descriptionTypograph, _descriptionTypograph2, _descriptionMargin$th, _descriptionMargin$th2, _descriptionMargin$th3, _descriptionMargin$th4, _descriptionPadding$t, _descriptionPadding$t2, _descriptionPadding$t3, _descriptionPadding$t4, _mapBorder$borderWidt, _mapBorder$borderWidt2, _mapBorder$borderWidt3, _mapBorder$borderWidt4, _mapBorder$borderWidt5, _mapBorder$borderWidt6, _mapBorder$borderWidt7, _mapBorder$borderWidt8, _mapBorder$borderRadi, _mapBorder$borderRadi2, _mapBorder$borderRadi3, _mapBorder$borderRadi4, _mapBorder$borderRadi5, _mapBorder$borderRadi6, _mapBorder$borderRadi7, _mapBorder$borderRadi8, _mapPadding$this$prop, _mapPadding$this$prop2, _mapPadding$this$prop3, _mapPadding$this$prop4, _mapMargin$this$props, _mapMargin$this$props2, _mapMargin$this$props3, _mapMargin$this$props4;
-
-      const styles = {};
-      styles[`.${blockId} .${className}__title`] = {
-        'color': `${titleColor}`,
-        'font-family': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily}!important`,
-        'font-size': `${titleTypography === null || titleTypography === void 0 ? void 0 : (_titleTypography$font = titleTypography.fontSize) === null || _titleTypography$font === void 0 ? void 0 : _titleTypography$font[this.props.deviceType]}${titleTypography === null || titleTypography === void 0 ? void 0 : (_titleTypography$font2 = titleTypography.fontSize) === null || _titleTypography$font2 === void 0 ? void 0 : _titleTypography$font2.unit}`,
-        'font-weight': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontWeight}!important`,
-        'letter-spacing': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.letterSpacing}`,
-        'line-height': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.lineHeight}`,
-        'font-style': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontStyle}`,
-        'text-transform': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textTransform}`,
-        'text-decoration': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textDecoration}`,
-        'padding-top': `${titlePadding === null || titlePadding === void 0 ? void 0 : (_titlePadding$this$pr = titlePadding[this.props.deviceType]) === null || _titlePadding$this$pr === void 0 ? void 0 : _titlePadding$this$pr.top}${titlePadding.unit}!important`,
-        'padding-right': `${titlePadding === null || titlePadding === void 0 ? void 0 : (_titlePadding$this$pr2 = titlePadding[this.props.deviceType]) === null || _titlePadding$this$pr2 === void 0 ? void 0 : _titlePadding$this$pr2.right}${titlePadding.unit}!important`,
-        'padding-bottom': `${titlePadding === null || titlePadding === void 0 ? void 0 : (_titlePadding$this$pr3 = titlePadding[this.props.deviceType]) === null || _titlePadding$this$pr3 === void 0 ? void 0 : _titlePadding$this$pr3.bottom}${titlePadding.unit}!important`,
-        'padding-left': `${titlePadding === null || titlePadding === void 0 ? void 0 : (_titlePadding$this$pr4 = titlePadding[this.props.deviceType]) === null || _titlePadding$this$pr4 === void 0 ? void 0 : _titlePadding$this$pr4.left}${titlePadding.unit}!important`,
-        'margin-top': `${titleMargin === null || titleMargin === void 0 ? void 0 : (_titleMargin$this$pro = titleMargin[this.props.deviceType]) === null || _titleMargin$this$pro === void 0 ? void 0 : _titleMargin$this$pro.top}${titleMargin.unit}!important`,
-        'margin-right': `${titleMargin === null || titleMargin === void 0 ? void 0 : (_titleMargin$this$pro2 = titleMargin[this.props.deviceType]) === null || _titleMargin$this$pro2 === void 0 ? void 0 : _titleMargin$this$pro2.right}${titleMargin.unit}!important`,
-        'margin-bottom': `${titleMargin === null || titleMargin === void 0 ? void 0 : (_titleMargin$this$pro3 = titleMargin[this.props.deviceType]) === null || _titleMargin$this$pro3 === void 0 ? void 0 : _titleMargin$this$pro3.bottom}${titleMargin.unit}!important`,
-        'margin-left': `${titleMargin === null || titleMargin === void 0 ? void 0 : (_titleMargin$this$pro4 = titleMargin[this.props.deviceType]) === null || _titleMargin$this$pro4 === void 0 ? void 0 : _titleMargin$this$pro4.left}${titleMargin.unit}!important`
-      };
-      styles[`.${blockId} .${className}__desc`] = {
-        'color': `${descColor}`,
-        'text-align': `${boxAlign === null || boxAlign === void 0 ? void 0 : boxAlign[this.props.deviceType]}!important`,
-        'font-family': `${descriptionTypography === null || descriptionTypography === void 0 ? void 0 : descriptionTypography.fontFamily}`,
-        'font-size': `${descriptionTypography === null || descriptionTypography === void 0 ? void 0 : (_descriptionTypograph = descriptionTypography.fontSize) === null || _descriptionTypograph === void 0 ? void 0 : _descriptionTypograph[this.props.deviceType]}${descriptionTypography === null || descriptionTypography === void 0 ? void 0 : (_descriptionTypograph2 = descriptionTypography.fontSize) === null || _descriptionTypograph2 === void 0 ? void 0 : _descriptionTypograph2.unit}`,
-        'font-weight': `${descriptionTypography === null || descriptionTypography === void 0 ? void 0 : descriptionTypography.fontWeight}`,
-        'letter-spacing': `${descriptionTypography === null || descriptionTypography === void 0 ? void 0 : descriptionTypography.letterSpacing}`,
-        'line-height': `${descriptionTypography === null || descriptionTypography === void 0 ? void 0 : descriptionTypography.lineHeight}`,
-        'font-style': `${descriptionTypography === null || descriptionTypography === void 0 ? void 0 : descriptionTypography.fontStyle}`,
-        'text-transform': `${descriptionTypography === null || descriptionTypography === void 0 ? void 0 : descriptionTypography.textTransform}`,
-        'text-decoration': `${descriptionTypography === null || descriptionTypography === void 0 ? void 0 : descriptionTypography.textDecoration}`,
-        'padding-top': `${descriptionMargin === null || descriptionMargin === void 0 ? void 0 : (_descriptionMargin$th = descriptionMargin[this.props.deviceType]) === null || _descriptionMargin$th === void 0 ? void 0 : _descriptionMargin$th.top}${descriptionMargin.unit}!important`,
-        'padding-right': `${descriptionMargin === null || descriptionMargin === void 0 ? void 0 : (_descriptionMargin$th2 = descriptionMargin[this.props.deviceType]) === null || _descriptionMargin$th2 === void 0 ? void 0 : _descriptionMargin$th2.right}${descriptionMargin.unit}!important`,
-        'padding-bottom': `${descriptionMargin === null || descriptionMargin === void 0 ? void 0 : (_descriptionMargin$th3 = descriptionMargin[this.props.deviceType]) === null || _descriptionMargin$th3 === void 0 ? void 0 : _descriptionMargin$th3.bottom}${descriptionMargin.unit}!important`,
-        'padding-left': `${descriptionMargin === null || descriptionMargin === void 0 ? void 0 : (_descriptionMargin$th4 = descriptionMargin[this.props.deviceType]) === null || _descriptionMargin$th4 === void 0 ? void 0 : _descriptionMargin$th4.left}${descriptionMargin.unit}!important`,
-        'margin-top': `${descriptionPadding === null || descriptionPadding === void 0 ? void 0 : (_descriptionPadding$t = descriptionPadding[this.props.deviceType]) === null || _descriptionPadding$t === void 0 ? void 0 : _descriptionPadding$t.top}${descriptionPadding.unit}!important`,
-        'margin-right': `${descriptionPadding === null || descriptionPadding === void 0 ? void 0 : (_descriptionPadding$t2 = descriptionPadding[this.props.deviceType]) === null || _descriptionPadding$t2 === void 0 ? void 0 : _descriptionPadding$t2.right}${descriptionPadding.unit}!important`,
-        'margin-bottom': `${descriptionPadding === null || descriptionPadding === void 0 ? void 0 : (_descriptionPadding$t3 = descriptionPadding[this.props.deviceType]) === null || _descriptionPadding$t3 === void 0 ? void 0 : _descriptionPadding$t3.bottom}${descriptionPadding.unit}!important`,
-        'margin-left': `${descriptionPadding === null || descriptionPadding === void 0 ? void 0 : (_descriptionPadding$t4 = descriptionPadding[this.props.deviceType]) === null || _descriptionPadding$t4 === void 0 ? void 0 : _descriptionPadding$t4.left}${descriptionPadding.unit}!important`
-      };
-      styles[`.${blockId}`] = {
-        'border-color': `${mapBorder.borderColor}`,
-        'border-style': `${mapBorder.borderType}`,
-        'border-top-width': `${mapBorder === null || mapBorder === void 0 ? void 0 : (_mapBorder$borderWidt = mapBorder.borderWidth) === null || _mapBorder$borderWidt === void 0 ? void 0 : (_mapBorder$borderWidt2 = _mapBorder$borderWidt[this.props.deviceType]) === null || _mapBorder$borderWidt2 === void 0 ? void 0 : _mapBorder$borderWidt2.top}px`,
-        'border-right-width': `${mapBorder === null || mapBorder === void 0 ? void 0 : (_mapBorder$borderWidt3 = mapBorder.borderWidth) === null || _mapBorder$borderWidt3 === void 0 ? void 0 : (_mapBorder$borderWidt4 = _mapBorder$borderWidt3[this.props.deviceType]) === null || _mapBorder$borderWidt4 === void 0 ? void 0 : _mapBorder$borderWidt4.right}px`,
-        'border-bottom-width': `${mapBorder === null || mapBorder === void 0 ? void 0 : (_mapBorder$borderWidt5 = mapBorder.borderWidth) === null || _mapBorder$borderWidt5 === void 0 ? void 0 : (_mapBorder$borderWidt6 = _mapBorder$borderWidt5[this.props.deviceType]) === null || _mapBorder$borderWidt6 === void 0 ? void 0 : _mapBorder$borderWidt6.bottom}px`,
-        'border-left-width': `${mapBorder === null || mapBorder === void 0 ? void 0 : (_mapBorder$borderWidt7 = mapBorder.borderWidth) === null || _mapBorder$borderWidt7 === void 0 ? void 0 : (_mapBorder$borderWidt8 = _mapBorder$borderWidt7[this.props.deviceType]) === null || _mapBorder$borderWidt8 === void 0 ? void 0 : _mapBorder$borderWidt8.left}px`,
-        'border-top-left-radius': `${mapBorder === null || mapBorder === void 0 ? void 0 : (_mapBorder$borderRadi = mapBorder.borderRadius) === null || _mapBorder$borderRadi === void 0 ? void 0 : (_mapBorder$borderRadi2 = _mapBorder$borderRadi[this.props.deviceType]) === null || _mapBorder$borderRadi2 === void 0 ? void 0 : _mapBorder$borderRadi2.top}px`,
-        'border-top-right-radius': `${mapBorder === null || mapBorder === void 0 ? void 0 : (_mapBorder$borderRadi3 = mapBorder.borderRadius) === null || _mapBorder$borderRadi3 === void 0 ? void 0 : (_mapBorder$borderRadi4 = _mapBorder$borderRadi3[this.props.deviceType]) === null || _mapBorder$borderRadi4 === void 0 ? void 0 : _mapBorder$borderRadi4.right}px`,
-        'border-bottom-left-radius': `${mapBorder === null || mapBorder === void 0 ? void 0 : (_mapBorder$borderRadi5 = mapBorder.borderRadius) === null || _mapBorder$borderRadi5 === void 0 ? void 0 : (_mapBorder$borderRadi6 = _mapBorder$borderRadi5[this.props.deviceType]) === null || _mapBorder$borderRadi6 === void 0 ? void 0 : _mapBorder$borderRadi6.bottom}px`,
-        'border-bottom-right-radius': `${mapBorder === null || mapBorder === void 0 ? void 0 : (_mapBorder$borderRadi7 = mapBorder.borderRadius) === null || _mapBorder$borderRadi7 === void 0 ? void 0 : (_mapBorder$borderRadi8 = _mapBorder$borderRadi7[this.props.deviceType]) === null || _mapBorder$borderRadi8 === void 0 ? void 0 : _mapBorder$borderRadi8.left}px`,
-        'padding-top': `${mapPadding === null || mapPadding === void 0 ? void 0 : (_mapPadding$this$prop = mapPadding[this.props.deviceType]) === null || _mapPadding$this$prop === void 0 ? void 0 : _mapPadding$this$prop.top}${mapPadding.unit}`,
-        'padding-right': `${mapPadding === null || mapPadding === void 0 ? void 0 : (_mapPadding$this$prop2 = mapPadding[this.props.deviceType]) === null || _mapPadding$this$prop2 === void 0 ? void 0 : _mapPadding$this$prop2.right}${mapPadding.unit}`,
-        'padding-bottom': `${mapPadding === null || mapPadding === void 0 ? void 0 : (_mapPadding$this$prop3 = mapPadding[this.props.deviceType]) === null || _mapPadding$this$prop3 === void 0 ? void 0 : _mapPadding$this$prop3.bottom}${mapPadding.unit}`,
-        'padding-left': `${mapPadding === null || mapPadding === void 0 ? void 0 : (_mapPadding$this$prop4 = mapPadding[this.props.deviceType]) === null || _mapPadding$this$prop4 === void 0 ? void 0 : _mapPadding$this$prop4.left}${mapPadding.unit}`,
-        'margin-top': `${mapMargin === null || mapMargin === void 0 ? void 0 : (_mapMargin$this$props = mapMargin[this.props.deviceType]) === null || _mapMargin$this$props === void 0 ? void 0 : _mapMargin$this$props.top}${mapMargin.unit}`,
-        'margin-right': `${mapMargin === null || mapMargin === void 0 ? void 0 : (_mapMargin$this$props2 = mapMargin[this.props.deviceType]) === null || _mapMargin$this$props2 === void 0 ? void 0 : _mapMargin$this$props2.right}${mapMargin.unit}`,
-        'margin-bottom': `${mapMargin === null || mapMargin === void 0 ? void 0 : (_mapMargin$this$props3 = mapMargin[this.props.deviceType]) === null || _mapMargin$this$props3 === void 0 ? void 0 : _mapMargin$this$props3.bottom}${mapMargin.unit}`,
-        'margin-left': `${mapMargin === null || mapMargin === void 0 ? void 0 : (_mapMargin$this$props4 = mapMargin[this.props.deviceType]) === null || _mapMargin$this$props4 === void 0 ? void 0 : _mapMargin$this$props4.left}${mapMargin.unit}`,
-        'box-shadow': `${mapBoxShadow.horizontal}px ${mapBoxShadow.vertical}px ${mapBoxShadow.blur}px ${mapBoxShadow.color} ${mapBoxShadow === null || mapBoxShadow === void 0 ? void 0 : mapBoxShadow.position}`
-      };
-      return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_13__.generateCss)(styles);
-    };
-
-    const TYPES = [{
-      value: "roadmap",
-      label: __("Road Map", 'premium-blocks-for-gutenberg')
-    }, {
-      value: "satellite",
-      label: __("Satellite", 'premium-blocks-for-gutenberg')
-    }, {
-      value: "terrain",
-      label: __("Terrain", 'premium-blocks-for-gutenberg')
-    }, {
-      value: "hybrid",
-      label: __("Hybrid", 'premium-blocks-for-gutenberg')
-    }];
-    return [typeof google !== "undefined" && isSelected && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, {
-      key: "key"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      tabs: ['layout', 'style', 'advance']
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      key: 'layout'
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Center Location", 'premium-blocks-for-gutenberg'),
-      className: "premium-panel-body",
-      initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
-      label: __("Longitude", 'premium-blocks-for-gutenberg'),
-      value: centerLng,
-      help: [__("Get your location coordinates from", 'premium-blocks-for-gutenberg'), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-        href: "https://www.latlong.net/",
-        target: "_blank"
-      }, "\xA0", __("here", 'premium-blocks-for-gutenberg'))],
-      onChange: newLng => setAttributes({
-        centerLng: newLng
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
-      label: __("Latitude", 'premium-blocks-for-gutenberg'),
-      value: centerLat,
-      onChange: newLat => setAttributes({
-        centerLat: newLat
-      })
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Marker", 'premium-blocks-for-gutenberg'),
-      className: "premium-panel-body",
-      initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __("Enable Marker", 'premium-blocks-for-gutenberg'),
-      checked: mapMarker,
-      onChange: check => setAttributes({
-        mapMarker: check
-      }),
-      help: __("Disable marker is applied on page reload", 'premium-blocks-for-gutenberg')
-    }), mapMarker && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      label: __("Max Width (PX)", 'premium-blocks-for-gutenberg'),
-      value: maxWidth,
-      min: "10",
-      max: "500",
-      onChange: newSize => setAttributes({
-        maxWidth: newSize
-      }),
-      showUnit: false,
-      defaultValue: 0
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __("Description opened by default", 'premium-blocks-for-gutenberg'),
-      checked: markerOpen,
-      onChange: newValue => setAttributes({
-        markerOpen: newValue
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __("Custom Marker Icon", 'premium-blocks-for-gutenberg'),
-      checked: markerCustom,
-      onChange: check => setAttributes({
-        markerCustom: check
-      })
-    }), markerOpen && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
-      label: __("Marker Title", 'premium-blocks-for-gutenberg'),
-      value: markerTitle,
-      onChange: newText => setAttributes({
-        markerTitle: newText
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextareaControl, {
-      label: __("Marker Description", 'premium-blocks-for-gutenberg'),
-      value: markerDesc,
-      onChange: newText => setAttributes({
-        markerDesc: newText
-      })
-    })), markerCustom && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_media_upload__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      type: "image",
-      imageID: markerIconId,
-      imageURL: markerIconUrl,
-      onSelectMedia: media => {
-        setAttributes({
-          markerIconId: media.id,
-          markerIconUrl: media.url
-        });
-      },
-      onRemoveImage: () => setAttributes({
-        markerIconId: "",
-        markerIconUrl: ""
-      })
-    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Controls", 'premium-blocks-for-gutenberg'),
-      className: "premium-panel-body",
-      initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
-      label: __("Map Type", 'premium-blocks-for-gutenberg'),
-      options: TYPES,
-      value: mapType,
-      onChange: newType => setAttributes({
-        mapType: newType
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      label: __("Map Height (PX)", 'premium-blocks-for-gutenberg'),
-      value: height,
-      min: "10",
-      max: "800",
-      onChange: newSize => setAttributes({
-        height: newSize
-      }),
-      showUnit: false,
-      defaultValue: 0
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      label: __("Zoom", 'premium-blocks-for-gutenberg'),
-      value: zoom,
-      min: "1",
-      max: "14",
-      onChange: newSize => setAttributes({
-        zoom: newSize
-      }),
-      showUnit: false,
-      defaultValue: 0
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __("Map Type Controls", 'premium-blocks-for-gutenberg'),
-      checked: mapTypeControl,
-      onChange: check => setAttributes({
-        mapTypeControl: check
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __("Zoom Controls", 'premium-blocks-for-gutenberg'),
-      checked: zoomControl,
-      onChange: check => setAttributes({
-        zoomControl: check
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __("Street View Control", 'premium-blocks-for-gutenberg'),
-      checked: streetViewControl,
-      onChange: check => setAttributes({
-        streetViewControl: check
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __("Full Screen Control", 'premium-blocks-for-gutenberg'),
-      checked: fullscreenControl,
-      onChange: check => setAttributes({
-        fullscreenControl: check
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __("Scroll Wheel Zoom", 'premium-blocks-for-gutenberg'),
-      checked: scrollwheel,
-      onChange: check => setAttributes({
-        scrollwheel: check
-      })
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Map", 'premium-blocks-for-gutenberg'),
-      className: "premium-panel-body",
-      initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextareaControl, {
-      label: __("Maps Style", 'premium-blocks-for-gutenberg'),
-      value: mapStyle,
-      help: [__("Get your custom styling from", 'premium-blocks-for-gutenberg'), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-        href: "https://snazzymaps.com/",
-        target: "_blank"
-      }, "\xA0", __("here", 'premium-blocks-for-gutenberg'))],
-      onChange: newStyle => setAttributes({
-        mapStyle: "" !== newStyle ? newStyle : "[]"
-      })
-    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      key: 'style'
-    }, mapMarker && markerTitle && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Title", 'premium-blocks-for-gutenberg'),
-      className: "premium-panel-body",
-      initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      value: titleTypography,
-      onChange: newValue => setAttributes({
-        titleTypography: newValue
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      label: __("Text Color", 'premium-blocks-for-gutenberg'),
-      colorValue: titleColor,
-      colorDefault: '',
-      onColorChange: newValue => setAttributes({
-        titleColor: newValue === undefined ? "transparent" : newValue
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_11__["default"], {
-      value: titleMargin,
-      responsive: true,
-      showUnits: true,
-      label: __("Margin", 'premium-blocks-for-gutenberg'),
-      onChange: value => setAttributes({
-        titleMargin: value
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_11__["default"], {
-      value: titlePadding,
-      responsive: true,
-      showUnits: true,
-      label: __("Padding", 'premium-blocks-for-gutenberg'),
-      onChange: value => setAttributes({
-        titlePadding: value
-      })
-    })), mapMarker && markerDesc && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Description", 'premium-blocks-for-gutenberg'),
-      className: "premium-panel-body",
-      initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_10__["default"], {
-      value: descriptionTypography,
-      onChange: newValue => setAttributes({
-        descriptionTypography: newValue
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      label: __("Text Color", 'premium-blocks-for-gutenberg'),
-      colorValue: descColor,
-      colorDefault: '',
-      onColorChange: newValue => setAttributes({
-        descColor: newValue === undefined ? "transparent" : newValue
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_11__["default"], {
-      value: descriptionMargin,
-      responsive: true,
-      showUnits: true,
-      label: __("Margin", 'premium-blocks-for-gutenberg'),
-      onChange: value => setAttributes({
-        descriptionMargin: value
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_11__["default"], {
-      value: descriptionPadding,
-      responsive: true,
-      showUnits: true,
-      label: __("Padding", 'premium-blocks-for-gutenberg'),
-      onChange: value => setAttributes({
-        descriptionPadding: value
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_8__["default"], {
-      choices: [{
-        value: 'left',
-        label: __('Left', "premium-blocks-for-gutenberg"),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_9__["default"].alignLeft
-      }, {
-        value: 'center',
-        label: __('Center', "premium-blocks-for-gutenberg"),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_9__["default"].alignCenter
-      }, {
-        value: 'right',
-        label: __('Right', "premium-blocks-for-gutenberg"),
-        icon: _components_icons__WEBPACK_IMPORTED_MODULE_9__["default"].alignRight
-      }],
-      value: boxAlign,
-      onChange: align => setAttributes({
-        boxAlign: align
-      }),
-      label: __("Align", "premium-blocks-for-gutenberg"),
-      showIcons: true
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-      title: __("Map", 'premium-blocks-for-gutenberg'),
-      className: "premium-panel-body",
-      initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_12__["default"], {
-      label: __("Shadow", 'premium-blocks-for-gutenberg'),
-      boxShadow: false,
-      value: mapBoxShadow,
-      onChange: value => setAttributes({
-        mapBoxShadow: value
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_14__["default"], {
-      label: __("Border", 'premium-blocks-for-gutenberg'),
-      value: mapBorder,
-      onChange: value => setAttributes({
-        mapBorder: value
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_11__["default"], {
-      value: mapMargin,
-      responsive: true,
-      showUnits: true,
-      label: __("Margin", 'premium-blocks-for-gutenberg'),
-      onChange: value => setAttributes({
-        mapMargin: value
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_11__["default"], {
-      value: mapPadding,
-      responsive: true,
-      showUnits: true,
-      label: __("Padding", 'premium-blocks-for-gutenberg'),
-      onChange: value => setAttributes({
-        mapPadding: value
-      })
-    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      key: 'advance'
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      Desktop: hideDesktop,
-      Tablet: hideTablet,
-      Mobile: hideMobile,
-      onChangeDesktop: value => setAttributes({
-        hideDesktop: value ? " premium-desktop-hidden" : ""
-      }),
-      onChangeTablet: value => setAttributes({
-        hideTablet: value ? " premium-tablet-hidden" : ""
-      }),
-      onChangeMobile: value => setAttributes({
-        hideMobile: value ? " premium-mobile-hidden" : ""
-      })
-    })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `${mainClasses}`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "map-container",
-      style: {
-        height: height + "px"
+  if ((titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily) !== 'Default') {
+    const titleConfig = {
+      google: {
+        families: [titleTypography.fontFamily]
       }
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, loadStyles()), loadDescriptionGoogleFonts, loadTitleGoogleFonts)];
+    };
+    loadTitleGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_15__["default"], {
+      config: titleConfig
+    });
   }
 
+  if ((descriptionTypography === null || descriptionTypography === void 0 ? void 0 : descriptionTypography.fontFamily) !== 'Default') {
+    const descriptionConfig = {
+      google: {
+        families: [descriptionTypography.fontFamily]
+      }
+    };
+    loadDescriptionGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_15__["default"], {
+      config: descriptionConfig
+    });
+  }
+
+  const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, {
+    " premium-desktop-hidden": hideDesktop,
+    " premium-tablet-hidden": hideTablet,
+    " premium-mobile-hidden": hideMobile
+  });
+
+  const loadStyles = () => {
+    var _titleTypography$font, _titleTypography$font2, _titlePadding$props$d, _titlePadding$props$d2, _titlePadding$props$d3, _titlePadding$props$d4, _titleMargin$props$de, _titleMargin$props$de2, _titleMargin$props$de3, _titleMargin$props$de4, _descriptionTypograph, _descriptionTypograph2, _descriptionMargin$pr, _descriptionMargin$pr2, _descriptionMargin$pr3, _descriptionMargin$pr4, _descriptionPadding$p, _descriptionPadding$p2, _descriptionPadding$p3, _descriptionPadding$p4, _mapBorder$borderWidt, _mapBorder$borderWidt2, _mapBorder$borderWidt3, _mapBorder$borderWidt4, _mapBorder$borderWidt5, _mapBorder$borderWidt6, _mapBorder$borderWidt7, _mapBorder$borderWidt8, _mapBorder$borderRadi, _mapBorder$borderRadi2, _mapBorder$borderRadi3, _mapBorder$borderRadi4, _mapBorder$borderRadi5, _mapBorder$borderRadi6, _mapBorder$borderRadi7, _mapBorder$borderRadi8, _mapPadding$props$dev, _mapPadding$props$dev2, _mapPadding$props$dev3, _mapPadding$props$dev4, _mapMargin$props$devi, _mapMargin$props$devi2, _mapMargin$props$devi3, _mapMargin$props$devi4;
+
+    const styles = {};
+    styles[`.${blockId} .${className}__title`] = {
+      'color': `${titleColor}`,
+      'font-family': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily}!important`,
+      'font-size': `${titleTypography === null || titleTypography === void 0 ? void 0 : (_titleTypography$font = titleTypography.fontSize) === null || _titleTypography$font === void 0 ? void 0 : _titleTypography$font[props.deviceType]}${titleTypography === null || titleTypography === void 0 ? void 0 : (_titleTypography$font2 = titleTypography.fontSize) === null || _titleTypography$font2 === void 0 ? void 0 : _titleTypography$font2.unit}`,
+      'font-weight': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontWeight}!important`,
+      'letter-spacing': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.letterSpacing}`,
+      'line-height': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.lineHeight}`,
+      'font-style': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontStyle}`,
+      'text-transform': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textTransform}`,
+      'text-decoration': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textDecoration}`,
+      'padding-top': `${titlePadding === null || titlePadding === void 0 ? void 0 : (_titlePadding$props$d = titlePadding[props.deviceType]) === null || _titlePadding$props$d === void 0 ? void 0 : _titlePadding$props$d.top}${titlePadding.unit}!important`,
+      'padding-right': `${titlePadding === null || titlePadding === void 0 ? void 0 : (_titlePadding$props$d2 = titlePadding[props.deviceType]) === null || _titlePadding$props$d2 === void 0 ? void 0 : _titlePadding$props$d2.right}${titlePadding.unit}!important`,
+      'padding-bottom': `${titlePadding === null || titlePadding === void 0 ? void 0 : (_titlePadding$props$d3 = titlePadding[props.deviceType]) === null || _titlePadding$props$d3 === void 0 ? void 0 : _titlePadding$props$d3.bottom}${titlePadding.unit}!important`,
+      'padding-left': `${titlePadding === null || titlePadding === void 0 ? void 0 : (_titlePadding$props$d4 = titlePadding[props.deviceType]) === null || _titlePadding$props$d4 === void 0 ? void 0 : _titlePadding$props$d4.left}${titlePadding.unit}!important`,
+      'margin-top': `${titleMargin === null || titleMargin === void 0 ? void 0 : (_titleMargin$props$de = titleMargin[props.deviceType]) === null || _titleMargin$props$de === void 0 ? void 0 : _titleMargin$props$de.top}${titleMargin.unit}!important`,
+      'margin-right': `${titleMargin === null || titleMargin === void 0 ? void 0 : (_titleMargin$props$de2 = titleMargin[props.deviceType]) === null || _titleMargin$props$de2 === void 0 ? void 0 : _titleMargin$props$de2.right}${titleMargin.unit}!important`,
+      'margin-bottom': `${titleMargin === null || titleMargin === void 0 ? void 0 : (_titleMargin$props$de3 = titleMargin[props.deviceType]) === null || _titleMargin$props$de3 === void 0 ? void 0 : _titleMargin$props$de3.bottom}${titleMargin.unit}!important`,
+      'margin-left': `${titleMargin === null || titleMargin === void 0 ? void 0 : (_titleMargin$props$de4 = titleMargin[props.deviceType]) === null || _titleMargin$props$de4 === void 0 ? void 0 : _titleMargin$props$de4.left}${titleMargin.unit}!important`
+    };
+    styles[`.${blockId} .${className}__desc`] = {
+      'color': `${descColor}`,
+      'text-align': `${boxAlign === null || boxAlign === void 0 ? void 0 : boxAlign[props.deviceType]}!important`,
+      'font-family': `${descriptionTypography === null || descriptionTypography === void 0 ? void 0 : descriptionTypography.fontFamily}`,
+      'font-size': `${descriptionTypography === null || descriptionTypography === void 0 ? void 0 : (_descriptionTypograph = descriptionTypography.fontSize) === null || _descriptionTypograph === void 0 ? void 0 : _descriptionTypograph[props.deviceType]}${descriptionTypography === null || descriptionTypography === void 0 ? void 0 : (_descriptionTypograph2 = descriptionTypography.fontSize) === null || _descriptionTypograph2 === void 0 ? void 0 : _descriptionTypograph2.unit}`,
+      'font-weight': `${descriptionTypography === null || descriptionTypography === void 0 ? void 0 : descriptionTypography.fontWeight}`,
+      'letter-spacing': `${descriptionTypography === null || descriptionTypography === void 0 ? void 0 : descriptionTypography.letterSpacing}`,
+      'line-height': `${descriptionTypography === null || descriptionTypography === void 0 ? void 0 : descriptionTypography.lineHeight}`,
+      'font-style': `${descriptionTypography === null || descriptionTypography === void 0 ? void 0 : descriptionTypography.fontStyle}`,
+      'text-transform': `${descriptionTypography === null || descriptionTypography === void 0 ? void 0 : descriptionTypography.textTransform}`,
+      'text-decoration': `${descriptionTypography === null || descriptionTypography === void 0 ? void 0 : descriptionTypography.textDecoration}`,
+      'padding-top': `${descriptionMargin === null || descriptionMargin === void 0 ? void 0 : (_descriptionMargin$pr = descriptionMargin[props.deviceType]) === null || _descriptionMargin$pr === void 0 ? void 0 : _descriptionMargin$pr.top}${descriptionMargin.unit}!important`,
+      'padding-right': `${descriptionMargin === null || descriptionMargin === void 0 ? void 0 : (_descriptionMargin$pr2 = descriptionMargin[props.deviceType]) === null || _descriptionMargin$pr2 === void 0 ? void 0 : _descriptionMargin$pr2.right}${descriptionMargin.unit}!important`,
+      'padding-bottom': `${descriptionMargin === null || descriptionMargin === void 0 ? void 0 : (_descriptionMargin$pr3 = descriptionMargin[props.deviceType]) === null || _descriptionMargin$pr3 === void 0 ? void 0 : _descriptionMargin$pr3.bottom}${descriptionMargin.unit}!important`,
+      'padding-left': `${descriptionMargin === null || descriptionMargin === void 0 ? void 0 : (_descriptionMargin$pr4 = descriptionMargin[props.deviceType]) === null || _descriptionMargin$pr4 === void 0 ? void 0 : _descriptionMargin$pr4.left}${descriptionMargin.unit}!important`,
+      'margin-top': `${descriptionPadding === null || descriptionPadding === void 0 ? void 0 : (_descriptionPadding$p = descriptionPadding[props.deviceType]) === null || _descriptionPadding$p === void 0 ? void 0 : _descriptionPadding$p.top}${descriptionPadding.unit}!important`,
+      'margin-right': `${descriptionPadding === null || descriptionPadding === void 0 ? void 0 : (_descriptionPadding$p2 = descriptionPadding[props.deviceType]) === null || _descriptionPadding$p2 === void 0 ? void 0 : _descriptionPadding$p2.right}${descriptionPadding.unit}!important`,
+      'margin-bottom': `${descriptionPadding === null || descriptionPadding === void 0 ? void 0 : (_descriptionPadding$p3 = descriptionPadding[props.deviceType]) === null || _descriptionPadding$p3 === void 0 ? void 0 : _descriptionPadding$p3.bottom}${descriptionPadding.unit}!important`,
+      'margin-left': `${descriptionPadding === null || descriptionPadding === void 0 ? void 0 : (_descriptionPadding$p4 = descriptionPadding[props.deviceType]) === null || _descriptionPadding$p4 === void 0 ? void 0 : _descriptionPadding$p4.left}${descriptionPadding.unit}!important`
+    };
+    styles[`.${blockId}`] = {
+      'border-color': `${mapBorder.borderColor}`,
+      'border-style': `${mapBorder.borderType}`,
+      'border-top-width': `${mapBorder === null || mapBorder === void 0 ? void 0 : (_mapBorder$borderWidt = mapBorder.borderWidth) === null || _mapBorder$borderWidt === void 0 ? void 0 : (_mapBorder$borderWidt2 = _mapBorder$borderWidt[props.deviceType]) === null || _mapBorder$borderWidt2 === void 0 ? void 0 : _mapBorder$borderWidt2.top}px`,
+      'border-right-width': `${mapBorder === null || mapBorder === void 0 ? void 0 : (_mapBorder$borderWidt3 = mapBorder.borderWidth) === null || _mapBorder$borderWidt3 === void 0 ? void 0 : (_mapBorder$borderWidt4 = _mapBorder$borderWidt3[props.deviceType]) === null || _mapBorder$borderWidt4 === void 0 ? void 0 : _mapBorder$borderWidt4.right}px`,
+      'border-bottom-width': `${mapBorder === null || mapBorder === void 0 ? void 0 : (_mapBorder$borderWidt5 = mapBorder.borderWidth) === null || _mapBorder$borderWidt5 === void 0 ? void 0 : (_mapBorder$borderWidt6 = _mapBorder$borderWidt5[props.deviceType]) === null || _mapBorder$borderWidt6 === void 0 ? void 0 : _mapBorder$borderWidt6.bottom}px`,
+      'border-left-width': `${mapBorder === null || mapBorder === void 0 ? void 0 : (_mapBorder$borderWidt7 = mapBorder.borderWidth) === null || _mapBorder$borderWidt7 === void 0 ? void 0 : (_mapBorder$borderWidt8 = _mapBorder$borderWidt7[props.deviceType]) === null || _mapBorder$borderWidt8 === void 0 ? void 0 : _mapBorder$borderWidt8.left}px`,
+      'border-top-left-radius': `${mapBorder === null || mapBorder === void 0 ? void 0 : (_mapBorder$borderRadi = mapBorder.borderRadius) === null || _mapBorder$borderRadi === void 0 ? void 0 : (_mapBorder$borderRadi2 = _mapBorder$borderRadi[props.deviceType]) === null || _mapBorder$borderRadi2 === void 0 ? void 0 : _mapBorder$borderRadi2.top}px`,
+      'border-top-right-radius': `${mapBorder === null || mapBorder === void 0 ? void 0 : (_mapBorder$borderRadi3 = mapBorder.borderRadius) === null || _mapBorder$borderRadi3 === void 0 ? void 0 : (_mapBorder$borderRadi4 = _mapBorder$borderRadi3[props.deviceType]) === null || _mapBorder$borderRadi4 === void 0 ? void 0 : _mapBorder$borderRadi4.right}px`,
+      'border-bottom-left-radius': `${mapBorder === null || mapBorder === void 0 ? void 0 : (_mapBorder$borderRadi5 = mapBorder.borderRadius) === null || _mapBorder$borderRadi5 === void 0 ? void 0 : (_mapBorder$borderRadi6 = _mapBorder$borderRadi5[props.deviceType]) === null || _mapBorder$borderRadi6 === void 0 ? void 0 : _mapBorder$borderRadi6.bottom}px`,
+      'border-bottom-right-radius': `${mapBorder === null || mapBorder === void 0 ? void 0 : (_mapBorder$borderRadi7 = mapBorder.borderRadius) === null || _mapBorder$borderRadi7 === void 0 ? void 0 : (_mapBorder$borderRadi8 = _mapBorder$borderRadi7[props.deviceType]) === null || _mapBorder$borderRadi8 === void 0 ? void 0 : _mapBorder$borderRadi8.left}px`,
+      'padding-top': `${mapPadding === null || mapPadding === void 0 ? void 0 : (_mapPadding$props$dev = mapPadding[props.deviceType]) === null || _mapPadding$props$dev === void 0 ? void 0 : _mapPadding$props$dev.top}${mapPadding.unit}`,
+      'padding-right': `${mapPadding === null || mapPadding === void 0 ? void 0 : (_mapPadding$props$dev2 = mapPadding[props.deviceType]) === null || _mapPadding$props$dev2 === void 0 ? void 0 : _mapPadding$props$dev2.right}${mapPadding.unit}`,
+      'padding-bottom': `${mapPadding === null || mapPadding === void 0 ? void 0 : (_mapPadding$props$dev3 = mapPadding[props.deviceType]) === null || _mapPadding$props$dev3 === void 0 ? void 0 : _mapPadding$props$dev3.bottom}${mapPadding.unit}`,
+      'padding-left': `${mapPadding === null || mapPadding === void 0 ? void 0 : (_mapPadding$props$dev4 = mapPadding[props.deviceType]) === null || _mapPadding$props$dev4 === void 0 ? void 0 : _mapPadding$props$dev4.left}${mapPadding.unit}`,
+      'margin-top': `${mapMargin === null || mapMargin === void 0 ? void 0 : (_mapMargin$props$devi = mapMargin[props.deviceType]) === null || _mapMargin$props$devi === void 0 ? void 0 : _mapMargin$props$devi.top}${mapMargin.unit}`,
+      'margin-right': `${mapMargin === null || mapMargin === void 0 ? void 0 : (_mapMargin$props$devi2 = mapMargin[props.deviceType]) === null || _mapMargin$props$devi2 === void 0 ? void 0 : _mapMargin$props$devi2.right}${mapMargin.unit}`,
+      'margin-bottom': `${mapMargin === null || mapMargin === void 0 ? void 0 : (_mapMargin$props$devi3 = mapMargin[props.deviceType]) === null || _mapMargin$props$devi3 === void 0 ? void 0 : _mapMargin$props$devi3.bottom}${mapMargin.unit}`,
+      'margin-left': `${mapMargin === null || mapMargin === void 0 ? void 0 : (_mapMargin$props$devi4 = mapMargin[props.deviceType]) === null || _mapMargin$props$devi4 === void 0 ? void 0 : _mapMargin$props$devi4.left}${mapMargin.unit}`,
+      'box-shadow': `${mapBoxShadow.horizontal}px ${mapBoxShadow.vertical}px ${mapBoxShadow.blur}px ${mapBoxShadow.color} ${mapBoxShadow === null || mapBoxShadow === void 0 ? void 0 : mapBoxShadow.position}`
+    };
+    return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_13__.generateCss)(styles);
+  };
+
+  const TYPES = [{
+    value: "roadmap",
+    label: __("Road Map", 'premium-blocks-for-gutenberg')
+  }, {
+    value: "satellite",
+    label: __("Satellite", 'premium-blocks-for-gutenberg')
+  }, {
+    value: "terrain",
+    label: __("Terrain", 'premium-blocks-for-gutenberg')
+  }, {
+    value: "hybrid",
+    label: __("Hybrid", 'premium-blocks-for-gutenberg')
+  }];
+  return typeof google !== "undefined" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, {
+    key: "key"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    tabs: ['layout', 'style', 'advance']
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    key: 'layout'
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+    title: __("Center Location", 'premium-blocks-for-gutenberg'),
+    className: "premium-panel-body",
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
+    label: __("Longitude", 'premium-blocks-for-gutenberg'),
+    value: centerLng,
+    help: [__("Get your location coordinates from", 'premium-blocks-for-gutenberg'), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+      href: "https://www.latlong.net/",
+      target: "_blank"
+    }, "\xA0", __("here", 'premium-blocks-for-gutenberg'))],
+    onChange: newLng => setAttributes({
+      centerLng: newLng
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
+    label: __("Latitude", 'premium-blocks-for-gutenberg'),
+    value: centerLat,
+    onChange: newLat => setAttributes({
+      centerLat: newLat
+    })
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+    title: __("Marker", 'premium-blocks-for-gutenberg'),
+    className: "premium-panel-body",
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
+    label: __("Enable Marker", 'premium-blocks-for-gutenberg'),
+    checked: mapMarker,
+    onChange: check => setAttributes({
+      mapMarker: check
+    }),
+    help: __("Disable marker is applied on page reload", 'premium-blocks-for-gutenberg')
+  }), mapMarker && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    label: __("Max Width (PX)", 'premium-blocks-for-gutenberg'),
+    value: maxWidth,
+    min: "10",
+    max: "500",
+    onChange: newSize => setAttributes({
+      maxWidth: newSize
+    }),
+    showUnit: false,
+    defaultValue: 0
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
+    label: __("Description opened by default", 'premium-blocks-for-gutenberg'),
+    checked: markerOpen,
+    onChange: newValue => setAttributes({
+      markerOpen: newValue
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
+    label: __("Custom Marker Icon", 'premium-blocks-for-gutenberg'),
+    checked: markerCustom,
+    onChange: check => setAttributes({
+      markerCustom: check
+    })
+  }), markerOpen && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
+    label: __("Marker Title", 'premium-blocks-for-gutenberg'),
+    value: markerTitle,
+    onChange: newText => setAttributes({
+      markerTitle: newText
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextareaControl, {
+    label: __("Marker Description", 'premium-blocks-for-gutenberg'),
+    value: markerDesc,
+    onChange: newText => setAttributes({
+      markerDesc: newText
+    })
+  })), markerCustom && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_media_upload__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    type: "image",
+    imageID: markerIconId,
+    imageURL: markerIconUrl,
+    onSelectMedia: media => {
+      setAttributes({
+        markerIconId: media.id,
+        markerIconUrl: media.url
+      });
+    },
+    onRemoveImage: () => setAttributes({
+      markerIconId: "",
+      markerIconUrl: ""
+    })
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+    title: __("Controls", 'premium-blocks-for-gutenberg'),
+    className: "premium-panel-body",
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
+    label: __("Map Type", 'premium-blocks-for-gutenberg'),
+    options: TYPES,
+    value: mapType,
+    onChange: newType => setAttributes({
+      mapType: newType
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    label: __("Map Height (PX)", 'premium-blocks-for-gutenberg'),
+    value: height,
+    min: "10",
+    max: "800",
+    onChange: newSize => setAttributes({
+      height: newSize
+    }),
+    showUnit: false,
+    defaultValue: 0
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    label: __("Zoom", 'premium-blocks-for-gutenberg'),
+    value: zoom,
+    min: "1",
+    max: "14",
+    onChange: newSize => setAttributes({
+      zoom: newSize
+    }),
+    showUnit: false,
+    defaultValue: 0
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
+    label: __("Map Type Controls", 'premium-blocks-for-gutenberg'),
+    checked: mapTypeControl,
+    onChange: check => setAttributes({
+      mapTypeControl: check
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
+    label: __("Zoom Controls", 'premium-blocks-for-gutenberg'),
+    checked: zoomControl,
+    onChange: check => setAttributes({
+      zoomControl: check
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
+    label: __("Street View Control", 'premium-blocks-for-gutenberg'),
+    checked: streetViewControl,
+    onChange: check => setAttributes({
+      streetViewControl: check
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
+    label: __("Full Screen Control", 'premium-blocks-for-gutenberg'),
+    checked: fullscreenControl,
+    onChange: check => setAttributes({
+      fullscreenControl: check
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
+    label: __("Scroll Wheel Zoom", 'premium-blocks-for-gutenberg'),
+    checked: scrollwheel,
+    onChange: check => setAttributes({
+      scrollwheel: check
+    })
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+    title: __("Map", 'premium-blocks-for-gutenberg'),
+    className: "premium-panel-body",
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextareaControl, {
+    label: __("Maps Style", 'premium-blocks-for-gutenberg'),
+    value: mapStyle,
+    help: [__("Get your custom styling from", 'premium-blocks-for-gutenberg'), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+      href: "https://snazzymaps.com/",
+      target: "_blank"
+    }, "\xA0", __("here", 'premium-blocks-for-gutenberg'))],
+    onChange: newStyle => setAttributes({
+      mapStyle: "" !== newStyle ? newStyle : "[]"
+    })
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    key: 'style'
+  }, mapMarker && markerTitle && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+    title: __("Title", 'premium-blocks-for-gutenberg'),
+    className: "premium-panel-body",
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    value: titleTypography,
+    onChange: newValue => setAttributes({
+      titleTypography: newValue
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    label: __("Text Color", 'premium-blocks-for-gutenberg'),
+    colorValue: titleColor,
+    colorDefault: '',
+    onColorChange: newValue => setAttributes({
+      titleColor: newValue === undefined ? "transparent" : newValue
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    value: titleMargin,
+    responsive: true,
+    showUnits: true,
+    label: __("Margin", 'premium-blocks-for-gutenberg'),
+    onChange: value => setAttributes({
+      titleMargin: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    value: titlePadding,
+    responsive: true,
+    showUnits: true,
+    label: __("Padding", 'premium-blocks-for-gutenberg'),
+    onChange: value => setAttributes({
+      titlePadding: value
+    })
+  })), mapMarker && markerDesc && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+    title: __("Description", 'premium-blocks-for-gutenberg'),
+    className: "premium-panel-body",
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    value: descriptionTypography,
+    onChange: newValue => setAttributes({
+      descriptionTypography: newValue
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    label: __("Text Color", 'premium-blocks-for-gutenberg'),
+    colorValue: descColor,
+    colorDefault: '',
+    onColorChange: newValue => setAttributes({
+      descColor: newValue === undefined ? "transparent" : newValue
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    value: descriptionMargin,
+    responsive: true,
+    showUnits: true,
+    label: __("Margin", 'premium-blocks-for-gutenberg'),
+    onChange: value => setAttributes({
+      descriptionMargin: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    value: descriptionPadding,
+    responsive: true,
+    showUnits: true,
+    label: __("Padding", 'premium-blocks-for-gutenberg'),
+    onChange: value => setAttributes({
+      descriptionPadding: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    choices: [{
+      value: 'left',
+      label: __('Left', "premium-blocks-for-gutenberg"),
+      icon: _components_icons__WEBPACK_IMPORTED_MODULE_9__["default"].alignLeft
+    }, {
+      value: 'center',
+      label: __('Center', "premium-blocks-for-gutenberg"),
+      icon: _components_icons__WEBPACK_IMPORTED_MODULE_9__["default"].alignCenter
+    }, {
+      value: 'right',
+      label: __('Right', "premium-blocks-for-gutenberg"),
+      icon: _components_icons__WEBPACK_IMPORTED_MODULE_9__["default"].alignRight
+    }],
+    value: boxAlign,
+    onChange: align => setAttributes({
+      boxAlign: align
+    }),
+    label: __("Align", "premium-blocks-for-gutenberg"),
+    showIcons: true
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+    title: __("Map", 'premium-blocks-for-gutenberg'),
+    className: "premium-panel-body",
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PremiumShadow__WEBPACK_IMPORTED_MODULE_12__["default"], {
+    label: __("Shadow", 'premium-blocks-for-gutenberg'),
+    boxShadow: false,
+    value: mapBoxShadow,
+    onChange: value => setAttributes({
+      mapBoxShadow: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_14__["default"], {
+    label: __("Border", 'premium-blocks-for-gutenberg'),
+    value: mapBorder,
+    onChange: value => setAttributes({
+      mapBorder: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    value: mapMargin,
+    responsive: true,
+    showUnits: true,
+    label: __("Margin", 'premium-blocks-for-gutenberg'),
+    onChange: value => setAttributes({
+      mapMargin: value
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    value: mapPadding,
+    responsive: true,
+    showUnits: true,
+    label: __("Padding", 'premium-blocks-for-gutenberg'),
+    onChange: value => setAttributes({
+      mapPadding: value
+    })
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    key: 'advance'
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    Desktop: hideDesktop,
+    Tablet: hideTablet,
+    Mobile: hideMobile,
+    onChangeDesktop: value => setAttributes({
+      hideDesktop: value ? " premium-desktop-hidden" : ""
+    }),
+    onChangeTablet: value => setAttributes({
+      hideTablet: value ? " premium-tablet-hidden" : ""
+    }),
+    onChangeMobile: value => setAttributes({
+      hideMobile: value ? " premium-mobile-hidden" : ""
+    })
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `${mainClasses}`
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "map-container",
+    style: {
+      height: height + "px"
+    }
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, loadStyles()), loadDescriptionGoogleFonts, loadTitleGoogleFonts));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (withSelect(select => {
@@ -34614,7 +34160,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./save */ "./src/blocks/maps/save.js");
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/blocks/maps/edit.js");
-/* harmony import */ var _attributes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./attributes */ "./src/blocks/maps/attributes.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./block.json */ "./src/blocks/maps/block.json");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/maps/deprecated.js");
 /* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
 
@@ -34629,7 +34175,7 @@ const {
 const {
   registerBlockType
 } = wp.blocks;
-registerBlockType("premium/maps", {
+registerBlockType("premium/maps", { ..._block_json__WEBPACK_IMPORTED_MODULE_3__,
   title: __("Maps", "premium-blocks-for-gutenberg"),
   description: __('Embed Google Maps to your Gutenberg page using Premium Maps Block.', "premium-blocks-for-gutenberg"),
   icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__["default"].maps,
@@ -34637,7 +34183,6 @@ registerBlockType("premium/maps", {
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.maps
   },
-  attributes: _attributes__WEBPACK_IMPORTED_MODULE_3__["default"],
   deprecated: _deprecated__WEBPACK_IMPORTED_MODULE_4__["default"],
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
   save: _save__WEBPACK_IMPORTED_MODULE_1__["default"]
@@ -34739,7 +34284,7 @@ function save(props) {
     })
   }, markerDesc)))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("script", null, `window.addEventListener('load',function(){
                 if( typeof google === 'undefined' ) return;
-                let mapElem = document.querySelector('.${blockId} .map-container');
+                let mapElem = document.getElementsByClassName('map-container')[0];
                 let pin = mapElem.querySelector('.${className}__marker');
                 let latlng = new google.maps.LatLng( parseFloat( ${centerLat} ) , parseFloat( ${centerLng} ) );
 
@@ -93372,6 +92917,17 @@ module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/i
 
 "use strict";
 module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/lottie","title":"Lottie Animation","category":"premium-blocks","attributes":{"lottieId":{"type":"string"},"blockId":{"type":"string"},"lottieURl":{"type":"string","default":""},"lottieJson":{"type":"object"},"loop":{"type":"boolean","default":true},"reverse":{"type":"boolean","default":false},"speed":{"type":"number","default":"1"},"trigger":{"type":"string","default":"none"},"bottom":{"type":"number","default":"0"},"top":{"type":"number","default":"100"},"scrollSpeed":{"type":"number","default":"4"},"rotate":{"type":"number","default":0},"lottieAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"link":{"type":"boolean","default":false},"url":{"type":"string"},"target":{"type":"boolean","default":false},"render":{"type":"string","default":"svg"},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"lottieStyles":{"type":"array","default":[{"backColor":"","backOpacity":1,"backHColor":"","backHOpacity":1}]},"padding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"border":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"filter":{"type":"object","default":{"contrast":"100","blur":"0","bright":"100","saturation":"100","hue":"0"}},"filterHover":{"type":"object","default":{"contrast":"100","blur":"0","bright":"100","saturation":"100","hue":"0"}},"size":{"type":"object","default":{"Desktop":"200","Tablet":"200","Mobile":"200","unit":"px"}}}}');
+
+/***/ }),
+
+/***/ "./src/blocks/maps/block.json":
+/*!************************************!*\
+  !*** ./src/blocks/maps/block.json ***!
+  \************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/maps","title":"Maps","category":"premium-blocks","attributes":{"blockId":{"type":"string"},"mapStyle":{"type":"string","default":"[]"},"mapType":{"type":"string","default":"roadmap"},"height":{"type":"number","default":500},"zoom":{"type":"number","default":6},"mapTypeControl":{"type":"boolean","default":true},"zoomControl":{"type":"boolean","default":true},"fullscreenControl":{"type":"boolean","default":true},"streetViewControl":{"type":"boolean","default":false},"scrollwheel":{"type":"boolean","default":false},"centerLat":{"type":"string","default":"40.7569733"},"centerLng":{"type":"string","default":" -73.98878250000001"},"markerOpen":{"type":"boolean","default":false},"markerTitle":{"type":"string","default":"Awesome Title"},"markerDesc":{"type":"string","default":"Cool Description"},"mapMarker":{"type":"boolean","default":true},"markerIconUrl":{"type":"string"},"markerIconId":{"type":"number","default":""},"markerCustom":{"type":"boolean","default":false},"maxWidth":{"type":"number","default":300},"titleColor":{"type":"string","default":"#6ec1e4"},"titleSize":{"type":"number","default":20},"descColor":{"type":"string","default":"#000"},"descSize":{"type":"number","default":16},"boxAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"boxPadding":{"type":"number","default":"0"},"gapBetween":{"type":"number","default":5},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"titleTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"descriptionTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"titleMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"titlePadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"descriptionMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"descriptionPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"mapMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"mapPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"mapBorder":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"mapBoxShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}}}}');
 
 /***/ }),
 
