@@ -90,7 +90,7 @@ export default function save(props) {
             <script>
                 {`window.addEventListener('load',function(){
                 if( typeof google === 'undefined' ) return;
-                let mapElem = document.querySelector('.${blockId} .map-container');
+                let mapElem = document.getElementsByClassName('map-container')[0];
                 let pin = mapElem.querySelector('.${className}__marker');
                 let latlng = new google.maps.LatLng( parseFloat( ${centerLat} ) , parseFloat( ${centerLng} ) );
 

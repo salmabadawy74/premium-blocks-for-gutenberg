@@ -24,42 +24,28 @@ const {
     TextareaControl,
     ToggleControl,
 } = wp.components;
-
-const { InspectorControls } = wp.editor;
-
-const { Component, Fragment } = wp.element;
-
+const { useEffect, Fragment, useState } = wp.element;
+const { InspectorControls, useBlockProps } = wp.blockEditor;
 let isMapUpdated = null;
 
-class Edit extends Component {
-    constructor() {
-        super(...arguments);
-        this.state = {
-            thisAddress: "",
-            thisMap: null,
-            thisInfo: null,
-            fetching: false
-        };
+function Edit(props) {
+    const { setAttributes, className, clientId } = props;
+    const [thisMap, setMap] = useState(null);
+    const [thisInfo, setInfo] = useState(null);
 
-        this.initMap = this.initMap.bind(this);
-    }
+    useEffect(() => {
+        setAttributes({
+            blockId: "premium-map-" + generateBlockId(clientId)
+        });
+        initMap();
+    }, []);
 
-    componentDidMount() {
-        const { setAttributes, clientId } = this.props;
-        setAttributes({ blockId: "premium-map-" + generateBlockId(clientId) });
-        this.initMap();
-    }
-
-    componentDidUpdate() {
+    useEffect(() => {
         clearTimeout(isMapUpdated);
-        isMapUpdated = setTimeout(this.initMap, 500);
-    }
+        isMapUpdated = setTimeout(initMap, 500);
+    }, [isMapUpdated]);
 
-    initMap() {
-        if (typeof google === "undefined" || !this.props.attributes.blockId)
-            return null;
-
-        const { thisMap, thisInfo } = this.state;
+    const initMap = () => {
         const {
             blockId,
             mapStyle,
@@ -78,8 +64,10 @@ class Edit extends Component {
             mapMarker,
             markerIconUrl,
             markerCustom,
-            maxWidth,
-        } = this.props.attributes;
+            maxWidth
+        } = props.attributes;
+        if (typeof google === "undefined" || !blockId)
+            return null;
 
         let map = thisMap;
         let infoWindow = thisInfo;
@@ -87,10 +75,8 @@ class Edit extends Component {
             parseFloat(centerLat),
             parseFloat(centerLng)
         );
-        console.log(map)
         if (!map) {
             let mapElem = document.getElementsByClassName(`map-container`)[0];
-            console.log(mapElem)
 
             map = new google.maps.Map(mapElem, {
                 zoom: zoom,
@@ -104,7 +90,7 @@ class Edit extends Component {
                 center: latlng,
                 styles: JSON.parse(mapStyle)
             });
-            this.setState({ thisMap: map });
+            setMap(map)
         }
 
         map.setOptions({
@@ -121,7 +107,7 @@ class Edit extends Component {
             infoWindow = new google.maps.InfoWindow({
                 maxWidth: maxWidth
             });
-            this.setState({ thisInfo: infoWindow });
+            setInfo(infoWindow)
         }
 
         if (mapMarker && "" !== markerTitle && "" !== markerDesc) {
@@ -161,170 +147,169 @@ class Edit extends Component {
         }
     }
 
-    render() {
-        const { isSelected, setAttributes } = this.props;
+    const {
+        blockId,
+        mapStyle,
+        mapType,
+        height,
+        zoom,
+        mapTypeControl,
+        zoomControl,
+        fullscreenControl,
+        streetViewControl,
+        scrollwheel,
+        centerLng,
+        centerLat,
+        markerDesc,
+        markerTitle,
+        markerOpen,
+        mapMarker,
+        markerIconUrl,
+        markerIconId,
+        markerCustom,
+        titleColor,
+        descColor,
+        boxAlign,
+        hideDesktop,
+        hideTablet,
+        hideMobile,
+        titleTypography,
+        descriptionTypography,
+        titleMargin,
+        titlePadding,
+        descriptionMargin,
+        descriptionPadding,
+        mapMargin,
+        mapPadding,
+        mapBorder,
+        mapBoxShadow,
+        maxWidth,
+    } = props.attributes;
 
-        const {
-            blockId,
-            mapStyle,
-            mapType,
-            height,
-            zoom,
-            mapTypeControl,
-            zoomControl,
-            fullscreenControl,
-            streetViewControl,
-            scrollwheel,
-            centerLng,
-            centerLat,
-            markerDesc,
-            markerTitle,
-            markerOpen,
-            mapMarker,
-            markerIconUrl,
-            markerIconId,
-            markerCustom,
-            titleColor,
-            descColor,
-            boxAlign,
-            hideDesktop,
-            hideTablet,
-            hideMobile,
-            titleTypography,
-            descriptionTypography,
-            titleMargin,
-            titlePadding,
-            descriptionMargin,
-            descriptionPadding,
-            mapMargin,
-            mapPadding,
-            mapBorder,
-            mapBoxShadow,
-            maxWidth,
-        } = this.props.attributes;
+    let loadTitleGoogleFonts;
+    let loadDescriptionGoogleFonts;
 
-        let loadTitleGoogleFonts;
-        let loadDescriptionGoogleFonts;
-        if (titleTypography?.fontFamily !== 'Default') {
-            const titleConfig = {
-                google: {
-                    families: [titleTypography.fontFamily],
-                }
+    if (titleTypography?.fontFamily !== 'Default') {
+        const titleConfig = {
+            google: {
+                families: [titleTypography.fontFamily]
             }
-            loadTitleGoogleFonts = (
-                <WebfontLoader config={titleConfig}>
-                </WebfontLoader>
-            )
         }
+        loadTitleGoogleFonts = (
+            <WebfontLoader config={titleConfig}>
+            </WebfontLoader>
+        )
+    }
 
-        if (descriptionTypography?.fontFamily !== 'Default') {
-            const descriptionConfig = {
-                google: {
-                    families: [descriptionTypography.fontFamily],
-                }
+    if (descriptionTypography?.fontFamily !== 'Default') {
+        const descriptionConfig = {
+            google: {
+                families: [descriptionTypography.fontFamily]
             }
-            loadDescriptionGoogleFonts = (
-                <WebfontLoader config={descriptionConfig}>
-                </WebfontLoader>
-            )
         }
+        loadDescriptionGoogleFonts = (
+            <WebfontLoader config={descriptionConfig}>
+            </WebfontLoader>
+        )
+    }
 
-        const mainClasses = classnames(className, {
-            " premium-desktop-hidden": hideDesktop,
-            " premium-tablet-hidden": hideTablet,
-            " premium-mobile-hidden": hideMobile,
-        });
+    const mainClasses = classnames(className, {
+        " premium-desktop-hidden": hideDesktop,
+        " premium-tablet-hidden": hideTablet,
+        " premium-mobile-hidden": hideMobile,
+    });
 
-        const loadStyles = () => {
-            const styles = {};
+    const loadStyles = () => {
+        const styles = {};
 
-            styles[`.${blockId} .${className}__title`] = {
-                'color': `${titleColor}`,
-                'font-family': `${titleTypography?.fontFamily}!important`,
-                'font-size': `${titleTypography?.fontSize?.[this.props.deviceType]}${titleTypography?.fontSize?.unit}`,
-                'font-weight': `${titleTypography?.fontWeight}!important`,
-                'letter-spacing': `${titleTypography?.letterSpacing}`,
-                'line-height': `${titleTypography?.lineHeight}`,
-                'font-style': `${titleTypography?.fontStyle}`,
-                'text-transform': `${titleTypography?.textTransform}`,
-                'text-decoration': `${titleTypography?.textDecoration}`,
-                'padding-top': `${titlePadding?.[this.props.deviceType]?.top}${titlePadding.unit}!important`,
-                'padding-right': `${titlePadding?.[this.props.deviceType]?.right}${titlePadding.unit}!important`,
-                'padding-bottom': `${titlePadding?.[this.props.deviceType]?.bottom}${titlePadding.unit}!important`,
-                'padding-left': `${titlePadding?.[this.props.deviceType]?.left}${titlePadding.unit}!important`,
-                'margin-top': `${titleMargin?.[this.props.deviceType]?.top}${titleMargin.unit}!important`,
-                'margin-right': `${titleMargin?.[this.props.deviceType]?.right}${titleMargin.unit}!important`,
-                'margin-bottom': `${titleMargin?.[this.props.deviceType]?.bottom}${titleMargin.unit}!important`,
-                'margin-left': `${titleMargin?.[this.props.deviceType]?.left}${titleMargin.unit}!important`,
-            };
-
-            styles[`.${blockId} .${className}__desc`] = {
-                'color': `${descColor}`,
-                'text-align': `${boxAlign?.[this.props.deviceType]}!important`,
-                'font-family': `${descriptionTypography?.fontFamily}`,
-                'font-size': `${descriptionTypography?.fontSize?.[this.props.deviceType]}${descriptionTypography?.fontSize?.unit}`,
-                'font-weight': `${descriptionTypography?.fontWeight}`,
-                'letter-spacing': `${descriptionTypography?.letterSpacing}`,
-                'line-height': `${descriptionTypography?.lineHeight}`,
-                'font-style': `${descriptionTypography?.fontStyle}`,
-                'text-transform': `${descriptionTypography?.textTransform}`,
-                'text-decoration': `${descriptionTypography?.textDecoration}`,
-                'padding-top': `${descriptionMargin?.[this.props.deviceType]?.top}${descriptionMargin.unit}!important`,
-                'padding-right': `${descriptionMargin?.[this.props.deviceType]?.right}${descriptionMargin.unit}!important`,
-                'padding-bottom': `${descriptionMargin?.[this.props.deviceType]?.bottom}${descriptionMargin.unit}!important`,
-                'padding-left': `${descriptionMargin?.[this.props.deviceType]?.left}${descriptionMargin.unit}!important`,
-                'margin-top': `${descriptionPadding?.[this.props.deviceType]?.top}${descriptionPadding.unit}!important`,
-                'margin-right': `${descriptionPadding?.[this.props.deviceType]?.right}${descriptionPadding.unit}!important`,
-                'margin-bottom': `${descriptionPadding?.[this.props.deviceType]?.bottom}${descriptionPadding.unit}!important`,
-                'margin-left': `${descriptionPadding?.[this.props.deviceType]?.left}${descriptionPadding.unit}!important`,
-            };
-
-            styles[`.${blockId}`] = {
-                'border-color': `${mapBorder.borderColor}`,
-                'border-style': `${mapBorder.borderType}`,
-                'border-top-width': `${mapBorder?.borderWidth?.[this.props.deviceType]?.top}px`,
-                'border-right-width': `${mapBorder?.borderWidth?.[this.props.deviceType]?.right}px`,
-                'border-bottom-width': `${mapBorder?.borderWidth?.[this.props.deviceType]?.bottom}px`,
-                'border-left-width': `${mapBorder?.borderWidth?.[this.props.deviceType]?.left}px`,
-                'border-top-left-radius': `${mapBorder?.borderRadius?.[this.props.deviceType]?.top}px`,
-                'border-top-right-radius': `${mapBorder?.borderRadius?.[this.props.deviceType]?.right}px`,
-                'border-bottom-left-radius': `${mapBorder?.borderRadius?.[this.props.deviceType]?.bottom}px`,
-                'border-bottom-right-radius': `${mapBorder?.borderRadius?.[this.props.deviceType]?.left}px`,
-                'padding-top': `${mapPadding?.[this.props.deviceType]?.top}${mapPadding.unit}`,
-                'padding-right': `${mapPadding?.[this.props.deviceType]?.right}${mapPadding.unit}`,
-                'padding-bottom': `${mapPadding?.[this.props.deviceType]?.bottom}${mapPadding.unit}`,
-                'padding-left': `${mapPadding?.[this.props.deviceType]?.left}${mapPadding.unit}`,
-                'margin-top': `${mapMargin?.[this.props.deviceType]?.top}${mapMargin.unit}`,
-                'margin-right': `${mapMargin?.[this.props.deviceType]?.right}${mapMargin.unit}`,
-                'margin-bottom': `${mapMargin?.[this.props.deviceType]?.bottom}${mapMargin.unit}`,
-                'margin-left': `${mapMargin?.[this.props.deviceType]?.left}${mapMargin.unit}`,
-                'box-shadow': `${mapBoxShadow.horizontal}px ${mapBoxShadow.vertical}px ${mapBoxShadow.blur}px ${mapBoxShadow.color} ${mapBoxShadow?.position}`,
-            };
-
-            return generateCss(styles);
+        styles[`.${blockId} .${className}__title`] = {
+            'color': `${titleColor}`,
+            'font-family': `${titleTypography?.fontFamily}!important`,
+            'font-size': `${titleTypography?.fontSize?.[props.deviceType]}${titleTypography?.fontSize?.unit}`,
+            'font-weight': `${titleTypography?.fontWeight}!important`,
+            'letter-spacing': `${titleTypography?.letterSpacing}`,
+            'line-height': `${titleTypography?.lineHeight}`,
+            'font-style': `${titleTypography?.fontStyle}`,
+            'text-transform': `${titleTypography?.textTransform}`,
+            'text-decoration': `${titleTypography?.textDecoration}`,
+            'padding-top': `${titlePadding?.[props.deviceType]?.top}${titlePadding.unit}!important`,
+            'padding-right': `${titlePadding?.[props.deviceType]?.right}${titlePadding.unit}!important`,
+            'padding-bottom': `${titlePadding?.[props.deviceType]?.bottom}${titlePadding.unit}!important`,
+            'padding-left': `${titlePadding?.[props.deviceType]?.left}${titlePadding.unit}!important`,
+            'margin-top': `${titleMargin?.[props.deviceType]?.top}${titleMargin.unit}!important`,
+            'margin-right': `${titleMargin?.[props.deviceType]?.right}${titleMargin.unit}!important`,
+            'margin-bottom': `${titleMargin?.[props.deviceType]?.bottom}${titleMargin.unit}!important`,
+            'margin-left': `${titleMargin?.[props.deviceType]?.left}${titleMargin.unit}!important`,
         };
 
-        const TYPES = [
-            {
-                value: "roadmap",
-                label: __("Road Map", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "satellite",
-                label: __("Satellite", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "terrain",
-                label: __("Terrain", 'premium-blocks-for-gutenberg')
-            },
-            {
-                value: "hybrid",
-                label: __("Hybrid", 'premium-blocks-for-gutenberg')
-            }
-        ];
+        styles[`.${blockId} .${className}__desc`] = {
+            'color': `${descColor}`,
+            'text-align': `${boxAlign?.[props.deviceType]}!important`,
+            'font-family': `${descriptionTypography?.fontFamily}`,
+            'font-size': `${descriptionTypography?.fontSize?.[props.deviceType]}${descriptionTypography?.fontSize?.unit}`,
+            'font-weight': `${descriptionTypography?.fontWeight}`,
+            'letter-spacing': `${descriptionTypography?.letterSpacing}`,
+            'line-height': `${descriptionTypography?.lineHeight}`,
+            'font-style': `${descriptionTypography?.fontStyle}`,
+            'text-transform': `${descriptionTypography?.textTransform}`,
+            'text-decoration': `${descriptionTypography?.textDecoration}`,
+            'padding-top': `${descriptionMargin?.[props.deviceType]?.top}${descriptionMargin.unit}!important`,
+            'padding-right': `${descriptionMargin?.[props.deviceType]?.right}${descriptionMargin.unit}!important`,
+            'padding-bottom': `${descriptionMargin?.[props.deviceType]?.bottom}${descriptionMargin.unit}!important`,
+            'padding-left': `${descriptionMargin?.[props.deviceType]?.left}${descriptionMargin.unit}!important`,
+            'margin-top': `${descriptionPadding?.[props.deviceType]?.top}${descriptionPadding.unit}!important`,
+            'margin-right': `${descriptionPadding?.[props.deviceType]?.right}${descriptionPadding.unit}!important`,
+            'margin-bottom': `${descriptionPadding?.[props.deviceType]?.bottom}${descriptionPadding.unit}!important`,
+            'margin-left': `${descriptionPadding?.[props.deviceType]?.left}${descriptionPadding.unit}!important`,
+        };
 
-        return [
-            typeof google !== "undefined" && isSelected && (
+        styles[`.${blockId}`] = {
+            'border-color': `${mapBorder.borderColor}`,
+            'border-style': `${mapBorder.borderType}`,
+            'border-top-width': `${mapBorder?.borderWidth?.[props.deviceType]?.top}px`,
+            'border-right-width': `${mapBorder?.borderWidth?.[props.deviceType]?.right}px`,
+            'border-bottom-width': `${mapBorder?.borderWidth?.[props.deviceType]?.bottom}px`,
+            'border-left-width': `${mapBorder?.borderWidth?.[props.deviceType]?.left}px`,
+            'border-top-left-radius': `${mapBorder?.borderRadius?.[props.deviceType]?.top}px`,
+            'border-top-right-radius': `${mapBorder?.borderRadius?.[props.deviceType]?.right}px`,
+            'border-bottom-left-radius': `${mapBorder?.borderRadius?.[props.deviceType]?.bottom}px`,
+            'border-bottom-right-radius': `${mapBorder?.borderRadius?.[props.deviceType]?.left}px`,
+            'padding-top': `${mapPadding?.[props.deviceType]?.top}${mapPadding.unit}`,
+            'padding-right': `${mapPadding?.[props.deviceType]?.right}${mapPadding.unit}`,
+            'padding-bottom': `${mapPadding?.[props.deviceType]?.bottom}${mapPadding.unit}`,
+            'padding-left': `${mapPadding?.[props.deviceType]?.left}${mapPadding.unit}`,
+            'margin-top': `${mapMargin?.[props.deviceType]?.top}${mapMargin.unit}`,
+            'margin-right': `${mapMargin?.[props.deviceType]?.right}${mapMargin.unit}`,
+            'margin-bottom': `${mapMargin?.[props.deviceType]?.bottom}${mapMargin.unit}`,
+            'margin-left': `${mapMargin?.[props.deviceType]?.left}${mapMargin.unit}`,
+            'box-shadow': `${mapBoxShadow.horizontal}px ${mapBoxShadow.vertical}px ${mapBoxShadow.blur}px ${mapBoxShadow.color} ${mapBoxShadow?.position}`,
+        };
+
+        return generateCss(styles);
+    };
+
+    const TYPES = [
+        {
+            value: "roadmap",
+            label: __("Road Map", 'premium-blocks-for-gutenberg')
+        },
+        {
+            value: "satellite",
+            label: __("Satellite", 'premium-blocks-for-gutenberg')
+        },
+        {
+            value: "terrain",
+            label: __("Terrain", 'premium-blocks-for-gutenberg')
+        },
+        {
+            value: "hybrid",
+            label: __("Hybrid", 'premium-blocks-for-gutenberg')
+        }
+    ];
+
+    return (
+        typeof google !== "undefined" && (
+            <Fragment>
                 <InspectorControls key="key">
                     <InspectorTabs tabs={['layout', 'style', 'advance']}>
                         <InspectorTab key={'layout'}>
@@ -582,19 +567,19 @@ class Edit extends Component {
                         </InspectorTab>
                     </InspectorTabs>
                 </InspectorControls>
-            ),
-            <div
-                className={`${mainClasses}`}
-            >
-                <div className="map-container" style={{
-                    height: height + "px"
-                }} />
-                <style>{loadStyles()}</style>
-                {loadDescriptionGoogleFonts}
-                {loadTitleGoogleFonts}
-            </div>
-        ];
-    }
+                <div
+                    className={`${mainClasses}`}
+                >
+                    <div className="map-container" style={{
+                        height: height + "px"
+                    }} />
+                    <style>{loadStyles()}</style>
+                    {loadDescriptionGoogleFonts}
+                    {loadTitleGoogleFonts}
+                </div>
+            </Fragment>
+        )
+    )
 }
 export default withSelect((select) => {
     const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
