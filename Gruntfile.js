@@ -42,7 +42,12 @@ module.exports = function (grunt) {
         },
         cssmin: {
             css: {
-                files: minifyFiles
+                files: [
+                    {
+                        "./assets/css/minified/editorpanel.min.css": "./assets/css/editorpanel.css",
+
+                    }
+                    , minifyFiles]
             },
         },
         copy: {
