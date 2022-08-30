@@ -220,12 +220,7 @@ class PBG_Blocks_Helper {
 				'JsonUploadEnabled' => $allow_json,
 			)
 		);
-		wp_enqueue_style(
-			'pbg-editor-style',
-			PREMIUM_BLOCKS_URL . 'assets/css/style.css',
-			array( 'dashicons' ),
-			PREMIUM_BLOCKS_VERSION
-		);
+	
 	}
 
 	/**
@@ -270,12 +265,7 @@ class PBG_Blocks_Helper {
 
 		$is_section_enabled = self::$blocks['container'];
 
-		wp_enqueue_style(
-			'pbg-frontend',
-			PREMIUM_BLOCKS_URL . 'assets/css/style.css',
-			array( 'dashicons' ),
-			PREMIUM_BLOCKS_VERSION
-		);
+	
 
 		if ( $is_fa_enabled ) {
 			wp_enqueue_style(
@@ -333,13 +323,7 @@ class PBG_Blocks_Helper {
 	 */
 	public function on_init() {
 
-		wp_register_style(
-			'premium-blocks-editor-css',
-			PREMIUM_BLOCKS_URL . 'assets/css/style.css',
-			array( 'dashicons' ),
-			PREMIUM_BLOCKS_VERSION
-		);
-
+	
             if ( ! function_exists( 'register_block_type' ) ) {
                 return;
             }
