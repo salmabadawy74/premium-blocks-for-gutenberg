@@ -17,7 +17,49 @@ final class Premium_Blocks_Activate {
 	 */
 	public function __construct() {
 
-			$this->load_premium_blocks();
+		$this->load_premium_blocks();
+		add_action( 'init', array( $this, 'register_pbg_setting' ) );
+	}
+
+	/**
+	 * Register Global Settings.
+	 *
+	 * @return void
+	 */
+	public function register_pbg_setting() {
+		register_setting(
+			'pbg_maps_settings',
+			'pbg_maps_settings',
+			array(
+				'type'         => 'object',
+				'description'  => __( 'Config Premium Blocks For Gutenberg Api', 'kadence-blocks' ),
+				'show_in_rest' => array(
+					'schema' => array(
+						'type'       => 'object',
+						'properties' => array(
+							'premium-map-key'     => array(
+								'type' => 'string',
+							),
+							'premium-map-api'     => array(
+								'type' => 'boolean',
+							),
+							'premium-fa-css'      => array(
+								'type' => 'boolean',
+							),
+							'premium-upload-json' => array(
+								'type' => 'boolean',
+							),
+						),
+					),
+				),
+				'default'      => array(
+					'premium-map-key'     => '',
+					'premium-map-api'     => false,
+					'premium-fa-css'      => false,
+					'premium-upload-json' => false,
+				),
+			)
+		);
 	}
 
 	/**

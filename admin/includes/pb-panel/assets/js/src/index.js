@@ -1,5 +1,6 @@
 import WelcomeTab from './tabs/welcome'
 import System from './tabs/system'
+import Setting from './tabs/setting';
 import { render, Fragment, useContext } from '@wordpress/element'
 import Header from './layout/Header';
 import Card from './common/Card';
@@ -60,7 +61,7 @@ const RendeTabs = () => {
             className: 'system',
             priority: 30,
             data: {
-                Component: System,
+                Component: Setting,
                 props: {}
             }
         }
