@@ -10,11 +10,11 @@ import Icons from "../../components/icons";
 import PremiumTypo from "../../components/premium-typo";
 import SpacingComponent from '../../components/premium-responsive-spacing';
 import PremiumShadow from "../../components/PremiumShadow";
-import { generateBlockId, generateCss } from '../../components/HelperFunction';
+import { generateBlockId, generateCss, marginCss } from '../../components/HelperFunction';
 import PremiumBorder from "../../components/premium-border";
 import WebfontLoader from "../../components/typography/fontLoader";
 
-const className = "premium-maps__wrap";
+const classNames = "premium-maps__wrap";
 const { __ } = wp.i18n;
 const { withSelect } = wp.data
 const {
@@ -24,7 +24,7 @@ const {
     TextareaControl,
     ToggleControl,
 } = wp.components;
-const { useEffect, Fragment, useState } = wp.element;
+const { useEffect, Fragment, useState, useRef } = wp.element;
 const { InspectorControls, useBlockProps } = wp.blockEditor;
 let isMapUpdated = null;
 
@@ -32,6 +32,7 @@ function Edit(props) {
     const { setAttributes, className, clientId } = props;
     const [thisMap, setMap] = useState(null);
     const [thisInfo, setInfo] = useState(null);
+    const contentRef = React.createRef();
 
     useEffect(() => {
         setAttributes({
@@ -76,7 +77,9 @@ function Edit(props) {
             parseFloat(centerLng)
         );
         if (!map) {
-            let mapElem = document.getElementsByClassName(`map-container`)[0];
+            let mapElem = contentRef.current.querySelector(
+                ".map-container"
+            );
 
             map = new google.maps.Map(mapElem, {
                 zoom: zoom,
@@ -100,6 +103,7 @@ function Edit(props) {
             zoomControl: zoomControl,
             fullscreenControl: fullscreenControl,
             streetViewControl: streetViewControl,
+            scrollwheel: scrollwheel,
             styles: JSON.parse(mapStyle)
         });
 
@@ -112,15 +116,15 @@ function Edit(props) {
 
         if (mapMarker && "" !== markerTitle && "" !== markerDesc) {
             infoWindow.setContent(
-                `<div class="${className}__info"
+                `<div class="${classNames}__info"
             >
             <h3
-                class="${className}__title"
+                class="${classNames}__title"
             >
                 ${markerTitle}
             </h3>
             <div
-                class="${className}__desc"
+                class="${classNames}__desc"
             >
                 ${markerDesc}
             </div>
@@ -213,22 +217,16 @@ function Edit(props) {
         )
     }
 
-    const mainClasses = classnames(className, {
-        " premium-desktop-hidden": hideDesktop,
-        " premium-tablet-hidden": hideTablet,
-        " premium-mobile-hidden": hideMobile,
-    });
-
     const loadStyles = () => {
         const styles = {};
 
-        styles[`.${blockId} .${className}__title`] = {
+        styles[`.${blockId} .${classNames}__title`] = {
             'color': `${titleColor}`,
             'font-family': `${titleTypography?.fontFamily}!important`,
             'font-size': `${titleTypography?.fontSize?.[props.deviceType]}${titleTypography?.fontSize?.unit}`,
             'font-weight': `${titleTypography?.fontWeight}!important`,
-            'letter-spacing': `${titleTypography?.letterSpacing}`,
-            'line-height': `${titleTypography?.lineHeight}`,
+            'letter-spacing': `${titleTypography?.letterSpacing?.[props.deviceType]}${titleTypography?.letterSpacing?.unit}`,
+            'line-height': `${titleTypography?.lineHeight?.[props.deviceType]}${titleTypography?.lineHeight?.unit}`,
             'font-style': `${titleTypography?.fontStyle}`,
             'text-transform': `${titleTypography?.textTransform}`,
             'text-decoration': `${titleTypography?.textDecoration}`,
@@ -242,14 +240,14 @@ function Edit(props) {
             'margin-left': `${titleMargin?.[props.deviceType]?.left}${titleMargin.unit}!important`,
         };
 
-        styles[`.${blockId} .${className}__desc`] = {
+        styles[`.${blockId} .${classNames}__desc`] = {
             'color': `${descColor}`,
             'text-align': `${boxAlign?.[props.deviceType]}!important`,
             'font-family': `${descriptionTypography?.fontFamily}`,
             'font-size': `${descriptionTypography?.fontSize?.[props.deviceType]}${descriptionTypography?.fontSize?.unit}`,
             'font-weight': `${descriptionTypography?.fontWeight}`,
-            'letter-spacing': `${descriptionTypography?.letterSpacing}`,
-            'line-height': `${descriptionTypography?.lineHeight}`,
+            'letter-spacing': `${descriptionTypography?.letterSpacing?.[props.deviceType]}${descriptionTypography?.letterSpacing?.unit}`,
+            'line-height': `${descriptionTypography?.lineHeight?.[props.deviceType]}${descriptionTypography?.lineHeight?.unit}`,
             'font-style': `${descriptionTypography?.fontStyle}`,
             'text-transform': `${descriptionTypography?.textTransform}`,
             'text-decoration': `${descriptionTypography?.textDecoration}`,
@@ -270,19 +268,26 @@ function Edit(props) {
             'border-right-width': `${mapBorder?.borderWidth?.[props.deviceType]?.right}px`,
             'border-bottom-width': `${mapBorder?.borderWidth?.[props.deviceType]?.bottom}px`,
             'border-left-width': `${mapBorder?.borderWidth?.[props.deviceType]?.left}px`,
-            'border-top-left-radius': `${mapBorder?.borderRadius?.[props.deviceType]?.top}px`,
-            'border-top-right-radius': `${mapBorder?.borderRadius?.[props.deviceType]?.right}px`,
-            'border-bottom-left-radius': `${mapBorder?.borderRadius?.[props.deviceType]?.bottom}px`,
-            'border-bottom-right-radius': `${mapBorder?.borderRadius?.[props.deviceType]?.left}px`,
+            'border-top-left-radius': `${mapBorder?.borderRadius?.[props.deviceType]?.top}px !important`,
+            'border-top-right-radius': `${mapBorder?.borderRadius?.[props.deviceType]?.right}px !important`,
+            'border-bottom-left-radius': `${mapBorder?.borderRadius?.[props.deviceType]?.bottom}px !important`,
+            'border-bottom-right-radius': `${mapBorder?.borderRadius?.[props.deviceType]?.left}px !important`,
             'padding-top': `${mapPadding?.[props.deviceType]?.top}${mapPadding.unit}`,
             'padding-right': `${mapPadding?.[props.deviceType]?.right}${mapPadding.unit}`,
             'padding-bottom': `${mapPadding?.[props.deviceType]?.bottom}${mapPadding.unit}`,
             'padding-left': `${mapPadding?.[props.deviceType]?.left}${mapPadding.unit}`,
-            'margin-top': `${mapMargin?.[props.deviceType]?.top}${mapMargin.unit}`,
-            'margin-right': `${mapMargin?.[props.deviceType]?.right}${mapMargin.unit}`,
-            'margin-bottom': `${mapMargin?.[props.deviceType]?.bottom}${mapMargin.unit}`,
-            'margin-left': `${mapMargin?.[props.deviceType]?.left}${mapMargin.unit}`,
-            'box-shadow': `${mapBoxShadow.horizontal}px ${mapBoxShadow.vertical}px ${mapBoxShadow.blur}px ${mapBoxShadow.color} ${mapBoxShadow?.position}`,
+            // 'margin-top': `${mapMargin?.[props.deviceType]?.top}${mapMargin.unit} !important`,
+            // 'margin-right': `${mapMargin?.[props.deviceType]?.right}${mapMargin.unit} !important`,
+            // 'margin-bottom': `${mapMargin?.[props.deviceType]?.bottom}${mapMargin.unit} !important`,
+            // 'margin-left': `${mapMargin?.[props.deviceType]?.left}${mapMargin.unit} !important`,
+            'box-shadow': `${mapBoxShadow.horizontal}px ${mapBoxShadow.vertical}px ${mapBoxShadow.blur}px ${mapBoxShadow.color} ${mapBoxShadow?.position} !important`,
+        };
+
+        styles[`.${blockId} .map-container`] = {
+            'border-top-left-radius': `${mapBorder?.borderRadius?.[props.deviceType]?.top}px !important`,
+            'border-top-right-radius': `${mapBorder?.borderRadius?.[props.deviceType]?.right}px !important`,
+            'border-bottom-left-radius': `${mapBorder?.borderRadius?.[props.deviceType]?.bottom}px !important`,
+            'border-bottom-right-radius': `${mapBorder?.borderRadius?.[props.deviceType]?.left}px !important`
         };
 
         return generateCss(styles);
@@ -539,8 +544,6 @@ function Edit(props) {
                                 initialOpen={false}
                             >
                                 <PremiumShadow
-                                    label={__("Shadow", 'premium-blocks-for-gutenberg')}
-                                    boxShadow={false}
                                     value={mapBoxShadow}
                                     onChange={(value) => setAttributes({ mapBoxShadow: value })}
                                 />
@@ -568,11 +571,26 @@ function Edit(props) {
                     </InspectorTabs>
                 </InspectorControls>
                 <div
-                    className={`${mainClasses}`}
+                    {...useBlockProps({
+                        className: classnames(
+                            className,
+                            `${blockId}`,
+                            {
+                                " premium-desktop-hidden": hideDesktop,
+                                " premium-tablet-hidden": hideTablet,
+                                " premium-mobile-hidden": hideMobile,
+                            }
+                        ),
+                    })}
+                    style={{
+                        ...marginCss(mapMargin, props.deviceType)
+                    }}
                 >
-                    <div className="map-container" style={{
-                        height: height + "px"
-                    }} />
+                    <div ref={contentRef}>
+                        <div className="map-container" style={{
+                            height: height + "px"
+                        }} />
+                    </div>
                     <style>{loadStyles()}</style>
                     {loadDescriptionGoogleFonts}
                     {loadTitleGoogleFonts}
