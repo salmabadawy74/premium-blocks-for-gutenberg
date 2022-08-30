@@ -34,12 +34,7 @@ if ( ! class_exists( 'PBG_Blocks_Loader' ) ) {
 		 *  Constructor
 		 */
 		public function __construct() {
-			require_once PREMIUM_BLOCKS_PATH . 'src/blocks/content-switcher/index.php';
-			require_once PREMIUM_BLOCKS_PATH . 'src/blocks/breadcrumbs/index.php';
-			require_once PREMIUM_BLOCKS_PATH . 'src/blocks/search/index.php';
-			require_once PREMIUM_BLOCKS_PATH . 'src/blocks/switcher-child/index.php';
-			require_once PREMIUM_BLOCKS_PATH . 'src/blocks/trigger/index.php';
-			require_once PREMIUM_BLOCKS_PATH . 'src/blocks/accordion-item/index.php';
+			// require_once PREMIUM_BLOCKS_PATH . 'src/blocks/switcher-child/index.php';
 		}
 	}
 }

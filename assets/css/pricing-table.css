@@ -1,0 +1,83 @@
+@charset "UTF-8";
+/**
+* Price
+*/
+/**
+* List Items
+*/
+.premium-pricing-table {
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+  border: 1px solid #e1e1e1;
+  text-align: center; }
+  .premium-pricing-table .premium-pricing-table__button_link {
+    padding: 10px;
+    display: block;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none; }
+  .premium-pricing-table .premium-pricing-table__price_wrap {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px; }
+    .premium-pricing-table .premium-pricing-table__price_wrap span:nth-child(-n + 3) {
+      line-height: 1em; }
+    .premium-pricing-table .premium-pricing-table__price_wrap strike {
+      line-height: 1em; }
+  .premium-pricing-table .premium-pricing-table__button {
+    cursor: pointer;
+    display: inline-block;
+    width: 30%;
+    margin: 0 auto; }
+  .premium-pricing-table .premium-pricing-table__badge_wrap {
+    position: absolute;
+    top: 0;
+    z-index: 99; }
+    .premium-pricing-table .premium-pricing-table__badge_wrap span {
+      position: absolute;
+      top: 35px;
+      width: 100px;
+      text-align: center;
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+      display: block; }
+  .premium-pricing-table .premium-pricing-table__badge_right {
+    right: 0; }
+    .premium-pricing-table .premium-pricing-table__badge_right .premium-pricing-table__badge {
+      width: 0;
+      height: 0;
+      border-bottom: 150px solid transparent;
+      border-right: 150px solid;
+      border-right-color: currentcolor;
+      border-left: 150px solid transparent;
+      border-right-color: #6ec1e4; }
+    .premium-pricing-table .premium-pricing-table__badge_right span {
+      -webkit-transform: rotate(45deg);
+      transform: rotate(45deg);
+      right: 0; }
+  .premium-pricing-table .premium-pricing-table__badge_left {
+    left: 0; }
+    .premium-pricing-table .premium-pricing-table__badge_left .premium-pricing-table__badge {
+      width: 0;
+      height: 0;
+      border-top: 150px solid;
+      border-top-color: currentcolor;
+      border-bottom: 150px solid transparent;
+      border-right: 150px solid transparent;
+      border-top-color: #6ec1e4; }
+  .premium-pricing-table ul.premium-pricing-table__list {
+    margin: 0 !important;
+    padding: 0;
+    list-style-position: inside;
+    text-align: center; }
+  .premium-pricing-table .premium-pricing-table__list.list-check li:before {
+    content: "✓";
+    margin-right: 8px; }

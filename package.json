@@ -25,7 +25,8 @@
         "grunt-contrib-compress": "^1.4.3",
         "grunt-contrib-copy": "^1.0.0",
         "grunt-sass": "^3.1.0",
-        "grunt-wp-readme-to-markdown": "^2.0.1"
+        "grunt-wp-readme-to-markdown": "^2.0.1",
+        "grunt-contrib-cssmin": "^4.0.0"
     },
     "dependencies": {
         "@fonticonpicker/react-fonticonpicker": "^1.2.0",
