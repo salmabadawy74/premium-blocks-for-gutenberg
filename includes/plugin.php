@@ -81,9 +81,6 @@ if ( ! class_exists( 'PBG_Plugin' ) ) {
 
 		public function init_files() {
 
-			require_once PREMIUM_BLOCKS_PATH . 'admin/settings/elements.php';
-			require_once PREMIUM_BLOCKS_PATH . 'admin/settings/assets.php';
-			require_once PREMIUM_BLOCKS_PATH . 'admin/includes/pb-panel/helpers/class-premium-blocks-activate.php';
 			if ( is_admin() ) {
 				require_once PREMIUM_BLOCKS_PATH . 'admin/reports/deps/data.php';
 				require_once PREMIUM_BLOCKS_PATH . 'admin/includes/rollback.php';
