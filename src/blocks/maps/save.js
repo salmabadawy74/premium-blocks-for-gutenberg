@@ -1,5 +1,6 @@
 import { filterJsCss } from "../../components/HelperFunction";
 import classnames from "classnames";
+const { useBlockProps } = wp.blockEditor;
 
 const className = "premium-maps__wrap";
 
@@ -35,18 +36,24 @@ export default function save(props) {
         mapBoxShadow,
     } = props.attributes;
 
-    const mainClasses = classnames(className, {
-        " premium-desktop-hidden": hideDesktop,
-        " premium-tablet-hidden": hideTablet,
-        " premium-mobile-hidden": hideMobile,
-    });
-
     return (
-        <div className={`${mainClasses}`} style={filterJsCss({
-            borderStyle: mapBorder?.borderType,
-            borderColor: mapBorder?.borderColor,
-            boxShadow: `${mapBoxShadow.horizontal}px ${mapBoxShadow.vertical}px ${mapBoxShadow.blur}px ${mapBoxShadow.color} ${mapBoxShadow.position}`,
-        })}>
+        <div
+            {...useBlockProps.save({
+                className: classnames(
+                    className,
+                    `premium-maps ${blockId}`,
+                    {
+                        " premium-desktop-hidden": hideDesktop,
+                        " premium-tablet-hidden": hideTablet,
+                        " premium-mobile-hidden": hideMobile,
+                    }
+                ),
+            })}
+            style={filterJsCss({
+                borderStyle: mapBorder?.borderType,
+                borderColor: mapBorder?.borderColor,
+                boxShadow: `${mapBoxShadow.horizontal}px ${mapBoxShadow.vertical}px ${mapBoxShadow.blur}px ${mapBoxShadow.color} ${mapBoxShadow.position}`,
+            })}>
             <div className="map-container" style={filterJsCss({
                 height: height + "px"
             })}>
@@ -90,10 +97,10 @@ export default function save(props) {
             <script>
                 {`window.addEventListener('load',function(){
                 if( typeof google === 'undefined' ) return;
-                let mapElem = document.getElementsByClassName('map-container')[0];
+                let mapElem = document.getElementsByClassName('${blockId}')[0];
+                mapElem = mapElem.getElementsByClassName('map-container')[0];
                 let pin = mapElem.querySelector('.${className}__marker');
                 let latlng = new google.maps.LatLng( parseFloat( ${centerLat} ) , parseFloat( ${centerLng} ) );
-
                 let map = new google.maps.Map(mapElem, {
                     zoom: ${zoom},
                     gestureHandling: 'cooperative',
@@ -113,7 +120,6 @@ export default function save(props) {
                         map			: map,
                         icon        : ${markerCustom} ? markerIcon : ''
                     });
-
                     let infowindow = new google.maps.InfoWindow({
                         maxWidth    : ${maxWidth},
                         content		: pin.innerHTML
@@ -125,7 +131,6 @@ export default function save(props) {
                         infowindow.open( map, marker );
                     });
                 }
-
             });`}
             </script>
         </div>
