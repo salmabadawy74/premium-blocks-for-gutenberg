@@ -21,8 +21,10 @@ import "./blocks/heading";
 import "./blocks/row";
 import './blocks/breadcrumbs';
 import './blocks/trigger';
-import './blocks/search';
-
+// import './blocks/search';
+import './blocks/switcher-child';
+import './blocks/content-switcher';
+import './blocks/accordion-item'
 window.PremiumOptionsSettings = {
     FontAwesomeEnabled
 }

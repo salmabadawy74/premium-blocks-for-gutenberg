@@ -133,7 +133,7 @@ function get_breadcrumbs_css( $attributes, $unique_id ) {
  * @return string The render.
  */
 function render_block_pbg_breadcrumbs( $attributes ) {
-    var_dump( $attributes);
+    
 	$unique_id = rand( 100, 10000 );
 	$id        = 'premium-breadcrumbs-' . esc_attr( $unique_id );
 

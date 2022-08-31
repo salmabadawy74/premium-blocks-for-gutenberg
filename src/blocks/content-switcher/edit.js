@@ -1,13 +1,13 @@
-import { __ } from "@wordpress/i18n";
+const { __ } = wp.i18n;
 import classnames from "classnames";
-import { withSelect } from "@wordpress/data";
-import {
+const { withSelect } = wp.data
+const {
     InspectorControls,
     RichText,
     useBlockProps,
     InnerBlocks,
-} from "@wordpress/block-editor";
-import { Fragment, useEffect, useState, useRef } from "@wordpress/element";
+} = wp.blockEditor;
+const { Fragment, useEffect, useState, useRef } = wp.element;
 import { PanelBody, SelectControl, ToggleControl } from "@wordpress/components";
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";

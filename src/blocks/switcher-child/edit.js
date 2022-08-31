@@ -1,9 +1,6 @@
-import { __ } from '@wordpress/i18n';
+const { __ } = wp.i18n;
 import classnames from "classnames";
-import {
-    InnerBlocks,
-    useBlockProps
-} from '@wordpress/block-editor';
+const { InnerBlocks, useBlockProps } = wp.blockEditor;
 
 function Edit(props) {
 

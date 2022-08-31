@@ -55,16 +55,37 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 		}
 
 		public function add_default_options( $options ) {
-			// $default_options = array(
-			// 	'trigger'     => true,
-			// 	'breadcrumbs' => true,
-			// 	'search'      => true,
-			// 	'banner'      => true,
-			// 	'button'      => true,
-            //     'pricing-table' =>true,
-			// );
+           
+			$default_options = array(
+				'trigger'     => true,
+				'breadcrumbs' => true,
+				'search'      => true,
+				'banner'      => true,
+				'button'      => true,
+                'pricing-table' =>true,
+                'accordion' =>true,
+                'count-up'=>true,
+                'dual-heading'=>true,
+                'heading'=>true,
+                'icon'=>true,
+                'icon-box' =>true,
+                'maps'=>true,
+                'section'=>true,
+                'testimonials'=>true,
+                'video-box'=>true,
+                'fancy-text'=>true,
+                'lottie'=>true,
+                'Modal'=>true,
+                'image-separator'=>true,
+                'bullet-list'=>true,
+                'person'=>true,
+                'search' =>true,
+                'row'=>true,
+                'breadcrumbs'=>true,
+                'content-switcher'=>true, 
+			);
 
-			return ( $options );
+			return array_merge( $default_options,$options );
 		}
 
 
@@ -75,18 +96,19 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 		 * @return void
 		 */
 		public function update_option() {
-			check_ajax_referer( 'pb-panel', 'nonce' );
+			// check_ajax_referer( 'pb-panel', 'nonce' );
 
 			$option = isset( $_POST['option'] ) ? sanitize_text_field( wp_unslash( $_POST['option'] ) ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			$value  = isset( $_POST['value'] ) ? sanitize_text_field( wp_unslash( $_POST['value'] ) ) : '';
 			$value  = 'true' === $value ? true : false;
-			// $options = apply_filters( 'pb_options', get_option( 'pb_options', array() ) );
-			$options = get_option( 'pb_options' );
+            $options = apply_filters( 'pb_options', get_option( 'pb_options', array() ) );
+			// $options = get_option( 'pb_options' );
 			$options = ! is_array( $options ) ? array() : $options;
 
 			if ( '' !== $value && '' !== $option ) {
 				$options[ $option ] = $value;
-				update_option( 'pb_options', $options );
+                update_option( 'pb_options',$options );
+                
 				wp_send_json_success(
 					array(
 						'success' => true,
@@ -344,7 +366,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 					'category' => 'creative',
 				),
 			);
-				return apply_filters( 'pb_panel_options', $options );
+         return apply_filters( 'pb_panel_options', $options );
 		}
 
 		/**

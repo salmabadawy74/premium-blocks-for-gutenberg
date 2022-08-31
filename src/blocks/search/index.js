@@ -2,7 +2,6 @@
  * WordPress dependencies
  */
 import { registerBlockType } from '@wordpress/blocks';
-import { search as icon } from '@wordpress/icons';
 
 /**
  * Internal dependencies
@@ -18,11 +17,11 @@ const { name } = metadata;
 export { metadata, name };
 
 registerBlockType(name, {
-	icon,
-	example: {},
-	variations,
-	/**
-	 * @see ./edit.js
-	 */
-	edit,
+
+    example: {},
+    variations,
+    /**
+     * @see ./edit.js
+     */
+    edit,
 });
