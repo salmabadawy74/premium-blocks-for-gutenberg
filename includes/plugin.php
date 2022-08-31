@@ -81,6 +81,8 @@ if ( ! class_exists( 'PBG_Plugin' ) ) {
 
 		public function init_files() {
 
+			require_once PREMIUM_BLOCKS_PATH . 'classes/class-pbg-style-generator.php';
+
 			if ( is_admin() ) {
 				require_once PREMIUM_BLOCKS_PATH . 'admin/reports/deps/data.php';
 				require_once PREMIUM_BLOCKS_PATH . 'admin/includes/rollback.php';
