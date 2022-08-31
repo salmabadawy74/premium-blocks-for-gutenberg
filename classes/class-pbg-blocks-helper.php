@@ -84,7 +84,7 @@ class PBG_Blocks_Helper {
 		 // Gets Active Blocks.
 		self::$blocks = apply_filters( 'pb_options', get_option( 'pb_options', array() ) );
 		// Gets Plugin Admin Settings.
-		// var_dump( self::$blocks );
+		
 		self::$config = apply_filters( 'pb_options', get_option( 'pb_options', array() ) );
 		$allow_json   = isset( self::$config['premium-upload-json'] ) ? self::$config['premium-upload-json'] : true;
 		if ( $allow_json ) {
@@ -120,7 +120,7 @@ class PBG_Blocks_Helper {
 		Pbg_Style_Generator::pbg_add_css( PREMIUM_BLOCKS_URL . 'assets/css/blockseditor.css' );
 		if ( is_array( self::$blocks ) && ! empty( self::$blocks ) ) {
 			foreach ( self::$blocks as $slug => $value ) {
-                var_dump(self::$blocks);
+             
 				if ( false === $value ) {
 					continue;
 				}
@@ -285,7 +285,7 @@ class PBG_Blocks_Helper {
 
 		$is_maps_enabled = self::$blocks['maps'];
 
-		$is_section_enabled = self::$blocks['container'];
+		$is_section_enabled = self::$blocks['section'];
 
 		if ( $is_fa_enabled ) {
 			wp_enqueue_style(
@@ -999,7 +999,7 @@ class PBG_Blocks_Helper {
 		if ( $this->it_is_not_amp() ) {
 			wp_enqueue_script(
 				'pbg-accordion',
-				PREMIUM_BLOCKS_URL . 'src/blocks/accordion/view/view.js',
+				PREMIUM_BLOCKS_URL . 'assets/js/accordion.js',
 				array( 'jquery' ),
 				PREMIUM_BLOCKS_VERSION,
 				true
