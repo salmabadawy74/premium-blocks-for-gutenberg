@@ -55,15 +55,16 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 		}
 
 		public function add_default_options( $options ) {
-			$default_options = array(
-				'trigger'     => true,
-				'breadcrumbs' => true,
-				'search'      => true,
-				'banner'      => true,
-				'button'      => true,
-			);
+			// $default_options = array(
+			// 	'trigger'     => true,
+			// 	'breadcrumbs' => true,
+			// 	'search'      => true,
+			// 	'banner'      => true,
+			// 	'button'      => true,
+            //     'pricing-table' =>true,
+			// );
 
-			return array_merge( $default_options, $options );
+			return ( $options );
 		}
 
 

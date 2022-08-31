@@ -120,6 +120,7 @@ class PBG_Blocks_Helper {
 		Pbg_Style_Generator::pbg_add_css( PREMIUM_BLOCKS_URL . 'assets/css/blockseditor.css' );
 		if ( is_array( self::$blocks ) && ! empty( self::$blocks ) ) {
 			foreach ( self::$blocks as $slug => $value ) {
+                var_dump(self::$blocks);
 				if ( false === $value ) {
 					continue;
 				}
