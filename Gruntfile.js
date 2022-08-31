@@ -4,7 +4,7 @@ module.exports = function (grunt) {
     const pkgInfo = grunt.file.readJSON('package.json');
     const sass = require('node-sass');
 
-    const blocks = ['accordion', 'banner', 'breadcrumbs', 'bullet-list', 'button', 'content-switcher', 'count-up', 'dual-heading', 'fancy-text', 'heading', 'icon', 'icon-box', 'image-separator', 'lottie', 'maps', 'Modal', 'person', 'pricing-table', 'row', 'section', 'testimonials', 'trigger', 'video-box'];
+    const blocks = ['accordion', 'banner', 'breadcrumbs', 'bullet-list', 'button', 'content-switcher', 'count-up', 'dual-heading', 'fancy-text', 'heading', 'icon', 'icon-box', 'image-separator', 'lottie', 'maps', 'Modal', 'person', 'pricing-table', 'row', 'section', 'testimonials', 'trigger', 'video-box', 'search'];
     const sassFiles = {};
     const minifyFiles = {}
 

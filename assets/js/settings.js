@@ -5,7 +5,7 @@ wp.blocks.updateCategory("premium-blocks", { icon: premiumLogo });*/
 export const {
     banner,
     dualHeading,
-    pricingTable,
+    pricingTaaible,
     maps,
     testimonial,
     countUp,
