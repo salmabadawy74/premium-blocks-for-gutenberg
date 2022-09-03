@@ -190,6 +190,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 				'memory_limit'      => wp_convert_hr_to_bytes( WP_MEMORY_LIMIT ),
 				'memory_limit_size' => size_format( wp_convert_hr_to_bytes( WP_MEMORY_LIMIT ) ),
 				'theme_version'     => esc_html( PREMIUM_BLOCKS_VERSION ),
+				'previous_version'     => esc_html( PREMIUM_BLOCKS_STABLE_VERSION ),
 				'wp_path'           => esc_html( ABSPATH ),
 				'debug'             => defined( 'WP_DEBUG' ) && WP_DEBUG,
 				'lang'              => esc_html( get_locale() ),
