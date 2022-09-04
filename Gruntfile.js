@@ -11,7 +11,7 @@ module.exports = function (grunt) {
 
     blocks.map(block => sassFiles[`./assets/css/${block}.css`] = `./src/blocks/${block}/style.scss`);
     blocks.map(block => minifyFiles[`./assets/css/minified/${block}.min.css`] = `./assets/css/${block}.css`);
-    console.log(minifyFiles)
+
     //Grunt Configuration
     grunt.initConfig({
         pkg: pkgInfo,

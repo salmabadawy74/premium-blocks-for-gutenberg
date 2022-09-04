@@ -11,6 +11,7 @@ import './style.scss';
  */
 import json from './block.json';
 import edit from './edit';
+import { breadcrumbs } from '../../../assets/js/settings';
 
 registerBlockType('premium/breadcrumbs', {
     ...json,
@@ -21,5 +22,8 @@ registerBlockType('premium/breadcrumbs', {
     * @see ./edit.js
     */
     edit,
+    supports: {
+        inserter: breadcrumbs
+    },
 });
 

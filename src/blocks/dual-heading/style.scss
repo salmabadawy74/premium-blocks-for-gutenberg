@@ -39,6 +39,10 @@
         display: inline-block;
         -webkit-transform: translate(0, 0);
         transform: translate(0, 0);
+
+        .premium-dheading-block__second {
+            font-size: 20px;
+        }
     }
     .premium-headingc-true {
         -webkit-text-fill-color: transparent;

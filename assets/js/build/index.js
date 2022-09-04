@@ -40,11 +40,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "FontAwesomeEnabled": () => (/* binding */ FontAwesomeEnabled),
 /* harmony export */   "JsonUploadEnabled": () => (/* binding */ JsonUploadEnabled),
+/* harmony export */   "Modal": () => (/* binding */ Modal),
 /* harmony export */   "accordion": () => (/* binding */ accordion),
 /* harmony export */   "banner": () => (/* binding */ banner),
+/* harmony export */   "breadcrumbs": () => (/* binding */ breadcrumbs),
 /* harmony export */   "bulletList": () => (/* binding */ bulletList),
 /* harmony export */   "button": () => (/* binding */ button),
-/* harmony export */   "container": () => (/* binding */ container),
+/* harmony export */   "contentSwitcher": () => (/* binding */ contentSwitcher),
 /* harmony export */   "countUp": () => (/* binding */ countUp),
 /* harmony export */   "dualHeading": () => (/* binding */ dualHeading),
 /* harmony export */   "fancyText": () => (/* binding */ fancyText),
@@ -54,36 +56,43 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "imageSeparator": () => (/* binding */ imageSeparator),
 /* harmony export */   "lottie": () => (/* binding */ lottie),
 /* harmony export */   "maps": () => (/* binding */ maps),
-/* harmony export */   "modal": () => (/* binding */ modal),
 /* harmony export */   "person": () => (/* binding */ person),
 /* harmony export */   "pricingTable": () => (/* binding */ pricingTable),
-/* harmony export */   "testimonial": () => (/* binding */ testimonial),
+/* harmony export */   "row": () => (/* binding */ row),
+/* harmony export */   "search": () => (/* binding */ search),
+/* harmony export */   "section": () => (/* binding */ section),
+/* harmony export */   "testimonials": () => (/* binding */ testimonials),
+/* harmony export */   "trigger": () => (/* binding */ trigger),
 /* harmony export */   "videoBox": () => (/* binding */ videoBox)
 /* harmony export */ });
 /*import premiumLogo from "./logo";
 wp.blocks.updateCategory("premium-blocks", { icon: premiumLogo });*/
 //Blocks Keys
 const {
-  banner,
-  dualHeading,
-  pricingTable,
-  maps,
-  testimonial,
-  countUp,
-  icon,
-  button,
-  container,
+  Modal,
   accordion,
-  iconBox,
-  videoBox,
-  fancyText,
-  lottie,
-  modal,
-  bulletList,
-  person,
+  banner,
+  breadcrumbs,
   heading,
-  imageSeparator // contentSwitcher
-
+  button,
+  icon,
+  lottie,
+  maps,
+  person,
+  row,
+  search,
+  section,
+  testimonials,
+  trigger,
+  [`bullet-list`]: bulletList,
+  [`content-switcher`]: contentSwitcher,
+  [`count-up`]: countUp,
+  [`dual-heading`]: dualHeading,
+  [`fancy-text`]: fancyText,
+  [`icon-box`]: iconBox,
+  [`image-separator`]: imageSeparator,
+  [`pricing-table`]: pricingTable,
+  [`video-box`]: videoBox
 } = PremiumBlocksSettings.activeBlocks; //Plugin Config Keys
 
 const {
@@ -3338,7 +3347,7 @@ registerBlockType("premium/modal", { ..._block_json__WEBPACK_IMPORTED_MODULE_2__
   icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__["default"].modal,
   category: "premium-blocks",
   supports: {
-    inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.modal
+    inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.Modal
   },
   deprecated: _deprecated__WEBPACK_IMPORTED_MODULE_4__["default"],
   example: {},
@@ -10228,6 +10237,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.scss */ "./src/blocks/breadcrumbs/style.scss");
 /* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block.json */ "./src/blocks/breadcrumbs/block.json");
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/blocks/breadcrumbs/edit.js");
+/* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
 /**
  * WordPress dependencies
  */
@@ -10244,6 +10254,7 @@ const {
 
 
 
+
 registerBlockType('premium/breadcrumbs', { ..._block_json__WEBPACK_IMPORTED_MODULE_1__,
   title: __("breadcrumbs", "premium-blocks-for-gutenberg"),
   category: "premium-blocks",
@@ -10251,7 +10262,10 @@ registerBlockType('premium/breadcrumbs', { ..._block_json__WEBPACK_IMPORTED_MODU
   /**
   * @see ./edit.js
   */
-  edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"]
+  edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
+  supports: {
+    inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_3__.breadcrumbs
+  }
 });
 
 /***/ }),
@@ -15261,6 +15275,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./block.json */ "./src/blocks/content-switcher/block.json");
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/blocks/content-switcher/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./save */ "./src/blocks/content-switcher/save.js");
+/* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
 const {
   __
 } = wp.i18n;
@@ -15276,11 +15291,15 @@ const {
 
 
 
+
 registerBlockType("premium/contentswitcher", {
   /**
    * @see ./edit.js
    */
   ..._block_json__WEBPACK_IMPORTED_MODULE_2__,
+  supports: {
+    inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_5__.contentSwitcher
+  },
   icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].content_switcher,
   edit: _edit__WEBPACK_IMPORTED_MODULE_3__["default"],
   save: _save__WEBPACK_IMPORTED_MODULE_4__["default"]
@@ -44235,6 +44254,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/row/save.js");
 /* harmony import */ var _variations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./variations */ "./src/blocks/row/variations.js");
 /* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
+
 
 
 
@@ -44251,7 +44272,8 @@ registerBlockType("premium/row", { ..._block_json__WEBPACK_IMPORTED_MODULE_0__,
   icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_4__["default"].row,
   category: "premium-blocks",
   supports: {
-    html: false
+    html: false,
+    inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_5__.row
   },
   variations: _variations__WEBPACK_IMPORTED_MODULE_3__["default"],
   example: {},
@@ -46429,7 +46451,7 @@ registerBlockType("premium/container", { ..._block_json__WEBPACK_IMPORTED_MODULE
   icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__["default"].section,
   category: "premium-blocks",
   supports: {
-    inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.container,
+    inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.section,
     align: true,
     align: ["center", "wide", "full"]
   },
@@ -48923,7 +48945,7 @@ registerBlockType("premium/testimonial", { ..._block_json__WEBPACK_IMPORTED_MODU
   description: __("Proof your success by displaying customer reviews using Premium Testimonials Block."),
   category: "premium-blocks",
   supports: {
-    inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.testimonial
+    inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.testimonials
   },
   example: {},
   edit: _edit__WEBPACK_IMPORTED_MODULE_1__["default"],
@@ -49669,6 +49691,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./block.json */ "./src/blocks/trigger/block.json");
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/blocks/trigger/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./save */ "./src/blocks/trigger/save.js");
+/* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
 const {
   __
 } = wp.i18n;
@@ -49684,11 +49707,15 @@ const {
 
 
 
+
 registerBlockType('premium/trigger', {
   /**
    * @see ./edit.js
    */
   ..._block_json__WEBPACK_IMPORTED_MODULE_2__,
+  supports: {
+    inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_5__.trigger
+  },
   icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].trigger,
   edit: _edit__WEBPACK_IMPORTED_MODULE_3__["default"],
   save: _save__WEBPACK_IMPORTED_MODULE_4__["default"]

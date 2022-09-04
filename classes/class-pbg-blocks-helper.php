@@ -362,12 +362,16 @@ class PBG_Blocks_Helper {
 
 				register_block_pbg_trigger();
 
-			} elseif ( $slug === 'contentswitcher' ) {
+			} elseif ( $slug === 'content-switcher' ) {
+				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/switcher-child.php';
 
 				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/content-switcher.php';
 
 				register_block_pbg_content_switcher();
-			}
+			}elseif ( $slug ==='search'){
+              require_once PREMIUM_BLOCKS_PATH . 'blocks-config/search.php';
+ 
+            }
 		}
 		register_block_type(
 			'premium/accordion',
@@ -829,7 +833,12 @@ class PBG_Blocks_Helper {
 		} else {
 			$unique_id = rand( 100, 10000 );
 		}
-
+   wp_enqueue_style(
+            'pbg-fancyText-style',
+        PREMIUM_BLOCKS_URL . 'assets/css/minified/fancy-text.min.css',
+        array(), PREMIUM_BLOCKS_VERSION, 
+        'all' 
+     );
 		if ( $this->it_is_not_amp() ) {
 			wp_enqueue_script(
 				'pbg-sectionfancy-text',
@@ -1005,6 +1014,12 @@ class PBG_Blocks_Helper {
 				true
 			);
 		}
+        wp_enqueue_style(
+            'pbg-accordion-style',
+        PREMIUM_BLOCKS_URL . 'assets/css/minified/accordion.min.css',
+        array(), PREMIUM_BLOCKS_VERSION, 
+        'all' 
+     );
 		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
 			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
@@ -1225,7 +1240,12 @@ class PBG_Blocks_Helper {
 		if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
 			$unique_id = ".{$attributes['blockId']}";
 		}
-
+         wp_enqueue_style(
+            'pbg-banner-style',
+        PREMIUM_BLOCKS_URL . 'assets/css/minified/banner.min.css',
+        array(), PREMIUM_BLOCKS_VERSION, 
+        'all' 
+     );
 		$style_unique_id = rand( 100, 10000 );
 
 		$style_id = 'pbg-blocks-style' . esc_attr( $style_unique_id );
@@ -1393,6 +1413,12 @@ class PBG_Blocks_Helper {
 		if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
 			$unique_id = ".{$attributes['blockId']}";
 		}
+           wp_enqueue_style(
+            'pbg-button-style',
+        PREMIUM_BLOCKS_URL . 'assets/css/minified/button.min.css',
+        array(), PREMIUM_BLOCKS_VERSION, 
+        'all' 
+     );
 
 		$style_unique_id = rand( 100, 10000 );
 
@@ -1574,6 +1600,12 @@ class PBG_Blocks_Helper {
 				true
 			);
 		}
+           wp_enqueue_style(
+            'pbg-countUp-style',
+        PREMIUM_BLOCKS_URL . 'assets/css/minified/count-up.min.css',
+        array(), PREMIUM_BLOCKS_VERSION, 
+        'all' 
+     );
 		$style_id = 'pbg-blocks-style-' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'countup', $unique_id ) ) {
 
@@ -1943,6 +1975,13 @@ class PBG_Blocks_Helper {
 		if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
 			$unique_id = ".{$attributes['blockId']}";
 		}
+        wp_enqueue_style(
+        'pbg-dualHeading-style',
+            PREMIUM_BLOCKS_URL . 'assets/css/minified/dual-heading.min.css',
+            array(),
+            PREMIUM_BLOCKS_VERSION, 
+            'all' 
+        );
 
 		$style_unique_id = rand( 100, 10000 );
 
@@ -2225,6 +2264,12 @@ class PBG_Blocks_Helper {
 		} else {
 			$unique_id = rand( 100, 10000 );
 		}
+           wp_enqueue_style(
+            'pbg-icon-style',
+        PREMIUM_BLOCKS_URL . 'assets/css/minified/icon.min.css',
+        array(), PREMIUM_BLOCKS_VERSION, 
+        'all' 
+     );
 		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'icon', $unique_id ) ) {
 
@@ -2419,6 +2464,12 @@ class PBG_Blocks_Helper {
 		} else {
 			$unique_id = rand( 100, 10000 );
 		}
+           wp_enqueue_style(
+            'pbg-iconBox-style',
+        PREMIUM_BLOCKS_URL . 'assets/css/minified/icon-box.min.css',
+        array(), PREMIUM_BLOCKS_VERSION, 
+        'all' 
+     );
 		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'iconBox', $unique_id ) ) {
 
@@ -2765,6 +2816,12 @@ class PBG_Blocks_Helper {
 		if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
 			$unique_id = ".{$attributes['blockId']}";
 		}
+           wp_enqueue_style(
+            'pbg-pricingTable-style',
+        PREMIUM_BLOCKS_URL . 'assets/css/minified/pricing-table.min.css',
+        array(), PREMIUM_BLOCKS_VERSION, 
+        'all' 
+     );
 
 		$style_unique_id = rand( 100, 10000 );
 
@@ -3416,6 +3473,12 @@ class PBG_Blocks_Helper {
 		if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
 			$unique_id = ".{$attributes['blockId']}";
 		}
+           wp_enqueue_style(
+            'pbg-lottie-style',
+        PREMIUM_BLOCKS_URL . 'assets/css/minified/lottie.min.css',
+        array(), PREMIUM_BLOCKS_VERSION, 
+        'all' 
+     );
 		if ( $this->it_is_not_amp() ) {
 			wp_enqueue_script(
 				'pbg-lottie',
@@ -3563,6 +3626,12 @@ class PBG_Blocks_Helper {
 		if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
 			$unique_id = ".{$attributes['blockId']}";
 		}
+           wp_enqueue_style(
+            'pbg-testimonial-style',
+        PREMIUM_BLOCKS_URL . 'assets/css/minified/testimonials.min.css',
+        array(), PREMIUM_BLOCKS_VERSION, 
+        'all' 
+     );
 
 		$style_unique_id = rand( 100, 10000 );
 
@@ -3779,6 +3848,12 @@ class PBG_Blocks_Helper {
 		if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
 			$unique_id = ".{$attributes['blockId']}";
 		}
+           wp_enqueue_style(
+            'pbg-section-style',
+        PREMIUM_BLOCKS_URL . 'assets/css/minified/section.min.css',
+        array(), PREMIUM_BLOCKS_VERSION, 
+        'all' 
+     );
 		$style_unique_id = rand( 100, 10000 );
 		$style_id        = 'pbg-blocks-style' . esc_attr( $style_unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
@@ -3913,6 +3988,12 @@ class PBG_Blocks_Helper {
 		} else {
 			$unique_id = rand( 100, 10000 );
 		}
+           wp_enqueue_style(
+            'pbg-videoBox-style',
+        PREMIUM_BLOCKS_URL . 'assets/css/minified/video-box.min.css',
+        array(), PREMIUM_BLOCKS_VERSION, 
+        'all' 
+     );
 		if ( $this->it_is_not_amp() ) {
 			wp_enqueue_script(
 				'pbg-video-box',
@@ -4098,6 +4179,12 @@ class PBG_Blocks_Helper {
 		} else {
 			$unique_id = rand( 100, 10000 );
 		}
+           wp_enqueue_style(
+            'pbg-imageSeparator-style',
+        PREMIUM_BLOCKS_URL . 'assets/css/minified/image-separator.min.css',
+        array(), PREMIUM_BLOCKS_VERSION, 
+        'all' 
+     );
 
 		$style_id = 'pbg-block-image-separator-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'image-separator', $unique_id ) ) {
@@ -4327,6 +4414,12 @@ class PBG_Blocks_Helper {
 				true
 			);
 		}
+           wp_enqueue_style(
+            'pbg-modal-style',
+        PREMIUM_BLOCKS_URL . 'assets/css/minified/Modal.min.css',
+        array(), PREMIUM_BLOCKS_VERSION, 
+        'all' 
+     );
 		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'modal', $unique_id ) ) {
 			$css = $this->get_modal_css_style( $attributes, $unique_id );
@@ -4977,7 +5070,12 @@ class PBG_Blocks_Helper {
 		}
 
 		$style_unique_id = rand( 100, 10000 );
-
+   wp_enqueue_style(
+            'pbg-bulletList-style',
+        PREMIUM_BLOCKS_URL . 'assets/css/minified/bullet-list.min.css',
+        array(), PREMIUM_BLOCKS_VERSION, 
+        'all' 
+     );
 		$style_id = 'pbg-blocks-style' . esc_attr( $style_unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'bulletList', $unique_id ) ) {
 			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
@@ -5471,7 +5569,12 @@ class PBG_Blocks_Helper {
 		} else {
 			$unique_id = rand( 100, 10000 );
 		}
-
+   wp_enqueue_style(
+            'pbg-person-style',
+        PREMIUM_BLOCKS_URL . 'assets/css/minified/person.min.css',
+        array(), PREMIUM_BLOCKS_VERSION, 
+        'all' 
+     );
 		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'person', $unique_id ) ) {
 			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
@@ -5904,6 +6007,12 @@ class PBG_Blocks_Helper {
 		if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
 			$unique_id = ".{$attributes['blockId']}";
 		}
+           wp_enqueue_style(
+            'pbg-heading-style',
+        PREMIUM_BLOCKS_URL . 'assets/css/minified/heading.min.css',
+        array(), PREMIUM_BLOCKS_VERSION, 
+        'all' 
+     );
 
 		$style_unique_id = rand( 100, 10000 );
 
@@ -6398,7 +6507,12 @@ class PBG_Blocks_Helper {
 		} else {
 			$unique_id = rand( 100, 10000 );
 		}
-
+   wp_enqueue_style(
+            'pbg-row-style',
+        PREMIUM_BLOCKS_URL . 'assets/css/minified/row.min.css',
+        array(), PREMIUM_BLOCKS_VERSION, 
+        'all' 
+     );
 		if ( $this->it_is_not_amp() ) {
 			wp_enqueue_script(
 				'pbg-animation',
@@ -6696,6 +6810,13 @@ class PBG_Blocks_Helper {
 		if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
 			$unique_id = ".{$attributes['blockId']}";
 		}
+        wp_enqueue_style(
+            'pbg-maps-style',
+            PREMIUM_BLOCKS_URL . 'assets/css/minified/maps.min.css',
+            array(),
+            PREMIUM_BLOCKS_VERSION, 
+            'all' 
+        );
 
 		$style_unique_id = rand( 100, 10000 );
 
