@@ -4226,7 +4226,6 @@ i.fipicon-angle-left:before {
       border-left-color: transparent; }
 
 .premium-inspector-tabs-container {
-  position: sticky;
   top: -3px;
   z-index: 9; }
 
