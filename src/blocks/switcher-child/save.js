@@ -1,8 +1,5 @@
 import classnames from "classnames"
-import {
-    InnerBlocks,
-    useBlockProps
-} from '@wordpress/block-editor';
+const { InnerBlocks, useBlockProps } = wp.blockEditor;
 
 export default function save(props) {
 

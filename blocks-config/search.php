@@ -388,3 +388,16 @@ function register_block_premium_search() {
 	);
 }
 add_action( 'init', 'register_block_premium_search' );
+
+function search_enqueue() {
+
+    wp_enqueue_style(
+        'pbg-search-style',
+        PREMIUM_BLOCKS_URL . 'assets/css/minified/search.min.css',
+        array(),
+         PREMIUM_BLOCKS_VERSION, 
+        'all' 
+    );
+}
+
+add_action( 'enqueue_block_assets', 'content_switcher_enqueue' );

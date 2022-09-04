@@ -192,3 +192,12 @@ function register_block_pbg_breadcrumbs() {
 		);
 }
 add_action( 'init', 'register_block_pbg_breadcrumbs' );
+function breadcrumbs_enqueue() {
+	    wp_enqueue_style(
+            'pbg-breadcrumbs-style',
+        PREMIUM_BLOCKS_URL . 'assets/css/minified/breadcrumbs.min.css',
+        array(), PREMIUM_BLOCKS_VERSION, 
+        'all' 
+     );
+};
+add_action( 'enqueue_block_assets', 'breadcrumbs_enqueue' );

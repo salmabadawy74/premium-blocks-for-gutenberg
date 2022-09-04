@@ -1,4 +1,4 @@
-import { modal } from "../../../assets/js/settings";
+import { Modal } from "../../../assets/js/settings";
 import edit from "./edit";
 import json from './block.json';
 import save from './save'
@@ -18,7 +18,7 @@ registerBlockType("premium/modal", {
     icon: PBG_Block_Icons.modal,
     category: "premium-blocks",
     supports: {
-        inserter: modal
+        inserter: Modal
     },
     deprecated,
     example: {},

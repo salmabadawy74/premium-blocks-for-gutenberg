@@ -13,7 +13,7 @@ import InspectorTab from '../../components/inspectorTab';
 import Icons from "../../components/icons";
 import { generateBlockId, generateCss } from '../../components/HelperFunction';
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import {createBlock} from '@wordpress/blocks';
+import { createBlock } from '@wordpress/blocks';
 import { store as blockEditorStore } from '@wordpress/block-editor';
 import { compose } from '@wordpress/compose';
 
@@ -228,6 +228,7 @@ function PremiumAccordion(props) {
         return generateCss(styles);
     }
 
+
     return (
         <Fragment>
             <InspectorControls key="inspector">
@@ -240,20 +241,21 @@ function PremiumAccordion(props) {
                         >
                             <RadioComponent
                                 choices={[{
-                                        value: 'h1', label: __('H1', 'premium-blocks-for-gutenberg') }, 
-                                        { value: 'h2', label: __('H2', 'premium-blocks-for-gutenberg') }, 
-                                        { value: 'h3', label: __('H3', 'premium-blocks-for-gutenberg') }, 
-                                        { value: 'h4', label: __('H4', 'premium-blocks-for-gutenberg') }, 
-                                        { value: 'h5', label: __('H5', 'premium-blocks-for-gutenberg') }, 
-                                        { value: 'h6', label: __('H6', 'premium-blocks-for-gutenberg') }
-                                    ]}
+                                    value: 'h1', label: __('H1', 'premium-blocks-for-gutenberg')
+                                },
+                                { value: 'h2', label: __('H2', 'premium-blocks-for-gutenberg') },
+                                { value: 'h3', label: __('H3', 'premium-blocks-for-gutenberg') },
+                                { value: 'h4', label: __('H4', 'premium-blocks-for-gutenberg') },
+                                { value: 'h5', label: __('H5', 'premium-blocks-for-gutenberg') },
+                                { value: 'h6', label: __('H6', 'premium-blocks-for-gutenberg') }
+                                ]}
                                 value={titleTag}
                                 onChange={(newValue) => setAttributes({ titleTag: newValue })}
                                 label={__("Title Tag", 'premium-blocks-for-gutenberg')}
                             />
                             <RadioComponent
                                 choices={[
-                                    { value: 'ltr', label: __('LTR', 'premium-blocks-for-gutenberg'), icon: Icons.arrowLeft }, 
+                                    { value: 'ltr', label: __('LTR', 'premium-blocks-for-gutenberg'), icon: Icons.arrowLeft },
                                     { value: 'rtl', label: __('RTL', 'premium-blocks-for-gutenberg'), icon: Icons.arrowRight }
                                 ]}
                                 value={direction}
@@ -426,7 +428,7 @@ function PremiumAccordion(props) {
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls >
-            <div 
+            <div
                 ref={accordionRef}
                 {...useBlockProps({
                     className: classnames(
@@ -450,8 +452,8 @@ function PremiumAccordion(props) {
                 {loadDescGoogleFonts}
             </div>
         </Fragment>
-        );
-    }
+    );
+}
 
 export default compose([
     withSelect((select) => {

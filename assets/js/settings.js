@@ -3,26 +3,31 @@ wp.blocks.updateCategory("premium-blocks", { icon: premiumLogo });*/
 
 //Blocks Keys
 export const {
-    banner,
-    dualHeading,
-    pricingTable,
-    maps,
-    testimonial,
-    countUp,
-    icon,
-    button,
-    container,
+    Modal,
     accordion,
-    iconBox,
-    videoBox,
-    fancyText,
-    lottie,
-    modal,
-    bulletList,
-    person,
+    banner,
+    breadcrumbs,
     heading,
-    imageSeparator
-    // contentSwitcher
+    button,
+    icon,
+    lottie,
+    maps,
+    person,
+    row,
+    search,
+    section,
+    testimonials,
+    trigger,
+    [`bullet-list`]: bulletList,
+    [`content-switcher`]: contentSwitcher,
+    [`count-up`]: countUp,
+    [`dual-heading`]: dualHeading,
+    [`fancy-text`]: fancyText,
+    [`icon-box`]: iconBox,
+    [`image-separator`]: imageSeparator,
+    [`pricing-table`]: pricingTable,
+    [`video-box`]: videoBox
+
 } = PremiumBlocksSettings.activeBlocks;
 
 //Plugin Config Keys

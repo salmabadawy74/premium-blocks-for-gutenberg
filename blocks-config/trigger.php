@@ -224,5 +224,12 @@ function trigger_enqueue() {
 		PREMIUM_BLOCKS_VERSION,
 		true
 	);
+    wp_enqueue_style(
+        'pbg-trigger-style',
+        PREMIUM_BLOCKS_URL . 'assets/css/minified/trigger.min.css',
+        array(),
+         PREMIUM_BLOCKS_VERSION, 
+        'all' 
+    );
 }
 add_action( 'enqueue_block_assets', 'trigger_enqueue' );

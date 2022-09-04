@@ -1,4 +1,4 @@
-import { testimonial } from "../../../assets/js/settings";
+import { testimonials } from "../../../assets/js/settings";
 import edit from "./edit";
 import save from "./save";
 import deprecatedContent from "./deprecated";
@@ -16,7 +16,7 @@ registerBlockType("premium/testimonial", {
     description: __("Proof your success by displaying customer reviews using Premium Testimonials Block."),
     category: "premium-blocks",
     supports: {
-        inserter: testimonial
+        inserter: testimonials
     },
     example: {},
     edit: edit,

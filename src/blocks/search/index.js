@@ -11,17 +11,19 @@ import edit from './edit';
 import variations from './variations';
 import './editor.scss';
 import './style.scss';
+import { search } from '../../../assets/js/settings';
 
-const { name } = metadata;
 
-export { metadata, name };
 
-registerBlockType(name, {
-
+registerBlockType("premium/search", {
+    ...metadata,
     example: {},
     variations,
     /**
      * @see ./edit.js
      */
+    supports: {
+        inserter: search
+    },
     edit,
 });

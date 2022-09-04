@@ -11,13 +11,18 @@ import PBG_Block_Icons from '../../../blocks-config/block-icons'
 import json from './block.json';
 import edit from './edit';
 import save from './save';
+import { contentSwitcher } from '../../../assets/js/settings';
 
 
-registerBlockType("premium/contentswitcher", {
+registerBlockType("premium/content-switcher", {
     /**
      * @see ./edit.js
      */
     ...json,
+    supports: {
+        inserter: contentSwitcher
+    },
+
     icon: PBG_Block_Icons.content_switcher,
     edit,
     save
