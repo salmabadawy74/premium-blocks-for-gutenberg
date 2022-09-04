@@ -4,17 +4,13 @@ import Container from "../common/Container";
 import Warning from "../common/warning";
 import Popup from "../common/popup";
 
-// import RollBackConfirmPopup from './RollBackConfirmPopup';
-
 const RollBack = () => {
     const { system_info } = PremiumBlocksPanelData;
-    console.log(system_info)
 
-    // const previousVersions = uag_react.global_data.uag_previous_versions;
+    const previousVersions = system_info.pb_previous_versions;
 
-    // const [previousVersionSelect, setPreviousVersion] = useState(previousVersions[0].value);
+    const [previousVersionSelect, setPreviousVersion] = useState(previousVersions[0].value);
     const [openPopup, setopenPopup] = useState(false);
-    const [confirmPopup, setconfirmPopup] = useState(false);
 
     const rollbackButtonClickHandler = () => {
         setopenPopup(true);
@@ -32,7 +28,21 @@ const RollBack = () => {
                     </p>
                 </div>
                 <div className='pb-section-info-cta'>
-                    <a onClick={rollbackButtonClickHandler}>Rollback to Version {system_info.previous_version}</a>
+                    <select
+                        id="location"
+                        name="location"
+                        className="pb-select"
+                        onBlur={(e) => { setPreviousVersion(e.target.value); }}
+                    >
+                        {
+                            (previousVersions || []).map((version) => {
+                                return (
+                                    <option key={version.value} value={version.value}>{version.label}</option>
+                                );
+                            })
+                        }
+                    </select>
+                    <a className="pb-button secondary primary" onClick={rollbackButtonClickHandler}>Rollback</a>
                     <Warning title={__(' Warning: Please backup your database before making the rollback.', 'premium-blocks-for-gutenberg')} />
                 </div>
             </div>
@@ -40,11 +50,11 @@ const RollBack = () => {
                 <Popup
                     openPopup={openPopup}
                     setopenPopup={setopenPopup}
+                    previousVersionSelect={previousVersionSelect}
                     header={__('Rollback to Previous Version', 'premium-blocks-for-gutenberg')}
-                    message={__(`Are you sure you want to reinstall version ${system_info.previous_version}?`, 'premium-blocks-for-gutenberg')}
+                    message={__(`Are you sure you want to reinstall version ${previousVersionSelect}?`, 'premium-blocks-for-gutenberg')}
                 />
             }
-            {/* <RollBackConfirmPopup openPopup={ openPopup } setopenPopup={ setopenPopup } previousVersionSelect={ previousVersionSelect } setconfirmPopup={ setconfirmPopup } /> */}
         </Container>
     );
 };

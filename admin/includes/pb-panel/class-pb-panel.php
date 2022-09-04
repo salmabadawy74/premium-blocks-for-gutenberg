@@ -52,6 +52,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 			add_action( 'admin_menu', array( $this, 'register_custom_menu_page' ), 100 );
 			add_action( 'admin_bar_menu', array( $this, 'admin_bar_item' ), 1000 );
 			add_filter( 'pb_options', array( $this, 'add_default_options' ) );
+			add_action( 'admin_post_premium_gutenberg_rollback', array( $this, 'post_premium_gutenberg_rollback_new' ) );
 		}
 
 		public function add_default_options( $options ) {
@@ -182,6 +183,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 		 */
 		public static function get_system_info() {
 			global $wpdb;
+			$pb_versions   = self::get_rollback_versions_options();
 
 			$info = array(
 				'home_url'          => home_url(),
@@ -190,7 +192,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 				'memory_limit'      => wp_convert_hr_to_bytes( WP_MEMORY_LIMIT ),
 				'memory_limit_size' => size_format( wp_convert_hr_to_bytes( WP_MEMORY_LIMIT ) ),
 				'theme_version'     => esc_html( PREMIUM_BLOCKS_VERSION ),
-				'previous_version'     => esc_html( PREMIUM_BLOCKS_STABLE_VERSION ),
+				'previous_version'  => esc_html( PREMIUM_BLOCKS_STABLE_VERSION ),
 				'wp_path'           => esc_html( ABSPATH ),
 				'debug'             => defined( 'WP_DEBUG' ) && WP_DEBUG,
 				'lang'              => esc_html( get_locale() ),
@@ -199,6 +201,8 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 				'mysql_version'     => $wpdb->db_version(),
 				'max_upload'        => esc_html( size_format( wp_max_upload_size() ) ),
 				'ini_get'           => function_exists( 'ini_get' ),
+				'pb_previous_versions'=> $pb_versions,
+				'rollback_url_new'      => str_replace(array("&#038;","&amp;"), "&", esc_url( add_query_arg( 'version', 'VERSION', wp_nonce_url( admin_url( 'admin-post.php?action=premium_gutenberg_rollback' ), 'premium_gutenberg_rollback' )) ) ),
 			);
 			if ( function_exists( 'ini_get' ) ) {
 				$info['php_memory_limit']   = esc_html( size_format( wp_convert_hr_to_bytes( ini_get( 'memory_limit' ) ) ) );
@@ -411,6 +415,110 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 				)
 			);
 		}
+
+		public function post_premium_gutenberg_rollback_new() {
+
+			check_admin_referer( 'premium_gutenberg_rollback' );
+			$plugin_slug  = basename( PREMIUM_BLOCKS_FILE, '.php' );
+			$update_version    = sanitize_text_field( $_GET['version'] );
+
+			$pbg_rollback = new PBG_Rollback(
+				array(
+					'version'     => $update_version,
+					'plugin_name' => PREMIUM_BLOCKS_BASENAME,
+					'plugin_slug' => $plugin_slug,
+					'package_url' => sprintf( 'https://downloads.wordpress.org/plugin/%s.%s.zip', $plugin_slug, $update_version ),
+				)
+			);
+	
+			$pbg_rollback->run();
+	
+			wp_die(
+				'',
+				__( 'Rollback to Previous Version', 'premium-gutenberg' ),
+				array(
+					'response' => 200,
+				)
+			);
+		}
+
+		/**
+		 * Get Rollback versions.
+		 *
+		 * @since 1.23.0
+		 * @return array
+		 * @access public
+		 */
+		public function get_rollback_versions() {
+
+			$rollback_versions = get_transient( 'pb_rollback_versions_' . PREMIUM_BLOCKS_VERSION );
+
+			if ( empty( $rollback_versions ) ) {
+
+				$max_versions = 10;
+
+				require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
+
+				$plugin_information = plugins_api(
+					'plugin_information',
+					array(
+						'slug' => 'Premium-blocks-for-gutenberg',
+					)
+				);
+
+				if ( empty( $plugin_information->versions ) || ! is_array( $plugin_information->versions ) ) {
+					return array();
+				}
+
+				krsort( $plugin_information->versions );
+
+				$rollback_versions = array();
+
+				foreach ( $plugin_information->versions as $version => $download_link ) {
+
+					$lowercase_version = strtolower( $version );
+
+					$is_valid_rollback_version = ! preg_match( '/(trunk|beta|rc|dev)/i', $lowercase_version );
+
+					if ( ! $is_valid_rollback_version ) {
+						continue;
+					}
+
+					if ( version_compare( $version, UAGB_VER, '>=' ) ) {
+						continue;
+					}
+
+					$rollback_versions[] = $version;
+				}
+
+				$rollback_versions = array_slice( $rollback_versions, 0, $max_versions, true );
+
+				set_transient( 'pb_rollback_versions_' . PREMIUM_BLOCKS_VERSION, $rollback_versions, WEEK_IN_SECONDS );
+			}
+
+			return $rollback_versions;
+		}
+
+		public static function get_rollback_versions_options() {
+
+			$rollback_versions   = self::get_rollback_versions();
+	
+			$rollback_versions_options = array();
+	
+			foreach ( $rollback_versions as $version ) {
+	
+				$version = array(
+					'label' => $version,
+					'value' => $version,
+	
+				);
+	
+				$rollback_versions_options[] = $version;
+			}
+	
+			return $rollback_versions_options;
+		}
+
 	}
 	Pb_Panel::get_instance();
 }

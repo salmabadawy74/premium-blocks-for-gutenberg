@@ -4,9 +4,10 @@ const Popup = (props) => {
     const {
         openPopup,
         setopenPopup,
-        previousVersionSelect,
-        setconfirmPopup
+        previousVersionSelect
     } = props;
+
+    const { system_info } = PremiumBlocksPanelData;
 
     const [open, setOpen] = useState(openPopup);
 
@@ -19,7 +20,13 @@ const Popup = (props) => {
     };
 
     const onOkClick = () => {
-        wp_nonce_url(admin_url('admin-post.php?action=premium_gutenberg_rollback'), 'premium_gutenberg_rollback')
+        const rollbackUrl = system_info.rollback_url_new.replace(
+            'VERSION',
+            previousVersionSelect
+        );
+
+        setopenPopup(false);
+        window.location.href = rollbackUrl;
     }
 
     return <div className='pb-popup'>

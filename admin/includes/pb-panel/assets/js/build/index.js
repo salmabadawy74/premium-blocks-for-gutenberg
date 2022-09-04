@@ -859,9 +859,11 @@ const Popup = props => {
   const {
     openPopup,
     setopenPopup,
-    previousVersionSelect,
-    setconfirmPopup
+    previousVersionSelect
   } = props;
+  const {
+    system_info
+  } = PremiumBlocksPanelData;
   const [open, setOpen] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(openPopup);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
     setOpen(openPopup);
@@ -872,7 +874,9 @@ const Popup = props => {
   };
 
   const onOkClick = () => {
-    wp_nonce_url(admin_url('admin-post.php?action=premium_gutenberg_rollback'), 'premium_gutenberg_rollback');
+    const rollbackUrl = system_info.rollback_url_new.replace('VERSION', previousVersionSelect);
+    setopenPopup(false);
+    window.location.href = rollbackUrl;
   };
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -1162,17 +1166,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // import RollBackConfirmPopup from './RollBackConfirmPopup';
+
 
 const RollBack = () => {
   const {
     system_info
   } = PremiumBlocksPanelData;
-  console.log(system_info); // const previousVersions = uag_react.global_data.uag_previous_versions;
-  // const [previousVersionSelect, setPreviousVersion] = useState(previousVersions[0].value);
-
+  const previousVersions = system_info.pb_previous_versions;
+  const [previousVersionSelect, setPreviousVersion] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(previousVersions[0].value);
   const [openPopup, setopenPopup] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
-  const [confirmPopup, setconfirmPopup] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
 
   const rollbackButtonClickHandler = () => {
     setopenPopup(true);
@@ -1184,15 +1186,29 @@ const RollBack = () => {
     className: "pb-section-info"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h4", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Rollback to Previous Version', 'premium-blocks-for-gutenberg')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)(`Experiencing an issue with Premium Blocks version ${system_info.theme_version} ? Roll back to a previous version to help troubleshoot the issue.`, 'premium-blocks-for-gutenberg'))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pb-section-info-cta"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("select", {
+    id: "location",
+    name: "location",
+    className: "pb-select",
+    onBlur: e => {
+      setPreviousVersion(e.target.value);
+    }
+  }, (previousVersions || []).map(version => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("option", {
+      key: version.value,
+      value: version.value
+    }, version.label);
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    className: "pb-button secondary primary",
     onClick: rollbackButtonClickHandler
-  }, "Rollback to Version ", system_info.previous_version), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_warning__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, "Rollback"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_warning__WEBPACK_IMPORTED_MODULE_4__["default"], {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)(' Warning: Please backup your database before making the rollback.', 'premium-blocks-for-gutenberg')
   }))), openPopup && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_popup__WEBPACK_IMPORTED_MODULE_5__["default"], {
     openPopup: openPopup,
     setopenPopup: setopenPopup,
+    previousVersionSelect: previousVersionSelect,
     header: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Rollback to Previous Version', 'premium-blocks-for-gutenberg'),
-    message: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)(`Are you sure you want to reinstall version ${system_info.previous_version}?`, 'premium-blocks-for-gutenberg')
+    message: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)(`Are you sure you want to reinstall version ${previousVersionSelect}?`, 'premium-blocks-for-gutenberg')
   }));
 };
 

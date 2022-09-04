@@ -71,26 +71,48 @@ class PBG_Version_Control {
 
 	public function post_premium_gutenberg_rollback() {
 
+		// check_admin_referer( 'premium_gutenberg_rollback' );
+		// $plugin_slug  = basename( PREMIUM_BLOCKS_FILE, '.php' );
+		// $pbg_rollback = new PBG_Rollback(
+		// 	array(
+		// 		'version'     => PREMIUM_BLOCKS_STABLE_VERSION,
+		// 		'plugin_name' => PREMIUM_BLOCKS_BASENAME,
+		// 		'plugin_slug' => $plugin_slug,
+		// 		'package_url' => sprintf( 'https://downloads.wordpress.org/plugin/%s.%s.zip', $plugin_slug, PREMIUM_BLOCKS_STABLE_VERSION ),
+		// 	)
+		// );
+
+		// $pbg_rollback->run();
+
+		// wp_die(
+		// 	'',
+		// 	__( 'Rollback to Previous Version', 'premium-gutenberg' ),
+		// 	array(
+		// 		'response' => 200,
+		// 	)
+		// );
 		check_admin_referer( 'premium_gutenberg_rollback' );
-		$plugin_slug  = basename( PREMIUM_BLOCKS_FILE, '.php' );
-		$pbg_rollback = new PBG_Rollback(
-			array(
-				'version'     => PREMIUM_BLOCKS_STABLE_VERSION,
-				'plugin_name' => PREMIUM_BLOCKS_BASENAME,
-				'plugin_slug' => $plugin_slug,
-				'package_url' => sprintf( 'https://downloads.wordpress.org/plugin/%s.%s.zip', $plugin_slug, PREMIUM_BLOCKS_STABLE_VERSION ),
-			)
-		);
+			$plugin_slug  = basename( PREMIUM_BLOCKS_FILE, '.php' );
+			$update_version    = sanitize_text_field( $_GET['version'] );
 
-		$pbg_rollback->run();
-
-		wp_die(
-			'',
-			__( 'Rollback to Previous Version', 'premium-gutenberg' ),
-			array(
-				'response' => 200,
-			)
-		);
+			$pbg_rollback = new PBG_Rollback(
+				array(
+					'version'     => $update_version,
+					'plugin_name' => PREMIUM_BLOCKS_BASENAME,
+					'plugin_slug' => $plugin_slug,
+					'package_url' => sprintf( 'https://downloads.wordpress.org/plugin/%s.%s.zip', $plugin_slug, $update_version ),
+				)
+			);
+	
+			$pbg_rollback->run();
+	
+			wp_die(
+				'',
+				__( 'Rollback to Previous Version', 'premium-gutenberg' ),
+				array(
+					'response' => 200,
+				)
+			);
 	}
 
 	public static function get_instance() {
