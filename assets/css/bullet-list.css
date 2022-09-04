@@ -34,7 +34,8 @@
     width: auto !important;
     height: auto !important; }
   .premium-bullet-list__content-icon i {
-    font-style: normal !important; }
+    font-style: normal !important;
+    font-size: 20px; }
 
 .premium-bullet-list-inline {
   -js-display: flex;
