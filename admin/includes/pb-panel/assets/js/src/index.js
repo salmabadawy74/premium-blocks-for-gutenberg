@@ -1,6 +1,7 @@
 import WelcomeTab from './tabs/welcome'
 import System from './tabs/system'
 import Setting from './tabs/setting';
+import RollBack from './tabs/rollback';
 import { render, Fragment, useContext } from '@wordpress/element'
 import Header from './layout/Header';
 import Card from './common/Card';
@@ -62,6 +63,16 @@ const RendeTabs = () => {
             priority: 30,
             data: {
                 Component: Setting,
+                props: {}
+            }
+        },
+        {
+            name: 'versionControl',
+            title: __('version Control', "premium-blocks-for-gutenberg"),
+            className: 'system',
+            priority: 30,
+            data: {
+                Component: RollBack,
                 props: {}
             }
         }
