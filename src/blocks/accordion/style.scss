@@ -3,7 +3,7 @@ $pbBorderColor: #e1e1e1;
 
 .premium-accordion {
     padding: 15px;
-    
+
     .premium-accordion__title_wrap {
         text-align: left;
         cursor: pointer;
@@ -107,5 +107,24 @@ $pbBorderColor: #e1e1e1;
 
     .premium-accordion__icon_wrap {
         margin-left: 0.4em;
+    }
+}
+
+/************ Responsive **************/
+@media (min-width: 977px) {
+    .premium-desktop-hidden {
+        display: none !important;
+    }
+}
+
+@media only screen and (max-width: 976px) and (min-width: 766px) {
+    .premium-tablet-hidden {
+        display: none !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .premium-mobile-hidden {
+        display: none !important;
     }
 }

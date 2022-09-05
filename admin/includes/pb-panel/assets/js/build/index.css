@@ -601,14 +601,11 @@
 .pb-section-info-wrap h4 {
   font-size: 20px;
   color: #252c59;
-  font-weight: 900;
-  font-family: "Red Hat Display";
   margin: 0;
 }
 .pb-section-info-wrap p {
   font-size: 14px;
   color: #474747;
-  font-family: "Poppins";
   margin: 0;
   margin-top: 14px;
 }
@@ -626,17 +623,16 @@
   border-radius: 0.375rem;
   font-size: 1rem;
   line-height: 1.25rem;
+  padding: 15px 23px 15px 15px;
+  border-radius: 15px;
 }
 
 .pb-section-info-warning {
   font-size: 13px;
   color: #cca329;
-  font-weight: 300;
-  font-family: "Poppins";
   margin-left: 20px;
 }
 .pb-section-info-warning i {
-  font-weight: 300;
   vertical-align: bottom;
 }
 
@@ -653,8 +649,8 @@
   user-select: none;
 }
 .pb-popup .pb-popup-content {
-  top: 125.2px;
-  left: 572.1px;
+  top: 40%;
+  left: 40%;
   margin: auto;
   width: 375px;
   background-color: #fff;
@@ -683,7 +679,6 @@
   text-align: center;
 }
 .pb-popup .pb-popup-content .pb-popup-buttons {
-  font-family: Roboto, Arial, Helvetica, Verdana, sans-serif;
   width: 50%;
   border: none;
   background: none;

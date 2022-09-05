@@ -244,14 +244,12 @@
 
 .instagram {
     &:hover {
-        background: linear-gradient(
-            45deg,
-            #f09433 0%,
-            #e6683c 25%,
-            #dc2743 50%,
-            #cc2366 75%,
-            #bc1888 100%
-        ) !important;
+        background: linear-gradient(45deg,
+                #f09433 0%,
+                #e6683c 25%,
+                #dc2743 50%,
+                #cc2366 75%,
+                #bc1888 100%) !important;
     }
 }
 
@@ -866,4 +864,23 @@
 .premium-person__column6 {
     display: grid;
     grid-template-columns: 16.667% 16.667% 16.667% 16.667% 16.667% 16.667%;
+}
+
+/************ Responsive **************/
+@media (min-width: 977px) {
+    .premium-desktop-hidden {
+        display: none !important;
+    }
+}
+
+@media only screen and (max-width: 976px) and (min-width: 766px) {
+    .premium-tablet-hidden {
+        display: none !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .premium-mobile-hidden {
+        display: none !important;
+    }
 }
