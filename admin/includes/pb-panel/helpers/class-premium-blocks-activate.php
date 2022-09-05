@@ -32,7 +32,7 @@ final class Premium_Blocks_Activate {
 			'pbg_maps_settings',
 			array(
 				'type'         => 'object',
-				'description'  => __( 'Config Premium Blocks For Gutenberg Api', 'kadence-blocks' ),
+				'description'  => __( 'Config Premium Blocks For Gutenberg Api', 'premium=block-for-gutenberg' ),
 				'show_in_rest' => array(
 					'schema' => array(
 						'type'       => 'object',
