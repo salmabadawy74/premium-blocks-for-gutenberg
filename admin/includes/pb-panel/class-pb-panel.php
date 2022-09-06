@@ -488,7 +488,7 @@ if (!class_exists('Pb_Panel')) {
 		 * @return array
 		 * @access public
 		 */
-		public function get_rollback_versions()
+		public static function get_rollback_versions()
 		{
 
 			$rollback_versions = get_transient('pb_rollback_versions_' . PREMIUM_BLOCKS_VERSION);
@@ -524,9 +524,9 @@ if (!class_exists('Pb_Panel')) {
 						continue;
 					}
 
-					if (version_compare($version, UAGB_VER, '>=')) {
-						continue;
-					}
+					// if (version_compare($version, UAGB_VER, '>=')) {
+					// 	continue;
+					// }
 
 					$rollback_versions[] = $version;
 				}
@@ -541,7 +541,6 @@ if (!class_exists('Pb_Panel')) {
 
 		public static function get_rollback_versions_options()
 		{
-
 			$rollback_versions   = self::get_rollback_versions();
 
 			$rollback_versions_options = array();

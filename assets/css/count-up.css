@@ -33,6 +33,13 @@
 .premium-countup__suffix {
   margin-left: 2px; }
 
+.premium-countup__alert {
+  padding: 10px;
+  color: #b94a48;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  text-align: center; }
+
 /************ Responsive **************/
 @media (min-width: 977px) {
   .premium-desktop-hidden {
