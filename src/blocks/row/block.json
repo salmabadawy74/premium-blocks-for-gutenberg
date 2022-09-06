@@ -2,7 +2,6 @@
     "apiVersion": 2,
     "version": "0.1.0",
     "name": "premium/row",
-    "title": "Container",
     "category": "premium-blocks",
     "attributes": {
         "block_id": {
