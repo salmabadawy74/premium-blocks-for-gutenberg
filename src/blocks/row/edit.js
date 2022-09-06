@@ -1,5 +1,18 @@
 import classnames from "classnames";
+const { __ } = wp.i18n;
+const { compose } = wp.compose;
+const { select, useDispatch, withSelect } = wp.data;
+const {
+    PanelBody,
+    SelectControl,
+    Tooltip,
+    Button,
+    ToggleControl,
+} = wp.components;
+const { useEffect, Fragment } = wp.element;
 import variations from "./variations";
+const { createBlock } = wp.blocks;
+const { InspectorControls, InnerBlocks } = wp.blockEditor;
 import InspectorTabs from "../../components/inspectorTabs";
 import InspectorTab from "../../components/inspectorTab";
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
@@ -20,18 +33,10 @@ import {
     borderCss,
     paddingCss,
     marginCss,
-    gradientValue
+    gradientValue,
 } from "../../components/HelperFunction";
 import PremiumFilters from "../../components/premium-filters";
 import RadioComponent from "../../components/radio-control";
-
-const { __ } = wp.i18n;
-const { compose } = wp.compose;
-const { select, useDispatch, withSelect } = wp.data;
-const { PanelBody, SelectControl, Tooltip, Button, ToggleControl } = wp.components;
-const { useEffect, Fragment } = wp.element;
-const { createBlock } = wp.blocks;
-const { InspectorControls, InnerBlocks } = wp.blockEditor;
 
 let defaultLayout = { Desktop: [100], Tablet: [100], Mobile: [100] };
 
@@ -225,7 +230,7 @@ const edit = (props) => {
         const styles = {};
         const containerFullWidth = "100vw";
         styles[
-            `.editor-styles-wrapper #block-${clientId}  > .wp-block-premium-container > .premium-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout`
+            `.editor-styles-wrapper .premium-block-${clientId}  > .wp-block-premium-container > .premium-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout`
         ] = {
             "min-height": `${minHeight[props.deviceType]}${minHeight["unit"]}`,
             "flex-direction": direction[props.deviceType],
@@ -239,7 +244,7 @@ const edit = (props) => {
             }`,
         };
         styles[
-            ` .editor-styles-wrapper #block-${clientId}.block-editor-block-list__block`
+            ` .editor-styles-wrapper .premium-block-${clientId}.block-editor-block-list__block`
         ] = {
             "min-height": `${minHeight[props.deviceType]}${minHeight["unit"]}`,
             "flex-direction": direction[props.deviceType],
@@ -250,13 +255,13 @@ const edit = (props) => {
         };
 
         styles[
-            ` .editor-styles-wrapper .is-root-container > .block-editor-block-list__block .block-editor-block-list__block#block-${clientId}`
+            ` .editor-styles-wrapper .is-root-container > .block-editor-block-list__block .block-editor-block-list__block.premium-block-${clientId}`
         ] = {
             "max-width": `${colWidth[props.deviceType]}${colWidth["unit"]}`,
             width: `${colWidth[props.deviceType]}${colWidth["unit"]}`,
         };
         styles[
-            `.editor-styles-wrapper #block-${clientId}  .premium-top-shape svg`
+            `.editor-styles-wrapper .premium-block-${clientId}  .premium-top-shape svg`
         ] = {
             width: `${shapeTop.width[props.deviceType]}${
                 shapeTop.width["unit"]
@@ -268,7 +273,7 @@ const edit = (props) => {
         };
 
         styles[
-            `.editor-styles-wrapper #block-${clientId} .premium-bottom-shape svg`
+            `.editor-styles-wrapper .premium-block-${clientId} .premium-bottom-shape svg`
         ] = {
             width: `${shapeBottom.width[props.deviceType]}${
                 shapeBottom.width["unit"]
@@ -349,43 +354,43 @@ const edit = (props) => {
     const CustomTag = `${containerTag}`;
     const BLEND = [
         {
-            label: __("Normal", "premium-blocks-for-gutenberg"),
+            label: "Normal",
             value: "normal",
         },
         {
-            label: __("Multiply", "premium-blocks-for-gutenberg"),
+            label: "Multiply",
             value: "multiply",
         },
         {
-            label: __("Screen", "premium-blocks-for-gutenberg"),
+            label: "Screen",
             value: "screen",
         },
         {
-            label: __("Overlay", "premium-blocks-for-gutenberg"),
+            label: "Overlay",
             value: "overlay",
         },
         {
-            label: __("Darken", "premium-blocks-for-gutenberg"),
+            label: "Darken",
             value: "darken",
         },
         {
-            label: __("Lighten", "premium-blocks-for-gutenberg"),
+            label: "Lighten",
             value: "lighten",
         },
         {
-            label: __("Color Dodge", "premium-blocks-for-gutenberg"),
+            label: "Color Dodge",
             value: "color-dodge",
         },
         {
-            label: __("Saturation", "premium-blocks-for-gutenberg"),
+            label: "Saturation",
             value: "saturation",
         },
         {
-            label: __("Color", "premium-blocks-for-gutenberg"),
+            label: "Color",
             value: "color",
         },
         {
-            label: __("Luminosity", "premium-blocks-for-gutenberg"),
+            label: "Luminosity",
             value: "luminosity",
         },
     ];
@@ -397,7 +402,10 @@ const edit = (props) => {
                     <InspectorTab key={"layout"}>
                         <PanelBody
                             initialOpen={true}
-                            title={__("General", "premium-blocks-for-gutenberg")}
+                            title={__(
+                                "General",
+                                "premium-blocks-for-gutenberg"
+                            )}
                         >
                             {isBlockRootParent && (
                                 <Fragment>
@@ -458,25 +466,24 @@ const edit = (props) => {
                                     />
                                 </Fragment>
                             )}
-                            {"boxed" === innerWidthType &&
-                                isBlockRootParent && (
-                                    <ResponsiveSingleRangeControl
-                                        label={__(
-                                            "Max Width",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
-                                        value={innerWidth}
-                                        min="1"
-                                        max="1600"
-                                        onChange={(newValue) =>
-                                            setAttributes({
-                                                innerWidth: newValue,
-                                            })
-                                        }
-                                        defaultValue={0}
-                                        showUnit={false}
-                                    />
-                                )}
+                            {"boxed" === innerWidthType && isBlockRootParent && (
+                                <ResponsiveSingleRangeControl
+                                    label={__(
+                                        "Max Width",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                    value={innerWidth}
+                                    min="1"
+                                    max="1600"
+                                    onChange={(newValue) =>
+                                        setAttributes({
+                                            innerWidth: newValue,
+                                        })
+                                    }
+                                    defaultValue={0}
+                                    showUnit={false}
+                                />
+                            )}
                             {!isBlockRootParent && (
                                 <ResponsiveRangeControl
                                     label={__(
@@ -540,15 +547,15 @@ const edit = (props) => {
                                     "premium-blocks-for-gutenberg"
                                 )}
                                 options={[
-                                    { value: "div", label: __("div", "premium-blocks-for-gutenberg") },
-                                    { value: "header", label: __("header", "premium-blocks-for-gutenberg") },
-                                    { value: "footer", label: __("footer", "premium-blocks-for-gutenberg") },
-                                    { value: "main", label: __("main", "premium-blocks-for-gutenberg") },
-                                    { value: "article", label: __("article", "premium-blocks-for-gutenberg") },
-                                    { value: "section", label: __("section", "premium-blocks-for-gutenberg") },
-                                    { value: "aside", label: __("aside", "premium-blocks-for-gutenberg") },
-                                    { value: "nav", label: __("nav", "premium-blocks-for-gutenberg") },
-                                    { value: "a", label: __("a", "premium-blocks-for-gutenberg") },
+                                    { value: "div", label: "div" },
+                                    { value: "header", label: "header" },
+                                    { value: "footer", label: "footer" },
+                                    { value: "main", label: "main" },
+                                    { value: "article", label: "article" },
+                                    { value: "section", label: "section" },
+                                    { value: "aside", label: "aside" },
+                                    { value: "nav", label: "nav" },
+                                    { value: "a", label: "a" },
                                 ]}
                                 value={containerTag}
                                 onChange={(newValue) =>
@@ -899,7 +906,7 @@ const edit = (props) => {
                     </InspectorTab>
                     <InspectorTab key={"style"}>
                         <PanelBody
-                            initialOpen={true}
+                            initialOpen={false}
                             title={__(
                                 "Background",
                                 "premium-blocks-for-gutenberg"
@@ -1036,7 +1043,7 @@ const edit = (props) => {
                                 </InsideTab>
                             </InsideTabs>
                         </PanelBody>
-                        <PanelBody initialOpen={false} title={__("Border","premium-blocks-for-gutenberg")}>
+                        <PanelBody initialOpen={false} title={__("Border")}>
                             <PremiumBorder
                                 value={border}
                                 onChange={(value) =>
@@ -1044,6 +1051,7 @@ const edit = (props) => {
                                 }
                             />
                             <PremiumShadow
+                                boxShadow={true}
                                 value={boxShadow}
                                 onChange={(value) =>
                                     setAttributes({ boxShadow: value })
@@ -1205,9 +1213,10 @@ const edit = (props) => {
                         <div
                             className={topShapeClasses}
                             dangerouslySetInnerHTML={{
-                                __html: PremiumBlocksSettings.shapes[
-                                    shapeTop.style
-                                ],
+                                __html:
+                                    PremiumBlocksSettings.shapes[
+                                        shapeTop.style
+                                    ],
                             }}
                         />
                     )}
@@ -1223,9 +1232,10 @@ const edit = (props) => {
                         <div
                             className={bottomShapeClasses}
                             dangerouslySetInnerHTML={{
-                                __html: PremiumBlocksSettings.shapes[
-                                    shapeBottom.style
-                                ],
+                                __html:
+                                    PremiumBlocksSettings.shapes[
+                                        shapeBottom.style
+                                    ],
                             }}
                         />
                     )}
@@ -1247,17 +1257,21 @@ const edit = (props) => {
 
 const applyWithSelect = withSelect((select, props) => {
     // eslint-disable-line no-shadow
-    const { __experimentalGetPreviewDeviceType = null } =
-        select("core/edit-post");
+    const { __experimentalGetPreviewDeviceType = null } = select(
+        "core/edit-post"
+    );
     const deviceType = __experimentalGetPreviewDeviceType
         ? __experimentalGetPreviewDeviceType()
         : null;
+
     const { getBlocks } = select("core/block-editor");
-    const { getBlockType, getBlockVariations, getDefaultBlockVariation } =
-        select("core/blocks");
+    const {
+        getBlockType,
+        getBlockVariations,
+        getDefaultBlockVariation,
+    } = select("core/blocks");
     const innerBlocks = getBlocks(props.clientId);
-    const { replaceInnerBlocks, removeBlock } =
-        useDispatch("core/block-editor");
+    const { replaceInnerBlocks } = useDispatch("core/block-editor");
 
     return {
         // Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
@@ -1276,7 +1290,6 @@ const applyWithSelect = withSelect((select, props) => {
         isParentOfSelectedBlock: select(
             "core/block-editor"
         ).hasSelectedInnerBlock(props.clientId, true),
-        removeBlock,
     };
 });
 export default compose(applyWithSelect)(edit);
