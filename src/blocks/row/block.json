@@ -36,10 +36,10 @@
             "type": "object",
             "default": {
                 "Desktop": {
-                    "top": "",
-                    "right": "",
-                    "bottom": "",
-                    "left": ""
+                    "top": "10",
+                    "right": "10",
+                    "bottom": "10",
+                    "left": "10"
                 },
                 "Tablet": {
                     "top": "",
@@ -373,9 +373,7 @@
                 "hue": "0"
             }
         },
-        "blend": {
-            "type": "string"
-        },
+      
         "transition": {
             "type": "number"
         }
