@@ -400,14 +400,12 @@ $pbBorderColor: #e1e1e1;
         animation-duration: var(--animation-speed) !important;
         -webkit-animation-iteration-count: infinite !important;
         animation-iteration-count: infinite !important;
-        background: var(--base-color) -webkit-gradient(
-                linear,
+        background: var(--base-color) -webkit-gradient(linear,
                 left top,
                 right top,
                 from(var(--base-color)),
                 to(var(--base-color)),
-                color-stop(0.5, var(--shiny-color))
-            ) 0 0 no-repeat;
+                color-stop(0.5, var(--shiny-color))) 0 0 no-repeat;
     }
 }
 
@@ -798,5 +796,24 @@ $pbBorderColor: #e1e1e1;
 
     span.premium-stripe-tablet-right {
         justify-content: flex-end !important;
+    }
+}
+
+/************ Responsive **************/
+@media (min-width: 977px) {
+    .premium-desktop-hidden {
+        display: none !important;
+    }
+}
+
+@media only screen and (max-width: 976px) and (min-width: 766px) {
+    .premium-tablet-hidden {
+        display: none !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .premium-mobile-hidden {
+        display: none !important;
     }
 }

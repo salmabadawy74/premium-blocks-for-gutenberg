@@ -70,6 +70,7 @@ const save = (props) => {
                         boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
                         borderStyle: border && border.borderType,
                         borderColor: border && border.borderColor,
+                        height: minHeight,
                     })}
                 >
                     <div
@@ -81,7 +82,7 @@ const save = (props) => {
                     <div
                         className={`premium-banner__img_wrap premium-banner__${height}`}
                         style={filterJsCss({
-                            minHeight: minHeight,
+                            // minHeight: minHeight,
                             alignItems: verAlign,
                         })}
                     >

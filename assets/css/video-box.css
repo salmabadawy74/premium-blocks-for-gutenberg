@@ -151,3 +151,16 @@
   margin: auto;
   -webkit-transition: 0.2s all;
   transition: 0.2s all; }
+
+/************ Responsive **************/
+@media (min-width: 977px) {
+  .premium-desktop-hidden {
+    display: none !important; } }
+
+@media only screen and (max-width: 976px) and (min-width: 766px) {
+  .premium-tablet-hidden {
+    display: none !important; } }
+
+@media (max-width: 767px) {
+  .premium-mobile-hidden {
+    display: none !important; } }
