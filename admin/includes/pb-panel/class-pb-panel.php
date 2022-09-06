@@ -56,9 +56,36 @@ if (!class_exists('Pb_Panel')) {
 			add_action('admin_menu', array($this, 'register_custom_menu_page'), 100);
 			add_action('admin_bar_menu', array($this, 'admin_bar_item'), 1000);
 			add_filter('pb_options', array($this, 'add_default_options'));
-			add_action( 'admin_post_premium_gutenberg_rollback', array( $this, 'post_premium_gutenberg_rollback_new' ) );
+			add_action('admin_post_premium_gutenberg_rollback', array($this, 'post_premium_gutenberg_rollback_new'));
+			add_action('wp_ajax_pb-mail-subscribe', array($this, 'subscribe_mail'));
 		}
+		public function subscribe_mail()
+		{
+			check_ajax_referer('pb-panel', 'nonce');
 
+			$email = isset($_POST['email']) ? sanitize_text_field(wp_unslash($_POST['email'])) : '';
+
+			$api_url = 'https://kemet.io/wp-json/mailchimp/v2/add';
+			$request = add_query_arg(
+				array(
+					'email' => $email,
+				),
+				$api_url
+			);
+
+			$response = wp_remote_get(
+				$request,
+				array(
+					'timeout'   => 60,
+					'sslverify' => true,
+				)
+			);
+
+			$body = wp_remote_retrieve_body($response);
+			$body = json_decode($body, true);
+
+			wp_send_json_success($body);
+		}
 		public function add_default_options($options)
 		{
 
@@ -182,7 +209,7 @@ if (!class_exists('Pb_Panel')) {
 		public function render()
 		{ ?>
 			<div id="pb-dashboard"></div>
-			<?php
+<?php
 		}
 
 		/**
@@ -202,7 +229,7 @@ if (!class_exists('Pb_Panel')) {
 				'memory_limit'      => wp_convert_hr_to_bytes(WP_MEMORY_LIMIT),
 				'memory_limit_size' => size_format(wp_convert_hr_to_bytes(WP_MEMORY_LIMIT)),
 				'theme_version'     => esc_html(PREMIUM_BLOCKS_VERSION),
-				'previous_version'  => esc_html( PREMIUM_BLOCKS_STABLE_VERSION ),
+				'previous_version'  => esc_html(PREMIUM_BLOCKS_STABLE_VERSION),
 				'wp_path'           => esc_html(ABSPATH),
 				'debug'             => defined('WP_DEBUG') && WP_DEBUG,
 				'lang'              => esc_html(get_locale()),
@@ -211,8 +238,8 @@ if (!class_exists('Pb_Panel')) {
 				'mysql_version'     => $wpdb->db_version(),
 				'max_upload'        => esc_html(size_format(wp_max_upload_size())),
 				'ini_get'           => function_exists('ini_get'),
-				'pb_previous_versions'=> $pb_versions,
-				'rollback_url_new'      => str_replace(array("&#038;","&amp;"), "&", esc_url( add_query_arg( 'version', 'VERSION', wp_nonce_url( admin_url( 'admin-post.php?action=premium_gutenberg_rollback' ), 'premium_gutenberg_rollback' )) ) ),
+				'pb_previous_versions' => $pb_versions,
+				'rollback_url_new'      => str_replace(array("&#038;", "&amp;"), "&", esc_url(add_query_arg('version', 'VERSION', wp_nonce_url(admin_url('admin-post.php?action=premium_gutenberg_rollback'), 'premium_gutenberg_rollback')))),
 			);
 			if (function_exists('ini_get')) {
 				$info['php_memory_limit']   = esc_html(size_format(wp_convert_hr_to_bytes(ini_get('memory_limit'))));
@@ -427,26 +454,27 @@ if (!class_exists('Pb_Panel')) {
 				)
 			);
 		}
-		public function post_premium_gutenberg_rollback_new() {
+		public function post_premium_gutenberg_rollback_new()
+		{
 
-			check_admin_referer( 'premium_gutenberg_rollback' );
-			$plugin_slug  = basename( PREMIUM_BLOCKS_FILE, '.php' );
-			$update_version    = sanitize_text_field( $_GET['version'] );
+			check_admin_referer('premium_gutenberg_rollback');
+			$plugin_slug  = basename(PREMIUM_BLOCKS_FILE, '.php');
+			$update_version    = sanitize_text_field($_GET['version']);
 
 			$pbg_rollback = new PBG_Rollback(
 				array(
 					'version'     => $update_version,
 					'plugin_name' => PREMIUM_BLOCKS_BASENAME,
 					'plugin_slug' => $plugin_slug,
-					'package_url' => sprintf( 'https://downloads.wordpress.org/plugin/%s.%s.zip', $plugin_slug, $update_version ),
+					'package_url' => sprintf('https://downloads.wordpress.org/plugin/%s.%s.zip', $plugin_slug, $update_version),
 				)
 			);
-	
+
 			$pbg_rollback->run();
-	
+
 			wp_die(
 				'',
-				__( 'Rollback to Previous Version', 'premium-gutenberg' ),
+				__('Rollback to Previous Version', 'premium-gutenberg'),
 				array(
 					'response' => 200,
 				)
@@ -460,11 +488,12 @@ if (!class_exists('Pb_Panel')) {
 		 * @return array
 		 * @access public
 		 */
-		public function get_rollback_versions() {
+		public function get_rollback_versions()
+		{
 
-			$rollback_versions = get_transient( 'pb_rollback_versions_' . PREMIUM_BLOCKS_VERSION );
+			$rollback_versions = get_transient('pb_rollback_versions_' . PREMIUM_BLOCKS_VERSION);
 
-			if ( empty( $rollback_versions ) ) {
+			if (empty($rollback_versions)) {
 
 				$max_versions = 10;
 
@@ -477,59 +506,59 @@ if (!class_exists('Pb_Panel')) {
 					)
 				);
 
-				if ( empty( $plugin_information->versions ) || ! is_array( $plugin_information->versions ) ) {
+				if (empty($plugin_information->versions) || !is_array($plugin_information->versions)) {
 					return array();
 				}
 
-				krsort( $plugin_information->versions );
+				krsort($plugin_information->versions);
 
 				$rollback_versions = array();
 
-				foreach ( $plugin_information->versions as $version => $download_link ) {
+				foreach ($plugin_information->versions as $version => $download_link) {
 
-					$lowercase_version = strtolower( $version );
+					$lowercase_version = strtolower($version);
 
-					$is_valid_rollback_version = ! preg_match( '/(trunk|beta|rc|dev)/i', $lowercase_version );
+					$is_valid_rollback_version = !preg_match('/(trunk|beta|rc|dev)/i', $lowercase_version);
 
-					if ( ! $is_valid_rollback_version ) {
+					if (!$is_valid_rollback_version) {
 						continue;
 					}
 
-					if ( version_compare( $version, UAGB_VER, '>=' ) ) {
+					if (version_compare($version, UAGB_VER, '>=')) {
 						continue;
 					}
 
 					$rollback_versions[] = $version;
 				}
 
-				$rollback_versions = array_slice( $rollback_versions, 0, $max_versions, true );
+				$rollback_versions = array_slice($rollback_versions, 0, $max_versions, true);
 
-				set_transient( 'pb_rollback_versions_' . PREMIUM_BLOCKS_VERSION, $rollback_versions, WEEK_IN_SECONDS );
+				set_transient('pb_rollback_versions_' . PREMIUM_BLOCKS_VERSION, $rollback_versions, WEEK_IN_SECONDS);
 			}
 
 			return $rollback_versions;
 		}
 
-		public static function get_rollback_versions_options() {
+		public static function get_rollback_versions_options()
+		{
 
 			$rollback_versions   = self::get_rollback_versions();
-	
+
 			$rollback_versions_options = array();
-	
-			foreach ( $rollback_versions as $version ) {
-	
+
+			foreach ($rollback_versions as $version) {
+
 				$version = array(
 					'label' => $version,
 					'value' => $version,
-	
+
 				);
-	
+
 				$rollback_versions_options[] = $version;
 			}
-	
+
 			return $rollback_versions_options;
 		}
-
 	}
 	Pb_Panel::get_instance();
 }
