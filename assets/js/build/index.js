@@ -43271,7 +43271,7 @@ const edit = props => {
   const loadStyles = () => {
     const styles = {};
     const containerFullWidth = "100vw";
-    styles[`.editor-styles-wrapper .premium-block-${clientId}  > .wp-block-premium-container > .premium-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout`] = {
+    styles[`.editor-styles-wrapper #block-${clientId}  > .wp-block-premium-container > .premium-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout`] = {
       "min-height": `${minHeight[props.deviceType]}${minHeight["unit"]}`,
       "flex-direction": direction[props.deviceType],
       "align-items": alignItems[props.deviceType],
@@ -43281,7 +43281,7 @@ const edit = props => {
       "row-gap": `${rowGutter[props.deviceType]}${rowGutter["unit"]}`,
       "column-gap": `${columnGutter[props.deviceType]}${columnGutter["unit"]}`
     };
-    styles[` .editor-styles-wrapper .premium-block-${clientId}.block-editor-block-list__block`] = {
+    styles[` .editor-styles-wrapper #block-${clientId}.block-editor-block-list__block`] = {
       "min-height": `${minHeight[props.deviceType]}${minHeight["unit"]}`,
       "flex-direction": direction[props.deviceType],
       "align-items": alignItems[props.deviceType],
@@ -43289,16 +43289,16 @@ const edit = props => {
       "flex-wrap": wrapItems[props.deviceType],
       "align-content": alignContent[props.deviceType]
     };
-    styles[` .editor-styles-wrapper .is-root-container > .block-editor-block-list__block .block-editor-block-list__block.premium-block-${clientId}`] = {
+    styles[` .editor-styles-wrapper .is-root-container > .block-editor-block-list__block .block-editor-block-list__block#block-${clientId}`] = {
       "max-width": `${colWidth[props.deviceType]}${colWidth["unit"]}`,
       width: `${colWidth[props.deviceType]}${colWidth["unit"]}`
     };
-    styles[`.editor-styles-wrapper .premium-block-${clientId}  .premium-top-shape svg`] = {
+    styles[`.editor-styles-wrapper #block-${clientId}  .premium-top-shape svg`] = {
       width: `${shapeTop.width[props.deviceType]}${shapeTop.width["unit"]}`,
       height: `${shapeTop.height[props.deviceType]}${shapeTop.height["unit"]}`,
       fill: `${shapeTop["color"]}`
     };
-    styles[`.editor-styles-wrapper .premium-block-${clientId} .premium-bottom-shape svg`] = {
+    styles[`.editor-styles-wrapper #block-${clientId} .premium-bottom-shape svg`] = {
       width: `${shapeBottom.width[props.deviceType]}${shapeBottom.width["unit"]}`,
       height: `${shapeBottom.height[props.deviceType]}${shapeBottom.height["unit"]}`,
       fill: `${shapeBottom["color"]}`
@@ -43453,7 +43453,8 @@ const edit = props => {
       minHeight: newValue
     }),
     defaultValue: 0,
-    showUnit: true
+    showUnit: true,
+    units: ["px", "vh"]
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
     label: __("Overflow", "premium-blocks-for-gutenberg"),
     options: [{
@@ -43493,9 +43494,6 @@ const edit = props => {
     }, {
       value: "nav",
       label: "nav"
-    }, {
-      value: "a",
-      label: "a"
     }],
     value: containerTag,
     onChange: newValue => setAttributes({
@@ -43886,7 +43884,8 @@ const applyWithSelect = withSelect((select, props) => {
   } = select("core/blocks");
   const innerBlocks = getBlocks(props.clientId);
   const {
-    replaceInnerBlocks
+    replaceInnerBlocks,
+    removeBlock
   } = useDispatch("core/block-editor");
   return {
     // Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
@@ -43896,7 +43895,8 @@ const applyWithSelect = withSelect((select, props) => {
     variations: typeof getBlockVariations === "undefined" ? null : getBlockVariations(props.name),
     replaceInnerBlocks,
     deviceType,
-    isParentOfSelectedBlock: select("core/block-editor").hasSelectedInnerBlock(props.clientId, true)
+    isParentOfSelectedBlock: select("core/block-editor").hasSelectedInnerBlock(props.clientId, true),
+    removeBlock
   };
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (compose(applyWithSelect)(edit));
@@ -44268,7 +44268,7 @@ const {
 const {
   registerBlockType
 } = wp.blocks;
-registerBlockType("premium/row", { ..._block_json__WEBPACK_IMPORTED_MODULE_0__,
+registerBlockType("premium/row", {
   title: __("Container", "premium-blocks-for-gutenberg"),
   icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_4__["default"].row,
   category: "premium-blocks",
@@ -44276,6 +44276,7 @@ registerBlockType("premium/row", { ..._block_json__WEBPACK_IMPORTED_MODULE_0__,
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_5__.row,
     anchor: true
   },
+  attributes: _block_json__WEBPACK_IMPORTED_MODULE_0__.attributes,
   variations: _variations__WEBPACK_IMPORTED_MODULE_3__["default"],
   example: {},
   edit: _edit__WEBPACK_IMPORTED_MODULE_1__["default"],
@@ -44486,614 +44487,624 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _icons__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./icons */ "./src/blocks/row/icons.js");
+/**
+ * Internal dependencies
+ */
+
+/**
+ * Template option choices for predefined form layouts.
+ *
+ * @constant
+ * @type {Array}
+ */
 
 const variations = [{
-  name: 'one-column',
+  name: "one-column",
   icon: _icons__WEBPACK_IMPORTED_MODULE_0__["default"][100],
   column: 1,
   attributes: {
     variationSelected: true,
     direction: {
-      'Desktop': 'row',
-      "Tablet": '',
-      "Mobile": ''
+      Desktop: "row",
+      Tablet: "",
+      Mobile: ""
     }
   },
-  scope: ['block']
+  scope: ["block"]
 }, {
-  name: 'one-column-column',
+  name: "one-column-column",
   icon: _icons__WEBPACK_IMPORTED_MODULE_0__["default"]["1-100"],
   column: 1,
   attributes: {
     variationSelected: true,
     direction: {
-      'Desktop': 'column',
-      "Tablet": '',
-      "Mobile": ''
+      Desktop: "column",
+      Tablet: "",
+      Mobile: ""
     }
   },
-  scope: ['block']
+  scope: ["block"]
 }, {
-  name: 'two-column-split',
+  name: "two-column-split",
   icon: _icons__WEBPACK_IMPORTED_MODULE_0__["default"]["50-50"],
   attributes: {
     variationSelected: true,
     direction: {
-      'Desktop': 'row',
-      'Tablet': '',
-      'Mobile': ''
+      Desktop: "row",
+      Tablet: "",
+      Mobile: ""
     },
     wrapItems: {
-      'Desktop': '',
-      "Tablet": '',
-      'Mobile': 'wrap'
+      Desktop: "",
+      Tablet: "",
+      Mobile: "wrap"
     }
   },
   isDefault: true,
-  innerBlocks: [['premium/row', {
+  innerBlocks: [["premium/row", {
     colWidth: {
-      'Desktop': 50,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 50,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
-  }], ['premium/row', {
+  }], ["premium/row", {
     colWidth: {
-      'Desktop': 50,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 50,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
   }]],
-  scope: ['block']
+  scope: ["block"]
 }, {
-  name: 'three-columns-equal',
+  name: "three-columns-equal",
   icon: _icons__WEBPACK_IMPORTED_MODULE_0__["default"]["33-33-33"],
   attributes: {
     variationSelected: true,
     direction: {
-      'Desktop': 'row',
-      'Tablet': '',
-      "Mobile": ''
+      Desktop: "row",
+      Tablet: "",
+      Mobile: ""
     },
     wrapItems: {
-      'Desktop': '',
-      "Tablet": '',
-      'Mobile': 'wrap'
+      Desktop: "",
+      Tablet: "",
+      Mobile: "wrap"
     }
   },
-  innerBlocks: [['premium/row', {
+  innerBlocks: [["premium/row", {
     colWidth: {
-      'Desktop': 33.33,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 33.33,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
-  }], ['premium/row', {
+  }], ["premium/row", {
     colWidth: {
-      'Desktop': 33.33,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 33.33,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
-  }], ['premium/row', {
+  }], ["premium/row", {
     colWidth: {
-      'Desktop': 33.33,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 33.33,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
   }]],
-  scope: ['block']
+  scope: ["block"]
 }, {
-  name: 'three-columns-one-big',
+  name: "three-columns-one-big",
   icon: _icons__WEBPACK_IMPORTED_MODULE_0__["default"]["100-50-50"],
   attributes: {
     variationSelected: true,
     direction: {
-      'Desktop': 'row',
-      'Tablet': '',
-      "Mobile": ''
+      Desktop: "row",
+      Tablet: "",
+      Mobile: ""
     },
     wrapItems: {
-      'Desktop': '',
-      "Tablet": '',
-      'Mobile': 'wrap'
+      Desktop: "",
+      Tablet: "",
+      Mobile: "wrap"
     }
   },
-  innerBlocks: [['premium/row', {
+  innerBlocks: [["premium/row", {
     colWidth: {
-      'Desktop': 50,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 50,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
-  }], ['premium/row', {
+  }], ["premium/row", {
     colWidth: {
-      'Desktop': 50,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 50,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     },
     direction: {
-      'Desktop': 'column',
-      'Tablet': '',
-      "Mobile": ''
+      Desktop: "column",
+      Tablet: "",
+      Mobile: ""
     }
-  }, [['premium/row', {
+  }, [["premium/row", {
     colWidth: {
-      'Desktop': 100,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 100,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
-  }], ['premium/row', {
+  }], ["premium/row", {
     colWidth: {
-      'Desktop': 100,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 100,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
   }]]]],
-  scope: ['block']
+  scope: ["block"]
 }, {
-  name: 'four-column',
+  name: "four-column",
   icon: _icons__WEBPACK_IMPORTED_MODULE_0__["default"]["25-25-25-25"],
   attributes: {
     variationSelected: true,
     direction: {
-      'Desktop': 'row',
-      'Tablet': '',
-      "Mobile": ''
+      Desktop: "row",
+      Tablet: "",
+      Mobile: ""
     },
     wrapItems: {
-      'Desktop': '',
-      "Tablet": '',
-      'Mobile': 'wrap'
+      Desktop: "",
+      Tablet: "",
+      Mobile: "wrap"
     }
   },
-  innerBlocks: [['premium/row', {
+  innerBlocks: [["premium/row", {
     colWidth: {
-      'Desktop': 25,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 25,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
-  }], ['premium/row', {
+  }], ["premium/row", {
     colWidth: {
-      'Desktop': 25,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 25,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
-  }], ['premium/row', {
+  }], ["premium/row", {
     colWidth: {
-      'Desktop': 25,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 25,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
-  }], ['premium/row', {
+  }], ["premium/row", {
     colWidth: {
-      'Desktop': 25,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 25,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
   }]],
-  scope: ['block']
+  scope: ["block"]
 }, {
-  name: '50-50_50-50',
+  name: "50-50_50-50",
   icon: _icons__WEBPACK_IMPORTED_MODULE_0__["default"]["50-50_50-50"],
   attributes: {
     variationSelected: true,
     direction: {
-      'Desktop': 'row',
-      'Tablet': '',
-      "Mobile": ''
+      Desktop: "row",
+      Tablet: "",
+      Mobile: ""
     },
     wrapItems: {
-      'Desktop': 'wrap',
-      "Tablet": '',
-      'Mobile': 'wrap'
+      Desktop: "wrap",
+      Tablet: "",
+      Mobile: "wrap"
     },
     rowGutter: {
-      'Desktop': 20,
-      'Tablet': '',
-      'Mobile': '',
-      'unit': 'px'
+      Desktop: 20,
+      Tablet: "",
+      Mobile: "",
+      unit: "px"
     },
     columnGutter: {
-      'Desktop': 20,
-      'Tablet': '',
-      'Mobile': '',
-      'unit': 'px'
+      Desktop: 20,
+      Tablet: "",
+      Mobile: "",
+      unit: "px"
     }
   },
-  innerBlocks: [['premium/row', {
+  innerBlocks: [["premium/row", {
     colWidth: {
-      'Desktop': 48,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 48,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
-  }], ['premium/row', {
+  }], ["premium/row", {
     colWidth: {
-      'Desktop': 48,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 48,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
-  }], ['premium/row', {
+  }], ["premium/row", {
     colWidth: {
-      'Desktop': 48,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 48,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
-  }], ['premium/row', {
+  }], ["premium/row", {
     colWidth: {
-      'Desktop': 48,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 48,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
   }]],
-  scope: ['block']
+  scope: ["block"]
 }, {
-  name: 'two-columns-one-third-two-thirds',
+  name: "two-columns-one-third-two-thirds",
   icon: _icons__WEBPACK_IMPORTED_MODULE_0__["default"]["25-75"],
   attributes: {
     variationSelected: true,
     direction: {
-      'Desktop': 'row',
-      'Tablet': '',
-      "Mobile": ''
+      Desktop: "row",
+      Tablet: "",
+      Mobile: ""
     },
     wrapItems: {
-      'Desktop': '',
-      "Tablet": '',
-      'Mobile': 'wrap'
+      Desktop: "",
+      Tablet: "",
+      Mobile: "wrap"
     }
   },
-  innerBlocks: [['premium/row', {
+  innerBlocks: [["premium/row", {
     colWidth: {
-      'Desktop': 25,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 25,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
-  }], ['premium/row', {
+  }], ["premium/row", {
     colWidth: {
-      'Desktop': 75,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 75,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
   }]],
-  scope: ['block']
+  scope: ["block"]
 }, {
-  name: '33-33-33_33-33-33',
+  name: "33-33-33_33-33-33",
   icon: _icons__WEBPACK_IMPORTED_MODULE_0__["default"]["33-33-33_33-33-33"],
   attributes: {
     variationSelected: true,
     direction: {
-      'Desktop': 'row',
-      'Tablet': '',
-      "Mobile": ''
+      Desktop: "row",
+      Tablet: "",
+      Mobile: ""
     },
     wrapItems: {
-      'Desktop': 'wrap',
-      "Tablet": '',
-      'Mobile': 'wrap'
+      Desktop: "wrap",
+      Tablet: "",
+      Mobile: "wrap"
     },
     rowGutter: {
-      'Desktop': 20,
-      'Tablet': '',
-      'Mobile': '',
-      'unit': 'px'
+      Desktop: 20,
+      Tablet: "",
+      Mobile: "",
+      unit: "px"
     },
     columnGutter: {
-      'Desktop': 20,
-      'Tablet': '',
-      'Mobile': '',
-      'unit': 'px'
+      Desktop: 20,
+      Tablet: "",
+      Mobile: "",
+      unit: "px"
     }
   },
-  innerBlocks: [['premium/row', {
+  innerBlocks: [["premium/row", {
     colWidth: {
-      'Desktop': 31,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 31,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
-  }], ['premium/row', {
+  }], ["premium/row", {
     colWidth: {
-      'Desktop': 31,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 31,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
-  }], ['premium/row', {
+  }], ["premium/row", {
     colWidth: {
-      'Desktop': 31,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 31,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
-  }], ['premium/row', {
+  }], ["premium/row", {
     colWidth: {
-      'Desktop': 31,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 31,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
-  }], ['premium/row', {
+  }], ["premium/row", {
     colWidth: {
-      'Desktop': 31,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 31,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
-  }], ['premium/row', {
+  }], ["premium/row", {
     colWidth: {
-      'Desktop': 31,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 31,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
   }]],
-  scope: ['block']
+  scope: ["block"]
 }, {
-  name: 'three-columns-wider-center',
+  name: "three-columns-wider-center",
   icon: _icons__WEBPACK_IMPORTED_MODULE_0__["default"]["25-50-25"],
   attributes: {
     variationSelected: true,
     direction: {
-      'Desktop': 'row',
-      'Tablet': '',
-      "Mobile": ''
+      Desktop: "row",
+      Tablet: "",
+      Mobile: ""
     },
     wrapItems: {
-      'Desktop': '',
-      "Tablet": '',
-      'Mobile': 'wrap'
+      Desktop: "",
+      Tablet: "",
+      Mobile: "wrap"
     }
   },
-  innerBlocks: [['premium/row', {
+  innerBlocks: [["premium/row", {
     colWidth: {
-      'Desktop': 25,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 25,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
-  }], ['premium/row', {
+  }], ["premium/row", {
     colWidth: {
-      'Desktop': 50,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 50,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
-  }], ['premium/row', {
+  }], ["premium/row", {
     colWidth: {
-      'Desktop': 25,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 25,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
   }]],
-  scope: ['block']
+  scope: ["block"]
 }, {
-  name: 'two-columns-two-thirds-one-third',
+  name: "two-columns-two-thirds-one-third",
   icon: _icons__WEBPACK_IMPORTED_MODULE_0__["default"]["75-25"],
   attributes: {
     variationSelected: true,
     direction: {
-      'Desktop': 'row',
-      'Tablet': '',
-      "Mobile": ''
+      Desktop: "row",
+      Tablet: "",
+      Mobile: ""
     },
     wrapItems: {
-      'Desktop': '',
-      "Tablet": '',
-      'Mobile': 'wrap'
+      Desktop: "",
+      Tablet: "",
+      Mobile: "wrap"
     }
   },
-  innerBlocks: [['premium/row', {
+  innerBlocks: [["premium/row", {
     colWidth: {
-      'Desktop': 75,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 75,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
-  }], ['premium/row', {
+  }], ["premium/row", {
     colWidth: {
-      'Desktop': 25,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 25,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
   }]],
-  scope: ['block']
+  scope: ["block"]
 }, {
-  name: '75-25_25_75',
+  name: "75-25_25_75",
   icon: _icons__WEBPACK_IMPORTED_MODULE_0__["default"]["75-25_25_75"],
   attributes: {
     variationSelected: true,
     direction: {
-      'Desktop': 'row',
-      'Tablet': '',
-      "Mobile": ''
+      Desktop: "row",
+      Tablet: "",
+      Mobile: ""
     },
     wrapItems: {
-      'Desktop': 'wrap',
-      "Tablet": '',
-      'Mobile': 'wrap'
+      Desktop: "wrap",
+      Tablet: "",
+      Mobile: "wrap"
     },
     rowGutter: {
-      'Desktop': 20,
-      'Tablet': '',
-      'Mobile': '',
-      'unit': 'px'
+      Desktop: 20,
+      Tablet: "",
+      Mobile: "",
+      unit: "px"
     },
     columnGutter: {
-      'Desktop': 20,
-      'Tablet': '',
-      'Mobile': '',
-      'unit': 'px'
+      Desktop: 20,
+      Tablet: "",
+      Mobile: "",
+      unit: "px"
     }
   },
-  innerBlocks: [['premium/row', {
+  innerBlocks: [["premium/row", {
     colWidth: {
-      'Desktop': 73,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 73,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
-  }], ['premium/row', {
+  }], ["premium/row", {
     colWidth: {
-      'Desktop': 23,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 23,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
-  }], ['premium/row', {
+  }], ["premium/row", {
     colWidth: {
-      'Desktop': 23,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 23,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
-  }], ['premium/row', {
+  }], ["premium/row", {
     colWidth: {
-      'Desktop': 73,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 73,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
   }]],
-  scope: ['block']
+  scope: ["block"]
 }, {
-  name: '50-50_100',
+  name: "50-50_100",
   icon: _icons__WEBPACK_IMPORTED_MODULE_0__["default"]["50-50_100"],
   attributes: {
     variationSelected: true,
     direction: {
-      'Desktop': 'row',
-      'Tablet': '',
-      "Mobile": ''
+      Desktop: "row",
+      Tablet: "",
+      Mobile: ""
     },
     wrapItems: {
-      'Desktop': 'wrap',
-      "Tablet": '',
-      'Mobile': 'wrap'
+      Desktop: "wrap",
+      Tablet: "",
+      Mobile: "wrap"
     },
     rowGutter: {
-      'Desktop': 20,
-      'Tablet': '',
-      'Mobile': '',
-      'unit': 'px'
+      Desktop: 20,
+      Tablet: "",
+      Mobile: "",
+      unit: "px"
     },
     columnGutter: {
-      'Desktop': 20,
-      'Tablet': '',
-      'Mobile': '',
-      'unit': 'px'
+      Desktop: 20,
+      Tablet: "",
+      Mobile: "",
+      unit: "px"
     }
   },
-  innerBlocks: [['premium/row', {
+  innerBlocks: [["premium/row", {
     colWidth: {
-      'Desktop': 100,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 100,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     },
     direction: {
-      'Desktop': 'row',
-      'Tablet': '',
-      "Mobile": ''
+      Desktop: "row",
+      Tablet: "",
+      Mobile: ""
     }
-  }, [['premium/row', {
+  }, [["premium/row", {
     colWidth: {
-      'Desktop': 48,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 48,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
-  }], ['premium/row', {
+  }], ["premium/row", {
     colWidth: {
-      'Desktop': 48,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 48,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
-  }]]], ['premium/row', {
+  }]]], ["premium/row", {
     colWidth: {
-      'Desktop': 100,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 100,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
   }]],
-  scope: ['block']
+  scope: ["block"]
 }, {
-  name: '25-75_75-25',
+  name: "25-75_75-25",
   icon: _icons__WEBPACK_IMPORTED_MODULE_0__["default"]["25-75_75-25"],
   attributes: {
     variationSelected: true,
     direction: {
-      'Desktop': 'row',
-      'Tablet': '',
-      "Mobile": ''
+      Desktop: "row",
+      Tablet: "",
+      Mobile: ""
     },
     wrapItems: {
-      'Desktop': 'wrap',
-      "Tablet": '',
-      'Mobile': 'wrap'
+      Desktop: "wrap",
+      Tablet: "",
+      Mobile: "wrap"
     },
     rowGutter: {
-      'Desktop': 20,
-      'Tablet': '',
-      'Mobile': '',
-      'unit': 'px'
+      Desktop: 20,
+      Tablet: "",
+      Mobile: "",
+      unit: "px"
     },
     columnGutter: {
-      'Desktop': 20,
-      'Tablet': '',
-      'Mobile': '',
-      'unit': 'px'
+      Desktop: 20,
+      Tablet: "",
+      Mobile: "",
+      unit: "px"
     }
   },
-  innerBlocks: [['premium/row', {
+  innerBlocks: [["premium/row", {
     colWidth: {
-      'Desktop': 23,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 23,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
-  }], ['premium/row', {
+  }], ["premium/row", {
     colWidth: {
-      'Desktop': 73,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 73,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
-  }], ['premium/row', {
+  }], ["premium/row", {
     colWidth: {
-      'Desktop': 73,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 73,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
-  }], ['premium/row', {
+  }], ["premium/row", {
     colWidth: {
-      'Desktop': 23,
-      'Tablet': 100,
-      'Mobile': 100,
-      unit: '%'
+      Desktop: 23,
+      Tablet: 100,
+      Mobile: 100,
+      unit: "%"
     }
   }]],
-  scope: ['block']
+  scope: ["block"]
 }];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (variations);
 
@@ -53230,7 +53241,8 @@ const {
   SelectControl,
   Button,
   ButtonGroup,
-  Tooltip
+  Tooltip,
+  TextControl
 } = wp.components; // import { FontAwesomeEnabled } from "../../assets/js/settings";
 
 
@@ -53253,40 +53265,40 @@ function PremiumBackgroundControl(_ref) {
     backgroundVedio = false
   } = _ref;
   let defaultValues = {
-    'backgroundType': '',
-    'backgroundColor': '',
-    'backgroundImageID': '',
-    'backgroundImageURL': '',
-    'backgroundPosition': '',
-    'backgroundRepeat': '',
-    'backgroundSize': '',
-    'fixed': false,
-    'gradientLocationOne': "",
-    'gradientColorTwo': '',
-    'gradientLocationTwo': '',
-    'gradientAngle': '',
-    'gradientPosition': '',
-    'gradientType': '',
-    'videoSource': 'local',
-    'bgExternalVideo': '',
-    'videoURL': '',
-    'videoID': '',
-    'bgVideoFallbackID': '',
-    'bgVideoFallbackURL': ''
+    backgroundType: "",
+    backgroundColor: "",
+    backgroundImageID: "",
+    backgroundImageURL: "",
+    backgroundPosition: "",
+    backgroundRepeat: "",
+    backgroundSize: "",
+    fixed: false,
+    gradientLocationOne: "",
+    gradientColorTwo: "",
+    gradientLocationTwo: "",
+    gradientAngle: "",
+    gradientPosition: "",
+    gradientType: "",
+    videoSource: "local",
+    bgExternalVideo: "",
+    videoURL: "",
+    videoID: "",
+    bgVideoFallbackID: "",
+    bgVideoFallbackURL: ""
   };
   value = value ? { ...defaultValues,
     ...value
   } : defaultValues;
   const [state, setState] = useState(value);
   const gradTypes = [{
-    key: 'linear',
-    name: __('Linear', "premium-blocks-for-gutenberg")
+    key: "linear",
+    name: __("Linear", "premium-blocks-for-gutenberg")
   }, {
-    key: 'radial',
-    name: __('Radial', "premium-blocks-for-gutenberg")
+    key: "radial",
+    name: __("Radial", "premium-blocks-for-gutenberg")
   }];
   const bgType = [{
-    key: 'solid',
+    key: "solid",
     icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
       id: "Accordion",
       fill: "inherit",
@@ -53310,9 +53322,9 @@ function PremiumBackgroundControl(_ref) {
       d: "M6.9,14.79h0Zm3.42-.07h0c.15.16.3.32.43.48A3.8,3.8,0,0,0,10.32,14.72Zm.42.48a4.85,4.85,0,0,1,.63,1.07A4,4,0,0,0,10.74,15.2Z",
       transform: "translate(-1.78 -1.75)"
     }))),
-    tooltip: __('Classic', 'premium-blocks-for-gutenberg')
+    tooltip: __("Classic", "premium-blocks-for-gutenberg")
   }, {
-    key: 'gradient',
+    key: "gradient",
     icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
       id: "Accordion",
       fill: "inherit",
@@ -53329,7 +53341,7 @@ function PremiumBackgroundControl(_ref) {
       d: "M20.62,22.22A2.72,2.72,0,0,1,18.13,21a2.72,2.72,0,0,1,.24-2.74L19,17.18a1.87,1.87,0,0,1,1.58-1h0a1.9,1.9,0,0,1,1.59,1l.66,1.09A2.72,2.72,0,0,1,23.1,21,2.71,2.71,0,0,1,20.62,22.22Zm0-4.55s-.17.07-.29.28h0L19.66,19a1.32,1.32,0,0,0-.22,1.24,1.32,1.32,0,0,0,1.18.44,1.31,1.31,0,0,0,1.17-.44A1.32,1.32,0,0,0,21.57,19L20.91,18C20.79,17.75,20.67,17.67,20.61,17.67Zm-.93-.1h0Z",
       transform: "translate(-1.62 -2.65)"
     })),
-    tooltip: __('Gradient', 'premium-blocks-for-gutenberg')
+    tooltip: __("Gradient", "premium-blocks-for-gutenberg")
   }];
 
   if (backgroundVedio) {
@@ -53350,7 +53362,7 @@ function PremiumBackgroundControl(_ref) {
         d: "M12,12.25A2.25,2.25,0,1,1,14.25,10,2.25,2.25,0,0,1,12,12.25Zm0-3a.75.75,0,1,0,.75.75A.76.76,0,0,0,12,9.25Z",
         transform: "translate(-1.75 -3.33)"
       })),
-      tooltip: __('Video', 'premium-blocks-for-gutenberg')
+      tooltip: __("Video", "premium-blocks-for-gutenberg")
     });
   }
 
@@ -53388,11 +53400,11 @@ function PremiumBackgroundControl(_ref) {
     className: "premium-btn-size-settings-container  premium-blocks__base-control"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "premium-beside-btn-group"
-  }, __('Background Type', 'premium-blocks-for-gutenberg')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, __("Background Type", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-background-type__wrap`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ButtonGroup, {
     className: "premium-button-size-type-options",
-    "aria-label": __('Background Type', 'premium-blocks-for-gutenberg')
+    "aria-label": __("Background Type", "premium-blocks-for-gutenberg")
   }, lodash_map__WEBPACK_IMPORTED_MODULE_4___default()(bgType, _ref2 => {
     let {
       icon,
@@ -53406,7 +53418,7 @@ function PremiumBackgroundControl(_ref) {
       className: "premium-btn-size-btn",
       isSmall: true,
       isPrimary: backgroundType === key,
-      onClick: () => onChangeBackground('backgroundType', key)
+      onClick: () => onChangeBackground("backgroundType", key)
     }, icon));
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-btn-reset-wrap"
@@ -53418,13 +53430,13 @@ function PremiumBackgroundControl(_ref) {
       setState(defaultValues);
       onChange(defaultValues);
     }
-  })))), 'solid' === backgroundType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  })))), "solid" === backgroundType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-inner-sub-section premium-blocks__base-control"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_premium_background__WEBPACK_IMPORTED_MODULE_3__["default"], {
     type: "color",
     colorValue: backgroundColor,
-    colorDefault: '',
-    onChangeColor: newValue => onChangeBackground('backgroundColor', newValue)
+    colorDefault: "",
+    onChangeColor: newValue => onChangeBackground("backgroundColor", newValue)
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_premium_background__WEBPACK_IMPORTED_MODULE_3__["default"], {
     imageID: backgroundImageID,
     imageURL: backgroundImageURL,
@@ -53433,44 +53445,44 @@ function PremiumBackgroundControl(_ref) {
     backgroundSize: backgroundSize,
     fixed: fixed,
     onSelectMedia: media => {
-      onChangeBackground('backgroundImageURL', media.url);
+      onChangeBackground("backgroundImageURL", media.url);
     },
-    onRemoveImage: () => onChangeBackground('backgroundImageURL', ''),
-    onChangeBackPos: newValue => onChangeBackground('backgroundPosition', newValue),
-    onchangeBackRepeat: newValue => onChangeBackground('backgroundRepeat', newValue),
-    onChangeBackSize: newValue => onChangeBackground('backgroundSize', newValue),
-    onChangeFixed: check => onChangeBackground('fixed', check)
-  })), 'gradient' === backgroundType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    onRemoveImage: () => onChangeBackground("backgroundImageURL", ""),
+    onChangeBackPos: newValue => onChangeBackground("backgroundPosition", newValue),
+    onchangeBackRepeat: newValue => onChangeBackground("backgroundRepeat", newValue),
+    onChangeBackSize: newValue => onChangeBackground("backgroundSize", newValue),
+    onChangeFixed: check => onChangeBackground("fixed", check)
+  })), "gradient" === backgroundType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "Premium-inner-sub-section premium-blocks__base-control"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    label: __('Gradient Color 1', 'premium-blocks-for-gutenberg'),
+    label: __("Gradient Color 1", "premium-blocks-for-gutenberg"),
     colorValue: backgroundColor,
-    colorDefault: '',
-    onColorChange: value => onChangeBackground('backgroundColor', value)
+    colorDefault: "",
+    onColorChange: value => onChangeBackground("backgroundColor", value)
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    label: __('Location', 'premium-blocks-for-gutenberg'),
+    label: __("Location", "premium-blocks-for-gutenberg"),
     value: gradientLocationOne,
-    onChange: value => onChangeBackground('gradientLocationOne', value),
+    onChange: value => onChangeBackground("gradientLocationOne", value),
     showUnit: false,
     defaultValue: 0
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    label: __('Gradient Color 2', 'premium-blocks-for-gutenberg'),
+    label: __("Gradient Color 2", "premium-blocks-for-gutenberg"),
     colorValue: gradientColorTwo,
-    colorDefault: '#777777',
-    onColorChange: value => onChangeBackground('gradientColorTwo', value)
+    colorDefault: "#777777",
+    onColorChange: value => onChangeBackground("gradientColorTwo", value)
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    label: __('Location', 'premium-blocks-for-gutenberg'),
+    label: __("Location", "premium-blocks-for-gutenberg"),
     value: gradientLocationTwo,
-    onChange: value => onChangeBackground('gradientLocationTwo', value),
+    onChange: value => onChangeBackground("gradientLocationTwo", value),
     showUnit: false,
     defaultValue: 0
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-btn-size-settings-container"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
     className: "premium-beside-btn-group"
-  }, __('Gradient Type', 'premium-blocks-for-gutenberg')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ButtonGroup, {
+  }, __("Gradient Type", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ButtonGroup, {
     className: "premium-button-size-type-options",
-    "aria-label": __('Gradient Type', 'premium-blocks-for-gutenberg')
+    "aria-label": __("Gradient Type", "premium-blocks-for-gutenberg")
   }, lodash_map__WEBPACK_IMPORTED_MODULE_4___default()(gradTypes, _ref3 => {
     let {
       name,
@@ -53481,69 +53493,69 @@ function PremiumBackgroundControl(_ref) {
       className: "premium-btn-size-btn",
       isSmall: true,
       isPrimary: gradientType === key,
-      onClick: () => onChangeBackground('gradientType', key)
+      onClick: () => onChangeBackground("gradientType", key)
     }, name);
-  }))), 'radial' !== gradientType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    label: __('Gradient Angle', 'premium-blocks-for-gutenberg'),
+  }))), "radial" !== gradientType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    label: __("Gradient Angle", "premium-blocks-for-gutenberg"),
     value: gradientAngle,
-    onChange: value => onChangeBackground('gradientAngle', value),
+    onChange: value => onChangeBackground("gradientAngle", value),
     showUnit: false,
     defaultValue: 0,
     min: 0,
     max: 360
-  }), 'radial' === gradientType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
-    label: __('Gradient Position', 'premium-blocks-for-gutenberg'),
+  }), "radial" === gradientType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
+    label: __("Gradient Position", "premium-blocks-for-gutenberg"),
     value: gradientPosition,
     options: [{
-      value: 'center top',
-      label: __('Center Top', 'premium-blocks-for-gutenberg')
+      value: "center top",
+      label: __("Center Top", "premium-blocks-for-gutenberg")
     }, {
-      value: 'center center',
-      label: __('Center Center', 'premium-blocks-for-gutenberg')
+      value: "center center",
+      label: __("Center Center", "premium-blocks-for-gutenberg")
     }, {
-      value: 'center bottom',
-      label: __('Center Bottom', 'premium-blocks-for-gutenberg')
+      value: "center bottom",
+      label: __("Center Bottom", "premium-blocks-for-gutenberg")
     }, {
-      value: 'left top',
-      label: __('Left Top', 'premium-blocks-for-gutenberg')
+      value: "left top",
+      label: __("Left Top", "premium-blocks-for-gutenberg")
     }, {
-      value: 'left center',
-      label: __('Left Center', 'premium-blocks-for-gutenberg')
+      value: "left center",
+      label: __("Left Center", "premium-blocks-for-gutenberg")
     }, {
-      value: 'left bottom',
-      label: __('Left Bottom', 'premium-blocks-for-gutenberg')
+      value: "left bottom",
+      label: __("Left Bottom", "premium-blocks-for-gutenberg")
     }, {
-      value: 'right top',
-      label: __('Right Top', 'premium-blocks-for-gutenberg')
+      value: "right top",
+      label: __("Right Top", "premium-blocks-for-gutenberg")
     }, {
-      value: 'right center',
-      label: __('Right Center', 'premium-blocks-for-gutenberg')
+      value: "right center",
+      label: __("Right Center", "premium-blocks-for-gutenberg")
     }, {
-      value: 'right bottom',
-      label: __('Right Bottom', 'premium-blocks-for-gutenberg')
+      value: "right bottom",
+      label: __("Right Bottom", "premium-blocks-for-gutenberg")
     }],
-    onChange: value => onChangeBackground('gradientPosition', value)
-  })), 'video' === backgroundType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
-    label: __('Video Source', 'premium-blocks-for-gutenberg'),
+    onChange: value => onChangeBackground("gradientPosition", value)
+  })), "video" === backgroundType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
+    label: __("Video Source", "premium-blocks-for-gutenberg"),
     value: videoSource,
     options: [{
-      value: 'local',
-      label: __('Local', 'premium-blocks-for-gutenberg')
+      value: "local",
+      label: __("Local", "premium-blocks-for-gutenberg")
     }, {
-      value: 'external',
-      label: __('External', 'premium-blocks-for-gutenberg')
+      value: "external",
+      label: __("External", "premium-blocks-for-gutenberg")
     }],
-    onChange: val => onChangeBackground('videoSource', val)
-  }), videoSource === 'external' ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
-    label: __('Video URL', "premium-blocks-for-gutenberg"),
+    onChange: val => onChangeBackground("videoSource", val)
+  }), videoSource === "external" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
+    label: __("Video URL", "premium-blocks-for-gutenberg"),
     value: bgExternalVideo || "",
-    onChange: val => onChangeBackground('bgExternalVideo', val)
-  }) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, __('Video', "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_premium_media_upload__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    onChange: val => onChangeBackground("bgExternalVideo", val)
+  }) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, __("Video", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_premium_media_upload__WEBPACK_IMPORTED_MODULE_2__["default"], {
     type: "video",
     imageID: videoID,
     imageURL: videoURL,
-    onSelectMedia: media => onChangeBackground('videoURL', media.url),
-    onRemoveImage: () => onChangeBackground('videoURL', "")
+    onSelectMedia: media => onChangeBackground("videoURL", media.url),
+    onRemoveImage: () => onChangeBackground("videoURL", "")
   }))));
 }
 
@@ -95416,7 +95428,7 @@ module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/p
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/row","category":"premium-blocks","attributes":{"block_id":{"type":"string"},"align":{"type":"string","default":"alignfull"},"columns":{"type":"number","default":""},"variationSelected":{"type":"boolean","default":false},"isBlockRootParent":{"type":"boolean","default":false},"blockDescendants":{"type":"array","default":[]},"colWidth":{"type":"object","default":{"Desktop":100,"Tablet":100,"Mobile":100,"unit":"%"}},"padding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"margin":{"type":"object","default":{"Desktop":{"top":0,"right":0,"bottom":0,"left":0},"Tablet":{"top":0,"right":0,"bottom":0,"left":0},"Mobile":{"top":0,"right":0,"bottom":0,"left":0},"unit":"px"}},"rowContainer":{"type":"number","default":0},"minHeight":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}},"overflow":{"type":"string","value":"default"},"backgroundOptions":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"center center","backgroundRepeat":"no-repeat","backgroundSize":"cover","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientType":"linear","gradientAngle":"180","gradientPosition":"center center","videoSource":"local","bgExternalVideo":"","videoURL":"","videoID":"","bgVideoFallbackID":"","bgVideoFallbackURL":""}},"backgroundOverlay":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"center center","backgroundRepeat":"no-repeat","backgroundSize":"cover","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientType":"linear","gradientAngle":"180","gradientPosition":"center center"}},"backgroundOverlayHover":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"center center","backgroundRepeat":"no-repeat","backgroundSize":"cover","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientType":"linear","gradientAngle":"180","gradientPosition":"center center"}},"border":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"boxShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":"","position":""}},"shapeTop":{"type":"object","default":{"openShape":0,"color":"#006fbf","shapeType":"top","width":{"Desktop":"","Tablet":"","Mobile":"","unit":"%"},"height":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"shapeBottom":{"type":"object","default":{"openShape":0,"color":"#006fbf","shapeType":"bottom","width":{"Desktop":"","Tablet":"","Mobile":"","unit":"%"},"height":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"animation":{"type":"object","default":{}},"hideTablet":{"type":"boolean","default":false},"hideMobile":{"type":"boolean","default":false},"innerWidthType":{"type":"string","default":"boxed"},"innerWidth":{"type":"number","default":1200},"columnGutter":{"type":"object","default":{"Desktop":30,"Tablet":30,"Mobile":30,"unit":"px"}},"rowGutter":{"type":"object","default":{"Desktop":30,"Tablet":30,"Mobile":30,"unit":"px"}},"direction":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":""}},"alignItems":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":""}},"justifyItems":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":""}},"wrapItems":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":""}},"alignContent":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":""}},"containerTag":{"type":"string","default":"div"},"blend":{"type":"string"},"overlayOpacity":{"type":"number"},"overlayFilter":{"type":"object","default":{"contrast":"100","blur":"0","bright":"100","saturation":"100","hue":"0"}},"hoverOverlayOpacity":{"type":"number"},"hoverOverlayFilter":{"type":"object","default":{"contrast":"100","blur":"0","bright":"100","saturation":"100","hue":"0"}},"transition":{"type":"number"}}}');
+module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/row","category":"premium-blocks","attributes":{"block_id":{"type":"string"},"align":{"type":"string","default":"alignfull"},"columns":{"type":"number","default":""},"variationSelected":{"type":"boolean","default":false},"isBlockRootParent":{"type":"boolean","default":false},"blockDescendants":{"type":"array","default":[]},"colWidth":{"type":"object","default":{"Desktop":100,"Tablet":100,"Mobile":100,"unit":"%"}},"padding":{"type":"object","default":{"Desktop":{"top":"10","right":"10","bottom":"10","left":"10"},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"margin":{"type":"object","default":{"Desktop":{"top":0,"right":0,"bottom":0,"left":0},"Tablet":{"top":0,"right":0,"bottom":0,"left":0},"Mobile":{"top":0,"right":0,"bottom":0,"left":0},"unit":"px"}},"rowContainer":{"type":"number","default":0},"minHeight":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}},"overflow":{"type":"string","value":"default"},"backgroundOptions":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"center center","backgroundRepeat":"no-repeat","backgroundSize":"cover","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientType":"linear","gradientAngle":"180","gradientPosition":"center center","videoSource":"local","bgExternalVideo":"","videoURL":"","videoID":"","bgVideoFallbackID":"","bgVideoFallbackURL":""}},"backgroundOverlay":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"center center","backgroundRepeat":"no-repeat","backgroundSize":"cover","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientType":"linear","gradientAngle":"180","gradientPosition":"center center"}},"backgroundOverlayHover":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"center center","backgroundRepeat":"no-repeat","backgroundSize":"cover","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientType":"linear","gradientAngle":"180","gradientPosition":"center center"}},"border":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"boxShadow":{"type":"object","default":{"color":"","blur":"","horizontal":"","vertical":"","position":""}},"shapeTop":{"type":"object","default":{"openShape":0,"color":"#006fbf","shapeType":"top","width":{"Desktop":"","Tablet":"","Mobile":"","unit":"%"},"height":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"shapeBottom":{"type":"object","default":{"openShape":0,"color":"#006fbf","shapeType":"bottom","width":{"Desktop":"","Tablet":"","Mobile":"","unit":"%"},"height":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"animation":{"type":"object","default":{}},"hideTablet":{"type":"boolean","default":false},"hideMobile":{"type":"boolean","default":false},"innerWidthType":{"type":"string","default":"boxed"},"innerWidth":{"type":"number","default":1200},"columnGutter":{"type":"object","default":{"Desktop":30,"Tablet":30,"Mobile":30,"unit":"px"}},"rowGutter":{"type":"object","default":{"Desktop":30,"Tablet":30,"Mobile":30,"unit":"px"}},"direction":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":""}},"alignItems":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":""}},"justifyItems":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":""}},"wrapItems":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":""}},"alignContent":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":""}},"containerTag":{"type":"string","default":"div"},"blend":{"type":"string","default":""},"overlayOpacity":{"type":"number"},"overlayFilter":{"type":"object","default":{"contrast":"100","blur":"0","bright":"100","saturation":"100","hue":"0"}},"hoverOverlayOpacity":{"type":"number"},"hoverOverlayFilter":{"type":"object","default":{"contrast":"100","blur":"0","bright":"100","saturation":"100","hue":"0"}},"transition":{"type":"number"}}}');
 
 /***/ }),
 

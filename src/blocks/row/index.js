@@ -1,4 +1,4 @@
-import json from "./block.json";
+import { attributes } from "./block.json";
 import edit from "./edit";
 import Save from "./save";
 import variations from "./variations";
@@ -9,7 +9,6 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 registerBlockType("premium/row", {
-    ...json,
     title: __("Container", "premium-blocks-for-gutenberg"),
     icon: PBG_Block_Icons.row,
     category: "premium-blocks",
@@ -17,6 +16,8 @@ registerBlockType("premium/row", {
         inserter: row,
         anchor: true,
     },
+    attributes,
+
     variations,
     example: {},
     edit: edit,

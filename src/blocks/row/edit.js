@@ -230,7 +230,7 @@ const edit = (props) => {
         const styles = {};
         const containerFullWidth = "100vw";
         styles[
-            `.editor-styles-wrapper .premium-block-${clientId}  > .wp-block-premium-container > .premium-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout`
+            `.editor-styles-wrapper #block-${clientId}  > .wp-block-premium-container > .premium-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout`
         ] = {
             "min-height": `${minHeight[props.deviceType]}${minHeight["unit"]}`,
             "flex-direction": direction[props.deviceType],
@@ -244,7 +244,7 @@ const edit = (props) => {
             }`,
         };
         styles[
-            ` .editor-styles-wrapper .premium-block-${clientId}.block-editor-block-list__block`
+            ` .editor-styles-wrapper #block-${clientId}.block-editor-block-list__block`
         ] = {
             "min-height": `${minHeight[props.deviceType]}${minHeight["unit"]}`,
             "flex-direction": direction[props.deviceType],
@@ -255,13 +255,13 @@ const edit = (props) => {
         };
 
         styles[
-            ` .editor-styles-wrapper .is-root-container > .block-editor-block-list__block .block-editor-block-list__block.premium-block-${clientId}`
+            ` .editor-styles-wrapper .is-root-container > .block-editor-block-list__block .block-editor-block-list__block#block-${clientId}`
         ] = {
             "max-width": `${colWidth[props.deviceType]}${colWidth["unit"]}`,
             width: `${colWidth[props.deviceType]}${colWidth["unit"]}`,
         };
         styles[
-            `.editor-styles-wrapper .premium-block-${clientId}  .premium-top-shape svg`
+            `.editor-styles-wrapper #block-${clientId}  .premium-top-shape svg`
         ] = {
             width: `${shapeTop.width[props.deviceType]}${
                 shapeTop.width["unit"]
@@ -273,7 +273,7 @@ const edit = (props) => {
         };
 
         styles[
-            `.editor-styles-wrapper .premium-block-${clientId} .premium-bottom-shape svg`
+            `.editor-styles-wrapper #block-${clientId} .premium-bottom-shape svg`
         ] = {
             width: `${shapeBottom.width[props.deviceType]}${
                 shapeBottom.width["unit"]
@@ -514,6 +514,7 @@ const edit = (props) => {
                                 }
                                 defaultValue={0}
                                 showUnit={true}
+                                units={["px", "vh"]}
                             />
                             <SelectControl
                                 label={__(
@@ -555,7 +556,6 @@ const edit = (props) => {
                                     { value: "section", label: "section" },
                                     { value: "aside", label: "aside" },
                                     { value: "nav", label: "nav" },
-                                    { value: "a", label: "a" },
                                 ]}
                                 value={containerTag}
                                 onChange={(newValue) =>
@@ -1263,7 +1263,6 @@ const applyWithSelect = withSelect((select, props) => {
     const deviceType = __experimentalGetPreviewDeviceType
         ? __experimentalGetPreviewDeviceType()
         : null;
-
     const { getBlocks } = select("core/block-editor");
     const {
         getBlockType,
@@ -1271,7 +1270,9 @@ const applyWithSelect = withSelect((select, props) => {
         getDefaultBlockVariation,
     } = select("core/blocks");
     const innerBlocks = getBlocks(props.clientId);
-    const { replaceInnerBlocks } = useDispatch("core/block-editor");
+    const { replaceInnerBlocks, removeBlock } = useDispatch(
+        "core/block-editor"
+    );
 
     return {
         // Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
@@ -1290,6 +1291,7 @@ const applyWithSelect = withSelect((select, props) => {
         isParentOfSelectedBlock: select(
             "core/block-editor"
         ).hasSelectedInnerBlock(props.clientId, true),
+        removeBlock,
     };
 });
 export default compose(applyWithSelect)(edit);
