@@ -13,7 +13,7 @@ import InspectorTab from "../../components/inspectorTab";
 import MultiButtonsControl from "../../components/responsive-radio";
 import Icons from "../../components/icons";
 import WebfontLoader from "../../components/typography/fontLoader";
-import { borderCss, generateBlockId, generateCss, paddingCss, typographyCss} from "../../components/HelperFunction";
+import { borderCss, generateBlockId, generateCss, paddingCss, typographyCss } from "../../components/HelperFunction";
 
 const { withSelect } = wp.data;
 const { __ } = wp.i18n;
@@ -385,17 +385,17 @@ function Edit(props) {
                                     choices={[
                                         {
                                             value: "left",
-                                            label: __("Left","premium-blocks-for-gutenberg"),
+                                            label: __("Left", "premium-blocks-for-gutenberg"),
                                             icon: Icons.alignLeft,
                                         },
                                         {
                                             value: "center",
-                                            label: __("Center","premium-blocks-for-gutenberg"),
+                                            label: __("Center", "premium-blocks-for-gutenberg"),
                                             icon: Icons.alignCenter,
                                         },
                                         {
                                             value: "right",
-                                            label: __("Right","premium-blocks-for-gutenberg"),
+                                            label: __("Right", "premium-blocks-for-gutenberg"),
                                             icon: Icons.alignRight,
                                         },
                                     ]}
@@ -420,12 +420,12 @@ function Edit(props) {
                             >
                                 <RadioComponent
                                     choices={[
-                                        { label: __("H1","premium-blocks-for-gutenberg"), value: "h1" },
-                                        { label: __("H2","premium-blocks-for-gutenberg"), value: "h2" },
-                                        { label: __("H3","premium-blocks-for-gutenberg"), value: "h3" },
-                                        { label: __("H4","premium-blocks-for-gutenberg"), value: "h4" },
-                                        { label: __("H5","premium-blocks-for-gutenberg"), value: "h5" },
-                                        { label: __("H6","premium-blocks-for-gutenberg"), value: "h6" },
+                                        { label: __("H1", "premium-blocks-for-gutenberg"), value: "h1" },
+                                        { label: __("H2", "premium-blocks-for-gutenberg"), value: "h2" },
+                                        { label: __("H3", "premium-blocks-for-gutenberg"), value: "h3" },
+                                        { label: __("H4", "premium-blocks-for-gutenberg"), value: "h4" },
+                                        { label: __("H5", "premium-blocks-for-gutenberg"), value: "h5" },
+                                        { label: __("H6", "premium-blocks-for-gutenberg"), value: "h6" },
                                     ]}
                                     value={titleTag}
                                     onChange={(newValue) =>
@@ -600,7 +600,7 @@ function Edit(props) {
                                 />
                                 <hr />
                                 <PremiumBorder
-                                    label={__("Border","premium-blocks-for-gutenberg")}
+                                    label={__("Border", "premium-blocks-for-gutenberg")}
                                     value={border}
                                     onChange={(value) =>
                                         setAttributes({ border: value })
@@ -611,7 +611,7 @@ function Edit(props) {
                                     value={padding}
                                     responsive={true}
                                     showUnits={true}
-                                    label={__("Padding","premium-blocks-for-gutenberg")}
+                                    label={__("Padding", "premium-blocks-for-gutenberg")}
                                     onChange={(value) =>
                                         setAttributes({ padding: value })
                                     }
@@ -644,149 +644,150 @@ function Edit(props) {
                 </InspectorControls>
             )}
             <div
-                    {...useBlockProps({
-                        className: classnames(
-                            className,
-                            `premium-banner ${blockId} premium-banner__responsive_${responsive}`,
-                            {
-                                " premium-desktop-hidden": hideDesktop,
-                                " premium-tablet-hidden": hideTablet,
-                                " premium-mobile-hidden": hideMobile,
-                            }
-                        ),
-                    })}
-                >
-            {!imageURL && (
-                <MediaPlaceholder
-                    labels={{
-                        title: __(
-                            "Premium Banner ",
-                            "premium-blocks-for-gutenberg"
-                        ),
-                        instructions: __(
-                            "Upload an image file, pick one from your media library, or add one with a URL.",
-                            "premium-blocks-for-gutenberg"
-                        ),
-                    }}
-                    accept={["image"]}
-                    allowedTypes={["image"]}
-                    value={imageURL}
-                    onSelectURL={(value) => setAttributes({ imageURL: value })}
-                    onSelect={(media) => {
-                        setAttributes({
-                            imageID: media.id,
-                            imageURL: media.url,
-                        });
-                    }}
-                />
-            )}
-            {imageURL && (
-                <div
-                    style={{
-                        ...paddingCss(padding, props.deviceType)
-                    }}
-                >
-                    <style
-                        dangerouslySetInnerHTML={{
-                            __html: loadStyles(),
+                {...useBlockProps({
+                    className: classnames(
+                        className,
+                        `premium-banner ${blockId} premium-banner__responsive_${responsive}`,
+                        {
+                            " premium-desktop-hidden": hideDesktop,
+                            " premium-tablet-hidden": hideTablet,
+                            " premium-mobile-hidden": hideMobile,
+                        }
+                    ),
+                })}
+            >
+                {!imageURL && (
+                    <MediaPlaceholder
+                        labels={{
+                            title: __(
+                                "Premium Banner ",
+                                "premium-blocks-for-gutenberg"
+                            ),
+                            instructions: __(
+                                "Upload an image file, pick one from your media library, or add one with a URL.",
+                                "premium-blocks-for-gutenberg"
+                            ),
+                        }}
+                        accept={["image"]}
+                        allowedTypes={["image"]}
+                        value={imageURL}
+                        onSelectURL={(value) => setAttributes({ imageURL: value })}
+                        onSelect={(media) => {
+                            setAttributes({
+                                imageID: media.id,
+                                imageURL: media.url,
+                            });
                         }}
                     />
+                )}
+                {imageURL && (
                     <div
-                        className={`premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`}
                         style={{
-                            boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
-                            ...borderCss(border, props.deviceType),
+                            ...paddingCss(padding, props.deviceType)
                         }}
                     >
-                        <div
-                            className="premium-banner__bg-overlay"
-                            style={{
-                                backgroundColor: `${background ? background : ''} `
+                        <style
+                            dangerouslySetInnerHTML={{
+                                __html: loadStyles(),
                             }}
-                        ></div>
+                        />
                         <div
-                            className={`premium-banner__img_wrap premium-banner__${height}`}
+                            className={`premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`}
                             style={{
-                                minHeight: minHeight,
-                                alignItems: verAlign,
+                                boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
+                                ...borderCss(border, props.deviceType),
+                                height: minHeight,
                             }}
                         >
-                            <img
-                                className={`premium-banner__img`}
-                                alt="Banner Image"
-                                src={imageURL}
+                            <div
+                                className="premium-banner__bg-overlay"
                                 style={{
-                                    filter: `brightness( ${filter?.bright}% ) contrast( ${filter?.contrast}% ) saturate( ${filter?.saturation}% ) blur( ${filter?.blur}px ) hue-rotate( ${filter?.hue}deg )`,
+                                    backgroundColor: `${background ? background : ''} `
                                 }}
-                            />
-                        </div>
+                            ></div>
+                            <div
+                                className={`premium-banner__img_wrap premium-banner__${height}`}
+                                style={{
+                                    // minHeight: minHeight,
+                                    alignItems: verAlign,
+                                }}
+                            >
+                                <img
+                                    className={`premium-banner__img`}
+                                    alt="Banner Image"
+                                    src={imageURL}
+                                    style={{
+                                        filter: `brightness( ${filter?.bright}% ) contrast( ${filter?.contrast}% ) saturate( ${filter?.saturation}% ) blur( ${filter?.blur}px ) hue-rotate( ${filter?.hue}deg )`,
+                                    }}
+                                />
+                            </div>
 
-                        <div
-                            className={`premium-banner__content`}
-                            style={{
-                                background:
-                                    "effect2" === effect
-                                        ? titleStyles[0].titleBack
-                                        : "transparent",
-                            }}
-                        >
                             <div
-                                className={`premium-banner__title_wrap`}
+                                className={`premium-banner__content`}
                                 style={{
-                                    textAlign:
-                                        contentAlign[props.deviceType],
+                                    background:
+                                        "effect2" === effect
+                                            ? titleStyles[0].titleBack
+                                            : "transparent",
                                 }}
                             >
-                                <RichText
-                                    tagName={titleTag.toLowerCase()}
-                                    className={`premium-banner__title`}
-                                    value={title}
-                                    placeholder={__("Awesome Title")}
-                                    isSelected={false}
-                                    onChange={(newText) =>
-                                        setAttributes({ title: newText })
-                                    }
+                                <div
+                                    className={`premium-banner__title_wrap`}
                                     style={{
-                                        color: titleStyles[0].titleColor,
-                                        ...typographyCss(
-                                            titleTypography,
-                                            props.deviceType
-                                        ),
-                                        textShadow: `${titleTextShadow?.horizontal}px ${titleTextShadow?.vertical}px ${titleTextShadow?.blur}px ${titleTextShadow?.color}`,
+                                        textAlign:
+                                            contentAlign[props.deviceType],
                                     }}
-                                />
-                            </div>
-                            <div
-                                className={`premium-banner__desc_wrap`}
-                                style={{
-                                    textAlign:
-                                        contentAlign[props.deviceType],
-                                }}
-                            >
-                                <RichText
-                                    tagName="p"
-                                    className={`premium-banner__desc`}
-                                    value={desc}
-                                    isSelected={false}
-                                    onChange={(newText) =>
-                                        setAttributes({ desc: newText })
-                                    }
+                                >
+                                    <RichText
+                                        tagName={titleTag.toLowerCase()}
+                                        className={`premium-banner__title`}
+                                        value={title}
+                                        placeholder={__("Awesome Title")}
+                                        isSelected={false}
+                                        onChange={(newText) =>
+                                            setAttributes({ title: newText })
+                                        }
+                                        style={{
+                                            color: titleStyles[0].titleColor,
+                                            ...typographyCss(
+                                                titleTypography,
+                                                props.deviceType
+                                            ),
+                                            textShadow: `${titleTextShadow?.horizontal}px ${titleTextShadow?.vertical}px ${titleTextShadow?.blur}px ${titleTextShadow?.color}`,
+                                        }}
+                                    />
+                                </div>
+                                <div
+                                    className={`premium-banner__desc_wrap`}
                                     style={{
-                                        color: descStyles[0].descColor,
-                                        ...typographyCss(
-                                            descTypography,
-                                            props.deviceType
-                                        ),
-                                        textShadow: `${descTextShadow.horizontal}px ${descTextShadow.vertical}px ${descTextShadow.blur}px ${descTextShadow.color}`,
+                                        textAlign:
+                                            contentAlign[props.deviceType],
                                     }}
-                                />
+                                >
+                                    <RichText
+                                        tagName="p"
+                                        className={`premium-banner__desc`}
+                                        value={desc}
+                                        isSelected={false}
+                                        onChange={(newText) =>
+                                            setAttributes({ desc: newText })
+                                        }
+                                        style={{
+                                            color: descStyles[0].descColor,
+                                            ...typographyCss(
+                                                descTypography,
+                                                props.deviceType
+                                            ),
+                                            textShadow: `${descTextShadow.horizontal}px ${descTextShadow.vertical}px ${descTextShadow.blur}px ${descTextShadow.color}`,
+                                        }}
+                                    />
+                                </div>
                             </div>
                         </div>
+                        {loadTitleGoogleFonts}
+                        {loadDesciptionGoogleFonts}
                     </div>
-                    {loadTitleGoogleFonts}
-                    {loadDesciptionGoogleFonts}
-                </div>
-            )}
+                )}
             </div>
         </Fragment>
     );

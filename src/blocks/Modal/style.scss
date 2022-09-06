@@ -60,7 +60,7 @@
             display: none;
         }
 
-        > * {
+        >* {
             max-width: 100%;
         }
     }
@@ -160,7 +160,7 @@
     background-image: none;
     border: 1px solid transparent;
 
-    > svg {
+    >svg {
         -webkit-transition: all 0.3s ease-in-out;
         transition: all 0.3s ease-in-out;
         width: 30px;
@@ -434,5 +434,24 @@ button.premium-modal-box-modal-close {
         width: 100%;
         max-height: 500px;
         overflow: auto;
+    }
+}
+
+/************ Responsive **************/
+@media (min-width: 977px) {
+    .premium-desktop-hidden {
+        display: none !important;
+    }
+}
+
+@media only screen and (max-width: 976px) and (min-width: 766px) {
+    .premium-tablet-hidden {
+        display: none !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .premium-mobile-hidden {
+        display: none !important;
     }
 }

@@ -130,7 +130,7 @@ if ( ! class_exists( 'PBG_Rollback' ) ) {
 				'url'    => 'update.php?action=upgrade-plugin&plugin=' . rawurlencode( $this->plugin_name ),
 				'plugin' => $this->plugin_name,
 				'nonce'  => 'upgrade-plugin_' . $this->plugin_name,
-				'title'  => '<img src="' . $logo_url . '" alt="Premium Blocks">' . sprintf( 'Rolling Back to Version %s', PREMIUM_BLOCKS_STABLE_VERSION ),
+				'title'  => '<img src="' . $logo_url . '" alt="Premium Blocks">' . sprintf( 'Rolling Back to Previous Version' ),
 			);
 
 			$this->print_inline_style();

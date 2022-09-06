@@ -9444,7 +9444,8 @@ function Edit(props) {
     className: `premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`,
     style: {
       boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
-      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_16__.borderCss)(border, props.deviceType)
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_16__.borderCss)(border, props.deviceType),
+      height: minHeight
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-banner__bg-overlay",
@@ -9454,7 +9455,7 @@ function Edit(props) {
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-banner__img_wrap premium-banner__${height}`,
     style: {
-      minHeight: minHeight,
+      // minHeight: minHeight,
       alignItems: verAlign
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
@@ -9643,7 +9644,8 @@ const save = props => {
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
       borderStyle: border && border.borderType,
-      borderColor: border && border.borderColor
+      borderColor: border && border.borderColor,
+      height: minHeight
     })
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-banner__bg-overlay",
@@ -9653,7 +9655,7 @@ const save = props => {
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-banner__img_wrap premium-banner__${height}`,
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
-      minHeight: minHeight,
+      // minHeight: minHeight,
       alignItems: verAlign
     })
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {

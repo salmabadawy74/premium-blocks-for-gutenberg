@@ -50,6 +50,7 @@
 
     i {
         font-style: normal !important;
+        font-size: 20px;
     }
 }
 
@@ -554,7 +555,7 @@
         width: 50%;
     }
 
-    > div {
+    >div {
         margin: 0.2em 0 1.5em 0;
         z-index: 2;
     }
@@ -597,5 +598,24 @@
         svg {
             fill: #555d66;
         }
+    }
+}
+
+/************ Responsive **************/
+@media (min-width: 977px) {
+    .premium-desktop-hidden {
+        display: none !important;
+    }
+}
+
+@media only screen and (max-width: 976px) and (min-width: 766px) {
+    .premium-tablet-hidden {
+        display: none !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .premium-mobile-hidden {
+        display: none !important;
     }
 }
