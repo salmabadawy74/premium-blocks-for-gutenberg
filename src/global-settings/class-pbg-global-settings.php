@@ -55,10 +55,24 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 					'show_in_rest' => array(
 						'schema' => array(
 							'type'       => 'object',
-							'properties' => array(),
+							'properties' => array(
+								'typography'         => array(
+									'type' => 'object',
+								),
+								'colors'             => array(
+									'type' => 'object',
+								),
+								'container-settings' => array(
+									'type' => 'object',
+								),
+							),
 						),
 					),
-					'default'      => array(),
+					'default'      => array(
+						'typography'         => array(),
+						'colors'             => array(),
+						'container-settings' => array(),
+					),
 				)
 			);
 		}

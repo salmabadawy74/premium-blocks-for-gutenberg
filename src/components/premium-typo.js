@@ -68,19 +68,20 @@ export default class PremiumTypo extends Component {
     componentDidUpdate(prevProps) {
         let previewDevice =
             wp.data &&
-            wp.data.select &&
-            wp.data.select("core/edit-post") &&
-            wp.data.select("core/edit-post").__experimentalGetPreviewDeviceType
+                wp.data.select &&
+                wp.data.select("core/edit-post") &&
+                wp.data.select("core/edit-post").__experimentalGetPreviewDeviceType
                 ? wp.data
-                      .select("core/edit-post")
-                      .__experimentalGetPreviewDeviceType()
+                    .select("core/edit-post")
+                    .__experimentalGetPreviewDeviceType()
                 : "Desktop";
         if (this.state.device !== previewDevice) {
             this.setState({ device: previewDevice });
         }
     }
     render() {
-        const { onChange } = this.props;
+        const { onChange, title, titleTag = 'span' } = this.props;
+        const TitleTag = titleTag;
         const { value, sizeUnit, isVisible, currentView, search, device } =
             this.state;
         const STYLE = [
@@ -214,9 +215,8 @@ export default class PremiumTypo extends Component {
                     return (
                         <li
                             key={i}
-                            className={`${
-                                weights == value["fontWeight"] ? "active" : ""
-                            }`}
+                            className={`${weights == value["fontWeight"] ? "active" : ""
+                                }`}
                             onClick={() =>
                                 changeTypography("fontWeight", weights)
                             }
@@ -243,9 +243,9 @@ export default class PremiumTypo extends Component {
         return (
             <div className="premium-control-toggle premium-typography premium-blocks__base-control">
                 <header>
-                    <span className=" premium-control-title">
-                        {__("Typography", "premium-blocks-for-gutenberg")}
-                    </span>
+                    <TitleTag className=" premium-control-title">
+                        {title ? title : __("Typography", "premium-blocks-for-gutenberg")}
+                    </TitleTag>
                 </header>
                 <div className="premium-typography-wrapper">
                     <div className="premium-typohraphy-value">
@@ -321,12 +321,12 @@ export default class PremiumTypo extends Component {
                                                             >
                                                                 {currentView ===
                                                                     "search" && (
-                                                                    <path d="M8.9,7.5l4.6-4.6c0.4-0.4,0.4-1,0-1.4c-0.4-0.4-1-0.4-1.4,0L7.5,6.1L2.9,1.5c-0.4-0.4-1-0.4-1.4,0c-0.4,0.4-0.4,1,0,1.4l4.6,4.6l-4.6,4.6c-0.4,0.4-0.4,1,0,1.4c0.4,0.4,1,0.4,1.4,0l4.6-4.6l4.6,4.6c0.4,0.4,1,0.4,1.4,0c0.4-0.4,0.4-1,0-1.4L8.9,7.5z" />
-                                                                )}
+                                                                        <path d="M8.9,7.5l4.6-4.6c0.4-0.4,0.4-1,0-1.4c-0.4-0.4-1-0.4-1.4,0L7.5,6.1L2.9,1.5c-0.4-0.4-1-0.4-1.4,0c-0.4,0.4-0.4,1,0,1.4l4.6,4.6l-4.6,4.6c-0.4,0.4-0.4,1,0,1.4c0.4,0.4,1,0.4,1.4,0l4.6-4.6l4.6,4.6c0.4,0.4,1,0.4,1.4,0c0.4-0.4,0.4-1,0-1.4L8.9,7.5z" />
+                                                                    )}
                                                                 {currentView !==
                                                                     "search" && (
-                                                                    <path d="M14.6,14.6c-0.6,0.6-1.4,0.6-2,0l-2.5-2.5c-1,0.7-2.2,1-3.5,1C2.9,13.1,0,10.2,0,6.6S2.9,0,6.6,0c3.6,0,6.6,2.9,6.6,6.6c0,1.3-0.4,2.5-1,3.5l2.5,2.5C15.1,13.1,15.1,14,14.6,14.6z M6.6,1.9C4,1.9,1.9,4,1.9,6.6s2.1,4.7,4.7,4.7c2.6,0,4.7-2.1,4.7-4.7C11.3,4,9.2,1.9,6.6,1.9z" />
-                                                                )}
+                                                                        <path d="M14.6,14.6c-0.6,0.6-1.4,0.6-2,0l-2.5-2.5c-1,0.7-2.2,1-3.5,1C2.9,13.1,0,10.2,0,6.6S2.9,0,6.6,0c3.6,0,6.6,2.9,6.6,6.6c0,1.3-0.4,2.5-1,3.5l2.5,2.5C15.1,13.1,15.1,14,14.6,14.6z M6.6,1.9C4,1.9,1.9,4,1.9,6.6s2.1,4.7,4.7,4.7c2.6,0,4.7-2.1,4.7-4.7C11.3,4,9.2,1.9,6.6,1.9z" />
+                                                                    )}
                                                             </svg>
                                                         </li>
                                                     </ul>
@@ -380,7 +380,7 @@ export default class PremiumTypo extends Component {
                                                             )}
                                                             value={
                                                                 value[
-                                                                    "fontSize"
+                                                                "fontSize"
                                                                 ]
                                                             }
                                                             onChange={(value) =>
@@ -401,7 +401,7 @@ export default class PremiumTypo extends Component {
                                                             )}
                                                             value={
                                                                 value[
-                                                                    "lineHeight"
+                                                                "lineHeight"
                                                                 ]
                                                             }
                                                             onChange={(value) =>
@@ -423,7 +423,7 @@ export default class PremiumTypo extends Component {
                                                             )}
                                                             value={
                                                                 value[
-                                                                    "letterSpacing"
+                                                                "letterSpacing"
                                                                 ]
                                                             }
                                                             onChange={(value) =>
@@ -447,7 +447,7 @@ export default class PremiumTypo extends Component {
                                                             options={STYLE}
                                                             value={
                                                                 value[
-                                                                    "fontStyle"
+                                                                "fontStyle"
                                                                 ]
                                                             }
                                                             onChange={(
@@ -477,19 +477,17 @@ export default class PremiumTypo extends Component {
                                                                             variant
                                                                         );
                                                                     }}
-                                                                    className={`${
-                                                                        value[
-                                                                            "textTransform"
-                                                                        ] ==
+                                                                    className={`${value[
+                                                                        "textTransform"
+                                                                    ] ==
                                                                         variant
-                                                                            ? "active"
-                                                                            : ""
-                                                                    }${
-                                                                        variant ===
-                                                                        "none"
+                                                                        ? "active"
+                                                                        : ""
+                                                                        }${variant ===
+                                                                            "none"
                                                                             ? " dashicons dashicons-remove"
                                                                             : ""
-                                                                    }`}
+                                                                        }`}
                                                                     data-variant={
                                                                         variant
                                                                     }
@@ -518,19 +516,17 @@ export default class PremiumTypo extends Component {
                                                                             variant
                                                                         );
                                                                     }}
-                                                                    className={`${
-                                                                        value[
-                                                                            "textDecoration"
-                                                                        ] ==
+                                                                    className={`${value[
+                                                                        "textDecoration"
+                                                                    ] ==
                                                                         variant
-                                                                            ? "active"
-                                                                            : ""
-                                                                    }${
-                                                                        variant ===
-                                                                        "none"
+                                                                        ? "active"
+                                                                        : ""
+                                                                        }${variant ===
+                                                                            "none"
                                                                             ? " dashicons dashicons-remove"
                                                                             : ""
-                                                                    }`}
+                                                                        }`}
                                                                     data-variant={
                                                                         variant
                                                                     }
