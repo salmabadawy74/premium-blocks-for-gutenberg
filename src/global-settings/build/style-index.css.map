@@ -1,0 +1,1 @@
+{"version":3,"file":"./style-index.css","mappings":";;;AAAA;EACI;AACJ;;AACA;EACI;AAEJ,C","sources":["webpack://global-settings/./src/style.scss"],"sourcesContent":[".premium-group-item-icon {\r\n    fill: currentColor;\r\n}\r\n.premium-group-header-description {\r\n    padding: 0 16px;\r\n}\r\n"],"names":[],"sourceRoot":""}
