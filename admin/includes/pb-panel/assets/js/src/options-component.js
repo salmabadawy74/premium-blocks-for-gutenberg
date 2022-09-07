@@ -1,6 +1,7 @@
 import SingleOption from "./common/SingleOption";
 
 const SingleOptionComponent = ({ value, optionId, option, onChange }) => {
+
     return <SingleOption id={optionId} value={value} params={option} onChange={onChange} />
         ;
 }

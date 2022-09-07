@@ -291,122 +291,170 @@ if (!class_exists('Pb_Panel')) {
 				'accordion'        => array(
 					'type'     => 'pb-button',
 					'label'    => __('Accordion', 'premium-blocks-for-gutenberg'),
-					'category' => 'all',
+					'category' => array(
+                        "all","creative"
+                    ),
 				),
 				'banner'           => array(
 					'type'     => 'pb-button',
 					'label'    => __('Banner', 'premium-blocks-for-gutenberg'),
-					'category' => 'all',
+					'category' =>array(
+                        "all","creative"
+                    ),
 				),
 				'button'           => array(
 					'type'     => 'pb-button',
 					'label'    => __('Button', 'premium-blocks-for-gutenberg'),
-					'category' => 'new',
+					'category' => array(
+                        "all","seo","form"
+                    ),
 				),
 				'count-up'          => array(
 					'type'     => 'pb-button',
 					'label'    => __('Count Up', 'premium-blocks-for-gutenberg'),
-					'category' => 'new',
+					'category' => array(
+                        "all","creative"
+                    ),
 				),
 				'dual-heading'      => array(
 					'type'     => 'pb-button',
 					'label'    => __('Dual Heading', 'premium-blocks-for-gutenberg'),
-					'category' => 'new',
+					'category' => array(
+                        "all","creative"
+                    ),
 				),
 				'heading'          => array(
 					'type'     => 'pb-button',
 					'label'    => __('Heading', 'premium-blocks-for-gutenberg'),
-					'category' => 'new',
+					'category' =>array(
+                        "all","creative",
+                    ),
 				),
 				'icon'             => array(
 					'type'     => 'pb-button',
 					'label'    => __('Icon', 'premium-blocks-for-gutenberg'),
-					'category' => 'new',
+					'category' => array(
+                        "all","social"
+                    ),
 				),
 				'icon-box'         => array(
 					'type'     => 'pb-button',
 					'label'    => __('Icon Box', 'premium-blocks-for-gutenberg'),
-					'category' => 'new',
+					'category' => array(
+                        "all","creative"
+                    ),
 				),
 				'maps'             => array(
 					'type'     => 'pb-button',
 					'label'    => __('Google Maps', 'premium-blocks-for-gutenberg'),
-					'category' => 'all',
+					'category' => array(
+                        "all","core"
+                    ),
 				),
 				'pricing-table'     => array(
 					'type'     => 'pb-button',
 					'label'    => __('Pricing Table', 'premium-blocks-for-gutenberg'),
-					'category' => 'all',
+					'category' =>array(
+                        "all","creative"
+                    ),
 				),
 				'section'          => array(
 					'type'     => 'pb-button',
 					'label'    => __('Section', 'premium-blocks-for-gutenberg'),
-					'category' => 'all',
+					'category' => array(
+                        "all","content"
+                    ),
 				),
 				'testimonials'     => array(
 					'type'     => 'pb-button',
 					'label'    => __('Testimonials', 'premium-blocks-for-gutenberg'),
-					'category' => 'all',
+					'category' => array(
+                        "all","creative"
+                    ),
 				),
 				'video-box'        => array(
 					'type'     => 'pb-button',
 					'label'    => __('Video Box', 'premium-blocks-for-gutenberg'),
-					'category' => 'all',
+					'category' => array(
+                        "all","creative",'social'
+                    ),
 				),
 				'fancy-text'        => array(
 					'type'     => 'pb-button',
 					'label'    => __('Fancy Text', 'premium-blocks-for-gutenberg'),
-					'category' => 'all',
+					'category' => array(
+                        "all","post"
+                    ),
 				),
 				'lottie'           => array(
 					'type'     => 'pb-button',
 					'label'    => __('Lottie Animation', 'premium-blocks-for-gutenberg'),
-					'category' => 'all',
+					'category' => array(
+                        "all","creative"
+                    ),
 				),
 				'Modal'            => array(
 					'type'     => 'pb-button',
 					'label'    => __('Modal Box', 'premium-blocks-for-gutenberg'),
-					'category' => 'all',
+					'category' => array(
+                        "all","creative",'form'
+                    ),
 				),
 				'image-separator'          => array(
 					'type'     => 'pb-button',
 					'label'    => __('Image Separator', 'premium-blocks-for-gutenberg'),
-					'category' => 'all',
+					'category' => 'all',array(
+                        "all","content"
+                    ),
 				),
 				'bullet-list'       => array(
 					'type'     => 'pb-button',
 					'label'    => __('Bullet List', 'premium-blocks-for-gutenberg'),
-					'category' => 'all',
+					'category' => 'all',array(
+                        "all","social",'content'
+                    ),
 				),
 				'person'             => array(
 					'type'     => 'pb-button',
 					'label'    => __('Team Members', 'premium-blocks-for-gutenberg'),
-					'category' => 'new',
+					'category' => array(
+                        "all","content"
+                    ),
 				),
 				'search'           => array(
 					'type'     => 'pb-button',
 					'label'    => __('Search', 'premium-blocks-for-gutenberg'),
-					'category' => 'creative',
+					'category' => array(
+                        "all","core"
+                    ),
 				),
 				'trigger'          => array(
 					'type'     => 'pb-button',
 					'label'    => __('Trigger', 'premium-blocks-for-gutenberg'),
-					'category' => 'creative',
+					'category' => array(
+                        "all","core"
+                    ),
 				),
 				'row'              => array(
 					'type'     => 'pb-button',
 					'label'    => __('Row', 'premium-blocks-for-gutenberg'),
-					'category' => 'creative',
+					'category' => array(
+                        "all","content","post"
+                    ),
 				),
 				'breadcrumbs'      => array(
 					'type'     => 'pb-button',
 					'label'    => __('Breadcrumbs', 'premium-blocks-for-gutenberg'),
-					'category' => 'creative',
+					'category' =>array(
+                        "all","core"
+                    ),
 				),
 				'content-switcher' => array(
 					'type'     => 'pb-button',
 					'label'    => __('Content Switcher', 'premium-blocks-for-gutenberg'),
-					'category' => 'creative',
+					'category' => array(
+                        "all","post"
+                    ),
 				),
 			);
 			return apply_filters('pb_panel_options', $options);

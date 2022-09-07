@@ -17,6 +17,7 @@ const SingleOption = (props) => {
     const [value, setValue] = useState(props.value);
     const [isLoading, setIsLoading] = useState(false);
 
+
     const handleChange = async () => {
         setIsLoading(true);
 
@@ -35,7 +36,6 @@ const SingleOption = (props) => {
             if (response.status === 200) {
                 const { success, data } = await response.json()
 
-                console.log("data", data.values)
                 if (success && data.values) {
                     setValue(newValue);
                     props.onChange(data.values);
@@ -50,6 +50,7 @@ const SingleOption = (props) => {
     };
 
     let checked = value === true ? true : false
+
 
     return <div id={props.id} className="pb-option-element">
         <div className="pb-option-element-body">
