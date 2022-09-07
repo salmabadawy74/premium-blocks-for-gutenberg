@@ -348,7 +348,8 @@
             "default": {
                 "Desktop": 0,
                 "Tablet": 0,
-                "Mobile": 0
+                "Mobile": 0,
+                "unit": "deg"
             }
         },
         "iconStyles": {

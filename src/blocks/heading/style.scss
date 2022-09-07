@@ -77,7 +77,9 @@ $pbBorderColor: #e1e1e1;
     }
 
     .style2 {
-        border-bottom: 3px solid #6ec1e4 !important;
+        border-bottom-style: solid !important;
+        border-bottom-width: 3px !important ;
+        border-bottom-color: #6ec1e4;
         overflow: hidden;
 
         .premium-title-center {
@@ -94,7 +96,9 @@ $pbBorderColor: #e1e1e1;
     }
 
     .style4 {
-        border-bottom: 3px solid #6ec1e4 !important;
+        border-bottom-style: solid !important;
+        border-bottom-width: 3px !important ;
+        border-bottom-color: #6ec1e4;
 
         .left {
             justify-content: flex-start !important;
@@ -110,7 +114,9 @@ $pbBorderColor: #e1e1e1;
     }
 
     .style5 {
-        border-bottom: 3px solid #6ec1e4 !important;
+        border-bottom-style: solid !important;
+        border-bottom-width: 3px !important ;
+        border-bottom-color: #6ec1e4;
 
         .premium-title-center {
             align-items: center !important;
@@ -126,7 +132,9 @@ $pbBorderColor: #e1e1e1;
     }
 
     .style6 {
-        border-bottom: 3px solid #6ec1e4 !important;
+        border-bottom-style: solid !important;
+        border-bottom-width: 3px !important ;
+        border-bottom-color: #6ec1e4;
 
         .premium-title-center {
             align-items: center !important;
@@ -312,7 +320,9 @@ $pbBorderColor: #e1e1e1;
 }
 
 .premium-title-style1__wrap {
-    border-left: 3px solid #6ec1e4 !important;
+    border-left-style: solid !important;
+    border-left-width: 3px !important ;
+    border-left-color: #6ec1e4;
     display: -webkit-inline-box;
     display: -moz-inline-box;
 }
@@ -336,6 +346,7 @@ $pbBorderColor: #e1e1e1;
 .premium-title-icon {
     font-style: normal !important;
     font-size: 40px;
+    vertical-align: initial !important;
 }
 
 .style3 {

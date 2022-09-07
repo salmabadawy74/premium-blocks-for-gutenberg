@@ -6287,7 +6287,7 @@ class PBG_Blocks_Helper
 			$rotate_text = $attr['rotateText'];
 			$value       = $css->render_range($rotate_text, 'Desktop');
 			$css->set_selector($unique_id . ' > .premium-title-bg-text:before');
-			$css->add_property('transform', "rotate({$value}deg)!important");
+			$css->add_property('transform', "rotate({$value})!important");
 		}
 
 		if (isset($attr['strokeFull'])) {
@@ -6428,7 +6428,7 @@ class PBG_Blocks_Helper
 			$rotate_text = $attr['rotateText'];
 			$value       = $css->render_range($rotate_text, 'Tablet');
 			$css->set_selector($unique_id . ' > .premium-title-bg-text:before');
-			$css->add_property('transform', "rotate({$value}deg)!important");
+			$css->add_property('transform', "rotate({$value})!important");
 		}
 
 		if (isset($attr['strokeFull'])) {
@@ -6570,7 +6570,7 @@ class PBG_Blocks_Helper
 			$rotate_text = $attr['rotateText'];
 			$value       = $css->render_range($rotate_text, 'Mobile');
 			$css->set_selector($unique_id . ' > .premium-title-bg-text:before');
-			$css->add_property('transform', "rotate({$value}deg)!important");
+			$css->add_property('transform', "rotate({$value})!important");
 		}
 
 		if (isset($attr['strokeFull'])) {
