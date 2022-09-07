@@ -20,7 +20,7 @@ import InsideTabs from "../../components/InsideTabs";
 import InsideTab from "../../components/InsideTab";
 import Icons from "../../components/icons";
 import WebfontLoader from "../../components/typography/fontLoader";
-import {gradientBackground,borderCss,paddingCss,marginCss,typographyCss,generateBlockId,generateCss} from "../../components/HelperFunction";
+import { gradientBackground, borderCss, paddingCss, marginCss, typographyCss, generateBlockId, generateCss } from "../../components/HelperFunction";
 
 const { __ } = wp.i18n;
 const { PanelBody, SelectControl, ToggleControl, TextControl } = wp.components;
@@ -550,7 +550,7 @@ function Edit(props) {
                     <InspectorTab key={"style"}>
                         {iconChecked && (
                             <PanelBody
-                                title={__("Icon", "premium-blocks-for-gutenberg")}
+                                title={__("Icon/Image", "premium-blocks-for-gutenberg")}
                                 className="premium-panel-body"
                                 initialOpen={true}
                             >
@@ -570,29 +570,33 @@ function Edit(props) {
                                     units={["px", "em", "rem"]}
                                     defaultValue={40}
                                 />
-                                <AdvancedPopColorControl
-                                    label={__(
-                                        "Color",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                    colorValue={iconColor}
-                                    colorDefault={""}
-                                    onColorChange={(newValue) =>
-                                        setAttributes({
-                                            iconColor: newValue,
-                                        })
-                                    }
-                                />
-                                <AdvancedPopColorControl
-                                    label={__(`Background Color`, "premium-blocks-for-gutenberg")}
-                                    colorValue={iconBackColor}
-                                    onColorChange={(newvalue) =>
-                                        setAttributes({
-                                            iconBackColor: newvalue,
-                                        })
-                                    }
-                                    colorDefault={``}
-                                />
+                                {"icon" === iconImage &&
+                                    <Fragment>
+                                        <AdvancedPopColorControl
+                                            label={__(
+                                                "Color",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                            colorValue={iconColor}
+                                            colorDefault={""}
+                                            onColorChange={(newValue) =>
+                                                setAttributes({
+                                                    iconColor: newValue,
+                                                })
+                                            }
+                                        />
+                                        <AdvancedPopColorControl
+                                            label={__(`Background Color`, "premium-blocks-for-gutenberg")}
+                                            colorValue={iconBackColor}
+                                            onColorChange={(newvalue) =>
+                                                setAttributes({
+                                                    iconBackColor: newvalue,
+                                                })
+                                            }
+                                            colorDefault={``}
+                                        />
+                                    </Fragment>
+                                }
                                 <SelectControl
                                     label={__(
                                         "Hover Effect",
@@ -1016,181 +1020,183 @@ function Edit(props) {
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
-        <style>{loadStyles()}</style>
-        <div
-            {...useBlockProps({
-                className: classnames(
-                    className,
-                    `premium-icon-box ${blockId} premium-icon-box-${iconPos} premium-icon-box-${iconHPos}`,
-                    {
-                        " premium-desktop-hidden": hideDesktop,
-                        " premium-tablet-hidden": hideTablet,
-                        " premium-mobile-hidden": hideMobile,
-                    }
-                ),
-            })}
-            style={{
-                textAlign: align[props.deviceType],
-                ...borderCss(containerBorder, props.deviceType),
-                ...paddingCss(containerPadding, props.deviceType),
-                ...marginCss(containerMargin, props.deviceType),
-                ...gradientBackground(containerBackground),
-            }}
-        >
-            {iconChecked && (
-                <div
-                    className={`premium-icon-box__icon_wrap premium-icon-box__icon_${iconVPos}`}
-                >
-                    {"icon" === iconImage && (
-                        <Fragment>
-                            {iconType === "fa" &&
-                                1 != FontAwesomeEnabled && (
-                                    <p
-                                        className={`premium-icon-box__alert`}
-                                    >
-                                        {__(
-                                            "Please Enable Font Awesome Icons from Plugin settings"
-                                        )}
-                                    </p>
-                                )}
-                            {(iconType === "dash" ||
-                                1 == FontAwesomeEnabled) && (
-                                    <i
-                                        alt={`icon-box`}
-                                        className={`${selectedIcon} premium-icon-box__icon premium-icon__${hoverEffect}`}
-                                        style={{
-                                            color: iconColor,
-                                            backgroundColor: iconBackColor,
-                                            fontSize:
-                                                (iconSize[
-                                                    props.deviceType
-                                                ] || 40) + iconSize.unit,
-                                        }}
-                                    />
-                                )}
-                        </Fragment>
-                    )}
-                    {"image" === iconImage && iconImgUrl && (
-                        <img
-                            className={`premium-icon-box__icon premium-icon__${hoverEffect}`}
-                            src={`${iconImgUrl}`}
-                            alt="Image Icon"
+            <style>{loadStyles()}</style>
+            <div
+                {...useBlockProps({
+                    className: classnames(
+                        className,
+                        `premium-icon-box ${blockId} premium-icon-box-${iconPos} premium-icon-box-${iconHPos}`,
+                        {
+                            " premium-desktop-hidden": hideDesktop,
+                            " premium-tablet-hidden": hideTablet,
+                            " premium-mobile-hidden": hideMobile,
+                        }
+                    ),
+                })}
+                style={{
+                    textAlign: align[props.deviceType],
+                    ...borderCss(containerBorder, props.deviceType),
+                    ...paddingCss(containerPadding, props.deviceType),
+                    ...marginCss(containerMargin, props.deviceType),
+                    ...gradientBackground(containerBackground),
+                }}
+            >
+                {iconChecked && (
+                    <div
+                        className={`premium-icon-box__icon_wrap premium-icon-box__icon_${iconVPos}`}
+                    >
+                        {"icon" === iconImage && (
+                            <Fragment>
+                                {iconType === "fa" &&
+                                    1 != FontAwesomeEnabled && (
+                                        <p
+                                            className={`premium-icon-box__alert`}
+                                        >
+                                            {__(
+                                                "Please Enable Font Awesome Icons from Plugin settings"
+                                            )}
+                                        </p>
+                                    )}
+                                {(iconType === "dash" ||
+                                    1 == FontAwesomeEnabled) && (
+                                        <i
+                                            alt={`icon-box`}
+                                            className={`${selectedIcon} premium-icon-box__icon premium-icon__${hoverEffect}`}
+                                            style={{
+                                                color: iconColor,
+                                                backgroundColor: iconBackColor,
+                                                fontSize:
+                                                    (iconSize[
+                                                        props.deviceType
+                                                    ] || 40) + iconSize.unit,
+                                            }}
+                                        />
+                                    )}
+                            </Fragment>
+                        )}
+                        {"image" === iconImage && iconImgUrl && (
+                            <img
+                                className={`premium-icon-box__icon premium-icon__${hoverEffect}`}
+                                src={`${iconImgUrl}`}
+                                alt="Image Icon"
+                                style={{
+                                    width:
+                                        (iconSize[props.deviceType] ||
+                                            40) + iconSize.unit,
+                                    height:
+                                        (iconSize[props.deviceType] ||
+                                            40) + iconSize.unit,
+                                    borderRadius: iconRadius + "px",
+                                    maxWidth: (iconSize[props.deviceType] ||
+                                        40) + iconSize.unit,
+                                }}
+                            />
+                        )}
+                    </div>
+                )}
+                <div className={`premium-icon-box__content_wrap`}>
+                    {titleChecked && titleText && (
+                        <div
+                            className={`premium-icon-box__title_wrap`}
                             style={{
-                                width:
-                                    (iconSize[props.deviceType] ||
-                                        40) + iconSize.unit,
-                                height:
-                                    (iconSize[props.deviceType] ||
-                                        40) + iconSize.unit,
-                                borderRadius: iconRadius + "px",
+                                ...marginCss(
+                                    titleMargin,
+                                    props.deviceType
+                                ),
                             }}
-                        />
+                        >
+                            <RichText
+                                tagName={titleTag.toLowerCase()}
+                                className={`premium-icon-box__title`}
+                                onChange={(newText) =>
+                                    setAttributes({ titleText: newText })
+                                }
+                                placeholder={__("Awesome Title")}
+                                value={titleText}
+                                style={{
+                                    ...typographyCss(
+                                        titleTypography,
+                                        props.deviceType
+                                    ),
+                                    color: titleStyles[0].titleColor,
+                                    textShadow: `${titleShadow.horizontal || 0
+                                        }px ${titleShadow.vertical || 0}px ${titleShadow.blur || 0
+                                        }px ${titleShadow.color}`,
+                                }}
+                                keepPlaceholderOnFocus
+                            />
+                        </div>
+                    )}
+                    {descChecked && descText && (
+                        <div
+                            className={`premium-icon-box__desc_wrap`}
+                            style={{
+                                ...marginCss(descMargin, props.deviceType),
+                            }}
+                        >
+                            <RichText
+                                tagName="p"
+                                className={`premium-icon-box__desc`}
+                                value={descText}
+                                placeholder="Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
+                                onChange={(newText) =>
+                                    setAttributes({ descText: newText })
+                                }
+                                style={{
+                                    ...typographyCss(
+                                        descTypography,
+                                        props.deviceType
+                                    ),
+                                    color: descStyles[0].descColor,
+                                }}
+                                keepPlaceholderOnFocus
+                            />
+                        </div>
+                    )}
+                    {btnChecked && btnText && (
+                        <div
+                            className={`premium-icon-box__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
+                            style={{
+                                ...marginCss(btnMargin, props.deviceType),
+                            }}
+                        >
+                            <RichText
+                                tagName="a"
+                                className={`premium-icon-box__btn premium-button`}
+                                onChange={(newText) =>
+                                    setAttributes({ btnText: newText })
+                                }
+                                placeholder={__("Click Here")}
+                                value={btnText}
+                                style={{
+                                    ...typographyCss(
+                                        btnTypography,
+                                        props.deviceType
+                                    ),
+                                    ...borderCss(
+                                        btnBorder,
+                                        props.deviceType
+                                    ),
+                                    ...paddingCss(
+                                        btnPadding,
+                                        props.deviceType
+                                    ),
+                                    color: btnStyles[0].btnColor,
+                                    backgroundColor: btnStyles[0].btnBack,
+                                    boxShadow: `${btnShadow.horizontal || 0
+                                        }px ${btnShadow.vertical || 0}px ${btnShadow.blur || 0
+                                        }px ${btnShadow.color} ${btnShadow.position
+                                        }`,
+                                }}
+                                keepPlaceholderOnFocus
+                            />
+                        </div>
                     )}
                 </div>
-            )}
-            <div className={`premium-icon-box__content_wrap`}>
-                {titleChecked && titleText && (
-                    <div
-                        className={`premium-icon-box__title_wrap`}
-                        style={{
-                            ...marginCss(
-                                titleMargin,
-                                props.deviceType
-                            ),
-                        }}
-                    >
-                        <RichText
-                            tagName={titleTag.toLowerCase()}
-                            className={`premium-icon-box__title`}
-                            onChange={(newText) =>
-                                setAttributes({ titleText: newText })
-                            }
-                            placeholder={__("Awesome Title")}
-                            value={titleText}
-                            style={{
-                                ...typographyCss(
-                                    titleTypography,
-                                    props.deviceType
-                                ),
-                                color: titleStyles[0].titleColor,
-                                textShadow: `${titleShadow.horizontal || 0
-                                    }px ${titleShadow.vertical || 0}px ${titleShadow.blur || 0
-                                    }px ${titleShadow.color}`,
-                            }}
-                            keepPlaceholderOnFocus
-                        />
-                    </div>
-                )}
-                {descChecked && descText && (
-                    <div
-                        className={`premium-icon-box__desc_wrap`}
-                        style={{
-                            ...marginCss(descMargin, props.deviceType),
-                        }}
-                    >
-                        <RichText
-                            tagName="p"
-                            className={`premium-icon-box__desc`}
-                            value={descText}
-                            placeholder="Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
-                            onChange={(newText) =>
-                                setAttributes({ descText: newText })
-                            }
-                            style={{
-                                ...typographyCss(
-                                    descTypography,
-                                    props.deviceType
-                                ),
-                                color: descStyles[0].descColor,
-                            }}
-                            keepPlaceholderOnFocus
-                        />
-                    </div>
-                )}
-                {btnChecked && btnText && (
-                    <div
-                        className={`premium-icon-box__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}
-                        style={{
-                            ...marginCss(btnMargin, props.deviceType),
-                        }}
-                    >
-                        <RichText
-                            tagName="a"
-                            className={`premium-icon-box__btn premium-button`}
-                            onChange={(newText) =>
-                                setAttributes({ btnText: newText })
-                            }
-                            placeholder={__("Click Here")}
-                            value={btnText}
-                            style={{
-                                ...typographyCss(
-                                    btnTypography,
-                                    props.deviceType
-                                ),
-                                ...borderCss(
-                                    btnBorder,
-                                    props.deviceType
-                                ),
-                                ...paddingCss(
-                                    btnPadding,
-                                    props.deviceType
-                                ),
-                                color: btnStyles[0].btnColor,
-                                backgroundColor: btnStyles[0].btnBack,
-                                boxShadow: `${btnShadow.horizontal || 0
-                                    }px ${btnShadow.vertical || 0}px ${btnShadow.blur || 0
-                                    }px ${btnShadow.color} ${btnShadow.position
-                                    }`,
-                            }}
-                            keepPlaceholderOnFocus
-                        />
-                    </div>
-                )}
+                {loadTitleGoogleFonts}
+                {loadDescriptionGoogleFonts}
+                {loadButtonGoogleFonts}
             </div>
-            {loadTitleGoogleFonts}
-            {loadDescriptionGoogleFonts}
-            {loadButtonGoogleFonts}
-        </div>
         </Fragment>
     );
 }

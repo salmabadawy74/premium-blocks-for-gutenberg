@@ -85,6 +85,11 @@ const save = props => {
                     }
                 ),
             })}
+            style={filterJsCss({
+                borderStyle: containerBorder.borderType,
+                borderColor: containerBorder.borderColor,
+                ...gradientBackground(containerBackground),
+            })}
         >
             <style
                 dangerouslySetInnerHTML={{
@@ -93,11 +98,6 @@ const save = props => {
             />
             <div
                 className={`premium-icon-box-container`}
-                style={filterJsCss({
-                    borderStyle: containerBorder.borderType,
-                    borderColor: containerBorder.borderColor,
-                    ...gradientBackground(containerBackground),
-                })}
             >
                 {iconChecked && (
                     <div className={`premium-icon-box__icon_wrap premium-icon-box__icon_${iconVPos}`}>

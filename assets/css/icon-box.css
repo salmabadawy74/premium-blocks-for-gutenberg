@@ -235,6 +235,12 @@
   display: -moz-flex;
   display: -ms-flex;
   display: flex; }
+  .premium-icon-box-inline .premium-icon-box-container {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: flex; }
   .premium-icon-box-inline .premium-icon-box__icon_wrap {
     display: -ms-flexbox;
     display: -webkit-flex;
@@ -252,6 +258,11 @@
 .premium-icon-box__icon_wrap i {
   font-size: 40px;
   border-radius: 10px; }
+
+.premium-icon-box__icon_wrap img {
+  width: 40px;
+  height: 40px;
+  max-width: 40px; }
 
 /************ Responsive **************/
 @media (min-width: 977px) {

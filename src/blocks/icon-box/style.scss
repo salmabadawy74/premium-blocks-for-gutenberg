@@ -326,6 +326,14 @@
     display: -ms-flex;
     display: flex;
 
+    .premium-icon-box-container {
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: flex;
+    }
+
     .premium-icon-box__icon_wrap {
         display: -ms-flexbox;
         display: -webkit-flex;
@@ -353,6 +361,11 @@
     i {
         font-size: 40px;
         border-radius: 10px;
+    }
+    img {
+        width: 40px;
+        height: 40px;
+        max-width: 40px;
     }
 }
 

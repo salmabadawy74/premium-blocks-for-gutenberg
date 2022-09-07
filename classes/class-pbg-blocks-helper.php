@@ -2585,6 +2585,7 @@ class PBG_Blocks_Helper
 			$css->set_selector('.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__icon_wrap' . '> img');
 			$css->add_property('width', $css->render_range($attr['iconSize'], 'Desktop'));
 			$css->add_property('height', $css->render_range($attr['iconSize'], 'Desktop'));
+			$css->add_property('max-width', $css->render_range($attr['iconSize'], 'Desktop'));
 		}
 
 		// title style
@@ -2651,14 +2652,14 @@ class PBG_Blocks_Helper
 		if (isset($attr['containerMargin'])) {
 			$container_margin = $attr['containerMargin'];
 
-			$css->set_selector('.' . $unique_id . ' > .premium-icon-box-container');
+			$css->set_selector('.' . $unique_id);
 			$css->add_property('margin', $css->render_spacing($container_margin['Desktop'], $container_margin['unit']));
 		}
 
 		if (isset($attr['containerPadding'])) {
 			$container_padding = $attr['containerPadding'];
 
-			$css->set_selector('.' . $unique_id . ' > .premium-icon-box-container');
+			$css->set_selector('.' . $unique_id);
 			$css->add_property('padding', $css->render_spacing($container_padding['Desktop'], $container_padding['unit']));
 		}
 
@@ -2667,7 +2668,7 @@ class PBG_Blocks_Helper
 			$container_border_width  = $container_border['borderWidth'];
 			$container_border_radius = $container_border['borderRadius'];
 
-			$css->set_selector('.' . $unique_id . ' > .premium-icon-box-container');
+			$css->set_selector('.' . $unique_id);
 			$css->add_property('border-width', $css->render_spacing($container_border_width['Desktop'], 'px'));
 			$css->add_property('border-radius', $css->render_spacing($container_border_radius['Desktop'], 'px'));
 		}
@@ -2683,6 +2684,7 @@ class PBG_Blocks_Helper
 			$css->set_selector('.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__icon_wrap' . '> img');
 			$css->add_property('width', $css->render_range($attr['iconSize'], 'Tablet'));
 			$css->add_property('height', $css->render_range($attr['iconSize'], 'Tablet'));
+			$css->add_property('max-width', $css->render_range($attr['iconSize'], 'Tablet'));
 		}
 
 		// title style
@@ -2747,14 +2749,14 @@ class PBG_Blocks_Helper
 		if (isset($attr['containerMargin'])) {
 			$container_margin = $attr['containerMargin'];
 
-			$css->set_selector('.' . $unique_id . ' > .premium-icon-box-container');
+			$css->set_selector('.' . $unique_id);
 			$css->add_property('margin', $css->render_spacing($container_margin['Tablet'], $container_margin['unit']));
 		}
 
 		if (isset($attr['containerPadding'])) {
 			$container_padding = $attr['containerPadding'];
 
-			$css->set_selector('.' . $unique_id . ' > .premium-icon-box-container');
+			$css->set_selector('.' . $unique_id);
 			$css->add_property('padding', $css->render_spacing($container_padding['Tablet'], $container_padding['unit']));
 		}
 
@@ -2763,7 +2765,7 @@ class PBG_Blocks_Helper
 			$container_border_width  = $container_border['borderWidth'];
 			$container_border_radius = $container_border['borderRadius'];
 
-			$css->set_selector('.' . $unique_id . ' > .premium-icon-box-container');
+			$css->set_selector('.' . $unique_id );
 			$css->add_property('border-width', $css->render_spacing($container_border_width['Tablet'], 'px'));
 			$css->add_property('border-radius', $css->render_spacing($container_border_radius['Tablet'], 'px'));
 		}
@@ -2780,6 +2782,7 @@ class PBG_Blocks_Helper
 			$css->set_selector('.' . $unique_id . ' > .premium-icon-box-container' . '> .premium-icon-box__icon_wrap' . '> img');
 			$css->add_property('width', $css->render_range($attr['iconSize'], 'Mobile'));
 			$css->add_property('height', $css->render_range($attr['iconSize'], 'Mobile'));
+			$css->add_property('max-width', $css->render_range($attr['iconSize'], 'Mobile'));
 		}
 
 		// title style
@@ -2844,14 +2847,14 @@ class PBG_Blocks_Helper
 		if (isset($attr['containerMargin'])) {
 			$container_margin = $attr['containerMargin'];
 
-			$css->set_selector('.' . $unique_id . ' > .premium-icon-box-container');
+			$css->set_selector('.' . $unique_id);
 			$css->add_property('margin', $css->render_spacing($container_margin['Mobile'], $container_margin['unit']));
 		}
 
 		if (isset($attr['containerPadding'])) {
 			$container_padding = $attr['containerPadding'];
 
-			$css->set_selector('.' . $unique_id . ' > .premium-icon-box-container');
+			$css->set_selector('.' . $unique_id);
 			$css->add_property('padding', $css->render_spacing($container_padding['Mobile'], $container_padding['unit']));
 		}
 
@@ -2860,7 +2863,7 @@ class PBG_Blocks_Helper
 			$container_border_width  = $container_border['borderWidth'];
 			$container_border_radius = $container_border['borderRadius'];
 
-			$css->set_selector('.' . $unique_id . ' > .premium-icon-box-container');
+			$css->set_selector('.' . $unique_id );
 			$css->add_property('border-width', $css->render_spacing($container_border_width['Mobile'], 'px'));
 			$css->add_property('border-radius', $css->render_spacing($container_border_radius['Mobile'], 'px'));
 		}
