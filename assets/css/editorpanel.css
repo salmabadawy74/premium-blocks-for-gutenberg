@@ -225,6 +225,7 @@
       color: #8d96a0; }
 
 .premium-placeholder-image {
+  position: relative;
   -js-display: flex;
   display: -webkit-box;
   display: -webkit-flex;
@@ -240,6 +241,7 @@
   flex-direction: column;
   -webkit-box-align: center;
   -webkit-align-items: center;
+  justify-content: center;
   -moz-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -248,9 +250,41 @@
   text-align: center;
   background: #ffffff;
   cursor: copy;
-  border-radius: 5px; }
-  .premium-placeholder-image span {
-    margin-top: 8px; }
+  border-radius: 5px;
+  overflow: hidden;
+  transition: all 1s ease-in-out;
+  background-image: url(../img/placeholder.png);
+  background-size: cover;
+  background-position: center;
+  width: 250px;
+  height: 120px;
+  margin-bottom: 20px;
+  background-repeat: no-repeat; }
+  .premium-placeholder-image .premium-blocks-control-media__tools {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 27px;
+    background-color: rgba(109, 120, 130, 0.85);
+    font-size: 11px;
+    -webkit-transition: background 1s;
+    -o-transition: background 1s;
+    transition: background 1s; }
+  .premium-placeholder-image:not(:hover) .premium-blocks-control-media__tools {
+    bottom: -30px; }
+  .premium-placeholder-image:hover::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    pointer-events: none; }
 
 .lottie-remove {
   display: block;
@@ -269,7 +303,7 @@
   transition-property: background, color, opacity, -webkit-box-shadow;
   -o-transition-property: background, color, box-shadow, opacity;
   transition-property: background, color, box-shadow, opacity;
-  transition-property: background, color, box-shadow, opacity, -webkit-box-shadow;
+  transition-property: background, color, box-shadow, opacity, -webkit-box-shadow;
   -webkit-transition-duration: 0.3s;
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
@@ -318,7 +352,7 @@
   transition-property: background, color, opacity, -webkit-box-shadow;
   -o-transition-property: background, color, box-shadow, opacity;
   transition-property: background, color, box-shadow, opacity;
-  transition-property: background, color, box-shadow, opacity, -webkit-box-shadow;
+  transition-property: background, color, box-shadow, opacity, -webkit-box-shadow;
   -webkit-transition-duration: 0.3s;
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s; }
@@ -413,7 +447,7 @@
   margin-left: 10px; }
 
 .rfipbtn {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 14px;
   line-height: 1.71429;
   vertical-align: baseline;
@@ -452,7 +486,7 @@
     font-size: 14px; }
 
 .rfipdropdown {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 14px;
   line-height: 1.71429;
   vertical-align: baseline;
@@ -3288,7 +3322,7 @@ i.fipicon-angle-left:before {
     border: 1px solid #ddd !important;
     border-radius: 3px !important;
     box-shadow: 0 0 0 0 transparent;
-    transition: box-shadow 0.1s linear, background 0.1s linear, border-radius 0.1s linear, border-color 0.1s linear; }
+    transition: box-shadow 0.1s linear, background 0.1s linear, border-radius 0.1s linear, border-color 0.1s linear; }
 
 .premium-color-popover-container .premium-advanced-color-container {
   display: flex;
