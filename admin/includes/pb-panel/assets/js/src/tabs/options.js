@@ -1,5 +1,5 @@
 import { Fragment, useState } from "@wordpress/element";
-import classNames from "classnames";
+import { CheckboxControl } from '@wordpress/components';
 import Container from "../common/Container";
 import OptionsComponent from '../options-component'
 
@@ -8,10 +8,48 @@ const { Dashicon } = wp.components;
 
 const OptionsTab = (props) => {
     const [values, setValues] = useState(props.values);
+    const [isChecked, setChecked] = useState(false);
 
     const handleChange = (newValues) => {
         setValues(newValues)
     };
+
+    const handleDeactivated = async (val) => {
+        let newValue = { ...values };
+
+        if (val) {
+            for (let block in newValue) {
+                newValue[block] = false;
+
+
+            }
+            const body = new FormData()
+            body.append('action', 'pb-panel-update-option')
+            body.append('nonce', PremiumBlocksPanelData.nonce)
+            body.append('value', JSON.stringify(newValue));
+
+            try {
+                const response = await fetch(PremiumBlocksPanelData.ajaxurl, {
+                    method: 'POST',
+                    body,
+                })
+                if (response.status === 200) {
+                    const { success, data } = await response.json()
+
+                    if (success && data.values) {
+                        setValues(newValue);
+                    }
+
+                }
+            } catch (e) {
+                console.log(e);
+
+            }
+
+        }
+        setChecked(val)
+
+    }
 
     const tabs = [
         { name: 'All', slug: 'all' },
@@ -50,6 +88,11 @@ const OptionsTab = (props) => {
                     ))}
                 </nav>
             </div>
+            <CheckboxControl
+                label="Activate All Blocks"
+                checked={isChecked}
+                onChange={(val) => handleDeactivated(val)}
+            />
             <div className='advanced-options options-section'>
                 <OptionsComponent options={options} values={values} onChange={(newVal, optionId) => {
                     handleChange(newVal, optionId)
