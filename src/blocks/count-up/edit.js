@@ -46,7 +46,6 @@ function Edit(props) {
         prefix,
         suffix,
         icon,
-        iconSpacing,
         imageID,
         imageURL,
         iconType,
@@ -261,15 +260,6 @@ function Edit(props) {
                                 value={flexDir}
                                 onChange={newDir => setAttributes({ flexDir: newDir })}
                             />
-                            {("row" === flexDir || "row-reverse" === flexDir) && (
-                                <ResponsiveSingleRangeControl
-                                    label={__("Spacing", 'premium-blocks-for-gutenberg')}
-                                    value={iconSpacing}
-                                    onChange={newValue => setAttributes({ iconSpacing: newValue })}
-                                    showUnit={false}
-                                    defaultValue={0}
-                                />
-                            )}
                             <ToggleControl
                                 label={__("Icon", 'premium-blocks-for-gutenberg')}
                                 checked={iconCheck}
@@ -552,7 +542,7 @@ function Edit(props) {
                 {...useBlockProps({
                     className: classnames(
                         className,
-                        `${blockId} premium-countup__wrap`,
+                        `${blockId} premium-countup__wrap premium-countup__${flexDir}`,
                         {
                             " premium-desktop-hidden": hideDesktop,
                             " premium-tablet-hidden": hideTablet,
@@ -573,19 +563,8 @@ function Edit(props) {
                     <div
                         className={`premium-countup__icon_wrap`}
                         style={{
-                            marginRight:
-                                "row" === flexDir || "row-reverse" === flexDir
-                                    ? iconSpacing + "px"
-                                    : "0",
-                            marginLeft:
-                                "row" === flexDir || "row-reverse" === flexDir
-                                    ? iconSpacing + "px"
-                                    : "0",
-                            alignSelf:
-                                "row-reverse" === flexDir || "row" === flexDir
-                                    ? "center"
-                                    : selfAlign?.[props.deviceType],
-                            ...marginCss(iconMargin, props.deviceType)
+                            ...marginCss(iconMargin, props.deviceType),
+                            alignSelf: (flexDir == "row" || flexDir == "row-reverse") ? "center" : selfAlign?.[props.deviceType]
                         }}
                     >
                         {"icon" === icon && (

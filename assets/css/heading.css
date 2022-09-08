@@ -189,7 +189,8 @@
 
 .premium-title-icon {
   font-style: normal !important;
-  font-size: 40px; }
+  font-size: 40px;
+  vertical-align: initial !important; }
 
 .style3 .after {
   display: flex; }

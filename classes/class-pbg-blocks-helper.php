@@ -1734,7 +1734,8 @@ class PBG_Blocks_Helper
 		}
 		if (isset($attr['selfAlign'])) {
 			$align      = $css->get_responsive_css($attr['selfAlign'], 'Desktop');
-			$flex_align = 'row-reverse' === $attr['flexDir'] || 'row' === $attr['flexDir'] ? 'center' : $align;
+			$flex_align = ($attr['flexDir'] == 'row-reverse' ? 'center' : $align);
+			$flex_align = ($attr['flexDir'] == 'row'  ? 'center' : $flex_align);
 
 			$css->set_selector($unique_id . ' .premium-countup__icon_wrap ');
 			$css->add_property('align-self', $flex_align);
@@ -1840,7 +1841,8 @@ class PBG_Blocks_Helper
 		}
 		if (isset($attr['selfAlign'])) {
 			$align      = $css->get_responsive_css($attr['selfAlign'], 'Tablet');
-			$flex_align = 'row-reverse' === $attr['flexDir'] || 'row' === $attr['flexDir'] ? 'center' : $align;
+			$flex_align = ($attr['flexDir'] == 'row-reverse' ? 'center' : $align);
+			$flex_align = ($attr['flexDir'] == 'row'  ? 'center' : $flex_align);
 
 			$css->set_selector($unique_id . ' .premium-countup__icon_wrap ');
 			$css->add_property('align-self', $flex_align);
@@ -1947,7 +1949,8 @@ class PBG_Blocks_Helper
 		}
 		if (isset($attr['selfAlign'])) {
 			$align      = $css->get_responsive_css($attr['selfAlign'], 'Mobile');
-			$flex_align = 'row-reverse' === $attr['flexDir'] || 'row' === $attr['flexDir'] ? 'center' : $align;
+			$flex_align = ($attr['flexDir'] == 'row-reverse' ? 'center' : $align);
+			$flex_align = ($attr['flexDir'] == 'row'  ? 'center' : $flex_align);
 
 			$css->set_selector($unique_id . ' .premium-countup__icon_wrap ');
 			$css->add_property('align-self', $flex_align);
