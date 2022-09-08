@@ -46,6 +46,45 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 		 * @return void
 		 */
 		public function register_pbg_global_settings() {
+			$responsive = array(
+				'type'       => 'object',
+				'properties' => array(
+					'Desktop' => array(
+						'type' => 'number',
+					),
+					'Tablet'  => array(
+						'type' => 'number',
+					),
+					'Mobile'  => array(
+						'type' => 'number',
+					),
+					'unit'    => array(
+						'type' => 'string',
+					),
+				),
+			);
+
+			$typography_default_values = array(
+				'fontWeight'     => array(
+					'type' => 'string',
+				),
+				'fontStyle'      => array(
+					'type' => 'string',
+				),
+				'textTransform'  => array(
+					'type' => 'string',
+				),
+				'fontFamily'     => array(
+					'type' => 'string',
+				),
+				'textDecoration' => array(
+					'type' => 'string',
+				),
+				'fontSize'       => $responsive,
+				'lineHeight'     => $responsive,
+				'letterSpacing'  => $responsive,
+			);
+
 			register_setting(
 				'pbg_global_settings',
 				'pbg_global_settings',
@@ -57,13 +96,57 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 							'type'       => 'object',
 							'properties' => array(
 								'typography'         => array(
-									'type' => 'object',
+									'type'       => 'object',
+									'properties' => array(
+										'heading1'  => array(
+											'type'       => 'object',
+											'properties' => $typography_default_values,
+										),
+										'heading2'  => array(
+											'type'       => 'object',
+											'properties' => $typography_default_values,
+										),
+										'heading3'  => array(
+											'type'       => 'object',
+											'properties' => $typography_default_values,
+										),
+										'heading4'  => array(
+											'type'       => 'object',
+											'properties' => $typography_default_values,
+										),
+										'heading5'  => array(
+											'type'       => 'object',
+											'properties' => $typography_default_values,
+										),
+										'heading6'  => array(
+											'type'       => 'object',
+											'properties' => $typography_default_values,
+										),
+										'button'    => array(
+											'type'       => 'object',
+											'properties' => $typography_default_values,
+										),
+										'paragraph' => array(
+											'type'       => 'object',
+											'properties' => $typography_default_values,
+										),
+									),
 								),
 								'colors'             => array(
-									'type' => 'object',
+									'type'       => 'object',
+									'properties' => array(
+										'headings' => array(
+											'type' => 'string',
+										),
+									),
 								),
 								'container-settings' => array(
-									'type' => 'object',
+									'type'       => 'object',
+									'properties' => array(
+										'tablet_breakpoint' => array(
+											'type' => 'string',
+										),
+									),
 								),
 							),
 						),

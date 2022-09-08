@@ -7,6 +7,7 @@ const ContainerSettingsScreen = props => {
             title={__('Container Settings')}
             description={__('Manage container default width and devices breakpoints.')}
         />
+
     </>
 }
 

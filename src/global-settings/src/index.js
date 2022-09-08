@@ -4,6 +4,7 @@ import { Fragment } from '@wordpress/element';
 import GlobalStylesUI from './ui';
 const { __ } = wp.i18n;
 import './style.scss';
+import { SettingsProvider } from './store/settings-store';
 
 const PluginSidebarTest = () => (
     <Fragment>
@@ -11,10 +12,11 @@ const PluginSidebarTest = () => (
             {__('Premium Blocks For Gutenberg')}
         </PluginSidebarMoreMenuItem>
         <PluginSidebar name="premium-sidebar" title={__('Premium Blocks For Gutenberg')}>
-            <GlobalStylesUI />
+            <SettingsProvider>
+                <GlobalStylesUI />
+            </SettingsProvider>
         </PluginSidebar>
     </Fragment>
 );
 
 registerPlugin('plugin-premium-blocks', { render: PluginSidebarTest });
-console.log('Premium Block Settings');

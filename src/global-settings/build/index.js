@@ -241,6 +241,242 @@ const typography = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElem
 
 /***/ }),
 
+/***/ "../components/HelperFunction.js":
+/*!***************************************!*\
+  !*** ../components/HelperFunction.js ***!
+  \***************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "animationAttr": function() { return /* binding */ animationAttr; },
+/* harmony export */   "borderCss": function() { return /* binding */ borderCss; },
+/* harmony export */   "filterJsCss": function() { return /* binding */ filterJsCss; },
+/* harmony export */   "generateBlockId": function() { return /* binding */ generateBlockId; },
+/* harmony export */   "generateCss": function() { return /* binding */ generateCss; },
+/* harmony export */   "gradientBackground": function() { return /* binding */ gradientBackground; },
+/* harmony export */   "gradientValue": function() { return /* binding */ gradientValue; },
+/* harmony export */   "marginCss": function() { return /* binding */ marginCss; },
+/* harmony export */   "paddingCss": function() { return /* binding */ paddingCss; },
+/* harmony export */   "typographyCss": function() { return /* binding */ typographyCss; },
+/* harmony export */   "videoBackground": function() { return /* binding */ videoBackground; }
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+const gradientBackground = value => {
+  const {
+    backgroundType,
+    backgroundColor,
+    backgroundRepeat,
+    backgroundPosition,
+    fixed,
+    backgroundSize,
+    gradientColorTwo,
+    gradientPosition,
+    gradientType,
+    gradientLocationOne,
+    gradientLocationTwo,
+    gradientAngle,
+    backgroundImageURL
+  } = value;
+  let btnGrad, btnGrad2, btnbg;
+
+  if (undefined !== backgroundType && "gradient" === backgroundType) {
+    btnGrad = "transparent" === backgroundColor || undefined === backgroundColor ? "rgba(255,255,255,0)" : backgroundColor;
+    btnGrad2 = undefined !== gradientColorTwo && undefined !== gradientColorTwo && "" !== gradientColorTwo ? gradientColorTwo : "#777";
+
+    if ("radial" === gradientType) {
+      btnbg = `radial-gradient(at ${gradientPosition}, ${btnGrad} ${gradientLocationOne}%, ${btnGrad2} ${gradientLocationTwo}%)`;
+    } else if ("radial" !== gradientType) {
+      btnbg = `linear-gradient(${gradientAngle}deg, ${btnGrad} ${gradientLocationOne}%, ${btnGrad2} ${gradientLocationTwo}%)`;
+    }
+  } else {
+    btnbg = backgroundImageURL ? `url('${backgroundImageURL}')` : "";
+  }
+
+  return {
+    backgroundColor: backgroundColor,
+    backgroundImage: gradientValue(value),
+    backgroundRepeat: backgroundRepeat,
+    backgroundPosition: backgroundPosition,
+    backgroundSize: backgroundSize,
+    backgroundAttachment: fixed ? "fixed" : "unset"
+  };
+};
+const borderCss = (value, device) => {
+  var _value$borderWidth, _value$borderWidth$de, _value$borderWidth2, _value$borderWidth2$d, _value$borderWidth3, _value$borderWidth3$d, _value$borderWidth4, _value$borderWidth4$d, _value$borderRadius, _value$borderRadius$d, _value$borderRadius2, _value$borderRadius2$, _value$borderRadius3, _value$borderRadius3$, _value$borderRadius4, _value$borderRadius4$;
+
+  return {
+    borderStyle: value === null || value === void 0 ? void 0 : value.borderType,
+    borderTopWidth: value === null || value === void 0 ? void 0 : (_value$borderWidth = value.borderWidth) === null || _value$borderWidth === void 0 ? void 0 : (_value$borderWidth$de = _value$borderWidth[device]) === null || _value$borderWidth$de === void 0 ? void 0 : _value$borderWidth$de.top,
+    borderRightWidth: value === null || value === void 0 ? void 0 : (_value$borderWidth2 = value.borderWidth) === null || _value$borderWidth2 === void 0 ? void 0 : (_value$borderWidth2$d = _value$borderWidth2[device]) === null || _value$borderWidth2$d === void 0 ? void 0 : _value$borderWidth2$d.right,
+    borderBottomWidth: value === null || value === void 0 ? void 0 : (_value$borderWidth3 = value.borderWidth) === null || _value$borderWidth3 === void 0 ? void 0 : (_value$borderWidth3$d = _value$borderWidth3[device]) === null || _value$borderWidth3$d === void 0 ? void 0 : _value$borderWidth3$d.bottom,
+    borderLeftWidth: value === null || value === void 0 ? void 0 : (_value$borderWidth4 = value.borderWidth) === null || _value$borderWidth4 === void 0 ? void 0 : (_value$borderWidth4$d = _value$borderWidth4[device]) === null || _value$borderWidth4$d === void 0 ? void 0 : _value$borderWidth4$d.left,
+    borderColor: value === null || value === void 0 ? void 0 : value.borderColor,
+    borderTopLeftRadius: `${(value === null || value === void 0 ? void 0 : (_value$borderRadius = value.borderRadius) === null || _value$borderRadius === void 0 ? void 0 : (_value$borderRadius$d = _value$borderRadius[device]) === null || _value$borderRadius$d === void 0 ? void 0 : _value$borderRadius$d.top) || 0}px`,
+    borderTopRightRadius: `${(value === null || value === void 0 ? void 0 : (_value$borderRadius2 = value.borderRadius) === null || _value$borderRadius2 === void 0 ? void 0 : (_value$borderRadius2$ = _value$borderRadius2[device]) === null || _value$borderRadius2$ === void 0 ? void 0 : _value$borderRadius2$.right) || 0}px`,
+    borderBottomLeftRadius: `${(value === null || value === void 0 ? void 0 : (_value$borderRadius3 = value.borderRadius) === null || _value$borderRadius3 === void 0 ? void 0 : (_value$borderRadius3$ = _value$borderRadius3[device]) === null || _value$borderRadius3$ === void 0 ? void 0 : _value$borderRadius3$.bottom) || 0}px`,
+    borderBottomRightRadius: `${(value === null || value === void 0 ? void 0 : (_value$borderRadius4 = value.borderRadius) === null || _value$borderRadius4 === void 0 ? void 0 : (_value$borderRadius4$ = _value$borderRadius4[device]) === null || _value$borderRadius4$ === void 0 ? void 0 : _value$borderRadius4$.left) || 0}px`
+  };
+};
+const paddingCss = (value, device) => {
+  var _value$device, _value$device2, _value$device3, _value$device4, _value$device5, _value$device6, _value$device7, _value$device8;
+
+  return {
+    paddingTop: (value === null || value === void 0 ? void 0 : (_value$device = value[device]) === null || _value$device === void 0 ? void 0 : _value$device.top) && `${value === null || value === void 0 ? void 0 : (_value$device2 = value[device]) === null || _value$device2 === void 0 ? void 0 : _value$device2.top}${value === null || value === void 0 ? void 0 : value.unit}`,
+    paddingRight: (value === null || value === void 0 ? void 0 : (_value$device3 = value[device]) === null || _value$device3 === void 0 ? void 0 : _value$device3.right) && `${value === null || value === void 0 ? void 0 : (_value$device4 = value[device]) === null || _value$device4 === void 0 ? void 0 : _value$device4.right}${value === null || value === void 0 ? void 0 : value.unit}`,
+    paddingBottom: (value === null || value === void 0 ? void 0 : (_value$device5 = value[device]) === null || _value$device5 === void 0 ? void 0 : _value$device5.bottom) && `${value === null || value === void 0 ? void 0 : (_value$device6 = value[device]) === null || _value$device6 === void 0 ? void 0 : _value$device6.bottom}${value === null || value === void 0 ? void 0 : value.unit}`,
+    paddingLeft: (value === null || value === void 0 ? void 0 : (_value$device7 = value[device]) === null || _value$device7 === void 0 ? void 0 : _value$device7.left) && `${value === null || value === void 0 ? void 0 : (_value$device8 = value[device]) === null || _value$device8 === void 0 ? void 0 : _value$device8.left}${value === null || value === void 0 ? void 0 : value.unit}`
+  };
+};
+const marginCss = (value, device) => {
+  var _value$device9, _value$device10, _value$device11, _value$device12, _value$device13, _value$device14, _value$device15, _value$device16;
+
+  return {
+    marginTop: (value === null || value === void 0 ? void 0 : (_value$device9 = value[device]) === null || _value$device9 === void 0 ? void 0 : _value$device9.top) && `${value === null || value === void 0 ? void 0 : (_value$device10 = value[device]) === null || _value$device10 === void 0 ? void 0 : _value$device10.top}${value === null || value === void 0 ? void 0 : value.unit}`,
+    marginRight: (value === null || value === void 0 ? void 0 : (_value$device11 = value[device]) === null || _value$device11 === void 0 ? void 0 : _value$device11.right) && `${value === null || value === void 0 ? void 0 : (_value$device12 = value[device]) === null || _value$device12 === void 0 ? void 0 : _value$device12.right}${value === null || value === void 0 ? void 0 : value.unit}`,
+    marginBottom: (value === null || value === void 0 ? void 0 : (_value$device13 = value[device]) === null || _value$device13 === void 0 ? void 0 : _value$device13.bottom) && `${value === null || value === void 0 ? void 0 : (_value$device14 = value[device]) === null || _value$device14 === void 0 ? void 0 : _value$device14.bottom}${value === null || value === void 0 ? void 0 : value.unit}`,
+    marginLeft: (value === null || value === void 0 ? void 0 : (_value$device15 = value[device]) === null || _value$device15 === void 0 ? void 0 : _value$device15.left) && `${value === null || value === void 0 ? void 0 : (_value$device16 = value[device]) === null || _value$device16 === void 0 ? void 0 : _value$device16.left}${value === null || value === void 0 ? void 0 : value.unit}`
+  };
+};
+const typographyCss = (value, device) => {
+  var _value$fontSize;
+
+  return {
+    fontSize: (value === null || value === void 0 ? void 0 : value.fontSize[device]) && `${value === null || value === void 0 ? void 0 : value.fontSize[device]}${value === null || value === void 0 ? void 0 : (_value$fontSize = value.fontSize) === null || _value$fontSize === void 0 ? void 0 : _value$fontSize.unit}`,
+    fontStyle: value === null || value === void 0 ? void 0 : value.fontStyle,
+    fontFamily: value === null || value === void 0 ? void 0 : value.fontFamily,
+    fontWeight: value === null || value === void 0 ? void 0 : value.fontWeight,
+    letterSpacing: (value === null || value === void 0 ? void 0 : value.letterSpacing[device]) && `${value === null || value === void 0 ? void 0 : value.letterSpacing[device]}px`,
+    textDecoration: value === null || value === void 0 ? void 0 : value.textDecoration,
+    textTransform: value === null || value === void 0 ? void 0 : value.textTransform,
+    lineHeight: (value === null || value === void 0 ? void 0 : value.lineHeight[device]) && `${value === null || value === void 0 ? void 0 : value.lineHeight[device]}px`
+  };
+};
+const generateBlockId = clientId => {
+  return clientId.split("-")[4];
+};
+const generateCss = styles => {
+  let styleCss = "";
+
+  for (const selector in styles) {
+    const selectorStyles = styles[selector];
+    const filteredStyles = Object.keys(selectorStyles).map(property => {
+      const value = selectorStyles[property];
+      const valueWithoutUnits = value ? value.toString().replaceAll(/px|em|rem|!important|%/g, "").replaceAll(/\s/g, "") : "";
+
+      if (value && !value.toString().includes("undefined") && valueWithoutUnits) {
+        return `${property}: ${value};`;
+      }
+    }).filter(style => !!style).join("\n");
+    styleCss += `${selector}{
+                    ${filteredStyles}
+                }\n`;
+  }
+
+  return styleCss;
+};
+const filterJsCss = styles => {
+  const asArray = Object.entries(styles);
+  const filtered = asArray.filter(_ref => {
+    let [property, value] = _ref;
+    const valueWithoutUnits = value ? value.toString().replaceAll(/px|em|rem|!important|%/g, "").replaceAll(/\s/g, "") : "";
+    return value && !value.toString().includes("undefined") && valueWithoutUnits;
+  });
+  const filteredStyles = Object.fromEntries(filtered);
+  return filteredStyles;
+};
+const videoBackground = (backgroundType, videoSource, videoURL, bgExternalVideo) => {
+  if (backgroundType == "video") {
+    if (videoSource == "local") {
+      if (videoURL) {
+        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+          className: "premium-blocks-video-bg-wrap"
+        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("video", {
+          className: "premium-blocks-video-bg",
+          autoPlay: true,
+          muted: true,
+          loop: true
+        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("source", {
+          src: videoURL
+        })));
+      }
+    }
+
+    if (videoSource == "external") {
+      if (bgExternalVideo) {
+        let video = bgExternalVideo,
+            src = "";
+
+        if (video.match("youtube|youtu.be")) {
+          let id = 0;
+
+          if (video.match("embed") && video.split(/embed\//)[1]) {
+            id = video.split(/embed\//)[1].split('"')[0];
+          } else if (video.split(/v\/|v=|youtu\.be\//)[1]) {
+            id = video.split(/v\/|v=|youtu\.be\//)[1].split(/[?&]/)[0];
+          }
+
+          src = "//www.youtube.com/embed/" + id + "?playlist=" + id + "&iv_load_policy=3&enablejsapi=1&disablekb=1&autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&wmode=transparent&widgetid=1";
+        } else if (video.match("vimeo.com")) {
+          let id = video.split(/video\/|https:\/\/vimeo\.com\//)[1].split(/[?&]/)[0];
+          src = "//player.vimeo.com/video/" + id + "?autoplay=1&loop=1&title=0&byline=0&portrait=0";
+        }
+
+        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+          className: "premium-blocks-video-bg-wrap"
+        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("iframe", {
+          src: src,
+          frameBorder: "0",
+          allowFullScreen: true
+        }));
+      }
+    }
+  }
+};
+const animationAttr = data => {
+  if (typeof data !== "undefined" && typeof data.name !== "undefined" && data.openAnimation) {
+    return {
+      "data-premiumanimation": JSON.stringify(data)
+    };
+  } else {
+    return {};
+  }
+};
+const gradientValue = value => {
+  const {
+    backgroundType,
+    backgroundColor,
+    gradientColorTwo,
+    gradientPosition,
+    gradientType,
+    gradientLocationOne,
+    gradientLocationTwo,
+    gradientAngle,
+    backgroundImageURL
+  } = value;
+  let btnGrad, btnGrad2, btnbg;
+
+  if (undefined !== backgroundType && "gradient" === backgroundType) {
+    btnGrad = "transparent" === backgroundColor || undefined === backgroundColor ? "rgba(255,255,255,0)" : backgroundColor;
+    btnGrad2 = undefined !== gradientColorTwo && undefined !== gradientColorTwo && "" !== gradientColorTwo ? gradientColorTwo : "#777";
+
+    if ("radial" === gradientType) {
+      btnbg = `radial-gradient(at ${gradientPosition}, ${btnGrad} ${gradientLocationOne}%, ${btnGrad2} ${gradientLocationTwo}%)`;
+    } else if ("radial" !== gradientType) {
+      btnbg = `linear-gradient(${gradientAngle}deg, ${btnGrad} ${gradientLocationOne}%, ${btnGrad2} ${gradientLocationTwo}%)`;
+    }
+  } else {
+    btnbg = backgroundImageURL ? `url('${backgroundImageURL}')` : "";
+  }
+
+  return btnbg;
+};
+
+/***/ }),
+
 /***/ "../components/RangeControl/range-control.js":
 /*!***************************************************!*\
   !*** ../components/RangeControl/range-control.js ***!
@@ -6047,10 +6283,8 @@ class PremiumTypo extends Component {
   render() {
     const {
       onChange,
-      title,
-      titleTag = 'span'
+      title
     } = this.props;
-    const TitleTag = titleTag;
     const {
       value,
       sizeUnit,
@@ -6157,9 +6391,9 @@ class PremiumTypo extends Component {
     const fontSize = value["fontSize"][device];
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "premium-control-toggle premium-typography premium-blocks__base-control"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("header", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TitleTag, {
+    }, title && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("header", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
       className: " premium-control-title"
-    }, title ? title : __("Typography", "premium-blocks-for-gutenberg"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    }, __("Typography", "premium-blocks-for-gutenberg"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "premium-typography-wrapper"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "premium-typohraphy-value"
@@ -6560,6 +6794,123 @@ const FontsList = _ref3 => {
 
 /***/ }),
 
+/***/ "../components/typography/fontLoader.js":
+/*!**********************************************!*\
+  !*** ../components/typography/fontLoader.js ***!
+  \**********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var webfontloader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! webfontloader */ "../../node_modules/webfontloader/webfontloader.js");
+/* harmony import */ var webfontloader__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(webfontloader__WEBPACK_IMPORTED_MODULE_0__);
+if (googlefonts === undefined) {
+  var googlefonts = [];
+}
+
+const {
+  Component
+} = wp.element;
+
+const statuses = {
+  inactive: "inactive",
+  active: "active",
+  loading: "loading"
+};
+
+const noop = () => {};
+
+class WebfontLoader extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      status: undefined,
+      mounted: false
+    };
+
+    this.handleLoading = () => {
+      this.setState({
+        status: statuses.loading
+      });
+    };
+
+    this.addFont = font => {
+      if (!googlefonts.includes(font)) {
+        googlefonts.push(font);
+      }
+    };
+
+    this.handleActive = () => {
+      this.setState({
+        status: statuses.active
+      });
+    };
+
+    this.handleInactive = () => {
+      this.setState({
+        status: statuses.inactive
+      });
+    };
+
+    this.loadFonts = () => {
+      if (this.state.mounted) {
+        if (!googlefonts.includes(this.props.config.google.families[0])) {
+          webfontloader__WEBPACK_IMPORTED_MODULE_0___default().load({ ...this.props.config,
+            loading: this.handleLoading,
+            active: this.handleActive,
+            inactive: this.handleInactive,
+            context: frames["editor-canvas"]
+          });
+          this.addFont(this.props.config.google.families[0]);
+        }
+      }
+    };
+  }
+
+  componentDidMount() {
+    this.setState({
+      mounted: true
+    });
+    this.loadFonts();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const {
+      onStatus,
+      config
+    } = this.props;
+
+    if (prevState.status !== this.state.status) {
+      onStatus(this.state.status);
+    }
+
+    if (prevProps.config !== config) {
+      this.loadFonts();
+    }
+  }
+
+  componentWillUnmount() {
+    this.setState({
+      mounted: false
+    });
+  }
+
+  render() {
+    const {
+      children
+    } = this.props;
+    return children || null;
+  }
+
+}
+
+WebfontLoader.defaultProps = {
+  onStatus: noop
+};
+/* harmony default export */ __webpack_exports__["default"] = (WebfontLoader);
+
+/***/ }),
+
 /***/ "./src/components/header.js":
 /*!**********************************!*\
   !*** ./src/components/header.js ***!
@@ -6692,28 +7043,203 @@ function NavigationBackButtonAsItem(props) {
 __webpack_require__.r(__webpack_exports__);
 const defaults = {
   typography: {
-    h1: {
+    heading1: {
       "fontWeight": "400",
       "fontStyle": "",
       "textTransform": "",
       "fontFamily": "Default",
       "textDecoration": "",
       "fontSize": {
-        "Desktop": "",
-        "Tablet": "",
-        "Mobile": "",
+        "Desktop": 48,
+        "Tablet": 48,
+        "Mobile": 48,
         "unit": "px"
       },
       "lineHeight": {
-        "Desktop": "",
-        "Tablet": "",
-        "Mobile": "",
+        "Desktop": 27,
+        "Tablet": 27,
+        "Mobile": 27,
         "unit": "px"
       },
       "letterSpacing": {
-        "Desktop": "",
-        "Tablet": "",
-        "Mobile": "",
+        "Desktop": 0,
+        "Tablet": 0,
+        "Mobile": 0,
+        "unit": "px"
+      }
+    },
+    heading2: {
+      "fontWeight": "400",
+      "fontStyle": "",
+      "textTransform": "",
+      "fontFamily": "Default",
+      "textDecoration": "",
+      "fontSize": {
+        "Desktop": 42,
+        "Tablet": 42,
+        "Mobile": 42,
+        "unit": "px"
+      },
+      "lineHeight": {
+        "Desktop": 25,
+        "Tablet": 25,
+        "Mobile": 25,
+        "unit": "px"
+      },
+      "letterSpacing": {
+        "Desktop": 0,
+        "Tablet": 0,
+        "Mobile": 0,
+        "unit": "px"
+      }
+    },
+    heading3: {
+      "fontWeight": "400",
+      "fontStyle": "",
+      "textTransform": "none",
+      "fontFamily": "Default",
+      "textDecoration": "",
+      "fontSize": {
+        "Desktop": 30,
+        "Tablet": 30,
+        "Mobile": 30,
+        "unit": "px"
+      },
+      "lineHeight": {
+        "Desktop": 23,
+        "Tablet": 23,
+        "Mobile": 23,
+        "unit": "px"
+      },
+      "letterSpacing": {
+        "Desktop": 0,
+        "Tablet": 0,
+        "Mobile": 0,
+        "unit": "px"
+      }
+    },
+    heading4: {
+      "fontWeight": "400",
+      "fontStyle": "",
+      "textTransform": "",
+      "fontFamily": "Default",
+      "textDecoration": "",
+      "fontSize": {
+        "Desktop": 20,
+        "Tablet": 20,
+        "Mobile": 20,
+        "unit": "px"
+      },
+      "lineHeight": {
+        "Desktop": 20,
+        "Tablet": 20,
+        "Mobile": 20,
+        "unit": "px"
+      },
+      "letterSpacing": {
+        "Desktop": 0,
+        "Tablet": 0,
+        "Mobile": 0,
+        "unit": "px"
+      }
+    },
+    heading5: {
+      "fontWeight": "400",
+      "fontStyle": "",
+      "textTransform": "",
+      "fontFamily": "Default",
+      "textDecoration": "",
+      "fontSize": {
+        "Desktop": 17,
+        "Tablet": 17,
+        "Mobile": 17,
+        "unit": "px"
+      },
+      "lineHeight": {
+        "Desktop": 17,
+        "Tablet": 17,
+        "Mobile": 17,
+        "unit": "px"
+      },
+      "letterSpacing": {
+        "Desktop": 0,
+        "Tablet": 0,
+        "Mobile": 0,
+        "unit": "px"
+      }
+    },
+    heading6: {
+      "fontWeight": "400",
+      "fontStyle": "",
+      "textTransform": "",
+      "fontFamily": "Default",
+      "textDecoration": "",
+      "fontSize": {
+        "Desktop": 15,
+        "Tablet": 15,
+        "Mobile": 15,
+        "unit": "px"
+      },
+      "lineHeight": {
+        "Desktop": 15,
+        "Tablet": 15,
+        "Mobile": 15,
+        "unit": "px"
+      },
+      "letterSpacing": {
+        "Desktop": 0,
+        "Tablet": 0,
+        "Mobile": 0,
+        "unit": "px"
+      }
+    },
+    button: {
+      "fontWeight": "400",
+      "fontStyle": "",
+      "textTransform": "",
+      "fontFamily": "Default",
+      "textDecoration": "",
+      "fontSize": {
+        "Desktop": 15,
+        "Tablet": 15,
+        "Mobile": 15,
+        "unit": "px"
+      },
+      "lineHeight": {
+        "Desktop": 15,
+        "Tablet": 15,
+        "Mobile": 15,
+        "unit": "px"
+      },
+      "letterSpacing": {
+        "Desktop": 0,
+        "Tablet": 0,
+        "Mobile": 0,
+        "unit": "px"
+      }
+    },
+    paragraph: {
+      "fontWeight": "400",
+      "fontStyle": "",
+      "textTransform": "",
+      "fontFamily": "Default",
+      "textDecoration": "",
+      "fontSize": {
+        "Desktop": 15,
+        "Tablet": 15,
+        "Mobile": 15,
+        "unit": "px"
+      },
+      "lineHeight": {
+        "Desktop": 15,
+        "Tablet": 15,
+        "Mobile": 15,
+        "unit": "px"
+      },
+      "letterSpacing": {
+        "Desktop": 0,
+        "Tablet": 0,
+        "Mobile": 0,
         "unit": "px"
       }
     }
@@ -6739,6 +7265,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _ui__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ui */ "./src/ui.js");
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.scss */ "./src/style.scss");
+/* harmony import */ var _store_settings_store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./store/settings-store */ "./src/store/settings-store.js");
 
 
 
@@ -6749,17 +7276,17 @@ const {
 } = wp.i18n;
 
 
+
 const PluginSidebarTest = () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_2__.PluginSidebarMoreMenuItem, {
   target: "premium-sidebar"
 }, __('Premium Blocks For Gutenberg')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_2__.PluginSidebar, {
   name: "premium-sidebar",
   title: __('Premium Blocks For Gutenberg')
-}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_ui__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_store_settings_store__WEBPACK_IMPORTED_MODULE_5__.SettingsProvider, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_ui__WEBPACK_IMPORTED_MODULE_3__["default"], null))));
 
 (0,_wordpress_plugins__WEBPACK_IMPORTED_MODULE_1__.registerPlugin)('plugin-premium-blocks', {
   render: PluginSidebarTest
 });
-console.log('Premium Block Settings');
 
 /***/ }),
 
@@ -6880,6 +7407,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_premium_typo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../components/premium-typo */ "../components/premium-typo.js");
 /* harmony import */ var _components_header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/header */ "./src/components/header.js");
 /* harmony import */ var _helpers_defaults__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../helpers/defaults */ "./src/helpers/defaults.js");
+/* harmony import */ var _store_settings_store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../store/settings-store */ "./src/store/settings-store.js");
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../components/HelperFunction */ "../components/HelperFunction.js");
+/* harmony import */ var _components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../components/typography/fontLoader */ "../components/typography/fontLoader.js");
+
+
+
+
 
 
 
@@ -6888,22 +7422,201 @@ __webpack_require__.r(__webpack_exports__);
 
 const TypographyScreen = props => {
   const {
-    typography
+    settings,
+    setSettings
+  } = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useContext)(_store_settings_store__WEBPACK_IMPORTED_MODULE_5__["default"]);
+  const {
+    typography: defaultValues
   } = _helpers_defaults__WEBPACK_IMPORTED_MODULE_4__["default"];
+
+  const getElementValue = element => {
+    var _settings$typography, _settings$typography2;
+
+    const value = (_settings$typography = settings.typography) !== null && _settings$typography !== void 0 && _settings$typography[element] ? (_settings$typography2 = settings.typography) === null || _settings$typography2 === void 0 ? void 0 : _settings$typography2[element] : defaultValues === null || defaultValues === void 0 ? void 0 : defaultValues[element];
+    return value;
+  };
+
+  const changeHandler = (element, value) => {
+    const updatedTypography = { ...settings.typography
+    };
+    updatedTypography[element] = value;
+    setSettings('typography', updatedTypography);
+  };
+
+  const LoadElementGoogleFont = props => {
+    const {
+      typography
+    } = props;
+
+    if ((typography === null || typography === void 0 ? void 0 : typography.fontFamily) === 'Default') {
+      return '';
+    }
+
+    const config = {
+      google: {
+        families: [typography.fontFamily]
+      }
+    };
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      config: config
+    });
+  };
+
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_header__WEBPACK_IMPORTED_MODULE_3__["default"], {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Typography'),
     description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Manage the typography settings for different elements.')
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-typography-screen"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    value: typography.h1,
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Heading 1'),
-    titleTag: 'h1',
-    onChange: newValue => console.log(newValue)
-  })));
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "premium-element-typography"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", {
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.typographyCss)(getElementValue('heading1'), 'Desktop')
+    },
+    className: "premium-element-typography-title"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Heading 1')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    value: getElementValue('heading1'),
+    title: false,
+    onChange: newValue => changeHandler('heading1', newValue)
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "premium-element-typography"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.typographyCss)(getElementValue('heading2'), 'Desktop')
+    },
+    className: "premium-element-typography-title"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Heading 2')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    value: getElementValue('heading2'),
+    title: false,
+    onChange: newValue => changeHandler('heading2', newValue)
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "premium-element-typography"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.typographyCss)(getElementValue('heading3'), 'Desktop')
+    },
+    className: "premium-element-typography-title"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Heading 3')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    value: getElementValue('heading3'),
+    title: false,
+    onChange: newValue => changeHandler('heading3', newValue)
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "premium-element-typography"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h4", {
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.typographyCss)(getElementValue('heading4'), 'Desktop')
+    },
+    className: "premium-element-typography-title"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Heading 4')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    value: getElementValue('heading4'),
+    title: false,
+    onChange: newValue => changeHandler('heading4', newValue)
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "premium-element-typography"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h5", {
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.typographyCss)(getElementValue('heading5'), 'Desktop')
+    },
+    className: "premium-element-typography-title"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Heading 5')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    value: getElementValue('heading5'),
+    title: false,
+    onChange: newValue => changeHandler('heading5', newValue)
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "premium-element-typography"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h6", {
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.typographyCss)(getElementValue('heading6'), 'Desktop')
+    },
+    className: "premium-element-typography-title"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Heading 6')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    value: getElementValue('heading6'),
+    title: false,
+    onChange: newValue => changeHandler('heading6', newValue)
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "premium-element-typography"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.typographyCss)(getElementValue('button'), 'Desktop')
+    },
+    className: "premium-element-typography-title"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Buttons')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    value: getElementValue('button'),
+    title: false,
+    onChange: newValue => changeHandler('button', newValue)
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "premium-element-typography"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.typographyCss)(getElementValue('paragraph'), 'Desktop')
+    },
+    className: "premium-element-typography-title"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Paragraphs')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    value: getElementValue('paragraph'),
+    title: false,
+    onChange: newValue => changeHandler('paragraph', newValue)
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(LoadElementGoogleFont, {
+    typography: getElementValue('heading1')
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(LoadElementGoogleFont, {
+    typography: getElementValue('heading2')
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(LoadElementGoogleFont, {
+    typography: getElementValue('heading3')
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(LoadElementGoogleFont, {
+    typography: getElementValue('heading4')
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(LoadElementGoogleFont, {
+    typography: getElementValue('heading5')
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(LoadElementGoogleFont, {
+    typography: getElementValue('heading6')
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(LoadElementGoogleFont, {
+    typography: getElementValue('button')
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(LoadElementGoogleFont, {
+    typography: getElementValue('paragraph')
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (TypographyScreen);
+
+/***/ }),
+
+/***/ "./src/store/settings-store.js":
+/*!*************************************!*\
+  !*** ./src/store/settings-store.js ***!
+  \*************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SettingsProvider": function() { return /* binding */ SettingsProvider; }
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/core-data */ "@wordpress/core-data");
+/* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+
+
+/**
+ * WordPress dependencies
+ */
+
+
+const SettingsContext = React.createContext({
+  settings: {},
+  setSettings: () => {}
+});
+const SettingsProvider = props => {
+  const [settings, setSettings] = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_1__.useEntityProp)('root', 'site', 'pbg_global_settings');
+
+  const changeHandler = (element, value) => {
+    const updatedSettings = { ...settings
+    };
+    updatedSettings[element] = value;
+    setSettings(updatedSettings);
+  };
+
+  const settingsContext = {
+    settings,
+    setSettings: changeHandler
+  };
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SettingsContext.Provider, {
+    value: settingsContext
+  }, props.children);
+};
+/* harmony default export */ __webpack_exports__["default"] = (SettingsContext);
 
 /***/ }),
 
@@ -7051,6 +7764,17 @@ module.exports = window["React"];
 
 "use strict";
 module.exports = window["wp"]["components"];
+
+/***/ }),
+
+/***/ "@wordpress/core-data":
+/*!**********************************!*\
+  !*** external ["wp","coreData"] ***!
+  \**********************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["coreData"];
 
 /***/ }),
 

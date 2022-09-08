@@ -13,4 +13,12 @@
   margin: 16px;
 }
 
+.premium-element-typography {
+  margin-top: 15px;
+}
+.premium-element-typography .premium-element-typography-title {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
 /*# sourceMappingURL=style-index.css.map*/
