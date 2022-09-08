@@ -14,6 +14,7 @@ import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import InsideTabs from "../../components/InsideTabs";
 import InsideTab from "../../components/InsideTab";
+import WebfontLoader from "../../components/typography/fontLoader";
 
 const { withSelect } = wp.data
 const { __ } = wp.i18n;
@@ -32,7 +33,6 @@ function PremiumPricingTable(props) {
     }, []);
 
     const {
-        contentAlign,
         title,
         desc,
         titleChecked,
@@ -171,6 +171,118 @@ function PremiumPricingTable(props) {
         }
     ];
 
+    let loadTitleGoogleFonts;
+    let loadSlashGoogleFonts;
+    let loadCurrGoogleFonts;
+    let loadPriceGoogleFonts;
+    let loadDescriptionGoogleFonts;
+    let loadDividerGoogleFonts;
+    let loadListGoogleFonts;
+    let loadDurationGoogleFonts;
+    let loadButtonGoogleFonts;
+    let loadBadgeGoogleFonts;
+
+    if (titleTypography.fontFamily !== "Default") {
+        const titleconfig = {
+            google: {
+                families: [titleTypography.fontFamily],
+            }
+        };
+        loadTitleGoogleFonts = (
+            <WebfontLoader config={titleconfig}></WebfontLoader>
+        );
+    }
+    if (slashTypography.fontFamily !== "Default") {
+        const slashConfig = {
+            google: {
+                families: [slashTypography.fontFamily],
+            }
+        };
+        loadSlashGoogleFonts = (
+            <WebfontLoader config={slashConfig}></WebfontLoader>
+        );
+    }
+    if (currTypography.fontFamily !== "Default") {
+        const currConfig = {
+            google: {
+                families: [currTypography.fontFamily],
+            }
+        };
+        loadCurrGoogleFonts = (
+            <WebfontLoader config={currConfig}></WebfontLoader>
+        );
+    }
+    if (priceTypography.fontFamily !== "Default") {
+        const priceconfig = {
+            google: {
+                families: [priceTypography.fontFamily],
+            }
+        };
+        loadPriceGoogleFonts = (
+            <WebfontLoader config={priceconfig}></WebfontLoader>
+        );
+    }
+    if (descTypography.fontFamily !== "Default") {
+        const descConfig = {
+            google: {
+                families: [descTypography.fontFamily],
+            }
+        };
+        loadDescriptionGoogleFonts = (
+            <WebfontLoader config={descConfig}></WebfontLoader>
+        );
+    }
+    if (dividerTypography.fontFamily !== "Default") {
+        const dividerConfig = {
+            google: {
+                families: [dividerTypography.fontFamily],
+            }
+        };
+        loadDividerGoogleFonts = (
+            <WebfontLoader config={dividerConfig}></WebfontLoader>
+        );
+    }
+    if (durationTypography.fontFamily !== "Default") {
+        const durationconfig = {
+            google: {
+                families: [durationTypography.fontFamily],
+            }
+        };
+        loadDurationGoogleFonts = (
+            <WebfontLoader config={durationconfig}></WebfontLoader>
+        );
+    }
+    if (listTypography.fontFamily !== "Default") {
+        const listConfig = {
+            google: {
+                families: [listTypography.fontFamily],
+            }
+        };
+        loadListGoogleFonts = (
+            <WebfontLoader config={listConfig}></WebfontLoader>
+        );
+    }
+    if (buttonTypography.fontFamily !== "Default") {
+        const btnConfig = {
+            google: {
+                families: [buttonTypography.fontFamily],
+            }
+        };
+        loadButtonGoogleFonts = (
+            <WebfontLoader config={btnConfig}></WebfontLoader>
+        );
+    }
+    if (badgeTypography.fontFamily !== "Default") {
+        const badgeConfig = {
+            google: {
+                families: [badgeTypography.fontFamily],
+            }
+        };
+        loadBadgeGoogleFonts = (
+            <WebfontLoader config={badgeConfig}></WebfontLoader>
+        );
+    }
+
     const saveTitleStyles = (value) => {
         const newUpdate = titleStyles.map((item, index) => {
             if (0 === index) {
@@ -282,13 +394,6 @@ function PremiumPricingTable(props) {
                                 checked={badgeChecked}
                                 onChange={newValue => setAttributes({ badgeChecked: newValue })}
                             />
-                            <MultiButtonsControl
-                                choices={[{ value: 'left', label: __('Left', "premium-blocks-for-gutenberg"), icon: Icons.alignLeft }, { value: 'center', label: __('Center', "premium-blocks-for-gutenberg"), icon: Icons.alignCenter }, { value: 'right', label: __('Right', "premium-blocks-for-gutenberg"), icon: Icons.alignRight }]}
-                                value={contentAlign}
-                                onChange={(align) => setAttributes({ contentAlign: align })}
-                                label={__("Content Align", "premium-blocks-for-gutenberg")}
-                                showIcons={true} 
-                            />
                         </PanelBody>
                         {titleChecked && (
                             <PanelBody
@@ -299,11 +404,11 @@ function PremiumPricingTable(props) {
                                 <RadioComponent
                                     label={__("Heading", 'premium-blocks-for-gutenberg')}
                                     choices={[
-                                        { label: __('H1', 'premium-blocks-for-gutenberg'), value: 'h1' }, 
-                                        { label: __('H2', 'premium-blocks-for-gutenberg'), value: 'h2' }, 
-                                        { label: __('H3', 'premium-blocks-for-gutenberg'), value: 'h3' }, 
-                                        { label: __('H4', 'premium-blocks-for-gutenberg'), value: 'h4' }, 
-                                        { label: __('H5', 'premium-blocks-for-gutenberg'), value: 'h5' }, 
+                                        { label: __('H1', 'premium-blocks-for-gutenberg'), value: 'h1' },
+                                        { label: __('H2', 'premium-blocks-for-gutenberg'), value: 'h2' },
+                                        { label: __('H3', 'premium-blocks-for-gutenberg'), value: 'h3' },
+                                        { label: __('H4', 'premium-blocks-for-gutenberg'), value: 'h4' },
+                                        { label: __('H5', 'premium-blocks-for-gutenberg'), value: 'h5' },
                                         { label: __('H6', 'premium-blocks-for-gutenberg'), value: 'h6' }
                                     ]}
                                     value={titleStyles[0].titleTag}
@@ -609,6 +714,7 @@ function PremiumPricingTable(props) {
                                         />
                                     </Fragment>
                                 )}
+                                <hr />
                                 <AdvancedPopColorControl
                                     label={__(`Background Color`, 'premium-blocks-for-gutenberg')}
                                     colorValue={priceStyles[0].priceBack}
@@ -793,7 +899,6 @@ function PremiumPricingTable(props) {
                     ),
                 })}
                 style={{
-                    textAlign: contentAlign[props.deviceType],
                     backgroundColor: tableStyles[0].tableBack,
                     boxShadow: `${tableBoxShadow.horizontal}px ${tableBoxShadow.vertical}px ${tableBoxShadow.blur}px ${tableBoxShadow.color} ${tableBoxShadow.position}`,
                     ...borderCss(tableBorder, props.deviceType),
@@ -808,12 +913,12 @@ function PremiumPricingTable(props) {
                             className={`premium-pricing-table__badge`}
                             style={{
                                 borderRightColor:
-                                "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeBack : "transparent",
+                                    "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeBack : "transparent",
                                 borderTopColor: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeBack : "transparent",
+                                borderLeftWidth: ("right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeSize + "px" : 0),
                                 borderBottomWidth: badgeStyles[0].badgeSize + "px",
                                 borderRightWidth: badgeStyles[0].badgeSize + "px",
-                                borderTopWidth: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeSize + "px" : "none",
-                                borderLeftWidth: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeSize + "px" : "none"
+                                borderTopWidth: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeSize + "px" : 0,
                             }}
                         >
                             <RichText
@@ -863,7 +968,6 @@ function PremiumPricingTable(props) {
                         className={`premium-pricing-table__price_wrap`}
                         style={{
                             backgroundColor: priceStyles[0].priceBack,
-                            justifyContent: contentAlign[props.deviceType],
                             ...marginCss(priceMargin, props.deviceType),
                             ...paddingCss(pricePadding, props.deviceType)
                         }}
@@ -948,9 +1052,9 @@ function PremiumPricingTable(props) {
                             style={{
                                 color: featureStyles[0].listColor,
                                 background: featureStyles[0].listBack,
-                                listStyle: "check" !== featureStyles[0].listStyle ? featureStyles[0].listStyle : "none",
+                                listStyleType: "check" !== featureStyles[0].listStyle ? featureStyles[0].listStyle : "none",
                                 listStylePosition: "inside",
-                                textAlign: featureAlign?.[props.deviceType] || contentAlign[props.deviceType],
+                                textAlign: featureAlign?.[props.deviceType],
                                 ...paddingCss(featuresListPadding, props.deviceType),
                                 ...typographyCss(listTypography, props.deviceType)
                             }}
@@ -1014,6 +1118,16 @@ function PremiumPricingTable(props) {
                         <style>{loadStyles()}</style>
                     </div>
                 )}
+                {loadTitleGoogleFonts}
+                {loadSlashGoogleFonts}
+                {loadCurrGoogleFonts}
+                {loadPriceGoogleFonts}
+                {loadDescriptionGoogleFonts}
+                {loadDividerGoogleFonts}
+                {loadListGoogleFonts}
+                {loadDurationGoogleFonts}
+                {loadButtonGoogleFonts}
+                {loadBadgeGoogleFonts}
             </div>
         </Fragment>
     );

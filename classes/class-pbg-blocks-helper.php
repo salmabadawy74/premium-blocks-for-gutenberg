@@ -2952,11 +2952,6 @@ class PBG_Blocks_Helper
 			$css->add_property('padding', $css->render_spacing($table_padding['Desktop'], $table_padding['unit']));
 		}
 
-		if (isset($attr['contentAlign'])) {
-			$css->set_selector($unique_id);
-			$css->add_property('text-align', $css->get_responsive_css($attr['contentAlign'], 'Desktop'));
-		}
-
 		// title
 		if (isset($attr['titlePadding'])) {
 			$title_padding = $attr['titlePadding'];
@@ -2987,11 +2982,6 @@ class PBG_Blocks_Helper
 			$price_margin = $attr['priceMargin'];
 			$css->set_selector($unique_id . ' .premium-pricing-table__price_wrap');
 			$css->add_property('margin', $css->render_spacing($price_margin['Desktop'], $price_margin['unit']));
-		}
-
-		if (isset($attr['contentAlign'])) {
-			$css->set_selector($unique_id . ' .premium-pricing-table__price_wrap');
-			$css->add_property('justify-content', $css->get_responsive_css($attr['contentAlign'], 'Desktop'));
 		}
 
 		if (isset($attr['slashTypography'])) {
@@ -3129,7 +3119,7 @@ class PBG_Blocks_Helper
 		// Feature Align.
 		if (isset($attr['featureAlign'])) {
 			$align = $css->get_responsive_css($attr['featureAlign'], 'Desktop');
-			$css->set_selector($unique_id . ' .premium-pricing-table__list');
+			$css->set_selector($unique_id . ' > .premium-pricing-table__list_wrap' . ' > .premium-pricing-table__list');
 			$css->add_property('text-align', $align);
 		}
 
@@ -3150,11 +3140,6 @@ class PBG_Blocks_Helper
 			$table_padding = $attr['tablePadding'];
 			$css->set_selector($unique_id);
 			$css->add_property('padding', $css->render_spacing($table_padding['Tablet'], $table_padding['unit']));
-		}
-
-		if (isset($attr['contentAlign'])) {
-			$css->set_selector($unique_id);
-			$css->add_property('text-align', $css->get_responsive_css($attr['contentAlign'], 'Tablet'));
 		}
 
 		// Button.
@@ -3196,11 +3181,6 @@ class PBG_Blocks_Helper
 			$price_margin = $attr['priceMargin'];
 			$css->set_selector($unique_id . ' .premium-pricing-table__price_wrap');
 			$css->add_property('margin', $css->render_spacing($price_margin['Tablet'], $price_margin['unit']));
-		}
-
-		if (isset($attr['contentAlign'])) {
-			$css->set_selector($unique_id . ' .premium-pricing-table__price_wrap');
-			$css->add_property('justify-content', $css->get_responsive_css($attr['contentAlign'], 'Tablet'));
 		}
 
 		if (isset($attr['slashTypography'])) {
@@ -3326,7 +3306,7 @@ class PBG_Blocks_Helper
 		// Feature Align.
 		if (isset($attr['featureAlign'])) {
 			$align = $css->get_responsive_css($attr['featureAlign'], 'Tablet');
-			$css->set_selector($unique_id . ' .premium-pricing-table__list');
+			$css->set_selector($unique_id . ' > .premium-pricing-table__list_wrap' . ' > .premium-pricing-table__list');
 			$css->add_property('text-align', $align);
 		}
 
@@ -3348,11 +3328,6 @@ class PBG_Blocks_Helper
 			$table_padding = $attr['tablePadding'];
 			$css->set_selector($unique_id);
 			$css->add_property('padding', $css->render_spacing($table_padding['Mobile'], $table_padding['unit']));
-		}
-
-		if (isset($attr['contentAlign'])) {
-			$css->set_selector($unique_id);
-			$css->add_property('text-align', $css->get_responsive_css($attr['contentAlign'], 'Mobile'));
 		}
 
 		// Button.
@@ -3394,11 +3369,6 @@ class PBG_Blocks_Helper
 			$price_margin = $attr['priceMargin'];
 			$css->set_selector($unique_id . ' .premium-pricing-table__price_wrap');
 			$css->add_property('margin', $css->render_spacing($price_margin['Mobile'], $price_margin['unit']));
-		}
-
-		if (isset($attr['contentAlign'])) {
-			$css->set_selector($unique_id . ' .premium-pricing-table__price_wrap');
-			$css->add_property('justify-content', $css->get_responsive_css($attr['contentAlign'], 'Mobile'));
 		}
 
 		if (isset($attr['slashTypography'])) {
@@ -3524,7 +3494,7 @@ class PBG_Blocks_Helper
 		// Feature Align.
 		if (isset($attr['featureAlign'])) {
 			$align = $css->get_responsive_css($attr['featureAlign'], 'Mobile');
-			$css->set_selector($unique_id . ' .premium-pricing-table__list');
+			$css->set_selector($unique_id . ' > .premium-pricing-table__list_wrap' . ' > .premium-pricing-table__list');
 			$css->add_property('text-align', $align);
 		}
 

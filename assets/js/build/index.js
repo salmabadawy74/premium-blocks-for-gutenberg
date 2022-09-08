@@ -41597,6 +41597,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_inspectorTab__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/inspectorTab */ "./src/components/inspectorTab.js");
 /* harmony import */ var _components_InsideTabs__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/InsideTabs */ "./src/components/InsideTabs.js");
 /* harmony import */ var _components_InsideTab__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../components/InsideTab */ "./src/components/InsideTab.js");
+/* harmony import */ var _components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../components/typography/fontLoader */ "./src/components/typography/fontLoader.js");
+
 
 
 
@@ -41652,7 +41654,6 @@ function PremiumPricingTable(props) {
     });
   }, []);
   const {
-    contentAlign,
     title,
     desc,
     titleChecked,
@@ -41768,6 +41769,126 @@ function PremiumPricingTable(props) {
     value: "left",
     label: __("Left", 'premium-blocks-for-gutenberg')
   }];
+  let loadTitleGoogleFonts;
+  let loadSlashGoogleFonts;
+  let loadCurrGoogleFonts;
+  let loadPriceGoogleFonts;
+  let loadDescriptionGoogleFonts;
+  let loadDividerGoogleFonts;
+  let loadListGoogleFonts;
+  let loadDurationGoogleFonts;
+  let loadButtonGoogleFonts;
+  let loadBadgeGoogleFonts;
+
+  if (titleTypography.fontFamily !== "Default") {
+    const titleconfig = {
+      google: {
+        families: [titleTypography.fontFamily]
+      }
+    };
+    loadTitleGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_18__["default"], {
+      config: titleconfig
+    });
+  }
+
+  if (slashTypography.fontFamily !== "Default") {
+    const slashConfig = {
+      google: {
+        families: [slashTypography.fontFamily]
+      }
+    };
+    loadSlashGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_18__["default"], {
+      config: slashConfig
+    });
+  }
+
+  if (currTypography.fontFamily !== "Default") {
+    const currConfig = {
+      google: {
+        families: [currTypography.fontFamily]
+      }
+    };
+    loadCurrGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_18__["default"], {
+      config: currConfig
+    });
+  }
+
+  if (priceTypography.fontFamily !== "Default") {
+    const priceconfig = {
+      google: {
+        families: [priceTypography.fontFamily]
+      }
+    };
+    loadPriceGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_18__["default"], {
+      config: priceconfig
+    });
+  }
+
+  if (descTypography.fontFamily !== "Default") {
+    const descConfig = {
+      google: {
+        families: [descTypography.fontFamily]
+      }
+    };
+    loadDescriptionGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_18__["default"], {
+      config: descConfig
+    });
+  }
+
+  if (dividerTypography.fontFamily !== "Default") {
+    const dividerConfig = {
+      google: {
+        families: [dividerTypography.fontFamily]
+      }
+    };
+    loadDividerGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_18__["default"], {
+      config: dividerConfig
+    });
+  }
+
+  if (durationTypography.fontFamily !== "Default") {
+    const durationconfig = {
+      google: {
+        families: [durationTypography.fontFamily]
+      }
+    };
+    loadDurationGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_18__["default"], {
+      config: durationconfig
+    });
+  }
+
+  if (listTypography.fontFamily !== "Default") {
+    const listConfig = {
+      google: {
+        families: [listTypography.fontFamily]
+      }
+    };
+    loadListGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_18__["default"], {
+      config: listConfig
+    });
+  }
+
+  if (buttonTypography.fontFamily !== "Default") {
+    const btnConfig = {
+      google: {
+        families: [buttonTypography.fontFamily]
+      }
+    };
+    loadButtonGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_18__["default"], {
+      config: btnConfig
+    });
+  }
+
+  if (badgeTypography.fontFamily !== "Default") {
+    const badgeConfig = {
+      google: {
+        families: [badgeTypography.fontFamily]
+      }
+    };
+    loadBadgeGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_18__["default"], {
+      config: badgeConfig
+    });
+  }
 
   const saveTitleStyles = value => {
     const newUpdate = titleStyles.map((item, index) => {
@@ -41920,26 +42041,6 @@ function PremiumPricingTable(props) {
     onChange: newValue => setAttributes({
       badgeChecked: newValue
     })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_responsive_radio__WEBPACK_IMPORTED_MODULE_11__["default"], {
-    choices: [{
-      value: 'left',
-      label: __('Left', "premium-blocks-for-gutenberg"),
-      icon: _components_icons__WEBPACK_IMPORTED_MODULE_10__["default"].alignLeft
-    }, {
-      value: 'center',
-      label: __('Center', "premium-blocks-for-gutenberg"),
-      icon: _components_icons__WEBPACK_IMPORTED_MODULE_10__["default"].alignCenter
-    }, {
-      value: 'right',
-      label: __('Right', "premium-blocks-for-gutenberg"),
-      icon: _components_icons__WEBPACK_IMPORTED_MODULE_10__["default"].alignRight
-    }],
-    value: contentAlign,
-    onChange: align => setAttributes({
-      contentAlign: align
-    }),
-    label: __("Content Align", "premium-blocks-for-gutenberg"),
-    showIcons: true
   })), titleChecked && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelBody, {
     title: __("Title", 'premium-blocks-for-gutenberg'),
     className: "premium-panel-body",
@@ -42280,7 +42381,7 @@ function PremiumPricingTable(props) {
     onColorChange: newValue => savePriceStyles({
       durColor: newValue === undefined ? "transparent" : newValue
     })
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_8__["default"], {
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_8__["default"], {
     label: __(`Background Color`, 'premium-blocks-for-gutenberg'),
     colorValue: priceStyles[0].priceBack,
     onColorChange: newvalue => savePriceStyles({
@@ -42505,7 +42606,6 @@ function PremiumPricingTable(props) {
     })
   }), {
     style: {
-      textAlign: contentAlign[props.deviceType],
       backgroundColor: tableStyles[0].tableBack,
       boxShadow: `${tableBoxShadow.horizontal}px ${tableBoxShadow.vertical}px ${tableBoxShadow.blur}px ${tableBoxShadow.color} ${tableBoxShadow.position}`,
       ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.borderCss)(tableBorder, props.deviceType),
@@ -42518,10 +42618,10 @@ function PremiumPricingTable(props) {
     style: {
       borderRightColor: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeBack : "transparent",
       borderTopColor: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeBack : "transparent",
+      borderLeftWidth: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeSize + "px" : 0,
       borderBottomWidth: badgeStyles[0].badgeSize + "px",
       borderRightWidth: badgeStyles[0].badgeSize + "px",
-      borderTopWidth: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeSize + "px" : "none",
-      borderLeftWidth: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeSize + "px" : "none"
+      borderTopWidth: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeSize + "px" : 0
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RichText, {
     tagName: "span",
@@ -42564,7 +42664,6 @@ function PremiumPricingTable(props) {
     className: `premium-pricing-table__price_wrap`,
     style: {
       backgroundColor: priceStyles[0].priceBack,
-      justifyContent: contentAlign[props.deviceType],
       ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.marginCss)(priceMargin, props.deviceType),
       ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.paddingCss)(pricePadding, props.deviceType)
     }
@@ -42620,9 +42719,9 @@ function PremiumPricingTable(props) {
     style: {
       color: featureStyles[0].listColor,
       background: featureStyles[0].listBack,
-      listStyle: "check" !== featureStyles[0].listStyle ? featureStyles[0].listStyle : "none",
+      listStyleType: "check" !== featureStyles[0].listStyle ? featureStyles[0].listStyle : "none",
       listStylePosition: "inside",
-      textAlign: (featureAlign === null || featureAlign === void 0 ? void 0 : featureAlign[props.deviceType]) || contentAlign[props.deviceType],
+      textAlign: featureAlign === null || featureAlign === void 0 ? void 0 : featureAlign[props.deviceType],
       ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.paddingCss)(featuresListPadding, props.deviceType),
       ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.typographyCss)(listTypography, props.deviceType)
     },
@@ -42672,7 +42771,7 @@ function PremiumPricingTable(props) {
       textTransform: buttonStyles[0].btnUpper ? "uppercase" : "none"
     },
     keepPlaceholderOnFocus: true
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", null, loadStyles()))));
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", null, loadStyles())), loadTitleGoogleFonts, loadSlashGoogleFonts, loadCurrGoogleFonts, loadPriceGoogleFonts, loadDescriptionGoogleFonts, loadDividerGoogleFonts, loadListGoogleFonts, loadDurationGoogleFonts, loadButtonGoogleFonts, loadBadgeGoogleFonts));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (withSelect(select => {
@@ -42931,7 +43030,7 @@ const save = props => {
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       color: featureStyles[0].listColor,
       background: featureStyles[0].listBack,
-      listStyle: "check" !== featureStyles[0].listStyle ? featureStyles[0].listStyle : "none",
+      listStyleType: "check" !== featureStyles[0].listStyle ? featureStyles[0].listStyle : "none",
       listStylePosition: "inside",
       fontStyle: listTypography === null || listTypography === void 0 ? void 0 : listTypography.fontStyle,
       fontFamily: listTypography === null || listTypography === void 0 ? void 0 : listTypography.fontFamily,
@@ -95406,7 +95505,7 @@ module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/p
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/pricing-table","title":"Pricing Table","category":"premium-blocks","attributes":{"borderUpdated":{"type":"boolean","default":false},"btnBorderUpdated":{"type":"boolean","default":false},"contentAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"title":{"type":"array","source":"children","selector":".premium-pricing-table__title","default":"Pricing Table"},"desc":{"type":"array","source":"children","selector":".premium-pricing-table__desc","default":"Lorem ipsum dolor sit amet, consectetur adipiscing elit"},"titleChecked":{"type":"boolean","default":true},"descChecked":{"type":"boolean","default":true},"priceChecked":{"type":"boolean","default":true},"btnChecked":{"type":"boolean","default":true},"btnText":{"type":"string","default":"Get Started"},"btnLink":{"type":"string","source":"attribute","attribute":"href","selector":".premium-pricing-table__button_link"},"badgeChecked":{"type":"boolean","default":true},"listChecked":{"type":"boolean","default":true},"listItems":{"type":"string","source":"html","multiline":"li","selector":".premium-pricing-table__list","default":""},"blockId":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"hideDesktop":{"type":"boolean","default":false},"hideTablet":{"type":"boolean","default":false},"hideMobile":{"type":"boolean","default":false},"titleStyles":{"type":"array","default":[{"titleTag":"H2","titleColor":"","titleBack":""}]},"titleTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"titleTextShadow":{"type":"object","default":{"color":"transparent","blur":"10","horizontal":"0","vertical":"0"}},"priceStyles":{"type":"array","default":[{"priceBack":"","priceOpacity":1,"slashPrice":"","slashColor":"","currPrice":"$","currColor":"","valPrice":"25","valColor":"","divPrice":"/","divColor":"","durPrice":"m","durColor":"","selectedStyle":"price"}]},"slashTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"currTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"priceTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"dividerTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"durationTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"slashVAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"currVAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"valVAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"divVAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"durVAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"featureStyles":{"type":"array","default":[{"listStyle":"disc","listColor":"","listItemsStyle":"","listBack":""}]},"listTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"45","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"featureAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"descStyles":{"type":"array","default":[{"descColor":"","descBack":"","descMarginT":0,"descMarginB":30,"descPadding":"0"}]},"descTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"buttonStyles":{"type":"array","default":[{"btnColor":"","btnHoverColor":"","btnWidth":"","btnBack":"rgb(242, 242, 242)","btnHoverBack":"","btnTarget":true}]},"buttonTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"badgeStyles":{"type":"array","default":[{"badgePos":"right","badgeBack":"#793DC3","badgeColor":"#fff","badgeTop":"","badgeHorizontal":"","badgeWidth":"","badgeText":"Popular","badgeSize":""}]},"badgeTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"tableStyles":{"type":"array","default":[{"tableBack":"","tableOpacity":1}]},"tableBoxShadow":{"type":"object","default":{"color":"transparent","blur":"10","horizontal":"0","vertical":"0","position":""}},"tableBorder":{"type":"object","default":{"bordertype":"solid","borderColor":"#e1e1e1","borderWidth":{"Desktop":{"top":"1","right":"1","bottom":"1","left":"1"},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"buttonBorder":{"type":"object","default":{"bordertype":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"tablePadding":{"type":"object","default":{"Desktop":{"top":"20","right":"20","bottom":"20","left":"20"},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"titlePadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"titleMargin":{"type":"object","default":{"Desktop":{"top":20,"right":"","bottom":20,"left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"pricePadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"priceMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":20,"left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"featuresListPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"featuresListMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":20,"left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"descriptionPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"descriptionMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":30,"left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"buttonPadding":{"type":"object","default":{"Desktop":{"top":10,"right":10,"bottom":10,"left":10},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"buttonMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}}}}');
+module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/pricing-table","title":"Pricing Table","category":"premium-blocks","attributes":{"borderUpdated":{"type":"boolean","default":false},"btnBorderUpdated":{"type":"boolean","default":false},"title":{"type":"array","source":"children","selector":".premium-pricing-table__title","default":"Pricing Table"},"desc":{"type":"array","source":"children","selector":".premium-pricing-table__desc","default":"Lorem ipsum dolor sit amet, consectetur adipiscing elit"},"titleChecked":{"type":"boolean","default":true},"descChecked":{"type":"boolean","default":true},"priceChecked":{"type":"boolean","default":true},"btnChecked":{"type":"boolean","default":true},"btnText":{"type":"string","default":"Get Started"},"btnLink":{"type":"string","source":"attribute","attribute":"href","selector":".premium-pricing-table__button_link"},"badgeChecked":{"type":"boolean","default":true},"listChecked":{"type":"boolean","default":true},"listItems":{"type":"string","source":"html","multiline":"li","selector":".premium-pricing-table__list","default":""},"blockId":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"hideDesktop":{"type":"boolean","default":false},"hideTablet":{"type":"boolean","default":false},"hideMobile":{"type":"boolean","default":false},"titleStyles":{"type":"array","default":[{"titleTag":"h2","titleColor":"","titleBack":""}]},"titleTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"titleTextShadow":{"type":"object","default":{"color":"transparent","blur":"10","horizontal":"0","vertical":"0"}},"priceStyles":{"type":"array","default":[{"priceBack":"","priceOpacity":1,"slashPrice":"","slashColor":"","currPrice":"$","currColor":"","valPrice":"25","valColor":"","divPrice":"/","divColor":"","durPrice":"m","durColor":"","selectedStyle":"price"}]},"slashTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"currTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"priceTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"dividerTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"durationTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"slashVAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"currVAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"valVAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"divVAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"durVAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"featureStyles":{"type":"array","default":[{"listStyle":"disc","listColor":"","listItemsStyle":"","listBack":""}]},"listTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"45","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"featureAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"descStyles":{"type":"array","default":[{"descColor":"","descBack":"","descMarginT":0,"descMarginB":30,"descPadding":"0"}]},"descTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"buttonStyles":{"type":"array","default":[{"btnColor":"","btnHoverColor":"","btnWidth":"","btnBack":"rgb(242, 242, 242)","btnHoverBack":"","btnTarget":true}]},"buttonTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"badgeStyles":{"type":"array","default":[{"badgePos":"right","badgeBack":"#793DC3","badgeColor":"#fff","badgeTop":"","badgeHorizontal":"","badgeWidth":"","badgeText":"Popular","badgeSize":""}]},"badgeTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"tableStyles":{"type":"array","default":[{"tableBack":"","tableOpacity":1}]},"tableBoxShadow":{"type":"object","default":{"color":"transparent","blur":"10","horizontal":"0","vertical":"0","position":""}},"tableBorder":{"type":"object","default":{"bordertype":"solid","borderColor":"#e1e1e1","borderWidth":{"Desktop":{"top":"1","right":"1","bottom":"1","left":"1"},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"buttonBorder":{"type":"object","default":{"bordertype":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"tablePadding":{"type":"object","default":{"Desktop":{"top":"20","right":"20","bottom":"20","left":"20"},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"titlePadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"titleMargin":{"type":"object","default":{"Desktop":{"top":20,"right":"","bottom":20,"left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"pricePadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"priceMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":20,"left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"featuresListPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"featuresListMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":20,"left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"descriptionPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"descriptionMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":30,"left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"buttonPadding":{"type":"object","default":{"Desktop":{"top":10,"right":10,"bottom":10,"left":10},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"buttonMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}}}}');
 
 /***/ }),
 

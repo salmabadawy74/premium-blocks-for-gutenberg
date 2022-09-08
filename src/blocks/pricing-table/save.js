@@ -231,7 +231,7 @@ const save = props => {
                         style={filterJsCss({
                             color: featureStyles[0].listColor,
                             background: featureStyles[0].listBack,
-                            listStyle: "check" !== featureStyles[0].listStyle ? featureStyles[0].listStyle : "none",
+                            listStyleType: "check" !== featureStyles[0].listStyle ? featureStyles[0].listStyle : "none",
                             listStylePosition: "inside",
                             fontStyle: listTypography?.fontStyle,
                             fontFamily: listTypography?.fontFamily,
