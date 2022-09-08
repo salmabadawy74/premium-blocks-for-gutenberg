@@ -13,7 +13,8 @@
     "node-sass": "^7.0.1",
     "react-router-dom": "^6.3.0",
     "@wordpress/data": "^6.8.0",
-    "sweetalert2": "^11.4.29"
+    "sweetalert2": "^11.4.29",
+    "@wordpress/api-fetch": "^3.20.0"
   },
   "devDependencies": {
     "@wordpress/scripts": "^23.7.1",
