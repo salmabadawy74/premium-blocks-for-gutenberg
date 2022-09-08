@@ -46,19 +46,21 @@ function Edit(props) {
         istitleUpdated = setTimeout(handleStyle, 400);
     }, [istitleUpdated]);
 
-    // componentDidUpdate() {
-    //     clearTimeout(istitleUpdated);
-    //     istitleUpdated = setTimeout(this.handleStyle, 400);
-    // }
-
     const handleStyle = () => {
         const { titleStyles } = props.attributes;
-        let titleContainers = document.querySelectorAll(
-            ".premium-title-container"
-        );
-        titleContainers.forEach(function (titleContainer) {
-            if (titleContainer.classList.contains("style8")) {
-                let titleElement = titleContainer.querySelector(
+        if (blockId) {
+            let container = document.querySelectorAll(
+                `.${blockId}`
+            );
+            console.log(container)
+            let titleContainers = container[0].querySelector(
+                ".premium-title-container"
+            );
+            console.log(titleContainers)
+
+            // titleContainers.forEach(function (titleContainer) {
+            if (titleContainers.classList.contains("style8")) {
+                let titleElement = titleContainers.querySelector(
                     ".premium-title-text-title"
                 ),
                     holdTime = titleStyles[0].animateDelay * 1000,
@@ -77,7 +79,7 @@ function Edit(props) {
                 })();
             }
 
-            if (titleContainer.classList.contains("style9")) {
+            if (titleContainers.classList.contains("style9")) {
                 let style9 = document.querySelectorAll(
                     ".premium-title-style9__wrap"
                 );
@@ -112,7 +114,8 @@ function Edit(props) {
                     }, holdTime);
                 });
             }
-        });
+            // });
+        }
     }
 
     const {
@@ -726,7 +729,6 @@ function Edit(props) {
                                                 value={icon}
                                                 onChange={(value) => setAttributes({ icon: value })}
                                                 isMulti={false}
-                                                appendTo="body"
                                                 noSelectedPlaceholder={__("Select Icon", 'premium-blocks-for-gutenberg')}
                                             />
                                         </Fragment>

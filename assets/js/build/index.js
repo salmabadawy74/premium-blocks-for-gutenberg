@@ -24382,19 +24382,21 @@ function Edit(props) {
   useEffect(() => {
     clearTimeout(istitleUpdated);
     istitleUpdated = setTimeout(handleStyle, 400);
-  }, [istitleUpdated]); // componentDidUpdate() {
-  //     clearTimeout(istitleUpdated);
-  //     istitleUpdated = setTimeout(this.handleStyle, 400);
-  // }
+  }, [istitleUpdated]);
 
   const handleStyle = () => {
     const {
       titleStyles
     } = props.attributes;
-    let titleContainers = document.querySelectorAll(".premium-title-container");
-    titleContainers.forEach(function (titleContainer) {
-      if (titleContainer.classList.contains("style8")) {
-        let titleElement = titleContainer.querySelector(".premium-title-text-title"),
+
+    if (blockId) {
+      let container = document.querySelectorAll(`.${blockId}`);
+      console.log(container);
+      let titleContainers = container[0].querySelector(".premium-title-container");
+      console.log(titleContainers); // titleContainers.forEach(function (titleContainer) {
+
+      if (titleContainers.classList.contains("style8")) {
+        let titleElement = titleContainers.querySelector(".premium-title-text-title"),
             holdTime = titleStyles[0].animateDelay * 1000,
             duration = titleStyles[0].animateduration * 1000;
 
@@ -24411,7 +24413,7 @@ function Edit(props) {
         })();
       }
 
-      if (titleContainer.classList.contains("style9")) {
+      if (titleContainers.classList.contains("style9")) {
         let style9 = document.querySelectorAll(".premium-title-style9__wrap");
         style9.forEach(function (style) {
           let holdTime = titleStyles[0].animateDelay * 1000;
@@ -24435,8 +24437,9 @@ function Edit(props) {
             }, 150);
           }, holdTime);
         });
-      }
-    });
+      } // });
+
+    }
   };
 
   const {
@@ -24934,7 +24937,6 @@ function Edit(props) {
       icon: value
     }),
     isMulti: false,
-    appendTo: "body",
     noSelectedPlaceholder: __("Select Icon", 'premium-blocks-for-gutenberg')
   })), iconType === "lottie" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
     value: lottieURl,
