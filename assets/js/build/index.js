@@ -37548,7 +37548,6 @@ function Edit(props) {
       renderFunc: renderSVG,
       onChange: value => addSocialIcon(value, index),
       isMulti: false,
-      appendTo: "body",
       closeOnSelect: false,
       iconsPerPage: 25,
       noSelectedPlaceholder: __("Select Icon", "premium-block-for-gutenberg")
