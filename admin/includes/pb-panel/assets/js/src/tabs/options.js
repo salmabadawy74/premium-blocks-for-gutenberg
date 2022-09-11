@@ -1,42 +1,62 @@
 import { Fragment, useEffect, useState } from "@wordpress/element";
-import { CheckboxControl } from "@wordpress/components";
+import { CheckboxControl, Dashicon } from "@wordpress/components";
 import Container from "../common/Container";
 import OptionsComponent from "../options-component";
+import { send as ajaxSend } from '@wordpress/ajax'
 
-const { __ } = wp.i18n;
-const { Dashicon } = wp.components;
 import apiFetch from "@wordpress/api-fetch";
 const OptionsTab = (props) => {
-    let [values, setValues] = useState(PremiumBlocksPanelData.values);
+    const [values, setValues] = useState(props.values);
     const [isChecked, setChecked] = useState(false);
+    const [loading, setIsLoading] = useState(false)
+    const [enabledBlock, setEnabled] = useState({})
+    let ajaxTimeout = null;
 
-    const handleChange = (newValues) => {
-        setValues(newValues);
-    };
     useEffect(() => {
-        let newValue = { ...values };
-        if (isChecked) {
-            for (let block in newValue) {
-                newValue[block] = false;
-            }
-            const formData = new window.FormData();
+        clearTimeout(ajaxTimeout)
+        ajaxTimeout = setTimeout(() => {
+            ajaxSend('pb-panel-update-option', {
+                success: () => {
+                    setIsLoading(true)
+                },
+                error: () => {
+                    setIsLoading(false)
+                },
+                data: {
 
-            formData.append("action", "pb-panel-update-options");
-            formData.append("nonce", PremiumBlocksPanelData.nonce);
-            formData.append("values", JSON.stringify(newValue));
+                    values: this.state.disabledBlocks,
+                },
+            })
+            setIsLoading(true)
+        }, 600)
+    }, [enabledBlock])
+    const handleChange = (newValues) => {
 
-            apiFetch({
-                url: PremiumBlocksPanelData.ajaxurl,
-                method: "POST",
-                body: formData,
-            }).then(() => {
-                setValues(newValue);
-            });
-        }
-    }, [values]);
+        setValues(newValues);
 
-    const handleDeactivated = (val) => {
-        setChecked(val);
+    };
+
+    const handleDeactivated = () => {
+        setIsLoading(true)
+
+        const formData = new window.FormData();
+
+        formData.append("action", "pb-panel-update-option");
+        formData.append("nonce", PremiumBlocksPanelData.nonce);
+        formData.append("value", true);
+
+        apiFetch({
+            url: PremiumBlocksPanelData.ajaxurl,
+            method: "POST",
+            body: formData,
+        }).then((response) => {
+            handleChange(response.data.values)
+            setEnabled(response.data.values)
+            setIsLoading(false)
+
+        });
+
+        setChecked(true)
     };
 
     const tabs = [
@@ -58,7 +78,7 @@ const OptionsTab = (props) => {
                 [key]: props.options[key],
             });
         }, {});
-
+    console.log(enabledBlock)
     return (
         <Fragment>
             <Container>
@@ -78,19 +98,30 @@ const OptionsTab = (props) => {
                         ))}
                     </nav>
                 </div>
-                <CheckboxControl
-                    label="Activate All Blocks"
-                    checked={isChecked}
-                    onChange={(val) => handleDeactivated(val)}
-                />
+                <button onClick={(e) => {
+                    e.preventDefault();
+                    handleDeactivated()
+                }}>Activate All blocks</button
+                >
+                {loading && <Dashicon className="pb-loading" icon="update" />}
+
                 <div className="advanced-options options-section">
-                    <OptionsComponent
+                    {!loading ? <OptionsComponent
+                        options={options}
+                        values={enabledBlock}
+                        onChange={(newitems) => {
+                            handleChange(newitems);
+                        }}
+                        isChecked={isChecked}
+                    /> : <OptionsComponent
                         options={options}
                         values={values}
-                        onChange={(newVal, optionId) => {
-                            handleChange(newVal, optionId);
+                        onChange={(newitems) => {
+                            handleChange(newitems);
                         }}
+                        isChecked={isChecked}
                     />
+                    }
                 </div>
             </Container>
         </Fragment>

@@ -144,7 +144,15 @@ if (!class_exists('Pb_Panel')) {
 
 			if ('' !== $value && '' !== $option) {
 				$options[$option] = $value;
-				update_option('pb_options', $options);
+			
+			}
+            elseif("" !==$value){
+                  foreach($options as $x => $val)
+                  {
+                      $options[$x]=$value;
+                  }
+            }
+                	update_option('pb_options', $options);
 
 				wp_send_json_success(
 					array(
@@ -152,7 +160,6 @@ if (!class_exists('Pb_Panel')) {
 						'values'  => $options,
 					)
 				);
-			}
 
 			wp_send_json_error();
 		}
