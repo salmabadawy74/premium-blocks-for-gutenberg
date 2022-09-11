@@ -927,12 +927,12 @@ function PremiumPricingTable(props) {
                                 placeholder={__("Popular", 'premium-blocks-for-gutenberg')}
                                 value={badgeStyles[0].badgeText}
                                 style={{
+                                    ...typographyCss(badgeTypography, props.deviceType),
                                     color: badgeStyles[0].badgeColor,
                                     width: badgeStyles[0].badgeWidth + "px",
                                     top: badgeStyles[0].badgeTop + "px",
                                     left: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeHorizontal + "px" : "auto",
                                     right: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeHorizontal + "px" : "auto",
-                                    ...typographyCss(badgeTypography, props.deviceType)
                                 }}
                                 keepPlaceholderOnFocus
                             />
@@ -954,10 +954,10 @@ function PremiumPricingTable(props) {
                             placeholder={__("Awesome Title", 'premium-blocks-for-gutenberg')}
                             value={title}
                             style={{
+                                ...paddingCss(titlePadding, props.deviceType),
+                                ...typographyCss(titleTypography, props.deviceType),
                                 color: titleStyles[0].titleColor,
                                 textShadow: `${titleTextShadow.horizontal}px ${titleTextShadow.vertical}px ${titleTextShadow.blur}px ${titleTextShadow.color}`,
-                                ...paddingCss(titlePadding, props.deviceType),
-                                ...typographyCss(titleTypography, props.deviceType)
                             }}
                             keepPlaceholderOnFocus
                         />
@@ -967,18 +967,18 @@ function PremiumPricingTable(props) {
                     <div
                         className={`premium-pricing-table__price_wrap`}
                         style={{
-                            backgroundColor: priceStyles[0].priceBack,
                             ...marginCss(priceMargin, props.deviceType),
-                            ...paddingCss(pricePadding, props.deviceType)
+                            ...paddingCss(pricePadding, props.deviceType),
+                            backgroundColor: priceStyles[0].priceBack,
                         }}
                     >
                         {priceStyles[0].slashPrice && (
                             <strike
                                 className={`premium-pricing-table__slash`}
                                 style={{
+                                    ...typographyCss(slashTypography, props.deviceType),
                                     color: priceStyles[0].slashColor,
                                     alignSelf: slashVAlign?.[props.deviceType],
-                                    ...typographyCss(slashTypography, props.deviceType)
                                 }}
                             >
                                 {priceStyles[0].slashPrice}
@@ -988,9 +988,9 @@ function PremiumPricingTable(props) {
                             <span
                                 className={`premium-pricing-table__currency`}
                                 style={{
+                                    ...typographyCss(currTypography, props.deviceType),
                                     color: priceStyles[0].currColor,
                                     alignSelf: currVAlign?.[props.deviceType],
-                                    ...typographyCss(currTypography, props.deviceType)
                                 }}
                             >
                                 {priceStyles[0].currPrice}
@@ -1000,9 +1000,9 @@ function PremiumPricingTable(props) {
                             <span
                                 className={`premium-pricing-table__val`}
                                 style={{
+                                    ...typographyCss(priceTypography, props.deviceType),
                                     color: priceStyles[0].valColor,
                                     alignSelf: valVAlign?.[props.deviceType],
-                                    ...typographyCss(priceTypography, props.deviceType)
                                 }}
                             >
                                 {priceStyles[0].valPrice}
@@ -1012,9 +1012,9 @@ function PremiumPricingTable(props) {
                             <span
                                 className={`premium-pricing-table__divider`}
                                 style={{
+                                    ...typographyCss(dividerTypography, props.deviceType),
                                     color: priceStyles[0].divColor,
                                     alignSelf: divVAlign?.[props.deviceType],
-                                    ...typographyCss(dividerTypography, props.deviceType)
                                 }}
                             >
                                 {priceStyles[0].divPrice}
@@ -1024,9 +1024,9 @@ function PremiumPricingTable(props) {
                             <span
                                 className={`premium-pricing-table__dur`}
                                 style={{
+                                    ...typographyCss(durationTypography, props.deviceType),
                                     color: priceStyles[0].durColor,
                                     alignSelf: durVAlign?.[props.deviceType],
-                                    ...typographyCss(durationTypography, props.deviceType)
                                 }}
                             >
                                 {priceStyles[0].durPrice}
@@ -1050,13 +1050,13 @@ function PremiumPricingTable(props) {
                             value={listItems}
                             onChange={newText => setAttributes({ listItems: newText })}
                             style={{
+                                ...paddingCss(featuresListPadding, props.deviceType),
+                                ...typographyCss(listTypography, props.deviceType),
                                 color: featureStyles[0].listColor,
                                 background: featureStyles[0].listBack,
                                 listStyleType: "check" !== featureStyles[0].listStyle ? featureStyles[0].listStyle : "none",
                                 listStylePosition: "inside",
                                 textAlign: featureAlign?.[props.deviceType],
-                                ...paddingCss(featuresListPadding, props.deviceType),
-                                ...typographyCss(listTypography, props.deviceType)
                             }}
                             keepPlaceholderOnFocus
                         />
@@ -1071,11 +1071,11 @@ function PremiumPricingTable(props) {
                             placeholder={__("Lorem ipsum dolor sit amet, consectetur adipiscing elit")}
                             value={desc}
                             style={{
-                                color: descStyles[0].descColor,
-                                background: descStyles[0].descBack,
                                 ...marginCss(descriptionMargin, props.deviceType),
                                 ...paddingCss(descriptionPadding, props.deviceType),
-                                ...typographyCss(descTypography, props.deviceType)
+                                ...typographyCss(descTypography, props.deviceType),
+                                color: descStyles[0].descColor,
+                                background: descStyles[0].descBack,
                             }}
                             keepPlaceholderOnFocus
                         />
@@ -1093,12 +1093,12 @@ function PremiumPricingTable(props) {
                             href="{ attributes.btnUrl }"
                             target={buttonStyles[0].btnTarget ? "_blank" : "_self"}
                             style={{
-                                color: buttonStyles[0].btnColor,
-                                background: buttonStyles[0].btnBack ? buttonStyles[0].btnBack : "transparent",
                                 ...marginCss(buttonMargin, props.deviceType),
                                 ...paddingCss(buttonPadding, props.deviceType),
                                 ...borderCss(buttonBorder, props.deviceType),
-                                ...typographyCss(buttonTypography, props.deviceType)
+                                ...typographyCss(buttonTypography, props.deviceType),
+                                color: buttonStyles[0].btnColor,
+                                background: buttonStyles[0].btnBack ? buttonStyles[0].btnBack : "transparent",
                             }}
                         >
                             <RichText

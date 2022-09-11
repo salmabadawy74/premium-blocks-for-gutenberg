@@ -80,7 +80,7 @@
         },
         "titleTag": {
             "type": "string",
-            "default": "H3"
+            "default": "h3"
         },
         "desc": {
             "type": "array",
