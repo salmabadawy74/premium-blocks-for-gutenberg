@@ -30,7 +30,6 @@ const SingleOption = (props) => {
                 body,
             });
             if (response.status === 200) {
-                console.log(response, "singl");
 
                 const { success, data } = await response.json();
 
