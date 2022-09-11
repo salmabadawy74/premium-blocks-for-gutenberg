@@ -75,11 +75,12 @@
         },
         "upperStyles": {
             "type": "array",
-            "default": [{
-                "color": "",
-                "backColor": ""
-    
-            }]
+            "default": [
+                {
+                    "color": "",
+                    "backColor": ""
+                }
+            ]
         },
         "lowerStyles": {
             "type": "array",
@@ -95,7 +96,7 @@
             "default": [
                 {
                     "contentType": "text",
-                    "contentText": "Modal Box Content", 
+                    "contentText": "Modal Box Content",
                     "textColor": "",
                     "textBackColor": "",
                     "footerBackColor": ""
@@ -367,7 +368,7 @@
         "headerBorder": {
             "type": "object",
             "default": {
-                "borderType": "",
+                "borderType": "none",
                 "borderColor": "",
                 "borderWidth": {
                     "Desktop": {
@@ -558,7 +559,7 @@
                 "fontWeight": "400",
                 "fontStyle": "",
                 "textTransform": "",
-                "fontFamily": "Default", 
+                "fontFamily": "Default",
                 "textDecoration": "",
                 "letterSpacing": {
                     "Desktop": "",
@@ -592,7 +593,7 @@
                     "Mobile": "",
                     "unit": "px"
                 },
-                "fontFamily": "Default", 
+                "fontFamily": "Default",
                 "lineHeight": {
                     "Desktop": "",
                     "Tablet": "",
@@ -611,7 +612,7 @@
         "lowerTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "",
+                "fontWeight": "400",
                 "fontStyle": "",
                 "textTransform": "",
                 "letterSpacing": {
@@ -620,7 +621,7 @@
                     "Mobile": "",
                     "unit": "px"
                 },
-                "fontFamily": "Default", 
+                "fontFamily": "Default",
                 "lineHeight": {
                     "Desktop": "",
                     "Tablet": "",
@@ -639,7 +640,7 @@
         "modalTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "",
+                "fontWeight": "400",
                 "fontStyle": "",
                 "textTransform": "",
                 "letterSpacing": {

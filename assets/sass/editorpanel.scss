@@ -5375,6 +5375,10 @@ i.fipicon-angle-left {
     text-overflow: ellipsis;
     overflow: hidden;
     line-height: 33px;
+
+    .dashicons {
+        vertical-align: middle;
+    }
 }
 
 .premium-repeater-row-item-remove {

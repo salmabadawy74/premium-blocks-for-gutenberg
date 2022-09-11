@@ -1771,6 +1771,21 @@
 .premium-modal-box.is-front.active {
   display: block; }
 
+.premium-modal-box .premium-button__sm {
+  padding: 12px 24px;
+  font-size: 14px;
+  line-height: 1; }
+
+.premium-modal-box .premium-button__md {
+  padding: 14px 26px;
+  font-size: 16px;
+  line-height: 1.2; }
+
+.premium-modal-box .premium-button__lg {
+  padding: 16px 28px;
+  font-size: 18px;
+  line-height: 1.3333; }
+
 .premium-modal-box .premium-popup__modal_wrap {
   position: fixed;
   top: 0;
