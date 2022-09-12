@@ -86,9 +86,9 @@
             "type": "array",
             "default": [
                 {
-                    "authorTag": "H3",
+                    "authorTag": "h3",
                     "authorColor": "",
-                    "authorComTag": "H4"
+                    "authorComTag": "h4"
                 }
             ]
         },
@@ -153,15 +153,15 @@
         },
         "hideDesktop": {
             "type": "boolean",
-            "default": false
+            "default": ""
         },
         "hideTablet": {
             "type": "boolean",
-            "default": false
+            "default": ""
         },
         "hideMobile": {
             "type": "boolean",
-            "default": false
+            "default": ""
         },
         "contentStyle": {
             "type": "array",
@@ -187,7 +187,7 @@
             "type": "array",
             "default": [
                 {
-                    "authorComTag": "H4",
+                    "authorComTag": "h4",
                     "authorComColor": "",
                     "dashColor": "",
                     "urlCheck": false,

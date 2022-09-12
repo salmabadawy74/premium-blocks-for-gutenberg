@@ -176,11 +176,11 @@ function Edit(props) {
                             />
                             <RadioComponent
                                 choices={[
-                                    { value: 'h1', label: __('H1', 'premium-blocks-for-gutenberg') }, 
-                                    { value: 'h2', label: __('H2', 'premium-blocks-for-gutenberg') }, 
-                                    { value: 'h3', label: __('H3', 'premium-blocks-for-gutenberg') }, 
-                                    { value: 'h4', label: __('H4', 'premium-blocks-for-gutenberg') }, 
-                                    { value: 'h5', label: __('H5', 'premium-blocks-for-gutenberg') }, 
+                                    { value: 'h1', label: __('H1', 'premium-blocks-for-gutenberg') },
+                                    { value: 'h2', label: __('H2', 'premium-blocks-for-gutenberg') },
+                                    { value: 'h3', label: __('H3', 'premium-blocks-for-gutenberg') },
+                                    { value: 'h4', label: __('H4', 'premium-blocks-for-gutenberg') },
+                                    { value: 'h5', label: __('H5', 'premium-blocks-for-gutenberg') },
                                     { value: 'h6', label: __('H6', 'premium-blocks-for-gutenberg') }
                                 ]}
                                 value={authorStyles[0].authorTag}
@@ -201,11 +201,11 @@ function Edit(props) {
                         >
                             <RadioComponent
                                 choices={[
-                                    { value: 'h1', label: __('H1', 'premium-blocks-for-gutenberg') }, 
-                                    { value: 'h2', label: __('H2', 'premium-blocks-for-gutenberg') }, 
-                                    { value: 'h3', label: __('H3', 'premium-blocks-for-gutenberg') }, 
-                                    { value: 'h4', label: __('H4', 'premium-blocks-for-gutenberg') }, 
-                                    { value: 'h5', label: __('H5', 'premium-blocks-for-gutenberg') }, 
+                                    { value: 'h1', label: __('H1', 'premium-blocks-for-gutenberg') },
+                                    { value: 'h2', label: __('H2', 'premium-blocks-for-gutenberg') },
+                                    { value: 'h3', label: __('H3', 'premium-blocks-for-gutenberg') },
+                                    { value: 'h4', label: __('H4', 'premium-blocks-for-gutenberg') },
+                                    { value: 'h5', label: __('H5', 'premium-blocks-for-gutenberg') },
                                     { value: 'h6', label: __('H6', 'premium-blocks-for-gutenberg') }
                                 ]}
                                 value={authorStyles[0].authorComTag}
@@ -240,16 +240,6 @@ function Edit(props) {
                             className="premium-panel-body"
                             initialOpen={true}
                         >
-                            {authorImgUrl && (
-                                <ResponsiveSingleRangeControl
-                                    label={__("Size", 'premium-blocks-for-gutenberg')}
-                                    value={imgSize}
-                                    max="200"
-                                    onChange={newSize => setAttributes({ imgSize: newSize })}
-                                    showUnit={false}
-                                    defaultValue={0}
-                                />
-                            )}
                             <PremiumTypo
                                 value={authorTypography}
                                 onChange={newValue => setAttributes({ authorTypography: newValue })}
@@ -260,14 +250,28 @@ function Edit(props) {
                                 colorDefault={''}
                                 onColorChange={newValue => saveAuthorStyle({ authorColor: newValue })}
                             />
-                            {authorImgUrl && (
+                        </PanelBody>
+                        {authorImgUrl && (
+                            <PanelBody
+                                title={__("Image", 'premium-blocks-for-gutenberg')}
+                                className="premium-panel-body"
+                                initialOpen={false}
+                            >
+                                <ResponsiveSingleRangeControl
+                                    label={__("Size", 'premium-blocks-for-gutenberg')}
+                                    value={imgSize}
+                                    max="200"
+                                    onChange={newSize => setAttributes({ imgSize: newSize })}
+                                    showUnit={false}
+                                    defaultValue={0}
+                                />
                                 <PremiumBorder
                                     label={__("Border", 'premium-blocks-for-gutenberg')}
                                     value={imgBorder}
                                     onChange={(value) => setAttributes({ imgBorder: value })}
                                 />
-                            )}
-                        </PanelBody>
+                            </PanelBody>
+                        )}
                         <PanelBody
                             title={__("Company", 'premium-blocks-for-gutenberg')}
                             className="premium-panel-body"

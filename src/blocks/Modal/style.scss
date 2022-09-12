@@ -2527,18 +2527,19 @@
         font-size: 14px;
         line-height: 1;
     }
-    
+
     .premium-button__md {
         padding: 14px 26px;
         font-size: 16px;
         line-height: 1.2;
     }
-    
+
     .premium-button__lg {
         padding: 16px 28px;
         font-size: 18px;
         line-height: 1.3333;
     }
+
     .premium-popup__modal_wrap {
         .premium-popup__modal_wrap_overlay {
             background-color: rgba(0, 0, 0, 0.5);
@@ -2864,7 +2865,9 @@ button.premium-modal-box-modal-close {
     -ms-flex-align: center;
     align-items: center;
     padding: 5px 5px;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom-style: solid !important;
+    border-bottom-width: 1px !important;
+    border-bottom-color: #e5e5e5;
 
     .premium-modal-box-modal-close {
         margin-top: -2px;

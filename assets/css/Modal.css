@@ -2050,7 +2050,9 @@ button.premium-modal-box-modal-close {
   -ms-flex-align: center;
   align-items: center;
   padding: 5px 5px;
-  border-bottom: 1px solid #e5e5e5; }
+  border-bottom-style: solid !important;
+  border-bottom-width: 1px !important;
+  border-bottom-color: #e5e5e5; }
   .premium-modal-box-modal-header .premium-modal-box-modal-close {
     margin-top: -2px; }
   .premium-modal-box-modal-header .premium-modal-box-modal-title {
