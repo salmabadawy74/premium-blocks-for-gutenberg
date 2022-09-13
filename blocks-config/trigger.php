@@ -217,9 +217,9 @@ function register_block_pbg_trigger() {
 add_action( 'init', 'register_block_pbg_trigger' );
 
 function trigger_enqueue() {
-	wp_register_script(
+	wp_enqueue_script(
 		'premium-trigger-block-script',
-		PREMIUM_BLOCKS_URL . 'assets/trigger.js',
+		PREMIUM_BLOCKS_URL . 'assets/js/trigger.js',
 		array( 'jquery' ),
 		PREMIUM_BLOCKS_VERSION,
 		true

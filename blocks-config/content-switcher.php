@@ -341,7 +341,7 @@ add_action( 'init', 'register_block_pbg_content_switcher' );
 
 function content_switcher_enqueue() {
     
-	wp_register_script(
+	wp_enqueue_script(
 		'content-switcher',
 		PREMIUM_BLOCKS_URL . 'assets/js/content-switcher.js',
 		array( 'jquery' ),
