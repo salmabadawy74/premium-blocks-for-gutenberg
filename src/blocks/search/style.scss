@@ -6,6 +6,7 @@
 @import "node_modules/@wordpress/base-styles/z-index";
 @import "node_modules/@wordpress/base-styles/default-custom-properties";
 
+$pbBorderColor: #e1e1e1;
 $grid-unit: 8px;
 $grid-unit-05: 0.5 * $grid-unit;
 $grid-unit-10: 1 * $grid-unit;
@@ -96,7 +97,7 @@ $gray-80: #2c3338;
 
 .wp-block-search__button-inside.wp-block-search__text-button {
     .wp-block-premium-search__inside-wrapper {
-        border: 1px solid var(--pbBorderColor);
+        border: 1px solid $pbBorderColor;
 
         .wp-block-premium-search__input {
             border: none;
@@ -106,13 +107,13 @@ $gray-80: #2c3338;
 
 .wp-block-search__button-outside.wp-block-search__text-button {
     .wp-block-premium-search__input {
-        border: 1px solid var(--pbBorderColor);
+        border: 1px solid $pbBorderColor;
     }
 }
 
 .wp-block-search__button-inside.wp-block-search__icon-button {
     .wp-block-premium-search__inside-wrapper {
-        border: 1px solid var(--pbBorderColor);
+        border: 1px solid $pbBorderColor;
 
         .wp-block-premium-search__input {
             border: none;
@@ -153,7 +154,7 @@ $gray-80: #2c3338;
 
 .wp-block-premium-search.wp-block-premium-search__button-inside .wp-block-premium-search__inside-wrapper {
     padding: 4px;
-    border: 1px solid var(--pbBorderColor);
+    border: 1px solid $pbBorderColor;
 
     .wp-block-premium-search__input {
         border-radius: 0;
@@ -276,7 +277,7 @@ $gray-80: #2c3338;
     z-index: 999;
     overflow-y: auto;
     padding: 20px;
-    border: 1px solid var(--pbBorderColor);
+    border: 1px solid $pbBorderColor;
 
     a {
         display: inline-flex;
@@ -356,7 +357,7 @@ $gray-80: #2c3338;
                 outline: none;
                 box-shadow: none;
                 border-style: solid;
-                border-color: var(--pbBorderColor);
+                border-color: $pbBorderColor;
                 border-radius: 3px;
                 background-color: transparent;
 

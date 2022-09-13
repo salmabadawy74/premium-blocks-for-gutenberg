@@ -417,6 +417,7 @@ class PBG_Blocks_Helper
 				register_block_pbg_content_switcher();
 			} elseif ($slug === 'search') {
 				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/search.php';
+				register_block_premium_search();
 			}
 		}
 		register_block_type(

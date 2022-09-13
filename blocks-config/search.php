@@ -400,4 +400,4 @@ function search_enqueue() {
     );
 }
 
-add_action( 'enqueue_block_assets', 'content_switcher_enqueue' );
+add_action( 'enqueue_block_assets', 'search_enqueue' );
