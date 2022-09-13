@@ -2162,5 +2162,11 @@ body.swal2-toast-shown .swal2-container.swal2-bottom-end, body.swal2-toast-shown
     grid-template-columns: repeat(2, 1fr);
   }
 }
+.components-editor-notices__snackbar {
+  position: fixed;
+  bottom: 40px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
 
 /*# sourceMappingURL=index.css.map*/

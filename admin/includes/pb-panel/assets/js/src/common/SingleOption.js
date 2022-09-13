@@ -3,8 +3,9 @@ import PBG_Block_Icons from "./block-icons";
 //import { Dashicon, ToggleControl } from '@wordpress/components';
 //const { Dashicon, ToggleControl } = wp.components;
 const { PanelBody, Dashicon, ToggleControl } = wp.components;
-import apiFetch from "@wordpress/api-fetch";
 const { __ } = wp.i18n;
+import { useDispatch } from "@wordpress/data";
+import { store as noticesStore } from "@wordpress/notices";
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
@@ -13,7 +14,7 @@ function classNames(...classes) {
 const SingleOption = (props) => {
     const [value, setValue] = useState(props.value);
     const [isLoading, setIsLoading] = useState(false);
-
+    const { createNotice } = useDispatch(noticesStore);
     const handleChange = async () => {
         setIsLoading(true);
 
@@ -24,22 +25,31 @@ const SingleOption = (props) => {
         body.append("option", props.id);
         body.append("value", newValue);
 
+        console.log(props.id, newValue);
+
         try {
             const response = await fetch(PremiumBlocksPanelData.ajaxurl, {
                 method: "POST",
                 body,
             });
             if (response.status === 200) {
-
                 const { success, data } = await response.json();
 
                 if (success && data.values) {
                     setValue(newValue);
                     props.onChange(data.values);
+                    createNotice("success", "Settings saved ", {
+                        isDismissible: true,
+                        type: "snackbar",
+                    });
                 }
             }
         } catch (e) {
             console.log(e);
+            createNotice("error", __("An unknown error occurred.", ""), {
+                isDismissible: true,
+                type: "snackbar",
+            });
         }
         setIsLoading(false);
     };
