@@ -5150,10 +5150,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../components/typography/fontLoader */ "../components/typography/fontLoader.js");
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const {
   __
 } = wp.i18n;
-
 const {
   withSelect
 } = wp.data;
@@ -5169,25 +5188,6 @@ const {
   useState,
   useRef
 } = wp.element;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -5349,16 +5349,16 @@ function Edit(props) {
       "border-radius": `${switchRadius}${switchRadiusUnit} !important`,
       "box-shadow": `${switchShadow.horizontal}px ${switchShadow.vertical}px ${switchShadow.blur}px ${switchShadow.color} ${switchShadow.position} !important`
     };
-    styles[`.${blockId} .premium-content-switcher-toggle-inline.premium-content-switcher-first-label `] = {
+    styles[`.${blockId} .premium-content-switcher-toggle-inline .premium-content-switcher-first-label `] = {
       "margin-right": `${labelSpacing[props.deviceType]}px !important`
     };
-    styles[`.${blockId} .premium-content-switcher-toggle-inline.premium-content-switcher-second-label `] = {
+    styles[`.${blockId} .premium-content-switcher-toggle-inline .premium-content-switcher-second-label `] = {
       "margin-left": `${labelSpacing[props.deviceType]}px !important`
     };
-    styles[`.${blockId} .premium-content-switcher-toggle-block.premium-content-switcher-first-label `] = {
+    styles[`.${blockId} .premium-content-switcher-toggle-block .premium-content-switcher-first-label `] = {
       "margin-bottom": `${labelSpacing[props.deviceType]}px !important`
     };
-    styles[`.${blockId} .premium-content-switcher-toggle-block.premium-content-switcher-second-label `] = {
+    styles[`.${blockId} .premium-content-switcher-toggle-block .premium-content-switcher-second-label `] = {
       "margin-top": `${labelSpacing[props.deviceType]}px !important`
     };
     return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_20__.generateCss)(styles);
@@ -5369,7 +5369,7 @@ function Edit(props) {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_inspectorTab__WEBPACK_IMPORTED_MODULE_15__["default"], {
     key: "layout"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-    title: __("Switcher"),
+    title: __("Switcher", "premium-blocks-for-gutenberg"),
     className: "premium-panel-body",
     initialOpen: true
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
@@ -5759,7 +5759,7 @@ function Edit(props) {
   })))), loadFirstLabelGoogleFonts, loadSecondLabelGoogleFonts));
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (withSelect((select, props) => {
+/* harmony default export */ __webpack_exports__["default"] = (withSelect(select => {
   const {
     __experimentalGetPreviewDeviceType = null
   } = select("core/edit-post");
