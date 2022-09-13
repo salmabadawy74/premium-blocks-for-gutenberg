@@ -7,7 +7,6 @@ const System = () => {
     const { system_info } = PremiumBlocksPanelData;
 
     return <Container>
-        <h2 className="pb-section-title"><span className='icon'><Dashicon icon="edit" /></span>{__('Useful Information', "premium-blocks-for-gutenberg")}</h2>
         <div id='system-info'>
             <table className="widefat" cellspacing="0">
                 <thead>

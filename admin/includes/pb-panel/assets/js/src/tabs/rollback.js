@@ -20,7 +20,7 @@ const RollBack = () => {
         <Container>
             <div className='pb-section-info-wrap'>
                 <div className='pb-section-info'>
-                    <h4>{__('Rollback to Previous Version', 'premium-blocks-for-gutenberg')}</h4>
+                    <h2>{__('Rollback to Previous Version', 'premium-blocks-for-gutenberg')}</h2>
                     <p>
                         {
                             __(`Experiencing an issue with Premium Blocks version ${system_info.theme_version} ? Roll back to a previous version to help troubleshoot the issue.`, 'premium-blocks-for-gutenberg')

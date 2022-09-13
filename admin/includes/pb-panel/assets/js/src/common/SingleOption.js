@@ -1,11 +1,9 @@
 import { useState } from '@wordpress/element'
 import PBG_Block_Icons from './block-icons'
-//import { Dashicon, ToggleControl } from '@wordpress/components';
-//const { Dashicon, ToggleControl } = wp.components;
+import AdvancedSwitcher from './AdvancedSwitcher'
+
 const {
-    PanelBody,
     Dashicon,
-    ToggleControl,
 } = wp.components;
 const { __ } = wp.i18n;
 
@@ -19,7 +17,7 @@ const SingleOption = (props) => {
 
 
     const handleChange = async () => {
-        setIsLoading(true);
+       // setIsLoading(true);
 
         let newValue = !value
         const body = new FormData()
@@ -35,7 +33,6 @@ const SingleOption = (props) => {
             })
             if (response.status === 200) {
                 const { success, data } = await response.json()
-
                 if (success && data.values) {
                     setValue(newValue);
                     props.onChange(data.values);
@@ -46,7 +43,7 @@ const SingleOption = (props) => {
             console.log(e);
 
         }
-        setIsLoading(false)
+       // setIsLoading(false)
     };
 
     let checked = value === true ? true : false
@@ -55,13 +52,13 @@ const SingleOption = (props) => {
     return <div id={props.id} className="pb-option-element">
         <div className="pb-option-element-body">
             <div className="icon">
-                <span className="customize-control-icon pb-control-icon">{PBG_Block_Icons[props.id]}</span>
+                <span className="customize-control-icon pb-control-icon">{PBG_Block_Icons[props.params.icon]}</span>
             </div>
 
             <div className="pb-block-details">
                 <h2 className="customize-control-title pb-control-title">{props.params.label}{__(" Gutenberg Block", "premium-blocks-for-gutenberg")}</h2>
                 <div className="pb-block-links">
-                    <div className="live-preview customize-control-live-preview"><a href={`https://premiumblocks.io/gutenberg-blocks/${props.id}`} target="_blank" rel="noreferrer">{__('live Preview', 'premium-blocks-for-gutenberg')}</a></div>
+                    <div className="live-preview customize-control-live-preview"><a href={`https://premiumblocks.io/gutenberg-blocks/${props.id}`} target="_blank" rel="noreferrer">{__('Live Preview', 'premium-blocks-for-gutenberg')}</a></div>
                     <div className="guidelines customize-control-guidelines"><a href={`https://premiumblocks.io/docs/${props.id}`} target="_blank" rel="noreferrer">{__('Guidelines', 'premium-blocks-for-gutenberg')} </a></div>
                 </div>
             </div>
@@ -69,12 +66,18 @@ const SingleOption = (props) => {
                 <Dashicon className='pb-loading' icon='update' />
             )}
             <div className="option-actions">
-                <ToggleControl
+            <AdvancedSwitcher 
+            onChange={() => {
+                handleChange()
+            }}
+            checked={checked} />
+
+                {/* <ToggleControl
                     checked={checked}
                     onChange={() => {
                         handleChange()
                     }}
-                />
+                /> */}
             </div>
         </div>
     </div>

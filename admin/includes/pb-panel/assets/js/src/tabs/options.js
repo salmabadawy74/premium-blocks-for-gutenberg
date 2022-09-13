@@ -74,25 +74,25 @@ const OptionsTab = (props) => {
 
     return <Fragment>
         <Container>
-            <div className=" justify-between items-center space-y-4 sm:flex sm:flex-col lg:space-y-0 lg:flex-row">
-                <nav className="flex -ml-4 flex-wrap justify-center lg:justify-start" aria-label="Tabs">
+            <div className="pb-options-header">
+                <nav className="pb-filter-tabs" aria-label="Tabs">
                     {tabs.map((tab) => (
                         <button
 
                             key={tab.name}
-                            className={``}
+                            className={`pb-filter-tab`}
                             onClick={() => setFilter(tab.slug)}
                         >
                             {tab.name}
                         </button>
                     ))}
                 </nav>
-            </div>
             <CheckboxControl
                 label="Activate All Blocks"
                 checked={isChecked}
                 onChange={(val) => handleDeactivated(val)}
             />
+            </div>
             <div className='advanced-options options-section'>
                 <OptionsComponent options={options} values={values} onChange={(newVal, optionId) => {
                     handleChange(newVal, optionId)

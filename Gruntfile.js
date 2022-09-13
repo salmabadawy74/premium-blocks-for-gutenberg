@@ -83,6 +83,8 @@ module.exports = function (grunt) {
                     "!*.zip",
 
                     "!src/**",
+                    "!admin/includes/pb-panel/assets/js/src/**",
+                    "!admin/includes/pb-panel/assets/js/node_modules/**",
                 ],
                 dest: "premium-blocks-for-gutenberg/"
             }

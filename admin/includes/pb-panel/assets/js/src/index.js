@@ -40,7 +40,7 @@ const RendeTabs = () => {
             name: 'blocks',
             title: __('Premium Blocks', "premium-blocks-for-gutenberg"),
             className: 'pblocks',
-            priority: 5,
+            priority: 10,
             data: {
                 Component: OptionsComponent,
                 props: { options: PremiumBlocksPanelData.options, values: PremiumBlocksPanelData.values }
@@ -60,7 +60,7 @@ const RendeTabs = () => {
             name: 'settings',
             title: __('Settings', "premium-blocks-for-gutenberg"),
             className: 'system',
-            priority: 30,
+            priority: 15,
             data: {
                 Component: Setting,
                 props: {}
@@ -70,7 +70,7 @@ const RendeTabs = () => {
             name: 'versionControl',
             title: __('version Control', "premium-blocks-for-gutenberg"),
             className: 'system',
-            priority: 30,
+            priority: 20,
             data: {
                 Component: RollBack,
                 props: {}
