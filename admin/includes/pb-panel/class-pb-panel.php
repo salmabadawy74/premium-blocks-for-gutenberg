@@ -53,7 +53,6 @@ if (!class_exists('Pb_Panel')) {
 		{
 
 			add_action('wp_ajax_pb-panel-update-option', array($this, 'update_option'));
-			add_action('wp_ajax_pb-panel-update-options', array($this, 'update_options'));
 
 			add_action('admin_menu', array($this, 'register_custom_menu_page'), 100);
 			add_action('admin_bar_menu', array($this, 'admin_bar_item'), 1000);
@@ -144,38 +143,9 @@ if (!class_exists('Pb_Panel')) {
 
 			if ('' !== $value && '' !== $option) {
 				$options[$option] = $value;
-			
 			}
-            elseif("" !==$value){
-                  foreach($options as $x => $val)
-                  {
-                      $options[$x]=$value;
-                  }
-            }
-                	update_option('pb_options', $options);
-
-				wp_send_json_success(
-					array(
-						'success' => true,
-						'values'  => $options,
-					)
-				);
-
-			wp_send_json_error();
-		}
-		public function update_options()
-		{
-			check_ajax_referer('pb-panel', 'nonce');
-
-			$values  = isset($_POST['values']) ? json_decode(stripslashes($_POST['values']), true) : array();
-
-			$options = apply_filters('pb_options', get_option('pb_options', array()));
-			// $options = get_option( 'pb_options' );
-			$options = !is_array($options) ? array() : $options;
-
-			$options = $values;
-
 			update_option('pb_options', $options);
+
 			wp_send_json_success(
 				array(
 					'success' => true,
@@ -185,7 +155,6 @@ if (!class_exists('Pb_Panel')) {
 
 			wp_send_json_error();
 		}
-
 
 		/**
 		 * Add Premium Blocks panel to admin bar
@@ -523,9 +492,6 @@ if (!class_exists('Pb_Panel')) {
 				array(
 					'options'     => self::panel_options(),
 					'values'      => apply_filters('pb_options', get_option('pb_options', array())),
-					// 'values'      => array(
-					// 'options' => get_option( 'pb_options', array() ),
-					// ),
 					'ajaxurl'     => admin_url('admin-ajax.php'),
 					'nonce'       => wp_create_nonce('pb-panel'),
 					'system_info' => self::get_system_info(),
