@@ -1,10 +1,12 @@
 import { Fragment, useState } from "@wordpress/element";
 import Container from "../common/Container";
 import OptionsComponent from "../options-component";
+import classNames from "classnames";
+const { __ } = wp.i18n;
+const { Dashicon } = wp.components;
 
 const OptionsTab = (props) => {
     const [values, setValues] = useState(props.values);
-    const [activeFilter, setFilter] = useState("all");
 
     const handleChange = (newValues) => {
         setValues(newValues);
@@ -20,7 +22,7 @@ const OptionsTab = (props) => {
         { name: "Form", slug: "form" },
         { name: "SEO", slug: "seo" },
     ];
-
+    const [activeFilter, setFilter] = useState("all");
     let options = Object.keys(props.options)
         .filter((key) => props.options[key].category.includes(activeFilter))
         .reduce((obj, key) => {
@@ -28,17 +30,18 @@ const OptionsTab = (props) => {
                 [key]: props.options[key],
             });
         }, {});
+
     return (
         <Fragment>
             <Container>
-                <div className=" ">
-                    <nav className="" aria-label="Tabs">
+                <div className="pb-options-header">
+                    <nav className="pb-filter-tabs" aria-label="Tabs">
                         {tabs.map((tab) => (
                             <button
                                 key={tab.name}
-                                className={
-                                    tab.slug === activeFilter ? "active" : ""
-                                }
+                                className={classNames("pb-filter-tab", {
+                                    active: activeFilter === tab.slug,
+                                })}
                                 onClick={() => setFilter(tab.slug)}
                             >
                                 {tab.name}
@@ -46,7 +49,6 @@ const OptionsTab = (props) => {
                         ))}
                     </nav>
                 </div>
-
                 <div className="advanced-options options-section">
                     <OptionsComponent
                         options={options}

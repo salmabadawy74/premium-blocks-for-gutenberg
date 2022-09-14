@@ -29,8 +29,10 @@ const AdvancedSwitcher = props => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pb-advanced-switcher"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pb-title"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
     className: "pb-swticher-label"
-  }, label), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, label), description, " "), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pb-switcher"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
     checked: checked,
@@ -109,25 +111,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _block_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block-icons */ "./src/common/block-icons.js");
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_notices__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/notices */ "@wordpress/notices");
-/* harmony import */ var _wordpress_notices__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_notices__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _AdvancedSwitcher__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AdvancedSwitcher */ "./src/common/AdvancedSwitcher.js");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_notices__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/notices */ "@wordpress/notices");
+/* harmony import */ var _wordpress_notices__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_notices__WEBPACK_IMPORTED_MODULE_4__);
 
 
- //import { Dashicon, ToggleControl } from '@wordpress/components';
-//const { Dashicon, ToggleControl } = wp.components;
+
+
+
 
 const {
-  PanelBody,
-  Dashicon,
-  ToggleControl
+  Dashicon
 } = wp.components;
 const {
   __
 } = wp.i18n;
-
-
 
 function classNames() {
   for (var _len = arguments.length, classes = new Array(_len), _key = 0; _key < _len; _key++) {
@@ -142,17 +142,15 @@ const SingleOption = props => {
   const [isLoading, setIsLoading] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const {
     createNotice
-  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.useDispatch)(_wordpress_notices__WEBPACK_IMPORTED_MODULE_3__.store);
+  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.useDispatch)(_wordpress_notices__WEBPACK_IMPORTED_MODULE_4__.store);
 
   const handleChange = async () => {
-    setIsLoading(true);
     let newValue = !value;
     const body = new FormData();
     body.append("action", "pb-panel-update-option");
     body.append("nonce", PremiumBlocksPanelData.nonce);
     body.append("option", props.id);
     body.append("value", newValue);
-    console.log(props.id, newValue);
 
     try {
       const response = await fetch(PremiumBlocksPanelData.ajaxurl, {
@@ -182,8 +180,6 @@ const SingleOption = props => {
         type: "snackbar"
       });
     }
-
-    setIsLoading(false);
   };
 
   let checked = value === true ? true : false;
@@ -196,7 +192,7 @@ const SingleOption = props => {
     className: "icon"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "customize-control-icon pb-control-icon"
-  }, _block_icons__WEBPACK_IMPORTED_MODULE_1__["default"][props.id])), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, _block_icons__WEBPACK_IMPORTED_MODULE_1__["default"][props.params.icon])), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pb-block-details"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
     className: "customize-control-title pb-control-title"
@@ -208,7 +204,7 @@ const SingleOption = props => {
     href: `https://premiumblocks.io/gutenberg-blocks/${props.id}`,
     target: "_blank",
     rel: "noreferrer"
-  }, __("live Preview", "premium-blocks-for-gutenberg"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, __("Live Preview", "premium-blocks-for-gutenberg"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "guidelines customize-control-guidelines"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: `https://premiumblocks.io/docs/${props.id}`,
@@ -219,11 +215,11 @@ const SingleOption = props => {
     icon: "update"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "option-actions"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-    checked: checked,
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_AdvancedSwitcher__WEBPACK_IMPORTED_MODULE_2__["default"], {
     onChange: () => {
       handleChange();
-    }
+    },
+    checked: checked
   }))));
 };
 
@@ -246,7 +242,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 
 const PBG_Block_Icons = {
-  team: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+  person: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
     id: "Premium_Blocks",
     "data-name": "Premium Blocks",
     xmlns: "http://www.w3.org/2000/svg",
@@ -377,7 +373,7 @@ const PBG_Block_Icons = {
     d: "M21.5,18.25H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z",
     transform: "translate(-2.75 -6.75)"
   }))),
-  countup: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+  count_up: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
     id: "Accordion",
     xmlns: "http://www.w3.org/2000/svg",
     viewBox: "0 0 19 21.5"
@@ -571,25 +567,6 @@ const PBG_Block_Icons = {
     d: "M4.5,21.75A.74.74,0,0,1,4,21.53l-1-1A.75.75,0,0,1,4,19.47l.47.47L7,17.47A.75.75,0,1,1,8,18.53l-3,3A.74.74,0,0,1,4.5,21.75Z",
     transform: "translate(-2.75 -3.25)"
   }))),
-  testimonials: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
-    id: "Accordion",
-    xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 21.5 21.56"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("defs", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, `.cls-1{fill:#1a1a1a;}`)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("title", null, "premium-testimonials"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("g", {
-    id: "Testimonials"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-    class: "cls-1",
-    d: "M12.5,23.28a2.27,2.27,0,0,1-1.8-1l-1.5-2a.54.54,0,0,0-.2-.1H8.5c-4.17,0-6.75-1.13-6.75-6.75v-5c0-4.42,2.33-6.75,6.75-6.75h8c4.42,0,6.75,2.33,6.75,6.75v5c0,4.42-2.33,6.75-6.75,6.75H16a.26.26,0,0,0-.2.1l-1.5,2A2.27,2.27,0,0,1,12.5,23.28ZM8.5,3.22c-3.58,0-5.25,1.67-5.25,5.25v5c0,4.52,1.55,5.25,5.25,5.25H9a1.87,1.87,0,0,1,1.41.71l1.49,2a.69.69,0,0,0,1.2,0l1.5-2a1.77,1.77,0,0,1,1.4-.7h.5c3.58,0,5.25-1.67,5.25-5.25v-5c0-3.58-1.67-5.25-5.25-5.25Z",
-    transform: "translate(-1.75 -1.72)"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-    class: "cls-1",
-    d: "M17.5,9.22H7.5a.75.75,0,0,1,0-1.5h10a.75.75,0,0,1,0,1.5Z",
-    transform: "translate(-1.75 -1.72)"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-    class: "cls-1",
-    d: "M13.5,14.22h-6a.75.75,0,1,1,0-1.5h6a.75.75,0,0,1,0,1.5Z",
-    transform: "translate(-1.75 -1.72)"
-  }))),
   section: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
     id: "Premium_Blocks",
     "data-name": "Premium Blocks",
@@ -712,7 +689,26 @@ const PBG_Block_Icons = {
     class: "cls-1",
     d: "M22.5,23.25A.74.74,0,0,1,22,23l-2-2A.75.75,0,0,1,21,20l2,2A.75.75,0,0,1,23,23,.74.74,0,0,1,22.5,23.25Z",
     transform: "translate(-1.75 -1.75)"
-  }))
+  })),
+  image_separator: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    id: "Premium_Blocks",
+    "data-name": "Premium Blocks",
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "21.49",
+    height: "21.5",
+    viewBox: "0 0 21.49 21.5"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("defs", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, `.cls-1{fill:#1a1a1a;}`)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("title", null, "premium-image-separator-block"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("g", {
+    id: "Image_Separator",
+    "data-name": "Image Separator"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M18.87,23.25H6.11a4.37,4.37,0,0,1-3.89-6.32l1.72-3.44a3.23,3.23,0,0,1,2.49-1.93,3.21,3.21,0,0,1,2.81,1.36l.22.29a1.76,1.76,0,0,0,1.45.78,1.74,1.74,0,0,0,1.3-1L14.1,9.57c.78-1.41,1.83-2.16,3-2.09s2.08.9,2.71,2.38l3.13,7.31h0a4.36,4.36,0,0,1-4,6.08ZM6.7,13H6.58a1.8,1.8,0,0,0-1.3,1.11L3.56,17.6a2.86,2.86,0,0,0,2.55,4.15H18.87a2.87,2.87,0,0,0,2.64-4l-3.13-7.3C18,9.55,17.47,9,17,9s-1.09.47-1.56,1.32L13.52,13.7A3.19,3.19,0,0,1,11,15.48a3.24,3.24,0,0,1-2.75-1.34l-.23-.29A1.84,1.84,0,0,0,6.7,13Z",
+    transform: "translate(-1.75 -1.75)"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "M7.49,9.25A3.75,3.75,0,1,1,11.24,5.5,3.76,3.76,0,0,1,7.49,9.25Zm0-6A2.25,2.25,0,1,0,9.74,5.5,2.25,2.25,0,0,0,7.49,3.25Z",
+    transform: "translate(-1.75 -1.75)"
+  })))
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PBG_Block_Icons);
 
@@ -1187,14 +1183,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _common_Container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../common/Container */ "./src/common/Container.js");
 /* harmony import */ var _options_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../options-component */ "./src/options-component.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
 
+
+const {
+  __
+} = wp.i18n;
+const {
+  Dashicon
+} = wp.components;
 
 const OptionsTab = props => {
   const [values, setValues] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(props.values);
-  const [activeFilter, setFilter] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)("all");
 
   const handleChange = newValues => {
     setValues(newValues);
@@ -1225,19 +1229,22 @@ const OptionsTab = props => {
     name: "SEO",
     slug: "seo"
   }];
+  const [activeFilter, setFilter] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)("all");
   let options = Object.keys(props.options).filter(key => props.options[key].category.includes(activeFilter)).reduce((obj, key) => {
     return Object.assign(obj, {
       [key]: props.options[key]
     });
   }, {});
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_Container__WEBPACK_IMPORTED_MODULE_1__["default"], null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: " "
+    className: "pb-options-header"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("nav", {
-    className: "",
+    className: "pb-filter-tabs",
     "aria-label": "Tabs"
   }, tabs.map(tab => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     key: tab.name,
-    className: tab.slug === activeFilter ? "active" : "",
+    className: classnames__WEBPACK_IMPORTED_MODULE_3___default()("pb-filter-tab", {
+      active: activeFilter === tab.slug
+    }),
     onClick: () => setFilter(tab.slug)
   }, tab.name)))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "advanced-options options-section"
@@ -1297,7 +1304,7 @@ const RollBack = () => {
     className: "pb-section-info-wrap"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pb-section-info"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h4", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Rollback to Previous Version', 'premium-blocks-for-gutenberg')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)(`Experiencing an issue with Premium Blocks version ${system_info.theme_version} ? Roll back to a previous version to help troubleshoot the issue.`, 'premium-blocks-for-gutenberg'))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Rollback to Previous Version", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)(`Experiencing an issue with Premium Blocks version ${system_info.theme_version} ? Roll back to a previous version to help troubleshoot the issue.`, "premium-blocks-for-gutenberg"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pb-section-info-cta"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("select", {
     id: "location",
@@ -1315,13 +1322,13 @@ const RollBack = () => {
     className: "pb-button secondary primary",
     onClick: rollbackButtonClickHandler
   }, "Rollback"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_warning__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)(' Warning: Please backup your database before making the rollback.', 'premium-blocks-for-gutenberg')
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)(" Warning: Please backup your database before making the rollback.", "premium-blocks-for-gutenberg")
   }))), openPopup && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_popup__WEBPACK_IMPORTED_MODULE_5__["default"], {
     openPopup: openPopup,
     setopenPopup: setopenPopup,
     previousVersionSelect: previousVersionSelect,
-    header: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Rollback to Previous Version', 'premium-blocks-for-gutenberg'),
-    message: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)(`Are you sure you want to reinstall version ${previousVersionSelect}?`, 'premium-blocks-for-gutenberg')
+    header: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Rollback to Previous Version", "premium-blocks-for-gutenberg"),
+    message: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)(`Are you sure you want to reinstall version ${previousVersionSelect}?`, "premium-blocks-for-gutenberg")
   }));
 };
 
@@ -1372,42 +1379,43 @@ const Setting = () => {
     };
     updatedData[key] = value;
     setData(updatedData);
-    await saveEntityRecord('root', 'site', {
-      'pbg_maps_settings': updatedData
+    await saveEntityRecord("root", "site", {
+      pbg_maps_settings: updatedData
     });
   };
 
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_Container__WEBPACK_IMPORTED_MODULE_3__["default"], null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
-    className: "pb-section-title"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "icon"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Dashicon, {
-    icon: "edit"
-  })), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Setting', "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_Container__WEBPACK_IMPORTED_MODULE_3__["default"], null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pb-settings"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pb-api-settings"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pb-advanced-input"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Google Maps API Key:', 'premium-blocks-for-gutenberg')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Google Maps API Key:", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Premium Maps Block requires Google API key to be entered below. If you don’t have one,", "premium-blocks-for-gutenberg"), " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: "https://developers.google.com/maps/documentation/javascript/get-api-key",
+    target: "_blank",
+    rel: "noreferrer"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Click Here", "premium-blocks-for-gutenberg")), " ", (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("to get your key.", "premium-blocks-for-gutenberg"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "text",
-    value: data === null || data === void 0 ? void 0 : data['premium-map-key'],
-    onChange: e => onChangeData('premium-map-key', e.target.value),
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('API Key', 'premium-blocks-for-gutenberg')
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    value: data === null || data === void 0 ? void 0 : data["premium-map-key"],
+    onChange: e => onChangeData("premium-map-key", e.target.value),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("API Key", "premium-blocks-for-gutenberg")
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pb-setting-options"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_AdvancedSwitcher__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Enable Maps API JS File', 'premium-blocks-for-gutenberg'),
-    onChange: checked => onChangeData('premium-map-api', checked),
-    checked: data === null || data === void 0 ? void 0 : data['premium-map-api']
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Enable Maps API JS File", "premium-blocks-for-gutenberg"),
+    onChange: checked => onChangeData("premium-map-api", checked),
+    checked: data === null || data === void 0 ? void 0 : data["premium-map-api"],
+    description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("This will Enable the API JS file if it's not included by another theme or plugin.", "premium-blocks-for-gutenberg")
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_AdvancedSwitcher__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Enable Font Awesome Icons', 'premium-blocks-for-gutenberg'),
-    onChange: checked => onChangeData('premium-fa-css', checked),
-    checked: data === null || data === void 0 ? void 0 : data['premium-fa-css']
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Enable Font Awesome Icons", "premium-blocks-for-gutenberg"),
+    onChange: checked => onChangeData("premium-fa-css", checked),
+    checked: data === null || data === void 0 ? void 0 : data["premium-fa-css"],
+    description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("This will load Font Awesome Icons to be used within Premium Blocks.", "premium-blocks-for-gutenberg")
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_AdvancedSwitcher__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Allow JSON Uploads', 'premium-blocks-for-gutenberg'),
-    onChange: checked => onChangeData('premium-upload-json', checked),
-    checked: data === null || data === void 0 ? void 0 : data['premium-upload-json']
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Allow JSON Uploads", "premium-blocks-for-gutenberg"),
+    onChange: checked => onChangeData("premium-upload-json", checked),
+    checked: data === null || data === void 0 ? void 0 : data["premium-upload-json"],
+    description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("This option will be used to upload JSON files in lottie animation block.", "premium-blocks-for-gutenberg")
   }))));
 };
 
@@ -1443,50 +1451,44 @@ const System = () => {
   const {
     system_info
   } = PremiumBlocksPanelData;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_Container__WEBPACK_IMPORTED_MODULE_2__["default"], null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
-    className: "pb-section-title"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "icon"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Dashicon, {
-    icon: "edit"
-  })), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Useful Information', "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_Container__WEBPACK_IMPORTED_MODULE_2__["default"], null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     id: "system-info"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("table", {
     className: "widefat",
     cellspacing: "0"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("thead", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
     colspan: "2"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('WordPress Environment', "premium-blocks-for-gutenberg")))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tbody", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Home URL', "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, system_info.home_url)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('WP Version', "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, system_info.version)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('WP Multisite', "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("WordPress Environment", "premium-blocks-for-gutenberg")))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tbody", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Home URL", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, system_info.home_url)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("WP Version", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, system_info.version)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("WP Multisite", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
     dangerouslySetInnerHTML: {
-      __html: system_info.multisite ? '&#10004;' : '&ndash;'
+      __html: system_info.multisite ? "&#10004;" : "&ndash;"
     }
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('WP Memory Limit', "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("mark", null, system_info.memory_limit_size, " ", system_info.memory_limit < 67108864 && (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('We recommend setting wp memory at least 64MB.', "premium-blocks-for-gutenberg")))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Theme Version', "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, system_info.theme_version)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('WP Path', "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, system_info.wp_path)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('WP Debug Mode', "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("WP Memory Limit", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("mark", null, system_info.memory_limit_size, " ", system_info.memory_limit < 67108864 && (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("We recommend setting wp memory at least 64MB.", "premium-blocks-for-gutenberg")))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Theme Version", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, system_info.theme_version)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("WP Path", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, system_info.wp_path)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("WP Debug Mode", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
     dangerouslySetInnerHTML: {
-      __html: system_info.debug ? '&#10004;' : '&ndash;'
+      __html: system_info.debug ? "&#10004;" : "&ndash;"
     }
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Language', "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, system_info.lang)))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("table", {
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Language", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, system_info.lang)))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("table", {
     className: "widefat",
     cellspacing: "0"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("thead", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
     colspan: "2"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Server Environment', "premium-blocks-for-gutenberg")))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tbody", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Server Info', "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, system_info.server)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('PHP Version', "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, system_info.php_version ? system_info.php_version : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Couldn't determine PHP version because phpversion() doesn't exist.", "premium-blocks-for-gutenberg"))), system_info.ini_get && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('PHP Memory Limit', "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, system_info.memory_limit)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('PHP Post Max Size', "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, system_info.post_max_size)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('PHP Time Limit', "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("mark", null, system_info.max_execution_time, " ", system_info.memory_limit < 60 && 0 != system_info.memory_limit && (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('We recommend setting max execution time at least 60.', "premium-blocks-for-gutenberg")))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('PHP Max Input Vars', "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, system_info.max_input_vars)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('SUHOSIN Installed', "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Server Environment", "premium-blocks-for-gutenberg")))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tbody", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Server Info", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, system_info.server)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("PHP Version", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, system_info.php_version ? system_info.php_version : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Couldn't determine PHP version because phpversion() doesn't exist.", "premium-blocks-for-gutenberg"))), system_info.ini_get && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("PHP Memory Limit", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, system_info.memory_limit)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("PHP Post Max Size", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, system_info.post_max_size)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("PHP Time Limit", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("mark", null, system_info.max_execution_time, " ", system_info.memory_limit < 60 && 0 != system_info.memory_limit && (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("We recommend setting max execution time at least 60.", "premium-blocks-for-gutenberg")))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("PHP Max Input Vars", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, system_info.max_input_vars)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("SUHOSIN Installed", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
     dangerouslySetInnerHTML: {
-      __html: system_info.suhosin ? '&#10004;' : '&ndash;'
+      __html: system_info.suhosin ? "&#10004;" : "&ndash;"
     }
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('MySQL Version', "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, system_info.mysql_version))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("table", {
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("MySQL Version", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, system_info.mysql_version))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("table", {
     className: "widefat",
     cellspacing: "0"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("thead", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
     colspan: "2"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Active Plugins', "premium-blocks-for-gutenberg")))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tbody", null, Object.keys(system_info.active_plugins).length > 0 && Object.keys(system_info.active_plugins).map(plugin => {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Active Plugins", "premium-blocks-for-gutenberg")))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tbody", null, Object.keys(system_info.active_plugins).length > 0 && Object.keys(system_info.active_plugins).map(plugin => {
     const pluginData = system_info.active_plugins[plugin];
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, pluginData.PluginURI ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
       href: pluginData.PluginURI,
       target: "_blank",
-      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Visit plugin homepage', "premium-blocks-for-gutenberg")
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Visit plugin homepage", "premium-blocks-for-gutenberg")
     }, pluginData.name) : pluginData.name), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
       dangerouslySetInnerHTML: {
-        __html: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('by', "premium-blocks-for-gutenberg") + ' - ' + pluginData.author + ' - ' + pluginData.version
+        __html: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("by", "premium-blocks-for-gutenberg") + " - " + pluginData.author + " - " + pluginData.version
       }
     }));
   })))));
@@ -1851,6 +1853,73 @@ const Support = () => {
 
 /***/ }),
 
+/***/ "./node_modules/classnames/index.js":
+/*!******************************************!*\
+  !*** ./node_modules/classnames/index.js ***!
+  \******************************************/
+/***/ ((module, exports) => {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+  Copyright (c) 2018 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+	'use strict';
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames() {
+		var classes = [];
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg;
+
+			if (argType === 'string' || argType === 'number') {
+				classes.push(arg);
+			} else if (Array.isArray(arg)) {
+				if (arg.length) {
+					var inner = classNames.apply(null, arg);
+					if (inner) {
+						classes.push(inner);
+					}
+				}
+			} else if (argType === 'object') {
+				if (arg.toString === Object.prototype.toString) {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(key);
+						}
+					}
+				} else {
+					classes.push(arg.toString());
+				}
+			}
+		}
+
+		return classes.join(' ');
+	}
+
+	if ( true && module.exports) {
+		classNames.default = classNames;
+		module.exports = classNames;
+	} else if (true) {
+		// register as 'classnames', consistent with npm package name
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+			return classNames;
+		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else {}
+}());
+
+
+/***/ }),
+
 /***/ "./node_modules/sweetalert2/src/sweetalert2.scss":
 /*!*******************************************************!*\
   !*** ./node_modules/sweetalert2/src/sweetalert2.scss ***!
@@ -1868,12 +1937,9 @@ __webpack_require__.r(__webpack_exports__);
 /*!********************************!*\
   !*** ./src/scss/pb-panel.scss ***!
   \********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (() => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
+throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\nHookWebpackError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: Undefined variable.\n    ╷\n868 │     font-family: $default-font;\r\n    │                  ^^^^^^^^^^^^^\n    ╵\n  src\\scss\\pb-panel.scss 868:18  root stylesheet\n    at tryRunOrWebpackError (C:\\xampp\\htdocs\\mywebsite\\wp-content\\plugins\\premium-blocks-for-gutenberg\\admin\\includes\\pb-panel\\assets\\js\\node_modules\\webpack\\lib\\HookWebpackError.js:88:9)\n    at __webpack_require_module__ (C:\\xampp\\htdocs\\mywebsite\\wp-content\\plugins\\premium-blocks-for-gutenberg\\admin\\includes\\pb-panel\\assets\\js\\node_modules\\webpack\\lib\\Compilation.js:5055:12)\n    at __webpack_require__ (C:\\xampp\\htdocs\\mywebsite\\wp-content\\plugins\\premium-blocks-for-gutenberg\\admin\\includes\\pb-panel\\assets\\js\\node_modules\\webpack\\lib\\Compilation.js:5012:18)\n    at C:\\xampp\\htdocs\\mywebsite\\wp-content\\plugins\\premium-blocks-for-gutenberg\\admin\\includes\\pb-panel\\assets\\js\\node_modules\\webpack\\lib\\Compilation.js:5083:20\n    at symbolIterator (C:\\xampp\\htdocs\\mywebsite\\wp-content\\plugins\\premium-blocks-for-gutenberg\\admin\\includes\\pb-panel\\assets\\js\\node_modules\\neo-async\\async.js:3485:9)\n    at done (C:\\xampp\\htdocs\\mywebsite\\wp-content\\plugins\\premium-blocks-for-gutenberg\\admin\\includes\\pb-panel\\assets\\js\\node_modules\\neo-async\\async.js:3527:9)\n    at Hook.eval [as callAsync] (eval at create (C:\\xampp\\htdocs\\mywebsite\\wp-content\\plugins\\premium-blocks-for-gutenberg\\admin\\includes\\pb-panel\\assets\\js\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:15:1)\n    at Hook.CALL_ASYNC_DELEGATE [as _callAsync] (C:\\xampp\\htdocs\\mywebsite\\wp-content\\plugins\\premium-blocks-for-gutenberg\\admin\\includes\\pb-panel\\assets\\js\\node_modules\\tapable\\lib\\Hook.js:18:14)\n    at C:\\xampp\\htdocs\\mywebsite\\wp-content\\plugins\\premium-blocks-for-gutenberg\\admin\\includes\\pb-panel\\assets\\js\\node_modules\\webpack\\lib\\Compilation.js:4990:43\n    at symbolIterator (C:\\xampp\\htdocs\\mywebsite\\wp-content\\plugins\\premium-blocks-for-gutenberg\\admin\\includes\\pb-panel\\assets\\js\\node_modules\\neo-async\\async.js:3482:9)\n-- inner error --\nError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: Undefined variable.\n    ╷\n868 │     font-family: $default-font;\r\n    │                  ^^^^^^^^^^^^^\n    ╵\n  src\\scss\\pb-panel.scss 868:18  root stylesheet\n    at Object.<anonymous> (C:\\xampp\\htdocs\\mywebsite\\wp-content\\plugins\\premium-blocks-for-gutenberg\\admin\\includes\\pb-panel\\assets\\js\\node_modules\\css-loader\\dist\\cjs.js??ruleSet[1].rules[3].use[1]!C:\\xampp\\htdocs\\mywebsite\\wp-content\\plugins\\premium-blocks-for-gutenberg\\admin\\includes\\pb-panel\\assets\\js\\node_modules\\postcss-loader\\dist\\cjs.js??ruleSet[1].rules[3].use[2]!C:\\xampp\\htdocs\\mywebsite\\wp-content\\plugins\\premium-blocks-for-gutenberg\\admin\\includes\\pb-panel\\assets\\js\\node_modules\\sass-loader\\dist\\cjs.js??ruleSet[1].rules[3].use[3]!C:\\xampp\\htdocs\\mywebsite\\wp-content\\plugins\\premium-blocks-for-gutenberg\\admin\\includes\\pb-panel\\assets\\js\\src\\scss\\pb-panel.scss:1:7)\n    at C:\\xampp\\htdocs\\mywebsite\\wp-content\\plugins\\premium-blocks-for-gutenberg\\admin\\includes\\pb-panel\\assets\\js\\node_modules\\webpack\\lib\\javascript\\JavascriptModulesPlugin.js:441:11\n    at Hook.eval [as call] (eval at create (C:\\xampp\\htdocs\\mywebsite\\wp-content\\plugins\\premium-blocks-for-gutenberg\\admin\\includes\\pb-panel\\assets\\js\\node_modules\\tapable\\lib\\HookCodeFactory.js:19:10), <anonymous>:7:1)\n    at Hook.CALL_DELEGATE [as _call] (C:\\xampp\\htdocs\\mywebsite\\wp-content\\plugins\\premium-blocks-for-gutenberg\\admin\\includes\\pb-panel\\assets\\js\\node_modules\\tapable\\lib\\Hook.js:14:14)\n    at C:\\xampp\\htdocs\\mywebsite\\wp-content\\plugins\\premium-blocks-for-gutenberg\\admin\\includes\\pb-panel\\assets\\js\\node_modules\\webpack\\lib\\Compilation.js:5057:39\n    at tryRunOrWebpackError (C:\\xampp\\htdocs\\mywebsite\\wp-content\\plugins\\premium-blocks-for-gutenberg\\admin\\includes\\pb-panel\\assets\\js\\node_modules\\webpack\\lib\\HookWebpackError.js:83:7)\n    at __webpack_require_module__ (C:\\xampp\\htdocs\\mywebsite\\wp-content\\plugins\\premium-blocks-for-gutenberg\\admin\\includes\\pb-panel\\assets\\js\\node_modules\\webpack\\lib\\Compilation.js:5055:12)\n    at __webpack_require__ (C:\\xampp\\htdocs\\mywebsite\\wp-content\\plugins\\premium-blocks-for-gutenberg\\admin\\includes\\pb-panel\\assets\\js\\node_modules\\webpack\\lib\\Compilation.js:5012:18)\n    at C:\\xampp\\htdocs\\mywebsite\\wp-content\\plugins\\premium-blocks-for-gutenberg\\admin\\includes\\pb-panel\\assets\\js\\node_modules\\webpack\\lib\\Compilation.js:5083:20\n    at symbolIterator (C:\\xampp\\htdocs\\mywebsite\\wp-content\\plugins\\premium-blocks-for-gutenberg\\admin\\includes\\pb-panel\\assets\\js\\node_modules\\neo-async\\async.js:3485:9)\n\nGenerated code for C:\\xampp\\htdocs\\mywebsite\\wp-content\\plugins\\premium-blocks-for-gutenberg\\admin\\includes\\pb-panel\\assets\\js\\node_modules\\css-loader\\dist\\cjs.js??ruleSet[1].rules[3].use[1]!C:\\xampp\\htdocs\\mywebsite\\wp-content\\plugins\\premium-blocks-for-gutenberg\\admin\\includes\\pb-panel\\assets\\js\\node_modules\\postcss-loader\\dist\\cjs.js??ruleSet[1].rules[3].use[2]!C:\\xampp\\htdocs\\mywebsite\\wp-content\\plugins\\premium-blocks-for-gutenberg\\admin\\includes\\pb-panel\\assets\\js\\node_modules\\sass-loader\\dist\\cjs.js??ruleSet[1].rules[3].use[3]!C:\\xampp\\htdocs\\mywebsite\\wp-content\\plugins\\premium-blocks-for-gutenberg\\admin\\includes\\pb-panel\\assets\\js\\src\\scss\\pb-panel.scss\n1 | throw new Error(\"Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\\nSassError: Undefined variable.\\n    ╷\\n868 │     font-family: $default-font;\\r\\n    │                  ^^^^^^^^^^^^^\\n    ╵\\n  src\\\\scss\\\\pb-panel.scss 868:18  root stylesheet\");");
 
 /***/ }),
 
@@ -6137,11 +6203,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _layout_Header__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./layout/Header */ "./src/layout/Header.js");
 /* harmony import */ var _common_Card__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./common/Card */ "./src/common/Card.js");
 /* harmony import */ var _common_Container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./common/Container */ "./src/common/Container.js");
-/* harmony import */ var _layout_Notices__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./layout/Notices */ "./src/layout/Notices.js");
-/* harmony import */ var _store_panel_store__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./store/panel-store */ "./src/store/panel-store.js");
-/* harmony import */ var _common_push_history__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./common/push-history */ "./src/common/push-history.js");
-/* harmony import */ var _scss_pb_panel_scss__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./scss/pb-panel.scss */ "./src/scss/pb-panel.scss");
-/* harmony import */ var _tabs_options__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./tabs/options */ "./src/tabs/options.js");
+/* harmony import */ var _store_panel_store__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./store/panel-store */ "./src/store/panel-store.js");
+/* harmony import */ var _common_push_history__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./common/push-history */ "./src/common/push-history.js");
+/* harmony import */ var _scss_pb_panel_scss__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./scss/pb-panel.scss */ "./src/scss/pb-panel.scss");
+/* harmony import */ var _tabs_options__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./tabs/options */ "./src/tabs/options.js");
+/* harmony import */ var _layout_Notices__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./layout/Notices */ "./src/layout/Notices.js");
 
 
 
@@ -6168,7 +6234,7 @@ const {
 const RendeTabs = () => {
   let {
     tabs
-  } = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useContext)(_store_panel_store__WEBPACK_IMPORTED_MODULE_9__["default"]);
+  } = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useContext)(_store_panel_store__WEBPACK_IMPORTED_MODULE_8__["default"]);
 
   const compare = (a, b) => {
     if (a.priority < b.priority) {
@@ -6195,9 +6261,9 @@ const RendeTabs = () => {
     name: "blocks",
     title: __("Premium Blocks", "premium-blocks-for-gutenberg"),
     className: "pblocks",
-    priority: 5,
+    priority: 10,
     data: {
-      Component: _tabs_options__WEBPACK_IMPORTED_MODULE_12__["default"],
+      Component: _tabs_options__WEBPACK_IMPORTED_MODULE_11__["default"],
       props: {
         options: PremiumBlocksPanelData.options,
         values: PremiumBlocksPanelData.values
@@ -6216,7 +6282,7 @@ const RendeTabs = () => {
     name: "settings",
     title: __("Settings", "premium-blocks-for-gutenberg"),
     className: "system",
-    priority: 30,
+    priority: 15,
     data: {
       Component: _tabs_setting__WEBPACK_IMPORTED_MODULE_3__["default"],
       props: {}
@@ -6225,7 +6291,7 @@ const RendeTabs = () => {
     name: "versionControl",
     title: __("version Control", "premium-blocks-for-gutenberg"),
     className: "system",
-    priority: 30,
+    priority: 20,
     data: {
       Component: _tabs_rollback__WEBPACK_IMPORTED_MODULE_4__["default"],
       props: {}
@@ -6236,10 +6302,10 @@ const RendeTabs = () => {
   tabs = mergedTabs;
 
   const onSelectHandler = tabName => {
-    (0,_common_push_history__WEBPACK_IMPORTED_MODULE_10__["default"])(tabName);
+    (0,_common_push_history__WEBPACK_IMPORTED_MODULE_9__["default"])(tabName);
   };
 
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, undefined !== wp.notices.store && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_layout_Notices__WEBPACK_IMPORTED_MODULE_8__["default"], null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_layout_Header__WEBPACK_IMPORTED_MODULE_5__["default"], null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TabPanel, {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, undefined !== wp.notices.store && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_layout_Notices__WEBPACK_IMPORTED_MODULE_12__["default"], null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_layout_Header__WEBPACK_IMPORTED_MODULE_5__["default"], null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TabPanel, {
     className: "pb-dashboard-tab-panel",
     activeClass: "active-tab",
     initialTabName: PremiumBlocksPanelData.kemet_redirect,
@@ -6263,7 +6329,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let sidebar = document.getElementById("adminmenuwrap"),
         sidebarHeight = sidebar.offsetHeight + "px";
     document.getElementById("wpbody").style.minHeight = sidebarHeight;
-    (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.render)((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_store_panel_store__WEBPACK_IMPORTED_MODULE_9__.PanelProvider, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RendeTabs, {
+    (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.render)((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_store_panel_store__WEBPACK_IMPORTED_MODULE_8__.PanelProvider, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RendeTabs, {
       options: PremiumBlocksPanelData.options
     })), document.getElementById("pb-dashboard"));
   }

@@ -19,6 +19,7 @@ if (!class_exists('Pb_Panel')) {
 	class Pb_Panel
 	{
 
+
 		/**
 		 * Default values
 		 *
@@ -51,13 +52,11 @@ if (!class_exists('Pb_Panel')) {
 		 */
 		public function __construct()
 		{
-
 			add_action('wp_ajax_pb-panel-update-option', array($this, 'update_option'));
-
 			add_action('admin_menu', array($this, 'register_custom_menu_page'), 100);
 			add_action('admin_bar_menu', array($this, 'admin_bar_item'), 1000);
 			add_filter('pb_options', array($this, 'add_default_options'));
-			// add_action('admin_post_premium_gutenberg_rollback', array($this, 'post_premium_gutenberg_rollback_new'));
+			add_action('admin_post_premium_gutenberg_rollback', array($this, 'post_premium_gutenberg_rollback_new'));
 			add_action('wp_ajax_pb-mail-subscribe', array($this, 'subscribe_mail'));
 		}
 		public function subscribe_mail()
@@ -91,34 +90,33 @@ if (!class_exists('Pb_Panel')) {
 		{
 
 			$default_options = array(
-				'trigger'     => true,
-				'breadcrumbs' => true,
-				'search'      => true,
-				'banner'      => true,
-				'button'      => true,
-				'pricing-table' => true,
-				'accordion' => true,
-				'count-up' => true,
-				'dual-heading' => true,
-				'heading' => true,
-				'icon' => true,
-				'icon-box' => true,
-				'maps' => true,
-				'section' => true,
-				'testimonials' => true,
-				'video-box' => true,
-				'fancy-text' => true,
-				'lottie' => true,
-				'Modal' => true,
-				'image-separator' => true,
-				'bullet-list' => true,
-				'person' => true,
-				'search' => true,
-				'row' => true,
-				'breadcrumbs' => true,
+				'trigger'          => true,
+				'breadcrumbs'      => true,
+				'search'           => true,
+				'banner'           => true,
+				'button'           => true,
+				'pricing-table'    => true,
+				'accordion'        => true,
+				'count-up'         => true,
+				'dual-heading'     => true,
+				'heading'          => true,
+				'icon'             => true,
+				'icon-box'         => true,
+				'maps'             => true,
+				'section'          => true,
+				'testimonials'     => true,
+				'video-box'        => true,
+				'fancy-text'       => true,
+				'lottie'           => true,
+				'Modal'            => true,
+				'image-separator'  => true,
+				'bullet-list'      => true,
+				'person'           => true,
+				'search'           => true,
+				'row'              => true,
+				'breadcrumbs'      => true,
 				'content-switcher' => true,
 			);
-
 
 			return array_merge($default_options, $options);
 		}
@@ -134,27 +132,28 @@ if (!class_exists('Pb_Panel')) {
 		{
 			check_ajax_referer('pb-panel', 'nonce');
 
-			$option = isset($_POST['option']) ? sanitize_text_field(wp_unslash($_POST['option'])) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-			$value  = isset($_POST['value']) ? sanitize_text_field(wp_unslash($_POST['value'])) : '';
-			$value  = 'true' === $value ? true : false;
+			$option  = isset($_POST['option']) ? sanitize_text_field(wp_unslash($_POST['option'])) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$value   = isset($_POST['value']) ? sanitize_text_field(wp_unslash($_POST['value'])) : '';
+			$value   = 'true' === $value ? true : false;
 			$options = apply_filters('pb_options', get_option('pb_options', array()));
 			// $options = get_option( 'pb_options' );
 			$options = !is_array($options) ? array() : $options;
 
 			if ('' !== $value && '' !== $option) {
 				$options[$option] = $value;
-			}
-			update_option('pb_options', $options);
+				update_option('pb_options', $options);
 
-			wp_send_json_success(
-				array(
-					'success' => true,
-					'values'  => $options,
-				)
-			);
+				wp_send_json_success(
+					array(
+						'success' => true,
+						'values'  => $options,
+					)
+				);
+			}
 
 			wp_send_json_error();
 		}
+
 
 		/**
 		 * Add Premium Blocks panel to admin bar
@@ -208,7 +207,7 @@ if (!class_exists('Pb_Panel')) {
 		 * @return void
 		 */
 		public function render()
-		{ ?>
+		{       ?>
 			<div id="pb-dashboard"></div>
 <?php
 		}
@@ -221,26 +220,26 @@ if (!class_exists('Pb_Panel')) {
 		public static function get_system_info()
 		{
 			global $wpdb;
-			// $pb_versions   = self::get_rollback_versions_options();
+			$pb_versions = self::get_rollback_versions_options();
 
 			$info = array(
-				'home_url'          => home_url(),
-				'version'           => get_bloginfo('version'),
-				'multisite'         => is_multisite(),
-				'memory_limit'      => wp_convert_hr_to_bytes(WP_MEMORY_LIMIT),
-				'memory_limit_size' => size_format(wp_convert_hr_to_bytes(WP_MEMORY_LIMIT)),
-				'theme_version'     => esc_html(PREMIUM_BLOCKS_VERSION),
-				'previous_version'  => esc_html(PREMIUM_BLOCKS_STABLE_VERSION),
-				'wp_path'           => esc_html(ABSPATH),
-				'debug'             => defined('WP_DEBUG') && WP_DEBUG,
-				'lang'              => esc_html(get_locale()),
-				'server'            => isset($_SERVER['SERVER_SOFTWARE']) ? esc_html(sanitize_text_field(wp_unslash($_SERVER['SERVER_SOFTWARE']))) : '',
-				'php_version'       => function_exists('phpversion') ? phpversion() : '',
-				'mysql_version'     => $wpdb->db_version(),
-				'max_upload'        => esc_html(size_format(wp_max_upload_size())),
-				'ini_get'           => function_exists('ini_get'),
+				'home_url'             => home_url(),
+				'version'              => get_bloginfo('version'),
+				'multisite'            => is_multisite(),
+				'memory_limit'         => wp_convert_hr_to_bytes(WP_MEMORY_LIMIT),
+				'memory_limit_size'    => size_format(wp_convert_hr_to_bytes(WP_MEMORY_LIMIT)),
+				'theme_version'        => esc_html(PREMIUM_BLOCKS_VERSION),
+				'previous_version'     => esc_html(PREMIUM_BLOCKS_STABLE_VERSION),
+				'wp_path'              => esc_html(ABSPATH),
+				'debug'                => defined('WP_DEBUG') && WP_DEBUG,
+				'lang'                 => esc_html(get_locale()),
+				'server'               => isset($_SERVER['SERVER_SOFTWARE']) ? esc_html(sanitize_text_field(wp_unslash($_SERVER['SERVER_SOFTWARE']))) : '',
+				'php_version'          => function_exists('phpversion') ? phpversion() : '',
+				'mysql_version'        => $wpdb->db_version(),
+				'max_upload'           => esc_html(size_format(wp_max_upload_size())),
+				'ini_get'              => function_exists('ini_get'),
 				'pb_previous_versions' => $pb_versions,
-				'rollback_url_new'      => str_replace(array("&#038;", "&amp;"), "&", esc_url(add_query_arg('version', 'VERSION', wp_nonce_url(admin_url('admin-post.php?action=premium_gutenberg_rollback'), 'premium_gutenberg_rollback')))),
+				'rollback_url_new'     => str_replace(array('&#038;', '&amp;'), '&', esc_url(add_query_arg('version', 'VERSION', wp_nonce_url(admin_url('admin-post.php?action=premium_gutenberg_rollback'), 'premium_gutenberg_rollback')))),
 			);
 			if (function_exists('ini_get')) {
 				$info['php_memory_limit']   = esc_html(size_format(wp_convert_hr_to_bytes(ini_get('memory_limit'))));
@@ -292,169 +291,224 @@ if (!class_exists('Pb_Panel')) {
 				'accordion'        => array(
 					'type'     => 'pb-button',
 					'label'    => __('Accordion', 'premium-blocks-for-gutenberg'),
+					'icon'     => 'accordion',
 					'category' => array(
-						"all", "creative"
+						'all',
+						'creative',
 					),
 				),
 				'banner'           => array(
 					'type'     => 'pb-button',
 					'label'    => __('Banner', 'premium-blocks-for-gutenberg'),
+					'icon'     => 'banner',
 					'category' => array(
-						"all", "creative"
+						'all',
+						'creative',
 					),
 				),
 				'button'           => array(
 					'type'     => 'pb-button',
 					'label'    => __('Button', 'premium-blocks-for-gutenberg'),
+					'icon'     => 'button',
 					'category' => array(
-						"all", "seo", "form"
+						'all',
+						'seo',
+						'form',
 					),
 				),
-				'count-up'          => array(
+				'count-up'         => array(
 					'type'     => 'pb-button',
 					'label'    => __('Count Up', 'premium-blocks-for-gutenberg'),
+					'icon'     => 'count_up',
 					'category' => array(
-						"all", "creative"
+						'all',
+						'creative',
 					),
 				),
-				'dual-heading'      => array(
+				'dual-heading'     => array(
 					'type'     => 'pb-button',
 					'label'    => __('Dual Heading', 'premium-blocks-for-gutenberg'),
+					'icon'     => 'dualHeading',
 					'category' => array(
-						"all", "creative"
+						'all',
+						'creative',
 					),
 				),
 				'heading'          => array(
 					'type'     => 'pb-button',
 					'label'    => __('Heading', 'premium-blocks-for-gutenberg'),
+					'icon'     => 'heading',
 					'category' => array(
-						"all", "creative",
+						'all',
+						'creative',
 					),
 				),
 				'icon'             => array(
 					'type'     => 'pb-button',
 					'label'    => __('Icon', 'premium-blocks-for-gutenberg'),
+					'icon'     => 'icon',
 					'category' => array(
-						"all", "social"
+						'all',
+						'social',
 					),
 				),
 				'icon-box'         => array(
 					'type'     => 'pb-button',
 					'label'    => __('Icon Box', 'premium-blocks-for-gutenberg'),
+					'icon'     => 'icon_box',
 					'category' => array(
-						"all", "creative"
+						'all',
+						'creative',
 					),
 				),
 				'maps'             => array(
 					'type'     => 'pb-button',
 					'label'    => __('Google Maps', 'premium-blocks-for-gutenberg'),
+					'icon'     => 'maps',
 					'category' => array(
-						"all", "core"
+						'all',
+						'core',
 					),
 				),
-				'pricing-table'     => array(
+				'pricing-table'    => array(
 					'type'     => 'pb-button',
 					'label'    => __('Pricing Table', 'premium-blocks-for-gutenberg'),
+					'icon'     => 'pricingTable',
 					'category' => array(
-						"all", "creative"
+						'all',
+						'creative',
 					),
 				),
 				'section'          => array(
 					'type'     => 'pb-button',
 					'label'    => __('Section', 'premium-blocks-for-gutenberg'),
+					'icon'     => 'section',
 					'category' => array(
-						"all", "content"
+						'all',
+						'content',
 					),
 				),
 				'testimonials'     => array(
 					'type'     => 'pb-button',
 					'label'    => __('Testimonials', 'premium-blocks-for-gutenberg'),
+					'icon'     => 'testimonials',
 					'category' => array(
-						"all", "creative"
+						'all',
+						'creative',
 					),
 				),
 				'video-box'        => array(
 					'type'     => 'pb-button',
 					'label'    => __('Video Box', 'premium-blocks-for-gutenberg'),
+					'icon'     => 'video_box',
 					'category' => array(
-						"all", "creative", 'social'
+						'all',
+						'creative',
+						'social',
 					),
 				),
-				'fancy-text'        => array(
+				'fancy-text'       => array(
 					'type'     => 'pb-button',
 					'label'    => __('Fancy Text', 'premium-blocks-for-gutenberg'),
+					'icon'     => 'fancyText',
 					'category' => array(
-						"all", "post"
+						'all',
+						'post',
 					),
 				),
 				'lottie'           => array(
 					'type'     => 'pb-button',
 					'label'    => __('Lottie Animation', 'premium-blocks-for-gutenberg'),
+					'icon'     => 'lottie',
 					'category' => array(
-						"all", "creative"
+						'all',
+						'creative',
 					),
 				),
-				'Modal'            => array(
+				'modal'            => array(
 					'type'     => 'pb-button',
 					'label'    => __('Modal Box', 'premium-blocks-for-gutenberg'),
+					'icon'     => 'modal',
 					'category' => array(
-						"all", "creative", 'form'
+						'all',
+						'creative',
+						'form',
 					),
 				),
-				'image-separator'          => array(
+				'image-separator'  => array(
 					'type'     => 'pb-button',
 					'label'    => __('Image Separator', 'premium-blocks-for-gutenberg'),
-					'category' => 'all', array(
-						"all", "content"
+					'icon'     => 'image_separator',
+					'category' => 'all',
+					array(
+						'all',
+						'content',
 					),
 				),
-				'bullet-list'       => array(
+				'bullet-list'      => array(
 					'type'     => 'pb-button',
 					'label'    => __('Bullet List', 'premium-blocks-for-gutenberg'),
-					'category' => 'all', array(
-						"all", "social", 'content'
+					'icon'     => 'bulletList',
+					'category' => 'all',
+					array(
+						'all',
+						'social',
+						'content',
 					),
 				),
-				'person'             => array(
+				'person'           => array(
 					'type'     => 'pb-button',
 					'label'    => __('Team Members', 'premium-blocks-for-gutenberg'),
+					'icon'     => 'person',
 					'category' => array(
-						"all", "content"
+						'all',
+						'content',
 					),
 				),
 				'search'           => array(
 					'type'     => 'pb-button',
 					'label'    => __('Search', 'premium-blocks-for-gutenberg'),
+					'icon'     => 'search',
 					'category' => array(
-						"all", "core"
+						'all',
+						'core',
 					),
 				),
 				'trigger'          => array(
 					'type'     => 'pb-button',
 					'label'    => __('Trigger', 'premium-blocks-for-gutenberg'),
+					'icon'     => 'trigger',
 					'category' => array(
-						"all", "core"
+						'all',
+						'core',
 					),
 				),
 				'row'              => array(
 					'type'     => 'pb-button',
 					'label'    => __('Row', 'premium-blocks-for-gutenberg'),
+					'icon'     => 'row',
 					'category' => array(
-						"all", "content", "post"
+						'all',
+						'content',
+						'post',
 					),
 				),
 				'breadcrumbs'      => array(
 					'type'     => 'pb-button',
 					'label'    => __('Breadcrumbs', 'premium-blocks-for-gutenberg'),
+					'icon'     => 'breadcrumbs',
 					'category' => array(
-						"all", "core"
+						'all',
+						'core',
 					),
 				),
 				'content-switcher' => array(
 					'type'     => 'pb-button',
 					'label'    => __('Content Switcher', 'premium-blocks-for-gutenberg'),
+					'icon'     => 'content_switcher',
 					'category' => array(
-						"all", "post"
+						'all',
+						'post',
 					),
 				),
 			);
@@ -468,7 +522,6 @@ if (!class_exists('Pb_Panel')) {
 		 */
 		public function enqueue_admin_script()
 		{
-
 			wp_enqueue_style('pb-panel-css', PREMIUM_BLOCKS_PANEL_URL . 'assets/js/build/index.css', false, PREMIUM_BLOCKS_VERSION);
 			wp_enqueue_script(
 				'pb-panel-js',
@@ -492,6 +545,9 @@ if (!class_exists('Pb_Panel')) {
 				array(
 					'options'     => self::panel_options(),
 					'values'      => apply_filters('pb_options', get_option('pb_options', array())),
+					// 'values'      => array(
+					// 'options' => get_option( 'pb_options', array() ),
+					// ),
 					'ajaxurl'     => admin_url('admin-ajax.php'),
 					'nonce'       => wp_create_nonce('pb-panel'),
 					'system_info' => self::get_system_info(),
@@ -500,32 +556,31 @@ if (!class_exists('Pb_Panel')) {
 				)
 			);
 		}
-		// public function post_premium_gutenberg_rollback_new()
-		// {
+		public function post_premium_gutenberg_rollback_new()
+		{
+			check_admin_referer('premium_gutenberg_rollback');
+			$plugin_slug    = basename(PREMIUM_BLOCKS_FILE, '.php');
+			$update_version = sanitize_text_field($_GET['version']);
 
-		// 	check_admin_referer('premium_gutenberg_rollback');
-		// 	$plugin_slug  = basename(PREMIUM_BLOCKS_FILE, '.php');
-		// 	$update_version    = sanitize_text_field($_GET['version']);
+			$pbg_rollback = new PBG_Rollback(
+				array(
+					'version'     => $update_version,
+					'plugin_name' => PREMIUM_BLOCKS_BASENAME,
+					'plugin_slug' => $plugin_slug,
+					'package_url' => sprintf('https://downloads.wordpress.org/plugin/%s.%s.zip', $plugin_slug, $update_version),
+				)
+			);
 
-		// 	$pbg_rollback = new PBG_Rollback(
-		// 		array(
-		// 			'version'     => $update_version,
-		// 			'plugin_name' => PREMIUM_BLOCKS_BASENAME,
-		// 			'plugin_slug' => $plugin_slug,
-		// 			'package_url' => sprintf('https://downloads.wordpress.org/plugin/%s.%s.zip', $plugin_slug, $update_version),
-		// 		)
-		// 	);
+			$pbg_rollback->run();
 
-		// 	$pbg_rollback->run();
-
-		// 	wp_die(
-		// 		'',
-		// 		__('Rollback to Previous Version', 'premium-gutenberg'),
-		// 		array(
-		// 			'response' => 200,
-		// 		)
-		// 	);
-		// }
+			wp_die(
+				'',
+				__('Rollback to Previous Version', 'premium-gutenberg'),
+				array(
+					'response' => 200,
+				)
+			);
+		}
 
 		/**
 		 * Get Rollback versions.
@@ -534,77 +589,75 @@ if (!class_exists('Pb_Panel')) {
 		 * @return array
 		 * @access public
 		 */
-		// public function get_rollback_versions()
-		// {
+		public function get_rollback_versions()
+		{
+			$rollback_versions = get_transient('pb_rollback_versions_' . PREMIUM_BLOCKS_VERSION);
 
-		// 	$rollback_versions = get_transient('pb_rollback_versions_' . PREMIUM_BLOCKS_VERSION);
+			if (empty($rollback_versions)) {
 
-		// 	if (empty($rollback_versions)) {
+				$max_versions = 10;
 
-		// 		$max_versions = 10;
+				require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
 
-		// 		require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
+				$plugin_information = plugins_api(
+					'plugin_information',
+					array(
+						'slug' => 'Premium-blocks-for-gutenberg',
+					)
+				);
 
-		// 		$plugin_information = plugins_api(
-		// 			'plugin_information',
-		// 			array(
-		// 				'slug' => 'Premium-blocks-for-gutenberg',
-		// 			)
-		// 		);
+				if (empty($plugin_information->versions) || !is_array($plugin_information->versions)) {
+					return array();
+				}
 
-		// 		if (empty($plugin_information->versions) || !is_array($plugin_information->versions)) {
-		// 			return array();
-		// 		}
+				krsort($plugin_information->versions);
 
-		// 		krsort($plugin_information->versions);
+				$rollback_versions = array();
 
-		// 		$rollback_versions = array();
+				foreach ($plugin_information->versions as $version => $download_link) {
 
-		// 		foreach ($plugin_information->versions as $version => $download_link) {
+					$lowercase_version = strtolower($version);
 
-		// 			$lowercase_version = strtolower($version);
+					$is_valid_rollback_version = !preg_match('/(trunk|beta|rc|dev)/i', $lowercase_version);
 
-		// 			$is_valid_rollback_version = !preg_match('/(trunk|beta|rc|dev)/i', $lowercase_version);
+					if (!$is_valid_rollback_version) {
+						continue;
+					}
 
-		// 			if (!$is_valid_rollback_version) {
-		// 				continue;
-		// 			}
+					if (version_compare($version, UAGB_VER, '>=')) {
+						continue;
+					}
 
-		// 			if (version_compare($version, UAGB_VER, '>=')) {
-		// 				continue;
-		// 			}
+					$rollback_versions[] = $version;
+				}
 
-		// 			$rollback_versions[] = $version;
-		// 		}
+				$rollback_versions = array_slice($rollback_versions, 0, $max_versions, true);
 
-		// 		$rollback_versions = array_slice($rollback_versions, 0, $max_versions, true);
+				set_transient('pb_rollback_versions_' . PREMIUM_BLOCKS_VERSION, $rollback_versions, WEEK_IN_SECONDS);
+			}
 
-		// 		set_transient('pb_rollback_versions_' . PREMIUM_BLOCKS_VERSION, $rollback_versions, WEEK_IN_SECONDS);
-		// 	}
+			return $rollback_versions;
+		}
 
-		// 	return $rollback_versions;
-		// }
+		public static function get_rollback_versions_options()
+		{
+			$rollback_versions = self::get_rollback_versions();
 
-		// public static function get_rollback_versions_options()
-		// {
+			$rollback_versions_options = array();
 
-		// 	$rollback_versions   = self::get_rollback_versions();
+			foreach ($rollback_versions as $version) {
 
-		// 	$rollback_versions_options = array();
+				$version = array(
+					'label' => $version,
+					'value' => $version,
 
-		// 	foreach ($rollback_versions as $version) {
+				);
 
-		// 		$version = array(
-		// 			'label' => $version,
-		// 			'value' => $version,
+				$rollback_versions_options[] = $version;
+			}
 
-		// 		);
-
-		// 		$rollback_versions_options[] = $version;
-		// 	}
-
-		// 	return $rollback_versions_options;
-		// }
+			return $rollback_versions_options;
+		}
 	}
 	Pb_Panel::get_instance();
 }
