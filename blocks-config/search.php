@@ -209,7 +209,7 @@ function render_block_premium_search( $attributes ) {
 
 	wp_enqueue_script(
 		'premium-search-view',
-		PREMIUM_BLOCKS_URL . 'src/blocks/search/view/view.js',
+		PREMIUM_BLOCKS_URL . 'assets/js/search.js',
 		array( 'wp-element' ),
 		PREMIUM_BLOCKS_VERSION,
 		true
@@ -389,7 +389,7 @@ function register_block_premium_search() {
 	register_block_type(
 		'premium/search',
 		array(
-		'render_callback' => 'render_block_premium_search',	
+			'render_callback' => 'render_block_premium_search',
 		)
 	);
 }
@@ -397,13 +397,13 @@ add_action( 'init', 'register_block_premium_search' );
 
 function search_enqueue() {
 
-    wp_enqueue_style(
-        'pbg-search-style',
-        PREMIUM_BLOCKS_URL . 'assets/css/minified/search.min.css',
-        array(),
-         PREMIUM_BLOCKS_VERSION, 
-        'all' 
-    );
+	wp_enqueue_style(
+		'pbg-search-style',
+		PREMIUM_BLOCKS_URL . 'assets/css/minified/search.min.css',
+		array(),
+		PREMIUM_BLOCKS_VERSION,
+		'all'
+	);
 }
 
 add_action( 'enqueue_block_assets', 'search_enqueue' );
