@@ -21,7 +21,6 @@ import {
 	ToolbarButton,
 	ResizableBox,
 	PanelBody,
-	TabPanel,
 	SelectControl,
 	RangeControl,
 	ToggleControl,
@@ -52,6 +51,7 @@ import InspectorTab from '../../components/inspectorTab';
 import InsideTabs from "../../components/InsideTabs";
 import InsideTab from "../../components/InsideTab";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
+import WebfontLoader from "../../components/typography/fontLoader";
 import { generateBlockId, generateCss, typographyCss, paddingCss, borderCss } from '../../components/HelperFunction';
 
 const MIN_WIDTH = 220;
@@ -88,6 +88,33 @@ function SearchEdit({
 		hideTablet,
 		hideMobile,
 	} = attributes;
+
+	let loadFonts;
+	let loadButtonFonts;
+
+	if (typography?.fontFamily !== 'Default') {
+		const fontConfig = {
+			google: {
+				families: [typography.fontFamily]
+			}
+		}
+		loadFonts = (
+			<WebfontLoader config={fontConfig}>
+			</WebfontLoader>
+		)
+	}
+
+	if (buttonTypography?.fontFamily !== 'Default') {
+		const fontButtonConfig = {
+			google: {
+				families: [buttonTypography.fontFamily]
+			}
+		}
+		loadButtonFonts = (
+			<WebfontLoader config={fontButtonConfig}>
+			</WebfontLoader>
+		)
+	}
 
 	const [isVisibility, setIsVisibility] = useState(false);
 	const [posts, setPosts] = useState([]);
@@ -498,7 +525,7 @@ function SearchEdit({
 							>
 								<PremiumTypo
 									value={typography}
-									onChange={newValue => setAttributes({ submenuTypography: newValue })}
+									onChange={newValue => setAttributes({ typography: newValue })}
 								/>
 								<hr />
 								<AdvancedPopColorControl
@@ -868,6 +895,8 @@ function SearchEdit({
 					</div>
 				</Modal>
 			)}
+			{loadFonts}
+			{loadButtonFonts}
 		</div>
 	);
 }

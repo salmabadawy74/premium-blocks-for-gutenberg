@@ -386,6 +386,12 @@ function register_block_premium_search() {
 			'render_callback' => 'render_block_premium_search',
 		)
 	);
+	register_block_type(
+		'premium/search',
+		array(
+		'render_callback' => 'render_block_premium_search',	
+		)
+	);
 }
 add_action( 'init', 'register_block_premium_search' );
 

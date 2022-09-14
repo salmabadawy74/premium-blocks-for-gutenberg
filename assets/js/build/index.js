@@ -45238,8 +45238,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @wordpress/icons */ "./src/blocks/node_modules/@wordpress/icons/build-module/icon/index.js");
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @wordpress/icons */ "./src/blocks/node_modules/@wordpress/icons/build-module/library/search.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @wordpress/icons */ "./src/blocks/node_modules/@wordpress/icons/build-module/icon/index.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @wordpress/icons */ "./src/blocks/node_modules/@wordpress/icons/build-module/library/search.js");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _wordpress_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/dom */ "@wordpress/dom");
@@ -45256,7 +45256,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_InsideTabs__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../components/InsideTabs */ "./src/components/InsideTabs.js");
 /* harmony import */ var _components_InsideTab__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../components/InsideTab */ "./src/components/InsideTab.js");
 /* harmony import */ var _components_premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../components/premium-responsive-tabs */ "./src/components/premium-responsive-tabs.js");
-/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+/* harmony import */ var _components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../components/typography/fontLoader */ "./src/components/typography/fontLoader.js");
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
 
 
 /**
@@ -45278,6 +45279,7 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * Internal dependencies
  */
+
 
 
 
@@ -45326,6 +45328,31 @@ function SearchEdit(_ref) {
     hideTablet,
     hideMobile
   } = attributes;
+  let loadFonts;
+  let loadButtonFonts;
+
+  if ((typography === null || typography === void 0 ? void 0 : typography.fontFamily) !== 'Default') {
+    const fontConfig = {
+      google: {
+        families: [typography.fontFamily]
+      }
+    };
+    loadFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_19__["default"], {
+      config: fontConfig
+    });
+  }
+
+  if ((buttonTypography === null || buttonTypography === void 0 ? void 0 : buttonTypography.fontFamily) !== 'Default') {
+    const fontButtonConfig = {
+      google: {
+        families: [buttonTypography.fontFamily]
+      }
+    };
+    loadButtonFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_19__["default"], {
+      config: fontButtonConfig
+    });
+  }
+
   const [isVisibility, setIsVisibility] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [posts, setPosts] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const insertedInNavigationBlock = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.useSelect)(select => {
@@ -45353,7 +45380,7 @@ function SearchEdit(_ref) {
   }, [insertedInNavigationBlock]);
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     setAttributes({
-      blockId: "premium-search-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.generateBlockId)(clientId)
+      blockId: "premium-search-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_20__.generateBlockId)(clientId)
     });
   });
   const isButtonPositionInside = 'button-inside' === buttonPosition;
@@ -45477,10 +45504,10 @@ function SearchEdit(_ref) {
   const textFieldStyles = {
     color: colors.text,
     backgroundColor: colors.background,
-    ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.paddingCss)(padding, deviceType),
-    ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.borderCss)(border, deviceType)
+    ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_20__.paddingCss)(padding, deviceType),
+    ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_20__.borderCss)(border, deviceType)
   };
-  const textTypoStyles = { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.typographyCss)(typography, deviceType)
+  const textTypoStyles = { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_20__.typographyCss)(typography, deviceType)
   };
 
   const renderTextField = () => {
@@ -45516,8 +45543,8 @@ function SearchEdit(_ref) {
     const butttonStyles = {
       color: colors.btnText,
       backgroundColor: colors.btnBackground,
-      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.typographyCss)(buttonTypography, deviceType),
-      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.paddingCss)(buttonPadding, deviceType)
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_20__.typographyCss)(buttonTypography, deviceType),
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_20__.paddingCss)(buttonPadding, deviceType)
     };
 
     const onClickHandler = () => {
@@ -45534,8 +45561,8 @@ function SearchEdit(_ref) {
       style: butttonStyles,
       "aria-label": buttonText ? (0,_wordpress_dom__WEBPACK_IMPORTED_MODULE_6__.__unstableStripHTML)(buttonText) : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Search', 'premium-blocks-for-gutenberg'),
       onClick: onClickHandler
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_icons__WEBPACK_IMPORTED_MODULE_20__["default"], {
-      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_21__["default"]
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_icons__WEBPACK_IMPORTED_MODULE_21__["default"], {
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_22__["default"]
     })), !buttonUseIcon && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
       className: buttonClasses,
       "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Button text', 'premium-blocks-for-gutenberg'),
@@ -45677,7 +45704,7 @@ function SearchEdit(_ref) {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_13__["default"], {
     value: typography,
     onChange: newValue => setAttributes({
-      submenuTypography: newValue
+      typography: newValue
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_10__["default"], {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)(`Form Text Color`, 'premium-blocks-for-gutenberg'),
@@ -45830,7 +45857,7 @@ function SearchEdit(_ref) {
       'color': colors === null || colors === void 0 ? void 0 : colors.btnHoverText,
       'background-color': colors === null || colors === void 0 ? void 0 : colors.btnHoverBackground
     };
-    return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_19__.generateCss)(styles);
+    return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_20__.generateCss)(styles);
   };
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
@@ -45887,8 +45914,8 @@ function SearchEdit(_ref) {
     onChange: e => inputChangeHandler(e)
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-advanced-search-icon"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_icons__WEBPACK_IMPORTED_MODULE_20__["default"], {
-    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_21__["default"]
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_icons__WEBPACK_IMPORTED_MODULE_21__["default"], {
+    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_22__["default"]
   }))), ajaxSearch && posts.length > 0 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-search-results"
   }, posts.map(post => {
@@ -45910,7 +45937,7 @@ function SearchEdit(_ref) {
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       class: "premium-ratio"
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, post.title));
-  })))));
+  })))), loadFonts, loadButtonFonts);
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.withSelect)(select => {
@@ -96863,7 +96890,7 @@ module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/r
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/search","title":"Search","category":"premium-blocks","description":"Help visitors find your content.","keywords":["find"],"textdomain":"default","attributes":{"blockId":{"type":"string"},"label":{"type":"string","__experimentalRole":"content"},"border":{"type":"object","default":{"borderType":"","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"colors":{"type":"object","default":{"background":"","text":"","btnBackground":"var(--pbBackgroundColor)","btnText":"","btnHoverBackground":"","btnHoverText":"","label":"","modal":"","dropdown":"","link":"","linkHover":""}},"position":{"type":"string","default":"static"},"floatPosition":{"type":"string","default":"top-right"},"floatValues":{"type":"object","default":{"top":10,"right":10,"bottom":10,"left":10}},"formStyle":{"type":"string","default":"default"},"showLabel":{"type":"boolean","default":true},"ajaxSearch":{"type":"boolean","default":true},"placeholder":{"type":"string","default":"","__experimentalRole":"content"},"buttonText":{"type":"string","__experimentalRole":"content"},"buttonPosition":{"type":"string","default":"button-outside"},"buttonUseIcon":{"type":"boolean","default":false},"typography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"buttonTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"spacing":{"type":"object","default":{"padding":null,"buttonPadding":null}},"hideDesktop":{"type":"boolean"},"hideTablet":{"type":"boolean"},"hideMobile":{"type":"boolean"}},"supports":{"align":["left","center","right"],"html":false},"editorScript":"file:./build/index.js","editorStyle":"file:./build/index.css","style":"file:./build/style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/search","title":"Search","category":"premium-blocks","description":"Help visitors find your content.","keywords":["find"],"textdomain":"default","attributes":{"blockId":{"type":"string"},"label":{"type":"string","__experimentalRole":"content"},"border":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"colors":{"type":"object","default":{"background":"","text":"","btnBackground":"var(--pbBackgroundColor)","btnText":"","btnHoverBackground":"","btnHoverText":"","label":"","modal":"","dropdown":"","link":"","linkHover":""}},"position":{"type":"string","default":"static"},"floatPosition":{"type":"string","default":"top-right"},"floatValues":{"type":"object","default":{"top":10,"right":10,"bottom":10,"left":10}},"formStyle":{"type":"string","default":"default"},"showLabel":{"type":"boolean","default":true},"ajaxSearch":{"type":"boolean","default":true},"placeholder":{"type":"string","default":"","__experimentalRole":"content"},"buttonText":{"type":"string","__experimentalRole":"content"},"buttonPosition":{"type":"string","default":"button-outside"},"buttonUseIcon":{"type":"boolean","default":false},"typography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"buttonTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"spacing":{"type":"object","default":{"padding":null,"buttonPadding":null}},"hideDesktop":{"type":"boolean"},"hideTablet":{"type":"boolean"},"hideMobile":{"type":"boolean"}},"supports":{"align":["left","center","right"],"html":false},"editorScript":"file:./build/index.js","editorStyle":"file:./build/index.css","style":"file:./build/style-index.css"}');
 
 /***/ }),
 

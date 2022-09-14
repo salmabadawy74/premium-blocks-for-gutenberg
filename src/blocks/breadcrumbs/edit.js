@@ -16,7 +16,7 @@ import {
 } from '@wordpress/block-editor';
 import { useSelect, withSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
-import { PanelBody, ToggleControl, TextControl, Dashicon, TabPanel } from '@wordpress/components';
+import { PanelBody, ToggleControl, TextControl, Dashicon } from '@wordpress/components';
 import { useEffect } from '@wordpress/element';
 
 /**

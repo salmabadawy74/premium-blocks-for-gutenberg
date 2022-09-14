@@ -5,7 +5,9 @@
     "title": "Search",
     "category": "premium-blocks",
     "description": "Help visitors find your content.",
-    "keywords": ["find"],
+    "keywords": [
+        "find"
+    ],
     "textdomain": "default",
     "attributes": {
         "blockId": {
@@ -18,7 +20,7 @@
         "border": {
             "type": "object",
             "default": {
-                "borderType": "",
+                "borderType": "none",
                 "borderColor": "",
                 "borderWidth": {
                     "Desktop": {
@@ -198,7 +200,11 @@
         }
     },
     "supports": {
-        "align": ["left", "center", "right"],
+        "align": [
+            "left",
+            "center",
+            "right"
+        ],
         "html": false
     },
     "editorScript": "file:./build/index.js",
