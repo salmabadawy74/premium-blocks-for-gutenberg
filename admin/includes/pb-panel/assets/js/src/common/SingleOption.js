@@ -1,11 +1,11 @@
 import { useState } from "@wordpress/element";
 import PBG_Block_Icons from "./block-icons";
-//import { Dashicon, ToggleControl } from '@wordpress/components';
-//const { Dashicon, ToggleControl } = wp.components;
-const { PanelBody, Dashicon, ToggleControl } = wp.components;
-const { __ } = wp.i18n;
+import AdvancedSwitcher from "./AdvancedSwitcher";
 import { useDispatch } from "@wordpress/data";
 import { store as noticesStore } from "@wordpress/notices";
+
+const { Dashicon } = wp.components;
+const { __ } = wp.i18n;
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
@@ -15,17 +15,14 @@ const SingleOption = (props) => {
     const [value, setValue] = useState(props.value);
     const [isLoading, setIsLoading] = useState(false);
     const { createNotice } = useDispatch(noticesStore);
-    const handleChange = async () => {
-        setIsLoading(true);
 
+    const handleChange = async () => {
         let newValue = !value;
         const body = new FormData();
         body.append("action", "pb-panel-update-option");
         body.append("nonce", PremiumBlocksPanelData.nonce);
         body.append("option", props.id);
         body.append("value", newValue);
-
-        console.log(props.id, newValue);
 
         try {
             const response = await fetch(PremiumBlocksPanelData.ajaxurl, {
@@ -34,7 +31,6 @@ const SingleOption = (props) => {
             });
             if (response.status === 200) {
                 const { success, data } = await response.json();
-
                 if (success && data.values) {
                     setValue(newValue);
                     props.onChange(data.values);
@@ -51,7 +47,6 @@ const SingleOption = (props) => {
                 type: "snackbar",
             });
         }
-        setIsLoading(false);
     };
 
     let checked = value === true ? true : false;
@@ -61,7 +56,7 @@ const SingleOption = (props) => {
             <div className="pb-option-element-body">
                 <div className="icon">
                     <span className="customize-control-icon pb-control-icon">
-                        {PBG_Block_Icons[props.id]}
+                        {PBG_Block_Icons[props.params.icon]}
                     </span>
                 </div>
 
@@ -78,7 +73,7 @@ const SingleOption = (props) => {
                                 rel="noreferrer"
                             >
                                 {__(
-                                    "live Preview",
+                                    "Live Preview",
                                     "premium-blocks-for-gutenberg"
                                 )}
                             </a>
@@ -99,11 +94,11 @@ const SingleOption = (props) => {
                 </div>
                 {isLoading && <Dashicon className="pb-loading" icon="update" />}
                 <div className="option-actions">
-                    <ToggleControl
-                        checked={checked}
+                    <AdvancedSwitcher
                         onChange={() => {
                             handleChange();
                         }}
+                        checked={checked}
                     />
                 </div>
             </div>

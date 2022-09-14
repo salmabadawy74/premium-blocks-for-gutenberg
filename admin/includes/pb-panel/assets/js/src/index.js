@@ -6,11 +6,11 @@ import { render, Fragment, useContext } from "@wordpress/element";
 import Header from "./layout/Header";
 import Card from "./common/Card";
 import Container from "./common/Container";
-import Notices from "./layout/Notices";
 import PanelContext, { PanelProvider } from "./store/panel-store";
 import pushHistory from "./common/push-history";
 import "./scss/pb-panel.scss";
 import OptionsComponent from "./tabs/options";
+import Notices from "./layout/Notices";
 
 const { __ } = wp.i18n;
 const { TabPanel, Panel, PanelBody } = wp.components;
@@ -41,7 +41,7 @@ const RendeTabs = () => {
             name: "blocks",
             title: __("Premium Blocks", "premium-blocks-for-gutenberg"),
             className: "pblocks",
-            priority: 5,
+            priority: 10,
             data: {
                 Component: OptionsComponent,
                 props: {
@@ -64,7 +64,7 @@ const RendeTabs = () => {
             name: "settings",
             title: __("Settings", "premium-blocks-for-gutenberg"),
             className: "system",
-            priority: 30,
+            priority: 15,
             data: {
                 Component: Setting,
                 props: {},
@@ -74,7 +74,7 @@ const RendeTabs = () => {
             name: "versionControl",
             title: __("version Control", "premium-blocks-for-gutenberg"),
             className: "system",
-            priority: 30,
+            priority: 20,
             data: {
                 Component: RollBack,
                 props: {},
@@ -93,6 +93,7 @@ const RendeTabs = () => {
     return (
         <Fragment>
             {undefined !== wp.notices.store && <Notices />}
+
             <Header />
             <TabPanel
                 className="pb-dashboard-tab-panel"
