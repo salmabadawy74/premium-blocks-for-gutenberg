@@ -133,12 +133,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 									),
 								),
 								'colors'             => array(
-									'type'       => 'object',
-									'properties' => array(
-										'headings' => array(
-											'type' => 'string',
-										),
-									),
+									'type' => 'string',
 								),
 								'container-settings' => array(
 									'type'       => 'object',
@@ -153,7 +148,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 					),
 					'default'      => array(
 						'typography'         => array(),
-						'colors'             => array(),
+						'colors'             => '',
 						'container-settings' => array(),
 					),
 				)

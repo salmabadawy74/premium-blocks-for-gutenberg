@@ -1,3 +1,5 @@
+import { __ } from '@wordpress/i18n';
+
 const defaults = {
     typography: {
         heading1: {
@@ -200,6 +202,39 @@ const defaults = {
                 "unit": "px"
             }
         },
+    },
+    colorSettings: {
+        pbg: {
+            color1: {
+                title: __(`Buttons background color \n& Links hover color`),
+                value: '#0085ba',
+                default: true
+            },
+            color2: {
+                title: __("Headings & Links color"),
+                value: '#333333',
+                default: true
+            },
+            color3: {
+                title: __("Body text & Meta color"),
+                value: '#444140',
+                default: true
+            },
+            color4: {
+                title: __("Borders color"),
+                value: '#eaeaea',
+                default: true
+            },
+            color5: {
+                title: __(
+                    "Body background, a tint for Input fields"
+                ),
+                value: '#ffffff',
+                default: true
+            },
+        },
+        theme: {},
+        defaultPallet: 'theme'
     }
 }
 

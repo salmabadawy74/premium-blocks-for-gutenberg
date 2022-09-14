@@ -30,7 +30,9 @@
     },
     "dependencies": {
         "@fonticonpicker/react-fonticonpicker": "^1.2.0",
+        "@react-spring/web": "^9.5.4",
         "@wordpress/compose": "^3.2.0",
+        "@wordpress/icons": "^9.8.0",
         "@wordpress/scripts": "^19.2.3",
         "axios": "^0.25.0",
         "bezier-easing": "^2.1.0",
@@ -48,6 +50,7 @@
         "react-select": "^2.2.0",
         "react-sortable-hoc": "^1.11.0",
         "react-spring": "^8.0.1",
+        "react-tooltip": "^4.2.21",
         "react-transition-group": "^2.9.0",
         "sass-loader": "^6.0.6",
         "typed.js": "^2.0.11",

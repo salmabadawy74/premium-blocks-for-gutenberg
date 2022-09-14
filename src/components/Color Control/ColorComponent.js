@@ -6,6 +6,7 @@ const { Component } = wp.element;
 const { Button, Popover, ColorIndicator, ColorPicker, Tooltip } = wp.components;
 const { withSelect } = wp.data;
 import { colord } from "colord";
+import { store as coreStore } from '@wordpress/core-data';
 
 class AdvancedColorControl extends Component {
     constructor() {
@@ -22,8 +23,8 @@ class AdvancedColorControl extends Component {
             this.setState({
                 currentColor:
                     undefined === this.props.colorValue ||
-                    "" === this.props.colorValue ||
-                    "transparent" === this.props.colorValue
+                        "" === this.props.colorValue ||
+                        "transparent" === this.props.colorValue
                         ? ""
                         : this.props.colorValue,
             });
@@ -32,7 +33,7 @@ class AdvancedColorControl extends Component {
             this.setState({
                 currentColor:
                     undefined === this.props.colorValue ||
-                    "" === this.props.colorValue
+                        "" === this.props.colorValue
                         ? this.props.colorDefault
                         : this.props.colorValue,
             });
@@ -46,8 +47,8 @@ class AdvancedColorControl extends Component {
                 this.setState({
                     currentColor:
                         undefined === this.props.colorValue ||
-                        "" === this.props.colorValue ||
-                        "transparent" === this.props.colorValue
+                            "" === this.props.colorValue ||
+                            "transparent" === this.props.colorValue
                             ? ""
                             : this.props.colorValue,
                 });
@@ -55,7 +56,7 @@ class AdvancedColorControl extends Component {
                 this.setState({
                     currentColor:
                         undefined === this.props.colorValue ||
-                        "" === this.props.colorValue
+                            "" === this.props.colorValue
                             ? this.props.colorDefault
                             : this.props.colorValue,
                 });
@@ -85,6 +86,35 @@ class AdvancedColorControl extends Component {
 
         const isNew = wp.components.GradientPicker;
 
+        const getDefaultColors = () => {
+            const { globalColorsSetting } = this.props;
+            let globalColors = [];
+            const { defaultPallet, pbg: pbgColors, theme: themeColors } = globalColorsSetting;
+            if (defaultPallet === 'theme') {
+                if (Object.keys(themeColors).length) {
+                    globalColors = Object.keys(themeColors).map((key, index) => {
+                        return {
+                            name: themeColors[key].title,
+                            slug: key,
+                            color: themeColors[key].value,
+                        };
+                    });
+                }
+                globalColors = [...this.props.colors, ...globalColors];
+            }
+            if (defaultPallet === 'pbg' && Object.keys(pbgColors).length) {
+                globalColors = Object.keys(pbgColors).map((key, index) => {
+                    return {
+                        name: pbgColors[key].title,
+                        slug: key,
+                        color: pbgColors[key].value,
+                    };
+                });
+            }
+
+            return globalColors;
+        }
+        console.log(getDefaultColors());
         return (
             <div className="premium-color-popover-container">
                 <div className="premium-advanced-color-container">
@@ -112,8 +142,8 @@ class AdvancedColorControl extends Component {
                                             color={
                                                 undefined ===
                                                     this.props.colorValue ||
-                                                "" === this.props.colorValue ||
-                                                "transparent" ===
+                                                    "" === this.props.colorValue ||
+                                                    "transparent" ===
                                                     this.props.colorValue
                                                     ? this.state.defaultColor
                                                     : this.props.colorValue
@@ -126,14 +156,14 @@ class AdvancedColorControl extends Component {
                                                     this.props.onColorChange(
                                                         color.rgb.a != 1
                                                             ? "rgba(" +
-                                                                  color.rgb.r +
-                                                                  "," +
-                                                                  color.rgb.g +
-                                                                  "," +
-                                                                  color.rgb.b +
-                                                                  "," +
-                                                                  color.rgb.a +
-                                                                  ")"
+                                                            color.rgb.r +
+                                                            "," +
+                                                            color.rgb.g +
+                                                            "," +
+                                                            color.rgb.b +
+                                                            "," +
+                                                            color.rgb.a +
+                                                            ")"
                                                             : color.hex
                                                     );
                                                 }
@@ -164,7 +194,7 @@ class AdvancedColorControl extends Component {
                                     <div className={`premium-color-picker-top`}>
                                         <ul className="premium-color-picker-skins">
                                             {map(
-                                                this.props.colors,
+                                                getDefaultColors(),
                                                 ({ color, slug, name }) => {
                                                     return (
                                                         <li
@@ -216,11 +246,10 @@ class AdvancedColorControl extends Component {
                         {this.state.isVisible && (
                             <Tooltip text={__("Select Color")}>
                                 <Button
-                                    className={`premium-color-picker-single ${
-                                        "" === this.props.colorDefault
-                                            ? "Premium-has-alpha"
-                                            : "Premium-no-alpha"
-                                    }`}
+                                    className={`premium-color-picker-single ${"" === this.props.colorDefault
+                                        ? "Premium-has-alpha"
+                                        : "Premium-no-alpha"
+                                        }`}
                                     onClick={toggleClose}
                                 >
                                     <ColorIndicator
@@ -228,9 +257,9 @@ class AdvancedColorControl extends Component {
                                         colorValue={
                                             "transparent" ===
                                                 this.props.colorValue ||
-                                            undefined ===
+                                                undefined ===
                                                 this.props.colorValue ||
-                                            "" === this.props.colorValue
+                                                "" === this.props.colorValue
                                                 ? this.props.colorDefault
                                                 : this.props.colorValue
                                         }
@@ -241,11 +270,10 @@ class AdvancedColorControl extends Component {
                         {!this.state.isVisible && (
                             <Tooltip text={__("Select Color")}>
                                 <Button
-                                    className={`premium-color-picker-single ${
-                                        "" === this.props.colorDefault
-                                            ? "Premium-has-alpha"
-                                            : "Premium-no-alpha"
-                                    }`}
+                                    className={`premium-color-picker-single ${"" === this.props.colorDefault
+                                        ? "Premium-has-alpha"
+                                        : "Premium-no-alpha"
+                                        }`}
                                     onClick={toggleVisible}
                                 >
                                     <ColorIndicator
@@ -253,9 +281,9 @@ class AdvancedColorControl extends Component {
                                         colorValue={
                                             "transparent" ===
                                                 this.props.colorValue ||
-                                            undefined ===
+                                                undefined ===
                                                 this.props.colorValue ||
-                                            "" === this.props.colorValue
+                                                "" === this.props.colorValue
                                                 ? this.props.colorDefault
                                                 : this.props.colorValue
                                         }
@@ -290,6 +318,8 @@ class AdvancedColorControl extends Component {
 
 export default withSelect((select, ownProps) => {
     const settings = select("core/block-editor").getSettings();
+    const { getEditedEntityRecord } = select(coreStore);
+    const pbgGlobalSettings = getEditedEntityRecord('root', 'site')?.pbg_global_settings || {};
     const colors = get(settings, ["colors"], []);
     const disableCustomColors =
         ownProps.disableCustomColors === undefined
@@ -298,5 +328,6 @@ export default withSelect((select, ownProps) => {
     return {
         colors,
         disableCustomColors,
+        globalColorsSetting: JSON.parse(pbgGlobalSettings?.colors) || {}
     };
 })(AdvancedColorControl);
