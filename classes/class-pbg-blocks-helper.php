@@ -6629,7 +6629,7 @@ class PBG_Blocks_Helper
 		$media_query['tablet']  = apply_filters('Premium_BLocks_tablet_media_query', '(max-width: 1024px)');
 		$media_query['desktop'] = apply_filters('Premium_BLocks_tablet_media_query', '(min-width: 1025px)');
 
-		$css->set_selector('.wp-block-premium-container.premium-block-' . $unique_id);
+		$css->set_selector('.wp-block-premium-container .premium-block-' . $unique_id);
 		if (isset($attr['minHeight'])) {
 			$css->add_property('min-height', $css->render_range($attr['minHeight'], 'Desktop'));
 		}

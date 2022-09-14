@@ -1822,6 +1822,9 @@
     left: 0;
     right: 0; }
   .wp-block-premium-container > .premium-container-inner-blocks-wrap {
+    display: flex;
+    position: relative;
+    z-index: 2;
     width: 100%; }
     .wp-block-premium-container > .premium-container-inner-blocks-wrap > .block-editor-inner-blocks {
       display: flex;

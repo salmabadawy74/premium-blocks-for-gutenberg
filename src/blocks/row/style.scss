@@ -2594,6 +2594,10 @@
     }
 
     >.premium-container-inner-blocks-wrap {
+        display: flex;
+        position: relative;
+        z-index: 2;
+
         >.block-editor-inner-blocks {
             display: flex;
             width: 100%;
