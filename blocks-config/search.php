@@ -380,12 +380,6 @@ function render_block_premium_search( $attributes ) {
  * Registers the `premium/search` block on the server.
  */
 function register_block_premium_search() {
-	register_block_type_from_metadata(
-		PREMIUM_BLOCKS_PATH . 'src/blocks/search',
-		array(
-			'render_callback' => 'render_block_premium_search',
-		)
-	);
 	register_block_type(
 		'premium/search',
 		array(
