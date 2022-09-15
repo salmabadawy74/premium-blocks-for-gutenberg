@@ -11,6 +11,10 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("premium/row", {
     title: __("Container", "premium-blocks-for-gutenberg"),
     icon: PBG_Block_Icons.row,
+    keywords: [
+        __("row", "premium-blocks-for-gutenberg"),
+        __("container", "premium-blocks-for-gutenberg"),
+    ],
     category: "premium-blocks",
     supports: {
         inserter: row,

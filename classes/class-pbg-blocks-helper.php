@@ -116,7 +116,7 @@ class PBG_Blocks_Helper
 
 
 
-	
+
 	public function register_pbg_setting()
 	{
 		register_setting(
@@ -196,7 +196,7 @@ class PBG_Blocks_Helper
 	 */
 	public function getSvgShapes()
 	{
-		$shape_path = PREMIUM_BLOCKS_PATH . 'src/components/shape';
+		$shape_path = PREMIUM_BLOCKS_PATH . 'blocks-config/shape';
 		$shapes     = glob($shape_path . '/*.svg', GLOB_BRACE);
 		$shapeArray = array();
 		if (count($shapes)) {
@@ -2769,7 +2769,7 @@ class PBG_Blocks_Helper
 			$container_border_width  = $container_border['borderWidth'];
 			$container_border_radius = $container_border['borderRadius'];
 
-			$css->set_selector('.' . $unique_id );
+			$css->set_selector('.' . $unique_id);
 			$css->add_property('border-width', $css->render_spacing($container_border_width['Tablet'], 'px'));
 			$css->add_property('border-radius', $css->render_spacing($container_border_radius['Tablet'], 'px'));
 		}
@@ -2867,7 +2867,7 @@ class PBG_Blocks_Helper
 			$container_border_width  = $container_border['borderWidth'];
 			$container_border_radius = $container_border['borderRadius'];
 
-			$css->set_selector('.' . $unique_id );
+			$css->set_selector('.' . $unique_id);
 			$css->add_property('border-width', $css->render_spacing($container_border_width['Mobile'], 'px'));
 			$css->add_property('border-radius', $css->render_spacing($container_border_radius['Mobile'], 'px'));
 		}
@@ -6623,13 +6623,13 @@ class PBG_Blocks_Helper
 	 */
 	public function get_row_css_style($attr, $unique_id)
 	{
+
 		$css                    = new Premium_Blocks_css();
 		$media_query            = array();
 		$media_query['mobile']  = apply_filters('Premium_BLocks_mobile_media_query', '(max-width: 767px)');
 		$media_query['tablet']  = apply_filters('Premium_BLocks_tablet_media_query', '(max-width: 1024px)');
 		$media_query['desktop'] = apply_filters('Premium_BLocks_tablet_media_query', '(min-width: 1025px)');
-
-		$css->set_selector('.wp-block-premium-container .premium-block-' . $unique_id);
+		$css->set_selector('.wp-block-premium-container.premium-is-root-container.premium-block-' . $unique_id . " .premium-container-inner-blocks-wrap");
 		if (isset($attr['minHeight'])) {
 			$css->add_property('min-height', $css->render_range($attr['minHeight'], 'Desktop'));
 		}
@@ -6653,7 +6653,7 @@ class PBG_Blocks_Helper
 
 		$css->add_property('column-gap', isset($attr['rowGutter']['Desktop']) ? $attr['columnGutter']['Desktop'] . $attr['columnGutter']['unit'] : '20px');
 
-		$css->set_selector('.wp-block-premium-container' . $unique_id);
+		$css->set_selector('.wp-block-premium-container.premium-is-root-container .premium-block-' . $unique_id);
 
 		if (isset($attr['minHeight'])) {
 			$css->add_property('min-height', $css->render_range($attr['minHeight'], 'Desktop'));
@@ -6710,7 +6710,7 @@ class PBG_Blocks_Helper
 
 		$css->start_media_query($media_query['tablet']);
 
-		$css->set_selector('.wp-block-premium-container.premium-block-' . $unique_id);
+		$css->set_selector('.wp-block-premium-container.premium-is-root-container.premium-block-' . $unique_id . " .premium-container-inner-blocks-wrap");
 		if (isset($attr['minHeight'])) {
 			$css->add_property('min-height', $css->render_range($attr['minHeight'], 'Tablet'));
 		}
@@ -6731,7 +6731,7 @@ class PBG_Blocks_Helper
 		}
 		$css->add_property('row-gap', isset($attr['rowGutter']['Tablet']) ? $attr['rowGutter']['Tablet'] . $attr['rowGutter']['unit'] : '20px');
 		$css->add_property('column-gap', isset($attr['rowGutter']['Tablet']) ? $attr['columnGutter']['Tablet'] . $attr['columnGutter']['unit'] : '20px');
-		$css->set_selector('.wp-block-premium-container' . $unique_id);
+		$css->set_selector('.wp-block-premium-container.premium-is-root-container .premium-block-' . $unique_id);
 		if (isset($attr['minHeight'])) {
 			$css->add_property('min-height', $css->render_range($attr['minHeight'], 'Tablet'));
 		}
@@ -6789,7 +6789,7 @@ class PBG_Blocks_Helper
 
 		$css->start_media_query($media_query['mobile']);
 
-		$css->set_selector('.wp-block-premium-container.premium-block-' . $unique_id);
+		$css->set_selector('.wp-block-premium-container.premium-is-root-container.premium-block-' . $unique_id . " .premium-container-inner-blocks-wrap");
 		if (isset($attr['minHeight'])) {
 			$css->add_property('min-height', $css->render_range($attr['minHeight'], 'Mobile'));
 		}
@@ -6810,7 +6810,7 @@ class PBG_Blocks_Helper
 		}
 		$css->add_property('row-gap', isset($attr['rowGutter']['Mobile']) ? $attr['rowGutter']['Mobile'] . $attr['rowGutter']['unit'] : '20px');
 		$css->add_property('column-gap', isset($attr['rowGutter']['Mobile']) ? $attr['columnGutter']['Mobile'] . $attr['columnGutter']['unit'] : '20px');
-		$css->set_selector('.wp-block-premium-container' . $unique_id);
+		$css->set_selector('.wp-block-premium-container.premium-is-root-container .premium-block-' . $unique_id);
 		if (isset($attr['minHeight'])) {
 			$css->add_property('min-height', $css->render_range($attr['minHeight'], 'Mobile'));
 		}
