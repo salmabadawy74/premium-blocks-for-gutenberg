@@ -87,34 +87,21 @@ class AdvancedColorControl extends Component {
         const isNew = wp.components.GradientPicker;
 
         const getDefaultColors = () => {
-            const { globalColorsSetting } = this.props;
-            let globalColors = [];
-            const { defaultPallet, pbg: pbgColors, theme: themeColors } = globalColorsSetting;
-            if (defaultPallet === 'theme') {
-                if (Object.keys(themeColors).length) {
-                    globalColors = Object.keys(themeColors).map((key, index) => {
-                        return {
-                            name: themeColors[key].title,
-                            slug: key,
-                            color: themeColors[key].value,
-                        };
-                    });
-                }
-                globalColors = [...this.props.colors, ...globalColors];
-            }
-            if (defaultPallet === 'pbg' && Object.keys(pbgColors).length) {
-                globalColors = Object.keys(pbgColors).map((key, index) => {
-                    return {
-                        name: pbgColors[key].title,
-                        slug: key,
-                        color: pbgColors[key].value,
-                    };
-                });
-            }
+            const { pbgGlobalColors, pbgDefaultPallet, colors } = this.props;
 
+            let globalColors = [...colors];
+            if (pbgGlobalColors.length) {
+                if (pbgDefaultPallet === 'theme') {
+                    const themeCustomColors = pbgGlobalColors.filter((color) => color.type === 'theme');
+                    globalColors = [...this.props.colors, ...themeCustomColors];
+                }
+                if (pbgDefaultPallet === 'pbg') {
+                    globalColors = pbgGlobalColors.filter((color) => color.type === 'pbg');
+                }
+            }
             return globalColors;
         }
-        console.log(getDefaultColors());
+
         return (
             <div className="premium-color-popover-container">
                 <div className="premium-advanced-color-container">
@@ -319,15 +306,19 @@ class AdvancedColorControl extends Component {
 export default withSelect((select, ownProps) => {
     const settings = select("core/block-editor").getSettings();
     const { getEditedEntityRecord } = select(coreStore);
-    const pbgGlobalSettings = getEditedEntityRecord('root', 'site')?.pbg_global_settings || {};
+    const pbgGlobalColors = getEditedEntityRecord('root', 'site')?.pbg_global_colors || [];
+    const pbgDefaultPallet = getEditedEntityRecord('root', 'site')?.pbg_global_color_pallet || 'theme';
     const colors = get(settings, ["colors"], []);
     const disableCustomColors =
         ownProps.disableCustomColors === undefined
             ? settings.disableCustomColors
             : ownProps.disableCustomColors;
+
+
     return {
         colors,
         disableCustomColors,
-        globalColorsSetting: JSON.parse(pbgGlobalSettings?.colors) || {}
+        pbgGlobalColors,
+        pbgDefaultPallet
     };
 })(AdvancedColorControl);

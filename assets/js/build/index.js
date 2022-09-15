@@ -52725,43 +52725,26 @@ class AdvancedColorControl extends Component {
 
     const getDefaultColors = () => {
       const {
-        globalColorsSetting
+        pbgGlobalColors,
+        pbgDefaultPallet,
+        colors
       } = this.props;
-      let globalColors = [];
-      const {
-        defaultPallet,
-        pbg: pbgColors,
-        theme: themeColors
-      } = globalColorsSetting;
+      let globalColors = [...colors];
 
-      if (defaultPallet === 'theme') {
-        if (Object.keys(themeColors).length) {
-          globalColors = Object.keys(themeColors).map((key, index) => {
-            return {
-              name: themeColors[key].title,
-              slug: key,
-              color: themeColors[key].value
-            };
-          });
+      if (pbgGlobalColors.length) {
+        if (pbgDefaultPallet === 'theme') {
+          const themeCustomColors = pbgGlobalColors.filter(color => color.type === 'theme');
+          globalColors = [...this.props.colors, ...themeCustomColors];
         }
 
-        globalColors = [...this.props.colors, ...globalColors];
-      }
-
-      if (defaultPallet === 'pbg' && Object.keys(pbgColors).length) {
-        globalColors = Object.keys(pbgColors).map((key, index) => {
-          return {
-            name: pbgColors[key].title,
-            slug: key,
-            color: pbgColors[key].value
-          };
-        });
+        if (pbgDefaultPallet === 'pbg') {
+          globalColors = pbgGlobalColors.filter(color => color.type === 'pbg');
+        }
       }
 
       return globalColors;
     };
 
-    console.log(getDefaultColors());
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "premium-color-popover-container"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -52863,19 +52846,21 @@ class AdvancedColorControl extends Component {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (withSelect((select, ownProps) => {
-  var _getEditedEntityRecor;
+  var _getEditedEntityRecor, _getEditedEntityRecor2;
 
   const settings = select("core/block-editor").getSettings();
   const {
     getEditedEntityRecord
   } = select(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_4__.store);
-  const pbgGlobalSettings = ((_getEditedEntityRecor = getEditedEntityRecord('root', 'site')) === null || _getEditedEntityRecor === void 0 ? void 0 : _getEditedEntityRecor.pbg_global_settings) || {};
+  const pbgGlobalColors = ((_getEditedEntityRecor = getEditedEntityRecord('root', 'site')) === null || _getEditedEntityRecor === void 0 ? void 0 : _getEditedEntityRecor.pbg_global_colors) || [];
+  const pbgDefaultPallet = ((_getEditedEntityRecor2 = getEditedEntityRecord('root', 'site')) === null || _getEditedEntityRecor2 === void 0 ? void 0 : _getEditedEntityRecor2.pbg_global_color_pallet) || 'theme';
   const colors = lodash_get__WEBPACK_IMPORTED_MODULE_1___default()(settings, ["colors"], []);
   const disableCustomColors = ownProps.disableCustomColors === undefined ? settings.disableCustomColors : ownProps.disableCustomColors;
   return {
     colors,
     disableCustomColors,
-    globalColorsSetting: JSON.parse(pbgGlobalSettings === null || pbgGlobalSettings === void 0 ? void 0 : pbgGlobalSettings.colors) || {}
+    pbgGlobalColors,
+    pbgDefaultPallet
   };
 })(AdvancedColorControl));
 

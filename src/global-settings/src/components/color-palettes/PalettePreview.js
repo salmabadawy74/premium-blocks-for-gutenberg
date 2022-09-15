@@ -2,8 +2,9 @@ const { __ } = wp.i18n;
 import classnames from "classnames";
 import ColorComponent from "../color";
 import { Icon, create } from '@wordpress/icons';
-import { useEffect, useState } from "react";
 import ReactTooltip from 'react-tooltip';
+import { useContext, useEffect, useState } from "@wordpress/element";
+import SettingsContext from "../../store/settings-store";
 
 const PalettePreview = ({
     renderBefore = () => null,
@@ -14,12 +15,13 @@ const PalettePreview = ({
     className,
     addNewColor,
     handleClickReset,
-    onRemove
+    onRemove,
+    onChangeName
 }) => {
     if (!currentPalette) {
         currentPalette = value;
     }
-
+    const { colorPallet } = useContext(SettingsContext);
     const handleChangeColor = (color, optionId) => {
         let newColor;
         if (typeof color === "string") {
@@ -36,42 +38,33 @@ const PalettePreview = ({
         onChange(newColor, optionId);
     };
 
-    const colorValues = {};
-    const defaultPickers = Object.keys(currentPalette).map((key, index) => {
-        colorValues[key] = currentPalette[key].value;
+    const findColor = (id) => {
+        return currentPalette.find(color => color.slug === id);
+    };
+
+    const getColor = (id) => {
+        return findColor(id)?.color;
+    };
+
+    const pickers = currentPalette.map((palletColors) => {
         return {
-            title: currentPalette[key].title,
-            id: key,
-            skipModal: currentPalette[key].skipModal,
-            default: currentPalette[key].default,
+            title: palletColors.name,
+            id: palletColors.slug,
+            skipModal: palletColors.skipModal,
+            default: palletColors.default,
         };
     });
 
-    const [pickers, setPickers] = useState(defaultPickers);
     const addColor = () => {
         const lastColorIndex = Object.keys(pickers).length;
         const colorId = `color${lastColorIndex + 1}`;
         const colorTitle = `${__('Custom Color ')}${lastColorIndex + 1}`;
-        const newPickers = [...pickers];
-        newPickers.push({
-            title: colorTitle,
-            id: colorId
-        });
-        addNewColor({ title: colorTitle, value: '' }, colorId);
-        setPickers(newPickers);
+        addNewColor({ name: colorTitle, color: '', slug: colorId, type: colorPallet });
     }
 
     useEffect(() => {
         ReactTooltip.rebuild();
     }, [pickers]);
-
-    const handleRemove = (id) => {
-        const newPickers = [...pickers].filter((value, index) => {
-            return value.id !== id;
-        });
-        setPickers(newPickers);
-        onRemove(id);
-    };
 
     return (
         <div
@@ -94,14 +87,14 @@ const PalettePreview = ({
                     <ColorComponent
                         picker={picker}
                         onChangeComplete={(color, id) => handleChangeColor(color, picker[`id`])}
-                        value={colorValues}
-                        predefined={true}
+                        value={getColor(picker.id)}
                         className={"premium-color-palette-modal"}
                         skipModal={picker.skipModal}
                         resetPalette={true}
                         onColorReset={(color) => handleClickReset(picker[`id`])}
                         isDefault={picker.default}
-                        onRemove={handleRemove}
+                        onRemove={() => onRemove(picker[`id`])}
+                        onChangeName={(v) => onChangeName(v, picker[`id`])}
                     />
                 ))}
                 <div className="premium-add-new-color" onClick={() => addColor()} data-tip={__('Add Color')}>

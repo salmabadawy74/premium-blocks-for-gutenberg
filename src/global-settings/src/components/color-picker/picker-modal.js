@@ -12,10 +12,10 @@ const PickerModal = ({
     wrapperProps = {},
     inline_modal,
     appendToBody,
-    predefined,
     className,
     resetPalette,
     onColorReset,
+    onChangeName
 }) => {
     const getValueForPicker = useMemo(() => {
         if ((value || "").indexOf("var") > -1) {
@@ -33,18 +33,6 @@ const PickerModal = ({
 
     const [refresh, setRefresh] = useState(false);
 
-    let valueToCheck = value;
-
-
-
-    const handletoppart = (colorValue) => {
-        if (refresh) {
-            setRefresh(false);
-        } else {
-            setRefresh(true);
-        }
-        onChange(colorValue);
-    };
     useEffect(() => {
         onChange;
     }, [value]);
@@ -72,53 +60,18 @@ const PickerModal = ({
                 }}
                 {...wrapperProps}
             >
-                {!predefined && (
-                    <div className="premium-global-color-picker-top">
-                        <ul className="premium-global-color-picker-skins">
-                            {[
-                                "paletteColor1",
-                                "paletteColor2",
-                                "paletteColor3",
-                                "paletteColor4",
-                                "paletteColor5",
-                                "paletteColor6",
-                                "paletteColor7",
-                            ].map((color, index) => (
-                                <li
-                                    key={color}
-                                    style={{
-                                        background: `var(--${color})`,
-                                    }}
-                                    className={classnames({
-                                        active: valueToCheck === `var(--${color})`,
-                                    })}
-                                    onClick={() => handletoppart(`var(--${color})`)}
-                                >
-                                    <div className="premium-tooltip-top">
-                                        {
-                                            {
-                                                paletteColor1: "Color 1",
-                                                paletteColor2: "Color 2",
-                                                paletteColor3: "Color 3",
-                                                paletteColor4: "Color 4",
-                                                paletteColor5: "Color 5",
-                                                paletteColor6: "Color 6",
-                                                paletteColor7: "Color 7",
-                                            }[color]
-                                        }
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                )}
-
                 {refresh && (
                     <>
                         <ColorPicker
                             color={getValueForPicker.color}
                             onChangeComplete={(color) => onChange(color)}
                         />
+                        {picker.title && (
+                            <div className="premium-color-title">
+                                <label>{__('Name')}:</label>
+                                <input type={'text'} value={picker.title} onChange={(e) => onChangeName(e.target.value)} />
+                            </div>
+                        )}
                         {resetPalette && (
                             <div className={`premium-reset-palette__Wrapper`}>
                                 <button
@@ -141,6 +94,12 @@ const PickerModal = ({
                             color={getValueForPicker.color}
                             onChangeComplete={(color) => onChange(color)}
                         />
+                        {picker.title && (
+                            <div className="premium-color-title">
+                                <label>{__('Name')}:</label>
+                                <input type={'text'} value={picker.title} onChange={(e) => onChangeName(e.target.value)} />
+                            </div>
+                        )}
                         {resetPalette && (
                             <div className={`premium-reset-palette__Wrapper`}>
                                 <button

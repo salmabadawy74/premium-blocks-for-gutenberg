@@ -152,7 +152,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 				'pbg_global_color_pallet',
 				array(
 					'type'              => 'string',
-					'description'       => __( 'Config Premium Blocks For Gutenberg Global Color Pallet Settings', STACKABLE_I18N ),
+					'description'       => __( 'Config Premium Blocks For Gutenberg Global Color Pallet Settings', 'premium-block-for-gutenberg' ),
 					'sanitize_callback' => 'sanitize_text_field',
 					'show_in_rest'      => true,
 					'default'           => 'theme',

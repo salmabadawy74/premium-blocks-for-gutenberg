@@ -203,47 +203,45 @@ const defaults = {
             }
         },
     },
-    colorSettings: {
-        pbg: [
-            {
-                slug: 'color1',
-                name: __(`Buttons background color \n& Links hover color`),
-                color: '#0085ba',
-                default: true,
-                type: 'pbg'
-            },
-            {
-                slug: 'color2',
-                name: __("Headings & Links color"),
-                color: '#333333',
-                default: true,
-                type: 'pbg'
-            },
-            {
-                slug: 'color3',
-                name: __("Body text & Meta color"),
-                color: '#444140',
-                default: true,
-                type: 'pbg'
-            },
-            {
-                slug: 'color4',
-                name: __("Borders color"),
-                color: '#eaeaea',
-                default: true,
-                type: 'pbg'
-            },
-            {
-                slug: 'color5',
-                name: __(
-                    "Body background, a tint for Input fields"
-                ),
-                color: '#ffffff',
-                default: true,
-                type: 'pbg'
-            },
-        ]
-    }
+    colors: [
+        {
+            slug: 'color1',
+            name: __(`Buttons background color \n& Links hover color`),
+            color: '#0085ba',
+            default: true,
+            type: 'pbg'
+        },
+        {
+            slug: 'color2',
+            name: __("Headings & Links color"),
+            color: '#333333',
+            default: true,
+            type: 'pbg'
+        },
+        {
+            slug: 'color3',
+            name: __("Body text & Meta color"),
+            color: '#444140',
+            default: true,
+            type: 'pbg'
+        },
+        {
+            slug: 'color4',
+            name: __("Borders color"),
+            color: '#eaeaea',
+            default: true,
+            type: 'pbg'
+        },
+        {
+            slug: 'color5',
+            name: __(
+                "Body background, a tint for Input fields"
+            ),
+            color: '#ffffff',
+            default: true,
+            type: 'pbg'
+        },
+    ]
 }
 
 export default defaults 

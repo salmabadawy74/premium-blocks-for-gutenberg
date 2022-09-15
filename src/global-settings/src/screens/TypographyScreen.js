@@ -8,7 +8,7 @@ import { typographyCss } from '../../../components/HelperFunction';
 import WebfontLoader from '../../../components/typography/fontLoader';
 
 const TypographyScreen = props => {
-    const { typographySettings, setTypographySettings } = useContext(SettingsContext);
+    const { globalTypography, setGlobalTypography } = useContext(SettingsContext);
     const { typography: defaultValues } = defaults;
     const getElementValue = (element) => {
         const value = typographySettings?.[element] ? typographySettings?.[element] : defaultValues?.[element];

@@ -3,7 +3,7 @@ import SinglePicker from './color-picker/single-picker'
 import OutsideClickHandler from './common/outside-component'
 import { Icon, closeSmall } from '@wordpress/icons';
 
-const ColorComponent = ({ picker, onChangeComplete, value, predefined, className, skipModal, resetPalette, onColorReset, isDefault, onRemove }) => {
+const ColorComponent = ({ picker, onChangeComplete, value, className, skipModal, resetPalette, onColorReset, isDefault, onRemove, onChangeName }) => {
     const [{ isPicking, isTransitioning }, setState] = useState({
         isPicking: null,
         isTransitioning: null,
@@ -50,12 +50,12 @@ const ColorComponent = ({ picker, onChangeComplete, value, predefined, className
                     }))
                 }
                 onChange={(color) => onChangeComplete(color)}
-                value={value[picker.id]}
-                predefined={predefined}
+                value={value}
                 className={className}
                 skipModal={skipModal}
                 resetPalette={resetPalette}
                 onColorReset={(color) => onColorReset(color)}
+                onChangeName={(name) => onChangeName(name)}
             />
             {!isDefault && <span className="premium-remove-color" onClick={() => onRemove(picker.id)}>
                 <Icon icon={closeSmall} />

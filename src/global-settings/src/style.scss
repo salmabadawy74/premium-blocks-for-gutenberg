@@ -1824,3 +1824,11 @@ span.premium-color-description {
     visibility: visible;
     transform: translate3d(0px, -38px, 0px);
 }
+.premium-color-title {
+    margin: 0 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    input {
+        margin-top: 5px;
+    }
+}

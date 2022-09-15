@@ -9172,13 +9172,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _color__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../color */ "./src/components/color.js");
 /* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/icon/index.js");
 /* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/create.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_tooltip__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-tooltip */ "./node_modules/react-tooltip/dist/index.es.js");
+/* harmony import */ var react_tooltip__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-tooltip */ "./node_modules/react-tooltip/dist/index.es.js");
+/* harmony import */ var _store_settings_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../store/settings-store */ "./src/store/settings-store.js");
 
 const {
   __
 } = wp.i18n;
+
 
 
 
@@ -9195,12 +9195,17 @@ const PalettePreview = _ref => {
     className,
     addNewColor,
     handleClickReset,
-    onRemove
+    onRemove,
+    onChangeName
   } = _ref;
 
   if (!currentPalette) {
     currentPalette = value;
   }
+
+  const {
+    colorPallet
+  } = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useContext)(_store_settings_store__WEBPACK_IMPORTED_MODULE_4__["default"]);
 
   const handleChangeColor = (color, optionId) => {
     let newColor;
@@ -9216,46 +9221,40 @@ const PalettePreview = _ref => {
     onChange(newColor, optionId);
   };
 
-  const colorValues = {};
-  const defaultPickers = Object.keys(currentPalette).map((key, index) => {
-    colorValues[key] = currentPalette[key].value;
+  const findColor = id => {
+    return currentPalette.find(color => color.slug === id);
+  };
+
+  const getColor = id => {
+    var _findColor;
+
+    return (_findColor = findColor(id)) === null || _findColor === void 0 ? void 0 : _findColor.color;
+  };
+
+  const pickers = currentPalette.map(palletColors => {
     return {
-      title: currentPalette[key].title,
-      id: key,
-      skipModal: currentPalette[key].skipModal,
-      default: currentPalette[key].default
+      title: palletColors.name,
+      id: palletColors.slug,
+      skipModal: palletColors.skipModal,
+      default: palletColors.default
     };
   });
-  const [pickers, setPickers] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(defaultPickers);
 
   const addColor = () => {
     const lastColorIndex = Object.keys(pickers).length;
     const colorId = `color${lastColorIndex + 1}`;
     const colorTitle = `${__('Custom Color ')}${lastColorIndex + 1}`;
-    const newPickers = [...pickers];
-    newPickers.push({
-      title: colorTitle,
-      id: colorId
-    });
     addNewColor({
-      title: colorTitle,
-      value: ''
-    }, colorId);
-    setPickers(newPickers);
-  };
-
-  (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
-    react_tooltip__WEBPACK_IMPORTED_MODULE_4__["default"].rebuild();
-  }, [pickers]);
-
-  const handleRemove = id => {
-    const newPickers = [...pickers].filter((value, index) => {
-      return value.id !== id;
+      name: colorTitle,
+      color: '',
+      slug: colorId,
+      type: colorPallet
     });
-    setPickers(newPickers);
-    onRemove(id);
   };
 
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    react_tooltip__WEBPACK_IMPORTED_MODULE_3__["default"].rebuild();
+  }, [pickers]);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: classnames__WEBPACK_IMPORTED_MODULE_1___default()("premium-single-palette", className),
     onClick: e => {
@@ -9267,20 +9266,20 @@ const PalettePreview = _ref => {
     }
   }, renderBefore(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-color-palette-container`
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_tooltip__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_tooltip__WEBPACK_IMPORTED_MODULE_3__["default"], {
     place: "top",
     effect: "solid"
   }), pickers.map(picker => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_color__WEBPACK_IMPORTED_MODULE_2__["default"], {
     picker: picker,
     onChangeComplete: (color, id) => handleChangeColor(color, picker[`id`]),
-    value: colorValues,
-    predefined: true,
+    value: getColor(picker.id),
     className: "premium-color-palette-modal",
     skipModal: picker.skipModal,
     resetPalette: true,
     onColorReset: color => handleClickReset(picker[`id`]),
     isDefault: picker.default,
-    onRemove: handleRemove
+    onRemove: () => onRemove(picker[`id`]),
+    onChangeName: v => onChangeName(v, picker[`id`])
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-add-new-color",
     onClick: () => addColor(),
@@ -9328,10 +9327,10 @@ const PickerModal = _ref => {
     wrapperProps = {},
     inline_modal,
     appendToBody,
-    predefined,
     className,
     resetPalette,
-    onColorReset
+    onColorReset,
+    onChangeName
   } = _ref;
   const getValueForPicker = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => {
     if ((value || "").indexOf("var") > -1) {
@@ -9347,18 +9346,6 @@ const PickerModal = _ref => {
     };
   }, [value, picker]);
   const [refresh, setRefresh] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
-  let valueToCheck = value;
-
-  const handletoppart = colorValue => {
-    if (refresh) {
-      setRefresh(false);
-    } else {
-      setRefresh(true);
-    }
-
-    onChange(colorValue);
-  };
-
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
     onChange;
   }, [value]);
@@ -9380,33 +9367,16 @@ const PickerModal = _ref => {
     }, className),
     style: { ...(style ? style : {})
     }
-  }, wrapperProps), !predefined && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "premium-global-color-picker-top"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("ul", {
-    className: "premium-global-color-picker-skins"
-  }, ["paletteColor1", "paletteColor2", "paletteColor3", "paletteColor4", "paletteColor5", "paletteColor6", "paletteColor7"].map((color, index) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("li", {
-    key: color,
-    style: {
-      background: `var(--${color})`
-    },
-    className: classnames__WEBPACK_IMPORTED_MODULE_3___default()({
-      active: valueToCheck === `var(--${color})`
-    }),
-    onClick: () => handletoppart(`var(--${color})`)
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "premium-tooltip-top"
-  }, {
-    paletteColor1: "Color 1",
-    paletteColor2: "Color 2",
-    paletteColor3: "Color 3",
-    paletteColor4: "Color 4",
-    paletteColor5: "Color 5",
-    paletteColor6: "Color 6",
-    paletteColor7: "Color 7"
-  }[color]))))), refresh && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPicker, {
+  }, wrapperProps), refresh && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPicker, {
     color: getValueForPicker.color,
     onChangeComplete: color => onChange(color)
-  }), resetPalette && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  }), picker.title && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "premium-color-title"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", null, __('Name'), ":"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
+    type: 'text',
+    value: picker.title,
+    onChange: e => onChangeName(e.target.value)
+  })), resetPalette && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-reset-palette__Wrapper`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
     type: "button",
@@ -9419,7 +9389,13 @@ const PickerModal = _ref => {
   }, __(`This will reset the current color to the default one.`, "kemet")))), !refresh && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPicker, {
     color: getValueForPicker.color,
     onChangeComplete: color => onChange(color)
-  }), resetPalette && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  }), picker.title && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "premium-color-title"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", null, __('Name'), ":"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
+    type: 'text',
+    value: picker.title,
+    onChange: e => onChangeName(e.target.value)
+  })), resetPalette && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-reset-palette__Wrapper`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
     type: "button",
@@ -9476,14 +9452,13 @@ const SinglePicker = _ref => {
     modalRef,
     isTransitioning,
     isPicking,
-    predefined,
     className,
     skipModal,
     resetPalette,
-    onColorReset
+    onColorReset,
+    onChangeName
   } = _ref;
   const el = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useRef)();
-  const testRef = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useRef)();
   const appendToBody = true;
   const {
     refreshPopover,
@@ -9535,10 +9510,10 @@ const SinglePicker = _ref => {
         ref: modalRef
       },
       appendToBody: appendToBody,
-      predefined: predefined,
       className: className,
       resetPalette: resetPalette,
-      onColorReset: color => onColorReset(color)
+      onColorReset: color => onColorReset(color),
+      onChangeName: name => onChangeName(name)
     }))), appendToBody ? document.body : el.current.closest('section').parentNode);
   }
 
@@ -9564,7 +9539,6 @@ const SinglePicker = _ref => {
     style: {
       background: `${value} none repeat scroll 0% 0%`
     },
-    ref: testRef,
     "data-tip": picker.title
   })), modal);
 };
@@ -9598,13 +9572,13 @@ const ColorComponent = _ref => {
     picker,
     onChangeComplete,
     value,
-    predefined,
     className,
     skipModal,
     resetPalette,
     onColorReset,
     isDefault,
-    onRemove
+    onRemove,
+    onChangeName
   } = _ref;
   const [{
     isPicking,
@@ -9650,12 +9624,12 @@ const ColorComponent = _ref => {
       isTransitioning: false
     })),
     onChange: color => onChangeComplete(color),
-    value: value[picker.id],
-    predefined: predefined,
+    value: value,
     className: className,
     skipModal: skipModal,
     resetPalette: resetPalette,
-    onColorReset: color => onColorReset(color)
+    onColorReset: color => onColorReset(color),
+    onChangeName: name => onChangeName(name)
   }), !isDefault && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "premium-remove-color",
     onClick: () => onRemove(picker.id)
@@ -10412,39 +10386,37 @@ const defaults = {
       }
     }
   },
-  colorSettings: {
-    pbg: [{
-      slug: 'color1',
-      name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)(`Buttons background color \n& Links hover color`),
-      color: '#0085ba',
-      default: true,
-      type: 'pbg'
-    }, {
-      slug: 'color2',
-      name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Headings & Links color"),
-      color: '#333333',
-      default: true,
-      type: 'pbg'
-    }, {
-      slug: 'color3',
-      name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Body text & Meta color"),
-      color: '#444140',
-      default: true,
-      type: 'pbg'
-    }, {
-      slug: 'color4',
-      name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Borders color"),
-      color: '#eaeaea',
-      default: true,
-      type: 'pbg'
-    }, {
-      slug: 'color5',
-      name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Body background, a tint for Input fields"),
-      color: '#ffffff',
-      default: true,
-      type: 'pbg'
-    }]
-  }
+  colors: [{
+    slug: 'color1',
+    name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)(`Buttons background color \n& Links hover color`),
+    color: '#0085ba',
+    default: true,
+    type: 'pbg'
+  }, {
+    slug: 'color2',
+    name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Headings & Links color"),
+    color: '#333333',
+    default: true,
+    type: 'pbg'
+  }, {
+    slug: 'color3',
+    name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Body text & Meta color"),
+    color: '#444140',
+    default: true,
+    type: 'pbg'
+  }, {
+    slug: 'color4',
+    name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Borders color"),
+    color: '#eaeaea',
+    default: true,
+    type: 'pbg'
+  }, {
+    slug: 'color5',
+    name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Body background, a tint for Input fields"),
+    color: '#ffffff',
+    default: true,
+    type: 'pbg'
+  }]
 };
 /* harmony default export */ __webpack_exports__["default"] = (defaults);
 
@@ -10511,8 +10483,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_color_palettes_PalettePreview__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/color-palettes/PalettePreview */ "./src/components/color-palettes/PalettePreview.js");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var react_tooltip__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-tooltip */ "./node_modules/react-tooltip/dist/index.es.js");
-
 
 
 
@@ -10525,73 +10495,61 @@ __webpack_require__.r(__webpack_exports__);
 
 const ColorsScreen = props => {
   const {
-    colorsSettings,
-    setColorsSettings
-  } = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useContext)(_store_settings_store__WEBPACK_IMPORTED_MODULE_3__["default"]);
-  const {
-    colorSettings: defaultValues
+    colors: defaultColors
   } = _helpers_defaults__WEBPACK_IMPORTED_MODULE_4__["default"];
-  const colorValues = colorsSettings ? colorsSettings : defaultValues;
+  const {
+    globalColors: defaultGlobalColors,
+    setGlobalColors,
+    colorPallet,
+    setColorPallet
+  } = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useContext)(_store_settings_store__WEBPACK_IMPORTED_MODULE_3__["default"]);
+  const globalColors = defaultGlobalColors.length ? defaultGlobalColors : defaultColors;
 
   const _colors = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.useSelect)(select => select('core/block-editor').getSettings().colors) || [];
 
-  const themeColors = {};
+  const themeColorsFromPbg = globalColors.length ? globalColors.filter(color => color.type === 'theme') : [];
 
-  _colors.map(color => {
-    themeColors[color.slug] = {
-      title: color.name,
-      value: color.color,
+  const themeColors = _colors.map(color => {
+    return {
+      name: color.name,
+      color: color.color,
+      slug: color.slug,
       skipModal: true,
-      default: true
+      default: true,
+      type: 'theme'
     };
   });
 
+  const pbgColors = globalColors.length ? globalColors.filter(color => color.type !== 'theme') : [];
+
   const handleRemove = id => {
-    let newValue = { ...colorValues
-    };
-
-    if (colorValues.defaultPallet === 'theme') {
-      delete newValue.theme[id];
-    }
-
-    if (colorValues.defaultPallet === 'pbg') {
-      delete newValue.pbg[id];
-    } // setSettings('colors', JSON.stringify(newValue));
-
+    let newValue = [...globalColors];
+    newValue = newValue.filter(color => color.slug !== id);
+    setGlobalColors(newValue);
   };
 
   const handleToggleChange = () => {
-    let newValue = { ...colorValues
-    };
-    newValue.defaultPallet = colorValues.defaultPallet === 'theme' ? 'pbg' : 'theme'; // setSettings('colors', JSON.stringify(newValue));
+    setColorPallet(colorPallet === 'theme' ? 'pbg' : 'theme');
   };
 
   const handleChange = (value, id) => {
-    let newValue = { ...colorValues
-    };
-
-    if (colorValues.defaultPallet === 'theme') {
-      newValue.theme[id].value = value;
-    }
-
-    if (colorValues.defaultPallet === 'pbg') {
-      newValue.pbg[id].value = value;
-    } // setSettings('colors', JSON.stringify(newValue));
-
+    let newValue = [...globalColors].map(color => color.slug === id ? { ...color,
+      color: value
+    } : color);
+    setGlobalColors(newValue);
   };
 
-  const handleAddNewColor = (colorData, id) => {
-    let newValue = { ...colorValues
-    };
+  const handleAddNewColor = colorData => {
+    let newValue = [...globalColors];
+    newValue.push(colorData);
+    setGlobalColors(newValue);
+  };
 
-    if (colorValues.defaultPallet === 'theme') {
-      newValue.theme[id] = colorData;
-    }
-
-    if (colorValues.defaultPallet === 'pbg') {
-      newValue.pbg[id] = colorData;
-    } // setSettings('colors', JSON.stringify(newValue));
-
+  const handleChangeName = (name, id) => {
+    let newValue = [...globalColors].map(color => color.slug === id ? { ...color,
+      name: name
+    } : color);
+    setGlobalColors(newValue);
   };
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_header__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -10600,18 +10558,31 @@ const ColorsScreen = props => {
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-global-colors-type"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Theme')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.ToggleControl, {
-    checked: colorValues.defaultPallet !== 'theme',
+    checked: colorPallet !== 'theme',
     onChange: handleToggleChange
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Premium Block'))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    onClick: () => {
-      setColorsSettings([{
-        slug: 'color1',
-        name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(`Buttons background color \n& Links hover color`),
-        color: '#0085ba',
-        default: true
-      }]);
-    }
-  }, "Test"));
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Premium Block'))), colorPallet === 'theme' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `premium-palettes-preview`
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_color_palettes_PalettePreview__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    onClick: () => {},
+    value: [...themeColors, ...themeColorsFromPbg],
+    onChange: (v, id) => handleChange(v, id),
+    skipModal: false,
+    handleClickReset: val => console.log(val),
+    addNewColor: handleAddNewColor,
+    onRemove: handleRemove,
+    onChangeName: (v, id) => handleChangeName(v, id)
+  })), colorPallet === 'pbg' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `premium-palettes-preview`
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_color_palettes_PalettePreview__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    onClick: () => {},
+    value: pbgColors,
+    onChange: (v, id) => handleChange(v, id),
+    skipModal: false,
+    handleClickReset: val => console.log(val),
+    addNewColor: handleAddNewColor,
+    onRemove: handleRemove,
+    onChangeName: (v, id) => handleChangeName(v, id)
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ColorsScreen);
@@ -10722,15 +10693,17 @@ __webpack_require__.r(__webpack_exports__);
 
 const TypographyScreen = props => {
   const {
-    typographySettings,
-    setTypographySettings
+    globalTypography,
+    setGlobalTypography
   } = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useContext)(_store_settings_store__WEBPACK_IMPORTED_MODULE_5__["default"]);
   const {
     typography: defaultValues
   } = _helpers_defaults__WEBPACK_IMPORTED_MODULE_4__["default"];
 
   const getElementValue = element => {
-    const value = typographySettings !== null && typographySettings !== void 0 && typographySettings[element] ? typographySettings === null || typographySettings === void 0 ? void 0 : typographySettings[element] : defaultValues === null || defaultValues === void 0 ? void 0 : defaultValues[element];
+    var _typographySettings, _typographySettings2;
+
+    const value = (_typographySettings = typographySettings) !== null && _typographySettings !== void 0 && _typographySettings[element] ? (_typographySettings2 = typographySettings) === null || _typographySettings2 === void 0 ? void 0 : _typographySettings2[element] : defaultValues === null || defaultValues === void 0 ? void 0 : defaultValues[element];
     return value;
   };
 
@@ -10922,26 +10895,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const SettingsContext = React.createContext({
-  typographySettings: {},
-  colorSettings: {},
-  setTypographySettings: () => {},
-  setColorsSettings: () => {}
+  globalTypography: {},
+  globalColors: {},
+  colorPallet: '',
+  setGlobalTypography: () => {},
+  setGlobalColors: () => {},
+  setColorPallet: () => {}
 });
 const SettingsProvider = props => {
-  const [typographySettings, setTypographySettings] = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_1__.useEntityProp)('root', 'site', 'pbg_global_typography');
-  const [colorsSettings, setColorsSettings] = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_1__.useEntityProp)('root', 'site', 'pbg_global_colors');
-  const [settings, setSettings] = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_1__.useEntityProp)('root', 'site', 'pbg_global_settings'); // const changeHandler = (element, value) => {
-  //     const updatedSettings = { ...settings };
-  //     updatedSettings[element] = value;
-  //     setSettings(updatedSettings);
-  // };
-
-  console.log(typographySettings, colorsSettings, 'test');
+  const [globalTypography, setGlobalTypography] = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_1__.useEntityProp)('root', 'site', 'pbg_global_typography');
+  const [globalColors, setGlobalColors] = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_1__.useEntityProp)('root', 'site', 'pbg_global_colors');
+  const [colorPallet, setColorPallet] = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_1__.useEntityProp)('root', 'site', 'pbg_global_color_pallet');
   const settingsContext = {
-    typographySettings,
-    setTypographySettings,
-    colorsSettings,
-    setColorsSettings
+    globalTypography,
+    setGlobalTypography,
+    globalColors,
+    setGlobalColors,
+    colorPallet,
+    setColorPallet
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SettingsContext.Provider, {
     value: settingsContext

@@ -16,13 +16,12 @@ const SinglePicker = ({
     modalRef,
     isTransitioning,
     isPicking,
-    predefined,
     className,
     skipModal, resetPalette,
-    onColorReset
+    onColorReset,
+    onChangeName
 }) => {
     const el = useRef()
-    const testRef = useRef();
     const appendToBody = true
 
     const { refreshPopover, styles, popoverProps } = usePopoverMaker({
@@ -92,10 +91,10 @@ const SinglePicker = ({
                                     }
                             }
                             appendToBody={appendToBody}
-                            predefined={predefined}
                             className={className}
                             resetPalette={resetPalette}
                             onColorReset={(color) => onColorReset(color)}
+                            onChangeName={(name) => onChangeName(name)}
                         />
                     ))
                 }
@@ -136,7 +135,6 @@ const SinglePicker = ({
                     }}
 
                     style={{ background: `${value} none repeat scroll 0% 0%` }}
-                    ref={testRef}
                     data-tip={picker.title}
                 >
                 </span>

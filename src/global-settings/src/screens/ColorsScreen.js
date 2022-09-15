@@ -1,66 +1,53 @@
 import { __ } from '@wordpress/i18n';
 import ScreenHeader from "../components/header"
-import { useContext, useEffect } from "@wordpress/element";
+import { useContext } from "@wordpress/element";
 import SettingsContext from '../store/settings-store';
 import defaults from '../helpers/defaults';
-import {
-    select, dispatch, useSelect,
-} from '@wordpress/data'
+import { useSelect } from '@wordpress/data'
 import PalettePreview from '../components/color-palettes/PalettePreview';
 import { ToggleControl } from '@wordpress/components';
-import ReactTooltip from 'react-tooltip';
 
 const ColorsScreen = props => {
-    const { colorsSettings, setColorsSettings } = useContext(SettingsContext);
-    const { colorSettings: defaultValues } = defaults;
-    const colorValues = colorsSettings ? colorsSettings : defaultValues;
+    const { colors: defaultColors } = defaults;
+    const { globalColors: defaultGlobalColors, setGlobalColors, colorPallet, setColorPallet } = useContext(SettingsContext);
+    const globalColors = defaultGlobalColors.length ? defaultGlobalColors : defaultColors;
     const _colors = useSelect(select => select('core/block-editor').getSettings().colors) || [];
-    const themeColors = {};
-    _colors.map((color) => {
-        themeColors[color.slug] = {
-            title: color.name,
-            value: color.color,
+    const themeColorsFromPbg = globalColors.length ? globalColors.filter(color => color.type === 'theme') : [];
+    const themeColors = _colors.map((color) => {
+        return {
+            name: color.name,
+            color: color.color,
+            slug: color.slug,
             skipModal: true,
-            default: true
+            default: true,
+            type: 'theme'
         }
     });
+    const pbgColors = globalColors.length ? globalColors.filter(color => color.type !== 'theme') : [];
 
     const handleRemove = (id) => {
-        let newValue = { ...colorValues };
-        if (colorValues.defaultPallet === 'theme') {
-            delete newValue.theme[id];
-        }
-        if (colorValues.defaultPallet === 'pbg') {
-            delete newValue.pbg[id];
-        }
-        // setSettings('colors', JSON.stringify(newValue));
+        let newValue = [...globalColors];
+        newValue = newValue.filter(color => color.slug !== id);
+        setGlobalColors(newValue);
     }
     const handleToggleChange = () => {
-        let newValue = { ...colorValues };
-        newValue.defaultPallet = colorValues.defaultPallet === 'theme' ? 'pbg' : 'theme';
-        // setSettings('colors', JSON.stringify(newValue));
+        setColorPallet(colorPallet === 'theme' ? 'pbg' : 'theme');
     }
 
     const handleChange = (value, id) => {
-        let newValue = { ...colorValues };
-        if (colorValues.defaultPallet === 'theme') {
-            newValue.theme[id].value = value;
-        }
-        if (colorValues.defaultPallet === 'pbg') {
-            newValue.pbg[id].value = value;
-        }
-        // setSettings('colors', JSON.stringify(newValue));
+        let newValue = [...globalColors].map(color => color.slug === id ? { ...color, color: value } : color);
+        setGlobalColors(newValue);
     }
 
-    const handleAddNewColor = (colorData, id) => {
-        let newValue = { ...colorValues };
-        if (colorValues.defaultPallet === 'theme') {
-            newValue.theme[id] = colorData;
-        }
-        if (colorValues.defaultPallet === 'pbg') {
-            newValue.pbg[id] = colorData;
-        }
-        // setSettings('colors', JSON.stringify(newValue));
+    const handleAddNewColor = (colorData) => {
+        let newValue = [...globalColors];
+        newValue.push(colorData);
+        setGlobalColors(newValue);
+    }
+
+    const handleChangeName = (name, id) => {
+        let newValue = [...globalColors].map(color => color.slug === id ? { ...color, name: name } : color);
+        setGlobalColors(newValue);
     }
 
     return <>
@@ -73,45 +60,39 @@ const ColorsScreen = props => {
         <div className='premium-global-colors-type'>
             <label>{__('Theme')}</label>
             <ToggleControl
-                checked={colorValues.defaultPallet !== 'theme'}
+                checked={colorPallet !== 'theme'}
                 onChange={handleToggleChange}
             />
             <label>{__('Premium Block')}</label>
         </div>
-        <button onClick={() => {
-            setColorsSettings([{
-                slug: 'color1',
-                name: __(`Buttons background color \n& Links hover color`),
-                color: '#0085ba',
-                default: true,
-            }])
-        }}>Test</button>
-        {/* {colorValues.defaultPallet === 'theme' &&
+        {colorPallet === 'theme' &&
             <div className={`premium-palettes-preview`}>
                 <PalettePreview
                     onClick={() => { }}
-                    value={{ ...themeColors, ...colorValues.theme }}
+                    value={[...themeColors, ...themeColorsFromPbg]}
                     onChange={(v, id) => handleChange(v, id)}
                     skipModal={false}
                     handleClickReset={(val) => console.log(val)}
                     addNewColor={handleAddNewColor}
                     onRemove={handleRemove}
+                    onChangeName={(v, id) => handleChangeName(v, id)}
                 />
             </div>
-        } */}
-        {/* {colorValues.defaultPallet === 'pbg' &&
+        }
+        {colorPallet === 'pbg' &&
             <div className={`premium-palettes-preview`}>
                 <PalettePreview
                     onClick={() => { }}
-                    value={colorValues.pbg}
+                    value={pbgColors}
                     onChange={(v, id) => handleChange(v, id)}
                     skipModal={false}
                     handleClickReset={(val) => console.log(val)}
                     addNewColor={handleAddNewColor}
                     onRemove={handleRemove}
+                    onChangeName={(v, id) => handleChangeName(v, id)}
                 />
             </div>
-        } */}
+        }
     </>
 }
 
