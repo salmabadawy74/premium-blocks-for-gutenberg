@@ -14,7 +14,7 @@ import {
 	store as blockEditorStore,
 } from '@wordpress/block-editor';
 import { useDispatch, useSelect, withSelect } from '@wordpress/data';
-import { useEffect, useState } from '@wordpress/element';
+import { useEffect, useState, useRef } from '@wordpress/element';
 import {
 	ToolbarDropdownMenu,
 	ToolbarGroup,
@@ -29,6 +29,10 @@ import { Icon, search } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 import { __unstableStripHTML as stripHTML } from '@wordpress/dom';
 import fetchLinkSuggestions from './fetchLinkSuggestions';
+import {
+	store as interfaceStore,
+} from '@wordpress/interface';
+import { store as editPostStore } from '@wordpress/edit-post';
 
 /**
  * Internal dependencies
@@ -89,6 +93,7 @@ function SearchEdit({
 		hideMobile,
 	} = attributes;
 
+	const ref = useRef();
 	let loadFonts;
 	let loadButtonFonts;
 
@@ -233,13 +238,15 @@ function SearchEdit({
 	};
 
 	const getResizableSides = () => {
-		if (hasOnlyButton) {
-			return {};
-		}
-
 		return {
-			right: align !== 'right',
-			left: align === 'right',
+			top: false,
+			right: false,
+			bottom: false,
+			left: false,
+			topRight: false,
+			bottomRight: false,
+			bottomLeft: false,
+			topLeft: false,
 		};
 	};
 
@@ -370,6 +377,35 @@ function SearchEdit({
 			</>
 		);
 	};
+
+	const {
+		sidebarIsOpened,
+	} = useSelect((select) => {
+
+		return {
+			sidebarIsOpened: !!(
+				select(interfaceStore).getActiveComplementaryArea(
+					editPostStore.name
+				) || select(editPostStore).isPublishSidebarOpened()
+			),
+		};
+	}, []);
+
+	useEffect(() => {
+		const resizeModal = setTimeout(() => {
+			if (formStyle === 'button') {
+				const modalElement = ref.current.querySelector('.premium-search-modal');
+				const bodyWidth = sidebarIsOpened ? `${document.body.querySelector('.interface-interface-skeleton__content').clientWidth}px` : '100%';
+				const editorHeaderHeight = document.body.querySelector('.interface-interface-skeleton__header').clientHeight;
+				modalElement.style.width = `${bodyWidth}`;
+				modalElement.style.top = `${editorHeaderHeight}px`;
+			}
+		});
+
+		return () => {
+			clearTimeout(resizeModal);
+		};
+	}, [isSelected, formStyle, sidebarIsOpened])
 
 	const controls = (
 		<>
@@ -737,7 +773,7 @@ function SearchEdit({
 	}
 
 	return (
-		<div {...blockProps}>
+		<div {...blockProps} ref={ref}>
 			<style
 				dangerouslySetInnerHTML={{
 					__html: loadStyles()

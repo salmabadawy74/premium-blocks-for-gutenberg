@@ -100,6 +100,7 @@ export default function save(props) {
                     </span>
                     <span
                         className={`premium-fancy-text-title premium-fancy-text-title-type`}
+                        id="text-fancy-text"
                         style={filterJsCss({
                             color: fancyStyles[0].fancyTextColor,
                             backgroundColor: fancyStyles[0].fancyTextBGColor,
@@ -111,9 +112,6 @@ export default function save(props) {
                             textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`,
 
                         })}
-                        ref={(el) => {
-                            this.el = el;
-                        }}
                     >
                         {" "}
                     </span>
@@ -133,70 +131,70 @@ export default function save(props) {
                     </span>
                 </div>
             ) : (
-                <div
-                    id={`premium-fancy-text-${blockId}`}
-                    className={`premium-fancy-text premium-fancy-slide`}
-                    data-effect={`${effect}`}
-                    data-strings={`${repeaterFancyText.map(
-                        (item, index) => {
-                            return item.title;
-                        }
-                    )}`}
-                    data-animationspeed={`${animationSpeed}`}
-                    data-pausetime={`${pauseTime}`}
-                    data-hoverpause={`${hoverPause}`}
-                >
-                    <span className={`premium-fancy-text-suffix-prefix premium-fancy-text-prefix-text`}
-                        style={filterJsCss({
-                            color: PreStyles[0].textColor,
-                            backgroundColor: PreStyles[0].textBGColor,
-                            fontStyle: prefixTypography.fontStyle,
-                            fontFamily: prefixTypography.fontFamily,
-                            fontWeight: prefixTypography.fontWeight,
-                            textDecoration: prefixTypography.textDecoration,
-                            textTransform: prefixTypography.textTransform,
-                        })}
-                    >
-                        {prefix}{" "}
-                    </span>
                     <div
-                        className={`premium-fancy-text-title premium-fancy-text-title-slide`}
-                        style={{
-                            color: fancyStyles[0].fancyTextColor,
-                            backgroundColor: `${fancyStyles[0].fancyTextBGColor}`,
-                            fontStyle: fancyTextTypography.fontStyle,
-                            fontFamily: fancyTextTypography.fontFamily,
-                            fontWeight: fancyTextTypography.fontWeight,
-                            textDecoration: fancyTextTypography.textDecoration,
-                            textTransform: fancyTextTypography.textTransform,
-                            textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`,
-
-                        }}
+                        id={`premium-fancy-text-${blockId}`}
+                        className={`premium-fancy-text premium-fancy-slide`}
+                        data-effect={`${effect}`}
+                        data-strings={`${repeaterFancyText.map(
+                            (item, index) => {
+                                return item.title;
+                            }
+                        )}`}
+                        data-animationspeed={`${animationSpeed}`}
+                        data-pausetime={`${pauseTime}`}
+                        data-hoverpause={`${hoverPause}`}
                     >
-                        <ul
-                            className={`premium-fancy-text-title-slide-list`}
-                        >
-                            {repeaterFancyText.map((item, index) => {
-                                return <li>{item.title}</li>;
+                        <span className={`premium-fancy-text-suffix-prefix premium-fancy-text-prefix-text`}
+                            style={filterJsCss({
+                                color: PreStyles[0].textColor,
+                                backgroundColor: PreStyles[0].textBGColor,
+                                fontStyle: prefixTypography.fontStyle,
+                                fontFamily: prefixTypography.fontFamily,
+                                fontWeight: prefixTypography.fontWeight,
+                                textDecoration: prefixTypography.textDecoration,
+                                textTransform: prefixTypography.textTransform,
                             })}
-                        </ul>
+                        >
+                            {prefix}{" "}
+                        </span>
+                        <div
+                            className={`premium-fancy-text-title premium-fancy-text-title-slide`}
+                            style={{
+                                color: fancyStyles[0].fancyTextColor,
+                                backgroundColor: `${fancyStyles[0].fancyTextBGColor}`,
+                                fontStyle: fancyTextTypography.fontStyle,
+                                fontFamily: fancyTextTypography.fontFamily,
+                                fontWeight: fancyTextTypography.fontWeight,
+                                textDecoration: fancyTextTypography.textDecoration,
+                                textTransform: fancyTextTypography.textTransform,
+                                textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`,
+
+                            }}
+                        >
+                            <ul
+                                className={`premium-fancy-text-title-slide-list`}
+                            >
+                                {repeaterFancyText.map((item, index) => {
+                                    return <li>{item.title}</li>;
+                                })}
+                            </ul>
+                        </div>
+                        <span className={`premium-fancy-text-suffix-prefix premium-fancy-text-suffix-text`}
+                            style={filterJsCss({
+                                color: PreStyles[0].textColor,
+                                backgroundColor: PreStyles[0].textBGColor,
+                                fontStyle: prefixTypography.fontStyle,
+                                fontFamily: prefixTypography.fontFamily,
+                                fontWeight: prefixTypography.fontWeight,
+                                textDecoration: prefixTypography.textDecoration,
+                                textTransform: prefixTypography.textTransform,
+                            })}
+                        >
+                            {" "}
+                            {suffix}
+                        </span>
                     </div>
-                    <span className={`premium-fancy-text-suffix-prefix premium-fancy-text-suffix-text`}
-                        style={filterJsCss({
-                            color: PreStyles[0].textColor,
-                            backgroundColor: PreStyles[0].textBGColor,
-                            fontStyle: prefixTypography.fontStyle,
-                            fontFamily: prefixTypography.fontFamily,
-                            fontWeight: prefixTypography.fontWeight,
-                            textDecoration: prefixTypography.textDecoration,
-                            textTransform: prefixTypography.textTransform,
-                        })}
-                    >
-                        {" "}
-                        {suffix}
-                    </span>
-                </div>
-            )
+                )
             }
         </div >
     )

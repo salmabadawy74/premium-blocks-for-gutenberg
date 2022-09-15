@@ -52,11 +52,10 @@ function Edit(props) {
             let container = document.querySelectorAll(
                 `.${blockId}`
             );
-            console.log(container)
+
             let titleContainers = container[0].querySelector(
                 ".premium-title-container"
             );
-            console.log(titleContainers)
 
             // titleContainers.forEach(function (titleContainer) {
             if (titleContainers.classList.contains("style8")) {

@@ -20,14 +20,14 @@
         "border": {
             "type": "object",
             "default": {
-                "borderType": "none",
+                "borderType": "solid",
                 "borderColor": "",
                 "borderWidth": {
                     "Desktop": {
-                        "top": "",
-                        "right": "",
-                        "bottom": "",
-                        "left": ""
+                        "top": "1",
+                        "right": "1",
+                        "bottom": "1",
+                        "left": "1"
                     },
                     "Tablet": {
                         "top": "",
@@ -69,7 +69,7 @@
             "default": {
                 "background": "",
                 "text": "",
-                "btnBackground": "var(--pbBackgroundColor)",
+                "btnBackground": "var(--pbBackgroundColor, #f2f2f2)",
                 "btnText": "",
                 "btnHoverBackground": "",
                 "btnHoverText": "",

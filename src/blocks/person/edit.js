@@ -432,7 +432,6 @@ function Edit(props) {
             }
             return item;
         });
-        console.log(newItems)
         setAttributes({
             multiPersonContent: newItems,
         });

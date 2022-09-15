@@ -3,13 +3,19 @@ jQuery(function ($) {
     $fancyTextBlocks.map((index, elem) => {
         let $elem = $(elem),
             id = $elem.attr('id'),
+            settings = $elem.data(),
             effect = $elem.data('effect'),
             strings = $elem.data('strings'),
             fancyStrings = strings.split(",")
+
         if (effect === 'typing') {
             let instance = null;
-            instance = new Typed(`#${id} .premium-fancy-text-title-type`, {
-                strings: fancyStrings,
+
+            // $('#' + id + ' .premium-fancy-text-title-type').attr("id", "text-fancy-text")
+            var fancyTextID = '#' + $elem.find('.premium-fancy-text-title-type').attr('id');
+            console.log(fancyTextID)
+            instance = new Typed(fancyTextID, {
+                strings: ["hello", "word"],
                 typeSpeed: $elem.data('typespeed'),
                 backSpeed: $elem.data('backspeed'),
                 startDelay: $elem.data('startdelay'),
@@ -18,6 +24,9 @@ jQuery(function ($) {
                 cursorChar: $elem.data('cursormark'),
                 loop: $elem.data('loop')
             });
+
+
+
         }
         else if (effect === 'slide') {
             $elem.find(".premium-fancy-text-title-slide").vTicker({
