@@ -4,8 +4,11 @@
     "name": "premium/search",
     "title": "Search",
     "category": "premium-blocks",
-    "description": "Help visitors find your content.",
-    "keywords": ["find"],
+    "description": "Allow your website visitors to easily find what they are looking for using Premium Search Block.",
+    "keywords": [
+        "find",
+        "search"
+    ],
     "textdomain": "default",
     "attributes": {
         "blockId": {
@@ -18,14 +21,14 @@
         "border": {
             "type": "object",
             "default": {
-                "borderType": "",
+                "borderType": "solid",
                 "borderColor": "",
                 "borderWidth": {
                     "Desktop": {
-                        "top": "",
-                        "right": "",
-                        "bottom": "",
-                        "left": ""
+                        "top": "1",
+                        "right": "1",
+                        "bottom": "1",
+                        "left": "1"
                     },
                     "Tablet": {
                         "top": "",
@@ -67,7 +70,7 @@
             "default": {
                 "background": "",
                 "text": "",
-                "btnBackground": "var(--pbBackgroundColor)",
+                "btnBackground": "var(--pbBackgroundColor, #f2f2f2)",
                 "btnText": "",
                 "btnHoverBackground": "",
                 "btnHoverText": "",
@@ -198,7 +201,11 @@
         }
     },
     "supports": {
-        "align": ["left", "center", "right"],
+        "align": [
+            "left",
+            "center",
+            "right"
+        ],
         "html": false
     },
     "editorScript": "file:./build/index.js",

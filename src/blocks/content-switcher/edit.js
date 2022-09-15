@@ -1,13 +1,4 @@
-const { __ } = wp.i18n;
 import classnames from "classnames";
-const { withSelect } = wp.data
-const {
-    InspectorControls,
-    RichText,
-    useBlockProps,
-    InnerBlocks,
-} = wp.blockEditor;
-const { Fragment, useEffect, useState, useRef } = wp.element;
 import { PanelBody, SelectControl, ToggleControl } from "@wordpress/components";
 import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
@@ -25,17 +16,13 @@ import InsideTabs from "../../components/InsideTabs";
 import InsideTab from "../../components/InsideTab";
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import Icons from "../../components/icons";
-import {
-    gradientBackground,
-    borderCss,
-    paddingCss,
-    marginCss,
-    typographyCss,
-    generateBlockId,
-    gradientValue,
-    generateCss,
-} from "../../components/HelperFunction";
+import { gradientBackground, borderCss, paddingCss, marginCss, typographyCss, generateBlockId, gradientValue, generateCss } from "../../components/HelperFunction";
 import WebfontLoader from "../../components/typography/fontLoader";
+
+const { __ } = wp.i18n;
+const { withSelect } = wp.data
+const { InspectorControls, RichText, useBlockProps, InnerBlocks } = wp.blockEditor;
+const { Fragment, useEffect, useState, useRef } = wp.element;
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -168,23 +155,25 @@ function Edit(props) {
     if (firstLabelTypography.fontFamily !== "Default") {
         const config = {
             google: {
-                families: [firstLabelTypography.fontFamily],
-            },
+                families: [firstLabelTypography.fontFamily]
+            }
         };
         loadFirstLabelGoogleFonts = (
             <WebfontLoader config={config}></WebfontLoader>
         );
     }
+
     if (secondLabelTypography.fontFamily !== "Default") {
         const sconfig = {
             google: {
-                families: [secondLabelTypography.fontFamily],
-            },
+                families: [secondLabelTypography.fontFamily]
+            }
         };
         loadSecondLabelGoogleFonts = (
             <WebfontLoader config={sconfig}></WebfontLoader>
         );
     }
+
     const loadStyles = () => {
         const styles = {};
         styles[
@@ -211,22 +200,22 @@ function Edit(props) {
         };
 
         styles[
-            `.${blockId} .premium-content-switcher-toggle-inline.premium-content-switcher-first-label `
+            `.${blockId} .premium-content-switcher-toggle-inline .premium-content-switcher-first-label `
         ] = {
             "margin-right": `${labelSpacing[props.deviceType]}px !important`,
         };
         styles[
-            `.${blockId} .premium-content-switcher-toggle-inline.premium-content-switcher-second-label `
+            `.${blockId} .premium-content-switcher-toggle-inline .premium-content-switcher-second-label `
         ] = {
             "margin-left": `${labelSpacing[props.deviceType]}px !important`,
         };
         styles[
-            `.${blockId} .premium-content-switcher-toggle-block.premium-content-switcher-first-label `
+            `.${blockId} .premium-content-switcher-toggle-block .premium-content-switcher-first-label `
         ] = {
             "margin-bottom": `${labelSpacing[props.deviceType]}px !important`,
         };
         styles[
-            `.${blockId} .premium-content-switcher-toggle-block.premium-content-switcher-second-label `
+            `.${blockId} .premium-content-switcher-toggle-block .premium-content-switcher-second-label `
         ] = {
             "margin-top": `${labelSpacing[props.deviceType]}px !important`,
         };
@@ -238,7 +227,7 @@ function Edit(props) {
                 <InspectorTabs tabs={["layout", "style", "advance"]}>
                     <InspectorTab key={"layout"}>
                         <PanelBody
-                            title={__("Switcher")}
+                            title={__("Switcher", "premium-blocks-for-gutenberg")}
                             className="premium-panel-body"
                             initialOpen={true}
                         >
@@ -260,48 +249,12 @@ function Edit(props) {
                                             "premium-blocks-for-gutenberg"
                                         )}
                                         choices={[
-                                            {
-                                                value: "h1",
-                                                label: __(
-                                                    "H1",
-                                                    "premium-blocks-for-gutenberg"
-                                                ),
-                                            },
-                                            {
-                                                value: "h2",
-                                                label: __(
-                                                    "H2",
-                                                    "premium-blocks-for-gutenberg"
-                                                ),
-                                            },
-                                            {
-                                                value: "h3",
-                                                label: __(
-                                                    "H3",
-                                                    "premium-blocks-for-gutenberg"
-                                                ),
-                                            },
-                                            {
-                                                value: "h4",
-                                                label: __(
-                                                    "H4",
-                                                    "premium-blocks-for-gutenberg"
-                                                ),
-                                            },
-                                            {
-                                                value: "h5",
-                                                label: __(
-                                                    "H5",
-                                                    "premium-blocks-for-gutenberg"
-                                                ),
-                                            },
-                                            {
-                                                value: "h6",
-                                                label: __(
-                                                    "H6",
-                                                    "premium-blocks-for-gutenberg"
-                                                ),
-                                            },
+                                            { value: "h1", label: __("H1", "premium-blocks-for-gutenberg") },
+                                            { value: "h2", label: __("H2", "premium-blocks-for-gutenberg") },
+                                            { value: "h3", label: __("H3", "premium-blocks-for-gutenberg") },
+                                            { value: "h4", label: __("H4", "premium-blocks-for-gutenberg") },
+                                            { value: "h5", label: __("H5", "premium-blocks-for-gutenberg") },
+                                            { value: "h6", label: __("H6", "premium-blocks-for-gutenberg") },
                                         ]}
                                         value={labelTag}
                                         onChange={(newValue) =>
@@ -329,30 +282,9 @@ function Edit(props) {
                                     "premium-blocks-for-gutenberg"
                                 )}
                                 choices={[
-                                    {
-                                        value: "left",
-                                        label: __(
-                                            "Left",
-                                            "premium-blocks-for-gutenberg"
-                                        ),
-                                        icon: Icons.alignLeft,
-                                    },
-                                    {
-                                        value: "center",
-                                        label: __(
-                                            "Center",
-                                            "premium-blocks-for-gutenberg"
-                                        ),
-                                        icon: Icons.alignCenter,
-                                    },
-                                    {
-                                        value: "right",
-                                        label: __(
-                                            "Right",
-                                            "premium-blocks-for-gutenberg"
-                                        ),
-                                        icon: Icons.alignRight,
-                                    },
+                                    { value: "left", label: __("Left", "premium-blocks-for-gutenberg"), icon: Icons.alignLeft },
+                                    { value: "center", label: __("Center", "premium-blocks-for-gutenberg"), icon: Icons.alignCenter },
+                                    { value: "right", label: __("Right", "premium-blocks-for-gutenberg"), icon: Icons.alignRight },
                                 ]}
                                 value={align}
                                 onChange={(newValue) =>
@@ -980,7 +912,7 @@ function Edit(props) {
     );
 }
 
-export default withSelect((select, props) => {
+export default withSelect((select) => {
     const { __experimentalGetPreviewDeviceType = null } =
         select("core/edit-post");
     let deviceType = __experimentalGetPreviewDeviceType

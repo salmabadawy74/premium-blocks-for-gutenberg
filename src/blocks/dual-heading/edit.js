@@ -9,7 +9,7 @@ import PremiumShadow from "../../components/PremiumShadow";
 import SpacingComponent from "../../components/premium-responsive-spacing";
 import MultiButtonsControl from "../../components/responsive-radio";
 import Icons from "../../components/icons";
-import { gradientBackground, generateBlockId, typographyCss, paddingCss, marginCss, borderCss} from "../../components/HelperFunction";
+import { gradientBackground, generateBlockId, typographyCss, paddingCss, marginCss, borderCss } from "../../components/HelperFunction";
 import InspectorTabs from "../../components/inspectorTabs";
 import InspectorTab from "../../components/inspectorTab";
 
@@ -17,7 +17,7 @@ const { __ } = wp.i18n;
 const { withSelect } = wp.data;
 const { Fragment, useEffect } = wp.element;
 const { PanelBody, SelectControl, ToggleControl } = wp.components;
-const { InspectorControls, RichText, URLInput, useBlockProps} = wp.blockEditor;
+const { InspectorControls, RichText, URLInput, useBlockProps } = wp.blockEditor;
 
 function Edit(props) {
     const { setAttributes, className, clientId } = props;
@@ -169,17 +169,17 @@ function Edit(props) {
                                 choices={[
                                     {
                                         value: "left",
-                                        label: __("Left","premium-blocks-for-gutenberg"),
+                                        label: __("Left", "premium-blocks-for-gutenberg"),
                                         icon: Icons.alignLeft,
                                     },
                                     {
                                         value: "center",
-                                        label: __("Center","premium-blocks-for-gutenberg"),
+                                        label: __("Center", "premium-blocks-for-gutenberg"),
                                         icon: Icons.alignCenter,
                                     },
                                     {
                                         value: "right",
-                                        label: __("Right","premium-blocks-for-gutenberg"),
+                                        label: __("Right", "premium-blocks-for-gutenberg"),
                                         icon: Icons.alignRight,
                                     },
                                 ]}
@@ -212,7 +212,7 @@ function Edit(props) {
                             />
                             <hr />
                             <PremiumBorder
-                                label={__("Border","premium-blocks-for-gutenberg")}
+                                label={__("Border", "premium-blocks-for-gutenberg")}
                                 value={containerBorder}
                                 onChange={(value) =>
                                     setAttributes({
@@ -699,7 +699,7 @@ function Edit(props) {
                         />
                     </h2>
                 </div>
-                {link && isSelected && (
+                {link && (
                     <URLInput
                         value={headingURL}
                         onChange={(newUrl) =>

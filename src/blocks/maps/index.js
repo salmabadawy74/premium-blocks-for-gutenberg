@@ -16,6 +16,10 @@ registerBlockType("premium/maps", {
     supports: {
         inserter: maps
     },
+    keywords: [
+        __("google", 'premium-blocks-for-gutenberg'),
+        __("maps", 'premium-blocks-for-gutenberg')
+    ],
     deprecated,
     edit: edit,
     save: save

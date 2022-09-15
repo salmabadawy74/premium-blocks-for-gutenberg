@@ -18,6 +18,10 @@ registerBlockType("premium/accordion", {
     supports: {
         inserter: accordion
     },
+    keywords: [
+        __("accordion", "premium-blocks-for-gutenberg"),
+        __("collapse", "premium-blocks-for-gutenberg")
+    ],
     example: {},
     edit: edit,
     save: save,

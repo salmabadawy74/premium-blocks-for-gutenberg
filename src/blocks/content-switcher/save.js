@@ -2,7 +2,6 @@ import classnames from "classnames";
 import { RichText, useBlockProps, InnerBlocks } from "@wordpress/block-editor";
 import {
     gradientBackground,
-    typographyCss,
     filterJsCss,
     gradientValue,
     generateCss,
@@ -42,6 +41,7 @@ export default function save(props) {
         containerRadius,
         containerRadiusUnit,
     } = attributes;
+
     const loadStyles = () => {
         const styles = {};
         styles[
@@ -50,8 +50,8 @@ export default function save(props) {
             "border-radius": `${containerRadius}${containerRadiusUnit} !important`,
             "box-shadow": ` ${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position} !important`,
             "background-color": `${controllerOneBackground.backgroundType == "solid"
-                    ? controllerOneBackground.backgroundColor
-                    : "#793dc3"
+                ? controllerOneBackground.backgroundColor
+                : "#793dc3"
                 }`,
             "background-image": `${gradientValue(controllerOneBackground)}`,
             "background-repeat": `${controllerOneBackground.backgroundRepeat}`,
