@@ -1,12 +1,16 @@
 {
-    "apiVersion": 2,
-    "version": "0.1.0",
-    "name": "premium/trigger",
-    "title": "Trigger Icon",
-    "icon": "trigger",
-    "category": "premium-blocks",
+	"apiVersion": 2,
+	"version": "0.1.0",
+	"name": "premium/trigger",
+	"title": "Trigger Icon",
+	"icon": "trigger",
+	"category": "premium-blocks",
 	"description": "Build any kind of Gutenberg content or WordPress menu and display it creatively within Premium Trigger Block.",
-	"keywords": ["trigger", "overlay-canvas", "canvas"],
+	"keywords": [
+		"trigger",
+		"overlay-canvas",
+		"canvas"
+	],
 	"supports": {
 		"html": false
 	},
@@ -30,7 +34,7 @@
 		},
 		"iconAlignment": {
 			"type": "object",
-        	"default": {
+			"default": {
 				"Desktop": "left",
 				"Tablet": "left",
 				"Mobile": "left"
@@ -41,11 +45,11 @@
 			"default": "topright"
 		},
 		"iconSize": {
-			"type": "object", 
+			"type": "object",
 			"default": {
 				"Desktop": "20",
 				"Tablet": "20",
-            	"Mobile": "20",
+				"Mobile": "20",
 				"unit": "px"
 			}
 		},
@@ -65,15 +69,15 @@
 		},
 		"hideDesktop": {
 			"type": "boolean",
-			"default":""
+			"default": ""
 		},
 		"hideTablet": {
 			"type": "boolean",
-			"default":""
+			"default": ""
 		},
 		"hideMobile": {
 			"type": "boolean",
-			"default":""
+			"default": ""
 		},
 		"closeIconColor": {
 			"type": "string"
@@ -99,7 +103,7 @@
 					"Mobile": {
 						"top": "",
 						"right": "",
-						"bottom": "",    
+						"bottom": "",
 						"left": ""
 					}
 				},
@@ -126,50 +130,50 @@
 			}
 		},
 		"triggerStyles": {
-            "type": "object",
-            "default": {
-                "iconColor": "",
-                "iconBgColor": "#f2f2f2",
-                "iconHoverColor": "",
+			"type": "object",
+			"default": {
+				"iconColor": "",
+				"iconBgColor": "#f2f2f2",
+				"iconHoverColor": "",
 				"labelHoverColor": "",
-                "iconHoverBgColor": "",
+				"iconHoverBgColor": "",
 				"labelPosition": "left",
 				"style": "simple"
-            }
-        },
+			}
+		},
 		"canvasStyles": {
-            "type": "object",
-            "default": {
+			"type": "object",
+			"default": {
 				"overlayBgColor": "",
-                "canvasBgColor": "#fff",
+				"canvasBgColor": "#fff",
 				"layout": "right",
 				"width": ""
-            }
-        },
+			}
+		},
 		"triggerSpacing": {
-            "type": "object",
-                "default": {
-					"Desktop": {
-						"top": "",
-						"right": "",
-						"bottom": "",
-						"left": ""
-					},
-					"Tablet": {
-						"top": "",
-						"right": "",
-						"bottom": "",
-						"left": ""
-					},
-					"Mobile": {
-						"top": "",
-						"right": "",
-						"bottom": "",
-						"left": ""
-					},
-					"unit": "px"
-            }
-        },
+			"type": "object",
+			"default": {
+				"Desktop": {
+					"top": "",
+					"right": "",
+					"bottom": "",
+					"left": ""
+				},
+				"Tablet": {
+					"top": "",
+					"right": "",
+					"bottom": "",
+					"left": ""
+				},
+				"Mobile": {
+					"top": "",
+					"right": "",
+					"bottom": "",
+					"left": ""
+				},
+				"unit": "px"
+			}
+		},
 		"labelTypography": {
 			"type": "object",
 			"default": {
@@ -199,5 +203,4 @@
 			}
 		}
 	}
-
 }

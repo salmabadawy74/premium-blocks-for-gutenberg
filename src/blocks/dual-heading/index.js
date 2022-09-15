@@ -13,7 +13,7 @@ registerBlockType("premium/dheading-block", {
     ...json,
     title: __("Dual Heading", "premium-blocks-for-gutenberg"),
     description: __(
-        "Use Premium Dual Heading Block to create one heading with two different styles."
+        "Use Premium Dual Heading Block to create one heading with two different styles.", "premium-blocks-for-gutenberg"
     ),
     icon: PBG_Block_Icons.dualHeading,
     category: "premium-blocks",

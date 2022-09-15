@@ -18,6 +18,9 @@ registerBlockType("premium/button", {
     supports: {
         inserter: button
     },
+    keywords: [
+        __("button", "premium-blocks-for-gutenberg")
+    ],
     example: {},
     edit: edit,
     save: save,

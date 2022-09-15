@@ -16,7 +16,7 @@ import {
 } from '@wordpress/block-editor';
 import { useSelect, withSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
-import { PanelBody, ToggleControl, TextControl, Dashicon, TabPanel } from '@wordpress/components';
+import { PanelBody, ToggleControl, TextControl, Dashicon } from '@wordpress/components';
 import { useEffect } from '@wordpress/element';
 
 /**
@@ -27,6 +27,8 @@ import SpacingComponent from '../../components/premium-responsive-spacing';
 import PremiumTypo from "../../components/premium-typo"
 import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
+import InsideTabs from "../../components/InsideTabs";
+import InsideTab from "../../components/InsideTab";
 import RadioComponent from '../../components/radio-control';
 import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
 import { generateBlockId, generateCss, typographyCss, paddingCss, marginCss } from '../../components/HelperFunction';
@@ -34,7 +36,9 @@ import WebfontLoader from "../../components/typography/fontLoader";
 
 
 function Edit({ clientId, attributes, setAttributes, context: { postType, postId }, deviceType }) {
+
     const [fullTitle] = useEntityProp('postType', postType, 'title', postId);
+
     const selectedTerm = useSelect(
         (select) => {
             const { getTaxonomy } = select(coreStore);
@@ -43,6 +47,7 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
         },
         ['category']
     );
+
     const templateType = useSelect((select) => {
         if (!select('core/edit-site')) {
             return;
@@ -60,6 +65,7 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
         const type = entityRecord?.area || entityRecord?.slug;
         return type;
     }, []);
+
     const { postTerms, hasPostTerms } = usePostTerms({
         postId,
         postType,
@@ -67,13 +73,27 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
     });
 
     const categoryName = hasPostTerms ? postTerms[0].name : __('Post Category');
-    const { textAlign, colors, spacing, typography, breadcrumbsStyle, enablePrefix, blockId, hideDesktop, hideTablet, hideMobile, homeItemType } = attributes;
+
+    const {
+        textAlign,
+        colors,
+        spacing,
+        typography,
+        breadcrumbsStyle,
+        enablePrefix,
+        blockId,
+        hideDesktop,
+        hideTablet,
+        hideMobile,
+        homeItemType
+    } = attributes;
+
     let loadGoogleFonts;
     if (typography?.fontFamily !== 'Default') {
         const fontConfig = {
             google: {
-                families: [typography.fontFamily],
-            },
+                families: [typography.fontFamily]
+            }
         }
         loadGoogleFonts = (
             <WebfontLoader config={fontConfig}>
@@ -86,6 +106,7 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
     let itemPadding = spacing.itemPadding ? spacing.itemPadding : {};
 
     const fontSize = typography.size ? typography.size : {};
+
     const blockProps = useBlockProps({
         className: classnames(blockId, {
             [`has-text-align-${textAlign}`]: textAlign,
@@ -106,6 +127,7 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
     const divider = attributes.divider ? attributes.divider : "»";
     const prefix = attributes.prefix;
     const separator = <span class="breadcrumb-sep" style={{ padding: '0 .4em' }}>{divider}</span>;
+
     const setColor = (color, value) => {
         const newColors = { ...colors };
         newColors[color] = value;
@@ -181,7 +203,6 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
 
     return (
         <>
-
             <BlockControls group="block">
                 <AlignmentControl
                     value={textAlign}
@@ -193,15 +214,18 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
             <div {...blockProps}>
                 <style>{loadStyles()}</style>
                 <div className={`premium-breadcrumbs premium-breadcrumbs-${breadcrumbsStyle}`} style={{ display: breadcrumbsStyle === 'normal' ? 'flex' : '' }}>
-                    {enablePrefix && <RichText
-                        tagName="span"
-                        className={`prefix`}
-                        placeholder={__('You Are Here: ', 'premium-blocks-for-gutenberg')}
-                        value={prefix}
-                        isSelected={false}
-                        onChange={newText => setAttributes({ prefix: newText })}
-                        style={{ padding: '0 .4em' }}
-                    />}
+                    {
+                        enablePrefix &&
+                        <RichText
+                            tagName="span"
+                            className={`prefix`}
+                            placeholder={__('You Are Here: ', 'premium-blocks-for-gutenberg')}
+                            value={prefix}
+                            isSelected={false}
+                            onChange={newText => setAttributes({ prefix: newText })}
+                            style={{ padding: '0 .4em' }}
+                        />
+                    }
                     <div className='premium-breadcrumbs-item'>
                         <a
                             href="#home-pseudo-link"
@@ -246,7 +270,7 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
                                 onChange={(val) => setAttributes({ divider: val })}
                             />
                             <RadioComponent
-                                choices={[{ label: __('Icon'), value: 'icon' }, { label: __('Text'), value: 'text' }]}
+                                choices={[{ label: __('Icon', 'premium-blocks-for-gutenberg'), value: 'icon' }, { label: __('Text', 'premium-blocks-for-gutenberg'), value: 'text' }]}
                                 value={homeItemType}
                                 onChange={newValue => setAttributes({ homeItemType: newValue })}
                                 label={__("Home Item", 'premium-blocks-for-gutenberg')}
@@ -259,7 +283,7 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
                             initialOpen={true}
                         >
                             <RadioComponent
-                                choices={[{ label: __('Normal'), value: 'normal' }, { label: __('Advanced'), value: 'advanced' }]}
+                                choices={[{ label: __('Normal', 'premium-blocks-for-gutenberg'), value: 'normal' }, { label: __('Advanced', 'premium-blocks-for-gutenberg'), value: 'advanced' }]}
                                 value={breadcrumbsStyle}
                                 onChange={newValue => setAttributes({ breadcrumbsStyle: newValue })}
                                 label={__("Breadcrumbs Style", 'premium-blocks-for-gutenberg')}
@@ -271,7 +295,6 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
                             initialOpen={false}
                         >
                             <PremiumTypo
-                                components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
                                 value={typography}
                                 onChange={newValue => setAttributes({ typography: newValue })}
                             />
@@ -280,86 +303,65 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
                             title={__('Colors', 'premium-blocks-for-gutenberg')}
                             initialOpen={true}
                         >
-                            <TabPanel
-                                className="premium-color-tabpanel"
-                                activeClass="active-tab"
-                                tabs={[
-                                    {
-                                        name: "normal",
-                                        title: "Normal",
-                                        className: "premium-tab",
-                                    },
-                                    {
-                                        name: "hover",
-                                        title: "Hover",
-                                        className: "premium-tab",
-                                    },
-                                ]}
-                            >
-                                {(tab) => {
-                                    if ("normal" === tab.name) {
-                                        return (
-                                            <Fragment>
+                            <InsideTabs>
+                                <InsideTab tabTitle={__("Normal", "premium-blocks-for-gutenberg")}>
+                                    <Fragment>
+                                        <AdvancedPopColorControl
+                                            label={__("Text Color", 'premium-blocks-for-gutenberg')}
+                                            colorValue={colors.text}
+                                            colorDefault={''}
+                                            onColorChange={newValue => setColor('text', newValue)}
+                                        />
+                                        <AdvancedPopColorControl
+                                            label={__(`Background Color`, 'premium-blocks-for-gutenberg')}
+                                            colorValue={colors.background}
+                                            onColorChange={newValue => setColor('background', newValue)}
+                                            colorDefault={''}
+                                        />
+                                        <AdvancedPopColorControl
+                                            label={__(`Links Color`, 'premium-blocks-for-gutenberg')}
+                                            colorValue={colors.link}
+                                            onColorChange={newValue => setColor('link', newValue)}
+                                            colorDefault={''}
+                                        />
+                                        {breadcrumbsStyle === 'advanced' && (
+                                            <>
                                                 <AdvancedPopColorControl
-                                                    label={__("Text Color", 'premium-blocks-for-gutenberg')}
-                                                    colorValue={colors.text}
-                                                    colorDefault={''}
-                                                    onColorChange={newValue => setColor('text', newValue)}
-                                                />
-                                                <AdvancedPopColorControl
-                                                    label={__(`Background Color`, 'premium-blocks-for-gutenberg')}
-                                                    colorValue={colors.background}
-                                                    onColorChange={newValue => setColor('background', newValue)}
+                                                    label={__(`Separator Color`, 'premium-blocks-for-gutenberg')}
+                                                    colorValue={colors.separator}
+                                                    onColorChange={newValue => setColor('separator', newValue)}
                                                     colorDefault={''}
                                                 />
                                                 <AdvancedPopColorControl
-                                                    label={__(`Links Color`, 'premium-blocks-for-gutenberg')}
-                                                    colorValue={colors.link}
-                                                    onColorChange={newValue => setColor('link', newValue)}
+                                                    label={__(`Item Background Color`, 'premium-blocks-for-gutenberg')}
+                                                    colorValue={colors.item}
+                                                    onColorChange={newValue => setColor('item', newValue)}
                                                     colorDefault={''}
                                                 />
-                                                {breadcrumbsStyle === 'advanced' && (
-                                                    <>
-                                                        <AdvancedPopColorControl
-                                                            label={__(`Separator Color`, 'premium-blocks-for-gutenberg')}
-                                                            colorValue={colors.separator}
-                                                            onColorChange={newValue => setColor('separator', newValue)}
-                                                            colorDefault={''}
-                                                        />
-                                                        <AdvancedPopColorControl
-                                                            label={__(`Item Background Color`, 'premium-blocks-for-gutenberg')}
-                                                            colorValue={colors.item}
-                                                            onColorChange={newValue => setColor('item', newValue)}
-                                                            colorDefault={''}
-                                                        />
-                                                    </>
-                                                )}
-                                            </Fragment>
-                                        );
-                                    }
-                                    if ("hover" === tab.name) {
-                                        return (
-                                            <Fragment>
-                                                <AdvancedPopColorControl
-                                                    label={__(`Links Hover Color`, 'premium-blocks-for-gutenberg')}
-                                                    colorValue={colors.linkHover}
-                                                    onColorChange={newValue => setColor('linkHover', newValue)}
-                                                    colorDefault={''}
-                                                />
-                                            </Fragment>
-                                        );
-                                    }
-                                }}
-                            </TabPanel>
+                                            </>
+                                        )}
+                                    </Fragment>
+                                </InsideTab>
+                                <InsideTab tabTitle={__("Hover", "premium-blocks-for-gutenberg")}>
+                                    <Fragment>
+                                        <AdvancedPopColorControl
+                                            label={__(`Links Hover Color`, 'premium-blocks-for-gutenberg')}
+                                            colorValue={colors.linkHover}
+                                            onColorChange={newValue => setColor('linkHover', newValue)}
+                                            colorDefault={''}
+                                        />
+                                    </Fragment>
+                                </InsideTab>
+                            </InsideTabs>
                         </PanelBody>
                         <PanelBody
                             title={__('Spacing', 'premium-blocks-for-gutenberg')}
                             initialOpen={false}
                         >
-                            <SpacingComponent value={margin} responsive={true} showUnits={true} label={__('Margin')} onChange={(value) => onChangeSpacing({ margin: value })} />
-                            <SpacingComponent value={padding} responsive={true} showUnits={true} label={__('Padding')} onChange={(value) => onChangeSpacing({ padding: value })} />
+                            <SpacingComponent value={margin} responsive={true} showUnits={true} label={__('Margin', 'premium-blocks-for-gutenberg')} onChange={(value) => onChangeSpacing({ margin: value })} />
+                            <SpacingComponent value={padding} responsive={true} showUnits={true} label={__('Padding', 'premium-blocks-for-gutenberg')} onChange={(value) => onChangeSpacing({ padding: value })} />
                             {breadcrumbsStyle === 'advanced' && (
-                                <SpacingComponent value={itemPadding} responsive={true} showUnits={true} label={__('Item Padding')} onChange={(value) => onChangeSpacing({ itemPadding: value })} />
+                                <SpacingComponent value={itemPadding} responsive={true} showUnits={true} label={__('Item Padding', 'premium-blocks-for-gutenberg')} onChange={(value) => onChangeSpacing({ itemPadding: value })} />
                             )}
                         </PanelBody>
                     </InspectorTab>
@@ -391,7 +393,7 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
     )
 }
 
-export default withSelect((select, props) => {
+export default withSelect((select) => {
     const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
     let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
 

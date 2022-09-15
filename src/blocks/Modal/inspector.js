@@ -827,7 +827,7 @@ const Inspector = ({
                             onChange={newValue => setAttributes({ modalHeight: newValue })}
                             units={['px', 'em', '%']}
                             showUnit={true}
-                            max={1500}
+                            max={500}
                         />
                         {"text" == modalStyles[0].contentType && (
                             <Fragment>

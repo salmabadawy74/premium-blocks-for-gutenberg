@@ -299,63 +299,59 @@ function Edit(props) {
                                 defaultValue={20}
                             />
                             <InsideTabs>
-                                        <InsideTab tabTitle={__("Normal", "premium-block-for-gutenberg")}>
-                                            <Fragment>
-                                            <AdvancedPopColorControl
-                                                    label={__("Icon Color", 'premium-blocks-for-gutenberg')}
-                                                    colorValue={triggerStyles.iconColor}
-                                                    colorDefault={''}
-                                                    onColorChange={(newValue) => setTriggerStyles('iconColor', newValue)}
-                                                />
-                                                {triggerStyles.style === 'solid' &&
-                                                    <AdvancedPopColorControl
-                                                        label={__("Background Color", 'premium-blocks-for-gutenberg')}
-                                                        colorValue={triggerStyles.iconBgColor}
-                                                        colorDefault={''}
-                                                        onColorChange={newValue => setTriggerStyles('iconBgColor', newValue)}
-                                                    />
-                                                }
-                                            </Fragment>
-                                        </InsideTab>
-                                        <InsideTab tabTitle={__("Hover", "premium-block-for-gutenberg")}>
-                                            <Fragment>
-                                            <AdvancedPopColorControl
-                                                    label={__("Icon Hover Color", 'premium-blocks-for-gutenberg')}
-                                                    colorValue={triggerStyles.iconHoverColor}
-                                                    colorDefault={''}
-                                                    onColorChange={newValue => setTriggerStyles('iconHoverColor', newValue)}
-                                                />
-                                                {triggerStyles.style === 'solid' &&
-                                                    <AdvancedPopColorControl
-                                                        label={__("Background Hover Color", 'premium-blocks-for-gutenberg')}
-                                                        colorValue={triggerStyles.iconBgHoverColor}
-                                                        colorDefault={''}
-                                                        onColorChange={newValue => setTriggerStyles('iconBgHoverColor', newValue)}
-                                                    />
-                                                }
-                                            </Fragment>
-                                        </InsideTab>
-                                    </InsideTabs>
-
-                            {(triggerStyles.style === 'outline' || triggerStyles.style === 'solid') &&
-                                <InsideTabs>
-                                    <InsideTab tabTitle={__("Normal", "premium-block-for-gutenberg")}>
-                                        <PremiumBorder
-                                            label={__('Border', 'premium-blocks-for-gutenberg')}
-                                            value={triggerBorder}
-                                            onChange={(value) => setAttributes({ triggerBorder: value })}
-                                        />
-                                    </InsideTab>
-                                    <InsideTab tabTitle={__("Hover", "premium-block-for-gutenberg")}>
+                                <InsideTab tabTitle={__("Normal", "premium-block-for-gutenberg")}>
+                                    <Fragment>
                                         <AdvancedPopColorControl
-                                            label={__("Border Hover Color", 'premium-blocks-for-gutenberg')}
-                                            colorValue={triggerStyles.borderHoverColor}
+                                            label={__("Icon Color", 'premium-blocks-for-gutenberg')}
+                                            colorValue={triggerStyles.iconColor}
                                             colorDefault={''}
-                                            onColorChange={(newValue) => setTriggerStyles('borderHoverColor', newValue)}
+                                            onColorChange={(newValue) => setTriggerStyles('iconColor', newValue)}
                                         />
-                                    </InsideTab>
-                                </InsideTabs>
-                            }
+                                        {triggerStyles.style === 'solid' &&
+                                            <AdvancedPopColorControl
+                                                label={__("Background Color", 'premium-blocks-for-gutenberg')}
+                                                colorValue={triggerStyles.iconBgColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue => setTriggerStyles('iconBgColor', newValue)}
+                                            />
+                                        }
+                                        <hr />
+                                        {(triggerStyles.style === 'outline' || triggerStyles.style === 'solid') &&
+                                            <PremiumBorder
+                                                label={__('Border', 'premium-blocks-for-gutenberg')}
+                                                value={triggerBorder}
+                                                onChange={(value) => setAttributes({ triggerBorder: value })}
+                                            />
+                                        }
+                                    </Fragment>
+                                </InsideTab>
+                                <InsideTab tabTitle={__("Hover", "premium-block-for-gutenberg")}>
+                                    <Fragment>
+                                        <AdvancedPopColorControl
+                                            label={__("Icon Hover Color", 'premium-blocks-for-gutenberg')}
+                                            colorValue={triggerStyles.iconHoverColor}
+                                            colorDefault={''}
+                                            onColorChange={newValue => setTriggerStyles('iconHoverColor', newValue)}
+                                        />
+                                        {triggerStyles.style === 'solid' &&
+                                            <AdvancedPopColorControl
+                                                label={__("Background Hover Color", 'premium-blocks-for-gutenberg')}
+                                                colorValue={triggerStyles.iconBgHoverColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue => setTriggerStyles('iconBgHoverColor', newValue)}
+                                            />
+                                        }
+                                        {(triggerStyles.style === 'outline' || triggerStyles.style === 'solid') &&
+                                            <AdvancedPopColorControl
+                                                label={__("Border Hover Color", 'premium-blocks-for-gutenberg')}
+                                                colorValue={triggerStyles.borderHoverColor}
+                                                colorDefault={''}
+                                                onColorChange={(newValue) => setTriggerStyles('borderHoverColor', newValue)}
+                                            />
+                                        }
+                                    </Fragment>
+                                </InsideTab>
+                            </InsideTabs>
                         </PanelBody>
                         {attributes.displayTriggerLabel && (
                             <PanelBody
@@ -371,30 +367,29 @@ function Edit(props) {
                                     }
                                 />
                                 <InsideTabs>
-                                        <InsideTab tabTitle={__("Normal", "premium-block-for-gutenberg")}>
-                                            <Fragment>
+                                    <InsideTab tabTitle={__("Normal", "premium-block-for-gutenberg")}>
+                                        <Fragment>
                                             <AdvancedPopColorControl
-                                                        label={__("Label Color", 'premium-blocks-for-gutenberg')}
-                                                        colorValue={triggerStyles.labelColor}
-                                                        colorDefault={''}
-                                                        onColorChange={newValue => setTriggerStyles('labelColor', newValue)}
-                                                    />
-                                            </Fragment>
-                                        </InsideTab>
-                                        <InsideTab tabTitle={__("Hover", "premium-block-for-gutenberg")}>
-                                            <Fragment>
+                                                label={__("Label Color", 'premium-blocks-for-gutenberg')}
+                                                colorValue={triggerStyles.labelColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue => setTriggerStyles('labelColor', newValue)}
+                                            />
+                                        </Fragment>
+                                    </InsideTab>
+                                    <InsideTab tabTitle={__("Hover", "premium-block-for-gutenberg")}>
+                                        <Fragment>
                                             <AdvancedPopColorControl
-                                                        label={__("Label Hover Color", 'premium-blocks-for-gutenberg')}
-                                                        colorValue={triggerStyles.labelHoverColor}
-                                                        colorDefault={''}
-                                                        onColorChange={newValue => setTriggerStyles('labelHoverColor', newValue)}
-                                                    />
-                                            </Fragment>
-                                        </InsideTab>
-                                    </InsideTabs>
+                                                label={__("Label Hover Color", 'premium-blocks-for-gutenberg')}
+                                                colorValue={triggerStyles.labelHoverColor}
+                                                colorDefault={''}
+                                                onColorChange={newValue => setTriggerStyles('labelHoverColor', newValue)}
+                                            />
+                                        </Fragment>
+                                    </InsideTab>
+                                </InsideTabs>
                             </PanelBody>
                         )}
-
                         <PanelBody
                             title={__('Canvas Area', 'premium-blocks-for-gutenberg')}
                             initialOpen={false}

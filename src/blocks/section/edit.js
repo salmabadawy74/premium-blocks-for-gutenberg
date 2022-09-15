@@ -219,44 +219,44 @@ const edit = props => {
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
-        <div
-            {...useBlockProps({
-                className: classnames(
-                    className,
-                    `${blockId} premium-container premium-container__stretch_${stretchSection} premium-container__${innerWidthType}`,
-                    {
-                        " premium-desktop-hidden": hideDesktop,
-                        " premium-tablet-hidden": hideTablet,
-                        " premium-mobile-hidden": hideMobile,
-                    }
-                ),
-            })}
-            style={{
-                textAlign: horAlign[props.deviceType],
-                minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
-                ...borderCss(border, props.deviceType),
-                ...gradientBackground(background),
-                ...marginCss(margin, props.deviceType),
-                ...paddingCss(padding, props.deviceType),
-                boxShadow: `${boxShadow?.horizontal}px ${boxShadow?.vertical}px ${boxShadow?.blur}px ${boxShadow?.color} ${boxShadow?.position}`
-            }}
-        >
             <div
-                className={`premium-container__content_wrap premium-container__${vPos}`}
+                {...useBlockProps({
+                    className: classnames(
+                        className,
+                        `${blockId} premium-container premium-container__stretch_${stretchSection} premium-container__${innerWidthType}`,
+                        {
+                            " premium-desktop-hidden": hideDesktop,
+                            " premium-tablet-hidden": hideTablet,
+                            " premium-mobile-hidden": hideMobile,
+                        }
+                    ),
+                })}
                 style={{
-                    maxWidth: "boxed" == innerWidthType && stretchSection
-                        ? innerWidth
-                            ? innerWidth + "px"
-                            : "1140px"
-                        : "100%",
+                    textAlign: horAlign[props.deviceType],
                     minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
+                    ...borderCss(border, props.deviceType),
+                    ...gradientBackground(background),
+                    ...marginCss(margin, props.deviceType),
+                    ...paddingCss(padding, props.deviceType),
+                    boxShadow: `${boxShadow?.horizontal}px ${boxShadow?.vertical}px ${boxShadow?.blur}px ${boxShadow?.color} ${boxShadow?.position}`
                 }}
             >
-                <div className={`premium-container__content_inner`}>
-                    <InnerBlocks template={CONTENT} />
+                <div
+                    className={`premium-container__content_wrap premium-container__${vPos}`}
+                    style={{
+                        maxWidth: "boxed" == innerWidthType && stretchSection
+                            ? innerWidth
+                                ? innerWidth + "px"
+                                : "1140px"
+                            : "100%",
+                        minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
+                    }}
+                >
+                    <div className={`premium-container__content_inner`}>
+                        <InnerBlocks template={CONTENT} />
+                    </div>
                 </div>
             </div>
-        </div>
         </Fragment>
     ];
 };

@@ -152,6 +152,18 @@
         font-size: 20px;
     }
 
+    .premium-video-box__play_icon.dashicons {
+        display: inline-block;
+        width: auto;
+        height: auto;
+
+        &::before {
+            display: inline-block;
+            width: auto;
+            height: auto;
+        }
+    }
+
     .premium-video-box__desc_text {
         margin: 0 !important;
         color: #555;

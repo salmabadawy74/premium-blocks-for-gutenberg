@@ -17,7 +17,7 @@
         },
         "titleTag": {
             "type": "string",
-            "default": "H4"
+            "default": "h4"
         },
         "titleStyles": {
             "type": "array",
@@ -38,7 +38,8 @@
                     "arrowPadding": "",
                     "arrowRadius": "",
                     "arrowSize": 20
-                }]
+                }
+            ]
         },
         "descStyles": {
             "type": "array",
@@ -48,7 +49,6 @@
                     "descColor": "",
                     "descBack": ""
                 }
-    
             ]
         },
         "descAlign": {
@@ -63,7 +63,6 @@
             "type": "string",
             "default": "text"
         },
-    
         "titleEditBorder": {
             "type": "boolean"
         },

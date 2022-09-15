@@ -13,8 +13,9 @@ const { registerBlockType } = wp.blocks;
 
 registerBlockType("premium/heading", {
     ...json,
-    title: __("Heading"),
+    title: __("Heading", 'premium-block-for-gutenberg'),
     description: __('Grab your website visitors’ attention with stylish headings using Premium Heading Block.', "premium-blocks-for-gutenberg"),
+    keywords: [__("title", 'premium-blocks-for-gutenberg'), __("Heading", 'premium-blocks-for-gutenberg')],
     icon: PBG_Block_Icons.heading,
     category: "premium-blocks",
     supports: {

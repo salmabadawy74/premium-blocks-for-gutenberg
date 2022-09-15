@@ -13,7 +13,6 @@ const save = props => {
         prefix,
         suffix,
         icon,
-        iconSpacing,
         imageURL,
         iconType,
         iconCheck,
@@ -45,7 +44,7 @@ const save = props => {
             {...useBlockProps.save({
                 className: classnames(
                     className,
-                    `premium-countup__wrap ${blockId}`,
+                    `premium-countup__wrap ${blockId} premium-countup__${flexDir}`,
                     {
                         " premium-desktop-hidden": hideDesktop,
                         " premium-tablet-hidden": hideTablet,
@@ -64,16 +63,6 @@ const save = props => {
             {iconCheck && (
                 <div
                     className={`premium-countup__icon_wrap`}
-                    style={filterJsCss({
-                        marginRight:
-                            "row" === flexDir || "row-reverse" === flexDir
-                                ? iconSpacing + "px"
-                                : "0",
-                        marginLeft:
-                            "row" === flexDir || "row-reverse" === flexDir
-                                ? iconSpacing + "px"
-                                : "0",
-                    })}
                 >
                     {"icon" === icon && (
                         <i

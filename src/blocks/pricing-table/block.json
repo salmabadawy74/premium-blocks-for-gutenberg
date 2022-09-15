@@ -13,14 +13,6 @@
             "type": "boolean",
             "default": false
         },
-        "contentAlign": {
-            "type": "object",
-            "default": {
-                "Desktop": "center",
-                "Tablet": "center",
-                "Mobile": "center"
-            }
-        },
         "title": {
             "type": "array",
             "source": "children",
@@ -33,7 +25,6 @@
             "selector": ".premium-pricing-table__desc",
             "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
         },
-    
         "titleChecked": {
             "type": "boolean",
             "default": true
@@ -64,7 +55,6 @@
             "type": "boolean",
             "default": true
         },
-    
         "listChecked": {
             "type": "boolean",
             "default": true
@@ -99,7 +89,7 @@
             "type": "array",
             "default": [
                 {
-                    "titleTag": "H2",
+                    "titleTag": "h2",
                     "titleColor": "",
                     "titleBack": ""
                 }
@@ -116,7 +106,7 @@
                     "Mobile": "",
                     "unit": "px"
                 },
-                "fontFamily": "default",
+                "fontFamily": "Default",
                 "lineHeight": {
                     "Desktop": "",
                     "Tablet": "",
@@ -173,7 +163,7 @@
                     "Mobile": "",
                     "unit": "px"
                 },
-                "fontFamily": "default",
+                "fontFamily": "Default",
                 "lineHeight": {
                     "Desktop": "",
                     "Tablet": "",
@@ -201,7 +191,7 @@
                     "Mobile": "",
                     "unit": "px"
                 },
-                "fontFamily": "default",
+                "fontFamily": "Default",
                 "lineHeight": {
                     "Desktop": "",
                     "Tablet": "",
@@ -229,7 +219,7 @@
                     "Mobile": "",
                     "unit": "px"
                 },
-                "fontFamily": "default",
+                "fontFamily": "Default",
                 "lineHeight": {
                     "Desktop": "",
                     "Tablet": "",
@@ -257,7 +247,7 @@
                     "Mobile": "",
                     "unit": "px"
                 },
-                "fontFamily": "default",
+                "fontFamily": "Default",
                 "lineHeight": {
                     "Desktop": "",
                     "Tablet": "",
@@ -285,7 +275,7 @@
                     "Mobile": "",
                     "unit": "px"
                 },
-                "fontFamily": "default",
+                "fontFamily": "Default",
                 "lineHeight": {
                     "Desktop": "",
                     "Tablet": "",
@@ -364,7 +354,7 @@
                     "Mobile": "",
                     "unit": "px"
                 },
-                "fontFamily": "default",
+                "fontFamily": "Default",
                 "lineHeight": {
                     "Desktop": "45",
                     "Tablet": "",
@@ -412,7 +402,7 @@
                     "Mobile": "",
                     "unit": "px"
                 },
-                "fontFamily": "default",
+                "fontFamily": "Default",
                 "lineHeight": {
                     "Desktop": "",
                     "Tablet": "",
@@ -453,7 +443,7 @@
                     "Mobile": "",
                     "unit": "px"
                 },
-                "fontFamily": "default",
+                "fontFamily": "Default",
                 "lineHeight": {
                     "Desktop": "",
                     "Tablet": "",
@@ -496,7 +486,7 @@
                     "Mobile": "",
                     "unit": "px"
                 },
-                "fontFamily": "default",
+                "fontFamily": "Default",
                 "lineHeight": {
                     "Desktop": "",
                     "Tablet": "",

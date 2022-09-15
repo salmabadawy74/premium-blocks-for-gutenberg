@@ -432,6 +432,7 @@ function Edit(props) {
             }
             return item;
         });
+        console.log(newItems)
         setAttributes({
             multiPersonContent: newItems,
         });
@@ -551,8 +552,8 @@ function Edit(props) {
                                         {value.socialIcon && socialIconfn(value.items)}
                                     </div>
                                 ) : (
-                                    ""
-                                )}
+                                        ""
+                                    )}
                                 {value.personImgUrl && (
                                     <img
                                         className={`premium-person__img`}
@@ -626,8 +627,8 @@ function Edit(props) {
                                     {value.socialIcon && socialIconfn(value.items)}
                                 </div>
                             ) : (
-                                ""
-                            )}
+                                    ""
+                                )}
                         </div>
                     </div>
                 ))}
@@ -755,7 +756,6 @@ function Edit(props) {
                             renderFunc={renderSVG}
                             onChange={(value) => addSocialIcon(value, index)}
                             isMulti={false}
-                            appendTo="body"
                             closeOnSelect={false}
                             iconsPerPage={25}
                             noSelectedPlaceholder={__("Select Icon", "premium-block-for-gutenberg")}
@@ -803,8 +803,8 @@ function Edit(props) {
                                     options={ROWS}
                                 />
                             ) : (
-                                ""
-                            )}
+                                    ""
+                                )}
                             <SelectControl
                                 label={__("Style", "premium-block-for-gutenberg")}
                                 value={effectPersonStyle}
@@ -1092,8 +1092,8 @@ function Edit(props) {
                                     min={15}
                                 />
                             ) : (
-                                ""
-                            )}
+                                    ""
+                                )}
                             <SpacingControl
                                 label={__("Padding", "premium-blocks-for-gutenberg")}
                                 value={contentPadding}

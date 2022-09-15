@@ -26,4 +26,3 @@ registerBlockType('premium/breadcrumbs', {
         inserter: breadcrumbs
     },
 });
-
