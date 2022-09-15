@@ -878,13 +878,10 @@
     // .components-snackbar-list styles.
     pointer-events: auto;
 
-    @include break-small() {
-        width: fit-content;
-    }
-
+  
     &:focus {
         box-shadow:
-            0 0 0 1px $white,
+            0 0 0 1px #fff,
     }
 
     &.components-snackbar-explicit-dismiss {
