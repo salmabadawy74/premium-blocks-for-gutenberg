@@ -45,7 +45,9 @@
     .premium-title .top .premium-title-style7-inner-title {
       flex-direction: column; }
   .premium-title .style2 {
-    border-bottom: 3px solid #6ec1e4 !important;
+    border-bottom-style: solid !important;
+    border-bottom-width: 3px !important;
+    border-bottom-color: #6ec1e4;
     overflow: hidden; }
     .premium-title .style2 .premium-title-center {
       align-items: center !important; }
@@ -54,7 +56,9 @@
     .premium-title .style2 .premium-title-right {
       align-items: flex-end !important; }
   .premium-title .style4 {
-    border-bottom: 3px solid #6ec1e4 !important; }
+    border-bottom-style: solid !important;
+    border-bottom-width: 3px !important;
+    border-bottom-color: #6ec1e4; }
     .premium-title .style4 .left {
       justify-content: flex-start !important; }
     .premium-title .style4 .center {
@@ -62,7 +66,9 @@
     .premium-title .style4 .right {
       justify-content: flex-end !important; }
   .premium-title .style5 {
-    border-bottom: 3px solid #6ec1e4 !important; }
+    border-bottom-style: solid !important;
+    border-bottom-width: 3px !important;
+    border-bottom-color: #6ec1e4; }
     .premium-title .style5 .premium-title-center {
       align-items: center !important; }
     .premium-title .style5 .premium-title-left {
@@ -70,7 +76,9 @@
     .premium-title .style5 .premium-title-right {
       align-items: flex-end !important; }
   .premium-title .style6 {
-    border-bottom: 3px solid #6ec1e4 !important; }
+    border-bottom-style: solid !important;
+    border-bottom-width: 3px !important;
+    border-bottom-color: #6ec1e4; }
     .premium-title .style6 .premium-title-center {
       align-items: center !important; }
     .premium-title .style6 .premium-title-left {
@@ -164,7 +172,9 @@
     height: auto !important; }
 
 .premium-title-style1__wrap {
-  border-left: 3px solid #6ec1e4 !important;
+  border-left-style: solid !important;
+  border-left-width: 3px !important;
+  border-left-color: #6ec1e4;
   display: -webkit-inline-box;
   display: -moz-inline-box; }
 
@@ -179,7 +189,8 @@
 
 .premium-title-icon {
   font-style: normal !important;
-  font-size: 40px; }
+  font-size: 40px;
+  vertical-align: initial !important; }
 
 .style3 .after {
   display: flex; }

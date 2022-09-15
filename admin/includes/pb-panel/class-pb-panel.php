@@ -239,7 +239,7 @@ if (!class_exists('Pb_Panel')) {
 				'max_upload'           => esc_html(size_format(wp_max_upload_size())),
 				'ini_get'              => function_exists('ini_get'),
 				'pb_previous_versions' => $pb_versions,
-				'rollback_url_new'     => str_replace(array('&#038;', '&amp;'), '&', esc_url(add_query_arg('version', 'VERSION', wp_nonce_url(admin_url('admin-post.php?action=premium_gutenberg_rollback'), 'premium_gutenberg_rollback')))),
+				'rollback_url_new'      => str_replace(array("&#038;", "&amp;"), "&", esc_url(add_query_arg('version', 'VERSION', wp_nonce_url(admin_url('admin-post.php?action=premium_gutenberg_rollback'), 'premium_gutenberg_rollback')))),
 			);
 			if (function_exists('ini_get')) {
 				$info['php_memory_limit']   = esc_html(size_format(wp_convert_hr_to_bytes(ini_get('memory_limit'))));
@@ -558,9 +558,10 @@ if (!class_exists('Pb_Panel')) {
 		}
 		public function post_premium_gutenberg_rollback_new()
 		{
+
 			check_admin_referer('premium_gutenberg_rollback');
-			$plugin_slug    = basename(PREMIUM_BLOCKS_FILE, '.php');
-			$update_version = sanitize_text_field($_GET['version']);
+			$plugin_slug  = basename(PREMIUM_BLOCKS_FILE, '.php');
+			$update_version    = sanitize_text_field($_GET['version']);
 
 			$pbg_rollback = new PBG_Rollback(
 				array(
@@ -589,7 +590,7 @@ if (!class_exists('Pb_Panel')) {
 		 * @return array
 		 * @access public
 		 */
-		public function get_rollback_versions()
+		public static function get_rollback_versions()
 		{
 			$rollback_versions = get_transient('pb_rollback_versions_' . PREMIUM_BLOCKS_VERSION);
 
@@ -624,10 +625,6 @@ if (!class_exists('Pb_Panel')) {
 						continue;
 					}
 
-					if (version_compare($version, UAGB_VER, '>=')) {
-						continue;
-					}
-
 					$rollback_versions[] = $version;
 				}
 
@@ -641,7 +638,7 @@ if (!class_exists('Pb_Panel')) {
 
 		public static function get_rollback_versions_options()
 		{
-			$rollback_versions = self::get_rollback_versions();
+			$rollback_versions   = self::get_rollback_versions();
 
 			$rollback_versions_options = array();
 

@@ -461,21 +461,21 @@ export default function PremiumBackgroundControl({
                             }
                         />
                     ) : (
-                        <Fragment>
-                            <p>{__("Video", "premium-blocks-for-gutenberg")}</p>
-                            <PremiumMediaUpload
-                                type="video"
-                                imageID={videoID}
-                                imageURL={videoURL}
-                                onSelectMedia={(media) =>
-                                    onChangeBackground("videoURL", media.url)
-                                }
-                                onRemoveImage={() =>
-                                    onChangeBackground("videoURL", "")
-                                }
-                            />
-                        </Fragment>
-                    )}
+                            <Fragment>
+                                <p>{__("Video", "premium-blocks-for-gutenberg")}</p>
+                                <PremiumMediaUpload
+                                    type="video"
+                                    imageID={videoID}
+                                    imageURL={videoURL}
+                                    onSelectMedia={(media) =>
+                                        onChangeBackground("videoURL", media.url)
+                                    }
+                                    onRemoveImage={() =>
+                                        onChangeBackground("videoURL", "")
+                                    }
+                                />
+                            </Fragment>
+                        )}
                 </Fragment>
             )}
         </Fragment>

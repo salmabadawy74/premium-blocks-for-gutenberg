@@ -11,7 +11,7 @@ import "./blocks/pricing-table";
 import "./blocks/section";
 import "./blocks/testimonials";
 import "./blocks/video-box";
-import "./blocks/fancy-text"
+import "./blocks/fancy-text";
 import "./blocks/lottie";
 import "./blocks/Modal";
 import "./blocks/image-separator";
@@ -19,12 +19,12 @@ import "./blocks/bullet-list";
 import "./blocks/person";
 import "./blocks/heading";
 import "./blocks/row";
-import './blocks/breadcrumbs';
-import './blocks/trigger';
-// import './blocks/search';
-import './blocks/switcher-child';
-import './blocks/content-switcher';
-import './blocks/accordion-item'
+import "./blocks/breadcrumbs";
+import "./blocks/trigger";
+import './blocks/search';
+import "./blocks/switcher-child";
+import "./blocks/content-switcher";
+import "./blocks/accordion-item";
 window.PremiumOptionsSettings = {
-    FontAwesomeEnabled
-}
+    FontAwesomeEnabled,
+};

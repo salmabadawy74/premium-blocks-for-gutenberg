@@ -79,7 +79,11 @@ if ( ! class_exists( 'Pbg_Style_Generator' ) ) {
 			if ( $files_count > 0 ) {
 				$merged_file = '';
 				foreach ( $css_files as $k => $file ) {
-					$merged_style .= file_get_contents( $file );
+					if ( ini_get( 'allow_url_fopen' ) ) {
+						$merged_style .= file_get_contents( $file );
+					} else {
+						$merged_style .= self::file_get_contents( $file );
+					}
 					require_once ABSPATH . 'wp-admin/includes/file.php'; // We will probably need to load this file.
 					global $wp_filesystem;
 					$upload_dir = wp_upload_dir(); // Grab uploads folder array.
@@ -96,6 +100,29 @@ if ( ! class_exists( 'Pbg_Style_Generator' ) ) {
 				return false;
 			}
 
+		}
+
+		/**
+		 * Get File Content.
+		 *
+		 * @param string $path file path.
+		 *
+		 * @return string
+		 */
+		public static function file_get_contents( $url ) {
+			$ch = curl_init();
+
+			curl_setopt( $ch, CURLOPT_AUTOREFERER, true );
+			curl_setopt( $ch, CURLOPT_HEADER, 0 );
+			curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
+			curl_setopt( $ch, CURLOPT_URL, $url );
+			curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, true );
+			curl_setopt( $ch, CURLOPT_TIMEOUT, 10 );
+
+			$data = curl_exec( $ch );
+			curl_close( $ch );
+
+			return $data;
 		}
 
 		/**
