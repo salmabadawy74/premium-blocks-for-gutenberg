@@ -11,6 +11,6 @@ function register_block_accordion_item() {
         }
 	    register_block_type(
 			'premium/accordion-item'
-		);;
+		);
 }
 add_action( 'init', 'register_block_accordion_item' );

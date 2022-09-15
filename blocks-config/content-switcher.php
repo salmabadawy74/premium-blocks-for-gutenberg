@@ -14,6 +14,7 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 	$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
 	$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 	$unique_id              = $attributes['blockId'];
+	$display              = $display ? $display : 'inline';
 
 	// Container styles
 	if ( isset( $attributes['align'] ) ) {
@@ -25,10 +26,10 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$css->add_property( 'text-align', ( $attributes['align']['Desktop'] . '!important' ) );
 	}
 	if ( isset( $attributes['align'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] );
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $display );
 		$css->add_property( 'text-align', ( $attributes['align']['Desktop'] . '!important' ) );
 		$css->add_property( 'justify-content', ( $attributes['align']['Desktop'] == 'right' ? 'flex-end' : ( $attributes['align']['Desktop'] == 'left' ? 'flex-start' : $attributes['align']['Desktop'] ) . '!important' ) );
-		$css->add_property( 'align-items', ( $attributes['display'] == 'inline' ? 'center' : ( $attributes['align']['Desktop'] == 'right' ? 'flex-end' : ( $attributes['align']['Desktop'] == 'left' ? 'flex-start' : $attributes['align']['Desktop'] ) ) . '!important' ) );
+		$css->add_property( 'align-items', ( $display == 'inline' ? 'center' : ( $attributes['align']['Desktop'] == 'right' ? 'flex-end' : ( $attributes['align']['Desktop'] == 'left' ? 'flex-start' : $attributes['align']['Desktop'] ) ) . '!important' ) );
 	}
 	if ( isset( $attributes['containerPadding'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' );
@@ -48,12 +49,12 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 
 	// First Label styles
 	if ( isset( $attributes['firstLabelTypography'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $display . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $display . '-editing' );
 		$css->render_typography( $attributes['firstLabelTypography'], 'Desktop' );
 	}
 
 	if ( isset( $attributes['firstLabelPadding'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $display . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $display . '-editing' );
 		$css->add_property( 'padding', $css->render_spacing( $attributes['firstLabelPadding']['Desktop'], $attributes['firstLabelPadding']['unit'] ) );
 	}
 
@@ -66,18 +67,18 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$css->add_property( 'margin-bottom', ( $attributes['labelSpacing']['Desktop'] . 'px' ) );
 	}
 	if ( isset( $attributes['firstLabelborder'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $display . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $display . '-editing' );
 		$css->add_property( 'border-width', $css->render_spacing( $attributes['firstLabelborder']['borderWidth']['Desktop'], 'px' ) );
 		$css->add_property( 'border-radius', $css->render_spacing( $attributes['firstLabelborder']['borderRadius']['Desktop'], 'px' ) );
 	}
 
 	// Second Label styles
 	if ( isset( $attributes['secondLabelTypography'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $display . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $display . '-editing' );
 		$css->render_typography( $attributes['secondLabelTypography'], 'Desktop' );
 	}
 	if ( isset( $attributes['secondLabelPadding'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $display . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $display . '-editing' );
 		$css->add_property( 'padding', $css->render_spacing( $attributes['secondLabelPadding']['Desktop'], $attributes['secondLabelPadding']['unit'] ) );
 	}
 
@@ -97,7 +98,7 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 
 	// Switch styles
 	if ( isset( $attributes['switchSize'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-toggle-switch' );
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $display . ' > .premium-content-switcher-toggle-switch' );
 		$css->add_property( 'font-size', ( $attributes['switchSize']['Desktop'] . 'px !important' ) );
 	}
 
@@ -113,10 +114,10 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$css->add_property( 'text-align', ( $attributes['align']['Tablet'] . '!important' ) );
 	}
 	if ( isset( $attributes['align']['Tablet'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] );
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $display );
 		$css->add_property( 'text-align', ( $attributes['align']['Tablet'] . '!important' ) );
 		$css->add_property( 'justify-content', ( $attributes['align']['Tablet'] == 'right' ? 'flex-end' : ( $attributes['align']['Tablet'] == 'left' ? 'flex-start' : $attributes['align']['Tablet'] ) . '!important' ) );
-		$css->add_property( 'align-items', ( $attributes['display'] == 'inline' ? 'center' : ( $attributes['align']['Tablet'] == 'right' ? 'flex-end' : ( $attributes['align']['Tablet'] == 'left' ? 'flex-start' : $attributes['align']['Tablet'] ) ) . '!important' ) );
+		$css->add_property( 'align-items', ( $display == 'inline' ? 'center' : ( $attributes['align']['Tablet'] == 'right' ? 'flex-end' : ( $attributes['align']['Tablet'] == 'left' ? 'flex-start' : $attributes['align']['Tablet'] ) ) . '!important' ) );
 	}
 	if ( isset( $attributes['containerPadding'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' );
@@ -136,11 +137,11 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 
 	// First Label styles
 	if ( isset( $attributes['firstLabelTypography']['fontSize']['Tablet'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $display . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $display . '-editing' );
 		$css->render_typography( $attributes['firstLabelTypography'], 'Tablet' );
 	}
 	if ( isset( $attributes['firstLabelPadding'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $display . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $display . '-editing' );
 		$css->add_property( 'padding', $css->render_spacing( $attributes['firstLabelPadding']['Tablet'], $attributes['firstLabelPadding']['unit'] ) );
 	}
 
@@ -153,18 +154,18 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$css->add_property( 'margin-bottom', ( $attributes['labelSpacing']['Tablet'] . 'px' ) );
 	}
 	if ( isset( $attributes['firstLabelborder'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $display . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $display . '-editing' );
 		$css->add_property( 'border-width', $css->render_spacing( $attributes['firstLabelborder']['borderWidth']['Tablet'], 'px' ) );
 		$css->add_property( 'border-radius', $css->render_spacing( $attributes['firstLabelborder']['borderRadius']['Tablet'], 'px' ) );
 	}
 
 	// Second Label styles
 	if ( isset( $attributes['secondLabelTypography'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $display . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $display . '-editing' );
 		$css->render_typography( $attributes['secondLabelTypography'], 'Tablet' );
 	}
 	if ( isset( $attributes['secondLabelPadding'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $display . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $display . '-editing' );
 		$css->add_property( 'padding', $css->render_spacing( $attributes['secondLabelPadding']['Tablet'], $attributes['secondLabelPadding']['unit'] ) );
 	}
 	if ( isset( $attributes['labelSpacing']['Tablet'] ) ) {
@@ -183,7 +184,7 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 
 	// Switch styles
 	if ( isset( $attributes['switchSize']['Tablet'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-toggle-switch' );
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $display . ' > .premium-content-switcher-toggle-switch' );
 		$css->add_property( 'font-size', ( $attributes['switchSize']['Tablet'] . 'px !important' ) );
 	}
 
@@ -201,10 +202,10 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$css->add_property( 'text-align', ( $attributes['align']['Mobile'] . '!important' ) );
 	}
 	if ( isset( $attributes['align']['Mobile'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] );
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $display );
 		$css->add_property( 'text-align', ( $attributes['align']['Mobile'] . '!important' ) );
 		$css->add_property( 'justify-content', ( $attributes['align']['Mobile'] == 'right' ? 'flex-end' : ( $attributes['align']['Mobile'] == 'left' ? 'flex-start' : $attributes['align']['Mobile'] ) . '!important' ) );
-		$css->add_property( 'align-items', ( $attributes['display'] == 'inline' ? 'center' : ( $attributes['align']['Mobile'] == 'right' ? 'flex-end' : ( $attributes['align']['Mobile'] == 'left' ? 'flex-start' : $attributes['align']['Mobile'] ) ) . '!important' ) );
+		$css->add_property( 'align-items', ( $display == 'inline' ? 'center' : ( $attributes['align']['Mobile'] == 'right' ? 'flex-end' : ( $attributes['align']['Mobile'] == 'left' ? 'flex-start' : $attributes['align']['Mobile'] ) ) . '!important' ) );
 	}
 	if ( isset( $attributes['containerPadding'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' );
@@ -224,11 +225,11 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 
 	// First Label styles
 	if ( isset( $attributes['firstLabelTypography'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $display . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $display . '-editing' );
 		$css->render_typography( $attributes['firstLabelTypography'], 'Mobile' );
 	}
 	if ( isset( $attributes['firstLabelPadding'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $display . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $display . '-editing' );
 		$css->add_property( 'padding', $css->render_spacing( $attributes['firstLabelPadding']['Mobile'], $attributes['firstLabelPadding']['unit'] ) );
 	}
 
@@ -241,18 +242,18 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$css->add_property( 'margin-bottom', ( $attributes['labelSpacing']['Mobile'] . 'px' ) );
 	}
 	if ( isset( $attributes['firstLabelborder'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $display . ' > .premium-content-switcher-first-label' . ' > .premium-content-switcher-' . $display . '-editing' );
 		$css->add_property( 'border-width', $css->render_spacing( $attributes['firstLabelborder']['borderWidth']['Mobile'], 'px' ) );
 		$css->add_property( 'border-radius', $css->render_spacing( $attributes['firstLabelborder']['borderRadius']['Mobile'], 'px' ) );
 	}
 
 	// Second Label styles
 	if ( isset( $attributes['secondLabelTypography'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $display . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $display . '-editing' );
 		$css->render_typography( $attributes['secondLabelTypography'], 'Mobile' );
 	}
 	if ( isset( $attributes['secondLabelPadding'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $attributes['display'] . '-editing' );
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $display . ' > .premium-content-switcher-second-label' . ' > .premium-content-switcher-' . $display . '-editing' );
 		$css->add_property( 'padding', $css->render_spacing( $attributes['secondLabelPadding']['Mobile'], $attributes['secondLabelPadding']['unit'] ) );
 	}
 
@@ -272,7 +273,7 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 
 	// Switch styles
 	if ( isset( $attributes['switchSize']['Mobile'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $attributes['display'] . ' > .premium-content-switcher-toggle-switch' );
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-' . $display . ' > .premium-content-switcher-toggle-switch' );
 		$css->add_property( 'font-size', ( $attributes['switchSize']['Mobile'] . 'px !important' ) );
 	}
 
@@ -341,7 +342,7 @@ add_action( 'init', 'register_block_pbg_content_switcher' );
 
 function content_switcher_enqueue() {
     
-	wp_register_script(
+	wp_enqueue_script(
 		'content-switcher',
 		PREMIUM_BLOCKS_URL . 'assets/js/content-switcher.js',
 		array( 'jquery' ),
@@ -351,4 +352,3 @@ function content_switcher_enqueue() {
  
 }
 add_action( 'enqueue_block_assets', 'content_switcher_enqueue' );
-
