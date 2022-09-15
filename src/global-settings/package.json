@@ -17,6 +17,7 @@
         "@wordpress/data": "^7.0.0",
         "@wordpress/element": "^4.14.0",
         "@wordpress/icons": "^9.7.0",
-        "@wordpress/scripts": "^24.0.0"
+        "@wordpress/scripts": "^24.0.0",
+        "react-tooltip": "^4.2.21"
     }
 }

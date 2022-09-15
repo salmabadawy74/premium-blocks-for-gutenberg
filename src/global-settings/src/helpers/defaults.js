@@ -204,37 +204,45 @@ const defaults = {
         },
     },
     colorSettings: {
-        pbg: {
-            color1: {
-                title: __(`Buttons background color \n& Links hover color`),
-                value: '#0085ba',
-                default: true
+        pbg: [
+            {
+                slug: 'color1',
+                name: __(`Buttons background color \n& Links hover color`),
+                color: '#0085ba',
+                default: true,
+                type: 'pbg'
             },
-            color2: {
-                title: __("Headings & Links color"),
-                value: '#333333',
-                default: true
+            {
+                slug: 'color2',
+                name: __("Headings & Links color"),
+                color: '#333333',
+                default: true,
+                type: 'pbg'
             },
-            color3: {
-                title: __("Body text & Meta color"),
-                value: '#444140',
-                default: true
+            {
+                slug: 'color3',
+                name: __("Body text & Meta color"),
+                color: '#444140',
+                default: true,
+                type: 'pbg'
             },
-            color4: {
-                title: __("Borders color"),
-                value: '#eaeaea',
-                default: true
+            {
+                slug: 'color4',
+                name: __("Borders color"),
+                color: '#eaeaea',
+                default: true,
+                type: 'pbg'
             },
-            color5: {
-                title: __(
+            {
+                slug: 'color5',
+                name: __(
                     "Body background, a tint for Input fields"
                 ),
-                value: '#ffffff',
-                default: true
+                color: '#ffffff',
+                default: true,
+                type: 'pbg'
             },
-        },
-        theme: {},
-        defaultPallet: 'theme'
+        ]
     }
 }
 

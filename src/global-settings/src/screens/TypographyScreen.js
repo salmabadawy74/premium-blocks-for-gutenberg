@@ -8,17 +8,17 @@ import { typographyCss } from '../../../components/HelperFunction';
 import WebfontLoader from '../../../components/typography/fontLoader';
 
 const TypographyScreen = props => {
-    const { settings, setSettings } = useContext(SettingsContext);
+    const { typographySettings, setTypographySettings } = useContext(SettingsContext);
     const { typography: defaultValues } = defaults;
     const getElementValue = (element) => {
-        const value = settings.typography?.[element] ? settings.typography?.[element] : defaultValues?.[element];
+        const value = typographySettings?.[element] ? typographySettings?.[element] : defaultValues?.[element];
 
         return value;
     };
     const changeHandler = (element, value) => {
         const updatedTypography = { ...settings.typography };
         updatedTypography[element] = value;
-        setSettings('typography', updatedTypography);
+        // setSettings('typography', updatedTypography);
     }
 
     const LoadElementGoogleFont = (props) => {
@@ -43,6 +43,35 @@ const TypographyScreen = props => {
             title={__('Typography')}
             description={__('Manage the typography settings for different elements.')}
         />
+        <button onClick={() => {
+            setTypographySettings({
+                heading1: {
+                    "fontWeight": "400",
+                    "fontStyle": "",
+                    "textTransform": "",
+                    "fontFamily": "Default",
+                    "textDecoration": "",
+                    "fontSize": {
+                        "Desktop": 48,
+                        "Tablet": 48,
+                        "Mobile": 48,
+                        "unit": "px"
+                    },
+                    "lineHeight": {
+                        "Desktop": 27,
+                        "Tablet": 27,
+                        "Mobile": 27,
+                        "unit": "px"
+                    },
+                    "letterSpacing": {
+                        "Desktop": 0,
+                        "Tablet": 0,
+                        "Mobile": 0,
+                        "unit": "px"
+                    }
+                }
+            })
+        }}>Test</button>
         <div className='premium-typography-screen'>
             <div className='premium-element-typography'>
                 <h1

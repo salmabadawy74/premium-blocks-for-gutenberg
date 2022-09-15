@@ -46,7 +46,8 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 		 * @return void
 		 */
 		public function register_pbg_global_settings() {
-			$responsive = array(
+			// Global Typography Schema.
+			$responsive_schema = array(
 				'type'       => 'object',
 				'properties' => array(
 					'Desktop' => array(
@@ -64,93 +65,97 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 				),
 			);
 
-			$typography_default_values = array(
-				'fontWeight'     => array(
-					'type' => 'string',
+			$typography_schema = array(
+				'type'       => 'object',
+				'properties' => array(
+					'fontWeight'     => array(
+						'type' => 'string',
+					),
+					'fontStyle'      => array(
+						'type' => 'string',
+					),
+					'textTransform'  => array(
+						'type' => 'string',
+					),
+					'fontFamily'     => array(
+						'type' => 'string',
+					),
+					'textDecoration' => array(
+						'type' => 'string',
+					),
+					'fontSize'       => $responsive_schema,
+					'lineHeight'     => $responsive_schema,
+					'letterSpacing'  => $responsive_schema,
 				),
-				'fontStyle'      => array(
-					'type' => 'string',
-				),
-				'textTransform'  => array(
-					'type' => 'string',
-				),
-				'fontFamily'     => array(
-					'type' => 'string',
-				),
-				'textDecoration' => array(
-					'type' => 'string',
-				),
-				'fontSize'       => $responsive,
-				'lineHeight'     => $responsive,
-				'letterSpacing'  => $responsive,
 			);
-
+			// Global Typography Setting register.
 			register_setting(
 				'pbg_global_settings',
-				'pbg_global_settings',
+				'pbg_global_typography',
 				array(
 					'type'         => 'object',
-					'description'  => __( 'Config Premium Blocks For Gutenberg Global Settings', 'premium-block-for-gutenberg' ),
+					'description'  => __( 'Config Premium Blocks For Gutenberg Global Typography Settings', 'premium-block-for-gutenberg' ),
 					'show_in_rest' => array(
 						'schema' => array(
-							'type'       => 'object',
 							'properties' => array(
-								'typography'         => array(
-									'type'       => 'object',
-									'properties' => array(
-										'heading1'  => array(
-											'type'       => 'object',
-											'properties' => $typography_default_values,
-										),
-										'heading2'  => array(
-											'type'       => 'object',
-											'properties' => $typography_default_values,
-										),
-										'heading3'  => array(
-											'type'       => 'object',
-											'properties' => $typography_default_values,
-										),
-										'heading4'  => array(
-											'type'       => 'object',
-											'properties' => $typography_default_values,
-										),
-										'heading5'  => array(
-											'type'       => 'object',
-											'properties' => $typography_default_values,
-										),
-										'heading6'  => array(
-											'type'       => 'object',
-											'properties' => $typography_default_values,
-										),
-										'button'    => array(
-											'type'       => 'object',
-											'properties' => $typography_default_values,
-										),
-										'paragraph' => array(
-											'type'       => 'object',
-											'properties' => $typography_default_values,
-										),
+								'heading1'  => $typography_schema,
+								'heading2'  => $typography_schema,
+								'heading3'  => $typography_schema,
+								'heading4'  => $typography_schema,
+								'heading5'  => $typography_schema,
+								'heading6'  => $typography_schema,
+								'button'    => $typography_schema,
+								'paragraph' => $typography_schema,
+							),
+						),
+					),
+					'default'      => array(),
+				)
+			);
+			// Global Colors Setting register.
+			register_setting(
+				'pbg_global_settings',
+				'pbg_global_colors',
+				array(
+					'type'         => 'array',
+					'description'  => __( 'Config Premium Blocks For Gutenberg Global Colors Settings', 'premium-block-for-gutenberg' ),
+					'show_in_rest' => array(
+						'schema' => array(
+							'items' => array(
+								'type'       => 'object',
+								'properties' => array(
+									'name'    => array(
+										'type' => 'string',
 									),
-								),
-								'colors'             => array(
-									'type' => 'string',
-								),
-								'container-settings' => array(
-									'type'       => 'object',
-									'properties' => array(
-										'tablet_breakpoint' => array(
-											'type' => 'string',
-										),
+									'slug'    => array(
+										'type' => 'string',
+									),
+									'color'   => array(
+										'type' => 'string',
+									),
+									'default' => array(
+										'type' => 'boolean',
+									),
+									'type'    => array(
+										'type' => 'string',
 									),
 								),
 							),
 						),
 					),
-					'default'      => array(
-						'typography'         => array(),
-						'colors'             => '',
-						'container-settings' => array(),
-					),
+					'default'      => array(),
+				)
+			);
+			// Default Color Pallet.
+			register_setting(
+				'pbg_global_settings',
+				'pbg_global_color_pallet',
+				array(
+					'type'              => 'string',
+					'description'       => __( 'Config Premium Blocks For Gutenberg Global Color Pallet Settings', STACKABLE_I18N ),
+					'sanitize_callback' => 'sanitize_text_field',
+					'show_in_rest'      => true,
+					'default'           => 'theme',
 				)
 			);
 		}

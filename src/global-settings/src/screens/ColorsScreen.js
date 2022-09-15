@@ -11,9 +11,9 @@ import { ToggleControl } from '@wordpress/components';
 import ReactTooltip from 'react-tooltip';
 
 const ColorsScreen = props => {
-    const { settings, setSettings } = useContext(SettingsContext);
+    const { colorsSettings, setColorsSettings } = useContext(SettingsContext);
     const { colorSettings: defaultValues } = defaults;
-    const colorValues = settings.colors && Object.keys(JSON.parse(settings.colors)).length !== 0 ? JSON.parse(settings.colors) : defaultValues;
+    const colorValues = colorsSettings ? colorsSettings : defaultValues;
     const _colors = useSelect(select => select('core/block-editor').getSettings().colors) || [];
     const themeColors = {};
     _colors.map((color) => {
@@ -25,7 +25,6 @@ const ColorsScreen = props => {
         }
     });
 
-    console.log(colorValues);
     const handleRemove = (id) => {
         let newValue = { ...colorValues };
         if (colorValues.defaultPallet === 'theme') {
@@ -34,12 +33,12 @@ const ColorsScreen = props => {
         if (colorValues.defaultPallet === 'pbg') {
             delete newValue.pbg[id];
         }
-        setSettings('colors', JSON.stringify(newValue));
+        // setSettings('colors', JSON.stringify(newValue));
     }
     const handleToggleChange = () => {
         let newValue = { ...colorValues };
         newValue.defaultPallet = colorValues.defaultPallet === 'theme' ? 'pbg' : 'theme';
-        setSettings('colors', JSON.stringify(newValue));
+        // setSettings('colors', JSON.stringify(newValue));
     }
 
     const handleChange = (value, id) => {
@@ -50,7 +49,7 @@ const ColorsScreen = props => {
         if (colorValues.defaultPallet === 'pbg') {
             newValue.pbg[id].value = value;
         }
-        setSettings('colors', JSON.stringify(newValue));
+        // setSettings('colors', JSON.stringify(newValue));
     }
 
     const handleAddNewColor = (colorData, id) => {
@@ -61,7 +60,7 @@ const ColorsScreen = props => {
         if (colorValues.defaultPallet === 'pbg') {
             newValue.pbg[id] = colorData;
         }
-        setSettings('colors', JSON.stringify(newValue));
+        // setSettings('colors', JSON.stringify(newValue));
     }
 
     return <>
@@ -79,7 +78,15 @@ const ColorsScreen = props => {
             />
             <label>{__('Premium Block')}</label>
         </div>
-        {colorValues.defaultPallet === 'theme' &&
+        <button onClick={() => {
+            setColorsSettings([{
+                slug: 'color1',
+                name: __(`Buttons background color \n& Links hover color`),
+                color: '#0085ba',
+                default: true,
+            }])
+        }}>Test</button>
+        {/* {colorValues.defaultPallet === 'theme' &&
             <div className={`premium-palettes-preview`}>
                 <PalettePreview
                     onClick={() => { }}
@@ -91,8 +98,8 @@ const ColorsScreen = props => {
                     onRemove={handleRemove}
                 />
             </div>
-        }
-        {colorValues.defaultPallet === 'pbg' &&
+        } */}
+        {/* {colorValues.defaultPallet === 'pbg' &&
             <div className={`premium-palettes-preview`}>
                 <PalettePreview
                     onClick={() => { }}
@@ -104,7 +111,7 @@ const ColorsScreen = props => {
                     onRemove={handleRemove}
                 />
             </div>
-        }
+        } */}
     </>
 }
 
