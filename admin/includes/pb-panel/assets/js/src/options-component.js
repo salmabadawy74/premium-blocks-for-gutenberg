@@ -11,7 +11,7 @@ const SingleOptionComponent = ({ value, optionId, option, onChange }) => {
     );
 };
 
-const RenderOptions = ({ options, values, onChange }) => {
+const OptionsComponent = ({ options, onChange, values }) => {
     return Object.keys(options).map((optionId) => {
         let value = values[optionId];
         let option = options[optionId];
@@ -28,18 +28,6 @@ const RenderOptions = ({ options, values, onChange }) => {
             />
         );
     });
-};
-
-const OptionsComponent = ({ options, onChange, values }) => {
-    return (
-        <div className="pb-options">
-            <RenderOptions
-                options={options}
-                onChange={onChange}
-                values={values}
-            />
-        </div>
-    );
 };
 
 export default OptionsComponent;

@@ -49,7 +49,7 @@ const OptionsTab = (props) => {
                         ))}
                     </nav>
                 </div>
-                <div className="advanced-options options-section">
+                <div className="pb-options options-section">
                     <OptionsComponent
                         options={options}
                         values={values}

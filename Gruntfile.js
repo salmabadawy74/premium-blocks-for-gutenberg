@@ -81,7 +81,10 @@ module.exports = function (grunt) {
                     "!webpack.config.js",
                     "!.gitignore",
                     "!*.zip",
-
+                    "!admin/includes/pb-panel/assets/js/node_modules/**",
+                    "!admin/includes/pb-panel/assets/js/package-lock.json",
+                    "!admin/includes/pb-panel/assets/js/package.json",
+                    "!admin/includes/pb-panel/assets/js/src",
                     "!src/**",
                 ],
                 dest: "premium-blocks-for-gutenberg/"
