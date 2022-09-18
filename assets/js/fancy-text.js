@@ -11,17 +11,10 @@ jQuery(function ($) {
 
         if (effect === 'typing') {
             let instance = null;
-            // // var fancyStrings = [];
-            // fancyStrings.forEach(function (item) {
-            //     fancyStrings.push(escapeHtml(item));
-            // });
-            // fancyStrings.concat(" ".split(" "));
-            // console.log(fancyStrings)
-            // $('#' + id + ' .premium-fancy-text-title-type').attr("id", "text-fancy-text")
-            // var fancyTextID = '#' + $elem.find('.premium-fancy-text-title-type').attr('id');
-            // console.log(fancyTextID)
+            fancyStrings = ["", ...fancyStrings]
+
             instance = new Typed(`#${id} .premium-fancy-text-title-type`, {
-                strings: ["hello", "world"],
+                strings: fancyStrings,
                 typeSpeed: $elem.data('typespeed'),
                 backSpeed: $elem.data('backspeed'),
                 startDelay: $elem.data('startdelay'),
@@ -30,8 +23,6 @@ jQuery(function ($) {
                 cursorChar: $elem.data('cursormark'),
                 loop: $elem.data('loop')
             });
-
-
 
         }
         else if (effect === 'slide') {
