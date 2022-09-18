@@ -158,6 +158,130 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 					'default'           => 'theme',
 				)
 			);
+
+			// Global Colors Setting register.
+			register_setting(
+				'pbg_global_settings',
+				'pbg_global_color_pallets',
+				array(
+					'type'         => 'array',
+					'description'  => __( 'Config Premium Blocks For Gutenberg Global Colors Settings', 'premium-block-for-gutenberg' ),
+					'show_in_rest' => array(
+						'schema' => array(
+							'items' => array(
+								'type'       => 'object',
+								'properties' => array(
+									'id'            => array(
+										'type' => 'string',
+									),
+									'name'          => array(
+										'type' => 'string',
+									),
+									'active'        => array(
+										'type' => 'boolean',
+									),
+									'colors'        => array(
+										'type'  => 'array',
+										'items' => array(
+											'type'       => 'object',
+											'properties' => array(
+												'id'    => array(
+													'type' => 'string',
+												),
+												'color' => array(
+													'type' => 'string',
+												),
+											),
+										),
+									),
+									'custom_colors' => array(
+										'type'  => 'array',
+										'items' => array(
+											'type'       => 'object',
+											'properties' => array(
+												'id'    => array(
+													'type' => 'string',
+												),
+												'color' => array(
+													'type' => 'string',
+												),
+											),
+										),
+									),
+									'type'          => array(
+										'type' => 'string',
+									),
+									'skin'          => array(
+										'type' => 'string',
+									),
+								),
+							),
+						),
+					),
+					'default'      => array(
+						array(
+							'id'            => 'pallet-1',
+							'name'          => 'Default',
+							'active'        => true,
+							'colors'        => array(
+								array(
+									'id'    => 'color1',
+									'color' => '#0085ba',
+								),
+								array(
+									'id'    => 'color2',
+									'color' => '#333333',
+								),
+								array(
+									'id'    => 'color3',
+									'color' => '#444140',
+								),
+								array(
+									'id'    => 'color4',
+									'color' => '#eaeaea',
+								),
+								array(
+									'id'    => 'color5',
+									'color' => '#ffffff',
+								),
+							),
+							'type'          => 'system',
+							'skin'          => 'light',
+							'custom_colors' => array(),
+						),
+						array(
+							'id'            => 'pallet-2',
+							'name'          => 'Sunrise',
+							'active'        => false,
+							'colors'        => array(
+								array(
+									'id'    => 'color1',
+									'color' => '#f67207',
+								),
+								array(
+									'id'    => 'color2',
+									'color' => '#1c1c1c',
+								),
+								array(
+									'id'    => 'color3',
+									'color' => '#4c4c4c',
+								),
+								array(
+									'id'    => 'color4',
+									'color' => '#e3e3e3',
+								),
+								array(
+									'id'    => 'color5',
+									'color' => '#fcfcfc',
+								),
+							),
+							'type'          => 'system',
+							'skin'          => 'dark',
+							'custom_colors' => array(),
+						),
+					),
+				)
+			);
 		}
 
 		/**

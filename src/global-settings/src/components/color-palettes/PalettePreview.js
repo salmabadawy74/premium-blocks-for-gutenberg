@@ -11,16 +11,12 @@ const PalettePreview = ({
     value,
     onChange,
     onClick,
-    currentPalette,
     className,
     addNewColor,
     handleClickReset,
     onRemove,
     onChangeName
 }) => {
-    if (!currentPalette) {
-        currentPalette = value;
-    }
     const { colorPallet } = useContext(SettingsContext);
     const handleChangeColor = (color, optionId) => {
         let newColor;
@@ -46,25 +42,25 @@ const PalettePreview = ({
         return findColor(id)?.color;
     };
 
-    const pickers = currentPalette.map((palletColors) => {
-        return {
-            title: palletColors.name,
-            id: palletColors.slug,
-            skipModal: palletColors.skipModal,
-            default: palletColors.default,
-        };
-    });
+    // const pickers = currentPalette.map((palletColors) => {
+    //     return {
+    //         title: palletColors.name,
+    //         id: palletColors.slug,
+    //         skipModal: palletColors.skipModal,
+    //         default: palletColors.default,
+    //     };
+    // });
 
     const addColor = () => {
-        const lastColorIndex = Object.keys(pickers).length;
-        const colorId = `color${lastColorIndex + 1}`;
-        const colorTitle = `${__('Custom Color ')}${lastColorIndex + 1}`;
-        addNewColor({ name: colorTitle, color: '', slug: colorId, type: colorPallet });
+        // const lastColorIndex = Object.keys(pickers).length;
+        // const colorId = `color${lastColorIndex + 1}`;
+        // const colorTitle = `${__('Custom Color ')}${lastColorIndex + 1}`;
+        // addNewColor({ name: colorTitle, color: '', slug: colorId, type: colorPallet });
     }
 
     useEffect(() => {
         ReactTooltip.rebuild();
-    }, [pickers]);
+    }, [value]);
 
     return (
         <div
@@ -83,11 +79,10 @@ const PalettePreview = ({
             {renderBefore()}
             <div className={`premium-color-palette-container`}>
                 <ReactTooltip place='top' effect="solid" />
-                {pickers.map((picker) => (
+                {value.map((picker) => (
                     <ColorComponent
                         picker={picker}
                         onChangeComplete={(color, id) => handleChangeColor(color, picker[`id`])}
-                        value={getColor(picker.id)}
                         className={"premium-color-palette-modal"}
                         skipModal={picker.skipModal}
                         resetPalette={true}

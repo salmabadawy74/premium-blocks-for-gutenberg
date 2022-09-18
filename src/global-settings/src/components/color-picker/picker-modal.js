@@ -5,7 +5,6 @@ const { __ } = wp.i18n;
 
 const PickerModal = ({
     el,
-    value,
     picker,
     onChange,
     style,
@@ -18,24 +17,24 @@ const PickerModal = ({
     onChangeName
 }) => {
     const getValueForPicker = useMemo(() => {
-        if ((value || "").indexOf("var") > -1) {
+        if ((picker.color || "").indexOf("var") > -1) {
             return {
-                key: "var" + value,
+                key: "var" + picker.color,
                 color: getComputedStyle(document.documentElement)
-                    .getPropertyValue(value.replace(/var\(/, "").replace(/\)/, ""))
+                    .getPropertyValue(picker.color.replace(/var\(/, "").replace(/\)/, ""))
                     .trim()
                     .replace(/\s/g, ""),
             };
         }
 
-        return { key: "color", color: value };
-    }, [value, picker]);
+        return { key: "color", color: picker.color };
+    }, [picker]);
 
     const [refresh, setRefresh] = useState(false);
 
     useEffect(() => {
         onChange;
-    }, [value]);
+    }, [picker]);
     const handleColorReset = () => {
         if (refresh === true) {
             setRefresh(false);
@@ -66,10 +65,10 @@ const PickerModal = ({
                             color={getValueForPicker.color}
                             onChangeComplete={(color) => onChange(color)}
                         />
-                        {picker.title && (
+                        {picker.name && (
                             <div className="premium-color-title">
                                 <label>{__('Name')}:</label>
-                                <input type={'text'} value={picker.title} onChange={(e) => onChangeName(e.target.value)} />
+                                <input type={'text'} value={picker.name} onChange={(e) => onChangeName(e.target.value)} />
                             </div>
                         )}
                         {resetPalette && (
@@ -94,10 +93,10 @@ const PickerModal = ({
                             color={getValueForPicker.color}
                             onChangeComplete={(color) => onChange(color)}
                         />
-                        {picker.title && (
+                        {picker.name && (
                             <div className="premium-color-title">
                                 <label>{__('Name')}:</label>
-                                <input type={'text'} value={picker.title} onChange={(e) => onChangeName(e.target.value)} />
+                                <input type={'text'} value={picker.name} onChange={(e) => onChangeName(e.target.value)} />
                             </div>
                         )}
                         {resetPalette && (

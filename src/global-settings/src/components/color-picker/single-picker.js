@@ -6,7 +6,6 @@ import classnames from 'classnames'
 import usePopoverMaker from '../common/popover-component';
 const { __ } = wp.i18n;
 const SinglePicker = ({
-    value,
     onChange,
     picker,
     onPickingChange,
@@ -32,8 +31,8 @@ const SinglePicker = ({
     })
     let modal = null
     if (!skipModal &&
-        (isTransitioning === picker.id ||
-            (isPicking || '').split(':')[0] === picker.id)
+        (isTransitioning === picker.slug ||
+            (isPicking || '').split(':')[0] === picker.slug)
     ) {
         modal = createPortal(
             <Transition
@@ -72,7 +71,7 @@ const SinglePicker = ({
                         }
                 }>
                 {(isPicking) =>
-                    (isPicking || '').split(':')[0] === picker.id &&
+                    (isPicking || '').split(':')[0] === picker.slug &&
                     ((props) => (
                         <PickerModal
                             style={{
@@ -81,7 +80,6 @@ const SinglePicker = ({
                             }}
                             onChange={(color) => onChange(color)}
                             picker={picker}
-                            value={value}
                             el={el}
                             wrapperProps={
                                 appendToBody
@@ -126,16 +124,16 @@ const SinglePicker = ({
                         refreshPopover()
 
                         let futureIsPicking = isPicking
-                            ? isPicking.split(':')[0] === picker.id
+                            ? isPicking.split(':')[0] === picker.slug
                                 ? null
-                                : `${picker.id}:${isPicking.split(':')[0]}`
-                            : picker.id
+                                : `${picker.slug}:${isPicking.split(':')[0]}`
+                            : picker.slug
 
                         onPickingChange(futureIsPicking)
                     }}
 
-                    style={{ background: `${value} none repeat scroll 0% 0%` }}
-                    data-tip={picker.title}
+                    style={{ background: `${picker.color} none repeat scroll 0% 0%` }}
+                    data-tip={picker.name}
                 >
                 </span>
             </span>

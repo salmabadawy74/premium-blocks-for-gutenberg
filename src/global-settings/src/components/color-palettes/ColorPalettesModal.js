@@ -6,10 +6,10 @@ import PalettePreview from './PalettePreview'
 import classnames from "classnames";
 import { useState } from 'react';
 
-const ColorPalettesModal = ({ value, onChange, wrapperProps = {}, handleDeletePalette }) => {
+const ColorPalettesModal = ({ value, onChange, titles, wrapperProps = {}, handleDeletePalette }) => {
 	const [typeOfPalette, setTypeOfPalette] = useState("light");
-	const kemetPaletteColors = value.palettes.filter(palette => { return palette.skin === typeOfPalette && palette.type === "system" })
-	const customPaletteColors = value.palettes.filter(palette => { return palette.skin === typeOfPalette && palette.type === "custom" })
+	const pbgPaletteColors = value.filter(pallet => pallet.skin === typeOfPalette && pallet.type === "system");
+	const customPaletteColors = value.filter(pallet => { return pallet.skin === typeOfPalette && pallet.type === "custom" });
 	return (
 		<animated.div
 			className="premium-option-modal premium-palettes-modal"
@@ -63,13 +63,21 @@ const ColorPalettesModal = ({ value, onChange, wrapperProps = {}, handleDeletePa
 
 			))
 			}
-			<div className={`premium_label_type__palette`}>{__(`kemet palettes`, "kemet")}</div>
-			{kemetPaletteColors.map((palette, index) => (
+			<div className={`premium_label_type__palette`}>{__(`Default palettes`, "kemet")}</div>
+			{pbgPaletteColors.map((palette, index) => (
 				<Fragment>
 					<PalettePreview
-						currentPalette={palette}
+						value={palette.colors.map(color => {
+							return {
+								name: titles[index],
+								slug: color.id,
+								color: color.color,
+								default: true,
+								skipModal: true
+							}
+						})}
 						className={
-							value.current_palette === palette.id ? 'premium-active' : ''
+							palette.active ? 'premium-active' : ''
 						}
 						renderBefore={() => (
 							<label>
@@ -84,7 +92,7 @@ const ColorPalettesModal = ({ value, onChange, wrapperProps = {}, handleDeletePa
 								...colors,
 							})
 						}}
-						skipModal={true}
+
 					/>
 				</Fragment>
 

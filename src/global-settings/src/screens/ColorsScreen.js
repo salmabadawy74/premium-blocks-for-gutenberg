@@ -6,10 +6,11 @@ import defaults from '../helpers/defaults';
 import { useSelect } from '@wordpress/data'
 import PalettePreview from '../components/color-palettes/PalettePreview';
 import { ToggleControl } from '@wordpress/components';
+import ColorPalettes from '../components/color-pallet';
 
 const ColorsScreen = props => {
     const { colors: defaultColors } = defaults;
-    const { globalColors: defaultGlobalColors, setGlobalColors, colorPallet, setColorPallet } = useContext(SettingsContext);
+    const { globalColors: defaultGlobalColors, setGlobalColors, colorPallet, setColorPallet, colorPallets, setColorPallets } = useContext(SettingsContext);
     const globalColors = defaultGlobalColors.length ? defaultGlobalColors : defaultColors;
     const _colors = useSelect(select => select('core/block-editor').getSettings().colors) || [];
     const themeColorsFromPbg = globalColors.length ? globalColors.filter(color => color.type === 'theme') : [];
@@ -24,7 +25,6 @@ const ColorsScreen = props => {
         }
     });
     const pbgColors = globalColors.length ? globalColors.filter(color => color.type !== 'theme') : [];
-
     const handleRemove = (id) => {
         let newValue = [...globalColors];
         newValue = newValue.filter(color => color.slug !== id);
@@ -80,18 +80,7 @@ const ColorsScreen = props => {
             </div>
         }
         {colorPallet === 'pbg' &&
-            <div className={`premium-palettes-preview`}>
-                <PalettePreview
-                    onClick={() => { }}
-                    value={pbgColors}
-                    onChange={(v, id) => handleChange(v, id)}
-                    skipModal={false}
-                    handleClickReset={(val) => console.log(val)}
-                    addNewColor={handleAddNewColor}
-                    onRemove={handleRemove}
-                    onChangeName={(v, id) => handleChangeName(v, id)}
-                />
-            </div>
+            <ColorPalettes value={colorPallets} onChange={setColorPallets} />
         }
     </>
 }

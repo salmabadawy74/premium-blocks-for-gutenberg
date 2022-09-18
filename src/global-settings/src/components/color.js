@@ -3,12 +3,11 @@ import SinglePicker from './color-picker/single-picker'
 import OutsideClickHandler from './common/outside-component'
 import { Icon, closeSmall } from '@wordpress/icons';
 
-const ColorComponent = ({ picker, onChangeComplete, value, className, skipModal, resetPalette, onColorReset, isDefault, onRemove, onChangeName }) => {
+const ColorComponent = ({ picker, onChangeComplete, className, skipModal, resetPalette, onColorReset, isDefault, onRemove, onChangeName }) => {
     const [{ isPicking, isTransitioning }, setState] = useState({
         isPicking: null,
         isTransitioning: null,
     })
-
     const containerRef = useRef()
     const modalRef = useRef()
 
@@ -33,13 +32,13 @@ const ColorComponent = ({ picker, onChangeComplete, value, className, skipModal,
             <SinglePicker
                 containerRef={containerRef}
                 picker={picker}
-                key={picker.id}
+                key={picker.slug}
                 isPicking={isPicking}
                 modalRef={modalRef}
                 isTransitioning={isTransitioning}
                 onPickingChange={(isPicking) =>
                     setState({
-                        isTransitioning: picker.id,
+                        isTransitioning: picker.slug,
                         isPicking,
                     })
                 }
@@ -50,14 +49,13 @@ const ColorComponent = ({ picker, onChangeComplete, value, className, skipModal,
                     }))
                 }
                 onChange={(color) => onChangeComplete(color)}
-                value={value}
                 className={className}
                 skipModal={skipModal}
                 resetPalette={resetPalette}
                 onColorReset={(color) => onColorReset(color)}
                 onChangeName={(name) => onChangeName(name)}
             />
-            {!isDefault && <span className="premium-remove-color" onClick={() => onRemove(picker.id)}>
+            {!isDefault && <span className="premium-remove-color" onClick={() => onRemove(picker.slug)}>
                 <Icon icon={closeSmall} />
             </span>}
         </OutsideClickHandler>

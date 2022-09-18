@@ -10,13 +10,16 @@ const SettingsContext = React.createContext({
     colorPallet: '',
     setGlobalTypography: () => { },
     setGlobalColors: () => { },
-    setColorPallet: () => { }
+    setColorPallet: () => { },
+    colorPallets: [],
+    setColorPallets: []
 })
 
 export const SettingsProvider = (props) => {
     const [globalTypography, setGlobalTypography] = useEntityProp('root', 'site', 'pbg_global_typography');
     const [globalColors, setGlobalColors] = useEntityProp('root', 'site', 'pbg_global_colors');
     const [colorPallet, setColorPallet] = useEntityProp('root', 'site', 'pbg_global_color_pallet');
+    const [colorPallets, setColorPallets] = useEntityProp('root', 'site', 'pbg_global_color_pallets');
 
     const settingsContext = {
         globalTypography,
@@ -24,7 +27,9 @@ export const SettingsProvider = (props) => {
         globalColors,
         setGlobalColors,
         colorPallet,
-        setColorPallet
+        setColorPallet,
+        colorPallets,
+        setColorPallets
     };
     return <SettingsContext.Provider value={settingsContext}>
         {props.children}
