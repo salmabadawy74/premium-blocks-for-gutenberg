@@ -899,13 +899,7 @@ class PBG_Blocks_Helper
 			'all'
 		);
 		if ($this->it_is_not_amp()) {
-			wp_enqueue_script(
-				'pbg-sectionfancy-text',
-				PREMIUM_BLOCKS_URL . 'assets/js/fancy-text.js',
-				array('jquery'),
-				PREMIUM_BLOCKS_VERSION,
-				true
-			);
+
 			wp_enqueue_script(
 				'pbg-vticker',
 				PREMIUM_BLOCKS_URL . 'assets/js/lib/vticker.js',
@@ -917,6 +911,13 @@ class PBG_Blocks_Helper
 				'pbg-typed',
 				PREMIUM_BLOCKS_URL . 'assets/js/lib/typed.js',
 				array('jquery'),
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
+			wp_enqueue_script(
+				'pbg-sectionfancy-text',
+				PREMIUM_BLOCKS_URL . 'assets/js/fancy-text.js',
+				array('jquery', 'pbg-typed'),
 				PREMIUM_BLOCKS_VERSION,
 				true
 			);
