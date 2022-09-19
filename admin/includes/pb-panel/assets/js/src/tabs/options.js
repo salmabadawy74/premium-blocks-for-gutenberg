@@ -14,13 +14,11 @@ const OptionsTab = (props) => {
 
     const tabs = [
         { name: "All", slug: "all" },
-        { name: "Core", slug: "core" },
-        { name: "Creative", slug: "creative" },
         { name: "Content", slug: "content" },
-        { name: "Post", slug: "post" },
-        { name: "Social", slug: "social" },
-        { name: "Form", slug: "form" },
-        { name: "SEO", slug: "seo" },
+        { name: "Creative", slug: "creative" },
+        { name: "Section", slug: "section" },
+        { name: "Marketing", slug: "marketing" },
+        { name: "Theme", slug: "theme" },
     ];
     const [activeFilter, setFilter] = useState("all");
     let options = Object.keys(props.options)
