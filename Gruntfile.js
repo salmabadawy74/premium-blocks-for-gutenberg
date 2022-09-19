@@ -98,9 +98,6 @@ module.exports = function (grunt) {
                     "!.git/**",
                     "!*.sh",
                     "!*.zip",
-                    "!admin/includes/pb-panel/assests/js/node_modules/**",
-                    "!admin/includes/pb-panel/assests/js/package.json",
-                    "!admin/includes/pb-panel/assests/js/package-lock.json",
                     "!node_modules/**",
                     "!eslintrc.json",
                     "!.editorconfig",
@@ -108,9 +105,7 @@ module.exports = function (grunt) {
                     "!Gruntfile.js",
                     "!package.json",
                     "!package-lock.json",
-
                     "!assets/sass/**",
-
                     "!.babelrc",
                     "!webpack.config.js",
                     "!.gitignore",
