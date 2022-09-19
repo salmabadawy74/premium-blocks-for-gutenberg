@@ -442,7 +442,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 					'icon'     => 'bulletList',
 					'category' => 'all',
 					array(
-						'all', ,
+						'all',
 						'content',
 					),
 				),
