@@ -11,11 +11,13 @@ import pushHistory from "./common/push-history";
 import "./scss/pb-panel.scss";
 import OptionsComponent from "./tabs/options";
 import Notices from "./layout/Notices";
+import { useState } from "react";
 
 const { __ } = wp.i18n;
 const { TabPanel, Panel, PanelBody } = wp.components;
 
 const RendeTabs = () => {
+    const [activeTab, setTab] = useState(PremiumBlocksPanelData.kemet_redirect);
     let { tabs } = useContext(PanelContext);
     const compare = (a, b) => {
         if (a.priority < b.priority) {
@@ -46,7 +48,6 @@ const RendeTabs = () => {
                 Component: OptionsComponent,
                 props: {
                     options: PremiumBlocksPanelData.options,
-                    values: PremiumBlocksPanelData.values,
                 },
             },
         },
@@ -88,6 +89,7 @@ const RendeTabs = () => {
     ];
     tabs = mergedTabs;
     const onSelectHandler = (tabName) => {
+        setTab(tabName);
         pushHistory(tabName);
     };
     return (
@@ -98,7 +100,7 @@ const RendeTabs = () => {
             <TabPanel
                 className="pb-dashboard-tab-panel"
                 activeClass="active-tab"
-                initialTabName={PremiumBlocksPanelData.kemet_redirect}
+                initialTabName={activeTab}
                 onSelect={onSelectHandler}
                 tabs={tabs.sort(compare)}
             >

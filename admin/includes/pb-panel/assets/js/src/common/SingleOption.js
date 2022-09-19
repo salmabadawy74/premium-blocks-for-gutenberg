@@ -16,37 +16,39 @@ const SingleOption = (props) => {
     const [isLoading, setIsLoading] = useState(false);
     const { createNotice } = useDispatch(noticesStore);
 
-    const handleChange = async () => {
+    const handleChange = () => {
         let newValue = !value;
-        const body = new FormData();
-        body.append("action", "pb-panel-update-option");
-        body.append("nonce", PremiumBlocksPanelData.nonce);
-        body.append("option", props.id);
-        body.append("value", newValue);
+        setValue(newValue);
+        props.onChange(newValue, props.optionId);
+        // const body = new FormData();
+        // body.append("action", "pb-panel-update-option");
+        // body.append("nonce", PremiumBlocksPanelData.nonce);
+        // body.append("option", props.id);
+        // body.append("value", newValue);
 
-        try {
-            const response = await fetch(PremiumBlocksPanelData.ajaxurl, {
-                method: "POST",
-                body,
-            });
-            if (response.status === 200) {
-                const { success, data } = await response.json();
-                if (success && data.values) {
-                    setValue(newValue);
-                    props.onChange(data.values);
-                    createNotice("success", "Settings saved ", {
-                        isDismissible: true,
-                        type: "snackbar",
-                    });
-                }
-            }
-        } catch (e) {
-            console.log(e);
-            createNotice("error", __("An unknown error occurred.", ""), {
-                isDismissible: true,
-                type: "snackbar",
-            });
-        }
+        // try {
+        //     const response = await fetch(PremiumBlocksPanelData.ajaxurl, {
+        //         method: "POST",
+        //         body,
+        //     });
+        //     if (response.status === 200) {
+        //         const { success, data } = await response.json();
+        //         if (success && data.values) {
+        //             setValue(newValue);
+        //             props.onChange(data.values);
+        //             createNotice("success", "Settings saved ", {
+        //                 isDismissible: true,
+        //                 type: "snackbar",
+        //             });
+        //         }
+        //     }
+        // } catch (e) {
+        //     console.log(e);
+        //     createNotice("error", __("An unknown error occurred.", ""), {
+        //         isDismissible: true,
+        //         type: "snackbar",
+        //     });
+        // }
     };
 
     let checked = value === true ? true : false;

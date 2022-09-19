@@ -3,13 +3,46 @@ import Container from "../common/Container";
 import OptionsComponent from "../options-component";
 import classNames from "classnames";
 const { __ } = wp.i18n;
+import { useDispatch } from "@wordpress/data";
+
 const { Dashicon } = wp.components;
+import { store as noticesStore } from "@wordpress/notices";
 
 const OptionsTab = (props) => {
-    const [values, setValues] = useState(props.values);
+    const [values, setValues] = useState(PremiumBlocksPanelData.values);
+    const { createNotice } = useDispatch(noticesStore);
 
-    const handleChange = (newValues) => {
-        setValues(newValues);
+    const handleChange = async (newValues, id) => {
+        let newItems = { ...values };
+        newItems[id] = newValues;
+        const body = new FormData();
+        body.append("action", "pb-panel-update-option");
+        body.append("nonce", PremiumBlocksPanelData.nonce);
+        body.append("option", id);
+        body.append("value", newValues);
+
+        try {
+            const response = await fetch(PremiumBlocksPanelData.ajaxurl, {
+                method: "POST",
+                body,
+            });
+            if (response.status === 200) {
+                const { success, data } = await response.json();
+                if (success && data.values) {
+                    setValues(newItems);
+                    createNotice("success", "Settings saved ", {
+                        isDismissible: true,
+                        type: "snackbar",
+                    });
+                }
+            }
+        } catch (e) {
+            console.log(e);
+            createNotice("error", __("An unknown error occurred.", ""), {
+                isDismissible: true,
+                type: "snackbar",
+            });
+        }
     };
 
     const tabs = [
