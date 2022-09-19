@@ -44,15 +44,25 @@ const ColorPalettes = ({
         __("Footer text color", "kemet"),
         __("Footer background color", "kemet"),
     ];
-    const activePallet = state.find(pallet => pallet.active);
-    const activePalletValue = activePallet?.colors.map((color, index) => {
+    let activePallet = state.find(pallet => pallet.active);
+    const activePalleColors = activePallet?.colors.map((color, index) => {
         return {
             name: titles[index],
-            slug: color.id,
+            slug: color.slug,
             color: color.color,
             default: true
         }
     });
+    activePallet = { ...activePallet, colors: activePalleColors };
+    const activePalleCustomColors = activePallet.custom_colors.length ? activePallet?.custom_colors : [];
+
+    const onChangePallet = (newPallet) => {
+        newPallet = { ...newPallet, colors: clearColors(newPallet.colors) };
+        const newPallets = [...state].map(pallet => pallet.id === newPallet.id ? newPallet : pallet);
+
+        setState(newPallets);
+        onChange(newPallets);
+    };
 
     const handleChangePalette = (active) => {
         // let currentPalette = active.palettes.find(
@@ -70,35 +80,31 @@ const ColorPalettes = ({
         // onChange({ ...active, flag: !value.flag });
     };
 
-    const handleAddNewColor = (colorData, id) => {
-        // let newValue = { ...state };
-        // newValue[id] = colorData;
+    const handleAddNewColor = (colorData) => {
+        let newCustomColors = [...activePalleCustomColors];
+        newCustomColors.push(colorData);
+        let newColorPallet = { ...activePallet, custom_colors: newCustomColors };
 
-        // setState(newValue);
-        // onChange(newValue);
+        onChangePallet(newColorPallet);
     };
 
     const handleChangeComplete = (color, index) => {
-        // let newValue = { ...state };
-        // newValue[index].value = color;
-        // let { current_palette, palettes, ...colors } = newValue;
-        // Object.values(colors).map((item, index) => {
-        //     document.documentElement.style.setProperty(
-        //         `--paletteColor${index + 1}`,
-        //         item
-        //     );
-        //     return item;
-        // });
-        // setState({ ...state, ...colors, current_palette, palettes });
-        // onChange({
-        //     ...state,
-        //     ...colors,
-        //     flag: !value.flag,
-        //     current_palette,
-        //     palettes,
-        // });
+        let newPalletColors = index.includes('custom') ? [...activePalleCustomColors] : [...activePalleColors];
+        newPalletColors = newPalletColors.map(colorObj => colorObj.slug === index ? { ...colorObj, color: color } : colorObj);
+        const changedColors = index.includes('custom') ? 'custom_colors' : 'colors';
+        const newColorPallet = { ...activePallet, [changedColors]: newPalletColors };
+
+        onChangePallet(newColorPallet);
     };
 
+    const clearColors = (colors) => {
+        return colors.map((color, index) => {
+            return {
+                slug: color.slug,
+                color: color.color,
+            }
+        })
+    }
     const handleAddPalette = (data) => {
         // let { current_palette, palettes, ...colors } = { ...state };
 
@@ -192,7 +198,7 @@ const ColorPalettes = ({
                                 isTransitioning: null,
                             }))
                         }}
-                        value={activePalletValue}
+                        pallet={activePallet}
                         onChange={(v, id) => handleChangeComplete(v, id)}
                         handleClickReset={(val) => {
                             handleResetColor(val);

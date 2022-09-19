@@ -13,7 +13,7 @@ const ColorsScreen = props => {
     const { globalColors: defaultGlobalColors, setGlobalColors, colorPallet, setColorPallet, colorPallets, setColorPallets } = useContext(SettingsContext);
     const globalColors = defaultGlobalColors.length ? defaultGlobalColors : defaultColors;
     const _colors = useSelect(select => select('core/block-editor').getSettings().colors) || [];
-    const themeColorsFromPbg = globalColors.length ? globalColors.filter(color => color.type === 'theme') : [];
+    const themeCustomColors = colorPallets.length ? colorPallets.find(pallet => pallet.id === 'theme') : [];
     const themeColors = _colors.map((color) => {
         return {
             name: color.name,
@@ -24,12 +24,13 @@ const ColorsScreen = props => {
             type: 'theme'
         }
     });
-    const pbgColors = globalColors.length ? globalColors.filter(color => color.type !== 'theme') : [];
+
     const handleRemove = (id) => {
         let newValue = [...globalColors];
         newValue = newValue.filter(color => color.slug !== id);
         setGlobalColors(newValue);
     }
+
     const handleToggleChange = () => {
         setColorPallet(colorPallet === 'theme' ? 'pbg' : 'theme');
     }
@@ -39,10 +40,12 @@ const ColorsScreen = props => {
         setGlobalColors(newValue);
     }
 
-    const handleAddNewColor = (colorData) => {
-        let newValue = [...globalColors];
-        newValue.push(colorData);
-        setGlobalColors(newValue);
+    const handleAddThemeNewColor = (colorData) => {
+        let newThemePallet = [...themeCustomColors];
+        newThemePallet.custom_colors.push(colorData);
+        const newPallets = [...state].map(pallet => pallet.id === 'theme' ? newThemePallet : pallet);
+
+        setColorPallets(newPallets);
     }
 
     const handleChangeName = (name, id) => {
@@ -69,7 +72,10 @@ const ColorsScreen = props => {
             <div className={`premium-palettes-preview`}>
                 <PalettePreview
                     onClick={() => { }}
-                    value={[...themeColors, ...themeColorsFromPbg]}
+                    pallet={{
+                        colors: themeColors,
+                        custom_colors: themeCustomColors.custom_colors
+                    }}
                     onChange={(v, id) => handleChange(v, id)}
                     skipModal={false}
                     handleClickReset={(val) => console.log(val)}

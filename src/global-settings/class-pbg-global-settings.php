@@ -185,7 +185,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 										'items' => array(
 											'type'       => 'object',
 											'properties' => array(
-												'id'    => array(
+												'slug'  => array(
 													'type' => 'string',
 												),
 												'color' => array(
@@ -199,10 +199,13 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 										'items' => array(
 											'type'       => 'object',
 											'properties' => array(
-												'id'    => array(
+												'slug'  => array(
 													'type' => 'string',
 												),
 												'color' => array(
+													'type' => 'string',
+												),
+												'name'  => array(
 													'type' => 'string',
 												),
 											),
@@ -220,28 +223,32 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 					),
 					'default'      => array(
 						array(
-							'id'            => 'pallet-1',
+							'id'            => 'theme',
+							'custom_colors' => array(),
+						),
+						array(
+							'id'            => 'default',
 							'name'          => 'Default',
 							'active'        => true,
 							'colors'        => array(
 								array(
-									'id'    => 'color1',
+									'slug'  => 'color1',
 									'color' => '#0085ba',
 								),
 								array(
-									'id'    => 'color2',
+									'slug'  => 'color2',
 									'color' => '#333333',
 								),
 								array(
-									'id'    => 'color3',
+									'slug'  => 'color3',
 									'color' => '#444140',
 								),
 								array(
-									'id'    => 'color4',
+									'slug'  => 'color4',
 									'color' => '#eaeaea',
 								),
 								array(
-									'id'    => 'color5',
+									'slug'  => 'color5',
 									'color' => '#ffffff',
 								),
 							),
@@ -255,23 +262,23 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 							'active'        => false,
 							'colors'        => array(
 								array(
-									'id'    => 'color1',
+									'slug'  => 'color1',
 									'color' => '#f67207',
 								),
 								array(
-									'id'    => 'color2',
+									'slug'  => 'color2',
 									'color' => '#1c1c1c',
 								),
 								array(
-									'id'    => 'color3',
+									'slug'  => 'color3',
 									'color' => '#4c4c4c',
 								),
 								array(
-									'id'    => 'color4',
+									'slug'  => 'color4',
 									'color' => '#e3e3e3',
 								),
 								array(
-									'id'    => 'color5',
+									'slug'  => 'color5',
 									'color' => '#fcfcfc',
 								),
 							),
