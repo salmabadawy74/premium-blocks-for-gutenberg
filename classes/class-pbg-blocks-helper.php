@@ -902,7 +902,7 @@ class PBG_Blocks_Helper
 			wp_enqueue_script(
 				'pbg-sectionfancy-text',
 				PREMIUM_BLOCKS_URL . 'assets/js/fancy-text.js',
-				array('jquery'),
+				array('jquery', 'pbg-typed'),
 				PREMIUM_BLOCKS_VERSION,
 				true
 			);
