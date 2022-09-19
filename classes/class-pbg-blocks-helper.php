@@ -401,6 +401,7 @@ class PBG_Blocks_Helper
 			}
 			if ($slug === 'breadcrumbs') {
 
+
 				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/breadcrumbs.php';
 
 				register_block_pbg_breadcrumbs();
