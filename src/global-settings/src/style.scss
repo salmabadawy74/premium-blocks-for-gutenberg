@@ -444,9 +444,13 @@ header .premium-btn-reset-wrap {
 .premium-palettes-modal
     .premium-single-palette
     .premium-color-palette-container {
-    display: flex;
-    align-items: start;
-    justify-content: start;
+    p {
+        margin: 10px 0;
+    }
+    .premium-pallet-colors,
+    .premium-custom-colors {
+        display: flex;
+    }
 }
 
 .premium-global-color-picker-single > span span {

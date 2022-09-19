@@ -403,10 +403,12 @@ header .premium-btn-reset-wrap {
   margin-right: 6px;
 }
 
-.premium-palettes-modal .premium-single-palette .premium-color-palette-container {
+.premium-palettes-modal .premium-single-palette .premium-color-palette-container p {
+  margin: 10px 0;
+}
+.premium-palettes-modal .premium-single-palette .premium-color-palette-container .premium-pallet-colors,
+.premium-palettes-modal .premium-single-palette .premium-color-palette-container .premium-custom-colors {
   display: flex;
-  align-items: start;
-  justify-content: start;
 }
 
 .premium-global-color-picker-single > span span {

@@ -31,9 +31,9 @@ const ColorPalettesModal = ({ value, onChange, titles, wrapperProps = {}, handle
 			{customPaletteColors.map((palette, index) => (
 				<Fragment>
 					<PalettePreview
-						currentPalette={palette}
+						pallet={palette}
 						className={classnames(`premium-custom-palette__container`, {
-							'premium-active': value.current_palette === palette.id
+							'premium-active': palette.active
 						})
 						}
 						renderBefore={() => (
@@ -49,12 +49,7 @@ const ColorPalettesModal = ({ value, onChange, titles, wrapperProps = {}, handle
 							</Fragment>
 						)}
 						onClick={() => {
-							const { id, ...colors } = palette
-							onChange({
-								...value,
-								current_palette: id,
-								...colors,
-							})
+							onChange(palette);
 						}}
 						skipModal={true}
 					/>
@@ -67,15 +62,7 @@ const ColorPalettesModal = ({ value, onChange, titles, wrapperProps = {}, handle
 			{pbgPaletteColors.map((palette, index) => (
 				<Fragment>
 					<PalettePreview
-						value={palette.colors.map(color => {
-							return {
-								name: titles[index],
-								slug: color.id,
-								color: color.color,
-								default: true,
-								skipModal: true
-							}
-						})}
+						pallet={palette}
 						className={
 							palette.active ? 'premium-active' : ''
 						}
@@ -85,14 +72,9 @@ const ColorPalettesModal = ({ value, onChange, titles, wrapperProps = {}, handle
 							</label>
 						)}
 						onClick={() => {
-							const { id, ...colors } = palette
-							onChange({
-								...value,
-								current_palette: id,
-								...colors,
-							})
+							onChange(palette)
 						}}
-
+						canAdd={false}
 					/>
 				</Fragment>
 

@@ -20,6 +20,7 @@ export const SettingsProvider = (props) => {
     const [globalColors, setGlobalColors] = useEntityProp('root', 'site', 'pbg_global_colors');
     const [colorPallet, setColorPallet] = useEntityProp('root', 'site', 'pbg_global_color_pallet');
     const [colorPallets, setColorPallets] = useEntityProp('root', 'site', 'pbg_global_color_pallets');
+    const [themeCustomColors, setThemeCustomColors] = useEntityProp('root', 'site', 'pbg_theme_custom_colors');
 
     const settingsContext = {
         globalTypography,
@@ -29,7 +30,9 @@ export const SettingsProvider = (props) => {
         colorPallet,
         setColorPallet,
         colorPallets,
-        setColorPallets
+        setColorPallets,
+        themeCustomColors,
+        setThemeCustomColors
     };
     return <SettingsContext.Provider value={settingsContext}>
         {props.children}

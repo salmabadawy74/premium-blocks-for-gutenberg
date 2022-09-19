@@ -146,6 +146,68 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 					'default'      => array(),
 				)
 			);
+			register_setting(
+				'pbg_global_settings',
+				'pbg_global_colors',
+				array(
+					'type'         => 'array',
+					'description'  => __( 'Config Premium Blocks For Gutenberg Global Colors Settings', 'premium-block-for-gutenberg' ),
+					'show_in_rest' => array(
+						'schema' => array(
+							'items' => array(
+								'type'       => 'object',
+								'properties' => array(
+									'name'    => array(
+										'type' => 'string',
+									),
+									'slug'    => array(
+										'type' => 'string',
+									),
+									'color'   => array(
+										'type' => 'string',
+									),
+									'default' => array(
+										'type' => 'boolean',
+									),
+									'type'    => array(
+										'type' => 'string',
+									),
+								),
+							),
+						),
+					),
+					'default'      => array(),
+				)
+			);
+
+			register_setting(
+				'pbg_global_settings',
+				'pbg_theme_custom_colors',
+				array(
+					'type'         => 'array',
+					'description'  => __( 'Config Premium Blocks For Gutenberg Global Colors Settings', 'premium-block-for-gutenberg' ),
+					'show_in_rest' => array(
+						'schema' => array(
+							'items' => array(
+								'type'       => 'object',
+								'properties' => array(
+									'name'  => array(
+										'type' => 'string',
+									),
+									'slug'  => array(
+										'type' => 'string',
+									),
+									'color' => array(
+										'type' => 'string',
+									),
+								),
+							),
+						),
+					),
+					'default'      => array(),
+				)
+			);
+
 			// Default Color Pallet.
 			register_setting(
 				'pbg_global_settings',
@@ -223,10 +285,6 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 					),
 					'default'      => array(
 						array(
-							'id'            => 'theme',
-							'custom_colors' => array(),
-						),
-						array(
 							'id'            => 'default',
 							'name'          => 'Default',
 							'active'        => true,
@@ -254,36 +312,6 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 							),
 							'type'          => 'system',
 							'skin'          => 'light',
-							'custom_colors' => array(),
-						),
-						array(
-							'id'            => 'pallet-2',
-							'name'          => 'Sunrise',
-							'active'        => false,
-							'colors'        => array(
-								array(
-									'slug'  => 'color1',
-									'color' => '#f67207',
-								),
-								array(
-									'slug'  => 'color2',
-									'color' => '#1c1c1c',
-								),
-								array(
-									'slug'  => 'color3',
-									'color' => '#4c4c4c',
-								),
-								array(
-									'slug'  => 'color4',
-									'color' => '#e3e3e3',
-								),
-								array(
-									'slug'  => 'color5',
-									'color' => '#fcfcfc',
-								),
-							),
-							'type'          => 'system',
-							'skin'          => 'dark',
 							'custom_colors' => array(),
 						),
 					),

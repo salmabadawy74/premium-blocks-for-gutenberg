@@ -9,6 +9,7 @@ import bezierEasing from "bezier-easing";
 const { __, sprintf } = wp.i18n;
 import { Modal } from '@wordpress/components';
 import classnames from "classnames";
+import defaultPallets from "../helpers/defaultPallets";
 
 const ColorPalettes = ({
     value,
@@ -54,7 +55,10 @@ const ColorPalettes = ({
         }
     });
     activePallet = { ...activePallet, colors: activePalleColors };
-    const activePalleCustomColors = activePallet.custom_colors.length ? activePallet?.custom_colors : [];
+    const defaultPallet = state.find(pallet => pallet.slug === 'default');
+    const customColors = activePallet?.custom_colors?.length && activePallet.type === 'custom' ? activePallet?.custom_colors : defaultPallet?.custom_colors || [];
+
+    console.log(activePallet);
 
     const onChangePallet = (newPallet) => {
         newPallet = { ...newPallet, colors: clearColors(newPallet.colors) };
@@ -65,27 +69,18 @@ const ColorPalettes = ({
     };
 
     const handleChangePalette = (active) => {
-        // let currentPalette = active.palettes.find(
-        //     ({ id }) => id === active.current_palette
-        // );
-        // let { id, skin, type, name, ...colors } = { ...currentPalette };
-        // Object.values(colors).map((item, index) => {
-        //     document.documentElement.style.setProperty(
-        //         `--paletteColor${index + 1}`,
-        //         item
-        //     );
-        //     return item;
-        // });
-        // setState(active);
-        // onChange({ ...active, flag: !value.flag });
+        const newPallets = [...state].map(pallet => pallet.id === active.id ? { ...pallet, active: true } : { ...pallet, active: false });
+
+        setState(newPallets);
+        onChange(newPallets);
     };
 
     const handleAddNewColor = (colorData) => {
-        let newCustomColors = [...activePalleCustomColors];
+        let newCustomColors = [...customColors];
         newCustomColors.push(colorData);
-        let newColorPallet = { ...activePallet, custom_colors: newCustomColors };
+        let newColorPallet = activePallet.type === 'custom' ? { ...activePallet } : { ...defaultPallet };
 
-        onChangePallet(newColorPallet);
+        onChangePallet({ ...newColorPallet, custom_colors: newCustomColors });
     };
 
     const handleChangeComplete = (color, index) => {
@@ -105,6 +100,7 @@ const ColorPalettes = ({
             }
         })
     }
+
     const handleAddPalette = (data) => {
         // let { current_palette, palettes, ...colors } = { ...state };
 
@@ -240,8 +236,8 @@ const ColorPalettes = ({
                             handleChangePalette(val);
                             setCurrentView("")
                         }}
-                        value={state}
-                        option={state}
+                        value={[...defaultPallets, ...state]}
+                        option={[...defaultPallets, ...state]}
                         handleDeletePalette={(id) => handleDeletePalette(id)}
                         titles={titles}
                     />}

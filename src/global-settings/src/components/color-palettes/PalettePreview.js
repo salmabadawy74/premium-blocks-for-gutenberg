@@ -15,6 +15,7 @@ const PalettePreview = ({
     handleClickReset,
     onRemove,
     onChangeName,
+    canAdd = true
 }) => {
     const handleChangeColor = (color, optionId) => {
         let newColor;
@@ -75,25 +76,27 @@ const PalettePreview = ({
                         />
                     ))}
                 </div>
-                <p>{__('Custom Color')}</p>
-                <div className="premium-custom-colors">
-                    {pallet.custom_colors.map((picker) => (
-                        <ColorComponent
-                            picker={picker}
-                            onChangeComplete={(color, id) => handleChangeColor(color, picker[`slug`])}
-                            className={"premium-color-palette-modal"}
-                            skipModal={picker.skipModal}
-                            resetPalette={true}
-                            onColorReset={(color) => handleClickReset(picker[`slug`])}
-                            isDefault={picker.default}
-                            onRemove={() => onRemove(picker[`slug`])}
-                            onChangeName={(v) => onChangeName(v, picker[`slug`])}
-                        />
-                    ))}
-                    <div className="premium-add-new-color" onClick={() => addColor()} data-tip={__('Add Color')}>
-                        <Icon icon={create} />
+                {(pallet.custom_colors.length || canAdd) && <p>{__('Custom Color')}</p>}
+                {(pallet.custom_colors.length || canAdd) && (
+                    <div className="premium-custom-colors">
+                        {pallet.custom_colors.map((picker) => (
+                            <ColorComponent
+                                picker={picker}
+                                onChangeComplete={(color, id) => handleChangeColor(color, picker[`slug`])}
+                                className={"premium-color-palette-modal"}
+                                skipModal={picker.skipModal}
+                                resetPalette={true}
+                                onColorReset={(color) => handleClickReset(picker[`slug`])}
+                                isDefault={picker.default}
+                                onRemove={() => onRemove(picker[`slug`])}
+                                onChangeName={(v) => onChangeName(v, picker[`slug`])}
+                            />
+                        ))}
+                        {(canAdd && pallet.custom_colors.length || canAdd) && <div className="premium-add-new-color" onClick={() => addColor()} data-tip={__('Add Color')}>
+                            <Icon icon={create} />
+                        </div>}
                     </div>
-                </div>
+                )}
             </div>
         </div>
     );
