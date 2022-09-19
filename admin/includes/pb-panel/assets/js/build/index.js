@@ -144,6 +144,7 @@ const SingleOption = props => {
     createNotice
   } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.useDispatch)(_wordpress_notices__WEBPACK_IMPORTED_MODULE_4__.store);
 
+<<<<<<< HEAD
   const handleChange = async () => {
     let newValue = !value;
     const body = new FormData();
@@ -180,6 +181,12 @@ const SingleOption = props => {
         type: "snackbar"
       });
     }
+=======
+  const handleChange = () => {
+    let newValue = !value;
+    setValue(newValue);
+    props.onChange(newValue, props.optionId);
+>>>>>>> 52b3694f8a7314385ce028a759a965f934560206
   };
 
   let checked = value === true ? true : false;
@@ -1061,6 +1068,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+<<<<<<< HEAD
 const SingleOptionComponent = _ref => {
   let {
     value,
@@ -1077,10 +1085,14 @@ const SingleOptionComponent = _ref => {
 };
 
 const OptionsComponent = _ref2 => {
+=======
+const OptionsComponent = _ref => {
+>>>>>>> 52b3694f8a7314385ce028a759a965f934560206
   let {
     options,
     onChange,
     values
+<<<<<<< HEAD
   } = _ref2;
   return Object.keys(options).map(optionId => {
     let value = values[optionId];
@@ -1089,6 +1101,16 @@ const OptionsComponent = _ref2 => {
       value: value,
       optionId: optionId,
       option: option,
+=======
+  } = _ref;
+  return Object.keys(options).map(optionId => {
+    let value = values[optionId];
+    let option = options[optionId];
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_SingleOption__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      value: value,
+      optionId: optionId,
+      params: option,
+>>>>>>> 52b3694f8a7314385ce028a759a965f934560206
       onChange: newVal => {
         onChange(newVal, optionId);
       },
@@ -1157,6 +1179,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _options_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../options-component */ "./src/options-component.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
+<<<<<<< HEAD
+=======
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_notices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/notices */ "@wordpress/notices");
+/* harmony import */ var _wordpress_notices__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_notices__WEBPACK_IMPORTED_MODULE_5__);
+>>>>>>> 52b3694f8a7314385ce028a759a965f934560206
 
 
 
@@ -1165,6 +1194,7 @@ __webpack_require__.r(__webpack_exports__);
 const {
   __
 } = wp.i18n;
+<<<<<<< HEAD
 const {
   Dashicon
 } = wp.components;
@@ -1174,6 +1204,54 @@ const OptionsTab = props => {
 
   const handleChange = newValues => {
     setValues(newValues);
+=======
+
+
+
+const OptionsTab = props => {
+  const [values, setValues] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(PremiumBlocksPanelData.values);
+  const {
+    createNotice
+  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useDispatch)(_wordpress_notices__WEBPACK_IMPORTED_MODULE_5__.store);
+
+  const handleChange = async (newValues, id) => {
+    let newItems = { ...values
+    };
+    newItems[id] = newValues;
+    const body = new FormData();
+    body.append("action", "pb-panel-update-option");
+    body.append("nonce", PremiumBlocksPanelData.nonce);
+    body.append("option", id);
+    body.append("value", newValues);
+
+    try {
+      const response = await fetch(PremiumBlocksPanelData.ajaxurl, {
+        method: "POST",
+        body
+      });
+
+      if (response.status === 200) {
+        const {
+          success,
+          data
+        } = await response.json();
+
+        if (success && data.values) {
+          setValues(newItems);
+          createNotice("success", "Settings saved ", {
+            isDismissible: true,
+            type: "snackbar"
+          });
+        }
+      }
+    } catch (e) {
+      console.log(e);
+      createNotice("error", __("An unknown error occurred.", ""), {
+        isDismissible: true,
+        type: "snackbar"
+      });
+    }
+>>>>>>> 52b3694f8a7314385ce028a759a965f934560206
   };
 
   const tabs = [{

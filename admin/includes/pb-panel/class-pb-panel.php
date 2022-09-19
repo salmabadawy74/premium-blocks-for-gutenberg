@@ -20,6 +20,7 @@ if (!class_exists('Pb_Panel')) {
 	{
 
 
+
 		/**
 		 * Default values
 		 *
@@ -52,6 +53,8 @@ if (!class_exists('Pb_Panel')) {
 		 */
 		public function __construct()
 		{
+			add_action('wp_ajax_nopriv_pb-panel-update-option', array($this, 'update_option'));
+
 			add_action('wp_ajax_pb-panel-update-option', array($this, 'update_option'));
 			add_action('admin_menu', array($this, 'register_custom_menu_page'), 100);
 			add_action('admin_bar_menu', array($this, 'admin_bar_item'), 1000);
@@ -99,29 +102,27 @@ if (!class_exists('Pb_Panel')) {
 		{
 
 			$default_options = array(
-				'trigger'          => true,
-				'breadcrumbs'      => true,
-				'search'           => true,
+				'accordion'        => true,
 				'banner'           => true,
 				'button'           => true,
-				'pricing-table'    => true,
-				'accordion'        => true,
 				'count-up'         => true,
 				'dual-heading'     => true,
 				'heading'          => true,
 				'icon'             => true,
 				'icon-box'         => true,
 				'maps'             => true,
+				'pricing-table'    => true,
 				'section'          => true,
 				'testimonials'     => true,
 				'video-box'        => true,
 				'fancy-text'       => true,
 				'lottie'           => true,
-				'Modal'            => true,
+				'modal'            => true,
 				'image-separator'  => true,
 				'bullet-list'      => true,
 				'person'           => true,
 				'search'           => true,
+				'trigger'          => true,
 				'row'              => true,
 				'breadcrumbs'      => true,
 				'content-switcher' => true,
@@ -216,7 +217,7 @@ if (!class_exists('Pb_Panel')) {
 		 * @return void
 		 */
 		public function render()
-		{       ?>
+		{             ?>
 			<div id="pb-dashboard"></div>
 <?php
 		}
@@ -248,7 +249,7 @@ if (!class_exists('Pb_Panel')) {
 				'max_upload'           => esc_html(size_format(wp_max_upload_size())),
 				'ini_get'              => function_exists('ini_get'),
 				'pb_previous_versions' => $pb_versions,
-				'rollback_url_new'      => str_replace(array("&#038;", "&amp;"), "&", esc_url(add_query_arg('version', 'VERSION', wp_nonce_url(admin_url('admin-post.php?action=premium_gutenberg_rollback'), 'premium_gutenberg_rollback')))),
+				'rollback_url_new'     => str_replace(array('&#038;', '&amp;'), '&', esc_url(add_query_arg('version', 'VERSION', wp_nonce_url(admin_url('admin-post.php?action=premium_gutenberg_rollback'), 'premium_gutenberg_rollback')))),
 			);
 			if (function_exists('ini_get')) {
 				$info['php_memory_limit']   = esc_html(size_format(wp_convert_hr_to_bytes(ini_get('memory_limit'))));
@@ -303,7 +304,7 @@ if (!class_exists('Pb_Panel')) {
 					'icon'     => 'accordion',
 					'category' => array(
 						'all',
-						'creative',
+						'content',
 					),
 				),
 				'banner'           => array(
@@ -312,7 +313,7 @@ if (!class_exists('Pb_Panel')) {
 					'icon'     => 'banner',
 					'category' => array(
 						'all',
-						'creative',
+						'marketing',
 					),
 				),
 				'button'           => array(
@@ -321,8 +322,9 @@ if (!class_exists('Pb_Panel')) {
 					'icon'     => 'button',
 					'category' => array(
 						'all',
-						'seo',
-						'form',
+						'creative',
+						'marketing',
+						'content',
 					),
 				),
 				'count-up'         => array(
@@ -349,7 +351,7 @@ if (!class_exists('Pb_Panel')) {
 					'icon'     => 'heading',
 					'category' => array(
 						'all',
-						'creative',
+						'content',
 					),
 				),
 				'icon'             => array(
@@ -358,7 +360,7 @@ if (!class_exists('Pb_Panel')) {
 					'icon'     => 'icon',
 					'category' => array(
 						'all',
-						'social',
+						'creative',
 					),
 				),
 				'icon-box'         => array(
@@ -376,7 +378,7 @@ if (!class_exists('Pb_Panel')) {
 					'icon'     => 'maps',
 					'category' => array(
 						'all',
-						'core',
+						'content',
 					),
 				),
 				'pricing-table'    => array(
@@ -385,7 +387,7 @@ if (!class_exists('Pb_Panel')) {
 					'icon'     => 'pricingTable',
 					'category' => array(
 						'all',
-						'creative',
+						'marketing',
 					),
 				),
 				'section'          => array(
@@ -394,7 +396,7 @@ if (!class_exists('Pb_Panel')) {
 					'icon'     => 'section',
 					'category' => array(
 						'all',
-						'content',
+						'section',
 					),
 				),
 				'testimonials'     => array(
@@ -404,6 +406,7 @@ if (!class_exists('Pb_Panel')) {
 					'category' => array(
 						'all',
 						'creative',
+						'content',
 					),
 				),
 				'video-box'        => array(
@@ -413,7 +416,7 @@ if (!class_exists('Pb_Panel')) {
 					'category' => array(
 						'all',
 						'creative',
-						'social',
+						'marketing',
 					),
 				),
 				'fancy-text'       => array(
@@ -422,7 +425,8 @@ if (!class_exists('Pb_Panel')) {
 					'icon'     => 'fancyText',
 					'category' => array(
 						'all',
-						'post',
+						'content',
+						'creative',
 					),
 				),
 				'lottie'           => array(
@@ -441,7 +445,7 @@ if (!class_exists('Pb_Panel')) {
 					'category' => array(
 						'all',
 						'creative',
-						'form',
+						'content',
 					),
 				),
 				'image-separator'  => array(
@@ -461,7 +465,6 @@ if (!class_exists('Pb_Panel')) {
 					'category' => 'all',
 					array(
 						'all',
-						'social',
 						'content',
 					),
 				),
@@ -480,7 +483,7 @@ if (!class_exists('Pb_Panel')) {
 					'icon'     => 'search',
 					'category' => array(
 						'all',
-						'core',
+						'theme',
 					),
 				),
 				'trigger'          => array(
@@ -489,7 +492,7 @@ if (!class_exists('Pb_Panel')) {
 					'icon'     => 'trigger',
 					'category' => array(
 						'all',
-						'core',
+						'theme',
 					),
 				),
 				'row'              => array(
@@ -499,7 +502,7 @@ if (!class_exists('Pb_Panel')) {
 					'category' => array(
 						'all',
 						'content',
-						'post',
+						'section',
 					),
 				),
 				'breadcrumbs'      => array(
@@ -508,7 +511,7 @@ if (!class_exists('Pb_Panel')) {
 					'icon'     => 'breadcrumbs',
 					'category' => array(
 						'all',
-						'core',
+						'theme',
 					),
 				),
 				'content-switcher' => array(
@@ -517,7 +520,8 @@ if (!class_exists('Pb_Panel')) {
 					'icon'     => 'content_switcher',
 					'category' => array(
 						'all',
-						'post',
+						'content',
+						'creative',
 					),
 				),
 			);
@@ -567,10 +571,9 @@ if (!class_exists('Pb_Panel')) {
 		}
 		public function post_premium_gutenberg_rollback_new()
 		{
-
 			check_admin_referer('premium_gutenberg_rollback');
-			$plugin_slug  = basename(PREMIUM_BLOCKS_FILE, '.php');
-			$update_version    = sanitize_text_field($_GET['version']);
+			$plugin_slug    = basename(PREMIUM_BLOCKS_FILE, '.php');
+			$update_version = sanitize_text_field($_GET['version']);
 
 			$pbg_rollback = new PBG_Rollback(
 				array(
@@ -647,7 +650,7 @@ if (!class_exists('Pb_Panel')) {
 
 		public static function get_rollback_versions_options()
 		{
-			$rollback_versions   = self::get_rollback_versions();
+			$rollback_versions = self::get_rollback_versions();
 
 			$rollback_versions_options = array();
 
