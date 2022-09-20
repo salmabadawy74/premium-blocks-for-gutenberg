@@ -432,7 +432,7 @@ function Edit(props) {
             }
             return item;
         });
-        console.log(newItems)
+
         setAttributes({
             multiPersonContent: newItems,
         });
@@ -552,8 +552,8 @@ function Edit(props) {
                                         {value.socialIcon && socialIconfn(value.items)}
                                     </div>
                                 ) : (
-                                        ""
-                                    )}
+                                    ""
+                                )}
                                 {value.personImgUrl && (
                                     <img
                                         className={`premium-person__img`}
@@ -627,8 +627,8 @@ function Edit(props) {
                                     {value.socialIcon && socialIconfn(value.items)}
                                 </div>
                             ) : (
-                                    ""
-                                )}
+                                ""
+                            )}
                         </div>
                     </div>
                 ))}
@@ -803,8 +803,8 @@ function Edit(props) {
                                     options={ROWS}
                                 />
                             ) : (
-                                    ""
-                                )}
+                                ""
+                            )}
                             <SelectControl
                                 label={__("Style", "premium-block-for-gutenberg")}
                                 value={effectPersonStyle}
@@ -1092,8 +1092,8 @@ function Edit(props) {
                                     min={15}
                                 />
                             ) : (
-                                    ""
-                                )}
+                                ""
+                            )}
                             <SpacingControl
                                 label={__("Padding", "premium-blocks-for-gutenberg")}
                                 value={contentPadding}
