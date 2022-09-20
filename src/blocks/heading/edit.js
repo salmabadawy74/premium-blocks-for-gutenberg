@@ -52,11 +52,10 @@ function Edit(props) {
             let container = document.querySelectorAll(
                 `.${blockId}`
             );
-            console.log(container)
+
             let titleContainers = container[0].querySelector(
                 ".premium-title-container"
             );
-            console.log(titleContainers)
 
             // titleContainers.forEach(function (titleContainer) {
             if (titleContainers.classList.contains("style8")) {
@@ -1532,53 +1531,53 @@ function Edit(props) {
                                             </span>
                                         </Fragment>
                                     ) : (
-                                                <Fragment>
-                                                    {iconValue &&
-                                                        iconType == "icon" && (
-                                                            <i
-                                                                className={`premium-title-icon ${icon}`}
-                                                            />
-                                                        )}
-                                                    {iconValue &&
-                                                        iconType == "image" && (
-                                                            <img
-                                                                className={`premium-title-icon`}
-                                                                src={imageURL}
-                                                            />
-                                                        )}
-                                                    {iconValue &&
-                                                        iconType == "lottie" &&
-                                                        lottieURl && (
-                                                            <div className=" premium-title-icon premium-lottie-animation">
-                                                                <Lottie
-                                                                    options={{
-                                                                        loop: loop,
-                                                                        path: lottieURl,
-                                                                        rendererSettings:
-                                                                        {
-                                                                            preserveAspectRatio:
-                                                                                "xMidYMid",
-                                                                        },
-                                                                    }}
-                                                                    direction={reverse}
-                                                                />
-                                                            </div>
-                                                        )}
-                                                    <RichText
-                                                        tagName="span"
-                                                        className={`premium-title-text-title`}
-                                                        onChange={(newValue) =>
-                                                            setAttributes({
-                                                                title: newValue,
-                                                            })
-                                                        }
-                                                        value={title}
-                                                        style={{
-                                                            minHeight: "15px",
-                                                        }}
+                                        <Fragment>
+                                            {iconValue &&
+                                                iconType == "icon" && (
+                                                    <i
+                                                        className={`premium-title-icon ${icon}`}
                                                     />
-                                                </Fragment>
-                                            )}
+                                                )}
+                                            {iconValue &&
+                                                iconType == "image" && (
+                                                    <img
+                                                        className={`premium-title-icon`}
+                                                        src={imageURL}
+                                                    />
+                                                )}
+                                            {iconValue &&
+                                                iconType == "lottie" &&
+                                                lottieURl && (
+                                                    <div className=" premium-title-icon premium-lottie-animation">
+                                                        <Lottie
+                                                            options={{
+                                                                loop: loop,
+                                                                path: lottieURl,
+                                                                rendererSettings:
+                                                                {
+                                                                    preserveAspectRatio:
+                                                                        "xMidYMid",
+                                                                },
+                                                            }}
+                                                            direction={reverse}
+                                                        />
+                                                    </div>
+                                                )}
+                                            <RichText
+                                                tagName="span"
+                                                className={`premium-title-text-title`}
+                                                onChange={(newValue) =>
+                                                    setAttributes({
+                                                        title: newValue,
+                                                    })
+                                                }
+                                                value={title}
+                                                style={{
+                                                    minHeight: "15px",
+                                                }}
+                                            />
+                                        </Fragment>
+                                    )}
                                     {link && url !== " " && (
                                         <a
                                             rel="noopener noreferrer"

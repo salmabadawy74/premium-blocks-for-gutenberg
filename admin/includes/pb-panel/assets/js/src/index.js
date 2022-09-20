@@ -14,8 +14,13 @@ import Notices from "./layout/Notices";
 
 const { __ } = wp.i18n;
 const { TabPanel, Panel, PanelBody } = wp.components;
+const { useEffect, useState } = wp.element;
 
 const RendeTabs = () => {
+    const [values, setValues] = useState(PremiumBlocksPanelData.values);
+    let newItems = { ...values };
+
+
     let { tabs } = useContext(PanelContext);
     const compare = (a, b) => {
         if (a.priority < b.priority) {
@@ -47,6 +52,7 @@ const RendeTabs = () => {
                 props: {
                     options: PremiumBlocksPanelData.options,
                     values: PremiumBlocksPanelData.values,
+                    // setValues: setValues(newItems)
                 },
             },
         },

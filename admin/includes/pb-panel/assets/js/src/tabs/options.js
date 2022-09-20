@@ -3,56 +3,22 @@ import Container from "../common/Container";
 import OptionsComponent from "../options-component";
 import classNames from "classnames";
 const { __ } = wp.i18n;
-import { useDispatch } from "@wordpress/data";
-
-import { store as noticesStore } from "@wordpress/notices";
+const { Dashicon } = wp.components;
 
 const OptionsTab = (props) => {
-    const [values, setValues] = useState(PremiumBlocksPanelData.values);
-    const { createNotice } = useDispatch(noticesStore);
+    const [values, setValues] = useState(props.values);
 
-    const handleChange = async (newValues, id) => {
-        let newItems = { ...values };
-        newItems[id] = newValues;
-        const body = new FormData();
-        body.append("action", "pb-panel-update-option");
-        body.append("nonce", PremiumBlocksPanelData.nonce);
-        body.append("option", id);
-        body.append("value", newValues);
-
-        try {
-            const response = await fetch(PremiumBlocksPanelData.ajaxurl, {
-                method: "POST",
-                body,
-            });
-            if (response.status === 200) {
-                const { success, data } = await response.json();
-                if (success && data.values) {
-                    setValues(newItems);
-                    createNotice("success", "Settings saved ", {
-                        isDismissible: true,
-                        type: "snackbar",
-                    });
-                }
-            }
-        } catch (e) {
-            console.log(e);
-            createNotice("error", __("An unknown error occurred.", ""), {
-                isDismissible: true,
-                type: "snackbar",
-            });
-        }
+    const handleChange = (newValues) => {
+        setValues(newValues);
     };
 
     const tabs = [
         { name: "All", slug: "all" },
-        { name: "Core", slug: "core" },
-        { name: "Creative", slug: "creative" },
         { name: "Content", slug: "content" },
-        { name: "Post", slug: "post" },
-        { name: "Social", slug: "social" },
-        { name: "Form", slug: "form" },
-        { name: "SEO", slug: "seo" },
+        { name: "Creative", slug: "creative" },
+        { name: "Section", slug: "section" },
+        { name: "Marketing", slug: "marketing" },
+        { name: "Theme", slug: "theme" },
     ];
     const [activeFilter, setFilter] = useState("all");
     let options = Object.keys(props.options)

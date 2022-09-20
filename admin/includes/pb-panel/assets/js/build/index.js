@@ -145,9 +145,10 @@ const SingleOption = props => {
   } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.useDispatch)(_wordpress_notices__WEBPACK_IMPORTED_MODULE_4__.store);
 
   const handleChange = () => {
-    let newValue = !value;
-    setValue(newValue);
+    let newValue = !value; // setValue(newValue);
+
     props.onChange(newValue, props.optionId);
+    props.setValues(newValue);
   };
 
   let checked = value === true ? true : false;
@@ -1033,7 +1034,8 @@ const OptionsComponent = _ref => {
   let {
     options,
     onChange,
-    values
+    values,
+    setValues
   } = _ref;
   return Object.keys(options).map(optionId => {
     let value = values[optionId];
@@ -1044,7 +1046,8 @@ const OptionsComponent = _ref => {
       params: option,
       onChange: newVal => {
         onChange(newVal, optionId);
-      },
+      } // setValues={setValues}
+      ,
       key: optionId
     });
   });
@@ -1110,10 +1113,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _options_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../options-component */ "./src/options-component.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _wordpress_notices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/notices */ "@wordpress/notices");
-/* harmony import */ var _wordpress_notices__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_notices__WEBPACK_IMPORTED_MODULE_5__);
 
 
 
@@ -1122,78 +1121,35 @@ __webpack_require__.r(__webpack_exports__);
 const {
   __
 } = wp.i18n;
-
-
+const {
+  Dashicon
+} = wp.components;
 
 const OptionsTab = props => {
-  const [values, setValues] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(PremiumBlocksPanelData.values);
-  const {
-    createNotice
-  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useDispatch)(_wordpress_notices__WEBPACK_IMPORTED_MODULE_5__.store);
+  const [values, setValues] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(props.values);
 
-  const handleChange = async (newValues, id) => {
-    let newItems = { ...values
-    };
-    newItems[id] = newValues;
-    const body = new FormData();
-    body.append("action", "pb-panel-update-option");
-    body.append("nonce", PremiumBlocksPanelData.nonce);
-    body.append("option", id);
-    body.append("value", newValues);
-
-    try {
-      const response = await fetch(PremiumBlocksPanelData.ajaxurl, {
-        method: "POST",
-        body
-      });
-
-      if (response.status === 200) {
-        const {
-          success,
-          data
-        } = await response.json();
-
-        if (success && data.values) {
-          setValues(newItems);
-          createNotice("success", "Settings saved ", {
-            isDismissible: true,
-            type: "snackbar"
-          });
-        }
-      }
-    } catch (e) {
-      console.log(e);
-      createNotice("error", __("An unknown error occurred.", ""), {
-        isDismissible: true,
-        type: "snackbar"
-      });
-    }
+  const handleChange = newValues => {
+    setValues(newValues);
   };
 
   const tabs = [{
     name: "All",
     slug: "all"
   }, {
-    name: "Core",
-    slug: "core"
+    name: "Content",
+    slug: "content"
   }, {
     name: "Creative",
     slug: "creative"
   }, {
-    name: "Content",
-    slug: "content"
+    name: "Section",
+    slug: "section"
   }, {
-    name: "Post",
-    slug: "post"
+    name: "Marketing",
+    slug: "marketing"
   }, {
-    name: "Social",
-    slug: "social"
-  }, {
-    name: "Form",
-    slug: "form"
-  }, {
-    name: "SEO",
-    slug: "seo"
+    name: "Theme",
+    slug: "theme"
   }];
   const [activeFilter, setFilter] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)("all");
   let options = Object.keys(props.options).filter(key => props.options[key].category.includes(activeFilter)).reduce((obj, key) => {
@@ -2094,8 +2050,15 @@ const {
   Panel,
   PanelBody
 } = wp.components;
+const {
+  useEffect,
+  useState
+} = wp.element;
 
 const RendeTabs = () => {
+  const [values, setValues] = useState(PremiumBlocksPanelData.values);
+  let newItems = { ...values
+  };
   let {
     tabs
   } = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useContext)(_store_panel_store__WEBPACK_IMPORTED_MODULE_8__["default"]);
@@ -2130,7 +2093,8 @@ const RendeTabs = () => {
       Component: _tabs_options__WEBPACK_IMPORTED_MODULE_11__["default"],
       props: {
         options: PremiumBlocksPanelData.options,
-        values: PremiumBlocksPanelData.values
+        values: PremiumBlocksPanelData.values // setValues: setValues(newItems)
+
       }
     }
   }, {
