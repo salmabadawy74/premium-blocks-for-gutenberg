@@ -117,66 +117,74 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 				'pbg_global_settings',
 				'pbg_global_colors',
 				array(
-					'type'         => 'array',
+					'type'         => 'object',
 					'description'  => __( 'Config Premium Blocks For Gutenberg Global Colors Settings', 'premium-block-for-gutenberg' ),
 					'show_in_rest' => array(
 						'schema' => array(
-							'items' => array(
-								'type'       => 'object',
-								'properties' => array(
-									'name'    => array(
-										'type' => 'string',
+							'properties' => array(
+								'colors'         => array(
+									'type'  => 'array',
+									'items' => array(
+										'type'       => 'object',
+										'properties' => array(
+											'slug'  => array(
+												'type' => 'string',
+											),
+											'color' => array(
+												'type' => 'string',
+											),
+										),
 									),
-									'slug'    => array(
-										'type' => 'string',
-									),
-									'color'   => array(
-										'type' => 'string',
-									),
-									'default' => array(
-										'type' => 'boolean',
-									),
-									'type'    => array(
-										'type' => 'string',
+								),
+								'current_palett' => array(
+									'type' => 'string',
+								),
+								'custom_colors'  => array(
+									'type'  => 'array',
+									'items' => array(
+										'type'       => 'object',
+										'properties' => array(
+											'slug'  => array(
+												'type' => 'string',
+											),
+											'color' => array(
+												'type' => 'string',
+											),
+											'name'  => array(
+												'type' => 'string',
+											),
+										),
 									),
 								),
 							),
 						),
 					),
-					'default'      => array(),
-				)
-			);
-			register_setting(
-				'pbg_global_settings',
-				'pbg_global_colors',
-				array(
-					'type'         => 'array',
-					'description'  => __( 'Config Premium Blocks For Gutenberg Global Colors Settings', 'premium-block-for-gutenberg' ),
-					'show_in_rest' => array(
-						'schema' => array(
-							'items' => array(
-								'type'       => 'object',
-								'properties' => array(
-									'name'    => array(
-										'type' => 'string',
-									),
-									'slug'    => array(
-										'type' => 'string',
-									),
-									'color'   => array(
-										'type' => 'string',
-									),
-									'default' => array(
-										'type' => 'boolean',
-									),
-									'type'    => array(
-										'type' => 'string',
-									),
-								),
+					'default'      => array(
+						'colors'         => array(
+							array(
+								'slug'  => 'color1',
+								'color' => '#0085ba',
+							),
+							array(
+								'slug'  => 'color2',
+								'color' => '#333333',
+							),
+							array(
+								'slug'  => 'color3',
+								'color' => '#444140',
+							),
+							array(
+								'slug'  => 'color4',
+								'color' => '#eaeaea',
+							),
+							array(
+								'slug'  => 'color5',
+								'color' => '#ffffff',
 							),
 						),
+						'current_palett' => 'pallet-1',
+						'custom_colors'  => array(),
 					),
-					'default'      => array(),
 				)
 			);
 
@@ -283,38 +291,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 							),
 						),
 					),
-					'default'      => array(
-						array(
-							'id'            => 'default',
-							'name'          => 'Default',
-							'active'        => true,
-							'colors'        => array(
-								array(
-									'slug'  => 'color1',
-									'color' => '#0085ba',
-								),
-								array(
-									'slug'  => 'color2',
-									'color' => '#333333',
-								),
-								array(
-									'slug'  => 'color3',
-									'color' => '#444140',
-								),
-								array(
-									'slug'  => 'color4',
-									'color' => '#eaeaea',
-								),
-								array(
-									'slug'  => 'color5',
-									'color' => '#ffffff',
-								),
-							),
-							'type'          => 'system',
-							'skin'          => 'light',
-							'custom_colors' => array(),
-						),
-					),
+					'default'      => array(),
 				)
 			);
 		}
@@ -343,6 +320,13 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 				array(),
 				PREMIUM_BLOCKS_VERSION,
 				'all'
+			);
+			wp_localize_script(
+				'pbg-global-settings-js',
+				'pbgGlobalSettings',
+				array(
+					'pallets' => get_option( 'pbg_global_color_pallets', array() ),
+				)
 			);
 		}
 	}

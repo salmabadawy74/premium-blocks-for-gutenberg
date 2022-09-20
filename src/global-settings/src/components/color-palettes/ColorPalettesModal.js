@@ -1,15 +1,39 @@
 
 const { __, sprintf } = wp.i18n;
 import { animated } from '@react-spring/web'
-import { Fragment } from 'react';
+import { Fragment, useContext } from 'react';
 import PalettePreview from './PalettePreview'
 import classnames from "classnames";
 import { useState } from 'react';
+import SettingsContext from '../../store/settings-store';
 
 const ColorPalettesModal = ({ value, onChange, titles, wrapperProps = {}, handleDeletePalette }) => {
+	const { globalColors } = useContext(SettingsContext);
 	const [typeOfPalette, setTypeOfPalette] = useState("light");
 	const pbgPaletteColors = value.filter(pallet => pallet.skin === typeOfPalette && pallet.type === "system");
 	const customPaletteColors = value.filter(pallet => { return pallet.skin === typeOfPalette && pallet.type === "custom" });
+	const initPallet = (pallet) => {
+		const newPalletColors = pallet.colors.map(color => {
+			return {
+				name: color.name,
+				slug: color.slug,
+				color: color.color,
+				default: true,
+				skipModal: true
+			}
+		})
+		const newPalletCustomColors = pallet.custom_colors.length ? pallet.custom_colors.map(color => {
+			return {
+				name: color.name,
+				slug: color.slug,
+				color: color.color,
+				default: true,
+				skipModal: true
+			}
+		}) : [];
+
+		return { ...pallet, colors: newPalletColors, custom_colors: newPalletCustomColors }
+	}
 	return (
 		<animated.div
 			className="premium-option-modal premium-palettes-modal"
@@ -31,9 +55,9 @@ const ColorPalettesModal = ({ value, onChange, titles, wrapperProps = {}, handle
 			{customPaletteColors.map((palette, index) => (
 				<Fragment>
 					<PalettePreview
-						pallet={palette}
+						pallet={initPallet(palette)}
 						className={classnames(`premium-custom-palette__container`, {
-							'premium-active': palette.active
+							'premium-active': palette.id === globalColors.current_palett
 						})
 						}
 						renderBefore={() => (
@@ -51,7 +75,7 @@ const ColorPalettesModal = ({ value, onChange, titles, wrapperProps = {}, handle
 						onClick={() => {
 							onChange(palette);
 						}}
-						skipModal={true}
+						canAdd={false}
 					/>
 				</Fragment>
 
@@ -62,9 +86,9 @@ const ColorPalettesModal = ({ value, onChange, titles, wrapperProps = {}, handle
 			{pbgPaletteColors.map((palette, index) => (
 				<Fragment>
 					<PalettePreview
-						pallet={palette}
+						pallet={initPallet(palette)}
 						className={
-							palette.active ? 'premium-active' : ''
+							palette.id === globalColors.current_palett ? 'premium-active' : ''
 						}
 						renderBefore={() => (
 							<label>

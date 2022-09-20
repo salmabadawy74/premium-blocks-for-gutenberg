@@ -13773,12 +13773,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PalettePreview__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./PalettePreview */ "./src/components/color-palettes/PalettePreview.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _store_settings_store__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../store/settings-store */ "./src/store/settings-store.js");
 
 
 const {
   __,
   sprintf
 } = wp.i18n;
+
 
 
 
@@ -13793,11 +13795,40 @@ const ColorPalettesModal = _ref => {
     wrapperProps = {},
     handleDeletePalette
   } = _ref;
+  const {
+    globalColors
+  } = (0,react__WEBPACK_IMPORTED_MODULE_3__.useContext)(_store_settings_store__WEBPACK_IMPORTED_MODULE_6__["default"]);
   const [typeOfPalette, setTypeOfPalette] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)("light");
   const pbgPaletteColors = value.filter(pallet => pallet.skin === typeOfPalette && pallet.type === "system");
   const customPaletteColors = value.filter(pallet => {
     return pallet.skin === typeOfPalette && pallet.type === "custom";
   });
+
+  const initPallet = pallet => {
+    const newPalletColors = pallet.colors.map(color => {
+      return {
+        name: color.name,
+        slug: color.slug,
+        color: color.color,
+        default: true,
+        skipModal: true
+      };
+    });
+    const newPalletCustomColors = pallet.custom_colors.length ? pallet.custom_colors.map(color => {
+      return {
+        name: color.name,
+        slug: color.slug,
+        color: color.color,
+        default: true,
+        skipModal: true
+      };
+    }) : [];
+    return { ...pallet,
+      colors: newPalletColors,
+      custom_colors: newPalletCustomColors
+    };
+  };
+
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_react_spring_web__WEBPACK_IMPORTED_MODULE_2__.animated.div, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     className: "premium-option-modal premium-palettes-modal"
   }, wrapperProps), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
@@ -13819,9 +13850,9 @@ const ColorPalettesModal = _ref => {
   }, " Dark")), customPaletteColors.length > 0 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium_label_type__palette`
   }, __(`my palettes`)), customPaletteColors.map((palette, index) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_PalettePreview__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    pallet: palette,
+    pallet: initPallet(palette),
     className: classnames__WEBPACK_IMPORTED_MODULE_5___default()(`premium-custom-palette__container`, {
-      'premium-active': palette.active
+      'premium-active': palette.id === globalColors.current_palett
     }),
     renderBefore: () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", null, palette.name ? palette.name : sprintf(__('Palette #%s', 'kemet'), index + 1)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
       className: `premium-delete-palette`,
@@ -13834,12 +13865,12 @@ const ColorPalettesModal = _ref => {
     onClick: () => {
       onChange(palette);
     },
-    skipModal: true
+    canAdd: false
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium_label_type__palette`
   }, __(`Default palettes`, "kemet")), pbgPaletteColors.map((palette, index) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(react__WEBPACK_IMPORTED_MODULE_3__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_PalettePreview__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    pallet: palette,
-    className: palette.active ? 'premium-active' : '',
+    pallet: initPallet(palette),
+    className: palette.id === globalColors.current_palett ? 'premium-active' : '',
     renderBefore: () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", null, palette.name ? palette.name : sprintf(__('Palette #%s', 'kemet'), index + 1)),
     onClick: () => {
       onChange(palette);
@@ -13945,7 +13976,7 @@ const PalettePreview = _ref => {
     onColorReset: color => handleClickReset(picker[`slug`]),
     isDefault: picker.default,
     onRemove: () => onRemove(picker[`slug`]),
-    onChangeName: v => onChangeName(v, picker[`slug`])
+    onChangeName: false
   }))), (pallet.custom_colors.length || canAdd) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, __('Custom Color')), (pallet.custom_colors.length || canAdd) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-custom-colors"
   }, pallet.custom_colors.map(picker => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_color__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -13994,6 +14025,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var _helpers_defaultPallets__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../helpers/defaultPallets */ "./src/helpers/defaultPallets.js");
+/* harmony import */ var _store_settings_store__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../store/settings-store */ "./src/store/settings-store.js");
 
 
 
@@ -14011,9 +14043,8 @@ const {
 
 
 
-const ColorPalettes = _ref => {
-  var _activePallet, _activePallet2, _activePallet2$custom, _activePallet3;
 
+const ColorPalettes = _ref => {
   let {
     value,
     onChange,
@@ -14022,6 +14053,7 @@ const ColorPalettes = _ref => {
   const [state, setState] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(value);
   const colorPalettesWrapper = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useRef)();
   const buttonRef = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useRef)();
+  const defaultValues = [..._helpers_defaultPallets__WEBPACK_IMPORTED_MODULE_10__["default"], ...pbgGlobalSettings.pallets];
   const [{
     isOpen,
     isTransitioning
@@ -14029,9 +14061,13 @@ const ColorPalettes = _ref => {
     isOpen: false,
     isTransitioning: false
   });
+  const {
+    globalColors,
+    setGlobalColors
+  } = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useContext)(_store_settings_store__WEBPACK_IMPORTED_MODULE_11__["default"]);
   const [currentView, setCurrentView] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)("");
   const [openModal, setOpenModal] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const [delPalette, setDelPalette] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)();
+  const [delPalette, setDelPalette] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)({});
   const {
     styles,
     popoverProps
@@ -14041,8 +14077,7 @@ const ColorPalettes = _ref => {
     shouldCalculate: isTransitioning || isOpen
   });
   const titles = [__(`Buttons background color \n& Links hover color`, "kemet"), __("Headings & Links color", "kemet"), __("Body text & Meta color", "kemet"), __("Borders color", "kemet"), __("Body background, a tint for Input fields,\nPage titles, Widgets background", "kemet"), __("Footer text color", "kemet"), __("Footer background color", "kemet")];
-  let activePallet = state.find(pallet => pallet.active);
-  const activePalleColors = (_activePallet = activePallet) === null || _activePallet === void 0 ? void 0 : _activePallet.colors.map((color, index) => {
+  const activePalletColors = globalColors === null || globalColors === void 0 ? void 0 : globalColors.colors.map((color, index) => {
     return {
       name: titles[index],
       slug: color.slug,
@@ -14050,106 +14085,107 @@ const ColorPalettes = _ref => {
       default: true
     };
   });
-  activePallet = { ...activePallet,
-    colors: activePalleColors
-  };
-  const defaultPallet = state.find(pallet => pallet.slug === 'default');
-  const customColors = (_activePallet2 = activePallet) !== null && _activePallet2 !== void 0 && (_activePallet2$custom = _activePallet2.custom_colors) !== null && _activePallet2$custom !== void 0 && _activePallet2$custom.length && activePallet.type === 'custom' ? (_activePallet3 = activePallet) === null || _activePallet3 === void 0 ? void 0 : _activePallet3.custom_colors : (defaultPallet === null || defaultPallet === void 0 ? void 0 : defaultPallet.custom_colors) || [];
-  console.log(activePallet);
-
-  const onChangePallet = newPallet => {
-    newPallet = { ...newPallet,
-      colors: clearColors(newPallet.colors)
-    };
-    const newPallets = [...state].map(pallet => pallet.id === newPallet.id ? newPallet : pallet);
-    setState(newPallets);
-    onChange(newPallets);
+  const activePallet = { ...globalColors,
+    colors: activePalletColors
   };
 
   const handleChangePalette = active => {
-    const newPallets = [...state].map(pallet => pallet.id === active.id ? { ...pallet,
-      active: true
-    } : { ...pallet,
-      active: false
-    });
-    setState(newPallets);
-    onChange(newPallets);
+    const newCustomColors = active.type === 'system' ? [...globalColors.custom_colors] : active.custom_colors.length ? active.custom_colors : [...globalColors.custom_colors];
+    const newGlobalColors = { ...globalColors,
+      colors: active.colors,
+      custom_colors: newCustomColors,
+      current_palett: active.id
+    };
+    setGlobalColors(newGlobalColors);
   };
 
   const handleAddNewColor = colorData => {
-    let newCustomColors = [...customColors];
+    let newCustomColors = [...globalColors.custom_colors];
     newCustomColors.push(colorData);
-    let newColorPallet = activePallet.type === 'custom' ? { ...activePallet
-    } : { ...defaultPallet
-    };
-    onChangePallet({ ...newColorPallet,
+    const newGlobalColors = { ...globalColors,
       custom_colors: newCustomColors
-    });
+    };
+    setGlobalColors(newGlobalColors);
   };
 
   const handleChangeComplete = (color, index) => {
-    let newPalletColors = index.includes('custom') ? [...activePalleCustomColors] : [...activePalleColors];
-    newPalletColors = newPalletColors.map(colorObj => colorObj.slug === index ? { ...colorObj,
+    let newColors = index.includes('custom') ? [...globalColors.custom_colors] : [...globalColors.colors];
+    newColors = newColors.map(colorObj => colorObj.slug === index ? { ...colorObj,
       color: color
     } : colorObj);
     const changedColors = index.includes('custom') ? 'custom_colors' : 'colors';
-    const newColorPallet = { ...activePallet,
-      [changedColors]: newPalletColors
+    const newGlobalColors = { ...globalColors,
+      [changedColors]: newColors
     };
-    onChangePallet(newColorPallet);
+    setGlobalColors(newGlobalColors);
   };
 
-  const clearColors = colors => {
-    return colors.map((color, index) => {
-      return {
-        slug: color.slug,
-        color: color.color
-      };
+  const handleRemoveColor = id => {
+    let newColors = [...globalColors.custom_colors];
+    newColors = newColors.filter(color => color.slug !== id);
+    const newGlobalColors = { ...globalColors,
+      custom_colors: newColors
+    };
+    setGlobalColors(newGlobalColors);
+  };
+
+  const handleChangeName = (name, index) => {
+    let newColors = index.includes('custom') ? [...globalColors.custom_colors] : [...globalColors.colors];
+    newColors = newColors.map(colorObj => colorObj.slug === index ? { ...colorObj,
+      name: name
+    } : colorObj);
+    const changedColors = index.includes('custom') ? 'custom_colors' : 'colors';
+    const newGlobalColors = { ...globalColors,
+      [changedColors]: newColors
+    };
+    setGlobalColors(newGlobalColors);
+  };
+
+  const handleAddPalette = data => {
+    let newPallets = [...state];
+    let newPalett = {
+      id: `custom-pallet-${newPallets.length + 1}`,
+      colors: [...globalColors.colors],
+      type: "custom",
+      skin: data.type,
+      name: data.name,
+      custom_colors: [...globalColors.custom_colors]
+    };
+    newPallets.unshift(newPalett);
+    setState(newPallets);
+    onChange(newPallets);
+    setGlobalColors({ ...globalColors,
+      current_palett: `custom-pallet-${newPallets.length}`
+    });
+    setModalState(() => ({
+      isOpen: null,
+      isTransitioning: false
+    }));
+  };
+
+  const handleDeletePalette = id => {
+    setOpenModal(true);
+    const deletePalette = value.find(palette => {
+      return palette.id === id;
+    });
+    setDelPalette({ ...deletePalette
     });
   };
 
-  const handleAddPalette = data => {// let { current_palette, palettes, ...colors } = { ...state };
-    // let newPalette = {
-    //     id: palettes.length + 1,
-    //     ...colors,
-    //     type: "custom",
-    //     skin: data.type,
-    //     name: data.name,
-    // };
-    // palettes.unshift(newPalette);
-    // onChange({
-    //     ...value,
-    //     flag: !value.flag,
-    // });
-    // setModalState(() => ({
-    //     isOpen: null,
-    //     isTransitioning: false,
-    // }))
+  const ConfirmDelete = () => {
+    let newPalettes = value.filter(palette => {
+      return palette.id !== delPalette.id;
+    });
+    setState(newPalettes);
+    onChange(newPalettes);
+    setOpenModal(false);
   };
 
-  const handleDeletePalette = id => {// setOpenModal(true)
-    // const deletePalette = value.palettes.filter((palette) => {
-    //     return palette.id === id;
-    // });
-    // setDelPalette({ ...deletePalette })
-  };
-
-  const ConfirmDelete = () => {// let newPalette = value.palettes.filter((palette) => {
-    //     return palette.id !== delPalette[0].id;
-    // });
-    // setState({ ...value, palettes: newPalette });
-    // onChange({ ...value, palettes: newPalette });
-    // setOpenModal(false)
-  };
-
-  const handleResetColor = id => {// let updateState = {
-    //     ...state,
-    // };
-    // let currentPalette = updateState.palettes.find(
-    //     ({ id }) => id === updateState.current_palette
-    // );
-    // let resetColor = currentPalette[id];
-    // handleChangeComplete(resetColor, id);
+  const handleResetColor = id => {
+    let currentPalette = defaultValues.find(pallet => pallet.id === globalColors.current_palett);
+    const changedColors = id.includes('custom') ? 'custom_colors' : 'colors';
+    const resetColor = currentPalette[changedColors].find(color => color.slug === id) || {};
+    handleChangeComplete((resetColor === null || resetColor === void 0 ? void 0 : resetColor.color) || '', id);
   };
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("header", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
@@ -14190,7 +14226,9 @@ const ColorPalettes = _ref => {
     handleClickReset: val => {
       handleResetColor(val);
     },
-    addNewColor: handleAddNewColor
+    addNewColor: handleAddNewColor,
+    onChangeName: (v, id) => handleChangeName(v, id),
+    onRemove: (v, id) => handleRemoveColor(v, id)
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-palette-toggle-modal`,
     onClick: e => {
@@ -14222,7 +14260,127 @@ const ColorPalettes = _ref => {
     option: [..._helpers_defaultPallets__WEBPACK_IMPORTED_MODULE_10__["default"], ...state],
     handleDeletePalette: id => handleDeletePalette(id),
     titles: titles
-  })));
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_outside_component__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    disabled: !isTransitioning,
+    useCapture: false,
+    className: "premium-button-palettes-outside",
+    additionalRefs: [popoverProps.ref],
+    onOutsideClick: e => {
+      if (e.target.closest(".premium-global-color-picker-modal") || e.target.classList.contains("premium-global-color-picker-modal") || e.target.closest(".premium-option-modal")) {
+        return;
+      }
+
+      setModalState(() => ({
+        isOpen: null,
+        isTransitioning: null
+      }));
+      setCurrentView(" ");
+    },
+    wrapperProps: {
+      ref: buttonRef,
+      onClick: e => {
+        e.preventDefault();
+
+        if (e.target.closest(".premium-global-color-picker-modal") || e.target.classList.contains("premium-global-color-picker-modal")) {
+          return;
+        }
+
+        if (!state.palettes) {
+          return;
+        }
+
+        setModalState(() => ({
+          isOpen: null,
+          isTransitioning: true
+        }));
+      }
+    }
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: `premium-button-palette`,
+    onClick: e => {
+      e.stopPropagation();
+      e.preventDefault();
+      setCurrentView("add");
+      setModalState(() => ({
+        isOpen: null,
+        isTransitioning: true
+      }));
+    }
+  }, __('Save New Palette', "kemet"))), isTransitioning && currentView === "add" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createPortal)((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_react_spring_web__WEBPACK_IMPORTED_MODULE_6__.Transition, {
+    items: isTransitioning,
+    config: {
+      duration: 100,
+      easing: bezier_easing__WEBPACK_IMPORTED_MODULE_7___default()(0.25, 0.1, 0.25, 1.0)
+    },
+    from: isTransitioning ? {
+      transform: "scale3d(0.95, 0.95, 1)",
+      opacity: 0
+    } : {
+      opacity: 1
+    },
+    enter: isTransitioning ? {
+      transform: "scale3d(1, 1, 1)",
+      opacity: 1
+    } : {
+      opacity: 1
+    },
+    leave: !isTransitioning ? {
+      transform: "scale3d(0.95, 0.95, 1)",
+      opacity: 0
+    } : {
+      opacity: 1
+    }
+  }, (style, item) => {
+    if (!item) {
+      return null;
+    } else return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_color_palettes_AddPaletteContainer__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      wrapperProps: {
+        style: { ...style,
+          ...styles
+        },
+        ...popoverProps
+      },
+      onChange: (val, id) => {
+        handleChangeComplete(val, id);
+      },
+      value: state,
+      option: state,
+      handleAddPalette: handleAddPalette,
+      handleCloseModal: () => {
+        setCurrentView("");
+      }
+    });
+  }), document.body), openModal && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__.Modal, {
+    title: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: `premium-popup-modal__header`
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+      className: "dashicons dashicons-bell"
+    }), " ", __("Warning", "kemet")),
+    className: `premium-color-palette-confrim__delete`,
+    isDismissible: true,
+    onRequestClose: () => {
+      setOpenModal(false);
+    }
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: __(`premium-palette-popup-content`)
+  }, __(`You are about to delete `, "kemet"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("q", {
+    className: `premium-deleted-palette__name`
+  }, "\"", delPalette.name, "\""), __(`. This palette cannot be restored, are you sure you want to delete it?`, "kemet")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: __(`premium-paltette-popup-action`)
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    type: "button",
+    class: "button button-primary save has-next-sibling",
+    onClick: () => {
+      setOpenModal(false);
+    }
+  }, __("No", "kemet")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    type: "button",
+    class: "components-button  premium-button__delete__palette",
+    onClick: e => {
+      e.preventDefault();
+      ConfirmDelete();
+    }
+  }, __('Yes', "kemet")))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ColorPalettes);
@@ -14305,7 +14463,7 @@ const PickerModal = _ref => {
   }, wrapperProps), refresh && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPicker, {
     color: getValueForPicker.color,
     onChangeComplete: color => onChange(color)
-  }), picker.name && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  }), picker.name && onChangeName && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "premium-color-title"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", null, __('Name'), ":"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
     type: 'text',
@@ -14324,7 +14482,7 @@ const PickerModal = _ref => {
   }, __(`This will reset the current color to the default one.`, "kemet")))), !refresh && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPicker, {
     color: getValueForPicker.color,
     onChangeComplete: color => onChange(color)
-  }), picker.name && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  }), picker.name && onChangeName && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "premium-color-title"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", null, __('Name'), ":"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
     type: 'text',
@@ -14446,7 +14604,7 @@ const SinglePicker = _ref => {
       className: className,
       resetPalette: resetPalette,
       onColorReset: color => onColorReset(color),
-      onChangeName: name => onChangeName(name)
+      onChangeName: onChangeName
     }))), appendToBody ? document.body : el.current.closest('section').parentNode);
   }
 
@@ -14560,7 +14718,7 @@ const ColorComponent = _ref => {
     skipModal: skipModal,
     resetPalette: resetPalette,
     onColorReset: color => onColorReset(color),
-    onChangeName: name => onChangeName(name)
+    onChangeName: onChangeName
   }), !isDefault && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "premium-remove-color",
     onClick: () => onRemove(picker.slug)
@@ -14884,10 +15042,11 @@ const usePopoverMaker = function () {
     let position = 'bottom';
     let otherStyles = {};
     let selector = document.querySelector(".components-panel");
+    var style = window.getComputedStyle ? getComputedStyle(selector, null) : selector.currentStyle;
     let modalWidth;
 
     if (selector) {
-      modalWidth = selector.clientWidth;
+      modalWidth = selector.clientWidth - (parseInt(style.paddingRight) + parseInt(style.paddingLeft));
     }
 
     if (!shouldCalculate) {
@@ -15116,19 +15275,19 @@ const defaultPallets = [{
   'name': 'Default',
   'colors': [{
     'slug': 'color1',
-    'color': '#f67207'
+    'color': '#0085ba'
   }, {
     'slug': 'color2',
-    'color': '#1c1c1c'
+    'color': '#333333'
   }, {
     'slug': 'color3',
-    'color': '#4c4c4c'
+    'color': '#444140'
   }, {
     'slug': 'color4',
-    'color': '#e3e3e3'
+    'color': '#eaeaea'
   }, {
     'slug': 'color5',
-    'color': '#fcfcfc'
+    'color': '#ffffff'
   }],
   'type': 'system',
   'skin': 'light',

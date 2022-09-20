@@ -53,7 +53,7 @@ const ColorComponent = ({ picker, onChangeComplete, className, skipModal, resetP
                 skipModal={skipModal}
                 resetPalette={resetPalette}
                 onColorReset={(color) => onColorReset(color)}
-                onChangeName={(name) => onChangeName(name)}
+                onChangeName={onChangeName}
             />
             {!isDefault && <span className="premium-remove-color" onClick={() => onRemove(picker.slug)}>
                 <Icon icon={closeSmall} />

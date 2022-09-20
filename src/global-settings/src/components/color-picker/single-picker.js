@@ -92,7 +92,7 @@ const SinglePicker = ({
                             className={className}
                             resetPalette={resetPalette}
                             onColorReset={(color) => onColorReset(color)}
-                            onChangeName={(name) => onChangeName(name)}
+                            onChangeName={onChangeName}
                         />
                     ))
                 }

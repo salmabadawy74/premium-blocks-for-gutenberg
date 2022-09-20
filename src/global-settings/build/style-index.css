@@ -1087,7 +1087,7 @@ button.premium-delete-palette::before {
   left: 50%;
   width: 398px !important;
   max-width: calc(100% + 40px);
-  height: 193px !important;
+  min-height: 193px !important;
   max-height: 90%;
   transform: translate(-50%, -50%);
   -webkit-animation: components-modal__appear-animation 0.1s ease-out;
@@ -1100,6 +1100,7 @@ button.premium-delete-palette::before {
 
 .components-modal__frame.premium-color-palette-confrim__delete .components-modal__content {
   padding: 0 25px 25px;
+  margin: 0;
 }
 
 .components-modal__frame.premium-color-palette-confrim__delete .components-modal__content .components-modal__header {
@@ -1262,7 +1263,6 @@ button.premium-delete-palette::before {
 }
 .premium-option-modal.premium-palettes-modal {
   position: absolute;
-  left: -1px !important;
 }
 
 .premium-color-container {
@@ -1554,6 +1554,10 @@ span.premium-color-description {
 
 .block-editor-page .premium-option-modal {
   --modal-x-offset: 17px !important;
+}
+
+.block-editor-page .premium-option-modal.premium-add-palettes-modal {
+  --modal-x-offset: 34px !important;
 }
 
 [class*=premium-tooltip]:before,

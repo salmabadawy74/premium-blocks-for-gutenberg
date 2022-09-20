@@ -43,6 +43,7 @@ const PickerModal = ({
         }
         onColorReset();
     };
+
     return (
         <Fragment>
             <div
@@ -65,7 +66,7 @@ const PickerModal = ({
                             color={getValueForPicker.color}
                             onChangeComplete={(color) => onChange(color)}
                         />
-                        {picker.name && (
+                        {(picker.name && onChangeName) && (
                             <div className="premium-color-title">
                                 <label>{__('Name')}:</label>
                                 <input type={'text'} value={picker.name} onChange={(e) => onChangeName(e.target.value)} />
@@ -93,7 +94,7 @@ const PickerModal = ({
                             color={getValueForPicker.color}
                             onChangeComplete={(color) => onChange(color)}
                         />
-                        {picker.name && (
+                        {(picker.name && onChangeName) && (
                             <div className="premium-color-title">
                                 <label>{__('Name')}:</label>
                                 <input type={'text'} value={picker.name} onChange={(e) => onChangeName(e.target.value)} />

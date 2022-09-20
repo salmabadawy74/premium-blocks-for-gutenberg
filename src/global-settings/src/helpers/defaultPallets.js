@@ -5,23 +5,23 @@ const defaultPallets = [
         'colors': [
             {
                 'slug': 'color1',
-                'color': '#f67207',
+                'color': '#0085ba',
             },
             {
                 'slug': 'color2',
-                'color': '#1c1c1c',
+                'color': '#333333',
             },
             {
                 'slug': 'color3',
-                'color': '#4c4c4c',
+                'color': '#444140',
             },
             {
                 'slug': 'color4',
-                'color': '#e3e3e3',
+                'color': '#eaeaea',
             },
             {
                 'slug': 'color5',
-                'color': '#fcfcfc',
+                'color': '#ffffff',
             },
         ],
         'type': 'system',

@@ -123,11 +123,11 @@ const usePopoverMaker = ({
         let position = 'bottom'
         let otherStyles = {}
         let selector = document.querySelector(".components-panel");
+        var style = window.getComputedStyle ? getComputedStyle(selector, null) : selector.currentStyle;
         let modalWidth;
         if (selector) {
-            modalWidth = selector.clientWidth;
+            modalWidth = selector.clientWidth - (parseInt(style.paddingRight) + parseInt(style.paddingLeft));
         }
-
 
         if (!shouldCalculate) {
             return { yOffset, right, position }

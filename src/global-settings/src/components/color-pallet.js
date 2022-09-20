@@ -1,4 +1,4 @@
-import { createPortal, useRef, useState } from "@wordpress/element";
+import { createPortal, useContext, useRef, useState } from "@wordpress/element";
 import PalettePreview from "./color-palettes/PalettePreview";
 import AddPaletteContainer from "./color-palettes/AddPaletteContainer";
 import ColorPalettesModal from "./color-palettes/ColorPalettesModal";
@@ -10,6 +10,7 @@ const { __, sprintf } = wp.i18n;
 import { Modal } from '@wordpress/components';
 import classnames from "classnames";
 import defaultPallets from "../helpers/defaultPallets";
+import SettingsContext from "../store/settings-store";
 
 const ColorPalettes = ({
     value,
@@ -19,15 +20,16 @@ const ColorPalettes = ({
     const [state, setState] = useState(value);
     const colorPalettesWrapper = useRef();
     const buttonRef = useRef();
-
+    const defaultValues = [...defaultPallets, ...pbgGlobalSettings.pallets];
     const [{ isOpen, isTransitioning }, setModalState] = useState({
         isOpen: false,
         isTransitioning: false,
     });
 
+    const { globalColors, setGlobalColors } = useContext(SettingsContext);
     const [currentView, setCurrentView] = useState("");
     const [openModal, setOpenModal] = useState(false)
-    const [delPalette, setDelPalette] = useState()
+    const [delPalette, setDelPalette] = useState({});
     const { styles, popoverProps } = usePopoverMaker({
         ref: currentView === "add" ? buttonRef : colorPalettesWrapper,
         defaultHeight: 430,
@@ -45,8 +47,7 @@ const ColorPalettes = ({
         __("Footer text color", "kemet"),
         __("Footer background color", "kemet"),
     ];
-    let activePallet = state.find(pallet => pallet.active);
-    const activePalleColors = activePallet?.colors.map((color, index) => {
+    const activePalletColors = globalColors?.colors.map((color, index) => {
         return {
             name: titles[index],
             slug: color.slug,
@@ -54,103 +55,95 @@ const ColorPalettes = ({
             default: true
         }
     });
-    activePallet = { ...activePallet, colors: activePalleColors };
-    const defaultPallet = state.find(pallet => pallet.slug === 'default');
-    const customColors = activePallet?.custom_colors?.length && activePallet.type === 'custom' ? activePallet?.custom_colors : defaultPallet?.custom_colors || [];
-
-    console.log(activePallet);
-
-    const onChangePallet = (newPallet) => {
-        newPallet = { ...newPallet, colors: clearColors(newPallet.colors) };
-        const newPallets = [...state].map(pallet => pallet.id === newPallet.id ? newPallet : pallet);
-
-        setState(newPallets);
-        onChange(newPallets);
-    };
+    const activePallet = { ...globalColors, colors: activePalletColors };
 
     const handleChangePalette = (active) => {
-        const newPallets = [...state].map(pallet => pallet.id === active.id ? { ...pallet, active: true } : { ...pallet, active: false });
+        const newCustomColors = active.type === 'system' ? [...globalColors.custom_colors] : active.custom_colors.length ? active.custom_colors : [...globalColors.custom_colors];
+        const newGlobalColors = { ...globalColors, colors: active.colors, custom_colors: newCustomColors, current_palett: active.id };
 
-        setState(newPallets);
-        onChange(newPallets);
+        setGlobalColors(newGlobalColors);
     };
 
     const handleAddNewColor = (colorData) => {
-        let newCustomColors = [...customColors];
+        let newCustomColors = [...globalColors.custom_colors];
         newCustomColors.push(colorData);
-        let newColorPallet = activePallet.type === 'custom' ? { ...activePallet } : { ...defaultPallet };
+        const newGlobalColors = { ...globalColors, custom_colors: newCustomColors };
 
-        onChangePallet({ ...newColorPallet, custom_colors: newCustomColors });
+        setGlobalColors(newGlobalColors);
     };
 
     const handleChangeComplete = (color, index) => {
-        let newPalletColors = index.includes('custom') ? [...activePalleCustomColors] : [...activePalleColors];
-        newPalletColors = newPalletColors.map(colorObj => colorObj.slug === index ? { ...colorObj, color: color } : colorObj);
+        let newColors = index.includes('custom') ? [...globalColors.custom_colors] : [...globalColors.colors];
+        newColors = newColors.map(colorObj => colorObj.slug === index ? { ...colorObj, color: color } : colorObj);
         const changedColors = index.includes('custom') ? 'custom_colors' : 'colors';
-        const newColorPallet = { ...activePallet, [changedColors]: newPalletColors };
+        const newGlobalColors = { ...globalColors, [changedColors]: newColors };
 
-        onChangePallet(newColorPallet);
+        setGlobalColors(newGlobalColors);
     };
 
-    const clearColors = (colors) => {
-        return colors.map((color, index) => {
-            return {
-                slug: color.slug,
-                color: color.color,
-            }
-        })
+    const handleRemoveColor = (id) => {
+        let newColors = [...globalColors.custom_colors];
+        newColors = newColors.filter(color => color.slug !== id);
+        const newGlobalColors = { ...globalColors, custom_colors: newColors };
+
+        setGlobalColors(newGlobalColors);
     }
 
-    const handleAddPalette = (data) => {
-        // let { current_palette, palettes, ...colors } = { ...state };
+    const handleChangeName = (name, index) => {
+        let newColors = index.includes('custom') ? [...globalColors.custom_colors] : [...globalColors.colors];
+        newColors = newColors.map(colorObj => colorObj.slug === index ? { ...colorObj, name: name } : colorObj);
+        const changedColors = index.includes('custom') ? 'custom_colors' : 'colors';
+        const newGlobalColors = { ...globalColors, [changedColors]: newColors };
 
-        // let newPalette = {
-        //     id: palettes.length + 1,
-        //     ...colors,
-        //     type: "custom",
-        //     skin: data.type,
-        //     name: data.name,
-        // };
-        // palettes.unshift(newPalette);
-        // onChange({
-        //     ...value,
-        //     flag: !value.flag,
-        // });
-        // setModalState(() => ({
-        //     isOpen: null,
-        //     isTransitioning: false,
-        // }))
+        setGlobalColors(newGlobalColors);
+    };
+
+    const handleAddPalette = (data) => {
+        let newPallets = [...state];
+
+        let newPalett = {
+            id: `custom-pallet-${newPallets.length + 1}`,
+            colors: [...globalColors.colors],
+            type: "custom",
+            skin: data.type,
+            name: data.name,
+            custom_colors: [...globalColors.custom_colors],
+        };
+        newPallets.unshift(newPalett);
+        setState(newPallets);
+        onChange(newPallets);
+        setGlobalColors({ ...globalColors, current_palett: `custom-pallet-${newPallets.length}` });
+        setModalState(() => ({
+            isOpen: null,
+            isTransitioning: false,
+        }))
     };
 
     const handleDeletePalette = (id) => {
-        // setOpenModal(true)
-        // const deletePalette = value.palettes.filter((palette) => {
-        //     return palette.id === id;
-        // });
-
-        // setDelPalette({ ...deletePalette })
-
+        setOpenModal(true)
+        const deletePalette = value.find((palette) => {
+            return palette.id === id;
+        });
+        setDelPalette({ ...deletePalette })
     };
 
     const ConfirmDelete = () => {
+        let newPalettes = value.filter((palette) => {
+            return palette.id !== delPalette.id;
+        });
 
-        // let newPalette = value.palettes.filter((palette) => {
-        //     return palette.id !== delPalette[0].id;
-        // });
-        // setState({ ...value, palettes: newPalette });
-        // onChange({ ...value, palettes: newPalette });
-        // setOpenModal(false)
+        setState(newPalettes);
+        onChange(newPalettes);
+        setOpenModal(false)
     }
 
     const handleResetColor = (id) => {
-        // let updateState = {
-        //     ...state,
-        // };
-        // let currentPalette = updateState.palettes.find(
-        //     ({ id }) => id === updateState.current_palette
-        // );
-        // let resetColor = currentPalette[id];
-        // handleChangeComplete(resetColor, id);
+        let currentPalette = defaultValues.find(
+            (pallet) => pallet.id === globalColors.current_palett
+        );
+        const changedColors = id.includes('custom') ? 'custom_colors' : 'colors';
+        const resetColor = currentPalette[changedColors].find(color => color.slug === id) || {};
+        handleChangeComplete(resetColor?.color || '', id);
     };
 
     return (
@@ -200,6 +193,8 @@ const ColorPalettes = ({
                             handleResetColor(val);
                         }}
                         addNewColor={handleAddNewColor}
+                        onChangeName={(v, id) => handleChangeName(v, id)}
+                        onRemove={(v, id) => handleRemoveColor(v, id)}
                     />
                     <div className={`premium-palette-toggle-modal`}
                         onClick={(e) => {
@@ -242,7 +237,7 @@ const ColorPalettes = ({
                         titles={titles}
                     />}
             </OutsideClickHandler>
-            {/* <OutsideClickHandler
+            <OutsideClickHandler
                 disabled={!isTransitioning}
                 useCapture={false}
                 className="premium-button-palettes-outside"
@@ -364,16 +359,16 @@ const ColorPalettes = ({
                     </Transition>,
                     document.body
                 )
-            } */}
+            }
 
-            {/* {
+            {
                 openModal && <Modal title={(<div className={`premium-popup-modal__header`}><i className="dashicons dashicons-bell"></i> {__("Warning", "kemet")}</div>)}
                     className={`premium-color-palette-confrim__delete`}
                     isDismissible={true}
                     onRequestClose={() => { setOpenModal(false) }}
                 >
                     < p className={__(`premium-palette-popup-content`)}>
-                        {__(`You are about to delete `, "kemet")}<q className={`premium-deleted-palette__name`}>"{delPalette[0].name}"</q>{__(`. This palette cannot be restored, are you sure you want to delete it?`, "kemet")}
+                        {__(`You are about to delete `, "kemet")}<q className={`premium-deleted-palette__name`}>"{delPalette.name}"</q>{__(`. This palette cannot be restored, are you sure you want to delete it?`, "kemet")}
                     </p>
                     <div className={__(`premium-paltette-popup-action`)}>
                         <button type="button" class="button button-primary save has-next-sibling" onClick={() => {
@@ -386,7 +381,7 @@ const ColorPalettes = ({
                         }}>{__('Yes', "kemet")}</button>
                     </div>
                 </Modal>
-            } */}
+            }
 
         </div>
     );

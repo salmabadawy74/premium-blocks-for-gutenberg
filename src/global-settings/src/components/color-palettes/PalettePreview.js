@@ -72,7 +72,7 @@ const PalettePreview = ({
                             onColorReset={(color) => handleClickReset(picker[`slug`])}
                             isDefault={picker.default}
                             onRemove={() => onRemove(picker[`slug`])}
-                            onChangeName={(v) => onChangeName(v, picker[`slug`])}
+                            onChangeName={false}
                         />
                     ))}
                 </div>
