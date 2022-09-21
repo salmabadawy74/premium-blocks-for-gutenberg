@@ -152,7 +152,7 @@ const SingleOption = props => {
 
   let checked = value === true ? true : false;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    id: props.id,
+    id: props.optionId,
     className: "pb-option-element"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pb-option-element-body"
@@ -169,13 +169,13 @@ const SingleOption = props => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "live-preview customize-control-live-preview"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-    href: `https://premiumblocks.io/gutenberg-blocks/${props.id}`,
+    href: `https://premiumblocks.io/gutenberg-blocks/${props.optionId}`,
     target: "_blank",
     rel: "noreferrer"
   }, __("Live Preview", "premium-blocks-for-gutenberg"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "guidelines customize-control-guidelines"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-    href: `https://premiumblocks.io/docs/${props.id}`,
+    href: `https://premiumblocks.io/docs/${props.optionId}`,
     target: "_blank",
     rel: "noreferrer"
   }, __("Guidelines", "premium-blocks-for-gutenberg"), " ")))), isLoading && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Dashicon, {

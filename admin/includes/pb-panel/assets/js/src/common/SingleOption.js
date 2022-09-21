@@ -25,7 +25,7 @@ const SingleOption = (props) => {
     let checked = value === true ? true : false;
 
     return (
-        <div id={props.id} className="pb-option-element">
+        <div id={props.optionId} className="pb-option-element">
             <div className="pb-option-element-body">
                 <div className="icon">
                     <span className="customize-control-icon pb-control-icon">
@@ -41,7 +41,7 @@ const SingleOption = (props) => {
                     <div className="pb-block-links">
                         <div className="live-preview customize-control-live-preview">
                             <a
-                                href={`https://premiumblocks.io/gutenberg-blocks/${props.id}`}
+                                href={`https://premiumblocks.io/gutenberg-blocks/${props.optionId}`}
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -53,7 +53,7 @@ const SingleOption = (props) => {
                         </div>
                         <div className="guidelines customize-control-guidelines">
                             <a
-                                href={`https://premiumblocks.io/docs/${props.id}`}
+                                href={`https://premiumblocks.io/docs/${props.optionId}`}
                                 target="_blank"
                                 rel="noreferrer"
                             >
