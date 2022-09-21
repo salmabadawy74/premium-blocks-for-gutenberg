@@ -34,7 +34,7 @@ if (!class_exists('Pb_Panel')) {
 		 * @var object instance
 		 */
 		private static $instance;
-
+		private $menu_slug = 'pb_panel';
 		/**
 		 * Instance
 		 *
@@ -61,16 +61,28 @@ if (!class_exists('Pb_Panel')) {
 			add_filter('pb_options', array($this, 'add_default_options'));
 			add_action('admin_post_premium_gutenberg_rollback', array($this, 'post_premium_gutenberg_rollback_new'));
 			add_action('wp_ajax_pb-mail-subscribe', array($this, 'subscribe_mail'));
-			add_action( 'admin_enqueue_scripts', array( $this, 'pa_admin_page_scripts' ) );
+			add_action('admin_enqueue_scripts', array($this, 'pa_admin_page_scripts'));
+			add_filter('plugin_action_links_' . PREMIUM_BLOCKS_BASENAME, array($this, 'add_action_links'));
 		}
 
 		// Enqueue dashboard menu required assets
 		// Enqueue icon for plugin in dashboard
-		public function pa_admin_page_scripts() {
+		public function pa_admin_page_scripts()
+		{
 
-			wp_enqueue_style( 'pbg-icon', PREMIUM_BLOCKS_URL . 'admin/assets/pbg-font/css/pbg-font.css' );
+			wp_enqueue_style('pbg-icon', PREMIUM_BLOCKS_URL . 'admin/assets/pbg-font/css/pbg-font.css');
 		}
+		public function add_action_links($links)
+		{
 
+			$default_url = admin_url('page=' . $this->menu_slug);
+
+			$mylinks = array(
+				'<a href="' . $default_url . '">' . '</a>',
+			);
+
+			return array_merge($mylinks, $links);
+		}
 		public function subscribe_mail()
 		{
 			check_ajax_referer('pb-panel', 'nonce');
@@ -233,6 +245,7 @@ if (!class_exists('Pb_Panel')) {
 			$pb_versions = self::get_rollback_versions_options();
 
 			$info = array(
+
 				'home_url'             => home_url(),
 				'version'              => get_bloginfo('version'),
 				'multisite'            => is_multisite(),
@@ -556,11 +569,10 @@ if (!class_exists('Pb_Panel')) {
 				'pb-panel-js',
 				'PremiumBlocksPanelData',
 				array(
+					'home_slug'                => $this->menu_slug,
 					'options'     => self::panel_options(),
 					'values'      => apply_filters('pb_options', get_option('pb_options', array())),
-					// 'values'      => array(
-					// 'options' => get_option( 'pb_options', array() ),
-					// ),
+
 					'ajaxurl'     => admin_url('admin-ajax.php'),
 					'nonce'       => wp_create_nonce('pb-panel'),
 					'system_info' => self::get_system_info(),
