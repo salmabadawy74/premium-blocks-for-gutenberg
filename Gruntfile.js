@@ -80,6 +80,10 @@ module.exports = function (grunt) {
                         "./assets/css/minified/editorpanel.min.css":
                             "./assets/css/editorpanel.css",
                     },
+                    {
+                        "./assets/css/minified/blockseditor.min.css":
+                            "./assets/css/blockseditor.css",
+                    },
                     minifyFiles,
                 ],
             },
@@ -116,6 +120,7 @@ module.exports = function (grunt) {
                     "!admin/includes/pb-panel/assets/js/package.json",
                     "!admin/includes/pb-panel/assets/js/src/**",
                     "!src/**",
+                    "!assets/css/*.css"
                 ],
                 dest: "premium-blocks-for-gutenberg/",
             },

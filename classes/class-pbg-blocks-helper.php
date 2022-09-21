@@ -250,14 +250,14 @@ class PBG_Blocks_Helper
 
 		wp_enqueue_style(
 			'pbg-editor-css',
-			PREMIUM_BLOCKS_URL . 'assets/css/blockseditor.css',
+			PREMIUM_BLOCKS_URL . 'assets/css/minified/blockseditor.min.css',
 			array('wp-edit-blocks'),
 			PREMIUM_BLOCKS_VERSION
 		);
 
 		wp_enqueue_style(
 			'pbg-editor-panel-css',
-			PREMIUM_BLOCKS_URL . 'assets/css/editorpanel.css',
+			PREMIUM_BLOCKS_URL . 'assets/css/minified/editorpanel.min.css',
 			array('wp-edit-blocks'),
 			PREMIUM_BLOCKS_VERSION
 		);
