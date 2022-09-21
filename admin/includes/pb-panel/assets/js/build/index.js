@@ -1347,6 +1347,7 @@ const Setting = () => {
   const {
     createNotice
   } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.useDispatch)(_wordpress_notices__WEBPACK_IMPORTED_MODULE_6__.store);
+  console.log(data);
 
   const onChangeData = async (key, value) => {
     const updatedData = { ...data
@@ -1382,17 +1383,17 @@ const Setting = () => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_AdvancedSwitcher__WEBPACK_IMPORTED_MODULE_2__["default"], {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Enable Maps API JS File", "premium-blocks-for-gutenberg"),
     onChange: checked => onChangeData("premium-map-api", checked),
-    checked: data === null || data === void 0 ? void 0 : data["premium-map-api"],
+    checked: (data === null || data === void 0 ? void 0 : data["premium-map-api"]) || false,
     description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("This will Enable the API JS file if it's not included by another theme or plugin.", "premium-blocks-for-gutenberg")
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_AdvancedSwitcher__WEBPACK_IMPORTED_MODULE_2__["default"], {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Enable Font Awesome Icons", "premium-blocks-for-gutenberg"),
     onChange: checked => onChangeData("premium-fa-css", checked),
-    checked: data === null || data === void 0 ? void 0 : data["premium-fa-css"],
+    checked: (data === null || data === void 0 ? void 0 : data["premium-fa-css"]) || false,
     description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("This will load Font Awesome Icons to be used within Premium Blocks.", "premium-blocks-for-gutenberg")
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_AdvancedSwitcher__WEBPACK_IMPORTED_MODULE_2__["default"], {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Allow JSON Uploads", "premium-blocks-for-gutenberg"),
     onChange: checked => onChangeData("premium-upload-json", checked),
-    checked: data === null || data === void 0 ? void 0 : data["premium-upload-json"],
+    checked: (data === null || data === void 0 ? void 0 : data["premium-upload-json"]) || false,
     description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("This option will be used to upload JSON files in lottie animation block.", "premium-blocks-for-gutenberg")
   }))));
 };
