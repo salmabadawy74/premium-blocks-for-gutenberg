@@ -14,6 +14,7 @@ const Setting = () => {
     const { saveEntityRecord } = useDispatch(coreStore);
     const { createNotice } = useDispatch(noticesStore);
 
+    console.log(data);
     const onChangeData = async (key, value) => {
         const updatedData = { ...data };
         updatedData[key] = value;
@@ -26,6 +27,7 @@ const Setting = () => {
             type: "snackbar",
         });
     };
+
     return (
         <Container>
             <div className="pb-settings">
@@ -86,7 +88,7 @@ const Setting = () => {
                         onChange={(checked) =>
                             onChangeData("premium-map-api", checked)
                         }
-                        checked={data?.["premium-map-api"]}
+                        checked={data?.["premium-map-api"] || false}
                         description={__(
                             "This will Enable the API JS file if it's not included by another theme or plugin.",
                             "premium-blocks-for-gutenberg"
@@ -100,7 +102,7 @@ const Setting = () => {
                         onChange={(checked) =>
                             onChangeData("premium-fa-css", checked)
                         }
-                        checked={data?.["premium-fa-css"]}
+                        checked={data?.["premium-fa-css"] || false}
                         description={__(
                             "This will load Font Awesome Icons to be used within Premium Blocks.",
                             "premium-blocks-for-gutenberg"
@@ -114,7 +116,7 @@ const Setting = () => {
                         onChange={(checked) =>
                             onChangeData("premium-upload-json", checked)
                         }
-                        checked={data?.["premium-upload-json"]}
+                        checked={data?.["premium-upload-json"] || false}
                         description={__(
                             "This option will be used to upload JSON files in lottie animation block.",
                             "premium-blocks-for-gutenberg"
