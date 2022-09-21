@@ -1,5 +1,5 @@
 import { button } from "../../../assets/js/settings";
-import PBG_Block_Icons from '../../../blocks-config/block-icons'
+import PBG_Block_Icons from '../../../assets/icons/block-icons'
 import edit from "./edit";
 import save from "./save";
 import deprecatedContent from "./deprecated";

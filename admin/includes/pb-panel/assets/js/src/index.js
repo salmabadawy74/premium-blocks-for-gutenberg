@@ -19,6 +19,7 @@ const { useEffect, useState } = wp.element;
 const RendeTabs = () => {
     const [values, setValues] = useState(PremiumBlocksPanelData.values);
     let newItems = { ...values };
+    console.log("values: ", values);
 
 
     let { tabs } = useContext(PanelContext);
@@ -31,6 +32,10 @@ const RendeTabs = () => {
         }
         return 0;
     };
+
+    const updateValues = (val) => {
+        setValues(val);
+    }
     let defaultTabs = [
         {
             name: "welcome",
@@ -52,7 +57,7 @@ const RendeTabs = () => {
                 props: {
                     options: PremiumBlocksPanelData.options,
                     values: PremiumBlocksPanelData.values,
-                    // setValues: setValues(newItems)
+                    // updateValues: (values) => updateValues(values)
                 },
             },
         },

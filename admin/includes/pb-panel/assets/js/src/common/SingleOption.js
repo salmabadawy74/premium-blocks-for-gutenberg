@@ -18,9 +18,9 @@ const SingleOption = (props) => {
 
     const handleChange = () => {
         let newValue = !value;
-        // setValue(newValue);
+        setValue(newValue);
         props.onChange(newValue, props.optionId);
-        props.setValues(newValue)
+        // props.updateValues({ ...props.values, [props.optionId]: newValue })
     };
 
     let checked = value === true ? true : false;

@@ -7,7 +7,7 @@ import edit from "./edit";
 import json from './block.json';
 import deprecated from './deprecated';
 const { __ } = wp.i18n;
-import PBG_Block_Icons from '../../../blocks-config/block-icons'
+import PBG_Block_Icons from '../../../assets/icons/block-icons'
 
 const { registerBlockType } = wp.blocks;
 

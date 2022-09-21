@@ -15,13 +15,13 @@
     content: "\e908";
     /* use !important to prevent issues with browser extensions that change fonts */
     font-family: "pbg-elements" !important;
-    speak: none;
+    /* speak: none;
     font-style: normal;
     font-variant: normal;
     text-transform: none;
-    line-height: 1;
+    line-height: 1; */
     /* Better Font Rendering =========== */
-    -webkit-font-smoothing: antialiased;
+    /* -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-size: 21px;
+    font-size: 21px; */
 }

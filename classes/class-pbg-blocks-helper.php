@@ -196,7 +196,7 @@ class PBG_Blocks_Helper
 	 */
 	public function getSvgShapes()
 	{
-		$shape_path = PREMIUM_BLOCKS_PATH . 'blocks-config/shape';
+		$shape_path = PREMIUM_BLOCKS_PATH . 'assets/icons/shape';
 		$shapes     = glob($shape_path . '/*.svg', GLOB_BRACE);
 		$shapeArray = array();
 		if (count($shapes)) {

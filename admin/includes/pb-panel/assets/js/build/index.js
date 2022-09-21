@@ -145,10 +145,9 @@ const SingleOption = props => {
   } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.useDispatch)(_wordpress_notices__WEBPACK_IMPORTED_MODULE_4__.store);
 
   const handleChange = () => {
-    let newValue = !value; // setValue(newValue);
-
-    props.onChange(newValue, props.optionId);
-    props.setValues(newValue);
+    let newValue = !value;
+    setValue(newValue);
+    props.onChange(newValue, props.optionId); // props.updateValues({ ...props.values, [props.optionId]: newValue })
   };
 
   let checked = value === true ? true : false;
@@ -1035,18 +1034,21 @@ const OptionsComponent = _ref => {
     options,
     onChange,
     values,
-    setValues
+    updateValues
   } = _ref;
   return Object.keys(options).map(optionId => {
     let value = values[optionId];
     let option = options[optionId];
+    console.log("update: ", updateValues);
+    console.log("valuesss: ", values);
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_SingleOption__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      value: value,
+      value: value // values={values}
+      ,
       optionId: optionId,
       params: option,
       onChange: newVal => {
         onChange(newVal, optionId);
-      } // setValues={setValues}
+      } // updateValues={updateValues}
       ,
       key: optionId
     });
@@ -2059,6 +2061,7 @@ const RendeTabs = () => {
   const [values, setValues] = useState(PremiumBlocksPanelData.values);
   let newItems = { ...values
   };
+  console.log("values: ", values);
   let {
     tabs
   } = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useContext)(_store_panel_store__WEBPACK_IMPORTED_MODULE_8__["default"]);
@@ -2073,6 +2076,10 @@ const RendeTabs = () => {
     }
 
     return 0;
+  };
+
+  const updateValues = val => {
+    setValues(val);
   };
 
   let defaultTabs = [{
@@ -2093,7 +2100,7 @@ const RendeTabs = () => {
       Component: _tabs_options__WEBPACK_IMPORTED_MODULE_11__["default"],
       props: {
         options: PremiumBlocksPanelData.options,
-        values: PremiumBlocksPanelData.values // setValues: setValues(newItems)
+        values: PremiumBlocksPanelData.values // updateValues: (values) => updateValues(values)
 
       }
     }

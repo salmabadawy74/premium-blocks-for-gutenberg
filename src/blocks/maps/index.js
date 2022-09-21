@@ -3,7 +3,8 @@ import save from "./save";
 import edit from "./edit";
 import json from './block.json';
 import deprecated from './deprecated';
-import PBG_Block_Icons from '../../../blocks-config/block-icons'
+import PBG_Block_Icons from '../../../assets/icons/block-icons'
+
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
