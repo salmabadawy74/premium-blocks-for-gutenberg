@@ -250,14 +250,14 @@ class PBG_Blocks_Helper
 
 		wp_enqueue_style(
 			'pbg-editor-css',
-			PREMIUM_BLOCKS_URL . 'assets/css/blockseditor.css',
+			PREMIUM_BLOCKS_URL . 'assets/css/minified/blockseditor.min.css',
 			array('wp-edit-blocks'),
 			PREMIUM_BLOCKS_VERSION
 		);
 
 		wp_enqueue_style(
 			'pbg-editor-panel-css',
-			PREMIUM_BLOCKS_URL . 'assets/css/editorpanel.css',
+			PREMIUM_BLOCKS_URL . 'assets/css/minified/editorpanel.min.css',
 			array('wp-edit-blocks'),
 			PREMIUM_BLOCKS_VERSION
 		);
@@ -406,6 +406,21 @@ class PBG_Blocks_Helper
 
 				register_block_pbg_breadcrumbs();
 			} elseif ($slug === 'trigger') {
+                	wp_enqueue_script(
+		'premium-trigger-block-script',
+		PREMIUM_BLOCKS_URL . 'assets/js/trigger.js',
+		array('jquery'),
+		PREMIUM_BLOCKS_VERSION,
+		true
+	);
+	wp_enqueue_style(
+		'pbg-trigger-style',
+		PREMIUM_BLOCKS_URL . 'assets/css/minified/trigger.min.css',
+		array(),
+		PREMIUM_BLOCKS_VERSION,
+		'all'
+	);
+
 
 				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/trigger.php';
 

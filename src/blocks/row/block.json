@@ -265,13 +265,17 @@
             "type": "object",
             "default": {}
         },
+        "hideDesktop": {
+            "type": "boolean",
+            "default": ""
+        },
         "hideTablet": {
             "type": "boolean",
-            "default": false
+            "default": ""
         },
         "hideMobile": {
             "type": "boolean",
-            "default": false
+            "default": ""
         },
         "innerWidthType": {
             "type": "string",

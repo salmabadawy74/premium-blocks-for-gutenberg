@@ -181,20 +181,6 @@ function render_block_pbg_trigger($attributes, $content)
 	}
 
 	$style_id = 'pbg-blocks-style' . esc_attr($unique_id);
-	wp_enqueue_script(
-		'premium-trigger-block-script',
-		PREMIUM_BLOCKS_URL . 'assets/js/trigger.js',
-		array('jquery'),
-		PREMIUM_BLOCKS_VERSION,
-		true
-	);
-	wp_enqueue_style(
-		'pbg-trigger-style',
-		PREMIUM_BLOCKS_URL . 'assets/css/minified/trigger.min.css',
-		array(),
-		PREMIUM_BLOCKS_VERSION,
-		'all'
-	);
 
 	if (!wp_style_is($style_id, 'enqueued') && apply_filters('Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id)) {
 		// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.

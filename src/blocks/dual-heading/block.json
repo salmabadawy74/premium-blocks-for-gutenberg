@@ -160,7 +160,6 @@
                 "gradientType": "linear"
             }
         },
-    
         "link": {
             "type": "boolean",
             "default": false
@@ -174,17 +173,16 @@
         },
         "hideDesktop": {
             "type": "boolean",
-            "default": false
+            "default": ""
         },
         "hideTablet": {
             "type": "boolean",
-            "default": false
+            "default": ""
         },
         "hideMobile": {
             "type": "boolean",
-            "default": false
+            "default": ""
         },
-    
         "firstBorder": {
             "type": "object",
             "default": {

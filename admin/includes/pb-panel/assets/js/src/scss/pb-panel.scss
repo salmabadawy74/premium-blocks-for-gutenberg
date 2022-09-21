@@ -87,6 +87,7 @@
                             border-radius: 11px;
                             cursor: pointer;
                             background-color: #fff;
+
                             &.active,
                             &:hover,
                             &:focus {
@@ -842,6 +843,7 @@
         }
     }
 }
+
 .components-editor-notices__snackbar {
     bottom: 40px;
     padding-left: 16px;
@@ -865,6 +867,7 @@
         }
     }
 }
+
 .components-snackbar {
     background-color: #1a1a1a;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -879,7 +882,7 @@
     // .components-snackbar-list styles.
     pointer-events: auto;
 
-  
+
     &:focus {
         box-shadow:
             0 0 0 1px #fff,
