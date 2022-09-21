@@ -191,13 +191,16 @@
             }
         },
         "hideDesktop": {
-            "type": "boolean"
+            "type": "boolean",
+            "default": ""
         },
         "hideTablet": {
-            "type": "boolean"
+            "type": "boolean",
+            "default": ""
         },
         "hideMobile": {
-            "type": "boolean"
+            "type": "boolean",
+            "default": ""
         }
     },
     "supports": {

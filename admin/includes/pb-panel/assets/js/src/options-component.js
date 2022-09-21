@@ -1,6 +1,6 @@
 import SingleOption from "./common/SingleOption";
 
-const OptionsComponent = ({ options, onChange, values }) => {
+const OptionsComponent = ({ options, onChange, values, setValues }) => {
     return Object.keys(options).map((optionId) => {
         let value = values[optionId];
         let option = options[optionId];
@@ -13,6 +13,7 @@ const OptionsComponent = ({ options, onChange, values }) => {
                 onChange={(newVal) => {
                     onChange(newVal, optionId);
                 }}
+                // setValues={setValues}
                 key={optionId}
             />
         );
