@@ -35,15 +35,15 @@ module.exports = function (grunt) {
 
     blocks.map(
         (block) =>
-            (sassFiles[
-                `./assets/css/${block}.css`
-            ] = `./src/blocks/${block}/style.scss`)
+        (sassFiles[
+            `./assets/css/${block}.css`
+        ] = `./src/blocks/${block}/style.scss`)
     );
     blocks.map(
         (block) =>
-            (minifyFiles[
-                `./assets/css/minified/${block}.min.css`
-            ] = `./assets/css/${block}.css`)
+        (minifyFiles[
+            `./assets/css/minified/${block}.min.css`
+        ] = `./assets/css/${block}.css`)
     );
 
     //Grunt Configuration
@@ -95,6 +95,7 @@ module.exports = function (grunt) {
                     "!vendor/**",
                     "!composer.json",
                     "!composer.lock",
+                    "!composer.phar",
                     "!.git/**",
                     "!*.sh",
                     "!*.zip",
@@ -113,7 +114,7 @@ module.exports = function (grunt) {
                     "!admin/includes/pb-panel/assets/js/node_modules/**",
                     "!admin/includes/pb-panel/assets/js/package-lock.json",
                     "!admin/includes/pb-panel/assets/js/package.json",
-                    "!admin/includes/pb-panel/assets/js/src",
+                    "!admin/includes/pb-panel/assets/js/src/**",
                     "!src/**",
                 ],
                 dest: "premium-blocks-for-gutenberg/",
