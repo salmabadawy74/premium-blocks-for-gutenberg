@@ -14077,7 +14077,8 @@ const ColorPalettes = _ref => {
     shouldCalculate: isTransitioning || isOpen
   });
   const titles = [__(`Buttons background color \n& Links hover color`, "kemet"), __("Headings & Links color", "kemet"), __("Body text & Meta color", "kemet"), __("Borders color", "kemet"), __("Body background, a tint for Input fields,\nPage titles, Widgets background", "kemet"), __("Footer text color", "kemet"), __("Footer background color", "kemet")];
-  const activePalletColors = globalColors === null || globalColors === void 0 ? void 0 : globalColors.colors.map((color, index) => {
+  const activePallet = [...state, ..._helpers_defaultPallets__WEBPACK_IMPORTED_MODULE_10__["default"]].find(pallet => pallet.id === globalColors.current_palett);
+  const newColorsObj = globalColors === null || globalColors === void 0 ? void 0 : globalColors.colors.map((color, index) => {
     return {
       name: titles[index],
       slug: color.slug,
@@ -14085,8 +14086,20 @@ const ColorPalettes = _ref => {
       default: true
     };
   });
-  const activePallet = { ...globalColors,
-    colors: activePalletColors
+  const customColors = activePallet.custom_colors.length > 0 ? activePallet.custom_colors : globalColors.custom_colors || [];
+  const globalPallet = { ...globalColors,
+    colors: newColorsObj,
+    custom_colors: customColors
+  };
+
+  const addCustomColorToPallet = colorData => {
+    const newCustomColors = [...activePallet.custom_colors];
+    newCustomColors.push(colorData);
+    const newPallets = [...state].map(pallet => pallet.id === activePallet.id ? { ...pallet,
+      custom_colors: newCustomColors
+    } : pallet);
+    setState(newPallets);
+    onChange(newPallets);
   };
 
   const handleChangePalette = active => {
@@ -14100,7 +14113,7 @@ const ColorPalettes = _ref => {
   };
 
   const handleAddNewColor = colorData => {
-    let newCustomColors = [...globalColors.custom_colors];
+    let newCustomColors = globalPallet.type === 'system' ? [...globalColors.custom_colors] : [...globalPallet.custom_colors];
     newCustomColors.push(colorData);
     const newGlobalColors = { ...globalColors,
       custom_colors: newCustomColors
@@ -14221,7 +14234,7 @@ const ColorPalettes = _ref => {
         isTransitioning: null
       }));
     },
-    pallet: activePallet,
+    pallet: globalPallet,
     onChange: (v, id) => handleChangeComplete(v, id),
     handleClickReset: val => {
       handleResetColor(val);

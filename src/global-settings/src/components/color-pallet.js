@@ -47,7 +47,8 @@ const ColorPalettes = ({
         __("Footer text color", "kemet"),
         __("Footer background color", "kemet"),
     ];
-    const activePalletColors = globalColors?.colors.map((color, index) => {
+    const activePallet = [...state, ...defaultPallets].find(pallet => pallet.id === globalColors.current_palett);
+    const newColorsObj = globalColors?.colors.map((color, index) => {
         return {
             name: titles[index],
             slug: color.slug,
@@ -55,7 +56,17 @@ const ColorPalettes = ({
             default: true
         }
     });
-    const activePallet = { ...globalColors, colors: activePalletColors };
+    const customColors = activePallet.custom_colors.length > 0 ? activePallet.custom_colors : globalColors.custom_colors || [];
+    const globalPallet = { ...globalColors, colors: newColorsObj, custom_colors: customColors };
+
+    const addCustomColorToPallet = (colorData) => {
+        const newCustomColors = [...activePallet.custom_colors];
+        newCustomColors.push(colorData);
+        const newPallets = [...state].map(pallet => pallet.id === activePallet.id ? { ...pallet, custom_colors: newCustomColors } : pallet);
+
+        setState(newPallets);
+        onChange(newPallets);
+    };
 
     const handleChangePalette = (active) => {
         const newCustomColors = active.type === 'system' ? [...globalColors.custom_colors] : active.custom_colors.length ? active.custom_colors : [...globalColors.custom_colors];
@@ -65,7 +76,7 @@ const ColorPalettes = ({
     };
 
     const handleAddNewColor = (colorData) => {
-        let newCustomColors = [...globalColors.custom_colors];
+        let newCustomColors = globalPallet.type === 'system' ? [...globalColors.custom_colors] : [...globalPallet.custom_colors];
         newCustomColors.push(colorData);
         const newGlobalColors = { ...globalColors, custom_colors: newCustomColors };
 
@@ -187,7 +198,7 @@ const ColorPalettes = ({
                                 isTransitioning: null,
                             }))
                         }}
-                        pallet={activePallet}
+                        pallet={globalPallet}
                         onChange={(v, id) => handleChangeComplete(v, id)}
                         handleClickReset={(val) => {
                             handleResetColor(val);
