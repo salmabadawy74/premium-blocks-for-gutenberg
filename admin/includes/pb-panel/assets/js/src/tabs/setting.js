@@ -5,20 +5,25 @@ import Container from "../common/Container";
 const { Dashicon } = wp.components;
 import {
     store as coreStore,
-    useEntityProp,
-    useEntityRecords,
 } from "@wordpress/core-data";
 import { useDispatch } from "@wordpress/data";
+import { store as noticesStore } from "@wordpress/notices";
 
 const Setting = () => {
     const [data, setData] = useState(PremiumBlocksPanelData.apiData);
     const { saveEntityRecord } = useDispatch(coreStore);
+    const { createNotice } = useDispatch(noticesStore);
+
     const onChangeData = async (key, value) => {
         const updatedData = { ...data };
         updatedData[key] = value;
         setData(updatedData);
         await saveEntityRecord("root", "site", {
             pbg_maps_settings: updatedData,
+        });
+        createNotice("success", "Settings saved ", {
+            isDismissible: true,
+            type: "snackbar",
         });
     };
     return (
