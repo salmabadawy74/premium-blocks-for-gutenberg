@@ -1,7 +1,7 @@
 {
     "apiVersion": 2,
     "version": "0.1.0",
-    "name": "premium/container",
+    "name": "premium/section",
     "title": "Section",
     "category": "premium-blocks",
     "attributes": {
@@ -58,7 +58,6 @@
             "type": "boolean",
             "default": ""
         },
-    
         "padding": {
             "type": "object",
             "default": {

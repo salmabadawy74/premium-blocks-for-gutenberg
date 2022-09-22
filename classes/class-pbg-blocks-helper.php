@@ -555,7 +555,7 @@ class PBG_Blocks_Helper
 		);
 
 		register_block_type(
-			'premium/container',
+			'premium/section',
 			array(
 				'render_callback' => array($this, 'get_section_css'),
 				'editor_style'    => 'premium-blocks-editor-css',
@@ -611,9 +611,9 @@ class PBG_Blocks_Helper
 		);
 
 		register_block_type(
-			'premium/row',
+			'premium/container',
 			array(
-				'render_callback' => array($this, 'get_row_css'),
+				'render_callback' => array($this, 'get_container_css'),
 				'editor_style'    => 'premium-blocks-editor-css',
 				'editor_script'   => 'pbg-blocks-js',
 			)
@@ -6587,7 +6587,7 @@ class PBG_Blocks_Helper
 	 * @param string $attributes option For attribute.
 	 * @param string $contnet for content of Block.
 	 */
-	public function get_row_css($attributes, $content)
+	public function get_container_css($attributes, $content)
 	{
 		if (isset($attributes['block_id']) && !empty($attributes['block_id'])) {
 
@@ -6596,8 +6596,8 @@ class PBG_Blocks_Helper
 			$unique_id = rand(100, 10000);
 		}
 		wp_enqueue_style(
-			'pbg-row-style',
-			PREMIUM_BLOCKS_URL . 'assets/css/minified/row.min.css',
+			'pbg-container-style',
+			PREMIUM_BLOCKS_URL . 'assets/css/minified/container.min.css',
 			array(),
 			PREMIUM_BLOCKS_VERSION,
 			'all'
@@ -6612,12 +6612,12 @@ class PBG_Blocks_Helper
 			);
 		}
 		$style_id = 'pbg-blocks-style' . esc_attr($unique_id);
-		if (!wp_style_is($style_id, 'enqueued') && apply_filters('Premium_BLocks_blocks_render_inline_css', true, 'heading', $unique_id)) {
+		if (!wp_style_is($style_id, 'enqueued') && apply_filters('Premium_BLocks_blocks_render_inline_css', true, 'container', $unique_id)) {
 			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
 			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
-			$css = $this->get_row_css_style($attributes, $unique_id);
+			$css = $this->get_container_css_style($attributes, $unique_id);
 			if (!empty($css)) {
-				if ($this->should_render_inline('row', $unique_id)) {
+				if ($this->should_render_inline('container', $unique_id)) {
 					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
 				} else {
 					$this->render_inline_css($css, $style_id, true);
@@ -6637,7 +6637,7 @@ class PBG_Blocks_Helper
 	 * @param string $attr option attribute.
 	 * @param string $unique_id option For  block ID.
 	 */
-	public function get_row_css_style($attr, $unique_id)
+	public function get_container_css_style($attr, $unique_id)
 	{
 
 		$css                    = new Premium_Blocks_css();

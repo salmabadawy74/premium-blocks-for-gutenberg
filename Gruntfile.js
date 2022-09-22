@@ -23,7 +23,7 @@ module.exports = function (grunt) {
         "Modal",
         "person",
         "pricing-table",
-        "row",
+        "container",
         "section",
         "testimonials",
         "trigger",

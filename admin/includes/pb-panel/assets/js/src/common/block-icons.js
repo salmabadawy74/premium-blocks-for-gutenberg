@@ -585,7 +585,7 @@ const PBG_Block_Icons = {
             </g>
         </svg>
     ),
-    row: (
+    container: (
         <svg
             id="Premium_Blocks"
             data-name="Premium Blocks"
