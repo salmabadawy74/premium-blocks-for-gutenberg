@@ -61,14 +61,15 @@ if (!class_exists('Pb_Panel')) {
 			add_filter('pb_options', array($this, 'add_default_options'));
 			add_action('admin_post_premium_gutenberg_rollback', array($this, 'post_premium_gutenberg_rollback_new'));
 			add_action('wp_ajax_pb-mail-subscribe', array($this, 'subscribe_mail'));
-			add_action( 'admin_enqueue_scripts', array( $this, 'pa_admin_page_scripts' ) );
+			add_action('admin_enqueue_scripts', array($this, 'pa_admin_page_scripts'));
 		}
 
 		// Enqueue dashboard menu required assets
 		// Enqueue icon for plugin in dashboard
-		public function pa_admin_page_scripts() {
+		public function pa_admin_page_scripts()
+		{
 
-			wp_enqueue_style( 'pbg-icon', PREMIUM_BLOCKS_URL . 'admin/assets/pbg-font/css/pbg-font.css' );
+			wp_enqueue_style('pbg-icon', PREMIUM_BLOCKS_URL . 'admin/assets/pbg-font/css/pbg-font.css');
 		}
 
 		public function subscribe_mail()
@@ -198,8 +199,8 @@ if (!class_exists('Pb_Panel')) {
 		public function register_custom_menu_page()
 		{
 			$page = add_menu_page(
-				__('PB Settings', 'premium-blocks-for-gutenberg'),
-				__('PB Settings', 'premium-blocks-for-gutenberg'),
+				__('Premium Blocks For Gutenberg', 'premium-blocks-for-gutenberg'),
+				__('Premium Blocks For Gutenberg', 'premium-blocks-for-gutenberg'),
 				'manage_options',
 				'pb_panel',
 				array($this, 'render'),

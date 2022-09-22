@@ -669,6 +669,41 @@ const PBG_Block_Icons = {
 
 /***/ }),
 
+/***/ "./src/common/getLocalStorage.js":
+/*!***************************************!*\
+  !*** ./src/common/getLocalStorage.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const getLocalStorage = function () {
+  let key = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+  if (!window.localStorage) {
+    return null;
+  }
+
+  if (!key) {
+    return localStorage;
+  }
+
+  const PBGSettingState = localStorage.getItem(key);
+
+  if (PBGSettingState) {
+    return JSON.parse(PBGSettingState);
+  }
+
+  return null;
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getLocalStorage);
+
+/***/ }),
+
 /***/ "./src/common/logo.js":
 /*!****************************!*\
   !*** ./src/common/logo.js ***!
@@ -890,8 +925,8 @@ __webpack_require__.r(__webpack_exports__);
 const pushHistory = tab => {
   if (tab) {
     const url = new URL(window.location);
-    url.searchParams.set('tab', tab);
-    window.history.pushState({}, '', url);
+    url.searchParams.set("tab", tab);
+    window.history.pushState({}, "", url); // window.location.reload();
   }
 };
 
@@ -1110,7 +1145,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _common_Container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../common/Container */ "./src/common/Container.js");
 /* harmony import */ var _options_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../options-component */ "./src/options-component.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "../../../../../node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__);
@@ -1827,10 +1862,10 @@ const Support = () => {
 
 /***/ }),
 
-/***/ "../../../../../node_modules/classnames/index.js":
-/*!*******************************************************!*\
-  !*** ../../../../../node_modules/classnames/index.js ***!
-  \*******************************************************/
+/***/ "./node_modules/classnames/index.js":
+/*!******************************************!*\
+  !*** ./node_modules/classnames/index.js ***!
+  \******************************************/
 /***/ ((module, exports) => {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -2085,6 +2120,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scss_pb_panel_scss__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./scss/pb-panel.scss */ "./src/scss/pb-panel.scss");
 /* harmony import */ var _tabs_options__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./tabs/options */ "./src/tabs/options.js");
 /* harmony import */ var _layout_Notices__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./layout/Notices */ "./src/layout/Notices.js");
+/* harmony import */ var _common_getLocalStorage__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./common/getLocalStorage */ "./src/common/getLocalStorage.js");
+
 
 
 
@@ -2107,18 +2144,12 @@ const {
   Panel,
   PanelBody
 } = wp.components;
-const {
-  useEffect,
-  useState
-} = wp.element;
 
 const RendeTabs = () => {
-  const [values, setValues] = useState(PremiumBlocksPanelData.values);
-  let newItems = { ...values
-  };
   let {
     tabs
   } = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useContext)(_store_panel_store__WEBPACK_IMPORTED_MODULE_8__["default"]);
+  console.log(tabs);
 
   const compare = (a, b) => {
     if (a.priority < b.priority) {
@@ -2150,8 +2181,7 @@ const RendeTabs = () => {
       Component: _tabs_options__WEBPACK_IMPORTED_MODULE_11__["default"],
       props: {
         options: PremiumBlocksPanelData.options,
-        values: PremiumBlocksPanelData.values // setValues: setValues(newItems)
-
+        values: PremiumBlocksPanelData.values
       }
     }
   }, {
@@ -2185,16 +2215,31 @@ const RendeTabs = () => {
   let names = new Set(tabs.map(d => d.name));
   let mergedTabs = [...tabs, ...defaultTabs.filter(d => !names.has(d.name))];
   tabs = mergedTabs;
-
-  const onSelectHandler = tabName => {
-    (0,_common_push_history__WEBPACK_IMPORTED_MODULE_9__["default"])(tabName);
-  };
-
+  const [activeTab, setTab] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)("");
+  const pbgSettingState = (0,_common_getLocalStorage__WEBPACK_IMPORTED_MODULE_13__["default"])("pbgSettingState");
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    // This code is to fix the side-effect of the editor responsive click settings panel refresh issue.
+    if (pbgSettingState && activeTab !== pbgSettingState.selectedTab) {
+      setTab(pbgSettingState === null || pbgSettingState === void 0 ? void 0 : pbgSettingState.selectedTab);
+    }
+  }, []);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, undefined !== wp.notices.store && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_layout_Notices__WEBPACK_IMPORTED_MODULE_12__["default"], null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_layout_Header__WEBPACK_IMPORTED_MODULE_5__["default"], null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TabPanel, {
     className: "pb-dashboard-tab-panel",
     activeClass: "active-tab",
-    initialTabName: PremiumBlocksPanelData.kemet_redirect,
-    onSelect: onSelectHandler,
+    initialTabName: pbgSettingState && pbgSettingState.selectedTab ? pbgSettingState.selectedTab : "welcome",
+    onSelect: tab => {
+      window.location.reload();
+      setTab(tab);
+      (0,_common_push_history__WEBPACK_IMPORTED_MODULE_9__["default"])(tab);
+      const data = { ...pbgSettingState,
+        selectedTab: tab
+      };
+      const pbgLocalStorage = (0,_common_getLocalStorage__WEBPACK_IMPORTED_MODULE_13__["default"])();
+
+      if (pbgLocalStorage) {
+        pbgLocalStorage.setItem("pbgSettingState", JSON.stringify(data));
+      }
+    },
     tabs: tabs.sort(compare)
   }, tab => {
     const {

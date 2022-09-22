@@ -2,7 +2,13 @@ import WelcomeTab from "./tabs/welcome";
 import System from "./tabs/system";
 import Setting from "./tabs/setting";
 import RollBack from "./tabs/rollback";
-import { render, Fragment, useContext } from "@wordpress/element";
+import {
+    render,
+    Fragment,
+    useContext,
+    useEffect,
+    useState,
+} from "@wordpress/element";
 import Header from "./layout/Header";
 import Card from "./common/Card";
 import Container from "./common/Container";
@@ -11,17 +17,14 @@ import pushHistory from "./common/push-history";
 import "./scss/pb-panel.scss";
 import OptionsComponent from "./tabs/options";
 import Notices from "./layout/Notices";
-
+import getLocalStorage from "./common/getLocalStorage";
 const { __ } = wp.i18n;
 const { TabPanel, Panel, PanelBody } = wp.components;
-const { useEffect, useState } = wp.element;
 
 const RendeTabs = () => {
-    const [values, setValues] = useState(PremiumBlocksPanelData.values);
-    let newItems = { ...values };
-
-
     let { tabs } = useContext(PanelContext);
+
+    console.log(tabs);
     const compare = (a, b) => {
         if (a.priority < b.priority) {
             return -1;
@@ -52,7 +55,6 @@ const RendeTabs = () => {
                 props: {
                     options: PremiumBlocksPanelData.options,
                     values: PremiumBlocksPanelData.values,
-                    // setValues: setValues(newItems)
                 },
             },
         },
@@ -93,9 +95,15 @@ const RendeTabs = () => {
         ...defaultTabs.filter((d) => !names.has(d.name)),
     ];
     tabs = mergedTabs;
-    const onSelectHandler = (tabName) => {
-        pushHistory(tabName);
-    };
+    const [activeTab, setTab] = useState("");
+    const pbgSettingState = getLocalStorage("pbgSettingState");
+
+    useEffect(() => {
+        // This code is to fix the side-effect of the editor responsive click settings panel refresh issue.
+        if (pbgSettingState && activeTab !== pbgSettingState.selectedTab) {
+            setTab(pbgSettingState?.selectedTab);
+        }
+    }, []);
     return (
         <Fragment>
             {undefined !== wp.notices.store && <Notices />}
@@ -104,8 +112,29 @@ const RendeTabs = () => {
             <TabPanel
                 className="pb-dashboard-tab-panel"
                 activeClass="active-tab"
-                initialTabName={PremiumBlocksPanelData.kemet_redirect}
-                onSelect={onSelectHandler}
+                initialTabName={
+                    pbgSettingState && pbgSettingState.selectedTab
+                        ? pbgSettingState.selectedTab
+                        : "welcome"
+                }
+                onSelect={(tab) => {
+                    window.location.reload();
+
+                    setTab(tab);
+                    pushHistory(tab);
+
+                    const data = {
+                        ...pbgSettingState,
+                        selectedTab: tab,
+                    };
+                    const pbgLocalStorage = getLocalStorage();
+                    if (pbgLocalStorage) {
+                        pbgLocalStorage.setItem(
+                            "pbgSettingState",
+                            JSON.stringify(data)
+                        );
+                    }
+                }}
                 tabs={tabs.sort(compare)}
             >
                 {(tab) => {
