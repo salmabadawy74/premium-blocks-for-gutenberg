@@ -198,8 +198,8 @@ if (!class_exists('Pb_Panel')) {
 		public function register_custom_menu_page()
 		{
 			$page = add_menu_page(
-				__('PB Settings', 'premium-blocks-for-gutenberg'),
-				__('PB Settings', 'premium-blocks-for-gutenberg'),
+				__('Premium Blocks', 'premium-blocks-for-gutenberg'),
+				__('Premium Blocks', 'premium-blocks-for-gutenberg'),
 				'manage_options',
 				'pb_panel',
 				array($this, 'render'),
