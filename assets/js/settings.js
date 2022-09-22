@@ -13,7 +13,7 @@ export const {
     lottie,
     maps,
     person,
-    row,
+    container,
     search,
     section,
     testimonials,

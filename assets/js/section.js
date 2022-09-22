@@ -5,7 +5,7 @@
         let $section = $(".premium-container"),
             isStretched = $section.hasClass("premium-container__stretch_true");
         let $toolbar = $section
-            .closest("div[data-type='premium/container']")
+            .closest("div[data-type='premium/section']")
             .find(".editor-block-list__block-edit")
             .eq(0)
             .find(".components-toolbar")

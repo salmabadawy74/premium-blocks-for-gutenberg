@@ -9,7 +9,7 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 
-registerBlockType("premium/container", {
+registerBlockType("premium/section", {
     ...json,
     title: __("Section", 'premium-blocks-for-gutenberg'),
     icon: PBG_Block_Icons.section,
@@ -20,8 +20,7 @@ registerBlockType("premium/container", {
         align: ["center", "wide", "full"]
     },
     keywords: [
-        __("section", 'premium-blocks-for-gutenberg'),
-        __("container", 'premium-blocks-for-gutenberg'),
+        __("section", 'premium-blocks-for-gutenberg')
     ],
     description: __('Engage your Gutenberg blocks using Premium Section Block.', 'premium-block-for-gutenberg'),
     example: {

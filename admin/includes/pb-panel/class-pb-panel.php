@@ -123,7 +123,7 @@ if (!class_exists('Pb_Panel')) {
 				'person'           => true,
 				'search'           => true,
 				'trigger'          => true,
-				'row'              => true,
+				'container'              => true,
 				'breadcrumbs'      => true,
 				'content-switcher' => true,
 			);
@@ -495,10 +495,10 @@ if (!class_exists('Pb_Panel')) {
 						'theme',
 					),
 				),
-				'row'              => array(
+				'container'              => array(
 					'type'     => 'pb-button',
-					'label'    => __('Row', 'premium-blocks-for-gutenberg'),
-					'icon'     => 'row',
+					'label'    => __('Container', 'premium-blocks-for-gutenberg'),
+					'icon'     => 'container',
 					'category' => array(
 						'all',
 						'content',
