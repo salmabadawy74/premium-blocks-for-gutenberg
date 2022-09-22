@@ -2051,85 +2051,10 @@ const isFeatureActive = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_0__.createRe
 
 /***/ }),
 
-/***/ "./assets/js/settings.js":
-/*!*******************************!*\
-  !*** ./assets/js/settings.js ***!
-  \*******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "FontAwesomeEnabled": () => (/* binding */ FontAwesomeEnabled),
-/* harmony export */   "JsonUploadEnabled": () => (/* binding */ JsonUploadEnabled),
-/* harmony export */   "Modal": () => (/* binding */ Modal),
-/* harmony export */   "accordion": () => (/* binding */ accordion),
-/* harmony export */   "banner": () => (/* binding */ banner),
-/* harmony export */   "breadcrumbs": () => (/* binding */ breadcrumbs),
-/* harmony export */   "bulletList": () => (/* binding */ bulletList),
-/* harmony export */   "button": () => (/* binding */ button),
-/* harmony export */   "container": () => (/* binding */ container),
-/* harmony export */   "contentSwitcher": () => (/* binding */ contentSwitcher),
-/* harmony export */   "countUp": () => (/* binding */ countUp),
-/* harmony export */   "dualHeading": () => (/* binding */ dualHeading),
-/* harmony export */   "fancyText": () => (/* binding */ fancyText),
-/* harmony export */   "heading": () => (/* binding */ heading),
-/* harmony export */   "icon": () => (/* binding */ icon),
-/* harmony export */   "iconBox": () => (/* binding */ iconBox),
-/* harmony export */   "imageSeparator": () => (/* binding */ imageSeparator),
-/* harmony export */   "lottie": () => (/* binding */ lottie),
-/* harmony export */   "maps": () => (/* binding */ maps),
-/* harmony export */   "person": () => (/* binding */ person),
-/* harmony export */   "pricingTable": () => (/* binding */ pricingTable),
-/* harmony export */   "search": () => (/* binding */ search),
-/* harmony export */   "section": () => (/* binding */ section),
-/* harmony export */   "testimonials": () => (/* binding */ testimonials),
-/* harmony export */   "trigger": () => (/* binding */ trigger),
-/* harmony export */   "videoBox": () => (/* binding */ videoBox)
-/* harmony export */ });
-/*import premiumLogo from "./logo";
-wp.blocks.updateCategory("premium-blocks", { icon: premiumLogo });*/
-//Blocks Keys
-const {
-  Modal,
-  accordion,
-  banner,
-  breadcrumbs,
-  heading,
-  button,
-  icon,
-  lottie,
-  maps,
-  person,
-  container,
-  search,
-  section,
-  testimonials,
-  trigger,
-  [`bullet-list`]: bulletList,
-  [`content-switcher`]: contentSwitcher,
-  [`count-up`]: countUp,
-  [`dual-heading`]: dualHeading,
-  [`fancy-text`]: fancyText,
-  [`icon-box`]: iconBox,
-  [`image-separator`]: imageSeparator,
-  [`pricing-table`]: pricingTable,
-  [`video-box`]: videoBox
-} = PremiumBlocksSettings.activeBlocks; //Plugin Config Keys
-
-const {
-  FontAwesomeEnabled
-} = FontAwesomeConfig;
-const {
-  JsonUploadEnabled
-} = JsonUploadFile;
-
-/***/ }),
-
-/***/ "./blocks-config/block-icons.js":
-/*!**************************************!*\
-  !*** ./blocks-config/block-icons.js ***!
-  \**************************************/
+/***/ "./assets/icons/block-icons.js":
+/*!*************************************!*\
+  !*** ./assets/icons/block-icons.js ***!
+  \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2654,10 +2579,10 @@ const PBG_Block_Icons = {
 
 /***/ }),
 
-/***/ "./blocks-config/renderIcon.js":
-/*!*************************************!*\
-  !*** ./blocks-config/renderIcon.js ***!
-  \*************************************/
+/***/ "./assets/icons/renderIcon.js":
+/*!************************************!*\
+  !*** ./assets/icons/renderIcon.js ***!
+  \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2922,6 +2847,81 @@ function renderCustomIcon(svg) {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (renderCustomIcon);
+
+/***/ }),
+
+/***/ "./assets/js/settings.js":
+/*!*******************************!*\
+  !*** ./assets/js/settings.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "FontAwesomeEnabled": () => (/* binding */ FontAwesomeEnabled),
+/* harmony export */   "JsonUploadEnabled": () => (/* binding */ JsonUploadEnabled),
+/* harmony export */   "Modal": () => (/* binding */ Modal),
+/* harmony export */   "accordion": () => (/* binding */ accordion),
+/* harmony export */   "banner": () => (/* binding */ banner),
+/* harmony export */   "breadcrumbs": () => (/* binding */ breadcrumbs),
+/* harmony export */   "bulletList": () => (/* binding */ bulletList),
+/* harmony export */   "button": () => (/* binding */ button),
+/* harmony export */   "container": () => (/* binding */ container),
+/* harmony export */   "contentSwitcher": () => (/* binding */ contentSwitcher),
+/* harmony export */   "countUp": () => (/* binding */ countUp),
+/* harmony export */   "dualHeading": () => (/* binding */ dualHeading),
+/* harmony export */   "fancyText": () => (/* binding */ fancyText),
+/* harmony export */   "heading": () => (/* binding */ heading),
+/* harmony export */   "icon": () => (/* binding */ icon),
+/* harmony export */   "iconBox": () => (/* binding */ iconBox),
+/* harmony export */   "imageSeparator": () => (/* binding */ imageSeparator),
+/* harmony export */   "lottie": () => (/* binding */ lottie),
+/* harmony export */   "maps": () => (/* binding */ maps),
+/* harmony export */   "person": () => (/* binding */ person),
+/* harmony export */   "pricingTable": () => (/* binding */ pricingTable),
+/* harmony export */   "search": () => (/* binding */ search),
+/* harmony export */   "section": () => (/* binding */ section),
+/* harmony export */   "testimonials": () => (/* binding */ testimonials),
+/* harmony export */   "trigger": () => (/* binding */ trigger),
+/* harmony export */   "videoBox": () => (/* binding */ videoBox)
+/* harmony export */ });
+/*import premiumLogo from "./logo";
+wp.blocks.updateCategory("premium-blocks", { icon: premiumLogo });*/
+//Blocks Keys
+const {
+  Modal,
+  accordion,
+  banner,
+  breadcrumbs,
+  heading,
+  button,
+  icon,
+  lottie,
+  maps,
+  person,
+  container,
+  search,
+  section,
+  testimonials,
+  trigger,
+  [`bullet-list`]: bulletList,
+  [`content-switcher`]: contentSwitcher,
+  [`count-up`]: countUp,
+  [`dual-heading`]: dualHeading,
+  [`fancy-text`]: fancyText,
+  [`icon-box`]: iconBox,
+  [`image-separator`]: imageSeparator,
+  [`pricing-table`]: pricingTable,
+  [`video-box`]: videoBox
+} = PremiumBlocksSettings.activeBlocks; //Plugin Config Keys
+
+const {
+  FontAwesomeEnabled
+} = FontAwesomeConfig;
+const {
+  JsonUploadEnabled
+} = JsonUploadFile;
 
 /***/ }),
 
@@ -5328,7 +5328,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./block.json */ "./src/blocks/Modal/block.json");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/blocks/Modal/save.js");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/Modal/deprecated.js");
-/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
 
 
 
@@ -5345,7 +5345,7 @@ registerBlockType("premium/modal", { ..._block_json__WEBPACK_IMPORTED_MODULE_2__
   title: __("Modal Box", 'premium-blocks-for-gutenberg'),
   description: __('Easily, get creative modal popups on your WordPress website using Premium Modal Box Block.', 'premium-block-for-gutenberg'),
   keywords: [__("modal", 'premium-blocks-for-gutenberg'), __("popup", 'premium-blocks-for-gutenberg')],
-  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__["default"].modal,
+  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_5__["default"].modal,
   category: "premium-blocks",
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.Modal
@@ -9017,7 +9017,7 @@ function PremiumAccordion(props) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
-/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/blocks/accordion/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/blocks/accordion/save.js");
 /* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/blocks/accordion/block.json");
@@ -9037,7 +9037,7 @@ const {
 registerBlockType("premium/accordion", { ..._block_json__WEBPACK_IMPORTED_MODULE_4__,
   title: __("Accordion", 'premium-blocks-for-gutenberg'),
   description: __('Display collapsed content like FAQs using Premium Accordion Block.', 'premium-blocks-for-gutenberg'),
-  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].accordion,
+  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].accordion,
   category: "premium-blocks",
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.accordion
@@ -11537,7 +11537,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/banner/save.js");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/banner/deprecated.js");
 /* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/blocks/banner/block.json");
-/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
 
 
 
@@ -11553,7 +11553,7 @@ const {
 registerBlockType("premium/banner", { ..._block_json__WEBPACK_IMPORTED_MODULE_4__,
   title: __("Banner", "premium-blocks-for-gutenberg"),
   description: __("Create attractive banners along with Heading, Description, and CTA using Premium Banner.", "premium-blocks-for-gutenberg"),
-  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__["default"].banner,
+  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_5__["default"].banner,
   category: "premium-blocks",
   keywords: [__("image", "premium-blocks-for-gutenberg"), __("photo", "premium-blocks-for-gutenberg")],
   supports: {
@@ -12226,7 +12226,7 @@ function usePostTerms(_ref2) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.scss */ "./src/blocks/breadcrumbs/style.scss");
-/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
 /* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./block.json */ "./src/blocks/breadcrumbs/block.json");
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/blocks/breadcrumbs/edit.js");
 /* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
@@ -12251,7 +12251,7 @@ const {
 registerBlockType('premium/breadcrumbs', { ..._block_json__WEBPACK_IMPORTED_MODULE_2__,
   title: __("breadcrumbs", "premium-blocks-for-gutenberg"),
   category: "premium-blocks",
-  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].breadcrumbs,
+  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].breadcrumbs,
 
   /**
   * @see ./edit.js
@@ -14659,7 +14659,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/blocks/bullet-list/edit.js");
 /* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./block.json */ "./src/blocks/bullet-list/block.json");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/bullet-list/deprecated.js");
-/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
 
 
 
@@ -14675,7 +14675,7 @@ const {
 registerBlockType("premium/bullet-list", { ..._block_json__WEBPACK_IMPORTED_MODULE_3__,
   title: __("Bullet List", "premium-blocks-for-gutenberg"),
   description: __('Organize your website’s content with attractive lists using Premium Bullet List Block.', "premium-blocks-for-gutenberg"),
-  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__["default"].bulletList,
+  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_5__["default"].bulletList,
   category: "premium-blocks",
   keywords: [__("icon list", "premium-blocks-for-gutenberg"), __('image list', 'premium-blocks-for-gutenberg'), __('bullet list', 'premium-blocks-for-gutenberg')],
   supports: {
@@ -16469,7 +16469,7 @@ function Edit(props) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
-/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/blocks/button/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/blocks/button/save.js");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/button/deprecated.js");
@@ -16489,7 +16489,7 @@ const {
 registerBlockType("premium/button", { ..._block_json__WEBPACK_IMPORTED_MODULE_5__,
   title: __("Button", "premium-blocks-for-gutenberg"),
   description: __('Add stylish buttons to your Gutenberg page using Premium Button Block.', "premium-blocks-for-gutenberg"),
-  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].button,
+  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].button,
   category: "premium-blocks",
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.button
@@ -16628,7 +16628,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_premium_shape__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/premium-shape */ "./src/components/premium-shape.js");
 /* harmony import */ var _components_Animation__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/Animation */ "./src/components/Animation.js");
 /* harmony import */ var _components_responsive_radio__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../components/responsive-radio */ "./src/components/responsive-radio.js");
-/* harmony import */ var _blocks_config_renderIcon__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../../blocks-config/renderIcon */ "./blocks-config/renderIcon.js");
+/* harmony import */ var _assets_icons_renderIcon__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../../assets/icons/renderIcon */ "./assets/icons/renderIcon.js");
 /* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
 /* harmony import */ var _components_premium_filters__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../components/premium-filters */ "./src/components/premium-filters.js");
 /* harmony import */ var _components_radio_control__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../components/radio-control */ "./src/components/radio-control.js");
@@ -17096,19 +17096,19 @@ const edit = props => {
     choices: [{
       value: "row",
       label: __("Row", "premium-blocks-for-gutenberg"),
-      icon: (0,_blocks_config_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])("flex-direction-row")
+      icon: (0,_assets_icons_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])("flex-direction-row")
     }, {
       value: "column",
       label: __("Column", "premium-blocks-for-gutenberg"),
-      icon: (0,_blocks_config_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])("flex-direction-column")
+      icon: (0,_assets_icons_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])("flex-direction-column")
     }, {
       value: "row-reverse",
       label: __("Row Reverse", "premium-blocks-for-gutenberg"),
-      icon: (0,_blocks_config_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])("flex-direction-row-reverse")
+      icon: (0,_assets_icons_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])("flex-direction-row-reverse")
     }, {
       value: "column-reverse",
       label: __("Column Reverse", "premium-blocks-for-gutenberg"),
-      icon: (0,_blocks_config_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])("flex-direction-column-reverse")
+      icon: (0,_assets_icons_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])("flex-direction-column-reverse")
     }],
     value: direction,
     onChange: newValue => setAttributes({
@@ -17120,19 +17120,19 @@ const edit = props => {
     choices: [{
       value: "flex-start",
       label: __("Flex Start", "premium-blocks-for-gutenberg"),
-      icon: (0,_blocks_config_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-start`)
+      icon: (0,_assets_icons_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-start`)
     }, {
       value: "center",
       label: __("Center", "premium-blocks-for-gutenberg"),
-      icon: (0,_blocks_config_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-center`)
+      icon: (0,_assets_icons_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-center`)
     }, {
       value: "flex-end",
       label: __("Flex End", "premium-blocks-for-gutenberg"),
-      icon: (0,_blocks_config_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-end`)
+      icon: (0,_assets_icons_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-end`)
     }, {
       value: "stretch",
       label: __("Stretch", "premium-blocks-for-gutenberg"),
-      icon: (0,_blocks_config_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-strech`)
+      icon: (0,_assets_icons_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-strech`)
     }],
     value: alignItems,
     onChange: newValue => setAttributes({
@@ -17144,27 +17144,27 @@ const edit = props => {
     choices: [{
       value: "flex-start",
       tooltip: __("Flex Start", "ultimate-addons-for-gutenberg"),
-      icon: (0,_blocks_config_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-start`)
+      icon: (0,_assets_icons_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-start`)
     }, {
       value: "center",
       tooltip: __("Center", "ultimate-addons-for-gutenberg"),
-      icon: (0,_blocks_config_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-center`)
+      icon: (0,_assets_icons_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-center`)
     }, {
       value: "flex-end",
       tooltip: __("Flex End", "ultimate-addons-for-gutenberg"),
-      icon: (0,_blocks_config_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-end`)
+      icon: (0,_assets_icons_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-end`)
     }, {
       value: "space-between",
       tooltip: __("Space Between", "ultimate-addons-for-gutenberg"),
-      icon: (0,_blocks_config_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-space-between`)
+      icon: (0,_assets_icons_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-space-between`)
     }, {
       value: "space-around",
       tooltip: __("Space Around", "ultimate-addons-for-gutenberg"),
-      icon: (0,_blocks_config_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-space-around`)
+      icon: (0,_assets_icons_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-space-around`)
     }, {
       value: "space-evenly",
       tooltip: __("Space Evenly", "ultimate-addons-for-gutenberg"),
-      icon: (0,_blocks_config_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-space-evenly`)
+      icon: (0,_assets_icons_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-space-evenly`)
     }],
     value: justifyItems,
     onChange: newValue => setAttributes({
@@ -17230,27 +17230,27 @@ const edit = props => {
     choices: [{
       value: "flex-start",
       tooltip: __("Flex Start", "ultimate-addons-for-gutenberg"),
-      icon: (0,_blocks_config_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-start`)
+      icon: (0,_assets_icons_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-start`)
     }, {
       value: "center",
       tooltip: __("Center", "ultimate-addons-for-gutenberg"),
-      icon: (0,_blocks_config_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-center`)
+      icon: (0,_assets_icons_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-center`)
     }, {
       value: "flex-end",
       tooltip: __("Flex End", "ultimate-addons-for-gutenberg"),
-      icon: (0,_blocks_config_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-end`)
+      icon: (0,_assets_icons_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-end`)
     }, {
       value: "space-between",
       tooltip: __("Space Between", "ultimate-addons-for-gutenberg"),
-      icon: (0,_blocks_config_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-space-between`)
+      icon: (0,_assets_icons_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-space-between`)
     }, {
       value: "space-around",
       tooltip: __("Space Around", "ultimate-addons-for-gutenberg"),
-      icon: (0,_blocks_config_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-space-around`)
+      icon: (0,_assets_icons_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-space-around`)
     }, {
       value: "space-evenly",
       tooltip: __("Space Evenly", "ultimate-addons-for-gutenberg"),
-      icon: (0,_blocks_config_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-space-evenly`)
+      icon: (0,_assets_icons_renderIcon__WEBPACK_IMPORTED_MODULE_16__["default"])(`flex-${currentOffset}-space-evenly`)
     }],
     value: alignContent,
     onChange: newValue => setAttributes({
@@ -17844,7 +17844,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit */ "./src/blocks/container/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/container/save.js");
 /* harmony import */ var _variations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./variations */ "./src/blocks/container/variations.js");
-/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
 /* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
 
 
@@ -17860,7 +17860,7 @@ const {
 } = wp.blocks;
 registerBlockType("premium/container", {
   title: __("Container", "premium-blocks-for-gutenberg"),
-  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_4__["default"].container,
+  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_4__["default"].container,
   description: __('Organize your Gutenberg Blocks into rows and sections.', 'premium-block-for-gutenberg'),
   keywords: [__("row", "premium-blocks-for-gutenberg"), __("container", "premium-blocks-for-gutenberg")],
   category: "premium-blocks",
@@ -19370,7 +19370,7 @@ function Edit(props) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.scss */ "./src/blocks/content-switcher/style.scss");
-/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
 /* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./block.json */ "./src/blocks/content-switcher/block.json");
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/blocks/content-switcher/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./save */ "./src/blocks/content-switcher/save.js");
@@ -19399,7 +19399,7 @@ registerBlockType("premium/content-switcher", {
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_5__.contentSwitcher
   },
-  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].content_switcher,
+  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].content_switcher,
   edit: _edit__WEBPACK_IMPORTED_MODULE_3__["default"],
   save: _save__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
@@ -22533,7 +22533,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit */ "./src/blocks/count-up/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/count-up/save.js");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/count-up/deprecated.js");
-/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
 /* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./block.json */ "./src/blocks/count-up/block.json");
 
 
@@ -22550,7 +22550,7 @@ const {
 registerBlockType("premium/countup", { ..._block_json__WEBPACK_IMPORTED_MODULE_5__,
   title: __("CountUp", "premium-blocks-for-gutenberg"),
   description: __('Show off your facts and figures in an elegant way using Premium CountUp Block.', "premium-blocks-for-gutenberg"),
-  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_4__["default"].countup,
+  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_4__["default"].countup,
   category: "premium-blocks",
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.countUp
@@ -25350,7 +25350,7 @@ function Edit(props) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
-/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/blocks/dual-heading/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/blocks/dual-heading/save.js");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/dual-heading/deprecated.js");
@@ -25370,7 +25370,7 @@ const {
 registerBlockType("premium/dheading-block", { ..._block_json__WEBPACK_IMPORTED_MODULE_5__,
   title: __("Dual Heading", "premium-blocks-for-gutenberg"),
   description: __("Use Premium Dual Heading Block to create one heading with two different styles.", "premium-blocks-for-gutenberg"),
-  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].dualHeading,
+  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].dualHeading,
   category: "premium-blocks",
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.dualHeading
@@ -26982,7 +26982,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/blocks/fancy-text/edit.js");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/fancy-text/deprecated.js");
 /* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/blocks/fancy-text/block.json");
-/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
 
 
 
@@ -26999,7 +26999,7 @@ registerBlockType("premium/fancy-text", { ..._block_json__WEBPACK_IMPORTED_MODUL
   title: __("Fancy Text", 'premium-blocks-for-gutenberg'),
   description: __('Insert animated headlines across your Gutenberg page using Premium Fancy Text Block.', 'premium-blocks-for-gutenberg'),
   keywords: [__("fancy-text", 'premium-blocks-for-gutenberg'), __("animated-text", 'premium-blocks-for-gutenberg'), __("animated", 'premium-blocks-for-gutenberg')],
-  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__["default"].fancyText,
+  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_5__["default"].fancyText,
   category: "premium-blocks",
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.fancyText
@@ -29664,7 +29664,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/blocks/heading/edit.js");
 /* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./block.json */ "./src/blocks/heading/block.json");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/heading/deprecated/index.js");
-/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
 
 
 
@@ -29681,7 +29681,7 @@ registerBlockType("premium/heading", { ..._block_json__WEBPACK_IMPORTED_MODULE_3
   title: __("Heading", 'premium-block-for-gutenberg'),
   description: __('Grab your website visitors’ attention with stylish headings using Premium Heading Block.', "premium-blocks-for-gutenberg"),
   keywords: [__("title", 'premium-blocks-for-gutenberg'), __("Heading", 'premium-blocks-for-gutenberg')],
-  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__["default"].heading,
+  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_5__["default"].heading,
   category: "premium-blocks",
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.heading
@@ -33807,7 +33807,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit */ "./src/blocks/icon-box/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/icon-box/save.js");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/icon-box/deprecated.js");
-/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
 /* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./block.json */ "./src/blocks/icon-box/block.json");
 
 
@@ -33824,7 +33824,7 @@ const {
 registerBlockType("premium/icon-box", { ..._block_json__WEBPACK_IMPORTED_MODULE_5__,
   title: __("Icon Box", 'premium-blocks-for-gutenberg'),
   description: __('Add informative info boxes along with Icon, Description, and CTA using Premium Icon Box Block.', 'premium-block-for-gutenberg'),
-  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_4__["default"].icon_box,
+  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_4__["default"].icon_box,
   category: "premium-blocks",
   keywords: [__("Icon", 'premium-blocks-for-gutenberg'), __("Font Awesome", 'premium-blocks-for-gutenberg'), __("Box", 'premium-blocks-for-gutenberg')],
   supports: {
@@ -35796,7 +35796,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
 /* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
 /* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/blocks/icon/block.json");
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./edit */ "./src/blocks/icon/edit.js");
@@ -35822,7 +35822,7 @@ __webpack_require__.r(__webpack_exports__);
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_3__.icon
   },
-  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_2__["default"].icon,
+  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_2__["default"].icon,
   edit: _edit__WEBPACK_IMPORTED_MODULE_5__["default"],
   save: _save__WEBPACK_IMPORTED_MODULE_6__["default"],
   deprecated: _deprecated__WEBPACK_IMPORTED_MODULE_7__["default"]
@@ -36907,7 +36907,7 @@ function Edit(props) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
-/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/image-separator/save.js");
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/blocks/image-separator/edit.js");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/image-separator/deprecated.js");
@@ -36927,7 +36927,7 @@ const {
 registerBlockType("premium/image-separator", { ..._block_json__WEBPACK_IMPORTED_MODULE_5__,
   title: __("Image Separator", "premium-blocks-for-gutenberg"),
   description: __('Separate between your Gutenberg sections using Premium Image Separator Block.', "premium-blocks-for-gutenberg"),
-  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].image_separator,
+  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].image_separator,
   category: "premium-blocks",
   keywords: [__("image", "premium-blocks-for-gutenberg"), __("seperator", "premium-blocks-for-gutenberg")],
   supports: {
@@ -38337,7 +38337,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/lottie/save.js");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/lottie/deprecated.js");
-/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
 /* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./block.json */ "./src/blocks/lottie/block.json");
 
 
@@ -38353,7 +38353,7 @@ const {
 
 registerBlockType("premium/lottie", { ..._block_json__WEBPACK_IMPORTED_MODULE_5__,
   title: __("Lottie Animation", 'premium-blocks-for-gutenberg'),
-  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_4__["default"].lottie,
+  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_4__["default"].lottie,
   category: "premium-blocks",
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_1__.lottie
@@ -39952,7 +39952,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/blocks/maps/edit.js");
 /* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./block.json */ "./src/blocks/maps/block.json");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/maps/deprecated.js");
-/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
 
 
 
@@ -39968,7 +39968,7 @@ const {
 registerBlockType("premium/maps", { ..._block_json__WEBPACK_IMPORTED_MODULE_3__,
   title: __("Maps", "premium-blocks-for-gutenberg"),
   description: __('Embed Google Maps to your Gutenberg page using Premium Maps Block.', "premium-blocks-for-gutenberg"),
-  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__["default"].maps,
+  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_5__["default"].maps,
   category: "premium-blocks",
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.maps
@@ -42075,7 +42075,7 @@ function Edit(props) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
-/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/person/save.js");
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/blocks/person/edit.js");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/person/deprecated.js");
@@ -42095,7 +42095,7 @@ const {
 registerBlockType("premium/person", { ..._block_json__WEBPACK_IMPORTED_MODULE_5__,
   title: __("Team Members", "premium-blocks-for-gutenberg"),
   description: __('Show off your team members along with social links using Premium Team Members Block', 'premium-block-for-gutenberg'),
-  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].team,
+  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].team,
   category: "premium-blocks",
   keywords: [__("Team", 'premium-blocks-for-gutenberg'), __("profile", 'premium-blocks-for-gutenberg'), __("member", 'premium-blocks-for-gutenberg'), __("person", 'premium-blocks-for-gutenberg')],
   supports: {
@@ -46879,7 +46879,7 @@ function PremiumPricingTable(props) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
-/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/blocks/pricing-table/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/blocks/pricing-table/save.js");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/pricing-table/deprecated.js");
@@ -46899,7 +46899,7 @@ const {
 registerBlockType("premium/pricing-table", { ..._block_json__WEBPACK_IMPORTED_MODULE_5__,
   title: __("Pricing Table"),
   description: __('Display your pricing plans in an elegant way using Premium Pricing Table Block.', 'premium-block-for-gutenberg'),
-  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].pricingTable,
+  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].pricingTable,
   category: "premium-blocks",
   keywords: [__("Pricing", 'premium-blocks-for-gutenberg'), __("Pricing Table", 'premium-blocks-for-gutenberg')],
   supports: {
@@ -49769,7 +49769,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/section/save.js");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/section/deprecated.js");
 /* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/blocks/section/block.json");
-/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
 
 
 
@@ -49784,7 +49784,7 @@ const {
 } = wp.blocks;
 registerBlockType("premium/section", { ..._block_json__WEBPACK_IMPORTED_MODULE_4__,
   title: __("Section", 'premium-blocks-for-gutenberg'),
-  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__["default"].section,
+  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_5__["default"].section,
   category: "premium-blocks",
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.section,
@@ -49936,7 +49936,7 @@ function Edit(props) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
 /* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block.json */ "./src/blocks/switcher-child/block.json");
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/blocks/switcher-child/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/blocks/switcher-child/save.js");
@@ -49959,7 +49959,7 @@ registerBlockType('premium/switcher-child', { ..._block_json__WEBPACK_IMPORTED_M
   /**
    * @see ./edit.js
    */
-  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_0__["default"].content_switcher,
+  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_0__["default"].content_switcher,
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
   save: _save__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
@@ -52266,7 +52266,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit */ "./src/blocks/testimonials/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/testimonials/save.js");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/testimonials/deprecated.js");
-/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
 /* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./block.json */ "./src/blocks/testimonials/block.json");
 
 
@@ -52282,7 +52282,7 @@ const {
 } = wp.blocks;
 registerBlockType("premium/testimonial", { ..._block_json__WEBPACK_IMPORTED_MODULE_5__,
   title: __("Testimonial", 'premium-block-for-gutenberg'),
-  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_4__["default"].testimonials,
+  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_4__["default"].testimonials,
   description: __("Proof your success by displaying customer reviews using Premium Testimonials Block.", 'premium-block-for-gutenberg'),
   category: "premium-blocks",
   supports: {
@@ -53025,7 +53025,7 @@ function Edit(props) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.scss */ "./src/blocks/trigger/style.scss");
-/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
 /* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./block.json */ "./src/blocks/trigger/block.json");
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/blocks/trigger/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./save */ "./src/blocks/trigger/save.js");
@@ -53054,7 +53054,7 @@ registerBlockType('premium/trigger', {
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_5__.trigger
   },
-  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].trigger,
+  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].trigger,
   edit: _edit__WEBPACK_IMPORTED_MODULE_3__["default"],
   save: _save__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
@@ -55464,7 +55464,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/video-box/save.js");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/video-box/deprecated.js");
 /* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/blocks/video-box/block.json");
-/* harmony import */ var _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../blocks-config/block-icons */ "./blocks-config/block-icons.js");
+/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
 
 
 
@@ -55519,7 +55519,7 @@ const onChangeVideoURL = (type, URL) => {
 registerBlockType("premium/video-box", { ..._block_json__WEBPACK_IMPORTED_MODULE_4__,
   title: __("Video Box", 'premium-block-for-gutenberg'),
   description: __('Embed YouTube, Vimeo, Dailymotion, or upload a Custom Video using Premium Video Box Block.', 'premium-block-for-gutenberg'),
-  icon: _blocks_config_block_icons__WEBPACK_IMPORTED_MODULE_5__["default"].video_box,
+  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_5__["default"].video_box,
   category: "premium-blocks",
   keywords: [__("video", 'premium-blocks-for-gutenberg')],
   supports: {

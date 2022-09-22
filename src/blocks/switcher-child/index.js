@@ -1,7 +1,7 @@
 const { registerBlockType } = wp.blocks;
 
 const { __ } = wp.i18n
-import PBG_Block_Icons from '../../../blocks-config/block-icons'
+import PBG_Block_Icons from '../../../assets/icons/block-icons'
 
 /**
  * Internal dependencies

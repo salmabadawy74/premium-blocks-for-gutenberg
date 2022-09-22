@@ -13,7 +13,7 @@ import InsideTab from "../../components/InsideTab";
 import Shape from "../../components/premium-shape";
 import Animation from "../../components/Animation";
 import ResponsiveRadio from "../../components/responsive-radio";
-import renderCustomIcon from "../../../blocks-config/renderIcon";
+import renderCustomIcon from "../../../assets/icons/renderIcon";
 import {
     gradientBackground,
     videoBackground,
