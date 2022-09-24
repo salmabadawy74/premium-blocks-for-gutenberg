@@ -54868,7 +54868,9 @@ const {
   SelectControl,
   ToggleControl,
   Placeholder,
-  Button
+  Button,
+  Toolbar,
+  IconButton
 } = wp.components;
 const {
   useEffect,
@@ -54878,7 +54880,8 @@ const {
 const {
   InspectorControls,
   RichText,
-  useBlockProps
+  useBlockProps,
+  BlockControls
 } = wp.blockEditor;
 const {
   __
@@ -55074,7 +55077,13 @@ function Edit(props) {
     return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.generateCss)(styles);
   };
 
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InspectorControls, {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(BlockControls, {
+    key: "controls"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Toolbar, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(IconButton, {
+    label: __("Refresh this button when it conflict with other buttons styles", "premium-blocks-for-gutenberg"),
+    icon: "update",
+    className: "components-toolbar__control"
+  }))), videoURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InspectorControls, {
     key: "inspector"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_14__["default"], {
     tabs: ['layout', 'style', 'advance']
@@ -55344,12 +55353,13 @@ function Edit(props) {
       " premium-mobile-hidden": hideMobile
     })
   }), {
-    "data-type": videoType,
-    ref: videoboxRef,
     style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.borderCss)(boxBorder, props.deviceType),
       boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical || 0}px ${boxShadow.blur || 10}px ${boxShadow.color} ${boxShadow.position}`
     }
-  }), !videoURL && "self" !== videoType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Placeholder, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    ref: videoboxRef,
+    "data-type": videoType
+  }, !videoURL && "self" !== videoType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Placeholder, {
     label: __('Video Box ', 'premium-blocks-for-gutenberg'),
     instructions: __("Enter video ID, for example: z1hQgVpfTKU or Embed URL", 'premium-blocks-for-gutenberg'),
     className: className
@@ -55433,7 +55443,7 @@ function Edit(props) {
       textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`
     },
     keepPlaceholderOnFocus: true
-  }))), loadDescriptionGoogleFonts));
+  }))), loadDescriptionGoogleFonts)));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (withSelect(select => {
