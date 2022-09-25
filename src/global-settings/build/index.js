@@ -15858,6 +15858,7 @@ const LayoutSettingsScreen = props => {
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-layout-screen"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    defaultValue: 1200,
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Container Max Width'),
     value: layoutSettings === null || layoutSettings === void 0 ? void 0 : layoutSettings.container_width,
     onChange: value => changeHandler('container_width', value),
@@ -15865,6 +15866,7 @@ const LayoutSettingsScreen = props => {
     max: 4000,
     units: ['px']
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    defaultValue: 1024,
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Tablet Breakpoint'),
     value: layoutSettings === null || layoutSettings === void 0 ? void 0 : layoutSettings.tablet_breakpoint,
     onChange: value => changeHandler('tablet_breakpoint', value),
@@ -15872,6 +15874,7 @@ const LayoutSettingsScreen = props => {
     max: 2000,
     units: ['px']
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    defaultValue: 767,
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Mobile Breakpoint'),
     value: layoutSettings === null || layoutSettings === void 0 ? void 0 : layoutSettings.mobile_breakpoint,
     onChange: value => changeHandler('mobile_breakpoint', value),

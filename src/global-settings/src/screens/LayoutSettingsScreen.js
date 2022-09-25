@@ -17,11 +17,10 @@ const LayoutSettingsScreen = props => {
             description={__('Manage container default width and devices breakpoints.')}
         />
         <div className='premium-layout-screen'>
-            <ResponsiveSingleRangeControl label={__('Container Max Width')} value={layoutSettings?.container_width} onChange={(value => changeHandler('container_width', value))} min={1} max={4000} units={['px']} />
-            <ResponsiveSingleRangeControl label={__('Tablet Breakpoint')} value={layoutSettings?.tablet_breakpoint} onChange={(value => changeHandler('tablet_breakpoint', value))} min={1} max={2000} units={['px']} />
-            <ResponsiveSingleRangeControl label={__('Mobile Breakpoint')} value={layoutSettings?.mobile_breakpoint} onChange={(value => changeHandler('mobile_breakpoint', value))} min={1} max={2000} units={['px']} />
+            <ResponsiveSingleRangeControl defaultValue={1200} label={__('Container Max Width')} value={layoutSettings?.container_width} onChange={(value => changeHandler('container_width', value))} min={1} max={4000} units={['px']} />
+            <ResponsiveSingleRangeControl defaultValue={1024} label={__('Tablet Breakpoint')} value={layoutSettings?.tablet_breakpoint} onChange={(value => changeHandler('tablet_breakpoint', value))} min={1} max={2000} units={['px']} />
+            <ResponsiveSingleRangeControl defaultValue={767} label={__('Mobile Breakpoint')} value={layoutSettings?.mobile_breakpoint} onChange={(value => changeHandler('mobile_breakpoint', value))} min={1} max={2000} units={['px']} />
         </div>
-
     </>
 }
 
