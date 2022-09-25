@@ -274,6 +274,7 @@ class PBG_Blocks_Helper
 				'tablet_breakpoint' => PBG_TABLET_BREAKPOINT,
 				'mobile_breakpoint' => PBG_MOBILE_BREAKPOINT,
 				'shapes'            => $this->getSvgShapes(),
+				'admin_url'         => admin_url()
 			)
 		);
 
