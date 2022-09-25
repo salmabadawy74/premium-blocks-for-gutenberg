@@ -23,6 +23,8 @@ const {
     TextControl,
     TextareaControl,
     ToggleControl,
+    Placeholder,
+    Button,
 } = wp.components;
 const { useEffect, Fragment, useState, useRef } = wp.element;
 const { InspectorControls, useBlockProps } = wp.blockEditor;
@@ -33,6 +35,8 @@ function Edit(props) {
     const [thisMap, setMap] = useState(null);
     const [thisInfo, setInfo] = useState(null);
     const contentRef = React.createRef();
+    const setting_url = PremiumBlocksSettings.admin_url + "admin.php?page=pb_panel&tab=settings";
+    console.log(setting_url)
 
     useEffect(() => {
         setAttributes({
@@ -313,8 +317,8 @@ function Edit(props) {
     ];
 
     return (
-        typeof google !== "undefined" && (
-            <Fragment>
+        <Fragment>
+            {typeof google !== "undefined" && (
                 <InspectorControls key="key">
                     <InspectorTabs tabs={['layout', 'style', 'advance']}>
                         <InspectorTab key={'layout'}>
@@ -570,33 +574,48 @@ function Edit(props) {
                         </InspectorTab>
                     </InspectorTabs>
                 </InspectorControls>
-                <div
-                    {...useBlockProps({
-                        className: classnames(
-                            className,
-                            `${blockId}`,
-                            {
-                                " premium-desktop-hidden": hideDesktop,
-                                " premium-tablet-hidden": hideTablet,
-                                " premium-mobile-hidden": hideMobile,
-                            }
-                        ),
-                    })}
-                    style={{
-                        ...marginCss(mapMargin, props.deviceType)
-                    }}
-                >
-                    <div ref={contentRef}>
-                        <div className="map-container" style={{
-                            height: height + "px"
-                        }} />
-                    </div>
-                    <style>{loadStyles()}</style>
-                    {loadDescriptionGoogleFonts}
-                    {loadTitleGoogleFonts}
-                </div>
-            </Fragment>
-        )
+            )}
+            <div
+                {...useBlockProps({
+                    className: classnames(
+                        className,
+                        `${blockId}`,
+                        {
+                            " premium-desktop-hidden": hideDesktop,
+                            " premium-tablet-hidden": hideTablet,
+                            " premium-mobile-hidden": hideMobile,
+                        }
+                    ),
+                })}
+                style={{
+                    ...marginCss(mapMargin, props.deviceType)
+                }}
+            >
+                {
+                    typeof google !== "undefined" ?
+                        <div ref={contentRef}>
+                            <div className="map-container" style={{
+                                height: height + "px"
+                            }} />
+                        </div>
+                        :
+                        <Placeholder
+                            label={__('Maps', 'premium-blocks-for-gutenberg')}
+                            className={className}
+                        >
+                            <div>
+                                {__("Premium Maps requires an API key.", 'premium-blocks-for-gutenberg')}{" "}
+                                <a target="_blank" href={setting_url}>
+                                    {__("Add API key here", 'premium-blocks-for-gutenberg')}
+                                </a>
+                            </div>
+                        </Placeholder>
+                }
+                <style>{loadStyles()}</style>
+                {loadDescriptionGoogleFonts}
+                {loadTitleGoogleFonts}
+            </div>
+        </Fragment>
     )
 }
 export default withSelect((select) => {

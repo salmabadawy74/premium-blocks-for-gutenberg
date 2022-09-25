@@ -14,7 +14,7 @@ const Setting = () => {
     const { saveEntityRecord } = useDispatch(coreStore);
     const { createNotice } = useDispatch(noticesStore);
 
-    console.log(data);
+    console.log(data, PremiumBlocksPanelData.apiData);
     const onChangeData = async (key, value) => {
         const updatedData = { ...data };
         updatedData[key] = value;
