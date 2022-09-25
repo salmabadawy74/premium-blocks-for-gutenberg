@@ -11,7 +11,7 @@ function get_trigger_css_style( $attr, $unique_id ) {
 	$media_query            = array();
 	$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
 	$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
-	$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+	$media_query['desktop'] = apply_filters( 'Premium_BLocks_desktop_media_query', '(min-width: 1025px)' );
 
 	if ( isset( $attr['iconSize'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' .toggle-button svg' );
@@ -204,13 +204,13 @@ function render_block_pbg_trigger( $attributes, $content ) {
  * Registers the `pbg/trigger` block on the server.
  */
 function register_block_pbg_trigger() {
-	 if ( ! function_exists( 'register_block_type' ) ) {
-			return;
-        }
-	    register_block_type(
+	if ( ! function_exists( 'register_block_type' ) ) {
+		   return;
+	}
+		register_block_type(
 			'premium/trigger',
 			array(
-			'render_callback' => 'render_block_pbg_trigger',	
+				'render_callback' => 'render_block_pbg_trigger',
 			)
 		);
 }
@@ -224,12 +224,12 @@ function trigger_enqueue() {
 		PREMIUM_BLOCKS_VERSION,
 		true
 	);
-    wp_enqueue_style(
-        'pbg-trigger-style',
-        PREMIUM_BLOCKS_URL . 'assets/css/minified/trigger.min.css',
-        array(),
-         PREMIUM_BLOCKS_VERSION, 
-        'all' 
-    );
+	wp_enqueue_style(
+		'pbg-trigger-style',
+		PREMIUM_BLOCKS_URL . 'assets/css/minified/trigger.min.css',
+		array(),
+		PREMIUM_BLOCKS_VERSION,
+		'all'
+	);
 }
 add_action( 'enqueue_block_assets', 'trigger_enqueue' );

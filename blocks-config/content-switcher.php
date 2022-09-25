@@ -12,7 +12,7 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 	$media_query            = array();
 	$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
 	$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
-	$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+	$media_query['desktop'] = apply_filters( 'Premium_BLocks_desktop_media_query', '(min-width: 1025px)' );
 	$unique_id              = $attributes['blockId'];
 
 	// Container styles
@@ -293,13 +293,13 @@ function render_block_pbg_content_switcher( $attributes, $content ) {
 	$unique_id          = $attributes['blockId'];
 	$align_class_name   = empty( $attributes['textAlign'] ) ? '' : "has-text-align-{$attributes['textAlign']}";
 	$wrapper_attributes = get_block_wrapper_attributes( array( 'class' => $align_class_name ) );
-   wp_enqueue_style(
-        'content-switcher',
-        PREMIUM_BLOCKS_URL . 'assets/css/minified/content-switcher.min.css',
-        array(),
-         PREMIUM_BLOCKS_VERSION, 
-        'all' 
-    );
+	wp_enqueue_style(
+		'content-switcher',
+		PREMIUM_BLOCKS_URL . 'assets/css/minified/content-switcher.min.css',
+		array(),
+		PREMIUM_BLOCKS_VERSION,
+		'all'
+	);
 	$style_id  = 'pbg-blocks-style' . esc_attr( $unique_id );
 	$id        = 'premium-content-switcher-' . esc_attr( $unique_id );
 	$unique_id = $attributes['blockId'];
@@ -326,13 +326,13 @@ function render_block_pbg_content_switcher( $attributes, $content ) {
  * Registers the `pbg/content-switcher` block on the server.
  */
 function register_block_pbg_content_switcher() {
-	 if ( ! function_exists( 'register_block_type' ) ) {
-			return;
-        }
-	    register_block_type(
+	if ( ! function_exists( 'register_block_type' ) ) {
+		   return;
+	}
+		register_block_type(
 			'premium/content-switcher',
 			array(
-			'render_callback' => 'render_block_pbg_content_switcher',	
+				'render_callback' => 'render_block_pbg_content_switcher',
 			)
 		);
 }
@@ -340,7 +340,7 @@ function register_block_pbg_content_switcher() {
 add_action( 'init', 'register_block_pbg_content_switcher' );
 
 function content_switcher_enqueue() {
-    
+
 	wp_register_script(
 		'content-switcher',
 		PREMIUM_BLOCKS_URL . 'assets/js/content-switcher.js',
@@ -348,7 +348,7 @@ function content_switcher_enqueue() {
 		PREMIUM_BLOCKS_VERSION,
 		true
 	);
- 
+
 }
 add_action( 'enqueue_block_assets', 'content_switcher_enqueue' );
 

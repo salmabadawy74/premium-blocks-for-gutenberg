@@ -28,9 +28,9 @@ const RootScreen = () => {
                 <NavigationButtonAsItem
                     icon={layout}
                     path={'/container-settings'}
-                    aria-label={__('Container Settings')}
+                    aria-label={__('Layout')}
                 >
-                    {__('Container Settings')}
+                    {__('Layout')}
                 </NavigationButtonAsItem>
             </ItemGroup>
         </CardBody>

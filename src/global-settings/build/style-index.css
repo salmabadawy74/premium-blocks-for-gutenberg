@@ -10,7 +10,11 @@
 }
 
 .premium-typography-screen {
-  margin: 16px;
+  padding: 16px;
+}
+
+.premium-layout-screen {
+  padding: 16px;
 }
 
 .premium-element-typography {
@@ -409,6 +413,7 @@ header .premium-btn-reset-wrap {
 .premium-palettes-modal .premium-single-palette .premium-color-palette-container .premium-pallet-colors,
 .premium-palettes-modal .premium-single-palette .premium-color-palette-container .premium-custom-colors {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .premium-global-color-picker-single > span span {
@@ -844,6 +849,7 @@ header .premium-btn-reset-wrap {
 }
 .premium-palettes-preview .premium-single-palette .premium-color-palette-container .premium-pallet-colors {
   display: flex;
+  flex-wrap: wrap;
 }
 .premium-palettes-preview .premium-single-palette .premium-color-palette-container p {
   margin: 10px 0;

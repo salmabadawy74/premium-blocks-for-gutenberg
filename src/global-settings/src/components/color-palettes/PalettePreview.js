@@ -35,7 +35,7 @@ const PalettePreview = ({
 
     const addColor = () => {
         const lastColorIndex = pallet.custom_colors.length;
-        const colorId = `custom-color${lastColorIndex + 1}`;
+        const colorId = `custom-color${lastColorIndex + Math.floor(Math.random() * 100)}`;
         const colorTitle = `${__('Custom Color ')}${lastColorIndex + 1}`;
         addNewColor({ name: colorTitle, color: '', slug: colorId });
     }

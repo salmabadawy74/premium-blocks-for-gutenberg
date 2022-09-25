@@ -294,6 +294,35 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 					'default'      => array(),
 				)
 			);
+
+			register_setting(
+				'pbg_global_settings',
+				'pbg_global_layout',
+				array(
+					'type'         => 'object',
+					'description'  => __( 'Config Premium Blocks For Gutenberg Global Layout Settings', 'premium-block-for-gutenberg' ),
+					'show_in_rest' => array(
+						'schema' => array(
+							'properties' => array(
+								'container_width'   => array(
+									'type' => 'number',
+								),
+								'tablet_breakpoint' => array(
+									'type' => 'number',
+								),
+								'mobile_breakpoint' => array(
+									'type' => 'number',
+								),
+							),
+						),
+					),
+					'default'      => array(
+						'container_width'   => 1200,
+						'tablet_breakpoint' => 1024,
+						'mobile_breakpoint' => 767,
+					),
+				)
+			);
 		}
 
 		/**

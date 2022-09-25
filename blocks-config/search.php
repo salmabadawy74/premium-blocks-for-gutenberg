@@ -11,7 +11,7 @@ function get_premium_search_css( $attributes, $unique_id ) {
 	$media_query            = array();
 	$media_query['Mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
 	$media_query['Tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
-	$media_query['Desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+	$media_query['Desktop'] = apply_filters( 'Premium_BLocks_desktop_media_query', '(min-width: 1025px)' );
 
 	if ( isset( $attributes['typography'] ) ) {
 		$typography = $attributes['typography'];
@@ -391,13 +391,13 @@ add_action( 'init', 'register_block_premium_search' );
 
 function search_enqueue() {
 
-    wp_enqueue_style(
-        'pbg-search-style',
-        PREMIUM_BLOCKS_URL . 'assets/css/minified/search.min.css',
-        array(),
-         PREMIUM_BLOCKS_VERSION, 
-        'all' 
-    );
+	wp_enqueue_style(
+		'pbg-search-style',
+		PREMIUM_BLOCKS_URL . 'assets/css/minified/search.min.css',
+		array(),
+		PREMIUM_BLOCKS_VERSION,
+		'all'
+	);
 }
 
 add_action( 'enqueue_block_assets', 'content_switcher_enqueue' );

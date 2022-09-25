@@ -4,7 +4,7 @@ import {
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import ColorsScreen from './screens/ColorsScreen';
-import ContainerSettingsScreen from './screens/ContainerSettingsScreen';
+import LayoutSettingsScreen from './screens/LayoutSettingsScreen';
 import RootScreen from './screens/RootScreen';
 import TypographyScreen from './screens/TypographyScreen';
 
@@ -24,7 +24,7 @@ const GlobalStylesUI = props => {
             <TypographyScreen />
         </NavigatorScreen>
         <NavigatorScreen path="/container-settings">
-            <ContainerSettingsScreen />
+            <LayoutSettingsScreen />
         </NavigatorScreen>
     </NavigatorProvider>
 };

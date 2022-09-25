@@ -56,7 +56,7 @@ const ColorPalettes = ({
             default: true
         }
     });
-    const customColors = activePallet.custom_colors.length > 0 ? activePallet.custom_colors : globalColors.custom_colors || [];
+    const customColors = activePallet?.id?.includes('custom') && activePallet?.custom_colors?.length ? activePallet.custom_colors : globalColors.custom_colors || [];
     const globalPallet = { ...globalColors, colors: newColorsObj, custom_colors: customColors };
 
     const addCustomColorToPallet = (colorData) => {
@@ -68,14 +68,27 @@ const ColorPalettes = ({
         onChange(newPallets);
     };
 
+    const changeCustomColorToPallet = (color, index) => {
+        let newColors = index.includes('custom') ? [...activePallet.custom_colors] : [...activePallet.colors];
+        newColors = newColors.map(colorObj => colorObj.slug === index ? { ...colorObj, color: color } : colorObj);
+        const changedColors = index.includes('custom') ? 'custom_colors' : 'colors';
+        const newPallets = [...state].map(pallet => pallet.id === activePallet.id ? { ...pallet, [changedColors]: newColors } : pallet);
+
+        setState(newPallets);
+        onChange(newPallets);
+    };
+
     const handleChangePalette = (active) => {
-        const newCustomColors = active.type === 'system' ? [...globalColors.custom_colors] : active.custom_colors.length ? active.custom_colors : [...globalColors.custom_colors];
-        const newGlobalColors = { ...globalColors, colors: active.colors, custom_colors: newCustomColors, current_palett: active.id };
+        const newGlobalColors = { ...globalColors, colors: active.colors, current_palett: active.id };
 
         setGlobalColors(newGlobalColors);
     };
 
     const handleAddNewColor = (colorData) => {
+        if (activePallet?.id?.includes('custom')) {
+            addCustomColorToPallet(colorData);
+            return;
+        }
         let newCustomColors = globalPallet.type === 'system' ? [...globalColors.custom_colors] : [...globalPallet.custom_colors];
         newCustomColors.push(colorData);
         const newGlobalColors = { ...globalColors, custom_colors: newCustomColors };
@@ -84,6 +97,10 @@ const ColorPalettes = ({
     };
 
     const handleChangeComplete = (color, index) => {
+        if (activePallet?.id?.includes('custom')) {
+            changeCustomColorToPallet(color, index);
+            return;
+        }
         let newColors = index.includes('custom') ? [...globalColors.custom_colors] : [...globalColors.colors];
         newColors = newColors.map(colorObj => colorObj.slug === index ? { ...colorObj, color: color } : colorObj);
         const changedColors = index.includes('custom') ? 'custom_colors' : 'colors';
@@ -118,7 +135,7 @@ const ColorPalettes = ({
             type: "custom",
             skin: data.type,
             name: data.name,
-            custom_colors: [...globalColors.custom_colors],
+            custom_colors: [...customColors],
         };
         newPallets.unshift(newPalett);
         setState(newPallets);

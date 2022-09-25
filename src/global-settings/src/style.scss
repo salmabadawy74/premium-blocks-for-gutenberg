@@ -5,7 +5,10 @@
     padding: 0 16px;
 }
 .premium-typography-screen {
-    margin: 16px;
+    padding: 16px;
+}
+.premium-layout-screen {
+    padding: 16px;
 }
 .premium-element-typography {
     margin-top: 15px;
@@ -450,6 +453,7 @@ header .premium-btn-reset-wrap {
     .premium-pallet-colors,
     .premium-custom-colors {
         display: flex;
+        flex-wrap: wrap;
     }
 }
 
@@ -962,6 +966,7 @@ header .premium-btn-reset-wrap {
     justify-content: center;
     .premium-pallet-colors {
         display: flex;
+        flex-wrap: wrap;
     }
     p {
         margin: 10px 0;

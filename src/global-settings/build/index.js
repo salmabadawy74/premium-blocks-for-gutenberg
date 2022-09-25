@@ -13939,7 +13939,7 @@ const PalettePreview = _ref => {
 
   const addColor = () => {
     const lastColorIndex = pallet.custom_colors.length;
-    const colorId = `custom-color${lastColorIndex + 1}`;
+    const colorId = `custom-color${lastColorIndex + Math.floor(Math.random() * 100)}`;
     const colorTitle = `${__('Custom Color ')}${lastColorIndex + 1}`;
     addNewColor({
       name: colorTitle,
@@ -14045,6 +14045,8 @@ const {
 
 
 const ColorPalettes = _ref => {
+  var _activePallet$id, _activePallet$custom_;
+
   let {
     value,
     onChange,
@@ -14086,7 +14088,7 @@ const ColorPalettes = _ref => {
       default: true
     };
   });
-  const customColors = activePallet.custom_colors.length > 0 ? activePallet.custom_colors : globalColors.custom_colors || [];
+  const customColors = activePallet !== null && activePallet !== void 0 && (_activePallet$id = activePallet.id) !== null && _activePallet$id !== void 0 && _activePallet$id.includes('custom') && activePallet !== null && activePallet !== void 0 && (_activePallet$custom_ = activePallet.custom_colors) !== null && _activePallet$custom_ !== void 0 && _activePallet$custom_.length ? activePallet.custom_colors : globalColors.custom_colors || [];
   const globalPallet = { ...globalColors,
     colors: newColorsObj,
     custom_colors: customColors
@@ -14102,17 +14104,35 @@ const ColorPalettes = _ref => {
     onChange(newPallets);
   };
 
+  const changeCustomColorToPallet = (color, index) => {
+    let newColors = index.includes('custom') ? [...activePallet.custom_colors] : [...activePallet.colors];
+    newColors = newColors.map(colorObj => colorObj.slug === index ? { ...colorObj,
+      color: color
+    } : colorObj);
+    const changedColors = index.includes('custom') ? 'custom_colors' : 'colors';
+    const newPallets = [...state].map(pallet => pallet.id === activePallet.id ? { ...pallet,
+      [changedColors]: newColors
+    } : pallet);
+    setState(newPallets);
+    onChange(newPallets);
+  };
+
   const handleChangePalette = active => {
-    const newCustomColors = active.type === 'system' ? [...globalColors.custom_colors] : active.custom_colors.length ? active.custom_colors : [...globalColors.custom_colors];
     const newGlobalColors = { ...globalColors,
       colors: active.colors,
-      custom_colors: newCustomColors,
       current_palett: active.id
     };
     setGlobalColors(newGlobalColors);
   };
 
   const handleAddNewColor = colorData => {
+    var _activePallet$id2;
+
+    if (activePallet !== null && activePallet !== void 0 && (_activePallet$id2 = activePallet.id) !== null && _activePallet$id2 !== void 0 && _activePallet$id2.includes('custom')) {
+      addCustomColorToPallet(colorData);
+      return;
+    }
+
     let newCustomColors = globalPallet.type === 'system' ? [...globalColors.custom_colors] : [...globalPallet.custom_colors];
     newCustomColors.push(colorData);
     const newGlobalColors = { ...globalColors,
@@ -14122,6 +14142,13 @@ const ColorPalettes = _ref => {
   };
 
   const handleChangeComplete = (color, index) => {
+    var _activePallet$id3;
+
+    if (activePallet !== null && activePallet !== void 0 && (_activePallet$id3 = activePallet.id) !== null && _activePallet$id3 !== void 0 && _activePallet$id3.includes('custom')) {
+      changeCustomColorToPallet(color, index);
+      return;
+    }
+
     let newColors = index.includes('custom') ? [...globalColors.custom_colors] : [...globalColors.colors];
     newColors = newColors.map(colorObj => colorObj.slug === index ? { ...colorObj,
       color: color
@@ -14162,7 +14189,7 @@ const ColorPalettes = _ref => {
       type: "custom",
       skin: data.type,
       name: data.name,
-      custom_colors: [...globalColors.custom_colors]
+      custom_colors: [...customColors]
     };
     newPallets.unshift(newPalett);
     setState(newPallets);
@@ -15790,10 +15817,10 @@ const ColorsScreen = () => {
 
 /***/ }),
 
-/***/ "./src/screens/ContainerSettingsScreen.js":
-/*!************************************************!*\
-  !*** ./src/screens/ContainerSettingsScreen.js ***!
-  \************************************************/
+/***/ "./src/screens/LayoutSettingsScreen.js":
+/*!*********************************************!*\
+  !*** ./src/screens/LayoutSettingsScreen.js ***!
+  \*********************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15803,18 +15830,58 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/header */ "./src/components/header.js");
+/* harmony import */ var _store_settings_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/settings-store */ "./src/store/settings-store.js");
+/* harmony import */ var _components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../components/RangeControl/single-range-control */ "../components/RangeControl/single-range-control.js");
 
 
 
 
-const ContainerSettingsScreen = props => {
+
+
+
+const LayoutSettingsScreen = props => {
+  const {
+    layoutSettings,
+    setLayoutSettings
+  } = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useContext)(_store_settings_store__WEBPACK_IMPORTED_MODULE_3__["default"]);
+
+  const changeHandler = (element, value) => {
+    const updatedLayoutSettings = { ...layoutSettings
+    };
+    updatedLayoutSettings[element] = value;
+    setLayoutSettings(updatedLayoutSettings);
+  };
+
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_header__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Container Settings'),
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Layout Settings'),
     description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Manage container default width and devices breakpoints.')
-  }));
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "premium-layout-screen"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Container Max Width'),
+    value: layoutSettings === null || layoutSettings === void 0 ? void 0 : layoutSettings.container_width,
+    onChange: value => changeHandler('container_width', value),
+    min: 1,
+    max: 4000,
+    units: ['px']
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Tablet Breakpoint'),
+    value: layoutSettings === null || layoutSettings === void 0 ? void 0 : layoutSettings.tablet_breakpoint,
+    onChange: value => changeHandler('tablet_breakpoint', value),
+    min: 1,
+    max: 2000,
+    units: ['px']
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Mobile Breakpoint'),
+    value: layoutSettings === null || layoutSettings === void 0 ? void 0 : layoutSettings.mobile_breakpoint,
+    onChange: value => changeHandler('mobile_breakpoint', value),
+    min: 1,
+    max: 2000,
+    units: ['px']
+  })));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (ContainerSettingsScreen);
+/* harmony default export */ __webpack_exports__["default"] = (LayoutSettingsScreen);
 
 /***/ }),
 
@@ -15856,8 +15923,8 @@ const RootScreen = () => {
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Typography')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_navigation_buttons__WEBPACK_IMPORTED_MODULE_3__.NavigationButtonAsItem, {
     icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"],
     path: '/container-settings',
-    "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Container Settings')
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Container Settings')))));
+    "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Layout')
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Layout')))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (RootScreen);
@@ -15902,16 +15969,15 @@ const TypographyScreen = props => {
   } = _helpers_defaults__WEBPACK_IMPORTED_MODULE_4__["default"];
 
   const getElementValue = element => {
-    var _typographySettings, _typographySettings2;
-
-    const value = (_typographySettings = typographySettings) !== null && _typographySettings !== void 0 && _typographySettings[element] ? (_typographySettings2 = typographySettings) === null || _typographySettings2 === void 0 ? void 0 : _typographySettings2[element] : defaultValues === null || defaultValues === void 0 ? void 0 : defaultValues[element];
+    const value = (globalTypography === null || globalTypography === void 0 ? void 0 : globalTypography[element]) || (defaultValues === null || defaultValues === void 0 ? void 0 : defaultValues[element]);
     return value;
   };
 
   const changeHandler = (element, value) => {
-    const updatedTypography = { ...settings.typography
+    const updatedTypography = { ...globalTypography
     };
-    updatedTypography[element] = value; // setSettings('typography', updatedTypography);
+    updatedTypography[element] = value;
+    setGlobalTypography(updatedTypography);
   };
 
   const LoadElementGoogleFont = props => {
@@ -15936,37 +16002,7 @@ const TypographyScreen = props => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_header__WEBPACK_IMPORTED_MODULE_3__["default"], {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Typography'),
     description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Manage the typography settings for different elements.')
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    onClick: () => {
-      setTypographySettings({
-        heading1: {
-          "fontWeight": "400",
-          "fontStyle": "",
-          "textTransform": "",
-          "fontFamily": "Default",
-          "textDecoration": "",
-          "fontSize": {
-            "Desktop": 48,
-            "Tablet": 48,
-            "Mobile": 48,
-            "unit": "px"
-          },
-          "lineHeight": {
-            "Desktop": 27,
-            "Tablet": 27,
-            "Mobile": 27,
-            "unit": "px"
-          },
-          "letterSpacing": {
-            "Desktop": 0,
-            "Tablet": 0,
-            "Mobile": 0,
-            "unit": "px"
-          }
-        }
-      });
-    }
-  }, "Test"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-typography-screen"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-element-typography"
@@ -16103,7 +16139,9 @@ const SettingsContext = React.createContext({
   setGlobalColors: () => {},
   setColorPallet: () => {},
   colorPallets: [],
-  setColorPallets: []
+  setColorPallets: [],
+  layoutSettings: {},
+  setLayoutSettings: () => {}
 });
 const SettingsProvider = props => {
   const [globalTypography, setGlobalTypography] = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_1__.useEntityProp)('root', 'site', 'pbg_global_typography');
@@ -16111,6 +16149,7 @@ const SettingsProvider = props => {
   const [colorPallet, setColorPallet] = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_1__.useEntityProp)('root', 'site', 'pbg_global_color_pallet');
   const [colorPallets, setColorPallets] = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_1__.useEntityProp)('root', 'site', 'pbg_global_color_pallets');
   const [themeCustomColors, setThemeCustomColors] = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_1__.useEntityProp)('root', 'site', 'pbg_theme_custom_colors');
+  const [layoutSettings, setLayoutSettings] = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_1__.useEntityProp)('root', 'site', 'pbg_global_layout');
   const settingsContext = {
     globalTypography,
     setGlobalTypography,
@@ -16121,7 +16160,9 @@ const SettingsProvider = props => {
     colorPallets,
     setColorPallets,
     themeCustomColors,
-    setThemeCustomColors
+    setThemeCustomColors,
+    layoutSettings,
+    setLayoutSettings
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SettingsContext.Provider, {
     value: settingsContext
@@ -16146,7 +16187,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _screens_ColorsScreen__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./screens/ColorsScreen */ "./src/screens/ColorsScreen.js");
-/* harmony import */ var _screens_ContainerSettingsScreen__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./screens/ContainerSettingsScreen */ "./src/screens/ContainerSettingsScreen.js");
+/* harmony import */ var _screens_LayoutSettingsScreen__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./screens/LayoutSettingsScreen */ "./src/screens/LayoutSettingsScreen.js");
 /* harmony import */ var _screens_RootScreen__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./screens/RootScreen */ "./src/screens/RootScreen.js");
 /* harmony import */ var _screens_TypographyScreen__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./screens/TypographyScreen */ "./src/screens/TypographyScreen.js");
 
@@ -16169,7 +16210,7 @@ const GlobalStylesUI = props => {
     path: "/typography"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_screens_TypographyScreen__WEBPACK_IMPORTED_MODULE_6__["default"], null)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalNavigatorScreen, {
     path: "/container-settings"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_screens_ContainerSettingsScreen__WEBPACK_IMPORTED_MODULE_4__["default"], null)));
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_screens_LayoutSettingsScreen__WEBPACK_IMPORTED_MODULE_4__["default"], null)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (GlobalStylesUI);
