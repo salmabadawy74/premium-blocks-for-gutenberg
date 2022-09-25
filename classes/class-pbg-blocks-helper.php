@@ -332,7 +332,6 @@ class PBG_Blocks_Helper
 		$is_enabled = isset(self::$config['premium-map-api']) ? self::$config['premium-map-api'] : true;
 
 		$api_key = isset(self::$config['premium-map-key']) ? self::$config['premium-map-key'] : '';
-
 		$is_maps_enabled = self::$blocks['maps'];
 
 		$is_section_enabled = self::$blocks['section'];
@@ -406,20 +405,20 @@ class PBG_Blocks_Helper
 
 				register_block_pbg_breadcrumbs();
 			} elseif ($slug === 'trigger') {
-                	wp_enqueue_script(
-		'premium-trigger-block-script',
-		PREMIUM_BLOCKS_URL . 'assets/js/trigger.js',
-		array('jquery'),
-		PREMIUM_BLOCKS_VERSION,
-		true
-	);
-	wp_enqueue_style(
-		'pbg-trigger-style',
-		PREMIUM_BLOCKS_URL . 'assets/css/minified/trigger.min.css',
-		array(),
-		PREMIUM_BLOCKS_VERSION,
-		'all'
-	);
+				wp_enqueue_script(
+					'premium-trigger-block-script',
+					PREMIUM_BLOCKS_URL . 'assets/js/trigger.js',
+					array('jquery'),
+					PREMIUM_BLOCKS_VERSION,
+					true
+				);
+				wp_enqueue_style(
+					'pbg-trigger-style',
+					PREMIUM_BLOCKS_URL . 'assets/css/minified/trigger.min.css',
+					array(),
+					PREMIUM_BLOCKS_VERSION,
+					'all'
+				);
 
 
 				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/trigger.php';
