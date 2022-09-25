@@ -633,7 +633,9 @@ const PBG_Block_Icons = {
   search: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
     id: "Premium_Blocks",
     xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 21.5 21.5"
+    viewBox: "0 0 21.5 21.5",
+    width: "21.5",
+    height: "21.5"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("defs", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("title", null, "premium-search-block"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("g", {
     id: "Search"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {

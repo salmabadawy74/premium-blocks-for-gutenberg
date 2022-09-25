@@ -12,13 +12,13 @@ import variations from './variations';
 import './editor.scss';
 import './style.scss';
 import { search } from '../../../assets/js/settings';
-
-
+import PBG_Block_Icons from '../../../assets/icons/block-icons'
 
 registerBlockType("premium/search", {
     ...metadata,
     example: {},
     variations,
+    icon: PBG_Block_Icons.search,
     /**
      * @see ./edit.js
      */

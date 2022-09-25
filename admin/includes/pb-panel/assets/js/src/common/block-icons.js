@@ -618,6 +618,8 @@ const PBG_Block_Icons = {
             id="Premium_Blocks"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 21.5 21.5"
+            width="21.5"
+            height="21.5"
         >
             <defs></defs>
             <title>premium-search-block</title>
