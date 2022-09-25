@@ -92,8 +92,8 @@ if (!class_exists('PBG_Plugin')) {
 
 			if (is_admin()) {
 				require_once PREMIUM_BLOCKS_PATH . 'admin/includes/rollback.php';
-				require_once PREMIUM_BLOCKS_PATH . 'admin/includes/pb-panel/class-pb-panel.php';
 			}
+			require_once PREMIUM_BLOCKS_PATH . 'admin/includes/pb-panel/class-pb-panel.php';
 
 			require_once PREMIUM_BLOCKS_PATH . 'classes/class-pbg-blocks-helper.php';
 	}
