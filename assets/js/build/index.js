@@ -39305,7 +39305,9 @@ const {
   SelectControl,
   TextControl,
   TextareaControl,
-  ToggleControl
+  ToggleControl,
+  Placeholder,
+  Button
 } = wp.components;
 const {
   useEffect,
@@ -39328,6 +39330,8 @@ function Edit(props) {
   const [thisMap, setMap] = useState(null);
   const [thisInfo, setInfo] = useState(null);
   const contentRef = React.createRef();
+  const setting_url = PremiumBlocksSettings.admin_url + "admin.php?page=pb_panel&tab=settings";
+  console.log(setting_url);
   useEffect(() => {
     setAttributes({
       blockId: "premium-map-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_14__.generateBlockId)(clientId)
@@ -39584,7 +39588,7 @@ function Edit(props) {
     value: "hybrid",
     label: __("Hybrid", 'premium-blocks-for-gutenberg')
   }];
-  return typeof google !== "undefined" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InspectorControls, {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, typeof google !== "undefined" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InspectorControls, {
     key: "key"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_inspectorTabs__WEBPACK_IMPORTED_MODULE_7__["default"], {
     tabs: ['layout', 'style', 'advance']
@@ -39885,14 +39889,20 @@ function Edit(props) {
   }), {
     style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_14__.marginCss)(mapMargin, props.deviceType)
     }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  }), typeof google !== "undefined" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     ref: contentRef
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "map-container",
     style: {
       height: height + "px"
     }
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", null, loadStyles()), loadDescriptionGoogleFonts, loadTitleGoogleFonts));
+  })) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Placeholder, {
+    label: __('Maps', 'premium-blocks-for-gutenberg'),
+    className: className
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, __("Premium Maps requires an API key.", 'premium-blocks-for-gutenberg'), " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
+    target: "_blank",
+    href: setting_url
+  }, __("Add API key here", 'premium-blocks-for-gutenberg')))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", null, loadStyles()), loadDescriptionGoogleFonts, loadTitleGoogleFonts));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (withSelect(select => {

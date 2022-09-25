@@ -1343,7 +1343,7 @@ const Setting = () => {
   const {
     createNotice
   } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.useDispatch)(_wordpress_notices__WEBPACK_IMPORTED_MODULE_6__.store);
-  console.log(data);
+  console.log(data, PremiumBlocksPanelData.apiData);
 
   const onChangeData = async (key, value) => {
     const updatedData = { ...data
