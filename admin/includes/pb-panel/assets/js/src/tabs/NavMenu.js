@@ -18,6 +18,16 @@ export default function MainNav() {
             slug: PremiumBlocksPanelData.home_slug,
             path: "settings",
         },
+        {
+            name: __("Version Control", "premium-blocks-for-gutenberg"),
+            slug: PremiumBlocksPanelData.home_slug,
+            path: "rollback",
+        },
+        {
+            name: __("System Info", "premium-blocks-for-gutenberg"),
+            slug: PremiumBlocksPanelData.home_slug,
+            path: "system",
+        },
     ];
 
     const query = new URLSearchParams(useLocation()?.search);
