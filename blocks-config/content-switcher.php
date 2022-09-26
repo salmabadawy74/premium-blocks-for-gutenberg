@@ -15,6 +15,7 @@ function get_content_switcher_css_style($attributes, $unique_id)
 	$media_query['tablet']  = apply_filters('Premium_BLocks_tablet_media_query', '(max-width: 1024px)');
 	$media_query['desktop'] = apply_filters('Premium_BLocks_tablet_media_query', '(min-width: 1025px)');
 	$unique_id              = $attributes['blockId'];
+	$display = $attributes['display'];
 	$display              = $display ? $display : 'inline';
 
 	// Container styles
