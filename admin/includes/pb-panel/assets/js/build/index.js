@@ -1490,6 +1490,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_Container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/Container */ "./src/common/Container.js");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_notices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/notices */ "@wordpress/notices");
+/* harmony import */ var _wordpress_notices__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_notices__WEBPACK_IMPORTED_MODULE_5__);
+
+
 
 
 
@@ -1521,6 +1527,10 @@ const iconArrow = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createEleme
 const Support = () => {
   const [email, setEmail] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)("");
   const [isLoading, setIsLoading] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const {
+    createNotice,
+    createErrorNotice
+  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useDispatch)(_wordpress_notices__WEBPACK_IMPORTED_MODULE_5__.store);
 
   const submitHandler = async () => {
     if (isLoading) {
@@ -1530,10 +1540,9 @@ const Support = () => {
     setIsLoading(true);
 
     if (!checkEmail(email)) {
-      Swal.fire({
-        icon: "error",
-        title: __("Invalid Email Address...", "premium-blocks-for-gutenberg"),
-        text: __("Please enter a valid email address!", "premium-blocks-for-gutenberg")
+      createErrorNotice(__("Invalid Email Address...", "premium-blocks-for-gutenberg"), {
+        isDismissible: true,
+        type: "snackbar"
       });
       setIsLoading(false);
       return;
@@ -1559,20 +1568,15 @@ const Support = () => {
         } = await response.json();
 
         if (success && status) {
-          Swal.fire({
-            icon: "success",
-            title: __("Success", "premium-blocks-for-gutenberg"),
-            text: __("Thanks for your subscribe!", "premium-blocks-for-gutenberg"),
-            timer: 3000
+          createNotice(__("success", "premium-blocks-for-gutenberg"), __("Thanks for your subscribe!", "premium-blocks-for-gutenberg"), {
+            isDismissible: true,
+            type: "snackbar"
           });
-          console.log(status, success, "success");
           setEmail("");
         } else {
-          console.log(status, success, "error");
-          Swal.fire({
-            icon: "error",
-            title: __("Invalid Email Address...", "premium-blocks-for-gutenberg"),
-            text: __("Please enter a valid email address!", "premium-blocks-for-gutenberg")
+          createErrorNotice(__("Invalid Email Address...", "premium-blocks-for-gutenberg"), {
+            isDismissible: true,
+            type: "snackbar"
           });
         }
       }
