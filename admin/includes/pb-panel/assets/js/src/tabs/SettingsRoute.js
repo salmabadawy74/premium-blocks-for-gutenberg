@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import Welcome from "./welcome";
 import Blocks from "./options";
 import Settings from "./setting";
-import Rollback from "./rollback";
+import RollBack from "./rollback";
 import System from "./system";
 function SettingsRoute() {
     const query = new URLSearchParams(useLocation().search);
@@ -25,6 +25,12 @@ function SettingsRoute() {
                 break;
             case "settings":
                 routePage = <Settings />;
+                break;
+            case "rollback":
+                routePage = <RollBack />;
+                break;
+            case "system":
+                routePage = <System />;
                 break;
             default:
                 routePage = <Welcome />;

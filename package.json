@@ -46,6 +46,7 @@
         "react-google-font-loader": "^1.1.0",
         "react-lottie-with-segments": "^1.4.8",
         "react-modal": "^3.14.4",
+        "react-router-dom": "^6.4.1",
         "react-select": "^2.2.0",
         "react-sortable-hoc": "^1.11.0",
         "react-spring": "^8.0.1",
