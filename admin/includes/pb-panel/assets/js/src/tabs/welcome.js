@@ -1,6 +1,9 @@
 import Card from "../common/Card";
 import Container from "../common/Container";
 import { __experimentalGrid as Grid } from "@wordpress/components";
+import { useDispatch } from "@wordpress/data";
+import { store as noticesStore } from "@wordpress/notices";
+
 const { __ } = wp.i18n;
 const { Dashicon } = wp.components;
 const iconArrow = (
@@ -31,22 +34,20 @@ import { useState } from "@wordpress/element";
 const Support = () => {
     const [email, setEmail] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const { createNotice, createErrorNotice } = useDispatch(noticesStore);
+
     const submitHandler = async () => {
         if (isLoading) {
             return;
         }
         setIsLoading(true);
         if (!checkEmail(email)) {
-            Swal.fire({
-                icon: "error",
-                title: __(
-                    "Invalid Email Address...",
-                    "premium-blocks-for-gutenberg"
-                ),
-                text: __(
-                    "Please enter a valid email address!",
-                    "premium-blocks-for-gutenberg"
-                ),
+            createErrorNotice(__(
+                "Invalid Email Address...",
+                "premium-blocks-for-gutenberg"
+            ), {
+                isDismissible: true,
+                type: "snackbar",
             });
             setIsLoading(false);
             return;
@@ -69,29 +70,21 @@ const Support = () => {
                     data: { status },
                 } = await response.json();
                 if (success && status) {
-                    Swal.fire({
-                        icon: "success",
-                        title: __("Success", "premium-blocks-for-gutenberg"),
-                        text: __(
-                            "Thanks for your subscribe!",
-                            "premium-blocks-for-gutenberg"
-                        ),
-                        timer: 3000,
+                    createNotice(__("success", "premium-blocks-for-gutenberg"), __(
+                        "Thanks for your subscribe!",
+                        "premium-blocks-for-gutenberg"
+                    ), {
+                        isDismissible: true,
+                        type: "snackbar",
                     });
-                    console.log(status, success, "success");
                     setEmail("");
                 } else {
-                    console.log(status, success, "error");
-                    Swal.fire({
-                        icon: "error",
-                        title: __(
-                            "Invalid Email Address...",
-                            "premium-blocks-for-gutenberg"
-                        ),
-                        text: __(
-                            "Please enter a valid email address!",
-                            "premium-blocks-for-gutenberg"
-                        ),
+                    createErrorNotice(__(
+                        "Invalid Email Address...",
+                        "premium-blocks-for-gutenberg"
+                    ), {
+                        isDismissible: true,
+                        type: "snackbar",
                     });
                 }
             }
