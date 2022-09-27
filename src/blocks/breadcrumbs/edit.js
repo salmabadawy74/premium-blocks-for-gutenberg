@@ -301,7 +301,7 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
                         </PanelBody>
                         <PanelBody
                             title={__('Colors', 'premium-blocks-for-gutenberg')}
-                            initialOpen={true}
+                            initialOpen={false}
                         >
                             <InsideTabs>
                                 <InsideTab tabTitle={__("Normal", "premium-blocks-for-gutenberg")}>

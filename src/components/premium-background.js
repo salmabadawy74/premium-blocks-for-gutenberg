@@ -159,7 +159,7 @@ export default function PremiumBackground(props) {
                                 className={"premium-placeholder-image"}
                             >
                                 <Dashicon icon="insert" />
-                                <span>{__("Insert Background ")}</span>
+                                <span className='premium-placeholder-image-insert'>{__("Insert Background ")}</span>
                             </div>
                         )}
                     </Fragment>

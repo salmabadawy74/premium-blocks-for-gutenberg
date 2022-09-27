@@ -637,7 +637,11 @@ function SearchEdit({
 							<SpacingComponent value={buttonPadding} responsive={true} showUnits={true} label={__('Button Padding', 'premium-blocks-for-gutenberg')} onChange={(value) => onChangeSpacing({ buttonPadding: value })} />
 						</PanelBody>
 						{ajaxSearch && (
-							<PanelBody title={formStyle === 'button' ? __('Modal', 'premium-blocks-for-gutenberg') : __('Dropdown', 'premium-blocks-for-gutenberg')}>
+							<PanelBody
+								title={formStyle === 'button' ? __('Modal', 'premium-blocks-for-gutenberg') : __('Dropdown', 'premium-blocks-for-gutenberg')}
+								className="premium-panel-body"
+								initialOpen={false}
+							>
 								<InsideTabs>
 									<InsideTab tabTitle={__("Normal", "premium-blocks-for-gutenberg")}>
 										<Fragment>
