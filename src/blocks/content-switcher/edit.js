@@ -319,7 +319,7 @@ function Edit(props) {
                                 defaultValue={15}
                                 device="Desktop"
                             />
-                            <h2>
+                            <h2 className="premium-blocks-heading">
                                 {__(
                                     "Controller Background",
                                     "premium-blocks-for-gutenberg"
@@ -334,7 +334,7 @@ function Edit(props) {
                                 }
                             />
                             <hr />
-                            <h2>
+                            <h2 className="premium-blocks-heading">
                                 {__(
                                     "Switcher Background",
                                     "premium-blocks-for-gutenberg"

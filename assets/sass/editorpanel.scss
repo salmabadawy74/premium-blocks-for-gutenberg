@@ -351,6 +351,10 @@ $icon-background: #696969;
     span {
         margin-top: 8px;
     }
+
+    .premium-placeholder-image-insert {
+        font-size: 13px;
+    }
 }
 
 .lottie-remove {
@@ -4401,9 +4405,11 @@ i.fipicon-angle-left {
     align-items: center;
     justify-content: space-between;
 
-    p.premium-beside-btn-group {
+    .premium-beside-btn-group {
         margin: 0px;
         margin: 0px;
+        font-weight: 600;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     }
 
     .premium-background-type__wrap {
@@ -5002,6 +5008,7 @@ i.fipicon-angle-left {
         .premium-color-label {
             flex-grow: 1;
             font-weight: 400;
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
         }
     }
 }

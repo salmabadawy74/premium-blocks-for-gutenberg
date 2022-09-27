@@ -12065,7 +12065,7 @@ function Edit(_ref) {
     })
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Colors', 'premium-blocks-for-gutenberg'),
-    initialOpen: true
+    initialOpen: false
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTabs__WEBPACK_IMPORTED_MODULE_12__["default"], null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_13__["default"], {
     tabTitle: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)("Normal", "premium-blocks-for-gutenberg")
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_7__["default"], {
@@ -19038,12 +19038,16 @@ function Edit(props) {
     showUnit: false,
     defaultValue: 15,
     device: "Desktop"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, __("Controller Background", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Premium_Background_Control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", {
+    className: "premium-blocks-heading"
+  }, __("Controller Background", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Premium_Background_Control__WEBPACK_IMPORTED_MODULE_6__["default"], {
     value: controllerOneBackground,
     onChange: value => setAttributes({
       controllerOneBackground: value
     })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, __("Switcher Background", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Premium_Background_Control__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", {
+    className: "premium-blocks-heading"
+  }, __("Switcher Background", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Premium_Background_Control__WEBPACK_IMPORTED_MODULE_6__["default"], {
     value: switcherBackground,
     onChange: value => setAttributes({
       switcherBackground: value
@@ -47819,7 +47823,9 @@ function SearchEdit(_ref) {
       buttonPadding: value
     })
   })), ajaxSearch && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
-    title: formStyle === 'button' ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Modal', 'premium-blocks-for-gutenberg') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Dropdown', 'premium-blocks-for-gutenberg')
+    title: formStyle === 'button' ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Modal', 'premium-blocks-for-gutenberg') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Dropdown', 'premium-blocks-for-gutenberg'),
+    className: "premium-panel-body",
+    initialOpen: false
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_InsideTabs__WEBPACK_IMPORTED_MODULE_19__["default"], null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_InsideTab__WEBPACK_IMPORTED_MODULE_20__["default"], {
     tabTitle: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)("Normal", "premium-blocks-for-gutenberg")
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, ajaxSearch && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_13__["default"], {
@@ -58104,7 +58110,9 @@ function PremiumBackground(props) {
         className: "premium-placeholder-image"
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Dashicon, {
         icon: "insert"
-      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, __("Insert Background "))));
+      }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+        className: "premium-placeholder-image-insert"
+      }, __("Insert Background "))));
     }
   }), imageURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
     label: __("Position"),
@@ -58216,7 +58224,9 @@ const PremiumBorder = props => {
     style: {
       display: "flex"
     }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, props.label ? props.label : __('Border', 'premium-blocks-for-gutenberg')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "premium-blocks-border__header"
+  }, props.label ? props.label : __('Border', 'premium-blocks-for-gutenberg')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-blocks-border-button-list "
   }, [['solid', __('Solid', "premium-blocks-for-gutenberg")], ['dotted', __('Dotted', "premium-blocks-for-gutenberg")], ['dashed', __('Dashed', "premium-blocks-for-gutenberg")], ['double', __('Double', "premium-blocks-for-gutenberg")]].map((data, index) => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Tooltip, {

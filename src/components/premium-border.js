@@ -47,7 +47,7 @@ const PremiumBorder = (props) => {
         <div className=" premium-blocks__base-control">
             <Fragment>
                 <div className="premium-blocks-border__control " style={{ display: "flex" }}>
-                    <div>
+                    <div className='premium-blocks-border__header'>
                         {props.label ? props.label : __('Border', 'premium-blocks-for-gutenberg')}
                     </div>
                     <div className="premium-blocks-border-button-list ">

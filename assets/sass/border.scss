@@ -3,12 +3,18 @@
     align-items: center;
     position: relative;
     margin-bottom: 20px;
+
+    .premium-blocks-border__header {
+        font-size: 13px;
+    }
 }
+
 .premium-blocks-border-button-list {
     margin-left: auto;
     display: inline-flex;
     vertical-align: middle;
     margin-right: 6px;
+
     .premium-border-button {
         flex: 1 1 0;
         display: flex;
@@ -33,19 +39,23 @@
         cursor: pointer;
         align-items: center;
         text-align: center;
+
         &:not(:first-child) {
             margin-left: -1px;
         }
+
         &:not(:last-child) {
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
         }
     }
+
     .premium-border-button.active {
         background: #007cba;
         color: #ffffff;
     }
 }
+
 .premium-blocks-border-type {
     width: 16px;
     display: block;
@@ -53,44 +63,57 @@
     width: 16px;
     height: 0;
 }
+
 .premium-blocks-border-type.premium-blocks-border-type-solid {
     border-top: 3px solid #4a5568;
 }
+
 .premium-blocks-border-type.premium-blocks-border-type-dotted {
     border-top: 3px dotted #4a5568;
 }
+
 .premium-blocks-border-type.premium-blocks-border-type-dashed {
     border-top: 3px dashed #4a5568;
 }
+
 .premium-blocks-border-type.premium-blocks-border-type-double {
     border-top: 6px double #4a5568;
 }
+
 .active {
     .premium-blocks-border-type.premium-blocks-border-type-solid {
         border-top-color: #fff;
     }
+
     .premium-blocks-border-type.premium-blocks-border-type-dotted {
         border-top-color: #fff;
     }
+
     .premium-blocks-border-type.premium-blocks-border-type-dashed {
         border-top-color: #fff;
     }
+
     .premium-blocks-border-type.premium-blocks-border-type-double {
         border-top-color: #fff;
     }
+
     .premium-svg-fill {
         fill: #2184f9;
     }
+
     .premium-svg-stroke {
         stroke: #2184f9;
     }
 }
+
 .premium-svg-fill {
     fill: #8d96a0;
 }
+
 .premium-svg-stroke {
     stroke: #8d96a0;
 }
+
 .premium-blocks-border-clear__container {
     margin-left: 10px;
 }
