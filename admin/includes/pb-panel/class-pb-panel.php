@@ -154,15 +154,13 @@ if (!class_exists('Pb_Panel')) {
 		{
 			check_ajax_referer('pb-panel', 'nonce');
 
-			$option  = isset($_POST['option']) ? sanitize_text_field(wp_unslash($_POST['option'])) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-			$value   = isset($_POST['value']) ? sanitize_text_field(wp_unslash($_POST['value'])) : '';
-			$value   = 'true' === $value ? true : false;
+			$value = isset($_POST['value']) ? json_decode(stripslashes($_POST['value']), true) : array();
 			$options = apply_filters('pb_options', get_option('pb_options', array()));
 			// $options = get_option( 'pb_options' );
 			$options = !is_array($options) ? array() : $options;
 
-			if ('' !== $value && '' !== $option) {
-				$options[$option] = $value;
+			if ($value) {
+				$options = $value;
 				update_option('pb_options', $options);
 
 				wp_send_json_success(

@@ -5,7 +5,7 @@ import SettingsRoute from "./SettingsRoute";
 import Header from "../layout/Header";
 import Notices from "../layout/Notices";
 
-const SettingsWrap = () => {
+const SettingsWrap = ({ store }) => {
     return (
         <Router>
             <Header />
@@ -13,7 +13,7 @@ const SettingsWrap = () => {
             <MainNav />
             <Switch>
                 <Route path="/">
-                    <SettingsRoute />
+                    <SettingsRoute store={store} />
                 </Route>
             </Switch>
         </Router>

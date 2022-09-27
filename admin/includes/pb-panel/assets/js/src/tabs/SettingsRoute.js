@@ -5,7 +5,7 @@ import Blocks from "./options";
 import Settings from "./setting";
 import RollBack from "./rollback";
 import System from "./system";
-function SettingsRoute() {
+function SettingsRoute({ store }) {
     const query = new URLSearchParams(useLocation().search);
     const page = query.get("page");
     const path = query.get("path");

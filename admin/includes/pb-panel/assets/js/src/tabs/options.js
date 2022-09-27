@@ -3,22 +3,26 @@ import Container from "../common/Container";
 import OptionsComponent from "../options-component";
 import classNames from "classnames";
 const { __ } = wp.i18n;
-import { useDispatch } from "@wordpress/data";
+// import { useDispatchd as dispatchWordpress } from "@wordpress/data";
+import { updateblockStatus } from "../features/blocks/index";
 
 import { store as noticesStore } from "@wordpress/notices";
+import { useDispatch, useSelector } from "react-redux";
 
 const OptionsTab = (props) => {
-    const [values, setValues] = useState(PremiumBlocksPanelData.values);
-    const { createNotice } = useDispatch(noticesStore);
-
+    const blocks = useSelector((state) => state.blockStates.blocks);
+    const dispatch = useDispatch();
+    // const { createNotice } = useDispatch(noticesStore);
     const handleChange = async (newValues, id) => {
-        let newItems = { ...values };
+        let newItems = { ...blocks };
         newItems[id] = newValues;
+        dispatch(updateblockStatus.updateblockStatus(newItems));
+
         const body = new FormData();
+
         body.append("action", "pb-panel-update-option");
         body.append("nonce", PremiumBlocksPanelData.nonce);
-        body.append("option", id);
-        body.append("value", newValues);
+        body.append("value", JSON.stringify(newItems));
 
         try {
             const response = await fetch(PremiumBlocksPanelData.ajaxurl, {
@@ -28,19 +32,18 @@ const OptionsTab = (props) => {
             if (response.status === 200) {
                 const { success, data } = await response.json();
                 if (success && data.values) {
-                    setValues(newItems);
-                    createNotice("success", "Settings saved ", {
-                        isDismissible: true,
-                        type: "snackbar",
-                    });
+                    // createNotice("success", "Settings saved ", {
+                    //     isDismissible: true,
+                    //     type: "snackbar",
+                    // });
                 }
             }
         } catch (e) {
             console.log(e);
-            createNotice("error", __("An unknown error occurred.", ""), {
-                isDismissible: true,
-                type: "snackbar",
-            });
+            // createNotice("error", __("An unknown error occurred.", ""), {
+            //     isDismissible: true,
+            //     type: "snackbar",
+            // });
         }
     };
 
@@ -84,7 +87,7 @@ const OptionsTab = (props) => {
                 <div className="pb-options options-section">
                     <OptionsComponent
                         options={options}
-                        values={values}
+                        values={blocks}
                         onChange={(newVal, optionId) => {
                             handleChange(newVal, optionId);
                         }}
