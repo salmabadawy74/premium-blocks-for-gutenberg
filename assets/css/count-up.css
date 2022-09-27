@@ -5,7 +5,8 @@
   display: -ms-flex;
   display: flex;
   align-items: baseline;
-  align-items: center; }
+  align-items: center;
+  border-color: var(--pbg-global-color4); }
   .premium-countup__wrap .premium-countup__title {
     margin: 0;
     padding: 0; }

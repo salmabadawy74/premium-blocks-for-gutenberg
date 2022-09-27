@@ -32,18 +32,18 @@ export default function AddPaletteContainer({
                 </button>
                 <div className={`premium-palette-info`}>
                     <div className={`premium-palette-name`}>
-                        <p className={`premium-palette-type-label`}>{__("palette name", "kemet")}</p>
+                        <p className={`premium-palette-type-label`}>{__("palette name", "premium-blocks-for-gutenberg")}</p>
                         <input
                             type="text"
                             className={`premium-add-palette-title`}
-                            placeholder={__("name your palette", "kemet")}
+                            placeholder={__("name your palette", "premium-blocks-for-gutenberg")}
                             onChange={(e) =>
                                 setPaletteData({ ...data, name: e.target.value })
                             }
                         />
                     </div>
                     <div className={`premium-Palette-type-container`}>
-                        <p className={`premium-palette-type-label`}>{__("palette type", "kemet")}</p>
+                        <p className={`premium-palette-type-label`}>{__("palette type", "premium-blocks-for-gutenberg")}</p>
                         <div className={`premium-Palette-type-wrapper`}>
                             <span>
                                 <input
@@ -52,7 +52,7 @@ export default function AddPaletteContainer({
                                     name="type"
                                     onChange={() => setPaletteData({ ...data, type: "light" })}
                                 />
-                                {__('Light', "kemet")}
+                                {__('Light', "premium-blocks-for-gutenberg")}
                             </span>
                             <span>
                                 {" "}
@@ -62,7 +62,7 @@ export default function AddPaletteContainer({
                                     name="type"
                                     onChange={() => setPaletteData({ ...data, type: "dark" })}
                                 />
-                                {__('Dark', "kemet")}
+                                {__('Dark', "premium-blocks-for-gutenberg")}
                             </span>
                         </div>
                     </div>
@@ -75,7 +75,7 @@ export default function AddPaletteContainer({
                             handleAddPalette(data);
                         }}
                     >
-                        {__('Save Palette', "kemet")}
+                        {__('Save Palette', "premium-blocks-for-gutenberg")}
                     </button>
                 </div>
             </div>

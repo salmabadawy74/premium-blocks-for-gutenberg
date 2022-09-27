@@ -82,7 +82,7 @@ const ColorPalettesModal = ({ value, onChange, titles, wrapperProps = {}, handle
 
 			))
 			}
-			<div className={`premium_label_type__palette`}>{__(`Default palettes`, "kemet")}</div>
+			<div className={`premium_label_type__palette`}>{__(`Default palettes`, "premium-blocks-for-gutenberg")}</div>
 			{pbgPaletteColors.map((palette, index) => (
 				<Fragment>
 					<PalettePreview

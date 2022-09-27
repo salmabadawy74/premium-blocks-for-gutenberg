@@ -76,6 +76,7 @@ $pbBorderColor: #e1e1e1;
         box-sizing: border-box;
         -webkit-transition: all 0.3s ease-in-out;
         transition: all 0.3s ease-in-out;
+        border-color: var(--pbg-global-color4);
         * {
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;

@@ -220,7 +220,7 @@ const defaults = {
         },
         {
             slug: 'color3',
-            name: __("Body text & Meta color"),
+            name: __("Body text"),
             color: '#444140',
             default: true,
             type: 'pbg'

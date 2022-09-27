@@ -38,6 +38,54 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 		public function __construct() {
 			add_action( 'enqueue_block_editor_assets', array( $this, 'script_enqueue' ) );
 			add_action( 'init', array( $this, 'register_pbg_global_settings' ) );
+			add_action( 'pbg_dynamic_css', array( $this, 'add_global_color_to_editor' ) );
+		}
+
+		public function add_global_color_to_editor( $dynamic_css ) {
+			$default_value = array(
+				'colors'         => array(
+					array(
+						'slug'  => 'color1',
+						'color' => '#0085ba',
+					),
+					array(
+						'slug'  => 'color2',
+						'color' => '#333333',
+					),
+					array(
+						'slug'  => 'color3',
+						'color' => '#444140',
+					),
+					array(
+						'slug'  => 'color4',
+						'color' => '#eaeaea',
+					),
+					array(
+						'slug'  => 'color5',
+						'color' => '#ffffff',
+					),
+				),
+				'current_palett' => 'pallet-1',
+				'custom_colors'  => array(),
+			);
+			$global_colors = get_option( 'pbg_global_colors', $default_value );
+			$css           = new Premium_Blocks_css();
+			$css->set_selector( ':root' );
+			$css->add_property( '--pbg-global-color1', $css->render_color( $global_colors['colors'][0]['color'] ) );
+			$css->add_property( '--pbg-global-color2', $css->render_color( $global_colors['colors'][1]['color'] ) );
+			$css->add_property( '--pbg-global-color3', $css->render_color( $global_colors['colors'][2]['color'] ) );
+			$css->add_property( '--pbg-global-color4', $css->render_color( $global_colors['colors'][3]['color'] ) );
+			$css->add_property( '--pbg-global-color5', $css->render_color( $global_colors['colors'][3]['color'] ) );
+			$css->set_selector( '[class*="wp-block-premium"]' );
+			$css->add_property( 'color', $css->render_color( 'var(--pbg-global-color3)' ) );
+			$css->set_selector( '[class*="wp-block-premium"] h1, [class*="wp-block-premium"] h2, [class*="wp-block-premium"] h3,[class*="wp-block-premium"] h4,[class*="wp-block-premium"] h5,[class*="wp-block-premium"] h6, [class*="wp-block-premium"] a' );
+			$css->add_property( 'color', $css->render_color( 'var(--pbg-global-color2)' ) );
+			$css->set_selector( '[class*="wp-block-premium"] a:hover' );
+			$css->add_property( 'color', $css->render_color( 'var(--pbg-global-color1)' ) );
+
+			$dynamic_css .= $css->css_output();
+			error_log( $dynamic_css );
+			return $dynamic_css;
 		}
 
 		/**

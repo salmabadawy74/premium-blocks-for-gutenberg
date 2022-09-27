@@ -3,7 +3,7 @@ $pbBorderColor: #e1e1e1;
 
 .premium-accordion {
     padding: 15px;
-    
+
     .premium-accordion__title_wrap {
         text-align: left;
         cursor: pointer;
@@ -82,7 +82,7 @@ $pbBorderColor: #e1e1e1;
 }
 
 .premium-accordion__title_wrap {
-    border: 1px solid $pbBorderColor;
+    border: 1px solid var(--pbg-global-color4);
 }
 
 .premium-accordion__title_wrap.premium-accordion__rtl {

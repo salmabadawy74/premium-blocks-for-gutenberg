@@ -87,17 +87,26 @@ class AdvancedColorControl extends Component {
         const isNew = wp.components.GradientPicker;
 
         const getDefaultColors = () => {
-            const { pbgGlobalColors, pbgDefaultPallet, colors } = this.props;
+            const { pbgGlobalColors, pbgDefaultPallet, colors, customThemeColors } = this.props;
 
             let globalColors = [...colors];
-            if (pbgGlobalColors.length) {
-                if (pbgDefaultPallet === 'theme') {
-                    const themeCustomColors = pbgGlobalColors.filter((color) => color.type === 'theme');
-                    globalColors = [...this.props.colors, ...themeCustomColors];
-                }
-                if (pbgDefaultPallet === 'pbg') {
-                    globalColors = pbgGlobalColors.filter((color) => color.type === 'pbg');
-                }
+            if (pbgDefaultPallet === 'theme') {
+                globalColors = [...this.props.colors, ...customThemeColors];
+            }
+            if (pbgDefaultPallet === 'pbg') {
+                const titles = [
+                    __(`Buttons background color \n& Links hover color`, "premium-blocks-for-gutenberg"),
+                    __("Headings & Links color", "premium-blocks-for-gutenberg"),
+                    __("Body text", "premium-blocks-for-gutenberg"),
+                    __("Borders color", "premium-blocks-for-gutenberg"),
+                    __(
+                        "Body background, a tint for Input fields",
+                        "premium-blocks-for-gutenberg"
+                    ),
+                    __("Footer text color", "premium-blocks-for-gutenberg"),
+                    __("Footer background color", "premium-blocks-for-gutenberg"),
+                ];
+                globalColors = [...pbgGlobalColors.colors].map((color, index) => ({ ...color, name: titles[index] }));
             }
             return globalColors;
         }
@@ -308,6 +317,7 @@ export default withSelect((select, ownProps) => {
     const { getEditedEntityRecord } = select(coreStore);
     const pbgGlobalColors = getEditedEntityRecord('root', 'site')?.pbg_global_colors || [];
     const pbgDefaultPallet = getEditedEntityRecord('root', 'site')?.pbg_global_color_pallet || 'theme';
+    const customThemeColors = getEditedEntityRecord('root', 'site')?.pbg_theme_custom_colors || [];
     const colors = get(settings, ["colors"], []);
     const disableCustomColors =
         ownProps.disableCustomColors === undefined
@@ -319,6 +329,7 @@ export default withSelect((select, ownProps) => {
         colors,
         disableCustomColors,
         pbgGlobalColors,
-        pbgDefaultPallet
+        pbgDefaultPallet,
+        customThemeColors
     };
 })(AdvancedColorControl);

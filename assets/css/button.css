@@ -21,10 +21,11 @@
   -ms-transition: all 0.2s ease-in-out !important;
   -o-transition: all 0.2s ease-in-out !important;
   transition: all 0.2s ease-in-out !important;
-  background: #f2f2f2;
+  background-color: var(--pbg-global-color1);
   text-decoration: none;
   white-space: normal;
-  word-break: break-all; }
+  word-break: break-all;
+  border-color: var(--pbg-global-color4); }
 
 .premium-button__sm {
   padding: 12px 24px;

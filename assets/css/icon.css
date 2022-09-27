@@ -71,6 +71,9 @@
     -webkit-transform: translateY(0);
     transform: translateY(0); } }
 
+.premium-icon {
+  border-color: var(--pbg-global-color4); }
+
 .premium-icon__alert {
   padding: 10px;
   color: #b94a48;

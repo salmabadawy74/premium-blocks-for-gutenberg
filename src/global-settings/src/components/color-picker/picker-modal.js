@@ -81,9 +81,9 @@ const PickerModal = ({
                                     }}
                                     className=" premium-btn-reset__color is-secondary is-small"
                                 >
-                                    {__("Reset", "kemet")}
+                                    {__("Reset", "premium-blocks-for-gutenberg")}
                                 </button>
-                                <p className={`premium-reset__description`}>{__(`This will reset the current color to the default one.`, "kemet")}</p>
+                                <p className={`premium-reset__description`}>{__(`This will reset the current color to the default one.`, "premium-blocks-for-gutenberg")}</p>
                             </div>
                         )}
                     </>
@@ -109,9 +109,9 @@ const PickerModal = ({
                                     }}
                                     className=" premium-btn-reset__color is-secondary is-small"
                                 >
-                                    {__("Reset", "kemet")}
+                                    {__("Reset", "premium-blocks-for-gutenberg")}
                                 </button>
-                                <p className={`premium-reset__description`}>{__(`This will reset the current color to the default one.`, "kemet")}</p>
+                                <p className={`premium-reset__description`}>{__(`This will reset the current color to the default one.`, "premium-blocks-for-gutenberg")}</p>
                             </div>
                         )}
                     </>

@@ -72,9 +72,9 @@
             "type": "array",
             "default": [
                 {
-                    "textColor": "",
+                    "textColor": "#ffffff",
                     "textHoverColor": "",
-                    "backColor": "rgb(242, 242, 242)",
+                    "backColor": "var(--pbg-global-color1)",
                     "backOpacity": 1,
                     "backHoverColor": "",
                     "borderHoverColor": ""

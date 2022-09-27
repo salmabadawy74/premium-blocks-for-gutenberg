@@ -36,16 +36,16 @@ const ColorPalettes = ({
         shouldCalculate: isTransitioning || isOpen,
     });
     const titles = [
-        __(`Buttons background color \n& Links hover color`, "kemet"),
-        __("Headings & Links color", "kemet"),
-        __("Body text & Meta color", "kemet"),
-        __("Borders color", "kemet"),
+        __(`Buttons background color \n& Links hover color`, "premium-blocks-for-gutenberg"),
+        __("Headings & Links color", "premium-blocks-for-gutenberg"),
+        __("Body text", "premium-blocks-for-gutenberg"),
+        __("Borders color", "premium-blocks-for-gutenberg"),
         __(
-            "Body background, a tint for Input fields,\nPage titles, Widgets background",
-            "kemet"
+            "Body background, a tint for Input fields",
+            "premium-blocks-for-gutenberg"
         ),
-        __("Footer text color", "kemet"),
-        __("Footer background color", "kemet"),
+        __("Footer text color", "premium-blocks-for-gutenberg"),
+        __("Footer background color", "premium-blocks-for-gutenberg"),
     ];
     const activePallet = [...state, ...defaultPallets].find(pallet => pallet.id === globalColors.current_palett);
     const newColorsObj = globalColors?.colors.map((color, index) => {
@@ -69,10 +69,9 @@ const ColorPalettes = ({
     };
 
     const changeCustomColorToPallet = (color, index) => {
-        let newColors = index.includes('custom') ? [...activePallet.custom_colors] : [...activePallet.colors];
+        let newColors = [...activePallet.custom_colors];
         newColors = newColors.map(colorObj => colorObj.slug === index ? { ...colorObj, color: color } : colorObj);
-        const changedColors = index.includes('custom') ? 'custom_colors' : 'colors';
-        const newPallets = [...state].map(pallet => pallet.id === activePallet.id ? { ...pallet, [changedColors]: newColors } : pallet);
+        const newPallets = [...state].map(pallet => pallet.id === activePallet.id ? { ...pallet, custom_colors: newColors } : pallet);
 
         setState(newPallets);
         onChange(newPallets);
@@ -80,6 +79,14 @@ const ColorPalettes = ({
 
     const handleChangePalette = (active) => {
         const newGlobalColors = { ...globalColors, colors: active.colors, current_palett: active.id };
+
+        newGlobalColors.colors.map((item, index) => {
+            document.documentElement.style.setProperty(
+                `--pbg-global-${item.slug}`,
+                item.color
+            );
+            return item;
+        });
 
         setGlobalColors(newGlobalColors);
     };
@@ -97,7 +104,7 @@ const ColorPalettes = ({
     };
 
     const handleChangeComplete = (color, index) => {
-        if (activePallet?.id?.includes('custom')) {
+        if (activePallet?.id?.includes('custom') && index.includes('custom')) {
             changeCustomColorToPallet(color, index);
             return;
         }
@@ -105,6 +112,14 @@ const ColorPalettes = ({
         newColors = newColors.map(colorObj => colorObj.slug === index ? { ...colorObj, color: color } : colorObj);
         const changedColors = index.includes('custom') ? 'custom_colors' : 'colors';
         const newGlobalColors = { ...globalColors, [changedColors]: newColors };
+
+        newGlobalColors.colors.map((item, index) => {
+            document.documentElement.style.setProperty(
+                `--pbg-global-${item.slug}`,
+                item.color
+            );
+            return item;
+        });
 
         setGlobalColors(newGlobalColors);
     };
@@ -235,7 +250,7 @@ const ColorPalettes = ({
                         }}
                     >
                         <header>
-                            {__(`Select Another Palette`, "kemet")}
+                            {__(`Select Another Palette`, "premium-blocks-for-gutenberg")}
                         </header>
                         <span
                             className={classnames(`premium-button-open-palette`, { active: currentView === "modal" })}
@@ -318,7 +333,7 @@ const ColorPalettes = ({
                     }}
                 >
 
-                    {__('Save New Palette', "kemet")}
+                    {__('Save New Palette', "premium-blocks-for-gutenberg")}
                 </button>
             </OutsideClickHandler>
             {
@@ -390,23 +405,23 @@ const ColorPalettes = ({
             }
 
             {
-                openModal && <Modal title={(<div className={`premium-popup-modal__header`}><i className="dashicons dashicons-bell"></i> {__("Warning", "kemet")}</div>)}
+                openModal && <Modal title={(<div className={`premium-popup-modal__header`}><i className="dashicons dashicons-bell"></i> {__("Warning", "premium-blocks-for-gutenberg")}</div>)}
                     className={`premium-color-palette-confrim__delete`}
                     isDismissible={true}
                     onRequestClose={() => { setOpenModal(false) }}
                 >
                     < p className={__(`premium-palette-popup-content`)}>
-                        {__(`You are about to delete `, "kemet")}<q className={`premium-deleted-palette__name`}>"{delPalette.name}"</q>{__(`. This palette cannot be restored, are you sure you want to delete it?`, "kemet")}
+                        {__(`You are about to delete `, "premium-blocks-for-gutenberg")}<q className={`premium-deleted-palette__name`}>"{delPalette.name}"</q>{__(`. This palette cannot be restored, are you sure you want to delete it?`, "premium-blocks-for-gutenberg")}
                     </p>
                     <div className={__(`premium-paltette-popup-action`)}>
                         <button type="button" class="button button-primary save has-next-sibling" onClick={() => {
                             setOpenModal(false)
                         }
-                        }>{__("No", "kemet")}</button>
+                        }>{__("No", "premium-blocks-for-gutenberg")}</button>
                         <button type="button" class="components-button  premium-button__delete__palette" onClick={(e) => {
                             e.preventDefault();
                             ConfirmDelete()
-                        }}>{__('Yes', "kemet")}</button>
+                        }}>{__('Yes', "premium-blocks-for-gutenberg")}</button>
                     </div>
                 </Modal>
             }

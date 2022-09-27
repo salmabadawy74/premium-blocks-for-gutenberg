@@ -60,7 +60,7 @@
     transform: rotate(180deg); }
 
 .premium-accordion__title_wrap {
-  border: 1px solid #e1e1e1; }
+  border: 1px solid var(--pbg-global-color4); }
 
 .premium-accordion__title_wrap.premium-accordion__rtl {
   -webkit-flex-direction: row-reverse;

@@ -129,7 +129,6 @@ class PBG_Blocks_Helper {
 	public function tablet_breakpoint( $breakpoint ) {
 		$layout_settings = get_option( 'pbg_global_layout', array() );
 		$breakpoint      = isset( $layout_settings['tablet_breakpoint'] ) ? '(max-width: ' . $layout_settings['tablet_breakpoint'] . 'px)' : $breakpoint;
-		error_log( wp_json_encode( $breakpoint ) );
 		return $breakpoint;
 	}
 

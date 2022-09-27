@@ -83,3 +83,8 @@ a.premium-dheading-block__link {
         box-shadow: none;
     }
 }
+
+// Global Styles.
+.wp-block-premium-dheading-block {
+    border-color: var(--pbg-global-color4);
+}

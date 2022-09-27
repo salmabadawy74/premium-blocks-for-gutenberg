@@ -6,6 +6,11 @@
     -ms-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
+    border-color: var(--pbg-global-color4);
+    .premium-button {
+        background-color: var(--pbg-global-color1);
+        border-color: var(--pbg-global-color4);
+    }
 
     .premium-icon-box__title {
         margin: 0;
