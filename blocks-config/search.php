@@ -298,7 +298,7 @@ function render_block_premium_search($attributes)
 			'<input type="search" id="%s" class="wp-block-premium-search__input" name="s" value="%s" placeholder="%s" required />',
 			$input_id,
 			esc_attr(get_search_query()),
-			esc_attr($attributes['placeholder'])
+			esc_attr((!empty($attributes['placeholder'])) ? $attributes['placeholder'] : '')
 		);
 	}
 

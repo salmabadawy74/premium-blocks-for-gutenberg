@@ -155,7 +155,7 @@ function render_block_pbg_breadcrumbs($attributes)
 	$hide_tablet  = (!empty($attributes['hideTablet'])) ? $attributes['hideTablet'] : false;
 
 	if (isset($attributes['enablePrefix']) && $attributes['enablePrefix']) {
-		$args['prefix'] = $attributes['prefix'];
+		$args['prefix'] = (!empty($attributes['prefix'])) ? $attributes['prefix'] : '';
 	}
 	if (isset($attributes['divider'])) {
 		$args['divider'] = $attributes['divider'];
