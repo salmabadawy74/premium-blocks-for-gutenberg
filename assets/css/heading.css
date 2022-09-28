@@ -45,7 +45,7 @@
     .premium-title .top .premium-title-style7-inner-title {
       flex-direction: column; }
   .premium-title .style2 {
-    border-bottom: 3px solid #6ec1e4 !important;
+    border-bottom: 3px solid var(--pbg-global-color1, var(--pbg-global-color1, #6ec1e4)) !important;
     overflow: hidden; }
     .premium-title .style2 .premium-title-center {
       align-items: center !important; }
@@ -54,7 +54,7 @@
     .premium-title .style2 .premium-title-right {
       align-items: flex-end !important; }
   .premium-title .style4 {
-    border-bottom: 3px solid #6ec1e4 !important; }
+    border-bottom: 3px solid var(--pbg-global-color1, #6ec1e4) !important; }
     .premium-title .style4 .left {
       justify-content: flex-start !important; }
     .premium-title .style4 .center {
@@ -62,7 +62,7 @@
     .premium-title .style4 .right {
       justify-content: flex-end !important; }
   .premium-title .style5 {
-    border-bottom: 3px solid #6ec1e4 !important; }
+    border-bottom: 3px solid var(--pbg-global-color1, #6ec1e4) !important; }
     .premium-title .style5 .premium-title-center {
       align-items: center !important; }
     .premium-title .style5 .premium-title-left {
@@ -70,7 +70,7 @@
     .premium-title .style5 .premium-title-right {
       align-items: flex-end !important; }
   .premium-title .style6 {
-    border-bottom: 3px solid #6ec1e4 !important; }
+    border-bottom: 3px solid var(--pbg-global-color1, #6ec1e4) !important; }
     .premium-title .style6 .premium-title-center {
       align-items: center !important; }
     .premium-title .style6 .premium-title-left {
@@ -164,7 +164,7 @@
     height: auto !important; }
 
 .premium-title-style1__wrap {
-  border-left: 3px solid #6ec1e4 !important;
+  border-left: 3px solid var(--pbg-global-color1, #6ec1e4) !important;
   display: -webkit-inline-box;
   display: -moz-inline-box; }
 
@@ -299,7 +299,7 @@
   margin-bottom: 0px; }
 
 .premium-title-style7-stripe-span {
-  background-color: #6ec1e4;
+  background-color: var(--pbg-global-color1, #6ec1e4);
   width: 120px;
   height: 5px; }
 

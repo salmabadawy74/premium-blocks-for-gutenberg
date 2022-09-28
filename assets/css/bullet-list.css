@@ -17,7 +17,8 @@
   padding: 0 !important; }
 
 .premium-bullet-list__wrapper {
-  display: inline-flex; }
+  display: inline-flex;
+  border-color: var(--pbg-global-color4); }
   .premium-bullet-list__wrapper a {
     text-decoration: none !important; }
 
@@ -35,7 +36,8 @@
     height: auto !important; }
   .premium-bullet-list__content-icon i {
     font-style: normal !important;
-    font-size: 20px; }
+    font-size: 20px;
+    border-color: var(--pbg-global-color4); }
 
 .premium-bullet-list-inline {
   -js-display: flex;

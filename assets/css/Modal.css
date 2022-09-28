@@ -32,7 +32,8 @@
   background-color: #fff;
   min-width: 700px;
   padding: 20px;
-  max-width: 100%; }
+  max-width: 100%;
+  border-color: var(--pbg-global-color4); }
   .premium-modal-box .premium-popup__modal_content .premium-modal-box-modal-header h3 div.premium-lottie-inner {
     width: 50px;
     height: 60px; }
@@ -158,7 +159,8 @@
   position: relative;
   z-index: 99;
   -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out; }
+  transition: all 0.3s ease-in-out;
+  border-color: var(--pbg-global-color4); }
   .premium-modal-box-modal-close:hover {
     color: #000;
     text-decoration: none;
@@ -265,7 +267,7 @@ button.premium-modal-box-modal-close {
   -ms-flex-align: center;
   align-items: center;
   padding: 5px 5px;
-  border-bottom: 1px solid #e5e5e5; }
+  border-bottom: 1px solid var(--pbg-global-color4, #e5e5e5); }
   .premium-modal-box-modal-header .premium-modal-box-modal-close {
     margin-top: -2px; }
   .premium-modal-box-modal-header .premium-modal-box-modal-title {
@@ -303,7 +305,7 @@ button.premium-modal-box-modal-close {
 .premium-modal-box-modal-footer {
   padding: 5px;
   text-align: right;
-  border-top: 1px solid #e5e5e5; }
+  border-top: 1px solid var(--pbg-global-color4, #e5e5e5); }
 
 .premium-modal-scrollbar-measure {
   position: absolute;

@@ -26,6 +26,7 @@
 
 .premium-bullet-list__wrapper {
     display: inline-flex;
+    border-color: var(--pbg-global-color4);
 
     a {
         text-decoration: none !important;
@@ -51,6 +52,7 @@
     i {
         font-style: normal !important;
         font-size: 20px;
+        border-color: var(--pbg-global-color4);
     }
 }
 

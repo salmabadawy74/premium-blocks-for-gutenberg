@@ -9,15 +9,15 @@ const defaults = {
             "fontFamily": "Default",
             "textDecoration": "",
             "fontSize": {
-                "Desktop": 48,
-                "Tablet": 48,
-                "Mobile": 48,
+                "Desktop": '',
+                "Tablet": '',
+                "Mobile": '',
                 "unit": "px"
             },
             "lineHeight": {
-                "Desktop": 27,
-                "Tablet": 27,
-                "Mobile": 27,
+                "Desktop": '',
+                "Tablet": '',
+                "Mobile": '',
                 "unit": "px"
             },
             "letterSpacing": {
@@ -34,21 +34,21 @@ const defaults = {
             "fontFamily": "Default",
             "textDecoration": "",
             "fontSize": {
-                "Desktop": 42,
-                "Tablet": 42,
-                "Mobile": 42,
+                "Desktop": '',
+                "Tablet": '',
+                "Mobile": '',
                 "unit": "px"
             },
             "lineHeight": {
-                "Desktop": 25,
-                "Tablet": 25,
-                "Mobile": 25,
+                "Desktop": '',
+                "Tablet": '',
+                "Mobile": '',
                 "unit": "px"
             },
             "letterSpacing": {
-                "Desktop": 0,
-                "Tablet": 0,
-                "Mobile": 0,
+                "Desktop": '',
+                "Tablet": '',
+                "Mobile": '',
                 "unit": "px"
             }
         },
@@ -59,21 +59,21 @@ const defaults = {
             "fontFamily": "Default",
             "textDecoration": "",
             "fontSize": {
-                "Desktop": 30,
-                "Tablet": 30,
-                "Mobile": 30,
+                "Desktop": '',
+                "Tablet": '',
+                "Mobile": '',
                 "unit": "px"
             },
             "lineHeight": {
-                "Desktop": 23,
-                "Tablet": 23,
-                "Mobile": 23,
+                "Desktop": '',
+                "Tablet": '',
+                "Mobile": '',
                 "unit": "px"
             },
             "letterSpacing": {
-                "Desktop": 0,
-                "Tablet": 0,
-                "Mobile": 0,
+                "Desktop": '',
+                "Tablet": '',
+                "Mobile": '',
                 "unit": "px"
             }
         },
@@ -84,21 +84,21 @@ const defaults = {
             "fontFamily": "Default",
             "textDecoration": "",
             "fontSize": {
-                "Desktop": 20,
-                "Tablet": 20,
-                "Mobile": 20,
+                "Desktop": '',
+                "Tablet": '',
+                "Mobile": '',
                 "unit": "px"
             },
             "lineHeight": {
-                "Desktop": 20,
-                "Tablet": 20,
-                "Mobile": 20,
+                "Desktop": '',
+                "Tablet": '',
+                "Mobile": '',
                 "unit": "px"
             },
             "letterSpacing": {
-                "Desktop": 0,
-                "Tablet": 0,
-                "Mobile": 0,
+                "Desktop": '',
+                "Tablet": '',
+                "Mobile": '',
                 "unit": "px"
             }
         },
@@ -109,21 +109,21 @@ const defaults = {
             "fontFamily": "Default",
             "textDecoration": "",
             "fontSize": {
-                "Desktop": 17,
-                "Tablet": 17,
-                "Mobile": 17,
+                "Desktop": '',
+                "Tablet": '',
+                "Mobile": '',
                 "unit": "px"
             },
             "lineHeight": {
-                "Desktop": 17,
-                "Tablet": 17,
-                "Mobile": 17,
+                "Desktop": '',
+                "Tablet": '',
+                "Mobile": '',
                 "unit": "px"
             },
             "letterSpacing": {
-                "Desktop": 0,
-                "Tablet": 0,
-                "Mobile": 0,
+                "Desktop": '',
+                "Tablet": '',
+                "Mobile": '',
                 "unit": "px"
             }
         },
@@ -134,21 +134,21 @@ const defaults = {
             "fontFamily": "Default",
             "textDecoration": "",
             "fontSize": {
-                "Desktop": 15,
-                "Tablet": 15,
-                "Mobile": 15,
+                "Desktop": '',
+                "Tablet": '',
+                "Mobile": '',
                 "unit": "px"
             },
             "lineHeight": {
-                "Desktop": 15,
-                "Tablet": 15,
-                "Mobile": 15,
+                "Desktop": '',
+                "Tablet": '',
+                "Mobile": '',
                 "unit": "px"
             },
             "letterSpacing": {
-                "Desktop": 0,
-                "Tablet": 0,
-                "Mobile": 0,
+                "Desktop": '',
+                "Tablet": '',
+                "Mobile": '',
                 "unit": "px"
             }
         },
@@ -159,21 +159,21 @@ const defaults = {
             "fontFamily": "Default",
             "textDecoration": "",
             "fontSize": {
-                "Desktop": 15,
-                "Tablet": 15,
-                "Mobile": 15,
+                "Desktop": '',
+                "Tablet": '',
+                "Mobile": '',
                 "unit": "px"
             },
             "lineHeight": {
-                "Desktop": 15,
-                "Tablet": 15,
-                "Mobile": 15,
+                "Desktop": '',
+                "Tablet": '',
+                "Mobile": '',
                 "unit": "px"
             },
             "letterSpacing": {
-                "Desktop": 0,
-                "Tablet": 0,
-                "Mobile": 0,
+                "Desktop": '',
+                "Tablet": '',
+                "Mobile": '',
                 "unit": "px"
             }
         },
@@ -184,21 +184,21 @@ const defaults = {
             "fontFamily": "Default",
             "textDecoration": "",
             "fontSize": {
-                "Desktop": 15,
-                "Tablet": 15,
-                "Mobile": 15,
+                "Desktop": '',
+                "Tablet": '',
+                "Mobile": '',
                 "unit": "px"
             },
             "lineHeight": {
-                "Desktop": 15,
-                "Tablet": 15,
-                "Mobile": 15,
+                "Desktop": '',
+                "Tablet": '',
+                "Mobile": '',
                 "unit": "px"
             },
             "letterSpacing": {
-                "Desktop": 0,
-                "Tablet": 0,
-                "Mobile": 0,
+                "Desktop": '',
+                "Tablet": '',
+                "Mobile": '',
                 "unit": "px"
             }
         },

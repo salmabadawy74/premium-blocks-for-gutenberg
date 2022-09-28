@@ -54,7 +54,7 @@
             -moz-transform: translateX(0);
             -ms-transform: translateX(0);
             transform: translateX(0);
-            background: #793dc3;
+            background: var(--pbg-global-color1, #793dc3);
         }
     }
 

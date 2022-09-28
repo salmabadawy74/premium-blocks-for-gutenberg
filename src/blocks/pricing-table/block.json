@@ -33,7 +33,7 @@
             "selector": ".premium-pricing-table__desc",
             "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
         },
-    
+
         "titleChecked": {
             "type": "boolean",
             "default": true
@@ -64,7 +64,7 @@
             "type": "boolean",
             "default": true
         },
-    
+
         "listChecked": {
             "type": "boolean",
             "default": true
@@ -436,7 +436,7 @@
                     "btnColor": "",
                     "btnHoverColor": "",
                     "btnWidth": "",
-                    "btnBack": "rgb(242, 242, 242)",
+                    "btnBack": "",
                     "btnHoverBack": "",
                     "btnTarget": true
                 }
@@ -475,7 +475,7 @@
             "default": [
                 {
                     "badgePos": "right",
-                    "badgeBack": "#793DC3",
+                    "badgeBack": "var(--pbg-global-color1,#793DC3)",
                     "badgeColor": "#fff",
                     "badgeTop": "",
                     "badgeHorizontal": "",

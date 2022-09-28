@@ -421,7 +421,7 @@
   transition: 0.4s;
   border-radius: 50%;
   transform: translateX(0);
-  background: #793dc3;
+  background: var(--pbg-global-color1, #793dc3);
 }
 .premium-content-switcher .premium-content-switcher-toggle-switch-label input:checked + .premium-content-switcher-toggle-switch-slider::before {
   transform: translateX(2.1em);

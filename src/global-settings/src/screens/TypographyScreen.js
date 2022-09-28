@@ -11,11 +11,20 @@ const TypographyScreen = props => {
     const { globalTypography, setGlobalTypography } = useContext(SettingsContext);
     const { typography: defaultValues } = defaults;
     const getElementValue = (element) => {
-        const value = globalTypography?.[element] || defaultValues?.[element];
-
+        let value = globalTypography?.[element] || defaultValues?.[element];
         return value;
     };
+
+    const toString = (object) => {
+        object = { ...object, Desktop: object.Desktop.toString(), Tablet: object.Tablet.toString(), Mobile: object.Mobile.toString() };
+        return object;
+    }
+
     const changeHandler = (element, value) => {
+        // Convert values to string.
+        Object.keys(value).forEach(function (key, index) {
+            value[key] = typeof value[key] === 'object' ? toString(value[key]) : value[key];
+        });
         const updatedTypography = { ...globalTypography };
         updatedTypography[element] = value;
         setGlobalTypography(updatedTypography);

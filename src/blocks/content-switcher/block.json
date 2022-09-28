@@ -6,10 +6,7 @@
     "icon": "content-switcher",
     "category": "premium-blocks",
     "description": "Toggle between two different content using Premium Content Switcher Block.",
-    "keywords": [
-        "content",
-        "switcher"
-    ],
+    "keywords": ["content", "switcher"],
     "supports": {
         "html": false
     },
@@ -21,7 +18,7 @@
         "blockId": {
             "type": "string"
         },
- 
+
         "align": {
             "type": "object",
             "default": {
@@ -65,7 +62,6 @@
         },
         "firstStateColor": {
             "type": "string"
-            
         },
         "secondStateColor": {
             "type": "string"
@@ -196,8 +192,8 @@
             "type": "object",
             "default": {
                 "Desktop": "15",
-                "Tablet":"",
-                "Mobile":""
+                "Tablet": "",
+                "Mobile": ""
             }
         },
         "containerShadow": {
@@ -246,15 +242,15 @@
                 "fontStyle": "",
                 "textTransform": "",
                 "textDecoration": "",
-                "letterSpacing":  {
+                "letterSpacing": {
                     "Desktop": "",
                     "Tablet": "",
                     "Mobile": "",
                     "unit": "px"
                 },
                 "fontFamily": "Default",
-                "lineHeight":  {
-                    "Desktop":"",
+                "lineHeight": {
+                    "Desktop": "",
                     "Tablet": "",
                     "Mobile": "",
                     "unit": "px"
@@ -320,7 +316,7 @@
                 "fontWeight": "400",
                 "fontStyle": "",
                 "textTransform": "",
-                 "textDecoration": "",
+                "textDecoration": "",
                 "letterSpacing": {
                     "Desktop": "",
                     "Tablet": "",
@@ -335,13 +331,11 @@
                     "unit": "px"
                 },
                 "fontSize": {
-                    "Desktop":"",
+                    "Desktop": "",
                     "Tablet": "",
                     "Mobile": "",
                     "unit": "px"
                 }
-                
-            
             }
         },
         "secondLabelShadow": {
@@ -483,10 +477,10 @@
             "type": "object",
             "default": {
                 "backgroundType": "",
-                "backgroundColor": "#793dc3",
+                "backgroundColor": "var(--pbg-global-color1, #793dc3)",
                 "backgroundImageID": "",
                 "backgroundImageURL": "",
-                "backgroundPosition":  "center center",
+                "backgroundPosition": "center center",
                 "backgroundRepeat": "repeat",
                 "backgroundSize": "auto",
                 "fixed": false,
@@ -509,7 +503,7 @@
                 "backgroundRepeat": "",
                 "backgroundSize": "",
                 "fixed": false,
-                 "gradientLocationOne": "0",
+                "gradientLocationOne": "0",
                 "gradientColorTwo": "",
                 "gradientLocationTwo": "100",
                 "gradientAngle": "180",

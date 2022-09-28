@@ -85,7 +85,7 @@
         },
         "titleColor": {
             "type": "string",
-            "default": "#6ec1e4"
+            "default": ""
         },
         "titleSize": {
             "type": "number",
@@ -93,7 +93,7 @@
         },
         "descColor": {
             "type": "string",
-            "default": "#000"
+            "default": ""
         },
         "descSize": {
             "type": "number",

@@ -156,7 +156,7 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
         }
 
         styles[`.${blockId} .premium-breadcrumbs-advanced .premium-breadcrumbs-item > *`] = {
-            'background-color': 'var(--item-bg-color, rgb(242, 242, 242))',
+            'background-color': 'var(--item-bg-color, var(--pbg-global-color4, rgb(242, 242, 242)))',
             'padding-top': `${itemPadding?.[deviceType]?.top}${itemPadding?.unit}`,
             'padding-right': `${itemPadding?.[deviceType]?.right}${itemPadding?.unit}`,
             'padding-bottom': `${itemPadding?.[deviceType]?.bottom}${itemPadding?.unit}`,
@@ -170,7 +170,7 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
             'height': 'auto',
             'border-top': '50px solid transparent',
             'border-bottom': '50px solid transparent',
-            'border-left': '30px solid var(--separator-color, #f2f2f2)',
+            'border-left': '30px solid var(--separator-color, var(--pbg-global-color4, #f2f2f2))',
             'z-index': '1',
             'position': 'absolute',
             'left': 'calc(100% - 30px)',
