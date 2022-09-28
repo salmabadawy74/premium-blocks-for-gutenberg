@@ -2,6 +2,7 @@
     border-color: #000;
     // overflow: hidden;
     padding: 10px 20px;
+    text-align: center;
 
     .premium-content-switcher-toggle-switch {
         font-size: 15px;
@@ -77,6 +78,9 @@
         display: flex;
         border-color: #000;
         margin-bottom: 15px;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
     }
 
     .premium-content-switcher-toggle-block {
@@ -94,6 +98,13 @@
         flex-direction: column;
         border-color: #000;
         margin-bottom: 15px;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+
+        .premium-content-switcher-block-editing {
+            margin: 0px;
+        }
     }
 
     .premium-content-switcher-toggle-inline .premium-content-switcher-first-label {
