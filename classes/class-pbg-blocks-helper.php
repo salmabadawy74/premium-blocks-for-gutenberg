@@ -299,7 +299,7 @@ class PBG_Blocks_Helper {
 			'allow_json_upload',
 			array(
 				'type'         => 'boolean',
-				'description'  => __( 'Allow JSON Upload to Media Library.', 'otter-blocks' ),
+				'description'  => __( 'Allow JSON Upload to Media Library.', 'premium-blocks-for-gutenberg' ),
 				'show_in_rest' => true,
 				'default'      => false,
 			)
