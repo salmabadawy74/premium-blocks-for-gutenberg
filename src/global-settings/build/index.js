@@ -15959,6 +15959,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_settings_store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../store/settings-store */ "./src/store/settings-store.js");
 /* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../components/HelperFunction */ "../components/HelperFunction.js");
 /* harmony import */ var _components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../components/typography/fontLoader */ "../components/typography/fontLoader.js");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_8__);
+
+
 
 
 
@@ -15992,6 +15996,103 @@ const TypographyScreen = props => {
     return object;
   };
 
+  const loadStyles = () => {
+    var _heading1$fontSize, _heading1$fontSize2, _heading1$letterSpaci, _heading1$letterSpaci2, _heading1$lineHeight, _heading1$lineHeight2, _heading2$fontSize, _heading2$fontSize2, _heading2$letterSpaci, _heading2$letterSpaci2, _heading2$lineHeight, _heading2$lineHeight2, _heading3$fontSize, _heading3$fontSize2, _heading3$letterSpaci, _heading3$letterSpaci2, _heading3$lineHeight, _heading3$lineHeight2, _heading4$fontSize, _heading4$fontSize2, _heading4$letterSpaci, _heading4$letterSpaci2, _heading4$lineHeight, _heading4$lineHeight2, _heading5$fontSize, _heading5$fontSize2, _heading5$letterSpaci, _heading5$letterSpaci2, _heading5$lineHeight, _heading5$lineHeight2, _heading6$fontSize, _heading6$fontSize2, _heading6$letterSpaci, _heading6$letterSpaci2, _heading6$lineHeight, _heading6$lineHeight2, _button$fontSize, _button$fontSize2, _button$letterSpacing, _button$letterSpacing2, _button$lineHeight, _button$lineHeight2, _paragraph$fontSize, _paragraph$fontSize2, _paragraph$letterSpac, _paragraph$letterSpac2, _paragraph$lineHeight, _paragraph$lineHeight2;
+
+    const {
+      heading1,
+      heading2,
+      heading3,
+      heading4,
+      heading5,
+      heading6,
+      button,
+      paragraph
+    } = globalTypography;
+    const styles = {};
+    styles[`div[class*="wp-block-premium"] h1`] = {
+      'font-size': `${heading1 === null || heading1 === void 0 ? void 0 : (_heading1$fontSize = heading1.fontSize) === null || _heading1$fontSize === void 0 ? void 0 : _heading1$fontSize[props.deviceType]}${heading1 === null || heading1 === void 0 ? void 0 : (_heading1$fontSize2 = heading1.fontSize) === null || _heading1$fontSize2 === void 0 ? void 0 : _heading1$fontSize2.unit}`,
+      'font-style': heading1 === null || heading1 === void 0 ? void 0 : heading1.fontStyle,
+      'font-family': heading1 === null || heading1 === void 0 ? void 0 : heading1.fontFamily,
+      'font-weight': heading1 === null || heading1 === void 0 ? void 0 : heading1.fontWeight,
+      'letter-spacing': `${heading1 === null || heading1 === void 0 ? void 0 : (_heading1$letterSpaci = heading1.letterSpacing) === null || _heading1$letterSpaci === void 0 ? void 0 : _heading1$letterSpaci[props.deviceType]}${heading1 === null || heading1 === void 0 ? void 0 : (_heading1$letterSpaci2 = heading1.letterSpacing) === null || _heading1$letterSpaci2 === void 0 ? void 0 : _heading1$letterSpaci2.unit}`,
+      'text-decoration': heading1 === null || heading1 === void 0 ? void 0 : heading1.textDecoration,
+      'text-transform': heading1 === null || heading1 === void 0 ? void 0 : heading1.textTransform,
+      'line-height': `${heading1 === null || heading1 === void 0 ? void 0 : (_heading1$lineHeight = heading1.lineHeight) === null || _heading1$lineHeight === void 0 ? void 0 : _heading1$lineHeight[props.deviceType]}${heading1 === null || heading1 === void 0 ? void 0 : (_heading1$lineHeight2 = heading1.lineHeight) === null || _heading1$lineHeight2 === void 0 ? void 0 : _heading1$lineHeight2.unit}`
+    };
+    styles[`div[class*="wp-block-premium"] h2`] = {
+      'font-size': `${heading2 === null || heading2 === void 0 ? void 0 : (_heading2$fontSize = heading2.fontSize) === null || _heading2$fontSize === void 0 ? void 0 : _heading2$fontSize[props.deviceType]}${heading2 === null || heading2 === void 0 ? void 0 : (_heading2$fontSize2 = heading2.fontSize) === null || _heading2$fontSize2 === void 0 ? void 0 : _heading2$fontSize2.unit}`,
+      'font-style': heading2 === null || heading2 === void 0 ? void 0 : heading2.fontStyle,
+      'font-family': heading2 === null || heading2 === void 0 ? void 0 : heading2.fontFamily,
+      'font-weight': heading2 === null || heading2 === void 0 ? void 0 : heading2.fontWeight,
+      'letter-spacing': `${heading2 === null || heading2 === void 0 ? void 0 : (_heading2$letterSpaci = heading2.letterSpacing) === null || _heading2$letterSpaci === void 0 ? void 0 : _heading2$letterSpaci[props.deviceType]}${heading2 === null || heading2 === void 0 ? void 0 : (_heading2$letterSpaci2 = heading2.letterSpacing) === null || _heading2$letterSpaci2 === void 0 ? void 0 : _heading2$letterSpaci2.unit}`,
+      'text-decoration': heading2 === null || heading2 === void 0 ? void 0 : heading2.textDecoration,
+      'text-transform': heading2 === null || heading2 === void 0 ? void 0 : heading2.textTransform,
+      'line-height': `${heading2 === null || heading2 === void 0 ? void 0 : (_heading2$lineHeight = heading2.lineHeight) === null || _heading2$lineHeight === void 0 ? void 0 : _heading2$lineHeight[props.deviceType]}${heading2 === null || heading2 === void 0 ? void 0 : (_heading2$lineHeight2 = heading2.lineHeight) === null || _heading2$lineHeight2 === void 0 ? void 0 : _heading2$lineHeight2.unit}`
+    };
+    styles[`div[class*="wp-block-premium"] h3`] = {
+      'font-size': `${heading3 === null || heading3 === void 0 ? void 0 : (_heading3$fontSize = heading3.fontSize) === null || _heading3$fontSize === void 0 ? void 0 : _heading3$fontSize[props.deviceType]}${heading3 === null || heading3 === void 0 ? void 0 : (_heading3$fontSize2 = heading3.fontSize) === null || _heading3$fontSize2 === void 0 ? void 0 : _heading3$fontSize2.unit}`,
+      'font-style': heading3 === null || heading3 === void 0 ? void 0 : heading3.fontStyle,
+      'font-family': heading3 === null || heading3 === void 0 ? void 0 : heading3.fontFamily,
+      'font-weight': heading3 === null || heading3 === void 0 ? void 0 : heading3.fontWeight,
+      'letter-spacing': `${heading3 === null || heading3 === void 0 ? void 0 : (_heading3$letterSpaci = heading3.letterSpacing) === null || _heading3$letterSpaci === void 0 ? void 0 : _heading3$letterSpaci[props.deviceType]}${heading3 === null || heading3 === void 0 ? void 0 : (_heading3$letterSpaci2 = heading3.letterSpacing) === null || _heading3$letterSpaci2 === void 0 ? void 0 : _heading3$letterSpaci2.unit}`,
+      'text-decoration': heading3 === null || heading3 === void 0 ? void 0 : heading3.textDecoration,
+      'text-transform': heading3 === null || heading3 === void 0 ? void 0 : heading3.textTransform,
+      'line-height': `${heading3 === null || heading3 === void 0 ? void 0 : (_heading3$lineHeight = heading3.lineHeight) === null || _heading3$lineHeight === void 0 ? void 0 : _heading3$lineHeight[props.deviceType]}${heading3 === null || heading3 === void 0 ? void 0 : (_heading3$lineHeight2 = heading3.lineHeight) === null || _heading3$lineHeight2 === void 0 ? void 0 : _heading3$lineHeight2.unit}`
+    };
+    styles[`div[class*="wp-block-premium"] h4`] = {
+      'font-size': `${heading4 === null || heading4 === void 0 ? void 0 : (_heading4$fontSize = heading4.fontSize) === null || _heading4$fontSize === void 0 ? void 0 : _heading4$fontSize[props.deviceType]}${heading4 === null || heading4 === void 0 ? void 0 : (_heading4$fontSize2 = heading4.fontSize) === null || _heading4$fontSize2 === void 0 ? void 0 : _heading4$fontSize2.unit}`,
+      'font-style': heading4 === null || heading4 === void 0 ? void 0 : heading4.fontStyle,
+      'font-family': heading4 === null || heading4 === void 0 ? void 0 : heading4.fontFamily,
+      'font-weight': heading4 === null || heading4 === void 0 ? void 0 : heading4.fontWeight,
+      'letter-spacing': `${heading4 === null || heading4 === void 0 ? void 0 : (_heading4$letterSpaci = heading4.letterSpacing) === null || _heading4$letterSpaci === void 0 ? void 0 : _heading4$letterSpaci[props.deviceType]}${heading4 === null || heading4 === void 0 ? void 0 : (_heading4$letterSpaci2 = heading4.letterSpacing) === null || _heading4$letterSpaci2 === void 0 ? void 0 : _heading4$letterSpaci2.unit}`,
+      'text-decoration': heading4 === null || heading4 === void 0 ? void 0 : heading4.textDecoration,
+      'text-transform': heading4 === null || heading4 === void 0 ? void 0 : heading4.textTransform,
+      'line-height': `${heading4 === null || heading4 === void 0 ? void 0 : (_heading4$lineHeight = heading4.lineHeight) === null || _heading4$lineHeight === void 0 ? void 0 : _heading4$lineHeight[props.deviceType]}${heading4 === null || heading4 === void 0 ? void 0 : (_heading4$lineHeight2 = heading4.lineHeight) === null || _heading4$lineHeight2 === void 0 ? void 0 : _heading4$lineHeight2.unit}`
+    };
+    styles[`div[class*="wp-block-premium"] h5`] = {
+      'font-size': `${heading5 === null || heading5 === void 0 ? void 0 : (_heading5$fontSize = heading5.fontSize) === null || _heading5$fontSize === void 0 ? void 0 : _heading5$fontSize[props.deviceType]}${heading5 === null || heading5 === void 0 ? void 0 : (_heading5$fontSize2 = heading5.fontSize) === null || _heading5$fontSize2 === void 0 ? void 0 : _heading5$fontSize2.unit}`,
+      'font-style': heading5 === null || heading5 === void 0 ? void 0 : heading5.fontStyle,
+      'font-family': heading5 === null || heading5 === void 0 ? void 0 : heading5.fontFamily,
+      'font-weight': heading5 === null || heading5 === void 0 ? void 0 : heading5.fontWeight,
+      'letter-spacing': `${heading5 === null || heading5 === void 0 ? void 0 : (_heading5$letterSpaci = heading5.letterSpacing) === null || _heading5$letterSpaci === void 0 ? void 0 : _heading5$letterSpaci[props.deviceType]}${heading5 === null || heading5 === void 0 ? void 0 : (_heading5$letterSpaci2 = heading5.letterSpacing) === null || _heading5$letterSpaci2 === void 0 ? void 0 : _heading5$letterSpaci2.unit}`,
+      'text-decoration': heading5 === null || heading5 === void 0 ? void 0 : heading5.textDecoration,
+      'text-transform': heading5 === null || heading5 === void 0 ? void 0 : heading5.textTransform,
+      'line-height': `${heading5 === null || heading5 === void 0 ? void 0 : (_heading5$lineHeight = heading5.lineHeight) === null || _heading5$lineHeight === void 0 ? void 0 : _heading5$lineHeight[props.deviceType]}${heading5 === null || heading5 === void 0 ? void 0 : (_heading5$lineHeight2 = heading5.lineHeight) === null || _heading5$lineHeight2 === void 0 ? void 0 : _heading5$lineHeight2.unit}`
+    };
+    styles[`div[class*="wp-block-premium"] h6`] = {
+      'font-size': `${heading6 === null || heading6 === void 0 ? void 0 : (_heading6$fontSize = heading6.fontSize) === null || _heading6$fontSize === void 0 ? void 0 : _heading6$fontSize[props.deviceType]}${heading6 === null || heading6 === void 0 ? void 0 : (_heading6$fontSize2 = heading6.fontSize) === null || _heading6$fontSize2 === void 0 ? void 0 : _heading6$fontSize2.unit}`,
+      'font-style': heading6 === null || heading6 === void 0 ? void 0 : heading6.fontStyle,
+      'font-family': heading6 === null || heading6 === void 0 ? void 0 : heading6.fontFamily,
+      'font-weight': heading6 === null || heading6 === void 0 ? void 0 : heading6.fontWeight,
+      'letter-spacing': `${heading6 === null || heading6 === void 0 ? void 0 : (_heading6$letterSpaci = heading6.letterSpacing) === null || _heading6$letterSpaci === void 0 ? void 0 : _heading6$letterSpaci[props.deviceType]}${heading6 === null || heading6 === void 0 ? void 0 : (_heading6$letterSpaci2 = heading6.letterSpacing) === null || _heading6$letterSpaci2 === void 0 ? void 0 : _heading6$letterSpaci2.unit}`,
+      'text-decoration': heading6 === null || heading6 === void 0 ? void 0 : heading6.textDecoration,
+      'text-transform': heading6 === null || heading6 === void 0 ? void 0 : heading6.textTransform,
+      'line-height': `${heading6 === null || heading6 === void 0 ? void 0 : (_heading6$lineHeight = heading6.lineHeight) === null || _heading6$lineHeight === void 0 ? void 0 : _heading6$lineHeight[props.deviceType]}${heading6 === null || heading6 === void 0 ? void 0 : (_heading6$lineHeight2 = heading6.lineHeight) === null || _heading6$lineHeight2 === void 0 ? void 0 : _heading6$lineHeight2.unit}`
+    };
+    styles[`[class*="wp-block-premium"] .premium-button, [class*="wp-block-premium"] .premium-pricing-table__button_link, [class*="wp-block-premium"] .premium-modal-box-modal-lower-close`] = {
+      'font-size': `${button === null || button === void 0 ? void 0 : (_button$fontSize = button.fontSize) === null || _button$fontSize === void 0 ? void 0 : _button$fontSize[props.deviceType]}${button === null || button === void 0 ? void 0 : (_button$fontSize2 = button.fontSize) === null || _button$fontSize2 === void 0 ? void 0 : _button$fontSize2.unit}`,
+      'font-style': button === null || button === void 0 ? void 0 : button.fontStyle,
+      'font-family': button === null || button === void 0 ? void 0 : button.fontFamily,
+      'font-weight': button === null || button === void 0 ? void 0 : button.fontWeight,
+      'letter-spacing': `${button === null || button === void 0 ? void 0 : (_button$letterSpacing = button.letterSpacing) === null || _button$letterSpacing === void 0 ? void 0 : _button$letterSpacing[props.deviceType]}${button === null || button === void 0 ? void 0 : (_button$letterSpacing2 = button.letterSpacing) === null || _button$letterSpacing2 === void 0 ? void 0 : _button$letterSpacing2.unit}`,
+      'text-decoration': button === null || button === void 0 ? void 0 : button.textDecoration,
+      'text-transform': button === null || button === void 0 ? void 0 : button.textTransform,
+      'line-height': `${button === null || button === void 0 ? void 0 : (_button$lineHeight = button.lineHeight) === null || _button$lineHeight === void 0 ? void 0 : _button$lineHeight[props.deviceType]}${button === null || button === void 0 ? void 0 : (_button$lineHeight2 = button.lineHeight) === null || _button$lineHeight2 === void 0 ? void 0 : _button$lineHeight2.unit}`
+    };
+    styles[`[class*="wp-block-premium"] p`] = {
+      'font-size': `${paragraph === null || paragraph === void 0 ? void 0 : (_paragraph$fontSize = paragraph.fontSize) === null || _paragraph$fontSize === void 0 ? void 0 : _paragraph$fontSize[props.deviceType]}${paragraph === null || paragraph === void 0 ? void 0 : (_paragraph$fontSize2 = paragraph.fontSize) === null || _paragraph$fontSize2 === void 0 ? void 0 : _paragraph$fontSize2.unit}`,
+      'font-style': paragraph === null || paragraph === void 0 ? void 0 : paragraph.fontStyle,
+      'font-family': paragraph === null || paragraph === void 0 ? void 0 : paragraph.fontFamily,
+      'font-weight': paragraph === null || paragraph === void 0 ? void 0 : paragraph.fontWeight,
+      'letter-spacing': `${paragraph === null || paragraph === void 0 ? void 0 : (_paragraph$letterSpac = paragraph.letterSpacing) === null || _paragraph$letterSpac === void 0 ? void 0 : _paragraph$letterSpac[props.deviceType]}${paragraph === null || paragraph === void 0 ? void 0 : (_paragraph$letterSpac2 = paragraph.letterSpacing) === null || _paragraph$letterSpac2 === void 0 ? void 0 : _paragraph$letterSpac2.unit}`,
+      'text-decoration': paragraph === null || paragraph === void 0 ? void 0 : paragraph.textDecoration,
+      'text-transform': paragraph === null || paragraph === void 0 ? void 0 : paragraph.textTransform,
+      'line-height': `${paragraph === null || paragraph === void 0 ? void 0 : (_paragraph$lineHeight = paragraph.lineHeight) === null || _paragraph$lineHeight === void 0 ? void 0 : _paragraph$lineHeight[props.deviceType]}${paragraph === null || paragraph === void 0 ? void 0 : (_paragraph$lineHeight2 = paragraph.lineHeight) === null || _paragraph$lineHeight2 === void 0 ? void 0 : _paragraph$lineHeight2.unit}`
+    };
+    return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.generateCss)(styles);
+  };
+
   const changeHandler = (element, value) => {
     // Convert values to string.
     Object.keys(value).forEach(function (key, index) {
@@ -16002,6 +16103,31 @@ const TypographyScreen = props => {
     updatedTypography[element] = value;
     setGlobalTypography(updatedTypography);
   };
+
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    const css = loadStyles();
+    const styleSheet = document.querySelector('#premiun-typography-preview-css');
+
+    if (styleSheet) {
+      if (styleSheet.styleSheet) {
+        styleSheet.styleSheet.cssText = css;
+      } else {
+        styleSheet.innerHTML = css;
+      }
+    } else {
+      const head = document.head || document.getElementsByTagName('head')[0];
+      const style = document.createElement('style');
+      style.setAttribute('id', 'premiun-typography-preview-css');
+      head.appendChild(style);
+      style.type = 'text/css';
+
+      if (style.styleSheet) {
+        style.styleSheet.cssText = css;
+      } else {
+        style.appendChild(document.createTextNode(css));
+      }
+    }
+  }, [globalTypography]);
 
   const LoadElementGoogleFont = props => {
     const {
@@ -16126,7 +16252,15 @@ const TypographyScreen = props => {
   }));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (TypographyScreen);
+/* harmony default export */ __webpack_exports__["default"] = ((0,_wordpress_data__WEBPACK_IMPORTED_MODULE_8__.withSelect)((select, props) => {
+  const {
+    __experimentalGetPreviewDeviceType = null
+  } = select('core/edit-post');
+  let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+  return {
+    deviceType: deviceType
+  };
+})(TypographyScreen));
 
 /***/ }),
 
