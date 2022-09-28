@@ -5,7 +5,9 @@
     "main": "src/index.js",
     "scripts": {
         "start:blocks": "wp-scripts start src/index.js --output-path=assets/js/build",
-        "build:blocks": "wp-scripts build src/index.js --output-path=assets/js/build"
+        "build:blocks": "wp-scripts build src/index.js --output-path=assets/js/build",
+        "start:search:view": "wp-scripts start src/blocks/search/view.js --output-path=src/blocks/search/view",
+        "build:search:view": "wp-scripts build src/blocks/search/view.js --output-path=src/blocks/search/view"
     },
     "repository": {
         "type": "git",
@@ -37,6 +39,7 @@
         "bezier-easing": "^2.1.0",
         "classnames": "^2.2.6",
         "colord": "^2.9.2",
+        "dom-chef": "^5.1.0",
         "hex-to-rgba": "^2.0.1",
         "lodash": "^4.17.21",
         "node-sass": "^7.0.1",
