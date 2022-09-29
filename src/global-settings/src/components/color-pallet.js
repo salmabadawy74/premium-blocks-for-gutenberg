@@ -11,7 +11,6 @@ import { Modal } from '@wordpress/components';
 import classnames from "classnames";
 import defaultPallets from "../helpers/defaultPallets";
 import SettingsContext from "../store/settings-store";
-import { generateCss } from '../../../components/HelperFunction';
 
 const ColorPalettes = ({
     value,
@@ -27,7 +26,7 @@ const ColorPalettes = ({
         isTransitioning: false,
     });
 
-    const { globalColors, setGlobalColors, colorPallet } = useContext(SettingsContext);
+    const { globalColors, setGlobalColors, customColors, setCustomColors } = useContext(SettingsContext);
     const [currentView, setCurrentView] = useState("");
     const [openModal, setOpenModal] = useState(false)
     const [delPalette, setDelPalette] = useState({});
@@ -36,60 +35,6 @@ const ColorPalettes = ({
         defaultHeight: 430,
         shouldCalculate: isTransitioning || isOpen,
     });
-
-    useEffect(() => {
-        globalColors.colors.map((item, index) => {
-            document.documentElement.style.setProperty(
-                `--pbg-global-${item.slug}`,
-                item.color
-            );
-            return item;
-        });
-        const css = loadStyles();
-        const styleSheet = document.querySelector('#premiun-colors-preview-css');
-        if (styleSheet) {
-            if (styleSheet.styleSheet) {
-                styleSheet.styleSheet.cssText = css;
-            } else {
-                styleSheet.innerHTML = css;
-            }
-        } else {
-            const head = document.head || document.getElementsByTagName('head')[0];
-            const style = document.createElement('style');
-            style.setAttribute('id', 'premiun-colors-preview-css');
-            head.appendChild(style);
-            style.type = 'text/css';
-            if (style.styleSheet) {
-                style.styleSheet.cssText = css;
-            } else {
-                style.appendChild(document.createTextNode(css));
-            }
-        }
-    }, [globalColors, colorPallet]);
-
-    const loadStyles = () => {
-        const styles = {};
-
-        styles[`[class*="wp-block-premium"]`] = {
-            'color': `var(--pbg-global-color3)`,
-        };
-
-        styles[`[class*="wp-block-premium"] h1, [class*="wp-block-premium"] h2, [class*="wp-block-premium"] h3,[class*="wp-block-premium"] h4,[class*="wp-block-premium"] h5,[class*="wp-block-premium"] h6, [class*="wp-block-premium"] a:not([class*="button"])`] = {
-            'color': `var(--pbg-global-color2)`,
-        };
-
-        styles[`[class*="wp-block-premium"] .premium-button, [class*="wp-block-premium"] .premium-pricing-table__button_link, [class*="wp-block-premium"] .premium-modal-box-modal-lower-close`] = {
-            'color': `#ffffff`,
-            'background-color': `var(--pbg-global-color1)`,
-            'border-color': `var(--pbg-global-color4)`,
-        };
-
-        styles[`[class*="wp-block-premium"] a:not([class*="button"]):hover`] = {
-            'color': `var(--pbg-global-color1)`,
-        };
-
-        return generateCss(styles);
-    }
 
     const titles = [
         __(`Buttons background color \n& Links hover color`, "premium-blocks-for-gutenberg"),
@@ -103,7 +48,6 @@ const ColorPalettes = ({
         __("Footer text color", "premium-blocks-for-gutenberg"),
         __("Footer background color", "premium-blocks-for-gutenberg"),
     ];
-    const activePallet = [...state, ...defaultPallets].find(pallet => pallet.id === globalColors.current_palett);
     const newColorsObj = globalColors?.colors.map((color, index) => {
         return {
             name: titles[index],
@@ -112,26 +56,7 @@ const ColorPalettes = ({
             default: true
         }
     });
-    const customColors = activePallet?.id?.includes('custom') && activePallet?.custom_colors?.length ? activePallet.custom_colors : globalColors.custom_colors || [];
-    const globalPallet = { ...globalColors, colors: newColorsObj, custom_colors: customColors };
-
-    const addCustomColorToPallet = (colorData) => {
-        const newCustomColors = [...activePallet.custom_colors];
-        newCustomColors.push(colorData);
-        const newPallets = [...state].map(pallet => pallet.id === activePallet.id ? { ...pallet, custom_colors: newCustomColors } : pallet);
-
-        setState(newPallets);
-        onChange(newPallets);
-    };
-
-    const changeCustomColorToPallet = (color, index) => {
-        let newColors = [...activePallet.custom_colors];
-        newColors = newColors.map(colorObj => colorObj.slug === index ? { ...colorObj, color: color } : colorObj);
-        const newPallets = [...state].map(pallet => pallet.id === activePallet.id ? { ...pallet, custom_colors: newColors } : pallet);
-
-        setState(newPallets);
-        onChange(newPallets);
-    };
+    const globalPallet = { ...globalColors, colors: newColorsObj };
 
     const handleChangePalette = (active) => {
         const newGlobalColors = { ...globalColors, colors: active.colors, current_palett: active.id };
@@ -139,44 +64,20 @@ const ColorPalettes = ({
         setGlobalColors(newGlobalColors);
     };
 
-    const handleAddNewColor = (colorData) => {
-        if (activePallet?.id?.includes('custom')) {
-            addCustomColorToPallet(colorData);
-            return;
-        }
-        let newCustomColors = globalPallet.type === 'system' ? [...globalColors.custom_colors] : [...globalPallet.custom_colors];
-        newCustomColors.push(colorData);
-        const newGlobalColors = { ...globalColors, custom_colors: newCustomColors };
+    const handleChangeCustomColor = (value, id) => {
+        let newColors = [...customColors].map(color => color.slug === id ? { ...color, color: value } : color);
 
-        setGlobalColors(newGlobalColors);
-    };
-
-    const handleChangeComplete = (color, index) => {
-        if (activePallet?.id?.includes('custom') && index.includes('custom')) {
-            changeCustomColorToPallet(color, index);
-            return;
-        }
-        let newColors = index.includes('custom') ? [...globalColors.custom_colors] : [...globalColors.colors];
-        newColors = newColors.map(colorObj => colorObj.slug === index ? { ...colorObj, color: color } : colorObj);
-        const changedColors = index.includes('custom') ? 'custom_colors' : 'colors';
-        const newGlobalColors = { ...globalColors, [changedColors]: newColors };
-
-        setGlobalColors(newGlobalColors);
-    };
-
-    const handleRemoveColor = (id) => {
-        let newColors = [...globalColors.custom_colors];
-        newColors = newColors.filter(color => color.slug !== id);
-        const newGlobalColors = { ...globalColors, custom_colors: newColors };
-
-        setGlobalColors(newGlobalColors);
+        setCustomColors(newColors);
     }
 
-    const handleChangeName = (name, index) => {
-        let newColors = index.includes('custom') ? [...globalColors.custom_colors] : [...globalColors.colors];
-        newColors = newColors.map(colorObj => colorObj.slug === index ? { ...colorObj, name: name } : colorObj);
-        const changedColors = index.includes('custom') ? 'custom_colors' : 'colors';
-        const newGlobalColors = { ...globalColors, [changedColors]: newColors };
+    const handleChangeComplete = (color, index) => {
+        if (index.includes('custom')) {
+            handleChangeCustomColor(color, index);
+            return;
+        }
+        let newColors = [...globalColors.colors];
+        newColors = newColors.map(colorObj => colorObj.slug === index ? { ...colorObj, color: color } : colorObj);
+        const newGlobalColors = { ...globalColors, colors: newColors };
 
         setGlobalColors(newGlobalColors);
     };
@@ -190,7 +91,6 @@ const ColorPalettes = ({
             type: "custom",
             skin: data.type,
             name: data.name,
-            custom_colors: [...customColors],
         };
         newPallets.unshift(newPalett);
         setState(newPallets);
@@ -224,8 +124,7 @@ const ColorPalettes = ({
         let currentPalette = defaultValues.find(
             (pallet) => pallet.id === globalColors.current_palett
         );
-        const changedColors = id.includes('custom') ? 'custom_colors' : 'colors';
-        const resetColor = currentPalette[changedColors].find(color => color.slug === id) || {};
+        const resetColor = currentPalette['colors'].find(color => color.slug === id) || {};
         handleChangeComplete(resetColor?.color || '', id);
     };
 
@@ -270,14 +169,12 @@ const ColorPalettes = ({
                                 isTransitioning: null,
                             }))
                         }}
-                        pallet={globalPallet}
+                        colors={globalPallet.colors}
+                        customColors={customColors}
                         onChange={(v, id) => handleChangeComplete(v, id)}
                         handleClickReset={(val) => {
                             handleResetColor(val);
                         }}
-                        addNewColor={handleAddNewColor}
-                        onChangeName={(v, id) => handleChangeName(v, id)}
-                        onRemove={(v, id) => handleRemoveColor(v, id)}
                     />
                     <div className={`premium-palette-toggle-modal`}
                         onClick={(e) => {

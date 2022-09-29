@@ -14,7 +14,9 @@ const SettingsContext = React.createContext({
     colorPallets: [],
     setColorPallets: [],
     layoutSettings: {},
-    setLayoutSettings: () => { }
+    setLayoutSettings: () => { },
+    customColors: [],
+    setCustomColors: () => { }
 })
 
 export const SettingsProvider = (props) => {
@@ -22,7 +24,7 @@ export const SettingsProvider = (props) => {
     const [globalColors, setGlobalColors] = useEntityProp('root', 'site', 'pbg_global_colors');
     const [colorPallet, setColorPallet] = useEntityProp('root', 'site', 'pbg_global_color_pallet');
     const [colorPallets, setColorPallets] = useEntityProp('root', 'site', 'pbg_global_color_pallets');
-    const [themeCustomColors, setThemeCustomColors] = useEntityProp('root', 'site', 'pbg_theme_custom_colors');
+    const [customColors, setCustomColors] = useEntityProp('root', 'site', 'pbg_custom_colors');
     const [layoutSettings, setLayoutSettings] = useEntityProp('root', 'site', 'pbg_global_layout');
 
     const settingsContext = {
@@ -34,8 +36,8 @@ export const SettingsProvider = (props) => {
         setColorPallet,
         colorPallets,
         setColorPallets,
-        themeCustomColors,
-        setThemeCustomColors,
+        customColors,
+        setCustomColors,
         layoutSettings,
         setLayoutSettings
     };

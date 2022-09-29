@@ -32,7 +32,7 @@
 }
 .premium-breadcrumbs-advanced li > * {
   line-height: 26px;
-  background-color: var(--item-bg-color, #f2f2f2);
+  background-color: var(--item-bg-color, var(--pbg-global-color5, #f2f2f2));
   padding: 5px;
 }
 .premium-breadcrumbs-advanced li::before {
@@ -42,7 +42,7 @@
   height: auto;
   border-top: 50px solid transparent;
   border-bottom: 50px solid transparent;
-  border-left: 30px solid var(--separator-color, #f2f2f2);
+  border-left: 30px solid var(--separator-color, var(--pbg-global-color5, #f2f2f2));
   z-index: 1;
   position: absolute;
   left: calc(100% - 30px);

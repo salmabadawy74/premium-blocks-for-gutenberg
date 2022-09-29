@@ -9,7 +9,7 @@ const statuses = {
     loading: "loading",
 };
 
-const noop = () => {};
+const noop = () => { };
 
 class WebfontLoader extends Component {
     constructor(props) {

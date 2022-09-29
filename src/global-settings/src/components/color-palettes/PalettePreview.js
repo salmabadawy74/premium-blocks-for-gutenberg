@@ -3,19 +3,17 @@ import classnames from "classnames";
 import ColorComponent from "../color";
 import { Icon, create } from '@wordpress/icons';
 import ReactTooltip from 'react-tooltip';
-import { useEffect } from "@wordpress/element";
+import { useEffect, useContext } from "@wordpress/element";
+import SettingsContext from "../../store/settings-store";
 
 const PalettePreview = ({
     renderBefore = () => null,
-    pallet,
+    colors,
     onChange,
     onClick,
     className,
-    addNewColor,
     handleClickReset,
-    onRemove,
-    onChangeName,
-    canAdd = true
+    canAdd = true,
 }) => {
     const handleChangeColor = (color, optionId) => {
         let newColor;
@@ -33,16 +31,32 @@ const PalettePreview = ({
         onChange(newColor, optionId);
     };
 
-    const addColor = () => {
-        const lastColorIndex = pallet.custom_colors.length;
+    const { customColors, setCustomColors } = useContext(SettingsContext);
+
+    const handleRemoveColor = (id) => {
+        let newValue = [...customColors];
+        newValue = newValue.filter(color => color.slug !== id);
+        setCustomColors(newValue);
+    }
+
+    const handleAddNewColor = (colorData) => {
+        const lastColorIndex = customColors.length;
         const colorId = `custom-color${lastColorIndex + Math.floor(Math.random() * 100)}`;
         const colorTitle = `${__('Custom Color ')}${lastColorIndex + 1}`;
-        addNewColor({ name: colorTitle, color: '', slug: colorId });
+        let newColors = [...customColors];
+        newColors.push({ name: colorTitle, color: '', slug: colorId });
+
+        setCustomColors(newColors);
+    }
+
+    const handleColorChangeName = (name, id) => {
+        let newValue = [...customColors].map(color => color.slug === id ? { ...color, name: name } : color);
+        setCustomColors(newValue);
     }
 
     useEffect(() => {
         ReactTooltip.rebuild();
-    }, [pallet]);
+    }, [colors]);
 
     return (
         <div
@@ -62,7 +76,7 @@ const PalettePreview = ({
             <div className={`premium-color-palette-container`}>
                 <ReactTooltip place='top' effect="solid" />
                 <div className="premium-pallet-colors">
-                    {pallet.colors.map((picker) => (
+                    {colors.map((picker) => (
                         <ColorComponent
                             picker={picker}
                             onChangeComplete={(color, id) => handleChangeColor(color, picker[`slug`])}
@@ -71,15 +85,15 @@ const PalettePreview = ({
                             resetPalette={true}
                             onColorReset={(color) => handleClickReset(picker[`slug`])}
                             isDefault={picker.default}
-                            onRemove={() => onRemove(picker[`slug`])}
+                            onRemove={() => handleRemoveColor(picker[`slug`])}
                             onChangeName={false}
                         />
                     ))}
                 </div>
-                {(pallet.custom_colors.length || canAdd) && <p>{__('Custom Color')}</p>}
-                {(pallet.custom_colors.length || canAdd) && (
+                {(customColors.length || canAdd) && <p>{__('Custom Color')}</p>}
+                {(customColors.length || canAdd) && (
                     <div className="premium-custom-colors">
-                        {pallet.custom_colors.map((picker) => (
+                        {customColors.map((picker) => (
                             <ColorComponent
                                 picker={picker}
                                 onChangeComplete={(color, id) => handleChangeColor(color, picker[`slug`])}
@@ -88,11 +102,11 @@ const PalettePreview = ({
                                 resetPalette={true}
                                 onColorReset={(color) => handleClickReset(picker[`slug`])}
                                 isDefault={picker.default}
-                                onRemove={() => onRemove(picker[`slug`])}
-                                onChangeName={(v) => onChangeName(v, picker[`slug`])}
+                                onRemove={() => handleRemoveColor(picker[`slug`])}
+                                onChangeName={(v) => handleColorChangeName(v, picker[`slug`])}
                             />
                         ))}
-                        {(canAdd && pallet.custom_colors.length || canAdd) && <div className="premium-add-new-color" onClick={() => addColor()} data-tip={__('Add Color')}>
+                        {(canAdd && customColors.length || canAdd) && <div className="premium-add-new-color" onClick={() => handleAddNewColor()} data-tip={__('Add Color')}>
                             <Icon icon={create} />
                         </div>}
                     </div>

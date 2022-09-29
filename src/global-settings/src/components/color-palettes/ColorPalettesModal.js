@@ -22,17 +22,8 @@ const ColorPalettesModal = ({ value, onChange, titles, wrapperProps = {}, handle
 				skipModal: true
 			}
 		})
-		const newPalletCustomColors = pallet.custom_colors.length ? pallet.custom_colors.map(color => {
-			return {
-				name: color.name,
-				slug: color.slug,
-				color: color.color,
-				default: true,
-				skipModal: true
-			}
-		}) : [];
 
-		return { ...pallet, colors: newPalletColors, custom_colors: newPalletCustomColors }
+		return { ...pallet, colors: newPalletColors }
 	}
 	return (
 		<animated.div
@@ -55,7 +46,7 @@ const ColorPalettesModal = ({ value, onChange, titles, wrapperProps = {}, handle
 			{customPaletteColors.map((palette, index) => (
 				<Fragment>
 					<PalettePreview
-						pallet={initPallet(palette)}
+						pallet={initPallet(palette).colors}
 						className={classnames(`premium-custom-palette__container`, {
 							'premium-active': palette.id === globalColors.current_palett
 						})
@@ -86,7 +77,7 @@ const ColorPalettesModal = ({ value, onChange, titles, wrapperProps = {}, handle
 			{pbgPaletteColors.map((palette, index) => (
 				<Fragment>
 					<PalettePreview
-						pallet={initPallet(palette)}
+						colors={initPallet(palette).colors}
 						className={
 							palette.id === globalColors.current_palett ? 'premium-active' : ''
 						}

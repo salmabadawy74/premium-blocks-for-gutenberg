@@ -87,11 +87,11 @@ class AdvancedColorControl extends Component {
         const isNew = wp.components.GradientPicker;
 
         const getDefaultColors = () => {
-            const { pbgGlobalColors, pbgDefaultPallet, colors, customThemeColors } = this.props;
+            const { pbgGlobalColors, pbgDefaultPallet, colors, customColors } = this.props;
 
             let globalColors = [...colors];
             if (pbgDefaultPallet === 'theme') {
-                globalColors = [...this.props.colors, ...customThemeColors];
+                globalColors = [...this.props.colors];
             }
             if (pbgDefaultPallet === 'pbg') {
                 const titles = [
@@ -108,7 +108,7 @@ class AdvancedColorControl extends Component {
                 ];
                 globalColors = [...pbgGlobalColors.colors].map((color, index) => ({ ...color, name: titles[index] }));
             }
-            return globalColors;
+            return [...globalColors, ...customColors];
         }
 
         return (
@@ -317,7 +317,7 @@ export default withSelect((select, ownProps) => {
     const { getEditedEntityRecord } = select(coreStore);
     const pbgGlobalColors = getEditedEntityRecord('root', 'site')?.pbg_global_colors || [];
     const pbgDefaultPallet = getEditedEntityRecord('root', 'site')?.pbg_global_color_pallet || 'theme';
-    const customThemeColors = getEditedEntityRecord('root', 'site')?.pbg_theme_custom_colors || [];
+    const customColors = getEditedEntityRecord('root', 'site')?.pbg_custom_colors || [];
     const colors = get(settings, ["colors"], []);
     const disableCustomColors =
         ownProps.disableCustomColors === undefined
@@ -330,6 +330,6 @@ export default withSelect((select, ownProps) => {
         disableCustomColors,
         pbgGlobalColors,
         pbgDefaultPallet,
-        customThemeColors
+        customColors
     };
 })(AdvancedColorControl);

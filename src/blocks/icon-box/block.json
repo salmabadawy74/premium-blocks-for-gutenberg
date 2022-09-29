@@ -72,7 +72,7 @@
         },
         "iconColor": {
             "type": "string",
-            "default": "#793dc3"
+            "default": "var(--pbg-global-color1, #793dc3)"
         },
         "iconBackColor": {
             "type": "string"
@@ -176,9 +176,9 @@
             "type": "array",
             "default": [
                 {
-                    "btnColor": "#ffffff",
+                    "btnColor": "",
                     "btnHoverColor": "",
-                    "btnBack": "var(--pbg-global-color1)",
+                    "btnBack": "var(--pbg-global-color1, rgb(242, 242, 242))",
                     "btnHoverBack": ""
                 }
             ]

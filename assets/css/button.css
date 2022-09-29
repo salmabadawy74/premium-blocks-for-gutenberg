@@ -63,7 +63,7 @@
   .premium-button__slide .premium-button::before {
     content: "";
     position: absolute;
-    background: #bbb;
+    background: var(--pbg-global-color5, #bbb);
     z-index: -1;
     top: 0;
     left: 0;
@@ -94,7 +94,7 @@
   .premium-button__shutter .premium-button::before {
     content: "";
     position: absolute;
-    background: #bbb;
+    background: var(--pbg-global-color5, #bbb);
     z-index: -1;
     top: 0;
     left: 0;
@@ -125,7 +125,7 @@
   .premium-button__radial .premium-button::before {
     content: "";
     position: absolute;
-    background: #bbb;
+    background: var(--pbg-global-color5, #bbb);
     z-index: -1;
     top: 0;
     left: 0;

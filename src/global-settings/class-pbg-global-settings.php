@@ -38,8 +38,8 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 		public function __construct() {
 			add_action( 'enqueue_block_editor_assets', array( $this, 'script_enqueue' ) );
 			add_action( 'init', array( $this, 'register_pbg_global_settings' ) );
-			add_action( 'pbg_dynamic_css', array( $this, 'add_global_color_to_editor' ) );
-			add_action( 'pbg_dynamic_css', array( $this, 'add_global_typography_to_editor' ) );
+			// add_action( 'pbg_dynamic_css', array( $this, 'add_global_color_to_editor' ) );
+			// add_action( 'pbg_dynamic_css', array( $this, 'add_global_typography_to_editor' ) );
 			add_action( 'wp_footer', array( $this, 'pbg_fronend_global_styles' ) );
 		}
 
@@ -492,14 +492,13 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 							),
 						),
 						'current_palett' => 'pallet-1',
-						'custom_colors'  => array(),
 					),
 				)
 			);
 
 			register_setting(
 				'pbg_global_settings',
-				'pbg_theme_custom_colors',
+				'pbg_custom_colors',
 				array(
 					'type'         => 'array',
 					'description'  => __( 'Config Premium Blocks For Gutenberg Global Colors Settings', 'premium-block-for-gutenberg' ),
@@ -568,23 +567,6 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 													'type' => 'string',
 												),
 												'color' => array(
-													'type' => 'string',
-												),
-											),
-										),
-									),
-									'custom_colors' => array(
-										'type'  => 'array',
-										'items' => array(
-											'type'       => 'object',
-											'properties' => array(
-												'slug'  => array(
-													'type' => 'string',
-												),
-												'color' => array(
-													'type' => 'string',
-												),
-												'name'  => array(
 													'type' => 'string',
 												),
 											),

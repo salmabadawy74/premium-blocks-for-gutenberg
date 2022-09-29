@@ -73,7 +73,7 @@ $pbBackgroundColor: rgb(242, 242, 242);
         &::before {
             content: "";
             position: absolute;
-            background: #bbb;
+            background: var(--pbg-global-color5, #bbb);
             z-index: -1;
             top: 0;
             left: 0;
@@ -109,7 +109,7 @@ $pbBackgroundColor: rgb(242, 242, 242);
         &::before {
             content: "";
             position: absolute;
-            background: #bbb;
+            background: var(--pbg-global-color5, #bbb);
             z-index: -1;
             top: 0;
             left: 0;
@@ -145,7 +145,7 @@ $pbBackgroundColor: rgb(242, 242, 242);
         &::before {
             content: "";
             position: absolute;
-            background: #bbb;
+            background: var(--pbg-global-color5, #bbb);
             z-index: -1;
             top: 0;
             left: 0;
