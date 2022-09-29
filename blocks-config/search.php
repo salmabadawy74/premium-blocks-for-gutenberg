@@ -205,8 +205,8 @@ function render_block_premium_search($attributes)
 	$attributes = wp_parse_args(
 		$attributes,
 		array(
-			'label'      => __('Search'),
-			'buttonText' => __('Search'),
+			'label'      => __('Search', 'premium-blocks-for-gutenberg'),
+			'buttonText' => __('Search', 'premium-blocks-for-gutenberg'),
 		)
 	);
 	wp_enqueue_style(
@@ -255,7 +255,7 @@ function render_block_premium_search($attributes)
 	$is_button_inside = !empty($attributes['buttonPosition']) &&
 		'button-inside' === $attributes['buttonPosition'];
 
-	$label_inner_html = empty($attributes['label']) ? __('Search') : wp_kses_post($attributes['label']);
+	$label_inner_html = empty($attributes['label']) ? __('Search', 'premium-blocks-for-gutenberg') : wp_kses_post($attributes['label']);
 
 	$label_markup = sprintf(
 		'<label for="%1$s" class="wp-block-premium-search__label screen-reader-text">%2$s</label>',

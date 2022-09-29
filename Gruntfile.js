@@ -149,6 +149,41 @@ module.exports = function (grunt) {
                 },
             },
         },
+        makepot: {
+            target: {
+                options: {
+                    domainPath: '/',
+                    mainFile: 'premium-blocks-for-gutenberg.php',
+                    potFilename: 'languages/premium-blocks-for-gutenberg.pot',
+                    include: [ 'src/index.js', 'premium-blocks-for-gutenberg.php' ],
+                    exclude: [ 'admin/includes' ],
+                    potHeaders: {
+                        'poedit': true,
+                        'x-poedit-keywordslist': true,
+                    },
+                    type: 'wp-plugin',
+                    updateTimestamp: true
+                },
+            },
+        },
+        addtextdomain: {
+            options: {
+                textdomain: 'premium-blocks-for-gutenberg',
+                updateDomains: true,
+            },
+            target: {
+                files: {
+                    src: [
+                        '*.php',
+                        '**/*.php',
+                        '!node_modules/**',
+                        '!php-tests/**',
+                        '!bin/**',
+                        '!admin/includes/**',
+                    ],
+                },
+            },
+        },
     });
 
     /* Read File Generation task */
@@ -159,6 +194,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-copy");
     grunt.loadNpmTasks("grunt-contrib-compress");
     grunt.loadNpmTasks("grunt-contrib-clean");
+    grunt.loadNpmTasks("grunt-wp-i18n");
 
     // Run readme task
     grunt.registerTask("readme", ["wp_readme_to_markdown"]);
@@ -166,6 +202,10 @@ module.exports = function (grunt) {
     grunt.registerTask("default", ["sass", "cssmin:css"]);
     // min all
     grunt.registerTask("minify", ["cssmin:css"]);
+
+    grunt.registerTask("i18n", ["makepot"] );
+
+    grunt.registerTask("domain", ["addtextdomain"] );
 
     //Run bumpup, readme tasks
     grunt.registerTask("build", (releaseType) => {
