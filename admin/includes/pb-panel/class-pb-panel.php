@@ -117,7 +117,7 @@ if (!class_exists('Pb_Panel')) {
 				'video-box'        => true,
 				'fancy-text'       => true,
 				'lottie'           => true,
-				'modal'            => true,
+				'Modal'            => true,
 				'image-separator'  => true,
 				'bullet-list'      => true,
 				'person'           => true,
@@ -438,7 +438,7 @@ if (!class_exists('Pb_Panel')) {
 						'creative',
 					),
 				),
-				'modal'            => array(
+				'Modal'            => array(
 					'type'     => 'pb-button',
 					'label'    => __('Modal Box', 'premium-blocks-for-gutenberg'),
 					'icon'     => 'modal',
