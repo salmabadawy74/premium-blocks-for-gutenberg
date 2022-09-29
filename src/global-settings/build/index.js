@@ -13589,6 +13589,8 @@ __webpack_require__.r(__webpack_exports__);
 
 const ThemeColorPallet = () => {
   const {
+    colorPallet,
+    globalColors,
     themeCustomColors,
     setThemeCustomColors
   } = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useContext)(_store_settings_store__WEBPACK_IMPORTED_MODULE_1__["default"]);
@@ -13604,6 +13606,32 @@ const ThemeColorPallet = () => {
       default: true
     };
   });
+
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    globalColors.colors.map((item, index) => {
+      document.documentElement.style.removeProperty(`--pbg-global-${item.slug}`);
+      return item;
+    });
+  }, [globalColors, colorPallet]);
+
+  const loadStyles = () => {
+    const styles = {};
+    styles[`[class*="wp-block-premium"]`] = {
+      'color': `var(--pbg-global-color3)`
+    };
+    styles[`[class*="wp-block-premium"] h1, [class*="wp-block-premium"] h2, [class*="wp-block-premium"] h3,[class*="wp-block-premium"] h4,[class*="wp-block-premium"] h5,[class*="wp-block-premium"] h6, [class*="wp-block-premium"] a:not([class*="button"])`] = {
+      'color': `var(--pbg-global-color2)`
+    };
+    styles[`[class*="wp-block-premium"] .premium-button, [class*="wp-block-premium"] .premium-pricing-table__button_link, [class*="wp-block-premium"] .premium-modal-box-modal-lower-close`] = {
+      'color': `#ffffff`,
+      'background-color': `var(--pbg-global-color1)`,
+      'border-color': `var(--pbg-global-color4)`
+    };
+    styles[`[class*="wp-block-premium"] a:not([class*="button"]):hover`] = {
+      'color': `var(--pbg-global-color1)`
+    };
+    return generateCss(styles);
+  };
 
   const handleRemoveColor = id => {
     let newValue = [...themeCustomColors];
@@ -14026,6 +14054,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var _helpers_defaultPallets__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../helpers/defaultPallets */ "./src/helpers/defaultPallets.js");
 /* harmony import */ var _store_settings_store__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../store/settings-store */ "./src/store/settings-store.js");
+/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../components/HelperFunction */ "../components/HelperFunction.js");
 
 
 
@@ -14039,6 +14068,7 @@ const {
   __,
   sprintf
 } = wp.i18n;
+
 
 
 
@@ -14065,7 +14095,8 @@ const ColorPalettes = _ref => {
   });
   const {
     globalColors,
-    setGlobalColors
+    setGlobalColors,
+    colorPallet
   } = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useContext)(_store_settings_store__WEBPACK_IMPORTED_MODULE_11__["default"]);
   const [currentView, setCurrentView] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)("");
   const [openModal, setOpenModal] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
@@ -14078,6 +14109,54 @@ const ColorPalettes = _ref => {
     defaultHeight: 430,
     shouldCalculate: isTransitioning || isOpen
   });
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    globalColors.colors.map((item, index) => {
+      document.documentElement.style.setProperty(`--pbg-global-${item.slug}`, item.color);
+      return item;
+    });
+    const css = loadStyles();
+    const styleSheet = document.querySelector('#premiun-colors-preview-css');
+
+    if (styleSheet) {
+      if (styleSheet.styleSheet) {
+        styleSheet.styleSheet.cssText = css;
+      } else {
+        styleSheet.innerHTML = css;
+      }
+    } else {
+      const head = document.head || document.getElementsByTagName('head')[0];
+      const style = document.createElement('style');
+      style.setAttribute('id', 'premiun-colors-preview-css');
+      head.appendChild(style);
+      style.type = 'text/css';
+
+      if (style.styleSheet) {
+        style.styleSheet.cssText = css;
+      } else {
+        style.appendChild(document.createTextNode(css));
+      }
+    }
+  }, [globalColors, colorPallet]);
+
+  const loadStyles = () => {
+    const styles = {};
+    styles[`[class*="wp-block-premium"]`] = {
+      'color': `var(--pbg-global-color3)`
+    };
+    styles[`[class*="wp-block-premium"] h1, [class*="wp-block-premium"] h2, [class*="wp-block-premium"] h3,[class*="wp-block-premium"] h4,[class*="wp-block-premium"] h5,[class*="wp-block-premium"] h6, [class*="wp-block-premium"] a:not([class*="button"])`] = {
+      'color': `var(--pbg-global-color2)`
+    };
+    styles[`[class*="wp-block-premium"] .premium-button, [class*="wp-block-premium"] .premium-pricing-table__button_link, [class*="wp-block-premium"] .premium-modal-box-modal-lower-close`] = {
+      'color': `#ffffff`,
+      'background-color': `var(--pbg-global-color1)`,
+      'border-color': `var(--pbg-global-color4)`
+    };
+    styles[`[class*="wp-block-premium"] a:not([class*="button"]):hover`] = {
+      'color': `var(--pbg-global-color1)`
+    };
+    return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.generateCss)(styles);
+  };
+
   const titles = [__(`Buttons background color \n& Links hover color`, "premium-blocks-for-gutenberg"), __("Headings & Links color", "premium-blocks-for-gutenberg"), __("Body text", "premium-blocks-for-gutenberg"), __("Borders color", "premium-blocks-for-gutenberg"), __("Body background, a tint for Input fields", "premium-blocks-for-gutenberg"), __("Footer text color", "premium-blocks-for-gutenberg"), __("Footer background color", "premium-blocks-for-gutenberg")];
   const activePallet = [...state, ..._helpers_defaultPallets__WEBPACK_IMPORTED_MODULE_10__["default"]].find(pallet => pallet.id === globalColors.current_palett);
   const newColorsObj = globalColors === null || globalColors === void 0 ? void 0 : globalColors.colors.map((color, index) => {
@@ -14121,10 +14200,6 @@ const ColorPalettes = _ref => {
       colors: active.colors,
       current_palett: active.id
     };
-    newGlobalColors.colors.map((item, index) => {
-      document.documentElement.style.setProperty(`--pbg-global-${item.slug}`, item.color);
-      return item;
-    });
     setGlobalColors(newGlobalColors);
   };
 
@@ -14160,10 +14235,6 @@ const ColorPalettes = _ref => {
     const newGlobalColors = { ...globalColors,
       [changedColors]: newColors
     };
-    newGlobalColors.colors.map((item, index) => {
-      document.documentElement.style.setProperty(`--pbg-global-${item.slug}`, item.color);
-      return item;
-    });
     setGlobalColors(newGlobalColors);
   };
 

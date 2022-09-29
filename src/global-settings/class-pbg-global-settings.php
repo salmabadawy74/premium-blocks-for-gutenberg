@@ -295,6 +295,10 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 		 * @return string
 		 */
 		public function add_global_color_to_editor( $dynamic_css = '' ) {
+			$global_color_pallet = get_option('pbg_global_color_pallet','theme' );
+			if($global_color_pallet === 'theme'){
+				return $dynamic_css;
+			}
 			$default_value = array(
 				'colors'         => array(
 					array(

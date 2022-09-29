@@ -1,10 +1,10 @@
-import { useContext } from "@wordpress/element";
+import { useContext, useEffect } from "@wordpress/element";
 import SettingsContext from '../store/settings-store';
 import PalettePreview from './color-palettes/PalettePreview';
 import { useSelect } from '@wordpress/data';
 
 const ThemeColorPallet = () => {
-    const { themeCustomColors, setThemeCustomColors } = useContext(SettingsContext);
+    const { colorPallet, globalColors, themeCustomColors, setThemeCustomColors } = useContext(SettingsContext);
     const _colors = useSelect(select => select('core/block-editor').getSettings().colors) || [];
     const themeColors = _colors.map((color) => {
         return {
@@ -15,6 +15,38 @@ const ThemeColorPallet = () => {
             default: true,
         }
     });
+
+    useEffect(() => {
+        globalColors.colors.map((item, index) => {
+            document.documentElement.style.removeProperty(
+                `--pbg-global-${item.slug}`);
+            return item;
+        });
+    }, [globalColors, colorPallet]);
+
+    const loadStyles = () => {
+        const styles = {};
+
+        styles[`[class*="wp-block-premium"]`] = {
+            'color': `var(--pbg-global-color3)`,
+        };
+
+        styles[`[class*="wp-block-premium"] h1, [class*="wp-block-premium"] h2, [class*="wp-block-premium"] h3,[class*="wp-block-premium"] h4,[class*="wp-block-premium"] h5,[class*="wp-block-premium"] h6, [class*="wp-block-premium"] a:not([class*="button"])`] = {
+            'color': `var(--pbg-global-color2)`,
+        };
+
+        styles[`[class*="wp-block-premium"] .premium-button, [class*="wp-block-premium"] .premium-pricing-table__button_link, [class*="wp-block-premium"] .premium-modal-box-modal-lower-close`] = {
+            'color': `#ffffff`,
+            'background-color': `var(--pbg-global-color1)`,
+            'border-color': `var(--pbg-global-color4)`,
+        };
+
+        styles[`[class*="wp-block-premium"] a:not([class*="button"]):hover`] = {
+            'color': `var(--pbg-global-color1)`,
+        };
+
+        return generateCss(styles);
+    }
 
     const handleRemoveColor = (id) => {
         let newValue = [...themeCustomColors];

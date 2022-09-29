@@ -1,4 +1,4 @@
-import { createPortal, useContext, useRef, useState } from "@wordpress/element";
+import { createPortal, useContext, useRef, useState, useEffect } from "@wordpress/element";
 import PalettePreview from "./color-palettes/PalettePreview";
 import AddPaletteContainer from "./color-palettes/AddPaletteContainer";
 import ColorPalettesModal from "./color-palettes/ColorPalettesModal";
@@ -11,6 +11,7 @@ import { Modal } from '@wordpress/components';
 import classnames from "classnames";
 import defaultPallets from "../helpers/defaultPallets";
 import SettingsContext from "../store/settings-store";
+import { generateCss } from '../../../components/HelperFunction';
 
 const ColorPalettes = ({
     value,
@@ -26,7 +27,7 @@ const ColorPalettes = ({
         isTransitioning: false,
     });
 
-    const { globalColors, setGlobalColors } = useContext(SettingsContext);
+    const { globalColors, setGlobalColors, colorPallet } = useContext(SettingsContext);
     const [currentView, setCurrentView] = useState("");
     const [openModal, setOpenModal] = useState(false)
     const [delPalette, setDelPalette] = useState({});
@@ -35,6 +36,61 @@ const ColorPalettes = ({
         defaultHeight: 430,
         shouldCalculate: isTransitioning || isOpen,
     });
+
+    useEffect(() => {
+        globalColors.colors.map((item, index) => {
+            document.documentElement.style.setProperty(
+                `--pbg-global-${item.slug}`,
+                item.color
+            );
+            return item;
+        });
+        const css = loadStyles();
+        const styleSheet = document.querySelector('#premiun-colors-preview-css');
+        if (styleSheet) {
+            if (styleSheet.styleSheet) {
+                styleSheet.styleSheet.cssText = css;
+            } else {
+                styleSheet.innerHTML = css;
+            }
+        } else {
+            const head = document.head || document.getElementsByTagName('head')[0];
+            const style = document.createElement('style');
+            style.setAttribute('id', 'premiun-colors-preview-css');
+            head.appendChild(style);
+            style.type = 'text/css';
+            if (style.styleSheet) {
+                style.styleSheet.cssText = css;
+            } else {
+                style.appendChild(document.createTextNode(css));
+            }
+        }
+    }, [globalColors, colorPallet]);
+
+    const loadStyles = () => {
+        const styles = {};
+
+        styles[`[class*="wp-block-premium"]`] = {
+            'color': `var(--pbg-global-color3)`,
+        };
+
+        styles[`[class*="wp-block-premium"] h1, [class*="wp-block-premium"] h2, [class*="wp-block-premium"] h3,[class*="wp-block-premium"] h4,[class*="wp-block-premium"] h5,[class*="wp-block-premium"] h6, [class*="wp-block-premium"] a:not([class*="button"])`] = {
+            'color': `var(--pbg-global-color2)`,
+        };
+
+        styles[`[class*="wp-block-premium"] .premium-button, [class*="wp-block-premium"] .premium-pricing-table__button_link, [class*="wp-block-premium"] .premium-modal-box-modal-lower-close`] = {
+            'color': `#ffffff`,
+            'background-color': `var(--pbg-global-color1)`,
+            'border-color': `var(--pbg-global-color4)`,
+        };
+
+        styles[`[class*="wp-block-premium"] a:not([class*="button"]):hover`] = {
+            'color': `var(--pbg-global-color1)`,
+        };
+
+        return generateCss(styles);
+    }
+
     const titles = [
         __(`Buttons background color \n& Links hover color`, "premium-blocks-for-gutenberg"),
         __("Headings & Links color", "premium-blocks-for-gutenberg"),
@@ -80,14 +136,6 @@ const ColorPalettes = ({
     const handleChangePalette = (active) => {
         const newGlobalColors = { ...globalColors, colors: active.colors, current_palett: active.id };
 
-        newGlobalColors.colors.map((item, index) => {
-            document.documentElement.style.setProperty(
-                `--pbg-global-${item.slug}`,
-                item.color
-            );
-            return item;
-        });
-
         setGlobalColors(newGlobalColors);
     };
 
@@ -112,14 +160,6 @@ const ColorPalettes = ({
         newColors = newColors.map(colorObj => colorObj.slug === index ? { ...colorObj, color: color } : colorObj);
         const changedColors = index.includes('custom') ? 'custom_colors' : 'colors';
         const newGlobalColors = { ...globalColors, [changedColors]: newColors };
-
-        newGlobalColors.colors.map((item, index) => {
-            document.documentElement.style.setProperty(
-                `--pbg-global-${item.slug}`,
-                item.color
-            );
-            return item;
-        });
 
         setGlobalColors(newGlobalColors);
     };
