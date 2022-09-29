@@ -40,6 +40,7 @@
         "classnames": "^2.2.6",
         "colord": "^2.9.2",
         "dom-chef": "^5.1.0",
+        "grunt-wp-i18n": "^1.0.3",
         "hex-to-rgba": "^2.0.1",
         "lodash": "^4.17.21",
         "node-sass": "^7.0.1",

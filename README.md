@@ -5,7 +5,7 @@
 **Requires at least:** 4.5  
 **Tested up to:** 5.9.3  
 **Requires PHP:** 5.4  
-**Stable tag:** 1.9.8  
+**Stable tag:** 2.0.0  
 **License:** GPL v3.0  
 **License URI:** https://opensource.org/licenses/GPL-3.0  
 
@@ -58,6 +58,25 @@ No. You cannot use Premium Blocks without Gutenberg as it's a blocks plugin for 
 Yes it will work with any WordPress theme as long as you are using Gutenberg as a page editor.
 
 ## Changelog ##
+
+### 2.0.0 ###
+
+- New: Container Block to build flexible box layouts.
+- New: Content Switcher Block to switch between two different content.
+- New: Breadcrumbs Block theme to navigate your pages easily.
+- New: Trigger Block to open canvas area.
+- New: AJAX Search Block.
+- New: UX/UI Controls’ Design for Premium Blocks.
+- New: Create Premium Blocks admin dashboard by React.
+- New: Responsive options for all premium blocks.
+- Improve: Responsive settings to control all options.
+- Improve: Accordion Block layout and options.
+- Improve: Bullet List Block Layout and options.
+- Improve: Code refactored for better performance and security.
+- Improve: Premium Blocks’ code and improve editor performance.
+- Improve: Blocks Options have been organized in three tabs (Layout, Style, and Advanced)
+- Improve: Text style, letter spacing, text-transform, and text decoration options are added to typography control.
+- Fixed: General Issues in multiple blocks.
 
 ### 1.9.8 ###
 
