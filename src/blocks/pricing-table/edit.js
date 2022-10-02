@@ -956,6 +956,7 @@ function PremiumPricingTable(props) {
                             style={{
                                 ...paddingCss(titlePadding, props.deviceType),
                                 ...typographyCss(titleTypography, props.deviceType),
+                                margin: 0,
                                 color: titleStyles[0].titleColor,
                                 textShadow: `${titleTextShadow.horizontal}px ${titleTextShadow.vertical}px ${titleTextShadow.blur}px ${titleTextShadow.color}`,
                             }}
