@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Premium Blocks for Gutenberg\n"
-"POT-Creation-Date: 2019-01-27 19:36+0200\n"
+"POT-Creation-Date: 2022-10-02 12:18+0200\n"
 "PO-Revision-Date: 2018-02-15 10:41+0200\n"
 "Last-Translator: \n"
 "Language-Team: Leap13\n"
@@ -10,1451 +10,3465 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
-"X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.1.1\n"
+"X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: esc_html__;__\n"
 "X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: assets/js\n"
-"X-Poedit-SearchPathExcluded-1: admin/assets/js\n"
-"X-Poedit-SearchPathExcluded-2: node_modules\n"
-"X-Poedit-SearchPathExcluded-3: build/index.build.js\n"
+"X-Poedit-SearchPath-1: assets/js/build/index.js\n"
+"X-Poedit-SearchPathExcluded-0: admin/assets/js\n"
+"X-Poedit-SearchPathExcluded-1: node_modules\n"
 
-#: src/blocks/accordion/deprecated.js:15 src/blocks/accordion/edit.js:198
-#: src/blocks/accordion/edit.js:659 src/blocks/accordion/index.js:24
-#: src/blocks/banner/deprecated.js:21 src/blocks/banner/index.js:26
-#: src/blocks/icon-box/deprecated.js:59 src/blocks/icon-box/edit.js:934
-#: src/blocks/icon-box/index.js:58 src/blocks/maps/index.js:81
-#: src/blocks/pricing-table/index.js:1677
-msgid "Awesome Title"
+#: admin/includes/pb-panel/assets/js/build/index.js:167
+msgid " Gutenberg Block"
 msgstr ""
 
-#: src/blocks/accordion/edit.js:22 src/blocks/section/index.js:26
-#: src/blocks/section/index.js:27
-msgid "Insert Your Content Here"
+#: admin/includes/pb-panel/assets/js/build/index.js:175
+msgid "Live Preview"
 msgstr ""
 
-#: src/blocks/accordion/edit.js:132
-msgid "In"
+#: admin/includes/pb-panel/assets/js/build/index.js:181
+msgid "Guidelines"
 msgstr ""
 
-#: src/blocks/accordion/edit.js:136
-msgid "Out"
+#: admin/includes/pb-panel/assets/js/build/index.js:960
+msgid "Knowledge Base    "
 msgstr ""
 
-#: src/blocks/accordion/edit.js:143 src/blocks/pricing-table/index.js:1441
-msgid "Text"
+#: admin/includes/pb-panel/assets/js/build/index.js:1170
+msgid "An unknown error occurred."
 msgstr ""
 
-#: src/blocks/accordion/edit.js:147
-msgid "Gutenberg Block"
+#: admin/includes/pb-panel/assets/js/build/index.js:1543
+#: admin/includes/pb-panel/assets/js/build/index.js:1577
+msgid "Invalid Email Address..."
 msgstr ""
 
-#: src/blocks/accordion/edit.js:278 src/blocks/count-up/index.js:361
-#: src/blocks/count-up/index.js:600 src/blocks/icon-box/edit.js:219
-#: src/blocks/icon-box/edit.js:327 src/blocks/icon-box/edit.js:336
-#: src/blocks/pricing-table/index.js:735
-msgid "Title"
+#: admin/includes/pb-panel/assets/js/build/index.js:1571
+msgid "success"
 msgstr ""
 
-#: src/blocks/accordion/edit.js:282
-msgid "Title Tag"
+#: admin/includes/pb-panel/assets/js/build/index.js:1571
+msgid "Thanks for your subscribe!"
 msgstr ""
 
-#: src/blocks/accordion/edit.js:292 src/blocks/button/index.js:332
-#: src/blocks/count-up/index.js:333 src/blocks/icon-box/edit.js:505
-msgid "Direction"
+#: admin/includes/pb-panel/assets/js/build/index.js:1664
+msgid "Join The Community"
 msgstr ""
 
-#: src/blocks/accordion/edit.js:298 src/blocks/accordion/edit.js:504
-#: src/blocks/banner/edit.js:316 src/blocks/banner/edit.js:420
-#: src/blocks/button/index.js:371 src/blocks/count-up/index.js:474
-#: src/blocks/count-up/index.js:514 src/blocks/count-up/index.js:562
-#: src/blocks/count-up/index.js:610 src/blocks/dual-heading/edit.js:156
-#: src/blocks/dual-heading/edit.js:319 src/blocks/icon-box/edit.js:332
-#: src/blocks/icon-box/edit.js:436 src/blocks/icon-box/edit.js:516
-#: src/blocks/pricing-table/index.js:740 src/blocks/pricing-table/index.js:1132
-#: src/blocks/pricing-table/index.js:1215
-#: src/blocks/pricing-table/index.js:1301
-#: src/blocks/pricing-table/index.js:1452 src/blocks/testimonials/index.js:299
-#: src/blocks/testimonials/index.js:353 src/blocks/testimonials/index.js:403
-msgid "Font"
-msgstr ""
-
-#: src/blocks/accordion/edit.js:334 src/blocks/accordion/edit.js:445
-#: src/blocks/accordion/edit.js:542 src/blocks/button/index.js:406
-#: src/blocks/button/index.js:447 src/blocks/dual-heading/edit.js:184
-#: src/blocks/dual-heading/edit.js:206 src/blocks/dual-heading/edit.js:347
-#: src/blocks/icon-box/edit.js:543 src/blocks/icon/edit.js:168
-#: src/blocks/pricing-table/index.js:787 src/blocks/pricing-table/index.js:1168
-#: src/blocks/pricing-table/index.js:1242
-#: src/blocks/pricing-table/index.js:1337
-#: src/blocks/pricing-table/index.js:1479 src/blocks/section/index.js:291
-#: src/blocks/testimonials/index.js:334 src/blocks/testimonials/index.js:368
-#: src/blocks/testimonials/index.js:425 src/blocks/testimonials/index.js:476
-#: src/blocks/video-box/index.js:609 src/blocks/video-box/index.js:736
-msgid "Colors"
-msgstr ""
-
-#: src/blocks/accordion/edit.js:339 src/blocks/accordion/edit.js:547
-#: src/blocks/banner/edit.js:348 src/blocks/banner/edit.js:443
-#: src/blocks/button/index.js:411 src/blocks/count-up/index.js:531
-#: src/blocks/count-up/index.js:579 src/blocks/count-up/index.js:637
-#: src/blocks/dual-heading/edit.js:189 src/blocks/dual-heading/edit.js:352
-#: src/blocks/icon-box/edit.js:377 src/blocks/icon-box/edit.js:455
-#: src/blocks/icon-box/edit.js:551 src/blocks/maps/index.js:462
-#: src/blocks/maps/index.js:490 src/blocks/pricing-table/index.js:795
-#: src/blocks/pricing-table/index.js:920 src/blocks/pricing-table/index.js:954
-#: src/blocks/pricing-table/index.js:988 src/blocks/pricing-table/index.js:1022
-#: src/blocks/pricing-table/index.js:1056
-#: src/blocks/pricing-table/index.js:1250
-#: src/blocks/pricing-table/index.js:1344
-#: src/blocks/pricing-table/index.js:1487 src/blocks/testimonials/index.js:342
-#: src/blocks/testimonials/index.js:376 src/blocks/testimonials/index.js:433
-#: src/blocks/video-box/index.js:741
-msgid "Text Color"
-msgstr ""
-
-#: src/blocks/accordion/edit.js:345 src/blocks/accordion/edit.js:456
-#: src/blocks/accordion/edit.js:553 src/blocks/banner/edit.js:375
-#: src/blocks/button/index.js:454 src/blocks/button/index.js:464
-#: src/blocks/count-up/index.js:673 src/blocks/dual-heading/edit.js:195
-#: src/blocks/dual-heading/edit.js:358 src/blocks/dual-heading/edit.js:474
-#: src/blocks/icon-box/edit.js:563 src/blocks/icon-box/edit.js:686
-#: src/blocks/icon/edit.js:181 src/blocks/icon/edit.js:288
-#: src/blocks/pricing-table/index.js:801 src/blocks/pricing-table/index.js:1181
-#: src/blocks/pricing-table/index.js:1255
-#: src/blocks/pricing-table/index.js:1355
-#: src/blocks/pricing-table/index.js:1493
-#: src/blocks/pricing-table/index.js:1532 src/blocks/section/index.js:298
-msgid "Background Color"
-msgstr ""
-
-#: src/blocks/accordion/edit.js:353 src/blocks/accordion/edit.js:563
-#: src/blocks/button/index.js:475 src/blocks/dual-heading/edit.js:226
-#: src/blocks/dual-heading/edit.js:392 src/blocks/icon-box/edit.js:582
-#: src/blocks/icon-box/edit.js:728 src/blocks/icon/edit.js:186
-#: src/blocks/icon/edit.js:300 src/blocks/pricing-table/index.js:1366
-#: src/blocks/pricing-table/index.js:1544 src/blocks/section/index.js:332
-#: src/blocks/video-box/index.js:785
-msgid "Border"
-msgstr ""
-
-#: src/blocks/accordion/edit.js:396 src/blocks/accordion/edit.js:614
-#: src/blocks/dual-heading/edit.js:290 src/blocks/dual-heading/edit.js:458
-#: src/blocks/pricing-table/index.js:1605
-msgid "Padding"
-msgstr ""
-
-#: src/blocks/accordion/edit.js:429
-msgid "Arrow"
-msgstr ""
-
-#: src/blocks/accordion/edit.js:434 src/blocks/pricing-table/index.js:1446
-#: src/components/premium-background.js:121
-#: src/components/premium-box-shadow.js:58
-msgid "Position"
-msgstr ""
-
-#: src/blocks/accordion/edit.js:440
-msgid "Size "
-msgstr ""
-
-#: src/blocks/accordion/edit.js:450
-msgid "Arrow Color"
-msgstr ""
-
-#: src/blocks/accordion/edit.js:464 src/blocks/icon-box/edit.js:300
-msgid "Border Radius (PX)"
-msgstr ""
-
-#: src/blocks/accordion/edit.js:473 src/blocks/button/index.js:537
-#: src/blocks/icon-box/edit.js:644 src/blocks/pricing-table/index.js:845
-#: src/blocks/pricing-table/index.js:1201
-#: src/blocks/pricing-table/index.js:1283
-#: src/blocks/pricing-table/index.js:1418 src/blocks/video-box/index.js:658
-#: src/blocks/video-box/index.js:765
-msgid "Padding (PX)"
-msgstr ""
-
-#: src/blocks/accordion/edit.js:483 src/blocks/testimonials/index.js:348
-msgid "Content"
-msgstr ""
-
-#: src/blocks/accordion/edit.js:488
-msgid "Type"
-msgstr ""
-
-#: src/blocks/accordion/edit.js:492
-msgid "Gutenberg Block works only with single accordion item"
-msgstr ""
-
-#: src/blocks/accordion/edit.js:660 src/blocks/maps/index.js:85
-msgid "Cool Description"
-msgstr ""
-
-#: src/blocks/accordion/edit.js:667
-msgid "Add New Item"
-msgstr ""
-
-#: src/blocks/accordion/edit.js:669
-msgid "Add the items you need then reload the page"
-msgstr ""
-
-#: src/blocks/accordion/index.js:204
-msgid "Accordion"
-msgstr ""
-
-#: src/blocks/banner/deprecated.js:31 src/blocks/banner/index.js:36
-msgid "Cool Description!!"
-msgstr ""
-
-#: src/blocks/banner/edit.js:74
-msgid "Top"
-msgstr ""
-
-#: src/blocks/banner/edit.js:78
-msgid "Middle"
-msgstr ""
-
-#: src/blocks/banner/edit.js:82
-msgid "Bottom"
-msgstr ""
-
-#: src/blocks/banner/edit.js:86
-msgid "Full"
-msgstr ""
-
-#: src/blocks/banner/edit.js:92
-msgid "Effect 1"
-msgstr ""
-
-#: src/blocks/banner/edit.js:96
-msgid "Effect 2"
-msgstr ""
-
-#: src/blocks/banner/edit.js:100
-msgid "Effect 3"
-msgstr ""
-
-#: src/blocks/banner/edit.js:104
-msgid "Effect 4"
-msgstr ""
-
-#: src/blocks/banner/edit.js:108
-msgid "Effect 5"
-msgstr ""
-
-#: src/blocks/banner/edit.js:112
-msgid "Effect 6"
-msgstr ""
-
-#: src/blocks/banner/edit.js:118 src/blocks/icon-box/edit.js:147
-#: src/blocks/icon-box/edit.js:178 src/blocks/icon/edit.js:81
-msgid "None"
-msgstr ""
-
-#: src/blocks/banner/edit.js:122
-msgid "Zoom In"
-msgstr ""
-
-#: src/blocks/banner/edit.js:130
-msgid "Scale"
-msgstr ""
-
-#: src/blocks/banner/edit.js:134
-msgid "Gray Scale"
-msgstr ""
-
-#: src/blocks/banner/edit.js:138 src/components/premium-box-shadow.js:56
-#: src/components/premium-text-shadow.js:32
-msgid "Blur"
-msgstr ""
-
-#: src/blocks/banner/edit.js:142
-msgid "Bright"
-msgstr ""
-
-#: src/blocks/banner/edit.js:146
-msgid "Sepia"
-msgstr ""
-
-#: src/blocks/banner/edit.js:152
-msgid "Default"
-msgstr ""
-
-#: src/blocks/banner/edit.js:156
-msgid "Custom"
-msgstr ""
-
-#: src/blocks/banner/edit.js:166
-msgid "Refresh this button when it conflict with other buttons styles"
-msgstr ""
-
-#: src/blocks/banner/edit.js:182 src/blocks/dual-heading/edit.js:101
-msgid "General Settings"
-msgstr ""
-
-#: src/blocks/banner/edit.js:195 src/blocks/banner/edit.js:196
-#: src/blocks/count-up/index.js:436 src/blocks/count-up/index.js:440
-#: src/blocks/icon-box/edit.js:291 src/blocks/icon-box/edit.js:295
-#: src/blocks/video-box/index.js:502 src/blocks/video-box/index.js:506
-#: src/components/premium-background.js:102
-#: src/components/premium-background.js:103
-msgid "Change Image"
-msgstr ""
-
-#: src/blocks/banner/edit.js:201
-msgid "Effect"
-msgstr ""
-
-#: src/blocks/banner/edit.js:207
-msgid "Image Hover Effect"
-msgstr ""
-
-#: src/blocks/banner/edit.js:213
-msgid "Always Hovered"
-msgstr ""
-
-#: src/blocks/banner/edit.js:218 src/blocks/section/index.js:264
-msgid "Height"
-msgstr ""
-
-#: src/blocks/banner/edit.js:223 src/blocks/section/index.js:271
-msgid "Min Height (PX)"
-msgstr ""
-
-#: src/blocks/banner/edit.js:234 src/blocks/pricing-table/index.js:914
-#: src/blocks/pricing-table/index.js:948 src/blocks/pricing-table/index.js:982
-#: src/blocks/pricing-table/index.js:1016
-#: src/blocks/pricing-table/index.js:1050
-msgid "Vertical Align"
-msgstr ""
-
-#: src/blocks/banner/edit.js:241 src/blocks/video-box/index.js:483
-msgid "Overlay"
-msgstr ""
-
-#: src/blocks/banner/edit.js:253
-msgid "Overlay Opacity"
-msgstr ""
-
-#: src/blocks/banner/edit.js:287 src/blocks/dual-heading/edit.js:125
-#: src/blocks/icon/edit.js:143
-msgid "Link"
-msgstr ""
-
-#: src/blocks/banner/edit.js:299 src/blocks/button/index.js:360
-#: src/blocks/dual-heading/edit.js:131 src/blocks/icon-box/edit.js:511
-#: src/blocks/icon/edit.js:149
-msgid "Open link in new tab"
-msgstr ""
-
-#: src/blocks/banner/edit.js:305
-msgid "Hide Description on Mobiles"
-msgstr ""
-
-#: src/blocks/banner/edit.js:311
-msgid "Title Settings"
-msgstr ""
-
-#: src/blocks/banner/edit.js:320 src/blocks/testimonials/index.js:407
-msgid "HTML Tag"
-msgstr ""
-
-#: src/blocks/banner/edit.js:361
-msgid "Separator Color"
-msgstr ""
-
-#: src/blocks/banner/edit.js:415
-msgid "Description Settings"
-msgstr ""
-
-#: src/blocks/banner/index.js:158
-msgid "Banner"
-msgstr ""
-
-#: src/blocks/button/index.js:29 admin/settings/elements.php:188
-msgid "Premium Button"
-msgstr ""
-
-#: src/blocks/button/index.js:148 src/blocks/icon-box/edit.js:229
-#: src/blocks/icon-box/edit.js:492 src/blocks/pricing-table/index.js:1296
-msgid "Button"
-msgstr ""
-
-#: src/blocks/button/index.js:340
-msgid "Shutter Direction"
-msgstr ""
-
-#: src/blocks/button/index.js:348 src/components/premium-typo.js:53
-msgid "Style"
-msgstr ""
-
-#: src/blocks/button/index.js:355
-msgid "Button Size"
-msgstr ""
-
-#: src/blocks/button/index.js:366
-msgid "Text Style"
-msgstr ""
-
-#: src/blocks/button/index.js:417 src/blocks/icon-box/edit.js:557
-#: src/blocks/pricing-table/index.js:1350
-msgid "Text Hover Color"
-msgstr ""
-
-#: src/blocks/button/index.js:442
-msgid "Button Style"
-msgstr ""
-
-#: src/blocks/button/index.js:455 src/blocks/button/index.js:463
-#: src/blocks/icon-box/edit.js:569 src/blocks/pricing-table/index.js:1361
-msgid "Background Hover Color"
-msgstr ""
-
-#: src/blocks/button/index.js:532 src/blocks/count-up/index.js:650
-#: src/blocks/dual-heading/edit.js:268 src/blocks/dual-heading/edit.js:436
-#: src/blocks/icon-box/edit.js:407 src/blocks/icon-box/edit.js:467
-#: src/blocks/icon-box/edit.js:639 src/blocks/icon-box/edit.js:783
-#: src/blocks/icon/edit.js:223 src/blocks/icon/edit.js:357
-#: src/blocks/pricing-table/index.js:824 src/blocks/pricing-table/index.js:1072
-#: src/blocks/pricing-table/index.js:1186
-#: src/blocks/pricing-table/index.js:1260
-#: src/blocks/pricing-table/index.js:1390
-#: src/blocks/pricing-table/index.js:1600 src/blocks/section/index.js:387
-#: src/blocks/testimonials/index.js:381
-msgid "Spacings"
-msgstr ""
-
-#: src/blocks/count-up/index.js:182
-msgid "CountUp"
-msgstr ""
-
-#: src/blocks/count-up/index.js:301
-msgid "Rolling Time"
-msgstr ""
-
-#: src/blocks/count-up/index.js:304
-msgid "Set counting time in milliseconds, for example: 1000"
-msgstr ""
-
-#: src/blocks/count-up/index.js:312 src/blocks/count-up/index.js:324
-#: src/blocks/icon-box/edit.js:672 src/blocks/icon/edit.js:134
-msgid "Align"
-msgstr ""
-
-#: src/blocks/count-up/index.js:340
-msgid "Spacing (PX)"
-msgstr ""
-
-#: src/blocks/count-up/index.js:346 src/blocks/count-up/index.js:368
-#: src/blocks/icon-box/edit.js:133 src/blocks/icon-box/edit.js:214
-#: src/blocks/icon-box/edit.js:236 src/blocks/icon/edit.js:115
-#: src/blocks/icon/index.js:181
-msgid "Icon"
-msgstr ""
-
-#: src/blocks/count-up/index.js:351 src/blocks/count-up/index.js:504
-#: src/blocks/count-up/index.js:509
-msgid "Prefix"
-msgstr ""
-
-#: src/blocks/count-up/index.js:356 src/blocks/count-up/index.js:552
-#: src/blocks/count-up/index.js:557
-msgid "Suffix"
-msgstr ""
-
-#: src/blocks/count-up/index.js:373 src/blocks/count-up/index.js:387
-#: src/blocks/icon-box/edit.js:241 src/components/premium-icon.js:26
-msgid "Icon Type"
-msgstr ""
-
-#: src/blocks/count-up/index.js:393 src/components/premium-icon.js:37
-msgid "Icon Class"
-msgstr ""
-
-#: src/blocks/count-up/index.js:396 src/components/premium-icon.js:40
-msgid "Get icon class from"
-msgstr ""
-
-#: src/blocks/count-up/index.js:406 src/blocks/maps/index.js:345
-#: src/blocks/maps/index.js:568 src/components/premium-icon.js:50
-msgid "here"
-msgstr ""
-
-#: src/blocks/count-up/index.js:408 src/components/premium-icon.js:52
-msgid " , for example: "
-msgstr ""
-
-#: src/blocks/count-up/index.js:446 src/blocks/icon-box/edit.js:315
-#: src/blocks/icon/edit.js:161 src/blocks/video-box/index.js:582
-msgid "Size (PX)"
-msgstr ""
-
-#: src/blocks/count-up/index.js:453 src/blocks/icon-box/edit.js:258
-#: src/blocks/icon/edit.js:176 src/blocks/video-box/index.js:614
-msgid "Icon Color"
-msgstr ""
-
-#: src/blocks/count-up/index.js:469
-msgid "Number"
-msgstr ""
-
-#: src/blocks/count-up/index.js:489
-msgid "Number Color"
-msgstr ""
-
-#: src/blocks/count-up/index.js:544
-msgid "Gap After (PX)"
-msgstr ""
-
-#: src/blocks/count-up/index.js:592
-msgid "Gap Before (PX)"
-msgstr ""
-
-#: src/blocks/count-up/index.js:605
-msgid "Title Text"
-msgstr ""
-
-#: src/blocks/count-up/index.js:655 src/blocks/pricing-table/index.js:829
-#: src/blocks/pricing-table/index.js:1191
-#: src/blocks/pricing-table/index.js:1265
-#: src/blocks/pricing-table/index.js:1400 src/blocks/testimonials/index.js:386
-#: src/components/premium-margin.js:20
-msgid "Margin Top (PX)"
-msgstr ""
-
-#: src/blocks/count-up/index.js:660 src/blocks/pricing-table/index.js:836
-#: src/blocks/pricing-table/index.js:1196
-#: src/blocks/pricing-table/index.js:1274
-#: src/blocks/pricing-table/index.js:1409 src/blocks/testimonials/index.js:391
-#: src/components/premium-margin.js:38
-msgid "Margin Bottom (PX)"
-msgstr ""
-
-#: src/blocks/count-up/index.js:668 src/blocks/icon-box/edit.js:668
-msgid "Container"
-msgstr ""
-
-#: src/blocks/count-up/index.js:691 src/blocks/icon-box/edit.js:894
-#: src/blocks/icon/edit.js:443
-msgid "Please Enable Font Awesome Icons from Plugin settings"
-msgstr ""
-
-#: src/blocks/dual-heading/edit.js:82
-msgid "Inline"
-msgstr ""
-
-#: src/blocks/dual-heading/edit.js:86
-msgid "Block"
-msgstr ""
-
-#: src/blocks/dual-heading/edit.js:106
-msgid "First Heading"
-msgstr ""
-
-#: src/blocks/dual-heading/edit.js:112
-msgid "Second Heading"
-msgstr ""
-
-#: src/blocks/dual-heading/edit.js:119
-msgid "Display"
-msgstr ""
-
-#: src/blocks/dual-heading/edit.js:139
-msgid "First Heading Style"
-msgstr ""
-
-#: src/blocks/dual-heading/edit.js:144 src/blocks/dual-heading/edit.js:307
-msgid "Clipped"
-msgstr ""
-
-#: src/blocks/dual-heading/edit.js:150 src/blocks/dual-heading/edit.js:313
-msgid "Animated"
-msgstr ""
-
-#: src/blocks/dual-heading/edit.js:211 src/blocks/dual-heading/edit.js:375
-msgid "First Color"
-msgstr ""
-
-#: src/blocks/dual-heading/edit.js:217 src/blocks/dual-heading/edit.js:370
-#: src/blocks/dual-heading/edit.js:386
-msgid "Second Color"
-msgstr ""
-
-#: src/blocks/dual-heading/edit.js:272 src/blocks/dual-heading/edit.js:440
-msgid "Margin Left"
-msgstr ""
-
-#: src/blocks/dual-heading/edit.js:281 src/blocks/dual-heading/edit.js:449
-msgid "Margin Right"
-msgstr ""
-
-#: src/blocks/dual-heading/edit.js:302
-msgid "Second Heading Style"
-msgstr ""
-
-#: src/blocks/dual-heading/edit.js:470 src/blocks/icon/edit.js:283
-msgid "Container Style"
-msgstr ""
-
-#: src/blocks/dual-heading/index.js:208
-msgid "Dual Heading"
-msgstr ""
-
-#: src/blocks/icon-box/deprecated.js:158 src/blocks/icon-box/edit.js:987
-#: src/blocks/icon-box/index.js:157
-msgid "Click Here"
-msgstr ""
-
-#: src/blocks/icon-box/edit.js:137
-msgid "Image"
-msgstr ""
-
-#: src/blocks/icon-box/edit.js:151 src/blocks/icon/edit.js:85
-msgid "Pulse"
-msgstr ""
-
-#: src/blocks/icon-box/edit.js:155 src/blocks/icon/edit.js:89
-msgid "Rotate"
-msgstr ""
-
-#: src/blocks/icon-box/edit.js:159 src/blocks/icon/edit.js:93
-msgid "3D Rotate"
-msgstr ""
-
-#: src/blocks/icon-box/edit.js:163 src/blocks/icon/edit.js:97
-msgid "Buzz"
-msgstr ""
-
-#: src/blocks/icon-box/edit.js:167 src/blocks/icon/edit.js:101
-msgid "Drop Shadow"
-msgstr ""
-
-#: src/blocks/icon-box/edit.js:171 src/blocks/icon/edit.js:105
-msgid "Wobble"
-msgstr ""
-
-#: src/blocks/icon-box/edit.js:182
-msgid "Slide"
-msgstr ""
-
-#: src/blocks/icon-box/edit.js:189
-msgid "Top to Bottom"
-msgstr ""
-
-#: src/blocks/icon-box/edit.js:193
-msgid "Bottom to Top"
-msgstr ""
-
-#: src/blocks/icon-box/edit.js:197
-msgid "Left to Right"
-msgstr ""
-
-#: src/blocks/icon-box/edit.js:201
-msgid "Right to Left"
-msgstr ""
-
-#: src/blocks/icon-box/edit.js:209
-msgid "Display Options"
-msgstr ""
-
-#: src/blocks/icon-box/edit.js:224 src/blocks/icon-box/edit.js:431
-#: src/blocks/pricing-table/index.js:718 src/blocks/pricing-table/index.js:1210
-msgid "Description"
-msgstr ""
-
-#: src/blocks/icon-box/edit.js:248 src/blocks/icon-box/edit.js:255
-#: src/blocks/icon/edit.js:119 src/blocks/icon/edit.js:126
-msgid "Select Icon"
-msgstr ""
-
-#: src/blocks/icon-box/edit.js:309 src/blocks/icon-box/edit.js:498
-#: src/blocks/icon/edit.js:129
-msgid "Hover Effect"
-msgstr ""
-
-#: src/blocks/icon-box/edit.js:577
-msgid "Border Hover Color"
-msgstr ""
-
-#: src/blocks/icon-box/edit.js:681 src/blocks/section/index.js:286
-msgid "Background"
-msgstr ""
-
-#: src/blocks/icon-box/index.js:326
-msgid "Icon Box"
-msgstr ""
-
-#: src/blocks/icon/edit.js:156
-msgid "Icon Style"
-msgstr ""
-
-#: src/blocks/maps/index.js:351
-msgid "Latitude"
-msgstr ""
-
-#: src/blocks/maps/index.js:357
-msgid "Marker"
-msgstr ""
-
-#: src/blocks/maps/index.js:362
-msgid "Enable Marker"
-msgstr ""
-
-#: src/blocks/maps/index.js:365
-msgid "Disable marker is applied on page reload"
-msgstr ""
-
-#: src/blocks/maps/index.js:375
-msgid "Marker Description"
-msgstr ""
-
-#: src/blocks/maps/index.js:387
-msgid "Description opened by default"
-msgstr ""
-
-#: src/blocks/maps/index.js:399
-msgid "Custom Marker Icon"
-msgstr ""
-
-#: src/blocks/maps/index.js:422 src/blocks/maps/index.js:426
-msgid "Change Marker Icon"
-msgstr ""
-
-#: src/blocks/maps/index.js:432
-msgid "Description Box Max Width (PX)"
-msgstr ""
-
-#: src/blocks/maps/index.js:439
-msgid "Description Box Padding (PX)"
-msgstr ""
-
-#: src/blocks/maps/index.js:450
-msgid "Marker Title Style"
-msgstr ""
-
-#: src/blocks/maps/index.js:455 src/blocks/maps/index.js:483
-#: src/components/premium-typo.js:34
-msgid "Font Size (PX)"
-msgstr ""
-
-#: src/blocks/maps/index.js:478
-msgid "Marker Description Style"
-msgstr ""
-
-#: src/blocks/maps/index.js:505
-msgid "Controls"
-msgstr ""
-
-#: src/blocks/maps/index.js:510
-msgid "Map Type"
-msgstr ""
-
-#: src/blocks/maps/index.js:516
-msgid "Map Height (PX)"
-msgstr ""
-
-#: src/blocks/maps/index.js:523
-msgid "Zoom"
-msgstr ""
-
-#: src/blocks/maps/index.js:530
-msgid "Map Type Controls"
-msgstr ""
-
-#: src/blocks/maps/index.js:535
-msgid "Zoom Controls"
-msgstr ""
-
-#: src/blocks/maps/index.js:540
-msgid "Street View Control"
-msgstr ""
-
-#: src/blocks/maps/index.js:546
-msgid "Full Screen Control"
-msgstr ""
-
-#: src/blocks/maps/index.js:551
-msgid "Scroll Wheel Zoom"
-msgstr ""
-
-#: src/blocks/maps/index.js:557
-msgid "Map Style"
-msgstr ""
-
-#: src/blocks/maps/index.js:562
-msgid "Maps Style"
-msgstr ""
-
-#: src/blocks/maps/index.js:565
-msgid "Get your custom styling from"
-msgstr ""
-
-#: src/blocks/maps/index.js:590
-msgid "Maps"
-msgstr ""
-
-#: src/blocks/pricing-table/index.js:406
-msgid "Popular"
-msgstr ""
-
-#: src/blocks/pricing-table/index.js:482
-msgid "Pricing Table"
-msgstr ""
-
-#: src/blocks/pricing-table/index.js:708 src/blocks/pricing-table/index.js:858
-#: src/blocks/pricing-table/index.js:873
-msgid "Price"
-msgstr ""
-
-#: src/blocks/pricing-table/index.js:728 src/blocks/pricing-table/index.js:1436
-msgid "Badge"
-msgstr ""
-
-#: src/blocks/pricing-table/index.js:744
-msgid "Heading"
-msgstr ""
-
-#: src/blocks/pricing-table/index.js:863
-msgid "Slashed Price"
-msgstr ""
-
-#: src/blocks/pricing-table/index.js:868
-msgid "Currency"
-msgstr ""
-
-#: src/blocks/pricing-table/index.js:878
-msgid "Divider"
-msgstr ""
-
-#: src/blocks/pricing-table/index.js:883
-msgid "Duration"
-msgstr ""
-
-#: src/blocks/pricing-table/index.js:888
-msgid "Element to Style"
-msgstr ""
-
-#: src/blocks/pricing-table/index.js:893
-msgid "Element"
-msgstr ""
-
-#: src/blocks/pricing-table/index.js:1077
-msgid "Container Margin Top (PX)"
-msgstr ""
-
-#: src/blocks/pricing-table/index.js:1086
-msgid "Container Margin Bottom (PX)"
-msgstr ""
-
-#: src/blocks/pricing-table/index.js:1095
-msgid "Container Padding (PX)"
-msgstr ""
-
-#: src/blocks/pricing-table/index.js:1105
-msgid "Container Background Color"
-msgstr ""
-
-#: src/blocks/pricing-table/index.js:1121
-msgid "Features"
-msgstr ""
-
-#: src/blocks/pricing-table/index.js:1126
-msgid "List Style"
-msgstr ""
-
-#: src/blocks/pricing-table/index.js:1176
-msgid "List Items Color"
-msgstr ""
-
-#: src/blocks/pricing-table/index.js:1395
-msgid "Width (%)"
-msgstr ""
-
-#: src/blocks/pricing-table/index.js:1428
-msgid "Open Link in a new tab"
-msgstr ""
-
-#: src/blocks/pricing-table/index.js:1498
-msgid "Vertical Offset"
-msgstr ""
-
-#: src/blocks/pricing-table/index.js:1503
-msgid "Horizontal Offset"
-msgstr ""
-
-#: src/blocks/pricing-table/index.js:1512
-msgid "Badge Size"
-msgstr ""
-
-#: src/blocks/pricing-table/index.js:1518
-msgid "Text Width"
-msgstr ""
-
-#: src/blocks/pricing-table/index.js:1527
-msgid "Table"
-msgstr ""
-
-#: src/blocks/pricing-table/index.js:1784
-msgid "List Item #1"
-msgstr ""
-
-#: src/blocks/section/index.js:141
-msgid "Section"
-msgstr ""
-
-#: src/blocks/section/index.js:246
-msgid "Content Width"
-msgstr ""
-
-#: src/blocks/section/index.js:256
-msgid "Max Width (%)"
-msgstr ""
-
-#: src/blocks/section/index.js:279
-msgid "Content Position"
-msgstr ""
-
-#: src/blocks/testimonials/index.js:149
-msgid "Testimonial"
-msgstr ""
-
-#: src/blocks/testimonials/index.js:249 src/blocks/testimonials/index.js:253
-msgid "Change Author Image"
-msgstr ""
-
-#: src/blocks/testimonials/index.js:259
-msgid "Image Style"
-msgstr ""
-
-#: src/blocks/testimonials/index.js:269
-#: src/components/premium-background.js:133
-msgid "Size"
-msgstr ""
-
-#: src/blocks/testimonials/index.js:277
-msgid "Border Width (PX)"
-msgstr ""
-
-#: src/blocks/testimonials/index.js:284 src/components/premium-border.js:61
-msgid "Border Color"
-msgstr ""
-
-#: src/blocks/testimonials/index.js:292
-msgid "Color"
-msgstr ""
-
-#: src/blocks/testimonials/index.js:303
-msgid "Author HTML Tag"
-msgstr ""
-
-#: src/blocks/testimonials/index.js:398
-msgid "Company"
-msgstr ""
-
-#: src/blocks/testimonials/index.js:439
-msgid "Dash Color"
-msgstr ""
-
-#: src/blocks/testimonials/index.js:444 src/blocks/testimonials/index.js:450
-msgid "URL"
-msgstr ""
-
-#: src/blocks/testimonials/index.js:457
-msgid "Open Link in a New Tab"
-msgstr ""
-
-#: src/blocks/testimonials/index.js:464
-msgid "Quotations"
-msgstr ""
-
-#: src/blocks/testimonials/index.js:469
-msgid "Size (EM)"
-msgstr ""
-
-#: src/blocks/testimonials/index.js:484
-msgid "Quotations Color"
-msgstr ""
-
-#: src/blocks/testimonials/index.js:489
-msgid "Opacity"
-msgstr ""
-
-#: src/blocks/video-box/index.js:345
-msgid "Youtube"
-msgstr ""
-
-#: src/blocks/video-box/index.js:349
-msgid "Vimeo"
-msgstr ""
-
-#: src/blocks/video-box/index.js:353
-msgid "Daily Motion"
-msgstr ""
-
-#: src/blocks/video-box/index.js:357
-msgid "Self Hosted"
-msgstr ""
-
-#: src/blocks/video-box/index.js:380
+#: admin/includes/pb-panel/assets/js/build/index.js:1664
 msgid ""
-"Enter video ID, for example: z1hQgVpfTKU or Embed URL, for example: https://"
-"www.youtube.com/embed/07d2dXHYb94"
+"Join our Facebook group and be part of the community. Collaborate, interact, "
+"and suggest! You and your thoughts are more than welcome."
 msgstr ""
 
-#: src/blocks/video-box/index.js:384
+#: admin/includes/pb-panel/assets/js/build/index.js:1715
+msgid "Learn How to Use Premium Blocks"
+msgstr ""
+
+#: admin/includes/pb-panel/assets/js/build/index.js:1715
 msgid ""
-"Enter video ID, for example: 243244233 or Embed URL, for example: https://"
-"player.vimeo.com/video/243244233"
+"Take a step forward to Premium Blocks for Gutenberg. Get started now by "
+"visiting the plugin’s knowledge base. "
 msgstr ""
 
-#: src/blocks/video-box/index.js:388
+#: admin/includes/pb-panel/assets/js/build/index.js:1754
+msgid "Need Help? Open a Support Ticket"
+msgstr ""
+
+#: admin/includes/pb-panel/assets/js/build/index.js:1754
 msgid ""
-"Enter video ID, for example: x5gifqg or Embed URL, for example: https://"
-"dailymotion.com/embed/video/x5gifqg"
+"Premium Blocks support team is always here to help, open a support ticket "
+"with your inquiry and you will get an answer shortly!"
 msgstr ""
 
-#: src/blocks/video-box/index.js:397
-msgid "Video"
+#: admin/includes/pb-panel/assets/js/build/index.js:1809
+msgid "Subscribe to Premium Blocks Newsletter"
 msgstr ""
 
-#: src/blocks/video-box/index.js:402
-msgid "Video Type"
-msgstr ""
-
-#: src/blocks/video-box/index.js:410
-msgid "Video URL"
-msgstr ""
-
-#: src/blocks/video-box/index.js:412
-msgid "Enter Video ID, Embed URL or Video URL"
-msgstr ""
-
-#: src/blocks/video-box/index.js:430 src/blocks/video-box/index.js:434
-msgid "Change Video"
-msgstr ""
-
-#: src/blocks/video-box/index.js:440
-msgid "Autoplay"
-msgstr ""
-
-#: src/blocks/video-box/index.js:444
-msgid "This option effect works when Overlay Image option is disabled"
-msgstr ""
-
-#: src/blocks/video-box/index.js:449
-msgid "Loop"
-msgstr ""
-
-#: src/blocks/video-box/index.js:455
-msgid "Mute"
-msgstr ""
-
-#: src/blocks/video-box/index.js:461
-msgid "Player Controls"
-msgstr ""
-
-#: src/blocks/video-box/index.js:468
-msgid "Show Related Videos"
-msgstr ""
-
-#: src/blocks/video-box/index.js:476
-msgid "Overlay Image"
-msgstr ""
-
-#: src/blocks/video-box/index.js:511
-msgid "Blur (px)"
-msgstr ""
-
-#: src/blocks/video-box/index.js:522
-msgid "Brightness (%)"
-msgstr ""
-
-#: src/blocks/video-box/index.js:533
-msgid "Contrast (%)"
-msgstr ""
-
-#: src/blocks/video-box/index.js:544
-msgid "Saturation (%)"
-msgstr ""
-
-#: src/blocks/video-box/index.js:555
-msgid "Hue (Deg)"
-msgstr ""
-
-#: src/blocks/video-box/index.js:570
-msgid "Play Icon"
-msgstr ""
-
-#: src/blocks/video-box/index.js:575
-msgid "Enable Play Icon"
-msgstr ""
-
-#: src/blocks/video-box/index.js:591 src/blocks/video-box/index.js:718
-msgid "Horizontal Offset (%)"
-msgstr ""
-
-#: src/blocks/video-box/index.js:600 src/blocks/video-box/index.js:727
-msgid "Vertical Offset (%)"
-msgstr ""
-
-#: src/blocks/video-box/index.js:620
-msgid "Icon Background Color"
-msgstr ""
-
-#: src/blocks/video-box/index.js:626
-msgid "Icon Hover Color"
-msgstr ""
-
-#: src/blocks/video-box/index.js:632
-msgid "Icon Hover Background Color"
-msgstr ""
-
-#: src/blocks/video-box/index.js:670
-msgid "Video Description"
-msgstr ""
-
-#: src/blocks/video-box/index.js:675
-msgid "Enable Video Description"
-msgstr ""
-
-#: src/blocks/video-box/index.js:682
-msgid "Description Text"
-msgstr ""
-
-#: src/blocks/video-box/index.js:747
-msgid "Text Background Color"
-msgstr ""
-
-#: src/blocks/video-box/index.js:755
-msgid "Border Radius (px)"
-msgstr ""
-
-#: src/blocks/video-box/index.js:780
-msgid "Box Style"
-msgstr ""
-
-#: src/blocks/video-box/index.js:956
-msgid "Video Box"
-msgstr ""
-
-#: src/components/premium-background.js:25
-msgid "Top Left"
-msgstr ""
-
-#: src/components/premium-background.js:29
-msgid "Top Center"
-msgstr ""
-
-#: src/components/premium-background.js:33
-msgid "Top Right"
-msgstr ""
-
-#: src/components/premium-background.js:37
-msgid "Center Left"
-msgstr ""
-
-#: src/components/premium-background.js:41
-msgid "Center Center"
-msgstr ""
-
-#: src/components/premium-background.js:45
-msgid "Center Right"
-msgstr ""
-
-#: src/components/premium-background.js:49
-msgid "Bottom Left"
-msgstr ""
-
-#: src/components/premium-background.js:53
-msgid "Bottom Center"
-msgstr ""
-
-#: src/components/premium-background.js:57
-msgid "Bottom Right"
-msgstr ""
-
-#: src/components/premium-background.js:63
-msgid "No Repeat"
-msgstr ""
-
-#: src/components/premium-background.js:67
-#: src/components/premium-background.js:127
-msgid "Repeat"
-msgstr ""
-
-#: src/components/premium-background.js:71
-msgid "Repeat Horizontally"
-msgstr ""
-
-#: src/components/premium-background.js:75
-msgid "Repeat Vertically"
-msgstr ""
-
-#: src/components/premium-background.js:81
-msgid "Auto"
-msgstr ""
-
-#: src/components/premium-background.js:85
-msgid "Cover"
-msgstr ""
-
-#: src/components/premium-background.js:89
-msgid "Contain"
-msgstr ""
-
-#: src/components/premium-background.js:108
-#: src/components/premium-background.js:112
-msgid "Remove Image"
-msgstr ""
-
-#: src/components/premium-background.js:139
-msgid "Fixed Background"
-msgstr ""
-
-#: src/components/premium-border.js:45
-msgid "Border Type"
-msgstr ""
-
-#: src/components/premium-border.js:52
-msgid "Border Width"
-msgstr ""
-
-#: src/components/premium-border.js:70
-msgid "Border Radius"
-msgstr ""
-
-#: src/components/premium-box-shadow.js:24
-msgid "Inset"
-msgstr ""
-
-#: src/components/premium-box-shadow.js:28
-msgid "Outline"
-msgstr ""
-
-#: src/components/premium-box-shadow.js:34
-msgid "Box Shadow"
-msgstr ""
-
-#: src/components/premium-box-shadow.js:39
-#: src/components/premium-text-shadow.js:25
-msgid "Shadow Color"
-msgstr ""
-
-#: src/components/premium-box-shadow.js:47
-#: src/components/premium-text-shadow.js:34
-msgid "Horizontal"
-msgstr ""
-
-#: src/components/premium-box-shadow.js:52
-#: src/components/premium-text-shadow.js:39
-msgid "Vertical"
-msgstr ""
-
-#: src/components/premium-margin.js:29
-msgid "Margin Right (PX)"
-msgstr ""
-
-#: src/components/premium-margin.js:47
-msgid "Margin Left (PX)"
-msgstr ""
-
-#: src/components/premium-padding.js:19
-msgid "Padding Top (PX)"
-msgstr ""
-
-#: src/components/premium-padding.js:26
-msgid "Padding Right (PX)"
-msgstr ""
-
-#: src/components/premium-padding.js:33
-msgid "Padding Bottom (PX)"
-msgstr ""
-
-#: src/components/premium-padding.js:40
-msgid "Padding Left (PX)"
-msgstr ""
-
-#: src/components/premium-text-shadow.js:20
-msgid "Text Shadow"
-msgstr ""
-
-#: src/components/premium-typo.js:43
-msgid "Font Weight"
-msgstr ""
-
-#: src/components/premium-typo.js:61
-msgid "Uppercase"
-msgstr ""
-
-#: src/components/premium-typo.js:68
-msgid "Letter Spacing (PX)"
-msgstr ""
-
-#: src/components/premium-typo.js:75
-msgid "Line Height (PX)"
-msgstr ""
-
-#: admin/includes/notices.php:61
-msgid "Did you like"
-msgstr ""
-
-#: admin/includes/notices.php:61
-msgid "Plugin?"
-msgstr ""
-
-#: admin/includes/notices.php:62
+#: admin/includes/pb-panel/assets/js/build/index.js:1809
 msgid ""
-"Could you please do us a BIG favor ? if you could take 2 min of your time, "
-"we'd really appreciate if you give Premium Blocks for Gutenberg 5-star "
-"rating on WordPress. By spreading the love, we can create even greater free "
-"stuff in the future!"
+"Sign up to Premium Blocks newsletter and be the first to receive the latest "
+"updates, features, and news right under your footsteps!"
 msgstr ""
 
-#: admin/includes/notices.php:63
-msgid "Leave a Review"
+#: admin/includes/pb-panel/assets/js/build/index.js:1823
+msgid "Submit"
 msgstr ""
 
-#: admin/includes/notices.php:64
-msgid "Maybe Later"
+#: admin/includes/pb-panel/assets/js/build/index.js:2137
+msgid "Welcome"
 msgstr ""
 
-#: admin/includes/notices.php:65
-msgid "I Already did"
+#: admin/includes/pb-panel/assets/js/build/index.js:2146
+#: admin/includes/pb-panel/class-pb-panel.php:184
+#: admin/includes/pb-panel/class-pb-panel.php:187
+#: admin/includes/pb-panel/class-pb-panel.php:201
+#: admin/includes/pb-panel/class-pb-panel.php:202 assets/js/build/index.js:2982
+#: assets/js/build/index.js:2991 classes/class-pbg-blocks-helper.php:634
+msgid "Premium Blocks"
 msgstr ""
 
-#: admin/includes/rollback.php:78
-msgid "Rolling Back to Version "
-msgstr ""
-
-#: admin/includes/version-control.php:21
-msgid "Version Control"
-msgstr ""
-
-#: admin/includes/version-control.php:35 admin/reports/about.php:34
-#: admin/reports/system-info.php:42 admin/settings/assets.php:77
-#: admin/settings/elements.php:96 admin/settings/elements.php:97
-#: admin/settings/elements.php:153
-msgid "Premium Blocks for Gutenberg"
-msgstr ""
-
-#: admin/includes/version-control.php:36 admin/reports/about.php:35
-#: admin/reports/system-info.php:43 admin/settings/assets.php:78
-#: admin/settings/elements.php:154
-msgid ""
-"Thank you for using Premium Blocks for Gutenberg. This plugin has been "
-"developed by Leap13 and we hope you enjoy using it."
-msgstr ""
-
-#: admin/includes/version-control.php:83
-msgid "Rollback to Previous Version"
-msgstr ""
-
-#: admin/reports/about.php:20
-msgid "About"
-msgstr ""
-
-#: admin/reports/about.php:71 admin/reports/system-info.php:55
-msgid "Did you like Premium Blocks for Gutenberg Plugin? Please "
-msgstr ""
-
-#: admin/reports/about.php:71 admin/reports/system-info.php:55
-#: admin/settings/assets.php:111 admin/settings/elements.php:274
-msgid "Click Here to Rate it ★★★★★"
-msgstr ""
-
-#: admin/reports/system-info.php:28
+#: admin/includes/pb-panel/assets/js/build/index.js:2159
 msgid "System Info"
 msgstr ""
 
-#: admin/reports/system-info.php:52
-msgid "System setup information useful for debugging purposes."
-msgstr ""
-
-#: admin/settings/assets.php:40
+#: admin/includes/pb-panel/assets/js/build/index.js:2168
 msgid "Settings"
 msgstr ""
 
-#: admin/settings/assets.php:90
-#, php-format
+#: admin/includes/pb-panel/assets/js/build/index.js:2177
+msgid "version Control"
+msgstr ""
+
+#: admin/includes/pb-panel/class-pb-panel.php:303 assets/js/build/index.js:9038
+msgid "Accordion"
+msgstr ""
+
+#: admin/includes/pb-panel/class-pb-panel.php:312
+#: assets/js/build/index.js:11554
+msgid "Banner"
+msgstr ""
+
+#: admin/includes/pb-panel/class-pb-panel.php:321 assets/js/build/index.js:5599
+#: assets/js/build/index.js:16325 assets/js/build/index.js:16490
+#: assets/js/build/index.js:33301 assets/js/build/index.js:33421
+#: assets/js/build/index.js:33530 assets/js/build/index.js:46142
+#: assets/js/build/index.js:46241 assets/js/build/index.js:46602
+msgid "Button"
+msgstr ""
+
+#: admin/includes/pb-panel/class-pb-panel.php:332
+msgid "Count Up"
+msgstr ""
+
+#: admin/includes/pb-panel/class-pb-panel.php:341
+#: assets/js/build/index.js:25375
+msgid "Dual Heading"
+msgstr ""
+
+#: admin/includes/pb-panel/class-pb-panel.php:350
+#: assets/js/build/index.js:29685 assets/js/build/index.js:29687
+#: assets/js/build/index.js:46158
+msgid "Heading"
+msgstr ""
+
+#: admin/includes/pb-panel/class-pb-panel.php:359 assets/js/build/index.js:5624
+#: assets/js/build/index.js:5922 assets/js/build/index.js:13667
+#: assets/js/build/index.js:13722 assets/js/build/index.js:21924
+#: assets/js/build/index.js:22146 assets/js/build/index.js:22170
+#: assets/js/build/index.js:22233 assets/js/build/index.js:28637
+#: assets/js/build/index.js:29003 assets/js/build/index.js:29015
+#: assets/js/build/index.js:29355 assets/js/build/index.js:33109
+#: assets/js/build/index.js:33283 assets/js/build/index.js:33327
+#: assets/js/build/index.js:33833 assets/js/build/index.js:35553
+#: assets/js/build/index.js:36511 assets/js/build/index.js:36562
+msgid "Icon"
+msgstr ""
+
+#: admin/includes/pb-panel/class-pb-panel.php:368
+#: assets/js/build/index.js:33829
+msgid "Icon Box"
+msgstr ""
+
+#: admin/includes/pb-panel/class-pb-panel.php:377
+msgid "Google Maps"
+msgstr ""
+
+#: admin/includes/pb-panel/class-pb-panel.php:386
+#: assets/js/build/index.js:46914 assets/js/build/index.js:46918
+msgid "Pricing Table"
+msgstr ""
+
+#: admin/includes/pb-panel/class-pb-panel.php:395
+#: assets/js/build/index.js:49805
+msgid "Section"
+msgstr ""
+
+#: admin/includes/pb-panel/class-pb-panel.php:404
+msgid "Testimonials"
+msgstr ""
+
+#: admin/includes/pb-panel/class-pb-panel.php:414
+#: assets/js/build/index.js:55203 assets/js/build/index.js:55393
+#: assets/js/build/index.js:55549
+msgid "Video Box"
+msgstr ""
+
+#: admin/includes/pb-panel/class-pb-panel.php:424
+#: assets/js/build/index.js:27003
+msgid "Fancy Text"
+msgstr ""
+
+#: admin/includes/pb-panel/class-pb-panel.php:434 assets/js/build/index.js:5608
+#: assets/js/build/index.js:28643 assets/js/build/index.js:38359
+msgid "Lottie Animation"
+msgstr ""
+
+#: admin/includes/pb-panel/class-pb-panel.php:443 assets/js/build/index.js:5345
+msgid "Modal Box"
+msgstr ""
+
+#: admin/includes/pb-panel/class-pb-panel.php:453
+#: assets/js/build/index.js:36932
+msgid "Image Separator"
+msgstr ""
+
+#: admin/includes/pb-panel/class-pb-panel.php:463
+#: assets/js/build/index.js:14676
+msgid "Bullet List"
+msgstr ""
+
+#: admin/includes/pb-panel/class-pb-panel.php:473
+#: assets/js/build/index.js:42110
+msgid "Team Members"
+msgstr ""
+
+#: admin/includes/pb-panel/class-pb-panel.php:482 blocks-config/search.php:208
+#: blocks-config/search.php:209 blocks-config/search.php:258
+#: blocks-config/search.php:353
+msgid "Search"
+msgstr ""
+
+#: admin/includes/pb-panel/class-pb-panel.php:491 assets/js/build/index.js:5592
+#: assets/js/build/index.js:5596 assets/js/build/index.js:38091
+msgid "Trigger"
+msgstr ""
+
+#: admin/includes/pb-panel/class-pb-panel.php:500
+#: assets/js/build/index.js:17862 assets/js/build/index.js:22205
+#: assets/js/build/index.js:25081 assets/js/build/index.js:33636
+#: assets/js/build/index.js:52131
+msgid "Container"
+msgstr ""
+
+#: admin/includes/pb-panel/class-pb-panel.php:510
+msgid "Breadcrumbs"
+msgstr ""
+
+#: admin/includes/pb-panel/class-pb-panel.php:519
+msgid "Content Switcher"
+msgstr ""
+
+#: admin/includes/pb-panel/class-pb-panel.php:591
+msgid "Rollback to Previous Version"
+msgstr ""
+
+#: assets/js/build.js:37892 assets/js/build/index.js:13918
+#: assets/js/build/index.js:18888 assets/js/build/index.js:24969
+#: assets/js/build/index.js:33145
+msgid "Inline"
+msgstr ""
+
+#: assets/js/build.js:37899 assets/js/build/index.js:5664
+#: assets/js/build/index.js:8762 assets/js/build/index.js:13915
+#: assets/js/build/index.js:16123 assets/js/build/index.js:18885
+#: assets/js/build/index.js:24972 assets/js/build/index.js:33148
+msgid "Block"
+msgstr ""
+
+#: assets/js/build.js:38035 assets/js/build/index.js:11304
+#: assets/js/build/index.js:14194 assets/js/build/index.js:26649
+#: assets/js/build/index.js:38060 assets/js/build/index.js:41696
+#: assets/js/build/index.js:49599
+msgid "General Settings"
+msgstr ""
+
+#: assets/js/build.js:38044 assets/js/build/index.js:25096
+msgid "First Heading"
+msgstr ""
+
+#: assets/js/build.js:38057 assets/js/build/index.js:25179
+msgid "Second Heading"
+msgstr ""
+
+#: assets/js/build.js:38071 assets/js/build/index.js:18997
+#: assets/js/build/index.js:25040
+msgid "Display"
+msgstr ""
+
+#: assets/js/build.js:38084 assets/js/build/index.js:11186
+#: assets/js/build/index.js:13735 assets/js/build/index.js:25047
+#: assets/js/build/index.js:29178 assets/js/build/index.js:33425
+#: assets/js/build/index.js:35568 assets/js/build/index.js:36658
+#: assets/js/build/index.js:38183 assets/js/build/index.js:52000
+msgid "Link"
+msgstr ""
+
+#: assets/js/build.js:38097 assets/js/build/index.js:11197
+#: assets/js/build/index.js:16297 assets/js/build/index.js:25053
+#: assets/js/build/index.js:33431 assets/js/build/index.js:35580
+#: assets/js/build/index.js:38195
+msgid "Open link in new tab"
+msgstr ""
+
+#: assets/js/build.js:38114
+msgid "First Heading Style"
+msgstr ""
+
+#: assets/js/build.js:38123 assets/js/build.js:38592
+#: assets/js/build/index.js:25105 assets/js/build/index.js:25188
+msgid "Clipped"
+msgstr ""
+
+#: assets/js/build.js:38141 assets/js/build.js:38611
+#: assets/js/build/index.js:25111 assets/js/build/index.js:25194
+msgid "Animated"
+msgstr ""
+
+#: assets/js/build.js:38164 assets/js/build.js:38634
+#: assets/js/build/index.js:25117 assets/js/build/index.js:25200
+#: assets/js/build/index.js:29467
+msgid "Stroke"
+msgstr ""
+
+#: assets/js/build.js:38200
+msgid "firstSizeUnit"
+msgstr ""
+
+#: assets/js/build.js:38291 assets/js/build.js:38761
+#: assets/js/build/index.js:6329 assets/js/build/index.js:8818
+#: assets/js/build/index.js:8861 assets/js/build/index.js:11329
+#: assets/js/build/index.js:11365 assets/js/build/index.js:16336
+#: assets/js/build/index.js:16352 assets/js/build/index.js:19125
+#: assets/js/build/index.js:19170 assets/js/build/index.js:22270
+#: assets/js/build/index.js:22334 assets/js/build/index.js:22366
+#: assets/js/build/index.js:25123 assets/js/build/index.js:25206
+#: assets/js/build/index.js:39799 assets/js/build/index.js:39831
+#: assets/js/build/index.js:46347 assets/js/build/index.js:46407
+#: assets/js/build/index.js:46427 assets/js/build/index.js:46447
+#: assets/js/build/index.js:46467 assets/js/build/index.js:46487
+#: assets/js/build/index.js:46572 assets/js/build/index.js:46613
+#: assets/js/build/index.js:46629 assets/js/build/index.js:46682
+#: assets/js/build/index.js:52064
+msgid "Text Color"
+msgstr ""
+
+#: assets/js/build.js:38316 assets/js/build.js:38787
+#: assets/js/build/index.js:6051 assets/js/build/index.js:6196
+#: assets/js/build/index.js:6232 assets/js/build/index.js:6281
+#: assets/js/build/index.js:8825 assets/js/build/index.js:8868
+#: assets/js/build/index.js:8914 assets/js/build/index.js:11343
+#: assets/js/build/index.js:14312 assets/js/build/index.js:14326
+#: assets/js/build/index.js:14384 assets/js/build/index.js:14400
+#: assets/js/build/index.js:16343 assets/js/build/index.js:16359
+#: assets/js/build/index.js:19130 assets/js/build/index.js:19175
+#: assets/js/build/index.js:25130 assets/js/build/index.js:25213
+#: assets/js/build/index.js:26827 assets/js/build/index.js:26864
+#: assets/js/build/index.js:29273 assets/js/build/index.js:29280
+#: assets/js/build/index.js:33462 assets/js/build/index.js:33548
+#: assets/js/build/index.js:35633 assets/js/build/index.js:36755
+#: assets/js/build/index.js:38225 assets/js/build/index.js:38239
+#: assets/js/build/index.js:46312 assets/js/build/index.js:46354
+#: assets/js/build/index.js:46494 assets/js/build/index.js:46540
+#: assets/js/build/index.js:46579 assets/js/build/index.js:46620
+#: assets/js/build/index.js:46636 assets/js/build/index.js:46689
+#: assets/js/build/index.js:55276 assets/js/build/index.js:55292
+#: assets/js/build/index.js:58070
+msgid "Background Color"
+msgstr ""
+
+#: assets/js/build.js:38346 assets/js/build.js:38817
+#: assets/js/build/index.js:25137 assets/js/build/index.js:25220
+msgid "First Color"
+msgstr ""
+
+#: assets/js/build.js:38371 assets/js/build.js:38843
+#: assets/js/build/index.js:25144 assets/js/build/index.js:25227
+msgid "Second Color"
+msgstr ""
+
+#: assets/js/build.js:38468 assets/js/build.js:38937
+#: assets/js/build/index.js:6158 assets/js/build/index.js:8832
+#: assets/js/build/index.js:8875 assets/js/build/index.js:11350
+#: assets/js/build/index.js:11372 assets/js/build/index.js:14456
+#: assets/js/build/index.js:16378 assets/js/build/index.js:19135
+#: assets/js/build/index.js:19180 assets/js/build/index.js:25151
+#: assets/js/build/index.js:25234 assets/js/build/index.js:26841
+#: assets/js/build/index.js:29460 assets/js/build/index.js:33492
+#: assets/js/build/index.js:35663 assets/js/build/index.js:36778
+#: assets/js/build/index.js:41810 assets/js/build/index.js:41842
+#: assets/js/build/index.js:41882 assets/js/build/index.js:46361
+#: assets/js/build/index.js:55340
+msgid "Text Shadow"
+msgstr ""
+
+#: assets/js/build.js:38519 assets/js/build.js:38988
+msgid "Margin Left"
+msgstr ""
+
+#: assets/js/build.js:38540 assets/js/build.js:39009
+msgid "Margin Right"
+msgstr ""
+
+#: assets/js/build.js:38561 assets/js/build.js:39031
+#: assets/js/build/index.js:6164 assets/js/build/index.js:6245
+#: assets/js/build/index.js:6294 assets/js/build/index.js:6374
+#: assets/js/build/index.js:8847 assets/js/build/index.js:8890
+#: assets/js/build/index.js:8929 assets/js/build/index.js:11396
+#: assets/js/build/index.js:14356 assets/js/build/index.js:14424
+#: assets/js/build/index.js:16398 assets/js/build/index.js:17410
+#: assets/js/build/index.js:19154 assets/js/build/index.js:19199
+#: assets/js/build/index.js:19239 assets/js/build/index.js:22228
+#: assets/js/build/index.js:22288 assets/js/build/index.js:22320
+#: assets/js/build/index.js:22352 assets/js/build/index.js:22384
+#: assets/js/build/index.js:25174 assets/js/build/index.js:25257
+#: assets/js/build/index.js:29350 assets/js/build/index.js:29406
+#: assets/js/build/index.js:33628 assets/js/build/index.js:33674
+#: assets/js/build/index.js:35683 assets/js/build/index.js:35719
+#: assets/js/build/index.js:36784 assets/js/build/index.js:38257
+#: assets/js/build/index.js:39817 assets/js/build/index.js:39849
+#: assets/js/build/index.js:39900 assets/js/build/index.js:41816
+#: assets/js/build/index.js:41856 assets/js/build/index.js:41888
+#: assets/js/build/index.js:42002 assets/js/build/index.js:42032
+#: assets/js/build/index.js:46333 assets/js/build/index.js:46378
+#: assets/js/build/index.js:46512 assets/js/build/index.js:46558
+#: assets/js/build/index.js:46597 assets/js/build/index.js:46668
+#: assets/js/build/index.js:49718 assets/js/build/index.js:52148
+#: assets/js/build/index.js:55323 assets/js/build/index.js:55346
+msgid "Padding"
+msgstr ""
+
+#: assets/js/build.js:38583
+msgid "Second Heading Style"
+msgstr ""
+
+#: assets/js/build.js:38670
+msgid "secondSizeUnit"
+msgstr ""
+
+#: assets/js/build.js:39054 assets/js/build/index.js:11378
+#: assets/js/build/index.js:19208 assets/js/build/index.js:35691
+msgid "Container Style"
+msgstr ""
+
+#: assets/js/build/index.js:2970
+msgid "Modal Box Title"
+msgstr ""
+
+#: assets/js/build/index.js:2973 assets/js/build/index.js:37149
+msgid "Close"
+msgstr ""
+
+#: assets/js/build/index.js:3270
+msgid "Modal Box Content"
+msgstr ""
+
+#: assets/js/build/index.js:5144
+msgid "Premium Modal "
+msgstr ""
+
+#: assets/js/build/index.js:5145 assets/js/build/index.js:11424
+#: assets/js/build/index.js:36873
 msgid ""
-"Premium Maps Block requires Google API key to be entered below. If you don’t "
-"have one, Click <a href=\"%s\" target=\"_blank\"> Here</a> to get your key."
+"Upload an image file, pick one from your media library, or add one with a "
+"URL."
 msgstr ""
 
-#: admin/settings/assets.php:100
-msgid "Enable Maps API JS File:"
+#: assets/js/build/index.js:5186 assets/js/build/index.js:37116
+#: assets/js/build/index.js:37128 assets/js/build/index.js:37137
+msgid "Lottie"
 msgstr ""
 
-#: admin/settings/assets.php:100
+#: assets/js/build/index.js:5187 assets/js/build/index.js:37129
+msgid "Add Lottie animations and files to your website."
+msgstr ""
+
+#: assets/js/build/index.js:5346
 msgid ""
-"This will Enable the API JS file if it's not included by another theme or "
-"plugin"
+"Easily, get creative modal popups on your WordPress website using Premium "
+"Modal Box Block."
 msgstr ""
 
-#: admin/settings/assets.php:105
-msgid "Enable Font Awesome Icons:"
+#: assets/js/build/index.js:5347
+msgid "modal"
 msgstr ""
 
-#: admin/settings/assets.php:105
-msgid "This will load Font Awesome Icons to be used within Premium Blocks"
+#: assets/js/build/index.js:5347
+msgid "popup"
 msgstr ""
 
-#: admin/settings/assets.php:111 admin/settings/elements.php:274
-msgid "Did you like Premium Blocks for Gutenberg Plugin? Please"
+#: assets/js/build/index.js:5602 assets/js/build/index.js:13670
+#: assets/js/build/index.js:21927 assets/js/build/index.js:28640
+#: assets/js/build/index.js:33112 assets/js/build/index.js:36514
+#: assets/js/build/index.js:52036
+msgid "Image"
 msgstr ""
 
-#: admin/settings/elements.php:112
-msgid "Blocks Settings"
+#: assets/js/build/index.js:5605 assets/js/build/index.js:5685
+#: assets/js/build/index.js:5770 assets/js/build/index.js:8759
+#: assets/js/build/index.js:29202
+msgid "Text"
 msgstr ""
 
-#: admin/settings/elements.php:172
-msgid "Premium Accordion"
+#: assets/js/build/index.js:5611
+msgid "On Page Load"
 msgstr ""
 
-#: admin/settings/elements.php:179
-msgid "Premium Banner"
+#: assets/js/build/index.js:5618
+msgid "Button text"
 msgstr ""
 
-#: admin/settings/elements.php:195
+#: assets/js/build/index.js:5637 assets/js/build/index.js:5937
+#: assets/js/build/index.js:5945 assets/js/build/index.js:13727
+#: assets/js/build/index.js:22187 assets/js/build/index.js:29022
+#: assets/js/build/index.js:33360 assets/js/build/index.js:33368
+#: assets/js/build/index.js:35558 assets/js/build/index.js:35566
+#: assets/js/build/index.js:36570 assets/js/build/index.js:41676
+msgid "Select Icon"
+msgstr ""
+
+#: assets/js/build/index.js:5639 assets/js/build/index.js:29057
+#: assets/js/build/index.js:33331
+msgid "Icon Position"
+msgstr ""
+
+#: assets/js/build/index.js:5642 assets/js/build/index.js:13925
+#: assets/js/build/index.js:28647 assets/js/build/index.js:33152
+msgid "Before"
+msgstr ""
+
+#: assets/js/build/index.js:5645 assets/js/build/index.js:13922
+#: assets/js/build/index.js:28650 assets/js/build/index.js:33155
+msgid "After"
+msgstr ""
+
+#: assets/js/build/index.js:5652 assets/js/build/index.js:16291
+msgid "Button Size"
+msgstr ""
+
+#: assets/js/build/index.js:5655 assets/js/build/index.js:16114
+msgid "Small"
+msgstr ""
+
+#: assets/js/build/index.js:5658 assets/js/build/index.js:16117
+msgid "Medium"
+msgstr ""
+
+#: assets/js/build/index.js:5661 assets/js/build/index.js:16120
+msgid "Large"
+msgstr ""
+
+#: assets/js/build/index.js:5690 assets/js/build/index.js:5960
+msgid "Make Sure that allow \"JSON file Upload \" from "
+msgstr ""
+
+#: assets/js/build/index.js:5693 assets/js/build/index.js:5969
+#: assets/js/build/index.js:26746 assets/js/build/index.js:29030
+#: assets/js/build/index.js:55152 assets/js/build/index.js:55930
+msgid "Loop"
+msgstr ""
+
+#: assets/js/build/index.js:5699 assets/js/build/index.js:5975
+#: assets/js/build/index.js:29037 assets/js/build/index.js:38074
+msgid "Reverse"
+msgstr ""
+
+#: assets/js/build/index.js:5705
+msgid "Only Play on Hover"
+msgstr ""
+
+#: assets/js/build/index.js:5710
+msgid "the Button will be removed in the preview mode "
+msgstr ""
+
+#: assets/js/build/index.js:5711
+msgid "Delay in Popup Display (Sec)"
+msgstr ""
+
+#: assets/js/build/index.js:5721 assets/js/build/index.js:19004
+#: assets/js/build/index.js:25076 assets/js/build/index.js:29175
+#: assets/js/build/index.js:33307 assets/js/build/index.js:35586
+#: assets/js/build/index.js:36638 assets/js/build/index.js:38180
+#: assets/js/build/index.js:41772
+msgid "Alignment"
+msgstr ""
+
+#: assets/js/build/index.js:5724 assets/js/build/index.js:8772
+#: assets/js/build/index.js:11255 assets/js/build/index.js:14233
+#: assets/js/build/index.js:14273 assets/js/build/index.js:16305
+#: assets/js/build/index.js:19007 assets/js/build/index.js:22078
+#: assets/js/build/index.js:22099 assets/js/build/index.js:22120
+#: assets/js/build/index.js:25061 assets/js/build/index.js:26686
+#: assets/js/build/index.js:26792 assets/js/build/index.js:29066
+#: assets/js/build/index.js:29133 assets/js/build/index.js:29160
+#: assets/js/build/index.js:33310 assets/js/build/index.js:33600
+#: assets/js/build/index.js:35589 assets/js/build/index.js:36641
+#: assets/js/build/index.js:38165 assets/js/build/index.js:39856
+#: assets/js/build/index.js:41775 assets/js/build/index.js:45879
+#: assets/js/build/index.js:46223 assets/js/build/index.js:49659
+#: assets/js/build/index.js:51953 assets/js/build/index.js:55811
+#: assets/js/build/index.js:55826 assets/js/build/index.js:63982
+msgid "Left"
+msgstr ""
+
+#: assets/js/build/index.js:5728 assets/js/build/index.js:8776
+#: assets/js/build/index.js:11259 assets/js/build/index.js:14237
+#: assets/js/build/index.js:14257 assets/js/build/index.js:14277
+#: assets/js/build/index.js:16309 assets/js/build/index.js:17126
+#: assets/js/build/index.js:17150 assets/js/build/index.js:17236
+#: assets/js/build/index.js:19011 assets/js/build/index.js:22082
+#: assets/js/build/index.js:22103 assets/js/build/index.js:22124
+#: assets/js/build/index.js:25065 assets/js/build/index.js:26690
+#: assets/js/build/index.js:26796 assets/js/build/index.js:29070
+#: assets/js/build/index.js:29137 assets/js/build/index.js:29164
+#: assets/js/build/index.js:33314 assets/js/build/index.js:35593
+#: assets/js/build/index.js:36645 assets/js/build/index.js:38169
+#: assets/js/build/index.js:39860 assets/js/build/index.js:41779
+#: assets/js/build/index.js:46227 assets/js/build/index.js:49663
+#: assets/js/build/index.js:51957 assets/js/build/index.js:55820
+msgid "Center"
+msgstr ""
+
+#: assets/js/build/index.js:5732 assets/js/build/index.js:8780
+#: assets/js/build/index.js:11263 assets/js/build/index.js:14241
+#: assets/js/build/index.js:14281 assets/js/build/index.js:16313
+#: assets/js/build/index.js:19015 assets/js/build/index.js:22086
+#: assets/js/build/index.js:22107 assets/js/build/index.js:22128
+#: assets/js/build/index.js:25069 assets/js/build/index.js:26694
+#: assets/js/build/index.js:26800 assets/js/build/index.js:29074
+#: assets/js/build/index.js:29141 assets/js/build/index.js:29168
+#: assets/js/build/index.js:33318 assets/js/build/index.js:33592
+#: assets/js/build/index.js:35597 assets/js/build/index.js:36649
+#: assets/js/build/index.js:38173 assets/js/build/index.js:39864
+#: assets/js/build/index.js:41783 assets/js/build/index.js:45876
+#: assets/js/build/index.js:46231 assets/js/build/index.js:49667
+#: assets/js/build/index.js:51961 assets/js/build/index.js:55808
+#: assets/js/build/index.js:55823 assets/js/build/index.js:63983
+msgid "Right"
+msgstr ""
+
+#: assets/js/build/index.js:5741 assets/js/build/index.js:8753
+#: assets/js/build/index.js:8852 assets/js/build/index.js:42010
+#: assets/js/build/index.js:52078
+msgid "Content"
+msgstr ""
+
+#: assets/js/build/index.js:5745 assets/js/build/index.js:5907
+#: assets/js/build/index.js:6172
+msgid "Header"
+msgstr ""
+
+#: assets/js/build/index.js:5751 assets/js/build/index.js:6209
+msgid "Upper Close Button"
+msgstr ""
+
+#: assets/js/build/index.js:5757 assets/js/build/index.js:5981
+#: assets/js/build/index.js:6253
+msgid "Lower Close Button"
+msgstr ""
+
+#: assets/js/build/index.js:5763
+msgid "Content to Show"
+msgstr ""
+
+#: assets/js/build/index.js:5773
+msgid "Gutenberg Block"
+msgstr ""
+
+#: assets/js/build/index.js:5776 assets/js/build/index.js:17418
+#: assets/js/build/index.js:17422 assets/js/build/index.js:38365
+msgid "Animation"
+msgstr ""
+
+#: assets/js/build/index.js:5783 assets/js/build/index.js:5919
+#: assets/js/build/index.js:11066 assets/js/build/index.js:16172
+#: assets/js/build/index.js:33117 assets/js/build/index.js:33139
+#: assets/js/build/index.js:35501 assets/js/build/index.js:38094
+#: assets/js/build/index.js:41160 assets/js/build/index.js:45860
+#: assets/js/build/index.js:55893
+msgid "None"
+msgstr ""
+
+#: assets/js/build/index.js:5786
+msgid "Fade In Down"
+msgstr ""
+
+#: assets/js/build/index.js:5789
+msgid "Fade In Up"
+msgstr ""
+
+#: assets/js/build/index.js:5792
+msgid "Fade In"
+msgstr ""
+
+#: assets/js/build/index.js:5795
+msgid "Fade In Left"
+msgstr ""
+
+#: assets/js/build/index.js:5798
+msgid "Fade In Right"
+msgstr ""
+
+#: assets/js/build/index.js:5801
+msgid "Zoom In Down"
+msgstr ""
+
+#: assets/js/build/index.js:5804
+msgid "Zoom In Up"
+msgstr ""
+
+#: assets/js/build/index.js:5807 assets/js/build/index.js:11069
+#: assets/js/build/index.js:41163
+msgid "Zoom In"
+msgstr ""
+
+#: assets/js/build/index.js:5810
+msgid "Zoom In Left"
+msgstr ""
+
+#: assets/js/build/index.js:5813
+msgid "Zoom In Right"
+msgstr ""
+
+#: assets/js/build/index.js:5816
+msgid "Bouncing In Down"
+msgstr ""
+
+#: assets/js/build/index.js:5819
+msgid "Bouncing In Up"
+msgstr ""
+
+#: assets/js/build/index.js:5822
+msgid "Bouncing In"
+msgstr ""
+
+#: assets/js/build/index.js:5825
+msgid "Bouncing In Left"
+msgstr ""
+
+#: assets/js/build/index.js:5828
+msgid "Bouncing In Right"
+msgstr ""
+
+#: assets/js/build/index.js:5831
+msgid "Slide In Up"
+msgstr ""
+
+#: assets/js/build/index.js:5834
+msgid "Slide In Left"
+msgstr ""
+
+#: assets/js/build/index.js:5837
+msgid "Slide In Right"
+msgstr ""
+
+#: assets/js/build/index.js:5840
+msgid "Slide In Down"
+msgstr ""
+
+#: assets/js/build/index.js:5843
+msgid "Rotating Up Left"
+msgstr ""
+
+#: assets/js/build/index.js:5846
+msgid "Rotating Up Right"
+msgstr ""
+
+#: assets/js/build/index.js:5849
+msgid "Rotating In"
+msgstr ""
+
+#: assets/js/build/index.js:5852
+msgid "Rotating In Left"
+msgstr ""
+
+#: assets/js/build/index.js:5855
+msgid "Rotating In Right"
+msgstr ""
+
+#: assets/js/build/index.js:5858 assets/js/build/index.js:55902
+msgid "Bounce"
+msgstr ""
+
+#: assets/js/build/index.js:5861
+msgid "Flash"
+msgstr ""
+
+#: assets/js/build/index.js:5864 assets/js/build/index.js:33120
+#: assets/js/build/index.js:35504
+msgid "Pulse"
+msgstr ""
+
+#: assets/js/build/index.js:5867
+msgid "Rubber Band"
+msgstr ""
+
+#: assets/js/build/index.js:5870
+msgid "Head Shake"
+msgstr ""
+
+#: assets/js/build/index.js:5873
+msgid "Swing"
+msgstr ""
+
+#: assets/js/build/index.js:5876
+msgid "Tada"
+msgstr ""
+
+#: assets/js/build/index.js:5879 assets/js/build/index.js:33135
+#: assets/js/build/index.js:35519
+msgid "Wobble"
+msgstr ""
+
+#: assets/js/build/index.js:5882
+msgid "Jolle"
+msgstr ""
+
+#: assets/js/build/index.js:5885
+msgid "Light Speed"
+msgstr ""
+
+#: assets/js/build/index.js:5888
+msgid "Roll In"
+msgstr ""
+
+#: assets/js/build/index.js:5891 assets/js/build/index.js:29238
+msgid "Animation Duration"
+msgstr ""
+
+#: assets/js/build/index.js:5894
+msgid "Fast"
+msgstr ""
+
+#: assets/js/build/index.js:5897 assets/js/build/index.js:6035
+#: assets/js/build/index.js:6093 assets/js/build/index.js:6123
+#: assets/js/build/index.js:6139 assets/js/build/index.js:14310
+#: assets/js/build/index.js:14375 assets/js/build/index.js:14438
+#: assets/js/build/index.js:16334 assets/js/build/index.js:17276
+#: assets/js/build/index.js:28688 assets/js/build/index.js:33539
+#: assets/js/build/index.js:33645 assets/js/build/index.js:35624
+#: assets/js/build/index.js:36731 assets/js/build/index.js:36746
+#: assets/js/build/index.js:38223 assets/js/build/index.js:41957
+#: assets/js/build/index.js:46611 assets/js/build/index.js:55267
+#: assets/js/build/index.js:64459
+msgid "Normal"
+msgstr ""
+
+#: assets/js/build/index.js:5900
+msgid "Slow"
+msgstr ""
+
+#: assets/js/build/index.js:5911 assets/js/build/index.js:8708
+#: assets/js/build/index.js:8809 assets/js/build/index.js:11273
+#: assets/js/build/index.js:11320 assets/js/build/index.js:22164
+#: assets/js/build/index.js:22261 assets/js/build/index.js:26564
+#: assets/js/build/index.js:28992 assets/js/build/index.js:29223
+#: assets/js/build/index.js:33289 assets/js/build/index.js:33392
+#: assets/js/build/index.js:33476 assets/js/build/index.js:39790
+#: assets/js/build/index.js:41824 assets/js/build/index.js:46118
+#: assets/js/build/index.js:46154 assets/js/build/index.js:46338
+msgid "Title"
+msgstr ""
+
+#: assets/js/build/index.js:5917 assets/js/build/index.js:13718
+#: assets/js/build/index.js:22174 assets/js/build/index.js:29009
+#: assets/js/build/index.js:33352
+msgid "Icon Type"
+msgstr ""
+
+#: assets/js/build/index.js:5925
+msgid "Custom Image"
+msgstr ""
+
+#: assets/js/build/index.js:5928
+msgid "Lottie Animations"
+msgstr ""
+
+#: assets/js/build/index.js:5963
+msgid "Animation JSON URL"
+msgstr ""
+
+#: assets/js/build/index.js:5985
+msgid "Lower Text"
+msgstr ""
+
+#: assets/js/build/index.js:5993
+msgid "Triger"
+msgstr ""
+
+#: assets/js/build/index.js:5997
+msgid "Icon Size"
+msgstr ""
+
+#: assets/js/build/index.js:6009
+msgid "Icon Spacing"
+msgstr ""
+
+#: assets/js/build/index.js:6019 assets/js/build/index.js:6176
+#: assets/js/build/index.js:8899 assets/js/build/index.js:14365
+#: assets/js/build/index.js:19030 assets/js/build/index.js:22237
+#: assets/js/build/index.js:29359 assets/js/build/index.js:33443
+#: assets/js/build/index.js:35612 assets/js/build/index.js:38141
+#: assets/js/build/index.js:41945 assets/js/build/index.js:52040
+#: assets/js/build/index.js:58128
+msgid "Size"
+msgstr ""
+
+#: assets/js/build/index.js:6037 assets/js/build/index.js:6095
+#: assets/js/build/index.js:6189 assets/js/build/index.js:6225
+#: assets/js/build/index.js:6274 assets/js/build/index.js:14377
+#: assets/js/build/index.js:14393 assets/js/build/index.js:14440
+#: assets/js/build/index.js:14449 assets/js/build/index.js:14501
+#: assets/js/build/index.js:26820 assets/js/build/index.js:26857
+#: assets/js/build/index.js:28712 assets/js/build/index.js:29252
+#: assets/js/build/index.js:29370 assets/js/build/index.js:29453
+#: assets/js/build/index.js:33455 assets/js/build/index.js:33485
+#: assets/js/build/index.js:33515 assets/js/build/index.js:33541
+#: assets/js/build/index.js:35626 assets/js/build/index.js:36748
+#: assets/js/build/index.js:41803 assets/js/build/index.js:41835
+#: assets/js/build/index.js:41875 assets/js/build/index.js:42016
+#: assets/js/build/index.js:52029 assets/js/build/index.js:52087
+#: assets/js/build/index.js:64246
+msgid "Color"
+msgstr ""
+
+#: assets/js/build/index.js:6044 assets/js/build/index.js:22246
+#: assets/js/build/index.js:55269
+msgid "Icon Color"
+msgstr ""
+
+#: assets/js/build/index.js:6058 assets/js/build/index.js:6087
+#: assets/js/build/index.js:6102 assets/js/build/index.js:6117
+#: assets/js/build/index.js:6125 assets/js/build/index.js:6133
+#: assets/js/build/index.js:6203 assets/js/build/index.js:6239
+#: assets/js/build/index.js:6288 assets/js/build/index.js:6360
+#: assets/js/build/index.js:8838 assets/js/build/index.js:8881
+#: assets/js/build/index.js:11387 assets/js/build/index.js:14339
+#: assets/js/build/index.js:14407 assets/js/build/index.js:16389
+#: assets/js/build/index.js:17343 assets/js/build/index.js:19147
+#: assets/js/build/index.js:19192 assets/js/build/index.js:19223
+#: assets/js/build/index.js:22219 assets/js/build/index.js:25090
+#: assets/js/build/index.js:25157 assets/js/build/index.js:25240
+#: assets/js/build/index.js:29333 assets/js/build/index.js:29389
+#: assets/js/build/index.js:33614 assets/js/build/index.js:33660
+#: assets/js/build/index.js:35669 assets/js/build/index.js:35705
+#: assets/js/build/index.js:36792 assets/js/build/index.js:38251
+#: assets/js/build/index.js:39883 assets/js/build/index.js:41988
+#: assets/js/build/index.js:46324 assets/js/build/index.js:46651
+#: assets/js/build/index.js:49688 assets/js/build/index.js:49697
+#: assets/js/build/index.js:52049 assets/js/build/index.js:55212
+#: assets/js/build/index.js:55317 assets/js/build/index.js:58229
+msgid "Border"
+msgstr ""
+
+#: assets/js/build/index.js:6064 assets/js/build/index.js:6108
+#: assets/js/build/index.js:6131 assets/js/build/index.js:6146
+#: assets/js/build/index.js:14324 assets/js/build/index.js:14391
+#: assets/js/build/index.js:14447 assets/js/build/index.js:16350
+#: assets/js/build/index.js:17307 assets/js/build/index.js:33555
+#: assets/js/build/index.js:33652 assets/js/build/index.js:35640
+#: assets/js/build/index.js:36738 assets/js/build/index.js:36762
+#: assets/js/build/index.js:38097 assets/js/build/index.js:38237
+#: assets/js/build/index.js:41973 assets/js/build/index.js:46627
+#: assets/js/build/index.js:55301
+msgid "Hover"
+msgstr ""
+
+#: assets/js/build/index.js:6066 assets/js/build/index.js:6110
+#: assets/js/build/index.js:33557 assets/js/build/index.js:35642
+#: assets/js/build/index.js:36764
+msgid "Hover Color"
+msgstr ""
+
+#: assets/js/build/index.js:6073 assets/js/build/index.js:55303
+msgid "Icon Hover Color"
+msgstr ""
+
+#: assets/js/build/index.js:6080 assets/js/build/index.js:33564
+msgid "Background Hover Color"
+msgstr ""
+
+#: assets/js/build/index.js:6213 assets/js/build/index.js:6257
+#: assets/js/build/index.js:6306 assets/js/build/index.js:14481
+#: assets/js/build/index.js:29208
+msgid "Width"
+msgstr ""
+
+#: assets/js/build/index.js:6302
+msgid "Modal Body"
+msgstr ""
+
+#: assets/js/build/index.js:6315
+msgid "Max Height"
+msgstr ""
+
+#: assets/js/build/index.js:6336
+msgid "Content Background Color"
+msgstr ""
+
+#: assets/js/build/index.js:6343
+msgid "Footer Background Color"
+msgstr ""
+
+#: assets/js/build/index.js:6366 assets/js/build/index.js:14348
+#: assets/js/build/index.js:14416 assets/js/build/index.js:14465
+#: assets/js/build/index.js:17402 assets/js/build/index.js:19230
+#: assets/js/build/index.js:22256 assets/js/build/index.js:22280
+#: assets/js/build/index.js:22312 assets/js/build/index.js:22344
+#: assets/js/build/index.js:22376 assets/js/build/index.js:25166
+#: assets/js/build/index.js:25249 assets/js/build/index.js:29342
+#: assets/js/build/index.js:29398 assets/js/build/index.js:33522
+#: assets/js/build/index.js:33620 assets/js/build/index.js:35675
+#: assets/js/build/index.js:35711 assets/js/build/index.js:39809
+#: assets/js/build/index.js:39841 assets/js/build/index.js:39892
+#: assets/js/build/index.js:41848 assets/js/build/index.js:41994
+#: assets/js/build/index.js:46370 assets/js/build/index.js:46504
+#: assets/js/build/index.js:46550 assets/js/build/index.js:46589
+#: assets/js/build/index.js:46660 assets/js/build/index.js:49710
+#: assets/js/build/index.js:52097
+msgid "Margin"
+msgstr ""
+
+#: assets/js/build/index.js:6956 assets/js/build/index.js:7174
+#: assets/js/build/index.js:8563 assets/js/build/index.js:8566
+#: assets/js/build/index.js:9217 assets/js/build/index.js:9531
+#: assets/js/build/index.js:11484 assets/js/build/index.js:30081
+#: assets/js/build/index.js:33744 assets/js/build/index.js:38551
+#: assets/js/build/index.js:38671 assets/js/build/index.js:38806
+#: assets/js/build/index.js:46762
+msgid "Awesome Title"
+msgstr ""
+
+#: assets/js/build/index.js:8564
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod "
+"tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, "
+"quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo "
+"consequat."
+msgstr ""
+
+#: assets/js/build/index.js:8567
+msgid "Cool Description."
+msgstr ""
+
+#: assets/js/build/index.js:8714 assets/js/build/index.js:11278
+#: assets/js/build/index.js:18975 assets/js/build/index.js:28657
+#: assets/js/build/index.js:33399 assets/js/build/index.js:41725
+#: assets/js/build/index.js:41750 assets/js/build/index.js:46160
+#: assets/js/build/index.js:51928 assets/js/build/index.js:51977
+msgid "H1"
+msgstr ""
+
+#: assets/js/build/index.js:8717 assets/js/build/index.js:11281
+#: assets/js/build/index.js:18978 assets/js/build/index.js:28660
+#: assets/js/build/index.js:33402 assets/js/build/index.js:41728
+#: assets/js/build/index.js:41753 assets/js/build/index.js:46163
+#: assets/js/build/index.js:51931 assets/js/build/index.js:51980
+msgid "H2"
+msgstr ""
+
+#: assets/js/build/index.js:8720 assets/js/build/index.js:11284
+#: assets/js/build/index.js:18981 assets/js/build/index.js:28663
+#: assets/js/build/index.js:33405 assets/js/build/index.js:41731
+#: assets/js/build/index.js:41756 assets/js/build/index.js:46166
+#: assets/js/build/index.js:51934 assets/js/build/index.js:51983
+msgid "H3"
+msgstr ""
+
+#: assets/js/build/index.js:8723 assets/js/build/index.js:11287
+#: assets/js/build/index.js:18984 assets/js/build/index.js:28666
+#: assets/js/build/index.js:33408 assets/js/build/index.js:41734
+#: assets/js/build/index.js:41759 assets/js/build/index.js:46169
+#: assets/js/build/index.js:51937 assets/js/build/index.js:51986
+msgid "H4"
+msgstr ""
+
+#: assets/js/build/index.js:8726 assets/js/build/index.js:11290
+#: assets/js/build/index.js:18987 assets/js/build/index.js:28669
+#: assets/js/build/index.js:33411 assets/js/build/index.js:41737
+#: assets/js/build/index.js:41762 assets/js/build/index.js:46172
+#: assets/js/build/index.js:51940 assets/js/build/index.js:51989
+msgid "H5"
+msgstr ""
+
+#: assets/js/build/index.js:8729 assets/js/build/index.js:11293
+#: assets/js/build/index.js:18990 assets/js/build/index.js:28672
+#: assets/js/build/index.js:33414 assets/js/build/index.js:41740
+#: assets/js/build/index.js:41765 assets/js/build/index.js:46175
+#: assets/js/build/index.js:51943 assets/js/build/index.js:51992
+msgid "H6"
+msgstr ""
+
+#: assets/js/build/index.js:8735 assets/js/build/index.js:33396
+#: assets/js/build/index.js:41747 assets/js/build/index.js:51949
+#: assets/js/build/index.js:51998
+msgid "Title Tag"
+msgstr ""
+
+#: assets/js/build/index.js:8739
+msgid "LTR"
+msgstr ""
+
+#: assets/js/build/index.js:8743
+msgid "RTL"
+msgstr ""
+
+#: assets/js/build/index.js:8750 assets/js/build/index.js:16270
+#: assets/js/build/index.js:17117 assets/js/build/index.js:22139
+#: assets/js/build/index.js:33585 assets/js/build/index.js:55918
+msgid "Direction"
+msgstr ""
+
+#: assets/js/build/index.js:8768
+msgid "Type"
+msgstr ""
+
+#: assets/js/build/index.js:8787 assets/js/build/index.js:11270
+#: assets/js/build/index.js:14288 assets/js/build/index.js:16320
+#: assets/js/build/index.js:17259 assets/js/build/index.js:26683
+#: assets/js/build/index.js:26789 assets/js/build/index.js:49674
+#: assets/js/build/index.js:51968
+msgid "Align Content"
+msgstr ""
+
+#: assets/js/build/index.js:8790 assets/js/build/index.js:8895
+msgid "Arrow"
+msgstr ""
+
+#: assets/js/build/index.js:8796
+msgid "In"
+msgstr ""
+
+#: assets/js/build/index.js:8799
+msgid "Out"
+msgstr ""
+
+#: assets/js/build/index.js:8805 assets/js/build/index.js:46281
+#: assets/js/build/index.js:57046 assets/js/build/index.js:58118
+msgid "Position"
+msgstr ""
+
+#: assets/js/build/index.js:8907
+msgid "Arrow Color"
+msgstr ""
+
+#: assets/js/build/index.js:8921 assets/js/build/index.js:36807
+#: assets/js/build/index.js:58260
+msgid "Border Radius"
+msgstr ""
+
+#: assets/js/build/index.js:9039
+msgid "Display collapsed content like FAQs using Premium Accordion Block."
+msgstr ""
+
+#: assets/js/build/index.js:9045
+msgid "accordion"
+msgstr ""
+
+#: assets/js/build/index.js:9045
+msgid "collapse"
+msgstr ""
+
+#: assets/js/build/index.js:9227 assets/js/build/index.js:9541
+msgid "Cool Description!!"
+msgstr ""
+
+#: assets/js/build/index.js:11034 assets/js/build/index.js:13928
+#: assets/js/build/index.js:14253 assets/js/build/index.js:28653
+#: assets/js/build/index.js:28682 assets/js/build/index.js:33159
+#: assets/js/build/index.js:33588 assets/js/build/index.js:38131
+#: assets/js/build/index.js:45834 assets/js/build/index.js:49584
+#: assets/js/build/index.js:63980
+msgid "Top"
+msgstr ""
+
+#: assets/js/build/index.js:11037 assets/js/build/index.js:33162
+#: assets/js/build/index.js:45837 assets/js/build/index.js:49587
+msgid "Middle"
+msgstr ""
+
+#: assets/js/build/index.js:11040 assets/js/build/index.js:14261
+#: assets/js/build/index.js:28685 assets/js/build/index.js:33165
+#: assets/js/build/index.js:33596 assets/js/build/index.js:38121
+#: assets/js/build/index.js:45840 assets/js/build/index.js:49590
+#: assets/js/build/index.js:63981
+msgid "Bottom"
+msgstr ""
+
+#: assets/js/build/index.js:11043
+msgid "Full"
+msgstr ""
+
+#: assets/js/build/index.js:11047 assets/js/build/index.js:28609
+#: assets/js/build/index.js:41188
+msgid "Style 1"
+msgstr ""
+
+#: assets/js/build/index.js:11050 assets/js/build/index.js:28612
+#: assets/js/build/index.js:41191
+msgid "Style 2"
+msgstr ""
+
+#: assets/js/build/index.js:11053 assets/js/build/index.js:28615
+msgid "Style 3"
+msgstr ""
+
+#: assets/js/build/index.js:11056 assets/js/build/index.js:28618
+msgid "Style 4"
+msgstr ""
+
+#: assets/js/build/index.js:11059 assets/js/build/index.js:28621
+msgid "Style 5"
+msgstr ""
+
+#: assets/js/build/index.js:11062 assets/js/build/index.js:28624
+msgid "Style 6"
+msgstr ""
+
+#: assets/js/build/index.js:11072 assets/js/build/index.js:41166
+msgid "Zoom Out"
+msgstr ""
+
+#: assets/js/build/index.js:11075 assets/js/build/index.js:41169
+msgid "Scale"
+msgstr ""
+
+#: assets/js/build/index.js:11078 assets/js/build/index.js:41172
+msgid "Gray Scale"
+msgstr ""
+
+#: assets/js/build/index.js:11081 assets/js/build/index.js:41175
+#: assets/js/build/index.js:57040 assets/js/build/index.js:58353
+msgid "Blur"
+msgstr ""
+
+#: assets/js/build/index.js:11084 assets/js/build/index.js:41178
+msgid "Bright"
+msgstr ""
+
+#: assets/js/build/index.js:11087 assets/js/build/index.js:41181
+msgid "Sepia"
+msgstr ""
+
+#: assets/js/build/index.js:11091 assets/js/build/index.js:12492
+#: assets/js/build/index.js:12891 assets/js/build/index.js:15198
+#: assets/js/build/index.js:17052 assets/js/build/index.js:19997
+#: assets/js/build/index.js:20029 assets/js/build/index.js:20116
+#: assets/js/build/index.js:20130 assets/js/build/index.js:23108
+#: assets/js/build/index.js:23139 assets/js/build/index.js:23228
+#: assets/js/build/index.js:23259 assets/js/build/index.js:27332
+#: assets/js/build/index.js:27413 assets/js/build/index.js:30469
+#: assets/js/build/index.js:30491 assets/js/build/index.js:53596
+#: assets/js/build/index.js:64469
+msgid "Default"
+msgstr ""
+
+#: assets/js/build/index.js:11094
+msgid "Custom"
+msgstr ""
+
+#: assets/js/build/index.js:11163 assets/js/build/index.js:55102
+msgid "Refresh this button when it conflict with other buttons styles"
+msgstr ""
+
+#: assets/js/build/index.js:11173 assets/js/build/index.js:16260
+#: assets/js/build/index.js:16988 assets/js/build/index.js:25036
+msgid "General"
+msgstr ""
+
+#: assets/js/build/index.js:11185
+msgid "Remove Image"
+msgstr ""
+
+#: assets/js/build/index.js:11203
+msgid "Banner Style"
+msgstr ""
+
+#: assets/js/build/index.js:11210
+msgid "Always Hovered"
+msgstr ""
+
+#: assets/js/build/index.js:11216 assets/js/build/index.js:41929
+msgid "Image Hover Effect"
+msgstr ""
+
+#: assets/js/build/index.js:11223 assets/js/build/index.js:14491
+#: assets/js/build/index.js:36598 assets/js/build/index.js:49627
+msgid "Height"
+msgstr ""
+
+#: assets/js/build/index.js:11230
+msgid "Min Height (PX)"
+msgstr ""
+
+#: assets/js/build/index.js:11240 assets/js/build/index.js:46399
+#: assets/js/build/index.js:46419 assets/js/build/index.js:46439
+#: assets/js/build/index.js:46459 assets/js/build/index.js:46479
+msgid "Vertical Align"
+msgstr ""
+
+#: assets/js/build/index.js:11247
+msgid "Hide Description on Mobiles"
+msgstr ""
+
+#: assets/js/build/index.js:11300 assets/js/build/index.js:17062
+#: assets/js/build/index.js:18972 assets/js/build/index.js:29151
+msgid "HTML Tag"
+msgstr ""
+
+#: assets/js/build/index.js:11308 assets/js/build/index.js:28697
+#: assets/js/build/index.js:55218
+msgid "Overlay"
+msgstr ""
+
+#: assets/js/build/index.js:11336
+msgid "Separator Color"
+msgstr ""
+
+#: assets/js/build/index.js:11356 assets/js/build/index.js:33295
+#: assets/js/build/index.js:33506 assets/js/build/index.js:39822
+#: assets/js/build/index.js:41864 assets/js/build/index.js:46136
+#: assets/js/build/index.js:46563
+msgid "Description"
+msgstr ""
+
+#: assets/js/build/index.js:11423
+msgid "Premium Banner "
+msgstr ""
+
+#: assets/js/build/index.js:11555
+msgid ""
+"Create attractive banners along with Heading, Description, and CTA using "
+"Premium Banner."
+msgstr ""
+
+#: assets/js/build/index.js:11558 assets/js/build/index.js:36936
+msgid "image"
+msgstr ""
+
+#: assets/js/build/index.js:11558
+msgid "photo"
+msgstr ""
+
+#: assets/js/build/index.js:12252
+msgid "breadcrumbs"
+msgstr ""
+
+#: assets/js/build/index.js:13714
+msgid "Show Bullet"
+msgstr ""
+
+#: assets/js/build/index.js:13738 assets/js/build/index.js:29183
+#: assets/js/build/index.js:35574 assets/js/build/index.js:36663
+#: assets/js/build/index.js:38189 assets/js/build/index.js:52006
+msgid "URL"
+msgstr ""
+
+#: assets/js/build/index.js:13741 assets/js/build/index.js:29188
+#: assets/js/build/index.js:36668
+msgid "Enter URL"
+msgstr ""
+
+#: assets/js/build/index.js:13743 assets/js/build/index.js:36670
+msgid "Open links in new tab"
+msgstr ""
+
+#: assets/js/build/index.js:13932 assets/js/build/index.js:58231
+msgid "Solid"
+msgstr ""
+
+#: assets/js/build/index.js:13935 assets/js/build/index.js:58231
+msgid "Double"
+msgstr ""
+
+#: assets/js/build/index.js:13938 assets/js/build/index.js:58231
+msgid "Dotted"
+msgstr ""
+
+#: assets/js/build/index.js:13941 assets/js/build/index.js:58231
+msgid "Dashed"
+msgstr ""
+
+#: assets/js/build/index.js:13944
+msgid "Groove"
+msgstr ""
+
+#: assets/js/build/index.js:14219 assets/js/build/index.js:26676
+msgid "Add New Item"
+msgstr ""
+
+#: assets/js/build/index.js:14220 assets/js/build/index.js:33279
+#: assets/js/build/index.js:46114
+msgid "Display Options"
+msgstr ""
+
+#: assets/js/build/index.js:14224
+msgid "Layout Type"
+msgstr ""
+
+#: assets/js/build/index.js:14248 assets/js/build/index.js:22094
+#: assets/js/build/index.js:22115 assets/js/build/index.js:22136
+#: assets/js/build/index.js:39871 assets/js/build/index.js:46238
+msgid "Align"
+msgstr ""
+
+#: assets/js/build/index.js:14268
+msgid "Bullet Alignment"
+msgstr ""
+
+#: assets/js/build/index.js:14291
+msgid "Bullet Position"
+msgstr ""
+
+#: assets/js/build/index.js:14298 assets/js/build/index.js:14470
+#: assets/js/build/index.js:45853 assets/js/build/index.js:46205
+msgid "Divider"
+msgstr ""
+
+#: assets/js/build/index.js:14306
+msgid "General Style"
+msgstr ""
+
+#: assets/js/build/index.js:14333 assets/js/build/index.js:33654
+msgid "Hover Box Shadow"
+msgstr ""
+
+#: assets/js/build/index.js:14361
+msgid "Bullet Style"
+msgstr ""
+
+#: assets/js/build/index.js:14429
+msgid "Title Style"
+msgstr ""
+
+#: assets/js/build/index.js:14474
+msgid "Divider Style"
+msgstr ""
+
+#: assets/js/build/index.js:14621
+msgid "Title Name"
+msgstr ""
+
+#: assets/js/build/index.js:14677
+msgid ""
+"Organize your website’s content with attractive lists using Premium Bullet "
+"List Block."
+msgstr ""
+
+#: assets/js/build/index.js:14680
+msgid "icon list"
+msgstr ""
+
+#: assets/js/build/index.js:14680
+msgid "image list"
+msgstr ""
+
+#: assets/js/build/index.js:14680
+msgid "bullet list"
+msgstr ""
+
+#: assets/js/build/index.js:14949 assets/js/build/index.js:15125
+msgid "Premium Button"
+msgstr ""
+
+#: assets/js/build/index.js:16127
+msgid "Top to Bottom"
+msgstr ""
+
+#: assets/js/build/index.js:16130
+msgid "Bottom to Top"
+msgstr ""
+
+#: assets/js/build/index.js:16133
+msgid "Left to Right"
+msgstr ""
+
+#: assets/js/build/index.js:16136
+msgid "Right to Left"
+msgstr ""
+
+#: assets/js/build/index.js:16140
+msgid "Shutter out Horizontal"
+msgstr ""
+
+#: assets/js/build/index.js:16143
+msgid "Shutter out Vertical"
+msgstr ""
+
+#: assets/js/build/index.js:16146
+msgid "Scaled Shutter Vertical"
+msgstr ""
+
+#: assets/js/build/index.js:16149
+msgid "Scaled Shutter Horizontal"
+msgstr ""
+
+#: assets/js/build/index.js:16152
+msgid "Tilted Left"
+msgstr ""
+
+#: assets/js/build/index.js:16155
+msgid "Tilted Right"
+msgstr ""
+
+#: assets/js/build/index.js:16159
+msgid "Radial In"
+msgstr ""
+
+#: assets/js/build/index.js:16162
+msgid "Radial Out"
+msgstr ""
+
+#: assets/js/build/index.js:16165
+msgid "Rectangle In"
+msgstr ""
+
+#: assets/js/build/index.js:16168
+msgid "Rectangle Out"
+msgstr ""
+
+#: assets/js/build/index.js:16175 assets/js/build/index.js:26499
+#: assets/js/build/index.js:33142 assets/js/build/index.js:55899
+msgid "Slide"
+msgstr ""
+
+#: assets/js/build/index.js:16178
+msgid "Shutter"
+msgstr ""
+
+#: assets/js/build/index.js:16181 assets/js/build/index.js:56657
+msgid "Radial"
+msgstr ""
+
+#: assets/js/build/index.js:16265 assets/js/build/index.js:33469
+#: assets/js/build/index.js:33579 assets/js/build/index.js:35656
+msgid "Hover Effect"
+msgstr ""
+
+#: assets/js/build/index.js:16277
+msgid "Shutter Direction"
+msgstr ""
+
+#: assets/js/build/index.js:16284 assets/js/build/index.js:28996
+#: assets/js/build/index.js:38219 assets/js/build/index.js:41715
+#: assets/js/build/index.js:57898 assets/js/build/index.js:57929
+#: assets/js/build/index.js:64670
+msgid "Style"
+msgstr ""
+
+#: assets/js/build/index.js:16371 assets/js/build/index.js:58255
+msgid "Border Color"
+msgstr ""
+
+#: assets/js/build/index.js:16491
+msgid "Add stylish buttons to your Gutenberg page using Premium Button Block."
+msgstr ""
+
+#: assets/js/build/index.js:16497
+msgid "button"
+msgstr ""
+
+#: assets/js/build/index.js:16842
+msgid "Select Column Layout"
+msgstr ""
+
+#: assets/js/build/index.js:16992 assets/js/build/index.js:17010
+#: assets/js/build/index.js:29217 assets/js/build/index.js:49573
+msgid "Full Width"
+msgstr ""
+
+#: assets/js/build/index.js:16995
+msgid "boxed"
+msgstr ""
+
+#: assets/js/build/index.js:17001
+msgid "Container Width"
+msgstr ""
+
+#: assets/js/build/index.js:17004 assets/js/build/index.js:49610
+msgid "Content Width"
+msgstr ""
+
+#: assets/js/build/index.js:17007 assets/js/build/index.js:49570
+msgid "Boxed"
+msgstr ""
+
+#: assets/js/build/index.js:17017 assets/js/build/index.js:49617
+msgid "Max Width"
+msgstr ""
+
+#: assets/js/build/index.js:17027
+msgid "Custom Width"
+msgstr ""
+
+#: assets/js/build/index.js:17038 assets/js/build/index.js:49580
+#: assets/js/build/index.js:49634
+msgid "Min Height"
+msgstr ""
+
+#: assets/js/build/index.js:17049
+msgid "Overflow"
+msgstr ""
+
+#: assets/js/build/index.js:17055
+msgid "Hidden"
+msgstr ""
+
+#: assets/js/build/index.js:17094
+msgid "Flex Properties"
+msgstr ""
+
+#: assets/js/build/index.js:17098 assets/js/build/index.js:21931
+msgid "Row"
+msgstr ""
+
+#: assets/js/build/index.js:17102 assets/js/build/index.js:21937
+msgid "Column"
+msgstr ""
+
+#: assets/js/build/index.js:17106
+msgid "Row Reverse"
+msgstr ""
+
+#: assets/js/build/index.js:17110
+msgid "Column Reverse"
+msgstr ""
+
+#: assets/js/build/index.js:17122 assets/js/build/index.js:17146
+#: assets/js/build/index.js:17232
+msgid "Flex Start"
+msgstr ""
+
+#: assets/js/build/index.js:17130 assets/js/build/index.js:17154
+#: assets/js/build/index.js:17240
+msgid "Flex End"
+msgstr ""
+
+#: assets/js/build/index.js:17134
+msgid "Stretch"
+msgstr ""
+
+#: assets/js/build/index.js:17141
+msgid "Align Items"
+msgstr ""
+
+#: assets/js/build/index.js:17158 assets/js/build/index.js:17244
+msgid "Space Between"
+msgstr ""
+
+#: assets/js/build/index.js:17162 assets/js/build/index.js:17248
+msgid "Space Around"
+msgstr ""
+
+#: assets/js/build/index.js:17166 assets/js/build/index.js:17252
+msgid "Space Evenly"
+msgstr ""
+
+#: assets/js/build/index.js:17173
+msgid "Justify Items"
+msgstr ""
+
+#: assets/js/build/index.js:17178
+msgid "Wrap"
+msgstr ""
+
+#: assets/js/build/index.js:17190
+msgid "No Wrap"
+msgstr ""
+
+#: assets/js/build/index.js:17207
+msgid "Wrap Reverse"
+msgstr ""
+
+#: assets/js/build/index.js:17227
+msgid "Wrap Items"
+msgstr ""
+
+#: assets/js/build/index.js:17265 assets/js/build/index.js:49679
+msgid "Background"
+msgstr ""
+
+#: assets/js/build/index.js:17274
+msgid "Background Overlay"
+msgstr ""
+
+#: assets/js/build/index.js:17284 assets/js/build/index.js:17315
+#: assets/js/build/index.js:52123
+msgid "Opacity"
+msgstr ""
+
+#: assets/js/build/index.js:17294 assets/js/build/index.js:17325
+#: assets/js/build/index.js:58335
+msgid "CSS Filters"
+msgstr ""
+
+#: assets/js/build/index.js:17300
+msgid "Blend Mode "
+msgstr ""
+
+#: assets/js/build/index.js:17331
+msgid "Transition Duration"
+msgstr ""
+
+#: assets/js/build/index.js:17357
+msgid "Shape Divider"
+msgstr ""
+
+#: assets/js/build/index.js:17359
+msgid "Top Shape"
+msgstr ""
+
+#: assets/js/build/index.js:17368
+msgid "Bottom Shape"
+msgstr ""
+
+#: assets/js/build/index.js:17379 assets/js/build/index.js:19106
+msgid "Spacing"
+msgstr ""
+
+#: assets/js/build/index.js:17382
+msgid "Column Gutter"
+msgstr ""
+
+#: assets/js/build/index.js:17392
+msgid "Row Gutter"
+msgstr ""
+
+#: assets/js/build/index.js:17864
+msgid "Organize your Gutenberg Blocks into rows and sections."
+msgstr ""
+
+#: assets/js/build/index.js:17865
+msgid "row"
+msgstr ""
+
+#: assets/js/build/index.js:17865
+msgid "container"
+msgstr ""
+
+#: assets/js/build/index.js:18962
+msgid "Switcher"
+msgstr ""
+
+#: assets/js/build/index.js:18966
+msgid "Show Labels"
+msgstr ""
+
+#: assets/js/build/index.js:19026
+msgid "Switcher Style"
+msgstr ""
+
+#: assets/js/build/index.js:19043
+msgid "Controller Background"
+msgstr ""
+
+#: assets/js/build/index.js:19050
+msgid "Switcher Background"
+msgstr ""
+
+#: assets/js/build/index.js:19056
+msgid "Controller Shadow"
+msgstr ""
+
+#: assets/js/build/index.js:19063
+msgid "Switcher Shadow"
+msgstr ""
+
+#: assets/js/build/index.js:19070
+msgid "Controller Border Radius"
+msgstr ""
+
+#: assets/js/build/index.js:19086
+msgid "Switcher Border Radius"
+msgstr ""
+
+#: assets/js/build/index.js:19102
+msgid "Labels Style"
+msgstr ""
+
+#: assets/js/build/index.js:19118
+msgid "First Label"
+msgstr ""
+
+#: assets/js/build/index.js:19163
+msgid "Second Label"
+msgstr ""
+
+#: assets/js/build/index.js:19989
 msgid "Premium Count Up"
 msgstr ""
 
-#: admin/settings/elements.php:204
-msgid "Premium Dual Heading"
+#: assets/js/build/index.js:21934
+msgid "Reversed Row"
 msgstr ""
 
-#: admin/settings/elements.php:211
-msgid "Premium Icon"
+#: assets/js/build/index.js:21940
+msgid "Reversed Column"
 msgstr ""
 
-#: admin/settings/elements.php:220
-msgid "Premium Icon Box"
+#: assets/js/build/index.js:22058
+msgid "Counter"
 msgstr ""
 
-#: admin/settings/elements.php:228
-msgid "Premium Maps"
+#: assets/js/build/index.js:22062
+msgid "Counting Time"
 msgstr ""
 
-#: admin/settings/elements.php:237
-msgid "Premium Pricing Table"
+#: assets/js/build/index.js:22067
+msgid "Set counting time in milliseconds, for example: 1000"
 msgstr ""
 
-#: admin/settings/elements.php:244
-msgid "Premium Section"
+#: assets/js/build/index.js:22069 assets/js/build/index.js:55942
+msgid "Delay"
 msgstr ""
 
-#: admin/settings/elements.php:253
-msgid "Premium Testimonials"
+#: assets/js/build/index.js:22074
+msgid "Set delay in milliseconds, for example: 10"
 msgstr ""
 
-#: admin/settings/elements.php:260
-msgid "Premium Video Box"
+#: assets/js/build/index.js:22152 assets/js/build/index.js:22325
+msgid "Prefix"
 msgstr ""
 
-#: includes/class-blocks-helper.php:220
-msgid "Premium Blocks"
+#: assets/js/build/index.js:22158 assets/js/build/index.js:22357
+msgid "Suffix"
+msgstr ""
+
+#: assets/js/build/index.js:22293
+msgid "Number"
+msgstr ""
+
+#: assets/js/build/index.js:22302
+msgid "Number Color"
+msgstr ""
+
+#: assets/js/build/index.js:22405 assets/js/build/index.js:33714
+#: assets/js/build/index.js:35763
+msgid "Please Enable Font Awesome Icons from Plugin settings"
+msgstr ""
+
+#: assets/js/build/index.js:22555
+msgid "CountUp"
+msgstr ""
+
+#: assets/js/build/index.js:22556
+msgid ""
+"Show off your facts and figures in an elegant way using Premium CountUp "
+"Block."
+msgstr ""
+
+#: assets/js/build/index.js:22562
+msgid "number"
+msgstr ""
+
+#: assets/js/build/index.js:22562
+msgid "count down"
+msgstr ""
+
+#: assets/js/build/index.js:22562
+msgid "count up"
+msgstr ""
+
+#: assets/js/build/index.js:22562
+msgid "counter"
+msgstr ""
+
+#: assets/js/build/index.js:25376
+msgid ""
+"Use Premium Dual Heading Block to create one heading with two different "
+"styles."
+msgstr ""
+
+#: assets/js/build/index.js:25382 assets/js/build/index.js:29687
+msgid "title"
+msgstr ""
+
+#: assets/js/build/index.js:25382
+msgid "heading"
+msgstr ""
+
+#: assets/js/build/index.js:25382
+msgid "text"
+msgstr ""
+
+#: assets/js/build/index.js:25552
+msgid "Designer"
+msgstr ""
+
+#: assets/js/build/index.js:25555
+msgid "Developer"
+msgstr ""
+
+#: assets/js/build/index.js:25558
+msgid "Awesome"
+msgstr ""
+
+#: assets/js/build/index.js:26370
+msgid "Fancy String"
+msgstr ""
+
+#: assets/js/build/index.js:26496
+msgid "Typing"
+msgstr ""
+
+#: assets/js/build/index.js:26653
+msgid "Prefix Text"
+msgstr ""
+
+#: assets/js/build/index.js:26677
+msgid "Suffix Text"
+msgstr ""
+
+#: assets/js/build/index.js:26703
+msgid "Advanced Settings"
+msgstr ""
+
+#: assets/js/build/index.js:26707
+msgid "Effect"
+msgstr ""
+
+#: assets/js/build/index.js:26714
+msgid "Type Speed"
+msgstr ""
+
+#: assets/js/build/index.js:26720
+msgid "Set typing effect speed in milliseconds."
+msgstr ""
+
+#: assets/js/build/index.js:26722
+msgid "Back Speed"
+msgstr ""
+
+#: assets/js/build/index.js:26728
+msgid "Set a speed for backspace effect in milliseconds."
+msgstr ""
+
+#: assets/js/build/index.js:26730
+msgid "Start Delay"
+msgstr ""
+
+#: assets/js/build/index.js:26736
+msgid ""
+"If you set it on 5000 milliseconds, the first word/string will appear after "
+"5 seconds."
+msgstr ""
+
+#: assets/js/build/index.js:26738
+msgid "Back Delay"
+msgstr ""
+
+#: assets/js/build/index.js:26744
+msgid ""
+"If you set it on 5000 milliseconds, the word/string will remain visible for "
+"5 seconds before backspace effect."
+msgstr ""
+
+#: assets/js/build/index.js:26752
+msgid "Show Cursor"
+msgstr ""
+
+#: assets/js/build/index.js:26758
+msgid "Cursor Mark"
+msgstr ""
+
+#: assets/js/build/index.js:26765
+msgid "Please note that Slide effect works only on frontend"
+msgstr ""
+
+#: assets/js/build/index.js:26766 assets/js/build/index.js:38080
+msgid "Animation Speed"
+msgstr ""
+
+#: assets/js/build/index.js:26772
+msgid "Set a duration value in milliseconds for slide effect."
+msgstr ""
+
+#: assets/js/build/index.js:26774
+msgid "Pause Time"
+msgstr ""
+
+#: assets/js/build/index.js:26780
+msgid ""
+"How long should the word/string stay visible? Set a value in milliseconds."
+msgstr ""
+
+#: assets/js/build/index.js:26782
+msgid "Pause on Hover"
+msgstr ""
+
+#: assets/js/build/index.js:26787
+msgid "If you enabled this option, the slide will be paused when mouseover."
+msgstr ""
+
+#: assets/js/build/index.js:26811
+msgid "Fancy Text Style"
+msgstr ""
+
+#: assets/js/build/index.js:26834
+msgid "Cursor Color"
+msgstr ""
+
+#: assets/js/build/index.js:26848
+msgid "Prefix & Suffix Style"
+msgstr ""
+
+#: assets/js/build/index.js:27004
+msgid ""
+"Insert animated headlines across your Gutenberg page using Premium Fancy "
+"Text Block."
+msgstr ""
+
+#: assets/js/build/index.js:27005
+msgid "fancy-text"
+msgstr ""
+
+#: assets/js/build/index.js:27005
+msgid "animated-text"
+msgstr ""
+
+#: assets/js/build/index.js:27005
+msgid "animated"
+msgstr ""
+
+#: assets/js/build/index.js:28627
+msgid "Style 7"
+msgstr ""
+
+#: assets/js/build/index.js:28630
+msgid "Style 8"
+msgstr ""
+
+#: assets/js/build/index.js:28633
+msgid "Style 9"
+msgstr ""
+
+#: assets/js/build/index.js:28675
+msgid "div"
+msgstr ""
+
+#: assets/js/build/index.js:28678
+msgid "span"
+msgstr ""
+
+#: assets/js/build/index.js:28691
+msgid "Multiply"
+msgstr ""
+
+#: assets/js/build/index.js:28694
+msgid "Screen"
+msgstr ""
+
+#: assets/js/build/index.js:28700
+msgid "Darken"
+msgstr ""
+
+#: assets/js/build/index.js:28703
+msgid "Lighten"
+msgstr ""
+
+#: assets/js/build/index.js:28706
+msgid "Color Dodge"
+msgstr ""
+
+#: assets/js/build/index.js:28709 assets/js/build/index.js:58375
+msgid "Saturation"
+msgstr ""
+
+#: assets/js/build/index.js:28715
+msgid "Luminosity"
+msgstr ""
+
+#: assets/js/build/index.js:29028
+msgid "Lottie Url"
+msgstr ""
+
+#: assets/js/build/index.js:29035 assets/js/build/index.js:38072
+msgid "This option works only on the preview page"
+msgstr ""
+
+#: assets/js/build/index.js:29081
+msgid "Icon Alignment"
+msgstr ""
+
+#: assets/js/build/index.js:29084
+msgid "Stripe Position"
+msgstr ""
+
+#: assets/js/build/index.js:29091
+msgid "Stripe Width"
+msgstr ""
+
+#: assets/js/build/index.js:29101
+msgid "Stripe Height"
+msgstr ""
+
+#: assets/js/build/index.js:29111
+msgid "Stripe Top Spacing"
+msgstr ""
+
+#: assets/js/build/index.js:29121
+msgid "Stripe Bottom Spacing"
+msgstr ""
+
+#: assets/js/build/index.js:29148
+msgid "Stripe Alignment"
+msgstr ""
+
+#: assets/js/build/index.js:29191
+msgid "Open Link in new Tab"
+msgstr ""
+
+#: assets/js/build/index.js:29196
+msgid "background Text"
+msgstr ""
+
+#: assets/js/build/index.js:29214 assets/js/build/index.js:58061
+msgid "Auto"
+msgstr ""
+
+#: assets/js/build/index.js:29227
+msgid "Animation Delay"
+msgstr ""
+
+#: assets/js/build/index.js:29259
+msgid "Shiny Color"
+msgstr ""
+
+#: assets/js/build/index.js:29266
+msgid "Blur Color"
+msgstr ""
+
+#: assets/js/build/index.js:29287 assets/js/build/index.js:29294
+msgid "Line Color"
+msgstr ""
+
+#: assets/js/build/index.js:29301
+msgid "Triangle Color"
+msgstr ""
+
+#: assets/js/build/index.js:29308
+msgid "Stripe Color"
+msgstr ""
+
+#: assets/js/build/index.js:29315
+msgid "Shadow"
+msgstr ""
+
+#: assets/js/build/index.js:29322
+msgid "Blur Shadow Value (px)"
+msgstr ""
+
+#: assets/js/build/index.js:29382
+msgid "Icon Shadow"
+msgstr ""
+
+#: assets/js/build/index.js:29413
+msgid "Background Text"
+msgstr ""
+
+#: assets/js/build/index.js:29422 assets/js/build/index.js:46296
+msgid "Horizontal Offset"
+msgstr ""
+
+#: assets/js/build/index.js:29432 assets/js/build/index.js:46288
+msgid "Vertical Offset"
+msgstr ""
+
+#: assets/js/build/index.js:29443
+msgid "Rotate (degrees)"
+msgstr ""
+
+#: assets/js/build/index.js:29473
+msgid "Stroke Color"
+msgstr ""
+
+#: assets/js/build/index.js:29480
+msgid "Stroke Full Width"
+msgstr ""
+
+#: assets/js/build/index.js:29490
+msgid "Blend Mode"
+msgstr ""
+
+#: assets/js/build/index.js:29497
+msgid "z-index"
+msgstr ""
+
+#: assets/js/build/index.js:29686
+msgid ""
+"Grab your website visitors’ attention with stylish headings using Premium "
+"Heading Block."
+msgstr ""
+
+#: assets/js/build/index.js:30211 assets/js/build/index.js:33777
+msgid "Click Here"
+msgstr ""
+
+#: assets/js/build/index.js:33123 assets/js/build/index.js:35507
+#: assets/js/build/index.js:55914
+msgid "Rotate"
+msgstr ""
+
+#: assets/js/build/index.js:33126 assets/js/build/index.js:35510
+msgid "3D Rotate"
+msgstr ""
+
+#: assets/js/build/index.js:33129 assets/js/build/index.js:35513
+msgid "Buzz"
+msgstr ""
+
+#: assets/js/build/index.js:33132 assets/js/build/index.js:35516
+msgid "Drop Shadow"
+msgstr ""
+
+#: assets/js/build/index.js:33338
+msgid "Horizontal Position"
+msgstr ""
+
+#: assets/js/build/index.js:33345
+msgid "Vertical Position"
+msgstr ""
+
+#: assets/js/build/index.js:33384
+msgid "Border Radius (PX)"
+msgstr ""
+
+#: assets/js/build/index.js:33439
+msgid "Icon/Image"
+msgstr ""
+
+#: assets/js/build/index.js:33498 assets/js/build/index.js:33666
+msgid "Margin (PX)"
+msgstr ""
+
+#: assets/js/build/index.js:33571
+msgid "Border Hover Color"
+msgstr ""
+
+#: assets/js/build/index.js:33830
+msgid ""
+"Add informative info boxes along with Icon, Description, and CTA using "
+"Premium Icon Box Block."
+msgstr ""
+
+#: assets/js/build/index.js:33833
+msgid "Font Awesome"
+msgstr ""
+
+#: assets/js/build/index.js:33833
+msgid "Box"
+msgstr ""
+
+#: assets/js/build/index.js:35608
+msgid "Icon Style"
+msgstr ""
+
+#: assets/js/build/index.js:35649 assets/js/build/index.js:36771
+msgid "Hover Background Color"
+msgstr ""
+
+#: assets/js/build/index.js:36552 assets/js/build/index.js:36727
+msgid "Separator"
+msgstr ""
+
+#: assets/js/build/index.js:36556
+msgid "Separator Type"
+msgstr ""
+
+#: assets/js/build/index.js:36586
+msgid "Width/Size"
+msgstr ""
+
+#: assets/js/build/index.js:36610
+msgid "Image Fit"
+msgstr ""
+
+#: assets/js/build/index.js:36616 assets/js/build/index.js:36705
+#: assets/js/build/index.js:58064
+msgid "Cover"
+msgstr ""
+
+#: assets/js/build/index.js:36619
+msgid "Fill"
+msgstr ""
+
+#: assets/js/build/index.js:36622 assets/js/build/index.js:36702
+#: assets/js/build/index.js:58067
+msgid "Contain"
+msgstr ""
+
+#: assets/js/build/index.js:36626
+msgid "Gutter (%)"
+msgstr ""
+
+#: assets/js/build/index.js:36637
+msgid ""
+"-50% is default. Increase to push the image outside or decrease to pull the "
+"image inside."
+msgstr ""
+
+#: assets/js/build/index.js:36676
+msgid "Mask Image Shape"
+msgstr ""
+
+#: assets/js/build/index.js:36696
+msgid "Mask Size"
+msgstr ""
+
+#: assets/js/build/index.js:36709
+msgid "Mask Position"
+msgstr ""
+
+#: assets/js/build/index.js:36715 assets/js/build/index.js:56873
+#: assets/js/build/index.js:58032
+msgid "Center Center"
+msgstr ""
+
+#: assets/js/build/index.js:36718 assets/js/build/index.js:58023
+msgid "Top Center"
+msgstr ""
+
+#: assets/js/build/index.js:36721 assets/js/build/index.js:58041
+msgid "Bottom Center"
+msgstr ""
+
+#: assets/js/build/index.js:36740
+msgid "Hover CSS Filters"
+msgstr ""
+
+#: assets/js/build/index.js:36798
+msgid "Advanced Border Radius"
+msgstr ""
+
+#: assets/js/build/index.js:36803
+msgid "Apply custom radius values. Get the radius value from here"
+msgstr ""
+
+#: assets/js/build/index.js:36872
+msgid "Premium Image Separator"
+msgstr ""
+
+#: assets/js/build/index.js:36933
+msgid ""
+"Separate between your Gutenberg sections using Premium Image Separator Block."
+msgstr ""
+
+#: assets/js/build/index.js:36936
+msgid "seperator"
+msgstr ""
+
+#: assets/js/build/index.js:37110
+msgid ""
+"Add Lottie animations and files to your website. You can see sample Lottie "
+"animations"
+msgstr ""
+
+#: assets/js/build/index.js:37113
+msgid "here on this"
+msgstr ""
+
+#: assets/js/build/index.js:37113
+msgid "website."
+msgstr ""
+
+#: assets/js/build/index.js:37138 assets/js/build/index.js:55394
+msgid "Enter URL to embed here…"
+msgstr ""
+
+#: assets/js/build/index.js:37144 assets/js/build/index.js:55400
+msgid "Embed"
+msgstr ""
+
+#: assets/js/build/index.js:37147
+msgid "Upload"
+msgstr ""
+
+#: assets/js/build/index.js:37148
+msgid "Allow JSON Uploads"
+msgstr ""
+
+#: assets/js/build/index.js:37152
+msgid ""
+"This file type is not permitted for security reasons. Would you still like "
+"to enable JSON uploads?"
+msgstr ""
+
+#: assets/js/build/index.js:37154
+msgid "You can enable JSON uploads from Settings."
+msgstr ""
+
+#: assets/js/build/index.js:37154
+msgid "You will have to refresh the page after changing JSON upload settings."
+msgstr ""
+
+#: assets/js/build/index.js:38066
+msgid "Change Animation"
+msgstr ""
+
+#: assets/js/build/index.js:38067
+msgid "loop"
+msgstr ""
+
+#: assets/js/build/index.js:38100
+msgid "Scroll"
+msgstr ""
+
+#: assets/js/build/index.js:38103
+msgid "Viewport"
+msgstr ""
+
+#: assets/js/build/index.js:38110
+msgid "Scroll Speed"
+msgstr ""
+
+#: assets/js/build/index.js:38153
+msgid "Rotate (Degree)"
+msgstr ""
+
+#: assets/js/build/index.js:38201
+msgid "Render As"
+msgstr ""
+
+#: assets/js/build/index.js:38204
+msgid "SVG"
+msgstr ""
+
+#: assets/js/build/index.js:38207
+msgid "Canvas"
+msgstr ""
+
+#: assets/js/build/index.js:38210
+msgid ""
+"Set render type to canvas if you're having performance issues on the page.\n"
+"                    This setting will only take effect once you are on the "
+"live page, and not while you're editing.\n"
+"                    "
+msgstr ""
+
+#: assets/js/build/index.js:38365
+msgid "svg"
+msgstr ""
+
+#: assets/js/build/index.js:38365
+msgid "canvas"
+msgstr ""
+
+#: assets/js/build/index.js:38366
+msgid "Bring life to your Gutenberg web page using Premium Lottie Animation"
+msgstr ""
+
+#: assets/js/build/index.js:38555 assets/js/build/index.js:38675
+#: assets/js/build/index.js:38810
+msgid "Cool Description"
+msgstr ""
+
+#: assets/js/build/index.js:39616
+msgid "Road Map"
+msgstr ""
+
+#: assets/js/build/index.js:39619
+msgid "Satellite"
+msgstr ""
+
+#: assets/js/build/index.js:39622
+msgid "Terrain"
+msgstr ""
+
+#: assets/js/build/index.js:39625
+msgid "Hybrid"
+msgstr ""
+
+#: assets/js/build/index.js:39634
+msgid "Center Location"
+msgstr ""
+
+#: assets/js/build/index.js:39638
+msgid "Longitude"
+msgstr ""
+
+#: assets/js/build/index.js:39640
+msgid "Get your location coordinates from"
+msgstr ""
+
+#: assets/js/build/index.js:39643 assets/js/build/index.js:39783
+msgid "here"
+msgstr ""
+
+#: assets/js/build/index.js:39648
+msgid "Latitude"
+msgstr ""
+
+#: assets/js/build/index.js:39654
+msgid "Marker"
+msgstr ""
+
+#: assets/js/build/index.js:39658
+msgid "Enable Marker"
+msgstr ""
+
+#: assets/js/build/index.js:39663
+msgid "Disable marker is applied on page reload"
+msgstr ""
+
+#: assets/js/build/index.js:39665
+msgid "Max Width (PX)"
+msgstr ""
+
+#: assets/js/build/index.js:39675
+msgid "Description opened by default"
+msgstr ""
+
+#: assets/js/build/index.js:39681
+msgid "Custom Marker Icon"
+msgstr ""
+
+#: assets/js/build/index.js:39687
+msgid "Marker Title"
+msgstr ""
+
+#: assets/js/build/index.js:39693
+msgid "Marker Description"
+msgstr ""
+
+#: assets/js/build/index.js:39713
+msgid "Controls"
+msgstr ""
+
+#: assets/js/build/index.js:39717
+msgid "Map Type"
+msgstr ""
+
+#: assets/js/build/index.js:39724
+msgid "Map Height (PX)"
+msgstr ""
+
+#: assets/js/build/index.js:39734 assets/js/build/index.js:55905
+msgid "Zoom"
+msgstr ""
+
+#: assets/js/build/index.js:39744
+msgid "Map Type Controls"
+msgstr ""
+
+#: assets/js/build/index.js:39750
+msgid "Zoom Controls"
+msgstr ""
+
+#: assets/js/build/index.js:39756
+msgid "Street View Control"
+msgstr ""
+
+#: assets/js/build/index.js:39762
+msgid "Full Screen Control"
+msgstr ""
+
+#: assets/js/build/index.js:39768
+msgid "Scroll Wheel Zoom"
+msgstr ""
+
+#: assets/js/build/index.js:39774 assets/js/build/index.js:39874
+msgid "Map"
+msgstr ""
+
+#: assets/js/build/index.js:39778
+msgid "Maps Style"
+msgstr ""
+
+#: assets/js/build/index.js:39780
+msgid "Get your custom styling from"
+msgstr ""
+
+#: assets/js/build/index.js:39936 assets/js/build/index.js:39983
+msgid "Maps"
+msgstr ""
+
+#: assets/js/build/index.js:39938
+msgid "Premium Maps requires an API key."
+msgstr ""
+
+#: assets/js/build/index.js:39941
+msgid "Add API key here"
+msgstr ""
+
+#: assets/js/build/index.js:39984
+msgid "Embed Google Maps to your Gutenberg page using Premium Maps Block."
+msgstr ""
+
+#: assets/js/build/index.js:39990
+msgid "google"
+msgstr ""
+
+#: assets/js/build/index.js:39990
+msgid "maps"
+msgstr ""
+
+#: assets/js/build/index.js:41184
+msgid "Translate"
+msgstr ""
+
+#: assets/js/build/index.js:41195
+msgid "1 Column"
+msgstr ""
+
+#: assets/js/build/index.js:41198
+msgid "2 Columns"
+msgstr ""
+
+#: assets/js/build/index.js:41201
+msgid "3 Columns"
+msgstr ""
+
+#: assets/js/build/index.js:41204
+msgid "4 Columns"
+msgstr ""
+
+#: assets/js/build/index.js:41207
+msgid "5 Columns"
+msgstr ""
+
+#: assets/js/build/index.js:41210
+msgid "6 Columns"
+msgstr ""
+
+#: assets/js/build/index.js:41214 assets/js/build/index.js:42197
+msgid "facebook"
+msgstr ""
+
+#: assets/js/build/index.js:41217 assets/js/build/index.js:42200
+msgid "twitter"
+msgstr ""
+
+#: assets/js/build/index.js:41220 assets/js/build/index.js:42203
+msgid "instagram"
+msgstr ""
+
+#: assets/js/build/index.js:41223 assets/js/build/index.js:42206
+msgid "youtube"
+msgstr ""
+
+#: assets/js/build/index.js:41226 assets/js/build/index.js:42209
+msgid "linkedin"
+msgstr ""
+
+#: assets/js/build/index.js:41229 assets/js/build/index.js:42212
+msgid "flickr"
+msgstr ""
+
+#: assets/js/build/index.js:41232 assets/js/build/index.js:42215
+msgid "github"
+msgstr ""
+
+#: assets/js/build/index.js:41235 assets/js/build/index.js:42218
+msgid "google-plus"
+msgstr ""
+
+#: assets/js/build/index.js:41238 assets/js/build/index.js:42221
+msgid "pinterest"
+msgstr ""
+
+#: assets/js/build/index.js:41241 assets/js/build/index.js:42224
+msgid "reddit"
+msgstr ""
+
+#: assets/js/build/index.js:41244 assets/js/build/index.js:42227
+msgid "skype"
+msgstr ""
+
+#: assets/js/build/index.js:41247 assets/js/build/index.js:42230
+msgid "stack-overflow"
+msgstr ""
+
+#: assets/js/build/index.js:41250 assets/js/build/index.js:42233
+msgid "whatsapp"
+msgstr ""
+
+#: assets/js/build/index.js:41253 assets/js/build/index.js:42236
+msgid "vimeo"
+msgstr ""
+
+#: assets/js/build/index.js:41256 assets/js/build/index.js:42239
+msgid "tumblr"
+msgstr ""
+
+#: assets/js/build/index.js:41259 assets/js/build/index.js:42242
+msgid "dribbble"
+msgstr ""
+
+#: assets/js/build/index.js:41262 assets/js/build/index.js:42245
+msgid "quora"
+msgstr ""
+
+#: assets/js/build/index.js:41265 assets/js/build/index.js:42248
+msgid "foursquare"
+msgstr ""
+
+#: assets/js/build/index.js:41268 assets/js/build/index.js:42251
+msgid "wordpress"
+msgstr ""
+
+#: assets/js/build/index.js:41271 assets/js/build/index.js:42254
+msgid "stumbleupon"
+msgstr ""
+
+#: assets/js/build/index.js:41274 assets/js/build/index.js:42257
+msgid "yahoo"
+msgstr ""
+
+#: assets/js/build/index.js:41277 assets/js/build/index.js:42260
+msgid "soundcloud"
+msgstr ""
+
+#: assets/js/build/index.js:41658
+msgid "Enable Social Icons"
+msgstr ""
+
+#: assets/js/build/index.js:41669
+msgid "Social Media"
+msgstr ""
+
+#: assets/js/build/index.js:41700
+msgid "Person Number"
+msgstr ""
+
+#: assets/js/build/index.js:41708
+msgid "Persons/Row"
+msgstr ""
+
+#: assets/js/build/index.js:41722
+msgid "Name Tag"
+msgstr ""
+
+#: assets/js/build/index.js:41794
+msgid "Name"
+msgstr ""
+
+#: assets/js/build/index.js:41896
+msgid "Image Style"
+msgstr ""
+
+#: assets/js/build/index.js:41905
+msgid "Custom Image Width"
+msgstr ""
+
+#: assets/js/build/index.js:41917
+msgid "Custom Image Height"
+msgstr ""
+
+#: assets/js/build/index.js:41941
+msgid "Social Icon"
+msgstr ""
+
+#: assets/js/build/index.js:41959
+msgid "Social Icon Color"
+msgstr ""
+
+#: assets/js/build/index.js:41966
+msgid "Social Icon Background Color"
+msgstr ""
+
+#: assets/js/build/index.js:41975
+msgid "Social Icon Hover Color"
+msgstr ""
+
+#: assets/js/build/index.js:41982
+msgid "Brands Default Colors"
+msgstr ""
+
+#: assets/js/build/index.js:42023
+msgid "Bottom Offset"
+msgstr ""
+
+#: assets/js/build/index.js:42111
+msgid ""
+"Show off your team members along with social links using Premium Team "
+"Members Block"
+msgstr ""
+
+#: assets/js/build/index.js:42114
+msgid "Team"
+msgstr ""
+
+#: assets/js/build/index.js:42114
+msgid "profile"
+msgstr ""
+
+#: assets/js/build/index.js:42114
+msgid "member"
+msgstr ""
+
+#: assets/js/build/index.js:42114
+msgid "person"
+msgstr ""
+
+#: assets/js/build/index.js:42909 assets/js/build/index.js:43288
+#: assets/js/build/index.js:46740
+msgid "Popular"
+msgstr ""
+
+#: assets/js/build/index.js:45844 assets/js/build/index.js:46187
+msgid "Slashed Price"
+msgstr ""
+
+#: assets/js/build/index.js:45847 assets/js/build/index.js:46193
+msgid "Currency"
+msgstr ""
+
+#: assets/js/build/index.js:45850 assets/js/build/index.js:46124
+#: assets/js/build/index.js:46183 assets/js/build/index.js:46199
+#: assets/js/build/index.js:46383
+msgid "Price"
+msgstr ""
+
+#: assets/js/build/index.js:45856 assets/js/build/index.js:46211
+#: assets/js/build/index.js:55934
+msgid "Duration"
+msgstr ""
+
+#: assets/js/build/index.js:45863
+msgid "Check Mark"
+msgstr ""
+
+#: assets/js/build/index.js:45866
+msgid "Filled Circle"
+msgstr ""
+
+#: assets/js/build/index.js:45869
+msgid "Outline Circle"
+msgstr ""
+
+#: assets/js/build/index.js:45872
+msgid "Square"
+msgstr ""
+
+#: assets/js/build/index.js:46130
+msgid "Features"
+msgstr ""
+
+#: assets/js/build/index.js:46148 assets/js/build/index.js:46257
+#: assets/js/build/index.js:46673
+msgid "Badge"
+msgstr ""
+
+#: assets/js/build/index.js:46217 assets/js/build/index.js:46517
+msgid "Features List"
+msgstr ""
+
+#: assets/js/build/index.js:46245
+msgid "Link URL"
+msgstr ""
+
+#: assets/js/build/index.js:46251
+msgid "Open Link in a new tab"
+msgstr ""
+
+#: assets/js/build/index.js:46261
+msgid "Text Width"
+msgstr ""
+
+#: assets/js/build/index.js:46271
+msgid "Badge Size"
+msgstr ""
+
+#: assets/js/build/index.js:46308
+msgid "Table"
+msgstr ""
+
+#: assets/js/build/index.js:46387
+msgid "Element"
+msgstr ""
+
+#: assets/js/build/index.js:46521
+msgid "List Style"
+msgstr ""
+
+#: assets/js/build/index.js:46533
+msgid "List Items Color"
+msgstr ""
+
+#: assets/js/build/index.js:46643
+msgid "Width (%)"
+msgstr ""
+
+#: assets/js/build/index.js:46814
+msgid "List Item #1"
+msgstr ""
+
+#: assets/js/build/index.js:46837
+msgid "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+msgstr ""
+
+#: assets/js/build/index.js:46915
+msgid ""
+"Display your pricing plans in an elegant way using Premium Pricing Table "
+"Block."
+msgstr ""
+
+#: assets/js/build/index.js:46918
+msgid "Pricing"
+msgstr ""
+
+#: assets/js/build/index.js:49536
+msgid "Insert your text or select a block "
+msgstr ""
+
+#: assets/js/build/index.js:49577
+msgid "Fit to Screen"
+msgstr ""
+
+#: assets/js/build/index.js:49603
+msgid "Stretch Section"
+msgstr ""
+
+#: assets/js/build/index.js:49608
+msgid ""
+"This option stretches the section to the full width of the page using JS. "
+"You will need to reload the page after you enable this option for the first "
+"time."
+msgstr ""
+
+#: assets/js/build/index.js:49649
+msgid "Content Position"
+msgstr ""
+
+#: assets/js/build/index.js:49650
+msgid ""
+"If you have two or more inner columns then this option will work only on the "
+"preview page"
+msgstr ""
+
+#: assets/js/build/index.js:49703
+msgid "Spacings"
+msgstr ""
+
+#: assets/js/build/index.js:49813
+msgid "section"
+msgstr ""
+
+#: assets/js/build/index.js:49814
+msgid "Engage your Gutenberg blocks using Premium Section Block."
+msgstr ""
+
+#: assets/js/build/index.js:49936
+msgid ""
+"Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel "
+"augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus "
+"sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. "
+"Donec id elit non mi porta gravida at eget metus."
+msgstr ""
+
+#: assets/js/build/index.js:51906 assets/js/build/index.js:52020
+msgid "Author"
+msgstr ""
+
+#: assets/js/build/index.js:51909
+msgid "Author Image"
+msgstr ""
+
+#: assets/js/build/index.js:51971 assets/js/build/index.js:52055
+msgid "Company"
+msgstr ""
+
+#: assets/js/build/index.js:52012
+msgid "Open Link in a New Tab"
+msgstr ""
+
+#: assets/js/build/index.js:52071
+msgid "Dash Color"
+msgstr ""
+
+#: assets/js/build/index.js:52102
+msgid "Quotations"
+msgstr ""
+
+#: assets/js/build/index.js:52106
+msgid "Size (EM)"
+msgstr ""
+
+#: assets/js/build/index.js:52116
+msgid "Quotations Color"
+msgstr ""
+
+#: assets/js/build/index.js:52303
+msgid "Testimonial"
+msgstr ""
+
+#: assets/js/build/index.js:52305
+msgid ""
+"Proof your success by displaying customer reviews using Premium Testimonials "
+"Block."
+msgstr ""
+
+#: assets/js/build/index.js:52310
+msgid "testimonial"
+msgstr ""
+
+#: assets/js/build/index.js:52310
+msgid "Quote"
+msgstr ""
+
+#: assets/js/build/index.js:54996
+msgid "Youtube"
+msgstr ""
+
+#: assets/js/build/index.js:54999
+msgid "Vimeo"
+msgstr ""
+
+#: assets/js/build/index.js:55002
+msgid "Daily Motion"
+msgstr ""
+
+#: assets/js/build/index.js:55005
+msgid "Self Hosted"
+msgstr ""
+
+#: assets/js/build/index.js:55112 assets/js/build/index.js:56724
+#: assets/js/build/index.js:56912
+msgid "Video"
+msgstr ""
+
+#: assets/js/build/index.js:55116
+msgid "Video Type"
+msgstr ""
+
+#: assets/js/build/index.js:55128
+msgid "Remove Video"
+msgstr ""
+
+#: assets/js/build/index.js:55145
+msgid "Autoplay"
+msgstr ""
+
+#: assets/js/build/index.js:55150
+msgid "This option effect works when Overlay Image option is disabled"
+msgstr ""
+
+#: assets/js/build/index.js:55158
+msgid "Mute"
+msgstr ""
+
+#: assets/js/build/index.js:55164
+msgid "Player Controls"
+msgstr ""
+
+#: assets/js/build/index.js:55170
+msgid "Overlay Image"
+msgstr ""
+
+#: assets/js/build/index.js:55176
+msgid "Aspect Ratio"
+msgstr ""
+
+#: assets/js/build/index.js:55241
+msgid "Play Icon"
+msgstr ""
+
+#: assets/js/build/index.js:55245
+msgid "Enable Play Icon"
+msgstr ""
+
+#: assets/js/build/index.js:55251
+msgid "Size (PX)"
+msgstr ""
+
+#: assets/js/build/index.js:55259
+msgid "Vertical Offset (%)"
+msgstr ""
+
+#: assets/js/build/index.js:55285
+msgid "Description Color"
+msgstr ""
+
+#: assets/js/build/index.js:55310
+msgid "Icon Hover Background Color"
+msgstr ""
+
+#: assets/js/build/index.js:55331
+msgid "Video Description"
+msgstr ""
+
+#: assets/js/build/index.js:55382
+msgid "Video Box "
+msgstr ""
+
+#: assets/js/build/index.js:55383
+msgid "Enter video ID, for example: z1hQgVpfTKU or Embed URL"
+msgstr ""
+
+#: assets/js/build/index.js:55400
+msgid "Please Click Insert to Select Video "
+msgstr ""
+
+#: assets/js/build/index.js:55550
+msgid ""
+"Embed YouTube, Vimeo, Dailymotion, or upload a Custom Video using Premium "
+"Video Box Block."
+msgstr ""
+
+#: assets/js/build/index.js:55553
+msgid "video"
+msgstr ""
+
+#: assets/js/build/index.js:55796
+msgid "DownLeft"
+msgstr ""
+
+#: assets/js/build/index.js:55799
+msgid "DownRight"
+msgstr ""
+
+#: assets/js/build/index.js:55802
+msgid "UpLeft"
+msgstr ""
+
+#: assets/js/build/index.js:55805
+msgid "UpRight"
+msgstr ""
+
+#: assets/js/build/index.js:55814 assets/js/build/index.js:55829
+msgid "Up"
+msgstr ""
+
+#: assets/js/build/index.js:55817 assets/js/build/index.js:55832
+msgid "Down"
+msgstr ""
+
+#: assets/js/build/index.js:55896
+msgid "Fade"
+msgstr ""
+
+#: assets/js/build/index.js:55908
+msgid "Flip"
+msgstr ""
+
+#: assets/js/build/index.js:55911
+msgid "Fold"
+msgstr ""
+
+#: assets/js/build/index.js:55923 assets/js/build/index.js:58051
+#: assets/js/build/index.js:58123
+msgid "Repeat"
+msgstr ""
+
+#: assets/js/build/index.js:55927
+msgid "Once"
+msgstr ""
+
+#: assets/js/build/index.js:55950
+msgid "Curve"
+msgstr ""
+
+#: assets/js/build/index.js:55954
+msgid "Ease-in-out"
+msgstr ""
+
+#: assets/js/build/index.js:55957
+msgid "Ease"
+msgstr ""
+
+#: assets/js/build/index.js:55960
+msgid "Ease-in"
+msgstr ""
+
+#: assets/js/build/index.js:55963
+msgid "Ease-out"
+msgstr ""
+
+#: assets/js/build/index.js:55966 assets/js/build/index.js:56654
+msgid "Linear"
+msgstr ""
+
+#: assets/js/build/index.js:56160
+#, javascript-format
+msgid "Color code: %s"
+msgstr ""
+
+#: assets/js/build/index.js:56162 assets/js/build/index.js:56170
+msgid "Select Color"
+msgstr ""
+
+#: assets/js/build/index.js:56684
+msgid "Classic"
+msgstr ""
+
+#: assets/js/build/index.js:56703
+msgid "Gradient"
+msgstr ""
+
+#: assets/js/build/index.js:56762 assets/js/build/index.js:56766
+msgid "Background Type"
+msgstr ""
+
+#: assets/js/build/index.js:56817
+msgid "Gradient Color 1"
+msgstr ""
+
+#: assets/js/build/index.js:56822 assets/js/build/index.js:56833
+msgid "Location"
+msgstr ""
+
+#: assets/js/build/index.js:56828
+msgid "Gradient Color 2"
+msgstr ""
+
+#: assets/js/build/index.js:56842 assets/js/build/index.js:56844
+msgid "Gradient Type"
+msgstr ""
+
+#: assets/js/build/index.js:56858
+msgid "Gradient Angle"
+msgstr ""
+
+#: assets/js/build/index.js:56866
+msgid "Gradient Position"
+msgstr ""
+
+#: assets/js/build/index.js:56870
+msgid "Center Top"
+msgstr ""
+
+#: assets/js/build/index.js:56876
+msgid "Center Bottom"
+msgstr ""
+
+#: assets/js/build/index.js:56879
+msgid "Left Top"
+msgstr ""
+
+#: assets/js/build/index.js:56882
+msgid "Left Center"
+msgstr ""
+
+#: assets/js/build/index.js:56885
+msgid "Left Bottom"
+msgstr ""
+
+#: assets/js/build/index.js:56888
+msgid "Right Top"
+msgstr ""
+
+#: assets/js/build/index.js:56891
+msgid "Right Center"
+msgstr ""
+
+#: assets/js/build/index.js:56894
+msgid "Right Bottom"
+msgstr ""
+
+#: assets/js/build/index.js:56898
+msgid "Video Source"
+msgstr ""
+
+#: assets/js/build/index.js:56902
+msgid "Local"
+msgstr ""
+
+#: assets/js/build/index.js:56905
+msgid "External"
+msgstr ""
+
+#: assets/js/build/index.js:56909
+msgid "Video URL"
+msgstr ""
+
+#: assets/js/build/index.js:56983
+msgid "Inset"
+msgstr ""
+
+#: assets/js/build/index.js:56986
+msgid "Outline"
+msgstr ""
+
+#: assets/js/build/index.js:56999
+msgid "Box Shadow"
+msgstr ""
+
+#: assets/js/build/index.js:57024
+msgid "Horizontal"
+msgstr ""
+
+#: assets/js/build/index.js:57032
+msgid "Vertical"
+msgstr ""
+
+#: assets/js/build/index.js:57866 assets/js/build/index.js:57897
+msgid "Layout"
+msgstr ""
+
+#: assets/js/build/index.js:57930 assets/js/build/index.js:57948
+msgid "Advanced"
+msgstr ""
+
+#: assets/js/build/index.js:58020
+msgid "Top Left"
+msgstr ""
+
+#: assets/js/build/index.js:58026
+msgid "Top Right"
+msgstr ""
+
+#: assets/js/build/index.js:58029
+msgid "Center Left"
+msgstr ""
+
+#: assets/js/build/index.js:58035
+msgid "Center Right"
+msgstr ""
+
+#: assets/js/build/index.js:58038
+msgid "Bottom Left"
+msgstr ""
+
+#: assets/js/build/index.js:58044
+msgid "Bottom Right"
+msgstr ""
+
+#: assets/js/build/index.js:58048
+msgid "No Repeat"
+msgstr ""
+
+#: assets/js/build/index.js:58054
+msgid "Repeat Horizontally"
+msgstr ""
+
+#: assets/js/build/index.js:58057
+msgid "Repeat Vertically"
+msgstr ""
+
+#: assets/js/build/index.js:58091 assets/js/build/index.js:58094
+#: assets/js/build/index.js:63819 assets/js/build/index.js:63822
+msgid "Edit"
+msgstr ""
+
+#: assets/js/build/index.js:58100 assets/js/build/index.js:58103
+#: assets/js/build/index.js:63828 assets/js/build/index.js:63831
+msgid "Remove"
+msgstr ""
+
+#: assets/js/build/index.js:58115
+msgid "Insert Background "
+msgstr ""
+
+#: assets/js/build/index.js:58133
+msgid "Fixed Background"
+msgstr ""
+
+#: assets/js/build/index.js:58248
+msgid "Border Width "
+msgstr ""
+
+#: assets/js/build/index.js:58359
+msgid "Brightness"
+msgstr ""
+
+#: assets/js/build/index.js:58367
+msgid "Contrast"
+msgstr ""
+
+#: assets/js/build/index.js:58383
+msgid "Hue"
+msgstr ""
+
+#: assets/js/build/index.js:63843
+msgid "Choose Image"
+msgstr ""
+
+#: assets/js/build/index.js:64094
+msgid "Responsive"
+msgstr ""
+
+#: assets/js/build/index.js:64098
+msgid "Hide in Desktop"
+msgstr ""
+
+#: assets/js/build/index.js:64102
+msgid "Hide in Tablet"
+msgstr ""
+
+#: assets/js/build/index.js:64106
+msgid "Hide in Mobile"
+msgstr ""
+
+#: assets/js/build/index.js:64260
+msgid "Shape Width"
+msgstr ""
+
+#: assets/js/build/index.js:64274
+msgid "Shape Height"
+msgstr ""
+
+#: assets/js/build/index.js:64277
+msgid "Flip Divider"
+msgstr ""
+
+#: assets/js/build/index.js:64281
+msgid "Invert"
+msgstr ""
+
+#: assets/js/build/index.js:64285
+msgid "Bring to front"
+msgstr ""
+
+#: assets/js/build/index.js:64462
+msgid "Italic"
+msgstr ""
+
+#: assets/js/build/index.js:64465
+msgid "Oblique"
+msgstr ""
+
+#: assets/js/build/index.js:64557
+msgid "Typography"
+msgstr ""
+
+#: assets/js/build/index.js:64643
+msgid "Font Size"
+msgstr ""
+
+#: assets/js/build/index.js:64651
+msgid "Line Height (PX)"
+msgstr ""
+
+#: assets/js/build/index.js:64660
+msgid "Letter Spacing (PX)"
+msgstr ""
+
+#: assets/js/build/index.js:65526
+msgid "Google  Fonts"
+msgstr ""
+
+#: blocks-config/class-pbg-breadcrumb-trail.php:223
+msgid "Browse:"
+msgstr ""
+
+#: blocks-config/class-pbg-breadcrumb-trail.php:225
+msgid "Home"
+msgstr ""
+
+#: blocks-config/class-pbg-breadcrumb-trail.php:226
+msgid "404 Not Found"
+msgstr ""
+
+#: blocks-config/class-pbg-breadcrumb-trail.php:227
+msgid "Archives"
+msgstr ""
+
+#: blocks-config/class-pbg-breadcrumb-trail.php:229
+#, php-format
+msgid "Search results for: %s"
+msgstr ""
+
+#: blocks-config/class-pbg-breadcrumb-trail.php:231
+#, php-format
+msgid "Page %s"
+msgstr ""
+
+#: blocks-config/class-pbg-breadcrumb-trail.php:235
+#, php-format
+msgid "Minute %s"
+msgstr ""
+
+#: blocks-config/class-pbg-breadcrumb-trail.php:237
+#, php-format
+msgid "Week %s"
+msgstr ""
+
+#: classes/class-pbg-blocks-helper.php:125
+msgid "Config Premium Blocks For Gutenberg Api"
+msgstr ""
+
+#: classes/class-pbg-blocks-helper.php:302
+msgid "Allow JSON Upload to Media Library."
 msgstr ""
