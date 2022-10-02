@@ -35,15 +35,15 @@ module.exports = function (grunt) {
 
     blocks.map(
         (block) =>
-        (sassFiles[
-            `./assets/css/${block}.css`
-        ] = `./src/blocks/${block}/style.scss`)
+            (sassFiles[
+                `./assets/css/${block}.css`
+            ] = `./src/blocks/${block}/style.scss`)
     );
     blocks.map(
         (block) =>
-        (minifyFiles[
-            `./assets/css/minified/${block}.min.css`
-        ] = `./assets/css/${block}.css`)
+            (minifyFiles[
+                `./assets/css/minified/${block}.min.css`
+            ] = `./assets/css/${block}.css`)
     );
 
     //Grunt Configuration
@@ -120,7 +120,8 @@ module.exports = function (grunt) {
                     "!admin/includes/pb-panel/assets/js/package.json",
                     "!admin/includes/pb-panel/assets/js/src/**",
                     "!src/**",
-                    "!assets/css/*.css"
+                    "!assets/css/*.css",
+                    "!assets/js/build/*.map",
                 ],
                 dest: "premium-blocks-for-gutenberg/",
             },
@@ -152,34 +153,37 @@ module.exports = function (grunt) {
         makepot: {
             target: {
                 options: {
-                    domainPath: '/',
-                    mainFile: 'premium-blocks-for-gutenberg.php',
-                    potFilename: 'languages/premium-blocks-for-gutenberg.pot',
-                    include: [ 'src/index.js', 'premium-blocks-for-gutenberg.php' ],
-                    exclude: [ 'admin/includes' ],
+                    domainPath: "/",
+                    mainFile: "premium-blocks-for-gutenberg.php",
+                    potFilename: "languages/premium-blocks-for-gutenberg.pot",
+                    include: [
+                        "src/index.js",
+                        "premium-blocks-for-gutenberg.php",
+                    ],
+                    exclude: ["admin/includes"],
                     potHeaders: {
-                        'poedit': true,
-                        'x-poedit-keywordslist': true,
+                        poedit: true,
+                        "x-poedit-keywordslist": true,
                     },
-                    type: 'wp-plugin',
-                    updateTimestamp: true
+                    type: "wp-plugin",
+                    updateTimestamp: true,
                 },
             },
         },
         addtextdomain: {
             options: {
-                textdomain: 'premium-blocks-for-gutenberg',
+                textdomain: "premium-blocks-for-gutenberg",
                 updateDomains: true,
             },
             target: {
                 files: {
                     src: [
-                        '*.php',
-                        '**/*.php',
-                        '!node_modules/**',
-                        '!php-tests/**',
-                        '!bin/**',
-                        '!admin/includes/**',
+                        "*.php",
+                        "**/*.php",
+                        "!node_modules/**",
+                        "!php-tests/**",
+                        "!bin/**",
+                        "!admin/includes/**",
                     ],
                 },
             },
@@ -203,9 +207,9 @@ module.exports = function (grunt) {
     // min all
     grunt.registerTask("minify", ["cssmin:css"]);
 
-    grunt.registerTask("i18n", ["makepot"] );
+    grunt.registerTask("i18n", ["makepot"]);
 
-    grunt.registerTask("domain", ["addtextdomain"] );
+    grunt.registerTask("domain", ["addtextdomain"]);
 
     //Run bumpup, readme tasks
     grunt.registerTask("build", (releaseType) => {
