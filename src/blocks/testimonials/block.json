@@ -86,9 +86,9 @@
             "type": "array",
             "default": [
                 {
-                    "authorTag": "h3",
+                    "authorTag": "h4",
                     "authorColor": "",
-                    "authorComTag": "h4"
+                    "authorComTag": "h5"
                 }
             ]
         },

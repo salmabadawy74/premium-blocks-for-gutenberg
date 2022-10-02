@@ -668,7 +668,7 @@
             "type": "object",
             "default": {
                 "Desktop": {
-                    "top": 20,
+                    "top": "",
                     "right": "",
                     "bottom": 20,
                     "left": ""
