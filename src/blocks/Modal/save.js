@@ -71,7 +71,7 @@ const save = props => {
     }
 
     return (
-        <div 
+        <div
             {...useBlockProps.save({
                 className: classnames(
                     className,
@@ -182,6 +182,9 @@ const save = props => {
                             backgroundColor: headerStyles[0].backColor,
                             borderStyle: headerBorder.borderType,
                             borderColor: `${headerBorder.borderColor}`,
+                            borderBottomStyle: headerBorder.borderType == 'none' ? 'solid' : headerBorder.borderType,
+                            borderBottomWidth: headerBorder.borderType == 'none' ? '1px' : '',
+                            borderBottomColor: headerBorder.borderType == 'none' ? '#e5e5e5' : headerBorder.borderColor
                         })}>
                         <h3 className={`premium-modal-box-modal-title`}
                             style={filterJsCss({
