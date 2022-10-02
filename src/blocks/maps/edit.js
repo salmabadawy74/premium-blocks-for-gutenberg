@@ -325,7 +325,7 @@ function Edit(props) {
                             <PanelBody
                                 title={__("Center Location", 'premium-blocks-for-gutenberg')}
                                 className="premium-panel-body"
-                                initialOpen={false}
+                                initialOpen={true}
                             >
                                 <TextControl
                                     label={__("Longitude", 'premium-blocks-for-gutenberg')}
@@ -496,7 +496,7 @@ function Edit(props) {
                                 <PanelBody
                                     title={__("Title", 'premium-blocks-for-gutenberg')}
                                     className="premium-panel-body"
-                                    initialOpen={false}
+                                    initialOpen={true}
                                 >
                                     <PremiumTypo
                                         value={titleTypography}
