@@ -1,10 +1,10 @@
 @font-face {
-    font-family: "pbg-elements";
-    src: url("../fonts/pbg-elements.eot?qx59p2");
-    src: url("../fonts/pbg-elements.eot?qx59p2#iefix") format("embedded-opentype"),
-        url("../fonts/pbg-elements.ttf?qx59p2") format("truetype"),
-        url("../fonts/pbg-elements.woff?qx59p2") format("woff"),
-        url("../fonts/pbg-elements.svg?qx59p2#pbg-elements") format("svg");
+    font-family: "pblocksfont";
+    src:  url('../fonts/pblocksfont.eot?i0fmp2');
+    src:  url('../fonts/pblocksfont.eot?i0fmp2#iefix') format('embedded-opentype'),
+      url('../fonts/pblocksfont.ttf?i0fmp2') format('truetype'),
+      url('../fonts/pblocksfont.woff?i0fmp2') format('woff'),
+      url('../fonts/pblocksfont.svg?i0fmp2#pblocksfont') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -12,9 +12,9 @@
 .toplevel_page_pb_panel>div.wp-menu-image::before {
     position: relative;
     /* top: 5px; */
-    content: "\e908";
+    content: "\e900";
     /* use !important to prevent issues with browser extensions that change fonts */
-    font-family: "pbg-elements" !important;
+    font-family: "pblocksfont" !important;
     speak: none;
     font-style: normal;
     font-variant: normal;
