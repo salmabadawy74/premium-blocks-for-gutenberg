@@ -47,6 +47,17 @@ const OptionsTab = (props) => {
         }
     };
 
+    const ActivateBlocks = () => {
+        const blockStates = { ...blocks };
+        for (const key in blocks) {
+            blockStates[key] = true;
+            console.log(key);
+        }
+        dispatch(updateblockStatus.updateblockStatus(blockStates));
+        console.log(blockStates, blocks);
+    };
+
+    const 
     const tabs = [
         { name: "All", slug: "all" },
         { name: "Core", slug: "core" },
@@ -82,6 +93,9 @@ const OptionsTab = (props) => {
                                 {tab.name}
                             </button>
                         ))}
+                        <button onClick={() => ActivateBlocks()}>
+                            Activate Blocks
+                        </button>
                     </nav>
                 </div>
                 <div className="pb-options options-section">

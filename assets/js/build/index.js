@@ -39200,16 +39200,16 @@ function Edit(props) {
 
     const styles = {};
     styles[` .${blockId} .premium-person:hover`] = {
-      'border-color': `${borderHoverColor} !important`
+      "border-color": `${borderHoverColor} !important`
     };
     styles[` .${blockId} .premium-person__social-List li:hover .premium-social-media-icon`] = {
-      'fill': `${socialIconStyles[0].socialIconHoverColor} !important`,
-      '-webkit-transition': `all .2s ease-in-out !important`,
-      'transition': `all .2s ease-in-out !important`
+      fill: `${socialIconStyles[0].socialIconHoverColor} !important`,
+      "-webkit-transition": `all .2s ease-in-out !important`,
+      transition: `all .2s ease-in-out !important`
     };
     styles[` .${blockId} .premium-person__img_wrap `] = {
-      'height': `${imgHeight[props.deviceType]}${imgHeight.unit} !important`,
-      'width': `${imgWidth[props.deviceType]}${imgWidth.unit} !important`
+      height: `${imgHeight[props.deviceType]}${imgHeight.unit} !important`,
+      width: `${imgWidth[props.deviceType]}${imgWidth.unit} !important`
     };
     styles[` .${blockId} .premium-person__img_wrap img`] = {
       "border-style": `${imageBorder === null || imageBorder === void 0 ? void 0 : imageBorder.borderType}`,
@@ -39222,12 +39222,12 @@ function Edit(props) {
       "border-top-right-radius": `${imageBorder === null || imageBorder === void 0 ? void 0 : (_imageBorder$borderRa3 = imageBorder.borderRadius) === null || _imageBorder$borderRa3 === void 0 ? void 0 : (_imageBorder$borderRa4 = _imageBorder$borderRa3[props.deviceType]) === null || _imageBorder$borderRa4 === void 0 ? void 0 : _imageBorder$borderRa4.right}px!important`,
       "border-bottom-left-radius": `${imageBorder === null || imageBorder === void 0 ? void 0 : (_imageBorder$borderRa5 = imageBorder.borderRadius) === null || _imageBorder$borderRa5 === void 0 ? void 0 : (_imageBorder$borderRa6 = _imageBorder$borderRa5[props.deviceType]) === null || _imageBorder$borderRa6 === void 0 ? void 0 : _imageBorder$borderRa6.bottom}px!important`,
       "border-bottom-right-radius": `${imageBorder === null || imageBorder === void 0 ? void 0 : (_imageBorder$borderRa7 = imageBorder.borderRadius) === null || _imageBorder$borderRa7 === void 0 ? void 0 : (_imageBorder$borderRa8 = _imageBorder$borderRa7[props.deviceType]) === null || _imageBorder$borderRa8 === void 0 ? void 0 : _imageBorder$borderRa8.left}px!important`,
-      'filter': `brightness( ${imageFilter.bright}% ) contrast( ${imageFilter.contrast}% ) saturate( ${imageFilter.saturation}% ) blur( ${imageFilter.blur}px ) hue-rotate( ${imageFilter.hue}deg ) !important`
+      filter: `brightness( ${imageFilter.bright}% ) contrast( ${imageFilter.contrast}% ) saturate( ${imageFilter.saturation}% ) blur( ${imageFilter.blur}px ) hue-rotate( ${imageFilter.hue}deg ) !important`
     };
     styles[` .${blockId} .premium-social-media-icon`] = {
-      'fill': `${socialIconStyles[0].socialIconColor} !important`,
-      'height': `${socialIconSize[props.deviceType]}${socialIconSize.unit} !important`,
-      'width': `${socialIconSize[props.deviceType]}${socialIconSize.unit} !important`
+      fill: `${socialIconStyles[0].socialIconColor} !important`,
+      height: `${socialIconSize[props.deviceType]}${socialIconSize.unit} !important`,
+      width: `${socialIconSize[props.deviceType]}${socialIconSize.unit} !important`
     };
     return (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_26__.generateCss)(styles);
   };
@@ -39257,7 +39257,6 @@ function Edit(props) {
 
       return item;
     });
-    console.log(newItems);
     setAttributes({
       multiPersonContent: newItems
     });
@@ -39715,9 +39714,9 @@ function Edit(props) {
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "premium-control-toggle"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    label: __("Color", 'premium-block-for-gutenberg'),
+    label: __("Color", "premium-block-for-gutenberg"),
     colorValue: titleColor,
-    colorDefault: '',
+    colorDefault: "",
     onColorChange: newValue => setAttributes({
       titleColor: newValue
     })
