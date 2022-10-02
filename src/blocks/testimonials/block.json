@@ -210,7 +210,7 @@
             "default": [
                 {
                     "quotSize": 2,
-                    "quotColor": "",
+                    "quotColor": "#793DC4",
                     "quotOpacity": 50
                 }
             ]
