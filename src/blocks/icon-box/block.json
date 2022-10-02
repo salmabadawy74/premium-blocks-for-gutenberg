@@ -72,7 +72,7 @@
         },
         "iconColor": {
             "type": "string",
-            "default": "#793dc3"
+            "default": ""
         },
         "iconBackColor": {
             "type": "string"
