@@ -1817,7 +1817,8 @@
   background-color: #fff;
   min-width: 700px;
   padding: 20px;
-  max-width: 100%; }
+  max-width: 100%;
+  overflow: auto; }
   .premium-modal-box .premium-popup__modal_content .premium-modal-box-modal-header h3 div.premium-lottie-inner {
     width: 50px;
     height: 60px; }
@@ -1876,7 +1877,11 @@
     -ms-flex-pack: center;
     justify-content: center; }
   .premium-modal-trigger-container .premium-modal-trigger-img {
-    cursor: pointer; }
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    max-width: 100%;
+    height: auto; }
   .premium-modal-trigger-container .premium-modal-trigger-text {
     cursor: pointer; }
   .premium-modal-trigger-container .premium-modal-trigger-animation {
@@ -1930,7 +1935,6 @@
   -ms-user-select: none;
   user-select: none;
   background-image: none;
-  border: 1px solid transparent;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out; }
 
@@ -2049,10 +2053,7 @@ button.premium-modal-box-modal-close {
   -moz-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 5px 5px;
-  border-bottom-style: solid !important;
-  border-bottom-width: 1px !important;
-  border-bottom-color: #e5e5e5; }
+  padding: 5px 5px; }
   .premium-modal-box-modal-header .premium-modal-box-modal-close {
     margin-top: -2px; }
   .premium-modal-box-modal-header .premium-modal-box-modal-title {
@@ -2107,10 +2108,6 @@ button.premium-modal-box-modal-close {
 
 .premium-modal-box-container {
   width: 100% !important; }
-
-.premium-modal-trigger-img {
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out; }
 
 .premium-modal-box-close-button-container {
   -webkit-transition: all 0.3s ease-in-out;

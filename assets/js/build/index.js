@@ -5185,7 +5185,10 @@ const Edit = props => {
   }, contentStyles[0].showHeader && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-modal-box-modal-header`,
     style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.borderCss)(headerBorder, currentDevice),
-      backgroundColor: headerStyles[0].backColor
+      backgroundColor: headerStyles[0].backColor,
+      borderBottomStyle: headerBorder.borderType == 'none' ? 'solid' : headerBorder.borderType,
+      borderBottomWidth: headerBorder.borderType == 'none' ? '1px' : '',
+      borderBottomColor: headerBorder.borderType == 'none' ? '#e5e5e5' : headerBorder.borderColor
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h3", {
     className: `premium-modal-box-modal-title`,
@@ -6559,7 +6562,10 @@ const save = props => {
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       backgroundColor: headerStyles[0].backColor,
       borderStyle: headerBorder.borderType,
-      borderColor: `${headerBorder.borderColor}`
+      borderColor: `${headerBorder.borderColor}`,
+      borderBottomStyle: headerBorder.borderType == 'none' ? 'solid' : headerBorder.borderType,
+      borderBottomWidth: headerBorder.borderType == 'none' ? '1px' : '',
+      borderBottomColor: headerBorder.borderType == 'none' ? '#e5e5e5' : headerBorder.borderColor
     })
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h3", {
     className: `premium-modal-box-modal-title`,

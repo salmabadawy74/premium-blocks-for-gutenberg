@@ -2581,6 +2581,7 @@
         min-width: 700px;
         padding: 20px;
         max-width: 100%;
+        overflow: auto;
 
         .premium-modal-box-modal-header {
             h3 {
@@ -2665,6 +2666,10 @@
 
     .premium-modal-trigger-img {
         cursor: pointer;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        max-width: 100%;
+        height: auto;
     }
 
     .premium-modal-trigger-text {
@@ -2731,7 +2736,6 @@
     -ms-user-select: none;
     user-select: none;
     background-image: none;
-    border: 1px solid transparent;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
@@ -2865,9 +2869,9 @@ button.premium-modal-box-modal-close {
     -ms-flex-align: center;
     align-items: center;
     padding: 5px 5px;
-    border-bottom-style: solid !important;
-    border-bottom-width: 1px !important;
-    border-bottom-color: #e5e5e5;
+    // border-bottom-style: solid ;
+    // border-bottom-width: 1px ;
+    // border-bottom-color: #e5e5e5;
 
     .premium-modal-box-modal-close {
         margin-top: -2px;
@@ -2941,11 +2945,6 @@ button.premium-modal-box-modal-close {
 
 .premium-modal-box-container {
     width: 100% !important;
-}
-
-.premium-modal-trigger-img {
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
 }
 
 .premium-modal-box-close-button-container {
