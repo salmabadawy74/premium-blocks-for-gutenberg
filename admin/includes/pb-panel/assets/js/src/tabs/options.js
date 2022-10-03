@@ -57,7 +57,6 @@ const OptionsTab = (props) => {
         console.log(blockStates, blocks);
     };
 
-    const 
     const tabs = [
         { name: "All", slug: "all" },
         { name: "Core", slug: "core" },
@@ -68,6 +67,7 @@ const OptionsTab = (props) => {
         { name: "Form", slug: "form" },
         { name: "SEO", slug: "seo" },
     ];
+
     const [activeFilter, setFilter] = useState("all");
     let options = Object.keys(props.options)
         .filter((key) => props.options[key].category.includes(activeFilter))
