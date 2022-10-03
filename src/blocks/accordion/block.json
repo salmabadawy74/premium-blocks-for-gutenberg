@@ -37,7 +37,7 @@
                     "arrowPos": "out",
                     "arrowPadding": "",
                     "arrowRadius": "",
-                    "arrowSize": 20
+                    "arrowSize": 15
                 }
             ]
         },
@@ -211,7 +211,7 @@
         "titleTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "",
                 "fontStyle": "",
                 "textTransform": "",
                 "fontFamily": "Default",
