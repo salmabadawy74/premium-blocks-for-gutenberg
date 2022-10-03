@@ -431,6 +431,9 @@ function Edit(props) {
                     }px ${titleBorder.borderType} ${titleBorder.borderColor
                     }!important`
                     : "",
+            "border-left-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
+            "border-left-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
+            "border-left-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
         };
 
         styles[`.${blockId} .premium-title .style2`] = {
@@ -452,6 +455,9 @@ function Edit(props) {
                     }px ${titleBorder.borderType} ${titleBorder.borderColor
                     }!important`
                     : "",
+            "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
+            "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
+            "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
         };
 
         styles[`.${blockId} .premium-title .style4`] = {
@@ -473,6 +479,9 @@ function Edit(props) {
                     }px ${titleBorder.borderType} ${titleBorder.borderColor
                     }!important`
                     : "",
+            "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
+            "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
+            "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
         };
 
         styles[`.${blockId} .premium-title .style5`] = {
@@ -494,6 +503,9 @@ function Edit(props) {
                     }px ${titleBorder.borderType} ${titleBorder.borderColor
                     }!important`
                     : "",
+            "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
+            "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
+            "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
         };
 
         styles[`.${blockId} .premium-title .style6`] = {
@@ -515,6 +527,9 @@ function Edit(props) {
                     }px ${titleBorder.borderType} ${titleBorder.borderColor
                     }!important`
                     : "",
+            "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
+            "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
+            "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
         };
 
         styles[`.${blockId} .premium-title-style2__wrap`] = {
@@ -1531,53 +1546,53 @@ function Edit(props) {
                                             </span>
                                         </Fragment>
                                     ) : (
-                                        <Fragment>
-                                            {iconValue &&
-                                                iconType == "icon" && (
-                                                    <i
-                                                        className={`premium-title-icon ${icon}`}
+                                                <Fragment>
+                                                    {iconValue &&
+                                                        iconType == "icon" && (
+                                                            <i
+                                                                className={`premium-title-icon ${icon}`}
+                                                            />
+                                                        )}
+                                                    {iconValue &&
+                                                        iconType == "image" && (
+                                                            <img
+                                                                className={`premium-title-icon`}
+                                                                src={imageURL}
+                                                            />
+                                                        )}
+                                                    {iconValue &&
+                                                        iconType == "lottie" &&
+                                                        lottieURl && (
+                                                            <div className=" premium-title-icon premium-lottie-animation">
+                                                                <Lottie
+                                                                    options={{
+                                                                        loop: loop,
+                                                                        path: lottieURl,
+                                                                        rendererSettings:
+                                                                        {
+                                                                            preserveAspectRatio:
+                                                                                "xMidYMid",
+                                                                        },
+                                                                    }}
+                                                                    direction={reverse}
+                                                                />
+                                                            </div>
+                                                        )}
+                                                    <RichText
+                                                        tagName="span"
+                                                        className={`premium-title-text-title`}
+                                                        onChange={(newValue) =>
+                                                            setAttributes({
+                                                                title: newValue,
+                                                            })
+                                                        }
+                                                        value={title}
+                                                        style={{
+                                                            minHeight: "15px",
+                                                        }}
                                                     />
-                                                )}
-                                            {iconValue &&
-                                                iconType == "image" && (
-                                                    <img
-                                                        className={`premium-title-icon`}
-                                                        src={imageURL}
-                                                    />
-                                                )}
-                                            {iconValue &&
-                                                iconType == "lottie" &&
-                                                lottieURl && (
-                                                    <div className=" premium-title-icon premium-lottie-animation">
-                                                        <Lottie
-                                                            options={{
-                                                                loop: loop,
-                                                                path: lottieURl,
-                                                                rendererSettings:
-                                                                {
-                                                                    preserveAspectRatio:
-                                                                        "xMidYMid",
-                                                                },
-                                                            }}
-                                                            direction={reverse}
-                                                        />
-                                                    </div>
-                                                )}
-                                            <RichText
-                                                tagName="span"
-                                                className={`premium-title-text-title`}
-                                                onChange={(newValue) =>
-                                                    setAttributes({
-                                                        title: newValue,
-                                                    })
-                                                }
-                                                value={title}
-                                                style={{
-                                                    minHeight: "15px",
-                                                }}
-                                            />
-                                        </Fragment>
-                                    )}
+                                                </Fragment>
+                                            )}
                                     {link && url !== " " && (
                                         <a
                                             rel="noopener noreferrer"

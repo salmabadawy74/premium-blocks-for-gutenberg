@@ -89,26 +89,41 @@ export default function save(props) {
         styles[`.${blockId} .premium-title .style1 .premium-title-header`] = {
             'border-color': `${titleBorder.borderColor}!important`,
             'border-style': `${titleBorder.borderType}`,
+            "border-left-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
+            "border-left-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
+            "border-left-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
         };
 
         styles[`.${blockId} .premium-title .style2`] = {
             'border-color': `${titleBorder.borderColor}!important`,
             'border-style': `${titleBorder.borderType}`,
+            "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
+            "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
+            "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
         };
 
         styles[`.${blockId} .premium-title .style4`] = {
             'border-color': `${titleBorder.borderColor}!important`,
             'border-style': `${titleBorder.borderType}`,
+            "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
+            "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
+            "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
         };
 
         styles[`.${blockId} .premium-title .style5`] = {
             'border-color': `${titleBorder.borderColor}!important`,
             'border-style': `${titleBorder.borderType}`,
+            "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
+            "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
+            "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
         };
 
         styles[`.${blockId} .premium-title .style6`] = {
             'border-color': `${titleBorder.borderColor}!important`,
             'border-style': `${titleBorder.borderType}`,
+            "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
+            "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
+            "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
         };
 
         styles[`.${blockId} .premium-title-style2__wrap`] = {
@@ -288,34 +303,34 @@ export default function save(props) {
                                         </span>
 
                                     </Fragment> : <Fragment>
-                                        {
-                                            iconValue && iconType == 'icon' && <i className={`premium-title-icon ${icon}`} />
-                                        }
-                                        {
-                                            iconValue && iconType == 'image' && < img className={`premium-title-icon`} src={imageURL} />
-                                        }
-                                        {
-                                            iconValue && iconType == 'lottie' &&
-                                            <div
-                                                className="premium-title-icon premium-lottie-animation"
-                                                data-loop={loop}
-                                                data-lottieurl={`${lottieURl}`}
-                                                data-reverse={reversedir}
-                                                data-trigger={"none"}
-                                            >
+                                            {
+                                                iconValue && iconType == 'icon' && <i className={`premium-title-icon ${icon}`} />
+                                            }
+                                            {
+                                                iconValue && iconType == 'image' && < img className={`premium-title-icon`} src={imageURL} />
+                                            }
+                                            {
+                                                iconValue && iconType == 'lottie' &&
+                                                <div
+                                                    className="premium-title-icon premium-lottie-animation"
+                                                    data-loop={loop}
+                                                    data-lottieurl={`${lottieURl}`}
+                                                    data-reverse={reversedir}
+                                                    data-trigger={"none"}
+                                                >
 
-                                            </div>
-                                        }
-                                        <RichText.Content
-                                            tagName='span'
-                                            className={`premium-title-text-title`}
-                                            value={title}
-                                            style={{
-                                                minHeight: '15px',
-                                                margin: 'revert'
-                                            }}
-                                        />
-                                    </Fragment>}
+                                                </div>
+                                            }
+                                            <RichText.Content
+                                                tagName='span'
+                                                className={`premium-title-text-title`}
+                                                value={title}
+                                                style={{
+                                                    minHeight: '15px',
+                                                    margin: 'revert'
+                                                }}
+                                            />
+                                        </Fragment>}
                                 {link && url !== ' ' && <a rel="noopener noreferrer" target={"_self"} href={`${url}`} ></a>}
                             </Fragment>
                         ])}
