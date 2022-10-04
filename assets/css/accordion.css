@@ -35,9 +35,12 @@
     position: relative;
     max-height: 5000px;
     margin-bottom: 1em;
-    padding: 15px; }
+    padding: 15px;
+    display: none; }
     .premium-accordion .premium-accordion__desc_wrap .premium-accordion__desc {
       margin: 0; }
+  .premium-accordion .is-open {
+    display: block; }
   .premium-accordion svg.premium-accordion__closed {
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);

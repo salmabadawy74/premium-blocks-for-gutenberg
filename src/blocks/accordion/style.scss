@@ -48,10 +48,15 @@ $pbBorderColor: #e1e1e1;
         max-height: 5000px;
         margin-bottom: 1em;
         padding: 15px;
+        display: none;
 
         .premium-accordion__desc {
             margin: 0;
         }
+    }
+
+    .is-open {
+        display: block;
     }
 
     svg.premium-accordion__closed {
