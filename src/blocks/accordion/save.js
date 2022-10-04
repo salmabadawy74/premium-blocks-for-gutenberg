@@ -1,4 +1,5 @@
 import classnames from 'classnames'
+import { generateCss } from "../../components/HelperFunction";
 const { InnerBlocks, useBlockProps } = wp.blockEditor;
 
 const save = props => {
@@ -67,27 +68,11 @@ const save = props => {
             'text-transform': descTypography.textTransform,
             'text-shadow': `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`
         };
-        let styleCss = '';
-
-        for (const selector in styles) {
-            const selectorStyles = styles[selector];
-            const filteredStyles = Object.keys(selectorStyles).map(property => {
-                const value = selectorStyles[property];
-                const valueWithoutUnits = value.toString().replaceAll('px', '').replaceAll(/\s/g, '');
-                if (value && !value.toString().includes('undefined') && valueWithoutUnits) {
-                    return `${property}: ${value};`;
-                }
-            }).filter(style => !!style).join('\n');
-            styleCss += `${selector}{
-                ${filteredStyles}
-            }\n`;
-        }
-
-        return styleCss;
+        return generateCss(styles);
     }
 
     return (
-        <div 
+        <div
             {...useBlockProps.save({
                 className: classnames(
                     className,

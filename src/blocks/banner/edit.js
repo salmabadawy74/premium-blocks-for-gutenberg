@@ -696,7 +696,7 @@ function Edit(props) {
                             style={{
                                 boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
                                 ...borderCss(border, props.deviceType),
-                                height: minHeight,
+                                height: height == 'custom' ? minHeight : '',
                             }}
                         >
                             <div

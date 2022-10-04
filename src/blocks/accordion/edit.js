@@ -400,13 +400,13 @@ function PremiumAccordion(props) {
                                 colorDefault={''}
                                 onColorChange={newValue => saveArrowStyles({ arrowBack: newValue })}
                             />
-                            <ResponsiveSingleRangeControl
+                            {arrowStyles[0].arrowBack && <ResponsiveSingleRangeControl
                                 label={__("Border Radius", 'premium-blocks-for-gutenberg')}
                                 value={arrowStyles[0].arrowRadius}
                                 onChange={newValue => saveArrowStyles({ arrowRadius: newValue === undefined ? 0 : newValue })}
                                 defaultValue={0}
                                 showUnit={false}
-                            />
+                            />}
                             <ResponsiveSingleRangeControl
                                 label={__("Padding", 'premium-blocks-for-gutenberg')}
                                 value={arrowStyles[0].arrowPadding}

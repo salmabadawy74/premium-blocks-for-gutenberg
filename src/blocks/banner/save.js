@@ -70,7 +70,7 @@ const save = (props) => {
                         boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
                         borderStyle: border && border.borderType,
                         borderColor: border && border.borderColor,
-                        height: minHeight,
+                        height: height == 'custom' ? minHeight : '',
                     })}
                 >
                     <div

@@ -22,30 +22,29 @@
   100% {
     background-position: 0% 50%; } }
 
-.premium-dheading-block__container .premium-dheading-block__title {
-  position: relative;
-  padding: 0;
-  margin: 0;
-  display: inline-block;
-  -webkit-transform: translate(0, 0);
-  transform: translate(0, 0); }
-  .premium-dheading-block__container .premium-dheading-block__title .premium-dheading-block__second {
-    font-size: 20px; }
-
-.premium-dheading-block__container .premium-headingc-true {
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text; }
-
-.premium-dheading-block__container .premium-headings-true {
-  -webkit-text-stroke-color: transparent;
-  -webkit-text-fill-color: #fafafa;
-  -webkit-text-stroke-width: 2px; }
-
-.premium-dheading-block__container .premium-headinga-true {
-  background-size: 300% 300% !important;
-  -webkit-animation: Gradient 10s ease-in-out infinite;
-  -moz-animation: Gradient 10s ease-in-out infinite;
-  animation: Gradient 10s ease-in-out infinite; }
+.premium-dheading-block__container {
+  text-align: center; }
+  .premium-dheading-block__container .premium-dheading-block__title {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0); }
+    .premium-dheading-block__container .premium-dheading-block__title .premium-dheading-block__second {
+      font-size: 20px; }
+  .premium-dheading-block__container .premium-headingc-true {
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text; }
+  .premium-dheading-block__container .premium-headings-true {
+    -webkit-text-stroke-color: transparent;
+    -webkit-text-fill-color: #fafafa;
+    -webkit-text-stroke-width: 2px; }
+  .premium-dheading-block__container .premium-headinga-true {
+    background-size: 300% 300% !important;
+    -webkit-animation: Gradient 10s ease-in-out infinite;
+    -moz-animation: Gradient 10s ease-in-out infinite;
+    animation: Gradient 10s ease-in-out infinite; }
 
 .premium-dheading-block__wrap {
   position: relative;
