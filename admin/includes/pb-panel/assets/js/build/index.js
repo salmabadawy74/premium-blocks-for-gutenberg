@@ -2749,17 +2749,16 @@ const Warning = props => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ActivateBlocks": () => (/* binding */ ActivateBlocks),
 /* harmony export */   "blockSlice": () => (/* binding */ blockSlice),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
-/* harmony export */   "selectAllBlocks": () => (/* binding */ selectAllBlocks),
 /* harmony export */   "updateblockStatus": () => (/* binding */ updateblockStatus)
 /* harmony export */ });
 /* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js");
 
 const initialState = {
   blocksFlag: false,
-  blocks: PremiumBlocksPanelData.values
+  blocks: {},
+  blockFilter: ''
 };
 const blockSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)({
   name: "blockStatues",
@@ -2769,16 +2768,14 @@ const blockSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)
       state.blocksFlag = true;
       state.blocks = action.payload;
     },
-    ActivateBlocks: (state, action) => {
-      console.log(state, action);
-      state.blocks = action.payload;
+    updateBlocksFilter: (state, action) => {
+      state.blocksFlag = true;
+      state.blockFilter = action.payload;
     }
   }
 });
-const selectAllBlocks = state => state.blocks;
 const {
-  updateblockStatus,
-  ActivateBlocks
+  updateblockStatus
 } = blockSlice.actions;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (blockSlice.reducer);
 
@@ -2909,6 +2906,33 @@ const OptionsComponent = _ref => {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OptionsComponent);
+
+/***/ }),
+
+/***/ "./src/store/setInitialState.js":
+/*!**************************************!*\
+  !*** ./src/store/setInitialState.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const setInitialState = store => {
+  const initialState = {
+    blocksFlag: true,
+    blocks: PremiumBlocksPanelData.values,
+    blockFilter: 'all'
+  };
+  store.dispatch({
+    type: 'blockStatues/updateblockStatus',
+    payload: initialState.blocks
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (setInitialState);
 
 /***/ }),
 
@@ -3151,7 +3175,7 @@ const OptionsTab = props => {
   const [activeFilter, setFilter] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)("all"); // const { createNotice } = useDispatch(noticesStore);
 
   const handleChange = async (newValues, id) => {
-    let newItems = { ...blocks
+    const newItems = { ...blocks
     };
     newItems[id] = newValues;
     dispatch((0,_features_blocks_index__WEBPACK_IMPORTED_MODULE_4__.updateblockStatus)(newItems));
@@ -3186,74 +3210,89 @@ const OptionsTab = props => {
     }
   };
 
-  const EnableBlocks = () => {
+  const EnableBlocks = async () => {
     const activeBlocks = { ...blocks
     };
 
-    for (const key in blocks) {
-      activeBlocks[key] = true;
+    for (const block in blocks) {
+      if ('all' !== activeFilter) {
+        continue;
+      }
+
+      activeBlocks[block] = true;
     }
 
-    console.log(blocks);
-    dispatch((0,_features_blocks_index__WEBPACK_IMPORTED_MODULE_4__.ActivateBlocks)(activeBlocks)); // const body = new FormData();
-    // body.append("action", "pb-panel-update-option");
-    // body.append("nonce", PremiumBlocksPanelData.nonce);
-    // body.append("value", JSON.stringify(activeBlocks));
-    // try {
-    //     const response = await fetch(PremiumBlocksPanelData.ajaxurl, {
-    //         method: "POST",
-    //         body,
-    //     });
-    //     if (response.status === 200) {
-    //         const { success, data } = await response.json();
-    //         if (success && data.values) {
-    //             // createNotice("success", "Settings saved ", {
-    //             //     isDismissible: true,
-    //             //     type: "snackbar",
-    //             // });
-    //         }
-    //     }
-    // } catch (e) {
-    //     console.log(e);
-    //     // createNotice("error", __("An unknown error occurred.", ""), {
-    //     //     isDismissible: true,
-    //     //     type: "snackbar",
-    //     // });
-    // }
-  }; // const DeactivateBlocks = async () => {
-  //     const unactiveBlocks = { ...blocks };
-  //     for (const key in blocks) {
-  //         unactiveBlocks[key] = false;
-  //         console.log(key);
-  //     }
-  //     dispatch(updateblockStatus(blockStates));
-  //     const body = new FormData();
-  //     body.append("action", "pb-panel-update-option");
-  //     body.append("nonce", PremiumBlocksPanelData.nonce);
-  //     body.append("value", JSON.stringify(unactiveBlocks));
-  //     try {
-  //         const response = await fetch(PremiumBlocksPanelData.ajaxurl, {
-  //             method: "POST",
-  //             body,
-  //         });
-  //         if (response.status === 200) {
-  //             const { success, data } = await response.json();
-  //             if (success && data.values) {
-  //                 // createNotice("success", "Settings saved ", {
-  //                 //     isDismissible: true,
-  //                 //     type: "snackbar",
-  //                 // });
-  //             }
-  //         }
-  //     } catch (e) {
-  //         console.log(e);
-  //         // createNotice("error", __("An unknown error occurred.", ""), {
-  //         //     isDismissible: true,
-  //         //     type: "snackbar",
-  //         // });
-  //     }
-  // };
+    dispatch((0,_features_blocks_index__WEBPACK_IMPORTED_MODULE_4__.updateblockStatus)(activeBlocks));
+    const body = new FormData();
+    body.append("action", "pb-panel-update-option");
+    body.append("nonce", PremiumBlocksPanelData.nonce);
+    body.append("value", JSON.stringify(activeBlocks));
 
+    try {
+      const response = await fetch(PremiumBlocksPanelData.ajaxurl, {
+        method: "POST",
+        body
+      });
+
+      if (response.status === 200) {
+        const {
+          success,
+          data
+        } = await response.json();
+
+        if (success && data.values) {// createNotice("success", "Settings saved ", {
+          //     isDismissible: true,
+          //     type: "snackbar",
+          // });
+        }
+      }
+    } catch (e) {
+      console.log(e); // createNotice("error", __("An unknown error occurred.", ""), {
+      //     isDismissible: true,
+      //     type: "snackbar",
+      // });
+    }
+  };
+
+  const DisableBlocks = async () => {
+    const unactiveBlocks = { ...blocks
+    };
+
+    for (const key in blocks) {
+      unactiveBlocks[key] = false;
+    }
+
+    dispatch((0,_features_blocks_index__WEBPACK_IMPORTED_MODULE_4__.updateblockStatus)(unactiveBlocks));
+    const body = new FormData();
+    body.append("action", "pb-panel-update-option");
+    body.append("nonce", PremiumBlocksPanelData.nonce);
+    body.append("value", JSON.stringify(unactiveBlocks));
+
+    try {
+      const response = await fetch(PremiumBlocksPanelData.ajaxurl, {
+        method: "POST",
+        body
+      });
+
+      if (response.status === 200) {
+        const {
+          success,
+          data
+        } = await response.json();
+
+        if (success && data.values) {// createNotice("success", "Settings saved ", {
+          //     isDismissible: true,
+          //     type: "snackbar",
+          // });
+        }
+      }
+    } catch (e) {
+      console.log(e); // createNotice("error", __("An unknown error occurred.", ""), {
+      //     isDismissible: true,
+      //     type: "snackbar",
+      // });
+    }
+  };
 
   const tabs = [{
     name: "All",
@@ -3297,8 +3336,10 @@ const OptionsTab = props => {
     }),
     onClick: () => setFilter(tab.slug)
   }, tab.name)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    onClick: () => EnableBlocks()
-  }, "Activate Blocks"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    onClick: EnableBlocks
+  }, "Activate Blocks"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: DisableBlocks
+  }, "Deactivate Blocks"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pb-options options-section"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_options_component__WEBPACK_IMPORTED_MODULE_2__["default"], {
     options: options,
@@ -12395,6 +12436,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./store/store */ "./src/store/store.js");
 /* harmony import */ var _scss_pb_panel_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./scss/pb-panel.scss */ "./src/scss/pb-panel.scss");
+/* harmony import */ var _store_setInitialState__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./store/setInitialState */ "./src/store/setInitialState.js");
 
 
 
@@ -12404,8 +12446,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const initalState = useSelector(state => state.blockStates);
-i;
+
+const blockStateFlag = _store_store__WEBPACK_IMPORTED_MODULE_5__.store.getState().blockStates;
+
+if (!blockStateFlag.blocksFlag) {
+  (0,_store_setInitialState__WEBPACK_IMPORTED_MODULE_7__["default"])(_store_store__WEBPACK_IMPORTED_MODULE_5__.store);
+}
+
 react_dom__WEBPACK_IMPORTED_MODULE_2___default().render((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_redux__WEBPACK_IMPORTED_MODULE_4__.Provider, {
   store: _store_store__WEBPACK_IMPORTED_MODULE_5__.store
 }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_tabs_dashboard__WEBPACK_IMPORTED_MODULE_3__["default"], null)), document.getElementById("pb-dashboard"));

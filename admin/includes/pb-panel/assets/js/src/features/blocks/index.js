@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     blocksFlag: false,
-    blocks: PremiumBlocksPanelData.values,
+    blocks: {},
+    blockFilter: ''
 };
 export const blockSlice = createSlice({
     name: "blockStatues",
@@ -12,12 +13,13 @@ export const blockSlice = createSlice({
             state.blocksFlag = true;
             state.blocks = action.payload;
         },
-        ActivateBlocks: (state, action) => {
-            console.log(state, action);
-            state.blocks = action.payload;
-        },
+        updateBlocksFilter: (state, action) => {
+            state.blocksFlag = true;
+            state.blockFilter = action.payload
+        }
+
+
     },
 });
-export const selectAllBlocks = (state) => state.blocks;
-export const { updateblockStatus, ActivateBlocks } = blockSlice.actions;
+export const { updateblockStatus } = blockSlice.actions;
 export default blockSlice.reducer;

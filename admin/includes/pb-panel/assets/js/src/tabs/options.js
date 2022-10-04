@@ -7,7 +7,7 @@ const { __ } = wp.i18n;
 import {
     updateblockStatus,
     ActivateBlocks,
-    selectAllBlocks,
+
 } from "../features/blocks/index";
 
 import { store as noticesStore } from "@wordpress/notices";
@@ -17,10 +17,9 @@ const OptionsTab = (props) => {
     const blocks = useSelector((state) => state.blockStates.blocks);
     const dispatch = useDispatch();
     const [activeFilter, setFilter] = useState("all");
-
     // const { createNotice } = useDispatch(noticesStore);
     const handleChange = async (newValues, id) => {
-        let newItems = { ...blocks };
+        const newItems = { ...blocks };
         newItems[id] = newValues;
         dispatch(updateblockStatus(newItems));
 
@@ -53,78 +52,79 @@ const OptionsTab = (props) => {
         }
     };
 
-    const EnableBlocks = () => {
+    const EnableBlocks = async () => {
         const activeBlocks = { ...blocks };
-        for (const key in blocks) {
-            activeBlocks[key] = true;
+        for (const block in blocks) {
+            if ('all' !== activeFilter) {
+                continue;
+            }
+            activeBlocks[block] = true;
         }
 
-        console.log(blocks);
-        dispatch(ActivateBlocks(activeBlocks));
+        dispatch(updateblockStatus(activeBlocks));
 
-        // const body = new FormData();
-        // body.append("action", "pb-panel-update-option");
-        // body.append("nonce", PremiumBlocksPanelData.nonce);
-        // body.append("value", JSON.stringify(activeBlocks));
+        const body = new FormData();
+        body.append("action", "pb-panel-update-option");
+        body.append("nonce", PremiumBlocksPanelData.nonce);
+        body.append("value", JSON.stringify(activeBlocks));
 
-        // try {
-        //     const response = await fetch(PremiumBlocksPanelData.ajaxurl, {
-        //         method: "POST",
-        //         body,
-        //     });
-        //     if (response.status === 200) {
-        //         const { success, data } = await response.json();
-        //         if (success && data.values) {
-        //             // createNotice("success", "Settings saved ", {
-        //             //     isDismissible: true,
-        //             //     type: "snackbar",
-        //             // });
-        //         }
-        //     }
-        // } catch (e) {
-        //     console.log(e);
-        //     // createNotice("error", __("An unknown error occurred.", ""), {
-        //     //     isDismissible: true,
-        //     //     type: "snackbar",
-        //     // });
-        // }
+        try {
+            const response = await fetch(PremiumBlocksPanelData.ajaxurl, {
+                method: "POST",
+                body,
+            });
+            if (response.status === 200) {
+                const { success, data } = await response.json();
+                if (success && data.values) {
+                    // createNotice("success", "Settings saved ", {
+                    //     isDismissible: true,
+                    //     type: "snackbar",
+                    // });
+                }
+            }
+        } catch (e) {
+            console.log(e);
+            // createNotice("error", __("An unknown error occurred.", ""), {
+            //     isDismissible: true,
+            //     type: "snackbar",
+            // });
+        }
     };
 
-    // const DeactivateBlocks = async () => {
-    //     const unactiveBlocks = { ...blocks };
-    //     for (const key in blocks) {
-    //         unactiveBlocks[key] = false;
-    //         console.log(key);
-    //     }
-    //     dispatch(updateblockStatus(blockStates));
-    //     const body = new FormData();
+    const DisableBlocks = async () => {
+        const unactiveBlocks = { ...blocks };
+        for (const key in blocks) {
+            unactiveBlocks[key] = false;
+        }
+        dispatch(updateblockStatus(unactiveBlocks));
+        const body = new FormData();
 
-    //     body.append("action", "pb-panel-update-option");
-    //     body.append("nonce", PremiumBlocksPanelData.nonce);
-    //     body.append("value", JSON.stringify(unactiveBlocks));
+        body.append("action", "pb-panel-update-option");
+        body.append("nonce", PremiumBlocksPanelData.nonce);
+        body.append("value", JSON.stringify(unactiveBlocks));
 
-    //     try {
-    //         const response = await fetch(PremiumBlocksPanelData.ajaxurl, {
-    //             method: "POST",
-    //             body,
-    //         });
-    //         if (response.status === 200) {
-    //             const { success, data } = await response.json();
-    //             if (success && data.values) {
-    //                 // createNotice("success", "Settings saved ", {
-    //                 //     isDismissible: true,
-    //                 //     type: "snackbar",
-    //                 // });
-    //             }
-    //         }
-    //     } catch (e) {
-    //         console.log(e);
-    //         // createNotice("error", __("An unknown error occurred.", ""), {
-    //         //     isDismissible: true,
-    //         //     type: "snackbar",
-    //         // });
-    //     }
-    // };
+        try {
+            const response = await fetch(PremiumBlocksPanelData.ajaxurl, {
+                method: "POST",
+                body,
+            });
+            if (response.status === 200) {
+                const { success, data } = await response.json();
+                if (success && data.values) {
+                    // createNotice("success", "Settings saved ", {
+                    //     isDismissible: true,
+                    //     type: "snackbar",
+                    // });
+                }
+            }
+        } catch (e) {
+            console.log(e);
+            // createNotice("error", __("An unknown error occurred.", ""), {
+            //     isDismissible: true,
+            //     type: "snackbar",
+            // });
+        }
+    };
 
     const tabs = [
         { name: "All", slug: "all" },
@@ -161,12 +161,12 @@ const OptionsTab = (props) => {
                                 {tab.name}
                             </button>
                         ))}
-                        <button onClick={() => EnableBlocks()}>
+                        <button onClick={EnableBlocks}>
                             Activate Blocks
                         </button>
-                        {/* <button onClick={() => DeactivateBlocks()}>
+                        <button onClick={DisableBlocks}>
                             Deactivate Blocks
-                        </button> */}
+                        </button>
                     </nav>
                 </div>
                 <div className="pb-options options-section">
