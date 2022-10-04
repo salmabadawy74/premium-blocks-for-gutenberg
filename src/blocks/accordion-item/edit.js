@@ -1,4 +1,4 @@
-import {useEffect} from '@wordpress/element';
+import { useEffect } from '@wordpress/element';
 import { withSelect, useSelect } from '@wordpress/data';
 import { generateBlockId } from '../../components/HelperFunction';
 import classnames from "classnames";
@@ -15,7 +15,7 @@ function AccordionItemEdit({
 }) {
     const { blockId, title, description } = attributes;
     const { titleTag, contentType, direction, arrowStyles } = context;
-    const iconClasse = isSelected ? '' : ' premium-accordion__closed';
+    // const iconClasse = ' premium-accordion__closed';
     const blockProps = useBlockProps({
         className: classnames(className, blockId, 'premium-accordion__content_wrap'),
     });
@@ -52,7 +52,33 @@ function AccordionItemEdit({
         [clientId]
     );
 
-    return <div {...blockProps}>
+    const initToggleBox = () => {
+        const accordionTitles = document.querySelectorAll(".is-selected");
+
+        accordionTitles.forEach((accordionTitle) => {
+            const desc = accordionTitle.querySelectorAll(".premium-accordion__desc_wrap");
+            const svg = accordionTitle.querySelectorAll(".premium-accordion__icon");
+
+            if (desc[0].classList.contains("is-open")) {
+                desc[0].classList.remove("is-open");
+                svg[0].classList.remove("premium-accordion__closed");
+            }
+            else {
+                const accordionTitlesWithIsOpen = document.querySelectorAll(".is-open");
+                accordionTitlesWithIsOpen.forEach((accordionTitleWithIsOpen) => {
+                    accordionTitleWithIsOpen.classList.remove("is-open");
+                });
+                const accordionSvgsWithIsOpen = document.querySelectorAll(".premium-accordion__closed");
+                accordionSvgsWithIsOpen.forEach((accordionSvgWithIsOpen) => {
+                    accordionSvgWithIsOpen.classList.remove("premium-accordion__closed");
+                });
+                desc[0].classList.add("is-open");
+                svg[0].classList.add("premium-accordion__closed");
+            }
+        });
+    };
+
+    return <div {...blockProps} onClick={() => initToggleBox()}>
         <div
             className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowStyles[0].arrowPos}`}
         >
@@ -69,7 +95,7 @@ function AccordionItemEdit({
             </div>
             <div className={`premium-accordion__icon_wrap`}>
                 <svg
-                    className={`premium-accordion__icon${iconClasse}`}
+                    className={`premium-accordion__icon`}
                     role="img"
                     focusable="false"
                     xmlns="http://www.w3.org/2000/svg"
@@ -79,24 +105,22 @@ function AccordionItemEdit({
                 </svg>
             </div>
         </div>
-        {(isSelected || isInnerBlockSelected) && (
-            <div
-                className={`premium-accordion__desc_wrap`}
-            >
-                {"text" === contentType && (
-                    <RichText
-                        tagName="p"
-                        className={`premium-accordion__desc`}
-                        placeholder={__("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", 'premium-blocks-for-gutenberg')}
-                        onChange={newText =>
-                            setAttributes({ description: newText })
-                        }
-                        value={description}
-                    />
-                )}
-                {"block" === contentType && <InnerBlocks templateLock={false} />}
-            </div>
-        )}
+        <div
+            className={`premium-accordion__desc_wrap`}
+        >
+            {"text" === contentType && (
+                <RichText
+                    tagName="p"
+                    className={`premium-accordion__desc`}
+                    placeholder={__("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", 'premium-blocks-for-gutenberg')}
+                    onChange={newText =>
+                        setAttributes({ description: newText })
+                    }
+                    value={description}
+                />
+            )}
+            {"block" === contentType && <InnerBlocks templateLock={false} />}
+        </div>
     </div>;
 }
 
