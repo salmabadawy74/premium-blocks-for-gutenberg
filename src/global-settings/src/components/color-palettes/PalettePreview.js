@@ -15,6 +15,7 @@ const PalettePreview = ({
     handleClickReset,
     canAdd = true,
 }) => {
+
     const handleChangeColor = (color, optionId) => {
         let newColor;
         if (typeof color === "string") {
@@ -39,7 +40,7 @@ const PalettePreview = ({
         setCustomColors(newValue);
     }
 
-    const handleAddNewColor = (colorData) => {
+    const handleAddNewColor = () => {
         const lastColorIndex = customColors.length;
         const colorId = `custom-color${lastColorIndex + Math.floor(Math.random() * 100)}`;
         const colorTitle = `${__('Custom Color ')}${lastColorIndex + 1}`;

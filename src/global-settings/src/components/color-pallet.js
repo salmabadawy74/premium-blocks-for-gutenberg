@@ -214,7 +214,6 @@ const ColorPalettes = ({
                         value={[...defaultPallets, ...state]}
                         option={[...defaultPallets, ...state]}
                         handleDeletePalette={(id) => handleDeletePalette(id)}
-                        titles={titles}
                     />}
             </OutsideClickHandler>
             <OutsideClickHandler

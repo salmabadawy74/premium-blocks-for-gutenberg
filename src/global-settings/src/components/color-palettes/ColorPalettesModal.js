@@ -7,7 +7,7 @@ import classnames from "classnames";
 import { useState } from 'react';
 import SettingsContext from '../../store/settings-store';
 
-const ColorPalettesModal = ({ value, onChange, titles, wrapperProps = {}, handleDeletePalette }) => {
+const ColorPalettesModal = ({ value, onChange, wrapperProps = {}, handleDeletePalette }) => {
 	const { globalColors } = useContext(SettingsContext);
 	const [typeOfPalette, setTypeOfPalette] = useState("light");
 	const pbgPaletteColors = value.filter(pallet => pallet.skin === typeOfPalette && pallet.type === "system");
@@ -46,7 +46,7 @@ const ColorPalettesModal = ({ value, onChange, titles, wrapperProps = {}, handle
 			{customPaletteColors.map((palette, index) => (
 				<Fragment>
 					<PalettePreview
-						pallet={initPallet(palette).colors}
+						colors={initPallet(palette).colors}
 						className={classnames(`premium-custom-palette__container`, {
 							'premium-active': palette.id === globalColors.current_palett
 						})

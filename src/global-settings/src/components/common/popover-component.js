@@ -126,7 +126,7 @@ const usePopoverMaker = ({
         var style = window.getComputedStyle ? getComputedStyle(selector, null) : selector.currentStyle;
         let modalWidth;
         if (selector) {
-            modalWidth = selector.clientWidth - (parseInt(style.paddingRight) + parseInt(style.paddingLeft));
+            modalWidth = selector.clientWidth - 42;
         }
 
         if (!shouldCalculate) {
@@ -226,7 +226,7 @@ const usePopoverMaker = ({
         styles: {
             '--modal-y-offset': `${yOffset}px`,
             '--modal-x-offset': `${right}px`,
-            '--modalWidth': `${modalWidth > 240 ? modalWidth : 245}px`,
+            '--modalWidth': `${modalWidth}px`,
 
             ...otherStyles,
 

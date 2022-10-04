@@ -20,20 +20,22 @@ const ColorsScreen = () => {
                 'Manage palettes and the default color of different global elements on the site.'
             )}
         />
-        <div className='premium-global-colors-type'>
-            <label>{__('Theme')}</label>
-            <ToggleControl
-                checked={colorPallet !== 'theme'}
-                onChange={handleToggleChange}
-            />
-            <label>{__('Premium Block')}</label>
+        <div className='premium-colors-screen'>
+            <div className='premium-global-colors-type'>
+                <label>{__('Theme')}</label>
+                <ToggleControl
+                    checked={colorPallet !== 'theme'}
+                    onChange={handleToggleChange}
+                />
+                <label>{__('Premium Block')}</label>
+            </div>
+            {colorPallet === 'theme' &&
+                <ThemeColorPallet />
+            }
+            {colorPallet === 'pbg' &&
+                <ColorPalettes value={colorPallets} onChange={setColorPallets} />
+            }
         </div>
-        {colorPallet === 'theme' &&
-            <ThemeColorPallet />
-        }
-        {colorPallet === 'pbg' &&
-            <ColorPalettes value={colorPallets} onChange={setColorPallets} />
-        }
     </>
 }
 

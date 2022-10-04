@@ -12,8 +12,7 @@ import { generateCss } from '../../components/HelperFunction';
 import WebFont from "webfontloader";
 import { useEffect } from "@wordpress/element";
 
-const PluginSidebarTest = ({ colorPallet, globalColors, customColors, globalTypography }) => {
-
+const PremiumSidebar = ({ colorPallet, globalColors, globalTypography, deviceType }) => {
     useEffect(() => {
         if (globalTypography && Object.keys(globalTypography).length) {
             Object.values(globalTypography).map(value => {
@@ -60,91 +59,91 @@ const PluginSidebarTest = ({ colorPallet, globalColors, customColors, globalTypo
         }
         // Typography
         styles[`div[class*="wp-block-premium"] h1`] = {
-            'font-size': `${heading1?.fontSize?.[props.deviceType]}${heading1?.fontSize?.unit}`,
+            'font-size': `${heading1?.fontSize?.[deviceType]}${heading1?.fontSize?.unit}`,
             'font-style': heading1?.fontStyle,
             'font-family': heading1?.fontFamily,
             'font-weight': heading1?.fontWeight,
-            'letter-spacing': `${heading1?.letterSpacing?.[props.deviceType]}${heading1?.letterSpacing?.unit}`,
+            'letter-spacing': `${heading1?.letterSpacing?.[deviceType]}${heading1?.letterSpacing?.unit}`,
             'text-decoration': heading1?.textDecoration,
             'text-transform': heading1?.textTransform,
-            'line-height': `${heading1?.lineHeight?.[props.deviceType]}${heading1?.lineHeight?.unit}`,
+            'line-height': `${heading1?.lineHeight?.[deviceType]}${heading1?.lineHeight?.unit}`,
         };
 
         styles[`div[class*="wp-block-premium"] h2`] = {
-            'font-size': `${heading2?.fontSize?.[props.deviceType]}${heading2?.fontSize?.unit}`,
+            'font-size': `${heading2?.fontSize?.[deviceType]}${heading2?.fontSize?.unit}`,
             'font-style': heading2?.fontStyle,
             'font-family': heading2?.fontFamily,
             'font-weight': heading2?.fontWeight,
-            'letter-spacing': `${heading2?.letterSpacing?.[props.deviceType]}${heading2?.letterSpacing?.unit}`,
+            'letter-spacing': `${heading2?.letterSpacing?.[deviceType]}${heading2?.letterSpacing?.unit}`,
             'text-decoration': heading2?.textDecoration,
             'text-transform': heading2?.textTransform,
-            'line-height': `${heading2?.lineHeight?.[props.deviceType]}${heading2?.lineHeight?.unit}`,
+            'line-height': `${heading2?.lineHeight?.[deviceType]}${heading2?.lineHeight?.unit}`,
         };
 
         styles[`div[class*="wp-block-premium"] h3`] = {
-            'font-size': `${heading3?.fontSize?.[props.deviceType]}${heading3?.fontSize?.unit}`,
+            'font-size': `${heading3?.fontSize?.[deviceType]}${heading3?.fontSize?.unit}`,
             'font-style': heading3?.fontStyle,
             'font-family': heading3?.fontFamily,
             'font-weight': heading3?.fontWeight,
-            'letter-spacing': `${heading3?.letterSpacing?.[props.deviceType]}${heading3?.letterSpacing?.unit}`,
+            'letter-spacing': `${heading3?.letterSpacing?.[deviceType]}${heading3?.letterSpacing?.unit}`,
             'text-decoration': heading3?.textDecoration,
             'text-transform': heading3?.textTransform,
-            'line-height': `${heading3?.lineHeight?.[props.deviceType]}${heading3?.lineHeight?.unit}`,
+            'line-height': `${heading3?.lineHeight?.[deviceType]}${heading3?.lineHeight?.unit}`,
         };
 
         styles[`div[class*="wp-block-premium"] h4`] = {
-            'font-size': `${heading4?.fontSize?.[props.deviceType]}${heading4?.fontSize?.unit}`,
+            'font-size': `${heading4?.fontSize?.[deviceType]}${heading4?.fontSize?.unit}`,
             'font-style': heading4?.fontStyle,
             'font-family': heading4?.fontFamily,
             'font-weight': heading4?.fontWeight,
-            'letter-spacing': `${heading4?.letterSpacing?.[props.deviceType]}${heading4?.letterSpacing?.unit}`,
+            'letter-spacing': `${heading4?.letterSpacing?.[deviceType]}${heading4?.letterSpacing?.unit}`,
             'text-decoration': heading4?.textDecoration,
             'text-transform': heading4?.textTransform,
-            'line-height': `${heading4?.lineHeight?.[props.deviceType]}${heading4?.lineHeight?.unit}`,
+            'line-height': `${heading4?.lineHeight?.[deviceType]}${heading4?.lineHeight?.unit}`,
         };
 
         styles[`div[class*="wp-block-premium"] h5`] = {
-            'font-size': `${heading5?.fontSize?.[props.deviceType]}${heading5?.fontSize?.unit}`,
+            'font-size': `${heading5?.fontSize?.[deviceType]}${heading5?.fontSize?.unit}`,
             'font-style': heading5?.fontStyle,
             'font-family': heading5?.fontFamily,
             'font-weight': heading5?.fontWeight,
-            'letter-spacing': `${heading5?.letterSpacing?.[props.deviceType]}${heading5?.letterSpacing?.unit}`,
+            'letter-spacing': `${heading5?.letterSpacing?.[deviceType]}${heading5?.letterSpacing?.unit}`,
             'text-decoration': heading5?.textDecoration,
             'text-transform': heading5?.textTransform,
-            'line-height': `${heading5?.lineHeight?.[props.deviceType]}${heading5?.lineHeight?.unit}`,
+            'line-height': `${heading5?.lineHeight?.[deviceType]}${heading5?.lineHeight?.unit}`,
         };
 
         styles[`div[class*="wp-block-premium"] h6`] = {
-            'font-size': `${heading6?.fontSize?.[props.deviceType]}${heading6?.fontSize?.unit}`,
+            'font-size': `${heading6?.fontSize?.[deviceType]}${heading6?.fontSize?.unit}`,
             'font-style': heading6?.fontStyle,
             'font-family': heading6?.fontFamily,
             'font-weight': heading6?.fontWeight,
-            'letter-spacing': `${heading6?.letterSpacing?.[props.deviceType]}${heading6?.letterSpacing?.unit}`,
+            'letter-spacing': `${heading6?.letterSpacing?.[deviceType]}${heading6?.letterSpacing?.unit}`,
             'text-decoration': heading6?.textDecoration,
             'text-transform': heading6?.textTransform,
-            'line-height': `${heading6?.lineHeight?.[props.deviceType]}${heading6?.lineHeight?.unit}`,
+            'line-height': `${heading6?.lineHeight?.[deviceType]}${heading6?.lineHeight?.unit}`,
         };
 
         styles[`[class*="wp-block-premium"] .premium-button, [class*="wp-block-premium"] .premium-pricing-table__button_link, [class*="wp-block-premium"] .premium-modal-box-modal-lower-close`] = {
-            'font-size': `${button?.fontSize?.[props.deviceType]}${button?.fontSize?.unit}`,
+            'font-size': `${button?.fontSize?.[deviceType]}${button?.fontSize?.unit}`,
             'font-style': button?.fontStyle,
             'font-family': button?.fontFamily,
             'font-weight': button?.fontWeight,
-            'letter-spacing': `${button?.letterSpacing?.[props.deviceType]}${button?.letterSpacing?.unit}`,
+            'letter-spacing': `${button?.letterSpacing?.[deviceType]}${button?.letterSpacing?.unit}`,
             'text-decoration': button?.textDecoration,
             'text-transform': button?.textTransform,
-            'line-height': `${button?.lineHeight?.[props.deviceType]}${button?.lineHeight?.unit}`,
+            'line-height': `${button?.lineHeight?.[deviceType]}${button?.lineHeight?.unit}`,
         };
 
         styles[`[class*="wp-block-premium"] p`] = {
-            'font-size': `${paragraph?.fontSize?.[props.deviceType]}${paragraph?.fontSize?.unit}`,
+            'font-size': `${paragraph?.fontSize?.[deviceType]}${paragraph?.fontSize?.unit}`,
             'font-style': paragraph?.fontStyle,
             'font-family': paragraph?.fontFamily,
             'font-weight': paragraph?.fontWeight,
-            'letter-spacing': `${paragraph?.letterSpacing?.[props.deviceType]}${paragraph?.letterSpacing?.unit}`,
+            'letter-spacing': `${paragraph?.letterSpacing?.[deviceType]}${paragraph?.letterSpacing?.unit}`,
             'text-decoration': paragraph?.textDecoration,
             'text-transform': paragraph?.textTransform,
-            'line-height': `${paragraph?.lineHeight?.[props.deviceType]}${paragraph?.lineHeight?.unit}`,
+            'line-height': `${paragraph?.lineHeight?.[deviceType]}${paragraph?.lineHeight?.unit}`,
         };
 
         css += generateCss(styles);
@@ -153,7 +152,7 @@ const PluginSidebarTest = ({ colorPallet, globalColors, customColors, globalTypo
     }
 
     useEffect(() => {
-        if (!colorPallet) {
+        if (!colorPallet || !globalColors?.colors) {
             return;
         }
         if (colorPallet === 'theme') {
@@ -204,24 +203,22 @@ const PluginSidebarTest = ({ colorPallet, globalColors, customColors, globalTypo
     </Fragment>
 };
 
-const TestComposed = compose(
+const Composed = compose(
     withSelect((select) => {
         const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
         let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
         const { getEditedEntityRecord } = select(coreStore);
         const pbgGlobalColors = getEditedEntityRecord('root', 'site')?.pbg_global_colors || [];
         const pbgDefaultPallet = getEditedEntityRecord('root', 'site')?.pbg_global_color_pallet || 'theme';
-        const customColors = getEditedEntityRecord('root', 'site')?.pbg_custom_colors || [];
         const globalTypography = getEditedEntityRecord('root', 'site')?.pbg_global_typography || [];
 
         return {
             globalColors: pbgGlobalColors,
             colorPallet: pbgDefaultPallet,
-            customColors,
             globalTypography: globalTypography,
             deviceType
         };
     }),
-)(PluginSidebarTest);
+)(PremiumSidebar);
 
-registerPlugin('plugin-premium-blocks', { render: TestComposed });
+registerPlugin('plugin-premium-blocks', { render: Composed });
