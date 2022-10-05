@@ -24,6 +24,9 @@
   -webkit-animation: blink_cursor 0.7s infinite;
   animation: blink_cursor 0.7s infinite; }
 
+.wp-block-premium-fancy-text {
+  text-align: center; }
+
 .premium-fancy-slide {
   display: inline-block; }
   .premium-fancy-slide .typed-cursor {
