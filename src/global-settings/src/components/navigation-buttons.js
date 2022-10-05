@@ -10,11 +10,6 @@ import {
     Icon
 } from '@wordpress/components';
 
-/**
- * External dependencies
- */
-import classnames from 'classnames';
-
 function GenericNavigationButton({ icon, children, ...props }) {
     return (
         <Item {...props}>

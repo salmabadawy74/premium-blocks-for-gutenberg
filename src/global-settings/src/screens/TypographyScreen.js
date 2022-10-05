@@ -158,14 +158,6 @@ const TypographyScreen = props => {
                 <PremiumTypo value={getElementValue('paragraph')} title={false} onChange={(newValue => changeHandler('paragraph', newValue))} />
             </div>
         </div>
-        {/* <LoadElementGoogleFont typography={getElementValue('heading1')} />
-        <LoadElementGoogleFont typography={getElementValue('heading2')} />
-        <LoadElementGoogleFont typography={getElementValue('heading3')} />
-        <LoadElementGoogleFont typography={getElementValue('heading4')} />
-        <LoadElementGoogleFont typography={getElementValue('heading5')} />
-        <LoadElementGoogleFont typography={getElementValue('heading6')} />
-        <LoadElementGoogleFont typography={getElementValue('button')} />
-        <LoadElementGoogleFont typography={getElementValue('paragraph')} /> */}
     </>
 }
 

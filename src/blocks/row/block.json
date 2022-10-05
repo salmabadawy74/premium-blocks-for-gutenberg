@@ -30,8 +30,12 @@
         },
         "colWidth": {
             "type": "object",
-            "default": { "Desktop": 100, "Tablet": 100, "Mobile": 100, "unit": "%" }
-    
+            "default": {
+                "Desktop": 100,
+                "Tablet": 100,
+                "Mobile": 100,
+                "unit": "%"
+            }
         },
         "padding": {
             "type": "object",
@@ -98,7 +102,7 @@
             "type": "string",
             "value": "default"
         },
-    
+
         "backgroundOptions": {
             "type": "object",
             "default": {
@@ -208,7 +212,6 @@
                     }
                 }
             }
-    
         },
         "boxShadow": {
             "type": "object",
@@ -238,7 +241,6 @@
                     "Mobile": "",
                     "unit": "px"
                 }
-    
             }
         },
         "shapeBottom": {
@@ -278,8 +280,7 @@
             "default": "boxed"
         },
         "innerWidth": {
-            "type": "number",
-            "default": 1200
+            "type": "number"
         },
         "columnGutter": {
             "type": "object",
@@ -306,7 +307,6 @@
                 "Tablet": "",
                 "Mobile": ""
             }
-    
         },
         "alignItems": {
             "type": "object",

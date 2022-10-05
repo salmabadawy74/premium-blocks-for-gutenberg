@@ -6,7 +6,7 @@ import usePopoverMaker from "./common/popover-component";
 import OutsideClickHandler from "./common/outside-component";
 import { Transition } from "@react-spring/web";
 import bezierEasing from "bezier-easing";
-const { __, sprintf } = wp.i18n;
+const { __ } = wp.i18n;
 import { Modal } from '@wordpress/components';
 import classnames from "classnames";
 import defaultPallets from "../helpers/defaultPallets";

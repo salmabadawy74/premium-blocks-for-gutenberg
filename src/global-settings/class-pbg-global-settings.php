@@ -38,8 +38,6 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 		public function __construct() {
 			add_action( 'enqueue_block_editor_assets', array( $this, 'script_enqueue' ) );
 			add_action( 'init', array( $this, 'register_pbg_global_settings' ) );
-			// add_action( 'pbg_dynamic_css', array( $this, 'add_global_color_to_editor' ) );
-			// add_action( 'pbg_dynamic_css', array( $this, 'add_global_typography_to_editor' ) );
 			add_action( 'wp_footer', array( $this, 'pbg_fronend_global_styles' ) );
 		}
 
@@ -51,7 +49,10 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 		 * @return void
 		 */
 		function pbg_fronend_global_styles() {
-			printf( "<style type='text/css' class='kemet-pbg-inline-style'>%s</style>", $this->add_global_color_to_editor() . $this->add_global_typography_to_editor() );
+			$colors_css     = $this->add_global_color_to_editor();
+			$typography_css = $this->add_global_typography_to_editor();
+
+			printf( "<style type='text/css' class='pbg-global-inline-style'>%s</style>", "{$colors_css}{$typography_css}" );
 		}
 
 		/**
@@ -89,7 +90,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 				$css->add_property( 'font-style', $css->render_color( $h2_typography['fontStyle'] ) );
 				$css->add_property( 'text-transform', $css->render_color( $h2_typography['textTransform'] ) );
 				$css->add_property( 'text-decoration', $css->render_color( $h2_typography['textDecoration'] ) );
-				$css->render_typography( $h1_typography, 'Desktop' );
+				$css->render_typography( $h2_typography, 'Desktop' );
 			}
 
 			if ( isset( $global_typography['heading3'] ) ) {
@@ -177,7 +178,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 				$h2_typography = $global_typography['heading2'];
 
 				$css->set_selector( 'div[class*="wp-block-premium"] h2' );
-				$css->render_typography( $h1_typography, 'Tablet' );
+				$css->render_typography( $h2_typography, 'Tablet' );
 			}
 
 			if ( isset( $global_typography['heading3'] ) ) {
@@ -236,7 +237,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 				$h2_typography = $global_typography['heading2'];
 
 				$css->set_selector( 'div[class*="wp-block-premium"] h2' );
-				$css->render_typography( $h1_typography, 'Mobile' );
+				$css->render_typography( $h2_typography, 'Mobile' );
 			}
 
 			if ( isset( $global_typography['heading3'] ) ) {
@@ -295,8 +296,8 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 		 * @return string
 		 */
 		public function add_global_color_to_editor( $dynamic_css = '' ) {
-			$global_color_pallet = get_option('pbg_global_color_pallet','theme' );
-			if($global_color_pallet === 'theme'){
+			$global_color_pallet = get_option( 'pbg_global_color_pallet', 'theme' );
+			if ( $global_color_pallet === 'theme' ) {
 				return $dynamic_css;
 			}
 			$default_value = array(
@@ -549,16 +550,16 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 							'items' => array(
 								'type'       => 'object',
 								'properties' => array(
-									'id'            => array(
+									'id'     => array(
 										'type' => 'string',
 									),
-									'name'          => array(
+									'name'   => array(
 										'type' => 'string',
 									),
-									'active'        => array(
+									'active' => array(
 										'type' => 'boolean',
 									),
-									'colors'        => array(
+									'colors' => array(
 										'type'  => 'array',
 										'items' => array(
 											'type'       => 'object',
@@ -572,10 +573,10 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 											),
 										),
 									),
-									'type'          => array(
+									'type'   => array(
 										'type' => 'string',
 									),
-									'skin'          => array(
+									'skin'   => array(
 										'type' => 'string',
 									),
 								),
@@ -636,7 +637,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 			);
 			wp_enqueue_style(
 				'pbg-global-settings-css',
-				PREMIUM_BLOCKS_URL . 'src/global-settings/build/style-index.css',
+				PREMIUM_BLOCKS_URL . 'src/global-settings/build/index.css',
 				array(),
 				PREMIUM_BLOCKS_VERSION,
 				'all'

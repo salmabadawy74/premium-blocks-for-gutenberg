@@ -3,7 +3,7 @@ import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/edit-post';
 import { Fragment } from '@wordpress/element';
 import GlobalStylesUI from './ui';
 const { __ } = wp.i18n;
-import './style.scss';
+import './styles/index.scss';
 import { SettingsProvider } from './store/settings-store';
 import { compose } from '@wordpress/compose'
 import { withSelect } from '@wordpress/data'

@@ -91,8 +91,8 @@ const PalettePreview = ({
                         />
                     ))}
                 </div>
-                {(customColors.length || canAdd) && <p>{__('Custom Color')}</p>}
-                {(customColors.length || canAdd) && (
+                {(customColors.length && canAdd) && <p>{__('Custom Color')}</p>}
+                {(customColors.length && canAdd) && (
                     <div className="premium-custom-colors">
                         {customColors.map((picker) => (
                             <ColorComponent
@@ -107,7 +107,7 @@ const PalettePreview = ({
                                 onChangeName={(v) => handleColorChangeName(v, picker[`slug`])}
                             />
                         ))}
-                        {(canAdd && customColors.length || canAdd) && <div className="premium-add-new-color" onClick={() => handleAddNewColor()} data-tip={__('Add Color')}>
+                        {(canAdd && customColors.length) && <div className="premium-add-new-color" onClick={() => handleAddNewColor()} data-tip={__('Add Color')}>
                             <Icon icon={create} />
                         </div>}
                     </div>
