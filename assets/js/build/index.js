@@ -61578,7 +61578,10 @@ const {
 } = wp.data;
 
 function Responsive(props) {
-  let previewDevice = wp.customize ? wp.customize.previewedDevice.get() : wp.data && wp.data.select && wp.data.select('core/edit-post') && wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType ? wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType() : 'Desktop';
+  var _wp$customize;
+
+  console.log(wp.customize);
+  let previewDevice = (_wp$customize = wp.customize) !== null && _wp$customize !== void 0 && _wp$customize.previewedDevice ? wp.customize.previewedDevice.get() : wp.data && wp.data.select && wp.data.select('core/edit-post') && wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType ? wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType() : 'Desktop';
 
   let customSetPreviewDeviceType = device => {
     props.onChange(device);

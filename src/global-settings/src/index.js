@@ -195,7 +195,7 @@ const PremiumSidebar = ({ colorPallet, globalColors, globalTypography, deviceTyp
         <PluginSidebarMoreMenuItem target="premium-sidebar">
             {__('Premium Blocks For Gutenberg')}
         </PluginSidebarMoreMenuItem>
-        <PluginSidebar name="premium-sidebar" title={__('Premium Blocks For Gutenberg')}>
+        <PluginSidebar name="premium-sidebar" title={__('Premium Blocks For Gutenberg', "premium-blocks-for-gutenberg")}>
             <SettingsProvider>
                 <GlobalStylesUI />
             </SettingsProvider>

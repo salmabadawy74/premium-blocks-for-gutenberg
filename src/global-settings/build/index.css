@@ -1,14 +1,21 @@
 /*!**********************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/styles/index.scss ***!
   \**********************************************************************************************************************************************************************************************************************************************/
+:root {
+  --accentColorHover: #135e96;
+  --inputBorderColor: #dcdddf;
+  --optionBorderColor: #e1e1e1;
+  --primaryColor: #007cba;
+}
+
 /* Color Pallet */
-.premium-palettes-modal .premium_label_type__palette, .components-modal__frame.premium-color-palette-confrim__delete .premium-paltette-popup-action, .components-modal__frame.premium-color-palette-confrim__delete .premium-pop-modal__header, .components-modal__frame.premium-color-palette-confrim__delete .premium-paltette-popup-action > *, .components-modal__frame.premium-color-palette-confrim__delete .components-modal__content .components-modal__header .components-modal__header-heading .premium-popup-modal__header, .components-modal__frame.premium-color-palette-confrim__delete .components-modal__content .components-modal__header, .premium-palette-info .premium-Palette-type-wrapper button, .premium-palette-info .premium-Palette-type-container, .premium-global-color-picker-modal .components-color-picker__inputs-toggle, .premium-global-color-picker-modal .components-color-picker__inputs-wrapper .components-base-control__field label, .premium-global-color-picker-modal .components-color-picker__controls, .premium-edit-palette, .premium-global-color-picker-single > span span, .premium-color-picker-container, .premium-palettes-modal label, .premium-palettes-preview .premium-palette-toggle-modal, div.premium-type-control span {
+.premium-palettes-modal .premium_label_type__palette, .components-modal__frame.premium-global-color-palette-confrim__delete .premium-paltette-popup-action, .components-modal__frame.premium-global-color-palette-confrim__delete .premium-pop-modal__header, .components-modal__frame.premium-global-color-palette-confrim__delete .premium-paltette-popup-action > *, .components-modal__frame.premium-global-color-palette-confrim__delete .components-modal__content .components-modal__header .components-modal__header-heading .premium-popup-modal__header, .components-modal__frame.premium-global-color-palette-confrim__delete .components-modal__content .components-modal__header, .premium-palette-info .premium-Palette-type-wrapper button, .premium-palette-info .premium-Palette-type-container, .premium-global-color-picker-modal .components-color-picker__inputs-toggle, .premium-global-color-picker-modal .components-color-picker__inputs-wrapper .components-base-control__field label, .premium-global-color-picker-modal .components-color-picker__controls, .premium-edit-palette, .premium-global-color-picker-single > span span, .premium-global-color-picker-container, .premium-palettes-modal label, .premium-palettes-preview .premium-palette-toggle-modal, div.premium-type-control span {
   display: flex;
   align-items: center;
 }
 
-.premium-palettes-preview .premium-color-picker-container,
-.premium-palettes-modal .premium-color-picker-container {
+.premium-palettes-preview .premium-global-color-picker-container,
+.premium-palettes-modal .premium-global-color-picker-container {
   justify-content: initial;
 }
 
@@ -37,7 +44,7 @@ div.premium-type-control span:first-child {
   border-right: 1px solid #d8d7d7;
 }
 div.premium-type-control span.active {
-  color: var(--pbg-global-color1, var(--wp-admin-theme-color));
+  color: var(--primaryColor);
 }
 div.premium-type-control span:not(:first-child) {
   margin-left: -1px;
@@ -79,7 +86,7 @@ div.premium-type-control span:not(:first-child) {
   margin-right: 2px;
 }
 .premium-palettes-preview .premium-palette-toggle-modal span.active {
-  color: var(--pbg-global-color1, var(--wp-admin-theme-color));
+  color: var(--primaryColor);
 }
 
 .premium-palettes-modal {
@@ -95,7 +102,7 @@ div.premium-type-control span:not(:first-child) {
   cursor: pointer;
 }
 .premium-palettes-modal .premium-single-palette:not(:last-child) {
-  border-bottom: 1px solid var(--pbg-global-color4);
+  border-bottom: 1px solid var(--optionBorderColor);
 }
 .premium-palettes-modal .premium-single-palette:hover, .premium-palettes-modal .premium-single-palette.premium-active {
   background: #f8f8f9;
@@ -114,7 +121,7 @@ div.premium-type-control span:not(:first-child) {
   display: none;
 }
 
-.premium-color-picker-container {
+.premium-global-color-picker-container {
   justify-content: flex-end;
 }
 
@@ -122,7 +129,7 @@ div.premium-type-control span:not(:first-child) {
   margin-right: 6px;
 }
 
-.premium-palettes-modal .premium-single-palette .premium-color-palette-container > div {
+.premium-palettes-modal .premium-single-palette .premium-global-color-palette-container > div {
   display: flex;
   align-items: start;
   justify-content: start;
@@ -170,7 +177,7 @@ div.premium-type-control span:not(:first-child) {
   transform: translate3d(0px, -38px, 0px);
 }
 
-.premium-color-picker-skins li:hover .premium-tooltip-top {
+.premium-global-color-picker-skins li:hover .premium-tooltip-top {
   opacity: 1;
   visibility: visible;
   transform: translate3d(0px, -38px, 0px);
@@ -331,7 +338,7 @@ div.premium-type-control span:not(:first-child) {
   padding: 20px var(--cpm-ph) 1px var(--cpm-ph);
   display: flex;
   align-items: flex-end;
-  border-top: 1px solid var(--pbg-global-color4);
+  border-top: 1px solid var(--optionBorderColor);
 }
 .premium-global-color-picker-modal .components-color-picker__inputs-wrapper fieldset {
   flex: 1;
@@ -441,7 +448,7 @@ div.premium-type-control span:not(:first-child) {
   border-radius: 0px;
   margin-left: 5px;
   cursor: pointer;
-  border: 1px solid var(--pbg-global-color5);
+  border: 1px solid var(--inputBorderColor);
   transition: border-color 0.1s linear;
 }
 .premium-global-color-picker-modal .components-color-picker__inputs-toggle:hover {
@@ -463,7 +470,7 @@ div.premium-type-control span:not(:first-child) {
   display: none;
 }
 
-.premium-palettes-preview .premium-color-picker-container {
+.premium-palettes-preview .premium-global-color-picker-container {
   justify-content: initial;
 }
 
@@ -471,7 +478,7 @@ div.premium-type-control span:not(:first-child) {
   max-height: 450px;
   overflow-y: auto;
 }
-.premium-palettes-modal .premium-color-picker-container {
+.premium-palettes-modal .premium-global-color-picker-container {
   justify-content: initial;
 }
 .premium-palettes-modal:before {
@@ -486,23 +493,23 @@ div.premium-type-control span:not(:first-child) {
   display: none;
 }
 
-.premium-palettes-preview .premium-single-palette .premium-color-palette-container {
+.premium-palettes-preview .premium-single-palette .premium-global-color-palette-container {
   display: grid;
   padding: 14px 20px;
   flex-wrap: wrap;
   justify-content: center;
 }
-.premium-palettes-preview .premium-single-palette .premium-color-palette-container .premium-pallet-colors {
+.premium-palettes-preview .premium-single-palette .premium-global-color-palette-container .premium-pallet-colors {
   display: flex;
   flex-wrap: wrap;
 }
-.premium-palettes-preview .premium-single-palette .premium-color-palette-container p {
+.premium-palettes-preview .premium-single-palette .premium-global-color-palette-container p {
   margin: 10px 0;
 }
-.premium-palettes-preview .premium-single-palette .premium-color-palette-container .premium-custom-colors {
+.premium-palettes-preview .premium-single-palette .premium-global-color-palette-container .premium-custom-colors {
   display: flex;
 }
-.premium-palettes-preview .premium-single-palette .premium-color-palette-container .premium-custom-colors .premium-add-new-color {
+.premium-palettes-preview .premium-single-palette .premium-global-color-palette-container .premium-custom-colors .premium-add-new-color {
   display: flex;
   width: 42px;
   height: 42px;
@@ -510,35 +517,35 @@ div.premium-type-control span:not(:first-child) {
   background-color: #fff;
   align-items: center;
   justify-content: center;
-  color: var(--wp-admin-theme-color);
-  box-shadow: inset 0 0 0 1px var(--wp-admin-theme-color);
+  color: var(--primaryColor);
+  box-shadow: inset 0 0 0 1px var(--primaryColor);
   cursor: pointer;
 }
-.premium-palettes-preview .premium-single-palette .premium-color-palette-container .premium-custom-colors .premium-add-new-color svg {
+.premium-palettes-preview .premium-single-palette .premium-global-color-palette-container .premium-custom-colors .premium-add-new-color svg {
   fill: currentColor;
 }
 
-.premium-color-palette-container .premium-global-color-picker-single {
+.premium-global-color-palette-container .premium-global-color-picker-single {
   margin-right: -3px;
 }
 
-.premium-palettes-preview .premium-single-palette .premium-color-palette-container .premium-global-color-picker-single span {
+.premium-palettes-preview .premium-single-palette .premium-global-color-palette-container .premium-global-color-picker-single span {
   width: 42px !important;
   height: 42px !important;
 }
-.premium-palettes-preview .premium-single-palette .premium-color-palette-container .premium-color-Wrapper:first-child .premium-global-color-picker-single span span i.premium-tooltip-top {
+.premium-palettes-preview .premium-single-palette .premium-global-color-palette-container .premium-global-color-Wrapper:first-child .premium-global-color-picker-single span span i.premium-tooltip-top {
   left: 5px;
   top: -10px;
 }
-.premium-palettes-preview .premium-single-palette .premium-color-palette-container .premium-color-Wrapper:nth-child(5) .premium-global-color-picker-single span span i.premium-tooltip-top {
+.premium-palettes-preview .premium-single-palette .premium-global-color-palette-container .premium-global-color-Wrapper:nth-child(5) .premium-global-color-picker-single span span i.premium-tooltip-top {
   top: -10px;
 }
-.premium-palettes-preview .premium-single-palette .premium-color-palette-container .premium-color-Wrapper:first-child .premium-global-color-picker-single span span i.premium-tooltip-top::after {
+.premium-palettes-preview .premium-single-palette .premium-global-color-palette-container .premium-global-color-Wrapper:first-child .premium-global-color-picker-single span span i.premium-tooltip-top::after {
   right: auto;
   left: auto;
 }
 
-.premium-palettes-modal .premium-single-palette .premium-color-palette-container .premium-global-color-picker-single span {
+.premium-palettes-modal .premium-single-palette .premium-global-color-palette-container .premium-global-color-picker-single span {
   width: 36px !important;
   height: 36px !important;
 }
@@ -569,7 +576,7 @@ button.premium-save-palette {
   border-radius: 0;
   outline: 0;
   box-shadow: none;
-  background-color: var(--pbg-global-color1, var(--wp-admin-theme-color));
+  background-color: var(--primaryColor);
   color: #fff;
   font-size: 12px;
   text-transform: uppercase;
@@ -644,7 +651,7 @@ button.premium-save-palette:disabled {
   padding: 12px 4px;
   border: none;
   color: #fff;
-  background: var(--pbg-global-color1, var(--wp-admin-theme-color));
+  background: var(--primaryColor);
   box-shadow: none;
   font-size: 11px;
   font-weight: 600;
@@ -687,10 +694,10 @@ button.premium-delete-palette::before {
   display: inline-block;
 }
 
-.premium-color-palette-modal .premium-reset-palette__Wrapper {
+.premium-global-color-palette-modal .premium-reset-palette__Wrapper {
   display: flex;
 }
-.premium-color-palette-modal .premium-reset-palette__Wrapper button.premium-btn-reset__color {
+.premium-global-color-palette-modal .premium-reset-palette__Wrapper button.premium-btn-reset__color {
   height: 34px;
   margin: 0px 8px 20px 18px;
   padding: 4px 8px;
@@ -698,7 +705,7 @@ button.premium-delete-palette::before {
   line-height: 22px;
   cursor: pointer;
 }
-.premium-color-palette-modal .premium-reset-palette__Wrapper p.premium-reset__description {
+.premium-global-color-palette-modal .premium-reset-palette__Wrapper p.premium-reset__description {
   margin: 0;
   color: #848484 !important;
   font-size: 11px;
@@ -726,7 +733,7 @@ button.premium-delete-palette::before {
   fill: #848484;
 }
 
-.components-modal__frame.premium-color-palette-confrim__delete {
+.components-modal__frame.premium-global-color-palette-confrim__delete {
   top: 50%;
   right: auto;
   bottom: auto;
@@ -743,10 +750,10 @@ button.premium-delete-palette::before {
   width: 398px !important;
   height: 193px !important;
 }
-.components-modal__frame.premium-color-palette-confrim__delete .components-modal__content {
+.components-modal__frame.premium-global-color-palette-confrim__delete .components-modal__content {
   padding: 0 25px 25px;
 }
-.components-modal__frame.premium-color-palette-confrim__delete .components-modal__content .components-modal__header {
+.components-modal__frame.premium-global-color-palette-confrim__delete .components-modal__content .components-modal__header {
   box-sizing: border-box;
   border-bottom: 1px dashed #a2a3a3;
   padding: 0 23px;
@@ -759,28 +766,28 @@ button.premium-delete-palette::before {
   top: 0;
   margin: 0 -25px 0px;
 }
-.components-modal__frame.premium-color-palette-confrim__delete .components-modal__content .components-modal__header .components-modal__header-heading .premium-popup-modal__header {
+.components-modal__frame.premium-global-color-palette-confrim__delete .components-modal__content .components-modal__header .components-modal__header-heading .premium-popup-modal__header {
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: bold;
 }
-.components-modal__frame.premium-color-palette-confrim__delete .components-modal__content .components-modal__header i {
+.components-modal__frame.premium-global-color-palette-confrim__delete .components-modal__content .components-modal__header i {
   font-size: 16px;
   height: 16px;
   width: 16px;
 }
-.components-modal__frame.premium-color-palette-confrim__delete .components-modal__content .components-modal__header span {
+.components-modal__frame.premium-global-color-palette-confrim__delete .components-modal__content .components-modal__header span {
   display: none;
 }
-.components-modal__frame.premium-color-palette-confrim__delete .components-modal__content .components-modal__header .components-button {
+.components-modal__frame.premium-global-color-palette-confrim__delete .components-modal__content .components-modal__header .components-button {
   color: #7c7c7c;
 }
-.components-modal__frame.premium-color-palette-confrim__delete .components-modal__content .components-modal__header .components-button:focus {
+.components-modal__frame.premium-global-color-palette-confrim__delete .components-modal__content .components-modal__header .components-button:focus {
   box-shadow: none;
   outline: none;
 }
-.components-modal__frame.premium-color-palette-confrim__delete .premium-paltette-popup-action > * {
+.components-modal__frame.premium-global-color-palette-confrim__delete .premium-paltette-popup-action > * {
   border-radius: 0px;
   justify-content: center;
   width: 169px;
@@ -790,7 +797,7 @@ button.premium-delete-palette::before {
   text-transform: uppercase;
   cursor: pointer;
 }
-.components-modal__frame.premium-color-palette-confrim__delete .premium-paltette-popup-action .premium-button__delete__palette {
+.components-modal__frame.premium-global-color-palette-confrim__delete .premium-paltette-popup-action .premium-button__delete__palette {
   background-color: #e4e4e4;
   border: 0;
   box-shadow: none;
@@ -798,27 +805,27 @@ button.premium-delete-palette::before {
   color: #515256;
   height: 30px;
 }
-.components-modal__frame.premium-color-palette-confrim__delete .premium-pop-modal__header {
+.components-modal__frame.premium-global-color-palette-confrim__delete .premium-pop-modal__header {
   font-size: 14px;
   align-items: center;
   text-transform: uppercase;
   letter-spacing: 0.3px;
 }
-.components-modal__frame.premium-color-palette-confrim__delete .premium-paltette-popup-action {
+.components-modal__frame.premium-global-color-palette-confrim__delete .premium-paltette-popup-action {
   margin-top: 0px;
   justify-content: space-between;
   width: 100%;
 }
-.components-modal__frame.premium-color-palette-confrim__delete .premium-palette-popup-content {
+.components-modal__frame.premium-global-color-palette-confrim__delete .premium-palette-popup-content {
   font-size: 13px;
   line-height: 1.5;
   margin: 25px 0px;
   text-indent: unset;
 }
-.components-modal__frame.premium-color-palette-confrim__delete .premium-palette-popup-content .premium-deleted-palette__name {
+.components-modal__frame.premium-global-color-palette-confrim__delete .premium-palette-popup-content .premium-deleted-palette__name {
   font-style: italic;
 }
-.components-modal__frame.premium-color-palette-confrim__delete .premium-paltette-popup-action .components-button.has-icon.has-text .dashicon {
+.components-modal__frame.premium-global-color-palette-confrim__delete .premium-paltette-popup-action .components-button.has-icon.has-text .dashicon {
   margin-right: 2px;
 }
 
@@ -840,21 +847,21 @@ button.premium-delete-palette::before {
 }
 
 @media (max-width: 1400px) {
-  .premium-palettes-preview .premium-single-palette .premium-color-palette-container .premium-global-color-picker-single span {
+  .premium-palettes-preview .premium-single-palette .premium-global-color-palette-container .premium-global-color-picker-single span {
     width: 38px !important;
     height: 38px !important;
   }
-  .premium-palettes-modal .premium-single-palette .premium-color-palette-container .premium-global-color-picker-single span {
+  .premium-palettes-modal .premium-single-palette .premium-global-color-palette-container .premium-global-color-picker-single span {
     width: 32px !important;
     height: 32px !important;
   }
 }
 @media (min-width: 1400px) and (max-width: 1750) {
-  .premium-palettes-preview .premium-single-palette .premium-color-palette-container .premium-global-color-picker-single span {
+  .premium-palettes-preview .premium-single-palette .premium-global-color-palette-container .premium-global-color-picker-single span {
     width: 36px !important;
     height: 36px !important;
   }
-  .premium-palettes-modal .premium-single-palette .premium-color-palette-container .premium-global-color-picker-single span {
+  .premium-palettes-modal .premium-single-palette .premium-global-color-palette-container .premium-global-color-picker-single span {
     width: 30px !important;
     height: 30px !important;
   }
@@ -885,7 +892,7 @@ button.premium-delete-palette::before {
 }
 
 /* Reset Button CSS */
-.premium-color-btn-reset-wrap .premium-reset-btn {
+.premium-global-color-btn-reset-wrap .premium-reset-btn {
   display: flex;
   width: 12px;
   height: 12px;
@@ -904,24 +911,24 @@ button.premium-delete-palette::before {
   align-items: center;
   justify-content: center;
 }
-.premium-color-btn-reset-wrap .premium-reset-btn::before {
+.premium-global-color-btn-reset-wrap .premium-reset-btn::before {
   content: "\f531";
   transition: transform 0.3s ease;
   transform: rotate(45deg);
 }
-.premium-color-btn-reset-wrap .premium-reset-btn:disabled {
+.premium-global-color-btn-reset-wrap .premium-reset-btn:disabled {
   color: rgba(0, 0, 0, 0.2);
   cursor: default;
 }
-.premium-color-btn-reset-wrap .premium-reset-btn:hover {
+.premium-global-color-btn-reset-wrap .premium-reset-btn:hover {
   box-shadow: none;
   border: none;
   background: transparent;
 }
-.premium-color-btn-reset-wrap .premium-reset-btn:hover:not(:disabled)::before {
+.premium-global-color-btn-reset-wrap .premium-reset-btn:hover:not(:disabled)::before {
   transform: rotate(-45deg);
 }
-.premium-color-btn-reset-wrap .premium-reset-btn:focus {
+.premium-global-color-btn-reset-wrap .premium-reset-btn:focus {
   box-shadow: none;
   border: none;
   background: transparent;
@@ -933,14 +940,14 @@ button.premium-delete-palette::before {
   background: transparent;
 }
 
-.premium-color-picker-skins {
+.premium-global-color-picker-skins {
   display: flex;
   margin: 0;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 }
-.premium-color-picker-skins li {
+.premium-global-color-picker-skins li {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -952,14 +959,14 @@ button.premium-delete-palette::before {
   border-radius: 50%;
   box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.09);
 }
-.premium-color-picker-skins li:not(:last-child) {
+.premium-global-color-picker-skins li:not(:last-child) {
   margin-right: 6px;
 }
 
-.premium-color-picker-single {
+.premium-global-color-picker-single {
   margin-right: 6px;
 }
-.premium-color-picker-single > span {
+.premium-global-color-picker-single > span {
   display: flex;
   width: 28px;
   height: 28px;
@@ -969,11 +976,11 @@ button.premium-delete-palette::before {
   background-position: 0 0, 0 5px, 5px -5px, -5px 0;
   background-image: linear-gradient(45deg, #ddd 25%, transparent 25%), linear-gradient(-45deg, #ddd 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ddd 75%), linear-gradient(-45deg, transparent 75%, #ddd 75%);
 }
-.premium-color-picker-single > span span:focus {
+.premium-global-color-picker-single > span span:focus {
   outline: none;
 }
 
-.premium-color-modal-wrapper {
+.premium-global-color-modal-wrapper {
   display: flex;
   justify-content: center;
   position: relative;
@@ -981,7 +988,7 @@ button.premium-delete-palette::before {
   z-index: 20;
 }
 
-.premium-color-picker-top {
+.premium-global-color-picker-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -989,14 +996,14 @@ button.premium-delete-palette::before {
   border-bottom: 1px solid #eee;
 }
 
-.premium-color-picker-skins {
+.premium-global-color-picker-skins {
   display: flex;
   margin: 0;
 }
-.premium-color-picker-skins li.active {
+.premium-global-color-picker-skins li.active {
   box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.09), 0px 0px 0px 3px #fff;
 }
-.premium-color-picker-skins li.active:before {
+.premium-global-color-picker-skins li.active:before {
   position: absolute;
   content: "";
   z-index: -1;
@@ -1005,7 +1012,7 @@ button.premium-delete-palette::before {
   background: rgba(0, 0, 0, 0.07);
   border-radius: 100%;
 }
-.premium-color-picker-skins li.active:after {
+.premium-global-color-picker-skins li.active:after {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1020,10 +1027,10 @@ button.premium-delete-palette::before {
   color: #fff;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
-.premium-color-picker-skins li.premium-no-color-pill {
+.premium-global-color-picker-skins li.premium-no-color-pill {
   background: rgba(255, 255, 255, 0.8);
 }
-.premium-color-picker-skins li.premium-no-color-pill:after {
+.premium-global-color-picker-skins li.premium-no-color-pill:after {
   top: initial;
   left: initial;
   right: initial;
@@ -1111,8 +1118,11 @@ button.premium-delete-palette::before {
   margin-bottom: 10px;
 }
 
-.premium-colors-screen {
+.premium-global-colors-screen {
   padding: 12px 20px;
+}
+.premium-global-colors-screen .__react_component_tooltip {
+  padding: 8px 10px;
 }
 
 .premium-global-colors-type {
@@ -1133,10 +1143,10 @@ button.premium-delete-palette::before {
   display: none !important;
 }
 
-.premium-color-Wrapper {
+.premium-global-color-Wrapper {
   position: relative;
 }
-.premium-color-Wrapper:hover > .premium-remove-color {
+.premium-global-color-Wrapper:hover > .premium-remove-color {
   opacity: 1;
 }
 

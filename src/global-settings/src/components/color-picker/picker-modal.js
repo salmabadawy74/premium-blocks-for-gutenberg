@@ -67,7 +67,7 @@ const PickerModal = ({
                             onChangeComplete={(color) => onChange(color)}
                         />
                         {(picker.name && onChangeName) && (
-                            <div className="premium-color-title">
+                            <div className="premium-global-color-title">
                                 <label>{__('Name')}:</label>
                                 <input type={'text'} value={picker.name} onChange={(e) => onChangeName(e.target.value)} />
                             </div>
@@ -95,7 +95,7 @@ const PickerModal = ({
                             onChangeComplete={(color) => onChange(color)}
                         />
                         {(picker.name && onChangeName) && (
-                            <div className="premium-color-title">
+                            <div className="premium-global-color-title">
                                 <label>{__('Name')}:</label>
                                 <input type={'text'} value={picker.name} onChange={(e) => onChangeName(e.target.value)} />
                             </div>

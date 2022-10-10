@@ -134,7 +134,6 @@ const ColorPalettes = ({
                 <span className="customize-control-title premium-control-title">
                     {label}
                 </span>
-                {label && <a href={'https://kemet.io/docs/global-colors/'} target='_blank'> </a>}
             </header>}
             <OutsideClickHandler
                 disabled={!isOpen}
@@ -342,7 +341,7 @@ const ColorPalettes = ({
 
             {
                 openModal && <Modal title={(<div className={`premium-popup-modal__header`}><i className="dashicons dashicons-bell"></i> {__("Warning", "premium-blocks-for-gutenberg")}</div>)}
-                    className={`premium-color-palette-confrim__delete`}
+                    className={`premium-global-color-palette-confrim__delete`}
                     isDismissible={true}
                     onRequestClose={() => { setOpenModal(false) }}
                 >

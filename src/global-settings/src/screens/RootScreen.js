@@ -13,24 +13,24 @@ const RootScreen = () => {
             <ItemGroup>
                 <NavigationButtonAsItem
                     path="/colors"
-                    aria-label={__('Colors')}
+                    aria-label={__('Colors', "premium-blocks-for-gutenberg")}
                     icon={color}
                 >
-                    {__('Colors')}
+                    {__('Colors', "premium-blocks-for-gutenberg")}
                 </NavigationButtonAsItem>
                 <NavigationButtonAsItem
                     icon={typography}
                     path={'/typography'}
-                    aria-label={__('Typography styles')}
+                    aria-label={__('Typography styles', "premium-blocks-for-gutenberg")}
                 >
-                    {__('Typography')}
+                    {__('Typography', "premium-blocks-for-gutenberg")}
                 </NavigationButtonAsItem>
                 <NavigationButtonAsItem
                     icon={layout}
                     path={'/container-settings'}
-                    aria-label={__('Layout')}
+                    aria-label={__('Layout', "premium-blocks-for-gutenberg")}
                 >
-                    {__('Layout')}
+                    {__('Layout', "premium-blocks-for-gutenberg")}
                 </NavigationButtonAsItem>
             </ItemGroup>
         </CardBody>

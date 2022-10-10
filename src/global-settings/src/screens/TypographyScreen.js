@@ -5,7 +5,7 @@ import defaults from '../helpers/defaults';
 import { useContext, useEffect } from "@wordpress/element";
 import SettingsContext from '../store/settings-store';
 import { typographyCss } from '../../../components/HelperFunction';
-import WebfontLoader from '../../../components/typography/fontLoader';
+import { ToggleControl } from '@wordpress/components';
 import WebFont from "webfontloader";
 
 const TypographyScreen = props => {
@@ -46,29 +46,17 @@ const TypographyScreen = props => {
         setGlobalTypography(updatedTypography);
     }
 
-    const LoadElementGoogleFont = (props) => {
-        const { typography } = props;
-
-        if (typography?.fontFamily === 'Default') {
-            return '';
-        }
-
-        const config = {
-            google: {
-                families: [typography.fontFamily]
-            }
-        }
-
-        return <WebfontLoader config={config}>
-        </WebfontLoader>;
-    };
-
     return <>
         <ScreenHeader
             title={__('Typography')}
-            description={__('Manage the typography settings for different elements.')}
+            description={__('Manage the typography settings for different elements.', "premium-blocks-for-gutenberg")}
         />
         <div className='premium-typography-screen'>
+            <ToggleControl
+                checked={false}
+                onChange={() => { }}
+                label={__('Apply typography to Native Blocks')}
+            />
             <div className='premium-element-typography'>
                 <h1
                     style={{
@@ -76,7 +64,7 @@ const TypographyScreen = props => {
                     }}
                     className='premium-element-typography-title'
                 >
-                    {__('Heading 1')}
+                    {__('Heading 1', "premium-blocks-for-gutenberg")}
                 </h1>
                 <PremiumTypo value={getElementValue('heading1')} title={false} onChange={(newValue => changeHandler('heading1', newValue))} />
             </div>
@@ -87,7 +75,7 @@ const TypographyScreen = props => {
                     }}
                     className='premium-element-typography-title'
                 >
-                    {__('Heading 2')}
+                    {__('Heading 2', "premium-blocks-for-gutenberg")}
                 </h2>
                 <PremiumTypo value={getElementValue('heading2')} title={false} onChange={(newValue => changeHandler('heading2', newValue))} />
             </div>
@@ -98,7 +86,7 @@ const TypographyScreen = props => {
                     }}
                     className='premium-element-typography-title'
                 >
-                    {__('Heading 3')}
+                    {__('Heading 3', "premium-blocks-for-gutenberg")}
                 </h3>
                 <PremiumTypo value={getElementValue('heading3')} title={false} onChange={(newValue => changeHandler('heading3', newValue))} />
             </div>
@@ -109,7 +97,7 @@ const TypographyScreen = props => {
                     }}
                     className='premium-element-typography-title'
                 >
-                    {__('Heading 4')}
+                    {__('Heading 4', "premium-blocks-for-gutenberg")}
                 </h4>
                 <PremiumTypo value={getElementValue('heading4')} title={false} onChange={(newValue => changeHandler('heading4', newValue))} />
             </div>
@@ -120,7 +108,7 @@ const TypographyScreen = props => {
                     }}
                     className='premium-element-typography-title'
                 >
-                    {__('Heading 5')}
+                    {__('Heading 5', "premium-blocks-for-gutenberg")}
                 </h5>
                 <PremiumTypo value={getElementValue('heading5')} title={false} onChange={(newValue => changeHandler('heading5', newValue))} />
             </div>
@@ -131,7 +119,7 @@ const TypographyScreen = props => {
                     }}
                     className='premium-element-typography-title'
                 >
-                    {__('Heading 6')}
+                    {__('Heading 6', "premium-blocks-for-gutenberg")}
                 </h6>
                 <PremiumTypo value={getElementValue('heading6')} title={false} onChange={(newValue => changeHandler('heading6', newValue))} />
             </div>
@@ -142,7 +130,7 @@ const TypographyScreen = props => {
                     }}
                     className='premium-element-typography-title'
                 >
-                    {__('Buttons')}
+                    {__('Buttons', "premium-blocks-for-gutenberg")}
                 </span>
                 <PremiumTypo value={getElementValue('button')} title={false} onChange={(newValue => changeHandler('button', newValue))} />
             </div>
@@ -153,7 +141,7 @@ const TypographyScreen = props => {
                     }}
                     className='premium-element-typography-title'
                 >
-                    {__('Paragraphs')}
+                    {__('Paragraphs', "premium-blocks-for-gutenberg")}
                 </p>
                 <PremiumTypo value={getElementValue('paragraph')} title={false} onChange={(newValue => changeHandler('paragraph', newValue))} />
             </div>

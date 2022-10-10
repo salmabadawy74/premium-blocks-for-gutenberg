@@ -26,7 +26,7 @@ function ScreenHeader({ title, description }) {
 							}
 							icon={isRTL() ? chevronRight : chevronLeft}
 							isSmall
-							aria-label={__('Navigate to the previous view')}
+							aria-label={__('Navigate to the previous view', "premium-blocks-for-gutenberg")}
 						/>
 						<Spacer>
 							<Heading level={5}>{title}</Heading>

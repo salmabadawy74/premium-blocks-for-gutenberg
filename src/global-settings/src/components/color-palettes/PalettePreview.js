@@ -74,14 +74,14 @@ const PalettePreview = ({
             }}
         >
             {renderBefore()}
-            <div className={`premium-color-palette-container`}>
+            <div className={`premium-global-color-palette-container`}>
                 <ReactTooltip place='top' effect="solid" />
                 <div className="premium-pallet-colors">
                     {colors.map((picker) => (
                         <ColorComponent
                             picker={picker}
                             onChangeComplete={(color, id) => handleChangeColor(color, picker[`slug`])}
-                            className={"premium-color-palette-modal"}
+                            className={"premium-global-color-palette-modal"}
                             skipModal={picker.skipModal}
                             resetPalette={true}
                             onColorReset={(color) => handleClickReset(picker[`slug`])}
@@ -91,14 +91,14 @@ const PalettePreview = ({
                         />
                     ))}
                 </div>
-                {(customColors.length && canAdd) && <p>{__('Custom Color')}</p>}
+                {(customColors.length && canAdd) && <p>{__('Custom Color', "premium-blocks-for-gutenberg")}</p>}
                 {(customColors.length && canAdd) && (
                     <div className="premium-custom-colors">
                         {customColors.map((picker) => (
                             <ColorComponent
                                 picker={picker}
                                 onChangeComplete={(color, id) => handleChangeColor(color, picker[`slug`])}
-                                className={"premium-color-palette-modal"}
+                                className={"premium-global-color-palette-modal"}
                                 skipModal={picker.skipModal}
                                 resetPalette={true}
                                 onColorReset={(color) => handleClickReset(picker[`slug`])}
@@ -107,7 +107,7 @@ const PalettePreview = ({
                                 onChangeName={(v) => handleColorChangeName(v, picker[`slug`])}
                             />
                         ))}
-                        {(canAdd && customColors.length) && <div className="premium-add-new-color" onClick={() => handleAddNewColor()} data-tip={__('Add Color')}>
+                        {(canAdd && customColors.length) && <div className="premium-add-new-color" onClick={() => handleAddNewColor()} data-tip={__('Add Color', "premium-blocks-for-gutenberg")}>
                             <Icon icon={create} />
                         </div>}
                     </div>

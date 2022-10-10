@@ -20,7 +20,7 @@ const ColorComponent = ({ picker, onChangeComplete, className, skipModal, resetP
             wrapperProps={{
                 ref: containerRef,
             }}
-            className={`premium-color-Wrapper`}
+            className={`premium-global-color-Wrapper`}
             additionalRefs={[modalRef]}
             onOutsideClick={() => {
                 setState(({ isPicking }) => ({

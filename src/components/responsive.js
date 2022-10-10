@@ -2,7 +2,8 @@ import React from 'react'
 const { useSelect, useDispatch } = wp.data;
 
 function Responsive(props) {
-    let previewDevice = wp.customize ? wp.customize.previewedDevice.get() : wp.data &&
+    console.log(wp.customize);
+    let previewDevice = wp.customize?.previewedDevice ? wp.customize.previewedDevice.get() : wp.data &&
         wp.data.select &&
         wp.data.select('core/edit-post') &&
         wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType ? wp.data

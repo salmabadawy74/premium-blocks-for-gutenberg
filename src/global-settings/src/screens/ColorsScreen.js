@@ -18,17 +18,22 @@ const ColorsScreen = () => {
             title={__('Colors')}
             description={__(
                 'Manage palettes and the default color of different global elements on the site.'
-            )}
+                , "premium-blocks-for-gutenberg")}
         />
-        <div className='premium-colors-screen'>
+        <div className='premium-global-colors-screen'>
             <div className='premium-global-colors-type'>
                 <label>{__('Theme')}</label>
                 <ToggleControl
                     checked={colorPallet !== 'theme'}
                     onChange={handleToggleChange}
                 />
-                <label>{__('Premium Block')}</label>
+                <label>{__('Premium Block', "premium-blocks-for-gutenberg")}</label>
             </div>
+            <ToggleControl
+                checked={false}
+                onChange={() => { }}
+                label={__('Apply Colors to Native Blocks')}
+            />
             {colorPallet === 'theme' &&
                 <ThemeColorPallet />
             }

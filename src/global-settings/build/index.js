@@ -13233,7 +13233,10 @@ const {
 } = wp.data;
 
 function Responsive(props) {
-  let previewDevice = wp.customize ? wp.customize.previewedDevice.get() : wp.data && wp.data.select && wp.data.select('core/edit-post') && wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType ? wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType() : 'Desktop';
+  var _wp$customize;
+
+  console.log(wp.customize);
+  let previewDevice = (_wp$customize = wp.customize) !== null && _wp$customize !== void 0 && _wp$customize.previewedDevice ? wp.customize.previewedDevice.get() : wp.data && wp.data.select && wp.data.select('core/edit-post') && wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType ? wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType() : 'Desktop';
 
   let customSetPreviewDeviceType = device => {
     props.onChange(device);
@@ -13447,123 +13450,6 @@ const FontsList = _ref3 => {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (FontsList);
-
-/***/ }),
-
-/***/ "../components/typography/fontLoader.js":
-/*!**********************************************!*\
-  !*** ../components/typography/fontLoader.js ***!
-  \**********************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var webfontloader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! webfontloader */ "../../node_modules/webfontloader/webfontloader.js");
-/* harmony import */ var webfontloader__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(webfontloader__WEBPACK_IMPORTED_MODULE_0__);
-if (googlefonts === undefined) {
-  var googlefonts = [];
-}
-
-const {
-  Component
-} = wp.element;
-
-const statuses = {
-  inactive: "inactive",
-  active: "active",
-  loading: "loading"
-};
-
-const noop = () => {};
-
-class WebfontLoader extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      status: undefined,
-      mounted: false
-    };
-
-    this.handleLoading = () => {
-      this.setState({
-        status: statuses.loading
-      });
-    };
-
-    this.addFont = font => {
-      if (!googlefonts.includes(font)) {
-        googlefonts.push(font);
-      }
-    };
-
-    this.handleActive = () => {
-      this.setState({
-        status: statuses.active
-      });
-    };
-
-    this.handleInactive = () => {
-      this.setState({
-        status: statuses.inactive
-      });
-    };
-
-    this.loadFonts = () => {
-      if (this.state.mounted) {
-        if (!googlefonts.includes(this.props.config.google.families[0])) {
-          webfontloader__WEBPACK_IMPORTED_MODULE_0___default().load({ ...this.props.config,
-            loading: this.handleLoading,
-            active: this.handleActive,
-            inactive: this.handleInactive,
-            context: frames["editor-canvas"]
-          });
-          this.addFont(this.props.config.google.families[0]);
-        }
-      }
-    };
-  }
-
-  componentDidMount() {
-    this.setState({
-      mounted: true
-    });
-    this.loadFonts();
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const {
-      onStatus,
-      config
-    } = this.props;
-
-    if (prevState.status !== this.state.status) {
-      onStatus(this.state.status);
-    }
-
-    if (prevProps.config !== config) {
-      this.loadFonts();
-    }
-  }
-
-  componentWillUnmount() {
-    this.setState({
-      mounted: false
-    });
-  }
-
-  render() {
-    const {
-      children
-    } = this.props;
-    return children || null;
-  }
-
-}
-
-WebfontLoader.defaultProps = {
-  onStatus: noop
-};
-/* harmony default export */ __webpack_exports__["default"] = (WebfontLoader);
 
 /***/ }),
 
@@ -13946,7 +13832,7 @@ const PalettePreview = _ref => {
       onClick();
     }
   }, renderBefore(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `premium-color-palette-container`
+    className: `premium-global-color-palette-container`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_tooltip__WEBPACK_IMPORTED_MODULE_3__["default"], {
     place: "top",
     effect: "solid"
@@ -13955,19 +13841,19 @@ const PalettePreview = _ref => {
   }, colors.map(picker => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_color__WEBPACK_IMPORTED_MODULE_2__["default"], {
     picker: picker,
     onChangeComplete: (color, id) => handleChangeColor(color, picker[`slug`]),
-    className: "premium-color-palette-modal",
+    className: "premium-global-color-palette-modal",
     skipModal: picker.skipModal,
     resetPalette: true,
     onColorReset: color => handleClickReset(picker[`slug`]),
     isDefault: picker.default,
     onRemove: () => handleRemoveColor(picker[`slug`]),
     onChangeName: false
-  }))), customColors.length && canAdd && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, __('Custom Color')), customColors.length && canAdd && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }))), customColors.length && canAdd && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, __('Custom Color', "premium-blocks-for-gutenberg")), customColors.length && canAdd && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-custom-colors"
   }, customColors.map(picker => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_color__WEBPACK_IMPORTED_MODULE_2__["default"], {
     picker: picker,
     onChangeComplete: (color, id) => handleChangeColor(color, picker[`slug`]),
-    className: "premium-color-palette-modal",
+    className: "premium-global-color-palette-modal",
     skipModal: picker.skipModal,
     resetPalette: true,
     onColorReset: color => handleClickReset(picker[`slug`]),
@@ -13977,7 +13863,7 @@ const PalettePreview = _ref => {
   })), canAdd && customColors.length && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-add-new-color",
     onClick: () => handleAddNewColor(),
-    "data-tip": __('Add Color')
+    "data-tip": __('Add Color', "premium-blocks-for-gutenberg")
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"], {
     icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"]
   })))));
@@ -14153,10 +14039,7 @@ const ColorPalettes = _ref => {
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("header", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "customize-control-title premium-control-title"
-  }, label), label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-    href: 'https://kemet.io/docs/global-colors/',
-    target: "_blank"
-  }, " ")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_outside_component__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, label)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_outside_component__WEBPACK_IMPORTED_MODULE_5__["default"], {
     disabled: !isOpen,
     useCapture: false,
     className: "premium-palettes-outside",
@@ -14316,7 +14199,7 @@ const ColorPalettes = _ref => {
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
       className: "dashicons dashicons-bell"
     }), " ", __("Warning", "premium-blocks-for-gutenberg")),
-    className: `premium-color-palette-confrim__delete`,
+    className: `premium-global-color-palette-confrim__delete`,
     isDismissible: true,
     onRequestClose: () => {
       setOpenModal(false);
@@ -14424,7 +14307,7 @@ const PickerModal = _ref => {
     color: getValueForPicker.color,
     onChangeComplete: color => onChange(color)
   }), picker.name && onChangeName && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "premium-color-title"
+    className: "premium-global-color-title"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", null, __('Name'), ":"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
     type: 'text',
     value: picker.name,
@@ -14443,7 +14326,7 @@ const PickerModal = _ref => {
     color: getValueForPicker.color,
     onChangeComplete: color => onChange(color)
   }), picker.name && onChangeName && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "premium-color-title"
+    className: "premium-global-color-title"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", null, __('Name'), ":"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
     type: 'text',
     value: picker.name,
@@ -14646,7 +14529,7 @@ const ColorComponent = _ref => {
     wrapperProps: {
       ref: containerRef
     },
-    className: `premium-color-Wrapper`,
+    className: `premium-global-color-Wrapper`,
     additionalRefs: [modalRef],
     onOutsideClick: () => {
       setState(_ref2 => {
@@ -15147,7 +15030,7 @@ function ScreenHeader(_ref) {
     },
     icon: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.isRTL)() ? _wordpress_icons__WEBPACK_IMPORTED_MODULE_3__["default"] : _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__["default"],
     isSmall: true,
-    "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Navigate to the previous view')
+    "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Navigate to the previous view', "premium-blocks-for-gutenberg")
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalSpacer, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalHeading, {
     level: 5
   }, title))))), description && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
@@ -15642,15 +15525,19 @@ const ColorsScreen = () => {
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_header__WEBPACK_IMPORTED_MODULE_2__["default"], {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Colors'),
-    description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Manage palettes and the default color of different global elements on the site.')
+    description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Manage palettes and the default color of different global elements on the site.', "premium-blocks-for-gutenberg")
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "premium-colors-screen"
+    className: "premium-global-colors-screen"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-global-colors-type"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Theme')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
     checked: colorPallet !== 'theme',
     onChange: handleToggleChange
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Premium Block'))), colorPallet === 'theme' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_ThemeColorPallet__WEBPACK_IMPORTED_MODULE_6__["default"], null), colorPallet === 'pbg' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_color_pallet__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Premium Block', "premium-blocks-for-gutenberg"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
+    checked: false,
+    onChange: () => {},
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Apply Colors to Native Blocks')
+  }), colorPallet === 'theme' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_ThemeColorPallet__WEBPACK_IMPORTED_MODULE_6__["default"], null), colorPallet === 'pbg' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_color_pallet__WEBPACK_IMPORTED_MODULE_5__["default"], {
     value: colorPallets,
     onChange: setColorPallets
   })));
@@ -15696,13 +15583,13 @@ const LayoutSettingsScreen = props => {
   };
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_header__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Layout Settings'),
-    description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Manage container default width and devices breakpoints.')
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Layout Settings', "premium-blocks-for-gutenberg"),
+    description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Manage container default width and devices breakpoints.', "premium-blocks-for-gutenberg")
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-layout-screen"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_4__["default"], {
     defaultValue: 1200,
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Container Max Width'),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Container Max Width', "premium-blocks-for-gutenberg"),
     value: layoutSettings === null || layoutSettings === void 0 ? void 0 : layoutSettings.container_width,
     onChange: value => changeHandler('container_width', value),
     min: 1,
@@ -15710,7 +15597,7 @@ const LayoutSettingsScreen = props => {
     units: ['px']
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_4__["default"], {
     defaultValue: 1024,
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Tablet Breakpoint'),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Tablet Breakpoint', "premium-blocks-for-gutenberg"),
     value: layoutSettings === null || layoutSettings === void 0 ? void 0 : layoutSettings.tablet_breakpoint,
     onChange: value => changeHandler('tablet_breakpoint', value),
     min: 1,
@@ -15718,7 +15605,7 @@ const LayoutSettingsScreen = props => {
     units: ['px']
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_4__["default"], {
     defaultValue: 767,
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Mobile Breakpoint'),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Mobile Breakpoint', "premium-blocks-for-gutenberg"),
     value: layoutSettings === null || layoutSettings === void 0 ? void 0 : layoutSettings.mobile_breakpoint,
     onChange: value => changeHandler('mobile_breakpoint', value),
     min: 1,
@@ -15760,17 +15647,17 @@ const RootScreen = () => {
     size: "small"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.CardBody, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalItemGroup, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_navigation_buttons__WEBPACK_IMPORTED_MODULE_3__.NavigationButtonAsItem, {
     path: "/colors",
-    "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Colors'),
+    "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Colors', "premium-blocks-for-gutenberg"),
     icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__["default"]
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Colors')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_navigation_buttons__WEBPACK_IMPORTED_MODULE_3__.NavigationButtonAsItem, {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Colors', "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_navigation_buttons__WEBPACK_IMPORTED_MODULE_3__.NavigationButtonAsItem, {
     icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"],
     path: '/typography',
-    "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Typography styles')
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Typography')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_navigation_buttons__WEBPACK_IMPORTED_MODULE_3__.NavigationButtonAsItem, {
+    "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Typography styles', "premium-blocks-for-gutenberg")
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Typography', "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_navigation_buttons__WEBPACK_IMPORTED_MODULE_3__.NavigationButtonAsItem, {
     icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"],
     path: '/container-settings',
-    "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Layout')
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Layout')))));
+    "aria-label": (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Layout', "premium-blocks-for-gutenberg")
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Layout', "premium-blocks-for-gutenberg")))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (RootScreen);
@@ -15794,7 +15681,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _helpers_defaults__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../helpers/defaults */ "./src/helpers/defaults.js");
 /* harmony import */ var _store_settings_store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../store/settings-store */ "./src/store/settings-store.js");
 /* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../components/HelperFunction */ "../components/HelperFunction.js");
-/* harmony import */ var _components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../components/typography/fontLoader */ "../components/typography/fontLoader.js");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var webfontloader__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! webfontloader */ "../../node_modules/webfontloader/webfontloader.js");
 /* harmony import */ var webfontloader__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(webfontloader__WEBPACK_IMPORTED_MODULE_8__);
 
@@ -15856,37 +15744,22 @@ const TypographyScreen = props => {
     setGlobalTypography(updatedTypography);
   };
 
-  const LoadElementGoogleFont = props => {
-    const {
-      typography
-    } = props;
-
-    if ((typography === null || typography === void 0 ? void 0 : typography.fontFamily) === 'Default') {
-      return '';
-    }
-
-    const config = {
-      google: {
-        families: [typography.fontFamily]
-      }
-    };
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      config: config
-    });
-  };
-
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_header__WEBPACK_IMPORTED_MODULE_3__["default"], {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Typography'),
-    description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Manage the typography settings for different elements.')
+    description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Manage the typography settings for different elements.', "premium-blocks-for-gutenberg")
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-typography-screen"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.ToggleControl, {
+    checked: false,
+    onChange: () => {},
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Apply typography to Native Blocks')
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-element-typography"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", {
     style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.typographyCss)(getElementValue('heading1'), 'Desktop')
     },
     className: "premium-element-typography-title"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Heading 1')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Heading 1', "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
     value: getElementValue('heading1'),
     title: false,
     onChange: newValue => changeHandler('heading1', newValue)
@@ -15896,7 +15769,7 @@ const TypographyScreen = props => {
     style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.typographyCss)(getElementValue('heading2'), 'Desktop')
     },
     className: "premium-element-typography-title"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Heading 2')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Heading 2', "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
     value: getElementValue('heading2'),
     title: false,
     onChange: newValue => changeHandler('heading2', newValue)
@@ -15906,7 +15779,7 @@ const TypographyScreen = props => {
     style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.typographyCss)(getElementValue('heading3'), 'Desktop')
     },
     className: "premium-element-typography-title"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Heading 3')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Heading 3', "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
     value: getElementValue('heading3'),
     title: false,
     onChange: newValue => changeHandler('heading3', newValue)
@@ -15916,7 +15789,7 @@ const TypographyScreen = props => {
     style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.typographyCss)(getElementValue('heading4'), 'Desktop')
     },
     className: "premium-element-typography-title"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Heading 4')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Heading 4', "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
     value: getElementValue('heading4'),
     title: false,
     onChange: newValue => changeHandler('heading4', newValue)
@@ -15926,7 +15799,7 @@ const TypographyScreen = props => {
     style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.typographyCss)(getElementValue('heading5'), 'Desktop')
     },
     className: "premium-element-typography-title"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Heading 5')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Heading 5', "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
     value: getElementValue('heading5'),
     title: false,
     onChange: newValue => changeHandler('heading5', newValue)
@@ -15936,7 +15809,7 @@ const TypographyScreen = props => {
     style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.typographyCss)(getElementValue('heading6'), 'Desktop')
     },
     className: "premium-element-typography-title"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Heading 6')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Heading 6', "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
     value: getElementValue('heading6'),
     title: false,
     onChange: newValue => changeHandler('heading6', newValue)
@@ -15946,7 +15819,7 @@ const TypographyScreen = props => {
     style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.typographyCss)(getElementValue('button'), 'Desktop')
     },
     className: "premium-element-typography-title"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Buttons')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Buttons', "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
     value: getElementValue('button'),
     title: false,
     onChange: newValue => changeHandler('button', newValue)
@@ -15956,7 +15829,7 @@ const TypographyScreen = props => {
     style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.typographyCss)(getElementValue('paragraph'), 'Desktop')
     },
     className: "premium-element-typography-title"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Paragraphs')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Paragraphs', "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_typo__WEBPACK_IMPORTED_MODULE_2__["default"], {
     value: getElementValue('paragraph'),
     title: false,
     onChange: newValue => changeHandler('paragraph', newValue)
@@ -20558,7 +20431,7 @@ const PremiumSidebar = _ref => {
     target: "premium-sidebar"
   }, __('Premium Blocks For Gutenberg')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_2__.PluginSidebar, {
     name: "premium-sidebar",
-    title: __('Premium Blocks For Gutenberg')
+    title: __('Premium Blocks For Gutenberg', "premium-blocks-for-gutenberg")
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_store_settings_store__WEBPACK_IMPORTED_MODULE_5__.SettingsProvider, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_ui__WEBPACK_IMPORTED_MODULE_3__["default"], null))));
 };
 

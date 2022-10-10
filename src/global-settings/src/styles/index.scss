@@ -20,8 +20,11 @@
     }
 }
 
-.premium-colors-screen {
+.premium-global-colors-screen {
     padding: 12px 20px;
+    .__react_component_tooltip {
+        padding: 8px 10px;
+    }
 }
 
 .premium-global-colors-type {
@@ -41,7 +44,7 @@
     }
 }
 
-.premium-color-Wrapper {
+.premium-global-color-Wrapper {
     position: relative;
     &:hover {
         > .premium-remove-color {
