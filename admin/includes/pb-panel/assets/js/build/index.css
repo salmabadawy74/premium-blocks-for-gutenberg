@@ -59,7 +59,6 @@
   border: 1px solid #d2d2d2;
   border-radius: 12px;
   width: 100%;
-  margin-bottom: 15px;
 }
 #pb-dashboard input[type=text]::-moz-placeholder {
   color: #bbbbbb;
