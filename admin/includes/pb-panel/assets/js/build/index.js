@@ -1343,12 +1343,32 @@ const Setting = () => {
   const {
     createNotice
   } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.useDispatch)(_wordpress_notices__WEBPACK_IMPORTED_MODULE_6__.store);
-  console.log(data, PremiumBlocksPanelData.apiData);
 
   const onChangeData = async (key, value) => {
     const updatedData = { ...data
     };
     updatedData[key] = value;
+    setData(updatedData);
+    await saveEntityRecord("root", "site", {
+      pbg_maps_settings: updatedData
+    });
+    createNotice("success", "Settings saved ", {
+      isDismissible: true,
+      type: "snackbar"
+    });
+  };
+
+  const onChangeMapApi = async (key, value) => {
+    const updatedData = { ...data
+    };
+    updatedData[key] = value;
+    setData(updatedData);
+  };
+
+  const saveMApApi = async key => {
+    const updatedData = { ...data
+    };
+    updatedData[key] = data === null || data === void 0 ? void 0 : data["premium-map-key"];
     setData(updatedData);
     await saveEntityRecord("root", "site", {
       pbg_maps_settings: updatedData
@@ -1372,9 +1392,13 @@ const Setting = () => {
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Click Here", "premium-blocks-for-gutenberg")), " ", (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("to get your key.", "premium-blocks-for-gutenberg"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "text",
     value: data === null || data === void 0 ? void 0 : data["premium-map-key"],
-    onChange: e => onChangeData("premium-map-key", e.target.value),
+    onChange: e => onChangeMapApi("premium-map-key", e.target.value),
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("API Key", "premium-blocks-for-gutenberg")
-  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    type: "button",
+    className: "pb-button secondary primary",
+    onClick: () => saveMApApi("premium-map-key")
+  }, "Save"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pb-setting-options"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_AdvancedSwitcher__WEBPACK_IMPORTED_MODULE_2__["default"], {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Enable Maps API JS File", "premium-blocks-for-gutenberg"),

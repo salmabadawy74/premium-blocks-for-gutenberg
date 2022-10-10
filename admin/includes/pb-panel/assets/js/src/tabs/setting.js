@@ -14,7 +14,6 @@ const Setting = () => {
     const { saveEntityRecord } = useDispatch(coreStore);
     const { createNotice } = useDispatch(noticesStore);
 
-    console.log(data, PremiumBlocksPanelData.apiData);
     const onChangeData = async (key, value) => {
         const updatedData = { ...data };
         updatedData[key] = value;
@@ -27,6 +26,25 @@ const Setting = () => {
             type: "snackbar",
         });
     };
+
+    const onChangeMapApi = async (key, value) => {
+        const updatedData = { ...data };
+        updatedData[key] = value;
+        setData(updatedData);
+    };
+
+    const saveMApApi = async (key) => {
+        const updatedData = { ...data };
+        updatedData[key] = data?.["premium-map-key"];
+        setData(updatedData);
+        await saveEntityRecord("root", "site", {
+            pbg_maps_settings: updatedData,
+        });
+        createNotice("success", "Settings saved ", {
+            isDismissible: true,
+            type: "snackbar",
+        });
+    }
 
     return (
         <Container>
@@ -66,7 +84,7 @@ const Setting = () => {
                                 type="text"
                                 value={data?.["premium-map-key"]}
                                 onChange={(e) =>
-                                    onChangeData(
+                                    onChangeMapApi(
                                         "premium-map-key",
                                         e.target.value
                                     )
@@ -77,6 +95,7 @@ const Setting = () => {
                                 )}
                             />
                         </div>
+                        <button type="button" className="pb-button secondary primary" onClick={() => saveMApApi("premium-map-key")}>Save</button>
                     </div>
                 </div>
                 <div className="pb-setting-options">
