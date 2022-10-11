@@ -652,7 +652,7 @@ function Edit(props) {
                                 ...marginCss(titleMargin, props.deviceType),
                                 ...paddingCss(titlePadding, props.deviceType)
                             }}
-                            tagName="h3"
+                            tagName="h4"
                         />
                     )}
                 </div>
@@ -668,7 +668,7 @@ function Edit(props) {
                             ...marginCss(titleMargin, props.deviceType),
                             ...paddingCss(titlePadding, props.deviceType)
                         }}
-                        tagName="h3"
+                        tagName="h4"
                     />
                 )}
                 {loadCounterGoogleFonts}

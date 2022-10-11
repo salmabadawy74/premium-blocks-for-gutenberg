@@ -138,7 +138,7 @@ const save = props => {
                     <RichText.Content
                         className={`premium-countup__title`}
                         value={titleTxt}
-                        tagName="h3"
+                        tagName="h4"
                         style={filterJsCss({
                             color: titleStyles[0].titleColor,
                             fontStyle: titleTypography?.fontStyle,
@@ -153,7 +153,7 @@ const save = props => {
             {titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && (
                 <RichText.Content
                     className={`premium-countup__title`}
-                    tagName="h3"
+                    tagName="h4"
                     value={titleTxt}
                     style={filterJsCss({
                         color: titleStyles[0].titleColor,
