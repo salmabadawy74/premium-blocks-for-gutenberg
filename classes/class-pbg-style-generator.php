@@ -79,13 +79,13 @@ if ( ! class_exists( 'Pbg_Style_Generator' ) ) {
 			if ( $files_count > 0 ) {
 				$merged_file = '';
 				foreach ( $css_files as $k => $file ) {
-					$merged_style .= file_get_contents( $file );
 					require_once ABSPATH . 'wp-admin/includes/file.php'; // We will probably need to load this file.
 					global $wp_filesystem;
+					WP_Filesystem(); // Initial WP file system.
+					$merged_style .= $wp_filesystem->get_contents( PREMIUM_BLOCKS_PATH . $file );
+
 					$upload_dir = wp_upload_dir(); // Grab uploads folder array.
 					$dir        = trailingslashit( $upload_dir['basedir'] ) . 'premium-blocks-for-gutenberg/'; // Set storage directory path.
-
-					WP_Filesystem(); // Initial WP file system.
 					$wp_filesystem->mkdir( $dir ); // Make a new folder for storing our file.
 					$wp_filesystem->put_contents( $dir . 'style.css', $merged_style, 0777 | 0644 ); // Finally, store the file :D.
 					$wp_upload_dir = $upload_dir['baseurl'] . '/' . 'premium-blocks-for-gutenberg/';
