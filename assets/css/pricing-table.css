@@ -57,8 +57,7 @@
       border-bottom: 150px solid transparent;
       border-right: 150px solid;
       border-right-color: currentcolor;
-      border-left: 150px solid transparent;
-      border-right-color: #6ec1e4; }
+      border-left: 150px solid transparent; }
     .premium-pricing-table .premium-pricing-table__badge_right span {
       -webkit-transform: rotate(45deg);
       transform: rotate(45deg);
@@ -71,8 +70,7 @@
       border-top: 150px solid;
       border-top-color: currentcolor;
       border-bottom: 150px solid transparent;
-      border-right: 150px solid transparent;
-      border-top-color: #6ec1e4; }
+      border-right: 150px solid transparent; }
   .premium-pricing-table ul.premium-pricing-table__list {
     margin: 0 !important;
     padding: 0;

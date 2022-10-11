@@ -74,7 +74,7 @@
                 {
                     "textColor": "",
                     "textHoverColor": "",
-                    "backColor": "rgb(242, 242, 242)",
+                    "backColor": "",
                     "backOpacity": 1,
                     "backHoverColor": "",
                     "borderHoverColor": ""
@@ -131,7 +131,7 @@
         "typography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "",
                 "fontStyle": "",
                 "letterSpacing": {
                     "Desktop": "",
