@@ -420,7 +420,7 @@ function Edit(props) {
                                     tagName="p"
                                     className={`premium-testimonial__text`}
                                     value={text}
-                                    placeholder="Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
+                                    // placeholder="Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
                                     onChange={newText => setAttributes({ text: newText })}
                                     style={{
                                         color: contentStyle[0].bodyColor,

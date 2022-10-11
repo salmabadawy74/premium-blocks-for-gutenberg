@@ -141,9 +141,8 @@
             }
         },
         "text": {
-            "type": "array",
-            "source": "children",
-            "selector": ".premium-testimonial__text"
+            "type": "string",
+            "default": "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
         },
         "authorCom": {
             "type": "array",
@@ -210,7 +209,7 @@
             "default": [
                 {
                     "quotSize": 2,
-                    "quotColor": "#793DC4",
+                    "quotColor": "",
                     "quotOpacity": 50
                 }
             ]
@@ -275,7 +274,7 @@
         "bodyTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "",
                 "fontStyle": "",
                 "letterSpacing": {
                     "Desktop": "",
