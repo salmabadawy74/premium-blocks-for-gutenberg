@@ -98,7 +98,7 @@
         "titleTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "",
                 "fontStyle": "",
                 "letterSpacing": {
                     "Desktop": "",
@@ -426,7 +426,7 @@
                     "btnColor": "",
                     "btnHoverColor": "",
                     "btnWidth": "",
-                    "btnBack": "rgb(242, 242, 242)",
+                    "btnBack": "",
                     "btnHoverBack": "",
                     "btnTarget": true
                 }
@@ -435,7 +435,7 @@
         "buttonTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "",
                 "fontStyle": "",
                 "letterSpacing": {
                     "Desktop": "",
