@@ -62,7 +62,7 @@
         "firstTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "",
                 "fontStyle": "",
                 "fontFamily": "Default",
                 "textDecoration": "",
@@ -94,7 +94,7 @@
                     "secondClip": false,
                     "secondAnim": false,
                     "secondStroke": false,
-                    "secondColor": "#54595f",
+                    "secondColor": "#793DC4",
                     "secondBackground": "",
                     "secondOpacity": "",
                     "secondClipColor": "#6ec1e4",
@@ -116,13 +116,13 @@
         "secondTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "",
                 "fontStyle": "",
                 "textTransform": "",
                 "fontFamily": "Default",
                 "textDecoration": "",
                 "fontSize": {
-                    "Desktop": "20",
+                    "Desktop": "",
                     "Tablet": "",
                     "Mobile": "",
                     "unit": "px"
