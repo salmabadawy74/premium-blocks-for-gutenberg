@@ -23412,6 +23412,11 @@ const deprecatedContent = [{
 
     let newAttributes = {
       blockId: attributes.accordionId ? `premium-dual-heading-${attributes.accordionId.split('-')[2]}` : '',
+      align: {
+        Desktop: (attributes === null || attributes === void 0 ? void 0 : attributes.contentAlign) || "center",
+        Tablet: (attributes === null || attributes === void 0 ? void 0 : attributes.contentAlign) || "center",
+        Mobile: (attributes === null || attributes === void 0 ? void 0 : attributes.contentAlign) || "center"
+      },
       firstBorder: {
         "borderType": (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl = attributes.firstStyles) === null || _attributes$firstStyl === void 0 ? void 0 : (_attributes$firstStyl2 = _attributes$firstStyl[0]) === null || _attributes$firstStyl2 === void 0 ? void 0 : _attributes$firstStyl2.firstBorderType) || '',
         "borderColor": (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl3 = attributes.firstStyles) === null || _attributes$firstStyl3 === void 0 ? void 0 : (_attributes$firstStyl4 = _attributes$firstStyl3[0]) === null || _attributes$firstStyl4 === void 0 ? void 0 : _attributes$firstStyl4.firstBorderColor) || '',
