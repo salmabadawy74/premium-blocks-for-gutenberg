@@ -34,11 +34,11 @@
         },
         "prefix": {
             "type": "boolean",
-            "default": true
+            "default": false
         },
         "suffix": {
             "type": "boolean",
-            "default": true
+            "default": false
         },
         "icon": {
             "type": "string",
@@ -162,15 +162,15 @@
         "numberTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "",
                 "fontStyle": "",
                 "textTransform": "",
                 "fontFamily": "Default",
                 "textDecoration": "",
                 "fontSize": {
-                    "Desktop": "30",
-                    "Tablet": "30",
-                    "Mobile": "30",
+                    "Desktop": "55",
+                    "Tablet": "55",
+                    "Mobile": "55",
                     "unit": "px"
                 },
                 "lineHeight": {
@@ -190,7 +190,7 @@
         "prefixTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "",
                 "fontStyle": "",
                 "textTransform": "",
                 "fontFamily": "Default",
@@ -218,7 +218,7 @@
         "suffixTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "",
                 "fontStyle": "",
                 "textTransform": "",
                 "fontFamily": "Default",
@@ -246,7 +246,7 @@
         "titleTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "",
                 "fontStyle": "",
                 "textTransform": "",
                 "fontFamily": "Default",
