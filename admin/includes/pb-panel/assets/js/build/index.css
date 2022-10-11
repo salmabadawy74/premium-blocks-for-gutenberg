@@ -87,6 +87,7 @@
   margin-right: 20px;
   border-radius: 11px;
   cursor: pointer;
+  text-decoration: none;
   background-color: #fff;
 }
 #pb-dashboard .pb-container .pb-options-header .pb-filter-tabs .pb-filter-tab.active, #pb-dashboard .pb-container .pb-options-header .pb-filter-tabs .pb-filter-tab:hover, #pb-dashboard .pb-container .pb-options-header .pb-filter-tabs .pb-filter-tab:focus {

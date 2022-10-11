@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     blocksFlag: false,
     blocks: {},
-    blockFilter: ''
+    blockFilter: "all",
 };
 export const blockSlice = createSlice({
     name: "blockStatues",
@@ -15,10 +15,8 @@ export const blockSlice = createSlice({
         },
         updateBlocksFilter: (state, action) => {
             state.blocksFlag = true;
-            state.blockFilter = action.payload
-        }
-
-
+            state.blockFilter = action.payload;
+        },
     },
 });
 export const { updateblockStatus } = blockSlice.actions;

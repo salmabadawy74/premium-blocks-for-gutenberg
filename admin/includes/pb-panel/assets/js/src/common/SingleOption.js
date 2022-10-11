@@ -1,8 +1,9 @@
 import { useState } from "@wordpress/element";
 import PBG_Block_Icons from "./block-icons";
 import AdvancedSwitcher from "./AdvancedSwitcher";
-import { useDispatch } from "@wordpress/data";
 import { store as noticesStore } from "@wordpress/notices";
+import { useDispatch, useSelector } from "react-redux";
+import { updateblockStatus } from "../features/blocks/index";
 
 const { Dashicon } = wp.components;
 const { __ } = wp.i18n;
@@ -12,17 +13,53 @@ function classNames(...classes) {
 }
 
 const SingleOption = (props) => {
-    const [value, setValue] = useState(props.value);
+    const blocks = useSelector((state) => state.blockStates.blocks);
+
     const [isLoading, setIsLoading] = useState(false);
-    const { createNotice } = useDispatch(noticesStore);
+    const dispatch = useDispatch();
 
-    const handleChange = () => {
-        let newValue = !value;
-        setValue(newValue);
-        props.onChange(newValue, props.optionId);
+    // const { createNotice } = useDispatch(noticesStore);
+    let checked = blocks[props.blockInfo] === true ? true : false;
+
+    const handleChange = async () => {
+        let status = false;
+
+        if (!checked) {
+            status = true;
+        }
+
+        const optionsClone = { ...blocks };
+        optionsClone[props.blockInfo] = status;
+        dispatch(updateblockStatus(optionsClone));
+
+        const body = new FormData();
+
+        body.append("action", "pb-panel-update-option");
+        body.append("nonce", PremiumBlocksPanelData.nonce);
+        body.append("value", JSON.stringify(optionsClone));
+
+        try {
+            const response = await fetch(PremiumBlocksPanelData.ajaxurl, {
+                method: "POST",
+                body,
+            });
+            if (response.status === 200) {
+                const { success, data } = await response.json();
+                if (success && data.values) {
+                    // createNotice("success", "Settings saved ", {
+                    //     isDismissible: true,
+                    //     type: "snackbar",
+                    // });
+                }
+            }
+        } catch (e) {
+            console.log(e);
+            // createNotice("error", __("An unknown error occurred.", ""), {
+            //     isDismissible: true,
+            //     type: "snackbar",
+            // });
+        }
     };
-
-    let checked = value === true ? true : false;
 
     return (
         <div id={props.id} className="pb-option-element">
@@ -68,9 +105,7 @@ const SingleOption = (props) => {
                 {isLoading && <Dashicon className="pb-loading" icon="update" />}
                 <div className="option-actions">
                     <AdvancedSwitcher
-                        onChange={() => {
-                            handleChange();
-                        }}
+                        onChange={() => handleChange()}
                         checked={checked}
                     />
                 </div>
