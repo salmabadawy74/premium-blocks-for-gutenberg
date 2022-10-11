@@ -261,7 +261,7 @@ class PBG_Blocks_Helper {
 				'ajaxurl'           => esc_url( admin_url( 'admin-ajax.php' ) ),
 				'nonce'             => wp_create_nonce( 'pa-blog-block-nonce' ),
 				'settingPath'       => admin_url( 'admin.php?page=premium-gutenberg-maps' ),
-				'defaultAuthImg'    => PREMIUM_BLOCKS_URL . 'assets/img/placeholder.png',
+				'defaultAuthImg'    => PREMIUM_BLOCKS_URL . 'assets/img/author.png',
 				'activeBlocks'      => self::$blocks,
 				'tablet_breakpoint' => PBG_TABLET_BREAKPOINT,
 				'mobile_breakpoint' => PBG_MOBILE_BREAKPOINT,
