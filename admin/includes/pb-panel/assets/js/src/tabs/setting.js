@@ -19,7 +19,7 @@ const Setting = () => {
         updatedData[key] = value;
         setData(updatedData);
         await saveEntityRecord("root", "site", {
-            pbg_maps_settings: updatedData,
+            pbg_blocks_settings: updatedData,
         });
         createNotice("success", "Settings saved ", {
             isDismissible: true,
@@ -38,7 +38,7 @@ const Setting = () => {
         updatedData[key] = data?.["premium-map-key"];
         setData(updatedData);
         await saveEntityRecord("root", "site", {
-            pbg_maps_settings: updatedData,
+            pbg_blocks_settings: updatedData,
         });
         createNotice("success", "Settings saved ", {
             isDismissible: true,

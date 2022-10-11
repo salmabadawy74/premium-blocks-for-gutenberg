@@ -565,7 +565,7 @@ if (!class_exists('Pb_Panel')) {
 					'nonce'       => wp_create_nonce('pb-panel'),
 					'system_info' => self::get_system_info(),
 					'images_url'  => PREMIUM_BLOCKS_PANEL_URL . 'assets/images/',
-					'apiData'     => get_option('pbg_maps_settings', array()),
+					'apiData'     => get_option('pbg_blocks_settings', array()),
 				)
 			);
 		}

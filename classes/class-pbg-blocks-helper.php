@@ -86,7 +86,7 @@ class PBG_Blocks_Helper {
 		self::$blocks = apply_filters( 'pb_options', get_option( 'pb_options', array() ) );
 		// Gets Plugin Admin Settings.
 
-		self::$config = apply_filters( 'pbg_maps_settings', get_option( 'pbg_maps_settings', array() ) );
+		self::$config = apply_filters( 'pbg_blocks_settings', get_option( 'pbg_blocks_settings', array() ) );
 		$allow_json   = isset( self::$config['premium-upload-json'] ) ? self::$config['premium-upload-json'] : true;
 		if ( $allow_json ) {
 			add_filter( 'upload_mimes', array( $this, 'pbg_mime_types' ) ); // phpcs:ignore WordPressVIPMinimum.Hooks.RestrictedHooks.upload_mimes
@@ -118,8 +118,8 @@ class PBG_Blocks_Helper {
 
 	public function register_pbg_setting() {
 		register_setting(
-			'pbg_maps_settings',
-			'pbg_maps_settings',
+			'pbg_blocks_settings',
+			'pbg_blocks_settings',
 			array(
 				'type'         => 'object',
 				'description'  => __( 'Config Premium Blocks For Gutenberg Api', 'premium-blocks-for-gutenberg' ),
