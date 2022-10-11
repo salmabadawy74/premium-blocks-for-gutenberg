@@ -654,6 +654,11 @@ const deprecatedContent = [
         migrate: attributes => {
             let newAttributes = {
                 blockId: attributes.accordionId ? `premium-dual-heading-${attributes.accordionId.split('-')[2]}` : '',
+                align: {
+                    Desktop: attributes?.contentAlign || "center",
+                    Tablet: attributes?.contentAlign || "center",
+                    Mobile: attributes?.contentAlign || "center"
+                },
                 firstBorder: {
                     "borderType": attributes?.firstStyles?.[0]?.firstBorderType || '',
                     "borderColor": attributes?.firstStyles?.[0]?.firstBorderColor || '',
