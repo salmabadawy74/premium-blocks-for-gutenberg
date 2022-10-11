@@ -181,7 +181,15 @@
     background: #f7f8fc;
     padding: 25px 15px;
 }
-
+  .wp-block-premium-container::before {
+      content: "";
+      position: absolute;
+      border: 1px dashed #e1e1e1;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+  }
 .premium-blocks__row_container .premium-blocks__placeholder_title {
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     text-align: center;

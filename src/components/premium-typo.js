@@ -81,8 +81,14 @@ export default class PremiumTypo extends Component {
     }
     render() {
         const { onChange } = this.props;
-        const { value, sizeUnit, isVisible, currentView, search, device } =
-            this.state;
+        const {
+            value,
+            sizeUnit,
+            isVisible,
+            currentView,
+            search,
+            device,
+        } = this.state;
         const STYLE = [
             {
                 value: "normal",
@@ -102,6 +108,8 @@ export default class PremiumTypo extends Component {
                 value: "Default",
                 label: __("Default", "premium-blocks-for-gutenberg"),
                 weight: [
+                    __("Default", "premium-blocks-for-gutenberg"),
+
                     "100",
                     "200",
                     "300",
@@ -118,6 +126,8 @@ export default class PremiumTypo extends Component {
                 value: "Arial",
                 label: "Arial",
                 weight: [
+                    __("Default", "premium-blocks-for-gutenberg"),
+
                     "100",
                     "200",
                     "300",
@@ -134,6 +144,8 @@ export default class PremiumTypo extends Component {
                 value: "Helvetica",
                 label: "Helvetica",
                 weight: [
+                    __("Default", "premium-blocks-for-gutenberg"),
+
                     "100",
                     "200",
                     "300",
@@ -150,6 +162,8 @@ export default class PremiumTypo extends Component {
                 value: "Times New Roman",
                 label: "Times New Roman",
                 weight: [
+                    __("Default", "premium-blocks-for-gutenberg"),
+
                     "100",
                     "200",
                     "300",
@@ -166,6 +180,8 @@ export default class PremiumTypo extends Component {
                 value: "Georgia",
                 label: "Georgia",
                 weight: [
+                    __("Default", "premium-blocks-for-gutenberg"),
+
                     "100",
                     "200",
                     "300",
@@ -293,7 +309,8 @@ export default class PremiumTypo extends Component {
                                                                             );
                                                                             this.setState(
                                                                                 {
-                                                                                    search: "",
+                                                                                    search:
+                                                                                        "",
                                                                                 }
                                                                             );
                                                                         }

@@ -64518,27 +64518,27 @@ class PremiumTypo extends Component {
     const fonts = [{
       value: "Default",
       label: __("Default", "premium-blocks-for-gutenberg"),
-      weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+      weight: [__("Default", "premium-blocks-for-gutenberg"), "100", "200", "300", "400", "500", "600", "700", "800", "900"],
       google: false
     }, {
       value: "Arial",
       label: "Arial",
-      weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+      weight: [__("Default", "premium-blocks-for-gutenberg"), "100", "200", "300", "400", "500", "600", "700", "800", "900"],
       google: false
     }, {
       value: "Helvetica",
       label: "Helvetica",
-      weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+      weight: [__("Default", "premium-blocks-for-gutenberg"), "100", "200", "300", "400", "500", "600", "700", "800", "900"],
       google: false
     }, {
       value: "Times New Roman",
       label: "Times New Roman",
-      weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+      weight: [__("Default", "premium-blocks-for-gutenberg"), "100", "200", "300", "400", "500", "600", "700", "800", "900"],
       google: false
     }, {
       value: "Georgia",
       label: "Georgia",
-      weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+      weight: [__("Default", "premium-blocks-for-gutenberg"), "100", "200", "300", "400", "500", "600", "700", "800", "900"],
       google: false
     }];
     let fontWeight = "";

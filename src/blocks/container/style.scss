@@ -2575,15 +2575,6 @@
     position: relative;
     z-index: 2;
 
-    &::before {
-        content: "";
-        position: absolute;
-        border: 1px dashed #e1e1e1;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-    }
 
     .premium-row__block_overlay {
         top: 0;
