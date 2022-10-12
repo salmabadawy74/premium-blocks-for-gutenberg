@@ -37539,8 +37539,61 @@ let newAttributes = {
     }
   }
 };
+const deprecated_Attributes = {
+  lottieStyles: {
+    type: "array",
+    default: [{
+      size: "200",
+      sizeUnit: "px",
+      sizeMobile: "200",
+      sizeTablet: "200",
+      backColor: "",
+      backOpacity: 1,
+      backHColor: "",
+      backHOpacity: 1,
+      blur: "0",
+      bright: "100",
+      contrast: "100",
+      saturation: "100",
+      hue: "0",
+      blurH: "0",
+      brightH: "100",
+      contrastH: "100",
+      saturationH: "100",
+      hueH: "0",
+      borderType: "none",
+      borderColor: "",
+      borderRadius: "0",
+      paddingU: "px"
+    }]
+  },
+  paddingTTablet: {
+    type: "number"
+  },
+  paddingRTablet: {
+    type: "number"
+  },
+  paddingBTablet: {
+    type: "number"
+  },
+  paddingLTablet: {
+    type: "number"
+  },
+  paddingTMobile: {
+    type: "number"
+  },
+  paddingRMobile: {
+    type: "number"
+  },
+  paddingBMobile: {
+    type: "number"
+  },
+  paddingLMobile: {
+    type: "number"
+  }
+};
 const deprecated = [{
-  attributes: Object.assign(LottieAttr, newAttributes),
+  attributes: Object.assign(LottieAttr, newAttributes, deprecated_Attributes),
   migrate: attributes => {
     let newAttributes = {
       lottieAlign: {
@@ -37694,7 +37747,7 @@ const deprecated = [{
     }));
   }
 }, {
-  attributes: LottieAttr,
+  attributes: Object.assign(LottieAttr, deprecated_Attributes),
   migrate: attributes => {
     let newAttributes = {
       lottieStyles: [{
@@ -64523,27 +64576,27 @@ class PremiumTypo extends Component {
     const fonts = [{
       value: "Default",
       label: __("Default", "premium-blocks-for-gutenberg"),
-      weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+      weight: [__("Default", "premium-blocks-for-gutenberg"), "100", "200", "300", "400", "500", "600", "700", "800", "900"],
       google: false
     }, {
       value: "Arial",
       label: "Arial",
-      weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+      weight: [__("Default", "premium-blocks-for-gutenberg"), "100", "200", "300", "400", "500", "600", "700", "800", "900"],
       google: false
     }, {
       value: "Helvetica",
       label: "Helvetica",
-      weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+      weight: [__("Default", "premium-blocks-for-gutenberg"), "100", "200", "300", "400", "500", "600", "700", "800", "900"],
       google: false
     }, {
       value: "Times New Roman",
       label: "Times New Roman",
-      weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+      weight: [__("Default", "premium-blocks-for-gutenberg"), "100", "200", "300", "400", "500", "600", "700", "800", "900"],
       google: false
     }, {
       value: "Georgia",
       label: "Georgia",
-      weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+      weight: [__("Default", "premium-blocks-for-gutenberg"), "100", "200", "300", "400", "500", "600", "700", "800", "900"],
       google: false
     }];
     let fontWeight = "";
