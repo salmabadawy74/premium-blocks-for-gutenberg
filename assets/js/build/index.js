@@ -11933,6 +11933,9 @@ function Edit(_ref) {
     var _itemPadding$deviceTy, _itemPadding$deviceTy2, _itemPadding$deviceTy3, _itemPadding$deviceTy4;
 
     const styles = {};
+    styles[`.${blockId}`] = {
+      'box-sizing': `border-box`
+    };
     styles[`.${blockId} a`] = {
       'color': `${colors === null || colors === void 0 ? void 0 : colors.link}!important`,
       'font-family': typography === null || typography === void 0 ? void 0 : typography.fontFamily,
