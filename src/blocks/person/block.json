@@ -97,17 +97,37 @@
                     "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla",
                     "socialIcon": false,
                     "items": [
-                        { "label": "facebook", "link": false, "value": "#", "changeinput": "#" },
-                        { "label": "twitter", "link": false, "value": "#", "changeinput": "#" },
-                        { "label": "instagram", "link": false, "value": "#", "changeinput": "#" },
-                        { "label": "youtube", "link": false, "value": "#", "changeinput": "#" }
+                        {
+                            "label": "facebook",
+                            "link": false,
+                            "value": "#",
+                            "changeinput": "#"
+                        },
+                        {
+                            "label": "twitter",
+                            "link": false,
+                            "value": "#",
+                            "changeinput": "#"
+                        },
+                        {
+                            "label": "instagram",
+                            "link": false,
+                            "value": "#",
+                            "changeinput": "#"
+                        },
+                        {
+                            "label": "youtube",
+                            "link": false,
+                            "value": "#",
+                            "changeinput": "#"
+                        }
                     ]
                 }
             ]
         },
         "nameTag": {
             "type": "string",
-            "default": "h2"
+            "default": "h3"
         },
         "titleTag": {
             "type": "string",
@@ -220,7 +240,7 @@
         "titleTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "textTransform": "",
                 "letterSpacing": {
@@ -235,7 +255,7 @@
                     "Mobile": "",
                     "unit": "px"
                 },
-                "fontFamily": "Default", 
+                "fontFamily": "Default",
                 "fontSize": {
                     "Desktop": "",
                     "Tablet": "",
@@ -247,7 +267,7 @@
         "descTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "textTransform": "",
                 "letterSpacing": {
@@ -262,7 +282,7 @@
                     "Mobile": "",
                     "unit": "px"
                 },
-                "fontFamily": "Default", 
+                "fontFamily": "Default",
                 "fontSize": {
                     "Desktop": "",
                     "Tablet": "",
@@ -274,7 +294,7 @@
         "nameTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "textTransform": "",
                 "letterSpacing": {
@@ -289,7 +309,7 @@
                     "Mobile": "",
                     "unit": "px"
                 },
-                "fontFamily":"Default", 
+                "fontFamily": "Default",
                 "fontSize": {
                     "Desktop": "",
                     "Tablet": "",
@@ -535,7 +555,6 @@
                     }
                 }
             }
-    
         }
     }
 }
