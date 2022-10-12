@@ -147,7 +147,7 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
         const styles = {};
 
         styles[`.${blockId} a`] = {
-            'color': colors?.link,
+            'color': `${colors?.link}!important`,
             'font-family': typography?.fontFamily,
             'font-weight': typography?.fontWeight,
             'font-size': `${fontSize?.[deviceType]}${fontSize?.unit}`,
@@ -156,7 +156,7 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
         }
 
         styles[`.${blockId} a:hover`] = {
-            'color': colors?.linkHover
+            'color': `${colors?.linkHover}!important`
         }
 
         styles[`.${blockId} .premium-breadcrumbs-advanced .premium-breadcrumbs-item`] = {

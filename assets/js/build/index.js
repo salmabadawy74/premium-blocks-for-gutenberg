@@ -11934,7 +11934,7 @@ function Edit(_ref) {
 
     const styles = {};
     styles[`.${blockId} a`] = {
-      'color': colors === null || colors === void 0 ? void 0 : colors.link,
+      'color': `${colors === null || colors === void 0 ? void 0 : colors.link}!important`,
       'font-family': typography === null || typography === void 0 ? void 0 : typography.fontFamily,
       'font-weight': typography === null || typography === void 0 ? void 0 : typography.fontWeight,
       'font-size': `${fontSize === null || fontSize === void 0 ? void 0 : fontSize[deviceType]}${fontSize === null || fontSize === void 0 ? void 0 : fontSize.unit}`,
@@ -11942,7 +11942,7 @@ function Edit(_ref) {
       'font-style': typography === null || typography === void 0 ? void 0 : typography.fontStyle
     };
     styles[`.${blockId} a:hover`] = {
-      'color': colors === null || colors === void 0 ? void 0 : colors.linkHover
+      'color': `${colors === null || colors === void 0 ? void 0 : colors.linkHover}!important`
     };
     styles[`.${blockId} .premium-breadcrumbs-advanced .premium-breadcrumbs-item`] = {
       'display': 'inline-flex',
