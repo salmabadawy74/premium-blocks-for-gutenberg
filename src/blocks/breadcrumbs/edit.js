@@ -146,6 +146,10 @@ function Edit({ clientId, attributes, setAttributes, context: { postType, postId
     const loadStyles = () => {
         const styles = {};
 
+        styles[`.${blockId}`] = {
+            'box-sizing': `border-box`,
+        }
+
         styles[`.${blockId} a`] = {
             'color': `${colors?.link}!important`,
             'font-family': typography?.fontFamily,
