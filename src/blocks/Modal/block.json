@@ -556,7 +556,7 @@
         "triggerTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "textTransform": "",
                 "fontFamily": "Default",
@@ -584,7 +584,7 @@
         "headerTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "300",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "textTransform": "",
                 "letterSpacing": {
@@ -612,7 +612,7 @@
         "lowerTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "textTransform": "",
                 "letterSpacing": {
@@ -640,7 +640,7 @@
         "modalTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "textTransform": "",
                 "letterSpacing": {

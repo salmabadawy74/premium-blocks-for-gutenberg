@@ -21,7 +21,6 @@
         "blockId": {
             "type": "string"
         },
- 
         "align": {
             "type": "object",
             "default": {
@@ -65,7 +64,6 @@
         },
         "firstStateColor": {
             "type": "string"
-            
         },
         "secondStateColor": {
             "type": "string"
@@ -196,8 +194,8 @@
             "type": "object",
             "default": {
                 "Desktop": "15",
-                "Tablet":"",
-                "Mobile":""
+                "Tablet": "",
+                "Mobile": ""
             }
         },
         "containerShadow": {
@@ -242,19 +240,19 @@
         "firstLabelTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "textTransform": "",
                 "textDecoration": "",
-                "letterSpacing":  {
+                "letterSpacing": {
                     "Desktop": "",
                     "Tablet": "",
                     "Mobile": "",
                     "unit": "px"
                 },
                 "fontFamily": "Default",
-                "lineHeight":  {
-                    "Desktop":"",
+                "lineHeight": {
+                    "Desktop": "",
                     "Tablet": "",
                     "Mobile": "",
                     "unit": "px"
@@ -317,10 +315,10 @@
         "secondLabelTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "textTransform": "",
-                 "textDecoration": "",
+                "textDecoration": "",
                 "letterSpacing": {
                     "Desktop": "",
                     "Tablet": "",
@@ -335,13 +333,11 @@
                     "unit": "px"
                 },
                 "fontSize": {
-                    "Desktop":"",
+                    "Desktop": "",
                     "Tablet": "",
                     "Mobile": "",
                     "unit": "px"
                 }
-                
-            
             }
         },
         "secondLabelShadow": {
@@ -486,7 +482,7 @@
                 "backgroundColor": "#793dc3",
                 "backgroundImageID": "",
                 "backgroundImageURL": "",
-                "backgroundPosition":  "center center",
+                "backgroundPosition": "center center",
                 "backgroundRepeat": "repeat",
                 "backgroundSize": "auto",
                 "fixed": false,
@@ -509,7 +505,7 @@
                 "backgroundRepeat": "",
                 "backgroundSize": "",
                 "fixed": false,
-                 "gradientLocationOne": "0",
+                "gradientLocationOne": "0",
                 "gradientColorTwo": "",
                 "gradientLocationTwo": "100",
                 "gradientAngle": "180",

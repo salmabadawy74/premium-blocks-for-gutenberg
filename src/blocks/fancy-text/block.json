@@ -30,18 +30,19 @@
         },
         "repeaterFancyText": {
             "type": "array",
-            "default": [{
-                "title": "Designer", 
-                "edit": false
-            },
-            {
-                "title": "Awesome", 
-                "edit": false
-            },
-            {
-                "title": "Developer", 
-                "edit": false
-            }
+            "default": [
+                {
+                    "title": "Designer",
+                    "edit": false
+                },
+                {
+                    "title": "Awesome",
+                    "edit": false
+                },
+                {
+                    "title": "Developer",
+                    "edit": false
+                }
             ]
         },
         "effect": {
@@ -132,7 +133,7 @@
         "prefixTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "letterSpacing": {
                     "Desktop": "",
@@ -160,7 +161,7 @@
         "fancyTextTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "letterSpacing": {
                     "Desktop": "",

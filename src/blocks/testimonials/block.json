@@ -246,7 +246,7 @@
         "authorTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "letterSpacing": {
                     "Desktop": "",
@@ -274,7 +274,7 @@
         "bodyTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "letterSpacing": {
                     "Desktop": "",
@@ -302,7 +302,7 @@
         "companyTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "letterSpacing": {
                     "Desktop": "",
