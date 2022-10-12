@@ -6177,13 +6177,13 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['stripeTopSpacing'] ) ) {
 			$stripe_top_spacing = $attr['stripeTopSpacing'];
 			$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-stripe__wrap' );
-			$css->add_property( 'margin-top', $css->get_responsive_value( $stripe_top_spacing, 'top', 'Desktop', $stripe_top_spacing['unit'] ) );
+			$css->add_property( 'margin-top', $css->render_range( $stripe_top_spacing, 'Desktop' ) );
 		}
 
 		if ( isset( $attr['stripeBottomSpacing'] ) ) {
 			$stripe_bottom_spacing = $attr['stripeBottomSpacing'];
 			$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-stripe__wrap' );
-			$css->add_property( 'margin-bottom', $css->get_responsive_value( $stripe_bottom_spacing, 'bottom', 'Desktop', $stripe_bottom_spacing['unit'] ) );
+			$css->add_property( 'margin-bottom', $css->render_range( $stripe_bottom_spacing, 'Desktop' ) );
 		}
 
 		if ( isset( $attr['stripeWidth'] ) ) {
@@ -6318,13 +6318,13 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['stripeTopSpacing'] ) ) {
 			$stripe_top_spacing = $attr['stripeTopSpacing'];
 			$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-stripe__wrap' );
-			$css->add_property( 'margin-top', $css->get_responsive_value( $stripe_top_spacing, 'top', 'Tablet', $stripe_top_spacing['unit'] ) );
+			$css->add_property( 'margin-top', $css->render_range( $stripe_top_spacing, 'Tablet' ) );
 		}
 
 		if ( isset( $attr['stripeBottomSpacing'] ) ) {
 			$stripe_bottom_spacing = $attr['stripeBottomSpacing'];
 			$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-stripe__wrap' );
-			$css->add_property( 'margin-bottom', $css->get_responsive_value( $stripe_bottom_spacing, 'bottom', 'Tablet', $stripe_bottom_spacing['unit'] ) );
+			$css->add_property( 'margin-bottom', $css->render_range( $stripe_bottom_spacing, 'Tablet' ) );
 		}
 
 		if ( isset( $attr['stripeWidth'] ) ) {
@@ -6460,13 +6460,13 @@ class PBG_Blocks_Helper {
 		if ( isset( $attr['stripeTopSpacing'] ) ) {
 			$stripe_top_spacing = $attr['stripeTopSpacing'];
 			$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-stripe__wrap' );
-			$css->add_property( 'margin-top', $css->get_responsive_value( $stripe_top_spacing, 'top', 'Mobile', $stripe_top_spacing['unit'] ) );
+			$css->add_property( 'margin-top', $css->render_range( $stripe_top_spacing, 'Mobile' ) );
 		}
 
 		if ( isset( $attr['stripeBottomSpacing'] ) ) {
 			$stripe_bottom_spacing = $attr['stripeBottomSpacing'];
 			$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-style7-stripe__wrap' );
-			$css->add_property( 'margin-bottom', $css->get_responsive_value( $stripe_bottom_spacing, 'bottom', 'Mobile', $stripe_bottom_spacing['unit'] ) );
+			$css->add_property( 'margin-bottom', $css->render_range( $stripe_bottom_spacing, 'Mobile' ) );
 		}
 
 		if ( isset( $attr['stripeWidth'] ) ) {
