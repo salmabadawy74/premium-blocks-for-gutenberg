@@ -4200,7 +4200,7 @@ i.fipicon-angle-left:before {
     .premium-inspector-tabs button:focus {
       outline: none; }
       .premium-inspector-tabs button:focus path {
-        fill: #2184f9; }
+        fill: #007cba; }
     .premium-inspector-tabs button h5 {
       margin: 6px 0 0;
       font-size: 13px;
@@ -4229,9 +4229,9 @@ i.fipicon-angle-left:before {
         border-bottom-left-radius: 0;
         border-left-color: transparent; }
     .premium-inspector-tabs button.premium-active h5 {
-      color: #2184f9; }
+      color: #007cba; }
     .premium-inspector-tabs button.premium-active path {
-      fill: #2184f9; }
+      fill: #007cba; }
 
 .premium-inspector-tabs.advance.premium-inspector-tabs-count-3 button:first-child {
   border-bottom-right-radius: 0; }
