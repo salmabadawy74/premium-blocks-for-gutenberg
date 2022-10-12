@@ -311,10 +311,68 @@ let newAttributes = {
         },
     },
 };
-
+const deprecated_Attributes = {
+    lottieStyles: {
+        type: "array",
+        default: [
+            {
+                size: "200",
+                sizeUnit: "px",
+                sizeMobile: "200",
+                sizeTablet: "200",
+                backColor: "",
+                backOpacity: 1,
+                backHColor: "",
+                backHOpacity: 1,
+                blur: "0",
+                bright: "100",
+                contrast: "100",
+                saturation: "100",
+                hue: "0",
+                blurH: "0",
+                brightH: "100",
+                contrastH: "100",
+                saturationH: "100",
+                hueH: "0",
+                borderType: "none",
+                borderColor: "",
+                borderRadius: "0",
+                paddingU: "px",
+            },
+        ],
+    },
+    paddingTTablet: {
+        type: "number",
+    },
+    paddingRTablet: {
+        type: "number",
+    },
+    paddingBTablet: {
+        type: "number",
+    },
+    paddingLTablet: {
+        type: "number",
+    },
+    paddingTMobile: {
+        type: "number",
+    },
+    paddingRMobile: {
+        type: "number",
+    },
+    paddingBMobile: {
+        type: "number",
+    },
+    paddingLMobile: {
+        type: "number",
+    },
+};
 const deprecated = [
     {
-        attributes: Object.assign(LottieAttr, newAttributes),
+        attributes: Object.assign(
+            LottieAttr,
+            newAttributes,
+            deprecated_Attributes
+        ),
         migrate: (attributes) => {
             let newAttributes = {
                 lottieAlign: {
@@ -497,7 +555,7 @@ const deprecated = [
         },
     },
     {
-        attributes: LottieAttr,
+        attributes: Object.assign(LottieAttr, deprecated_Attributes),
         migrate: (attributes) => {
             let newAttributes = {
                 lottieStyles: [
