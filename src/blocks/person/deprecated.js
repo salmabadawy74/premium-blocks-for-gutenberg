@@ -307,7 +307,7 @@ const deprecated = [
         },
         migrate: (attributes) => {
             let newAttributes = {
-                nameTag: 'h2',
+                nameTag: 'h3',
                 titleTag: 'h5',
                 blockId: attributes.id ? `premium-person-${attributes.id.split('-')[6]}` : '',
                 align: {
@@ -568,12 +568,16 @@ const deprecated = [
                     },
                 },
                 imgHeight: {
-                    unit: '%',
-                    "Desktop": 100
+                    'Desktop': 100,
+                    "Tablet": 100,
+                    "Mobile": 100,
+                    'unit': '%'
                 },
                 imgWidth: {
-                    unit: '%',
-                    "Desktop": 100
+                    'Desktop': 100,
+                    "Tablet": 100,
+                    "Mobile": 100,
+                    'unit': '%'
                 },
                 socialIcon: false,
                 hideDesktop: '',

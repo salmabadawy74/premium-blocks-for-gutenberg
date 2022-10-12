@@ -35,7 +35,8 @@
     height: auto !important; }
   .premium-bullet-list__content-icon i {
     font-style: normal !important;
-    font-size: 20px; }
+    font-size: 20px;
+    vertical-align: middle; }
 
 .premium-bullet-list-inline {
   -js-display: flex;
