@@ -13,7 +13,13 @@ import InspectorTab from "../../components/inspectorTab";
 import MultiButtonsControl from "../../components/responsive-radio";
 import Icons from "../../components/icons";
 import WebfontLoader from "../../components/typography/fontLoader";
-import { borderCss, generateBlockId, generateCss, paddingCss, typographyCss } from "../../components/HelperFunction";
+import {
+    borderCss,
+    generateBlockId,
+    generateCss,
+    paddingCss,
+    typographyCss,
+} from "../../components/HelperFunction";
 
 const { withSelect } = wp.data;
 const { __ } = wp.i18n;
@@ -24,17 +30,23 @@ const {
     PanelBody,
     SelectControl,
     TextControl,
-    ToggleControl
+    ToggleControl,
 } = wp.components;
 
-const { BlockControls, InspectorControls, RichText, MediaPlaceholder, useBlockProps } = wp.blockEditor;
+const {
+    BlockControls,
+    InspectorControls,
+    RichText,
+    MediaPlaceholder,
+    useBlockProps,
+} = wp.blockEditor;
 
 function Edit(props) {
     const { setAttributes, className, clientId } = props;
 
     useEffect(() => {
         setAttributes({
-            blockId: "premium-banner-" + generateBlockId(clientId)
+            blockId: "premium-banner-" + generateBlockId(clientId),
         });
         setAttributes({ classMigrate: true });
     }, []);
@@ -204,18 +216,16 @@ function Edit(props) {
     if (titleTypography.fontFamily !== "Default") {
         const gconfig = {
             google: {
-                families: [titleTypography?.fontFamily]
-            }
+                families: [titleTypography?.fontFamily],
+            },
         };
-        loadTitleGoogleFonts = (
-            <WebfontLoader config={gconfig}></WebfontLoader>
-        );
+        loadTitleGoogleFonts = <WebfontLoader config={gconfig}></WebfontLoader>;
     }
     if (descTypography.fontFamily !== "Default") {
         const dconfig = {
             google: {
-                families: [descTypography.fontFamily]
-            }
+                families: [descTypography.fontFamily],
+            },
         };
         loadDesciptionGoogleFonts = (
             <WebfontLoader config={dconfig}></WebfontLoader>
@@ -385,17 +395,26 @@ function Edit(props) {
                                     choices={[
                                         {
                                             value: "left",
-                                            label: __("Left", "premium-blocks-for-gutenberg"),
+                                            label: __(
+                                                "Left",
+                                                "premium-blocks-for-gutenberg"
+                                            ),
                                             icon: Icons.alignLeft,
                                         },
                                         {
                                             value: "center",
-                                            label: __("Center", "premium-blocks-for-gutenberg"),
+                                            label: __(
+                                                "Center",
+                                                "premium-blocks-for-gutenberg"
+                                            ),
                                             icon: Icons.alignCenter,
                                         },
                                         {
                                             value: "right",
-                                            label: __("Right", "premium-blocks-for-gutenberg"),
+                                            label: __(
+                                                "Right",
+                                                "premium-blocks-for-gutenberg"
+                                            ),
                                             icon: Icons.alignRight,
                                         },
                                     ]}
@@ -420,12 +439,48 @@ function Edit(props) {
                             >
                                 <RadioComponent
                                     choices={[
-                                        { label: __("H1", "premium-blocks-for-gutenberg"), value: "h1" },
-                                        { label: __("H2", "premium-blocks-for-gutenberg"), value: "h2" },
-                                        { label: __("H3", "premium-blocks-for-gutenberg"), value: "h3" },
-                                        { label: __("H4", "premium-blocks-for-gutenberg"), value: "h4" },
-                                        { label: __("H5", "premium-blocks-for-gutenberg"), value: "h5" },
-                                        { label: __("H6", "premium-blocks-for-gutenberg"), value: "h6" },
+                                        {
+                                            label: __(
+                                                "H1",
+                                                "premium-blocks-for-gutenberg"
+                                            ),
+                                            value: "h1",
+                                        },
+                                        {
+                                            label: __(
+                                                "H2",
+                                                "premium-blocks-for-gutenberg"
+                                            ),
+                                            value: "h2",
+                                        },
+                                        {
+                                            label: __(
+                                                "H3",
+                                                "premium-blocks-for-gutenberg"
+                                            ),
+                                            value: "h3",
+                                        },
+                                        {
+                                            label: __(
+                                                "H4",
+                                                "premium-blocks-for-gutenberg"
+                                            ),
+                                            value: "h4",
+                                        },
+                                        {
+                                            label: __(
+                                                "H5",
+                                                "premium-blocks-for-gutenberg"
+                                            ),
+                                            value: "h5",
+                                        },
+                                        {
+                                            label: __(
+                                                "H6",
+                                                "premium-blocks-for-gutenberg"
+                                            ),
+                                            value: "h6",
+                                        },
                                     ]}
                                     value={titleTag}
                                     onChange={(newValue) =>
@@ -479,7 +534,7 @@ function Edit(props) {
                                     value={titleTypography}
                                     onChange={(newValue) =>
                                         setAttributes({
-                                            titleTypography: newValue
+                                            titleTypography: newValue,
                                         })
                                     }
                                 />
@@ -600,7 +655,10 @@ function Edit(props) {
                                 />
                                 <hr />
                                 <PremiumBorder
-                                    label={__("Border", "premium-blocks-for-gutenberg")}
+                                    label={__(
+                                        "Border",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     value={border}
                                     onChange={(value) =>
                                         setAttributes({ border: value })
@@ -611,7 +669,10 @@ function Edit(props) {
                                     value={padding}
                                     responsive={true}
                                     showUnits={true}
-                                    label={__("Padding", "premium-blocks-for-gutenberg")}
+                                    label={__(
+                                        "Padding",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     onChange={(value) =>
                                         setAttributes({ padding: value })
                                     }
@@ -671,7 +732,9 @@ function Edit(props) {
                         accept={["image"]}
                         allowedTypes={["image"]}
                         value={imageURL}
-                        onSelectURL={(value) => setAttributes({ imageURL: value })}
+                        onSelectURL={(value) =>
+                            setAttributes({ imageURL: value })
+                        }
                         onSelect={(media) => {
                             setAttributes({
                                 imageID: media.id,
@@ -683,7 +746,7 @@ function Edit(props) {
                 {imageURL && (
                     <div
                         style={{
-                            ...paddingCss(padding, props.deviceType)
+                            ...paddingCss(padding, props.deviceType),
                         }}
                     >
                         <style
@@ -696,13 +759,15 @@ function Edit(props) {
                             style={{
                                 boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
                                 ...borderCss(border, props.deviceType),
-                                height: height == 'custom' ? minHeight : '',
+                                minHeight: height == "custom" ? minHeight : "",
                             }}
                         >
                             <div
                                 className="premium-banner__bg-overlay"
                                 style={{
-                                    backgroundColor: `${background ? background : ''} `
+                                    backgroundColor: `${
+                                        background ? background : ""
+                                    } `,
                                 }}
                             ></div>
                             <div
@@ -794,8 +859,9 @@ function Edit(props) {
 }
 
 export default withSelect((select) => {
-    const { __experimentalGetPreviewDeviceType = null } =
-        select("core/edit-post");
+    const { __experimentalGetPreviewDeviceType = null } = select(
+        "core/edit-post"
+    );
     let deviceType = __experimentalGetPreviewDeviceType
         ? __experimentalGetPreviewDeviceType()
         : null;

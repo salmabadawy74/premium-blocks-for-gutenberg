@@ -70,7 +70,7 @@ const save = (props) => {
                         boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
                         borderStyle: border && border.borderType,
                         borderColor: border && border.borderColor,
-                        height: height == 'custom' ? minHeight : '',
+                        minHeight: height == "custom" ? minHeight : "",
                     })}
                 >
                     <div
@@ -133,7 +133,8 @@ const save = (props) => {
                                     fontStyle: descTypography.fontStyle,
                                     fontFamily: descTypography.fontFamily,
                                     fontWeight: descTypography.fontWeight,
-                                    textDecoration: descTypography.textDecoration,
+                                    textDecoration:
+                                        descTypography.textDecoration,
                                     textTransform: descTypography.textTransform,
                                     textShadow: `${descTextShadow.horizontal}px ${descTextShadow.vertical}px ${descTextShadow.blur}px ${descTextShadow.color}`,
                                 })}
