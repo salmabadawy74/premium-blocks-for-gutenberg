@@ -98,7 +98,7 @@
         "titleTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "letterSpacing": {
                     "Desktop": "",
@@ -155,7 +155,7 @@
         "slashTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "letterSpacing": {
                     "Desktop": "",
@@ -183,7 +183,7 @@
         "currTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "letterSpacing": {
                     "Desktop": "",
@@ -211,7 +211,7 @@
         "priceTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "letterSpacing": {
                     "Desktop": "",
@@ -239,7 +239,7 @@
         "dividerTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "letterSpacing": {
                     "Desktop": "",
@@ -267,7 +267,7 @@
         "durationTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "letterSpacing": {
                     "Desktop": "",
@@ -346,7 +346,7 @@
         "listTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "letterSpacing": {
                     "Desktop": "",
@@ -394,7 +394,7 @@
         "descTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "letterSpacing": {
                     "Desktop": "",
@@ -435,7 +435,7 @@
         "buttonTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "letterSpacing": {
                     "Desktop": "",
@@ -478,7 +478,7 @@
         "badgeTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "400",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "letterSpacing": {
                     "Desktop": "",

@@ -130,7 +130,7 @@
         "typography": {
             "type": "object",
             "default": {
-                "fontWeight": "",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "letterSpacing": {
                     "Desktop": "",
@@ -158,7 +158,7 @@
         "buttonTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "letterSpacing": {
                     "Desktop": "",

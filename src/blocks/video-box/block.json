@@ -115,7 +115,7 @@
         "videoDescTypography": {
             "type": "object",
             "default": {
-                "fontWeight": 500,
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "textTransform": "",
                 "textDecoration": "",

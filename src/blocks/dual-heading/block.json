@@ -62,7 +62,7 @@
         "firstTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "fontFamily": "Default",
                 "textDecoration": "",
@@ -116,7 +116,7 @@
         "secondTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "textTransform": "",
                 "fontFamily": "Default",

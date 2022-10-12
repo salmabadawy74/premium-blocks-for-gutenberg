@@ -177,7 +177,7 @@
 		"labelTypography": {
 			"type": "object",
 			"default": {
-				"fontWeight": "400",
+				"fontWeight": "Default",
 				"fontStyle": "",
 				"letterSpacing": {
 					"Desktop": "",

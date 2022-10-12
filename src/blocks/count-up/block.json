@@ -162,7 +162,7 @@
         "numberTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "textTransform": "",
                 "fontFamily": "Default",
@@ -190,7 +190,7 @@
         "prefixTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "textTransform": "",
                 "fontFamily": "Default",
@@ -218,7 +218,7 @@
         "suffixTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "textTransform": "",
                 "fontFamily": "Default",
@@ -246,7 +246,7 @@
         "titleTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "",
+                "fontWeight": "Default",
                 "fontStyle": "",
                 "textTransform": "",
                 "fontFamily": "Default",
