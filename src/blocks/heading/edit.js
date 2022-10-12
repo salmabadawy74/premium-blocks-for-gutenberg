@@ -14,6 +14,7 @@ import Lottie from "react-lottie-with-segments";
 import { generateBlockId, generateCss, typographyCss, paddingCss, marginCss } from "../../components/HelperFunction";
 import Icons from "../../components/icons";
 import MultiButtonsControl from "../../components/responsive-radio";
+import RadioComponent from '../../components/radio-control'
 import SpacingComponent from "../../components/premium-responsive-spacing";
 import InspectorTabs from "../../components/inspectorTabs";
 import InspectorTab from "../../components/inspectorTab";
@@ -900,13 +901,21 @@ function Edit(props) {
                                     />
                                 </Fragment>
                             )}
-                            <SelectControl
-                                label={__("HTML Tag", "premium-blocks-for-gutenberg")}
-                                options={TAGS}
+                            <RadioComponent
+                                choices={[
+                                    { value: 'h1', label: __('H1', 'premium-blocks-for-gutenberg') },
+                                    { value: 'h2', label: __('H2', 'premium-blocks-for-gutenberg') },
+                                    { value: 'h3', label: __('H3', 'premium-blocks-for-gutenberg') },
+                                    { value: 'h4', label: __('H4', 'premium-blocks-for-gutenberg') },
+                                    { value: 'h5', label: __('H5', 'premium-blocks-for-gutenberg') },
+                                    { value: 'h6', label: __('H6', 'premium-blocks-for-gutenberg') },
+                                    { value: 'div', label: __('Div', 'premium-blocks-for-gutenberg') }
+                                ]}
                                 value={titleTag}
                                 onChange={(newValue) =>
                                     setAttributes({ titleTag: newValue })
                                 }
+                                label={__("Title Tag", 'premium-blocks-for-gutenberg')}
                             />
                             <MultiButtonsControl
                                 choices={[
@@ -1546,53 +1555,53 @@ function Edit(props) {
                                             </span>
                                         </Fragment>
                                     ) : (
-                                                <Fragment>
-                                                    {iconValue &&
-                                                        iconType == "icon" && (
-                                                            <i
-                                                                className={`premium-title-icon ${icon}`}
-                                                            />
-                                                        )}
-                                                    {iconValue &&
-                                                        iconType == "image" && (
-                                                            <img
-                                                                className={`premium-title-icon`}
-                                                                src={imageURL}
-                                                            />
-                                                        )}
-                                                    {iconValue &&
-                                                        iconType == "lottie" &&
-                                                        lottieURl && (
-                                                            <div className=" premium-title-icon premium-lottie-animation">
-                                                                <Lottie
-                                                                    options={{
-                                                                        loop: loop,
-                                                                        path: lottieURl,
-                                                                        rendererSettings:
-                                                                        {
-                                                                            preserveAspectRatio:
-                                                                                "xMidYMid",
-                                                                        },
-                                                                    }}
-                                                                    direction={reverse}
-                                                                />
-                                                            </div>
-                                                        )}
-                                                    <RichText
-                                                        tagName="span"
-                                                        className={`premium-title-text-title`}
-                                                        onChange={(newValue) =>
-                                                            setAttributes({
-                                                                title: newValue,
-                                                            })
-                                                        }
-                                                        value={title}
-                                                        style={{
-                                                            minHeight: "15px",
-                                                        }}
+                                        <Fragment>
+                                            {iconValue &&
+                                                iconType == "icon" && (
+                                                    <i
+                                                        className={`premium-title-icon ${icon}`}
                                                     />
-                                                </Fragment>
-                                            )}
+                                                )}
+                                            {iconValue &&
+                                                iconType == "image" && (
+                                                    <img
+                                                        className={`premium-title-icon`}
+                                                        src={imageURL}
+                                                    />
+                                                )}
+                                            {iconValue &&
+                                                iconType == "lottie" &&
+                                                lottieURl && (
+                                                    <div className=" premium-title-icon premium-lottie-animation">
+                                                        <Lottie
+                                                            options={{
+                                                                loop: loop,
+                                                                path: lottieURl,
+                                                                rendererSettings:
+                                                                {
+                                                                    preserveAspectRatio:
+                                                                        "xMidYMid",
+                                                                },
+                                                            }}
+                                                            direction={reverse}
+                                                        />
+                                                    </div>
+                                                )}
+                                            <RichText
+                                                tagName="span"
+                                                className={`premium-title-text-title`}
+                                                onChange={(newValue) =>
+                                                    setAttributes({
+                                                        title: newValue,
+                                                    })
+                                                }
+                                                value={title}
+                                                style={{
+                                                    minHeight: "15px",
+                                                }}
+                                            />
+                                        </Fragment>
+                                    )}
                                     {link && url !== " " && (
                                         <a
                                             rel="noopener noreferrer"

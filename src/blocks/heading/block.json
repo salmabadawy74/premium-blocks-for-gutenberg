@@ -281,7 +281,7 @@
             "type": "array",
             "default": [
                 {
-                    "textBackColor": "#6ec1e4",
+                    "textBackColor": "",
                     "rotateText": 0,
                     "rotateTextTablet": 0,
                     "rotateTextMobile": 0
