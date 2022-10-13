@@ -50723,6 +50723,56 @@ const deprecatedContent = [{
           left: ""
         },
         unit: "px"
+      },
+      bodyTypography: {
+        fontWeight: "Default",
+        fontStyle: '',
+        letterSpacing: {
+          Desktop: '',
+          Tablet: '',
+          Mobile: '',
+          unit: "px"
+        },
+        fontFamily: "Default",
+        lineHeight: {
+          Desktop: '',
+          Tablet: '',
+          Mobile: '',
+          unit: "px"
+        },
+        textDecoration: '',
+        textTransform: '',
+        fontSize: {
+          Desktop: (attributes === null || attributes === void 0 ? void 0 : attributes.authorStyles[0].bodySize) || '',
+          Tablet: (attributes === null || attributes === void 0 ? void 0 : attributes.authorStyles[0].bodySizeTablet) || '',
+          Mobile: (attributes === null || attributes === void 0 ? void 0 : attributes.authorStyles[0].bodySizeMobile) || '',
+          unit: (attributes === null || attributes === void 0 ? void 0 : attributes.authorStyles[0].bodySizeUnit) || "px"
+        }
+      },
+      companyTypography: {
+        fontWeight: "400",
+        fontStyle: '',
+        letterSpacing: {
+          Desktop: '',
+          Tablet: '',
+          Mobile: '',
+          unit: "px"
+        },
+        fontFamily: "Default",
+        lineHeight: {
+          Desktop: '',
+          Tablet: '',
+          Mobile: '',
+          unit: "px"
+        },
+        textDecoration: '',
+        textTransform: '',
+        fontSize: {
+          Desktop: (attributes === null || attributes === void 0 ? void 0 : attributes.authorStyles[0].authorComSize) || '',
+          Tablet: (attributes === null || attributes === void 0 ? void 0 : attributes.authorStyles[0].authorComSizeTablet) || '',
+          Mobile: (attributes === null || attributes === void 0 ? void 0 : attributes.authorStyles[0].authorComSizeMobile) || '',
+          unit: (attributes === null || attributes === void 0 ? void 0 : attributes.authorStyles[0].authorComSizeUnit) || "px"
+        }
       }
     };
     return Object.assign(attributes, newAttributes);
