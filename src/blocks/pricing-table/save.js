@@ -268,13 +268,13 @@ const save = props => {
                     })}
                 >
                     <a
-                        class={`premium-pricing-table__button_link`}
+                        class={`premium-pricing-table__button_link wp-block-button__link`}
                         href={btnLink}
                         target={buttonStyles[0].btnTarget ? "_blank" : "_self"}
                         rel="noopener noreferrer"
                         style={filterJsCss({
                             color: buttonStyles[0].btnColor,
-                            background: buttonStyles[0].btnBack ? buttonStyles[0].btnBack : "transparent",
+                            background: buttonStyles[0].btnBack,
                             fontStyle: buttonTypography?.fontStyle,
                             fontFamily: buttonTypography?.fontFamily,
                             fontWeight: buttonTypography?.fontWeight,

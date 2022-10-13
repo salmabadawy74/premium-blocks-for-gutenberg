@@ -1090,7 +1090,7 @@ function PremiumPricingTable(props) {
                         }}
                     >
                         <a
-                            class={`premium-pricing-table__button_link`}
+                            class={`premium-pricing-table__button_link wp-block-button__link`}
                             href="{ attributes.btnUrl }"
                             target={buttonStyles[0].btnTarget ? "_blank" : "_self"}
                             style={{
@@ -1099,7 +1099,7 @@ function PremiumPricingTable(props) {
                                 ...borderCss(buttonBorder, props.deviceType),
                                 ...typographyCss(buttonTypography, props.deviceType),
                                 color: buttonStyles[0].btnColor,
-                                background: buttonStyles[0].btnBack ? buttonStyles[0].btnBack : "transparent",
+                                background: buttonStyles[0].btnBack,
                             }}
                         >
                             <RichText

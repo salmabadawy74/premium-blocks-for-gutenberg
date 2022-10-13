@@ -170,7 +170,7 @@
 /**************** Premium Icon Box *********************/
 /*******************************************************/
 #wpwrap .edit-post-visual-editor .premium-icon-box__btn {
-    color: #000;
+    /* color: #000; */
 }
 .components-dropdown__content .components-popover__content {
     min-width: 290px !important;

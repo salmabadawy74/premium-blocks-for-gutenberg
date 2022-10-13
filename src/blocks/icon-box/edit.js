@@ -1162,7 +1162,7 @@ function Edit(props) {
                         >
                             <RichText
                                 tagName="a"
-                                className={`premium-icon-box__btn premium-button`}
+                                className={`premium-icon-box__btn wp-block-button__link premium-button`}
                                 onChange={(newText) =>
                                     setAttributes({ btnText: newText })
                                 }
