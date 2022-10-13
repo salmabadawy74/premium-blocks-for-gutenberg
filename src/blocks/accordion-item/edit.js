@@ -78,9 +78,10 @@ function AccordionItemEdit({
         });
     };
 
-    return <div {...blockProps} onClick={() => initToggleBox()}>
+    return <div {...blockProps} >
         <div
             className={`premium-accordion__title_wrap premium-accordion__${direction} premium-accordion__${arrowStyles[0].arrowPos}`}
+            onClick={() => initToggleBox()}
         >
             <div className={`premium-accordion__title`}>
                 <RichText
