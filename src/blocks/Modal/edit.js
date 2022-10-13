@@ -225,7 +225,7 @@ const Edit = props => {
                 <div className={`premium-modal-trigger-container`} style={{ textAlign: align[currentDevice] }}>
                     {(triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === "load") &&
                         <button
-                            className={`premium-modal-trigger-btn premium-button premium-button__${triggerSettings[0].btnSize} `}
+                            className={`premium-modal-trigger-btn wp-block-button__link premium-button premium-button__${triggerSettings[0].btnSize} `}
                             onClick={() => setOpenModal(true)}
                             style={{
                                 ...paddingCss(triggerPadding, currentDevice),

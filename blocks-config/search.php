@@ -322,7 +322,7 @@ function render_block_premium_search($attributes)
 		}
 
 		$button_markup = sprintf(
-			'<button type="submit" class="wp-block-premium-search__button" %s %s>%s</button>',
+			'<button type="submit" class="wp-block-premium-search__button wp-block-button__link" %s %s>%s</button>',
 			esc_attr($button_classes),
 			$aria_label,
 			$button_internal_markup

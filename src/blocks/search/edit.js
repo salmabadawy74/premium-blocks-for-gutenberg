@@ -324,7 +324,7 @@ function SearchEdit({
 	const renderButton = () => {
 		// If the button is inside the wrapper, the wrapper gets the border color styles/classes, not the button.
 		const buttonClasses = classnames(
-			'wp-block-premium-search__button',
+			'wp-block-premium-search__button wp-block-button__link',
 			isButtonPositionInside ? undefined : '',
 			buttonUseIcon ? 'has-icon' : undefined
 		);

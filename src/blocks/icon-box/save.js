@@ -165,7 +165,7 @@ const save = props => {
                         <div className={`premium-icon-box__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`}>
                             <RichText.Content
                                 tagName="a"
-                                className={`premium-icon-box__btn premium-button`}
+                                className={`premium-icon-box__btn wp-block-button__link premium-button`}
                                 href={btnLink}
                                 rel="noopener noreferrer"
                                 target={btnTarget ? "_blank" : "_self"}

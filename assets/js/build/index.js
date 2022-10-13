@@ -5061,7 +5061,7 @@ const Edit = props => {
       textAlign: align[currentDevice]
     }
   }, (triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === "load") && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
-    className: `premium-modal-trigger-btn premium-button premium-button__${triggerSettings[0].btnSize} `,
+    className: `premium-modal-trigger-btn wp-block-button__link premium-button premium-button__${triggerSettings[0].btnSize} `,
     onClick: () => setOpenModal(true),
     style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.paddingCss)(triggerPadding, currentDevice),
       ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.borderCss)(triggerBorder, currentDevice),
@@ -6482,7 +6482,7 @@ const save = props => {
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-modal-trigger-container`
   }, triggerSettings[0].triggerType === "button" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
-    className: `premium-modal-trigger-btn premium-button premium-button__${triggerSettings[0].btnSize} `,
+    className: `premium-modal-trigger-btn wp-block-button__link premium-button premium-button__${triggerSettings[0].btnSize} `,
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       backgroundColor: triggerStyles[0].triggerBack,
       borderStyle: triggerBorder.borderType,
@@ -16416,7 +16416,7 @@ function Edit(props) {
       textAlign: btnAlign[props.deviceType]
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", null, loadStyles()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RichText, {
-    className: `premium-button premium-button__${btnSize}`,
+    className: `premium-button wp-block-button__link premium-button__${btnSize}`,
     value: btnText,
     onChange: value => setAttributes({
       btnText: value
@@ -16566,7 +16566,7 @@ const save = props => {
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, loadStyles()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
     tagName: "a",
     value: btnText,
-    className: `premium-button premium-button__${btnSize}`,
+    className: `premium-button wp-block-button__link premium-button__${btnSize}`,
     href: btnLink,
     rel: "noopener noreferrer",
     target: btnTarget ? "_blank" : "_self",
@@ -33819,7 +33819,7 @@ function Edit(props) {
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RichText, {
     tagName: "a",
-    className: `premium-icon-box__btn premium-button`,
+    className: `premium-icon-box__btn wp-block-button__link premium-button`,
     onChange: newText => setAttributes({
       btnText: newText
     }),
@@ -34054,7 +34054,7 @@ const save = props => {
     className: `premium-icon-box__btn_wrap premium-button__${btnEffect} premium-button__${effectDir}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RichText.Content, {
     tagName: "a",
-    className: `premium-icon-box__btn premium-button`,
+    className: `premium-icon-box__btn wp-block-button__link premium-button`,
     href: btnLink,
     rel: "noopener noreferrer",
     target: btnTarget ? "_blank" : "_self",
@@ -46956,7 +46956,7 @@ function PremiumPricingTable(props) {
       width: buttonStyles[0].btnWidth + "%"
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
-    class: `premium-pricing-table__button_link`,
+    class: `premium-pricing-table__button_link wp-block-button__link`,
     href: "{ attributes.btnUrl }",
     target: buttonStyles[0].btnTarget ? "_blank" : "_self",
     style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.marginCss)(buttonMargin, props.deviceType),
@@ -46964,7 +46964,7 @@ function PremiumPricingTable(props) {
       ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.borderCss)(buttonBorder, props.deviceType),
       ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_12__.typographyCss)(buttonTypography, props.deviceType),
       color: buttonStyles[0].btnColor,
-      background: buttonStyles[0].btnBack ? buttonStyles[0].btnBack : "transparent"
+      background: buttonStyles[0].btnBack
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RichText, {
     tagName: "span",
@@ -47265,13 +47265,13 @@ const save = props => {
       width: buttonStyles[0].btnWidth + "%"
     })
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
-    class: `premium-pricing-table__button_link`,
+    class: `premium-pricing-table__button_link wp-block-button__link`,
     href: btnLink,
     target: buttonStyles[0].btnTarget ? "_blank" : "_self",
     rel: "noopener noreferrer",
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       color: buttonStyles[0].btnColor,
-      background: buttonStyles[0].btnBack ? buttonStyles[0].btnBack : "transparent",
+      background: buttonStyles[0].btnBack,
       fontStyle: buttonTypography === null || buttonTypography === void 0 ? void 0 : buttonTypography.fontStyle,
       fontFamily: buttonTypography === null || buttonTypography === void 0 ? void 0 : buttonTypography.fontFamily,
       fontWeight: buttonTypography === null || buttonTypography === void 0 ? void 0 : buttonTypography.fontWeight,
@@ -47676,7 +47676,7 @@ function SearchEdit(_ref) {
 
   const renderButton = () => {
     // If the button is inside the wrapper, the wrapper gets the border color styles/classes, not the button.
-    const buttonClasses = classnames__WEBPACK_IMPORTED_MODULE_2___default()('wp-block-premium-search__button', isButtonPositionInside ? undefined : '', buttonUseIcon ? 'has-icon' : undefined);
+    const buttonClasses = classnames__WEBPACK_IMPORTED_MODULE_2___default()('wp-block-premium-search__button wp-block-button__link', isButtonPositionInside ? undefined : '', buttonUseIcon ? 'has-icon' : undefined);
     const butttonStyles = {
       color: colors.btnText,
       backgroundColor: colors.btnBackground,

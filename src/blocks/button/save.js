@@ -59,7 +59,7 @@ const save = props => {
             <RichText.Content
                 tagName="a"
                 value={btnText}
-                className={`premium-button premium-button__${btnSize}`}
+                className={`premium-button wp-block-button__link premium-button__${btnSize}`}
                 href={btnLink}
                 rel="noopener noreferrer"
                 target={btnTarget ? "_blank" : "_self"}
