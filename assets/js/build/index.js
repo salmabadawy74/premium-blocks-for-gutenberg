@@ -7593,6 +7593,7 @@ const deprecated = [{
 
     let newAttributes = {
       blockId: attributes.accordionId ? `premium-accordion-${attributes.accordionId.split('-')[6]}` : '',
+      titleTag: attributes.titleTag || 'h4',
       titlePadding: {
         "Desktop": {
           top: (attributes === null || attributes === void 0 ? void 0 : attributes.titlePaddingT) || '',
@@ -15227,6 +15228,11 @@ const deprecatedContent = [{
 
     let newAttributes = {
       blockId: attributes.block_id ? "premium-button-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.generateBlockId)(attributes.block_id) : '',
+      btnAlign: {
+        Desktop: (attributes === null || attributes === void 0 ? void 0 : attributes.btnAlign) || 'center',
+        Tablet: (attributes === null || attributes === void 0 ? void 0 : attributes.btnAlign) || 'center',
+        Mobile: (attributes === null || attributes === void 0 ? void 0 : attributes.btnAlign) || 'center'
+      },
       border: {
         "borderType": attributes.btnStyles[0].borderType || '',
         "borderColor": attributes.btnStyles[0].borderColor || '',
@@ -15279,13 +15285,13 @@ const deprecatedContent = [{
         'fontFamily': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle5 = attributes.textStyles[0]) === null || _attributes$textStyle5 === void 0 ? void 0 : _attributes$textStyle5.textFontFamily) || '',
         'lineHeight': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle6 = attributes.textStyles[0]) === null || _attributes$textStyle6 === void 0 ? void 0 : _attributes$textStyle6.textLine) || '',
         'textDecoration': '',
-        letterSpacing: {
+        'letterSpacing': {
           Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle7 = attributes.textStyles[0]) === null || _attributes$textStyle7 === void 0 ? void 0 : _attributes$textStyle7.textLetter) || '',
           Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle8 = attributes.textStyles[0]) === null || _attributes$textStyle8 === void 0 ? void 0 : _attributes$textStyle8.textLetter) || '',
           Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle9 = attributes.textStyles[0]) === null || _attributes$textStyle9 === void 0 ? void 0 : _attributes$textStyle9.textLetter) || '',
           unit: "px"
         },
-        lineHeight: {
+        'lineHeight': {
           Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle10 = attributes.textStyles[0]) === null || _attributes$textStyle10 === void 0 ? void 0 : _attributes$textStyle10.textLine) || '',
           Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle11 = attributes.textStyles[0]) === null || _attributes$textStyle11 === void 0 ? void 0 : _attributes$textStyle11.textLine) || '',
           Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle12 = attributes.textStyles[0]) === null || _attributes$textStyle12 === void 0 ? void 0 : _attributes$textStyle12.textLine) || '',
