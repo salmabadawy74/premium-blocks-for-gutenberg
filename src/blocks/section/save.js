@@ -1,10 +1,12 @@
-import classnames from 'classnames'
-import { filterJsCss, gradientBackground } from '../../components/HelperFunction';
+import classnames from "classnames";
+import {
+    filterJsCss,
+    gradientBackground,
+} from "../../components/HelperFunction";
 
 const { InnerBlocks, useBlockProps } = wp.blockEditor;
 
-const save = props => {
-
+const save = (props) => {
     const { className } = props;
 
     const {
@@ -21,9 +23,9 @@ const save = props => {
         hideMobile,
         boxShadow,
         background,
-        border
+        border,
     } = props.attributes;
-
+    console.log(className);
     return (
         <div
             {...useBlockProps.save({
@@ -38,11 +40,12 @@ const save = props => {
                 ),
             })}
             style={filterJsCss({
-                minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
+                minHeight:
+                    "fit" === height ? "100vh" : minHeight + minHeightUnit,
                 ...gradientBackground(background),
                 borderColor: border?.borderColor,
                 borderStyle: border?.borderType,
-                boxShadow: `${boxShadow?.horizontal}px ${boxShadow?.vertical}px ${boxShadow?.blur}px ${boxShadow?.color} ${boxShadow?.position}`
+                boxShadow: `${boxShadow?.horizontal}px ${boxShadow?.vertical}px ${boxShadow?.blur}px ${boxShadow?.color} ${boxShadow?.position}`,
             })}
         >
             <div
@@ -54,7 +57,8 @@ const save = props => {
                                 ? innerWidth + "px"
                                 : "1140px"
                             : "100%",
-                    minHeight: "fit" === height ? "100vh" : minHeight + minHeightUnit,
+                    minHeight:
+                        "fit" === height ? "100vh" : minHeight + minHeightUnit,
                 })}
             >
                 <div className={`premium-container__content_inner`}>

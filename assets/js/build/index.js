@@ -11467,20 +11467,12 @@ function Edit(props) {
     style: {
       boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
       ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_16__.borderCss)(border, props.deviceType),
-<<<<<<< HEAD
       minHeight: height == "custom" ? minHeight : ""
-=======
-      height: height == 'custom' ? minHeight : ''
->>>>>>> b56246b6ec545a545d516ac07c58d719aef0de0f
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-banner__bg-overlay",
     style: {
-<<<<<<< HEAD
       backgroundColor: `${background ? background : ""} `
-=======
-      backgroundColor: `${background ? background : ''} `
->>>>>>> b56246b6ec545a545d516ac07c58d719aef0de0f
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-banner__img_wrap premium-banner__${height}`,
@@ -11675,11 +11667,7 @@ const save = props => {
       boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
       borderStyle: border && border.borderType,
       borderColor: border && border.borderColor,
-<<<<<<< HEAD
       minHeight: height == "custom" ? minHeight : ""
-=======
-      height: height == 'custom' ? minHeight : ''
->>>>>>> b56246b6ec545a545d516ac07c58d719aef0de0f
     })
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-banner__bg-overlay",
@@ -40588,11 +40576,7 @@ const deprecated = [{
 
   migrate: attributes => {
     let newAttributes = {
-<<<<<<< HEAD
-      nameTag: 'h2',
-=======
       nameTag: 'h3',
->>>>>>> b56246b6ec545a545d516ac07c58d719aef0de0f
       titleTag: 'h5',
       blockId: attributes.id ? `premium-person-${attributes.id.split('-')[6]}` : '',
       align: {
@@ -40853,14 +40837,6 @@ const deprecated = [{
         }
       },
       imgHeight: {
-<<<<<<< HEAD
-        unit: '%',
-        "Desktop": 100
-      },
-      imgWidth: {
-        unit: '%',
-        "Desktop": 100
-=======
         'Desktop': 100,
         "Tablet": 100,
         "Mobile": 100,
@@ -40871,7 +40847,6 @@ const deprecated = [{
         "Tablet": 100,
         "Mobile": 100,
         'unit': '%'
->>>>>>> b56246b6ec545a545d516ac07c58d719aef0de0f
       },
       socialIcon: false,
       hideDesktop: '',
@@ -50011,6 +49986,7 @@ const save = props => {
     background,
     border
   } = props.attributes;
+  console.log(className);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, useBlockProps.save({
     className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, `${blockId} premium-container premium-container__stretch_${stretchSection} premium-container__${innerWidthType}`, {
       " premium-desktop-hidden": hideDesktop,
@@ -98616,11 +98592,7 @@ module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/m
 /***/ ((module) => {
 
 "use strict";
-<<<<<<< HEAD
-module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/person","title":"Team Members","category":"premium-blocks","attributes":{"align":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"nameColor":{"type":"string","default":""},"titleColor":{"type":"string","default":""},"descColor":{"type":"string","default":""},"socialIconStyles":{"type":"array","default":[{"socialIconColor":"","socialIconHoverColor":"","socialIconBackgroundColor":"","defaultIconColor":false,"borderColorIcon":""}]},"contentColor":{"type":"string"},"bottomInfo":{"type":"number","default":15},"effect":{"type":"string","default":"none"},"effectDir":{"type":"string","default":"top"},"multiPersonChecked":{"type":"number","default":1},"borderHoverColor":{"type":"string"},"personShadowPosition":{"type":"string","default":""},"blockId":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"hoverEffectPerson":{"type":"string","default":"none"},"selectedSocialMediaIcon":{"type":"string"},"effectPersonStyle":{"type":"string","default":"effect2"},"rowPerson":{"type":"string","default":"column1"},"multiPersonContent":{"type":"array","default":[{"id":1,"personImgUrl":"","personImgId":"","name":"John Doe","title":"Senior Developer","desc":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla","socialIcon":false,"items":[{"label":"facebook","link":false,"value":"#","changeinput":"#"},{"label":"twitter","link":false,"value":"#","changeinput":"#"},{"label":"instagram","link":false,"value":"#","changeinput":"#"},{"label":"youtube","link":false,"value":"#","changeinput":"#"}]}]},"nameTag":{"type":"string","default":"h2"},"titleTag":{"type":"string","default":"h5"},"socialIconMargin":{"type":"object","default":{"Desktop":{"top":"0","right":"0","bottom":"0","left":"0"},"Tablet":{"top":"0","right":"0","bottom":"0","left":"0"},"Mobile":{"top":"0","right":"0","bottom":"0","left":"0"},"unit":"px"}},"socialIconPadding":{"type":"object","default":{"Desktop":{"top":"0","right":"0","bottom":"0","left":"0"},"Tablet":{"top":"0","right":"0","bottom":"0","left":"0"},"Mobile":{"top":"0","right":"0","bottom":"0","left":"0"},"unit":"px"}},"socialIconBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"socialIconSize":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}},"titleTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"descTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"nameTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"titleShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"nameShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"descShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"namePadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"titleMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"titlePadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"descPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"contentPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"imgHeight":{"type":"object","default":{"Desktop":"400","Tablet":"400","Mobile":"400","unit":"px"}},"imgWidth":{"type":"object","default":{"Desktop":"100","Tablet":"100","Mobile":"100","unit":"%"}},"socialIcon":{"type":"boolean","default":false},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"imageFilter":{"type":"object","default":{"contrast":"100","blur":"0","bright":"100","saturation":"100","hue":"0"}},"imageBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}}}}');
-=======
 module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/person","title":"Team Members","category":"premium-blocks","attributes":{"align":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"nameColor":{"type":"string","default":""},"titleColor":{"type":"string","default":""},"descColor":{"type":"string","default":""},"socialIconStyles":{"type":"array","default":[{"socialIconColor":"","socialIconHoverColor":"","socialIconBackgroundColor":"","defaultIconColor":false,"borderColorIcon":""}]},"contentColor":{"type":"string"},"bottomInfo":{"type":"number","default":15},"effect":{"type":"string","default":"none"},"effectDir":{"type":"string","default":"top"},"multiPersonChecked":{"type":"number","default":1},"borderHoverColor":{"type":"string"},"personShadowPosition":{"type":"string","default":""},"blockId":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"hoverEffectPerson":{"type":"string","default":"none"},"selectedSocialMediaIcon":{"type":"string"},"effectPersonStyle":{"type":"string","default":"effect2"},"rowPerson":{"type":"string","default":"column1"},"multiPersonContent":{"type":"array","default":[{"id":1,"personImgUrl":"","personImgId":"","name":"John Doe","title":"Senior Developer","desc":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla","socialIcon":false,"items":[{"label":"facebook","link":false,"value":"#","changeinput":"#"},{"label":"twitter","link":false,"value":"#","changeinput":"#"},{"label":"instagram","link":false,"value":"#","changeinput":"#"},{"label":"youtube","link":false,"value":"#","changeinput":"#"}]}]},"nameTag":{"type":"string","default":"h3"},"titleTag":{"type":"string","default":"h5"},"socialIconMargin":{"type":"object","default":{"Desktop":{"top":"0","right":"0","bottom":"0","left":"0"},"Tablet":{"top":"0","right":"0","bottom":"0","left":"0"},"Mobile":{"top":"0","right":"0","bottom":"0","left":"0"},"unit":"px"}},"socialIconPadding":{"type":"object","default":{"Desktop":{"top":"0","right":"0","bottom":"0","left":"0"},"Tablet":{"top":"0","right":"0","bottom":"0","left":"0"},"Mobile":{"top":"0","right":"0","bottom":"0","left":"0"},"unit":"px"}},"socialIconBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"socialIconSize":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}},"titleTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"descTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"nameTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"titleShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"nameShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"descShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"namePadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"titleMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"titlePadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"descPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"contentPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"imgHeight":{"type":"object","default":{"Desktop":"400","Tablet":"400","Mobile":"400","unit":"px"}},"imgWidth":{"type":"object","default":{"Desktop":"100","Tablet":"100","Mobile":"100","unit":"%"}},"socialIcon":{"type":"boolean","default":false},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"imageFilter":{"type":"object","default":{"contrast":"100","blur":"0","bright":"100","saturation":"100","hue":"0"}},"imageBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}}}}');
->>>>>>> b56246b6ec545a545d516ac07c58d719aef0de0f
 
 /***/ }),
 
