@@ -17,23 +17,40 @@ import { createBlock } from '@wordpress/blocks';
 import { store as blockEditorStore } from '@wordpress/block-editor';
 import { compose } from '@wordpress/compose';
 
-const { useEffect, Fragment } = wp.element;
+const { useEffect, Fragment, useState } = wp.element;
 const { __ } = wp.i18n;
-const { withSelect, withDispatch } = wp.data
+const { withSelect, withDispatch, useDispatch } = wp.data
 const { PanelBody } = wp.components;
 const { InspectorControls, InnerBlocks, useBlockProps } = wp.blockEditor;
 
 function PremiumAccordion(props) {
+    const INNER_BLOCKS_TEMPLATE = [
+        [
+            'premium/accordion-item',
+            {
+                title: __('Awesome Title', 'premium-blocks-for-gutenberg'),
+                placeholder: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
+            },
+        ],
+        [
+            'premium/accordion-item',
+            {
+                title: __('Awesome Title', 'premium-blocks-for-gutenberg'),
+                placeholder: __("Cool Description."),
+            },
+        ],
+    ];
     const { setAttributes, className, clientId } = props;
-
+    const [innerBlocksTemplate, setInnerBlocksTemplate] = useState(INNER_BLOCKS_TEMPLATE);
     const accordionRef = React.createRef();
 
     useEffect(() => {
         setAttributes({
             blockId: "premium-accordion-" + generateBlockId(clientId)
         });
-        if (props.attributes.repeaterItems) {
-            props.insertOnlyAllowedBlock();
+        if (props.attributes?.repeaterItems?.length) {
+            const convertedItems = props.insertOnlyAllowedBlock();
+            setInnerBlocksTemplate(convertedItems);
         }
     }, []);
 
@@ -85,23 +102,6 @@ function PremiumAccordion(props) {
             </WebfontLoader>
         )
     }
-
-    const INNER_BLOCKS_TEMPLATE = [
-        [
-            'premium/accordion-item',
-            {
-                title: __('Awesome Title', 'premium-blocks-for-gutenberg'),
-                placeholder: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
-            },
-        ],
-        [
-            'premium/accordion-item',
-            {
-                title: __('Awesome Title', 'premium-blocks-for-gutenberg'),
-                placeholder: __("Cool Description."),
-            },
-        ],
-    ];
 
     const saveTitleStyles = (value) => {
         const newUpdate = titleStyles.map((item, index) => {
@@ -444,7 +444,7 @@ function PremiumAccordion(props) {
             >
                 <style>{loadStyles()}</style>
                 <InnerBlocks
-                    template={INNER_BLOCKS_TEMPLATE}
+                    template={innerBlocksTemplate}
                     templateLock={false}
                     allowedBlocks={['premium/accordion-item']}
                 />
@@ -469,22 +469,17 @@ export default compose([
             insertOnlyAllowedBlock() {
                 const {
                     attributes,
-                    clientId,
                     setAttributes
                 } = ownProps;
-                const { insertBlock } = dispatch(blockEditorStore);
+                const template = [];
                 const repeaterItems = [...attributes.repeaterItems];
-
                 attributes.repeaterItems.map((item, index) => {
-                    const insertedBlock = createBlock(
+                    const block = [
                         "premium/accordion-item",
                         { title: item.titleText, description: item.descText },
-                    );
-                    insertBlock(
-                        insertedBlock,
-                        index + 1,
-                        clientId
-                    );
+                    ];
+
+                    template.push(block);
 
                     repeaterItems.splice(index - 1, 1);
 
@@ -493,6 +488,8 @@ export default compose([
                         return;
                     }
                 })
+
+                return template;
             },
         };
     }),
