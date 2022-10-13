@@ -516,9 +516,9 @@
                 "fontFamily": "Default",
                 "textDecoration": "",
                 "fontSize": {
-                    "Desktop": "16",
-                    "Tablet": "16",
-                    "Mobile": "16",
+                    "Desktop": "",
+                    "Tablet": "",
+                    "Mobile": "",
                     "unit": "px"
                 },
                 "lineHeight": {
