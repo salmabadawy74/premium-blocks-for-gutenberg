@@ -41,8 +41,8 @@ const SortableItem = SortableElement(
                             >x</button>
                         </div>
                     ) : (
-                        ""
-                    )}
+                            ""
+                        )}
                 </span>
                 <div
                     className={`premium-repeater-row-controls premium-repeater-fancy ${value.edit ? "editable" : ""}`}
@@ -442,43 +442,43 @@ function Edit(props) {
                                     )}
                                 </Fragment>
                             ) : (
-                                <Fragment>
-                                    <p className="premium-notice">
-                                        {__("Please note that Slide effect works only on frontend", "premium-blocks-for-gutenberg")}
-                                    </p>
-                                    <TextControl
-                                        label={__("Animation Speed", "premium-blocks-for-gutenberg")}
-                                        value={animationSpeed}
-                                        type="Number"
-                                        onChange={(newValue) => setAttributes({ animationSpeed: parseInt(newValue) })}
-                                        help={__("Set a duration value in milliseconds for slide effect.", "premium-blocks-for-gutenberg")}
-                                    />
-                                    <TextControl
-                                        label={__("Pause Time", "premium-blocks-for-gutenberg")}
-                                        value={pauseTime}
-                                        type="Number"
-                                        onChange={(newValue) => setAttributes({ pauseTime: parseInt(newValue) })}
-                                        help={__("How long should the word/string stay visible? Set a value in milliseconds.", "premium-blocks-for-gutenberg")}
-                                    />
-                                    <ToggleControl
-                                        label={__("Pause on Hover", "premium-blocks-for-gutenberg")}
-                                        checked={hoverPause}
-                                        onChange={(newCheck) => setAttributes({ hoverPause: newCheck })}
-                                        help={__("If you enabled this option, the slide will be paused when mouseover.", "premium-blocks-for-gutenberg")}
-                                    />
-                                    <ResponsiveRadioControl
-                                        label={__("Align Content", "premium-blocks-for-gutenberg")}
-                                        choices={[
-                                            { value: "left", label: __("Left", "premium-block-for-gutenberg"), icon: Icons.alignLeft },
-                                            { value: "center", label: __("Center", "premium-block-for-gutenberg"), icon: Icons.alignCenter },
-                                            { value: "right", label: __("Right", "premium-block-for-gutenberg"), icon: Icons.alignRight },
-                                        ]}
-                                        value={fancyTextAlign}
-                                        onChange={(newValue) => setAttributes({ fancyTextAlign: newValue })}
-                                        showIcons={true}
-                                    />
-                                </Fragment>
-                            )}
+                                    <Fragment>
+                                        <p className="premium-notice">
+                                            {__("Please note that Slide effect works only on frontend", "premium-blocks-for-gutenberg")}
+                                        </p>
+                                        <TextControl
+                                            label={__("Animation Speed", "premium-blocks-for-gutenberg")}
+                                            value={animationSpeed}
+                                            type="Number"
+                                            onChange={(newValue) => setAttributes({ animationSpeed: parseInt(newValue) })}
+                                            help={__("Set a duration value in milliseconds for slide effect.", "premium-blocks-for-gutenberg")}
+                                        />
+                                        <TextControl
+                                            label={__("Pause Time", "premium-blocks-for-gutenberg")}
+                                            value={pauseTime}
+                                            type="Number"
+                                            onChange={(newValue) => setAttributes({ pauseTime: parseInt(newValue) })}
+                                            help={__("How long should the word/string stay visible? Set a value in milliseconds.", "premium-blocks-for-gutenberg")}
+                                        />
+                                        <ToggleControl
+                                            label={__("Pause on Hover", "premium-blocks-for-gutenberg")}
+                                            checked={hoverPause}
+                                            onChange={(newCheck) => setAttributes({ hoverPause: newCheck })}
+                                            help={__("If you enabled this option, the slide will be paused when mouseover.", "premium-blocks-for-gutenberg")}
+                                        />
+                                        <ResponsiveRadioControl
+                                            label={__("Align Content", "premium-blocks-for-gutenberg")}
+                                            choices={[
+                                                { value: "left", label: __("Left", "premium-block-for-gutenberg"), icon: Icons.alignLeft },
+                                                { value: "center", label: __("Center", "premium-block-for-gutenberg"), icon: Icons.alignCenter },
+                                                { value: "right", label: __("Right", "premium-block-for-gutenberg"), icon: Icons.alignRight },
+                                            ]}
+                                            value={fancyTextAlign}
+                                            onChange={(newValue) => setAttributes({ fancyTextAlign: newValue })}
+                                            showIcons={true}
+                                        />
+                                    </Fragment>
+                                )}
                         </PanelBody>
                     </InspectorTab>
                     <InspectorTab key={"style"}>
@@ -594,7 +594,7 @@ function Edit(props) {
                     }}
                 />
                 {effect === "typing" ? (
-                    <div
+                    <h4
                         id={`${blockId}`}
                         className={`premium-fancy-text`}
                         data-effect={`${effect}`}
@@ -641,61 +641,61 @@ function Edit(props) {
                             {" "}
                             {suffix}
                         </span>
-                    </div>
+                    </h4>
                 ) : (
-                    <div
-                        id={`${blockId}`}
-                        className={`premium-fancy-text premium-fancy-slide`}
-                        data-effect={`${effect}`}
-                        data-strings={`${repeaterFancyText.map(
-                            (item) => {
-                                return item.title;
-                            }
-                        )}`}
-                        data-animationspeed={`${animationSpeed}`}
-                        data-pausetime={`${pauseTime}`}
-                        data-hoverpause={`${hoverPause}`}
-                    >
-                        <span
-                            className={`premium-fancy-text-suffix-prefix premium-fancy-text-prefix-text`}
-                            style={{
-                                ...typographyCss(prefixTypography, props.deviceType)
-                            }}
+                        <h4
+                            id={`${blockId}`}
+                            className={`premium-fancy-text premium-fancy-slide`}
+                            data-effect={`${effect}`}
+                            data-strings={`${repeaterFancyText.map(
+                                (item) => {
+                                    return item.title;
+                                }
+                            )}`}
+                            data-animationspeed={`${animationSpeed}`}
+                            data-pausetime={`${pauseTime}`}
+                            data-hoverpause={`${hoverPause}`}
                         >
-                            {prefix}{" "}
-                        </span>
-                        <div
-                            className={`premium-fancy-text-title premium-fancy-text-title-slide`}
-                            style={{
-                                textAlign: fancyTextAlign[props.deviceType],
-                            }}
-                        >
-                            <ul className={`premium-fancy-text-title-slide-list`}>
-                                {repeaterFancyText.map((item) => {
-                                    return (
-                                        <li
-                                            style={{
-                                                ...typographyCss(fancyTextTypography, props.deviceType),
-                                                textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`
-                                            }}
-                                        >
-                                            {item.title}
-                                        </li>
-                                    );
-                                })}
-                            </ul>
-                        </div>
-                        <span
-                            className={`premium-fancy-text-suffix-prefix premium-fancy-text-suffix-text`}
-                            style={{
-                                ...typographyCss(prefixTypography, props.deviceType)
-                            }}
-                        >
-                            {" "}
-                            {suffix}
-                        </span>
-                    </div>
-                )}
+                            <span
+                                className={`premium-fancy-text-suffix-prefix premium-fancy-text-prefix-text`}
+                                style={{
+                                    ...typographyCss(prefixTypography, props.deviceType)
+                                }}
+                            >
+                                {prefix}{" "}
+                            </span>
+                            <div
+                                className={`premium-fancy-text-title premium-fancy-text-title-slide`}
+                                style={{
+                                    textAlign: fancyTextAlign[props.deviceType],
+                                }}
+                            >
+                                <ul className={`premium-fancy-text-title-slide-list`}>
+                                    {repeaterFancyText.map((item) => {
+                                        return (
+                                            <li
+                                                style={{
+                                                    ...typographyCss(fancyTextTypography, props.deviceType),
+                                                    textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`
+                                                }}
+                                            >
+                                                {item.title}
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
+                            </div>
+                            <span
+                                className={`premium-fancy-text-suffix-prefix premium-fancy-text-suffix-text`}
+                                style={{
+                                    ...typographyCss(prefixTypography, props.deviceType)
+                                }}
+                            >
+                                {" "}
+                                {suffix}
+                            </span>
+                        </h4>
+                    )}
                 {loadFancyGoogleFonts}
                 {loadPrefixGoogleFonts}
             </div>
