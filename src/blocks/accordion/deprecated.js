@@ -668,6 +668,7 @@ const deprecated = [
         migrate: (attributes) => {
             let newAttributes = {
                 blockId: attributes.accordionId ? `premium-accordion-${attributes.accordionId.split('-')[6]}` : '',
+                titleTag: attributes.titleTag || 'h4',
                 titlePadding: {
                     "Desktop": {
                         top: attributes?.titlePaddingT || '',

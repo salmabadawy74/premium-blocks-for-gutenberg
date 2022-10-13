@@ -308,6 +308,11 @@ const deprecatedContent = [
         migrate: (attributes) => {
             let newAttributes = {
                 blockId: attributes.block_id ? "premium-button-" + generateBlockId(attributes.block_id) : '',
+                btnAlign: {
+                    Desktop: attributes?.btnAlign || 'center',
+                    Tablet: attributes?.btnAlign || 'center',
+                    Mobile: attributes?.btnAlign || 'center',
+                },
                 border: {
                     "borderType": attributes.btnStyles[0].borderType || '',
                     "borderColor": attributes.btnStyles[0].borderColor || '',
@@ -360,13 +365,13 @@ const deprecatedContent = [
                     'fontFamily': attributes?.textStyles[0]?.textFontFamily || '',
                     'lineHeight': attributes?.textStyles[0]?.textLine || '',
                     'textDecoration': '',
-                    letterSpacing: {
+                    'letterSpacing': {
                         Desktop: attributes?.textStyles[0]?.textLetter || '',
                         Tablet: attributes?.textStyles[0]?.textLetter || '',
                         Mobile: attributes?.textStyles[0]?.textLetter || '',
                         unit: "px",
                     },
-                    lineHeight: {
+                    'lineHeight': {
                         Desktop: attributes?.textStyles[0]?.textLine || '',
                         Tablet: attributes?.textStyles[0]?.textLine || '',
                         Mobile: attributes?.textStyles[0]?.textLine || '',
