@@ -587,6 +587,56 @@ const deprecatedContent = [
                     },
                     unit: "px",
                 },
+                bodyTypography: {
+                    fontWeight: "Default",
+                    fontStyle: '',
+                    letterSpacing: {
+                        Desktop: '',
+                        Tablet: '',
+                        Mobile: '',
+                        unit: "px",
+                    },
+                    fontFamily: "Default",
+                    lineHeight: {
+                        Desktop: '',
+                        Tablet: '',
+                        Mobile: '',
+                        unit: "px",
+                    },
+                    textDecoration: '',
+                    textTransform: '',
+                    fontSize: {
+                        Desktop: attributes?.authorStyles[0].bodySize || '',
+                        Tablet: attributes?.authorStyles[0].bodySizeTablet || '',
+                        Mobile: attributes?.authorStyles[0].bodySizeMobile || '',
+                        unit: attributes?.authorStyles[0].bodySizeUnit || "px",
+                    },
+                },
+                companyTypography: {
+                    fontWeight: "400",
+                    fontStyle: '',
+                    letterSpacing: {
+                        Desktop: '',
+                        Tablet: '',
+                        Mobile: '',
+                        unit: "px",
+                    },
+                    fontFamily: "Default",
+                    lineHeight: {
+                        Desktop: '',
+                        Tablet: '',
+                        Mobile: '',
+                        unit: "px",
+                    },
+                    textDecoration: '',
+                    textTransform: '',
+                    fontSize: {
+                        Desktop: attributes?.authorStyles[0].authorComSize || '',
+                        Tablet: attributes?.authorStyles[0].authorComSizeTablet || '',
+                        Mobile: attributes?.authorStyles[0].authorComSizeMobile || '',
+                        unit: attributes?.authorStyles[0].authorComSizeUnit || "px",
+                    },
+                },
             };
             return Object.assign(attributes, newAttributes)
         },
