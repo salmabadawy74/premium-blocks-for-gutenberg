@@ -616,10 +616,10 @@ const deprecatedContent = [
                     "unit": "px"
                 },
                 numberTypography: {
-                    "fontWeight": attributes?.numberStyles[0]?.numberWeight || '',
+                    "fontWeight": attributes?.numberStyles[0]?.numberWeight || "Default",
                     'fontStyle': '',
                     'textTransform': '',
-                    'fontFamily': attributes?.counterFamily || '',
+                    'fontFamily': attributes?.counterFamily || "Default",
                     lineHeight: {
                         Desktop: "",
                         Tablet: "",
@@ -641,10 +641,10 @@ const deprecatedContent = [
                     }
                 },
                 prefixTypography: {
-                    "fontWeight": attributes?.prefixStyles[0]?.prefixWeight || '',
+                    "fontWeight": attributes?.prefixStyles[0]?.prefixWeight || "Default",
                     'fontStyle': '',
                     'textTransform': '',
-                    'fontFamily': attributes?.prefixStyles[0]?.prefixFamily || '',
+                    'fontFamily': attributes?.prefixStyles[0]?.prefixFamily || "Default",
                     lineHeight: {
                         Desktop: "",
                         Tablet: "",
@@ -666,10 +666,10 @@ const deprecatedContent = [
                     }
                 },
                 suffixTypography: {
-                    "fontWeight": attributes?.suffixStyles[0]?.suffixWeight || '',
+                    "fontWeight": attributes?.suffixStyles[0]?.suffixWeight || "Default",
                     'fontStyle': '',
                     'textTransform': '',
-                    'fontFamily': attributes?.suffixStyles[0]?.suffixFamily || '',
+                    'fontFamily': attributes?.suffixStyles[0]?.suffixFamily || "Default",
                     lineHeight: {
                         Desktop: "",
                         Tablet: "",
@@ -691,10 +691,10 @@ const deprecatedContent = [
                     }
                 },
                 titleTypography: {
-                    "fontWeight": attributes?.titleStyles[0]?.titleWeight || '',
+                    "fontWeight": attributes?.titleStyles[0]?.titleWeight || "Default",
                     'fontStyle': attributes?.titleStyles[0]?.titleStyle || '',
                     'textTransform': attributes?.titleStyles[0]?.titleUpper || '',
-                    'fontFamily': attributes?.titleStyles[0]?.titleFamily || '',
+                    'fontFamily': attributes?.titleStyles[0]?.titleFamily || "Default",
                     lineHeight: {
                         Desktop: "",
                         Tablet: "",
@@ -723,7 +723,7 @@ const deprecatedContent = [
                     'position': attributes?.containerStyles[0]?.shadowPosition || ''
                 },
                 border: {
-                    "borderType": attributes?.containerStyles[0]?.borderType || '',
+                    "borderType": attributes?.containerStyles[0]?.borderType || 'none',
                     "borderColor": attributes?.containerStyles[0]?.borderColor || '',
                     "borderWidth": {
                         Desktop: {
@@ -784,10 +784,31 @@ const deprecatedContent = [
                 },
                 prefixMargin: {
                     "Desktop": {
-                        top: attributes.prefixGap || '',
-                        right: attributes.prefixGap || '',
-                        bottom: attributes.prefixGap || '',
-                        left: attributes.prefixGap || ''
+                        top: '',
+                        right: attributes.prefixStyles[0].prefixGap || '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Tablet": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Mobile": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "unit": "px"
+                },
+                prefixPadding: {
+                    "Desktop": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
                     },
                     "Tablet": {
                         top: '',
@@ -805,10 +826,31 @@ const deprecatedContent = [
                 },
                 suffixMargin: {
                     "Desktop": {
-                        top: attributes.suffixGap || '',
-                        right: attributes.suffixGap || '',
-                        bottom: attributes.suffixGap || '',
-                        left: attributes.suffixGap || ''
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: attributes.suffixStyles[0].suffixGap || ''
+                    },
+                    "Tablet": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Mobile": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "unit": "px"
+                },
+                suffixPadding: {
+                    "Desktop": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
                     },
                     "Tablet": {
                         top: '',
@@ -826,10 +868,94 @@ const deprecatedContent = [
                 },
                 titleMargin: {
                     "Desktop": {
-                        top: attributes.suffixGap || '',
-                        right: attributes.suffixGap || '',
-                        bottom: attributes.suffixGap || '',
-                        left: attributes.suffixGap || ''
+                        top: attributes.titleStyles[0].titleT || '',
+                        right: '',
+                        bottom: attributes.titleStyles[0].titleB || '',
+                        left: ''
+                    },
+                    "Tablet": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Mobile": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "unit": "px"
+                },
+                titlePadding: {
+                    "Desktop": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Tablet": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Mobile": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "unit": "px"
+                },
+                numberPadding: {
+                    "Desktop": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Tablet": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Mobile": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "unit": "px"
+                },
+                numberMargin: {
+                    "Desktop": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Tablet": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "Mobile": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
+                    },
+                    "unit": "px"
+                },
+                iconMargin: {
+                    "Desktop": {
+                        top: '',
+                        right: '',
+                        bottom: '',
+                        left: ''
                     },
                     "Tablet": {
                         top: '',
