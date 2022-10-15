@@ -602,11 +602,11 @@ const deprecatedContent = [
         migrate: (attributes) => {
             let newAttributes = {
                 blockId: attributes.block_id ? `premium-icon-box-${attributes.block_id.split('-')[6]}` : '',
-                titleTag: attributes.titleStyles[0].titleTag,
+                titleTag: attributes.titleStyles[0].titleTag || "h2",
                 align: {
-                    "Desktop": attributes.align,
-                    "Tablet": attributes.align,
-                    "Mobile": attributes.align,
+                    "Desktop": attributes.align || 'center',
+                    "Tablet": attributes.align || 'center',
+                    "Mobile": attributes.align || 'center',
                 },
                 iconSize: {
                     Desktop: attributes.iconSize,
@@ -735,7 +735,7 @@ const deprecatedContent = [
                 },
                 btnBorder: {
                     borderColor: attributes.btnStyles[0].btnBorderColor,
-                    borderType: attributes.btnStyles[0].btnBorderType,
+                    borderType: attributes.btnStyles[0].btnBorderType || 'none',
                     borderRadius: {
                         "Desktop": {
                             top: attributes.btnStyles[0].btnBorderRadius,
@@ -779,7 +779,7 @@ const deprecatedContent = [
                 },
                 containerBorder: {
                     borderColor: attributes.containerStyles[0].borderColor,
-                    borderType: attributes.containerStyles[0].borderType,
+                    borderType: attributes.containerStyles[0].borderType || 'none',
                     borderRadius: {
                         "Desktop": {
                             top: attributes.containerStyles[0].borderRadius,
@@ -865,11 +865,11 @@ const deprecatedContent = [
                     'position': attributes.containerStyles[0].hoverShadowPosition
                 },
                 titleTypography: {
-                    'fontWeight': attributes.titleStyles[0].titleWeight,
+                    'fontWeight': attributes.titleStyles[0].titleWeight || "Default",
                     'fontStyle': attributes.titleStyles[0].titleStyle,
                     'textTransform': attributes.titleStyles[0].titleUpper,
                     'letterSpacing': attributes.titleStyles[0].titleLetter,
-                    'fontFamily': attributes.titleStyles[0].titleFont,
+                    'fontFamily': attributes.titleStyles[0].titleFont || "Default",
                     'lineHeight': attributes.titleStyles[0].titleLine,
                     'fontSize': {
                         'Desktop': attributes.titleStyles[0].titleSize,
@@ -879,11 +879,11 @@ const deprecatedContent = [
                     }
                 },
                 descTypography: {
-                    'fontWeight': attributes.descStyles[0].descWeight,
+                    'fontWeight': attributes.descStyles[0].descWeight || "Default",
                     'fontStyle': '',
                     'textTransform': '',
                     'letterSpacing': '',
-                    'fontFamily': attributes.descStyles[0].descFont,
+                    'fontFamily': attributes.descStyles[0].descFont || "Default",
                     'lineHeight': attributes.descStyles[0].descLine,
                     'fontSize': {
                         'Desktop': attributes.descStyles[0].descSize,
@@ -893,11 +893,11 @@ const deprecatedContent = [
                     }
                 },
                 btnTypography: {
-                    'fontWeight': attributes.btnStyles[0].btnWeight,
+                    'fontWeight': attributes.btnStyles[0].btnWeight || "Default",
                     'fontStyle': attributes.btnStyles[0].btnStyle,
                     'textTransform': attributes.btnStyles[0].btnUpper,
                     'letterSpacing': attributes.btnStyles[0].btnLetter,
-                    'fontFamily': '',
+                    'fontFamily': "Default",
                     'lineHeight': '',
                     'fontSize': {
                         'Desktop': attributes.btnStyles[0].btnSize,

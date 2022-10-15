@@ -314,7 +314,7 @@ const deprecatedContent = [
                     Mobile: attributes?.btnAlign || 'center',
                 },
                 border: {
-                    "borderType": attributes.btnStyles[0].borderType || '',
+                    "borderType": attributes.btnStyles[0].borderType || 'none',
                     "borderColor": attributes.btnStyles[0].borderColor || '',
                     "borderWidth": {
                         Desktop: {
@@ -358,11 +358,11 @@ const deprecatedContent = [
                     }
                 },
                 typography: {
-                    "fontWeight": attributes?.textStyles[0]?.textWeight || '',
+                    "fontWeight": attributes?.textStyles[0]?.textWeight || 'Default',
                     'fontStyle': attributes?.textStyles[0]?.textStyle || '',
                     'textTransform': attributes?.textStyles[0]?.textUpper || '',
                     'letterSpacing': attributes?.textStyles[0]?.textLetter || '',
-                    'fontFamily': attributes?.textStyles[0]?.textFontFamily || '',
+                    'fontFamily': attributes?.textStyles[0]?.textFontFamily || 'Default',
                     'lineHeight': attributes?.textStyles[0]?.textLine || '',
                     'textDecoration': '',
                     'letterSpacing': {

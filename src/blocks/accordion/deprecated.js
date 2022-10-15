@@ -712,7 +712,7 @@ const deprecated = [
                     "unit": "px"
                 },
                 titleBorder: {
-                    "borderType": attributes?.titleStyles[0].titleBorder || '',
+                    "borderType": attributes?.titleStyles[0].titleBorder || 'none',
                     "borderColor": attributes?.titleStyles[0].titleBorderColor || '',
                     "borderWidth": {
                         Desktop: {
@@ -756,7 +756,7 @@ const deprecated = [
                     }
                 },
                 descBorder: {
-                    "borderType": attributes?.descStyles[0].descBorder || '',
+                    "borderType": attributes?.descStyles[0].descBorder || 'none',
                     "borderColor": attributes?.descStyles[0].descBorderColor || '',
                     "borderWidth": {
                         Desktop: {
@@ -800,10 +800,10 @@ const deprecated = [
                     }
                 },
                 titleTypography: {
-                    "fontWeight": attributes?.titleStyles[0].titleWeight || '',
+                    "fontWeight": attributes?.titleStyles[0].titleWeight || 'Default',
                     'fontStyle': attributes?.titleStyles[0].titleStyle || '',
                     'textTransform': attributes?.titleStyles[0].titleUpper || '',
-                    'fontFamily': '',
+                    'fontFamily': 'Default',
                     'lineHeight': {
                         'Desktop': attributes?.titleStyles[0].titleLine || '',
                         "Tablet": attributes?.titleStyles[0].titleLine || '',
@@ -825,10 +825,10 @@ const deprecated = [
                     }
                 },
                 descTypography: {
-                    "fontWeight": attributes?.descStyles[0].descWeight || '',
+                    "fontWeight": attributes?.descStyles[0].descWeight || 'Default',
                     'fontStyle': attributes?.descStyles[0].descStyle || '',
                     'textTransform': attributes?.descStyles[0].descUpper || '',
-                    'fontFamily': '',
+                    'fontFamily': 'Default',
                     'textDecoration': '',
                     'lineHeight': {
                         'Desktop': attributes?.descStyles[0].descLine || '',

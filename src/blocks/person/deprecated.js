@@ -311,9 +311,9 @@ const deprecated = [
                 titleTag: 'h5',
                 blockId: attributes.id ? `premium-person-${attributes.id.split('-')[6]}` : '',
                 align: {
-                    "Desktop": attributes.personAlign,
-                    "Tablet": attributes.personAlign,
-                    "Mobile": attributes.personAlign,
+                    "Desktop": attributes.personAlign || "center",
+                    "Tablet": attributes.personAlign || "center",
+                    "Mobile": attributes.personAlign || "center",
                 },
                 socialIconSize: {
                     unit: attributes.socialIconStyles[0].socialIconfontSizeType,
@@ -365,7 +365,7 @@ const deprecated = [
                 },
                 socialIconBorder: {
                     borderColor: attributes.socialIconStyles[0].borderColorIcon,
-                    borderType: attributes.socialIconStyles[0].borderTypeIcon,
+                    borderType: attributes.socialIconStyles[0].borderTypeIcon || 'none',
                     borderRadius: {
                         "Desktop": {
                             top: attributes.socialIconStyles[0].borderRadiusIcon,
@@ -408,7 +408,7 @@ const deprecated = [
                     }
                 },
                 nameTypography: {
-                    'fontWeight': attributes.nameStyles[0].nameWeight,
+                    'fontWeight': attributes.nameStyles[0].nameWeight || "Default",
                     'fontStyle': attributes.nameStyles[0].nameStyle,
                     'textTransform': attributes.nameStyles[0].nameUpper,
                     'letterSpacing': attributes.nameStyles[0].nameLetter,
@@ -436,7 +436,7 @@ const deprecated = [
                     }
                 },
                 descTypography: {
-                    'fontWeight': attributes.descStyles[0].descWeight,
+                    'fontWeight': attributes.descStyles[0].descWeight || "Default",
                     'fontStyle': attributes.descStyles[0].descStyle,
                     'textTransform': attributes.descStyles[0].descUpper,
                     'letterSpacing': attributes.descStyles[0].descLetter,
