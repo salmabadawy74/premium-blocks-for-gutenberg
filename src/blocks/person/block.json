@@ -468,9 +468,9 @@
         "imgHeight": {
             "type": "object",
             "default": {
-                "Desktop": "400",
-                "Tablet": "400",
-                "Mobile": "400",
+                "Desktop": "300",
+                "Tablet": "300",
+                "Mobile": "300",
                 "unit": "px"
             }
         },
