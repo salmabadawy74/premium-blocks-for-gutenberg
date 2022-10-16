@@ -609,8 +609,10 @@ const deprecatedContent = [
                     "Mobile": attributes.align || 'center',
                 },
                 iconSize: {
-                    Desktop: attributes.iconSize,
-                    unit: "px"
+                    'Desktop': attributes.iconSize || '40',
+                    'Tablet': attributes.iconSize || '40',
+                    'Mobile': attributes.iconSize || '40',
+                    'unit': "px"
                 },
                 containerMargin: {
                     "Desktop": {
@@ -631,6 +633,7 @@ const deprecatedContent = [
                         bottom: attributes.marginBMobile,
                         left: attributes.marginLMobile
                     },
+                    "unit": "px"
                 },
                 containerPadding: {
                     "Desktop": {
@@ -651,12 +654,13 @@ const deprecatedContent = [
                         bottom: attributes.paddingBMobile,
                         left: attributes.paddingLMobile
                     },
+                    "unit": attributes.containerStyles[0].paddingU
                 },
                 titleMargin: {
                     "Desktop": {
-                        top: attributes.titleMarginT,
+                        top: attributes.titleStyles[0].titleMarginT,
                         right: "",
-                        bottom: attributes.titleMarginB,
+                        bottom: attributes.titleStyles[0].titleMarginB,
                         left: ""
                     },
                     "Tablet": {
@@ -671,12 +675,13 @@ const deprecatedContent = [
                         bottom: "",
                         left: ""
                     },
+                    'unit': "px"
                 },
                 descMargin: {
                     "Desktop": {
-                        top: attributes.descMarginT,
+                        top: attributes.descStyles[0].descMarginT,
                         right: "",
-                        bottom: attributes.descMarginB,
+                        bottom: attributes.descStyles[0].descMarginB,
                         left: ""
                     },
                     "Tablet": {
@@ -691,12 +696,13 @@ const deprecatedContent = [
                         bottom: "",
                         left: ""
                     },
+                    'unit': "px"
                 },
                 btnMargin: {
                     "Desktop": {
-                        top: attributes.btnMarginT,
+                        top: attributes.btnStyles[0].btnMarginT,
                         right: "",
-                        bottom: attributes.btnMarginB,
+                        bottom: attributes.btnStyles[0].btnMarginB,
                         left: ""
                     },
                     "Tablet": {
@@ -711,6 +717,7 @@ const deprecatedContent = [
                         bottom: "",
                         left: ""
                     },
+                    unit: "px"
                 },
                 btnPadding: {
                     "Desktop": {
@@ -731,7 +738,7 @@ const deprecatedContent = [
                         bottom: "",
                         left: ""
                     },
-                    unit: 'px'
+                    'unit': 'px'
                 },
                 btnBorder: {
                     borderColor: attributes.btnStyles[0].btnBorderColor,
@@ -758,10 +765,10 @@ const deprecatedContent = [
                     },
                     borderWidth: {
                         "Desktop": {
-                            top: attributes.btnBorderTop,
-                            right: attributes.btnBorderRight,
-                            bottom: attributes.btnBorderBottom,
-                            left: attributes.btnBorderLeft
+                            top: attributes.btnBorderTop[0].btnBorderTop,
+                            right: attributes.btnBorderTop[0].btnBorderRight,
+                            bottom: attributes.btnBorderTop[0].btnBorderBottom,
+                            left: attributes.btnBorderTop[0].btnBorderLeft
                         },
                         "Tablet": {
                             top: "",
@@ -802,10 +809,10 @@ const deprecatedContent = [
                     },
                     borderWidth: {
                         "Desktop": {
-                            top: attributes.borderTop,
-                            right: attributes.borderRight,
-                            bottom: attributes.borderBottom,
-                            left: attributes.borderLeft
+                            top: attributes.containerStyles[0].borderTop,
+                            right: attributes.containerStyles[0].borderRight,
+                            bottom: attributes.containerStyles[0].borderBottom,
+                            left: attributes.containerStyles[0].borderLeft
                         },
                         "Tablet": {
                             top: "",
@@ -830,12 +837,12 @@ const deprecatedContent = [
                     'backgroundRepeat': attributes.containerStyles[0].backgroundRepeat,
                     'backgroundSize': attributes.containerStyles[0].backgroundSize,
                     'fixed': attributes.containerStyles[0].fixed,
-                    'gradientLocationOne': attributes.containerStyles[0].gradientLocationOne,
+                    'gradientLocationOne': attributes.containerStyles[0].gradientLocationOne || '0',
                     'gradientColorTwo': attributes.containerStyles[0].gradientColorTwo,
-                    'gradientLocationTwo': attributes.containerStyles[0].gradientLocationTwo,
-                    'gradientAngle': attributes.containerStyles[0].gradientAngle,
-                    'gradientPosition': attributes.containerStyles[0].gradientPosition,
-                    'gradientType': attributes.containerStyles[0].gradientType,
+                    'gradientLocationTwo': attributes.containerStyles[0].gradientLocationTwo || '100',
+                    'gradientAngle': attributes.containerStyles[0].gradientAngle || '180',
+                    'gradientPosition': attributes.containerStyles[0].gradientPosition || 'center center',
+                    'gradientType': attributes.containerStyles[0].gradientType || 'linear',
                 },
                 titleShadow: {
                     'color': attributes.titleStyles[0].titleShadowColor,
@@ -868,9 +875,19 @@ const deprecatedContent = [
                     'fontWeight': attributes.titleStyles[0].titleWeight || "Default",
                     'fontStyle': attributes.titleStyles[0].titleStyle,
                     'textTransform': attributes.titleStyles[0].titleUpper,
-                    'letterSpacing': attributes.titleStyles[0].titleLetter,
+                    'letterSpacing': {
+                        'Desktop': attributes.titleStyles[0].titleLetter,
+                        "Tablet": attributes.titleStyles[0].titleLetter,
+                        "Mobile": attributes.titleStyles[0].titleLetter,
+                        'unit': 'px',
+                    },
                     'fontFamily': attributes.titleStyles[0].titleFont || "Default",
-                    'lineHeight': attributes.titleStyles[0].titleLine,
+                    'lineHeight': {
+                        'Desktop': attributes.titleStyles[0].titleLine,
+                        "Tablet": attributes.titleStyles[0].titleLine,
+                        "Mobile": attributes.titleStyles[0].titleLine,
+                        'unit': 'px',
+                    },
                     'fontSize': {
                         'Desktop': attributes.titleStyles[0].titleSize,
                         "Tablet": attributes.titleStyles[0].titleSizeTablet,
@@ -882,9 +899,19 @@ const deprecatedContent = [
                     'fontWeight': attributes.descStyles[0].descWeight || "Default",
                     'fontStyle': '',
                     'textTransform': '',
-                    'letterSpacing': '',
+                    'letterSpacing': {
+                        'Desktop': '',
+                        "Tablet": '',
+                        "Mobile": '',
+                        'unit': 'px',
+                    },
                     'fontFamily': attributes.descStyles[0].descFont || "Default",
-                    'lineHeight': attributes.descStyles[0].descLine,
+                    'lineHeight': {
+                        'Desktop': attributes.descStyles[0].descLine,
+                        "Tablet": attributes.descStyles[0].descLine,
+                        "Mobile": attributes.descStyles[0].descLine,
+                        'unit': 'px',
+                    },
                     'fontSize': {
                         'Desktop': attributes.descStyles[0].descSize,
                         "Tablet": attributes.descStyles[0].descSizeTablet,
@@ -896,9 +923,19 @@ const deprecatedContent = [
                     'fontWeight': attributes.btnStyles[0].btnWeight || "Default",
                     'fontStyle': attributes.btnStyles[0].btnStyle,
                     'textTransform': attributes.btnStyles[0].btnUpper,
-                    'letterSpacing': attributes.btnStyles[0].btnLetter,
+                    'letterSpacing': {
+                        'Desktop': attributes.btnStyles[0].btnLetter,
+                        "Tablet": attributes.btnStyles[0].btnLetter,
+                        "Mobile": attributes.btnStyles[0].btnLetter,
+                        'unit': 'px',
+                    },
                     'fontFamily': "Default",
-                    'lineHeight': '',
+                    'lineHeight': {
+                        'Desktop': '',
+                        "Tablet": '',
+                        "Mobile": '',
+                        'unit': 'px',
+                    },
                     'fontSize': {
                         'Desktop': attributes.btnStyles[0].btnSize,
                         "Tablet": attributes.btnStyles[0].btnSizeTablet,

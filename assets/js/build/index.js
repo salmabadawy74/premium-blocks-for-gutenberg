@@ -30810,8 +30810,10 @@ const deprecatedContent = [{
         "Mobile": attributes.align || 'center'
       },
       iconSize: {
-        Desktop: attributes.iconSize,
-        unit: "px"
+        'Desktop': attributes.iconSize || '40',
+        'Tablet': attributes.iconSize || '40',
+        'Mobile': attributes.iconSize || '40',
+        'unit': "px"
       },
       containerMargin: {
         "Desktop": {
@@ -30831,7 +30833,8 @@ const deprecatedContent = [{
           right: attributes.marginRMobile,
           bottom: attributes.marginBMobile,
           left: attributes.marginLMobile
-        }
+        },
+        "unit": "px"
       },
       containerPadding: {
         "Desktop": {
@@ -30851,13 +30854,14 @@ const deprecatedContent = [{
           right: attributes.paddingRMobile,
           bottom: attributes.paddingBMobile,
           left: attributes.paddingLMobile
-        }
+        },
+        "unit": attributes.containerStyles[0].paddingU
       },
       titleMargin: {
         "Desktop": {
-          top: attributes.titleMarginT,
+          top: attributes.titleStyles[0].titleMarginT,
           right: "",
-          bottom: attributes.titleMarginB,
+          bottom: attributes.titleStyles[0].titleMarginB,
           left: ""
         },
         "Tablet": {
@@ -30871,13 +30875,14 @@ const deprecatedContent = [{
           right: "",
           bottom: "",
           left: ""
-        }
+        },
+        'unit': "px"
       },
       descMargin: {
         "Desktop": {
-          top: attributes.descMarginT,
+          top: attributes.descStyles[0].descMarginT,
           right: "",
-          bottom: attributes.descMarginB,
+          bottom: attributes.descStyles[0].descMarginB,
           left: ""
         },
         "Tablet": {
@@ -30891,13 +30896,14 @@ const deprecatedContent = [{
           right: "",
           bottom: "",
           left: ""
-        }
+        },
+        'unit': "px"
       },
       btnMargin: {
         "Desktop": {
-          top: attributes.btnMarginT,
+          top: attributes.btnStyles[0].btnMarginT,
           right: "",
-          bottom: attributes.btnMarginB,
+          bottom: attributes.btnStyles[0].btnMarginB,
           left: ""
         },
         "Tablet": {
@@ -30911,7 +30917,8 @@ const deprecatedContent = [{
           right: "",
           bottom: "",
           left: ""
-        }
+        },
+        unit: "px"
       },
       btnPadding: {
         "Desktop": {
@@ -30932,7 +30939,7 @@ const deprecatedContent = [{
           bottom: "",
           left: ""
         },
-        unit: 'px'
+        'unit': 'px'
       },
       btnBorder: {
         borderColor: attributes.btnStyles[0].btnBorderColor,
@@ -30959,10 +30966,10 @@ const deprecatedContent = [{
         },
         borderWidth: {
           "Desktop": {
-            top: attributes.btnBorderTop,
-            right: attributes.btnBorderRight,
-            bottom: attributes.btnBorderBottom,
-            left: attributes.btnBorderLeft
+            top: attributes.btnBorderTop[0].btnBorderTop,
+            right: attributes.btnBorderTop[0].btnBorderRight,
+            bottom: attributes.btnBorderTop[0].btnBorderBottom,
+            left: attributes.btnBorderTop[0].btnBorderLeft
           },
           "Tablet": {
             top: "",
@@ -31003,10 +31010,10 @@ const deprecatedContent = [{
         },
         borderWidth: {
           "Desktop": {
-            top: attributes.borderTop,
-            right: attributes.borderRight,
-            bottom: attributes.borderBottom,
-            left: attributes.borderLeft
+            top: attributes.containerStyles[0].borderTop,
+            right: attributes.containerStyles[0].borderRight,
+            bottom: attributes.containerStyles[0].borderBottom,
+            left: attributes.containerStyles[0].borderLeft
           },
           "Tablet": {
             top: "",
@@ -31031,12 +31038,12 @@ const deprecatedContent = [{
         'backgroundRepeat': attributes.containerStyles[0].backgroundRepeat,
         'backgroundSize': attributes.containerStyles[0].backgroundSize,
         'fixed': attributes.containerStyles[0].fixed,
-        'gradientLocationOne': attributes.containerStyles[0].gradientLocationOne,
+        'gradientLocationOne': attributes.containerStyles[0].gradientLocationOne || '0',
         'gradientColorTwo': attributes.containerStyles[0].gradientColorTwo,
-        'gradientLocationTwo': attributes.containerStyles[0].gradientLocationTwo,
-        'gradientAngle': attributes.containerStyles[0].gradientAngle,
-        'gradientPosition': attributes.containerStyles[0].gradientPosition,
-        'gradientType': attributes.containerStyles[0].gradientType
+        'gradientLocationTwo': attributes.containerStyles[0].gradientLocationTwo || '100',
+        'gradientAngle': attributes.containerStyles[0].gradientAngle || '180',
+        'gradientPosition': attributes.containerStyles[0].gradientPosition || 'center center',
+        'gradientType': attributes.containerStyles[0].gradientType || 'linear'
       },
       titleShadow: {
         'color': attributes.titleStyles[0].titleShadowColor,
@@ -31069,9 +31076,19 @@ const deprecatedContent = [{
         'fontWeight': attributes.titleStyles[0].titleWeight || "Default",
         'fontStyle': attributes.titleStyles[0].titleStyle,
         'textTransform': attributes.titleStyles[0].titleUpper,
-        'letterSpacing': attributes.titleStyles[0].titleLetter,
+        'letterSpacing': {
+          'Desktop': attributes.titleStyles[0].titleLetter,
+          "Tablet": attributes.titleStyles[0].titleLetter,
+          "Mobile": attributes.titleStyles[0].titleLetter,
+          'unit': 'px'
+        },
         'fontFamily': attributes.titleStyles[0].titleFont || "Default",
-        'lineHeight': attributes.titleStyles[0].titleLine,
+        'lineHeight': {
+          'Desktop': attributes.titleStyles[0].titleLine,
+          "Tablet": attributes.titleStyles[0].titleLine,
+          "Mobile": attributes.titleStyles[0].titleLine,
+          'unit': 'px'
+        },
         'fontSize': {
           'Desktop': attributes.titleStyles[0].titleSize,
           "Tablet": attributes.titleStyles[0].titleSizeTablet,
@@ -31083,9 +31100,19 @@ const deprecatedContent = [{
         'fontWeight': attributes.descStyles[0].descWeight || "Default",
         'fontStyle': '',
         'textTransform': '',
-        'letterSpacing': '',
+        'letterSpacing': {
+          'Desktop': '',
+          "Tablet": '',
+          "Mobile": '',
+          'unit': 'px'
+        },
         'fontFamily': attributes.descStyles[0].descFont || "Default",
-        'lineHeight': attributes.descStyles[0].descLine,
+        'lineHeight': {
+          'Desktop': attributes.descStyles[0].descLine,
+          "Tablet": attributes.descStyles[0].descLine,
+          "Mobile": attributes.descStyles[0].descLine,
+          'unit': 'px'
+        },
         'fontSize': {
           'Desktop': attributes.descStyles[0].descSize,
           "Tablet": attributes.descStyles[0].descSizeTablet,
@@ -31097,9 +31124,19 @@ const deprecatedContent = [{
         'fontWeight': attributes.btnStyles[0].btnWeight || "Default",
         'fontStyle': attributes.btnStyles[0].btnStyle,
         'textTransform': attributes.btnStyles[0].btnUpper,
-        'letterSpacing': attributes.btnStyles[0].btnLetter,
+        'letterSpacing': {
+          'Desktop': attributes.btnStyles[0].btnLetter,
+          "Tablet": attributes.btnStyles[0].btnLetter,
+          "Mobile": attributes.btnStyles[0].btnLetter,
+          'unit': 'px'
+        },
         'fontFamily': "Default",
-        'lineHeight': '',
+        'lineHeight': {
+          'Desktop': '',
+          "Tablet": '',
+          "Mobile": '',
+          'unit': 'px'
+        },
         'fontSize': {
           'Desktop': attributes.btnStyles[0].btnSize,
           "Tablet": attributes.btnStyles[0].btnSizeTablet,
@@ -98869,7 +98906,7 @@ module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/m
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/person","title":"Team Members","category":"premium-blocks","attributes":{"align":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"nameColor":{"type":"string","default":""},"titleColor":{"type":"string","default":""},"descColor":{"type":"string","default":""},"socialIconStyles":{"type":"array","default":[{"socialIconColor":"","socialIconHoverColor":"","socialIconBackgroundColor":"","defaultIconColor":false,"borderColorIcon":""}]},"contentColor":{"type":"string"},"bottomInfo":{"type":"number","default":15},"effect":{"type":"string","default":"none"},"effectDir":{"type":"string","default":"top"},"multiPersonChecked":{"type":"number","default":1},"borderHoverColor":{"type":"string"},"personShadowPosition":{"type":"string","default":""},"blockId":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"hoverEffectPerson":{"type":"string","default":"none"},"selectedSocialMediaIcon":{"type":"string"},"effectPersonStyle":{"type":"string","default":"effect2"},"rowPerson":{"type":"string","default":"column1"},"multiPersonContent":{"type":"array","default":[{"id":1,"personImgUrl":"","personImgId":"","name":"John Doe","title":"Senior Developer","desc":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla","socialIcon":false,"items":[{"label":"facebook","link":false,"value":"#","changeinput":"#"},{"label":"twitter","link":false,"value":"#","changeinput":"#"},{"label":"instagram","link":false,"value":"#","changeinput":"#"},{"label":"youtube","link":false,"value":"#","changeinput":"#"}]}]},"nameTag":{"type":"string","default":"h3"},"titleTag":{"type":"string","default":"h5"},"socialIconMargin":{"type":"object","default":{"Desktop":{"top":"0","right":"0","bottom":"0","left":"0"},"Tablet":{"top":"0","right":"0","bottom":"0","left":"0"},"Mobile":{"top":"0","right":"0","bottom":"0","left":"0"},"unit":"px"}},"socialIconPadding":{"type":"object","default":{"Desktop":{"top":"0","right":"0","bottom":"0","left":"0"},"Tablet":{"top":"0","right":"0","bottom":"0","left":"0"},"Mobile":{"top":"0","right":"0","bottom":"0","left":"0"},"unit":"px"}},"socialIconBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"socialIconSize":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}},"titleTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"descTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"nameTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"titleShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"nameShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"descShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"namePadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"titleMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"titlePadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"descPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"contentPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"imgHeight":{"type":"object","default":{"Desktop":"300","Tablet":"300","Mobile":"300","unit":"px"}},"imgWidth":{"type":"object","default":{"Desktop":"100","Tablet":"100","Mobile":"100","unit":"%"}},"socialIcon":{"type":"boolean","default":false},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"imageFilter":{"type":"object","default":{"contrast":"100","blur":"0","bright":"100","saturation":"100","hue":"0"}},"imageBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}}}}');
+module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/person","title":"Team Members","category":"premium-blocks","attributes":{"align":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"nameColor":{"type":"string","default":""},"titleColor":{"type":"string","default":""},"descColor":{"type":"string","default":""},"socialIconStyles":{"type":"array","default":[{"socialIconColor":"","socialIconHoverColor":"","socialIconBackgroundColor":"","defaultIconColor":false,"borderColorIcon":""}]},"contentColor":{"type":"string"},"bottomInfo":{"type":"number","default":15},"effect":{"type":"string","default":"none"},"effectDir":{"type":"string","default":"top"},"multiPersonChecked":{"type":"number","default":1},"borderHoverColor":{"type":"string"},"personShadowPosition":{"type":"string","default":""},"blockId":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"hoverEffectPerson":{"type":"string","default":"none"},"selectedSocialMediaIcon":{"type":"string"},"effectPersonStyle":{"type":"string","default":"effect2"},"rowPerson":{"type":"string","default":"column1"},"multiPersonContent":{"type":"array","default":[{"id":1,"personImgUrl":"","personImgId":"","name":"John Doe","title":"Senior Developer","desc":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla","socialIcon":false,"items":[{"label":"facebook","link":false,"value":"#","changeinput":"#"},{"label":"twitter","link":false,"value":"#","changeinput":"#"},{"label":"instagram","link":false,"value":"#","changeinput":"#"},{"label":"youtube","link":false,"value":"#","changeinput":"#"}]}]},"nameTag":{"type":"string","default":"h3"},"titleTag":{"type":"string","default":"h5"},"socialIconMargin":{"type":"object","default":{"Desktop":{"top":"0","right":"0","bottom":"0","left":"0"},"Tablet":{"top":"0","right":"0","bottom":"0","left":"0"},"Mobile":{"top":"0","right":"0","bottom":"0","left":"0"},"unit":"px"}},"socialIconPadding":{"type":"object","default":{"Desktop":{"top":"0","right":"0","bottom":"0","left":"0"},"Tablet":{"top":"0","right":"0","bottom":"0","left":"0"},"Mobile":{"top":"0","right":"0","bottom":"0","left":"0"},"unit":"px"}},"socialIconBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"socialIconSize":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}},"titleTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"descTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"nameTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"titleShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"nameShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"descShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"namePadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"titleMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"titlePadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"descPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"contentPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"imgHeight":{"type":"object","default":{"Desktop":"400","Tablet":"400","Mobile":"400","unit":"px"}},"imgWidth":{"type":"object","default":{"Desktop":"100","Tablet":"100","Mobile":"100","unit":"%"}},"socialIcon":{"type":"boolean","default":false},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"imageFilter":{"type":"object","default":{"contrast":"100","blur":"0","bright":"100","saturation":"100","hue":"0"}},"imageBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}}}}');
 
 /***/ }),
 
