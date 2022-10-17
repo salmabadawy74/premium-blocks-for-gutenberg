@@ -616,51 +616,51 @@ const deprecatedContent = [
                 },
                 containerMargin: {
                     "Desktop": {
-                        top: attributes.marginT,
-                        right: attributes.marginR,
-                        bottom: attributes.marginB,
-                        left: attributes.marginL
+                        top: attributes.marginT || '',
+                        right: attributes.marginR || '',
+                        bottom: attributes.marginB || '',
+                        left: attributes.marginL || ''
                     },
                     "Tablet": {
-                        top: attributes.marginTTablet,
-                        right: attributes.marginRTablet,
-                        bottom: attributes.marginBTablet,
-                        left: attributes.marginLTablet
+                        top: attributes.marginTTablet || '',
+                        right: attributes.marginRTablet || '',
+                        bottom: attributes.marginBTablet || '',
+                        left: attributes.marginLTablet || ''
                     },
                     "Mobile": {
-                        top: attributes.marginTMobile,
-                        right: attributes.marginRMobile,
-                        bottom: attributes.marginBMobile,
-                        left: attributes.marginLMobile
+                        top: attributes.marginTMobile || '',
+                        right: attributes.marginRMobile || '',
+                        bottom: attributes.marginBMobile || '',
+                        left: attributes.marginLMobile || ''
                     },
                     "unit": "px"
                 },
                 containerPadding: {
                     "Desktop": {
-                        top: attributes.paddingT,
-                        right: attributes.paddingR,
-                        bottom: attributes.paddingB,
-                        left: attributes.paddingL
+                        top: attributes.paddingT || '',
+                        right: attributes.paddingR || '',
+                        bottom: attributes.paddingB || '',
+                        left: attributes.paddingL || ''
                     },
                     "Tablet": {
-                        top: attributes.paddingTTablet,
-                        right: attributes.paddingRTablet,
-                        bottom: attributes.paddingBTablet,
-                        left: attributes.paddingLTablet
+                        top: attributes.paddingTTablet || '',
+                        right: attributes.paddingRTablet || '',
+                        bottom: attributes.paddingBTablet || '',
+                        left: attributes.paddingLTablet || ''
                     },
                     "Mobile": {
-                        top: attributes.paddingTMobile,
-                        right: attributes.paddingRMobile,
-                        bottom: attributes.paddingBMobile,
-                        left: attributes.paddingLMobile
+                        top: attributes.paddingTMobile || '',
+                        right: attributes.paddingRMobile || '',
+                        bottom: attributes.paddingBMobile || '',
+                        left: attributes.paddingLMobile || ''
                     },
-                    "unit": attributes.containerStyles[0].paddingU
+                    "unit": attributes.containerStyles[0].paddingU || 'px'
                 },
                 titleMargin: {
                     "Desktop": {
-                        top: attributes.titleStyles[0].titleMarginT,
+                        top: attributes.titleMarginT || '',
                         right: "",
-                        bottom: attributes.titleStyles[0].titleMarginB,
+                        bottom: attributes.titleMarginB || '',
                         left: ""
                     },
                     "Tablet": {
@@ -679,9 +679,9 @@ const deprecatedContent = [
                 },
                 descMargin: {
                     "Desktop": {
-                        top: attributes.descStyles[0].descMarginT,
+                        top: attributes.descMarginT || '',
                         right: "",
-                        bottom: attributes.descStyles[0].descMarginB,
+                        bottom: attributes.descMarginB || '',
                         left: ""
                     },
                     "Tablet": {
@@ -700,9 +700,9 @@ const deprecatedContent = [
                 },
                 btnMargin: {
                     "Desktop": {
-                        top: attributes.btnStyles[0].btnMarginT,
+                        top: attributes.btnMarginT || '',
                         right: "",
-                        bottom: attributes.btnStyles[0].btnMarginB,
+                        bottom: attributes.btnMarginB || '',
                         left: ""
                     },
                     "Tablet": {
@@ -721,10 +721,10 @@ const deprecatedContent = [
                 },
                 btnPadding: {
                     "Desktop": {
-                        top: attributes.btnStyles[0].btnPadding,
-                        right: attributes.btnStyles[0].btnPadding,
-                        bottom: attributes.btnStyles[0].btnPadding,
-                        left: attributes.btnStyles[0].btnPadding
+                        top: attributes.btnStyles[0].btnPadding || '',
+                        right: attributes.btnStyles[0].btnPadding || '',
+                        bottom: attributes.btnStyles[0].btnPadding || '',
+                        left: attributes.btnStyles[0].btnPadding || ''
                     },
                     "Tablet": {
                         top: "",
@@ -738,17 +738,17 @@ const deprecatedContent = [
                         bottom: "",
                         left: ""
                     },
-                    'unit': 'px'
+                    'unit': attributes.btnStyles[0].btnPaddingU || 'px'
                 },
                 btnBorder: {
                     borderColor: attributes.btnStyles[0].btnBorderColor,
                     borderType: attributes.btnStyles[0].btnBorderType || 'none',
                     borderRadius: {
                         "Desktop": {
-                            top: attributes.btnStyles[0].btnBorderRadius,
-                            right: attributes.btnStyles[0].btnBorderRadius,
-                            bottom: attributes.btnStyles[0].btnBorderRadius,
-                            left: attributes.btnStyles[0].btnBorderRadius,
+                            top: attributes.btnStyles[0].btnBorderRadius || '',
+                            right: attributes.btnStyles[0].btnBorderRadius || '',
+                            bottom: attributes.btnStyles[0].btnBorderRadius || '',
+                            left: attributes.btnStyles[0].btnBorderRadius || '',
                         },
                         "Tablet": {
                             top: "",
@@ -765,10 +765,10 @@ const deprecatedContent = [
                     },
                     borderWidth: {
                         "Desktop": {
-                            top: attributes.btnBorderTop[0].btnBorderTop,
-                            right: attributes.btnBorderTop[0].btnBorderRight,
-                            bottom: attributes.btnBorderTop[0].btnBorderBottom,
-                            left: attributes.btnBorderTop[0].btnBorderLeft
+                            top: attributes.btnStyles[0].btnBorderTop || '',
+                            right: attributes.btnStyles[0].btnBorderRight || '',
+                            bottom: attributes.btnStyles[0].btnBorderBottom || '',
+                            left: attributes.btnStyles[0].btnBorderLeft || ''
                         },
                         "Tablet": {
                             top: "",
@@ -789,10 +789,10 @@ const deprecatedContent = [
                     borderType: attributes.containerStyles[0].borderType || 'none',
                     borderRadius: {
                         "Desktop": {
-                            top: attributes.containerStyles[0].borderRadius,
-                            right: attributes.containerStyles[0].borderRadius,
-                            bottom: attributes.containerStyles[0].borderRadius,
-                            left: attributes.containerStyles[0].borderRadius,
+                            top: attributes.containerStyles[0].borderRadius || '',
+                            right: attributes.containerStyles[0].borderRadius || '',
+                            bottom: attributes.containerStyles[0].borderRadius || '',
+                            left: attributes.containerStyles[0].borderRadius || '',
                         },
                         "Tablet": {
                             top: "",
@@ -809,10 +809,10 @@ const deprecatedContent = [
                     },
                     borderWidth: {
                         "Desktop": {
-                            top: attributes.containerStyles[0].borderTop,
-                            right: attributes.containerStyles[0].borderRight,
-                            bottom: attributes.containerStyles[0].borderBottom,
-                            left: attributes.containerStyles[0].borderLeft
+                            top: attributes.containerStyles[0].borderTop || '',
+                            right: attributes.containerStyles[0].borderRight || '',
+                            bottom: attributes.containerStyles[0].borderBottom || '',
+                            left: attributes.containerStyles[0].borderLeft || ''
                         },
                         "Tablet": {
                             top: "",
