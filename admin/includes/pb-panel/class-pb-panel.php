@@ -313,6 +313,7 @@ if (!class_exists('Pb_Panel')) {
 					'type'     => 'pb-button',
 					'label'    => __('Accordion', 'premium-blocks-for-gutenberg'),
 					'icon'     => 'accordion',
+					'name' => 'accordion',
 					'category' => array(
 						'all',
 						'content',
@@ -322,6 +323,8 @@ if (!class_exists('Pb_Panel')) {
 					'type'     => 'pb-button',
 					'label'    => __('Banner', 'premium-blocks-for-gutenberg'),
 					'icon'     => 'banner',
+					'name' => 'banner',
+
 					'category' => array(
 						'all',
 						'marketing',
@@ -331,6 +334,7 @@ if (!class_exists('Pb_Panel')) {
 					'type'     => 'pb-button',
 					'label'    => __('Button', 'premium-blocks-for-gutenberg'),
 					'icon'     => 'button',
+					'name' => 'button',
 					'category' => array(
 						'all',
 						'creative',
@@ -342,6 +346,7 @@ if (!class_exists('Pb_Panel')) {
 					'type'     => 'pb-button',
 					'label'    => __('Count Up', 'premium-blocks-for-gutenberg'),
 					'icon'     => 'count_up',
+					'name' => 'count-up',
 					'category' => array(
 						'all',
 						'creative',
@@ -351,6 +356,7 @@ if (!class_exists('Pb_Panel')) {
 					'type'     => 'pb-button',
 					'label'    => __('Dual Heading', 'premium-blocks-for-gutenberg'),
 					'icon'     => 'dualHeading',
+					'name' => 'dual-heading',
 					'category' => array(
 						'all',
 						'creative',
@@ -360,6 +366,7 @@ if (!class_exists('Pb_Panel')) {
 					'type'     => 'pb-button',
 					'label'    => __('Heading', 'premium-blocks-for-gutenberg'),
 					'icon'     => 'heading',
+					'name' => 'heading',
 					'category' => array(
 						'all',
 						'content',
@@ -369,6 +376,7 @@ if (!class_exists('Pb_Panel')) {
 					'type'     => 'pb-button',
 					'label'    => __('Icon', 'premium-blocks-for-gutenberg'),
 					'icon'     => 'icon',
+					'name' => 'icon',
 					'category' => array(
 						'all',
 						'creative',
@@ -378,6 +386,7 @@ if (!class_exists('Pb_Panel')) {
 					'type'     => 'pb-button',
 					'label'    => __('Icon Box', 'premium-blocks-for-gutenberg'),
 					'icon'     => 'icon_box',
+					'name' => 'icon-box',
 					'category' => array(
 						'all',
 						'creative',
@@ -387,6 +396,7 @@ if (!class_exists('Pb_Panel')) {
 					'type'     => 'pb-button',
 					'label'    => __('Google Maps', 'premium-blocks-for-gutenberg'),
 					'icon'     => 'maps',
+					'name' => 'maps',
 					'category' => array(
 						'all',
 						'content',
@@ -396,6 +406,7 @@ if (!class_exists('Pb_Panel')) {
 					'type'     => 'pb-button',
 					'label'    => __('Pricing Table', 'premium-blocks-for-gutenberg'),
 					'icon'     => 'pricingTable',
+					'name' => 'pricing-table',
 					'category' => array(
 						'all',
 						'marketing',
@@ -405,6 +416,7 @@ if (!class_exists('Pb_Panel')) {
 					'type'     => 'pb-button',
 					'label'    => __('Section', 'premium-blocks-for-gutenberg'),
 					'icon'     => 'section',
+					'name' => 'section',
 					'category' => array(
 						'all',
 						'section',
@@ -414,6 +426,7 @@ if (!class_exists('Pb_Panel')) {
 					'type'     => 'pb-button',
 					'label'    => __('Testimonials', 'premium-blocks-for-gutenberg'),
 					'icon'     => 'testimonials',
+					'name' => 'testimonials',
 					'category' => array(
 						'all',
 						'creative',
@@ -424,6 +437,7 @@ if (!class_exists('Pb_Panel')) {
 					'type'     => 'pb-button',
 					'label'    => __('Video Box', 'premium-blocks-for-gutenberg'),
 					'icon'     => 'video_box',
+
 					'category' => array(
 						'all',
 						'creative',
@@ -463,7 +477,7 @@ if (!class_exists('Pb_Panel')) {
 					'type'     => 'pb-button',
 					'label'    => __('Image Separator', 'premium-blocks-for-gutenberg'),
 					'icon'     => 'image_separator',
-					'category' => 'all',
+					'category' =>
 					array(
 						'all',
 						'content',
@@ -473,7 +487,7 @@ if (!class_exists('Pb_Panel')) {
 					'type'     => 'pb-button',
 					'label'    => __('Bullet List', 'premium-blocks-for-gutenberg'),
 					'icon'     => 'bulletList',
-					'category' => 'all',
+					'category' =>
 					array(
 						'all',
 						'content',

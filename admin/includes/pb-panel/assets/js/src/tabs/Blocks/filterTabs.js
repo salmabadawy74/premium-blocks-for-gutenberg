@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import classNames from "classnames";
 import { updateblockStatus, ActivateBlocks } from "../../features/blocks/index";
+import { isArray } from "lodash";
 
 const FilterTabs = () => {
     const query = new URLSearchParams(useLocation()?.search);
@@ -12,6 +13,8 @@ const FilterTabs = () => {
     const activeBlocksFilterTab = useSelector(
         (state) => state.blockStates.blockFilter
     );
+    const [categoriesBlocks, setcategoriesBlocks] = useState([]);
+    const blocksInfo = PremiumBlocksPanelData.options;
     const tabs = [
         { name: "All", slug: "all" },
         { name: "Core", slug: "core" },
@@ -35,11 +38,37 @@ const FilterTabs = () => {
             type: "blockStatues/updateBlocksFilter",
             payload: activeFilterTabFromHash,
         });
+        const categoriesBlocksTemp = {
+            ...categoriesBlocks,
+        };
+        Object.entries(blocksInfo).map(([key, block]) => {
+            const blockCategories = block.category;
+            blockCategories?.map((category) => {
+                if (!categoriesBlocksTemp[category]) {
+                    categoriesBlocksTemp[category] = [];
+                }
+
+                categoriesBlocksTemp[category].push(key);
+
+                return category;
+            });
+
+            return block;
+        });
+
+        setcategoriesBlocks(categoriesBlocksTemp);
     }, []);
 
     const EnableBlocks = async () => {
         const activeBlocks = { ...blocksStatuses };
         for (const block in blocksStatuses) {
+            if (
+                "all" !== activeBlocksFilterTab &&
+                (!categoriesBlocks[activeBlocksFilterTab] ||
+                    !categoriesBlocks[activeBlocksFilterTab].includes(block))
+            ) {
+                continue;
+            }
             activeBlocks[block] = true;
         }
 
@@ -76,6 +105,14 @@ const FilterTabs = () => {
     const DisableBlocks = async () => {
         const unactiveBlocks = { ...blocksStatuses };
         for (const key in blocksStatuses) {
+            if (
+                "all" !== activeBlocksFilterTab &&
+                (!categoriesBlocks[activeBlocksFilterTab] ||
+                    !categoriesBlocks[activeBlocksFilterTab].includes(key))
+            ) {
+                continue;
+            }
+
             unactiveBlocks[key] = false;
         }
         dispatch(updateblockStatus(unactiveBlocks));

@@ -3002,11 +3002,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _features_blocks_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../features/blocks/index */ "./src/features/blocks/index.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_5__);
+
 
 
 
@@ -3017,10 +3020,12 @@ __webpack_require__.r(__webpack_exports__);
 const FilterTabs = () => {
   var _useLocation;
 
-  const query = new URLSearchParams((_useLocation = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useLocation)()) === null || _useLocation === void 0 ? void 0 : _useLocation.search);
+  const query = new URLSearchParams((_useLocation = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useLocation)()) === null || _useLocation === void 0 ? void 0 : _useLocation.search);
   const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   const blocksStatuses = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(state => state.blockStates.blocks);
   const activeBlocksFilterTab = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(state => state.blockStates.blockFilter);
+  const [categoriesBlocks, setcategoriesBlocks] = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]);
+  const blocksInfo = PremiumBlocksPanelData.options;
   const tabs = [{
     name: "All",
     slug: "all"
@@ -3058,6 +3063,22 @@ const FilterTabs = () => {
       type: "blockStatues/updateBlocksFilter",
       payload: activeFilterTabFromHash
     });
+    const categoriesBlocksTemp = { ...categoriesBlocks
+    };
+    Object.entries(blocksInfo).map(_ref => {
+      let [key, block] = _ref;
+      const blockCategories = block.category;
+      blockCategories === null || blockCategories === void 0 ? void 0 : blockCategories.map(category => {
+        if (!categoriesBlocksTemp[category]) {
+          categoriesBlocksTemp[category] = [];
+        }
+
+        categoriesBlocksTemp[category].push(key);
+        return category;
+      });
+      return block;
+    });
+    setcategoriesBlocks(categoriesBlocksTemp);
   }, []);
 
   const EnableBlocks = async () => {
@@ -3065,6 +3086,10 @@ const FilterTabs = () => {
     };
 
     for (const block in blocksStatuses) {
+      if ("all" !== activeBlocksFilterTab && (!categoriesBlocks[activeBlocksFilterTab] || !categoriesBlocks[activeBlocksFilterTab].includes(block))) {
+        continue;
+      }
+
       activeBlocks[block] = true;
     }
 
@@ -3105,6 +3130,10 @@ const FilterTabs = () => {
     };
 
     for (const key in blocksStatuses) {
+      if ("all" !== activeBlocksFilterTab && (!categoriesBlocks[activeBlocksFilterTab] || !categoriesBlocks[activeBlocksFilterTab].includes(key))) {
+        continue;
+      }
+
       unactiveBlocks[key] = false;
     }
 
@@ -3143,7 +3172,7 @@ const FilterTabs = () => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("nav", {
     className: "pb-filter-tabs",
     "aria-label": "Tabs"
-  }, tabs.map(tab => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
+  }, tabs.map(tab => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
     to: {
       search: `?page=pb_panel&path=blocks&filterTab=${tab.slug}`
     },
