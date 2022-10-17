@@ -9713,10 +9713,27 @@ const deprecatedContent = [{
   },
 
   migrate: attributes => {
-    var _attributes$container, _attributes$container2, _attributes$container3, _attributes$container4, _attributes$container5, _attributes$container6, _attributes$titleStyl, _attributes$titleStyl2, _attributes$titleStyl3, _attributes$titleStyl4, _attributes$titleStyl5, _attributes$descStyle, _attributes$descStyle2, _attributes$descStyle3, _attributes$descStyle4, _attributes$descStyle5, _attributes$titleStyl6, _attributes$titleStyl7, _attributes$titleStyl8, _attributes$titleStyl9, _attributes$descStyle6, _attributes$descStyle7, _attributes$descStyle8, _attributes$descStyle9, _attributes$container7, _attributes$container8, _attributes$container9, _attributes$container10, _attributes$container11;
+    var _attributes$container, _attributes$container2, _attributes$container3, _attributes$container4, _attributes$container5, _attributes$container6, _attributes$titleStyl, _attributes$titleStyl2, _attributes$titleStyl3, _attributes$titleStyl4, _attributes$titleStyl5, _attributes$titleStyl6, _attributes$descStyle, _attributes$descStyle2, _attributes$descStyle3, _attributes$descStyle4, _attributes$descStyle5, _attributes$descStyle6, _attributes$titleStyl7, _attributes$titleStyl8, _attributes$titleStyl9, _attributes$titleStyl10, _attributes$descStyle7, _attributes$descStyle8, _attributes$descStyle9, _attributes$descStyle10, _attributes$container7, _attributes$container8, _attributes$container9, _attributes$container10, _attributes$container11;
 
     let newAttributes = {
       blockId: attributes.block_id ? "premium-banner-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_1__.generateBlockId)(attributes.block_id) : '',
+      contentAlign: {
+        "Desktop": attributes.contentAlign || 'left',
+        "Tablet": attributes.contentAlign || 'left',
+        "Mobile": attributes.contentAlign || 'left'
+      },
+      verAlign: {
+        "Desktop": attributes.verAlign || 'top',
+        "Tablet": attributes.verAlign || 'top',
+        "Mobile": attributes.verAlign || 'top'
+      },
+      filter: {
+        'contrast': '100',
+        'blur': '0',
+        'bright': '100',
+        'saturation': '100',
+        'hue': '0'
+      },
       padding: {
         "Desktop": {
           top: (attributes === null || attributes === void 0 ? void 0 : attributes.paddingT) || '',
@@ -9736,7 +9753,7 @@ const deprecatedContent = [{
           bottom: (attributes === null || attributes === void 0 ? void 0 : attributes.paddingBMobile) || '',
           left: (attributes === null || attributes === void 0 ? void 0 : attributes.paddingLMobile) || ''
         },
-        "unit": "px"
+        "unit": attributes.containerStyles[0].paddingU || 'px'
       },
       border: {
         "borderType": (attributes === null || attributes === void 0 ? void 0 : (_attributes$container = attributes.containerStyles) === null || _attributes$container === void 0 ? void 0 : _attributes$container[0].borderType) || '',
@@ -9783,52 +9800,52 @@ const deprecatedContent = [{
         }
       },
       titleTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl = attributes.titleStyles) === null || _attributes$titleStyl === void 0 ? void 0 : _attributes$titleStyl[0].titleWeight) || '',
+        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl = attributes.titleStyles) === null || _attributes$titleStyl === void 0 ? void 0 : _attributes$titleStyl[0].titleWeight) || 'Default',
         'fontStyle': '',
         'textTransform': '',
         'letterSpacing': '',
-        'fontFamily': '',
+        'fontFamily': 'Default',
         'lineHeight': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl2 = attributes.titleStyles) === null || _attributes$titleStyl2 === void 0 ? void 0 : _attributes$titleStyl2[0].titleLine) || '',
         'textDecoration': '',
         'fontSize': {
           'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl3 = attributes.titleStyles) === null || _attributes$titleStyl3 === void 0 ? void 0 : _attributes$titleStyl3[0].titleSize) || '',
           "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl4 = attributes.titleStyles) === null || _attributes$titleStyl4 === void 0 ? void 0 : _attributes$titleStyl4[0].titleSizeTablet) || '',
           "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl5 = attributes.titleStyles) === null || _attributes$titleStyl5 === void 0 ? void 0 : _attributes$titleStyl5[0].titleSizeMobile) || '',
-          "unit": 'px'
+          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl6 = attributes.titleStyles) === null || _attributes$titleStyl6 === void 0 ? void 0 : _attributes$titleStyl6[0].titleSizeUnit) || 'px'
         }
       },
       descTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle = attributes.descStyles) === null || _attributes$descStyle === void 0 ? void 0 : _attributes$descStyle[0].descWeight) || '',
+        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle = attributes.descStyles) === null || _attributes$descStyle === void 0 ? void 0 : _attributes$descStyle[0].descWeight) || 'Default',
         'fontStyle': '',
         'textTransform': '',
         'letterSpacing': '',
-        'fontFamily': '',
+        'fontFamily': 'Default',
         'lineHeight': (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle2 = attributes.descStyles) === null || _attributes$descStyle2 === void 0 ? void 0 : _attributes$descStyle2[0].descLine) || '',
         'textDecoration': '',
         'fontSize': {
           'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle3 = attributes.descStyles) === null || _attributes$descStyle3 === void 0 ? void 0 : _attributes$descStyle3[0].descSize) || '',
           "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle4 = attributes.descStyles) === null || _attributes$descStyle4 === void 0 ? void 0 : _attributes$descStyle4[0].descSizeTablet) || '',
           "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle5 = attributes.descStyles) === null || _attributes$descStyle5 === void 0 ? void 0 : _attributes$descStyle5[0].descSizeMobile) || '',
-          "unit": 'px'
+          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle6 = attributes.descStyles) === null || _attributes$descStyle6 === void 0 ? void 0 : _attributes$descStyle6[0].descSizeUnit) || 'px'
         }
       },
       titleTextShadow: {
-        'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl6 = attributes.titleStyles) === null || _attributes$titleStyl6 === void 0 ? void 0 : _attributes$titleStyl6[0].shadowColor) || '',
-        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl7 = attributes.titleStyles) === null || _attributes$titleStyl7 === void 0 ? void 0 : _attributes$titleStyl7[0].shadowBlur) || '',
-        'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl8 = attributes.titleStyles) === null || _attributes$titleStyl8 === void 0 ? void 0 : _attributes$titleStyl8[0].shadowHorizontal) || '',
-        'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl9 = attributes.titleStyles) === null || _attributes$titleStyl9 === void 0 ? void 0 : _attributes$titleStyl9[0].shadowVertical) || ''
+        'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl7 = attributes.titleStyles) === null || _attributes$titleStyl7 === void 0 ? void 0 : _attributes$titleStyl7[0].shadowColor) || '',
+        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl8 = attributes.titleStyles) === null || _attributes$titleStyl8 === void 0 ? void 0 : _attributes$titleStyl8[0].shadowBlur) || '10',
+        'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl9 = attributes.titleStyles) === null || _attributes$titleStyl9 === void 0 ? void 0 : _attributes$titleStyl9[0].shadowHorizontal) || '0',
+        'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl10 = attributes.titleStyles) === null || _attributes$titleStyl10 === void 0 ? void 0 : _attributes$titleStyl10[0].shadowVertical) || '0'
       },
       descTextShadow: {
-        'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle6 = attributes.descStyles) === null || _attributes$descStyle6 === void 0 ? void 0 : _attributes$descStyle6[0].descShadowColor) || '',
-        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle7 = attributes.descStyles) === null || _attributes$descStyle7 === void 0 ? void 0 : _attributes$descStyle7[0].descShadowBlur) || '',
-        'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle8 = attributes.descStyles) === null || _attributes$descStyle8 === void 0 ? void 0 : _attributes$descStyle8[0].descShadowHorizontal) || '',
-        'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle9 = attributes.descStyles) === null || _attributes$descStyle9 === void 0 ? void 0 : _attributes$descStyle9[0].descShadowVertical) || ''
+        'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle7 = attributes.descStyles) === null || _attributes$descStyle7 === void 0 ? void 0 : _attributes$descStyle7[0].descShadowColor) || '',
+        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle8 = attributes.descStyles) === null || _attributes$descStyle8 === void 0 ? void 0 : _attributes$descStyle8[0].descShadowBlur) || '10',
+        'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle9 = attributes.descStyles) === null || _attributes$descStyle9 === void 0 ? void 0 : _attributes$descStyle9[0].descShadowHorizontal) || '0',
+        'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle10 = attributes.descStyles) === null || _attributes$descStyle10 === void 0 ? void 0 : _attributes$descStyle10[0].descShadowVertical) || '0'
       },
       containerShadow: {
         'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container7 = attributes.containerStyles) === null || _attributes$container7 === void 0 ? void 0 : _attributes$container7[0].containerShadowColor) || '',
-        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container8 = attributes.containerStyles) === null || _attributes$container8 === void 0 ? void 0 : _attributes$container8[0].containerShadowBlur) || '',
-        'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container9 = attributes.containerStyles) === null || _attributes$container9 === void 0 ? void 0 : _attributes$container9[0].containerShadowHorizontal) || '',
-        'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container10 = attributes.containerStyles) === null || _attributes$container10 === void 0 ? void 0 : _attributes$container10[0].containerShadowVertical) || '',
+        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container8 = attributes.containerStyles) === null || _attributes$container8 === void 0 ? void 0 : _attributes$container8[0].containerShadowBlur) || '10',
+        'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container9 = attributes.containerStyles) === null || _attributes$container9 === void 0 ? void 0 : _attributes$container9[0].containerShadowHorizontal) || '0',
+        'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container10 = attributes.containerStyles) === null || _attributes$container10 === void 0 ? void 0 : _attributes$container10[0].containerShadowVertical) || '0',
         'position': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container11 = attributes.containerStyles) === null || _attributes$container11 === void 0 ? void 0 : _attributes$container11[0].containerShadowPosition) || ''
       }
     };

@@ -517,6 +517,23 @@ const deprecatedContent = [
         migrate: attributes => {
             let newAttributes = {
                 blockId: attributes.block_id ? "premium-banner-" + generateBlockId(attributes.block_id) : '',
+                contentAlign: {
+                    "Desktop": attributes.contentAlign || 'left',
+                    "Tablet": attributes.contentAlign || 'left',
+                    "Mobile": attributes.contentAlign || 'left',
+                },
+                verAlign: {
+                    "Desktop": attributes.verAlign || 'top',
+                    "Tablet": attributes.verAlign || 'top',
+                    "Mobile": attributes.verAlign || 'top',
+                },
+                filter: {
+                    'contrast': '100',
+                    'blur': '0',
+                    'bright': '100',
+                    'saturation': '100',
+                    'hue': '0'
+                },
                 padding: {
                     "Desktop": {
                         top: attributes?.paddingT || '',
@@ -536,7 +553,7 @@ const deprecatedContent = [
                         bottom: attributes?.paddingBMobile || '',
                         left: attributes?.paddingLMobile || ''
                     },
-                    "unit": "px"
+                    "unit": attributes.containerStyles[0].paddingU || 'px'
                 },
                 border: {
                     "borderType": attributes?.containerStyles?.[0].borderType || '',
@@ -583,52 +600,52 @@ const deprecatedContent = [
                     }
                 },
                 titleTypography: {
-                    "fontWeight": attributes?.titleStyles?.[0].titleWeight || '',
+                    "fontWeight": attributes?.titleStyles?.[0].titleWeight || 'Default',
                     'fontStyle': '',
                     'textTransform': '',
                     'letterSpacing': '',
-                    'fontFamily': '',
+                    'fontFamily': 'Default',
                     'lineHeight': attributes?.titleStyles?.[0].titleLine || '',
                     'textDecoration': '',
                     'fontSize': {
                         'Desktop': attributes?.titleStyles?.[0].titleSize || '',
                         "Tablet": attributes?.titleStyles?.[0].titleSizeTablet || '',
                         "Mobile": attributes?.titleStyles?.[0].titleSizeMobile || '',
-                        "unit": 'px'
+                        "unit": attributes?.titleStyles?.[0].titleSizeUnit || 'px'
                     }
                 },
                 descTypography: {
-                    "fontWeight": attributes?.descStyles?.[0].descWeight || '',
+                    "fontWeight": attributes?.descStyles?.[0].descWeight || 'Default',
                     'fontStyle': '',
                     'textTransform': '',
                     'letterSpacing': '',
-                    'fontFamily': '',
+                    'fontFamily': 'Default',
                     'lineHeight': attributes?.descStyles?.[0].descLine || '',
                     'textDecoration': '',
                     'fontSize': {
                         'Desktop': attributes?.descStyles?.[0].descSize || '',
                         "Tablet": attributes?.descStyles?.[0].descSizeTablet || '',
                         "Mobile": attributes?.descStyles?.[0].descSizeMobile || '',
-                        "unit": 'px'
+                        "unit": attributes?.descStyles?.[0].descSizeUnit || 'px'
                     }
                 },
                 titleTextShadow: {
                     'color': attributes?.titleStyles?.[0].shadowColor || '',
-                    'blur': attributes?.titleStyles?.[0].shadowBlur || '',
-                    'horizontal': attributes?.titleStyles?.[0].shadowHorizontal || '',
-                    'vertical': attributes?.titleStyles?.[0].shadowVertical || '',
+                    'blur': attributes?.titleStyles?.[0].shadowBlur || '10',
+                    'horizontal': attributes?.titleStyles?.[0].shadowHorizontal || '0',
+                    'vertical': attributes?.titleStyles?.[0].shadowVertical || '0',
                 },
                 descTextShadow: {
                     'color': attributes?.descStyles?.[0].descShadowColor || '',
-                    'blur': attributes?.descStyles?.[0].descShadowBlur || '',
-                    'horizontal': attributes?.descStyles?.[0].descShadowHorizontal || '',
-                    'vertical': attributes?.descStyles?.[0].descShadowVertical || '',
+                    'blur': attributes?.descStyles?.[0].descShadowBlur || '10',
+                    'horizontal': attributes?.descStyles?.[0].descShadowHorizontal || '0',
+                    'vertical': attributes?.descStyles?.[0].descShadowVertical || '0',
                 },
                 containerShadow: {
                     'color': attributes?.containerStyles?.[0].containerShadowColor || '',
-                    'blur': attributes?.containerStyles?.[0].containerShadowBlur || '',
-                    'horizontal': attributes?.containerStyles?.[0].containerShadowHorizontal || '',
-                    'vertical': attributes?.containerStyles?.[0].containerShadowVertical || '',
+                    'blur': attributes?.containerStyles?.[0].containerShadowBlur || '10',
+                    'horizontal': attributes?.containerStyles?.[0].containerShadowHorizontal || '0',
+                    'vertical': attributes?.containerStyles?.[0].containerShadowVertical || '0',
                     'position': attributes?.containerStyles?.[0].containerShadowPosition || ''
                 }
             }
