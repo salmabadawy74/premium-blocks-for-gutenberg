@@ -3702,8 +3702,8 @@ class PBG_Blocks_Helper {
 			$css->render_typography( $author_typography, 'Desktop' );
 		}
 
-		if ( isset( $attr['imgBorder'] ) ) {
-			$image_border        = $attr['imgBorder'];
+		if ( isset( $attr['imageBorder'] ) ) {
+			$image_border        = $attr['imageBorder'];
 			$image_border_width  = $image_border['borderWidth'];
 			$image_border_radius = $image_border['borderRadius'];
 
@@ -3757,8 +3757,8 @@ class PBG_Blocks_Helper {
 			$css->render_typography( $author_typography, 'Tablet' );
 		}
 
-		if ( isset( $attr['imgBorder'] ) ) {
-			$image_border        = $attr['imgBorder'];
+		if ( isset( $attr['imageBorder'] ) ) {
+			$image_border        = $attr['imageBorder'];
 			$image_border_width  = $image_border['borderWidth'];
 			$image_border_radius = $image_border['borderRadius'];
 
@@ -3813,8 +3813,8 @@ class PBG_Blocks_Helper {
 			$css->render_typography( $author_typography, 'Mobile' );
 		}
 
-		if ( isset( $attr['imgBorder'] ) ) {
-			$image_border        = $attr['imgBorder'];
+		if ( isset( $attr['imageBorder'] ) ) {
+			$image_border        = $attr['imageBorder'];
 			$image_border_width  = $image_border['borderWidth'];
 			$image_border_radius = $image_border['borderRadius'];
 
