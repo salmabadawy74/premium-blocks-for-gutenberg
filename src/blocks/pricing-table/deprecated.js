@@ -929,6 +929,7 @@ const deprecatedContent = [
         migrate: (attributes) => {
             let newAttributes = {
                 blockId: attributes.block_id ? "premium-pricing-table-" + generateBlockId(attributes.block_id) : '',
+                badgeChecked: true,
                 titleTextShadow: {
                     'color': attributes?.titleStyles[0]?.titleShadowColor || '',
                     'blur': attributes?.titleStyles[0]?.titleShadowBlur || '',
@@ -1267,7 +1268,7 @@ const deprecatedContent = [
                     unit: 'px'
                 },
                 titleTypography: {
-                    "fontWeight": attributes?.titleStyles[0]?.titleWeight || '400',
+                    "fontWeight": attributes?.titleStyles[0]?.titleWeight || 'Default',
                     'fontStyle': attributes?.titleStyles[0]?.titleStyle || '',
                     'textTransform': attributes?.titleStyles[0]?.titleUpper || '',
                     'fontFamily': 'Default',
@@ -1292,7 +1293,7 @@ const deprecatedContent = [
                     }
                 },
                 slashTypography: {
-                    "fontWeight": attributes?.priceStyles[0]?.slashWeight || '400',
+                    "fontWeight": attributes?.priceStyles[0]?.slashWeight || 'Default',
                     'fontStyle': '',
                     'textTransform': '',
                     'fontFamily': 'Default',
@@ -1317,7 +1318,7 @@ const deprecatedContent = [
                     }
                 },
                 currTypography: {
-                    "fontWeight": attributes?.priceStyles[0]?.currWeight || '400',
+                    "fontWeight": attributes?.priceStyles[0]?.currWeight || 'Default',
                     'fontStyle': '',
                     'textTransform': '',
                     'fontFamily': 'Default',
@@ -1342,7 +1343,7 @@ const deprecatedContent = [
                     }
                 },
                 priceTypography: {
-                    "fontWeight": attributes?.priceStyles[0]?.valWeight || '400',
+                    "fontWeight": attributes?.priceStyles[0]?.valWeight || 'Default',
                     'fontStyle': '',
                     'textTransform': '',
                     'fontFamily': 'Default',
@@ -1367,7 +1368,7 @@ const deprecatedContent = [
                     }
                 },
                 dividerTypography: {
-                    "fontWeight": attributes?.priceStyles[0]?.divWeight || '400',
+                    "fontWeight": attributes?.priceStyles[0]?.divWeight || 'Default',
                     'fontStyle': '',
                     'textTransform': '',
                     'fontFamily': 'Default',
@@ -1392,7 +1393,7 @@ const deprecatedContent = [
                     }
                 },
                 durationTypography: {
-                    "fontWeight": attributes?.priceStyles[0]?.durWeight || '400',
+                    "fontWeight": attributes?.priceStyles[0]?.durWeight || 'Default',
                     'fontStyle': '',
                     'textTransform': '',
                     'fontFamily': 'Default',
@@ -1417,7 +1418,7 @@ const deprecatedContent = [
                     }
                 },
                 listTypography: {
-                    "fontWeight": attributes?.featureStyles[0]?.listWeight || '400',
+                    "fontWeight": attributes?.featureStyles[0]?.listWeight || 'Default',
                     'fontStyle': attributes?.featureStyles[0]?.listItemsStyle || '',
                     'textTransform': attributes?.featureStyles[0]?.listUpper || '',
                     'fontFamily': 'Default',
@@ -1442,7 +1443,7 @@ const deprecatedContent = [
                     }
                 },
                 descTypography: {
-                    "fontWeight": attributes?.descStyles[0]?.descWeight || '400',
+                    "fontWeight": attributes?.descStyles[0]?.descWeight || 'Default',
                     'fontStyle': attributes?.descStyles[0]?.descStyle || '',
                     'textTransform': '',
                     'fontFamily': 'Default',
@@ -1467,7 +1468,7 @@ const deprecatedContent = [
                     }
                 },
                 buttonTypography: {
-                    "fontWeight": attributes?.buttonStyles[0]?.btnWeight || '400',
+                    "fontWeight": attributes?.buttonStyles[0]?.btnWeight || 'Default',
                     'fontStyle': attributes?.buttonStyles[0]?.btnStyle || '',
                     'textTransform': attributes?.buttonStyles[0]?.btnUpper || '',
                     'fontFamily': 'Default',
@@ -1492,7 +1493,7 @@ const deprecatedContent = [
                     }
                 },
                 badgeTypography: {
-                    "fontWeight": attributes?.badgeStyles[0]?.badgeWeight || '400',
+                    "fontWeight": attributes?.badgeStyles[0]?.badgeWeight || 'Default',
                     'fontStyle': attributes?.badgeStyles[0]?.badgeStyle || '',
                     'textTransform': attributes?.badgeStyles[0]?.badgeUpper || '',
                     'fontFamily': 'Default',
