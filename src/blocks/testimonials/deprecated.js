@@ -437,11 +437,11 @@ const deprecatedContent = [
             let newAttributes = {
                 blockId: attributes.block_id ? `premium-testimonials-${attributes.block_id}` : '',
                 align: {
-                    Desktop: attributes?.align,
-                    Tablet: attributes?.align,
-                    Mobile: attributes?.align
+                    Desktop: attributes?.align || 'center',
+                    Tablet: attributes?.align || 'center',
+                    Mobile: attributes?.align || 'center'
                 },
-                imgBorder: {
+                imageBorder: {
                     "borderType": 'solid',
                     "borderColor": attributes?.imgBorderColor || '',
                     "borderWidth": {
@@ -521,8 +521,8 @@ const deprecatedContent = [
                 boxShadow: {
                     'color': attributes?.containerStyles[0].shadowColor || '',
                     'blur': attributes?.containerStyles[0].shadowBlur || '',
-                    'horizontal': attributes?.containerStyles[0].shadowHorizontal || '',
-                    'vertical': attributes?.containerStyles[0].shadowVertical || '',
+                    'horizontal': attributes?.containerStyles[0].shadowHorizontal || '0',
+                    'vertical': attributes?.containerStyles[0].shadowVertical || '0',
                     'position': attributes?.containerStyles[0].shadowPosition || ''
                 },
                 background: {
@@ -534,15 +534,15 @@ const deprecatedContent = [
                     'backgroundRepeat': attributes?.containerStyles[0].backgroundRepeat || '',
                     'backgroundSize': attributes?.containerStyles[0].backgroundSize || '',
                     'fixed': attributes?.containerStyles[0].fixed || false,
-                    'gradientLocationOne': attributes?.containerStyles[0].gradientLocationOne || '',
+                    'gradientLocationOne': attributes?.containerStyles[0].gradientLocationOne || '0',
                     'gradientColorTwo': attributes?.containerStyles[0].gradientColorTwo || '',
-                    'gradientLocationTwo': attributes?.containerStyles[0].gradientLocationTwo || '',
-                    'gradientAngle': attributes?.containerStyles[0].gradientAngle || '',
-                    'gradientPosition': attributes?.containerStyles[0].gradientPosition || '',
-                    'gradientType': attributes?.containerStyles[0].gradientType || ''
+                    'gradientLocationTwo': attributes?.containerStyles[0].gradientLocationTwo || '100',
+                    'gradientAngle': attributes?.containerStyles[0].gradientAngle || '180',
+                    'gradientPosition': attributes?.containerStyles[0].gradientPosition || 'center center',
+                    'gradientType': attributes?.containerStyles[0].gradientType || 'linear'
                 },
                 authorTypography: {
-                    fontWeight: attributes?.authorStyles[0].authorWeight || "400",
+                    fontWeight: attributes?.authorStyles[0].authorWeight || "Default",
                     fontStyle: attributes?.authorStyles[0].authorStyle || '',
                     letterSpacing: {
                         Desktop: attributes?.authorStyles[0].authorLetter || '',
@@ -613,7 +613,7 @@ const deprecatedContent = [
                     },
                 },
                 companyTypography: {
-                    fontWeight: "400",
+                    fontWeight: "Default",
                     fontStyle: '',
                     letterSpacing: {
                         Desktop: '',

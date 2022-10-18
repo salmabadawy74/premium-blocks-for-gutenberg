@@ -50865,11 +50865,11 @@ const deprecatedContent = [{
     let newAttributes = {
       blockId: attributes.block_id ? `premium-testimonials-${attributes.block_id}` : '',
       align: {
-        Desktop: attributes === null || attributes === void 0 ? void 0 : attributes.align,
-        Tablet: attributes === null || attributes === void 0 ? void 0 : attributes.align,
-        Mobile: attributes === null || attributes === void 0 ? void 0 : attributes.align
+        Desktop: (attributes === null || attributes === void 0 ? void 0 : attributes.align) || 'center',
+        Tablet: (attributes === null || attributes === void 0 ? void 0 : attributes.align) || 'center',
+        Mobile: (attributes === null || attributes === void 0 ? void 0 : attributes.align) || 'center'
       },
-      imgBorder: {
+      imageBorder: {
         "borderType": 'solid',
         "borderColor": (attributes === null || attributes === void 0 ? void 0 : attributes.imgBorderColor) || '',
         "borderWidth": {
@@ -50949,8 +50949,8 @@ const deprecatedContent = [{
       boxShadow: {
         'color': (attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].shadowColor) || '',
         'blur': (attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].shadowBlur) || '',
-        'horizontal': (attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].shadowHorizontal) || '',
-        'vertical': (attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].shadowVertical) || '',
+        'horizontal': (attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].shadowHorizontal) || '0',
+        'vertical': (attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].shadowVertical) || '0',
         'position': (attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].shadowPosition) || ''
       },
       background: {
@@ -50962,15 +50962,15 @@ const deprecatedContent = [{
         'backgroundRepeat': (attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].backgroundRepeat) || '',
         'backgroundSize': (attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].backgroundSize) || '',
         'fixed': (attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].fixed) || false,
-        'gradientLocationOne': (attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].gradientLocationOne) || '',
+        'gradientLocationOne': (attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].gradientLocationOne) || '0',
         'gradientColorTwo': (attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].gradientColorTwo) || '',
-        'gradientLocationTwo': (attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].gradientLocationTwo) || '',
-        'gradientAngle': (attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].gradientAngle) || '',
-        'gradientPosition': (attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].gradientPosition) || '',
-        'gradientType': (attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].gradientType) || ''
+        'gradientLocationTwo': (attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].gradientLocationTwo) || '100',
+        'gradientAngle': (attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].gradientAngle) || '180',
+        'gradientPosition': (attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].gradientPosition) || 'center center',
+        'gradientType': (attributes === null || attributes === void 0 ? void 0 : attributes.containerStyles[0].gradientType) || 'linear'
       },
       authorTypography: {
-        fontWeight: (attributes === null || attributes === void 0 ? void 0 : attributes.authorStyles[0].authorWeight) || "400",
+        fontWeight: (attributes === null || attributes === void 0 ? void 0 : attributes.authorStyles[0].authorWeight) || "Default",
         fontStyle: (attributes === null || attributes === void 0 ? void 0 : attributes.authorStyles[0].authorStyle) || '',
         letterSpacing: {
           Desktop: (attributes === null || attributes === void 0 ? void 0 : attributes.authorStyles[0].authorLetter) || '',
@@ -51041,7 +51041,7 @@ const deprecatedContent = [{
         }
       },
       companyTypography: {
-        fontWeight: "400",
+        fontWeight: "Default",
         fontStyle: '',
         letterSpacing: {
           Desktop: '',
@@ -52228,7 +52228,7 @@ function Edit(props) {
     authorImgId,
     authorImgUrl,
     imgSize,
-    imgBorder,
+    imageBorder,
     author,
     authorStyles,
     text,
@@ -52495,9 +52495,9 @@ function Edit(props) {
     defaultValue: 0
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_premium_border__WEBPACK_IMPORTED_MODULE_4__["default"], {
     label: __("Border", 'premium-blocks-for-gutenberg'),
-    value: imgBorder,
+    value: imageBorder,
     onChange: value => setAttributes({
-      imgBorder: value
+      imageBorder: value
     })
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelBody, {
     title: __("Company", 'premium-blocks-for-gutenberg'),
@@ -52646,7 +52646,7 @@ function Edit(props) {
     style: {
       width: imgSize + "px",
       height: imgSize + "px",
-      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_20__.borderCss)(imgBorder, props.deviceType)
+      ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_20__.borderCss)(imageBorder, props.deviceType)
     }
   }), !authorImgUrl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_default_image__WEBPACK_IMPORTED_MODULE_5__["default"], {
     className: className
@@ -52804,7 +52804,7 @@ const save = props => {
     blockId,
     authorImgUrl,
     imgSize,
-    imgBorder,
+    imageBorder,
     author,
     authorStyles,
     text,
@@ -52849,8 +52849,8 @@ const save = props => {
     src: `${authorImgUrl}`,
     alt: "Author",
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_6__.filterJsCss)({
-      borderStyle: imgBorder === null || imgBorder === void 0 ? void 0 : imgBorder.borderType,
-      borderColor: imgBorder === null || imgBorder === void 0 ? void 0 : imgBorder.borderColor,
+      borderStyle: imageBorder === null || imageBorder === void 0 ? void 0 : imageBorder.borderType,
+      borderColor: imageBorder === null || imageBorder === void 0 ? void 0 : imageBorder.borderColor,
       width: imgSize + "px",
       height: imgSize + "px"
     })
@@ -98978,7 +98978,7 @@ module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/s
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/testimonial","title":"Testimonial","category":"premium-blocks","attributes":{"blockId":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"align":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"authorImgId":{"type":"string"},"authorImgUrl":{"type":"string"},"imgSize":{"type":"number"},"imgBorder":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"author":{"type":"array","source":"children","selector":".premium-testimonial__author","default":"John Doe"},"authorStyles":{"type":"array","default":[{"authorTag":"h4","authorColor":"","authorComTag":"h5"}]},"padding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"bodyMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"text":{"type":"string","default":"Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."},"authorCom":{"type":"array","source":"children","selector":".premium-testimonial__author_comp","default":"Leap13"},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"contentStyle":{"type":"array","default":[{"bodyColor":"","bodyLine":"","bodyTop":"","bodyBottom":""}]},"bodySize":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}},"companyStyles":{"type":"array","default":[{"authorComTag":"h4","authorComColor":"","dashColor":"","urlCheck":false,"urlText":"","urlTarget":false}]},"authorComSize":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}},"quoteStyles":{"type":"array","default":[{"quotSize":2,"quotColor":"","quotOpacity":50}]},"boxShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":" "}},"background":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}},"authorTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"bodyTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"companyTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}}}}');
+module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/testimonial","title":"Testimonial","category":"premium-blocks","attributes":{"blockId":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"align":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"authorImgId":{"type":"string"},"authorImgUrl":{"type":"string"},"imgSize":{"type":"number"},"imageBorder":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"author":{"type":"array","source":"children","selector":".premium-testimonial__author","default":"John Doe"},"authorStyles":{"type":"array","default":[{"authorTag":"h4","authorColor":"","authorComTag":"h5"}]},"padding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"bodyMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"text":{"type":"string","default":"Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."},"authorCom":{"type":"array","source":"children","selector":".premium-testimonial__author_comp","default":"Leap13"},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"contentStyle":{"type":"array","default":[{"bodyColor":"","bodyLine":"","bodyTop":"","bodyBottom":""}]},"bodySize":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}},"companyStyles":{"type":"array","default":[{"authorComTag":"h4","authorComColor":"","dashColor":"","urlCheck":false,"urlText":"","urlTarget":false}]},"authorComSize":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}},"quoteStyles":{"type":"array","default":[{"quotSize":2,"quotColor":"","quotOpacity":50}]},"boxShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":" "}},"background":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}},"authorTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"bodyTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"companyTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}}}}');
 
 /***/ }),
 

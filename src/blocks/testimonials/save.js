@@ -13,7 +13,7 @@ const save = props => {
         blockId,
         authorImgUrl,
         imgSize,
-        imgBorder,
+        imageBorder,
         author,
         authorStyles,
         text,
@@ -67,8 +67,8 @@ const save = props => {
                                 src={`${authorImgUrl}`}
                                 alt="Author"
                                 style={filterJsCss({
-                                    borderStyle: imgBorder?.borderType,
-                                    borderColor: imgBorder?.borderColor,
+                                    borderStyle: imageBorder?.borderType,
+                                    borderColor: imageBorder?.borderColor,
                                     width: imgSize + "px",
                                     height: imgSize + "px"
                                 })}

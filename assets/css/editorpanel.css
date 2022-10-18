@@ -4006,7 +4006,8 @@ i.fipicon-angle-left:before {
   max-height: 360px;
   margin: 0;
   right: 0;
-  left: 0; }
+  left: 0;
+  overflow: auto; }
   .premium-typography-variations li {
     cursor: pointer;
     position: relative;

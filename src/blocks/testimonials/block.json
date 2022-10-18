@@ -29,7 +29,7 @@
         "imgSize": {
             "type": "number"
         },
-        "imgBorder": {
+        "imageBorder": {
             "type": "object",
             "default": {
                 "borderType": "none",
