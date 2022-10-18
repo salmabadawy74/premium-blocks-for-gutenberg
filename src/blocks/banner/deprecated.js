@@ -522,11 +522,6 @@ const deprecatedContent = [
                     "Tablet": attributes.contentAlign || 'left',
                     "Mobile": attributes.contentAlign || 'left',
                 },
-                verAlign: {
-                    "Desktop": attributes.verAlign || 'top',
-                    "Tablet": attributes.verAlign || 'top',
-                    "Mobile": attributes.verAlign || 'top',
-                },
                 filter: {
                     'contrast': '100',
                     'blur': '0',
