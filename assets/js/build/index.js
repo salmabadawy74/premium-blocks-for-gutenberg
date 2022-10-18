@@ -9831,19 +9831,19 @@ const deprecatedContent = [{
       },
       titleTextShadow: {
         'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl7 = attributes.titleStyles) === null || _attributes$titleStyl7 === void 0 ? void 0 : _attributes$titleStyl7[0].shadowColor) || '',
-        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl8 = attributes.titleStyles) === null || _attributes$titleStyl8 === void 0 ? void 0 : _attributes$titleStyl8[0].shadowBlur) || '10',
+        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl8 = attributes.titleStyles) === null || _attributes$titleStyl8 === void 0 ? void 0 : _attributes$titleStyl8[0].shadowBlur) || '',
         'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl9 = attributes.titleStyles) === null || _attributes$titleStyl9 === void 0 ? void 0 : _attributes$titleStyl9[0].shadowHorizontal) || '0',
         'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl10 = attributes.titleStyles) === null || _attributes$titleStyl10 === void 0 ? void 0 : _attributes$titleStyl10[0].shadowVertical) || '0'
       },
       descTextShadow: {
         'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle7 = attributes.descStyles) === null || _attributes$descStyle7 === void 0 ? void 0 : _attributes$descStyle7[0].descShadowColor) || '',
-        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle8 = attributes.descStyles) === null || _attributes$descStyle8 === void 0 ? void 0 : _attributes$descStyle8[0].descShadowBlur) || '10',
+        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle8 = attributes.descStyles) === null || _attributes$descStyle8 === void 0 ? void 0 : _attributes$descStyle8[0].descShadowBlur) || '',
         'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle9 = attributes.descStyles) === null || _attributes$descStyle9 === void 0 ? void 0 : _attributes$descStyle9[0].descShadowHorizontal) || '0',
         'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle10 = attributes.descStyles) === null || _attributes$descStyle10 === void 0 ? void 0 : _attributes$descStyle10[0].descShadowVertical) || '0'
       },
       containerShadow: {
         'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container7 = attributes.containerStyles) === null || _attributes$container7 === void 0 ? void 0 : _attributes$container7[0].containerShadowColor) || '',
-        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container8 = attributes.containerStyles) === null || _attributes$container8 === void 0 ? void 0 : _attributes$container8[0].containerShadowBlur) || '10',
+        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container8 = attributes.containerStyles) === null || _attributes$container8 === void 0 ? void 0 : _attributes$container8[0].containerShadowBlur) || '',
         'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container9 = attributes.containerStyles) === null || _attributes$container9 === void 0 ? void 0 : _attributes$container9[0].containerShadowHorizontal) || '0',
         'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container10 = attributes.containerStyles) === null || _attributes$container10 === void 0 ? void 0 : _attributes$container10[0].containerShadowVertical) || '0',
         'position': (attributes === null || attributes === void 0 ? void 0 : (_attributes$container11 = attributes.containerStyles) === null || _attributes$container11 === void 0 ? void 0 : _attributes$container11[0].containerShadowPosition) || ''
@@ -43738,6 +43738,7 @@ const deprecatedContent = [{
 
     let newAttributes = {
       blockId: attributes.block_id ? "premium-pricing-table-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_1__.generateBlockId)(attributes.block_id) : '',
+      badgeChecked: true,
       titleTextShadow: {
         'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl = attributes.titleStyles[0]) === null || _attributes$titleStyl === void 0 ? void 0 : _attributes$titleStyl.titleShadowColor) || '',
         'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl2 = attributes.titleStyles[0]) === null || _attributes$titleStyl2 === void 0 ? void 0 : _attributes$titleStyl2.titleShadowBlur) || '',
@@ -44076,7 +44077,7 @@ const deprecatedContent = [{
         unit: 'px'
       },
       titleTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl11 = attributes.titleStyles[0]) === null || _attributes$titleStyl11 === void 0 ? void 0 : _attributes$titleStyl11.titleWeight) || '400',
+        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl11 = attributes.titleStyles[0]) === null || _attributes$titleStyl11 === void 0 ? void 0 : _attributes$titleStyl11.titleWeight) || 'Default',
         'fontStyle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl12 = attributes.titleStyles[0]) === null || _attributes$titleStyl12 === void 0 ? void 0 : _attributes$titleStyl12.titleStyle) || '',
         'textTransform': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl13 = attributes.titleStyles[0]) === null || _attributes$titleStyl13 === void 0 ? void 0 : _attributes$titleStyl13.titleUpper) || '',
         'fontFamily': 'Default',
@@ -44101,7 +44102,7 @@ const deprecatedContent = [{
         }
       },
       slashTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl7 = attributes.priceStyles[0]) === null || _attributes$priceStyl7 === void 0 ? void 0 : _attributes$priceStyl7.slashWeight) || '400',
+        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl7 = attributes.priceStyles[0]) === null || _attributes$priceStyl7 === void 0 ? void 0 : _attributes$priceStyl7.slashWeight) || 'Default',
         'fontStyle': '',
         'textTransform': '',
         'fontFamily': 'Default',
@@ -44126,7 +44127,7 @@ const deprecatedContent = [{
         }
       },
       currTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl12 = attributes.priceStyles[0]) === null || _attributes$priceStyl12 === void 0 ? void 0 : _attributes$priceStyl12.currWeight) || '400',
+        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl12 = attributes.priceStyles[0]) === null || _attributes$priceStyl12 === void 0 ? void 0 : _attributes$priceStyl12.currWeight) || 'Default',
         'fontStyle': '',
         'textTransform': '',
         'fontFamily': 'Default',
@@ -44151,7 +44152,7 @@ const deprecatedContent = [{
         }
       },
       priceTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl17 = attributes.priceStyles[0]) === null || _attributes$priceStyl17 === void 0 ? void 0 : _attributes$priceStyl17.valWeight) || '400',
+        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl17 = attributes.priceStyles[0]) === null || _attributes$priceStyl17 === void 0 ? void 0 : _attributes$priceStyl17.valWeight) || 'Default',
         'fontStyle': '',
         'textTransform': '',
         'fontFamily': 'Default',
@@ -44176,7 +44177,7 @@ const deprecatedContent = [{
         }
       },
       dividerTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl22 = attributes.priceStyles[0]) === null || _attributes$priceStyl22 === void 0 ? void 0 : _attributes$priceStyl22.divWeight) || '400',
+        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl22 = attributes.priceStyles[0]) === null || _attributes$priceStyl22 === void 0 ? void 0 : _attributes$priceStyl22.divWeight) || 'Default',
         'fontStyle': '',
         'textTransform': '',
         'fontFamily': 'Default',
@@ -44201,7 +44202,7 @@ const deprecatedContent = [{
         }
       },
       durationTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl27 = attributes.priceStyles[0]) === null || _attributes$priceStyl27 === void 0 ? void 0 : _attributes$priceStyl27.durWeight) || '400',
+        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl27 = attributes.priceStyles[0]) === null || _attributes$priceStyl27 === void 0 ? void 0 : _attributes$priceStyl27.durWeight) || 'Default',
         'fontStyle': '',
         'textTransform': '',
         'fontFamily': 'Default',
@@ -44226,7 +44227,7 @@ const deprecatedContent = [{
         }
       },
       listTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt10 = attributes.featureStyles[0]) === null || _attributes$featureSt10 === void 0 ? void 0 : _attributes$featureSt10.listWeight) || '400',
+        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt10 = attributes.featureStyles[0]) === null || _attributes$featureSt10 === void 0 ? void 0 : _attributes$featureSt10.listWeight) || 'Default',
         'fontStyle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt11 = attributes.featureStyles[0]) === null || _attributes$featureSt11 === void 0 ? void 0 : _attributes$featureSt11.listItemsStyle) || '',
         'textTransform': (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt12 = attributes.featureStyles[0]) === null || _attributes$featureSt12 === void 0 ? void 0 : _attributes$featureSt12.listUpper) || '',
         'fontFamily': 'Default',
@@ -44251,7 +44252,7 @@ const deprecatedContent = [{
         }
       },
       descTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle7 = attributes.descStyles[0]) === null || _attributes$descStyle7 === void 0 ? void 0 : _attributes$descStyle7.descWeight) || '400',
+        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle7 = attributes.descStyles[0]) === null || _attributes$descStyle7 === void 0 ? void 0 : _attributes$descStyle7.descWeight) || 'Default',
         'fontStyle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle8 = attributes.descStyles[0]) === null || _attributes$descStyle8 === void 0 ? void 0 : _attributes$descStyle8.descStyle) || '',
         'textTransform': '',
         'fontFamily': 'Default',
@@ -44276,7 +44277,7 @@ const deprecatedContent = [{
         }
       },
       buttonTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty14 = attributes.buttonStyles[0]) === null || _attributes$buttonSty14 === void 0 ? void 0 : _attributes$buttonSty14.btnWeight) || '400',
+        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty14 = attributes.buttonStyles[0]) === null || _attributes$buttonSty14 === void 0 ? void 0 : _attributes$buttonSty14.btnWeight) || 'Default',
         'fontStyle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty15 = attributes.buttonStyles[0]) === null || _attributes$buttonSty15 === void 0 ? void 0 : _attributes$buttonSty15.btnStyle) || '',
         'textTransform': (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty16 = attributes.buttonStyles[0]) === null || _attributes$buttonSty16 === void 0 ? void 0 : _attributes$buttonSty16.btnUpper) || '',
         'fontFamily': 'Default',
@@ -44301,7 +44302,7 @@ const deprecatedContent = [{
         }
       },
       badgeTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$badgeStyl = attributes.badgeStyles[0]) === null || _attributes$badgeStyl === void 0 ? void 0 : _attributes$badgeStyl.badgeWeight) || '400',
+        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$badgeStyl = attributes.badgeStyles[0]) === null || _attributes$badgeStyl === void 0 ? void 0 : _attributes$badgeStyl.badgeWeight) || 'Default',
         'fontStyle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$badgeStyl2 = attributes.badgeStyles[0]) === null || _attributes$badgeStyl2 === void 0 ? void 0 : _attributes$badgeStyl2.badgeStyle) || '',
         'textTransform': (attributes === null || attributes === void 0 ? void 0 : (_attributes$badgeStyl3 = attributes.badgeStyles[0]) === null || _attributes$badgeStyl3 === void 0 ? void 0 : _attributes$badgeStyl3.badgeUpper) || '',
         'fontFamily': 'Default',

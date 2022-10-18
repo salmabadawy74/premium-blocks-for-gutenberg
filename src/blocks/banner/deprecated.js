@@ -631,19 +631,19 @@ const deprecatedContent = [
                 },
                 titleTextShadow: {
                     'color': attributes?.titleStyles?.[0].shadowColor || '',
-                    'blur': attributes?.titleStyles?.[0].shadowBlur || '10',
+                    'blur': attributes?.titleStyles?.[0].shadowBlur || '',
                     'horizontal': attributes?.titleStyles?.[0].shadowHorizontal || '0',
                     'vertical': attributes?.titleStyles?.[0].shadowVertical || '0',
                 },
                 descTextShadow: {
                     'color': attributes?.descStyles?.[0].descShadowColor || '',
-                    'blur': attributes?.descStyles?.[0].descShadowBlur || '10',
+                    'blur': attributes?.descStyles?.[0].descShadowBlur || '',
                     'horizontal': attributes?.descStyles?.[0].descShadowHorizontal || '0',
                     'vertical': attributes?.descStyles?.[0].descShadowVertical || '0',
                 },
                 containerShadow: {
                     'color': attributes?.containerStyles?.[0].containerShadowColor || '',
-                    'blur': attributes?.containerStyles?.[0].containerShadowBlur || '10',
+                    'blur': attributes?.containerStyles?.[0].containerShadowBlur || '',
                     'horizontal': attributes?.containerStyles?.[0].containerShadowHorizontal || '0',
                     'vertical': attributes?.containerStyles?.[0].containerShadowVertical || '0',
                     'position': attributes?.containerStyles?.[0].containerShadowPosition || ''
