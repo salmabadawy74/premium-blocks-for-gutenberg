@@ -375,12 +375,12 @@ const deprecated = [
         ),
         migrate: (attributes) => {
             let newAttributes = {
+                blockId: attributes.block_id ? `premium-lottie-${attributes.block_id.split('-')[6]}` : '',
                 lottieAlign: {
-                    Desktop: attributes.align,
-                    Tablet: attributes.align,
-                    Mobile: attributes.align,
+                    Desktop: attributes.align || "center",
+                    Tablet: attributes.align || "center",
+                    Mobile: attributes.align || "center",
                 },
-
                 padding: {
                     Desktop: {
                         top: attributes.paddingT,
@@ -400,10 +400,10 @@ const deprecated = [
                         bottom: attributes.paddingBMobile,
                         left: attributes.paddingLMobile,
                     },
-                    unit: attributes.paddingU,
+                    unit: attributes.paddingU || 'px',
                 },
                 border: {
-                    borderType: attributes.lottieStyles[0].borderType,
+                    borderType: attributes.lottieStyles[0].borderType || 'none',
                     borderColor: attributes.lottieStyles[0].borderColor,
                     borderWidth: {
                         Desktop: {
@@ -461,10 +461,10 @@ const deprecated = [
                     hue: attributes.lottieStyles[0].hueH,
                 },
                 size: {
-                    Desktop: attributes.lottieStyles[0].size,
-                    Tablet: attributes.lottieStyles[0].sizeTablet,
-                    Mobile: attributes.lottieStyles[0].sizeMobile,
-                    unit: attributes.lottieStyles[0].sizeUnit,
+                    Desktop: attributes.lottieStyles[0].size || "200",
+                    Tablet: attributes.lottieStyles[0].sizeTablet || "200",
+                    Mobile: attributes.lottieStyles[0].sizeMobile || "200",
+                    unit: attributes.lottieStyles[0].sizeUnit || "px",
                 },
             };
             return Object.assign(attributes, newAttributes);
