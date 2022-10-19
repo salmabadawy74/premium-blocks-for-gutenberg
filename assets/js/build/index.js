@@ -54044,7 +54044,7 @@ const deprecatedContent = [{
     let newAttributes = {
       blockId: attributes.block_id ? `premium-video-box-${attributes.block_id.split('-')[6]}` : '',
       videoDescTypography: {
-        'fontWeight': attributes.descStyles[0].videoDescWeight,
+        'fontWeight': attributes.descStyles[0].videoDescWeight || 'Default',
         'fontStyle': attributes.descStyles[0].videoDescStyle,
         'textTransform': attributes.descStyles[0].videoDescUpper,
         'letterSpacing': {
@@ -54053,7 +54053,7 @@ const deprecatedContent = [{
           "Mobile": attributes.descStyles[0].videoDescLetter,
           'unit': 'px'
         },
-        'fontFamily': attributes.descStyles[0].videoDescFamily,
+        'fontFamily': attributes.descStyles[0].videoDescFamily || 'Default',
         'lineHeight': {
           'Desktop': '',
           "Tablet": '',
@@ -54069,7 +54069,7 @@ const deprecatedContent = [{
       },
       playBorder: {
         borderColor: attributes.playStyles[0].playBorderColor,
-        borderType: attributes.playStyles[0].playBorderType,
+        borderType: attributes.playStyles[0].playBorderType || 'none',
         borderRadius: {
           "Desktop": {
             top: attributes.playStyles[0].playBorderRadius,
@@ -54113,7 +54113,7 @@ const deprecatedContent = [{
       },
       boxBorder: {
         borderColor: attributes.boxStyles[0].boxBorderColor,
-        borderType: attributes.boxStyles[0].boxBorderType,
+        borderType: attributes.boxStyles[0].boxBorderType || 'none',
         borderRadius: {
           "Desktop": {
             top: attributes.boxStyles[0].boxBorderRadius,
@@ -55368,6 +55368,7 @@ function Edit(props) {
         setTimeout(() => {
           if ("self" !== type) {
             video.setAttribute("src", src.replace("autoplay=0", "autoplay=1"));
+            console.log(src);
           } else {
             videoBox.getElementsByClassName("premium-video-box__overlay")[0].remove();
             video.play();
@@ -55786,13 +55787,12 @@ function Edit(props) {
       " premium-mobile-hidden": hideMobile
     })
   }), {
+    ref: videoboxRef,
+    "data-type": videoType,
     style: { ...(0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_18__.borderCss)(boxBorder, props.deviceType),
       boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical || 0}px ${boxShadow.blur || 10}px ${boxShadow.color} ${boxShadow.position}`
     }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    ref: videoboxRef,
-    "data-type": videoType
-  }, !videoURL && "self" !== videoType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Placeholder, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, !videoURL && "self" !== videoType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Placeholder, {
     label: __('Video Box ', 'premium-blocks-for-gutenberg'),
     instructions: __("Enter video ID, for example: z1hQgVpfTKU or Embed URL", 'premium-blocks-for-gutenberg'),
     className: className
