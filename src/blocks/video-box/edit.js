@@ -71,6 +71,7 @@ function Edit(props) {
                 setTimeout(() => {
                     if ("self" !== type) {
                         video.setAttribute("src", src.replace("autoplay=0", "autoplay=1"));
+                        console.log(src)
                     } else {
                         videoBox
                             .getElementsByClassName("premium-video-box__overlay")[0]
@@ -492,13 +493,15 @@ function Edit(props) {
                         }
                     ),
                 })}
+                ref={videoboxRef}
+                data-type={videoType}
                 style={{
                     ...borderCss(boxBorder, props.deviceType),
                     boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical ||
                         0}px ${boxShadow.blur || 10}px ${boxShadow.color} ${boxShadow.position}`,
                 }}
             >
-                <div ref={videoboxRef} data-type={videoType}>
+                <div >
                     {
                         !videoURL && "self" !== videoType && (
                             <Placeholder
