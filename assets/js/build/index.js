@@ -4045,7 +4045,7 @@ const deprecated = [{
         "unit": "px"
       },
       triggerBorder: {
-        "borderType": attributes.triggerStyles[0].borderType || '',
+        "borderType": attributes.triggerStyles[0].borderType || 'none',
         "borderColor": attributes.triggerStyles[0].borderColor || '',
         "borderWidth": {
           Desktop: {
@@ -4089,7 +4089,7 @@ const deprecated = [{
         }
       },
       triggerBorderH: {
-        "borderType": attributes.triggerStyles[0].borderTypeH || '',
+        "borderType": attributes.triggerStyles[0].borderTypeH || 'none',
         "borderColor": attributes.triggerStyles[0].borderColorH || '',
         "borderWidth": {
           Desktop: {
@@ -4133,7 +4133,7 @@ const deprecated = [{
         }
       },
       headerBorder: {
-        "borderType": attributes.headerStyles[0].borderType || '',
+        "borderType": attributes.headerStyles[0].borderType || 'none',
         "borderColor": attributes.headerStyles[0].borderColor || '',
         "borderWidth": {
           Desktop: {
@@ -4177,7 +4177,7 @@ const deprecated = [{
         }
       },
       upperBorder: {
-        "borderType": attributes.upperStyles[0].borderType || '',
+        "borderType": attributes.upperStyles[0].borderType || 'none',
         "borderColor": attributes.upperStyles[0].borderColor || '',
         "borderWidth": {
           Desktop: {
@@ -4221,7 +4221,7 @@ const deprecated = [{
         }
       },
       lowerBorder: {
-        "borderType": attributes.lowerStyles[0].borderType || '',
+        "borderType": attributes.lowerStyles[0].borderType || 'none',
         "borderColor": attributes.lowerStyles[0].borderColor || '',
         "borderWidth": {
           Desktop: {
@@ -4265,7 +4265,7 @@ const deprecated = [{
         }
       },
       modalBorder: {
-        "borderType": attributes.modalStyles[0].borderType || '',
+        "borderType": attributes.modalStyles[0].borderType || 'none',
         "borderColor": attributes.modalStyles[0].borderColor || '',
         "borderWidth": {
           Desktop: {
@@ -4345,7 +4345,7 @@ const deprecated = [{
         'vertical': attributes.triggerStyles[0].textShadowVertical || ''
       },
       triggerTypography: {
-        "fontWeight": attributes.triggerStyles[0].triggerWeight || '',
+        "fontWeight": attributes.triggerStyles[0].triggerWeight || 'Default',
         'fontStyle': attributes.triggerStyles[0].triggerStyle || '',
         'textTransform': attributes.triggerStyles[0].triggerUpper || '',
         'letterSpacing': {
@@ -4354,7 +4354,7 @@ const deprecated = [{
           "Mobile": attributes.triggerStyles[0].triggerSpacing || '',
           "unit": 'px'
         },
-        'fontFamily': attributes.triggerStyles[0].triggerFamily || '',
+        'fontFamily': attributes.triggerStyles[0].triggerFamily || 'Default',
         'lineHeight': {
           'Desktop': '',
           "Tablet": '',
@@ -4370,7 +4370,7 @@ const deprecated = [{
         }
       },
       headerTypography: {
-        "fontWeight": attributes.headerStyles[0].headerWeight || '',
+        "fontWeight": attributes.headerStyles[0].headerWeight || 'Default',
         'fontStyle': attributes.headerStyles[0].headerStyle || '',
         'textTransform': attributes.headerStyles[0].headerUpper || '',
         'letterSpacing': {
@@ -4379,7 +4379,7 @@ const deprecated = [{
           "Mobile": attributes.headerStyles[0].headerSpacing || '',
           "unit": 'px'
         },
-        'fontFamily': attributes.headerStyles[0].headerFamily || '',
+        'fontFamily': attributes.headerStyles[0].headerFamily || 'Default',
         'lineHeight': {
           'Desktop': '',
           "Tablet": '',
@@ -4395,7 +4395,7 @@ const deprecated = [{
         }
       },
       lowerTypography: {
-        "fontWeight": attributes.lowerStyles[0].lowerSizeWeight || '',
+        "fontWeight": attributes.lowerStyles[0].lowerSizeWeight || 'Default',
         'fontStyle': attributes.lowerStyles[0].lowerSizeStyle || '',
         'textTransform': '',
         'letterSpacing': {
@@ -4404,7 +4404,7 @@ const deprecated = [{
           "Mobile": attributes.lowerStyles[0].lowerSizeSpacing || '',
           "unit": 'px'
         },
-        'fontFamily': '',
+        'fontFamily': 'Default',
         'lineHeight': {
           'Desktop': '',
           "Tablet": '',
@@ -4420,7 +4420,7 @@ const deprecated = [{
         }
       },
       modalTypography: {
-        "fontWeight": attributes.modalStyles[0].modalWeight || '',
+        "fontWeight": attributes.modalStyles[0].modalWeight || 'Default',
         'fontStyle': attributes.modalStyles[0].modalStyle || '',
         'textTransform': attributes.modalStyles[0].modalUpper || '',
         'letterSpacing': {
@@ -4429,7 +4429,7 @@ const deprecated = [{
           "Mobile": attributes.modalStyles[0].modalSpacing || '',
           "unit": 'px'
         },
-        'fontFamily': attributes.modalStyles[0].modalFamily || '',
+        'fontFamily': attributes.modalStyles[0].modalFamily || 'Default',
         'lineHeight': {
           'Desktop': '',
           "Tablet": '',
@@ -4448,13 +4448,13 @@ const deprecated = [{
         "Desktop": attributes.contentStyles[0].iconSize || '',
         'Tablet': attributes.contentStyles[0].iconSizeTablet || '',
         'Mobile': attributes.contentStyles[0].iconSizeMobile || '',
-        'unit': attributes.contentStyles[0].iconSizeUnit || ''
+        'unit': attributes.contentStyles[0].iconSizeUnit || 'px'
       },
       imageWidth: {
         "Desktop": attributes.triggerSettings[0].imageWidth || '',
         'Tablet': attributes.triggerSettings[0].imageWidthTablet || '',
         'Mobile': attributes.triggerSettings[0].imageWidthMobile || '',
-        'unit': ''
+        'unit': 'px'
       },
       modalWidth: {
         "Desktop": attributes.modalStyles[0].modalWidth || '',
@@ -54072,10 +54072,10 @@ const deprecatedContent = [{
         borderType: attributes.playStyles[0].playBorderType || 'none',
         borderRadius: {
           "Desktop": {
-            top: attributes.playStyles[0].playBorderRadius,
-            right: attributes.playStyles[0].playBorderRadius,
-            bottom: attributes.playStyles[0].playBorderRadius,
-            left: attributes.playStyles[0].playBorderRadius
+            top: attributes.playStyles[0].playBorderRadius || '100',
+            right: attributes.playStyles[0].playBorderRadius || '100',
+            bottom: attributes.playStyles[0].playBorderRadius || '100',
+            left: attributes.playStyles[0].playBorderRadius || '100'
           },
           "Tablet": {
             top: "",
