@@ -436,6 +436,7 @@ const deprecatedContent = [
         migrate: attributes => {
             let newAttributes = {
                 blockId: attributes.block_id ? `premium-testimonials-${attributes.block_id}` : '',
+                text: "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.",
                 align: {
                     Desktop: attributes?.align || 'center',
                     Tablet: attributes?.align || 'center',

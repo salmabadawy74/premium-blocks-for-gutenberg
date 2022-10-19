@@ -929,7 +929,7 @@ const deprecatedContent = [
         migrate: (attributes) => {
             let newAttributes = {
                 blockId: attributes.block_id ? "premium-pricing-table-" + generateBlockId(attributes.block_id) : '',
-                badgeChecked: true,
+                badgeChecked: attributes.badgeChecked || true,
                 titleTextShadow: {
                     'color': attributes?.titleStyles[0]?.titleShadowColor || '',
                     'blur': attributes?.titleStyles[0]?.titleShadowBlur || '',
