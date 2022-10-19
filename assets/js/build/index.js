@@ -25971,10 +25971,10 @@ const new_Deprecated_Attributes_0_1 = {
     }
   },
   fancyTextAlign: {
-    typeesktop: "center",
-    T: "object",
+    type: "object",
     default: {
-      Dablet: "center",
+      Desktop: "center",
+      Tablet: "center",
       Mobile: "center"
     }
   },
@@ -25991,8 +25991,19 @@ const deprecated = [{
   attributes: Object.assign(deprecated_fancyAttributes, new_Deprecated_Attributes_0_1),
   migrate: attributes => {
     let new_Attributes = {
+      blockId: attributes.block_id ? `premium-block-${attributes.block_id.split('-')[6]}` : '',
+      fancyContentAlign: {
+        "Desktop": attributes.align || 'center',
+        "Tablet": attributes.align || 'center',
+        "Mobile": attributes.align || 'center'
+      },
+      fancyTextAlign: {
+        "Desktop": attributes.fancyalign || 'center',
+        "Tablet": attributes.fancyalign || 'center',
+        "Mobile": attributes.fancyalign || 'center'
+      },
       prefixTypography: {
-        "fontWeight": attributes.PreStyles[0].textWeight,
+        "fontWeight": attributes.PreStyles[0].textWeight || 'Default',
         'fontStyle': attributes.PreStyles[0].textStyle,
         'letterSpacing': {
           'Desktop': attributes.PreStyles[0].textLetter,
@@ -26017,7 +26028,7 @@ const deprecated = [{
         }
       },
       fancyTextTypography: {
-        "fontWeight": attributes.fancyStyles[0].fancyTextWeight,
+        "fontWeight": attributes.fancyStyles[0].fancyTextWeight || 'Default',
         'fontStyle': attributes.fancyStyles[0].fancyTextStyle,
         'letterSpacing': {
           'Desktop': attributes.fancyStyles[0].fancyTextLetter,
@@ -26046,16 +26057,6 @@ const deprecated = [{
         'blur': attributes.fancyStyles[0].shadowBlur,
         'horizontal': attributes.fancyStyles[0].shadowHorizontal,
         'vertical': attributes.fancyStyles[0].shadowVertical
-      },
-      fancyTextAlign: {
-        Desktop: attributes.fancyalign,
-        Tablet: attributes.fancyalign,
-        Mobile: attributes.fancyalign
-      },
-      fancyContentAlign: {
-        Desktop: attributes.align,
-        Tablet: attributes.align,
-        Mobile: attributes.align
       }
     };
     return Object.assign(attributes, new_Attributes);
