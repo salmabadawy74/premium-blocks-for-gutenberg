@@ -322,10 +322,10 @@ const new_Deprecated_Attributes_0_1 = {
         }
     },
     fancyTextAlign: {
-        typeesktop: "center",
-        T: "object",
+        type: "object",
         default: {
-            Dablet: "center",
+            Desktop: "center",
+            Tablet: "center",
             Mobile: "center"
         }
     },
@@ -344,8 +344,19 @@ const deprecated = [
         attributes: Object.assign(deprecated_fancyAttributes, new_Deprecated_Attributes_0_1),
         migrate: attributes => {
             let new_Attributes = {
+                blockId: attributes.block_id ? `premium-block-${attributes.block_id.split('-')[6]}` : '',
+                fancyContentAlign: {
+                    "Desktop": attributes.align || 'center',
+                    "Tablet": attributes.align || 'center',
+                    "Mobile": attributes.align || 'center',
+                },
+                fancyTextAlign: {
+                    "Desktop": attributes.fancyalign || 'center',
+                    "Tablet": attributes.fancyalign || 'center',
+                    "Mobile": attributes.fancyalign || 'center',
+                },
                 prefixTypography: {
-                    "fontWeight": attributes.PreStyles[0].textWeight,
+                    "fontWeight": attributes.PreStyles[0].textWeight || 'Default',
                     'fontStyle': attributes.PreStyles[0].textStyle,
                     'letterSpacing': {
                         'Desktop': attributes.PreStyles[0].textLetter,
@@ -370,7 +381,7 @@ const deprecated = [
                     }
                 },
                 fancyTextTypography: {
-                    "fontWeight": attributes.fancyStyles[0].fancyTextWeight,
+                    "fontWeight": attributes.fancyStyles[0].fancyTextWeight || 'Default',
                     'fontStyle': attributes.fancyStyles[0].fancyTextStyle,
                     'letterSpacing': {
                         'Desktop': attributes.fancyStyles[0].fancyTextLetter,
@@ -399,18 +410,7 @@ const deprecated = [
                     'blur': attributes.fancyStyles[0].shadowBlur,
                     'horizontal': attributes.fancyStyles[0].shadowHorizontal,
                     'vertical': attributes.fancyStyles[0].shadowVertical
-                },
-                fancyTextAlign: {
-                    Desktop: attributes.fancyalign,
-                    Tablet: attributes.fancyalign,
-                    Mobile: attributes.fancyalign
-                },
-                fancyContentAlign: {
-                    Desktop: attributes.align,
-                    Tablet: attributes.align,
-                    Mobile: attributes.align,
-
-                },
+                }
             }
             return Object.assign(attributes, new_Attributes)
         },
@@ -516,71 +516,71 @@ const deprecated = [
                             </span>
                         </div>
                     ) : (
-                        <div
-                            id={`premium-fancy-text-${block_id}`}
-                            className={`premium-fancy-text premium-fancy-slide`}
-                            style={{
-                                textAlign: align,
-
-                            }}
-                            data-effect={`${effect}`}
-                            data-strings={`${repeaterFancyText.map(
-                                (item, index) => {
-                                    return item.title;
-                                }
-                            )}`}
-                            data-animationspeed={`${animationSpeed}`}
-                            data-pausetime={`${pauseTime}`}
-                            data-hoverpause={`${hoverPause}`}
-                        >
-                            <span className={`premium-fancy-text-prefix-text`}
-                                style={{
-                                    color: PreStyles[0].textColor,
-                                    fontWeight: PreStyles[0].textWeight,
-                                    letterSpacing: `${PreStyles[0].textLetter}px`,
-                                    textTransform: `${PreStyles[0].textUpper ? "uppercase" : "none"}`,
-                                    fontStyle: PreStyles[0].textStyle,
-                                    backgroundColor: PreStyles[0].textBGColor
-                                }}
-                            >
-                                {prefix}{" "}
-                            </span>
                             <div
-                                className={`premium-fancy-text-title-slide`}
+                                id={`premium-fancy-text-${block_id}`}
+                                className={`premium-fancy-text premium-fancy-slide`}
                                 style={{
-                                    textAlign: fancyalign,
-                                    color: fancyStyles[0].fancyTextColor,
-                                    fontWeight: fancyStyles[0].fancyTextWeight,
-                                    letterSpacing: `${fancyStyles[0].fancyTextLetter}px`,
-                                    textTransform: `${fancyStyles[0].fancyTextUpper ? "uppercase" : "none"}`,
-                                    fontStyle: `${fancyStyles[0].fancyTextStyle}`,
-                                    backgroundColor: `${fancyStyles[0].fancyTextBGColor}`,
-                                    textShadow: `${fancyStyles[0].shadowHorizontal}px ${fancyStyles[0].shadowVertical}px ${fancyStyles[0].shadowBlur}px ${fancyStyles[0].shadowColor}`
+                                    textAlign: align,
+
                                 }}
+                                data-effect={`${effect}`}
+                                data-strings={`${repeaterFancyText.map(
+                                    (item, index) => {
+                                        return item.title;
+                                    }
+                                )}`}
+                                data-animationspeed={`${animationSpeed}`}
+                                data-pausetime={`${pauseTime}`}
+                                data-hoverpause={`${hoverPause}`}
                             >
-                                <ul
-                                    className={`premium-fancy-text-title-slide-list`}
+                                <span className={`premium-fancy-text-prefix-text`}
+                                    style={{
+                                        color: PreStyles[0].textColor,
+                                        fontWeight: PreStyles[0].textWeight,
+                                        letterSpacing: `${PreStyles[0].textLetter}px`,
+                                        textTransform: `${PreStyles[0].textUpper ? "uppercase" : "none"}`,
+                                        fontStyle: PreStyles[0].textStyle,
+                                        backgroundColor: PreStyles[0].textBGColor
+                                    }}
                                 >
-                                    {repeaterFancyText.map((item, index) => {
-                                        return <li>{item.title}</li>;
-                                    })}
-                                </ul>
+                                    {prefix}{" "}
+                                </span>
+                                <div
+                                    className={`premium-fancy-text-title-slide`}
+                                    style={{
+                                        textAlign: fancyalign,
+                                        color: fancyStyles[0].fancyTextColor,
+                                        fontWeight: fancyStyles[0].fancyTextWeight,
+                                        letterSpacing: `${fancyStyles[0].fancyTextLetter}px`,
+                                        textTransform: `${fancyStyles[0].fancyTextUpper ? "uppercase" : "none"}`,
+                                        fontStyle: `${fancyStyles[0].fancyTextStyle}`,
+                                        backgroundColor: `${fancyStyles[0].fancyTextBGColor}`,
+                                        textShadow: `${fancyStyles[0].shadowHorizontal}px ${fancyStyles[0].shadowVertical}px ${fancyStyles[0].shadowBlur}px ${fancyStyles[0].shadowColor}`
+                                    }}
+                                >
+                                    <ul
+                                        className={`premium-fancy-text-title-slide-list`}
+                                    >
+                                        {repeaterFancyText.map((item, index) => {
+                                            return <li>{item.title}</li>;
+                                        })}
+                                    </ul>
+                                </div>
+                                <span className={`premium-fancy-text-suffix-text`}
+                                    style={{
+                                        color: PreStyles[0].textColor,
+                                        fontWeight: PreStyles[0].textWeight,
+                                        letterSpacing: `${PreStyles[0].textLetter}px`,
+                                        textTransform: `${PreStyles[0].textUpper ? "uppercase" : "none"}`,
+                                        fontStyle: PreStyles[0].textStyle,
+                                        backgroundColor: PreStyles[0].textBGColor
+                                    }}
+                                >
+                                    {" "}
+                                    {suffix}
+                                </span>
                             </div>
-                            <span className={`premium-fancy-text-suffix-text`}
-                                style={{
-                                    color: PreStyles[0].textColor,
-                                    fontWeight: PreStyles[0].textWeight,
-                                    letterSpacing: `${PreStyles[0].textLetter}px`,
-                                    textTransform: `${PreStyles[0].textUpper ? "uppercase" : "none"}`,
-                                    fontStyle: PreStyles[0].textStyle,
-                                    backgroundColor: PreStyles[0].textBGColor
-                                }}
-                            >
-                                {" "}
-                                {suffix}
-                            </span>
-                        </div>
-                    )
+                        )
                     }
                 </div >
             )
@@ -779,44 +779,44 @@ const deprecated = [
                             </span>
                         </div>
                     ) : (
-                        <div
-                            className={`premium-fancy-text premium-fancy-slide`}
-                            style={{
-                                textAlign: align,
-                            }}
-                            data-effect={`${effect}`}
-                            data-strings={`${repeaterFancyText.map(
-                                (item, index) => {
-                                    return item.title;
-                                }
-                            )}`}
-                            data-animationspeed={`${animationSpeed}`}
-                            data-pausetime={`${pauseTime}`}
-                            data-hoverpause={`${hoverPause}`}
-                        >
-                            <span className={`premium-fancy-text-prefix-text`}>
-                                {prefix}
-                            </span>
                             <div
-                                className={`premium-fancy-text-title-slide`}
+                                className={`premium-fancy-text premium-fancy-slide`}
                                 style={{
-                                    textAlign: fancyalign,
+                                    textAlign: align,
                                 }}
+                                data-effect={`${effect}`}
+                                data-strings={`${repeaterFancyText.map(
+                                    (item, index) => {
+                                        return item.title;
+                                    }
+                                )}`}
+                                data-animationspeed={`${animationSpeed}`}
+                                data-pausetime={`${pauseTime}`}
+                                data-hoverpause={`${hoverPause}`}
                             >
-                                <ul
-                                    className={`premium-fancy-text-title-slide-list`}
+                                <span className={`premium-fancy-text-prefix-text`}>
+                                    {prefix}
+                                </span>
+                                <div
+                                    className={`premium-fancy-text-title-slide`}
+                                    style={{
+                                        textAlign: fancyalign,
+                                    }}
                                 >
-                                    {repeaterFancyText.map((item, index) => {
-                                        return <li>{item.title}</li>;
-                                    })}
-                                </ul>
-                            </div>
-                            <span className={`premium-fancy-text-suffix-text`}>
+                                    <ul
+                                        className={`premium-fancy-text-title-slide-list`}
+                                    >
+                                        {repeaterFancyText.map((item, index) => {
+                                            return <li>{item.title}</li>;
+                                        })}
+                                    </ul>
+                                </div>
+                                <span className={`premium-fancy-text-suffix-text`}>
 
-                                {suffix}
-                            </span>
-                        </div>
-                    )}
+                                    {suffix}
+                                </span>
+                            </div>
+                        )}
                 </div>
             );
         },
