@@ -409,10 +409,10 @@ const deprecatedContent = [
                     borderType: attributes.playStyles[0].playBorderType || 'none',
                     borderRadius: {
                         "Desktop": {
-                            top: attributes.playStyles[0].playBorderRadius,
-                            right: attributes.playStyles[0].playBorderRadius,
-                            bottom: attributes.playStyles[0].playBorderRadius,
-                            left: attributes.playStyles[0].playBorderRadius,
+                            top: attributes.playStyles[0].playBorderRadius || '100',
+                            right: attributes.playStyles[0].playBorderRadius || '100',
+                            bottom: attributes.playStyles[0].playBorderRadius || '100',
+                            left: attributes.playStyles[0].playBorderRadius || '100',
                         },
                         "Tablet": {
                             top: "",
