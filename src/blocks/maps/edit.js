@@ -1,18 +1,20 @@
 import classnames from "classnames";
-import PremiumMediaUpload from "../../components/premium-media-upload";
-import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
-import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
-import InspectorTabs from '../../components/inspectorTabs';
-import InspectorTab from '../../components/inspectorTab';
-import MultiButtonsControl from '../../components/responsive-radio';
-import Icons from "../../components/icons";
-import PremiumTypo from "../../components/premium-typo";
-import SpacingComponent from '../../components/premium-responsive-spacing';
-import PremiumShadow from "../../components/PremiumShadow";
-import { generateBlockId, generateCss, marginCss } from '../../components/HelperFunction';
-import PremiumBorder from "../../components/premium-border";
-import WebfontLoader from "../../components/typography/fontLoader";
+import {
+    MultiButtonsControl,
+    InspectorTabs,
+    InspectorTab,
+    PremiumResponsiveTabs,
+    PremiumBorder,
+    SpacingComponent,
+    AdvancedColorControl as AdvancedPopColorControl,
+    PremiumShadow,
+    Icons,
+    WebfontLoader,
+    ResponsiveSingleRangeControl,
+    PremiumMediaUpload,
+    PremiumTypo
+} from '@pbg/components';
+import { generateBlockId, generateCss, marginCss } from '@pbg/helpers';
 
 const classNames = "premium-maps__wrap";
 const { __ } = wp.i18n;

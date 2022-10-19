@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import { generateCss } from "../../components/HelperFunction";
+import { generateCss } from '@pbg/helpers';
 import { useBlockProps } from "@wordpress/block-editor";
 const { Fragment } = wp.element;
 
@@ -29,7 +29,7 @@ export default function save(props) {
         filter,
         filterHover,
     } = attributes;
-    
+
     const loadStyles = () => {
         const styles = {};
         styles[`#${blockId}  .premium-lottie-animation`] = {

@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import { generateCss, filterJsCss } from '../../components/HelperFunction';
+import { generateCss, filterJsCss } from '@pbg/helpers';
 const { RichText, useBlockProps } = wp.blockEditor;
 
 const save = props => {

@@ -1,19 +1,23 @@
 import classnames from "classnames";
 import variations from "./variations";
-import InspectorTabs from "../../components/inspectorTabs";
-import InspectorTab from "../../components/inspectorTab";
-import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
-import SpacingControl from "../../components/premium-responsive-spacing";
-import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
-import PremiumBackgroundControl from "../../components/Premium-Background-Control";
-import PremiumBorder from "../../components/premium-border";
-import PremiumShadow from "../../components/PremiumShadow";
-import InsideTabs from "../../components/InsideTabs";
-import InsideTab from "../../components/InsideTab";
-import Shape from "../../components/premium-shape";
-import Animation from "../../components/Animation";
-import ResponsiveRadio from "../../components/responsive-radio";
-import renderCustomIcon from "../../../assets/icons/renderIcon";
+import {
+    InspectorTabs,
+    InspectorTab,
+    ResponsiveRadio,
+    PremiumBorder,
+    Animation,
+    ResponsiveSingleRangeControl,
+    Shape,
+    RadioComponent,
+    SpacingComponent as SpacingControl,
+    PremiumShadow,
+    InsideTabs,
+    InsideTab,
+    PremiumBackgroundControl,
+    PremiumFilters,
+    renderCustomIcon,
+    ResponsiveRangeControl
+} from '@pbg/components';
 import {
     gradientBackground,
     videoBackground,
@@ -21,9 +25,7 @@ import {
     paddingCss,
     marginCss,
     gradientValue,
-} from "../../components/HelperFunction";
-import PremiumFilters from "../../components/premium-filters";
-import RadioComponent from "../../components/radio-control";
+} from '@pbg/helpers';
 
 const { __ } = wp.i18n;
 const { createBlock } = wp.blocks;

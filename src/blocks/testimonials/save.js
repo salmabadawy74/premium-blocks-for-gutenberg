@@ -1,8 +1,10 @@
 import classnames from 'classnames'
-import DefaultImage from "../../components/default-image";
-import PremiumUpperQuote from "../../components/testimonials/upper-quote";
-import PremiumLowerQuote from "../../components/testimonials/lower-quote";
-import { filterJsCss, gradientBackground } from '../../components/HelperFunction';
+import {
+    PremiumUpperQuote,
+    PremiumLowerQuote,
+    DefaultImage,
+} from '@pbg/components';
+import { filterJsCss, gradientBackground } from '@pbg/helpers';
 const { RichText, useBlockProps } = wp.blockEditor;
 
 const save = props => {

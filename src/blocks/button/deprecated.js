@@ -1,7 +1,7 @@
 const className = "premium-button";
 import classnames from 'classnames';
 import hexToRgba from 'hex-to-rgba'
-import { generateBlockId } from '../../components/HelperFunction';
+import { generateBlockId } from '@pbg/helpers';
 const { __ } = wp.i18n;
 
 const { RichText } = wp.editor;

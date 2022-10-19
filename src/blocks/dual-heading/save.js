@@ -1,5 +1,8 @@
 import classnames from "classnames";
-import { gradientBackground, filterJsCss} from "../../components/HelperFunction";
+import {
+    gradientBackground,
+    filterJsCss,
+} from '@pbg/helpers';
 const { RichText, useBlockProps } = wp.blockEditor;
 
 const save = (props) => {
@@ -49,20 +52,17 @@ const save = (props) => {
         >
             <div className={`premium-dheading-block__wrap`}>
                 <h2 className={`premium-dheading-block__title`}>
-                <RichText.Content
-                        className={`premium-dheading-block__first${
-                            firstStyles?.[0]?.firstClip
+                    <RichText.Content
+                        className={`premium-dheading-block__first${firstStyles?.[0]?.firstClip
                                 ? ` premium-headingc-${firstStyles?.[0]?.firstClip}`
                                 : ""
-                        }${
-                            firstStyles?.[0]?.firstAnim
+                            }${firstStyles?.[0]?.firstAnim
                                 ? ` premium-headinga-${firstStyles?.[0]?.firstAnim}`
                                 : ""
-                        }${
-                            firstStyles?.[0]?.firstStroke
+                            }${firstStyles?.[0]?.firstStroke
                                 ? ` premium-headings-${firstStyles?.[0]?.firstStroke}`
                                 : ""
-                        }`}
+                            }`}
                         value={firstHeading}
                         tagName="span"
                         style={filterJsCss({
@@ -85,19 +85,16 @@ const save = (props) => {
                         })}
                     />
                     <RichText.Content
-                        className={`premium-dheading-block__second${
-                            secondStyles?.[0]?.secondClip
+                        className={`premium-dheading-block__second${secondStyles?.[0]?.secondClip
                                 ? `${` premium-headingc-${secondStyles?.[0]?.secondClip}`}`
                                 : ""
-                        }${
-                            secondStyles?.[0]?.secondAnim
+                            }${secondStyles?.[0]?.secondAnim
                                 ? ` ${`premium-headinga-${secondStyles?.[0]?.secondAnim} `}`
                                 : ""
-                        }${
-                            secondStyles?.[0]?.secondStroke
+                            }${secondStyles?.[0]?.secondStroke
                                 ? ` premium-headings-${secondStyles?.[0]?.secondStroke}`
                                 : ""
-                        }`}
+                            }`}
                         tagName="span"
                         value={secondHeading}
                         style={filterJsCss({

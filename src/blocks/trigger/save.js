@@ -9,7 +9,7 @@ import classnames from "classnames";
 import {
     generateCss,
     typographyCss
-} from "../../components/HelperFunction";
+} from '@pbg/helpers';
 
 export default function Save(props) {
 

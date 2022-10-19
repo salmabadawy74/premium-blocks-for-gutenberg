@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import { filterJsCss, generateCss } from "../../components/HelperFunction";
+import { filterJsCss, generateCss } from '@pbg/helpers';
 const { useBlockProps } = wp.blockEditor;
 
 export default function save(props) {
@@ -43,7 +43,7 @@ export default function save(props) {
     }
 
     return (
-        <div 
+        <div
             {...useBlockProps.save({
                 className: classnames(
                     className,

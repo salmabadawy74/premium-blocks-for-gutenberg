@@ -1,15 +1,17 @@
 import classnames from "classnames";
-import PremiumBorder from "../../components/premium-border";
-import PremiumShadow from "../../components/PremiumShadow";
-import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
-import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
-import PremiumBackgroundControl from '../../components/Premium-Background-Control'
-import SpacingComponent from '../../components/premium-responsive-spacing';
-import InspectorTabs from '../../components/inspectorTabs';
-import InspectorTab from '../../components/inspectorTab';
-import MultiButtonsControl from '../../components/responsive-radio';
-import Icons from "../../components/icons";
-import { borderCss, gradientBackground, marginCss, paddingCss, generateBlockId } from "../../components/HelperFunction";
+import {
+    InspectorTabs,
+    InspectorTab,
+    PremiumResponsiveTabs,
+    PremiumBorder,
+    SpacingComponent,
+    MultiButtonsControl,
+    Icons,
+    PremiumBackgroundControl,
+    ResponsiveSingleRangeControl,
+    PremiumShadow,
+} from '@pbg/components';
+import { borderCss, gradientBackground, marginCss, paddingCss, generateBlockId } from '@pbg/helpers';
 
 const { __ } = wp.i18n;
 const { PanelBody, ToggleControl, SelectControl } = wp.components;

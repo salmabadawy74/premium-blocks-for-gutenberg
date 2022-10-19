@@ -1,26 +1,27 @@
 import classnames from "classnames";
-import { FontAwesomeEnabled } from "../../../assets/js/settings";
-import PremiumTypo from "../../components/premium-typo";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
-import iconsList from "../../components/premium-icons-list";
-import PremiumBorder from "../../components/premium-border";
-import PremiumBackgroundControl from "../../components/Premium-Background-Control";
-import PremiumMediaUpload from "../../components/premium-media-upload";
-import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
-import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
-import AdvancedPopColorControl from "../../components/Color Control/ColorComponent";
-import RadioComponent from "../../components/radio-control";
-import ResponsiveRadioControl from "../../components/responsive-radio";
-import SpacingControl from "../../components/premium-responsive-spacing";
-import PremiumShadow from "../../components/PremiumShadow";
-import InspectorTabs from "../../components/inspectorTabs";
-import InspectorTab from "../../components/inspectorTab";
-import InsideTabs from "../../components/InsideTabs";
-import InsideTab from "../../components/InsideTab";
-import Icons from "../../components/icons";
-import WebfontLoader from "../../components/typography/fontLoader";
-import { gradientBackground, borderCss, paddingCss, marginCss, typographyCss, generateBlockId, generateCss } from "../../components/HelperFunction";
+import {
+    RadioComponent,
+    ResponsiveRangeControl,
+    MultiButtonsControl as ResponsiveRadioControl,
+    InspectorTabs,
+    InspectorTab,
+    PremiumResponsiveTabs,
+    PremiumBorder,
+    SpacingComponent as SpacingControl,
+    AdvancedColorControl as AdvancedPopColorControl,
+    PremiumShadow,
+    InsideTabs,
+    PremiumBackgroundControl,
+    Icons,
+    InsideTab,
+    iconsList,
+    WebfontLoader,
+    ResponsiveSingleRangeControl,
+    PremiumMediaUpload,
+    PremiumTypo
+} from '@pbg/components';
+import { gradientBackground, borderCss, paddingCss, marginCss, typographyCss, generateBlockId, generateCss } from '@pbg/helpers';
 
 const { __ } = wp.i18n;
 const { PanelBody, SelectControl, ToggleControl, TextControl } = wp.components;

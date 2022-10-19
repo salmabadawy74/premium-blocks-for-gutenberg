@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import { gradientBackground, generateCss, filterJsCss } from '../../components/HelperFunction';
+import { gradientBackground, generateCss, filterJsCss } from '@pbg/helpers';
 const { InnerBlocks, useBlockProps } = wp.blockEditor;
 const { RichText } = wp.editor;
 

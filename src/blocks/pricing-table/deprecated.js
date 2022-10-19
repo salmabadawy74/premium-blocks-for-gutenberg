@@ -1,5 +1,5 @@
 const className = "premium-pricing-table";
-import { generateBlockId } from '../../components/HelperFunction';
+import { generateBlockId } from '@pbg/helpers';
 import classnames from "classnames";
 
 const { __ } = wp.i18n;

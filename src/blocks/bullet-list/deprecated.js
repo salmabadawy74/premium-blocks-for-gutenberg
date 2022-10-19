@@ -1,6 +1,6 @@
 const { __ } = wp.i18n;
 import classnames from "classnames"
-import { generateBlockId } from '../../components/HelperFunction';
+import { generateBlockId } from '@pbg/helpers';
 const {
     Fragment,
 } = wp.element

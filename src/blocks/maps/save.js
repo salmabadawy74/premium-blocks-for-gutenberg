@@ -1,4 +1,4 @@
-import { filterJsCss } from "../../components/HelperFunction";
+import { filterJsCss } from '@pbg/helpers';
 import classnames from "classnames";
 const { useBlockProps } = wp.blockEditor;
 

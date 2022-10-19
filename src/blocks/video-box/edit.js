@@ -1,21 +1,22 @@
 import classnames from "classnames";
-import PremiumTypo from "../../components/premium-typo";
-import PremiumBorder from "../../components/premium-border";
-import PremiumFilters from "../../components/premium-filters";
 import onChangeVideoURL from "./index";
-import PremiumMediaUpload from "../../components/premium-media-upload";
-import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
-import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
-import SpacingControl from '../../components/premium-responsive-spacing'
-import DefaultImage from "../../components/default-image";
-import PremiumShadow from "../../components/PremiumShadow";
-import InspectorTabs from '../../components/inspectorTabs';
-import InspectorTab from '../../components/inspectorTab';
-import InsideTabs from '../../components/InsideTabs'
-import InsideTab from '../../components/InsideTab';
-import { borderCss, paddingCss, typographyCss, generateBlockId, generateCss } from '../../components/HelperFunction'
-import WebfontLoader from "../../components/typography/fontLoader";
+import {
+    AdvancedColorControl as AdvancedPopColorControl,
+    InspectorTabs,
+    InspectorTab,
+    PremiumResponsiveTabs,
+    PremiumBorder,
+    SpacingComponent as SpacingControl,
+    PremiumFilters,
+    DefaultImage,
+    PremiumShadow,
+    ResponsiveSingleRangeControl,
+    WebfontLoader,
+    InsideTabs,
+    InsideTab,
+    PremiumTypo
+} from '@pbg/components';
+import { borderCss, paddingCss, typographyCss, generateBlockId, generateCss } from '@pbg/helpers';
 
 const { withSelect } = wp.data
 

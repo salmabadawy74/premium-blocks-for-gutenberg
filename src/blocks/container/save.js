@@ -1,10 +1,13 @@
 /* eslint-disable react/react-in-jsx-scope */
 const { Fragment } = wp.element
 const { InnerBlocks } = wp.blockEditor
-import { animationAttr, gradientValue } from '../../components/HelperFunction'
 import classnames from "classnames"
-import { gradientBackground, videoBackground } from '../../components/HelperFunction'
-
+import {
+    gradientBackground,
+    videoBackground,
+    animationAttr,
+    gradientValue,
+} from '@pbg/helpers';
 
 const Save = (props) => {
 

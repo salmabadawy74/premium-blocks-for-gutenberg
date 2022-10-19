@@ -1,18 +1,26 @@
 import classnames from "classnames";
-import PremiumBorder from "../../components/premium-border";
-import PremiumTypo from "../../components/premium-typo";
-import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import AdvancedPopColorControl from "../../components/Color Control/ColorComponent";
-import PremiumBackgroundControl from "../../components/Premium-Background-Control";
-import WebfontLoader from "../../components/typography/fontLoader";
-import PremiumShadow from "../../components/PremiumShadow";
-import SpacingComponent from "../../components/premium-responsive-spacing";
-import MultiButtonsControl from "../../components/responsive-radio";
-import Icons from "../../components/icons";
-import { gradientBackground, generateBlockId, typographyCss, paddingCss, marginCss, borderCss } from "../../components/HelperFunction";
-import InspectorTabs from "../../components/inspectorTabs";
-import InspectorTab from "../../components/inspectorTab";
-
+import {
+    InspectorTabs,
+    InspectorTab,
+    PremiumResponsiveTabs,
+    PremiumBorder,
+    PremiumTypo,
+    SpacingComponent,
+    AdvancedColorControl as AdvancedPopColorControl,
+    PremiumShadow,
+    MultiButtonsControl,
+    PremiumBackgroundControl,
+    Icons,
+    WebfontLoader,
+} from '@pbg/components';
+import {
+    gradientBackground,
+    typographyCss,
+    borderCss,
+    paddingCss,
+    marginCss,
+    generateBlockId,
+} from '@pbg/helpers';
 const { __ } = wp.i18n;
 const { withSelect } = wp.data;
 const { Fragment, useEffect } = wp.element;

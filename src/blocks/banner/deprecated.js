@@ -1,4 +1,4 @@
-import { generateBlockId } from '../../components/HelperFunction';
+import { generateBlockId } from '@pbg/helpers';
 
 const { __ } = wp.i18n;
 

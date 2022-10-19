@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import { filterJsCss, gradientBackground } from '../../components/HelperFunction';
+import { filterJsCss, gradientBackground } from '@pbg/helpers';
 
 const { InnerBlocks, useBlockProps } = wp.blockEditor;
 

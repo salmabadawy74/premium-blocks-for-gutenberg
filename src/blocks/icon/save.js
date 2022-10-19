@@ -1,6 +1,6 @@
 import classnames from 'classnames'
 import { useBlockProps } from "@wordpress/block-editor";
-import { gradientBackground, filterJsCss, generateCss } from '../../components/HelperFunction'
+import { gradientBackground, filterJsCss, generateCss } from '@pbg/helpers';
 
 const save = props => {
 

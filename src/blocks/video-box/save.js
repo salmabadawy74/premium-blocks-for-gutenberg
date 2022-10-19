@@ -1,7 +1,9 @@
 import classnames from 'classnames'
 import onChangeVideoURL from "./index";
-import DefaultImage from "../../components/default-image";
-import { filterJsCss, generateCss } from '../../components/HelperFunction'
+import {
+    DefaultImage,
+} from '@pbg/components';
+import { filterJsCss, generateCss } from '@pbg/helpers';
 
 const {
     RichText

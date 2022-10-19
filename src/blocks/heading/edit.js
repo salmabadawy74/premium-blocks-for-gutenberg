@@ -1,24 +1,26 @@
 import classnames from "classnames";
-import PremiumTypo from "../../components/premium-typo";
-import PremiumBorder from "../../components/premium-border";
-import iconsList from "../../components/premium-icons-list";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
-import AdvancedPopColorControl from "../../components/Color Control/ColorComponent";
-import PremiumShadow from "../../components/PremiumShadow";
-import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
-import PremiumBackgroundControl from "../../components/Premium-Background-Control";
-import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
-import PremiumMediaUpload from "../../components/premium-media-upload";
 import Lottie from "react-lottie-with-segments";
-import { generateBlockId, generateCss, typographyCss, paddingCss, marginCss } from "../../components/HelperFunction";
-import Icons from "../../components/icons";
-import MultiButtonsControl from "../../components/responsive-radio";
-import RadioComponent from '../../components/radio-control'
-import SpacingComponent from "../../components/premium-responsive-spacing";
-import InspectorTabs from "../../components/inspectorTabs";
-import InspectorTab from "../../components/inspectorTab";
-import WebfontLoader from "../../components/typography/fontLoader";
+import { generateBlockId, generateCss, typographyCss, paddingCss, marginCss } from '@pbg/helpers';
+import {
+    ResponsiveRangeControl,
+    ResponsiveSingleRangeControl,
+    PremiumMediaUpload,
+    RadioComponent,
+    InspectorTabs,
+    InspectorTab,
+    PremiumResponsiveTabs,
+    PremiumBorder,
+    PremiumTypo,
+    SpacingComponent,
+    AdvancedColorControl as AdvancedPopColorControl,
+    PremiumShadow,
+    MultiButtonsControl,
+    PremiumBackgroundControl,
+    Icons,
+    WebfontLoader,
+    iconsList,
+} from '@pbg/components';
 
 const { __ } = wp.i18n;
 const { withSelect } = wp.data;
