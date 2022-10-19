@@ -4279,7 +4279,7 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['imgHeight'] ) ) {
 			$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . ' > img' );
-			$css->add_property( 'height', $css->render_range( $attr['iconSize'], 'Desktop' ) );
+			$css->add_property( 'height', $css->render_range( $attr['imgHeight'], 'Desktop' ) );
 		}
 
 		if ( isset( $attr['iconBorder'] ) ) {
@@ -4339,7 +4339,7 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['imgHeight']['Tablet'] ) ) {
 			$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . ' > img' );
-			$css->add_property( 'height', $css->render_range( $attr['iconSize'], 'Tablet' ) );
+			$css->add_property( 'height', $css->render_range( $attr['imgHeight'], 'Tablet' ) );
 		}
 
 		if ( isset( $attr['iconBorder'] ) ) {
@@ -4391,7 +4391,7 @@ class PBG_Blocks_Helper {
 
 		if ( isset( $attr['imgHeight'] ) ) {
 			$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . ' > img' );
-			$css->add_property( 'height', $css->render_range( $attr['iconSize'], 'Mobile' ) );
+			$css->add_property( 'height', $css->render_range( $attr['imgHeight'], 'Mobile' ) );
 		}
 
 		if ( isset( $attr['iconBorder'] ) ) {

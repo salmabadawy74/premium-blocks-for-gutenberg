@@ -270,24 +270,23 @@ const deprecated = [
         },
         migrate: (attributes) => {
             let newAttributes = {
-
                 blockId: attributes.block_id ? `premium-image-separator-${attributes.block_id.split('-')[6]}` : '',
                 iconAlign: {
-                    "Desktop": attributes.align,
-                    "Tablet": attributes.align,
-                    "Mobile": attributes.align,
+                    "Desktop": attributes.align || 'center',
+                    "Tablet": attributes.align || 'center',
+                    "Mobile": attributes.align || 'center',
                 },
                 iconSize: {
-                    unit: attributes.iconStyles[0].iconSizeType,
-                    "Desktop": attributes.iconStyles[0].iconSize,
-                    "Tablet": attributes.iconStyles[0].iconSizeTablet,
-                    "Mobile": attributes.iconStyles[0].iconSizeMobile
+                    unit: attributes.iconStyles[0].iconSizeType || 'px',
+                    "Desktop": attributes.iconStyles[0].iconSize || '200',
+                    "Tablet": attributes.iconStyles[0].iconSizeTablet || '200',
+                    "Mobile": attributes.iconStyles[0].iconSizeMobile || '200'
                 },
                 imgHeight: {
                     unit: 'px',
-                    "Desktop": attributes.imgHeight,
-                    "Tablet": attributes.imgHeightTablet,
-                    "Mobile": attributes.imgHeightMobile
+                    "Desktop": attributes.imgHeight || '200',
+                    "Tablet": attributes.imgHeightTablet || '200',
+                    "Mobile": attributes.imgHeightMobile || '200'
                 },
                 iconBorder: {
                     borderColor: '',
