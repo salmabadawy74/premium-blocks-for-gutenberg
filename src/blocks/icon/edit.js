@@ -1,21 +1,23 @@
 import classnames from "classnames";
-import { FontAwesomeEnabled } from "../../../assets/js/settings";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
-import iconsList from "../../components/premium-icons-list";
-import PremiumBorder from "../../components/premium-border";
-import PremiumBackgroundControl from "../../components/Premium-Background-Control";
-import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
-import AdvancedPopColorControl from "../../components/Color Control/ColorComponent";
-import PremiumShadow from "../../components/PremiumShadow";
-import SpacingControl from "../../components/premium-responsive-spacing";
-import InspectorTabs from "../../components/inspectorTabs";
-import InspectorTab from "../../components/inspectorTab";
-import InsideTabs from "../../components/InsideTabs";
-import InsideTab from "../../components/InsideTab";
-import ResponsiveRadioControl from "../../components/responsive-radio";
-import Icons from "../../components/icons";
-import { gradientBackground, borderCss, paddingCss, marginCss, generateBlockId, generateCss } from "../../components/HelperFunction";
+import {
+    ResponsiveRangeControl,
+    MultiButtonsControl as ResponsiveRadioControl,
+    InspectorTabs,
+    InspectorTab,
+    PremiumResponsiveTabs,
+    PremiumBorder,
+    SpacingComponent as SpacingControl,
+    AdvancedColorControl as AdvancedPopColorControl,
+    PremiumShadow,
+    InsideTabs,
+    PremiumBackgroundControl,
+    Icons,
+    InsideTab,
+    iconsList,
+} from '@pbg/components';
+import { gradientBackground, borderCss, paddingCss, marginCss, generateBlockId, generateCss } from '@pbg/helpers';
+import { FontAwesomeEnabled } from '@pbg/settings';
 
 const { __ } = wp.i18n;
 
@@ -23,7 +25,7 @@ const { PanelBody, SelectControl, ToggleControl, TextControl } = wp.components;
 
 const { useEffect, Fragment } = wp.element;
 
-const { InspectorControls,useBlockProps } = wp.blockEditor;
+const { InspectorControls, useBlockProps } = wp.blockEditor;
 
 const { withSelect } = wp.data;
 
@@ -317,40 +319,40 @@ function Edit(props) {
                     ),
                 })}
             >
-            <div
-                className={`premium-icon-container`}
-                style={{
-                    textAlign: iconAlign[props.deviceType],
-                    ...gradientBackground(containerBackground),
-                    ...borderCss(containerBorder, props.deviceType),
-                    ...paddingCss(wrapPadding, props.deviceType),
-                    ...marginCss(wrapMargin, props.deviceType),
-                    boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`
-                }}
-            >
-                {iconType === "fa" && 1 != FontAwesomeEnabled && (
-                    <p className={`premium-icon__alert`}>
-                        {__("Please Enable Font Awesome Icons from Plugin settings", "premium-blocks-for-gutenberg")}
-                    </p>
-                )}
-                <div className={`premium-icon__${hoverEffect}`}>
-                    {(iconType === "dash" || 1 == FontAwesomeEnabled) && (
-                        <i
-                            className={`premium-icon ${selectedIcon}`}
-                            style={{
-                                color: iconStyles[0].iconColor,
-                                backgroundColor: iconStyles[0].iconBack,
-                                fontSize: (iconSize[props.deviceType] || 50) + iconSize.unit,
-                                ...borderCss(iconBorder, props.deviceType),
-                                ...paddingCss(iconPadding, props.deviceType),
-                                ...marginCss(iconMargin, props.deviceType),
-                                textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`
-                            }}
-                        />
+                <div
+                    className={`premium-icon-container`}
+                    style={{
+                        textAlign: iconAlign[props.deviceType],
+                        ...gradientBackground(containerBackground),
+                        ...borderCss(containerBorder, props.deviceType),
+                        ...paddingCss(wrapPadding, props.deviceType),
+                        ...marginCss(wrapMargin, props.deviceType),
+                        boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`
+                    }}
+                >
+                    {iconType === "fa" && 1 != FontAwesomeEnabled && (
+                        <p className={`premium-icon__alert`}>
+                            {__("Please Enable Font Awesome Icons from Plugin settings", "premium-blocks-for-gutenberg")}
+                        </p>
                     )}
+                    <div className={`premium-icon__${hoverEffect}`}>
+                        {(iconType === "dash" || 1 == FontAwesomeEnabled) && (
+                            <i
+                                className={`premium-icon ${selectedIcon}`}
+                                style={{
+                                    color: iconStyles[0].iconColor,
+                                    backgroundColor: iconStyles[0].iconBack,
+                                    fontSize: (iconSize[props.deviceType] || 50) + iconSize.unit,
+                                    ...borderCss(iconBorder, props.deviceType),
+                                    ...paddingCss(iconPadding, props.deviceType),
+                                    ...marginCss(iconMargin, props.deviceType),
+                                    textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`
+                                }}
+                            />
+                        )}
+                    </div>
                 </div>
             </div>
-        </div>
         </Fragment>
     );
 }

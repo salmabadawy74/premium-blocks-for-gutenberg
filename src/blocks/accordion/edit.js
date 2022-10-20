@@ -1,25 +1,25 @@
 import classnames from "classnames";
-import PremiumBorder from "../../components/premium-border";
-import SpacingComponent from "../../components/premium-responsive-spacing";
-import PremiumTypo from "../../components/premium-typo";
-import WebfontLoader from "../../components/typography/fontLoader";
-import PremiumShadow from "../../components/PremiumShadow";
-import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
-import RadioComponent from '../../components/radio-control';
-import MultiButtonsControl from '../../components/responsive-radio';
-import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
-import InspectorTabs from '../../components/inspectorTabs';
-import InspectorTab from '../../components/inspectorTab';
-import Icons from "../../components/icons";
-import { generateBlockId, generateCss } from '../../components/HelperFunction';
-import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import { createBlock } from '@wordpress/blocks';
-import { store as blockEditorStore } from '@wordpress/block-editor';
+import {
+    InspectorTabs,
+    InspectorTab,
+    Icons,
+    PremiumBorder,
+    PremiumResponsiveTabs,
+    ResponsiveSingleRangeControl,
+    MultiButtonsControl,
+    RadioComponent,
+    AdvancedColorControl as AdvancedPopColorControl,
+    PremiumShadow,
+    WebfontLoader,
+    PremiumTypo,
+    SpacingComponent
+} from '@pbg/components';
+import { generateCss, generateBlockId } from '@pbg/helpers';
 import { compose } from '@wordpress/compose';
 
 const { useEffect, Fragment, useState } = wp.element;
 const { __ } = wp.i18n;
-const { withSelect, withDispatch, useDispatch } = wp.data
+const { withSelect, withDispatch } = wp.data
 const { PanelBody } = wp.components;
 const { InspectorControls, InnerBlocks, useBlockProps } = wp.blockEditor;
 

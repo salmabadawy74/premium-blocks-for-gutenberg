@@ -1,20 +1,22 @@
 import classnames from "classnames";
-import PremiumBorder from "../../components/premium-border";
-import PremiumTypo from "../../components/premium-typo";
-import PremiumShadow from "../../components/PremiumShadow";
-import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
-import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
-import RadioComponent from '../../components/radio-control';
-import Icons from "../../components/icons";
-import MultiButtonsControl from '../../components/responsive-radio';
-import { generateBlockId, generateCss, typographyCss, paddingCss, marginCss, borderCss } from "../../components/HelperFunction";
-import SpacingComponent from '../../components/premium-responsive-spacing';
-import InspectorTabs from '../../components/inspectorTabs';
-import InspectorTab from '../../components/inspectorTab';
-import InsideTabs from "../../components/InsideTabs";
-import InsideTab from "../../components/InsideTab";
-import WebfontLoader from "../../components/typography/fontLoader";
+import { generateBlockId, generateCss, typographyCss, paddingCss, marginCss, borderCss } from '@pbg/helpers';
+import {
+    RadioComponent,
+    MultiButtonsControl,
+    InspectorTabs,
+    InspectorTab,
+    PremiumResponsiveTabs,
+    PremiumBorder,
+    SpacingComponent,
+    AdvancedColorControl as AdvancedPopColorControl,
+    InsideTabs,
+    Icons,
+    InsideTab,
+    ResponsiveSingleRangeControl,
+    WebfontLoader,
+    PremiumShadow,
+    PremiumTypo
+} from '@pbg/components';
 
 const { withSelect } = wp.data
 const { __ } = wp.i18n;

@@ -1,23 +1,34 @@
 import classnames from "classnames";
 import { PanelBody, SelectControl, ToggleControl } from "@wordpress/components";
-import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
-import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
-import PremiumBackgroundControl from "../../components/Premium-Background-Control";
-import AdvancedPopColorControl from "../../components/Color Control/ColorComponent";
-import RadioComponent from "../../components/radio-control";
-import ResponsiveRadioControl from "../../components/responsive-radio";
-import PremiumTypo from "../../components/premium-typo";
-import PremiumShadow from "../../components/PremiumShadow";
-import PremiumBorder from "../../components/premium-border";
-import SpacingControl from "../../components/premium-responsive-spacing";
-import InspectorTabs from "../../components/inspectorTabs";
-import InspectorTab from "../../components/inspectorTab";
-import InsideTabs from "../../components/InsideTabs";
-import InsideTab from "../../components/InsideTab";
-import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import Icons from "../../components/icons";
-import { gradientBackground, borderCss, paddingCss, marginCss, typographyCss, generateBlockId, gradientValue, generateCss } from "../../components/HelperFunction";
-import WebfontLoader from "../../components/typography/fontLoader";
+import {
+    InspectorTabs,
+    InspectorTab,
+    PremiumResponsiveTabs,
+    PremiumBorder,
+    PremiumTypo,
+    ResponsiveSingleRangeControl,
+    MultiButtonsControl as ResponsiveRadioControl,
+    RadioComponent,
+    SpacingComponent as SpacingControl,
+    AdvancedColorControl as AdvancedPopColorControl,
+    PremiumShadow,
+    InsideTabs,
+    InsideTab,
+    PremiumBackgroundControl,
+    Icons,
+    WebfontLoader,
+    ResponsiveRangeControl
+} from '@pbg/components';
+import {
+    gradientBackground,
+    typographyCss,
+    borderCss,
+    paddingCss,
+    marginCss,
+    gradientValue,
+    generateBlockId,
+    generateCss
+} from '@pbg/helpers';
 
 const { __ } = wp.i18n;
 const { withSelect } = wp.data

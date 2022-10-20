@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import { generateCss } from "../../components/HelperFunction";
+import { generateCss } from '@pbg/helpers';
 const { InnerBlocks, useBlockProps } = wp.blockEditor;
 
 const save = props => {

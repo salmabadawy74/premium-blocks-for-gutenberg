@@ -22,18 +22,25 @@ import { useEffect } from '@wordpress/element';
 /**
  * Internal dependencies
  */
-import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
-import SpacingComponent from '../../components/premium-responsive-spacing';
-import PremiumTypo from "../../components/premium-typo"
-import InspectorTabs from '../../components/inspectorTabs';
-import InspectorTab from '../../components/inspectorTab';
-import InsideTabs from "../../components/InsideTabs";
-import InsideTab from "../../components/InsideTab";
-import RadioComponent from '../../components/radio-control';
-import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import { generateBlockId, generateCss, typographyCss, paddingCss, marginCss } from '../../components/HelperFunction';
-import WebfontLoader from "../../components/typography/fontLoader";
-
+import {
+    InspectorTabs,
+    InspectorTab,
+    PremiumResponsiveTabs,
+    RadioComponent,
+    AdvancedColorControl as AdvancedPopColorControl,
+    WebfontLoader,
+    PremiumTypo,
+    SpacingComponent,
+    InsideTabs,
+    InsideTab,
+} from '@pbg/components';
+import {
+    marginCss,
+    generateBlockId,
+    generateCss,
+    paddingCss,
+    typographyCss,
+} from '@pbg/helpers';
 
 function Edit({ clientId, attributes, setAttributes, context: { postType, postId }, deviceType }) {
 

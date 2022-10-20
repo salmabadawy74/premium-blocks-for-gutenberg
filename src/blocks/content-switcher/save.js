@@ -5,7 +5,7 @@ import {
     filterJsCss,
     gradientValue,
     generateCss,
-} from "../../components/HelperFunction";
+} from '@pbg/helpers';
 
 export default function save(props) {
     const { attributes, className } = props;

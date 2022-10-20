@@ -46,17 +46,19 @@ import {
 	toggleLabel,
 } from './icons';
 import Modal from './Modal';
-import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
-import PremiumBorder from "../../components/premium-border"
-import SpacingComponent from '../../components/premium-responsive-spacing';
-import PremiumTypo from "../../components/premium-typo"
-import InspectorTabs from '../../components/inspectorTabs';
-import InspectorTab from '../../components/inspectorTab';
-import InsideTabs from "../../components/InsideTabs";
-import InsideTab from "../../components/InsideTab";
-import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import WebfontLoader from "../../components/typography/fontLoader";
-import { generateBlockId, generateCss, typographyCss, paddingCss, borderCss } from '../../components/HelperFunction';
+import {
+	InspectorTabs,
+	InspectorTab,
+	PremiumResponsiveTabs,
+	PremiumBorder,
+	SpacingComponent,
+	AdvancedColorControl as AdvancedPopColorControl,
+	InsideTabs,
+	InsideTab,
+	WebfontLoader,
+	PremiumTypo
+} from '@pbg/components';
+import { generateBlockId, generateCss, typographyCss, paddingCss, borderCss } from '@pbg/helpers';
 
 const MIN_WIDTH = 220;
 

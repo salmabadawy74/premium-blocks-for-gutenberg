@@ -1,24 +1,25 @@
 import classnames from "classnames";
-import PremiumTypo from "../../components/premium-typo";
-import PremiumBorder from "../../components/premium-border"
-import DefaultImage from "../../components/default-image";
-import PremiumUpperQuote from "../../components/testimonials/upper-quote";
-import PremiumLowerQuote from "../../components/testimonials/lower-quote";
-import Icons from "../../components/icons";
-import MultiButtonsControl from '../../components/responsive-radio';
-import PremiumMediaUpload from "../../components/premium-media-upload";
-import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
-import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
-import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
-import PremiumBackgroundControl from '../../components/Premium-Background-Control';
-import RadioComponent from '../../components/radio-control'
-import PremiumShadow from "../../components/PremiumShadow";
-import InspectorTabs from '../../components/inspectorTabs';
-import InspectorTab from '../../components/inspectorTab';
-import SpacingComponent from "../../components/premium-responsive-spacing";
-import { generateBlockId, gradientBackground, typographyCss, paddingCss, marginCss, borderCss } from '../../components/HelperFunction';
-import WebfontLoader from "../../components/typography/fontLoader";
-
+import { generateBlockId, gradientBackground, typographyCss, paddingCss, marginCss, borderCss } from '@pbg/helpers';
+import {
+    AdvancedColorControl as AdvancedPopColorControl,
+    RadioComponent,
+    InspectorTabs,
+    InspectorTab,
+    PremiumResponsiveTabs,
+    PremiumBorder,
+    SpacingComponent,
+    MultiButtonsControl,
+    Icons,
+    PremiumBackgroundControl,
+    ResponsiveSingleRangeControl,
+    PremiumShadow,
+    WebfontLoader,
+    PremiumMediaUpload,
+    PremiumUpperQuote,
+    PremiumLowerQuote,
+    DefaultImage,
+    PremiumTypo
+} from '@pbg/components';
 const { __ } = wp.i18n;
 const { PanelBody, TextControl, ToggleControl } = wp.components;
 const { InspectorControls, RichText, useBlockProps } = wp.blockEditor;
@@ -42,7 +43,7 @@ function Edit(props) {
         authorImgId,
         authorImgUrl,
         imgSize,
-        imageBorder,
+        imgBorder,
         author,
         authorStyles,
         text,
@@ -267,8 +268,8 @@ function Edit(props) {
                                 />
                                 <PremiumBorder
                                     label={__("Border", 'premium-blocks-for-gutenberg')}
-                                    value={imageBorder}
-                                    onChange={(value) => setAttributes({ imageBorder: value })}
+                                    value={imgBorder}
+                                    onChange={(value) => setAttributes({ imgBorder: value })}
                                 />
                             </PanelBody>
                         )}
@@ -408,7 +409,7 @@ function Edit(props) {
                                     style={{
                                         width: imgSize + "px",
                                         height: imgSize + "px",
-                                        ...borderCss(imageBorder, props.deviceType)
+                                        ...borderCss(imgBorder, props.deviceType)
                                     }}
                                 />
                             )}

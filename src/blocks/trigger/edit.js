@@ -12,28 +12,30 @@ import {
 } from '@wordpress/element';
 import { withSelect } from '@wordpress/data'
 import { PanelBody, TextControl, ToggleControl, SelectControl } from '@wordpress/components';
-import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
-import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
-import PremiumBorder from "../../components/premium-border";
-import RadioComponent from '../../components/radio-control';
-import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
-import SpacingComponent from "../../components/premium-responsive-spacing";
-import InspectorTabs from '../../components/inspectorTabs';
-import InspectorTab from '../../components/inspectorTab';
-import InsideTabs from "../../components/InsideTabs";
-import InsideTab from "../../components/InsideTab";
-import PremiumResponsiveTabs from '../../components/premium-responsive-tabs';
-import PremiumTypo from "../../components/premium-typo";
-import WebfontLoader from "../../components/typography/fontLoader";
-import ResponsiveRadioControl from "../../components/responsive-radio";
+import {
+    AdvancedColorControl as AdvancedPopColorControl,
+    RadioComponent,
+    InspectorTabs,
+    InspectorTab,
+    PremiumResponsiveTabs,
+    PremiumBorder,
+    SpacingComponent,
+    MultiButtonsControl as ResponsiveRadioControl,
+    Icons,
+    ResponsiveRangeControl,
+    ResponsiveSingleRangeControl,
+    WebfontLoader,
+    InsideTabs,
+    InsideTab,
+    PremiumTypo
+} from '@pbg/components';
 import {
     borderCss,
     generateBlockId,
     generateCss,
     paddingCss,
     typographyCss,
-} from '../../components/HelperFunction';
-import Icons from "../../components/icons";
+} from '@pbg/helpers';
 //import GoogleFontLoader from "react-google-font-loader";
 
 /**

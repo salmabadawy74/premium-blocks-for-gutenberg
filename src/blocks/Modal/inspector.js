@@ -1,23 +1,25 @@
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
-import iconsList from "../../components/premium-icons-list";
-import AdvancedPopColorControl from '../../components/Color Control/ColorComponent';
-import PremiumBorder from "../../components/premium-border"
-import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
-import PremiumTypo from "../../components/premium-typo";
-import PremiumMediaUpload from "../../components/premium-media-upload"
-import PremiumShadow from "../../components/PremiumShadow"
-import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
-import PremiumBackgroundControl from '../../components/Premium-Background-Control'
-import PremiumFilters from "../../components/premium-filters";
-import { JsonUploadEnabled } from "../../../assets/js/settings";
-import ResponsiveRadioControl from "../../components/responsive-radio";
-import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import SpacingControl from "../../components/premium-responsive-spacing";
-import Icons from "../../components/icons";
-import InspectorTabs from '../../components/inspectorTabs';
-import InspectorTab from '../../components/inspectorTab';
-import InsideTabs from "../../components/InsideTabs";
-import InsideTab from "../../components/InsideTab";
+import {
+    ResponsiveRangeControl,
+    MultiButtonsControl as ResponsiveRadioControl,
+    InspectorTabs,
+    InspectorTab,
+    PremiumResponsiveTabs,
+    PremiumBorder,
+    SpacingComponent as SpacingControl,
+    AdvancedColorControl as AdvancedPopColorControl,
+    PremiumShadow,
+    InsideTabs,
+    Icons,
+    InsideTab,
+    iconsList,
+    ResponsiveSingleRangeControl,
+    PremiumMediaUpload,
+    PremiumFilters,
+    PremiumBackgroundControl,
+    PremiumTypo
+} from '@pbg/components';
+import { JsonUploadEnabled } from '@pbg/settings';
 
 const { __ } = wp.i18n;
 const {
