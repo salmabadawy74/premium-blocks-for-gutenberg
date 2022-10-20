@@ -159,6 +159,7 @@ class PBG_Blocks_Helper {
 	 */
 	public function add_blocks_editor_styles() {
 		Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/blockseditor.min.css' );
+		Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/editorpanel.min.css' );
 		if ( is_array( self::$blocks ) && ! empty( self::$blocks ) ) {
 			foreach ( self::$blocks as $slug => $value ) {
 
@@ -238,20 +239,6 @@ class PBG_Blocks_Helper {
 			array( 'wp-api-fetch', 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-api', 'wp-edit-post' ),
 			PREMIUM_BLOCKS_VERSION,
 			true
-		);
-
-		wp_enqueue_style(
-			'pbg-editor-css',
-			PREMIUM_BLOCKS_URL . 'assets/css/minified/blockseditor.min.css',
-			array( 'wp-edit-blocks' ),
-			PREMIUM_BLOCKS_VERSION
-		);
-
-		wp_enqueue_style(
-			'pbg-editor-panel-css',
-			PREMIUM_BLOCKS_URL . 'assets/css/minified/editorpanel.min.css',
-			array( 'wp-edit-blocks' ),
-			PREMIUM_BLOCKS_VERSION
 		);
 
 		wp_localize_script(
@@ -387,41 +374,23 @@ class PBG_Blocks_Helper {
 			if ( false === $value ) {
 				continue;
 			}
+			
 			if ( $slug === 'breadcrumbs' ) {
-
 				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/breadcrumbs.php';
-
 				register_block_pbg_breadcrumbs();
 			} elseif ( $slug === 'trigger' ) {
-				wp_enqueue_script(
-					'premium-trigger-block-script',
-					PREMIUM_BLOCKS_URL . 'assets/js/trigger.js',
-					array( 'jquery' ),
-					PREMIUM_BLOCKS_VERSION,
-					true
-				);
-				wp_enqueue_style(
-					'pbg-trigger-style',
-					PREMIUM_BLOCKS_URL . 'assets/css/minified/trigger.min.css',
-					array(),
-					PREMIUM_BLOCKS_VERSION,
-					'all'
-				);
-
 				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/trigger.php';
-
 				register_block_pbg_trigger();
 			} elseif ( $slug === 'content-switcher' ) {
 				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/switcher-child.php';
-
 				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/content-switcher.php';
-
 				register_block_pbg_content_switcher();
 			} elseif ( $slug === 'search' ) {
 				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/search.php';
 				register_block_premium_search();
 			}
 		}
+
 		register_block_type(
 			'premium/accordion',
 			array(
@@ -6525,9 +6494,9 @@ class PBG_Blocks_Helper {
 	 * @param string $attributes option For attribute.
 	 * @param string $contnet for content of Block.
 	 */
-	public function get_container_css($attributes, $content)
-	{
-		if (isset($attributes['block_id']) && !empty($attributes['block_id'])) {
+	public function get_container_css( $attributes, $content ) {
+		if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) 
+		{
 
 			$unique_id = $attributes['block_id'];
 		} else {
