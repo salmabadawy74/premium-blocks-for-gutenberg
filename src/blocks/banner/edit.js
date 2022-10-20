@@ -1,25 +1,27 @@
 import classnames from "classnames";
-import PremiumBorder from "../../components/premium-border";
-import PremiumTypo from "../../components/premium-typo";
-import PremiumFilters from "../../components/premium-filters";
-import SpacingComponent from "../../components/premium-responsive-spacing";
-import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
-import AdvancedPopColorControl from "../../components/Color Control/ColorComponent";
-import RadioComponent from "../../components/radio-control";
-import PremiumShadow from "../../components/PremiumShadow";
-import InspectorTabs from "../../components/inspectorTabs";
-import InspectorTab from "../../components/inspectorTab";
-import MultiButtonsControl from "../../components/responsive-radio";
-import Icons from "../../components/icons";
-import WebfontLoader from "../../components/typography/fontLoader";
+import {
+    InspectorTabs,
+    InspectorTab,
+    Icons,
+    PremiumBorder,
+    PremiumResponsiveTabs,
+    ResponsiveSingleRangeControl,
+    MultiButtonsControl,
+    RadioComponent,
+    AdvancedColorControl as AdvancedPopColorControl,
+    PremiumShadow,
+    WebfontLoader,
+    PremiumTypo,
+    SpacingComponent,
+    PremiumFilters
+} from '@pbg/components';
 import {
     borderCss,
     generateBlockId,
     generateCss,
     paddingCss,
     typographyCss,
-} from "../../components/HelperFunction";
+} from '@pbg/helpers';
 
 const { withSelect } = wp.data;
 const { __ } = wp.i18n;
@@ -765,9 +767,8 @@ function Edit(props) {
                             <div
                                 className="premium-banner__bg-overlay"
                                 style={{
-                                    backgroundColor: `${
-                                        background ? background : ""
-                                    } `,
+                                    backgroundColor: `${background ? background : ""
+                                        } `,
                                 }}
                             ></div>
                             <div

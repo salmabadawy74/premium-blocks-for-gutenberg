@@ -1,9 +1,9 @@
 import { useEffect } from '@wordpress/element';
 import { withSelect, useSelect } from '@wordpress/data';
-import { generateBlockId } from '../../components/HelperFunction';
 import classnames from "classnames";
 import { RichText, InnerBlocks, useBlockProps, store as blockEditorStore } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
+import { generateBlockId } from '@pbg/helpers';
 
 function AccordionItemEdit({
     attributes,

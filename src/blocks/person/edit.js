@@ -1,28 +1,30 @@
 import classnames from "classnames";
-import PremiumTypo from "../../components/premium-typo";
-import PremiumBorder from "../../components/premium-border";
-import PremiumShadow from "../../components/PremiumShadow";
-import DefaultImage from "../../components/default-image";
-import PremiumFilters from "../../components/premium-filters";
-import AdvancedPopColorControl from "../../components/Color Control/ColorComponent";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
-import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
-import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
-import SpacingControl from "../../components/premium-responsive-spacing";
-import PremiumMediaUpload from "../../components/premium-media-upload";
 import { SortableContainer, SortableElement, arrayMove } from "react-sortable-hoc";
-import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import InspectorTabs from "../../components/inspectorTabs";
-import InspectorTab from "../../components/inspectorTab";
-import RadioComponent from "../../components/radio-control";
-import ResponsiveRadioControl from "../../components/responsive-radio";
-import InsideTabs from "../../components/InsideTabs";
-import InsideTab from "../../components/InsideTab";
-import Icons from "../../components/icons";
-import Social from "../../components/social-media";
 import times from "lodash/times";
-import WebfontLoader from "../../components/typography/fontLoader";
-import { borderCss, paddingCss, marginCss, typographyCss, generateBlockId, generateCss } from "../../components/HelperFunction";
+import {
+    RadioComponent,
+    ResponsiveRangeControl,
+    MultiButtonsControl as ResponsiveRadioControl,
+    InspectorTabs,
+    InspectorTab,
+    PremiumResponsiveTabs,
+    PremiumBorder,
+    SpacingComponent as SpacingControl,
+    AdvancedColorControl as AdvancedPopColorControl,
+    PremiumShadow,
+    InsideTabs,
+    Icons,
+    InsideTab,
+    Social,
+    ResponsiveSingleRangeControl,
+    PremiumMediaUpload,
+    PremiumFilters,
+    WebfontLoader,
+    PremiumTypo,
+    DefaultImage
+} from '@pbg/components';
+import { borderCss, paddingCss, marginCss, typographyCss, generateBlockId, generateCss } from '@pbg/helpers';
 
 const { __ } = wp.i18n;
 const { withSelect } = wp.data;

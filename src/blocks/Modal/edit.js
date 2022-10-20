@@ -2,7 +2,7 @@ import classnames from "classnames";
 import Lottie from 'react-lottie-with-segments';
 import Inspector from "./inspector";
 import WebfontLoader from "../../components/typography/fontLoader";
-import { gradientBackground, generateBlockId, generateCss, borderCss, paddingCss, marginCss, typographyCss } from "../../components/HelperFunction";
+import { gradientBackground, generateBlockId, generateCss, borderCss, paddingCss, marginCss, typographyCss } from '@pbg/helpers';
 
 const { __ } = wp.i18n;
 const { withSelect } = wp.data

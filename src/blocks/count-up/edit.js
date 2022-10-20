@@ -1,22 +1,31 @@
 import classnames from "classnames";
-import { FontAwesomeEnabled } from "../../../assets/js/settings"
-import PremiumTypo from "../../components/premium-typo"
-import PremiumShadow from "../../components/PremiumShadow"
-import PremiumBorder from "../../components/premium-border"
-import PremiumMediaUpload from "../../components/premium-media-upload"
-import PremiumResponsiveTabs from '../../components/premium-responsive-tabs'
-import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
-import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
-import PremiumBackgroundControl from "../../components/Premium-Background-Control"
-import MultiButtonsControl from '../../components/responsive-radio';
-import Icons from "../../components/icons";
-import SpacingComponent from '../../components/premium-responsive-spacing';
-import InspectorTabs from '../../components/inspectorTabs';
-import InspectorTab from '../../components/inspectorTab';
-import { gradientBackground, generateBlockId, borderCss, paddingCss, typographyCss, marginCss } from "../../components/HelperFunction";
-import WebfontLoader from "../../components/typography/fontLoader";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
-import iconsList from "../../components/premium-icons-list";
+import {
+    InspectorTabs,
+    InspectorTab,
+    PremiumResponsiveTabs,
+    PremiumBorder,
+    PremiumTypo,
+    ResponsiveSingleRangeControl,
+    PremiumMediaUpload,
+    SpacingComponent,
+    AdvancedColorControl as AdvancedPopColorControl,
+    PremiumShadow,
+    MultiButtonsControl,
+    PremiumBackgroundControl,
+    Icons,
+    WebfontLoader,
+    iconsList,
+} from '@pbg/components';
+import {
+    gradientBackground,
+    typographyCss,
+    borderCss,
+    paddingCss,
+    marginCss,
+    generateBlockId,
+} from '@pbg/helpers';
+import { FontAwesomeEnabled } from '@pbg/settings';
 
 const { __ } = wp.i18n;
 const { withSelect } = wp.data

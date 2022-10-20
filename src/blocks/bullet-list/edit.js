@@ -1,24 +1,34 @@
 import classnames from "classnames"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
-import iconsList from "../../components/premium-icons-list";
-import PremiumTypo from "../../components/premium-typo";
-import PremiumBorder from "../../components/premium-border";
-import AdvancedPopColorControl from '../../components/Color Control/ColorComponent'
-import SpacingComponent from "../../components/premium-responsive-spacing";
-import PremiumMediaUpload from "../../components/premium-media-upload";
-import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc';
-import icons from '../../components/align';
-import Icons from "../../components/icons";
-import PremiumShadow from "../../components/PremiumShadow";
-import WebfontLoader from "../../components/typography/fontLoader";
-import MultiButtonsControl from '../../components/responsive-radio';
-import InspectorTabs from '../../components/inspectorTabs';
-import InspectorTab from '../../components/inspectorTab';
-import InsideTabs from "../../components/InsideTabs";
-import InsideTab from "../../components/InsideTab";
-import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import { generateBlockId, generateCss, typographyCss, paddingCss, marginCss, borderCss } from '../../components/HelperFunction';
+import {
+    InspectorTabs,
+    InspectorTab,
+    Icons,
+    PremiumBorder,
+    PremiumResponsiveTabs,
+    alignIcons as icons,
+    MultiButtonsControl,
+    PremiumMediaUpload,
+    AdvancedColorControl as AdvancedPopColorControl,
+    PremiumShadow,
+    WebfontLoader,
+    PremiumTypo,
+    SpacingComponent,
+    InsideTabs,
+    InsideTab,
+    ResponsiveRangeControl,
+    iconsList
+} from '@pbg/components';
+import {
+    borderCss,
+    generateBlockId,
+    generateCss,
+    paddingCss,
+    typographyCss,
+    marginCss
+} from '@pbg/helpers';
+
 
 const { withSelect } = wp.data
 
@@ -54,89 +64,89 @@ const SortableItem = SortableElement(({
     saveLink,
     openLink
 }) => <span className="premium-repeater-row-wrapper" tabIndex={0} key={newIndex}>
-            <span className="premium-repeater-row-inner">
-                <span className="premium-repeater-row-tools">
-                    <span className="premium-repeater-item-title" onClick={() => showContent(newIndex)}>
-                        {value.showBulletIcon && <i className={`${value.icon}`} />}
-                        {value.label}
-                    </span>
-                    <div className="premium-repeater-row-item-remove">
-                        <button
-                            className="premium-repeater-item-remove is-tertiary"
-                            onClick={() => onRemove(newIndex, value)}
-                        >
-                            x
-                        </button>
-                    </div>
+        <span className="premium-repeater-row-inner">
+            <span className="premium-repeater-row-tools">
+                <span className="premium-repeater-item-title" onClick={() => showContent(newIndex)}>
+                    {value.showBulletIcon && <i className={`${value.icon}`} />}
+                    {value.label}
                 </span>
-                {value.showContent && (
-                    <div className="premium-repeater-row-controls">
-                        <TextControl
-                            placeholder={__(`Enter ${value.label} link`)}
-                            value={value.label}
-                            onChange={(val) => changeLabel(val, newIndex)}
-                        />
-                        <ToggleControl
-                            label={__("Show Bullet")}
-                            checked={value.showBulletIcon}
-                            onChange={valueBullet => toggleShowBulletIcon(valueBullet, newIndex)}
-                        />
-                        {value.showBulletIcon && <div><SelectControl
-                            label={__("Icon Type", 'premium-blocks-for-gutenberg')}
-                            options={ICONTYPE}
-                            value={value.image_icon}
-                            onChange={valueType => selectIconType(valueType, newIndex)}
-                        />
-                            {"icon" == value.image_icon &&
-                                <Fragment>
-                                    <p>{__("Icon", 'premium-blocks-for-gutenberg')}</p>
-                                    <FontIconPicker
-                                        icons={iconsList}
-                                        value={value.icon}
-                                        onChange={valueIcon => changeIcons(valueIcon, newIndex)}
-                                        isMulti={false}
-                                        noSelectedPlaceholder={__("Select Icon", 'premium-blocks-for-gutenberg')}
-                                    />
-                                </Fragment>}
-
-                            {"image" == value.image_icon &&
-                                <Fragment>
-                                    <PremiumMediaUpload
-                                        type="image"
-                                        imageID={value.imageID}
-                                        imageURL={value.imageURL}
-                                        onSelectMedia={media => selectImage(media, newIndex)}
-                                        onRemoveImage={() => removeImage(newIndex)}
-                                    />
-                                </Fragment>
-                            }
-                        </div>
-                        }
-                        <hr />
-                        <ToggleControl
-                            label={__("Link", 'premium-blocks-for-gutenberg')}
-                            checked={value.disableLink}
-                            onChange={valueLink => toggleIconLink(valueLink, newIndex)}
-                        />
-                        {value.disableLink &&
+                <div className="premium-repeater-row-item-remove">
+                    <button
+                        className="premium-repeater-item-remove is-tertiary"
+                        onClick={() => onRemove(newIndex, value)}
+                    >
+                        x
+                    </button>
+                </div>
+            </span>
+            {value.showContent && (
+                <div className="premium-repeater-row-controls">
+                    <TextControl
+                        placeholder={__(`Enter ${value.label} link`)}
+                        value={value.label}
+                        onChange={(val) => changeLabel(val, newIndex)}
+                    />
+                    <ToggleControl
+                        label={__("Show Bullet")}
+                        checked={value.showBulletIcon}
+                        onChange={valueBullet => toggleShowBulletIcon(valueBullet, newIndex)}
+                    />
+                    {value.showBulletIcon && <div><SelectControl
+                        label={__("Icon Type", 'premium-blocks-for-gutenberg')}
+                        options={ICONTYPE}
+                        value={value.image_icon}
+                        onChange={valueType => selectIconType(valueType, newIndex)}
+                    />
+                        {"icon" == value.image_icon &&
                             <Fragment>
-                                <p>{__("URL", 'premium-blocks-for-gutenberg')}</p>
-                                <TextControl
-                                    value={value.link}
-                                    onChange={valueURL => saveLink(valueURL, newIndex)}
-                                    placeholder={__("Enter URL")}
+                                <p>{__("Icon", 'premium-blocks-for-gutenberg')}</p>
+                                <FontIconPicker
+                                    icons={iconsList}
+                                    value={value.icon}
+                                    onChange={valueIcon => changeIcons(valueIcon, newIndex)}
+                                    isMulti={false}
+                                    noSelectedPlaceholder={__("Select Icon", 'premium-blocks-for-gutenberg')}
                                 />
-                                <ToggleControl
-                                    label={__("Open links in new tab", 'premium-blocks-for-gutenberg')}
-                                    checked={value.linkTarget}
-                                    onChange={valueTarget => openLink(valueTarget, newIndex)}
+                            </Fragment>}
+
+                        {"image" == value.image_icon &&
+                            <Fragment>
+                                <PremiumMediaUpload
+                                    type="image"
+                                    imageID={value.imageID}
+                                    imageURL={value.imageURL}
+                                    onSelectMedia={media => selectImage(media, newIndex)}
+                                    onRemoveImage={() => removeImage(newIndex)}
                                 />
                             </Fragment>
                         }
                     </div>
-                )}
-            </span>
-        </span>);
+                    }
+                    <hr />
+                    <ToggleControl
+                        label={__("Link", 'premium-blocks-for-gutenberg')}
+                        checked={value.disableLink}
+                        onChange={valueLink => toggleIconLink(valueLink, newIndex)}
+                    />
+                    {value.disableLink &&
+                        <Fragment>
+                            <p>{__("URL", 'premium-blocks-for-gutenberg')}</p>
+                            <TextControl
+                                value={value.link}
+                                onChange={valueURL => saveLink(valueURL, newIndex)}
+                                placeholder={__("Enter URL")}
+                            />
+                            <ToggleControl
+                                label={__("Open links in new tab", 'premium-blocks-for-gutenberg')}
+                                checked={value.linkTarget}
+                                onChange={valueTarget => openLink(valueTarget, newIndex)}
+                            />
+                        </Fragment>
+                    }
+                </div>
+            )}
+        </span>
+    </span>);
 
 const SortableList = SortableContainer(({
     items,
@@ -637,334 +647,334 @@ function Edit(props) {
         return generateCss(styles);
     }
 
-        return (
-            <Fragment>
-                <InspectorControls>
-                    <InspectorTabs tabs={['layout', 'style', 'advance']}>
-                        <InspectorTab key={'layout'}>
-                            <PanelBody
-                                title={__("General Settings", "premium-blocks-for-gutenberg")}
-                                className="premium-panel-body"
-                                initialOpen={true}
-                            >
-                                < SortableList
-                                    items={repeaterBulletList}
-                                    onSortEnd={(o, n) => onSortEndSingle(o, n)}
-                                    onRemove={(value) => onRemove(value)}
-                                    showContent={(value, i) => showContent(value, i)}
-                                    changeLabel={(value, i) => changeLabel(value, i)}
-                                    toggleShowBulletIcon={(value, i) => toggleShowBulletIcon(value, i)}
-                                    selectIconType={(value, i) => selectIconType(value, i)}
-                                    changeIcons={(value, i) => changeIcons(value, i)}
-                                    selectImage={(value, i) => selectImage(value, i)}
-                                    removeImage={(value, i) => removeImage(value, i)}
-                                    toggleIconLink={(value, i) => toggleIconLink(value, i)}
-                                    saveLink={(value, i) => saveLink(value, i)}
-                                    openLink={(value, i) => openLink(value, i)}
-                                    shouldCancelStart={shouldCancelStart}
-                                />
-                                < div className="premium-bullet-list-btn__wrap" >
-                                    <button
-                                        className={"premium-bullet-list-btn"}
-                                        onClick={() => addNewBulletList()}
-                                    >
-                                        <i className="dashicons dashicons-plus premium-bullet-list-icon" />
-                                        {__("Add New Item", "premium-blocks-for-gutenberg")}
-                                    </button>
-                                </div>
-                            </PanelBody>
-                            <PanelBody
-                                title={__("Display Options", "premium-blocks-for-gutenberg")}
-                                className="premium-panel-body"
-                                initialOpen={false}
-                            >
-                                <SelectControl
-                                    label={__("Layout Type", "premium-blocks-for-gutenberg")}
-                                    options={LAYOUT}
-                                    value={layoutPos}
-                                    onChange={newValue => setAttributes({ layoutPos: newValue })}
-                                />
-                                <MultiButtonsControl
+    return (
+        <Fragment>
+            <InspectorControls>
+                <InspectorTabs tabs={['layout', 'style', 'advance']}>
+                    <InspectorTab key={'layout'}>
+                        <PanelBody
+                            title={__("General Settings", "premium-blocks-for-gutenberg")}
+                            className="premium-panel-body"
+                            initialOpen={true}
+                        >
+                            < SortableList
+                                items={repeaterBulletList}
+                                onSortEnd={(o, n) => onSortEndSingle(o, n)}
+                                onRemove={(value) => onRemove(value)}
+                                showContent={(value, i) => showContent(value, i)}
+                                changeLabel={(value, i) => changeLabel(value, i)}
+                                toggleShowBulletIcon={(value, i) => toggleShowBulletIcon(value, i)}
+                                selectIconType={(value, i) => selectIconType(value, i)}
+                                changeIcons={(value, i) => changeIcons(value, i)}
+                                selectImage={(value, i) => selectImage(value, i)}
+                                removeImage={(value, i) => removeImage(value, i)}
+                                toggleIconLink={(value, i) => toggleIconLink(value, i)}
+                                saveLink={(value, i) => saveLink(value, i)}
+                                openLink={(value, i) => openLink(value, i)}
+                                shouldCancelStart={shouldCancelStart}
+                            />
+                            < div className="premium-bullet-list-btn__wrap" >
+                                <button
+                                    className={"premium-bullet-list-btn"}
+                                    onClick={() => addNewBulletList()}
+                                >
+                                    <i className="dashicons dashicons-plus premium-bullet-list-icon" />
+                                    {__("Add New Item", "premium-blocks-for-gutenberg")}
+                                </button>
+                            </div>
+                        </PanelBody>
+                        <PanelBody
+                            title={__("Display Options", "premium-blocks-for-gutenberg")}
+                            className="premium-panel-body"
+                            initialOpen={false}
+                        >
+                            <SelectControl
+                                label={__("Layout Type", "premium-blocks-for-gutenberg")}
+                                options={LAYOUT}
+                                value={layoutPos}
+                                onChange={newValue => setAttributes({ layoutPos: newValue })}
+                            />
+                            <MultiButtonsControl
+                                choices={[
+                                    { value: 'left', label: __('Left', "premium-blocks-for-gutenberg"), icon: Icons.alignLeft },
+                                    { value: 'center', label: __('Center', "premium-blocks-for-gutenberg"), icon: Icons.alignCenter },
+                                    { value: 'right', label: __('Right', "premium-blocks-for-gutenberg"), icon: Icons.alignRight }
+                                ]}
+                                value={align}
+                                onChange={(aligns) => setAttributes({ align: aligns })}
+                                label={__("Align", "premium-blocks-for-gutenberg")}
+                                showIcons={true}
+                            />
+                            <div>
+                                {iconPosition !== 'top' ? <MultiButtonsControl
                                     choices={[
-                                        { value: 'left', label: __('Left', "premium-blocks-for-gutenberg"), icon: Icons.alignLeft }, 
-                                        { value: 'center', label: __('Center', "premium-blocks-for-gutenberg"), icon: Icons.alignCenter }, 
-                                        { value: 'right', label: __('Right', "premium-blocks-for-gutenberg"), icon: Icons.alignRight }
+                                        { value: 'flex-start', label: __('Top', "premium-blocks-for-gutenberg"), icon: icons.vertical_top },
+                                        { value: 'center', label: __('Center', "premium-blocks-for-gutenberg"), icon: icons.vertical_middle },
+                                        { value: 'flex-end', label: __('Bottom', "premium-blocks-for-gutenberg"), icon: icons.vertical_bottom }
                                     ]}
-                                    value={align}
-                                    onChange={(aligns) => setAttributes({ align: aligns })}
-                                    label={__("Align", "premium-blocks-for-gutenberg")}
-                                    showIcons={true} 
-                                    />
-                                <div>
-                                    {iconPosition !== 'top' ? <MultiButtonsControl
+                                    value={bulletAlign}
+                                    onChange={(alignBullet) => setAttributes({ bulletAlign: alignBullet })}
+                                    label={__("Bullet Alignment", "premium-blocks-for-gutenberg")}
+                                    showIcons={true} />
+                                    :
+                                    <MultiButtonsControl
                                         choices={[
-                                            { value: 'flex-start', label: __('Top', "premium-blocks-for-gutenberg"), icon: icons.vertical_top }, 
-                                            { value: 'center', label: __('Center', "premium-blocks-for-gutenberg"), icon: icons.vertical_middle }, 
-                                            { value: 'flex-end', label: __('Bottom', "premium-blocks-for-gutenberg"), icon: icons.vertical_bottom }
+                                            { value: 'left', label: __('Left', "premium-blocks-for-gutenberg"), icon: Icons.alignLeft },
+                                            { value: 'center', label: __('Center', "premium-blocks-for-gutenberg"), icon: Icons.alignCenter },
+                                            { value: 'right', label: __('Right', "premium-blocks-for-gutenberg"), icon: Icons.alignRight }
                                         ]}
                                         value={bulletAlign}
-                                        onChange={(alignBullet) => setAttributes({ bulletAlign: alignBullet })}
-                                        label={__("Bullet Alignment", "premium-blocks-for-gutenberg")}
+                                        onChange={(alignn) => setAttributes({ bulletAlign: alignn })}
+                                        label={__("Align Content", "premium-blocks-for-gutenberg")}
                                         showIcons={true} />
-                                        :
-                                        <MultiButtonsControl
-                                            choices={[
-                                                { value: 'left', label: __('Left', "premium-blocks-for-gutenberg"), icon: Icons.alignLeft }, 
-                                                { value: 'center', label: __('Center', "premium-blocks-for-gutenberg"), icon: Icons.alignCenter }, 
-                                                { value: 'right', label: __('Right', "premium-blocks-for-gutenberg"), icon: Icons.alignRight }
-                                            ]}
-                                            value={bulletAlign}
-                                            onChange={(alignn) => setAttributes({ bulletAlign: alignn })}
-                                            label={__("Align Content", "premium-blocks-for-gutenberg")}
-                                            showIcons={true} />
-                                    }
-                                </div>
-                                <SelectControl
-                                    label={__("Bullet Position", "premium-blocks-for-gutenberg")}
-                                    options={POSITION}
-                                    value={iconPosition}
-                                    onChange={newValue => setAttributes({ iconPosition: newValue })}
-                                />
-                                <ToggleControl
-                                    label={__("Divider", "premium-blocks-for-gutenberg")}
-                                    checked={divider}
-                                    onChange={value => setAttributes({ divider: value })}
-                                />
-                            </PanelBody>
-                        </InspectorTab>
-                        <InspectorTab key={'style'}>
-                            <PanelBody
-                                title={__("General Style", "premium-blocks-for-gutenberg")}
-                                className="premium-panel-body"
-                                initialOpen={true}
-                            >
-                                <InsideTabs>
-                                    <InsideTab tabTitle={__("Normal", "premium-blocks-for-gutenberg")}>
-                                        <AdvancedPopColorControl
-                                            label={__("Background Color", 'premium-block-for-gutenberg')}
-                                            colorValue={generalStyles[0].generalBackgroundColor}
-                                            colorDefault={''}
-                                            onColorChange={newValue =>
-                                                saveGeneralStyles({
-                                                    generalBackgroundColor: newValue
-                                                })
-                                            }
-                                        />
-                                        <PremiumShadow
-                                            value={boxShadow}
-                                            onChange={(value) => setAttributes({ boxShadow: value })}
-                                        />
-                                    </InsideTab>
-                                    <InsideTab tabTitle={__("Hover", "premium-blocks-for-gutenberg")}>
-                                        <AdvancedPopColorControl
-                                            label={__("Background Color", 'premium-block-for-gutenberg')}
-                                            colorValue={generalStyles[0].generalHoverBackgroundColor}
-                                            colorDefault={''}
-                                            onColorChange={newValue =>
-                                                saveGeneralStyles({
-                                                    generalHoverBackgroundColor: newValue
-                                                })
-                                            }
-                                        />
-                                        <PremiumShadow
-                                            label={__("Hover Box Shadow", 'premium-blocks-for-gutenberg')}
-                                            value={hoverBoxShadow}
-                                            onChange={(value) => setAttributes({ hoverBoxShadow: value })}
-                                        />
-                                    </InsideTab>
-                                </InsideTabs>
-                                <PremiumBorder
-                                    label={__("Border", "premium-blocks-for-gutenberg")}
-                                    value={generalBorder}
-                                    onChange={(value) => setAttributes({ generalBorder: value })}
-                                />
-                                <hr />
-                                <SpacingComponent value={generalmargin} responsive={true} showUnits={true} label={__("Margin", "premium-blocks-for-gutenberg")} onChange={(value) => setAttributes({ generalmargin: value })} />
-                                <SpacingComponent value={generalpadding} responsive={true} showUnits={true} label={__("Padding", "premium-blocks-for-gutenberg")} onChange={(value) => setAttributes({ generalpadding: value })} />
-                            </PanelBody>
-                            <PanelBody
-                                title={__("Bullet Style", "premium-blocks-for-gutenberg")}
-                                className="premium-panel-body"
-                                initialOpen={false}
-                            >
-                                <ResponsiveRangeControl
-                                    label={__("Size", 'premium-blocks-for-gutenberg')}
-                                    value={bulletIconFontSize}
-                                    units={['px', 'em', 'rem']}
-                                    onChange={newValue => setAttributes({ bulletIconFontSize: newValue })}
-                                    showUnit={true}
-                                    min={1}
-                                    max={100}
-                                />
-                                 <InsideTabs>
-                                    <InsideTab tabTitle={__("Normal", "premium-blocks-for-gutenberg")}>
-                                        <Fragment>
-                                            <AdvancedPopColorControl
-                                                label={__("Color", 'premium-block-for-gutenberg')}
-                                                colorValue={bulletIconStyles[0].bulletIconColor}
-                                                colorDefault={''}
-                                                onColorChange={newValue =>
-                                                    saveBulletIconStyles({
-                                                        bulletIconColor: newValue
-                                                    })
-                                                }
-                                            />
-                                            <AdvancedPopColorControl
-                                                label={__("Background Color", 'premium-block-for-gutenberg')}
-                                                colorValue={bulletIconStyles[0].bulletIconBackgroundColor}
-                                                colorDefault={''}
-                                                onColorChange={newValue =>
-                                                    saveBulletIconStyles({
-                                                        bulletIconBackgroundColor: newValue
-                                                    })
-                                                }
-                                            />
-                                        </Fragment>
-                                    </InsideTab>
-                                    <InsideTab tabTitle={__("Hover", "premium-blocks-for-gutenberg")}>
-                                        <Fragment>
-                                            <AdvancedPopColorControl
-                                                label={__("Color", 'premium-block-for-gutenberg')}
-                                                colorValue={bulletIconStyles[0].bulletIconHoverColor}
-                                                colorDefault={''}
-                                                onColorChange={newValue =>
-                                                    saveBulletIconStyles({
-                                                        bulletIconHoverColor: newValue
-                                                    })
-                                                }
-                                            />
-                                            <AdvancedPopColorControl
-                                                label={__("Background Color", 'premium-block-for-gutenberg')}
-                                                colorValue={bulletIconStyles[0].bulletIconHoverBackgroundColor}
-                                                colorDefault={''}
-                                                onColorChange={newValue =>
-                                                    saveBulletIconStyles({
-                                                        bulletIconHoverBackgroundColor: newValue
-                                                    })
-                                                }
-                                            />
-                                        </Fragment>
-                                    </InsideTab>
-                                </InsideTabs>
-                                <PremiumBorder
-                                    label={__("Border", 'premium-block-for-gutenberg')}
-                                    value={bulletIconBorder}
-                                    onChange={(value) => setAttributes({ bulletIconBorder: value })}
-                                />
-                                <hr />
-                                <SpacingComponent value={bulletIconmargin} responsive={true} showUnits={true} label={__("Margin", 'premium-block-for-gutenberg')} onChange={(value) => setAttributes({ bulletIconmargin: value })} />
-                                <SpacingComponent value={bulletIconpadding} responsive={true} showUnits={true} label={__("Padding", 'premium-block-for-gutenberg')} onChange={(value) => setAttributes({ bulletIconpadding: value })} />
-                            </PanelBody>
-                            <PanelBody
-                                title={__("Title Style", "premium-blocks-for-gutenberg")}
-                                className="premium-panel-body"
-                                initialOpen={false}
-                            >
-                                <PremiumTypo
-                                    value={titleTypography}
-                                    onChange={newValue => setAttributes({ titleTypography: newValue })}
-                                />
-                                <InsideTabs>
-                                    <InsideTab tabTitle={__("Normal", "premium-blocks-for-gutenberg")}>
-                                        <AdvancedPopColorControl
-                                            label={__("Color", 'premium-block-for-gutenberg')}
-                                            colorValue={titleStyles[0].titleColor}
-                                            colorDefault={''}
-                                            onColorChange={newValue =>
-                                                saveTitleStyles({
-                                                    titleColor: newValue
-                                                })
-                                            }
-                                        />
-                                    </InsideTab>
-                                    <InsideTab tabTitle={__("Hover", "premium-blocks-for-gutenberg")}>
-                                        <AdvancedPopColorControl
-                                            label={__("Color", 'premium-block-for-gutenberg')}
-                                            colorValue={titleStyles[0].titleHoverColor}
-                                            colorDefault={''}
-                                            onColorChange={newValue =>
-                                                saveTitleStyles({
-                                                    titleHoverColor: newValue
-                                                })
-                                            }
-                                        />
-                                    </InsideTab>
-                                </InsideTabs>
-                                <PremiumShadow
-                                    label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
-                                    value={titlesTextShadow}
-                                    onChange={(value) => setAttributes({ titlesTextShadow: value })}
-                                />
-                                <SpacingComponent value={titlemargin} responsive={true} showUnits={true} label={__("Margin", 'premium-blocks-for-gutenberg')} onChange={(value) => setAttributes({ titlemargin: value })} />
-                            </PanelBody>
-                            {divider &&
-                                <PanelBody
-                                    title={__("Divider", "premium-blocks-for-gutenberg")}
-                                    className="premium-panel-body"
-                                    initialOpen={false}
-                                >
-                                    <SelectControl
-                                        label={__("Divider Style", "premium-blocks-for-gutenberg")}
-                                        options={DividerStyle}
-                                        value={dividerStyle}
-                                        onChange={newValue => setAttributes({ dividerStyle: newValue })}
-                                    />
-                                    <ResponsiveRangeControl
-                                        label={__("Width", 'premium-blocks-for-gutenberg')}
-                                        value={dividerWidth}
-                                        units={['px', 'em', '%']}
-                                        onChange={newValue => setAttributes({ dividerWidth: newValue })}
-                                        showUnit={true}
-                                        min={1}
-                                        max={600}
-                                    />
-                                    <ResponsiveRangeControl
-                                        label={__("Height", 'premium-blocks-for-gutenberg')}
-                                        value={dividerHeight}
-                                        units={['px', 'em', '%']}
-                                        onChange={newValue => setAttributes({ dividerHeight: newValue })}
-                                        showUnit={true}
-                                        min={1}
-                                        max={600}
-                                    />
+                                }
+                            </div>
+                            <SelectControl
+                                label={__("Bullet Position", "premium-blocks-for-gutenberg")}
+                                options={POSITION}
+                                value={iconPosition}
+                                onChange={newValue => setAttributes({ iconPosition: newValue })}
+                            />
+                            <ToggleControl
+                                label={__("Divider", "premium-blocks-for-gutenberg")}
+                                checked={divider}
+                                onChange={value => setAttributes({ divider: value })}
+                            />
+                        </PanelBody>
+                    </InspectorTab>
+                    <InspectorTab key={'style'}>
+                        <PanelBody
+                            title={__("General Style", "premium-blocks-for-gutenberg")}
+                            className="premium-panel-body"
+                            initialOpen={true}
+                        >
+                            <InsideTabs>
+                                <InsideTab tabTitle={__("Normal", "premium-blocks-for-gutenberg")}>
                                     <AdvancedPopColorControl
-                                        label={__("Color", 'premium-block-for-gutenberg')}
-                                        colorValue={dividerStyles[0].dividerColor}
+                                        label={__("Background Color", 'premium-block-for-gutenberg')}
+                                        colorValue={generalStyles[0].generalBackgroundColor}
                                         colorDefault={''}
                                         onColorChange={newValue =>
-                                            saveDividerStyles({
-                                                dividerColor: newValue
+                                            saveGeneralStyles({
+                                                generalBackgroundColor: newValue
                                             })
                                         }
                                     />
-                                </PanelBody>
-                            }
-                        </InspectorTab>
-                        <InspectorTab key={"advance"}>
-                            <PremiumResponsiveTabs
-                                Desktop={hideDesktop}
-                                Tablet={hideTablet}
-                                Mobile={hideMobile}
-                                onChangeDesktop={(value) =>
-                                    setAttributes({
-                                        hideDesktop: value,
-                                    })
-                                }
-                                onChangeTablet={(value) =>
-                                    setAttributes({
-                                        hideTablet: value,
-                                    })
-                                }
-                                onChangeMobile={(value) =>
-                                    setAttributes({
-                                        hideMobile: value,
-                                    })
-                                }
+                                    <PremiumShadow
+                                        value={boxShadow}
+                                        onChange={(value) => setAttributes({ boxShadow: value })}
+                                    />
+                                </InsideTab>
+                                <InsideTab tabTitle={__("Hover", "premium-blocks-for-gutenberg")}>
+                                    <AdvancedPopColorControl
+                                        label={__("Background Color", 'premium-block-for-gutenberg')}
+                                        colorValue={generalStyles[0].generalHoverBackgroundColor}
+                                        colorDefault={''}
+                                        onColorChange={newValue =>
+                                            saveGeneralStyles({
+                                                generalHoverBackgroundColor: newValue
+                                            })
+                                        }
+                                    />
+                                    <PremiumShadow
+                                        label={__("Hover Box Shadow", 'premium-blocks-for-gutenberg')}
+                                        value={hoverBoxShadow}
+                                        onChange={(value) => setAttributes({ hoverBoxShadow: value })}
+                                    />
+                                </InsideTab>
+                            </InsideTabs>
+                            <PremiumBorder
+                                label={__("Border", "premium-blocks-for-gutenberg")}
+                                value={generalBorder}
+                                onChange={(value) => setAttributes({ generalBorder: value })}
                             />
-                        </InspectorTab>
-                    </InspectorTabs>
-                </InspectorControls >
-            <div 
+                            <hr />
+                            <SpacingComponent value={generalmargin} responsive={true} showUnits={true} label={__("Margin", "premium-blocks-for-gutenberg")} onChange={(value) => setAttributes({ generalmargin: value })} />
+                            <SpacingComponent value={generalpadding} responsive={true} showUnits={true} label={__("Padding", "premium-blocks-for-gutenberg")} onChange={(value) => setAttributes({ generalpadding: value })} />
+                        </PanelBody>
+                        <PanelBody
+                            title={__("Bullet Style", "premium-blocks-for-gutenberg")}
+                            className="premium-panel-body"
+                            initialOpen={false}
+                        >
+                            <ResponsiveRangeControl
+                                label={__("Size", 'premium-blocks-for-gutenberg')}
+                                value={bulletIconFontSize}
+                                units={['px', 'em', 'rem']}
+                                onChange={newValue => setAttributes({ bulletIconFontSize: newValue })}
+                                showUnit={true}
+                                min={1}
+                                max={100}
+                            />
+                            <InsideTabs>
+                                <InsideTab tabTitle={__("Normal", "premium-blocks-for-gutenberg")}>
+                                    <Fragment>
+                                        <AdvancedPopColorControl
+                                            label={__("Color", 'premium-block-for-gutenberg')}
+                                            colorValue={bulletIconStyles[0].bulletIconColor}
+                                            colorDefault={''}
+                                            onColorChange={newValue =>
+                                                saveBulletIconStyles({
+                                                    bulletIconColor: newValue
+                                                })
+                                            }
+                                        />
+                                        <AdvancedPopColorControl
+                                            label={__("Background Color", 'premium-block-for-gutenberg')}
+                                            colorValue={bulletIconStyles[0].bulletIconBackgroundColor}
+                                            colorDefault={''}
+                                            onColorChange={newValue =>
+                                                saveBulletIconStyles({
+                                                    bulletIconBackgroundColor: newValue
+                                                })
+                                            }
+                                        />
+                                    </Fragment>
+                                </InsideTab>
+                                <InsideTab tabTitle={__("Hover", "premium-blocks-for-gutenberg")}>
+                                    <Fragment>
+                                        <AdvancedPopColorControl
+                                            label={__("Color", 'premium-block-for-gutenberg')}
+                                            colorValue={bulletIconStyles[0].bulletIconHoverColor}
+                                            colorDefault={''}
+                                            onColorChange={newValue =>
+                                                saveBulletIconStyles({
+                                                    bulletIconHoverColor: newValue
+                                                })
+                                            }
+                                        />
+                                        <AdvancedPopColorControl
+                                            label={__("Background Color", 'premium-block-for-gutenberg')}
+                                            colorValue={bulletIconStyles[0].bulletIconHoverBackgroundColor}
+                                            colorDefault={''}
+                                            onColorChange={newValue =>
+                                                saveBulletIconStyles({
+                                                    bulletIconHoverBackgroundColor: newValue
+                                                })
+                                            }
+                                        />
+                                    </Fragment>
+                                </InsideTab>
+                            </InsideTabs>
+                            <PremiumBorder
+                                label={__("Border", 'premium-block-for-gutenberg')}
+                                value={bulletIconBorder}
+                                onChange={(value) => setAttributes({ bulletIconBorder: value })}
+                            />
+                            <hr />
+                            <SpacingComponent value={bulletIconmargin} responsive={true} showUnits={true} label={__("Margin", 'premium-block-for-gutenberg')} onChange={(value) => setAttributes({ bulletIconmargin: value })} />
+                            <SpacingComponent value={bulletIconpadding} responsive={true} showUnits={true} label={__("Padding", 'premium-block-for-gutenberg')} onChange={(value) => setAttributes({ bulletIconpadding: value })} />
+                        </PanelBody>
+                        <PanelBody
+                            title={__("Title Style", "premium-blocks-for-gutenberg")}
+                            className="premium-panel-body"
+                            initialOpen={false}
+                        >
+                            <PremiumTypo
+                                value={titleTypography}
+                                onChange={newValue => setAttributes({ titleTypography: newValue })}
+                            />
+                            <InsideTabs>
+                                <InsideTab tabTitle={__("Normal", "premium-blocks-for-gutenberg")}>
+                                    <AdvancedPopColorControl
+                                        label={__("Color", 'premium-block-for-gutenberg')}
+                                        colorValue={titleStyles[0].titleColor}
+                                        colorDefault={''}
+                                        onColorChange={newValue =>
+                                            saveTitleStyles({
+                                                titleColor: newValue
+                                            })
+                                        }
+                                    />
+                                </InsideTab>
+                                <InsideTab tabTitle={__("Hover", "premium-blocks-for-gutenberg")}>
+                                    <AdvancedPopColorControl
+                                        label={__("Color", 'premium-block-for-gutenberg')}
+                                        colorValue={titleStyles[0].titleHoverColor}
+                                        colorDefault={''}
+                                        onColorChange={newValue =>
+                                            saveTitleStyles({
+                                                titleHoverColor: newValue
+                                            })
+                                        }
+                                    />
+                                </InsideTab>
+                            </InsideTabs>
+                            <PremiumShadow
+                                label={__("Text Shadow", 'premium-blocks-for-gutenberg')}
+                                value={titlesTextShadow}
+                                onChange={(value) => setAttributes({ titlesTextShadow: value })}
+                            />
+                            <SpacingComponent value={titlemargin} responsive={true} showUnits={true} label={__("Margin", 'premium-blocks-for-gutenberg')} onChange={(value) => setAttributes({ titlemargin: value })} />
+                        </PanelBody>
+                        {divider &&
+                            <PanelBody
+                                title={__("Divider", "premium-blocks-for-gutenberg")}
+                                className="premium-panel-body"
+                                initialOpen={false}
+                            >
+                                <SelectControl
+                                    label={__("Divider Style", "premium-blocks-for-gutenberg")}
+                                    options={DividerStyle}
+                                    value={dividerStyle}
+                                    onChange={newValue => setAttributes({ dividerStyle: newValue })}
+                                />
+                                <ResponsiveRangeControl
+                                    label={__("Width", 'premium-blocks-for-gutenberg')}
+                                    value={dividerWidth}
+                                    units={['px', 'em', '%']}
+                                    onChange={newValue => setAttributes({ dividerWidth: newValue })}
+                                    showUnit={true}
+                                    min={1}
+                                    max={600}
+                                />
+                                <ResponsiveRangeControl
+                                    label={__("Height", 'premium-blocks-for-gutenberg')}
+                                    value={dividerHeight}
+                                    units={['px', 'em', '%']}
+                                    onChange={newValue => setAttributes({ dividerHeight: newValue })}
+                                    showUnit={true}
+                                    min={1}
+                                    max={600}
+                                />
+                                <AdvancedPopColorControl
+                                    label={__("Color", 'premium-block-for-gutenberg')}
+                                    colorValue={dividerStyles[0].dividerColor}
+                                    colorDefault={''}
+                                    onColorChange={newValue =>
+                                        saveDividerStyles({
+                                            dividerColor: newValue
+                                        })
+                                    }
+                                />
+                            </PanelBody>
+                        }
+                    </InspectorTab>
+                    <InspectorTab key={"advance"}>
+                        <PremiumResponsiveTabs
+                            Desktop={hideDesktop}
+                            Tablet={hideTablet}
+                            Mobile={hideMobile}
+                            onChangeDesktop={(value) =>
+                                setAttributes({
+                                    hideDesktop: value,
+                                })
+                            }
+                            onChangeTablet={(value) =>
+                                setAttributes({
+                                    hideTablet: value,
+                                })
+                            }
+                            onChangeMobile={(value) =>
+                                setAttributes({
+                                    hideMobile: value,
+                                })
+                            }
+                        />
+                    </InspectorTab>
+                </InspectorTabs>
+            </InspectorControls >
+            <div
                 {...useBlockProps({
                     className: classnames(
                         className,
@@ -1096,7 +1106,7 @@ function Edit(props) {
                 </ul>
                 {loadTitleGoogleFonts}
             </div>
-            </Fragment>
+        </Fragment>
     );
 }
 

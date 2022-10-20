@@ -1,5 +1,8 @@
 import classnames from "classnames"
-import { filterJsCss, generateCss } from '../../components/HelperFunction';
+import {
+    filterJsCss,
+    generateCss
+} from '@pbg/helpers';
 import { useBlockProps } from "@wordpress/block-editor";
 
 export default function save(props) {

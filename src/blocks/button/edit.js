@@ -10,7 +10,7 @@ import InspectorTabs from '../../components/inspectorTabs';
 import InspectorTab from '../../components/inspectorTab';
 import InsideTabs from "../../components/InsideTabs";
 import InsideTab from "../../components/InsideTab";
-import { generateBlockId, generateCss, typographyCss, borderCss, paddingCss } from '../../components/HelperFunction';
+import { generateBlockId, generateCss, typographyCss, borderCss, paddingCss } from '@pbg/helpers';
 import MultiButtonsControl from "../../components/responsive-radio";
 import Icons from "../../components/icons";
 

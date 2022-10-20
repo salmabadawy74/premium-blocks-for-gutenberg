@@ -1,21 +1,23 @@
 import classnames from "classnames";
 import Lottie from "react-lottie-with-segments";
-import PremiumFilters from "../../components/premium-filters";
-import PremiumBorder from "../../components/premium-border";
-import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
-import AdvancedPopColorControl from "../../components/Color Control/ColorComponent";
-import MultiButtonsControl from "../../components/responsive-radio";
-import Icons from "../../components/icons";
-import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
 import Placeholder from "./container.js";
-import { JsonUploadEnabled } from "../../../assets/js/settings";
-import InspectorTabs from "../../components/inspectorTabs";
-import InspectorTab from "../../components/inspectorTab";
-import InsideTabs from "../../components/InsideTabs";
-import InsideTab from "../../components/InsideTab";
-import SpacingControl from "../../components/premium-responsive-spacing";
-import { generateCss, generateBlockId } from "../../components/HelperFunction";
+import {
+    ResponsiveRangeControl,
+    MultiButtonsControl,
+    InspectorTabs,
+    InspectorTab,
+    PremiumResponsiveTabs,
+    PremiumBorder,
+    SpacingComponent as SpacingControl,
+    AdvancedColorControl as AdvancedPopColorControl,
+    InsideTabs,
+    Icons,
+    InsideTab,
+    ResponsiveSingleRangeControl,
+    PremiumFilters,
+} from '@pbg/components';
+import { generateCss, generateBlockId } from '@pbg/helpers';
+import { JsonUploadEnabled } from '@pbg/settings';
 
 const { __ } = wp.i18n;
 const { useEffect, Fragment } = wp.element;

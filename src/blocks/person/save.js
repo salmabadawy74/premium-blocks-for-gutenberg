@@ -1,7 +1,9 @@
 import classnames from 'classnames'
-import DefaultImage from "../../components/default-image";
-import Social from "../../components/social-media";
-import { filterJsCss, generateCss } from '../../components/HelperFunction'
+import {
+    Social,
+    DefaultImage
+} from '@pbg/components';
+import { filterJsCss, generateCss } from '@pbg/helpers';
 const { __ } = wp.i18n;
 
 const { RichText, useBlockProps } = wp.blockEditor;

@@ -1,5 +1,8 @@
 import classnames from "classnames"
-import { generateCss, filterJsCss } from '../../components/HelperFunction';
+import {
+    generateCss,
+    filterJsCss,
+} from '@pbg/helpers';
 const {
     Fragment,
 } = wp.element
@@ -63,7 +66,7 @@ export default function save(props) {
     }
 
     return (
-        <div 
+        <div
             {...useBlockProps.save({
                 className: classnames(
                     className,
@@ -189,9 +192,9 @@ export default function save(props) {
                                             rel="noopener noreferrer"
                                         >
                                             <div className={`premium-bullet-list__content-wrap`} style={filterJsCss({
-                                            display: iconPosition == "before" ? "flex" : "inline-flex",
-                                            flexDirection: iconPosition == "top" ? "column" : iconPosition == "after" ? 'row-reverse' : "",
-                                        })}>
+                                                display: iconPosition == "before" ? "flex" : "inline-flex",
+                                                flexDirection: iconPosition == "top" ? "column" : iconPosition == "after" ? 'row-reverse' : "",
+                                            })}>
                                                 <span className={`premium-bullet-list__icon-wrap`}
                                                     style={filterJsCss({
                                                         overflow: repeaterBulletList?.[index]?.image_icon == 'image' ? "hidden" : "",

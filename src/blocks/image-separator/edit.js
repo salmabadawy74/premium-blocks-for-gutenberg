@@ -1,22 +1,24 @@
 import classnames from "classnames";
-import iconsList from "../../components/premium-icons-list";
-import InspectorTabs from "../../components/inspectorTabs";
-import InspectorTab from "../../components/inspectorTab";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
-import ResponsiveRangeControl from "../../components/RangeControl/responsive-range-control";
-import AdvancedPopColorControl from "../../components/Color Control/ColorComponent";
-import PremiumFilters from "../../components/premium-filters";
-import PremiumMediaUpload from "../../components/premium-media-upload";
-import ResponsiveRadioControl from "../../components/responsive-radio";
-import Icons from "../../components/icons";
-import PremiumResponsiveTabs from "../../components/premium-responsive-tabs";
-import PremiumBorder from "../../components/premium-border";
-import SpacingControl from "../../components/premium-responsive-spacing";
-import InsideTabs from "../../components/InsideTabs";
-import InsideTab from "../../components/InsideTab";
-import PremiumShadow from "../../components/PremiumShadow";
-import ResponsiveSingleRangeControl from "../../components/RangeControl/single-range-control";
-import { borderCss, paddingCss, generateBlockId, generateCss } from "../../components/HelperFunction";
+import {
+    ResponsiveRangeControl,
+    MultiButtonsControl as ResponsiveRadioControl,
+    InspectorTabs,
+    InspectorTab,
+    PremiumResponsiveTabs,
+    PremiumBorder,
+    SpacingComponent as SpacingControl,
+    AdvancedColorControl as AdvancedPopColorControl,
+    PremiumShadow,
+    InsideTabs,
+    Icons,
+    InsideTab,
+    iconsList,
+    ResponsiveSingleRangeControl,
+    PremiumMediaUpload,
+    PremiumFilters
+} from '@pbg/components';
+import { borderCss, paddingCss, generateBlockId, generateCss } from '@pbg/helpers';
 
 const { __ } = wp.i18n;
 const { useEffect, Fragment } = wp.element;
