@@ -328,6 +328,11 @@ const deprecatedContent = [
         migrate: attributes => {
             let newAttributes = {
                 blockId: attributes.block_id ? `premium-container-${attributes.block_id.split('-')[6]}` : '',
+                horAlign: {
+                    Desktop: attributes?.horAlign || 'center',
+                    Tablet: attributes?.horAlign || 'center',
+                    Mobile: attributes?.horAlign || 'center',
+                },
                 padding: {
                     Desktop: {
                         top: attributes?.paddingTop,
@@ -347,8 +352,7 @@ const deprecatedContent = [
                         bottom: attributes?.paddingBMobile,
                         left: attributes?.paddingLMobile,
                     },
-                    unit: "px",
-
+                    unit: "px"
                 },
                 margin: {
                     Desktop: {
@@ -370,8 +374,7 @@ const deprecatedContent = [
                         left: attributes?.marginLMobile,
 
                     },
-                    unit: "px",
-
+                    unit: "px"
                 },
                 boxShadow: {
                     color: attributes?.containerStyles[0].shadowColor,
@@ -381,7 +384,7 @@ const deprecatedContent = [
                     position: attributes?.containerStyles[0].shadowPosition,
                 },
                 border: {
-                    borderType: attributes?.containerStyle[0].borderStyle,
+                    borderType: attributes?.containerStyle[0].borderStyle || 'none',
                     borderColor: attributes?.containerStyles[0].borderColor,
                     borderWidth: {
                         Desktop: {
@@ -429,16 +432,16 @@ const deprecatedContent = [
                     backgroundColor: attributes?.containerStyles[0].containerBack,
                     backgroundImageID: attributes?.containerStyles[0].backgroundImageID,
                     backgroundImageURL: attributes?.containerStyles[0].backgroundImageURL,
-                    backgroundPosition: attributes?.containerStyle[0].backgroundPosition,
-                    backgroundRepeat: attributes?.containerStyles[0].backgroundRepeat,
-                    backgroundSize: attributes?.containerStyles[0].backgroundSize,
+                    backgroundPosition: attributes?.containerStyle[0].backgroundPosition || "center center",
+                    backgroundRepeat: attributes?.containerStyles[0].backgroundRepeat || "repeat",
+                    backgroundSize: attributes?.containerStyles[0].backgroundSize || "auto",
                     fixed: attributes?.containerStyles[0].fixed,
-                    gradientLocationOne: attributes?.containerStyles[0].gradientLocationOne,
+                    gradientLocationOne: attributes?.containerStyles[0].gradientLocationOne || '0',
                     gradientColorTwo: attributes?.containerStyles[0].gradientColorTwo,
-                    gradientLocationTwo: attributes?.containerStyles[0].gradientLocationTwo,
-                    gradientAngle: attributes?.containerStyles[0].gradientAngle,
-                    gradientPosition: attributes?.containerStyles[0].gradientPosition,
-                    gradientType: attributes?.containerStyles[0].gradientType
+                    gradientLocationTwo: attributes?.containerStyles[0].gradientLocationTwo || "100",
+                    gradientAngle: attributes?.containerStyles[0].gradientAngle || "180",
+                    gradientPosition: attributes?.containerStyles[0].gradientPosition || "center center",
+                    gradientType: attributes?.containerStyles[0].gradientType || "linear"
                 },
             }
             return Object.assign(attributes, newAttributes)
