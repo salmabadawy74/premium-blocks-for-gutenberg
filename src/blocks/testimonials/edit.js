@@ -43,7 +43,7 @@ function Edit(props) {
         authorImgId,
         authorImgUrl,
         imgSize,
-        imgBorder,
+        imageBorder,
         author,
         authorStyles,
         text,
@@ -268,8 +268,8 @@ function Edit(props) {
                                 />
                                 <PremiumBorder
                                     label={__("Border", 'premium-blocks-for-gutenberg')}
-                                    value={imgBorder}
-                                    onChange={(value) => setAttributes({ imgBorder: value })}
+                                    value={imageBorder}
+                                    onChange={(value) => setAttributes({ imageBorder: value })}
                                 />
                             </PanelBody>
                         )}
@@ -409,7 +409,7 @@ function Edit(props) {
                                     style={{
                                         width: imgSize + "px",
                                         height: imgSize + "px",
-                                        ...borderCss(imgBorder, props.deviceType)
+                                        ...borderCss(imageBorder, props.deviceType)
                                     }}
                                 />
                             )}
