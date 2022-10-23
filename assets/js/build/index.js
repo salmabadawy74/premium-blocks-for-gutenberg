@@ -5604,7 +5604,6 @@ const Inspector = _ref => {
     }),
     value: triggerSettings[0].icon,
     isMulti: false,
-    appendTo: "body",
     noSelectedPlaceholder: __("Select Icon", 'premium-blocks-for-gutenberg')
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
     label: __('Icon Position', 'premium-blocks-for-gutenberg'),
@@ -5912,7 +5911,6 @@ const Inspector = _ref => {
     }),
     value: contentStyles[0].contentIcon,
     isMulti: false,
-    appendTo: "body",
     noSelectedPlaceholder: __("Select Icon", 'premium-blocks-for-gutenberg')
   })), contentStyles[0].iconType === "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_media_upload__WEBPACK_IMPORTED_MODULE_7__["default"], {
     type: "image",
