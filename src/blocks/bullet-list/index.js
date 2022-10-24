@@ -24,6 +24,7 @@ registerBlockType("premium/bullet-list", {
     supports: {
         inserter: bulletList
     },
+    example: {},
     deprecated,
     edit: edit,
     save: save

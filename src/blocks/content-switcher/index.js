@@ -22,7 +22,7 @@ registerBlockType("premium/content-switcher", {
     supports: {
         inserter: contentSwitcher
     },
-
+    example: {},
     icon: PBG_Block_Icons.content_switcher,
     edit,
     save

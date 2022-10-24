@@ -21,6 +21,7 @@ registerBlockType('premium/trigger', {
     supports: {
         inserter: trigger
     },
+    example: {},
     icon: PBG_Block_Icons.trigger,
     edit,
     save

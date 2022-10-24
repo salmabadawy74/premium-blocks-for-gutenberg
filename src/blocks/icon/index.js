@@ -24,6 +24,7 @@ registerBlockType('premium/icon', {
     },
     icon: PBG_Block_Icons.icon,
 
+    example: {},
     edit,
     save,
     deprecated: deprecatedContent

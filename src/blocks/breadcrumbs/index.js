@@ -26,4 +26,5 @@ registerBlockType('premium/breadcrumbs', {
     supports: {
         inserter: breadcrumbs
     },
+    example: {}
 });
