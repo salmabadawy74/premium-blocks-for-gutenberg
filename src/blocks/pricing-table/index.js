@@ -20,6 +20,7 @@ registerBlockType("premium/pricing-table", {
     supports: {
         inserter: pricingTable
     },
+    example: {},
     edit: edit,
     save: save,
     deprecated: deprecatedContent

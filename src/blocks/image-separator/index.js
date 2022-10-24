@@ -18,6 +18,7 @@ registerBlockType("premium/image-separator", {
         __("image", "premium-blocks-for-gutenberg"),
         __("seperator", "premium-blocks-for-gutenberg"),
     ],
+    example: {},
     supports: { inserter: imageSeparator },
     edit: edit,
     save: save,

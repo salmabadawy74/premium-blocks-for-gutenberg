@@ -11894,7 +11894,8 @@ registerBlockType('premium/breadcrumbs', { ..._block_json__WEBPACK_IMPORTED_MODU
   edit: _edit__WEBPACK_IMPORTED_MODULE_3__["default"],
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_4__.breadcrumbs
-  }
+  },
+  example: {}
 });
 
 /***/ }),
@@ -14286,6 +14287,7 @@ registerBlockType("premium/bullet-list", { ..._block_json__WEBPACK_IMPORTED_MODU
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.bulletList
   },
+  example: {},
   deprecated: _deprecated__WEBPACK_IMPORTED_MODULE_4__["default"],
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
   save: _save__WEBPACK_IMPORTED_MODULE_1__["default"]
@@ -18958,6 +18960,7 @@ registerBlockType("premium/content-switcher", {
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_5__.contentSwitcher
   },
+  example: {},
   icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].content_switcher,
   edit: _edit__WEBPACK_IMPORTED_MODULE_3__["default"],
   save: _save__WEBPACK_IMPORTED_MODULE_4__["default"]
@@ -29330,6 +29333,7 @@ registerBlockType("premium/heading", { ..._block_json__WEBPACK_IMPORTED_MODULE_3
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.heading
   },
+  example: {},
   deprecated: _deprecated__WEBPACK_IMPORTED_MODULE_4__["default"],
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
   save: _save__WEBPACK_IMPORTED_MODULE_1__["default"]
@@ -35465,6 +35469,7 @@ __webpack_require__.r(__webpack_exports__);
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_3__.icon
   },
   icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_2__["default"].icon,
+  example: {},
   edit: _edit__WEBPACK_IMPORTED_MODULE_5__["default"],
   save: _save__WEBPACK_IMPORTED_MODULE_6__["default"],
   deprecated: _deprecated__WEBPACK_IMPORTED_MODULE_7__["default"]
@@ -36545,6 +36550,7 @@ registerBlockType("premium/image-separator", { ..._block_json__WEBPACK_IMPORTED_
   icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].image_separator,
   category: "premium-blocks",
   keywords: [__("image", "premium-blocks-for-gutenberg"), __("seperator", "premium-blocks-for-gutenberg")],
+  example: {},
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.imageSeparator
   },
@@ -39611,6 +39617,7 @@ registerBlockType("premium/maps", { ..._block_json__WEBPACK_IMPORTED_MODULE_3__,
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.maps
   },
   keywords: [__("google", 'premium-blocks-for-gutenberg'), __("maps", 'premium-blocks-for-gutenberg')],
+  example: {},
   deprecated: _deprecated__WEBPACK_IMPORTED_MODULE_4__["default"],
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
   save: _save__WEBPACK_IMPORTED_MODULE_1__["default"]
@@ -46560,6 +46567,7 @@ registerBlockType("premium/pricing-table", { ..._block_json__WEBPACK_IMPORTED_MO
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.pricingTable
   },
+  example: {},
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
   save: _save__WEBPACK_IMPORTED_MODULE_3__["default"],
   deprecated: _deprecated__WEBPACK_IMPORTED_MODULE_4__["default"]
@@ -52680,6 +52688,7 @@ registerBlockType('premium/trigger', {
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_5__.trigger
   },
+  example: {},
   icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].trigger,
   edit: _edit__WEBPACK_IMPORTED_MODULE_3__["default"],
   save: _save__WEBPACK_IMPORTED_MODULE_4__["default"]

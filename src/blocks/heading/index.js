@@ -21,6 +21,7 @@ registerBlockType("premium/heading", {
     supports: {
         inserter: heading
     },
+    example: {},
     deprecated,
     edit: edit,
     save: save

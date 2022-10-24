@@ -20,6 +20,7 @@ registerBlockType("premium/maps", {
         __("google", 'premium-blocks-for-gutenberg'),
         __("maps", 'premium-blocks-for-gutenberg')
     ],
+    example: {},
     deprecated,
     edit: edit,
     save: save
