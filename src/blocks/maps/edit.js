@@ -38,7 +38,6 @@ function Edit(props) {
     const [thisInfo, setInfo] = useState(null);
     const contentRef = React.createRef();
     const setting_url = PremiumBlocksSettings.admin_url + "admin.php?page=pb_panel&tab=settings";
-    console.log(setting_url)
 
     useEffect(() => {
         setAttributes({

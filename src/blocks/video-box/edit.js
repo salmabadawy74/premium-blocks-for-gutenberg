@@ -73,7 +73,6 @@ function Edit(props) {
                 setTimeout(() => {
                     if ("self" !== type) {
                         video.setAttribute("src", src.replace("autoplay=0", "autoplay=1"));
-                        console.log(src)
                     } else {
                         videoBox
                             .getElementsByClassName("premium-video-box__overlay")[0]
