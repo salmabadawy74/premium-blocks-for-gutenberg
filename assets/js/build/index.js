@@ -38991,7 +38991,6 @@ function Edit(props) {
   const [thisInfo, setInfo] = useState(null);
   const contentRef = React.createRef();
   const setting_url = PremiumBlocksSettings.admin_url + "admin.php?page=pb_panel&tab=settings";
-  console.log(setting_url);
   useEffect(() => {
     setAttributes({
       blockId: "premium-map-" + (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.generateBlockId)(clientId)
@@ -54537,7 +54536,6 @@ function Edit(props) {
         setTimeout(() => {
           if ("self" !== type) {
             video.setAttribute("src", src.replace("autoplay=0", "autoplay=1"));
-            console.log(src);
           } else {
             videoBox.getElementsByClassName("premium-video-box__overlay")[0].remove();
             video.play();

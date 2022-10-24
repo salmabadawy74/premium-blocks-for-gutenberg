@@ -36,7 +36,6 @@ const OptionsTab = (props) => {
                 }
             }
         } catch (e) {
-            console.log(e);
             createNotice("error", __("An unknown error occurred.", ""), {
                 isDismissible: true,
                 type: "snackbar",
