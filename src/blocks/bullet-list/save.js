@@ -70,7 +70,7 @@ export default function save(props) {
             {...useBlockProps.save({
                 className: classnames(
                     className,
-                    `${blockId}`,
+                    `premium-bullet-list ${blockId}`,
                     {
                         " premium-desktop-hidden": hideDesktop,
                         " premium-tablet-hidden": hideTablet,

@@ -160,6 +160,10 @@ class PBG_Blocks_Helper {
 	public function add_blocks_editor_styles() {
 		Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/blockseditor.min.css' );
 		Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/editorpanel.min.css' );
+
+		$is_rtl = is_rtl() ? true : false;
+		$is_rtl ? Pbg_Style_Generator::pbg_add_css( "assets/css/minified/style-blocks-rtl.min.css" ) : '';
+
 		if ( is_array( self::$blocks ) && ! empty( self::$blocks ) ) {
 			foreach ( self::$blocks as $slug => $value ) {
 
@@ -329,6 +333,18 @@ class PBG_Blocks_Helper {
 
 		$is_section_enabled = self::$blocks['section'];
 
+		$is_rtl = is_rtl() ? true : false;
+
+		if ( $is_rtl ) {
+			wp_enqueue_style(
+				'pbg-style',
+				PREMIUM_BLOCKS_URL . 'assets/css/minified/style-blocks-rtl.min.css',
+				array(),
+				PREMIUM_BLOCKS_VERSION,
+				'all'
+			);
+		}
+
 		if ( $is_fa_enabled ) {
 			wp_enqueue_style(
 				'pbg-fontawesome',
@@ -344,8 +360,6 @@ class PBG_Blocks_Helper {
 				PREMIUM_BLOCKS_VERSION,
 				true
 			);
-
-			$is_rtl = is_rtl() ? true : false;
 
 			wp_localize_script(
 				'pbg-section',

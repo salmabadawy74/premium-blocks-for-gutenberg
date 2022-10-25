@@ -978,7 +978,7 @@ function Edit(props) {
                 {...useBlockProps({
                     className: classnames(
                         className,
-                        `${blockId}`,
+                        `premium-bullet-list ${blockId}`,
                         {
                             " premium-desktop-hidden": hideDesktop,
                             " premium-tablet-hidden": hideTablet,
