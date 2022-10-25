@@ -35,15 +35,15 @@ module.exports = function (grunt) {
 
     blocks.map(
         (block) =>
-            (sassFiles[
-                `./assets/css/${block}.css`
-            ] = `./src/blocks/${block}/style.scss`)
+        (sassFiles[
+            `./assets/css/${block}.css`
+        ] = `./src/blocks/${block}/style.scss`)
     );
     blocks.map(
         (block) =>
-            (minifyFiles[
-                `./assets/css/minified/${block}.min.css`
-            ] = `./assets/css/${block}.css`)
+        (minifyFiles[
+            `./assets/css/minified/${block}.min.css`
+        ] = `./assets/css/${block}.css`)
     );
 
     //Grunt Configuration
@@ -83,6 +83,10 @@ module.exports = function (grunt) {
                     {
                         "./assets/css/minified/blockseditor.min.css":
                             "./assets/css/blockseditor.css",
+                    },
+                    {
+                        "./assets/css/minified/style-blocks-rtl.min.css":
+                            "./assets/css/style-blocks-rtl.css",
                     },
                     minifyFiles,
                 ],

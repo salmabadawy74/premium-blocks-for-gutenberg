@@ -195,7 +195,7 @@ export default function save(props) {
             {...useBlockProps.save({
                 className: classnames(
                     className,
-                    `${blockId}`,
+                    `premium-heading ${blockId}`,
                     {
                         " premium-desktop-hidden": hideDesktop,
                         " premium-tablet-hidden": hideTablet,
@@ -303,34 +303,34 @@ export default function save(props) {
                                         </span>
 
                                     </Fragment> : <Fragment>
-                                        {
-                                            iconValue && iconType == 'icon' && <i className={`premium-title-icon ${icon}`} />
-                                        }
-                                        {
-                                            iconValue && iconType == 'image' && < img className={`premium-title-icon`} src={imageURL} />
-                                        }
-                                        {
-                                            iconValue && iconType == 'lottie' &&
-                                            <div
-                                                className="premium-title-icon premium-lottie-animation"
-                                                data-loop={loop}
-                                                data-lottieurl={`${lottieURl}`}
-                                                data-reverse={reversedir}
-                                                data-trigger={"none"}
-                                            >
+                                            {
+                                                iconValue && iconType == 'icon' && <i className={`premium-title-icon ${icon}`} />
+                                            }
+                                            {
+                                                iconValue && iconType == 'image' && < img className={`premium-title-icon`} src={imageURL} />
+                                            }
+                                            {
+                                                iconValue && iconType == 'lottie' &&
+                                                <div
+                                                    className="premium-title-icon premium-lottie-animation"
+                                                    data-loop={loop}
+                                                    data-lottieurl={`${lottieURl}`}
+                                                    data-reverse={reversedir}
+                                                    data-trigger={"none"}
+                                                >
 
-                                            </div>
-                                        }
-                                        <RichText.Content
-                                            tagName='span'
-                                            className={`premium-title-text-title`}
-                                            value={title}
-                                            style={{
-                                                minHeight: '15px',
-                                                margin: 'revert'
-                                            }}
-                                        />
-                                    </Fragment>}
+                                                </div>
+                                            }
+                                            <RichText.Content
+                                                tagName='span'
+                                                className={`premium-title-text-title`}
+                                                value={title}
+                                                style={{
+                                                    minHeight: '15px',
+                                                    margin: 'revert'
+                                                }}
+                                            />
+                                        </Fragment>}
                                 {link && url !== ' ' && <a rel="noopener noreferrer" target={"_self"} href={`${url}`} ></a>}
                             </Fragment>
                         ])}

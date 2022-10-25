@@ -11,9 +11,9 @@
         "align": {
             "type": "object",
             "default": {
-                "Desktop": "left",
-                "Tablet": "left",
-                "Mobile": "left"
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": ""
             }
         },
         "repeaterBulletList": {
