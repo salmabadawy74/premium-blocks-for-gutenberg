@@ -3,13 +3,13 @@ import MainNav from "./NavMenu";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SettingsRoute from "./SettingsRoute";
 import Header from "../layout/Header";
-import Notices from "../layout/Notices";
+import Alert from "../features/Alert/Alert";
 
 const SettingsWrap = ({ store }) => {
     return (
         <Router>
             <Header />
-            <Notices />
+            <Alert />
             <MainNav />
             <Switch>
                 <Route path="/">

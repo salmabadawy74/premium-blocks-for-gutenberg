@@ -4,6 +4,7 @@ import AdvancedSwitcher from "./AdvancedSwitcher";
 import { store as noticesStore } from "@wordpress/notices";
 import { useDispatch, useSelector } from "react-redux";
 import { updateblockStatus } from "../features/blocks/index";
+import { actions } from "../features/Alert/AlertSlice";
 
 const { Dashicon } = wp.components;
 const { __ } = wp.i18n;
@@ -16,10 +17,11 @@ const SingleOption = (props) => {
     const blocks = useSelector((state) => state.blockStates.blocks);
 
     const [isLoading, setIsLoading] = useState(false);
+
+    let checked = blocks[props.blockInfo] === true ? true : false;
     const dispatch = useDispatch();
 
-    // const { createNotice } = useDispatch(noticesStore);
-    let checked = blocks[props.blockInfo] === true ? true : false;
+
 
     const handleChange = async () => {
         let status = false;
@@ -45,19 +47,26 @@ const SingleOption = (props) => {
             });
             if (response.status === 200) {
                 const { success, data } = await response.json();
-                if (success && data.values) {
-                    // createNotice("success", "Settings saved ", {
-                    //     isDismissible: true,
-                    //     type: "snackbar",
-                    // });
-                }
+                if (success && data.values) { 
+                    
+                    dispatch(
+                        actions.createAlert({
+                          message: __("Settings saved.", ""),
+                          type: "success"
+                        })
+                      );
+
+                    }
             }
         } catch (e) {
             console.log(e);
-            // createNotice("error", __("An unknown error occurred.", ""), {
-            //     isDismissible: true,
-            //     type: "snackbar",
-            // });
+            dispatch(
+                actions.createAlert({
+                  message: __("An unknown error occurred.", ""),
+                  type: "error"
+                })
+              );
+
         }
     };
 

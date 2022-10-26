@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import classNames from "classnames";
 import { updateblockStatus, ActivateBlocks } from "../../features/blocks/index";
 import { isArray } from "lodash";
+import { actions } from "../../features/Alert/AlertSlice";
 
 const FilterTabs = () => {
     const query = new URLSearchParams(useLocation()?.search);
@@ -91,14 +92,22 @@ const FilterTabs = () => {
                     //     isDismissible: true,
                     //     type: "snackbar",
                     // });
+                    dispatch(
+                        actions.createAlert({
+                          message: "Settings saved.",
+                          type: "success"
+                        })
+                      );
                 }
             }
         } catch (e) {
             console.log(e);
-            // createNotice("error", __("An unknown error occurred.", ""), {
-            //     isDismissible: true,
-            //     type: "snackbar",
-            // });
+            dispatch(
+                actions.createAlert({
+                  message: "An unknown error occurred.",
+                  type: "error"
+                })
+              );
         }
     };
 
@@ -130,18 +139,22 @@ const FilterTabs = () => {
             if (response.status === 200) {
                 const { success, data } = await response.json();
                 if (success && data.values) {
-                    // createNotice("success", "Settings saved ", {
-                    //     isDismissible: true,
-                    //     type: "snackbar",
-                    // });
+                    dispatch(
+                        actions.createAlert({
+                          message: "Settings saved.",
+                          type: "success"
+                        })
+                      );
                 }
             }
         } catch (e) {
             console.log(e);
-            // createNotice("error", __("An unknown error occurred.", ""), {
-            //     isDismissible: true,
-            //     type: "snackbar",
-            // });
+            dispatch(
+                actions.createAlert({
+                  message: "An unknown error occurred.",
+                  type: "error"
+                })
+              );
         }
     };
     return (
