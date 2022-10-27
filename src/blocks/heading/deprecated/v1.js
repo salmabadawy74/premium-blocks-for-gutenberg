@@ -581,7 +581,7 @@ const deprecated = {
                 "unit": "px"
             },
             titleBorder: {
-                "borderType": attributes?.titleStyles?.[0]?.titleborderType || '',
+                "borderType": attributes?.titleStyles?.[0]?.titleborderType || 'none',
                 "borderColor": attributes?.titleStyles?.[0]?.titleborderColor || '',
                 "borderWidth": {
                     Desktop: {
@@ -631,18 +631,18 @@ const deprecated = {
                 'vertical': attributes?.titleStyles?.[0]?.titleShadowVertical || ''
             },
             titleTypography: {
-                "fontWeight": attributes?.titleStyles?.[0]?.titleWeight || '',
+                "fontWeight": attributes?.titleStyles?.[0]?.titleWeight || 'Default',
                 'fontStyle': attributes?.titleStyles?.[0]?.titleStyle || '',
                 'textTransform': attributes?.titleStyles?.[0]?.titleUpper || '',
-                'fontFamily': attributes?.titleStyles?.[0]?.titleFontFamily || '',
+                'fontFamily': attributes?.titleStyles?.[0]?.titleFontFamily || 'Default',
                 'textDecoration': '',
-                letterSpacing: {
+                'letterSpacing': {
                     Desktop: attributes?.titleStyles?.[0]?.titleLetter || '',
                     Tablet: attributes?.titleStyles?.[0]?.titleLetter || '',
                     Mobile: attributes?.titleStyles?.[0]?.titleLetter || '',
                     unit: "px",
                 },
-                lineHeight: {
+                'lineHeight': {
                     Desktop: attributes?.titleStyles?.[0]?.titleLine || '',
                     Tablet: attributes?.titleStyles?.[0]?.titleLine || '',
                     Mobile: attributes?.titleStyles?.[0]?.titleLine || '',
@@ -680,18 +680,18 @@ const deprecated = {
                 'unit': attributes?.stripeStyles?.[0]?.stripeBottomSpacingType || 'px'
             },
             textTypography: {
-                "fontWeight": attributes?.textStyles?.[0]?.textBackWeight || '',
+                "fontWeight": attributes?.textStyles?.[0]?.textBackWeight || 'Default',
                 'fontStyle': attributes?.textStyles?.[0]?.textBackStyle || '',
                 'textTransform': attributes?.textStyles?.[0]?.textBackUpper || '',
-                'fontFamily': attributes?.textStyles?.[0]?.textBackFontFamily || '',
+                'fontFamily': attributes?.textStyles?.[0]?.textBackFontFamily || 'Default',
                 'textDecoration': '',
-                letterSpacing: {
+                'letterSpacing': {
                     Desktop: attributes?.textStyles?.[0]?.textBackLetter || '',
                     Tablet: attributes?.textStyles?.[0]?.textBackLetter || '',
                     Mobile: attributes?.textStyles?.[0]?.textBackLetter || '',
                     unit: "px",
                 },
-                lineHeight: {
+                'lineHeight': {
                     Desktop: attributes?.textStyles?.[0]?.textBackLine || '',
                     Tablet: attributes?.textStyles?.[0]?.textBackLine || '',
                     Mobile: attributes?.textStyles?.[0]?.textBackLine || '',
@@ -756,7 +756,7 @@ const deprecated = {
                 'unit': attributes?.iconStyles?.[0]?.iconSizeType || 'px'
             },
             iconBorder: {
-                "borderType": attributes?.iconStyles?.[0]?.iconborderType || '',
+                "borderType": attributes?.iconStyles?.[0]?.iconborderType || 'none',
                 "borderColor": attributes?.iconStyles?.[0]?.iconborderColor || '',
                 "borderWidth": {
                     Desktop: {

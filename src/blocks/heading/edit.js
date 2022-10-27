@@ -270,41 +270,6 @@ function Edit(props) {
         },
     ];
 
-    const TAGS = [
-        {
-            value: "h1",
-            label: __("H1", 'premium-blocks-for-gutenberg'),
-        },
-        {
-            value: "h2",
-            label: __("H2", 'premium-blocks-for-gutenberg'),
-        },
-        {
-            value: "h3",
-            label: __("H3", 'premium-blocks-for-gutenberg'),
-        },
-        {
-            value: "h4",
-            label: __("H4", 'premium-blocks-for-gutenberg'),
-        },
-        {
-            value: "h5",
-            label: __("H5", 'premium-blocks-for-gutenberg'),
-        },
-        {
-            value: "h6",
-            label: __("H6", 'premium-blocks-for-gutenberg'),
-        },
-        {
-            value: "div",
-            label: __("div", 'premium-blocks-for-gutenberg'),
-        },
-        {
-            value: "span",
-            label: __("span", 'premium-blocks-for-gutenberg'),
-        },
-    ];
-
     const STRIPEPOSITION = [
         {
             value: "top",

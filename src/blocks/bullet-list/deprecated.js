@@ -929,7 +929,7 @@ const deprecated = [
                     "unit": "px"
                 },
                 generalBorder: {
-                    "borderType": attributes?.generalStyles?.[0]?.generalborderType || '',
+                    "borderType": attributes?.generalStyles?.[0]?.generalborderType || 'none',
                     "borderColor": attributes?.generalStyles?.[0]?.generalborderColor || '',
                     "borderWidth": {
                         Desktop: {
@@ -973,7 +973,7 @@ const deprecated = [
                     }
                 },
                 bulletIconBorder: {
-                    "borderType": attributes?.bulletIconStyles?.[0]?.bulletIconborderType || '',
+                    "borderType": attributes?.bulletIconStyles?.[0]?.bulletIconborderType || 'none',
                     "borderColor": attributes?.bulletIconStyles?.[0]?.bulletIconborderColor || '',
                     "borderWidth": {
                         Desktop: {
@@ -1020,17 +1020,15 @@ const deprecated = [
                     "fontWeight": attributes?.titleStyles?.[0]?.titleWeight || '',
                     'fontStyle': attributes?.titleStyles?.[0]?.titleStyle || '',
                     'textTransform': attributes?.titleStyles?.[0]?.titleUpper || '',
-                    'letterSpacing': attributes?.titleStyles?.[0]?.titleLetter || '',
                     'fontFamily': attributes?.titleStyles?.[0]?.titleFontFamily || '',
-                    'lineHeight': attributes?.titleStyles?.[0]?.titleLine || '',
                     'textDecoration': '',
-                    letterSpacing: {
+                    'letterSpacing': {
                         Desktop: attributes?.titleStyles?.[0]?.titleLetter || '',
                         Tablet: attributes?.titleStyles?.[0]?.titleLetter || '',
                         Mobile: attributes?.titleStyles?.[0]?.titleLetter || '',
                         unit: "px",
                     },
-                    lineHeight: {
+                    'lineHeight': {
                         Desktop: attributes?.titleStyles?.[0]?.titleLine || '',
                         Tablet: attributes?.titleStyles?.[0]?.titleLine || '',
                         Mobile: attributes?.titleStyles?.[0]?.titleLine || '',
@@ -1082,15 +1080,18 @@ const deprecated = [
                     'unit': 'px'
                 },
                 bulletAlign: {
-                    Desktop: attributes?.bulletAlign,
-                    Tablet: attributes?.bulletAlign,
-                    Mobile: attributes?.bulletAlign
+                    Desktop: attributes?.bulletAlign || 'center',
+                    Tablet: attributes?.bulletAlign || 'center',
+                    Mobile: attributes?.bulletAlign || 'center'
                 },
                 align: {
-                    Desktop: attributes?.align,
-                    Tablet: attributes?.align,
-                    Mobile: attributes?.align
+                    Desktop: attributes?.align || 'left',
+                    Tablet: attributes?.align || 'left',
+                    Mobile: attributes?.align || 'left'
                 },
+                "hideDesktop": "",
+                "hideTablet": "",
+                "hideMobile": ''
             }
             return Object.assign(attributes, newAttributes)
         },

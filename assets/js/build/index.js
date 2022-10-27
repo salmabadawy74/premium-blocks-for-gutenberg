@@ -13134,7 +13134,7 @@ const deprecated = [{
   },
 
   migrate: attributes => {
-    var _attributes$generalSt, _attributes$generalSt2, _attributes$generalSt3, _attributes$generalSt4, _attributes$generalSt5, _attributes$generalSt6, _attributes$generalSt7, _attributes$generalSt8, _attributes$generalSt9, _attributes$generalSt10, _attributes$generalSt11, _attributes$generalSt12, _attributes$bulletIco, _attributes$bulletIco2, _attributes$bulletIco3, _attributes$bulletIco4, _attributes$bulletIco5, _attributes$bulletIco6, _attributes$bulletIco7, _attributes$bulletIco8, _attributes$bulletIco9, _attributes$bulletIco10, _attributes$bulletIco11, _attributes$bulletIco12, _attributes$titleStyl, _attributes$titleStyl2, _attributes$titleStyl3, _attributes$titleStyl4, _attributes$titleStyl5, _attributes$titleStyl6, _attributes$titleStyl7, _attributes$titleStyl8, _attributes$titleStyl9, _attributes$titleStyl10, _attributes$titleStyl11, _attributes$titleStyl12, _attributes$titleStyl13, _attributes$titleStyl14, _attributes$titleStyl15, _attributes$titleStyl16, _attributes$titleStyl17, _attributes$titleStyl18, _attributes$titleStyl19, _attributes$titleStyl20, _attributes$titleStyl21, _attributes$titleStyl22, _attributes$titleStyl23, _attributes$titleStyl24, _attributes$titleStyl25, _attributes$titleStyl26, _attributes$titleStyl27, _attributes$titleStyl28, _attributes$titleStyl29, _attributes$titleStyl30, _attributes$titleStyl31, _attributes$titleStyl32, _attributes$titleStyl33, _attributes$titleStyl34, _attributes$titleStyl35, _attributes$titleStyl36, _attributes$titleStyl37, _attributes$titleStyl38, _attributes$generalSt13, _attributes$generalSt14, _attributes$generalSt15, _attributes$generalSt16, _attributes$generalSt17, _attributes$generalSt18, _attributes$generalSt19, _attributes$generalSt20, _attributes$generalSt21, _attributes$generalSt22, _attributes$generalSt23, _attributes$generalSt24, _attributes$generalSt25, _attributes$generalSt26, _attributes$generalSt27, _attributes$generalSt28, _attributes$generalSt29, _attributes$generalSt30, _attributes$generalSt31, _attributes$generalSt32, _attributes$bulletIco13, _attributes$bulletIco14, _attributes$bulletIco15, _attributes$bulletIco16, _attributes$bulletIco17, _attributes$bulletIco18, _attributes$bulletIco19, _attributes$bulletIco20, _attributes$dividerSt, _attributes$dividerSt2, _attributes$dividerSt3, _attributes$dividerSt4, _attributes$dividerSt5, _attributes$dividerSt6, _attributes$dividerSt7, _attributes$dividerSt8, _attributes$dividerSt9, _attributes$dividerSt10, _attributes$dividerSt11, _attributes$dividerSt12;
+    var _attributes$generalSt, _attributes$generalSt2, _attributes$generalSt3, _attributes$generalSt4, _attributes$generalSt5, _attributes$generalSt6, _attributes$generalSt7, _attributes$generalSt8, _attributes$generalSt9, _attributes$generalSt10, _attributes$generalSt11, _attributes$generalSt12, _attributes$bulletIco, _attributes$bulletIco2, _attributes$bulletIco3, _attributes$bulletIco4, _attributes$bulletIco5, _attributes$bulletIco6, _attributes$bulletIco7, _attributes$bulletIco8, _attributes$bulletIco9, _attributes$bulletIco10, _attributes$bulletIco11, _attributes$bulletIco12, _attributes$titleStyl, _attributes$titleStyl2, _attributes$titleStyl3, _attributes$titleStyl4, _attributes$titleStyl5, _attributes$titleStyl6, _attributes$titleStyl7, _attributes$titleStyl8, _attributes$titleStyl9, _attributes$titleStyl10, _attributes$titleStyl11, _attributes$titleStyl12, _attributes$titleStyl13, _attributes$titleStyl14, _attributes$titleStyl15, _attributes$titleStyl16, _attributes$titleStyl17, _attributes$titleStyl18, _attributes$titleStyl19, _attributes$titleStyl20, _attributes$titleStyl21, _attributes$titleStyl22, _attributes$titleStyl23, _attributes$titleStyl24, _attributes$titleStyl25, _attributes$titleStyl26, _attributes$titleStyl27, _attributes$titleStyl28, _attributes$titleStyl29, _attributes$titleStyl30, _attributes$titleStyl31, _attributes$titleStyl32, _attributes$titleStyl33, _attributes$titleStyl34, _attributes$generalSt13, _attributes$generalSt14, _attributes$generalSt15, _attributes$generalSt16, _attributes$generalSt17, _attributes$generalSt18, _attributes$generalSt19, _attributes$generalSt20, _attributes$generalSt21, _attributes$generalSt22, _attributes$generalSt23, _attributes$generalSt24, _attributes$generalSt25, _attributes$generalSt26, _attributes$generalSt27, _attributes$generalSt28, _attributes$generalSt29, _attributes$generalSt30, _attributes$generalSt31, _attributes$generalSt32, _attributes$bulletIco13, _attributes$bulletIco14, _attributes$bulletIco15, _attributes$bulletIco16, _attributes$bulletIco17, _attributes$bulletIco18, _attributes$bulletIco19, _attributes$bulletIco20, _attributes$dividerSt, _attributes$dividerSt2, _attributes$dividerSt3, _attributes$dividerSt4, _attributes$dividerSt5, _attributes$dividerSt6, _attributes$dividerSt7, _attributes$dividerSt8, _attributes$dividerSt9, _attributes$dividerSt10, _attributes$dividerSt11, _attributes$dividerSt12;
 
     let newAttributes = {
       blockId: attributes.block_id ? "premium-bullet-list-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__.generateBlockId)(attributes.block_id) : '',
@@ -13244,7 +13244,7 @@ const deprecated = [{
         "unit": "px"
       },
       generalBorder: {
-        "borderType": (attributes === null || attributes === void 0 ? void 0 : (_attributes$generalSt = attributes.generalStyles) === null || _attributes$generalSt === void 0 ? void 0 : (_attributes$generalSt2 = _attributes$generalSt[0]) === null || _attributes$generalSt2 === void 0 ? void 0 : _attributes$generalSt2.generalborderType) || '',
+        "borderType": (attributes === null || attributes === void 0 ? void 0 : (_attributes$generalSt = attributes.generalStyles) === null || _attributes$generalSt === void 0 ? void 0 : (_attributes$generalSt2 = _attributes$generalSt[0]) === null || _attributes$generalSt2 === void 0 ? void 0 : _attributes$generalSt2.generalborderType) || 'none',
         "borderColor": (attributes === null || attributes === void 0 ? void 0 : (_attributes$generalSt3 = attributes.generalStyles) === null || _attributes$generalSt3 === void 0 ? void 0 : (_attributes$generalSt4 = _attributes$generalSt3[0]) === null || _attributes$generalSt4 === void 0 ? void 0 : _attributes$generalSt4.generalborderColor) || '',
         "borderWidth": {
           Desktop: {
@@ -13288,7 +13288,7 @@ const deprecated = [{
         }
       },
       bulletIconBorder: {
-        "borderType": (attributes === null || attributes === void 0 ? void 0 : (_attributes$bulletIco = attributes.bulletIconStyles) === null || _attributes$bulletIco === void 0 ? void 0 : (_attributes$bulletIco2 = _attributes$bulletIco[0]) === null || _attributes$bulletIco2 === void 0 ? void 0 : _attributes$bulletIco2.bulletIconborderType) || '',
+        "borderType": (attributes === null || attributes === void 0 ? void 0 : (_attributes$bulletIco = attributes.bulletIconStyles) === null || _attributes$bulletIco === void 0 ? void 0 : (_attributes$bulletIco2 = _attributes$bulletIco[0]) === null || _attributes$bulletIco2 === void 0 ? void 0 : _attributes$bulletIco2.bulletIconborderType) || 'none',
         "borderColor": (attributes === null || attributes === void 0 ? void 0 : (_attributes$bulletIco3 = attributes.bulletIconStyles) === null || _attributes$bulletIco3 === void 0 ? void 0 : (_attributes$bulletIco4 = _attributes$bulletIco3[0]) === null || _attributes$bulletIco4 === void 0 ? void 0 : _attributes$bulletIco4.bulletIconborderColor) || '',
         "borderWidth": {
           Desktop: {
@@ -13335,34 +13335,32 @@ const deprecated = [{
         "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl = attributes.titleStyles) === null || _attributes$titleStyl === void 0 ? void 0 : (_attributes$titleStyl2 = _attributes$titleStyl[0]) === null || _attributes$titleStyl2 === void 0 ? void 0 : _attributes$titleStyl2.titleWeight) || '',
         'fontStyle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl3 = attributes.titleStyles) === null || _attributes$titleStyl3 === void 0 ? void 0 : (_attributes$titleStyl4 = _attributes$titleStyl3[0]) === null || _attributes$titleStyl4 === void 0 ? void 0 : _attributes$titleStyl4.titleStyle) || '',
         'textTransform': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl5 = attributes.titleStyles) === null || _attributes$titleStyl5 === void 0 ? void 0 : (_attributes$titleStyl6 = _attributes$titleStyl5[0]) === null || _attributes$titleStyl6 === void 0 ? void 0 : _attributes$titleStyl6.titleUpper) || '',
-        'letterSpacing': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl7 = attributes.titleStyles) === null || _attributes$titleStyl7 === void 0 ? void 0 : (_attributes$titleStyl8 = _attributes$titleStyl7[0]) === null || _attributes$titleStyl8 === void 0 ? void 0 : _attributes$titleStyl8.titleLetter) || '',
-        'fontFamily': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl9 = attributes.titleStyles) === null || _attributes$titleStyl9 === void 0 ? void 0 : (_attributes$titleStyl10 = _attributes$titleStyl9[0]) === null || _attributes$titleStyl10 === void 0 ? void 0 : _attributes$titleStyl10.titleFontFamily) || '',
-        'lineHeight': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl11 = attributes.titleStyles) === null || _attributes$titleStyl11 === void 0 ? void 0 : (_attributes$titleStyl12 = _attributes$titleStyl11[0]) === null || _attributes$titleStyl12 === void 0 ? void 0 : _attributes$titleStyl12.titleLine) || '',
+        'fontFamily': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl7 = attributes.titleStyles) === null || _attributes$titleStyl7 === void 0 ? void 0 : (_attributes$titleStyl8 = _attributes$titleStyl7[0]) === null || _attributes$titleStyl8 === void 0 ? void 0 : _attributes$titleStyl8.titleFontFamily) || '',
         'textDecoration': '',
-        letterSpacing: {
-          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl13 = attributes.titleStyles) === null || _attributes$titleStyl13 === void 0 ? void 0 : (_attributes$titleStyl14 = _attributes$titleStyl13[0]) === null || _attributes$titleStyl14 === void 0 ? void 0 : _attributes$titleStyl14.titleLetter) || '',
-          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl15 = attributes.titleStyles) === null || _attributes$titleStyl15 === void 0 ? void 0 : (_attributes$titleStyl16 = _attributes$titleStyl15[0]) === null || _attributes$titleStyl16 === void 0 ? void 0 : _attributes$titleStyl16.titleLetter) || '',
-          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl17 = attributes.titleStyles) === null || _attributes$titleStyl17 === void 0 ? void 0 : (_attributes$titleStyl18 = _attributes$titleStyl17[0]) === null || _attributes$titleStyl18 === void 0 ? void 0 : _attributes$titleStyl18.titleLetter) || '',
+        'letterSpacing': {
+          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl9 = attributes.titleStyles) === null || _attributes$titleStyl9 === void 0 ? void 0 : (_attributes$titleStyl10 = _attributes$titleStyl9[0]) === null || _attributes$titleStyl10 === void 0 ? void 0 : _attributes$titleStyl10.titleLetter) || '',
+          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl11 = attributes.titleStyles) === null || _attributes$titleStyl11 === void 0 ? void 0 : (_attributes$titleStyl12 = _attributes$titleStyl11[0]) === null || _attributes$titleStyl12 === void 0 ? void 0 : _attributes$titleStyl12.titleLetter) || '',
+          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl13 = attributes.titleStyles) === null || _attributes$titleStyl13 === void 0 ? void 0 : (_attributes$titleStyl14 = _attributes$titleStyl13[0]) === null || _attributes$titleStyl14 === void 0 ? void 0 : _attributes$titleStyl14.titleLetter) || '',
           unit: "px"
         },
-        lineHeight: {
-          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl19 = attributes.titleStyles) === null || _attributes$titleStyl19 === void 0 ? void 0 : (_attributes$titleStyl20 = _attributes$titleStyl19[0]) === null || _attributes$titleStyl20 === void 0 ? void 0 : _attributes$titleStyl20.titleLine) || '',
-          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl21 = attributes.titleStyles) === null || _attributes$titleStyl21 === void 0 ? void 0 : (_attributes$titleStyl22 = _attributes$titleStyl21[0]) === null || _attributes$titleStyl22 === void 0 ? void 0 : _attributes$titleStyl22.titleLine) || '',
-          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl23 = attributes.titleStyles) === null || _attributes$titleStyl23 === void 0 ? void 0 : (_attributes$titleStyl24 = _attributes$titleStyl23[0]) === null || _attributes$titleStyl24 === void 0 ? void 0 : _attributes$titleStyl24.titleLine) || '',
+        'lineHeight': {
+          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl15 = attributes.titleStyles) === null || _attributes$titleStyl15 === void 0 ? void 0 : (_attributes$titleStyl16 = _attributes$titleStyl15[0]) === null || _attributes$titleStyl16 === void 0 ? void 0 : _attributes$titleStyl16.titleLine) || '',
+          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl17 = attributes.titleStyles) === null || _attributes$titleStyl17 === void 0 ? void 0 : (_attributes$titleStyl18 = _attributes$titleStyl17[0]) === null || _attributes$titleStyl18 === void 0 ? void 0 : _attributes$titleStyl18.titleLine) || '',
+          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl19 = attributes.titleStyles) === null || _attributes$titleStyl19 === void 0 ? void 0 : (_attributes$titleStyl20 = _attributes$titleStyl19[0]) === null || _attributes$titleStyl20 === void 0 ? void 0 : _attributes$titleStyl20.titleLine) || '',
           unit: "px"
         },
         'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl25 = attributes.titleStyles) === null || _attributes$titleStyl25 === void 0 ? void 0 : (_attributes$titleStyl26 = _attributes$titleStyl25[0]) === null || _attributes$titleStyl26 === void 0 ? void 0 : _attributes$titleStyl26.titleSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl27 = attributes.titleStyles) === null || _attributes$titleStyl27 === void 0 ? void 0 : (_attributes$titleStyl28 = _attributes$titleStyl27[0]) === null || _attributes$titleStyl28 === void 0 ? void 0 : _attributes$titleStyl28.titlefontSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl29 = attributes.titleStyles) === null || _attributes$titleStyl29 === void 0 ? void 0 : (_attributes$titleStyl30 = _attributes$titleStyl29[0]) === null || _attributes$titleStyl30 === void 0 ? void 0 : _attributes$titleStyl30.titlefontSizeMobile) || '',
+          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl21 = attributes.titleStyles) === null || _attributes$titleStyl21 === void 0 ? void 0 : (_attributes$titleStyl22 = _attributes$titleStyl21[0]) === null || _attributes$titleStyl22 === void 0 ? void 0 : _attributes$titleStyl22.titleSize) || '',
+          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl23 = attributes.titleStyles) === null || _attributes$titleStyl23 === void 0 ? void 0 : (_attributes$titleStyl24 = _attributes$titleStyl23[0]) === null || _attributes$titleStyl24 === void 0 ? void 0 : _attributes$titleStyl24.titlefontSizeTablet) || '',
+          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl25 = attributes.titleStyles) === null || _attributes$titleStyl25 === void 0 ? void 0 : (_attributes$titleStyl26 = _attributes$titleStyl25[0]) === null || _attributes$titleStyl26 === void 0 ? void 0 : _attributes$titleStyl26.titlefontSizeMobile) || '',
           "unit": 'px'
         }
       },
       titlesTextShadow: {
-        'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl31 = attributes.titleStyles) === null || _attributes$titleStyl31 === void 0 ? void 0 : (_attributes$titleStyl32 = _attributes$titleStyl31[0]) === null || _attributes$titleStyl32 === void 0 ? void 0 : _attributes$titleStyl32.titleshadowColor) || '',
-        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl33 = attributes.titleStyles) === null || _attributes$titleStyl33 === void 0 ? void 0 : (_attributes$titleStyl34 = _attributes$titleStyl33[0]) === null || _attributes$titleStyl34 === void 0 ? void 0 : _attributes$titleStyl34.titleshadowBlur) || '',
-        'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl35 = attributes.titleStyles) === null || _attributes$titleStyl35 === void 0 ? void 0 : (_attributes$titleStyl36 = _attributes$titleStyl35[0]) === null || _attributes$titleStyl36 === void 0 ? void 0 : _attributes$titleStyl36.titleshadowHorizontal) || '',
-        'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl37 = attributes.titleStyles) === null || _attributes$titleStyl37 === void 0 ? void 0 : (_attributes$titleStyl38 = _attributes$titleStyl37[0]) === null || _attributes$titleStyl38 === void 0 ? void 0 : _attributes$titleStyl38.titleshadowVertical) || ''
+        'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl27 = attributes.titleStyles) === null || _attributes$titleStyl27 === void 0 ? void 0 : (_attributes$titleStyl28 = _attributes$titleStyl27[0]) === null || _attributes$titleStyl28 === void 0 ? void 0 : _attributes$titleStyl28.titleshadowColor) || '',
+        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl29 = attributes.titleStyles) === null || _attributes$titleStyl29 === void 0 ? void 0 : (_attributes$titleStyl30 = _attributes$titleStyl29[0]) === null || _attributes$titleStyl30 === void 0 ? void 0 : _attributes$titleStyl30.titleshadowBlur) || '',
+        'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl31 = attributes.titleStyles) === null || _attributes$titleStyl31 === void 0 ? void 0 : (_attributes$titleStyl32 = _attributes$titleStyl31[0]) === null || _attributes$titleStyl32 === void 0 ? void 0 : _attributes$titleStyl32.titleshadowHorizontal) || '',
+        'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl33 = attributes.titleStyles) === null || _attributes$titleStyl33 === void 0 ? void 0 : (_attributes$titleStyl34 = _attributes$titleStyl33[0]) === null || _attributes$titleStyl34 === void 0 ? void 0 : _attributes$titleStyl34.titleshadowVertical) || ''
       },
       boxShadow: {
         'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$generalSt13 = attributes.generalStyles) === null || _attributes$generalSt13 === void 0 ? void 0 : (_attributes$generalSt14 = _attributes$generalSt13[0]) === null || _attributes$generalSt14 === void 0 ? void 0 : _attributes$generalSt14.generalShadowColor) || '',
@@ -13397,15 +13395,18 @@ const deprecated = [{
         'unit': 'px'
       },
       bulletAlign: {
-        Desktop: attributes === null || attributes === void 0 ? void 0 : attributes.bulletAlign,
-        Tablet: attributes === null || attributes === void 0 ? void 0 : attributes.bulletAlign,
-        Mobile: attributes === null || attributes === void 0 ? void 0 : attributes.bulletAlign
+        Desktop: (attributes === null || attributes === void 0 ? void 0 : attributes.bulletAlign) || 'center',
+        Tablet: (attributes === null || attributes === void 0 ? void 0 : attributes.bulletAlign) || 'center',
+        Mobile: (attributes === null || attributes === void 0 ? void 0 : attributes.bulletAlign) || 'center'
       },
       align: {
-        Desktop: attributes === null || attributes === void 0 ? void 0 : attributes.align,
-        Tablet: attributes === null || attributes === void 0 ? void 0 : attributes.align,
-        Mobile: attributes === null || attributes === void 0 ? void 0 : attributes.align
-      }
+        Desktop: (attributes === null || attributes === void 0 ? void 0 : attributes.align) || 'left',
+        Tablet: (attributes === null || attributes === void 0 ? void 0 : attributes.align) || 'left',
+        Mobile: (attributes === null || attributes === void 0 ? void 0 : attributes.align) || 'left'
+      },
+      "hideDesktop": "",
+      "hideTablet": "",
+      "hideMobile": ''
     };
     return Object.assign(attributes, newAttributes);
   },
@@ -27995,7 +27996,7 @@ const deprecated = {
         "unit": "px"
       },
       titleBorder: {
-        "borderType": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl = attributes.titleStyles) === null || _attributes$titleStyl === void 0 ? void 0 : (_attributes$titleStyl2 = _attributes$titleStyl[0]) === null || _attributes$titleStyl2 === void 0 ? void 0 : _attributes$titleStyl2.titleborderType) || '',
+        "borderType": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl = attributes.titleStyles) === null || _attributes$titleStyl === void 0 ? void 0 : (_attributes$titleStyl2 = _attributes$titleStyl[0]) === null || _attributes$titleStyl2 === void 0 ? void 0 : _attributes$titleStyl2.titleborderType) || 'none',
         "borderColor": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl3 = attributes.titleStyles) === null || _attributes$titleStyl3 === void 0 ? void 0 : (_attributes$titleStyl4 = _attributes$titleStyl3[0]) === null || _attributes$titleStyl4 === void 0 ? void 0 : _attributes$titleStyl4.titleborderColor) || '',
         "borderWidth": {
           Desktop: {
@@ -28045,18 +28046,18 @@ const deprecated = {
         'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl19 = attributes.titleStyles) === null || _attributes$titleStyl19 === void 0 ? void 0 : (_attributes$titleStyl20 = _attributes$titleStyl19[0]) === null || _attributes$titleStyl20 === void 0 ? void 0 : _attributes$titleStyl20.titleShadowVertical) || ''
       },
       titleTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl21 = attributes.titleStyles) === null || _attributes$titleStyl21 === void 0 ? void 0 : (_attributes$titleStyl22 = _attributes$titleStyl21[0]) === null || _attributes$titleStyl22 === void 0 ? void 0 : _attributes$titleStyl22.titleWeight) || '',
+        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl21 = attributes.titleStyles) === null || _attributes$titleStyl21 === void 0 ? void 0 : (_attributes$titleStyl22 = _attributes$titleStyl21[0]) === null || _attributes$titleStyl22 === void 0 ? void 0 : _attributes$titleStyl22.titleWeight) || 'Default',
         'fontStyle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl23 = attributes.titleStyles) === null || _attributes$titleStyl23 === void 0 ? void 0 : (_attributes$titleStyl24 = _attributes$titleStyl23[0]) === null || _attributes$titleStyl24 === void 0 ? void 0 : _attributes$titleStyl24.titleStyle) || '',
         'textTransform': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl25 = attributes.titleStyles) === null || _attributes$titleStyl25 === void 0 ? void 0 : (_attributes$titleStyl26 = _attributes$titleStyl25[0]) === null || _attributes$titleStyl26 === void 0 ? void 0 : _attributes$titleStyl26.titleUpper) || '',
-        'fontFamily': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl27 = attributes.titleStyles) === null || _attributes$titleStyl27 === void 0 ? void 0 : (_attributes$titleStyl28 = _attributes$titleStyl27[0]) === null || _attributes$titleStyl28 === void 0 ? void 0 : _attributes$titleStyl28.titleFontFamily) || '',
+        'fontFamily': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl27 = attributes.titleStyles) === null || _attributes$titleStyl27 === void 0 ? void 0 : (_attributes$titleStyl28 = _attributes$titleStyl27[0]) === null || _attributes$titleStyl28 === void 0 ? void 0 : _attributes$titleStyl28.titleFontFamily) || 'Default',
         'textDecoration': '',
-        letterSpacing: {
+        'letterSpacing': {
           Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl29 = attributes.titleStyles) === null || _attributes$titleStyl29 === void 0 ? void 0 : (_attributes$titleStyl30 = _attributes$titleStyl29[0]) === null || _attributes$titleStyl30 === void 0 ? void 0 : _attributes$titleStyl30.titleLetter) || '',
           Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl31 = attributes.titleStyles) === null || _attributes$titleStyl31 === void 0 ? void 0 : (_attributes$titleStyl32 = _attributes$titleStyl31[0]) === null || _attributes$titleStyl32 === void 0 ? void 0 : _attributes$titleStyl32.titleLetter) || '',
           Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl33 = attributes.titleStyles) === null || _attributes$titleStyl33 === void 0 ? void 0 : (_attributes$titleStyl34 = _attributes$titleStyl33[0]) === null || _attributes$titleStyl34 === void 0 ? void 0 : _attributes$titleStyl34.titleLetter) || '',
           unit: "px"
         },
-        lineHeight: {
+        'lineHeight': {
           Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl35 = attributes.titleStyles) === null || _attributes$titleStyl35 === void 0 ? void 0 : (_attributes$titleStyl36 = _attributes$titleStyl35[0]) === null || _attributes$titleStyl36 === void 0 ? void 0 : _attributes$titleStyl36.titleLine) || '',
           Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl37 = attributes.titleStyles) === null || _attributes$titleStyl37 === void 0 ? void 0 : (_attributes$titleStyl38 = _attributes$titleStyl37[0]) === null || _attributes$titleStyl38 === void 0 ? void 0 : _attributes$titleStyl38.titleLine) || '',
           Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl39 = attributes.titleStyles) === null || _attributes$titleStyl39 === void 0 ? void 0 : (_attributes$titleStyl40 = _attributes$titleStyl39[0]) === null || _attributes$titleStyl40 === void 0 ? void 0 : _attributes$titleStyl40.titleLine) || '',
@@ -28094,18 +28095,18 @@ const deprecated = {
         'unit': (attributes === null || attributes === void 0 ? void 0 : (_attributes$stripeSty31 = attributes.stripeStyles) === null || _attributes$stripeSty31 === void 0 ? void 0 : (_attributes$stripeSty32 = _attributes$stripeSty31[0]) === null || _attributes$stripeSty32 === void 0 ? void 0 : _attributes$stripeSty32.stripeBottomSpacingType) || 'px'
       },
       textTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle = attributes.textStyles) === null || _attributes$textStyle === void 0 ? void 0 : (_attributes$textStyle2 = _attributes$textStyle[0]) === null || _attributes$textStyle2 === void 0 ? void 0 : _attributes$textStyle2.textBackWeight) || '',
+        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle = attributes.textStyles) === null || _attributes$textStyle === void 0 ? void 0 : (_attributes$textStyle2 = _attributes$textStyle[0]) === null || _attributes$textStyle2 === void 0 ? void 0 : _attributes$textStyle2.textBackWeight) || 'Default',
         'fontStyle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle3 = attributes.textStyles) === null || _attributes$textStyle3 === void 0 ? void 0 : (_attributes$textStyle4 = _attributes$textStyle3[0]) === null || _attributes$textStyle4 === void 0 ? void 0 : _attributes$textStyle4.textBackStyle) || '',
         'textTransform': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle5 = attributes.textStyles) === null || _attributes$textStyle5 === void 0 ? void 0 : (_attributes$textStyle6 = _attributes$textStyle5[0]) === null || _attributes$textStyle6 === void 0 ? void 0 : _attributes$textStyle6.textBackUpper) || '',
-        'fontFamily': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle7 = attributes.textStyles) === null || _attributes$textStyle7 === void 0 ? void 0 : (_attributes$textStyle8 = _attributes$textStyle7[0]) === null || _attributes$textStyle8 === void 0 ? void 0 : _attributes$textStyle8.textBackFontFamily) || '',
+        'fontFamily': (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle7 = attributes.textStyles) === null || _attributes$textStyle7 === void 0 ? void 0 : (_attributes$textStyle8 = _attributes$textStyle7[0]) === null || _attributes$textStyle8 === void 0 ? void 0 : _attributes$textStyle8.textBackFontFamily) || 'Default',
         'textDecoration': '',
-        letterSpacing: {
+        'letterSpacing': {
           Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle9 = attributes.textStyles) === null || _attributes$textStyle9 === void 0 ? void 0 : (_attributes$textStyle10 = _attributes$textStyle9[0]) === null || _attributes$textStyle10 === void 0 ? void 0 : _attributes$textStyle10.textBackLetter) || '',
           Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle11 = attributes.textStyles) === null || _attributes$textStyle11 === void 0 ? void 0 : (_attributes$textStyle12 = _attributes$textStyle11[0]) === null || _attributes$textStyle12 === void 0 ? void 0 : _attributes$textStyle12.textBackLetter) || '',
           Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle13 = attributes.textStyles) === null || _attributes$textStyle13 === void 0 ? void 0 : (_attributes$textStyle14 = _attributes$textStyle13[0]) === null || _attributes$textStyle14 === void 0 ? void 0 : _attributes$textStyle14.textBackLetter) || '',
           unit: "px"
         },
-        lineHeight: {
+        'lineHeight': {
           Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle15 = attributes.textStyles) === null || _attributes$textStyle15 === void 0 ? void 0 : (_attributes$textStyle16 = _attributes$textStyle15[0]) === null || _attributes$textStyle16 === void 0 ? void 0 : _attributes$textStyle16.textBackLine) || '',
           Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle17 = attributes.textStyles) === null || _attributes$textStyle17 === void 0 ? void 0 : (_attributes$textStyle18 = _attributes$textStyle17[0]) === null || _attributes$textStyle18 === void 0 ? void 0 : _attributes$textStyle18.textBackLine) || '',
           Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle19 = attributes.textStyles) === null || _attributes$textStyle19 === void 0 ? void 0 : (_attributes$textStyle20 = _attributes$textStyle19[0]) === null || _attributes$textStyle20 === void 0 ? void 0 : _attributes$textStyle20.textBackLine) || '',
@@ -28170,7 +28171,7 @@ const deprecated = {
         'unit': (attributes === null || attributes === void 0 ? void 0 : (_attributes$iconStyle41 = attributes.iconStyles) === null || _attributes$iconStyle41 === void 0 ? void 0 : (_attributes$iconStyle42 = _attributes$iconStyle41[0]) === null || _attributes$iconStyle42 === void 0 ? void 0 : _attributes$iconStyle42.iconSizeType) || 'px'
       },
       iconBorder: {
-        "borderType": (attributes === null || attributes === void 0 ? void 0 : (_attributes$iconStyle43 = attributes.iconStyles) === null || _attributes$iconStyle43 === void 0 ? void 0 : (_attributes$iconStyle44 = _attributes$iconStyle43[0]) === null || _attributes$iconStyle44 === void 0 ? void 0 : _attributes$iconStyle44.iconborderType) || '',
+        "borderType": (attributes === null || attributes === void 0 ? void 0 : (_attributes$iconStyle43 = attributes.iconStyles) === null || _attributes$iconStyle43 === void 0 ? void 0 : (_attributes$iconStyle44 = _attributes$iconStyle43[0]) === null || _attributes$iconStyle44 === void 0 ? void 0 : _attributes$iconStyle44.iconborderType) || 'none',
         "borderColor": (attributes === null || attributes === void 0 ? void 0 : (_attributes$iconStyle45 = attributes.iconStyles) === null || _attributes$iconStyle45 === void 0 ? void 0 : (_attributes$iconStyle46 = _attributes$iconStyle45[0]) === null || _attributes$iconStyle46 === void 0 ? void 0 : _attributes$iconStyle46.iconborderColor) || '',
         "borderWidth": {
           Desktop: {
@@ -28826,31 +28827,6 @@ function Edit(props) {
   }, {
     value: "top",
     label: __("Top", 'premium-blocks-for-gutenberg')
-  }];
-  const TAGS = [{
-    value: "h1",
-    label: __("H1", 'premium-blocks-for-gutenberg')
-  }, {
-    value: "h2",
-    label: __("H2", 'premium-blocks-for-gutenberg')
-  }, {
-    value: "h3",
-    label: __("H3", 'premium-blocks-for-gutenberg')
-  }, {
-    value: "h4",
-    label: __("H4", 'premium-blocks-for-gutenberg')
-  }, {
-    value: "h5",
-    label: __("H5", 'premium-blocks-for-gutenberg')
-  }, {
-    value: "h6",
-    label: __("H6", 'premium-blocks-for-gutenberg')
-  }, {
-    value: "div",
-    label: __("div", 'premium-blocks-for-gutenberg')
-  }, {
-    value: "span",
-    label: __("span", 'premium-blocks-for-gutenberg')
   }];
   const STRIPEPOSITION = [{
     value: "top",
