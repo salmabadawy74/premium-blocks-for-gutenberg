@@ -3228,7 +3228,8 @@ i.fipicon-angle-left:before {
   overflow-x: visible;
   overflow-y: visible;
   min-width: 290px;
-  max-width: 310px; }
+  max-width: 310px;
+  overflow: auto; }
 
 .premium-popover-color .premium-gutenberg-color-picker-new .components-color-picker {
   width: 100%;

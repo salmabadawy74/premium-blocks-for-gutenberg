@@ -203,7 +203,6 @@ const Inspector = ({
                                                 onChange={newIcon => saveTriggerSettings({ icon: newIcon })}
                                                 value={triggerSettings[0].icon}
                                                 isMulti={false}
-                                                appendTo="body"
                                                 noSelectedPlaceholder={__("Select Icon", 'premium-blocks-for-gutenberg')}
                                             />
                                             <SelectControl
@@ -423,7 +422,6 @@ const Inspector = ({
                                         onChange={newIcon => saveContentStyle({ contentIcon: newIcon })}
                                         value={contentStyles[0].contentIcon}
                                         isMulti={false}
-                                        appendTo="body"
                                         noSelectedPlaceholder={__("Select Icon", 'premium-blocks-for-gutenberg')}
                                     />
                                 </Fragment>

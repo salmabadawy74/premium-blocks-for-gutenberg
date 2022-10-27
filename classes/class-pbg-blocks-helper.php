@@ -5059,6 +5059,8 @@ class PBG_Blocks_Helper {
 	public function get_bulletList_css( $attributes, $content ) {
 		if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
 			$unique_id = $attributes['blockId'];
+		} else {
+			$unique_id = rand( 100, 10000 );
 		}
 
 		$style_unique_id = rand( 100, 10000 );
