@@ -74,7 +74,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 
 			return $block_content;
 		}
-
+		
 		/**
 		 * str_replace_first
 		 *
@@ -83,14 +83,14 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 		 * @param  string $subject
 		 * @return string
 		 */
-		function str_replace_first( $search, $replace, $subject ) {
-			$pos = strpos( $subject, $search );
-			if ( $pos !== false ) {
-				return substr_replace( $subject, $replace, $pos, strlen( $search ) );
+		function str_replace_first($search, $replace, $subject) {
+			$pos = strpos($subject, $search);
+			if ($pos !== false) {
+				return substr_replace($subject, $replace, $pos, strlen($search));
 			}
 			return $subject;
 		}
-
+		
 		/**
 		 * pbg_fronend_global_styles
 		 *
@@ -216,6 +216,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 
 			// Core blocks styles.
 			if ( $apply_to_default ) {
+				error_log( $apply_to_default . ' :555' );
 				if ( isset( $global_typography['heading1'] ) ) {
 					$h1_typography = $global_typography['heading1'];
 

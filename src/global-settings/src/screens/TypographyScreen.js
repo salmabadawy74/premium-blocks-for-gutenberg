@@ -9,7 +9,7 @@ import { ToggleControl } from '@wordpress/components';
 import WebFont from "webfontloader";
 
 const TypographyScreen = props => {
-    const { globalTypography, setGlobalTypography } = useContext(SettingsContext);
+    const { globalTypography, setGlobalTypography, applyTypographyToDefault, setApplyTypographyToDefault } = useContext(SettingsContext);
     const { typography: defaultValues } = defaults;
     const getElementValue = (element) => {
         let value = globalTypography?.[element] || defaultValues?.[element];
@@ -53,9 +53,9 @@ const TypographyScreen = props => {
         />
         <div className='premium-typography-screen'>
             <ToggleControl
-                checked={false}
-                onChange={() => { }}
-                label={__('Apply typography to Native Blocks')}
+                checked={applyTypographyToDefault}
+                onChange={() => setApplyTypographyToDefault(!applyTypographyToDefault)}
+                label={__('Apply to Native Blocks')}
             />
             <div className='premium-element-typography'>
                 <h1

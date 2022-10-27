@@ -7,7 +7,7 @@ import ColorPalettes from '../components/color-pallet';
 import ThemeColorPallet from '../components/ThemeColorPallet';
 
 const ColorsScreen = () => {
-    const { colorPallet, setColorPallet, colorPallets, setColorPallets } = useContext(SettingsContext);
+    const { colorPallet, setColorPallet, colorPallets, setColorPallets, applyColorsToDefault, setApplyColorsToDefault } = useContext(SettingsContext);
 
     const handleToggleChange = () => {
         setColorPallet(colorPallet === 'theme' ? 'pbg' : 'theme');
@@ -21,6 +21,11 @@ const ColorsScreen = () => {
                 , "premium-blocks-for-gutenberg")}
         />
         <div className='premium-global-colors-screen'>
+            <ToggleControl
+                checked={applyColorsToDefault}
+                onChange={() => setApplyColorsToDefault(!applyColorsToDefault)}
+                label={__('Apply to Native Blocks')}
+            />
             <div className='premium-global-colors-type'>
                 <label>{__('Theme')}</label>
                 <ToggleControl
@@ -29,11 +34,6 @@ const ColorsScreen = () => {
                 />
                 <label>{__('Premium Block', "premium-blocks-for-gutenberg")}</label>
             </div>
-            <ToggleControl
-                checked={false}
-                onChange={() => { }}
-                label={__('Apply Colors to Native Blocks')}
-            />
             {colorPallet === 'theme' &&
                 <ThemeColorPallet />
             }

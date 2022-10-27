@@ -16,7 +16,11 @@ const SettingsContext = React.createContext({
     layoutSettings: {},
     setLayoutSettings: () => { },
     customColors: [],
-    setCustomColors: () => { }
+    setCustomColors: () => { },
+    applyColorsToDefault: [],
+    setApplyColorsToDefault: () => { },
+    applyTypographyToDefault: [],
+    setApplyTypographyToDefault: () => { },
 })
 
 export const SettingsProvider = (props) => {
@@ -26,6 +30,8 @@ export const SettingsProvider = (props) => {
     const [colorPallets, setColorPallets] = useEntityProp('root', 'site', 'pbg_global_color_pallets');
     const [customColors, setCustomColors] = useEntityProp('root', 'site', 'pbg_custom_colors');
     const [layoutSettings, setLayoutSettings] = useEntityProp('root', 'site', 'pbg_global_layout');
+    const [applyColorsToDefault, setApplyColorsToDefault] = useEntityProp('root', 'site', 'pbg_global_colors_to_default');
+    const [applyTypographyToDefault, setApplyTypographyToDefault] = useEntityProp('root', 'site', 'pbg_global_typography_to_default');
 
     const settingsContext = {
         globalTypography,
@@ -39,7 +45,11 @@ export const SettingsProvider = (props) => {
         customColors,
         setCustomColors,
         layoutSettings,
-        setLayoutSettings
+        setLayoutSettings,
+        applyColorsToDefault,
+        setApplyColorsToDefault,
+        applyTypographyToDefault,
+        setApplyTypographyToDefault
     };
     return <SettingsContext.Provider value={settingsContext}>
         {props.children}
