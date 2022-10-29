@@ -416,6 +416,11 @@ function PremiumPricingTable(props) {
                                     value={titleStyles[0].titleTag}
                                     onChange={newValue => saveTitleStyles({ titleTag: newValue })}
                                 />
+                                <TextControl
+                                    label={__("Title Text", 'premium-blocks-for-gutenberg')}
+                                    value={title}
+                                    onChange={newText => setAttributes({ title: newText })}
+                                />
                             </PanelBody>
                         )}
                         {priceChecked && (
@@ -471,6 +476,11 @@ function PremiumPricingTable(props) {
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
+                                <TextControl
+                                    label={__("Text", 'premium-blocks-for-gutenberg')}
+                                    value={btnText}
+                                    onChange={newText => setAttributes({ btnText: newText })}
+                                />
                                 <TextControl
                                     label={__("Link URL", 'premium-blocks-for-gutenberg')}
                                     value={btnLink}
@@ -1093,7 +1103,7 @@ function PremiumPricingTable(props) {
                     >
                         <a
                             class={`premium-pricing-table__button_link wp-block-button__link`}
-                            href="{ attributes.btnUrl }"
+                            href=""
                             target={buttonStyles[0].btnTarget ? "_blank" : "_self"}
                             style={{
                                 ...marginCss(buttonMargin, props.deviceType),
