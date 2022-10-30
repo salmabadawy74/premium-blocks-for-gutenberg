@@ -7,7 +7,8 @@
 .premium-container {
   position: relative;
   padding: 30px;
-  background-color: #f3f4f5; }
+  background-color: #f3f4f5;
+  text-align: center; }
 
 .premium-container__content_wrap {
   display: -webkit-box;
