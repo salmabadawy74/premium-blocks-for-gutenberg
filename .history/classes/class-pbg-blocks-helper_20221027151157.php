@@ -158,7 +158,7 @@ class PBG_Blocks_Helper {
 	 * @return void
 	 */
 	public function add_blocks_editor_styles() {
-		Pbg_Style_Generator::pbg_add_css( PREMIUM_BLOCKS_PATH . 'assets/css/minified/blockseditor.min.css' );
+		Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/blockseditor.min.css' );
 		if ( is_array( self::$blocks ) && ! empty( self::$blocks ) ) {
 			foreach ( self::$blocks as $slug => $value ) {
 
@@ -166,7 +166,7 @@ class PBG_Blocks_Helper {
 					continue;
 				}
 
-				Pbg_Style_Generator::pbg_add_css( PREMIUM_BLOCKS_PATH . "assets/css/minified/{$slug}.min.css" );
+				Pbg_Style_Generator::pbg_add_css( "assets/css/minified/{$slug}.min.css" );
 			}
 		}
 	}
