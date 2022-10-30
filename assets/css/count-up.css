@@ -5,12 +5,17 @@
   display: -ms-flex;
   display: flex;
   align-items: baseline;
-  align-items: center; }
+  align-items: center;
+  justify-content: center; }
+  .premium-countup__wrap .premium-countup__icon_wrap {
+    align-self: center; }
   .premium-countup__wrap .premium-countup__title {
     margin: 0;
     padding: 0; }
   .premium-countup__wrap .premium-countup__icon {
     display: inline; }
+  .premium-countup__wrap .premium-countup__info {
+    align-self: center; }
   .premium-countup__wrap .premium-countup__desc {
     display: -ms-flexbox;
     display: -webkit-flex;

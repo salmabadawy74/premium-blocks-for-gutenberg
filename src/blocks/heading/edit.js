@@ -381,7 +381,7 @@ function Edit(props) {
         styles[`.${blockId} .premium-title .style1 .premium-title-header`] =
         {
             "border-color": `${titleBorder.borderColor}!important`,
-            "border-style": `${titleBorder.borderType}`,
+            "border-style": `${titleBorder.borderType == 'none' ? 'none' : `${titleBorder.borderType} !important`}`,
             "border-top-width": `${titleBorder?.borderWidth?.[props.deviceType]?.top}px!important`,
             "border-right-width": `${titleBorder?.borderWidth?.[props.deviceType]?.right}px!important`,
             "border-bottom-width": `${titleBorder?.borderWidth?.[props.deviceType]?.bottom}px!important`,
@@ -1522,53 +1522,53 @@ function Edit(props) {
                                             </span>
                                         </Fragment>
                                     ) : (
-                                        <Fragment>
-                                            {iconValue &&
-                                                iconType == "icon" && (
-                                                    <i
-                                                        className={`premium-title-icon ${icon}`}
+                                                <Fragment>
+                                                    {iconValue &&
+                                                        iconType == "icon" && (
+                                                            <i
+                                                                className={`premium-title-icon ${icon}`}
+                                                            />
+                                                        )}
+                                                    {iconValue &&
+                                                        iconType == "image" && (
+                                                            <img
+                                                                className={`premium-title-icon`}
+                                                                src={imageURL}
+                                                            />
+                                                        )}
+                                                    {iconValue &&
+                                                        iconType == "lottie" &&
+                                                        lottieURl && (
+                                                            <div className=" premium-title-icon premium-lottie-animation">
+                                                                <Lottie
+                                                                    options={{
+                                                                        loop: loop,
+                                                                        path: lottieURl,
+                                                                        rendererSettings:
+                                                                        {
+                                                                            preserveAspectRatio:
+                                                                                "xMidYMid",
+                                                                        },
+                                                                    }}
+                                                                    direction={reverse}
+                                                                />
+                                                            </div>
+                                                        )}
+                                                    <RichText
+                                                        tagName="span"
+                                                        className={`premium-title-text-title`}
+                                                        onChange={(newValue) =>
+                                                            setAttributes({
+                                                                title: newValue,
+                                                            })
+                                                        }
+                                                        value={title}
+                                                        style={{
+                                                            minHeight: "15px",
+                                                        }}
                                                     />
-                                                )}
-                                            {iconValue &&
-                                                iconType == "image" && (
-                                                    <img
-                                                        className={`premium-title-icon`}
-                                                        src={imageURL}
-                                                    />
-                                                )}
-                                            {iconValue &&
-                                                iconType == "lottie" &&
-                                                lottieURl && (
-                                                    <div className=" premium-title-icon premium-lottie-animation">
-                                                        <Lottie
-                                                            options={{
-                                                                loop: loop,
-                                                                path: lottieURl,
-                                                                rendererSettings:
-                                                                {
-                                                                    preserveAspectRatio:
-                                                                        "xMidYMid",
-                                                                },
-                                                            }}
-                                                            direction={reverse}
-                                                        />
-                                                    </div>
-                                                )}
-                                            <RichText
-                                                tagName="span"
-                                                className={`premium-title-text-title`}
-                                                onChange={(newValue) =>
-                                                    setAttributes({
-                                                        title: newValue,
-                                                    })
-                                                }
-                                                value={title}
-                                                style={{
-                                                    minHeight: "15px",
-                                                }}
-                                            />
-                                        </Fragment>
-                                    )}
+                                                </Fragment>
+                                            )}
                                     {link && url !== " " && (
                                         <a
                                             rel="noopener noreferrer"
