@@ -1,24 +1,34 @@
-import { Fragment, useState } from "@wordpress/element";
+import { Fragment, useState, useEffect } from "@wordpress/element";
 import Container from "../common/Container";
 import OptionsComponent from "../options-component";
 import classNames from "classnames";
 const { __ } = wp.i18n;
-import { useDispatch } from "@wordpress/data";
+// import { useDispatchd as dispatchWordpress } from "@wordpress/data";
+import { updateblockStatus, ActivateBlocks } from "../features/blocks/index";
 
 import { store as noticesStore } from "@wordpress/notices";
+import { useDispatch, useSelector } from "react-redux";
+import FilterTabs from "./Blocks/filterTabs";
 
 const OptionsTab = (props) => {
-    const [values, setValues] = useState(PremiumBlocksPanelData.values);
-    const { createNotice } = useDispatch(noticesStore);
+    const blocks = useSelector((state) => state.blockStates.blocks);
+    const dispatch = useDispatch();
+    const activeBlocksFilterTab = useSelector(
+        (state) => state.blockStates.blockFilter
+    );
+    useEffect(() => {}, [blocks]);
 
+    // const { createNotice } = useDispatch(noticesStore);
     const handleChange = async (newValues, id) => {
-        let newItems = { ...values };
+        const newItems = { ...blocks };
         newItems[id] = newValues;
+        dispatch(updateblockStatus(newItems));
+
         const body = new FormData();
+
         body.append("action", "pb-panel-update-option");
         body.append("nonce", PremiumBlocksPanelData.nonce);
-        body.append("option", id);
-        body.append("value", newValues);
+        body.append("value", JSON.stringify(newItems));
 
         try {
             const response = await fetch(PremiumBlocksPanelData.ajaxurl, {
@@ -28,32 +38,25 @@ const OptionsTab = (props) => {
             if (response.status === 200) {
                 const { success, data } = await response.json();
                 if (success && data.values) {
-                    setValues(newItems);
-                    createNotice("success", "Settings saved ", {
-                        isDismissible: true,
-                        type: "snackbar",
-                    });
+                    // createNotice("success", "Settings saved ", {
+                    //     isDismissible: true,
+                    //     type: "snackbar",
+                    // });
                 }
             }
         } catch (e) {
-            createNotice("error", __("An unknown error occurred.", ""), {
-                isDismissible: true,
-                type: "snackbar",
-            });
+            console.log(e);
+            // createNotice("error", __("An unknown error occurred.", ""), {
+            //     isDismissible: true,
+            //     type: "snackbar",
+            // });
         }
     };
 
-    const tabs = [
-        { name: "All", slug: "all" },
-        { name: "Content", slug: "content" },
-        { name: "Creative", slug: "creative" },
-        { name: "Section", slug: "section" },
-        { name: "Marketing", slug: "marketing" },
-        { name: "Theme", slug: "theme" }
-    ];
-    const [activeFilter, setFilter] = useState("all");
     let options = Object.keys(props.options)
-        .filter((key) => props.options[key].category.includes(activeFilter))
+        .filter((key) =>
+            props.options[key].category.includes(activeBlocksFilterTab)
+        )
         .reduce((obj, key) => {
             return Object.assign(obj, {
                 [key]: props.options[key],
@@ -64,28 +67,10 @@ const OptionsTab = (props) => {
         <Fragment>
             <Container>
                 <div className="pb-options-header">
-                    <nav className="pb-filter-tabs" aria-label="Tabs">
-                        {tabs.map((tab) => (
-                            <button
-                                key={tab.name}
-                                className={classNames("pb-filter-tab", {
-                                    active: activeFilter === tab.slug,
-                                })}
-                                onClick={() => setFilter(tab.slug)}
-                            >
-                                {tab.name}
-                            </button>
-                        ))}
-                    </nav>
+                    <FilterTabs />
                 </div>
                 <div className="pb-options options-section">
-                    <OptionsComponent
-                        options={options}
-                        values={values}
-                        onChange={(newVal, optionId) => {
-                            handleChange(newVal, optionId);
-                        }}
-                    />
+                    <OptionsComponent options={options} />
                 </div>
             </Container>
         </Fragment>

@@ -34,7 +34,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 		 * @var object instance
 		 */
 		private static $instance;
-
+		private $menu_slug = 'pb_panel';
 		/**
 		 * Instance
 		 *
@@ -59,15 +59,24 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 			add_action( 'admin_post_premium_gutenberg_rollback', array( $this, 'post_premium_gutenberg_rollback_new' ) );
 			add_action( 'wp_ajax_pb-mail-subscribe', array( $this, 'subscribe_mail' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'pa_admin_page_scripts' ) );
+			add_filter( 'plugin_action_links_' . PREMIUM_BLOCKS_BASENAME, array( $this, 'add_action_links' ) );
 		}
 
 		// Enqueue dashboard menu required assets
 		// Enqueue icon for plugin in dashboard
 		public function pa_admin_page_scripts() {
-
 			wp_enqueue_style( 'pbg-icon', PREMIUM_BLOCKS_URL . 'admin/assets/pbg-font/css/pbg-font.css' );
 		}
+		public function add_action_links( $links ) {
 
+			$default_url = admin_url( 'page=' . $this->menu_slug );
+
+			$mylinks = array(
+				'<a href="' . $default_url . '">' . '</a>',
+			);
+
+			return array_merge( $mylinks, $links );
+		}
 		public function subscribe_mail() {
 			check_ajax_referer( 'pb-panel', 'nonce' );
 
@@ -136,15 +145,13 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 		public function update_option() {
 			check_ajax_referer( 'pb-panel', 'nonce' );
 
-			$option  = isset( $_POST['option'] ) ? sanitize_text_field( wp_unslash( $_POST['option'] ) ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-			$value   = isset( $_POST['value'] ) ? sanitize_text_field( wp_unslash( $_POST['value'] ) ) : '';
-			$value   = 'true' === $value ? true : false;
+			$value   = isset( $_POST['value'] ) ? json_decode( stripslashes( $_POST['value'] ), true ) : array();
 			$options = apply_filters( 'pb_options', get_option( 'pb_options', array() ) );
 			// $options = get_option( 'pb_options' );
 			$options = ! is_array( $options ) ? array() : $options;
 
-			if ( '' !== $value && '' !== $option ) {
-				$options[ $option ] = $value;
+			if ( $value ) {
+				$options = $value;
 				update_option( 'pb_options', $options );
 
 				wp_send_json_success(
@@ -198,6 +205,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 			$pb_versions = self::get_rollback_versions_options();
 
 			$info = array(
+
 				'home_url'             => home_url(),
 				'version'              => get_bloginfo( 'version' ),
 				'multisite'            => is_multisite(),
@@ -266,6 +274,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 					'type'     => 'pb-button',
 					'label'    => __( 'Accordion', 'premium-blocks-for-gutenberg' ),
 					'icon'     => 'accordion',
+					'name'     => 'accordion',
 					'category' => array(
 						'all',
 						'content',
@@ -275,6 +284,8 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 					'type'     => 'pb-button',
 					'label'    => __( 'Banner', 'premium-blocks-for-gutenberg' ),
 					'icon'     => 'banner',
+					'name'     => 'banner',
+
 					'category' => array(
 						'all',
 						'marketing',
@@ -284,6 +295,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 					'type'     => 'pb-button',
 					'label'    => __( 'Button', 'premium-blocks-for-gutenberg' ),
 					'icon'     => 'button',
+					'name'     => 'button',
 					'category' => array(
 						'all',
 						'creative',
@@ -295,6 +307,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 					'type'     => 'pb-button',
 					'label'    => __( 'Count Up', 'premium-blocks-for-gutenberg' ),
 					'icon'     => 'count_up',
+					'name'     => 'count-up',
 					'category' => array(
 						'all',
 						'creative',
@@ -304,6 +317,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 					'type'     => 'pb-button',
 					'label'    => __( 'Dual Heading', 'premium-blocks-for-gutenberg' ),
 					'icon'     => 'dualHeading',
+					'name'     => 'dual-heading',
 					'category' => array(
 						'all',
 						'creative',
@@ -313,6 +327,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 					'type'     => 'pb-button',
 					'label'    => __( 'Heading', 'premium-blocks-for-gutenberg' ),
 					'icon'     => 'heading',
+					'name'     => 'heading',
 					'category' => array(
 						'all',
 						'content',
@@ -322,6 +337,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 					'type'     => 'pb-button',
 					'label'    => __( 'Icon', 'premium-blocks-for-gutenberg' ),
 					'icon'     => 'icon',
+					'name'     => 'icon',
 					'category' => array(
 						'all',
 						'creative',
@@ -331,6 +347,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 					'type'     => 'pb-button',
 					'label'    => __( 'Icon Box', 'premium-blocks-for-gutenberg' ),
 					'icon'     => 'icon_box',
+					'name'     => 'icon-box',
 					'category' => array(
 						'all',
 						'creative',
@@ -340,6 +357,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 					'type'     => 'pb-button',
 					'label'    => __( 'Google Maps', 'premium-blocks-for-gutenberg' ),
 					'icon'     => 'maps',
+					'name'     => 'maps',
 					'category' => array(
 						'all',
 						'content',
@@ -349,6 +367,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 					'type'     => 'pb-button',
 					'label'    => __( 'Pricing Table', 'premium-blocks-for-gutenberg' ),
 					'icon'     => 'pricingTable',
+					'name'     => 'pricing-table',
 					'category' => array(
 						'all',
 						'marketing',
@@ -358,6 +377,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 					'type'     => 'pb-button',
 					'label'    => __( 'Section', 'premium-blocks-for-gutenberg' ),
 					'icon'     => 'section',
+					'name'     => 'section',
 					'category' => array(
 						'all',
 						'section',
@@ -367,6 +387,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 					'type'     => 'pb-button',
 					'label'    => __( 'Testimonials', 'premium-blocks-for-gutenberg' ),
 					'icon'     => 'testimonials',
+					'name'     => 'testimonials',
 					'category' => array(
 						'all',
 						'creative',
@@ -377,6 +398,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 					'type'     => 'pb-button',
 					'label'    => __( 'Video Box', 'premium-blocks-for-gutenberg' ),
 					'icon'     => 'video_box',
+
 					'category' => array(
 						'all',
 						'creative',
@@ -416,7 +438,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 					'type'     => 'pb-button',
 					'label'    => __( 'Image Separator', 'premium-blocks-for-gutenberg' ),
 					'icon'     => 'image_separator',
-					'category' => 'all',
+					'category' =>
 					array(
 						'all',
 						'content',
@@ -426,7 +448,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 					'type'     => 'pb-button',
 					'label'    => __( 'Bullet List', 'premium-blocks-for-gutenberg' ),
 					'icon'     => 'bulletList',
-					'category' => 'all',
+					'category' =>
 					array(
 						'all',
 						'content',
@@ -519,11 +541,10 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 				'pb-panel-js',
 				'PremiumBlocksPanelData',
 				array(
+					'home_slug'   => $this->menu_slug,
 					'options'     => self::panel_options(),
 					'values'      => apply_filters( 'pb_options', get_option( 'pb_options', array() ) ),
-					// 'values'      => array(
-					// 'options' => get_option( 'pb_options', array() ),
-					// ),
+
 					'ajaxurl'     => admin_url( 'admin-ajax.php' ),
 					'nonce'       => wp_create_nonce( 'pb-panel' ),
 					'system_info' => self::get_system_info(),
