@@ -76,7 +76,7 @@ export default function save(props) {
                                 textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical || 0}px ${iconShadow.blur || 0}px ${iconShadow.color}`,
                             })} />
                     }
-                    {iconType === 'image' && < img
+                    {iconType === 'image' && imageURL && < img
                         src={imageURL}
                         style={filterJsCss({
                             borderColor: iconStyles[0].advancedBorder ? "" : iconBorder.borderColor,

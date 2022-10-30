@@ -12,8 +12,8 @@
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out; }
     .premium-lottie-wrap .premium-lottie-animation svg {
-      width: 200px;
-      height: 200px; }
+      width: 200px !important;
+      height: 200px !important; }
     .premium-lottie-wrap .premium-lottie-animation .premium-lottie-inner {
       -webkit-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out; }
