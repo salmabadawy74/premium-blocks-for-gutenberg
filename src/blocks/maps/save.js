@@ -54,46 +54,49 @@ export default function save(props) {
                 borderColor: mapBorder?.borderColor,
                 boxShadow: `${mapBoxShadow.horizontal}px ${mapBoxShadow.vertical}px ${mapBoxShadow.blur}px ${mapBoxShadow.color} ${mapBoxShadow.position}`,
             })}>
-            <div className="map-container" style={filterJsCss({
-                height: height + "px"
-            })}>
-                <div className={`${className}__marker`}>
-                    <div
-                        className={`${className}__info`}
-                    >
-                        {markerTitle && (
-                            <h3
-                                className={`${className}__title`}
-                                style={filterJsCss({
-                                    color: titleColor,
-                                    fontStyle: titleTypography?.fontStyle,
-                                    fontFamily: titleTypography?.fontFamily,
-                                    fontWeight: titleTypography?.fontWeight,
-                                    textDecoration: titleTypography?.textDecoration,
-                                    textTransform: titleTypography?.textTransform,
-                                })}
-                            >
-                                {markerTitle}
-                            </h3>
-                        )}
-                        {markerDesc && (
-                            <div
-                                className={`${className}__desc`}
-                                style={filterJsCss({
-                                    color: descColor,
-                                    fontStyle: descriptionTypography?.fontStyle,
-                                    fontFamily: descriptionTypography?.fontFamily,
-                                    fontWeight: descriptionTypography?.fontWeight,
-                                    textDecoration: descriptionTypography?.textDecoration,
-                                    textTransform: descriptionTypography?.textTransform,
-                                })}
-                            >
-                                {markerDesc}
-                            </div>
-                        )}
+            {
+                typeof google !== "undefined" &&
+                <div className="map-container" style={filterJsCss({
+                    height: height + "px"
+                })}>
+                    <div className={`${className}__marker`}>
+                        <div
+                            className={`${className}__info`}
+                        >
+                            {markerTitle && (
+                                <h3
+                                    className={`${className}__title`}
+                                    style={filterJsCss({
+                                        color: titleColor,
+                                        fontStyle: titleTypography?.fontStyle,
+                                        fontFamily: titleTypography?.fontFamily,
+                                        fontWeight: titleTypography?.fontWeight,
+                                        textDecoration: titleTypography?.textDecoration,
+                                        textTransform: titleTypography?.textTransform,
+                                    })}
+                                >
+                                    {markerTitle}
+                                </h3>
+                            )}
+                            {markerDesc && (
+                                <div
+                                    className={`${className}__desc`}
+                                    style={filterJsCss({
+                                        color: descColor,
+                                        fontStyle: descriptionTypography?.fontStyle,
+                                        fontFamily: descriptionTypography?.fontFamily,
+                                        fontWeight: descriptionTypography?.fontWeight,
+                                        textDecoration: descriptionTypography?.textDecoration,
+                                        textTransform: descriptionTypography?.textTransform,
+                                    })}
+                                >
+                                    {markerDesc}
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
             <script>
                 {`window.addEventListener('load',function(){
                 if( typeof google === 'undefined' ) return;
