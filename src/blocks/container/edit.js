@@ -3,7 +3,7 @@ import variations from "./variations";
 import {
     InspectorTabs,
     InspectorTab,
-    ResponsiveRadio,
+    MultiButtonsControl as ResponsiveRadio,
     PremiumBorder,
     Animation,
     ResponsiveSingleRangeControl,
