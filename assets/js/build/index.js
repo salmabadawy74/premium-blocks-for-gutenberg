@@ -16679,7 +16679,7 @@ const edit = props => {
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
     initialOpen: false,
     title: __("Flex Properties", "premium-blocks-for-gutenberg")
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.ResponsiveRadio, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.MultiButtonsControl, {
     choices: [{
       value: "row",
       label: __("Row", "premium-blocks-for-gutenberg"),
@@ -16703,7 +16703,7 @@ const edit = props => {
     }),
     label: __("Direction", "premium-blocks-for-gutenberg"),
     showIcons: true
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.ResponsiveRadio, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.MultiButtonsControl, {
     choices: [{
       value: "flex-start",
       label: __("Flex Start", "premium-blocks-for-gutenberg"),
@@ -16727,7 +16727,7 @@ const edit = props => {
     }),
     label: __("Align Items", "premium-blocks-for-gutenberg"),
     showIcons: true
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.ResponsiveRadio, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.MultiButtonsControl, {
     choices: [{
       value: "flex-start",
       tooltip: __("Flex Start", "ultimate-addons-for-gutenberg"),
@@ -16759,7 +16759,7 @@ const edit = props => {
     }),
     label: __("Justify Items", "premium-blocks-for-gutenberg"),
     showIcons: true
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.ResponsiveRadio, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.MultiButtonsControl, {
     choices: [{
       value: "wrap",
       tooltip: __("Wrap", "premium-blocks-for-gutenberg"),
@@ -16813,7 +16813,7 @@ const edit = props => {
     }),
     label: __("Wrap Items", "premium-blocks-for-gutenberg"),
     showIcons: true
-  }), ("wrap" === wrapItems[props.deviceType] || "wrap-reverse" === wrapItems[props.deviceType]) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.ResponsiveRadio, {
+  }), ("wrap" === wrapItems[props.deviceType] || "wrap-reverse" === wrapItems[props.deviceType]) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.MultiButtonsControl, {
     choices: [{
       value: "flex-start",
       tooltip: __("Flex Start", "ultimate-addons-for-gutenberg"),
