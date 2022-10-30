@@ -13,6 +13,13 @@ $pbBorderColor: #e1e1e1;
     border: 1px solid $pbBorderColor;
     text-align: center;
 
+    .premium-pricing-table__title_wrap{
+        margin-bottom: 20px;
+        .premium-pricing-table__title{
+            margin: 0px;
+        }
+    }
+
     .premium-pricing-table__button_link {
         padding: 10px;
         display: block;
@@ -31,9 +38,10 @@ $pbBorderColor: #e1e1e1;
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
 
         span {
+            align-self: center;
             &:nth-child(-n + 3) {
                 line-height: 1em;
             }
@@ -42,6 +50,14 @@ $pbBorderColor: #e1e1e1;
         strike {
             line-height: 1em;
         }
+    }
+
+    .premium-pricing-table__list_wrap{
+        margin-bottom: 20px;
+    }
+
+    .premium-pricing-table__desc{
+        margin-bottom: 30px;
     }
 
     .premium-pricing-table__button {
@@ -104,6 +120,7 @@ $pbBorderColor: #e1e1e1;
         padding: 0;
         list-style-position: inside;
         text-align: center;
+        line-height: 45px;
     }
 
     .premium-pricing-table__list.list-check {
