@@ -486,7 +486,7 @@ function Edit(props) {
                 {...useBlockProps({
                     className: classnames(
                         className,
-                        `premium-video-box ${blockId} video-overlay-${overlay} premium-aspect-ratio-${ratioValue}`,
+                        `premium-video-box ${blockId} `,
                         {
                             " premium-desktop-hidden": hideDesktop,
                             " premium-tablet-hidden": hideTablet,
@@ -494,15 +494,17 @@ function Edit(props) {
                         }
                     ),
                 })}
-                ref={videoboxRef}
-                data-type={videoType}
                 style={{
                     ...borderCss(boxBorder, props.deviceType),
                     boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical ||
                         0}px ${boxShadow.blur || 10}px ${boxShadow.color} ${boxShadow.position}`,
                 }}
             >
-                <div >
+                <div
+                    className={`premium-video-box ${blockId} video-overlay-${overlay} premium-aspect-ratio-${ratioValue}`}
+                    ref={videoboxRef}
+                    data-type={videoType}
+                >
                     {
                         !videoURL && "self" !== videoType && (
                             <Placeholder

@@ -88,7 +88,7 @@ export default function save(props) {
         };
         styles[`.${blockId} .premium-title .style1 .premium-title-header`] = {
             'border-color': `${titleBorder.borderColor}!important`,
-            'border-style': `${titleBorder.borderType}`,
+            "border-style": `${titleBorder.borderType == 'none' ? 'none' : `${titleBorder.borderType} !important`}`,
             "border-left-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
             "border-left-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
             "border-left-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
