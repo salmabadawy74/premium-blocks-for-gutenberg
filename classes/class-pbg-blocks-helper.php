@@ -5093,7 +5093,6 @@ class PBG_Blocks_Helper {
 			$unique_id = rand( 100, 10000 );
 		}
 
-		// $style_unique_id = rand( 100, 10000 );
 		wp_enqueue_style(
 			'pbg-bulletList-style',
 			PREMIUM_BLOCKS_URL . 'assets/css/minified/bullet-list.min.css',
