@@ -82,7 +82,7 @@ const SingleOption = (props) => {
                 <div className="pb-block-details">
                     <h2 className="customize-control-title pb-control-title">
                         {props.params.label}
-                        {__(" Gutenberg Block", "premium-blocks-for-gutenberg")}
+                        {__(" Block", "premium-blocks-for-gutenberg")}
                     </h2>
                     <div className="pb-block-links">
                         <div className="live-preview customize-control-live-preview">
@@ -92,7 +92,7 @@ const SingleOption = (props) => {
                                 rel="noreferrer"
                             >
                                 {__(
-                                    "Live Preview",
+                                    "Preview",
                                     "premium-blocks-for-gutenberg"
                                 )}
                             </a>

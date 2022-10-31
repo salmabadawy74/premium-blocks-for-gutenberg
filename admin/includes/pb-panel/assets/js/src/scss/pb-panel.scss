@@ -110,6 +110,10 @@
                             padding: 10px 20px 10px 20px;
                             cursor: pointer;
                             border: 1px solid #cacaca;
+                            background-color: #f6f6f6;
+                            &:hover {
+                                background-color: #e8e8e8;
+                            }
                         }
                         .activate-blocks {
                             border-right: 0px;
@@ -182,7 +186,7 @@
 
     .pb-panel-nav a {
         color:#252525;
-        margin-right: 15px;
+        margin-right: 20px;
         text-decoration: none;
         &:hover,
         &:focus {
@@ -437,13 +441,12 @@
                 font-size: 13px;
 
                 .live-preview {
-                    margin-right: 5px;
 
                     &::after {
-                        content: "-";
-                        margin-left: 10px;
+                        content: ".";
+                        margin-left: 5px;
                         position: relative;
-                        top: 1px;
+                        top: -3px;
                     }
                 }
 
