@@ -5089,8 +5089,11 @@ class PBG_Blocks_Helper {
 		if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
 			$unique_id = $attributes['blockId'];
 		}
+		else {
+			$unique_id = rand( 100, 10000 );
+		}
 
-		$style_unique_id = rand( 100, 10000 );
+		// $style_unique_id = rand( 100, 10000 );
 		wp_enqueue_style(
 			'pbg-bulletList-style',
 			PREMIUM_BLOCKS_URL . 'assets/css/minified/bullet-list.min.css',
@@ -5098,7 +5101,7 @@ class PBG_Blocks_Helper {
 			PREMIUM_BLOCKS_VERSION,
 			'all'
 		);
-		$style_id = 'pbg-blocks-style' . esc_attr( $style_unique_id );
+		$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 		if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'bulletList', isset( $unique_id ) ) ) {
 			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
 			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
