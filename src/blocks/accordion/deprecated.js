@@ -862,9 +862,9 @@ const deprecated = [
                 },
                 titleTextShadow: {
                     'color': attributes?.titleStyles[0]?.titleShadowColor || '',
-                    'blur': attributes?.titleStyles[0]?.titleShadowBlur || '',
-                    'horizontal': attributes?.titleStyles[0]?.titleShadowHorizontal || '',
-                    'vertical': attributes?.titleStyles[0]?.titleShadowVertical || '',
+                    'blur': attributes?.titleStyles[0]?.titleShadowBlur,
+                    'horizontal': attributes?.titleStyles[0]?.titleShadowHorizontal,
+                    'vertical': attributes?.titleStyles[0]?.titleShadowVertical,
                 },
                 textShadow: {
                     'color': attributes?.textShadowColor,
