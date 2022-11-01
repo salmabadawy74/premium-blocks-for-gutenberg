@@ -7485,9 +7485,9 @@ const deprecated = [{
       },
       titleTextShadow: {
         'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl = attributes.titleStyles[0]) === null || _attributes$titleStyl === void 0 ? void 0 : _attributes$titleStyl.titleShadowColor) || '',
-        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl2 = attributes.titleStyles[0]) === null || _attributes$titleStyl2 === void 0 ? void 0 : _attributes$titleStyl2.titleShadowBlur) || '',
-        'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl3 = attributes.titleStyles[0]) === null || _attributes$titleStyl3 === void 0 ? void 0 : _attributes$titleStyl3.titleShadowHorizontal) || '',
-        'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl4 = attributes.titleStyles[0]) === null || _attributes$titleStyl4 === void 0 ? void 0 : _attributes$titleStyl4.titleShadowVertical) || ''
+        'blur': attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl2 = attributes.titleStyles[0]) === null || _attributes$titleStyl2 === void 0 ? void 0 : _attributes$titleStyl2.titleShadowBlur,
+        'horizontal': attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl3 = attributes.titleStyles[0]) === null || _attributes$titleStyl3 === void 0 ? void 0 : _attributes$titleStyl3.titleShadowHorizontal,
+        'vertical': attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl4 = attributes.titleStyles[0]) === null || _attributes$titleStyl4 === void 0 ? void 0 : _attributes$titleStyl4.titleShadowVertical
       },
       textShadow: {
         'color': attributes === null || attributes === void 0 ? void 0 : attributes.textShadowColor,
