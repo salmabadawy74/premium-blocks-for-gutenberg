@@ -12,7 +12,8 @@ import {
     PremiumShadow,
     WebfontLoader,
     PremiumTypo,
-    SpacingComponent
+    SpacingComponent,
+    ResponsiveRangeControl
 } from '@pbg/components';
 import { generateCss, generateBlockId } from '@pbg/helpers';
 import { compose } from '@wordpress/compose';
@@ -70,6 +71,7 @@ function PremiumAccordion(props) {
         titleTextShadow,
         titleBorder,
         titlePadding,
+        titleMargin,
         descPadding,
         descBorder,
         titleTypography,
@@ -170,6 +172,7 @@ function PremiumAccordion(props) {
             'border-top-right-radius': `${titleBorder?.borderRadius[props.deviceType].right || 0}px`,
             'border-bottom-left-radius': `${titleBorder?.borderRadius[props.deviceType].bottom || 0}px`,
             'border-bottom-right-radius': `${titleBorder?.borderRadius[props.deviceType].left || 0}px`,
+            'margin-bottom': `${titleMargin?.[props.deviceType]}${titleMargin?.unit}`,
         };
 
         styles[`.${blockId} .premium-accordion__icon_wrap`] = {
@@ -335,7 +338,26 @@ function PremiumAccordion(props) {
                                 onChange={(value) => setAttributes({ titleBorder: value })}
                             />
                             <hr />
-                            <SpacingComponent value={titlePadding} responsive={true} showUnits={true} label={__("Padding", 'premium-blocks-for-gutenberg')} onChange={(value) => setAttributes({ titlePadding: value })} />
+                            <ResponsiveRangeControl
+                                label={__("Rows Gap", "premium-blocks-for-gutenberg")}
+                                value={titleMargin}
+                                units={["px", "em", "%"]}
+                                onChange={(newValue) =>
+                                    setAttributes({
+                                        titleMargin: newValue,
+                                    })
+                                }
+                                showUnit={true}
+                                min={0}
+                                max={50}
+                            />
+                            <SpacingComponent
+                                label={__("Padding", 'premium-blocks-for-gutenberg')}
+                                value={titlePadding}
+                                responsive={true}
+                                showUnits={true}
+                                onChange={(value) => setAttributes({ titlePadding: value })}
+                            />
                         </PanelBody>
                         <PanelBody
                             title={__("Content", 'premium-blocks-for-gutenberg')}

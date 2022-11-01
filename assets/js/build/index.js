@@ -7292,6 +7292,12 @@ const deprecated = [{
     let newAttributes = {
       blockId: attributes.accordionId ? `premium-accordion-${attributes.accordionId.split('-')[6]}` : '',
       titleTag: attributes.titleTag || 'h4',
+      titleMargin: {
+        "Desktop": '',
+        "Tablet": '',
+        "Mobile": '',
+        "unit": "px"
+      },
       titlePadding: {
         "Desktop": {
           top: (attributes === null || attributes === void 0 ? void 0 : attributes.titlePaddingT) || '',
@@ -8208,6 +8214,7 @@ function PremiumAccordion(props) {
     titleTextShadow,
     titleBorder,
     titlePadding,
+    titleMargin,
     descPadding,
     descBorder,
     titleTypography,
@@ -8315,7 +8322,8 @@ function PremiumAccordion(props) {
       'border-top-left-radius': `${(titleBorder === null || titleBorder === void 0 ? void 0 : titleBorder.borderRadius[props.deviceType].top) || 0}px`,
       'border-top-right-radius': `${(titleBorder === null || titleBorder === void 0 ? void 0 : titleBorder.borderRadius[props.deviceType].right) || 0}px`,
       'border-bottom-left-radius': `${(titleBorder === null || titleBorder === void 0 ? void 0 : titleBorder.borderRadius[props.deviceType].bottom) || 0}px`,
-      'border-bottom-right-radius': `${(titleBorder === null || titleBorder === void 0 ? void 0 : titleBorder.borderRadius[props.deviceType].left) || 0}px`
+      'border-bottom-right-radius': `${(titleBorder === null || titleBorder === void 0 ? void 0 : titleBorder.borderRadius[props.deviceType].left) || 0}px`,
+      'margin-bottom': `${titleMargin === null || titleMargin === void 0 ? void 0 : titleMargin[props.deviceType]}${titleMargin === null || titleMargin === void 0 ? void 0 : titleMargin.unit}`
     };
     styles[`.${blockId} .premium-accordion__icon_wrap`] = {
       'background-color': arrowStyles[0].arrowBack,
@@ -8515,11 +8523,21 @@ function PremiumAccordion(props) {
     onChange: value => setAttributes({
       titleBorder: value
     })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.SpacingComponent, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.ResponsiveRangeControl, {
+    label: __("Rows Gap", "premium-blocks-for-gutenberg"),
+    value: titleMargin,
+    units: ["px", "em", "%"],
+    onChange: newValue => setAttributes({
+      titleMargin: newValue
+    }),
+    showUnit: true,
+    min: 0,
+    max: 50
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.SpacingComponent, {
+    label: __("Padding", 'premium-blocks-for-gutenberg'),
     value: titlePadding,
     responsive: true,
     showUnits: true,
-    label: __("Padding", 'premium-blocks-for-gutenberg'),
     onChange: value => setAttributes({
       titlePadding: value
     })
@@ -96857,7 +96875,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/accordion","title":"Accordion","category":"premium-blocks","attributes":{"blockId":{"type":"string"},"repeaterItems":{"type":"array"},"direction":{"type":"string","default":"ltr"},"titleTag":{"type":"string","default":"h4"},"titleStyles":{"type":"array","default":[{"titleColor":"","titleBack":""}]},"arrowStyles":{"type":"array","default":[{"arrowColor":"","arrowBack":"","arrowPos":"out","arrowPadding":"","arrowRadius":"","arrowSize":15}]},"descStyles":{"type":"array","default":[{"descAlign":"left","descColor":"","descBack":""}]},"descAlign":{"type":"object","default":{"Desktop":"left","Tablet":"left","Mobile":"left"}},"contentType":{"type":"string","default":"text"},"titleEditBorder":{"type":"boolean"},"titlePadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"descPadding":{"type":"object","default":{"Desktop":{"top":"15","right":"15","bottom":"15","left":"15"},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"titleBorder":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"descBorder":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"titleTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","fontFamily":"Default","textDecoration":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"descTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","fontFamily":"Default","textDecoration":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"titleTextShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"textShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""}}}');
+module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/accordion","title":"Accordion","category":"premium-blocks","attributes":{"blockId":{"type":"string"},"repeaterItems":{"type":"array"},"direction":{"type":"string","default":"ltr"},"titleTag":{"type":"string","default":"h4"},"titleStyles":{"type":"array","default":[{"titleColor":"","titleBack":""}]},"arrowStyles":{"type":"array","default":[{"arrowColor":"","arrowBack":"","arrowPos":"out","arrowPadding":"","arrowRadius":"","arrowSize":15}]},"descStyles":{"type":"array","default":[{"descAlign":"left","descColor":"","descBack":""}]},"descAlign":{"type":"object","default":{"Desktop":"left","Tablet":"left","Mobile":"left"}},"contentType":{"type":"string","default":"text"},"titleEditBorder":{"type":"boolean"},"titleMargin":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}},"titlePadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"descPadding":{"type":"object","default":{"Desktop":{"top":"15","right":"15","bottom":"15","left":"15"},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"titleBorder":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"descBorder":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"titleTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","fontFamily":"Default","textDecoration":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"descTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","fontFamily":"Default","textDecoration":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"titleTextShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"textShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""}}}');
 
 /***/ }),
 
