@@ -23,7 +23,7 @@ const FilterTabs = () => {
         { name: "Creative", slug: "creative" },
         { name: "Section", slug: "section" },
         { name: "Marketing", slug: "marketing" },
-        { name: "Theme", slug: "theme" }
+        { name: "Theme", slug: "theme" },
     ];
 
     useEffect(() => {
@@ -86,27 +86,24 @@ const FilterTabs = () => {
             if (response.status === 200) {
                 const { success, data } = await response.json();
                 if (success && data.values) {
-                    // createNotice("success", "Settings saved ", {
-                    //     isDismissible: true,
-                    //     type: "snackbar",
-                    // });
                     dispatch(
                         actions.createAlert({
-                          message: "Settings saved.",
-                          type: "success"
+                            message: "Settings saved.",
+                            type: "success",
                         })
-                      );
+                    );
                 }
             }
         } catch (e) {
             console.log(e);
             dispatch(
                 actions.createAlert({
-                  message: "An unknown error occurred.",
-                  type: "error"
+                    message: "An unknown error occurred.",
+                    type: "error",
                 })
-              );
+            );
         }
+        console.log(categoriesBlocks);
     };
 
     const DisableBlocks = async () => {
@@ -139,49 +136,53 @@ const FilterTabs = () => {
                 if (success && data.values) {
                     dispatch(
                         actions.createAlert({
-                          message: "Settings saved.",
-                          type: "success"
+                            message: "Settings saved.",
+                            type: "success",
                         })
-                      );
+                    );
                 }
             }
         } catch (e) {
             console.log(e);
             dispatch(
                 actions.createAlert({
-                  message: "An unknown error occurred.",
-                  type: "error"
+                    message: "An unknown error occurred.",
+                    type: "error",
                 })
-              );
+            );
         }
     };
     return (
         <>
-        <nav className="pb-filter-tabs" aria-label="Tabs">
-            {tabs.map((tab) => (
-                <Link
-                    to={{
-                        search: `?page=pb_panel&path=blocks&filterTab=${tab.slug}`,
-                    }}
-                    key={tab.name}
-                    className={classNames("pb-filter-tab", {
-                        active: activeBlocksFilterTab === tab.slug,
-                    })}
-                    onClick={() => {
-                        dispatch({
-                            type: "blockStatues/updateBlocksFilter",
-                            payload: tab.slug,
-                        });
-                    }}
-                >
-                    {tab.name}
-                </Link>
-            ))}
-        </nav>
-        <div class="pb-activate-deactivate-buttons">
-            <button className="activate-blocks" onClick={EnableBlocks}>{__("Activate All", "premium-blocks-for-gutenberg")}</button>
-            <button className="deactivate-blocks" onClick={DisableBlocks}>{__("Deactivate All", "premium-blocks-for-gutenberg")}</button>
-        </div>
+            <nav className="pb-filter-tabs" aria-label="Tabs">
+                {tabs.map((tab) => (
+                    <Link
+                        to={{
+                            search: `?page=pb_panel&path=blocks&filterTab=${tab.slug}`,
+                        }}
+                        key={tab.name}
+                        className={classNames("pb-filter-tab", {
+                            active: activeBlocksFilterTab === tab.slug,
+                        })}
+                        onClick={() => {
+                            dispatch({
+                                type: "blockStatues/updateBlocksFilter",
+                                payload: tab.slug,
+                            });
+                        }}
+                    >
+                        {tab.name}
+                    </Link>
+                ))}
+            </nav>
+            <div class="pb-activate-deactivate-buttons">
+                <button className="activate-blocks" onClick={EnableBlocks}>
+                    {__("Activate All", "premium-blocks-for-gutenberg")}
+                </button>
+                <button className="deactivate-blocks" onClick={DisableBlocks}>
+                    {__("Deactivate All", "premium-blocks-for-gutenberg")}
+                </button>
+            </div>
         </>
     );
 };
