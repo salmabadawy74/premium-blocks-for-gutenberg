@@ -1117,6 +1117,12 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding', $css->render_spacing( $title_padding['Desktop'], $title_padding['unit'] ) );
 		}
 
+		if ( isset( $attr['titleMargin'] ) ) {
+			$title_margin = $attr['titleMargin'];
+			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
+			$css->add_property( 'margin-bottom', $css->render_range( $title_margin, 'Desktop' ) );
+		}
+
 		if ( isset( $attr['titleBorder'] ) ) {
 			$title_border        = $attr['titleBorder'];
 			$title_border_width  = $title_border['borderWidth'];
@@ -1173,6 +1179,12 @@ class PBG_Blocks_Helper {
 			$css->add_property( 'padding', $css->render_spacing( $title_padding['Tablet'], $title_padding['unit'] ) );
 		}
 
+		if ( isset( $attr['titleMargin'] ) ) {
+			$title_margin = $attr['titleMargin'];
+			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
+			$css->add_property( 'margin-bottom', $css->render_range( $title_margin, 'Tablet' ) );
+		}
+
 		if ( isset( $attr['titleBorder'] ) ) {
 			$title_border        = $attr['titleBorder'];
 			$title_border_width  = $title_border['borderWidth'];
@@ -1227,6 +1239,12 @@ class PBG_Blocks_Helper {
 			$title_padding = $attr['titlePadding'];
 			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
 			$css->add_property( 'padding', $css->render_spacing( $title_padding['Mobile'], $title_padding['unit'] ) );
+		}
+
+		if ( isset( $attr['titleMargin'] ) ) {
+			$title_margin = $attr['titleMargin'];
+			$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
+			$css->add_property( 'margin-bottom', $css->render_range( $title_margin, 'Mobile' ) );
 		}
 
 		if ( isset( $attr['titleBorder'] ) ) {

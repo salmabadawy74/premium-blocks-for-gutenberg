@@ -66,6 +66,15 @@
         "titleEditBorder": {
             "type": "boolean"
         },
+        "titleMargin": {
+            "type": "object",
+            "default": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            }
+        },
         "titlePadding": {
             "type": "object",
             "default": {

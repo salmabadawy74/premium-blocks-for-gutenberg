@@ -669,6 +669,12 @@ const deprecated = [
             let newAttributes = {
                 blockId: attributes.accordionId ? `premium-accordion-${attributes.accordionId.split('-')[6]}` : '',
                 titleTag: attributes.titleTag || 'h4',
+                titleMargin: {
+                    "Desktop": '',
+                    "Tablet": '',
+                    "Mobile": '',
+                    "unit": "px"
+                },
                 titlePadding: {
                     "Desktop": {
                         top: attributes?.titlePaddingT || '',
