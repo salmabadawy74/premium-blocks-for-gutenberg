@@ -1053,48 +1053,6 @@ const edit = (props) => {
                             />
                         </PanelBody>
                         <PanelBody
-                            initialOpen={false}
-                            title={__(
-                                "Shape Divider",
-                                "premium-blocks-for-gutenberg"
-                            )}
-                        >
-                            <InsideTabs>
-                                <InsideTab
-                                    tabTitle={__(
-                                        "Top Shape",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                >
-                                    <Shape
-                                        shapeType="top"
-                                        value={shapeTop}
-                                        responsive
-                                        onChange={(val) =>
-                                            setAttributes({ shapeTop: val })
-                                        }
-                                    />
-                                </InsideTab>
-                                <InsideTab
-                                    tabTitle={__(
-                                        "Bottom Shape",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                >
-                                    <Shape
-                                        shapeType="bottom"
-                                        value={shapeBottom}
-                                        responsive
-                                        onChange={(val) =>
-                                            setAttributes({ shapeBottom: val })
-                                        }
-                                    />
-                                </InsideTab>
-                            </InsideTabs>
-                        </PanelBody>
-                    </InspectorTab>
-                    <InspectorTab key={"advance"}>
-                        <PanelBody
                             title={__(
                                 "Spacing",
                                 "premium-blocks-for-gutenberg"
@@ -1154,6 +1112,48 @@ const edit = (props) => {
                                 responsive={true}
                             />
                         </PanelBody>
+                        <PanelBody
+                            initialOpen={false}
+                            title={__(
+                                "Shape Divider",
+                                "premium-blocks-for-gutenberg"
+                            )}
+                        >
+                            <InsideTabs>
+                                <InsideTab
+                                    tabTitle={__(
+                                        "Top Shape",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                >
+                                    <Shape
+                                        shapeType="top"
+                                        value={shapeTop}
+                                        responsive
+                                        onChange={(val) =>
+                                            setAttributes({ shapeTop: val })
+                                        }
+                                    />
+                                </InsideTab>
+                                <InsideTab
+                                    tabTitle={__(
+                                        "Bottom Shape",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                >
+                                    <Shape
+                                        shapeType="bottom"
+                                        value={shapeBottom}
+                                        responsive
+                                        onChange={(val) =>
+                                            setAttributes({ shapeBottom: val })
+                                        }
+                                    />
+                                </InsideTab>
+                            </InsideTabs>
+                        </PanelBody>
+                    </InspectorTab>
+                    <InspectorTab key={"advance"}>
                         <PanelBody
                             title={__(
                                 "Animation",
