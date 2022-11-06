@@ -29,6 +29,7 @@ module.exports = function (grunt) {
         "trigger",
         "video-box",
         "search",
+        "price"
     ];
     const sassFiles = {};
     const minifyFiles = {};

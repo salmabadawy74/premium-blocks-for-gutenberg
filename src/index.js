@@ -25,6 +25,7 @@ import './blocks/search';
 import "./blocks/switcher-child";
 import "./blocks/content-switcher";
 import "./blocks/accordion-item";
+import "./blocks/price"
 window.PremiumOptionsSettings = {
     FontAwesomeEnabled,
 };
