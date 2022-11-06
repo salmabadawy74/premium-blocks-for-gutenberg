@@ -1,8 +1,9 @@
-import classnames from 'classnames'
-import { generateCss, filterJsCss } from '@pbg/helpers';
+import classnames from "classnames";
+import { generateCss, filterJsCss } from "@pbg/helpers";
 const { RichText, useBlockProps } = wp.blockEditor;
+const { Fragment } = wp.element;
 
-const save = props => {
+const save = (props) => {
     const { className } = props;
     const {
         btnText,
@@ -21,25 +22,36 @@ const save = props => {
         typography,
         textShadow,
         boxShadow,
-        blockId
+        blockId,
+        showIcon,
+        icon,
+        iconPosition,
+        iconColor,
+        iconHoverColor,
+        iconShadow,
     } = props.attributes;
 
     const loadStyles = () => {
         const styles = {};
 
         styles[`.${blockId} .premium-button:hover`] = {
-            'color': `${btnStyles[0].textHoverColor}!important`,
-            'border-color': `${btnStyles[0].borderHoverColor}!important`
+            color: `${btnStyles[0].textHoverColor}!important`,
+            "border-color": `${btnStyles[0].borderHoverColor}!important`,
+        };
+        styles[`.${blockId} .premium-button-icon:hover`] = {
+            color: `${iconHoverColor}!important`,
         };
         styles[`.${blockId}.premium-button__none .premium-button:hover`] = {
-            'background-color': `${btnStyles[0].backHoverColor}!important`
+            "background-color": `${btnStyles[0].backHoverColor}!important`,
         };
-        styles[`.${blockId}.premium-button__slide .premium-button::before, .${blockId}.premium-button__shutter .premium-button::before, .${blockId}.premium-button__radial .premium-button::before`] = {
-            'background-color': `${slideColor}`,
+        styles[
+            `.${blockId}.premium-button__slide .premium-button::before, .${blockId}.premium-button__shutter .premium-button::before, .${blockId}.premium-button__radial .premium-button::before`
+        ] = {
+            "background-color": `${slideColor}`,
         };
 
         return generateCss(styles);
-    }
+    };
 
     return (
         <div
@@ -56,27 +68,56 @@ const save = props => {
             })}
         >
             <style>{loadStyles()}</style>
-            <RichText.Content
-                tagName="a"
-                value={btnText}
-                className={`premium-button wp-block-button__link premium-button__${btnSize}`}
-                href={btnLink}
-                rel="noopener noreferrer"
-                target={btnTarget ? "_blank" : "_self"}
-                style={filterJsCss({
-                    color: btnStyles[0].textColor,
-                    backgroundColor: btnStyles[0].backColor,
-                    fontStyle: typography?.fontStyle,
-                    fontFamily: typography?.fontFamily,
-                    fontWeight: typography?.fontWeight,
-                    textDecoration: typography?.textDecoration,
-                    textTransform: typography?.textTransform,
-                    textShadow: `${textShadow?.horizontal}px ${textShadow?.vertical}px ${textShadow?.blur}px ${textShadow?.color}`,
-                    boxShadow: `${boxShadow?.horizontal}px ${boxShadow?.vertical}px ${boxShadow?.blur}px ${boxShadow?.color} ${boxShadow?.position}`,
-                    borderStyle: border?.borderType,
-                    borderColor: border?.borderColor,
-                })}
-            />
+            {React.createElement(
+                "div",
+                {
+                    className: `premium-button wp-block-button__link premium-button__${btnSize} premium-button__${iconPosition}`,
+                    style: {
+                        backgroundColor: btnStyles[0].backColor,
+                        boxShadow: `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`,
+                        borderStyle: border?.borderType,
+                        borderColor: border?.borderColor,
+                    },
+                },
+                [
+                    <Fragment>
+                        {showIcon && iconPosition == "before" && (
+                            <i
+                                className={`premium-button-icon ${icon}`}
+                                style={filterJsCss({
+                                    color: iconColor,
+                                    textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`,
+                                })}
+                            ></i>
+                        )}
+                        <RichText.Content
+                            tagName="a"
+                            value={btnText}
+                            href={btnLink}
+                            rel="noopener noreferrer"
+                            target={btnTarget ? "_blank" : "_self"}
+                            style={filterJsCss({
+                                color: btnStyles[0].textColor,
+                                fontStyle: typography?.fontStyle,
+                                fontFamily: typography?.fontFamily,
+                                fontWeight: typography?.fontWeight,
+                                textDecoration: typography?.textDecoration,
+                                textTransform: typography?.textTransform,
+                                textShadow: `${textShadow?.horizontal}px ${textShadow?.vertical}px ${textShadow?.blur}px ${textShadow?.color}`,
+                            })}
+                        />
+                        {showIcon && iconPosition == "after" && (
+                            <i
+                                className={`premium-button-icon ${icon}`}
+                                style={filterJsCss({
+                                    color: iconColor,
+                                    textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`,
+                                })}
+                            ></i>
+                        )}
+                    </Fragment>,
+                ]
+            )}
         </div>
     );
 };
