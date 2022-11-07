@@ -21,22 +21,18 @@ import {
     iconsList
 } from '@pbg/components';
 import {
-    borderCss,
     generateBlockId,
     generateCss,
-    paddingCss,
-    typographyCss,
-    marginCss
 } from '@pbg/helpers';
+import { compose } from "@wordpress/compose";
 
-
-const { withSelect } = wp.data
+const { withSelect, withDispatch } = wp.data
 
 const { __ } = wp.i18n
 
 const { useEffect, Fragment } = wp.element
 
-const { InspectorControls, RichText, useBlockProps } = wp.blockEditor
+const { InspectorControls, useBlockProps, useInnerBlocksProps } = wp.blockEditor
 
 const { PanelBody, SelectControl, TextControl, ToggleControl } = wp.components
 
@@ -191,84 +187,6 @@ const SortableList = SortableContainer(({
 function Edit(props) {
     const { setAttributes, className, clientId } = props;
 
-    useEffect(() => {
-        if (!props.attributes.classMigrate) {
-            setAttributes({
-                repeaterBulletList: [{
-                    id: 1,
-                    label: "Title #" + 1,
-                    image_icon: "icon",
-                    icon: "fa fa-arrow-circle-right",
-                    imageURL: "",
-                    imageID: '',
-                    icon_color: "",
-                    label_color: "",
-                    icon_hover_color: "",
-                    label_hover_color: "",
-                    icon_bg_color: "",
-                    icon_bg_hover_color: "",
-                    item_bg_color: "",
-                    item_bg_hover_color: "",
-                    link: "#",
-                    target: false,
-                    disableLink: false,
-                    showContent: false,
-                    showBulletIcon: true,
-                    linkTarget: false
-                },
-                {
-                    id: 2,
-                    label: "Title #" + 2,
-                    image_icon: "icon",
-                    icon: "fa fa-arrow-circle-right",
-                    imageURL: "",
-                    imageID: '',
-                    icon_color: "",
-                    label_color: "",
-                    icon_hover_color: "",
-                    label_hover_color: "",
-                    icon_bg_color: "",
-                    icon_bg_hover_color: "",
-                    item_bg_color: "",
-                    item_bg_hover_color: "",
-                    link: "#",
-                    target: false,
-                    disableLink: false,
-                    showContent: false,
-                    showBulletIcon: true,
-                    linkTarget: false
-                },
-                {
-                    id: 3,
-                    label: "Title #" + 3,
-                    image_icon: "icon",
-                    icon: "fa fa-arrow-circle-right",
-                    imageURL: "",
-                    imageID: '',
-                    icon_color: "",
-                    label_color: "",
-                    icon_hover_color: "",
-                    label_hover_color: "",
-                    icon_bg_color: "",
-                    icon_bg_hover_color: "",
-                    item_bg_color: "",
-                    item_bg_hover_color: "",
-                    link: "#",
-                    target: false,
-                    disableLink: false,
-                    showContent: false,
-                    showBulletIcon: true,
-                    linkTarget: false
-                }
-                ]
-            })
-        }
-        setAttributes({
-            blockId: "premium-bullet-list-" + generateBlockId(clientId)
-        });
-        setAttributes({ classMigrate: true });
-    }, []);
-
     const {
         blockId,
         layoutPos,
@@ -300,6 +218,39 @@ function Edit(props) {
         hideTablet,
         hideMobile,
     } = props.attributes
+
+    const INNER_BLOCKS_TEMPLATE = [
+        [
+            "premium/list-item",
+            {
+                title: __('Title #1', 'premium-blocks-for-gutenberg'),
+                icon: 'fa fa-arrow-circle-right',
+            }
+        ],
+        [
+            "premium/list-item",
+            {
+                title: __('Title #2', 'premium-blocks-for-gutenberg'),
+                icon: 'fa fa-arrow-circle-right',
+            }
+        ],
+        [
+            "premium/list-item",
+            {
+                title: __('Title #3', 'premium-blocks-for-gutenberg'),
+                icon: 'fa fa-arrow-circle-right',
+            }
+        ],
+    ];
+
+    const innerBlocksTemplate = props.attributes?.repeaterBulletList?.length ? props.insertOnlyAllowedBlock() : INNER_BLOCKS_TEMPLATE;
+
+    useEffect(() => {
+        setAttributes({
+            blockId: "premium-bullet-list-" + generateBlockId(clientId)
+        });
+        setAttributes({ classMigrate: true });
+    }, []);
 
     let loadTitleGoogleFonts;
 
@@ -365,7 +316,6 @@ function Edit(props) {
 
     const currentDevice = props.deviceType;
     const BulletIconSize = bulletIconFontSize?.[currentDevice];
-    const TitleSize = titleTypography ? titleTypography?.fontSize?.[currentDevice] : '';
     const DividerWidth = dividerWidth?.[currentDevice];
     const DividerHeight = dividerHeight?.[currentDevice];
 
@@ -618,6 +568,91 @@ function Edit(props) {
     const loadStyles = () => {
         const styles = {};
 
+        styles[`.${blockId} .premium-bullet-list__content-icon i, .${blockId} .premium-bullet-list__content-icon img`] = {
+            'overflow': 'hidden',
+            'font-size': `${BulletIconSize}${bulletIconFontSize.unit}`,
+            'color': bulletIconStyles[0].bulletIconColor,
+            'background-color': bulletIconStyles[0].bulletIconBackgroundColor,
+            'vertical-align': bulletAlign?.[currentDevice] == 'flex-start' ? 'top' : bulletAlign?.[currentDevice] == 'flex-end' ? 'bottom' : 'middle',
+            'border-style': bulletIconBorder?.borderType,
+            'border-top-width': `${bulletIconBorder?.borderWidth?.[currentDevice]?.top}px`,
+            'border-right-width': `${bulletIconBorder?.borderWidth?.[currentDevice]?.right}px`,
+            'border-bottom-width': `${bulletIconBorder?.borderWidth?.[currentDevice]?.bottom}px`,
+            'border-left-width': `${bulletIconBorder?.borderWidth?.[currentDevice]?.left}px`,
+            'border-color': `${bulletIconBorder?.borderColor}`,
+            'border-top-left-radius': `${bulletIconBorder?.borderRadius?.[currentDevice].top}px`,
+            'border-top-right-radius': `${bulletIconBorder?.borderRadius?.[currentDevice].right}px`,
+            'border-bottom-left-radius': `${bulletIconBorder?.borderRadius?.[currentDevice].bottom}px`,
+            'border-bottom-right-radius': `${bulletIconBorder?.borderRadius?.[currentDevice].left}px`,
+            'padding-top': `${bulletIconpadding?.[currentDevice]?.top}${bulletIconpadding?.unit}`,
+            'padding-right': `${bulletIconpadding?.[currentDevice]?.right}${bulletIconpadding?.unit}`,
+            'padding-bottom': `${bulletIconpadding?.[currentDevice]?.bottom}${bulletIconpadding?.unit}`,
+            'padding-left': `${bulletIconpadding?.[currentDevice]?.left}${bulletIconpadding?.unit}`,
+        };
+
+        styles[`.${blockId} .premium-bullet-list__wrapper`] = {
+            'border-style': generalBorder?.borderType,
+            'border-top-width': `${generalBorder?.borderWidth?.[currentDevice]?.top}px`,
+            'border-right-width': `${generalBorder?.borderWidth?.[currentDevice]?.right}px`,
+            'border-bottom-width': `${generalBorder?.borderWidth?.[currentDevice]?.bottom}px`,
+            'border-left-width': `${generalBorder?.borderWidth?.[currentDevice]?.left}px`,
+            'border-color': `${generalBorder?.borderColor}`,
+            'border-top-left-radius': `${generalBorder?.borderRadius?.[currentDevice].top}px`,
+            'border-top-right-radius': `${generalBorder?.borderRadius?.[currentDevice].right}px`,
+            'border-bottom-left-radius': `${generalBorder?.borderRadius?.[currentDevice].bottom}px`,
+            'border-bottom-right-radius': `${generalBorder?.borderRadius?.[currentDevice].left}px`,
+            'padding-top': `${generalpadding?.[currentDevice]?.top}${generalpadding?.unit}`,
+            'padding-right': `${generalpadding?.[currentDevice]?.right}${generalpadding?.unit}`,
+            'padding-bottom': `${generalpadding?.[currentDevice]?.bottom}${generalpadding?.unit}`,
+            'padding-left': `${generalpadding?.[currentDevice]?.left}${generalpadding?.unit}`,
+            'margin-top': `${generalmargin?.[currentDevice]?.top}${generalmargin?.unit}`,
+            'margin-right': `${generalmargin?.[currentDevice]?.right}${generalmargin?.unit}`,
+            'margin-bottom': `${generalmargin?.[currentDevice]?.bottom}${generalmargin?.unit}`,
+            'margin-left': `${generalmargin?.[currentDevice]?.left}${generalmargin?.unit}`,
+            'text-align': align?.[currentDevice],
+            'overflow': 'hidden',
+            'justify-content': align?.[currentDevice] == "right" ? "flex-end" : align?.[currentDevice],
+            'background-color': generalStyles[0].generalBackgroundColor,
+            'box-shadow': `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`,
+        };
+
+        styles[`.${blockId} .premium-bullet-list__content-wrap`] = {
+            'justify-content': align?.[currentDevice] == "right" ? align?.[currentDevice] : align?.[currentDevice],
+            'display': iconPosition == "before" ? "flex" : "inline-flex",
+            'flex-direction': iconPosition == "top" ? align?.[currentDevice] == "right" ? "column" : "column" : iconPosition == "after" ? 'row-reverse' : "",
+        };
+
+        styles[`.${blockId} .premium-bullet-list__icon-wrap`] = {
+            'align-self': bulletAlign?.[currentDevice] == 'left' ? 'flex-start' : bulletAlign?.[currentDevice] == 'right' ? 'flex-end' : 'center',
+            'text-align': bulletAlign?.[currentDevice],
+            'justify-content': bulletAlign?.[currentDevice],
+            'align-items': bulletAlign?.[currentDevice] == 'left' ? 'flex-start' : bulletAlign?.[currentDevice] == 'right' ? 'flex-end' : 'center',
+            'margin-top': `${bulletIconmargin?.[currentDevice]?.top}${bulletIconmargin?.unit}`,
+            'margin-right': `${bulletIconmargin?.[currentDevice]?.right}${bulletIconmargin?.unit}`,
+            'margin-bottom': `${bulletIconmargin?.[currentDevice]?.bottom}${bulletIconmargin?.unit}`,
+            'margin-left': `${bulletIconmargin?.[currentDevice]?.left}${bulletIconmargin?.unit}`,
+        };
+
+        styles[`.${blockId} .premium-bullet-list__label-wrap`] = {
+            'margin-top': `${titlemargin?.[currentDevice]?.top}${titlemargin?.unit}`,
+            'margin-right': `${titlemargin?.[currentDevice]?.right}${titlemargin?.unit}`,
+            'margin-bottom': `${titlemargin?.[currentDevice]?.bottom}${titlemargin?.unit}`,
+            'margin-left': `${titlemargin?.[currentDevice]?.left}${titlemargin?.unit}`,
+        };
+
+        styles[`.${blockId} .premium-bullet-list__label`] = {
+            'color': titleStyles[0].titleColor,
+            'text-shadow': `${titlesTextShadow.horizontal}px ${titlesTextShadow.vertical}px ${titlesTextShadow.blur}px ${titlesTextShadow.color}`,
+            'font-size': `${titleTypography?.fontSize?.[currentDevice]}${titleTypography?.fontSize?.unit}`,
+            'font-style': titleTypography?.fontStyle,
+            'font-family': titleTypography?.fontFamily,
+            'font-weight': titleTypography?.fontWeight,
+            'letter-spacing': `${titleTypography?.letterSpacing?.[currentDevice]}${titleTypography?.letterSpacing?.unit}`,
+            'text-decoration': titleTypography?.textDecoration,
+            'text-transform': titleTypography?.textTransform,
+            'line-height': `${titleTypography?.lineHeight?.[currentDevice]}${titleTypography?.lineHeight?.unit}`,
+        };
+
         styles[`.${blockId} .premium-bullet-list__content-icon i:hover`] = {
             'color': `${bulletIconStyles?.[0]?.bulletIconHoverColor}!important`,
             'background-color': `${bulletIconStyles?.[0]?.bulletIconHoverBackgroundColor}!important`
@@ -646,6 +681,18 @@ function Edit(props) {
 
         return generateCss(styles);
     }
+
+    const innerBlocksProps = useInnerBlocksProps({
+        style: {
+            textAlign: align?.[currentDevice],
+            justifyContent: align?.[currentDevice] == "right" ? "flex-end" : align?.[currentDevice],
+        },
+        className: classnames(`premium-bullet-list-${layoutPos}`, 'premium-bullet-list')
+    }, {
+        template: innerBlocksTemplate,
+        templateLock: false,
+        allowedBlocks: ["premium/list-item"],
+    });
 
     return (
         <Fragment>
@@ -988,131 +1035,60 @@ function Edit(props) {
                 })}
                 style={{ textAlign: align?.[props.deviceType] }}>
                 <style>{loadStyles()}</style>
-                <ul className={`premium-bullet-list-${layoutPos} premium-bullet-list`}
-                    style={{
-                        textAlign: align?.[currentDevice],
-                        justifyContent: align?.[currentDevice] == "right" ? "flex-end" : align?.[currentDevice],
-                    }}>
-                    {
-                        repeaterBulletList.map((icon, index) => {
-                            let image_icon_html = ""
-                            if (icon.showBulletIcon) {
-                                if (icon.image_icon == "icon") {
-                                    if (icon.icon) {
-                                        image_icon_html = <span className="premium-bullet-list__content-icon" key={index}>
-                                            <i
-                                                className={`${icon.icon}`}
-                                                style={{
-                                                    overflow: 'hidden',
-                                                    fontSize: `${BulletIconSize}${bulletIconFontSize.unit}`,
-                                                    color: bulletIconStyles[0].bulletIconColor,
-                                                    backgroundColor: bulletIconStyles[0].bulletIconBackgroundColor,
-                                                    verticalAlign: bulletAlign?.[currentDevice] == 'flex-start' ? 'top' : bulletAlign?.[currentDevice] == 'flex-end' ? 'bottom' : 'middle',
-                                                    ...borderCss(bulletIconBorder, currentDevice),
-                                                    ...paddingCss(bulletIconpadding, currentDevice)
-                                                }}
-                                            />
-                                        </span>
-                                    }
-                                } else {
-                                    if (icon.imageURL) {
-
-                                        image_icon_html = <img
-                                            src={icon.imageURL}
-                                            key={index}
-                                            style={{
-                                                overflow: 'hidden',
-                                                width: `${BulletIconSize}${bulletIconFontSize.unit}`,
-                                                height: `${BulletIconSize}${bulletIconFontSize.unit}`,
-                                                verticalAlign: bulletAlign?.[currentDevice] == 'flex-start' ? 'top' : bulletAlign?.[currentDevice] == 'flex-end' ? 'bottom' : 'middle',
-                                                ...borderCss(bulletIconBorder, currentDevice),
-                                                ...paddingCss(bulletIconpadding, currentDevice)
-                                            }}
-                                        />
-                                    }
-                                }
-                            }
-
-                            let target = (icon.linkTarget) ? "_blank" : "_self"
-
-                            return (
-                                <Fragment>
-                                    <li
-                                        className={classnames(
-                                            `premium-bullet-list-content${index}`,
-                                            "premium-bullet-list__wrapper"
-                                        )}
-                                        key={index}
-                                        target={target}
-                                        rel="noopener noreferrer"
-                                        style={{
-                                            textAlign: align?.[currentDevice],
-                                            overflow: 'hidden',
-                                            justifyContent: align?.[currentDevice] == "right" ? "flex-end" : align?.[currentDevice],
-                                            backgroundColor: generalStyles[0].generalBackgroundColor,
-                                            boxShadow: `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`,
-                                            ...marginCss(generalmargin, currentDevice),
-                                            ...paddingCss(generalpadding, currentDevice),
-                                            ...borderCss(generalBorder, currentDevice)
-                                        }}
-                                    >
-                                        <div className={`premium-bullet-list__content-wrap premium-bullet-list__content-wrap-${bulletAlign?.[currentDevice]}`} style={{
-                                            justifyContent: align?.[currentDevice] == "right" ? align?.[currentDevice] : align?.[currentDevice],
-                                            display: iconPosition == "before" ? "flex" : "inline-flex",
-                                            flexDirection: iconPosition == "top" ? align?.[currentDevice] == "right" ? "column" : "column" : iconPosition == "after" ? 'row-reverse' : "",
-                                        }}>
-                                            {icon.showBulletIcon && <span className={`premium-bullet-list__icon-wrap`}
-                                                style={{
-                                                    // overflow: "hidden",
-                                                    alignSelf: bulletAlign?.[currentDevice] == 'left' ? 'flex-start' : bulletAlign?.[currentDevice] == 'right' ? 'flex-end' : 'center',
-                                                    textAlign: bulletAlign?.[currentDevice],
-                                                    justifyContent: bulletAlign?.[currentDevice],
-                                                    alignItems: bulletAlign?.[currentDevice] == 'left' ? 'flex-start' : bulletAlign?.[currentDevice] == 'right' ? 'flex-end' : 'center',
-                                                    ...marginCss(bulletIconmargin, currentDevice),
-                                                }}
-                                            >{image_icon_html}</span>}
-                                            <div
-                                                className="premium-bullet-list__label-wrap"
-                                                style={{
-                                                    fontSize: `${TitleSize}${titleTypography?.fontSize.unit}`,
-                                                    fontFamily: titleTypography?.fontFamily,
-                                                    fontWeight: titleTypography?.fontWeight,
-                                                    ...marginCss(titlemargin, currentDevice),
-                                                }}
-                                            >
-                                                <RichText
-                                                    tagName="span"
-                                                    placeholder={__("Title Name")}
-                                                    value={icon.label}
-                                                    className='premium-bullet-list__label'
-                                                    onChange={(val) => changeLabel(val, index)}
-                                                    multiline={false}
-                                                    style={{
-                                                        color: titleStyles[0].titleColor,
-                                                        textShadow: `${titlesTextShadow.horizontal}px ${titlesTextShadow.vertical}px ${titlesTextShadow.blur}px ${titlesTextShadow.color}`,
-                                                        ...typographyCss(titleTypography, currentDevice)
-                                                    }}
-                                                />
-                                            </div>
-                                        </div>
-                                    </li>
-                                    {divider &&
-                                        <div className={`premium-bullet-list-divider-${layoutPos}`}></div>
-                                    }
-                                </Fragment>
-                            )
-                        })
-                    }
-                </ul>
+                <ul {...innerBlocksProps} />
                 {loadTitleGoogleFonts}
             </div>
         </Fragment>
     );
 }
 
-export default withSelect((select) => {
-    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
-    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+export default compose([
+    withSelect((select) => {
+        const { __experimentalGetPreviewDeviceType = null } =
+            select("core/edit-post");
+        let deviceType = __experimentalGetPreviewDeviceType
+            ? __experimentalGetPreviewDeviceType()
+            : null;
 
-    return { deviceType: deviceType }
-})(Edit)
+        return {
+            deviceType: deviceType,
+        };
+    }),
+    withDispatch((dispatch, ownProps, { select }) => {
+        return {
+            insertOnlyAllowedBlock() {
+                const { attributes, setAttributes } = ownProps;
+                const template = [];
+                const repeaterBulletList = [...attributes.repeaterBulletList];
+
+                attributes.repeaterBulletList.map((item, index) => {
+                    const block = [
+                        "premium/list-item",
+                        {
+                            title: item.label,
+                            iconType: item.image_icon,
+                            icon: item.icon,
+                            imageURL: item.imageURL,
+                            imageID: item.imageID,
+                            enableLink: !item.disableLink,
+                            openInNewTab: item.linkTarget,
+                            showIcon: item.showBulletIcon,
+                            linkURL: item.link,
+                        },
+                    ];
+
+                    template.push(block);
+
+                    repeaterBulletList.splice(index - 1, 1);
+
+                    if (repeaterBulletList.length === 0) {
+                        setAttributes({ repeaterBulletList: [] });
+                        return;
+                    }
+                });
+
+                return template;
+            },
+        };
+    }),
+])(Edit);

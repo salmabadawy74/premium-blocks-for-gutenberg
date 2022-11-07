@@ -50,57 +50,22 @@ function PremiumPricingTable(props) {
     } = props.attributes;
 
     const INNER_BLOCKS_TEMPLATE = [
-        [
-            "premium/heading",
-            {
-                title: __("Pricing Table", "premium-blocks-for-gutenberg"),
-                titleTag: "h2",
-                style: "none"
-            },
-        ],
-        [
-            "premium/price",
-        ],
-        [
-            "premium/bullet-list",
-            {
-                repeaterBulletList: [
-                    {
-                        "id": 1,
-                        "label": __("List Item #1", "premium-blocks-for-gutenberg"),
-                        "image_icon": "icon",
-                        "icon": "fa fa-arrow-circle-right",
-                        "imageURL": "",
-                        "imageID": "",
-                        "icon_color": "",
-                        "label_color": "",
-                        "icon_hover_color": "",
-                        "label_hover_color": "",
-                        "icon_bg_color": "",
-                        "icon_bg_hover_color": "",
-                        "item_bg_color": "",
-                        "item_bg_hover_color": "",
-                        "link": "#",
-                        "target": false,
-                        "disableLink": false,
-                        "showContent": false,
-                        "showBulletIcon": true,
-                        "linkTarget": false
-                    },
-                ],
-                align: {
-                    "Desktop": "center",
-                    "Tablet": "",
-                    "Mobile": ""
-                }
-            },
-        ],
-        [
-            "premium/button",
-            {
-                btnText: __("Get Started", "premium-blocks-for-gutenberg"),
-            },
-        ],
+        ["premium/heading", {
+            title: __("Pricing Table", "premium-blocks-for-gutenberg"),
+            titleTag: "h2",
+            style: "none"
+        }],
+        ["premium/price"],
+        ["premium/bullet-list", {
+            align: {
+                "Desktop": "center",
+                "Tablet": "",
+                "Mobile": ""
+            }
+        }],
+        ["premium/button", {
+            btnText: __("Get Started", "premium-blocks-for-gutenberg"),
+        }],
     ];
 
     const loadStyles = () => {
