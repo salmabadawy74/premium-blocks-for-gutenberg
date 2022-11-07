@@ -30,22 +30,16 @@ function PremiumPricingTable(props) {
     }, []);
 
     const {
-        descChecked,
         badgeChecked,
         blockId,
         hideDesktop,
         hideTablet,
         hideMobile,
-        descStyles,
-        buttonStyles,
         badgeStyles,
         tableStyles,
         tableBoxShadow,
         tableBorder,
         tablePadding,
-        descriptionPadding,
-        descriptionMargin,
-        descTypography,
         badgeTypography,
     } = props.attributes;
 
@@ -63,81 +57,12 @@ function PremiumPricingTable(props) {
                 "Mobile": ""
             }
         }],
+        ["premium/text", {
+            text: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit", "premium-blocks-for-gutenberg"),
+        }],
         ["premium/button", {
             btnText: __("Get Started", "premium-blocks-for-gutenberg"),
         }],
-    ];
-
-    const loadStyles = () => {
-        const styles = {};
-
-        styles[`.${blockId} .premium-pricing-table__button_link:hover`] = {
-            'color': `${buttonStyles?.[0]?.btnHoverColor}!important`,
-            'background': `${buttonStyles?.[0]?.btnHoverBack}!important`
-        };
-
-        return generateCss(styles);
-    }
-
-    const ALIGNS = [
-        {
-            value: "flex-start",
-            label: __("Top", 'premium-blocks-for-gutenberg')
-        },
-        {
-            value: "center",
-            label: __("Middle", 'premium-blocks-for-gutenberg')
-        },
-        {
-            value: "flex-end",
-            label: __("Bottom", 'premium-blocks-for-gutenberg')
-        }
-    ];
-
-    const PRICE = [
-        {
-            value: "slash",
-            label: __("Slashed Price", 'premium-blocks-for-gutenberg')
-        },
-        {
-            value: "curr",
-            label: __("Currency", 'premium-blocks-for-gutenberg')
-        },
-        {
-            value: "price",
-            label: __("Price", 'premium-blocks-for-gutenberg')
-        },
-        {
-            value: "divider",
-            label: __("Divider", 'premium-blocks-for-gutenberg')
-        },
-        {
-            value: "duration",
-            label: __("Duration", 'premium-blocks-for-gutenberg')
-        }
-    ];
-
-    const TYPE = [
-        {
-            value: "none",
-            label: __("None", 'premium-blocks-for-gutenberg')
-        },
-        {
-            value: "check",
-            label: __("Check Mark", 'premium-blocks-for-gutenberg')
-        },
-        {
-            value: "disc",
-            label: __("Filled Circle", 'premium-blocks-for-gutenberg')
-        },
-        {
-            value: "circle",
-            label: __("Outline Circle", 'premium-blocks-for-gutenberg')
-        },
-        {
-            value: "square",
-            label: __("Square", 'premium-blocks-for-gutenberg')
-        }
     ];
 
     const POSITION = [
@@ -151,19 +76,8 @@ function PremiumPricingTable(props) {
         }
     ];
 
-    let loadDescriptionGoogleFonts;
     let loadBadgeGoogleFonts;
 
-    if (descTypography.fontFamily !== "Default") {
-        const descConfig = {
-            google: {
-                families: [descTypography.fontFamily],
-            }
-        };
-        loadDescriptionGoogleFonts = (
-            <WebfontLoader config={descConfig}></WebfontLoader>
-        );
-    }
     if (badgeTypography.fontFamily !== "Default") {
         const badgeConfig = {
             google: {
@@ -195,16 +109,6 @@ function PremiumPricingTable(props) {
         setAttributes({ tableStyles: newUpdate });
     }
 
-    const saveDescriptionStyle = (value) => {
-        const newUpdate = descStyles.map((item, indexDesc) => {
-            if (0 === indexDesc) {
-                item = { ...item, ...value };
-            }
-            return item;
-        });
-        setAttributes({ descStyles: newUpdate });
-    }
-
     return (
         <Fragment>
             <InspectorControls key={"inspector"}>
@@ -215,11 +119,6 @@ function PremiumPricingTable(props) {
                             className="premium-panel-body"
                             initialOpen={true}
                         >
-                            <ToggleControl
-                                label={__("Description", 'premium-blocks-for-gutenberg')}
-                                checked={descChecked}
-                                onChange={newValue => setAttributes({ descChecked: newValue })}
-                            />
                             <ToggleControl
                                 label={__("Badge", 'premium-blocks-for-gutenberg')}
                                 checked={badgeChecked}
@@ -300,33 +199,6 @@ function PremiumPricingTable(props) {
                             <hr />
                             <SpacingComponent value={tablePadding} responsive={true} showUnits={true} label={__("Padding", 'premium-blocks-for-gutenberg')} onChange={(value) => setAttributes({ tablePadding: value })} />
                         </PanelBody>
-                        {descChecked && (
-                            <PanelBody
-                                title={__("Description", 'premium-blocks-for-gutenberg')}
-                                className="premium-panel-body"
-                                initialOpen={false}
-                            >
-                                <PremiumTypo
-                                    value={descTypography}
-                                    onChange={newValue => setAttributes({ descTypography: newValue })}
-                                />
-                                <AdvancedPopColorControl
-                                    label={__("Text Color", 'premium-blocks-for-gutenberg')}
-                                    colorValue={descStyles[0].descColor}
-                                    colorDefault={''}
-                                    onColorChange={newColor => saveDescriptionStyle({ descColor: newColor })}
-                                />
-                                <AdvancedPopColorControl
-                                    label={__("Background Color", 'premium-blocks-for-gutenberg')}
-                                    colorValue={descStyles[0].descBack}
-                                    colorDefault={''}
-                                    onColorChange={newColor => saveDescriptionStyle({ descBack: newColor })}
-                                />
-                                <hr />
-                                <SpacingComponent value={descriptionMargin} responsive={true} showUnits={true} label={__("Margin", 'premium-blocks-for-gutenberg')} onChange={(value) => setAttributes({ descriptionMargin: value })} />
-                                <SpacingComponent value={descriptionPadding} responsive={true} showUnits={true} label={__("Padding", 'premium-blocks-for-gutenberg')} onChange={(value) => setAttributes({ descriptionPadding: value })} />
-                            </PanelBody>
-                        )}
                         {badgeChecked && (
                             <PanelBody
                                 title={__("Badge", 'premium-blocks-for-gutenberg')}
@@ -399,30 +271,14 @@ function PremiumPricingTable(props) {
                                 borderTopWidth: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeSize + "px" : 0,
                             }}
                         >
-                            <RichText
-                                tagName='span'
-                                onChange={newText => saveBadgeStyles({ badgeText: newText })}
-                                placeholder={__("Popular", 'premium-blocks-for-gutenberg')}
-                                value={badgeStyles[0].badgeText}
-                                style={{
-                                    ...typographyCss(badgeTypography, props.deviceType),
-                                    color: badgeStyles[0].badgeColor,
-                                    width: badgeStyles[0].badgeWidth + "px",
-                                    top: badgeStyles[0].badgeTop + "px",
-                                    left: "left" === badgeStyles[0].badgePos ? badgeStyles[0].badgeHorizontal + "px" : "auto",
-                                    right: "right" === badgeStyles[0].badgePos ? badgeStyles[0].badgeHorizontal + "px" : "auto",
-                                }}
-                                keepPlaceholderOnFocus
-                            />
                         </div>
                     </div>
                 )}
                 <InnerBlocks
                     template={INNER_BLOCKS_TEMPLATE}
                     templateLock={false}
-                    allowedBlocks={["premium/heading", "premium/bullet-list", "premium/button"]}
+                    allowedBlocks={["premium/heading", "premium/bullet-list", "premium/button", "premium/text", "premium/price"]}
                 />
-                {loadDescriptionGoogleFonts}
                 {loadBadgeGoogleFonts}
             </div>
         </Fragment>

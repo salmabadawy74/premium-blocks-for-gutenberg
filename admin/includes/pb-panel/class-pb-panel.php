@@ -130,6 +130,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 				'breadcrumbs'      => true,
 				'content-switcher' => true,
 				'price'            => true,
+				'text'             => true,
 			);
 
 			return array_merge( $default_options, $options );

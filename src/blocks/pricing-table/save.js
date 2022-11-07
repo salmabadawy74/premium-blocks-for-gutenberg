@@ -7,34 +7,18 @@ const save = props => {
     const { className } = props;
 
     const {
-        desc,
-        descChecked,
         badgeChecked,
         blockId,
         hideDesktop,
         hideTablet,
         hideMobile,
-        descStyles,
         buttonStyles,
         badgeStyles,
         tableStyles,
         tableBoxShadow,
         tableBorder,
-        descTypography,
         badgeTypography,
     } = props.attributes;
-
-
-    const loadStyles = () => {
-        const styles = {};
-
-        styles[`.${blockId} .premium-pricing-table__button_link:hover`] = {
-            'color': `${buttonStyles?.[0]?.btnHoverColor}!important`,
-            'background': `${buttonStyles?.[0]?.btnHoverBack}!important`
-        };
-
-        return generateCss(styles);
-    }
 
     return (
         <div
@@ -89,24 +73,6 @@ const save = props => {
                             })}
                         />
                     </div>
-                </div>
-            )}
-            {descChecked && (
-                <div className={`premium-pricing-table__desc_wrap`}>
-                    <RichText.Content
-                        tagName="p"
-                        className={`premium-pricing-table__desc`}
-                        value={desc}
-                        style={filterJsCss({
-                            color: descStyles[0].descColor,
-                            background: descStyles[0].descBack,
-                            fontStyle: descTypography?.fontStyle,
-                            fontFamily: descTypography?.fontFamily,
-                            fontWeight: descTypography?.fontWeight,
-                            textDecoration: descTypography?.textDecoration,
-                            textTransform: descTypography?.textTransform,
-                        })}
-                    />
                 </div>
             )}
             <InnerBlocks.Content />

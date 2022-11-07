@@ -420,6 +420,8 @@ class PBG_Blocks_Helper {
 				register_block_premium_search();
 			} elseif ( $slug === 'price' ) {
 				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/price.php';
+			} elseif ( $slug === 'text' ) {
+				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/text.php';
 			}
 		}
 
