@@ -10,7 +10,8 @@ import {
     ResponsiveSingleRangeControl,
     WebfontLoader,
     PremiumShadow,
-    PremiumTypo
+    PremiumTypo,
+    AdvancedRangeControl
 } from '@pbg/components';
 
 const { withSelect } = wp.data
@@ -119,6 +120,7 @@ function PremiumPricingTable(props) {
                             className="premium-panel-body"
                             initialOpen={true}
                         >
+                            <AdvancedRangeControl label={__("Translate X", "premium-blocks-for-gutenberg")} value={{ from: 0, to: 1 }} labels={[__("From", 'premium-blocks-for-gutenberg'), __("To", 'premium-blocks-for-gutenberg')]} step={0.1} min={0} max={3} onChange={(value) => console.log(value)} />
                             <ToggleControl
                                 label={__("Badge", 'premium-blocks-for-gutenberg')}
                                 checked={badgeChecked}

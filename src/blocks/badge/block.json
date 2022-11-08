@@ -1,0 +1,383 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 2,
+    "name": "premium/badge",
+    "title": "Badge",
+    "category": "premium-blocks",
+    "description": "Badge Description.",
+    "keywords": ["badge-keyword"],
+    "textdomain": "default",
+    "attributes": {
+        "blockId": {
+            "type": "string"
+        },
+        "hideDesktop": {
+            "type": "boolean",
+            "default": false
+        },
+        "hideTablet": {
+            "type": "boolean",
+            "default": false
+        },
+        "hideMobile": {
+            "type": "boolean",
+            "default": false
+        },
+        "typography": {
+            "type": "object",
+            "default": {
+                "fontWeight": "400",
+                "fontStyle": "",
+                "letterSpacing": {
+                    "Desktop": "",
+                    "Tablet": "",
+                    "Mobile": "",
+                    "unit": "px"
+                },
+                "fontFamily": "Default",
+                "lineHeight": {
+                    "Desktop": "",
+                    "Tablet": "",
+                    "Mobile": "",
+                    "unit": "px"
+                },
+                "textDecoration": "",
+                "textTransform": "",
+                "fontSize": {
+                    "Desktop": "",
+                    "Tablet": "",
+                    "Mobile": "",
+                    "unit": "px"
+                }
+            }
+        },
+        "background": {
+            "type": "object",
+            "default": {
+                "backgroundType": "",
+                "backgroundColor": "",
+                "backgroundImageID": "",
+                "backgroundImageURL": "",
+                "backgroundPosition": "center center",
+                "backgroundRepeat": "repeat",
+                "backgroundSize": "auto",
+                "fixed": false,
+                "gradientLocationOne": "0",
+                "gradientColorTwo": "",
+                "gradientLocationTwo": "100",
+                "gradientAngle": "180",
+                "gradientPosition": "center center",
+                "gradientType": "linear"
+            }
+        },
+        "padding": {
+            "type": "object",
+            "default": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "unit": "px"
+            }
+        },
+        "border": {
+            "type": "object",
+            "default": {
+                "borderColor": "",
+                "borderType": "none",
+                "borderRadius": {
+                    "Desktop": {
+                        "top": "",
+                        "right": "",
+                        "bottom": "",
+                        "left": ""
+                    },
+                    "Tablet": {
+                        "top": "",
+                        "right": "",
+                        "bottom": "",
+                        "left": ""
+                    },
+                    "Mobile": {
+                        "top": "",
+                        "right": "",
+                        "bottom": "",
+                        "left": ""
+                    }
+                },
+                "borderWidth": {
+                    "Desktop": {
+                        "top": "",
+                        "right": "",
+                        "bottom": "",
+                        "left": ""
+                    },
+                    "Tablet": {
+                        "top": "",
+                        "right": "",
+                        "bottom": "",
+                        "left": ""
+                    },
+                    "Mobile": {
+                        "top": "",
+                        "right": "",
+                        "bottom": "",
+                        "left": ""
+                    }
+                }
+            }
+        },
+        "boxShadow": {
+            "type": "object",
+            "default": {
+                "color": "undefined",
+                "blur": "10",
+                "horizontal": "0",
+                "vertical": "0",
+                "position": ""
+            }
+        },
+        "textShadow": {
+            "type": "object",
+            "default": {
+                "color": "undefined",
+                "blur": "10",
+                "horizontal": "0",
+                "vertical": "0",
+                "position": ""
+            }
+        },
+        "align": {
+            "type": "object",
+            "default": {
+                "Desktop": "left",
+                "Tablet": "left",
+                "Mobile": "left"
+            }
+        },
+        "display": {
+            "type": "string",
+            "default": "inline"
+        },
+        "iconColor": {
+            "type": "string",
+            "default": ""
+        },
+        "color": {
+            "type": "string",
+            "default": ""
+        },
+        "backgroundColor": {
+            "type": "string",
+            "default": ""
+        },
+        "text": {
+            "type": "string"
+        },
+        "style": {
+            "type": "string",
+            "default": "stripe"
+        },
+        "enableIcon": {
+            "type": "boolean",
+            "default": false
+        },
+        "iconType": {
+            "type": "string"
+        },
+        "icon": {
+            "type": "string"
+        },
+        "imageID": {
+            "type": "string"
+        },
+        "imageURL": {
+            "type": "string"
+        },
+        "jsonURL": {
+            "type": "string"
+        },
+        "loop": {
+            "type": "boolean",
+            "default": true
+        },
+        "reverse": {
+            "type": "boolean",
+            "default": false
+        },
+        "floatingEffects": {
+            "type": "boolean",
+            "default": false
+        },
+        "rotate": {
+            "type": "boolean",
+            "default": false
+        },
+        "translate": {
+            "type": "boolean",
+            "default": false
+        },
+        "opacity": {
+            "type": "boolean",
+            "default": false
+        },
+        "blur": {
+            "type": "boolean",
+            "default": false
+        },
+        "grayscale": {
+            "type": "boolean",
+            "default": false
+        },
+        "translateX": {
+            "type": "object",
+            "default": {
+                "from": -5,
+                "to": 5,
+                "unit": "px"
+            }
+        },
+        "translateY": {
+            "type": "object",
+            "default": {
+                "from": -5,
+                "to": 5,
+                "unit": "px"
+            }
+        },
+        "translateSpeed": {
+            "type": "number",
+            "default": 1
+        },
+        "rotateX": {
+            "type": "object",
+            "default": {
+                "from": 0,
+                "to": 45,
+                "unit": "deg"
+            }
+        },
+        "rotateY": {
+            "type": "object",
+            "default": {
+                "from": 0,
+                "to": 45,
+                "unit": "deg"
+            }
+        },
+        "rotateZ": {
+            "type": "object",
+            "default": {
+                "from": 0,
+                "to": 45,
+                "unit": "deg"
+            }
+        },
+        "rotateSpeed": {
+            "type": "number",
+            "default": 1
+        },
+        "opacityValue": {
+            "type": "object",
+            "default": {
+                "from": 0,
+                "to": 50,
+                "unit": "%"
+            }
+        },
+        "opacitySpeed": {
+            "type": "number",
+            "default": 1
+        },
+        "blurValue": {
+            "type": "object",
+            "default": {
+                "from": 0,
+                "to": 1,
+                "unit": "px"
+            }
+        },
+        "blurSpeed": {
+            "type": "number",
+            "default": 1
+        },
+        "grayscaleValue": {
+            "type": "object",
+            "default": {
+                "from": 0,
+                "to": 50,
+                "unit": "%"
+            }
+        },
+        "grayscaleSpeed": {
+            "type": "number",
+            "default": 1
+        },
+        "disableOnSafari": {
+            "type": "boolean",
+            "default": false
+        },
+        "hPosition": {
+            "type": "string",
+            "default": "right"
+        },
+        "vPosition": {
+            "type": "string",
+            "default": "top"
+        },
+        "vOffset": {
+            "type": "object",
+            "default": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            }
+        },
+        "hOffset": {
+            "type": "object",
+            "default": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            }
+        },
+        "rotateDegrees": {
+            "type": "object",
+            "default": {
+                "Desktop": 0,
+                "Tablet": 0,
+                "Mobile": 0,
+                "unit": "px"
+            }
+        },
+        "size": {
+            "type": "object",
+            "default": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            }
+        },
+        "zIndex": {
+            "type": "number",
+            "default": 5
+        }
+    }
+}

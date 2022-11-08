@@ -109,7 +109,7 @@ function Edit({ clientId, attributes, setAttributes, context }) {
                                     onChange={newType => setAttributes({ iconType: newType })}
                                 />
                                 {iconType === 'icon' && (
-                                    <div className='pbgpro-fb-from premium-blocks__base-control'>
+                                    <div className='premium-blocks__base-control'>
                                         <span className='premium-control-title'>{__("Icon", 'premium-blocks-for-gutenberg')}</span>
                                         <FontIconPicker
                                             icons={iconsList}

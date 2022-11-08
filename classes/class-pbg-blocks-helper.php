@@ -422,6 +422,8 @@ class PBG_Blocks_Helper {
 				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/price.php';
 			} elseif ( $slug === 'text' ) {
 				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/text.php';
+			} elseif ( $slug === 'badge' ) {
+				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/badge.php';
 			}
 		}
 

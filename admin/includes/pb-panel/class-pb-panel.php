@@ -131,6 +131,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 				'content-switcher' => true,
 				'price'            => true,
 				'text'             => true,
+				'badge'            => true,
 			);
 
 			return array_merge( $default_options, $options );
