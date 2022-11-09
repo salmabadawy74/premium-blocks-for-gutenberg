@@ -88,7 +88,7 @@ const FilterTabs = () => {
                 if (success && data.values) {
                     dispatch(
                         actions.createAlert({
-                            message: "Settings saved.",
+                            message: __("Settings saved.", "premium-blocks-for-gutenberg"),
                             type: "success",
                         })
                     );
@@ -136,7 +136,7 @@ const FilterTabs = () => {
                 if (success && data.values) {
                     dispatch(
                         actions.createAlert({
-                            message: "Settings saved.",
+                            message: __("Settings saved.", "premium-blocks-for-gutenberg"),
                             type: "success",
                         })
                     );
