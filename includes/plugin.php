@@ -18,6 +18,14 @@ if (!class_exists('PBG_Plugin')) {
 		private static $instance = null;
 
 		/**
+		 * Premium Addons Settings Page Slug
+		 *
+		 * @var page_slug
+		 */
+		protected $page_slug = 'pb_panel';
+
+
+		/**
 		 * Constructor for the class
 		 */
 		public function __construct()
@@ -25,7 +33,7 @@ if (!class_exists('PBG_Plugin')) {
 
 			// Enqueue the required files
 			$this->pbg_setup();
-			add_filter('plugin_action_links_' . PREMIUM_BLOCKS_BASENAME, array($this, 'add_action_links'));
+			add_filter('plugin_action_links_' . PREMIUM_BLOCKS_BASENAME, array($this, 'add_action_links'), 10, 2);
 			add_action('plugins_loaded', array($this, 'load_plugin'));
 
 			if (!$this->is_gutenberg_active()) {
@@ -49,15 +57,12 @@ if (!class_exists('PBG_Plugin')) {
 			$this->init_files();
 		}
 
-		public function add_action_links($actions)
+		public function add_action_links( $links )
 		{
+			$new_links[] = sprintf( '<a href="%1$s">%2$s</a>', admin_url( 'admin.php?page=' . $this->page_slug . '&path=welcome' ), __( 'Settings', 'premium-addons-for-elementor' ) );
 
+			return $new_links + $links;
 
-			$mylinks = array(
-				'<a href="' . admin_url('admin.php?page=pb_panel') . '">Settings</a>',
-			);
-			$actions = array_merge($actions, $mylinks);
-			return $actions;
 		}
 
 		/*

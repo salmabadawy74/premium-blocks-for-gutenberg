@@ -42,7 +42,7 @@ export default function MainNav() {
             <div>
                 {menus.map((menu, key) => (
                     <Link className={classNames("pb-main-tab", {
-                        active: activePath === activePage,
+                        active: activePage === menu.slug && activePath === menu.path
                     })}
                     activePath
                         index={key}
