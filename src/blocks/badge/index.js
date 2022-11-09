@@ -10,7 +10,6 @@ import PBG_Block_Icons from '../../../assets/icons/block-icons'
 import json from './block.json';
 import edit from './edit';
 import save from './save';
-import './editor.scss';
 
 const { name } = json;
 

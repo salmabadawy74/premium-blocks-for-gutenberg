@@ -33,18 +33,5 @@
 .wp-block-premium-search__components-button-group {
   margin-top: 10px;
 }
-/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/@wordpress/scripts/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/blocks/badge/editor.scss ***!
-  \*************************************************************************************************************************************************************************************************************************************************************************************/
-.pbg-lottie-description {
-  font-size: 11px;
-  font-style: italic;
-  line-height: 1.4;
-  color: #a4afb7;
-}
-.pbg-lottie-description a {
-  text-decoration: none;
-  color: var(--wp-admin-theme-color);
-}
 
 /*# sourceMappingURL=index.css.map*/
