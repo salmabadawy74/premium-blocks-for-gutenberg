@@ -28,49 +28,6 @@
             "type": "boolean",
             "default": ""
         },
-        "badgeStyles": {
-            "type": "array",
-            "default": [
-                {
-                    "badgePos": "right",
-                    "badgeBack": "#793DC3",
-                    "badgeColor": "#fff",
-                    "badgeTop": "",
-                    "badgeHorizontal": "",
-                    "badgeWidth": "",
-                    "badgeText": "Popular",
-                    "badgeSize": ""
-                }
-            ]
-        },
-        "badgeTypography": {
-            "type": "object",
-            "default": {
-                "fontWeight": "Default",
-                "fontStyle": "",
-                "letterSpacing": {
-                    "Desktop": "",
-                    "Tablet": "",
-                    "Mobile": "",
-                    "unit": "px"
-                },
-                "fontFamily": "Default",
-                "lineHeight": {
-                    "Desktop": "",
-                    "Tablet": "",
-                    "Mobile": "",
-                    "unit": "px"
-                },
-                "textDecoration": "",
-                "textTransform": "",
-                "fontSize": {
-                    "Desktop": "",
-                    "Tablet": "",
-                    "Mobile": "",
-                    "unit": "px"
-                }
-            }
-        },
         "tableStyles": {
             "type": "array",
             "default": [

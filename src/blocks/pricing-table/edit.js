@@ -30,12 +30,10 @@ function PremiumPricingTable(props) {
     }, []);
 
     const {
-        badgeChecked,
         blockId,
         hideDesktop,
         hideTablet,
         hideMobile,
-        badgeStyles,
         tableStyles,
         tableBoxShadow,
         tableBorder,
