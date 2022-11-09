@@ -25,7 +25,7 @@ if (!class_exists('PBG_Plugin')) {
 
 			// Enqueue the required files
 			$this->pbg_setup();
-
+			add_filter('plugin_action_links_' . PREMIUM_BLOCKS_BASENAME, array($this, 'add_action_links'));
 			add_action('plugins_loaded', array($this, 'load_plugin'));
 
 			if (!$this->is_gutenberg_active()) {
@@ -47,6 +47,17 @@ if (!class_exists('PBG_Plugin')) {
 			$this->load_domain();
 
 			$this->init_files();
+		}
+
+		public function add_action_links($actions)
+		{
+
+
+			$mylinks = array(
+				'<a href="' . admin_url('admin.php?page=pb_panel') . '">Settings</a>',
+			);
+			$actions = array_merge($actions, $mylinks);
+			return $actions;
 		}
 
 		/*
@@ -96,7 +107,7 @@ if (!class_exists('PBG_Plugin')) {
 			require_once PREMIUM_BLOCKS_PATH . 'admin/includes/pb-panel/class-pb-panel.php';
 
 			require_once PREMIUM_BLOCKS_PATH . 'classes/class-pbg-blocks-helper.php';
-	}
+		}
 
 		/**
 		 * Creates and returns an instance of the class

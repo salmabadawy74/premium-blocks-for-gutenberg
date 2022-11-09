@@ -57,8 +57,14 @@ if (!class_exists('Pb_Panel')) {
 			add_action('wp_ajax_nopriv_pb-panel-update-option', array($this, 'update_option'));
 
 			add_action('wp_ajax_pb-panel-update-option', array($this, 'update_option'));
+
+			add_action('wp_ajax_nopriv_pb-panel-update-settings', array($this, 'update_settings'));
+
+			add_action('wp_ajax_pb-panel-update-settings', array($this, 'update_settings'));
+
 			add_action('admin_menu', array($this, 'register_custom_menu_page'), 100);
 			add_filter('pb_options', array($this, 'add_default_options'));
+			add_filter('pb_settings', array($this, 'add_default_setings'));
 			add_action('admin_post_premium_gutenberg_rollback', array($this, 'post_premium_gutenberg_rollback_new'));
 			add_action('wp_ajax_pb-mail-subscribe', array($this, 'subscribe_mail'));
 			add_action('admin_enqueue_scripts', array($this, 'pa_admin_page_scripts'));
@@ -142,6 +148,18 @@ if (!class_exists('Pb_Panel')) {
 			return array_merge($default_options, $options);
 		}
 
+		public function add_default_setings($options)
+		{
+
+			$default_options = array(
+				'premium-map-key'     => '',
+				'premium-map-api'     => true,
+				'premium-fa-css'      => true,
+				'premium-upload-json' => false,
+			);
+
+			return array_merge($default_options, $options);
+		}
 
 
 		/**
@@ -166,6 +184,32 @@ if (!class_exists('Pb_Panel')) {
 					array(
 						'success' => true,
 						'values'  => $options,
+					)
+				);
+			}
+
+			wp_send_json_error();
+		}
+
+
+
+		public function update_settings()
+		{
+			check_ajax_referer('pb-panel', 'nonce');
+
+			$value   = isset($_POST['value']) ? json_decode(stripslashes($_POST['value']), true) : array();
+			$Settings = apply_filters('pb_settings', get_option('pbg_blocks_settings', array()));
+			// $options = get_option( 'pb_options' );
+			$Settings = !is_array($Settings) ? array() : $Settings;
+
+			if ($value) {
+				$Settings = $value;
+				update_option('pbg_blocks_settings', $Settings);
+
+				wp_send_json_success(
+					array(
+						'success' => true,
+						'setting'  => $Settings,
 					)
 				);
 			}
@@ -548,7 +592,7 @@ if (!class_exists('Pb_Panel')) {
 					'nonce'       => wp_create_nonce('pb-panel'),
 					'system_info' => self::get_system_info(),
 					'images_url'  => PREMIUM_BLOCKS_PANEL_URL . 'assets/images/',
-					'apiData'     => get_option('pbg_blocks_settings', array()),
+					'apiData'     => apply_filters('pb_settings', get_option('pbg_blocks_settings', array())),
 				)
 			);
 		}
