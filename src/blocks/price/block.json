@@ -7,6 +7,7 @@
     "description": "Price Description.",
     "keywords": ["price"],
     "textdomain": "default",
+    "parent": ["premium/pricing-table"],
     "attributes": {
         "blockId": {
             "type": "string"

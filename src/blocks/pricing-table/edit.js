@@ -64,19 +64,6 @@ function PremiumPricingTable(props) {
         ["premium/badge"],
     ];
 
-    let loadBadgeGoogleFonts;
-
-    if (badgeTypography.fontFamily !== "Default") {
-        const badgeConfig = {
-            google: {
-                families: [badgeTypography.fontFamily],
-            }
-        };
-        loadBadgeGoogleFonts = (
-            <WebfontLoader config={badgeConfig}></WebfontLoader>
-        );
-    }
-
     const saveTableStyles = (value) => {
         const newUpdate = tableStyles.map((item, indexTable) => {
             if (0 === indexTable) {
@@ -156,7 +143,6 @@ function PremiumPricingTable(props) {
                 })}
             >
                 <div {...innerBlocksProps} />
-                {loadBadgeGoogleFonts}
             </div>
         </Fragment>
     );
