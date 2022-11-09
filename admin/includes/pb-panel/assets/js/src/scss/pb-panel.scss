@@ -42,12 +42,14 @@
     }
 
     .logo {
-        .cls-1 {
-            fill: #4426c7;
+        .cls-1,.cls-2{
+            fill-rule:evenodd;
         }
-
         .cls-2 {
-            fill: #252525;
+            fill:#a2d452;
+        }
+        .cls-3 {
+            fill:#fff;
         }
     }
 
@@ -92,9 +94,11 @@
                             &.active,
                             &:hover,
                             &:focus {
-                                background-color: #efecf8;
                                 color: #84B537;
                                 box-shadow: none;
+                            }
+                            &.active {
+                                background-color: #EFF3E8;
                             }
                         }
                         
@@ -160,7 +164,7 @@
 
             &.active-tab,
             &:hover {
-                color: #4426c7;
+                color: #638d20;
             }
         }
     }
@@ -190,7 +194,7 @@
         text-decoration: none;
         &:hover,
         &:focus {
-            color: #4426c7;
+            color: #638d20;
             box-shadow: none;
         }
     }
@@ -276,7 +280,7 @@
                     .cls-1,
                     .cls-2 {
                         fill: none;
-                        stroke: #4426c7;
+                        stroke: #638d20;
                         stroke-width: 1.5px;
                     }
 
@@ -288,7 +292,7 @@
 
                 &:hover {
                     .cls-1 {
-                        fill: #4426c7;
+                        fill: #638d20;
                     }
 
                     .cls-2 {
@@ -310,11 +314,11 @@
                     width: 60px;
                     height: 60px;
                     border-radius: 38%;
-                    background-color: #efebff;
-                    border: 2px solid #ccc5ed;
+                    background-color: #EFF3E8;
+                    border: 2px solid #c4cfb7;
 
                     svg {
-                        fill: #efebff;
+                        fill: #EFF3E8;
                     }
                 }
 
@@ -460,7 +464,7 @@
 
                     &:hover,
                     &:focus {
-                        color: #4426c7;
+                        color: #638d20;
                         box-shadow: none;
                     }
                 }
