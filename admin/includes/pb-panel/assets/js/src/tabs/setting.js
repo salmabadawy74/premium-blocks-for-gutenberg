@@ -26,7 +26,7 @@ const Setting = () => {
             });
             if (response.status === 200) {
                 const { success, data } = await response.json();
-                if (success && data.values) {
+                if (success && data.setting) {
                     dispatch(
                         actions.createAlert({
                             message: __("Settings saved.", ""),

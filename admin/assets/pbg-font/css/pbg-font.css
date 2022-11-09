@@ -8,13 +8,24 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+  font-family: 'pgiconfont';
+  src:  url('../fonts/pgiconfont.eot?wdzmdv');
+  src:  url('../fonts/pgiconfont.eot?wdzmdv#iefix') format('embedded-opentype'),
+    url('../fonts/pgiconfont.ttf?wdzmdv') format('truetype'),
+    url('../fonts/pgiconfont.woff?wdzmdv') format('woff'),
+    url('../fonts/pgiconfont.svg?wdzmdv#pgiconfont') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
 
 .toplevel_page_pb_panel>div.wp-menu-image::before {
     position: relative;
     /* top: 5px; */
     content: "\e900";
     /* use !important to prevent issues with browser extensions that change fonts */
-    font-family: "pblocksfont" !important;
+    font-family: 'pgiconfont' !important;
     speak: none;
     font-style: normal;
     font-variant: normal;
