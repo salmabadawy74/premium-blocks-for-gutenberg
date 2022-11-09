@@ -82,9 +82,9 @@
             "type": "object",
             "default": {
                 "Desktop": {
-                    "top": "",
+                    "top": 20,
                     "right": "",
-                    "bottom": "",
+                    "bottom": 20,
                     "left": ""
                 },
                 "Tablet": {
