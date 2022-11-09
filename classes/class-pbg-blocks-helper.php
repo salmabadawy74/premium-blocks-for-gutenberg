@@ -88,16 +88,13 @@ class PBG_Blocks_Helper
 		self::$blocks = apply_filters('pb_options', get_option('pb_options', array()));
 		// Gets Plugin Admin Settings.
 
-		self::$config = apply_filters('pbg_blocks_settings', get_option('pbg_blocks_settings', array()));
+		self::$config = apply_filters('pb_settings', get_option('pbg_blocks_settings', array()));
 		$allow_json   = isset(self::$config['premium-upload-json']) ? self::$config['premium-upload-json'] : true;
 		if ($allow_json) {
 			add_filter('upload_mimes', array($this, 'pbg_mime_types')); // phpcs:ignore WordPressVIPMinimum.Hooks.RestrictedHooks.upload_mimes
 			add_filter('wp_check_filetype_and_ext', array($this, 'fix_mime_type_json'), 75, 4);
 		}
-		add_action('init', array($this, 'load_api_settings'));
 		add_action('init', array($this, 'on_init'), 20);
-		add_action('init', array($this, 'register_pbg_setting'));
-
 		// Enqueue Editor Assets.
 		add_action('enqueue_block_editor_assets', array($this, 'pbg_editor'));
 		// Enqueue Frontend Styles.
@@ -118,42 +115,6 @@ class PBG_Blocks_Helper
 
 
 
-	public function register_pbg_setting()
-	{
-		register_setting(
-			'pbg_blocks_settings',
-			'pbg_blocks_settings',
-			array(
-				'type'         => 'object',
-				'description'  => __('Config Premium Blocks For Gutenberg Api', 'premium-blocks-for-gutenberg'),
-				'show_in_rest' => array(
-					'schema' => array(
-						'type'       => 'object',
-						'properties' => array(
-							'premium-map-key'     => array(
-								'type' => 'string',
-							),
-							'premium-map-api'     => array(
-								'type' => 'boolean',
-							),
-							'premium-fa-css'      => array(
-								'type' => 'boolean',
-							),
-							'premium-upload-json' => array(
-								'type' => 'boolean',
-							),
-						),
-					),
-				),
-				'default'      => array(
-					'premium-map-key'     => '',
-					'premium-map-api'     => false,
-					'premium-fa-css'      => false,
-					'premium-upload-json' => false,
-				),
-			)
-		);
-	}
 
 	/**
 	 * Add blocks editor style
@@ -301,26 +262,6 @@ class PBG_Blocks_Helper
 		);
 	}
 
-	/**
-	 * Enqueue Settings For blocks
-	 *
-	 * @since 1.9.2
-	 *
-	 * @access public
-	 */
-	public function load_api_settings()
-	{
-		register_setting(
-			'allow_json_upload',
-			'allow_json_upload',
-			array(
-				'type'         => 'boolean',
-				'description'  => __('Allow JSON Upload to Media Library.', 'premium-blocks-for-gutenberg'),
-				'show_in_rest' => true,
-				'default'      => false,
-			)
-		);
-	}
 
 	/**
 	 * PBG Frontend

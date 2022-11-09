@@ -93,7 +93,7 @@
                             &:hover,
                             &:focus {
                                 background-color: #efecf8;
-                                color: #4426c7;
+                                color: #84B537;
                                 box-shadow: none;
                             }
                         }
@@ -102,7 +102,7 @@
                     .pb-activate-deactivate-buttons {
                         button {
                             width: 135px;
-                            color: #4426c7;
+                            color: #fff;
                             text-align: center;
                             border-radius: 15px 0 0 15px;
                             overflow: hidden;
@@ -110,9 +110,9 @@
                             padding: 10px 20px 10px 20px;
                             cursor: pointer;
                             border: 1px solid #cacaca;
-                            background-color: #f6f6f6;
+                            background-color: #84B537;
                             &:hover {
-                                background-color: #e8e8e8;
+                                background-color: #638D20;
                             }
                         }
                         .activate-blocks {
@@ -391,11 +391,11 @@
             padding: 15px 20px;
             text-decoration: none;
             --buttonColor: #fff;
-            --buttonBgColor: #4426c7;
+            --buttonBgColor: #84B537;
             border-radius: 15px;
 
             &:hover {
-                --buttonBgColor: #3b1bc7;
+                --buttonBgColor: #638D20;
             }
         }
 
@@ -561,7 +561,7 @@
 
         &.is-checked {
             .components-form-toggle__track {
-                background-color: #4426c7;
+                background-color: #84B537;
                 border: 9px solid transparent;
             }
 
@@ -744,7 +744,7 @@
 
         &.is-checked {
             .components-form-toggle__track {
-                background-color: #4426c7;
+                background-color: #84B537;
                 border: 9px solid transparent;
             }
 

@@ -2,43 +2,50 @@ import { useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import AdvancedSwitcher from "../common/AdvancedSwitcher";
 import Container from "../common/Container";
-const { Dashicon } = wp.components;
-import {
-    store as coreStore,
-    useEntityProp,
-    useEntityRecords,
-} from "@wordpress/core-data";
-import { useDispatch } from "@wordpress/data";
-
+import { useDispatch, useSelector } from "react-redux";
+import { updateSettings } from "../features/settings/index";
+import { actions } from "../features/Alert/AlertSlice";
 const Setting = () => {
-    const [data, setData] = useState(PremiumBlocksPanelData.apiData);
-    const { saveEntityRecord } = useDispatch(coreStore);
+    const settings = useSelector((state) => state.settingStates.apiSettings);
+    const [mapApi, setMapApi] = useState(settings?.["premium-map-key"]);
+    const dispatch = useDispatch();
     const onChangeData = async (key, value) => {
-        const updatedData = { ...data };
+        const updatedData = { ...settings };
         updatedData[key] = value;
-        setData(updatedData);
-        await saveEntityRecord("root", "site", {
-            pbg_blocks_settings: updatedData,
-        });
-        };
-        const onChangeMapApi = async (key, value) => {
-            const updatedData = { ...data };
-            updatedData[key] = value;
-            setData(updatedData);
-        };
-    
-        const saveMApApi = async (key) => {
-            const updatedData = { ...data };
-            updatedData[key] = data?.["premium-map-key"];
-            setData(updatedData);
-            await saveEntityRecord("root", "site", {
-                pbg_blocks_settings: updatedData,
+        dispatch(updateSettings(updatedData));
+        const body = new FormData();
+
+        body.append("action", "pb-panel-update-settings");
+        body.append("nonce", PremiumBlocksPanelData.nonce);
+        body.append("value", JSON.stringify(updatedData));
+
+        try {
+            const response = await fetch(PremiumBlocksPanelData.ajaxurl, {
+                method: "POST",
+                body,
             });
-            createNotice("success", "Settings saved ", {
-                isDismissible: true,
-                type: "snackbar",
-            });
+            if (response.status === 200) {
+                const { success, data } = await response.json();
+                if (success && data.values) {
+                    dispatch(
+                        actions.createAlert({
+                            message: __("Settings saved.", ""),
+                            type: "success",
+                        })
+                    );
+                }
+            }
+        } catch (e) {
+            console.log(e);
+            dispatch(
+                actions.createAlert({
+                    message: __("An unknown error occurred.", ""),
+                    type: "error",
+                })
+            );
         }
+    };
+
     return (
         <Container>
             <div className="pb-settings">
@@ -75,20 +82,23 @@ const Setting = () => {
                         <div>
                             <input
                                 type="text"
-                                value={data?.["premium-map-key"]}
-                                onChange={(e) =>
-                                    onChangeMapApi(
-                                        "premium-map-key",
-                                        e.target.value
-                                    )
-                                }
+                                value={mapApi}
+                                onChange={(e) => setMapApi(e.target.value)}
                                 placeholder={__(
                                     "API Key",
                                     "premium-blocks-for-gutenberg"
                                 )}
                             />
                         </div>
-                        <button type="button" className="pb-button secondary primary" onClick={() => saveMApApi("premium-map-key")}>Save</button>
+                        <button
+                            type="button"
+                            className="pb-button secondary primary"
+                            onClick={() =>
+                                onChangeData("premium-map-key", mapApi)
+                            }
+                        >
+                            Save
+                        </button>
                     </div>
                 </div>
                 <div className="pb-setting-options">
@@ -100,7 +110,7 @@ const Setting = () => {
                         onChange={(checked) =>
                             onChangeData("premium-map-api", checked)
                         }
-                        checked={data?.["premium-map-api"] || false}
+                        checked={settings?.["premium-map-api"] || false}
                         description={__(
                             "This will Enable the API JS file if it's not included by another theme or plugin.",
                             "premium-blocks-for-gutenberg"
@@ -114,7 +124,7 @@ const Setting = () => {
                         onChange={(checked) =>
                             onChangeData("premium-fa-css", checked)
                         }
-                        checked={data?.["premium-fa-css"] || false}
+                        checked={settings?.["premium-fa-css"] || false}
                         description={__(
                             "This will load Font Awesome Icons to be used within Premium Blocks.",
                             "premium-blocks-for-gutenberg"
@@ -128,7 +138,7 @@ const Setting = () => {
                         onChange={(checked) =>
                             onChangeData("premium-upload-json", checked)
                         }
-                        checked={data?.["premium-upload-json"] || false}
+                        checked={settings?.["premium-upload-json"] || false}
                         description={__(
                             "This option will be used to upload JSON files in lottie animation block.",
                             "premium-blocks-for-gutenberg"
