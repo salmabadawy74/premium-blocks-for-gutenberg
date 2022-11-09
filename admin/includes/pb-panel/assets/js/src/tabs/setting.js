@@ -29,7 +29,7 @@ const Setting = () => {
                 if (success && data.setting) {
                     dispatch(
                         actions.createAlert({
-                            message: __("Settings saved.", ""),
+                            message: __("Settings saved.", "premium-blocks-for-gutenberg"),
                             type: "success",
                         })
                     );

@@ -59,7 +59,7 @@ if (!class_exists('PBG_Plugin')) {
 
 		public function add_action_links( $links )
 		{
-			$new_links[] = sprintf( '<a href="%1$s">%2$s</a>', admin_url( 'admin.php?page=' . $this->page_slug . '&path=welcome' ), __( 'Settings', 'premium-addons-for-elementor' ) );
+			$new_links[] = sprintf( '<a href="%1$s">%2$s</a>', admin_url( 'admin.php?page=' . $this->page_slug . '&path=welcome' ), __( 'Settings', 'premium-blocks-for-gutenberg' ) );
 
 			return $new_links + $links;
 
