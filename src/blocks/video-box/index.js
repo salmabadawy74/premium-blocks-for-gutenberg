@@ -2,14 +2,12 @@ import { videoBox } from "../../../assets/js/settings";
 import edit from "./edit";
 import save from "./save";
 import deprecatedContent from "./deprecated";
-import json from './block.json';
-import PBG_Block_Icons from '../../../assets/icons/block-icons'
+import json from "./block.json";
+import PBG_Block_Icons from "../../../assets/icons/block-icons";
 
 const { __ } = wp.i18n;
 
 const { registerBlockType } = wp.blocks;
-
-
 
 const onChangeVideoURL = (type, URL) => {
     let videoUrl;
@@ -24,14 +22,20 @@ const onChangeVideoURL = (type, URL) => {
                 break;
             case "vimeo":
                 if (URL.startsWith("http")) {
-                    videoUrl = URL.replace("vimeo.com/", "player.vimeo.com/video/");
+                    videoUrl = URL.replace(
+                        "vimeo.com/",
+                        "player.vimeo.com/video/"
+                    );
                 } else {
                     videoUrl = "https://player.vimeo.com/video/" + URL;
                 }
                 break;
             case "daily":
                 if (URL.startsWith("http")) {
-                    videoUrl = URL.replace('dai.ly/', 'dailymotion.com/embed/video/');
+                    videoUrl = URL.replace(
+                        "dai.ly/",
+                        "dailymotion.com/embed/video/"
+                    );
                 } else {
                     videoUrl = "https://dailymotion.com/embed/video/" + URL;
                 }
@@ -39,23 +43,25 @@ const onChangeVideoURL = (type, URL) => {
         }
         return videoUrl;
     }
-
 };
 
 export default onChangeVideoURL;
 
 registerBlockType("premium/video-box", {
     ...json,
-    title: __("Video Box", 'premium-block-for-gutenberg'),
-    description: __('Embed YouTube, Vimeo, Dailymotion, or upload a Custom Video using Premium Video Box Block.', 'premium-block-for-gutenberg'),
+    title: __("Video Box", "premium-block-for-gutenberg"),
+    description: __(
+        "Embed YouTube, Vimeo, Dailymotion, or upload a Custom Video using Premium Video Box Block.",
+        "premium-block-for-gutenberg"
+    ),
     icon: PBG_Block_Icons.video_box,
     category: "premium-blocks",
-    keywords: [__("video", 'premium-blocks-for-gutenberg')],
+    keywords: [__("video", "premium-blocks-for-gutenberg")],
     supports: {
-        inserter: videoBox
+        inserter: videoBox,
     },
     example: {},
     edit: edit,
     save: save,
-    deprecated: deprecatedContent
+    deprecated: deprecatedContent,
 });
