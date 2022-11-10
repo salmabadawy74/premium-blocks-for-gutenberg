@@ -1,9 +1,9 @@
 === Premium Blocks for Gutenberg ===
 Contributors: leap13
 Tags: gutenberg, gutenberg addon, gutenberg addons, gutenberg blocks, gutenberg free blocks
-Donate link: http://leap13.com
+Donate link: https://leap13.com
 Requires at least: 4.5
-Tested up to: 5.9.3
+Tested up to: 6.1
 Requires PHP: 5.4
 Stable tag: 2.0.0
 License: GPL v3.0
@@ -22,14 +22,23 @@ Kindly note that the plugin is on it’s early stages and Gutenberg itself is st
 2. [Gutenberg Button Block](https://premiumblocks.io/index.php/gutenberg-blocks/button-block/)
 3. [Gutenberg Counter Block](https://premiumblocks.io/index.php/gutenberg-blocks/counter-block/)
 4. [Gutenberg Dual Heading Block](https://premiumblocks.io/index.php/gutenberg-blocks/dual-heading-block/)
-5. [Gutenberg Icon Block](https://premiumblocks.io/index.php/gutenberg-blocks/icon-block/)
-6. [Gutenberg Maps Block](https://premiumblocks.io/index.php/gutenberg-blocks/google-maps-block/)
-7. [Gutenberg Pricing Table Block](https://premiumblocks.io/index.php/gutenberg-blocks/pricing-table-block/)
-8. [Gutenberg Section Block](https://premiumblocks.io/index.php/gutenberg-blocks/section-block/)
-9. [Gutenberg Testimonials Block](https://premiumblocks.io/index.php/gutenberg-blocks/testimonials-block/)
-10. [Gutenberg Accordion Block](https://premiumblocks.io/index.php/gutenberg-blocks/accordion-block/)
-11. [Gutenberg Icon Box Block](https://premiumblocks.io/gutenberg-blocks/icon-box-block/)
-12. [Gutenberg Video Box Block](https://premiumblocks.io/gutenberg-blocks/video-box-block/)
+5. [Gutenberg Heading Block](https://premiumblocks.io/index.php/gutenberg-blocks/dual-heading-block/)
+6. [Gutenberg Icon Block](https://premiumblocks.io/index.php/gutenberg-blocks/icon-block/)
+7. [Gutenberg Maps Block](https://premiumblocks.io/index.php/gutenberg-blocks/google-maps-block/)
+8. [Gutenberg Pricing Table Block](https://premiumblocks.io/index.php/gutenberg-blocks/pricing-table-block/)
+9. [Gutenberg Section Block](https://premiumblocks.io/index.php/gutenberg-blocks/section-block/)
+10. [Gutenberg Testimonials Block](https://premiumblocks.io/index.php/gutenberg-blocks/testimonials-block/)
+11. [Gutenberg Accordion Block](https://premiumblocks.io/index.php/gutenberg-blocks/accordion-block/)
+12. [Gutenberg Icon Box Block](https://premiumblocks.io/gutenberg-blocks/icon-box-block/)
+13. [Gutenberg Video Box Block](https://premiumblocks.io/gutenberg-blocks/video-box-block/)
+14. [Gutenberg Container Block]
+15. [Gutenberg Fancy Text Block]
+16. [Gutenberg Lottie Animation Block]
+17. [Gutenberg Modal Box Block]
+18. [Gutenberg Image Separator Block]
+19. [Gutenberg Bullet List Block]
+20. [Gutenberg Team Members Block]
+21. [Gutenberg Content Switcher Block]
 
 == Installation ==
 
@@ -63,20 +72,23 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 
 - New: Container Block to build flexible box layouts.
 - New: Content Switcher Block to switch between two different content.
-- New: Breadcrumbs Block theme to navigate your pages easily.
-- New: Trigger Block to open canvas area.
-- New: AJAX Search Block.
-- New: UX/UI Controls’ Design for Premium Blocks.
-- New: Create Premium Blocks admin dashboard by React.
+- New: UX/UI Controls Design for Premium Blocks.
+- New: New: React admin dashboard.
 - New: Responsive options for all premium blocks.
-- Improve: Responsive settings to control all options.
-- Improve: Accordion Block layout and options.
-- Improve: Bullet List Block Layout and options.
-- Improve: Code refactored for better performance and security.
-- Improve: Premium Blocks’ code and improve editor performance.
-- Improve: Blocks Options have been organized in three tabs (Layout, Style, and Advanced)
-- Improve: Text style, letter spacing, text-transform, and text decoration options are added to typography control.
+- Improved: All Blocks are now compatible with WordPress 6.1.
+- Improved: Responsive settings have added to alignment, size, border and spacing controls.
+- Improved: Accordion, Pricing table, Icon box, Person and Bullet list Blocks have been refactored to work as Group of Blocks.  
+- Improved: Premium Blocks code and editor performance.
+- Improved: Blocks Options have been organized into three tabs (Layout, Style, and Advanced)
+- Improved: Update Count up a library.
+- Improved: Text style, letter spacing, text-transform, and text decoration options have added to typography control.
 - Fixed: General Issues in multiple blocks.
+
+= 1.9.9 =
+
+- Fixed: Reset color button not working in Icon Box Block.
+- Fixed: Console error when trying to get plugin settings in background control.
+- Fixed: Selecting colors from color palettes in color control not changing the color value.
 
 = 1.9.8 =
 
