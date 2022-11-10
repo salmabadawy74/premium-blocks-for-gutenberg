@@ -6,6 +6,7 @@ import {
     typographyCss,
     borderCss,
     paddingCss,
+    marginCss,
 } from "@pbg/helpers";
 import {
     InspectorTabs,
@@ -16,6 +17,7 @@ import {
     MultiButtonsControl,
     ResponsiveRangeControl,
     AdvancedColorControl as AdvancedPopColorControl,
+    SpacingComponent as SpacingControl,
     PremiumShadow,
     WebfontLoader,
     PremiumTypo,
@@ -596,7 +598,7 @@ function Edit(props) {
                                     units={["px", "em", "rem"]}
                                     defaultValue={30}
                                 />
-                                <ResponsiveRangeControl
+                                {/* <ResponsiveRangeControl
                                     label={__(
                                         "Icon Spacing",
                                         "premium-blocks-for-gutenberg"
@@ -611,7 +613,20 @@ function Edit(props) {
                                     showUnit={true}
                                     units={["px", "em", "rem"]}
                                     defaultValue={15}
+                                /> */}
+                                <SpacingControl
+                                    label={__(
+                                        "Margin",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                    value={iconSpacing}
+                                    onChange={(value) =>
+                                        setAttributes({ iconSpacing: value })
+                                    }
+                                    showUnits={true}
+                                    responsive={true}
                                 />
+
                                 <InsideTabs>
                                     <InsideTab
                                         tabTitle={__(
@@ -742,9 +757,10 @@ function Edit(props) {
                                         height:
                                             iconSize[props.deviceType] +
                                             iconSize.unit,
-                                        marginRight:
-                                            iconSpacing[props.deviceType] +
-                                            iconSpacing.unit,
+                                        ...marginCss(
+                                            iconSpacing,
+                                            props.deviceType
+                                        ),
                                         color: iconColor,
                                         textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`,
                                     }}
@@ -762,6 +778,7 @@ function Edit(props) {
                                         typography,
                                         props.deviceType
                                     ),
+                                    display: "inline",
                                 }}
                                 keepPlaceholderOnFocus
                             />
@@ -778,9 +795,10 @@ function Edit(props) {
                                         height:
                                             iconSize[props.deviceType] +
                                             iconSize.unit,
-                                        marginLeft:
-                                            iconSpacing[props.deviceType] +
-                                            iconSpacing.unit,
+                                        ...marginCss(
+                                            iconSpacing,
+                                            props.deviceType
+                                        ),
                                         color: iconColor,
                                         textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`,
                                     }}
