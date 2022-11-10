@@ -13681,124 +13681,6 @@ const {
   TextControl,
   ToggleControl
 } = wp.components;
-const ICONTYPE = [{
-  label: __("Icon", 'premium-blocks-for-gutenberg'),
-  value: "icon"
-}, {
-  label: __("Image", 'premium-blocks-for-gutenberg'),
-  value: "image"
-}];
-const SortableItem = (0,react_sortable_hoc__WEBPACK_IMPORTED_MODULE_4__.SortableElement)(_ref => {
-  let {
-    onRemove,
-    newIndex,
-    value,
-    showContent,
-    changeLabel,
-    toggleShowBulletIcon,
-    selectIconType,
-    changeIcons,
-    selectImage,
-    removeImage,
-    toggleIconLink,
-    saveLink,
-    openLink
-  } = _ref;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
-    className: "premium-repeater-row-wrapper",
-    tabIndex: 0,
-    key: newIndex
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
-    className: "premium-repeater-row-inner"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
-    className: "premium-repeater-row-tools"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
-    className: "premium-repeater-item-title",
-    onClick: () => showContent(newIndex)
-  }, value.showBulletIcon && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("i", {
-    className: `${value.icon}`
-  }), value.label), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "premium-repeater-row-item-remove"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
-    className: "premium-repeater-item-remove is-tertiary",
-    onClick: () => onRemove(newIndex, value)
-  }, "x"))), value.showContent && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "premium-repeater-row-controls"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
-    placeholder: __(`Enter ${value.label} link`),
-    value: value.label,
-    onChange: val => changeLabel(val, newIndex)
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ToggleControl, {
-    label: __("Show Bullet"),
-    checked: value.showBulletIcon,
-    onChange: valueBullet => toggleShowBulletIcon(valueBullet, newIndex)
-  }), value.showBulletIcon && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(SelectControl, {
-    label: __("Icon Type", 'premium-blocks-for-gutenberg'),
-    options: ICONTYPE,
-    value: value.image_icon,
-    onChange: valueType => selectIconType(valueType, newIndex)
-  }), "icon" == value.image_icon && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, __("Icon", 'premium-blocks-for-gutenberg')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)((_fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_3___default()), {
-    icons: _pbg_components__WEBPACK_IMPORTED_MODULE_5__.iconsList,
-    value: value.icon,
-    onChange: valueIcon => changeIcons(valueIcon, newIndex),
-    isMulti: false,
-    noSelectedPlaceholder: __("Select Icon", 'premium-blocks-for-gutenberg')
-  })), "image" == value.image_icon && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_5__.PremiumMediaUpload, {
-    type: "image",
-    imageID: value.imageID,
-    imageURL: value.imageURL,
-    onSelectMedia: media => selectImage(media, newIndex),
-    onRemoveImage: () => removeImage(newIndex)
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ToggleControl, {
-    label: __("Link", 'premium-blocks-for-gutenberg'),
-    checked: value.disableLink,
-    onChange: valueLink => toggleIconLink(valueLink, newIndex)
-  }), value.disableLink && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, __("URL", 'premium-blocks-for-gutenberg')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
-    value: value.link,
-    onChange: valueURL => saveLink(valueURL, newIndex),
-    placeholder: __("Enter URL")
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ToggleControl, {
-    label: __("Open links in new tab", 'premium-blocks-for-gutenberg'),
-    checked: value.linkTarget,
-    onChange: valueTarget => openLink(valueTarget, newIndex)
-  })))));
-});
-const SortableList = (0,react_sortable_hoc__WEBPACK_IMPORTED_MODULE_4__.SortableContainer)(_ref2 => {
-  let {
-    items,
-    onRemove,
-    showContent,
-    changeLabel,
-    toggleShowBulletIcon,
-    selectIconType,
-    changeIcons,
-    selectImage,
-    removeImage,
-    toggleIconLink,
-    saveLink,
-    openLink
-  } = _ref2;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
-    className: "premium-repeater-rows"
-  }, " ", items.map((value, index) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(SortableItem, {
-    key: `item-${value}`,
-    index: index,
-    newIndex: index,
-    value: value,
-    onRemove: onRemove,
-    showContent: showContent,
-    changeLabel: changeLabel,
-    toggleShowBulletIcon: toggleShowBulletIcon,
-    selectIconType: selectIconType,
-    changeIcons: changeIcons,
-    selectImage: selectImage,
-    removeImage: removeImage,
-    toggleIconLink: toggleIconLink,
-    saveLink: saveLink,
-    openLink: openLink,
-    items: items
-  })), " ");
-});
 
 function Edit(props) {
   var _props$attributes, _props$attributes$rep;
@@ -13813,7 +13695,6 @@ function Edit(props) {
     layoutPos,
     iconPosition,
     align,
-    repeaterBulletList,
     bulletAlign,
     bulletIconStyles,
     bulletIconBorder,
@@ -13908,152 +13789,6 @@ function Edit(props) {
   const BulletIconSize = bulletIconFontSize === null || bulletIconFontSize === void 0 ? void 0 : bulletIconFontSize[currentDevice];
   const DividerWidth = dividerWidth === null || dividerWidth === void 0 ? void 0 : dividerWidth[currentDevice];
   const DividerHeight = dividerHeight === null || dividerHeight === void 0 ? void 0 : dividerHeight[currentDevice];
-
-  const addNewBulletList = () => {
-    let cloneIcons = [...repeaterBulletList];
-    cloneIcons.push({
-      id: cloneIcons.length + 1,
-      label: "Title ",
-      image_icon: "icon",
-      icon: "fa fa-arrow-circle-right",
-      imageURL: "",
-      imageID: '',
-      icon_color: "",
-      label_color: "",
-      icon_hover_color: "",
-      label_hover_color: "",
-      icon_bg_color: "",
-      icon_bg_hover_color: "",
-      item_bg_color: "",
-      item_bg_hover_color: "",
-      link: "#",
-      target: false,
-      disableLink: false,
-      showContent: false,
-      showBulletIcon: true,
-      linkTarget: false
-    });
-    setAttributes({
-      repeaterBulletList: cloneIcons
-    });
-  };
-
-  const onRemove = (index, item) => {
-    let array = repeaterBulletList.map(bulletList => {
-      return bulletList;
-    }).filter((f, i) => i != index);
-    let active = array.map((arr, index) => {
-      return arr.default;
-    }).filter((f, i) => f != false);
-
-    if (active.length == 0) {// setAttributes({ tabIndex: index })
-    } // activeTab(index == 0 ? index : index - 1)
-
-
-    setAttributes({
-      repeaterBulletList: array
-    });
-  };
-
-  const onRepeaterChange = (attr, value, index) => {
-    const items = repeaterBulletList;
-    return items.map(function (item, currIndex) {
-      if (index == currIndex) {
-        item[attr] = value;
-      }
-
-      return item;
-    });
-  };
-
-  const showContent = (index, item) => {
-    return repeaterBulletList.map((item, i) => {
-      if (index == i) {
-        setAttributes({
-          repeatertabs: onRepeaterChange("showContent", item.showContent ? false : true, index)
-        });
-      } else {
-        setAttributes({
-          repeaterBulletList: onRepeaterChange("showContent", false, i)
-        });
-      }
-    });
-  };
-
-  const changeLabel = (item, index) => {
-    setAttributes({
-      repeaterBulletList: onRepeaterChange("label", item, index)
-    });
-  };
-
-  const toggleShowBulletIcon = (value, index) => {
-    setAttributes({
-      repeaterBulletList: onRepeaterChange("showBulletIcon", value, index)
-    });
-  };
-
-  const selectIconType = (value, index) => {
-    setAttributes({
-      repeaterBulletList: onRepeaterChange("image_icon", value, index)
-    });
-  };
-
-  const changeIcons = (value, index) => {
-    setAttributes({
-      repeaterBulletList: onRepeaterChange("icon", value, index)
-    });
-  };
-
-  const selectImage = (value, index) => {
-    setAttributes({
-      repeaterBulletList: onRepeaterChange("imageURL", value.url, index),
-      repeaterBulletList: onRepeaterChange("imageID", value.id, index)
-    });
-  };
-
-  const removeImage = index => {
-    setAttributes({
-      repeaterBulletList: onRepeaterChange("imageURL", '', index),
-      repeaterBulletList: onRepeaterChange("imageID", '', index)
-    });
-  };
-
-  const toggleIconLink = (value, index) => {
-    setAttributes({
-      repeaterBulletList: onRepeaterChange("disableLink", value, index)
-    });
-  };
-
-  const saveLink = (value, index) => {
-    setAttributes({
-      repeaterBulletList: onRepeaterChange("link", value, index)
-    });
-  };
-
-  const openLink = (value, index) => {
-    setAttributes({
-      repeaterBulletList: onRepeaterChange("linkTarget", value, index)
-    });
-  };
-
-  const onSortEndSingle = _ref3 => {
-    let {
-      oldIndex,
-      newIndex
-    } = _ref3;
-    let arrayItem = repeaterBulletList.map(cont => cont);
-    const array = (0,react_sortable_hoc__WEBPACK_IMPORTED_MODULE_4__.arrayMove)(arrayItem, oldIndex, newIndex);
-    setAttributes({
-      repeaterBulletList: array
-    });
-  };
-
-  const shouldCancelStart = e => {
-    // Prevent sorting from being triggered if target is input or button
-    if (['button', 'div', 'input', 'i', 'select', 'option'].indexOf(e.target.tagName.toLowerCase()) !== -1) {
-      return true; // Return true to cancel sorting
-    }
-  };
 
   const saveBulletIconStyles = value => {
     const newUpdate = bulletIconStyles.map((item, index) => {
@@ -14240,35 +13975,9 @@ function Edit(props) {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_5__.InspectorTab, {
     key: 'layout'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelBody, {
-    title: __("General Settings", "premium-blocks-for-gutenberg"),
-    className: "premium-panel-body",
-    initialOpen: true
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(SortableList, {
-    items: repeaterBulletList,
-    onSortEnd: (o, n) => onSortEndSingle(o, n),
-    onRemove: value => onRemove(value),
-    showContent: (value, i) => showContent(value, i),
-    changeLabel: (value, i) => changeLabel(value, i),
-    toggleShowBulletIcon: (value, i) => toggleShowBulletIcon(value, i),
-    selectIconType: (value, i) => selectIconType(value, i),
-    changeIcons: (value, i) => changeIcons(value, i),
-    selectImage: (value, i) => selectImage(value, i),
-    removeImage: (value, i) => removeImage(value, i),
-    toggleIconLink: (value, i) => toggleIconLink(value, i),
-    saveLink: (value, i) => saveLink(value, i),
-    openLink: (value, i) => openLink(value, i),
-    shouldCancelStart: shouldCancelStart
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "premium-bullet-list-btn__wrap"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
-    className: "premium-bullet-list-btn",
-    onClick: () => addNewBulletList()
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("i", {
-    className: "dashicons dashicons-plus premium-bullet-list-icon"
-  }), __("Add New Item", "premium-blocks-for-gutenberg")))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelBody, {
     title: __("Display Options", "premium-blocks-for-gutenberg"),
     className: "premium-panel-body",
-    initialOpen: false
+    initialOpen: true
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(SelectControl, {
     label: __("Layout Type", "premium-blocks-for-gutenberg"),
     options: LAYOUT,
@@ -14589,10 +14298,10 @@ function Edit(props) {
   return {
     deviceType: deviceType
   };
-}), withDispatch((dispatch, ownProps, _ref4) => {
+}), withDispatch((dispatch, ownProps, _ref) => {
   let {
     select
-  } = _ref4;
+  } = _ref;
   return {
     insertOnlyAllowedBlock() {
       const {
@@ -33103,6 +32812,9 @@ function Edit(props) {
     });
   }, []);
   const {
+    attributes
+  } = props;
+  const {
     blockId,
     hideDesktop,
     hideTablet,
@@ -33114,14 +32826,16 @@ function Edit(props) {
     containerShadow,
     containerHoverShadow
   } = props.attributes;
-  const INNER_BLOCKS_TEMPLATE = [["premium/icon"], ["premium/heading", {
-    title: __("Pricing Table", "premium-blocks-for-gutenberg"),
-    titleTag: "h2",
+  const INNER_BLOCKS_TEMPLATE = [["premium/icon", {
+    selectedIcon: attributes === null || attributes === void 0 ? void 0 : attributes.selectedIcon
+  }], ["premium/heading", {
+    title: attributes !== null && attributes !== void 0 && attributes.titleText ? attributes.titleText[0] : __("Title", "premium-blocks-for-gutenberg"),
+    titleTag: attributes !== null && attributes !== void 0 && attributes.titleTag ? attributes.titleTag.toLowerCase() : "h2",
     style: "none"
   }], ["premium/text", {
-    text: __("Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.", "premium-blocks-for-gutenberg")
+    text: attributes !== null && attributes !== void 0 && attributes.descText ? attributes.descText[0] : __("Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.", "premium-blocks-for-gutenberg")
   }], ["premium/button", {
-    btnText: __("Click Here", "premium-blocks-for-gutenberg")
+    btnText: attributes !== null && attributes !== void 0 && attributes.btnText ? attributes.btnText[0] : __("Click Here", "premium-blocks-for-gutenberg")
   }]];
 
   const loadStyles = () => {
@@ -43672,28 +43386,17 @@ const deprecatedContent = [{
   },
 
   migrate: attributes => {
-    var _attributes$titleStyl, _attributes$titleStyl2, _attributes$titleStyl3, _attributes$titleStyl4, _attributes$tableStyl, _attributes$tableStyl2, _attributes$tableStyl3, _attributes$tableStyl4, _attributes$tableStyl5, _attributes$featureSt, _attributes$featureSt2, _attributes$featureSt3, _attributes$tableStyl6, _attributes$tableStyl7, _attributes$tableStyl8, _attributes$tableStyl9, _attributes$tableStyl10, _attributes$buttonSty, _attributes$buttonSty2, _attributes$buttonSty3, _attributes$buttonSty4, _attributes$buttonSty5, _attributes$buttonSty6, _attributes$tableStyl11, _attributes$tableStyl12, _attributes$tableStyl13, _attributes$tableStyl14, _attributes$titleStyl5, _attributes$titleStyl6, _attributes$titleStyl7, _attributes$titleStyl8, _attributes$titleStyl9, _attributes$titleStyl10, _attributes$priceStyl, _attributes$priceStyl2, _attributes$priceStyl3, _attributes$priceStyl4, _attributes$priceStyl5, _attributes$priceStyl6, _attributes$featureSt4, _attributes$featureSt5, _attributes$featureSt6, _attributes$featureSt7, _attributes$featureSt8, _attributes$featureSt9, _attributes$descStyle, _attributes$descStyle2, _attributes$descStyle3, _attributes$descStyle4, _attributes$descStyle5, _attributes$descStyle6, _attributes$buttonSty7, _attributes$buttonSty8, _attributes$buttonSty9, _attributes$buttonSty10, _attributes$buttonSty11, _attributes$buttonSty12, _attributes$buttonSty13, _attributes$titleStyl11, _attributes$titleStyl12, _attributes$titleStyl13, _attributes$titleStyl14, _attributes$titleStyl15, _attributes$titleStyl16, _attributes$titleStyl17, _attributes$titleStyl18, _attributes$titleStyl19, _attributes$titleStyl20, _attributes$titleStyl21, _attributes$titleStyl22, _attributes$titleStyl23, _attributes$priceStyl7, _attributes$priceStyl8, _attributes$priceStyl9, _attributes$priceStyl10, _attributes$priceStyl11, _attributes$priceStyl12, _attributes$priceStyl13, _attributes$priceStyl14, _attributes$priceStyl15, _attributes$priceStyl16, _attributes$priceStyl17, _attributes$priceStyl18, _attributes$priceStyl19, _attributes$priceStyl20, _attributes$priceStyl21, _attributes$priceStyl22, _attributes$priceStyl23, _attributes$priceStyl24, _attributes$priceStyl25, _attributes$priceStyl26, _attributes$priceStyl27, _attributes$priceStyl28, _attributes$priceStyl29, _attributes$priceStyl30, _attributes$priceStyl31, _attributes$featureSt10, _attributes$featureSt11, _attributes$featureSt12, _attributes$featureSt13, _attributes$featureSt14, _attributes$featureSt15, _attributes$featureSt16, _attributes$featureSt17, _attributes$featureSt18, _attributes$featureSt19, _attributes$featureSt20, _attributes$featureSt21, _attributes$featureSt22, _attributes$descStyle7, _attributes$descStyle8, _attributes$descStyle9, _attributes$descStyle10, _attributes$descStyle11, _attributes$descStyle12, _attributes$descStyle13, _attributes$descStyle14, _attributes$descStyle15, _attributes$descStyle16, _attributes$descStyle17, _attributes$descStyle18, _attributes$buttonSty14, _attributes$buttonSty15, _attributes$buttonSty16, _attributes$buttonSty17, _attributes$buttonSty18, _attributes$buttonSty19, _attributes$buttonSty20, _attributes$buttonSty21, _attributes$buttonSty22, _attributes$buttonSty23, _attributes$buttonSty24, _attributes$buttonSty25, _attributes$buttonSty26, _attributes$badgeStyl, _attributes$badgeStyl2, _attributes$badgeStyl3, _attributes$badgeStyl4, _attributes$badgeStyl5, _attributes$badgeStyl6, _attributes$badgeStyl7, _attributes$badgeStyl8, _attributes$badgeStyl9, _attributes$badgeStyl10, _attributes$priceStyl32, _attributes$priceStyl33, _attributes$priceStyl34, _attributes$priceStyl35, _attributes$priceStyl36, _attributes$priceStyl37, _attributes$priceStyl38, _attributes$priceStyl39, _attributes$priceStyl40, _attributes$priceStyl41, _attributes$priceStyl42, _attributes$priceStyl43, _attributes$priceStyl44, _attributes$priceStyl45, _attributes$priceStyl46;
+    var _attributes$tableStyl, _attributes$tableStyl2, _attributes$tableStyl3, _attributes$tableStyl4, _attributes$tableStyl5, _attributes$tableStyl6, _attributes$tableStyl7, _attributes$tableStyl8, _attributes$tableStyl9, _attributes$tableStyl10, _attributes$tableStyl11, _attributes$tableStyl12, _attributes$tableStyl13, _attributes$tableStyl14;
 
     let newAttributes = {
       blockId: attributes.block_id ? "premium-pricing-table-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_1__.generateBlockId)(attributes.block_id) : '',
       badgeChecked: attributes.badgeChecked || true,
-      titleTextShadow: {
-        'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl = attributes.titleStyles[0]) === null || _attributes$titleStyl === void 0 ? void 0 : _attributes$titleStyl.titleShadowColor) || '',
-        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl2 = attributes.titleStyles[0]) === null || _attributes$titleStyl2 === void 0 ? void 0 : _attributes$titleStyl2.titleShadowBlur) || '',
-        'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl3 = attributes.titleStyles[0]) === null || _attributes$titleStyl3 === void 0 ? void 0 : _attributes$titleStyl3.titleShadowHorizontal) || '',
-        'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl4 = attributes.titleStyles[0]) === null || _attributes$titleStyl4 === void 0 ? void 0 : _attributes$titleStyl4.titleShadowVertical) || ''
-      },
       tableBoxShadow: {
         'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$tableStyl = attributes.tableStyles[0]) === null || _attributes$tableStyl === void 0 ? void 0 : _attributes$tableStyl.tableShadowColor) || '',
         'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$tableStyl2 = attributes.tableStyles[0]) === null || _attributes$tableStyl2 === void 0 ? void 0 : _attributes$tableStyl2.tableShadowBlur) || '',
         'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$tableStyl3 = attributes.tableStyles[0]) === null || _attributes$tableStyl3 === void 0 ? void 0 : _attributes$tableStyl3.tableShadowHorizontal) || '',
         'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$tableStyl4 = attributes.tableStyles[0]) === null || _attributes$tableStyl4 === void 0 ? void 0 : _attributes$tableStyl4.tableShadowVertical) || '',
         'position': (attributes === null || attributes === void 0 ? void 0 : (_attributes$tableStyl5 = attributes.tableStyles[0]) === null || _attributes$tableStyl5 === void 0 ? void 0 : _attributes$tableStyl5.tableShadowPosition) || ''
-      },
-      featureAlign: {
-        Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt = attributes.featureStyles[0]) === null || _attributes$featureSt === void 0 ? void 0 : _attributes$featureSt.featsAlign) || 'center',
-        Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt2 = attributes.featureStyles[0]) === null || _attributes$featureSt2 === void 0 ? void 0 : _attributes$featureSt2.featsAlign) || 'center',
-        Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt3 = attributes.featureStyles[0]) === null || _attributes$featureSt3 === void 0 ? void 0 : _attributes$featureSt3.featsAlign) || 'center'
       },
       tableBorder: {
         "borderType": (attributes === null || attributes === void 0 ? void 0 : (_attributes$tableStyl6 = attributes.tableStyles[0]) === null || _attributes$tableStyl6 === void 0 ? void 0 : _attributes$tableStyl6.borderType) || '',
@@ -43739,50 +43442,6 @@ const deprecatedContent = [{
           }
         }
       },
-      buttonBorder: {
-        "borderType": (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty = attributes.buttonStyles[0]) === null || _attributes$buttonSty === void 0 ? void 0 : _attributes$buttonSty.btnBorderType) || '',
-        "borderColor": (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty2 = attributes.buttonStyles[0]) === null || _attributes$buttonSty2 === void 0 ? void 0 : _attributes$buttonSty2.btnBorderColor) || '',
-        "borderWidth": {
-          Desktop: {
-            top: (attributes === null || attributes === void 0 ? void 0 : attributes.btnBorderTop) || '',
-            right: (attributes === null || attributes === void 0 ? void 0 : attributes.btnBorderRight) || '',
-            bottom: (attributes === null || attributes === void 0 ? void 0 : attributes.btnBorderBottom) || '',
-            left: (attributes === null || attributes === void 0 ? void 0 : attributes.btnBorderLeft) || ''
-          },
-          Tablet: {
-            top: '',
-            right: '',
-            bottom: '',
-            left: ''
-          },
-          Mobile: {
-            top: '',
-            right: '',
-            bottom: '',
-            left: ''
-          }
-        },
-        "borderRadius": {
-          Desktop: {
-            top: (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty3 = attributes.buttonStyles[0]) === null || _attributes$buttonSty3 === void 0 ? void 0 : _attributes$buttonSty3.btnBorderRadius) || '',
-            right: (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty4 = attributes.buttonStyles[0]) === null || _attributes$buttonSty4 === void 0 ? void 0 : _attributes$buttonSty4.btnBorderRadius) || '',
-            bottom: (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty5 = attributes.buttonStyles[0]) === null || _attributes$buttonSty5 === void 0 ? void 0 : _attributes$buttonSty5.btnBorderRadius) || '',
-            left: (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty6 = attributes.buttonStyles[0]) === null || _attributes$buttonSty6 === void 0 ? void 0 : _attributes$buttonSty6.btnBorderRadius) || ''
-          },
-          Tablet: {
-            top: '',
-            right: '',
-            bottom: '',
-            left: ''
-          },
-          Mobile: {
-            top: '',
-            right: '',
-            bottom: '',
-            left: ''
-          }
-        }
-      },
       tablePadding: {
         Desktop: {
           top: (attributes === null || attributes === void 0 ? void 0 : (_attributes$tableStyl11 = attributes.tableStyles[0]) === null || _attributes$tableStyl11 === void 0 ? void 0 : _attributes$tableStyl11.tablePadding) || '',
@@ -43803,491 +43462,6 @@ const deprecatedContent = [{
           left: ''
         },
         unit: 'px'
-      },
-      titlePadding: {
-        Desktop: {
-          top: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl5 = attributes.titleStyles[0]) === null || _attributes$titleStyl5 === void 0 ? void 0 : _attributes$titleStyl5.titlePadding) || '',
-          right: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl6 = attributes.titleStyles[0]) === null || _attributes$titleStyl6 === void 0 ? void 0 : _attributes$titleStyl6.titlePadding) || '',
-          bottom: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl7 = attributes.titleStyles[0]) === null || _attributes$titleStyl7 === void 0 ? void 0 : _attributes$titleStyl7.titlePadding) || '',
-          left: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl8 = attributes.titleStyles[0]) === null || _attributes$titleStyl8 === void 0 ? void 0 : _attributes$titleStyl8.titlePadding) || ''
-        },
-        Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        unit: 'px'
-      },
-      titleMargin: {
-        Desktop: {
-          top: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl9 = attributes.titleStyles[0]) === null || _attributes$titleStyl9 === void 0 ? void 0 : _attributes$titleStyl9.titleMarginT) || 20,
-          right: '',
-          bottom: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl10 = attributes.titleStyles[0]) === null || _attributes$titleStyl10 === void 0 ? void 0 : _attributes$titleStyl10.titleMarginB) || 20,
-          left: ''
-        },
-        Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        unit: 'px'
-      },
-      pricePadding: {
-        Desktop: {
-          top: (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl = attributes.priceStyles[0]) === null || _attributes$priceStyl === void 0 ? void 0 : _attributes$priceStyl.pricePadding) || '',
-          right: (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl2 = attributes.priceStyles[0]) === null || _attributes$priceStyl2 === void 0 ? void 0 : _attributes$priceStyl2.pricePadding) || '',
-          bottom: (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl3 = attributes.priceStyles[0]) === null || _attributes$priceStyl3 === void 0 ? void 0 : _attributes$priceStyl3.pricePadding) || '',
-          left: (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl4 = attributes.priceStyles[0]) === null || _attributes$priceStyl4 === void 0 ? void 0 : _attributes$priceStyl4.pricePadding) || ''
-        },
-        Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        unit: 'px'
-      },
-      priceMargin: {
-        Desktop: {
-          top: (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl5 = attributes.priceStyles[0]) === null || _attributes$priceStyl5 === void 0 ? void 0 : _attributes$priceStyl5.priceMarginT) || '',
-          right: '',
-          bottom: (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl6 = attributes.priceStyles[0]) === null || _attributes$priceStyl6 === void 0 ? void 0 : _attributes$priceStyl6.priceMarginB) || 10,
-          left: ''
-        },
-        Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        unit: 'px'
-      },
-      featuresListPadding: {
-        Desktop: {
-          top: (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt4 = attributes.featureStyles[0]) === null || _attributes$featureSt4 === void 0 ? void 0 : _attributes$featureSt4.listPadding) || '',
-          right: (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt5 = attributes.featureStyles[0]) === null || _attributes$featureSt5 === void 0 ? void 0 : _attributes$featureSt5.listPadding) || '',
-          bottom: (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt6 = attributes.featureStyles[0]) === null || _attributes$featureSt6 === void 0 ? void 0 : _attributes$featureSt6.listPadding) || '',
-          left: (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt7 = attributes.featureStyles[0]) === null || _attributes$featureSt7 === void 0 ? void 0 : _attributes$featureSt7.listPadding) || ''
-        },
-        Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        unit: 'px'
-      },
-      featuresListMargin: {
-        Desktop: {
-          top: (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt8 = attributes.featureStyles[0]) === null || _attributes$featureSt8 === void 0 ? void 0 : _attributes$featureSt8.listMarginT) || '',
-          right: '',
-          bottom: (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt9 = attributes.featureStyles[0]) === null || _attributes$featureSt9 === void 0 ? void 0 : _attributes$featureSt9.listMarginB) || 20,
-          left: ''
-        },
-        Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        unit: 'px'
-      },
-      descriptionPadding: {
-        Desktop: {
-          top: (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle = attributes.descStyles[0]) === null || _attributes$descStyle === void 0 ? void 0 : _attributes$descStyle.descPadding) || '',
-          right: (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle2 = attributes.descStyles[0]) === null || _attributes$descStyle2 === void 0 ? void 0 : _attributes$descStyle2.descPadding) || '',
-          bottom: (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle3 = attributes.descStyles[0]) === null || _attributes$descStyle3 === void 0 ? void 0 : _attributes$descStyle3.descPadding) || '',
-          left: (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle4 = attributes.descStyles[0]) === null || _attributes$descStyle4 === void 0 ? void 0 : _attributes$descStyle4.descPadding) || ''
-        },
-        Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        unit: 'px'
-      },
-      descriptionMargin: {
-        Desktop: {
-          top: (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle5 = attributes.descStyles[0]) === null || _attributes$descStyle5 === void 0 ? void 0 : _attributes$descStyle5.descMarginT) || '',
-          right: '',
-          bottom: (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle6 = attributes.descStyles[0]) === null || _attributes$descStyle6 === void 0 ? void 0 : _attributes$descStyle6.descMarginB) || 30,
-          left: ''
-        },
-        Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        unit: 'px'
-      },
-      buttonPadding: {
-        Desktop: {
-          top: (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty7 = attributes.buttonStyles[0]) === null || _attributes$buttonSty7 === void 0 ? void 0 : _attributes$buttonSty7.btnPadding) || 10,
-          right: (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty8 = attributes.buttonStyles[0]) === null || _attributes$buttonSty8 === void 0 ? void 0 : _attributes$buttonSty8.btnPadding) || 10,
-          bottom: (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty9 = attributes.buttonStyles[0]) === null || _attributes$buttonSty9 === void 0 ? void 0 : _attributes$buttonSty9.btnPadding) || 10,
-          left: (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty10 = attributes.buttonStyles[0]) === null || _attributes$buttonSty10 === void 0 ? void 0 : _attributes$buttonSty10.btnPadding) || 10
-        },
-        Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        unit: (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty11 = attributes.buttonStyles[0]) === null || _attributes$buttonSty11 === void 0 ? void 0 : _attributes$buttonSty11.btnPaddingU) || 'px'
-      },
-      buttonMargin: {
-        Desktop: {
-          top: (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty12 = attributes.buttonStyles[0]) === null || _attributes$buttonSty12 === void 0 ? void 0 : _attributes$buttonSty12.btnMarginT) || '',
-          right: '',
-          bottom: (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty13 = attributes.buttonStyles[0]) === null || _attributes$buttonSty13 === void 0 ? void 0 : _attributes$buttonSty13.btnMarginB) || '',
-          left: ''
-        },
-        Tablet: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        Mobile: {
-          top: '',
-          right: '',
-          bottom: '',
-          left: ''
-        },
-        unit: 'px'
-      },
-      titleTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl11 = attributes.titleStyles[0]) === null || _attributes$titleStyl11 === void 0 ? void 0 : _attributes$titleStyl11.titleWeight) || 'Default',
-        'fontStyle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl12 = attributes.titleStyles[0]) === null || _attributes$titleStyl12 === void 0 ? void 0 : _attributes$titleStyl12.titleStyle) || '',
-        'textTransform': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl13 = attributes.titleStyles[0]) === null || _attributes$titleStyl13 === void 0 ? void 0 : _attributes$titleStyl13.titleUpper) || '',
-        'fontFamily': 'Default',
-        letterSpacing: {
-          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl14 = attributes.titleStyles[0]) === null || _attributes$titleStyl14 === void 0 ? void 0 : _attributes$titleStyl14.titleLetter) || '',
-          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl15 = attributes.titleStyles[0]) === null || _attributes$titleStyl15 === void 0 ? void 0 : _attributes$titleStyl15.titleLetter) || '',
-          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl16 = attributes.titleStyles[0]) === null || _attributes$titleStyl16 === void 0 ? void 0 : _attributes$titleStyl16.titleLetter) || '',
-          unit: "px"
-        },
-        lineHeight: {
-          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl17 = attributes.titleStyles[0]) === null || _attributes$titleStyl17 === void 0 ? void 0 : _attributes$titleStyl17.titleLine) || '',
-          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl18 = attributes.titleStyles[0]) === null || _attributes$titleStyl18 === void 0 ? void 0 : _attributes$titleStyl18.titleLine) || '',
-          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl19 = attributes.titleStyles[0]) === null || _attributes$titleStyl19 === void 0 ? void 0 : _attributes$titleStyl19.titleLine) || '',
-          unit: "px"
-        },
-        'textDecoration': '',
-        'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl20 = attributes.titleStyles[0]) === null || _attributes$titleStyl20 === void 0 ? void 0 : _attributes$titleStyl20.titleSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl21 = attributes.titleStyles[0]) === null || _attributes$titleStyl21 === void 0 ? void 0 : _attributes$titleStyl21.titleSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl22 = attributes.titleStyles[0]) === null || _attributes$titleStyl22 === void 0 ? void 0 : _attributes$titleStyl22.titleSizeMobile) || '',
-          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl23 = attributes.titleStyles[0]) === null || _attributes$titleStyl23 === void 0 ? void 0 : _attributes$titleStyl23.titleSizeUnit) || 'px'
-        }
-      },
-      slashTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl7 = attributes.priceStyles[0]) === null || _attributes$priceStyl7 === void 0 ? void 0 : _attributes$priceStyl7.slashWeight) || 'Default',
-        'fontStyle': '',
-        'textTransform': '',
-        'fontFamily': 'Default',
-        'textDecoration': '',
-        letterSpacing: {
-          Desktop: '',
-          Tablet: '',
-          Mobile: '',
-          unit: "px"
-        },
-        lineHeight: {
-          Desktop: '',
-          Tablet: '',
-          Mobile: '',
-          unit: "px"
-        },
-        'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl8 = attributes.priceStyles[0]) === null || _attributes$priceStyl8 === void 0 ? void 0 : _attributes$priceStyl8.slashSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl9 = attributes.priceStyles[0]) === null || _attributes$priceStyl9 === void 0 ? void 0 : _attributes$priceStyl9.slashSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl10 = attributes.priceStyles[0]) === null || _attributes$priceStyl10 === void 0 ? void 0 : _attributes$priceStyl10.slashSizeMobile) || '',
-          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl11 = attributes.priceStyles[0]) === null || _attributes$priceStyl11 === void 0 ? void 0 : _attributes$priceStyl11.slashSizeUnit) || 'px'
-        }
-      },
-      currTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl12 = attributes.priceStyles[0]) === null || _attributes$priceStyl12 === void 0 ? void 0 : _attributes$priceStyl12.currWeight) || 'Default',
-        'fontStyle': '',
-        'textTransform': '',
-        'fontFamily': 'Default',
-        'textDecoration': '',
-        letterSpacing: {
-          Desktop: '',
-          Tablet: '',
-          Mobile: '',
-          unit: "px"
-        },
-        lineHeight: {
-          Desktop: '',
-          Tablet: '',
-          Mobile: '',
-          unit: "px"
-        },
-        'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl13 = attributes.priceStyles[0]) === null || _attributes$priceStyl13 === void 0 ? void 0 : _attributes$priceStyl13.currSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl14 = attributes.priceStyles[0]) === null || _attributes$priceStyl14 === void 0 ? void 0 : _attributes$priceStyl14.currSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl15 = attributes.priceStyles[0]) === null || _attributes$priceStyl15 === void 0 ? void 0 : _attributes$priceStyl15.currSizeMobile) || '',
-          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl16 = attributes.priceStyles[0]) === null || _attributes$priceStyl16 === void 0 ? void 0 : _attributes$priceStyl16.currSizeUnit) || 'px'
-        }
-      },
-      priceTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl17 = attributes.priceStyles[0]) === null || _attributes$priceStyl17 === void 0 ? void 0 : _attributes$priceStyl17.valWeight) || 'Default',
-        'fontStyle': '',
-        'textTransform': '',
-        'fontFamily': 'Default',
-        'textDecoration': '',
-        letterSpacing: {
-          Desktop: '',
-          Tablet: '',
-          Mobile: '',
-          unit: "px"
-        },
-        lineHeight: {
-          Desktop: '',
-          Tablet: '',
-          Mobile: '',
-          unit: "px"
-        },
-        'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl18 = attributes.priceStyles[0]) === null || _attributes$priceStyl18 === void 0 ? void 0 : _attributes$priceStyl18.valSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl19 = attributes.priceStyles[0]) === null || _attributes$priceStyl19 === void 0 ? void 0 : _attributes$priceStyl19.valSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl20 = attributes.priceStyles[0]) === null || _attributes$priceStyl20 === void 0 ? void 0 : _attributes$priceStyl20.valSizeMobile) || '',
-          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl21 = attributes.priceStyles[0]) === null || _attributes$priceStyl21 === void 0 ? void 0 : _attributes$priceStyl21.valSizeUnit) || 'px'
-        }
-      },
-      dividerTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl22 = attributes.priceStyles[0]) === null || _attributes$priceStyl22 === void 0 ? void 0 : _attributes$priceStyl22.divWeight) || 'Default',
-        'fontStyle': '',
-        'textTransform': '',
-        'fontFamily': 'Default',
-        'textDecoration': '',
-        letterSpacing: {
-          Desktop: '',
-          Tablet: '',
-          Mobile: '',
-          unit: "px"
-        },
-        lineHeight: {
-          Desktop: '',
-          Tablet: '',
-          Mobile: '',
-          unit: "px"
-        },
-        'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl23 = attributes.priceStyles[0]) === null || _attributes$priceStyl23 === void 0 ? void 0 : _attributes$priceStyl23.divSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl24 = attributes.priceStyles[0]) === null || _attributes$priceStyl24 === void 0 ? void 0 : _attributes$priceStyl24.divSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl25 = attributes.priceStyles[0]) === null || _attributes$priceStyl25 === void 0 ? void 0 : _attributes$priceStyl25.divSizeMobile) || '',
-          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl26 = attributes.priceStyles[0]) === null || _attributes$priceStyl26 === void 0 ? void 0 : _attributes$priceStyl26.divSizeUnit) || 'px'
-        }
-      },
-      durationTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl27 = attributes.priceStyles[0]) === null || _attributes$priceStyl27 === void 0 ? void 0 : _attributes$priceStyl27.durWeight) || 'Default',
-        'fontStyle': '',
-        'textTransform': '',
-        'fontFamily': 'Default',
-        'textDecoration': '',
-        letterSpacing: {
-          Desktop: '',
-          Tablet: '',
-          Mobile: '',
-          unit: "px"
-        },
-        lineHeight: {
-          Desktop: '',
-          Tablet: '',
-          Mobile: '',
-          unit: "px"
-        },
-        'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl28 = attributes.priceStyles[0]) === null || _attributes$priceStyl28 === void 0 ? void 0 : _attributes$priceStyl28.durSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl29 = attributes.priceStyles[0]) === null || _attributes$priceStyl29 === void 0 ? void 0 : _attributes$priceStyl29.durSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl30 = attributes.priceStyles[0]) === null || _attributes$priceStyl30 === void 0 ? void 0 : _attributes$priceStyl30.durSizeMobile) || '',
-          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl31 = attributes.priceStyles[0]) === null || _attributes$priceStyl31 === void 0 ? void 0 : _attributes$priceStyl31.durSizeUnit) || 'px'
-        }
-      },
-      listTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt10 = attributes.featureStyles[0]) === null || _attributes$featureSt10 === void 0 ? void 0 : _attributes$featureSt10.listWeight) || 'Default',
-        'fontStyle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt11 = attributes.featureStyles[0]) === null || _attributes$featureSt11 === void 0 ? void 0 : _attributes$featureSt11.listItemsStyle) || '',
-        'textTransform': (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt12 = attributes.featureStyles[0]) === null || _attributes$featureSt12 === void 0 ? void 0 : _attributes$featureSt12.listUpper) || '',
-        'fontFamily': 'Default',
-        letterSpacing: {
-          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt13 = attributes.featureStyles[0]) === null || _attributes$featureSt13 === void 0 ? void 0 : _attributes$featureSt13.listLetter) || '',
-          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt14 = attributes.featureStyles[0]) === null || _attributes$featureSt14 === void 0 ? void 0 : _attributes$featureSt14.listLetter) || '',
-          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt15 = attributes.featureStyles[0]) === null || _attributes$featureSt15 === void 0 ? void 0 : _attributes$featureSt15.listLetter) || '',
-          unit: "px"
-        },
-        lineHeight: {
-          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt16 = attributes.featureStyles[0]) === null || _attributes$featureSt16 === void 0 ? void 0 : _attributes$featureSt16.listLine) || '',
-          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt17 = attributes.featureStyles[0]) === null || _attributes$featureSt17 === void 0 ? void 0 : _attributes$featureSt17.listLine) || '',
-          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt18 = attributes.featureStyles[0]) === null || _attributes$featureSt18 === void 0 ? void 0 : _attributes$featureSt18.listLine) || '',
-          unit: "px"
-        },
-        'textDecoration': '',
-        'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt19 = attributes.featureStyles[0]) === null || _attributes$featureSt19 === void 0 ? void 0 : _attributes$featureSt19.listSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt20 = attributes.featureStyles[0]) === null || _attributes$featureSt20 === void 0 ? void 0 : _attributes$featureSt20.listSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt21 = attributes.featureStyles[0]) === null || _attributes$featureSt21 === void 0 ? void 0 : _attributes$featureSt21.listSizeMobile) || '',
-          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$featureSt22 = attributes.featureStyles[0]) === null || _attributes$featureSt22 === void 0 ? void 0 : _attributes$featureSt22.listSizeUnit) || 'px'
-        }
-      },
-      descTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle7 = attributes.descStyles[0]) === null || _attributes$descStyle7 === void 0 ? void 0 : _attributes$descStyle7.descWeight) || 'Default',
-        'fontStyle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle8 = attributes.descStyles[0]) === null || _attributes$descStyle8 === void 0 ? void 0 : _attributes$descStyle8.descStyle) || '',
-        'textTransform': '',
-        'fontFamily': 'Default',
-        'textDecoration': '',
-        letterSpacing: {
-          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle9 = attributes.descStyles[0]) === null || _attributes$descStyle9 === void 0 ? void 0 : _attributes$descStyle9.descLetter) || '',
-          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle10 = attributes.descStyles[0]) === null || _attributes$descStyle10 === void 0 ? void 0 : _attributes$descStyle10.descLetter) || '',
-          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle11 = attributes.descStyles[0]) === null || _attributes$descStyle11 === void 0 ? void 0 : _attributes$descStyle11.descLetter) || '',
-          unit: "px"
-        },
-        lineHeight: {
-          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle12 = attributes.descStyles[0]) === null || _attributes$descStyle12 === void 0 ? void 0 : _attributes$descStyle12.descLine) || '',
-          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle13 = attributes.descStyles[0]) === null || _attributes$descStyle13 === void 0 ? void 0 : _attributes$descStyle13.descLine) || '',
-          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle14 = attributes.descStyles[0]) === null || _attributes$descStyle14 === void 0 ? void 0 : _attributes$descStyle14.descLine) || '',
-          unit: "px"
-        },
-        'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle15 = attributes.descStyles[0]) === null || _attributes$descStyle15 === void 0 ? void 0 : _attributes$descStyle15.descSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle16 = attributes.descStyles[0]) === null || _attributes$descStyle16 === void 0 ? void 0 : _attributes$descStyle16.descSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle17 = attributes.descStyles[0]) === null || _attributes$descStyle17 === void 0 ? void 0 : _attributes$descStyle17.descSizeMobile) || '',
-          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$descStyle18 = attributes.descStyles[0]) === null || _attributes$descStyle18 === void 0 ? void 0 : _attributes$descStyle18.descSizeUnit) || 'px'
-        }
-      },
-      buttonTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty14 = attributes.buttonStyles[0]) === null || _attributes$buttonSty14 === void 0 ? void 0 : _attributes$buttonSty14.btnWeight) || 'Default',
-        'fontStyle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty15 = attributes.buttonStyles[0]) === null || _attributes$buttonSty15 === void 0 ? void 0 : _attributes$buttonSty15.btnStyle) || '',
-        'textTransform': (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty16 = attributes.buttonStyles[0]) === null || _attributes$buttonSty16 === void 0 ? void 0 : _attributes$buttonSty16.btnUpper) || '',
-        'fontFamily': 'Default',
-        letterSpacing: {
-          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty17 = attributes.buttonStyles[0]) === null || _attributes$buttonSty17 === void 0 ? void 0 : _attributes$buttonSty17.btnLetter) || '',
-          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty18 = attributes.buttonStyles[0]) === null || _attributes$buttonSty18 === void 0 ? void 0 : _attributes$buttonSty18.btnLetter) || '',
-          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty19 = attributes.buttonStyles[0]) === null || _attributes$buttonSty19 === void 0 ? void 0 : _attributes$buttonSty19.btnLetter) || '',
-          unit: "px"
-        },
-        lineHeight: {
-          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty20 = attributes.buttonStyles[0]) === null || _attributes$buttonSty20 === void 0 ? void 0 : _attributes$buttonSty20.btnLine) || '',
-          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty21 = attributes.buttonStyles[0]) === null || _attributes$buttonSty21 === void 0 ? void 0 : _attributes$buttonSty21.btnLine) || '',
-          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty22 = attributes.buttonStyles[0]) === null || _attributes$buttonSty22 === void 0 ? void 0 : _attributes$buttonSty22.btnLine) || '',
-          unit: "px"
-        },
-        'textDecoration': '',
-        'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty23 = attributes.buttonStyles[0]) === null || _attributes$buttonSty23 === void 0 ? void 0 : _attributes$buttonSty23.btnSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty24 = attributes.buttonStyles[0]) === null || _attributes$buttonSty24 === void 0 ? void 0 : _attributes$buttonSty24.btnSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty25 = attributes.buttonStyles[0]) === null || _attributes$buttonSty25 === void 0 ? void 0 : _attributes$buttonSty25.btnSizeMobile) || '',
-          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$buttonSty26 = attributes.buttonStyles[0]) === null || _attributes$buttonSty26 === void 0 ? void 0 : _attributes$buttonSty26.btnSizeUnit) || 'px'
-        }
-      },
-      badgeTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$badgeStyl = attributes.badgeStyles[0]) === null || _attributes$badgeStyl === void 0 ? void 0 : _attributes$badgeStyl.badgeWeight) || 'Default',
-        'fontStyle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$badgeStyl2 = attributes.badgeStyles[0]) === null || _attributes$badgeStyl2 === void 0 ? void 0 : _attributes$badgeStyl2.badgeStyle) || '',
-        'textTransform': (attributes === null || attributes === void 0 ? void 0 : (_attributes$badgeStyl3 = attributes.badgeStyles[0]) === null || _attributes$badgeStyl3 === void 0 ? void 0 : _attributes$badgeStyl3.badgeUpper) || '',
-        'fontFamily': 'Default',
-        'textDecoration': '',
-        letterSpacing: {
-          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$badgeStyl4 = attributes.badgeStyles[0]) === null || _attributes$badgeStyl4 === void 0 ? void 0 : _attributes$badgeStyl4.badgeLetter) || '',
-          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$badgeStyl5 = attributes.badgeStyles[0]) === null || _attributes$badgeStyl5 === void 0 ? void 0 : _attributes$badgeStyl5.badgeLetter) || '',
-          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$badgeStyl6 = attributes.badgeStyles[0]) === null || _attributes$badgeStyl6 === void 0 ? void 0 : _attributes$badgeStyl6.badgeLetter) || '',
-          unit: "px"
-        },
-        lineHeight: {
-          Desktop: '',
-          Tablet: '',
-          Mobile: '',
-          unit: "px"
-        },
-        'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$badgeStyl7 = attributes.badgeStyles[0]) === null || _attributes$badgeStyl7 === void 0 ? void 0 : _attributes$badgeStyl7.badgeTextSize) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$badgeStyl8 = attributes.badgeStyles[0]) === null || _attributes$badgeStyl8 === void 0 ? void 0 : _attributes$badgeStyl8.badgeSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$badgeStyl9 = attributes.badgeStyles[0]) === null || _attributes$badgeStyl9 === void 0 ? void 0 : _attributes$badgeStyl9.badgeSizeMobile) || '',
-          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$badgeStyl10 = attributes.badgeStyles[0]) === null || _attributes$badgeStyl10 === void 0 ? void 0 : _attributes$badgeStyl10.badgeTextUnit) || 'px'
-        }
-      },
-      slashVAlign: {
-        Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl32 = attributes.priceStyles[0]) === null || _attributes$priceStyl32 === void 0 ? void 0 : _attributes$priceStyl32.slashV) || 'center',
-        Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl33 = attributes.priceStyles[0]) === null || _attributes$priceStyl33 === void 0 ? void 0 : _attributes$priceStyl33.slashV) || 'center',
-        Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl34 = attributes.priceStyles[0]) === null || _attributes$priceStyl34 === void 0 ? void 0 : _attributes$priceStyl34.slashV) || 'center'
-      },
-      currVAlign: {
-        Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl35 = attributes.priceStyles[0]) === null || _attributes$priceStyl35 === void 0 ? void 0 : _attributes$priceStyl35.currV) || 'center',
-        Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl36 = attributes.priceStyles[0]) === null || _attributes$priceStyl36 === void 0 ? void 0 : _attributes$priceStyl36.currV) || 'center',
-        Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl37 = attributes.priceStyles[0]) === null || _attributes$priceStyl37 === void 0 ? void 0 : _attributes$priceStyl37.currV) || 'center'
-      },
-      valVAlign: {
-        Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl38 = attributes.priceStyles[0]) === null || _attributes$priceStyl38 === void 0 ? void 0 : _attributes$priceStyl38.valV) || 'center',
-        Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl39 = attributes.priceStyles[0]) === null || _attributes$priceStyl39 === void 0 ? void 0 : _attributes$priceStyl39.valV) || 'center',
-        Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl40 = attributes.priceStyles[0]) === null || _attributes$priceStyl40 === void 0 ? void 0 : _attributes$priceStyl40.valV) || 'center'
-      },
-      divVAlign: {
-        Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl41 = attributes.priceStyles[0]) === null || _attributes$priceStyl41 === void 0 ? void 0 : _attributes$priceStyl41.divV) || 'center',
-        Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl42 = attributes.priceStyles[0]) === null || _attributes$priceStyl42 === void 0 ? void 0 : _attributes$priceStyl42.divV) || 'center',
-        Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl43 = attributes.priceStyles[0]) === null || _attributes$priceStyl43 === void 0 ? void 0 : _attributes$priceStyl43.divV) || 'center'
-      },
-      durVAlign: {
-        Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl44 = attributes.priceStyles[0]) === null || _attributes$priceStyl44 === void 0 ? void 0 : _attributes$priceStyl44.durV) || 'center',
-        Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl45 = attributes.priceStyles[0]) === null || _attributes$priceStyl45 === void 0 ? void 0 : _attributes$priceStyl45.durV) || 'center',
-        Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl46 = attributes.priceStyles[0]) === null || _attributes$priceStyl46 === void 0 ? void 0 : _attributes$priceStyl46.durV) || 'center'
       }
     };
     return Object.assign(attributes, newAttributes);
@@ -46057,6 +45231,8 @@ const {
 } = wp.blockEditor;
 
 function PremiumPricingTable(props) {
+  var _attributes$title, _attributes$titleStyl, _attributes$priceStyl, _attributes$priceStyl2, _attributes$priceStyl3, _attributes$priceStyl4, _attributes$priceStyl5, _attributes$desc, _attributes$badgeStyl;
+
   const {
     setAttributes,
     className,
@@ -46071,6 +45247,9 @@ function PremiumPricingTable(props) {
     });
   }, []);
   const {
+    attributes
+  } = props;
+  const {
     blockId,
     hideDesktop,
     hideTablet,
@@ -46078,24 +45257,40 @@ function PremiumPricingTable(props) {
     tableStyles,
     tableBoxShadow,
     tableBorder,
-    tablePadding,
-    badgeTypography
+    tablePadding
   } = props.attributes;
   const INNER_BLOCKS_TEMPLATE = [["premium/heading", {
-    title: __("Pricing Table", "premium-blocks-for-gutenberg"),
-    titleTag: "h2",
+    title: attributes.title ? (_attributes$title = attributes.title) === null || _attributes$title === void 0 ? void 0 : _attributes$title[0] : __("Pricing Table", "premium-blocks-for-gutenberg"),
+    titleTag: attributes !== null && attributes !== void 0 && (_attributes$titleStyl = attributes.titleStyles) !== null && _attributes$titleStyl !== void 0 && _attributes$titleStyl.titleTag ? attributes.titleStyles.titleTag.toLowerCase() : "h2",
     style: "none"
-  }], ["premium/price"], ["premium/bullet-list", {
+  }], ["premium/price", {
+    slashedPriceText: attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl = attributes.priceStyles) === null || _attributes$priceStyl === void 0 ? void 0 : _attributes$priceStyl[0].slashPrice,
+    currencyText: attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl2 = attributes.priceStyles) === null || _attributes$priceStyl2 === void 0 ? void 0 : _attributes$priceStyl2[0].currPrice,
+    priceText: attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl3 = attributes.priceStyles) === null || _attributes$priceStyl3 === void 0 ? void 0 : _attributes$priceStyl3[0].valPrice,
+    dividerText: attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl4 = attributes.priceStyles) === null || _attributes$priceStyl4 === void 0 ? void 0 : _attributes$priceStyl4[0].divPrice,
+    durationText: attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl5 = attributes.priceStyles) === null || _attributes$priceStyl5 === void 0 ? void 0 : _attributes$priceStyl5[0].durPrice
+  }], ["premium/bullet-list", {
     align: {
       "Desktop": "center",
       "Tablet": "",
       "Mobile": ""
-    }
+    },
+    repeaterBulletList: (attributes === null || attributes === void 0 ? void 0 : attributes.listItems) && attributes.listItems.map((item, index) => {
+      var _item$props$children;
+
+      return {
+        id: index,
+        label: (_item$props$children = item.props.children) === null || _item$props$children === void 0 ? void 0 : _item$props$children[0],
+        showBulletIcon: false
+      };
+    })
   }], ["premium/text", {
-    text: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit", "premium-blocks-for-gutenberg")
+    text: attributes !== null && attributes !== void 0 && attributes.desc ? (_attributes$desc = attributes.desc) === null || _attributes$desc === void 0 ? void 0 : _attributes$desc[0] : __("Lorem ipsum dolor sit amet, consectetur adipiscing elit", "premium-blocks-for-gutenberg")
   }], ["premium/button", {
-    btnText: __("Get Started", "premium-blocks-for-gutenberg")
-  }], ["premium/badge"]];
+    btnText: attributes !== null && attributes !== void 0 && attributes.btnText ? attributes.btnText : __("Get Started", "premium-blocks-for-gutenberg")
+  }], ["premium/badge", {
+    text: attributes === null || attributes === void 0 ? void 0 : (_attributes$badgeStyl = attributes.badgeStyles) === null || _attributes$badgeStyl === void 0 ? void 0 : _attributes$badgeStyl[0].badgeText
+  }]];
 
   const saveTableStyles = value => {
     const newUpdate = tableStyles.map((item, indexTable) => {
@@ -84342,7 +83537,7 @@ module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/h
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/icon-box","title":"Icon Box","category":"premium-blocks","attributes":{"blockId":{"type":"string"},"iconType":{"type":"string","default":"dash"},"borderIconBox":{"type":"boolean","default":false},"btnBorderIconBox":{"type":"boolean","default":false},"align":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"iconImage":{"type":"string","default":"icon"},"iconImgId":{"type":"string"},"iconImgUrl":{"type":"string"},"hoverEffect":{"type":"string","default":"none"},"iconChecked":{"type":"boolean","default":true},"iconPos":{"type":"string","default":"block"},"iconHPos":{"type":"string","default":"before"},"iconVPos":{"type":"string","default":"center"},"iconSize":{"type":"object","default":{"Desktop":"40","Tablet":"","Mobile":"","unit":"px"}},"iconRadius":{"type":"number"},"iconColor":{"type":"string","default":""},"iconBackColor":{"type":"string"},"selectedIcon":{"type":"string","default":"dashicons dashicons-admin-site"},"titleChecked":{"type":"boolean","default":true},"titleText":{"type":"array","source":"children","selector":".premium-icon-box__title","default":"Awesome Title"},"descText":{"type":"array","source":"children","selector":".premium-icon-box__desc","default":"Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."},"descChecked":{"type":"boolean","default":true},"btnChecked":{"type":"boolean","default":true},"btnEffect":{"type":"string","default":"none"},"effectDir":{"type":"string","default":"top"},"btnTarget":{"type":"boolean","default":false},"btnText":{"type":"array","source":"children","selector":".premium-icon-box__btn","default":"Click Here"},"btnLink":{"type":"string","source":"attribute","attribute":"href","selector":".premium-icon-box__btn"},"btnHoverBorder":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"iconOpacity":{"type":"number","default":"1"},"titleTag":{"type":"string","default":"h2"},"titleStyles":{"type":"array","default":[{"titleColor":""}]},"descStyles":{"type":"array","default":[{"descColor":""}]},"btnStyles":{"type":"array","default":[{"btnColor":"","btnHoverColor":"","btnBack":"","btnHoverBack":""}]},"containerMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"containerPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"titleMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"descMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"btnMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"btnPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"btnBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"containerBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"containerBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}},"titleShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"btnShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}},"containerShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}},"containerHoverShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}},"titleTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","fontFamily":"Default","textDecoration":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"descTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","fontFamily":"Default","textDecoration":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"btnTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","fontFamily":"Default","textDecoration":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}}}}');
+module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/icon-box","title":"Icon Box","category":"premium-blocks","attributes":{"blockId":{"type":"string"},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"containerMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"containerPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"containerBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"containerBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}},"containerShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}},"containerHoverShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}}}}');
 
 /***/ }),
 

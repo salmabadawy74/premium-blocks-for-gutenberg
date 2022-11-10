@@ -40,6 +40,8 @@ function Edit(props) {
         setAttributes({ classMigrate: true });
     }, []);
 
+    const { attributes } = props;
+
     const {
         blockId,
         hideDesktop,
@@ -54,17 +56,20 @@ function Edit(props) {
     } = props.attributes;
 
     const INNER_BLOCKS_TEMPLATE = [
-        ["premium/icon"],
+        ["premium/icon", {
+            selectedIcon: attributes?.selectedIcon,
+
+        }],
         ["premium/heading", {
-            title: __("Pricing Table", "premium-blocks-for-gutenberg"),
-            titleTag: "h2",
+            title: attributes?.titleText ? attributes.titleText[0] : __("Title", "premium-blocks-for-gutenberg"),
+            titleTag: attributes?.titleTag ? attributes.titleTag.toLowerCase() : "h2",
             style: "none"
         }],
         ["premium/text", {
-            text: __("Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.", "premium-blocks-for-gutenberg"),
+            text: attributes?.descText ? attributes.descText[0] : __("Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.", "premium-blocks-for-gutenberg"),
         }],
         ["premium/button", {
-            btnText: __("Click Here", "premium-blocks-for-gutenberg"),
+            btnText: attributes?.btnText ? attributes.btnText[0] : __("Click Here", "premium-blocks-for-gutenberg"),
         }],
     ];
 

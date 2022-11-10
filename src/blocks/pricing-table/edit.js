@@ -7,10 +7,7 @@ import {
     PremiumBorder,
     SpacingComponent,
     AdvancedColorControl as AdvancedPopColorControl,
-    ResponsiveSingleRangeControl,
-    WebfontLoader,
     PremiumShadow,
-    PremiumTypo,
 } from '@pbg/components';
 
 const { withSelect } = wp.data
@@ -29,6 +26,7 @@ function PremiumPricingTable(props) {
         setAttributes({ classMigrate: true });
     }, []);
 
+    const { attributes } = props;
     const {
         blockId,
         hideDesktop,
@@ -38,30 +36,38 @@ function PremiumPricingTable(props) {
         tableBoxShadow,
         tableBorder,
         tablePadding,
-        badgeTypography,
     } = props.attributes;
 
     const INNER_BLOCKS_TEMPLATE = [
         ["premium/heading", {
-            title: __("Pricing Table", "premium-blocks-for-gutenberg"),
-            titleTag: "h2",
+            title: attributes.title ? attributes.title?.[0] : __("Pricing Table", "premium-blocks-for-gutenberg"),
+            titleTag: attributes?.titleStyles?.titleTag ? attributes.titleStyles.titleTag.toLowerCase() : "h2",
             style: "none"
         }],
-        ["premium/price"],
+        ["premium/price", {
+            slashedPriceText: attributes?.priceStyles?.[0].slashPrice,
+            currencyText: attributes?.priceStyles?.[0].currPrice,
+            priceText: attributes?.priceStyles?.[0].valPrice,
+            dividerText: attributes?.priceStyles?.[0].divPrice,
+            durationText: attributes?.priceStyles?.[0].durPrice,
+        }],
         ["premium/bullet-list", {
             align: {
                 "Desktop": "center",
                 "Tablet": "",
                 "Mobile": ""
-            }
+            },
+            repeaterBulletList: attributes?.listItems && attributes.listItems.map((item, index) => ({ id: index, label: item.props.children?.[0], showBulletIcon: false }))
         }],
         ["premium/text", {
-            text: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit", "premium-blocks-for-gutenberg"),
+            text: attributes?.desc ? attributes.desc?.[0] : __("Lorem ipsum dolor sit amet, consectetur adipiscing elit", "premium-blocks-for-gutenberg"),
         }],
         ["premium/button", {
-            btnText: __("Get Started", "premium-blocks-for-gutenberg"),
+            btnText: attributes?.btnText ? attributes.btnText : __("Get Started", "premium-blocks-for-gutenberg"),
         }],
-        ["premium/badge"],
+        ["premium/badge", {
+            text: attributes?.badgeStyles?.[0].badgeText
+        }],
     ];
 
     const saveTableStyles = (value) => {
