@@ -34,15 +34,13 @@ const save = (props) => {
     const loadStyles = () => {
         const styles = {};
 
-        styles[`.${blockId} .premium-button:hover`] = {
-            color: `${btnStyles[0].textHoverColor}!important`,
-            "border-color": `${btnStyles[0].borderHoverColor}!important`,
-        };
         styles[`.${blockId} .premium-button-icon:hover`] = {
             color: `${iconHoverColor}!important`,
         };
-        styles[`.${blockId}.premium-button__none .premium-button:hover`] = {
+        styles[`.${blockId}.premium-button__wrap .premium-button:hover`] = {
             "background-color": `${btnStyles[0].backHoverColor}!important`,
+            'color': `${btnStyles[0].textHoverColor}!important`,
+            "border-color": `${btnStyles[0].borderHoverColor}!important`,
         };
         styles[
             `.${blockId}.premium-button__slide .premium-button::before, .${blockId}.premium-button__shutter .premium-button::before, .${blockId}.premium-button__radial .premium-button::before`
