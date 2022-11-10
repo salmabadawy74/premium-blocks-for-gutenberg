@@ -42,7 +42,7 @@ function PremiumPricingTable(props) {
         ["premium/heading", {
             title: attributes.title ? attributes.title?.[0] : __("Pricing Table", "premium-blocks-for-gutenberg"),
             titleTag: attributes?.titleStyles?.titleTag ? attributes.titleStyles.titleTag.toLowerCase() : "h2",
-            style: "none"
+            style: "default"
         }],
         ["premium/price", {
             slashedPriceText: attributes?.priceStyles?.[0].slashPrice,
