@@ -83,7 +83,9 @@
 
 .premium-icon-container {
   text-align: center; }
-  .premium-icon-container .dashicons {
+  .premium-icon-container .dashicons,
+  .premium-icon-container .fab,
+  .premium-icon-container .fa {
     display: inline !important; }
 
 .premium-icon__container .premium-icon.dashicons {
@@ -92,6 +94,26 @@
   width: auto;
   height: auto; }
   .premium-icon__container .premium-icon.dashicons::before {
+    display: inline-block;
+    width: auto;
+    height: auto; }
+
+.premium-icon__container .premium-icon.fab {
+  font-size: 50px;
+  display: inline-block;
+  width: auto;
+  height: auto; }
+  .premium-icon__container .premium-icon.fab::before {
+    display: inline-block;
+    width: auto;
+    height: auto; }
+
+.premium-icon__container .premium-icon.fa {
+  font-size: 50px;
+  display: inline-block;
+  width: auto;
+  height: auto; }
+  .premium-icon__container .premium-icon.fa::before {
     display: inline-block;
     width: auto;
     height: auto; }

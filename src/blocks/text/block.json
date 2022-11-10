@@ -5,8 +5,14 @@
     "title": "Text",
     "category": "premium-blocks",
     "description": "Text Description.",
-    "keywords": ["text"],
-    "parent": ["premium/pricing-table", "premium/icon-box"],
+    "keywords": [
+        "text"
+    ],
+    "parent": [
+        "premium/pricing-table",
+        "premium/icon-box",
+        "premium/person"
+    ],
     "textdomain": "default",
     "attributes": {
         "blockId": {

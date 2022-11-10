@@ -138,8 +138,12 @@ class PBG_Blocks_Helper {
 					Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/price.min.css' );
 					Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/badge.min.css' );
 				}
-				if ( 'pricing-table' === $slug || 'icon-box' === $slug ) {
+				if ( 'pricing-table' === $slug || 'icon-box' === $slug || 'person' === $slug) {
 					Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/text.min.css' );
+				}
+				if ( 'person' === $slug ) {
+					Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/image.min.css' );
+					Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/icon-group.min.css' );
 				}
 
 				Pbg_Style_Generator::pbg_add_css( "assets/css/minified/{$slug}.min.css" );
@@ -357,11 +361,15 @@ class PBG_Blocks_Helper {
 				continue;
 			}
 
-			if ( 'pricing-table' === $slug || 'icon-box' === $slug ) {
+			if ( 'pricing-table' === $slug || 'icon-box' === $slug || 'person' === $slug ) {
 				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/text.php';
 				if ( 'pricing-table' === $slug ) {
 					require_once PREMIUM_BLOCKS_PATH . 'blocks-config/price.php';
 					require_once PREMIUM_BLOCKS_PATH . 'blocks-config/badge.php';
+				}
+				if ( 'person' === $slug ) {
+					require_once PREMIUM_BLOCKS_PATH . 'blocks-config/image.php';
+					require_once PREMIUM_BLOCKS_PATH . 'blocks-config/icon-group.php';
 				}
 			} elseif ( $slug === 'content-switcher' ) {
 				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/switcher-child.php';

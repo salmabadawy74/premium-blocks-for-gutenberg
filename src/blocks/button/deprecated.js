@@ -434,9 +434,24 @@ const deprecatedContent = [
                     unit: "px",
                 },
                 iconSpacing: {
-                    Desktop: "15",
-                    Tablet: "15",
-                    Mobile: "15",
+                    Desktop: {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: "",
+                    },
+                    Tablet: {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: "",
+                    },
+                    Mobile: {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: "",
+                    },
                     unit: "px",
                 },
                 iconColor: "",

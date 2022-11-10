@@ -26,6 +26,9 @@ import "./blocks/price"
 import "./blocks/list-item"
 import "./blocks/text"
 import "./blocks/badge"
+import "./blocks/image"
+import "./blocks/icon-group"
+
 window.PremiumOptionsSettings = {
     FontAwesomeEnabled,
 };
