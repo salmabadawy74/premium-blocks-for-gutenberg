@@ -1,0 +1,45 @@
+.wp-block-premium-badge {
+    position: absolute;
+    top: 0;
+    z-index: 99;
+
+    span {
+        position: absolute;
+        top: 35px;
+        width: 100px;
+        text-align: center;
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        display: block;
+    }
+
+    &.premium-badge-right {
+        right: 0;
+
+        .premium-badge-wrap {
+            width: 0;
+            height: 0;
+            border-bottom: 150px solid transparent;
+            border-right: 150px solid;
+            border-right-color: currentcolor;
+        }
+
+        span {
+            -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+            right: 0;
+        }
+    }
+
+    &.premium-badge-left {
+        left: 0;
+
+        .premium-badge-wrap {
+            width: 0;
+            height: 0;
+            border-top: 150px solid;
+            border-top-color: currentcolor;
+            border-right: 150px solid transparent;
+        }
+    }
+}

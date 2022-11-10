@@ -1,0 +1,16 @@
+.premium-price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    span {
+        align-self: center;
+        &:nth-child(-n + 3) {
+            line-height: 1em;
+        }
+    }
+
+    strike {
+        line-height: 1em;
+    }
+}

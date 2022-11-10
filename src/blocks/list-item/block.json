@@ -1,0 +1,69 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 2,
+    "name": "premium/list-item",
+    "title": "List Item",
+    "category": "premium-blocks",
+    "description": "List Item Description.",
+    "parent": ["premium/bullet-list"],
+    "keywords": ["list-item"],
+    "textdomain": "default",
+    "attributes": {
+        "blockId": {
+            "type": "string"
+        },
+        "hideDesktop": {
+            "type": "boolean",
+            "default": false
+        },
+        "hideTablet": {
+            "type": "boolean",
+            "default": false
+        },
+        "hideMobile": {
+            "type": "boolean",
+            "default": false
+        },
+        "showIcon": {
+            "type": "boolean",
+            "default": true
+        },
+        "title": {
+            "type": "string"
+        },
+        "iconType": {
+            "type": "string",
+            "default": "icon"
+        },
+        "icon": {
+            "type": "string",
+            "default": "fa fa-arrow-circle-right"
+        },
+        "enableLink": {
+            "type": "boolean",
+            "default": false
+        },
+        "linkURL": {
+            "type": "string",
+            "default": "#"
+        },
+        "openInNewTab": {
+            "type": "boolean",
+            "default": false
+        },
+        "imageID": {
+            "type": "string"
+        },
+        "imageURL": {
+            "type": "string"
+        },
+        "layoutPos": {
+            "type": "string"
+        },
+        "divider": {
+            "type": "boolean",
+            "default": false
+        }
+    },
+    "usesContext": ["layoutPos", "divider"]
+}
