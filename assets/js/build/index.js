@@ -13245,15 +13245,13 @@ function Edit(props) {
 
   const loadStyles = () => {
     const styles = {};
-    styles[`.${blockId} .premium-button:hover`] = {
-      color: `${btnStyles[0].textHoverColor}!important`,
-      "border-color": `${btnStyles[0].borderHoverColor}!important`
-    };
     styles[`.${blockId} .premium-button-icon:hover`] = {
       color: `${iconHoverColor}!important`
     };
-    styles[`.${blockId}.premium-button__none .premium-button:hover`] = {
-      "background-color": `${btnStyles[0].backHoverColor}!important`
+    styles[`.${blockId}.premium-button__wrap .premium-button:hover`] = {
+      "background-color": `${btnStyles[0].backHoverColor}!important`,
+      'color': `${btnStyles[0].textHoverColor}!important`,
+      "border-color": `${btnStyles[0].borderHoverColor}!important`
     };
     styles[`.${blockId}.premium-button__slide .premium-button::before, .${blockId}.premium-button__shutter .premium-button::before, .${blockId}.premium-button__radial .premium-button::before`] = {
       "background-color": `${slideColor}`
@@ -13405,7 +13403,7 @@ function Edit(props) {
         slideColor: newValue
       });
     }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_5__.AdvancedColorControl, {
+  }), border.borderType != 'none' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_5__.AdvancedColorControl, {
     label: __("Border Color", "premium-blocks-for-gutenberg"),
     colorValue: btnStyles[0].borderHoverColor,
     colorDefault: "",
@@ -13674,15 +13672,13 @@ const save = props => {
 
   const loadStyles = () => {
     const styles = {};
-    styles[`.${blockId} .premium-button:hover`] = {
-      color: `${btnStyles[0].textHoverColor}!important`,
-      "border-color": `${btnStyles[0].borderHoverColor}!important`
-    };
     styles[`.${blockId} .premium-button-icon:hover`] = {
       color: `${iconHoverColor}!important`
     };
-    styles[`.${blockId}.premium-button__none .premium-button:hover`] = {
-      "background-color": `${btnStyles[0].backHoverColor}!important`
+    styles[`.${blockId}.premium-button__wrap .premium-button:hover`] = {
+      "background-color": `${btnStyles[0].backHoverColor}!important`,
+      'color': `${btnStyles[0].textHoverColor}!important`,
+      "border-color": `${btnStyles[0].borderHoverColor}!important`
     };
     styles[`.${blockId}.premium-button__slide .premium-button::before, .${blockId}.premium-button__shutter .premium-button::before, .${blockId}.premium-button__radial .premium-button::before`] = {
       "background-color": `${slideColor}`
