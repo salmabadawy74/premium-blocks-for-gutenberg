@@ -42168,7 +42168,7 @@ function PremiumPricingTable(props) {
   const INNER_BLOCKS_TEMPLATE = [["premium/heading", {
     title: attributes.title ? (_attributes$title = attributes.title) === null || _attributes$title === void 0 ? void 0 : _attributes$title[0] : __("Pricing Table", "premium-blocks-for-gutenberg"),
     titleTag: attributes !== null && attributes !== void 0 && (_attributes$titleStyl = attributes.titleStyles) !== null && _attributes$titleStyl !== void 0 && _attributes$titleStyl.titleTag ? attributes.titleStyles.titleTag.toLowerCase() : "h2",
-    style: "none"
+    style: "default"
   }], ["premium/price", {
     slashedPriceText: attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl = attributes.priceStyles) === null || _attributes$priceStyl === void 0 ? void 0 : _attributes$priceStyl[0].slashPrice,
     currencyText: attributes === null || attributes === void 0 ? void 0 : (_attributes$priceStyl2 = attributes.priceStyles) === null || _attributes$priceStyl2 === void 0 ? void 0 : _attributes$priceStyl2[0].currPrice,
