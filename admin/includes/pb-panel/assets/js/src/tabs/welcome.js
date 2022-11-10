@@ -1,8 +1,8 @@
 import Card from "../common/Card";
 import Container from "../common/Container";
 import { __experimentalGrid as Grid } from "@wordpress/components";
-import { useDispatch } from "@wordpress/data";
-import { store as noticesStore } from "@wordpress/notices";
+import { useDispatch } from "react-redux";
+import { actions } from "../features/Alert/AlertSlice";
 
 const { __ } = wp.i18n;
 const { Dashicon } = wp.components;
@@ -30,11 +30,10 @@ const iconArrow = (
 );
 import { useState } from "@wordpress/element";
 
-
 const Support = () => {
     const [email, setEmail] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    const { createNotice, createErrorNotice } = useDispatch(noticesStore);
+    const dispatch = useDispatch();
 
     const submitHandler = async () => {
         if (isLoading) {
@@ -42,13 +41,14 @@ const Support = () => {
         }
         setIsLoading(true);
         if (!checkEmail(email)) {
-            createErrorNotice(__(
-                "Invalid Email Address...",
-                "premium-blocks-for-gutenberg"
-            ), {
-                isDismissible: true,
-                type: "snackbar",
+            actions.createAlert({
+                message: __(
+                    "Invalid Email Address...",
+                    "premium-blocks-for-gutenberg"
+                ),
+                type: "error",
             });
+
             setIsLoading(false);
             return;
         }
@@ -70,26 +70,32 @@ const Support = () => {
                     data: { status },
                 } = await response.json();
                 if (success && status) {
-                    createNotice(__("success", "premium-blocks-for-gutenberg"), __(
-                        "Thanks for your subscribe!",
-                        "premium-blocks-for-gutenberg"
-                    ), {
-                        isDismissible: true,
-                        type: "snackbar",
-                    });
+                    dispatch(
+                        actions.createAlert({
+                            message: __(
+                                "Thanks for your subscribe!",
+                                "premium-blocks-for-gutenberg"
+                            ),
+
+                            type: "success",
+                        })
+                    );
+
                     setEmail("");
                 } else {
-                    createErrorNotice(__(
-                        "Invalid Email Address...",
-                        "premium-blocks-for-gutenberg"
-                    ), {
-                        isDismissible: true,
-                        type: "snackbar",
-                    });
+                    dispatch(
+                        actions.createAlert({
+                            message: __(
+                                "Invalid Email Address...",
+                                "premium-blocks-for-gutenberg"
+                            ),
+                            type: "error",
+                        })
+                    );
                 }
             }
         } catch (e) {
-            alert(e);
+            console.log(e);
         }
         setIsLoading(false);
     };

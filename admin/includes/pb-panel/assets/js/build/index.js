@@ -3779,10 +3779,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_Container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/Container */ "./src/common/Container.js");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _wordpress_notices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/notices */ "@wordpress/notices");
-/* harmony import */ var _wordpress_notices__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_notices__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _features_Alert_AlertSlice__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../features/Alert/AlertSlice */ "./src/features/Alert/AlertSlice.js");
 
 
 
@@ -3816,10 +3814,7 @@ const iconArrow = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createEleme
 const Support = () => {
   const [email, setEmail] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)("");
   const [isLoading, setIsLoading] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const {
-    createNotice,
-    createErrorNotice
-  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useDispatch)(_wordpress_notices__WEBPACK_IMPORTED_MODULE_5__.store);
+  const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useDispatch)();
 
   const submitHandler = async () => {
     if (isLoading) {
@@ -3829,9 +3824,9 @@ const Support = () => {
     setIsLoading(true);
 
     if (!checkEmail(email)) {
-      createErrorNotice(__("Invalid Email Address...", "premium-blocks-for-gutenberg"), {
-        isDismissible: true,
-        type: "snackbar"
+      _features_Alert_AlertSlice__WEBPACK_IMPORTED_MODULE_5__.actions.createAlert({
+        message: __("Invalid Email Address...", "premium-blocks-for-gutenberg"),
+        type: "error"
       });
       setIsLoading(false);
       return;
@@ -3857,20 +3852,20 @@ const Support = () => {
         } = await response.json();
 
         if (success && status) {
-          createNotice(__("success", "premium-blocks-for-gutenberg"), __("Thanks for your subscribe!", "premium-blocks-for-gutenberg"), {
-            isDismissible: true,
-            type: "snackbar"
-          });
+          dispatch(_features_Alert_AlertSlice__WEBPACK_IMPORTED_MODULE_5__.actions.createAlert({
+            message: __("Thanks for your subscribe!", "premium-blocks-for-gutenberg"),
+            type: "success"
+          }));
           setEmail("");
         } else {
-          createErrorNotice(__("Invalid Email Address...", "premium-blocks-for-gutenberg"), {
-            isDismissible: true,
-            type: "snackbar"
-          });
+          dispatch(_features_Alert_AlertSlice__WEBPACK_IMPORTED_MODULE_5__.actions.createAlert({
+            message: __("Invalid Email Address...", "premium-blocks-for-gutenberg"),
+            type: "error"
+          }));
         }
       }
     } catch (e) {
-      alert(e);
+      console.log(e);
     }
 
     setIsLoading(false);
@@ -12207,17 +12202,6 @@ module.exports = window["lodash"];
 
 "use strict";
 module.exports = window["wp"]["components"];
-
-/***/ }),
-
-/***/ "@wordpress/data":
-/*!******************************!*\
-  !*** external ["wp","data"] ***!
-  \******************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = window["wp"]["data"];
 
 /***/ }),
 
