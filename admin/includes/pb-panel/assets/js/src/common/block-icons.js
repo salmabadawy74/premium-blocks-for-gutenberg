@@ -164,33 +164,6 @@ const PBG_Block_Icons = {
             </g>
         </svg>
     ),
-    trigger: (
-        <svg
-            id="Premium_Blocks"
-            data-name="Premium Blocks"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 19.5 11.5"
-        >
-            <title>premium-trigger-block</title>
-            <g id="Trigger">
-                <path
-                    class="cls-1"
-                    d="M21.5,8.25H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z"
-                    transform="translate(-2.75 -6.75)"
-                />
-                <path
-                    class="cls-1"
-                    d="M21.5,13.25H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z"
-                    transform="translate(-2.75 -6.75)"
-                />
-                <path
-                    class="cls-1"
-                    d="M21.5,18.25H3.5a.75.75,0,0,1,0-1.5h18a.75.75,0,0,1,0,1.5Z"
-                    transform="translate(-2.75 -6.75)"
-                />
-            </g>
-        </svg>
-    ),
     count_up: (
         <svg
             id="Premium_Blocks"
@@ -557,34 +530,6 @@ const PBG_Block_Icons = {
             </g>
         </svg>
     ),
-    breadcrumbs: (
-        <svg
-            id="Premium_Blocks"
-            data-name="Premium Blocks"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 21.5 21.5"
-        >
-            <defs></defs>
-            <title>premium-breadcrumbs-block</title>
-            <g id="Breadcrumbs">
-                <path
-                    class="cls-1"
-                    d="M15.5,23.25h-6c-5.43,0-7.75-2.32-7.75-7.75v-6c0-5.43,2.32-7.75,7.75-7.75h6c5.43,0,7.75,2.32,7.75,7.75v6C23.25,20.93,20.93,23.25,15.5,23.25Zm-6-20c-4.61,0-6.25,1.64-6.25,6.25v6c0,4.61,1.64,6.25,6.25,6.25h6c4.61,0,6.25-1.64,6.25-6.25v-6c0-4.61-1.64-6.25-6.25-6.25Z"
-                    transform="translate(-1.75 -1.75)"
-                />
-                <path
-                    class="cls-1"
-                    d="M13.49,16.78a.74.74,0,0,1-.53-.22.75.75,0,0,1,0-1.06l3-3-3-3A.75.75,0,1,1,14,8.44L17.54,12a.75.75,0,0,1,0,1.06L14,16.56A.74.74,0,0,1,13.49,16.78Z"
-                    transform="translate(-1.75 -1.75)"
-                />
-                <path
-                    class="cls-1"
-                    d="M8.49,16.78A.74.74,0,0,1,8,16.56.75.75,0,0,1,8,15.5l3-3-3-3A.75.75,0,1,1,9,8.44L12.54,12a.75.75,0,0,1,0,1.06L9,16.56A.74.74,0,0,1,8.49,16.78Z"
-                    transform="translate(-1.75 -1.75)"
-                />
-            </g>
-        </svg>
-    ),
     container: (
         <svg
             id="Premium_Blocks"
@@ -609,30 +554,6 @@ const PBG_Block_Icons = {
                     class="cls-1"
                     d="M20,23.25H5a.75.75,0,0,1,0-1.5H20a.75.75,0,0,1,0,1.5Z"
                     transform="translate(-2.25 -1.75)"
-                />
-            </g>
-        </svg>
-    ),
-    search: (
-        <svg
-            id="Premium_Blocks"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 21.5 21.5"
-            width="21.5"
-            height="21.5"
-        >
-            <defs></defs>
-            <title>premium-search-block</title>
-            <g id="Search">
-                <path
-                    class="cls-1"
-                    d="M12,22.25A10.25,10.25,0,1,1,22.25,12,10.26,10.26,0,0,1,12,22.25Zm0-19A8.75,8.75,0,1,0,20.75,12,8.77,8.77,0,0,0,12,3.25Z"
-                    transform="translate(-1.75 -1.75)"
-                />
-                <path
-                    class="cls-1"
-                    d="M22.5,23.25A.74.74,0,0,1,22,23l-2-2A.75.75,0,0,1,21,20l2,2A.75.75,0,0,1,23,23,.74.74,0,0,1,22.5,23.25Z"
-                    transform="translate(-1.75 -1.75)"
                 />
             </g>
         </svg>

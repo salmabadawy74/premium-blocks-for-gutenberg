@@ -7,7 +7,6 @@ module.exports = function (grunt) {
     const blocks = [
         "accordion",
         "banner",
-        "breadcrumbs",
         "bullet-list",
         "button",
         "content-switcher",
@@ -28,7 +27,6 @@ module.exports = function (grunt) {
         "testimonials",
         "trigger",
         "video-box",
-        "search",
         "price",
         "text",
         "badge"

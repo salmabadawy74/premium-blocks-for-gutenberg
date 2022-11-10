@@ -6,7 +6,6 @@ export const {
     Modal,
     accordion,
     banner,
-    breadcrumbs,
     heading,
     button,
     icon,

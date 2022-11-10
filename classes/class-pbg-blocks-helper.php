@@ -123,7 +123,6 @@ class PBG_Blocks_Helper {
 	public function add_blocks_editor_styles() {
 		Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/blockseditor.min.css' );
 		Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/editorpanel.min.css' );
-		Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/text.min.css' );
 
 		$is_rtl = is_rtl() ? true : false;
 		$is_rtl ? Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/style-blocks-rtl.min.css' ) : '';
@@ -138,6 +137,9 @@ class PBG_Blocks_Helper {
 				if ( 'pricing-table' === $slug ) {
 					Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/price.min.css' );
 					Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/badge.min.css' );
+				}
+				if ( 'pricing-table' === $slug || 'icon-box' === $slug ) {
+					Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/text.min.css' );
 				}
 
 				Pbg_Style_Generator::pbg_add_css( "assets/css/minified/{$slug}.min.css" );
@@ -350,29 +352,21 @@ class PBG_Blocks_Helper {
 			return;
 		}
 
-		require_once PREMIUM_BLOCKS_PATH . 'blocks-config/text.php';
-
 		foreach ( self::$blocks as $slug => $value ) {
 			if ( false === $value ) {
 				continue;
 			}
 
-			if ( $slug === 'breadcrumbs' ) {
-				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/breadcrumbs.php';
-				register_block_pbg_breadcrumbs();
-			} elseif ( $slug === 'trigger' ) {
-				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/trigger.php';
-				register_block_pbg_trigger();
+			if ( 'pricing-table' === $slug || 'icon-box' === $slug ) {
+				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/text.php';
+				if ( 'pricing-table' === $slug ) {
+					require_once PREMIUM_BLOCKS_PATH . 'blocks-config/price.php';
+					require_once PREMIUM_BLOCKS_PATH . 'blocks-config/badge.php';
+				}
 			} elseif ( $slug === 'content-switcher' ) {
 				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/switcher-child.php';
 				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/content-switcher.php';
 				register_block_pbg_content_switcher();
-			} elseif ( $slug === 'search' ) {
-				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/search.php';
-				register_block_premium_search();
-			} elseif ( 'pricing-table' === $slug ) {
-				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/price.php';
-				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/badge.php';
 			}
 		}
 

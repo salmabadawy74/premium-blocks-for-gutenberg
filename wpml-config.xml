@@ -73,17 +73,6 @@
 			<xpath>//span[@class="premium-person__desc"]</xpath>
             <xpath>//img/@alt</xpath>
         </gutenberg-block>
-        <gutenberg-block type="premium/search" translate="1">
-            <xpath>//div[@class="wp-block-premium-search__input"]</xpath>
-        </gutenberg-block>
-        <gutenberg-block type="premium/trigger" translate="1">
-            <xpath>//a/@href</xpath>
-            <xpath>//div[2class="premium-popup-body-content"]</xpath>
-        </gutenberg-block>
-        <gutenberg-block type="premium/breadcrumbs" translate="1">
-            <xpath>//a/@href</xpath>
-            <xpath>//span</xpath>
-        </gutenberg-block>
         <gutenberg-block type="premium/content-switcher" translate="1">
             <xpath>//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]</xpath>
             <xpath>//div</xpath>
