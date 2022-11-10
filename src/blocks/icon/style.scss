@@ -122,13 +122,41 @@
 .premium-icon-container {
     text-align: center;
 
-    .dashicons {
+    .dashicons,
+    .fab,
+    .fa {
         display: inline !important;
     }
 }
 
 .premium-icon__container {
     .premium-icon.dashicons {
+        font-size: 50px;
+        display: inline-block;
+        width: auto;
+        height: auto;
+
+        &::before {
+            display: inline-block;
+            width: auto;
+            height: auto;
+        }
+    }
+
+    .premium-icon.fab {
+        font-size: 50px;
+        display: inline-block;
+        width: auto;
+        height: auto;
+
+        &::before {
+            display: inline-block;
+            width: auto;
+            height: auto;
+        }
+    }
+
+    .premium-icon.fa {
         font-size: 50px;
         display: inline-block;
         width: auto;

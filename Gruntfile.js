@@ -29,7 +29,9 @@ module.exports = function (grunt) {
         "video-box",
         "price",
         "text",
-        "badge"
+        "badge",
+        "image",
+        "icon-group"
     ];
     const sassFiles = {};
     const minifyFiles = {};

@@ -207,6 +207,10 @@ function Edit(props) {
 
     const STYLE = [
         {
+            value: "default",
+            label: __("Default", 'premium-blocks-for-gutenberg'),
+        },
+        {
             value: "style1",
             label: __("Style 1", 'premium-blocks-for-gutenberg'),
         },
@@ -379,6 +383,19 @@ function Edit(props) {
             "--shadow-color": `${titleStyles[0].blurColor}!important`,
             "--shadow-value": `${titleStyles[0].blurShadow}px!important`,
             color: `${titleStyles[0].titleColor}!important`,
+        };
+        styles[`.${blockId} .premium-title .default .premium-title-header`] =
+        {
+            "border-color": `${titleBorder.borderColor}!important`,
+            "border-style": `${titleBorder.borderType == 'none' ? 'none' : `${titleBorder.borderType} !important`}`,
+            "border-top-width": `${titleBorder?.borderWidth?.[props.deviceType]?.top}px!important`,
+            "border-right-width": `${titleBorder?.borderWidth?.[props.deviceType]?.right}px!important`,
+            "border-bottom-width": `${titleBorder?.borderWidth?.[props.deviceType]?.bottom}px!important`,
+            "border-left-width": `${titleBorder?.borderWidth?.[props.deviceType]?.left}px!important`,
+            "border-top-left-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.top}px!important`,
+            "border-top-right-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.right}px!important`,
+            "border-bottom-left-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.bottom}px!important`,
+            "border-bottom-right-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.left}px!important`
         };
         styles[`.${blockId} .premium-title .style1 .premium-title-header`] =
         {

@@ -22,7 +22,7 @@
         },
         "style": {
             "type": "string",
-            "default": "style1"
+            "default": "default"
         },
         "title": {
             "type": "string",

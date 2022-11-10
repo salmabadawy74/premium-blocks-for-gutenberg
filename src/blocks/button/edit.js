@@ -492,13 +492,13 @@ function Edit(props) {
                                             label={
                                                 "radial" !== effect
                                                     ? __(
-                                                          "Background Color",
-                                                          "premium-blocks-for-gutenberg"
-                                                      )
+                                                        "Background Color",
+                                                        "premium-blocks-for-gutenberg"
+                                                    )
                                                     : __(
-                                                          "Background Color",
-                                                          "premium-blocks-for-gutenberg"
-                                                      )
+                                                        "Background Color",
+                                                        "premium-blocks-for-gutenberg"
+                                                    )
                                             }
                                             colorValue={
                                                 btnStyles[0].backHoverColor
@@ -598,35 +598,6 @@ function Edit(props) {
                                     units={["px", "em", "rem"]}
                                     defaultValue={30}
                                 />
-                                {/* <ResponsiveRangeControl
-                                    label={__(
-                                        "Icon Spacing",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                    value={iconSpacing}
-                                    onChange={(value) =>
-                                        setAttributes({ iconSpacing: value })
-                                    }
-                                    min={0}
-                                    max={100}
-                                    step={1}
-                                    showUnit={true}
-                                    units={["px", "em", "rem"]}
-                                    defaultValue={15}
-                                /> */}
-                                <SpacingControl
-                                    label={__(
-                                        "Margin",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                    value={iconSpacing}
-                                    onChange={(value) =>
-                                        setAttributes({ iconSpacing: value })
-                                    }
-                                    showUnits={true}
-                                    responsive={true}
-                                />
-
                                 <InsideTabs>
                                     <InsideTab
                                         tabTitle={__(
@@ -682,6 +653,18 @@ function Edit(props) {
                                     onChange={(value) =>
                                         setAttributes({ iconShadow: value })
                                     }
+                                />
+                                <SpacingControl
+                                    label={__(
+                                        "Margin",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                    value={iconSpacing}
+                                    onChange={(value) =>
+                                        setAttributes({ iconSpacing: value })
+                                    }
+                                    showUnits={true}
+                                    responsive={true}
                                 />
                             </PanelBody>
                         )}
