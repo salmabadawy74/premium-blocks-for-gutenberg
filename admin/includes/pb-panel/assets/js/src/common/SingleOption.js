@@ -83,15 +83,6 @@ const SingleOption = (props) => {
                         {__(" Block", "premium-blocks-for-gutenberg")}
                     </h2>
                     <div className="pb-block-links">
-                        <div className="live-preview customize-control-live-preview">
-                            <a
-                                href={`https://premiumblocks.io/gutenberg-blocks/${props.blockInfo}`}
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                {__("Preview", "premium-blocks-for-gutenberg")}
-                            </a>
-                        </div>
                         <div className="guidelines customize-control-guidelines">
                             <a
                                 href={`https://premiumblocks.io/docs/${props.blockInfo}`}

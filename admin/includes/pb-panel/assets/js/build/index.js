@@ -2043,12 +2043,6 @@ const SingleOption = props => {
   }, props.params.label, __(" Block", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pb-block-links"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "live-preview customize-control-live-preview"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-    href: `https://premiumblocks.io/gutenberg-blocks/${props.blockInfo}`,
-    target: "_blank",
-    rel: "noreferrer"
-  }, __("Preview", "premium-blocks-for-gutenberg"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "guidelines customize-control-guidelines"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: `https://premiumblocks.io/docs/${props.blockInfo}`,
