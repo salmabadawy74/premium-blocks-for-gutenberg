@@ -1538,8 +1538,10 @@ class PBG_Blocks_Helper
 			$css->add_property('height', $css->render_range($attr['iconSize'], 'Desktop'));
 		}
 		if (isset($attr['iconSpacing']['Desktop'])) {
+			$margin = $attr['iconSpacing'];
+
 			$css->set_selector($unique_id . '> .premium-button' . '> .premium-button-icon');
-			$css->add_property('margin-right', $css->render_range($attr['iconSpacing'], 'Desktop'));
+			$css->add_property('margin', $css->render_spacing($margin['Desktop'], $margin['unit']));
 		}
 
 
