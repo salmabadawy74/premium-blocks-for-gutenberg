@@ -25,7 +25,7 @@ define( 'PREMIUM_BLOCKS_URL', plugins_url( '/', __FILE__ ) );
 define( 'PREMIUM_BLOCKS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'PREMIUM_BLOCKS_FILE', __FILE__ );
 define( 'PREMIUM_BLOCKS_BASENAME', plugin_basename( __FILE__ ) );
-define( 'PREMIUM_BLOCKS_STABLE_VERSION', '1.9.7' );
+define( 'PREMIUM_BLOCKS_STABLE_VERSION', '1.9.9' );
 define( 'PBG_TABLET_BREAKPOINT', '976' );
 define( 'PBG_MOBILE_BREAKPOINT', '767' );
 
