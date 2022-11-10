@@ -13,6 +13,16 @@
     width: 20px;
     height: 20px; }
 
+.premium-bullet-list__wrapper {
+  position: relative; }
+  .premium-bullet-list__wrapper .premium-bullet-list-link {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3; }
+
 .premium-bullet-list ul {
   padding: 0 !important; }
 

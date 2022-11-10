@@ -25,6 +25,10 @@ import './blocks/search';
 import "./blocks/switcher-child";
 import "./blocks/content-switcher";
 import "./blocks/accordion-item";
+import "./blocks/price"
+import "./blocks/list-item"
+import "./blocks/text"
+import "./blocks/badge"
 window.PremiumOptionsSettings = {
     FontAwesomeEnabled,
 };
