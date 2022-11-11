@@ -14250,27 +14250,27 @@ const edit = props => {
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.MultiButtonsControl, {
     choices: [{
       value: "flex-start",
-      tooltip: __("Flex Start", "ultimate-addons-for-gutenberg"),
+      tooltip: __("Flex Start", "premium-blocks-for-gutenberg"),
       icon: (0,_pbg_components__WEBPACK_IMPORTED_MODULE_3__.renderCustomIcon)(`flex-${currentOffset}-start`)
     }, {
       value: "center",
-      tooltip: __("Center", "ultimate-addons-for-gutenberg"),
+      tooltip: __("Center", "premium-blocks-for-gutenberg"),
       icon: (0,_pbg_components__WEBPACK_IMPORTED_MODULE_3__.renderCustomIcon)(`flex-${currentOffset}-center`)
     }, {
       value: "flex-end",
-      tooltip: __("Flex End", "ultimate-addons-for-gutenberg"),
+      tooltip: __("Flex End", "premium-blocks-for-gutenberg"),
       icon: (0,_pbg_components__WEBPACK_IMPORTED_MODULE_3__.renderCustomIcon)(`flex-${currentOffset}-end`)
     }, {
       value: "space-between",
-      tooltip: __("Space Between", "ultimate-addons-for-gutenberg"),
+      tooltip: __("Space Between", "premium-blocks-for-gutenberg"),
       icon: (0,_pbg_components__WEBPACK_IMPORTED_MODULE_3__.renderCustomIcon)(`flex-${currentOffset}-space-between`)
     }, {
       value: "space-around",
-      tooltip: __("Space Around", "ultimate-addons-for-gutenberg"),
+      tooltip: __("Space Around", "premium-blocks-for-gutenberg"),
       icon: (0,_pbg_components__WEBPACK_IMPORTED_MODULE_3__.renderCustomIcon)(`flex-${currentOffset}-space-around`)
     }, {
       value: "space-evenly",
-      tooltip: __("Space Evenly", "ultimate-addons-for-gutenberg"),
+      tooltip: __("Space Evenly", "premium-blocks-for-gutenberg"),
       icon: (0,_pbg_components__WEBPACK_IMPORTED_MODULE_3__.renderCustomIcon)(`flex-${currentOffset}-space-evenly`)
     }],
     value: justifyItems,
@@ -14336,27 +14336,27 @@ const edit = props => {
   }), ("wrap" === wrapItems[props.deviceType] || "wrap-reverse" === wrapItems[props.deviceType]) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.MultiButtonsControl, {
     choices: [{
       value: "flex-start",
-      tooltip: __("Flex Start", "ultimate-addons-for-gutenberg"),
+      tooltip: __("Flex Start", "premium-blocks-for-gutenberg"),
       icon: (0,_pbg_components__WEBPACK_IMPORTED_MODULE_3__.renderCustomIcon)(`flex-${currentOffset}-start`)
     }, {
       value: "center",
-      tooltip: __("Center", "ultimate-addons-for-gutenberg"),
+      tooltip: __("Center", "premium-blocks-for-gutenberg"),
       icon: (0,_pbg_components__WEBPACK_IMPORTED_MODULE_3__.renderCustomIcon)(`flex-${currentOffset}-center`)
     }, {
       value: "flex-end",
-      tooltip: __("Flex End", "ultimate-addons-for-gutenberg"),
+      tooltip: __("Flex End", "premium-blocks-for-gutenberg"),
       icon: (0,_pbg_components__WEBPACK_IMPORTED_MODULE_3__.renderCustomIcon)(`flex-${currentOffset}-end`)
     }, {
       value: "space-between",
-      tooltip: __("Space Between", "ultimate-addons-for-gutenberg"),
+      tooltip: __("Space Between", "premium-blocks-for-gutenberg"),
       icon: (0,_pbg_components__WEBPACK_IMPORTED_MODULE_3__.renderCustomIcon)(`flex-${currentOffset}-space-between`)
     }, {
       value: "space-around",
-      tooltip: __("Space Around", "ultimate-addons-for-gutenberg"),
+      tooltip: __("Space Around", "premium-blocks-for-gutenberg"),
       icon: (0,_pbg_components__WEBPACK_IMPORTED_MODULE_3__.renderCustomIcon)(`flex-${currentOffset}-space-around`)
     }, {
       value: "space-evenly",
-      tooltip: __("Space Evenly", "ultimate-addons-for-gutenberg"),
+      tooltip: __("Space Evenly", "premium-blocks-for-gutenberg"),
       icon: (0,_pbg_components__WEBPACK_IMPORTED_MODULE_3__.renderCustomIcon)(`flex-${currentOffset}-space-evenly`)
     }],
     value: alignContent,
