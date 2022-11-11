@@ -88,22 +88,22 @@
   .premium-icon-container .fa {
     display: inline !important; }
 
-.premium-icon__container .premium-icon.dashicons {
+.premium-icon__container .premium-icon {
   font-size: 50px;
   display: inline-block;
   width: auto;
   height: auto; }
-  .premium-icon__container .premium-icon.dashicons::before {
+  .premium-icon__container .premium-icon::before {
     display: inline-block;
     width: auto;
     height: auto; }
 
-.premium-icon__container .premium-icon.fab {
+.premium-icon__container .premium-icon {
   font-size: 50px;
   display: inline-block;
   width: auto;
   height: auto; }
-  .premium-icon__container .premium-icon.fab::before {
+  .premium-icon__container .premium-icon::before {
     display: inline-block;
     width: auto;
     height: auto; }
