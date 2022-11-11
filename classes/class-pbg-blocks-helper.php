@@ -304,7 +304,9 @@ class PBG_Blocks_Helper {
 		if ( $is_fa_enabled ) {
 			wp_enqueue_style(
 				'pbg-fontawesome',
-				'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
+				//'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
+				'https://use.fontawesome.com/releases/v5.15.1/css/all.css'
+
 			);
 		}
 
