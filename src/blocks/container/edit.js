@@ -676,7 +676,7 @@ const edit = (props) => {
                                         value: "flex-start",
                                         tooltip: __(
                                             "Flex Start",
-                                            "ultimate-addons-for-gutenberg"
+                                            "premium-blocks-for-gutenberg"
                                         ),
                                         icon: renderCustomIcon(
                                             `flex-${currentOffset}-start`
@@ -686,7 +686,7 @@ const edit = (props) => {
                                         value: "center",
                                         tooltip: __(
                                             "Center",
-                                            "ultimate-addons-for-gutenberg"
+                                            "premium-blocks-for-gutenberg"
                                         ),
                                         icon: renderCustomIcon(
                                             `flex-${currentOffset}-center`
@@ -696,7 +696,7 @@ const edit = (props) => {
                                         value: "flex-end",
                                         tooltip: __(
                                             "Flex End",
-                                            "ultimate-addons-for-gutenberg"
+                                            "premium-blocks-for-gutenberg"
                                         ),
                                         icon: renderCustomIcon(
                                             `flex-${currentOffset}-end`
@@ -706,7 +706,7 @@ const edit = (props) => {
                                         value: "space-between",
                                         tooltip: __(
                                             "Space Between",
-                                            "ultimate-addons-for-gutenberg"
+                                            "premium-blocks-for-gutenberg"
                                         ),
                                         icon: renderCustomIcon(
                                             `flex-${currentOffset}-space-between`
@@ -716,7 +716,7 @@ const edit = (props) => {
                                         value: "space-around",
                                         tooltip: __(
                                             "Space Around",
-                                            "ultimate-addons-for-gutenberg"
+                                            "premium-blocks-for-gutenberg"
                                         ),
                                         icon: renderCustomIcon(
                                             `flex-${currentOffset}-space-around`
@@ -726,7 +726,7 @@ const edit = (props) => {
                                         value: "space-evenly",
                                         tooltip: __(
                                             "Space Evenly",
-                                            "ultimate-addons-for-gutenberg"
+                                            "premium-blocks-for-gutenberg"
                                         ),
                                         icon: renderCustomIcon(
                                             `flex-${currentOffset}-space-evenly`
@@ -826,7 +826,7 @@ const edit = (props) => {
                                                 value: "flex-start",
                                                 tooltip: __(
                                                     "Flex Start",
-                                                    "ultimate-addons-for-gutenberg"
+                                                    "premium-blocks-for-gutenberg"
                                                 ),
                                                 icon: renderCustomIcon(
                                                     `flex-${currentOffset}-start`
@@ -836,7 +836,7 @@ const edit = (props) => {
                                                 value: "center",
                                                 tooltip: __(
                                                     "Center",
-                                                    "ultimate-addons-for-gutenberg"
+                                                    "premium-blocks-for-gutenberg"
                                                 ),
                                                 icon: renderCustomIcon(
                                                     `flex-${currentOffset}-center`
@@ -846,7 +846,7 @@ const edit = (props) => {
                                                 value: "flex-end",
                                                 tooltip: __(
                                                     "Flex End",
-                                                    "ultimate-addons-for-gutenberg"
+                                                    "premium-blocks-for-gutenberg"
                                                 ),
                                                 icon: renderCustomIcon(
                                                     `flex-${currentOffset}-end`
@@ -856,7 +856,7 @@ const edit = (props) => {
                                                 value: "space-between",
                                                 tooltip: __(
                                                     "Space Between",
-                                                    "ultimate-addons-for-gutenberg"
+                                                    "premium-blocks-for-gutenberg"
                                                 ),
                                                 icon: renderCustomIcon(
                                                     `flex-${currentOffset}-space-between`
@@ -866,7 +866,7 @@ const edit = (props) => {
                                                 value: "space-around",
                                                 tooltip: __(
                                                     "Space Around",
-                                                    "ultimate-addons-for-gutenberg"
+                                                    "premium-blocks-for-gutenberg"
                                                 ),
                                                 icon: renderCustomIcon(
                                                     `flex-${currentOffset}-space-around`
@@ -876,7 +876,7 @@ const edit = (props) => {
                                                 value: "space-evenly",
                                                 tooltip: __(
                                                     "Space Evenly",
-                                                    "ultimate-addons-for-gutenberg"
+                                                    "premium-blocks-for-gutenberg"
                                                 ),
                                                 icon: renderCustomIcon(
                                                     `flex-${currentOffset}-space-evenly`
