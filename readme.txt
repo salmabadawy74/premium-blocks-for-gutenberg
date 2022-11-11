@@ -73,14 +73,13 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 - New: Container Block to build flexible box layouts.
 - New: Content Switcher Block to switch between two different content.
 - New: UX/UI Controls Design for Premium Blocks.
-- New: New: React admin dashboard.
+- New: React admin dashboard.
 - New: Responsive options for all premium blocks.
 - Improved: All Blocks are now compatible with WordPress 6.1.
 - Improved: Responsive settings have added to alignment, size, border and spacing controls.
-- Improved: Accordion, Pricing table, Icon box, Person and Bullet list Blocks have been refactored to work as Group of Blocks.  
-- Improved: Premium Blocks code and editor performance.
+- Improved: Accordion, Pricing table, Icon box, Person and Bullet list Blocks have been refactored to work as Group of Blocks.
 - Improved: Blocks Options have been organized into three tabs (Layout, Style, and Advanced)
-- Improved: Update Count up a library.
+- Improved: Update Count up library.
 - Improved: Text style, letter spacing, text-transform, and text decoration options have added to typography control.
 - Fixed: General Issues in multiple blocks.
 
