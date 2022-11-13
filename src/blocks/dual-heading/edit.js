@@ -12,7 +12,7 @@ import {
     PremiumBackgroundControl,
     Icons,
     WebfontLoader,
-} from '@pbg/components';
+} from "@pbg/components";
 import {
     gradientBackground,
     typographyCss,
@@ -20,7 +20,7 @@ import {
     paddingCss,
     marginCss,
     generateBlockId,
-} from '@pbg/helpers';
+} from "@pbg/helpers";
 const { __ } = wp.i18n;
 const { withSelect } = wp.data;
 const { Fragment, useEffect } = wp.element;
@@ -32,7 +32,7 @@ function Edit(props) {
 
     useEffect(() => {
         setAttributes({
-            blockId: "premium-dual-heading-" + generateBlockId(clientId)
+            blockId: "premium-dual-heading-" + generateBlockId(clientId),
         });
         setAttributes({ classMigrate: true });
     }, []);
@@ -82,24 +82,22 @@ function Edit(props) {
     if (firstTypography?.fontFamily !== "Default") {
         const firstConfig = {
             google: {
-                families: [firstTypography.fontFamily]
-            }
-        }
+                families: [firstTypography.fontFamily],
+            },
+        };
         loadFirstGoogleFonts = (
-            <WebfontLoader config={firstConfig}>
-            </WebfontLoader>
+            <WebfontLoader config={firstConfig}></WebfontLoader>
         );
     }
 
     if (secondTypography?.fontFamily !== "Default") {
         const secondConfig = {
             google: {
-                families: [secondTypography.fontFamily]
-            }
-        }
+                families: [secondTypography.fontFamily],
+            },
+        };
         loadSecondGoogleFonts = (
-            <WebfontLoader config={secondConfig}>
-            </WebfontLoader>
+            <WebfontLoader config={secondConfig}></WebfontLoader>
         );
     }
 
@@ -177,17 +175,26 @@ function Edit(props) {
                                 choices={[
                                     {
                                         value: "left",
-                                        label: __("Left", "premium-blocks-for-gutenberg"),
+                                        label: __(
+                                            "Left",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
                                         icon: Icons.alignLeft,
                                     },
                                     {
                                         value: "center",
-                                        label: __("Center", "premium-blocks-for-gutenberg"),
+                                        label: __(
+                                            "Center",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
                                         icon: Icons.alignCenter,
                                     },
                                     {
                                         value: "right",
-                                        label: __("Right", "premium-blocks-for-gutenberg"),
+                                        label: __(
+                                            "Right",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
                                         icon: Icons.alignRight,
                                     },
                                 ]}
@@ -220,7 +227,10 @@ function Edit(props) {
                             />
                             <hr />
                             <PremiumBorder
-                                label={__("Border", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Border",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 value={containerBorder}
                                 onChange={(value) =>
                                     setAttributes({
@@ -262,9 +272,7 @@ function Edit(props) {
                                             "Animated",
                                             "premium-blocks-for-gutenberg"
                                         )}
-                                        checked={
-                                            firstStyles?.[0]?.firstAnim
-                                        }
+                                        checked={firstStyles?.[0]?.firstAnim}
                                         onChange={(newValue) =>
                                             saveFirstStyle({
                                                 firstAnim: newValue,
@@ -276,9 +284,7 @@ function Edit(props) {
                                             "Stroke",
                                             "premium-blocks-for-gutenberg"
                                         )}
-                                        checked={
-                                            firstStyles?.[0]?.firstStroke
-                                        }
+                                        checked={firstStyles?.[0]?.firstStroke}
                                         onChange={(newValue) =>
                                             saveFirstStyle({
                                                 firstStroke: newValue,
@@ -310,8 +316,7 @@ function Edit(props) {
                                             "premium-blocks-for-gutenberg"
                                         )}
                                         colorValue={
-                                            firstStyles?.[0]
-                                                ?.firstBackground
+                                            firstStyles?.[0]?.firstBackground
                                         }
                                         onColorChange={(value) =>
                                             saveFirstStyle({
@@ -366,19 +371,28 @@ function Edit(props) {
                                 onChange={(value) =>
                                     setAttributes({ firstShadow: value })
                                 }
+                                boxShadow={false}
                             />
                             <hr />
                             <PremiumBorder
-                                label={__("Border", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Border",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 value={firstBorder}
-                                onChange={(value) => setAttributes({ firstBorder: value })}
+                                onChange={(value) =>
+                                    setAttributes({ firstBorder: value })
+                                }
                             />
                             <hr />
                             <SpacingComponent
                                 value={firstMargin}
                                 responsive={true}
                                 showUnits={true}
-                                label={__("Margin", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Margin",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 onChange={(value) =>
                                     setAttributes({ firstMargin: value })
                                 }
@@ -387,7 +401,10 @@ function Edit(props) {
                                 value={firstPadding}
                                 responsive={true}
                                 showUnits={true}
-                                label={__("Padding", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Padding",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 onChange={(value) =>
                                     setAttributes({ firstPadding: value })
                                 }
@@ -428,9 +445,7 @@ function Edit(props) {
                                             "Animated",
                                             "premium-blocks-for-gutenberg"
                                         )}
-                                        checked={
-                                            secondStyles?.[0]?.secondAnim
-                                        }
+                                        checked={secondStyles?.[0]?.secondAnim}
                                         onChange={(newValue) =>
                                             saveSecondStyle({
                                                 secondAnim: newValue,
@@ -467,8 +482,7 @@ function Edit(props) {
                                         onColorChange={(newValue) =>
                                             saveSecondStyle({
                                                 secondColor:
-                                                    newValue ||
-                                                    "transparent",
+                                                    newValue || "transparent",
                                             })
                                         }
                                     />
@@ -478,8 +492,7 @@ function Edit(props) {
                                             "premium-blocks-for-gutenberg"
                                         )}
                                         colorValue={
-                                            secondStyles?.[0]
-                                                ?.secondBackground
+                                            secondStyles?.[0]?.secondBackground
                                         }
                                         colorDefault={""}
                                         onColorChange={(value) =>
@@ -504,8 +517,7 @@ function Edit(props) {
                                         onColorChange={(newValue) =>
                                             saveSecondStyle({
                                                 secondColor:
-                                                    newValue ||
-                                                    "transparent",
+                                                    newValue || "transparent",
                                             })
                                         }
                                     />
@@ -515,15 +527,13 @@ function Edit(props) {
                                             "premium-blocks-for-gutenberg"
                                         )}
                                         colorValue={
-                                            secondStyles?.[0]
-                                                ?.secondClipColor
+                                            secondStyles?.[0]?.secondClipColor
                                         }
                                         colorDefault={""}
                                         onColorChange={(newValue) =>
                                             saveSecondStyle({
                                                 secondClipColor:
-                                                    newValue ||
-                                                    "transparent",
+                                                    newValue || "transparent",
                                             })
                                         }
                                     />
@@ -538,19 +548,28 @@ function Edit(props) {
                                 onChange={(value) =>
                                     setAttributes({ secondShadow: value })
                                 }
+                                boxShadow={false}
                             />
                             <hr />
                             <PremiumBorder
-                                label={__("Border", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Border",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 value={secondBorder}
-                                onChange={(value) => setAttributes({ secondBorder: value })}
+                                onChange={(value) =>
+                                    setAttributes({ secondBorder: value })
+                                }
                             />
                             <hr />
                             <SpacingComponent
                                 value={secondMargin}
                                 responsive={true}
                                 showUnits={true}
-                                label={__("Margin", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Margin",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 onChange={(value) =>
                                     setAttributes({ secondMargin: value })
                                 }
@@ -559,7 +578,10 @@ function Edit(props) {
                                 value={secondPadding}
                                 responsive={true}
                                 showUnits={true}
-                                label={__("Padding", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Padding",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 onChange={(value) =>
                                     setAttributes({ secondPadding: value })
                                 }
@@ -618,16 +640,19 @@ function Edit(props) {
                 <div className={`premium-dheading-block__wrap`}>
                     <h2 className={`premium-dheading-block__title`}>
                         <RichText
-                            className={`premium-dheading-block__first${firstStyles?.[0]?.firstClip
-                                ? ` premium-headingc-${firstStyles?.[0]?.firstClip}`
-                                : ""
-                                }${firstStyles?.[0]?.firstAnim
+                            className={`premium-dheading-block__first${
+                                firstStyles?.[0]?.firstClip
+                                    ? ` premium-headingc-${firstStyles?.[0]?.firstClip}`
+                                    : ""
+                            }${
+                                firstStyles?.[0]?.firstAnim
                                     ? ` premium-headinga-${firstStyles?.[0]?.firstAnim}`
                                     : ""
-                                }${firstStyles?.[0]?.firstStroke
+                            }${
+                                firstStyles?.[0]?.firstStroke
                                     ? ` premium-headings-${firstStyles?.[0]?.firstStroke}`
                                     : ""
-                                }`}
+                            }`}
                             value={firstHeading}
                             onChange={(value) =>
                                 setAttributes({ firstHeading: value })
@@ -646,32 +671,26 @@ function Edit(props) {
                                     firstTypography,
                                     props.deviceType
                                 ),
-                                ...marginCss(
-                                    firstMargin,
-                                    props.deviceType
-                                ),
-                                ...paddingCss(
-                                    firstPadding,
-                                    props.deviceType
-                                ),
-                                ...borderCss(
-                                    firstBorder,
-                                    props.deviceType
-                                ),
+                                ...marginCss(firstMargin, props.deviceType),
+                                ...paddingCss(firstPadding, props.deviceType),
+                                ...borderCss(firstBorder, props.deviceType),
                             }}
                             tagName="span"
                         />
                         <RichText
-                            className={`premium-dheading-block__second${secondStyles?.[0]?.secondClip
-                                ? `${` premium-headingc-${secondStyles?.[0]?.secondClip}`}`
-                                : ""
-                                }${secondStyles?.[0]?.secondAnim
+                            className={`premium-dheading-block__second${
+                                secondStyles?.[0]?.secondClip
+                                    ? `${` premium-headingc-${secondStyles?.[0]?.secondClip}`}`
+                                    : ""
+                            }${
+                                secondStyles?.[0]?.secondAnim
                                     ? ` ${`premium-headinga-${secondStyles?.[0]?.secondAnim} `}`
                                     : ""
-                                }${secondStyles?.[0]?.secondStroke
+                            }${
+                                secondStyles?.[0]?.secondStroke
                                     ? ` premium-headings-${secondStyles?.[0]?.secondStroke}`
                                     : ""
-                                }`}
+                            }`}
                             value={secondHeading}
                             onChange={(value) =>
                                 setAttributes({ secondHeading: value })
@@ -690,18 +709,9 @@ function Edit(props) {
                                     secondTypography,
                                     props.deviceType
                                 ),
-                                ...marginCss(
-                                    secondMargin,
-                                    props.deviceType
-                                ),
-                                ...paddingCss(
-                                    secondPadding,
-                                    props.deviceType
-                                ),
-                                ...borderCss(
-                                    secondBorder,
-                                    props.deviceType
-                                ),
+                                ...marginCss(secondMargin, props.deviceType),
+                                ...paddingCss(secondPadding, props.deviceType),
+                                ...borderCss(secondBorder, props.deviceType),
                             }}
                             tagName="span"
                         />
