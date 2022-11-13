@@ -227,7 +227,7 @@ function Edit(props) {
         };
         styles[`.${blockId}.premium-button__wrap .premium-button:hover`] = {
             "background-color": `${btnStyles[0].backHoverColor}!important`,
-            'color': `${btnStyles[0].textHoverColor}!important`,
+            color: `${btnStyles[0].textHoverColor}!important`,
             "border-color": `${btnStyles[0].borderHoverColor}!important`,
         };
         styles[
@@ -490,13 +490,13 @@ function Edit(props) {
                                             label={
                                                 "radial" !== effect
                                                     ? __(
-                                                        "Background Color",
-                                                        "premium-blocks-for-gutenberg"
-                                                    )
+                                                          "Background Color",
+                                                          "premium-blocks-for-gutenberg"
+                                                      )
                                                     : __(
-                                                        "Background Color",
-                                                        "premium-blocks-for-gutenberg"
-                                                    )
+                                                          "Background Color",
+                                                          "premium-blocks-for-gutenberg"
+                                                      )
                                             }
                                             colorValue={
                                                 btnStyles[0].backHoverColor
@@ -511,21 +511,25 @@ function Edit(props) {
                                                 });
                                             }}
                                         />
-                                        {border.borderType != 'none' && <AdvancedPopColorControl
-                                            label={__(
-                                                "Border Color",
-                                                "premium-blocks-for-gutenberg"
-                                            )}
-                                            colorValue={
-                                                btnStyles[0].borderHoverColor
-                                            }
-                                            colorDefault={""}
-                                            onColorChange={(newValue) =>
-                                                saveBtnStyles({
-                                                    borderHoverColor: newValue,
-                                                })
-                                            }
-                                        />}
+                                        {border.borderType != "none" && (
+                                            <AdvancedPopColorControl
+                                                label={__(
+                                                    "Border Color",
+                                                    "premium-blocks-for-gutenberg"
+                                                )}
+                                                colorValue={
+                                                    btnStyles[0]
+                                                        .borderHoverColor
+                                                }
+                                                colorDefault={""}
+                                                onColorChange={(newValue) =>
+                                                    saveBtnStyles({
+                                                        borderHoverColor:
+                                                            newValue,
+                                                    })
+                                                }
+                                            />
+                                        )}
                                     </Fragment>
                                 </InsideTab>
                             </InsideTabs>

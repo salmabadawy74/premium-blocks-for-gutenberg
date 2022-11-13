@@ -376,6 +376,7 @@ function Edit(props) {
                                 onChange={(value) =>
                                     setAttributes({ boxShadow: value })
                                 }
+                                boxShadow={true}
                             />
                             <hr />
                             <PremiumBorder

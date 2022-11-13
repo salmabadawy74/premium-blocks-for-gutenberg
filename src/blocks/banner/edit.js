@@ -13,15 +13,15 @@ import {
     WebfontLoader,
     PremiumTypo,
     SpacingComponent,
-    PremiumFilters
-} from '@pbg/components';
+    PremiumFilters,
+} from "@pbg/components";
 import {
     borderCss,
     generateBlockId,
     generateCss,
     paddingCss,
     typographyCss,
-} from '@pbg/helpers';
+} from "@pbg/helpers";
 
 const { withSelect } = wp.data;
 const { __ } = wp.i18n;
@@ -597,6 +597,7 @@ function Edit(props) {
                                             titleTextShadow: value,
                                         })
                                     }
+                                    boxShadow={false}
                                 />
                             </PanelBody>
                             <PanelBody
@@ -637,6 +638,7 @@ function Edit(props) {
                                     onChange={(value) =>
                                         setAttributes({ descTextShadow: value })
                                     }
+                                    boxShadow={false}
                                 />
                             </PanelBody>
                             <PanelBody
@@ -654,6 +656,7 @@ function Edit(props) {
                                             containerShadow: value,
                                         })
                                     }
+                                    boxShadow={true}
                                 />
                                 <hr />
                                 <PremiumBorder
@@ -767,8 +770,9 @@ function Edit(props) {
                             <div
                                 className="premium-banner__bg-overlay"
                                 style={{
-                                    backgroundColor: `${background ? background : ""
-                                        } `,
+                                    backgroundColor: `${
+                                        background ? background : ""
+                                    } `,
                                 }}
                             ></div>
                             <div
@@ -860,9 +864,8 @@ function Edit(props) {
 }
 
 export default withSelect((select) => {
-    const { __experimentalGetPreviewDeviceType = null } = select(
-        "core/edit-post"
-    );
+    const { __experimentalGetPreviewDeviceType = null } =
+        select("core/edit-post");
     let deviceType = __experimentalGetPreviewDeviceType
         ? __experimentalGetPreviewDeviceType()
         : null;

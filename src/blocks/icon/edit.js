@@ -15,9 +15,16 @@ import {
     Icons,
     InsideTab,
     iconsList,
-} from '@pbg/components';
-import { gradientBackground, borderCss, paddingCss, marginCss, generateBlockId, generateCss } from '@pbg/helpers';
-import { FontAwesomeEnabled } from '@pbg/settings';
+} from "@pbg/components";
+import {
+    gradientBackground,
+    borderCss,
+    paddingCss,
+    marginCss,
+    generateBlockId,
+    generateCss,
+} from "@pbg/helpers";
+import { FontAwesomeEnabled } from "@pbg/settings";
 
 const { __ } = wp.i18n;
 
@@ -110,11 +117,11 @@ function Edit(props) {
     const loadStyles = () => {
         const styles = {};
         styles[` .${blockId} .premium-icon-container i:hover`] = {
-            'color': `${iconStyles[0].iconHoverColor} !important`,
-            'background-color': `${iconStyles[0].iconHoverBack} !important`
+            color: `${iconStyles[0].iconHoverColor} !important`,
+            "background-color": `${iconStyles[0].iconHoverBack} !important`,
         };
         return generateCss(styles);
-    }
+    };
 
     return (
         <Fragment>
@@ -127,58 +134,115 @@ function Edit(props) {
                             initialOpen={true}
                         >
                             <p className="premium-editor-paragraph">
-                                {__("Select Icon", "premium-blocks-for-gutenberg")}
+                                {__(
+                                    "Select Icon",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                             </p>
                             <FontIconPicker
                                 icons={iconsList}
-                                onChange={(newIcon) => setAttributes({ selectedIcon: newIcon })}
+                                onChange={(newIcon) =>
+                                    setAttributes({ selectedIcon: newIcon })
+                                }
                                 value={selectedIcon}
                                 isMulti={false}
                                 // appendTo="body"
-                                noSelectedPlaceholder={__("Select Icon", "premium-blocks-for-gutenberg")}
+                                noSelectedPlaceholder={__(
+                                    "Select Icon",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                             />
                             <ToggleControl
-                                label={__("Link", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Link",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 checked={urlCheck}
-                                onChange={(newValue) => setAttributes({ urlCheck: newValue })}
+                                onChange={(newValue) =>
+                                    setAttributes({ urlCheck: newValue })
+                                }
                             />
                             {urlCheck && (
                                 <Fragment>
                                     <TextControl
-                                        label={__("URL", "premium-blocks-for-gutenberg")}
+                                        label={__(
+                                            "URL",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         value={link}
-                                        onChange={(newLink) => setAttributes({ link: newLink })}
+                                        onChange={(newLink) =>
+                                            setAttributes({ link: newLink })
+                                        }
                                     />
                                     <ToggleControl
-                                        label={__("Open link in new tab", "premium-blocks-for-gutenberg")}
+                                        label={__(
+                                            "Open link in new tab",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         checked={target}
-                                        onChange={(newValue) => setAttributes({ target: newValue })}
+                                        onChange={(newValue) =>
+                                            setAttributes({ target: newValue })
+                                        }
                                     />
                                 </Fragment>
                             )}
                             <ResponsiveRadioControl
-                                label={__("Alignment", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Alignment",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 choices={[
-                                    { value: "left", label: __("Left", "premium-blocks-for-gutenberg"), icon: Icons.alignLeft },
-                                    { value: "center", label: __("Center", "premium-blocks-for-gutenberg"), icon: Icons.alignCenter },
-                                    { value: "right", label: __("Right", "premium-blocks-for-gutenberg"), icon: Icons.alignRight },
+                                    {
+                                        value: "left",
+                                        label: __(
+                                            "Left",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                        icon: Icons.alignLeft,
+                                    },
+                                    {
+                                        value: "center",
+                                        label: __(
+                                            "Center",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                        icon: Icons.alignCenter,
+                                    },
+                                    {
+                                        value: "right",
+                                        label: __(
+                                            "Right",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                        icon: Icons.alignRight,
+                                    },
                                 ]}
                                 value={iconAlign}
-                                onChange={(newValue) => setAttributes({ iconAlign: newValue })}
+                                onChange={(newValue) =>
+                                    setAttributes({ iconAlign: newValue })
+                                }
                                 showIcons={true}
                             />
                         </PanelBody>
                     </InspectorTab>
                     <InspectorTab key={"style"}>
                         <PanelBody
-                            title={__("Icon Style", "premium-blocks-for-gutenberg")}
+                            title={__(
+                                "Icon Style",
+                                "premium-blocks-for-gutenberg"
+                            )}
                             className="premium-panel-body"
                             initialOpen={true}
                         >
                             <ResponsiveRangeControl
-                                label={__("Size", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Size",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 value={iconSize}
-                                onChange={(value) => setAttributes({ iconSize: value })}
+                                onChange={(value) =>
+                                    setAttributes({ iconSize: value })
+                                }
                                 min={0}
                                 max={300}
                                 step={1}
@@ -187,103 +251,198 @@ function Edit(props) {
                                 defaultValue={50}
                             />
                             <InsideTabs>
-                                <InsideTab tabTitle={__("Normal", "premium-blocks-for-gutenberg")}>
+                                <InsideTab
+                                    tabTitle={__(
+                                        "Normal",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                >
                                     <Fragment>
                                         <AdvancedPopColorControl
-                                            label={__("Color", "premium-blocks-for-gutenberg")}
+                                            label={__(
+                                                "Color",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
                                             colorValue={iconStyles[0].iconColor}
                                             colorDefault={""}
-                                            onColorChange={(value) => saveIconStyle({ iconColor: value })}
+                                            onColorChange={(value) =>
+                                                saveIconStyle({
+                                                    iconColor: value,
+                                                })
+                                            }
                                         />
                                         <AdvancedPopColorControl
-                                            label={__("Background Color", "premium-blocks-for-gutenberg")}
+                                            label={__(
+                                                "Background Color",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
                                             colorValue={iconStyles[0].iconBack}
                                             colorDefault={""}
-                                            onColorChange={(value) => saveIconStyle({ iconBack: value })}
+                                            onColorChange={(value) =>
+                                                saveIconStyle({
+                                                    iconBack: value,
+                                                })
+                                            }
                                         />
                                     </Fragment>
                                 </InsideTab>
-                                <InsideTab tabTitle={__("Hover", "premium-blocks-for-gutenberg")}>
+                                <InsideTab
+                                    tabTitle={__(
+                                        "Hover",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                >
                                     <Fragment>
                                         <AdvancedPopColorControl
-                                            label={__("Hover Color", "premium-blocks-for-gutenberg")}
-                                            colorValue={iconStyles[0].iconHoverColor}
+                                            label={__(
+                                                "Hover Color",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                            colorValue={
+                                                iconStyles[0].iconHoverColor
+                                            }
                                             colorDefault={""}
-                                            onColorChange={(value) => saveIconStyle({ iconHoverColor: value })}
+                                            onColorChange={(value) =>
+                                                saveIconStyle({
+                                                    iconHoverColor: value,
+                                                })
+                                            }
                                         />
                                         <AdvancedPopColorControl
-                                            label={__("Hover Background Color", "premium-blocks-for-gutenberg")}
-                                            colorValue={iconStyles[0].iconHoverBack}
+                                            label={__(
+                                                "Hover Background Color",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                            colorValue={
+                                                iconStyles[0].iconHoverBack
+                                            }
                                             colorDefault={""}
-                                            onColorChange={(value) => saveIconStyle({ iconHoverBack: value })}
+                                            onColorChange={(value) =>
+                                                saveIconStyle({
+                                                    iconHoverBack: value,
+                                                })
+                                            }
                                         />
                                         <SelectControl
-                                            label={__("Hover Effect", "premium-blocks-for-gutenberg")}
+                                            label={__(
+                                                "Hover Effect",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
                                             options={EFFECTS}
                                             value={hoverEffect}
-                                            onChange={(newEffect) => setAttributes({ hoverEffect: newEffect })}
+                                            onChange={(newEffect) =>
+                                                setAttributes({
+                                                    hoverEffect: newEffect,
+                                                })
+                                            }
                                         />
                                     </Fragment>
                                 </InsideTab>
                             </InsideTabs>
                             <PremiumShadow
-                                label={__("Text Shadow", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Text Shadow",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 value={iconShadow}
-                                onChange={(value) => setAttributes({ iconShadow: value })}
+                                boxShadow={false}
+                                onChange={(value) =>
+                                    setAttributes({ iconShadow: value })
+                                }
                             />
                             <hr />
                             <PremiumBorder
-                                label={__("Border", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Border",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 value={iconBorder}
-                                onChange={(value) => setAttributes({ iconBorder: value })}
+                                onChange={(value) =>
+                                    setAttributes({ iconBorder: value })
+                                }
                             />
                             <hr />
                             <SpacingControl
-                                label={__("Margin", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Margin",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 value={iconMargin}
-                                onChange={(value) => setAttributes({ iconMargin: value })}
+                                onChange={(value) =>
+                                    setAttributes({ iconMargin: value })
+                                }
                                 showUnits={true}
                                 responsive={true}
                             />
                             <SpacingControl
-                                label={__("Padding", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Padding",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 value={iconPadding}
-                                onChange={(value) => setAttributes({ iconPadding: value })}
+                                onChange={(value) =>
+                                    setAttributes({ iconPadding: value })
+                                }
                                 showUnits={true}
                                 responsive={true}
                             />
                         </PanelBody>
                         <PanelBody
-                            title={__("Container Style", "premium-blocks-for-gutenberg")}
+                            title={__(
+                                "Container Style",
+                                "premium-blocks-for-gutenberg"
+                            )}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
                             <PremiumBackgroundControl
                                 value={containerBackground}
-                                onChange={(value) => setAttributes({ containerBackground: value })}
+                                onChange={(value) =>
+                                    setAttributes({
+                                        containerBackground: value,
+                                    })
+                                }
                             />
                             <PremiumShadow
+                                boxShadow={true}
                                 value={containerShadow}
-                                onChange={(value) => setAttributes({ containerShadow: value })}
+                                onChange={(value) =>
+                                    setAttributes({ containerShadow: value })
+                                }
                             />
                             <hr />
                             <PremiumBorder
-                                label={__("Border", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Border",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 value={containerBorder}
-                                onChange={(value) => setAttributes({ containerBorder: value })}
+                                onChange={(value) =>
+                                    setAttributes({ containerBorder: value })
+                                }
                             />
                             <hr />
                             <SpacingControl
-                                label={__("Margin", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Margin",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 value={wrapMargin}
-                                onChange={(value) => setAttributes({ wrapMargin: value })}
+                                onChange={(value) =>
+                                    setAttributes({ wrapMargin: value })
+                                }
                                 showUnits={true}
                                 responsive={true}
                             />
                             <SpacingControl
-                                label={__("Padding", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Padding",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 value={wrapPadding}
-                                onChange={(value) => setAttributes({ wrapPadding: value })}
+                                onChange={(value) =>
+                                    setAttributes({ wrapPadding: value })
+                                }
                                 showUnits={true}
                                 responsive={true}
                             />
@@ -294,9 +453,27 @@ function Edit(props) {
                             Desktop={hideDesktop}
                             Tablet={hideTablet}
                             Mobile={hideMobile}
-                            onChangeDesktop={(value) => setAttributes({ hideDesktop: value ? " premium-desktop-hidden" : "" })}
-                            onChangeTablet={(value) => setAttributes({ hideTablet: value ? " premium-tablet-hidden" : "" })}
-                            onChangeMobile={(value) => setAttributes({ hideMobile: value ? " premium-mobile-hidden" : "" })}
+                            onChangeDesktop={(value) =>
+                                setAttributes({
+                                    hideDesktop: value
+                                        ? " premium-desktop-hidden"
+                                        : "",
+                                })
+                            }
+                            onChangeTablet={(value) =>
+                                setAttributes({
+                                    hideTablet: value
+                                        ? " premium-tablet-hidden"
+                                        : "",
+                                })
+                            }
+                            onChangeMobile={(value) =>
+                                setAttributes({
+                                    hideMobile: value
+                                        ? " premium-mobile-hidden"
+                                        : "",
+                                })
+                            }
                         />
                     </InspectorTab>
                 </InspectorTabs>
@@ -327,12 +504,15 @@ function Edit(props) {
                         ...borderCss(containerBorder, props.deviceType),
                         ...paddingCss(wrapPadding, props.deviceType),
                         ...marginCss(wrapMargin, props.deviceType),
-                        boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`
+                        boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
                     }}
                 >
                     {iconType === "fa" && 1 != FontAwesomeEnabled && (
                         <p className={`premium-icon__alert`}>
-                            {__("Please Enable Font Awesome Icons from Plugin settings", "premium-blocks-for-gutenberg")}
+                            {__(
+                                "Please Enable Font Awesome Icons from Plugin settings",
+                                "premium-blocks-for-gutenberg"
+                            )}
                         </p>
                     )}
                     <div className={`premium-icon__${hoverEffect}`}>
@@ -342,11 +522,16 @@ function Edit(props) {
                                 style={{
                                     color: iconStyles[0].iconColor,
                                     backgroundColor: iconStyles[0].iconBack,
-                                    fontSize: (iconSize[props.deviceType] || 50) + iconSize.unit,
+                                    fontSize:
+                                        (iconSize[props.deviceType] || 50) +
+                                        iconSize.unit,
                                     ...borderCss(iconBorder, props.deviceType),
-                                    ...paddingCss(iconPadding, props.deviceType),
+                                    ...paddingCss(
+                                        iconPadding,
+                                        props.deviceType
+                                    ),
                                     ...marginCss(iconMargin, props.deviceType),
-                                    textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`
+                                    textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`,
                                 }}
                             />
                         )}
