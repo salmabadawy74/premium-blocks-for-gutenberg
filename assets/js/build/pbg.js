@@ -615,7 +615,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_map__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_map__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var colord__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! colord */ "./node_modules/colord/index.mjs");
+/* harmony import */ var colord__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! colord */ "./node_modules/colord/index.mjs");
+/* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/core-data */ "@wordpress/core-data");
+/* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_4__);
 
 
 
@@ -637,6 +639,7 @@ const {
 const {
   withSelect
 } = wp.data;
+
 
 
 class AdvancedColorControl extends Component {
@@ -694,7 +697,7 @@ class AdvancedColorControl extends Component {
     };
 
     const normalizeColor = color => {
-      const parsedColor = (0,colord__WEBPACK_IMPORTED_MODULE_4__.colord)(color);
+      const parsedColor = (0,colord__WEBPACK_IMPORTED_MODULE_5__.colord)(color);
 
       if (!parsedColor.parsed) {
         return color;
@@ -708,6 +711,30 @@ class AdvancedColorControl extends Component {
     };
 
     const isNew = wp.components.GradientPicker;
+
+    const getDefaultColors = () => {
+      const {
+        pbgGlobalColors,
+        pbgDefaultPallet,
+        colors,
+        customColors
+      } = this.props;
+      let globalColors = [...colors];
+
+      if (pbgDefaultPallet === 'theme') {
+        globalColors = [...this.props.colors];
+      }
+
+      if (pbgDefaultPallet === 'pbg') {
+        const titles = [__(`Buttons background color \n& Links hover color`, "premium-blocks-for-gutenberg"), __("Headings & Links color", "premium-blocks-for-gutenberg"), __("Body text", "premium-blocks-for-gutenberg"), __("Borders color", "premium-blocks-for-gutenberg"), __("Body background, a tint for Input fields", "premium-blocks-for-gutenberg"), __("Footer text color", "premium-blocks-for-gutenberg"), __("Footer background color", "premium-blocks-for-gutenberg")];
+        globalColors = [...pbgGlobalColors.colors].map((color, index) => ({ ...color,
+          name: titles[index]
+        }));
+      }
+
+      return [...globalColors, ...customColors];
+    };
+
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "premium-color-popover-container"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -753,7 +780,7 @@ class AdvancedColorControl extends Component {
       className: `premium-color-picker-top`
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
       className: "premium-color-picker-skins"
-    }, lodash_map__WEBPACK_IMPORTED_MODULE_2___default()(this.props.colors, _ref2 => {
+    }, lodash_map__WEBPACK_IMPORTED_MODULE_2___default()(getDefaultColors(), _ref2 => {
       let {
         color,
         slug,
@@ -809,12 +836,23 @@ class AdvancedColorControl extends Component {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (withSelect((select, ownProps) => {
+  var _getEditedEntityRecor, _getEditedEntityRecor2, _getEditedEntityRecor3;
+
   const settings = select("core/block-editor").getSettings();
+  const {
+    getEditedEntityRecord
+  } = select(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_4__.store);
+  const pbgGlobalColors = ((_getEditedEntityRecor = getEditedEntityRecord('root', 'site')) === null || _getEditedEntityRecor === void 0 ? void 0 : _getEditedEntityRecor.pbg_global_colors) || [];
+  const pbgDefaultPallet = ((_getEditedEntityRecor2 = getEditedEntityRecord('root', 'site')) === null || _getEditedEntityRecor2 === void 0 ? void 0 : _getEditedEntityRecor2.pbg_global_color_pallet) || 'theme';
+  const customColors = ((_getEditedEntityRecor3 = getEditedEntityRecord('root', 'site')) === null || _getEditedEntityRecor3 === void 0 ? void 0 : _getEditedEntityRecor3.pbg_custom_colors) || [];
   const colors = lodash_get__WEBPACK_IMPORTED_MODULE_1___default()(settings, ["colors"], []);
   const disableCustomColors = ownProps.disableCustomColors === undefined ? settings.disableCustomColors : ownProps.disableCustomColors;
   return {
     colors,
-    disableCustomColors
+    disableCustomColors,
+    pbgGlobalColors,
+    pbgDefaultPallet,
+    customColors
   };
 })(AdvancedColorControl));
 
@@ -1577,11 +1615,11 @@ function PremiumShadow(_ref) {
     boxShadow = false
   } = _ref;
   let defaultValues = {
-    'color': '',
-    'blur': '',
-    'horizontal': '',
-    'vertical': '',
-    'position': ''
+    color: "",
+    blur: "",
+    horizontal: "",
+    vertical: "",
+    position: ""
   };
   value = value ? { ...defaultValues,
     ...value
@@ -1598,10 +1636,10 @@ function PremiumShadow(_ref) {
 
   const POSITION = [{
     value: "inset",
-    label: __("Inset", 'premium-blocks-for-gutenberg')
+    label: __("Inset", "premium-blocks-for-gutenberg")
   }, {
     value: "",
-    label: __("Outline", 'premium-blocks-for-gutenberg')
+    label: __("Outline", "premium-blocks-for-gutenberg")
   }];
   const {
     color,
@@ -1614,12 +1652,12 @@ function PremiumShadow(_ref) {
     className: "premium-shadow-control__container premium-blocks__base-control"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "premium-control-title"
-  }, __(label || "Box Shadow")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, __(label || "Box Shadow", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-shadow-control__wrapper`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
     colorValue: color,
-    colorDefault: '',
-    onColorChange: value => onChangeShadow('color', value),
+    colorDefault: "",
+    onColorChange: value => onChangeShadow("color", value),
     disableReset: true
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Dropdown, {
     className: "premium-control-toggle-btn",
@@ -1641,7 +1679,7 @@ function PremiumShadow(_ref) {
     renderContent: () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_1__["default"], {
       label: __("Horizontal"),
       value: horizontal,
-      onChange: value => onChangeShadow('horizontal', value),
+      onChange: value => onChangeShadow("horizontal", value),
       showUnit: false,
       defaultValue: 0,
       min: -100,
@@ -1649,7 +1687,7 @@ function PremiumShadow(_ref) {
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_1__["default"], {
       label: __("Vertical"),
       value: vertical,
-      onChange: value => onChangeShadow('vertical', value),
+      onChange: value => onChangeShadow("vertical", value),
       showUnit: false,
       defaultValue: 0,
       min: -100,
@@ -1657,14 +1695,14 @@ function PremiumShadow(_ref) {
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_1__["default"], {
       label: __("Blur"),
       value: blur,
-      onChange: value => onChangeShadow('blur', value),
+      onChange: value => onChangeShadow("blur", value),
       showUnit: false,
       defaultValue: 0
     }), boxShadow && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
       label: __("Position"),
       options: POSITION,
       value: position,
-      onChange: value => onChangeShadow('position', value)
+      onChange: value => onChangeShadow("position", value)
     }))
   })));
 }
@@ -14870,6 +14908,17 @@ g,0<d.length&&(d=za[d[0]])&&(a.c[e]=d))}a.c[e]||(d=za[e])&&(a.c[e]=d);for(d=0;d<
 
 "use strict";
 module.exports = window["React"];
+
+/***/ }),
+
+/***/ "@wordpress/core-data":
+/*!**********************************!*\
+  !*** external ["wp","coreData"] ***!
+  \**********************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = window["wp"]["coreData"];
 
 /***/ }),
 

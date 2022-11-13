@@ -13844,7 +13844,7 @@ const PalettePreview = _ref => {
     isDefault: picker.default,
     onRemove: () => handleRemoveColor(picker[`slug`]),
     onChangeName: false
-  }))), customColors.length && canAdd && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, __('Custom Color', "premium-blocks-for-gutenberg")), customColors.length && canAdd && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }))), canAdd && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, __('Custom Color', "premium-blocks-for-gutenberg")), canAdd && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-custom-colors"
   }, customColors.map(picker => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_color__WEBPACK_IMPORTED_MODULE_2__["default"], {
     picker: picker,
@@ -13856,7 +13856,7 @@ const PalettePreview = _ref => {
     isDefault: picker.default,
     onRemove: () => handleRemoveColor(picker[`slug`]),
     onChangeName: v => handleColorChangeName(v, picker[`slug`])
-  })), canAdd && customColors.length && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  })), canAdd && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-add-new-color",
     onClick: () => handleAddNewColor(),
     "data-tip": __('Add Color', "premium-blocks-for-gutenberg")

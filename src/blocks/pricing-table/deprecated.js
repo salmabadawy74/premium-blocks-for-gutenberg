@@ -1,6 +1,7 @@
 const className = "premium-pricing-table";
-import { generateBlockId } from '../../components/HelperFunction';
 import classnames from "classnames";
+import { filterJsCss, generateBlockId } from '@pbg/helpers';
+const { useBlockProps, InnerBlocks } = wp.blockEditor;
 
 const { __ } = wp.i18n;
 const { RichText } = wp.editor;
@@ -920,7 +921,164 @@ const v5Attributes = {
     },
 };
 
+const v6Attributes = {
+    "badgeChecked": {
+        "type": "boolean",
+        "default": true
+    },
+    "blockId": {
+        "type": "string"
+    },
+    "classMigrate": {
+        "type": "boolean",
+        "default": false
+    },
+    "hideDesktop": {
+        "type": "boolean",
+        "default": ""
+    },
+    "hideTablet": {
+        "type": "boolean",
+        "default": ""
+    },
+    "hideMobile": {
+        "type": "boolean",
+        "default": ""
+    },
+    "tableStyles": {
+        "type": "array",
+        "default": [
+            {
+                "tableBack": "",
+                "tableOpacity": 1
+            }
+        ]
+    },
+    "tableBoxShadow": {
+        "type": "object",
+        "default": {
+            "color": "transparent",
+            "blur": "10",
+            "horizontal": "0",
+            "vertical": "0",
+            "position": ""
+        }
+    },
+    "tableBorder": {
+        "type": "object",
+        "default": {
+            "bordertype": "solid",
+            "borderColor": "#e1e1e1",
+            "borderWidth": {
+                "Desktop": {
+                    "top": "1",
+                    "right": "1",
+                    "bottom": "1",
+                    "left": "1"
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            },
+            "borderRadius": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            }
+        }
+    },
+    "tablePadding": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "20",
+                "right": "20",
+                "bottom": "20",
+                "left": "20"
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    }
+};
+
 const deprecatedContent = [
+    {
+        attributes: v6Attributes,
+        save: props => {
+            const { className } = props;
+
+            const {
+                blockId,
+                hideDesktop,
+                hideTablet,
+                hideMobile,
+                tableStyles,
+                tableBoxShadow,
+                tableBorder,
+            } = props.attributes;
+
+            return (
+                <div
+                    {...useBlockProps.save({
+                        className: classnames(
+                            className,
+                            `${blockId}`,
+                            `premium-pricing-table`,
+                            {
+                                " premium-desktop-hidden": hideDesktop,
+                                " premium-tablet-hidden": hideTablet,
+                                " premium-mobile-hidden": hideMobile,
+                            }
+                        ),
+                        style: filterJsCss({
+                            backgroundColor: tableStyles[0].tableBack,
+                            borderStyle: tableBorder.borderType,
+                            borderColor: tableBorder.borderColor,
+                            boxShadow: `${tableBoxShadow.horizontal}px ${tableBoxShadow.vertical}px ${tableBoxShadow.blur}px ${tableBoxShadow.color} ${tableBoxShadow.position}`
+                        })
+                    })}
+                >
+                    <InnerBlocks.Content />
+                </div>
+            );
+        }
+    },
     {
         attributes: v5Attributes,
         isEligible() {

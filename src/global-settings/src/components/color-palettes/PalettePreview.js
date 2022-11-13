@@ -91,8 +91,8 @@ const PalettePreview = ({
                         />
                     ))}
                 </div>
-                {(customColors.length && canAdd) && <p>{__('Custom Color', "premium-blocks-for-gutenberg")}</p>}
-                {(customColors.length && canAdd) && (
+                {(canAdd) && <p>{__('Custom Color', "premium-blocks-for-gutenberg")}</p>}
+                {(canAdd) && (
                     <div className="premium-custom-colors">
                         {customColors.map((picker) => (
                             <ColorComponent
@@ -107,7 +107,7 @@ const PalettePreview = ({
                                 onChangeName={(v) => handleColorChangeName(v, picker[`slug`])}
                             />
                         ))}
-                        {(canAdd && customColors.length) && <div className="premium-add-new-color" onClick={() => handleAddNewColor()} data-tip={__('Add Color', "premium-blocks-for-gutenberg")}>
+                        {canAdd && <div className="premium-add-new-color" onClick={() => handleAddNewColor()} data-tip={__('Add Color', "premium-blocks-for-gutenberg")}>
                             <Icon icon={create} />
                         </div>}
                     </div>

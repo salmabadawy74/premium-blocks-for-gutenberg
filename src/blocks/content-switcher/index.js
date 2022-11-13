@@ -12,7 +12,7 @@ import json from './block.json';
 import edit from './edit';
 import save from './save';
 import { contentSwitcher } from '../../../assets/js/settings';
-
+import deprecated from './deprecated'
 
 registerBlockType("premium/content-switcher", {
     /**
@@ -25,5 +25,6 @@ registerBlockType("premium/content-switcher", {
     example: {},
     icon: PBG_Block_Icons.content_switcher,
     edit,
-    save
+    save,
+    deprecated
 });
