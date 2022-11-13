@@ -1,2 +1,4 @@
-.premium-text p {
-  margin: 20px 0; }
+.premium-text {
+  border-color: var(--pbg-global-color4, #e1e1e1); }
+  .premium-text p {
+    margin: 20px 0; }

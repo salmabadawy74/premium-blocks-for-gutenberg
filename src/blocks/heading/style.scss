@@ -77,6 +77,8 @@ $pbBorderColor: #e1e1e1;
     }
 
     .style2 {
+        border-bottom: 3px solid
+            var(--pbg-global-color1, var(--pbg-global-color1, #6ec1e4)) !important;
         overflow: hidden;
 
         .premium-title-center {
@@ -93,6 +95,7 @@ $pbBorderColor: #e1e1e1;
     }
 
     .style4 {
+        border-bottom: 3px solid var(--pbg-global-color1, #6ec1e4) !important;
 
         .left {
             justify-content: flex-start !important;
@@ -108,6 +111,7 @@ $pbBorderColor: #e1e1e1;
     }
 
     .style5 {
+        border-bottom: 3px solid var(--pbg-global-color1, #6ec1e4) !important;
 
         .premium-title-center {
             align-items: center !important;
@@ -123,6 +127,7 @@ $pbBorderColor: #e1e1e1;
     }
 
     .style6 {
+        border-bottom: 3px solid var(--pbg-global-color1, #6ec1e4) !important;
 
         .premium-title-center {
             align-items: center !important;
@@ -306,6 +311,7 @@ $pbBorderColor: #e1e1e1;
 }
 
 .premium-title-style1__wrap {
+    border-left: 3px solid var(--pbg-global-color1, #6ec1e4) !important;
     display: -webkit-inline-box;
     display: -moz-inline-box;
 }
@@ -394,12 +400,14 @@ $pbBorderColor: #e1e1e1;
         animation-duration: var(--animation-speed) !important;
         -webkit-animation-iteration-count: infinite !important;
         animation-iteration-count: infinite !important;
-        background: var(--base-color) -webkit-gradient(linear,
+        background: var(--base-color) -webkit-gradient(
+                linear,
                 left top,
                 right top,
                 from(var(--base-color)),
                 to(var(--base-color)),
-                color-stop(0.5, var(--shiny-color))) 0 0 no-repeat;
+                color-stop(0.5, var(--shiny-color))
+            ) 0 0 no-repeat;
     }
 }
 
@@ -475,6 +483,7 @@ $pbBorderColor: #e1e1e1;
 }
 
 .premium-title-style7-stripe-span {
+    background-color: var(--pbg-global-color1, #6ec1e4);
     width: 120px;
     height: 5px;
 }

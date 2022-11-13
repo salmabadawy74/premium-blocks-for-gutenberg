@@ -24,13 +24,14 @@ $pbBackgroundColor: rgb(242, 242, 242);
     -ms-transition: all 0.2s ease-in-out !important;
     -o-transition: all 0.2s ease-in-out !important;
     transition: all 0.2s ease-in-out !important;
-    // background: $pbBackgroundColor;
     text-decoration: none;
     white-space: normal;
     word-break: break-all;
     justify-content: center;
     align-items: center;
     border-radius: 0%;
+    background-color: var(--pbg-global-color1);
+    border-color: var(--pbg-global-color4);
 
     .premium-button-icon {
         vertical-align: middle;
@@ -97,7 +98,7 @@ $pbBackgroundColor: rgb(242, 242, 242);
         &::before {
             content: "";
             position: absolute;
-            background: #bbb;
+            background: var(--pbg-global-color5, #bbb);
             z-index: -1;
             top: 0;
             left: 0;
@@ -133,7 +134,7 @@ $pbBackgroundColor: rgb(242, 242, 242);
         &::before {
             content: "";
             position: absolute;
-            background: #bbb;
+            background: var(--pbg-global-color5, #bbb);
             z-index: -1;
             top: 0;
             left: 0;
@@ -169,7 +170,7 @@ $pbBackgroundColor: rgb(242, 242, 242);
         &::before {
             content: "";
             position: absolute;
-            background: #bbb;
+            background: var(--pbg-global-color5, #bbb);
             z-index: -1;
             top: 0;
             left: 0;
@@ -467,7 +468,7 @@ $pbBackgroundColor: rgb(242, 242, 242);
     .premium-mobile-hidden {
         display: none !important;
     }
-}/**
+} /**
 * Effect 1
 */
 /**

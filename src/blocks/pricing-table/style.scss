@@ -10,7 +10,7 @@ $pbBorderColor: #e1e1e1;
     position: relative;
     overflow: hidden;
     padding: 20px;
-    border: 1px solid $pbBorderColor;
+    border: 1px solid var(--pbg-global-color4, $pbBorderColor);
     text-align: center;
 }
 

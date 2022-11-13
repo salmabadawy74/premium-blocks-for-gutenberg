@@ -113,7 +113,7 @@
             "type": "array",
             "default": [
                 {
-                    "fancyTextColor": "#793dc3",
+                    "fancyTextColor": "var(--pbg-global-color1,#793dc3)",
                     "fancyTextBGColor": "",
                     "fancyTextBGOpacity": 1,
                     "cursorColor": ""

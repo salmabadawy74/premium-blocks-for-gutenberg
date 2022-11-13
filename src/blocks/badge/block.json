@@ -58,7 +58,7 @@
         },
         "backgroundColor": {
             "type": "string",
-            "default": "#793DC3"
+            "default": "var(--pbg-global-color1,#793dc3)"
         },
         "text": {
             "type": "string",

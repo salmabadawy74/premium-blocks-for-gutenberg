@@ -9,7 +9,9 @@
         padding: 0;
     }
 }
-
+.wp-block-premium-maps {
+    border-color: var(--pbg-global-color4);
+}
 /************ Responsive **************/
 @media (min-width: 977px) {
     .premium-desktop-hidden {

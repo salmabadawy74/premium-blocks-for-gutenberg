@@ -420,7 +420,7 @@ function Edit(props) {
                     : "",
             "border-left-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
             "border-left-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
-            "border-left-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
+            "border-left-color": titleBorder.borderType == 'none' ? 'var(--pbg-global-color1,#793DC4)' : titleBorder.borderColor
         };
 
         styles[`.${blockId} .premium-title .style2`] = {
@@ -444,7 +444,7 @@ function Edit(props) {
                     : "",
             "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
             "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
-            "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
+            "border-bottom-color": titleBorder.borderType == 'none' ? 'var(--pbg-global-color1,#793DC4)' : titleBorder.borderColor
         };
 
         styles[`.${blockId} .premium-title .style4`] = {
@@ -468,7 +468,7 @@ function Edit(props) {
                     : "",
             "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
             "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
-            "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
+            "border-bottom-color": titleBorder.borderType == 'none' ? 'var(--pbg-global-color1,#793DC4)' : titleBorder.borderColor
         };
 
         styles[`.${blockId} .premium-title .style5`] = {
@@ -492,7 +492,7 @@ function Edit(props) {
                     : "",
             "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
             "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
-            "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
+            "border-bottom-color": titleBorder.borderType == 'none' ? 'var(--pbg-global-color1,#793DC4)' : titleBorder.borderColor
         };
 
         styles[`.${blockId} .premium-title .style6`] = {
@@ -516,7 +516,7 @@ function Edit(props) {
                     : "",
             "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
             "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
-            "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
+            "border-bottom-color": titleBorder.borderType == 'none' ? 'var(--pbg-global-color1,#793DC4)' : titleBorder.borderColor
         };
 
         styles[`.${blockId} .premium-title-style2__wrap`] = {

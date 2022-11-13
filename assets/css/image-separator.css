@@ -41,7 +41,8 @@
     width: 200px;
     height: 200px;
     -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out; }
+    transition: all 0.3s ease-in-out;
+    border-color: var(--pbg-global-color4); }
   .premium-image-separator-container .dashicons {
     width: auto !important;
     height: auto !important; }
