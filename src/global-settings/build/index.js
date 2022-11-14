@@ -20285,6 +20285,20 @@ const {
 
 
 
+const SidebarIcon = () => {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    id: "Layer_1",
+    "data-name": "Layer 1",
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "271.92",
+    height: "258.62",
+    viewBox: "0 0 271.92 258.62"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("title", null, "font-icon"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M197,158.57c12.92,39.76,25.75,79.26,38.6,118.77l-.57.38q-5.34-3.86-10.68-7.72l-57.08-41.49c-1.9-1.38-3.85-2.7-5.79-4-1.79-1.22-2.25-2.93-1.1-4.65,1.27-1.91,2.8-1.05,4.31,0q29.06,21.23,58.16,42.4c.66.48,1.31,1,2,1.49l.63-.37c-.7-2.32-1.36-4.65-2.11-6.95-5.48-16.77-11-33.53-16.47-50.3-4.73-14.53-9.27-29.12-14.18-43.59a6.45,6.45,0,0,1-.22-.83l-9.73,6.78a1.69,1.69,0,0,0-.38,1.92l21.78,62.81-35.4-26.8L67.54,279.31c10.14-30.78,20-60.83,30-91.08a27,27,0,0,0,2.83,1.81c1.5.7,1.69,1.52,1.15,3.13-4.28,12.75-8.42,25.55-12.63,38.33C85.47,241.86,82,252.2,78.6,262.56c-.25.76-.33,1.58-.66,3.22l3.27-2.35,82.84-59.66.59-.42-13.83-10.47a1.62,1.62,0,0,0-1.84.17l-53.1,40.19,14.71-42.41L14,120.69h96.19c-.49,1.73-.91,3.24-1.42,5H31.62l-.33.9q40.5,29.43,81.11,59l5.41-15.6a1.63,1.63,0,0,0-.72-1.61L62.43,130.29l50.89,1L149,20.69c10.1,30.8,19.95,60.85,29.87,91.13a25.21,25.21,0,0,0-3.35.21c-1.62.32-2.26-.22-2.79-1.84-4.11-12.8-8.37-25.56-12.55-38.35-3.4-10.36-6.75-20.74-10.14-31.11-.25-.76-.67-1.47-1.38-3-.57,1.75-.9,2.79-1.24,3.83q-14.48,44.91-28.94,89.81l10.91.22a1.74,1.74,0,0,0,1.35-1.31L150,66.66,165.58,118H286L208.38,174.4a26.75,26.75,0,0,0-1.23-3.12c-.81-1.45-.49-2.22.89-3.22,10.93-7.84,21.77-15.81,32.65-23.71q13.25-9.61,26.51-19.2a32.25,32.25,0,0,0,2.41-2.22H167.06l2.37,7.81a1.73,1.73,0,0,0,1.65.87l66.49-1.31Z",
+    transform: "translate(-14.04 -20.69)"
+  }));
+};
+
 const loadGlobalStyles = globalStyle => {
   const {
     colorPallet,
@@ -20553,18 +20567,22 @@ const PremiumSidebar = () => {
 
 const PluginSidebarPostEditor = () => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_2__.PluginSidebarMoreMenuItem, {
-    target: "premium-sidebar"
+    target: "premium-sidebar",
+    icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SidebarIcon, null)
   }, __('Premium Blocks For Gutenberg')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_2__.PluginSidebar, {
     name: "premium-sidebar",
+    icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SidebarIcon, null),
     title: __('Premium Blocks For Gutenberg', "premium-blocks-for-gutenberg")
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PremiumSidebar, null)));
 };
 
 const PluginSidebarEditSite = () => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_edit_site__WEBPACK_IMPORTED_MODULE_6__.PluginSidebarMoreMenuItem, {
-    target: "premium-sidebar"
+    target: "premium-sidebar",
+    icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SidebarIcon, null)
   }, __('Premium Blocks For Gutenberg')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_edit_site__WEBPACK_IMPORTED_MODULE_6__.PluginSidebar, {
     name: "premium-sidebar",
+    icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SidebarIcon, null),
     title: __('Premium Blocks For Gutenberg', "premium-blocks-for-gutenberg")
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PremiumSidebar, null)));
 };
