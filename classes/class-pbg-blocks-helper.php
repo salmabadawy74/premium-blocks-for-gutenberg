@@ -214,7 +214,7 @@ class PBG_Blocks_Helper {
 		$settings_data       = array(
 			'ajaxurl'           => esc_url( admin_url( 'admin-ajax.php' ) ),
 			'nonce'             => wp_create_nonce( 'pa-blog-block-nonce' ),
-			'settingPath'       => admin_url( 'admin.php?page=premium-gutenberg-maps' ),
+			'settingPath'       => admin_url( 'admin.php?page=pb_panel&path=settings' ),
 			'defaultAuthImg'    => PREMIUM_BLOCKS_URL . 'assets/img/author.jpg',
 			'activeBlocks'      => self::$blocks,
 			'tablet_breakpoint' => PBG_TABLET_BREAKPOINT,

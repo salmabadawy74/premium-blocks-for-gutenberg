@@ -1,6 +1,6 @@
 === Premium Blocks for Gutenberg ===
 Contributors: leap13
-Tags: gutenberg, gutenberg addon, gutenberg addons, gutenberg blocks, gutenberg free blocks
+Tags: gutenberg, gutenberg addon, gutenberg addons, gutenberg blocks, gutenberg free blocks, blocks, editor
 Donate link: https://leap13.com
 Requires at least: 4.5
 Tested up to: 6.1
@@ -9,36 +9,40 @@ Stable tag: 2.0.0
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
-Gutenberg blocks that will help you build amazing pages with the new WordPress Gutenberg editor.
+Premium Blocks for Gutenberg helps you build amazing pages with the new WordPress Gutenberg editor.
 
 == Description ==
 Premium Blocks for Gutenberg helps you create amazing looking websites using the new WordPress Editor: Gutenberg. All blocks was built with performance in mind. Also all Gutenberg blocks included are RTL ready.  The plugin is modular so you can disable the blocks you will not use for faster website performance. Also Premium Blocks for Gutenberg is translation ready so you can easily translate it to your language.
 
 Kindly note that the plugin is on it’s early stages and Gutenberg itself is still not 100% reliable however you will notice that we release weekly updates for enhancements and bug fixes.
 
+### Useful Links
+[Support](https://my.leap13.com/contact-support/) | [Docs](https://premiumblocks.io/docs/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme)
+
+
 ### Available Elements
 
-1. [Gutenberg Banner Block](https://premiumblocks.io/index.php/gutenberg-blocks/banner-block/)
-2. [Gutenberg Button Block](https://premiumblocks.io/index.php/gutenberg-blocks/button-block/)
-3. [Gutenberg Counter Block](https://premiumblocks.io/index.php/gutenberg-blocks/counter-block/)
-4. [Gutenberg Dual Heading Block](https://premiumblocks.io/index.php/gutenberg-blocks/dual-heading-block/)
-5. [Gutenberg Heading Block](https://premiumblocks.io/index.php/gutenberg-blocks/dual-heading-block/)
-6. [Gutenberg Icon Block](https://premiumblocks.io/index.php/gutenberg-blocks/icon-block/)
-7. [Gutenberg Maps Block](https://premiumblocks.io/index.php/gutenberg-blocks/google-maps-block/)
-8. [Gutenberg Pricing Table Block](https://premiumblocks.io/index.php/gutenberg-blocks/pricing-table-block/)
-9. [Gutenberg Section Block](https://premiumblocks.io/index.php/gutenberg-blocks/section-block/)
-10. [Gutenberg Testimonials Block](https://premiumblocks.io/index.php/gutenberg-blocks/testimonials-block/)
-11. [Gutenberg Accordion Block](https://premiumblocks.io/index.php/gutenberg-blocks/accordion-block/)
-12. [Gutenberg Icon Box Block](https://premiumblocks.io/gutenberg-blocks/icon-box-block/)
-13. [Gutenberg Video Box Block](https://premiumblocks.io/gutenberg-blocks/video-box-block/)
-14. [Gutenberg Container Block]
-15. [Gutenberg Fancy Text Block]
-16. [Gutenberg Lottie Animation Block]
-17. [Gutenberg Modal Box Block]
-18. [Gutenberg Image Separator Block]
-19. [Gutenberg Bullet List Block]
-20. [Gutenberg Team Members Block]
-21. [Gutenberg Content Switcher Block]
+1. [Gutenberg Banner Block](https://premiumblocks.io/index.php/gutenberg-blocks/banner-block/) Interactive Banner Block with readymade styles beside many customization options. 
+2. [Gutenberg Button Block](https://premiumblocks.io/index.php/gutenberg-blocks/button-block/) Premium Button Block allows you to create amazing call to actions with tons of options.
+3. [Gutenberg Counter Block](https://premiumblocks.io/index.php/gutenberg-blocks/counter-block/) Counter block for Gutenberg is the best way to show facts and figures with cool animation and many customization options.
+4. [Gutenberg Dual Heading Block](https://premiumblocks.io/index.php/gutenberg-blocks/dual-heading-block/) Premium Dual Heading Block for Gutenberg is a great block to have great looking headings with the heading split into 2 attractive parts.
+5. Gutenberg Heading Block
+6. [Gutenberg Icon Block](https://premiumblocks.io/index.php/gutenberg-blocks/icon-block/) Premium Icon Block gives you the ability to add both Font Awesome icons and WordPress dash icons with lot of customization options.
+7. [Gutenberg Maps Block](https://premiumblocks.io/index.php/gutenberg-blocks/google-maps-block/) Premium Google map Block allows you to display google maps in your pages with advanced controls.
+8. [Gutenberg Pricing Table Block](https://premiumblocks.io/index.php/gutenberg-blocks/pricing-table-block/) Premium Pricing table Block is the best way to display your pricing in the modern way, you will be able to customize each part of your pricing table.
+9. [Gutenberg Section Block](https://premiumblocks.io/index.php/gutenberg-blocks/section-block/) Allows you to create sections with background options and styles.
+10. [Gutenberg Testimonials Block](https://premiumblocks.io/index.php/gutenberg-blocks/testimonials-block/) Allows you to display your customers reviews within your Wesbite using different options. 
+11. [Gutenberg Accordion Block](https://premiumblocks.io/index.php/gutenberg-blocks/accordion-block/) Help you show more data/content in a less distracting area as you will be able to divide your content and show it off in separated tabs.
+12. [Gutenberg Icon Box Block](https://premiumblocks.io/gutenberg-blocks/icon-box-block/) Premium Icon Box block for Gutenberg is the best way to show off a short brief about the services you provide.
+13. [Gutenberg Video Box Block](https://premiumblocks.io/gutenberg-blocks/video-box-block/) By using Video Box Block for Gutenberg, you will be able to add four types of video to your website as you can choose from YouTube, Vimeo, Dailymotion or you can upload your own.
+14. Gutenberg Container Block
+15. Gutenberg Fancy Text Block
+16. Gutenberg Lottie Animation Block
+17. Gutenberg Modal Box Block
+18. Gutenberg Image Separator Block
+19. Gutenberg Bullet List Block
+20. Gutenberg Team Members Block
+21. Gutenberg Content Switcher Block
 
 == Installation ==
 
