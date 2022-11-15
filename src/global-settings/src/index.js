@@ -390,6 +390,9 @@ const PremiumGlobalStyles = () => {
 
     return null
 }
+
 registerPlugin('plugin-premium-blocks-styles', { render: PremiumGlobalStyles });
 registerPlugin('plugin-premium-blocks', { render: PluginSidebarPostEditor });
-registerPlugin('plugin-premium-blocks-edit-site', { render: PluginSidebarEditSite });
+if (pbgGlobalSettings.apiData?.['enable-site-editor-sidebar'] && pbgGlobalSettings.isBlockTheme) {
+    registerPlugin('plugin-premium-blocks-edit-site', { render: PluginSidebarEditSite });
+}

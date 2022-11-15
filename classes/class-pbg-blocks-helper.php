@@ -109,11 +109,37 @@ class PBG_Blocks_Helper {
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_dashicons_front_end' ) );
 
 		add_action( 'pbg_get_css_files', array( $this, 'add_blocks_editor_styles' ) );
+
+		add_filter( 'Premium_BLocks_mobile_media_query', array( $this, 'mobile_breakpoint' ), 1 );
+
+		add_filter( 'Premium_BLocks_tablet_media_query', array( $this, 'tablet_breakpoint' ), 1 );
 	}
 
 
+	/**
+	 * Mobile breakpoint
+	 *
+	 * @param  string $breakpoint
+	 * @return string
+	 */
+	public function mobile_breakpoint( $breakpoint ) {
+		$layout_settings = get_option( 'pbg_global_layout', array() );
+		$breakpoint      = isset( $layout_settings['mobile_breakpoint'] ) ? '(max-width: ' . $layout_settings['mobile_breakpoint'] . 'px)' : $breakpoint;
 
+		return $breakpoint;
+	}
 
+	/**
+	 * Tablet breakpoint
+	 *
+	 * @param  string $breakpoint
+	 * @return string
+	 */
+	public function tablet_breakpoint( $breakpoint ) {
+		$layout_settings = get_option( 'pbg_global_layout', array() );
+		$breakpoint      = isset( $layout_settings['tablet_breakpoint'] ) ? '(max-width: ' . $layout_settings['tablet_breakpoint'] . 'px)' : $breakpoint;
+		return $breakpoint;
+	}
 
 	/**
 	 * Add blocks editor style
@@ -138,7 +164,7 @@ class PBG_Blocks_Helper {
 					Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/price.min.css' );
 					Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/badge.min.css' );
 				}
-				if ( 'pricing-table' === $slug || 'icon-box' === $slug || 'person' === $slug) {
+				if ( 'pricing-table' === $slug || 'icon-box' === $slug || 'person' === $slug ) {
 					Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/text.min.css' );
 				}
 				if ( 'person' === $slug ) {
@@ -304,9 +330,8 @@ class PBG_Blocks_Helper {
 		if ( $is_fa_enabled ) {
 			wp_enqueue_style(
 				'pbg-fontawesome',
-				//'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
+				// 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
 				'https://use.fontawesome.com/releases/v5.15.1/css/all.css'
-
 			);
 		}
 

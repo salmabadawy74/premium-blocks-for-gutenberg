@@ -94,9 +94,11 @@ if ( ! class_exists( 'PBG_Plugin' ) ) {
 		}
 
 		public function init_files() {
+			$settings = apply_filters( 'pb_settings', get_option( 'pbg_blocks_settings', array() ) );
 			require_once PREMIUM_BLOCKS_PATH . 'classes/class-pbg-style-generator.php';
-			require_once PREMIUM_BLOCKS_PATH . 'src/global-settings/class-pbg-global-settings.php';
-
+			if ( isset( $settings['enable-post-editor-sidebar'] ) && $settings['enable-post-editor-sidebar'] ) {
+				require_once PREMIUM_BLOCKS_PATH . 'src/global-settings/class-pbg-global-settings.php';
+			}
 			if ( is_admin() ) {
 				require_once PREMIUM_BLOCKS_PATH . 'admin/includes/rollback.php';
 			}

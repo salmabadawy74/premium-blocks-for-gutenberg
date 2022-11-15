@@ -5,7 +5,7 @@ import defaults from '../helpers/defaults';
 import { useContext, useEffect } from "@wordpress/element";
 import SettingsContext from '../store/settings-store';
 import { typographyCss } from '../../../components/HelperFunction';
-import { ToggleControl } from '@wordpress/components';
+import { CheckboxControl } from '@wordpress/components';
 import WebFont from "webfontloader";
 
 const TypographyScreen = props => {
@@ -52,11 +52,6 @@ const TypographyScreen = props => {
             description={__('Manage the typography settings for different elements.', "premium-blocks-for-gutenberg")}
         />
         <div className='premium-typography-screen'>
-            <ToggleControl
-                checked={applyTypographyToDefault}
-                onChange={() => setApplyTypographyToDefault(!applyTypographyToDefault)}
-                label={__('Apply to Native Blocks')}
-            />
             <div className='premium-element-typography'>
                 <h1
                     style={{
@@ -145,6 +140,11 @@ const TypographyScreen = props => {
                 </p>
                 <PremiumTypo value={getElementValue('paragraph')} title={false} onChange={(newValue => changeHandler('paragraph', newValue))} />
             </div>
+            <CheckboxControl
+                label={__('Apply to Native Blocks')}
+                checked={applyTypographyToDefault}
+                onChange={() => setApplyTypographyToDefault(!applyTypographyToDefault)}
+            />
         </div>
     </>
 }

@@ -538,15 +538,15 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 				'pb-panel-js',
 				'PremiumBlocksPanelData',
 				array(
-					'home_slug'   => $this->menu_slug,
-					'options'     => self::panel_options(),
-					'values'      => apply_filters( 'pb_options', get_option( 'pb_options', array() ) ),
-
-					'ajaxurl'     => admin_url( 'admin-ajax.php' ),
-					'nonce'       => wp_create_nonce( 'pb-panel' ),
-					'system_info' => self::get_system_info(),
-					'images_url'  => PREMIUM_BLOCKS_PANEL_URL . 'assets/images/',
-					'apiData'     => apply_filters( 'pb_settings', get_option( 'pbg_blocks_settings', array() ) ),
+					'home_slug'    => $this->menu_slug,
+					'options'      => self::panel_options(),
+					'values'       => apply_filters( 'pb_options', get_option( 'pb_options', array() ) ),
+					'ajaxurl'      => admin_url( 'admin-ajax.php' ),
+					'nonce'        => wp_create_nonce( 'pb-panel' ),
+					'system_info'  => self::get_system_info(),
+					'images_url'   => PREMIUM_BLOCKS_PANEL_URL . 'assets/images/',
+					'apiData'      => apply_filters( 'pb_settings', get_option( 'pbg_blocks_settings', array() ) ),
+					'isBlockTheme' => wp_is_block_theme(),
 				)
 			);
 		}

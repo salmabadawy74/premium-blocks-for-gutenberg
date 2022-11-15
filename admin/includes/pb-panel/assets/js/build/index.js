@@ -1861,10 +1861,12 @@ const AdvancedSwitcher = props => {
     label,
     description,
     onChange,
-    checked = true
+    checked = true,
+    style
   } = props;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "pb-advanced-switcher"
+    className: "pb-advanced-switcher",
+    style: style
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pb-title"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
@@ -3602,6 +3604,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const Setting = () => {
+  var _PremiumBlocksPanelDa;
+
   const settings = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useSelector)(state => state.settingStates.apiSettings);
   const [mapApi, setMapApi] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(settings === null || settings === void 0 ? void 0 : settings["premium-map-key"]);
   const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useDispatch)();
@@ -3680,6 +3684,20 @@ const Setting = () => {
     onChange: checked => onChangeData("premium-upload-json", checked),
     checked: (settings === null || settings === void 0 ? void 0 : settings["premium-upload-json"]) || false,
     description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("This option will be used to upload JSON files in lottie animation block.", "premium-blocks-for-gutenberg")
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_AdvancedSwitcher__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Enable Global Setting SideBar in Post Editor", "premium-blocks-for-gutenberg"),
+    onChange: checked => onChangeData("enable-post-editor-sidebar", checked),
+    checked: (settings === null || settings === void 0 ? void 0 : settings["enable-post-editor-sidebar"]) || false,
+    description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("This option will be used to Enable Global Setting SideBar in Post Editor.", "premium-blocks-for-gutenberg")
+  }), ((_PremiumBlocksPanelDa = PremiumBlocksPanelData) === null || _PremiumBlocksPanelDa === void 0 ? void 0 : _PremiumBlocksPanelDa.isBlockTheme) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_AdvancedSwitcher__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Enable Global Setting SideBar in Site Editor", "premium-blocks-for-gutenberg"),
+    onChange: checked => onChangeData("enable-site-editor-sidebar", checked),
+    checked: (settings === null || settings === void 0 ? void 0 : settings["enable-site-editor-sidebar"]) || false,
+    description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("This option will be used to Enable Global Setting SideBar in Site Editor.", "premium-blocks-for-gutenberg"),
+    style: {
+      opacity: !(settings !== null && settings !== void 0 && settings["enable-post-editor-sidebar"]) && '0.4',
+      pointerEvents: !(settings !== null && settings !== void 0 && settings["enable-post-editor-sidebar"]) && 'none'
+    }
   }))));
 };
 

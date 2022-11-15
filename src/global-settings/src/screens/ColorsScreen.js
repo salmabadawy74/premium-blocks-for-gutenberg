@@ -2,16 +2,13 @@ import { __ } from '@wordpress/i18n';
 import ScreenHeader from "../components/header"
 import { useContext } from "@wordpress/element";
 import SettingsContext from '../store/settings-store';
-import { ToggleControl } from '@wordpress/components';
+import { CheckboxControl } from '@wordpress/components';
 import ColorPalettes from '../components/color-pallet';
 import ThemeColorPallet from '../components/ThemeColorPallet';
+import PremiumToggle from '../../../components/premium-toggle';
 
 const ColorsScreen = () => {
     const { colorPallet, setColorPallet, colorPallets, setColorPallets, applyColorsToDefault, setApplyColorsToDefault } = useContext(SettingsContext);
-
-    const handleToggleChange = () => {
-        setColorPallet(colorPallet === 'theme' ? 'pbg' : 'theme');
-    }
 
     return <>
         <ScreenHeader
@@ -21,25 +18,18 @@ const ColorsScreen = () => {
                 , "premium-blocks-for-gutenberg")}
         />
         <div className='premium-global-colors-screen'>
-            <ToggleControl
-                checked={applyColorsToDefault}
-                onChange={() => setApplyColorsToDefault(!applyColorsToDefault)}
-                label={__('Apply to Native Blocks')}
-            />
-            <div className='premium-global-colors-type'>
-                <label>{__('Theme')}</label>
-                <ToggleControl
-                    checked={colorPallet !== 'theme'}
-                    onChange={handleToggleChange}
-                />
-                <label>{__('Premium Block', "premium-blocks-for-gutenberg")}</label>
-            </div>
+            <PremiumToggle options={{ first: { label: __('Theme'), value: 'theme' }, second: { label: __('Premium Blocks', "premium-blocks-for-gutenberg"), value: 'pbg' } }} value={colorPallet} onChange={(newType) => setColorPallet(newType)} />
             {colorPallet === 'theme' &&
                 <ThemeColorPallet />
             }
             {colorPallet === 'pbg' &&
                 <ColorPalettes value={colorPallets} onChange={setColorPallets} />
             }
+            <CheckboxControl
+                label={__('Apply to Native Blocks')}
+                checked={applyColorsToDefault}
+                onChange={() => setApplyColorsToDefault(!applyColorsToDefault)}
+            />
         </div>
     </>
 }

@@ -1116,6 +1116,8 @@ button.premium-delete-palette::before {
 .premium-element-typography .premium-element-typography-title {
   margin: 0;
   margin-bottom: 10px;
+  overflow-wrap: break-word;
+  line-height: normal;
 }
 
 .premium-global-colors-screen {

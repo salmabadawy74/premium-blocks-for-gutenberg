@@ -941,6 +941,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 					'wp-plugins',
 					'wp-primitives',
 					'wp-dom-ready',
+					'pbg-settings-js',
 				),
 				PREMIUM_BLOCKS_VERSION,
 				true
@@ -956,7 +957,9 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 				'pbg-global-settings-js',
 				'pbgGlobalSettings',
 				array(
-					'pallets' => get_option( 'pbg_global_color_pallets', array() ),
+					'pallets'      => get_option( 'pbg_global_color_pallets', array() ),
+					'apiData'      => apply_filters( 'pb_settings', get_option( 'pbg_blocks_settings', array() ) ),
+					'isBlockTheme' => wp_is_block_theme(),
 				)
 			);
 		}
