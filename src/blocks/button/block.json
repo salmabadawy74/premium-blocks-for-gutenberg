@@ -224,10 +224,10 @@
             "type": "object",
             "default": {
                 "Desktop": {
-                    "top": "",
-                    "right": "",
-                    "bottom": "",
-                    "left": ""
+                    "top": "15",
+                    "right": "15",
+                    "bottom": "15",
+                    "left": "15"
                 },
                 "Tablet": {
                     "top": "",

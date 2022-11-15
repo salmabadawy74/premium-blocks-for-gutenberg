@@ -301,10 +301,74 @@ const v7Attrinutes = {
         ],
     },
 };
+const new_Attributes = {
+    showIcon: {
+        type: "boolean",
+        default: false,
+    },
+    icon: {
+        type: "string",
+        default: "dashicons dashicons-admin-site",
+    },
+    iconPosition: {
+        type: "string",
+        default: "before",
+    },
+    iconSize: {
+        type: "object",
+        default: {
+            Desktop: "30",
+            Tablet: "30",
+            Mobile: "30",
+            unit: "px",
+        },
+    },
+    iconSpacing: {
+        type: "object",
+        default: {
+            Desktop: {
+                top: "15",
+                right: "15",
+                bottom: "15",
+                left: "15",
+            },
+            Tablet: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            Mobile: {
+                top: "",
+                right: "",
+                bottom: "",
+                left: "",
+            },
+            unit: "px",
+        },
+    },
+    iconColor: {
+        type: "string",
+        default: "",
+    },
+    iconHoverColor: {
+        type: "string",
+        default: "",
+    },
+    iconShadow: {
+        type: "object",
+        default: {
+            color: "undefined",
+            blur: "10",
+            horizontal: "0",
+            vertical: "0",
+        },
+    },
+};
 
 const deprecatedContent = [
     {
-        attributes: v7Attrinutes,
+        attributes: Object.assign(v7Attrinutes, new_Attributes),
         migrate: (attributes) => {
             let newAttributes = {
                 blockId: attributes.block_id
