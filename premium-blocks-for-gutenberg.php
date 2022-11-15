@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('PREMIUM_BLOCKS_VERSION', '2.0.0');
+define('PREMIUM_BLOCKS_VERSION', '2.0.1');
 define('PREMIUM_BLOCKS_URL', plugins_url('/', __FILE__));
 define('PREMIUM_BLOCKS_PATH', plugin_dir_path(__FILE__));
 define('PREMIUM_BLOCKS_FILE', __FILE__);
