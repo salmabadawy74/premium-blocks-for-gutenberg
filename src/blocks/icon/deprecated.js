@@ -642,7 +642,9 @@ const deprecatedContent = [
                     'blur': attributes.iconStyles[0].shadowBlur,
                     'horizontal': attributes.iconStyles[0].shadowHorizontal,
                     'vertical': attributes.iconStyles[0].shadowVertical
-                }
+                },
+                selectIconType: 'icon',
+                borderHoverColor: ''
             };
             return Object.assign(attributes, newAttributes);
         },

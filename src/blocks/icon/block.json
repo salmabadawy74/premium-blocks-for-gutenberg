@@ -305,6 +305,14 @@
                 "horizontal": "0",
                 "vertical": "0"
             }
+        },
+        "selectIconType": {
+            "type": "string",
+            "default": "icon"
+        },
+        "borderHoverColor": {
+            "type": "string",
+            "default": ""
         }
     }
 }

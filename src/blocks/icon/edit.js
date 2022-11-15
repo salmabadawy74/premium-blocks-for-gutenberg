@@ -15,6 +15,7 @@ import {
     Icons,
     InsideTab,
     iconsList,
+    PremiumMediaUpload
 } from "@pbg/components";
 import {
     gradientBackground,
@@ -69,6 +70,8 @@ function Edit(props) {
         containerBackground,
         containerShadow,
         iconShadow,
+        selectIconType,
+        borderHoverColor
     } = props.attributes;
 
     const EFFECTS = [
@@ -102,6 +105,17 @@ function Edit(props) {
         },
     ];
 
+    const ICONTYPE = [
+        {
+            value: "icon",
+            label: __("Icon", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: "svg",
+            label: __("SVG", "premium-blocks-for-gutenberg"),
+        }
+    ];
+
     const saveIconStyle = (value) => {
         const newUpdate = iconStyles.map((item, index) => {
             if (0 === index) {
@@ -119,6 +133,7 @@ function Edit(props) {
         styles[` .${blockId} .premium-icon-container i:hover`] = {
             color: `${iconStyles[0].iconHoverColor} !important`,
             "background-color": `${iconStyles[0].iconHoverBack} !important`,
+            "border-color": `${borderHoverColor}!important`
         };
         return generateCss(styles);
     };
@@ -133,25 +148,58 @@ function Edit(props) {
                             className="premium-panel-body"
                             initialOpen={true}
                         >
-                            <p className="premium-editor-paragraph">
-                                {__(
-                                    "Select Icon",
+                            <SelectControl
+                                label={__(
+                                    "Icon type",
                                     "premium-blocks-for-gutenberg"
                                 )}
-                            </p>
-                            <FontIconPicker
-                                icons={iconsList}
-                                onChange={(newIcon) =>
-                                    setAttributes({ selectedIcon: newIcon })
+                                options={ICONTYPE}
+                                value={selectIconType}
+                                onChange={(newEffect) =>
+                                    setAttributes({
+                                        selectIconType: newEffect
+                                    })
                                 }
-                                value={selectedIcon}
-                                isMulti={false}
-                                // appendTo="body"
-                                noSelectedPlaceholder={__(
-                                    "Select Icon",
-                                    "premium-blocks-for-gutenberg"
-                                )}
                             />
+                            {selectIconType === 'icon' ? <Fragment>
+                                <p className="premium-editor-paragraph">
+                                    {__(
+                                        "Select Icon",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                </p>
+                                <FontIconPicker
+                                    icons={iconsList}
+                                    onChange={(newIcon) =>
+                                        setAttributes({ selectedIcon: newIcon })
+                                    }
+                                    value={selectedIcon}
+                                    isMulti={false}
+                                    noSelectedPlaceholder={__(
+                                        "Select Icon",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                />
+                            </Fragment>
+                                : <PremiumMediaUpload
+                                    type="svg"
+                                    // imageID={ImgId}
+                                    // imageURL={ImgUrl}
+                                    onSelectMedia={(media) => {
+                                        console.log(media)
+                                        //     setAttributes({
+                                        //         ImgId: media.id,
+                                        //         ImgUrl: media.url
+                                        //     })
+                                    }}
+                                // onRemoveImage={() => {
+                                //     setAttributes({
+                                //         ImgId: "",
+                                //         ImgUrl: ""
+                                //     })
+                                // }}
+                                />
+                            }
                             <ToggleControl
                                 label={__(
                                     "Link",
@@ -295,7 +343,7 @@ function Edit(props) {
                                     <Fragment>
                                         <AdvancedPopColorControl
                                             label={__(
-                                                "Hover Color",
+                                                "Color",
                                                 "premium-blocks-for-gutenberg"
                                             )}
                                             colorValue={
@@ -310,7 +358,7 @@ function Edit(props) {
                                         />
                                         <AdvancedPopColorControl
                                             label={__(
-                                                "Hover Background Color",
+                                                "Background Color",
                                                 "premium-blocks-for-gutenberg"
                                             )}
                                             colorValue={
@@ -323,6 +371,22 @@ function Edit(props) {
                                                 })
                                             }
                                         />
+                                        {iconBorder.borderType != "none" && (
+                                            <AdvancedPopColorControl
+                                                label={__(
+                                                    "Border Color",
+                                                    "premium-blocks-for-gutenberg"
+                                                )}
+                                                colorValue={borderHoverColor}
+                                                colorDefault={""}
+                                                onColorChange={(newValue) =>
+                                                    setAttributes({
+                                                        borderHoverColor:
+                                                            newValue
+                                                    })
+                                                }
+                                            />
+                                        )}
                                         <SelectControl
                                             label={__(
                                                 "Hover Effect",

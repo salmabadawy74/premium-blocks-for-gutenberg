@@ -21,14 +21,16 @@ const save = props => {
         containerBorder,
         containerBackground,
         containerShadow,
-        iconShadow
+        iconShadow,
+        borderHoverColor
     } = props.attributes;
 
     const loadStyles = () => {
         const styles = {};
         styles[` .${blockId} .premium-icon-container i:hover`] = {
             'color': `${iconStyles[0].iconHoverColor} !important`,
-            'background-color': `${iconStyles[0].iconHoverBack} !important`
+            'background-color': `${iconStyles[0].iconHoverBack} !important`,
+            "border-color": `${borderHoverColor}!important`
         };
         return generateCss(styles);
     }

@@ -1577,11 +1577,11 @@ function PremiumShadow(_ref) {
     boxShadow = false
   } = _ref;
   let defaultValues = {
-    'color': '',
-    'blur': '',
-    'horizontal': '',
-    'vertical': '',
-    'position': ''
+    color: "",
+    blur: "",
+    horizontal: "",
+    vertical: "",
+    position: ""
   };
   value = value ? { ...defaultValues,
     ...value
@@ -1598,10 +1598,10 @@ function PremiumShadow(_ref) {
 
   const POSITION = [{
     value: "inset",
-    label: __("Inset", 'premium-blocks-for-gutenberg')
+    label: __("Inset", "premium-blocks-for-gutenberg")
   }, {
     value: "",
-    label: __("Outline", 'premium-blocks-for-gutenberg')
+    label: __("Outline", "premium-blocks-for-gutenberg")
   }];
   const {
     color,
@@ -1614,12 +1614,12 @@ function PremiumShadow(_ref) {
     className: "premium-shadow-control__container premium-blocks__base-control"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "premium-control-title"
-  }, __(label || "Box Shadow")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, __(label || "Box Shadow", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-shadow-control__wrapper`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
     colorValue: color,
-    colorDefault: '',
-    onColorChange: value => onChangeShadow('color', value),
+    colorDefault: "",
+    onColorChange: value => onChangeShadow("color", value),
     disableReset: true
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Dropdown, {
     className: "premium-control-toggle-btn",
@@ -1641,7 +1641,7 @@ function PremiumShadow(_ref) {
     renderContent: () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_1__["default"], {
       label: __("Horizontal"),
       value: horizontal,
-      onChange: value => onChangeShadow('horizontal', value),
+      onChange: value => onChangeShadow("horizontal", value),
       showUnit: false,
       defaultValue: 0,
       min: -100,
@@ -1649,7 +1649,7 @@ function PremiumShadow(_ref) {
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_1__["default"], {
       label: __("Vertical"),
       value: vertical,
-      onChange: value => onChangeShadow('vertical', value),
+      onChange: value => onChangeShadow("vertical", value),
       showUnit: false,
       defaultValue: 0,
       min: -100,
@@ -1657,14 +1657,14 @@ function PremiumShadow(_ref) {
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_1__["default"], {
       label: __("Blur"),
       value: blur,
-      onChange: value => onChangeShadow('blur', value),
+      onChange: value => onChangeShadow("blur", value),
       showUnit: false,
       defaultValue: 0
     }), boxShadow && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
       label: __("Position"),
       options: POSITION,
       value: position,
-      onChange: value => onChangeShadow('position', value)
+      onChange: value => onChangeShadow("position", value)
     }))
   })));
 }
