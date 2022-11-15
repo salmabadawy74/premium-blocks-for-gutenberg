@@ -5,7 +5,7 @@ Donate link: https://leap13.com
 Requires at least: 4.5
 Tested up to: 6.1
 Requires PHP: 5.4
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -71,6 +71,15 @@ No. You cannot use Premium Blocks without Gutenberg as it's a blocks plugin for 
 Yes it will work with any WordPress theme as long as you are using Gutenberg as a page editor.
 
 == Changelog ==
+
+ = 2.0.1 =
+
+- Fixed: Accordion block collaps issue.
+- Fixed: Fontawesome 4.0 doesn’t work in editor.
+- Fixed: Box shadow control doesn’t work in Premium Blocks.
+- Fixed: Upload JSON file settings link doesn’t work.
+- Fixed: Hover text color of the button block doesn’t work.
+
 
 = 2.0.0 =
 
