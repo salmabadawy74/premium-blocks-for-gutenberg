@@ -22,8 +22,7 @@ const FilterTabs = () => {
         { name: "Content", slug: "content" },
         { name: "Creative", slug: "creative" },
         { name: "Section", slug: "section" },
-        { name: "Marketing", slug: "marketing" },
-        { name: "Theme", slug: "theme" },
+        { name: "Marketing", slug: "marketing" }
     ];
 
     useEffect(() => {
