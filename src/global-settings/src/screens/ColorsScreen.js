@@ -13,12 +13,12 @@ const ColorsScreen = () => {
         first: {
             label: __('Theme'),
             value: 'theme',
-            help: __('This choice will apply theme colors as the default color pallet in the premium blocks color control.')
+            help: __('This choice will apply theme colors as the default color pallet in the premium blocks color control.', "premium-blocks-for-gutenberg")
         },
         second: {
             label: __('Premium Blocks', "premium-blocks-for-gutenberg"),
             value: 'pbg',
-            help: __('This choice will apply the current color pallet as the default color pallet in the premium blocks color control and apply the current color pallet colors to the blocks.')
+            help: __('This choice will apply the current color pallet as the default color pallet in the premium blocks color control and apply the current color pallet colors to the blocks.', "premium-blocks-for-gutenberg")
         }
     };
     return <>

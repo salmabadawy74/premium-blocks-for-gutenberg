@@ -15594,12 +15594,12 @@ const ColorsScreen = () => {
     first: {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Theme'),
       value: 'theme',
-      help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('This choice will apply theme colors as the default color pallet in the premium blocks color control.')
+      help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('This choice will apply theme colors as the default color pallet in the premium blocks color control.', "premium-blocks-for-gutenberg")
     },
     second: {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Premium Blocks', "premium-blocks-for-gutenberg"),
       value: 'pbg',
-      help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('This choice will apply the current color pallet as the default color pallet in the premium blocks color control and apply the current color pallet colors to the blocks.')
+      help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('This choice will apply the current color pallet as the default color pallet in the premium blocks color control and apply the current color pallet colors to the blocks.', "premium-blocks-for-gutenberg")
     }
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_header__WEBPACK_IMPORTED_MODULE_2__["default"], {
