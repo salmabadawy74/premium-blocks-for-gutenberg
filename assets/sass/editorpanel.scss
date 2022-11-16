@@ -527,7 +527,7 @@ $icon-background: #696969;
         font-size: 15px;
 
         &:hover {
-            >* {
+            > * {
                 -webkit-transform: scale(1.45);
                 -ms-transform: scale(1.45);
                 transform: scale(1.45);
@@ -991,7 +991,7 @@ $icon-background: #696969;
         width: auto;
     }
 
-    >* {
+    > * {
         -webkit-transform: scale(1);
         transform: scale(1);
         -webkit-transition: -webkit-transform 0.25s;
@@ -1003,7 +1003,7 @@ $icon-background: #696969;
     }
 
     &:hover {
-        >* {
+        > * {
             -webkit-transform: scale(1.8);
             transform: scale(1.8);
         }
@@ -4413,7 +4413,8 @@ i.fipicon-angle-left {
         margin: 0px;
         margin: 0px;
         font-weight: 600;
-        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+            Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     }
 
     .premium-background-type__wrap {
@@ -4434,14 +4435,14 @@ i.fipicon-angle-left {
             }
 
             button.premium-btn-size-btn.is-primary {
-                >svg {
-                    >g {
-                        >path.cls-1 {
+                > svg {
+                    > g {
+                        > path.cls-1 {
                             fill: #fff;
                         }
                     }
 
-                    >path.cls-1 {
+                    > path.cls-1 {
                         fill: #fff;
                     }
                 }
@@ -4546,11 +4547,11 @@ i.fipicon-angle-left {
                     height: 28px !important;
                     font-size: 11px !important;
                     padding-left: 38px !important;
-                    border: 1px solid $option-border-color  !important;
+                    border: 1px solid $option-border-color !important;
                     border-radius: 0 !important;
                 }
 
-                >.components-color-picker__inputs-fields {
+                > .components-color-picker__inputs-fields {
                     .components-base-control__label {
                         font-size: 0;
 
@@ -4761,9 +4762,11 @@ i.fipicon-angle-left {
                 right: 0;
                 bottom: 0;
                 box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
-                background: linear-gradient(to right,
-                        #fff,
-                        rgba(255, 255, 255, 0));
+                background: linear-gradient(
+                    to right,
+                    #fff,
+                    rgba(255, 255, 255, 0)
+                );
             }
 
             .components-color-picker__saturation-black {
@@ -4796,9 +4799,11 @@ i.fipicon-angle-left {
             }
 
             .components-color-picker__alpha {
-                background-image: linear-gradient(45deg,
+                background-image: linear-gradient(
+                        45deg,
                         #ddd 25%,
-                        transparent 25%),
+                        transparent 25%
+                    ),
                     linear-gradient(-45deg, #ddd 25%, transparent 25%),
                     linear-gradient(45deg, transparent 75%, #ddd 75%),
                     linear-gradient(-45deg, transparent 75%, #ddd 75%);
@@ -4816,14 +4821,16 @@ i.fipicon-angle-left {
                 right: 0;
                 bottom: 0;
                 border-radius: 10px;
-                background: linear-gradient(to right,
-                        red 0%,
-                        #ff0 17%,
-                        lime 33%,
-                        cyan 50%,
-                        blue 67%,
-                        #f0f 83%,
-                        red 100%);
+                background: linear-gradient(
+                    to right,
+                    red 0%,
+                    #ff0 17%,
+                    lime 33%,
+                    cyan 50%,
+                    blue 67%,
+                    #f0f 83%,
+                    red 100%
+                );
                 box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
             }
 
@@ -4949,9 +4956,11 @@ i.fipicon-angle-left {
                     height: 18px;
                     margin-bottom: 10px;
                     margin-bottom: 0;
-                    background-image: linear-gradient(45deg,
+                    background-image: linear-gradient(
+                            45deg,
                             #ddd 25%,
-                            transparent 25%),
+                            transparent 25%
+                        ),
                         linear-gradient(-45deg, #ddd 25%, transparent 25%),
                         linear-gradient(45deg, transparent 75%, #ddd 75%),
                         linear-gradient(-45deg, transparent 75%, #ddd 75%);
@@ -4971,9 +4980,10 @@ i.fipicon-angle-left {
                 }
             }
 
-            >* {
+            > * {
                 &:last-child {
-                    margin: 20px calc(var(--cpm-ph) * -1) 0 calc(var(--cpm-ph) * -1);
+                    margin: 20px calc(var(--cpm-ph) * -1) 0
+                        calc(var(--cpm-ph) * -1);
                     padding: 20px var(--cpm-ph) 1px var(--cpm-ph);
                     border-top: 1px solid #eee;
                 }
@@ -5013,7 +5023,9 @@ i.fipicon-angle-left {
         .premium-color-label {
             flex-grow: 1;
             font-weight: 400;
-            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+                Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+                sans-serif;
         }
     }
 }
@@ -5258,7 +5270,7 @@ i.fipicon-angle-left {
 }
 
 .premium-color-picker-single {
-    >.premium-advanced-color-indicate {
+    > .premium-advanced-color-indicate {
         display: flex;
         width: 28px;
         height: 28px;
@@ -5360,14 +5372,14 @@ i.fipicon-angle-left {
 
 .premium-repeater-row-inner {
     .premium-repeater-row-tools {
-        >div {
+        > div {
             display: table-cell;
             text-align: center;
             vertical-align: middle;
             cursor: pointer;
         }
 
-        >span {
+        > span {
             display: table-cell;
             text-align: center;
             vertical-align: middle;
@@ -5450,6 +5462,67 @@ i.fipicon-angle-left {
     color: #8e989f;
     margin-top: -15px;
     margin-bottom: 20px;
+}
+
+/* Toggle Control */
+.pbg-toggle-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .pbg-toggle {
+        position: relative;
+        display: inline-block;
+        width: 40px;
+        height: 20px;
+        vertical-align: middle;
+    }
+    [class*="label"] {
+        color: rgb(5, 5, 5);
+        font-size: 13px;
+        font-weight: 600;
+        .dashicons {
+            cursor: pointer;
+        }
+    }
+    .pbg-toggle-slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+        border-radius: 15px;
+        background: var(--wp-admin-theme-color);
+        &.checked {
+            &:before {
+                transform: translateX(21px);
+            }
+        }
+        &:before {
+            position: absolute;
+            content: "";
+            height: 13px;
+            width: 13px;
+            left: 3px;
+            bottom: 4px;
+            transition: 0.4s;
+            border-radius: 50%;
+            transform: translateX(0);
+            background: #fff;
+        }
+    }
+    .pbg-toggle-first-label {
+        .dashicons {
+            margin-right: 5px;
+        }
+    }
+    .pbg-toggle-second-label {
+        .dashicons {
+            margin-left: 5px;
+        }
+    }
 }
 
 @import "./typography.scss";

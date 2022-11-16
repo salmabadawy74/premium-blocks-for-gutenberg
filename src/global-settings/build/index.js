@@ -12826,51 +12826,6 @@ function PremiumSizeUnits(props) {
 
 /***/ }),
 
-/***/ "../components/premium-toggle.js":
-/*!***************************************!*\
-  !*** ../components/premium-toggle.js ***!
-  \***************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-
-
-const PremiumToggle = props => {
-  const {
-    value,
-    options,
-    onChange
-  } = props;
-  const checkedClass = value === options.second.value ? ' checked' : '';
-
-  const handleToggleChange = () => {
-    const newValue = value === options.first.value ? options.second.value : options.first.value;
-    onChange(newValue);
-  };
-
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `premium-blocks__base-control`
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "pbg-toggle-control"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "pbg-toggle-first-label"
-  }, options.first.label), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "pbg-toggle"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: `pbg-toggle-slider${checkedClass}`,
-    onClick: handleToggleChange
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "pbg-toggle-second-label"
-  }, options.second.label)));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (PremiumToggle);
-
-/***/ }),
-
 /***/ "../components/premium-typo.js":
 /*!*************************************!*\
   !*** ../components/premium-typo.js ***!
@@ -13877,7 +13832,8 @@ const PalettePreview = _ref => {
     className: `premium-global-color-palette-container`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_tooltip__WEBPACK_IMPORTED_MODULE_3__["default"], {
     place: "top",
-    effect: "solid"
+    effect: "solid",
+    id: "pbg-color-preview"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-pallet-colors"
   }, colors.map(picker => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_color__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -14515,7 +14471,8 @@ const SinglePicker = _ref => {
     style: {
       background: `${picker.color} none repeat scroll 0% 0%`
     },
-    "data-tip": picker.name
+    "data-tip": picker.name,
+    "data-for": "pbg-color-preview"
   })), modal);
 };
 
@@ -15140,6 +15097,75 @@ function NavigationBackButtonAsItem(props) {
 
 /***/ }),
 
+/***/ "./src/components/premium-toggle.js":
+/*!******************************************!*\
+  !*** ./src/components/premium-toggle.js ***!
+  \******************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_tooltip__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-tooltip */ "./node_modules/react-tooltip/dist/index.es.js");
+
+
+
+const PremiumToggle = props => {
+  const {
+    value,
+    options,
+    onChange
+  } = props;
+  const checkedClass = value === options.second.value ? ' checked' : '';
+
+  const handleToggleChange = () => {
+    const newValue = value === options.first.value ? options.second.value : options.first.value;
+    onChange(newValue);
+  };
+
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `premium-blocks__base-control`
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_tooltip__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    place: "left",
+    effect: "solid",
+    id: "pbg-toggle",
+    globalEventOff: "click",
+    getContent: dataTip => {
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        style: {
+          width: '200px'
+        }
+      }, dataTip);
+    }
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pbg-toggle-control"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pbg-toggle-first-label"
+  }, options.first.help && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    class: "dashicons dashicons-warning",
+    "data-event": "click",
+    "data-for": "pbg-toggle",
+    "data-tip": options.first.help
+  }), options.first.label), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pbg-toggle"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: `pbg-toggle-slider${checkedClass}`,
+    onClick: handleToggleChange
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pbg-toggle-second-label"
+  }, options.second.label, options.second.help && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    class: "dashicons dashicons-warning",
+    "data-event": "click",
+    "data-for": "pbg-toggle",
+    "data-tip": options.second.help
+  }))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (PremiumToggle);
+
+/***/ }),
+
 /***/ "./src/helpers/defaultPallets.js":
 /*!***************************************!*\
   !*** ./src/helpers/defaultPallets.js ***!
@@ -15544,7 +15570,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _components_color_pallet__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/color-pallet */ "./src/components/color-pallet.js");
 /* harmony import */ var _components_ThemeColorPallet__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/ThemeColorPallet */ "./src/components/ThemeColorPallet.js");
-/* harmony import */ var _components_premium_toggle__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../components/premium-toggle */ "../components/premium-toggle.js");
+/* harmony import */ var _components_premium_toggle__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/premium-toggle */ "./src/components/premium-toggle.js");
 
 
 
@@ -15564,22 +15590,25 @@ const ColorsScreen = () => {
     applyColorsToDefault,
     setApplyColorsToDefault
   } = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useContext)(_store_settings_store__WEBPACK_IMPORTED_MODULE_3__["default"]);
+  const options = {
+    first: {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Theme'),
+      value: 'theme',
+      help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('This choice will apply theme colors as the default color pallet in the premium blocks color control.')
+    },
+    second: {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Premium Blocks', "premium-blocks-for-gutenberg"),
+      value: 'pbg',
+      help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('This choice will apply the current color pallet as the default color pallet in the premium blocks color control and apply the current color pallet colors to the blocks.')
+    }
+  };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_header__WEBPACK_IMPORTED_MODULE_2__["default"], {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Colors'),
     description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Manage palettes and the default color of different global elements on the site.', "premium-blocks-for-gutenberg")
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-global-colors-screen"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_premium_toggle__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    options: {
-      first: {
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Theme'),
-        value: 'theme'
-      },
-      second: {
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Premium Blocks', "premium-blocks-for-gutenberg"),
-        value: 'pbg'
-      }
-    },
+    options: options,
     value: colorPallet,
     onChange: newType => setColorPallet(newType)
   }), colorPallet === 'theme' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_ThemeColorPallet__WEBPACK_IMPORTED_MODULE_6__["default"], null), colorPallet === 'pbg' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_color_pallet__WEBPACK_IMPORTED_MODULE_5__["default"], {

@@ -134,6 +134,7 @@ const SinglePicker = ({
 
                     style={{ background: `${picker.color} none repeat scroll 0% 0%` }}
                     data-tip={picker.name}
+                    data-for='pbg-color-preview'
                 >
                 </span>
             </span>

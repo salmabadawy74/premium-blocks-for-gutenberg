@@ -75,7 +75,7 @@ const PalettePreview = ({
         >
             {renderBefore()}
             <div className={`premium-global-color-palette-container`}>
-                <ReactTooltip place='top' effect="solid" />
+                <ReactTooltip place='top' effect="solid" id='pbg-color-preview' />
                 <div className="premium-pallet-colors">
                     {colors.map((picker) => (
                         <ColorComponent
