@@ -8,7 +8,7 @@
   --primaryColor: #007cba;
 }
 
-/* Color Pallet */
+/* Color Palette */
 .premium-palettes-modal .premium_label_type__palette, .components-modal__frame.premium-global-color-palette-confrim__delete .premium-paltette-popup-action, .components-modal__frame.premium-global-color-palette-confrim__delete .premium-pop-modal__header, .components-modal__frame.premium-global-color-palette-confrim__delete .premium-paltette-popup-action > *, .components-modal__frame.premium-global-color-palette-confrim__delete .components-modal__content .components-modal__header .components-modal__header-heading .premium-popup-modal__header, .components-modal__frame.premium-global-color-palette-confrim__delete .components-modal__content .components-modal__header, .premium-palette-info .premium-Palette-type-wrapper button, .premium-palette-info .premium-Palette-type-container, .premium-global-color-picker-modal .components-color-picker__inputs-toggle, .premium-global-color-picker-modal .components-color-picker__inputs-wrapper .components-base-control__field label, .premium-global-color-picker-modal .components-color-picker__controls, .premium-edit-palette, .premium-global-color-picker-single > span span, .premium-global-color-picker-container, .premium-palettes-modal label, .premium-palettes-preview .premium-palette-toggle-modal, div.premium-type-control span {
   display: flex;
   align-items: center;
@@ -499,7 +499,7 @@ div.premium-type-control span:not(:first-child) {
   flex-wrap: wrap;
   justify-content: center;
 }
-.premium-palettes-preview .premium-single-palette .premium-global-color-palette-container .premium-pallet-colors {
+.premium-palettes-preview .premium-single-palette .premium-global-color-palette-container .premium-palette-colors {
   display: flex;
   flex-wrap: wrap;
 }

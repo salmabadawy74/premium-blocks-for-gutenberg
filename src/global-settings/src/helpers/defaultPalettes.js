@@ -1,6 +1,6 @@
-const defaultPallets = [
+const defaultPalettes = [
     {
-        'id': 'pallet-1',
+        'id': 'palette-1',
         'name': 'Default',
         'colors': [
             {
@@ -29,7 +29,7 @@ const defaultPallets = [
         'custom_colors': [],
     },
     {
-        'id': 'pallet-2',
+        'id': 'palette-2',
         'name': 'Sunrise',
         'colors': [
             {
@@ -58,7 +58,7 @@ const defaultPallets = [
         'custom_colors': [],
     },
     {
-        'id': 'pallet-3',
+        'id': 'palette-3',
         'name': 'Emerald',
         'colors': [
             {
@@ -87,7 +87,7 @@ const defaultPallets = [
         'custom_colors': [],
     },
     {
-        'id': 'pallet-4',
+        'id': 'palette-4',
         'name': 'Flare',
         'colors': [
             {
@@ -116,7 +116,7 @@ const defaultPallets = [
         'custom_colors': [],
     },
     {
-        'id': 'pallet-5',
+        'id': 'palette-5',
         'name': 'Shine',
         'colors': [
             {
@@ -145,7 +145,7 @@ const defaultPallets = [
         'custom_colors': [],
     },
     {
-        'id': 'pallet-6',
+        'id': 'palette-6',
         'name': 'Shine',
         'colors': [
             {
@@ -174,7 +174,7 @@ const defaultPallets = [
         'custom_colors': [],
     },
     {
-        'id': 'pallet-7',
+        'id': 'palette-7',
         'name': 'Sunny Days',
         'colors': [
             {
@@ -204,4 +204,4 @@ const defaultPallets = [
     },
 ]
 
-export default defaultPallets;
+export default defaultPalettes;

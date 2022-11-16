@@ -3,7 +3,7 @@ import SettingsContext from '../store/settings-store';
 import PalettePreview from './color-palettes/PalettePreview';
 import { useSelect } from '@wordpress/data';
 
-const ThemeColorPallet = () => {
+const ThemeColorPalette = () => {
     const { setCustomColors, customColors } = useContext(SettingsContext);
     const _colors = useSelect(select => select('core/block-editor').getSettings().colors) || [];
     const themeColors = _colors.map((color) => {
@@ -34,4 +34,4 @@ const ThemeColorPallet = () => {
     </div>
 }
 
-export default ThemeColorPallet;
+export default ThemeColorPalette;

@@ -193,7 +193,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 			if ( isset( $global_typography['button'] ) ) {
 				$button_typography = $global_typography['button'];
 
-				$css->set_selector( '[class*="wp-block-premium"] .premium-button, [class*="wp-block-premium"] .premium-pricing-table__button_link, [class*="wp-block-premium"] .premium-modal-box-modal-lower-close' );
+				$css->set_selector( '[class*="wp-block-premium"] .premium-button, [class*="wp-block-premium"] .premium-modal-box-modal-lower-close' );
 				$css->add_property( 'font-family', $css->render_color( $button_typography['fontFamily'] ) );
 				$css->add_property( 'font-weight', $css->render_color( $button_typography['fontWeight'] ) );
 				$css->add_property( 'font-style', $css->render_color( $button_typography['fontStyle'] ) );
@@ -360,7 +360,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 			if ( isset( $global_typography['button'] ) ) {
 				$button_typography = $global_typography['button'];
 
-				$css->set_selector( '[class*="wp-block-premium"] .premium-button, [class*="wp-block-premium"] .premium-pricing-table__button_link, [class*="wp-block-premium"] .premium-modal-box-modal-lower-close' );
+				$css->set_selector( '[class*="wp-block-premium"] .premium-button, [class*="wp-block-premium"] .premium-modal-box-modal-lower-close' );
 				$css->render_typography( $button_typography, 'Tablet' );
 			}
 
@@ -478,7 +478,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 			if ( isset( $global_typography['button'] ) ) {
 				$button_typography = $global_typography['button'];
 
-				$css->set_selector( '[class*="wp-block-premium"] .premium-button, [class*="wp-block-premium"] .premium-pricing-table__button_link, [class*="wp-block-premium"] .premium-modal-box-modal-lower-close' );
+				$css->set_selector( '[class*="wp-block-premium"] .premium-button, [class*="wp-block-premium"] .premium-modal-box-modal-lower-close' );
 				$css->render_typography( $button_typography, 'Mobile' );
 			}
 
@@ -562,13 +562,13 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 		 * @return string
 		 */
 		public function add_global_color_to_editor( $dynamic_css = '' ) {
-			$global_color_pallet = get_option( 'pbg_global_color_pallet', 'theme' );
-			$apply_to_default    = get_option( 'pbg_global_colors_to_default', false );
-			if ( $global_color_pallet === 'theme' ) {
+			$global_color_palette = get_option( 'pbg_global_color_palette', 'theme' );
+			$apply_to_default     = get_option( 'pbg_global_colors_to_default', false );
+			if ( $global_color_palette === 'theme' ) {
 				return $dynamic_css;
 			}
 			$default_value = array(
-				'colors'         => array(
+				'colors'          => array(
 					array(
 						'slug'  => 'color1',
 						'color' => '#0085ba',
@@ -590,8 +590,8 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 						'color' => '#ffffff',
 					),
 				),
-				'current_palett' => 'pallet-1',
-				'custom_colors'  => array(),
+				'current_palette' => 'palette-1',
+				'custom_colors'   => array(),
 			);
 			$global_colors = get_option( 'pbg_global_colors', $default_value );
 			$css           = new Premium_Blocks_css();
@@ -603,11 +603,11 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 			$css->add_property( '--pbg-global-color5', $css->render_color( $global_colors['colors'][3]['color'] ) );
 			$css->set_selector( '[class*="wp-block-premium"]' );
 			$css->add_property( 'color', $css->render_color( 'var(--pbg-global-color3)' ) );
-			$css->set_selector( '[class*="wp-block-premium"] h1, [class*="wp-block-premium"] h2, [class*="wp-block-premium"] h3,[class*="wp-block-premium"] h4,[class*="wp-block-premium"] h5,[class*="wp-block-premium"] h6, [class*="wp-block-premium"] a:not([class*="button"])' );
+			$css->set_selector( '[class*="wp-block-premium"] h1, [class*="wp-block-premium"] h2, [class*="wp-block-premium"] h3,[class*="wp-block-premium"] h4,[class*="wp-block-premium"] h5,[class*="wp-block-premium"] h6, [class*="wp-block-premium"] a:not([class*="button"]):not([class*="button"] a)' );
 			$css->add_property( 'color', $css->render_color( 'var(--pbg-global-color2)' ) );
-			$css->set_selector( '[class*="wp-block-premium"] a:not([class*="button"]):hover' );
+			$css->set_selector( '[class*="wp-block-premium"] a:not([class*="button"]):not([class*="button"] a):hover' );
 			$css->add_property( 'color', $css->render_color( 'var(--pbg-global-color1)' ) );
-			$css->set_selector( '[class*="wp-block-premium"] .premium-button, [class*="wp-block-premium"] .premium-pricing-table__button_link, [class*="wp-block-premium"] .premium-modal-box-modal-lower-close' );
+			$css->set_selector( '[class*="wp-block-premium"] .premium-button, [class*="wp-block-premium"] .premium-modal-box-modal-lower-close' );
 			$css->add_property( 'color', $css->render_color( '#ffffff' ) );
 			$css->add_property( 'background-color', $css->render_color( 'var(--pbg-global-color1)' ) );
 			$css->add_property( 'border-color', $css->render_color( 'var(--pbg-global-color4)' ) );
@@ -615,9 +615,9 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 			if ( $apply_to_default ) {
 				$css->set_selector( '[data-type="core"]' );
 				$css->add_property( 'color', $css->render_color( 'var(--pbg-global-color3)' ) );
-				$css->set_selector( '[data-type="core"] h1, h1[data-type="core"], [data-type="core"] h2, h2[data-type="core"], [data-type="core"] h3, h3[data-type="core"],[data-type="core"] h4, h4[data-type="core"],[data-type="core"] h5, h5[data-type="core"],[data-type="core"] h6, h6[data-type="core"], [data-type="core"] a:not([class*="button"])' );
+				$css->set_selector( '[data-type="core"] h1, h1[data-type="core"], [data-type="core"] h2, h2[data-type="core"], [data-type="core"] h3, h3[data-type="core"],[data-type="core"] h4, h4[data-type="core"],[data-type="core"] h5, h5[data-type="core"],[data-type="core"] h6, h6[data-type="core"], [data-type="core"] a:not([class*="button"]):not([class*="button"] a)' );
 				$css->add_property( 'color', $css->render_color( 'var(--pbg-global-color2)' ) );
-				$css->set_selector( '[data-type="core"] a:not([class*="button"]):hover' );
+				$css->set_selector( '[data-type="core"] a:not([class*="button"]):not([class*="button"] a):hover' );
 				$css->add_property( 'color', $css->render_color( 'var(--pbg-global-color1)' ) );
 				$css->set_selector( '[data-type="core"] .wp-block-button .wp-block-button__link, .wp-block-button[data-type="core"] .wp-block-button__link' );
 				$css->add_property( 'color', $css->render_color( '#ffffff' ) );
@@ -712,7 +712,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 					'show_in_rest' => array(
 						'schema' => array(
 							'properties' => array(
-								'colors'         => array(
+								'colors'          => array(
 									'type'  => 'array',
 									'items' => array(
 										'type'       => 'object',
@@ -726,10 +726,10 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 										),
 									),
 								),
-								'current_palett' => array(
+								'current_palette' => array(
 									'type' => 'string',
 								),
-								'custom_colors'  => array(
+								'custom_colors'   => array(
 									'type'  => 'array',
 									'items' => array(
 										'type'       => 'object',
@@ -750,7 +750,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 						),
 					),
 					'default'      => array(
-						'colors'         => array(
+						'colors'          => array(
 							array(
 								'slug'  => 'color1',
 								'color' => '#0085ba',
@@ -772,7 +772,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 								'color' => '#ffffff',
 							),
 						),
-						'current_palett' => 'pallet-1',
+						'current_palette' => 'palette-1',
 					),
 				)
 			);
@@ -805,13 +805,13 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 				)
 			);
 
-			// Default Color Pallet.
+			// Default Color Palette.
 			register_setting(
 				'pbg_global_settings',
-				'pbg_global_color_pallet',
+				'pbg_global_color_palette',
 				array(
 					'type'              => 'string',
-					'description'       => __( 'Config Premium Blocks For Gutenberg Global Color Pallet Settings', 'premium-block-for-gutenberg' ),
+					'description'       => __( 'Config Premium Blocks For Gutenberg Global Color Palette Settings', 'premium-block-for-gutenberg' ),
 					'sanitize_callback' => 'sanitize_text_field',
 					'show_in_rest'      => true,
 					'default'           => 'theme',
@@ -821,7 +821,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 			// Global Colors Setting register.
 			register_setting(
 				'pbg_global_settings',
-				'pbg_global_color_pallets',
+				'pbg_global_color_palettes',
 				array(
 					'type'         => 'array',
 					'description'  => __( 'Config Premium Blocks For Gutenberg Global Colors Settings', 'premium-block-for-gutenberg' ),
@@ -957,7 +957,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 				'pbg-global-settings-js',
 				'pbgGlobalSettings',
 				array(
-					'pallets'      => get_option( 'pbg_global_color_pallets', array() ),
+					'palettes'     => get_option( 'pbg_global_color_palettes', array() ),
 					'apiData'      => apply_filters( 'pb_settings', get_option( 'pbg_blocks_settings', array() ) ),
 					'isBlockTheme' => wp_is_block_theme(),
 				)

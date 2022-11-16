@@ -48,7 +48,7 @@ const TypographyScreen = props => {
 
     return <>
         <ScreenHeader
-            title={__('Typography')}
+            title={__('Typography', "premium-blocks-for-gutenberg")}
             description={__('Manage the typography settings for different elements.', "premium-blocks-for-gutenberg")}
         />
         <div className='premium-typography-screen'>
@@ -141,7 +141,7 @@ const TypographyScreen = props => {
                 <PremiumTypo value={getElementValue('paragraph')} title={false} onChange={(newValue => changeHandler('paragraph', newValue))} />
             </div>
             <CheckboxControl
-                label={__('Apply to Native Blocks')}
+                label={__('Apply to Native Blocks', "premium-blocks-for-gutenberg")}
                 checked={applyTypographyToDefault}
                 onChange={() => setApplyTypographyToDefault(!applyTypographyToDefault)}
             />

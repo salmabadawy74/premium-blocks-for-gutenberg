@@ -87,13 +87,13 @@ class AdvancedColorControl extends Component {
         const isNew = wp.components.GradientPicker;
 
         const getDefaultColors = () => {
-            const { pbgGlobalColors, pbgDefaultPallet, colors, customColors } = this.props;
+            const { pbgGlobalColors, pbgDefaultPalette, colors, customColors } = this.props;
 
             let globalColors = [...colors];
-            if (pbgDefaultPallet === 'theme') {
+            if (pbgDefaultPalette === 'theme') {
                 globalColors = [...this.props.colors];
             }
-            if (pbgDefaultPallet === 'pbg') {
+            if (pbgDefaultPalette === 'pbg') {
                 const titles = [
                     __(`Buttons background color \n& Links hover color`, "premium-blocks-for-gutenberg"),
                     __("Headings & Links color", "premium-blocks-for-gutenberg"),
@@ -316,7 +316,7 @@ export default withSelect((select, ownProps) => {
     const settings = select("core/block-editor").getSettings();
     const { getEditedEntityRecord } = select(coreStore);
     const pbgGlobalColors = getEditedEntityRecord('root', 'site')?.pbg_global_colors || [];
-    const pbgDefaultPallet = getEditedEntityRecord('root', 'site')?.pbg_global_color_pallet || 'theme';
+    const pbgDefaultPalette = getEditedEntityRecord('root', 'site')?.pbg_global_color_palette || 'theme';
     const customColors = getEditedEntityRecord('root', 'site')?.pbg_custom_colors || [];
     const colors = get(settings, ["colors"], []);
     const disableCustomColors =
@@ -327,7 +327,7 @@ export default withSelect((select, ownProps) => {
         colors,
         disableCustomColors,
         pbgGlobalColors,
-        pbgDefaultPallet,
+        pbgDefaultPalette,
         customColors
     };
 })(AdvancedColorControl);

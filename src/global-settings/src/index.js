@@ -16,14 +16,14 @@ const SidebarIcon = () => {
     return <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="271.92" height="258.62" viewBox="0 0 271.92 258.62"><title>font-icon</title><path d="M197,158.57c12.92,39.76,25.75,79.26,38.6,118.77l-.57.38q-5.34-3.86-10.68-7.72l-57.08-41.49c-1.9-1.38-3.85-2.7-5.79-4-1.79-1.22-2.25-2.93-1.1-4.65,1.27-1.91,2.8-1.05,4.31,0q29.06,21.23,58.16,42.4c.66.48,1.31,1,2,1.49l.63-.37c-.7-2.32-1.36-4.65-2.11-6.95-5.48-16.77-11-33.53-16.47-50.3-4.73-14.53-9.27-29.12-14.18-43.59a6.45,6.45,0,0,1-.22-.83l-9.73,6.78a1.69,1.69,0,0,0-.38,1.92l21.78,62.81-35.4-26.8L67.54,279.31c10.14-30.78,20-60.83,30-91.08a27,27,0,0,0,2.83,1.81c1.5.7,1.69,1.52,1.15,3.13-4.28,12.75-8.42,25.55-12.63,38.33C85.47,241.86,82,252.2,78.6,262.56c-.25.76-.33,1.58-.66,3.22l3.27-2.35,82.84-59.66.59-.42-13.83-10.47a1.62,1.62,0,0,0-1.84.17l-53.1,40.19,14.71-42.41L14,120.69h96.19c-.49,1.73-.91,3.24-1.42,5H31.62l-.33.9q40.5,29.43,81.11,59l5.41-15.6a1.63,1.63,0,0,0-.72-1.61L62.43,130.29l50.89,1L149,20.69c10.1,30.8,19.95,60.85,29.87,91.13a25.21,25.21,0,0,0-3.35.21c-1.62.32-2.26-.22-2.79-1.84-4.11-12.8-8.37-25.56-12.55-38.35-3.4-10.36-6.75-20.74-10.14-31.11-.25-.76-.67-1.47-1.38-3-.57,1.75-.9,2.79-1.24,3.83q-14.48,44.91-28.94,89.81l10.91.22a1.74,1.74,0,0,0,1.35-1.31L150,66.66,165.58,118H286L208.38,174.4a26.75,26.75,0,0,0-1.23-3.12c-.81-1.45-.49-2.22.89-3.22,10.93-7.84,21.77-15.81,32.65-23.71q13.25-9.61,26.51-19.2a32.25,32.25,0,0,0,2.41-2.22H167.06l2.37,7.81a1.73,1.73,0,0,0,1.65.87l66.49-1.31Z" transform="translate(-14.04 -20.69)" /></svg>
 };
 const loadGlobalStyles = (globalStyle) => {
-    const { colorPallet, globalColors, globalTypography, deviceType, applyColorsToDefault, applyTypographyToDefault } = globalStyle;
-    const css = loadStyles(colorPallet, globalColors, globalTypography, applyColorsToDefault, applyTypographyToDefault, deviceType);
+    const { colorPalette, globalColors, globalTypography, deviceType, applyColorsToDefault, applyTypographyToDefault } = globalStyle;
+    const css = loadStyles(colorPalette, globalColors, globalTypography, applyColorsToDefault, applyTypographyToDefault, deviceType);
 
     return css;
 };
 
-const loadStyles = (colorPallet, globalColors, globalTypography, applyColorsToDefault, applyTypographyToDefault, deviceType) => {
-    if (!colorPallet || !globalColors?.colors) {
+const loadStyles = (colorPalette, globalColors, globalTypography, applyColorsToDefault, applyTypographyToDefault, deviceType) => {
+    if (!colorPalette || !globalColors?.colors) {
         return '';
     }
     const { heading1, heading2, heading3, heading4, heading5, heading6, button, paragraph } = globalTypography;
@@ -33,7 +33,7 @@ const loadStyles = (colorPallet, globalColors, globalTypography, applyColorsToDe
     let css = '';
 
     // Colors
-    if (colorPallet !== 'theme') {
+    if (colorPalette !== 'theme') {
         styles[':root'] = {};
         globalColors.colors.map((item, index) => {
             styles[':root'][`--pbg-global-${item.slug}`] = item.color;
@@ -47,7 +47,7 @@ const loadStyles = (colorPallet, globalColors, globalTypography, applyColorsToDe
             'color': `var(--pbg-global-color2)`,
         };
 
-        styles[`[class*="wp-block-premium"] .premium-button, [class*="wp-block-premium"] .premium-pricing-table__button_link, [class*="wp-block-premium"] .premium-modal-box-modal-lower-close`] = {
+        styles[`[class*="wp-block-premium"] .premium-button, [class*="wp-block-premium"] .premium-button a, [class*="wp-block-premium"] .premium-modal-box-modal-lower-close`] = {
             'color': `#ffffff`,
             'background-color': `var(--pbg-global-color1)`,
             'border-color': `var(--pbg-global-color4)`,
@@ -67,7 +67,7 @@ const loadStyles = (colorPallet, globalColors, globalTypography, applyColorsToDe
                 'color': `var(--pbg-global-color2)`,
             };
 
-            styles[`.editor-styles-wrapper .wp-block-button > div`] = {
+            styles[`.editor-styles-wrapper .wp-block-button > div, .editor-styles-wrapper .wp-block-button > .wp-block-button__link`] = {
                 'color': `#ffffff`,
                 'background-color': `var(--pbg-global-color1)`,
                 'border-color': `var(--pbg-global-color4)`,
@@ -237,7 +237,7 @@ const loadStyles = (colorPallet, globalColors, globalTypography, applyColorsToDe
             'line-height': `${heading6?.lineHeight?.[deviceType]}${heading6?.lineHeight?.unit}`,
         };
 
-        styles['.editor-styles-wrapper .wp-block-button > div'] = {
+        styles['.editor-styles-wrapper .wp-block-button > div, .editor-styles-wrapper .wp-block-button > .wp-block-button__link'] = {
             'font-size': `${button?.fontSize?.[deviceType]}${button?.fontSize?.unit}`,
             'font-style': button?.fontStyle,
             'font-family': button?.fontFamily,
@@ -248,7 +248,7 @@ const loadStyles = (colorPallet, globalColors, globalTypography, applyColorsToDe
             'line-height': `${button?.lineHeight?.[deviceType]}${button?.lineHeight?.unit}`,
         };
 
-        styles['.editor-styles-wrapper p[data-type^="core/"]'] = {
+        styles['.editor-styles-wrapper p[data-type^="core/"], .editor-styles-wrapper [data-type^="core/"] p'] = {
             'font-size': `${paragraph?.fontSize?.[deviceType]}${paragraph?.fontSize?.unit}`,
             'font-style': paragraph?.fontStyle,
             'font-family': paragraph?.fontFamily,
@@ -309,20 +309,20 @@ const PluginSidebarEditSite = () => {
 };
 
 const PremiumGlobalStyles = () => {
-    const { globalColors, colorPallet, globalTypography, deviceType, applyColorsToDefault, applyTypographyToDefault } = useSelect(
+    const { globalColors, colorPalette, globalTypography, deviceType, applyColorsToDefault, applyTypographyToDefault } = useSelect(
         (select) => {
             const { __experimentalGetPreviewDeviceType = null } = select('core/edit-site');
             let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
             const { getEditedEntityRecord } = select(coreStore);
             const pbgGlobalColors = getEditedEntityRecord('root', 'site')?.pbg_global_colors || [];
-            const pbgDefaultPallet = getEditedEntityRecord('root', 'site')?.pbg_global_color_pallet || 'theme';
+            const pbgDefaultPalette = getEditedEntityRecord('root', 'site')?.pbg_global_color_palette || 'theme';
             const globalTypography = getEditedEntityRecord('root', 'site')?.pbg_global_typography || [];
             const applyColorsToDefault = getEditedEntityRecord('root', 'site')?.pbg_global_colors_to_default || false;
             const applyTypographyToDefault = getEditedEntityRecord('root', 'site')?.pbg_global_typography_to_default || false;
 
             return {
                 globalColors: pbgGlobalColors,
-                colorPallet: pbgDefaultPallet,
+                colorPalette: pbgDefaultPalette,
                 globalTypography: globalTypography,
                 deviceType,
                 applyColorsToDefault,
@@ -334,7 +334,10 @@ const PremiumGlobalStyles = () => {
 
     useEffect(() => {
         const loadStyleSheet = (editorDom) => {
-            const css = loadGlobalStyles({ globalColors, colorPallet, globalTypography, deviceType, applyColorsToDefault, applyTypographyToDefault });
+            if (editorDom) {
+                console.log(editorDom);
+            }
+            const css = loadGlobalStyles({ globalColors, colorPalette, globalTypography, deviceType, applyColorsToDefault, applyTypographyToDefault });
             const styleSheet = editorDom.querySelector('#premium-style-preview-css');
 
             if (styleSheet) {
@@ -365,7 +368,7 @@ const PremiumGlobalStyles = () => {
         let interval = null;
         let siteEditorDom = document.querySelector(`iframe[name="editor-canvas"]`);
 
-        if (siteEditorDom) {
+        if (siteEditorDom && siteEditorDom.contentDocument?.body?.childNodes?.length !== 0) {
             const editorBody = siteEditorDom.contentDocument.body;
             loadFonts(globalTypography, siteEditorDom.contentWindow);
             loadStyleSheet(editorBody);
@@ -374,7 +377,7 @@ const PremiumGlobalStyles = () => {
                 siteEditorDom = document.querySelector(`iframe[name="editor-canvas"]`);
                 if (siteEditorDom) {
                     const editorBody = siteEditorDom.contentDocument.body;
-                    if (editorBody) {
+                    if (editorBody && editorBody?.childNodes?.length !== 0) {
                         clearInterval(interval);
                         loadFonts(globalTypography, siteEditorDom.contentWindow);
                         loadStyleSheet(editorBody);
@@ -386,7 +389,7 @@ const PremiumGlobalStyles = () => {
         return () => {
             clearInterval(interval)
         }
-    }, [globalColors, colorPallet, globalTypography, deviceType, applyColorsToDefault, applyTypographyToDefault]);
+    }, [globalColors, colorPalette, globalTypography, deviceType, applyColorsToDefault, applyTypographyToDefault]);
 
     return null
 }

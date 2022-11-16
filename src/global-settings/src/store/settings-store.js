@@ -7,12 +7,12 @@ import { __ } from "@wordpress/i18n";
 const SettingsContext = React.createContext({
     globalTypography: {},
     globalColors: {},
-    colorPallet: '',
+    colorPalette: '',
     setGlobalTypography: () => { },
     setGlobalColors: () => { },
-    setColorPallet: () => { },
-    colorPallets: [],
-    setColorPallets: [],
+    setColorPalette: () => { },
+    colorPalettes: [],
+    setColorPalettes: [],
     layoutSettings: {},
     setLayoutSettings: () => { },
     customColors: [],
@@ -26,8 +26,8 @@ const SettingsContext = React.createContext({
 export const SettingsProvider = (props) => {
     const [globalTypography, setGlobalTypography] = useEntityProp('root', 'site', 'pbg_global_typography');
     const [globalColors, setGlobalColors] = useEntityProp('root', 'site', 'pbg_global_colors');
-    const [colorPallet, setColorPallet] = useEntityProp('root', 'site', 'pbg_global_color_pallet');
-    const [colorPallets, setColorPallets] = useEntityProp('root', 'site', 'pbg_global_color_pallets');
+    const [colorPalette, setColorPalette] = useEntityProp('root', 'site', 'pbg_global_color_palette');
+    const [colorPalettes, setColorPalettes] = useEntityProp('root', 'site', 'pbg_global_color_palettes');
     const [customColors, setCustomColors] = useEntityProp('root', 'site', 'pbg_custom_colors');
     const [layoutSettings, setLayoutSettings] = useEntityProp('root', 'site', 'pbg_global_layout');
     const [applyColorsToDefault, setApplyColorsToDefault] = useEntityProp('root', 'site', 'pbg_global_colors_to_default');
@@ -38,10 +38,10 @@ export const SettingsProvider = (props) => {
         setGlobalTypography,
         globalColors,
         setGlobalColors,
-        colorPallet,
-        setColorPallet,
-        colorPallets,
-        setColorPallets,
+        colorPalette,
+        setColorPalette,
+        colorPalettes,
+        setColorPalettes,
         customColors,
         setCustomColors,
         layoutSettings,

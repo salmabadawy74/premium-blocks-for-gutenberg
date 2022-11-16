@@ -10,10 +10,10 @@ import SettingsContext from '../../store/settings-store';
 const ColorPalettesModal = ({ value, onChange, wrapperProps = {}, handleDeletePalette }) => {
 	const { globalColors } = useContext(SettingsContext);
 	const [typeOfPalette, setTypeOfPalette] = useState("light");
-	const pbgPaletteColors = value.filter(pallet => pallet.skin === typeOfPalette && pallet.type === "system");
-	const customPaletteColors = value.filter(pallet => { return pallet.skin === typeOfPalette && pallet.type === "custom" });
-	const initPallet = (pallet) => {
-		const newPalletColors = pallet.colors.map(color => {
+	const pbgPaletteColors = value.filter(palette => palette.skin === typeOfPalette && palette.type === "system");
+	const customPaletteColors = value.filter(palette => { return palette.skin === typeOfPalette && palette.type === "custom" });
+	const initPalette = (palette) => {
+		const newPaletteColors = palette.colors.map(color => {
 			return {
 				name: color.name,
 				slug: color.slug,
@@ -23,7 +23,7 @@ const ColorPalettesModal = ({ value, onChange, wrapperProps = {}, handleDeletePa
 			}
 		})
 
-		return { ...pallet, colors: newPalletColors }
+		return { ...palette, colors: newPaletteColors }
 	}
 	return (
 		<animated.div
@@ -46,9 +46,9 @@ const ColorPalettesModal = ({ value, onChange, wrapperProps = {}, handleDeletePa
 			{customPaletteColors.map((palette, index) => (
 				<Fragment>
 					<PalettePreview
-						colors={initPallet(palette).colors}
+						colors={initPalette(palette).colors}
 						className={classnames(`premium-custom-palette__container`, {
-							'premium-active': palette.id === globalColors.current_palett
+							'premium-active': palette.id === globalColors.current_palette
 						})
 						}
 						renderBefore={() => (
@@ -77,9 +77,9 @@ const ColorPalettesModal = ({ value, onChange, wrapperProps = {}, handleDeletePa
 			{pbgPaletteColors.map((palette, index) => (
 				<Fragment>
 					<PalettePreview
-						colors={initPallet(palette).colors}
+						colors={initPalette(palette).colors}
 						className={
-							palette.id === globalColors.current_palett ? 'premium-active' : ''
+							palette.id === globalColors.current_palette ? 'premium-active' : ''
 						}
 						renderBefore={() => (
 							<label>

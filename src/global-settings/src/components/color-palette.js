@@ -9,7 +9,7 @@ import bezierEasing from "bezier-easing";
 const { __ } = wp.i18n;
 import { Modal } from '@wordpress/components';
 import classnames from "classnames";
-import defaultPallets from "../helpers/defaultPallets";
+import defaultPalettes from "../helpers/defaultPalettes";
 import SettingsContext from "../store/settings-store";
 
 const ColorPalettes = ({
@@ -20,7 +20,7 @@ const ColorPalettes = ({
     const [state, setState] = useState(value);
     const colorPalettesWrapper = useRef();
     const buttonRef = useRef();
-    const defaultValues = [...defaultPallets, ...pbgGlobalSettings.pallets];
+    const defaultValues = [...defaultPalettes, ...pbgGlobalSettings.palettes];
     const [{ isOpen, isTransitioning }, setModalState] = useState({
         isOpen: false,
         isTransitioning: false,
@@ -56,10 +56,10 @@ const ColorPalettes = ({
             default: true
         }
     });
-    const globalPallet = { ...globalColors, colors: newColorsObj };
+    const globalPalette = { ...globalColors, colors: newColorsObj };
 
     const handleChangePalette = (active) => {
-        const newGlobalColors = { ...globalColors, colors: active.colors, current_palett: active.id };
+        const newGlobalColors = { ...globalColors, colors: active.colors, current_palette: active.id };
 
         setGlobalColors(newGlobalColors);
     };
@@ -83,19 +83,19 @@ const ColorPalettes = ({
     };
 
     const handleAddPalette = (data) => {
-        let newPallets = [...state];
+        let newPalettes = [...state];
 
         let newPalett = {
-            id: `custom-pallet-${newPallets.length + 1}`,
+            id: `custom-palette-${newPalettes.length + 1}`,
             colors: [...globalColors.colors],
             type: "custom",
             skin: data.type,
             name: data.name,
         };
-        newPallets.unshift(newPalett);
-        setState(newPallets);
-        onChange(newPallets);
-        setGlobalColors({ ...globalColors, current_palett: `custom-pallet-${newPallets.length}` });
+        newPalettes.unshift(newPalett);
+        setState(newPalettes);
+        onChange(newPalettes);
+        setGlobalColors({ ...globalColors, current_palette: `custom-palette-${newPalettes.length}` });
         setModalState(() => ({
             isOpen: null,
             isTransitioning: false,
@@ -122,7 +122,7 @@ const ColorPalettes = ({
 
     const handleResetColor = (id) => {
         let currentPalette = defaultValues.find(
-            (pallet) => pallet.id === globalColors.current_palett
+            (palette) => palette.id === globalColors.current_palette
         );
         const resetColor = currentPalette['colors'].find(color => color.slug === id) || {};
         handleChangeComplete(resetColor?.color || '', id);
@@ -168,7 +168,7 @@ const ColorPalettes = ({
                                 isTransitioning: null,
                             }))
                         }}
-                        colors={globalPallet.colors}
+                        colors={globalPalette.colors}
                         customColors={customColors}
                         onChange={(v, id) => handleChangeComplete(v, id)}
                         handleClickReset={(val) => {
@@ -210,8 +210,8 @@ const ColorPalettes = ({
                             handleChangePalette(val);
                             setCurrentView("")
                         }}
-                        value={[...defaultPallets, ...state]}
-                        option={[...defaultPallets, ...state]}
+                        value={[...defaultPalettes, ...state]}
+                        option={[...defaultPalettes, ...state]}
                         handleDeletePalette={(id) => handleDeletePalette(id)}
                     />}
             </OutsideClickHandler>
