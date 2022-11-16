@@ -3107,9 +3107,6 @@ const FilterTabs = () => {
   }, {
     name: "Marketing",
     slug: "marketing"
-  }, {
-    name: "Theme",
-    slug: "theme"
   }];
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => {
     // Activate Block Filter Tab from "filterTab" Hash in the URl is present.
