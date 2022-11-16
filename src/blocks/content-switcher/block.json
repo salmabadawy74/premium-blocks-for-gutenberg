@@ -184,11 +184,11 @@
         },
         "switchRadius": {
             "type": "number",
-            "default": "1.5"
+            "default": 50
         },
         "switchRadiusUnit": {
             "type": "string",
-            "default": "em"
+            "default": "px"
         },
         "labelSpacing": {
             "type": "object",
