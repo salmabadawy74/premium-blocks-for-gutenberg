@@ -581,7 +581,7 @@ function Edit(props) {
                                     <AdvancedPopColorControl
                                         label={__(
                                             "Background Color",
-                                            "premium-block-for-gutenberg"
+                                            "premium-blocks-for-gutenberg"
                                         )}
                                         colorValue={
                                             generalStyles[0]
@@ -612,7 +612,7 @@ function Edit(props) {
                                     <AdvancedPopColorControl
                                         label={__(
                                             "Background Color",
-                                            "premium-block-for-gutenberg"
+                                            "premium-blocks-for-gutenberg"
                                         )}
                                         colorValue={
                                             generalStyles[0]
@@ -712,7 +712,7 @@ function Edit(props) {
                                         <AdvancedPopColorControl
                                             label={__(
                                                 "Color",
-                                                "premium-block-for-gutenberg"
+                                                "premium-blocks-for-gutenberg"
                                             )}
                                             colorValue={
                                                 bulletIconStyles[0]
@@ -728,7 +728,7 @@ function Edit(props) {
                                         <AdvancedPopColorControl
                                             label={__(
                                                 "Background Color",
-                                                "premium-block-for-gutenberg"
+                                                "premium-blocks-for-gutenberg"
                                             )}
                                             colorValue={
                                                 bulletIconStyles[0]
@@ -754,7 +754,7 @@ function Edit(props) {
                                         <AdvancedPopColorControl
                                             label={__(
                                                 "Color",
-                                                "premium-block-for-gutenberg"
+                                                "premium-blocks-for-gutenberg"
                                             )}
                                             colorValue={
                                                 bulletIconStyles[0]
@@ -771,7 +771,7 @@ function Edit(props) {
                                         <AdvancedPopColorControl
                                             label={__(
                                                 "Background Color",
-                                                "premium-block-for-gutenberg"
+                                                "premium-blocks-for-gutenberg"
                                             )}
                                             colorValue={
                                                 bulletIconStyles[0]
@@ -791,7 +791,7 @@ function Edit(props) {
                             <PremiumBorder
                                 label={__(
                                     "Border",
-                                    "premium-block-for-gutenberg"
+                                    "premium-blocks-for-gutenberg"
                                 )}
                                 value={bulletIconBorder}
                                 onChange={(value) =>
@@ -805,7 +805,7 @@ function Edit(props) {
                                 showUnits={true}
                                 label={__(
                                     "Margin",
-                                    "premium-block-for-gutenberg"
+                                    "premium-blocks-for-gutenberg"
                                 )}
                                 onChange={(value) =>
                                     setAttributes({ bulletIconmargin: value })
@@ -817,7 +817,7 @@ function Edit(props) {
                                 showUnits={true}
                                 label={__(
                                     "Padding",
-                                    "premium-block-for-gutenberg"
+                                    "premium-blocks-for-gutenberg"
                                 )}
                                 onChange={(value) =>
                                     setAttributes({ bulletIconpadding: value })
@@ -848,7 +848,7 @@ function Edit(props) {
                                     <AdvancedPopColorControl
                                         label={__(
                                             "Color",
-                                            "premium-block-for-gutenberg"
+                                            "premium-blocks-for-gutenberg"
                                         )}
                                         colorValue={titleStyles[0].titleColor}
                                         colorDefault={""}
@@ -868,7 +868,7 @@ function Edit(props) {
                                     <AdvancedPopColorControl
                                         label={__(
                                             "Color",
-                                            "premium-block-for-gutenberg"
+                                            "premium-blocks-for-gutenberg"
                                         )}
                                         colorValue={
                                             titleStyles[0].titleHoverColor
@@ -962,7 +962,7 @@ function Edit(props) {
                                 <AdvancedPopColorControl
                                     label={__(
                                         "Color",
-                                        "premium-block-for-gutenberg"
+                                        "premium-blocks-for-gutenberg"
                                     )}
                                     colorValue={dividerStyles[0].dividerColor}
                                     colorDefault={""}

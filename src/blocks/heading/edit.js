@@ -1,7 +1,13 @@
 import classnames from "classnames";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import Lottie from "react-lottie-with-segments";
-import { generateBlockId, generateCss, typographyCss, paddingCss, marginCss } from '@pbg/helpers';
+import {
+    generateBlockId,
+    generateCss,
+    typographyCss,
+    paddingCss,
+    marginCss,
+} from "@pbg/helpers";
 import {
     ResponsiveRangeControl,
     ResponsiveSingleRangeControl,
@@ -20,7 +26,7 @@ import {
     Icons,
     WebfontLoader,
     iconsList,
-} from '@pbg/components';
+} from "@pbg/components";
 
 const { __ } = wp.i18n;
 const { withSelect } = wp.data;
@@ -52,9 +58,7 @@ function Edit(props) {
     const handleStyle = () => {
         const { titleStyles } = props.attributes;
         if (blockId) {
-            let container = document.querySelectorAll(
-                `.${blockId}`
-            );
+            let container = document.querySelectorAll(`.${blockId}`);
             if (!container.length) {
                 return;
             }
@@ -65,8 +69,8 @@ function Edit(props) {
             // titleContainers.forEach(function (titleContainer) {
             if (titleContainers.classList.contains("style8")) {
                 let titleElement = titleContainers.querySelector(
-                    ".premium-title-text-title"
-                ),
+                        ".premium-title-text-title"
+                    ),
                     holdTime = titleStyles[0].animateDelay * 1000,
                     duration = titleStyles[0].animateduration * 1000;
 
@@ -120,7 +124,7 @@ function Edit(props) {
             }
             // });
         }
-    }
+    };
 
     const {
         blockId,
@@ -181,153 +185,151 @@ function Edit(props) {
     let loadTitleGoogleFonts;
     let loadTextGoogleFonts;
 
-    if (titleTypography?.fontFamily !== 'Default') {
+    if (titleTypography?.fontFamily !== "Default") {
         const titleConfig = {
             google: {
-                families: [titleTypography.fontFamily]
-            }
-        }
+                families: [titleTypography.fontFamily],
+            },
+        };
         loadTitleGoogleFonts = (
-            <WebfontLoader config={titleConfig}>
-            </WebfontLoader>
-        )
+            <WebfontLoader config={titleConfig}></WebfontLoader>
+        );
     }
 
-    if (textTypography?.fontFamily !== 'Default') {
+    if (textTypography?.fontFamily !== "Default") {
         const textConfig = {
             google: {
-                families: [textTypography.fontFamily]
-            }
-        }
+                families: [textTypography.fontFamily],
+            },
+        };
         loadTextGoogleFonts = (
-            <WebfontLoader config={textConfig}>
-            </WebfontLoader>
-        )
+            <WebfontLoader config={textConfig}></WebfontLoader>
+        );
     }
 
     const STYLE = [
         {
             value: "default",
-            label: __("Default", 'premium-blocks-for-gutenberg'),
+            label: __("Default", "premium-blocks-for-gutenberg"),
         },
         {
             value: "style1",
-            label: __("Style 1", 'premium-blocks-for-gutenberg'),
+            label: __("Style 1", "premium-blocks-for-gutenberg"),
         },
         {
             value: "style2",
-            label: __("Style 2", 'premium-blocks-for-gutenberg'),
+            label: __("Style 2", "premium-blocks-for-gutenberg"),
         },
         {
             value: "style3",
-            label: __("Style 3", 'premium-blocks-for-gutenberg'),
+            label: __("Style 3", "premium-blocks-for-gutenberg"),
         },
         {
             value: "style4",
-            label: __("Style 4", 'premium-blocks-for-gutenberg'),
+            label: __("Style 4", "premium-blocks-for-gutenberg"),
         },
         {
             value: "style5",
-            label: __("Style 5", 'premium-blocks-for-gutenberg'),
+            label: __("Style 5", "premium-blocks-for-gutenberg"),
         },
         {
             value: "style6",
-            label: __("Style 6", 'premium-blocks-for-gutenberg'),
+            label: __("Style 6", "premium-blocks-for-gutenberg"),
         },
         {
             value: "style7",
-            label: __("Style 7", 'premium-blocks-for-gutenberg'),
+            label: __("Style 7", "premium-blocks-for-gutenberg"),
         },
         {
             value: "style8",
-            label: __("Style 8", 'premium-blocks-for-gutenberg'),
+            label: __("Style 8", "premium-blocks-for-gutenberg"),
         },
         {
             value: "style9",
-            label: __("Style 9", 'premium-blocks-for-gutenberg'),
+            label: __("Style 9", "premium-blocks-for-gutenberg"),
         },
     ];
 
     const ICON = [
         {
             value: "icon",
-            label: __("Icon", 'premium-blocks-for-gutenberg'),
+            label: __("Icon", "premium-blocks-for-gutenberg"),
         },
         {
             value: "image",
-            label: __("Image", 'premium-blocks-for-gutenberg'),
+            label: __("Image", "premium-blocks-for-gutenberg"),
         },
         {
             value: "lottie",
-            label: __("Lottie Animation", 'premium-blocks-for-gutenberg'),
+            label: __("Lottie Animation", "premium-blocks-for-gutenberg"),
         },
     ];
 
     const POSITION = [
         {
             value: "before",
-            label: __("Before", 'premium-blocks-for-gutenberg'),
+            label: __("Before", "premium-blocks-for-gutenberg"),
         },
         {
             value: "after",
-            label: __("After", 'premium-blocks-for-gutenberg'),
+            label: __("After", "premium-blocks-for-gutenberg"),
         },
         {
             value: "top",
-            label: __("Top", 'premium-blocks-for-gutenberg'),
+            label: __("Top", "premium-blocks-for-gutenberg"),
         },
     ];
 
     const STRIPEPOSITION = [
         {
             value: "top",
-            label: __("Top", 'premium-blocks-for-gutenberg'),
+            label: __("Top", "premium-blocks-for-gutenberg"),
         },
         {
             value: "bottom",
-            label: __("Bottom", 'premium-blocks-for-gutenberg'),
+            label: __("Bottom", "premium-blocks-for-gutenberg"),
         },
     ];
 
     const BLEND = [
         {
-            label: __("Normal", 'premium-blocks-for-gutenberg'),
+            label: __("Normal", "premium-blocks-for-gutenberg"),
             value: "normal",
         },
         {
-            label: __("Multiply", 'premium-blocks-for-gutenberg'),
+            label: __("Multiply", "premium-blocks-for-gutenberg"),
             value: "multiply",
         },
         {
-            label: __("Screen", 'premium-blocks-for-gutenberg'),
+            label: __("Screen", "premium-blocks-for-gutenberg"),
             value: "screen",
         },
         {
-            label: __("Overlay", 'premium-blocks-for-gutenberg'),
+            label: __("Overlay", "premium-blocks-for-gutenberg"),
             value: "overlay",
         },
         {
-            label: __("Darken", 'premium-blocks-for-gutenberg'),
+            label: __("Darken", "premium-blocks-for-gutenberg"),
             value: "darken",
         },
         {
-            label: __("Lighten", 'premium-blocks-for-gutenberg'),
+            label: __("Lighten", "premium-blocks-for-gutenberg"),
             value: "lighten",
         },
         {
-            label: __("Color Dodge", 'premium-blocks-for-gutenberg'),
+            label: __("Color Dodge", "premium-blocks-for-gutenberg"),
             value: "color-dodge",
         },
         {
-            label: __("Saturation", 'premium-blocks-for-gutenberg'),
+            label: __("Saturation", "premium-blocks-for-gutenberg"),
             value: "saturation",
         },
         {
-            label: __("Color", 'premium-blocks-for-gutenberg'),
+            label: __("Color", "premium-blocks-for-gutenberg"),
             value: "color",
         },
         {
-            label: __("Luminosity", 'premium-blocks-for-gutenberg'),
+            label: __("Luminosity", "premium-blocks-for-gutenberg"),
             value: "luminosity",
         },
     ];
@@ -349,13 +351,13 @@ function Edit(props) {
     ) {
         btnGrad =
             "transparent" === iconBackground.backgroundColor ||
-                undefined === iconBackground.backgroundColor
+            undefined === iconBackground.backgroundColor
                 ? "rgba(255,255,255,0)"
                 : iconBackground.backgroundColor;
         btnGrad2 =
             undefined !== iconBackground.gradientColorTwo &&
-                undefined !== iconBackground.gradientColorTwo &&
-                "" !== iconBackground.gradientColorTwo
+            undefined !== iconBackground.gradientColorTwo &&
+            "" !== iconBackground.gradientColorTwo
                 ? iconBackground.gradientColorTwo
                 : "#777";
         if ("radial" === iconBackground.gradientType) {
@@ -384,139 +386,285 @@ function Edit(props) {
             "--shadow-value": `${titleStyles[0].blurShadow}px!important`,
             color: `${titleStyles[0].titleColor}!important`,
         };
-        styles[`.${blockId} .premium-title .default .premium-title-header`] =
-        {
+        styles[`.${blockId} .premium-title .default .premium-title-header`] = {
             "border-color": `${titleBorder.borderColor}!important`,
-            "border-style": `${titleBorder.borderType == 'none' ? 'none' : `${titleBorder.borderType} !important`}`,
-            "border-top-width": `${titleBorder?.borderWidth?.[props.deviceType]?.top}px!important`,
-            "border-right-width": `${titleBorder?.borderWidth?.[props.deviceType]?.right}px!important`,
-            "border-bottom-width": `${titleBorder?.borderWidth?.[props.deviceType]?.bottom}px!important`,
-            "border-left-width": `${titleBorder?.borderWidth?.[props.deviceType]?.left}px!important`,
-            "border-top-left-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.top}px!important`,
-            "border-top-right-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.right}px!important`,
-            "border-bottom-left-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.bottom}px!important`,
-            "border-bottom-right-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.left}px!important`
+            "border-style": `${
+                titleBorder.borderType == "none"
+                    ? "none"
+                    : `${titleBorder.borderType} !important`
+            }`,
+            "border-top-width": `${
+                titleBorder?.borderWidth?.[props.deviceType]?.top
+            }px!important`,
+            "border-right-width": `${
+                titleBorder?.borderWidth?.[props.deviceType]?.right
+            }px!important`,
+            "border-bottom-width": `${
+                titleBorder?.borderWidth?.[props.deviceType]?.bottom
+            }px!important`,
+            "border-left-width": `${
+                titleBorder?.borderWidth?.[props.deviceType]?.left
+            }px!important`,
+            "border-top-left-radius": `${
+                titleBorder?.borderRadius?.[props.deviceType]?.top
+            }px!important`,
+            "border-top-right-radius": `${
+                titleBorder?.borderRadius?.[props.deviceType]?.right
+            }px!important`,
+            "border-bottom-left-radius": `${
+                titleBorder?.borderRadius?.[props.deviceType]?.bottom
+            }px!important`,
+            "border-bottom-right-radius": `${
+                titleBorder?.borderRadius?.[props.deviceType]?.left
+            }px!important`,
         };
-        styles[`.${blockId} .premium-title .style1 .premium-title-header`] =
-        {
+        styles[`.${blockId} .premium-title .style1 .premium-title-header`] = {
             "border-color": `${titleBorder.borderColor}!important`,
-            "border-style": `${titleBorder.borderType == 'none' ? 'none' : `${titleBorder.borderType} !important`}`,
-            "border-top-width": `${titleBorder?.borderWidth?.[props.deviceType]?.top}px!important`,
-            "border-right-width": `${titleBorder?.borderWidth?.[props.deviceType]?.right}px!important`,
-            "border-bottom-width": `${titleBorder?.borderWidth?.[props.deviceType]?.bottom}px!important`,
-            "border-left-width": `${titleBorder?.borderWidth?.[props.deviceType]?.left}px!important`,
-            "border-top-left-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.top}px!important`,
-            "border-top-right-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.right}px!important`,
-            "border-bottom-left-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.bottom}px!important`,
-            "border-bottom-right-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.left}px!important`,
+            "border-style": `${
+                titleBorder.borderType == "none"
+                    ? "none"
+                    : `${titleBorder.borderType} !important`
+            }`,
+            "border-top-width": `${
+                titleBorder?.borderWidth?.[props.deviceType]?.top
+            }px!important`,
+            "border-right-width": `${
+                titleBorder?.borderWidth?.[props.deviceType]?.right
+            }px!important`,
+            "border-bottom-width": `${
+                titleBorder?.borderWidth?.[props.deviceType]?.bottom
+            }px!important`,
+            "border-left-width": `${
+                titleBorder?.borderWidth?.[props.deviceType]?.left
+            }px!important`,
+            "border-top-left-radius": `${
+                titleBorder?.borderRadius?.[props.deviceType]?.top
+            }px!important`,
+            "border-top-right-radius": `${
+                titleBorder?.borderRadius?.[props.deviceType]?.right
+            }px!important`,
+            "border-bottom-left-radius": `${
+                titleBorder?.borderRadius?.[props.deviceType]?.bottom
+            }px!important`,
+            "border-bottom-right-radius": `${
+                titleBorder?.borderRadius?.[props.deviceType]?.left
+            }px!important`,
             "border-left":
-                titleBorder?.borderWidth?.[props.deviceType]
-                    ?.left >= "1"
-                    ? `${titleBorder?.borderWidth?.[
-                        props.deviceType
-                    ]?.left
-                    }px ${titleBorder.borderType} ${titleBorder.borderColor
-                    }!important`
+                titleBorder?.borderWidth?.[props.deviceType]?.left >= "1"
+                    ? `${
+                          titleBorder?.borderWidth?.[props.deviceType]?.left
+                      }px ${titleBorder.borderType} ${
+                          titleBorder.borderColor
+                      }!important`
                     : "",
-            "border-left-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
-            "border-left-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
-            "border-left-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
+            "border-left-style": `${
+                titleBorder.borderType == "none"
+                    ? "solid"
+                    : titleBorder.borderType
+            }`,
+            "border-left-width": `${
+                titleBorder.borderType == "none" ? "3px" : ""
+            }`,
+            "border-left-color":
+                titleBorder.borderType == "none"
+                    ? "#793DC4"
+                    : titleBorder.borderColor,
         };
 
         styles[`.${blockId} .premium-title .style2`] = {
             "border-color": `${titleBorder.borderColor}!important`,
             "border-style": `${titleBorder.borderType}`,
-            "border-top-width": `${titleBorder?.borderWidth?.[props.deviceType]?.top}px!important`,
-            "border-right-width": `${titleBorder?.borderWidth?.[props.deviceType]?.right}px!important`,
-            "border-bottom-width": `${titleBorder?.borderWidth?.[props.deviceType]?.bottom}px!important`,
-            "border-left-width": `${titleBorder?.borderWidth?.[props.deviceType]?.left}px!important`,
-            "border-top-left-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.top}px!important`,
-            "border-top-right-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.right}px!important`,
-            "border-bottom-left-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.bottom}px!important`,
-            "border-bottom-right-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.left}px!important`,
+            "border-top-width": `${
+                titleBorder?.borderWidth?.[props.deviceType]?.top
+            }px!important`,
+            "border-right-width": `${
+                titleBorder?.borderWidth?.[props.deviceType]?.right
+            }px!important`,
+            "border-bottom-width": `${
+                titleBorder?.borderWidth?.[props.deviceType]?.bottom
+            }px!important`,
+            "border-left-width": `${
+                titleBorder?.borderWidth?.[props.deviceType]?.left
+            }px!important`,
+            "border-top-left-radius": `${
+                titleBorder?.borderRadius?.[props.deviceType]?.top
+            }px!important`,
+            "border-top-right-radius": `${
+                titleBorder?.borderRadius?.[props.deviceType]?.right
+            }px!important`,
+            "border-bottom-left-radius": `${
+                titleBorder?.borderRadius?.[props.deviceType]?.bottom
+            }px!important`,
+            "border-bottom-right-radius": `${
+                titleBorder?.borderRadius?.[props.deviceType]?.left
+            }px!important`,
             "border-bottom":
-                titleBorder?.borderWidth?.[props.deviceType]?.bottom >=
-                    "0"
-                    ? `${titleBorder?.borderWidth?.[props.deviceType]
-                        ?.bottom
-                    }px ${titleBorder.borderType} ${titleBorder.borderColor
-                    }!important`
+                titleBorder?.borderWidth?.[props.deviceType]?.bottom >= "0"
+                    ? `${
+                          titleBorder?.borderWidth?.[props.deviceType]?.bottom
+                      }px ${titleBorder.borderType} ${
+                          titleBorder.borderColor
+                      }!important`
                     : "",
-            "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
-            "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
-            "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
+            "border-bottom-style": `${
+                titleBorder.borderType == "none"
+                    ? "solid"
+                    : titleBorder.borderType
+            }`,
+            "border-bottom-width": `${
+                titleBorder.borderType == "none" ? "3px" : ""
+            }`,
+            "border-bottom-color":
+                titleBorder.borderType == "none"
+                    ? "#793DC4"
+                    : titleBorder.borderColor,
         };
 
         styles[`.${blockId} .premium-title .style4`] = {
             "border-color": `${titleBorder.borderColor}!important`,
             "border-style": `${titleBorder.borderType}`,
-            "border-top-width": `${titleBorder?.borderWidth?.[props.deviceType]?.top}px!important`,
-            "border-right-width": `${titleBorder?.borderWidth?.[props.deviceType]?.right}px!important`,
-            "border-bottom-width": `${titleBorder?.borderWidth?.[props.deviceType]?.bottom}px!important`,
-            "border-left-width": `${titleBorder?.borderWidth?.[props.deviceType]?.left}px!important`,
-            "border-top-left-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.top}px!important`,
-            "border-top-right-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.right}px!important`,
-            "border-bottom-left-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.bottom}px!important`,
-            "border-bottom-right-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.left}px!important`,
+            "border-top-width": `${
+                titleBorder?.borderWidth?.[props.deviceType]?.top
+            }px!important`,
+            "border-right-width": `${
+                titleBorder?.borderWidth?.[props.deviceType]?.right
+            }px!important`,
+            "border-bottom-width": `${
+                titleBorder?.borderWidth?.[props.deviceType]?.bottom
+            }px!important`,
+            "border-left-width": `${
+                titleBorder?.borderWidth?.[props.deviceType]?.left
+            }px!important`,
+            "border-top-left-radius": `${
+                titleBorder?.borderRadius?.[props.deviceType]?.top
+            }px!important`,
+            "border-top-right-radius": `${
+                titleBorder?.borderRadius?.[props.deviceType]?.right
+            }px!important`,
+            "border-bottom-left-radius": `${
+                titleBorder?.borderRadius?.[props.deviceType]?.bottom
+            }px!important`,
+            "border-bottom-right-radius": `${
+                titleBorder?.borderRadius?.[props.deviceType]?.left
+            }px!important`,
             "border-bottom":
-                titleBorder?.borderWidth?.[props.deviceType]?.bottom >=
-                    "0"
-                    ? `${titleBorder?.borderWidth?.[props.deviceType]
-                        ?.bottom
-                    }px ${titleBorder.borderType} ${titleBorder.borderColor
-                    }!important`
+                titleBorder?.borderWidth?.[props.deviceType]?.bottom >= "0"
+                    ? `${
+                          titleBorder?.borderWidth?.[props.deviceType]?.bottom
+                      }px ${titleBorder.borderType} ${
+                          titleBorder.borderColor
+                      }!important`
                     : "",
-            "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
-            "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
-            "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
+            "border-bottom-style": `${
+                titleBorder.borderType == "none"
+                    ? "solid"
+                    : titleBorder.borderType
+            }`,
+            "border-bottom-width": `${
+                titleBorder.borderType == "none" ? "3px" : ""
+            }`,
+            "border-bottom-color":
+                titleBorder.borderType == "none"
+                    ? "#793DC4"
+                    : titleBorder.borderColor,
         };
 
         styles[`.${blockId} .premium-title .style5`] = {
             "border-color": `${titleBorder.borderColor}!important`,
             "border-style": `${titleBorder.borderType}`,
-            "border-top-width": `${titleBorder?.borderWidth?.[props.deviceType]?.top}px!important`,
-            "border-right-width": `${titleBorder?.borderWidth?.[props.deviceType]?.right}px!important`,
-            "border-bottom-width": `${titleBorder?.borderWidth?.[props.deviceType]?.bottom}px!important`,
-            "border-left-width": `${titleBorder?.borderWidth?.[props.deviceType]?.left}px!important`,
-            "border-top-left-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.top}px!important`,
-            "border-top-right-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.right}px!important`,
-            "border-bottom-left-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.bottom}px!important`,
-            "border-bottom-right-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.left}px!important`,
+            "border-top-width": `${
+                titleBorder?.borderWidth?.[props.deviceType]?.top
+            }px!important`,
+            "border-right-width": `${
+                titleBorder?.borderWidth?.[props.deviceType]?.right
+            }px!important`,
+            "border-bottom-width": `${
+                titleBorder?.borderWidth?.[props.deviceType]?.bottom
+            }px!important`,
+            "border-left-width": `${
+                titleBorder?.borderWidth?.[props.deviceType]?.left
+            }px!important`,
+            "border-top-left-radius": `${
+                titleBorder?.borderRadius?.[props.deviceType]?.top
+            }px!important`,
+            "border-top-right-radius": `${
+                titleBorder?.borderRadius?.[props.deviceType]?.right
+            }px!important`,
+            "border-bottom-left-radius": `${
+                titleBorder?.borderRadius?.[props.deviceType]?.bottom
+            }px!important`,
+            "border-bottom-right-radius": `${
+                titleBorder?.borderRadius?.[props.deviceType]?.left
+            }px!important`,
             "border-bottom":
-                titleBorder?.borderWidth?.[props.deviceType]?.bottom >=
-                    "0"
-                    ? `${titleBorder?.borderWidth?.[props.deviceType]
-                        ?.bottom
-                    }px ${titleBorder.borderType} ${titleBorder.borderColor
-                    }!important`
+                titleBorder?.borderWidth?.[props.deviceType]?.bottom >= "0"
+                    ? `${
+                          titleBorder?.borderWidth?.[props.deviceType]?.bottom
+                      }px ${titleBorder.borderType} ${
+                          titleBorder.borderColor
+                      }!important`
                     : "",
-            "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
-            "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
-            "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
+            "border-bottom-style": `${
+                titleBorder.borderType == "none"
+                    ? "solid"
+                    : titleBorder.borderType
+            }`,
+            "border-bottom-width": `${
+                titleBorder.borderType == "none" ? "3px" : ""
+            }`,
+            "border-bottom-color":
+                titleBorder.borderType == "none"
+                    ? "#793DC4"
+                    : titleBorder.borderColor,
         };
 
         styles[`.${blockId} .premium-title .style6`] = {
             "border-color": `${titleBorder.borderColor}!important`,
             "border-style": `${titleBorder.borderType}`,
-            "border-top-width": `${titleBorder?.borderWidth?.[props.deviceType]?.top}px!important`,
-            "border-right-width": `${titleBorder?.borderWidth?.[props.deviceType]?.right}px!important`,
-            "border-bottom-width": `${titleBorder?.borderWidth?.[props.deviceType]?.bottom}px!important`,
-            "border-left-width": `${titleBorder?.borderWidth?.[props.deviceType]?.left}px!important`,
-            "border-top-left-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.top}px!important`,
-            "border-top-right-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.right}px!important`,
-            "border-bottom-left-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.bottom}px!important`,
-            "border-bottom-right-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.left}px!important`,
+            "border-top-width": `${
+                titleBorder?.borderWidth?.[props.deviceType]?.top
+            }px!important`,
+            "border-right-width": `${
+                titleBorder?.borderWidth?.[props.deviceType]?.right
+            }px!important`,
+            "border-bottom-width": `${
+                titleBorder?.borderWidth?.[props.deviceType]?.bottom
+            }px!important`,
+            "border-left-width": `${
+                titleBorder?.borderWidth?.[props.deviceType]?.left
+            }px!important`,
+            "border-top-left-radius": `${
+                titleBorder?.borderRadius?.[props.deviceType]?.top
+            }px!important`,
+            "border-top-right-radius": `${
+                titleBorder?.borderRadius?.[props.deviceType]?.right
+            }px!important`,
+            "border-bottom-left-radius": `${
+                titleBorder?.borderRadius?.[props.deviceType]?.bottom
+            }px!important`,
+            "border-bottom-right-radius": `${
+                titleBorder?.borderRadius?.[props.deviceType]?.left
+            }px!important`,
             "border-bottom":
-                titleBorder?.borderWidth?.[props.deviceType]?.bottom >=
-                    "0"
-                    ? `${titleBorder?.borderWidth?.[props.deviceType]
-                        ?.bottom
-                    }px ${titleBorder.borderType} ${titleBorder.borderColor
-                    }!important`
+                titleBorder?.borderWidth?.[props.deviceType]?.bottom >= "0"
+                    ? `${
+                          titleBorder?.borderWidth?.[props.deviceType]?.bottom
+                      }px ${titleBorder.borderType} ${
+                          titleBorder.borderColor
+                      }!important`
                     : "",
-            "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
-            "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
-            "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
+            "border-bottom-style": `${
+                titleBorder.borderType == "none"
+                    ? "solid"
+                    : titleBorder.borderType
+            }`,
+            "border-bottom-width": `${
+                titleBorder.borderType == "none" ? "3px" : ""
+            }`,
+            "border-bottom-color":
+                titleBorder.borderType == "none"
+                    ? "#793DC4"
+                    : titleBorder.borderColor,
         };
 
         styles[`.${blockId} .premium-title-style2__wrap`] = {
@@ -541,26 +689,47 @@ function Edit(props) {
 
         styles[`.${blockId} .premium-title-icon`] = {
             color: `${iconStyles[0].iconColor} !important`,
-            "background-color": `${iconBackground.backgroundType === "solid"
-                ? iconBackground.backgroundColor
-                : "transparent"
-                } !important`,
+            "background-color": `${
+                iconBackground.backgroundType === "solid"
+                    ? iconBackground.backgroundColor
+                    : "transparent"
+            } !important`,
             "background-image": `${btnbg} !important`,
             "background-repeat": `${iconBackground.backgroundRepeat} !important`,
             "background-position": `${iconBackground.backgroundPosition} !important`,
             "background-size": `${iconBackground.backgroundSize} !important`,
-            "background-attachment": `${iconBackground.fixed ? "fixed" : "unset"} !important`,
-            "font-size": `${iconSize?.[props.deviceType]}${iconSize?.unit} !important`,
+            "background-attachment": `${
+                iconBackground.fixed ? "fixed" : "unset"
+            } !important`,
+            "font-size": `${iconSize?.[props.deviceType]}${
+                iconSize?.unit
+            } !important`,
             "border-color": `${iconBorder.borderColor}!important`,
             "border-style": `${iconBorder.borderType}`,
-            "border-top-width": `${iconBorder?.borderWidth?.[props.deviceType]?.top}px!important`,
-            "border-right-width": `${iconBorder?.borderWidth?.[props.deviceType]?.right}px!important`,
-            "border-bottom-width": `${iconBorder?.borderWidth?.[props.deviceType]?.bottom}px!important`,
-            "border-left-width": `${iconBorder?.borderWidth?.[props.deviceType]?.left}px!important`,
-            "border-top-left-radius": `${iconBorder?.borderRadius?.[props.deviceType]?.top}px!important`,
-            "border-top-right-radius": `${iconBorder?.borderRadius?.[props.deviceType]?.right}px!important`,
-            "border-bottom-left-radius": `${iconBorder?.borderRadius?.[props.deviceType]?.bottom}px!important`,
-            "border-bottom-right-radius": `${iconBorder?.borderRadius?.[props.deviceType]?.left}px!important`,
+            "border-top-width": `${
+                iconBorder?.borderWidth?.[props.deviceType]?.top
+            }px!important`,
+            "border-right-width": `${
+                iconBorder?.borderWidth?.[props.deviceType]?.right
+            }px!important`,
+            "border-bottom-width": `${
+                iconBorder?.borderWidth?.[props.deviceType]?.bottom
+            }px!important`,
+            "border-left-width": `${
+                iconBorder?.borderWidth?.[props.deviceType]?.left
+            }px!important`,
+            "border-top-left-radius": `${
+                iconBorder?.borderRadius?.[props.deviceType]?.top
+            }px!important`,
+            "border-top-right-radius": `${
+                iconBorder?.borderRadius?.[props.deviceType]?.right
+            }px!important`,
+            "border-bottom-left-radius": `${
+                iconBorder?.borderRadius?.[props.deviceType]?.bottom
+            }px!important`,
+            "border-bottom-right-radius": `${
+                iconBorder?.borderRadius?.[props.deviceType]?.left
+            }px!important`,
             "padding-top": `${IconPaddingTop}${iconPadding.unit} !important`,
             "padding-right": `${IconPaddingRight}${iconPadding.unit} !important`,
             "padding-bottom": `${IconPaddingBottom}${iconPadding.unit} !important`,
@@ -574,12 +743,16 @@ function Edit(props) {
 
         styles[`.${blockId} .premium-lottie-animation svg`] = {
             width: `${iconSize?.[props.deviceType]}${iconSize?.unit}!important`,
-            height: `${iconSize?.[props.deviceType]}${iconSize?.unit}!important`,
+            height: `${iconSize?.[props.deviceType]}${
+                iconSize?.unit
+            }!important`,
         };
 
         styles[`.${blockId} .premium-title-header img`] = {
             width: `${iconSize?.[props.deviceType]}${iconSize?.unit}!important`,
-            height: `${iconSize?.[props.deviceType]}${iconSize?.unit}!important`,
+            height: `${iconSize?.[props.deviceType]}${
+                iconSize?.unit
+            }!important`,
         };
 
         styles[`.${blockId} .premium-title-bg-text:before`] = {
@@ -587,42 +760,70 @@ function Edit(props) {
             width: `${textWidth}`,
             color: `${textStyles[0].textBackColor}`,
             "font-family": `${textTypography?.fontFamily}`,
-            "font-size": `${textTypography?.fontSize?.[props.deviceType]}${textTypography?.fontSize?.unit}`,
+            "font-size": `${textTypography?.fontSize?.[props.deviceType]}${
+                textTypography?.fontSize?.unit
+            }`,
             "font-weight": `${textTypography?.fontWeight}`,
-            "letter-spacing": `${textTypography?.letterSpacing?.[props.deviceType]}${textTypography?.letterSpacing?.unit}`,
-            "line-height": `${textTypography?.lineHeight?.[props.deviceType]}${textTypography?.lineHeight?.unit}`,
+            "letter-spacing": `${
+                textTypography?.letterSpacing?.[props.deviceType]
+            }${textTypography?.letterSpacing?.unit}`,
+            "line-height": `${textTypography?.lineHeight?.[props.deviceType]}${
+                textTypography?.lineHeight?.unit
+            }`,
             "font-style": `${textTypography?.fontStyle}`,
             "text-transform": `${textTypography?.textTransform}`,
             "text-decoration": `${textTypography?.textDecoration}`,
             "mix-blend-mode": `${blend} !important`,
             "text-shadow": `${textBackshadow.horizontal}px ${textBackshadow.vertical}px ${textBackshadow.blur}px ${textBackshadow.color} !important`,
             "z-index": `${zIndex} !important`,
-            top: `${verticalText?.[props.deviceType]}${verticalText?.unit} !important`,
-            left: `${horizontalText?.[props.deviceType]}${horizontalText?.unit} !important`,
-            transform: `rotate(${rotateText?.[props.deviceType]}deg) !important`,
+            top: `${verticalText?.[props.deviceType]}${
+                verticalText?.unit
+            } !important`,
+            left: `${horizontalText?.[props.deviceType]}${
+                horizontalText?.unit
+            } !important`,
+            transform: `rotate(${
+                rotateText?.[props.deviceType]
+            }deg) !important`,
             "-webkit-text-stroke-color": `${strokeStyles[0].strokeColor} !important`,
-            "-webkit-text-stroke-width": `${strokeFull?.[props.deviceType]}px !important`,
+            "-webkit-text-stroke-width": `${
+                strokeFull?.[props.deviceType]
+            }px !important`,
         };
 
         styles[`.${blockId} .premium-title-style7-stripe-span`] = {
-            width: `${stripeWidth?.[props.deviceType]}${stripeWidth?.unit}!important`,
-            height: `${stripeHeight?.[props.deviceType]}${stripeHeight?.unit}!important`,
+            width: `${stripeWidth?.[props.deviceType]}${
+                stripeWidth?.unit
+            }!important`,
+            height: `${stripeHeight?.[props.deviceType]}${
+                stripeHeight?.unit
+            }!important`,
             "background-color": `${titleStyles[0].stripeColor}!important`,
         };
 
         styles[`.${blockId} .premium-title-style7-stripe__wrap`] = {
-            "margin-top": `${stripeTopSpacing?.[props.deviceType]}${stripeTopSpacing?.unit}!important`,
-            "margin-bottom": `${stripeBottomSpacing?.[props.deviceType]}${stripeBottomSpacing?.unit}!important`,
+            "margin-top": `${stripeTopSpacing?.[props.deviceType]}${
+                stripeTopSpacing?.unit
+            }!important`,
+            "margin-bottom": `${stripeBottomSpacing?.[props.deviceType]}${
+                stripeBottomSpacing?.unit
+            }!important`,
         };
 
         styles[
             `.${blockId} .premium-title-style9__wrap .premium-letters-container .premium-title-style9-letter`
         ] = {
             "font-family": `${titleTypography?.fontFamily}`,
-            "font-size": `${titleTypography?.fontSize?.[props.deviceType]}${titleTypography?.fontSize?.unit}`,
+            "font-size": `${titleTypography?.fontSize?.[props.deviceType]}${
+                titleTypography?.fontSize?.unit
+            }`,
             "font-weight": `${titleTypography?.fontWeight}`,
-            "letter-spacing": `${titleTypography?.letterSpacing?.[props.deviceType]}${titleTypography?.letterSpacing?.unit}`,
-            "line-height": `${titleTypography?.lineHeight?.[props.deviceType]}${titleTypography?.lineHeight?.unit}`,
+            "letter-spacing": `${
+                titleTypography?.letterSpacing?.[props.deviceType]
+            }${titleTypography?.letterSpacing?.unit}`,
+            "line-height": `${titleTypography?.lineHeight?.[props.deviceType]}${
+                titleTypography?.lineHeight?.unit
+            }`,
             "font-style": `${titleTypography?.fontStyle}`,
             "text-shadow": `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color} !important`,
         };
@@ -699,38 +900,67 @@ function Edit(props) {
                 <InspectorTabs tabs={["layout", "style", "advance"]}>
                     <InspectorTab key={"layout"}>
                         <PanelBody
-                            title={__("Title", 'premium-blocks-for-gutenberg')}
+                            title={__("Title", "premium-blocks-for-gutenberg")}
                             className="premium-panel-body"
                             initialOpen={true}
                         >
                             <SelectControl
-                                label={__("Style", 'premium-blocks-for-gutenberg')}
+                                label={__(
+                                    "Style",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 value={style}
-                                onChange={(newSelect) => setAttributes({ style: newSelect })}
+                                onChange={(newSelect) =>
+                                    setAttributes({ style: newSelect })
+                                }
                                 options={STYLE}
                             />
                             <ToggleControl
-                                label={__("Icon", 'premium-blocks-for-gutenberg')}
+                                label={__(
+                                    "Icon",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 checked={iconValue}
-                                onChange={(value) => setAttributes({ iconValue: value })}
+                                onChange={(value) =>
+                                    setAttributes({ iconValue: value })
+                                }
                             />
                             {iconValue && (
                                 <Fragment>
                                     <SelectControl
-                                        label={__("Icon Type", 'premium-blocks-for-gutenberg')}
+                                        label={__(
+                                            "Icon Type",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         value={iconType}
-                                        onChange={(newSelect) => setAttributes({ iconType: newSelect })}
+                                        onChange={(newSelect) =>
+                                            setAttributes({
+                                                iconType: newSelect,
+                                            })
+                                        }
                                         options={ICON}
                                     />
                                     {iconType === "icon" && (
                                         <Fragment>
-                                            <p>{__("Icon", 'premium-blocks-for-gutenberg')}</p>
+                                            <p>
+                                                {__(
+                                                    "Icon",
+                                                    "premium-blocks-for-gutenberg"
+                                                )}
+                                            </p>
                                             <FontIconPicker
                                                 icons={iconsList}
                                                 value={icon}
-                                                onChange={(value) => setAttributes({ icon: value })}
+                                                onChange={(value) =>
+                                                    setAttributes({
+                                                        icon: value,
+                                                    })
+                                                }
                                                 isMulti={false}
-                                                noSelectedPlaceholder={__("Select Icon", 'premium-blocks-for-gutenberg')}
+                                                noSelectedPlaceholder={__(
+                                                    "Select Icon",
+                                                    "premium-blocks-for-gutenberg"
+                                                )}
                                             />
                                         </Fragment>
                                     )}
@@ -738,19 +968,47 @@ function Edit(props) {
                                         <Fragment>
                                             <TextControl
                                                 value={lottieURl}
-                                                onChange={(value) => setAttributes({ lottieURl: value })}
-                                                label={__("Lottie Url", 'premium-blocks-for-gutenberg')}
+                                                onChange={(value) =>
+                                                    setAttributes({
+                                                        lottieURl: value,
+                                                    })
+                                                }
+                                                label={__(
+                                                    "Lottie Url",
+                                                    "premium-blocks-for-gutenberg"
+                                                )}
                                             />
                                             <ToggleControl
-                                                label={__("Loop", 'premium-blocks-for-gutenberg')}
+                                                label={__(
+                                                    "Loop",
+                                                    "premium-blocks-for-gutenberg"
+                                                )}
                                                 checked={loop}
-                                                onChange={(newValue) => setAttributes({ loop: newValue })}
-                                                help={loop ? __("This option works only on the preview page", 'premium-blocks-for-gutenberg') : ""}
+                                                onChange={(newValue) =>
+                                                    setAttributes({
+                                                        loop: newValue,
+                                                    })
+                                                }
+                                                help={
+                                                    loop
+                                                        ? __(
+                                                              "This option works only on the preview page",
+                                                              "premium-blocks-for-gutenberg"
+                                                          )
+                                                        : ""
+                                                }
                                             />
                                             <ToggleControl
-                                                label={__("Reverse", 'premium-blocks-for-gutenberg')}
+                                                label={__(
+                                                    "Reverse",
+                                                    "premium-blocks-for-gutenberg"
+                                                )}
                                                 checked={reversedir}
-                                                onChange={(value) => setAttributes({ reversedir: value })}
+                                                onChange={(value) =>
+                                                    setAttributes({
+                                                        reversedir: value,
+                                                    })
+                                                }
                                             />
                                         </Fragment>
                                     )}
@@ -776,9 +1034,16 @@ function Edit(props) {
                                         </Fragment>
                                     )}
                                     <SelectControl
-                                        label={__("Icon Position", 'premium-blocks-for-gutenberg')}
+                                        label={__(
+                                            "Icon Position",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         value={iconPosition}
-                                        onChange={(newSelect) => setAttributes({ iconPosition: newSelect })}
+                                        onChange={(newSelect) =>
+                                            setAttributes({
+                                                iconPosition: newSelect,
+                                            })
+                                        }
                                         options={POSITION}
                                     />
                                     {iconPosition === "top" &&
@@ -787,13 +1052,41 @@ function Edit(props) {
                                             <Fragment>
                                                 <MultiButtonsControl
                                                     choices={[
-                                                        { value: "left", label: __("Left", "premium-block-for-gutenberg"), icon: Icons.alignLeft },
-                                                        { value: "center", label: __("Center", "premium-block-for-gutenberg"), icon: Icons.alignCenter },
-                                                        { value: "right", label: __("Right", "premium-block-for-gutenberg"), icon: Icons.alignRight },
+                                                        {
+                                                            value: "left",
+                                                            label: __(
+                                                                "Left",
+                                                                "premium-blocks-for-gutenberg"
+                                                            ),
+                                                            icon: Icons.alignLeft,
+                                                        },
+                                                        {
+                                                            value: "center",
+                                                            label: __(
+                                                                "Center",
+                                                                "premium-blocks-for-gutenberg"
+                                                            ),
+                                                            icon: Icons.alignCenter,
+                                                        },
+                                                        {
+                                                            value: "right",
+                                                            label: __(
+                                                                "Right",
+                                                                "premium-blocks-for-gutenberg"
+                                                            ),
+                                                            icon: Icons.alignRight,
+                                                        },
                                                     ]}
                                                     value={iconAlign}
-                                                    onChange={(aligns) => setAttributes({ iconAlign: aligns })}
-                                                    label={__("Icon Alignment", "premium-blocks-for-gutenberg")}
+                                                    onChange={(aligns) =>
+                                                        setAttributes({
+                                                            iconAlign: aligns,
+                                                        })
+                                                    }
+                                                    label={__(
+                                                        "Icon Alignment",
+                                                        "premium-blocks-for-gutenberg"
+                                                    )}
                                                     showIcons={true}
                                                 />
                                             </Fragment>
@@ -803,13 +1096,23 @@ function Edit(props) {
                             {style === "style7" && (
                                 <Fragment>
                                     <SelectControl
-                                        label={__("Stripe Position", "premium-blocks-for-gutenberg")}
+                                        label={__(
+                                            "Stripe Position",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         value={stripePosition}
-                                        onChange={(newSelect) => setAttributes({ stripePosition: newSelect })}
+                                        onChange={(newSelect) =>
+                                            setAttributes({
+                                                stripePosition: newSelect,
+                                            })
+                                        }
                                         options={STRIPEPOSITION}
                                     />
                                     <ResponsiveRangeControl
-                                        label={__("Stripe Width", "premium-blocks-for-gutenberg")}
+                                        label={__(
+                                            "Stripe Width",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         value={stripeWidth}
                                         units={["px", "em", "%"]}
                                         onChange={(newValue) =>
@@ -862,8 +1165,7 @@ function Edit(props) {
                                         units={["px", "em", "%"]}
                                         onChange={(newValue) =>
                                             setAttributes({
-                                                stripeBottomSpacing:
-                                                    newValue,
+                                                stripeBottomSpacing: newValue,
                                             })
                                         }
                                         showUnit={true}
@@ -872,9 +1174,30 @@ function Edit(props) {
                                     />
                                     <MultiButtonsControl
                                         choices={[
-                                            { value: "left", label: __("Left", "premium-block-for-gutenberg"), icon: Icons.alignLeft },
-                                            { value: "center", label: __("Center", "premium-block-for-gutenberg"), icon: Icons.alignCenter },
-                                            { value: "right", label: __("Right", "premium-block-for-gutenberg"), icon: Icons.alignRight },
+                                            {
+                                                value: "left",
+                                                label: __(
+                                                    "Left",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                                icon: Icons.alignLeft,
+                                            },
+                                            {
+                                                value: "center",
+                                                label: __(
+                                                    "Center",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                                icon: Icons.alignCenter,
+                                            },
+                                            {
+                                                value: "right",
+                                                label: __(
+                                                    "Right",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                                icon: Icons.alignRight,
+                                            },
                                         ]}
                                         value={stripeAlign}
                                         onChange={(alignStripe) =>
@@ -882,42 +1205,117 @@ function Edit(props) {
                                                 stripeAlign: alignStripe,
                                             })
                                         }
-                                        label={__("Stripe Alignment", "premium-blocks-for-gutenberg")}
+                                        label={__(
+                                            "Stripe Alignment",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         showIcons={true}
                                     />
                                 </Fragment>
                             )}
                             <RadioComponent
                                 choices={[
-                                    { value: 'h1', label: __('H1', 'premium-blocks-for-gutenberg') },
-                                    { value: 'h2', label: __('H2', 'premium-blocks-for-gutenberg') },
-                                    { value: 'h3', label: __('H3', 'premium-blocks-for-gutenberg') },
-                                    { value: 'h4', label: __('H4', 'premium-blocks-for-gutenberg') },
-                                    { value: 'h5', label: __('H5', 'premium-blocks-for-gutenberg') },
-                                    { value: 'h6', label: __('H6', 'premium-blocks-for-gutenberg') },
-                                    { value: 'div', label: __('Div', 'premium-blocks-for-gutenberg') }
+                                    {
+                                        value: "h1",
+                                        label: __(
+                                            "H1",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                    },
+                                    {
+                                        value: "h2",
+                                        label: __(
+                                            "H2",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                    },
+                                    {
+                                        value: "h3",
+                                        label: __(
+                                            "H3",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                    },
+                                    {
+                                        value: "h4",
+                                        label: __(
+                                            "H4",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                    },
+                                    {
+                                        value: "h5",
+                                        label: __(
+                                            "H5",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                    },
+                                    {
+                                        value: "h6",
+                                        label: __(
+                                            "H6",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                    },
+                                    {
+                                        value: "div",
+                                        label: __(
+                                            "Div",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                    },
                                 ]}
                                 value={titleTag}
                                 onChange={(newValue) =>
                                     setAttributes({ titleTag: newValue })
                                 }
-                                label={__("Title Tag", 'premium-blocks-for-gutenberg')}
+                                label={__(
+                                    "Title Tag",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                             />
                             <MultiButtonsControl
                                 choices={[
-                                    { value: "left", label: __("Left", "premium-block-for-gutenberg"), icon: Icons.alignLeft },
-                                    { value: "center", label: __("Center", "premium-block-for-gutenberg"), icon: Icons.alignCenter },
-                                    { value: "right", label: __("Right", "premium-block-for-gutenberg"), icon: Icons.alignRight },
+                                    {
+                                        value: "left",
+                                        label: __(
+                                            "Left",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                        icon: Icons.alignLeft,
+                                    },
+                                    {
+                                        value: "center",
+                                        label: __(
+                                            "Center",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                        icon: Icons.alignCenter,
+                                    },
+                                    {
+                                        value: "right",
+                                        label: __(
+                                            "Right",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                        icon: Icons.alignRight,
+                                    },
                                 ]}
                                 value={align}
                                 onChange={(alignn) =>
                                     setAttributes({ align: alignn })
                                 }
-                                label={__("Alignment", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Alignment",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 showIcons={true}
                             />
                             <ToggleControl
-                                label={__("Link", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Link",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 checked={link}
                                 onChange={(value) =>
                                     setAttributes({ link: value })
@@ -925,17 +1323,28 @@ function Edit(props) {
                             />
                             {link && (
                                 <Fragment>
-                                    <p>{__("URL", "premium-blocks-for-gutenberg")}</p>
+                                    <p>
+                                        {__(
+                                            "URL",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                    </p>
                                     <TextControl
                                         value={url}
                                         onChange={(value) =>
                                             setAttributes({ url: value })
                                         }
-                                        placeholder={__("Enter URL", "premium-blocks-for-gutenberg")}
+                                        placeholder={__(
+                                            "Enter URL",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                     />
                                     <ToggleControl
                                         checked={target}
-                                        label={__("Open Link in new Tab", "premium-blocks-for-gutenberg")}
+                                        label={__(
+                                            "Open Link in new Tab",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         onChange={(value) =>
                                             setAttributes({ target: value })
                                         }
@@ -944,7 +1353,10 @@ function Edit(props) {
                             )}
                             <hr />
                             <ToggleControl
-                                label={__("background Text", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "background Text",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 checked={backgroundText}
                                 onChange={(value) =>
                                     setAttributes({ backgroundText: value })
@@ -953,7 +1365,10 @@ function Edit(props) {
                             {backgroundText && (
                                 <Fragment>
                                     <TextControl
-                                        label={__("Text", "premium-blocks-for-gutenberg")}
+                                        label={__(
+                                            "Text",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         value={BackText}
                                         onChange={(value) =>
                                             setAttributes({
@@ -962,7 +1377,10 @@ function Edit(props) {
                                         }
                                     />
                                     <SelectControl
-                                        label={__("Width", "premium-blocks-for-gutenberg")}
+                                        label={__(
+                                            "Width",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         value={textWidth}
                                         onChange={(newSelect) =>
                                             setAttributes({
@@ -971,11 +1389,17 @@ function Edit(props) {
                                         }
                                         options={[
                                             {
-                                                label: __("Auto", "premium-blocks-for-gutenberg"),
+                                                label: __(
+                                                    "Auto",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
                                                 value: "auto",
                                             },
                                             {
-                                                label: __("Full Width", "premium-blocks-for-gutenberg"),
+                                                label: __(
+                                                    "Full Width",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
                                                 value: "100%",
                                             },
                                         ]}
@@ -993,7 +1417,10 @@ function Edit(props) {
                             {(style === "style8" || style === "style9") && (
                                 <Fragment>
                                     <ResponsiveSingleRangeControl
-                                        label={__("Animation Delay", "premium-block-for-gutenberg")}
+                                        label={__(
+                                            "Animation Delay",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         value={titleStyles[0].animateDelay}
                                         onChange={(value) =>
                                             saveTitleStyles({
@@ -1011,9 +1438,16 @@ function Edit(props) {
                             {style === "style8" && (
                                 <Fragment>
                                     <ResponsiveSingleRangeControl
-                                        label={__("Animation Duration", "premium-block-for-gutenberg")}
+                                        label={__(
+                                            "Animation Duration",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         value={titleStyles[0].animateduration}
-                                        onChange={(value) => saveTitleStyles({ animateduration: value })}
+                                        onChange={(value) =>
+                                            saveTitleStyles({
+                                                animateduration: value,
+                                            })
+                                        }
                                         showUnit={false}
                                         defaultValue={1}
                                         step={0.5}
@@ -1022,89 +1456,152 @@ function Edit(props) {
                             )}
                             <PremiumTypo
                                 value={titleTypography}
-                                onChange={(newValue) => setAttributes({ titleTypography: newValue })}
+                                onChange={(newValue) =>
+                                    setAttributes({ titleTypography: newValue })
+                                }
                             />
                             <AdvancedPopColorControl
-                                label={__("Color", "premium-block-for-gutenberg")}
+                                label={__(
+                                    "Color",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 colorValue={titleStyles[0].titleColor}
                                 colorDefault={""}
-                                onColorChange={(newValue) => saveTitleStyles({ titleColor: newValue })}
+                                onColorChange={(newValue) =>
+                                    saveTitleStyles({ titleColor: newValue })
+                                }
                             />
                             {style === "style8" && (
                                 <AdvancedPopColorControl
-                                    label={__("Shiny Color", "premium-block-for-gutenberg")}
+                                    label={__(
+                                        "Shiny Color",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     colorValue={titleStyles[0].shinyColor}
                                     colorDefault={""}
-                                    onColorChange={(newValue) => saveTitleStyles({ shinyColor: newValue })}
+                                    onColorChange={(newValue) =>
+                                        saveTitleStyles({
+                                            shinyColor: newValue,
+                                        })
+                                    }
                                 />
                             )}
                             {style === "style9" && (
                                 <AdvancedPopColorControl
-                                    label={__("Blur Color", "premium-block-for-gutenberg")}
+                                    label={__(
+                                        "Blur Color",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     colorValue={titleStyles[0].blurColor}
                                     colorDefault={""}
-                                    onColorChange={(newValue) => saveTitleStyles({ blurColor: newValue })}
+                                    onColorChange={(newValue) =>
+                                        saveTitleStyles({ blurColor: newValue })
+                                    }
                                 />
                             )}
                             {style === "style2" && (
                                 <AdvancedPopColorControl
-                                    label={__("Background Color", "premium-block-for-gutenberg")}
+                                    label={__(
+                                        "Background Color",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     colorValue={titleStyles[0].BGColor}
                                     colorDefault={""}
-                                    onColorChange={(newValue) => saveTitleStyles({ BGColor: newValue })}
+                                    onColorChange={(newValue) =>
+                                        saveTitleStyles({ BGColor: newValue })
+                                    }
                                 />
                             )}
                             {style === "style3" && (
                                 <AdvancedPopColorControl
-                                    label={__("Background Color", "premium-block-for-gutenberg")}
+                                    label={__(
+                                        "Background Color",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     colorValue={titleStyles[0].BGColor}
                                     colorDefault={""}
-                                    onColorChange={(newValue) => saveTitleStyles({ BGColor: newValue })}
+                                    onColorChange={(newValue) =>
+                                        saveTitleStyles({ BGColor: newValue })
+                                    }
                                 />
                             )}
                             {style === "style5" && (
                                 <AdvancedPopColorControl
-                                    label={__("Line Color", "premium-block-for-gutenberg")}
+                                    label={__(
+                                        "Line Color",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     colorValue={titleStyles[0].lineColor}
                                     colorDefault={""}
-                                    onColorChange={(newValue) => saveTitleStyles({ lineColor: newValue })}
+                                    onColorChange={(newValue) =>
+                                        saveTitleStyles({ lineColor: newValue })
+                                    }
                                 />
                             )}
                             {style === "style6" && (
                                 <AdvancedPopColorControl
-                                    label={__("Line Color", "premium-block-for-gutenberg")}
+                                    label={__(
+                                        "Line Color",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     colorValue={titleStyles[0].lineColor}
                                     colorDefault={""}
-                                    onColorChange={(newValue) => saveTitleStyles({ lineColor: newValue })}
+                                    onColorChange={(newValue) =>
+                                        saveTitleStyles({ lineColor: newValue })
+                                    }
                                 />
                             )}
                             {style === "style6" && (
                                 <AdvancedPopColorControl
-                                    label={__("Triangle Color", "premium-block-for-gutenberg")}
+                                    label={__(
+                                        "Triangle Color",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     colorValue={titleStyles[0].triangleColor}
                                     colorDefault={""}
-                                    onColorChange={(newValue) => saveTitleStyles({ triangleColor: newValue })}
+                                    onColorChange={(newValue) =>
+                                        saveTitleStyles({
+                                            triangleColor: newValue,
+                                        })
+                                    }
                                 />
                             )}
                             {style === "style7" && (
                                 <AdvancedPopColorControl
-                                    label={__("Stripe Color", "premium-block-for-gutenberg")}
+                                    label={__(
+                                        "Stripe Color",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     colorValue={titleStyles[0].stripeColor}
                                     colorDefault={""}
-                                    onColorChange={(newValue) => saveTitleStyles({ stripeColor: newValue })}
+                                    onColorChange={(newValue) =>
+                                        saveTitleStyles({
+                                            stripeColor: newValue,
+                                        })
+                                    }
                                 />
                             )}
                             <PremiumShadow
-                                label={__("Shadow", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Shadow",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 boxShadow={false}
                                 value={titleShadow}
-                                onChange={(value) => setAttributes({ titleShadow: value })}
+                                onChange={(value) =>
+                                    setAttributes({ titleShadow: value })
+                                }
                             />
                             {style === "style9" && (
                                 <ResponsiveSingleRangeControl
-                                    label={__("Blur Shadow Value (px)", "premium-block-for-gutenberg")}
+                                    label={__(
+                                        "Blur Shadow Value (px)",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     value={titleStyles[0].blurShadow}
-                                    onChange={(value) => saveTitleStyles({ blurShadow: value })}
+                                    onChange={(value) =>
+                                        saveTitleStyles({ blurShadow: value })
+                                    }
                                     showUnit={false}
                                     defaultValue={120}
                                     min={10}
@@ -1118,9 +1615,16 @@ function Edit(props) {
                                 style !== "style9" && (
                                     <Fragment>
                                         <PremiumBorder
-                                            label={__("Border", "premium-block-for-gutenberg")}
+                                            label={__(
+                                                "Border",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
                                             value={titleBorder}
-                                            onChange={(value) => setAttributes({ titleBorder: value })}
+                                            onChange={(value) =>
+                                                setAttributes({
+                                                    titleBorder: value,
+                                                })
+                                            }
                                         />
                                         <hr />
                                     </Fragment>
@@ -1129,7 +1633,10 @@ function Edit(props) {
                                 value={titleMargin}
                                 responsive={true}
                                 showUnits={true}
-                                label={__("Margin", "premium-block-for-gutenberg")}
+                                label={__(
+                                    "Margin",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 onChange={(value) =>
                                     setAttributes({ titleMargin: value })
                                 }
@@ -1138,7 +1645,10 @@ function Edit(props) {
                                 value={titlePadding}
                                 responsive={true}
                                 showUnits={true}
-                                label={__("Padding", "premium-block-for-gutenberg")}
+                                label={__(
+                                    "Padding",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 onChange={(value) =>
                                     setAttributes({ titlePadding: value })
                                 }
@@ -1146,14 +1656,22 @@ function Edit(props) {
                         </PanelBody>
                         {iconValue && (
                             <PanelBody
-                                title={__("Icon", "premium-block-for-gutenberg")}
+                                title={__(
+                                    "Icon",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
                                 <ResponsiveRangeControl
-                                    label={__("Size", "premium-blocks-for-gutenberg")}
+                                    label={__(
+                                        "Size",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     value={iconSize}
-                                    onChange={(newValue) => setAttributes({ iconSize: newValue })}
+                                    onChange={(newValue) =>
+                                        setAttributes({ iconSize: newValue })
+                                    }
                                     units={["px", "em", "%"]}
                                     showUnit={true}
                                     min={0}
@@ -1162,35 +1680,57 @@ function Edit(props) {
                                 />
                                 {iconType === "icon" && (
                                     <AdvancedPopColorControl
-                                        label={__("Color", "premium-block-for-gutenberg")}
+                                        label={__(
+                                            "Color",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         colorValue={iconStyles[0].iconColor}
                                         colorDefault={""}
-                                        onColorChange={(newValue) => saveIconStyles({ iconColor: newValue })}
+                                        onColorChange={(newValue) =>
+                                            saveIconStyles({
+                                                iconColor: newValue,
+                                            })
+                                        }
                                     />
                                 )}
                                 <PremiumBackgroundControl
                                     value={iconBackground}
-                                    onChange={(value) => setAttributes({ iconBackground: value })}
+                                    onChange={(value) =>
+                                        setAttributes({ iconBackground: value })
+                                    }
                                 />
                                 {iconType === "icon" && (
                                     <PremiumShadow
-                                        label={__("Icon Shadow", "premium-blocks-for-gutenberg")}
+                                        label={__(
+                                            "Icon Shadow",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         boxShadow={false}
                                         value={iconshadow}
-                                        onChange={(value) => setAttributes({ iconshadow: value })}
+                                        onChange={(value) =>
+                                            setAttributes({ iconshadow: value })
+                                        }
                                     />
                                 )}
                                 <PremiumBorder
-                                    label={__("Border", "premium-blocks-for-gutenberg")}
+                                    label={__(
+                                        "Border",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     value={iconBorder}
-                                    onChange={(value) => setAttributes({ iconBorder: value })}
+                                    onChange={(value) =>
+                                        setAttributes({ iconBorder: value })
+                                    }
                                 />
                                 <hr />
                                 <SpacingComponent
                                     value={iconMargin}
                                     responsive={true}
                                     showUnits={true}
-                                    label={__("Margin", "premium-blocks-for-gutenberg")}
+                                    label={__(
+                                        "Margin",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     onChange={(value) =>
                                         setAttributes({ iconMargin: value })
                                     }
@@ -1199,7 +1739,10 @@ function Edit(props) {
                                     value={iconPadding}
                                     responsive={true}
                                     showUnits={true}
-                                    label={__("Padding", "premium-blocks-for-gutenberg")}
+                                    label={__(
+                                        "Padding",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     onChange={(value) =>
                                         setAttributes({
                                             iconPadding: value,
@@ -1212,16 +1755,26 @@ function Edit(props) {
                     <InspectorTab key={"style"}>
                         {backgroundText && (
                             <PanelBody
-                                title={__("Background Text", "premium-blocks-for-gutenberg")}
+                                title={__(
+                                    "Background Text",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 className="premium-panel-body"
                                 initialOpen={false}
                             >
                                 <PremiumTypo
                                     value={textTypography}
-                                    onChange={(newValue) => setAttributes({ textTypography: newValue })}
+                                    onChange={(newValue) =>
+                                        setAttributes({
+                                            textTypography: newValue,
+                                        })
+                                    }
                                 />
                                 <ResponsiveRangeControl
-                                    label={__("Horizontal Offset", "premium-blocks-for-gutenberg")}
+                                    label={__(
+                                        "Horizontal Offset",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     value={horizontalText}
                                     onChange={(newValue) =>
                                         setAttributes({
@@ -1234,7 +1787,10 @@ function Edit(props) {
                                     max={500}
                                 />
                                 <ResponsiveRangeControl
-                                    label={__("Vertical Offset", "premium-blocks-for-gutenberg")}
+                                    label={__(
+                                        "Vertical Offset",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     value={verticalText}
                                     onChange={(newValue) =>
                                         setAttributes({
@@ -1248,7 +1804,10 @@ function Edit(props) {
                                     step={1}
                                 />
                                 <ResponsiveRangeControl
-                                    label={__("Rotate (degrees)", "premium-blocks-for-gutenberg")}
+                                    label={__(
+                                        "Rotate (degrees)",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     value={rotateText}
                                     onChange={(newValue) =>
                                         setAttributes({
@@ -1261,27 +1820,47 @@ function Edit(props) {
                                     step={1}
                                 />
                                 <AdvancedPopColorControl
-                                    label={__("Color", "premium-block-for-gutenberg")}
+                                    label={__(
+                                        "Color",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     colorValue={textStyles[0].textBackColor}
                                     colorDefault={""}
-                                    onColorChange={(newValue) => saveTextStyles({ textBackColor: newValue })}
+                                    onColorChange={(newValue) =>
+                                        saveTextStyles({
+                                            textBackColor: newValue,
+                                        })
+                                    }
                                 />
                                 <PremiumShadow
-                                    label={__("Text Shadow", "premium-blocks-for-gutenberg")}
+                                    label={__(
+                                        "Text Shadow",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     boxShadow={false}
                                     value={textBackshadow}
-                                    onChange={(value) => setAttributes({ textBackshadow: value })}
+                                    onChange={(value) =>
+                                        setAttributes({ textBackshadow: value })
+                                    }
                                 />
                                 <ToggleControl
-                                    label={__("Stroke", "premium-blocks-for-gutenberg")}
+                                    label={__(
+                                        "Stroke",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     checked={strokeStyles[0].stroke}
-                                    onChange={(newValue) => saveStrokeStyles({ stroke: newValue })}
+                                    onChange={(newValue) =>
+                                        saveStrokeStyles({ stroke: newValue })
+                                    }
                                 />
                                 <hr />
                                 {strokeStyles[0].stroke && (
                                     <Fragment>
                                         <AdvancedPopColorControl
-                                            label={__("Stroke Color", "premium-block-for-gutenberg")}
+                                            label={__(
+                                                "Stroke Color",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
                                             colorValue={
                                                 strokeStyles[0].strokeColor
                                             }
@@ -1293,7 +1872,10 @@ function Edit(props) {
                                             }
                                         />
                                         <ResponsiveRangeControl
-                                            label={__("Stroke Full Width", "premium-blocks-for-gutenberg")}
+                                            label={__(
+                                                "Stroke Full Width",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
                                             value={strokeFull}
                                             onChange={(newValue) =>
                                                 setAttributes({
@@ -1309,7 +1891,10 @@ function Edit(props) {
                                     </Fragment>
                                 )}
                                 <SelectControl
-                                    label={__("Blend Mode", "premium-blocks-for-gutenberg")}
+                                    label={__(
+                                        "Blend Mode",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     value={blend}
                                     onChange={(newSelect) =>
                                         setAttributes({ blend: newSelect })
@@ -1319,7 +1904,7 @@ function Edit(props) {
                                 <ResponsiveSingleRangeControl
                                     label={__(
                                         "z-index",
-                                        "premium-block-for-gutenberg"
+                                        "premium-blocks-for-gutenberg"
                                     )}
                                     value={zIndex}
                                     onChange={(value) =>
@@ -1381,8 +1966,9 @@ function Edit(props) {
                 }}
             >
                 <div
-                    className={`premium-title  ${backgroundText ? "premium-title-bg-text" : ""
-                        }`}
+                    className={`premium-title  ${
+                        backgroundText ? "premium-title-bg-text" : ""
+                    }`}
                     style={{
                         textAlign: align?.[props.deviceType],
                     }}
@@ -1396,17 +1982,25 @@ function Edit(props) {
                         {React.createElement(
                             titleTag,
                             {
-                                className: `premium-title-header premium-title-${style}__wrap ${iconValue ? iconPosition : ""
-                                    } ${iconPosition == "top"
+                                className: `premium-title-header premium-title-${style}__wrap ${
+                                    iconValue ? iconPosition : ""
+                                } ${
+                                    iconPosition == "top"
                                         ? `premium-title-${iconAlign?.["Desktop"]} premium-title-tablet-${iconAlign?.["Tablet"]} premium-title-mobile-${iconAlign?.["Mobile"]}`
                                         : ""
-                                    }`,
+                                }`,
                                 "data-blur-delay": `${titleStyles[0].animateDelay}`,
                                 "data-shiny-dur": `${titleStyles[0].animateduration}`,
                                 style: {
-                                    ...paddingCss(titlePadding, props.deviceType),
+                                    ...paddingCss(
+                                        titlePadding,
+                                        props.deviceType
+                                    ),
                                     ...marginCss(titleMargin, props.deviceType),
-                                    ...typographyCss(titleTypography, props.deviceType),
+                                    ...typographyCss(
+                                        titleTypography,
+                                        props.deviceType
+                                    ),
                                     color: titleStyles[0].titleColor,
                                     textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`,
                                 },
@@ -1459,10 +2053,10 @@ function Edit(props) {
                                                                     loop: loop,
                                                                     path: lottieURl,
                                                                     rendererSettings:
-                                                                    {
-                                                                        preserveAspectRatio:
-                                                                            "xMidYMid",
-                                                                    },
+                                                                        {
+                                                                            preserveAspectRatio:
+                                                                                "xMidYMid",
+                                                                        },
                                                                 }}
                                                                 direction={
                                                                     reverse
@@ -1519,10 +2113,10 @@ function Edit(props) {
                                                                 loop: loop,
                                                                 path: lottieURl,
                                                                 rendererSettings:
-                                                                {
-                                                                    preserveAspectRatio:
-                                                                        "xMidYMid",
-                                                                },
+                                                                    {
+                                                                        preserveAspectRatio:
+                                                                            "xMidYMid",
+                                                                    },
                                                             }}
                                                             direction={reverse}
                                                         />
@@ -1532,9 +2126,16 @@ function Edit(props) {
                                             <span
                                                 className={`premium-letters-container`}
                                                 style={{
-                                                    ...paddingCss(titlePadding, props.deviceType),
-                                                    ...marginCss(titleMargin, props.deviceType),
-                                                    color: titleStyles[0].titleColor
+                                                    ...paddingCss(
+                                                        titlePadding,
+                                                        props.deviceType
+                                                    ),
+                                                    ...marginCss(
+                                                        titleMargin,
+                                                        props.deviceType
+                                                    ),
+                                                    color: titleStyles[0]
+                                                        .titleColor,
                                                 }}
                                             >
                                                 {styleContainer}
@@ -1564,10 +2165,10 @@ function Edit(props) {
                                                                 loop: loop,
                                                                 path: lottieURl,
                                                                 rendererSettings:
-                                                                {
-                                                                    preserveAspectRatio:
-                                                                        "xMidYMid",
-                                                                },
+                                                                    {
+                                                                        preserveAspectRatio:
+                                                                            "xMidYMid",
+                                                                    },
                                                             }}
                                                             direction={reverse}
                                                         />
