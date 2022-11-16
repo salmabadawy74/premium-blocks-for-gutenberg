@@ -1,6 +1,10 @@
 import classnames from "classnames";
 import Typed from "typed.js";
-import { SortableContainer, SortableElement, arrayMove } from "react-sortable-hoc";
+import {
+    SortableContainer,
+    SortableElement,
+    arrayMove,
+} from "react-sortable-hoc";
 import {
     InspectorTabs,
     InspectorTab,
@@ -11,25 +15,21 @@ import {
     PremiumShadow,
     Icons,
     WebfontLoader,
-} from '@pbg/components';
-import {
-    typographyCss,
-    generateBlockId,
-    generateCss
-} from '@pbg/helpers';
+} from "@pbg/components";
+import { typographyCss, generateBlockId, generateCss } from "@pbg/helpers";
 const { __ } = wp.i18n;
 const { withSelect } = wp.data;
 const { useEffect, Fragment, useRef } = wp.element;
 const { InspectorControls, useBlockProps } = wp.blockEditor;
 const { PanelBody, SelectControl, TextControl, ToggleControl } = wp.components;
 
-
 const SortableItem = SortableElement(
     ({ edit, removeItem, newIndex, value, changeFancyValue, items }) => (
         <span className="premium-repeater-row-wrapper" key={newIndex}>
             <span className="premium-repeater-row-inner">
                 <span className="premium-repeater-row-tools">
-                    <span className="premium-repeater-item-title"
+                    <span
+                        className="premium-repeater-item-title"
                         onClick={() => edit(newIndex)}
                     >
                         {value.title}
@@ -43,19 +43,28 @@ const SortableItem = SortableElement(
                                     e.preventDefault();
                                     removeItem(newIndex, value);
                                 }}
-                            >x</button>
+                            >
+                                x
+                            </button>
                         </div>
                     ) : (
                         ""
                     )}
                 </span>
                 <div
-                    className={`premium-repeater-row-controls premium-repeater-fancy ${value.edit ? "editable" : ""}`}
+                    className={`premium-repeater-row-controls premium-repeater-fancy ${
+                        value.edit ? "editable" : ""
+                    }`}
                 >
                     <TextControl
-                        label={__("Fancy String", 'premium-blocks-for-gutenberg')}
+                        label={__(
+                            "Fancy String",
+                            "premium-blocks-for-gutenberg"
+                        )}
                         value={value.title}
-                        onChange={(newText) => changeFancyValue(newText, newIndex)}
+                        onChange={(newText) =>
+                            changeFancyValue(newText, newIndex)
+                        }
                     />
                 </div>
             </span>
@@ -101,11 +110,13 @@ function Edit(props) {
     useEffect(() => {
         const { effect } = props.attributes;
         if (effect == "typing") {
-            typed.current.destroy()
+            typed.current.destroy();
         }
         renderFancyText();
-    }, [props.attributes.effect == "typing", props.attributes.repeaterFancyText]);
-
+    }, [
+        props.attributes.effect == "typing",
+        props.attributes.repeaterFancyText,
+    ]);
 
     const renderFancyText = () => {
         const {
@@ -207,7 +218,11 @@ function Edit(props) {
 
     const shouldCancelStart = (e) => {
         // Prevent sorting from being triggered if target is input or button
-        if (["button", "div", "input", "textarea", "i"].indexOf(e.target.tagName.toLowerCase()) !== -1) {
+        if (
+            ["button", "div", "input", "textarea", "i"].indexOf(
+                e.target.tagName.toLowerCase()
+            ) !== -1
+        ) {
             return true; // Return true to cancel sorting
         }
     };
@@ -282,38 +297,38 @@ function Edit(props) {
     const loadStyles = () => {
         const styles = {};
         styles[` .${blockId} .premium-fancy-text-title`] = {
-            'color': `${fancyStyles[0].fancyTextColor} !important`,
-            'background-color': `${fancyStyles[0].fancyTextBGColor} !important`
+            color: `${fancyStyles[0].fancyTextColor} !important`,
+            "background-color": `${fancyStyles[0].fancyTextBGColor} !important`,
         };
         styles[` .${blockId} .typed-cursor`] = {
-            'color': `${fancyStyles[0].cursorColor} !important`,
-            'font-size': `${fancyTextTypography.fontSize[props.deviceType]}${fancyTextTypography.fontSize.unit} !important`,
+            color: `${fancyStyles[0].cursorColor} !important`,
+            "font-size": `${fancyTextTypography.fontSize[props.deviceType]}${
+                fancyTextTypography.fontSize.unit
+            } !important`,
         };
         styles[` .${blockId} .premium-fancy-text-suffix-prefix`] = {
-            'color': `${PreStyles[0].textColor} !important`,
-            'background-color': `${PreStyles[0].textBGColor} !important`
+            color: `${PreStyles[0].textColor} !important`,
+            "background-color": `${PreStyles[0].textBGColor} !important`,
         };
         return generateCss(styles);
-    }
+    };
 
     let loadFancyGoogleFonts;
     let loadPrefixGoogleFonts;
     if (fancyTextTypography.fontFamily !== "Default") {
         const gconfig = {
             google: {
-                families: [fancyTextTypography?.fontFamily]
-            }
+                families: [fancyTextTypography?.fontFamily],
+            },
         };
-        loadFancyGoogleFonts = (
-            <WebfontLoader config={gconfig}></WebfontLoader>
-        );
+        loadFancyGoogleFonts = <WebfontLoader config={gconfig}></WebfontLoader>;
     }
 
     if (prefixTypography.fontFamily !== "Default") {
         const gconfig = {
             google: {
-                families: [prefixTypography?.fontFamily]
-            }
+                families: [prefixTypography?.fontFamily],
+            },
         };
         loadPrefixGoogleFonts = (
             <WebfontLoader config={gconfig}></WebfontLoader>
@@ -326,14 +341,22 @@ function Edit(props) {
                 <InspectorTabs tabs={["layout", "style", "advance"]}>
                     <InspectorTab key={"layout"}>
                         <PanelBody
-                            title={__("General Settings", "premium-blocks-for-gutenberg")}
+                            title={__(
+                                "General Settings",
+                                "premium-blocks-for-gutenberg"
+                            )}
                             className="premium-panel-body"
                             initialOpen={true}
                         >
                             <TextControl
-                                label={__("Prefix Text", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Prefix Text",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 value={prefix}
-                                onChange={(newText) => setAttributes({ prefix: newText })}
+                                onChange={(newText) =>
+                                    setAttributes({ prefix: newText })
+                                }
                             />
                             <Fragment>
                                 <div className="premium-fancy-text-control-content">
@@ -345,8 +368,12 @@ function Edit(props) {
                                     </label>
                                     <SortableList
                                         items={repeaterFancyText}
-                                        onSortEnd={(oldIndex, newIndex) => onSortEndSingle(oldIndex, newIndex)}
-                                        removeItem={(value) => removeItem(value)}
+                                        onSortEnd={(oldIndex, newIndex) =>
+                                            onSortEndSingle(oldIndex, newIndex)
+                                        }
+                                        removeItem={(value) =>
+                                            removeItem(value)
+                                        }
                                         edit={(value) => edit(value)}
                                         shouldCancelStart={shouldCancelStart}
                                         changeFancyValue={changeFancyValue}
@@ -358,7 +385,10 @@ function Edit(props) {
                                         >
                                             <i className="dashicons dashicons-plus premium-repeater__icon" />
                                             <span>
-                                                {__("Add New Item", "premium-blocks-for-gutenberg")}
+                                                {__(
+                                                    "Add New Item",
+                                                    "premium-blocks-for-gutenberg"
+                                                )}
                                             </span>
                                         </button>
                                     </div>
@@ -366,120 +396,277 @@ function Edit(props) {
                                 <br />
                             </Fragment>
                             <TextControl
-                                label={__("Suffix Text", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Suffix Text",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 value={suffix}
-                                onChange={(newText) => setAttributes({ suffix: newText })}
+                                onChange={(newText) =>
+                                    setAttributes({ suffix: newText })
+                                }
                             />
                             <ResponsiveRadioControl
-                                label={__("Align Content", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Align Content",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 choices={[
-                                    { value: "left", label: __("Left", "premium-block-for-gutenberg"), icon: Icons.alignLeft },
-                                    { value: "center", label: __("Center", "premium-block-for-gutenberg"), icon: Icons.alignCenter },
-                                    { value: "right", label: __("Right", "premium-block-for-gutenberg"), icon: Icons.alignRight },
+                                    {
+                                        value: "left",
+                                        label: __(
+                                            "Left",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                        icon: Icons.alignLeft,
+                                    },
+                                    {
+                                        value: "center",
+                                        label: __(
+                                            "Center",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                        icon: Icons.alignCenter,
+                                    },
+                                    {
+                                        value: "right",
+                                        label: __(
+                                            "Right",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                        icon: Icons.alignRight,
+                                    },
                                 ]}
                                 value={fancyContentAlign}
-                                onChange={(newValue) => setAttributes({ fancyContentAlign: newValue })}
+                                onChange={(newValue) =>
+                                    setAttributes({
+                                        fancyContentAlign: newValue,
+                                    })
+                                }
                                 showIcons={true}
                             />
                         </PanelBody>
                         <PanelBody
-                            title={__("Advanced Settings", "premium-blocks-for-gutenberg")}
+                            title={__(
+                                "Advanced Settings",
+                                "premium-blocks-for-gutenberg"
+                            )}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
                             <SelectControl
-                                label={__("Effect", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Effect",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 options={EFFECT}
                                 value={effect}
-                                onChange={(newValue) => setAttributes({ effect: newValue })}
+                                onChange={(newValue) =>
+                                    setAttributes({ effect: newValue })
+                                }
                             />
                             {"typing" === effect ? (
                                 <Fragment>
                                     <TextControl
-                                        label={__("Type Speed", "premium-blocks-for-gutenberg")}
+                                        label={__(
+                                            "Type Speed",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         type="Number"
                                         value={typeSpeed}
-                                        onChange={(newValue) => setAttributes({ typeSpeed: parseInt(newValue) })}
-                                        help={__("Set typing effect speed in milliseconds.", "premium-blocks-for-gutenberg")}
+                                        onChange={(newValue) =>
+                                            setAttributes({
+                                                typeSpeed: parseInt(newValue),
+                                            })
+                                        }
+                                        help={__(
+                                            "Set typing effect speed in milliseconds.",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                     />
                                     <TextControl
-                                        label={__("Back Speed", "premium-blocks-for-gutenberg")}
+                                        label={__(
+                                            "Back Speed",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         type="Number"
                                         value={backSpeed}
                                         onChange={(newValue) =>
                                             setAttributes({
-                                                backSpeed:
-                                                    parseInt(newValue),
+                                                backSpeed: parseInt(newValue),
                                             })
                                         }
-                                        help={__("Set a speed for backspace effect in milliseconds.", "premium-blocks-for-gutenberg")}
+                                        help={__(
+                                            "Set a speed for backspace effect in milliseconds.",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                     />
                                     <TextControl
-                                        label={__("Start Delay", "premium-blocks-for-gutenberg")}
+                                        label={__(
+                                            "Start Delay",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         type="Number"
                                         value={startdelay}
-                                        onChange={(newValue) => setAttributes({ startdelay: parseInt(newValue) })}
-                                        help={__("If you set it on 5000 milliseconds, the first word/string will appear after 5 seconds.", "premium-blocks-for-gutenberg")}
+                                        onChange={(newValue) =>
+                                            setAttributes({
+                                                startdelay: parseInt(newValue),
+                                            })
+                                        }
+                                        help={__(
+                                            "If you set it on 5000 milliseconds, the first word/string will appear after 5 seconds.",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                     />
                                     <TextControl
-                                        label={__("Back Delay", "premium-blocks-for-gutenberg")}
+                                        label={__(
+                                            "Back Delay",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         type="Number"
                                         value={backdelay}
-                                        onChange={(newValue) => setAttributes({ backdelay: parseInt(newValue) })}
-                                        help={__("If you set it on 5000 milliseconds, the word/string will remain visible for 5 seconds before backspace effect.", "premium-blocks-for-gutenberg")}
+                                        onChange={(newValue) =>
+                                            setAttributes({
+                                                backdelay: parseInt(newValue),
+                                            })
+                                        }
+                                        help={__(
+                                            "If you set it on 5000 milliseconds, the word/string will remain visible for 5 seconds before backspace effect.",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                     />
                                     <ToggleControl
-                                        label={__("Loop", "premium-blocks-for-gutenberg")}
+                                        label={__(
+                                            "Loop",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         checked={loop}
-                                        onChange={(newCheck) => setAttributes({ loop: newCheck })}
+                                        onChange={(newCheck) =>
+                                            setAttributes({ loop: newCheck })
+                                        }
                                     />
                                     <ToggleControl
-                                        label={__("Show Cursor", "premium-blocks-for-gutenberg")}
+                                        label={__(
+                                            "Show Cursor",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         checked={cursorShow}
-                                        onChange={(newCheck) => setAttributes({ cursorShow: newCheck })}
+                                        onChange={(newCheck) =>
+                                            setAttributes({
+                                                cursorShow: newCheck,
+                                            })
+                                        }
                                     />
                                     {cursorShow && (
                                         <TextControl
-                                            label={__("Cursor Mark", "premium-blocks-for-gutenberg")}
+                                            label={__(
+                                                "Cursor Mark",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
                                             value={cursorMark}
-                                            onChange={(newCheck) => setAttributes({ cursorMark: newCheck })}
+                                            onChange={(newCheck) =>
+                                                setAttributes({
+                                                    cursorMark: newCheck,
+                                                })
+                                            }
                                         />
                                     )}
                                 </Fragment>
                             ) : (
                                 <Fragment>
                                     <p className="premium-notice">
-                                        {__("Please note that Slide effect works only on frontend", "premium-blocks-for-gutenberg")}
+                                        {__(
+                                            "Please note that Slide effect works only on frontend",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                     </p>
                                     <TextControl
-                                        label={__("Animation Speed", "premium-blocks-for-gutenberg")}
+                                        label={__(
+                                            "Animation Speed",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         value={animationSpeed}
                                         type="Number"
-                                        onChange={(newValue) => setAttributes({ animationSpeed: parseInt(newValue) })}
-                                        help={__("Set a duration value in milliseconds for slide effect.", "premium-blocks-for-gutenberg")}
+                                        onChange={(newValue) =>
+                                            setAttributes({
+                                                animationSpeed:
+                                                    parseInt(newValue),
+                                            })
+                                        }
+                                        help={__(
+                                            "Set a duration value in milliseconds for slide effect.",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                     />
                                     <TextControl
-                                        label={__("Pause Time", "premium-blocks-for-gutenberg")}
+                                        label={__(
+                                            "Pause Time",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         value={pauseTime}
                                         type="Number"
-                                        onChange={(newValue) => setAttributes({ pauseTime: parseInt(newValue) })}
-                                        help={__("How long should the word/string stay visible? Set a value in milliseconds.", "premium-blocks-for-gutenberg")}
+                                        onChange={(newValue) =>
+                                            setAttributes({
+                                                pauseTime: parseInt(newValue),
+                                            })
+                                        }
+                                        help={__(
+                                            "How long should the word/string stay visible? Set a value in milliseconds.",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                     />
                                     <ToggleControl
-                                        label={__("Pause on Hover", "premium-blocks-for-gutenberg")}
+                                        label={__(
+                                            "Pause on Hover",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         checked={hoverPause}
-                                        onChange={(newCheck) => setAttributes({ hoverPause: newCheck })}
-                                        help={__("If you enabled this option, the slide will be paused when mouseover.", "premium-blocks-for-gutenberg")}
+                                        onChange={(newCheck) =>
+                                            setAttributes({
+                                                hoverPause: newCheck,
+                                            })
+                                        }
+                                        help={__(
+                                            "If you enabled this option, the slide will be paused when mouseover.",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                     />
                                     <ResponsiveRadioControl
-                                        label={__("Align Content", "premium-blocks-for-gutenberg")}
+                                        label={__(
+                                            "Align Content",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         choices={[
-                                            { value: "left", label: __("Left", "premium-block-for-gutenberg"), icon: Icons.alignLeft },
-                                            { value: "center", label: __("Center", "premium-block-for-gutenberg"), icon: Icons.alignCenter },
-                                            { value: "right", label: __("Right", "premium-block-for-gutenberg"), icon: Icons.alignRight },
+                                            {
+                                                value: "left",
+                                                label: __(
+                                                    "Left",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                                icon: Icons.alignLeft,
+                                            },
+                                            {
+                                                value: "center",
+                                                label: __(
+                                                    "Center",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                                icon: Icons.alignCenter,
+                                            },
+                                            {
+                                                value: "right",
+                                                label: __(
+                                                    "Right",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                                icon: Icons.alignRight,
+                                            },
                                         ]}
                                         value={fancyTextAlign}
-                                        onChange={(newValue) => setAttributes({ fancyTextAlign: newValue })}
+                                        onChange={(newValue) =>
+                                            setAttributes({
+                                                fancyTextAlign: newValue,
+                                            })
+                                        }
                                         showIcons={true}
                                     />
                                 </Fragment>
@@ -488,61 +675,109 @@ function Edit(props) {
                     </InspectorTab>
                     <InspectorTab key={"style"}>
                         <PanelBody
-                            title={__("Fancy Text Style", "premium-blocks-for-gutenberg")}
+                            title={__(
+                                "Fancy Text Style",
+                                "premium-blocks-for-gutenberg"
+                            )}
                             className="premium-panel-body"
                             initialOpen={true}
                         >
                             <PremiumTypo
                                 value={fancyTextTypography}
-                                onChange={(newValue) => setAttributes({ fancyTextTypography: newValue })}
+                                onChange={(newValue) =>
+                                    setAttributes({
+                                        fancyTextTypography: newValue,
+                                    })
+                                }
                             />
                             <AdvancedPopColorControl
-                                label={__("Color", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Color",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 colorValue={fancyStyles[0].fancyTextColor}
                                 colorDefault={""}
-                                onColorChange={(newValue) => saveFancyStyle({ fancyTextColor: newValue })}
+                                onColorChange={(newValue) =>
+                                    saveFancyStyle({ fancyTextColor: newValue })
+                                }
                             />
                             <AdvancedPopColorControl
-                                label={__("Background Color", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Background Color",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 colorValue={fancyStyles[0].fancyTextBGColor}
                                 colorDefault={""}
-                                onColorChange={(newvalue) => saveFancyStyle({ fancyTextBGColor: newvalue })}
+                                onColorChange={(newvalue) =>
+                                    saveFancyStyle({
+                                        fancyTextBGColor: newvalue,
+                                    })
+                                }
                             />
                             {effect == "typing" && cursorShow && (
                                 <AdvancedPopColorControl
-                                    label={__("Cursor Color", "premium-blocks-for-gutenberg")}
+                                    label={__(
+                                        "Cursor Color",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     colorValue={fancyStyles[0].cursorColor}
                                     colorDefault={""}
-                                    onColorChange={(newValue) => saveFancyStyle({ cursorColor: newValue })}
+                                    onColorChange={(newValue) =>
+                                        saveFancyStyle({
+                                            cursorColor: newValue,
+                                        })
+                                    }
                                 />
                             )}
                             <PremiumShadow
-                                label={__("Text Shadow", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Text Shadow",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 boxShadow={false}
                                 value={fancyTextShadow}
-                                onChange={(value) => setAttributes({ fancyTextShadow: value })}
+                                onChange={(value) =>
+                                    setAttributes({ fancyTextShadow: value })
+                                }
                             />
                         </PanelBody>
                         <PanelBody
-                            title={__("Prefix & Suffix Style", "premium-blocks-for-gutenberg")}
+                            title={__(
+                                "Prefix & Suffix Style",
+                                "premium-blocks-for-gutenberg"
+                            )}
                             className="premium-panel-body"
                             initialOpen={false}
                         >
                             <PremiumTypo
                                 value={prefixTypography}
-                                onChange={(newValue) => setAttributes({ prefixTypography: newValue })}
+                                onChange={(newValue) =>
+                                    setAttributes({
+                                        prefixTypography: newValue,
+                                    })
+                                }
                             />
                             <AdvancedPopColorControl
-                                label={__("Color", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Color",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 colorValue={PreStyles[0].textColor}
                                 colorDefault={""}
-                                onColorChange={(newValue) => savePrefixStyle({ textColor: newValue })}
+                                onColorChange={(newValue) =>
+                                    savePrefixStyle({ textColor: newValue })
+                                }
                             />
                             <AdvancedPopColorControl
-                                label={__(`Background Color`, "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    `Background Color`,
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 colorValue={PreStyles[0].textBGColor}
                                 colorDefault={``}
-                                onColorChange={(newvalue) => savePrefixStyle({ textBGColor: newvalue })}
+                                onColorChange={(newvalue) =>
+                                    savePrefixStyle({ textBGColor: newvalue })
+                                }
                             />
                         </PanelBody>
                     </InspectorTab>
@@ -590,7 +825,7 @@ function Edit(props) {
                     ),
                 })}
                 style={{
-                    textAlign: fancyContentAlign[props.deviceType]
+                    textAlign: fancyContentAlign[props.deviceType],
                 }}
             >
                 <style
@@ -603,11 +838,9 @@ function Edit(props) {
                         id={`${blockId}`}
                         className={`premium-fancy-text`}
                         data-effect={`${effect}`}
-                        data-strings={`${repeaterFancyText.map(
-                            (item) => {
-                                return item.title;
-                            }
-                        )}`}
+                        data-strings={`${repeaterFancyText.map((item) => {
+                            return item.title;
+                        })}`}
                         data-typespeed={`${typeSpeed}`}
                         data-backspeed={`${backSpeed}`}
                         data-startdelay={`${startdelay}`}
@@ -616,13 +849,16 @@ function Edit(props) {
                         data-cursorshow={`${cursorShow}`}
                         data-cursormark={`${cursorMark}`}
                         style={{
-                            textAlign: fancyContentAlign[props.deviceType]
+                            textAlign: fancyContentAlign[props.deviceType],
                         }}
                     >
                         <span
                             className={`premium-fancy-text-suffix-prefix premium-fancy-text-prefix-text`}
                             style={{
-                                ...typographyCss(prefixTypography, props.deviceType)
+                                ...typographyCss(
+                                    prefixTypography,
+                                    props.deviceType
+                                ),
                             }}
                         >
                             {prefix}{" "}
@@ -631,7 +867,10 @@ function Edit(props) {
                             className={`premium-fancy-text-title premium-fancy-text-title-type`}
                             ref={el}
                             style={{
-                                ...typographyCss(fancyTextTypography, props.deviceType),
+                                ...typographyCss(
+                                    fancyTextTypography,
+                                    props.deviceType
+                                ),
                                 textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`,
                             }}
                         >
@@ -640,7 +879,10 @@ function Edit(props) {
                         <span
                             className={`premium-fancy-text-suffix-prefix premium-fancy-text-suffix-text`}
                             style={{
-                                ...typographyCss(prefixTypography, props.deviceType)
+                                ...typographyCss(
+                                    prefixTypography,
+                                    props.deviceType
+                                ),
                             }}
                         >
                             {" "}
@@ -652,11 +894,9 @@ function Edit(props) {
                         id={`${blockId}`}
                         className={`premium-fancy-text premium-fancy-slide`}
                         data-effect={`${effect}`}
-                        data-strings={`${repeaterFancyText.map(
-                            (item) => {
-                                return item.title;
-                            }
-                        )}`}
+                        data-strings={`${repeaterFancyText.map((item) => {
+                            return item.title;
+                        })}`}
                         data-animationspeed={`${animationSpeed}`}
                         data-pausetime={`${pauseTime}`}
                         data-hoverpause={`${hoverPause}`}
@@ -664,7 +904,10 @@ function Edit(props) {
                         <span
                             className={`premium-fancy-text-suffix-prefix premium-fancy-text-prefix-text`}
                             style={{
-                                ...typographyCss(prefixTypography, props.deviceType)
+                                ...typographyCss(
+                                    prefixTypography,
+                                    props.deviceType
+                                ),
                             }}
                         >
                             {prefix}{" "}
@@ -675,13 +918,18 @@ function Edit(props) {
                                 textAlign: fancyTextAlign[props.deviceType],
                             }}
                         >
-                            <ul className={`premium-fancy-text-title-slide-list`}>
+                            <ul
+                                className={`premium-fancy-text-title-slide-list`}
+                            >
                                 {repeaterFancyText.map((item) => {
                                     return (
                                         <li
                                             style={{
-                                                ...typographyCss(fancyTextTypography, props.deviceType),
-                                                textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`
+                                                ...typographyCss(
+                                                    fancyTextTypography,
+                                                    props.deviceType
+                                                ),
+                                                textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`,
                                             }}
                                         >
                                             {item.title}
@@ -693,7 +941,10 @@ function Edit(props) {
                         <span
                             className={`premium-fancy-text-suffix-prefix premium-fancy-text-suffix-text`}
                             style={{
-                                ...typographyCss(prefixTypography, props.deviceType)
+                                ...typographyCss(
+                                    prefixTypography,
+                                    props.deviceType
+                                ),
                             }}
                         >
                             {" "}

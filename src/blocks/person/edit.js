@@ -7,8 +7,8 @@ import {
     SpacingComponent as SpacingControl,
     AdvancedColorControl as AdvancedPopColorControl,
     Icons,
-} from '@pbg/components';
-import { generateBlockId, paddingCss } from '@pbg/helpers';
+} from "@pbg/components";
+import { generateBlockId, paddingCss } from "@pbg/helpers";
 
 const { __ } = wp.i18n;
 const { withSelect } = wp.data;
@@ -16,44 +16,71 @@ const { useEffect, Fragment } = wp.element;
 const { PanelBody } = wp.components;
 const { InspectorControls, useBlockProps, InnerBlocks } = wp.blockEditor;
 
-
 function Edit(props) {
     const { setAttributes, className, clientId, attributes } = props;
 
     useEffect(() => {
         setAttributes({
-            blockId: "premium-person-" + generateBlockId(clientId)
+            blockId: "premium-person-" + generateBlockId(clientId),
         });
         setAttributes({ classMigrate: true });
     }, []);
 
     const INNER_BLOCKS_TEMPLATE = [
         [
-            "premium/image", {
-                ImgUrl: attributes.multiPersonContent[0].personImgUrl ? attributes.multiPersonContent[0].personImgUrl : ''
-            }
+            "premium/image",
+            {
+                ImgUrl: attributes.multiPersonContent[0].personImgUrl
+                    ? attributes.multiPersonContent[0].personImgUrl
+                    : "",
+            },
         ],
-        ["premium/heading", {
-            title: attributes.multiPersonContent[0].name ? attributes.multiPersonContent[0].name : __("John Doe", "premium-blocks-for-gutenberg"),
-            titleTag: attributes.nameTag ? attributes.nameTag : "h3",
-            style: "default"
-        }],
-        ["premium/heading", {
-            title: attributes.multiPersonContent[0].title ? attributes.multiPersonContent[0].title : __("Senior Developer", "premium-blocks-for-gutenberg"),
-            titleTag: attributes.titleTag ? attributes.titleTag : "h5",
-            style: "default"
-        }],
-        ["premium/text", {
-            text: attributes.multiPersonContent[0].desc ? attributes.multiPersonContent[0].desc : __("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla", "premium-blocks-for-gutenberg"),
-        }],
         [
-            "premium/icon-group", {
+            "premium/heading",
+            {
+                title: attributes.multiPersonContent[0].name
+                    ? attributes.multiPersonContent[0].name
+                    : __("John Doe", "premium-blocks-for-gutenberg"),
+                titleTag: attributes.nameTag ? attributes.nameTag : "h3",
+                style: "default",
+            },
+        ],
+        [
+            "premium/heading",
+            {
+                title: attributes.multiPersonContent[0].title
+                    ? attributes.multiPersonContent[0].title
+                    : __("Senior Developer", "premium-blocks-for-gutenberg"),
+                titleTag: attributes.titleTag ? attributes.titleTag : "h5",
+                style: "default",
+            },
+        ],
+        [
+            "premium/text",
+            {
+                text: attributes.multiPersonContent[0].desc
+                    ? attributes.multiPersonContent[0].desc
+                    : __(
+                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla",
+                          "premium-blocks-for-gutenberg"
+                      ),
+            },
+        ],
+        [
+            "premium/icon-group",
+            {
                 align: {
-                    "Desktop": attributes.align['Desktop'] ? attributes.align['Desktop'] : "center",
-                    "Tablet": attributes.align['Tablet'] ? attributes.align['Tablet'] : "center",
-                    "Mobile": attributes.align['Mobile'] ? attributes.align['Mobile'] : "center"
-                }
-            }
+                    Desktop: attributes.align["Desktop"]
+                        ? attributes.align["Desktop"]
+                        : "center",
+                    Tablet: attributes.align["Tablet"]
+                        ? attributes.align["Tablet"]
+                        : "center",
+                    Mobile: attributes.align["Mobile"]
+                        ? attributes.align["Mobile"]
+                        : "center",
+                },
+            },
         ],
     ];
 
@@ -64,7 +91,7 @@ function Edit(props) {
         contentPadding,
         hideDesktop,
         hideTablet,
-        hideMobile
+        hideMobile,
     } = props.attributes;
 
     return (
@@ -73,41 +100,85 @@ function Edit(props) {
                 <InspectorTabs tabs={["layout", "style", "advance"]}>
                     <InspectorTab key={"layout"}>
                         <PanelBody
-                            title={__("General Settings", "premium-blocks-for-gutenberg")}
+                            title={__(
+                                "General Settings",
+                                "premium-blocks-for-gutenberg"
+                            )}
                             className="premium-panel-body"
                             initialOpen={true}
                         >
                             <ResponsiveRadioControl
-                                label={__("Alignment", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Alignment",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 choices={[
-                                    { value: "left", label: __("Left", "premium-block-for-gutenberg"), icon: Icons.alignLeft },
-                                    { value: "center", label: __("Center", "premium-block-for-gutenberg"), icon: Icons.alignCenter },
-                                    { value: "right", label: __("Right", "premium-block-for-gutenberg"), icon: Icons.alignRight },
+                                    {
+                                        value: "left",
+                                        label: __(
+                                            "Left",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                        icon: Icons.alignLeft,
+                                    },
+                                    {
+                                        value: "center",
+                                        label: __(
+                                            "Center",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                        icon: Icons.alignCenter,
+                                    },
+                                    {
+                                        value: "right",
+                                        label: __(
+                                            "Right",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                        icon: Icons.alignRight,
+                                    },
                                 ]}
                                 value={align}
-                                onChange={(newValue) => setAttributes({ align: newValue })}
+                                onChange={(newValue) =>
+                                    setAttributes({ align: newValue })
+                                }
                                 showIcons={true}
                             />
                         </PanelBody>
                     </InspectorTab>
                     <InspectorTab key={"style"}>
                         <PanelBody
-                            title={__("Content", "premium-blocks-for-gutenberg")}
+                            title={__(
+                                "Content",
+                                "premium-blocks-for-gutenberg"
+                            )}
                             className="premium-panel-body"
                             initialOpen={true}
                         >
                             <div className="premium-control-toggle">
                                 <AdvancedPopColorControl
-                                    label={__("Color", "premium-block-for-gutenberg")}
+                                    label={__(
+                                        "Color",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
                                     colorValue={contentColor}
                                     colorDefault={""}
-                                    onColorChange={(newValue) => setAttributes({ contentColor: newValue })}
+                                    onColorChange={(newValue) =>
+                                        setAttributes({
+                                            contentColor: newValue,
+                                        })
+                                    }
                                 />
                             </div>
                             <SpacingControl
-                                label={__("Padding", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Padding",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 value={contentPadding}
-                                onChange={(value) => setAttributes({ contentPadding: value })}
+                                onChange={(value) =>
+                                    setAttributes({ contentPadding: value })
+                                }
                                 showUnits={true}
                                 responsive={true}
                             />
@@ -158,7 +229,7 @@ function Edit(props) {
                 style={{
                     textAlign: align[props.deviceType],
                     backgroundColor: contentColor,
-                    ...paddingCss(contentPadding, props.deviceType)
+                    ...paddingCss(contentPadding, props.deviceType),
                 }}
             >
                 <InnerBlocks

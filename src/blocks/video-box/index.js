@@ -49,10 +49,10 @@ export default onChangeVideoURL;
 
 registerBlockType("premium/video-box", {
     ...json,
-    title: __("Video Box", "premium-block-for-gutenberg"),
+    title: __("Video Box", "premium-blocks-for-gutenberg"),
     description: __(
         "Embed YouTube, Vimeo, Dailymotion, or upload a Custom Video using Premium Video Box Block.",
-        "premium-block-for-gutenberg"
+        "premium-blocks-for-gutenberg"
     ),
     icon: PBG_Block_Icons.video_box,
     category: "premium-blocks",

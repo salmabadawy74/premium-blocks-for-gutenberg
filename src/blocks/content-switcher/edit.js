@@ -17,8 +17,8 @@ import {
     PremiumBackgroundControl,
     Icons,
     WebfontLoader,
-    ResponsiveRangeControl
-} from '@pbg/components';
+    ResponsiveRangeControl,
+} from "@pbg/components";
 import {
     gradientBackground,
     typographyCss,
@@ -27,12 +27,13 @@ import {
     marginCss,
     gradientValue,
     generateBlockId,
-    generateCss
-} from '@pbg/helpers';
+    generateCss,
+} from "@pbg/helpers";
 
 const { __ } = wp.i18n;
-const { withSelect } = wp.data
-const { InspectorControls, RichText, useBlockProps, InnerBlocks } = wp.blockEditor;
+const { withSelect } = wp.data;
+const { InspectorControls, RichText, useBlockProps, InnerBlocks } =
+    wp.blockEditor;
 const { Fragment, useEffect, useState, useRef } = wp.element;
 /**
  * The edit function describes the structure of your block in the context of the
@@ -145,11 +146,11 @@ function Edit(props) {
 
     const DISPLAY = [
         {
-            label: __("Block", 'premium-blocks-for-gutenberg'),
+            label: __("Block", "premium-blocks-for-gutenberg"),
             value: "block",
         },
         {
-            label: __("Inline", 'premium-blocks-for-gutenberg'),
+            label: __("Inline", "premium-blocks-for-gutenberg"),
             value: "inline",
         },
     ];
@@ -166,8 +167,8 @@ function Edit(props) {
     if (firstLabelTypography.fontFamily !== "Default") {
         const config = {
             google: {
-                families: [firstLabelTypography.fontFamily]
-            }
+                families: [firstLabelTypography.fontFamily],
+            },
         };
         loadFirstLabelGoogleFonts = (
             <WebfontLoader config={config}></WebfontLoader>
@@ -177,8 +178,8 @@ function Edit(props) {
     if (secondLabelTypography.fontFamily !== "Default") {
         const sconfig = {
             google: {
-                families: [secondLabelTypography.fontFamily]
-            }
+                families: [secondLabelTypography.fontFamily],
+            },
         };
         loadSecondLabelGoogleFonts = (
             <WebfontLoader config={sconfig}></WebfontLoader>
@@ -190,25 +191,28 @@ function Edit(props) {
         styles[
             `.${blockId} .premium-content-switcher-toggle-switch-slider:before `
         ] = {
-            "border-radius": `${containerRadius || 50
-                }${containerRadiusUnit} !important`,
+            "border-radius": `${
+                containerRadius || 50
+            }${containerRadiusUnit} !important`,
             "box-shadow": ` ${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position} !important`,
-            "background-color": `${controllerOneBackground.backgroundType == "solid"
-                ? controllerOneBackground.backgroundColor
-                : "#793dc3"
-                }`,
+            "background-color": `${
+                controllerOneBackground.backgroundType == "solid"
+                    ? controllerOneBackground.backgroundColor
+                    : "#793dc3"
+            }`,
             "background-image": `${gradientValue(controllerOneBackground)}`,
             "background-repeat": `${controllerOneBackground.backgroundRepeat}`,
             "background-position": `${controllerOneBackground.backgroundPosition}`,
             "background-size": `${controllerOneBackground.backgroundSize}`,
-            "background-attachment": `${controllerOneBackground.fixed ? "fixed" : "unset"
-                }`,
+            "background-attachment": `${
+                controllerOneBackground.fixed ? "fixed" : "unset"
+            }`,
         };
         styles[`.${blockId} .premium-content-switcher-toggle-switch-slider `] =
-        {
-            "border-radius": `${switchRadius}${switchRadiusUnit} !important`,
-            "box-shadow": `${switchShadow.horizontal}px ${switchShadow.vertical}px ${switchShadow.blur}px ${switchShadow.color} ${switchShadow.position} !important`,
-        };
+            {
+                "border-radius": `${switchRadius}${switchRadiusUnit} !important`,
+                "box-shadow": `${switchShadow.horizontal}px ${switchShadow.vertical}px ${switchShadow.blur}px ${switchShadow.color} ${switchShadow.position} !important`,
+            };
 
         styles[
             `.${blockId} .premium-content-switcher-toggle-inline .premium-content-switcher-first-label `
@@ -238,7 +242,10 @@ function Edit(props) {
                 <InspectorTabs tabs={["layout", "style", "advance"]}>
                     <InspectorTab key={"layout"}>
                         <PanelBody
-                            title={__("Switcher", "premium-blocks-for-gutenberg")}
+                            title={__(
+                                "Switcher",
+                                "premium-blocks-for-gutenberg"
+                            )}
                             className="premium-panel-body"
                             initialOpen={true}
                         >
@@ -260,12 +267,48 @@ function Edit(props) {
                                             "premium-blocks-for-gutenberg"
                                         )}
                                         choices={[
-                                            { value: "h1", label: __("H1", "premium-blocks-for-gutenberg") },
-                                            { value: "h2", label: __("H2", "premium-blocks-for-gutenberg") },
-                                            { value: "h3", label: __("H3", "premium-blocks-for-gutenberg") },
-                                            { value: "h4", label: __("H4", "premium-blocks-for-gutenberg") },
-                                            { value: "h5", label: __("H5", "premium-blocks-for-gutenberg") },
-                                            { value: "h6", label: __("H6", "premium-blocks-for-gutenberg") },
+                                            {
+                                                value: "h1",
+                                                label: __(
+                                                    "H1",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                            },
+                                            {
+                                                value: "h2",
+                                                label: __(
+                                                    "H2",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                            },
+                                            {
+                                                value: "h3",
+                                                label: __(
+                                                    "H3",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                            },
+                                            {
+                                                value: "h4",
+                                                label: __(
+                                                    "H4",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                            },
+                                            {
+                                                value: "h5",
+                                                label: __(
+                                                    "H5",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                            },
+                                            {
+                                                value: "h6",
+                                                label: __(
+                                                    "H6",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                            },
                                         ]}
                                         value={labelTag}
                                         onChange={(newValue) =>
@@ -293,9 +336,30 @@ function Edit(props) {
                                     "premium-blocks-for-gutenberg"
                                 )}
                                 choices={[
-                                    { value: "left", label: __("Left", "premium-blocks-for-gutenberg"), icon: Icons.alignLeft },
-                                    { value: "center", label: __("Center", "premium-blocks-for-gutenberg"), icon: Icons.alignCenter },
-                                    { value: "right", label: __("Right", "premium-blocks-for-gutenberg"), icon: Icons.alignRight },
+                                    {
+                                        value: "left",
+                                        label: __(
+                                            "Left",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                        icon: Icons.alignLeft,
+                                    },
+                                    {
+                                        value: "center",
+                                        label: __(
+                                            "Center",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                        icon: Icons.alignCenter,
+                                    },
+                                    {
+                                        value: "right",
+                                        label: __(
+                                            "Right",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                        icon: Icons.alignRight,
+                                    },
                                 ]}
                                 value={align}
                                 onChange={(newValue) =>
@@ -466,7 +530,7 @@ function Edit(props) {
                                             <AdvancedPopColorControl
                                                 label={__(
                                                     "Text Color",
-                                                    "premium-block-for-gutenberg"
+                                                    "premium-blocks-for-gutenberg"
                                                 )}
                                                 colorValue={
                                                     labelStyles.firstLabelColor
@@ -482,7 +546,7 @@ function Edit(props) {
                                             <AdvancedPopColorControl
                                                 label={__(
                                                     "Background Color",
-                                                    "premium-block-for-gutenberg"
+                                                    "premium-blocks-for-gutenberg"
                                                 )}
                                                 colorValue={
                                                     labelStyles.firstLabelBGColor
@@ -569,7 +633,7 @@ function Edit(props) {
                                             <AdvancedPopColorControl
                                                 label={__(
                                                     "Text Color",
-                                                    "premium-block-for-gutenberg"
+                                                    "premium-blocks-for-gutenberg"
                                                 )}
                                                 colorValue={
                                                     labelStyles.secondLabelColor
@@ -585,7 +649,7 @@ function Edit(props) {
                                             <AdvancedPopColorControl
                                                 label={__(
                                                     "Background Color",
-                                                    "premium-block-for-gutenberg"
+                                                    "premium-blocks-for-gutenberg"
                                                 )}
                                                 colorValue={
                                                     labelStyles.secondLabelBGColor
@@ -770,9 +834,11 @@ function Edit(props) {
                         ...marginCss(containerMargin, props.deviceType),
                         ...gradientBackground(containerBackground),
                         textAlign: align[props.deviceType],
-                        boxShadow: `${containerBoxShadow.horizontal || 0}px ${containerBoxShadow.vertical || 0
-                            }px ${containerBoxShadow.blur || 0}px ${containerBoxShadow.color
-                            } ${containerBoxShadow.position} `,
+                        boxShadow: `${containerBoxShadow.horizontal || 0}px ${
+                            containerBoxShadow.vertical || 0
+                        }px ${containerBoxShadow.blur || 0}px ${
+                            containerBoxShadow.color
+                        } ${containerBoxShadow.position} `,
                     }}
                 >
                     <div
@@ -783,16 +849,16 @@ function Edit(props) {
                                 align[props.deviceType] == "right"
                                     ? "flex-end"
                                     : align[props.deviceType] == "left"
-                                        ? "flex-start"
-                                        : align[props.deviceType],
+                                    ? "flex-start"
+                                    : align[props.deviceType],
                             alignItems:
                                 display == "inline"
                                     ? "center"
                                     : align[props.deviceType] == "right"
-                                        ? "flex-end"
-                                        : align[props.deviceType] == "left"
-                                            ? "flex-start"
-                                            : align[props.deviceType],
+                                    ? "flex-end"
+                                    : align[props.deviceType] == "left"
+                                    ? "flex-start"
+                                    : align[props.deviceType],
                         }}
                     >
                         {showLabel && (
@@ -822,15 +888,22 @@ function Edit(props) {
                                         color: labelStyles.firstLabelColor,
                                         background:
                                             labelStyles.firstLabelBGColor,
-                                        textShadow: `${firstLabelShadow.horizontal || 0
-                                            }px ${firstLabelShadow.vertical || 0
-                                            }px ${firstLabelShadow.blur || 0}px ${firstLabelShadow.color
-                                            } `,
-                                        boxShadow: `${firstLabelBoxShadow.horizontal || 0
-                                            }px ${firstLabelBoxShadow.vertical || 0
-                                            }px ${firstLabelBoxShadow.blur || 0
-                                            }px ${firstLabelBoxShadow.color} ${firstLabelBoxShadow.position
-                                            } `,
+                                        textShadow: `${
+                                            firstLabelShadow.horizontal || 0
+                                        }px ${
+                                            firstLabelShadow.vertical || 0
+                                        }px ${firstLabelShadow.blur || 0}px ${
+                                            firstLabelShadow.color
+                                        } `,
+                                        boxShadow: `${
+                                            firstLabelBoxShadow.horizontal || 0
+                                        }px ${
+                                            firstLabelBoxShadow.vertical || 0
+                                        }px ${
+                                            firstLabelBoxShadow.blur || 0
+                                        }px ${firstLabelBoxShadow.color} ${
+                                            firstLabelBoxShadow.position
+                                        } `,
                                     }}
                                 />
                             </div>
@@ -887,15 +960,22 @@ function Edit(props) {
                                         color: labelStyles.secondLabelColor,
                                         background:
                                             labelStyles.secondLabelBGColor,
-                                        textShadow: `${secondLabelShadow.horizontal || 0
-                                            }px ${secondLabelShadow.vertical || 0
-                                            }px ${secondLabelShadow.blur || 0} px ${secondLabelShadow.color
-                                            } `,
-                                        boxShadow: `${secondLabelBoxShadow.horizontal || 0
-                                            }px ${secondLabelBoxShadow.vertical || 0
-                                            }px ${secondLabelBoxShadow.blur || 0
-                                            }px ${secondLabelBoxShadow.color} ${secondLabelBoxShadow.position
-                                            } `,
+                                        textShadow: `${
+                                            secondLabelShadow.horizontal || 0
+                                        }px ${
+                                            secondLabelShadow.vertical || 0
+                                        }px ${secondLabelShadow.blur || 0} px ${
+                                            secondLabelShadow.color
+                                        } `,
+                                        boxShadow: `${
+                                            secondLabelBoxShadow.horizontal || 0
+                                        }px ${
+                                            secondLabelBoxShadow.vertical || 0
+                                        }px ${
+                                            secondLabelBoxShadow.blur || 0
+                                        }px ${secondLabelBoxShadow.color} ${
+                                            secondLabelBoxShadow.position
+                                        } `,
                                     }}
                                 />
                             </div>
