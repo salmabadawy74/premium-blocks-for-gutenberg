@@ -14,6 +14,8 @@ import {
     PremiumTypo,
     SpacingComponent,
     PremiumFilters,
+    InsideTabs,
+    InsideTab
 } from "@pbg/components";
 import {
     borderCss,
@@ -85,6 +87,7 @@ function Edit(props) {
         descTextShadow,
         containerShadow,
         blockId,
+        hoverBackground
     } = props.attributes;
 
     const ALIGNS = [
@@ -207,6 +210,19 @@ function Edit(props) {
             `.${blockId} .premium-banner__effect3 .premium-banner__title_wrap::after`
         ] = {
             background: sepColor,
+        };
+
+        styles[
+            `.${blockId} .premium-banner__inner:hover .premium-banner__bg-overlay`
+        ] = {
+            'opacity': `${(hoverBackground == "" || hoverBackground == undefined) ? 0 : ''}`,
+            "background-color": `${hoverBackground ? hoverBackground : ''}`,
+        };
+
+        styles[
+            `.${blockId} .premium-banner__inner .premium-banner__bg-overlay`
+        ] = {
+            "background-color": `${background ? background : ''}`,
         };
 
         return generateCss(styles);
@@ -504,19 +520,48 @@ function Edit(props) {
                                 className="premium-panel-body"
                                 initialOpen={true}
                             >
-                                <AdvancedPopColorControl
-                                    label={__(
-                                        "Overlay",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                    colorValue={background}
-                                    colorDefault={""}
-                                    onColorChange={(newValue) =>
-                                        setAttributes({
-                                            background: newValue,
-                                        })
-                                    }
-                                />
+                                <InsideTabs>
+                                    <InsideTab
+                                        tabTitle={__(
+                                            "Normal",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                    >
+                                        <AdvancedPopColorControl
+                                            label={__(
+                                                "Overlay",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                            colorValue={background}
+                                            colorDefault={""}
+                                            onColorChange={(newValue) =>
+                                                setAttributes({
+                                                    background: newValue,
+                                                })
+                                            }
+                                        />
+                                    </InsideTab>
+                                    <InsideTab
+                                        tabTitle={__(
+                                            "Hover",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                    >
+                                        <AdvancedPopColorControl
+                                            label={__(
+                                                "Hovr Overlay",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                            colorValue={hoverBackground}
+                                            colorDefault={""}
+                                            onColorChange={(newValue) =>
+                                                setAttributes({
+                                                    hoverBackground: newValue,
+                                                })
+                                            }
+                                        />
+                                    </InsideTab>
+                                </InsideTabs>
                                 <PremiumFilters
                                     value={filter}
                                     onChange={(value) =>
@@ -767,14 +812,7 @@ function Edit(props) {
                                 minHeight: height == "custom" ? minHeight : "",
                             }}
                         >
-                            <div
-                                className="premium-banner__bg-overlay"
-                                style={{
-                                    backgroundColor: `${
-                                        background ? background : ""
-                                    } `,
-                                }}
-                            ></div>
+                            <div className="premium-banner__bg-overlay"></div>
                             <div
                                 className={`premium-banner__img_wrap premium-banner__${height}`}
                                 style={{

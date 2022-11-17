@@ -127,9 +127,6 @@
             "type": "string",
             "default": ""
         },
-        "opacity": {
-            "type": "number"
-        },
         "urlCheck": {
             "type": "boolean",
             "default": false
@@ -299,6 +296,10 @@
                     "unit": "px"
                 }
             }
+        },
+        "hoverBackground": {
+            "type": "string",
+            "default": ""
         }
     }
 }
