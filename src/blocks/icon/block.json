@@ -305,6 +305,10 @@
                 "horizontal": "0",
                 "vertical": "0"
             }
+        },
+        "borderHoverColor": {
+            "type": "string",
+            "default": ""
         }
     }
 }

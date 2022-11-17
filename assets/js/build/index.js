@@ -32019,12 +32019,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var hex_to_rgba__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! hex-to-rgba */ "./node_modules/hex-to-rgba/build/index.js");
 /* harmony import */ var hex_to_rgba__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(hex_to_rgba__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @pbg/helpers */ "@pbg/helpers");
+/* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__);
 
 const className = "premium-icon";
 
 const {
   __
 } = wp.i18n;
+
+
 
 const attributes = {
   iconBorder: {
@@ -32442,8 +32448,85 @@ const new_attributes = {
     type: "number"
   }
 };
+const v7Attributes = {
+  "borderHoverColor": {
+    "type": "string",
+    "default": ""
+  }
+};
 const deprecated_attributes = Object.assign(attributes, new_attributes);
 const deprecatedContent = [{
+  attributes: Object.assign(attributes, v7Attributes),
+  migrate: attributes => {
+    let newAttributes = {
+      borderHoverColor: ''
+    };
+    return Object.assign(attributes, newAttributes);
+  },
+  save: props => {
+    const {
+      blockId,
+      iconBorder,
+      selectedIcon,
+      hoverEffect,
+      iconStyles,
+      urlCheck,
+      link,
+      target,
+      hideDesktop,
+      hideTablet,
+      hideMobile,
+      containerBorder,
+      containerBackground,
+      containerShadow,
+      iconShadow
+    } = props.attributes;
+
+    const loadStyles = () => {
+      const styles = {};
+      styles[` .${blockId} .premium-icon-container i:hover`] = {
+        'color': `${iconStyles[0].iconHoverColor} !important`,
+        'background-color': `${iconStyles[0].iconHoverBack} !important`
+      };
+      return (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.generateCss)(styles);
+    };
+
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
+      className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, `premium-icon ${blockId} premium-icon__container`, {
+        " premium-desktop-hidden": hideDesktop,
+        " premium-tablet-hidden": hideTablet,
+        " premium-mobile-hidden": hideMobile
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
+      dangerouslySetInnerHTML: {
+        __html: loadStyles()
+      }
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: `premium-icon-container`,
+      style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.filterJsCss)({ ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.gradientBackground)(containerBackground),
+        borderStyle: containerBorder.borderType,
+        borderColor: containerBorder.borderColor,
+        boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`
+      })
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+      className: `premium-icon__link`,
+      href: urlCheck && link,
+      rel: "noopener noreferrer",
+      target: target ? "_blank" : "_self"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: `premium-icon-hover premium-icon__${hoverEffect}`
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+      className: `premium-icon ${selectedIcon}`,
+      style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.filterJsCss)({
+        color: iconStyles[0].iconColor,
+        backgroundColor: iconStyles[0].iconBack,
+        borderStyle: iconBorder.borderType,
+        borderColor: iconBorder.borderColor,
+        textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`
+      })
+    })))));
+  }
+}, {
   attributes: attributes,
   migrate: attributes => {
     let newAttributes = {
@@ -33444,7 +33527,8 @@ function Edit(props) {
     iconBorder,
     containerBackground,
     containerShadow,
-    iconShadow
+    iconShadow,
+    borderHoverColor
   } = props.attributes;
   const EFFECTS = [{
     value: "none",
@@ -33488,7 +33572,8 @@ function Edit(props) {
     const styles = {};
     styles[` .${blockId} .premium-icon-container i:hover`] = {
       color: `${iconStyles[0].iconHoverColor} !important`,
-      "background-color": `${iconStyles[0].iconHoverBack} !important`
+      "background-color": `${iconStyles[0].iconHoverBack} !important`,
+      "border-color": `${borderHoverColor}!important`
     };
     return (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.generateCss)(styles);
   };
@@ -33601,6 +33686,13 @@ function Edit(props) {
     colorDefault: "",
     onColorChange: value => saveIconStyle({
       iconHoverBack: value
+    })
+  }), iconBorder.borderType != "none" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.AdvancedColorControl, {
+    label: __("Border Color", "premium-blocks-for-gutenberg"),
+    colorValue: borderHoverColor,
+    colorDefault: "",
+    onColorChange: newValue => setAttributes({
+      borderHoverColor: newValue
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
     label: __("Hover Effect", "premium-blocks-for-gutenberg"),
@@ -33830,14 +33922,16 @@ const save = props => {
     containerBorder,
     containerBackground,
     containerShadow,
-    iconShadow
+    iconShadow,
+    borderHoverColor
   } = props.attributes;
 
   const loadStyles = () => {
     const styles = {};
     styles[` .${blockId} .premium-icon-container i:hover`] = {
       'color': `${iconStyles[0].iconHoverColor} !important`,
-      'background-color': `${iconStyles[0].iconHoverBack} !important`
+      'background-color': `${iconStyles[0].iconHoverBack} !important`,
+      "border-color": `${borderHoverColor}!important`
     };
     return (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.generateCss)(styles);
   };
@@ -78831,7 +78925,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/icon","title":"Icon","category":"premium-blocks","attributes":{"blockId":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"wrapBorder":{"type":"boolean","default":false},"iconType":{"type":"string","default":"dash"},"selectedIcon":{"type":"string","default":"dashicons dashicons-admin-site"},"iconAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"hoverEffect":{"type":"string","default":"none"},"iconStyles":{"type":"array","default":[{"iconColor":"","iconBack":"","iconHoverColor":"","iconHoverBack":"","iconOpacity":"1"}]},"urlCheck":{"type":"boolean"},"link":{"type":"string"},"target":{"type":"boolean"},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"iconSize":{"type":"object","default":{"Desktop":"50","Tablet":"50","Mobile":"50","unit":"px"}},"iconMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"iconPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"wrapMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"wrapPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"iconBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"containerBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"containerBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}},"containerShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}},"iconShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}}}}');
+module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/icon","title":"Icon","category":"premium-blocks","attributes":{"blockId":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"wrapBorder":{"type":"boolean","default":false},"iconType":{"type":"string","default":"dash"},"selectedIcon":{"type":"string","default":"dashicons dashicons-admin-site"},"iconAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"hoverEffect":{"type":"string","default":"none"},"iconStyles":{"type":"array","default":[{"iconColor":"","iconBack":"","iconHoverColor":"","iconHoverBack":"","iconOpacity":"1"}]},"urlCheck":{"type":"boolean"},"link":{"type":"string"},"target":{"type":"boolean"},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"iconSize":{"type":"object","default":{"Desktop":"50","Tablet":"50","Mobile":"50","unit":"px"}},"iconMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"iconPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"wrapMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"wrapPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"iconBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"containerBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"containerBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}},"containerShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}},"iconShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"borderHoverColor":{"type":"string","default":""}}}');
 
 /***/ }),
 

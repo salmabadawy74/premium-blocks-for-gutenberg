@@ -69,6 +69,7 @@ function Edit(props) {
         containerBackground,
         containerShadow,
         iconShadow,
+        borderHoverColor
     } = props.attributes;
 
     const EFFECTS = [
@@ -119,6 +120,7 @@ function Edit(props) {
         styles[` .${blockId} .premium-icon-container i:hover`] = {
             color: `${iconStyles[0].iconHoverColor} !important`,
             "background-color": `${iconStyles[0].iconHoverBack} !important`,
+            "border-color": `${borderHoverColor}!important`
         };
         return generateCss(styles);
     };
@@ -323,6 +325,22 @@ function Edit(props) {
                                                 })
                                             }
                                         />
+                                        {iconBorder.borderType != "none" && (
+                                            <AdvancedPopColorControl
+                                                label={__(
+                                                    "Border Color",
+                                                    "premium-blocks-for-gutenberg"
+                                                )}
+                                                colorValue={borderHoverColor}
+                                                colorDefault={""}
+                                                onColorChange={(newValue) =>
+                                                    setAttributes({
+                                                        borderHoverColor:
+                                                            newValue
+                                                    })
+                                                }
+                                            />
+                                        )}
                                         <SelectControl
                                             label={__(
                                                 "Hover Effect",

@@ -2,7 +2,8 @@ const className = "premium-icon";
 import classnames from 'classnames'
 const { __ } = wp.i18n;
 import hexToRgba from 'hex-to-rgba'
-
+import { useBlockProps } from "@wordpress/block-editor";
+import { gradientBackground, filterJsCss, generateCss } from '@pbg/helpers';
 
 const attributes = {
     iconBorder: {
@@ -425,8 +426,103 @@ const new_attributes = {
     },
 }
 
+const v7Attributes = {
+    "borderHoverColor": {
+        "type": "string",
+        "default": ""
+    }
+}
+
 const deprecated_attributes = Object.assign(attributes, new_attributes);
 const deprecatedContent = [
+    {
+        attributes: Object.assign(attributes, v7Attributes),
+        migrate: attributes => {
+            let newAttributes = {
+                borderHoverColor: ''
+            };
+            return Object.assign(attributes, newAttributes);
+        },
+        save: props => {
+            const {
+                blockId,
+                iconBorder,
+                selectedIcon,
+                hoverEffect,
+                iconStyles,
+                urlCheck,
+                link,
+                target,
+                hideDesktop,
+                hideTablet,
+                hideMobile,
+                containerBorder,
+                containerBackground,
+                containerShadow,
+                iconShadow
+            } = props.attributes;
+
+            const loadStyles = () => {
+                const styles = {};
+                styles[` .${blockId} .premium-icon-container i:hover`] = {
+                    'color': `${iconStyles[0].iconHoverColor} !important`,
+                    'background-color': `${iconStyles[0].iconHoverBack} !important`
+                };
+                return generateCss(styles);
+            }
+
+            return (
+                <div
+                    {...useBlockProps.save({
+                        className: classnames(
+                            className,
+                            `premium-icon ${blockId} premium-icon__container`,
+                            {
+                                " premium-desktop-hidden": hideDesktop,
+                                " premium-tablet-hidden": hideTablet,
+                                " premium-mobile-hidden": hideMobile,
+                            }
+                        ),
+                    })}
+                >
+                    <style
+                        dangerouslySetInnerHTML={{
+                            __html: loadStyles()
+                        }}
+                    />
+                    <div
+                        className={`premium-icon-container`}
+                        style={filterJsCss({
+                            ...gradientBackground(containerBackground),
+                            borderStyle: containerBorder.borderType,
+                            borderColor: containerBorder.borderColor,
+                            boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`
+                        })}
+                    >
+                        <a
+                            className={`premium-icon__link`}
+                            href={urlCheck && link}
+                            rel="noopener noreferrer"
+                            target={target ? "_blank" : "_self"}
+                        >
+                            <div className={`premium-icon-hover premium-icon__${hoverEffect}`}>
+                                <i
+                                    className={`premium-icon ${selectedIcon}`}
+                                    style={filterJsCss({
+                                        color: iconStyles[0].iconColor,
+                                        backgroundColor: iconStyles[0].iconBack,
+                                        borderStyle: iconBorder.borderType,
+                                        borderColor: iconBorder.borderColor,
+                                        textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`
+                                    })}
+                                />
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            );
+        }
+    },
     {
         attributes: attributes,
         migrate: attributes => {
