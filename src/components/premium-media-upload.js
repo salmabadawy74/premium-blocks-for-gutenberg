@@ -10,6 +10,7 @@ export default function PremiumMediaUpload(props) {
         type,
         imageID,
         imageURL,
+        title,
         onSelectMedia = () => { },
         onRemoveImage = () => { },
     } = props;
@@ -49,7 +50,7 @@ export default function PremiumMediaUpload(props) {
                     {!imageURL && (
                         <div onClick={open} className={"premium-placeholder-image"}>
                             <div className={`premium-blocks-control-media__tools`}>
-                                <div className={`premium-blocks-control-media__tool`}> {__('Choose Image', 'premium-blocks-for-gutenberg')}</div>
+                                <div className={`premium-blocks-control-media__tool`}> {title ? title : __('Choose Image', 'premium-blocks-for-gutenberg')}</div>
                             </div>
                         </div>
                     )}

@@ -343,6 +343,7 @@ $icon-background: #696969;
     align-items: center;
     border: 1px dashed #dddd;
     padding: 20px 20px 25px;
+    margin-bottom: 20px !important;
     text-align: center;
     background: #ffffff;
     cursor: copy;
@@ -4546,7 +4547,7 @@ i.fipicon-angle-left {
                     height: 28px !important;
                     font-size: 11px !important;
                     padding-left: 38px !important;
-                    border: 1px solid $option-border-color  !important;
+                    border: 1px solid $option-border-color !important;
                     border-radius: 0 !important;
                 }
 
