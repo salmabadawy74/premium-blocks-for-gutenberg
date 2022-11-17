@@ -215,7 +215,6 @@ function Edit(props) {
         styles[
             `.${blockId} .premium-banner__inner:hover .premium-banner__bg-overlay`
         ] = {
-            // 'opacity': `${(hoverBackground == "" || hoverBackground == undefined) ? 0 : ''}`,
             "background-color": `${hoverBackground ? hoverBackground : ''} !important`,
         };
 
