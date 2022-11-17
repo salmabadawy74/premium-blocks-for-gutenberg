@@ -150,9 +150,9 @@ function Edit(props) {
             if (videoURL.startsWith("http") || videoURL.startsWith("https")) {
                 return loop
                     ? `1&playlist=${videoURL.replace(
-                          "https://www.youtube.com/watch?v=",
-                          ""
-                      )}`
+                        "https://www.youtube.com/watch?v=",
+                        ""
+                    )}`
                     : "0";
             } else {
                 return loop ? `1&playlist=${videoURL}` : "0";
@@ -270,6 +270,7 @@ function Edit(props) {
                                     type="video"
                                     imageID={videoID}
                                     imageURL={videoURL}
+                                    title={__("Choose File", "premium-blocks-for-gutenberg")}
                                     onSelectMedia={(media) => {
                                         setAttributes({
                                             videoURL: media.url,
@@ -458,7 +459,7 @@ function Edit(props) {
                                                     savePlayStyles({
                                                         playSize:
                                                             newValue ===
-                                                            undefined
+                                                                undefined
                                                                 ? 20
                                                                 : newValue,
                                                     })
@@ -476,7 +477,7 @@ function Edit(props) {
                                                     savePlayStyles({
                                                         playTop:
                                                             newValue ===
-                                                            undefined
+                                                                undefined
                                                                 ? 50
                                                                 : newValue,
                                                     })
@@ -743,11 +744,9 @@ function Edit(props) {
                 })}
                 style={{
                     ...borderCss(boxBorder, props.deviceType),
-                    boxShadow: `${boxShadow.horizontal || 0}px ${
-                        boxShadow.vertical || 0
-                    }px ${boxShadow.blur || 10}px ${boxShadow.color} ${
-                        boxShadow.position
-                    }`,
+                    boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical || 0
+                        }px ${boxShadow.blur || 10}px ${boxShadow.color} ${boxShadow.position
+                        }`,
                 }}
             >
                 <div
@@ -823,15 +822,12 @@ function Edit(props) {
                                                     src={`${onChangeVideoURL(
                                                         videoType,
                                                         videoURL
-                                                    )}?autoplay=${
-                                                        overlay ? 0 : autoPlay
-                                                    }&loop=${loopVideo()}&mute${
-                                                        "vimeo" == videoType
+                                                    )}?autoplay=${overlay ? 0 : autoPlay
+                                                        }&loop=${loopVideo()}&mute${"vimeo" == videoType
                                                             ? "d"
                                                             : ""
-                                                    }=${mute}&rel="0"&controls=${
-                                                        controls ? "1" : "0"
-                                                    }`}
+                                                        }=${mute}&rel="0"&controls=${controls ? "1" : "0"
+                                                        }`}
                                                     frameborder="0"
                                                     gesture="media"
                                                     allow="encrypted-media"

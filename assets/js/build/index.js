@@ -49845,6 +49845,7 @@ function Edit(props) {
     type: "video",
     imageID: videoID,
     imageURL: videoURL,
+    title: __("Choose File", "premium-blocks-for-gutenberg"),
     onSelectMedia: media => {
       setAttributes({
         videoURL: media.url,

@@ -8508,6 +8508,7 @@ function PremiumMediaUpload(props) {
     type,
     imageID,
     imageURL,
+    title,
     onSelectMedia = () => {},
     onRemoveImage = () => {}
   } = props;
@@ -8555,7 +8556,7 @@ function PremiumMediaUpload(props) {
         className: `premium-blocks-control-media__tools`
       }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
         className: `premium-blocks-control-media__tool`
-      }, " ", __('Choose Image', 'premium-blocks-for-gutenberg')))));
+      }, " ", title ? title : __('Choose Image', 'premium-blocks-for-gutenberg')))));
     }
   });
 }
