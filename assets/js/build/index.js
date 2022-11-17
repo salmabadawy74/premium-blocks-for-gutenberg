@@ -7683,7 +7683,166 @@ const v8Attributes = {
   }
 };
 const v9Attributes = {
-  padding: {
+  "blockId": {
+    "type": "string"
+  },
+  "borderBanner": {
+    "type": "boolean",
+    "default": false
+  },
+  "imageID": {
+    "type": "number"
+  },
+  "imageURL": {
+    "type": "string"
+  },
+  "titleStyles": {
+    "type": "array",
+    "default": [{
+      "titleColor": "",
+      "titleBack": ""
+    }]
+  },
+  "titleTextShadow": {
+    "type": "object",
+    "default": {
+      "color": "undefined",
+      "blur": "10",
+      "horizontal": "0",
+      "vertical": "0"
+    }
+  },
+  "descStyles": {
+    "type": "array",
+    "default": [{
+      "descColor": ""
+    }]
+  },
+  "descTextShadow": {
+    "type": "object",
+    "default": {
+      "color": "undefined",
+      "blur": "10",
+      "horizontal": "0",
+      "vertical": "0",
+      "position": " "
+    }
+  },
+  "containerStyles": {
+    "type": "array",
+    "default": [{
+      "paddingU": "px"
+    }]
+  },
+  "containerShadow": {
+    "type": "object",
+    "default": {
+      "color": "undefined",
+      "blur": "10",
+      "horizontal": "0",
+      "vertical": "0",
+      "position": " "
+    }
+  },
+  "title": {
+    "type": "array",
+    "source": "children",
+    "selector": ".premium-banner__title",
+    "default": "Awesome Title"
+  },
+  "titleTag": {
+    "type": "string",
+    "default": "h3"
+  },
+  "desc": {
+    "type": "array",
+    "source": "children",
+    "selector": ".premium-banner__desc",
+    "default": "Cool Description!!"
+  },
+  "contentAlign": {
+    "type": "object",
+    "default": {
+      "Desktop": "left",
+      "Tablet": "left",
+      "Mobile": "left"
+    }
+  },
+  "effect": {
+    "type": "string",
+    "default": "effect1"
+  },
+  "hoverEffect": {
+    "type": "string",
+    "default": "none"
+  },
+  "height": {
+    "type": "string",
+    "default": "default"
+  },
+  "minHeight": {
+    "type": "number"
+  },
+  "verAlign": {
+    "type": "string",
+    "default": "top"
+  },
+  "hovered": {
+    "type": "boolean",
+    "default": false
+  },
+  "responsive": {
+    "type": "boolean",
+    "default": false
+  },
+  "background": {
+    "type": "string",
+    "default": ""
+  },
+  "urlCheck": {
+    "type": "boolean",
+    "default": false
+  },
+  "target": {
+    "type": "boolean",
+    "default": false
+  },
+  "url": {
+    "type": "string",
+    "source": "attribute",
+    "attribute": "href",
+    "selector": ".premium-banner__link"
+  },
+  "sepColor": {
+    "type": "string"
+  },
+  "filter": {
+    "type": "object",
+    "default": {
+      "contrast": "100",
+      "blur": "0",
+      "bright": "100",
+      "saturation": "100",
+      "hue": "0"
+    }
+  },
+  "hideDesktop": {
+    "type": "boolean",
+    "default": ""
+  },
+  "hideTablet": {
+    "type": "boolean",
+    "default": ""
+  },
+  "hideMobile": {
+    "type": "boolean",
+    "default": ""
+  },
+  "classMigrate": {
+    "type": "boolean",
+    "default": false
+  },
+  "padding": {
     "type": "object",
     "default": {
       "Desktop": {
@@ -7707,7 +7866,7 @@ const v9Attributes = {
       "unit": "px"
     }
   },
-  border: {
+  "border": {
     "type": "object",
     "default": {
       "borderType": "none",
@@ -7754,7 +7913,7 @@ const v9Attributes = {
       }
     }
   },
-  titleTypography: {
+  "titleTypography": {
     "type": "object",
     "default": {
       "fontWeight": "Default",
@@ -7782,7 +7941,7 @@ const v9Attributes = {
       }
     }
   },
-  descTypography: {
+  "descTypography": {
     "type": "object",
     "default": {
       "fontWeight": "Default",
@@ -7809,10 +7968,14 @@ const v9Attributes = {
         "unit": "px"
       }
     }
+  },
+  "hoverBackground": {
+    "type": "string",
+    "default": ""
   }
 };
 const deprecatedContent = [{
-  attributes: v9Attributes,
+  attributes: Object.assign(v8Attributes, v9Attributes),
   migrate: attributes => {
     let newAttributes = {
       hoverBackground: ''
@@ -9372,7 +9535,6 @@ function Edit(props) {
       background: sepColor
     };
     styles[`.${blockId} .premium-banner__inner:hover .premium-banner__bg-overlay`] = {
-      // 'opacity': `${(hoverBackground == "" || hoverBackground == undefined) ? 0 : ''}`,
       "background-color": `${hoverBackground ? hoverBackground : ''} !important`
     };
     return (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.generateCss)(styles);
@@ -9895,7 +10057,6 @@ const save = props => {
       background: sepColor
     };
     styles[`.${blockId} .premium-banner__inner:hover .premium-banner__bg-overlay`] = {
-      // 'opacity': `${(hoverBackground == "" || hoverBackground == undefined) ? 0 : ''}`,
       "background-color": `${hoverBackground ? hoverBackground : ''} !important`
     };
     return (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.generateCss)(styles);
