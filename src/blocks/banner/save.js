@@ -52,14 +52,8 @@ const save = (props) => {
         styles[
             `.${blockId} .premium-banner__inner:hover .premium-banner__bg-overlay`
         ] = {
-            'opacity': `${(hoverBackground == "" || hoverBackground == undefined) ? 0 : ''}`,
-            "background-color": `${hoverBackground ? hoverBackground : ''}`,
-        };
-
-        styles[
-            `.${blockId} .premium-banner__inner .premium-banner__bg-overlay`
-        ] = {
-            "background-color": `${background ? background : ''}`,
+            // 'opacity': `${(hoverBackground == "" || hoverBackground == undefined) ? 0 : ''}`,
+            "background-color": `${hoverBackground ? hoverBackground : ''} !important`,
         };
 
         return generateCss(styles);
@@ -91,7 +85,10 @@ const save = (props) => {
                     })}
                 >
                     <div
-                        className="premium-banner__bg-overlay"
+                        className={`premium-banner__bg-overlay ${(hoverBackground == "" || hoverBackground == undefined) ? 'premium-banner-hover-overlay' : ''}`}
+                        style={filterJsCss({
+                            backgroundColor: `${background}`,
+                        })}
                     ></div>
                     <div
                         className={`premium-banner__img_wrap premium-banner__${height}`}
