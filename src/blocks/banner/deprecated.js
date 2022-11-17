@@ -642,9 +642,6 @@ const v9Attributes = {
 const deprecatedContent = [
     {
         attributes: v9Attributes,
-        isEligible() {
-            return true;
-        },
         migrate: attributes => {
             let newAttributes = {
                 hoverBackground: ''

@@ -57,6 +57,12 @@ $pbBorderColor: #e1e1e1;
     z-index: 2;
 }
 
+.premium-banner__inner:hover {
+    .premium-banner-hover-overlay {
+        opacity: 0;
+    }
+}
+
 .premium-banner {
     .premium-banner__img {
         display: block;
