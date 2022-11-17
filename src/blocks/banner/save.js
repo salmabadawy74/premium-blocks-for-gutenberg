@@ -37,6 +37,7 @@ const save = (props) => {
         descTextShadow,
         containerShadow,
         blockId,
+        hoverBackground
     } = props.attributes;
 
     const loadStyles = () => {
@@ -46,6 +47,19 @@ const save = (props) => {
             `.${blockId} .premium-banner__effect3 .premium-banner__title_wrap::after`
         ] = {
             background: sepColor,
+        };
+
+        styles[
+            `.${blockId} .premium-banner__inner:hover .premium-banner__bg-overlay`
+        ] = {
+            'opacity': `${(hoverBackground == "" || hoverBackground == undefined) ? 0 : ''}`,
+            "background-color": `${hoverBackground ? hoverBackground : ''}`,
+        };
+
+        styles[
+            `.${blockId} .premium-banner__inner .premium-banner__bg-overlay`
+        ] = {
+            "background-color": `${background ? background : ''}`,
         };
 
         return generateCss(styles);
@@ -78,9 +92,6 @@ const save = (props) => {
                 >
                     <div
                         className="premium-banner__bg-overlay"
-                        style={filterJsCss({
-                            backgroundColor: `${background}`,
-                        })}
                     ></div>
                     <div
                         className={`premium-banner__img_wrap premium-banner__${height}`}
