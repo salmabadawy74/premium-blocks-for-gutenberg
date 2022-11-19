@@ -36,11 +36,13 @@ const ColorsScreen = () => {
             {colorPalette === 'pbg' &&
                 <ColorPalettes value={colorPalettes} onChange={setColorPalettes} />
             }
-            <CheckboxControl
-                label={__('Apply to Native Blocks', "premium-blocks-for-gutenberg")}
-                checked={applyColorsToDefault}
-                onChange={() => setApplyColorsToDefault(!applyColorsToDefault)}
-            />
+            {colorPalette === 'pbg' && (
+                <CheckboxControl
+                    label={__('Apply to Native Blocks', "premium-blocks-for-gutenberg")}
+                    checked={applyColorsToDefault}
+                    onChange={() => setApplyColorsToDefault(!applyColorsToDefault)}
+                />
+            )}
         </div>
     </>
 }
