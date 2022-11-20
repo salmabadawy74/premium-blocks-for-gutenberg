@@ -67,7 +67,7 @@ function Edit(props) {
                 titleTag: attributes?.titleTag
                     ? attributes.titleTag.toLowerCase()
                     : "h2",
-                style: "none",
+                style: "default",
             },
         ],
         [
@@ -76,9 +76,9 @@ function Edit(props) {
                 text: attributes?.descText
                     ? attributes.descText[0]
                     : __(
-                          "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.",
-                          "premium-blocks-for-gutenberg"
-                      ),
+                        "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.",
+                        "premium-blocks-for-gutenberg"
+                    ),
             },
         ],
         [
