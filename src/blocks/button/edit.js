@@ -33,6 +33,8 @@ const { PanelBody, SelectControl, ToggleControl } = wp.components;
 const { Fragment, useEffect } = wp.element;
 const { InspectorControls, RichText, URLInput, useBlockProps } = wp.blockEditor;
 const { withSelect } = wp.data;
+import { buttonsPresets } from "./presets";
+import UAGPresets from "../../components/Presets";
 
 function Edit(props) {
     const { setAttributes, className, clientId } = props;
@@ -252,6 +254,11 @@ function Edit(props) {
                             className="premium-panel-body"
                             initialOpen={true}
                         >
+                            <UAGPresets
+                                setAttributes={setAttributes}
+                                presets={buttonsPresets}
+                                presetInputType="radioImage"
+                            />
                             <SelectControl
                                 options={EFFECTS}
                                 label={__(

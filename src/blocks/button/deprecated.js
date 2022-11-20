@@ -5,6 +5,7 @@ import { generateBlockId } from "../../components/HelperFunction";
 const { __ } = wp.i18n;
 
 const { RichText } = wp.editor;
+import UAGPresets from "../../components/Presets";
 
 const attributes = {
     borderButton: {

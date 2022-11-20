@@ -273,7 +273,8 @@
   transition-property: background, color, opacity, -webkit-box-shadow;
   -o-transition-property: background, color, box-shadow, opacity;
   transition-property: background, color, box-shadow, opacity;
-  transition-property: background, color, box-shadow, opacity, -webkit-box-shadow;
+  transition-property: background, color, box-shadow, opacity,
+ -webkit-box-shadow;
   -webkit-transition-duration: 0.3s;
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
@@ -322,7 +323,8 @@
   transition-property: background, color, opacity, -webkit-box-shadow;
   -o-transition-property: background, color, box-shadow, opacity;
   transition-property: background, color, box-shadow, opacity;
-  transition-property: background, color, box-shadow, opacity, -webkit-box-shadow;
+  transition-property: background, color, box-shadow, opacity,
+ -webkit-box-shadow;
   -webkit-transition-duration: 0.3s;
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s; }
@@ -411,13 +413,14 @@
   margin-left: -16px;
   margin-right: -16px;
   border-top: 0 !important;
-  top: 0 !important; }
+  top: 0 !importantpremium
 
 .components-button.uagb-rm-btn {
   margin-left: 10px; }
 
 .rfipbtn {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+ Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 14px;
   line-height: 1.71429;
   vertical-align: baseline;
@@ -456,7 +459,8 @@
     font-size: 14px; }
 
 .rfipdropdown {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+ Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 14px;
   line-height: 1.71429;
   vertical-align: baseline;
@@ -3295,7 +3299,8 @@ i.fipicon-angle-left:before {
     border: 1px solid #ddd !important;
     border-radius: 3px !important;
     box-shadow: 0 0 0 0 transparent;
-    transition: box-shadow 0.1s linear, background 0.1s linear, border-radius 0.1s linear, border-color 0.1s linear; }
+    transition: box-shadow 0.1s linear, background 0.1s linear,
+ border-radius 0.1s linear, border-color 0.1s linear; }
 
 .premium-color-popover-container .premium-advanced-color-container {
   display: flex;
@@ -3632,10 +3637,51 @@ i.fipicon-angle-left:before {
 .premium_blocks_descrption_range_Control {
   font-size: 12px;
   font-style: italic;
-  line-height: 1.4;
+ premiume-height: 1.4;premium
   color: #8e989f;
   margin-top: -15px;
   margin-bottom: 20px; }
+
+.uapremiumresets-main-wrap .uapremiumresets-radio-image-wrap {
+  display: grid;
+  gpremiumcolumn-gap: 16px;premium
+  grid-template-columns: repeat(2, 1fr);
+  grid-row-gap: 14px; }
+  .premium-presets-main-wrap .premium-presets-radio-image-wrap .uag-presets-radio-input {
+    display: none; }
+  .uagb-presets-main-wrap .uagb-presets-radio-image-wrap .uag-presets-radio-input-label {
+    position: relative;
+    display: inline-block; }
+  .uagb-presets-main-wrap .uagb-presets-radio-image-wrap svg {
+    width: 100%;
+    height: auto;
+    border-radius: 3px;
+   premiuml: #898e95;premium
+    border: 1px solid #dadada;
+    color: #898e95;
+   premiumkground-color: #f0f0premium
+    transition: background 0.08s ease, box-shadow 0.08s ease; }
+  .uagb-presets-main-wrap .uagb-presets-radio-image-wrap .uag-presets-radio-input:checked + .uag-presets-radio-input-label svg {
+    background-color: #007cba;
+    border: 1px solid #00608f; }
+  .uagb-presets-main-wrap .uagb-presets-radio-image-wrap .uag-presets-radio-image-clickable {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+ premiumeft: 0;
+    right: 0;
+    width: 100%;
+ premiumeight: 100%; }
+
+.uagb-inspector-tab .components-panel__body .uag-presets-label {
+  line-height: 2.4; }
+premium
+.uagb-presets-label-reset-wrap {
+  display: flex;
+  justify-content: space-between; }
+
+.uagb-presets-main-wrap.border-none svg {
+  border: none; }
 
 .premium-typohraphy-value {
   display: flex;
