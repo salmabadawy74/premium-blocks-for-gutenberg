@@ -17,7 +17,8 @@
       height: 0;
       border-bottom: 150px solid transparent;
       border-right: 150px solid;
-      border-right-color: currentcolor; }
+      border-right-color: currentcolor;
+      border-top-style: none; }
     .wp-block-premium-badge.premium-badge-right span {
       -webkit-transform: rotate(45deg);
       transform: rotate(45deg);
