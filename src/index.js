@@ -28,6 +28,7 @@ import "./blocks/text"
 import "./blocks/badge"
 import "./blocks/image"
 import "./blocks/icon-group"
+import "./blocks/progress-bar"
 
 window.PremiumOptionsSettings = {
     FontAwesomeEnabled,

@@ -31,7 +31,8 @@ module.exports = function (grunt) {
         "text",
         "badge",
         "image",
-        "icon-group"
+        "icon-group",
+        "progress-bar"
     ];
     const sassFiles = {};
     const minifyFiles = {};

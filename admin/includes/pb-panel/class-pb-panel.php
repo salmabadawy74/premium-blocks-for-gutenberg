@@ -132,6 +132,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 				'person'           => true,
 				'container'        => true,
 				'content-switcher' => true,
+				'progress-bar'     => true,
 			);
 
 			return array_merge( $default_options, $options );
@@ -505,6 +506,14 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 						'all',
 						'content',
 						'creative',
+					),
+				),
+				'progress-bar' => array(
+					'type'     => 'pb-button',
+					'label'    => __( 'progress Bar', 'premium-blocks-for-gutenberg' ),
+					'icon'     => 'progress_bar',
+					'category' => array(
+						'all'
 					),
 				),
 			);
