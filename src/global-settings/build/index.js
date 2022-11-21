@@ -20702,10 +20702,6 @@ const PremiumGlobalStyles = () => {
     var _siteEditorDom$conten, _siteEditorDom$conten2, _siteEditorDom$conten3;
 
     const loadStyleSheet = editorDom => {
-      if (editorDom) {
-        console.log(editorDom);
-      }
-
       const css = loadGlobalStyles({
         globalColors,
         colorPalette,

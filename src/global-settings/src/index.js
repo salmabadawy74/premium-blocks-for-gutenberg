@@ -334,9 +334,6 @@ const PremiumGlobalStyles = () => {
 
     useEffect(() => {
         const loadStyleSheet = (editorDom) => {
-            if (editorDom) {
-                console.log(editorDom);
-            }
             const css = loadGlobalStyles({ globalColors, colorPalette, globalTypography, deviceType, applyColorsToDefault, applyTypographyToDefault });
             const styleSheet = editorDom.querySelector('#premium-style-preview-css');
 
