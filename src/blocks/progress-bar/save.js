@@ -2,8 +2,7 @@ import classnames from "classnames";
 import { gradientBackground, generateCss, filterJsCss } from '@pbg/helpers';
 const { useBlockProps, InnerBlocks } = wp.blockEditor;
 
-const save = props => {
-    const { className } = props;
+export default function save({ attributes }) {
 
     const {
         blockId,
@@ -46,65 +45,119 @@ const save = props => {
         fillBackground,
         progressBarMargin,
         percentageMargin,
-        labelMargin
-    } = props.attributes;
+        labelMargin,
+        progressBarSize,
+        showIcon
+    } = attributes;
+
+    const blockProps = useBlockProps.save({
+        className: classnames("premium-progress-bar", blockId, {
+            ['premium-desktop-hidden']: hideDesktop,
+            ['premium-tablet-hidden']: hideTablet,
+            ['premium-mobile-hidden']: hideMobile,
+        })
+    })
 
     return (
-        <div
-            {...useBlockProps.save({
-                className: classnames(
-                    className,
-                    `${blockId}`,
-                    `premium-progress-bar`,
-                    {
-                        " premium-desktop-hidden": hideDesktop,
-                        " premium-tablet-hidden": hideTablet,
-                        " premium-mobile-hidden": hideMobile,
-                    }
-                )
-            })}
+        <div {...blockProps}
+            data-score={`${progress}`}
+            data-speed={`${speeds}`}
+            data-type={`${progressType}`}
         >
-            < div className="premium-progress-bar-labels-wrap" >
-                {label ? <p
-                    className="premium-progress-bar-left-label"
-                    style={filterJsCss({
-                        color: labelColor
-                    })}
-                >
-                    <span>{label}</span>
-                </p> : ""}
-                {percentage ? < p
-                    className="premium-progress-bar-right-label"
-                    style={filterJsCss({
-                        color: percentageColor
-                    })}
-                >
-                    <span > {
-                        percentage
-                    } </span>
-                </p> : ""}
-            </div>
+            {progressType == 'line' &&
+                < div className="premium-progress-bar-labels-wrap" >
+                    {label &&
+                        <p
+                            className="premium-progress-bar-left-label"
+                            style={{
+                                color: labelColor
+                            }}
+                        >
+                            <span>{label}</span>
+                        </p>
+                    }
+                    {percentage &&
+                        < p
+                            className="premium-progress-bar-right-label"
+                            style={{
+                                color: percentageColor
+                            }}
+                        >
+                            <span>{percentage} </span>
+                        </p>
+                    }
+                </div>
+            }
             <div className="premium-progress-bar-clear"></div>
-            <div
-                className="premium-progress-bar-progress"
-                style={filterJsCss({
-                    ...gradientBackground(baseBackground)
-                })}
-            >
-                < div className={
-                    `premium-progress-bar-progress-bar ${styleProgress == 'stripe' ? "premium-progress-bar-progress-stripe" : ""} ${animate ? "premium-progress-bar-progress-active" : ""}`
-                }
-                    style={filterJsCss({
-                        ...gradientBackground(fillBackground),
-                        transition: `width ${speeds}s ease-in-out`,
-                        width: `${progress}%`,
-                    })}
-                    data-score={`${progress}`}
-                    data-speed={`${speeds}`}
-                > </div>
-            </div>
+            {progressType == 'line' &&
+                <div
+                    className="premium-progress-bar-wrap"
+                    style={{
+                        ...gradientBackground(baseBackground),
+                    }}
+                >
+                    < div className={
+                        `premium-progress-bar-bar ${styleProgress == 'stripe' ? "premium-progress-bar-progress-stripe" : ""} ${animate ? "premium-progress-bar-progress-active" : ""}`
+                    }
+                        style={{
+                            ...gradientBackground(fillBackground),
+                            transition: `width ${speeds}s ease-in-out`,
+                            width: `${progress}%`,
+                        }}
+                        data-score={`${progress}`}
+                        data-speed={`${speeds}`}
+                    > </div>
+                </div>
+            }
+            {progressType == 'half-circle' &&
+                <div className="premium-progressbar-hf-wrapper">
+                    <div
+                        className="premium-progressbar-hf-circle-wrap"
+                    >
+                        <div
+                            className="premium-progressbar-hf-container"
+                        >
+                            <div className="premium-progressbar-hf-circle">
+                                <div className="premium-progressbar-hf-circle-progress"></div>
+                            </div>
+                            <div className="premium-progressbar-circle-inner"></div>
+                        </div>
+                        <div className="premium-progressbar-circle-content">
+                            {showIcon && <InnerBlocks
+                                template={INNER_BLOCKS_TEMPLATE}
+                                templateLock={false}
+                                allowedBlocks={["premium/icon"]}
+                            />}
+                            {label &&
+                                <p
+                                    className="premium-progress-bar-left-label"
+                                    style={{
+                                        color: labelColor
+                                    }}
+                                >
+                                    <span>{label}</span>
+                                </p>
+                            }
+                            {percentage &&
+                                < p
+                                    className="premium-progress-bar-right-label"
+                                    style={{
+                                        color: percentageColor
+                                    }}
+                                >
+                                    <span>{percentage} </span>
+                                </p>
+                            }
+                        </div>
+                    </div>
+                    <div
+                        className="premium-progressbar-hf-labels"
+                    >
+                        <span className="premium-progressbar-hf-label-left">0</span>
+                        <span className="premium-progressbar-hf-label-right">100</span>
+                    </div>
+                </div>
+            }
         </div>
     );
 };
-
-export default save;

@@ -10,48 +10,155 @@
   to {
     background-position: 40px 0; } }
 
-.premium-progress-bar-left-label {
-  margin: 0;
-  float: left;
-  font-family: "Roboto", Sans-serif; }
-
-.premium-progress-bar-right-label {
-  margin: 0;
-  float: right;
-  font-family: "Roboto", Sans-serif; }
-
-.premium-progress-bar-labels-wrap {
-  display: flex;
-  justify-content: space-between;
-  align-items: center; }
-
-.premium-progress-bar-progress {
-  position: relative;
-  text-align: left;
-  overflow: hidden;
-  margin-bottom: 50px;
-  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-  border-radius: 0px;
-  height: 25px;
-  border-radius: 0px; }
-
-.premium-progress-bar-progress-bar {
-  position: absolute;
-  overflow: hidden;
-  line-height: 20px;
-  float: left;
-  line-height: 20px;
-  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-  -webkit-transition: width 0s ease-in-out !important;
-  transition: width 0s ease-in-out !important;
-  height: 25px;
-  width: 50%;
-  border-radius: 0px; }
-
-.premium-progress-bar-clear {
-  clear: both; }
+.premium-progress-bar {
+  position: relative; }
+  .premium-progress-bar .premium-progress-bar-labels-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+    .premium-progress-bar .premium-progress-bar-labels-wrap .premium-progress-bar-left-label {
+      margin: 0;
+      float: left; }
+    .premium-progress-bar .premium-progress-bar-labels-wrap .premium-progress-bar-right-label {
+      margin: 0;
+      float: right; }
+  .premium-progress-bar .premium-progress-bar-clear {
+    clear: both; }
+  .premium-progress-bar .premium-progress-bar-wrap {
+    position: relative;
+    text-align: left;
+    overflow: hidden;
+    margin-bottom: 50px;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 0px;
+    height: 25px;
+    border-radius: 0px;
+    background-color: #f5f5f5; }
+    .premium-progress-bar .premium-progress-bar-wrap .premium-progress-bar-bar {
+      position: absolute;
+      overflow: hidden;
+      float: left;
+      -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+      box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+      -webkit-transition: width 0s ease-in-out !important;
+      transition: width 0s ease-in-out !important;
+      width: 0%;
+      height: 100%;
+      border-radius: 0px;
+      background-color: #793DC2 !important; }
+    .premium-progress-bar .premium-progress-bar-wrap .premium-progress-bar-progress-stripe {
+      background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+      background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+      background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+      -webkit-background-size: 40px 40px;
+      background-size: 40px 40px; }
+    .premium-progress-bar .premium-progress-bar-wrap .premium-progress-bar-progress-active {
+      -webkit-animation: move 2s linear infinite;
+      animation: move 2s linear infinite; }
+  .premium-progress-bar .premium-progressbar-hf-wrapper * {
+    box-sizing: border-box; }
+  .premium-progress-bar .premium-progressbar-hf-circle-wrap {
+    width: 200px;
+    height: calc(200 / 2 * 1px);
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden; }
+    .premium-progress-bar .premium-progressbar-hf-circle-wrap .premium-progressbar-hf-container {
+      position: relative;
+      width: 200px;
+      height: 200px; }
+      .premium-progress-bar .premium-progressbar-hf-circle-wrap .premium-progressbar-hf-container .premium-progressbar-hf-circle {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-clip-path: inset(0 0 50% 0);
+        clip-path: inset(0 0 50% 0); }
+        .premium-progress-bar .premium-progressbar-hf-circle-wrap .premium-progressbar-hf-container .premium-progressbar-hf-circle .premium-progressbar-hf-circle-progress {
+          transform: rotate(90deg);
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 100%;
+          width: 100%;
+          border: 12px solid #000;
+          -webkit-border-radius: 50%;
+          border-radius: 50%;
+          -webkit-clip-path: inset(50% 0 0 0);
+          clip-path: inset(50% 0 0 0);
+          -webkit-transform: rotate(0);
+          -ms-transform: rotate(0);
+          transform: rotate(0);
+          -webkit-transition: -webkit-transform 1.5s linear;
+          transition: -webkit-transform 1.5s linear;
+          transition: transform 1.5s linear;
+          transition: transform 1.5s linear,-webkit-transform 1.5s linear; }
+      .premium-progress-bar .premium-progressbar-hf-circle-wrap .premium-progressbar-hf-container .premium-progressbar-circle-inner {
+        height: 100%;
+        width: 100%;
+        border: 12px solid #eee;
+        -webkit-border-radius: 50%;
+        border-radius: 50%; }
+    .premium-progress-bar .premium-progressbar-hf-circle-wrap .premium-progressbar-circle-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      -js-display: flex;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+      -moz-box-orient: vertical;
+      -moz-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+      -moz-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -moz-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      text-align: center; }
+      .premium-progress-bar .premium-progressbar-hf-circle-wrap .premium-progressbar-circle-content .premium-progress-bar-left-label {
+        margin: 0;
+        float: left;
+        -webkit-box-ordinal-group: 2;
+        -webkit-order: 1;
+        -moz-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+        order: 1; }
+      .premium-progress-bar .premium-progressbar-hf-circle-wrap .premium-progressbar-circle-content .premium-progress-bar-right-label {
+        margin: 0;
+        float: right; }
+  .premium-progress-bar .premium-progressbar-hf-labels {
+    width: 200px;
+    margin: 0 auto;
+    position: relative;
+    font-size: 12px;
+    font-weight: 400;
+    -js-display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between; }
 
 .premium-progress-bar-multiple-label {
   position: relative;
@@ -118,17 +225,6 @@
   margin-bottom: 1em; }
   .premium-progress-bar-repeater-controls:not(.editable) {
     display: none; }
-
-.premium-progress-bar-progress-stripe {
-  background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  -webkit-background-size: 40px 40px;
-  background-size: 40px 40px; }
-
-.premium-progress-bar-progress-active {
-  -webkit-animation: move 2s linear infinite;
-  animation: move 2s linear infinite; }
 
 .premium-progress-bar-arrow {
   left: 20%;

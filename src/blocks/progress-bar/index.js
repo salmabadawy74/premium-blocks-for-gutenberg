@@ -1,25 +1,22 @@
-// import { pricingTable } from "../../../assets/js/settings";
+import { registerBlockType } from '@wordpress/blocks';
+
+import { __ } from '@wordpress/i18n';
+
 import PBG_Block_Icons from '../../../assets/icons/block-icons'
-import edit from "./edit";
-import save from "./save";
+
+/**
+ * Internal dependencies
+ */
 import json from './block.json';
+import edit from './edit';
+import save from './save';
 
-const { registerBlockType } = wp.blocks;
+const { name } = json;
 
-const { __ } = wp.i18n;
-
-
-registerBlockType("premium/progress-bar", {
+registerBlockType(name, {
     ...json,
-    title: __("progress Bar"),
-    description: __('progress Bar', 'premium-block-for-gutenberg'),
     icon: PBG_Block_Icons.progressBar,
-    category: "premium-blocks",
-    keywords: [__("progress Bar", 'premium-blocks-for-gutenberg'), __("Progress", 'premium-blocks-for-gutenberg'), __("bar", 'premium-blocks-for-gutenberg')],
-    // supports: {
-    //     inserter: pricingTable
-    // },
     example: {},
-    edit: edit,
-    save: save
+    edit,
+    save
 });

@@ -1,9 +1,16 @@
 {
+    "$schema": "https://schemas.wp.org/trunk/block.json",
     "apiVersion": 2,
-    "version": "0.1.0",
     "name": "premium/progress-bar",
     "title": "progress Bar",
     "category": "premium-blocks",
+    "description": "My Block Description.",
+    "keywords": [
+        "progress Bar",
+        "progress",
+        "bar"
+    ],
+    "textdomain": "default",
     "attributes": {
         "blockId": {
             "type": "string"
@@ -50,11 +57,11 @@
         },
         "progressBarColor": {
             "type": "string",
-            "default": "#6ec1e4"
+            "default": "#793DC2"
         },
         "labelColor": {
             "type": "string",
-            "default": "#6ec1e4"
+            "default": "#793DC2"
         },
         "LabelLetter": {
             "type": "number",
@@ -89,7 +96,7 @@
         },
         "arrowColor": {
             "type": "string",
-            "default": "#6ec1e4"
+            "default": "#793DC2"
         },
         "arrow": {
             "type": "number",
@@ -109,7 +116,7 @@
         },
         "percentageColor": {
             "type": "string",
-            "default": "#6ec1e4"
+            "default": "#793DC2"
         },
         "percentageLetter": {
             "type": "number",
@@ -219,6 +226,14 @@
                 "Tablet": "25",
                 "Mobile": "25",
                 "unit": "px"
+            }
+        },
+        "progressBarSize": {
+            "type": "object",
+            "default": {
+                "Desktop": "200",
+                "Tablet": "200",
+                "Mobile": "200"
             }
         },
         "progressBarRadius": {
@@ -395,6 +410,10 @@
                 },
                 "unit": "px"
             }
+        },
+        "showIcon": {
+            "type": "boolean",
+            "default": false
         }
     }
 }

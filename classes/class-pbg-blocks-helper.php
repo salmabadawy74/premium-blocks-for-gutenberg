@@ -387,6 +387,9 @@ class PBG_Blocks_Helper
 				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/switcher-child.php';
 				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/content-switcher.php';
 				register_block_pbg_content_switcher();
+			} elseif ($slug === 'progress-bar') {
+				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/progress-bar.php';
+				register_block_pbg_progress_bar();
 			}
 		}
 
@@ -577,16 +580,6 @@ class PBG_Blocks_Helper
 			'premium/maps',
 			array(
 				'render_callback' => array($this, 'get_maps_css'),
-				'editor_style'    => 'premium-blocks-editor-css',
-				'editor_script'   => 'pbg-blocks-js',
-
-			)
-		);
-
-		register_block_type(
-			'premium/progress-bar',
-			array(
-				'render_callback' => array($this, 'get_progress_bar_css'),
 				'editor_style'    => 'premium-blocks-editor-css',
 				'editor_script'   => 'pbg-blocks-js',
 
@@ -6450,178 +6443,6 @@ class PBG_Blocks_Helper
 
 			$css->set_selector($unique_id . ' .premium-maps__desc');
 			$css->add_property('text-align', $css->get_responsive_css($attr['boxAlign'], 'Mobile'));
-		}
-
-		$css->stop_media_query();
-		return $css->css_output();
-	}
-
-	/**
-	 * Get Progress bar Block Content & Style
-	 *
-	 * @access public
-	 *
-	 * @param string $attributes option For attribute.
-	 * @param string $contnet for content of Block.
-	 */
-	public function get_progress_bar_css($attributes, $content)
-	{
-		if (isset($attributes['blockId']) && !empty($attributes['blockId'])) {
-			$unique_id = $attributes['blockId'];
-		} else {
-			$unique_id = rand(100, 10000);
-		}
-
-		wp_enqueue_style(
-			'pbg-progress-bar-style',
-			PREMIUM_BLOCKS_URL . 'assets/css/minified/progress-bar.min.css',
-			array(),
-			PREMIUM_BLOCKS_VERSION,
-			'all'
-		);
-
-		$style_id = 'pbg-blocks-style' . esc_attr($unique_id);
-		if (!wp_style_is($style_id, 'enqueued') && apply_filters('Premium_BLocks_blocks_render_inline_css', true, 'progress-bar', $unique_id)) {
-			$css = $this->get_progress_bar_css_style($attributes, $unique_id);
-
-			if (!empty($css)) {
-				if ($this->should_render_inline('progress-bar', $unique_id)) {
-					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
-				} else {
-					$this->render_inline_css($css, $style_id, true);
-				}
-			}
-		};
-		return $content;
-	}
-
-	/**
-	 * Get Progress bar Block CSS
-	 *
-	 * Return Frontend CSS for Progress bar Block.
-	 *
-	 * @access public
-	 *
-	 * @param string $attr option attribute.
-	 * @param string $unique_id option For  block ID.
-	 */
-	public function get_progress_bar_css_style($attr, $unique_id)
-	{
-		$css                    = new Premium_Blocks_css();
-		$media_query            = array();
-		$media_query['mobile']  = apply_filters('Premium_BLocks_mobile_media_query', '(max-width: 767px)');
-		$media_query['tablet']  = apply_filters('Premium_BLocks_tablet_media_query', '(max-width: 1024px)');
-		$media_query['desktop'] = apply_filters('Premium_BLocks_tablet_media_query', '(min-width: 1025px)');
-		
-		if (isset($attr['align'])) {
-			$css->set_selector('.' . $unique_id );
-			$css->add_property('text-align', $css->get_responsive_css($attr['align'], 'Desktop'));
-		}
-
-		//label styles
-		if (isset($attr['labelTypography'])) {
-			$css->set_selector('.' . $unique_id . '> .premium-progress-bar-labels-wrap' . '> .premium-progress-bar-left-label');
-			$css->render_typography($attr['labelTypography'], 'Desktop');
-		}
-
-		if (isset($attr['labelMargin'])) {
-			$label_margin = $attr['labelMargin'];
-			$css->set_selector('.' . $unique_id . '> .premium-progress-bar-labels-wrap' . '> .premium-progress-bar-left-label');
-			$css->add_property('margin', $css->render_spacing($label_margin['Desktop'], $label_margin['unit']));
-		}
-
-		//percentage styles
-		if (isset($attr['percentageTypography'])) {
-			$css->set_selector('.' . $unique_id . '> .premium-progress-bar-labels-wrap' . '> .premium-progress-bar-right-label');
-			$css->render_typography($attr['percentageTypography'], 'Desktop');
-		}
-
-		if (isset($attr['percentageMargin'])) {
-			$percentage_margin = $attr['percentageMargin'];
-			$css->set_selector('.' . $unique_id . '> .premium-progress-bar-labels-wrap' . '> .premium-progress-bar-right-label');
-			$css->add_property('margin', $css->render_spacing($percentage_margin['Desktop'], $percentage_margin['unit']));
-		}
-
-		if (isset($attr['progressBarMargin'])) {
-			$progressBar_margin = $attr['progressBarMargin'];
-			$css->set_selector('.' . $unique_id . '> .premium-progress-bar-progress');
-			$css->add_property('margin', $css->render_spacing($progressBar_margin['Desktop'], $progressBar_margin['unit']));
-		}
-
-
-		$css->start_media_query($media_query['tablet']);
-
-		if (isset($attr['align'])) {
-			$css->set_selector('.' . $unique_id );
-			$css->add_property('text-align', $css->get_responsive_css($attr['align'], 'Tablet'));
-		}
-
-		//label styles
-		if (isset($attr['labelTypography'])) {
-			$css->set_selector('.' . $unique_id . '> .premium-progress-bar-labels-wrap' . '> .premium-progress-bar-left-label');
-			$css->render_typography($attr['labelTypography'], 'Tablet');
-		}
-
-		if (isset($attr['labelMargin'])) {
-			$label_margin = $attr['labelMargin'];
-			$css->set_selector('.' . $unique_id . '> .premium-progress-bar-labels-wrap' . '> .premium-progress-bar-left-label');
-			$css->add_property('margin', $css->render_spacing($label_margin['Tablet'], $label_margin['unit']));
-		}
-
-		//percentage styles
-		if (isset($attr['percentageTypography'])) {
-			$css->set_selector('.' . $unique_id . '> .premium-progress-bar-labels-wrap' . '> .premium-progress-bar-right-label');
-			$css->render_typography($attr['percentageTypography'], 'Tablet');
-		}
-
-		if (isset($attr['percentageMargin'])) {
-			$percentage_margin = $attr['percentageMargin'];
-			$css->set_selector('.' . $unique_id . '> .premium-progress-bar-labels-wrap' . '> .premium-progress-bar-right-label');
-			$css->add_property('margin', $css->render_spacing($percentage_margin['Tablet'], $percentage_margin['unit']));
-		}
-
-		if (isset($attr['progressBarMargin'])) {
-			$progressBar_margin = $attr['progressBarMargin'];
-			$css->set_selector('.' . $unique_id . '> .premium-progress-bar-progress');
-			$css->add_property('margin', $css->render_spacing($progressBar_margin['Tablet'], $progressBar_margin['unit']));
-		}
-
-		$css->stop_media_query();
-		$css->start_media_query($media_query['mobile']);
-
-		if (isset($attr['align'])) {
-			$css->set_selector('.' . $unique_id );
-			$css->add_property('text-align', $css->get_responsive_css($attr['align'], 'Mobile'));
-		}
-
-		//label styles
-		if (isset($attr['labelTypography'])) {
-			$css->set_selector('.' . $unique_id . '> .premium-progress-bar-labels-wrap' . '> .premium-progress-bar-left-label');
-			$css->render_typography($attr['labelTypography'], 'Mobile');
-		}
-
-		if (isset($attr['labelMargin'])) {
-			$label_margin = $attr['labelMargin'];
-			$css->set_selector('.' . $unique_id . '> .premium-progress-bar-labels-wrap' . '> .premium-progress-bar-left-label');
-			$css->add_property('margin', $css->render_spacing($label_margin['Mobile'], $label_margin['unit']));
-		}
-
-		//percentage styles
-		if (isset($attr['percentageTypography'])) {
-			$css->set_selector('.' . $unique_id . '> .premium-progress-bar-labels-wrap' . '> .premium-progress-bar-right-label');
-			$css->render_typography($attr['percentageTypography'], 'Mobile');
-		}
-
-		if (isset($attr['percentageMargin'])) {
-			$percentage_margin = $attr['percentageMargin'];
-			$css->set_selector('.' . $unique_id . '> .premium-progress-bar-labels-wrap' . '> .premium-progress-bar-right-label');
-			$css->add_property('margin', $css->render_spacing($percentage_margin['Mobile'], $percentage_margin['unit']));
-		}
-
-		if (isset($attr['progressBarMargin'])) {
-			$progressBar_margin = $attr['progressBarMargin'];
-			$css->set_selector('.' . $unique_id . '> .premium-progress-bar-progress');
-			$css->add_property('margin', $css->render_spacing($progressBar_margin['Mobile'], $progressBar_margin['unit']));
 		}
 
 		$css->stop_media_query();
