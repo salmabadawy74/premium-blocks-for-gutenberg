@@ -6784,6 +6784,191 @@ const save = props => {
 
 /***/ }),
 
+/***/ "./src/blocks/badge/deprecated/index.js":
+/*!**********************************************!*\
+  !*** ./src/blocks/badge/deprecated/index.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _v1__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./v1 */ "./src/blocks/badge/deprecated/v1.js");
+
+const deprecated = [_v1__WEBPACK_IMPORTED_MODULE_0__["default"]];
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (deprecated);
+
+/***/ }),
+
+/***/ "./src/blocks/badge/deprecated/v1.js":
+/*!*******************************************!*\
+  !*** ./src/blocks/badge/deprecated/v1.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @pbg/helpers */ "@pbg/helpers");
+/* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+const attributes = {
+  "blockId": {
+    "type": "string"
+  },
+  "hideDesktop": {
+    "type": "boolean",
+    "default": false
+  },
+  "hideTablet": {
+    "type": "boolean",
+    "default": false
+  },
+  "hideMobile": {
+    "type": "boolean",
+    "default": false
+  },
+  "typography": {
+    "type": "object",
+    "default": {
+      "fontWeight": "400",
+      "fontStyle": "",
+      "letterSpacing": {
+        "Desktop": "",
+        "Tablet": "",
+        "Mobile": "",
+        "unit": "px"
+      },
+      "fontFamily": "Default",
+      "lineHeight": {
+        "Desktop": "",
+        "Tablet": "",
+        "Mobile": "",
+        "unit": "px"
+      },
+      "textDecoration": "",
+      "textTransform": "",
+      "fontSize": {
+        "Desktop": "",
+        "Tablet": "",
+        "Mobile": "",
+        "unit": "px"
+      }
+    }
+  },
+  "color": {
+    "type": "string",
+    "default": "#fff"
+  },
+  "backgroundColor": {
+    "type": "string",
+    "default": "#793DC3"
+  },
+  "text": {
+    "type": "string",
+    "default": "Popular"
+  },
+  "textWidth": {
+    "type": "number"
+  },
+  "badgeSize": {
+    "type": "number"
+  },
+  "position": {
+    "type": "string",
+    "default": "right"
+  },
+  "vOffset": {
+    "type": "number"
+  },
+  "hOffset": {
+    "type": "number"
+  }
+};
+const deprecated = {
+  attributes: attributes,
+
+  isEligible(attributes) {
+    return attributes.backgroundColor;
+  },
+
+  migrate: attributes => {
+    let newAttributes = {
+      backgroundColor: attributes.backgroundColor || 'var(--pbg-global-color1,#793dc3)'
+    };
+    return Object.assign(attributes, newAttributes);
+  },
+  save: _ref => {
+    let {
+      attributes
+    } = _ref;
+    const {
+      blockId,
+      hideDesktop,
+      hideTablet,
+      hideMobile,
+      color,
+      typography,
+      text,
+      position,
+      vOffset,
+      hOffset,
+      backgroundColor,
+      textWidth,
+      badgeSize
+    } = attributes;
+    const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
+      className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(blockId, `premium-badge-${position}`, {
+        ['premium-desktop-hidden']: hideDesktop,
+        ['premium-tablet-hidden']: hideTablet,
+        ['premium-mobile-hidden']: hideMobile
+      }),
+      style: {
+        top: `${vOffset || 0}px`,
+        [position]: `${hOffset || 0}px`
+      }
+    });
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "premium-badge-wrap",
+      style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
+        borderRightColor: "right" === position ? backgroundColor : "transparent",
+        borderTopColor: "left" === position ? backgroundColor : "transparent",
+        borderBottomWidth: "right" === position && `${badgeSize}px`,
+        borderRightWidth: `${badgeSize}px`,
+        borderTopWidth: "left" === position && `${badgeSize}px`
+      })
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+      tagName: "span",
+      value: text,
+      style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
+        color: color,
+        width: `${textWidth}px`,
+        fontStyle: typography === null || typography === void 0 ? void 0 : typography.fontStyle,
+        fontFamily: typography === null || typography === void 0 ? void 0 : typography.fontFamily,
+        fontWeight: typography === null || typography === void 0 ? void 0 : typography.fontWeight,
+        textDecoration: typography === null || typography === void 0 ? void 0 : typography.textDecoration,
+        textTransform: typography === null || typography === void 0 ? void 0 : typography.textTransform
+      })
+    })));
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (deprecated);
+
+/***/ }),
+
 /***/ "./src/blocks/badge/edit.js":
 /*!**********************************!*\
   !*** ./src/blocks/badge/edit.js ***!
@@ -7036,12 +7221,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./block.json */ "./src/blocks/badge/block.json");
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./edit */ "./src/blocks/badge/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./save */ "./src/blocks/badge/save.js");
+/* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/badge/deprecated/index.js");
 
 
 
 /**
  * Internal dependencies
  */
+
 
 
 
@@ -7056,7 +7243,8 @@ const {
    */
   icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_2__["default"] === null || _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_2__["default"] === void 0 ? void 0 : _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_2__["default"].badge_icon,
   edit: _edit__WEBPACK_IMPORTED_MODULE_4__["default"],
-  save: _save__WEBPACK_IMPORTED_MODULE_5__["default"]
+  save: _save__WEBPACK_IMPORTED_MODULE_5__["default"],
+  deprecated: _deprecated__WEBPACK_IMPORTED_MODULE_6__["default"]
 });
 
 /***/ }),
@@ -16307,10 +16495,28 @@ const variations = [{
 
 /***/ }),
 
-/***/ "./src/blocks/content-switcher/deprecated.js":
-/*!***************************************************!*\
-  !*** ./src/blocks/content-switcher/deprecated.js ***!
-  \***************************************************/
+/***/ "./src/blocks/content-switcher/deprecated/index.js":
+/*!*********************************************************!*\
+  !*** ./src/blocks/content-switcher/deprecated/index.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _v1__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./v1 */ "./src/blocks/content-switcher/deprecated/v1.js");
+
+const deprecated = [_v1__WEBPACK_IMPORTED_MODULE_0__["default"]];
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (deprecated);
+
+/***/ }),
+
+/***/ "./src/blocks/content-switcher/deprecated/v1.js":
+/*!******************************************************!*\
+  !*** ./src/blocks/content-switcher/deprecated/v1.js ***!
+  \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -16331,10 +16537,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const attributes = {
-  blockId: {
+  "blockId": {
     "type": "string"
   },
-  align: {
+  "align": {
     "type": "object",
     "default": {
       "Desktop": "center",
@@ -16342,31 +16548,31 @@ const attributes = {
       "Mobile": "center"
     }
   },
-  showLabel: {
+  "showLabel": {
     "type": "boolean",
     "default": true
   },
-  firstLabel: {
+  "firstLabel": {
     "type": "string",
     "default": "Content #1"
   },
-  secondLabel: {
+  "secondLabel": {
     "type": "string",
     "default": "Content #2"
   },
-  display: {
+  "display": {
     "type": "string",
     "default": "inline"
   },
-  labelTag: {
+  "labelTag": {
     "type": "string",
     "default": "h3"
   },
-  backgroundTypeState2: {
+  "backgroundTypeState2": {
     "type": "string",
     "default": ""
   },
-  labelStyles: {
+  "labelStyles": {
     "type": "object",
     "default": {
       "firstLabelColor": "",
@@ -16375,17 +16581,17 @@ const attributes = {
       "secondLabelBGColor": ""
     }
   },
-  firstStateColor: {
+  "firstStateColor": {
     "type": "string"
   },
-  secondStateColor: {
+  "secondStateColor": {
     "type": "string"
   },
-  switcherBGColor: {
+  "switcherBGColor": {
     "type": "string",
     "default": "rgb(242, 242, 242)"
   },
-  firstLabelPadding: {
+  "firstLabelPadding": {
     "type": "object",
     "default": {
       "Desktop": {
@@ -16409,7 +16615,7 @@ const attributes = {
       "unit": "px"
     }
   },
-  secondLabelPadding: {
+  "secondLabelPadding": {
     "type": "object",
     "default": {
       "Desktop": {
@@ -16433,7 +16639,7 @@ const attributes = {
       "unit": "px"
     }
   },
-  containerPadding: {
+  "containerPadding": {
     "type": "object",
     "default": {
       "Desktop": {
@@ -16457,7 +16663,7 @@ const attributes = {
       "unit": "px"
     }
   },
-  containerMargin: {
+  "containerMargin": {
     "type": "object",
     "default": {
       "Desktop": {
@@ -16481,29 +16687,29 @@ const attributes = {
       "unit": "px"
     }
   },
-  switchSize: {
+  "switchSize": {
     "type": "object",
     "default": {
       "Desktop": 15
     }
   },
-  containerRadius: {
+  "containerRadius": {
     "type": "number",
     "default": 50
   },
-  containerRadiusUnit: {
+  "containerRadiusUnit": {
     "type": "string",
     "default": "%"
   },
-  switchRadius: {
+  "switchRadius": {
     "type": "number",
     "default": "1.5"
   },
-  switchRadiusUnit: {
+  "switchRadiusUnit": {
     "type": "string",
     "default": "em"
   },
-  labelSpacing: {
+  "labelSpacing": {
     "type": "object",
     "default": {
       "Desktop": "15",
@@ -16511,7 +16717,7 @@ const attributes = {
       "Mobile": ""
     }
   },
-  containerShadow: {
+  "containerShadow": {
     "type": "object",
     "default": {
       "color": "undefined",
@@ -16521,7 +16727,7 @@ const attributes = {
       "position": ""
     }
   },
-  switchShadow: {
+  "switchShadow": {
     "type": "object",
     "default": {
       "color": "undefined",
@@ -16531,7 +16737,7 @@ const attributes = {
       "position": ""
     }
   },
-  firstLabelShadow: {
+  "firstLabelShadow": {
     "type": "object",
     "default": {
       "color": "undefined",
@@ -16540,7 +16746,7 @@ const attributes = {
       "vertical": "0"
     }
   },
-  firstLabelBoxShadow: {
+  "firstLabelBoxShadow": {
     "type": "object",
     "default": {
       "color": "undefined",
@@ -16550,7 +16756,7 @@ const attributes = {
       "position": ""
     }
   },
-  firstLabelTypography: {
+  "firstLabelTypography": {
     "type": "object",
     "default": {
       "fontWeight": "Default",
@@ -16578,7 +16784,7 @@ const attributes = {
       }
     }
   },
-  firstLabelborder: {
+  "firstLabelborder": {
     "type": "object",
     "default": {
       "borderColor": "",
@@ -16625,7 +16831,7 @@ const attributes = {
       }
     }
   },
-  secondLabelTypography: {
+  "secondLabelTypography": {
     "type": "object",
     "default": {
       "fontWeight": "Default",
@@ -16653,7 +16859,7 @@ const attributes = {
       }
     }
   },
-  secondLabelShadow: {
+  "secondLabelShadow": {
     "type": "object",
     "default": {
       "color": "undefined",
@@ -16662,7 +16868,7 @@ const attributes = {
       "vertical": "0"
     }
   },
-  secondLabelBoxShadow: {
+  "secondLabelBoxShadow": {
     "type": "object",
     "default": {
       "color": "undefined",
@@ -16672,7 +16878,7 @@ const attributes = {
       "position": ""
     }
   },
-  secondLabelborder: {
+  "secondLabelborder": {
     "type": "object",
     "default": {
       "borderColor": "",
@@ -16719,7 +16925,7 @@ const attributes = {
       }
     }
   },
-  containerBoxShadow: {
+  "containerBoxShadow": {
     "type": "object",
     "default": {
       "color": "undefined",
@@ -16729,7 +16935,7 @@ const attributes = {
       "position": ""
     }
   },
-  containerborder: {
+  "containerborder": {
     "type": "object",
     "default": {
       "borderColor": "",
@@ -16776,19 +16982,19 @@ const attributes = {
       }
     }
   },
-  hideDesktop: {
+  "hideDesktop": {
     "type": "boolean",
     "default": ""
   },
-  hideTablet: {
+  "hideTablet": {
     "type": "boolean",
     "default": ""
   },
-  hideMobile: {
+  "hideMobile": {
     "type": "boolean",
     "default": ""
   },
-  controllerOneBackground: {
+  "controllerOneBackground": {
     "type": "object",
     "default": {
       "backgroundType": "",
@@ -16807,7 +17013,7 @@ const attributes = {
       "gradientType": "linear"
     }
   },
-  switcherBackground: {
+  "switcherBackground": {
     "type": "object",
     "default": {
       "backgroundType": "",
@@ -16826,7 +17032,7 @@ const attributes = {
       "gradientType": "linear"
     }
   },
-  containerBackground: {
+  "containerBackground": {
     "type": "object",
     "default": {
       "backgroundType": "",
@@ -16845,24 +17051,21 @@ const attributes = {
       "gradientType": "linear"
     }
   }
-}; // const new_attributes = {
-//     switchRadius: {
-//         "type": "number",
-//         "default": 50
-//     },
-//     switchRadiusUnit: {
-//         "type": "string",
-//         "default": "px"
-//     },
-// }
-// const deprecated_attributes = Object.assign(attributes, new_attributes);
-
-const deprecated = [{
+};
+const deprecated = {
   attributes: attributes,
+
+  isEligible(attributes) {
+    return attributes.controllerOneBackground || attributes.switchRadius || attributes.switchRadiusUnit;
+  },
+
   migrate: attributes => {
     let newAttributes = {
       switchRadius: attributes.switchRadius || '50',
-      switchRadiusUnit: attributes.switchRadiusUnit || 'px'
+      switchRadiusUnit: attributes.switchRadiusUnit || 'px',
+      controllerOneBackground: (attributes === null || attributes === void 0 ? void 0 : attributes.controllerOneBackground) && { ...attributes.controllerOneBackground,
+        backgroundColor: 'var(--pbg-global-color1,#793dc3)'
+      }
     };
     return Object.assign(attributes, newAttributes);
   },
@@ -17003,7 +17206,7 @@ const deprecated = [{
       templateLock: "all"
     })))));
   }
-}];
+};
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (deprecated);
 
 /***/ }),
@@ -17204,7 +17407,7 @@ function Edit(props) {
     styles[`.${blockId} .premium-content-switcher-toggle-switch-slider:before `] = {
       "border-radius": `${containerRadius || 50}${containerRadiusUnit} !important`,
       "box-shadow": ` ${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position} !important`,
-      "background-color": `${controllerOneBackground.backgroundType == "solid" ? controllerOneBackground.backgroundColor : "#793dc3"}`,
+      "background-color": `${controllerOneBackground.backgroundType == "solid" ? controllerOneBackground.backgroundColor : "var(--pbg-global-color1,#793dc3)"}`,
       "background-image": `${(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_5__.gradientValue)(controllerOneBackground)}`,
       "background-repeat": `${controllerOneBackground.backgroundRepeat}`,
       "background-position": `${controllerOneBackground.backgroundPosition}`,
@@ -17655,7 +17858,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/blocks/content-switcher/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./save */ "./src/blocks/content-switcher/save.js");
 /* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
-/* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/content-switcher/deprecated.js");
+/* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/content-switcher/deprecated/index.js");
 const {
   __
 } = wp.i18n;
@@ -17755,7 +17958,7 @@ function save(props) {
     styles[`.${blockId} .premium-content-switcher-toggle-switch-slider:before `] = {
       "border-radius": `${containerRadius}${containerRadiusUnit} !important`,
       "box-shadow": ` ${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position} !important`,
-      "background-color": `${controllerOneBackground.backgroundType == "solid" ? controllerOneBackground.backgroundColor : "#793dc3"}`,
+      "background-color": `${controllerOneBackground.backgroundType == "solid" ? controllerOneBackground.backgroundColor : "var(--pbg-global-color1,#793dc3)"}`,
       "background-image": `${(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.gradientValue)(controllerOneBackground)}`,
       "background-repeat": `${controllerOneBackground.backgroundRepeat}`,
       "background-position": `${controllerOneBackground.backgroundPosition}`,
@@ -21127,14 +21330,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var hex_to_rgba__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! hex-to-rgba */ "./node_modules/hex-to-rgba/build/index.js");
-/* harmony import */ var hex_to_rgba__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(hex_to_rgba__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @pbg/helpers */ "@pbg/helpers");
+/* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var hex_to_rgba__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! hex-to-rgba */ "./node_modules/hex-to-rgba/build/index.js");
+/* harmony import */ var hex_to_rgba__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(hex_to_rgba__WEBPACK_IMPORTED_MODULE_4__);
 
 
+
+
+const {
+  RichText,
+  useBlockProps
+} = wp.blockEditor;
 const {
   __
 } = wp.i18n;
@@ -21769,10 +21981,536 @@ const v8Attriutes = {
     default: ""
   }
 };
+const v9Attributes = {
+  "blockId": {
+    "type": "string"
+  },
+  "align": {
+    "type": "object",
+    "default": {
+      "Desktop": "center",
+      "Tablet": "center",
+      "Mobile": "center"
+    }
+  },
+  "firstHeading": {
+    "type": "array",
+    "source": "children",
+    "default": "Premium ",
+    "selector": ".premium-dheading-block__first"
+  },
+  "secondHeading": {
+    "type": "array",
+    "source": "children",
+    "default": "Blocks",
+    "selector": ".premium-dheading-block__second"
+  },
+  "titleTag": {
+    "type": "string",
+    "default": "h1"
+  },
+  "display": {
+    "type": "string",
+    "default": "inline"
+  },
+  "firstStyles": {
+    "type": "array",
+    "default": [{
+      "firstClip": false,
+      "firstAnim": false,
+      "firstStroke": false,
+      "firstColor": "",
+      "firstBackground": "",
+      "firstOpacity": "1",
+      "firstClipColor": "#54595f"
+    }]
+  },
+  "firstShadow": {
+    "type": "object",
+    "default": {
+      "color": "undefined",
+      "blur": "10",
+      "horizontal": "0",
+      "vertical": "0"
+    }
+  },
+  "firstTypography": {
+    "type": "object",
+    "default": {
+      "fontWeight": "Default",
+      "fontStyle": "",
+      "fontFamily": "Default",
+      "textDecoration": "",
+      "textTransform": "",
+      "fontSize": {
+        "Desktop": "",
+        "Tablet": "",
+        "Mobile": "",
+        "unit": "px"
+      },
+      "letterSpacing": {
+        "Desktop": "",
+        "Tablet": "",
+        "Mobile": "",
+        "unit": "px"
+      },
+      "lineHeight": {
+        "Desktop": "",
+        "Tablet": "",
+        "Mobile": "",
+        "unit": "px"
+      }
+    }
+  },
+  "secondStyles": {
+    "type": "array",
+    "default": [{
+      "secondClip": false,
+      "secondAnim": false,
+      "secondStroke": false,
+      "secondColor": "#793DC4",
+      "secondBackground": "",
+      "secondOpacity": "",
+      "secondClipColor": "#6ec1e4",
+      "secondMarginL": "0",
+      "secondMarginR": "0",
+      "secondPadding": "0"
+    }]
+  },
+  "secondShadow": {
+    "type": "object",
+    "default": {
+      "color": "undefined",
+      "blur": "10",
+      "horizontal": "0",
+      "vertical": "0"
+    }
+  },
+  "secondTypography": {
+    "type": "object",
+    "default": {
+      "fontWeight": "Default",
+      "fontStyle": "",
+      "textTransform": "",
+      "fontFamily": "Default",
+      "textDecoration": "",
+      "fontSize": {
+        "Desktop": "",
+        "Tablet": "",
+        "Mobile": "",
+        "unit": "px"
+      },
+      "letterSpacing": {
+        "Desktop": "",
+        "Tablet": "",
+        "Mobile": "",
+        "unit": "px"
+      },
+      "lineHeight": {
+        "Desktop": "",
+        "Tablet": "",
+        "Mobile": "",
+        "unit": "px"
+      }
+    }
+  },
+  "background": {
+    "type": "object",
+    "default": {
+      "backgroundType": "",
+      "backgroundColor": "",
+      "backgroundImageID": "",
+      "backgroundImageURL": "",
+      "backgroundPosition": "",
+      "backgroundRepeat": "",
+      "backgroundSize": "",
+      "fixed": false,
+      "gradientLocationOne": "0",
+      "gradientColorTwo": "",
+      "gradientLocationTwo": "100",
+      "gradientAngle": "180",
+      "gradientPosition": "center center",
+      "gradientType": "linear"
+    }
+  },
+  "link": {
+    "type": "boolean",
+    "default": false
+  },
+  "target": {
+    "type": "boolean",
+    "default": false
+  },
+  "headingURL": {
+    "type": "string"
+  },
+  "hideDesktop": {
+    "type": "boolean",
+    "default": ""
+  },
+  "hideTablet": {
+    "type": "boolean",
+    "default": ""
+  },
+  "hideMobile": {
+    "type": "boolean",
+    "default": ""
+  },
+  "firstBorder": {
+    "type": "object",
+    "default": {
+      "borderType": "none",
+      "borderColor": "",
+      "borderWidth": {
+        "Desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        }
+      },
+      "borderRadius": {
+        "Desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        }
+      }
+    }
+  },
+  "secondBorder": {
+    "type": "object",
+    "default": {
+      "borderType": "none",
+      "borderColor": "",
+      "borderWidth": {
+        "Desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        }
+      },
+      "borderRadius": {
+        "Desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        }
+      }
+    }
+  },
+  "containerBorder": {
+    "type": "object",
+    "default": {
+      "borderType": "none",
+      "borderColor": "",
+      "borderWidth": {
+        "Desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        }
+      },
+      "borderRadius": {
+        "Desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        }
+      }
+    }
+  },
+  "firstPadding": {
+    "type": "object",
+    "default": {
+      "Desktop": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Tablet": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Mobile": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "unit": "px"
+    }
+  },
+  "firstMargin": {
+    "type": "object",
+    "default": {
+      "Desktop": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Tablet": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Mobile": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "unit": "px"
+    }
+  },
+  "secondPadding": {
+    "type": "object",
+    "default": {
+      "Desktop": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Tablet": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Mobile": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "unit": "px"
+    }
+  },
+  "secondMargin": {
+    "type": "object",
+    "default": {
+      "Desktop": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Tablet": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Mobile": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "unit": "px"
+    }
+  }
+};
 const deprecatedContent = [{
+  attributes: v9Attributes,
+
+  isEligible(attributes) {
+    var _attributes$secondSty;
+
+    return attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty = attributes.secondStyles) === null || _attributes$secondSty === void 0 ? void 0 : _attributes$secondSty.secondColor;
+  },
+
+  migrate: attributes => {
+    let newAttributes = {
+      secondColor: (attributes === null || attributes === void 0 ? void 0 : attributes.secondStyles) || [{
+        "secondClip": false,
+        "secondAnim": false,
+        "secondStroke": false,
+        "secondColor": "var(--pbg-global-color1,#793DC4)",
+        "secondBackground": "",
+        "secondOpacity": "",
+        "secondClipColor": "#6ec1e4",
+        "secondMarginL": "0",
+        "secondMarginR": "0",
+        "secondPadding": "0"
+      }]
+    };
+    return Object.assign(attributes, newAttributes);
+  },
+  save: props => {
+    var _firstStyles$, _firstStyles$2, _firstStyles$3, _firstStyles$4, _firstStyles$5, _firstStyles$6, _secondStyles$, _secondStyles$2, _secondStyles$3, _secondStyles$4, _secondStyles$5, _secondStyles$6;
+
+    const {
+      className
+    } = props;
+    const {
+      blockId,
+      firstHeading,
+      secondHeading,
+      display,
+      firstStyles,
+      secondStyles,
+      link,
+      target,
+      headingURL,
+      hideDesktop,
+      hideTablet,
+      hideMobile,
+      firstBorder,
+      secondBorder,
+      containerBorder,
+      firstTypography,
+      secondTypography,
+      background,
+      firstShadow,
+      secondShadow
+    } = props.attributes;
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, useBlockProps.save({
+      className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, `premium-dheading-block__container ${blockId}`, {
+        " premium-desktop-hidden": hideDesktop,
+        " premium-tablet-hidden": hideTablet,
+        " premium-mobile-hidden": hideMobile
+      })
+    }), {
+      style: {
+        borderStyle: containerBorder && containerBorder.borderType,
+        borderColor: containerBorder && containerBorder.borderColor,
+        ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.gradientBackground)(background)
+      }
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      className: `premium-dheading-block__wrap`
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", {
+      className: `premium-dheading-block__title`
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RichText.Content, {
+      className: `premium-dheading-block__first${firstStyles !== null && firstStyles !== void 0 && (_firstStyles$ = firstStyles[0]) !== null && _firstStyles$ !== void 0 && _firstStyles$.firstClip ? ` premium-headingc-${firstStyles === null || firstStyles === void 0 ? void 0 : (_firstStyles$2 = firstStyles[0]) === null || _firstStyles$2 === void 0 ? void 0 : _firstStyles$2.firstClip}` : ""}${firstStyles !== null && firstStyles !== void 0 && (_firstStyles$3 = firstStyles[0]) !== null && _firstStyles$3 !== void 0 && _firstStyles$3.firstAnim ? ` premium-headinga-${firstStyles === null || firstStyles === void 0 ? void 0 : (_firstStyles$4 = firstStyles[0]) === null || _firstStyles$4 === void 0 ? void 0 : _firstStyles$4.firstAnim}` : ""}${firstStyles !== null && firstStyles !== void 0 && (_firstStyles$5 = firstStyles[0]) !== null && _firstStyles$5 !== void 0 && _firstStyles$5.firstStroke ? ` premium-headings-${firstStyles === null || firstStyles === void 0 ? void 0 : (_firstStyles$6 = firstStyles[0]) === null || _firstStyles$6 === void 0 ? void 0 : _firstStyles$6.firstStroke}` : ""}`,
+      value: firstHeading,
+      tagName: "span",
+      style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
+        display: display,
+        color: firstStyles[0].firstColor,
+        backgroundColor: firstStyles[0].firstClip ? "none" : firstStyles[0].firstBackground,
+        backgroundImage: firstStyles[0].firstClip ? `linear-gradient(to left, ${firstStyles[0].firstColor}, ${firstStyles[0].firstClipColor})` : "none",
+        fontStyle: firstTypography === null || firstTypography === void 0 ? void 0 : firstTypography.fontStyle,
+        fontFamily: firstTypography === null || firstTypography === void 0 ? void 0 : firstTypography.fontFamily,
+        fontWeight: firstTypography === null || firstTypography === void 0 ? void 0 : firstTypography.fontWeight,
+        textDecoration: firstTypography === null || firstTypography === void 0 ? void 0 : firstTypography.textDecoration,
+        textTransform: firstTypography === null || firstTypography === void 0 ? void 0 : firstTypography.textTransform,
+        borderStyle: firstBorder && firstBorder.borderType,
+        borderColor: firstBorder && firstBorder.borderColor,
+        textShadow: `${firstShadow === null || firstShadow === void 0 ? void 0 : firstShadow.horizontal}px ${firstShadow === null || firstShadow === void 0 ? void 0 : firstShadow.vertical}px ${firstShadow === null || firstShadow === void 0 ? void 0 : firstShadow.blur}px ${firstShadow === null || firstShadow === void 0 ? void 0 : firstShadow.color}`
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RichText.Content, {
+      className: `premium-dheading-block__second${secondStyles !== null && secondStyles !== void 0 && (_secondStyles$ = secondStyles[0]) !== null && _secondStyles$ !== void 0 && _secondStyles$.secondClip ? `${` premium-headingc-${secondStyles === null || secondStyles === void 0 ? void 0 : (_secondStyles$2 = secondStyles[0]) === null || _secondStyles$2 === void 0 ? void 0 : _secondStyles$2.secondClip}`}` : ""}${secondStyles !== null && secondStyles !== void 0 && (_secondStyles$3 = secondStyles[0]) !== null && _secondStyles$3 !== void 0 && _secondStyles$3.secondAnim ? ` ${`premium-headinga-${secondStyles === null || secondStyles === void 0 ? void 0 : (_secondStyles$4 = secondStyles[0]) === null || _secondStyles$4 === void 0 ? void 0 : _secondStyles$4.secondAnim} `}` : ""}${secondStyles !== null && secondStyles !== void 0 && (_secondStyles$5 = secondStyles[0]) !== null && _secondStyles$5 !== void 0 && _secondStyles$5.secondStroke ? ` premium-headings-${secondStyles === null || secondStyles === void 0 ? void 0 : (_secondStyles$6 = secondStyles[0]) === null || _secondStyles$6 === void 0 ? void 0 : _secondStyles$6.secondStroke}` : ""}`,
+      tagName: "span",
+      value: secondHeading,
+      style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
+        display: display,
+        color: secondStyles[0].secondColor,
+        backgroundColor: secondStyles[0].secondClip ? "none" : secondStyles[0].secondBackground,
+        backgroundImage: secondStyles[0].secondClip ? `linear-gradient(to left, ${secondStyles[0].secondColor}, ${secondStyles[0].secondClipColor})` : "none",
+        fontStyle: secondTypography === null || secondTypography === void 0 ? void 0 : secondTypography.fontStyle,
+        fontFamily: secondTypography === null || secondTypography === void 0 ? void 0 : secondTypography.fontFamily,
+        fontWeight: secondTypography === null || secondTypography === void 0 ? void 0 : secondTypography.fontWeight,
+        textDecoration: secondTypography === null || secondTypography === void 0 ? void 0 : secondTypography.textDecoration,
+        textTransform: secondTypography === null || secondTypography === void 0 ? void 0 : secondTypography.textTransform,
+        borderStyle: secondBorder && secondBorder.borderType,
+        borderColor: secondBorder && secondBorder.borderColor,
+        textShadow: `${secondShadow === null || secondShadow === void 0 ? void 0 : secondShadow.horizontal}px ${secondShadow === null || secondShadow === void 0 ? void 0 : secondShadow.vertical}px ${secondShadow === null || secondShadow === void 0 ? void 0 : secondShadow.blur}px ${secondShadow === null || secondShadow === void 0 ? void 0 : secondShadow.color}`
+      })
+    })), link && headingURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
+      className: `premium-dheading-block__link`,
+      href: link && headingURL,
+      target: target && "_blank",
+      rel: "noopener noreferrer"
+    })));
+  }
+}, {
   attributes: v8Attriutes,
   migrate: attributes => {
-    var _attributes$firstStyl, _attributes$firstStyl2, _attributes$firstStyl3, _attributes$firstStyl4, _attributes$firstStyl5, _attributes$firstStyl6, _attributes$firstStyl7, _attributes$firstStyl8, _attributes$firstStyl9, _attributes$firstStyl10, _attributes$firstStyl11, _attributes$firstStyl12, _attributes$secondSty, _attributes$secondSty2, _attributes$secondSty3, _attributes$secondSty4, _attributes$secondSty5, _attributes$secondSty6, _attributes$secondSty7, _attributes$secondSty8, _attributes$secondSty9, _attributes$secondSty10, _attributes$secondSty11, _attributes$secondSty12, _attributes$container, _attributes$container2, _attributes$container3, _attributes$container4, _attributes$container5, _attributes$container6, _attributes$container7, _attributes$container8, _attributes$container9, _attributes$container10, _attributes$container11, _attributes$container12, _attributes$firstStyl13, _attributes$firstStyl14, _attributes$firstStyl15, _attributes$firstStyl16, _attributes$firstStyl17, _attributes$firstStyl18, _attributes$firstStyl19, _attributes$firstStyl20, _attributes$firstStyl21, _attributes$firstStyl22, _attributes$firstStyl23, _attributes$firstStyl24, _attributes$firstStyl25, _attributes$firstStyl26, _attributes$firstStyl27, _attributes$firstStyl28, _attributes$firstStyl29, _attributes$firstStyl30, _attributes$firstStyl31, _attributes$firstStyl32, _attributes$firstStyl33, _attributes$firstStyl34, _attributes$secondSty13, _attributes$secondSty14, _attributes$secondSty15, _attributes$secondSty16, _attributes$secondSty17, _attributes$secondSty18, _attributes$secondSty19, _attributes$secondSty20, _attributes$secondSty21, _attributes$secondSty22, _attributes$secondSty23, _attributes$secondSty24, _attributes$secondSty25, _attributes$secondSty26, _attributes$secondSty27, _attributes$secondSty28, _attributes$secondSty29, _attributes$secondSty30, _attributes$secondSty31, _attributes$secondSty32, _attributes$secondSty33, _attributes$secondSty34, _attributes$container13, _attributes$container14, _attributes$container15, _attributes$container16, _attributes$container17, _attributes$container18, _attributes$container19, _attributes$container20, _attributes$container21, _attributes$container22, _attributes$container23, _attributes$container24, _attributes$container25, _attributes$container26, _attributes$container27, _attributes$container28, _attributes$container29, _attributes$container30, _attributes$container31, _attributes$container32, _attributes$container33, _attributes$container34, _attributes$container35, _attributes$container36, _attributes$container37, _attributes$container38, _attributes$firstStyl35, _attributes$firstStyl36, _attributes$firstStyl37, _attributes$firstStyl38, _attributes$firstStyl39, _attributes$firstStyl40, _attributes$firstStyl41, _attributes$firstStyl42, _attributes$secondSty35, _attributes$secondSty36, _attributes$secondSty37, _attributes$secondSty38, _attributes$secondSty39, _attributes$secondSty40, _attributes$secondSty41, _attributes$secondSty42, _attributes$firstStyl43, _attributes$firstStyl44, _attributes$firstStyl45, _attributes$firstStyl46, _attributes$firstStyl47, _attributes$firstStyl48, _attributes$firstStyl49, _attributes$firstStyl50, _attributes$firstStyl51, _attributes$firstStyl52, _attributes$firstStyl53, _attributes$firstStyl54, _attributes$secondSty43, _attributes$secondSty44, _attributes$secondSty45, _attributes$secondSty46, _attributes$secondSty47, _attributes$secondSty48, _attributes$secondSty49, _attributes$secondSty50, _attributes$secondSty51, _attributes$secondSty52, _attributes$secondSty53, _attributes$secondSty54;
+    var _attributes$firstStyl, _attributes$firstStyl2, _attributes$firstStyl3, _attributes$firstStyl4, _attributes$firstStyl5, _attributes$firstStyl6, _attributes$firstStyl7, _attributes$firstStyl8, _attributes$firstStyl9, _attributes$firstStyl10, _attributes$firstStyl11, _attributes$firstStyl12, _attributes$secondSty2, _attributes$secondSty3, _attributes$secondSty4, _attributes$secondSty5, _attributes$secondSty6, _attributes$secondSty7, _attributes$secondSty8, _attributes$secondSty9, _attributes$secondSty10, _attributes$secondSty11, _attributes$secondSty12, _attributes$secondSty13, _attributes$container, _attributes$container2, _attributes$container3, _attributes$container4, _attributes$container5, _attributes$container6, _attributes$container7, _attributes$container8, _attributes$container9, _attributes$container10, _attributes$container11, _attributes$container12, _attributes$firstStyl13, _attributes$firstStyl14, _attributes$firstStyl15, _attributes$firstStyl16, _attributes$firstStyl17, _attributes$firstStyl18, _attributes$firstStyl19, _attributes$firstStyl20, _attributes$firstStyl21, _attributes$firstStyl22, _attributes$firstStyl23, _attributes$firstStyl24, _attributes$firstStyl25, _attributes$firstStyl26, _attributes$firstStyl27, _attributes$firstStyl28, _attributes$firstStyl29, _attributes$firstStyl30, _attributes$firstStyl31, _attributes$firstStyl32, _attributes$firstStyl33, _attributes$firstStyl34, _attributes$secondSty14, _attributes$secondSty15, _attributes$secondSty16, _attributes$secondSty17, _attributes$secondSty18, _attributes$secondSty19, _attributes$secondSty20, _attributes$secondSty21, _attributes$secondSty22, _attributes$secondSty23, _attributes$secondSty24, _attributes$secondSty25, _attributes$secondSty26, _attributes$secondSty27, _attributes$secondSty28, _attributes$secondSty29, _attributes$secondSty30, _attributes$secondSty31, _attributes$secondSty32, _attributes$secondSty33, _attributes$secondSty34, _attributes$secondSty35, _attributes$container13, _attributes$container14, _attributes$container15, _attributes$container16, _attributes$container17, _attributes$container18, _attributes$container19, _attributes$container20, _attributes$container21, _attributes$container22, _attributes$container23, _attributes$container24, _attributes$container25, _attributes$container26, _attributes$container27, _attributes$container28, _attributes$container29, _attributes$container30, _attributes$container31, _attributes$container32, _attributes$container33, _attributes$container34, _attributes$container35, _attributes$container36, _attributes$container37, _attributes$container38, _attributes$firstStyl35, _attributes$firstStyl36, _attributes$firstStyl37, _attributes$firstStyl38, _attributes$firstStyl39, _attributes$firstStyl40, _attributes$firstStyl41, _attributes$firstStyl42, _attributes$secondSty36, _attributes$secondSty37, _attributes$secondSty38, _attributes$secondSty39, _attributes$secondSty40, _attributes$secondSty41, _attributes$secondSty42, _attributes$secondSty43, _attributes$firstStyl43, _attributes$firstStyl44, _attributes$firstStyl45, _attributes$firstStyl46, _attributes$firstStyl47, _attributes$firstStyl48, _attributes$firstStyl49, _attributes$firstStyl50, _attributes$firstStyl51, _attributes$firstStyl52, _attributes$firstStyl53, _attributes$firstStyl54, _attributes$secondSty44, _attributes$secondSty45, _attributes$secondSty46, _attributes$secondSty47, _attributes$secondSty48, _attributes$secondSty49, _attributes$secondSty50, _attributes$secondSty51, _attributes$secondSty52, _attributes$secondSty53, _attributes$secondSty54, _attributes$secondSty55;
 
     let newAttributes = {
       blockId: attributes.accordionId ? `premium-dual-heading-${attributes.accordionId.split('-')[2]}` : '',
@@ -21826,8 +22564,8 @@ const deprecatedContent = [{
         }
       },
       secondBorder: {
-        "borderType": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty = attributes.secondStyles) === null || _attributes$secondSty === void 0 ? void 0 : (_attributes$secondSty2 = _attributes$secondSty[0]) === null || _attributes$secondSty2 === void 0 ? void 0 : _attributes$secondSty2.secondBorderType) || '',
-        "borderColor": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty3 = attributes.secondStyles) === null || _attributes$secondSty3 === void 0 ? void 0 : (_attributes$secondSty4 = _attributes$secondSty3[0]) === null || _attributes$secondSty4 === void 0 ? void 0 : _attributes$secondSty4.secondBorderColor) || '',
+        "borderType": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty2 = attributes.secondStyles) === null || _attributes$secondSty2 === void 0 ? void 0 : (_attributes$secondSty3 = _attributes$secondSty2[0]) === null || _attributes$secondSty3 === void 0 ? void 0 : _attributes$secondSty3.secondBorderType) || '',
+        "borderColor": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty4 = attributes.secondStyles) === null || _attributes$secondSty4 === void 0 ? void 0 : (_attributes$secondSty5 = _attributes$secondSty4[0]) === null || _attributes$secondSty5 === void 0 ? void 0 : _attributes$secondSty5.secondBorderColor) || '',
         "borderWidth": {
           Desktop: {
             top: (attributes === null || attributes === void 0 ? void 0 : attributes.secondBorderTop) || '',
@@ -21850,10 +22588,10 @@ const deprecatedContent = [{
         },
         "borderRadius": {
           Desktop: {
-            top: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty5 = attributes.secondStyles) === null || _attributes$secondSty5 === void 0 ? void 0 : (_attributes$secondSty6 = _attributes$secondSty5[0]) === null || _attributes$secondSty6 === void 0 ? void 0 : _attributes$secondSty6.secondBorderRadius) || '',
-            right: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty7 = attributes.secondStyles) === null || _attributes$secondSty7 === void 0 ? void 0 : (_attributes$secondSty8 = _attributes$secondSty7[0]) === null || _attributes$secondSty8 === void 0 ? void 0 : _attributes$secondSty8.secondBorderRadius) || '',
-            bottom: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty9 = attributes.secondStyles) === null || _attributes$secondSty9 === void 0 ? void 0 : (_attributes$secondSty10 = _attributes$secondSty9[0]) === null || _attributes$secondSty10 === void 0 ? void 0 : _attributes$secondSty10.secondBorderRadius) || '',
-            left: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty11 = attributes.secondStyles) === null || _attributes$secondSty11 === void 0 ? void 0 : (_attributes$secondSty12 = _attributes$secondSty11[0]) === null || _attributes$secondSty12 === void 0 ? void 0 : _attributes$secondSty12.secondBorderRadius) || ''
+            top: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty6 = attributes.secondStyles) === null || _attributes$secondSty6 === void 0 ? void 0 : (_attributes$secondSty7 = _attributes$secondSty6[0]) === null || _attributes$secondSty7 === void 0 ? void 0 : _attributes$secondSty7.secondBorderRadius) || '',
+            right: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty8 = attributes.secondStyles) === null || _attributes$secondSty8 === void 0 ? void 0 : (_attributes$secondSty9 = _attributes$secondSty8[0]) === null || _attributes$secondSty9 === void 0 ? void 0 : _attributes$secondSty9.secondBorderRadius) || '',
+            bottom: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty10 = attributes.secondStyles) === null || _attributes$secondSty10 === void 0 ? void 0 : (_attributes$secondSty11 = _attributes$secondSty10[0]) === null || _attributes$secondSty11 === void 0 ? void 0 : _attributes$secondSty11.secondBorderRadius) || '',
+            left: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty12 = attributes.secondStyles) === null || _attributes$secondSty12 === void 0 ? void 0 : (_attributes$secondSty13 = _attributes$secondSty12[0]) === null || _attributes$secondSty13 === void 0 ? void 0 : _attributes$secondSty13.secondBorderRadius) || ''
           },
           Tablet: {
             top: '',
@@ -21939,10 +22677,10 @@ const deprecatedContent = [{
         }
       },
       secondTypography: {
-        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty13 = attributes.secondStyles) === null || _attributes$secondSty13 === void 0 ? void 0 : (_attributes$secondSty14 = _attributes$secondSty13[0]) === null || _attributes$secondSty14 === void 0 ? void 0 : _attributes$secondSty14.secondWeight) || '',
-        'fontStyle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty15 = attributes.secondStyles) === null || _attributes$secondSty15 === void 0 ? void 0 : (_attributes$secondSty16 = _attributes$secondSty15[0]) === null || _attributes$secondSty16 === void 0 ? void 0 : _attributes$secondSty16.secondStyle) || '',
-        'textTransform': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty17 = attributes.secondStyles) === null || _attributes$secondSty17 === void 0 ? void 0 : (_attributes$secondSty18 = _attributes$secondSty17[0]) === null || _attributes$secondSty18 === void 0 ? void 0 : _attributes$secondSty18.secondUpper) || '',
-        'fontFamily': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty19 = attributes.secondStyles) === null || _attributes$secondSty19 === void 0 ? void 0 : (_attributes$secondSty20 = _attributes$secondSty19[0]) === null || _attributes$secondSty20 === void 0 ? void 0 : _attributes$secondSty20.secondFamily) || '',
+        "fontWeight": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty14 = attributes.secondStyles) === null || _attributes$secondSty14 === void 0 ? void 0 : (_attributes$secondSty15 = _attributes$secondSty14[0]) === null || _attributes$secondSty15 === void 0 ? void 0 : _attributes$secondSty15.secondWeight) || '',
+        'fontStyle': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty16 = attributes.secondStyles) === null || _attributes$secondSty16 === void 0 ? void 0 : (_attributes$secondSty17 = _attributes$secondSty16[0]) === null || _attributes$secondSty17 === void 0 ? void 0 : _attributes$secondSty17.secondStyle) || '',
+        'textTransform': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty18 = attributes.secondStyles) === null || _attributes$secondSty18 === void 0 ? void 0 : (_attributes$secondSty19 = _attributes$secondSty18[0]) === null || _attributes$secondSty19 === void 0 ? void 0 : _attributes$secondSty19.secondUpper) || '',
+        'fontFamily': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty20 = attributes.secondStyles) === null || _attributes$secondSty20 === void 0 ? void 0 : (_attributes$secondSty21 = _attributes$secondSty20[0]) === null || _attributes$secondSty21 === void 0 ? void 0 : _attributes$secondSty21.secondFamily) || '',
         'lineHeight': {
           'Desktop': '',
           "Tablet": '',
@@ -21950,17 +22688,17 @@ const deprecatedContent = [{
           "unit": 'px'
         },
         'letterSpacing': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty21 = attributes.secondStyles) === null || _attributes$secondSty21 === void 0 ? void 0 : (_attributes$secondSty22 = _attributes$secondSty21[0]) === null || _attributes$secondSty22 === void 0 ? void 0 : _attributes$secondSty22.secondLetter) || '',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty23 = attributes.secondStyles) === null || _attributes$secondSty23 === void 0 ? void 0 : (_attributes$secondSty24 = _attributes$secondSty23[0]) === null || _attributes$secondSty24 === void 0 ? void 0 : _attributes$secondSty24.secondLetter) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty25 = attributes.secondStyles) === null || _attributes$secondSty25 === void 0 ? void 0 : (_attributes$secondSty26 = _attributes$secondSty25[0]) === null || _attributes$secondSty26 === void 0 ? void 0 : _attributes$secondSty26.secondLetter) || '',
+          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty22 = attributes.secondStyles) === null || _attributes$secondSty22 === void 0 ? void 0 : (_attributes$secondSty23 = _attributes$secondSty22[0]) === null || _attributes$secondSty23 === void 0 ? void 0 : _attributes$secondSty23.secondLetter) || '',
+          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty24 = attributes.secondStyles) === null || _attributes$secondSty24 === void 0 ? void 0 : (_attributes$secondSty25 = _attributes$secondSty24[0]) === null || _attributes$secondSty25 === void 0 ? void 0 : _attributes$secondSty25.secondLetter) || '',
+          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty26 = attributes.secondStyles) === null || _attributes$secondSty26 === void 0 ? void 0 : (_attributes$secondSty27 = _attributes$secondSty26[0]) === null || _attributes$secondSty27 === void 0 ? void 0 : _attributes$secondSty27.secondLetter) || '',
           "unit": 'px'
         },
         'textDecoration': '',
         'fontSize': {
-          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty27 = attributes.secondStyles) === null || _attributes$secondSty27 === void 0 ? void 0 : (_attributes$secondSty28 = _attributes$secondSty27[0]) === null || _attributes$secondSty28 === void 0 ? void 0 : _attributes$secondSty28.secondSize) || '20',
-          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty29 = attributes.secondStyles) === null || _attributes$secondSty29 === void 0 ? void 0 : (_attributes$secondSty30 = _attributes$secondSty29[0]) === null || _attributes$secondSty30 === void 0 ? void 0 : _attributes$secondSty30.secondSizeTablet) || '',
-          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty31 = attributes.secondStyles) === null || _attributes$secondSty31 === void 0 ? void 0 : (_attributes$secondSty32 = _attributes$secondSty31[0]) === null || _attributes$secondSty32 === void 0 ? void 0 : _attributes$secondSty32.secondSizeMobile) || '',
-          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty33 = attributes.secondStyles) === null || _attributes$secondSty33 === void 0 ? void 0 : (_attributes$secondSty34 = _attributes$secondSty33[0]) === null || _attributes$secondSty34 === void 0 ? void 0 : _attributes$secondSty34.secondSizeUnit) || 'px'
+          'Desktop': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty28 = attributes.secondStyles) === null || _attributes$secondSty28 === void 0 ? void 0 : (_attributes$secondSty29 = _attributes$secondSty28[0]) === null || _attributes$secondSty29 === void 0 ? void 0 : _attributes$secondSty29.secondSize) || '20',
+          "Tablet": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty30 = attributes.secondStyles) === null || _attributes$secondSty30 === void 0 ? void 0 : (_attributes$secondSty31 = _attributes$secondSty30[0]) === null || _attributes$secondSty31 === void 0 ? void 0 : _attributes$secondSty31.secondSizeTablet) || '',
+          "Mobile": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty32 = attributes.secondStyles) === null || _attributes$secondSty32 === void 0 ? void 0 : (_attributes$secondSty33 = _attributes$secondSty32[0]) === null || _attributes$secondSty33 === void 0 ? void 0 : _attributes$secondSty33.secondSizeMobile) || '',
+          "unit": (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty34 = attributes.secondStyles) === null || _attributes$secondSty34 === void 0 ? void 0 : (_attributes$secondSty35 = _attributes$secondSty34[0]) === null || _attributes$secondSty35 === void 0 ? void 0 : _attributes$secondSty35.secondSizeUnit) || 'px'
         }
       },
       background: {
@@ -21986,10 +22724,10 @@ const deprecatedContent = [{
         'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$firstStyl41 = attributes.firstStyles) === null || _attributes$firstStyl41 === void 0 ? void 0 : (_attributes$firstStyl42 = _attributes$firstStyl41[0]) === null || _attributes$firstStyl42 === void 0 ? void 0 : _attributes$firstStyl42.firstShadowVertical) || ''
       },
       secondShadow: {
-        'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty35 = attributes.secondStyles) === null || _attributes$secondSty35 === void 0 ? void 0 : (_attributes$secondSty36 = _attributes$secondSty35[0]) === null || _attributes$secondSty36 === void 0 ? void 0 : _attributes$secondSty36.secondShadowColor) || '',
-        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty37 = attributes.secondStyles) === null || _attributes$secondSty37 === void 0 ? void 0 : (_attributes$secondSty38 = _attributes$secondSty37[0]) === null || _attributes$secondSty38 === void 0 ? void 0 : _attributes$secondSty38.secondShadowBlur) || '',
-        'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty39 = attributes.secondStyles) === null || _attributes$secondSty39 === void 0 ? void 0 : (_attributes$secondSty40 = _attributes$secondSty39[0]) === null || _attributes$secondSty40 === void 0 ? void 0 : _attributes$secondSty40.secondShadowHorizontal) || '',
-        'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty41 = attributes.secondStyles) === null || _attributes$secondSty41 === void 0 ? void 0 : (_attributes$secondSty42 = _attributes$secondSty41[0]) === null || _attributes$secondSty42 === void 0 ? void 0 : _attributes$secondSty42.secondShadowVertical) || ''
+        'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty36 = attributes.secondStyles) === null || _attributes$secondSty36 === void 0 ? void 0 : (_attributes$secondSty37 = _attributes$secondSty36[0]) === null || _attributes$secondSty37 === void 0 ? void 0 : _attributes$secondSty37.secondShadowColor) || '',
+        'blur': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty38 = attributes.secondStyles) === null || _attributes$secondSty38 === void 0 ? void 0 : (_attributes$secondSty39 = _attributes$secondSty38[0]) === null || _attributes$secondSty39 === void 0 ? void 0 : _attributes$secondSty39.secondShadowBlur) || '',
+        'horizontal': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty40 = attributes.secondStyles) === null || _attributes$secondSty40 === void 0 ? void 0 : (_attributes$secondSty41 = _attributes$secondSty40[0]) === null || _attributes$secondSty41 === void 0 ? void 0 : _attributes$secondSty41.secondShadowHorizontal) || '',
+        'vertical': (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty42 = attributes.secondStyles) === null || _attributes$secondSty42 === void 0 ? void 0 : (_attributes$secondSty43 = _attributes$secondSty42[0]) === null || _attributes$secondSty43 === void 0 ? void 0 : _attributes$secondSty43.secondShadowVertical) || ''
       },
       firstPadding: {
         Desktop: {
@@ -22035,10 +22773,10 @@ const deprecatedContent = [{
       },
       secondPadding: {
         Desktop: {
-          top: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty43 = attributes.secondStyles) === null || _attributes$secondSty43 === void 0 ? void 0 : (_attributes$secondSty44 = _attributes$secondSty43[0]) === null || _attributes$secondSty44 === void 0 ? void 0 : _attributes$secondSty44.secondPadding) || '',
-          right: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty45 = attributes.secondStyles) === null || _attributes$secondSty45 === void 0 ? void 0 : (_attributes$secondSty46 = _attributes$secondSty45[0]) === null || _attributes$secondSty46 === void 0 ? void 0 : _attributes$secondSty46.secondPadding) || '',
-          bottom: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty47 = attributes.secondStyles) === null || _attributes$secondSty47 === void 0 ? void 0 : (_attributes$secondSty48 = _attributes$secondSty47[0]) === null || _attributes$secondSty48 === void 0 ? void 0 : _attributes$secondSty48.secondPadding) || '',
-          left: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty49 = attributes.secondStyles) === null || _attributes$secondSty49 === void 0 ? void 0 : (_attributes$secondSty50 = _attributes$secondSty49[0]) === null || _attributes$secondSty50 === void 0 ? void 0 : _attributes$secondSty50.secondPadding) || ''
+          top: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty44 = attributes.secondStyles) === null || _attributes$secondSty44 === void 0 ? void 0 : (_attributes$secondSty45 = _attributes$secondSty44[0]) === null || _attributes$secondSty45 === void 0 ? void 0 : _attributes$secondSty45.secondPadding) || '',
+          right: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty46 = attributes.secondStyles) === null || _attributes$secondSty46 === void 0 ? void 0 : (_attributes$secondSty47 = _attributes$secondSty46[0]) === null || _attributes$secondSty47 === void 0 ? void 0 : _attributes$secondSty47.secondPadding) || '',
+          bottom: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty48 = attributes.secondStyles) === null || _attributes$secondSty48 === void 0 ? void 0 : (_attributes$secondSty49 = _attributes$secondSty48[0]) === null || _attributes$secondSty49 === void 0 ? void 0 : _attributes$secondSty49.secondPadding) || '',
+          left: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty50 = attributes.secondStyles) === null || _attributes$secondSty50 === void 0 ? void 0 : (_attributes$secondSty51 = _attributes$secondSty50[0]) === null || _attributes$secondSty51 === void 0 ? void 0 : _attributes$secondSty51.secondPadding) || ''
         },
         Tablet: {
           top: '',
@@ -22057,9 +22795,9 @@ const deprecatedContent = [{
       secondMargin: {
         Desktop: {
           top: '',
-          right: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty51 = attributes.secondStyles) === null || _attributes$secondSty51 === void 0 ? void 0 : (_attributes$secondSty52 = _attributes$secondSty51[0]) === null || _attributes$secondSty52 === void 0 ? void 0 : _attributes$secondSty52.secondMarginR) || '',
+          right: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty52 = attributes.secondStyles) === null || _attributes$secondSty52 === void 0 ? void 0 : (_attributes$secondSty53 = _attributes$secondSty52[0]) === null || _attributes$secondSty53 === void 0 ? void 0 : _attributes$secondSty53.secondMarginR) || '',
           bottom: '',
-          left: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty53 = attributes.secondStyles) === null || _attributes$secondSty53 === void 0 ? void 0 : (_attributes$secondSty54 = _attributes$secondSty53[0]) === null || _attributes$secondSty54 === void 0 ? void 0 : _attributes$secondSty54.secondMarginL) || ''
+          left: (attributes === null || attributes === void 0 ? void 0 : (_attributes$secondSty54 = attributes.secondStyles) === null || _attributes$secondSty54 === void 0 ? void 0 : (_attributes$secondSty55 = _attributes$secondSty54[0]) === null || _attributes$secondSty55 === void 0 ? void 0 : _attributes$secondSty55.secondMarginL) || ''
         },
         Tablet: {
           top: '',
@@ -22114,7 +22852,7 @@ const deprecatedContent = [{
       containerBorder,
       backgroundType
     } = props.attributes;
-    const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-dheading-block__container");
+    const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, "premium-dheading-block__container");
     let btnGrad, btnGrad2, btnbg;
 
     if (undefined !== backgroundType && 'gradient' === backgroundType) {
@@ -22130,9 +22868,9 @@ const deprecatedContent = [{
       btnbg = containerStyles[0].backgroundImageURL ? `url('${containerStyles[0].backgroundImageURL}')` : '';
     }
 
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       id: `premium-dheading-block-${block_id}`,
-      className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-dheading-block__container", `premium-dheading-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`),
+      className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, "premium-dheading-block__container", `premium-dheading-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`),
       style: {
         textAlign: contentAlign,
         backgroundColor: backgroundType === "solid" ? containerStyles[0].containerBack : "transparent",
@@ -22146,11 +22884,11 @@ const deprecatedContent = [{
         borderRadius: containerStyles[0].containerBorderRadius + "px",
         borderColor: containerStyles[0].containerBorderColor
       }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: `premium-dheading-block__wrap`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", {
       className: `premium-dheading-block__title`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
       className: `premium-dheading-block__first premium-headingc-${firstStyles[0].firstClip} premium-headinga-${firstStyles[0].firstAnim} premium-headings-${firstStyles[0].firstStroke}`,
       style: {
         display: display,
@@ -22171,7 +22909,7 @@ const deprecatedContent = [{
         marginRight: firstStyles[0].firstMarginR + "px",
         textShadow: `${firstStyles[0].firstShadowHorizontal}px ${firstStyles[0].firstShadowVertical}px ${firstStyles[0].firstShadowBlur}px ${firstStyles[0].firstShadowColor}`
       }
-    }, firstHeading), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    }, firstHeading), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
       className: `premium-dheading-block__second premium-headingc-${secondStyles[0].secondClip} premium-headinga-${secondStyles[0].secondAnim} premium-headings-${secondStyles[0].secondStroke}`,
       style: {
         display: display,
@@ -22192,7 +22930,7 @@ const deprecatedContent = [{
         marginRight: secondStyles[0].secondMarginR + "px",
         textShadow: `${secondStyles[0].secondShadowHorizontal}px ${secondStyles[0].secondShadowVertical}px ${secondStyles[0].secondShadowBlur}px ${secondStyles[0].secondShadowColor}`
       }
-    }, secondHeading)), link && headingURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    }, secondHeading)), link && headingURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
       className: `premium-dheading-block__link`,
       href: link && headingURL,
       target: target && "_blank",
@@ -22371,13 +23109,13 @@ const deprecatedContent = [{
       hideTablet,
       hideMobile
     } = props.attributes;
-    const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-dheading-block__container");
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, "premium-dheading-block__container");
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       id: `premium-dheading-block-${block_id}`,
       className: `${mainClasses} premium-dheading-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`,
       style: {
         textAlign: contentAlign,
-        backgroundColor: containerBack ? hex_to_rgba__WEBPACK_IMPORTED_MODULE_2___default()(containerBack, containerOpacity) : "transparent",
+        backgroundColor: containerBack ? hex_to_rgba__WEBPACK_IMPORTED_MODULE_4___default()(containerBack, containerOpacity) : "transparent",
         backgroundImage: `url('${imageURL}')`,
         backgroundRepeat: backgroundRepeat,
         backgroundPosition: backgroundPosition,
@@ -22388,16 +23126,16 @@ const deprecatedContent = [{
         borderRadius: containerBorderRadius + "px",
         borderColor: containerBorderColor
       }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: `premium-dheading-block__wrap`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", {
       className: `premium-dheading-block__title`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
       className: `premium-dheading-block__first premium-headingc-${firstClip} premium-headinga-${firstAnim} premium-headings-${firstStroke}`,
       style: {
         display: display,
         color: firstColor,
-        backgroundColor: firstClip ? "none" : firstBackground ? hex_to_rgba__WEBPACK_IMPORTED_MODULE_2___default()(firstBackground, firstOpacity) : "transparent",
+        backgroundColor: firstClip ? "none" : firstBackground ? hex_to_rgba__WEBPACK_IMPORTED_MODULE_4___default()(firstBackground, firstOpacity) : "transparent",
         backgroundImage: firstClip ? `linear-gradient(to left, ${firstColor}, ${firstClipColor})` : "none",
         fontFamily: firstFamily,
         letterSpacing: firstLetter + "px",
@@ -22412,12 +23150,12 @@ const deprecatedContent = [{
         margin: firstMargin + "px",
         textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`
       }
-    }, firstHeading), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    }, firstHeading), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
       className: `premium-dheading-block__second premium-headingc-${secondClip} premium-headinga-${secondAnim} premium-headings-${secondStroke}`,
       style: {
         display: display,
         color: secondColor,
-        backgroundColor: secondClip ? "none" : secondBackground ? hex_to_rgba__WEBPACK_IMPORTED_MODULE_2___default()(secondBackground, secondOpacity) : "transparent",
+        backgroundColor: secondClip ? "none" : secondBackground ? hex_to_rgba__WEBPACK_IMPORTED_MODULE_4___default()(secondBackground, secondOpacity) : "transparent",
         backgroundImage: secondClip ? `linear-gradient(to left, ${secondColor}, ${secondClipColor})` : "none",
         fontFamily: secondFamily,
         letterSpacing: secondLetter + "px",
@@ -22432,7 +23170,7 @@ const deprecatedContent = [{
         margin: secondMargin + "px",
         textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`
       }
-    }, secondHeading)), link && headingURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    }, secondHeading)), link && headingURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
       className: `premium-dheading-block__link`,
       href: link && headingURL,
       target: target && "_blank"
@@ -22541,8 +23279,8 @@ const deprecatedContent = [{
       containerBorderRadius,
       containerBorderColor
     } = props.attributes;
-    const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-dheading-block__container");
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, "premium-dheading-block__container");
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: `${mainClasses}`,
       style: {
         textAlign: contentAlign,
@@ -22557,11 +23295,11 @@ const deprecatedContent = [{
         borderRadius: containerBorderRadius + "px",
         borderColor: containerBorderColor
       }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: `premium-dheading-block__wrap`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", {
       className: `premium-dheading-block__title`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
       className: `premium-dheading-block__first premium-headingc-${firstClip} premium-headinga-${firstAnim} premium-headings-${firstStroke}`,
       style: {
         display: display,
@@ -22582,7 +23320,7 @@ const deprecatedContent = [{
         margin: firstMargin + "px",
         textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`
       }
-    }, firstHeading), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    }, firstHeading), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
       className: `premium-dheading-block__second premium-headingc-${secondClip} premium-headinga-${secondAnim} premium-headings-${secondStroke}`,
       style: {
         display: display,
@@ -22603,7 +23341,7 @@ const deprecatedContent = [{
         margin: secondMargin + "px",
         textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`
       }
-    }, secondHeading)), link && headingURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    }, secondHeading)), link && headingURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
       className: `premium-dheading-block__link`,
       href: link && headingURL,
       target: target && "_blank"
@@ -22683,8 +23421,8 @@ const deprecatedContent = [{
       containerBorderRadius,
       containerBorderColor
     } = props.attributes;
-    const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-dheading-block__container");
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, "premium-dheading-block__container");
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: `${mainClasses}`,
       style: {
         textAlign: contentAlign,
@@ -22699,11 +23437,11 @@ const deprecatedContent = [{
         borderRadius: containerBorderRadius + "px",
         borderColor: containerBorderColor
       }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: `premium-dheading-block__wrap`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", {
       className: `premium-dheading-block__title`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
       className: `premium-dheading-block__first premium-headingc-${firstClip} premium-headinga-${firstAnim}`,
       style: {
         display: display,
@@ -22724,7 +23462,7 @@ const deprecatedContent = [{
         margin: firstMargin + "px",
         textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`
       }
-    }, firstHeading), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    }, firstHeading), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
       className: `premium-dheading-block__second premium-headingc-${secondClip} premium-headinga-${secondAnim}`,
       style: {
         display: display,
@@ -22745,7 +23483,7 @@ const deprecatedContent = [{
         margin: secondMargin + "px",
         textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`
       }
-    }, secondHeading)), link && headingURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    }, secondHeading)), link && headingURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
       className: `premium-dheading-block__link`,
       href: link && headingURL,
       target: target && "_blank"
@@ -22820,7 +23558,7 @@ const deprecatedContent = [{
       backgroundPosition,
       backgroundSize
     } = props.attributes;
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: `${className}__container`,
       style: {
         textAlign: contentAlign,
@@ -22831,11 +23569,11 @@ const deprecatedContent = [{
         backgroundSize: backgroundSize,
         backgroundAttachment: fixed ? "fixed" : "unset"
       }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: `${className}__wrap`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", {
       className: `${className}__title`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
       className: `${className}__first premium-headingc-${firstClip} premium-headinga-${firstAnim}`,
       style: {
         display: display,
@@ -22856,7 +23594,7 @@ const deprecatedContent = [{
         margin: firstMargin + "px",
         textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`
       }
-    }, firstHeading), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    }, firstHeading), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
       className: `${className}__second premium-headingc-${secondClip} premium-headinga-${secondAnim}`,
       style: {
         display: display,
@@ -22877,7 +23615,7 @@ const deprecatedContent = [{
         margin: secondMargin + "px",
         textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`
       }
-    }, secondHeading)), link && headingURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    }, secondHeading)), link && headingURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
       className: `${className}__link`,
       href: link && headingURL,
       target: target && "_blank"
@@ -22948,7 +23686,7 @@ const deprecatedContent = [{
       backgroundPosition,
       backgroundSize
     } = props.attributes;
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: `${className}__container`,
       style: {
         textAlign: contentAlign,
@@ -22959,11 +23697,11 @@ const deprecatedContent = [{
         backgroundSize: backgroundSize,
         backgroundAttachment: fixed ? "fixed" : "unset"
       }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: `${className}__wrap`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", {
       className: `${className}__title`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
       className: `${className}__first premium-headingc-${firstClip} premium-headinga-${firstAnim}`,
       style: {
         display: display,
@@ -22983,7 +23721,7 @@ const deprecatedContent = [{
         margin: firstMargin + "px",
         textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`
       }
-    }, firstHeading), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    }, firstHeading), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
       className: `${className}__second premium-headingc-${secondClip} premium-headinga-${secondAnim}`,
       style: {
         display: display,
@@ -23003,7 +23741,7 @@ const deprecatedContent = [{
         margin: secondMargin + "px",
         textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`
       }
-    }, secondHeading)), link && headingURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    }, secondHeading)), link && headingURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
       className: `${className}__link`,
       href: link && headingURL,
       target: target && "_blank"
@@ -23073,17 +23811,17 @@ const deprecatedContent = [{
       headingURL,
       containerBack
     } = props.attributes;
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: `${className}__container`,
       style: {
         textAlign: contentAlign,
         backgroundColor: containerBack
       }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: `${className}__wrap`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", {
       className: `${className}__title`
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
       className: `${className}__first premium-headingc-${firstClip} premium-headinga-${firstAnim}`,
       style: {
         display: display,
@@ -23103,7 +23841,7 @@ const deprecatedContent = [{
         margin: firstMargin + "px",
         textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`
       }
-    }, firstHeading), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    }, firstHeading), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
       className: `${className}__second premium-headingc-${secondClip} premium-headinga-${secondAnim}`,
       style: {
         display: display,
@@ -23123,7 +23861,7 @@ const deprecatedContent = [{
         margin: secondMargin + "px",
         textShadow: `${secondShadowHorizontal}px ${secondShadowVertical}px ${secondShadowBlur}px ${secondShadowColor}`
       }
-    }, secondHeading)), link && headingURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    }, secondHeading)), link && headingURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
       className: `${className}__link`,
       href: link && headingURL,
       target: target && "_blank"
@@ -23183,19 +23921,19 @@ const deprecatedContent = [{
         headingURL,
         containerBack
       } = props.attributes;
-      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
         className: `${className}__link`,
         href: link && headingURL,
         target: target && "_blank"
-      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
         className: `${className}__container`,
         style: {
           textAlign: contentAlign,
           backgroundColor: containerBack
         }
-      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", {
         className: `${className}__title`
-      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
         className: `${className}__first premium-headingc-${firstClip} premium-headinga-${firstAnim}`,
         style: {
           display: display,
@@ -23215,7 +23953,7 @@ const deprecatedContent = [{
           margin: firstMargin + "px",
           textShadow: `${firstShadowHorizontal}px ${firstShadowVertical}px ${firstShadowBlur}px ${firstShadowColor}`
         }
-      }, firstHeading), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      }, firstHeading), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
         className: `${className}__second premium-headingc-${secondClip} premium-headinga-${secondAnim}`,
         style: {
           display: display,
@@ -23893,6 +24631,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @pbg/helpers */ "@pbg/helpers");
+/* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+
+
 
 
 const {
@@ -24219,7 +24963,369 @@ const new_Deprecated_Attributes_0_1 = {
     }
   }
 };
+const v4Attributes = {
+  "blockId": {
+    "type": "string"
+  },
+  "classMigrate": {
+    "type": "boolean",
+    "default": ""
+  },
+  "fancyContentAlign": {
+    "type": "object",
+    "default": {
+      "Desktop": "center",
+      "Tablet": "center",
+      "Mobile": "center"
+    }
+  },
+  "prefix": {
+    "type": "string",
+    "default": "This is"
+  },
+  "suffix": {
+    "type": "string",
+    "default": "Text"
+  },
+  "repeaterFancyText": {
+    "type": "array",
+    "default": [{
+      "title": "Designer",
+      "edit": false
+    }, {
+      "title": "Awesome",
+      "edit": false
+    }, {
+      "title": "Developer",
+      "edit": false
+    }]
+  },
+  "effect": {
+    "type": "string",
+    "default": "typing"
+  },
+  "loop": {
+    "type": "boolean",
+    "default": "true"
+  },
+  "cursorShow": {
+    "type": "boolean",
+    "default": "true"
+  },
+  "cursorMark": {
+    "type": "string",
+    "default": "|"
+  },
+  "typeSpeed": {
+    "type": "number",
+    "default": 100
+  },
+  "backdelay": {
+    "type": "number",
+    "default": 30
+  },
+  "startdelay": {
+    "type": "number",
+    "default": 30
+  },
+  "backSpeed": {
+    "type": "number",
+    "default": 30
+  },
+  "animationSpeed": {
+    "type": "number",
+    "default": 200
+  },
+  "pauseTime": {
+    "type": "number",
+    "default": 3000
+  },
+  "hoverPause": {
+    "type": "boolean",
+    "default": false
+  },
+  "fancyTextAlign": {
+    "type": "object",
+    "default": {
+      "Desktop": "center",
+      "Tablet": "center",
+      "Mobile": "center"
+    }
+  },
+  "hideDesktop": {
+    "type": "boolean",
+    "default": ""
+  },
+  "hideTablet": {
+    "type": "boolean",
+    "default": ""
+  },
+  "hideMobile": {
+    "type": "boolean",
+    "default": ""
+  },
+  "fancyStyles": {
+    "type": "array",
+    "default": [{
+      "fancyTextColor": "#793dc3",
+      "fancyTextBGColor": "",
+      "fancyTextBGOpacity": 1,
+      "cursorColor": ""
+    }]
+  },
+  "PreStyles": {
+    "type": "array",
+    "default": [{
+      "textColor": "",
+      "textBGColor": "",
+      "textBGOpacity": 1
+    }]
+  },
+  "prefixTypography": {
+    "type": "object",
+    "default": {
+      "fontWeight": "Default",
+      "fontStyle": "",
+      "letterSpacing": {
+        "Desktop": "",
+        "Tablet": "",
+        "Mobile": "",
+        "unit": "px"
+      },
+      "fontFamily": "Default",
+      "lineHeight": {
+        "Desktop": "",
+        "Tablet": "",
+        "Mobile": "",
+        "unit": "px"
+      },
+      "textDecoration": "",
+      "textTransform": "",
+      "fontSize": {
+        "Desktop": "",
+        "Tablet": "",
+        "Mobile": "",
+        "unit": "px"
+      }
+    }
+  },
+  "fancyTextTypography": {
+    "type": "object",
+    "default": {
+      "fontWeight": "Default",
+      "fontStyle": "",
+      "letterSpacing": {
+        "Desktop": "",
+        "Tablet": "",
+        "Mobile": "",
+        "unit": "px"
+      },
+      "fontFamily": "Default",
+      "lineHeight": {
+        "Desktop": "",
+        "Tablet": "",
+        "Mobile": "",
+        "unit": "px"
+      },
+      "textDecoration": "",
+      "textTransform": "",
+      "fontSize": {
+        "Desktop": "",
+        "Tablet": "",
+        "Mobile": "",
+        "unit": "px"
+      }
+    }
+  },
+  "fancyTextShadow": {
+    "type": "object",
+    "default": {
+      "color": "undefined",
+      "blur": "10",
+      "horizontal": "0",
+      "vertical": "0"
+    }
+  }
+};
 const deprecated = [{
+  attributes: v4Attributes,
+
+  isEligible(attributes) {
+    var _attributes$fancyStyl;
+
+    return attributes === null || attributes === void 0 ? void 0 : (_attributes$fancyStyl = attributes.fancyStyles) === null || _attributes$fancyStyl === void 0 ? void 0 : _attributes$fancyStyl.fancyTextColor;
+  },
+
+  migrate: attributes => {
+    let newAttributes = {
+      secondColor: (attributes === null || attributes === void 0 ? void 0 : attributes.fancyStyles) || [{
+        "fancyTextColor": "var(--pbg-global-color1,#793dc3)",
+        "fancyTextBGColor": "",
+        "fancyTextBGOpacity": 1,
+        "cursorColor": ""
+      }]
+    };
+    return Object.assign(attributes, newAttributes);
+  },
+  save: props => {
+    const {
+      attributes,
+      className
+    } = props;
+    const {
+      blockId,
+      prefix,
+      suffix,
+      repeaterFancyText,
+      effect,
+      loop,
+      cursorShow,
+      cursorMark,
+      typeSpeed,
+      backdelay,
+      startdelay,
+      backSpeed,
+      animationSpeed,
+      pauseTime,
+      hoverPause,
+      hideDesktop,
+      hideTablet,
+      hideMobile,
+      fancyStyles,
+      PreStyles,
+      prefixTypography,
+      fancyTextTypography,
+      fancyTextShadow
+    } = attributes;
+
+    const loadStyles = () => {
+      const styles = {};
+      styles[` .${blockId} .premium-fancy-text-title`] = {
+        'color': `${fancyStyles[0].fancyTextColor} !important`,
+        'background-color': `${fancyStyles[0].fancyTextBGColor} !important`
+      };
+      styles[` .${blockId} .typed-cursor`] = {
+        'color': `${fancyStyles[0].cursorColor} !important`
+      };
+      styles[` .${blockId} .premium-fancy-text-suffix-prefix`] = {
+        'color': `${PreStyles[0].textColor} !important`,
+        'background-color': `${PreStyles[0].textBGColor} !important`
+      };
+      return (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.generateCss)(styles);
+    };
+
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
+      className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, `${blockId}`, {
+        " premium-desktop-hidden": hideDesktop,
+        " premium-tablet-hidden": hideTablet,
+        " premium-mobile-hidden": hideMobile
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
+      dangerouslySetInnerHTML: {
+        __html: loadStyles()
+      }
+    }), effect === "typing" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      id: `premium-fancy-text-${blockId}`,
+      className: `premium-fancy-text`,
+      "data-effect": `${effect}`,
+      "data-strings": `${repeaterFancyText.map((item, index) => {
+        return item.title;
+      })}`,
+      "data-typespeed": `${typeSpeed}`,
+      "data-backspeed": `${backSpeed}`,
+      "data-startdelay": `${startdelay}`,
+      "data-backdelay": `${backdelay}`,
+      "data-loop": `${loop}`,
+      "data-cursorshow": `${cursorShow}`,
+      "data-cursormark": `${cursorMark}`
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      className: `premium-fancy-text-suffix-prefix premium-fancy-text-prefix-text`,
+      style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+        color: PreStyles[0].textColor,
+        backgroundColor: PreStyles[0].textBGColor,
+        fontStyle: prefixTypography.fontStyle,
+        fontFamily: prefixTypography.fontFamily,
+        fontWeight: prefixTypography.fontWeight,
+        textDecoration: prefixTypography.textDecoration,
+        textTransform: prefixTypography.textTransform
+      })
+    }, prefix, " "), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      className: `premium-fancy-text-title premium-fancy-text-title-type`,
+      style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+        color: fancyStyles[0].fancyTextColor,
+        backgroundColor: fancyStyles[0].fancyTextBGColor,
+        fontStyle: fancyTextTypography.fontStyle,
+        fontFamily: fancyTextTypography.fontFamily,
+        fontWeight: fancyTextTypography.fontWeight,
+        textDecoration: fancyTextTypography.textDecoration,
+        textTransform: fancyTextTypography.textTransform,
+        textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`
+      }),
+      ref: el => {
+        undefined.el = el;
+      }
+    }, " "), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      className: `premium-fancy-text-suffix-prefix premium-fancy-text-suffix-text`,
+      style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+        color: PreStyles[0].textColor,
+        backgroundColor: PreStyles[0].textBGColor,
+        fontStyle: prefixTypography.fontStyle,
+        fontFamily: prefixTypography.fontFamily,
+        fontWeight: prefixTypography.fontWeight,
+        textDecoration: prefixTypography.textDecoration,
+        textTransform: prefixTypography.textTransform
+      })
+    }, " ", suffix)) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      id: `premium-fancy-text-${blockId}`,
+      className: `premium-fancy-text premium-fancy-slide`,
+      "data-effect": `${effect}`,
+      "data-strings": `${repeaterFancyText.map((item, index) => {
+        return item.title;
+      })}`,
+      "data-animationspeed": `${animationSpeed}`,
+      "data-pausetime": `${pauseTime}`,
+      "data-hoverpause": `${hoverPause}`
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      className: `premium-fancy-text-suffix-prefix premium-fancy-text-prefix-text`,
+      style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+        color: PreStyles[0].textColor,
+        backgroundColor: PreStyles[0].textBGColor,
+        fontStyle: prefixTypography.fontStyle,
+        fontFamily: prefixTypography.fontFamily,
+        fontWeight: prefixTypography.fontWeight,
+        textDecoration: prefixTypography.textDecoration,
+        textTransform: prefixTypography.textTransform
+      })
+    }, prefix, " "), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: `premium-fancy-text-title premium-fancy-text-title-slide`,
+      style: {
+        color: fancyStyles[0].fancyTextColor,
+        backgroundColor: `${fancyStyles[0].fancyTextBGColor}`,
+        fontStyle: fancyTextTypography.fontStyle,
+        fontFamily: fancyTextTypography.fontFamily,
+        fontWeight: fancyTextTypography.fontWeight,
+        textDecoration: fancyTextTypography.textDecoration,
+        textTransform: fancyTextTypography.textTransform,
+        textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`
+      }
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
+      className: `premium-fancy-text-title-slide-list`
+    }, repeaterFancyText.map((item, index) => {
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, item.title);
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      className: `premium-fancy-text-suffix-prefix premium-fancy-text-suffix-text`,
+      style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+        color: PreStyles[0].textColor,
+        backgroundColor: PreStyles[0].textBGColor,
+        fontStyle: prefixTypography.fontStyle,
+        fontFamily: prefixTypography.fontFamily,
+        fontWeight: prefixTypography.fontWeight,
+        textDecoration: prefixTypography.textDecoration,
+        textTransform: prefixTypography.textTransform
+      })
+    }, " ", suffix)));
+  }
+}, {
   attributes: Object.assign(deprecated_fancyAttributes, new_Deprecated_Attributes_0_1),
   migrate: attributes => {
     let new_Attributes = {
@@ -25571,8 +26677,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _v1__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./v1 */ "./src/blocks/heading/deprecated/v1.js");
+/* harmony import */ var _v2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./v2 */ "./src/blocks/heading/deprecated/v2.js");
 
-const deprecated = [_v1__WEBPACK_IMPORTED_MODULE_0__["default"]];
+
+const deprecated = [_v1__WEBPACK_IMPORTED_MODULE_0__["default"], _v2__WEBPACK_IMPORTED_MODULE_1__["default"]];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (deprecated);
 
 /***/ }),
@@ -26722,6 +27830,875 @@ const deprecated = {
 
 /***/ }),
 
+/***/ "./src/blocks/heading/deprecated/v2.js":
+/*!*********************************************!*\
+  !*** ./src/blocks/heading/deprecated/v2.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @pbg/helpers */ "@pbg/helpers");
+/* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+const {
+  Fragment
+} = wp.element;
+const {
+  RichText,
+  useBlockProps
+} = wp.blockEditor;
+const attributes = {
+  "blockId": {
+    "type": "string"
+  },
+  "classMigrate": {
+    "type": "boolean",
+    "default": false
+  },
+  "align": {
+    "type": "object",
+    "default": {
+      "Desktop": "",
+      "Tablet": "",
+      "Mobile": ""
+    }
+  },
+  "style": {
+    "type": "string",
+    "default": "default"
+  },
+  "title": {
+    "type": "string",
+    "default": "Premium Title"
+  },
+  "iconValue": {
+    "type": "boolean",
+    "default": false
+  },
+  "iconType": {
+    "type": "string",
+    "default": "icon"
+  },
+  "icon": {
+    "type": "string",
+    "default": "fa fa-bars"
+  },
+  "iconPosition": {
+    "type": "string",
+    "default": "before"
+  },
+  "imageID": {
+    "type": "number"
+  },
+  "imageURL": {
+    "type": "string",
+    "source": "attribute",
+    "attribute": "src",
+    "selector": ".premium-title-icon"
+  },
+  "link": {
+    "type": "boolean",
+    "default": false
+  },
+  "backgroundText": {
+    "type": "boolean",
+    "default": false
+  },
+  "BackText": {
+    "type": "string",
+    "default": "Awesome Title"
+  },
+  "textWidth": {
+    "type": "number"
+  },
+  "url": {
+    "type": "string",
+    "default": "#"
+  },
+  "iconAlign": {
+    "type": "object",
+    "default": {
+      "Desktop": "center",
+      "Tablet": "center",
+      "Mobile": "center"
+    }
+  },
+  "stripePosition": {
+    "type": "string",
+    "default": "top"
+  },
+  "titleStyles": {
+    "type": "array",
+    "default": [{
+      "titleColor": "",
+      "shinyColor": "#fff",
+      "blurColor": "#000",
+      "BGColor": "#DDD0EF",
+      "lineColor": "",
+      "triangleColor": "#793DC4",
+      "stripeColor": "#793DC4",
+      "blurShadow": "120",
+      "animateDelay": "2",
+      "animateduration": "1"
+    }]
+  },
+  "titlePadding": {
+    "type": "object",
+    "default": {
+      "Desktop": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Tablet": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Mobile": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "unit": "px"
+    }
+  },
+  "titleMargin": {
+    "type": "object",
+    "default": {
+      "Desktop": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Tablet": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Mobile": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "unit": "px"
+    }
+  },
+  "titleBorder": {
+    "type": "object",
+    "default": {
+      "borderType": "none",
+      "borderColor": "",
+      "borderWidth": {
+        "Desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        }
+      },
+      "borderRadius": {
+        "Desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        }
+      }
+    }
+  },
+  "titleShadow": {
+    "type": "object",
+    "default": {
+      "color": "undefined",
+      "blur": "10",
+      "horizontal": "0",
+      "vertical": "0"
+    }
+  },
+  "titleTypography": {
+    "type": "object",
+    "default": {
+      "fontWeight": "Default",
+      "fontStyle": "",
+      "letterSpacing": {
+        "Desktop": "",
+        "Tablet": "",
+        "Mobile": "",
+        "unit": "px"
+      },
+      "fontFamily": "Default",
+      "lineHeight": {
+        "Desktop": "",
+        "Tablet": "",
+        "Mobile": "",
+        "unit": "px"
+      },
+      "textDecoration": "",
+      "textTransform": "",
+      "fontSize": {
+        "Desktop": "",
+        "Tablet": "",
+        "Mobile": "",
+        "unit": "px"
+      }
+    }
+  },
+  "stripeAlign": {
+    "type": "object",
+    "default": {
+      "Desktop": "center",
+      "Tablet": "center",
+      "Mobile": "center"
+    }
+  },
+  "stripeWidth": {
+    "type": "object",
+    "default": {
+      "Desktop": 120,
+      "Tablet": 120,
+      "Mobile": 120,
+      "unit": "px"
+    }
+  },
+  "stripeHeight": {
+    "type": "object",
+    "default": {
+      "Desktop": 5,
+      "Tablet": 5,
+      "Mobile": 5,
+      "unit": "px"
+    }
+  },
+  "stripeTopSpacing": {
+    "type": "object",
+    "default": {
+      "Desktop": 0,
+      "Tablet": 0,
+      "Mobile": 0,
+      "unit": "px"
+    }
+  },
+  "stripeBottomSpacing": {
+    "type": "object",
+    "default": {
+      "Desktop": 0,
+      "Tablet": 0,
+      "Mobile": 0,
+      "unit": "px"
+    }
+  },
+  "textStyles": {
+    "type": "array",
+    "default": [{
+      "textBackColor": "",
+      "rotateText": 0,
+      "rotateTextTablet": 0,
+      "rotateTextMobile": 0
+    }]
+  },
+  "textTypography": {
+    "type": "object",
+    "default": {
+      "fontWeight": "Default",
+      "fontStyle": "",
+      "letterSpacing": {
+        "Desktop": "",
+        "Tablet": "",
+        "Mobile": "",
+        "unit": "px"
+      },
+      "fontFamily": "Default",
+      "lineHeight": {
+        "Desktop": "",
+        "Tablet": "",
+        "Mobile": "",
+        "unit": "px"
+      },
+      "textDecoration": "",
+      "textTransform": "",
+      "fontSize": {
+        "Desktop": "",
+        "Tablet": "",
+        "Mobile": "",
+        "unit": "px"
+      }
+    }
+  },
+  "textBackshadow": {
+    "type": "object",
+    "default": {
+      "color": "undefined",
+      "blur": "10",
+      "horizontal": "0",
+      "vertical": "0"
+    }
+  },
+  "horizontalText": {
+    "type": "object",
+    "default": {
+      "Desktop": 0,
+      "Tablet": 0,
+      "Mobile": 0,
+      "unit": "px"
+    }
+  },
+  "verticalText": {
+    "type": "object",
+    "default": {
+      "Desktop": 0,
+      "Tablet": 0,
+      "Mobile": 0,
+      "unit": "px"
+    }
+  },
+  "rotateText": {
+    "type": "object",
+    "default": {
+      "Desktop": 0,
+      "Tablet": 0,
+      "Mobile": 0,
+      "unit": "deg"
+    }
+  },
+  "iconStyles": {
+    "type": "array",
+    "default": [{
+      "iconColor": ""
+    }]
+  },
+  "iconshadow": {
+    "type": "object",
+    "default": {
+      "color": "undefined",
+      "blur": "10",
+      "horizontal": "0",
+      "vertical": "0"
+    }
+  },
+  "iconPadding": {
+    "type": "object",
+    "default": {
+      "Desktop": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Tablet": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Mobile": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "unit": "px"
+    }
+  },
+  "iconMargin": {
+    "type": "object",
+    "default": {
+      "Desktop": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Tablet": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Mobile": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "unit": "px"
+    }
+  },
+  "iconBackground": {
+    "type": "object",
+    "default": {
+      "backgroundType": "",
+      "backgroundColor": "",
+      "backgroundImageID": "",
+      "backgroundImageURL": "",
+      "backgroundPosition": "",
+      "backgroundRepeat": "",
+      "backgroundSize": "",
+      "fixed": false,
+      "gradientLocationOne": "0",
+      "gradientColorTwo": "",
+      "gradientLocationTwo": "100",
+      "gradientAngle": "180",
+      "gradientPosition": "center center",
+      "gradientType": "linear"
+    }
+  },
+  "iconSize": {
+    "type": "object",
+    "default": {
+      "Desktop": 40,
+      "Tablet": 40,
+      "Mobile": 40,
+      "unit": "px"
+    }
+  },
+  "iconBorder": {
+    "type": "object",
+    "default": {
+      "borderType": "none",
+      "borderColor": "",
+      "borderWidth": {
+        "Desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        }
+      },
+      "borderRadius": {
+        "Desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        }
+      }
+    }
+  },
+  "strokeStyles": {
+    "type": "array",
+    "default": [{
+      "stroke": false,
+      "strokeColor": ""
+    }]
+  },
+  "strokeFull": {
+    "type": "object",
+    "default": {
+      "Desktop": "",
+      "Tablet": "",
+      "Mobile": ""
+    }
+  },
+  "iconBGColor": {
+    "type": "string"
+  },
+  "hideDesktop": {
+    "type": "boolean",
+    "default": ""
+  },
+  "hideTablet": {
+    "type": "boolean",
+    "default": ""
+  },
+  "hideMobile": {
+    "type": "boolean",
+    "default": ""
+  },
+  "z_index": {
+    "type": "number"
+  },
+  "blend": {
+    "type": "string"
+  },
+  "lottieURl": {
+    "type": "string"
+  },
+  "loop": {
+    "type": "boolean",
+    "default": true
+  },
+  "reversedir": {
+    "type": "boolean",
+    "default": false
+  },
+  "target": {
+    "type": "boolean",
+    "default": false
+  },
+  "zIndex": {
+    "type": "number"
+  },
+  "titleTag": {
+    "type": "string",
+    "default": "h2"
+  }
+};
+const deprecated = {
+  attributes: attributes,
+
+  isEligible(attributes) {
+    var _attributes$titleStyl, _attributes$titleStyl2, _attributes$titleStyl3;
+
+    return (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl = attributes.titleStyles) === null || _attributes$titleStyl === void 0 ? void 0 : _attributes$titleStyl.lineColor) || (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl2 = attributes.titleStyles) === null || _attributes$titleStyl2 === void 0 ? void 0 : _attributes$titleStyl2.triangleColor) || (attributes === null || attributes === void 0 ? void 0 : (_attributes$titleStyl3 = attributes.titleStyles) === null || _attributes$titleStyl3 === void 0 ? void 0 : _attributes$titleStyl3.stripeColor);
+  },
+
+  migrate: attributes => {
+    let newAttributes = {
+      secondColor: (attributes === null || attributes === void 0 ? void 0 : attributes.fancyStyles) || [{
+        "titleColor": "",
+        "shinyColor": "#fff",
+        "blurColor": "#000",
+        "BGColor": "#DDD0EF",
+        "lineColor": "var(--pbg-global-color1)",
+        "triangleColor": "var(--pbg-global-color1,#793DC4)",
+        "stripeColor": "var(--pbg-global-color1,#793DC4)",
+        "blurShadow": "120",
+        "animateDelay": "2",
+        "animateduration": "1"
+      }]
+    };
+    return Object.assign(attributes, newAttributes);
+  },
+  save: props => {
+    const {
+      attributes,
+      className
+    } = props;
+    const {
+      blockId,
+      titleTag,
+      style,
+      title,
+      iconValue,
+      iconType,
+      icon,
+      lottieURl,
+      loop,
+      reversedir,
+      iconPosition,
+      imageURL,
+      link,
+      url,
+      iconAlign,
+      stripePosition,
+      strokeStyles,
+      titleStyles,
+      titleBorder,
+      iconStyles,
+      iconBackground,
+      iconBorder,
+      textStyles,
+      stripeAlign,
+      backgroundText,
+      BackText,
+      textWidth,
+      blend,
+      zIndex,
+      hideDesktop,
+      hideTablet,
+      hideMobile,
+      iconshadow,
+      textBackshadow,
+      textTypography,
+      titleTypography,
+      titleShadow
+    } = attributes;
+    const styleContainer = title.split("").map(letter => {
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
+        tagName: "span",
+        className: `premium-title-style9-letter`,
+        value: letter,
+        style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+          color: titleStyles[0].titleColor
+        })
+      });
+    });
+    let btnGrad, btnGrad2, btnbg;
+
+    if (undefined !== iconBackground.backgroundType && 'gradient' === iconBackground.backgroundType) {
+      btnGrad = 'transparent' === iconBackground.backgroundColor || undefined === iconBackground.backgroundColor ? 'rgba(255,255,255,0)' : iconBackground.backgroundColor;
+      btnGrad2 = undefined !== iconBackground.gradientColorTwo && undefined !== iconBackground.gradientColorTwo && '' !== iconBackground.gradientColorTwo ? iconBackground.gradientColorTwo : '#777';
+
+      if ('radial' === iconBackground.gradientType) {
+        btnbg = `radial-gradient(at ${iconBackground.gradientPosition}, ${btnGrad} ${iconBackground.gradientLocationOne}%, ${btnGrad2} ${iconBackground.gradientLocationTwo}%)`;
+      } else if ('radial' !== iconBackground.gradientType) {
+        btnbg = `linear-gradient(${iconBackground.gradientAngle}deg, ${btnGrad} ${iconBackground.gradientLocationOne}%, ${btnGrad2} ${iconBackground.gradientLocationTwo}%)`;
+      }
+    } else {
+      btnbg = iconBackground.backgroundImageURL ? `url('${iconBackground.backgroundImageURL}')` : '';
+    }
+
+    const loadStyles = () => {
+      const styles = {};
+      styles[`.${blockId} .premium-title-style8__wrap .premium-title-text-title[data-animation='shiny']`] = {
+        '--base-color': `${titleStyles[0].titleColor}!important`,
+        '--shiny-color': `${titleStyles[0].shinyColor}!important`,
+        '--animation-speed': `${titleStyles[0].animateduration}s!important`
+      };
+      styles[`.${blockId} .premium-title-header`] = {
+        '--shadow-color': `${titleStyles[0].blurColor}!important`,
+        '--shadow-value': `${titleStyles[0].blurShadow}px!important`,
+        'color': `${titleStyles[0].titleColor}!important`
+      };
+      styles[`.${blockId} .premium-title .style1 .premium-title-header`] = {
+        'border-color': `${titleBorder.borderColor}!important`,
+        "border-style": `${titleBorder.borderType == 'none' ? 'none' : `${titleBorder.borderType} !important`}`,
+        "border-left-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
+        "border-left-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
+        "border-left-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
+      };
+      styles[`.${blockId} .premium-title .style2`] = {
+        'border-color': `${titleBorder.borderColor}!important`,
+        'border-style': `${titleBorder.borderType}`,
+        "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
+        "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
+        "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
+      };
+      styles[`.${blockId} .premium-title .style4`] = {
+        'border-color': `${titleBorder.borderColor}!important`,
+        'border-style': `${titleBorder.borderType}`,
+        "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
+        "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
+        "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
+      };
+      styles[`.${blockId} .premium-title .style5`] = {
+        'border-color': `${titleBorder.borderColor}!important`,
+        'border-style': `${titleBorder.borderType}`,
+        "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
+        "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
+        "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
+      };
+      styles[`.${blockId} .premium-title .style6`] = {
+        'border-color': `${titleBorder.borderColor}!important`,
+        'border-style': `${titleBorder.borderType}`,
+        "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
+        "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
+        "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
+      };
+      styles[`.${blockId} .premium-title-style2__wrap`] = {
+        'background-color': `${titleStyles[0].BGColor}!important`
+      };
+      styles[`.${blockId} .premium-title-style3__wrap`] = {
+        'background-color': `${titleStyles[0].BGColor}!important`
+      };
+      styles[`.${blockId} .premium-title-style5__wrap`] = {
+        'border-bottom': `2px solid ${titleStyles[0].lineColor}!important`
+      };
+      styles[`.${blockId} .premium-title-style6__wrap`] = {
+        'border-bottom': `2px solid ${titleStyles[0].lineColor}!important`
+      };
+      styles[`.${blockId} .premium-title-style6__wrap:before`] = {
+        'border-bottom-color': `${titleStyles[0].triangleColor}!important`
+      };
+      styles[`.${blockId} .premium-title-icon`] = {
+        'color': `${iconStyles[0].iconColor} !important`,
+        'background-color': `${iconBackground.backgroundType === "solid" ? iconBackground.backgroundColor : "transparent"} !important`,
+        'background-image': `${btnbg} !important`,
+        'background-repeat': `${iconBackground.backgroundRepeat} !important`,
+        'background-position': `${iconBackground.backgroundPosition} !important`,
+        'background-size': `${iconBackground.backgroundSize} !important`,
+        'background-attachment': `${iconBackground.fixed ? "fixed" : "unset"} !important`,
+        'border-color': `${iconBorder.borderColor}!important`,
+        'border-style': `${iconBorder.borderType}!important`,
+        'text-shadow': `${iconshadow.horizontal}px ${iconshadow.vertical}px ${iconshadow.blur}px ${iconshadow.color} !important`
+      };
+      styles[`.${blockId} .premium-title-bg-text:before`] = {
+        'content': `${BackText}`,
+        'width': `${textWidth}`,
+        'color': `${textStyles[0].textBackColor}`,
+        'font-family': `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.fontFamily}`,
+        'font-weight': `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.fontWeight}`,
+        'font-style': `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.fontStyle}`,
+        'text-transform': `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.textTransform}`,
+        'text-decoration': `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.textDecoration}`,
+        'mix-blend-mode': `${blend} !important`,
+        'text-shadow': `${textBackshadow.horizontal}px ${textBackshadow.vertical}px ${textBackshadow.blur}px ${textBackshadow.color} !important`,
+        'z-index': `${zIndex} !important`,
+        '-webkit-text-stroke-color': `${strokeStyles[0].strokeColor} !important`
+      };
+      styles[`.${blockId} .premium-title-style7-stripe-span`] = {
+        'background-color': `${titleStyles[0].stripeColor}!important`
+      };
+      styles[`.${blockId} .premium-title-style9__wrap .premium-letters-container .premium-title-style9-letter`] = {
+        'font-family': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily}`,
+        'font-weight': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontWeight}`,
+        'letter-spacing': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.letterSpacing}`,
+        'line-height': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.lineHeight}`,
+        'font-style': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontStyle}`,
+        'text-shadow': `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color} !important`
+      };
+      return (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.generateCss)(styles);
+    };
+
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", useBlockProps.save({
+      className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, `premium-heading ${blockId}`, {
+        " premium-desktop-hidden": hideDesktop,
+        " premium-tablet-hidden": hideTablet,
+        " premium-mobile-hidden": hideMobile
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, loadStyles()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: `premium-title   ${backgroundText ? 'premium-title-bg-text' : ""}`,
+      "data-backgroundText": BackText
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: `premium-title-container ${style}`,
+      "data-blur-delay": titleStyles[0].animateDelay,
+      "data-shiny-dur": titleStyles[0].animateduration
+    }, React.createElement(titleTag, {
+      className: `premium-title-header premium-title-${style}__wrap ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign === null || iconAlign === void 0 ? void 0 : iconAlign['Desktop']} premium-title-tablet-${iconAlign === null || iconAlign === void 0 ? void 0 : iconAlign['Tablet']} premium-title-mobile-${iconAlign === null || iconAlign === void 0 ? void 0 : iconAlign['Mobile']}` : ""}`,
+      'data-blur-delay': `${titleStyles[0].animateDelay}`,
+      'data-shiny-dur': `${titleStyles[0].animateduration}`,
+      style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+        color: titleStyles[0].titleColor,
+        fontStyle: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontStyle,
+        fontFamily: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily,
+        fontWeight: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontWeight,
+        textDecoration: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textDecoration,
+        textTransform: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textTransform,
+        textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
+      })
+    }, [(0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, style === 'style7' ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, iconPosition != 'top' && iconValue && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      className: `premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign['Desktop']} premium-stripe-tablet-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign['Tablet']} premium-stripe-mobile-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign['Mobile']}`
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      className: `premium-title-style7-stripe-span`
+    })), !iconValue && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      className: `premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign['Desktop']} premium-stripe-tablet-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign['Tablet']} premium-stripe-mobile-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign['Mobile']}`
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      className: `premium-title-style7-stripe-span`
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: `premium-title-style7-inner-title`
+    }, iconValue && iconType == 'icon' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+      className: `premium-title-icon ${icon}`
+    }), iconValue && iconType == 'image' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      className: `premium-title-icon`,
+      src: imageURL
+    }), iconValue && iconType == 'lottie' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "premium-title-icon premium-lottie-animation",
+      "data-loop": loop,
+      "data-lottieurl": `${lottieURl}`,
+      "data-reverse": reversedir,
+      "data-trigger": "none"
+    }), iconPosition === 'top' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      className: `premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign['Desktop']} premium-stripe-tablet-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign['Tablet']} premium-stripe-mobile-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign['Mobile']}`
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      className: `premium-title-style7-stripe-span`
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
+      tagName: "span",
+      className: `premium-title-text-title`,
+      value: title,
+      style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+        color: titleStyles[0].titleColor
+      })
+    }))) : style === "style9" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, iconValue && iconType == 'icon' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+      className: `premium-title-icon ${icon}`
+    }), iconValue && iconType == 'image' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      className: `premium-title-icon`,
+      src: imageURL
+    }), iconValue && iconType == 'lottie' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "premium-title-icon premium-lottie-animation",
+      "data-loop": loop,
+      "data-lottieurl": `${lottieURl}`,
+      "data-reverse": reversedir,
+      "data-trigger": "none"
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      className: `premium-letters-container`,
+      style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+        color: titleStyles[0].titleColor
+      })
+    }, styleContainer)) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, iconValue && iconType == 'icon' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+      className: `premium-title-icon ${icon}`
+    }), iconValue && iconType == 'image' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      className: `premium-title-icon`,
+      src: imageURL
+    }), iconValue && iconType == 'lottie' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "premium-title-icon premium-lottie-animation",
+      "data-loop": loop,
+      "data-lottieurl": `${lottieURl}`,
+      "data-reverse": reversedir,
+      "data-trigger": "none"
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
+      tagName: "span",
+      className: `premium-title-text-title`,
+      value: title,
+      style: {
+        minHeight: '15px',
+        margin: 'revert'
+      }
+    })), link && url !== ' ' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+      rel: "noopener noreferrer",
+      target: "_self",
+      href: `${url}`
+    }))]))));
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (deprecated);
+
+/***/ }),
+
 /***/ "./src/blocks/heading/edit.js":
 /*!************************************!*\
   !*** ./src/blocks/heading/edit.js ***!
@@ -27093,7 +29070,7 @@ function Edit(props) {
       "border-left": (titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi17 = titleBorder.borderWidth) === null || _titleBorder$borderWi17 === void 0 ? void 0 : (_titleBorder$borderWi18 = _titleBorder$borderWi17[props.deviceType]) === null || _titleBorder$borderWi18 === void 0 ? void 0 : _titleBorder$borderWi18.left) >= "1" ? `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi19 = titleBorder.borderWidth) === null || _titleBorder$borderWi19 === void 0 ? void 0 : (_titleBorder$borderWi20 = _titleBorder$borderWi19[props.deviceType]) === null || _titleBorder$borderWi20 === void 0 ? void 0 : _titleBorder$borderWi20.left}px ${titleBorder.borderType} ${titleBorder.borderColor}!important` : "",
       "border-left-style": `${titleBorder.borderType == "none" ? "solid" : titleBorder.borderType}`,
       "border-left-width": `${titleBorder.borderType == "none" ? "3px" : ""}`,
-      "border-left-color": titleBorder.borderType == "none" ? "#793DC4" : titleBorder.borderColor
+      "border-left-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#793DC4)" : titleBorder.borderColor
     };
     styles[`.${blockId} .premium-title .style2`] = {
       "border-color": `${titleBorder.borderColor}!important`,
@@ -27109,7 +29086,7 @@ function Edit(props) {
       "border-bottom": (titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi29 = titleBorder.borderWidth) === null || _titleBorder$borderWi29 === void 0 ? void 0 : (_titleBorder$borderWi30 = _titleBorder$borderWi29[props.deviceType]) === null || _titleBorder$borderWi30 === void 0 ? void 0 : _titleBorder$borderWi30.bottom) >= "0" ? `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi31 = titleBorder.borderWidth) === null || _titleBorder$borderWi31 === void 0 ? void 0 : (_titleBorder$borderWi32 = _titleBorder$borderWi31[props.deviceType]) === null || _titleBorder$borderWi32 === void 0 ? void 0 : _titleBorder$borderWi32.bottom}px ${titleBorder.borderType} ${titleBorder.borderColor}!important` : "",
       "border-bottom-style": `${titleBorder.borderType == "none" ? "solid" : titleBorder.borderType}`,
       "border-bottom-width": `${titleBorder.borderType == "none" ? "3px" : ""}`,
-      "border-bottom-color": titleBorder.borderType == "none" ? "#793DC4" : titleBorder.borderColor
+      "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#793DC4)" : titleBorder.borderColor
     };
     styles[`.${blockId} .premium-title .style4`] = {
       "border-color": `${titleBorder.borderColor}!important`,
@@ -27125,7 +29102,7 @@ function Edit(props) {
       "border-bottom": (titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi41 = titleBorder.borderWidth) === null || _titleBorder$borderWi41 === void 0 ? void 0 : (_titleBorder$borderWi42 = _titleBorder$borderWi41[props.deviceType]) === null || _titleBorder$borderWi42 === void 0 ? void 0 : _titleBorder$borderWi42.bottom) >= "0" ? `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi43 = titleBorder.borderWidth) === null || _titleBorder$borderWi43 === void 0 ? void 0 : (_titleBorder$borderWi44 = _titleBorder$borderWi43[props.deviceType]) === null || _titleBorder$borderWi44 === void 0 ? void 0 : _titleBorder$borderWi44.bottom}px ${titleBorder.borderType} ${titleBorder.borderColor}!important` : "",
       "border-bottom-style": `${titleBorder.borderType == "none" ? "solid" : titleBorder.borderType}`,
       "border-bottom-width": `${titleBorder.borderType == "none" ? "3px" : ""}`,
-      "border-bottom-color": titleBorder.borderType == "none" ? "#793DC4" : titleBorder.borderColor
+      "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#793DC4)" : titleBorder.borderColor
     };
     styles[`.${blockId} .premium-title .style5`] = {
       "border-color": `${titleBorder.borderColor}!important`,
@@ -27141,7 +29118,7 @@ function Edit(props) {
       "border-bottom": (titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi53 = titleBorder.borderWidth) === null || _titleBorder$borderWi53 === void 0 ? void 0 : (_titleBorder$borderWi54 = _titleBorder$borderWi53[props.deviceType]) === null || _titleBorder$borderWi54 === void 0 ? void 0 : _titleBorder$borderWi54.bottom) >= "0" ? `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi55 = titleBorder.borderWidth) === null || _titleBorder$borderWi55 === void 0 ? void 0 : (_titleBorder$borderWi56 = _titleBorder$borderWi55[props.deviceType]) === null || _titleBorder$borderWi56 === void 0 ? void 0 : _titleBorder$borderWi56.bottom}px ${titleBorder.borderType} ${titleBorder.borderColor}!important` : "",
       "border-bottom-style": `${titleBorder.borderType == "none" ? "solid" : titleBorder.borderType}`,
       "border-bottom-width": `${titleBorder.borderType == "none" ? "3px" : ""}`,
-      "border-bottom-color": titleBorder.borderType == "none" ? "#793DC4" : titleBorder.borderColor
+      "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#793DC4)" : titleBorder.borderColor
     };
     styles[`.${blockId} .premium-title .style6`] = {
       "border-color": `${titleBorder.borderColor}!important`,
@@ -27157,7 +29134,7 @@ function Edit(props) {
       "border-bottom": (titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi65 = titleBorder.borderWidth) === null || _titleBorder$borderWi65 === void 0 ? void 0 : (_titleBorder$borderWi66 = _titleBorder$borderWi65[props.deviceType]) === null || _titleBorder$borderWi66 === void 0 ? void 0 : _titleBorder$borderWi66.bottom) >= "0" ? `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi67 = titleBorder.borderWidth) === null || _titleBorder$borderWi67 === void 0 ? void 0 : (_titleBorder$borderWi68 = _titleBorder$borderWi67[props.deviceType]) === null || _titleBorder$borderWi68 === void 0 ? void 0 : _titleBorder$borderWi68.bottom}px ${titleBorder.borderType} ${titleBorder.borderColor}!important` : "",
       "border-bottom-style": `${titleBorder.borderType == "none" ? "solid" : titleBorder.borderType}`,
       "border-bottom-width": `${titleBorder.borderType == "none" ? "3px" : ""}`,
-      "border-bottom-color": titleBorder.borderType == "none" ? "#793DC4" : titleBorder.borderColor
+      "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#793DC4)" : titleBorder.borderColor
     };
     styles[`.${blockId} .premium-title-style2__wrap`] = {
       "background-color": `${titleStyles[0].BGColor}!important`
@@ -28144,117 +30121,117 @@ function save(props) {
   });
   let btnGrad, btnGrad2, btnbg;
 
-  if (undefined !== iconBackground.backgroundType && 'gradient' === iconBackground.backgroundType) {
-    btnGrad = 'transparent' === iconBackground.backgroundColor || undefined === iconBackground.backgroundColor ? 'rgba(255,255,255,0)' : iconBackground.backgroundColor;
-    btnGrad2 = undefined !== iconBackground.gradientColorTwo && undefined !== iconBackground.gradientColorTwo && '' !== iconBackground.gradientColorTwo ? iconBackground.gradientColorTwo : '#777';
+  if (undefined !== iconBackground.backgroundType && "gradient" === iconBackground.backgroundType) {
+    btnGrad = "transparent" === iconBackground.backgroundColor || undefined === iconBackground.backgroundColor ? "rgba(255,255,255,0)" : iconBackground.backgroundColor;
+    btnGrad2 = undefined !== iconBackground.gradientColorTwo && undefined !== iconBackground.gradientColorTwo && "" !== iconBackground.gradientColorTwo ? iconBackground.gradientColorTwo : "#777";
 
-    if ('radial' === iconBackground.gradientType) {
+    if ("radial" === iconBackground.gradientType) {
       btnbg = `radial-gradient(at ${iconBackground.gradientPosition}, ${btnGrad} ${iconBackground.gradientLocationOne}%, ${btnGrad2} ${iconBackground.gradientLocationTwo}%)`;
-    } else if ('radial' !== iconBackground.gradientType) {
+    } else if ("radial" !== iconBackground.gradientType) {
       btnbg = `linear-gradient(${iconBackground.gradientAngle}deg, ${btnGrad} ${iconBackground.gradientLocationOne}%, ${btnGrad2} ${iconBackground.gradientLocationTwo}%)`;
     }
   } else {
-    btnbg = iconBackground.backgroundImageURL ? `url('${iconBackground.backgroundImageURL}')` : '';
+    btnbg = iconBackground.backgroundImageURL ? `url('${iconBackground.backgroundImageURL}')` : "";
   }
 
   const loadStyles = () => {
     const styles = {};
     styles[`.${blockId} .premium-title-style8__wrap .premium-title-text-title[data-animation='shiny']`] = {
-      '--base-color': `${titleStyles[0].titleColor}!important`,
-      '--shiny-color': `${titleStyles[0].shinyColor}!important`,
-      '--animation-speed': `${titleStyles[0].animateduration}s!important`
+      "--base-color": `${titleStyles[0].titleColor}!important`,
+      "--shiny-color": `${titleStyles[0].shinyColor}!important`,
+      "--animation-speed": `${titleStyles[0].animateduration}s!important`
     };
     styles[`.${blockId} .premium-title-header`] = {
-      '--shadow-color': `${titleStyles[0].blurColor}!important`,
-      '--shadow-value': `${titleStyles[0].blurShadow}px!important`,
-      'color': `${titleStyles[0].titleColor}!important`
+      "--shadow-color": `${titleStyles[0].blurColor}!important`,
+      "--shadow-value": `${titleStyles[0].blurShadow}px!important`,
+      color: `${titleStyles[0].titleColor}!important`
     };
     styles[`.${blockId} .premium-title .style1 .premium-title-header`] = {
-      'border-color': `${titleBorder.borderColor}!important`,
-      "border-style": `${titleBorder.borderType == 'none' ? 'none' : `${titleBorder.borderType} !important`}`,
-      "border-left-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
-      "border-left-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
-      "border-left-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
+      "border-color": `${titleBorder.borderColor}!important`,
+      "border-style": `${titleBorder.borderType == "none" ? "none" : `${titleBorder.borderType} !important`}`,
+      "border-left-style": `${titleBorder.borderType == "none" ? "solid" : titleBorder.borderType}`,
+      "border-left-width": `${titleBorder.borderType == "none" ? "3px" : ""}`,
+      "border-left-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#793DC4)" : titleBorder.borderColor
     };
     styles[`.${blockId} .premium-title .style2`] = {
-      'border-color': `${titleBorder.borderColor}!important`,
-      'border-style': `${titleBorder.borderType}`,
-      "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
-      "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
-      "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
+      "border-color": `${titleBorder.borderColor}!important`,
+      "border-style": `${titleBorder.borderType}`,
+      "border-bottom-style": `${titleBorder.borderType == "none" ? "solid" : titleBorder.borderType}`,
+      "border-bottom-width": `${titleBorder.borderType == "none" ? "3px" : ""}`,
+      "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#793DC4)" : titleBorder.borderColor
     };
     styles[`.${blockId} .premium-title .style4`] = {
-      'border-color': `${titleBorder.borderColor}!important`,
-      'border-style': `${titleBorder.borderType}`,
-      "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
-      "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
-      "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
+      "border-color": `${titleBorder.borderColor}!important`,
+      "border-style": `${titleBorder.borderType}`,
+      "border-bottom-style": `${titleBorder.borderType == "none" ? "solid" : titleBorder.borderType}`,
+      "border-bottom-width": `${titleBorder.borderType == "none" ? "3px" : ""}`,
+      "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#793DC4)" : titleBorder.borderColor
     };
     styles[`.${blockId} .premium-title .style5`] = {
-      'border-color': `${titleBorder.borderColor}!important`,
-      'border-style': `${titleBorder.borderType}`,
-      "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
-      "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
-      "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
+      "border-color": `${titleBorder.borderColor}!important`,
+      "border-style": `${titleBorder.borderType}`,
+      "border-bottom-style": `${titleBorder.borderType == "none" ? "solid" : titleBorder.borderType}`,
+      "border-bottom-width": `${titleBorder.borderType == "none" ? "3px" : ""}`,
+      "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#793DC4)" : titleBorder.borderColor
     };
     styles[`.${blockId} .premium-title .style6`] = {
-      'border-color': `${titleBorder.borderColor}!important`,
-      'border-style': `${titleBorder.borderType}`,
-      "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
-      "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
-      "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
+      "border-color": `${titleBorder.borderColor}!important`,
+      "border-style": `${titleBorder.borderType}`,
+      "border-bottom-style": `${titleBorder.borderType == "none" ? "solid" : titleBorder.borderType}`,
+      "border-bottom-width": `${titleBorder.borderType == "none" ? "3px" : ""}`,
+      "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#793DC4)" : titleBorder.borderColor
     };
     styles[`.${blockId} .premium-title-style2__wrap`] = {
-      'background-color': `${titleStyles[0].BGColor}!important`
+      "background-color": `${titleStyles[0].BGColor}!important`
     };
     styles[`.${blockId} .premium-title-style3__wrap`] = {
-      'background-color': `${titleStyles[0].BGColor}!important`
+      "background-color": `${titleStyles[0].BGColor}!important`
     };
     styles[`.${blockId} .premium-title-style5__wrap`] = {
-      'border-bottom': `2px solid ${titleStyles[0].lineColor}!important`
+      "border-bottom": `2px solid ${titleStyles[0].lineColor}!important`
     };
     styles[`.${blockId} .premium-title-style6__wrap`] = {
-      'border-bottom': `2px solid ${titleStyles[0].lineColor}!important`
+      "border-bottom": `2px solid ${titleStyles[0].lineColor}!important`
     };
     styles[`.${blockId} .premium-title-style6__wrap:before`] = {
-      'border-bottom-color': `${titleStyles[0].triangleColor}!important`
+      "border-bottom-color": `${titleStyles[0].triangleColor}!important`
     };
     styles[`.${blockId} .premium-title-icon`] = {
-      'color': `${iconStyles[0].iconColor} !important`,
-      'background-color': `${iconBackground.backgroundType === "solid" ? iconBackground.backgroundColor : "transparent"} !important`,
-      'background-image': `${btnbg} !important`,
-      'background-repeat': `${iconBackground.backgroundRepeat} !important`,
-      'background-position': `${iconBackground.backgroundPosition} !important`,
-      'background-size': `${iconBackground.backgroundSize} !important`,
-      'background-attachment': `${iconBackground.fixed ? "fixed" : "unset"} !important`,
-      'border-color': `${iconBorder.borderColor}!important`,
-      'border-style': `${iconBorder.borderType}!important`,
-      'text-shadow': `${iconshadow.horizontal}px ${iconshadow.vertical}px ${iconshadow.blur}px ${iconshadow.color} !important`
+      color: `${iconStyles[0].iconColor} !important`,
+      "background-color": `${iconBackground.backgroundType === "solid" ? iconBackground.backgroundColor : "transparent"} !important`,
+      "background-image": `${btnbg} !important`,
+      "background-repeat": `${iconBackground.backgroundRepeat} !important`,
+      "background-position": `${iconBackground.backgroundPosition} !important`,
+      "background-size": `${iconBackground.backgroundSize} !important`,
+      "background-attachment": `${iconBackground.fixed ? "fixed" : "unset"} !important`,
+      "border-color": `${iconBorder.borderColor}!important`,
+      "border-style": `${iconBorder.borderType}!important`,
+      "text-shadow": `${iconshadow.horizontal}px ${iconshadow.vertical}px ${iconshadow.blur}px ${iconshadow.color} !important`
     };
     styles[`.${blockId} .premium-title-bg-text:before`] = {
-      'content': `${BackText}`,
-      'width': `${textWidth}`,
-      'color': `${textStyles[0].textBackColor}`,
-      'font-family': `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.fontFamily}`,
-      'font-weight': `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.fontWeight}`,
-      'font-style': `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.fontStyle}`,
-      'text-transform': `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.textTransform}`,
-      'text-decoration': `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.textDecoration}`,
-      'mix-blend-mode': `${blend} !important`,
-      'text-shadow': `${textBackshadow.horizontal}px ${textBackshadow.vertical}px ${textBackshadow.blur}px ${textBackshadow.color} !important`,
-      'z-index': `${zIndex} !important`,
-      '-webkit-text-stroke-color': `${strokeStyles[0].strokeColor} !important`
+      content: `${BackText}`,
+      width: `${textWidth}`,
+      color: `${textStyles[0].textBackColor}`,
+      "font-family": `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.fontFamily}`,
+      "font-weight": `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.fontWeight}`,
+      "font-style": `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.fontStyle}`,
+      "text-transform": `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.textTransform}`,
+      "text-decoration": `${textTypography === null || textTypography === void 0 ? void 0 : textTypography.textDecoration}`,
+      "mix-blend-mode": `${blend} !important`,
+      "text-shadow": `${textBackshadow.horizontal}px ${textBackshadow.vertical}px ${textBackshadow.blur}px ${textBackshadow.color} !important`,
+      "z-index": `${zIndex} !important`,
+      "-webkit-text-stroke-color": `${strokeStyles[0].strokeColor} !important`
     };
     styles[`.${blockId} .premium-title-style7-stripe-span`] = {
-      'background-color': `${titleStyles[0].stripeColor}!important`
+      "background-color": `${titleStyles[0].stripeColor}!important`
     };
     styles[`.${blockId} .premium-title-style9__wrap .premium-letters-container .premium-title-style9-letter`] = {
-      'font-family': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily}`,
-      'font-weight': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontWeight}`,
-      'letter-spacing': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.letterSpacing}`,
-      'line-height': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.lineHeight}`,
-      'font-style': `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontStyle}`,
-      'text-shadow': `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color} !important`
+      "font-family": `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily}`,
+      "font-weight": `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontWeight}`,
+      "letter-spacing": `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.letterSpacing}`,
+      "line-height": `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.lineHeight}`,
+      "font-style": `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontStyle}`,
+      "text-shadow": `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color} !important`
     };
     return (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.generateCss)(styles);
   };
@@ -28266,16 +30243,16 @@ function save(props) {
       " premium-mobile-hidden": hideMobile
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, loadStyles()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `premium-title   ${backgroundText ? 'premium-title-bg-text' : ""}`,
+    className: `premium-title   ${backgroundText ? "premium-title-bg-text" : ""}`,
     "data-backgroundText": BackText
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-title-container ${style}`,
     "data-blur-delay": titleStyles[0].animateDelay,
     "data-shiny-dur": titleStyles[0].animateduration
   }, React.createElement(titleTag, {
-    className: `premium-title-header premium-title-${style}__wrap ${iconValue ? iconPosition : ""} ${iconPosition == 'top' ? `premium-title-${iconAlign === null || iconAlign === void 0 ? void 0 : iconAlign['Desktop']} premium-title-tablet-${iconAlign === null || iconAlign === void 0 ? void 0 : iconAlign['Tablet']} premium-title-mobile-${iconAlign === null || iconAlign === void 0 ? void 0 : iconAlign['Mobile']}` : ""}`,
-    'data-blur-delay': `${titleStyles[0].animateDelay}`,
-    'data-shiny-dur': `${titleStyles[0].animateduration}`,
+    className: `premium-title-header premium-title-${style}__wrap ${iconValue ? iconPosition : ""} ${iconPosition == "top" ? `premium-title-${iconAlign === null || iconAlign === void 0 ? void 0 : iconAlign["Desktop"]} premium-title-tablet-${iconAlign === null || iconAlign === void 0 ? void 0 : iconAlign["Tablet"]} premium-title-mobile-${iconAlign === null || iconAlign === void 0 ? void 0 : iconAlign["Mobile"]}` : ""}`,
+    "data-blur-delay": `${titleStyles[0].animateDelay}`,
+    "data-shiny-dur": `${titleStyles[0].animateduration}`,
     style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       color: titleStyles[0].titleColor,
       fontStyle: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontStyle,
@@ -28285,29 +30262,29 @@ function save(props) {
       textTransform: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textTransform,
       textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
     })
-  }, [(0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, style === 'style7' ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, iconPosition != 'top' && iconValue && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: `premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign['Desktop']} premium-stripe-tablet-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign['Tablet']} premium-stripe-mobile-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign['Mobile']}`
+  }, [(0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, style === "style7" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, iconPosition != "top" && iconValue && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: `premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign["Desktop"]} premium-stripe-tablet-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign["Tablet"]} premium-stripe-mobile-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign["Mobile"]}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: `premium-title-style7-stripe-span`
   })), !iconValue && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: `premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign['Desktop']} premium-stripe-tablet-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign['Tablet']} premium-stripe-mobile-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign['Mobile']}`
+    className: `premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign["Desktop"]} premium-stripe-tablet-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign["Tablet"]} premium-stripe-mobile-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign["Mobile"]}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: `premium-title-style7-stripe-span`
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-title-style7-inner-title`
-  }, iconValue && iconType == 'icon' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+  }, iconValue && iconType == "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
     className: `premium-title-icon ${icon}`
-  }), iconValue && iconType == 'image' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+  }), iconValue && iconType == "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     className: `premium-title-icon`,
     src: imageURL
-  }), iconValue && iconType == 'lottie' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), iconValue && iconType == "lottie" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-title-icon premium-lottie-animation",
     "data-loop": loop,
     "data-lottieurl": `${lottieURl}`,
     "data-reverse": reversedir,
     "data-trigger": "none"
-  }), iconPosition === 'top' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: `premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign['Desktop']} premium-stripe-tablet-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign['Tablet']} premium-stripe-mobile-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign['Mobile']}`
+  }), iconPosition === "top" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: `premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign["Desktop"]} premium-stripe-tablet-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign["Tablet"]} premium-stripe-mobile-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign["Mobile"]}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: `premium-title-style7-stripe-span`
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
@@ -28317,12 +30294,12 @@ function save(props) {
     style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       color: titleStyles[0].titleColor
     })
-  }))) : style === "style9" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, iconValue && iconType == 'icon' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+  }))) : style === "style9" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, iconValue && iconType == "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
     className: `premium-title-icon ${icon}`
-  }), iconValue && iconType == 'image' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+  }), iconValue && iconType == "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     className: `premium-title-icon`,
     src: imageURL
-  }), iconValue && iconType == 'lottie' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), iconValue && iconType == "lottie" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-title-icon premium-lottie-animation",
     "data-loop": loop,
     "data-lottieurl": `${lottieURl}`,
@@ -28333,12 +30310,12 @@ function save(props) {
     style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       color: titleStyles[0].titleColor
     })
-  }, styleContainer)) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, iconValue && iconType == 'icon' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+  }, styleContainer)) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, iconValue && iconType == "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
     className: `premium-title-icon ${icon}`
-  }), iconValue && iconType == 'image' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+  }), iconValue && iconType == "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     className: `premium-title-icon`,
     src: imageURL
-  }), iconValue && iconType == 'lottie' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), iconValue && iconType == "lottie" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-title-icon premium-lottie-animation",
     "data-loop": loop,
     "data-lottieurl": `${lottieURl}`,
@@ -28349,10 +30326,10 @@ function save(props) {
     className: `premium-title-text-title`,
     value: title,
     style: {
-      minHeight: '15px',
-      margin: 'revert'
+      minHeight: "15px",
+      margin: "revert"
     }
-  })), link && url !== ' ' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+  })), link && url !== " " && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     rel: "noopener noreferrer",
     target: "_self",
     href: `${url}`
@@ -40676,15 +42653,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @pbg/helpers */ "@pbg/helpers");
+/* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var hex_to_rgba__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! hex-to-rgba */ "./node_modules/hex-to-rgba/build/index.js");
 /* harmony import */ var hex_to_rgba__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(hex_to_rgba__WEBPACK_IMPORTED_MODULE_3__);
 
 const className = "premium-pricing-table";
 
 
+const {
+  useBlockProps,
+  InnerBlocks
+} = wp.blockEditor;
 const {
   __
 } = wp.i18n;
@@ -41587,7 +43569,159 @@ const v5Attributes = {
     type: 'number'
   }
 };
+const v6Attributes = {
+  "badgeChecked": {
+    "type": "boolean",
+    "default": true
+  },
+  "blockId": {
+    "type": "string"
+  },
+  "classMigrate": {
+    "type": "boolean",
+    "default": false
+  },
+  "hideDesktop": {
+    "type": "boolean",
+    "default": ""
+  },
+  "hideTablet": {
+    "type": "boolean",
+    "default": ""
+  },
+  "hideMobile": {
+    "type": "boolean",
+    "default": ""
+  },
+  "tableStyles": {
+    "type": "array",
+    "default": [{
+      "tableBack": "",
+      "tableOpacity": 1
+    }]
+  },
+  "tableBoxShadow": {
+    "type": "object",
+    "default": {
+      "color": "transparent",
+      "blur": "10",
+      "horizontal": "0",
+      "vertical": "0",
+      "position": ""
+    }
+  },
+  "tableBorder": {
+    "type": "object",
+    "default": {
+      "bordertype": "solid",
+      "borderColor": "#e1e1e1",
+      "borderWidth": {
+        "Desktop": {
+          "top": "1",
+          "right": "1",
+          "bottom": "1",
+          "left": "1"
+        },
+        "Tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        }
+      },
+      "borderRadius": {
+        "Desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        }
+      }
+    }
+  },
+  "tablePadding": {
+    "type": "object",
+    "default": {
+      "Desktop": {
+        "top": "20",
+        "right": "20",
+        "bottom": "20",
+        "left": "20"
+      },
+      "Tablet": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Mobile": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "unit": "px"
+    }
+  }
+};
 const deprecatedContent = [{
+  attributes: v6Attributes,
+  migrate: attributes => {
+    let newAttributes = {
+      switchRadius: attributes.switchRadius || '50',
+      switchRadiusUnit: attributes.switchRadiusUnit || 'px',
+      controllerOneBackground: (attributes === null || attributes === void 0 ? void 0 : attributes.controllerOneBackground) && { ...attributes.controllerOneBackground,
+        backgroundColor: 'var(--pbg-global-color1,#793dc3)'
+      }
+    };
+    return Object.assign(attributes, newAttributes);
+  },
+  save: props => {
+    const {
+      className
+    } = props;
+    const {
+      blockId,
+      hideDesktop,
+      hideTablet,
+      hideMobile,
+      tableStyles,
+      tableBoxShadow,
+      tableBorder
+    } = props.attributes;
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", useBlockProps.save({
+      className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, `${blockId}`, `premium-pricing-table`, {
+        " premium-desktop-hidden": hideDesktop,
+        " premium-tablet-hidden": hideTablet,
+        " premium-mobile-hidden": hideMobile
+      }),
+      style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
+        backgroundColor: tableStyles[0].tableBack,
+        borderStyle: tableBorder.borderType,
+        borderColor: tableBorder.borderColor,
+        boxShadow: `${tableBoxShadow.horizontal}px ${tableBoxShadow.vertical}px ${tableBoxShadow.blur}px ${tableBoxShadow.color} ${tableBoxShadow.position}`
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InnerBlocks.Content, null));
+  }
+}, {
   attributes: v5Attributes,
 
   isEligible() {
@@ -41598,7 +43732,7 @@ const deprecatedContent = [{
     var _attributes$tableStyl, _attributes$tableStyl2, _attributes$tableStyl3, _attributes$tableStyl4, _attributes$tableStyl5, _attributes$tableStyl6, _attributes$tableStyl7, _attributes$tableStyl8, _attributes$tableStyl9, _attributes$tableStyl10, _attributes$tableStyl11, _attributes$tableStyl12, _attributes$tableStyl13, _attributes$tableStyl14;
 
     let newAttributes = {
-      blockId: attributes.block_id ? "premium-pricing-table-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_1__.generateBlockId)(attributes.block_id) : '',
+      blockId: attributes.block_id ? "premium-pricing-table-" + (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.generateBlockId)(attributes.block_id) : '',
       badgeChecked: attributes.badgeChecked || true,
       tableBoxShadow: {
         'color': (attributes === null || attributes === void 0 ? void 0 : (_attributes$tableStyl = attributes.tableStyles[0]) === null || _attributes$tableStyl === void 0 ? void 0 : _attributes$tableStyl.tableShadowColor) || '',
@@ -41717,7 +43851,7 @@ const deprecatedContent = [{
       borderBottom,
       borderLeft
     } = props.attributes;
-    const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, "premium-pricing-table");
+    const mainClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, "premium-pricing-table");
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       id: `${mainClasses}-${block_id}`,
       className: `${mainClasses} premium-pricing-table-${block_id} ${hideDesktop} ${hideTablet} ${hideMobile}`,
@@ -78773,7 +80907,7 @@ module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/a
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/badge","title":"Badge","category":"premium-blocks","description":"Badge Description.","keywords":["badge"],"textdomain":"default","parent":["premium/pricing-table"],"attributes":{"blockId":{"type":"string"},"hideDesktop":{"type":"boolean","default":false},"hideTablet":{"type":"boolean","default":false},"hideMobile":{"type":"boolean","default":false},"typography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"color":{"type":"string","default":"#fff"},"backgroundColor":{"type":"string","default":"#793DC3"},"text":{"type":"string","default":"Popular"},"textWidth":{"type":"number"},"badgeSize":{"type":"number"},"position":{"type":"string","default":"right"},"vOffset":{"type":"number"},"hOffset":{"type":"number"}}}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/badge","title":"Badge","category":"premium-blocks","description":"Badge Description.","keywords":["badge"],"textdomain":"default","parent":["premium/pricing-table"],"attributes":{"blockId":{"type":"string"},"hideDesktop":{"type":"boolean","default":false},"hideTablet":{"type":"boolean","default":false},"hideMobile":{"type":"boolean","default":false},"typography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"color":{"type":"string","default":"#fff"},"backgroundColor":{"type":"string","default":"var(--pbg-global-color1,#793dc3)"},"text":{"type":"string","default":"Popular"},"textWidth":{"type":"number"},"badgeSize":{"type":"number"},"position":{"type":"string","default":"right"},"vOffset":{"type":"number"},"hOffset":{"type":"number"}}}');
 
 /***/ }),
 
@@ -78850,7 +80984,7 @@ module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/c
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/dheading-block","title":"Dual Heading","category":"premium-blocks","attributes":{"blockId":{"type":"string"},"align":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"firstHeading":{"type":"array","source":"children","default":"Premium ","selector":".premium-dheading-block__first"},"secondHeading":{"type":"array","source":"children","default":"Blocks","selector":".premium-dheading-block__second"},"titleTag":{"type":"string","default":"h1"},"display":{"type":"string","default":"inline"},"firstStyles":{"type":"array","default":[{"firstClip":false,"firstAnim":false,"firstStroke":false,"firstColor":"","firstBackground":"","firstOpacity":"1","firstClipColor":"#54595f"}]},"firstShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"firstTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","fontFamily":"Default","textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"secondStyles":{"type":"array","default":[{"secondClip":false,"secondAnim":false,"secondStroke":false,"secondColor":"#793DC4","secondBackground":"","secondOpacity":"","secondClipColor":"#6ec1e4","secondMarginL":"0","secondMarginR":"0","secondPadding":"0"}]},"secondShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"secondTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","fontFamily":"Default","textDecoration":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"background":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}},"link":{"type":"boolean","default":false},"target":{"type":"boolean","default":false},"headingURL":{"type":"string"},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"firstBorder":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"secondBorder":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"containerBorder":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"firstPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"firstMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"secondPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"secondMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}}}}');
+module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/dheading-block","title":"Dual Heading","category":"premium-blocks","attributes":{"blockId":{"type":"string"},"align":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"firstHeading":{"type":"array","source":"children","default":"Premium ","selector":".premium-dheading-block__first"},"secondHeading":{"type":"array","source":"children","default":"Blocks","selector":".premium-dheading-block__second"},"titleTag":{"type":"string","default":"h1"},"display":{"type":"string","default":"inline"},"firstStyles":{"type":"array","default":[{"firstClip":false,"firstAnim":false,"firstStroke":false,"firstColor":"","firstBackground":"","firstOpacity":"1","firstClipColor":"#54595f"}]},"firstShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"firstTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","fontFamily":"Default","textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"secondStyles":{"type":"array","default":[{"secondClip":false,"secondAnim":false,"secondStroke":false,"secondColor":"var(--pbg-global-color1,#793DC4)","secondBackground":"","secondOpacity":"","secondClipColor":"#6ec1e4","secondMarginL":"0","secondMarginR":"0","secondPadding":"0"}]},"secondShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"secondTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","fontFamily":"Default","textDecoration":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"background":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}},"link":{"type":"boolean","default":false},"target":{"type":"boolean","default":false},"headingURL":{"type":"string"},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"firstBorder":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"secondBorder":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"containerBorder":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"firstPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"firstMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"secondPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"secondMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}}}}');
 
 /***/ }),
 
@@ -78861,7 +80995,7 @@ module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/d
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/fancy-text","title":"Fancy Text","category":"premium-blocks","attributes":{"blockId":{"type":"string"},"classMigrate":{"type":"boolean","default":""},"fancyContentAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"prefix":{"type":"string","default":"This is"},"suffix":{"type":"string","default":"Text"},"repeaterFancyText":{"type":"array","default":[{"title":"Designer","edit":false},{"title":"Awesome","edit":false},{"title":"Developer","edit":false}]},"effect":{"type":"string","default":"typing"},"loop":{"type":"boolean","default":"true"},"cursorShow":{"type":"boolean","default":"true"},"cursorMark":{"type":"string","default":"|"},"typeSpeed":{"type":"number","default":100},"backdelay":{"type":"number","default":30},"startdelay":{"type":"number","default":30},"backSpeed":{"type":"number","default":30},"animationSpeed":{"type":"number","default":200},"pauseTime":{"type":"number","default":3000},"hoverPause":{"type":"boolean","default":false},"fancyTextAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"fancyStyles":{"type":"array","default":[{"fancyTextColor":"#793dc3","fancyTextBGColor":"","fancyTextBGOpacity":1,"cursorColor":""}]},"PreStyles":{"type":"array","default":[{"textColor":"","textBGColor":"","textBGOpacity":1}]},"prefixTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"fancyTextTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"fancyTextShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}}}}');
+module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/fancy-text","title":"Fancy Text","category":"premium-blocks","attributes":{"blockId":{"type":"string"},"classMigrate":{"type":"boolean","default":""},"fancyContentAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"prefix":{"type":"string","default":"This is"},"suffix":{"type":"string","default":"Text"},"repeaterFancyText":{"type":"array","default":[{"title":"Designer","edit":false},{"title":"Awesome","edit":false},{"title":"Developer","edit":false}]},"effect":{"type":"string","default":"typing"},"loop":{"type":"boolean","default":"true"},"cursorShow":{"type":"boolean","default":"true"},"cursorMark":{"type":"string","default":"|"},"typeSpeed":{"type":"number","default":100},"backdelay":{"type":"number","default":30},"startdelay":{"type":"number","default":30},"backSpeed":{"type":"number","default":30},"animationSpeed":{"type":"number","default":200},"pauseTime":{"type":"number","default":3000},"hoverPause":{"type":"boolean","default":false},"fancyTextAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"fancyStyles":{"type":"array","default":[{"fancyTextColor":"var(--pbg-global-color1,#793dc3)","fancyTextBGColor":"","fancyTextBGOpacity":1,"cursorColor":""}]},"PreStyles":{"type":"array","default":[{"textColor":"","textBGColor":"","textBGOpacity":1}]},"prefixTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"fancyTextTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"fancyTextShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}}}}');
 
 /***/ }),
 
@@ -78872,7 +81006,7 @@ module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/f
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/heading","title":"Heading","category":"premium-blocks","attributes":{"blockId":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"align":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":""}},"style":{"type":"string","default":"default"},"title":{"type":"string","default":"Premium Title"},"iconValue":{"type":"boolean","default":false},"iconType":{"type":"string","default":"icon"},"icon":{"type":"string","default":"fa fa-bars"},"iconPosition":{"type":"string","default":"before"},"imageID":{"type":"number"},"imageURL":{"type":"string","source":"attribute","attribute":"src","selector":".premium-title-icon"},"link":{"type":"boolean","default":false},"backgroundText":{"type":"boolean","default":false},"BackText":{"type":"string","default":"Awesome Title"},"textWidth":{"type":"number"},"url":{"type":"string","default":"#"},"iconAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"stripePosition":{"type":"string","default":"top"},"titleStyles":{"type":"array","default":[{"titleColor":"","shinyColor":"#fff","blurColor":"#000","BGColor":"#DDD0EF","lineColor":"","triangleColor":"#793DC4","stripeColor":"#793DC4","blurShadow":"120","animateDelay":"2","animateduration":"1"}]},"titlePadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"titleMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"titleBorder":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"titleShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"titleTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"stripeAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"stripeWidth":{"type":"object","default":{"Desktop":120,"Tablet":120,"Mobile":120,"unit":"px"}},"stripeHeight":{"type":"object","default":{"Desktop":5,"Tablet":5,"Mobile":5,"unit":"px"}},"stripeTopSpacing":{"type":"object","default":{"Desktop":0,"Tablet":0,"Mobile":0,"unit":"px"}},"stripeBottomSpacing":{"type":"object","default":{"Desktop":0,"Tablet":0,"Mobile":0,"unit":"px"}},"textStyles":{"type":"array","default":[{"textBackColor":"","rotateText":0,"rotateTextTablet":0,"rotateTextMobile":0}]},"textTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"textBackshadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"horizontalText":{"type":"object","default":{"Desktop":0,"Tablet":0,"Mobile":0,"unit":"px"}},"verticalText":{"type":"object","default":{"Desktop":0,"Tablet":0,"Mobile":0,"unit":"px"}},"rotateText":{"type":"object","default":{"Desktop":0,"Tablet":0,"Mobile":0,"unit":"deg"}},"iconStyles":{"type":"array","default":[{"iconColor":""}]},"iconshadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"iconPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"iconMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"iconBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}},"iconSize":{"type":"object","default":{"Desktop":40,"Tablet":40,"Mobile":40,"unit":"px"}},"iconBorder":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"strokeStyles":{"type":"array","default":[{"stroke":false,"strokeColor":""}]},"strokeFull":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":""}},"iconBGColor":{"type":"string"},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"z_index":{"type":"number"},"blend":{"type":"string"},"lottieURl":{"type":"string"},"loop":{"type":"boolean","default":true},"reversedir":{"type":"boolean","default":false},"target":{"type":"boolean","default":false},"zIndex":{"type":"number"},"titleTag":{"type":"string","default":"h2"}}}');
+module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/heading","title":"Heading","category":"premium-blocks","attributes":{"blockId":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"align":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":""}},"style":{"type":"string","default":"default"},"title":{"type":"string","default":"Premium Title"},"iconValue":{"type":"boolean","default":false},"iconType":{"type":"string","default":"icon"},"icon":{"type":"string","default":"fa fa-bars"},"iconPosition":{"type":"string","default":"before"},"imageID":{"type":"number"},"imageURL":{"type":"string","source":"attribute","attribute":"src","selector":".premium-title-icon"},"link":{"type":"boolean","default":false},"backgroundText":{"type":"boolean","default":false},"BackText":{"type":"string","default":"Awesome Title"},"textWidth":{"type":"number"},"url":{"type":"string","default":"#"},"iconAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"stripePosition":{"type":"string","default":"top"},"titleStyles":{"type":"array","default":[{"titleColor":"","shinyColor":"#fff","blurColor":"#000","BGColor":"#DDD0EF","lineColor":"var(--pbg-global-color1)","triangleColor":"var(--pbg-global-color1,#793DC4)","stripeColor":"var(--pbg-global-color1,#793DC4)","blurShadow":"120","animateDelay":"2","animateduration":"1"}]},"titlePadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"titleMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"titleBorder":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"titleShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"titleTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"stripeAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"stripeWidth":{"type":"object","default":{"Desktop":120,"Tablet":120,"Mobile":120,"unit":"px"}},"stripeHeight":{"type":"object","default":{"Desktop":5,"Tablet":5,"Mobile":5,"unit":"px"}},"stripeTopSpacing":{"type":"object","default":{"Desktop":0,"Tablet":0,"Mobile":0,"unit":"px"}},"stripeBottomSpacing":{"type":"object","default":{"Desktop":0,"Tablet":0,"Mobile":0,"unit":"px"}},"textStyles":{"type":"array","default":[{"textBackColor":"","rotateText":0,"rotateTextTablet":0,"rotateTextMobile":0}]},"textTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"textBackshadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"horizontalText":{"type":"object","default":{"Desktop":0,"Tablet":0,"Mobile":0,"unit":"px"}},"verticalText":{"type":"object","default":{"Desktop":0,"Tablet":0,"Mobile":0,"unit":"px"}},"rotateText":{"type":"object","default":{"Desktop":0,"Tablet":0,"Mobile":0,"unit":"deg"}},"iconStyles":{"type":"array","default":[{"iconColor":""}]},"iconshadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"iconPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"iconMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"iconBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}},"iconSize":{"type":"object","default":{"Desktop":40,"Tablet":40,"Mobile":40,"unit":"px"}},"iconBorder":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"strokeStyles":{"type":"array","default":[{"stroke":false,"strokeColor":""}]},"strokeFull":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":""}},"iconBGColor":{"type":"string"},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"z_index":{"type":"number"},"blend":{"type":"string"},"lottieURl":{"type":"string"},"loop":{"type":"boolean","default":true},"reversedir":{"type":"boolean","default":false},"target":{"type":"boolean","default":false},"zIndex":{"type":"number"},"titleTag":{"type":"string","default":"h2"}}}');
 
 /***/ }),
 
@@ -78993,7 +81127,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/pricing-table","title":"Pricing Table","category":"premium-blocks","attributes":{"badgeChecked":{"type":"boolean","default":true},"blockId":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"tableStyles":{"type":"array","default":[{"tableBack":"","tableOpacity":1}]},"tableBoxShadow":{"type":"object","default":{"color":"transparent","blur":"10","horizontal":"0","vertical":"0","position":""}},"tableBorder":{"type":"object","default":{"bordertype":"solid","borderColor":"#e1e1e1","borderWidth":{"Desktop":{"top":"1","right":"1","bottom":"1","left":"1"},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"tablePadding":{"type":"object","default":{"Desktop":{"top":"20","right":"20","bottom":"20","left":"20"},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}}}}');
+module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/pricing-table","title":"Pricing Table","category":"premium-blocks","attributes":{"badgeChecked":{"type":"boolean","default":true},"blockId":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"tableStyles":{"type":"array","default":[{"tableBack":"","tableOpacity":1}]},"tableBoxShadow":{"type":"object","default":{"color":"transparent","blur":"10","horizontal":"0","vertical":"0","position":""}},"tableBorder":{"type":"object","default":{"bordertype":"solid","borderColor":"var(--pbg-global-color4, #e1e1e1)","borderWidth":{"Desktop":{"top":"1","right":"1","bottom":"1","left":"1"},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"tablePadding":{"type":"object","default":{"Desktop":{"top":"20","right":"20","bottom":"20","left":"20"},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}}}}');
 
 /***/ }),
 

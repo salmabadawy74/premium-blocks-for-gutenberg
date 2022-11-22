@@ -81,3 +81,63 @@
         width: 11px;
     }
 }
+/* Toggle Control */
+.pbg-toggle-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .pbg-toggle {
+        position: relative;
+        display: inline-block;
+        width: 40px;
+        height: 20px;
+        vertical-align: middle;
+    }
+    [class*="label"] {
+        color: rgb(5, 5, 5);
+        font-size: 13px;
+        font-weight: 600;
+        .dashicons {
+            cursor: pointer;
+        }
+    }
+    .pbg-toggle-slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+        border-radius: 15px;
+        background: var(--wp-admin-theme-color);
+        &.checked {
+            &:before {
+                transform: translateX(21px);
+            }
+        }
+        &:before {
+            position: absolute;
+            content: "";
+            height: 13px;
+            width: 13px;
+            left: 3px;
+            bottom: 4px;
+            transition: 0.4s;
+            border-radius: 50%;
+            transform: translateX(0);
+            background: #fff;
+        }
+    }
+    .pbg-toggle-first-label {
+        .dashicons {
+            margin-right: 5px;
+        }
+    }
+    .pbg-toggle-second-label {
+        .dashicons {
+            margin-left: 5px;
+        }
+    }
+}
