@@ -222,13 +222,16 @@ function Edit(props) {
     const loadStyles = () => {
         const styles = {};
 
-        styles[`.${blockId} .premium-button-icon:hover`] = {
+        styles[`.${blockId}.premium-button__wrap:hover .premium-button-icon`] = {
             color: `${iconHoverColor}!important`,
         };
-        styles[`.${blockId}.premium-button__wrap .premium-button:hover`] = {
+        styles[`.${blockId}.premium-button__wrap:hover .premium-button`] = {
             "background-color": `${btnStyles[0].backHoverColor}!important`,
             color: `${btnStyles[0].textHoverColor}!important`,
             "border-color": `${btnStyles[0].borderHoverColor}!important`,
+        };
+        styles[`.${blockId}.premium-button__wrap:hover .premium-button div`] = {
+            color: `${btnStyles[0].textHoverColor}!important`,
         };
         styles[
             `.${blockId}.premium-button__slide .premium-button::before, .${blockId}.premium-button__shutter .premium-button::before, .${blockId}.premium-button__radial .premium-button::before`
@@ -490,13 +493,13 @@ function Edit(props) {
                                             label={
                                                 "radial" !== effect
                                                     ? __(
-                                                          "Background Color",
-                                                          "premium-blocks-for-gutenberg"
-                                                      )
+                                                        "Background Color",
+                                                        "premium-blocks-for-gutenberg"
+                                                    )
                                                     : __(
-                                                          "Background Color",
-                                                          "premium-blocks-for-gutenberg"
-                                                      )
+                                                        "Background Color",
+                                                        "premium-blocks-for-gutenberg"
+                                                    )
                                             }
                                             colorValue={
                                                 btnStyles[0].backHoverColor

@@ -34,7 +34,7 @@ const save = (props) => {
     const loadStyles = () => {
         const styles = {};
 
-        styles[`.${blockId} .premium-button-icon:hover`] = {
+        styles[`.${blockId}.premium-button__wrap:hover .premium-button-icon`] = {
             color: `${iconHoverColor}!important`,
         };
         styles[`.${blockId}.premium-button__wrap:hover .premium-button`] = {
@@ -54,7 +54,7 @@ const save = (props) => {
 
         return generateCss(styles);
     };
-    console.log(blockId);
+
     return (
         <div
             {...useBlockProps.save({
