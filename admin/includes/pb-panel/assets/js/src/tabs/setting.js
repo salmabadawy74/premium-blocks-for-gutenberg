@@ -144,6 +144,40 @@ const Setting = () => {
                             "premium-blocks-for-gutenberg"
                         )}
                     />
+                    <AdvancedSwitcher
+                        label={__(
+                            "Enable Global Setting SideBar in Post Editor",
+                            "premium-blocks-for-gutenberg"
+                        )}
+                        onChange={(checked) =>
+                            onChangeData("enable-post-editor-sidebar", checked)
+                        }
+                        checked={settings?.["enable-post-editor-sidebar"] || false}
+                        description={__(
+                            "This option will be used to Enable Global Setting SideBar in Post Editor.",
+                            "premium-blocks-for-gutenberg"
+                        )}
+                    />
+                    {PremiumBlocksPanelData?.isBlockTheme && (
+                        <AdvancedSwitcher
+                            label={__(
+                                "Enable Global Setting SideBar in Site Editor",
+                                "premium-blocks-for-gutenberg"
+                            )}
+                            onChange={(checked) =>
+                                onChangeData("enable-site-editor-sidebar", checked)
+                            }
+                            checked={settings?.["enable-site-editor-sidebar"] || false}
+                            description={__(
+                                "This option will be used to Enable Global Setting SideBar in Site Editor.",
+                                "premium-blocks-for-gutenberg"
+                            )}
+                            style={{
+                                opacity: !settings?.["enable-post-editor-sidebar"] && '0.4',
+                                pointerEvents: !settings?.["enable-post-editor-sidebar"] && 'none',
+                            }}
+                        />
+                    )}
                 </div>
             </div>
         </Container>
