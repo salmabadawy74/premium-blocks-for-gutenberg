@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "@wordpress/element";
+import { useContext } from "@wordpress/element";
 import SettingsContext from '../store/settings-store';
 import PalettePreview from './color-palettes/PalettePreview';
 import { useSelect } from '@wordpress/data';
@@ -30,7 +30,7 @@ const ThemeColorPalette = () => {
             onChange={(v, id) => handleChangeColor(v, id)}
             skipModal={false}
             handleClickReset={(id) => handleChangeColor('', id)}
-            å />
+        />
     </div>
 }
 

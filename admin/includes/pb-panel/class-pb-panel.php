@@ -132,6 +132,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 				'person'           => true,
 				'container'        => true,
 				'content-switcher' => true,
+				'my-block'         => true,
 			);
 
 			return array_merge( $default_options, $options );

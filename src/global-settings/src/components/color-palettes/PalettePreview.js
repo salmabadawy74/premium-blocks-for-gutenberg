@@ -1,10 +1,10 @@
 const { __ } = wp.i18n;
 import classnames from "classnames";
-import ColorComponent from "../color";
 import { Icon, create } from '@wordpress/icons';
 import ReactTooltip from 'react-tooltip';
 import { useEffect, useContext } from "@wordpress/element";
 import SettingsContext from "../../store/settings-store";
+import AdvancedColorControl from "../AdvancedColorControl";
 
 const PalettePreview = ({
     renderBefore = () => null,
@@ -78,16 +78,19 @@ const PalettePreview = ({
                 <ReactTooltip place='top' effect="solid" id='pbg-color-preview' />
                 <div className="premium-palette-colors">
                     {colors.map((picker) => (
-                        <ColorComponent
-                            picker={picker}
-                            onChangeComplete={(color, id) => handleChangeColor(color, picker[`slug`])}
+                        <AdvancedColorControl
+                            colorValue={picker.color}
                             className={"premium-global-color-palette-modal"}
-                            skipModal={picker.skipModal}
-                            resetPalette={true}
-                            onColorReset={(color) => handleClickReset(picker[`slug`])}
                             isDefault={picker.default}
+                            colorDefault={""}
+                            onColorChange={(color) => handleChangeColor(color, picker[`slug`])}
                             onRemove={() => handleRemoveColor(picker[`slug`])}
                             onChangeName={false}
+                            name={picker.name}
+                            slug={picker.slug}
+                            skipModal={picker.skipModal}
+                            resetPalette={true}
+                            handleColorReset={() => handleClickReset(picker[`slug`])}
                         />
                     ))}
                 </div>
@@ -95,16 +98,19 @@ const PalettePreview = ({
                 {(canAdd) && (
                     <div className="premium-custom-colors">
                         {customColors.map((picker) => (
-                            <ColorComponent
-                                picker={picker}
-                                onChangeComplete={(color, id) => handleChangeColor(color, picker[`slug`])}
+                            <AdvancedColorControl
+                                colorValue={picker.color}
                                 className={"premium-global-color-palette-modal"}
-                                skipModal={picker.skipModal}
-                                resetPalette={true}
-                                onColorReset={(color) => handleClickReset(picker[`slug`])}
                                 isDefault={picker.default}
+                                colorDefault={""}
+                                onColorChange={(color) => handleChangeColor(color, picker[`slug`])}
                                 onRemove={() => handleRemoveColor(picker[`slug`])}
                                 onChangeName={(v) => handleColorChangeName(v, picker[`slug`])}
+                                name={picker.name}
+                                slug={picker.slug}
+                                skipModal={picker.skipModal}
+                                resetPalette={true}
+                                handleColorReset={() => handleClickReset(picker[`slug`])}
                             />
                         ))}
                         {canAdd && <div className="premium-add-new-color" onClick={() => handleAddNewColor()} data-tip={__('Add Color', "premium-blocks-for-gutenberg")}>

@@ -1,16 +1,17 @@
 @import "./colors-palettes.scss";
+@import "./advanced-color.scss";
 
 .premium-group-item-icon {
     fill: currentColor;
 }
 .premium-group-header-description {
-    padding: 0 16px;
+    padding: 0 20px;
 }
 .premium-typography-screen {
-    padding: 16px;
+    padding: 20px;
 }
 .premium-layout-screen {
-    padding: 16px;
+    padding: 20px;
 }
 .premium-element-typography {
     margin-top: 15px;
@@ -49,7 +50,7 @@
 .premium-global-color-Wrapper {
     position: relative;
     &:hover {
-        > .premium-remove-color {
+        > div > .premium-remove-color {
             opacity: 1;
         }
     }
