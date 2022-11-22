@@ -3179,8 +3179,6 @@ const FilterTabs = () => {
         type: "error"
       }));
     }
-
-    console.log(categoriesBlocks);
   };
 
   const DisableBlocks = async () => {

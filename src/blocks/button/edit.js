@@ -67,7 +67,7 @@ function Edit(props) {
         icon,
         iconPosition,
         iconSize,
-        iconSpacing,
+        iconMargin,
         iconColor,
         iconHoverColor,
         iconShadow,
@@ -222,9 +222,10 @@ function Edit(props) {
     const loadStyles = () => {
         const styles = {};
 
-        styles[`.${blockId}.premium-button__wrap:hover .premium-button-icon`] = {
-            color: `${iconHoverColor}!important`,
-        };
+        styles[`.${blockId}.premium-button__wrap:hover .premium-button-icon`] =
+            {
+                color: `${iconHoverColor}!important`,
+            };
         styles[`.${blockId}.premium-button__wrap:hover .premium-button`] = {
             "background-color": `${btnStyles[0].backHoverColor}!important`,
             color: `${btnStyles[0].textHoverColor}!important`,
@@ -493,13 +494,13 @@ function Edit(props) {
                                             label={
                                                 "radial" !== effect
                                                     ? __(
-                                                        "Background Color",
-                                                        "premium-blocks-for-gutenberg"
-                                                    )
+                                                          "Background Color",
+                                                          "premium-blocks-for-gutenberg"
+                                                      )
                                                     : __(
-                                                        "Background Color",
-                                                        "premium-blocks-for-gutenberg"
-                                                    )
+                                                          "Background Color",
+                                                          "premium-blocks-for-gutenberg"
+                                                      )
                                             }
                                             colorValue={
                                                 btnStyles[0].backHoverColor
@@ -664,9 +665,9 @@ function Edit(props) {
                                         "Margin",
                                         "premium-blocks-for-gutenberg"
                                     )}
-                                    value={iconSpacing}
+                                    value={iconMargin}
                                     onChange={(value) =>
-                                        setAttributes({ iconSpacing: value })
+                                        setAttributes({ iconMargin: value })
                                     }
                                     showUnits={true}
                                     responsive={true}
@@ -746,7 +747,7 @@ function Edit(props) {
                                             iconSize[props.deviceType] +
                                             iconSize.unit,
                                         ...marginCss(
-                                            iconSpacing,
+                                            iconMargin,
                                             props.deviceType
                                         ),
                                         color: iconColor,
@@ -784,7 +785,7 @@ function Edit(props) {
                                             iconSize[props.deviceType] +
                                             iconSize.unit,
                                         ...marginCss(
-                                            iconSpacing,
+                                            iconMargin,
                                             props.deviceType
                                         ),
                                         color: iconColor,

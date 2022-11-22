@@ -323,7 +323,7 @@ const new_Attributes = {
             unit: "px",
         },
     },
-    iconSpacing: {
+    iconMargin: {
         type: "object",
         default: {
             Desktop: {
@@ -487,45 +487,6 @@ const deprecatedContent = [
                         left: "",
                     },
                     unit: attributes?.btnStyles[0]?.paddingU || "px",
-                },
-                showIcon: false,
-                icon: "",
-                iconPosition: "before",
-                iconSize: {
-                    Desktop: "30",
-                    Tablet: "30",
-                    Mobile: "30",
-                    unit: "px",
-                },
-                iconSpacing: {
-                    Desktop: {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: "",
-                    },
-                    Tablet: {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: "",
-                    },
-                    Mobile: {
-                        top: "",
-                        right: "",
-                        bottom: "",
-                        left: "",
-                    },
-                    unit: "px",
-                },
-                iconColor: "",
-                iconHoverColor: "",
-                iconShadow: {
-                    color: "",
-                    blur: "",
-                    horizontal: "",
-                    vertical: "",
-                    position: "",
                 },
             };
             return Object.assign(attributes, newAttributes);

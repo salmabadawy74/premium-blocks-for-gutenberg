@@ -1554,10 +1554,10 @@ class PBG_Blocks_Helper
 			$css->set_selector($unique_id . '> .premium-button' . '> .premium-button-icon');
 			$css->add_property('height', $css->render_range($attr['iconSize'], 'Desktop'));
 		}
-		if (isset($attr['iconSpacing']['Desktop'])) {
-			$margin = $attr['iconSpacing'];
-			// $css->set_selector($unique_id . '> .premium-button' . '> .premium-button-icon');
-			// $css->add_property('margin', $css->render_spacing($margin['Desktop'], $margin['unit']));
+		if (isset($attr['iconMargin']['Desktop'])) {
+			$margin = $attr['iconMargin'];
+			$css->set_selector($unique_id . '> .premium-button' . '> .premium-button-icon');
+			$css->add_property('margin', $css->render_spacing($margin['Desktop'], $margin['unit']));
 		}
 
 		$css->start_media_query($media_query['tablet']);
@@ -1591,11 +1591,11 @@ class PBG_Blocks_Helper
 			$css->add_property('border-width', $css->render_spacing($border_width['Tablet'], 'px'));
 			$css->add_property('border-radius', $css->render_spacing($border_radius['Tablet'], 'px'));
 		}
-		if (isset($attr['iconSpacing']['Tablet'])) {
-			$margin = $attr['iconSpacing'];
+		if (isset($attr['iconMargin']['Tablet'])) {
+			$margin = $attr['iconMargin'];
 
-			// $css->set_selector($unique_id . '> .premium-button' . '> .premium-button-icon');
-			// $css->add_property('margin', $css->render_spacing($margin['Tablet'], $margin['unit']));
+			$css->set_selector($unique_id . '> .premium-button' . '> .premium-button-icon');
+			$css->add_property('margin', $css->render_spacing($margin['Tablet'], $margin['unit']));
 		}
 
 		$css->stop_media_query();
@@ -1630,10 +1630,10 @@ class PBG_Blocks_Helper
 			$css->add_property('border-width', $css->render_spacing($border_width['Mobile'], 'px'));
 			$css->add_property('border-radius', $css->render_spacing($border_radius['Mobile'], 'px'));
 		}
-		if (isset($attr['iconSpacing']['Mobile'])) {
-			$margin = $attr['iconSpacing'];
-			// $css->set_selector($unique_id . '> .premium-button' . '> .premium-button-icon');
-			// $css->add_property('margin', $css->render_spacing($margin['Mobile'], $margin['unit']));
+		if (isset($attr['iconMargin']['Mobile'])) {
+			$margin = $attr['iconMargin'];
+			$css->set_selector($unique_id . '> .premium-button' . '> .premium-button-icon');
+			$css->add_property('margin', $css->render_spacing($margin['Mobile'], $margin['unit']));
 		}
 		$css->stop_media_query();
 		return $css->css_output();

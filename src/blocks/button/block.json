@@ -220,7 +220,7 @@
                 "unit": "px"
             }
         },
-        "iconSpacing": {
+        "iconMargin": {
             "type": "object",
             "default": {
                 "Desktop": {
