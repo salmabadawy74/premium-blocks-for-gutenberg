@@ -556,7 +556,7 @@ const attributes = {
 const deprecated = {
     attributes: attributes,
     isEligible(attributes) {
-        return attributes?.titleStyles?.lineColor || attributes?.titleStyles?.triangleColor || attributes?.titleStyles?.stripeColor;
+        return !attributes?.fancyStyles;
     },
     migrate: (attributes) => {
         let newAttributes = {

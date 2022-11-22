@@ -1040,11 +1040,55 @@ const v6Attributes = {
 const deprecatedContent = [
     {
         attributes: v6Attributes,
+        isEligible(attributes) {
+            return !attributes.tableBorder;
+        },
         migrate: (attributes) => {
             let newAttributes = {
-                switchRadius: attributes.switchRadius || '50',
-                switchRadiusUnit: attributes.switchRadiusUnit || 'px',
-                controllerOneBackground: attributes?.controllerOneBackground && { ...attributes.controllerOneBackground, backgroundColor: 'var(--pbg-global-color1,#793dc3)' }
+                tableBorder: attributes.tableBorder || {
+                    "bordertype": "solid",
+                    "borderColor": "var(--pbg-global-color4, #e1e1e1)",
+                    "borderWidth": {
+                        "Desktop": {
+                            "top": "1",
+                            "right": "1",
+                            "bottom": "1",
+                            "left": "1"
+                        },
+                        "Tablet": {
+                            "top": "",
+                            "right": "",
+                            "bottom": "",
+                            "left": ""
+                        },
+                        "Mobile": {
+                            "top": "",
+                            "right": "",
+                            "bottom": "",
+                            "left": ""
+                        }
+                    },
+                    "borderRadius": {
+                        "Desktop": {
+                            "top": "",
+                            "right": "",
+                            "bottom": "",
+                            "left": ""
+                        },
+                        "Tablet": {
+                            "top": "",
+                            "right": "",
+                            "bottom": "",
+                            "left": ""
+                        },
+                        "Mobile": {
+                            "top": "",
+                            "right": "",
+                            "bottom": "",
+                            "left": ""
+                        }
+                    }
+                },
             }
             return Object.assign(attributes, newAttributes)
         },
