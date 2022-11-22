@@ -22,7 +22,7 @@ registerBlockType("premium/section", {
     keywords: [
         __("section", 'premium-blocks-for-gutenberg')
     ],
-    description: __('Engage your Gutenberg blocks using Premium Section Block.', 'premium-block-for-gutenberg'),
+    description: __('Engage your Gutenberg blocks using Premium Section Block.', 'premium-blocks-for-gutenberg'),
     example: {
         attributes: {
             minHeight: 200,

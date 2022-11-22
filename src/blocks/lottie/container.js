@@ -26,9 +26,9 @@ const BlockPlaceholder = ({
 
     if (isJSONAllowed) {
         const lottie_url = (
-            <span className="uagb-lottie-instructions">
-                { ' '}
-                { __(
+            <span className="premium-lottie-instructions">
+                {' '}
+                {__(
                     'Add Lottie animations and files to your website. You can see sample Lottie animations',
                     'premium-blocks-for-gutenberg'
                 )}
@@ -36,7 +36,7 @@ const BlockPlaceholder = ({
                     {' '}
                     {__('here on this')}{' '}
                 </a>
-                { __('website.')}
+                {__('website.')}
             </span>
         );
         return (
@@ -83,24 +83,24 @@ const BlockPlaceholder = ({
                             isSecondary
                             onClick={() => setOpen(true)}
                         >
-                            { __('Upload', 'premium-blocks-for-gutenberg')}
+                            {__('Upload', 'premium-blocks-for-gutenberg')}
                         </Button>
                     )}
                 </form>
             </Placeholder>
 
-            { isOpen && (
+            {isOpen && (
                 <Modal
                     title={__('Allow JSON Uploads', 'premium-blocks-for-gutenberg')}
                     closeLabel={__('Close', "premium-blocks-for-gutenberg")}
                     onRequestClose={() => setOpen(false)}
                     overlayClassName="wp-block-themeisle-blocks-lottie-modal"
                 >
-                    { __('This file type is not permitted for security reasons. Would you still like to enable JSON uploads?', 'premium-blocks-for-gutenberg')}
+                    {__('This file type is not permitted for security reasons. Would you still like to enable JSON uploads?', 'premium-blocks-for-gutenberg')}
                     <br /><br />
                     <ExternalLink href={window.PremiumBlocksSettings.settingPath}>{__('You can enable JSON uploads from Settings.', 'premium-blocks-for-gutenberg')}</ExternalLink>
                     <br /><br />
-                    { __('You will have to refresh the page after changing JSON upload settings.', 'premium-blocks-for-gutenberg')}
+                    {__('You will have to refresh the page after changing JSON upload settings.', 'premium-blocks-for-gutenberg')}
                 </Modal>
             )}
         </Fragment>

@@ -25,7 +25,6 @@ module.exports = function (grunt) {
         "container",
         "section",
         "testimonials",
-        "trigger",
         "video-box",
         "price",
         "text",

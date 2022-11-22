@@ -16,7 +16,7 @@ import deprecatedContent from "./deprecated";
 registerBlockType('premium/icon', {
     ...json,
     title: __("Icon", "premium-blocks-for-gutenberg"),
-    description: __('Decorate your Gutenberg website using Premium Icon Block.', 'premium-block-for-gutenberg'),
+    description: __('Decorate your Gutenberg website using Premium Icon Block.', 'premium-blocks-for-gutenberg'),
     category: "premium-blocks",
     keywords: [__("Icon", 'premium-blocks-for-gutenberg'), __("Font Awesome", 'premium-blocks-for-gutenberg')],
     supports: {
