@@ -527,13 +527,28 @@ const attributes = {
 const deprecated = {
     attributes: attributes,
     isEligible(attributes) {
-        return attributes.controllerOneBackground || attributes.switchRadius || attributes.switchRadiusUnit;
+        return !attributes.switchRadius || !attributes.switchRadiusUnit || !attributes?.controllerOneBackground;
     },
     migrate: (attributes) => {
         let newAttributes = {
             switchRadius: attributes.switchRadius || '50',
             switchRadiusUnit: attributes.switchRadiusUnit || 'px',
-            controllerOneBackground: attributes?.controllerOneBackground && { ...attributes.controllerOneBackground, backgroundColor: 'var(--pbg-global-color1,#793dc3)' }
+            controllerOneBackground: attributes?.controllerOneBackground || {
+                "backgroundType": "",
+                "backgroundColor": "var(--pbg-global-color1,#793dc3)",
+                "backgroundImageID": "",
+                "backgroundImageURL": "",
+                "backgroundPosition": "center center",
+                "backgroundRepeat": "repeat",
+                "backgroundSize": "auto",
+                "fixed": false,
+                "gradientLocationOne": "0",
+                "gradientColorTwo": "",
+                "gradientLocationTwo": "100",
+                "gradientAngle": "180",
+                "gradientPosition": "center center",
+                "gradientType": "linear"
+            }
         }
         return Object.assign(attributes, newAttributes)
     },

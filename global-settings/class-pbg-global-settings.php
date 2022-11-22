@@ -684,7 +684,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 				'pbg_global_typography',
 				array(
 					'type'         => 'object',
-					'description'  => __( 'Config Premium Blocks For Gutenberg Global Typography Settings', 'premium-block-for-gutenberg' ),
+					'description'  => __( 'Config Premium Blocks For Gutenberg Global Typography Settings', 'premium-blocks-for-gutenberg' ),
 					'show_in_rest' => array(
 						'schema' => array(
 							'properties' => array(
@@ -708,7 +708,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 				'pbg_global_colors',
 				array(
 					'type'         => 'object',
-					'description'  => __( 'Config Premium Blocks For Gutenberg Global Colors Settings', 'premium-block-for-gutenberg' ),
+					'description'  => __( 'Config Premium Blocks For Gutenberg Global Colors Settings', 'premium-blocks-for-gutenberg' ),
 					'show_in_rest' => array(
 						'schema' => array(
 							'properties' => array(
@@ -782,7 +782,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 				'pbg_custom_colors',
 				array(
 					'type'         => 'array',
-					'description'  => __( 'Config Premium Blocks For Gutenberg Global Colors Settings', 'premium-block-for-gutenberg' ),
+					'description'  => __( 'Config Premium Blocks For Gutenberg Global Colors Settings', 'premium-blocks-for-gutenberg' ),
 					'show_in_rest' => array(
 						'schema' => array(
 							'items' => array(
@@ -811,7 +811,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 				'pbg_global_color_palette',
 				array(
 					'type'              => 'string',
-					'description'       => __( 'Config Premium Blocks For Gutenberg Global Color Palette Settings', 'premium-block-for-gutenberg' ),
+					'description'       => __( 'Config Premium Blocks For Gutenberg Global Color Palette Settings', 'premium-blocks-for-gutenberg' ),
 					'sanitize_callback' => 'sanitize_text_field',
 					'show_in_rest'      => true,
 					'default'           => 'theme',
@@ -824,7 +824,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 				'pbg_global_color_palettes',
 				array(
 					'type'         => 'array',
-					'description'  => __( 'Config Premium Blocks For Gutenberg Global Colors Settings', 'premium-block-for-gutenberg' ),
+					'description'  => __( 'Config Premium Blocks For Gutenberg Global Colors Settings', 'premium-blocks-for-gutenberg' ),
 					'show_in_rest' => array(
 						'schema' => array(
 							'items' => array(
@@ -872,7 +872,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 				'pbg_global_layout',
 				array(
 					'type'         => 'object',
-					'description'  => __( 'Config Premium Blocks For Gutenberg Global Layout Settings', 'premium-block-for-gutenberg' ),
+					'description'  => __( 'Config Premium Blocks For Gutenberg Global Layout Settings', 'premium-blocks-for-gutenberg' ),
 					'show_in_rest' => array(
 						'schema' => array(
 							'properties' => array(
@@ -902,7 +902,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 				'pbg_global_colors_to_default',
 				array(
 					'type'         => 'boolean',
-					'description'  => __( 'Config Premium Blocks For Gutenberg Global Colors Settings', 'premium-block-for-gutenberg' ),
+					'description'  => __( 'Config Premium Blocks For Gutenberg Global Colors Settings', 'premium-blocks-for-gutenberg' ),
 					'show_in_rest' => true,
 					'default'      => false,
 				)
@@ -914,7 +914,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 				'pbg_global_typography_to_default',
 				array(
 					'type'         => 'boolean',
-					'description'  => __( 'Config Premium Blocks For Gutenberg Global Typography Settings', 'premium-block-for-gutenberg' ),
+					'description'  => __( 'Config Premium Blocks For Gutenberg Global Typography Settings', 'premium-blocks-for-gutenberg' ),
 					'show_in_rest' => true,
 					'default'      => false,
 				)

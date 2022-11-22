@@ -79,7 +79,7 @@ const attributes = {
 const deprecated = {
     attributes: attributes,
     isEligible(attributes) {
-        return attributes.backgroundColor;
+        return !attributes.backgroundColor;
     },
     migrate: (attributes) => {
         let newAttributes = {

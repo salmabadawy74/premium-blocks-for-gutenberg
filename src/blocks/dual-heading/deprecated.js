@@ -1075,7 +1075,7 @@ const deprecatedContent = [
     {
         attributes: v9Attributes,
         isEligible(attributes) {
-            return attributes?.secondStyles?.secondColor;
+            return !attributes?.secondStyles;
         },
         migrate: (attributes) => {
             let newAttributes = {

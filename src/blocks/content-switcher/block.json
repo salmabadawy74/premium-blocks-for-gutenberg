@@ -6,10 +6,7 @@
     "icon": "content-switcher",
     "category": "premium-blocks",
     "description": "Toggle between two different content using Premium Content Switcher Block.",
-    "keywords": [
-        "content",
-        "switcher"
-    ],
+    "keywords": ["content", "switcher"],
     "supports": {
         "html": false
     },
@@ -479,7 +476,7 @@
             "type": "object",
             "default": {
                 "backgroundType": "",
-                "backgroundColor": "#793dc3",
+                "backgroundColor": "var(--pbg-global-color1,#793dc3)",
                 "backgroundImageID": "",
                 "backgroundImageURL": "",
                 "backgroundPosition": "center center",
