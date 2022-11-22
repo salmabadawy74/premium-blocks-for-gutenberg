@@ -55,11 +55,13 @@
             -moz-transform: translateX(0);
             -ms-transform: translateX(0);
             transform: translateX(0);
-            background: #793dc3;
+            background: var(--pbg-global-color1, #793dc3);
         }
     }
 
-    .premium-content-switcher-toggle-switch-label input:checked+.premium-content-switcher-toggle-switch-slider::before {
+    .premium-content-switcher-toggle-switch-label
+        input:checked
+        + .premium-content-switcher-toggle-switch-slider::before {
         transform: translateX(2.1em);
     }
 
@@ -107,7 +109,8 @@
         }
     }
 
-    .premium-content-switcher-toggle-inline .premium-content-switcher-first-label {
+    .premium-content-switcher-toggle-inline
+        .premium-content-switcher-first-label {
         margin-right: 2em;
         -js-display: flex;
         display: -webkit-box;

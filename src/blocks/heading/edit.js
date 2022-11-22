@@ -467,7 +467,7 @@ function Edit(props) {
             }`,
             "border-left-color":
                 titleBorder.borderType == "none"
-                    ? "#793DC4"
+                    ? "var(--pbg-global-color1,#793DC4)"
                     : titleBorder.borderColor,
         };
 
@@ -516,7 +516,7 @@ function Edit(props) {
             }`,
             "border-bottom-color":
                 titleBorder.borderType == "none"
-                    ? "#793DC4"
+                    ? "var(--pbg-global-color1,#793DC4)"
                     : titleBorder.borderColor,
         };
 
@@ -565,7 +565,7 @@ function Edit(props) {
             }`,
             "border-bottom-color":
                 titleBorder.borderType == "none"
-                    ? "#793DC4"
+                    ? "var(--pbg-global-color1,#793DC4)"
                     : titleBorder.borderColor,
         };
 
@@ -614,7 +614,7 @@ function Edit(props) {
             }`,
             "border-bottom-color":
                 titleBorder.borderType == "none"
-                    ? "#793DC4"
+                    ? "var(--pbg-global-color1,#793DC4)"
                     : titleBorder.borderColor,
         };
 
@@ -663,7 +663,7 @@ function Edit(props) {
             }`,
             "border-bottom-color":
                 titleBorder.borderType == "none"
-                    ? "#793DC4"
+                    ? "var(--pbg-global-color1,#793DC4)"
                     : titleBorder.borderColor,
         };
 

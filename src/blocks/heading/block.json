@@ -92,9 +92,9 @@
                     "shinyColor": "#fff",
                     "blurColor": "#000",
                     "BGColor": "#DDD0EF",
-                    "lineColor": "",
-                    "triangleColor": "#793DC4",
-                    "stripeColor": "#793DC4",
+                    "lineColor": "var(--pbg-global-color1)",
+                    "triangleColor": "var(--pbg-global-color1,#793DC4)",
+                    "stripeColor": "var(--pbg-global-color1,#793DC4)",
                     "blurShadow": "120",
                     "animateDelay": "2",
                     "animateduration": "1"

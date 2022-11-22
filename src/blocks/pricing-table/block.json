@@ -51,7 +51,7 @@
             "type": "object",
             "default": {
                 "bordertype": "solid",
-                "borderColor": "#e1e1e1",
+                "borderColor": "var(--pbg-global-color4, #e1e1e1)",
                 "borderWidth": {
                     "Desktop": {
                         "top": "1",
