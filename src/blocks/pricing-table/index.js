@@ -13,7 +13,7 @@ const { __ } = wp.i18n;
 registerBlockType("premium/pricing-table", {
     ...json,
     title: __("Pricing Table"),
-    description: __('Display your pricing plans in an elegant way using Premium Pricing Table Block.', 'premium-block-for-gutenberg'),
+    description: __('Display your pricing plans in an elegant way using Premium Pricing Table Block.', 'premium-blocks-for-gutenberg'),
     icon: PBG_Block_Icons.pricingTable,
     category: "premium-blocks",
     keywords: [__("Pricing", 'premium-blocks-for-gutenberg'), __("Pricing Table", 'premium-blocks-for-gutenberg')],

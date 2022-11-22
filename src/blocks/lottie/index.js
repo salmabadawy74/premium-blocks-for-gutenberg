@@ -23,7 +23,7 @@ registerBlockType("premium/lottie", {
         __("Animation", 'premium-blocks-for-gutenberg'),
         __("canvas", 'premium-blocks-for-gutenberg')
     ],
-    description: __('Bring life to your Gutenberg web page using Premium Lottie Animation', 'premium-block-for-gutenberg'),
+    description: __('Bring life to your Gutenberg web page using Premium Lottie Animation', 'premium-blocks-for-gutenberg'),
     example: {},
     edit: edit,
     save: save,

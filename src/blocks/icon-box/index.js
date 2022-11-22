@@ -13,7 +13,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("premium/icon-box", {
     ...json,
     title: __("Icon Box", 'premium-blocks-for-gutenberg'),
-    description: __('Add informative info boxes along with Icon, Description, and CTA using Premium Icon Box Block.', 'premium-block-for-gutenberg'),
+    description: __('Add informative info boxes along with Icon, Description, and CTA using Premium Icon Box Block.', 'premium-blocks-for-gutenberg'),
     icon: PBG_Block_Icons.icon_box,
     category: "premium-blocks",
     keywords: [
