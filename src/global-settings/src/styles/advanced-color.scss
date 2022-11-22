@@ -1,0 +1,191 @@
+.premium-global-color-palette-container .premium-global-color-picker-single {
+    margin-right: -3px;
+    padding: 0;
+}
+.premium-global-color-wrapper,
+.premium-global-advanced-color-container,
+.premium-global-color-Wrapper {
+    display: flex;
+    align-items: center;
+}
+.premium-palettes-preview
+    .premium-single-palette
+    .premium-global-color-palette-container {
+    .premium-global-color-picker-single span {
+        width: 42px !important;
+        height: 42px !important;
+    }
+}
+.premium-palettes-modal
+    .premium-single-palette
+    .premium-global-color-palette-container
+    .premium-global-color-picker-single
+    span {
+    width: 36px !important;
+    height: 36px !important;
+}
+.premium-global-color-picker-single {
+    margin-right: 6px;
+    > span {
+        display: flex;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.8);
+        background-size: 10px 10px;
+        background-position: 0 0, 0 5px, 5px -5px, -5px 0;
+        background-image: linear-gradient(45deg, #ddd 25%, transparent 25%),
+            linear-gradient(-45deg, #ddd 25%, transparent 25%),
+            linear-gradient(45deg, transparent 75%, #ddd 75%),
+            linear-gradient(-45deg, transparent 75%, #ddd 75%);
+
+        span {
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+}
+/* Reset Button CSS */
+.premium-global-color-btn-reset-wrap .premium-reset-btn {
+    display: flex;
+    width: 12px;
+    height: 12px;
+    padding: 0;
+    border: 0;
+    border: none;
+    outline: 0;
+    color: #006ba1;
+    background: 0 0;
+    background: 0 0;
+    box-shadow: none;
+    font-family: dashicons;
+    font-size: 12px;
+    -webkit-font-smoothing: antialiased;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+        content: "\f531";
+        transition: transform 0.3s ease;
+        transform: rotate(45deg);
+    }
+
+    &:disabled {
+        color: rgba(0, 0, 0, 0.2);
+        cursor: default;
+    }
+
+    &:hover {
+        &:not(:disabled)::before {
+            transform: rotate(-45deg);
+        }
+
+        box-shadow: none;
+        border: none;
+        background: transparent;
+    }
+
+    &:focus {
+        box-shadow: none;
+        border: none;
+        background: transparent;
+    }
+}
+
+.premium-resp-slider-reset-wrap .premium-reset-btn {
+    &:hover,
+    &:focus {
+        box-shadow: none;
+        border: none;
+        background: transparent;
+    }
+}
+
+.premium-global-color-picker-single > span span {
+    @extend %flex;
+    justify-content: center;
+    position: relative;
+    width: inherit;
+    height: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+    transform: scale(1.04);
+}
+.premium-global-color-picker-single {
+    &:focus {
+        border: none !important;
+        box-shadow: none !important;
+        outline: none !important;
+    }
+    margin-right: 6px;
+}
+.premium-color-name-value {
+    display: block;
+    border-top: 1px solid #eee;
+    padding: 20px 17px;
+
+    input[type="text"] {
+        height: 30px !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 3px 8px !important;
+        min-height: initial;
+        font-size: 12px !important;
+        color: #555d66;
+        line-height: normal;
+        background-color: #fff;
+        border: 1px solid #ddd !important;
+        border-radius: 3px !important;
+        box-shadow: 0 0 0 0 transparent;
+        transition: box-shadow 0.1s linear, background 0.1s linear,
+            border-radius 0.1s linear, border-color 0.1s linear;
+    }
+}
+@media (max-width: 1400px) {
+    .premium-palettes-preview
+        .premium-single-palette
+        .premium-global-color-palette-container
+        .premium-global-color-picker-single
+        span {
+        width: 38px !important;
+        height: 38px !important;
+    }
+
+    .premium-palettes-modal
+        .premium-single-palette
+        .premium-global-color-palette-container
+        .premium-global-color-picker-single
+        span {
+        width: 32px !important;
+        height: 32px !important;
+    }
+}
+
+@media (min-width: 1400px) and (max-width: 1750) {
+    .premium-palettes-preview
+        .premium-single-palette
+        .premium-global-color-palette-container
+        .premium-global-color-picker-single
+        span {
+        width: 36px !important;
+        height: 36px !important;
+    }
+
+    .premium-palettes-modal
+        .premium-single-palette
+        .premium-global-color-palette-container
+        .premium-global-color-picker-single
+        span {
+        width: 30px !important;
+        height: 30px !important;
+    }
+
+    .premium-palette-info {
+        padding: 5px;
+        margin: 5px;
+    }
+}

@@ -139,10 +139,12 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 
 		public function add_default_setings( $options ) {
 			$default_options = array(
-				'premium-map-key'     => '',
-				'premium-map-api'     => true,
-				'premium-fa-css'      => true,
-				'premium-upload-json' => false,
+				'premium-map-key'            => '',
+				'premium-map-api'            => true,
+				'premium-fa-css'             => true,
+				'premium-upload-json'        => false,
+				'enable-post-editor-sidebar' => false,
+				'enable-site-editor-sidebar' => false,
 			);
 
 			return array_merge( $default_options, $options );
