@@ -102,7 +102,6 @@ const FilterTabs = () => {
                 })
             );
         }
-        console.log(categoriesBlocks);
     };
 
     const DisableBlocks = async () => {

@@ -13734,13 +13734,16 @@ function Edit(props) {
 
   const loadStyles = () => {
     const styles = {};
-    styles[`.${blockId} .premium-button-icon:hover`] = {
+    styles[`.${blockId}.premium-button__wrap:hover .premium-button-icon`] = {
       color: `${iconHoverColor}!important`
     };
-    styles[`.${blockId}.premium-button__wrap .premium-button:hover`] = {
+    styles[`.${blockId}.premium-button__wrap:hover .premium-button`] = {
       "background-color": `${btnStyles[0].backHoverColor}!important`,
       color: `${btnStyles[0].textHoverColor}!important`,
       "border-color": `${btnStyles[0].borderHoverColor}!important`
+    };
+    styles[`.${blockId}.premium-button__wrap:hover .premium-button div`] = {
+      color: `${btnStyles[0].textHoverColor}!important`
     };
     styles[`.${blockId}.premium-button__slide .premium-button::before, .${blockId}.premium-button__shutter .premium-button::before, .${blockId}.premium-button__radial .premium-button::before`] = {
       "background-color": `${slideColor}`
@@ -14161,7 +14164,7 @@ const save = props => {
 
   const loadStyles = () => {
     const styles = {};
-    styles[`.${blockId} .premium-button-icon:hover`] = {
+    styles[`.${blockId}.premium-button__wrap:hover .premium-button-icon`] = {
       color: `${iconHoverColor}!important`
     };
     styles[`.${blockId}.premium-button__wrap:hover .premium-button`] = {
@@ -14178,7 +14181,6 @@ const save = props => {
     return (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.generateCss)(styles);
   };
 
-  console.log(blockId);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", useBlockProps.save({
     className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, `premium-button__wrap ${blockId} premium-button__${effect} premium-button__${effectDir} `, {
       " premium-desktop-hidden": hideDesktop,
