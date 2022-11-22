@@ -1,0 +1,126 @@
+const { __ } = wp.i18n;
+import classnames from "classnames";
+import { Icon, create } from '@wordpress/icons';
+import ReactTooltip from 'react-tooltip';
+import { useEffect, useContext } from "@wordpress/element";
+import SettingsContext from "../../store/settings-store";
+import AdvancedColorControl from "../AdvancedColorControl";
+
+const PalettePreview = ({
+    renderBefore = () => null,
+    colors,
+    onChange,
+    onClick,
+    className,
+    handleClickReset,
+    canAdd = true,
+}) => {
+
+    const handleChangeColor = (color, optionId) => {
+        let newColor;
+        if (typeof color === "string") {
+            newColor = color;
+        } else if (
+            undefined !== color.rgb &&
+            undefined !== color.rgb.a &&
+            1 !== color.rgb.a
+        ) {
+            newColor = `rgba(${color.rgb.r},${color.rgb.g},${color.rgb.b},${color.rgb.a})`;
+        } else {
+            newColor = color.hex;
+        }
+        onChange(newColor, optionId);
+    };
+
+    const { customColors, setCustomColors } = useContext(SettingsContext);
+
+    const handleRemoveColor = (id) => {
+        let newValue = [...customColors];
+        newValue = newValue.filter(color => color.slug !== id);
+        setCustomColors(newValue);
+    }
+
+    const handleAddNewColor = () => {
+        const lastColorIndex = customColors.length;
+        const colorId = `custom-color${lastColorIndex + Math.floor(Math.random() * 100)}`;
+        const colorTitle = `${__('Custom Color ')}${lastColorIndex + 1}`;
+        let newColors = [...customColors];
+        newColors.push({ name: colorTitle, color: '', slug: colorId });
+
+        setCustomColors(newColors);
+    }
+
+    const handleColorChangeName = (name, id) => {
+        let newValue = [...customColors].map(color => color.slug === id ? { ...color, name: name } : color);
+        setCustomColors(newValue);
+    }
+
+    useEffect(() => {
+        ReactTooltip.rebuild();
+    }, [colors]);
+
+    return (
+        <div
+            className={classnames("premium-single-palette", className)}
+            onClick={(e) => {
+                if (
+                    e.target.closest(".premium-global-color-picker-modal") ||
+                    e.target.classList.contains("premium-global-color-picker-modal")
+                ) {
+                    return;
+                }
+
+                onClick();
+            }}
+        >
+            {renderBefore()}
+            <div className={`premium-global-color-palette-container`}>
+                <ReactTooltip place='top' effect="solid" id='pbg-color-preview' />
+                <div className="premium-palette-colors">
+                    {colors.map((picker) => (
+                        <AdvancedColorControl
+                            colorValue={picker.color}
+                            className={"premium-global-color-palette-modal"}
+                            isDefault={picker.default}
+                            colorDefault={""}
+                            onColorChange={(color) => handleChangeColor(color, picker[`slug`])}
+                            onRemove={() => handleRemoveColor(picker[`slug`])}
+                            onChangeName={false}
+                            name={picker.name}
+                            slug={picker.slug}
+                            skipModal={picker.skipModal}
+                            resetPalette={true}
+                            handleColorReset={() => handleClickReset(picker[`slug`])}
+                        />
+                    ))}
+                </div>
+                {(canAdd) && <p>{__('Custom Color', "premium-blocks-for-gutenberg")}</p>}
+                {(canAdd) && (
+                    <div className="premium-custom-colors">
+                        {customColors.map((picker) => (
+                            <AdvancedColorControl
+                                colorValue={picker.color}
+                                className={"premium-global-color-palette-modal"}
+                                isDefault={picker.default}
+                                colorDefault={""}
+                                onColorChange={(color) => handleChangeColor(color, picker[`slug`])}
+                                onRemove={() => handleRemoveColor(picker[`slug`])}
+                                onChangeName={(v) => handleColorChangeName(v, picker[`slug`])}
+                                name={picker.name}
+                                slug={picker.slug}
+                                skipModal={picker.skipModal}
+                                resetPalette={true}
+                                handleColorReset={() => handleClickReset(picker[`slug`])}
+                            />
+                        ))}
+                        {canAdd && <div className="premium-add-new-color" onClick={() => handleAddNewColor()} data-tip={__('Add Color', "premium-blocks-for-gutenberg")}>
+                            <Icon icon={create} />
+                        </div>}
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+};
+
+export default PalettePreview;
