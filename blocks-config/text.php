@@ -191,6 +191,4 @@ function register_block_pbg_text() {
 	);
 }
 
-add_action( 'init', 'register_block_pbg_text' );
-
 register_block_pbg_text();

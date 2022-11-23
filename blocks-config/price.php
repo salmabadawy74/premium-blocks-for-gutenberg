@@ -350,7 +350,4 @@ function register_block_pbg_price() {
 	);
 }
 
-add_action( 'init', 'register_block_pbg_price' );
-
-
 register_block_pbg_price();
