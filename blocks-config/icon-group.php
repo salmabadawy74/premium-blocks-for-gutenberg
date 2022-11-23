@@ -246,6 +246,8 @@ function register_block_pbg_icon_group() {
 		'premium/icon-group',
 		array(
 			'render_callback' => 'render_block_pbg_icon_group',
+			'editor_style'    => 'premium-blocks-editor-css',
+			'editor_script'   => 'pbg-blocks-js',
 		)
 	);
 }

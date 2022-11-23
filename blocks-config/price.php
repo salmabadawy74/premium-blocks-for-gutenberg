@@ -346,6 +346,8 @@ function register_block_pbg_price() {
 		'premium/price',
 		array(
 			'render_callback' => 'render_block_pbg_price',
+			'editor_style'    => 'premium-blocks-editor-css',
+			'editor_script'   => 'pbg-blocks-js',
 		)
 	);
 }

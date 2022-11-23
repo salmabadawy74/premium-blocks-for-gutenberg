@@ -129,6 +129,8 @@ function register_block_pbg_image() {
 		'premium/image',
 		array(
 			'render_callback' => 'render_block_pbg_image',
+			'editor_style'    => 'premium-blocks-editor-css',
+			'editor_script'   => 'pbg-blocks-js',
 		)
 	);
 }

@@ -59,10 +59,10 @@ if ( ! class_exists( 'Pbg_Style_Generator' ) ) {
 			$merged_css_url = self::get_css_url();
 
 			if ( false != $merged_css_url ) {
-				wp_enqueue_style( 'pbg-editor-css', $merged_css_url, array(), PREMIUM_BLOCKS_VERSION, 'all' );
+				wp_register_style( 'premium-blocks-editor-css', $merged_css_url, array(), PREMIUM_BLOCKS_VERSION, 'all' );
 			}
 
-			wp_add_inline_style( 'pbg-editor-css', apply_filters( 'pbg_dynamic_css', '' ) );
+			wp_add_inline_style( 'premium-blocks-editor-css', apply_filters( 'pbg_dynamic_css', '' ) );
 		}
 
 		/**

@@ -94,6 +94,8 @@ function register_block_pbg_badge() {
 		'premium/badge',
 		array(
 			'render_callback' => 'render_block_pbg_badge',
+			'editor_style'    => 'premium-blocks-editor-css',
+			'editor_script'   => 'pbg-blocks-js',
 		)
 	);
 }
