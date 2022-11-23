@@ -187,6 +187,8 @@ function register_block_pbg_text() {
 		'premium/text',
 		array(
 			'render_callback' => 'render_block_pbg_text',
+			'editor_style'    => 'premium-blocks-editor-css',
+			'editor_script'   => 'pbg-blocks-js',
 		)
 	);
 }

@@ -375,7 +375,7 @@ class PBG_Blocks_Helper {
 				}
 			} elseif ( $slug === 'content-switcher' ) {
 				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/switcher-child.php';
-				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/content-switcher.php';
+				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/content-switcher/index.php';
 			}
 		}
 

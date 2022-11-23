@@ -13,7 +13,11 @@ function register_block_pbg_switcher_child() {
 		return;
 	}
 	register_block_type(
-		'premium/switcher-child'
+		'premium/switcher-child',
+		array(
+			'editor_style'  => 'premium-blocks-editor-css',
+			'editor_script' => 'pbg-blocks-js',
+		)
 	);
 
 }
