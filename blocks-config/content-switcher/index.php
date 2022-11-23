@@ -437,7 +437,7 @@ function register_block_pbg_content_switcher() {
 		return;
 	}
 	register_block_type(
-		PREMIUM_BLOCKS_PATH . '/blocks-config/content-switcher/block.json',
+		PREMIUM_BLOCKS_PATH . '/blocks-config/content-switcher',
 		array(
 			'render_callback' => 'render_block_pbg_content_switcher',
 		)
