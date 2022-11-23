@@ -21,27 +21,28 @@ Kindly note that the plugin is on it’s early stages and Gutenberg itself is st
 
 
 ### Available Elements
-1. [Gutenberg Banner Block](https://premiumblocks.io/index.php/gutenberg-blocks/banner-block/) Interactive Banner Block with readymade styles beside many customization options.
-2. [Gutenberg Button Block](https://premiumblocks.io/index.php/gutenberg-blocks/button-block/) Premium Button Block allows you to create amazing call to actions with tons of options.
-3. [Gutenberg Counter Block](https://premiumblocks.io/index.php/gutenberg-blocks/counter-block/) Counter block for Gutenberg is the best way to show facts and figures with cool animation and many customization options.
-4. [Gutenberg Dual Heading Block](https://premiumblocks.io/index.php/gutenberg-blocks/dual-heading-block/) Premium Dual Heading Block for Gutenberg is a great block to have great looking headings with the heading split into 2 attractive parts.
-5. Gutenberg Heading Block
-6. [Gutenberg Icon Block](https://premiumblocks.io/index.php/gutenberg-blocks/icon-block/) Premium Icon Block gives you the ability to add both Font Awesome icons and WordPress dash icons with lot of customization options.
-7. [Gutenberg Maps Block](https://premiumblocks.io/index.php/gutenberg-blocks/google-maps-block/) Premium Google map Block allows you to display google maps in your pages with advanced controls.
-8. [Gutenberg Pricing Table Block](https://premiumblocks.io/index.php/gutenberg-blocks/pricing-table-block/) Premium Pricing table Block is the best way to display your pricing in the modern way, you will be able to customize each part of your pricing table.
-9. [Gutenberg Section Block](https://premiumblocks.io/index.php/gutenberg-blocks/section-block/) Allows you to create sections with background options and styles.
-10. [Gutenberg Testimonials Block](https://premiumblocks.io/index.php/gutenberg-blocks/testimonials-block/) Allows you to display your customers reviews within your Wesbite using different options.
-11. [Gutenberg Accordion Block](https://premiumblocks.io/index.php/gutenberg-blocks/accordion-block/) Help you show more data/content in a less distracting area as you will be able to divide your content and show it off in separated tabs.
-12. [Gutenberg Icon Box Block](https://premiumblocks.io/gutenberg-blocks/icon-box-block/) Premium Icon Box block for Gutenberg is the best way to show off a short brief about the services you provide.
-13. [Gutenberg Video Box Block](https://premiumblocks.io/gutenberg-blocks/video-box-block/) By using Video Box Block for Gutenberg, you will be able to add four types of video to your website as you can choose from YouTube, Vimeo, Dailymotion or you can upload your own.
-14. Gutenberg Container Block
-15. Gutenberg Fancy Text Block
-16. Gutenberg Lottie Animation Block
-17. Gutenberg Modal Box Block
-18. Gutenberg Image Separator Block
-19. Gutenberg Bullet List Block
-20. Gutenberg Team Members Block
-21. Gutenberg Content Switcher Block
+
+1. [Banner](https://premiumblocks.io/index.php/gutenberg-blocks/banner-block/) Interactive Banner Block with readymade styles beside many customization options.
+2. [Button](https://premiumblocks.io/index.php/gutenberg-blocks/button-block/) Premium Button Block allows you to create an amazing call to action with tons of options.
+3. [Counter](https://premiumblocks.io/index.php/gutenberg-blocks/counter-block/) Counter block for Gutenberg is the best way to show facts and figures with cool animation and many customization options.
+4. [Dual Heading](https://premiumblocks.io/index.php/gutenberg-blocks/dual-heading-block/) Premium Dual Heading Block for Gutenberg is a great block to have great looking headings with the heading split into 2 attractive parts.
+5. [Heading](https://premiumblocks.io/heading/) Create amazing headings and select the heading tag with customization options and responsive settings.
+6. [Icon](https://premiumblocks.io/index.php/gutenberg-blocks/icon-block/) Premium Icon Block gives you the ability to add both Font Awesome icons and WordPress dash icons with lot of customization options.
+7. [Maps](https://premiumblocks.io/index.php/gutenberg-blocks/google-maps-block/) Premium Google map Block allows you to display google maps in your pages with advanced controls.
+8. [Pricing Table](https://premiumblocks.io/index.php/gutenberg-blocks/pricing-table-block/) Premium Pricing table Block is the best way to display your pricing in the modern way, you will be able to customize each part of your pricing table.
+9. [Section](https://premiumblocks.io/index.php/gutenberg-blocks/section-block/) Allows you to create sections with background options and styles.
+10. [Testimonials](https://premiumblocks.io/index.php/gutenberg-blocks/testimonials-block/) Allows you to display your customer’s reviews within your Wesbite using different options.
+11. [Accordion](https://premiumblocks.io/index.php/gutenberg-blocks/accordion-block/) Help you show more data/content in a less distracting area as you will be able to divide your content and show it off in separated tabs.
+12. [Icon Box](https://premiumblocks.io/gutenberg-blocks/icon-box-block/) Premium Icon Box block for Gutenberg is the best way to show off a short brief about the services you provide.
+13. [Video Box](https://premiumblocks.io/gutenberg-blocks/video-box-block/) By using Video Box Block for Gutenberg, you will be able to add four types of video to your website as you can choose from YouTube, Vimeo, Dailymotion or you can upload your own.
+14. Container - Powerful flex container block allowing content grouping in columns, with fully responsive settings.
+15. Fancy Text - Create Animated Text across your Gutenberg page using Premium Fancy Text Block.
+16. Lottie Animation - Bring life to your Gutenberg web page using Premium Lottie Animation
+17. Modal Box - Easily, get creative modal popups on your WordPress website using Premium Modal Box Block.
+18. Image Separator - Separate between your Gutenberg sections using Premium Image Separator Block.
+19. Bullet List - Organize your website’s content with attractive lists using Premium Bullet List Block.
+20. Team Members - Show off your team members along with social links using Premium Team Members Block
+21. Content Switcher - Toggle between two different content using Premium Content Switcher Block.
 
 ## Installation ##
 
@@ -71,7 +72,6 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 
 ## Changelog ##
 
-## Changelog ##
  = 2.0.2 =
 - New: Global settings added to control your Gutenberg website fonts and colors.
 - Tweak: Added overlay color option on hover state in Premium banner block.
