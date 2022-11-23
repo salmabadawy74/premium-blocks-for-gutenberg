@@ -98,7 +98,5 @@ function register_block_pbg_badge() {
 	);
 }
 
-add_action( 'init', 'register_block_pbg_badge' );
-
 register_block_pbg_badge();
 

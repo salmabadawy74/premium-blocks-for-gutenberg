@@ -133,6 +133,4 @@ function register_block_pbg_image() {
 	);
 }
 
-add_action( 'init', 'register_block_pbg_image' );
-
 register_block_pbg_image();
