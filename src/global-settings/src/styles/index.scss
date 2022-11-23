@@ -17,7 +17,6 @@
     margin-top: 15px;
     .premium-element-typography-title {
         margin: 0;
-        margin-bottom: 10px;
         overflow-wrap: break-word;
         line-height: normal;
     }
@@ -81,63 +80,34 @@
         width: 11px;
     }
 }
-/* Toggle Control */
-.pbg-toggle-control {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    .pbg-toggle {
-        position: relative;
-        display: inline-block;
-        width: 40px;
-        height: 20px;
-        vertical-align: middle;
+/* Radio Control */
+.pbg-advanced-radio-control {
+    margin-bottom: 0 !important;
+    .pbg-advanced-radio-button {
+        text-transform: capitalize !important;
     }
-    [class*="label"] {
-        color: rgb(5, 5, 5);
-        font-size: 13px;
-        font-weight: 600;
-        .dashicons {
-            cursor: pointer;
-        }
-    }
-    .pbg-toggle-slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        -webkit-transition: 0.4s;
-        transition: 0.4s;
-        border-radius: 15px;
-        background: var(--wp-admin-theme-color);
-        &.checked {
-            &:before {
-                transform: translateX(21px);
+}
+.premium-global-colors-screen,
+.premium-typography-screen {
+    .components-checkbox-control {
+        .components-checkbox-control__input-container {
+            margin-right: 6px;
+            width: 15px;
+            height: 15px;
+            .components-checkbox-control__input[type="checkbox"] {
+                width: 15px;
+                height: 15px;
             }
-        }
-        &:before {
-            position: absolute;
-            content: "";
-            height: 13px;
-            width: 13px;
-            left: 3px;
-            bottom: 4px;
-            transition: 0.4s;
-            border-radius: 50%;
-            transform: translateX(0);
-            background: #fff;
-        }
-    }
-    .pbg-toggle-first-label {
-        .dashicons {
-            margin-right: 5px;
-        }
-    }
-    .pbg-toggle-second-label {
-        .dashicons {
-            margin-left: 5px;
+            svg.components-checkbox-control__checked,
+            svg.components-checkbox-control__indeterminate {
+                left: -2px;
+                top: -3px;
+            }
+            svg.components-checkbox-control__checked,
+            svg.components-checkbox-control__indeterminate {
+                width: 20px;
+                height: 20px;
+            }
         }
     }
 }

@@ -692,7 +692,6 @@ button.premium-delete-palette::before {
 }
 .premium-element-typography .premium-element-typography-title {
   margin: 0;
-  margin-bottom: 10px;
   overflow-wrap: break-word;
   line-height: normal;
 }
@@ -756,58 +755,38 @@ button.premium-delete-palette::before {
   width: 11px;
 }
 
-/* Toggle Control */
-.pbg-toggle-control {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+/* Radio Control */
+.pbg-advanced-radio-control {
+  margin-bottom: 0 !important;
 }
-.pbg-toggle-control .pbg-toggle {
-  position: relative;
-  display: inline-block;
-  width: 40px;
+.pbg-advanced-radio-control .pbg-advanced-radio-button {
+  text-transform: capitalize !important;
+}
+
+.premium-global-colors-screen .components-checkbox-control .components-checkbox-control__input-container,
+.premium-typography-screen .components-checkbox-control .components-checkbox-control__input-container {
+  margin-right: 6px;
+  width: 15px;
+  height: 15px;
+}
+.premium-global-colors-screen .components-checkbox-control .components-checkbox-control__input-container .components-checkbox-control__input[type=checkbox],
+.premium-typography-screen .components-checkbox-control .components-checkbox-control__input-container .components-checkbox-control__input[type=checkbox] {
+  width: 15px;
+  height: 15px;
+}
+.premium-global-colors-screen .components-checkbox-control .components-checkbox-control__input-container svg.components-checkbox-control__checked,
+.premium-global-colors-screen .components-checkbox-control .components-checkbox-control__input-container svg.components-checkbox-control__indeterminate,
+.premium-typography-screen .components-checkbox-control .components-checkbox-control__input-container svg.components-checkbox-control__checked,
+.premium-typography-screen .components-checkbox-control .components-checkbox-control__input-container svg.components-checkbox-control__indeterminate {
+  left: -2px;
+  top: -3px;
+}
+.premium-global-colors-screen .components-checkbox-control .components-checkbox-control__input-container svg.components-checkbox-control__checked,
+.premium-global-colors-screen .components-checkbox-control .components-checkbox-control__input-container svg.components-checkbox-control__indeterminate,
+.premium-typography-screen .components-checkbox-control .components-checkbox-control__input-container svg.components-checkbox-control__checked,
+.premium-typography-screen .components-checkbox-control .components-checkbox-control__input-container svg.components-checkbox-control__indeterminate {
+  width: 20px;
   height: 20px;
-  vertical-align: middle;
-}
-.pbg-toggle-control [class*=label] {
-  color: rgb(5, 5, 5);
-  font-size: 13px;
-  font-weight: 600;
-}
-.pbg-toggle-control [class*=label] .dashicons {
-  cursor: pointer;
-}
-.pbg-toggle-control .pbg-toggle-slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transition: 0.4s;
-  border-radius: 15px;
-  background: var(--wp-admin-theme-color);
-}
-.pbg-toggle-control .pbg-toggle-slider.checked:before {
-  transform: translateX(21px);
-}
-.pbg-toggle-control .pbg-toggle-slider:before {
-  position: absolute;
-  content: "";
-  height: 13px;
-  width: 13px;
-  left: 3px;
-  bottom: 4px;
-  transition: 0.4s;
-  border-radius: 50%;
-  transform: translateX(0);
-  background: #fff;
-}
-.pbg-toggle-control .pbg-toggle-first-label .dashicons {
-  margin-right: 5px;
-}
-.pbg-toggle-control .pbg-toggle-second-label .dashicons {
-  margin-left: 5px;
 }
 
 /*# sourceMappingURL=index.css.map*/

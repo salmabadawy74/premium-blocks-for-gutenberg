@@ -1,6 +1,6 @@
 import { registerPlugin } from '@wordpress/plugins';
 import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/edit-post';
-import { Fragment, render } from '@wordpress/element';
+import { Fragment } from '@wordpress/element';
 import GlobalStylesUI from './ui';
 const { __ } = wp.i18n;
 import './styles/index.scss';
@@ -12,8 +12,11 @@ import { generateCss } from '../../components/HelperFunction';
 import WebFont from "webfontloader";
 import { useEffect } from "@wordpress/element";
 
+const SidebarIconItem = () => {
+    return <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 294.56 280.18"><title>pg-font-icon</title><path class="cls-1" d="M205.05,181.22l92.23-64.28-111.82,2.2a2.88,2.88,0,0,1-2.77-1.47L150,9.91l-32.47,107a2.89,2.89,0,0,1-2.27,2.21L2.72,116.94,94.64,181a2.71,2.71,0,0,1,1.22,2.7L59,290.09l89.3-67.6a2.73,2.73,0,0,1,3.1-.29L241,290.09,204.41,184.45A2.85,2.85,0,0,1,205.05,181.22ZM189,158.88c-3.39,4.1-6.89,6.56-11.06,7.85-3.28,1-4.33,2.49-4.33,6.1,0,1,0,1.94,0,2.91,0,1.79.07,3.65,0,5.48-.38,12.44-8.72,21.2-21.23,22.3a33.14,33.14,0,0,1-3.4.16c-15.71,0-26.65-10.13-28.92-27.1a80.48,80.48,0,0,1-.76-11.74A88.92,88.92,0,0,1,121,148.66c2.75-15.39,18.35-23.32,31.21-21.87a25.7,25.7,0,0,1,16.13,7.55,17.72,17.72,0,0,1,5,10.54c.37,3.15-1.38,4.36-2.9,4.83-2.21.67-3.93-.11-5.11-2.33-.34-.61-.64-1.22-1-1.84s-.71-1.44-1.1-2.13c-3.83-6.92-9.13-10-16.24-9.25-8.17.79-13.52,4.74-16.36,12-1.49,3.82-2,8.22-1.68,13.81.18,2.8.13,5.62.08,8.36a79.79,79.79,0,0,0,.31,10.7,19.49,19.49,0,0,0,30.48,13.75c4.17-2.86,4.91-7,4.77-12.27a59.37,59.37,0,0,1,.19-7,3.5,3.5,0,0,0-1.08-3.34c-.87-.62-2.18-.57-3.7.13a16.66,16.66,0,0,0-7.52,6.75l-.24.42c-.65,1.1-1.36,2.33-2.65,2.62a3.48,3.48,0,0,1-2.78-.76,3.94,3.94,0,0,1-1.88-2.6c-.17-1.2.33-2.52,1.59-4.15,5.22-6.76,11.65-10.19,19.67-10.46,7.24-.26,13.09-2.93,17.39-7.92a4.9,4.9,0,0,1,3.19-2,3.39,3.39,0,0,1,2.55,1C191.83,155.45,190.12,157.52,189,158.88Z" transform="translate(-2.72 -9.91)" /></svg>
+};
 const SidebarIcon = () => {
-    return <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 271.92 258.62"><title>font-icon</title><path d="M197,158.57c12.92,39.76,25.75,79.26,38.6,118.77l-.57.38q-5.34-3.86-10.68-7.72l-57.08-41.49c-1.9-1.38-3.85-2.7-5.79-4-1.79-1.22-2.25-2.93-1.1-4.65,1.27-1.91,2.8-1.05,4.31,0q29.06,21.23,58.16,42.4c.66.48,1.31,1,2,1.49l.63-.37c-.7-2.32-1.36-4.65-2.11-6.95-5.48-16.77-11-33.53-16.47-50.3-4.73-14.53-9.27-29.12-14.18-43.59a6.45,6.45,0,0,1-.22-.83l-9.73,6.78a1.69,1.69,0,0,0-.38,1.92l21.78,62.81-35.4-26.8L67.54,279.31c10.14-30.78,20-60.83,30-91.08a27,27,0,0,0,2.83,1.81c1.5.7,1.69,1.52,1.15,3.13-4.28,12.75-8.42,25.55-12.63,38.33C85.47,241.86,82,252.2,78.6,262.56c-.25.76-.33,1.58-.66,3.22l3.27-2.35,82.84-59.66.59-.42-13.83-10.47a1.62,1.62,0,0,0-1.84.17l-53.1,40.19,14.71-42.41L14,120.69h96.19c-.49,1.73-.91,3.24-1.42,5H31.62l-.33.9q40.5,29.43,81.11,59l5.41-15.6a1.63,1.63,0,0,0-.72-1.61L62.43,130.29l50.89,1L149,20.69c10.1,30.8,19.95,60.85,29.87,91.13a25.21,25.21,0,0,0-3.35.21c-1.62.32-2.26-.22-2.79-1.84-4.11-12.8-8.37-25.56-12.55-38.35-3.4-10.36-6.75-20.74-10.14-31.11-.25-.76-.67-1.47-1.38-3-.57,1.75-.9,2.79-1.24,3.83q-14.48,44.91-28.94,89.81l10.91.22a1.74,1.74,0,0,0,1.35-1.31L150,66.66,165.58,118H286L208.38,174.4a26.75,26.75,0,0,0-1.23-3.12c-.81-1.45-.49-2.22.89-3.22,10.93-7.84,21.77-15.81,32.65-23.71q13.25-9.61,26.51-19.2a32.25,32.25,0,0,0,2.41-2.22H167.06l2.37,7.81a1.73,1.73,0,0,0,1.65.87l66.49-1.31Z" transform="translate(-14.04 -20.69)" /></svg>
+    return <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="294.56" height="280.18" viewBox="0 0 294.56 280.18"><title>pg-font-icon</title><path class="cls-1" d="M205.05,181.22l92.23-64.28-111.82,2.2a2.88,2.88,0,0,1-2.77-1.47L150,9.91l-32.47,107a2.89,2.89,0,0,1-2.27,2.21L2.72,116.94,94.64,181a2.71,2.71,0,0,1,1.22,2.7L59,290.09l89.3-67.6a2.73,2.73,0,0,1,3.1-.29L241,290.09,204.41,184.45A2.85,2.85,0,0,1,205.05,181.22ZM189,158.88c-3.39,4.1-6.89,6.56-11.06,7.85-3.28,1-4.33,2.49-4.33,6.1,0,1,0,1.94,0,2.91,0,1.79.07,3.65,0,5.48-.38,12.44-8.72,21.2-21.23,22.3a33.14,33.14,0,0,1-3.4.16c-15.71,0-26.65-10.13-28.92-27.1a80.48,80.48,0,0,1-.76-11.74A88.92,88.92,0,0,1,121,148.66c2.75-15.39,18.35-23.32,31.21-21.87a25.7,25.7,0,0,1,16.13,7.55,17.72,17.72,0,0,1,5,10.54c.37,3.15-1.38,4.36-2.9,4.83-2.21.67-3.93-.11-5.11-2.33-.34-.61-.64-1.22-1-1.84s-.71-1.44-1.1-2.13c-3.83-6.92-9.13-10-16.24-9.25-8.17.79-13.52,4.74-16.36,12-1.49,3.82-2,8.22-1.68,13.81.18,2.8.13,5.62.08,8.36a79.79,79.79,0,0,0,.31,10.7,19.49,19.49,0,0,0,30.48,13.75c4.17-2.86,4.91-7,4.77-12.27a59.37,59.37,0,0,1,.19-7,3.5,3.5,0,0,0-1.08-3.34c-.87-.62-2.18-.57-3.7.13a16.66,16.66,0,0,0-7.52,6.75l-.24.42c-.65,1.1-1.36,2.33-2.65,2.62a3.48,3.48,0,0,1-2.78-.76,3.94,3.94,0,0,1-1.88-2.6c-.17-1.2.33-2.52,1.59-4.15,5.22-6.76,11.65-10.19,19.67-10.46,7.24-.26,13.09-2.93,17.39-7.92a4.9,4.9,0,0,1,3.19-2,3.39,3.39,0,0,1,2.55,1C191.83,155.45,190.12,157.52,189,158.88Z" transform="translate(-2.72 -9.91)" /></svg>
 };
 const loadGlobalStyles = (globalStyle) => {
     const { colorPalette, globalColors, globalTypography, deviceType, applyColorsToDefault, applyTypographyToDefault } = globalStyle;
@@ -288,10 +291,10 @@ const PremiumSidebar = () => {
 
 const PluginSidebarPostEditor = () => {
     return <Fragment>
-        <PluginSidebarMoreMenuItem target="premium-sidebar" icon={<SidebarIcon />}>
-            {__('Premium Blocks For Gutenberg')}
+        <PluginSidebarMoreMenuItem target="premium-sidebar" icon={<SidebarIconItem />}>
+            {__('Premium Blocks')}
         </PluginSidebarMoreMenuItem>
-        <PluginSidebar name="premium-sidebar" icon={<SidebarIcon />} title={__('Premium Blocks For Gutenberg', "premium-blocks-for-gutenberg")}>
+        <PluginSidebar name="premium-sidebar" icon={<SidebarIcon />} title={__('Premium Blocks', "premium-blocks-for-gutenberg")}>
             <PremiumSidebar />
         </PluginSidebar>
     </Fragment>
@@ -299,10 +302,10 @@ const PluginSidebarPostEditor = () => {
 
 const PluginSidebarEditSite = () => {
     return <Fragment>
-        <EditSitePluginSidebarMoreMenuItem target="premium-sidebar" icon={<SidebarIcon />}>
-            {__('Premium Blocks For Gutenberg')}
+        <EditSitePluginSidebarMoreMenuItem target="premium-sidebar" icon={<SidebarIconItem />}>
+            {__('Premium Blocks')}
         </EditSitePluginSidebarMoreMenuItem>
-        <EditSitePluginSidebar name="premium-sidebar" icon={<SidebarIcon />} title={__('Premium Blocks For Gutenberg', "premium-blocks-for-gutenberg")}>
+        <EditSitePluginSidebar name="premium-sidebar" icon={<SidebarIcon />} title={__('Premium Blocks', "premium-blocks-for-gutenberg")}>
             <PremiumSidebar />
         </EditSitePluginSidebar>
     </Fragment >
