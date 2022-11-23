@@ -61,7 +61,11 @@ const TypographyScreen = props => {
                 <h1
                     style={{
                         fontFamily: getElementValue('heading1')?.fontFamily,
-                        fontSize: '38px'
+                        fontSize: '38px',
+                        textDecoration: 'none',
+                        lineHeight: 'normal',
+                        textTransform: 'none',
+                        fontWeight: '600',
                     }}
                     className='premium-element-typography-title'
                 >
@@ -73,7 +77,11 @@ const TypographyScreen = props => {
                 <h2
                     style={{
                         fontFamily: getElementValue('heading2')?.fontFamily,
-                        fontSize: '30px'
+                        fontSize: '30px',
+                        textDecoration: 'none',
+                        lineHeight: 'normal',
+                        textTransform: 'none',
+                        fontWeight: '600',
                     }}
                     className='premium-element-typography-title'
                 >
@@ -85,7 +93,11 @@ const TypographyScreen = props => {
                 <h3
                     style={{
                         fontFamily: getElementValue('heading3')?.fontFamily,
-                        fontSize: '25px'
+                        fontSize: '25px',
+                        textDecoration: 'none',
+                        lineHeight: 'normal',
+                        textTransform: 'none',
+                        fontWeight: '600',
                     }}
                     className='premium-element-typography-title'
                 >
@@ -97,7 +109,11 @@ const TypographyScreen = props => {
                 <h4
                     style={{
                         fontFamily: getElementValue('heading4')?.fontFamily,
-                        fontSize: '20px'
+                        fontSize: '20px',
+                        textDecoration: 'none',
+                        lineHeight: 'normal',
+                        textTransform: 'none',
+                        fontWeight: '600',
                     }}
                     className='premium-element-typography-title'
                 >
@@ -109,7 +125,11 @@ const TypographyScreen = props => {
                 <h5
                     style={{
                         fontFamily: getElementValue('heading5')?.fontFamily,
-                        fontSize: '18px'
+                        fontSize: '18px',
+                        textDecoration: 'none',
+                        lineHeight: 'normal',
+                        textTransform: 'none',
+                        fontWeight: '600',
                     }}
                     className='premium-element-typography-title'
                 >
@@ -121,7 +141,11 @@ const TypographyScreen = props => {
                 <h6
                     style={{
                         fontFamily: getElementValue('heading6')?.fontFamily,
-                        fontSize: '15px'
+                        fontSize: '15px',
+                        textDecoration: 'none',
+                        lineHeight: 'normal',
+                        textTransform: 'none',
+                        fontWeight: '600',
                     }}
                     className='premium-element-typography-title'
                 >
@@ -132,7 +156,10 @@ const TypographyScreen = props => {
             <div className='premium-element-typography'>
                 <span
                     style={{
-                        fontFamily: getElementValue('button')?.fontFamily
+                        fontFamily: getElementValue('button')?.fontFamily,
+                        textDecoration: 'none',
+                        lineHeight: 'normal',
+                        textTransform: 'none',
                     }}
                     className='premium-element-typography-title'
                 >
@@ -143,7 +170,10 @@ const TypographyScreen = props => {
             <div className='premium-element-typography'>
                 <p
                     style={{
-                        fontFamily: getElementValue('paragraph')?.fontFamily
+                        fontFamily: getElementValue('paragraph')?.fontFamily,
+                        textDecoration: 'none',
+                        lineHeight: 'normal',
+                        textTransform: 'none',
                     }}
                     className='premium-element-typography-title'
                 >
