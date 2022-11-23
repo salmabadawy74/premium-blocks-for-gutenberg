@@ -1966,10 +1966,12 @@ const AdvancedSwitcher = props => {
     label,
     description,
     onChange,
-    checked = true
+    checked = true,
+    style
   } = props;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "pb-advanced-switcher"
+    className: "pb-advanced-switcher",
+    style: style
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pb-title"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
