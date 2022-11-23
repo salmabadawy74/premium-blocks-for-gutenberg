@@ -143,7 +143,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 				'premium-map-api'            => true,
 				'premium-fa-css'             => true,
 				'premium-upload-json'        => false,
-				'enable-post-editor-sidebar' => false,
+				'enable-post-editor-sidebar' => true,
 				'enable-site-editor-sidebar' => false,
 			);
 

@@ -4,7 +4,6 @@ import ScreenHeader from "../components/header"
 import defaults from '../helpers/defaults';
 import { useContext, useEffect } from "@wordpress/element";
 import SettingsContext from '../store/settings-store';
-import { typographyCss } from '../../../components/HelperFunction';
 import { CheckboxControl } from '@wordpress/components';
 import WebFont from "webfontloader";
 
@@ -17,18 +16,24 @@ const TypographyScreen = props => {
     };
 
     useEffect(() => {
-        const typography = getElementValue('heading1');
-
-        if (typography?.fontFamily === 'Default') {
-            return;
+        const allTypography = [
+            getElementValue('heading1'),
+            getElementValue('heading2'),
+            getElementValue('heading3'),
+            getElementValue('heading4'),
+            getElementValue('heading5'),
+            getElementValue('heading6'),
+            getElementValue('button'),
+            getElementValue('paragraph')
+        ];
+        const googleFonts = allTypography.filter(typography => typography?.fontFamily !== 'Default').map(typography => typography.fontFamily);
+        if (googleFonts.length > 0) {
+            WebFont.load({
+                google: {
+                    families: googleFonts
+                }
+            });
         }
-
-        WebFont.load({
-            google: {
-                families: [typography?.fontFamily]
-            }
-        });
-
     }, [globalTypography]);
 
     const toString = (object) => {
@@ -55,7 +60,8 @@ const TypographyScreen = props => {
             <div className='premium-element-typography'>
                 <h1
                     style={{
-                        ...typographyCss(getElementValue('heading1'), 'Desktop')
+                        fontFamily: getElementValue('heading1')?.fontFamily,
+                        fontSize: '38px'
                     }}
                     className='premium-element-typography-title'
                 >
@@ -66,7 +72,8 @@ const TypographyScreen = props => {
             <div className='premium-element-typography'>
                 <h2
                     style={{
-                        ...typographyCss(getElementValue('heading2'), 'Desktop')
+                        fontFamily: getElementValue('heading2')?.fontFamily,
+                        fontSize: '30px'
                     }}
                     className='premium-element-typography-title'
                 >
@@ -77,7 +84,8 @@ const TypographyScreen = props => {
             <div className='premium-element-typography'>
                 <h3
                     style={{
-                        ...typographyCss(getElementValue('heading3'), 'Desktop')
+                        fontFamily: getElementValue('heading3')?.fontFamily,
+                        fontSize: '25px'
                     }}
                     className='premium-element-typography-title'
                 >
@@ -88,7 +96,8 @@ const TypographyScreen = props => {
             <div className='premium-element-typography'>
                 <h4
                     style={{
-                        ...typographyCss(getElementValue('heading4'), 'Desktop')
+                        fontFamily: getElementValue('heading4')?.fontFamily,
+                        fontSize: '20px'
                     }}
                     className='premium-element-typography-title'
                 >
@@ -99,7 +108,8 @@ const TypographyScreen = props => {
             <div className='premium-element-typography'>
                 <h5
                     style={{
-                        ...typographyCss(getElementValue('heading5'), 'Desktop')
+                        fontFamily: getElementValue('heading5')?.fontFamily,
+                        fontSize: '18px'
                     }}
                     className='premium-element-typography-title'
                 >
@@ -110,7 +120,8 @@ const TypographyScreen = props => {
             <div className='premium-element-typography'>
                 <h6
                     style={{
-                        ...typographyCss(getElementValue('heading6'), 'Desktop')
+                        fontFamily: getElementValue('heading6')?.fontFamily,
+                        fontSize: '15px'
                     }}
                     className='premium-element-typography-title'
                 >
@@ -121,7 +132,7 @@ const TypographyScreen = props => {
             <div className='premium-element-typography'>
                 <span
                     style={{
-                        ...typographyCss(getElementValue('button'), 'Desktop')
+                        fontFamily: getElementValue('button')?.fontFamily
                     }}
                     className='premium-element-typography-title'
                 >
@@ -132,7 +143,7 @@ const TypographyScreen = props => {
             <div className='premium-element-typography'>
                 <p
                     style={{
-                        ...typographyCss(getElementValue('paragraph'), 'Desktop')
+                        fontFamily: getElementValue('paragraph')?.fontFamily
                     }}
                     className='premium-element-typography-title'
                 >
@@ -141,7 +152,7 @@ const TypographyScreen = props => {
                 <PremiumTypo value={getElementValue('paragraph')} title={false} onChange={(newValue => changeHandler('paragraph', newValue))} />
             </div>
             <CheckboxControl
-                label={__('Apply to Native Blocks', "premium-blocks-for-gutenberg")}
+                label={__('Apply to Native Gutenberg Blocks', "premium-blocks-for-gutenberg")}
                 checked={applyTypographyToDefault}
                 onChange={() => setApplyTypographyToDefault(!applyTypographyToDefault)}
             />
