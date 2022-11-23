@@ -1,538 +1,555 @@
-# Premium Blocks for Gutenberg
-
+# Premium Blocks for Gutenberg #
 **Contributors:** [leap13](https://profiles.wordpress.org/leap13/)  
-**Tags:** gutenberg, gutenberg addon, gutenberg addons, gutenberg blocks, gutenberg free blocks  
+**Tags:** gutenberg, gutenberg addon, gutenberg addons, gutenberg blocks, gutenberg free blocks, blocks, editor  
 **Donate link:** https://leap13.com  
 **Requires at least:** 4.5  
 **Tested up to:** 6.1  
 **Requires PHP:** 5.4  
-**Stable tag:** 2.0.1
+**Stable tag:** 2.0.2  
 **License:** GPL v3.0  
-**License URI:** https://opensource.org/licenses/GPL-3.0
+**License URI:** https://opensource.org/licenses/GPL-3.0  
 
-Gutenberg blocks that will help you build amazing pages with the new WordPress Gutenberg editor.
+Premium Blocks for Gutenberg helps you build amazing pages with the new WordPress Gutenberg editor.
 
-## Description
-
-Premium Blocks for Gutenberg helps you create amazing looking websites using the new WordPress Editor: Gutenberg. All blocks was built with performance in mind. Also all Gutenberg blocks included are RTL ready. The plugin is modular so you can disable the blocks you will not use for faster website performance. Also Premium Blocks for Gutenberg is translation ready so you can easily translate it to your language.
+## Description ##
+Premium Blocks for Gutenberg helps you create amazing looking websites using the new WordPress Editor: Gutenberg. All blocks was built with performance in mind. Also all Gutenberg blocks included are RTL ready.  The plugin is modular so you can disable the blocks you will not use for faster website performance. Also Premium Blocks for Gutenberg is translation ready so you can easily translate it to your language.
 
 Kindly note that the plugin is on it’s early stages and Gutenberg itself is still not 100% reliable however you will notice that we release weekly updates for enhancements and bug fixes.
 
+### Useful Links
+[Support](https://my.leap13.com/contact-support/) | [Docs](https://premiumblocks.io/docs/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme)
+
+
 ### Available Elements
+1. [Gutenberg Banner Block](https://premiumblocks.io/index.php/gutenberg-blocks/banner-block/) Interactive Banner Block with readymade styles beside many customization options.
+2. [Gutenberg Button Block](https://premiumblocks.io/index.php/gutenberg-blocks/button-block/) Premium Button Block allows you to create amazing call to actions with tons of options.
+3. [Gutenberg Counter Block](https://premiumblocks.io/index.php/gutenberg-blocks/counter-block/) Counter block for Gutenberg is the best way to show facts and figures with cool animation and many customization options.
+4. [Gutenberg Dual Heading Block](https://premiumblocks.io/index.php/gutenberg-blocks/dual-heading-block/) Premium Dual Heading Block for Gutenberg is a great block to have great looking headings with the heading split into 2 attractive parts.
+5. Gutenberg Heading Block
+6. [Gutenberg Icon Block](https://premiumblocks.io/index.php/gutenberg-blocks/icon-block/) Premium Icon Block gives you the ability to add both Font Awesome icons and WordPress dash icons with lot of customization options.
+7. [Gutenberg Maps Block](https://premiumblocks.io/index.php/gutenberg-blocks/google-maps-block/) Premium Google map Block allows you to display google maps in your pages with advanced controls.
+8. [Gutenberg Pricing Table Block](https://premiumblocks.io/index.php/gutenberg-blocks/pricing-table-block/) Premium Pricing table Block is the best way to display your pricing in the modern way, you will be able to customize each part of your pricing table.
+9. [Gutenberg Section Block](https://premiumblocks.io/index.php/gutenberg-blocks/section-block/) Allows you to create sections with background options and styles.
+10. [Gutenberg Testimonials Block](https://premiumblocks.io/index.php/gutenberg-blocks/testimonials-block/) Allows you to display your customers reviews within your Wesbite using different options.
+11. [Gutenberg Accordion Block](https://premiumblocks.io/index.php/gutenberg-blocks/accordion-block/) Help you show more data/content in a less distracting area as you will be able to divide your content and show it off in separated tabs.
+12. [Gutenberg Icon Box Block](https://premiumblocks.io/gutenberg-blocks/icon-box-block/) Premium Icon Box block for Gutenberg is the best way to show off a short brief about the services you provide.
+13. [Gutenberg Video Box Block](https://premiumblocks.io/gutenberg-blocks/video-box-block/) By using Video Box Block for Gutenberg, you will be able to add four types of video to your website as you can choose from YouTube, Vimeo, Dailymotion or you can upload your own.
+14. Gutenberg Container Block
+15. Gutenberg Fancy Text Block
+16. Gutenberg Lottie Animation Block
+17. Gutenberg Modal Box Block
+18. Gutenberg Image Separator Block
+19. Gutenberg Bullet List Block
+20. Gutenberg Team Members Block
+21. Gutenberg Content Switcher Block
 
-1. [Gutenberg Banner Block](https://premiumblocks.io/index.php/gutenberg-blocks/banner-block/)
-2. [Gutenberg Button Block](https://premiumblocks.io/index.php/gutenberg-blocks/button-block/)
-3. [Gutenberg Counter Block](https://premiumblocks.io/index.php/gutenberg-blocks/counter-block/)
-4. [Gutenberg Dual Heading Block](https://premiumblocks.io/index.php/gutenberg-blocks/dual-heading-block/)
-5. [Gutenberg Heading Block](https://premiumblocks.io/index.php/gutenberg-blocks/dual-heading-block/)
-6. [Gutenberg Icon Block](https://premiumblocks.io/index.php/gutenberg-blocks/icon-block/)
-7. [Gutenberg Maps Block](https://premiumblocks.io/index.php/gutenberg-blocks/google-maps-block/)
-8. [Gutenberg Pricing Table Block](https://premiumblocks.io/index.php/gutenberg-blocks/pricing-table-block/)
-9. [Gutenberg Section Block](https://premiumblocks.io/index.php/gutenberg-blocks/section-block/)
-10. [Gutenberg Testimonials Block](https://premiumblocks.io/index.php/gutenberg-blocks/testimonials-block/)
-11. [Gutenberg Accordion Block](https://premiumblocks.io/index.php/gutenberg-blocks/accordion-block/)
-12. [Gutenberg Icon Box Block](https://premiumblocks.io/gutenberg-blocks/icon-box-block/)
-13. [Gutenberg Video Box Block](https://premiumblocks.io/gutenberg-blocks/video-box-block/)
-14. [Gutenberg Container Block]
-15. [Gutenberg Fancy Text Block]
-16. [Gutenberg Lottie Animation Block]
-17. [Gutenberg Modal Box Block]
-18. [Gutenberg Image Separator Block]
-19. [Gutenberg Bullet List Block]
-20. [Gutenberg Team Members Block]
-21. [Gutenberg Content Switcher Block]
+## Installation ##
 
-## Installation
+### Minimum Requirements ###
 
-### Minimum Requirements
+* WordPress 4.5 or greater
+* PHP version 5.4 or greater
+* MySQL version 5.0 or greater
 
--   WordPress 4.5 or greater
--   PHP version 5.4 or greater
--   MySQL version 5.0 or greater
+### Installation Instructions ###
 
-### Installation Instructions
+- First make sure that Gutenberg is installed, As this plugin works only with it.
+- Download the plugin then Upload it to the plugin folder: /wp-content/plugins/ or install it through the WordPress plugins screen directly.
+- Activate the plugin through the ‘Plugins’ screen in WordPress
 
--   First make sure that Gutenberg is installed, As this plugin works only with it.
--   Download the plugin then Upload it to the plugin folder: /wp-content/plugins/ or install it through the WordPress plugins screen directly.
--   Activate the plugin through the ‘Plugins’ screen in WordPress
-
-### Now, you can be a contributor
-
+### Now, you can be a contributor ###
 If you want to contribute, go to our [Premium Blocks for Gutenberg GitHub Repository](https://github.com/Leap13/premium-blocks-for-gutenberg) and see where you can help.
 
-## Frequently Asked Questions
-
-### Is this a standalone Plugin?
+## Frequently Asked Questions ##
+### Is this a standalone Plugin? ###
 
 No. You cannot use Premium Blocks without Gutenberg as it's a blocks plugin for Gutenberg.
 
-### Does it work with any WordPress theme?
+### Does it work with any WordPress theme? ###
 
 Yes it will work with any WordPress theme as long as you are using Gutenberg as a page editor.
 
-## Changelog
+## Changelog ##
 
-### 2.0.0
+## Changelog ##
+ = 2.0.2 =
+- New: Global settings added to control your Gutenberg website fonts and colors.
+- Tweak: Added overlay color option on hover state in Premium banner block.
+- Tweak: Added border color option on hover state in Premium icon block.
+- Fixed: Pricing table badge vertical position glitch.
+- Fixed: It can’t select the accordion block options from Editor.
+- Fixed: The border radius is not working in the content switcher block.
 
--   New: Container Block to build flexible box layouts.
--   New: Content Switcher Block to switch between two different content.
--   New: UX/UI Controls Design for Premium Blocks.
--   New: React admin dashboard.
--   New: Responsive options for all premium blocks.
--   Improved: All Blocks are now compatible with WordPress 6.1.
--   Improved: Responsive settings have added to alignment, size, border and spacing controls.
--   Improved: Accordion, Pricing table, Icon box, Person and Bullet list Blocks have been refactored to work as Group of Blocks.
--   Improved: Blocks Options have been organized into three tabs (Layout, Style, and Advanced)
--   Improved: Update Count up library.
--   Improved: Text style, letter spacing, text-transform, and text decoration options have added to typography control.
--   Fixed: General Issues in multiple blocks.
+ = 2.0.1 =
 
-### 1.9.9
+- Fixed: Accordion block collaps issue.
+- Fixed: Fontawesome 4.0 doesn’t work in editor.
+- Fixed: Box shadow control doesn’t work in Premium Blocks.
+- Fixed: Upload JSON file settings link doesn’t work.
+- Fixed: Hover text color of the button block doesn’t work.
 
--   Fixed: Reset color button not working in Icon Box Block.
--   Fixed: Console error when trying to get plugin settings in background control.
--   Fixed: Selecting colors from color palettes in color control not changing the color value.
 
-### 1.9.8
+### 2.0.0 ###
 
--   New: Added Premium Heading block.
+- New: Container Block to build flexible box layouts.
+- New: Content Switcher Block to switch between two different content.
+- New: UX/UI Controls Design for Premium Blocks.
+- New: React admin dashboard.
+- New: Responsive options for all premium blocks.
+- Improved: All Blocks are now compatible with WordPress 6.1.
+- Improved: Responsive settings have added to alignment, size, border and spacing controls.
+- Improved: Accordion, Pricing table, Icon box, Person and Bullet list Blocks have been refactored to work as Group of Blocks.
+- Improved: Blocks Options have been organized into three tabs (Layout, Style, and Advanced)
+- Improved: Update Count up library.
+- Improved: Text style, letter spacing, text-transform, and text decoration options have added to typography control.
+- Fixed: General Issues in multiple blocks.
 
-### 1.9.7
+### 1.9.9 ###
 
--   New: Added Premium Team Member block.
--   Fixed: Default Values issue in CSS Filters Control.
+- Fixed: Reset color button not working in Icon Box Block.
+- Fixed: Console error when trying to get plugin settings in background control.
+- Fixed: Selecting colors from color palettes in color control not changing the color value.
 
-### 1.9.6
+### 1.9.8 ###
 
--   New: Added Premium Bullet List block.
--   Fixed: Responsive Margin/Padding controls not working properly.
+- New: Added Premium Heading block.
 
-### 1.9.5
+### 1.9.7 ###
 
--   New: Added Premium Modal Box block.
--   Tweak: Added Aspect Ratio option in Video Box block.
--   Tweak: Code improvements for better performance and faster editing speed.
+- New: Added Premium Team Member block.
+- Fixed: Default Values issue in CSS Filters Control.
 
-### 1.9.4
+### 1.9.6 ###
 
--   New: Added Premium Image Separator block.
--   Tweak: Replace icons with text for Background Classic/Gradient control when Font Awesome is disabled.
--   Fixed: Issues with controls naming.
--   Fixed: Pages not loading after updating from older versions.
+- New: Added Premium Bullet List block.
+- Fixed: Responsive Margin/Padding controls not working properly.
 
-### 1.9.3
+### 1.9.5 ###
 
--   Tweak: Default layout for Banner and Videobox blocks improved for better UX.
--   Tweak: Improve Videobox block to add Youtube videos links directly without adding embed links.
--   Tweak: Color control UI improved for better editing experience.
--   Fixed: Content Position option not working in Section block.
--   Fixed: Badge Text Font Size control not working in Pricing Table block.
+- New: Added Premium Modal Box block.
+- Tweak: Added Aspect Ratio option in Video Box block.
+- Tweak: Code improvements for better performance and faster editing speed.
 
-### 1.9.2
+### 1.9.4 ###
 
--   Tweak: Added responsive controls for Margin and Padding controls.
--   Tweak: Added option to set a gradient background in Background control.
--   Tweak: Improved Typography control.
--   Tweak: Improved UX for Box/Text Shadow controls.
--   Tweak: Added option to upload JSON file in Lottie Animations block.
+- New: Added Premium Image Separator block.
+- Tweak: Replace icons with text for Background Classic/Gradient control when Font Awesome is disabled.
+- Fixed: Issues with controls naming.
+- Fixed: Pages not loading after updating from older versions.
 
-### 1.9.1
+### 1.9.3 ###
 
--   Tweak: Compatibility improved with WordPress v5.9.
--   Tweak: Color controls improved for better UI/UX.
+- Tweak: Default layout for Banner and Videobox blocks improved for better UX.
+- Tweak: Improve Videobox block to add Youtube videos links directly without adding embed links.
+- Tweak: Color control UI improved for better editing experience.
+- Fixed: Content Position option not working in Section block.
+- Fixed: Badge Text Font Size control not working in Pricing Table block.
 
-### 1.9.0
+### 1.9.2 ###
 
--   Tweak: Added Padding option for container in Countup block.
--   Tweak: Added option to control transparency for Box Shadow in Countup block.
--   Fixed: All issues related to Font Family option in all blocks.
--   Fixed: Compatibility issues with WordPress 5.8.
+- Tweak: Added responsive controls for Margin and Padding controls.
+- Tweak: Added option to set a gradient background in Background control.
+- Tweak: Improved Typography control.
+- Tweak: Improved UX for Box/Text Shadow controls.
+- Tweak: Added option to upload JSON file in Lottie Animations block.
 
-### 1.8.9
+### 1.9.1 ###
 
--   New: Added Premium Lottie Animation block.
+- Tweak: Compatibility improved with WordPress v5.9.
+- Tweak: Color controls improved for better UI/UX.
 
-### 1.8.8
+### 1.9.0 ###
 
--   Fixed: Call to undefined function premium_gutenberg_get_sysinfo() on System Info tab.
--   Fixed: Image Icon not showing on the editor in Icon Box block.
+- Tweak: Added Padding option for container in Countup block.
+- Tweak: Added option to control transparency for Box Shadow in Countup block.
+- Fixed: All issues related to Font Family option in all blocks.
+- Fixed: Compatibility issues with WordPress 5.8.
 
-### 1.8.7
+### 1.8.9 ###
 
--   New: Responsive Controls added to Show/Hide Block on specific devices.
--   Tweak: Border control improved to set different value for each direction.
--   Tweak: Added responsive controls to Font Size control in all blocks.
--   Tweak: Added Opacity control to Background Color control in all blocks.
+- New: Added Premium Lottie Animation block.
 
-### 1.8.6
+### 1.8.8 ###
 
--   Tweak: Normal/Hover Colors tabs added for better UX.
--   Tweak: Added Font Style Oblique option in Typography controls.
+- Fixed: Call to undefined function premium_gutenberg_get_sysinfo() on System Info tab.
+- Fixed: Image Icon not showing on the editor in Icon Box block.
 
-### 1.8.5
+### 1.8.7 ###
 
--   Tweak: Media upload controls improved for better UX.
+- New: Responsive Controls added to Show/Hide Block on specific devices.
+- Tweak: Border control improved to set different value for each direction.
+- Tweak: Added responsive controls to Font Size control in all blocks.
+- Tweak: Added Opacity control to Background Color control in all blocks.
 
-### 1.8.4
+### 1.8.6 ###
 
--   Tweak: Margin/Padding controls improved.
--   Fixed: console error on show blocks preview window.
+- Tweak: Normal/Hover Colors tabs added for better UX.
+- Tweak: Added Font Style Oblique option in Typography controls.
 
-### 1.8.3
+### 1.8.5 ###
 
--   Fixed: Fancy Text block not working on frontend.
--   Fixed: Editor warning due to deprecated Gutenberg components.
+- Tweak: Media upload controls improved for better UX.
 
-### 1.8.2
+### 1.8.4 ###
 
--   New: Added Fancy Text block.
--   Tweak: Container Box Shadow CSS selector changed in Banner block.
+- Tweak: Margin/Padding controls improved.
+- Fixed: console error on show blocks preview window.
 
-### 1.8.1
+### 1.8.3 ###
 
--   Fixed: Compatibility issues with WordPress 5.6.
+- Fixed: Fancy Text block not working on frontend.
+- Fixed: Editor warning due to deprecated Gutenberg components.
 
-### 1.7.9
+### 1.8.2 ###
 
--   Tweak: Size units user interface improved.
--   Fixed: Stretch Section option not working in some themes.
--   Fixed: Font Awesome Icons not working on frontend in some themes.
+- New: Added Fancy Text block.
+- Tweak: Container Box Shadow CSS selector changed in Banner block.
 
-### 1.7.8
+### 1.8.1 ###
 
--   Tweak: Enhanced Icon Box block content align option.
--   Fixed: CountUp Block image icon error.
+- Fixed: Compatibility issues with WordPress 5.6.
 
-### 1.7.7
+### 1.7.9 ###
 
--   Tweak: Load Google maps API script only if API key is set.
+- Tweak: Size units user interface improved.
+- Fixed: Stretch Section option not working in some themes.
+- Fixed: Font Awesome Icons not working on frontend in some themes.
 
-### 1.7.6
+### 1.7.8 ###
 
--   Tweak: Improved plugin security.
+- Tweak: Enhanced Icon Box block content align option.
+- Fixed: CountUp Block image icon error.
 
-### 1.7.5
+### 1.7.7 ###
 
--   Fixed: Security issues fixed.
+- Tweak: Load Google maps API script only if API key is set.
 
-### 1.7.4
+### 1.7.6 ###
 
--   Fixed: `This block has encountered an error and cannot be previewed` when adding Pricing Table to reusable blocks.
--   Fixed: `The editor has encountered an unexpected error` with Text Shadow option.
+- Tweak: Improved plugin security.
 
-### 1.7.3
+### 1.7.5 ###
 
--   Tweak: Added `Stroke` option in Dual Heading block.
+- Fixed: Security issues fixed.
 
-### 1.7.2
+### 1.7.4 ###
 
--   Fixed: Error `The editor has encountered an unexpected error.` with `Text Shadow` option.
+- Fixed: `This block has encountered an error and cannot be previewed` when adding Pricing Table to reusable blocks.
+- Fixed: `The editor has encountered an unexpected error` with Text Shadow option.
 
-### 1.7.1
+### 1.7.3 ###
 
--   Fixed: Border,Box Shadow and Text Shadow Popup close when trying to insert a custom color.
+- Tweak: Added `Stroke` option in Dual Heading block.
 
-### 1.7.0
+### 1.7.2 ###
 
--   Fixed: Additional CSS Classes are not rendered on the editor page.
+- Fixed: Error `The editor has encountered an unexpected error.` with `Text Shadow` option.
 
-### 1.6.9
+### 1.7.1 ###
 
--   Tweak: WPML Compitablity for all blocks.
--   Fixed: Error `This block contains unexpected or invalid content` in Icon Box block.
+- Fixed: Border,Box Shadow and Text Shadow Popup close when trying to insert a custom color.
 
-### 1.6.8
+### 1.7.0 ###
 
--   Tweak: Added `Padding` option for container in Banner block.
+- Fixed: Additional CSS Classes are not rendered on the editor page.
 
-### 1.6.7
+### 1.6.9 ###
 
--   Tweak: Added `Vertical/Horizontal Position` option for icon in Icon Box block.
+- Tweak: WPML Compitablity for all blocks.
+- Fixed: Error `This block contains unexpected or invalid content` in Icon Box block.
 
-### 1.6.6
+### 1.6.8 ###
 
--   Tweak: Added `Padding` options group control for container in Testimonials block.
+- Tweak: Added `Padding` option for container in Banner block.
 
-### 1.6.5
+### 1.6.7 ###
 
--   Tweak: Added `Border` options group control for container in Counter block.
+- Tweak: Added `Vertical/Horizontal Position` option for icon in Icon Box block.
 
-### 1.6.4
+### 1.6.6 ###
 
--   Tweak: Added `Align` option for Features List in Pricing Table block.
--   Tweak: Changed `Spacings` from tab to dropdown in Pricing Table block to enhance editing experience.
+- Tweak: Added `Padding` options group control for container in Testimonials block.
 
-### 1.6.3
+### 1.6.5 ###
 
--   Tweak: Added `Size Units (px, vh, vw)` for Minimum Height option in Section block.
+- Tweak: Added `Border` options group control for container in Counter block.
 
-### 1.6.2
+### 1.6.4 ###
 
--   Tweak: Added `Size Units (px, em, %)` for Margin option in Section block.
+- Tweak: Added `Align` option for Features List in Pricing Table block.
+- Tweak: Changed `Spacings` from tab to dropdown in Pricing Table block to enhance editing experience.
 
-### 1.6.1
+### 1.6.3 ###
 
--   Tweak: Added `Size Units (px, em, %)` for Padding option in Section block.
+- Tweak: Added `Size Units (px, vh, vw)` for Minimum Height option in Section block.
 
-### 1.6.0
+### 1.6.2 ###
 
--   Tweak: Added `Size Units (px, em, %)` for Button Padding option in Pricing Table Block.
+- Tweak: Added `Size Units (px, em, %)` for Margin option in Section block.
 
-### 1.5.9
+### 1.6.1 ###
 
--   Tweak: Added `Size Units (px, em, %)` for Padding option in Button Block.
+- Tweak: Added `Size Units (px, em, %)` for Padding option in Section block.
 
-### 1.5.8
+### 1.6.0 ###
 
--   Tweak: Added `Size Units (px, em, %)` for Button and Container Padding options in Icon Box Block.
+- Tweak: Added `Size Units (px, em, %)` for Button Padding option in Pricing Table Block.
 
-### 1.5.7
+### 1.5.9 ###
 
--   Tweak: Added `Size Units (px, em, %)` for Icon Padding in Icon Block.
+- Tweak: Added `Size Units (px, em, %)` for Padding option in Button Block.
 
-### 1.5.6
+### 1.5.8 ###
 
--   Tweak: Added `Size Units (px, em, %)` for Icon size in Icon Block.
+- Tweak: Added `Size Units (px, em, %)` for Button and Container Padding options in Icon Box Block.
 
-### 1.5.5
+### 1.5.7 ###
 
--   Tweak: Added `Text Shadow` options group control for Description in Video Box block.
+- Tweak: Added `Size Units (px, em, %)` for Icon Padding in Icon Block.
 
-### 1.5.4
+### 1.5.6 ###
 
--   Tweak: Added `Box Shadow` options group control for Container in Banner block.
+- Tweak: Added `Size Units (px, em, %)` for Icon size in Icon Block.
 
-### 1.5.3
+### 1.5.5 ###
 
--   Fixed: Editor issue `This block contains unexpected or invalid content` for Banner and Pricing Table blocks.
+- Tweak: Added `Text Shadow` options group control for Description in Video Box block.
 
-### 1.5.2
+### 1.5.4 ###
 
--   Tweak: Added `Font Family` option for Title/Description in Icon Box block.
--   Fixed: Editor issue `This block contains unexpected or invalid content` for Icon block.
+- Tweak: Added `Box Shadow` options group control for Container in Banner block.
 
-### 1.5.1
+### 1.5.3 ###
 
--   Fixed: console error `fontFamily is undefined ` with Counter and Video Box blocks.
+- Fixed: Editor issue `This block contains unexpected or invalid content` for Banner and Pricing Table blocks.
 
-### 1.5.0
+### 1.5.2 ###
 
--   Tweak: Added `Background Color` option for icon in Icon Box block.
+- Tweak: Added `Font Family` option for Title/Description in Icon Box block.
+- Fixed: Editor issue `This block contains unexpected or invalid content` for Icon block.
 
-### 1.4.9
+### 1.5.1 ###
 
--   Tweak: Added `Border` options group control for container in Dual Heading block.
+- Fixed: console error `fontFamily is undefined ` with Counter and Video Box blocks.
 
-### 1.4.8
+### 1.5.0 ###
 
--   Fixed: `This block contains unexpected or invalid content` Button block error.
+- Tweak: Added `Background Color` option for icon in Icon Box block.
 
-### 1.4.7
+### 1.4.9 ###
 
--   Fixed: `Minimum Height` option in Section Block.
--   Fixed: `Display` option does not work in Dual Heading Block.
+- Tweak: Added `Border` options group control for container in Dual Heading block.
 
-### 1.4.6
+### 1.4.8 ###
 
--   Tweak: Added `Font Family` option for text in Button block.
+- Fixed: `This block contains unexpected or invalid content` Button block error.
 
-### 1.4.5
+### 1.4.7 ###
 
--   Tweak: Change `Colors` submenu to dropdown to enhance editing experience.
--   Tweak: Added `Text Shadow` option for Description Text in Banner block.
+- Fixed: `Minimum Height` option in Section Block.
+- Fixed: `Display` option does not work in Dual Heading Block.
 
-### 1.4.4
+### 1.4.6 ###
 
--   Tweak: Change `Box Shadow`, `Text Shadow`, `Typography`, `Border` and `CSS Filters` to dropdown to enhance editing.
--   Fixed: `CSS Filters` don't work for overlay image in Video Box block.
--   Fixed: Dual Headings are not vertically aligned when `Font Size` is changed.
+- Tweak: Added `Font Family` option for text in Button block.
 
-### 1.4.3
+### 1.4.5 ###
 
--   Tweak: Added `Font Family` option for Description Text in Video Box block.
+- Tweak: Change `Colors` submenu to dropdown to enhance editing experience.
+- Tweak: Added `Text Shadow` option for Description Text in Banner block.
 
-### 1.4.2
+### 1.4.4 ###
 
--   Tweak: Added `Font Family` option for Number, Prefix, Suffix and Title in Counter block.
+- Tweak: Change `Box Shadow`, `Text Shadow`, `Typography`, `Border` and `CSS Filters` to dropdown to enhance editing.
+- Fixed: `CSS Filters` don't work for overlay image in Video Box block.
+- Fixed: Dual Headings are not vertically aligned when `Font Size` is changed.
 
-### 1.4.1
+### 1.4.3 ###
 
--   Tweak: Added `Font Family` option for Dual Heading block.
+- Tweak: Added `Font Family` option for Description Text in Video Box block.
 
-### 1.4.0
+### 1.4.2 ###
 
--   Tweak: Added `Background Image` options group for container in Icon block.
--   Tweak: Added `Background Color/Image` option for container in Testimonial block.
--   Tweak: Code refactored to minimize size.
+- Tweak: Added `Font Family` option for Number, Prefix, Suffix and Title in Counter block.
 
-### 1.3.9
+### 1.4.1 ###
 
--   Tweak: Added `Image Filters` options group to Banner block image.
--   Tweak: Added `Image Background` options group to `Container Style` in Dual Heading block.
--   Fixed: Spacing issue above strings in Dual Heading block.
+- Tweak: Added `Font Family` option for Dual Heading block.
 
-### 1.3.8
+### 1.4.0 ###
 
--   Tweak: Added Background Image, Position, Repeat, Size and Fixed options for container in Counter block.
+- Tweak: Added `Background Image` options group for container in Icon block.
+- Tweak: Added `Background Color/Image` option for container in Testimonial block.
+- Tweak: Code refactored to minimize size.
 
-### 1.3.7
+### 1.3.9 ###
 
--   Tweak: Added `Box Shadow` option for container in Testimonial block.
+- Tweak: Added `Image Filters` options group to Banner block image.
+- Tweak: Added `Image Background` options group to `Container Style` in Dual Heading block.
+- Fixed: Spacing issue above strings in Dual Heading block.
 
-### 1.3.6
+### 1.3.8 ###
 
--   Tweak: Added `Box Shadow` option for container in Counter block.
+- Tweak: Added Background Image, Position, Repeat, Size and Fixed options for container in Counter block.
 
-### 1.3.5
+### 1.3.7 ###
 
--   Fixed: `The editor has encountered an unexpected error` in the editor page.
--   Tweak: Added `Hover Box Shadow` option for Icon Box block.
+- Tweak: Added `Box Shadow` option for container in Testimonial block.
 
-### 1.3.4
+### 1.3.6 ###
 
--   Tweak: Added `Border Hover Color` option for Button block.
+- Tweak: Added `Box Shadow` option for container in Counter block.
 
-### 1.3.3
+### 1.3.5 ###
 
--   Fixed: Failed to load blocks` JS files since last update.
--   Fixed: Video box does not work when image overlay option is enabled.
--   Fixed: Content position does not work when two or more inner columns added in Section Block.
+- Fixed: `The editor has encountered an unexpected error` in the editor page.
+- Tweak: Added `Hover Box Shadow` option for Icon Box block.
 
-### 1.3.2
+### 1.3.4 ###
 
--   Tweak: Unnecessary files removed to decrease plugin size.
--   Fixed: `This block contains unexpected or invalid content` when fields are empty in Icon block.
--   Fixed: Icon hover effect do not work in Icon Block.
+- Tweak: Added `Border Hover Color` option for Button block.
 
-### 1.3.1
+### 1.3.3 ###
 
--   Fixed: `This block contains unexpected or invalid content` when fields are empty in Dual Heading and Icon Box block.
+- Fixed: Failed to load blocks` JS files since last update.
+- Fixed: Video box does not work when image overlay option is enabled.
+- Fixed: Content position does not work when two or more inner columns added in Section Block.
 
-### 1.3.0
+### 1.3.2 ###
 
--   Tweak: Changed `PanelColorSettings` to `ColorPalette` for Banner, Icon, Icon Box, Maps, Pricing Table blocks.
+- Tweak: Unnecessary files removed to decrease plugin size.
+- Fixed: `This block contains unexpected or invalid content` when fields are empty in Icon block.
+- Fixed: Icon hover effect do not work in Icon Block.
 
-### 1.2.9
+### 1.3.1 ###
 
--   Tweak: Added `Slide` hover effect option for button in Icon Box block.
--   Tweak: `supports.inserter` is now used to disable blocks.
+- Fixed: `This block contains unexpected or invalid content` when fields are empty in Dual Heading and Icon Box block.
 
-### 1.2.8
+### 1.3.0 ###
 
--   Tweak: Added `Hover Effect` option for icon in Icon Box block.
+- Tweak: Changed `PanelColorSettings` to `ColorPalette` for Banner, Icon, Icon Box, Maps, Pricing Table blocks.
 
-### 1.2.7
+### 1.2.9 ###
 
--   New: Added `Video Box` block.
--   Tweak: Changed `PanelColorSettings` to `ColorPalette` for Text/Box Shadow Color and Border Color options.
+- Tweak: Added `Slide` hover effect option for button in Icon Box block.
+- Tweak: `supports.inserter` is now used to disable blocks.
 
-### 1.2.6
+### 1.2.8 ###
 
--   Tweak: Added `Typography` options for Author Name in Testimonials block.
+- Tweak: Added `Hover Effect` option for icon in Icon Box block.
 
-### 1.2.5
+### 1.2.7 ###
 
--   Tweak: Unnecessary `esc_html()` function removed to enhance plugin performance.
+- New: Added `Video Box` block.
+- Tweak: Changed `PanelColorSettings` to `ColorPalette` for Text/Box Shadow Color and Border Color options.
 
-### 1.2.4
+### 1.2.6 ###
 
--   Tweak: Added `Text Shadow` option for description text in Premium Accordion block.
+- Tweak: Added `Typography` options for Author Name in Testimonials block.
 
-### 1.2.3
+### 1.2.5 ###
 
--   Tweak: Added `Box Shadow` option for container in Premium Pricing Table block.
+- Tweak: Unnecessary `esc_html()` function removed to enhance plugin performance.
 
-### 1.2.2
+### 1.2.4 ###
 
--   Tweak: Changed `Dual Heading` block HTML layout when `Link` option is enabled.
+- Tweak: Added `Text Shadow` option for description text in Premium Accordion block.
 
-### 1.2.1
+### 1.2.3 ###
 
--   Tweak: Added `Background Color` option for container in Premium Counter block.
+- Tweak: Added `Box Shadow` option for container in Premium Pricing Table block.
 
-### 1.2.0
+### 1.2.2 ###
 
--   Tweak: Added `Box Shadow` option for container in Premium Icon block.
+- Tweak: Changed `Dual Heading` block HTML layout when `Link` option is enabled.
 
-### 1.1.9
+### 1.2.1 ###
 
--   Tweak: Changed `Icon Class` text field option to a icon list in Premium Icon - Box - Block.
+- Tweak: Added `Background Color` option for container in Premium Counter block.
 
-### 1.1.8
+### 1.2.0 ###
 
--   Tweak: Unnecessary functions removed to enhance plugin speed.
+- Tweak: Added `Box Shadow` option for container in Premium Icon block.
 
-### 1.1.7
+### 1.1.9 ###
 
--   Tweak: Added `Content Type` option to insert a `Gutenberg Block` inside an accordion item.
+- Tweak: Changed `Icon Class` text field option to a icon list in Premium Icon - Box - Block.
 
-### 1.1.6
+### 1.1.8 ###
 
--   Fixed: Accordion items overlapping issue.
+- Tweak: Unnecessary functions removed to enhance plugin speed.
 
-### 1.1.5
+### 1.1.7 ###
 
--   Tweak: Added `Roll Back` to the latest stable version in 'Dashboard -> Premium Blocks for Gutenberg -> Version Control'.
+- Tweak: Added `Content Type` option to insert a `Gutenberg Block` inside an accordion item.
 
-### 1.1.4
+### 1.1.6 ###
 
--   Tweak: Added `Text Shadow` option for title in Accordion Block.
+- Fixed: Accordion items overlapping issue.
 
-### 1.1.3
+### 1.1.5 ###
 
--   Tweak: Added `Text Shadow` option for title in Icon Box Block.
+- Tweak: Added `Roll Back` to the latest stable version in 'Dashboard -> Premium Blocks for Gutenberg -> Version Control'.
 
-### 1.1.2
+### 1.1.4 ###
 
--   Tweak: Added `Container Background Color` option for Dual Heading Block.
+- Tweak: Added `Text Shadow` option for title in Accordion Block.
 
-### 1.1.1
+### 1.1.3 ###
 
--   Tweak: Compatibility with WordPress v5.0.2
+- Tweak: Added `Text Shadow` option for title in Icon Box Block.
 
-### 1.1.0
+### 1.1.2 ###
 
--   Tweak: Added `Text Shadow` option for title in Premium Pricing Table block.
+- Tweak: Added `Container Background Color` option for Dual Heading Block.
 
-### 1.0.9
+### 1.1.1 ###
 
--   Tweak: Added `Font Style` , `Letter Spacing` and `Text Transform` options for title in Premium Counter block.
+- Tweak: Compatibility with WordPress v5.0.2
 
-### 1.0.8
+### 1.1.0 ###
 
--   Tweak: Added `Border Hover Color` option for button in Premium Icon Box block.
+- Tweak: Added `Text Shadow` option for title in Premium Pricing Table block.
 
-### 1.0.7
+### 1.0.9 ###
 
--   Tweak: Added `About` sub menu into Premium Blocks for Gutenberg menu.
+- Tweak: Added `Font Style` , `Letter Spacing` and `Text Transform` options for title in Premium Counter block.
 
-### 1.0.6
+### 1.0.8 ###
 
--   Tweak: Added `Arrow Position` option to Premium Accordion block.
--   Fixed: Title Alignment issue in Premium Accordion block.
+- Tweak: Added `Border Hover Color` option for button in Premium Icon Box block.
 
-### 1.0.5
+### 1.0.7 ###
 
--   New: Added Premium Icon Box block.
+- Tweak: Added `About` sub menu into Premium Blocks for Gutenberg menu.
 
-### 1.0.4
+### 1.0.6 ###
 
--   Tweak: Changed all check box control into toggle control to enhance user experience.
--   Tweak: Added text domain to all strings.
+- Tweak: Added `Arrow Position` option to Premium Accordion block.
+- Fixed: Title Alignment issue in Premium Accordion block.
 
-### 1.0.3
+### 1.0.5 ###
 
--   Fixed: Plugin localization issue.
+- New: Added Premium Icon Box block.
 
-### 1.0.2
+### 1.0.4 ###
 
--   New: Added Premium Accordion block.
+- Tweak: Changed all check box control into toggle control to enhance user experience.
+- Tweak: Added text domain to all strings.
 
-### 1.0.1
+### 1.0.3 ###
 
--   Tweak: Compatibility with WordPress 5.0.0.
--   Tweak: Added Box Shadow option to Premium Button Block.
+- Fixed: Plugin localization issue.
 
-### 1.0.0
+### 1.0.2 ###
+
+- New: Added Premium Accordion block.
+
+### 1.0.1 ###
+
+- Tweak: Compatibility with WordPress 5.0.0.
+- Tweak: Added Box Shadow option to Premium Button Block.
+
+### 1.0.0 ###
 
 Initial stable release
