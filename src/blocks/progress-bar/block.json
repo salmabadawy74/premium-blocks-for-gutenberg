@@ -236,6 +236,14 @@
                 "Mobile": "200"
             }
         },
+        "borderWidth": {
+            "type": "object",
+            "default": {
+                "Desktop": "12",
+                "Tablet": "12",
+                "Mobile": "12"
+            }
+        },
         "progressBarRadius": {
             "type": "object",
             "default": {
@@ -414,6 +422,134 @@
         "showIcon": {
             "type": "boolean",
             "default": false
+        },
+        "borderColor": {
+            "type": "string",
+            "default": "rgb(242, 242, 242)"
+        },
+        "fillColor": {
+            "type": "string",
+            "default": "#793DC2"
+        },
+        "topSpacing": {
+            "type": "object",
+            "default": {
+                "Desktop": "0",
+                "Tablet": "0",
+                "Mobile": "0"
+            }
+        },
+        "PrefixTypography": {
+            "type": "object",
+            "default": {
+                "fontWeight": "Default",
+                "fontStyle": "",
+                "textTransform": "",
+                "letterSpacing": {
+                    "Desktop": "",
+                    "Tablet": "",
+                    "Mobile": "",
+                    "unit": "px"
+                },
+                "fontFamily": "Default",
+                "lineHeight": {
+                    "Desktop": "",
+                    "Tablet": "",
+                    "Mobile": "",
+                    "unit": "px"
+                },
+                "textDecoration": "",
+                "fontSize": {
+                    "Desktop": "",
+                    "Tablet": "",
+                    "Mobile": "",
+                    "unit": "px"
+                }
+            }
+        },
+        "PrefixColor": {
+            "type": "string",
+            "default": ""
+        },
+        "PrefixMargin": {
+            "type": "object",
+            "default": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "unit": "px"
+            }
+        },
+        "suffixTypography": {
+            "type": "object",
+            "default": {
+                "fontWeight": "Default",
+                "fontStyle": "",
+                "textTransform": "",
+                "letterSpacing": {
+                    "Desktop": "",
+                    "Tablet": "",
+                    "Mobile": "",
+                    "unit": "px"
+                },
+                "fontFamily": "Default",
+                "lineHeight": {
+                    "Desktop": "",
+                    "Tablet": "",
+                    "Mobile": "",
+                    "unit": "px"
+                },
+                "textDecoration": "",
+                "fontSize": {
+                    "Desktop": "",
+                    "Tablet": "",
+                    "Mobile": "",
+                    "unit": "px"
+                }
+            }
+        },
+        "suffixColor": {
+            "type": "string",
+            "default": ""
+        },
+        "suffixMargin": {
+            "type": "object",
+            "default": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "unit": "px"
+            }
         }
     }
 }
