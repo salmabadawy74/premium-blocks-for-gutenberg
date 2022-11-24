@@ -2968,11 +2968,9 @@ const Edit = props => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit */ "./src/blocks/Modal/edit.js");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./block.json */ "./src/blocks/Modal/block.json");
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/blocks/Modal/save.js");
-/* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/Modal/deprecated.js");
-/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
-
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/Modal/save.js");
+/* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/Modal/deprecated.js");
+/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
 
 
 
@@ -2984,19 +2982,15 @@ const {
 const {
   registerBlockType
 } = wp.blocks;
-registerBlockType("premium/modal", { ..._block_json__WEBPACK_IMPORTED_MODULE_2__,
-  title: __("Modal Box", 'premium-blocks-for-gutenberg'),
-  description: __('Easily, get creative modal popups on your WordPress website using Premium Modal Box Block.', 'premium-blocks-for-gutenberg'),
-  keywords: [__("modal", 'premium-blocks-for-gutenberg'), __("popup", 'premium-blocks-for-gutenberg')],
-  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_5__["default"].modal,
-  category: "premium-blocks",
+registerBlockType("premium/modal", {
+  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_4__["default"].modal,
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.Modal
   },
-  deprecated: _deprecated__WEBPACK_IMPORTED_MODULE_4__["default"],
+  deprecated: _deprecated__WEBPACK_IMPORTED_MODULE_3__["default"],
   example: {},
   edit: _edit__WEBPACK_IMPORTED_MODULE_1__["default"],
-  save: _save__WEBPACK_IMPORTED_MODULE_3__["default"]
+  save: _save__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
 
 /***/ }),
@@ -39003,7 +38997,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/lottie/save.js");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/lottie/deprecated.js");
 /* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./block.json */ "./src/blocks/lottie/block.json");
 
 
 
@@ -39015,16 +39008,11 @@ const {
 const {
   registerBlockType
 } = wp.blocks;
-
-registerBlockType("premium/lottie", { ..._block_json__WEBPACK_IMPORTED_MODULE_5__,
-  title: __("Lottie Animation", 'premium-blocks-for-gutenberg'),
+registerBlockType("premium/lottie", {
   icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_4__["default"].lottie,
-  category: "premium-blocks",
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_1__.lottie
   },
-  keywords: [__("svg", 'premium-blocks-for-gutenberg'), __("Animation", 'premium-blocks-for-gutenberg'), __("canvas", 'premium-blocks-for-gutenberg')],
-  description: __('Bring life to your Gutenberg web page using Premium Lottie Animation', 'premium-blocks-for-gutenberg'),
   example: {},
   edit: _edit__WEBPACK_IMPORTED_MODULE_0__["default"],
   save: _save__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -40604,10 +40592,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./save */ "./src/blocks/maps/save.js");
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/blocks/maps/edit.js");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./block.json */ "./src/blocks/maps/block.json");
-/* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/maps/deprecated.js");
-/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
-
+/* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/maps/deprecated.js");
+/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
 
 
 
@@ -40619,17 +40605,13 @@ const {
 const {
   registerBlockType
 } = wp.blocks;
-registerBlockType("premium/maps", { ..._block_json__WEBPACK_IMPORTED_MODULE_3__,
-  title: __("Maps", "premium-blocks-for-gutenberg"),
-  description: __('Embed Google Maps to your Gutenberg page using Premium Maps Block.', "premium-blocks-for-gutenberg"),
-  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_5__["default"].maps,
-  category: "premium-blocks",
+registerBlockType("premium/maps", {
+  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_4__["default"].maps,
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.maps
   },
-  keywords: [__("google", 'premium-blocks-for-gutenberg'), __("maps", 'premium-blocks-for-gutenberg')],
   example: {},
-  deprecated: _deprecated__WEBPACK_IMPORTED_MODULE_4__["default"],
+  deprecated: _deprecated__WEBPACK_IMPORTED_MODULE_3__["default"],
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
   save: _save__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
@@ -80846,17 +80828,6 @@ function _unsupportedIterableToArray(o, minLen) {
 
 /***/ }),
 
-/***/ "./src/blocks/Modal/block.json":
-/*!*************************************!*\
-  !*** ./src/blocks/Modal/block.json ***!
-  \*************************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/modal","title":"Modal Box","category":"premium-blocks","attributes":{"blockId":{"type":"string"},"contentStyles":{"type":"array","default":[{"showHeader":true,"iconType":"none","contentIcon":"","contentImgID":"","contentImgURL":"","lottieURL":"","loopLottie":true,"reverseLottie":false,"titleText":"Modal Box Title","showUpperClose":true,"showLowerClose":true,"lowerCloseText":"Close","animationType":"fadeInDown","animationSpeed":"normal"}]},"triggerSettings":{"type":"array","default":[{"triggerType":"button","btnText":"Premium Blocks","showIcon":false,"icon":"","iconPosition":"before","iconSpacing":"","btnSize":"md","triggerImgID":"","triggerImgURL":"","triggerText":"Premium Blocks","lottieTriggerURL":"","triggerLoopLottie":true,"triggerReverseLottie":false,"triggerPlayLottie":false,"delayTime":1}]},"triggerStyles":{"type":"array","default":[{"color":"","hoverColor":"","iconColor":"","iconHoverColor":"","triggerBack":"","triggerHoverBack":""}]},"headerStyles":{"type":"array","default":[{"color":"","backColor":""}]},"upperStyles":{"type":"array","default":[{"color":"","backColor":""}]},"lowerStyles":{"type":"array","default":[{"color":"","backColor":""}]},"modalStyles":{"type":"array","default":[{"contentType":"text","contentText":"Modal Box Content","textColor":"","textBackColor":"","footerBackColor":""}]},"modalBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}},"modalShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":" "}},"triggerShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":" "}},"triggerTextShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"triggerPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"upperPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"lowerPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"modalPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"modalMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"triggerBorder":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"triggerBorderH":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"headerBorder":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"upperBorder":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"lowerBorder":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"modalBorder":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"triggerTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","fontFamily":"Default","textDecoration":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"headerTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"lowerTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"modalTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"iconSize":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}},"imageWidth":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}},"modalWidth":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}},"modalHeight":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}},"triggerFilter":{"type":"object","default":{"contrast":"100","blur":"0","bright":"100","saturation":"100","hue":"0"}},"triggerHoverFilter":{"type":"object","default":{"contrast":"100","blur":"0","bright":"100","saturation":"100","hue":"0"}},"align":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"triggerIconSize":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}},"upperIconWidth":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}},"lowerIconWidth":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}}}');
-
-/***/ }),
-
 /***/ "./src/blocks/accordion-item/block.json":
 /*!**********************************************!*\
   !*** ./src/blocks/accordion-item/block.json ***!
@@ -80920,28 +80891,6 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 
 "use strict";
 module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/list-item","title":"List Item","category":"premium-blocks","description":"List Item Description.","parent":["premium/bullet-list"],"keywords":["list-item"],"textdomain":"default","attributes":{"blockId":{"type":"string"},"hideDesktop":{"type":"boolean","default":false},"hideTablet":{"type":"boolean","default":false},"hideMobile":{"type":"boolean","default":false},"showIcon":{"type":"boolean","default":true},"title":{"type":"string"},"iconType":{"type":"string","default":"icon"},"icon":{"type":"string","default":"fa fa-arrow-circle-right"},"enableLink":{"type":"boolean","default":false},"linkURL":{"type":"string","default":"#"},"openInNewTab":{"type":"boolean","default":false},"imageID":{"type":"string"},"imageURL":{"type":"string"},"layoutPos":{"type":"string"},"divider":{"type":"boolean","default":false}},"usesContext":["layoutPos","divider"]}');
-
-/***/ }),
-
-/***/ "./src/blocks/lottie/block.json":
-/*!**************************************!*\
-  !*** ./src/blocks/lottie/block.json ***!
-  \**************************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/lottie","title":"Lottie Animation","category":"premium-blocks","attributes":{"lottieId":{"type":"string"},"blockId":{"type":"string"},"lottieURl":{"type":"string","default":""},"lottieJson":{"type":"object"},"loop":{"type":"boolean","default":true},"reverse":{"type":"boolean","default":false},"speed":{"type":"number","default":"1"},"trigger":{"type":"string","default":"none"},"bottom":{"type":"number","default":"0"},"top":{"type":"number","default":"100"},"scrollSpeed":{"type":"number","default":"4"},"rotate":{"type":"number","default":0},"lottieAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"link":{"type":"boolean","default":false},"url":{"type":"string"},"target":{"type":"boolean","default":false},"render":{"type":"string","default":"svg"},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"lottieStyles":{"type":"array","default":[{"backColor":"","backOpacity":1,"backHColor":"","backHOpacity":1}]},"padding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"border":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"filter":{"type":"object","default":{"contrast":"100","blur":"0","bright":"100","saturation":"100","hue":"0"}},"filterHover":{"type":"object","default":{"contrast":"100","blur":"0","bright":"100","saturation":"100","hue":"0"}},"size":{"type":"object","default":{"Desktop":"200","Tablet":"200","Mobile":"200","unit":"px"}}}}');
-
-/***/ }),
-
-/***/ "./src/blocks/maps/block.json":
-/*!************************************!*\
-  !*** ./src/blocks/maps/block.json ***!
-  \************************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/maps","title":"Maps","category":"premium-blocks","attributes":{"blockId":{"type":"string"},"mapStyle":{"type":"string","default":"[]"},"mapType":{"type":"string","default":"roadmap"},"height":{"type":"number","default":500},"zoom":{"type":"number","default":6},"mapTypeControl":{"type":"boolean","default":true},"zoomControl":{"type":"boolean","default":true},"fullscreenControl":{"type":"boolean","default":true},"streetViewControl":{"type":"boolean","default":false},"scrollwheel":{"type":"boolean","default":false},"centerLat":{"type":"string","default":"40.7569733"},"centerLng":{"type":"string","default":" -73.98878250000001"},"markerOpen":{"type":"boolean","default":false},"markerTitle":{"type":"string","default":"Awesome Title"},"markerDesc":{"type":"string","default":"Cool Description"},"mapMarker":{"type":"boolean","default":true},"markerIconUrl":{"type":"string"},"markerIconId":{"type":"number","default":""},"markerCustom":{"type":"boolean","default":false},"maxWidth":{"type":"number","default":300},"titleColor":{"type":"string","default":""},"titleSize":{"type":"number","default":20},"descColor":{"type":"string","default":""},"descSize":{"type":"number","default":16},"boxAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"boxPadding":{"type":"number","default":"0"},"gapBetween":{"type":"number","default":5},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"titleTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"descriptionTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"titleMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"titlePadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"descriptionMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"descriptionPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"mapMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"mapPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"mapBorder":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"mapBoxShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}}}}');
 
 /***/ }),
 
