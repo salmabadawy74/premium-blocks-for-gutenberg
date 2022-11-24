@@ -67,8 +67,8 @@ function PremiumPricingTable(props) {
             {
                 align: {
                     Desktop: "center",
-                    Tablet: "",
-                    Mobile: "",
+                    Tablet: "center",
+                    Mobile: "center",
                 },
                 repeaterBulletList:
                     attributes?.listItems &&
@@ -85,9 +85,9 @@ function PremiumPricingTable(props) {
                 text: attributes?.desc
                     ? attributes.desc?.[0]
                     : __(
-                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-                          "premium-blocks-for-gutenberg"
-                      ),
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+                        "premium-blocks-for-gutenberg"
+                    ),
             },
         ],
         [
