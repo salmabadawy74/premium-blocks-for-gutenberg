@@ -49620,8 +49620,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/testimonials/save.js");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/testimonials/deprecated.js");
 /* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./block.json */ "./src/blocks/testimonials/block.json");
-
 
 
 
@@ -49633,15 +49631,11 @@ const {
 const {
   registerBlockType
 } = wp.blocks;
-registerBlockType("premium/testimonial", { ..._block_json__WEBPACK_IMPORTED_MODULE_5__,
-  title: __("Testimonial", 'premium-blocks-for-gutenberg'),
+registerBlockType("premium/testimonial", {
   icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_4__["default"].testimonials,
-  description: __("Proof your success by displaying customer reviews using Premium Testimonials Block.", 'premium-blocks-for-gutenberg'),
-  category: "premium-blocks",
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.testimonials
   },
-  keywords: [__("testimonial", 'premium-blocks-for-gutenberg'), __("Quote", 'premium-blocks-for-gutenberg')],
   example: {},
   edit: _edit__WEBPACK_IMPORTED_MODULE_1__["default"],
   save: _save__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -52362,9 +52356,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit */ "./src/blocks/video-box/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/video-box/save.js");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/video-box/deprecated.js");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/blocks/video-box/block.json");
-/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
-
+/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
 
 
 
@@ -52415,12 +52407,8 @@ const onChangeVideoURL = (type, URL) => {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (onChangeVideoURL);
-registerBlockType("premium/video-box", { ..._block_json__WEBPACK_IMPORTED_MODULE_4__,
-  title: __("Video Box", "premium-blocks-for-gutenberg"),
-  description: __("Embed YouTube, Vimeo, Dailymotion, or upload a Custom Video using Premium Video Box Block.", "premium-blocks-for-gutenberg"),
-  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_5__["default"].video_box,
-  category: "premium-blocks",
-  keywords: [__("video", "premium-blocks-for-gutenberg")],
+registerBlockType("premium/video-box", {
+  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_4__["default"].video_box,
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.videoBox
   },
@@ -80895,17 +80883,6 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 
 "use strict";
 module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/switcher-child","title":"Switcher Child","category":"design","parent":["premium/content-switcher"],"description":"Toggle between two different content using Premium Content Switcher Block.","supports":{"html":false},"attributes":{"blockId":{"type":"string"}}}');
-
-/***/ }),
-
-/***/ "./src/blocks/testimonials/block.json":
-/*!********************************************!*\
-  !*** ./src/blocks/testimonials/block.json ***!
-  \********************************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/testimonial","title":"Testimonial","category":"premium-blocks","attributes":{"blockId":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"align":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"authorImgId":{"type":"string"},"authorImgUrl":{"type":"string"},"imgSize":{"type":"number"},"imageBorder":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"author":{"type":"array","source":"children","selector":".premium-testimonial__author","default":"John Doe"},"authorStyles":{"type":"array","default":[{"authorTag":"h4","authorColor":"","authorComTag":"h5"}]},"padding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"bodyMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"text":{"type":"string","default":"Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."},"authorCom":{"type":"array","source":"children","selector":".premium-testimonial__author_comp","default":"Leap13"},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"contentStyle":{"type":"array","default":[{"bodyColor":"","bodyLine":"","bodyTop":"","bodyBottom":""}]},"bodySize":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}},"companyStyles":{"type":"array","default":[{"authorComTag":"h4","authorComColor":"","dashColor":"","urlCheck":false,"urlText":"","urlTarget":false}]},"authorComSize":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}},"quoteStyles":{"type":"array","default":[{"quotSize":2,"quotColor":"","quotOpacity":50}]},"boxShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":" "}},"background":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}},"authorTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"bodyTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"companyTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}}}}');
 
 /***/ }),
 
