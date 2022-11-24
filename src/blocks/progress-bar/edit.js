@@ -32,10 +32,12 @@ import {
 const { __ } = wp.i18n;
 const { PanelBody, TextControl, ToggleControl, SelectControl } = wp.components;
 const { InspectorControls, RichText, useBlockProps, InnerBlocks } = wp.blockEditor;
-const { useEffect, Fragment } = wp.element;
+const { useEffect, Fragment, useRef } = wp.element;
 const { withSelect } = wp.data;
 
 function Edit({ clientId, attributes, setAttributes, deviceType }) {
+
+    const contentRef = useRef(null);
 
     useEffect(() => {
         setAttributes({
@@ -43,6 +45,33 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
         });
         setAttributes({ classMigrate: true });
     }, []);
+
+    useEffect(() => {
+        if (contentRef.current) {
+            if (attributes.progressType == 'dots') {
+
+                console.log(contentRef.current.offsetWidth)
+
+                var width = contentRef.current.offsetWidth,
+                    dotsSize = attributes.dotSize[deviceType] || 25,
+                    dotsSpacing = attributes.dotSpacing[deviceType] || 10,
+                    length = attributes.progress,
+                    numberOfCircles = Math.ceil(width / (dotsSize + dotsSpacing)),
+                    circlesToFill = numberOfCircles * (length / 100),
+                    numberOfTotalFill = Math.floor(circlesToFill),
+                    fillPercent = 100 * (circlesToFill - numberOfTotalFill);
+                console.log(width, dotsSize, dotsSpacing, numberOfCircles, circlesToFill, numberOfTotalFill, fillPercent)
+                setAttributes({
+                    numberOfCircles: numberOfCircles,
+                    numberOfTotalFill: numberOfTotalFill,
+                    fillPercent: fillPercent
+                });
+                // $progressbar.attr('data-circles', numberOfCircles);
+                // $progressbar.attr('data-total-fill', numberOfTotalFill);
+                // $progressbar.attr('data-partial-fill', fillPercent);
+            }
+        }
+    });
 
     const {
         blockId,
@@ -97,7 +126,13 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
         PrefixMargin,
         suffixTypography,
         suffixColor,
-        suffixMargin
+        suffixMargin,
+        showPercentage,
+        dotSpacing,
+        dotSize,
+        fillPercent,
+        numberOfTotalFill,
+        numberOfCircles
     } = attributes;
 
     const STYLE = [{
@@ -162,6 +197,44 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
         }
     });
 
+    const renderContent = () => {
+        return <div className="premium-progressbar-circle-content">
+            {showIcon && <InnerBlocks
+                template={INNER_BLOCKS_TEMPLATE}
+                templateLock={false}
+                allowedBlocks={["premium/icon"]}
+            />}
+            {label &&
+                <p
+                    className="premium-progress-bar-left-label"
+                    style={{
+                        ...typographyCss(labelTypography, deviceType),
+                        ...marginCss(labelMargin, deviceType),
+                        color: labelColor
+                    }}
+                >
+                    <span>{label}</span>
+                </p>
+            }
+            {showPercentage &&
+                < p
+                    className="premium-progress-bar-right-label"
+                    style={{
+                        ...typographyCss(percentageTypography, deviceType),
+                        ...marginCss(percentageMargin, deviceType),
+                        color: percentageColor
+                    }}
+                >
+                    <span>{progress}% </span>
+                </p>
+            }
+        </div>
+    }
+
+    const renderDots = numberOfCircles.map((item, index) => {
+
+    })
+
     return (
         <Fragment>
             <InspectorControls key={"inspector"}>
@@ -183,21 +256,30 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                                 }
                                 options={TYPE}
                             />
-                            {(progressType == 'half-circle' || progressType == 'circle') && < ToggleControl
-                                label={__("Show Icon")}
-                                checked={showIcon}
-                                onChange={newCheck => setAttributes({ showIcon: newCheck })}
-                            />}
+                            {(progressType == 'half-circle' || progressType == 'circle') &&
+                                <Fragment>
+                                    < ToggleControl
+                                        label={__("Show Percentage Value")}
+                                        checked={showPercentage}
+                                        onChange={newCheck => setAttributes({ showPercentage: newCheck })}
+                                    />
+                                    < ToggleControl
+                                        label={__("Show Icon")}
+                                        checked={showIcon}
+                                        onChange={newCheck => setAttributes({ showIcon: newCheck })}
+                                    />
+                                </Fragment>
+                            }
                             <TextControl
                                 label={__("Label")}
                                 value={label}
                                 onChange={value => setAttributes({ label: value })}
                             />
-                            <TextControl
+                            {/* <TextControl
                                 label={__("Percentage")}
                                 value={percentage}
                                 onChange={value => setAttributes({ percentage: value })}
-                            />
+                            /> */}
                             <ResponsiveSingleRangeControl
                                 label={__(
                                     "Progress",
@@ -220,57 +302,23 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                                 min="0"
                                 max="5"
                             />
-                            < SelectControl
-                                label={__("Style")}
-                                value={styleProgress}
-                                onChange={newEffect => setAttributes({ styleProgress: newEffect })}
-                                options={STYLE}
-                            />
-                            {styleProgress == 'stripe' &&
-                                < ToggleControl
-                                    label={__("Animated")}
-                                    checked={animate}
-                                    onChange={newCheck => setAttributes({ animate: newCheck })}
-                                />
+                            {progressType == 'line' &&
+                                <Fragment>
+                                    < SelectControl
+                                        label={__("Style")}
+                                        value={styleProgress}
+                                        onChange={newEffect => setAttributes({ styleProgress: newEffect })}
+                                        options={STYLE}
+                                    />
+                                    {styleProgress == 'stripe' &&
+                                        < ToggleControl
+                                            label={__("Animated")}
+                                            checked={animate}
+                                            onChange={newCheck => setAttributes({ animate: newCheck })}
+                                        />
+                                    }
+                                </Fragment>
                             }
-                            {/* <MultiButtonsControl
-                                choices={[
-                                    {
-                                        value: "left",
-                                        label: __(
-                                            "Left",
-                                            "premium-blocks-for-gutenberg"
-                                        ),
-                                        icon: Icons.alignLeft,
-                                    },
-                                    {
-                                        value: "center",
-                                        label: __(
-                                            "Center",
-                                            "premium-blocks-for-gutenberg"
-                                        ),
-                                        icon: Icons.alignCenter,
-                                    },
-                                    {
-                                        value: "right",
-                                        label: __(
-                                            "Right",
-                                            "premium-blocks-for-gutenberg"
-                                        ),
-                                        icon: Icons.alignRight,
-                                    },
-                                ]}
-                                value={align}
-                                onChange={(alignn) =>
-                                    setAttributes({ align: alignn })
-                                }
-                                label={__(
-                                    "Align Content",
-                                    "premium-blocks-for-gutenberg"
-                                )}
-                                showIcons={true}
-                            /> */}
-
                         </PanelBody>
                     </InspectorTab>
                     <InspectorTab key={"style"}>
@@ -280,16 +328,36 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                             initialOpen={true}
                         >
                             {progressType == 'line' &&
+                                <ResponsiveRangeControl
+                                    label={__(
+                                        "Height",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                    value={progressBarHeight}
+                                    onChange={(value) =>
+                                        setAttributes({
+                                            progressBarHeight: value,
+                                        })
+                                    }
+                                    min={1}
+                                    max={100}
+                                    step={1}
+                                    showUnit={true}
+                                    units={["px", "em", "%"]}
+                                    defaultValue={25}
+                                />
+                            }
+                            {progressType == 'dots' &&
                                 <Fragment>
                                     <ResponsiveRangeControl
                                         label={__(
-                                            "Height",
+                                            "Dot Size",
                                             "premium-blocks-for-gutenberg"
                                         )}
-                                        value={progressBarHeight}
+                                        value={dotSize}
                                         onChange={(value) =>
                                             setAttributes({
-                                                progressBarHeight: value,
+                                                dotSize: value,
                                             })
                                         }
                                         min={1}
@@ -301,25 +369,45 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                                     />
                                     <ResponsiveRangeControl
                                         label={__(
-                                            "Border Radius",
+                                            "Spacing",
                                             "premium-blocks-for-gutenberg"
                                         )}
-                                        value={progressBarRadius}
+                                        value={dotSpacing}
                                         onChange={(value) =>
                                             setAttributes({
-                                                progressBarRadius: value,
+                                                dotSpacing: value,
                                             })
                                         }
                                         min={1}
-                                        max={100}
+                                        max={10}
                                         step={1}
                                         showUnit={true}
-                                        units={["px", "em", "%"]}
-                                        defaultValue={0}
+                                        units={["px", "%"]}
+                                        defaultValue={8}
                                     />
                                 </Fragment>
                             }
-                            {progressType !== 'line' &&
+                            {(progressType == 'line' || progressType == 'dots') &&
+                                <ResponsiveRangeControl
+                                    label={__(
+                                        "Border Radius",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                    value={progressBarRadius}
+                                    onChange={(value) =>
+                                        setAttributes({
+                                            progressBarRadius: value,
+                                        })
+                                    }
+                                    min={1}
+                                    max={100}
+                                    step={1}
+                                    showUnit={true}
+                                    units={["px", "%"]}
+                                    defaultValue={0}
+                                />
+                            }
+                            {(progressType == 'half-circle' || progressType == 'circle') &&
                                 <Fragment>
                                     <ResponsiveRangeControl
                                         label={__(
@@ -487,114 +575,116 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                                 responsive={true}
                             />
                         </PanelBody>
-                        < PanelBody
-                            title={__("Prefix & Suffix")}
-                            className="premium-panel-body"
-                            initialOpen={false}
-                        >
-                            <ResponsiveRangeControl
-                                label={__(
-                                    "Top Spacing",
-                                    "premium-blocks-for-gutenberg"
-                                )}
-                                value={topSpacing}
-                                onChange={(value) =>
-                                    setAttributes({
-                                        topSpacing: value,
-                                    })
-                                }
-                                min={1}
-                                max={300}
-                                step={1}
-                                showUnit={false}
-                                defaultValue={0}
-                            />
-                            <h2 className="premium-blocks-heading">
-                                {__(
-                                    "Prefix",
-                                    "premium-blocks-for-gutenberg"
-                                )}
-                            </h2>
-                            <PremiumTypo
-                                value={PrefixTypography}
-                                onChange={(newValue) =>
-                                    setAttributes({
-                                        PrefixTypography: newValue,
-                                    })
-                                }
-                            />
-                            <AdvancedPopColorControl
-                                label={__(
-                                    "Color",
-                                    "premium-blocks-for-gutenberg"
-                                )}
-                                colorValue={PrefixColor}
-                                colorDefault={""}
-                                onColorChange={(newValue) =>
-                                    setAttributes({ PrefixColor: newValue })
-                                }
-                            />
-                            <ResponsiveRangeControl
-                                label={__(
-                                    "Spacing",
-                                    "premium-blocks-for-gutenberg"
-                                )}
-                                value={PrefixMargin}
-                                onChange={(value) =>
-                                    setAttributes({
-                                        PrefixMargin: value,
-                                    })
-                                }
-                                min={1}
-                                max={100}
-                                step={1}
-                                showUnit={false}
-                                defaultValue={0}
-                            />
-                            <hr />
-                            <h2 className="premium-blocks-heading">
-                                {__(
-                                    "Suffix",
-                                    "premium-blocks-for-gutenberg"
-                                )}
-                            </h2>
-                            <PremiumTypo
-                                value={suffixTypography}
-                                onChange={(newValue) =>
-                                    setAttributes({
-                                        suffixTypography: newValue,
-                                    })
-                                }
-                            />
-                            <AdvancedPopColorControl
-                                label={__(
-                                    "Color",
-                                    "premium-blocks-for-gutenberg"
-                                )}
-                                colorValue={suffixColor}
-                                colorDefault={""}
-                                onColorChange={(newValue) =>
-                                    setAttributes({ suffixColor: newValue })
-                                }
-                            />
-                            <ResponsiveRangeControl
-                                label={__(
-                                    "Spacing",
-                                    "premium-blocks-for-gutenberg"
-                                )}
-                                value={suffixMargin}
-                                onChange={(value) =>
-                                    setAttributes({
-                                        suffixMargin: value,
-                                    })
-                                }
-                                min={1}
-                                max={100}
-                                step={1}
-                                showUnit={false}
-                                defaultValue={0}
-                            />
-                        </PanelBody>
+                        {progressType == 'half-circle' &&
+                            < PanelBody
+                                title={__("Prefix & Suffix")}
+                                className="premium-panel-body"
+                                initialOpen={false}
+                            >
+                                <ResponsiveRangeControl
+                                    label={__(
+                                        "Top Spacing",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                    value={topSpacing}
+                                    onChange={(value) =>
+                                        setAttributes({
+                                            topSpacing: value,
+                                        })
+                                    }
+                                    min={1}
+                                    max={300}
+                                    step={1}
+                                    showUnit={false}
+                                    defaultValue={0}
+                                />
+                                <h2 className="premium-blocks-heading">
+                                    {__(
+                                        "Prefix",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                </h2>
+                                <PremiumTypo
+                                    value={PrefixTypography}
+                                    onChange={(newValue) =>
+                                        setAttributes({
+                                            PrefixTypography: newValue,
+                                        })
+                                    }
+                                />
+                                <AdvancedPopColorControl
+                                    label={__(
+                                        "Color",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                    colorValue={PrefixColor}
+                                    colorDefault={""}
+                                    onColorChange={(newValue) =>
+                                        setAttributes({ PrefixColor: newValue })
+                                    }
+                                />
+                                <ResponsiveRangeControl
+                                    label={__(
+                                        "Spacing",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                    value={PrefixMargin}
+                                    onChange={(value) =>
+                                        setAttributes({
+                                            PrefixMargin: value,
+                                        })
+                                    }
+                                    min={1}
+                                    max={100}
+                                    step={1}
+                                    showUnit={false}
+                                    defaultValue={0}
+                                />
+                                <hr />
+                                <h2 className="premium-blocks-heading">
+                                    {__(
+                                        "Suffix",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                </h2>
+                                <PremiumTypo
+                                    value={suffixTypography}
+                                    onChange={(newValue) =>
+                                        setAttributes({
+                                            suffixTypography: newValue,
+                                        })
+                                    }
+                                />
+                                <AdvancedPopColorControl
+                                    label={__(
+                                        "Color",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                    colorValue={suffixColor}
+                                    colorDefault={""}
+                                    onColorChange={(newValue) =>
+                                        setAttributes({ suffixColor: newValue })
+                                    }
+                                />
+                                <ResponsiveRangeControl
+                                    label={__(
+                                        "Spacing",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                    value={suffixMargin}
+                                    onChange={(value) =>
+                                        setAttributes({
+                                            suffixMargin: value,
+                                        })
+                                    }
+                                    min={1}
+                                    max={100}
+                                    step={1}
+                                    showUnit={false}
+                                    defaultValue={0}
+                                />
+                            </PanelBody>
+                        }
                     </InspectorTab>
                     <InspectorTab key={"advance"}>
                         <PremiumResponsiveTabs
@@ -627,157 +717,180 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                 </InspectorTabs>
             </InspectorControls>
             <div {...blockProps}
-                data-score={`${progress}`}
+                data-progress_bar={`${progress}`}
                 data-speed={`${speeds}`}
                 data-type={`${progressType}`}
             >
-                {progressType == 'line' &&
-                    < div className="premium-progress-bar-labels-wrap" >
-                        {label &&
-                            <p
-                                className="premium-progress-bar-left-label"
-                                style={{
-                                    ...typographyCss(labelTypography, deviceType),
-                                    ...marginCss(labelMargin, deviceType),
-                                    color: labelColor
-                                }}
-                            >
-                                <span>{label}</span>
-                            </p>
-                        }
-                        {percentage &&
-                            < p
-                                className="premium-progress-bar-right-label"
-                                style={{
-                                    ...typographyCss(percentageTypography, deviceType),
-                                    ...marginCss(percentageMargin, deviceType),
-                                    color: percentageColor
-                                }}
-                            >
-                                <span>{percentage} </span>
-                            </p>
-                        }
-                    </div>
-                }
-                <div className="premium-progress-bar-clear"></div>
-                {progressType == 'line' &&
-                    <div
-                        className="premium-progress-bar-wrap"
-                        style={{
-                            ...gradientBackground(baseBackground),
-                            ...marginCss(progressBarMargin, deviceType),
-                            height: `${progressBarHeight[deviceType]}${progressBarHeight.unit}`,
-                            "border-radius": `${progressBarRadius[deviceType]}${progressBarRadius.unit}`
-                        }}
-                    >
-                        < div className={
-                            `premium-progress-bar-bar ${styleProgress == 'stripe' ? "premium-progress-bar-progress-stripe" : ""} ${animate ? "premium-progress-bar-progress-active" : ""}`
-                        }
+                <div ref={contentRef}>
+                    {(progressType == 'line' || progressType == 'dots') &&
+                        < div className="premium-progress-bar-labels-wrap" >
+                            {label &&
+                                <p
+                                    className="premium-progress-bar-left-label"
+                                    style={{
+                                        ...typographyCss(labelTypography, deviceType),
+                                        ...marginCss(labelMargin, deviceType),
+                                        color: labelColor
+                                    }}
+                                >
+                                    <span>{label}</span>
+                                </p>
+                            }
+                            {progress &&
+                                < p
+                                    className="premium-progress-bar-right-label"
+                                    style={{
+                                        ...typographyCss(percentageTypography, deviceType),
+                                        ...marginCss(percentageMargin, deviceType),
+                                        color: percentageColor
+                                    }}
+                                >
+                                    <span>{progress}% </span>
+                                </p>
+                            }
+                        </div>
+                    }
+                    <div className="premium-progress-bar-clear"></div>
+                    {progressType == 'line' &&
+                        <div
+                            className="premium-progress-bar-wrap"
                             style={{
-                                ...gradientBackground(fillBackground),
-                                transition: `width ${speeds}s ease-in-out`,
+                                ...gradientBackground(baseBackground),
+                                ...marginCss(progressBarMargin, deviceType),
                                 height: `${progressBarHeight[deviceType]}${progressBarHeight.unit}`,
-                                width: `${progress}%`,
                                 "border-radius": `${progressBarRadius[deviceType]}${progressBarRadius.unit}`
                             }}
-                            data-score={`${progress}`}
-                            data-speed={`${speeds}`}
-                        > </div>
-                    </div>
-                }
-                {progressType == 'half-circle' &&
-                    <div className="premium-progressbar-hf-wrapper">
-                        <div
-                            className="premium-progressbar-hf-circle-wrap"
-                            style={{
-                                height: `calc(${progressBarSize[deviceType]} / 2 * 1px)`,
-                                width: `${progressBarSize[deviceType]}px`,
-                            }}
                         >
+                            < div className={
+                                `premium-progress-bar-bar ${styleProgress == 'stripe' ? "premium-progress-bar-progress-stripe" : ""} ${animate ? "premium-progress-bar-progress-active" : ""}`
+                            }
+                                style={{
+                                    ...gradientBackground(fillBackground),
+                                    transition: `width ${speeds}s ease-in-out`,
+                                    height: `${progressBarHeight[deviceType]}${progressBarHeight.unit}`,
+                                    width: `${progress}%`,
+                                    "border-radius": `${progressBarRadius[deviceType]}${progressBarRadius.unit}`
+                                }}
+                                data-progress_bar={`${progress}`}
+                                data-speed={`${speeds}`}
+                            > </div>
+                        </div>
+                    }
+                    {
+                        progressType == 'dots' &&
+                        <div
+                            className="premium-progressbar-bar-wrap premium-progressbar-dots"
+                            data-circles={`${numberOfCircles}`}
+                            data-total-fill={`${numberOfTotalFill}`}
+                            data-partial-fill={`${fillPercent}`}
+                        >
+                            {renderDots()}
+                        </div>
+                    }
+                    {progressType == 'half-circle' &&
+                        <div className="premium-progressbar-hf-wrapper">
                             <div
-                                className="premium-progressbar-hf-container"
+                                className="premium-progressbar-hf-circle-wrap"
+                                style={{
+                                    height: `calc(${progressBarSize[deviceType]} / 2 * 1px)`,
+                                    width: `${progressBarSize[deviceType]}px`,
+                                }}
+                            >
+                                <div
+                                    className="premium-progressbar-hf-container"
+                                    style={{
+                                        height: `${progressBarSize[deviceType]}px`,
+                                        width: `${progressBarSize[deviceType]}px`,
+                                    }}
+                                >
+                                    <div className="premium-progressbar-hf-circle">
+                                        <div
+                                            className="premium-progressbar-hf-circle-progress"
+                                            style={{
+                                                transform: `rotate(${progress * 1.8}deg)`,
+                                                borderColor: fillColor,
+                                                borderWidth: `${borderWidth[deviceType]}px`,
+                                            }}
+                                        ></div>
+                                    </div>
+                                    <div
+                                        className="premium-progressbar-circle-inner"
+                                        style={{
+                                            ...gradientBackground(baseBackground),
+                                            borderColor: borderColor,
+                                            borderWidth: `${borderWidth[deviceType]}px`,
+                                        }}
+                                    ></div>
+                                </div>
+                                {renderContent()}
+                            </div>
+                            <div
+                                className="premium-progressbar-hf-labels"
+                                style={{
+                                    width: `${progressBarSize[deviceType]}px`,
+                                    marginTop: `${topSpacing[deviceType]}px`,
+                                }}
+                            >
+                                <span
+                                    className="premium-progressbar-hf-label-left"
+                                    style={{
+                                        ...typographyCss(PrefixTypography, deviceType),
+                                        marginLeft: `${PrefixMargin[deviceType]}px`,
+                                        color: PrefixColor
+                                    }}
+                                >0</span>
+                                <span
+                                    className="premium-progressbar-hf-label-right"
+                                    style={{
+                                        ...typographyCss(suffixTypography, deviceType),
+                                        marginRight: `${suffixMargin[deviceType]}px`,
+                                        color: suffixColor
+                                    }}
+                                >100</span>
+                            </div>
+                        </div>
+                    }
+                    {progressType == 'circle' &&
+                        <div className="premium-progressbar-hf-wrapper">
+                            <div
+                                className="premium-progressbar-circle-wrap"
                                 style={{
                                     height: `${progressBarSize[deviceType]}px`,
                                     width: `${progressBarSize[deviceType]}px`,
                                 }}
                             >
-                                <div className="premium-progressbar-hf-circle">
+                                <div
+                                    className="premium-progressbar-circle-base"
+                                    style={{
+                                        borderColor: borderColor
+                                    }}
+                                ></div>
+                                <div
+                                    className="premium-progressbar-circle"
+                                    style={{
+                                        clipPath: `${progress > '50' ? 'inset(0px)' : 'inset(0 0 0 50%)'}`
+                                    }}
+                                >
                                     <div
-                                        className="premium-progressbar-hf-circle-progress"
+                                        className="premium-progressbar-circle-left"
                                         style={{
-                                            transform: `rotate(${progress * 1.8}deg)`,
+                                            transform: `rotate(${progress * 3.6}deg)`,
                                             borderColor: fillColor,
-                                            borderWidth: borderWidth
+                                        }}
+                                    ></div>
+                                    <div
+                                        className="premium-progressbar-circle-right"
+                                        style={{
+                                            borderColor: fillColor,
+                                            visibility: `${progress > '50' ? 'visible' : 'hidden'}`
                                         }}
                                     ></div>
                                 </div>
-                                <div
-                                    className="premium-progressbar-circle-inner"
-                                    style={{
-                                        ...gradientBackground(baseBackground),
-                                        borderColor: borderColor,
-                                        borderWidth: borderWidth
-                                    }}
-                                ></div>
-                            </div>
-                            <div className="premium-progressbar-circle-content">
-                                {showIcon && <InnerBlocks
-                                    template={INNER_BLOCKS_TEMPLATE}
-                                    templateLock={false}
-                                    allowedBlocks={["premium/icon"]}
-                                />}
-                                {label &&
-                                    <p
-                                        className="premium-progress-bar-left-label"
-                                        style={{
-                                            ...typographyCss(labelTypography, deviceType),
-                                            ...marginCss(labelMargin, deviceType),
-                                            color: labelColor
-                                        }}
-                                    >
-                                        <span>{label}</span>
-                                    </p>
-                                }
-                                {percentage &&
-                                    < p
-                                        className="premium-progress-bar-right-label"
-                                        style={{
-                                            ...typographyCss(percentageTypography, deviceType),
-                                            ...marginCss(percentageMargin, deviceType),
-                                            color: percentageColor
-                                        }}
-                                    >
-                                        <span>{percentage} </span>
-                                    </p>
-                                }
+                                {renderContent()}
                             </div>
                         </div>
-                        <div
-                            className="premium-progressbar-hf-labels"
-                            style={{
-                                width: `${progressBarSize[deviceType]}px`,
-                                marginTop: `${topSpacing[deviceType]}px`,
-                            }}
-                        >
-                            <span
-                                className="premium-progressbar-hf-label-left"
-                                style={{
-                                    ...typographyCss(PrefixTypography, deviceType),
-                                    marginLeft: `${PrefixMargin[deviceType]}px`,
-                                    color: PrefixColor
-                                }}
-                            >0</span>
-                            <span
-                                className="premium-progressbar-hf-label-right"
-                                style={{
-                                    ...typographyCss(suffixTypography, deviceType),
-                                    marginRight: `${suffixMargin[deviceType]}px`,
-                                    color: suffixColor
-                                }}
-                            >100</span>
-                        </div>
-                    </div>
-                }
+                    }
+                </div>
             </div>
         </Fragment>
     );

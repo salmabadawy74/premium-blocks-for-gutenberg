@@ -550,6 +550,37 @@
                 },
                 "unit": "px"
             }
+        },
+        "showPercentage": {
+            "type": "boolean",
+            "default": true
+        },
+        "dotSize": {
+            "type": "object",
+            "default": {
+                "Desktop": 25,
+                "Tablet": 25,
+                "Mobile": 25,
+                "unit": "px"
+            }
+        },
+        "dotSpacing": {
+            "type": "object",
+            "default": {
+                "Desktop": 8,
+                "Tablet": 8,
+                "Mobile": 8,
+                "unit": "px"
+            }
+        },
+        "numberOfCircles": {
+            "type": "number"
+        },
+        "numberOfTotalFill": {
+            "type": "number"
+        },
+        "fillPercent": {
+            "type": "number"
         }
     }
 }
