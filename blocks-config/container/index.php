@@ -1,6 +1,6 @@
 <?php
 /**
- * Server-side rendering of the `pbg/content-switcher` block.
+ * Server-side rendering of the `pbg/container` block.
  *
  * @package WordPress
  */
