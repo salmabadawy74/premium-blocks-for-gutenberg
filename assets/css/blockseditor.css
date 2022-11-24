@@ -181,15 +181,15 @@
     background: #f7f8fc;
     padding: 25px 15px;
 }
-  .wp-block-premium-container::before {
-      content: "";
-      position: absolute;
-      border: 1px dashed #e1e1e1;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-  }
+.wp-block-premium-container::before {
+    content: "";
+    position: absolute;
+    border: 1px dashed #e1e1e1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
 
 .premium-blocks__row_container .premium-blocks__placeholder_title {
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -265,15 +265,28 @@
 }
 
 /* show box around blocks when hover like is-selected */
-.edit-post-visual-editor .editor-styles-wrapper>.block-editor-block-list__layout .block-editor-block-list__block:hover::after, .edit-post-visual-editor .editor-styles-wrapper>.block-editor-block-list__layout .block-editor-block-list__block:not([contenteditable]):focus::after {
+.edit-post-visual-editor
+    .editor-styles-wrapper
+    > .block-editor-block-list__layout
+    .block-editor-block-list__block:hover::after,
+.edit-post-visual-editor
+    .editor-styles-wrapper
+    > .block-editor-block-list__layout
+    .block-editor-block-list__block:not([contenteditable]):focus::after {
     box-shadow: 0 0 0 1.5px #007cba;
     border-radius: 2px;
 }
-.edit-post-visual-editor .editor-styles-wrapper>.block-editor-block-list__layout .block-editor-block-list__block:hover, .edit-post-visual-editor .editor-styles-wrapper>.block-editor-block-list__layout .block-editor-block-list__block:not([contenteditable]):focus {
+.edit-post-visual-editor
+    .editor-styles-wrapper
+    > .block-editor-block-list__layout
+    .block-editor-block-list__block:hover,
+.edit-post-visual-editor
+    .editor-styles-wrapper
+    > .block-editor-block-list__layout
+    .block-editor-block-list__block:not([contenteditable]):focus {
     box-shadow: 0 0 0 1.5px #007cba;
     border-radius: 2px;
 }
-.block-editor-block-list__layout .block-editor-block-list__block{
+.block-editor-block-list__layout .block-editor-block-list__block {
     margin-top: 0;
 }
-

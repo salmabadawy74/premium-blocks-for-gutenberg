@@ -35,7 +35,7 @@
         </gutenberg-block>
         <gutenberg-block type="premium/maps" translate="1">
             <xpath>//h3[@class="premium-maps__title"]</xpath>
-            <xpath>//div[@class="premium-maps__desc"]</xpath>
+            <xpath>//div[@class="premium-maps__wrap__desc"]</xpath>
         </gutenberg-block>
         <gutenberg-block type="premium/pricing-table" translate="1">
             <xpath>//span</xpath>
