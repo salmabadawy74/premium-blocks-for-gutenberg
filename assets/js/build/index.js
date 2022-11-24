@@ -41813,8 +41813,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/person/save.js");
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/blocks/person/edit.js");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/person/deprecated.js");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./block.json */ "./src/blocks/person/block.json");
-
 
 
 
@@ -41826,12 +41824,8 @@ const {
 const {
   registerBlockType
 } = wp.blocks;
-registerBlockType("premium/person", { ..._block_json__WEBPACK_IMPORTED_MODULE_5__,
-  title: __("Team Members", "premium-blocks-for-gutenberg"),
-  description: __('Show off your team members along with social links using Premium Team Members Block', 'premium-blocks-for-gutenberg'),
+registerBlockType("premium/person", {
   icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].team,
-  category: "premium-blocks",
-  keywords: [__("Team", 'premium-blocks-for-gutenberg'), __("profile", 'premium-blocks-for-gutenberg'), __("member", 'premium-blocks-for-gutenberg'), __("person", 'premium-blocks-for-gutenberg')],
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.person
   },
@@ -45707,8 +45701,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/blocks/pricing-table/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/blocks/pricing-table/save.js");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/pricing-table/deprecated.js");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./block.json */ "./src/blocks/pricing-table/block.json");
-
 
 
 
@@ -45720,12 +45712,8 @@ const {
 const {
   __
 } = wp.i18n;
-registerBlockType("premium/pricing-table", { ..._block_json__WEBPACK_IMPORTED_MODULE_5__,
-  title: __("Pricing Table"),
-  description: __('Display your pricing plans in an elegant way using Premium Pricing Table Block.', 'premium-blocks-for-gutenberg'),
+registerBlockType("premium/pricing-table", {
   icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].pricingTable,
-  category: "premium-blocks",
-  keywords: [__("Pricing", 'premium-blocks-for-gutenberg'), __("Pricing Table", 'premium-blocks-for-gutenberg')],
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.pricingTable
   },
@@ -47118,9 +47106,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit */ "./src/blocks/section/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/section/save.js");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/section/deprecated.js");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/blocks/section/block.json");
-/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
-
+/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
 
 
 
@@ -47132,17 +47118,13 @@ const {
 const {
   registerBlockType
 } = wp.blocks;
-registerBlockType("premium/section", { ..._block_json__WEBPACK_IMPORTED_MODULE_4__,
-  title: __("Section", 'premium-blocks-for-gutenberg'),
-  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_5__["default"].section,
-  category: "premium-blocks",
+registerBlockType("premium/section", {
+  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_4__["default"].section,
   supports: {
     inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.section,
     align: true,
     align: ["center", "wide", "full"]
   },
-  keywords: [__("section", 'premium-blocks-for-gutenberg')],
-  description: __('Engage your Gutenberg blocks using Premium Section Block.', 'premium-blocks-for-gutenberg'),
   example: {
     attributes: {
       minHeight: 200
@@ -80894,17 +80876,6 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 
 /***/ }),
 
-/***/ "./src/blocks/person/block.json":
-/*!**************************************!*\
-  !*** ./src/blocks/person/block.json ***!
-  \**************************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/person","title":"Team Members","category":"premium-blocks","attributes":{"align":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"nameColor":{"type":"string","default":""},"titleColor":{"type":"string","default":""},"descColor":{"type":"string","default":""},"socialIconStyles":{"type":"array","default":[{"socialIconColor":"","socialIconHoverColor":"","socialIconBackgroundColor":"","defaultIconColor":false,"borderColorIcon":""}]},"contentColor":{"type":"string"},"bottomInfo":{"type":"number","default":15},"effect":{"type":"string","default":"none"},"effectDir":{"type":"string","default":"top"},"multiPersonChecked":{"type":"number","default":1},"borderHoverColor":{"type":"string"},"personShadowPosition":{"type":"string","default":""},"blockId":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"hoverEffectPerson":{"type":"string","default":"none"},"selectedSocialMediaIcon":{"type":"string"},"effectPersonStyle":{"type":"string","default":"effect2"},"rowPerson":{"type":"string","default":"column1"},"multiPersonContent":{"type":"array","default":[{"id":1,"personImgUrl":"","personImgId":"","name":"John Doe","title":"Senior Developer","desc":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla","socialIcon":false,"items":[{"label":"facebook","link":false,"value":"#","changeinput":"#"},{"label":"twitter","link":false,"value":"#","changeinput":"#"},{"label":"instagram","link":false,"value":"#","changeinput":"#"},{"label":"youtube","link":false,"value":"#","changeinput":"#"}]}]},"nameTag":{"type":"string","default":"h3"},"titleTag":{"type":"string","default":"h5"},"socialIconMargin":{"type":"object","default":{"Desktop":{"top":"0","right":"0","bottom":"0","left":"0"},"Tablet":{"top":"0","right":"0","bottom":"0","left":"0"},"Mobile":{"top":"0","right":"0","bottom":"0","left":"0"},"unit":"px"}},"socialIconPadding":{"type":"object","default":{"Desktop":{"top":"0","right":"0","bottom":"0","left":"0"},"Tablet":{"top":"0","right":"0","bottom":"0","left":"0"},"Mobile":{"top":"0","right":"0","bottom":"0","left":"0"},"unit":"px"}},"socialIconBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"socialIconSize":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}},"titleTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"descTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"nameTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"titleShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"nameShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"descShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"namePadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"titleMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"titlePadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"descPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"contentPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"imgHeight":{"type":"object","default":{"Desktop":"400","Tablet":"400","Mobile":"400","unit":"px"}},"imgWidth":{"type":"object","default":{"Desktop":"100","Tablet":"100","Mobile":"100","unit":"%"}},"socialIcon":{"type":"boolean","default":false},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"imageFilter":{"type":"object","default":{"contrast":"100","blur":"0","bright":"100","saturation":"100","hue":"0"}},"imageBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}}}}');
-
-/***/ }),
-
 /***/ "./src/blocks/price/block.json":
 /*!*************************************!*\
   !*** ./src/blocks/price/block.json ***!
@@ -80913,28 +80884,6 @@ module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/p
 
 "use strict";
 module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/price","title":"Price","category":"premium-blocks","description":"Price Description.","keywords":["price"],"textdomain":"default","parent":["premium/pricing-table"],"attributes":{"blockId":{"type":"string"},"hideDesktop":{"type":"boolean","default":false},"hideTablet":{"type":"boolean","default":false},"hideMobile":{"type":"boolean","default":false},"slashedPriceText":{"type":"string","default":""},"currencyText":{"type":"string","default":"$"},"priceText":{"type":"string","default":"99"},"dividerText":{"type":"string","default":"/"},"durationText":{"type":"string","default":"m"},"padding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"margin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"align":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"slashedTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"slashedColor":{"type":"string","default":""},"slashedAlign":{"type":"object","default":{"Desktop":"center","Tablet":"","Mobile":""}},"slashedBgColor":{"type":"string","default":""},"currencyTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"currencyColor":{"type":"string","default":""},"currencyAlign":{"type":"object","default":{"Desktop":"center","Tablet":"","Mobile":""}},"currencyBgColor":{"type":"string","default":""},"priceTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"priceColor":{"type":"string","default":""},"priceAlign":{"type":"object","default":{"Desktop":"center","Tablet":"","Mobile":""}},"priceBgColor":{"type":"string","default":""},"dividerTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"dividerColor":{"type":"string","default":""},"dividerAlign":{"type":"object","default":{"Desktop":"center","Tablet":"","Mobile":""}},"dividerBgColor":{"type":"string","default":""},"durationTypography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"durationColor":{"type":"string","default":""},"durationAlign":{"type":"object","default":{"Desktop":"center","Tablet":"","Mobile":""}},"durationBgColor":{"type":"string","default":""}}}');
-
-/***/ }),
-
-/***/ "./src/blocks/pricing-table/block.json":
-/*!*********************************************!*\
-  !*** ./src/blocks/pricing-table/block.json ***!
-  \*********************************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/pricing-table","title":"Pricing Table","category":"premium-blocks","attributes":{"badgeChecked":{"type":"boolean","default":true},"blockId":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"tableStyles":{"type":"array","default":[{"tableBack":"","tableOpacity":1}]},"tableBoxShadow":{"type":"object","default":{"color":"transparent","blur":"10","horizontal":"0","vertical":"0","position":""}},"tableBorder":{"type":"object","default":{"bordertype":"solid","borderColor":"var(--pbg-global-color4, #e1e1e1)","borderWidth":{"Desktop":{"top":"1","right":"1","bottom":"1","left":"1"},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"tablePadding":{"type":"object","default":{"Desktop":{"top":"20","right":"20","bottom":"20","left":"20"},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}}}}');
-
-/***/ }),
-
-/***/ "./src/blocks/section/block.json":
-/*!***************************************!*\
-  !*** ./src/blocks/section/block.json ***!
-  \***************************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/section","title":"Section","category":"premium-blocks","attributes":{"stretchSection":{"type":"boolean","default":false},"innerWidthType":{"type":"string","default":"boxed"},"isUpdated":{"type":"boolean","default":false},"horAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"height":{"type":"string","default":"min"},"innerWidth":{"type":"number"},"minHeight":{"type":"number"},"minHeightUnit":{"type":"string","default":"px"},"vPos":{"type":"string","default":"top"},"blockId":{"type":"string"},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"padding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"margin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"boxShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":" "}},"border":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"background":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"center center","backgroundRepeat":"repeat","backgroundSize":"auto","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}}}}');
 
 /***/ }),
 
