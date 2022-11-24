@@ -582,6 +582,16 @@ class PBG_Blocks_Helper
 
 			)
 		);
+
+		register_block_type(
+			'premium/tabs',
+			array(
+				'render_callback' => array($this, 'get_tabs_css'),
+				'editor_style'    => 'premium-blocks-editor-css',
+				'editor_script'   => 'pbg-blocks-js',
+
+			)
+		);
 	}
 
 	/**
@@ -6442,6 +6452,73 @@ class PBG_Blocks_Helper
 			$css->add_property('text-align', $css->get_responsive_css($attr['boxAlign'], 'Mobile'));
 		}
 
+		$css->stop_media_query();
+		return $css->css_output();
+	}
+
+	/**
+	 * Get Tabs Block Content & Style
+	 *
+	 * @access public
+	 *
+	 * @param string $attributes option For attribute.
+	 * @param string $contnet for content of Block.
+	 */
+	public function get_tabs_css($attributes, $content)
+	{
+		if (isset($attributes['block_id']) && !empty($attributes['block_id'])) {
+
+			$unique_id = $attributes['block_id'];
+		} else {
+			$unique_id = rand(100, 10000);
+		}
+		wp_enqueue_style(
+			'pbg-tabs-style',
+			PREMIUM_BLOCKS_URL . 'assets/css/minified/tabs.min.css',
+			array(),
+			PREMIUM_BLOCKS_VERSION,
+			'all'
+		);
+		if ($this->it_is_not_amp()) {
+			wp_enqueue_script(
+				'pbg-tabs',
+				PREMIUM_BLOCKS_URL . 'assets/js/tabs.js',
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
+		}
+		$style_id = 'pbg-blocks-style' . esc_attr($unique_id);
+		if (!wp_style_is($style_id, 'enqueued') && apply_filters('Premium_BLocks_blocks_render_inline_css', true, 'tabs', $unique_id)) {
+			// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
+			// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
+			$css = $this->get_tabs_css_style($attributes, $unique_id);
+			if (!empty($css)) {
+				if ($this->should_render_inline('tabs', $unique_id)) {
+					$content = '<style id="' . $style_id . '">' . $css . '</style>' . $content;
+				} else {
+					$this->render_inline_css($css, $style_id, true);
+				}
+			}
+		};
+		return $content;
+	}
+	public function get_tabs_css_style($attr, $unique_id)
+	{
+		$css                    = new Premium_Blocks_css();
+		$media_query            = array();
+		$media_query['mobile']  = apply_filters('Premium_BLocks_mobile_media_query', '(max-width: 767px)');
+		$media_query['tablet']  = apply_filters('Premium_BLocks_tablet_media_query', '(max-width: 1024px)');
+		$media_query['desktop'] = apply_filters('Premium_BLocks_tablet_media_query', '(min-width: 1025px)');
+
+
+
+		$css->start_media_query($media_query['tablet']);
+
+		
+		$css->stop_media_query();
+		$css->start_media_query($media_query['mobile']);
+
+		
 		$css->stop_media_query();
 		return $css->css_output();
 	}

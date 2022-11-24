@@ -3,6 +3,7 @@ const path = require('path');
 
 module.exports = {
     ...defaultConfig,
+    performance: { hints: false },
     plugins: [
         ...defaultConfig.plugins,
     ],

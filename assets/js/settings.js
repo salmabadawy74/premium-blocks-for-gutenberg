@@ -17,6 +17,7 @@ export const {
     section,
     testimonials,
     trigger,
+    tabs,
     [`bullet-list`]: bulletList,
     [`content-switcher`]: contentSwitcher,
     [`count-up`]: countUp,

@@ -28,6 +28,8 @@ import "./blocks/text"
 import "./blocks/badge"
 import "./blocks/image"
 import "./blocks/icon-group"
+import "./blocks/tabs"
+import "./blocks/tab-item"
 
 window.PremiumOptionsSettings = {
     FontAwesomeEnabled,
