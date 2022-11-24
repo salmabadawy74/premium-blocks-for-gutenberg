@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Server-side rendering of the `pbg/content-switcher` block.
  *
@@ -470,7 +469,7 @@ function get_premium_bullet_list_css_style( $attr, $unique_id ) {
 }
 
 /**
- * Renders the `premium/badge` block on server.
+ * Renders the `premium/count-up` block on server.
  *
  * @param array    $attributes The block attributes.
  * @param string   $content    The saved content.

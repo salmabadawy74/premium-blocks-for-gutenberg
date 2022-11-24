@@ -4,7 +4,7 @@
     "version": "0.1.0",
     "name": "premium/banner",
     "title": "Banner",
-    "description": "Create attractive banners along with Heading, Description, and CTA using Premium Banner.sss",
+    "description": "Create attractive banners along with Heading, Description, and CTA using Premium Banner.",
     "category": "premium-blocks",
     "keywords": ["image", "photo"],
     "attributes": {

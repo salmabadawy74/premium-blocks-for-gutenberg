@@ -4,7 +4,6 @@
     "version": "0.1.0",
     "name": "premium/content-switcher",
     "title": "Content Switcher",
-    "icon": "content-switcher",
     "category": "premium-blocks",
     "description": "Toggle between two different content using Premium Content Switcher Block.",
     "keywords": ["content", "switcher"],
