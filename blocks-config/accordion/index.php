@@ -211,7 +211,7 @@ function get_premium_accordion_css_style( $attr, $unique_id ) {
 }
 
 /**
- * Renders the `premium/badge` block on server.
+ * Renders the `premium/accordion` block on server.
  *
  * @param array    $attributes The block attributes.
  * @param string   $content    The saved content.

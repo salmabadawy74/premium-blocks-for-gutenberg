@@ -139,7 +139,7 @@ function get_premium_banner_css_style( $attr, $unique_id ) {
 }
 
 /**
- * Renders the `premium/badge` block on server.
+ * Renders the `premium/banner` block on server.
  *
  * @param array    $attributes The block attributes.
  * @param string   $content    The saved content.
