@@ -415,7 +415,7 @@
   border-top: 0 !important;
   top: 0 !importantpremium
 
-.components-button.uagb-rm-btn {
+.components-button.premium-rm-btn {
   margin-left: 10px; }
 
 .rfipbtn {
@@ -3649,10 +3649,10 @@ i.fipicon-angle-left:before {
   grid-row-gap: 14px; }
   .premium-presets-main-wrap .premium-presets-radio-image-wrap .uag-presets-radio-input {
     display: none; }
-  .uagb-presets-main-wrap .uagb-presets-radio-image-wrap .uag-presets-radio-input-label {
+  .premium-presets-main-wrap .premium-presets-radio-image-wrap .uag-presets-radio-input-label {
     position: relative;
     display: inline-block; }
-  .uagb-presets-main-wrap .uagb-presets-radio-image-wrap svg {
+  .premium-presets-main-wrap .premium-presets-radio-image-wrap svg {
     width: 100%;
     height: auto;
     border-radius: 3px;
@@ -3661,10 +3661,10 @@ i.fipicon-angle-left:before {
     color: #898e95;
    premiumkground-color: #f0f0premium
     transition: background 0.08s ease, box-shadow 0.08s ease; }
-  .uagb-presets-main-wrap .uagb-presets-radio-image-wrap .uag-presets-radio-input:checked + .uag-presets-radio-input-label svg {
+  .premium-presets-main-wrap .premium-presets-radio-image-wrap .uag-presets-radio-input:checked + .uag-presets-radio-input-label svg {
     background-color: #007cba;
     border: 1px solid #00608f; }
-  .uagb-presets-main-wrap .uagb-presets-radio-image-wrap .uag-presets-radio-image-clickable {
+  .premium-presets-main-wrap .premium-presets-radio-image-wrap .uag-presets-radio-image-clickable {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -3673,14 +3673,14 @@ i.fipicon-angle-left:before {
     width: 100%;
  premiumeight: 100%; }
 
-.uagb-inspector-tab .components-panel__body .uag-presets-label {
+.premium-inspector-tab .components-panel__body .uag-presets-label {
   line-height: 2.4; }
 premium
-.uagb-presets-label-reset-wrap {
+.premium-presets-label-reset-wrap {
   display: flex;
   justify-content: space-between; }
 
-.uagb-presets-main-wrap.border-none svg {
+.premium-presets-main-wrap.border-none svg {
   border: none; }
 
 .premium-typohraphy-value {
