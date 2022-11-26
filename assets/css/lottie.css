@@ -10,7 +10,8 @@
     z-index: 999;
     display: inline-flex;
     -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out; }
+    transition: all 0.3s ease-in-out;
+    border-color: var(--pbg-global-color4); }
     .premium-lottie-wrap .premium-lottie-animation svg {
       width: 200px !important;
       height: 200px !important; }

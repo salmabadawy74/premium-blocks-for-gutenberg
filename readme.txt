@@ -1,11 +1,11 @@
 === Premium Blocks for Gutenberg ===
 Contributors: leap13
-Tags: gutenberg, gutenberg addon, gutenberg addons, gutenberg blocks, gutenberg free blocks, blocks, editor
+Tags: gutenberg, gutenberg blocks, blocks, gutenberg addon, gutenberg free blocks
 Donate link: https://leap13.com
 Requires at least: 4.5
 Tested up to: 6.1
 Requires PHP: 5.4
-Stable tag: 2.0.2
+Stable tag: 2.0.3
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -72,7 +72,13 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 
 == Changelog ==
 
- = 2.0.2 =
+= 2.0.3 =
+- New: New Presets for Button Block have been added.
+- Tweak: block.json file have been added for every premium block.
+- Tweak: Improve the style of some premium blocks controls.
+- Fixed: General Issues in multiple blocks.
+
+= 2.0.2 =
 - New: Global settings added to control your Gutenberg website fonts and colors.
 - Tweak: Added overlay color option on hover state in Premium banner block.
 - Tweak: Added border color option on hover state in Premium icon block.
@@ -80,7 +86,7 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 - Fixed: It can’t select the accordion block options from Editor.
 - Fixed: The border radius is not working in the content switcher block.
 
- = 2.0.1 =
+= 2.0.1 =
 
 - Fixed: Accordion block collaps issue.
 - Fixed: Fontawesome 4.0 doesn’t work in editor.

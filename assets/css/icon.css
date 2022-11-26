@@ -124,6 +124,9 @@
   -moz-animation: pa-hvr-pulse 0.3s ease-in-out alternate infinite;
   -ms-animation: pa-hvr-pulse 0.3s ease-in-out alternate infinite; }
 
+.premium-icon {
+  border-color: var(--pbg-global-color4); }
+
 .premium-icon__buzz:hover {
   -webkit-animation: pa-hvr-buzz 0.3s ease-out infinite;
   -moz-animation: pa-hvr-buzz 0.3s ease-out infinite;
