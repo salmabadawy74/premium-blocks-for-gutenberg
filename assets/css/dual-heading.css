@@ -64,6 +64,9 @@ a.premium-dheading-block__link:hover {
   border: none;
   box-shadow: none; }
 
+.wp-block-premium-dheading-block {
+  border-color: var(--pbg-global-color4); }
+
 /************ Responsive **************/
 @media (min-width: 977px) {
   .premium-desktop-hidden {

@@ -6,7 +6,8 @@
   display: flex;
   align-items: baseline;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  border-color: var(--pbg-global-color4); }
   .premium-countup__wrap .premium-countup__icon_wrap {
     align-self: center; }
   .premium-countup__wrap .premium-countup__title {
