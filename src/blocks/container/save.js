@@ -13,7 +13,6 @@ const Save = (props) => {
     const {
         attributes: {
             block_id,
-
             shapeTop,
             shapeBottom,
             align,
@@ -32,7 +31,6 @@ const Save = (props) => {
             backgroundOptions,
             boxShadow,
             isBlockRootParent,
-            blockDescendants,
             containerTag,
             overflow,
             blend,
@@ -112,9 +110,8 @@ const Save = (props) => {
             "background-attachment": backgroundOverlayHover["fixed"]
                 ? "fixed"
                 : "unset",
-            opacity: `${
-                backgroundOverlayHover ? hoverOverlayOpacity / 100 : 1
-            } !important`,
+            opacity: `${backgroundOverlayHover ? hoverOverlayOpacity / 100 : 1
+                } !important`,
             filter: `brightness( ${hoverOverlayFilter["bright"]}% ) contrast( ${hoverOverlayFilter["contrast"]}% ) saturate( ${hoverOverlayFilter["saturation"]}% ) blur( ${hoverOverlayFilter["blur"]}px ) hue-rotate( ${hoverOverlayFilter["hue"]}deg ) !important`,
         };
 
@@ -126,9 +123,9 @@ const Save = (props) => {
                     const value = selectorStyles[property];
                     const valueWithoutUnits = value
                         ? value
-                              .toString()
-                              .replaceAll("px", "")
-                              .replaceAll(/\s/g, "")
+                            .toString()
+                            .replaceAll("px", "")
+                            .replaceAll(/\s/g, "")
                         : "";
                     if (value && !value.toString().includes("undefined")) {
                         return `${property}: ${value}; `;
@@ -175,11 +172,9 @@ const Save = (props) => {
                 key={block_id}
                 style={{
                     ...gradientBackground(backgroundOptions),
-                    boxShadow: `${boxShadow.horizontal || 0} px ${
-                        boxShadow.vertical || 0
-                    } px ${boxShadow.blur || 0} px ${boxShadow.color} ${
-                        boxShadow.position
-                    } `,
+                    boxShadow: `${boxShadow.horizontal || 0} px ${boxShadow.vertical || 0
+                        } px ${boxShadow.blur || 0} px ${boxShadow.color} ${boxShadow.position
+                        } `,
                     overflow: overflow,
                     borderStyle: border["borderType"],
                     borderColor: border["borderColor"],
@@ -220,9 +215,8 @@ const Save = (props) => {
                     className={`premium-row__block_overlay`}
                     style={{
                         ...gradientBackground(backgroundOverlay),
-                        opacity: `${
-                            backgroundOverlay ? overlayOpacity / 100 : 1
-                        } `,
+                        opacity: `${backgroundOverlay ? overlayOpacity / 100 : 1
+                            } `,
                         filter: `brightness(${overlayFilter["bright"]} % ) contrast(${overlayFilter["contrast"]} % ) saturate(${overlayFilter["saturation"]} % ) blur(${overlayFilter["blur"]}px) hue - rotate(${overlayFilter["hue"]}deg)`,
                     }}
                 ></div>

@@ -14413,7 +14413,8 @@ const {
 } = wp.blocks;
 const {
   InspectorControls,
-  InnerBlocks
+  InnerBlocks,
+  useBlockProps
 } = wp.blockEditor;
 const {
   compose
@@ -14519,7 +14520,6 @@ const edit = props => {
       shapeBottom,
       minHeight,
       colWidth,
-      heightOptions,
       border,
       //animation
       animation,
@@ -14537,14 +14537,17 @@ const edit = props => {
       backgroundOptions,
       boxShadow,
       isBlockRootParent,
-      blockDescendants,
       containerTag,
       overflow,
       blend,
-      transition
+      transition,
+      hideDesktop,
+      hideMobile,
+      hideTablet
     },
     clientId,
-    setAttributes
+    setAttributes,
+    className
   } = props;
 
   const blockVariationPickerOnSelect = function () {
@@ -15177,7 +15180,10 @@ const edit = props => {
     onChange: value => setAttributes({
       animation: value
     })
-  }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
+  }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "block-editor-block-list__block wp-block",
+    id: `block-${block_id}`
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: loadStyles()
     }
@@ -15208,7 +15214,7 @@ const edit = props => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InnerBlocks, {
     __experimentalMoverDirection: moverDirection,
     renderAppender: hasChildBlocks ? undefined : InnerBlocks.ButtonBlockAppender
-  }))));
+  })))));
 };
 
 const applyWithSelect = withSelect((select, props) => {
@@ -15676,7 +15682,6 @@ const Save = props => {
       backgroundOptions,
       boxShadow,
       isBlockRootParent,
-      blockDescendants,
       containerTag,
       overflow,
       blend,
