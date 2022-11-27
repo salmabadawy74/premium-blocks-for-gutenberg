@@ -13,7 +13,6 @@ const save = (props) => {
         effect,
         effectDir,
         slideColor,
-        block_id,
         hideDesktop,
         hideTablet,
         hideMobile,

@@ -51,17 +51,22 @@ function get_premium_button_css_style( $attr, $unique_id ) {
 		$css->add_property( 'border-radius', $css->render_spacing( $border_radius['Desktop'], 'px' ) );
 	}
 	// icon styles
-	if ( isset( $attr['iconSize']['Desktop'] ) ) {
+	if ( isset( $attr['iconSize'] ) ) {
 		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' );
 		$css->add_property( 'font-size', $css->render_range( $attr['iconSize'], 'Desktop' ) );
 	}
-	if ( isset( $attr['iconSize']['Desktop'] ) ) {
+	if ( isset( $attr['iconSize'] ) ) {
 		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' );
 		$css->add_property( 'width', $css->render_range( $attr['iconSize'], 'Desktop' ) );
 	}
-	if ( isset( $attr['iconSize']['Desktop'] ) ) {
+	if ( isset( $attr['iconSize'] ) ) {
 		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' );
 		$css->add_property( 'height', $css->render_range( $attr['iconSize'], 'Desktop' ) );
+	}
+	if ( isset( $attr['iconSpacing'] ) ) {
+		$icon_spacing = $attr['iconSpacing'];
+		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' );
+		$css->add_property( 'margin', $css->render_spacing( $icon_spacing['Desktop'], $icon_spacing['unit'] ) );
 	}
 
 	$css->start_media_query( $media_query['tablet'] );
@@ -96,6 +101,25 @@ function get_premium_button_css_style( $attr, $unique_id ) {
 		$css->add_property( 'border-radius', $css->render_spacing( $border_radius['Tablet'], 'px' ) );
 	}
 
+	// icon styles
+	if ( isset( $attr['iconSize'] ) ) {
+		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' );
+		$css->add_property( 'font-size', $css->render_range( $attr['iconSize'], 'Tablet' ) );
+	}
+	if ( isset( $attr['iconSize'] ) ) {
+		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' );
+		$css->add_property( 'width', $css->render_range( $attr['iconSize'], 'Tablet' ) );
+	}
+	if ( isset( $attr['iconSize'] ) ) {
+		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' );
+		$css->add_property( 'height', $css->render_range( $attr['iconSize'], 'Tablet' ) );
+	}
+	if ( isset( $attr['iconSpacing'] ) ) {
+		$icon_spacing = $attr['iconSpacing'];
+		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' );
+		$css->add_property( 'margin', $css->render_spacing( $icon_spacing['Tablet'], $icon_spacing['unit'] ) );
+	}
+
 	$css->stop_media_query();
 	$css->start_media_query( $media_query['mobile'] );
 
@@ -128,6 +152,26 @@ function get_premium_button_css_style( $attr, $unique_id ) {
 		$css->add_property( 'border-width', $css->render_spacing( $border_width['Mobile'], 'px' ) );
 		$css->add_property( 'border-radius', $css->render_spacing( $border_radius['Mobile'], 'px' ) );
 	}
+
+	// icon styles
+	if ( isset( $attr['iconSize'] ) ) {
+		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' );
+		$css->add_property( 'font-size', $css->render_range( $attr['iconSize'], 'Mobile' ) );
+	}
+	if ( isset( $attr['iconSize'] ) ) {
+		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' );
+		$css->add_property( 'width', $css->render_range( $attr['iconSize'], 'Mobile' ) );
+	}
+	if ( isset( $attr['iconSize'] ) ) {
+		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' );
+		$css->add_property( 'height', $css->render_range( $attr['iconSize'], 'Mobile' ) );
+	}
+	if ( isset( $attr['iconSpacing'] ) ) {
+		$icon_spacing = $attr['iconSpacing'];
+		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' );
+		$css->add_property( 'margin', $css->render_spacing( $icon_spacing['Mobile'], $icon_spacing['unit'] ) );
+	}
+
 	$css->stop_media_query();
 	return $css->css_output();
 }
