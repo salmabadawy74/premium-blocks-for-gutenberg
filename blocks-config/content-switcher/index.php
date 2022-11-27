@@ -118,6 +118,11 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 		$css->add_property( 'margin-top', ( $attributes['labelSpacing']['Desktop'] . 'px' ) );
 	}
 	if ( isset( $attributes['secondLabelborder'] ) ) {
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-inline' . ' > .premium-content-switcher-second-label' );
+		$css->add_property( 'border-width', $css->render_spacing( $attributes['secondLabelborder']['borderWidth']['Desktop'], 'px' ) );
+		$css->add_property( 'border-radius', $css->render_spacing( $attributes['secondLabelborder']['borderRadius']['Desktop'], 'px' ) );
+	}
+	if ( isset( $attributes['secondLabelborder'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
 		$css->add_property( 'border-width', $css->render_spacing( $attributes['secondLabelborder']['borderWidth']['Desktop'], 'px' ) );
 		$css->add_property( 'border-radius', $css->render_spacing( $attributes['secondLabelborder']['borderRadius']['Desktop'], 'px' ) );
@@ -236,6 +241,11 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 	if ( isset( $attributes['labelSpacing']['Tablet'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
 		$css->add_property( 'margin-top', ( $attributes['labelSpacing']['Tablet'] . 'px' ) );
+	}
+	if ( isset( $attributes['secondLabelborder'] ) ) {
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-inline' . ' > .premium-content-switcher-second-label' );
+		$css->add_property( 'border-width', $css->render_spacing( $attributes['secondLabelborder']['borderWidth']['Tablet'], 'px' ) );
+		$css->add_property( 'border-radius', $css->render_spacing( $attributes['secondLabelborder']['borderRadius']['Tablet'], 'px' ) );
 	}
 	if ( isset( $attributes['secondLabelborder'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
@@ -358,6 +368,11 @@ function get_content_switcher_css_style( $attributes, $unique_id ) {
 	if ( isset( $attributes['labelSpacing'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );
 		$css->add_property( 'margin-top', ( $attributes['labelSpacing']['Mobile'] . 'px' ) );
+	}
+	if ( isset( $attributes['secondLabelborder'] ) ) {
+		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-inline' . ' > .premium-content-switcher-second-label' );
+		$css->add_property( 'border-width', $css->render_spacing( $attributes['secondLabelborder']['borderWidth']['Mobile'], 'px' ) );
+		$css->add_property( 'border-radius', $css->render_spacing( $attributes['secondLabelborder']['borderRadius']['Mobile'], 'px' ) );
 	}
 	if ( isset( $attributes['secondLabelborder'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-content-switcher' . ' > .premium-content-switcher-toggle-block' . ' > .premium-content-switcher-second-label' );

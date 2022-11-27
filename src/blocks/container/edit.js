@@ -29,7 +29,7 @@ import {
 
 const { __ } = wp.i18n;
 const { createBlock } = wp.blocks;
-const { InspectorControls, InnerBlocks, useBlockProps } = wp.blockEditor;
+const { InspectorControls, InnerBlocks } = wp.blockEditor;
 const { compose } = wp.compose;
 const { select, useDispatch, withSelect } = wp.data;
 const {

@@ -14413,8 +14413,7 @@ const {
 } = wp.blocks;
 const {
   InspectorControls,
-  InnerBlocks,
-  useBlockProps
+  InnerBlocks
 } = wp.blockEditor;
 const {
   compose
