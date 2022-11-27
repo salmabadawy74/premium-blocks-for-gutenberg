@@ -36,9 +36,14 @@ function get_premium_bullet_list_css_style( $attr, $unique_id ) {
 	}
 
 	if ( isset( $attr['align'] ) ) {
+		$icon_position = $attr['iconPosition'];
 		$content_align      = $css->get_responsive_css( $attr['align'], 'Desktop' );
 		$content_flex_align = 'left' === $content_align ? 'flex-start' : '';
 		$content_flex_align = 'right' === $content_align ? 'flex-end' : $content_flex_align;
+
+		$content_flex_direction =  'right' === $content_align ? 'column' : 'column';
+		$content_flex_position =  'after' === $icon_position ? 'row-reverse' : '';
+		$content_flex_direction = 'top' === $icon_position ? $content_flex_direction : $content_flex_position;
 
 		$css->set_selector( '.' . $unique_id );
 		$css->add_property( 'text-align', $content_align );
@@ -48,6 +53,7 @@ function get_premium_bullet_list_css_style( $attr, $unique_id ) {
 		$css->add_property( 'justify-content', $content_flex_align );
 		$css->set_selector( '.' . $unique_id . ' .premium-bullet-list__content-wrap' );
 		$css->add_property( 'justify-content', $content_flex_align );
+		$css->add_property( 'flex-direction', $content_flex_direction );
 	}
 
 	// Style for icon.
@@ -187,6 +193,10 @@ function get_premium_bullet_list_css_style( $attr, $unique_id ) {
 		$content_flex_align = 'left' === $content_align ? 'flex-start' : 'center';
 		$content_flex_align = 'right' === $content_align ? 'flex-end' : $content_flex_align;
 
+		$content_flex_direction =  'right' === $content_align ? 'column' : 'column';
+		$content_flex_position =  'after' === $icon_position ? 'row-reverse' : '';
+		$content_flex_direction = 'top' === $icon_position ? $content_flex_direction : $content_flex_position;
+
 		$css->set_selector( '.' . $unique_id );
 		$css->add_property( 'text-align', $content_align );
 		$css->set_selector( '.' . $unique_id . ' .premium-bullet-list' );
@@ -195,6 +205,7 @@ function get_premium_bullet_list_css_style( $attr, $unique_id ) {
 		$css->add_property( 'justify-content', $content_flex_align );
 		$css->set_selector( '.' . $unique_id . ' .premium-bullet-list__content-wrap' );
 		$css->add_property( 'justify-content', $content_flex_align );
+		$css->add_property( 'flex-direction', $content_flex_direction );
 	}
 	// Style for image.
 	if ( isset( $attr['generalpadding'] ) ) {
@@ -336,6 +347,10 @@ function get_premium_bullet_list_css_style( $attr, $unique_id ) {
 		$content_flex_align = 'left' === $content_align ? 'flex-start' : 'center';
 		$content_flex_align = 'right' === $content_align ? 'flex-end' : $content_flex_align;
 
+		$content_flex_direction =  'right' === $content_align ? 'column' : 'column';
+		$content_flex_position =  'after' === $icon_position ? 'row-reverse' : '';
+		$content_flex_direction = 'top' === $icon_position ? $content_flex_direction : $content_flex_position;
+
 		$css->set_selector( '.' . $unique_id );
 		$css->add_property( 'text-align', $content_align );
 		$css->set_selector( '.' . $unique_id . ' .premium-bullet-list' );
@@ -344,6 +359,7 @@ function get_premium_bullet_list_css_style( $attr, $unique_id ) {
 		$css->add_property( 'justify-content', $content_flex_align );
 		$css->set_selector( '.' . $unique_id . ' .premium-bullet-list__content-wrap' );
 		$css->add_property( 'justify-content', $content_flex_align );
+		$css->add_property( 'flex-direction', $content_flex_direction );
 	}
 
 	// Style for general setting.
