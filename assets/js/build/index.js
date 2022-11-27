@@ -26511,7 +26511,7 @@ function save(props) {
     dangerouslySetInnerHTML: {
       __html: loadStyles()
     }
-  }), effect === "typing" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), effect === "typing" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h4", {
     id: `premium-fancy-text-${blockId}`,
     className: `premium-fancy-text`,
     "data-effect": `${effect}`,
@@ -26562,7 +26562,7 @@ function save(props) {
       textDecoration: prefixTypography.textDecoration,
       textTransform: prefixTypography.textTransform
     })
-  }, " ", suffix)) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, " ", suffix)) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h4", {
     id: `premium-fancy-text-${blockId}`,
     className: `premium-fancy-text premium-fancy-slide`,
     "data-effect": `${effect}`,

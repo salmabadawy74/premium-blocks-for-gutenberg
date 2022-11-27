@@ -71,7 +71,7 @@ export default function save(props) {
             />
 
             {effect === "typing" ? (
-                <div
+                <h4
                     id={`premium-fancy-text-${blockId}`}
                     className={`premium-fancy-text`}
                     data-effect={`${effect}`}
@@ -134,72 +134,72 @@ export default function save(props) {
                         {" "}
                         {suffix}
                     </span>
-                </div>
+                </h4>
             ) : (
-                <div
-                    id={`premium-fancy-text-${blockId}`}
-                    className={`premium-fancy-text premium-fancy-slide`}
-                    data-effect={`${effect}`}
-                    data-strings={`${repeaterFancyText.map(
-                        (item, index) => {
-                            return item.title;
-                        }
-                    )}`}
-                    data-animationspeed={`${animationSpeed}`}
-                    data-pausetime={`${pauseTime}`}
-                    data-hoverpause={`${hoverPause}`}
-                >
-                    <span className={`premium-fancy-text-suffix-prefix premium-fancy-text-prefix-text`}
-                        style={filterJsCss({
-                            color: PreStyles[0].textColor,
-                            backgroundColor: PreStyles[0].textBGColor,
-                            fontStyle: prefixTypography.fontStyle,
-                            fontFamily: prefixTypography.fontFamily,
-                            fontWeight: prefixTypography.fontWeight,
-                            textDecoration: prefixTypography.textDecoration,
-                            textTransform: prefixTypography.textTransform,
-                        })}
+                    <h4
+                        id={`premium-fancy-text-${blockId}`}
+                        className={`premium-fancy-text premium-fancy-slide`}
+                        data-effect={`${effect}`}
+                        data-strings={`${repeaterFancyText.map(
+                            (item, index) => {
+                                return item.title;
+                            }
+                        )}`}
+                        data-animationspeed={`${animationSpeed}`}
+                        data-pausetime={`${pauseTime}`}
+                        data-hoverpause={`${hoverPause}`}
                     >
-                        {prefix}{" "}
-                    </span>
-                    <div
-                        className={`premium-fancy-text-title premium-fancy-text-title-slide`}
-                        style={{
-                            color: fancyStyles[0].fancyTextColor,
-                            backgroundColor: `${fancyStyles[0].fancyTextBGColor}`,
-                            fontStyle: fancyTextTypography.fontStyle,
-                            fontFamily: fancyTextTypography.fontFamily,
-                            fontWeight: fancyTextTypography.fontWeight,
-                            textDecoration: fancyTextTypography.textDecoration,
-                            textTransform: fancyTextTypography.textTransform,
-                            textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`,
-
-                        }}
-                    >
-                        <ul
-                            className={`premium-fancy-text-title-slide-list`}
-                        >
-                            {repeaterFancyText.map((item, index) => {
-                                return <li>{item.title}</li>;
+                        <span className={`premium-fancy-text-suffix-prefix premium-fancy-text-prefix-text`}
+                            style={filterJsCss({
+                                color: PreStyles[0].textColor,
+                                backgroundColor: PreStyles[0].textBGColor,
+                                fontStyle: prefixTypography.fontStyle,
+                                fontFamily: prefixTypography.fontFamily,
+                                fontWeight: prefixTypography.fontWeight,
+                                textDecoration: prefixTypography.textDecoration,
+                                textTransform: prefixTypography.textTransform,
                             })}
-                        </ul>
-                    </div>
-                    <span className={`premium-fancy-text-suffix-prefix premium-fancy-text-suffix-text`}
-                        style={filterJsCss({
-                            color: PreStyles[0].textColor,
-                            backgroundColor: PreStyles[0].textBGColor,
-                            fontStyle: prefixTypography.fontStyle,
-                            fontFamily: prefixTypography.fontFamily,
-                            fontWeight: prefixTypography.fontWeight,
-                            textDecoration: prefixTypography.textDecoration,
-                            textTransform: prefixTypography.textTransform,
-                        })}
-                    >
-                        {" "}
-                        {suffix}
-                    </span>
-                </div>
-            )
+                        >
+                            {prefix}{" "}
+                        </span>
+                        <div
+                            className={`premium-fancy-text-title premium-fancy-text-title-slide`}
+                            style={{
+                                color: fancyStyles[0].fancyTextColor,
+                                backgroundColor: `${fancyStyles[0].fancyTextBGColor}`,
+                                fontStyle: fancyTextTypography.fontStyle,
+                                fontFamily: fancyTextTypography.fontFamily,
+                                fontWeight: fancyTextTypography.fontWeight,
+                                textDecoration: fancyTextTypography.textDecoration,
+                                textTransform: fancyTextTypography.textTransform,
+                                textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`,
+
+                            }}
+                        >
+                            <ul
+                                className={`premium-fancy-text-title-slide-list`}
+                            >
+                                {repeaterFancyText.map((item, index) => {
+                                    return <li>{item.title}</li>;
+                                })}
+                            </ul>
+                        </div>
+                        <span className={`premium-fancy-text-suffix-prefix premium-fancy-text-suffix-text`}
+                            style={filterJsCss({
+                                color: PreStyles[0].textColor,
+                                backgroundColor: PreStyles[0].textBGColor,
+                                fontStyle: prefixTypography.fontStyle,
+                                fontFamily: prefixTypography.fontFamily,
+                                fontWeight: prefixTypography.fontWeight,
+                                textDecoration: prefixTypography.textDecoration,
+                                textTransform: prefixTypography.textTransform,
+                            })}
+                        >
+                            {" "}
+                            {suffix}
+                        </span>
+                    </h4>
+                )
             }
         </div >
     )
