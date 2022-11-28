@@ -715,21 +715,6 @@ function Edit(props) {
                 }!important`,
         };
 
-        styles[
-            `.${blockId} .premium-title-style9__wrap .premium-letters-container .premium-title-style9-letter`
-        ] = {
-            // "font-family": `${titleTypography?.fontFamily}`,
-            // "font-size": `${titleTypography?.fontSize?.[props.deviceType]}${titleTypography?.fontSize?.unit
-            //     }`,
-            // "font-weight": `${titleTypography?.fontWeight}`,
-            // "letter-spacing": `${titleTypography?.letterSpacing?.[props.deviceType]
-            //     }${titleTypography?.letterSpacing?.unit}`,
-            // "line-height": `${titleTypography?.lineHeight?.[props.deviceType]}${titleTypography?.lineHeight?.unit
-            //     }`,
-            // "font-style": `${titleTypography?.fontStyle}`,
-            // "text-shadow": `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color} !important`,
-        };
-
         return generateCss(styles);
     };
 
