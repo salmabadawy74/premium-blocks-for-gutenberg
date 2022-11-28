@@ -5,7 +5,10 @@
     "name": "premium/heading",
     "title": "Heading",
     "description": "Grab your website visitors’ attention with stylish headings using Premium Heading Block.asw",
-    "keywords": ["title", "Heading"],
+    "keywords": [
+        "title",
+        "Heading"
+    ],
     "category": "premium-blocks",
     "attributes": {
         "blockId": {
@@ -95,7 +98,7 @@
                     "shinyColor": "#fff",
                     "blurColor": "#000",
                     "BGColor": "#DDD0EF",
-                    "lineColor": "var(--pbg-global-color1)",
+                    "lineColor": "var(--pbg-global-color1,#793DC4)",
                     "triangleColor": "var(--pbg-global-color1,#793DC4)",
                     "stripeColor": "var(--pbg-global-color1,#793DC4)",
                     "blurShadow": "120",

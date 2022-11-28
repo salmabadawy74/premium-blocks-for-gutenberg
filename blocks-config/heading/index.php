@@ -31,19 +31,19 @@ function get_premium_heading_css_style( $attr, $unique_id ) {
 
 	if ( isset( $attr['titlePadding'] ) ) {
 		$title_padding = $attr['titlePadding'];
-		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' );
+		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title, ' . $unique_id . ' .premium-title-style9__wrap .premium-letters-container' );
 		$css->add_property( 'padding', $css->render_spacing( $title_padding['Desktop'], $title_padding['unit'] ) );
 	}
 
 	if ( isset( $attr['titleMargin'] ) ) {
 		$title_margin = $attr['titleMargin'];
-		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' );
+		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title, ' . $unique_id . ' .premium-title-style9__wrap .premium-letters-container' );
 		$css->add_property( 'margin', $css->render_spacing( $title_margin['Desktop'], $title_margin['unit'] ) );
 	}
 
 	if ( isset( $attr['titleTypography'] ) ) {
 		$typography_title = $attr['titleTypography'];
-		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header, ' . $unique_id . ' .premium-title-style9__wrap .premium-letters-container .premium-title-style9-letter' );
+		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title, ' . $unique_id . ' .premium-title-style9__wrap .premium-letters-container' );
 		$css->render_typography( $typography_title, 'Desktop' );
 	}
 
@@ -66,6 +66,9 @@ function get_premium_heading_css_style( $attr, $unique_id ) {
 		if ( $border_bottom_width && 0 <= $border_bottom_width ) {
 			$css->add_property( 'border-bottom', "{$border_bottom_width} {$title_border['borderType']} {$title_border['borderColor']}!important" );
 		}
+		$css->set_selector( $unique_id . ' > .premium-title .default .premium-title-header' );
+		$css->add_property( 'border-width', $css->render_spacing( $title_border_width['Desktop'], 'px' ) );
+		$css->add_property( 'border-radius', $css->render_spacing( $title_border_radius['Desktop'], 'px' ) );
 	}
 
 	// Style for icon.
@@ -172,19 +175,19 @@ function get_premium_heading_css_style( $attr, $unique_id ) {
 
 	if ( isset( $attr['titlePadding'] ) ) {
 		$title_padding = $attr['titlePadding'];
-		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' );
+		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title, ' . $unique_id . ' .premium-title-style9__wrap .premium-letters-container' );
 		$css->add_property( 'padding', $css->render_spacing( $title_padding['Tablet'], $title_padding['unit'] ) );
 	}
 
 	if ( isset( $attr['titleMargin'] ) ) {
 		$title_margin = $attr['titleMargin'];
-		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' );
+		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title, ' . $unique_id . ' .premium-title-style9__wrap .premium-letters-container' );
 		$css->add_property( 'margin', $css->render_spacing( $title_margin['Tablet'], $title_margin['unit'] ) );
 	}
 
 	if ( isset( $attr['titleTypography'] ) ) {
 		$typography_title = $attr['titleTypography'];
-		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header, ' . $unique_id . ' .premium-title-style9__wrap .premium-letters-container .premium-title-style9-letter' );
+		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title, ' . $unique_id . ' .premium-title-style9__wrap .premium-letters-container' );
 		$css->render_typography( $typography_title, 'Tablet' );
 	}
 
@@ -207,6 +210,9 @@ function get_premium_heading_css_style( $attr, $unique_id ) {
 		if ( $border_bottom_width && 0 <= $border_bottom_width ) {
 			$css->add_property( 'border-bottom', "{$border_bottom_width} {$title_border['borderType']} {$title_border['borderColor']}!important" );
 		}
+		$css->set_selector( $unique_id . ' > .premium-title .default .premium-title-header' );
+		$css->add_property( 'border-width', $css->render_spacing( $title_border_width['Tablet'], 'px' ) );
+		$css->add_property( 'border-radius', $css->render_spacing( $title_border_radius['Tablet'], 'px' ) );
 	}
 
 	// Style for icon.
@@ -315,19 +321,19 @@ function get_premium_heading_css_style( $attr, $unique_id ) {
 
 	if ( isset( $attr['titlePadding'] ) ) {
 		$title_padding = $attr['titlePadding'];
-		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' );
+		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title, ' . $unique_id . ' .premium-title-style9__wrap .premium-letters-container' );
 		$css->add_property( 'padding', $css->render_spacing( $title_padding['Mobile'], $title_padding['unit'] ) );
 	}
 
 	if ( isset( $attr['titleMargin'] ) ) {
 		$title_margin = $attr['titleMargin'];
-		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' );
+		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title, ' . $unique_id . ' .premium-title-style9__wrap .premium-letters-container' );
 		$css->add_property( 'margin', $css->render_spacing( $title_margin['Mobile'], $title_margin['unit'] ) );
 	}
 
 	if ( isset( $attr['titleTypography'] ) ) {
 		$typography_title = $attr['titleTypography'];
-		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header, ' . $unique_id . ' .premium-title-style9__wrap .premium-letters-container .premium-title-style9-letter' );
+		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-text-title, ' . $unique_id . ' .premium-title-style9__wrap .premium-letters-container' );
 		$css->render_typography( $typography_title, 'Mobile' );
 	}
 
@@ -350,6 +356,9 @@ function get_premium_heading_css_style( $attr, $unique_id ) {
 		if ( $border_bottom_width && 0 <= $border_bottom_width ) {
 			$css->add_property( 'border-bottom', "{$border_bottom_width} {$title_border['borderType']} {$title_border['borderColor']}!important" );
 		}
+		$css->set_selector( $unique_id . ' > .premium-title .default .premium-title-header' );
+		$css->add_property( 'border-width', $css->render_spacing( $title_border_width['Mobile'], 'px' ) );
+		$css->add_property( 'border-radius', $css->render_spacing( $title_border_radius['Mobile'], 'px' ) );
 	}
 
 	// Style for icon.
