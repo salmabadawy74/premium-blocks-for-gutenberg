@@ -296,16 +296,7 @@ export default function save(props) {
                                     : ""
                                 }`,
                             "data-blur-delay": `${titleStyles[0].animateDelay}`,
-                            "data-shiny-dur": `${titleStyles[0].animateduration}`,
-                            style: filterJsCss({
-                                // color: titleStyles[0].titleColor,
-                                // fontStyle: titleTypography?.fontStyle,
-                                // fontFamily: titleTypography?.fontFamily,
-                                // fontWeight: titleTypography?.fontWeight,
-                                // textDecoration: titleTypography?.textDecoration,
-                                // textTransform: titleTypography?.textTransform,
-                                // textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`,
-                            }),
+                            "data-shiny-dur": `${titleStyles[0].animateduration}`
                         },
                         [
                             <Fragment>

@@ -77,8 +77,8 @@ function get_premium_icon_group_css( $attr, $unique_id ) {
 
 	$css->start_media_query( $media_query['tablet'] );
 	// // Tablet Styles.
-	if ( isset( $attr['imageBorder'] ) ) {
-		$image_border        = $attr['imageBorder'];
+	if ( isset( $attr['groupIconBorder'] ) ) {
+		$image_border        = $attr['groupIconBorder'];
 		$image_border_width  = $image_border['borderWidth'];
 		$image_border_radius = $image_border['borderRadius'];
 
@@ -103,8 +103,8 @@ function get_premium_icon_group_css( $attr, $unique_id ) {
 		$css->add_property( 'justify-content', $css->get_responsive_css( $attr['align'], 'Tablet' ) );
 	}
 
-	if ( isset( $attr['imageBorder'] ) ) {
-		$image_border        = $attr['imageBorder'];
+	if ( isset( $attr['groupIconBorder'] ) ) {
+		$image_border        = $attr['groupIconBorder'];
 		$image_border_width  = $image_border['borderWidth'];
 		$image_border_radius = $image_border['borderRadius'];
 
@@ -137,8 +137,8 @@ function get_premium_icon_group_css( $attr, $unique_id ) {
 	$css->stop_media_query();
 	$css->start_media_query( $media_query['mobile'] );
 	// // Mobile Styles.
-	if ( isset( $attr['imageBorder'] ) ) {
-		$image_border        = $attr['imageBorder'];
+	if ( isset( $attr['groupIconBorder'] ) ) {
+		$image_border        = $attr['groupIconBorder'];
 		$image_border_width  = $image_border['borderWidth'];
 		$image_border_radius = $image_border['borderRadius'];
 
@@ -163,8 +163,8 @@ function get_premium_icon_group_css( $attr, $unique_id ) {
 		$css->add_property( 'justify-content', $css->get_responsive_css( $attr['align'], 'Mobile' ) );
 	}
 
-	if ( isset( $attr['imageBorder'] ) ) {
-		$image_border        = $attr['imageBorder'];
+	if ( isset( $attr['groupIconBorder'] ) ) {
+		$image_border        = $attr['groupIconBorder'];
 		$image_border_width  = $image_border['borderWidth'];
 		$image_border_radius = $image_border['borderRadius'];
 
