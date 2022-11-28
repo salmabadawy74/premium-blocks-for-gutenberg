@@ -39966,8 +39966,7 @@ const {
   TextControl,
   TextareaControl,
   ToggleControl,
-  Placeholder,
-  Button
+  Placeholder
 } = wp.components;
 const {
   useEffect,
@@ -40219,10 +40218,6 @@ function Edit(props) {
       "padding-right": `${mapPadding === null || mapPadding === void 0 ? void 0 : (_mapPadding$props$dev2 = mapPadding[props.deviceType]) === null || _mapPadding$props$dev2 === void 0 ? void 0 : _mapPadding$props$dev2.right}${mapPadding.unit}`,
       "padding-bottom": `${mapPadding === null || mapPadding === void 0 ? void 0 : (_mapPadding$props$dev3 = mapPadding[props.deviceType]) === null || _mapPadding$props$dev3 === void 0 ? void 0 : _mapPadding$props$dev3.bottom}${mapPadding.unit}`,
       "padding-left": `${mapPadding === null || mapPadding === void 0 ? void 0 : (_mapPadding$props$dev4 = mapPadding[props.deviceType]) === null || _mapPadding$props$dev4 === void 0 ? void 0 : _mapPadding$props$dev4.left}${mapPadding.unit}`,
-      // 'margin-top': `${mapMargin?.[props.deviceType]?.top}${mapMargin.unit} !important`,
-      // 'margin-right': `${mapMargin?.[props.deviceType]?.right}${mapMargin.unit} !important`,
-      // 'margin-bottom': `${mapMargin?.[props.deviceType]?.bottom}${mapMargin.unit} !important`,
-      // 'margin-left': `${mapMargin?.[props.deviceType]?.left}${mapMargin.unit} !important`,
       "box-shadow": `${mapBoxShadow.horizontal}px ${mapBoxShadow.vertical}px ${mapBoxShadow.blur}px ${mapBoxShadow.color} ${mapBoxShadow === null || mapBoxShadow === void 0 ? void 0 : mapBoxShadow.position} !important`
     };
     styles[`.${blockId} .map-container`] = {
