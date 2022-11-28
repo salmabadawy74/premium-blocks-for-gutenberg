@@ -25,8 +25,7 @@ const {
     TextControl,
     TextareaControl,
     ToggleControl,
-    Placeholder,
-    Button,
+    Placeholder
 } = wp.components;
 const { useEffect, Fragment, useState, useRef } = wp.element;
 const { InspectorControls, useBlockProps } = wp.blockEditor;
@@ -230,147 +229,105 @@ function Edit(props) {
         styles[`.${blockId} .${classNames}__title`] = {
             color: `${titleColor}`,
             "font-family": `${titleTypography?.fontFamily}!important`,
-            "font-size": `${titleTypography?.fontSize?.[props.deviceType]}${
-                titleTypography?.fontSize?.unit
-            }`,
+            "font-size": `${titleTypography?.fontSize?.[props.deviceType]}${titleTypography?.fontSize?.unit
+                }`,
             "font-weight": `${titleTypography?.fontWeight}!important`,
-            "letter-spacing": `${
-                titleTypography?.letterSpacing?.[props.deviceType]
-            }${titleTypography?.letterSpacing?.unit}`,
-            "line-height": `${titleTypography?.lineHeight?.[props.deviceType]}${
-                titleTypography?.lineHeight?.unit
-            }`,
+            "letter-spacing": `${titleTypography?.letterSpacing?.[props.deviceType]
+                }${titleTypography?.letterSpacing?.unit}`,
+            "line-height": `${titleTypography?.lineHeight?.[props.deviceType]}${titleTypography?.lineHeight?.unit
+                }`,
             "font-style": `${titleTypography?.fontStyle}`,
             "text-transform": `${titleTypography?.textTransform}`,
             "text-decoration": `${titleTypography?.textDecoration}`,
-            "padding-top": `${titlePadding?.[props.deviceType]?.top}${
-                titlePadding.unit
-            }!important`,
-            "padding-right": `${titlePadding?.[props.deviceType]?.right}${
-                titlePadding.unit
-            }!important`,
-            "padding-bottom": `${titlePadding?.[props.deviceType]?.bottom}${
-                titlePadding.unit
-            }!important`,
-            "padding-left": `${titlePadding?.[props.deviceType]?.left}${
-                titlePadding.unit
-            }!important`,
-            "margin-top": `${titleMargin?.[props.deviceType]?.top}${
-                titleMargin.unit
-            }!important`,
-            "margin-right": `${titleMargin?.[props.deviceType]?.right}${
-                titleMargin.unit
-            }!important`,
-            "margin-bottom": `${titleMargin?.[props.deviceType]?.bottom}${
-                titleMargin.unit
-            }!important`,
-            "margin-left": `${titleMargin?.[props.deviceType]?.left}${
-                titleMargin.unit
-            }!important`,
+            "padding-top": `${titlePadding?.[props.deviceType]?.top}${titlePadding.unit
+                }!important`,
+            "padding-right": `${titlePadding?.[props.deviceType]?.right}${titlePadding.unit
+                }!important`,
+            "padding-bottom": `${titlePadding?.[props.deviceType]?.bottom}${titlePadding.unit
+                }!important`,
+            "padding-left": `${titlePadding?.[props.deviceType]?.left}${titlePadding.unit
+                }!important`,
+            "margin-top": `${titleMargin?.[props.deviceType]?.top}${titleMargin.unit
+                }!important`,
+            "margin-right": `${titleMargin?.[props.deviceType]?.right}${titleMargin.unit
+                }!important`,
+            "margin-bottom": `${titleMargin?.[props.deviceType]?.bottom}${titleMargin.unit
+                }!important`,
+            "margin-left": `${titleMargin?.[props.deviceType]?.left}${titleMargin.unit
+                }!important`,
         };
 
         styles[`.${blockId} .${classNames}__desc`] = {
             color: `${descColor}`,
             "text-align": `${boxAlign?.[props.deviceType]}!important`,
             "font-family": `${descriptionTypography?.fontFamily}`,
-            "font-size": `${
-                descriptionTypography?.fontSize?.[props.deviceType]
-            }${descriptionTypography?.fontSize?.unit}`,
+            "font-size": `${descriptionTypography?.fontSize?.[props.deviceType]
+                }${descriptionTypography?.fontSize?.unit}`,
             "font-weight": `${descriptionTypography?.fontWeight}`,
-            "letter-spacing": `${
-                descriptionTypography?.letterSpacing?.[props.deviceType]
-            }${descriptionTypography?.letterSpacing?.unit}`,
-            "line-height": `${
-                descriptionTypography?.lineHeight?.[props.deviceType]
-            }${descriptionTypography?.lineHeight?.unit}`,
+            "letter-spacing": `${descriptionTypography?.letterSpacing?.[props.deviceType]
+                }${descriptionTypography?.letterSpacing?.unit}`,
+            "line-height": `${descriptionTypography?.lineHeight?.[props.deviceType]
+                }${descriptionTypography?.lineHeight?.unit}`,
             "font-style": `${descriptionTypography?.fontStyle}`,
             "text-transform": `${descriptionTypography?.textTransform}`,
             "text-decoration": `${descriptionTypography?.textDecoration}`,
-            "padding-top": `${descriptionMargin?.[props.deviceType]?.top}${
-                descriptionMargin.unit
-            }!important`,
-            "padding-right": `${descriptionMargin?.[props.deviceType]?.right}${
-                descriptionMargin.unit
-            }!important`,
-            "padding-bottom": `${
-                descriptionMargin?.[props.deviceType]?.bottom
-            }${descriptionMargin.unit}!important`,
-            "padding-left": `${descriptionMargin?.[props.deviceType]?.left}${
-                descriptionMargin.unit
-            }!important`,
-            "margin-top": `${descriptionPadding?.[props.deviceType]?.top}${
-                descriptionPadding.unit
-            }!important`,
-            "margin-right": `${descriptionPadding?.[props.deviceType]?.right}${
-                descriptionPadding.unit
-            }!important`,
-            "margin-bottom": `${
-                descriptionPadding?.[props.deviceType]?.bottom
-            }${descriptionPadding.unit}!important`,
-            "margin-left": `${descriptionPadding?.[props.deviceType]?.left}${
-                descriptionPadding.unit
-            }!important`,
+            "padding-top": `${descriptionMargin?.[props.deviceType]?.top}${descriptionMargin.unit
+                }!important`,
+            "padding-right": `${descriptionMargin?.[props.deviceType]?.right}${descriptionMargin.unit
+                }!important`,
+            "padding-bottom": `${descriptionMargin?.[props.deviceType]?.bottom
+                }${descriptionMargin.unit}!important`,
+            "padding-left": `${descriptionMargin?.[props.deviceType]?.left}${descriptionMargin.unit
+                }!important`,
+            "margin-top": `${descriptionPadding?.[props.deviceType]?.top}${descriptionPadding.unit
+                }!important`,
+            "margin-right": `${descriptionPadding?.[props.deviceType]?.right}${descriptionPadding.unit
+                }!important`,
+            "margin-bottom": `${descriptionPadding?.[props.deviceType]?.bottom
+                }${descriptionPadding.unit}!important`,
+            "margin-left": `${descriptionPadding?.[props.deviceType]?.left}${descriptionPadding.unit
+                }!important`,
         };
 
         styles[`.${blockId}`] = {
             "border-color": `${mapBorder.borderColor}`,
             "border-style": `${mapBorder.borderType}`,
-            "border-top-width": `${
-                mapBorder?.borderWidth?.[props.deviceType]?.top
-            }px`,
-            "border-right-width": `${
-                mapBorder?.borderWidth?.[props.deviceType]?.right
-            }px`,
-            "border-bottom-width": `${
-                mapBorder?.borderWidth?.[props.deviceType]?.bottom
-            }px`,
-            "border-left-width": `${
-                mapBorder?.borderWidth?.[props.deviceType]?.left
-            }px`,
-            "border-top-left-radius": `${
-                mapBorder?.borderRadius?.[props.deviceType]?.top
-            }px !important`,
-            "border-top-right-radius": `${
-                mapBorder?.borderRadius?.[props.deviceType]?.right
-            }px !important`,
-            "border-bottom-left-radius": `${
-                mapBorder?.borderRadius?.[props.deviceType]?.bottom
-            }px !important`,
-            "border-bottom-right-radius": `${
-                mapBorder?.borderRadius?.[props.deviceType]?.left
-            }px !important`,
-            "padding-top": `${mapPadding?.[props.deviceType]?.top}${
-                mapPadding.unit
-            }`,
-            "padding-right": `${mapPadding?.[props.deviceType]?.right}${
-                mapPadding.unit
-            }`,
-            "padding-bottom": `${mapPadding?.[props.deviceType]?.bottom}${
-                mapPadding.unit
-            }`,
-            "padding-left": `${mapPadding?.[props.deviceType]?.left}${
-                mapPadding.unit
-            }`,
-            // 'margin-top': `${mapMargin?.[props.deviceType]?.top}${mapMargin.unit} !important`,
-            // 'margin-right': `${mapMargin?.[props.deviceType]?.right}${mapMargin.unit} !important`,
-            // 'margin-bottom': `${mapMargin?.[props.deviceType]?.bottom}${mapMargin.unit} !important`,
-            // 'margin-left': `${mapMargin?.[props.deviceType]?.left}${mapMargin.unit} !important`,
+            "border-top-width": `${mapBorder?.borderWidth?.[props.deviceType]?.top
+                }px`,
+            "border-right-width": `${mapBorder?.borderWidth?.[props.deviceType]?.right
+                }px`,
+            "border-bottom-width": `${mapBorder?.borderWidth?.[props.deviceType]?.bottom
+                }px`,
+            "border-left-width": `${mapBorder?.borderWidth?.[props.deviceType]?.left
+                }px`,
+            "border-top-left-radius": `${mapBorder?.borderRadius?.[props.deviceType]?.top
+                }px !important`,
+            "border-top-right-radius": `${mapBorder?.borderRadius?.[props.deviceType]?.right
+                }px !important`,
+            "border-bottom-left-radius": `${mapBorder?.borderRadius?.[props.deviceType]?.bottom
+                }px !important`,
+            "border-bottom-right-radius": `${mapBorder?.borderRadius?.[props.deviceType]?.left
+                }px !important`,
+            "padding-top": `${mapPadding?.[props.deviceType]?.top}${mapPadding.unit
+                }`,
+            "padding-right": `${mapPadding?.[props.deviceType]?.right}${mapPadding.unit
+                }`,
+            "padding-bottom": `${mapPadding?.[props.deviceType]?.bottom}${mapPadding.unit
+                }`,
+            "padding-left": `${mapPadding?.[props.deviceType]?.left}${mapPadding.unit
+                }`,
             "box-shadow": `${mapBoxShadow.horizontal}px ${mapBoxShadow.vertical}px ${mapBoxShadow.blur}px ${mapBoxShadow.color} ${mapBoxShadow?.position} !important`,
         };
 
         styles[`.${blockId} .map-container`] = {
-            "border-top-left-radius": `${
-                mapBorder?.borderRadius?.[props.deviceType]?.top
-            }px !important`,
-            "border-top-right-radius": `${
-                mapBorder?.borderRadius?.[props.deviceType]?.right
-            }px !important`,
-            "border-bottom-left-radius": `${
-                mapBorder?.borderRadius?.[props.deviceType]?.bottom
-            }px !important`,
-            "border-bottom-right-radius": `${
-                mapBorder?.borderRadius?.[props.deviceType]?.left
-            }px !important`,
+            "border-top-left-radius": `${mapBorder?.borderRadius?.[props.deviceType]?.top
+                }px !important`,
+            "border-top-right-radius": `${mapBorder?.borderRadius?.[props.deviceType]?.right
+                }px !important`,
+            "border-bottom-left-radius": `${mapBorder?.borderRadius?.[props.deviceType]?.bottom
+                }px !important`,
+            "border-bottom-right-radius": `${mapBorder?.borderRadius?.[props.deviceType]?.left
+                }px !important`,
         };
 
         return generateCss(styles);
@@ -426,9 +383,9 @@ function Edit(props) {
                                         >
                                             &nbsp;
                                             {__(
-                                                "here",
-                                                "premium-blocks-for-gutenberg"
-                                            )}
+                                            "here",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         </a>,
                                     ]}
                                     onChange={(newLng) =>
@@ -690,9 +647,9 @@ function Edit(props) {
                                         >
                                             &nbsp;
                                             {__(
-                                                "here",
-                                                "premium-blocks-for-gutenberg"
-                                            )}
+                                            "here",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         </a>,
                                     ]}
                                     onChange={(newStyle) =>
@@ -979,24 +936,24 @@ function Edit(props) {
                         />
                     </div>
                 ) : (
-                    <Placeholder
-                        label={__("Maps", "premium-blocks-for-gutenberg")}
-                        className={className}
-                    >
-                        <div>
-                            {__(
-                                "Premium Maps requires an API key.",
-                                "premium-blocks-for-gutenberg"
-                            )}{" "}
-                            <a target="_blank" href={setting_url}>
+                        <Placeholder
+                            label={__("Maps", "premium-blocks-for-gutenberg")}
+                            className={className}
+                        >
+                            <div>
                                 {__(
-                                    "Add API key here",
+                                    "Premium Maps requires an API key.",
                                     "premium-blocks-for-gutenberg"
-                                )}
-                            </a>
-                        </div>
-                    </Placeholder>
-                )}
+                                )}{" "}
+                                <a target="_blank" href={setting_url}>
+                                    {__(
+                                        "Add API key here",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                </a>
+                            </div>
+                        </Placeholder>
+                    )}
                 <style>{loadStyles()}</style>
                 {loadDescriptionGoogleFonts}
                 {loadTitleGoogleFonts}
