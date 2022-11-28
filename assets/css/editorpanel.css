@@ -4471,7 +4471,7 @@ i.fipicon-angle-left:before {
 
 .premium-spacing-responsive-wrapper {
   margin-right: 6px;
-  width: 100%; }
+  width: 100% !important; }
 
 input::-webkit-outer-spin-button {
   -webkit-appearance: none;

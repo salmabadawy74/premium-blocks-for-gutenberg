@@ -69,8 +69,8 @@ function Edit(props) {
             // titleContainers.forEach(function (titleContainer) {
             if (titleContainers.classList.contains("style8")) {
                 let titleElement = titleContainers.querySelector(
-                        ".premium-title-text-title"
-                    ),
+                    ".premium-title-text-title"
+                ),
                     holdTime = titleStyles[0].animateDelay * 1000,
                     duration = titleStyles[0].animateduration * 1000;
 
@@ -351,13 +351,13 @@ function Edit(props) {
     ) {
         btnGrad =
             "transparent" === iconBackground.backgroundColor ||
-            undefined === iconBackground.backgroundColor
+                undefined === iconBackground.backgroundColor
                 ? "rgba(255,255,255,0)"
                 : iconBackground.backgroundColor;
         btnGrad2 =
             undefined !== iconBackground.gradientColorTwo &&
-            undefined !== iconBackground.gradientColorTwo &&
-            "" !== iconBackground.gradientColorTwo
+                undefined !== iconBackground.gradientColorTwo &&
+                "" !== iconBackground.gradientColorTwo
                 ? iconBackground.gradientColorTwo
                 : "#777";
         if ("radial" === iconBackground.gradientType) {
@@ -383,88 +383,65 @@ function Edit(props) {
         };
         styles[`.${blockId} .premium-title-header`] = {
             "--shadow-color": `${titleStyles[0].blurColor}!important`,
-            "--shadow-value": `${titleStyles[0].blurShadow}px!important`,
-            color: `${titleStyles[0].titleColor}!important`,
+            "--shadow-value": `${titleStyles[0].blurShadow}px!important`
         };
         styles[`.${blockId} .premium-title .default .premium-title-header`] = {
             "border-color": `${titleBorder.borderColor}!important`,
-            "border-style": `${
-                titleBorder.borderType == "none"
-                    ? "none"
-                    : `${titleBorder.borderType} !important`
-            }`,
-            "border-top-width": `${
-                titleBorder?.borderWidth?.[props.deviceType]?.top
-            }px!important`,
-            "border-right-width": `${
-                titleBorder?.borderWidth?.[props.deviceType]?.right
-            }px!important`,
-            "border-bottom-width": `${
-                titleBorder?.borderWidth?.[props.deviceType]?.bottom
-            }px!important`,
-            "border-left-width": `${
-                titleBorder?.borderWidth?.[props.deviceType]?.left
-            }px!important`,
-            "border-top-left-radius": `${
-                titleBorder?.borderRadius?.[props.deviceType]?.top
-            }px!important`,
-            "border-top-right-radius": `${
-                titleBorder?.borderRadius?.[props.deviceType]?.right
-            }px!important`,
-            "border-bottom-left-radius": `${
-                titleBorder?.borderRadius?.[props.deviceType]?.bottom
-            }px!important`,
-            "border-bottom-right-radius": `${
-                titleBorder?.borderRadius?.[props.deviceType]?.left
-            }px!important`,
+            "border-style": `${titleBorder.borderType == "none"
+                ? "none"
+                : `${titleBorder.borderType} !important`
+                }`,
+            "border-top-width": `${titleBorder?.borderWidth?.[props.deviceType]?.top
+                }px!important`,
+            "border-right-width": `${titleBorder?.borderWidth?.[props.deviceType]?.right
+                }px!important`,
+            "border-bottom-width": `${titleBorder?.borderWidth?.[props.deviceType]?.bottom
+                }px!important`,
+            "border-left-width": `${titleBorder?.borderWidth?.[props.deviceType]?.left
+                }px!important`,
+            "border-top-left-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.top
+                }px!important`,
+            "border-top-right-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.right
+                }px!important`,
+            "border-bottom-left-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.bottom
+                }px!important`,
+            "border-bottom-right-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.left
+                }px!important`,
         };
         styles[`.${blockId} .premium-title .style1 .premium-title-header`] = {
             "border-color": `${titleBorder.borderColor}!important`,
-            "border-style": `${
-                titleBorder.borderType == "none"
-                    ? "none"
-                    : `${titleBorder.borderType} !important`
-            }`,
-            "border-top-width": `${
-                titleBorder?.borderWidth?.[props.deviceType]?.top
-            }px!important`,
-            "border-right-width": `${
-                titleBorder?.borderWidth?.[props.deviceType]?.right
-            }px!important`,
-            "border-bottom-width": `${
-                titleBorder?.borderWidth?.[props.deviceType]?.bottom
-            }px!important`,
-            "border-left-width": `${
-                titleBorder?.borderWidth?.[props.deviceType]?.left
-            }px!important`,
-            "border-top-left-radius": `${
-                titleBorder?.borderRadius?.[props.deviceType]?.top
-            }px!important`,
-            "border-top-right-radius": `${
-                titleBorder?.borderRadius?.[props.deviceType]?.right
-            }px!important`,
-            "border-bottom-left-radius": `${
-                titleBorder?.borderRadius?.[props.deviceType]?.bottom
-            }px!important`,
-            "border-bottom-right-radius": `${
-                titleBorder?.borderRadius?.[props.deviceType]?.left
-            }px!important`,
+            "border-style": `${titleBorder.borderType == "none"
+                ? "none"
+                : `${titleBorder.borderType} !important`
+                }`,
+            "border-top-width": `${titleBorder?.borderWidth?.[props.deviceType]?.top
+                }px!important`,
+            "border-right-width": `${titleBorder?.borderWidth?.[props.deviceType]?.right
+                }px!important`,
+            "border-bottom-width": `${titleBorder?.borderWidth?.[props.deviceType]?.bottom
+                }px!important`,
+            "border-left-width": `${titleBorder?.borderWidth?.[props.deviceType]?.left
+                }px!important`,
+            "border-top-left-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.top
+                }px!important`,
+            "border-top-right-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.right
+                }px!important`,
+            "border-bottom-left-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.bottom
+                }px!important`,
+            "border-bottom-right-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.left
+                }px!important`,
             "border-left":
                 titleBorder?.borderWidth?.[props.deviceType]?.left >= "1"
-                    ? `${
-                          titleBorder?.borderWidth?.[props.deviceType]?.left
-                      }px ${titleBorder.borderType} ${
-                          titleBorder.borderColor
-                      }!important`
+                    ? `${titleBorder?.borderWidth?.[props.deviceType]?.left
+                    }px ${titleBorder.borderType} ${titleBorder.borderColor
+                    }!important`
                     : "",
-            "border-left-style": `${
-                titleBorder.borderType == "none"
-                    ? "solid"
-                    : titleBorder.borderType
-            }`,
-            "border-left-width": `${
-                titleBorder.borderType == "none" ? "3px" : ""
-            }`,
+            "border-left-style": `${titleBorder.borderType == "none"
+                ? "solid"
+                : titleBorder.borderType
+                }`,
+            "border-left-width": `${titleBorder.borderType == "none" ? "3px" : ""
+                }`,
             "border-left-color":
                 titleBorder.borderType == "none"
                     ? "var(--pbg-global-color1,#793DC4)"
@@ -474,46 +451,34 @@ function Edit(props) {
         styles[`.${blockId} .premium-title .style2`] = {
             "border-color": `${titleBorder.borderColor}!important`,
             "border-style": `${titleBorder.borderType}`,
-            "border-top-width": `${
-                titleBorder?.borderWidth?.[props.deviceType]?.top
-            }px!important`,
-            "border-right-width": `${
-                titleBorder?.borderWidth?.[props.deviceType]?.right
-            }px!important`,
-            "border-bottom-width": `${
-                titleBorder?.borderWidth?.[props.deviceType]?.bottom
-            }px!important`,
-            "border-left-width": `${
-                titleBorder?.borderWidth?.[props.deviceType]?.left
-            }px!important`,
-            "border-top-left-radius": `${
-                titleBorder?.borderRadius?.[props.deviceType]?.top
-            }px!important`,
-            "border-top-right-radius": `${
-                titleBorder?.borderRadius?.[props.deviceType]?.right
-            }px!important`,
-            "border-bottom-left-radius": `${
-                titleBorder?.borderRadius?.[props.deviceType]?.bottom
-            }px!important`,
-            "border-bottom-right-radius": `${
-                titleBorder?.borderRadius?.[props.deviceType]?.left
-            }px!important`,
+            "border-top-width": `${titleBorder?.borderWidth?.[props.deviceType]?.top
+                }px!important`,
+            "border-right-width": `${titleBorder?.borderWidth?.[props.deviceType]?.right
+                }px!important`,
+            "border-bottom-width": `${titleBorder?.borderWidth?.[props.deviceType]?.bottom
+                }px!important`,
+            "border-left-width": `${titleBorder?.borderWidth?.[props.deviceType]?.left
+                }px!important`,
+            "border-top-left-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.top
+                }px!important`,
+            "border-top-right-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.right
+                }px!important`,
+            "border-bottom-left-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.bottom
+                }px!important`,
+            "border-bottom-right-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.left
+                }px!important`,
             "border-bottom":
                 titleBorder?.borderWidth?.[props.deviceType]?.bottom >= "0"
-                    ? `${
-                          titleBorder?.borderWidth?.[props.deviceType]?.bottom
-                      }px ${titleBorder.borderType} ${
-                          titleBorder.borderColor
-                      }!important`
+                    ? `${titleBorder?.borderWidth?.[props.deviceType]?.bottom
+                    }px ${titleBorder.borderType} ${titleBorder.borderColor
+                    }!important`
                     : "",
-            "border-bottom-style": `${
-                titleBorder.borderType == "none"
-                    ? "solid"
-                    : titleBorder.borderType
-            }`,
-            "border-bottom-width": `${
-                titleBorder.borderType == "none" ? "3px" : ""
-            }`,
+            "border-bottom-style": `${titleBorder.borderType == "none"
+                ? "solid"
+                : titleBorder.borderType
+                }`,
+            "border-bottom-width": `${titleBorder.borderType == "none" ? "3px" : ""
+                }`,
             "border-bottom-color":
                 titleBorder.borderType == "none"
                     ? "var(--pbg-global-color1,#793DC4)"
@@ -523,46 +488,34 @@ function Edit(props) {
         styles[`.${blockId} .premium-title .style4`] = {
             "border-color": `${titleBorder.borderColor}!important`,
             "border-style": `${titleBorder.borderType}`,
-            "border-top-width": `${
-                titleBorder?.borderWidth?.[props.deviceType]?.top
-            }px!important`,
-            "border-right-width": `${
-                titleBorder?.borderWidth?.[props.deviceType]?.right
-            }px!important`,
-            "border-bottom-width": `${
-                titleBorder?.borderWidth?.[props.deviceType]?.bottom
-            }px!important`,
-            "border-left-width": `${
-                titleBorder?.borderWidth?.[props.deviceType]?.left
-            }px!important`,
-            "border-top-left-radius": `${
-                titleBorder?.borderRadius?.[props.deviceType]?.top
-            }px!important`,
-            "border-top-right-radius": `${
-                titleBorder?.borderRadius?.[props.deviceType]?.right
-            }px!important`,
-            "border-bottom-left-radius": `${
-                titleBorder?.borderRadius?.[props.deviceType]?.bottom
-            }px!important`,
-            "border-bottom-right-radius": `${
-                titleBorder?.borderRadius?.[props.deviceType]?.left
-            }px!important`,
+            "border-top-width": `${titleBorder?.borderWidth?.[props.deviceType]?.top
+                }px!important`,
+            "border-right-width": `${titleBorder?.borderWidth?.[props.deviceType]?.right
+                }px!important`,
+            "border-bottom-width": `${titleBorder?.borderWidth?.[props.deviceType]?.bottom
+                }px!important`,
+            "border-left-width": `${titleBorder?.borderWidth?.[props.deviceType]?.left
+                }px!important`,
+            "border-top-left-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.top
+                }px!important`,
+            "border-top-right-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.right
+                }px!important`,
+            "border-bottom-left-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.bottom
+                }px!important`,
+            "border-bottom-right-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.left
+                }px!important`,
             "border-bottom":
                 titleBorder?.borderWidth?.[props.deviceType]?.bottom >= "0"
-                    ? `${
-                          titleBorder?.borderWidth?.[props.deviceType]?.bottom
-                      }px ${titleBorder.borderType} ${
-                          titleBorder.borderColor
-                      }!important`
+                    ? `${titleBorder?.borderWidth?.[props.deviceType]?.bottom
+                    }px ${titleBorder.borderType} ${titleBorder.borderColor
+                    }!important`
                     : "",
-            "border-bottom-style": `${
-                titleBorder.borderType == "none"
-                    ? "solid"
-                    : titleBorder.borderType
-            }`,
-            "border-bottom-width": `${
-                titleBorder.borderType == "none" ? "3px" : ""
-            }`,
+            "border-bottom-style": `${titleBorder.borderType == "none"
+                ? "solid"
+                : titleBorder.borderType
+                }`,
+            "border-bottom-width": `${titleBorder.borderType == "none" ? "3px" : ""
+                }`,
             "border-bottom-color":
                 titleBorder.borderType == "none"
                     ? "var(--pbg-global-color1,#793DC4)"
@@ -572,46 +525,34 @@ function Edit(props) {
         styles[`.${blockId} .premium-title .style5`] = {
             "border-color": `${titleBorder.borderColor}!important`,
             "border-style": `${titleBorder.borderType}`,
-            "border-top-width": `${
-                titleBorder?.borderWidth?.[props.deviceType]?.top
-            }px!important`,
-            "border-right-width": `${
-                titleBorder?.borderWidth?.[props.deviceType]?.right
-            }px!important`,
-            "border-bottom-width": `${
-                titleBorder?.borderWidth?.[props.deviceType]?.bottom
-            }px!important`,
-            "border-left-width": `${
-                titleBorder?.borderWidth?.[props.deviceType]?.left
-            }px!important`,
-            "border-top-left-radius": `${
-                titleBorder?.borderRadius?.[props.deviceType]?.top
-            }px!important`,
-            "border-top-right-radius": `${
-                titleBorder?.borderRadius?.[props.deviceType]?.right
-            }px!important`,
-            "border-bottom-left-radius": `${
-                titleBorder?.borderRadius?.[props.deviceType]?.bottom
-            }px!important`,
-            "border-bottom-right-radius": `${
-                titleBorder?.borderRadius?.[props.deviceType]?.left
-            }px!important`,
+            "border-top-width": `${titleBorder?.borderWidth?.[props.deviceType]?.top
+                }px!important`,
+            "border-right-width": `${titleBorder?.borderWidth?.[props.deviceType]?.right
+                }px!important`,
+            "border-bottom-width": `${titleBorder?.borderWidth?.[props.deviceType]?.bottom
+                }px!important`,
+            "border-left-width": `${titleBorder?.borderWidth?.[props.deviceType]?.left
+                }px!important`,
+            "border-top-left-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.top
+                }px!important`,
+            "border-top-right-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.right
+                }px!important`,
+            "border-bottom-left-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.bottom
+                }px!important`,
+            "border-bottom-right-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.left
+                }px!important`,
             "border-bottom":
                 titleBorder?.borderWidth?.[props.deviceType]?.bottom >= "0"
-                    ? `${
-                          titleBorder?.borderWidth?.[props.deviceType]?.bottom
-                      }px ${titleBorder.borderType} ${
-                          titleBorder.borderColor
-                      }!important`
+                    ? `${titleBorder?.borderWidth?.[props.deviceType]?.bottom
+                    }px ${titleBorder.borderType} ${titleBorder.borderColor
+                    }!important`
                     : "",
-            "border-bottom-style": `${
-                titleBorder.borderType == "none"
-                    ? "solid"
-                    : titleBorder.borderType
-            }`,
-            "border-bottom-width": `${
-                titleBorder.borderType == "none" ? "3px" : ""
-            }`,
+            "border-bottom-style": `${titleBorder.borderType == "none"
+                ? "solid"
+                : titleBorder.borderType
+                }`,
+            "border-bottom-width": `${titleBorder.borderType == "none" ? "3px" : ""
+                }`,
             "border-bottom-color":
                 titleBorder.borderType == "none"
                     ? "var(--pbg-global-color1,#793DC4)"
@@ -621,46 +562,34 @@ function Edit(props) {
         styles[`.${blockId} .premium-title .style6`] = {
             "border-color": `${titleBorder.borderColor}!important`,
             "border-style": `${titleBorder.borderType}`,
-            "border-top-width": `${
-                titleBorder?.borderWidth?.[props.deviceType]?.top
-            }px!important`,
-            "border-right-width": `${
-                titleBorder?.borderWidth?.[props.deviceType]?.right
-            }px!important`,
-            "border-bottom-width": `${
-                titleBorder?.borderWidth?.[props.deviceType]?.bottom
-            }px!important`,
-            "border-left-width": `${
-                titleBorder?.borderWidth?.[props.deviceType]?.left
-            }px!important`,
-            "border-top-left-radius": `${
-                titleBorder?.borderRadius?.[props.deviceType]?.top
-            }px!important`,
-            "border-top-right-radius": `${
-                titleBorder?.borderRadius?.[props.deviceType]?.right
-            }px!important`,
-            "border-bottom-left-radius": `${
-                titleBorder?.borderRadius?.[props.deviceType]?.bottom
-            }px!important`,
-            "border-bottom-right-radius": `${
-                titleBorder?.borderRadius?.[props.deviceType]?.left
-            }px!important`,
+            "border-top-width": `${titleBorder?.borderWidth?.[props.deviceType]?.top
+                }px!important`,
+            "border-right-width": `${titleBorder?.borderWidth?.[props.deviceType]?.right
+                }px!important`,
+            "border-bottom-width": `${titleBorder?.borderWidth?.[props.deviceType]?.bottom
+                }px!important`,
+            "border-left-width": `${titleBorder?.borderWidth?.[props.deviceType]?.left
+                }px!important`,
+            "border-top-left-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.top
+                }px!important`,
+            "border-top-right-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.right
+                }px!important`,
+            "border-bottom-left-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.bottom
+                }px!important`,
+            "border-bottom-right-radius": `${titleBorder?.borderRadius?.[props.deviceType]?.left
+                }px!important`,
             "border-bottom":
                 titleBorder?.borderWidth?.[props.deviceType]?.bottom >= "0"
-                    ? `${
-                          titleBorder?.borderWidth?.[props.deviceType]?.bottom
-                      }px ${titleBorder.borderType} ${
-                          titleBorder.borderColor
-                      }!important`
+                    ? `${titleBorder?.borderWidth?.[props.deviceType]?.bottom
+                    }px ${titleBorder.borderType} ${titleBorder.borderColor
+                    }!important`
                     : "",
-            "border-bottom-style": `${
-                titleBorder.borderType == "none"
-                    ? "solid"
-                    : titleBorder.borderType
-            }`,
-            "border-bottom-width": `${
-                titleBorder.borderType == "none" ? "3px" : ""
-            }`,
+            "border-bottom-style": `${titleBorder.borderType == "none"
+                ? "solid"
+                : titleBorder.borderType
+                }`,
+            "border-bottom-width": `${titleBorder.borderType == "none" ? "3px" : ""
+                }`,
             "border-bottom-color":
                 titleBorder.borderType == "none"
                     ? "var(--pbg-global-color1,#793DC4)"
@@ -689,47 +618,36 @@ function Edit(props) {
 
         styles[`.${blockId} .premium-title-icon`] = {
             color: `${iconStyles[0].iconColor} !important`,
-            "background-color": `${
-                iconBackground.backgroundType === "solid"
-                    ? iconBackground.backgroundColor
-                    : "transparent"
-            } !important`,
+            "background-color": `${iconBackground.backgroundType === "solid"
+                ? iconBackground.backgroundColor
+                : "transparent"
+                } !important`,
             "background-image": `${btnbg} !important`,
             "background-repeat": `${iconBackground.backgroundRepeat} !important`,
             "background-position": `${iconBackground.backgroundPosition} !important`,
             "background-size": `${iconBackground.backgroundSize} !important`,
-            "background-attachment": `${
-                iconBackground.fixed ? "fixed" : "unset"
-            } !important`,
-            "font-size": `${iconSize?.[props.deviceType]}${
-                iconSize?.unit
-            } !important`,
+            "background-attachment": `${iconBackground.fixed ? "fixed" : "unset"
+                } !important`,
+            "font-size": `${iconSize?.[props.deviceType]}${iconSize?.unit
+                } !important`,
             "border-color": `${iconBorder.borderColor}!important`,
             "border-style": `${iconBorder.borderType}`,
-            "border-top-width": `${
-                iconBorder?.borderWidth?.[props.deviceType]?.top
-            }px!important`,
-            "border-right-width": `${
-                iconBorder?.borderWidth?.[props.deviceType]?.right
-            }px!important`,
-            "border-bottom-width": `${
-                iconBorder?.borderWidth?.[props.deviceType]?.bottom
-            }px!important`,
-            "border-left-width": `${
-                iconBorder?.borderWidth?.[props.deviceType]?.left
-            }px!important`,
-            "border-top-left-radius": `${
-                iconBorder?.borderRadius?.[props.deviceType]?.top
-            }px!important`,
-            "border-top-right-radius": `${
-                iconBorder?.borderRadius?.[props.deviceType]?.right
-            }px!important`,
-            "border-bottom-left-radius": `${
-                iconBorder?.borderRadius?.[props.deviceType]?.bottom
-            }px!important`,
-            "border-bottom-right-radius": `${
-                iconBorder?.borderRadius?.[props.deviceType]?.left
-            }px!important`,
+            "border-top-width": `${iconBorder?.borderWidth?.[props.deviceType]?.top
+                }px!important`,
+            "border-right-width": `${iconBorder?.borderWidth?.[props.deviceType]?.right
+                }px!important`,
+            "border-bottom-width": `${iconBorder?.borderWidth?.[props.deviceType]?.bottom
+                }px!important`,
+            "border-left-width": `${iconBorder?.borderWidth?.[props.deviceType]?.left
+                }px!important`,
+            "border-top-left-radius": `${iconBorder?.borderRadius?.[props.deviceType]?.top
+                }px!important`,
+            "border-top-right-radius": `${iconBorder?.borderRadius?.[props.deviceType]?.right
+                }px!important`,
+            "border-bottom-left-radius": `${iconBorder?.borderRadius?.[props.deviceType]?.bottom
+                }px!important`,
+            "border-bottom-right-radius": `${iconBorder?.borderRadius?.[props.deviceType]?.left
+                }px!important`,
             "padding-top": `${IconPaddingTop}${iconPadding.unit} !important`,
             "padding-right": `${IconPaddingRight}${iconPadding.unit} !important`,
             "padding-bottom": `${IconPaddingBottom}${iconPadding.unit} !important`,
@@ -743,16 +661,14 @@ function Edit(props) {
 
         styles[`.${blockId} .premium-lottie-animation svg`] = {
             width: `${iconSize?.[props.deviceType]}${iconSize?.unit}!important`,
-            height: `${iconSize?.[props.deviceType]}${
-                iconSize?.unit
-            }!important`,
+            height: `${iconSize?.[props.deviceType]}${iconSize?.unit
+                }!important`,
         };
 
         styles[`.${blockId} .premium-title-header img`] = {
             width: `${iconSize?.[props.deviceType]}${iconSize?.unit}!important`,
-            height: `${iconSize?.[props.deviceType]}${
-                iconSize?.unit
-            }!important`,
+            height: `${iconSize?.[props.deviceType]}${iconSize?.unit
+                }!important`,
         };
 
         styles[`.${blockId} .premium-title-bg-text:before`] = {
@@ -760,72 +676,58 @@ function Edit(props) {
             width: `${textWidth}`,
             color: `${textStyles[0].textBackColor}`,
             "font-family": `${textTypography?.fontFamily}`,
-            "font-size": `${textTypography?.fontSize?.[props.deviceType]}${
-                textTypography?.fontSize?.unit
-            }`,
+            "font-size": `${textTypography?.fontSize?.[props.deviceType]}${textTypography?.fontSize?.unit
+                }`,
             "font-weight": `${textTypography?.fontWeight}`,
-            "letter-spacing": `${
-                textTypography?.letterSpacing?.[props.deviceType]
-            }${textTypography?.letterSpacing?.unit}`,
-            "line-height": `${textTypography?.lineHeight?.[props.deviceType]}${
-                textTypography?.lineHeight?.unit
-            }`,
+            "letter-spacing": `${textTypography?.letterSpacing?.[props.deviceType]
+                }${textTypography?.letterSpacing?.unit}`,
+            "line-height": `${textTypography?.lineHeight?.[props.deviceType]}${textTypography?.lineHeight?.unit
+                }`,
             "font-style": `${textTypography?.fontStyle}`,
             "text-transform": `${textTypography?.textTransform}`,
             "text-decoration": `${textTypography?.textDecoration}`,
             "mix-blend-mode": `${blend} !important`,
             "text-shadow": `${textBackshadow.horizontal}px ${textBackshadow.vertical}px ${textBackshadow.blur}px ${textBackshadow.color} !important`,
             "z-index": `${zIndex} !important`,
-            top: `${verticalText?.[props.deviceType]}${
-                verticalText?.unit
-            } !important`,
-            left: `${horizontalText?.[props.deviceType]}${
-                horizontalText?.unit
-            } !important`,
-            transform: `rotate(${
-                rotateText?.[props.deviceType]
-            }deg) !important`,
+            top: `${verticalText?.[props.deviceType]}${verticalText?.unit
+                } !important`,
+            left: `${horizontalText?.[props.deviceType]}${horizontalText?.unit
+                } !important`,
+            transform: `rotate(${rotateText?.[props.deviceType]
+                }deg) !important`,
             "-webkit-text-stroke-color": `${strokeStyles[0].strokeColor} !important`,
-            "-webkit-text-stroke-width": `${
-                strokeFull?.[props.deviceType]
-            }px !important`,
+            "-webkit-text-stroke-width": `${strokeFull?.[props.deviceType]
+                }px !important`,
         };
 
         styles[`.${blockId} .premium-title-style7-stripe-span`] = {
-            width: `${stripeWidth?.[props.deviceType]}${
-                stripeWidth?.unit
-            }!important`,
-            height: `${stripeHeight?.[props.deviceType]}${
-                stripeHeight?.unit
-            }!important`,
+            width: `${stripeWidth?.[props.deviceType]}${stripeWidth?.unit
+                }!important`,
+            height: `${stripeHeight?.[props.deviceType]}${stripeHeight?.unit
+                }!important`,
             "background-color": `${titleStyles[0].stripeColor}!important`,
         };
 
         styles[`.${blockId} .premium-title-style7-stripe__wrap`] = {
-            "margin-top": `${stripeTopSpacing?.[props.deviceType]}${
-                stripeTopSpacing?.unit
-            }!important`,
-            "margin-bottom": `${stripeBottomSpacing?.[props.deviceType]}${
-                stripeBottomSpacing?.unit
-            }!important`,
+            "margin-top": `${stripeTopSpacing?.[props.deviceType]}${stripeTopSpacing?.unit
+                }!important`,
+            "margin-bottom": `${stripeBottomSpacing?.[props.deviceType]}${stripeBottomSpacing?.unit
+                }!important`,
         };
 
         styles[
             `.${blockId} .premium-title-style9__wrap .premium-letters-container .premium-title-style9-letter`
         ] = {
-            "font-family": `${titleTypography?.fontFamily}`,
-            "font-size": `${titleTypography?.fontSize?.[props.deviceType]}${
-                titleTypography?.fontSize?.unit
-            }`,
-            "font-weight": `${titleTypography?.fontWeight}`,
-            "letter-spacing": `${
-                titleTypography?.letterSpacing?.[props.deviceType]
-            }${titleTypography?.letterSpacing?.unit}`,
-            "line-height": `${titleTypography?.lineHeight?.[props.deviceType]}${
-                titleTypography?.lineHeight?.unit
-            }`,
-            "font-style": `${titleTypography?.fontStyle}`,
-            "text-shadow": `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color} !important`,
+            // "font-family": `${titleTypography?.fontFamily}`,
+            // "font-size": `${titleTypography?.fontSize?.[props.deviceType]}${titleTypography?.fontSize?.unit
+            //     }`,
+            // "font-weight": `${titleTypography?.fontWeight}`,
+            // "letter-spacing": `${titleTypography?.letterSpacing?.[props.deviceType]
+            //     }${titleTypography?.letterSpacing?.unit}`,
+            // "line-height": `${titleTypography?.lineHeight?.[props.deviceType]}${titleTypography?.lineHeight?.unit
+            //     }`,
+            // "font-style": `${titleTypography?.fontStyle}`,
+            // "text-shadow": `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color} !important`,
         };
 
         return generateCss(styles);
@@ -992,9 +894,9 @@ function Edit(props) {
                                                 help={
                                                     loop
                                                         ? __(
-                                                              "This option works only on the preview page",
-                                                              "premium-blocks-for-gutenberg"
-                                                          )
+                                                            "This option works only on the preview page",
+                                                            "premium-blocks-for-gutenberg"
+                                                        )
                                                         : ""
                                                 }
                                             />
@@ -1966,9 +1868,8 @@ function Edit(props) {
                 }}
             >
                 <div
-                    className={`premium-title  ${
-                        backgroundText ? "premium-title-bg-text" : ""
-                    }`}
+                    className={`premium-title  ${backgroundText ? "premium-title-bg-text" : ""
+                        }`}
                     style={{
                         textAlign: align?.[props.deviceType],
                     }}
@@ -1982,32 +1883,17 @@ function Edit(props) {
                         {React.createElement(
                             titleTag,
                             {
-                                className: `premium-title-header premium-title-${style}__wrap ${
-                                    iconValue ? iconPosition : ""
-                                } ${
-                                    iconPosition == "top"
+                                className: `premium-title-header premium-title-${style}__wrap ${iconValue ? iconPosition : ""
+                                    } ${iconPosition == "top"
                                         ? `premium-title-${iconAlign?.["Desktop"]} premium-title-tablet-${iconAlign?.["Tablet"]} premium-title-mobile-${iconAlign?.["Mobile"]}`
                                         : ""
-                                }`,
+                                    }`,
                                 "data-blur-delay": `${titleStyles[0].animateDelay}`,
-                                "data-shiny-dur": `${titleStyles[0].animateduration}`,
-                                style: {
-                                    ...paddingCss(
-                                        titlePadding,
-                                        props.deviceType
-                                    ),
-                                    ...marginCss(titleMargin, props.deviceType),
-                                    ...typographyCss(
-                                        titleTypography,
-                                        props.deviceType
-                                    ),
-                                    color: titleStyles[0].titleColor,
-                                    textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`,
-                                },
+                                "data-shiny-dur": `${titleStyles[0].animateduration}`
                             },
                             [
                                 <Fragment>
-                                    {style === "style7" ? (
+                                    {style === "style7" && (
                                         <Fragment>
                                             {iconPosition != "top" &&
                                                 iconValue && (
@@ -2053,10 +1939,10 @@ function Edit(props) {
                                                                     loop: loop,
                                                                     path: lottieURl,
                                                                     rendererSettings:
-                                                                        {
-                                                                            preserveAspectRatio:
-                                                                                "xMidYMid",
-                                                                        },
+                                                                    {
+                                                                        preserveAspectRatio:
+                                                                            "xMidYMid",
+                                                                    },
                                                                 }}
                                                                 direction={
                                                                     reverse
@@ -2085,11 +1971,23 @@ function Edit(props) {
                                                     }
                                                     style={{
                                                         minHeight: "15px",
+                                                        ...paddingCss(
+                                                            titlePadding,
+                                                            props.deviceType
+                                                        ),
+                                                        ...marginCss(titleMargin, props.deviceType),
+                                                        ...typographyCss(
+                                                            titleTypography,
+                                                            props.deviceType
+                                                        ),
+                                                        color: titleStyles[0].titleColor,
+                                                        textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`,
                                                     }}
                                                 />
                                             </div>
                                         </Fragment>
-                                    ) : style === "style9" ? (
+                                    )}
+                                    {style === "style9" && (
                                         <Fragment>
                                             {iconValue &&
                                                 iconType == "icon" && (
@@ -2113,10 +2011,10 @@ function Edit(props) {
                                                                 loop: loop,
                                                                 path: lottieURl,
                                                                 rendererSettings:
-                                                                    {
-                                                                        preserveAspectRatio:
-                                                                            "xMidYMid",
-                                                                    },
+                                                                {
+                                                                    preserveAspectRatio:
+                                                                        "xMidYMid",
+                                                                },
                                                             }}
                                                             direction={reverse}
                                                         />
@@ -2130,18 +2028,20 @@ function Edit(props) {
                                                         titlePadding,
                                                         props.deviceType
                                                     ),
-                                                    ...marginCss(
-                                                        titleMargin,
+                                                    ...marginCss(titleMargin, props.deviceType),
+                                                    ...typographyCss(
+                                                        titleTypography,
                                                         props.deviceType
                                                     ),
-                                                    color: titleStyles[0]
-                                                        .titleColor,
+                                                    color: titleStyles[0].titleColor,
+                                                    textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
                                                 }}
                                             >
                                                 {styleContainer}
                                             </span>
                                         </Fragment>
-                                    ) : (
+                                    )}
+                                    {(style !== "style9" && style !== "style7") && (
                                         <Fragment>
                                             {iconValue &&
                                                 iconType == "icon" && (
@@ -2165,10 +2065,10 @@ function Edit(props) {
                                                                 loop: loop,
                                                                 path: lottieURl,
                                                                 rendererSettings:
-                                                                    {
-                                                                        preserveAspectRatio:
-                                                                            "xMidYMid",
-                                                                    },
+                                                                {
+                                                                    preserveAspectRatio:
+                                                                        "xMidYMid",
+                                                                },
                                                             }}
                                                             direction={reverse}
                                                         />
@@ -2185,6 +2085,17 @@ function Edit(props) {
                                                 value={title}
                                                 style={{
                                                     minHeight: "15px",
+                                                    ...paddingCss(
+                                                        titlePadding,
+                                                        props.deviceType
+                                                    ),
+                                                    ...marginCss(titleMargin, props.deviceType),
+                                                    ...typographyCss(
+                                                        titleTypography,
+                                                        props.deviceType
+                                                    ),
+                                                    color: titleStyles[0].titleColor,
+                                                    textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`,
                                                 }}
                                             />
                                         </Fragment>

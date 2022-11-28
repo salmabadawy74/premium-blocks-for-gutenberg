@@ -28979,7 +28979,7 @@ function Edit(props) {
   }
 
   const loadStyles = () => {
-    var _titleBorder$borderWi, _titleBorder$borderWi2, _titleBorder$borderWi3, _titleBorder$borderWi4, _titleBorder$borderWi5, _titleBorder$borderWi6, _titleBorder$borderWi7, _titleBorder$borderWi8, _titleBorder$borderRa, _titleBorder$borderRa2, _titleBorder$borderRa3, _titleBorder$borderRa4, _titleBorder$borderRa5, _titleBorder$borderRa6, _titleBorder$borderRa7, _titleBorder$borderRa8, _titleBorder$borderWi9, _titleBorder$borderWi10, _titleBorder$borderWi11, _titleBorder$borderWi12, _titleBorder$borderWi13, _titleBorder$borderWi14, _titleBorder$borderWi15, _titleBorder$borderWi16, _titleBorder$borderRa9, _titleBorder$borderRa10, _titleBorder$borderRa11, _titleBorder$borderRa12, _titleBorder$borderRa13, _titleBorder$borderRa14, _titleBorder$borderRa15, _titleBorder$borderRa16, _titleBorder$borderWi17, _titleBorder$borderWi18, _titleBorder$borderWi19, _titleBorder$borderWi20, _titleBorder$borderWi21, _titleBorder$borderWi22, _titleBorder$borderWi23, _titleBorder$borderWi24, _titleBorder$borderWi25, _titleBorder$borderWi26, _titleBorder$borderWi27, _titleBorder$borderWi28, _titleBorder$borderRa17, _titleBorder$borderRa18, _titleBorder$borderRa19, _titleBorder$borderRa20, _titleBorder$borderRa21, _titleBorder$borderRa22, _titleBorder$borderRa23, _titleBorder$borderRa24, _titleBorder$borderWi29, _titleBorder$borderWi30, _titleBorder$borderWi31, _titleBorder$borderWi32, _titleBorder$borderWi33, _titleBorder$borderWi34, _titleBorder$borderWi35, _titleBorder$borderWi36, _titleBorder$borderWi37, _titleBorder$borderWi38, _titleBorder$borderWi39, _titleBorder$borderWi40, _titleBorder$borderRa25, _titleBorder$borderRa26, _titleBorder$borderRa27, _titleBorder$borderRa28, _titleBorder$borderRa29, _titleBorder$borderRa30, _titleBorder$borderRa31, _titleBorder$borderRa32, _titleBorder$borderWi41, _titleBorder$borderWi42, _titleBorder$borderWi43, _titleBorder$borderWi44, _titleBorder$borderWi45, _titleBorder$borderWi46, _titleBorder$borderWi47, _titleBorder$borderWi48, _titleBorder$borderWi49, _titleBorder$borderWi50, _titleBorder$borderWi51, _titleBorder$borderWi52, _titleBorder$borderRa33, _titleBorder$borderRa34, _titleBorder$borderRa35, _titleBorder$borderRa36, _titleBorder$borderRa37, _titleBorder$borderRa38, _titleBorder$borderRa39, _titleBorder$borderRa40, _titleBorder$borderWi53, _titleBorder$borderWi54, _titleBorder$borderWi55, _titleBorder$borderWi56, _titleBorder$borderWi57, _titleBorder$borderWi58, _titleBorder$borderWi59, _titleBorder$borderWi60, _titleBorder$borderWi61, _titleBorder$borderWi62, _titleBorder$borderWi63, _titleBorder$borderWi64, _titleBorder$borderRa41, _titleBorder$borderRa42, _titleBorder$borderRa43, _titleBorder$borderRa44, _titleBorder$borderRa45, _titleBorder$borderRa46, _titleBorder$borderRa47, _titleBorder$borderRa48, _titleBorder$borderWi65, _titleBorder$borderWi66, _titleBorder$borderWi67, _titleBorder$borderWi68, _iconBorder$borderWid, _iconBorder$borderWid2, _iconBorder$borderWid3, _iconBorder$borderWid4, _iconBorder$borderWid5, _iconBorder$borderWid6, _iconBorder$borderWid7, _iconBorder$borderWid8, _iconBorder$borderRad, _iconBorder$borderRad2, _iconBorder$borderRad3, _iconBorder$borderRad4, _iconBorder$borderRad5, _iconBorder$borderRad6, _iconBorder$borderRad7, _iconBorder$borderRad8, _textTypography$fontS, _textTypography$fontS2, _textTypography$lette, _textTypography$lette2, _textTypography$lineH, _textTypography$lineH2, _titleTypography$font, _titleTypography$font2, _titleTypography$lett, _titleTypography$lett2, _titleTypography$line, _titleTypography$line2;
+    var _titleBorder$borderWi, _titleBorder$borderWi2, _titleBorder$borderWi3, _titleBorder$borderWi4, _titleBorder$borderWi5, _titleBorder$borderWi6, _titleBorder$borderWi7, _titleBorder$borderWi8, _titleBorder$borderRa, _titleBorder$borderRa2, _titleBorder$borderRa3, _titleBorder$borderRa4, _titleBorder$borderRa5, _titleBorder$borderRa6, _titleBorder$borderRa7, _titleBorder$borderRa8, _titleBorder$borderWi9, _titleBorder$borderWi10, _titleBorder$borderWi11, _titleBorder$borderWi12, _titleBorder$borderWi13, _titleBorder$borderWi14, _titleBorder$borderWi15, _titleBorder$borderWi16, _titleBorder$borderRa9, _titleBorder$borderRa10, _titleBorder$borderRa11, _titleBorder$borderRa12, _titleBorder$borderRa13, _titleBorder$borderRa14, _titleBorder$borderRa15, _titleBorder$borderRa16, _titleBorder$borderWi17, _titleBorder$borderWi18, _titleBorder$borderWi19, _titleBorder$borderWi20, _titleBorder$borderWi21, _titleBorder$borderWi22, _titleBorder$borderWi23, _titleBorder$borderWi24, _titleBorder$borderWi25, _titleBorder$borderWi26, _titleBorder$borderWi27, _titleBorder$borderWi28, _titleBorder$borderRa17, _titleBorder$borderRa18, _titleBorder$borderRa19, _titleBorder$borderRa20, _titleBorder$borderRa21, _titleBorder$borderRa22, _titleBorder$borderRa23, _titleBorder$borderRa24, _titleBorder$borderWi29, _titleBorder$borderWi30, _titleBorder$borderWi31, _titleBorder$borderWi32, _titleBorder$borderWi33, _titleBorder$borderWi34, _titleBorder$borderWi35, _titleBorder$borderWi36, _titleBorder$borderWi37, _titleBorder$borderWi38, _titleBorder$borderWi39, _titleBorder$borderWi40, _titleBorder$borderRa25, _titleBorder$borderRa26, _titleBorder$borderRa27, _titleBorder$borderRa28, _titleBorder$borderRa29, _titleBorder$borderRa30, _titleBorder$borderRa31, _titleBorder$borderRa32, _titleBorder$borderWi41, _titleBorder$borderWi42, _titleBorder$borderWi43, _titleBorder$borderWi44, _titleBorder$borderWi45, _titleBorder$borderWi46, _titleBorder$borderWi47, _titleBorder$borderWi48, _titleBorder$borderWi49, _titleBorder$borderWi50, _titleBorder$borderWi51, _titleBorder$borderWi52, _titleBorder$borderRa33, _titleBorder$borderRa34, _titleBorder$borderRa35, _titleBorder$borderRa36, _titleBorder$borderRa37, _titleBorder$borderRa38, _titleBorder$borderRa39, _titleBorder$borderRa40, _titleBorder$borderWi53, _titleBorder$borderWi54, _titleBorder$borderWi55, _titleBorder$borderWi56, _titleBorder$borderWi57, _titleBorder$borderWi58, _titleBorder$borderWi59, _titleBorder$borderWi60, _titleBorder$borderWi61, _titleBorder$borderWi62, _titleBorder$borderWi63, _titleBorder$borderWi64, _titleBorder$borderRa41, _titleBorder$borderRa42, _titleBorder$borderRa43, _titleBorder$borderRa44, _titleBorder$borderRa45, _titleBorder$borderRa46, _titleBorder$borderRa47, _titleBorder$borderRa48, _titleBorder$borderWi65, _titleBorder$borderWi66, _titleBorder$borderWi67, _titleBorder$borderWi68, _iconBorder$borderWid, _iconBorder$borderWid2, _iconBorder$borderWid3, _iconBorder$borderWid4, _iconBorder$borderWid5, _iconBorder$borderWid6, _iconBorder$borderWid7, _iconBorder$borderWid8, _iconBorder$borderRad, _iconBorder$borderRad2, _iconBorder$borderRad3, _iconBorder$borderRad4, _iconBorder$borderRad5, _iconBorder$borderRad6, _iconBorder$borderRad7, _iconBorder$borderRad8, _textTypography$fontS, _textTypography$fontS2, _textTypography$lette, _textTypography$lette2, _textTypography$lineH, _textTypography$lineH2;
 
     const styles = {};
     styles[`.${blockId} .premium-title-style8__wrap .premium-title-text-title[data-animation='shiny']`] = {
@@ -28989,8 +28989,7 @@ function Edit(props) {
     };
     styles[`.${blockId} .premium-title-header`] = {
       "--shadow-color": `${titleStyles[0].blurColor}!important`,
-      "--shadow-value": `${titleStyles[0].blurShadow}px!important`,
-      color: `${titleStyles[0].titleColor}!important`
+      "--shadow-value": `${titleStyles[0].blurShadow}px!important`
     };
     styles[`.${blockId} .premium-title .default .premium-title-header`] = {
       "border-color": `${titleBorder.borderColor}!important`,
@@ -29166,14 +29165,16 @@ function Edit(props) {
       "margin-top": `${stripeTopSpacing === null || stripeTopSpacing === void 0 ? void 0 : stripeTopSpacing[props.deviceType]}${stripeTopSpacing === null || stripeTopSpacing === void 0 ? void 0 : stripeTopSpacing.unit}!important`,
       "margin-bottom": `${stripeBottomSpacing === null || stripeBottomSpacing === void 0 ? void 0 : stripeBottomSpacing[props.deviceType]}${stripeBottomSpacing === null || stripeBottomSpacing === void 0 ? void 0 : stripeBottomSpacing.unit}!important`
     };
-    styles[`.${blockId} .premium-title-style9__wrap .premium-letters-container .premium-title-style9-letter`] = {
-      "font-family": `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily}`,
-      "font-size": `${titleTypography === null || titleTypography === void 0 ? void 0 : (_titleTypography$font = titleTypography.fontSize) === null || _titleTypography$font === void 0 ? void 0 : _titleTypography$font[props.deviceType]}${titleTypography === null || titleTypography === void 0 ? void 0 : (_titleTypography$font2 = titleTypography.fontSize) === null || _titleTypography$font2 === void 0 ? void 0 : _titleTypography$font2.unit}`,
-      "font-weight": `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontWeight}`,
-      "letter-spacing": `${titleTypography === null || titleTypography === void 0 ? void 0 : (_titleTypography$lett = titleTypography.letterSpacing) === null || _titleTypography$lett === void 0 ? void 0 : _titleTypography$lett[props.deviceType]}${titleTypography === null || titleTypography === void 0 ? void 0 : (_titleTypography$lett2 = titleTypography.letterSpacing) === null || _titleTypography$lett2 === void 0 ? void 0 : _titleTypography$lett2.unit}`,
-      "line-height": `${titleTypography === null || titleTypography === void 0 ? void 0 : (_titleTypography$line = titleTypography.lineHeight) === null || _titleTypography$line === void 0 ? void 0 : _titleTypography$line[props.deviceType]}${titleTypography === null || titleTypography === void 0 ? void 0 : (_titleTypography$line2 = titleTypography.lineHeight) === null || _titleTypography$line2 === void 0 ? void 0 : _titleTypography$line2.unit}`,
-      "font-style": `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontStyle}`,
-      "text-shadow": `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color} !important`
+    styles[`.${blockId} .premium-title-style9__wrap .premium-letters-container .premium-title-style9-letter`] = {// "font-family": `${titleTypography?.fontFamily}`,
+      // "font-size": `${titleTypography?.fontSize?.[props.deviceType]}${titleTypography?.fontSize?.unit
+      //     }`,
+      // "font-weight": `${titleTypography?.fontWeight}`,
+      // "letter-spacing": `${titleTypography?.letterSpacing?.[props.deviceType]
+      //     }${titleTypography?.letterSpacing?.unit}`,
+      // "line-height": `${titleTypography?.lineHeight?.[props.deviceType]}${titleTypography?.lineHeight?.unit
+      //     }`,
+      // "font-style": `${titleTypography?.fontStyle}`,
+      // "text-shadow": `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color} !important`,
     };
     return (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_5__.generateCss)(styles);
   };
@@ -29829,14 +29830,8 @@ function Edit(props) {
   }, React.createElement(titleTag, {
     className: `premium-title-header premium-title-${style}__wrap ${iconValue ? iconPosition : ""} ${iconPosition == "top" ? `premium-title-${iconAlign === null || iconAlign === void 0 ? void 0 : iconAlign["Desktop"]} premium-title-tablet-${iconAlign === null || iconAlign === void 0 ? void 0 : iconAlign["Tablet"]} premium-title-mobile-${iconAlign === null || iconAlign === void 0 ? void 0 : iconAlign["Mobile"]}` : ""}`,
     "data-blur-delay": `${titleStyles[0].animateDelay}`,
-    "data-shiny-dur": `${titleStyles[0].animateduration}`,
-    style: { ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_5__.paddingCss)(titlePadding, props.deviceType),
-      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_5__.marginCss)(titleMargin, props.deviceType),
-      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_5__.typographyCss)(titleTypography, props.deviceType),
-      color: titleStyles[0].titleColor,
-      textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
-    }
-  }, [(0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, style === "style7" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, iconPosition != "top" && iconValue && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
+    "data-shiny-dur": `${titleStyles[0].animateduration}`
+  }, [(0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, style === "style7" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, iconPosition != "top" && iconValue && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
     className: `premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign["Desktop"]} premium-stripe-tablet-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign["Tablet"]} premium-stripe-mobile-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign["Mobile"]}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
     className: `premium-title-style7-stripe-span`
@@ -29874,9 +29869,14 @@ function Edit(props) {
       title: newText
     }),
     style: {
-      minHeight: "15px"
+      minHeight: "15px",
+      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_5__.paddingCss)(titlePadding, props.deviceType),
+      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_5__.marginCss)(titleMargin, props.deviceType),
+      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_5__.typographyCss)(titleTypography, props.deviceType),
+      color: titleStyles[0].titleColor,
+      textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
     }
-  }))) : style === "style9" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, iconValue && iconType == "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("i", {
+  }))), style === "style9" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, iconValue && iconType == "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("i", {
     className: `premium-title-icon ${icon}`
   }), iconValue && iconType == "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("img", {
     className: `premium-title-icon`,
@@ -29896,9 +29896,11 @@ function Edit(props) {
     className: `premium-letters-container`,
     style: { ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_5__.paddingCss)(titlePadding, props.deviceType),
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_5__.marginCss)(titleMargin, props.deviceType),
-      color: titleStyles[0].titleColor
+      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_5__.typographyCss)(titleTypography, props.deviceType),
+      color: titleStyles[0].titleColor,
+      textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
     }
-  }, styleContainer)) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, iconValue && iconType == "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("i", {
+  }, styleContainer)), style !== "style9" && style !== "style7" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, iconValue && iconType == "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("i", {
     className: `premium-title-icon ${icon}`
   }), iconValue && iconType == "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("img", {
     className: `premium-title-icon`,
@@ -29922,7 +29924,12 @@ function Edit(props) {
     }),
     value: title,
     style: {
-      minHeight: "15px"
+      minHeight: "15px",
+      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_5__.paddingCss)(titlePadding, props.deviceType),
+      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_5__.marginCss)(titleMargin, props.deviceType),
+      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_5__.typographyCss)(titleTypography, props.deviceType),
+      color: titleStyles[0].titleColor,
+      textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
     }
   })), link && url !== " " && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
     rel: "noopener noreferrer",
@@ -30085,8 +30092,11 @@ function save(props) {
     };
     styles[`.${blockId} .premium-title-header`] = {
       "--shadow-color": `${titleStyles[0].blurColor}!important`,
-      "--shadow-value": `${titleStyles[0].blurShadow}px!important`,
-      color: `${titleStyles[0].titleColor}!important`
+      "--shadow-value": `${titleStyles[0].blurShadow}px!important`
+    };
+    styles[`.${blockId} .premium-title .default .premium-title-header`] = {
+      "border-color": `${titleBorder.borderColor}!important`,
+      "border-style": `${titleBorder.borderType == "none" ? "none" : `${titleBorder.borderType} !important`}`
     };
     styles[`.${blockId} .premium-title .style1 .premium-title-header`] = {
       "border-color": `${titleBorder.borderColor}!important`,
@@ -30167,7 +30177,15 @@ function save(props) {
     styles[`.${blockId} .premium-title-style7-stripe-span`] = {
       "background-color": `${titleStyles[0].stripeColor}!important`
     };
-    styles[`.${blockId} .premium-title-style9__wrap .premium-letters-container .premium-title-style9-letter`] = {
+    styles[`.${blockId} .premium-title-style9__wrap .premium-letters-container`] = {
+      "font-family": `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily}`,
+      "font-weight": `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontWeight}`,
+      "letter-spacing": `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.letterSpacing}`,
+      "line-height": `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.lineHeight}`,
+      "font-style": `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontStyle}`,
+      "text-shadow": `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color} !important`
+    };
+    styles[`.${blockId} .premium-title-text-title`] = {
       "font-family": `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily}`,
       "font-weight": `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontWeight}`,
       "letter-spacing": `${titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.letterSpacing}`,
@@ -30195,14 +30213,13 @@ function save(props) {
     className: `premium-title-header premium-title-${style}__wrap ${iconValue ? iconPosition : ""} ${iconPosition == "top" ? `premium-title-${iconAlign === null || iconAlign === void 0 ? void 0 : iconAlign["Desktop"]} premium-title-tablet-${iconAlign === null || iconAlign === void 0 ? void 0 : iconAlign["Tablet"]} premium-title-mobile-${iconAlign === null || iconAlign === void 0 ? void 0 : iconAlign["Mobile"]}` : ""}`,
     "data-blur-delay": `${titleStyles[0].animateDelay}`,
     "data-shiny-dur": `${titleStyles[0].animateduration}`,
-    style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
-      color: titleStyles[0].titleColor,
-      fontStyle: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontStyle,
-      fontFamily: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily,
-      fontWeight: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontWeight,
-      textDecoration: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textDecoration,
-      textTransform: titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textTransform,
-      textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
+    style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({// color: titleStyles[0].titleColor,
+      // fontStyle: titleTypography?.fontStyle,
+      // fontFamily: titleTypography?.fontFamily,
+      // fontWeight: titleTypography?.fontWeight,
+      // textDecoration: titleTypography?.textDecoration,
+      // textTransform: titleTypography?.textTransform,
+      // textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`,
     })
   }, [(0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, style === "style7" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, iconPosition != "top" && iconValue && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: `premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign["Desktop"]} premium-stripe-tablet-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign["Tablet"]} premium-stripe-mobile-${stripeAlign === null || stripeAlign === void 0 ? void 0 : stripeAlign["Mobile"]}`
@@ -30234,7 +30251,8 @@ function save(props) {
     className: `premium-title-text-title`,
     value: title,
     style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
-      color: titleStyles[0].titleColor
+      color: titleStyles[0].titleColor,
+      textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
     })
   }))) : style === "style9" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, iconValue && iconType == "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
     className: `premium-title-icon ${icon}`
@@ -30250,7 +30268,8 @@ function save(props) {
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: `premium-letters-container`,
     style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
-      color: titleStyles[0].titleColor
+      color: titleStyles[0].titleColor,
+      textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
     })
   }, styleContainer)) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, iconValue && iconType == "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
     className: `premium-title-icon ${icon}`
@@ -30267,10 +30286,11 @@ function save(props) {
     tagName: "span",
     className: `premium-title-text-title`,
     value: title,
-    style: {
+    style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       minHeight: "15px",
-      margin: "revert"
-    }
+      color: titleStyles[0].titleColor,
+      textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
+    })
   })), link && url !== " " && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     rel: "noopener noreferrer",
     target: "_self",

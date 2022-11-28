@@ -66,13 +66,13 @@ export default function save(props) {
     ) {
         btnGrad =
             "transparent" === iconBackground.backgroundColor ||
-            undefined === iconBackground.backgroundColor
+                undefined === iconBackground.backgroundColor
                 ? "rgba(255,255,255,0)"
                 : iconBackground.backgroundColor;
         btnGrad2 =
             undefined !== iconBackground.gradientColorTwo &&
-            undefined !== iconBackground.gradientColorTwo &&
-            "" !== iconBackground.gradientColorTwo
+                undefined !== iconBackground.gradientColorTwo &&
+                "" !== iconBackground.gradientColorTwo
                 ? iconBackground.gradientColorTwo
                 : "#777";
         if ("radial" === iconBackground.gradientType) {
@@ -98,24 +98,27 @@ export default function save(props) {
         };
         styles[`.${blockId} .premium-title-header`] = {
             "--shadow-color": `${titleStyles[0].blurColor}!important`,
-            "--shadow-value": `${titleStyles[0].blurShadow}px!important`,
-            color: `${titleStyles[0].titleColor}!important`,
+            "--shadow-value": `${titleStyles[0].blurShadow}px!important`
+        };
+        styles[`.${blockId} .premium-title .default .premium-title-header`] = {
+            "border-color": `${titleBorder.borderColor}!important`,
+            "border-style": `${titleBorder.borderType == "none"
+                ? "none"
+                : `${titleBorder.borderType} !important`
+                }`
         };
         styles[`.${blockId} .premium-title .style1 .premium-title-header`] = {
             "border-color": `${titleBorder.borderColor}!important`,
-            "border-style": `${
-                titleBorder.borderType == "none"
-                    ? "none"
-                    : `${titleBorder.borderType} !important`
-            }`,
-            "border-left-style": `${
-                titleBorder.borderType == "none"
-                    ? "solid"
-                    : titleBorder.borderType
-            }`,
-            "border-left-width": `${
-                titleBorder.borderType == "none" ? "3px" : ""
-            }`,
+            "border-style": `${titleBorder.borderType == "none"
+                ? "none"
+                : `${titleBorder.borderType} !important`
+                }`,
+            "border-left-style": `${titleBorder.borderType == "none"
+                ? "solid"
+                : titleBorder.borderType
+                }`,
+            "border-left-width": `${titleBorder.borderType == "none" ? "3px" : ""
+                }`,
             "border-left-color":
                 titleBorder.borderType == "none"
                     ? "var(--pbg-global-color1,#793DC4)"
@@ -125,14 +128,12 @@ export default function save(props) {
         styles[`.${blockId} .premium-title .style2`] = {
             "border-color": `${titleBorder.borderColor}!important`,
             "border-style": `${titleBorder.borderType}`,
-            "border-bottom-style": `${
-                titleBorder.borderType == "none"
-                    ? "solid"
-                    : titleBorder.borderType
-            }`,
-            "border-bottom-width": `${
-                titleBorder.borderType == "none" ? "3px" : ""
-            }`,
+            "border-bottom-style": `${titleBorder.borderType == "none"
+                ? "solid"
+                : titleBorder.borderType
+                }`,
+            "border-bottom-width": `${titleBorder.borderType == "none" ? "3px" : ""
+                }`,
             "border-bottom-color":
                 titleBorder.borderType == "none"
                     ? "var(--pbg-global-color1,#793DC4)"
@@ -142,14 +143,12 @@ export default function save(props) {
         styles[`.${blockId} .premium-title .style4`] = {
             "border-color": `${titleBorder.borderColor}!important`,
             "border-style": `${titleBorder.borderType}`,
-            "border-bottom-style": `${
-                titleBorder.borderType == "none"
-                    ? "solid"
-                    : titleBorder.borderType
-            }`,
-            "border-bottom-width": `${
-                titleBorder.borderType == "none" ? "3px" : ""
-            }`,
+            "border-bottom-style": `${titleBorder.borderType == "none"
+                ? "solid"
+                : titleBorder.borderType
+                }`,
+            "border-bottom-width": `${titleBorder.borderType == "none" ? "3px" : ""
+                }`,
             "border-bottom-color":
                 titleBorder.borderType == "none"
                     ? "var(--pbg-global-color1,#793DC4)"
@@ -159,14 +158,12 @@ export default function save(props) {
         styles[`.${blockId} .premium-title .style5`] = {
             "border-color": `${titleBorder.borderColor}!important`,
             "border-style": `${titleBorder.borderType}`,
-            "border-bottom-style": `${
-                titleBorder.borderType == "none"
-                    ? "solid"
-                    : titleBorder.borderType
-            }`,
-            "border-bottom-width": `${
-                titleBorder.borderType == "none" ? "3px" : ""
-            }`,
+            "border-bottom-style": `${titleBorder.borderType == "none"
+                ? "solid"
+                : titleBorder.borderType
+                }`,
+            "border-bottom-width": `${titleBorder.borderType == "none" ? "3px" : ""
+                }`,
             "border-bottom-color":
                 titleBorder.borderType == "none"
                     ? "var(--pbg-global-color1,#793DC4)"
@@ -176,14 +173,12 @@ export default function save(props) {
         styles[`.${blockId} .premium-title .style6`] = {
             "border-color": `${titleBorder.borderColor}!important`,
             "border-style": `${titleBorder.borderType}`,
-            "border-bottom-style": `${
-                titleBorder.borderType == "none"
-                    ? "solid"
-                    : titleBorder.borderType
-            }`,
-            "border-bottom-width": `${
-                titleBorder.borderType == "none" ? "3px" : ""
-            }`,
+            "border-bottom-style": `${titleBorder.borderType == "none"
+                ? "solid"
+                : titleBorder.borderType
+                }`,
+            "border-bottom-width": `${titleBorder.borderType == "none" ? "3px" : ""
+                }`,
             "border-bottom-color":
                 titleBorder.borderType == "none"
                     ? "var(--pbg-global-color1,#793DC4)"
@@ -212,18 +207,16 @@ export default function save(props) {
 
         styles[`.${blockId} .premium-title-icon`] = {
             color: `${iconStyles[0].iconColor} !important`,
-            "background-color": `${
-                iconBackground.backgroundType === "solid"
-                    ? iconBackground.backgroundColor
-                    : "transparent"
-            } !important`,
+            "background-color": `${iconBackground.backgroundType === "solid"
+                ? iconBackground.backgroundColor
+                : "transparent"
+                } !important`,
             "background-image": `${btnbg} !important`,
             "background-repeat": `${iconBackground.backgroundRepeat} !important`,
             "background-position": `${iconBackground.backgroundPosition} !important`,
             "background-size": `${iconBackground.backgroundSize} !important`,
-            "background-attachment": `${
-                iconBackground.fixed ? "fixed" : "unset"
-            } !important`,
+            "background-attachment": `${iconBackground.fixed ? "fixed" : "unset"
+                } !important`,
             "border-color": `${iconBorder.borderColor}!important`,
             "border-style": `${iconBorder.borderType}!important`,
             "text-shadow": `${iconshadow.horizontal}px ${iconshadow.vertical}px ${iconshadow.blur}px ${iconshadow.color} !important`,
@@ -249,7 +242,18 @@ export default function save(props) {
         };
 
         styles[
-            `.${blockId} .premium-title-style9__wrap .premium-letters-container .premium-title-style9-letter`
+            `.${blockId} .premium-title-style9__wrap .premium-letters-container`
+        ] = {
+            "font-family": `${titleTypography?.fontFamily}`,
+            "font-weight": `${titleTypography?.fontWeight}`,
+            "letter-spacing": `${titleTypography?.letterSpacing}`,
+            "line-height": `${titleTypography?.lineHeight}`,
+            "font-style": `${titleTypography?.fontStyle}`,
+            "text-shadow": `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color} !important`,
+        };
+
+        styles[
+            `.${blockId} .premium-title-text-title`
         ] = {
             "font-family": `${titleTypography?.fontFamily}`,
             "font-weight": `${titleTypography?.fontWeight}`,
@@ -274,9 +278,8 @@ export default function save(props) {
         >
             <style>{loadStyles()}</style>
             <div
-                className={`premium-title   ${
-                    backgroundText ? "premium-title-bg-text" : ""
-                }`}
+                className={`premium-title   ${backgroundText ? "premium-title-bg-text" : ""
+                    }`}
                 data-backgroundText={BackText}
             >
                 <div
@@ -287,23 +290,21 @@ export default function save(props) {
                     {React.createElement(
                         titleTag,
                         {
-                            className: `premium-title-header premium-title-${style}__wrap ${
-                                iconValue ? iconPosition : ""
-                            } ${
-                                iconPosition == "top"
+                            className: `premium-title-header premium-title-${style}__wrap ${iconValue ? iconPosition : ""
+                                } ${iconPosition == "top"
                                     ? `premium-title-${iconAlign?.["Desktop"]} premium-title-tablet-${iconAlign?.["Tablet"]} premium-title-mobile-${iconAlign?.["Mobile"]}`
                                     : ""
-                            }`,
+                                }`,
                             "data-blur-delay": `${titleStyles[0].animateDelay}`,
                             "data-shiny-dur": `${titleStyles[0].animateduration}`,
                             style: filterJsCss({
-                                color: titleStyles[0].titleColor,
-                                fontStyle: titleTypography?.fontStyle,
-                                fontFamily: titleTypography?.fontFamily,
-                                fontWeight: titleTypography?.fontWeight,
-                                textDecoration: titleTypography?.textDecoration,
-                                textTransform: titleTypography?.textTransform,
-                                textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`,
+                                // color: titleStyles[0].titleColor,
+                                // fontStyle: titleTypography?.fontStyle,
+                                // fontFamily: titleTypography?.fontFamily,
+                                // fontWeight: titleTypography?.fontWeight,
+                                // textDecoration: titleTypography?.textDecoration,
+                                // textTransform: titleTypography?.textTransform,
+                                // textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`,
                             }),
                         },
                         [
@@ -371,8 +372,8 @@ export default function save(props) {
                                                 className={`premium-title-text-title`}
                                                 value={title}
                                                 style={filterJsCss({
-                                                    color: titleStyles[0]
-                                                        .titleColor,
+                                                    color: titleStyles[0].titleColor,
+                                                    textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`,
                                                 })}
                                             />
                                         </div>
@@ -402,46 +403,47 @@ export default function save(props) {
                                         <span
                                             className={`premium-letters-container`}
                                             style={filterJsCss({
-                                                color: titleStyles[0]
-                                                    .titleColor,
+                                                color: titleStyles[0].titleColor,
+                                                textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`,
                                             })}
                                         >
                                             {styleContainer}
                                         </span>
                                     </Fragment>
                                 ) : (
-                                    <Fragment>
-                                        {iconValue && iconType == "icon" && (
-                                            <i
-                                                className={`premium-title-icon ${icon}`}
-                                            />
+                                            <Fragment>
+                                                {iconValue && iconType == "icon" && (
+                                                    <i
+                                                        className={`premium-title-icon ${icon}`}
+                                                    />
+                                                )}
+                                                {iconValue && iconType == "image" && (
+                                                    <img
+                                                        className={`premium-title-icon`}
+                                                        src={imageURL}
+                                                    />
+                                                )}
+                                                {iconValue && iconType == "lottie" && (
+                                                    <div
+                                                        className="premium-title-icon premium-lottie-animation"
+                                                        data-loop={loop}
+                                                        data-lottieurl={`${lottieURl}`}
+                                                        data-reverse={reversedir}
+                                                        data-trigger={"none"}
+                                                    ></div>
+                                                )}
+                                                <RichText.Content
+                                                    tagName="span"
+                                                    className={`premium-title-text-title`}
+                                                    value={title}
+                                                    style={filterJsCss({
+                                                        minHeight: "15px",
+                                                        color: titleStyles[0].titleColor,
+                                                        textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`,
+                                                    })}
+                                                />
+                                            </Fragment>
                                         )}
-                                        {iconValue && iconType == "image" && (
-                                            <img
-                                                className={`premium-title-icon`}
-                                                src={imageURL}
-                                            />
-                                        )}
-                                        {iconValue && iconType == "lottie" && (
-                                            <div
-                                                className="premium-title-icon premium-lottie-animation"
-                                                data-loop={loop}
-                                                data-lottieurl={`${lottieURl}`}
-                                                data-reverse={reversedir}
-                                                data-trigger={"none"}
-                                            ></div>
-                                        )}
-                                        <RichText.Content
-                                            tagName="span"
-                                            className={`premium-title-text-title`}
-                                            value={title}
-                                            style={{
-                                                minHeight: "15px",
-                                                margin: "revert",
-                                            }}
-                                        />
-                                    </Fragment>
-                                )}
                                 {link && url !== " " && (
                                     <a
                                         rel="noopener noreferrer"
