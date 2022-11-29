@@ -71,7 +71,7 @@ export default function save(props) {
             />
 
             {effect === "typing" ? (
-                <h4
+                <div
                     id={`premium-fancy-text-${blockId}`}
                     className={`premium-fancy-text`}
                     data-effect={`${effect}`}
@@ -134,9 +134,9 @@ export default function save(props) {
                         {" "}
                         {suffix}
                     </span>
-                </h4>
+                </div>
             ) : (
-                    <h4
+                    <div
                         id={`premium-fancy-text-${blockId}`}
                         className={`premium-fancy-text premium-fancy-slide`}
                         data-effect={`${effect}`}
@@ -198,7 +198,7 @@ export default function save(props) {
                             {" "}
                             {suffix}
                         </span>
-                    </h4>
+                    </div>
                 )
             }
         </div >
