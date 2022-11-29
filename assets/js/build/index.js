@@ -4380,20 +4380,22 @@ function AccordionItemEdit(_ref) {
       const desc = accordionTitle.querySelectorAll(".premium-accordion__desc_wrap");
       const svg = accordionTitle.querySelectorAll(".premium-accordion__icon");
 
-      if (desc[0].classList.contains("is-open")) {
-        desc[0].classList.remove("is-open");
-        svg[0].classList.remove("premium-accordion__closed");
-      } else {
-        const accordionTitlesWithIsOpen = document.querySelectorAll(".is-open");
-        accordionTitlesWithIsOpen.forEach(accordionTitleWithIsOpen => {
-          accordionTitleWithIsOpen.classList.remove("is-open");
-        });
-        const accordionSvgsWithIsOpen = document.querySelectorAll(".premium-accordion__closed");
-        accordionSvgsWithIsOpen.forEach(accordionSvgWithIsOpen => {
-          accordionSvgWithIsOpen.classList.remove("premium-accordion__closed");
-        });
-        desc[0].classList.add("is-open");
-        svg[0].classList.add("premium-accordion__closed");
+      if (desc.length != 0) {
+        if (desc[0].classList.contains("is-open")) {
+          desc[0].classList.remove("is-open");
+          svg[0].classList.remove("premium-accordion__closed");
+        } else {
+          const accordionTitlesWithIsOpen = document.querySelectorAll(".is-open");
+          accordionTitlesWithIsOpen.forEach(accordionTitleWithIsOpen => {
+            accordionTitleWithIsOpen.classList.remove("is-open");
+          });
+          const accordionSvgsWithIsOpen = document.querySelectorAll(".premium-accordion__closed");
+          accordionSvgsWithIsOpen.forEach(accordionSvgWithIsOpen => {
+            accordionSvgWithIsOpen.classList.remove("premium-accordion__closed");
+          });
+          desc[0].classList.add("is-open");
+          svg[0].classList.add("premium-accordion__closed");
+        }
       }
     });
   };
