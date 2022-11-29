@@ -25,7 +25,10 @@
     z-index: 3; }
 
 .premium-bullet-list ul {
-  padding: 0 !important; }
+  padding: 0 !important;
+  margin: 10px; }
+  .premium-bullet-list ul li {
+    margin-right: 10px; }
 
 .premium-bullet-list__wrapper {
   display: inline-flex; }

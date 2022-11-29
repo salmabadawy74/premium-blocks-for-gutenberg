@@ -10307,17 +10307,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./src/blocks/node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+/* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @pbg/helpers */ "@pbg/helpers");
+/* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__);
 
 const {
   __
 } = wp.i18n;
 
 
+
 const {
   Fragment
 } = wp.element;
 const {
-  RichText
+  RichText,
+  InnerBlocks,
+  useBlockProps
 } = wp.blockEditor;
 const attributes = {
   block_id: {
@@ -11117,7 +11122,551 @@ const newAttributes = {
     }]
   }
 };
+const newAttributes_v2 = {
+  "blockId": {
+    "type": "string"
+  },
+  "align": {
+    "type": "object",
+    "default": {
+      "Desktop": "",
+      "Tablet": "",
+      "Mobile": ""
+    }
+  },
+  "repeaterBulletList": {
+    "type": "array",
+    "default": [{
+      "id": 1,
+      "label": "Title #1",
+      "image_icon": "icon",
+      "icon": "fa fa-arrow-circle-right",
+      "imageURL": "",
+      "imageID": "",
+      "icon_color": "",
+      "label_color": "",
+      "icon_hover_color": "",
+      "label_hover_color": "",
+      "icon_bg_color": "",
+      "icon_bg_hover_color": "",
+      "item_bg_color": "",
+      "item_bg_hover_color": "",
+      "link": "#",
+      "target": false,
+      "disableLink": false,
+      "showContent": false,
+      "showBulletIcon": true,
+      "linkTarget": false
+    }, {
+      "id": 2,
+      "label": "Title #2",
+      "image_icon": "icon",
+      "icon": "fa fa-arrow-circle-right",
+      "imageURL": "",
+      "imageID": "",
+      "icon_color": "",
+      "label_color": "",
+      "icon_hover_color": "",
+      "label_hover_color": "",
+      "icon_bg_color": "",
+      "icon_bg_hover_color": "",
+      "item_bg_color": "",
+      "item_bg_hover_color": "",
+      "link": "#",
+      "target": false,
+      "disableLink": false,
+      "showContent": false,
+      "showBulletIcon": true,
+      "linkTarget": false
+    }, {
+      "id": 3,
+      "label": "Title #3",
+      "image_icon": "icon",
+      "icon": "fa fa-arrow-circle-right",
+      "imageURL": "",
+      "imageID": "",
+      "icon_color": "",
+      "label_color": "",
+      "icon_hover_color": "",
+      "label_hover_color": "",
+      "icon_bg_color": "",
+      "icon_bg_hover_color": "",
+      "item_bg_color": "",
+      "item_bg_hover_color": "",
+      "link": "#",
+      "target": false,
+      "disableLink": false,
+      "showContent": false,
+      "showBulletIcon": true,
+      "linkTarget": false
+    }]
+  },
+  "bulletIconStyles": {
+    "type": "array",
+    "default": [{
+      "bulletIconHoverColor": "",
+      "bulletIconColor": "",
+      "bulletIconBackgroundColor": "",
+      "bulletIconHoverBackgroundColor": "",
+      "bulletIconpaddingUnit": "px",
+      "bulletIconmarginType": "px"
+    }]
+  },
+  "titleStyles": {
+    "type": "array",
+    "default": [{
+      "titleColor": "",
+      "titleHoverColor": "",
+      "titlemarginType": "px"
+    }]
+  },
+  "generalStyles": {
+    "type": "array",
+    "default": [{
+      "generalBackgroundColor": "",
+      "generalHoverBackgroundColor": "",
+      "generalpaddingUnit": "px",
+      "generalmarginType": "px"
+    }]
+  },
+  "classMigrate": {
+    "type": "boolean",
+    "default": false
+  },
+  "layoutPos": {
+    "type": "string",
+    "default": "block"
+  },
+  "iconPosition": {
+    "type": "string",
+    "default": "before"
+  },
+  "bulletAlign": {
+    "type": "object",
+    "default": {
+      "Desktop": "center",
+      "Tablet": "center",
+      "Mobile": "center"
+    }
+  },
+  "titleFont": {
+    "type": "string"
+  },
+  "divider": {
+    "type": "boolean",
+    "default": false
+  },
+  "dividerStyle": {
+    "type": "string",
+    "default": "solid"
+  },
+  "dividerStyles": {
+    "type": "array",
+    "default": [{
+      "dividerColor": "#ddd"
+    }]
+  },
+  "generalmargin": {
+    "type": "object",
+    "default": {
+      "Desktop": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Tablet": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Mobile": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "unit": "px"
+    }
+  },
+  "bulletIconmargin": {
+    "type": "object",
+    "default": {
+      "Desktop": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Tablet": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Mobile": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "unit": "px"
+    }
+  },
+  "titlemargin": {
+    "type": "object",
+    "default": {
+      "Desktop": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Tablet": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Mobile": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "unit": "px"
+    }
+  },
+  "generalpadding": {
+    "type": "object",
+    "default": {
+      "Desktop": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Tablet": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Mobile": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "unit": "px"
+    }
+  },
+  "bulletIconpadding": {
+    "type": "object",
+    "default": {
+      "Desktop": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Tablet": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Mobile": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "unit": "px"
+    }
+  },
+  "generalBorder": {
+    "type": "object",
+    "default": {
+      "borderType": "none",
+      "borderColor": "",
+      "borderWidth": {
+        "Desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        }
+      },
+      "borderRadius": {
+        "Desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        }
+      }
+    }
+  },
+  "bulletIconBorder": {
+    "type": "object",
+    "default": {
+      "borderType": "none",
+      "borderColor": "",
+      "borderWidth": {
+        "Desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        }
+      },
+      "borderRadius": {
+        "Desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        }
+      }
+    }
+  },
+  "titleTypography": {
+    "type": "object",
+    "default": {
+      "fontWeight": "Default",
+      "fontStyle": "",
+      "letterSpacing": {
+        "Desktop": "",
+        "Tablet": "",
+        "Mobile": "",
+        "unit": "px"
+      },
+      "fontFamily": "Default",
+      "lineHeight": {
+        "Desktop": "",
+        "Tablet": "",
+        "Mobile": "",
+        "unit": "px"
+      },
+      "textDecoration": "",
+      "textTransform": "",
+      "fontSize": {
+        "Desktop": "",
+        "Tablet": "",
+        "Mobile": "",
+        "unit": "px"
+      }
+    }
+  },
+  "titlesTextShadow": {
+    "type": "object",
+    "default": {
+      "color": "undefined",
+      "blur": "10",
+      "horizontal": "0",
+      "vertical": "0"
+    }
+  },
+  "boxShadow": {
+    "type": "object",
+    "default": {
+      "color": "undefined",
+      "blur": "10",
+      "horizontal": "0",
+      "vertical": "0",
+      "position": " "
+    }
+  },
+  "hoverBoxShadow": {
+    "type": "object",
+    "default": {
+      "color": "undefined",
+      "blur": "10",
+      "horizontal": "0",
+      "vertical": "0",
+      "position": " "
+    }
+  },
+  "bulletIconFontSize": {
+    "type": "object",
+    "default": {
+      "Desktop": 20,
+      "Tablet": 20,
+      "Mobile": 20,
+      "unit": "px"
+    }
+  },
+  "dividerWidth": {
+    "type": "object",
+    "default": {
+      "Desktop": "",
+      "Tablet": "",
+      "Mobile": "",
+      "unit": "px"
+    }
+  },
+  "dividerHeight": {
+    "type": "object",
+    "default": {
+      "Desktop": "",
+      "Tablet": "",
+      "Mobile": "",
+      "unit": "px"
+    }
+  },
+  "hideDesktop": {
+    "type": "boolean",
+    "default": ""
+  },
+  "hideTablet": {
+    "type": "boolean",
+    "default": ""
+  },
+  "hideMobile": {
+    "type": "boolean",
+    "default": ""
+  }
+};
 const deprecated = [{
+  attributes: newAttributes_v2,
+  save: props => {
+    const {
+      attributes,
+      className
+    } = props;
+    const {
+      blockId = '',
+      layoutPos,
+      iconPosition,
+      bulletIconStyles,
+      bulletIconBorder,
+      titleStyles,
+      generalStyles,
+      generalBorder,
+      dividerStyles,
+      dividerStyle,
+      titlesTextShadow,
+      boxShadow,
+      hoverBoxShadow,
+      titleTypography,
+      hideDesktop,
+      hideTablet,
+      hideMobile
+    } = attributes;
+
+    const loadStyles = () => {
+      var _bulletIconStyles$, _bulletIconStyles$2, _titleStyles$, _generalStyles$, _dividerStyles$, _dividerStyles$2;
+
+      const styles = {};
+      styles[`.${blockId} .premium-bullet-list__content-icon i, .${blockId} .premium-bullet-list__content-icon img`] = {
+        'overflow': 'hidden',
+        'color': bulletIconStyles[0].bulletIconColor,
+        'background-color': bulletIconStyles[0].bulletIconBackgroundColor,
+        'border-style': bulletIconBorder === null || bulletIconBorder === void 0 ? void 0 : bulletIconBorder.borderType,
+        'border-color': `${bulletIconBorder === null || bulletIconBorder === void 0 ? void 0 : bulletIconBorder.borderColor}`
+      };
+      styles[`.${blockId} .premium-bullet-list__wrapper`] = {
+        'border-style': generalBorder === null || generalBorder === void 0 ? void 0 : generalBorder.borderType,
+        'border-color': `${generalBorder === null || generalBorder === void 0 ? void 0 : generalBorder.borderColor}`,
+        'overflow': 'hidden',
+        'background-color': generalStyles[0].generalBackgroundColor,
+        'box-shadow': `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`
+      };
+      styles[`.${blockId} .premium-bullet-list__content-wrap`] = {
+        'display': iconPosition == "before" ? "flex" : "inline-flex"
+      };
+      styles[`.${blockId} .premium-bullet-list__label`] = {
+        'color': titleStyles[0].titleColor,
+        'text-shadow': `${titlesTextShadow.horizontal}px ${titlesTextShadow.vertical}px ${titlesTextShadow.blur}px ${titlesTextShadow.color}`,
+        'font-style': titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontStyle,
+        'font-family': titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontFamily,
+        'font-weight': titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.fontWeight,
+        'text-decoration': titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textDecoration,
+        'text-transform': titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textTransform
+      };
+      styles[`.${blockId} .premium-bullet-list__content-icon i:hover`] = {
+        'color': `${bulletIconStyles === null || bulletIconStyles === void 0 ? void 0 : (_bulletIconStyles$ = bulletIconStyles[0]) === null || _bulletIconStyles$ === void 0 ? void 0 : _bulletIconStyles$.bulletIconHoverColor}!important`,
+        'background-color': `${bulletIconStyles === null || bulletIconStyles === void 0 ? void 0 : (_bulletIconStyles$2 = bulletIconStyles[0]) === null || _bulletIconStyles$2 === void 0 ? void 0 : _bulletIconStyles$2.bulletIconHoverBackgroundColor}!important`
+      };
+      styles[`.${blockId} .premium-bullet-list__label-wrap .premium-bullet-list__label:hover`] = {
+        'color': `${titleStyles === null || titleStyles === void 0 ? void 0 : (_titleStyles$ = titleStyles[0]) === null || _titleStyles$ === void 0 ? void 0 : _titleStyles$.titleHoverColor}!important`
+      };
+      styles[`.${blockId} .premium-bullet-list__wrapper:hover`] = {
+        'background-color': `${generalStyles === null || generalStyles === void 0 ? void 0 : (_generalStyles$ = generalStyles[0]) === null || _generalStyles$ === void 0 ? void 0 : _generalStyles$.generalHoverBackgroundColor}!important`,
+        'box-shadow': `${hoverBoxShadow === null || hoverBoxShadow === void 0 ? void 0 : hoverBoxShadow.horizontal}px ${hoverBoxShadow === null || hoverBoxShadow === void 0 ? void 0 : hoverBoxShadow.vertical}px ${hoverBoxShadow === null || hoverBoxShadow === void 0 ? void 0 : hoverBoxShadow.blur}px ${hoverBoxShadow === null || hoverBoxShadow === void 0 ? void 0 : hoverBoxShadow.color} ${hoverBoxShadow === null || hoverBoxShadow === void 0 ? void 0 : hoverBoxShadow.position}!important`
+      };
+      styles[`.${blockId} .premium-bullet-list-divider-block:not(:last-child)::after`] = {
+        'border-top-style': dividerStyle,
+        'border-top-color': dividerStyles === null || dividerStyles === void 0 ? void 0 : (_dividerStyles$ = dividerStyles[0]) === null || _dividerStyles$ === void 0 ? void 0 : _dividerStyles$.dividerColor
+      };
+      styles[`.${blockId} .premium-bullet-list-divider-inline:not(:last-child)::after`] = {
+        'border-left-style': dividerStyle,
+        'border-left-color': dividerStyles === null || dividerStyles === void 0 ? void 0 : (_dividerStyles$2 = dividerStyles[0]) === null || _dividerStyles$2 === void 0 ? void 0 : _dividerStyles$2.dividerColor
+      };
+      return (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.generateCss)(styles);
+    };
+
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", useBlockProps.save({
+      className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, `premium-bullet-list ${blockId}`, {
+        " premium-desktop-hidden": hideDesktop,
+        " premium-tablet-hidden": hideTablet,
+        " premium-mobile-hidden": hideMobile
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, loadStyles()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
+      className: `premium-bullet-list-${layoutPos} premium-bullet-list`
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InnerBlocks.Content, null)));
+  }
+}, {
   attributes: Object.assign(attributes, newAttributes),
 
   isEligible() {
@@ -11910,7 +12459,7 @@ function Edit(props) {
       "text-transform": titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textTransform,
       "line-height": `${titleTypography === null || titleTypography === void 0 ? void 0 : (_titleTypography$line = titleTypography.lineHeight) === null || _titleTypography$line === void 0 ? void 0 : _titleTypography$line[currentDevice]}${titleTypography === null || titleTypography === void 0 ? void 0 : (_titleTypography$line2 = titleTypography.lineHeight) === null || _titleTypography$line2 === void 0 ? void 0 : _titleTypography$line2.unit}`
     };
-    styles[`.${blockId} .premium-bullet-list__content-icon i:hover`] = {
+    styles[`.${blockId} .premium-bullet-list__wrapper:hover i`] = {
       color: `${bulletIconStyles === null || bulletIconStyles === void 0 ? void 0 : (_bulletIconStyles$ = bulletIconStyles[0]) === null || _bulletIconStyles$ === void 0 ? void 0 : _bulletIconStyles$.bulletIconHoverColor}!important`,
       "background-color": `${bulletIconStyles === null || bulletIconStyles === void 0 ? void 0 : (_bulletIconStyles$2 = bulletIconStyles[0]) === null || _bulletIconStyles$2 === void 0 ? void 0 : _bulletIconStyles$2.bulletIconHoverBackgroundColor}!important`
     };
@@ -12435,7 +12984,7 @@ function save(props) {
       'text-decoration': titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textDecoration,
       'text-transform': titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textTransform
     };
-    styles[`.${blockId} .premium-bullet-list__content-icon i:hover`] = {
+    styles[`.${blockId} .premium-bullet-list__wrapper:hover i`] = {
       'color': `${bulletIconStyles === null || bulletIconStyles === void 0 ? void 0 : (_bulletIconStyles$ = bulletIconStyles[0]) === null || _bulletIconStyles$ === void 0 ? void 0 : _bulletIconStyles$.bulletIconHoverColor}!important`,
       'background-color': `${bulletIconStyles === null || bulletIconStyles === void 0 ? void 0 : (_bulletIconStyles$2 = bulletIconStyles[0]) === null || _bulletIconStyles$2 === void 0 ? void 0 : _bulletIconStyles$2.bulletIconHoverBackgroundColor}!important`
     };
