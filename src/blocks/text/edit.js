@@ -101,7 +101,6 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                         initialOpen={true}
                     >
                         <PremiumTypo
-                            components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
                             value={typography}
                             onChange={newValue => setAttributes({ typography: newValue })}
                         />
@@ -125,12 +124,12 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                             onChange={(value) => setAttributes({ textShadow: value })}
                         />
                         <PremiumBorder
-                            label={__("Border")}
+                            label={__("Border", "premium-blocks-for-gutenberg")}
                             value={border}
                             onChange={(value) => setAttributes({ border: value })}
                         />
-                        <SpacingComponent value={margin} responsive={true} showUnits={true} label={__("Margin")} onChange={(value) => setAttributes({ margin: value })} />
-                        <SpacingComponent value={padding} responsive={true} showUnits={true} label={__("Padding")} onChange={(value) => setAttributes({ padding: value })} />
+                        <SpacingComponent value={margin} responsive={true} showUnits={true} label={__("Margin", "premium-blocks-for-gutenberg")} onChange={(value) => setAttributes({ margin: value })} />
+                        <SpacingComponent value={padding} responsive={true} showUnits={true} label={__("Padding", "premium-blocks-for-gutenberg")} onChange={(value) => setAttributes({ padding: value })} />
                     </PanelBody>
                 </InspectorTab>
                 <InspectorTab key={"advance"}>

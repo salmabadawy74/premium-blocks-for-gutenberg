@@ -166,10 +166,7 @@
             "type": "array",
             "default": [
                 {
-                    "bodyColor": "",
-                    "bodyLine": "",
-                    "bodyTop": "",
-                    "bodyBottom": ""
+                    "bodyColor": ""
                 }
             ]
         },
