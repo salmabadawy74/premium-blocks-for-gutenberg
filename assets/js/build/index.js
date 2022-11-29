@@ -49733,8 +49733,6 @@ const save = props => {
     value: text,
     style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.filterJsCss)({
       color: contentStyle[0].bodyColor,
-      marginTop: contentStyle[0].bodyTop + "px",
-      marginBottom: contentStyle[0].bodyBottom + "px",
       fontStyle: bodyTypography === null || bodyTypography === void 0 ? void 0 : bodyTypography.fontStyle,
       fontFamily: bodyTypography === null || bodyTypography === void 0 ? void 0 : bodyTypography.fontFamily,
       fontWeight: bodyTypography === null || bodyTypography === void 0 ? void 0 : bodyTypography.fontWeight,

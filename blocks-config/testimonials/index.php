@@ -128,6 +128,7 @@ function get_premium_testimonials_css_style( $attr, $unique_id ) {
 		$css->set_selector( $unique_id );
 		$css->add_property( 'padding', $css->render_spacing( $padding['Tablet'], $padding['unit'] ) );
 	}
+
 	$css->stop_media_query();
 	$css->start_media_query( $media_query['mobile'] );
 
@@ -184,6 +185,7 @@ function get_premium_testimonials_css_style( $attr, $unique_id ) {
 		$css->set_selector( $unique_id );
 		$css->add_property( 'padding', $css->render_spacing( $padding['Mobile'], $padding['unit'] ) );
 	}
+	
 	$css->stop_media_query();
 	return $css->css_output();
 }
