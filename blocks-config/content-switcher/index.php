@@ -414,6 +414,13 @@ function render_block_pbg_content_switcher( $attributes, $content ) {
 		PREMIUM_BLOCKS_VERSION,
 		'all'
 	);
+	wp_enqueue_style(
+		'switcher-child',
+		PREMIUM_BLOCKS_URL . 'assets/css/minified/switcher-child.min.css',
+		array(),
+		PREMIUM_BLOCKS_VERSION,
+		'all'
+	);
 	wp_enqueue_script(
 		'content-switcher',
 		PREMIUM_BLOCKS_URL . 'assets/js/content-switcher.js',
