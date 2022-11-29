@@ -332,7 +332,7 @@ function Edit(props) {
             "line-height": `${titleTypography?.lineHeight?.[currentDevice]}${titleTypography?.lineHeight?.unit}`,
         };
 
-        styles[`.${blockId} .premium-bullet-list__content-icon i:hover`] = {
+        styles[`.${blockId} .premium-bullet-list__wrapper:hover i`] = {
             color: `${bulletIconStyles?.[0]?.bulletIconHoverColor}!important`,
             "background-color": `${bulletIconStyles?.[0]?.bulletIconHoverBackgroundColor}!important`,
         };
