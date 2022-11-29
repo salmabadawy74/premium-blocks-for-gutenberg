@@ -86,8 +86,6 @@ const save = props => {
                                 value={text}
                                 style={filterJsCss({
                                     color: contentStyle[0].bodyColor,
-                                    marginTop: contentStyle[0].bodyTop + "px",
-                                    marginBottom: contentStyle[0].bodyBottom + "px",
                                     fontStyle: bodyTypography?.fontStyle,
                                     fontFamily: bodyTypography?.fontFamily,
                                     fontWeight: bodyTypography?.fontWeight,
