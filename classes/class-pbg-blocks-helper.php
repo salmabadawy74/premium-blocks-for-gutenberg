@@ -146,6 +146,9 @@ class PBG_Blocks_Helper {
 					Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/image.min.css' );
 					Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/icon-group.min.css' );
 				}
+				if ( 'content-switcher' === $slug ) {
+					Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/switcher-child.min.css' );
+				}
 
 				Pbg_Style_Generator::pbg_add_css( "assets/css/minified/{$slug}.min.css" );
 			}
