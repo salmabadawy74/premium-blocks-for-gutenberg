@@ -45,7 +45,7 @@ function get_premium_count_up_css_style( $attr, $unique_id ) {
 	}
 
 	if ( isset( $attr['selfAlign'] ) ) {
-		$css->set_selector( $unique_id . ' .premium-countup__info, ' . $unique_id . ' .premium-countup__title' );
+		$css->set_selector( $unique_id . ' .premium-countup__title' );
 		$css->add_property( 'align-self', $css->get_responsive_css( $attr['selfAlign'], 'Desktop' ) );
 	}
 	if ( isset( $attr['selfAlign'] ) ) {
@@ -54,6 +54,14 @@ function get_premium_count_up_css_style( $attr, $unique_id ) {
 		$flex_align = ( isset( $attr['flexDir'] ) && $attr['flexDir'] == 'row' ? 'center' : $flex_align );
 
 		$css->set_selector( $unique_id . ' .premium-countup__icon_wrap ' );
+		$css->add_property( 'align-self', $flex_align );
+	}
+	if ( isset( $attr['selfAlign'] ) ) {
+		$align      = $css->get_responsive_css( $attr['selfAlign'], 'Desktop' );
+		$flex_align = ( isset( $attr['flexDir'] ) && $attr['flexDir'] == 'row-reverse' ) ? 'center' : $align;
+		$flex_align = ( isset( $attr['flexDir'] ) && $attr['flexDir'] == 'row' ? 'center' : $flex_align );
+
+		$css->set_selector( $unique_id . ' .premium-countup__info ' );
 		$css->add_property( 'align-self', $flex_align );
 	}
 
@@ -152,7 +160,7 @@ function get_premium_count_up_css_style( $attr, $unique_id ) {
 	}
 
 	if ( isset( $attr['selfAlign'] ) ) {
-		$css->set_selector( $unique_id . ' .premium-countup__info, ' . $unique_id . ' .premium-countup__title' );
+		$css->set_selector( $unique_id . ' .premium-countup__title' );
 		$css->add_property( 'align-self', $css->get_responsive_css( $attr['selfAlign'], 'Tablet' ) );
 	}
 	if ( isset( $attr['selfAlign'] ) ) {
@@ -161,6 +169,14 @@ function get_premium_count_up_css_style( $attr, $unique_id ) {
 		$flex_align = ( isset( $attr['flexDir'] ) && $attr['flexDir'] == 'row' ? 'center' : $flex_align );
 
 		$css->set_selector( $unique_id . ' .premium-countup__icon_wrap ' );
+		$css->add_property( 'align-self', $flex_align );
+	}
+	if ( isset( $attr['selfAlign'] ) ) {
+		$align      = $css->get_responsive_css( $attr['selfAlign'], 'Tablet' );
+		$flex_align = ( isset( $attr['flexDir'] ) && $attr['flexDir'] == 'row-reverse' ) ? 'center' : $align;
+		$flex_align = ( isset( $attr['flexDir'] ) && $attr['flexDir'] == 'row' ? 'center' : $flex_align );
+
+		$css->set_selector( $unique_id . ' .premium-countup__info ' );
 		$css->add_property( 'align-self', $flex_align );
 	}
 
@@ -260,7 +276,7 @@ function get_premium_count_up_css_style( $attr, $unique_id ) {
 	}
 
 	if ( isset( $attr['selfAlign'] ) ) {
-		$css->set_selector( $unique_id . ' .premium-countup__info, ' . $unique_id . ' .premium-countup__title' );
+		$css->set_selector( $unique_id . ' .premium-countup__title' );
 		$css->add_property( 'align-self', $css->get_responsive_css( $attr['selfAlign'], 'Mobile' ) );
 	}
 	if ( isset( $attr['selfAlign'] ) ) {
@@ -269,6 +285,14 @@ function get_premium_count_up_css_style( $attr, $unique_id ) {
 		$flex_align = ( isset( $attr['flexDir'] ) && $attr['flexDir'] == 'row' ? 'center' : $flex_align );
 
 		$css->set_selector( $unique_id . ' .premium-countup__icon_wrap ' );
+		$css->add_property( 'align-self', $flex_align );
+	}
+	if ( isset( $attr['selfAlign'] ) ) {
+		$align      = $css->get_responsive_css( $attr['selfAlign'], 'Mobile' );
+		$flex_align = ( isset( $attr['flexDir'] ) && $attr['flexDir'] == 'row-reverse' ) ? 'center' : $align;
+		$flex_align = ( isset( $attr['flexDir'] ) && $attr['flexDir'] == 'row' ? 'center' : $flex_align );
+
+		$css->set_selector( $unique_id . ' .premium-countup__info' );
 		$css->add_property( 'align-self', $flex_align );
 	}
 

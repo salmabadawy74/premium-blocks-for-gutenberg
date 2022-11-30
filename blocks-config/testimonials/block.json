@@ -5,7 +5,10 @@
     "name": "premium/testimonial",
     "title": "Testimonial",
     "description": "Proof your success by displaying customer reviews using Premium Testimonials Block.",
-    "keywords": ["testimonial", "Quote"],
+    "keywords": [
+        "testimonial",
+        "Quote"
+    ],
     "category": "premium-blocks",
     "attributes": {
         "blockId": {
@@ -169,10 +172,7 @@
             "type": "array",
             "default": [
                 {
-                    "bodyColor": "",
-                    "bodyLine": "",
-                    "bodyTop": "",
-                    "bodyBottom": ""
+                    "bodyColor": ""
                 }
             ]
         },

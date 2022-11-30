@@ -1,11 +1,11 @@
 # Premium Blocks for Gutenberg #
 **Contributors:** [leap13](https://profiles.wordpress.org/leap13/)  
-**Tags:** gutenberg, gutenberg addon, gutenberg addons, gutenberg blocks, gutenberg free blocks, blocks, editor  
+**Tags:** gutenberg, gutenberg blocks, blocks, gutenberg addon, gutenberg free blocks  
 **Donate link:** https://leap13.com  
 **Requires at least:** 4.5  
 **Tested up to:** 6.1  
 **Requires PHP:** 5.4  
-**Stable tag:** 2.0.2  
+**Stable tag:** 2.0.3
 **License:** GPL v3.0  
 **License URI:** https://opensource.org/licenses/GPL-3.0  
 

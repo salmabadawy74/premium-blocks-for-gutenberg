@@ -115,7 +115,6 @@ const edit = (props) => {
             shapeBottom,
             minHeight,
             colWidth,
-            heightOptions,
             border,
             //animation
             animation,
@@ -133,14 +132,17 @@ const edit = (props) => {
             backgroundOptions,
             boxShadow,
             isBlockRootParent,
-            blockDescendants,
             containerTag,
             overflow,
             blend,
             transition,
+            hideDesktop,
+            hideMobile,
+            hideTablet
         },
         clientId,
         setAttributes,
+        className
     } = props;
 
     const blockVariationPickerOnSelect = (
@@ -1176,73 +1178,75 @@ const edit = (props) => {
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
-            <style
-                dangerouslySetInnerHTML={{
-                    __html: loadStyles(),
-                }}
-            />
-            <CustomTag
-                className={classnames(
-                    "wp-block-premium-container",
-                    `premium-block-${block_id}`,
-                    `premium-blocks-${block_id}`
-                )}
-                key={block_id}
-                style={{
-                    ...borderCss(border, props.deviceType),
-                    ...paddingCss(padding, props.deviceType),
-                    ...marginCss(margin, props.deviceType),
-                    ...gradientBackground(backgroundOptions),
-                    boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical || 0
-                        }px ${boxShadow.blur || 0}px ${boxShadow.color} ${boxShadow.position
-                        }`,
-                    overflow: overflow,
-                }}
-            >
-                {Object.entries(shapeTop).length > 1 &&
-                    shapeTop.openShape == 1 &&
-                    shapeTop.style && (
-                        <div
-                            className={topShapeClasses}
-                            dangerouslySetInnerHTML={{
-                                __html:
-                                    PremiumBlocksSettings.shapes[
-                                    shapeTop.style
-                                    ],
-                            }}
-                        />
+            <div className="block-editor-block-list__block wp-block" id={`block-${block_id}`}>
+                <style
+                    dangerouslySetInnerHTML={{
+                        __html: loadStyles(),
+                    }}
+                />
+                <CustomTag
+                    className={classnames(
+                        "wp-block-premium-container",
+                        `premium-block-${block_id}`,
+                        `premium-blocks-${block_id}`
                     )}
-                {videoBackground(
-                    backgroundOptions["backgroundType"],
-                    backgroundOptions.videoSource,
-                    backgroundOptions.videoURL,
-                    backgroundOptions.bgExternalVideo
-                )}
-                {Object.entries(shapeBottom).length > 1 &&
-                    shapeBottom.openShape == 1 &&
-                    shapeBottom.style && (
-                        <div
-                            className={bottomShapeClasses}
-                            dangerouslySetInnerHTML={{
-                                __html:
-                                    PremiumBlocksSettings.shapes[
-                                    shapeBottom.style
-                                    ],
-                            }}
-                        />
+                    key={block_id}
+                    style={{
+                        ...borderCss(border, props.deviceType),
+                        ...paddingCss(padding, props.deviceType),
+                        ...marginCss(margin, props.deviceType),
+                        ...gradientBackground(backgroundOptions),
+                        boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical || 0
+                            }px ${boxShadow.blur || 0}px ${boxShadow.color} ${boxShadow.position
+                            }`,
+                        overflow: overflow,
+                    }}
+                >
+                    {Object.entries(shapeTop).length > 1 &&
+                        shapeTop.openShape == 1 &&
+                        shapeTop.style && (
+                            <div
+                                className={topShapeClasses}
+                                dangerouslySetInnerHTML={{
+                                    __html:
+                                        PremiumBlocksSettings.shapes[
+                                        shapeTop.style
+                                        ],
+                                }}
+                            />
+                        )}
+                    {videoBackground(
+                        backgroundOptions["backgroundType"],
+                        backgroundOptions.videoSource,
+                        backgroundOptions.videoURL,
+                        backgroundOptions.bgExternalVideo
                     )}
-                <div className={`premium-row__block_overlay`}></div>
-                <div className="premium-container-inner-blocks-wrap">
-                    <InnerBlocks
-                        __experimentalMoverDirection={moverDirection}
-                        renderAppender={
-                            hasChildBlocks
-                                ? undefined
-                                : InnerBlocks.ButtonBlockAppender
-                        }
-                    />
-                </div>
-            </CustomTag>
+                    {Object.entries(shapeBottom).length > 1 &&
+                        shapeBottom.openShape == 1 &&
+                        shapeBottom.style && (
+                            <div
+                                className={bottomShapeClasses}
+                                dangerouslySetInnerHTML={{
+                                    __html:
+                                        PremiumBlocksSettings.shapes[
+                                        shapeBottom.style
+                                        ],
+                                }}
+                            />
+                        )}
+                    <div className={`premium-row__block_overlay`}></div>
+                    <div className="premium-container-inner-blocks-wrap">
+                        <InnerBlocks
+                            __experimentalMoverDirection={moverDirection}
+                            renderAppender={
+                                hasChildBlocks
+                                    ? undefined
+                                    : InnerBlocks.ButtonBlockAppender
+                            }
+                        />
+                    </div>
+                </CustomTag>
+            </div>
         </Fragment>
     );
 };
