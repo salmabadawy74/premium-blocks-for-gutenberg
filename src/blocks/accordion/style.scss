@@ -84,6 +84,10 @@ $pbBorderColor: #e1e1e1;
         -o-transform: rotate(180deg);
         transform: rotate(180deg);
     }
+
+    .premium-accordion__content_wrap {
+        margin-bottom: 10px !important;
+    }
 }
 
 .premium-accordion__title_wrap {
