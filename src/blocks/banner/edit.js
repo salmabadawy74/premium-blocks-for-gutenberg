@@ -15,7 +15,7 @@ import {
     SpacingComponent,
     PremiumFilters,
     InsideTabs,
-    InsideTab
+    InsideTab,
 } from "@pbg/components";
 import {
     borderCss,
@@ -87,7 +87,7 @@ function Edit(props) {
         descTextShadow,
         containerShadow,
         blockId,
-        hoverBackground
+        hoverBackground,
     } = props.attributes;
 
     const ALIGNS = [
@@ -215,7 +215,9 @@ function Edit(props) {
         styles[
             `.${blockId} .premium-banner__inner:hover .premium-banner__bg-overlay`
         ] = {
-            "background-color": `${hoverBackground ? hoverBackground : ''} !important`,
+            "background-color": `${
+                hoverBackground ? hoverBackground : ""
+            } !important`,
         };
 
         return generateCss(styles);
@@ -542,7 +544,7 @@ function Edit(props) {
                                     >
                                         <AdvancedPopColorControl
                                             label={__(
-                                                "Hovr Overlay",
+                                                "Hover Overlay",
                                                 "premium-blocks-for-gutenberg"
                                             )}
                                             colorValue={hoverBackground}
@@ -806,10 +808,16 @@ function Edit(props) {
                             }}
                         >
                             <div
-                                className={`premium-banner__bg-overlay ${(hoverBackground == "" || hoverBackground == undefined) ? 'premium-banner-hover-overlay' : ''}`}
+                                className={`premium-banner__bg-overlay ${
+                                    hoverBackground == "" ||
+                                    hoverBackground == undefined
+                                        ? "premium-banner-hover-overlay"
+                                        : ""
+                                }`}
                                 style={{
-                                    backgroundColor: `${background ? background : ""
-                                        } `,
+                                    backgroundColor: `${
+                                        background ? background : ""
+                                    } `,
                                 }}
                             ></div>
                             <div
@@ -901,8 +909,9 @@ function Edit(props) {
 }
 
 export default withSelect((select) => {
-    const { __experimentalGetPreviewDeviceType = null } =
-        select("core/edit-post");
+    const { __experimentalGetPreviewDeviceType = null } = select(
+        "core/edit-post"
+    );
     let deviceType = __experimentalGetPreviewDeviceType
         ? __experimentalGetPreviewDeviceType()
         : null;
