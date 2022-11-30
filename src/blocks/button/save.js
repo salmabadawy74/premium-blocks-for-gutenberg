@@ -54,7 +54,6 @@ const save = (props) => {
 
         return generateCss(styles);
     };
-    console.log(blockId);
     return (
         <div
             {...useBlockProps.save({

@@ -26,7 +26,8 @@
   word-break: break-all;
   justify-content: center;
   align-items: center;
-  border-radius: 0%; }
+  border-radius: 0%;
+  color: #32373c; }
   .premium-button .premium-button-icon {
     vertical-align: middle;
     font-size: 30px;
