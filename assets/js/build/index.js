@@ -6257,7 +6257,7 @@ function PremiumAccordion(props) {
       "border-bottom-right-radius": `${(titleBorder === null || titleBorder === void 0 ? void 0 : titleBorder.borderRadius[props.deviceType].left) || 0}px`
     };
     styles[`.${blockId} .premium-accordion__content_wrap`] = {
-      "margin-bottom": `${titleMargin === null || titleMargin === void 0 ? void 0 : titleMargin[props.deviceType]}${titleMargin === null || titleMargin === void 0 ? void 0 : titleMargin.unit}`
+      "margin-bottom": `${titleMargin === null || titleMargin === void 0 ? void 0 : titleMargin[props.deviceType]}${titleMargin === null || titleMargin === void 0 ? void 0 : titleMargin.unit} !important`
     };
     styles[`.${blockId} .premium-accordion__icon_wrap`] = {
       "background-color": arrowStyles[0].arrowBack,
