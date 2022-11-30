@@ -5,8 +5,6 @@ import React, { useLayoutEffect } from "react";
 import classnames from "classnames";
 
 const PBGPresets = (props) => {
-    // Add and remove the CSS on the drop and remove of the component.
-
     const { setAttributes, presets, presetInputType, label, className } = props;
 
     const [selectedPresetState, setPreset] = useState("");
@@ -63,7 +61,12 @@ const PBGPresets = (props) => {
         const key = preset.value;
         const checked = selectedPresetState === key ? true : false;
         return (
-            <>
+            <div
+                style={{
+                    textAlign: "center",
+                    color: "#534d4d",
+                }}
+            >
                 <input
                     key={key}
                     className={classnames("premium-presets-radio-input", {
@@ -78,7 +81,6 @@ const PBGPresets = (props) => {
                         display: "none",
                     }}
                 />
-
                 <label
                     htmlFor={key}
                     className="premium-presets-radio-input-label"
@@ -92,7 +94,8 @@ const PBGPresets = (props) => {
                     }}
                     onClick={() => updatePresets(key)}
                 ></label>
-            </>
+                {preset.label}
+            </div>
         );
     });
 
