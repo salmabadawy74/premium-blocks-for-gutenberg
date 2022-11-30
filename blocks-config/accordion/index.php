@@ -38,7 +38,7 @@ function get_premium_accordion_css_style( $attr, $unique_id ) {
 	if ( isset( $attr['titleMargin'] ) ) {
 		$title_margin = $attr['titleMargin'];
 		$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' );
-		$css->add_property( 'margin-bottom', $css->render_range( $title_margin, 'Desktop' ) );
+		$css->add_property( 'margin-bottom', $css->render_range( $title_margin, 'Desktop' ) . '!important' );
 	}
 
 	if ( isset( $attr['titleBorder'] ) ) {
@@ -100,7 +100,7 @@ function get_premium_accordion_css_style( $attr, $unique_id ) {
 	if ( isset( $attr['titleMargin'] ) ) {
 		$title_margin = $attr['titleMargin'];
 		$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' );
-		$css->add_property( 'margin-bottom', $css->render_range( $title_margin, 'Tablet' ) );
+		$css->add_property( 'margin-bottom', $css->render_range( $title_margin, 'Tablet' ) . '!important' );
 	}
 
 	if ( isset( $attr['titleBorder'] ) ) {
@@ -162,7 +162,7 @@ function get_premium_accordion_css_style( $attr, $unique_id ) {
 	if ( isset( $attr['titleMargin'] ) ) {
 		$title_margin = $attr['titleMargin'];
 		$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' );
-		$css->add_property( 'margin-bottom', $css->render_range( $title_margin, 'Mobile' ) );
+		$css->add_property( 'margin-bottom', $css->render_range( $title_margin, 'Mobile' ) . '!important' );
 	}
 
 	if ( isset( $attr['titleBorder'] ) ) {
