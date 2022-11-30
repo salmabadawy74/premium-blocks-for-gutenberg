@@ -71,9 +71,9 @@
         "titleMargin": {
             "type": "object",
             "default": {
-                "Desktop": "",
-                "Tablet": "",
-                "Mobile": "",
+                "Desktop": "10",
+                "Tablet": "10",
+                "Mobile": "10",
                 "unit": "px"
             }
         },
