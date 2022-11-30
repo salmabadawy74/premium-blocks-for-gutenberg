@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import { generateCss, filterJsCss } from "@pbg/helpers";
+import { generateCss, filterJsCss, gradientBackground } from "@pbg/helpers";
 const { RichText, useBlockProps } = wp.blockEditor;
 const { Fragment } = wp.element;
 
@@ -29,12 +29,13 @@ const save = (props) => {
         iconColor,
         iconHoverColor,
         iconShadow,
+        backgroundOptions,
     } = props.attributes;
 
     const loadStyles = () => {
         const styles = {};
 
-        styles[`.${blockId}.premium-button__wrap:hover .premium-button-icon`] = {
+        styles[`.${blockId} .premium-button-icon:hover`] = {
             color: `${iconHoverColor}!important`,
         };
         styles[`.${blockId}.premium-button__wrap:hover .premium-button`] = {
@@ -54,7 +55,6 @@ const save = (props) => {
 
         return generateCss(styles);
     };
-
     return (
         <div
             {...useBlockProps.save({
@@ -75,10 +75,10 @@ const save = (props) => {
                 {
                     className: `premium-button wp-block-button__link premium-button__${btnSize} premium-button__${iconPosition}`,
                     style: {
-                        backgroundColor: btnStyles[0].backColor,
                         boxShadow: `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`,
                         borderStyle: border?.borderType,
                         borderColor: border?.borderColor,
+                        ...gradientBackground(backgroundOptions),
                     },
                 },
                 [

@@ -7,6 +7,7 @@ import {
     borderCss,
     paddingCss,
     marginCss,
+    gradientBackground,
 } from "@pbg/helpers";
 import {
     InspectorTabs,
@@ -22,9 +23,11 @@ import {
     WebfontLoader,
     PremiumTypo,
     SpacingComponent,
+    PremiumBackgroundControl,
     InsideTabs,
     InsideTab,
     iconsList,
+    PBGPresets,
 } from "@pbg/components";
 
 const { __ } = wp.i18n;
@@ -33,6 +36,7 @@ const { PanelBody, SelectControl, ToggleControl } = wp.components;
 const { Fragment, useEffect } = wp.element;
 const { InspectorControls, RichText, URLInput, useBlockProps } = wp.blockEditor;
 const { withSelect } = wp.data;
+import { buttonsPresets } from "./presets";
 
 function Edit(props) {
     const { setAttributes, className, clientId } = props;
@@ -71,6 +75,8 @@ function Edit(props) {
         iconColor,
         iconHoverColor,
         iconShadow,
+        backgroundOptions,
+        backgroundPresets,
     } = props.attributes;
 
     const SIZE = [
@@ -222,16 +228,13 @@ function Edit(props) {
     const loadStyles = () => {
         const styles = {};
 
-        styles[`.${blockId}.premium-button__wrap:hover .premium-button-icon`] = {
+        styles[`.${blockId} .premium-button-icon:hover`] = {
             color: `${iconHoverColor}!important`,
         };
-        styles[`.${blockId}.premium-button__wrap:hover .premium-button`] = {
+        styles[`.${blockId}.premium-button__wrap .premium-button:hover`] = {
             "background-color": `${btnStyles[0].backHoverColor}!important`,
             color: `${btnStyles[0].textHoverColor}!important`,
             "border-color": `${btnStyles[0].borderHoverColor}!important`,
-        };
-        styles[`.${blockId}.premium-button__wrap:hover .premium-button div`] = {
-            color: `${btnStyles[0].textHoverColor}!important`,
         };
         styles[
             `.${blockId}.premium-button__slide .premium-button::before, .${blockId}.premium-button__shutter .premium-button::before, .${blockId}.premium-button__radial .premium-button::before`
@@ -255,6 +258,11 @@ function Edit(props) {
                             className="premium-panel-body"
                             initialOpen={true}
                         >
+                            <PBGPresets
+                                setAttributes={setAttributes}
+                                presets={buttonsPresets}
+                                presetInputType="radioImage"
+                            />
                             <SelectControl
                                 options={EFFECTS}
                                 label={__(
@@ -273,7 +281,9 @@ function Edit(props) {
                                     )}
                                     value={effectDir}
                                     onChange={(newValue) =>
-                                        setAttributes({ effectDir: newValue })
+                                        setAttributes({
+                                            effectDir: newValue,
+                                        })
                                     }
                                 />
                             )}
@@ -286,7 +296,9 @@ function Edit(props) {
                                     )}
                                     value={effectDir}
                                     onChange={(newValue) =>
-                                        setAttributes({ effectDir: newValue })
+                                        setAttributes({
+                                            effectDir: newValue,
+                                        })
                                     }
                                 />
                             )}
@@ -299,7 +311,9 @@ function Edit(props) {
                                     )}
                                     value={effectDir}
                                     onChange={(newValue) =>
-                                        setAttributes({ effectDir: newValue })
+                                        setAttributes({
+                                            effectDir: newValue,
+                                        })
                                     }
                                 />
                             )}
@@ -408,7 +422,9 @@ function Edit(props) {
                                     ]}
                                     value={btnAlign}
                                     onChange={(newAlign) =>
-                                        setAttributes({ btnAlign: newAlign })
+                                        setAttributes({
+                                            btnAlign: newAlign,
+                                        })
                                     }
                                     label={__(
                                         "Align Content",
@@ -452,17 +468,16 @@ function Edit(props) {
                                                 })
                                             }
                                         />
-                                        <AdvancedPopColorControl
-                                            label={__(
-                                                "Background Color",
-                                                "premium-blocks-for-gutenberg"
-                                            )}
-                                            colorValue={btnStyles[0].backColor}
-                                            colorDefault={""}
-                                            onColorChange={(newvalue) =>
-                                                saveBtnStyles({
-                                                    backColor: newvalue,
+                                        <PremiumBackgroundControl
+                                            value={backgroundOptions}
+                                            onChange={(value) =>
+                                                setAttributes({
+                                                    backgroundOptions: value,
                                                 })
+                                            }
+                                            backgroundVedio={false}
+                                            backgroundPresets={
+                                                backgroundPresets
                                             }
                                         />
                                     </Fragment>
@@ -493,13 +508,13 @@ function Edit(props) {
                                             label={
                                                 "radial" !== effect
                                                     ? __(
-                                                        "Background Color",
-                                                        "premium-blocks-for-gutenberg"
-                                                    )
+                                                          "Background Color",
+                                                          "premium-blocks-for-gutenberg"
+                                                      )
                                                     : __(
-                                                        "Background Color",
-                                                        "premium-blocks-for-gutenberg"
-                                                    )
+                                                          "Background Color",
+                                                          "premium-blocks-for-gutenberg"
+                                                      )
                                             }
                                             colorValue={
                                                 btnStyles[0].backHoverColor
@@ -527,8 +542,7 @@ function Edit(props) {
                                                 colorDefault={""}
                                                 onColorChange={(newValue) =>
                                                     saveBtnStyles({
-                                                        borderHoverColor:
-                                                            newValue,
+                                                        borderHoverColor: newValue,
                                                     })
                                                 }
                                             />
@@ -666,7 +680,9 @@ function Edit(props) {
                                     )}
                                     value={iconSpacing}
                                     onChange={(value) =>
-                                        setAttributes({ iconSpacing: value })
+                                        setAttributes({
+                                            iconSpacing: value,
+                                        })
                                     }
                                     showUnits={true}
                                     responsive={true}
@@ -724,10 +740,11 @@ function Edit(props) {
                     {
                         className: `premium-button wp-block-button__link premium-button__${btnSize} premium-button__${iconPosition}`,
                         style: {
-                            backgroundColor: btnStyles[0].backColor,
                             boxShadow: `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`,
                             ...paddingCss(padding, props.deviceType),
                             ...borderCss(border, props.deviceType),
+
+                            ...gradientBackground(backgroundOptions),
                         },
                     },
                     [
@@ -806,8 +823,9 @@ function Edit(props) {
 }
 
 export default withSelect((select) => {
-    const { __experimentalGetPreviewDeviceType = null } =
-        select("core/edit-post");
+    const { __experimentalGetPreviewDeviceType = null } = select(
+        "core/edit-post"
+    );
     let deviceType = __experimentalGetPreviewDeviceType
         ? __experimentalGetPreviewDeviceType()
         : null;

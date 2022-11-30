@@ -12,14 +12,14 @@ import PremiumMediaUpload from "./premium-media-upload";
 import PremiumBackground from "./premium-background";
 import map from "lodash/map";
 const { __ } = wp.i18n;
-const { Fragment, useState } = wp.element;
+const { Fragment, useState, useEffect } = wp.element;
 import AdvancedPopColorControl from "./Color Control/ColorComponent";
 import ResponsiveSingleRangeControl from "./RangeControl/single-range-control";
-import RadioComponent from "./radio-control";
 export default function PremiumBackgroundControl({
     value,
     onChange,
     backgroundVedio = false,
+    backgroundPresets = "",
 }) {
     let defaultValues = {
         backgroundType: "",
@@ -45,7 +45,42 @@ export default function PremiumBackgroundControl({
     };
     value = value ? { ...defaultValues, ...value } : defaultValues;
     const [state, setState] = useState(value);
+    const onChangeBackground = (item, value) => {
+        const updatedState = { ...state };
+        updatedState[item] = value;
+        setState(updatedState);
+        onChange(updatedState);
+    };
+    const {
+        backgroundType,
+        backgroundColor,
+        backgroundImageID,
+        backgroundImageURL,
+        backgroundPosition,
+        backgroundRepeat,
+        backgroundSize,
+        fixed,
+        bgExternalVideo,
+        gradientLocationOne,
+        gradientColorTwo,
+        gradientLocationTwo,
+        videoURL,
+        videoID,
+        gradientAngle,
+        gradientPosition,
+        gradientType,
+        videoSource,
+        bgVideoFallbackID,
+        bgVideoFallbackURL,
+    } = state;
 
+    useEffect(() => {
+        if (backgroundPresets === "transparent") {
+            onChangeBackground("backgroundType", "transparent");
+        } else {
+            onChangeBackground("backgroundType", "");
+        }
+    }, [backgroundPresets]);
     const gradTypes = [
         { key: "linear", name: __("Linear", "premium-blocks-for-gutenberg") },
         { key: "radial", name: __("Radial", "premium-blocks-for-gutenberg") },
@@ -114,6 +149,33 @@ export default function PremiumBackgroundControl({
             tooltip: __("Gradient", "premium-blocks-for-gutenberg"),
         },
     ];
+    if (backgroundPresets === "transparent") {
+        bgType.push({
+            key: "transparent",
+            icon: (
+                <svg
+                    id="Premium_Blocks"
+                    data-name="Premium Blocks"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14.5"
+                    height="14.5"
+                    viewBox="0 0 21.5 21.5"
+                >
+                    <defs></defs>
+                    <title>transparent-color</title>
+                    <g id="Transparent_Color" data-name="Transparent Color">
+                        <path
+                            class="cls-1"
+                            d="M12.5,1.75A10.75,10.75,0,1,0,23.25,12.5,10.76,10.76,0,0,0,12.5,1.75Zm0,1.5a9.22,9.22,0,0,1,6,2.2l-13,13A9.25,9.25,0,0,1,12.5,3.25Zm0,18.5a9.25,9.25,0,0,1-6-2.2l13-13a9.24,9.24,0,0,1-7,15.23Z"
+                            transform="translate(-1.75 -1.75)"
+                        />
+                    </g>
+                </svg>
+            ),
+            tooltip: __("Transparent", "premium-blocks-for-gutenberg"),
+        });
+    }
+
     if (backgroundVedio) {
         bgType.push({
             key: "video",
@@ -142,35 +204,6 @@ export default function PremiumBackgroundControl({
             tooltip: __("Video", "premium-blocks-for-gutenberg"),
         });
     }
-    const onChangeBackground = (item, value) => {
-        const updatedState = { ...state };
-        updatedState[item] = value;
-        setState(updatedState);
-        onChange(updatedState);
-    };
-    const {
-        backgroundType,
-        backgroundColor,
-        backgroundImageID,
-        backgroundImageURL,
-        backgroundPosition,
-        backgroundRepeat,
-        backgroundSize,
-        fixed,
-        bgExternalVideo,
-        gradientLocationOne,
-        gradientColorTwo,
-        gradientLocationTwo,
-        videoURL,
-        videoID,
-        gradientAngle,
-        gradientPosition,
-        gradientType,
-        videoSource,
-        bgVideoFallbackID,
-        bgVideoFallbackURL,
-    } = state;
-
     return (
         <Fragment>
             <div className="premium-btn-size-settings-container  premium-blocks__base-control">
@@ -461,21 +494,21 @@ export default function PremiumBackgroundControl({
                             }
                         />
                     ) : (
-                            <Fragment>
-                                <p>{__("Video", "premium-blocks-for-gutenberg")}</p>
-                                <PremiumMediaUpload
-                                    type="video"
-                                    imageID={videoID}
-                                    imageURL={videoURL}
-                                    onSelectMedia={(media) =>
-                                        onChangeBackground("videoURL", media.url)
-                                    }
-                                    onRemoveImage={() =>
-                                        onChangeBackground("videoURL", "")
-                                    }
-                                />
-                            </Fragment>
-                        )}
+                        <Fragment>
+                            <p>{__("Video", "premium-blocks-for-gutenberg")}</p>
+                            <PremiumMediaUpload
+                                type="video"
+                                imageID={videoID}
+                                imageURL={videoURL}
+                                onSelectMedia={(media) =>
+                                    onChangeBackground("videoURL", media.url)
+                                }
+                                onRemoveImage={() =>
+                                    onChangeBackground("videoURL", "")
+                                }
+                            />
+                        </Fragment>
+                    )}
                 </Fragment>
             )}
         </Fragment>

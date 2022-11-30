@@ -260,6 +260,30 @@
                 "horizontal": "0",
                 "vertical": "0"
             }
+        },
+        "backgroundOptions": {
+            "type": "object",
+            "default": {
+                "backgroundType": "",
+                "backgroundColor": "",
+                "backgroundImageID": "",
+                "backgroundImageURL": "",
+                "backgroundPosition": "center center",
+                "backgroundRepeat": "no-repeat",
+                "backgroundSize": "cover",
+                "fixed": false,
+                "gradientLocationOne": "0",
+                "gradientColorTwo": "",
+                "gradientLocationTwo": "100",
+                "gradientType": "linear",
+                "gradientAngle": "180",
+                "gradientPosition": "center center"
+            }
+        },
+        "backgroundPresets":{
+            "type":"string",
+            "default":""
         }
+
     }
 }
