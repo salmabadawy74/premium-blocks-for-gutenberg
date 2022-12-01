@@ -88,6 +88,30 @@ export default function PremiumBackgroundControl({
 
     const bgType = [
         {
+            key: "transparent",
+            icon: (
+                <svg
+                    id="Premium_Blocks"
+                    data-name="Premium Blocks"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14.5"
+                    height="14.5"
+                    viewBox="0 0 21.5 21.5"
+                >
+                    <defs></defs>
+                    <title>transparent-color</title>
+                    <g id="Transparent_Color" data-name="Transparent Color">
+                        <path
+                            class="cls-1"
+                            d="M12.5,1.75A10.75,10.75,0,1,0,23.25,12.5,10.76,10.76,0,0,0,12.5,1.75Zm0,1.5a9.22,9.22,0,0,1,6,2.2l-13,13A9.25,9.25,0,0,1,12.5,3.25Zm0,18.5a9.25,9.25,0,0,1-6-2.2l13-13a9.24,9.24,0,0,1-7,15.23Z"
+                            transform="translate(-1.75 -1.75)"
+                        />
+                    </g>
+                </svg>
+            ),
+            tooltip: __("Transparent", "premium-blocks-for-gutenberg"),
+        },
+        {
             key: "solid",
             icon: (
                 <svg
@@ -149,32 +173,6 @@ export default function PremiumBackgroundControl({
             tooltip: __("Gradient", "premium-blocks-for-gutenberg"),
         },
     ];
-    if (backgroundPresets === "transparent") {
-        bgType.push({
-            key: "transparent",
-            icon: (
-                <svg
-                    id="Premium_Blocks"
-                    data-name="Premium Blocks"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14.5"
-                    height="14.5"
-                    viewBox="0 0 21.5 21.5"
-                >
-                    <defs></defs>
-                    <title>transparent-color</title>
-                    <g id="Transparent_Color" data-name="Transparent Color">
-                        <path
-                            class="cls-1"
-                            d="M12.5,1.75A10.75,10.75,0,1,0,23.25,12.5,10.76,10.76,0,0,0,12.5,1.75Zm0,1.5a9.22,9.22,0,0,1,6,2.2l-13,13A9.25,9.25,0,0,1,12.5,3.25Zm0,18.5a9.25,9.25,0,0,1-6-2.2l13-13a9.24,9.24,0,0,1-7,15.23Z"
-                            transform="translate(-1.75 -1.75)"
-                        />
-                    </g>
-                </svg>
-            ),
-            tooltip: __("Transparent", "premium-blocks-for-gutenberg"),
-        });
-    }
 
     if (backgroundVedio) {
         bgType.push({
