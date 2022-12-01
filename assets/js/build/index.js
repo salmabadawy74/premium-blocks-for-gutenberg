@@ -14447,7 +14447,7 @@ function Edit(props) {
 
   const loadStyles = () => {
     const styles = {};
-    styles[`.${blockId} .premium-button-icon:hover`] = {
+    styles[`.${blockId}:hover .premium-button-icon`] = {
       color: `${iconHoverColor}!important`
     };
     styles[`.${blockId}.premium-button__wrap .premium-button:hover`] = {
@@ -14455,12 +14455,16 @@ function Edit(props) {
       color: `${btnStyles[0].textHoverColor}!important`,
       "border-color": `${btnStyles[0].borderHoverColor}!important`
     };
+    styles[`.${blockId}.premium-button__wrap .premium-button`] = {
+      color: `${btnStyles[0].textColor}!important`
+    };
     styles[`.${blockId}.premium-button__slide .premium-button::before, .${blockId}.premium-button__shutter .premium-button::before, .${blockId}.premium-button__radial .premium-button::before`] = {
       "background-color": `${slideColor}`
     };
     return (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.generateCss)(styles);
   };
 
+  console.log(backgroundOptions);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InspectorControls, {
     key: "inspector"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_5__.InspectorTabs, {
@@ -14739,7 +14743,6 @@ function Edit(props) {
       btnText: value
     }),
     style: {
-      color: btnStyles[0].textColor,
       textShadow: `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`,
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.typographyCss)(typography, props.deviceType),
       display: "inline"
@@ -14835,6 +14838,8 @@ const buttonsPresets = [{
     label: "backgroundPresets"
   }, {
     label: "border"
+  }, {
+    label: "backgroundOptions"
   }]
 }, {
   value: "preset-1",
@@ -14939,6 +14944,9 @@ const buttonsPresets = [{
       borderHoverColor: ""
     }]
   }, {
+    label: "iconHoverColor",
+    value: "#fff"
+  }, {
     label: "border",
     value: {
       borderType: "solid",
@@ -14998,6 +15006,9 @@ const buttonsPresets = [{
   }, {
     label: "iconColor",
     value: `var(--pbg-global-color3,#333333)`
+  }, {
+    label: "iconHoverColor",
+    value: ""
   }, {
     label: "btnStyles",
     value: [{
@@ -15085,6 +15096,9 @@ const buttonsPresets = [{
   }, {
     label: "showIcon",
     value: true
+  }, {
+    label: "iconHoverColor",
+    value: "#fff"
   }, {
     label: "btnStyles",
     value: [{
@@ -15399,7 +15413,7 @@ const buttonsPresets = [{
       backOpacity: 1,
       backHoverColor: "var(--pbg-global-color1,#0085ba)",
       borderHoverColor: ""
-    }, f]
+    }]
   }, {
     label: "border",
     value: {

@@ -9,6 +9,7 @@ export const buttonsPresets = [
         defaultPresetAttributes: [
             { label: "backgroundPresets" },
             { label: "border" },
+            { label: "backgroundOptions" },
         ],
     },
     {
@@ -130,7 +131,10 @@ export const buttonsPresets = [
                     },
                 ],
             },
-
+            {
+                label: "iconHoverColor",
+                value: "#fff",
+            },
             {
                 label: "border",
                 value: {
@@ -197,6 +201,10 @@ export const buttonsPresets = [
             {
                 label: "iconColor",
                 value: `var(--pbg-global-color3,#333333)`,
+            },
+            {
+                label: "iconHoverColor",
+                value: "",
             },
             {
                 label: "btnStyles",
@@ -296,6 +304,11 @@ export const buttonsPresets = [
                 label: "showIcon",
                 value: true,
             },
+            {
+                label: "iconHoverColor",
+                value: "#fff",
+            },
+
             {
                 label: "btnStyles",
 
@@ -657,7 +670,7 @@ export const buttonsPresets = [
                         backOpacity: 1,
                         backHoverColor: "var(--pbg-global-color1,#0085ba)",
                         borderHoverColor: "",
-                    },f
+                    },
                 ],
             },
 
