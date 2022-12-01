@@ -89,7 +89,11 @@ const PBGPresets = (props) => {
                     }}
                     onClick={() => updatePresets(key)}
                 ></label>
-                {preset.label}
+                <div className="premium_label__wrapper">
+                    <span className="premium_presets__label">
+                        {preset.label}
+                    </span>
+                </div>
             </div>
         );
     });
