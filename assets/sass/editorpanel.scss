@@ -5468,24 +5468,16 @@ i.fipicon-angle-left {
     }
 
     svg {
-        width: 100%;
-        height: auto;
-        border-radius: 3px;
-        fill: #898e95;
-        border: 1px solid #dadada;
-        color: #898e95;
-        background-color: #f0f0f1;
                 &.presets__btn_fill .cls-1{
-fill: #898e95;
+fill: #b7b7b7;
                 }
                                                                 &.presets__btn_outline  .cls-1 {
-                                                                    fill: #fff;;
+                                                                    fill: #B7B7B7;
                                                                 }
     }
 
-    .premium-presets-radio-input:checked+.premium-presets-radio-input-label svg {
-        background-color: #007cba;
-        border: 1px solid #00608f;
+    .premium-presets-radio-input:checked+.premium-presets-radio-input-label svg  .cls-1{
+        fill: #007cba;
 
     }
 

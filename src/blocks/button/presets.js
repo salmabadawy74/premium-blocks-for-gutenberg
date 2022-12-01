@@ -55,6 +55,53 @@ export const buttonsPresets = [
                     gradientPosition: "center center",
                 },
             },
+            {
+                label: "border",
+                value: {
+                    borderType: "none",
+                    borderColor: ``,
+                    borderWidth: {
+                        Desktop: {
+                            top: 0,
+                            right: 0,
+                            bottom: 0,
+                            left: 0,
+                        },
+                        Tablet: {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: "",
+                        },
+                        Mobile: {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: "",
+                        },
+                    },
+                    borderRadius: {
+                        Desktop: {
+                            top: 0,
+                            right: 0,
+                            bottom: 0,
+                            left: 0,
+                        },
+                        Tablet: {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: "",
+                        },
+                        Mobile: {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: "",
+                        },
+                    },
+                },
+            },
         ],
         icon: `<svg id="Layer_1" class="presets__btn_fill" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="103" height="37" viewBox="0 0 103 37"><defs></defs><title>fill-color</title><path id="Fill_Color" data-name="Fill Color" class="cls-1" d="M0,0V37H103V0ZM75,20H27.93V17H75Z"/></svg>`,
     },
@@ -88,7 +135,7 @@ export const buttonsPresets = [
                 label: "border",
                 value: {
                     borderType: "solid",
-                    borderColor: `var(--pbg-global-color4,#eaeaea)`,
+                    borderColor: `var(--pbg-global-color3,#333333)`,
                     borderWidth: {
                         Desktop: {
                             top: 1,
@@ -183,6 +230,53 @@ export const buttonsPresets = [
                     gradientPosition: "center center",
                 },
             },
+            {
+                label: "border",
+                value: {
+                    borderType: "none",
+                    borderColor: ``,
+                    borderWidth: {
+                        Desktop: {
+                            top: 0,
+                            right: 0,
+                            bottom: 0,
+                            left: 0,
+                        },
+                        Tablet: {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: "",
+                        },
+                        Mobile: {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: "",
+                        },
+                    },
+                    borderRadius: {
+                        Desktop: {
+                            top: 0,
+                            right: 0,
+                            bottom: 0,
+                            left: 0,
+                        },
+                        Tablet: {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: "",
+                        },
+                        Mobile: {
+                            top: "",
+                            right: "",
+                            bottom: "",
+                            left: "",
+                        },
+                    },
+                },
+            },
         ],
         icon: `<svg id="Layer_1" class="presets__btn_fill" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="103" height="37" viewBox="0 0 103 37"><defs></defs><title>fill-with-icon</title><g id="Fill_With_Icon" data-name="Fill With Icon"><path class="cls-1" d="M0,0V37H103V0ZM69,20H22V17H69ZM79.08,22,76.52,20.6,74,22l.48-2.86-2.07-2,2.87-.41,1.28-2.6,1.28,2.6,2.87.41-2.08,2Z"/></g></svg>`,
     },
@@ -223,7 +317,7 @@ export const buttonsPresets = [
                 label: "border",
                 value: {
                     borderType: "solid",
-                    borderColor: `var(--pbg-global-color4,#eaeaea)`,
+                    borderColor: `var(--pbg-global-color3,#333333)`,
                     borderWidth: {
                         Desktop: {
                             top: 1,
@@ -317,14 +411,14 @@ export const buttonsPresets = [
             {
                 label: "border",
                 value: {
-                    borderType: "solid",
-                    borderColor: `var(--pbg-global-color4,#eaeaea)`,
+                    borderType: "none",
+                    borderColor: ``,
                     borderWidth: {
                         Desktop: {
-                            top: 1,
-                            right: 1,
-                            bottom: 1,
-                            left: 1,
+                            top: 0,
+                            right: 0,
+                            bottom: 0,
+                            left: 0,
                         },
                         Tablet: {
                             top: "",
@@ -395,7 +489,7 @@ export const buttonsPresets = [
                 label: "border",
                 value: {
                     borderType: "solid",
-                    borderColor: `var(--pbg-global-color4,#eaeaea)`,
+                    borderColor: `var(--pbg-global-color3,#333333)`,
                     borderWidth: {
                         Desktop: {
                             top: 1,
@@ -489,14 +583,14 @@ export const buttonsPresets = [
             {
                 label: "border",
                 value: {
-                    borderType: "solid",
-                    borderColor: `var(--pbg-global-color4,#eaeaea)`,
+                    borderType: "none",
+                    borderColor: ``,
                     borderWidth: {
                         Desktop: {
-                            top: 1,
-                            right: 1,
-                            bottom: 1,
-                            left: 1,
+                            top: 0,
+                            right: 0,
+                            bottom: 0,
+                            left: 0,
                         },
                         Tablet: {
                             top: "",
@@ -567,7 +661,7 @@ export const buttonsPresets = [
                 label: "border",
                 value: {
                     borderType: "solid",
-                    borderColor: `var(--pbg-global-color4,#eaeaea)`,
+                    borderColor: `var(--pbg-global-color3,#333333)`,
                     borderWidth: {
                         Desktop: {
                             top: 1,
