@@ -1851,7 +1851,11 @@ const PBGPresets = props => {
         display: "inline-block"
       },
       onClick: () => updatePresets(key)
-    }), preset.label);
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "premium_label__wrapper"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      className: "premium_presets__label"
+    }, preset.label)));
   });
   const presetDropdown = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
     className: "premium-presets-dropdown",

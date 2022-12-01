@@ -5457,15 +5457,19 @@ i.fipicon-angle-left {
     grid-column-gap: 16px;
     grid-template-columns: repeat(2, 1fr);
     grid-row-gap: 14px;
-    .premium-presets__wrapper{
-    text-align: center;
-    color: #534d4d;
-    font-size: 11px;
+    
     .premium-presets-radio-input {
         display: none;
     }
 
-    .premium-presets-radio-input-label {
+.premium_label__wrapper{
+    text-align: center;
+    span.premium_presets__label{
+    text-align: center;
+        color: #534d4d;
+        font-size: 11px;
+}
+}    .premium-presets-radio-input-label {
         position: relative;
         display: inline-block;
     }
@@ -5494,7 +5498,7 @@ i.fipicon-angle-left {
         height: 100%;
     }
 }
-}
+
 
 .premium-inspector-tab .components-panel__body .premium-presets-label {
     line-height: 2.4;
