@@ -61,12 +61,7 @@ const PBGPresets = (props) => {
         const key = preset.value;
         const checked = selectedPresetState === key ? true : false;
         return (
-            <div
-                style={{
-                    textAlign: "center",
-                    color: "#534d4d",
-                }}
-            >
+            <div className="premium-presets__wrapper">
                 <input
                     key={key}
                     className={classnames("premium-presets-radio-input", {

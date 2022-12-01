@@ -123,9 +123,9 @@ export const buttonsPresets = [
                 value: [
                     {
                         textColor: `var(--pbg-global-color3,#333333)`,
-                        textHoverColor: "",
+                        textHoverColor: "#fff",
                         backOpacity: 1,
-                        backHoverColor: "",
+                        backHoverColor: "var(--pbg-global-color1,#0085ba)",
                         borderHoverColor: "",
                     },
                 ],
@@ -193,6 +193,10 @@ export const buttonsPresets = [
             {
                 label: "showIcon",
                 value: true,
+            },
+            {
+                label: "iconColor",
+                value: `var(--pbg-global-color3,#333333)`,
             },
             {
                 label: "btnStyles",
@@ -298,9 +302,9 @@ export const buttonsPresets = [
                 value: [
                     {
                         textColor: `var(--pbg-global-color3,#333333)`,
-                        textHoverColor: "",
+                        textHoverColor: "#fff",
                         backOpacity: 1,
-                        backHoverColor: "",
+                        backHoverColor: "var(--pbg-global-color1,#0085ba)",
                         borderHoverColor: "",
                     },
                 ],
@@ -477,9 +481,9 @@ export const buttonsPresets = [
                 value: [
                     {
                         textColor: `var(--pbg-global-color3,#333333)`,
-                        textHoverColor: "",
+                        textHoverColor: "#fff",
                         backOpacity: 1,
-                        backHoverColor: "",
+                        backHoverColor: "var(--pbg-global-color1,#0085ba)",
                         borderHoverColor: "",
                     },
                 ],
@@ -649,11 +653,11 @@ export const buttonsPresets = [
                 value: [
                     {
                         textColor: `var(--pbg-global-color3,#333333)`,
-                        textHoverColor: "",
+                        textHoverColor: "#fff",
                         backOpacity: 1,
-                        backHoverColor: "",
+                        backHoverColor: "var(--pbg-global-color1,#0085ba)",
                         borderHoverColor: "",
-                    },
+                    },f
                 ],
             },
 
