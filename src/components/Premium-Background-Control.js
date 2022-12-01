@@ -77,8 +77,6 @@ export default function PremiumBackgroundControl({
     useEffect(() => {
         if (backgroundPresets === "transparent") {
             onChangeBackground("backgroundType", "transparent");
-        } else {
-            onChangeBackground("backgroundType", "");
         }
     }, [backgroundPresets]);
     const gradTypes = [

@@ -228,7 +228,7 @@ function Edit(props) {
     const loadStyles = () => {
         const styles = {};
 
-        styles[`.${blockId} .premium-button-icon:hover`] = {
+        styles[`.${blockId}:hover .premium-button-icon`] = {
             color: `${iconHoverColor}!important`,
         };
         styles[`.${blockId}.premium-button__wrap .premium-button:hover`] = {
@@ -236,6 +236,10 @@ function Edit(props) {
             color: `${btnStyles[0].textHoverColor}!important`,
             "border-color": `${btnStyles[0].borderHoverColor}!important`,
         };
+        styles[`.${blockId}.premium-button__wrap .premium-button`] = {
+            color: `${btnStyles[0].textColor}!important`,
+        };
+
         styles[
             `.${blockId}.premium-button__slide .premium-button::before, .${blockId}.premium-button__shutter .premium-button::before, .${blockId}.premium-button__radial .premium-button::before`
         ] = {
@@ -244,7 +248,7 @@ function Edit(props) {
 
         return generateCss(styles);
     };
-
+    console.log(backgroundOptions);
     return (
         <Fragment>
             <InspectorControls key={"inspector"}>
@@ -756,7 +760,6 @@ function Edit(props) {
                             boxShadow: `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`,
                             ...paddingCss(padding, props.deviceType),
                             ...borderCss(border, props.deviceType),
-
                             ...gradientBackground(backgroundOptions),
                         },
                     },
@@ -790,7 +793,6 @@ function Edit(props) {
                                     setAttributes({ btnText: value })
                                 }
                                 style={{
-                                    color: btnStyles[0].textColor,
                                     textShadow: `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`,
                                     ...typographyCss(
                                         typography,
