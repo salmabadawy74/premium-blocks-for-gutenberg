@@ -217,9 +217,9 @@
         "iconSize": {
             "type": "object",
             "default": {
-                "Desktop": "30",
-                "Tablet": "30",
-                "Mobile": "30",
+                "Desktop": "25",
+                "Tablet": "25",
+                "Mobile": "25",
                 "unit": "px"
             }
         },
@@ -227,10 +227,10 @@
             "type": "object",
             "default": {
                 "Desktop": {
-                    "top": "",
-                    "right": "",
-                    "bottom": "",
-                    "left": ""
+                    "top": "0",
+                    "right": "0",
+                    "bottom": "0",
+                    "left": "0"
                 },
                 "Tablet": {
                     "top": "",
