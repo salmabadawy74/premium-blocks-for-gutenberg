@@ -12,6 +12,7 @@ class PBG_Blocks_Helper {
 
 
 
+
 	/**
 	 * Class instance
 	 *
@@ -190,7 +191,7 @@ class PBG_Blocks_Helper {
 	 * Fix File Of type JSON
 	 */
 	public function fix_mime_type_json( $data = null, $file = null, $filename = null, $mimes = null ) {
-		$ext = isset( $data['ext'] ) ? $data['ext'] : '';
+		 $ext = isset( $data['ext'] ) ? $data['ext'] : '';
 		if ( 1 > strlen( $ext ) ) {
 			$exploded = explode( '.', $filename );
 			$ext      = strtolower( end( $exploded ) );
@@ -512,7 +513,7 @@ class PBG_Blocks_Helper {
 	 * @since 1.1.0
 	 */
 	public function parse( $content ) {
-		global $wp_version;
+		 global $wp_version;
 
 		return ( version_compare( $wp_version, '5', '>=' ) ) ? parse_blocks( $content ) : gutenberg_parse_blocks( $content );
 	}
@@ -690,7 +691,7 @@ class PBG_Blocks_Helper {
 	 * @param array $blocks blocks array.
 	 */
 	public function get_stylesheet( $blocks ) {
-		$desktop         = '';
+		 $desktop        = '';
 		$tablet          = '';
 		$mobile          = '';
 		$tab_styling_css = '';
