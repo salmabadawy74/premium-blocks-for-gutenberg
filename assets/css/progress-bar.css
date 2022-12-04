@@ -199,6 +199,48 @@
     .premium-progress-bar .premium-progressbar-circle-content .premium-progress-bar-right-label {
       margin: 0;
       float: right; }
+  .premium-progress-bar .premium-progressbar-bar-wrap {
+    position: relative;
+    text-align: left;
+    overflow: hidden;
+    height: 25px;
+    margin-bottom: 50px;
+    background-color: #f5f5f5;
+    -webkit-border-radius: 4px;
+    border-radius: 4px; }
+  .premium-progress-bar .premium-progressbar-dots {
+    background-color: transparent;
+    width: 100%;
+    -js-display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: auto;
+    -webkit-box-shadow: none;
+    box-shadow: none; }
+    .premium-progress-bar .premium-progressbar-dots .progress-segment {
+      position: relative;
+      width: 25px;
+      height: 25px;
+      -webkit-border-radius: 50%;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: #f5f5f5; }
+      .premium-progress-bar .premium-progressbar-dots .progress-segment:first-child {
+        margin-right: 4px; }
+      .premium-progress-bar .premium-progressbar-dots .progress-segment:not(:first-child):not(:last-child) {
+        margin: 0 4px; }
+      .premium-progress-bar .premium-progressbar-dots .progress-segment:last-child {
+        margin-left: 4px; }
+      .premium-progress-bar .premium-progressbar-dots .progress-segment .segment-inner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: #793dc2; }
 
 .premium-progress-bar-multiple-label {
   position: relative;

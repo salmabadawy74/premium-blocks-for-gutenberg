@@ -5,7 +5,7 @@ import {
     typographyCss,
     paddingCss,
     marginCss,
-    borderCss,
+    generateCss,
 } from "@pbg/helpers";
 import {
     AdvancedColorControl as AdvancedPopColorControl,
@@ -51,7 +51,8 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
             if (attributes.progressType == 'dots') {
 
                 console.log(contentRef.current.offsetWidth)
-
+                let dots = [],
+                    i = 0
                 var width = contentRef.current.offsetWidth,
                     dotsSize = attributes.dotSize[deviceType] || 25,
                     dotsSpacing = attributes.dotSpacing[deviceType] || 10,
@@ -60,18 +61,18 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                     circlesToFill = numberOfCircles * (length / 100),
                     numberOfTotalFill = Math.floor(circlesToFill),
                     fillPercent = 100 * (circlesToFill - numberOfTotalFill);
-                console.log(width, dotsSize, dotsSpacing, numberOfCircles, circlesToFill, numberOfTotalFill, fillPercent)
+                for (i = 0; i < numberOfCircles; i++) {
+                    dots.push(i)
+                }
+                console.log(width, dotsSize, dotsSpacing, numberOfCircles, circlesToFill, numberOfTotalFill, fillPercent, dots)
                 setAttributes({
-                    numberOfCircles: numberOfCircles,
+                    numberOfCircles: dots,
                     numberOfTotalFill: numberOfTotalFill,
                     fillPercent: fillPercent
                 });
-                // $progressbar.attr('data-circles', numberOfCircles);
-                // $progressbar.attr('data-total-fill', numberOfTotalFill);
-                // $progressbar.attr('data-partial-fill', fillPercent);
             }
         }
-    });
+    }, [attributes.progressType == 'dots', attributes.dotSize, attributes.dotSpacing]);
 
     const {
         blockId,
@@ -144,19 +145,6 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
         label: __("Stripe")
     }
     ];
-    const INDICATOR = [{
-        value: "arrow",
-        label: __("Arrow")
-    },
-    {
-        value: "pin",
-        label: __("Pin")
-    },
-    {
-        value: "none",
-        label: __("None")
-    }
-    ];
 
     const TYPE = [
         {
@@ -197,6 +185,21 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
         }
     });
 
+    const loadStyles = () => {
+        const styles = {};
+        styles[` .${blockId} .progress-segment:first-child`] = {
+            "margin-right": `calc( ${dotSpacing[deviceType]}${dotSpacing.unit}/2 ) !important`,
+        };
+        styles[` .${blockId} .progress-segment:not(:first-child):not(:last-child)`] = {
+            "margin-right": `calc( ${dotSpacing[deviceType]}${dotSpacing.unit}/2 ) !important`,
+            "margin-left": `calc( ${dotSpacing[deviceType]}${dotSpacing.unit}/2 ) !important`,
+        };
+        styles[` .${blockId} .progress-segment:last-child`] = {
+            "margin-left": `calc( ${dotSpacing[deviceType]}${dotSpacing.unit}/2 ) !important`,
+        };
+        return generateCss(styles);
+    };
+
     const renderContent = () => {
         return <div className="premium-progressbar-circle-content">
             {showIcon && <InnerBlocks
@@ -231,8 +234,30 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
         </div>
     }
 
-    const renderDots = numberOfCircles.map((item, index) => {
-
+    const renderDots = (numberOfCircles || []).map((item, index) => {
+        return <div
+            className="progress-segment"
+            style={{
+                height: `${dotSize[deviceType]}${dotSize.unit}`,
+                width: `${dotSize[deviceType]}${dotSize.unit}`,
+            }}
+        >
+            {
+                index < numberOfTotalFill &&
+                <div
+                    className="segment-inner"
+                ></div>
+            }
+            {
+                index == numberOfTotalFill && fillPercent != 0 &&
+                <div
+                    className="segment-inner"
+                    style={{
+                        width: fillPercent != 0 ? `50%` : ''
+                    }}
+                ></div>
+            }
+        </div>
     })
 
     return (
@@ -721,6 +746,11 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                 data-speed={`${speeds}`}
                 data-type={`${progressType}`}
             >
+                <style
+                    dangerouslySetInnerHTML={{
+                        __html: loadStyles(),
+                    }}
+                />
                 <div ref={contentRef}>
                     {(progressType == 'line' || progressType == 'dots') &&
                         < div className="premium-progress-bar-labels-wrap" >
@@ -784,7 +814,7 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                             data-total-fill={`${numberOfTotalFill}`}
                             data-partial-fill={`${fillPercent}`}
                         >
-                            {renderDots()}
+                            {renderDots}
                         </div>
                     }
                     {progressType == 'half-circle' &&
