@@ -1,33 +1,57 @@
 import { FontAwesomeEnabled } from "../assets/js/settings";
-import "./blocks/dual-heading";
-import "./blocks/accordion";
-import "./blocks/banner";
-import "./blocks/button";
-import "./blocks/count-up";
-import "./blocks/icon";
-import "./blocks/icon-box";
-import "./blocks/maps";
-import "./blocks/pricing-table";
-import "./blocks/section";
-import "./blocks/testimonials";
-import "./blocks/video-box";
-import "./blocks/fancy-text";
-import "./blocks/lottie";
-import "./blocks/Modal";
-import "./blocks/image-separator";
-import "./blocks/bullet-list";
-import "./blocks/person";
-import "./blocks/heading";
-import "./blocks/container";
+import {
+    Modal,
+    accordion,
+    banner,
+    heading,
+    button,
+    icon,
+    lottie,
+    maps,
+    person,
+    container,
+    section,
+    testimonials,
+    bulletList,
+    contentSwitcher,
+    countUp,
+    dualHeading,
+    fancyText,
+    iconBox,
+    imageSeparator,
+    pricingTable,
+    videoBox,
+} from "../assets/js/settings";
+
+dualHeading ? require("./blocks/dual-heading") : "";
+accordion ? require("./blocks/accordion") : "";
+banner ? require("./blocks/banner") : "";
+button ? require("./blocks/button") : "";
+countUp ? require("./blocks/count-up") : "";
+icon ? require("./blocks/icon") : "";
+iconBox ? require("./blocks/icon-box") : "";
+maps ? require("./blocks/maps") : "";
+pricingTable ? require("./blocks/pricing-table") : "";
+section ? require("./blocks/section") : "";
+testimonials ? require("./blocks/testimonials") : "";
+videoBox ? require("./blocks/video-box") : "";
+fancyText ? require("./blocks/fancy-text") : "";
+lottie ? require("./blocks/lottie") : "";
+Modal ? require("./blocks/Modal") : "";
+imageSeparator ? require("./blocks/image-separator") : "";
+bulletList ? require("./blocks/bullet-list") : "";
+person ? require("./blocks/person") : "";
+heading ? require("./blocks/heading") : "";
+container ? require("./blocks/container") : "";
 import "./blocks/switcher-child";
-import "./blocks/content-switcher";
+contentSwitcher ? require("./blocks/content-switcher") : "";
 import "./blocks/accordion-item";
-import "./blocks/price"
-import "./blocks/list-item"
-import "./blocks/text"
-import "./blocks/badge"
-import "./blocks/image"
-import "./blocks/icon-group"
+import "./blocks/price";
+import "./blocks/list-item";
+import "./blocks/text";
+import "./blocks/badge";
+import "./blocks/image";
+import "./blocks/icon-group";
 
 window.PremiumOptionsSettings = {
     FontAwesomeEnabled,
