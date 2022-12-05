@@ -247,9 +247,9 @@
         "progressBarRadius": {
             "type": "object",
             "default": {
-                "Desktop": "",
-                "Tablet": "",
-                "Mobile": "",
+                "Desktop": 0,
+                "Tablet": 0,
+                "Mobile": 0,
                 "unit": "px"
             }
         },

@@ -60,7 +60,7 @@
     box-sizing: border-box; }
   .premium-progress-bar .premium-progressbar-hf-circle-wrap {
     width: 200px;
-    height: 200px;
+    height: 100px;
     position: relative;
     margin: 0 auto;
     overflow: hidden; }

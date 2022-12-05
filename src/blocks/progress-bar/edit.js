@@ -38,6 +38,12 @@ const { withSelect } = wp.data;
 function Edit({ clientId, attributes, setAttributes, deviceType }) {
 
     const contentRef = useRef(null);
+    const line = useRef(null);
+    const circle_half_left = useRef(null);
+    const circle_half_right = useRef(null);
+    const circle_pie = useRef(null);
+    const circle_half = useRef(null);
+    const dots = useRef(null);
 
     useEffect(() => {
         setAttributes({
@@ -45,6 +51,78 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
         });
         setAttributes({ classMigrate: true });
     }, []);
+
+    useEffect(() => {
+        const {
+            progressType,
+            progress
+        } = attributes
+        if (progressType == "line") {
+            line.current.style.width = "unset";
+        }
+        else if (progressType === "circle") {
+            circle_half_left.current.style.transform = "rotate(0deg)";
+            circle_pie.current.style.clipPath = "";
+            circle_half_right.current.style.visibility = "";
+        } else if (progressType === "half-circle") {
+            circle_half.current.style.transform = "rotate(0deg)";
+            circle_half.current.style.transition = "none";
+        }
+        else if (progressType === "dots") {
+            dots.current.style.width = "unset";
+        }
+        let id = "";
+        const changeWidthEffect = () => {
+            var i = 0;
+            if (i == 0) {
+                i = 1;
+                var width = 0;
+                var value = progress;
+                if (progressType === "circle") {
+                    value = progress * 3.6;
+                } else if (progressType === "half-circle") {
+                    value = progress * 1.8;
+                }
+
+                id = setInterval(ebChangeframe, 10);
+                function ebChangeframe() {
+                    if (progressType === "circle") {
+                        if (width > 180) {
+                            circle_pie.current.style.clipPath = "inset(0)";
+                            circle_half_right.current.style.visibility = "visible";
+                        } else {
+                            circle_pie.current.style.clipPath = "";
+                            circle_half_right.current.style.visibility = "";
+                        }
+                    }
+                    if (width >= value) {
+                        clearInterval(id);
+                        i = 0;
+                    } else {
+                        width++;
+                        if (progressType == "line") {
+                            line.current.style.width = width + "%";
+                        }
+                        if (progressType === "circle") {
+                            circle_half_left.current.style.transform =
+                                "rotate(" + width + "deg)";
+                        } else if (progressType === "half-circle") {
+                            circle_half.current.style.transform = "rotate(" + width + "deg)";
+                        }
+                        if (progressType == "line") {
+                            dots.current.style.width = width + "%";
+                        }
+                    }
+                }
+            }
+        };
+        const progressSetTimeout = setTimeout(changeWidthEffect, 500);
+
+        return () => {
+            clearInterval(id);
+            clearTimeout(progressSetTimeout);
+        };
+    }, [attributes.progressType, attributes.progress, attributes.speeds]);
 
     useEffect(() => {
         if (contentRef.current) {
@@ -72,7 +150,7 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                 });
             }
         }
-    }, [attributes.progressType == 'dots', attributes.dotSize, attributes.dotSpacing]);
+    }, [attributes.progressType == 'dots', attributes.dotSize, attributes.dotSpacing, attributes.progress]);
 
     const {
         blockId,
@@ -253,7 +331,7 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                 <div
                     className="segment-inner"
                     style={{
-                        width: fillPercent != 0 ? `50%` : ''
+                        width: fillPercent != 0 ? `${fillPercent}%` : ''
                     }}
                 ></div>
             }
@@ -794,9 +872,10 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                             < div className={
                                 `premium-progress-bar-bar ${styleProgress == 'stripe' ? "premium-progress-bar-progress-stripe" : ""} ${animate ? "premium-progress-bar-progress-active" : ""}`
                             }
+                                ref={line}
                                 style={{
                                     ...gradientBackground(fillBackground),
-                                    transition: `width ${speeds}s ease-in-out`,
+                                    transition: `${progress} ${speeds}s ease-in-out`,
                                     height: `${progressBarHeight[deviceType]}${progressBarHeight.unit}`,
                                     width: `${progress}%`,
                                     "border-radius": `${progressBarRadius[deviceType]}${progressBarRadius.unit}`
@@ -836,6 +915,7 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                                     <div className="premium-progressbar-hf-circle">
                                         <div
                                             className="premium-progressbar-hf-circle-progress"
+                                            ref={circle_half}
                                             style={{
                                                 transform: `rotate(${progress * 1.8}deg)`,
                                                 borderColor: fillColor,
@@ -892,27 +972,34 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                                 <div
                                     className="premium-progressbar-circle-base"
                                     style={{
-                                        borderColor: borderColor
+                                        borderColor: borderColor,
+                                        ...gradientBackground(baseBackground),
+                                        borderWidth: `${borderWidth[deviceType]}px`,
                                     }}
                                 ></div>
                                 <div
                                     className="premium-progressbar-circle"
+                                    ref={circle_pie}
                                     style={{
                                         clipPath: `${progress > '50' ? 'inset(0px)' : 'inset(0 0 0 50%)'}`
                                     }}
                                 >
                                     <div
                                         className="premium-progressbar-circle-left"
+                                        ref={circle_half_left}
                                         style={{
                                             transform: `rotate(${progress * 3.6}deg)`,
                                             borderColor: fillColor,
+                                            borderWidth: `${borderWidth[deviceType]}px`,
                                         }}
                                     ></div>
                                     <div
                                         className="premium-progressbar-circle-right"
+                                        ref={circle_half_right}
                                         style={{
                                             borderColor: fillColor,
-                                            visibility: `${progress > '50' ? 'visible' : 'hidden'}`
+                                            visibility: `${progress > '50' ? 'visible' : 'hidden'}`,
+                                            borderWidth: `${borderWidth[deviceType]}px`,
                                         }}
                                     ></div>
                                 </div>

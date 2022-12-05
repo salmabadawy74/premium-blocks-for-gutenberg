@@ -88,7 +88,12 @@ export default function save({ attributes }) {
                 <p
                     className="premium-progress-bar-left-label"
                     style={{
-                        color: labelColor
+                        color: labelColor,
+                        fontWeight: labelTypography.fontWeight,
+                        fontFamily: labelTypography.fontFamily,
+                        fontStyle: labelTypography.fontStyle,
+                        textDecoration: labelTypography?.textDecoration,
+                        textTransform: labelTypography?.textTransform
                     }}
                 >
                     <span>{label}</span>
@@ -98,7 +103,12 @@ export default function save({ attributes }) {
                 < p
                     className="premium-progress-bar-right-label"
                     style={{
-                        color: percentageColor
+                        color: percentageColor,
+                        fontWeight: percentageTypography.fontWeight,
+                        fontFamily: percentageTypography.fontFamily,
+                        fontStyle: percentageTypography.fontStyle,
+                        textDecoration: percentageTypography?.textDecoration,
+                        textTransform: percentageTypography?.textTransform
                     }}
                 >
                     <span>{progress}% </span>
@@ -122,7 +132,7 @@ export default function save({ attributes }) {
                 <div
                     className="segment-inner"
                     style={{
-                        width: fillPercent != 0 ? `50%` : ''
+                        width: fillPercent != 0 ? `${fillPercent}%` : ''
                     }}
                 ></div>
             }
@@ -142,7 +152,12 @@ export default function save({ attributes }) {
                             <p
                                 className="premium-progress-bar-left-label"
                                 style={{
-                                    color: labelColor
+                                    color: labelColor,
+                                    fontWeight: labelTypography.fontWeight,
+                                    fontFamily: labelTypography.fontFamily,
+                                    fontStyle: labelTypography.fontStyle,
+                                    textDecoration: labelTypography?.textDecoration,
+                                    textTransform: labelTypography?.textTransform
                                 }}
                             >
                                 <span>{label}</span>
@@ -152,7 +167,12 @@ export default function save({ attributes }) {
                             < p
                                 className="premium-progress-bar-right-label"
                                 style={{
-                                    color: percentageColor
+                                    color: percentageColor,
+                                    fontWeight: percentageTypography.fontWeight,
+                                    fontFamily: percentageTypography.fontFamily,
+                                    fontStyle: percentageTypography.fontStyle,
+                                    textDecoration: percentageTypography?.textDecoration,
+                                    textTransform: percentageTypography?.textTransform
                                 }}
                             >
                                 <span>{progress}% </span>
@@ -225,13 +245,23 @@ export default function save({ attributes }) {
                             <span
                                 className="premium-progressbar-hf-label-left"
                                 style={{
-                                    color: PrefixColor
+                                    color: PrefixColor,
+                                    fontWeight: PrefixTypography.fontWeight,
+                                    fontFamily: PrefixTypography.fontFamily,
+                                    fontStyle: PrefixTypography.fontStyle,
+                                    textDecoration: PrefixTypography?.textDecoration,
+                                    textTransform: PrefixTypography?.textTransform
                                 }}
                             >0</span>
                             <span
                                 className="premium-progressbar-hf-label-right"
                                 style={{
-                                    color: suffixColor
+                                    color: suffixColor,
+                                    fontWeight: suffixTypography.fontWeight,
+                                    fontFamily: suffixTypography.fontFamily,
+                                    fontStyle: suffixTypography.fontStyle,
+                                    textDecoration: suffixTypography?.textDecoration,
+                                    textTransform: suffixTypography?.textTransform
                                 }}
                             >100</span>
                         </div>
@@ -245,7 +275,8 @@ export default function save({ attributes }) {
                             <div
                                 className="premium-progressbar-circle-base"
                                 style={{
-                                    borderColor: borderColor
+                                    borderColor: borderColor,
+                                    ...gradientBackground(baseBackground),
                                 }}
                             ></div>
                             <div

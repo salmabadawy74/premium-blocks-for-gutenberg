@@ -22,25 +22,25 @@ function get_premium_progress_bar_css( $attributes, $unique_id ) {
 
     //label styles
     if (isset($attributes['labelTypography'])) {
-        $css->set_selector('.' . $unique_id . '> div' . '> .premium-progress-bar-labels-wrap' . '> .premium-progress-bar-left-label');
+        $css->set_selector('.' . $unique_id . '> div' . '> .premium-progress-bar-labels-wrap' . '> .premium-progress-bar-left-label, ' . '.' . $unique_id . '> div' . '> .premium-progressbar-hf-wrapper' . ' > .premium-progressbar-hf-circle-wrap' . '> .premium-progressbar-circle-content' . '> .premium-progress-bar-left-label,' . '.' . $unique_id . '> div' . '> .premium-progressbar-hf-wrapper' . ' > .premium-progressbar-circle-wrap' . '> .premium-progressbar-circle-content' . '> .premium-progress-bar-left-label' );
         $css->render_typography($attributes['labelTypography'], 'Desktop');
     }
 
     if (isset($attributes['labelMargin'])) {
         $label_margin = $attributes['labelMargin'];
-        $css->set_selector('.' . $unique_id . '> div' . '> .premium-progress-bar-labels-wrap' . '> .premium-progress-bar-left-label');
+        $css->set_selector('.' . $unique_id . '> div' . '> .premium-progress-bar-labels-wrap' . '> .premium-progress-bar-left-label, ' . '.' . $unique_id . '> div' . '> .premium-progressbar-hf-wrapper' . ' > .premium-progressbar-hf-circle-wrap' . '> .premium-progressbar-circle-content' . '> .premium-progress-bar-left-label,' . '.' . $unique_id . '> div' . '> .premium-progressbar-hf-wrapper' . ' > .premium-progressbar-circle-wrap' . '> .premium-progressbar-circle-content' . '> .premium-progress-bar-left-label' );
         $css->add_property('margin', $css->render_spacing($label_margin['Desktop'], $label_margin['unit']));
     }
 
     //percentage styles
     if (isset($attributes['percentageTypography'])) {
-        $css->set_selector('.' . $unique_id . '> div' . '> .premium-progress-bar-labels-wrap' . '> .premium-progress-bar-right-label');
+        $css->set_selector('.' . $unique_id . '> div' . '> .premium-progress-bar-labels-wrap' . '> .premium-progress-bar-right-label, ' . '.' . $unique_id . '> div' . '> .premium-progressbar-hf-wrapper' . ' > .premium-progressbar-hf-circle-wrap' . '> .premium-progressbar-circle-content' . '> .premium-progress-bar-right-label,' . '.' . $unique_id . '> div' . '> .premium-progressbar-hf-wrapper' . ' > .premium-progressbar-circle-wrap' . '> .premium-progressbar-circle-content' . '> .premium-progress-bar-right-label' );
         $css->render_typography($attributes['percentageTypography'], 'Desktop');
     }
 
     if (isset($attributes['percentageMargin'])) {
         $percentage_margin = $attributes['percentageMargin'];
-        $css->set_selector('.' . $unique_id . '> div' . '> .premium-progress-bar-labels-wrap' . '> .premium-progress-bar-right-label');
+        $css->set_selector('.' . $unique_id . '> div' . '> .premium-progress-bar-labels-wrap' . '> .premium-progress-bar-right-label, ' . '.' . $unique_id . '> div' . '> .premium-progressbar-hf-wrapper' . ' > .premium-progressbar-hf-circle-wrap' . '> .premium-progressbar-circle-content' . '> .premium-progress-bar-right-label,' . '.' . $unique_id . '> div' . '> .premium-progressbar-hf-wrapper' . ' > .premium-progressbar-circle-wrap' . '> .premium-progressbar-circle-content' . '> .premium-progress-bar-right-label' );
         $css->add_property('margin', $css->render_spacing($percentage_margin['Desktop'], $percentage_margin['unit']));
     }
 
@@ -50,14 +50,13 @@ function get_premium_progress_bar_css( $attributes, $unique_id ) {
         $css->set_selector('.' . $unique_id . '> div' . '> .premium-progress-bar-wrap');
         $css->add_property('margin', $css->render_spacing($progressBar_margin['Desktop'], $progressBar_margin['unit']));
     }
+    if (isset($attributes['progressBarRadius'])) {
+        $css->set_selector('.' . $unique_id . '> div' . '> .premium-progress-bar-wrap');
+        $css->add_property('border-radius', $css->render_range($attributes['progressBarRadius'], 'Desktop'));
+    }
     if (isset($attributes['progressBarHeight'])) {
         $css->set_selector('.' . $unique_id . '> div' . '> .premium-progress-bar-wrap');
         $css->add_property('height', $css->render_range($attributes['progressBarHeight'], 'Desktop'));
-    }
-    if (isset($attributes['progressBarRadius'])) {
-        $progressBar_radius = $attributes['progressBarRadius'];
-        $css->set_selector('.' . $unique_id . '> div' . '> .premium-progress-bar-wrap');
-        $css->add_property('border-radius', $css->render_spacing($progressBar_radius['Desktop'], $progressBar_radius['unit']));
     }
 
     if (isset($attributes['progressBarHeight'])) {
@@ -65,29 +64,65 @@ function get_premium_progress_bar_css( $attributes, $unique_id ) {
         $css->add_property('height', $css->render_range($attributes['progressBarHeight'], 'Desktop'));
     }
     if (isset($attributes['progressBarRadius'])) {
-        $progressBar_radius = $attributes['progressBarRadius'];
         $css->set_selector('.' . $unique_id . '> div' . '> .premium-progress-bar-wrap' . '> .premium-progress-bar-bar');
-        $css->add_property('border-radius', $css->render_spacing($progressBar_radius['Desktop'], $progressBar_radius['unit']));
+        $css->add_property('border-radius', $css->render_range($attributes['progressBarRadius'], 'Desktop'));
     }
 
     //half circle type
     if (isset($attributes['progressBarSize'])) {
-        $progressBar_size = $attributes['progressBarSize'];
         $css->set_selector('.' . $unique_id . '> div' . '> .premium-progressbar-hf-wrapper' . ' > .premium-progressbar-hf-circle-wrap');
-        $css->add_property('width', $css->render_spacing($progressBar_size['Desktop'], 'px'));
+        $css->add_property('width', $css->render_range($attributes['progressBarSize'], 'Desktop'));
     }
-
     if (isset($attributes['progressBarSize'])) {
         $css->set_selector('.' . $unique_id . '> div' . '> .premium-progressbar-hf-wrapper' . ' > .premium-progressbar-hf-circle-wrap');
         $css->add_property('height', 'calc(' . $attributes['progressBarSize']['Desktop'] . '/ 2 * 1px)');
     }
-
-    if (isset($attributes['progressBarMargin'])) {
-        $progressBar_margin = $attributes['progressBarMargin'];
-        $css->set_selector('.' . $unique_id . '> div' . '> .premium-progress-bar-progress');
-        $css->add_property('margin', $css->render_spacing($progressBar_margin['Desktop'], $progressBar_margin['unit']));
+    if (isset($attributes['progressBarSize'])) {
+        $css->set_selector('.' . $unique_id . '> div' . '> .premium-progressbar-hf-wrapper' . ' > .premium-progressbar-hf-circle-wrap' . '> .premium-progressbar-hf-container,'  . '.' . $unique_id . '> div' . '> .premium-progressbar-hf-wrapper' . '> .premium-progressbar-circle-wrap' );
+        $css->add_property('width', $css->render_range($attributes['progressBarSize'], 'Desktop'));
+    }
+    if (isset($attributes['progressBarSize'])) {
+        $css->set_selector('.' . $unique_id . '> div' . '> .premium-progressbar-hf-wrapper' . ' > .premium-progressbar-hf-circle-wrap' . '> .premium-progressbar-hf-container,'  . '.' . $unique_id . '> div' . '> .premium-progressbar-hf-wrapper' . '> .premium-progressbar-circle-wrap' );
+        $css->add_property('height', $css->render_range($attributes['progressBarSize'], 'Desktop'));
+    }
+    if (isset($attributes['borderWidth'])) {
+        $css->set_selector('.' . $unique_id . '> div' . '> .premium-progressbar-hf-wrapper' . ' > .premium-progressbar-hf-circle-wrap' . '> .premium-progressbar-hf-container' . '> .premium-progressbar-hf-circle' . '> .premium-progressbar-hf-circle-progress');
+        $css->add_property('border-width', $css->render_range($attributes['borderWidth'], 'Desktop'));
+    }
+    if (isset($attributes['borderWidth'])) {
+        $css->set_selector('.' . $unique_id . '> div' . '> .premium-progressbar-hf-wrapper' . ' > .premium-progressbar-hf-circle-wrap' . '> .premium-progressbar-hf-container' . '> .premium-progressbar-circle-inner');
+        $css->add_property('border-width', $css->render_range($attributes['borderWidth'], 'Desktop'));
+    }
+    if (isset($attributes['progressBarSize'])) {
+        $css->set_selector('.' . $unique_id . '> div' . '> .premium-progressbar-hf-wrapper' . ' > .premium-progressbar-hf-labels');
+        $css->add_property('width', $css->render_range($attributes['progressBarSize'], 'Desktop'));
+    }
+    if (isset($attributes['topSpacing'])) {
+        $css->set_selector('.' . $unique_id . '> div' . '> .premium-progressbar-hf-wrapper' . ' > .premium-progressbar-hf-labels');
+        $css->add_property('margin-top', $css->render_range($attributes['topSpacing'], 'Desktop'));
+    }
+    if (isset($attributes['PrefixTypography'])) {
+        $css->set_selector('.' . $unique_id . '> div' . '> .premium-progressbar-hf-wrapper' . ' > .premium-progressbar-hf-labels' . '> .premium-progressbar-hf-label-left');
+        $css->render_typography($attributes['PrefixTypography'], 'Desktop');
+    }
+    if (isset($attributes['PrefixMargin'])) {
+        $css->set_selector('.' . $unique_id . '> div' . '> .premium-progressbar-hf-wrapper' . ' > .premium-progressbar-hf-labels' . '> .premium-progressbar-hf-label-left');
+        $css->add_property('margin-left', $css->render_range($attributes['PrefixMargin'], 'Desktop'));
+    }
+    if (isset($attributes['suffixTypography'])) {
+        $css->set_selector('.' . $unique_id . '> div' . '> .premium-progressbar-hf-wrapper' . ' > .premium-progressbar-hf-labels' . '> .premium-progressbar-hf-label-right');
+        $css->render_typography($attributes['suffixTypography'], 'Desktop');
+    }
+    if (isset($attributes['suffixMargin'])) {
+        $css->set_selector('.' . $unique_id . '> div' . '> .premium-progressbar-hf-wrapper' . ' > .premium-progressbar-hf-labels' . '> .premium-progressbar-hf-label-right');
+        $css->add_property('margin-right', $css->render_range($attributes['suffixMargin'], 'Desktop'));
     }
 
+    //circle type
+    if (isset($attributes['borderWidth'])) {
+        $css->set_selector('.' . $unique_id . '> div' . '> .premium-progressbar-hf-wrapper' . ' > .premium-progressbar-circle-wrap' . '> .premium-progressbar-circle-base,'  . '.' . $unique_id . '> div' . '> .premium-progressbar-hf-wrapper' . '> .premium-progressbar-circle-wrap' . '> .premium-progressbar-circle' . '> .premium-progressbar-circle-left,'  . '.' . $unique_id . '> div' . '> .premium-progressbar-hf-wrapper' . '> .premium-progressbar-circle-wrap' . '> .premium-progressbar-circle' . '> .premium-progressbar-circle-right' );
+        $css->add_property('border-width', $css->render_range($attributes['borderWidth'], 'Desktop'));
+    }
 
     $css->start_media_query($media_query['tablet']);
 
