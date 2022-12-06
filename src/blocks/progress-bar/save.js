@@ -120,11 +120,17 @@ export default function save({ attributes }) {
     const renderDots = (numberOfCircles || []).map((item, index) => {
         return <div
             className="progress-segment"
+            style={{
+                ...gradientBackground(baseBackground),
+            }}
         >
             {
                 index < numberOfTotalFill &&
                 <div
                     className="segment-inner"
+                    style={{
+                        ...gradientBackground(fillBackground),
+                    }}
                 ></div>
             }
             {
@@ -132,7 +138,8 @@ export default function save({ attributes }) {
                 <div
                     className="segment-inner"
                     style={{
-                        width: fillPercent != 0 ? `${fillPercent}%` : ''
+                        width: fillPercent != 0 ? `${fillPercent}%` : '',
+                        ...gradientBackground(fillBackground),
                     }}
                 ></div>
             }
@@ -141,7 +148,7 @@ export default function save({ attributes }) {
 
     return (
         <div {...blockProps}
-            data-score={`${progress}`}
+            data-progress_bar={`${progress}`}
             data-speed={`${speeds}`}
             data-type={`${progressType}`}
         >

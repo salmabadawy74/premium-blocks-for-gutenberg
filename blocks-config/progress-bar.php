@@ -49,6 +49,8 @@ function get_premium_progress_bar_css( $attributes, $unique_id ) {
         $progressBar_margin = $attributes['progressBarMargin'];
         $css->set_selector('.' . $unique_id . '> div' . '> .premium-progress-bar-wrap');
         $css->add_property('margin', $css->render_spacing($progressBar_margin['Desktop'], $progressBar_margin['unit']));
+        $css->set_selector('.' . $unique_id . '> div' . '> .premium-progressbar-dots');
+        $css->add_property('margin', $css->render_spacing($progressBar_margin['Desktop'], $progressBar_margin['unit']));
     }
     if (isset($attributes['progressBarRadius'])) {
         $css->set_selector('.' . $unique_id . '> div' . '> .premium-progress-bar-wrap');
@@ -122,6 +124,32 @@ function get_premium_progress_bar_css( $attributes, $unique_id ) {
     if (isset($attributes['borderWidth'])) {
         $css->set_selector('.' . $unique_id . '> div' . '> .premium-progressbar-hf-wrapper' . ' > .premium-progressbar-circle-wrap' . '> .premium-progressbar-circle-base,'  . '.' . $unique_id . '> div' . '> .premium-progressbar-hf-wrapper' . '> .premium-progressbar-circle-wrap' . '> .premium-progressbar-circle' . '> .premium-progressbar-circle-left,'  . '.' . $unique_id . '> div' . '> .premium-progressbar-hf-wrapper' . '> .premium-progressbar-circle-wrap' . '> .premium-progressbar-circle' . '> .premium-progressbar-circle-right' );
         $css->add_property('border-width', $css->render_range($attributes['borderWidth'], 'Desktop'));
+    }
+
+    //dots type
+    if (isset($attributes['dotSize'])) {
+        $css->set_selector('.' . $unique_id . '> div' . '> .premium-progressbar-dots' . ' > .progress-segment');
+        $css->add_property('width', $css->render_range($attributes['dotSize'], 'Desktop'));
+        $css->add_property('height', $css->render_range($attributes['dotSize'], 'Desktop'));
+    }
+    if (isset($attributes['progressBarRadius'])) {
+        $css->set_selector('.' . $unique_id . '> div' . '> .premium-progressbar-dots' . ' > .progress-segment');
+        $css->add_property('border-radius', $css->render_range($attributes['progressBarRadius'], 'Desktop'));
+        $css->set_selector('.' . $unique_id . '> div' . '> .premium-progressbar-dots');
+        $css->add_property('border-radius', $css->render_range($attributes['progressBarRadius'], 'Desktop'));
+    }
+    if (isset($attributes['dotSpacing'])) {
+        $css->set_selector('.' . $unique_id . '> div' . '> .premium-progressbar-dots' . ' > .progress-segment:first-child');
+        $css->add_property('margin-right', 'calc(' . $attributes['dotSpacing']['Desktop'] . $attributes['dotSpacing']['unit'] . '/ 2)' );
+    }
+    if (isset($attributes['dotSpacing'])) {
+        $css->set_selector('.' . $unique_id . '> div' . '> .premium-progressbar-dots' . ' > .progress-segment:not(:first-child):not(:last-child)');
+        $css->add_property('margin-right', 'calc(' . $attributes['dotSpacing']['Desktop'] . $attributes['dotSpacing']['unit'] . '/ 2)' );
+        $css->add_property('margin-left', 'calc(' . $attributes['dotSpacing']['Desktop'] . $attributes['dotSpacing']['unit'] . '/ 2)' );
+    }
+    if (isset($attributes['dotSpacing'])) {
+        $css->set_selector('.' . $unique_id . '> div' . '> .premium-progressbar-dots' . ' > .progress-segment:last-child');
+        $css->add_property('margin-left', 'calc(' . $attributes['dotSpacing']['Desktop'] . $attributes['dotSpacing']['unit'] . '/ 2)' );
     }
 
     $css->start_media_query($media_query['tablet']);
@@ -233,7 +261,22 @@ function render_block_pbg_progress_bar( $attributesibutes, $content, $block ) {
 	// 	array(),
 	// 	PREMIUM_BLOCKS_VERSION,
 	// 	true
-	// );
+    // );
+    wp_enqueue_script(
+        'pbg-progress-bar',
+        PREMIUM_BLOCKS_URL . 'assets/js/progress-bar.js',
+        array('jquery'),
+        PREMIUM_BLOCKS_VERSION,
+        true
+    );
+
+    wp_enqueue_script(
+        'pbg-waypoints',
+        PREMIUM_BLOCKS_URL . 'assets/js/lib/jquery.waypoints.js',
+        array('jquery'),
+        PREMIUM_BLOCKS_VERSION,
+        true
+    );
 
 	// Block css file from "assets/css" after run grunt task.
 	wp_enqueue_style(

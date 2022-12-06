@@ -43781,7 +43781,6 @@ function Edit(_ref) {
   const circle_half_right = useRef(null);
   const circle_pie = useRef(null);
   const circle_half = useRef(null);
-  const dots = useRef(null);
   useEffect(() => {
     setAttributes({
       blockId: "premium-progress-bar-" + (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.generateBlockId)(clientId)
@@ -43806,7 +43805,10 @@ function Edit(_ref) {
       circle_half.current.style.transform = "rotate(0deg)";
       circle_half.current.style.transition = "none";
     } else if (progressType === "dots") {
-      dots.current.style.width = "unset";
+      setAttributes({
+        numberOfTotalFill: 0,
+        fillPercent: 0
+      });
     }
 
     let id = "";
@@ -43842,7 +43844,7 @@ function Edit(_ref) {
             clearInterval(id);
             i = 0;
           } else {
-            width++;
+            width++; // console.log('width', width)
 
             if (progressType == "line") {
               line.current.style.width = width + "%";
@@ -43852,10 +43854,27 @@ function Edit(_ref) {
               circle_half_left.current.style.transform = "rotate(" + width + "deg)";
             } else if (progressType === "half-circle") {
               circle_half.current.style.transform = "rotate(" + width + "deg)";
-            }
+            } else if (progressType == "dots") {
+              let dots = [];
+              var offsetWidth = contentRef.current.offsetWidth,
+                  dotsSize = attributes.dotSize[deviceType] || 25,
+                  dotsSpacing = attributes.dotSpacing[deviceType] || 10,
+                  length = width,
+                  numberOfCircles = Math.ceil(offsetWidth / (dotsSize + dotsSpacing)),
+                  circlesToFill = numberOfCircles * (length / 100),
+                  numberOfTotalFill = Math.floor(circlesToFill),
+                  fillPercent = 100 * (circlesToFill - numberOfTotalFill);
 
-            if (progressType == "line") {
-              dots.current.style.width = width + "%";
+              for (var dot = 0; dot < numberOfCircles; dot++) {
+                dots.push(dot);
+              } // console.log(offsetWidth, dotsSize, dotsSpacing, numberOfCircles, circlesToFill, numberOfTotalFill, fillPercent, dots)
+
+
+              setAttributes({
+                numberOfCircles: dots,
+                numberOfTotalFill: numberOfTotalFill,
+                fillPercent: fillPercent
+              });
             }
           }
         }
@@ -43867,69 +43886,22 @@ function Edit(_ref) {
       clearInterval(id);
       clearTimeout(progressSetTimeout);
     };
-  }, [attributes.progressType, attributes.progress, attributes.speeds]);
-  useEffect(() => {
-    if (contentRef.current) {
-      if (attributes.progressType == 'dots') {
-        console.log(contentRef.current.offsetWidth);
-        let dots = [],
-            i = 0;
-        var width = contentRef.current.offsetWidth,
-            dotsSize = attributes.dotSize[deviceType] || 25,
-            dotsSpacing = attributes.dotSpacing[deviceType] || 10,
-            length = attributes.progress,
-            numberOfCircles = Math.ceil(width / (dotsSize + dotsSpacing)),
-            circlesToFill = numberOfCircles * (length / 100),
-            numberOfTotalFill = Math.floor(circlesToFill),
-            fillPercent = 100 * (circlesToFill - numberOfTotalFill);
-
-        for (i = 0; i < numberOfCircles; i++) {
-          dots.push(i);
-        }
-
-        console.log(width, dotsSize, dotsSpacing, numberOfCircles, circlesToFill, numberOfTotalFill, fillPercent, dots);
-        setAttributes({
-          numberOfCircles: dots,
-          numberOfTotalFill: numberOfTotalFill,
-          fillPercent: fillPercent
-        });
-      }
-    }
-  }, [attributes.progressType == 'dots', attributes.dotSize, attributes.dotSpacing, attributes.progress]);
+  }, [attributes.progressType, attributes.progress, attributes.speeds, attributes.dotSize, attributes.dotSpacing]);
   const {
     blockId,
     hideDesktop,
     hideTablet,
     hideMobile,
     align,
-    multiStage,
-    percentage,
     label,
     progressBarHeight,
     progressBarRadius,
     labelColor,
     percentageColor,
     progress,
-    repeaterItems,
-    editTitle,
     styleProgress,
     animate,
     speeds,
-    arrowColor,
-    arrow,
-    arrowTablet,
-    arrowMobile,
-    arrowType,
-    indicator,
-    pinColor,
-    pin,
-    pinTablet,
-    pinType,
-    pinMobile,
-    pinHeight,
-    pinHeightTablet,
-    pinHeightType,
-    pinHeightMobile,
     progressType,
     labelTypography,
     percentageTypography,
@@ -43957,6 +43929,7 @@ function Edit(_ref) {
     numberOfTotalFill,
     numberOfCircles
   } = attributes;
+  console.log(numberOfCircles);
   const STYLE = [{
     value: "solid",
     label: __("Solid")
@@ -43978,7 +43951,13 @@ function Edit(_ref) {
     label: __("Dots")
   }];
   const INNER_BLOCKS_TEMPLATE = [["premium/icon", {
-    selectedIcon: attributes === null || attributes === void 0 ? void 0 : attributes.selectedIcon
+    selectedIcon: attributes === null || attributes === void 0 ? void 0 : attributes.selectedIcon,
+    iconSize: {
+      Desktop: "30",
+      Tablet: "30",
+      Mobile: "30",
+      unit: 'px'
+    }
   }]];
   const blockProps = useBlockProps({
     className: classnames__WEBPACK_IMPORTED_MODULE_2___default()("premium-progress-bar", blockId, {
@@ -44033,14 +44012,19 @@ function Edit(_ref) {
       className: "progress-segment",
       style: {
         height: `${dotSize[deviceType]}${dotSize.unit}`,
-        width: `${dotSize[deviceType]}${dotSize.unit}`
+        width: `${dotSize[deviceType]}${dotSize.unit}`,
+        "border-radius": `${progressBarRadius[deviceType]}${progressBarRadius.unit}`,
+        ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.gradientBackground)(baseBackground)
       }
     }, index < numberOfTotalFill && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-      className: "segment-inner"
+      className: "segment-inner",
+      style: { ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.gradientBackground)(fillBackground)
+      }
     }), index == numberOfTotalFill && fillPercent != 0 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: "segment-inner",
       style: {
-        width: fillPercent != 0 ? `${fillPercent}%` : ''
+        width: fillPercent != 0 ? `${fillPercent}%` : '',
+        ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.gradientBackground)(fillBackground)
       }
     }));
   });
@@ -44398,7 +44382,11 @@ function Edit(_ref) {
     className: "premium-progressbar-bar-wrap premium-progressbar-dots",
     "data-circles": `${numberOfCircles}`,
     "data-total-fill": `${numberOfTotalFill}`,
-    "data-partial-fill": `${fillPercent}`
+    "data-partial-fill": `${fillPercent}`,
+    style: {
+      "border-radius": `${progressBarRadius[deviceType]}${progressBarRadius.unit}`,
+      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.marginCss)(progressBarMargin, deviceType)
+    }
   }, renderDots), progressType == 'half-circle' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "premium-progressbar-hf-wrapper"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
@@ -44664,18 +44652,23 @@ function save(_ref) {
 
   const renderDots = (numberOfCircles || []).map((item, index) => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-      className: "progress-segment"
+      className: "progress-segment",
+      style: { ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.gradientBackground)(baseBackground)
+      }
     }, index < numberOfTotalFill && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-      className: "segment-inner"
+      className: "segment-inner",
+      style: { ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.gradientBackground)(fillBackground)
+      }
     }), index == numberOfTotalFill && fillPercent != 0 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: "segment-inner",
       style: {
-        width: fillPercent != 0 ? `${fillPercent}%` : ''
+        width: fillPercent != 0 ? `${fillPercent}%` : '',
+        ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.gradientBackground)(fillBackground)
       }
     }));
   });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, blockProps, {
-    "data-score": `${progress}`,
+    "data-progress_bar": `${progress}`,
     "data-speed": `${speeds}`,
     "data-type": `${progressType}`
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, (progressType == 'line' || progressType == 'dots') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
@@ -80198,7 +80191,7 @@ module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/p
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/progress-bar","title":"progress Bar","category":"premium-blocks","description":"My Block Description.","keywords":["progress Bar","progress","bar"],"textdomain":"default","attributes":{"blockId":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"align":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"multiStage":{"type":"boolean","default":false},"percentage":{"type":"string","default":"50%"},"label":{"type":"string","default":"Label"},"progressBarbgColor":{"type":"string","default":"#f5f5f5"},"progressBarColor":{"type":"string","default":"#793DC2"},"labelColor":{"type":"string","default":"#793DC2"},"LabelLetter":{"type":"number","default":0},"LabelStyle":{"type":"string"},"LabelUpper":{"type":"boolean","default":false},"LabelWeight":{"type":"number","default":500},"LabelfontSize":{"type":"number","default":20},"LabelfontSizeType":{"type":"string","default":"px"},"LabelfontSizeMobile":{"type":"number","default":20},"LabelfontSizeTablet":{"type":"number","default":20},"arrowColor":{"type":"string","default":"#793DC2"},"arrow":{"type":"number","default":10},"arrowType":{"type":"string","default":"px"},"arrowMobile":{"type":"number","default":10},"arrowTablet":{"type":"number","default":10},"percentageColor":{"type":"string","default":"#793DC2"},"percentageLetter":{"type":"number","default":0},"percentageStyle":{"type":"string"},"percentageWeight":{"type":"number","default":500},"percentagefontSize":{"type":"number","default":20},"percentagefontSizeType":{"type":"string","default":"px"},"percentagefontSizeMobile":{"type":"number","default":20},"percentagefontSizeTablet":{"type":"number","default":20},"progress":{"type":"number","default":50},"speeds":{"type":"number","default":1},"repeaterItems":{"type":"array","default":[{"title":"Label","percentage":"50","edit":false}]},"editTitle":{"type":"boolean","default":true},"styleProgress":{"type":"string","default":"solid"},"animate":{"type":"boolean","default":false},"indicator":{"type":"string","default":"arrow"},"pinColor":{"type":"string","default":"#54595f"},"pin":{"type":"number","default":1},"pinType":{"type":"string","default":"px"},"pinMobile":{"type":"number","default":1},"pinTablet":{"type":"number","default":1},"pinHeight":{"type":"number","default":12},"pinHeightType":{"type":"string","default":"px"},"pinHeightMobile":{"type":"number","default":12},"pinHeightTablet":{"type":"number","default":12},"progressType":{"type":"string","default":"line"},"progressBarHeight":{"type":"object","default":{"Desktop":"25","Tablet":"25","Mobile":"25","unit":"px"}},"progressBarSize":{"type":"object","default":{"Desktop":"200","Tablet":"200","Mobile":"200"}},"borderWidth":{"type":"object","default":{"Desktop":"12","Tablet":"12","Mobile":"12"}},"progressBarRadius":{"type":"object","default":{"Desktop":0,"Tablet":0,"Mobile":0,"unit":"px"}},"labelTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"percentageTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"fillBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}},"baseBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}},"progressBarMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"labelMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"percentageMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"showIcon":{"type":"boolean","default":false},"borderColor":{"type":"string","default":"rgb(242, 242, 242)"},"fillColor":{"type":"string","default":"#793DC2"},"topSpacing":{"type":"object","default":{"Desktop":"0","Tablet":"0","Mobile":"0"}},"PrefixTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"PrefixColor":{"type":"string","default":""},"PrefixMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"suffixTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"suffixColor":{"type":"string","default":""},"suffixMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"showPercentage":{"type":"boolean","default":true},"dotSize":{"type":"object","default":{"Desktop":25,"Tablet":25,"Mobile":25,"unit":"px"}},"dotSpacing":{"type":"object","default":{"Desktop":8,"Tablet":8,"Mobile":8,"unit":"px"}},"numberOfCircles":{"type":"number"},"numberOfTotalFill":{"type":"number"},"fillPercent":{"type":"number"}}}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/progress-bar","title":"progress Bar","category":"premium-blocks","description":"My Block Description.","keywords":["progress Bar","progress","bar"],"textdomain":"default","attributes":{"blockId":{"type":"string"},"classMigrate":{"type":"boolean","default":false},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"align":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"multiStage":{"type":"boolean","default":false},"percentage":{"type":"string","default":"50%"},"label":{"type":"string","default":"Label"},"progressBarbgColor":{"type":"string","default":"#f5f5f5"},"progressBarColor":{"type":"string","default":"#793DC2"},"labelColor":{"type":"string","default":"#793DC2"},"LabelLetter":{"type":"number","default":0},"LabelStyle":{"type":"string"},"LabelUpper":{"type":"boolean","default":false},"LabelWeight":{"type":"number","default":500},"LabelfontSize":{"type":"number","default":20},"LabelfontSizeType":{"type":"string","default":"px"},"LabelfontSizeMobile":{"type":"number","default":20},"LabelfontSizeTablet":{"type":"number","default":20},"arrowColor":{"type":"string","default":"#793DC2"},"arrow":{"type":"number","default":10},"arrowType":{"type":"string","default":"px"},"arrowMobile":{"type":"number","default":10},"arrowTablet":{"type":"number","default":10},"percentageColor":{"type":"string","default":"#793DC2"},"percentageLetter":{"type":"number","default":0},"percentageStyle":{"type":"string"},"percentageWeight":{"type":"number","default":500},"percentagefontSize":{"type":"number","default":20},"percentagefontSizeType":{"type":"string","default":"px"},"percentagefontSizeMobile":{"type":"number","default":20},"percentagefontSizeTablet":{"type":"number","default":20},"progress":{"type":"number","default":50},"speeds":{"type":"number","default":1},"repeaterItems":{"type":"array","default":[{"title":"Label","percentage":"50","edit":false}]},"editTitle":{"type":"boolean","default":true},"styleProgress":{"type":"string","default":"solid"},"animate":{"type":"boolean","default":false},"indicator":{"type":"string","default":"arrow"},"pinColor":{"type":"string","default":"#54595f"},"pin":{"type":"number","default":1},"pinType":{"type":"string","default":"px"},"pinMobile":{"type":"number","default":1},"pinTablet":{"type":"number","default":1},"pinHeight":{"type":"number","default":12},"pinHeightType":{"type":"string","default":"px"},"pinHeightMobile":{"type":"number","default":12},"pinHeightTablet":{"type":"number","default":12},"progressType":{"type":"string","default":"line"},"progressBarHeight":{"type":"object","default":{"Desktop":"25","Tablet":"25","Mobile":"25","unit":"px"}},"progressBarSize":{"type":"object","default":{"Desktop":"200","Tablet":"200","Mobile":"200"}},"borderWidth":{"type":"object","default":{"Desktop":"12","Tablet":"12","Mobile":"12"}},"progressBarRadius":{"type":"object","default":{"Desktop":0,"Tablet":0,"Mobile":0,"unit":"px"}},"labelTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"percentageTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"fillBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}},"baseBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}},"progressBarMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"labelMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"percentageMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"showIcon":{"type":"boolean","default":false},"borderColor":{"type":"string","default":"rgb(242, 242, 242)"},"fillColor":{"type":"string","default":"#793DC2"},"topSpacing":{"type":"object","default":{"Desktop":"0","Tablet":"0","Mobile":"0"}},"PrefixTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"PrefixColor":{"type":"string","default":""},"PrefixMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"suffixTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"suffixColor":{"type":"string","default":""},"suffixMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"showPercentage":{"type":"boolean","default":true},"dotSize":{"type":"object","default":{"Desktop":25,"Tablet":25,"Mobile":25,"unit":"px"}},"dotSpacing":{"type":"object","default":{"Desktop":8,"Tablet":8,"Mobile":8,"unit":"px"}},"numberOfCircles":{"type":"array"},"numberOfTotalFill":{"type":"number"},"fillPercent":{"type":"number"}}}');
 
 /***/ }),
 

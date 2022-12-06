@@ -574,7 +574,7 @@
             }
         },
         "numberOfCircles": {
-            "type": "number"
+            "type": "array"
         },
         "numberOfTotalFill": {
             "type": "number"

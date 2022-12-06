@@ -3,29 +3,17 @@ import {
     generateBlockId,
     gradientBackground,
     typographyCss,
-    paddingCss,
     marginCss,
-    generateCss,
+    generateCss
 } from "@pbg/helpers";
 import {
     AdvancedColorControl as AdvancedPopColorControl,
     SpacingComponent as SpacingControl,
-    RadioComponent,
     InspectorTabs,
     InspectorTab,
     PremiumResponsiveTabs,
-    PremiumBorder,
-    SpacingComponent,
-    MultiButtonsControl,
-    Icons,
     PremiumBackgroundControl,
     ResponsiveSingleRangeControl,
-    PremiumShadow,
-    WebfontLoader,
-    PremiumMediaUpload,
-    PremiumUpperQuote,
-    PremiumLowerQuote,
-    DefaultImage,
     PremiumTypo,
     ResponsiveRangeControl
 } from "@pbg/components";
@@ -43,7 +31,6 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
     const circle_half_right = useRef(null);
     const circle_pie = useRef(null);
     const circle_half = useRef(null);
-    const dots = useRef(null);
 
     useEffect(() => {
         setAttributes({
@@ -57,6 +44,7 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
             progressType,
             progress
         } = attributes
+
         if (progressType == "line") {
             line.current.style.width = "unset";
         }
@@ -69,7 +57,10 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
             circle_half.current.style.transition = "none";
         }
         else if (progressType === "dots") {
-            dots.current.style.width = "unset";
+            setAttributes({
+                numberOfTotalFill: 0,
+                fillPercent: 0
+            });
         }
         let id = "";
         const changeWidthEffect = () => {
@@ -100,6 +91,7 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                         i = 0;
                     } else {
                         width++;
+                        // console.log('width', width)
                         if (progressType == "line") {
                             line.current.style.width = width + "%";
                         }
@@ -109,8 +101,25 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                         } else if (progressType === "half-circle") {
                             circle_half.current.style.transform = "rotate(" + width + "deg)";
                         }
-                        if (progressType == "line") {
-                            dots.current.style.width = width + "%";
+                        else if (progressType == "dots") {
+                            let dots = []
+                            var offsetWidth = contentRef.current.offsetWidth,
+                                dotsSize = attributes.dotSize[deviceType] || 25,
+                                dotsSpacing = attributes.dotSpacing[deviceType] || 10,
+                                length = width,
+                                numberOfCircles = Math.ceil(offsetWidth / (dotsSize + dotsSpacing)),
+                                circlesToFill = numberOfCircles * (length / 100),
+                                numberOfTotalFill = Math.floor(circlesToFill),
+                                fillPercent = 100 * (circlesToFill - numberOfTotalFill);
+                            for (var dot = 0; dot < numberOfCircles; dot++) {
+                                dots.push(dot)
+                            }
+                            // console.log(offsetWidth, dotsSize, dotsSpacing, numberOfCircles, circlesToFill, numberOfTotalFill, fillPercent, dots)
+                            setAttributes({
+                                numberOfCircles: dots,
+                                numberOfTotalFill: numberOfTotalFill,
+                                fillPercent: fillPercent
+                            });
                         }
                     }
                 }
@@ -122,35 +131,7 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
             clearInterval(id);
             clearTimeout(progressSetTimeout);
         };
-    }, [attributes.progressType, attributes.progress, attributes.speeds]);
-
-    useEffect(() => {
-        if (contentRef.current) {
-            if (attributes.progressType == 'dots') {
-
-                console.log(contentRef.current.offsetWidth)
-                let dots = [],
-                    i = 0
-                var width = contentRef.current.offsetWidth,
-                    dotsSize = attributes.dotSize[deviceType] || 25,
-                    dotsSpacing = attributes.dotSpacing[deviceType] || 10,
-                    length = attributes.progress,
-                    numberOfCircles = Math.ceil(width / (dotsSize + dotsSpacing)),
-                    circlesToFill = numberOfCircles * (length / 100),
-                    numberOfTotalFill = Math.floor(circlesToFill),
-                    fillPercent = 100 * (circlesToFill - numberOfTotalFill);
-                for (i = 0; i < numberOfCircles; i++) {
-                    dots.push(i)
-                }
-                console.log(width, dotsSize, dotsSpacing, numberOfCircles, circlesToFill, numberOfTotalFill, fillPercent, dots)
-                setAttributes({
-                    numberOfCircles: dots,
-                    numberOfTotalFill: numberOfTotalFill,
-                    fillPercent: fillPercent
-                });
-            }
-        }
-    }, [attributes.progressType == 'dots', attributes.dotSize, attributes.dotSpacing, attributes.progress]);
+    }, [attributes.progressType, attributes.progress, attributes.speeds, attributes.dotSize, attributes.dotSpacing]);
 
     const {
         blockId,
@@ -158,34 +139,15 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
         hideTablet,
         hideMobile,
         align,
-        multiStage,
-        percentage,
         label,
         progressBarHeight,
         progressBarRadius,
         labelColor,
         percentageColor,
         progress,
-        repeaterItems,
-        editTitle,
         styleProgress,
         animate,
         speeds,
-        arrowColor,
-        arrow,
-        arrowTablet,
-        arrowMobile,
-        arrowType,
-        indicator,
-        pinColor,
-        pin,
-        pinTablet,
-        pinType,
-        pinMobile,
-        pinHeight,
-        pinHeightTablet,
-        pinHeightType,
-        pinHeightMobile,
         progressType,
         labelTypography,
         percentageTypography,
@@ -213,7 +175,7 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
         numberOfTotalFill,
         numberOfCircles
     } = attributes;
-
+    console.log(numberOfCircles)
     const STYLE = [{
         value: "solid",
         label: __("Solid")
@@ -248,6 +210,12 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
             "premium/icon",
             {
                 selectedIcon: attributes?.selectedIcon,
+                iconSize: {
+                    Desktop: "30",
+                    Tablet: "30",
+                    Mobile: "30",
+                    unit: 'px'
+                }
             },
         ],
     ];
@@ -318,12 +286,17 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
             style={{
                 height: `${dotSize[deviceType]}${dotSize.unit}`,
                 width: `${dotSize[deviceType]}${dotSize.unit}`,
+                "border-radius": `${progressBarRadius[deviceType]}${progressBarRadius.unit}`,
+                ...gradientBackground(baseBackground),
             }}
         >
             {
                 index < numberOfTotalFill &&
                 <div
                     className="segment-inner"
+                    style={{
+                        ...gradientBackground(fillBackground),
+                    }}
                 ></div>
             }
             {
@@ -331,7 +304,8 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                 <div
                     className="segment-inner"
                     style={{
-                        width: fillPercent != 0 ? `${fillPercent}%` : ''
+                        width: fillPercent != 0 ? `${fillPercent}%` : '',
+                        ...gradientBackground(fillBackground),
                     }}
                 ></div>
             }
@@ -892,6 +866,10 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                             data-circles={`${numberOfCircles}`}
                             data-total-fill={`${numberOfTotalFill}`}
                             data-partial-fill={`${fillPercent}`}
+                            style={{
+                                "border-radius": `${progressBarRadius[deviceType]}${progressBarRadius.unit}`,
+                                ...marginCss(progressBarMargin, deviceType),
+                            }}
                         >
                             {renderDots}
                         </div>
