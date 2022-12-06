@@ -1,33 +1,29 @@
-
-const {
-    RangeControl,
-} = wp.components;
-
+const { RangeControl } = wp.components;
 
 export default function PremiumRange({
     onChange,
-    value = '',
+    value = "",
     step = 1,
     max = 100,
     min = 0,
-    beforeIcon = '',
-    help = '',
-    defaultValue
+    beforeIcon = "",
+    help = "",
+    defaultValue,
 }) {
     const onChangInput = (event) => {
-        if (event.target.value === '') {
+        if (event.target.value === "") {
             onChange(undefined);
             return;
         }
         const newValue = Number(event.target.value);
-        if (newValue === '') {
+        if (newValue === "") {
             onChange(undefined);
             return;
         }
         if (min < -0.1) {
             if (newValue > max) {
                 onChange(max);
-            } else if (newValue < min && newValue !== '-') {
+            } else if (newValue < min && newValue !== "-") {
                 onChange(min);
             } else {
                 onChange(newValue);
@@ -45,10 +41,10 @@ export default function PremiumRange({
 
     return [
         onChange && (
-            <div className={'wrapper'}>
+            <div className={"wrapper"}>
                 <div className={`input-field-wrapper active`}>
                     <RangeControl
-                        className={'premium-range-value-input'}
+                        className={"premium-range-value-input"}
                         beforeIcon={beforeIcon}
                         value={value}
                         onChange={(newVal) => onChange(newVal)}
@@ -70,11 +66,14 @@ export default function PremiumRange({
                         />
                     </div>
                 </div>
-                <button className="premium-slider-reset" disabled={value == defaultValue} onClick={e => {
-                    e.preventDefault()
-                    onChange(defaultValue)
-                }}>
-                </button>
+                <button
+                    className="premium-slider-reset"
+                    disabled={value == defaultValue}
+                    onClick={(e) => {
+                        e.preventDefault();
+                        onChange(defaultValue);
+                    }}
+                ></button>
             </div>
         ),
     ];
