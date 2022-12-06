@@ -248,7 +248,6 @@ function Edit(props) {
 
         return generateCss(styles);
     };
-    console.log(backgroundOptions);
     return (
         <Fragment>
             <InspectorControls key={"inspector"}>
