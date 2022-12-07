@@ -210,7 +210,7 @@ export default function PremiumBackgroundControl({
                     <ButtonGroup
                         className="premium-button-size-type-options"
                         aria-label={__(
-                            "Background Type",
+                            "Type",
                             "premium-blocks-for-gutenberg"
                         )}
                     >
