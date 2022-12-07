@@ -101,7 +101,7 @@ class PBG_Blocks_Helper {
 		// Enqueue Frontend Styles.
 		add_action( 'enqueue_block_assets', array( $this, 'pbg_frontend' ) );
 		// Register Premium Blocks category.
-		add_filter( 'block_categories_all', array( $this, 'register_premium_category' ), 10, 1 );
+		add_filter( 'block_categories_all', array( $this, 'register_premium_category' ), 10, 2 );
 		// Generate Blocks Stylesheet.
 		// add_action( 'wp', array( $this, 'generate_stylesheet' ), 99 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'generate_stylesheet' ), 20 );
@@ -396,15 +396,16 @@ class PBG_Blocks_Helper {
 	 */
 	public function register_premium_category( $categories ) {
 		return array_merge(
-			$categories,
 			array(
 				array(
 					'slug'  => 'premium-blocks',
 					'title' => __( 'Premium Blocks', 'premium-blocks-for-gutenberg' ),
 				),
-			)
+			),
+			$categories
 		);
 	}
+	
 
 	/**
 	 *
