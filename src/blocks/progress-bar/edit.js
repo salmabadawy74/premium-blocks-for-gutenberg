@@ -794,7 +794,7 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                 </InspectorTabs>
             </InspectorControls>
             <div {...blockProps}
-                data-progress_bar={`${progress}`}
+                data-progress={`${progress}`}
                 data-speed={`${speeds}`}
                 data-type={`${progressType}`}
             >

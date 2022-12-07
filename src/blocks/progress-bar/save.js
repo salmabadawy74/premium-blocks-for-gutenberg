@@ -148,7 +148,7 @@ export default function save({ attributes }) {
 
     return (
         <div {...blockProps}
-            data-progress_bar={`${progress}`}
+            data-progress={`${progress}`}
             data-speed={`${speeds}`}
             data-type={`${progressType}`}
         >
@@ -201,7 +201,7 @@ export default function save({ attributes }) {
                             style={{
                                 ...gradientBackground(fillBackground),
                                 transition: `width ${speeds}s ease-in-out`,
-                                width: `${progress}%`,
+                                // width: `${progress}%`,
                             }}
                             data-progress_bar={`${progress}`}
                             data-speed={`${speeds}`}
@@ -231,7 +231,7 @@ export default function save({ attributes }) {
                                     <div
                                         className="premium-progressbar-hf-circle-progress"
                                         style={{
-                                            transform: `rotate(${progress * 1.8}deg)`,
+                                            // transform: `rotate(${progress * 1.8}deg)`,
                                             borderColor: fillColor
                                         }}
                                     ></div>
@@ -289,13 +289,13 @@ export default function save({ attributes }) {
                             <div
                                 className="premium-progressbar-circle"
                                 style={{
-                                    clipPath: `${progress > '50' ? 'inset(0px)' : 'inset(0 0 0 50%)'}`
+                                    // clipPath: `${progress > '50' ? 'inset(0px)' : 'inset(0 0 0 50%)'}`
                                 }}
                             >
                                 <div
                                     className="premium-progressbar-circle-left"
                                     style={{
-                                        transform: `rotate(${progress * 3.6}deg)`,
+                                        // transform: `rotate(${progress * 3.6}deg)`,
                                         borderColor: fillColor,
                                     }}
                                 ></div>
@@ -303,7 +303,7 @@ export default function save({ attributes }) {
                                     className="premium-progressbar-circle-right"
                                     style={{
                                         borderColor: fillColor,
-                                        visibility: `${progress > '50' ? 'visible' : 'hidden'}`
+                                        // visibility: `${progress > '50' ? 'visible' : 'hidden'}`
                                     }}
                                 ></div>
                             </div>
