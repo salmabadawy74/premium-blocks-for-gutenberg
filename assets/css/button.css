@@ -39,6 +39,12 @@
     word-break: break-all;
     color: white; }
 
+.wp-block-post-content .premium-button a::where(:not(.wp-element-button)) {
+  color: #FFFFFF; }
+
+.wp-block-post-content .premium-button a::where(:not(.wp-element-button)) {
+  color: #FFFFFF; }
+
 .premium-button__before .premium-button-icon {
   margin-right: 15px; }
 
