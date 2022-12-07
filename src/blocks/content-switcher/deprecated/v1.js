@@ -469,7 +469,7 @@ const attributes = {
         "type": "object",
         "default": {
             "backgroundType": "",
-            "backgroundColor": "#793dc3",
+            "backgroundColor": "#0085BA",
             "backgroundImageID": "",
             "backgroundImageURL": "",
             "backgroundPosition": "center center",
@@ -535,7 +535,7 @@ const deprecated = {
             switchRadiusUnit: attributes.switchRadiusUnit || 'px',
             controllerOneBackground: attributes?.controllerOneBackground || {
                 "backgroundType": "",
-                "backgroundColor": "var(--pbg-global-color1,#793dc3)",
+                "backgroundColor": "var(--pbg-global-color1,#0085BA)",
                 "backgroundImageID": "",
                 "backgroundImageURL": "",
                 "backgroundPosition": "center center",
@@ -596,7 +596,7 @@ const deprecated = {
                 "box-shadow": ` ${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position} !important`,
                 "background-color": `${controllerOneBackground.backgroundType == "solid"
                     ? controllerOneBackground.backgroundColor
-                    : "#793dc3"
+                    : "#0085BA"
                     }`,
                 "background-image": `${gradientValue(controllerOneBackground)}`,
                 "background-repeat": `${controllerOneBackground.backgroundRepeat}`,

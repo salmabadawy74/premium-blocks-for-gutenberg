@@ -453,7 +453,7 @@ const v4Attributes = {
         "type": "array",
         "default": [
             {
-                "fancyTextColor": "#793dc3",
+                "fancyTextColor": "#0085BA",
                 "fancyTextBGColor": "",
                 "fancyTextBGOpacity": 1,
                 "cursorColor": ""
@@ -546,7 +546,7 @@ const deprecated = [
         migrate: (attributes) => {
             let newAttributes = {
                 secondColor: attributes?.fancyStyles || [{
-                    "fancyTextColor": "var(--pbg-global-color1,#793dc3)",
+                    "fancyTextColor": "var(--pbg-global-color1,#0085BA)",
                     "fancyTextBGColor": "",
                     "fancyTextBGOpacity": 1,
                     "cursorColor": ""

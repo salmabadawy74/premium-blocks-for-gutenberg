@@ -472,7 +472,7 @@
             "type": "object",
             "default": {
                 "backgroundType": "",
-                "backgroundColor": "var(--pbg-global-color1,#793dc3)",
+                "backgroundColor": "var(--pbg-global-color1,#0085BA)",
                 "backgroundImageID": "",
                 "backgroundImageURL": "",
                 "backgroundPosition": "center center",

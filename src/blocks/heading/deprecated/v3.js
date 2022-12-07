@@ -92,8 +92,8 @@ const attributes = {
                 "blurColor": "#000",
                 "BGColor": "#DDD0EF",
                 "lineColor": "var(--pbg-global-color1)",
-                "triangleColor": "var(--pbg-global-color1,#793DC4)",
-                "stripeColor": "var(--pbg-global-color1,#793DC4)",
+                "triangleColor": "var(--pbg-global-color1,#0085BA)",
+                "stripeColor": "var(--pbg-global-color1,#0085BA)",
                 "blurShadow": "120",
                 "animateDelay": "2",
                 "animateduration": "1"
@@ -565,9 +565,9 @@ const deprecated = {
                 "shinyColor": "#fff",
                 "blurColor": "#000",
                 "BGColor": "#DDD0EF",
-                "lineColor": "var(--pbg-global-color1,#793DC4)",
-                "triangleColor": "var(--pbg-global-color1,#793DC4)",
-                "stripeColor": "var(--pbg-global-color1,#793DC4)",
+                "lineColor": "var(--pbg-global-color1,#0085BA)",
+                "triangleColor": "var(--pbg-global-color1,#0085BA)",
+                "stripeColor": "var(--pbg-global-color1,#0085BA)",
                 "blurShadow": "120",
                 "animateDelay": "2",
                 "animateduration": "1"
@@ -687,7 +687,7 @@ const deprecated = {
                     }`,
                 "border-left-color":
                     titleBorder.borderType == "none"
-                        ? "var(--pbg-global-color1,#793DC4)"
+                        ? "var(--pbg-global-color1,#0085BA)"
                         : titleBorder.borderColor,
             };
 
@@ -702,7 +702,7 @@ const deprecated = {
                     }`,
                 "border-bottom-color":
                     titleBorder.borderType == "none"
-                        ? "var(--pbg-global-color1,#793DC4)"
+                        ? "var(--pbg-global-color1,#0085BA)"
                         : titleBorder.borderColor,
             };
 
@@ -717,7 +717,7 @@ const deprecated = {
                     }`,
                 "border-bottom-color":
                     titleBorder.borderType == "none"
-                        ? "var(--pbg-global-color1,#793DC4)"
+                        ? "var(--pbg-global-color1,#0085BA)"
                         : titleBorder.borderColor,
             };
 
@@ -732,7 +732,7 @@ const deprecated = {
                     }`,
                 "border-bottom-color":
                     titleBorder.borderType == "none"
-                        ? "var(--pbg-global-color1,#793DC4)"
+                        ? "var(--pbg-global-color1,#0085BA)"
                         : titleBorder.borderColor,
             };
 
@@ -747,7 +747,7 @@ const deprecated = {
                     }`,
                 "border-bottom-color":
                     titleBorder.borderType == "none"
-                        ? "var(--pbg-global-color1,#793DC4)"
+                        ? "var(--pbg-global-color1,#0085BA)"
                         : titleBorder.borderColor,
             };
 

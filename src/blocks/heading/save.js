@@ -121,7 +121,7 @@ export default function save(props) {
                 }`,
             "border-left-color":
                 titleBorder.borderType == "none"
-                    ? "var(--pbg-global-color1,#793DC4)"
+                    ? "var(--pbg-global-color1,#0085BA)"
                     : titleBorder.borderColor,
         };
 
@@ -136,7 +136,7 @@ export default function save(props) {
                 }`,
             "border-bottom-color":
                 titleBorder.borderType == "none"
-                    ? "var(--pbg-global-color1,#793DC4)"
+                    ? "var(--pbg-global-color1,#0085BA)"
                     : titleBorder.borderColor,
         };
 
@@ -151,7 +151,7 @@ export default function save(props) {
                 }`,
             "border-bottom-color":
                 titleBorder.borderType == "none"
-                    ? "var(--pbg-global-color1,#793DC4)"
+                    ? "var(--pbg-global-color1,#0085BA)"
                     : titleBorder.borderColor,
         };
 
@@ -166,7 +166,7 @@ export default function save(props) {
                 }`,
             "border-bottom-color":
                 titleBorder.borderType == "none"
-                    ? "var(--pbg-global-color1,#793DC4)"
+                    ? "var(--pbg-global-color1,#0085BA)"
                     : titleBorder.borderColor,
         };
 
@@ -181,7 +181,7 @@ export default function save(props) {
                 }`,
             "border-bottom-color":
                 titleBorder.borderType == "none"
-                    ? "var(--pbg-global-color1,#793DC4)"
+                    ? "var(--pbg-global-color1,#0085BA)"
                     : titleBorder.borderColor,
         };
 

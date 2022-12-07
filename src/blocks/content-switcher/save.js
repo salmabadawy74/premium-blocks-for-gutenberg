@@ -51,7 +51,7 @@ export default function save(props) {
             "box-shadow": ` ${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position} !important`,
             "background-color": `${controllerOneBackground.backgroundType == "solid"
                 ? controllerOneBackground.backgroundColor
-                : "var(--pbg-global-color1,#793dc3)"
+                : "var(--pbg-global-color1,#0085BA)"
                 }`,
             "background-image": `${gradientValue(controllerOneBackground)}`,
             "background-repeat": `${controllerOneBackground.backgroundRepeat}`,
