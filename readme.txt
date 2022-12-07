@@ -73,7 +73,8 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 == Changelog ==
 
 = 2.0.4 =
-
+- Tweak: Update person block preview in the editor.
+- Fixed: Console error in Gutenberg editor.
 - Fixed: General Issues in multiple blocks.
 
 = 2.0.3 =

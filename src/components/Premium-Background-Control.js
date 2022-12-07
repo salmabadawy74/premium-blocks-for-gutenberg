@@ -204,7 +204,7 @@ export default function PremiumBackgroundControl({
         <Fragment>
             <div className="premium-btn-size-settings-container  premium-blocks__base-control">
                 <p className="premium-beside-btn-group">
-                    {__("Background Type", "premium-blocks-for-gutenberg")}
+                    {__("Type", "premium-blocks-for-gutenberg")}
                 </p>
                 <div className={`premium-background-type__wrap`}>
                     <ButtonGroup

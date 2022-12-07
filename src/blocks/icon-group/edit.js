@@ -47,18 +47,42 @@ function Edit(props) {
             "premium/icon",
             {
                 selectedIcon: 'dashicons dashicons-facebook-alt',
+                iconSize: {
+                    default: {
+                        Desktop: "30",
+                        Tablet: "30",
+                        Mobile: "30",
+                        unit: "px"
+                    }
+                },
             }
         ],
         [
             "premium/icon",
             {
                 selectedIcon: 'fab fa-instagram',
+                iconSize: {
+                    default: {
+                        Desktop: "30",
+                        Tablet: "30",
+                        Mobile: "30",
+                        unit: "px"
+                    }
+                },
             }
         ],
         [
             "premium/icon",
             {
                 selectedIcon: 'dashicons dashicons-twitter',
+                iconSize: {
+                    default: {
+                        Desktop: "30",
+                        Tablet: "30",
+                        Mobile: "30",
+                        unit: "px"
+                    }
+                },
             }
         ],
     ];
