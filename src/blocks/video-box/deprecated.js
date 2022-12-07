@@ -1,561 +1,591 @@
-import videoBoxAttrs from "./block.json";
+import videoBoxAttrs from "../../../blocks-config/video-box/block.json";
 import onChangeVideoURL from "./index";
-import hexToRgba from 'hex-to-rgba'
-import classnames from 'classnames'
+import hexToRgba from "hex-to-rgba";
+import classnames from "classnames";
 
 const className = "premium-video-box";
 const { __ } = wp.i18n;
 
 const attributes = {
     block_id: {
-        type: 'string'
+        type: "string",
     },
     borderPlayUpdated: {
         type: "boolean",
-        default: false
+        default: false,
     },
     borderBoxUpdated: {
         type: "boolean",
-        default: false
+        default: false,
     },
     videoBoxId: {
-        type: "string"
+        type: "string",
     },
     videoType: {
         type: "string",
-        default: "youtube"
+        default: "youtube",
     },
     videoURL: {
         type: "string",
-        default: "07d2dXHYb94"
+        default: "07d2dXHYb94",
     },
     videoID: {
-        type: "string"
+        type: "string",
     },
     autoPlay: {
         type: "boolean",
-        default: false
+        default: false,
     },
     loop: {
         type: "boolean",
-        default: false
+        default: false,
     },
     controls: {
         type: "boolean",
-        default: true
+        default: true,
     },
     relatedVideos: {
         type: "boolean",
-        default: false
+        default: false,
     },
     mute: {
         type: "boolean",
-        default: false
+        default: false,
     },
     overlay: {
         type: "boolean",
-        default: false
+        default: false,
     },
     overlayImgID: {
-        type: "string"
+        type: "string",
     },
     overlayImgURL: {
-        type: "string"
+        type: "string",
     },
     blur: {
         type: "number",
-        default: 0
+        default: 0,
     },
     bright: {
         type: "number",
-        default: 100
+        default: 100,
     },
     contrast: {
         type: "number",
-        default: 100
+        default: 100,
     },
     saturation: {
         type: "number",
-        default: 100
+        default: 100,
     },
     hue: {
         type: "number",
-        default: 0
+        default: 0,
     },
     playTop: {
-        type: "number"
+        type: "number",
     },
     playIcon: {
         type: "boolean",
-        default: true
+        default: true,
     },
     playSize: {
-        type: "number"
+        type: "number",
     },
     playColor: {
-        type: "string"
+        type: "string",
     },
     playBack: {
-        type: "string"
+        type: "string",
     },
     playOpacity: {
         type: "number",
-        default: "1"
+        default: "1",
     },
     playHoverColor: {
-        type: "string"
+        type: "string",
     },
     playHoverBackColor: {
-        type: "string"
+        type: "string",
     },
     playPadding: {
-        type: "number"
+        type: "number",
     },
     playBorderType: {
         type: "string",
-        default: "none"
+        default: "none",
     },
     playBorderWidth: {
         type: "number",
-        default: "1"
+        default: "1",
     },
     playBorderRadius: {
-        type: "number"
+        type: "number",
     },
     playBorderColor: {
-        type: "string"
+        type: "string",
     },
     videoDescText: {
-        type: "string"
+        type: "string",
     },
     videoDesc: {
-        type: "boolean"
+        type: "boolean",
     },
     descLeft: {
-        type: "number"
+        type: "number",
     },
     descTop: {
-        type: "number"
+        type: "number",
     },
     videoDescSize: {
-        type: "number"
+        type: "number",
     },
     videoDescSizeUnit: {
         type: "string",
-        default: 'px'
+        default: "px",
     },
     videoDescSizeMobile: {
-        type: 'number'
+        type: "number",
     },
     videoDescSizeTablet: {
-        type: 'number'
+        type: "number",
     },
     videoDescFamily: {
-        type: "string"
+        type: "string",
     },
     videoDescWeight: {
-        type: "number"
+        type: "number",
     },
     videoDescLetter: {
-        type: "number"
+        type: "number",
     },
     videoDescStyle: {
-        type: "string"
+        type: "string",
     },
     videoDescUpper: {
-        type: "boolean"
+        type: "boolean",
     },
     videoDescColor: {
-        type: "string"
+        type: "string",
     },
     videoDescBack: {
-        type: "string"
+        type: "string",
     },
     videoDescOpacity: {
         type: "number",
-        default: "1"
+        default: "1",
     },
     videoDescPadding: {
-        type: "number"
+        type: "number",
     },
     videoDescBorderRadius: {
-        type: "number"
+        type: "number",
     },
     descShadowColor: {
-        type: "string"
+        type: "string",
     },
     descShadowBlur: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     descShadowHorizontal: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     descShadowVertical: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     boxBorderType: {
         type: "string",
-        default: "none"
+        default: "none",
     },
     boxBorderWidth: {
         type: "number",
-        default: "1"
+        default: "1",
     },
     boxBorderTop: {
-        type: "number"
+        type: "number",
     },
     boxBorderRight: {
-        type: "number"
+        type: "number",
     },
     boxBorderBottom: {
-        type: "number"
+        type: "number",
     },
     boxBorderLeft: {
-        type: "number"
+        type: "number",
     },
     playBorderTop: {
-        type: "number"
+        type: "number",
     },
     playBorderRight: {
-        type: "number"
+        type: "number",
     },
     playBorderBottom: {
-        type: "number"
+        type: "number",
     },
     playBorderLeft: {
         type: "number",
     },
     boxBorderRadius: {
-        type: "number"
+        type: "number",
     },
     boxBorderColor: {
-        type: "string"
+        type: "string",
     },
     shadowColor: {
-        type: "string"
+        type: "string",
     },
     shadowBlur: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     shadowHorizontal: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     shadowVertical: {
         type: "number",
-        default: "0"
+        default: "0",
     },
     shadowPosition: {
         type: "string",
-        default: ""
+        default: "",
     },
 
     // Old props
     playLeft: {
-        type: "number"
+        type: "number",
     },
     classMigrate: {
-        type: 'boolean',
-        default: false
+        type: "boolean",
+        default: false,
     },
     hideDesktop: {
-        type: 'boolean',
-        default: false
+        type: "boolean",
+        default: false,
     },
     hideTablet: {
-        type: 'boolean',
-        default: false
+        type: "boolean",
+        default: false,
     },
     hideMobile: {
-        type: 'boolean',
-        default: false
-    }
-}
+        type: "boolean",
+        default: false,
+    },
+};
 const new_Attributes = {
     boxStyles: {
-        type: 'array',
+        type: "array",
         default: [
             {
-                boxBorderType: 'none',
+                boxBorderType: "none",
                 boxBorderWidth: 1,
-                boxBorderTop: '',
-                boxBorderRight: '',
-                boxBorderBottom: '',
-                boxBorderLeft: '',
-                boxBorderRadius: '',
-                boxBorderColor: '',
-                shadowColor: '',
-                shadowBlur: '',
-                shadowHorizontal: '',
-                shadowVertical: '',
-                shadowPosition: '',
-                borderBoxUpdated: false
-            }
-        ]
+                boxBorderTop: "",
+                boxBorderRight: "",
+                boxBorderBottom: "",
+                boxBorderLeft: "",
+                boxBorderRadius: "",
+                boxBorderColor: "",
+                shadowColor: "",
+                shadowBlur: "",
+                shadowHorizontal: "",
+                shadowVertical: "",
+                shadowPosition: "",
+                borderBoxUpdated: false,
+            },
+        ],
     },
     overlayStyles: {
-        type: 'array',
+        type: "array",
         default: [
             {
-                overlayImgID: '',
-                overlayImgURL: '',
+                overlayImgID: "",
+                overlayImgURL: "",
                 blur: 0,
                 bright: 100,
                 contrast: 100,
                 saturation: 100,
                 hue: 0,
-            }
-        ]
+            },
+        ],
     },
     playStyles: {
-        type: 'array',
+        type: "array",
         default: [
             {
-                playTop: '',
-                playSize: '',
-                playPadding: '',
-                playBorderType: 'none',
+                playTop: "",
+                playSize: "",
+                playPadding: "",
+                playBorderType: "none",
                 playBorderWidth: 1,
-                playBorderRadius: '',
-                playBorderColor: '',
-                playBorderTop: '',
-                playBorderRight: '',
-                playBorderBottom: '',
-                playBorderLeft: '',
-                playColor: '',
-                playBack: '',
+                playBorderRadius: "",
+                playBorderColor: "",
+                playBorderTop: "",
+                playBorderRight: "",
+                playBorderBottom: "",
+                playBorderLeft: "",
+                playColor: "",
+                playBack: "",
                 playOpacity: 1,
-                playHoverColor: '',
-                playHoverBackColor: '',
-                borderPlayUpdated: false
-
-            }
-        ]
-
+                playHoverColor: "",
+                playHoverBackColor: "",
+                borderPlayUpdated: false,
+            },
+        ],
     },
     descStyles: {
-        type: 'array',
+        type: "array",
         default: [
             {
-                videoDescText: '',
-                videoDescFamily: __('Default'),
-                videoDescSize: '',
-                videoDescSizeUnit: 'px',
-                videoDescSizeMobile: '',
-                videoDescSizeTablet: '',
-                videoDescWeight: '',
-                videoDescLetter: '',
-                videoDescStyle: '',
+                videoDescText: "",
+                videoDescFamily: __("Default"),
+                videoDescSize: "",
+                videoDescSizeUnit: "px",
+                videoDescSizeMobile: "",
+                videoDescSizeTablet: "",
+                videoDescWeight: "",
+                videoDescLetter: "",
+                videoDescStyle: "",
                 videoDescUpper: false,
-                videoDescPadding: '',
-                videoDescBorderRadius: '',
-                descShadowColor: '',
+                videoDescPadding: "",
+                videoDescBorderRadius: "",
+                descShadowColor: "",
                 descShadowBlur: 0,
                 descShadowHorizontal: 0,
                 descShadowVertical: 0,
-                descLeft: '',
-                descTop: '',
-                videoDescColor: '',
-                videoDescBack: '',
+                descLeft: "",
+                descTop: "",
+                videoDescColor: "",
+                videoDescBack: "",
                 videoDescOpacity: 1,
-            }
-        ]
-    }
-}
+            },
+        ],
+    },
+};
 const new_deprecated_Attributes = {
     ratioValue: {
         type: "string",
-        default: '169'
-    }
-}
-const deprecated_attributes = Object.assign(attributes, new_Attributes)
-const deprecated_attributes_1_2 = Object.assign(deprecated_attributes, new_deprecated_Attributes)
+        default: "169",
+    },
+};
+const deprecated_attributes = Object.assign(attributes, new_Attributes);
+const deprecated_attributes_1_2 = Object.assign(
+    deprecated_attributes,
+    new_deprecated_Attributes
+);
 const deprecatedContent = [
     {
         attributes: deprecated_attributes,
         migrate: (attributes) => {
             let newAttributes = {
-                blockId: attributes.block_id ? `premium-video-box-${attributes.block_id.split('-')[6]}` : '',
+                blockId: attributes.block_id
+                    ? `premium-video-box-${attributes.block_id.split("-")[6]}`
+                    : "",
                 videoDescTypography: {
-                    'fontWeight': attributes.descStyles[0].videoDescWeight || 'Default',
-                    'fontStyle': attributes.descStyles[0].videoDescStyle,
-                    'textTransform': attributes.descStyles[0].videoDescUpper,
-                    'letterSpacing': {
-                        'Desktop': attributes.descStyles[0].videoDescLetter,
-                        "Tablet": attributes.descStyles[0].videoDescLetter,
-                        "Mobile": attributes.descStyles[0].videoDescLetter,
-                        'unit': 'px',
+                    fontWeight:
+                        attributes.descStyles[0].videoDescWeight || "Default",
+                    fontStyle: attributes.descStyles[0].videoDescStyle,
+                    textTransform: attributes.descStyles[0].videoDescUpper,
+                    letterSpacing: {
+                        Desktop: attributes.descStyles[0].videoDescLetter,
+                        Tablet: attributes.descStyles[0].videoDescLetter,
+                        Mobile: attributes.descStyles[0].videoDescLetter,
+                        unit: "px",
                     },
-                    'fontFamily': attributes.descStyles[0].videoDescFamily || 'Default',
-                    'lineHeight': {
-                        'Desktop': '',
-                        "Tablet": '',
-                        "Mobile": '',
-                        'unit': 'px',
+                    fontFamily:
+                        attributes.descStyles[0].videoDescFamily || "Default",
+                    lineHeight: {
+                        Desktop: "",
+                        Tablet: "",
+                        Mobile: "",
+                        unit: "px",
                     },
-                    'fontSize': {
-                        'Desktop': attributes.descStyles[0].videoDescSize,
-                        "Tablet": attributes.descStyles[0].videoDescSizeTablet,
-                        "Mobile": attributes.descStyles[0].videoDescSizeMobile,
-                        'unit': attributes.descStyles[0].videoDescSizeUnit,
-                    }
+                    fontSize: {
+                        Desktop: attributes.descStyles[0].videoDescSize,
+                        Tablet: attributes.descStyles[0].videoDescSizeTablet,
+                        Mobile: attributes.descStyles[0].videoDescSizeMobile,
+                        unit: attributes.descStyles[0].videoDescSizeUnit,
+                    },
                 },
                 playBorder: {
                     borderColor: attributes.playStyles[0].playBorderColor,
-                    borderType: attributes.playStyles[0].playBorderType || 'none',
+                    borderType:
+                        attributes.playStyles[0].playBorderType || "none",
                     borderRadius: {
-                        "Desktop": {
-                            top: attributes.playStyles[0].playBorderRadius || '100',
-                            right: attributes.playStyles[0].playBorderRadius || '100',
-                            bottom: attributes.playStyles[0].playBorderRadius || '100',
-                            left: attributes.playStyles[0].playBorderRadius || '100',
+                        Desktop: {
+                            top:
+                                attributes.playStyles[0].playBorderRadius ||
+                                "100",
+                            right:
+                                attributes.playStyles[0].playBorderRadius ||
+                                "100",
+                            bottom:
+                                attributes.playStyles[0].playBorderRadius ||
+                                "100",
+                            left:
+                                attributes.playStyles[0].playBorderRadius ||
+                                "100",
                         },
-                        "Tablet": {
+                        Tablet: {
                             top: "",
                             right: "",
                             bottom: "",
-                            left: ""
+                            left: "",
                         },
-                        "Mobile": {
+                        Mobile: {
                             top: "",
                             right: "",
                             bottom: "",
-                            left: ""
+                            left: "",
                         },
                     },
                     borderWidth: {
-                        "Desktop": {
-                            top: attributes.playStyles[0].borderBoxUpdated ? attributes.playStyles[0].boxBorderTop : attributes.playStyles[0].boxBorderWidth,
-                            right: attributes.playStyles[0].borderBoxUpdated ? attributes.playStyles[0].playBorderRight : attributes.playStyles[0].boxBorderWidth,
-                            bottom: attributes.playStyles[0].borderBoxUpdated ? attributes.playStyles[0].playBorderBottom : attributes.playStyles[0].boxBorderWidth,
-                            left: attributes.playStyles[0].borderBoxUpdated ? attributes.playStyles[0].playBorderLeft : attributes.playStyles[0].boxBorderWidth
+                        Desktop: {
+                            top: attributes.playStyles[0].borderBoxUpdated
+                                ? attributes.playStyles[0].boxBorderTop
+                                : attributes.playStyles[0].boxBorderWidth,
+                            right: attributes.playStyles[0].borderBoxUpdated
+                                ? attributes.playStyles[0].playBorderRight
+                                : attributes.playStyles[0].boxBorderWidth,
+                            bottom: attributes.playStyles[0].borderBoxUpdated
+                                ? attributes.playStyles[0].playBorderBottom
+                                : attributes.playStyles[0].boxBorderWidth,
+                            left: attributes.playStyles[0].borderBoxUpdated
+                                ? attributes.playStyles[0].playBorderLeft
+                                : attributes.playStyles[0].boxBorderWidth,
                         },
-                        "Tablet": {
+                        Tablet: {
                             top: "",
                             right: "",
                             bottom: "",
-                            left: ""
+                            left: "",
                         },
-                        "Mobile": {
+                        Mobile: {
                             top: "",
                             right: "",
                             bottom: "",
-                            left: ""
+                            left: "",
                         },
-                    }
+                    },
                 },
                 boxBorder: {
                     borderColor: attributes.boxStyles[0].boxBorderColor,
-                    borderType: attributes.boxStyles[0].boxBorderType || 'none',
+                    borderType: attributes.boxStyles[0].boxBorderType || "none",
                     borderRadius: {
-                        "Desktop": {
+                        Desktop: {
                             top: attributes.boxStyles[0].boxBorderRadius,
                             right: attributes.boxStyles[0].boxBorderRadius,
                             bottom: attributes.boxStyles[0].boxBorderRadius,
                             left: attributes.boxStyles[0].boxBorderRadius,
                         },
-                        "Tablet": {
+                        Tablet: {
                             top: "",
                             right: "",
                             bottom: "",
-                            left: ""
+                            left: "",
                         },
-                        "Mobile": {
+                        Mobile: {
                             top: "",
                             right: "",
                             bottom: "",
-                            left: ""
+                            left: "",
                         },
                     },
                     borderWidth: {
-                        "Desktop": {
-                            top: attributes.boxStyles[0].borderBoxUpdated ? attributes.boxStyles[0].boxBorderTop : attributes.boxStyles[0].boxBorderWidth,
-                            right: attributes.boxStyles[0].borderBoxUpdated ? attributes.boxStyles[0].boxBorderRight : attributes.boxStyles[0].boxBorderWidth,
-                            bottom: attributes.boxStyles[0].borderBoxUpdated ? attributes.boxStyles[0].boxBorderBottom : attributes.boxStyles[0].boxBorderWidth,
-                            left: attributes.boxStyles[0].borderBoxUpdated ? attributes.boxStyles[0].boxBorderLeft : attributes.boxStyles[0].boxBorderWidth
+                        Desktop: {
+                            top: attributes.boxStyles[0].borderBoxUpdated
+                                ? attributes.boxStyles[0].boxBorderTop
+                                : attributes.boxStyles[0].boxBorderWidth,
+                            right: attributes.boxStyles[0].borderBoxUpdated
+                                ? attributes.boxStyles[0].boxBorderRight
+                                : attributes.boxStyles[0].boxBorderWidth,
+                            bottom: attributes.boxStyles[0].borderBoxUpdated
+                                ? attributes.boxStyles[0].boxBorderBottom
+                                : attributes.boxStyles[0].boxBorderWidth,
+                            left: attributes.boxStyles[0].borderBoxUpdated
+                                ? attributes.boxStyles[0].boxBorderLeft
+                                : attributes.boxStyles[0].boxBorderWidth,
                         },
-                        "Tablet": {
+                        Tablet: {
                             top: "",
                             right: "",
                             bottom: "",
-                            left: ""
+                            left: "",
                         },
-                        "Mobile": {
+                        Mobile: {
                             top: "",
                             right: "",
                             bottom: "",
-                            left: ""
+                            left: "",
                         },
-                    }
+                    },
                 },
                 playPadding: {
-                    "Desktop": {
+                    Desktop: {
                         top: attributes.playStyles[0].playPadding,
                         right: attributes.playStyles[0].playPadding,
                         bottom: attributes.playStyles[0].playPadding,
-                        left: attributes.playStyles[0].playPadding
+                        left: attributes.playStyles[0].playPadding,
                     },
-                    "Tablet": {
-                        top: '',
-                        right: '',
-                        bottom: '',
-                        left: ''
+                    Tablet: {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: "",
                     },
-                    "Mobile": {
-                        top: '',
-                        right: '',
-                        bottom: '',
-                        left: ''
+                    Mobile: {
+                        top: "",
+                        right: "",
+                        bottom: "",
+                        left: "",
                     },
-                    unit: "px"
+                    unit: "px",
                 },
                 descPadding: {
-                    "Desktop": {
+                    Desktop: {
                         top: attributes.descStyles[0].videoDescPadding,
                         right: attributes.descStyles[0].videoDescPadding,
                         bottom: attributes.descStyles[0].videoDescPadding,
-                        left: attributes.descStyles[0].videoDescPadding
+                        left: attributes.descStyles[0].videoDescPadding,
                     },
-                    "Tablet": {
+                    Tablet: {
                         top: "",
                         right: "",
                         bottom: "",
-                        left: ""
+                        left: "",
                     },
-                    "Mobile": {
+                    Mobile: {
                         top: "",
                         right: "",
                         bottom: "",
-                        left: ""
+                        left: "",
                     },
-                    unit: 'px'
+                    unit: "px",
                 },
                 descShadow: {
-                    'color': attributes.descStyles[0].descShadowColor,
-                    'blur': attributes.descStyles[0].descShadowBlur,
-                    'horizontal': attributes.descStyles[0].descShadowHorizontal,
-                    'vertical': attributes.descStyles[0].descShadowVertical
+                    color: attributes.descStyles[0].descShadowColor,
+                    blur: attributes.descStyles[0].descShadowBlur,
+                    horizontal: attributes.descStyles[0].descShadowHorizontal,
+                    vertical: attributes.descStyles[0].descShadowVertical,
                 },
                 boxShadow: {
-                    'color': attributes.boxStyles[0].shadowColor,
-                    'blur': attributes.boxStyles[0].shadowBlur,
-                    'horizontal': attributes.boxStyles[0].shadowHorizontal,
-                    'vertical': attributes.boxStyles[0].shadowVertical,
-                    'position': attributes.boxStyles[0].shadowPosition
+                    color: attributes.boxStyles[0].shadowColor,
+                    blur: attributes.boxStyles[0].shadowBlur,
+                    horizontal: attributes.boxStyles[0].shadowHorizontal,
+                    vertical: attributes.boxStyles[0].shadowVertical,
+                    position: attributes.boxStyles[0].shadowPosition,
                 },
                 overlayFilter: {
-                    'contrast': attributes.overlayStyles[0].contrast,
-                    'blur': attributes.overlayStyles[0].blur,
-                    'bright': attributes.overlayStyles[0].bright,
-                    'saturation': attributes.overlayStyles[0].saturation,
-                    'hue': attributes.overlayStyles[0].hue
-                }
+                    contrast: attributes.overlayStyles[0].contrast,
+                    blur: attributes.overlayStyles[0].blur,
+                    bright: attributes.overlayStyles[0].bright,
+                    saturation: attributes.overlayStyles[0].saturation,
+                    hue: attributes.overlayStyles[0].hue,
+                },
             };
-            return Object.assign(attributes, newAttributes)
+            return Object.assign(attributes, newAttributes);
         },
         save: (props) => {
             const {
@@ -579,7 +609,7 @@ const deprecatedContent = [
                 overlayStyles,
                 playStyles,
                 descStyles,
-                ratioValue
+                ratioValue,
             } = props.attributes;
 
             const loopVideo = () => {
@@ -587,9 +617,9 @@ const deprecatedContent = [
                     if (videoURL.startsWith("http")) {
                         return loop
                             ? `1&playlist=${videoURL.replace(
-                                "https://www.youtube.com/embed/",
-                                ""
-                            )}`
+                                  "https://www.youtube.com/embed/",
+                                  ""
+                              )}`
                             : "0";
                     } else {
                         return loop ? `1&playlist=${videoURL}` : "0";
@@ -599,8 +629,7 @@ const deprecatedContent = [
                 }
             };
 
-            const mainClasses = classnames(className, 'premium-video-box');
-
+            const mainClasses = classnames(className, "premium-video-box");
 
             return (
                 videoURL && (
@@ -615,7 +644,7 @@ const deprecatedContent = [
                                 : boxStyles[0].boxBorderWidth + "px",
                             borderRadius: boxStyles[0].boxBorderRadius + "px",
                             borderColor: boxStyles[0].boxBorderColor,
-                            boxShadow: `${boxStyles[0].shadowHorizontal}px ${boxStyles[0].shadowVertical}px ${boxStyles[0].shadowBlur}px ${boxStyles[0].shadowColor} ${boxStyles[0].shadowPosition}`
+                            boxShadow: `${boxStyles[0].shadowHorizontal}px ${boxStyles[0].shadowVertical}px ${boxStyles[0].shadowBlur}px ${boxStyles[0].shadowColor} ${boxStyles[0].shadowPosition}`,
                         }}
                     >
                         <style
@@ -624,20 +653,32 @@ const deprecatedContent = [
                                     `#${videoBoxId} .premium-video-box__play:hover {`,
                                     `color: ${playStyles[0].playHoverColor} !important;`,
                                     `background-color: ${playStyles[0].playHoverBackColor} !important;`,
-                                    "}"
-                                ].join("\n")
+                                    "}",
+                                ].join("\n"),
                             }}
                         />
                         <div className={`premium-video-box__container`}>
                             <div>
                                 <div className={`premium-video-box-inner-wrap`}>
-                                    <div className={`premium-video-box-video-container`}>
+                                    <div
+                                        className={`premium-video-box-video-container`}
+                                    >
                                         {"self" !== videoType && (
                                             <iframe
-                                                src={`${onChangeVideoURL(videoType, videoURL)}?autoplay=${overlay ? 0 : autoPlay
-                                                    }&loop=${loopVideo()}&mute${"vimeo" == videoType ? "d" : ""
-                                                    }=${mute}&rel=${relatedVideos ? "1" : "0"}&controls=${controls ? "1" : "0"
-                                                    }`}
+                                                src={`${onChangeVideoURL(
+                                                    videoType,
+                                                    videoURL
+                                                )}?autoplay=${
+                                                    overlay ? 0 : autoPlay
+                                                }&loop=${loopVideo()}&mute${
+                                                    "vimeo" == videoType
+                                                        ? "d"
+                                                        : ""
+                                                }=${mute}&rel=${
+                                                    relatedVideos ? "1" : "0"
+                                                }&controls=${
+                                                    controls ? "1" : "0"
+                                                }`}
                                                 frameborder="0"
                                                 gesture="media"
                                                 allow="encrypted-media"
@@ -649,8 +690,12 @@ const deprecatedContent = [
                                                 src={videoURL}
                                                 loop={loop ? true : false}
                                                 muted={mute ? true : false}
-                                                autoplay={overlay ? false : autoPlay}
-                                                controls={controls ? true : false}
+                                                autoplay={
+                                                    overlay ? false : autoPlay
+                                                }
+                                                controls={
+                                                    controls ? true : false
+                                                }
                                             />
                                         )}
                                     </div>
@@ -662,7 +707,7 @@ const deprecatedContent = [
                                 className={`premium-video-box__overlay`}
                                 style={{
                                     backgroundImage: `url('${overlayStyles[0].overlayImgURL}')`,
-                                    filter: `brightness( ${overlayStyles[0].bright}% ) contrast( ${overlayStyles[0].contrast}% ) saturate( ${overlayStyles[0].saturation}% ) blur( ${overlayStyles[0].blur}px ) hue-rotate( ${overlayStyles[0].hue}deg )`
+                                    filter: `brightness( ${overlayStyles[0].bright}% ) contrast( ${overlayStyles[0].contrast}% ) saturate( ${overlayStyles[0].saturation}% ) blur( ${overlayStyles[0].blur}px ) hue-rotate( ${overlayStyles[0].hue}deg )`,
                                 }}
                             />
                         )}
@@ -678,15 +723,16 @@ const deprecatedContent = [
                                     borderWidth: playStyles[0].borderPlayUpdated
                                         ? `${playStyles[0].playBorderTop}px ${playStyles[0].playBorderRight}px ${playStyles[0].playBorderBottom}px ${playStyles[0].playBorderLeft}px`
                                         : playStyles[0].playBorderWidth + "px",
-                                    borderRadius: playStyles[0].playBorderRadius + "px",
+                                    borderRadius:
+                                        playStyles[0].playBorderRadius + "px",
                                     borderColor: playStyles[0].playBorderColor,
-                                    padding: playStyles[0].playPadding + "px"
+                                    padding: playStyles[0].playPadding + "px",
                                 }}
                             >
                                 <i
                                     className={`premium-video-box__play_icon dashicons dashicons-controls-play`}
                                     style={{
-                                        fontSize: playStyles[0].playSize + "px"
+                                        fontSize: playStyles[0].playSize + "px",
                                     }}
                                 />
                             </div>
@@ -696,22 +742,31 @@ const deprecatedContent = [
                                 className={`premium-video-box__desc`}
                                 style={{
                                     color: descStyles[0].videoDescColor,
-                                    backgroundColor: descStyles[0].videoDescBack,
+                                    backgroundColor:
+                                        descStyles[0].videoDescBack,
                                     padding: descStyles[0].videoDescPadding,
-                                    borderRadius: descStyles[0].videoDescBorderRadius,
+                                    borderRadius:
+                                        descStyles[0].videoDescBorderRadius,
                                     top: descStyles[0].descTop + "%",
-                                    left: descStyles[0].descLeft + "%"
+                                    left: descStyles[0].descLeft + "%",
                                 }}
                             >
                                 <p
                                     className={`premium-video-box__desc_text`}
                                     style={{
-                                        fontFamily: descStyles[0].videoDescFamily,
-                                        fontWeight: descStyles[0].videoDescWeight,
-                                        letterSpacing: descStyles[0].videoDescLetter + "px",
-                                        textTransform: descStyles[0].videoDescUpper ? "uppercase" : "none",
+                                        fontFamily:
+                                            descStyles[0].videoDescFamily,
+                                        fontWeight:
+                                            descStyles[0].videoDescWeight,
+                                        letterSpacing:
+                                            descStyles[0].videoDescLetter +
+                                            "px",
+                                        textTransform: descStyles[0]
+                                            .videoDescUpper
+                                            ? "uppercase"
+                                            : "none",
                                         textShadow: `${descStyles[0].descShadowHorizontal}px ${descStyles[0].descShadowVertical}px ${descStyles[0].descShadowBlur}px ${descStyles[0].descShadowColor}`,
-                                        fontStyle: descStyles[0].videoDescStyle
+                                        fontStyle: descStyles[0].videoDescStyle,
                                     }}
                                 >
                                     <span>{descStyles[0].videoDescText}</span>
@@ -721,7 +776,7 @@ const deprecatedContent = [
                     </div>
                 )
             );
-        }
+        },
     },
     {
         attributes: deprecated_attributes_1_2,
@@ -748,7 +803,7 @@ const deprecatedContent = [
                 boxStyles,
                 overlayStyles,
                 playStyles,
-                descStyles
+                descStyles,
             } = props.attributes;
 
             const loopVideo = () => {
@@ -756,9 +811,9 @@ const deprecatedContent = [
                     if (videoURL.startsWith("http")) {
                         return loop
                             ? `1&playlist=${videoURL.replace(
-                                "https://www.youtube.com/embed/",
-                                ""
-                            )}`
+                                  "https://www.youtube.com/embed/",
+                                  ""
+                              )}`
                             : "0";
                     } else {
                         return loop ? `1&playlist=${videoURL}` : "0";
@@ -768,9 +823,7 @@ const deprecatedContent = [
                 }
             };
 
-
             return (
-
                 videoURL && (
                     <div
                         id={videoBoxId}
@@ -783,7 +836,7 @@ const deprecatedContent = [
                                 : boxStyles[0].boxBorderWidth + "px",
                             borderRadius: boxStyles[0].boxBorderRadius + "px",
                             borderColor: boxStyles[0].boxBorderColor,
-                            boxShadow: `${boxStyles[0].shadowHorizontal}px ${boxStyles[0].shadowVertical}px ${boxStyles[0].shadowBlur}px ${boxStyles[0].shadowColor} ${boxStyles[0].shadowPosition}`
+                            boxShadow: `${boxStyles[0].shadowHorizontal}px ${boxStyles[0].shadowVertical}px ${boxStyles[0].shadowBlur}px ${boxStyles[0].shadowColor} ${boxStyles[0].shadowPosition}`,
                         }}
                     >
                         <style
@@ -792,17 +845,23 @@ const deprecatedContent = [
                                     `#${videoBoxId} .premium-video-box__play:hover {`,
                                     `color: ${playStyles[0].playHoverColor} !important;`,
                                     `background-color: ${playStyles[0].playHoverBackColor} !important;`,
-                                    "}"
-                                ].join("\n")
+                                    "}",
+                                ].join("\n"),
                             }}
                         />
                         <div className={`premium-video-box__container`}>
                             {"self" !== videoType && (
                                 <iframe
-                                    src={`${onChangeVideoURL(videoType, videoURL)}?autoplay=${overlay ? 0 : autoPlay
-                                        }&loop=${loopVideo()}&mute${"vimeo" == videoType ? "d" : ""
-                                        }=${mute}&rel=${relatedVideos ? "1" : "0"}&controls=${controls ? "1" : "0"
-                                        }`}
+                                    src={`${onChangeVideoURL(
+                                        videoType,
+                                        videoURL
+                                    )}?autoplay=${
+                                        overlay ? 0 : autoPlay
+                                    }&loop=${loopVideo()}&mute${
+                                        "vimeo" == videoType ? "d" : ""
+                                    }=${mute}&rel=${
+                                        relatedVideos ? "1" : "0"
+                                    }&controls=${controls ? "1" : "0"}`}
                                     frameborder="0"
                                     gesture="media"
                                     allow="encrypted-media"
@@ -824,7 +883,7 @@ const deprecatedContent = [
                                 className={`premium-video-box__overlay`}
                                 style={{
                                     backgroundImage: `url('${overlayStyles[0].overlayImgURL}')`,
-                                    filter: `brightness( ${overlayStyles[0].bright}% ) contrast( ${overlayStyles[0].contrast}% ) saturate( ${overlayStyles[0].saturation}% ) blur( ${overlayStyles[0].blur}px ) hue-rotate( ${overlayStyles[0].hue}deg )`
+                                    filter: `brightness( ${overlayStyles[0].bright}% ) contrast( ${overlayStyles[0].contrast}% ) saturate( ${overlayStyles[0].saturation}% ) blur( ${overlayStyles[0].blur}px ) hue-rotate( ${overlayStyles[0].hue}deg )`,
                                 }}
                             />
                         )}
@@ -840,15 +899,16 @@ const deprecatedContent = [
                                     borderWidth: playStyles[0].borderPlayUpdated
                                         ? `${playStyles[0].playBorderTop}px ${playStyles[0].playBorderRight}px ${playStyles[0].playBorderBottom}px ${playStyles[0].playBorderLeft}px`
                                         : playStyles[0].playBorderWidth + "px",
-                                    borderRadius: playStyles[0].playBorderRadius + "px",
+                                    borderRadius:
+                                        playStyles[0].playBorderRadius + "px",
                                     borderColor: playStyles[0].playBorderColor,
-                                    padding: playStyles[0].playPadding + "px"
+                                    padding: playStyles[0].playPadding + "px",
                                 }}
                             >
                                 <i
                                     className={`premium-video-box__play_icon dashicons dashicons-controls-play`}
                                     style={{
-                                        fontSize: playStyles[0].playSize + "px"
+                                        fontSize: playStyles[0].playSize + "px",
                                     }}
                                 />
                             </div>
@@ -858,22 +918,31 @@ const deprecatedContent = [
                                 className={`premium-video-box__desc`}
                                 style={{
                                     color: descStyles[0].videoDescColor,
-                                    backgroundColor: descStyles[0].videoDescBack,
+                                    backgroundColor:
+                                        descStyles[0].videoDescBack,
                                     padding: descStyles[0].videoDescPadding,
-                                    borderRadius: descStyles[0].videoDescBorderRadius,
+                                    borderRadius:
+                                        descStyles[0].videoDescBorderRadius,
                                     top: descStyles[0].descTop + "%",
-                                    left: descStyles[0].descLeft + "%"
+                                    left: descStyles[0].descLeft + "%",
                                 }}
                             >
                                 <p
                                     className={`premium-video-box__desc_text`}
                                     style={{
-                                        fontFamily: descStyles[0].videoDescFamily,
-                                        fontWeight: descStyles[0].videoDescWeight,
-                                        letterSpacing: descStyles[0].videoDescLetter + "px",
-                                        textTransform: descStyles[0].videoDescUpper ? "uppercase" : "none",
+                                        fontFamily:
+                                            descStyles[0].videoDescFamily,
+                                        fontWeight:
+                                            descStyles[0].videoDescWeight,
+                                        letterSpacing:
+                                            descStyles[0].videoDescLetter +
+                                            "px",
+                                        textTransform: descStyles[0]
+                                            .videoDescUpper
+                                            ? "uppercase"
+                                            : "none",
                                         textShadow: `${descStyles[0].descShadowHorizontal}px ${descStyles[0].descShadowVertical}px ${descStyles[0].descShadowBlur}px ${descStyles[0].descShadowColor}`,
-                                        fontStyle: descStyles[0].videoDescStyle
+                                        fontStyle: descStyles[0].videoDescStyle,
                                     }}
                                 >
                                     <span>{descStyles[0].videoDescText}</span>
@@ -883,7 +952,7 @@ const deprecatedContent = [
                     </div>
                 )
             );
-        }
+        },
     },
     {
         attributes: deprecated_attributes,
@@ -910,16 +979,16 @@ const deprecatedContent = [
                 boxStyles,
                 overlayStyles,
                 playStyles,
-                descStyles
+                descStyles,
             } = props.attributes;
             const loopVideo = () => {
                 if (videoURL && "youtube" === videoType) {
                     if (videoURL.startsWith("http")) {
                         return loop
                             ? `1&playlist=${videoURL.replace(
-                                "https://www.youtube.com/embed/",
-                                ""
-                            )}`
+                                  "https://www.youtube.com/embed/",
+                                  ""
+                              )}`
                             : "0";
                     } else {
                         return loop ? `1&playlist=${videoURL}` : "0";
@@ -941,7 +1010,7 @@ const deprecatedContent = [
                             : boxStyles[0].boxBorderWidth + "px",
                         borderRadius: boxStyles[0].boxBorderRadius + "px",
                         borderColor: boxStyles[0].boxBorderColor,
-                        boxShadow: `${boxStyles[0].shadowHorizontal}px ${boxStyles[0].shadowVertical}px ${boxStyles[0].shadowBlur}px ${boxStyles[0].shadowColor} ${boxStyles[0].shadowPosition}`
+                        boxShadow: `${boxStyles[0].shadowHorizontal}px ${boxStyles[0].shadowVertical}px ${boxStyles[0].shadowBlur}px ${boxStyles[0].shadowColor} ${boxStyles[0].shadowPosition}`,
                     }}
                 >
                     <style
@@ -950,17 +1019,23 @@ const deprecatedContent = [
                                 `#${videoBoxId} .premium-video-box__play:hover {`,
                                 `color: ${playStyles[0].playHoverColor} !important;`,
                                 `background-color: ${playStyles[0].playHoverBackColor} !important;`,
-                                "}"
-                            ].join("\n")
+                                "}",
+                            ].join("\n"),
                         }}
                     />
                     <div className={`premium-video-box__container`}>
                         {"self" !== videoType && (
                             <iframe
-                                src={`${onChangeVideoURL(videoType, videoURL)}?autoplay=${overlay ? 0 : autoPlay
-                                    }&loop=${loopVideo()}&mute${"vimeo" == videoType ? "d" : ""
-                                    }=${mute}&rel=${relatedVideos ? "1" : "0"}&controls=${controls ? "1" : "0"
-                                    }`}
+                                src={`${onChangeVideoURL(
+                                    videoType,
+                                    videoURL
+                                )}?autoplay=${
+                                    overlay ? 0 : autoPlay
+                                }&loop=${loopVideo()}&mute${
+                                    "vimeo" == videoType ? "d" : ""
+                                }=${mute}&rel=${
+                                    relatedVideos ? "1" : "0"
+                                }&controls=${controls ? "1" : "0"}`}
                                 frameborder="0"
                                 gesture="media"
                                 allow="encrypted-media"
@@ -982,7 +1057,7 @@ const deprecatedContent = [
                             className={`premium-video-box__overlay`}
                             style={{
                                 backgroundImage: `url('${overlayStyles[0].overlayImgURL}')`,
-                                filter: `brightness( ${overlayStyles[0].bright}% ) contrast( ${overlayStyles[0].contrast}% ) saturate( ${overlayStyles[0].saturation}% ) blur( ${overlayStyles[0].blur}px ) hue-rotate( ${overlayStyles[0].hue}deg )`
+                                filter: `brightness( ${overlayStyles[0].bright}% ) contrast( ${overlayStyles[0].contrast}% ) saturate( ${overlayStyles[0].saturation}% ) blur( ${overlayStyles[0].blur}px ) hue-rotate( ${overlayStyles[0].hue}deg )`,
                             }}
                         />
                     )}
@@ -998,15 +1073,16 @@ const deprecatedContent = [
                                 borderWidth: playStyles[0].borderPlayUpdated
                                     ? `${playStyles[0].playBorderTop}px ${playStyles[0].playBorderRight}px ${playStyles[0].playBorderBottom}px ${playStyles[0].playBorderLeft}px`
                                     : playStyles[0].playBorderWidth + "px",
-                                borderRadius: playStyles[0].playBorderRadius + "px",
+                                borderRadius:
+                                    playStyles[0].playBorderRadius + "px",
                                 borderColor: playStyles[0].playBorderColor,
-                                padding: playStyles[0].playPadding + "px"
+                                padding: playStyles[0].playPadding + "px",
                             }}
                         >
                             <i
                                 className={`premium-video-box__play_icon dashicons dashicons-controls-play`}
                                 style={{
-                                    fontSize: playStyles[0].playSize + "px"
+                                    fontSize: playStyles[0].playSize + "px",
                                 }}
                             />
                         </div>
@@ -1018,9 +1094,10 @@ const deprecatedContent = [
                                 color: descStyles[0].videoDescColor,
                                 backgroundColor: descStyles[0].videoDescBack,
                                 padding: descStyles[0].videoDescPadding,
-                                borderRadius: descStyles[0].videoDescBorderRadius,
+                                borderRadius:
+                                    descStyles[0].videoDescBorderRadius,
                                 top: descStyles[0].descTop + "%",
-                                left: descStyles[0].descLeft + "%"
+                                left: descStyles[0].descLeft + "%",
                             }}
                         >
                             <p
@@ -1028,10 +1105,13 @@ const deprecatedContent = [
                                 style={{
                                     fontFamily: descStyles[0].videoDescFamily,
                                     fontWeight: descStyles[0].videoDescWeight,
-                                    letterSpacing: descStyles[0].videoDescLetter + "px",
-                                    textTransform: descStyles[0].videoDescUpper ? "uppercase" : "none",
+                                    letterSpacing:
+                                        descStyles[0].videoDescLetter + "px",
+                                    textTransform: descStyles[0].videoDescUpper
+                                        ? "uppercase"
+                                        : "none",
                                     textShadow: `${descStyles[0].descShadowHorizontal}px ${descStyles[0].descShadowVertical}px ${descStyles[0].descShadowBlur}px ${descStyles[0].descShadowColor}`,
-                                    fontStyle: descStyles[0].videoDescStyle
+                                    fontStyle: descStyles[0].videoDescStyle,
                                 }}
                             >
                                 <span>{descStyles[0].videoDescText}</span>
@@ -1040,11 +1120,11 @@ const deprecatedContent = [
                     )}
                 </div>
             );
-        }
+        },
     },
     {
         attributes: deprecated_attributes,
-        migrate: attributes => {
+        migrate: (attributes) => {
             let newAttributes = {
                 boxStyles: [
                     {
@@ -1061,8 +1141,8 @@ const deprecatedContent = [
                         shadowHorizontal: attributes.shadowHorizontal,
                         shadowVertical: attributes.shadowVertical,
                         shadowPosition: attributes.shadowPosition,
-                        borderBoxUpdated: attributes.borderBoxUpdated
-                    }
+                        borderBoxUpdated: attributes.borderBoxUpdated,
+                    },
                 ],
                 overlayStyles: [
                     {
@@ -1073,7 +1153,7 @@ const deprecatedContent = [
                         contrast: attributes.contrast,
                         saturation: attributes.saturation,
                         hue: attributes.hue,
-                    }
+                    },
                 ],
                 playStyles: [
                     {
@@ -1093,8 +1173,8 @@ const deprecatedContent = [
                         playOpacity: attributes.playOpacity,
                         playHoverColor: attributes.playHoverColor,
                         playHoverBackColor: attributes.playHoverBackColor,
-                        borderPlayUpdated: attributes.borderPlayUpdated
-                    }
+                        borderPlayUpdated: attributes.borderPlayUpdated,
+                    },
                 ],
                 descStyles: [
                     {
@@ -1119,12 +1199,12 @@ const deprecatedContent = [
                         videoDescColor: attributes.videoDescColor,
                         videoDescBack: attributes.videoDescBack,
                         videoDescOpacity: attributes.videoDescOpacity,
-                    }
-                ]
-            }
-            return Object.assign(attributes, newAttributes)
+                    },
+                ],
+            };
+            return Object.assign(attributes, newAttributes);
         },
-        save: props => {
+        save: (props) => {
             const {
                 block_id,
                 borderPlayUpdated,
@@ -1195,7 +1275,7 @@ const deprecatedContent = [
                 shadowPosition,
                 hideDesktop,
                 hideTablet,
-                hideMobile
+                hideMobile,
             } = props.attributes;
 
             const loopVideo = () => {
@@ -1203,9 +1283,9 @@ const deprecatedContent = [
                     if (videoURL.startsWith("http")) {
                         return loop
                             ? `1&playlist=${videoURL.replace(
-                                "https://www.youtube.com/embed/",
-                                ""
-                            )}`
+                                  "https://www.youtube.com/embed/",
+                                  ""
+                              )}`
                             : "0";
                     } else {
                         return loop ? `1&playlist=${videoURL}` : "0";
@@ -1227,7 +1307,7 @@ const deprecatedContent = [
                             : boxBorderWidth + "px",
                         borderRadius: boxBorderRadius + "px",
                         borderColor: boxBorderColor,
-                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                     }}
                 >
                     <style
@@ -1236,17 +1316,23 @@ const deprecatedContent = [
                                 `#${videoBoxId} .premium-video-box__play:hover {`,
                                 `color: ${playHoverColor} !important;`,
                                 `background-color: ${playHoverBackColor} !important;`,
-                                "}"
-                            ].join("\n")
+                                "}",
+                            ].join("\n"),
                         }}
                     />
                     <div className={`premium-video-box__container`}>
                         {"self" !== videoType && (
                             <iframe
-                                src={`${onChangeVideoURL(videoType, videoURL)}?autoplay=${overlay ? 0 : autoPlay
-                                    }&loop=${loopVideo()}&mute${"vimeo" == videoType ? "d" : ""
-                                    }=${mute}&rel=${relatedVideos ? "1" : "0"}&controls=${controls ? "1" : "0"
-                                    }`}
+                                src={`${onChangeVideoURL(
+                                    videoType,
+                                    videoURL
+                                )}?autoplay=${
+                                    overlay ? 0 : autoPlay
+                                }&loop=${loopVideo()}&mute${
+                                    "vimeo" == videoType ? "d" : ""
+                                }=${mute}&rel=${
+                                    relatedVideos ? "1" : "0"
+                                }&controls=${controls ? "1" : "0"}`}
                                 frameborder="0"
                                 gesture="media"
                                 allow="encrypted-media"
@@ -1268,7 +1354,7 @@ const deprecatedContent = [
                             className={`premium-video-box__overlay`}
                             style={{
                                 backgroundImage: `url('${overlayImgURL}')`,
-                                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
+                                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
                             }}
                         />
                     )}
@@ -1279,20 +1365,22 @@ const deprecatedContent = [
                                 top: playTop + "%",
                                 left: playLeft + "%",
                                 color: playColor,
-                                backgroundColor: playBack ? hexToRgba(playBack, playOpacity) : 'transparent',
+                                backgroundColor: playBack
+                                    ? hexToRgba(playBack, playOpacity)
+                                    : "transparent",
                                 borderStyle: playBorderType,
                                 borderWidth: borderPlayUpdated
                                     ? `${playBorderTop}px ${playBorderRight}px ${playBorderBottom}px ${playBorderLeft}px`
                                     : playBorderWidth + "px",
                                 borderRadius: playBorderRadius + "px",
                                 borderColor: playBorderColor,
-                                padding: playPadding + "px"
+                                padding: playPadding + "px",
                             }}
                         >
                             <i
                                 className={`premium-video-box__play_icon dashicons dashicons-controls-play`}
                                 style={{
-                                    fontSize: playSize + "px"
+                                    fontSize: playSize + "px",
                                 }}
                             />
                         </div>
@@ -1302,11 +1390,13 @@ const deprecatedContent = [
                             className={`premium-video-box__desc`}
                             style={{
                                 color: videoDescColor,
-                                backgroundColor: videoDescBack ? hexToRgba(videoDescBack, videoDescOpacity) : "transparent",
+                                backgroundColor: videoDescBack
+                                    ? hexToRgba(videoDescBack, videoDescOpacity)
+                                    : "transparent",
                                 padding: videoDescPadding,
                                 borderRadius: videoDescBorderRadius,
                                 top: descTop + "%",
-                                left: descLeft + "%"
+                                left: descLeft + "%",
                             }}
                         >
                             <p
@@ -1316,8 +1406,10 @@ const deprecatedContent = [
                                     fontWeight: videoDescWeight,
                                     letterSpacing: videoDescLetter + "px",
                                     textShadow: `${descShadowHorizontal}px ${descShadowVertical}px ${descShadowBlur}px ${descShadowColor}`,
-                                    textTransform: videoDescUpper ? "uppercase" : "none",
-                                    fontStyle: videoDescStyle
+                                    textTransform: videoDescUpper
+                                        ? "uppercase"
+                                        : "none",
+                                    fontStyle: videoDescStyle,
                                 }}
                             >
                                 <span>{videoDescText}</span>
@@ -1326,11 +1418,11 @@ const deprecatedContent = [
                     )}
                 </div>
             );
-        }
+        },
     },
     {
         attributes: videoBoxAttrs,
-        save: props => {
+        save: (props) => {
             const {
                 videoBoxId,
                 videoType,
@@ -1382,16 +1474,16 @@ const deprecatedContent = [
                 shadowColor,
                 shadowHorizontal,
                 shadowVertical,
-                shadowPosition
+                shadowPosition,
             } = props.attributes;
             const loopVideo = () => {
                 if (videoURL && "youtube" === videoType) {
                     if (videoURL.startsWith("http")) {
                         return loop
                             ? `1&playlist=${videoURL.replace(
-                                "https://www.youtube.com/embed/",
-                                ""
-                            )}`
+                                  "https://www.youtube.com/embed/",
+                                  ""
+                              )}`
                             : "0";
                     } else {
                         return loop ? `1&playlist=${videoURL}` : "0";
@@ -1410,7 +1502,7 @@ const deprecatedContent = [
                         borderWidth: boxBorderWidth + "px",
                         borderRadius: boxBorderRadius + "px",
                         borderColor: boxBorderColor,
-                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                     }}
                 >
                     <style
@@ -1419,17 +1511,23 @@ const deprecatedContent = [
                                 `#${videoBoxId} .${className}__play:hover {`,
                                 `color: ${playHoverColor} !important;`,
                                 `background-color: ${playHoverBackColor} !important;`,
-                                "}"
-                            ].join("\n")
+                                "}",
+                            ].join("\n"),
                         }}
                     />
                     <div className={`${className}__container`}>
                         {"self" !== videoType && (
                             <iframe
-                                src={`${onChangeVideoURL(videoType, videoURL)}?autoplay=${overlay ? 0 : autoPlay
-                                    }&loop=${loopVideo()}&mute${"vimeo" == videoType ? "d" : ""
-                                    }=${mute}&rel=${relatedVideos ? "1" : "0"}&controls=${controls ? "1" : "0"
-                                    }`}
+                                src={`${onChangeVideoURL(
+                                    videoType,
+                                    videoURL
+                                )}?autoplay=${
+                                    overlay ? 0 : autoPlay
+                                }&loop=${loopVideo()}&mute${
+                                    "vimeo" == videoType ? "d" : ""
+                                }=${mute}&rel=${
+                                    relatedVideos ? "1" : "0"
+                                }&controls=${controls ? "1" : "0"}`}
                                 frameborder="0"
                                 gesture="media"
                                 allow="encrypted-media"
@@ -1451,7 +1549,7 @@ const deprecatedContent = [
                             className={`${className}__overlay`}
                             style={{
                                 backgroundImage: `url('${overlayImgURL}')`,
-                                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
+                                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
                             }}
                         />
                     )}
@@ -1467,13 +1565,13 @@ const deprecatedContent = [
                                 borderWidth: playBorderWidth + "px",
                                 borderRadius: playBorderRadius + "px",
                                 borderColor: playBorderColor,
-                                padding: playPadding + "px"
+                                padding: playPadding + "px",
                             }}
                         >
                             <i
                                 className={`${className}__play_icon dashicons dashicons-controls-play`}
                                 style={{
-                                    fontSize: playSize + "px"
+                                    fontSize: playSize + "px",
                                 }}
                             />
                         </div>
@@ -1487,7 +1585,7 @@ const deprecatedContent = [
                                 padding: videoDescPadding,
                                 borderRadius: videoDescBorderRadius,
                                 top: descTop + "%",
-                                left: descLeft + "%"
+                                left: descLeft + "%",
                             }}
                         >
                             <p
@@ -1497,8 +1595,10 @@ const deprecatedContent = [
                                     fontFamily: videoDescFamily,
                                     fontWeight: videoDescWeight,
                                     letterSpacing: videoDescLetter + "px",
-                                    textTransform: videoDescUpper ? "uppercase" : "none",
-                                    fontStyle: videoDescStyle
+                                    textTransform: videoDescUpper
+                                        ? "uppercase"
+                                        : "none",
+                                    fontStyle: videoDescStyle,
                                 }}
                             >
                                 <span>{videoDescText}</span>
@@ -1507,17 +1607,17 @@ const deprecatedContent = [
                     )}
                 </div>
             );
-        }
+        },
     },
     {
         attributes: videoBoxAttrs,
-        migrate: attributes => {
+        migrate: (attributes) => {
             let newAttributes = {
-                videoDescFamily: ""
+                videoDescFamily: "",
             };
             return Object.assign(attributes, newAttributes);
         },
-        save: props => {
+        save: (props) => {
             const {
                 videoBoxId,
                 videoType,
@@ -1568,16 +1668,16 @@ const deprecatedContent = [
                 shadowColor,
                 shadowHorizontal,
                 shadowVertical,
-                shadowPosition
+                shadowPosition,
             } = props.attributes;
             const loopVideo = () => {
                 if (videoURL && "youtube" === videoType) {
                     if (videoURL.startsWith("http")) {
                         return loop
                             ? `1&playlist=${videoURL.replace(
-                                "https://www.youtube.com/embed/",
-                                ""
-                            )}`
+                                  "https://www.youtube.com/embed/",
+                                  ""
+                              )}`
                             : "0";
                     } else {
                         return loop ? `1&playlist=${videoURL}` : "0";
@@ -1596,7 +1696,7 @@ const deprecatedContent = [
                         borderWidth: boxBorderWidth + "px",
                         borderRadius: boxBorderRadius + "px",
                         borderColor: boxBorderColor,
-                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                     }}
                 >
                     <style
@@ -1605,17 +1705,23 @@ const deprecatedContent = [
                                 `#${videoBoxId} .${className}__play:hover {`,
                                 `color: ${playHoverColor} !important;`,
                                 `background-color: ${playHoverBackColor} !important;`,
-                                "}"
-                            ].join("\n")
+                                "}",
+                            ].join("\n"),
                         }}
                     />
                     <div className={`${className}__container`}>
                         {"self" !== videoType && (
                             <iframe
-                                src={`${onChangeVideoURL(videoType, videoURL)}?autoplay=${overlay ? 0 : autoPlay
-                                    }&loop=${loopVideo()}&mute${"vimeo" == videoType ? "d" : ""
-                                    }=${mute}&rel=${relatedVideos ? "1" : "0"}&controls=${controls ? "1" : "0"
-                                    }`}
+                                src={`${onChangeVideoURL(
+                                    videoType,
+                                    videoURL
+                                )}?autoplay=${
+                                    overlay ? 0 : autoPlay
+                                }&loop=${loopVideo()}&mute${
+                                    "vimeo" == videoType ? "d" : ""
+                                }=${mute}&rel=${
+                                    relatedVideos ? "1" : "0"
+                                }&controls=${controls ? "1" : "0"}`}
                                 frameborder="0"
                                 gesture="media"
                                 allow="encrypted-media"
@@ -1637,7 +1743,7 @@ const deprecatedContent = [
                             className={`${className}__overlay`}
                             style={{
                                 backgroundImage: `url('${overlayImgURL}')`,
-                                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
+                                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
                             }}
                         />
                     )}
@@ -1653,13 +1759,13 @@ const deprecatedContent = [
                                 borderWidth: playBorderWidth + "px",
                                 borderRadius: playBorderRadius + "px",
                                 borderColor: playBorderColor,
-                                padding: playPadding + "px"
+                                padding: playPadding + "px",
                             }}
                         >
                             <i
                                 className={`${className}__play_icon dashicons dashicons-controls-play`}
                                 style={{
-                                    fontSize: playSize + "px"
+                                    fontSize: playSize + "px",
                                 }}
                             />
                         </div>
@@ -1673,7 +1779,7 @@ const deprecatedContent = [
                                 padding: videoDescPadding,
                                 borderRadius: videoDescBorderRadius,
                                 top: descTop + "%",
-                                left: descLeft + "%"
+                                left: descLeft + "%",
                             }}
                         >
                             <p
@@ -1682,8 +1788,10 @@ const deprecatedContent = [
                                     fontSize: videoDescSize + "px",
                                     fontWeight: videoDescWeight,
                                     letterSpacing: videoDescLetter + "px",
-                                    textTransform: videoDescUpper ? "uppercase" : "none",
-                                    fontStyle: videoDescStyle
+                                    textTransform: videoDescUpper
+                                        ? "uppercase"
+                                        : "none",
+                                    fontStyle: videoDescStyle,
                                 }}
                             >
                                 <span>{videoDescText}</span>
@@ -1692,11 +1800,11 @@ const deprecatedContent = [
                     )}
                 </div>
             );
-        }
+        },
     },
     {
         attributes: videoBoxAttrs,
-        save: props => {
+        save: (props) => {
             const {
                 videoBoxId,
                 videoType,
@@ -1746,16 +1854,16 @@ const deprecatedContent = [
                 shadowColor,
                 shadowHorizontal,
                 shadowVertical,
-                shadowPosition
+                shadowPosition,
             } = props.attributes;
             const loopVideo = () => {
                 if ("youtube" === videoType) {
                     if (videoURL && videoURL.startsWith("http")) {
                         return loop
                             ? `1&playlist=${videoURL.replace(
-                                "https://www.youtube.com/embed/",
-                                ""
-                            )}`
+                                  "https://www.youtube.com/embed/",
+                                  ""
+                              )}`
                             : "0";
                     } else {
                         return loop ? `1&playlist=${videoURL}` : "0";
@@ -1774,7 +1882,7 @@ const deprecatedContent = [
                         borderWidth: boxBorderWidth + "px",
                         borderRadius: boxBorderRadius + "px",
                         borderColor: boxBorderColor,
-                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`
+                        boxShadow: `${shadowHorizontal}px ${shadowVertical}px ${shadowBlur}px ${shadowColor} ${shadowPosition}`,
                     }}
                 >
                     <style
@@ -1783,16 +1891,21 @@ const deprecatedContent = [
                                 `#${videoBoxId} .${className}__play:hover {`,
                                 `color: ${playHoverColor} !important;`,
                                 `background-color: ${playHoverBackColor} !important;`,
-                                "}"
-                            ].join("\n")
+                                "}",
+                            ].join("\n"),
                         }}
                     />
                     <div className={`${className}__container`}>
                         {"self" !== videoType && (
                             <iframe
-                                src={`${onChangeVideoURL(videoType, videoURL)}?autoplay=${overlay ? 0 : autoPlay
-                                    }&loop=${loopVideo()}&mute${"vimeo" == videoType ? "d" : ""
-                                    }=${mute}&controls=${controls ? "1" : "0"}`}
+                                src={`${onChangeVideoURL(
+                                    videoType,
+                                    videoURL
+                                )}?autoplay=${
+                                    overlay ? 0 : autoPlay
+                                }&loop=${loopVideo()}&mute${
+                                    "vimeo" == videoType ? "d" : ""
+                                }=${mute}&controls=${controls ? "1" : "0"}`}
                                 frameborder="0"
                                 gesture="media"
                                 allow="encrypted-media"
@@ -1814,7 +1927,7 @@ const deprecatedContent = [
                             className={`${className}__overlay`}
                             style={{
                                 backgroundImage: `url('${overlayImgURL}')`,
-                                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`
+                                filter: `brightness( ${bright}% ) contrast( ${contrast}% ) saturate( ${saturation}% ) blur( ${blur}px ) hue-rotate( ${hue}deg )`,
                             }}
                         />
                     )}
@@ -1830,13 +1943,13 @@ const deprecatedContent = [
                                 borderWidth: playBorderWidth + "px",
                                 borderRadius: playBorderRadius + "px",
                                 borderColor: playBorderColor,
-                                padding: playPadding + "px"
+                                padding: playPadding + "px",
                             }}
                         >
                             <i
                                 className={`${className}__play_icon dashicons dashicons-controls-play`}
                                 style={{
-                                    fontSize: playSize + "px"
+                                    fontSize: playSize + "px",
                                 }}
                             />
                         </div>
@@ -1850,7 +1963,7 @@ const deprecatedContent = [
                                 padding: videoDescPadding,
                                 borderRadius: videoDescBorderRadius,
                                 top: descTop + "%",
-                                left: descLeft + "%"
+                                left: descLeft + "%",
                             }}
                         >
                             <p
@@ -1859,8 +1972,10 @@ const deprecatedContent = [
                                     fontSize: videoDescSize + "px",
                                     fontWeight: videoDescWeight,
                                     letterSpacing: videoDescLetter + "px",
-                                    textTransform: videoDescUpper ? "uppercase" : "none",
-                                    fontStyle: videoDescStyle
+                                    textTransform: videoDescUpper
+                                        ? "uppercase"
+                                        : "none",
+                                    fontStyle: videoDescStyle,
                                 }}
                             >
                                 <span>{videoDescText}</span>
@@ -1869,8 +1984,8 @@ const deprecatedContent = [
                     )}
                 </div>
             );
-        }
-    }
+        },
+    },
 ];
 
 export default deprecatedContent;

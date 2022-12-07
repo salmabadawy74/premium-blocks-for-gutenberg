@@ -1,4 +1,4 @@
-import { attributes } from "./block.json";
+import { attributes } from "../../../blocks-config/button/block.json";
 const { __ } = wp.i18n;
 
 export const buttonsPresets = [
