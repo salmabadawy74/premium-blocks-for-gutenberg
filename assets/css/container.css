@@ -1806,7 +1806,8 @@
 .wp-block-premium-container {
   display: flex;
   position: relative;
-  z-index: 2; }
+  z-index: 2;
+  width: 100%; }
   .wp-block-premium-container .premium-row__block_overlay {
     top: 0;
     bottom: 0;
