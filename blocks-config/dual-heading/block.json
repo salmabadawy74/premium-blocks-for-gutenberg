@@ -97,7 +97,7 @@
                     "secondClip": false,
                     "secondAnim": false,
                     "secondStroke": false,
-                    "secondColor": "var(--pbg-global-color1,#793DC4)",
+                    "secondColor": "var(--pbg-global-color1,#0085BA)",
                     "secondBackground": "",
                     "secondOpacity": "",
                     "secondClipColor": "#6ec1e4",

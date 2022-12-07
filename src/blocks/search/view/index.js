@@ -6865,7 +6865,7 @@ const attributes = {
   },
   "backgroundColor": {
     "type": "string",
-    "default": "#793DC3"
+    "default": "#0085BA"
   },
   "text": {
     "type": "string",
@@ -6897,7 +6897,7 @@ const deprecated = {
 
   migrate: attributes => {
     let newAttributes = {
-      backgroundColor: attributes.backgroundColor || 'var(--pbg-global-color1,#793dc3)'
+      backgroundColor: attributes.backgroundColor || 'var(--pbg-global-color1,#0085BA)'
     };
     return Object.assign(attributes, newAttributes);
   },
@@ -18170,7 +18170,7 @@ const attributes = {
     "type": "object",
     "default": {
       "backgroundType": "",
-      "backgroundColor": "#793dc3",
+      "backgroundColor": "#0085BA",
       "backgroundImageID": "",
       "backgroundImageURL": "",
       "backgroundPosition": "center center",
@@ -18237,7 +18237,7 @@ const deprecated = {
       switchRadiusUnit: attributes.switchRadiusUnit || 'px',
       controllerOneBackground: (attributes === null || attributes === void 0 ? void 0 : attributes.controllerOneBackground) || {
         "backgroundType": "",
-        "backgroundColor": "var(--pbg-global-color1,#793dc3)",
+        "backgroundColor": "var(--pbg-global-color1,#0085BA)",
         "backgroundImageID": "",
         "backgroundImageURL": "",
         "backgroundPosition": "center center",
@@ -18296,7 +18296,7 @@ const deprecated = {
       styles[`.${blockId} .premium-content-switcher-toggle-switch-slider:before `] = {
         "border-radius": `${containerRadius}${containerRadiusUnit} !important`,
         "box-shadow": ` ${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position} !important`,
-        "background-color": `${controllerOneBackground.backgroundType == "solid" ? controllerOneBackground.backgroundColor : "#793dc3"}`,
+        "background-color": `${controllerOneBackground.backgroundType == "solid" ? controllerOneBackground.backgroundColor : "#0085BA"}`,
         "background-image": `${(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.gradientValue)(controllerOneBackground)}`,
         "background-repeat": `${controllerOneBackground.backgroundRepeat}`,
         "background-position": `${controllerOneBackground.backgroundPosition}`,
@@ -18592,7 +18592,7 @@ function Edit(props) {
     styles[`.${blockId} .premium-content-switcher-toggle-switch-slider:before `] = {
       "border-radius": `${containerRadius || 50}${containerRadiusUnit} !important`,
       "box-shadow": ` ${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position} !important`,
-      "background-color": `${controllerOneBackground.backgroundType == "solid" ? controllerOneBackground.backgroundColor : "var(--pbg-global-color1,#793dc3)"}`,
+      "background-color": `${controllerOneBackground.backgroundType == "solid" ? controllerOneBackground.backgroundColor : "var(--pbg-global-color1,#0085BA)"}`,
       "background-image": `${(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_5__.gradientValue)(controllerOneBackground)}`,
       "background-repeat": `${controllerOneBackground.backgroundRepeat}`,
       "background-position": `${controllerOneBackground.backgroundPosition}`,
@@ -19140,7 +19140,7 @@ function save(props) {
     styles[`.${blockId} .premium-content-switcher-toggle-switch-slider:before `] = {
       "border-radius": `${containerRadius}${containerRadiusUnit} !important`,
       "box-shadow": ` ${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position} !important`,
-      "background-color": `${controllerOneBackground.backgroundType == "solid" ? controllerOneBackground.backgroundColor : "var(--pbg-global-color1,#793dc3)"}`,
+      "background-color": `${controllerOneBackground.backgroundType == "solid" ? controllerOneBackground.backgroundColor : "var(--pbg-global-color1,#0085BA)"}`,
       "background-image": `${(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.gradientValue)(controllerOneBackground)}`,
       "background-repeat": `${controllerOneBackground.backgroundRepeat}`,
       "background-position": `${controllerOneBackground.backgroundPosition}`,
@@ -23244,7 +23244,7 @@ const v9Attributes = {
       "secondClip": false,
       "secondAnim": false,
       "secondStroke": false,
-      "secondColor": "#793DC4",
+      "secondColor": "#0085BA",
       "secondBackground": "",
       "secondOpacity": "",
       "secondClipColor": "#6ec1e4",
@@ -23583,7 +23583,7 @@ const deprecatedContent = [{
         "secondClip": false,
         "secondAnim": false,
         "secondStroke": false,
-        "secondColor": "var(--pbg-global-color1,#793DC4)",
+        "secondColor": "var(--pbg-global-color1,#0085BA)",
         "secondBackground": "",
         "secondOpacity": "",
         "secondClipColor": "#6ec1e4",
@@ -26235,7 +26235,7 @@ const v4Attributes = {
   "fancyStyles": {
     "type": "array",
     "default": [{
-      "fancyTextColor": "#793dc3",
+      "fancyTextColor": "#0085BA",
       "fancyTextBGColor": "",
       "fancyTextBGOpacity": 1,
       "cursorColor": ""
@@ -26327,7 +26327,7 @@ const deprecated = [{
   migrate: attributes => {
     let newAttributes = {
       secondColor: (attributes === null || attributes === void 0 ? void 0 : attributes.fancyStyles) || [{
-        "fancyTextColor": "var(--pbg-global-color1,#793dc3)",
+        "fancyTextColor": "var(--pbg-global-color1,#0085BA)",
         "fancyTextBGColor": "",
         "fancyTextBGOpacity": 1,
         "cursorColor": ""
@@ -29109,8 +29109,8 @@ const attributes = {
       "blurColor": "#000",
       "BGColor": "#DDD0EF",
       "lineColor": "",
-      "triangleColor": "#793DC4",
-      "stripeColor": "#793DC4",
+      "triangleColor": "#0085BA",
+      "stripeColor": "#0085BA",
       "blurShadow": "120",
       "animateDelay": "2",
       "animateduration": "1"
@@ -29577,8 +29577,8 @@ const deprecated = {
         "blurColor": "#000",
         "BGColor": "#DDD0EF",
         "lineColor": "var(--pbg-global-color1)",
-        "triangleColor": "var(--pbg-global-color1,#793DC4)",
-        "stripeColor": "var(--pbg-global-color1,#793DC4)",
+        "triangleColor": "var(--pbg-global-color1,#0085BA)",
+        "stripeColor": "var(--pbg-global-color1,#0085BA)",
         "blurShadow": "120",
         "animateDelay": "2",
         "animateduration": "1"
@@ -29672,35 +29672,35 @@ const deprecated = {
         "border-style": `${titleBorder.borderType == 'none' ? 'none' : `${titleBorder.borderType} !important`}`,
         "border-left-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
         "border-left-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
-        "border-left-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
+        "border-left-color": titleBorder.borderType == 'none' ? '#0085BA' : titleBorder.borderColor
       };
       styles[`.${blockId} .premium-title .style2`] = {
         'border-color': `${titleBorder.borderColor}!important`,
         'border-style': `${titleBorder.borderType}`,
         "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
         "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
-        "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
+        "border-bottom-color": titleBorder.borderType == 'none' ? '#0085BA' : titleBorder.borderColor
       };
       styles[`.${blockId} .premium-title .style4`] = {
         'border-color': `${titleBorder.borderColor}!important`,
         'border-style': `${titleBorder.borderType}`,
         "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
         "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
-        "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
+        "border-bottom-color": titleBorder.borderType == 'none' ? '#0085BA' : titleBorder.borderColor
       };
       styles[`.${blockId} .premium-title .style5`] = {
         'border-color': `${titleBorder.borderColor}!important`,
         'border-style': `${titleBorder.borderType}`,
         "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
         "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
-        "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
+        "border-bottom-color": titleBorder.borderType == 'none' ? '#0085BA' : titleBorder.borderColor
       };
       styles[`.${blockId} .premium-title .style6`] = {
         'border-color': `${titleBorder.borderColor}!important`,
         'border-style': `${titleBorder.borderType}`,
         "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
         "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
-        "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
+        "border-bottom-color": titleBorder.borderType == 'none' ? '#0085BA' : titleBorder.borderColor
       };
       styles[`.${blockId} .premium-title-style2__wrap`] = {
         'background-color': `${titleStyles[0].BGColor}!important`
@@ -29976,8 +29976,8 @@ const attributes = {
       "blurColor": "#000",
       "BGColor": "#DDD0EF",
       "lineColor": "var(--pbg-global-color1)",
-      "triangleColor": "var(--pbg-global-color1,#793DC4)",
-      "stripeColor": "var(--pbg-global-color1,#793DC4)",
+      "triangleColor": "var(--pbg-global-color1,#0085BA)",
+      "stripeColor": "var(--pbg-global-color1,#0085BA)",
       "blurShadow": "120",
       "animateDelay": "2",
       "animateduration": "1"
@@ -30443,9 +30443,9 @@ const deprecated = {
         "shinyColor": "#fff",
         "blurColor": "#000",
         "BGColor": "#DDD0EF",
-        "lineColor": "var(--pbg-global-color1,#793DC4)",
-        "triangleColor": "var(--pbg-global-color1,#793DC4)",
-        "stripeColor": "var(--pbg-global-color1,#793DC4)",
+        "lineColor": "var(--pbg-global-color1,#0085BA)",
+        "triangleColor": "var(--pbg-global-color1,#0085BA)",
+        "stripeColor": "var(--pbg-global-color1,#0085BA)",
         "blurShadow": "120",
         "animateDelay": "2",
         "animateduration": "1"
@@ -30539,35 +30539,35 @@ const deprecated = {
         "border-style": `${titleBorder.borderType == "none" ? "none" : `${titleBorder.borderType} !important`}`,
         "border-left-style": `${titleBorder.borderType == "none" ? "solid" : titleBorder.borderType}`,
         "border-left-width": `${titleBorder.borderType == "none" ? "3px" : ""}`,
-        "border-left-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#793DC4)" : titleBorder.borderColor
+        "border-left-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#0085BA)" : titleBorder.borderColor
       };
       styles[`.${blockId} .premium-title .style2`] = {
         "border-color": `${titleBorder.borderColor}!important`,
         "border-style": `${titleBorder.borderType}`,
         "border-bottom-style": `${titleBorder.borderType == "none" ? "solid" : titleBorder.borderType}`,
         "border-bottom-width": `${titleBorder.borderType == "none" ? "3px" : ""}`,
-        "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#793DC4)" : titleBorder.borderColor
+        "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#0085BA)" : titleBorder.borderColor
       };
       styles[`.${blockId} .premium-title .style4`] = {
         "border-color": `${titleBorder.borderColor}!important`,
         "border-style": `${titleBorder.borderType}`,
         "border-bottom-style": `${titleBorder.borderType == "none" ? "solid" : titleBorder.borderType}`,
         "border-bottom-width": `${titleBorder.borderType == "none" ? "3px" : ""}`,
-        "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#793DC4)" : titleBorder.borderColor
+        "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#0085BA)" : titleBorder.borderColor
       };
       styles[`.${blockId} .premium-title .style5`] = {
         "border-color": `${titleBorder.borderColor}!important`,
         "border-style": `${titleBorder.borderType}`,
         "border-bottom-style": `${titleBorder.borderType == "none" ? "solid" : titleBorder.borderType}`,
         "border-bottom-width": `${titleBorder.borderType == "none" ? "3px" : ""}`,
-        "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#793DC4)" : titleBorder.borderColor
+        "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#0085BA)" : titleBorder.borderColor
       };
       styles[`.${blockId} .premium-title .style6`] = {
         "border-color": `${titleBorder.borderColor}!important`,
         "border-style": `${titleBorder.borderType}`,
         "border-bottom-style": `${titleBorder.borderType == "none" ? "solid" : titleBorder.borderType}`,
         "border-bottom-width": `${titleBorder.borderType == "none" ? "3px" : ""}`,
-        "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#793DC4)" : titleBorder.borderColor
+        "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#0085BA)" : titleBorder.borderColor
       };
       styles[`.${blockId} .premium-title-style2__wrap`] = {
         "background-color": `${titleStyles[0].BGColor}!important`
@@ -31098,7 +31098,7 @@ function Edit(props) {
       "border-left": (titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi17 = titleBorder.borderWidth) === null || _titleBorder$borderWi17 === void 0 ? void 0 : (_titleBorder$borderWi18 = _titleBorder$borderWi17[props.deviceType]) === null || _titleBorder$borderWi18 === void 0 ? void 0 : _titleBorder$borderWi18.left) >= "1" ? `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi19 = titleBorder.borderWidth) === null || _titleBorder$borderWi19 === void 0 ? void 0 : (_titleBorder$borderWi20 = _titleBorder$borderWi19[props.deviceType]) === null || _titleBorder$borderWi20 === void 0 ? void 0 : _titleBorder$borderWi20.left}px ${titleBorder.borderType} ${titleBorder.borderColor}!important` : "",
       "border-left-style": `${titleBorder.borderType == "none" ? "solid" : titleBorder.borderType}`,
       "border-left-width": `${titleBorder.borderType == "none" ? "3px" : ""}`,
-      "border-left-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#793DC4)" : titleBorder.borderColor
+      "border-left-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#0085BA)" : titleBorder.borderColor
     };
     styles[`.${blockId} .premium-title .style2`] = {
       "border-color": `${titleBorder.borderColor}!important`,
@@ -31114,7 +31114,7 @@ function Edit(props) {
       "border-bottom": (titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi29 = titleBorder.borderWidth) === null || _titleBorder$borderWi29 === void 0 ? void 0 : (_titleBorder$borderWi30 = _titleBorder$borderWi29[props.deviceType]) === null || _titleBorder$borderWi30 === void 0 ? void 0 : _titleBorder$borderWi30.bottom) >= "0" ? `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi31 = titleBorder.borderWidth) === null || _titleBorder$borderWi31 === void 0 ? void 0 : (_titleBorder$borderWi32 = _titleBorder$borderWi31[props.deviceType]) === null || _titleBorder$borderWi32 === void 0 ? void 0 : _titleBorder$borderWi32.bottom}px ${titleBorder.borderType} ${titleBorder.borderColor}!important` : "",
       "border-bottom-style": `${titleBorder.borderType == "none" ? "solid" : titleBorder.borderType}`,
       "border-bottom-width": `${titleBorder.borderType == "none" ? "3px" : ""}`,
-      "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#793DC4)" : titleBorder.borderColor
+      "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#0085BA)" : titleBorder.borderColor
     };
     styles[`.${blockId} .premium-title .style4`] = {
       "border-color": `${titleBorder.borderColor}!important`,
@@ -31130,7 +31130,7 @@ function Edit(props) {
       "border-bottom": (titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi41 = titleBorder.borderWidth) === null || _titleBorder$borderWi41 === void 0 ? void 0 : (_titleBorder$borderWi42 = _titleBorder$borderWi41[props.deviceType]) === null || _titleBorder$borderWi42 === void 0 ? void 0 : _titleBorder$borderWi42.bottom) >= "0" ? `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi43 = titleBorder.borderWidth) === null || _titleBorder$borderWi43 === void 0 ? void 0 : (_titleBorder$borderWi44 = _titleBorder$borderWi43[props.deviceType]) === null || _titleBorder$borderWi44 === void 0 ? void 0 : _titleBorder$borderWi44.bottom}px ${titleBorder.borderType} ${titleBorder.borderColor}!important` : "",
       "border-bottom-style": `${titleBorder.borderType == "none" ? "solid" : titleBorder.borderType}`,
       "border-bottom-width": `${titleBorder.borderType == "none" ? "3px" : ""}`,
-      "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#793DC4)" : titleBorder.borderColor
+      "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#0085BA)" : titleBorder.borderColor
     };
     styles[`.${blockId} .premium-title .style5`] = {
       "border-color": `${titleBorder.borderColor}!important`,
@@ -31146,7 +31146,7 @@ function Edit(props) {
       "border-bottom": (titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi53 = titleBorder.borderWidth) === null || _titleBorder$borderWi53 === void 0 ? void 0 : (_titleBorder$borderWi54 = _titleBorder$borderWi53[props.deviceType]) === null || _titleBorder$borderWi54 === void 0 ? void 0 : _titleBorder$borderWi54.bottom) >= "0" ? `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi55 = titleBorder.borderWidth) === null || _titleBorder$borderWi55 === void 0 ? void 0 : (_titleBorder$borderWi56 = _titleBorder$borderWi55[props.deviceType]) === null || _titleBorder$borderWi56 === void 0 ? void 0 : _titleBorder$borderWi56.bottom}px ${titleBorder.borderType} ${titleBorder.borderColor}!important` : "",
       "border-bottom-style": `${titleBorder.borderType == "none" ? "solid" : titleBorder.borderType}`,
       "border-bottom-width": `${titleBorder.borderType == "none" ? "3px" : ""}`,
-      "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#793DC4)" : titleBorder.borderColor
+      "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#0085BA)" : titleBorder.borderColor
     };
     styles[`.${blockId} .premium-title .style6`] = {
       "border-color": `${titleBorder.borderColor}!important`,
@@ -31162,7 +31162,7 @@ function Edit(props) {
       "border-bottom": (titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi65 = titleBorder.borderWidth) === null || _titleBorder$borderWi65 === void 0 ? void 0 : (_titleBorder$borderWi66 = _titleBorder$borderWi65[props.deviceType]) === null || _titleBorder$borderWi66 === void 0 ? void 0 : _titleBorder$borderWi66.bottom) >= "0" ? `${titleBorder === null || titleBorder === void 0 ? void 0 : (_titleBorder$borderWi67 = titleBorder.borderWidth) === null || _titleBorder$borderWi67 === void 0 ? void 0 : (_titleBorder$borderWi68 = _titleBorder$borderWi67[props.deviceType]) === null || _titleBorder$borderWi68 === void 0 ? void 0 : _titleBorder$borderWi68.bottom}px ${titleBorder.borderType} ${titleBorder.borderColor}!important` : "",
       "border-bottom-style": `${titleBorder.borderType == "none" ? "solid" : titleBorder.borderType}`,
       "border-bottom-width": `${titleBorder.borderType == "none" ? "3px" : ""}`,
-      "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#793DC4)" : titleBorder.borderColor
+      "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#0085BA)" : titleBorder.borderColor
     };
     styles[`.${blockId} .premium-title-style2__wrap`] = {
       "background-color": `${titleStyles[0].BGColor}!important`
@@ -32173,35 +32173,35 @@ function save(props) {
       "border-style": `${titleBorder.borderType == "none" ? "none" : `${titleBorder.borderType} !important`}`,
       "border-left-style": `${titleBorder.borderType == "none" ? "solid" : titleBorder.borderType}`,
       "border-left-width": `${titleBorder.borderType == "none" ? "3px" : ""}`,
-      "border-left-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#793DC4)" : titleBorder.borderColor
+      "border-left-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#0085BA)" : titleBorder.borderColor
     };
     styles[`.${blockId} .premium-title .style2`] = {
       "border-color": `${titleBorder.borderColor}!important`,
       "border-style": `${titleBorder.borderType}`,
       "border-bottom-style": `${titleBorder.borderType == "none" ? "solid" : titleBorder.borderType}`,
       "border-bottom-width": `${titleBorder.borderType == "none" ? "3px" : ""}`,
-      "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#793DC4)" : titleBorder.borderColor
+      "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#0085BA)" : titleBorder.borderColor
     };
     styles[`.${blockId} .premium-title .style4`] = {
       "border-color": `${titleBorder.borderColor}!important`,
       "border-style": `${titleBorder.borderType}`,
       "border-bottom-style": `${titleBorder.borderType == "none" ? "solid" : titleBorder.borderType}`,
       "border-bottom-width": `${titleBorder.borderType == "none" ? "3px" : ""}`,
-      "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#793DC4)" : titleBorder.borderColor
+      "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#0085BA)" : titleBorder.borderColor
     };
     styles[`.${blockId} .premium-title .style5`] = {
       "border-color": `${titleBorder.borderColor}!important`,
       "border-style": `${titleBorder.borderType}`,
       "border-bottom-style": `${titleBorder.borderType == "none" ? "solid" : titleBorder.borderType}`,
       "border-bottom-width": `${titleBorder.borderType == "none" ? "3px" : ""}`,
-      "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#793DC4)" : titleBorder.borderColor
+      "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#0085BA)" : titleBorder.borderColor
     };
     styles[`.${blockId} .premium-title .style6`] = {
       "border-color": `${titleBorder.borderColor}!important`,
       "border-style": `${titleBorder.borderType}`,
       "border-bottom-style": `${titleBorder.borderType == "none" ? "solid" : titleBorder.borderType}`,
       "border-bottom-width": `${titleBorder.borderType == "none" ? "3px" : ""}`,
-      "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#793DC4)" : titleBorder.borderColor
+      "border-bottom-color": titleBorder.borderType == "none" ? "var(--pbg-global-color1,#0085BA)" : titleBorder.borderColor
     };
     styles[`.${blockId} .premium-title-style2__wrap`] = {
       "background-color": `${titleStyles[0].BGColor}!important`
@@ -82865,7 +82865,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/badge","title":"Badge","category":"premium-blocks","description":"Badge Description.","keywords":["badge"],"textdomain":"default","parent":["premium/pricing-table"],"attributes":{"blockId":{"type":"string"},"hideDesktop":{"type":"boolean","default":false},"hideTablet":{"type":"boolean","default":false},"hideMobile":{"type":"boolean","default":false},"typography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"color":{"type":"string","default":"#fff"},"backgroundColor":{"type":"string","default":"var(--pbg-global-color1,#793dc3)"},"text":{"type":"string","default":"Popular"},"textWidth":{"type":"number"},"badgeSize":{"type":"number"},"position":{"type":"string","default":"right"},"vOffset":{"type":"number"},"hOffset":{"type":"number"}}}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/badge","title":"Badge","category":"premium-blocks","description":"Badge Description.","keywords":["badge"],"textdomain":"default","parent":["premium/pricing-table"],"attributes":{"blockId":{"type":"string"},"hideDesktop":{"type":"boolean","default":false},"hideTablet":{"type":"boolean","default":false},"hideMobile":{"type":"boolean","default":false},"typography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"color":{"type":"string","default":"#fff"},"backgroundColor":{"type":"string","default":"var(--pbg-global-color1,#0085BA)"},"text":{"type":"string","default":"Popular"},"textWidth":{"type":"number"},"badgeSize":{"type":"number"},"position":{"type":"string","default":"right"},"vOffset":{"type":"number"},"hOffset":{"type":"number"}}}');
 
 /***/ }),
 

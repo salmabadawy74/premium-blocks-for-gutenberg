@@ -34,13 +34,13 @@
     z-index: 1;
     top: 40px;
     left: 12px;
-    color: var(--pbg-global-color1, #793dc4); }
+    color: var(--pbg-global-color1, #0085BA); }
   .premium-testimonial__container .premium-testimonial__lower {
     position: absolute;
     z-index: 1;
     right: 12px;
     bottom: 3px;
-    color: var(--pbg-global-color1, #793dc4); }
+    color: var(--pbg-global-color1, #0085BA); }
 
 .premium-testimonial__content {
   padding: 20px;

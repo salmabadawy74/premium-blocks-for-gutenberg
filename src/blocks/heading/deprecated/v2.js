@@ -92,8 +92,8 @@ const attributes = {
                 "blurColor": "#000",
                 "BGColor": "#DDD0EF",
                 "lineColor": "",
-                "triangleColor": "#793DC4",
-                "stripeColor": "#793DC4",
+                "triangleColor": "#0085BA",
+                "stripeColor": "#0085BA",
                 "blurShadow": "120",
                 "animateDelay": "2",
                 "animateduration": "1"
@@ -566,8 +566,8 @@ const deprecated = {
                 "blurColor": "#000",
                 "BGColor": "#DDD0EF",
                 "lineColor": "var(--pbg-global-color1)",
-                "triangleColor": "var(--pbg-global-color1,#793DC4)",
-                "stripeColor": "var(--pbg-global-color1,#793DC4)",
+                "triangleColor": "var(--pbg-global-color1,#0085BA)",
+                "stripeColor": "var(--pbg-global-color1,#0085BA)",
                 "blurShadow": "120",
                 "animateDelay": "2",
                 "animateduration": "1"
@@ -662,7 +662,7 @@ const deprecated = {
                 "border-style": `${titleBorder.borderType == 'none' ? 'none' : `${titleBorder.borderType} !important`}`,
                 "border-left-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
                 "border-left-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
-                "border-left-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
+                "border-left-color": titleBorder.borderType == 'none' ? '#0085BA' : titleBorder.borderColor
             };
 
             styles[`.${blockId} .premium-title .style2`] = {
@@ -670,7 +670,7 @@ const deprecated = {
                 'border-style': `${titleBorder.borderType}`,
                 "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
                 "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
-                "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
+                "border-bottom-color": titleBorder.borderType == 'none' ? '#0085BA' : titleBorder.borderColor
             };
 
             styles[`.${blockId} .premium-title .style4`] = {
@@ -678,7 +678,7 @@ const deprecated = {
                 'border-style': `${titleBorder.borderType}`,
                 "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
                 "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
-                "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
+                "border-bottom-color": titleBorder.borderType == 'none' ? '#0085BA' : titleBorder.borderColor
             };
 
             styles[`.${blockId} .premium-title .style5`] = {
@@ -686,7 +686,7 @@ const deprecated = {
                 'border-style': `${titleBorder.borderType}`,
                 "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
                 "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
-                "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
+                "border-bottom-color": titleBorder.borderType == 'none' ? '#0085BA' : titleBorder.borderColor
             };
 
             styles[`.${blockId} .premium-title .style6`] = {
@@ -694,7 +694,7 @@ const deprecated = {
                 'border-style': `${titleBorder.borderType}`,
                 "border-bottom-style": `${titleBorder.borderType == 'none' ? 'solid' : titleBorder.borderType}`,
                 "border-bottom-width": `${titleBorder.borderType == 'none' ? '3px' : ""}`,
-                "border-bottom-color": titleBorder.borderType == 'none' ? '#793DC4' : titleBorder.borderColor
+                "border-bottom-color": titleBorder.borderType == 'none' ? '#0085BA' : titleBorder.borderColor
             };
 
             styles[`.${blockId} .premium-title-style2__wrap`] = {

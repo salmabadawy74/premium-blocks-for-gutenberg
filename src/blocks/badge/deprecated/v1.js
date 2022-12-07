@@ -52,7 +52,7 @@ const attributes = {
     },
     "backgroundColor": {
         "type": "string",
-        "default": "#793DC3"
+        "default": "#0085BA"
     },
     "text": {
         "type": "string",
@@ -83,7 +83,7 @@ const deprecated = {
     },
     migrate: (attributes) => {
         let newAttributes = {
-            backgroundColor: attributes.backgroundColor || 'var(--pbg-global-color1,#793dc3)',
+            backgroundColor: attributes.backgroundColor || 'var(--pbg-global-color1,#0085BA)',
         }
         return Object.assign(attributes, newAttributes)
     },
