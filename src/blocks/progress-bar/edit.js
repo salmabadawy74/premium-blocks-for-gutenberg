@@ -15,8 +15,10 @@ import {
     PremiumBackgroundControl,
     ResponsiveSingleRangeControl,
     PremiumTypo,
-    ResponsiveRangeControl
+    ResponsiveRangeControl,
+    VariationPicker
 } from "@pbg/components";
+import { Variations } from './variations'
 const { __ } = wp.i18n;
 const { PanelBody, TextControl, ToggleControl, SelectControl } = wp.components;
 const { InspectorControls, RichText, useBlockProps, InnerBlocks } = wp.blockEditor;
@@ -31,6 +33,7 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
     const circle_half_right = useRef(null);
     const circle_pie = useRef(null);
     const circle_half = useRef(null);
+    const TEMPLATE = Variations[0].innerBlocks
 
     useEffect(() => {
         setAttributes({
@@ -173,7 +176,9 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
         dotSize,
         fillPercent,
         numberOfTotalFill,
-        numberOfCircles
+        numberOfCircles,
+        variation,
+        showVariation
     } = attributes;
     console.log(numberOfCircles)
     const STYLE = [{
@@ -311,6 +316,14 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
             }
         </div>
     })
+
+    const onSelectVariations = (v) => {
+        console.log(v)
+        setAttributes({
+            variation: v,
+            showVariation: false
+        });
+    }
 
     return (
         <Fragment>
@@ -798,6 +811,16 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                 data-speed={`${speeds}`}
                 data-type={`${progressType}`}
             >
+                {showVariation && <VariationPicker
+                    setAttributes={setAttributes}
+                    variations={Variations}
+                    onSelect={onSelectVariations}
+                />
+                }
+                {variation != {} && <InnerBlocks
+                    template={variation.innerBlocks}
+                    templateLock={false}
+                />}
                 <style
                     dangerouslySetInnerHTML={{
                         __html: loadStyles(),
@@ -805,7 +828,7 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                 />
                 <div ref={contentRef}>
                     {(progressType == 'line' || progressType == 'dots') &&
-                        < div className="premium-progress-bar-labels-wrap" >
+                        < div className="premium-progress-bar-labels-wrap">
                             {label &&
                                 <p
                                     className="premium-progress-bar-left-label"

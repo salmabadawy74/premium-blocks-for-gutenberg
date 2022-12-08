@@ -10,6 +10,7 @@ import PBG_Block_Icons from '../../../assets/icons/block-icons'
 import json from './block.json';
 import edit from './edit';
 import save from './save';
+import variations from './variations';
 
 const { name } = json;
 
@@ -18,5 +19,6 @@ registerBlockType(name, {
     icon: PBG_Block_Icons.progressBar,
     example: {},
     edit,
-    save
+    save,
+    variations
 });

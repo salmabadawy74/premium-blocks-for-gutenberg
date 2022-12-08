@@ -581,6 +581,14 @@
         },
         "fillPercent": {
             "type": "number"
+        },
+        "variation": {
+            "type": "object",
+            "default": {}
+        },
+        "showVariation": {
+            "type": "boolean",
+            "default": true
         }
     }
 }

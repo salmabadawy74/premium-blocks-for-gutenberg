@@ -2393,6 +2393,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Shape": () => (/* reexport safe */ _premium_shape__WEBPACK_IMPORTED_MODULE_21__["default"]),
 /* harmony export */   "Social": () => (/* reexport safe */ _social_media__WEBPACK_IMPORTED_MODULE_22__["default"]),
 /* harmony export */   "SpacingComponent": () => (/* reexport safe */ _premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_12__["default"]),
+/* harmony export */   "VariationPicker": () => (/* reexport safe */ _variations__WEBPACK_IMPORTED_MODULE_28__["default"]),
 /* harmony export */   "WebfontLoader": () => (/* reexport safe */ _typography_fontLoader__WEBPACK_IMPORTED_MODULE_23__["default"]),
 /* harmony export */   "alignIcons": () => (/* reexport safe */ _align__WEBPACK_IMPORTED_MODULE_7__["default"]),
 /* harmony export */   "iconsList": () => (/* reexport safe */ _premium_icons_list__WEBPACK_IMPORTED_MODULE_24__["default"]),
@@ -2426,6 +2427,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_icons_renderIcon__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../../assets/icons/renderIcon */ "./assets/icons/renderIcon.js");
 /* harmony import */ var _testimonials_lower_quote__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./testimonials/lower-quote */ "./src/components/testimonials/lower-quote.js");
 /* harmony import */ var _testimonials_upper_quote__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./testimonials/upper-quote */ "./src/components/testimonials/upper-quote.js");
+/* harmony import */ var _variations__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./variations */ "./src/components/variations.js");
+
 
 
 
@@ -9759,13 +9762,13 @@ const Social = {
     viewBox: "0 0 56.7 56.7",
     "enable-background": "new 0 0 56.7 56.7"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("g", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-    d: "M28.2,16.7c-7,0-12.8,5.7-12.8,12.8s5.7,12.8,12.8,12.8S41,36.5,41,29.5S35.2,16.7,28.2,16.7z M28.2,37.7\r c-4.5,0-8.2-3.7-8.2-8.2s3.7-8.2,8.2-8.2s8.2,3.7,8.2,8.2S32.7,37.7,28.2,37.7z"
+    d: "M28.2,16.7c-7,0-12.8,5.7-12.8,12.8s5.7,12.8,12.8,12.8S41,36.5,41,29.5S35.2,16.7,28.2,16.7z M28.2,37.7 c-4.5,0-8.2-3.7-8.2-8.2s3.7-8.2,8.2-8.2s8.2,3.7,8.2,8.2S32.7,37.7,28.2,37.7z"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("circle", {
     cx: "41.5",
     cy: "16.4",
     r: "2.9"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-    d: "M49,8.9c-2.6-2.7-6.3-4.1-10.5-4.1H17.9c-8.7,0-14.5,5.8-14.5,14.5v20.5c0,4.3,1.4,8,4.2,10.7c2.7,2.6,6.3,3.9,10.4,3.9\r h20.4c4.3,0,7.9-1.4,10.5-3.9c2.7-2.6,4.1-6.3,4.1-10.6V19.3C53,15.1,51.6,11.5,49,8.9z M48.6,39.9c0,3.1-1.1,5.6-2.9,7.3\r s-4.3,2.6-7.3,2.6H18c-3,0-5.5-0.9-7.3-2.6C8.9,45.4,8,42.9,8,39.8V19.3c0-3,0.9-5.5,2.7-7.3c1.7-1.7,4.3-2.6,7.3-2.6h20.6\r c3,0,5.5,0.9,7.3,2.7c1.7,1.8,2.7,4.3,2.7,7.2V39.9L48.6,39.9z"
+    d: "M49,8.9c-2.6-2.7-6.3-4.1-10.5-4.1H17.9c-8.7,0-14.5,5.8-14.5,14.5v20.5c0,4.3,1.4,8,4.2,10.7c2.7,2.6,6.3,3.9,10.4,3.9 h20.4c4.3,0,7.9-1.4,10.5-3.9c2.7-2.6,4.1-6.3,4.1-10.6V19.3C53,15.1,51.6,11.5,49,8.9z M48.6,39.9c0,3.1-1.1,5.6-2.9,7.3 s-4.3,2.6-7.3,2.6H18c-3,0-5.5-0.9-7.3-2.6C8.9,45.4,8,42.9,8,39.8V19.3c0-3,0.9-5.5,2.7-7.3c1.7-1.7,4.3-2.6,7.3-2.6h20.6 c3,0,5.5,0.9,7.3,2.7c1.7,1.8,2.7,4.3,2.7,7.2V39.9L48.6,39.9z"
   }))),
   linkedin: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
     className: "premium-social-media-icon",
@@ -10367,6 +10370,91 @@ WebfontLoader.defaultProps = {
   onStatus: noop
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WebfontLoader);
+
+/***/ }),
+
+/***/ "./src/components/variations.js":
+/*!**************************************!*\
+  !*** ./src/components/variations.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * External dependencies
+ */
+
+const {
+  __
+} = wp.i18n;
+const {
+  Placeholder,
+  Button
+} = wp.components; // Create our own variation picker
+
+const VariationPicker = props => {
+  const {
+    icon,
+    label = __('Choose variation'),
+    // Dev note: no text domain here since this will use WP's translation.
+    instructions = __('Select a variation to start with.'),
+    // Dev note: no text domain here since this will use WP's translation.
+    variations,
+    onSelect,
+    allowSkip
+  } = props;
+  console.log(variations);
+  const classes = classnames__WEBPACK_IMPORTED_MODULE_1___default()('block-editor-block-variation-picker', {
+    'has-many-variations': variations.length > 4
+  });
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "stk-variation-picker"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Placeholder, {
+    icon: icon,
+    label: label,
+    instructions: instructions,
+    className: classes
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
+    className: "block-editor-block-variation-picker__variations",
+    role: "list",
+    "aria-label": __('Block variations') // Dev note: no text domain here since this will use WP's translation.
+
+  }, variations.map(variation => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+    key: variation.name
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
+    variant: "secondary",
+    icon: variation.pickerIcon || variation.icon,
+    iconSize: 48,
+    isSecondary: true,
+    onClick: () => onSelect(variation),
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()('block-editor-block-variation-picker__variation', {
+      'is-premium': variation.isPremium
+    }),
+    label: variation.description || variation.pickerTitle || variation.title
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "block-editor-block-variation-picker__variation-label",
+    role: "presentation"
+  }, variation.pickerTitle || variation.title)))), allowSkip && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "block-editor-block-variation-picker__skip"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
+    variant: "link",
+    onClick: () => onSelect()
+  }, __('Skip')
+  /* Dev note: no text domain here since this will use WP's translation. */
+  ))));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (VariationPicker);
 
 /***/ }),
 
