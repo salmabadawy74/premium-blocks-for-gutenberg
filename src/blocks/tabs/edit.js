@@ -64,7 +64,17 @@ function Edit(props) {
         });
     }, []);
 
+    useEffect( () => {
+        updateTabTitle();
+        props.resetTabOrder();
+    }, [ props ] );
+
     const { RichText, InnerBlocks, BlockControls, InspectorControls, MediaUpload } = wp.blockEditor;
+
+    const childBlocks = getBlockOrder( clientId );
+    childBlocks.forEach( ( childBlockId ) =>
+        updateBlockAttributes( childBlockId, { tabHeaders } )
+    );
 
     const blockProps = useBlockProps({
         className: classnames(blockId, {
@@ -254,7 +264,7 @@ function Edit(props) {
 							id={ `premium-tabs__tab${ index }` }
 						>
 							<a // eslint-disable-line jsx-a11y/anchor-is-valid, jsx-a11y/click-events-have-key-events
-								role='tab'
+								role='button'
 								tabIndex={ index }
 								className={ `premium-tabs__icon-position- premium-tabs-list` }
 								onClick={ () => {
