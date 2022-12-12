@@ -23,8 +23,11 @@ const { __ } = wp.i18n;
 const { PanelBody } = wp.components;
 const { Fragment, useEffect } = wp.element;
 const { withSelect } = wp.data;
-const { InspectorControls, useInnerBlocksProps, useBlockProps } =
-    wp.blockEditor;
+const {
+    InspectorControls,
+    useInnerBlocksProps,
+    useBlockProps,
+} = wp.blockEditor;
 
 function Edit(props) {
     const { setAttributes, className, clientId } = props;
@@ -76,9 +79,9 @@ function Edit(props) {
                 text: attributes?.descText
                     ? attributes.descText[0]
                     : __(
-                        "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.",
-                        "premium-blocks-for-gutenberg"
-                    ),
+                          "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.",
+                          "premium-blocks-for-gutenberg"
+                      ),
             },
         ],
         [
@@ -118,6 +121,7 @@ function Edit(props) {
                 "premium/icon",
                 "premium/button",
                 "premium/text",
+                "premium/image",
             ],
         }
     );
@@ -259,8 +263,9 @@ function Edit(props) {
 }
 
 export default withSelect((select) => {
-    const { __experimentalGetPreviewDeviceType = null } =
-        select("core/edit-post");
+    const { __experimentalGetPreviewDeviceType = null } = select(
+        "core/edit-post"
+    );
     let deviceType = __experimentalGetPreviewDeviceType
         ? __experimentalGetPreviewDeviceType()
         : null;
