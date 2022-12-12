@@ -491,7 +491,7 @@ const edit = (props) => {
                                     )}
                                     value={colWidth}
                                     min="0"
-                                    max="160"
+                                    max="1600"
                                     onChange={(newValue) =>
                                         setAttributes({ colWidth: newValue })
                                     }
