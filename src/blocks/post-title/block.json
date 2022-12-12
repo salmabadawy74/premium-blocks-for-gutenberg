@@ -1,0 +1,76 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "premium/post-title",
+	"title": "Post Title",
+    "category": "premium-blocks",
+	"description": "Displays the title of a post, page, or any other content-type.",
+	"textdomain": "default",
+	"usesContext": [ "postId", "postType", "queryId" ],
+	"attributes": {
+		"textAlign": {
+			"type": "string"
+		},
+		"level": {
+			"type": "number",
+			"default": 2
+		},
+		"isLink": {
+			"type": "boolean",
+			"default": false
+		},
+		"rel": {
+			"type": "string",
+			"attribute": "rel",
+			"default": ""
+		},
+		"linkTarget": {
+			"type": "string",
+			"default": "_self"
+		},
+        
+        "Typography": {
+            "type": "object",
+            "default": {
+                "fontWeight": "Default",
+                "fontStyle": "",
+                "letterSpacing": {
+                    "Desktop": "",
+                    "Tablet": "",
+                    "Mobile": "",
+                    "unit": "px"
+                },
+                "fontFamily": "Default",
+                "lineHeight": {
+                    "Desktop": "",
+                    "Tablet": "",
+                    "Mobile": "",
+                    "unit": "px"
+                },
+                "textDecoration": "",
+                "textTransform": "",
+                "fontSize": {
+                    "Desktop": "",
+                    "Tablet": "",
+                    "Mobile": "",
+                    "unit": "px"
+                }
+            }
+        },
+        
+        "textColor": {
+            "type": "string"
+        },
+        "hoverColor": {
+            "type": "string"
+        },
+        "bottomSpacing":{
+            "type":"object",
+            "default":{
+                    "Desktop": "",
+                    "Tablet": "",
+                    "Mobile": "",
+                    "unit": "px"
+            }
+        }
+	}}
