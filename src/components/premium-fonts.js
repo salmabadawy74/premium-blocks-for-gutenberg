@@ -1,19 +1,4 @@
 const fonts = {
-    Default: {
-        weight: [
-            "Default",
-            "100",
-            "200",
-            "300",
-            "400",
-            "500",
-            "600",
-            "700",
-            "800",
-            "900",
-        ],
-        google: !1,
-    },
     Arial: {
         weight: [
             "Default",

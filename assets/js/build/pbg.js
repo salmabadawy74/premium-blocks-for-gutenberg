@@ -3333,10 +3333,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 const fonts = {
-  Default: {
-    weight: ["Default", "100", "200", "300", "400", "500", "600", "700", "800", "900"],
-    google: !1
-  },
   Arial: {
     weight: ["Default", "100", "200", "300", "400", "500", "600", "700", "800", "900"],
     google: !1
