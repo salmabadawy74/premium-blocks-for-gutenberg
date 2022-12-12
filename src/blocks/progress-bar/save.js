@@ -8,6 +8,7 @@ import {
     generateCss,
 } from "@pbg/helpers";
 const { useBlockProps, InnerBlocks } = wp.blockEditor;
+const { useEffect, Fragment, useRef } = wp.element;
 
 export default function save({ attributes }) {
 
@@ -70,7 +71,8 @@ export default function save({ attributes }) {
         dotSize,
         fillPercent,
         numberOfTotalFill,
-        numberOfCircles
+        numberOfCircles,
+        variation
     } = attributes;
 
     const blockProps = useBlockProps.save({
@@ -152,166 +154,172 @@ export default function save({ attributes }) {
             data-speed={`${speeds}`}
             data-type={`${progressType}`}
         >
-            <div>
-                {(progressType == 'line' || progressType == 'dots') &&
-                    < div className="premium-progress-bar-labels-wrap" >
-                        {label &&
-                            <p
-                                className="premium-progress-bar-left-label"
-                                style={{
-                                    color: labelColor,
-                                    fontWeight: labelTypography.fontWeight,
-                                    fontFamily: labelTypography.fontFamily,
-                                    fontStyle: labelTypography.fontStyle,
-                                    textDecoration: labelTypography?.textDecoration,
-                                    textTransform: labelTypography?.textTransform
-                                }}
-                            >
-                                <span>{label}</span>
-                            </p>
-                        }
-                        {progress &&
-                            < p
-                                className="premium-progress-bar-right-label"
-                                style={{
-                                    color: percentageColor,
-                                    fontWeight: percentageTypography.fontWeight,
-                                    fontFamily: percentageTypography.fontFamily,
-                                    fontStyle: percentageTypography.fontStyle,
-                                    textDecoration: percentageTypography?.textDecoration,
-                                    textTransform: percentageTypography?.textTransform
-                                }}
-                            >
-                                <span>{progress}% </span>
-                            </p>
-                        }
-                    </div>
-                }
-                <div className="premium-progress-bar-clear"></div>
-                {progressType == 'line' &&
-                    <div
-                        className="premium-progress-bar-wrap"
-                        style={{
-                            ...gradientBackground(baseBackground)
-                        }}
-                    >
-                        < div className={
-                            `premium-progress-bar-bar ${styleProgress == 'stripe' ? "premium-progress-bar-progress-stripe" : ""} ${animate ? "premium-progress-bar-progress-active" : ""}`
-                        }
-                            style={{
-                                ...gradientBackground(fillBackground),
-                                transition: `width ${speeds}s ease-in-out`,
-                                // width: `${progress}%`,
-                            }}
-                            data-progress_bar={`${progress}`}
-                            data-speed={`${speeds}`}
-                        > </div>
-                    </div>
-                }
-                {
-                    progressType == 'dots' &&
-                    <div
-                        className="premium-progressbar-bar-wrap premium-progressbar-dots"
-                        data-circles={`${numberOfCircles}`}
-                        data-total-fill={`${numberOfTotalFill}`}
-                        data-partial-fill={`${fillPercent}`}
-                    >
-                        {renderDots}
-                    </div>
-                }
-                {progressType == 'half-circle' &&
-                    <div className="premium-progressbar-hf-wrapper">
+            {variation != {} && <Fragment>
+                <div className={`premium-progress-bar-${progressType}`}>
+                    <InnerBlocks.Content />
+                </div>
+                <div>
+                    {(progressType == 'line' || progressType == 'dots') &&
+                        < div className="premium-progress-bar-labels-wrap" >
+                            {label &&
+                                <p
+                                    className="premium-progress-bar-left-label"
+                                    style={{
+                                        color: labelColor,
+                                        fontWeight: labelTypography.fontWeight,
+                                        fontFamily: labelTypography.fontFamily,
+                                        fontStyle: labelTypography.fontStyle,
+                                        textDecoration: labelTypography?.textDecoration,
+                                        textTransform: labelTypography?.textTransform
+                                    }}
+                                >
+                                    <span>{label}</span>
+                                </p>
+                            }
+                            {progress &&
+                                < p
+                                    className="premium-progress-bar-right-label"
+                                    style={{
+                                        color: percentageColor,
+                                        fontWeight: percentageTypography.fontWeight,
+                                        fontFamily: percentageTypography.fontFamily,
+                                        fontStyle: percentageTypography.fontStyle,
+                                        textDecoration: percentageTypography?.textDecoration,
+                                        textTransform: percentageTypography?.textTransform
+                                    }}
+                                >
+                                    <span>{progress}% </span>
+                                </p>
+                            }
+                        </div>
+                    }
+                    <div className="premium-progress-bar-clear"></div>
+                    {progressType == 'line' &&
                         <div
-                            className="premium-progressbar-hf-circle-wrap"
+                            className="premium-progress-bar-wrap"
+                            style={{
+                                ...gradientBackground(baseBackground)
+                            }}
                         >
+                            < div className={
+                                `premium-progress-bar-bar ${styleProgress == 'stripe' ? "premium-progress-bar-progress-stripe" : ""} ${animate ? "premium-progress-bar-progress-active" : ""}`
+                            }
+                                style={{
+                                    ...gradientBackground(fillBackground),
+                                    transition: `width ${speeds}s ease-in-out`,
+                                    // width: `${progress}%`,
+                                }}
+                                data-progress_bar={`${progress}`}
+                                data-speed={`${speeds}`}
+                            > </div>
+                        </div>
+                    }
+                    {
+                        progressType == 'dots' &&
+                        <div
+                            className="premium-progressbar-bar-wrap premium-progressbar-dots"
+                            data-circles={`${numberOfCircles}`}
+                            data-total-fill={`${numberOfTotalFill}`}
+                            data-partial-fill={`${fillPercent}`}
+                        >
+                            {renderDots}
+                        </div>
+                    }
+                    {progressType == 'half-circle' &&
+                        <div className="premium-progressbar-hf-wrapper">
                             <div
-                                className="premium-progressbar-hf-container"
+                                className="premium-progressbar-hf-circle-wrap"
                             >
-                                <div className="premium-progressbar-hf-circle">
+                                <div
+                                    className="premium-progressbar-hf-container"
+                                >
+                                    <div className="premium-progressbar-hf-circle">
+                                        <div
+                                            className="premium-progressbar-hf-circle-progress"
+                                            style={{
+                                                // transform: `rotate(${progress * 1.8}deg)`,
+                                                borderColor: fillColor
+                                            }}
+                                        ></div>
+                                    </div>
                                     <div
-                                        className="premium-progressbar-hf-circle-progress"
+                                        className="premium-progressbar-circle-inner"
                                         style={{
-                                            // transform: `rotate(${progress * 1.8}deg)`,
-                                            borderColor: fillColor
+                                            ...gradientBackground(baseBackground),
+                                            borderColor: borderColor
                                         }}
                                     ></div>
                                 </div>
-                                <div
-                                    className="premium-progressbar-circle-inner"
-                                    style={{
-                                        ...gradientBackground(baseBackground),
-                                        borderColor: borderColor
-                                    }}
-                                ></div>
+                                {renderContent()}
                             </div>
-                            {renderContent()}
-                        </div>
-                        <div
-                            className="premium-progressbar-hf-labels"
-                        >
-                            <span
-                                className="premium-progressbar-hf-label-left"
-                                style={{
-                                    color: PrefixColor,
-                                    fontWeight: PrefixTypography.fontWeight,
-                                    fontFamily: PrefixTypography.fontFamily,
-                                    fontStyle: PrefixTypography.fontStyle,
-                                    textDecoration: PrefixTypography?.textDecoration,
-                                    textTransform: PrefixTypography?.textTransform
-                                }}
-                            >0</span>
-                            <span
-                                className="premium-progressbar-hf-label-right"
-                                style={{
-                                    color: suffixColor,
-                                    fontWeight: suffixTypography.fontWeight,
-                                    fontFamily: suffixTypography.fontFamily,
-                                    fontStyle: suffixTypography.fontStyle,
-                                    textDecoration: suffixTypography?.textDecoration,
-                                    textTransform: suffixTypography?.textTransform
-                                }}
-                            >100</span>
-                        </div>
-                    </div>
-                }
-                {progressType == 'circle' &&
-                    <div className="premium-progressbar-hf-wrapper">
-                        <div
-                            className="premium-progressbar-circle-wrap"
-                        >
                             <div
-                                className="premium-progressbar-circle-base"
-                                style={{
-                                    borderColor: borderColor,
-                                    ...gradientBackground(baseBackground),
-                                }}
-                            ></div>
+                                className="premium-progressbar-hf-labels"
+                            >
+                                <span
+                                    className="premium-progressbar-hf-label-left"
+                                    style={{
+                                        color: PrefixColor,
+                                        fontWeight: PrefixTypography.fontWeight,
+                                        fontFamily: PrefixTypography.fontFamily,
+                                        fontStyle: PrefixTypography.fontStyle,
+                                        textDecoration: PrefixTypography?.textDecoration,
+                                        textTransform: PrefixTypography?.textTransform
+                                    }}
+                                >0</span>
+                                <span
+                                    className="premium-progressbar-hf-label-right"
+                                    style={{
+                                        color: suffixColor,
+                                        fontWeight: suffixTypography.fontWeight,
+                                        fontFamily: suffixTypography.fontFamily,
+                                        fontStyle: suffixTypography.fontStyle,
+                                        textDecoration: suffixTypography?.textDecoration,
+                                        textTransform: suffixTypography?.textTransform
+                                    }}
+                                >100</span>
+                            </div>
+                        </div>
+                    }
+                    {progressType == 'circle' &&
+                        <div className="premium-progressbar-hf-wrapper">
                             <div
-                                className="premium-progressbar-circle"
-                                style={{
-                                    // clipPath: `${progress > '50' ? 'inset(0px)' : 'inset(0 0 0 50%)'}`
-                                }}
+                                className="premium-progressbar-circle-wrap"
                             >
                                 <div
-                                    className="premium-progressbar-circle-left"
+                                    className="premium-progressbar-circle-base"
                                     style={{
-                                        // transform: `rotate(${progress * 3.6}deg)`,
-                                        borderColor: fillColor,
+                                        borderColor: borderColor,
+                                        ...gradientBackground(baseBackground),
                                     }}
                                 ></div>
                                 <div
-                                    className="premium-progressbar-circle-right"
+                                    className="premium-progressbar-circle"
                                     style={{
-                                        borderColor: fillColor,
-                                        // visibility: `${progress > '50' ? 'visible' : 'hidden'}`
+                                        // clipPath: `${progress > '50' ? 'inset(0px)' : 'inset(0 0 0 50%)'}`
                                     }}
-                                ></div>
+                                >
+                                    <div
+                                        className="premium-progressbar-circle-left"
+                                        style={{
+                                            // transform: `rotate(${progress * 3.6}deg)`,
+                                            borderColor: fillColor,
+                                        }}
+                                    ></div>
+                                    <div
+                                        className="premium-progressbar-circle-right"
+                                        style={{
+                                            borderColor: fillColor,
+                                            // visibility: `${progress > '50' ? 'visible' : 'hidden'}`
+                                        }}
+                                    ></div>
+                                </div>
+                                {renderContent()}
                             </div>
-                            {renderContent()}
                         </div>
-                    </div>
-                }
-            </div>
+                    }
+                </div>
+            </Fragment>
+            }
         </div>
     );
 };

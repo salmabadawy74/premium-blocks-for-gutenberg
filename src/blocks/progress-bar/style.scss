@@ -22,6 +22,23 @@
 	position: relative;
 
 	// line type
+	.premium-progress-bar-line {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		.premium-heading {
+			margin: 0;
+			float: left;
+		}
+
+		.premium-text {
+			margin: 0;
+			float: right;
+		}
+	}
+
+	// line type
 	.premium-progress-bar-labels-wrap {
 		display: flex;
 		justify-content: space-between;

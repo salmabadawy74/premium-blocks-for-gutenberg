@@ -321,7 +321,8 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
         console.log(v)
         setAttributes({
             variation: v,
-            showVariation: false
+            showVariation: false,
+            progressType: v.name
         });
     }
 
@@ -335,6 +336,11 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                             className="premium-panel-body"
                             initialOpen={true}
                         >
+                            <VariationPicker
+                                setAttributes={setAttributes}
+                                variations={Variations}
+                                onSelect={onSelectVariations}
+                            />
                             <SelectControl
                                 label={__(
                                     "Type",
@@ -817,198 +823,203 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                     onSelect={onSelectVariations}
                 />
                 }
-                {variation != {} && <InnerBlocks
-                    template={variation.innerBlocks}
-                    templateLock={false}
-                />}
-                <style
-                    dangerouslySetInnerHTML={{
-                        __html: loadStyles(),
-                    }}
-                />
-                <div ref={contentRef}>
-                    {(progressType == 'line' || progressType == 'dots') &&
-                        < div className="premium-progress-bar-labels-wrap">
-                            {label &&
-                                <p
-                                    className="premium-progress-bar-left-label"
-                                    style={{
-                                        ...typographyCss(labelTypography, deviceType),
-                                        ...marginCss(labelMargin, deviceType),
-                                        color: labelColor
-                                    }}
-                                >
-                                    <span>{label}</span>
-                                </p>
-                            }
-                            {progress &&
-                                < p
-                                    className="premium-progress-bar-right-label"
-                                    style={{
-                                        ...typographyCss(percentageTypography, deviceType),
-                                        ...marginCss(percentageMargin, deviceType),
-                                        color: percentageColor
-                                    }}
-                                >
-                                    <span>{progress}% </span>
-                                </p>
-                            }
-                        </div>
-                    }
-                    <div className="premium-progress-bar-clear"></div>
-                    {progressType == 'line' &&
-                        <div
-                            className="premium-progress-bar-wrap"
-                            style={{
-                                ...gradientBackground(baseBackground),
-                                ...marginCss(progressBarMargin, deviceType),
-                                height: `${progressBarHeight[deviceType]}${progressBarHeight.unit}`,
-                                "border-radius": `${progressBarRadius[deviceType]}${progressBarRadius.unit}`
-                            }}
-                        >
-                            < div className={
-                                `premium-progress-bar-bar ${styleProgress == 'stripe' ? "premium-progress-bar-progress-stripe" : ""} ${animate ? "premium-progress-bar-progress-active" : ""}`
-                            }
-                                ref={line}
+                {variation != {} && <Fragment>
+                    <div className={`premium-progress-bar-${progressType}`}>
+                        <InnerBlocks
+                            template={variation.innerBlocks}
+                            templateLock={false}
+                        />
+                    </div>
+                    <style
+                        dangerouslySetInnerHTML={{
+                            __html: loadStyles(),
+                        }}
+                    />
+                    <div ref={contentRef}>
+                        {(progressType == 'line' || progressType == 'dots') &&
+                            < div className="premium-progress-bar-labels-wrap">
+                                {label &&
+                                    <p
+                                        className="premium-progress-bar-left-label"
+                                        style={{
+                                            ...typographyCss(labelTypography, deviceType),
+                                            ...marginCss(labelMargin, deviceType),
+                                            color: labelColor
+                                        }}
+                                    >
+                                        <span>{label}</span>
+                                    </p>
+                                }
+                                {progress &&
+                                    < p
+                                        className="premium-progress-bar-right-label"
+                                        style={{
+                                            ...typographyCss(percentageTypography, deviceType),
+                                            ...marginCss(percentageMargin, deviceType),
+                                            color: percentageColor
+                                        }}
+                                    >
+                                        <span>{progress}% </span>
+                                    </p>
+                                }
+                            </div>
+                        }
+                        <div className="premium-progress-bar-clear"></div>
+                        {progressType == 'line' &&
+                            <div
+                                className="premium-progress-bar-wrap"
                                 style={{
-                                    ...gradientBackground(fillBackground),
-                                    transition: `${progress} ${speeds}s ease-in-out`,
+                                    ...gradientBackground(baseBackground),
+                                    ...marginCss(progressBarMargin, deviceType),
                                     height: `${progressBarHeight[deviceType]}${progressBarHeight.unit}`,
-                                    width: `${progress}%`,
                                     "border-radius": `${progressBarRadius[deviceType]}${progressBarRadius.unit}`
                                 }}
-                                data-progress_bar={`${progress}`}
-                                data-speed={`${speeds}`}
-                            > </div>
-                        </div>
-                    }
-                    {
-                        progressType == 'dots' &&
-                        <div
-                            className="premium-progressbar-bar-wrap premium-progressbar-dots"
-                            data-circles={`${numberOfCircles}`}
-                            data-total-fill={`${numberOfTotalFill}`}
-                            data-partial-fill={`${fillPercent}`}
-                            style={{
-                                "border-radius": `${progressBarRadius[deviceType]}${progressBarRadius.unit}`,
-                                ...marginCss(progressBarMargin, deviceType),
-                            }}
-                        >
-                            {renderDots}
-                        </div>
-                    }
-                    {progressType == 'half-circle' &&
-                        <div className="premium-progressbar-hf-wrapper">
+                            >
+                                < div className={
+                                    `premium-progress-bar-bar ${styleProgress == 'stripe' ? "premium-progress-bar-progress-stripe" : ""} ${animate ? "premium-progress-bar-progress-active" : ""}`
+                                }
+                                    ref={line}
+                                    style={{
+                                        ...gradientBackground(fillBackground),
+                                        transition: `${progress} ${speeds}s ease-in-out`,
+                                        height: `${progressBarHeight[deviceType]}${progressBarHeight.unit}`,
+                                        width: `${progress}%`,
+                                        "border-radius": `${progressBarRadius[deviceType]}${progressBarRadius.unit}`
+                                    }}
+                                    data-progress_bar={`${progress}`}
+                                    data-speed={`${speeds}`}
+                                > </div>
+                            </div>
+                        }
+                        {
+                            progressType == 'dots' &&
                             <div
-                                className="premium-progressbar-hf-circle-wrap"
+                                className="premium-progressbar-bar-wrap premium-progressbar-dots"
+                                data-circles={`${numberOfCircles}`}
+                                data-total-fill={`${numberOfTotalFill}`}
+                                data-partial-fill={`${fillPercent}`}
                                 style={{
-                                    height: `calc(${progressBarSize[deviceType]} / 2 * 1px)`,
-                                    width: `${progressBarSize[deviceType]}px`,
+                                    "border-radius": `${progressBarRadius[deviceType]}${progressBarRadius.unit}`,
+                                    ...marginCss(progressBarMargin, deviceType),
                                 }}
                             >
+                                {renderDots}
+                            </div>
+                        }
+                        {progressType == 'half-circle' &&
+                            <div className="premium-progressbar-hf-wrapper">
                                 <div
-                                    className="premium-progressbar-hf-container"
+                                    className="premium-progressbar-hf-circle-wrap"
+                                    style={{
+                                        height: `calc(${progressBarSize[deviceType]} / 2 * 1px)`,
+                                        width: `${progressBarSize[deviceType]}px`,
+                                    }}
+                                >
+                                    <div
+                                        className="premium-progressbar-hf-container"
+                                        style={{
+                                            height: `${progressBarSize[deviceType]}px`,
+                                            width: `${progressBarSize[deviceType]}px`,
+                                        }}
+                                    >
+                                        <div className="premium-progressbar-hf-circle">
+                                            <div
+                                                className="premium-progressbar-hf-circle-progress"
+                                                ref={circle_half}
+                                                style={{
+                                                    transform: `rotate(${progress * 1.8}deg)`,
+                                                    borderColor: fillColor,
+                                                    borderWidth: `${borderWidth[deviceType]}px`,
+                                                }}
+                                            ></div>
+                                        </div>
+                                        <div
+                                            className="premium-progressbar-circle-inner"
+                                            style={{
+                                                ...gradientBackground(baseBackground),
+                                                borderColor: borderColor,
+                                                borderWidth: `${borderWidth[deviceType]}px`,
+                                            }}
+                                        ></div>
+                                    </div>
+                                    {renderContent()}
+                                </div>
+                                <div
+                                    className="premium-progressbar-hf-labels"
+                                    style={{
+                                        width: `${progressBarSize[deviceType]}px`,
+                                        marginTop: `${topSpacing[deviceType]}px`,
+                                    }}
+                                >
+                                    <span
+                                        className="premium-progressbar-hf-label-left"
+                                        style={{
+                                            ...typographyCss(PrefixTypography, deviceType),
+                                            marginLeft: `${PrefixMargin[deviceType]}px`,
+                                            color: PrefixColor
+                                        }}
+                                    >0</span>
+                                    <span
+                                        className="premium-progressbar-hf-label-right"
+                                        style={{
+                                            ...typographyCss(suffixTypography, deviceType),
+                                            marginRight: `${suffixMargin[deviceType]}px`,
+                                            color: suffixColor
+                                        }}
+                                    >100</span>
+                                </div>
+                            </div>
+                        }
+                        {progressType == 'circle' &&
+                            <div className="premium-progressbar-hf-wrapper">
+                                <div
+                                    className="premium-progressbar-circle-wrap"
                                     style={{
                                         height: `${progressBarSize[deviceType]}px`,
                                         width: `${progressBarSize[deviceType]}px`,
                                     }}
                                 >
-                                    <div className="premium-progressbar-hf-circle">
+                                    <div
+                                        className="premium-progressbar-circle-base"
+                                        style={{
+                                            borderColor: borderColor,
+                                            ...gradientBackground(baseBackground),
+                                            borderWidth: `${borderWidth[deviceType]}px`,
+                                        }}
+                                    ></div>
+                                    <div
+                                        className="premium-progressbar-circle"
+                                        ref={circle_pie}
+                                        style={{
+                                            clipPath: `${progress > '50' ? 'inset(0px)' : 'inset(0 0 0 50%)'}`
+                                        }}
+                                    >
                                         <div
-                                            className="premium-progressbar-hf-circle-progress"
-                                            ref={circle_half}
+                                            className="premium-progressbar-circle-left"
+                                            ref={circle_half_left}
                                             style={{
-                                                transform: `rotate(${progress * 1.8}deg)`,
+                                                transform: `rotate(${progress * 3.6}deg)`,
                                                 borderColor: fillColor,
                                                 borderWidth: `${borderWidth[deviceType]}px`,
                                             }}
                                         ></div>
+                                        <div
+                                            className="premium-progressbar-circle-right"
+                                            ref={circle_half_right}
+                                            style={{
+                                                borderColor: fillColor,
+                                                visibility: `${progress > '50' ? 'visible' : 'hidden'}`,
+                                                borderWidth: `${borderWidth[deviceType]}px`,
+                                            }}
+                                        ></div>
                                     </div>
-                                    <div
-                                        className="premium-progressbar-circle-inner"
-                                        style={{
-                                            ...gradientBackground(baseBackground),
-                                            borderColor: borderColor,
-                                            borderWidth: `${borderWidth[deviceType]}px`,
-                                        }}
-                                    ></div>
+                                    {renderContent()}
                                 </div>
-                                {renderContent()}
                             </div>
-                            <div
-                                className="premium-progressbar-hf-labels"
-                                style={{
-                                    width: `${progressBarSize[deviceType]}px`,
-                                    marginTop: `${topSpacing[deviceType]}px`,
-                                }}
-                            >
-                                <span
-                                    className="premium-progressbar-hf-label-left"
-                                    style={{
-                                        ...typographyCss(PrefixTypography, deviceType),
-                                        marginLeft: `${PrefixMargin[deviceType]}px`,
-                                        color: PrefixColor
-                                    }}
-                                >0</span>
-                                <span
-                                    className="premium-progressbar-hf-label-right"
-                                    style={{
-                                        ...typographyCss(suffixTypography, deviceType),
-                                        marginRight: `${suffixMargin[deviceType]}px`,
-                                        color: suffixColor
-                                    }}
-                                >100</span>
-                            </div>
-                        </div>
-                    }
-                    {progressType == 'circle' &&
-                        <div className="premium-progressbar-hf-wrapper">
-                            <div
-                                className="premium-progressbar-circle-wrap"
-                                style={{
-                                    height: `${progressBarSize[deviceType]}px`,
-                                    width: `${progressBarSize[deviceType]}px`,
-                                }}
-                            >
-                                <div
-                                    className="premium-progressbar-circle-base"
-                                    style={{
-                                        borderColor: borderColor,
-                                        ...gradientBackground(baseBackground),
-                                        borderWidth: `${borderWidth[deviceType]}px`,
-                                    }}
-                                ></div>
-                                <div
-                                    className="premium-progressbar-circle"
-                                    ref={circle_pie}
-                                    style={{
-                                        clipPath: `${progress > '50' ? 'inset(0px)' : 'inset(0 0 0 50%)'}`
-                                    }}
-                                >
-                                    <div
-                                        className="premium-progressbar-circle-left"
-                                        ref={circle_half_left}
-                                        style={{
-                                            transform: `rotate(${progress * 3.6}deg)`,
-                                            borderColor: fillColor,
-                                            borderWidth: `${borderWidth[deviceType]}px`,
-                                        }}
-                                    ></div>
-                                    <div
-                                        className="premium-progressbar-circle-right"
-                                        ref={circle_half_right}
-                                        style={{
-                                            borderColor: fillColor,
-                                            visibility: `${progress > '50' ? 'visible' : 'hidden'}`,
-                                            borderWidth: `${borderWidth[deviceType]}px`,
-                                        }}
-                                    ></div>
-                                </div>
-                                {renderContent()}
-                            </div>
-                        </div>
-                    }
-                </div>
+                        }
+                    </div>
+                </Fragment>
+                }
             </div>
         </Fragment>
     );

@@ -12,6 +12,16 @@
 
 .premium-progress-bar {
   position: relative; }
+  .premium-progress-bar .premium-progress-bar-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+    .premium-progress-bar .premium-progress-bar-line .premium-heading {
+      margin: 0;
+      float: left; }
+    .premium-progress-bar .premium-progress-bar-line .premium-text {
+      margin: 0;
+      float: right; }
   .premium-progress-bar .premium-progress-bar-labels-wrap {
     display: flex;
     justify-content: space-between;
