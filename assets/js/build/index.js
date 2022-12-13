@@ -25224,6 +25224,7 @@ function Edit(props) {
     firstHeading,
     secondHeading,
     display,
+    titleTag,
     firstStyles,
     secondStyles,
     link,
@@ -25307,6 +25308,7 @@ function Edit(props) {
     });
   };
 
+  const CustomTag = `${titleTag}`;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InspectorControls, {
     key: "inspector"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.InspectorTabs, {
@@ -25317,7 +25319,32 @@ function Edit(props) {
     title: __("General", "premium-blocks-for-gutenberg"),
     className: "premium-panel-body",
     initialOpen: true
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(SelectControl, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.RadioComponent, {
+    choices: [{
+      value: "h1",
+      label: __("H1", "premium-blocks-for-gutenberg")
+    }, {
+      value: "h2",
+      label: __("H2", "premium-blocks-for-gutenberg")
+    }, {
+      value: "h3",
+      label: __("H3", "premium-blocks-for-gutenberg")
+    }, {
+      value: "h4",
+      label: __("H4", "premium-blocks-for-gutenberg")
+    }, {
+      value: "h5",
+      label: __("H5", "premium-blocks-for-gutenberg")
+    }, {
+      value: "h6",
+      label: __("H6", "premium-blocks-for-gutenberg")
+    }],
+    value: titleTag,
+    onChange: newValue => setAttributes({
+      titleTag: newValue
+    }),
+    label: __(" HTML Tag", "premium-blocks-for-gutenberg")
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(SelectControl, {
     label: __("Display", "premium-blocks-for-gutenberg"),
     value: display,
     options: DISPLAY,
@@ -25570,7 +25597,7 @@ function Edit(props) {
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-dheading-block__wrap`
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(CustomTag, {
     className: `premium-dheading-block__title`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RichText, {
     className: `premium-dheading-block__first${firstStyles !== null && firstStyles !== void 0 && (_firstStyles$11 = firstStyles[0]) !== null && _firstStyles$11 !== void 0 && _firstStyles$11.firstClip ? ` premium-headingc-${firstStyles === null || firstStyles === void 0 ? void 0 : (_firstStyles$12 = firstStyles[0]) === null || _firstStyles$12 === void 0 ? void 0 : _firstStyles$12.firstClip}` : ""}${firstStyles !== null && firstStyles !== void 0 && (_firstStyles$13 = firstStyles[0]) !== null && _firstStyles$13 !== void 0 && _firstStyles$13.firstAnim ? ` premium-headinga-${firstStyles === null || firstStyles === void 0 ? void 0 : (_firstStyles$14 = firstStyles[0]) === null || _firstStyles$14 === void 0 ? void 0 : _firstStyles$14.firstAnim}` : ""}${firstStyles !== null && firstStyles !== void 0 && (_firstStyles$15 = firstStyles[0]) !== null && _firstStyles$15 !== void 0 && _firstStyles$15.firstStroke ? ` premium-headings-${firstStyles === null || firstStyles === void 0 ? void 0 : (_firstStyles$16 = firstStyles[0]) === null || _firstStyles$16 === void 0 ? void 0 : _firstStyles$16.firstStroke}` : ""}`,
@@ -25703,6 +25730,7 @@ const save = props => {
     firstHeading,
     secondHeading,
     display,
+    titleTag,
     firstStyles,
     secondStyles,
     link,
@@ -25720,6 +25748,7 @@ const save = props => {
     firstShadow,
     secondShadow
   } = props.attributes;
+  const CustomTag = `${titleTag}`;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, useBlockProps.save({
     className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, `premium-dheading-block__container ${blockId}`, {
       " premium-desktop-hidden": hideDesktop,
@@ -25734,7 +25763,7 @@ const save = props => {
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-dheading-block__wrap`
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(CustomTag, {
     className: `premium-dheading-block__title`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RichText.Content, {
     className: `premium-dheading-block__first${firstStyles !== null && firstStyles !== void 0 && (_firstStyles$ = firstStyles[0]) !== null && _firstStyles$ !== void 0 && _firstStyles$.firstClip ? ` premium-headingc-${firstStyles === null || firstStyles === void 0 ? void 0 : (_firstStyles$2 = firstStyles[0]) === null || _firstStyles$2 === void 0 ? void 0 : _firstStyles$2.firstClip}` : ""}${firstStyles !== null && firstStyles !== void 0 && (_firstStyles$3 = firstStyles[0]) !== null && _firstStyles$3 !== void 0 && _firstStyles$3.firstAnim ? ` premium-headinga-${firstStyles === null || firstStyles === void 0 ? void 0 : (_firstStyles$4 = firstStyles[0]) === null || _firstStyles$4 === void 0 ? void 0 : _firstStyles$4.firstAnim}` : ""}${firstStyles !== null && firstStyles !== void 0 && (_firstStyles$5 = firstStyles[0]) !== null && _firstStyles$5 !== void 0 && _firstStyles$5.firstStroke ? ` premium-headings-${firstStyles === null || firstStyles === void 0 ? void 0 : (_firstStyles$6 = firstStyles[0]) === null || _firstStyles$6 === void 0 ? void 0 : _firstStyles$6.firstStroke}` : ""}`,

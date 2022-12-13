@@ -33,7 +33,7 @@
         },
         "titleTag": {
             "type": "string",
-            "default": "h1"
+            "default": "h2"
         },
         "display": {
             "type": "string",

@@ -1,8 +1,5 @@
 import classnames from "classnames";
-import {
-    gradientBackground,
-    filterJsCss,
-} from '@pbg/helpers';
+import { gradientBackground, filterJsCss } from "@pbg/helpers";
 const { RichText, useBlockProps } = wp.blockEditor;
 
 const save = (props) => {
@@ -13,6 +10,7 @@ const save = (props) => {
         firstHeading,
         secondHeading,
         display,
+        titleTag,
         firstStyles,
         secondStyles,
         link,
@@ -28,8 +26,9 @@ const save = (props) => {
         secondTypography,
         background,
         firstShadow,
-        secondShadow
+        secondShadow,
     } = props.attributes;
+    const CustomTag = `${titleTag}`;
 
     return (
         <div
@@ -51,18 +50,21 @@ const save = (props) => {
             }}
         >
             <div className={`premium-dheading-block__wrap`}>
-                <h2 className={`premium-dheading-block__title`}>
+                <CustomTag className={`premium-dheading-block__title`}>
                     <RichText.Content
-                        className={`premium-dheading-block__first${firstStyles?.[0]?.firstClip
+                        className={`premium-dheading-block__first${
+                            firstStyles?.[0]?.firstClip
                                 ? ` premium-headingc-${firstStyles?.[0]?.firstClip}`
                                 : ""
-                            }${firstStyles?.[0]?.firstAnim
+                        }${
+                            firstStyles?.[0]?.firstAnim
                                 ? ` premium-headinga-${firstStyles?.[0]?.firstAnim}`
                                 : ""
-                            }${firstStyles?.[0]?.firstStroke
+                        }${
+                            firstStyles?.[0]?.firstStroke
                                 ? ` premium-headings-${firstStyles?.[0]?.firstStroke}`
                                 : ""
-                            }`}
+                        }`}
                         value={firstHeading}
                         tagName="span"
                         style={filterJsCss({
@@ -85,16 +87,19 @@ const save = (props) => {
                         })}
                     />
                     <RichText.Content
-                        className={`premium-dheading-block__second${secondStyles?.[0]?.secondClip
-                            ? `${` premium-headingc-${secondStyles?.[0]?.secondClip}`}`
-                            : ""
-                            }${secondStyles?.[0]?.secondAnim
+                        className={`premium-dheading-block__second${
+                            secondStyles?.[0]?.secondClip
+                                ? `${` premium-headingc-${secondStyles?.[0]?.secondClip}`}`
+                                : ""
+                        }${
+                            secondStyles?.[0]?.secondAnim
                                 ? ` ${`premium-headinga-${secondStyles?.[0]?.secondAnim} `}`
                                 : ""
-                            }${secondStyles?.[0]?.secondStroke
+                        }${
+                            secondStyles?.[0]?.secondStroke
                                 ? ` premium-headings-${secondStyles?.[0]?.secondStroke}`
                                 : ""
-                            }`}
+                        }`}
                         tagName="span"
                         value={secondHeading}
                         style={filterJsCss({
@@ -118,7 +123,7 @@ const save = (props) => {
                             textShadow: `${secondShadow?.horizontal}px ${secondShadow?.vertical}px ${secondShadow?.blur}px ${secondShadow?.color}`,
                         })}
                     />
-                </h2>
+                </CustomTag>
                 {link && headingURL && (
                     <a
                         className={`premium-dheading-block__link`}
