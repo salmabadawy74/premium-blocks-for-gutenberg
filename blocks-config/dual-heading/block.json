@@ -31,10 +31,15 @@
             "default": "Blocks",
             "selector": ".premium-dheading-block__second"
         },
-        "titleTag": {
+        "firstTag": {
             "type": "string",
             "default": "h2"
         },
+        "secondTag": {
+            "type": "string",
+            "default": "h2"
+        },
+
         "display": {
             "type": "string",
             "default": "inline"
