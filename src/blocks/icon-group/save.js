@@ -9,7 +9,11 @@ export default function save({ attributes }) {
         hideDesktop,
         hideTablet,
         hideMobile,
-        groupIconBorder
+        groupIconBorder,
+        groupIconColor,
+        groupIconBack,
+        groupIconHoverColor,
+        groupIconHoverBack
     } = attributes;
 
     const blockProps = useBlockProps.save({
@@ -20,12 +24,26 @@ export default function save({ attributes }) {
         })
     })
 
+    const loadStyles = () => {
+        const styles = {};
+
+        styles[` .${blockId} .premium-icon-group-horizontal:hover, .${blockId} .premium-icon-group-vertical:hover`] = {
+            color: `${groupIconHoverColor} !important`,
+            "background-color": `${groupIconHoverBack} !important`,
+        };
+
+        return generateCss(styles);
+    }
+
     return <div {...blockProps}>
+        <style>{loadStyles()}</style>
         <div
             className={`premium-icon-group-${groupAlign}`}
             style={filterJsCss({
                 borderStyle: groupIconBorder?.borderType,
-                borderColor: groupIconBorder?.borderColor
+                borderColor: groupIconBorder?.borderColor,
+                color: groupIconColor,
+                backgroundColor: groupIconBack
             })}
         >
             <InnerBlocks.Content />

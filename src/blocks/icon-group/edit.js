@@ -6,7 +6,10 @@ import {
     PremiumBorder,
     PremiumResponsiveTabs,
     MultiButtonsControl as ResponsiveRadioControl,
-    SpacingComponent as SpacingControl
+    SpacingComponent as SpacingControl,
+    AdvancedColorControl as AdvancedPopColorControl,
+    InsideTabs,
+    InsideTab
 } from '@pbg/components';
 import { borderCss, paddingCss, marginCss, generateBlockId, generateCss } from '@pbg/helpers';
 
@@ -28,7 +31,12 @@ function Edit(props) {
         hideMobile,
         groupIconBorder,
         groupIconMargin,
-        groupIconPadding
+        groupIconPadding,
+        groupIconColor,
+        groupIconBack,
+        groupIconHoverColor,
+        groupIconHoverBack,
+        hoverEffect
     } = props.attributes
 
     const GroupAlign = [
@@ -40,6 +48,37 @@ function Edit(props) {
             value: "vertical",
             label: __("Vertical", "premium-blocks-for-gutenberg"),
         }
+    ];
+
+    const EFFECTS = [
+        {
+            value: "none",
+            label: __("None", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: "pulse",
+            label: __("Pulse", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: "rotate",
+            label: __("Rotate", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: "drotate",
+            label: __("3D Rotate", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: "buzz",
+            label: __("Buzz", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: "drop",
+            label: __("Drop Shadow", "premium-blocks-for-gutenberg"),
+        },
+        {
+            value: "wobble",
+            label: __("Wobble", "premium-blocks-for-gutenberg"),
+        },
     ];
 
     const INNER_BLOCKS_TEMPLATE = [
@@ -106,6 +145,11 @@ function Edit(props) {
             'justify-content': `${align[props.deviceType]} !important`
         };
 
+        styles[` .${blockId} .premium-icon-group-horizontal:hover, .${blockId} .premium-icon-group-vertical:hover`] = {
+            color: `${groupIconHoverColor} !important`,
+            "background-color": `${groupIconHoverBack} !important`,
+        };
+
         return generateCss(styles);
     }
 
@@ -144,6 +188,95 @@ function Edit(props) {
                             className="premium-panel-body"
                             initialOpen={true}
                         >
+                            <InsideTabs>
+                                <InsideTab
+                                    tabTitle={__(
+                                        "Normal",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                >
+                                    <Fragment>
+                                        <AdvancedPopColorControl
+                                            label={__(
+                                                "Color",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                            colorValue={groupIconColor}
+                                            colorDefault={""}
+                                            onColorChange={(value) =>
+                                                setAttributes({
+                                                    groupIconColor: value,
+                                                })
+                                            }
+                                        />
+                                        <AdvancedPopColorControl
+                                            label={__(
+                                                "Background Color",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                            colorValue={groupIconBack}
+                                            colorDefault={""}
+                                            onColorChange={(value) =>
+                                                setAttributes({
+                                                    groupIconBack: value,
+                                                })
+                                            }
+                                        />
+                                    </Fragment>
+                                </InsideTab>
+                                <InsideTab
+                                    tabTitle={__(
+                                        "Hover",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                >
+                                    <Fragment>
+                                        <AdvancedPopColorControl
+                                            label={__(
+                                                "Hover Color",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                            colorValue={
+                                                groupIconHoverColor
+                                            }
+                                            colorDefault={""}
+                                            onColorChange={(value) =>
+                                                setAttributes({
+                                                    groupIconHoverColor: value,
+                                                })
+                                            }
+                                        />
+                                        <AdvancedPopColorControl
+                                            label={__(
+                                                "Hover Background Color",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                            colorValue={
+                                                groupIconHoverBack
+                                            }
+                                            colorDefault={""}
+                                            onColorChange={(value) =>
+                                                setAttributes({
+                                                    groupIconHoverBack: value,
+                                                })
+                                            }
+                                        />
+                                        <SelectControl
+                                            label={__(
+                                                "Hover Effect",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                            options={EFFECTS}
+                                            value={hoverEffect}
+                                            onChange={(newEffect) =>
+                                                setAttributes({
+                                                    hoverEffect: newEffect,
+                                                })
+                                            }
+                                        />
+                                    </Fragment>
+                                </InsideTab>
+                            </InsideTabs>
                             <PremiumBorder
                                 label={__("Border", "premium-blocks-for-gutenberg")}
                                 value={groupIconBorder}
@@ -213,6 +346,8 @@ function Edit(props) {
                         ...borderCss(groupIconBorder, props.deviceType),
                         ...paddingCss(groupIconPadding, props.deviceType),
                         ...marginCss(groupIconMargin, props.deviceType),
+                        color: groupIconColor,
+                        backgroundColor: groupIconBack
                     }}
                 >
                     <InnerBlocks
