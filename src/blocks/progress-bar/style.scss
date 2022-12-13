@@ -22,7 +22,8 @@
 	position: relative;
 
 	// line type
-	.premium-progress-bar-line {
+	.premium-progress-bar-line,
+	.premium-progress-bar-dots {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -35,30 +36,48 @@
 		.premium-text {
 			margin: 0;
 			float: right;
+			margin-bottom: 0 !important;
+			margin-top: 0 !important;
+		}
+	}
+
+	.line,
+	.dots {
+		.block-editor-block-list__layout {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+
+			.premium-text {
+				margin: 0;
+				float: right;
+				margin-bottom: 0 !important;
+				margin-top: 0 !important;
+			}
 		}
 	}
 
 	// line type
-	.premium-progress-bar-labels-wrap {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
+	// .premium-progress-bar-labels-wrap {
+	// 	display: flex;
+	// 	justify-content: space-between;
+	// 	align-items: center;
 
-		.premium-progress-bar-left-label {
-			margin: 0;
-			float: left;
-		}
+	// 	.premium-progress-bar-left-label {
+	// 		margin: 0;
+	// 		float: left;
+	// 	}
 
-		.premium-progress-bar-right-label {
-			margin: 0;
-			float: right;
-		}
-	}
+	// 	.premium-progress-bar-right-label {
+	// 		margin: 0;
+	// 		float: right;
+	// 	}
+	// }
 
 
-	.premium-progress-bar-clear {
-		clear: both;
-	}
+	// .premium-progress-bar-clear {
+	// 	clear: both;
+	// }
 
 	.premium-progress-bar-wrap {
 		position: relative;
@@ -190,6 +209,7 @@
 			border: 6px solid #eee;
 			-webkit-border-radius: 50%;
 			border-radius: 50%;
+			border-width: 12px;
 		}
 
 		.premium-progressbar-circle {
@@ -205,6 +225,7 @@
 				-webkit-transform: rotate(0);
 				-ms-transform: rotate(0);
 				transform: rotate(0);
+				border-width: 12px;
 			}
 
 			.premium-progressbar-circle-right {
@@ -212,6 +233,7 @@
 				-ms-transform: rotate(180deg);
 				transform: rotate(180deg);
 				visibility: hidden;
+				border-width: 12px;
 			}
 
 			div {
@@ -231,52 +253,60 @@
 		}
 	}
 
-	.premium-progressbar-circle-content {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		-js-display: flex;
-		display: -webkit-box;
-		display: -webkit-flex;
-		display: -moz-box;
-		display: -ms-flexbox;
-		display: flex;
-		-webkit-box-orient: vertical;
-		-webkit-box-direction: normal;
-		-webkit-flex-direction: column;
-		-moz-box-orient: vertical;
-		-moz-box-direction: normal;
-		-ms-flex-direction: column;
-		flex-direction: column;
-		-webkit-box-pack: center;
-		-webkit-justify-content: center;
-		-moz-box-pack: center;
-		-ms-flex-pack: center;
-		justify-content: center;
-		-webkit-box-align: center;
-		-webkit-align-items: center;
-		-moz-box-align: center;
-		-ms-flex-align: center;
-		align-items: center;
-		text-align: center;
+	.half-circle,
+	.circle {
 
-		.premium-progress-bar-left-label {
-			margin: 0;
-			float: left;
-			-webkit-box-ordinal-group: 2;
-			-webkit-order: 1;
-			-moz-box-ordinal-group: 2;
-			-ms-flex-order: 1;
-			order: 1;
-		}
+		.premium-progressbar-circle-content,
+		.block-editor-block-list__layout {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			-js-display: flex;
+			display: -webkit-box;
+			display: -webkit-flex;
+			display: -moz-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-orient: vertical;
+			-webkit-box-direction: normal;
+			-webkit-flex-direction: column;
+			-moz-box-orient: vertical;
+			-moz-box-direction: normal;
+			-ms-flex-direction: column;
+			flex-direction: column;
+			-webkit-box-pack: center;
+			-webkit-justify-content: center;
+			-moz-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			-webkit-box-align: center;
+			-webkit-align-items: center;
+			-moz-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			text-align: center;
 
-		.premium-progress-bar-right-label {
-			margin: 0;
-			float: right;
+			.premium-heading {
+				margin: 0;
+				float: left;
+				-webkit-box-ordinal-group: 2;
+				-webkit-order: 1;
+				-moz-box-ordinal-group: 2;
+				-ms-flex-order: 1;
+				order: 1;
+			}
+
+			.premium-text {
+				margin: 0;
+				float: right;
+				margin-bottom: 0 !important;
+				margin-top: 0 !important;
+			}
 		}
 	}
+
 
 	// dots Type
 	.premium-progressbar-bar-wrap {

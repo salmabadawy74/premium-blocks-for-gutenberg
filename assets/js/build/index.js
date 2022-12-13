@@ -43740,8 +43740,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pbg_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @pbg/components */ "@pbg/components");
 /* harmony import */ var _pbg_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_pbg_components__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _variations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./variations */ "./src/blocks/progress-bar/variations.js");
-/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
-/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_6__);
 
 
 
@@ -43769,10 +43767,8 @@ const {
   useRef
 } = wp.element;
 const {
-  withSelect,
-  withDispatch
+  withSelect
 } = wp.data;
-
 
 function Edit(_ref) {
   let {
@@ -44482,7 +44478,7 @@ function Edit(_ref) {
   })), renderContent()))))));
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_6__.compose)([withSelect(select => {
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (withSelect(select => {
   const {
     __experimentalGetPreviewDeviceType = null
   } = select("core/edit-post");
@@ -44490,38 +44486,7 @@ function Edit(_ref) {
   return {
     deviceType: deviceType
   };
-}), withDispatch((dispatch, ownProps, _ref2) => {
-  let {
-    select
-  } = _ref2;
-  return {
-    insertOnlyAllowedBlock() {
-      const {
-        attributes,
-        setAttributes
-      } = ownProps;
-      const template = [];
-      const Variations = [...Variations];
-      Variations.map((item, index) => {
-        const block = ["premium/text", {
-          text: item.titleText,
-          description: item.descText
-        }];
-        template.push(block);
-        repeaterItems.splice(index - 1, 1);
-
-        if (repeaterItems.length === 0) {
-          setAttributes({
-            repeaterItems: []
-          });
-          return;
-        }
-      });
-      return template;
-    }
-
-  };
-})])(Edit));
+})(Edit));
 
 /***/ }),
 
@@ -44674,27 +44639,7 @@ function save(_ref) {
   const renderContent = () => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: "premium-progressbar-circle-content"
-    }, showIcon && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InnerBlocks.Content, null), label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", {
-      className: "premium-progress-bar-left-label",
-      style: {
-        color: labelColor,
-        fontWeight: labelTypography.fontWeight,
-        fontFamily: labelTypography.fontFamily,
-        fontStyle: labelTypography.fontStyle,
-        textDecoration: labelTypography === null || labelTypography === void 0 ? void 0 : labelTypography.textDecoration,
-        textTransform: labelTypography === null || labelTypography === void 0 ? void 0 : labelTypography.textTransform
-      }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, label)), showPercentage && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", {
-      className: "premium-progress-bar-right-label",
-      style: {
-        color: percentageColor,
-        fontWeight: percentageTypography.fontWeight,
-        fontFamily: percentageTypography.fontFamily,
-        fontStyle: percentageTypography.fontStyle,
-        textDecoration: percentageTypography === null || percentageTypography === void 0 ? void 0 : percentageTypography.textDecoration,
-        textTransform: percentageTypography === null || percentageTypography === void 0 ? void 0 : percentageTypography.textTransform
-      }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, progress, "% ")));
+    }, showIcon && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InnerBlocks.Content, null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InnerBlocks.Content, null));
   };
 
   const renderDots = (numberOfCircles || []).map((item, index) => {
@@ -44718,31 +44663,9 @@ function save(_ref) {
     "data-progress": `${progress}`,
     "data-speed": `${speeds}`,
     "data-type": `${progressType}`
-  }), variation != {} && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  }), variation != {} && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, (progressType == 'line' || progressType == 'dots') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-progress-bar-${progressType}`
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InnerBlocks.Content, null)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, (progressType == 'line' || progressType == 'dots') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "premium-progress-bar-labels-wrap"
-  }, label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", {
-    className: "premium-progress-bar-left-label",
-    style: {
-      color: labelColor,
-      fontWeight: labelTypography.fontWeight,
-      fontFamily: labelTypography.fontFamily,
-      fontStyle: labelTypography.fontStyle,
-      textDecoration: labelTypography === null || labelTypography === void 0 ? void 0 : labelTypography.textDecoration,
-      textTransform: labelTypography === null || labelTypography === void 0 ? void 0 : labelTypography.textTransform
-    }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, label)), progress && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", {
-    className: "premium-progress-bar-right-label",
-    style: {
-      color: percentageColor,
-      fontWeight: percentageTypography.fontWeight,
-      fontFamily: percentageTypography.fontFamily,
-      fontStyle: percentageTypography.fontStyle,
-      textDecoration: percentageTypography === null || percentageTypography === void 0 ? void 0 : percentageTypography.textDecoration,
-      textTransform: percentageTypography === null || percentageTypography === void 0 ? void 0 : percentageTypography.textTransform
-    }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, progress, "% "))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InnerBlocks.Content, null)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "premium-progress-bar-clear"
   }), progressType == 'line' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "premium-progress-bar-wrap",
@@ -44780,7 +44703,9 @@ function save(_ref) {
     style: { ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.gradientBackground)(baseBackground),
       borderColor: borderColor
     }
-  })), renderContent()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: `${progressType}`
+  }, renderContent())), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "premium-progressbar-hf-labels"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
     className: "premium-progressbar-hf-label-left",
@@ -44828,7 +44753,9 @@ function save(_ref) {
       borderColor: fillColor // visibility: `${progress > '50' ? 'visible' : 'hidden'}`
 
     }
-  })), renderContent())))));
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: `${progressType}`
+  }, renderContent()))))));
 }
 ;
 
@@ -44846,9 +44773,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Variations": () => (/* binding */ Variations),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./block.json */ "./src/blocks/progress-bar/block.json");
 const {
   __
 } = wp.i18n;
+
+console.log(_block_json__WEBPACK_IMPORTED_MODULE_0__.attributes.progress);
 const Variations = [{
   name: 'line',
   description: __('Line'),
@@ -44865,7 +44795,7 @@ const Variations = [{
     titleTag: 'div',
     style: "default"
   }], ['premium/text', {
-    text: __('50%')
+    text: _block_json__WEBPACK_IMPORTED_MODULE_0__.attributes.progress ? _block_json__WEBPACK_IMPORTED_MODULE_0__.attributes.progress : __('50%')
   }]],
   scope: ['block']
 }, {

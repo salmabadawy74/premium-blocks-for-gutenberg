@@ -1,8 +1,8 @@
 
 
 const { __ } = wp.i18n;
-
-
+import { attributes } from "./block.json";
+console.log(attributes.progress)
 export const Variations =
     [
         {
@@ -23,7 +23,7 @@ export const Variations =
                         style: "default",
                     },
                 ],
-                ['premium/text', { text: __('50%') }],
+                ['premium/text', { text: attributes.progress ? attributes.progress : __('50%') }],
             ],
             scope: ['block'],
         },

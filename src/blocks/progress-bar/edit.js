@@ -23,8 +23,7 @@ const { __ } = wp.i18n;
 const { PanelBody, TextControl, ToggleControl, SelectControl } = wp.components;
 const { InspectorControls, RichText, useBlockProps, InnerBlocks } = wp.blockEditor;
 const { useEffect, Fragment, useRef } = wp.element;
-const { withSelect, withDispatch } = wp.data;
-import { compose } from "@wordpress/compose";
+const { withSelect } = wp.data;
 
 function Edit({ clientId, attributes, setAttributes, deviceType }) {
 
@@ -265,30 +264,6 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                     templateLock={false}
                 />
             </div>
-            {/* {label &&
-                <p
-                    className="premium-progress-bar-left-label"
-                    style={{
-                        ...typographyCss(labelTypography, deviceType),
-                        ...marginCss(labelMargin, deviceType),
-                        color: labelColor
-                    }}
-                >
-                    <span>{label}</span>
-                </p>
-            }
-            {showPercentage &&
-                < p
-                    className="premium-progress-bar-right-label"
-                    style={{
-                        ...typographyCss(percentageTypography, deviceType),
-                        ...marginCss(percentageMargin, deviceType),
-                        color: percentageColor
-                    }}
-                >
-                    <span>{progress}% </span>
-                </p>
-            } */}
         </div>
     }
 
@@ -1012,42 +987,14 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
     );
 }
 
-export default compose([
-    withSelect((select) => {
-        const { __experimentalGetPreviewDeviceType = null } =
-            select("core/edit-post");
-        let deviceType = __experimentalGetPreviewDeviceType
-            ? __experimentalGetPreviewDeviceType()
-            : null;
+export default withSelect((select) => {
+    const { __experimentalGetPreviewDeviceType = null } =
+        select("core/edit-post");
+    let deviceType = __experimentalGetPreviewDeviceType
+        ? __experimentalGetPreviewDeviceType()
+        : null;
 
-        return {
-            deviceType: deviceType,
-        };
-    }),
-    withDispatch((dispatch, ownProps, { select }) => {
-        return {
-            insertOnlyAllowedBlock() {
-                const { attributes, setAttributes } = ownProps;
-                const template = [];
-                const Variations = [...Variations];
-                Variations.map((item, index) => {
-                    const block = [
-                        "premium/text",
-                        { text: item.titleText, description: item.descText },
-                    ];
-
-                    template.push(block);
-
-                    repeaterItems.splice(index - 1, 1);
-
-                    if (repeaterItems.length === 0) {
-                        setAttributes({ repeaterItems: [] });
-                        return;
-                    }
-                });
-
-                return template;
-            },
-        };
-    }),
-])(Edit);
+    return {
+        deviceType: deviceType,
+    };
+})(Edit);

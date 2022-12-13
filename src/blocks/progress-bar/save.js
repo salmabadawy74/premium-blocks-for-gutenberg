@@ -86,36 +86,7 @@ export default function save({ attributes }) {
     const renderContent = () => {
         return <div className="premium-progressbar-circle-content">
             {showIcon && <InnerBlocks.Content />}
-            {label &&
-                <p
-                    className="premium-progress-bar-left-label"
-                    style={{
-                        color: labelColor,
-                        fontWeight: labelTypography.fontWeight,
-                        fontFamily: labelTypography.fontFamily,
-                        fontStyle: labelTypography.fontStyle,
-                        textDecoration: labelTypography?.textDecoration,
-                        textTransform: labelTypography?.textTransform
-                    }}
-                >
-                    <span>{label}</span>
-                </p>
-            }
-            {showPercentage &&
-                < p
-                    className="premium-progress-bar-right-label"
-                    style={{
-                        color: percentageColor,
-                        fontWeight: percentageTypography.fontWeight,
-                        fontFamily: percentageTypography.fontFamily,
-                        fontStyle: percentageTypography.fontStyle,
-                        textDecoration: percentageTypography?.textDecoration,
-                        textTransform: percentageTypography?.textTransform
-                    }}
-                >
-                    <span>{progress}% </span>
-                </p>
-            }
+            <InnerBlocks.Content />
         </div>
     }
 
@@ -155,42 +126,13 @@ export default function save({ attributes }) {
             data-type={`${progressType}`}
         >
             {variation != {} && <Fragment>
-                <div className={`premium-progress-bar-${progressType}`}>
+                {/* <div className={`premium-progress-bar-${progressType}`}>
                     <InnerBlocks.Content />
-                </div>
+                </div> */}
                 <div>
                     {(progressType == 'line' || progressType == 'dots') &&
-                        < div className="premium-progress-bar-labels-wrap" >
-                            {label &&
-                                <p
-                                    className="premium-progress-bar-left-label"
-                                    style={{
-                                        color: labelColor,
-                                        fontWeight: labelTypography.fontWeight,
-                                        fontFamily: labelTypography.fontFamily,
-                                        fontStyle: labelTypography.fontStyle,
-                                        textDecoration: labelTypography?.textDecoration,
-                                        textTransform: labelTypography?.textTransform
-                                    }}
-                                >
-                                    <span>{label}</span>
-                                </p>
-                            }
-                            {progress &&
-                                < p
-                                    className="premium-progress-bar-right-label"
-                                    style={{
-                                        color: percentageColor,
-                                        fontWeight: percentageTypography.fontWeight,
-                                        fontFamily: percentageTypography.fontFamily,
-                                        fontStyle: percentageTypography.fontStyle,
-                                        textDecoration: percentageTypography?.textDecoration,
-                                        textTransform: percentageTypography?.textTransform
-                                    }}
-                                >
-                                    <span>{progress}% </span>
-                                </p>
-                            }
+                        <div className={`premium-progress-bar-${progressType}`}>
+                            <InnerBlocks.Content />
                         </div>
                     }
                     <div className="premium-progress-bar-clear"></div>
@@ -250,7 +192,9 @@ export default function save({ attributes }) {
                                         }}
                                     ></div>
                                 </div>
-                                {renderContent()}
+                                <div className={`${progressType}`}>
+                                    {renderContent()}
+                                </div>
                             </div>
                             <div
                                 className="premium-progressbar-hf-labels"
@@ -313,7 +257,9 @@ export default function save({ attributes }) {
                                         }}
                                     ></div>
                                 </div>
-                                {renderContent()}
+                                <div className={`${progressType}`}>
+                                    {renderContent()}
+                                </div>
                             </div>
                         </div>
                     }
