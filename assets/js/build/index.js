@@ -43740,6 +43740,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pbg_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @pbg/components */ "@pbg/components");
 /* harmony import */ var _pbg_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_pbg_components__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _variations__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./variations */ "./src/blocks/progress-bar/variations.js");
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_6__);
 
 
 
@@ -43767,8 +43769,10 @@ const {
   useRef
 } = wp.element;
 const {
-  withSelect
+  withSelect,
+  withDispatch
 } = wp.data;
+
 
 function Edit(_ref) {
   let {
@@ -43991,25 +43995,16 @@ function Edit(_ref) {
   };
 
   const renderContent = () => {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-      className: "premium-progressbar-circle-content"
-    }, showIcon && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InnerBlocks, {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", null, showIcon && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InnerBlocks, {
       template: INNER_BLOCKS_TEMPLATE,
       templateLock: false,
       allowedBlocks: ["premium/icon"]
-    }), label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", {
-      className: "premium-progress-bar-left-label",
-      style: { ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.typographyCss)(labelTypography, deviceType),
-        ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.marginCss)(labelMargin, deviceType),
-        color: labelColor
-      }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, label)), showPercentage && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", {
-      className: "premium-progress-bar-right-label",
-      style: { ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.typographyCss)(percentageTypography, deviceType),
-        ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.marginCss)(percentageMargin, deviceType),
-        color: percentageColor
-      }
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, progress, "% ")));
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      className: `${progressType}`
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InnerBlocks, {
+      template: variation.innerBlocks,
+      templateLock: false
+    })));
   };
 
   const renderDots = (numberOfCircles || []).map((item, index) => {
@@ -44361,34 +44356,18 @@ function Edit(_ref) {
     setAttributes: setAttributes,
     variations: _variations__WEBPACK_IMPORTED_MODULE_5__.Variations,
     onSelect: onSelectVariations
-  }), variation != {} && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: `premium-progress-bar-${progressType}`
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InnerBlocks, {
-    template: variation.innerBlocks,
-    templateLock: false
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", {
+  }), variation != {} && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: loadStyles()
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     ref: contentRef
   }, (progressType == 'line' || progressType == 'dots') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "premium-progress-bar-labels-wrap"
-  }, label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", {
-    className: "premium-progress-bar-left-label",
-    style: { ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.typographyCss)(labelTypography, deviceType),
-      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.marginCss)(labelMargin, deviceType),
-      color: labelColor
-    }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, label)), progress && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", {
-    className: "premium-progress-bar-right-label",
-    style: { ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.typographyCss)(percentageTypography, deviceType),
-      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.marginCss)(percentageMargin, deviceType),
-      color: percentageColor
-    }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, progress, "% "))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "premium-progress-bar-clear"
-  }), progressType == 'line' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: `${progressType}`
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InnerBlocks, {
+    template: variation.innerBlocks,
+    templateLock: false
+  })), progressType == 'line' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "premium-progress-bar-wrap",
     style: { ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.gradientBackground)(baseBackground),
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.marginCss)(progressBarMargin, deviceType),
@@ -44503,7 +44482,7 @@ function Edit(_ref) {
   })), renderContent()))))));
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (withSelect(select => {
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_6__.compose)([withSelect(select => {
   const {
     __experimentalGetPreviewDeviceType = null
   } = select("core/edit-post");
@@ -44511,7 +44490,38 @@ function Edit(_ref) {
   return {
     deviceType: deviceType
   };
-})(Edit));
+}), withDispatch((dispatch, ownProps, _ref2) => {
+  let {
+    select
+  } = _ref2;
+  return {
+    insertOnlyAllowedBlock() {
+      const {
+        attributes,
+        setAttributes
+      } = ownProps;
+      const template = [];
+      const Variations = [...Variations];
+      Variations.map((item, index) => {
+        const block = ["premium/text", {
+          text: item.titleText,
+          description: item.descText
+        }];
+        template.push(block);
+        repeaterItems.splice(index - 1, 1);
+
+        if (repeaterItems.length === 0) {
+          setAttributes({
+            repeaterItems: []
+          });
+          return;
+        }
+      });
+      return template;
+    }
+
+  };
+})])(Edit));
 
 /***/ }),
 

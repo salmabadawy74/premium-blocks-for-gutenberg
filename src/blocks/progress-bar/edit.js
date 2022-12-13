@@ -23,7 +23,8 @@ const { __ } = wp.i18n;
 const { PanelBody, TextControl, ToggleControl, SelectControl } = wp.components;
 const { InspectorControls, RichText, useBlockProps, InnerBlocks } = wp.blockEditor;
 const { useEffect, Fragment, useRef } = wp.element;
-const { withSelect } = wp.data;
+const { withSelect, withDispatch } = wp.data;
+import { compose } from "@wordpress/compose";
 
 function Edit({ clientId, attributes, setAttributes, deviceType }) {
 
@@ -252,13 +253,19 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
     };
 
     const renderContent = () => {
-        return <div className="premium-progressbar-circle-content">
+        return <div>
             {showIcon && <InnerBlocks
                 template={INNER_BLOCKS_TEMPLATE}
                 templateLock={false}
                 allowedBlocks={["premium/icon"]}
             />}
-            {label &&
+            <div className={`${progressType}`}>
+                <InnerBlocks
+                    template={variation.innerBlocks}
+                    templateLock={false}
+                />
+            </div>
+            {/* {label &&
                 <p
                     className="premium-progress-bar-left-label"
                     style={{
@@ -281,7 +288,7 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                 >
                     <span>{progress}% </span>
                 </p>
-            }
+            } */}
         </div>
     }
 
@@ -824,12 +831,12 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                 />
                 }
                 {variation != {} && <Fragment>
-                    <div className={`premium-progress-bar-${progressType}`}>
+                    {/* <div className={`${progressType}`}>
                         <InnerBlocks
                             template={variation.innerBlocks}
                             templateLock={false}
                         />
-                    </div>
+                    </div> */}
                     <style
                         dangerouslySetInnerHTML={{
                             __html: loadStyles(),
@@ -837,34 +844,14 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                     />
                     <div ref={contentRef}>
                         {(progressType == 'line' || progressType == 'dots') &&
-                            < div className="premium-progress-bar-labels-wrap">
-                                {label &&
-                                    <p
-                                        className="premium-progress-bar-left-label"
-                                        style={{
-                                            ...typographyCss(labelTypography, deviceType),
-                                            ...marginCss(labelMargin, deviceType),
-                                            color: labelColor
-                                        }}
-                                    >
-                                        <span>{label}</span>
-                                    </p>
-                                }
-                                {progress &&
-                                    < p
-                                        className="premium-progress-bar-right-label"
-                                        style={{
-                                            ...typographyCss(percentageTypography, deviceType),
-                                            ...marginCss(percentageMargin, deviceType),
-                                            color: percentageColor
-                                        }}
-                                    >
-                                        <span>{progress}% </span>
-                                    </p>
-                                }
+                            <div className={`${progressType}`}>
+                                <InnerBlocks
+                                    template={variation.innerBlocks}
+                                    templateLock={false}
+                                />
                             </div>
                         }
-                        <div className="premium-progress-bar-clear"></div>
+                        {/* <div className="premium-progress-bar-clear"></div> */}
                         {progressType == 'line' &&
                             <div
                                 className="premium-progress-bar-wrap"
@@ -1020,19 +1007,47 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                     </div>
                 </Fragment>
                 }
-            </div>
-        </Fragment>
+            </div >
+        </Fragment >
     );
 }
 
-export default withSelect((select) => {
-    const { __experimentalGetPreviewDeviceType = null } =
-        select("core/edit-post");
-    let deviceType = __experimentalGetPreviewDeviceType
-        ? __experimentalGetPreviewDeviceType()
-        : null;
+export default compose([
+    withSelect((select) => {
+        const { __experimentalGetPreviewDeviceType = null } =
+            select("core/edit-post");
+        let deviceType = __experimentalGetPreviewDeviceType
+            ? __experimentalGetPreviewDeviceType()
+            : null;
 
-    return {
-        deviceType: deviceType,
-    };
-})(Edit);
+        return {
+            deviceType: deviceType,
+        };
+    }),
+    withDispatch((dispatch, ownProps, { select }) => {
+        return {
+            insertOnlyAllowedBlock() {
+                const { attributes, setAttributes } = ownProps;
+                const template = [];
+                const Variations = [...Variations];
+                Variations.map((item, index) => {
+                    const block = [
+                        "premium/text",
+                        { text: item.titleText, description: item.descText },
+                    ];
+
+                    template.push(block);
+
+                    repeaterItems.splice(index - 1, 1);
+
+                    if (repeaterItems.length === 0) {
+                        setAttributes({ repeaterItems: [] });
+                        return;
+                    }
+                });
+
+                return template;
+            },
+        };
+    }),
+])(Edit);
