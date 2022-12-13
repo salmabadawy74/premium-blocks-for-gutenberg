@@ -1,6 +1,6 @@
 import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
 import classnames from "classnames";
-import { filterJsCss } from '@pbg/helpers';
+import { filterJsCss, generateCss } from '@pbg/helpers';
 
 export default function save({ attributes }) {
     const {

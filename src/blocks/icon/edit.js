@@ -540,6 +540,7 @@ function Edit(props) {
                                 style={{
                                     color: iconStyles[0].iconColor,
                                     backgroundColor: iconStyles[0].iconBack,
+                                    cursor: urlCheck ? 'pointer' : 'default',
                                     fontSize:
                                         (iconSize[props.deviceType] || 50) +
                                         iconSize.unit,

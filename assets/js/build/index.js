@@ -36102,7 +36102,7 @@ function save(_ref) {
       color: `${groupIconHoverColor} !important`,
       "background-color": `${groupIconHoverBack} !important`
     };
-    return generateCss(styles);
+    return (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.generateCss)(styles);
   };
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, loadStyles()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -37927,6 +37927,7 @@ function Edit(props) {
     style: {
       color: iconStyles[0].iconColor,
       backgroundColor: iconStyles[0].iconBack,
+      cursor: urlCheck ? 'pointer' : 'default',
       fontSize: (iconSize[props.deviceType] || 50) + iconSize.unit,
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.borderCss)(iconBorder, props.deviceType),
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.paddingCss)(iconPadding, props.deviceType),
