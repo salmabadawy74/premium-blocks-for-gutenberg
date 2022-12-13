@@ -25225,6 +25225,8 @@ function Edit(props) {
     secondHeading,
     display,
     titleTag,
+    firstTag,
+    secondTag,
     firstStyles,
     secondStyles,
     link,
@@ -25308,7 +25310,6 @@ function Edit(props) {
     });
   };
 
-  const CustomTag = `${titleTag}`;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InspectorControls, {
     key: "inspector"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.InspectorTabs, {
@@ -25339,11 +25340,36 @@ function Edit(props) {
       value: "h6",
       label: __("H6", "premium-blocks-for-gutenberg")
     }],
-    value: titleTag,
+    value: firstTag,
     onChange: newValue => setAttributes({
-      titleTag: newValue
+      firstTag: newValue
     }),
-    label: __(" HTML Tag", "premium-blocks-for-gutenberg")
+    label: __("First HTML Tag", "premium-blocks-for-gutenberg")
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.RadioComponent, {
+    choices: [{
+      value: "h1",
+      label: __("H1", "premium-blocks-for-gutenberg")
+    }, {
+      value: "h2",
+      label: __("H2", "premium-blocks-for-gutenberg")
+    }, {
+      value: "h3",
+      label: __("H3", "premium-blocks-for-gutenberg")
+    }, {
+      value: "h4",
+      label: __("H4", "premium-blocks-for-gutenberg")
+    }, {
+      value: "h5",
+      label: __("H5", "premium-blocks-for-gutenberg")
+    }, {
+      value: "h6",
+      label: __("H6", "premium-blocks-for-gutenberg")
+    }],
+    value: secondTag,
+    onChange: newValue => setAttributes({
+      secondTag: newValue
+    }),
+    label: __(" Second HTML Tag", "premium-blocks-for-gutenberg")
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(SelectControl, {
     label: __("Display", "premium-blocks-for-gutenberg"),
     value: display,
@@ -25597,7 +25623,7 @@ function Edit(props) {
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-dheading-block__wrap`
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(CustomTag, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-dheading-block__title`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RichText, {
     className: `premium-dheading-block__first${firstStyles !== null && firstStyles !== void 0 && (_firstStyles$11 = firstStyles[0]) !== null && _firstStyles$11 !== void 0 && _firstStyles$11.firstClip ? ` premium-headingc-${firstStyles === null || firstStyles === void 0 ? void 0 : (_firstStyles$12 = firstStyles[0]) === null || _firstStyles$12 === void 0 ? void 0 : _firstStyles$12.firstClip}` : ""}${firstStyles !== null && firstStyles !== void 0 && (_firstStyles$13 = firstStyles[0]) !== null && _firstStyles$13 !== void 0 && _firstStyles$13.firstAnim ? ` premium-headinga-${firstStyles === null || firstStyles === void 0 ? void 0 : (_firstStyles$14 = firstStyles[0]) === null || _firstStyles$14 === void 0 ? void 0 : _firstStyles$14.firstAnim}` : ""}${firstStyles !== null && firstStyles !== void 0 && (_firstStyles$15 = firstStyles[0]) !== null && _firstStyles$15 !== void 0 && _firstStyles$15.firstStroke ? ` premium-headings-${firstStyles === null || firstStyles === void 0 ? void 0 : (_firstStyles$16 = firstStyles[0]) === null || _firstStyles$16 === void 0 ? void 0 : _firstStyles$16.firstStroke}` : ""}`,
@@ -25616,7 +25642,7 @@ function Edit(props) {
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.paddingCss)(firstPadding, props.deviceType),
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.borderCss)(firstBorder, props.deviceType)
     },
-    tagName: "span"
+    tagName: firstTag
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RichText, {
     className: `premium-dheading-block__second${secondStyles !== null && secondStyles !== void 0 && (_secondStyles$11 = secondStyles[0]) !== null && _secondStyles$11 !== void 0 && _secondStyles$11.secondClip ? `${` premium-headingc-${secondStyles === null || secondStyles === void 0 ? void 0 : (_secondStyles$12 = secondStyles[0]) === null || _secondStyles$12 === void 0 ? void 0 : _secondStyles$12.secondClip}`}` : ""}${secondStyles !== null && secondStyles !== void 0 && (_secondStyles$13 = secondStyles[0]) !== null && _secondStyles$13 !== void 0 && _secondStyles$13.secondAnim ? ` ${`premium-headinga-${secondStyles === null || secondStyles === void 0 ? void 0 : (_secondStyles$14 = secondStyles[0]) === null || _secondStyles$14 === void 0 ? void 0 : _secondStyles$14.secondAnim} `}` : ""}${secondStyles !== null && secondStyles !== void 0 && (_secondStyles$15 = secondStyles[0]) !== null && _secondStyles$15 !== void 0 && _secondStyles$15.secondStroke ? ` premium-headings-${secondStyles === null || secondStyles === void 0 ? void 0 : (_secondStyles$16 = secondStyles[0]) === null || _secondStyles$16 === void 0 ? void 0 : _secondStyles$16.secondStroke}` : ""}`,
     value: secondHeading,
@@ -25634,7 +25660,7 @@ function Edit(props) {
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.paddingCss)(secondPadding, props.deviceType),
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.borderCss)(secondBorder, props.deviceType)
     },
-    tagName: "span"
+    tagName: secondTag
   }))), link && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(URLInput, {
     value: headingURL,
     onChange: newUrl => setAttributes({
@@ -25731,6 +25757,8 @@ const save = props => {
     secondHeading,
     display,
     titleTag,
+    firstTag,
+    secondTag,
     firstStyles,
     secondStyles,
     link,
@@ -25748,7 +25776,6 @@ const save = props => {
     firstShadow,
     secondShadow
   } = props.attributes;
-  const CustomTag = `${titleTag}`;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, useBlockProps.save({
     className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, `premium-dheading-block__container ${blockId}`, {
       " premium-desktop-hidden": hideDesktop,
@@ -25763,12 +25790,12 @@ const save = props => {
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-dheading-block__wrap`
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(CustomTag, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-dheading-block__title`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RichText.Content, {
     className: `premium-dheading-block__first${firstStyles !== null && firstStyles !== void 0 && (_firstStyles$ = firstStyles[0]) !== null && _firstStyles$ !== void 0 && _firstStyles$.firstClip ? ` premium-headingc-${firstStyles === null || firstStyles === void 0 ? void 0 : (_firstStyles$2 = firstStyles[0]) === null || _firstStyles$2 === void 0 ? void 0 : _firstStyles$2.firstClip}` : ""}${firstStyles !== null && firstStyles !== void 0 && (_firstStyles$3 = firstStyles[0]) !== null && _firstStyles$3 !== void 0 && _firstStyles$3.firstAnim ? ` premium-headinga-${firstStyles === null || firstStyles === void 0 ? void 0 : (_firstStyles$4 = firstStyles[0]) === null || _firstStyles$4 === void 0 ? void 0 : _firstStyles$4.firstAnim}` : ""}${firstStyles !== null && firstStyles !== void 0 && (_firstStyles$5 = firstStyles[0]) !== null && _firstStyles$5 !== void 0 && _firstStyles$5.firstStroke ? ` premium-headings-${firstStyles === null || firstStyles === void 0 ? void 0 : (_firstStyles$6 = firstStyles[0]) === null || _firstStyles$6 === void 0 ? void 0 : _firstStyles$6.firstStroke}` : ""}`,
     value: firstHeading,
-    tagName: "span",
+    tagName: firstTag,
     style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       display: display,
       color: firstStyles[0].firstColor,
@@ -25785,7 +25812,7 @@ const save = props => {
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RichText.Content, {
     className: `premium-dheading-block__second${secondStyles !== null && secondStyles !== void 0 && (_secondStyles$ = secondStyles[0]) !== null && _secondStyles$ !== void 0 && _secondStyles$.secondClip ? `${` premium-headingc-${secondStyles === null || secondStyles === void 0 ? void 0 : (_secondStyles$2 = secondStyles[0]) === null || _secondStyles$2 === void 0 ? void 0 : _secondStyles$2.secondClip}`}` : ""}${secondStyles !== null && secondStyles !== void 0 && (_secondStyles$3 = secondStyles[0]) !== null && _secondStyles$3 !== void 0 && _secondStyles$3.secondAnim ? ` ${`premium-headinga-${secondStyles === null || secondStyles === void 0 ? void 0 : (_secondStyles$4 = secondStyles[0]) === null || _secondStyles$4 === void 0 ? void 0 : _secondStyles$4.secondAnim} `}` : ""}${secondStyles !== null && secondStyles !== void 0 && (_secondStyles$5 = secondStyles[0]) !== null && _secondStyles$5 !== void 0 && _secondStyles$5.secondStroke ? ` premium-headings-${secondStyles === null || secondStyles === void 0 ? void 0 : (_secondStyles$6 = secondStyles[0]) === null || _secondStyles$6 === void 0 ? void 0 : _secondStyles$6.secondStroke}` : ""}`,
-    tagName: "span",
+    tagName: secondTag,
     value: secondHeading,
     style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       display: display,

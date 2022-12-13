@@ -11,6 +11,9 @@ const save = (props) => {
         secondHeading,
         display,
         titleTag,
+        firstTag,
+        secondTag,
+
         firstStyles,
         secondStyles,
         link,
@@ -28,7 +31,6 @@ const save = (props) => {
         firstShadow,
         secondShadow,
     } = props.attributes;
-    const CustomTag = `${titleTag}`;
 
     return (
         <div
@@ -50,7 +52,7 @@ const save = (props) => {
             }}
         >
             <div className={`premium-dheading-block__wrap`}>
-                <CustomTag className={`premium-dheading-block__title`}>
+                <div className={`premium-dheading-block__title`}>
                     <RichText.Content
                         className={`premium-dheading-block__first${
                             firstStyles?.[0]?.firstClip
@@ -66,7 +68,7 @@ const save = (props) => {
                                 : ""
                         }`}
                         value={firstHeading}
-                        tagName="span"
+                        tagName={firstTag}
                         style={filterJsCss({
                             display: display,
                             color: firstStyles[0].firstColor,
@@ -100,7 +102,7 @@ const save = (props) => {
                                 ? ` premium-headings-${secondStyles?.[0]?.secondStroke}`
                                 : ""
                         }`}
-                        tagName="span"
+                        tagName={secondTag}
                         value={secondHeading}
                         style={filterJsCss({
                             display: display,
@@ -123,7 +125,7 @@ const save = (props) => {
                             textShadow: `${secondShadow?.horizontal}px ${secondShadow?.vertical}px ${secondShadow?.blur}px ${secondShadow?.color}`,
                         })}
                     />
-                </CustomTag>
+                </div>
                 {link && headingURL && (
                     <a
                         className={`premium-dheading-block__link`}

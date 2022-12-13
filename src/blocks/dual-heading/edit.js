@@ -45,6 +45,8 @@ function Edit(props) {
         secondHeading,
         display,
         titleTag,
+        firstTag,
+        secondTag,
         firstStyles,
         secondStyles,
         link,
@@ -127,7 +129,6 @@ function Edit(props) {
         });
     };
 
-    const CustomTag = `${titleTag}`;
     return (
         <Fragment>
             <InspectorControls key={"inspector"}>
@@ -186,15 +187,70 @@ function Edit(props) {
                                         ),
                                     },
                                 ]}
-                                value={titleTag}
+                                value={firstTag}
                                 onChange={(newValue) =>
-                                    setAttributes({ titleTag: newValue })
+                                    setAttributes({ firstTag: newValue })
                                 }
                                 label={__(
-                                    " HTML Tag",
+                                    "First HTML Tag",
                                     "premium-blocks-for-gutenberg"
                                 )}
                             />
+                            <RadioComponent
+                                choices={[
+                                    {
+                                        value: "h1",
+                                        label: __(
+                                            "H1",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                    },
+                                    {
+                                        value: "h2",
+                                        label: __(
+                                            "H2",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                    },
+                                    {
+                                        value: "h3",
+                                        label: __(
+                                            "H3",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                    },
+                                    {
+                                        value: "h4",
+                                        label: __(
+                                            "H4",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                    },
+                                    {
+                                        value: "h5",
+                                        label: __(
+                                            "H5",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                    },
+                                    {
+                                        value: "h6",
+                                        label: __(
+                                            "H6",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                    },
+                                ]}
+                                value={secondTag}
+                                onChange={(newValue) =>
+                                    setAttributes({ secondTag: newValue })
+                                }
+                                label={__(
+                                    " Second HTML Tag",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                            />
+
                             <SelectControl
                                 label={__(
                                     "Display",
@@ -695,7 +751,7 @@ function Edit(props) {
                 }}
             >
                 <div className={`premium-dheading-block__wrap`}>
-                    <CustomTag className={`premium-dheading-block__title`}>
+                    <div className={`premium-dheading-block__title`}>
                         <RichText
                             className={`premium-dheading-block__first${
                                 firstStyles?.[0]?.firstClip
@@ -732,7 +788,7 @@ function Edit(props) {
                                 ...paddingCss(firstPadding, props.deviceType),
                                 ...borderCss(firstBorder, props.deviceType),
                             }}
-                            tagName="span"
+                            tagName={firstTag}
                         />
                         <RichText
                             className={`premium-dheading-block__second${
@@ -770,9 +826,9 @@ function Edit(props) {
                                 ...paddingCss(secondPadding, props.deviceType),
                                 ...borderCss(secondBorder, props.deviceType),
                             }}
-                            tagName="span"
+                            tagName={secondTag}
                         />
-                    </CustomTag>
+                    </div>
                 </div>
                 {link && (
                     <URLInput
