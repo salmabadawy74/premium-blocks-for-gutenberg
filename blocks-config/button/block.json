@@ -32,10 +32,7 @@
             }
         },
         "btnLink": {
-            "type": "string",
-            "source": "attribute",
-            "attribute": "href",
-            "selector": ".premium-button"
+            "type": "string"
         },
         "btnTarget": {
             "type": "boolean",
@@ -264,7 +261,7 @@
                 "vertical": "0"
             }
         },
-                "backgroundOptions": {
+        "backgroundOptions": {
             "type": "object",
             "default": {
                 "backgroundType": "",
@@ -283,11 +280,18 @@
                 "gradientPosition": "center center"
             }
         },
-        "backgroundPresets":{
-            "type":"string",
-            "default":""
+        "backgroundPresets": {
+            "type": "string",
+            "default": ""
+        },
+        "optionsLock": {
+            "type": "object",
+            "default": {
+                "text": false,
+                "link": false,
+                "align": false
+            }
         }
-
     },
     "editorScript": "pbg-blocks-js",
     "editorStyle": "premium-blocks-editor-css"

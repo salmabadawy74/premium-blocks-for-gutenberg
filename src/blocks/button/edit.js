@@ -77,6 +77,7 @@ function Edit(props) {
         iconShadow,
         backgroundOptions,
         backgroundPresets,
+        optionsLock
     } = props.attributes;
 
     const SIZE = [
@@ -396,7 +397,7 @@ function Edit(props) {
                                     setAttributes({ btnTarget: newValue })
                                 }
                             />
-                            {"block" != btnSize && (
+                            {("block" != btnSize && !optionsLock?.align) && (
                                 <MultiButtonsControl
                                     choices={[
                                         {
@@ -525,13 +526,13 @@ function Edit(props) {
                                             label={
                                                 "radial" !== effect
                                                     ? __(
-                                                          "Background Color",
-                                                          "premium-blocks-for-gutenberg"
-                                                      )
+                                                        "Background Color",
+                                                        "premium-blocks-for-gutenberg"
+                                                    )
                                                     : __(
-                                                          "Background Color",
-                                                          "premium-blocks-for-gutenberg"
-                                                      )
+                                                        "Background Color",
+                                                        "premium-blocks-for-gutenberg"
+                                                    )
                                             }
                                             colorValue={
                                                 btnStyles[0].backHoverColor
@@ -787,21 +788,37 @@ function Edit(props) {
                                     }}
                                 ></i>
                             )}
-                            <RichText
-                                value={btnText}
-                                onChange={(value) =>
-                                    setAttributes({ btnText: value })
-                                }
-                                style={{
-                                    textShadow: `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`,
-                                    ...typographyCss(
-                                        typography,
-                                        props.deviceType
-                                    ),
-                                    display: "inline",
-                                }}
-                                keepPlaceholderOnFocus
-                            />
+                            {!optionsLock?.text && (
+                                <RichText
+                                    value={btnText}
+                                    onChange={(value) =>
+                                        setAttributes({ btnText: value })
+                                    }
+                                    style={{
+                                        textShadow: `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`,
+                                        ...typographyCss(
+                                            typography,
+                                            props.deviceType
+                                        ),
+                                        display: "inline",
+                                    }}
+                                    keepPlaceholderOnFocus
+                                />
+                            )}
+                            {optionsLock?.text && (
+                                <div
+                                    style={{
+                                        textShadow: `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`,
+                                        ...typographyCss(
+                                            typography,
+                                            props.deviceType
+                                        ),
+                                        display: "inline",
+                                    }}
+                                >
+                                    {btnText}
+                                </div>
+                            )}
                             {showIcon && iconPosition == "after" && (
                                 <i
                                     className={`premium-button-icon ${icon}`}
@@ -827,10 +844,12 @@ function Edit(props) {
                         </Fragment>,
                     ]
                 )}
-                <URLInput
-                    value={btnLink}
-                    onChange={(newLink) => setAttributes({ btnLink: newLink })}
-                />
+                {!optionsLock?.link && (
+                    <URLInput
+                        value={btnLink}
+                        onChange={(newLink) => setAttributes({ btnLink: newLink })}
+                    />
+                )}
                 {loadBtnGoogleFonts}
             </div>
         </Fragment>
