@@ -3333,22 +3333,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 const fonts = {
-  Arial: {
-    weight: ["Default", "100", "200", "300", "400", "500", "600", "700", "800", "900"],
-    google: !1
-  },
-  Georgia: {
-    weight: ["Default", "100", "200", "300", "400", "500", "600", "700", "800", "900"],
-    google: !1
-  },
-  Helvetica: {
-    weight: ["Default", "100", "200", "300", "400", "500", "600", "700", "800", "900"],
-    google: !1
-  },
-  "Times New Roman": {
-    weight: ["Default", "100", "200", "300", "400", "500", "600", "700", "800", "900"],
-    google: !1
-  },
   ABeeZee: {
     v: ["regular", "italic"],
     subset: ["latin"],
@@ -7441,6 +7425,12 @@ const fonts = {
     weight: ["Default", "400"],
     i: ["normal", "italic"]
   },
+  "Plus Jakarta Sans": {
+    v: ["300", "regular", "500", "600", "700"],
+    subset: ["latin-ext", "devanagari", "latin"],
+    weight: ["Default", "300", "400", "500", "600", "700"],
+    i: ["normal"]
+  },
   Rajdhani: {
     v: ["300", "regular", "500", "600", "700"],
     subset: ["latin-ext", "devanagari", "latin"],
@@ -7577,30 +7567,6 @@ const fonts = {
     v: ["regular"],
     subset: ["latin-ext", "latin"],
     weight: ["Default", "400"],
-    i: ["normal"]
-  },
-  Roboto: {
-    v: ["100", "100italic", "300", "300italic", "regular", "italic", "500", "500italic", "700", "700italic", "900", "900italic"],
-    subset: ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"],
-    weight: ["Default", "100", "300", "400", "500", "700", "900"],
-    i: ["normal", "italic"]
-  },
-  "Roboto Condensed": {
-    v: ["300", "300italic", "regular", "italic", "700", "700italic"],
-    subset: ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"],
-    weight: ["Default", "300", "400", "700"],
-    i: ["normal", "italic"]
-  },
-  "Roboto Mono": {
-    v: ["100", "100italic", "300", "300italic", "regular", "italic", "500", "500italic", "700", "700italic"],
-    subset: ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"],
-    weight: ["Default", "100", "300", "400", "500", "700"],
-    i: ["normal", "italic"]
-  },
-  "Roboto Slab": {
-    v: ["100", "300", "regular", "700"],
-    subset: ["cyrillic", "cyrillic-ext", "greek-ext", "latin-ext", "greek", "vietnamese", "latin"],
-    weight: ["Default", "100", "300", "400", "700"],
     i: ["normal"]
   },
   Rochester: {

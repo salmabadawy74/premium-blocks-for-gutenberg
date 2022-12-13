@@ -12,6 +12,7 @@ import {
     PremiumBackgroundControl,
     Icons,
     WebfontLoader,
+    RadioComponent,
 } from "@pbg/components";
 import {
     gradientBackground,
@@ -43,6 +44,7 @@ function Edit(props) {
         firstHeading,
         secondHeading,
         display,
+        titleTag,
         firstStyles,
         secondStyles,
         link,
@@ -125,6 +127,7 @@ function Edit(props) {
         });
     };
 
+    const CustomTag = `${titleTag}`;
     return (
         <Fragment>
             <InspectorControls key={"inspector"}>
@@ -138,6 +141,60 @@ function Edit(props) {
                             className="premium-panel-body"
                             initialOpen={true}
                         >
+                            <RadioComponent
+                                choices={[
+                                    {
+                                        value: "h1",
+                                        label: __(
+                                            "H1",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                    },
+                                    {
+                                        value: "h2",
+                                        label: __(
+                                            "H2",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                    },
+                                    {
+                                        value: "h3",
+                                        label: __(
+                                            "H3",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                    },
+                                    {
+                                        value: "h4",
+                                        label: __(
+                                            "H4",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                    },
+                                    {
+                                        value: "h5",
+                                        label: __(
+                                            "H5",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                    },
+                                    {
+                                        value: "h6",
+                                        label: __(
+                                            "H6",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                    },
+                                ]}
+                                value={titleTag}
+                                onChange={(newValue) =>
+                                    setAttributes({ titleTag: newValue })
+                                }
+                                label={__(
+                                    " HTML Tag",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                            />
                             <SelectControl
                                 label={__(
                                     "Display",
@@ -638,7 +695,7 @@ function Edit(props) {
                 }}
             >
                 <div className={`premium-dheading-block__wrap`}>
-                    <h2 className={`premium-dheading-block__title`}>
+                    <CustomTag className={`premium-dheading-block__title`}>
                         <RichText
                             className={`premium-dheading-block__first${
                                 firstStyles?.[0]?.firstClip
@@ -715,7 +772,7 @@ function Edit(props) {
                             }}
                             tagName="span"
                         />
-                    </h2>
+                    </CustomTag>
                 </div>
                 {link && (
                     <URLInput
@@ -733,8 +790,9 @@ function Edit(props) {
 }
 
 export default withSelect((select) => {
-    const { __experimentalGetPreviewDeviceType = null } =
-        select("core/edit-post");
+    const { __experimentalGetPreviewDeviceType = null } = select(
+        "core/edit-post"
+    );
     let deviceType = __experimentalGetPreviewDeviceType
         ? __experimentalGetPreviewDeviceType()
         : null;
