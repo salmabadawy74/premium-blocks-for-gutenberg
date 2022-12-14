@@ -13,7 +13,8 @@ export default function save({ attributes }) {
         groupIconColor,
         groupIconBack,
         groupIconHoverColor,
-        groupIconHoverBack
+        groupIconHoverBack,
+        hoverEffect
     } = attributes;
 
     const blockProps = useBlockProps.save({
@@ -38,7 +39,7 @@ export default function save({ attributes }) {
     return <div {...blockProps}>
         <style>{loadStyles()}</style>
         <div
-            className={`premium-icon-group-${groupAlign}`}
+            className={`premium-icon-group-${groupAlign} premium-icon__${hoverEffect}`}
             style={filterJsCss({
                 borderStyle: groupIconBorder?.borderType,
                 borderColor: groupIconBorder?.borderColor,

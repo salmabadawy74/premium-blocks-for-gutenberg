@@ -35982,7 +35982,7 @@ function Edit(props) {
       textAlign: align[props.deviceType]
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", null, loadStyles()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: `premium-icon-group-${groupAlign}`,
+    className: `premium-icon-group-${groupAlign} premium-icon__${hoverEffect}`,
     style: { ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.borderCss)(groupIconBorder, props.deviceType),
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.paddingCss)(groupIconPadding, props.deviceType),
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.marginCss)(groupIconMargin, props.deviceType),
@@ -36086,7 +36086,8 @@ function save(_ref) {
     groupIconColor,
     groupIconBack,
     groupIconHoverColor,
-    groupIconHoverBack
+    groupIconHoverBack,
+    hoverEffect
   } = attributes;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
     className: classnames__WEBPACK_IMPORTED_MODULE_2___default()('premium-icon-group', blockId, {
@@ -36106,7 +36107,7 @@ function save(_ref) {
   };
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, loadStyles()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `premium-icon-group-${groupAlign}`,
+    className: `premium-icon-group-${groupAlign} premium-icon__${hoverEffect}`,
     style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       borderStyle: groupIconBorder === null || groupIconBorder === void 0 ? void 0 : groupIconBorder.borderType,
       borderColor: groupIconBorder === null || groupIconBorder === void 0 ? void 0 : groupIconBorder.borderColor,

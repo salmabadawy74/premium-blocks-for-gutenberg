@@ -341,7 +341,7 @@ function Edit(props) {
             >
                 <style>{loadStyles()}</style>
                 <div
-                    className={`premium-icon-group-${groupAlign}`}
+                    className={`premium-icon-group-${groupAlign} premium-icon__${hoverEffect}`}
                     style={{
                         ...borderCss(groupIconBorder, props.deviceType),
                         ...paddingCss(groupIconPadding, props.deviceType),
