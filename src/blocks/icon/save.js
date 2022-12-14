@@ -1,6 +1,7 @@
 import classnames from 'classnames'
 import { useBlockProps } from "@wordpress/block-editor";
 import { gradientBackground, filterJsCss, generateCss } from '@pbg/helpers';
+import { DefaultImage } from '@pbg/components';
 
 const save = props => {
 
@@ -22,7 +23,9 @@ const save = props => {
         containerBackground,
         containerShadow,
         iconShadow,
-        borderHoverColor
+        borderHoverColor,
+        iconTypeFile,
+        imageURL,
     } = props.attributes;
 
     const loadStyles = () => {
@@ -31,6 +34,10 @@ const save = props => {
             'color': `${iconStyles[0].iconHoverColor} !important`,
             'background-color': `${iconStyles[0].iconHoverBack} !important`,
             "border-color": `${borderHoverColor}!important`
+        };
+        styles[` .${blockId} .premium-icon-container img`] = {
+            'border-color': `${iconBorder && iconBorder.borderColor} !important`,
+            'border-style': `${iconBorder && iconBorder.borderType} !important`,
         };
         return generateCss(styles);
     }
@@ -70,7 +77,7 @@ const save = props => {
                     target={target ? "_blank" : "_self"}
                 >
                     <div className={`premium-icon-hover premium-icon__${hoverEffect}`}>
-                        <i
+                        {"icon" === iconTypeFile && <i
                             className={`premium-icon ${selectedIcon}`}
                             style={filterJsCss({
                                 color: iconStyles[0].iconColor,
@@ -80,6 +87,11 @@ const save = props => {
                                 textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`
                             })}
                         />
+                        }
+                        {imageURL && "img" === iconTypeFile && (
+                            <img src={imageURL} />
+                        )}
+                        {!imageURL && "img" === iconTypeFile && <DefaultImage className={className} />}
                     </div>
                 </a>
             </div>
