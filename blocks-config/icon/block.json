@@ -23,6 +23,19 @@
             "type": "string",
             "default": "dash"
         },
+        "iconTypeFile": {
+            "type": "string",
+            "default": "icon"
+        },
+        "imageID": {
+            "type": "string"
+        },
+        "imageURL": {
+            "type": "string",
+            "source": "attribute",
+            "attribute": "src",
+            "selector": ".premium-title-icon"
+        },
         "selectedIcon": {
             "type": "string",
             "default": "dashicons dashicons-admin-site"
