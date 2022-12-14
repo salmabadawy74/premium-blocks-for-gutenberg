@@ -427,6 +427,625 @@ const new_attributes = {
 }
 
 const v7Attributes = {
+    "blockId": {
+        "type": "string"
+    },
+    "classMigrate": {
+        "type": "boolean",
+        "default": false
+    },
+    "wrapBorder": {
+        "type": "boolean",
+        "default": false
+    },
+    "iconType": {
+        "type": "string",
+        "default": "dash"
+    },
+    "selectedIcon": {
+        "type": "string",
+        "default": "dashicons dashicons-admin-site"
+    },
+    "iconAlign": {
+        "type": "object",
+        "default": {
+            "Desktop": "center",
+            "Tablet": "center",
+            "Mobile": "center"
+        }
+    },
+    "hoverEffect": {
+        "type": "string",
+        "default": "none"
+    },
+    "iconStyles": {
+        "type": "array",
+        "default": [
+            {
+                "iconColor": "",
+                "iconBack": "",
+                "iconHoverColor": "",
+                "iconHoverBack": "",
+                "iconOpacity": "1"
+            }
+        ]
+    },
+    "urlCheck": {
+        "type": "boolean"
+    },
+    "link": {
+        "type": "string"
+    },
+    "target": {
+        "type": "boolean"
+    },
+    "hideDesktop": {
+        "type": "boolean",
+        "default": ""
+    },
+    "hideTablet": {
+        "type": "boolean",
+        "default": ""
+    },
+    "hideMobile": {
+        "type": "boolean",
+        "default": ""
+    },
+    "iconSize": {
+        "type": "object",
+        "default": {
+            "Desktop": "50",
+            "Tablet": "50",
+            "Mobile": "50",
+            "unit": "px"
+        }
+    },
+    "iconMargin": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "iconPadding": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "wrapMargin": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "wrapPadding": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "iconBorder": {
+        "type": "object",
+        "default": {
+            "borderColor": "",
+            "borderType": "none",
+            "borderRadius": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            },
+            "borderWidth": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            }
+        }
+    },
+    "containerBorder": {
+        "type": "object",
+        "default": {
+            "borderColor": "",
+            "borderType": "none",
+            "borderRadius": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            },
+            "borderWidth": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            }
+        }
+    },
+    "containerBackground": {
+        "type": "object",
+        "default": {
+            "backgroundType": "",
+            "backgroundColor": "",
+            "backgroundImageID": "",
+            "backgroundImageURL": "",
+            "backgroundPosition": "",
+            "backgroundRepeat": "",
+            "backgroundSize": "",
+            "fixed": false,
+            "gradientLocationOne": "0",
+            "gradientColorTwo": "",
+            "gradientLocationTwo": "100",
+            "gradientAngle": "180",
+            "gradientPosition": "center center",
+            "gradientType": "linear"
+        }
+    },
+    "containerShadow": {
+        "type": "object",
+        "default": {
+            "color": "undefined",
+            "blur": "10",
+            "horizontal": "0",
+            "vertical": "0",
+            "position": ""
+        }
+    },
+    "iconShadow": {
+        "type": "object",
+        "default": {
+            "color": "undefined",
+            "blur": "10",
+            "horizontal": "0",
+            "vertical": "0"
+        }
+    },
+    "borderHoverColor": {
+        "type": "string",
+        "default": ""
+    }
+}
+
+const v8Attributes = {
+    "blockId": {
+        "type": "string"
+    },
+    "classMigrate": {
+        "type": "boolean",
+        "default": false
+    },
+    "wrapBorder": {
+        "type": "boolean",
+        "default": false
+    },
+    "iconType": {
+        "type": "string",
+        "default": "dash"
+    },
+    "iconTypeFile": {
+        "type": "string",
+        "default": "icon"
+    },
+    "imageID": {
+        "type": "string"
+    },
+    "imageURL": {
+        "type": "string"
+    },
+    "selectedIcon": {
+        "type": "string",
+        "default": "dashicons dashicons-admin-site"
+    },
+    "iconAlign": {
+        "type": "object",
+        "default": {
+            "Desktop": "center",
+            "Tablet": "center",
+            "Mobile": "center"
+        }
+    },
+    "hoverEffect": {
+        "type": "string",
+        "default": "none"
+    },
+    "iconStyles": {
+        "type": "array",
+        "default": [
+            {
+                "iconColor": "",
+                "iconBack": "",
+                "iconHoverColor": "",
+                "iconHoverBack": "",
+                "iconOpacity": "1"
+            }
+        ]
+    },
+    "urlCheck": {
+        "type": "boolean"
+    },
+    "link": {
+        "type": "string"
+    },
+    "target": {
+        "type": "boolean"
+    },
+    "hideDesktop": {
+        "type": "boolean",
+        "default": ""
+    },
+    "hideTablet": {
+        "type": "boolean",
+        "default": ""
+    },
+    "hideMobile": {
+        "type": "boolean",
+        "default": ""
+    },
+    "iconSize": {
+        "type": "object",
+        "default": {
+            "Desktop": "50",
+            "Tablet": "50",
+            "Mobile": "50",
+            "unit": "px"
+        }
+    },
+    "iconMargin": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "iconPadding": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "wrapMargin": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "wrapPadding": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "iconBorder": {
+        "type": "object",
+        "default": {
+            "borderColor": "",
+            "borderType": "none",
+            "borderRadius": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            },
+            "borderWidth": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            }
+        }
+    },
+    "containerBorder": {
+        "type": "object",
+        "default": {
+            "borderColor": "",
+            "borderType": "none",
+            "borderRadius": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            },
+            "borderWidth": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            }
+        }
+    },
+    "containerBackground": {
+        "type": "object",
+        "default": {
+            "backgroundType": "",
+            "backgroundColor": "",
+            "backgroundImageID": "",
+            "backgroundImageURL": "",
+            "backgroundPosition": "",
+            "backgroundRepeat": "",
+            "backgroundSize": "",
+            "fixed": false,
+            "gradientLocationOne": "0",
+            "gradientColorTwo": "",
+            "gradientLocationTwo": "100",
+            "gradientAngle": "180",
+            "gradientPosition": "center center",
+            "gradientType": "linear"
+        }
+    },
+    "containerShadow": {
+        "type": "object",
+        "default": {
+            "color": "undefined",
+            "blur": "10",
+            "horizontal": "0",
+            "vertical": "0",
+            "position": ""
+        }
+    },
+    "iconShadow": {
+        "type": "object",
+        "default": {
+            "color": "undefined",
+            "blur": "10",
+            "horizontal": "0",
+            "vertical": "0"
+        }
+    },
     "borderHoverColor": {
         "type": "string",
         "default": ""
@@ -435,6 +1054,100 @@ const v7Attributes = {
 
 const deprecated_attributes = Object.assign(attributes, new_attributes);
 const deprecatedContent = [
+    {
+        attributes: Object.assign(attributes, v8Attributes),
+        migrate: (attributes) => {
+            let newAttributes = {
+                iconTypeFile: 'icon',
+                imageID: '',
+                imageURL: ''
+            }
+            return Object.assign(attributes, newAttributes)
+        },
+        save: props => {
+            const { attributes, className } = props;
+
+            const {
+                blockId,
+                iconBorder,
+                selectedIcon,
+                hoverEffect,
+                iconStyles,
+                urlCheck,
+                link,
+                target,
+                hideDesktop,
+                hideTablet,
+                hideMobile,
+                containerBorder,
+                containerBackground,
+                containerShadow,
+                iconShadow,
+                borderHoverColor
+            } = attributes;
+
+            const loadStyles = () => {
+                const styles = {};
+                styles[` .${blockId} .premium-icon-container i:hover`] = {
+                    'color': `${iconStyles[0].iconHoverColor} !important`,
+                    'background-color': `${iconStyles[0].iconHoverBack} !important`,
+                    "border-color": `${borderHoverColor}!important`
+                };
+                return generateCss(styles);
+            }
+
+            return (
+                <div
+                    {...useBlockProps.save({
+                        className: classnames(
+                            className,
+                            `premium-icon ${blockId} premium-icon__container`,
+                            {
+                                " premium-desktop-hidden": hideDesktop,
+                                " premium-tablet-hidden": hideTablet,
+                                " premium-mobile-hidden": hideMobile,
+                            }
+                        ),
+                    })}
+                >
+                    <style
+                        dangerouslySetInnerHTML={{
+                            __html: loadStyles()
+                        }}
+                    />
+                    <div
+                        className={`premium-icon-container`}
+                        style={filterJsCss({
+                            ...gradientBackground(containerBackground),
+                            borderStyle: containerBorder.borderType,
+                            borderColor: containerBorder.borderColor,
+                            boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`
+                        })}
+                    >
+                        <a
+                            className={`premium-icon__link`}
+                            href={urlCheck && link}
+                            rel="noopener noreferrer"
+                            target={target ? "_blank" : "_self"}
+                        >
+                            <div className={`premium-icon-hover premium-icon__${hoverEffect}`}>
+                                <i
+                                    className={`premium-icon ${selectedIcon}`}
+                                    style={filterJsCss({
+                                        color: iconStyles[0].iconColor,
+                                        backgroundColor: iconStyles[0].iconBack,
+                                        borderStyle: iconBorder.borderType,
+                                        borderColor: iconBorder.borderColor,
+                                        textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`
+                                    })}
+                                />
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            );
+        }
+    },
     {
         attributes: Object.assign(attributes, v7Attributes),
         migrate: attributes => {
