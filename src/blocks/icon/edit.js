@@ -15,6 +15,8 @@ import {
     Icons,
     InsideTab,
     iconsList,
+    RadioComponent,
+    PremiumMediaUpload
 } from "@pbg/components";
 import {
     gradientBackground,
@@ -49,6 +51,9 @@ function Edit(props) {
     const {
         blockId,
         iconType,
+        iconTypeFile,
+        imageID,
+        imageURL,
         selectedIcon,
         iconAlign,
         hoverEffect,
@@ -135,25 +140,74 @@ function Edit(props) {
                             className="premium-panel-body"
                             initialOpen={true}
                         >
-                            <p className="premium-editor-paragraph">
-                                {__(
-                                    "Select Icon",
-                                    "premium-blocks-for-gutenberg"
+                            <RadioComponent
+                                    choices={[
+                                        {
+                                            label: __(
+                                                "Icon",
+                                                "premium-blocks-for-gutenberg"
+                                            ),
+                                            value: "icon",
+                                        },
+                                        {
+                                            label: __(
+                                                "Image",
+                                                "premium-blocks-for-gutenberg"
+                                            ),
+                                            value: "img",
+                                        },
+                                    ]}
+                                    value={iconTypeFile}
+                                    onChange={(newValue) =>
+                                        setAttributes({ iconTypeFile: newValue })
+                                    }
+                                    label={__(
+                                        "Type",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                />
+                                {"icon" === iconTypeFile && (
+                                     <Fragment>
+                                        <p className="premium-editor-paragraph">
+                                            {__(
+                                                "Select Icon",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                        </p>
+                                        <FontIconPicker
+                                            icons={iconsList}
+                                            onChange={(newIcon) =>
+                                                setAttributes({ selectedIcon: newIcon })
+                                            }
+                                            value={selectedIcon}
+                                            isMulti={false}
+                                            // appendTo="body"
+                                            noSelectedPlaceholder={__(
+                                                "Select Icon",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                        />
+                                    </Fragment>
+                            )}
+                            {"img" === iconTypeFile && (
+                                    <PremiumMediaUpload
+                                        type="image"
+                                        imageID={imageID}
+                                        imageURL={imageURL}
+                                        onSelectMedia={(media) => {
+                                            setAttributes({
+                                                imageID: media.id,
+                                                imageURL: media.url,
+                                            });
+                                        }}
+                                        onRemoveImage={() =>
+                                            setAttributes({
+                                                imageURL: "",
+                                                imageID: "",
+                                            })
+                                        }
+                                    />
                                 )}
-                            </p>
-                            <FontIconPicker
-                                icons={iconsList}
-                                onChange={(newIcon) =>
-                                    setAttributes({ selectedIcon: newIcon })
-                                }
-                                value={selectedIcon}
-                                isMulti={false}
-                                // appendTo="body"
-                                noSelectedPlaceholder={__(
-                                    "Select Icon",
-                                    "premium-blocks-for-gutenberg"
-                                )}
-                            />
                             <ToggleControl
                                 label={__(
                                     "Link",
@@ -525,7 +579,7 @@ function Edit(props) {
                         boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
                     }}
                 >
-                    {iconType === "fa" && 1 != FontAwesomeEnabled && (
+                    {"icon" === iconTypeFile && iconType === "fa" && 1 != FontAwesomeEnabled && (
                         <p className={`premium-icon__alert`}>
                             {__(
                                 "Please Enable Font Awesome Icons from Plugin settings",
@@ -534,7 +588,7 @@ function Edit(props) {
                         </p>
                     )}
                     <div className={`premium-icon__${hoverEffect}`}>
-                        {(iconType === "dash" || 1 == FontAwesomeEnabled) && (
+                        {"icon" === iconTypeFile && (iconType === "dash" || 1 == FontAwesomeEnabled) && (
                             <i
                                 className={`premium-icon ${selectedIcon}`}
                                 style={{
@@ -553,7 +607,17 @@ function Edit(props) {
                                 }}
                             />
                         )}
+                        {"img" === iconTypeFile && imageURL && (
+                            <img
+                                src={imageURL}
+                                style={{
+                                    width: (iconSize[props.deviceType] || 50) +
+                                    iconSize.unit,
+                                }}
+                            />
+                        )}
                     </div>
+                    
                 </div>
             </div>
         </Fragment>
