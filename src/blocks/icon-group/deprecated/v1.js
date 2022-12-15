@@ -1,8 +1,6 @@
 import classnames from "classnames";
 import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
-import {
-    filterJsCss
-} from '@pbg/helpers';
+import { filterJsCss } from '@pbg/helpers';
 
 const attributes = {
     "blockId": {

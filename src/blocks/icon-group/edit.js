@@ -145,9 +145,14 @@ function Edit(props) {
             'justify-content': `${align[props.deviceType]} !important`
         };
 
-        styles[` .${blockId} .premium-icon-group-horizontal:hover, .${blockId} .premium-icon-group-vertical:hover`] = {
-            color: `${groupIconHoverColor} !important`,
-            "background-color": `${groupIconHoverBack} !important`,
+        styles[` .${blockId} .premium-icon-group-horizontal i:hover, .${blockId} .premium-icon-group-vertical i:hover`] = {
+            color: `${groupIconHoverColor}`,
+            "background-color": `${groupIconHoverBack}`,
+        };
+
+        styles[` .${blockId} .premium-icon-group-horizontal i, .${blockId} .premium-icon-group-vertical i`] = {
+            color: `${groupIconColor}`,
+            "background-color": `${groupIconBack}`
         };
 
         return generateCss(styles);
@@ -345,9 +350,7 @@ function Edit(props) {
                     style={{
                         ...borderCss(groupIconBorder, props.deviceType),
                         ...paddingCss(groupIconPadding, props.deviceType),
-                        ...marginCss(groupIconMargin, props.deviceType),
-                        color: groupIconColor,
-                        backgroundColor: groupIconBack
+                        ...marginCss(groupIconMargin, props.deviceType)
                     }}
                 >
                     <InnerBlocks

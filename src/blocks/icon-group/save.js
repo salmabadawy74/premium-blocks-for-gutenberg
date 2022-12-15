@@ -28,9 +28,14 @@ export default function save({ attributes }) {
     const loadStyles = () => {
         const styles = {};
 
-        styles[` .${blockId} .premium-icon-group-horizontal:hover, .${blockId} .premium-icon-group-vertical:hover`] = {
-            color: `${groupIconHoverColor} !important`,
-            "background-color": `${groupIconHoverBack} !important`,
+        styles[` .${blockId} .premium-icon-group-horizontal i:hover, .${blockId} .premium-icon-group-vertical i:hover`] = {
+            color: `${groupIconHoverColor}`,
+            "background-color": `${groupIconHoverBack}`
+        };
+
+        styles[` .${blockId} .premium-icon-group-horizontal i, .${blockId} .premium-icon-group-vertical i`] = {
+            color: `${groupIconColor}`,
+            "background-color": `${groupIconBack}`
         };
 
         return generateCss(styles);
@@ -42,9 +47,7 @@ export default function save({ attributes }) {
             className={`premium-icon-group-${groupAlign} premium-icon__${hoverEffect}`}
             style={filterJsCss({
                 borderStyle: groupIconBorder?.borderType,
-                borderColor: groupIconBorder?.borderColor,
-                color: groupIconColor,
-                backgroundColor: groupIconBack
+                borderColor: groupIconBorder?.borderColor
             })}
         >
             <InnerBlocks.Content />
