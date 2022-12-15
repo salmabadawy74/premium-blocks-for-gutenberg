@@ -35,7 +35,9 @@ export default function save({ attributes }) {
 
         styles[` .${blockId} .premium-icon-group-horizontal i, .${blockId} .premium-icon-group-vertical i`] = {
             color: `${groupIconColor}`,
-            "background-color": `${groupIconBack}`
+            "background-color": `${groupIconBack}`,
+            'border-color': `${groupIconBorder && groupIconBorder.borderColor}`,
+            'border-style': `${groupIconBorder && groupIconBorder.borderType}`,
         };
 
         return generateCss(styles);
@@ -45,10 +47,12 @@ export default function save({ attributes }) {
         <style>{loadStyles()}</style>
         <div
             className={`premium-icon-group-${groupAlign} premium-icon__${hoverEffect}`}
-            style={filterJsCss({
-                borderStyle: groupIconBorder?.borderType,
-                borderColor: groupIconBorder?.borderColor
-            })}
+        // style={filterJsCss({
+        //     // borderStyle: groupIconBorder?.borderType,
+        //     // borderColor: groupIconBorder?.borderColor,
+        //     // color: groupIconColor,
+        //     // backgroundColor: groupIconBack
+        // })}
         >
             <InnerBlocks.Content />
         </div>

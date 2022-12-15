@@ -32,6 +32,12 @@ const save = props => {
             'background-color': `${iconStyles[0].iconHoverBack} !important`,
             "border-color": `${borderHoverColor}!important`
         };
+        styles[` .${blockId} .premium-icon-container i`] = {
+            'color': `${iconStyles[0].iconColor}`,
+            'background-color': `${iconStyles[0].iconBack}`,
+            "border-color": `${iconBorder.borderColor}`,
+            "border-style": `${iconBorder.borderType}`
+        };
         return generateCss(styles);
     }
 
@@ -73,10 +79,10 @@ const save = props => {
                         <i
                             className={`premium-icon ${selectedIcon}`}
                             style={filterJsCss({
-                                color: iconStyles[0].iconColor,
-                                backgroundColor: iconStyles[0].iconBack,
-                                borderStyle: iconBorder.borderType,
-                                borderColor: iconBorder.borderColor,
+                                // color: iconStyles[0].iconColor,
+                                // backgroundColor: iconStyles[0].iconBack,
+                                // borderStyle: iconBorder.borderType,
+                                // borderColor: iconBorder.borderColor,
                                 textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`
                             })}
                         />

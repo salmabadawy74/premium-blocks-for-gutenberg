@@ -122,6 +122,20 @@ function Edit(props) {
             "background-color": `${iconStyles[0].iconHoverBack} !important`,
             "border-color": `${borderHoverColor}!important`
         };
+        styles[` .${blockId} .premium-icon-container i`] = {
+            color: iconStyles[0].iconColor,
+            "background-color": `${iconStyles[0].iconBack}`,
+            'border-color': `${iconBorder && iconBorder.borderColor}`,
+            'border-style': `${iconBorder && iconBorder.borderType}`,
+            'border-top-width': `${iconBorder && iconBorder.borderWidth[props.deviceType].top}px`,
+            'border-right-width': `${iconBorder && iconBorder.borderWidth[props.deviceType].right}px`,
+            'border-bottom-width': `${iconBorder && iconBorder.borderWidth[props.deviceType].bottom}px`,
+            'border-left-width': `${iconBorder && iconBorder.borderWidth[props.deviceType].width}px`,
+            'border-top-left-radius': `${iconBorder?.borderRadius?.[props.deviceType]?.top || 0}px`,
+            'border-top-right-radius': `${iconBorder?.borderRadius?.[props.deviceType]?.right || 0}px`,
+            'border-bottom-left-radius': `${iconBorder?.borderRadius?.[props.deviceType]?.bottom || 0}px`,
+            'border-bottom-right-radius': `${iconBorder?.borderRadius?.[props.deviceType]?.left || 0}px`,
+        };
         return generateCss(styles);
     };
 
@@ -538,13 +552,13 @@ function Edit(props) {
                             <i
                                 className={`premium-icon ${selectedIcon}`}
                                 style={{
-                                    color: iconStyles[0].iconColor,
-                                    backgroundColor: iconStyles[0].iconBack,
+                                    // color: iconStyles[0].iconColor,
+                                    // backgroundColor: iconStyles[0].iconBack,
                                     cursor: urlCheck ? 'pointer' : 'default',
                                     fontSize:
                                         (iconSize[props.deviceType] || 50) +
                                         iconSize.unit,
-                                    ...borderCss(iconBorder, props.deviceType),
+                                    // ...borderCss(iconBorder, props.deviceType),
                                     ...paddingCss(
                                         iconPadding,
                                         props.deviceType
