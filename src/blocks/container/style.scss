@@ -2607,7 +2607,7 @@
     }
 
     .block-editor-block-list__layout {
-        .wp-block {
+        .wp-block:not(.wp-block-premium-badge) {
             margin: 0;
             padding: 0;
             width: 100%;
