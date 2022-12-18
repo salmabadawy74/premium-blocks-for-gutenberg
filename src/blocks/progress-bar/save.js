@@ -1,14 +1,10 @@
 import classnames from "classnames";
 import {
-    generateBlockId,
     gradientBackground,
-    typographyCss,
-    filterJsCss,
-    marginCss,
-    generateCss,
+    filterJsCss
 } from "@pbg/helpers";
-const { useBlockProps, InnerBlocks } = wp.blockEditor;
-const { useEffect, Fragment, useRef } = wp.element;
+const { useBlockProps, InnerBlocks, RichText } = wp.blockEditor;
+const { Fragment } = wp.element;
 
 export default function save({ attributes }) {
 
@@ -17,62 +13,33 @@ export default function save({ attributes }) {
         hideDesktop,
         hideTablet,
         hideMobile,
-        align,
-        multiStage,
-        percentage,
         label,
-        progressBarHeight,
-        progressBarRadius,
         labelColor,
         percentageColor,
         progress,
-        repeaterItems,
-        editTitle,
         styleProgress,
         animate,
         speeds,
-        arrowColor,
-        arrow,
-        arrowTablet,
-        arrowMobile,
-        arrowType,
-        indicator,
-        pinColor,
-        pin,
-        pinTablet,
-        pinType,
-        pinMobile,
-        pinHeight,
-        pinHeightTablet,
-        pinHeightType,
-        pinHeightMobile,
         progressType,
         labelTypography,
         percentageTypography,
         baseBackground,
         fillBackground,
-        progressBarMargin,
-        percentageMargin,
-        labelMargin,
-        progressBarSize,
         showIcon,
-        borderWidth,
         borderColor,
         fillColor,
-        topSpacing,
         PrefixTypography,
         PrefixColor,
-        PrefixMargin,
         suffixTypography,
         suffixColor,
-        suffixMargin,
         showPercentage,
-        dotSpacing,
-        dotSize,
         fillPercent,
         numberOfTotalFill,
         numberOfCircles,
-        variation
+        variation,
+        showVariation,
+        Prefix,
+        suffix
     } = attributes;
 
     const blockProps = useBlockProps.save({
@@ -86,7 +53,36 @@ export default function save({ attributes }) {
     const renderContent = () => {
         return <div className="premium-progressbar-circle-content">
             {showIcon && <InnerBlocks.Content />}
-            <InnerBlocks.Content />
+            {label &&
+                <RichText.Content
+                    tagName="p"
+                    className="premium-progress-bar-left-label"
+                    value={label}
+                    style={filterJsCss({
+                        color: labelColor,
+                        fontWeight: labelTypography.fontWeight,
+                        fontFamily: labelTypography.fontFamily,
+                        fontStyle: labelTypography.fontStyle,
+                        textDecoration: labelTypography?.textDecoration,
+                        textTransform: labelTypography?.textTransform
+                    })}
+                />
+            }
+            {showPercentage &&
+                < p
+                    className="premium-progress-bar-right-label"
+                    style={{
+                        color: percentageColor,
+                        fontWeight: percentageTypography.fontWeight,
+                        fontFamily: percentageTypography.fontFamily,
+                        fontStyle: percentageTypography.fontStyle,
+                        textDecoration: percentageTypography?.textDecoration,
+                        textTransform: percentageTypography?.textTransform
+                    }}
+                >
+                    <span>{progress}% </span>
+                </p>
+            }
         </div>
     }
 
@@ -125,14 +121,40 @@ export default function save({ attributes }) {
             data-speed={`${speeds}`}
             data-type={`${progressType}`}
         >
-            {variation != {} && <Fragment>
-                {/* <div className={`premium-progress-bar-${progressType}`}>
-                    <InnerBlocks.Content />
-                </div> */}
+            {variation != {} && !showVariation && <Fragment>
                 <div>
                     {(progressType == 'line' || progressType == 'dots') &&
-                        <div className={`premium-progress-bar-${progressType}`}>
-                            <InnerBlocks.Content />
+                        < div className="premium-progress-bar-labels-wrap" >
+                            {label &&
+                                <RichText.Content
+                                    tagName="p"
+                                    className="premium-progress-bar-left-label"
+                                    value={label}
+                                    style={filterJsCss({
+                                        color: labelColor,
+                                        fontWeight: labelTypography.fontWeight,
+                                        fontFamily: labelTypography.fontFamily,
+                                        fontStyle: labelTypography.fontStyle,
+                                        textDecoration: labelTypography?.textDecoration,
+                                        textTransform: labelTypography?.textTransform
+                                    })}
+                                />
+                            }
+                            {progress &&
+                                < p
+                                    className="premium-progress-bar-right-label"
+                                    style={{
+                                        color: percentageColor,
+                                        fontWeight: percentageTypography.fontWeight,
+                                        fontFamily: percentageTypography.fontFamily,
+                                        fontStyle: percentageTypography.fontStyle,
+                                        textDecoration: percentageTypography?.textDecoration,
+                                        textTransform: percentageTypography?.textTransform
+                                    }}
+                                >
+                                    <span>{progress}% </span>
+                                </p>
+                            }
                         </div>
                     }
                     <div className="premium-progress-bar-clear"></div>
@@ -192,35 +214,37 @@ export default function save({ attributes }) {
                                         }}
                                     ></div>
                                 </div>
-                                <div className={`${progressType}`}>
-                                    {renderContent()}
-                                </div>
+                                {renderContent()}
                             </div>
                             <div
                                 className="premium-progressbar-hf-labels"
                             >
-                                <span
+                                <RichText.Content
+                                    tagName="span"
                                     className="premium-progressbar-hf-label-left"
-                                    style={{
+                                    value={Prefix}
+                                    style={filterJsCss({
                                         color: PrefixColor,
                                         fontWeight: PrefixTypography.fontWeight,
                                         fontFamily: PrefixTypography.fontFamily,
                                         fontStyle: PrefixTypography.fontStyle,
                                         textDecoration: PrefixTypography?.textDecoration,
                                         textTransform: PrefixTypography?.textTransform
-                                    }}
-                                >0</span>
-                                <span
+                                    })}
+                                />
+                                <RichText.Content
+                                    tagName="span"
                                     className="premium-progressbar-hf-label-right"
-                                    style={{
+                                    value={suffix}
+                                    style={filterJsCss({
                                         color: suffixColor,
                                         fontWeight: suffixTypography.fontWeight,
                                         fontFamily: suffixTypography.fontFamily,
                                         fontStyle: suffixTypography.fontStyle,
                                         textDecoration: suffixTypography?.textDecoration,
                                         textTransform: suffixTypography?.textTransform
-                                    }}
-                                >100</span>
+                                    })}
+                                />
                             </div>
                         </div>
                     }
@@ -257,9 +281,7 @@ export default function save({ attributes }) {
                                         }}
                                     ></div>
                                 </div>
-                                <div className={`${progressType}`}>
-                                    {renderContent()}
-                                </div>
+                                {renderContent()}
                             </div>
                         </div>
                     }

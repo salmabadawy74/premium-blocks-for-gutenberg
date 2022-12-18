@@ -20,7 +20,7 @@ import {
 } from "@pbg/components";
 import { Variations } from './variations'
 const { __ } = wp.i18n;
-const { PanelBody, TextControl, ToggleControl, SelectControl } = wp.components;
+const { PanelBody, ToggleControl, SelectControl } = wp.components;
 const { InspectorControls, RichText, useBlockProps, InnerBlocks } = wp.blockEditor;
 const { useEffect, Fragment, useRef } = wp.element;
 const { withSelect } = wp.data;
@@ -33,7 +33,6 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
     const circle_half_right = useRef(null);
     const circle_pie = useRef(null);
     const circle_half = useRef(null);
-    const TEMPLATE = Variations[0].innerBlocks
 
     useEffect(() => {
         setAttributes({
@@ -48,92 +47,94 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
             progress
         } = attributes
 
-        if (progressType == "line") {
-            line.current.style.width = "unset";
-        }
-        else if (progressType === "circle") {
-            circle_half_left.current.style.transform = "rotate(0deg)";
-            circle_pie.current.style.clipPath = "";
-            circle_half_right.current.style.visibility = "";
-        } else if (progressType === "half-circle") {
-            circle_half.current.style.transform = "rotate(0deg)";
-            circle_half.current.style.transition = "none";
-        }
-        else if (progressType === "dots") {
-            setAttributes({
-                numberOfTotalFill: 0,
-                fillPercent: 0
-            });
-        }
-        let id = "";
-        const changeWidthEffect = () => {
-            var i = 0;
-            if (i == 0) {
-                i = 1;
-                var width = 0;
-                var value = progress;
-                if (progressType === "circle") {
-                    value = progress * 3.6;
-                } else if (progressType === "half-circle") {
-                    value = progress * 1.8;
-                }
-
-                id = setInterval(ebChangeframe, 10);
-                function ebChangeframe() {
-                    if (progressType === "circle") {
-                        if (width > 180) {
-                            circle_pie.current.style.clipPath = "inset(0)";
-                            circle_half_right.current.style.visibility = "visible";
-                        } else {
-                            circle_pie.current.style.clipPath = "";
-                            circle_half_right.current.style.visibility = "";
-                        }
-                    }
-                    if (width >= value) {
-                        clearInterval(id);
-                        i = 0;
-                    } else {
-                        width++;
-                        // console.log('width', width)
-                        if (progressType == "line") {
-                            line.current.style.width = width + "%";
-                        }
-                        if (progressType === "circle") {
-                            circle_half_left.current.style.transform =
-                                "rotate(" + width + "deg)";
-                        } else if (progressType === "half-circle") {
-                            circle_half.current.style.transform = "rotate(" + width + "deg)";
-                        }
-                        else if (progressType == "dots") {
-                            let dots = []
-                            var offsetWidth = contentRef.current.offsetWidth,
-                                dotsSize = attributes.dotSize[deviceType] || 25,
-                                dotsSpacing = attributes.dotSpacing[deviceType] || 10,
-                                length = width,
-                                numberOfCircles = Math.ceil(offsetWidth / (dotsSize + dotsSpacing)),
-                                circlesToFill = numberOfCircles * (length / 100),
-                                numberOfTotalFill = Math.floor(circlesToFill),
-                                fillPercent = 100 * (circlesToFill - numberOfTotalFill);
-                            for (var dot = 0; dot < numberOfCircles; dot++) {
-                                dots.push(dot)
-                            }
-                            // console.log(offsetWidth, dotsSize, dotsSpacing, numberOfCircles, circlesToFill, numberOfTotalFill, fillPercent, dots)
-                            setAttributes({
-                                numberOfCircles: dots,
-                                numberOfTotalFill: numberOfTotalFill,
-                                fillPercent: fillPercent
-                            });
-                        }
-                    }
-                }
+        if (!showVariation) {
+            if (progressType == "line") {
+                line.current.style.width = "unset";
             }
-        };
-        const progressSetTimeout = setTimeout(changeWidthEffect, 500);
+            else if (progressType === "circle") {
+                circle_half_left.current.style.transform = "rotate(0deg)";
+                circle_pie.current.style.clipPath = "";
+                circle_half_right.current.style.visibility = "";
+            } else if (progressType === "half-circle") {
+                circle_half.current.style.transform = "rotate(0deg)";
+                circle_half.current.style.transition = "none";
+            }
+            else if (progressType === "dots") {
+                setAttributes({
+                    numberOfTotalFill: 0,
+                    fillPercent: 0
+                });
+            }
+            let id = "";
+            const changeWidthEffect = () => {
+                var i = 0;
+                if (i == 0) {
+                    i = 1;
+                    var width = 0;
+                    var value = progress;
+                    if (progressType === "circle") {
+                        value = progress * 3.6;
+                    } else if (progressType === "half-circle") {
+                        value = progress * 1.8;
+                    }
 
-        return () => {
-            clearInterval(id);
-            clearTimeout(progressSetTimeout);
-        };
+                    id = setInterval(ebChangeframe, 10);
+                    function ebChangeframe() {
+                        if (progressType === "circle") {
+                            if (width > 180) {
+                                circle_pie.current.style.clipPath = "inset(0)";
+                                circle_half_right.current.style.visibility = "visible";
+                            } else {
+                                circle_pie.current.style.clipPath = "";
+                                circle_half_right.current.style.visibility = "";
+                            }
+                        }
+                        if (width >= value) {
+                            clearInterval(id);
+                            i = 0;
+                        } else {
+                            width++;
+                            if (progressType == "line") {
+                                line.current.style.width = width + "%";
+                            }
+                            if (progressType === "circle") {
+                                circle_half_left.current.style.transform =
+                                    "rotate(" + width + "deg)";
+                            } else if (progressType === "half-circle") {
+                                circle_half.current.style.transform = "rotate(" + width + "deg)";
+                            }
+                            else if (progressType == "dots") {
+                                let dots = []
+                                var offsetWidth = contentRef.current.offsetWidth,
+                                    dotsSize = attributes.dotSize[deviceType] || 25,
+                                    dotsSpacing = attributes.dotSpacing[deviceType] || 10,
+                                    length = width,
+                                    numberOfCircles = Math.ceil(offsetWidth / (dotsSize + dotsSpacing)),
+                                    circlesToFill = numberOfCircles * (length / 100),
+                                    numberOfTotalFill = Math.floor(circlesToFill),
+                                    fillPercent = 100 * (circlesToFill - numberOfTotalFill);
+                                for (var dot = 0; dot < numberOfCircles; dot++) {
+                                    dots.push(dot)
+                                }
+                                setAttributes({
+                                    numberOfCircles: dots,
+                                    numberOfTotalFill: numberOfTotalFill,
+                                    fillPercent: fillPercent
+                                });
+                            }
+                        }
+                    }
+                }
+            };
+            const progressSetTimeout = setTimeout(changeWidthEffect, 500);
+
+            return () => {
+                clearInterval(id);
+                clearTimeout(progressSetTimeout);
+            };
+        }
+
+
     }, [attributes.progressType, attributes.progress, attributes.speeds, attributes.dotSize, attributes.dotSpacing]);
 
     const {
@@ -178,37 +179,20 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
         numberOfTotalFill,
         numberOfCircles,
         variation,
-        showVariation
+        showVariation,
+        suffix,
+        Prefix
     } = attributes;
-    console.log(numberOfCircles)
+
     const STYLE = [{
         value: "solid",
-        label: __("Solid")
+        label: __("Solid", 'premium-blocks-for-gutenberg')
     },
     {
         value: "stripe",
-        label: __("Stripe")
+        label: __("Stripe", 'premium-blocks-for-gutenberg')
     }
     ];
-
-    const TYPE = [
-        {
-            value: "line",
-            label: __("Line")
-        },
-        {
-            value: "half-circle",
-            label: __("Half Circle")
-        },
-        {
-            value: "circle",
-            label: __("Circle")
-        },
-        {
-            value: "dots",
-            label: __("Dots")
-        }
-    ]
 
     const INNER_BLOCKS_TEMPLATE = [
         [
@@ -252,18 +236,38 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
     };
 
     const renderContent = () => {
-        return <div>
+        return <div className="premium-progressbar-circle-content">
             {showIcon && <InnerBlocks
                 template={INNER_BLOCKS_TEMPLATE}
                 templateLock={false}
                 allowedBlocks={["premium/icon"]}
             />}
-            <div className={`${progressType}`}>
-                <InnerBlocks
-                    template={variation.innerBlocks}
-                    templateLock={false}
+            {label &&
+                <RichText
+                    tagName='p'
+                    className="premium-progress-bar-left-label"
+                    onChange={newText => setAttributes({ label: newText })}
+                    value={label}
+                    style={{
+                        ...typographyCss(labelTypography, deviceType),
+                        ...marginCss(labelMargin, deviceType),
+                        color: labelColor
+                    }}
+                    keepPlaceholderOnFocus
                 />
-            </div>
+            }
+            {showPercentage &&
+                < p
+                    className="premium-progress-bar-right-label"
+                    style={{
+                        ...typographyCss(percentageTypography, deviceType),
+                        ...marginCss(percentageMargin, deviceType),
+                        color: percentageColor
+                    }}
+                >
+                    <span>{progress}% </span>
+                </p>
+            }
         </div>
     }
 
@@ -300,7 +304,6 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
     })
 
     const onSelectVariations = (v) => {
-        console.log(v)
         setAttributes({
             variation: v,
             showVariation: false,
@@ -311,131 +314,95 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
     return (
         <Fragment>
             <InspectorControls key={"inspector"}>
-                <InspectorTabs tabs={["layout", "style", "advance"]}>
-                    <InspectorTab key={"layout"}>
-                        <PanelBody
-                            title={__("Progress Bar", "premium-blocks-for-gutenberg")}
-                            className="premium-panel-body"
-                            initialOpen={true}
-                        >
-                            <VariationPicker
-                                setAttributes={setAttributes}
-                                variations={Variations}
-                                onSelect={onSelectVariations}
-                            />
-                            <SelectControl
-                                label={__(
-                                    "Type",
-                                    "premium-blocks-for-gutenberg"
-                                )}
-                                value={progressType}
-                                onChange={(newEffect) =>
-                                    setAttributes({ progressType: newEffect })
+                {!showVariation &&
+                    <InspectorTabs tabs={["layout", "style", "advance"]}>
+                        <InspectorTab key={"layout"}>
+                            <PanelBody
+                                title={__("Progress Bar", "premium-blocks-for-gutenberg")}
+                                className="premium-panel-body"
+                                initialOpen={true}
+                            >
+                                <VariationPicker
+                                    setAttributes={setAttributes}
+                                    variations={Variations}
+                                    onSelect={onSelectVariations}
+                                />
+                                {(progressType == 'half-circle' || progressType == 'circle') &&
+                                    <Fragment>
+                                        < ToggleControl
+                                            label={__("Show Percentage Value")}
+                                            checked={showPercentage}
+                                            onChange={newCheck => setAttributes({ showPercentage: newCheck })}
+                                        />
+                                        < ToggleControl
+                                            label={__("Show Icon")}
+                                            checked={showIcon}
+                                            onChange={newCheck => setAttributes({ showIcon: newCheck })}
+                                        />
+                                    </Fragment>
                                 }
-                                options={TYPE}
-                            />
-                            {(progressType == 'half-circle' || progressType == 'circle') &&
-                                <Fragment>
-                                    < ToggleControl
-                                        label={__("Show Percentage Value")}
-                                        checked={showPercentage}
-                                        onChange={newCheck => setAttributes({ showPercentage: newCheck })}
-                                    />
-                                    < ToggleControl
-                                        label={__("Show Icon")}
-                                        checked={showIcon}
-                                        onChange={newCheck => setAttributes({ showIcon: newCheck })}
-                                    />
-                                </Fragment>
-                            }
-                            <TextControl
-                                label={__("Label")}
-                                value={label}
-                                onChange={value => setAttributes({ label: value })}
-                            />
-                            {/* <TextControl
+                                {/* <TextControl
                                 label={__("Percentage")}
                                 value={percentage}
                                 onChange={value => setAttributes({ percentage: value })}
                             /> */}
-                            <ResponsiveSingleRangeControl
-                                label={__(
-                                    "Progress",
-                                    "premium-blocks-for-gutenberg"
-                                )}
-                                value={progress}
-                                onChange={value => setAttributes({ progress: value })}
-                                showUnit={false}
-                                defaultValue={50}
-                            />
-                            <ResponsiveSingleRangeControl
-                                label={__(
-                                    "Speed (milliseconds)",
-                                    "premium-blocks-for-gutenberg"
-                                )}
-                                value={speeds}
-                                onChange={value => setAttributes({ speeds: value })}
-                                showUnit={false}
-                                defaultValue={0}
-                                min="0"
-                                max="5"
-                            />
-                            {progressType == 'line' &&
-                                <Fragment>
-                                    < SelectControl
-                                        label={__("Style")}
-                                        value={styleProgress}
-                                        onChange={newEffect => setAttributes({ styleProgress: newEffect })}
-                                        options={STYLE}
-                                    />
-                                    {styleProgress == 'stripe' &&
-                                        < ToggleControl
-                                            label={__("Animated")}
-                                            checked={animate}
-                                            onChange={newCheck => setAttributes({ animate: newCheck })}
-                                        />
-                                    }
-                                </Fragment>
-                            }
-                        </PanelBody>
-                    </InspectorTab>
-                    <InspectorTab key={"style"}>
-                        <PanelBody
-                            title={__("Progress Bar", "premium-blocks-for-gutenberg")}
-                            className="premium-panel-body"
-                            initialOpen={true}
-                        >
-                            {progressType == 'line' &&
-                                <ResponsiveRangeControl
+                                <ResponsiveSingleRangeControl
                                     label={__(
-                                        "Height",
+                                        "Progress",
                                         "premium-blocks-for-gutenberg"
                                     )}
-                                    value={progressBarHeight}
-                                    onChange={(value) =>
-                                        setAttributes({
-                                            progressBarHeight: value,
-                                        })
-                                    }
-                                    min={1}
-                                    max={100}
-                                    step={1}
-                                    showUnit={true}
-                                    units={["px", "em", "%"]}
-                                    defaultValue={25}
+                                    value={progress}
+                                    onChange={value => setAttributes({ progress: value })}
+                                    showUnit={false}
+                                    defaultValue={50}
                                 />
-                            }
-                            {progressType == 'dots' &&
-                                <Fragment>
+                                <ResponsiveSingleRangeControl
+                                    label={__(
+                                        "Speed (milliseconds)",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                    value={speeds}
+                                    onChange={value => setAttributes({ speeds: value })}
+                                    showUnit={false}
+                                    defaultValue={0}
+                                    min="0"
+                                    max="5"
+                                />
+                                {progressType == 'line' &&
+                                    <Fragment>
+                                        < SelectControl
+                                            label={__("Style")}
+                                            value={styleProgress}
+                                            onChange={newEffect => setAttributes({ styleProgress: newEffect })}
+                                            options={STYLE}
+                                        />
+                                        {styleProgress == 'stripe' &&
+                                            < ToggleControl
+                                                label={__("Animated")}
+                                                checked={animate}
+                                                onChange={newCheck => setAttributes({ animate: newCheck })}
+                                            />
+                                        }
+                                    </Fragment>
+                                }
+                            </PanelBody>
+                        </InspectorTab>
+                        <InspectorTab key={"style"}>
+                            <PanelBody
+                                title={__("Progress Bar", "premium-blocks-for-gutenberg")}
+                                className="premium-panel-body"
+                                initialOpen={true}
+                            >
+                                {progressType == 'line' &&
                                     <ResponsiveRangeControl
                                         label={__(
-                                            "Dot Size",
+                                            "Height",
                                             "premium-blocks-for-gutenberg"
                                         )}
-                                        value={dotSize}
+                                        value={progressBarHeight}
                                         onChange={(value) =>
                                             setAttributes({
-                                                dotSize: value,
+                                                progressBarHeight: value,
                                             })
                                         }
                                         min={1}
@@ -445,354 +412,376 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                                         units={["px", "em", "%"]}
                                         defaultValue={25}
                                     />
+                                }
+                                {progressType == 'dots' &&
+                                    <Fragment>
+                                        <ResponsiveRangeControl
+                                            label={__(
+                                                "Dot Size",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                            value={dotSize}
+                                            onChange={(value) =>
+                                                setAttributes({
+                                                    dotSize: value,
+                                                })
+                                            }
+                                            min={1}
+                                            max={100}
+                                            step={1}
+                                            showUnit={true}
+                                            units={["px", "em", "%"]}
+                                            defaultValue={25}
+                                        />
+                                        <ResponsiveRangeControl
+                                            label={__(
+                                                "Spacing",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                            value={dotSpacing}
+                                            onChange={(value) =>
+                                                setAttributes({
+                                                    dotSpacing: value,
+                                                })
+                                            }
+                                            min={1}
+                                            max={10}
+                                            step={1}
+                                            showUnit={true}
+                                            units={["px", "%"]}
+                                            defaultValue={8}
+                                        />
+                                    </Fragment>
+                                }
+                                {(progressType == 'line' || progressType == 'dots') &&
+                                    <ResponsiveRangeControl
+                                        label={__(
+                                            "Border Radius",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                        value={progressBarRadius}
+                                        onChange={(value) =>
+                                            setAttributes({
+                                                progressBarRadius: value,
+                                            })
+                                        }
+                                        min={1}
+                                        max={100}
+                                        step={1}
+                                        showUnit={true}
+                                        units={["px", "%"]}
+                                        defaultValue={0}
+                                    />
+                                }
+                                {(progressType == 'half-circle' || progressType == 'circle') &&
+                                    <Fragment>
+                                        <ResponsiveRangeControl
+                                            label={__(
+                                                "Size",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                            value={progressBarSize}
+                                            onChange={(value) =>
+                                                setAttributes({
+                                                    progressBarSize: value,
+                                                })
+                                            }
+                                            min={1}
+                                            max={500}
+                                            step={1}
+                                            showUnit={false}
+                                            defaultValue={200}
+                                        />
+                                        <ResponsiveRangeControl
+                                            label={__(
+                                                "Border Width",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                            value={borderWidth}
+                                            onChange={(value) =>
+                                                setAttributes({
+                                                    borderWidth: value,
+                                                })
+                                            }
+                                            min={1}
+                                            max={100}
+                                            step={1}
+                                            showUnit={false}
+                                            defaultValue={12}
+                                        />
+                                        <AdvancedPopColorControl
+                                            label={__(
+                                                "Border Color",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                            colorValue={borderColor}
+                                            colorDefault={""}
+                                            onColorChange={(newValue) =>
+                                                setAttributes({ borderColor: newValue })
+                                            }
+                                        />
+                                        <AdvancedPopColorControl
+                                            label={__(
+                                                "Fill Color",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                            colorValue={fillColor}
+                                            colorDefault={""}
+                                            onColorChange={(newValue) =>
+                                                setAttributes({ fillColor: newValue })
+                                            }
+                                        />
+                                    </Fragment>
+                                }
+                                {(progressType == 'line' || progressType == 'dots') &&
+                                    <Fragment>
+                                        <h2 className="premium-blocks-heading">
+                                            {__(
+                                                "Fill Background",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                        </h2>
+                                        <PremiumBackgroundControl
+                                            value={fillBackground}
+                                            onChange={(value) =>
+                                                setAttributes({ fillBackground: value })
+                                            }
+                                        />
+                                    </Fragment>
+                                }
+                                <h2 className="premium-blocks-heading">
+                                    {__(
+                                        "Base Background",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                </h2>
+                                <PremiumBackgroundControl
+                                    value={baseBackground}
+                                    onChange={(value) =>
+                                        setAttributes({ baseBackground: value })
+                                    }
+                                />
+                                {(progressType == 'line' || progressType == 'dots') &&
+                                    <SpacingControl
+                                        label={__("Margin", "premium-blocks-for-gutenberg")}
+                                        value={progressBarMargin}
+                                        onChange={(value) =>
+                                            setAttributes({ progressBarMargin: value })
+                                        }
+                                        showUnits={true}
+                                        responsive={true}
+                                    />
+                                }
+                            </PanelBody>
+                            <PanelBody
+                                title={__("Label", "premium-blocks-for-gutenberg")}
+                                className="premium-panel-body"
+                                initialOpen={false}
+                            >
+                                <PremiumTypo
+                                    value={labelTypography}
+                                    onChange={(newValue) =>
+                                        setAttributes({
+                                            labelTypography: newValue,
+                                        })
+                                    }
+                                />
+                                <AdvancedPopColorControl
+                                    label={__(
+                                        "Color",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                    colorValue={labelColor}
+                                    colorDefault={""}
+                                    onColorChange={(newValue) =>
+                                        setAttributes({ labelColor: newValue })
+                                    }
+                                />
+                                <SpacingControl
+                                    label={__("Margin", "premium-blocks-for-gutenberg")}
+                                    value={labelMargin}
+                                    onChange={(value) =>
+                                        setAttributes({ labelMargin: value })
+                                    }
+                                    showUnits={true}
+                                    responsive={true}
+                                />
+                            </PanelBody>
+                            < PanelBody
+                                title={__("Percentage")}
+                                className="premium-panel-body"
+                                initialOpen={false}
+                            >
+                                <PremiumTypo
+                                    value={percentageTypography}
+                                    onChange={(newValue) =>
+                                        setAttributes({
+                                            percentageTypography: newValue,
+                                        })
+                                    }
+                                />
+                                <AdvancedPopColorControl
+                                    label={__(
+                                        "Color",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                    colorValue={percentageColor}
+                                    colorDefault={""}
+                                    onColorChange={(newValue) =>
+                                        setAttributes({ percentageColor: newValue })
+                                    }
+                                />
+                                <SpacingControl
+                                    label={__("Margin", "premium-blocks-for-gutenberg")}
+                                    value={percentageMargin}
+                                    onChange={(value) =>
+                                        setAttributes({ percentageMargin: value })
+                                    }
+                                    showUnits={true}
+                                    responsive={true}
+                                />
+                            </PanelBody>
+                            {progressType == 'half-circle' &&
+                                < PanelBody
+                                    title={__("Prefix & Suffix")}
+                                    className="premium-panel-body"
+                                    initialOpen={false}
+                                >
+                                    <ResponsiveRangeControl
+                                        label={__(
+                                            "Top Spacing",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                        value={topSpacing}
+                                        onChange={(value) =>
+                                            setAttributes({
+                                                topSpacing: value,
+                                            })
+                                        }
+                                        min={1}
+                                        max={300}
+                                        step={1}
+                                        showUnit={false}
+                                        defaultValue={0}
+                                    />
+                                    <h2 className="premium-blocks-heading">
+                                        {__(
+                                            "Prefix",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                    </h2>
+                                    <PremiumTypo
+                                        value={PrefixTypography}
+                                        onChange={(newValue) =>
+                                            setAttributes({
+                                                PrefixTypography: newValue,
+                                            })
+                                        }
+                                    />
+                                    <AdvancedPopColorControl
+                                        label={__(
+                                            "Color",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                        colorValue={PrefixColor}
+                                        colorDefault={""}
+                                        onColorChange={(newValue) =>
+                                            setAttributes({ PrefixColor: newValue })
+                                        }
+                                    />
                                     <ResponsiveRangeControl
                                         label={__(
                                             "Spacing",
                                             "premium-blocks-for-gutenberg"
                                         )}
-                                        value={dotSpacing}
+                                        value={PrefixMargin}
                                         onChange={(value) =>
                                             setAttributes({
-                                                dotSpacing: value,
-                                            })
-                                        }
-                                        min={1}
-                                        max={10}
-                                        step={1}
-                                        showUnit={true}
-                                        units={["px", "%"]}
-                                        defaultValue={8}
-                                    />
-                                </Fragment>
-                            }
-                            {(progressType == 'line' || progressType == 'dots') &&
-                                <ResponsiveRangeControl
-                                    label={__(
-                                        "Border Radius",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                    value={progressBarRadius}
-                                    onChange={(value) =>
-                                        setAttributes({
-                                            progressBarRadius: value,
-                                        })
-                                    }
-                                    min={1}
-                                    max={100}
-                                    step={1}
-                                    showUnit={true}
-                                    units={["px", "%"]}
-                                    defaultValue={0}
-                                />
-                            }
-                            {(progressType == 'half-circle' || progressType == 'circle') &&
-                                <Fragment>
-                                    <ResponsiveRangeControl
-                                        label={__(
-                                            "Size",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
-                                        value={progressBarSize}
-                                        onChange={(value) =>
-                                            setAttributes({
-                                                progressBarSize: value,
-                                            })
-                                        }
-                                        min={1}
-                                        max={500}
-                                        step={1}
-                                        showUnit={false}
-                                        defaultValue={200}
-                                    />
-                                    <ResponsiveRangeControl
-                                        label={__(
-                                            "Border Width",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
-                                        value={borderWidth}
-                                        onChange={(value) =>
-                                            setAttributes({
-                                                borderWidth: value,
+                                                PrefixMargin: value,
                                             })
                                         }
                                         min={1}
                                         max={100}
                                         step={1}
                                         showUnit={false}
-                                        defaultValue={12}
+                                        defaultValue={0}
                                     />
-                                    <AdvancedPopColorControl
-                                        label={__(
-                                            "Border Color",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
-                                        colorValue={borderColor}
-                                        colorDefault={""}
-                                        onColorChange={(newValue) =>
-                                            setAttributes({ borderColor: newValue })
-                                        }
-                                    />
-                                    <AdvancedPopColorControl
-                                        label={__(
-                                            "Fill Color",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
-                                        colorValue={fillColor}
-                                        colorDefault={""}
-                                        onColorChange={(newValue) =>
-                                            setAttributes({ fillColor: newValue })
-                                        }
-                                    />
-                                </Fragment>
-                            }
-                            {(progressType == 'line' || progressType == 'dots') &&
-                                <Fragment>
+                                    <hr />
                                     <h2 className="premium-blocks-heading">
                                         {__(
-                                            "Fill Background",
+                                            "Suffix",
                                             "premium-blocks-for-gutenberg"
                                         )}
                                     </h2>
-                                    <PremiumBackgroundControl
-                                        value={fillBackground}
-                                        onChange={(value) =>
-                                            setAttributes({ fillBackground: value })
+                                    <PremiumTypo
+                                        value={suffixTypography}
+                                        onChange={(newValue) =>
+                                            setAttributes({
+                                                suffixTypography: newValue,
+                                            })
                                         }
                                     />
-                                </Fragment>
+                                    <AdvancedPopColorControl
+                                        label={__(
+                                            "Color",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                        colorValue={suffixColor}
+                                        colorDefault={""}
+                                        onColorChange={(newValue) =>
+                                            setAttributes({ suffixColor: newValue })
+                                        }
+                                    />
+                                    <ResponsiveRangeControl
+                                        label={__(
+                                            "Spacing",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                        value={suffixMargin}
+                                        onChange={(value) =>
+                                            setAttributes({
+                                                suffixMargin: value,
+                                            })
+                                        }
+                                        min={1}
+                                        max={100}
+                                        step={1}
+                                        showUnit={false}
+                                        defaultValue={0}
+                                    />
+                                </PanelBody>
                             }
-                            <h2 className="premium-blocks-heading">
-                                {__(
-                                    "Base Background",
-                                    "premium-blocks-for-gutenberg"
-                                )}
-                            </h2>
-                            <PremiumBackgroundControl
-                                value={baseBackground}
-                                onChange={(value) =>
-                                    setAttributes({ baseBackground: value })
-                                }
-                            />
-                            {(progressType == 'line' || progressType == 'dots') &&
-                                <SpacingControl
-                                    label={__("Margin", "premium-blocks-for-gutenberg")}
-                                    value={progressBarMargin}
-                                    onChange={(value) =>
-                                        setAttributes({ progressBarMargin: value })
-                                    }
-                                    showUnits={true}
-                                    responsive={true}
-                                />
-                            }
-                        </PanelBody>
-                        <PanelBody
-                            title={__("Label", "premium-blocks-for-gutenberg")}
-                            className="premium-panel-body"
-                            initialOpen={false}
-                        >
-                            <PremiumTypo
-                                value={labelTypography}
-                                onChange={(newValue) =>
+                        </InspectorTab>
+                        <InspectorTab key={"advance"}>
+                            <PremiumResponsiveTabs
+                                Desktop={hideDesktop}
+                                Tablet={hideTablet}
+                                Mobile={hideMobile}
+                                onChangeDesktop={(value) =>
                                     setAttributes({
-                                        labelTypography: newValue,
+                                        hideDesktop: value
+                                            ? " premium-desktop-hidden"
+                                            : "",
+                                    })
+                                }
+                                onChangeTablet={(value) =>
+                                    setAttributes({
+                                        hideTablet: value
+                                            ? " premium-tablet-hidden"
+                                            : "",
+                                    })
+                                }
+                                onChangeMobile={(value) =>
+                                    setAttributes({
+                                        hideMobile: value
+                                            ? " premium-mobile-hidden"
+                                            : "",
                                     })
                                 }
                             />
-                            <AdvancedPopColorControl
-                                label={__(
-                                    "Color",
-                                    "premium-blocks-for-gutenberg"
-                                )}
-                                colorValue={labelColor}
-                                colorDefault={""}
-                                onColorChange={(newValue) =>
-                                    setAttributes({ labelColor: newValue })
-                                }
-                            />
-                            <SpacingControl
-                                label={__("Margin", "premium-blocks-for-gutenberg")}
-                                value={labelMargin}
-                                onChange={(value) =>
-                                    setAttributes({ labelMargin: value })
-                                }
-                                showUnits={true}
-                                responsive={true}
-                            />
-                        </PanelBody>
-                        < PanelBody
-                            title={__("Percentage")}
-                            className="premium-panel-body"
-                            initialOpen={false}
-                        >
-                            <PremiumTypo
-                                value={percentageTypography}
-                                onChange={(newValue) =>
-                                    setAttributes({
-                                        percentageTypography: newValue,
-                                    })
-                                }
-                            />
-                            <AdvancedPopColorControl
-                                label={__(
-                                    "Color",
-                                    "premium-blocks-for-gutenberg"
-                                )}
-                                colorValue={percentageColor}
-                                colorDefault={""}
-                                onColorChange={(newValue) =>
-                                    setAttributes({ percentageColor: newValue })
-                                }
-                            />
-                            <SpacingControl
-                                label={__("Margin", "premium-blocks-for-gutenberg")}
-                                value={percentageMargin}
-                                onChange={(value) =>
-                                    setAttributes({ percentageMargin: value })
-                                }
-                                showUnits={true}
-                                responsive={true}
-                            />
-                        </PanelBody>
-                        {progressType == 'half-circle' &&
-                            < PanelBody
-                                title={__("Prefix & Suffix")}
-                                className="premium-panel-body"
-                                initialOpen={false}
-                            >
-                                <ResponsiveRangeControl
-                                    label={__(
-                                        "Top Spacing",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                    value={topSpacing}
-                                    onChange={(value) =>
-                                        setAttributes({
-                                            topSpacing: value,
-                                        })
-                                    }
-                                    min={1}
-                                    max={300}
-                                    step={1}
-                                    showUnit={false}
-                                    defaultValue={0}
-                                />
-                                <h2 className="premium-blocks-heading">
-                                    {__(
-                                        "Prefix",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                </h2>
-                                <PremiumTypo
-                                    value={PrefixTypography}
-                                    onChange={(newValue) =>
-                                        setAttributes({
-                                            PrefixTypography: newValue,
-                                        })
-                                    }
-                                />
-                                <AdvancedPopColorControl
-                                    label={__(
-                                        "Color",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                    colorValue={PrefixColor}
-                                    colorDefault={""}
-                                    onColorChange={(newValue) =>
-                                        setAttributes({ PrefixColor: newValue })
-                                    }
-                                />
-                                <ResponsiveRangeControl
-                                    label={__(
-                                        "Spacing",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                    value={PrefixMargin}
-                                    onChange={(value) =>
-                                        setAttributes({
-                                            PrefixMargin: value,
-                                        })
-                                    }
-                                    min={1}
-                                    max={100}
-                                    step={1}
-                                    showUnit={false}
-                                    defaultValue={0}
-                                />
-                                <hr />
-                                <h2 className="premium-blocks-heading">
-                                    {__(
-                                        "Suffix",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                </h2>
-                                <PremiumTypo
-                                    value={suffixTypography}
-                                    onChange={(newValue) =>
-                                        setAttributes({
-                                            suffixTypography: newValue,
-                                        })
-                                    }
-                                />
-                                <AdvancedPopColorControl
-                                    label={__(
-                                        "Color",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                    colorValue={suffixColor}
-                                    colorDefault={""}
-                                    onColorChange={(newValue) =>
-                                        setAttributes({ suffixColor: newValue })
-                                    }
-                                />
-                                <ResponsiveRangeControl
-                                    label={__(
-                                        "Spacing",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                    value={suffixMargin}
-                                    onChange={(value) =>
-                                        setAttributes({
-                                            suffixMargin: value,
-                                        })
-                                    }
-                                    min={1}
-                                    max={100}
-                                    step={1}
-                                    showUnit={false}
-                                    defaultValue={0}
-                                />
-                            </PanelBody>
-                        }
-                    </InspectorTab>
-                    <InspectorTab key={"advance"}>
-                        <PremiumResponsiveTabs
-                            Desktop={hideDesktop}
-                            Tablet={hideTablet}
-                            Mobile={hideMobile}
-                            onChangeDesktop={(value) =>
-                                setAttributes({
-                                    hideDesktop: value
-                                        ? " premium-desktop-hidden"
-                                        : "",
-                                })
-                            }
-                            onChangeTablet={(value) =>
-                                setAttributes({
-                                    hideTablet: value
-                                        ? " premium-tablet-hidden"
-                                        : "",
-                                })
-                            }
-                            onChangeMobile={(value) =>
-                                setAttributes({
-                                    hideMobile: value
-                                        ? " premium-mobile-hidden"
-                                        : "",
-                                })
-                            }
-                        />
-                    </InspectorTab>
-                </InspectorTabs>
+                        </InspectorTab>
+                    </InspectorTabs>
+                }
             </InspectorControls>
             <div {...blockProps}
                 data-progress={`${progress}`}
@@ -805,13 +794,7 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                     onSelect={onSelectVariations}
                 />
                 }
-                {variation != {} && <Fragment>
-                    {/* <div className={`${progressType}`}>
-                        <InnerBlocks
-                            template={variation.innerBlocks}
-                            templateLock={false}
-                        />
-                    </div> */}
+                {variation != {} && !showVariation && <Fragment>
                     <style
                         dangerouslySetInnerHTML={{
                             __html: loadStyles(),
@@ -819,14 +802,36 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                     />
                     <div ref={contentRef}>
                         {(progressType == 'line' || progressType == 'dots') &&
-                            <div className={`${progressType}`}>
-                                <InnerBlocks
-                                    template={variation.innerBlocks}
-                                    templateLock={false}
-                                />
+                            < div className="premium-progress-bar-labels-wrap">
+                                {label &&
+                                    <RichText
+                                        tagName='p'
+                                        className="premium-progress-bar-left-label"
+                                        onChange={newText => setAttributes({ label: newText })}
+                                        value={label}
+                                        style={{
+                                            ...typographyCss(labelTypography, deviceType),
+                                            ...marginCss(labelMargin, deviceType),
+                                            color: labelColor
+                                        }}
+                                        keepPlaceholderOnFocus
+                                    />
+                                }
+                                {progress &&
+                                    < p
+                                        className="premium-progress-bar-right-label"
+                                        style={{
+                                            ...typographyCss(percentageTypography, deviceType),
+                                            ...marginCss(percentageMargin, deviceType),
+                                            color: percentageColor
+                                        }}
+                                    >
+                                        <span>{progress}% </span>
+                                    </p>
+                                }
                             </div>
                         }
-                        {/* <div className="premium-progress-bar-clear"></div> */}
+                        <div className="premium-progress-bar-clear"></div>
                         {progressType == 'line' &&
                             <div
                                 className="premium-progress-bar-wrap"
@@ -913,22 +918,30 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                                         marginTop: `${topSpacing[deviceType]}px`,
                                     }}
                                 >
-                                    <span
+                                    <RichText
+                                        tagName='span'
                                         className="premium-progressbar-hf-label-left"
+                                        onChange={newText => setAttributes({ Prefix: newText })}
+                                        value={Prefix}
                                         style={{
                                             ...typographyCss(PrefixTypography, deviceType),
                                             marginLeft: `${PrefixMargin[deviceType]}px`,
                                             color: PrefixColor
                                         }}
-                                    >0</span>
-                                    <span
+                                        keepPlaceholderOnFocus
+                                    />
+                                    <RichText
+                                        tagName='span'
+                                        onChange={newText => setAttributes({ suffix: newText })}
+                                        value={suffix}
                                         className="premium-progressbar-hf-label-right"
                                         style={{
                                             ...typographyCss(suffixTypography, deviceType),
                                             marginRight: `${suffixMargin[deviceType]}px`,
                                             color: suffixColor
                                         }}
-                                    >100</span>
+                                        keepPlaceholderOnFocus
+                                    />
                                 </div>
                             </div>
                         }

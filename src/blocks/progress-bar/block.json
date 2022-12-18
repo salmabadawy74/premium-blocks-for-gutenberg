@@ -589,6 +589,14 @@
         "showVariation": {
             "type": "boolean",
             "default": true
+        },
+        "Prefix": {
+            "type": "string",
+            "default": "0"
+        },
+        "suffix": {
+            "type": "string",
+            "default": "100"
         }
     }
 }
