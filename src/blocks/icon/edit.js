@@ -75,7 +75,8 @@ function Edit(props) {
         containerBackground,
         containerShadow,
         iconShadow,
-        borderHoverColor
+        borderHoverColor,
+        svgUrl
     } = props.attributes;
 
     const EFFECTS = [
@@ -174,10 +175,24 @@ function Edit(props) {
                                     },
                                     {
                                         label: __(
+                                            "SVG",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                        value: "svg",
+                                    },
+                                    {
+                                        label: __(
                                             "Image",
                                             "premium-blocks-for-gutenberg"
                                         ),
                                         value: "img",
+                                    },
+                                    {
+                                        label: __(
+                                            "Lottie",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                        value: "lottie",
                                     },
                                 ]}
                                 value={iconTypeFile}
@@ -229,6 +244,26 @@ function Edit(props) {
                                             imageID: "",
                                         })
                                     }
+                                />
+                            )}
+                            {"svg" === iconTypeFile && (
+                                <PremiumMediaUpload
+                                    type="svg"
+                                    // imageID={ImgId}
+                                    imageURL={svgUrl}
+                                    onSelectMedia={(media) => {
+                                        console.log(media)
+                                        setAttributes({
+                                            // ImgId: media.id,
+                                            svgUrl: media.url
+                                        })
+                                    }}
+                                // onRemoveImage={() => {
+                                //     setAttributes({
+                                //         ImgId: "",
+                                //         ImgUrl: ""
+                                //     })
+                                // }}
                                 />
                             )}
                             <ToggleControl
@@ -637,6 +672,9 @@ function Edit(props) {
                             <img src={imageURL} />
                         )}
                         {!imageURL && "img" === iconTypeFile && <DefaultImage className={className} />}
+                        {"svg" === iconTypeFile &&
+                            <iframe src={svgUrl} className="premium-image-upload" />
+                        }
                     </div>
 
                 </div>
