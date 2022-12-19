@@ -38279,7 +38279,8 @@ function Edit(props) {
     containerBackground,
     containerShadow,
     iconShadow,
-    borderHoverColor
+    borderHoverColor,
+    svgUrl
   } = props.attributes;
   const EFFECTS = [{
     value: "none",
@@ -38368,8 +38369,14 @@ function Edit(props) {
       label: __("Icon", "premium-blocks-for-gutenberg"),
       value: "icon"
     }, {
+      label: __("SVG", "premium-blocks-for-gutenberg"),
+      value: "svg"
+    }, {
       label: __("Image", "premium-blocks-for-gutenberg"),
       value: "img"
+    }, {
+      label: __("Lottie", "premium-blocks-for-gutenberg"),
+      value: "lottie"
     }],
     value: iconTypeFile,
     onChange: newValue => setAttributes({
@@ -38401,6 +38408,23 @@ function Edit(props) {
       imageURL: "",
       imageID: ""
     })
+  }), "svg" === iconTypeFile && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.PremiumMediaUpload, {
+    type: "svg" // imageID={ImgId}
+    ,
+    imageURL: svgUrl,
+    onSelectMedia: media => {
+      console.log(media);
+      setAttributes({
+        // ImgId: media.id,
+        svgUrl: media.url
+      });
+    } // onRemoveImage={() => {
+    //     setAttributes({
+    //         ImgId: "",
+    //         ImgUrl: ""
+    //     })
+    // }}
+
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
     label: __("Link", "premium-blocks-for-gutenberg"),
     checked: urlCheck,
@@ -38623,6 +38647,9 @@ function Edit(props) {
     src: imageURL
   }), !imageURL && "img" === iconTypeFile && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.DefaultImage, {
     className: className
+  }), "svg" === iconTypeFile && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("iframe", {
+    src: svgUrl,
+    className: "premium-image-upload"
   })))));
 }
 
