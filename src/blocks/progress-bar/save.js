@@ -6,7 +6,7 @@ import {
 const { useBlockProps, InnerBlocks, RichText } = wp.blockEditor;
 const { Fragment } = wp.element;
 
-export default function save({ attributes }) {
+export default function save({ attributes, deviceType }) {
 
     const {
         blockId,
@@ -39,7 +39,9 @@ export default function save({ attributes }) {
         variation,
         showVariation,
         Prefix,
-        suffix
+        suffix,
+        dotSpacing,
+        dotSize
     } = attributes;
 
     const blockProps = useBlockProps.save({
@@ -185,6 +187,8 @@ export default function save({ attributes }) {
                             data-circles={`${numberOfCircles}`}
                             data-total-fill={`${numberOfTotalFill}`}
                             data-partial-fill={`${fillPercent}`}
+                            data-spacing={`${dotSpacing['Desktop']}`}
+                            data-size={`${dotSize['Desktop']}`}
                         >
                             {renderDots}
                         </div>

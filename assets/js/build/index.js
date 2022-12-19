@@ -44391,6 +44391,8 @@ function Edit(_ref) {
     "data-circles": `${numberOfCircles}`,
     "data-total-fill": `${numberOfTotalFill}`,
     "data-partial-fill": `${fillPercent}`,
+    "data-spacing": `${dotSpacing[deviceType]}`,
+    "data-size": `${dotSize[deviceType]}`,
     style: {
       "border-radius": `${progressBarRadius[deviceType]}${progressBarRadius.unit}`,
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.marginCss)(progressBarMargin, deviceType)
@@ -44580,7 +44582,8 @@ const {
 } = wp.element;
 function save(_ref) {
   let {
-    attributes
+    attributes,
+    deviceType
   } = _ref;
   const {
     blockId,
@@ -44613,7 +44616,9 @@ function save(_ref) {
     variation,
     showVariation,
     Prefix,
-    suffix
+    suffix,
+    dotSpacing,
+    dotSize
   } = attributes;
   const blockProps = useBlockProps.save({
     className: classnames__WEBPACK_IMPORTED_MODULE_2___default()("premium-progress-bar", blockId, {
@@ -44714,7 +44719,9 @@ function save(_ref) {
     className: "premium-progressbar-bar-wrap premium-progressbar-dots",
     "data-circles": `${numberOfCircles}`,
     "data-total-fill": `${numberOfTotalFill}`,
-    "data-partial-fill": `${fillPercent}`
+    "data-partial-fill": `${fillPercent}`,
+    "data-spacing": `${dotSpacing['Desktop']}`,
+    "data-size": `${dotSize['Desktop']}`
   }, renderDots), progressType == 'half-circle' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "premium-progressbar-hf-wrapper"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {

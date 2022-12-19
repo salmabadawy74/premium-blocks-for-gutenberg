@@ -31,7 +31,7 @@ const animate = function ({ duration, draw, timing }) {
 window.addEventListener("DOMContentLoaded", function (event) {
     var progressbars = document.querySelectorAll(".premium-progress-bar");
     if (!progressbars) return;
-
+    console.log(progressbars)
     // function 'debounce' is used here for better performance when scroll event fires
     function debounce(func) {
         var wait =
@@ -68,9 +68,9 @@ window.addEventListener("DOMContentLoaded", function (event) {
                         duration: duration * 1000,
                         draw: function (progress) {
                             var counter = Math.floor(progress * 100);
+                            // console.log(counter)
                             if (counter <= count) {
                                 if (layout === "line") {
-                                    console.log(counter)
                                     progressbar.querySelector(
                                         ".premium-progress-bar-bar"
                                     ).style.width = counter + "%";
@@ -98,12 +98,43 @@ window.addEventListener("DOMContentLoaded", function (event) {
                                     ).style.transform = "rotate(" + rotate + "deg)";
                                 }
                                 else if (layout === "dots") {
+                                    console.log("dotssssssssssssssssssssssssss")
                                     var dots = progressbar.querySelector(".premium-progressbar-dots");
-                                    var circles = dots.getAttribute("data-circles");
-                                    var totalFill = dots.getAttribute("data-total-fill");
-                                    var partialFill = dots.getAttribute("data-partial-fill");
-                                    console.log(dots, circles, totalFill, partialFill)
+                                    // var circles = $video.attr("src");
+                                    // var circles = dots.getAttribute("data-circles");
+                                    // var totalFill = dots.getAttribute("data-total-fill");
+                                    // var partialFill = dots.getAttribute("data-partial-fill");
+                                    // console.log(dots, circles, totalFill, partialFill, progressbar.getAttribute('numberOfTotalFill'))
 
+                                    var offsetWidth = progressbar.offsetWidth,
+                                        dotsSize = dots.getAttribute("data-size"),
+                                        dotsSpacing = dots.getAttribute("data-spacing"),
+                                        length = count,
+                                        numberOfCircles = Math.ceil(offsetWidth / (parseInt(dotsSize) + parseInt(dotsSpacing))),
+                                        circlesToFill = numberOfCircles * (length / 100),
+                                        numberOfTotalFill = Math.floor(circlesToFill),
+                                        fillPercent = 100 * (circlesToFill - numberOfTotalFill);
+                                    // for (var dot = 0; dot < numberOfCircles; dot++) {
+                                    //     dots.push(dot)
+                                    // }
+                                    console.log(numberOfCircles, circlesToFill, numberOfTotalFill, dotsSize, dotsSpacing, count, Math.ceil(dotsSize + dotsSpacing))
+                                    // var className = "progress-segment";
+                                    // for (var i = 0; i < numberOfCircles; i++) {
+                                    //     console.log('iuygf')
+                                    //     className = "progress-segment";
+                                    //     var innerHTML = '';
+
+                                    //     if (i < numberOfTotalFill) {
+                                    //         innerHTML = "<div class='segment-inner'></div>";
+                                    //     }
+                                    //     // else if (i === numberOfTotalFill) {
+
+                                    //     //     innerHTML = "<div class='segment-inner'></div>";
+                                    //     // }
+                                    //     dots.innerHTML += "<div class='" + className + "'>" + innerHTML + "</div>"
+                                    //     // dots.append("<div class='" + className + "'>" + innerHTML + "</div>");
+
+                                    // }
                                 }
                             }
                         },

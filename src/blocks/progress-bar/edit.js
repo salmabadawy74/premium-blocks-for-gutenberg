@@ -865,6 +865,8 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                                 data-circles={`${numberOfCircles}`}
                                 data-total-fill={`${numberOfTotalFill}`}
                                 data-partial-fill={`${fillPercent}`}
+                                data-spacing={`${dotSpacing[deviceType]}`}
+                                data-size={`${dotSize[deviceType]}`}
                                 style={{
                                     "border-radius": `${progressBarRadius[deviceType]}${progressBarRadius.unit}`,
                                     ...marginCss(progressBarMargin, deviceType),
