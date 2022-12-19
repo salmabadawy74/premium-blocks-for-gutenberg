@@ -1,0 +1,124 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "premium/post-featured-image",
+	"title": "Post Featured Image",
+	"category": "theme",
+	"description": "Display a post's featured image.",
+	"textdomain": "default",
+	"attributes": {
+		"isLink": {
+			"type": "boolean",
+			"default": false
+		},
+	
+		"rel": {
+			"type": "string",
+			"attribute": "rel",
+			"default": ""
+		},
+		"linkTarget": {
+			"type": "string",
+			"default": "_self"
+		},
+		
+         "featuredImage": {
+            "type": "boolean",
+            "default": true
+        },
+        "hoverEffect": {
+            "type": "string",
+            "default": "zoomin"
+        },
+         "height": {
+            "type": "object",
+            "default": {
+                "Desktop": "300",
+                "Tablet": "300",
+                "Mobile": "300",
+                "unit": "px"
+            }
+        },
+        
+"thumbnail":{
+               "type": "object",
+            "default": {
+                "Desktop": "cover",
+                "Tablet": "cover",
+                "Mobile": "cover"
+            }
+},      
+      "imageSize": {
+         "type": "string",
+            "default": "large"
+        },
+         "filter": {
+            "type": "object",
+            "default": {
+                "contrast": "100",
+                "blur": "0",
+                "bright": "100",
+                "saturation": "100",
+                "hue": "0"
+            }
+        },
+        "Hoverfilter": {
+            "type": "object",
+            "default": {
+                "contrast": "100",
+                "blur": "0",
+                "bright": "100",
+                "saturation": "100",
+                "hue": "0"
+            }
+        },
+        "colorOverlay": {
+            "type": "string",
+            "default": ""
+        },
+                "shapeTop": {
+            "type": "object",
+            "default": {
+                "openShape": 0,
+                "color": "#006fbf",
+                "shapeType": "top",
+                "width": {
+                    "Desktop": "",
+                    "Tablet": "",
+                    "Mobile": "",
+                    "unit": "%"
+                },
+                "height": {
+                    "Desktop": "",
+                    "Tablet": "",
+                    "Mobile": "",
+                    "unit": "px"
+                }
+            }
+        },
+        "shapeBottom": {
+            "type": "object",
+            "default": {
+                "openShape": 0,
+                "color": "#006fbf",
+                "shapeType": "bottom",
+                "width": {
+                    "Desktop": "",
+                    "Tablet": "",
+                    "Mobile": "",
+                    "unit": "%"
+                },
+                "height": {
+                    "Desktop": "",
+                    "Tablet": "",
+                    "Mobile": "",
+                    "unit": "px"
+                }
+            }
+        }
+	},
+	"usesContext": [ "postId", "postType", "queryId" ],
+	"supports": {
+		"align": [ "left", "right", "center", "wide", "full" ]
+	}
+}

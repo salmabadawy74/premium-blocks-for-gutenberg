@@ -1,6 +1,6 @@
 import { decodeEntities } from "@wordpress/html-entities";
 
-export const PostTitle = (props) => {
+export default function PostTitle(props) {
     const { attributes, post } = props;
 
     const Tag = attributes.titleTag;
@@ -13,12 +13,23 @@ export const PostTitle = (props) => {
 
     if (attributes.displayPostTitle) {
         return (
-            <Tag className="">
-                <a href={post.link} target={target} rel="noopener noreferrer">
-                    {decodeEntities(post.title.rendered.trim())}
-                </a>
-            </Tag>
+            <div className="premium-blog-entry-title">
+                <h2>
+                    <a href={post.link}>
+                        {undefined == post.title
+                            ? post.value
+                            : decodeEntities(post.title.rendered.trim()) ||
+                              __("(Untitled)")}
+                    </a>
+                </h2>
+            </div>
         );
     }
-    return null;
-};
+    return (
+        <h3 className="">
+            <a href="/" target="_blank" rel="noopener noreferrer" alt="">
+                {" titl"}
+            </a>
+        </h3>
+    );
+}

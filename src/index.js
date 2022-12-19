@@ -22,7 +22,9 @@ import {
     pricingTable,
     videoBox,
 } from "../assets/js/settings";
-
+import "./blocks/post-title";
+import "./blocks/post-excerpt";
+import "./blocks/feature-image";
 dualHeading ? require("./blocks/dual-heading") : "";
 accordion ? require("./blocks/accordion") : "";
 banner ? require("./blocks/banner") : "";
@@ -52,6 +54,7 @@ import "./blocks/text";
 import "./blocks/badge";
 import "./blocks/image";
 import "./blocks/icon-group";
+import "./blocks/post-grid";
 
 window.PremiumOptionsSettings = {
     FontAwesomeEnabled,
