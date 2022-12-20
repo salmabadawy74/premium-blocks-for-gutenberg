@@ -22,7 +22,7 @@ import {
     pricingTable,
     videoBox,
 } from "../assets/js/settings";
-import "./blocks/post-title";
+import "./blocks/post-title/index";
 import "./blocks/post-excerpt";
 import "./blocks/feature-image";
 dualHeading ? require("./blocks/dual-heading") : "";

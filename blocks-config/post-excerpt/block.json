@@ -4,6 +4,7 @@
 	"name": "premium/post-excerpt",
 	"title": "Post Excerpt",
 	"category": "theme",
+    "parent": ["premium/post-grid"],
 	"description": "Display a post's excerpt.",
 	"textdomain": "default",
 	"attributes": {

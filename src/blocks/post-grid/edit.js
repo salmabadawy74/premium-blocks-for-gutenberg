@@ -24,7 +24,11 @@ const TEMPLATE = [["premium/post-title"], ["premium/post-excerpt"]];
 function PostTemplateInnerBlocks() {
     const innerBlocksProps = useInnerBlocksProps(
         { className: "wp-block-post" },
-        { template: TEMPLATE }
+        {
+            template: TEMPLATE,
+            templateLock: false,
+            allowedBlocks: ["premium/post-title", "premium/post-excerpt"],
+        }
     );
     return <li {...innerBlocksProps} />;
 }
@@ -195,10 +199,7 @@ export default function PostTemplateEdit({
                         key={blockContext.postId}
                         value={blockContext}
                     >
-                        {blockContext.postId ===
-                        (activeBlockContextId || blockContexts[0]?.postId) ? (
-                            <PostTemplateInnerBlocks />
-                        ) : null}
+                        <PostTemplateInnerBlocks />
                     </BlockContextProvider>
                 ))}
         </ul>
