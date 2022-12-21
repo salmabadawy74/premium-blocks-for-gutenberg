@@ -11,7 +11,8 @@
     max-width: 100%;
     height: auto; }
   .premium-icon-box .premium-text {
-    margin-top: 5px !important; }
+    margin-top: 5px !important;
+    margin-bottom: 20px !important; }
     .premium-icon-box .premium-text p {
       margin: 0; }
 
