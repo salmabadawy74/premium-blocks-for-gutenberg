@@ -145,7 +145,7 @@ function Edit(props) {
             'justify-content': `${align[props.deviceType]} !important`
         };
 
-        styles[` .${blockId} .premium-icon-group-horizontal i:hover, .${blockId} .premium-icon-group-vertical i:hover`] = {
+        styles[` .${blockId} .premium-icon-group-container i:hover`] = {
             color: `${groupIconHoverColor}`,
             "background-color": `${groupIconHoverBack}`,
         };

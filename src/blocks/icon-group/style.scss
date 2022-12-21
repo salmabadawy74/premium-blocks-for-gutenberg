@@ -6,13 +6,11 @@
         display: flex;
         flex-direction: row;
         column-gap: 12px;
-        overflow: hidden;
 
         .block-editor-block-list__layout {
             display: flex;
             flex-direction: row;
             column-gap: 12px;
-            overflow: hidden;
         }
     }
 
@@ -20,13 +18,11 @@
         display: flex;
         flex-direction: column !important;
         row-gap: 12px;
-        overflow: hidden;
 
         .block-editor-block-list__layout {
             display: flex;
             flex-direction: column !important;
             row-gap: 12px;
-            overflow: hidden;
         }
     }
 
