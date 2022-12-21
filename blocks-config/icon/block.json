@@ -194,7 +194,7 @@
             "type": "object",
             "default": {
                 "borderColor": "",
-                "borderType": "none",
+                "borderType": "",
                 "borderRadius": {
                     "Desktop": {
                         "top": "",
