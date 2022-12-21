@@ -1,28 +1,30 @@
 {
-	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 2,
-	"name": "premium/post-featured-image",
-	"title": "Post Featured Image",
-	"category": "theme",
-	"description": "Display a post's featured image.",
-	"textdomain": "default",
-	"attributes": {
-		"isLink": {
-			"type": "boolean",
-			"default": false
-		},
-	
-		"rel": {
-			"type": "string",
-			"attribute": "rel",
-			"default": ""
-		},
-		"linkTarget": {
-			"type": "string",
-			"default": "_self"
-		},
-		
-         "featuredImage": {
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 2,
+    "name": "premium/post-featured-image",
+    "title": "Post Featured Image",
+    "category": "premium-blocks",
+    "description": "Display a post's featured image.",
+    "textdomain": "default",
+    "parent": ["premium/post-grid"],
+
+    "attributes": {
+        "isLink": {
+            "type": "boolean",
+            "default": false
+        },
+
+        "rel": {
+            "type": "string",
+            "attribute": "rel",
+            "default": ""
+        },
+        "linkTarget": {
+            "type": "string",
+            "default": "_self"
+        },
+
+        "featuredImage": {
             "type": "boolean",
             "default": true
         },
@@ -30,7 +32,7 @@
             "type": "string",
             "default": "zoomin"
         },
-         "height": {
+        "height": {
             "type": "object",
             "default": {
                 "Desktop": "300",
@@ -39,20 +41,20 @@
                 "unit": "px"
             }
         },
-        
-"thumbnail":{
-               "type": "object",
+
+        "thumbnail": {
+            "type": "object",
             "default": {
                 "Desktop": "cover",
                 "Tablet": "cover",
                 "Mobile": "cover"
             }
-},      
-      "imageSize": {
-         "type": "string",
+        },
+        "imageSize": {
+            "type": "string",
             "default": "large"
         },
-         "filter": {
+        "filter": {
             "type": "object",
             "default": {
                 "contrast": "100",
@@ -76,7 +78,7 @@
             "type": "string",
             "default": ""
         },
-                "shapeTop": {
+        "shapeTop": {
             "type": "object",
             "default": {
                 "openShape": 0,
@@ -116,9 +118,9 @@
                 }
             }
         }
-	},
-	"usesContext": [ "postId", "postType", "queryId" ],
-	"supports": {
-		"align": [ "left", "right", "center", "wide", "full" ]
-	}
+    },
+    "usesContext": ["postId", "postType", "queryId"],
+    "supports": {
+        "align": ["left", "right", "center", "wide", "full"]
+    }
 }

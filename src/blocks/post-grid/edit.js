@@ -19,19 +19,7 @@ import {
 import { Spinner } from "@wordpress/components";
 import { store as coreStore } from "@wordpress/core-data";
 
-const TEMPLATE = [["premium/post-title"], ["premium/post-excerpt"]];
 
-function PostTemplateInnerBlocks() {
-    const innerBlocksProps = useInnerBlocksProps(
-        { className: "wp-block-post" },
-        {
-            template: TEMPLATE,
-            templateLock: false,
-            allowedBlocks: ["premium/post-title", "premium/post-excerpt"],
-        }
-    );
-    return <li {...innerBlocksProps} />;
-}
 
 export default function PostTemplateEdit({
     clientId,
@@ -61,6 +49,16 @@ export default function PostTemplateEdit({
         templateSlug,
     },
 }) {
+    const TEMPLATE = [["premium/post-title"], ["premium/post-excerpt"], ["premium/post-featured-image"]]
+
+    const innerBlocksProps = useInnerBlocksProps(
+        { className: "wp-block-post" },
+        {
+            template: TEMPLATE,
+            templateLock: false,
+            allowedBlocks: ["premium/post-title", "premium/post-excerpt", "premium/post-featured-image"]
+        }
+    );
     console.log("KKKKKKKK");
     const [{ page }] = queryContext;
     const [activeBlockContextId, setActiveBlockContextId] = useState();
@@ -187,10 +185,7 @@ export default function PostTemplateEdit({
         return <p {...blockProps}> {__("No results found.")}</p>;
     }
 
-    // To avoid flicker when switching active block contexts, a preview is rendered
-    // for each block context, but the preview for the active block context is hidden.
-    // This ensures that when it is displayed again, the cached rendering of the
-    // block preview is used, instead of having to re-render the preview from scratch.
+
     return (
         <ul {...blockProps}>
             {blockContexts &&
@@ -199,7 +194,7 @@ export default function PostTemplateEdit({
                         key={blockContext.postId}
                         value={blockContext}
                     >
-                        <PostTemplateInnerBlocks />
+                        <div  {...innerBlocksProps} />
                     </BlockContextProvider>
                 ))}
         </ul>

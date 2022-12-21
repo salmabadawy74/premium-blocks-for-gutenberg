@@ -12,11 +12,15 @@ import { __ } from "@wordpress/i18n";
 
 import { registerBlockType } from "@wordpress/blocks";
 
+import json from './block.json'
 // Register the block
 registerBlockType("premium/post-featured-image", {
+    ...json,
     icon: "",
     keywords: [__("post"), __("image")],
     edit: Image,
     example: {},
-    save,
+    save() {
+        return null;
+    },
 });

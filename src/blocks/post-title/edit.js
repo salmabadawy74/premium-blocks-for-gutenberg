@@ -1,10 +1,18 @@
 import { decodeEntities } from "@wordpress/html-entities";
 import { useEntityProp } from "@wordpress/core-data";
+import {
+    InspectorControls,
+    useBlockProps,
+    RichText
+} from "@wordpress/block-editor";
 export default function PostTitle(props) {
     const {
         attributes,
         context: { postType, postId, queryId },
     } = props;
+    const blockProps = useBlockProps({
+        className: "premium-blog-entry-title"
+    })
     console.log(postType, postId, postId, ":::::::");
     const Tag = attributes.titleTag;
     const [rawTitle = "", setTitle, fullTitle] = useEntityProp(
@@ -17,7 +25,7 @@ export default function PostTitle(props) {
     const target = attributes.newTab ? "_blank" : "_self";
 
     return (
-        <div className="premium-blog-entry-title">
+        <div {...blockProps} >
             <h2>
                 <a href={link}>{rawTitle}</a>
             </h2>

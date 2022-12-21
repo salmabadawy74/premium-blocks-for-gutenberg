@@ -1,35 +1,35 @@
 {
-	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 2,
-	"name": "premium/post-title",
-	"title": "Post Title",
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 2,
+    "name": "premium/post-title",
+    "title": "Post Title",
     "category": "premium-blocks",
-	"description": "Displays the title of a post, page, or any other content-type.",
-	"textdomain": "default",
+    "description": "Displays the title of a post, page, or any other content-type.",
+    "textdomain": "default",
     "parent": ["premium/post-grid"],
-	"usesContext": [ "postId", "postType", "queryId" ],
-	"attributes": {
-		"textAlign": {
-			"type": "string"
-		},
-		"level": {
-			"type": "number",
-			"default": 2
-		},
-		"isLink": {
-			"type": "boolean",
-			"default": false
-		},
-		"rel": {
-			"type": "string",
-			"attribute": "rel",
-			"default": ""
-		},
-		"linkTarget": {
-			"type": "string",
-			"default": "_self"
-		},
-        
+    "usesContext": ["postId", "postType", "queryId"],
+    "attributes": {
+        "textAlign": {
+            "type": "string"
+        },
+        "level": {
+            "type": "string",
+            "default": "h2"
+        },
+        "isLink": {
+            "type": "boolean",
+            "default": false
+        },
+        "rel": {
+            "type": "string",
+            "attribute": "rel",
+            "default": ""
+        },
+        "linkTarget": {
+            "type": "string",
+            "default": "_self"
+        },
+
         "Typography": {
             "type": "object",
             "default": {
@@ -58,20 +58,21 @@
                 }
             }
         },
-        
+
         "textColor": {
             "type": "string"
         },
         "hoverColor": {
             "type": "string"
         },
-        "bottomSpacing":{
-            "type":"object",
-            "default":{
-                    "Desktop": "",
-                    "Tablet": "",
-                    "Mobile": "",
-                    "unit": "px"
+        "bottomSpacing": {
+            "type": "object",
+            "default": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
             }
         }
-	}}
+    }
+}
