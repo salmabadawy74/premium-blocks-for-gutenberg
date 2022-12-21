@@ -135,7 +135,7 @@ function Edit(props) {
             'border-top-width': `${iconBorder && iconBorder.borderWidth[props.deviceType].top}px!important`,
             'border-right-width': `${iconBorder && iconBorder.borderWidth[props.deviceType].right}px!important`,
             'border-bottom-width': `${iconBorder && iconBorder.borderWidth[props.deviceType].bottom}px!important`,
-            'border-left-width': `${iconBorder && iconBorder.borderWidth[props.deviceType].width}px!important`,
+            'border-left-width': `${iconBorder && iconBorder.borderWidth[props.deviceType].left}px!important`,
             'border-top-left-radius': `${iconBorder?.borderRadius?.[props.deviceType]?.top || 0}px!important`,
             'border-top-right-radius': `${iconBorder?.borderRadius?.[props.deviceType]?.right || 0}px!important`,
             'border-bottom-left-radius': `${iconBorder?.borderRadius?.[props.deviceType]?.bottom || 0}px!important`,
@@ -421,7 +421,7 @@ function Edit(props) {
                                                         })
                                                     }
                                                 />
-                                                {iconBorder.borderType != "none" && (
+                                                {(iconBorder.borderType != "none" || iconBorder.borderType != "") && (
                                                     <AdvancedPopColorControl
                                                         label={__(
                                                             "Border Color",
@@ -642,6 +642,7 @@ function Edit(props) {
                                     fontSize:
                                         (iconSize[props.deviceType] || 50) +
                                         iconSize.unit,
+                                    cursor: urlCheck ? 'pointer' : 'default',
                                     ...borderCss(iconBorder, props.deviceType),
                                     ...paddingCss(
                                         iconPadding,

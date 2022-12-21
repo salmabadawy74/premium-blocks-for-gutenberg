@@ -22,8 +22,8 @@ export const gradientBackground = (value) => {
                 : backgroundColor;
         btnGrad2 =
             undefined !== gradientColorTwo &&
-            undefined !== gradientColorTwo &&
-            "" !== gradientColorTwo
+                undefined !== gradientColorTwo &&
+                "" !== gradientColorTwo
                 ? gradientColorTwo
                 : "#777";
         if ("radial" === gradientType) {
@@ -52,14 +52,12 @@ export const borderCss = (value, device) => {
         borderBottomWidth: value?.borderWidth?.[device]?.bottom,
         borderLeftWidth: value?.borderWidth?.[device]?.left,
         borderColor: value?.borderColor,
-        borderTopLeftRadius: `${value?.borderRadius?.[device]?.top || 0}px`,
-        borderTopRightRadius: `${value?.borderRadius?.[device]?.right || 0}px`,
-        borderBottomLeftRadius: `${
-            value?.borderRadius?.[device]?.bottom || 0
-        }px`,
-        borderBottomRightRadius: `${
-            value?.borderRadius?.[device]?.left || 0
-        }px`,
+        borderTopLeftRadius: `${value?.borderRadius?.[device]?.top}px`,
+        borderTopRightRadius: `${value?.borderRadius?.[device]?.right}px`,
+        borderBottomLeftRadius: `${value?.borderRadius?.[device]?.bottom
+            }px`,
+        borderBottomRightRadius: `${value?.borderRadius?.[device]?.left
+            }px`,
     };
 };
 export const paddingCss = (value, device) => {
@@ -118,9 +116,9 @@ export const generateCss = (styles) => {
                 const value = selectorStyles[property];
                 const valueWithoutUnits = value
                     ? value
-                          .toString()
-                          .replaceAll(/px|em|rem|!important|%/g, "")
-                          .replaceAll(/\s/g, "")
+                        .toString()
+                        .replaceAll(/px|em|rem|!important|%/g, "")
+                        .replaceAll(/\s/g, "")
                     : "";
                 if (
                     value &&
@@ -146,9 +144,9 @@ export const filterJsCss = (styles) => {
     const filtered = asArray.filter(([property, value]) => {
         const valueWithoutUnits = value
             ? value
-                  .toString()
-                  .replaceAll(/px|em|rem|!important|%/g, "")
-                  .replaceAll(/\s/g, "")
+                .toString()
+                .replaceAll(/px|em|rem|!important|%/g, "")
+                .replaceAll(/\s/g, "")
             : "";
 
         return (
@@ -259,8 +257,8 @@ export const gradientValue = (value) => {
                 : backgroundColor;
         btnGrad2 =
             undefined !== gradientColorTwo &&
-            undefined !== gradientColorTwo &&
-            "" !== gradientColorTwo
+                undefined !== gradientColorTwo &&
+                "" !== gradientColorTwo
                 ? gradientColorTwo
                 : "#777";
         if ("radial" === gradientType) {

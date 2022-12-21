@@ -68,7 +68,7 @@ const PremiumBorder = (props) => {
                     <div className="premium-btn-reset-wrap">
                         <button
                             className="premium-reset-btn "
-                            disabled={"none" === borderType}
+                            disabled={"none" === borderType || "" === borderType}
 
                             onClick={() => onChangeBorder("borderType", 'none')}
 
@@ -76,7 +76,7 @@ const PremiumBorder = (props) => {
                     </div>
 
                 </div >
-                {"none" != borderType && (
+                {("none" != borderType || "" !== borderType) && (
                     <SpacingControl
                         label={__("Border Width ")}
                         value={borderWidth}
@@ -86,7 +86,7 @@ const PremiumBorder = (props) => {
 
                     />
                 )}
-                {"none" != borderType && (
+                {("none" != borderType || "" !== borderType) && (
                     <Fragment>
                         <AdvancedColorControl
                             label={__("Border Color", 'premium-blocks-for-gutenberg')}

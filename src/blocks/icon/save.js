@@ -79,6 +79,7 @@ const save = props => {
                         {"icon" === iconTypeFile && <i
                             className={`premium-icon ${selectedIcon}`}
                             style={filterJsCss({
+                                cursor: urlCheck ? 'pointer' : 'default',
                                 color: iconStyles[0].iconColor,
                                 backgroundColor: iconStyles[0].iconBack,
                                 borderStyle: iconBorder.borderType,
