@@ -124,6 +124,35 @@ const attributes = {
                 }
             }
         }
+    },
+    "groupIconSize": {
+        "type": "object",
+        "default": {
+            "Desktop": "50",
+            "Tablet": "50",
+            "Mobile": "50",
+            "unit": "px"
+        }
+    },
+    "groupIconColor": {
+        "type": "string",
+        "default": ""
+    },
+    "groupIconBack": {
+        "type": "string",
+        "default": ""
+    },
+    "groupIconHoverColor": {
+        "type": "string",
+        "default": ""
+    },
+    "groupIconHoverBack": {
+        "type": "string",
+        "default": ""
+    },
+    "hoverEffect": {
+        "type": "string",
+        "default": "none"
     }
 }
 
@@ -134,7 +163,8 @@ const deprecated = {
             groupIconColor: '',
             groupIconBack: '',
             groupIconHoverColor: '',
-            groupIconHoverBack: ''
+            groupIconHoverBack: '',
+            hoverEffect: 'none'
         }
         return Object.assign(attributes, newAttributes)
     },
