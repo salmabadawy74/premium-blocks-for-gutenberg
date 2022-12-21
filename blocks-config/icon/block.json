@@ -36,9 +36,6 @@
         "imageURL": {
             "type": "string"
         },
-        "svgUrl": {
-            "type": "string"
-        },
         "selectedIcon": {
             "type": "string",
             "default": "dashicons dashicons-admin-site"
@@ -328,6 +325,15 @@
         "borderHoverColor": {
             "type": "string",
             "default": ""
+        },
+        "imgWidth": {
+            "type": "object",
+            "default": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            }
         }
     },
     "editorScript": "pbg-blocks-js",

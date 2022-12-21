@@ -16,8 +16,7 @@ import {
     InsideTab,
     iconsList,
     RadioComponent,
-    PremiumMediaUpload,
-    DefaultImage
+    PremiumMediaUpload
 } from "@pbg/components";
 import {
     gradientBackground,
@@ -76,7 +75,7 @@ function Edit(props) {
         containerShadow,
         iconShadow,
         borderHoverColor,
-        svgUrl
+        imgWidth
     } = props.attributes;
 
     const EFFECTS = [
@@ -130,8 +129,7 @@ function Edit(props) {
             "border-color": `${borderHoverColor}!important`
         };
         styles[` .${blockId} .premium-icon-container img`] = {
-            width: `${iconSize[props.deviceType] || 50}${iconSize.unit} !important`,
-            height: `${iconSize[props.deviceType] || 50}${iconSize.unit} !important`,
+            width: `${imgWidth[props.deviceType]}${imgWidth.unit} !important`,
             'border-color': `${iconBorder && iconBorder.borderColor} !important`,
             'border-style': `${iconBorder && iconBorder.borderType} !important`,
             'border-top-width': `${iconBorder && iconBorder.borderWidth[props.deviceType].top}px!important`,
@@ -175,25 +173,11 @@ function Edit(props) {
                                     },
                                     {
                                         label: __(
-                                            "SVG",
-                                            "premium-blocks-for-gutenberg"
-                                        ),
-                                        value: "svg",
-                                    },
-                                    {
-                                        label: __(
                                             "Image",
                                             "premium-blocks-for-gutenberg"
                                         ),
                                         value: "img",
-                                    },
-                                    {
-                                        label: __(
-                                            "Lottie",
-                                            "premium-blocks-for-gutenberg"
-                                        ),
-                                        value: "lottie",
-                                    },
+                                    }
                                 ]}
                                 value={iconTypeFile}
                                 onChange={(newValue) =>
@@ -244,26 +228,6 @@ function Edit(props) {
                                             imageID: "",
                                         })
                                     }
-                                />
-                            )}
-                            {"svg" === iconTypeFile && (
-                                <PremiumMediaUpload
-                                    type="svg"
-                                    // imageID={ImgId}
-                                    imageURL={svgUrl}
-                                    onSelectMedia={(media) => {
-                                        console.log(media)
-                                        setAttributes({
-                                            // ImgId: media.id,
-                                            svgUrl: media.url
-                                        })
-                                    }}
-                                // onRemoveImage={() => {
-                                //     setAttributes({
-                                //         ImgId: "",
-                                //         ImgUrl: ""
-                                //     })
-                                // }}
                                 />
                             )}
                             <ToggleControl
@@ -348,128 +312,148 @@ function Edit(props) {
                             className="premium-panel-body"
                             initialOpen={true}
                         >
-                            <ResponsiveRangeControl
-                                label={__(
-                                    "Size",
-                                    "premium-blocks-for-gutenberg"
-                                )}
-                                value={iconSize}
-                                onChange={(value) =>
-                                    setAttributes({ iconSize: value })
-                                }
-                                min={0}
-                                max={300}
-                                step={1}
-                                showUnit={true}
-                                units={["px", "em", "rem"]}
-                                defaultValue={50}
-                            />
+                            {"img" === iconTypeFile &&
+                                <ResponsiveRangeControl
+                                    label={__(
+                                        "Width",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                    value={imgWidth}
+                                    onChange={(value) =>
+                                        setAttributes({ imgWidth: value })
+                                    }
+                                    min={0}
+                                    max={300}
+                                    step={1}
+                                    showUnit={true}
+                                    units={["px", "%"]}
+                                    defaultValue={100}
+                                />
+                            }
                             {"icon" === iconTypeFile &&
-                                <InsideTabs>
-                                    <InsideTab
-                                        tabTitle={__(
-                                            "Normal",
+                                <Fragment>
+                                    <ResponsiveRangeControl
+                                        label={__(
+                                            "Size",
                                             "premium-blocks-for-gutenberg"
                                         )}
-                                    >
-                                        <Fragment>
-                                            <AdvancedPopColorControl
-                                                label={__(
-                                                    "Color",
-                                                    "premium-blocks-for-gutenberg"
-                                                )}
-                                                colorValue={iconStyles[0].iconColor}
-                                                colorDefault={""}
-                                                onColorChange={(value) =>
-                                                    saveIconStyle({
-                                                        iconColor: value,
-                                                    })
-                                                }
-                                            />
-                                            <AdvancedPopColorControl
-                                                label={__(
-                                                    "Background Color",
-                                                    "premium-blocks-for-gutenberg"
-                                                )}
-                                                colorValue={iconStyles[0].iconBack}
-                                                colorDefault={""}
-                                                onColorChange={(value) =>
-                                                    saveIconStyle({
-                                                        iconBack: value,
-                                                    })
-                                                }
-                                            />
-                                        </Fragment>
-                                    </InsideTab>
-                                    <InsideTab
-                                        tabTitle={__(
-                                            "Hover",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
-                                    >
-                                        <Fragment>
-                                            <AdvancedPopColorControl
-                                                label={__(
-                                                    "Hover Color",
-                                                    "premium-blocks-for-gutenberg"
-                                                )}
-                                                colorValue={
-                                                    iconStyles[0].iconHoverColor
-                                                }
-                                                colorDefault={""}
-                                                onColorChange={(value) =>
-                                                    saveIconStyle({
-                                                        iconHoverColor: value,
-                                                    })
-                                                }
-                                            />
-                                            <AdvancedPopColorControl
-                                                label={__(
-                                                    "Hover Background Color",
-                                                    "premium-blocks-for-gutenberg"
-                                                )}
-                                                colorValue={
-                                                    iconStyles[0].iconHoverBack
-                                                }
-                                                colorDefault={""}
-                                                onColorChange={(value) =>
-                                                    saveIconStyle({
-                                                        iconHoverBack: value,
-                                                    })
-                                                }
-                                            />
-                                            {iconBorder.borderType != "none" && (
+                                        value={iconSize}
+                                        onChange={(value) =>
+                                            setAttributes({ iconSize: value })
+                                        }
+                                        min={0}
+                                        max={300}
+                                        step={1}
+                                        showUnit={true}
+                                        units={["px", "em", "rem"]}
+                                        defaultValue={50}
+                                    />
+                                    <InsideTabs>
+                                        <InsideTab
+                                            tabTitle={__(
+                                                "Normal",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                        >
+                                            <Fragment>
                                                 <AdvancedPopColorControl
                                                     label={__(
-                                                        "Border Color",
+                                                        "Color",
                                                         "premium-blocks-for-gutenberg"
                                                     )}
-                                                    colorValue={borderHoverColor}
+                                                    colorValue={iconStyles[0].iconColor}
                                                     colorDefault={""}
-                                                    onColorChange={(newValue) =>
-                                                        setAttributes({
-                                                            borderHoverColor:
-                                                                newValue
+                                                    onColorChange={(value) =>
+                                                        saveIconStyle({
+                                                            iconColor: value,
                                                         })
                                                     }
                                                 />
+                                                <AdvancedPopColorControl
+                                                    label={__(
+                                                        "Background Color",
+                                                        "premium-blocks-for-gutenberg"
+                                                    )}
+                                                    colorValue={iconStyles[0].iconBack}
+                                                    colorDefault={""}
+                                                    onColorChange={(value) =>
+                                                        saveIconStyle({
+                                                            iconBack: value,
+                                                        })
+                                                    }
+                                                />
+                                            </Fragment>
+                                        </InsideTab>
+                                        <InsideTab
+                                            tabTitle={__(
+                                                "Hover",
+                                                "premium-blocks-for-gutenberg"
                                             )}
-                                            <SelectControl
-                                                label={__(
-                                                    "Hover Effect",
-                                                    "premium-blocks-for-gutenberg"
+                                        >
+                                            <Fragment>
+                                                <AdvancedPopColorControl
+                                                    label={__(
+                                                        "Hover Color",
+                                                        "premium-blocks-for-gutenberg"
+                                                    )}
+                                                    colorValue={
+                                                        iconStyles[0].iconHoverColor
+                                                    }
+                                                    colorDefault={""}
+                                                    onColorChange={(value) =>
+                                                        saveIconStyle({
+                                                            iconHoverColor: value,
+                                                        })
+                                                    }
+                                                />
+                                                <AdvancedPopColorControl
+                                                    label={__(
+                                                        "Hover Background Color",
+                                                        "premium-blocks-for-gutenberg"
+                                                    )}
+                                                    colorValue={
+                                                        iconStyles[0].iconHoverBack
+                                                    }
+                                                    colorDefault={""}
+                                                    onColorChange={(value) =>
+                                                        saveIconStyle({
+                                                            iconHoverBack: value,
+                                                        })
+                                                    }
+                                                />
+                                                {iconBorder.borderType != "none" && (
+                                                    <AdvancedPopColorControl
+                                                        label={__(
+                                                            "Border Color",
+                                                            "premium-blocks-for-gutenberg"
+                                                        )}
+                                                        colorValue={borderHoverColor}
+                                                        colorDefault={""}
+                                                        onColorChange={(newValue) =>
+                                                            setAttributes({
+                                                                borderHoverColor:
+                                                                    newValue
+                                                            })
+                                                        }
+                                                    />
                                                 )}
-                                                options={EFFECTS}
-                                                value={hoverEffect}
-                                                onChange={(newEffect) =>
-                                                    setAttributes({
-                                                        hoverEffect: newEffect,
-                                                    })
-                                                }
-                                            />
-                                        </Fragment>
-                                    </InsideTab>
-                                </InsideTabs>
+                                                <SelectControl
+                                                    label={__(
+                                                        "Hover Effect",
+                                                        "premium-blocks-for-gutenberg"
+                                                    )}
+                                                    options={EFFECTS}
+                                                    value={hoverEffect}
+                                                    onChange={(newEffect) =>
+                                                        setAttributes({
+                                                            hoverEffect: newEffect,
+                                                        })
+                                                    }
+                                                />
+                                            </Fragment>
+                                        </InsideTab>
+                                    </InsideTabs>
+                                </Fragment>
                             }
                             {"icon" === iconTypeFile && <PremiumShadow
                                 label={__(
@@ -671,10 +655,6 @@ function Edit(props) {
                         {imageURL && "img" === iconTypeFile && (
                             <img src={imageURL} />
                         )}
-                        {!imageURL && "img" === iconTypeFile && <DefaultImage className={className} />}
-                        {"svg" === iconTypeFile &&
-                            <iframe src={svgUrl} className="premium-image-upload" />
-                        }
                     </div>
 
                 </div>

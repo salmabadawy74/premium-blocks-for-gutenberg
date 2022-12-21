@@ -200,7 +200,8 @@
 
 .premium-image-media {
   position: relative;
-  display: block; }
+  display: block;
+  margin-bottom: 20px !important; }
 
 .premium-image-upload {
   width: 100%;
@@ -248,7 +249,8 @@
   text-align: center;
   background: #ffffff;
   cursor: copy;
-  border-radius: 5px; }
+  border-radius: 5px;
+  margin-bottom: 20px !important; }
   .premium-placeholder-image span {
     margin-top: 8px; }
   .premium-placeholder-image .premium-placeholder-image-insert {
@@ -484,7 +486,8 @@
   position: relative;
   margin: 8px 0;
   width: 100%;
-  vertical-align: middle; }
+  vertical-align: middle;
+  margin-bottom: 20px !important; }
 
 .rfipbtn--open {
   border-radius: 2px 2px 0 0; }

@@ -36828,6 +36828,15 @@ const v8Attributes = {
     "type": "string",
     "default": "icon"
   },
+  "imgWidth": {
+    "type": "object",
+    "default": {
+      "Desktop": "",
+      "Tablet": "",
+      "Mobile": "",
+      "unit": "px"
+    }
+  },
   "imageID": {
     "type": "string"
   },
@@ -37130,7 +37139,8 @@ const deprecatedContent = [{
     let newAttributes = {
       iconTypeFile: 'icon',
       imageID: '',
-      imageURL: ''
+      imageURL: '',
+      imgWidth: ''
     };
     return Object.assign(attributes, newAttributes);
   },
@@ -38280,7 +38290,7 @@ function Edit(props) {
     containerShadow,
     iconShadow,
     borderHoverColor,
-    svgUrl
+    imgWidth
   } = props.attributes;
   const EFFECTS = [{
     value: "none",
@@ -38330,8 +38340,7 @@ function Edit(props) {
       "border-color": `${borderHoverColor}!important`
     };
     styles[` .${blockId} .premium-icon-container img`] = {
-      width: `${iconSize[props.deviceType] || 50}${iconSize.unit} !important`,
-      height: `${iconSize[props.deviceType] || 50}${iconSize.unit} !important`,
+      width: `${imgWidth[props.deviceType]}${imgWidth.unit} !important`,
       'border-color': `${iconBorder && iconBorder.borderColor} !important`,
       'border-style': `${iconBorder && iconBorder.borderType} !important`,
       'border-top-width': `${iconBorder && iconBorder.borderWidth[props.deviceType].top}px!important`,
@@ -38369,14 +38378,8 @@ function Edit(props) {
       label: __("Icon", "premium-blocks-for-gutenberg"),
       value: "icon"
     }, {
-      label: __("SVG", "premium-blocks-for-gutenberg"),
-      value: "svg"
-    }, {
       label: __("Image", "premium-blocks-for-gutenberg"),
       value: "img"
-    }, {
-      label: __("Lottie", "premium-blocks-for-gutenberg"),
-      value: "lottie"
     }],
     value: iconTypeFile,
     onChange: newValue => setAttributes({
@@ -38408,23 +38411,6 @@ function Edit(props) {
       imageURL: "",
       imageID: ""
     })
-  }), "svg" === iconTypeFile && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.PremiumMediaUpload, {
-    type: "svg" // imageID={ImgId}
-    ,
-    imageURL: svgUrl,
-    onSelectMedia: media => {
-      console.log(media);
-      setAttributes({
-        // ImgId: media.id,
-        svgUrl: media.url
-      });
-    } // onRemoveImage={() => {
-    //     setAttributes({
-    //         ImgId: "",
-    //         ImgUrl: ""
-    //     })
-    // }}
-
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
     label: __("Link", "premium-blocks-for-gutenberg"),
     checked: urlCheck,
@@ -38469,7 +38455,19 @@ function Edit(props) {
     title: __("Icon Style", "premium-blocks-for-gutenberg"),
     className: "premium-panel-body",
     initialOpen: true
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.ResponsiveRangeControl, {
+  }, "img" === iconTypeFile && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.ResponsiveRangeControl, {
+    label: __("Width", "premium-blocks-for-gutenberg"),
+    value: imgWidth,
+    onChange: value => setAttributes({
+      imgWidth: value
+    }),
+    min: 0,
+    max: 300,
+    step: 1,
+    showUnit: true,
+    units: ["px", "%"],
+    defaultValue: 100
+  }), "icon" === iconTypeFile && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.ResponsiveRangeControl, {
     label: __("Size", "premium-blocks-for-gutenberg"),
     value: iconSize,
     onChange: value => setAttributes({
@@ -38481,7 +38479,7 @@ function Edit(props) {
     showUnit: true,
     units: ["px", "em", "rem"],
     defaultValue: 50
-  }), "icon" === iconTypeFile && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.InsideTabs, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.InsideTab, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.InsideTabs, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.InsideTab, {
     tabTitle: __("Normal", "premium-blocks-for-gutenberg")
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.AdvancedColorControl, {
     label: __("Color", "premium-blocks-for-gutenberg"),
@@ -38527,7 +38525,7 @@ function Edit(props) {
     onChange: newEffect => setAttributes({
       hoverEffect: newEffect
     })
-  })))), "icon" === iconTypeFile && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.PremiumShadow, {
+  }))))), "icon" === iconTypeFile && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.PremiumShadow, {
     label: __("Text Shadow", "premium-blocks-for-gutenberg"),
     value: iconShadow,
     boxShadow: false,
@@ -38645,11 +38643,6 @@ function Edit(props) {
     }
   }), imageURL && "img" === iconTypeFile && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: imageURL
-  }), !imageURL && "img" === iconTypeFile && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.DefaultImage, {
-    className: className
-  }), "svg" === iconTypeFile && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("iframe", {
-    src: svgUrl,
-    className: "premium-image-upload"
   })))));
 }
 
@@ -38725,9 +38718,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @pbg/helpers */ "@pbg/helpers");
 /* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _pbg_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @pbg/components */ "@pbg/components");
-/* harmony import */ var _pbg_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_pbg_components__WEBPACK_IMPORTED_MODULE_4__);
-
 
 
 
@@ -38807,8 +38797,6 @@ const save = props => {
     })
   }), imageURL && "img" === iconTypeFile && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: imageURL
-  }), !imageURL && "img" === iconTypeFile && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_4__.DefaultImage, {
-    className: className
   })))));
 };
 

@@ -292,6 +292,7 @@ $icon-background: #696969;
 .premium-image-media {
     position: relative;
     display: block;
+    margin-bottom: 20px !important;
 }
 
 .premium-image-upload {
@@ -347,6 +348,7 @@ $icon-background: #696969;
     background: #ffffff;
     cursor: copy;
     border-radius: 5px;
+    margin-bottom: 20px !important;
 
     span {
         margin-top: 8px;
@@ -639,6 +641,7 @@ $icon-background: #696969;
     margin: 8px 0;
     width: 100%;
     vertical-align: middle;
+    margin-bottom: 20px !important;
 }
 
 .rfipbtn--open {
@@ -5457,33 +5460,37 @@ i.fipicon-angle-left {
     grid-column-gap: 16px;
     grid-template-columns: repeat(2, 1fr);
     grid-row-gap: 14px;
-    
+
     .premium-presets-radio-input {
         display: none;
     }
 
-.premium_label__wrapper{
-    text-align: center;
-    span.premium_presets__label{
-    text-align: center;
-        color: #534d4d;
-        font-size: 11px;
-}
-}    .premium-presets-radio-input-label {
+    .premium_label__wrapper {
+        text-align: center;
+
+        span.premium_presets__label {
+            text-align: center;
+            color: #534d4d;
+            font-size: 11px;
+        }
+    }
+
+    .premium-presets-radio-input-label {
         position: relative;
         display: inline-block;
     }
 
     svg {
-        &.presets__btn_fill .cls-1{
+        &.presets__btn_fill .cls-1 {
             fill: #b7b7b7;
         }
-                                                                &.presets__btn_outline  .cls-1 {
-                                                                    fill: #B7B7B7;
-                                                                }
+
+        &.presets__btn_outline .cls-1 {
+            fill: #B7B7B7;
+        }
     }
 
-    .premium-presets-radio-input:checked+.premium-presets-radio-input-label svg  .cls-1{
+    .premium-presets-radio-input:checked+.premium-presets-radio-input-label svg .cls-1 {
         fill: #007cba;
 
     }
