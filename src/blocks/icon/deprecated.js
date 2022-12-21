@@ -754,6 +754,15 @@ const v8Attributes = {
         "type": "string",
         "default": "icon"
     },
+    "imgWidth": {
+        "type": "object",
+        "default": {
+            "Desktop": "",
+            "Tablet": "",
+            "Mobile": "",
+            "unit": "px"
+        }
+    },
     "imageID": {
         "type": "string"
     },
@@ -1060,7 +1069,8 @@ const deprecatedContent = [
             let newAttributes = {
                 iconTypeFile: 'icon',
                 imageID: '',
-                imageURL: ''
+                imageURL: '',
+                imgWidth: ''
             }
             return Object.assign(attributes, newAttributes)
         },

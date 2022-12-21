@@ -1,7 +1,6 @@
 import classnames from 'classnames'
 import { useBlockProps } from "@wordpress/block-editor";
 import { gradientBackground, filterJsCss, generateCss } from '@pbg/helpers';
-import { DefaultImage } from '@pbg/components';
 
 const save = props => {
 
@@ -91,7 +90,6 @@ const save = props => {
                         {imageURL && "img" === iconTypeFile && (
                             <img src={imageURL} />
                         )}
-                        {!imageURL && "img" === iconTypeFile && <DefaultImage className={className} />}
                     </div>
                 </a>
             </div>

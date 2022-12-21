@@ -7,6 +7,13 @@
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   border-color: var(--pbg-global-color4); }
+  .premium-icon-box img {
+    max-width: 100%;
+    height: auto; }
+  .premium-icon-box .premium-text {
+    margin-top: 5px !important; }
+    .premium-icon-box .premium-text p {
+      margin: 0; }
 
 .premium-icon-box__title_wrap {
   margin: 1em 0; }

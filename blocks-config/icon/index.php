@@ -69,10 +69,9 @@ function get_premium_icon_css_style( $attr, $unique_id ) {
 	}
 
 	//image style
-	if ( isset( $attr['iconSize']['Desktop'] ) ) {
+	if ( isset( $attr['imgWidth']['Desktop'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > img' );
-		$css->add_property( 'width', $css->render_range( $attr['iconSize'], 'Desktop' ) );
-		$css->add_property( 'height', $css->render_range( $attr['iconSize'], 'Desktop' ) );
+		$css->add_property( 'width', $css->render_range( $attr['imgWidth'], 'Desktop' ) );
 	}
 
 	$css->start_media_query( $media_query['tablet'] );
@@ -124,10 +123,9 @@ function get_premium_icon_css_style( $attr, $unique_id ) {
 	}
 
 	//image style
-	if ( isset( $attr['iconSize']['Desktop'] ) ) {
+	if ( isset( $attr['imgWidth']['Desktop'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > img' );
-		$css->add_property( 'width', $css->render_range( $attr['iconSize'], 'Tablet' ) );
-		$css->add_property( 'height', $css->render_range( $attr['iconSize'], 'Tablet' ) );
+		$css->add_property( 'width', $css->render_range( $attr['imgWidth'], 'Tablet' ) );
 	}
 
 	$css->stop_media_query();
@@ -180,10 +178,9 @@ function get_premium_icon_css_style( $attr, $unique_id ) {
 	}
 
 	//image style
-	if ( isset( $attr['iconSize']['Desktop'] ) ) {
+	if ( isset( $attr['imgWidth']['Desktop'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > img' );
-		$css->add_property( 'width', $css->render_range( $attr['iconSize'], 'Mobile' ) );
-		$css->add_property( 'height', $css->render_range( $attr['iconSize'], 'Mobile' ) );
+		$css->add_property( 'width', $css->render_range( $attr['imgWidth'], 'Mobile' ) );
 	}
 
 	$css->stop_media_query();
