@@ -37503,46 +37503,46 @@ const deprecatedContent = [{
       imageURL: '',
       imgWidth: '',
       iconBorder: {
-        "borderColor": "",
-        "borderType": "",
+        "borderColor": attributes.iconBorder.borderColor || "",
+        "borderType": attributes.iconBorder.borderType || "",
         "borderRadius": {
           "Desktop": {
-            "top": "",
-            "right": "",
-            "bottom": "",
-            "left": ""
+            "top": attributes.iconBorder.borderRadius['Desktop'].top || "",
+            "right": attributes.iconBorder.borderRadius['Desktop'].right || "",
+            "bottom": attributes.iconBorder.borderRadius['Desktop'].bottom || "",
+            "left": attributes.iconBorder.borderRadius['Desktop'].left || ""
           },
           "Tablet": {
-            "top": "",
-            "right": "",
-            "bottom": "",
-            "left": ""
+            "top": attributes.iconBorder.borderRadius['Tablet'].top || "",
+            "right": attributes.iconBorder.borderRadius['Tablet'].right || "",
+            "bottom": attributes.iconBorder.borderRadius['Tablet'].bottom || "",
+            "left": attributes.iconBorder.borderRadius['Tablet'].left || ""
           },
           "Mobile": {
-            "top": "",
-            "right": "",
-            "bottom": "",
-            "left": ""
+            "top": attributes.iconBorder.borderRadius['Mobile'].top || "",
+            "right": attributes.iconBorder.borderRadius['Mobile'].right || "",
+            "bottom": attributes.iconBorder.borderRadius['Mobile'].bottom || "",
+            "left": attributes.iconBorder.borderRadius['Mobile'].left || ""
           }
         },
         "borderWidth": {
           "Desktop": {
-            "top": "",
-            "right": "",
-            "bottom": "",
-            "left": ""
+            "top": attributes.iconBorder.borderWidth['Desktop'].top || "",
+            "right": attributes.iconBorder.borderWidth['Desktop'].right || "",
+            "bottom": attributes.iconBorder.borderWidth['Desktop'].bottom || "",
+            "left": attributes.iconBorder.borderWidth['Desktop'].left || ""
           },
           "Tablet": {
-            "top": "",
-            "right": "",
-            "bottom": "",
-            "left": ""
+            "top": attributes.iconBorder.borderWidth['Tablet'].top || "",
+            "right": attributes.iconBorder.borderWidth['Tablet'].right || "",
+            "bottom": attributes.iconBorder.borderWidth['Tablet'].bottom || "",
+            "left": attributes.iconBorder.borderWidth['Tablet'].left || ""
           },
           "Mobile": {
-            "top": "",
-            "right": "",
-            "bottom": "",
-            "left": ""
+            "top": attributes.iconBorder.borderWidth['Mobile'].top || "",
+            "right": attributes.iconBorder.borderWidth['Mobile'].right || "",
+            "bottom": attributes.iconBorder.borderWidth['Mobile'].bottom || "",
+            "left": attributes.iconBorder.borderWidth['Mobile'].left || ""
           }
         }
       }
