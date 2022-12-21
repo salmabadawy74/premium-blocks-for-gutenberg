@@ -35530,7 +35530,7 @@ function Edit(props) {
   }, {
     template: INNER_BLOCKS_TEMPLATE,
     templateLock: false,
-    allowedBlocks: ["premium/heading", "premium/icon", "premium/button", "premium/text", "premium/image"]
+    allowedBlocks: ["premium/heading", "premium/icon", "premium/button", "premium/text", "premium/image", "premium/lottie"]
   });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, {
     key: "inspector"
@@ -36115,7 +36115,7 @@ function Edit(props) {
       'align-items': `${align[props.deviceType] == 'left' ? 'flex-start' : align[props.deviceType] == 'right' ? 'flex-end' : 'center'} !important`,
       'justify-content': `${align[props.deviceType]} !important`
     };
-    styles[` .${blockId} .premium-icon-group-horizontal i:hover, .${blockId} .premium-icon-group-vertical i:hover`] = {
+    styles[` .${blockId} .premium-icon-group-container i:hover`] = {
       color: `${groupIconHoverColor}`,
       "background-color": `${groupIconHoverBack}`
     };
@@ -36392,11 +36392,11 @@ function save(_ref) {
 
   const loadStyles = () => {
     const styles = {};
-    styles[` .${blockId} .premium-icon-group-horizontal i:hover, .${blockId} .premium-icon-group-vertical i:hover`] = {
+    styles[` .${blockId} .premium-icon-group-container i:hover`] = {
       color: `${groupIconHoverColor}`,
       "background-color": `${groupIconHoverBack}`
     };
-    styles[` .${blockId} .premium-icon-group-horizontal i, .${blockId} .premium-icon-group-vertical i`] = {
+    styles[` .${blockId} .premium-icon-group-container i`] = {
       color: `${groupIconColor}`,
       "background-color": `${groupIconBack}`,
       'border-color': `${groupIconBorder && groupIconBorder.borderColor}`,
@@ -36406,13 +36406,7 @@ function save(_ref) {
   };
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, loadStyles()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `premium-icon-group-${groupAlign} premium-icon__${hoverEffect}` // style={filterJsCss({
-    //     // borderStyle: groupIconBorder?.borderType,
-    //     // borderColor: groupIconBorder?.borderColor,
-    //     // color: groupIconColor,
-    //     // backgroundColor: groupIconBack
-    // })}
-
+    className: `premium-icon-group-container premium-icon-group-${groupAlign} premium-icon__${hoverEffect}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, null)));
 }
 

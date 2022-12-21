@@ -28,12 +28,12 @@ export default function save({ attributes }) {
     const loadStyles = () => {
         const styles = {};
 
-        styles[` .${blockId} .premium-icon-group-horizontal i:hover, .${blockId} .premium-icon-group-vertical i:hover`] = {
+        styles[` .${blockId} .premium-icon-group-container i:hover`] = {
             color: `${groupIconHoverColor}`,
             "background-color": `${groupIconHoverBack}`
         };
 
-        styles[` .${blockId} .premium-icon-group-horizontal i, .${blockId} .premium-icon-group-vertical i`] = {
+        styles[` .${blockId} .premium-icon-group-container i`] = {
             color: `${groupIconColor}`,
             "background-color": `${groupIconBack}`,
             'border-color': `${groupIconBorder && groupIconBorder.borderColor}`,
@@ -46,13 +46,7 @@ export default function save({ attributes }) {
     return <div {...blockProps}>
         <style>{loadStyles()}</style>
         <div
-            className={`premium-icon-group-${groupAlign} premium-icon__${hoverEffect}`}
-        // style={filterJsCss({
-        //     // borderStyle: groupIconBorder?.borderType,
-        //     // borderColor: groupIconBorder?.borderColor,
-        //     // color: groupIconColor,
-        //     // backgroundColor: groupIconBack
-        // })}
+            className={`premium-icon-group-container premium-icon-group-${groupAlign} premium-icon__${hoverEffect}`}
         >
             <InnerBlocks.Content />
         </div>
