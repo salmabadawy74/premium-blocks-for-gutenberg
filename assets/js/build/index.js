@@ -37159,15 +37159,6 @@ const v8Attributes = {
     "type": "string",
     "default": "icon"
   },
-  "imgWidth": {
-    "type": "object",
-    "default": {
-      "Desktop": "",
-      "Tablet": "",
-      "Mobile": "",
-      "unit": "px"
-    }
-  },
   "imageID": {
     "type": "string"
   },
@@ -37330,7 +37321,7 @@ const v8Attributes = {
     "type": "object",
     "default": {
       "borderColor": "",
-      "borderType": "none",
+      "borderType": "",
       "borderRadius": {
         "Desktop": {
           "top": "",
@@ -37461,6 +37452,15 @@ const v8Attributes = {
   "borderHoverColor": {
     "type": "string",
     "default": ""
+  },
+  "imgWidth": {
+    "type": "object",
+    "default": {
+      "Desktop": "",
+      "Tablet": "",
+      "Mobile": "",
+      "unit": "px"
+    }
   }
 };
 const deprecated_attributes = Object.assign(attributes, new_attributes);
@@ -37471,7 +37471,51 @@ const deprecatedContent = [{
       iconTypeFile: 'icon',
       imageID: '',
       imageURL: '',
-      imgWidth: ''
+      imgWidth: '',
+      iconBorder: {
+        "borderColor": "",
+        "borderType": "",
+        "borderRadius": {
+          "Desktop": {
+            "top": "",
+            "right": "",
+            "bottom": "",
+            "left": ""
+          },
+          "Tablet": {
+            "top": "",
+            "right": "",
+            "bottom": "",
+            "left": ""
+          },
+          "Mobile": {
+            "top": "",
+            "right": "",
+            "bottom": "",
+            "left": ""
+          }
+        },
+        "borderWidth": {
+          "Desktop": {
+            "top": "",
+            "right": "",
+            "bottom": "",
+            "left": ""
+          },
+          "Tablet": {
+            "top": "",
+            "right": "",
+            "bottom": "",
+            "left": ""
+          },
+          "Mobile": {
+            "top": "",
+            "right": "",
+            "bottom": "",
+            "left": ""
+          }
+        }
+      }
     };
     return Object.assign(attributes, newAttributes);
   },
