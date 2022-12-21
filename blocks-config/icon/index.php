@@ -214,6 +214,16 @@ function render_block_pbg_icon( $attributes, $content, $block ) {
 		PREMIUM_BLOCKS_VERSION,
 		'all'
 	);
+	if ( $block_helpers->it_is_not_amp() ) {
+	wp_enqueue_script(
+		'pbg-lottie',
+		PREMIUM_BLOCKS_URL . 'assets/js/lottie.js',
+		array( 'jquery' ),
+		PREMIUM_BLOCKS_VERSION,
+		true
+	);
+}
+
 	$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 	if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'icon', $unique_id ) ) {
 		// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.

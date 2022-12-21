@@ -1,5 +1,6 @@
 import classnames from "classnames";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
+import Lottie from "react-lottie-with-segments";
 import {
     ResponsiveRangeControl,
     MultiButtonsControl as ResponsiveRadioControl,
@@ -17,7 +18,8 @@ import {
     iconsList,
     RadioComponent,
     PremiumMediaUpload,
-    DefaultImage
+    DefaultImage,
+    ResponsiveSingleRangeControl
 } from "@pbg/components";
 import {
     gradientBackground,
@@ -35,7 +37,7 @@ const { PanelBody, SelectControl, ToggleControl, TextControl } = wp.components;
 
 const { useEffect, Fragment } = wp.element;
 
-const { InspectorControls, useBlockProps } = wp.blockEditor;
+const { InspectorControls, useBlockProps, MediaPlaceholder } = wp.blockEditor;
 
 const { withSelect } = wp.data;
 
@@ -76,8 +78,15 @@ function Edit(props) {
         containerShadow,
         iconShadow,
         borderHoverColor,
-        svgUrl
+        svgUrl,
+        lottieURl,
+        lottieJson,
+        loop,
+        reversedir,
+        speed
     } = props.attributes;
+
+    const reverse = reversedir ? -1 : 1;
 
     const EFFECTS = [
         {
@@ -122,6 +131,21 @@ function Edit(props) {
         });
     };
 
+    const onSelectLottieJSON = (media) => {
+        if (!media || !media.url) {
+            setAttributes({ lottieJson: null });
+            return;
+        }
+        setAttributes({ lottieJson: media });
+        setAttributes({ lottieURl: media.url });
+    };
+
+    const handleRemoveLottie = () => {
+        setAttributes({
+            lottieURl: "",
+        });
+    };
+
     const loadStyles = () => {
         const styles = {};
         styles[` .${blockId} .premium-icon-container i:hover`] = {
@@ -130,6 +154,28 @@ function Edit(props) {
             "border-color": `${borderHoverColor}!important`
         };
         styles[` .${blockId} .premium-icon-container img`] = {
+            width: `${iconSize[props.deviceType] || 50}${iconSize.unit} !important`,
+            height: `${iconSize[props.deviceType] || 50}${iconSize.unit} !important`,
+            'border-color': `${iconBorder && iconBorder.borderColor} !important`,
+            'border-style': `${iconBorder && iconBorder.borderType} !important`,
+            'border-top-width': `${iconBorder && iconBorder.borderWidth[props.deviceType].top}px!important`,
+            'border-right-width': `${iconBorder && iconBorder.borderWidth[props.deviceType].right}px!important`,
+            'border-bottom-width': `${iconBorder && iconBorder.borderWidth[props.deviceType].bottom}px!important`,
+            'border-left-width': `${iconBorder && iconBorder.borderWidth[props.deviceType].width}px!important`,
+            'border-top-left-radius': `${iconBorder?.borderRadius?.[props.deviceType]?.top || 0}px!important`,
+            'border-top-right-radius': `${iconBorder?.borderRadius?.[props.deviceType]?.right || 0}px!important`,
+            'border-bottom-left-radius': `${iconBorder?.borderRadius?.[props.deviceType]?.bottom || 0}px!important`,
+            'border-bottom-right-radius': `${iconBorder?.borderRadius?.[props.deviceType]?.left || 0}px!important`,
+            "padding-top": `${iconPadding?.[props.deviceType]?.top}${iconPadding.unit}!important`,
+            "padding-right": `${iconPadding?.[props.deviceType]?.right}${iconPadding.unit}!important`,
+            "padding-bottom": `${iconPadding?.[props.deviceType]?.bottom}${iconPadding.unit}!important`,
+            "padding-left": `${iconPadding?.[props.deviceType]?.left}${iconPadding.unit}!important`,
+            "margin-top": `${iconMargin?.[props.deviceType]?.top}${iconMargin.unit}!important`,
+            "margin-right": `${iconMargin?.[props.deviceType]?.right}${iconMargin.unit}!important`,
+            "margin-bottom": `${iconMargin?.[props.deviceType]?.bottom}${iconMargin.unit}!important`,
+            "margin-left": `${iconMargin?.[props.deviceType]?.left}${iconMargin.unit}!important`
+        };
+        styles[` .${blockId} .premium-icon-container svg`] = {
             width: `${iconSize[props.deviceType] || 50}${iconSize.unit} !important`,
             height: `${iconSize[props.deviceType] || 50}${iconSize.unit} !important`,
             'border-color': `${iconBorder && iconBorder.borderColor} !important`,
@@ -265,6 +311,80 @@ function Edit(props) {
                                 //     })
                                 // }}
                                 />
+                            )}
+                            {"lottie" === iconTypeFile && lottieURl === "" && (
+                                <MediaPlaceholder
+                                    labels={{
+                                        title: __('Lottie', 'premium-blocks-for-gutenberg'),
+                                        // instructions: lottie_url
+                                    }}
+                                    accept={['application/json']}
+                                    allowedTypes={['application/json']}
+                                    value={lottieJson}
+                                    onSelectURL={(value) =>
+                                        setAttributes({ lottieURl: value })
+                                    }
+                                    onSelect={onSelectLottieJSON}
+                                />
+                            )}
+                            {"lottie" === iconTypeFile && lottieURl !== "" && (
+                                <Fragment>
+                                    <button
+                                        className="lottie-remove"
+                                        onClick={handleRemoveLottie}
+                                    >
+                                        {__("Change Animation", "premium-blocks-for-gutenberg")}
+                                    </button>
+                                    <ToggleControl
+                                        label={__(
+                                            "Loop",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                        checked={loop}
+                                        onChange={(newValue) =>
+                                            setAttributes({
+                                                loop: newValue,
+                                            })
+                                        }
+                                        help={
+                                            loop
+                                                ? __(
+                                                    "This option works only on the preview page",
+                                                    "premium-blocks-for-gutenberg"
+                                                )
+                                                : ""
+                                        }
+                                    />
+                                    <ToggleControl
+                                        label={__(
+                                            "Reverse",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                        checked={reversedir}
+                                        onChange={(value) =>
+                                            setAttributes({
+                                                reversedir: value,
+                                            })
+                                        }
+                                    />
+                                    <ResponsiveSingleRangeControl
+                                        label={__(
+                                            "Animation Speed",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                        value={speed}
+                                        onChange={(newValue) =>
+                                            setAttributes({
+                                                speed: newValue !== "" ? newValue : 1,
+                                            })
+                                        }
+                                        showUnit={false}
+                                        defaultValue={1}
+                                        max={3}
+                                        min={0.1}
+                                        step={0.1}
+                                    />
+                                </Fragment>
                             )}
                             <ToggleControl
                                 label={__(
@@ -672,9 +792,32 @@ function Edit(props) {
                             <img src={imageURL} />
                         )}
                         {!imageURL && "img" === iconTypeFile && <DefaultImage className={className} />}
-                        {"svg" === iconTypeFile &&
+                        {/* {"svg" === iconTypeFile &&
                             <iframe src={svgUrl} className="premium-image-upload" />
+                        } */}
+                        {"svg" === iconTypeFile &&
+                            <div class="tpgb-draw-svg" data-id="service-svg" data-type="delayed" data-duration="90" data-stroke="" data-fillColor="none" data-fillEnable="yes">
+                                <object id="service-svg" type="image/svg+xml" data={svgUrl} name="svg">
+                                </object>
+                            </div>
                         }
+                        {"lottie" === iconTypeFile && lottieURl && (
+                            <Lottie
+                                options={{
+                                    loop: loop,
+                                    path: lottieURl,
+                                    rendererSettings:
+                                    {
+                                        preserveAspectRatio:
+                                            "xMidYMid",
+                                    },
+                                }}
+                                speed={speed === "" ? 1 : speed}
+                                direction={
+                                    reverse
+                                }
+                            />
+                        )}
                     </div>
 
                 </div>

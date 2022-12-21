@@ -26,6 +26,11 @@ const save = props => {
         borderHoverColor,
         iconTypeFile,
         imageURL,
+        lottieURl,
+        lottieJson,
+        loop,
+        reversedir,
+        speed
     } = props.attributes;
 
     const loadStyles = () => {
@@ -92,6 +97,16 @@ const save = props => {
                             <img src={imageURL} />
                         )}
                         {!imageURL && "img" === iconTypeFile && <DefaultImage className={className} />}
+                        {"lottie" === iconTypeFile &&
+                            <div
+                                className={`premium-lottie-animation`}
+                                data-lottieURl={lottieURl}
+                                data-speed={speed}
+                                data-loop={loop}
+                                data-reverse={reversedir}
+                            >
+                            </div>
+                        }
                     </div>
                 </a>
             </div>

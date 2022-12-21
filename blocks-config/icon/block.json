@@ -39,6 +39,25 @@
         "svgUrl": {
             "type": "string"
         },
+        "lottieJson": {
+            "type": "object"
+        },
+        "lottieURl": {
+            "type": "string",
+            "default": ""
+        },
+        "loop": {
+            "type": "boolean",
+            "default": true
+        },
+        "reversedir": {
+            "type": "boolean",
+            "default": false
+        },
+        "speed": {
+            "type": "number",
+            "default": "1"
+        },
         "selectedIcon": {
             "type": "string",
             "default": "dashicons dashicons-admin-site"
