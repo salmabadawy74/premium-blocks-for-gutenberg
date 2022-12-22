@@ -5,9 +5,7 @@
     "main": "src/index.js",
     "scripts": {
         "start:blocks": "wp-scripts start src/index.js --output-path=assets/js/build",
-        "build:blocks": "wp-scripts build src/index.js --output-path=assets/js/build",
-        "start:search:view": "wp-scripts start src/blocks/search/view.js --output-path=src/blocks/search/view",
-        "build:search:view": "wp-scripts build src/blocks/search/view.js --output-path=src/blocks/search/view"
+        "build:blocks": "wp-scripts build src/index.js --output-path=assets/js/build"
     },
     "repository": {
         "type": "git",
