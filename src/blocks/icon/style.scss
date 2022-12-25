@@ -130,30 +130,13 @@
 }
 
 .premium-icon__container {
-    .premium-icon {
-        font-size: 50px;
-        display: inline-block;
-        width: auto;
-        height: auto;
-
-        &::before {
-            display: inline-block;
-            width: auto;
-            height: auto;
-        }
-    }
 
     .premium-icon {
         font-size: 50px;
-        display: inline-block;
+        display: inline-block !important;
         width: auto;
         height: auto;
 
-        &::before {
-            display: inline-block;
-            width: auto;
-            height: auto;
-        }
     }
 
     .premium-icon.fa {

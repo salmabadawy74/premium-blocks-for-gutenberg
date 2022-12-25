@@ -17,7 +17,9 @@
   text-align: center; }
   .premium-person .premium-icon {
     font-size: 30px;
-    line-height: inherit; }
+    line-height: inherit;
+    width: auto;
+    height: auto; }
 
 .premium-person__inner {
   display: block;
