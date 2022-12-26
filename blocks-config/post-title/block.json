@@ -9,6 +9,10 @@
     "parent": ["premium/post-grid"],
     "usesContext": ["postId", "postType", "queryId"],
     "attributes": {
+                "blockId": {
+            "type": "string"
+        },
+
         "textAlign": {
             "type": "string"
         },
@@ -26,8 +30,8 @@
             "default": ""
         },
         "linkTarget": {
-            "type": "string",
-            "default": "_self"
+            "type": "boolean",
+            "default": false
         },
 
         "Typography": {
@@ -73,6 +77,18 @@
                 "Mobile": "",
                 "unit": "px"
             }
+        },
+         "hideDesktop": {
+            "type": "boolean",
+            "default": ""
+        },
+        "hideTablet": {
+            "type": "boolean",
+            "default": ""
+        },
+        "hideMobile": {
+            "type": "boolean",
+            "default": ""
         }
     }
 }

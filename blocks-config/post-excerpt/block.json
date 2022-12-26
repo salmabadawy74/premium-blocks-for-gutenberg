@@ -8,16 +8,31 @@
 	"description": "Display a post's excerpt.",
 	"textdomain": "default",
 	"attributes": {
-		"textAlign": {
-			"type": "string"
-		},
-		"moreText": {
-			"type": "string"
-		},
-		"showMoreOnNewLine": {
+		"showContent": {
 			"type": "boolean",
-			"default": true
+            "default":true
 		},
+    "displayPostExcerpt": {
+      "type": "string",
+      "default": "Post Excerpt"
+    },
+    "excerptType": {
+      "type": "string",
+      "default": "Dots"
+    },
+    "excerptLen": {
+      "type": "number",
+      "default": 25
+    },
+    "fullWidth": {
+      "type": "boolean",
+      "default": false
+    },
+    "readMoreText": {
+      "type": "string",
+      "default": "Read More"
+    },
+
          "typography": {
             "type": "object",
             "default": {
@@ -46,7 +61,7 @@
                 }
             }
         },
-         "titleMargin": {
+         "margin": {
             "type": "object",
             "default": {
                 "Desktop": {
@@ -72,7 +87,19 @@
         },
         "color": {
 			"type": "string"
-		}
+		},
+         "hideDesktop": {
+            "type": "boolean",
+            "default": ""
+        },
+        "hideTablet": {
+            "type": "boolean",
+            "default": ""
+        },
+        "hideMobile": {
+            "type": "boolean",
+            "default": ""
+        }
 	},
 	"usesContext": [ "postId", "postType", "queryId" ],
 	"supports": {
