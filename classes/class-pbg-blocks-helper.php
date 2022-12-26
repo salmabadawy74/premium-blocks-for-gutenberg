@@ -113,10 +113,30 @@ class PBG_Blocks_Helper
 		add_action('wp_enqueue_scripts', array($this, 'load_dashicons_front_end'));
 
 		add_action('pbg_get_css_files', array($this, 'add_blocks_editor_styles'));
+
+		add_filter( 'wp_kses_allowed_html', array( $this, 'allowed_tags_and_attributes' ), 10, 2 );
 	}
 
 
+	public function allowed_tags_and_attributes( $allowedposttags, $context ) {
 
+		// Keep only for 'post' contenxt.
+		if ( 'post' === $context ) {
+
+			// <svg> tag and attributes.
+			$allowedposttags['svg'] = array(
+				'xmlns'   => true,
+				'viewbox' => true,
+			);
+
+			// <path> tag and attributes.
+			$allowedposttags['path'] = array(
+				'd' => true,
+			);
+		}
+
+		return $allowedposttags;
+	}
 
 
 	/**

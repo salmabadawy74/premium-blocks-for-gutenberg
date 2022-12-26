@@ -2597,6 +2597,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "PremiumResponsiveTabs": () => (/* reexport safe */ _premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_17__["default"]),
 /* harmony export */   "PremiumShadow": () => (/* reexport safe */ _PremiumShadow__WEBPACK_IMPORTED_MODULE_3__["default"]),
 /* harmony export */   "PremiumTypo": () => (/* reexport safe */ _premium_typo__WEBPACK_IMPORTED_MODULE_13__["default"]),
+/* harmony export */   "PremiumUploadSVG": () => (/* reexport safe */ _premium_upload_svg__WEBPACK_IMPORTED_MODULE_29__["default"]),
 /* harmony export */   "PremiumUpperQuote": () => (/* reexport safe */ _testimonials_upper_quote__WEBPACK_IMPORTED_MODULE_27__["default"]),
 /* harmony export */   "RadioComponent": () => (/* reexport safe */ _radio_control__WEBPACK_IMPORTED_MODULE_14__["default"]),
 /* harmony export */   "ResponsiveRangeControl": () => (/* reexport safe */ _RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_4__["default"]),
@@ -2638,6 +2639,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _testimonials_lower_quote__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./testimonials/lower-quote */ "./src/components/testimonials/lower-quote.js");
 /* harmony import */ var _testimonials_upper_quote__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./testimonials/upper-quote */ "./src/components/testimonials/upper-quote.js");
 /* harmony import */ var _Presets__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./Presets */ "./src/components/Presets.js");
+/* harmony import */ var _premium_upload_svg__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./premium-upload-svg */ "./src/components/premium-upload-svg.js");
+
 
 
 
@@ -9657,6 +9660,105 @@ class PremiumTypo extends Component {
 
 /***/ }),
 
+/***/ "./src/components/premium-upload-svg.js":
+/*!**********************************************!*\
+  !*** ./src/components/premium-upload-svg.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ PremiumUploadSVG)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+const {
+  __
+} = wp.i18n;
+const {
+  useEffect,
+  Fragment
+} = wp.element;
+const {
+  Tooltip,
+  Dashicon
+} = wp.components;
+function PremiumUploadSVG(props) {
+  const {
+    type,
+    imageID,
+    svgUrl,
+    title,
+    onRemoveImage,
+    uploadSvg = () => {}
+  } = props;
+  useEffect(() => {
+    if (svgUrl) {
+      addSVGAttributes(svgUrl);
+    }
+  }, [svgUrl]);
+
+  const createElementFromHTMLString = htmlString => {
+    const parentElement = document.getElementById('premium-icon-svg');
+    console.log(parentElement);
+    parentElement.innerHTML = htmlString;
+    return parentElement.firstElementChild;
+  };
+
+  const addSVGAttributes = function (svgHTML) {
+    let attributesToAdd = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    let attributesToRemove = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+    const svgNode = createElementFromHTMLString(svgHTML);
+
+    if (!svgNode) {
+      return '';
+    }
+
+    Object.keys(attributesToAdd).forEach(key => {
+      svgNode.setAttribute(key, attributesToAdd[key]);
+    });
+    attributesToRemove.forEach(key => {
+      svgNode.removeAttribute(key);
+    });
+    return svgNode.outerHTML;
+  };
+
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, svgUrl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "premium-image-media"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    id: "premium-icon-svg"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "premium-image-actions"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Tooltip, {
+    text: __("Edit")
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "premium-image-button",
+    "aria-label": __("Edit"),
+    onClick: uploadSvg,
+    role: "button"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    class: "dashicons dashicons-edit"
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Tooltip, {
+    text: __("Remove")
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "premium-image-button",
+    "aria-label": __("Remove"),
+    onClick: onRemoveImage,
+    role: "button"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    class: "dashicons dashicons-trash"
+  }))))), !svgUrl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: uploadSvg,
+    isSmall: true,
+    isPrimary: true,
+    className: "premium-placeholder-image"
+  }, __('Upload SVG')));
+}
+
+/***/ }),
+
 /***/ "./src/components/radio-control.js":
 /*!*****************************************!*\
   !*** ./src/components/radio-control.js ***!
@@ -9982,13 +10084,13 @@ const Social = {
     viewBox: "0 0 56.7 56.7",
     "enable-background": "new 0 0 56.7 56.7"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("g", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-    d: "M28.2,16.7c-7,0-12.8,5.7-12.8,12.8s5.7,12.8,12.8,12.8S41,36.5,41,29.5S35.2,16.7,28.2,16.7z M28.2,37.7\r c-4.5,0-8.2-3.7-8.2-8.2s3.7-8.2,8.2-8.2s8.2,3.7,8.2,8.2S32.7,37.7,28.2,37.7z"
+    d: "M28.2,16.7c-7,0-12.8,5.7-12.8,12.8s5.7,12.8,12.8,12.8S41,36.5,41,29.5S35.2,16.7,28.2,16.7z M28.2,37.7 c-4.5,0-8.2-3.7-8.2-8.2s3.7-8.2,8.2-8.2s8.2,3.7,8.2,8.2S32.7,37.7,28.2,37.7z"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("circle", {
     cx: "41.5",
     cy: "16.4",
     r: "2.9"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-    d: "M49,8.9c-2.6-2.7-6.3-4.1-10.5-4.1H17.9c-8.7,0-14.5,5.8-14.5,14.5v20.5c0,4.3,1.4,8,4.2,10.7c2.7,2.6,6.3,3.9,10.4,3.9\r h20.4c4.3,0,7.9-1.4,10.5-3.9c2.7-2.6,4.1-6.3,4.1-10.6V19.3C53,15.1,51.6,11.5,49,8.9z M48.6,39.9c0,3.1-1.1,5.6-2.9,7.3\r s-4.3,2.6-7.3,2.6H18c-3,0-5.5-0.9-7.3-2.6C8.9,45.4,8,42.9,8,39.8V19.3c0-3,0.9-5.5,2.7-7.3c1.7-1.7,4.3-2.6,7.3-2.6h20.6\r c3,0,5.5,0.9,7.3,2.7c1.7,1.8,2.7,4.3,2.7,7.2V39.9L48.6,39.9z"
+    d: "M49,8.9c-2.6-2.7-6.3-4.1-10.5-4.1H17.9c-8.7,0-14.5,5.8-14.5,14.5v20.5c0,4.3,1.4,8,4.2,10.7c2.7,2.6,6.3,3.9,10.4,3.9 h20.4c4.3,0,7.9-1.4,10.5-3.9c2.7-2.6,4.1-6.3,4.1-10.6V19.3C53,15.1,51.6,11.5,49,8.9z M48.6,39.9c0,3.1-1.1,5.6-2.9,7.3 s-4.3,2.6-7.3,2.6H18c-3,0-5.5-0.9-7.3-2.6C8.9,45.4,8,42.9,8,39.8V19.3c0-3,0.9-5.5,2.7-7.3c1.7-1.7,4.3-2.6,7.3-2.6h20.6 c3,0,5.5,0.9,7.3,2.7c1.7,1.8,2.7,4.3,2.7,7.2V39.9L48.6,39.9z"
   }))),
   linkedin: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
     className: "premium-social-media-icon",

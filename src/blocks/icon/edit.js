@@ -19,7 +19,8 @@ import {
     RadioComponent,
     PremiumMediaUpload,
     DefaultImage,
-    ResponsiveSingleRangeControl
+    ResponsiveSingleRangeControl,
+    PremiumUploadSVG
 } from "@pbg/components";
 import {
     gradientBackground,
@@ -50,6 +51,12 @@ function Edit(props) {
         });
         setAttributes({ classMigrate: true });
     }, []);
+
+    useEffect(() => {
+        if (props.attributes.svgUrl != "" && props.attributes.iconTypeFile === 'svg') {
+            addSVGAttributes(props.attributes.svgUrl)
+        }
+    }, [props.attributes.iconTypeFile === 'svg', props.attributes.svgUrl != ""]);
 
     const {
         blockId,
@@ -118,6 +125,84 @@ function Edit(props) {
             label: __("Wobble", "premium-blocks-for-gutenberg"),
         },
     ];
+
+    const addCustomIconClass = (svgString, customClass = 'premium-icon-custom-svg') => {
+        if (svgString.match(/(<svg[^>]*class=["'])/)) {
+            // Svg with an existing class attribute.
+            return svgString.replace(/(<svg[^>]*class=["'])/, `$1${customClass} `)
+        } else if (svgString.match(/(<svg)/)) {
+            // Svg without a class attribute.
+            return svgString.replace(/(<svg)/, `$1 class="${customClass}"`)
+        }
+        return svgString
+    }
+
+    /**
+     * Cleans up the SVG, removes the <?xml> tag and comments
+     *
+     * @param {string} svgString The SVG in string form
+     */
+    const cleanSvgString = svgString => {
+        // Get the SVG only
+        let newSvg = svgString.replace(/(^[\s\S]*?)(<svg)/gm, '$2')
+            .replace(/(<\/svg>)([\s\S]*)/g, '$1')
+
+        // Remove simple grouping so that we can color SVGs.
+        for (let i = 0; i < 2; i++) {
+            newSvg = newSvg.replace(/\s*<g\s*>([\s\S]*?)<\/g>\s*/gm, '$1')
+        }
+
+        return newSvg
+    }
+
+    const createElementFromHTMLString = htmlString => {
+        const parentElement = document.getElementById('premium-icon-svg');
+        parentElement.innerHTML = htmlString
+        return parentElement.firstElementChild
+    }
+
+    const addSVGAttributes = (svgHTML, attributesToAdd = {}, attributesToRemove = []) => {
+        const svgNode = createElementFromHTMLString(svgHTML)
+        if (!svgNode) {
+            return ''
+        }
+
+        Object.keys(attributesToAdd).forEach(key => {
+            svgNode.setAttribute(key, attributesToAdd[key])
+        })
+
+        attributesToRemove.forEach(key => {
+            svgNode.removeAttribute(key)
+        })
+        return svgNode.outerHTML
+    }
+
+    const uploadSvg = event => {
+        event.preventDefault()
+
+        const input = document.createElement('input')
+        input.accept = 'image/svg+xml'
+        input.type = 'file'
+        input.onchange = e => {
+            const files = e.target.files
+            if (!files.length) {
+                return
+            }
+
+            // Read the SVG,
+            const fr = new FileReader()
+            fr.onload = function (e) {
+                console.log(e.target.result)
+                const svgString = cleanSvgString(addCustomIconClass(e.target.result))
+                addSVGAttributes(svgString)
+                setAttributes({
+                    svgUrl: svgString
+                });
+            }
+            fr.readAsText(files[0])
+        }
+        input.click()
+    }
 
     const saveIconStyle = (value) => {
         const newUpdate = iconStyles.map((item, index) => {
@@ -292,26 +377,26 @@ function Edit(props) {
                                     }
                                 />
                             )}
-                            {"svg" === iconTypeFile && (
-                                <PremiumMediaUpload
-                                    type="svg"
-                                    // imageID={ImgId}
-                                    imageURL={svgUrl}
-                                    onSelectMedia={(media) => {
-                                        console.log(media)
+
+                            {"svg" === iconTypeFile &&
+                                <PremiumUploadSVG
+                                    svgUrl={svgUrl}
+                                    uploadSvg={uploadSvg}
+                                    onRemoveImage={() =>
                                         setAttributes({
-                                            // ImgId: media.id,
-                                            svgUrl: media.url
+                                            svgUrl: ""
                                         })
-                                    }}
-                                // onRemoveImage={() => {
-                                //     setAttributes({
-                                //         ImgId: "",
-                                //         ImgUrl: ""
-                                //     })
-                                // }}
+                                    }
                                 />
-                            )}
+                                // <button
+                                //     onClick={uploadSvg}
+                                //     isSmall
+                                //     isPrimary
+                                //     className="components-range-control__upload"
+                                // >
+                                //     {__('Upload SVG')}
+                                // </button>
+                            }
                             {"lottie" === iconTypeFile && lottieURl === "" && (
                                 <MediaPlaceholder
                                     labels={{
@@ -796,10 +881,11 @@ function Edit(props) {
                             <iframe src={svgUrl} className="premium-image-upload" />
                         } */}
                         {"svg" === iconTypeFile &&
-                            <div class="tpgb-draw-svg" data-id="service-svg" data-type="delayed" data-duration="90" data-stroke="" data-fillColor="none" data-fillEnable="yes">
-                                <object id="service-svg" type="image/svg+xml" data={svgUrl} name="svg">
-                                </object>
-                            </div>
+                            <div id="premium-icon-svg"></div>
+                            // <div class="tpgb-draw-svg" data-id="service-svg" data-type="delayed" data-duration="90" data-stroke="" data-fillColor="none" data-fillEnable="yes">
+                            //     <object id="service-svg" type="image/svg+xml" data={svgUrl} name="svg">
+                            //     </object>
+                            // </div>
                         }
                         {"lottie" === iconTypeFile && lottieURl && (
                             <Lottie

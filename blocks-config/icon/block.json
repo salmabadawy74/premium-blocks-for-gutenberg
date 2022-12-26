@@ -36,9 +36,6 @@
         "imageURL": {
             "type": "string"
         },
-        "svgUrl": {
-            "type": "string"
-        },
         "lottieJson": {
             "type": "object"
         },
@@ -345,6 +342,10 @@
             }
         },
         "borderHoverColor": {
+            "type": "string",
+            "default": ""
+        },
+        "svgUrl": {
             "type": "string",
             "default": ""
         }
