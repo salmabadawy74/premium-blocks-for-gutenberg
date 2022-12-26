@@ -2,13 +2,7 @@ import { useEntityProp } from "@wordpress/core-data";
 const { useMemo, Fragment, useEffect } = wp.element;
 import { __ } from "@wordpress/i18n";
 import { InspectorControls, useBlockProps } from "@wordpress/block-editor";
-import {
-    generateBlockId,
-    generateCss,
-    typographyCss,
-    paddingCss,
-    marginCss,
-} from "@pbg/helpers";
+import { generateBlockId, typographyCss, marginCss } from "@pbg/helpers";
 import {
     ResponsiveSingleRangeControl,
     InspectorTabs,
@@ -18,6 +12,8 @@ import {
     SpacingComponent,
     AdvancedColorControl as AdvancedPopColorControl,
     WebfontLoader,
+    InsideTabs,
+    InsideTab,
 } from "@pbg/components";
 const { PanelBody, SelectControl, TextControl, ToggleControl } = wp.components;
 import classNames from "classnames";
@@ -118,6 +114,21 @@ function Excerpt(props) {
             ...marginCss(margin, deviceType),
         },
     });
+    let readMoreTxt = readMoreText ? readMoreText : __("Read More");
+    const readMore = (
+        <div
+            className={`premium-blog-excerpt-link-wrap premium-blog-excerpt-link-${fullWidth} `}
+        >
+            <a
+                className={`premium-blog-excerpt-link `}
+                href={`#`}
+                target={`_blank`}
+                rel="noopener noreferrer"
+            >
+                {readMoreTxt}
+            </a>
+        </div>
+    );
 
     return (
         <Fragment>
@@ -244,6 +255,142 @@ function Excerpt(props) {
                             showUnits={true}
                             responsive={true}
                         />
+                        {excerptType === "Link" ? (
+                            <PanelBody
+                                title={__("Button Style ")}
+                                className="premium-panel-body"
+                                initialOpen={false}
+                            >
+                                <PremiumTypo
+                                    value={btnTypography}
+                                    onChange={(newValue) =>
+                                        setAttributes({
+                                            btnTypography: newValue,
+                                        })
+                                    }
+                                />
+                                <ResponsiveRangeControl
+                                    label={__(
+                                        "Button Spacing ",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                    value={buttonSpacing}
+                                    onChange={(newValue) =>
+                                        setAttributes({
+                                            buttonSpacing: newValue,
+                                        })
+                                    }
+                                    showUnit={false}
+                                    min={0}
+                                    max={360}
+                                    step={1}
+                                />
+                                <InsideTabs>
+                                    <InsideTab
+                                        tabTitle={__(
+                                            "Normal",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                    >
+                                        <AdvancedPopColorControl
+                                            label={__(
+                                                "Color",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                            colorValue={buttonColor}
+                                            colorDefault={""}
+                                            onColorChange={(newValue) =>
+                                                setAttributes({
+                                                    buttonColor: newValue,
+                                                })
+                                            }
+                                        />
+                                        <AdvancedPopColorControl
+                                            label={__(
+                                                "Background Color",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                            colorValue={buttonBackground}
+                                            colorDefault={""}
+                                            onColorChange={(newValue) =>
+                                                setAttributes({
+                                                    buttonBackground: newValue,
+                                                })
+                                            }
+                                        />
+                                        <PremiumBorder
+                                            label={__(
+                                                "Border",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                            value={btnBorder}
+                                            onChange={(value) =>
+                                                setAttributes({
+                                                    btnBorder: value,
+                                                })
+                                            }
+                                        />
+                                    </InsideTab>
+                                    <InsideTab
+                                        tabTitle={__(
+                                            "Hover",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                    >
+                                        <AdvancedPopColorControl
+                                            label={__(
+                                                "Hover Color",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                            colorValue={buttonhover}
+                                            colorDefault={""}
+                                            onColorChange={(newValue) =>
+                                                setAttributes({
+                                                    buttonhover: newValue,
+                                                })
+                                            }
+                                        />
+                                        <AdvancedPopColorControl
+                                            label={__(
+                                                "Hover Background Color",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                            colorValue={hoverBackground}
+                                            colorDefault={""}
+                                            onColorChange={(newValue) =>
+                                                setAttributes({
+                                                    hoverBackground: newValue,
+                                                })
+                                            }
+                                        />
+                                        <PremiumBorder
+                                            label={__(
+                                                "Border",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                            value={btnBorderHover}
+                                            onChange={(value) =>
+                                                setAttributes({
+                                                    btnBorderHover: value,
+                                                })
+                                            }
+                                        />
+                                    </InsideTab>
+                                </InsideTabs>
+                                <SpacingComponent
+                                    value={btnPadding}
+                                    responsive={true}
+                                    showUnits={true}
+                                    label={__(
+                                        "Padding",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                    onChange={(value) =>
+                                        setAttributes({ btnPadding: value })
+                                    }
+                                />
+                            </PanelBody>
+                        ) : null}
                     </InspectorTab>
                     <InspectorTab key={"advance"}>
                         <PremiumResponsiveTabs
@@ -275,7 +422,10 @@ function Excerpt(props) {
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
-            <div {...blockProps}> {Content}</div>
+            <div {...blockProps}>
+                {Content}
+                {showContent && excerptType === "Link" ? readMore : null}
+            </div>
         </Fragment>
     );
 }
