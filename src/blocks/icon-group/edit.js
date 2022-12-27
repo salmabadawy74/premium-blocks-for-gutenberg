@@ -303,22 +303,23 @@ function Edit(props) {
                                                 })
                                             }
                                         />
-                                        <SelectControl
-                                            label={__(
-                                                "Hover Effect",
-                                                "premium-blocks-for-gutenberg"
-                                            )}
-                                            options={EFFECTS}
-                                            value={hoversEffect}
-                                            onChange={(newEffect) =>
-                                                setAttributes({
-                                                    hoversEffect: newEffect,
-                                                })
-                                            }
-                                        />
+
                                     </Fragment>
                                 </InsideTab>
                             </InsideTabs>
+                            <SelectControl
+                                label={__(
+                                    "Hover Effect",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                options={EFFECTS}
+                                value={hoversEffect}
+                                onChange={(newEffect) =>
+                                    setAttributes({
+                                        hoversEffect: newEffect,
+                                    })
+                                }
+                            />
                             <PremiumBorder
                                 label={__("Border", "premium-blocks-for-gutenberg")}
                                 value={groupIconBorder}

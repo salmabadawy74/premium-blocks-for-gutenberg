@@ -440,24 +440,25 @@ function Edit(props) {
                                                         }
                                                     />
                                                 )}
-                                                <SelectControl
-                                                    label={__(
-                                                        "Hover Effect",
-                                                        "premium-blocks-for-gutenberg"
-                                                    )}
-                                                    options={EFFECTS}
-                                                    value={hoverEffect}
-                                                    onChange={(newEffect) =>
-                                                        setAttributes({
-                                                            hoverEffect: newEffect,
-                                                        })
-                                                    }
-                                                />
+
                                             </Fragment>
                                         </InsideTab>
                                     </InsideTabs>
                                 </Fragment>
                             }
+                            <SelectControl
+                                label={__(
+                                    "Hover Effect",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                options={EFFECTS}
+                                value={hoverEffect}
+                                onChange={(newEffect) =>
+                                    setAttributes({
+                                        hoverEffect: newEffect,
+                                    })
+                                }
+                            />
                             {"icon" === iconTypeFile && <PremiumShadow
                                 label={__(
                                     "Text Shadow",
