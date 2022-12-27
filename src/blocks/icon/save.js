@@ -30,19 +30,27 @@ const save = props => {
         lottieJson,
         loop,
         reversedir,
-        speed
+        speed,
+        svgUrl
     } = props.attributes;
 
     const loadStyles = () => {
         const styles = {};
-        styles[` .${blockId} .premium-icon-container i:hover`] = {
+        styles[` .${blockId} .premium-icon-container .premium-icon-type:hover`] = {
             'color': `${iconStyles[0].iconHoverColor} !important`,
+            fill: `${iconStyles[0].iconHoverColor} !important`,
             'background-color': `${iconStyles[0].iconHoverBack} !important`,
             "border-color": `${borderHoverColor}!important`
         };
         styles[` .${blockId} .premium-icon-container img`] = {
             'border-color': `${iconBorder && iconBorder.borderColor} !important`,
             'border-style': `${iconBorder && iconBorder.borderType} !important`,
+        };
+        styles[` .${blockId} .premium-icon-container svg`] = {
+            fill: `${iconStyles[0].iconColor}`,
+            'background-color': `${iconStyles[0].iconBack}`,
+            'border-color': `${iconBorder && iconBorder.borderColor} !important`,
+            'border-style': `${iconBorder && iconBorder.borderType} !important`
         };
         return generateCss(styles);
     }
@@ -60,6 +68,7 @@ const save = props => {
                     }
                 ),
             })}
+            data-icontype={iconTypeFile}
         >
             <style
                 dangerouslySetInnerHTML={{
@@ -83,7 +92,7 @@ const save = props => {
                 >
                     <div className={`premium-icon-hover premium-icon__${hoverEffect}`}>
                         {"icon" === iconTypeFile && <i
-                            className={`premium-icon ${selectedIcon}`}
+                            className={`premium-icon premium-icon-type ${selectedIcon}`}
                             style={filterJsCss({
                                 color: iconStyles[0].iconColor,
                                 backgroundColor: iconStyles[0].iconBack,
@@ -97,6 +106,9 @@ const save = props => {
                             <img src={imageURL} />
                         )}
                         {!imageURL && "img" === iconTypeFile && <DefaultImage className={className} />}
+                        {"svg" === iconTypeFile &&
+                            <div id="premium-icon-svg" data-src={svgUrl}></div>
+                        }
                         {"lottie" === iconTypeFile &&
                             <div
                                 className={`premium-lottie-animation`}

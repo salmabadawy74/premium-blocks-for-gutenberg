@@ -126,7 +126,7 @@ function Edit(props) {
         },
     ];
 
-    const addCustomIconClass = (svgString, customClass = 'premium-icon-custom-svg') => {
+    const addCustomIconClass = (svgString, customClass = 'premium-icon-type') => {
         if (svgString.match(/(<svg[^>]*class=["'])/)) {
             // Svg with an existing class attribute.
             return svgString.replace(/(<svg[^>]*class=["'])/, `$1${customClass} `)
@@ -188,7 +188,7 @@ function Edit(props) {
             if (!files.length) {
                 return
             }
-
+            console.log(files)
             // Read the SVG,
             const fr = new FileReader()
             fr.onload = function (e) {
@@ -233,8 +233,9 @@ function Edit(props) {
 
     const loadStyles = () => {
         const styles = {};
-        styles[` .${blockId} .premium-icon-container i:hover`] = {
+        styles[` .${blockId} .premium-icon-container .premium-icon-type:hover`] = {
             color: `${iconStyles[0].iconHoverColor} !important`,
+            fill: `${iconStyles[0].iconHoverColor} !important`,
             "background-color": `${iconStyles[0].iconHoverBack} !important`,
             "border-color": `${borderHoverColor}!important`
         };
@@ -263,6 +264,8 @@ function Edit(props) {
         styles[` .${blockId} .premium-icon-container svg`] = {
             width: `${iconSize[props.deviceType] || 50}${iconSize.unit} !important`,
             height: `${iconSize[props.deviceType] || 50}${iconSize.unit} !important`,
+            fill: `${iconStyles[0].iconColor}`,
+            'background-color': `${iconStyles[0].iconBack}`,
             'border-color': `${iconBorder && iconBorder.borderColor} !important`,
             'border-style': `${iconBorder && iconBorder.borderType} !important`,
             'border-top-width': `${iconBorder && iconBorder.borderWidth[props.deviceType].top}px!important`,
@@ -569,7 +572,7 @@ function Edit(props) {
                                 units={["px", "em", "rem"]}
                                 defaultValue={50}
                             />
-                            {"icon" === iconTypeFile &&
+                            {("icon" === iconTypeFile || "svg" === iconTypeFile) &&
                                 <InsideTabs>
                                     <InsideTab
                                         tabTitle={__(
@@ -833,6 +836,7 @@ function Edit(props) {
                         }
                     ),
                 })}
+                data-icontype={iconTypeFile}
             >
                 <div
                     className={`premium-icon-container`}
@@ -856,7 +860,7 @@ function Edit(props) {
                     <div className={`premium-icon__${hoverEffect}`}>
                         {"icon" === iconTypeFile && (iconType === "dash" || 1 == FontAwesomeEnabled) && (
                             <i
-                                className={`premium-icon ${selectedIcon}`}
+                                className={`premium-icon premium-icon-type ${selectedIcon}`}
                                 style={{
                                     color: iconStyles[0].iconColor,
                                     backgroundColor: iconStyles[0].iconBack,
@@ -877,15 +881,8 @@ function Edit(props) {
                             <img src={imageURL} />
                         )}
                         {!imageURL && "img" === iconTypeFile && <DefaultImage className={className} />}
-                        {/* {"svg" === iconTypeFile &&
-                            <iframe src={svgUrl} className="premium-image-upload" />
-                        } */}
                         {"svg" === iconTypeFile &&
-                            <div id="premium-icon-svg"></div>
-                            // <div class="tpgb-draw-svg" data-id="service-svg" data-type="delayed" data-duration="90" data-stroke="" data-fillColor="none" data-fillEnable="yes">
-                            //     <object id="service-svg" type="image/svg+xml" data={svgUrl} name="svg">
-                            //     </object>
-                            // </div>
+                            <div id="premium-icon-svg" data-src={svgUrl}></div>
                         }
                         {"lottie" === iconTypeFile && lottieURl && (
                             <Lottie

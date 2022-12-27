@@ -1,5 +1,5 @@
 const { __ } = wp.i18n;
-const { useEffect, Fragment } = wp.element;
+const { useEffect, Fragment, useState } = wp.element;
 const { Tooltip, Dashicon } = wp.components;
 
 
@@ -13,18 +13,22 @@ export default function PremiumUploadSVG(props) {
         uploadSvg = () => { }
     } = props;
 
+    const [state, setstate] = useState(null);
+
     useEffect(() => {
         if (svgUrl) {
-            addSVGAttributes(svgUrl)
+            const data = addSVGAttributes(svgUrl);
+            setstate(data);
+            console.log('data: ', data);
         }
     }, [svgUrl]);
 
     const createElementFromHTMLString = htmlString => {
         const parentElement = document.getElementById('premium-icon-svg');
         console.log(parentElement)
-
-        parentElement.innerHTML = htmlString
-        return parentElement.firstElementChild
+        var new_str = htmlString.replace(/''/g, '');
+        parentElement.innerHTML = new_str
+        return parentElement
     }
 
     const addSVGAttributes = (svgHTML, attributesToAdd = {}, attributesToRemove = []) => {
@@ -46,7 +50,7 @@ export default function PremiumUploadSVG(props) {
         <Fragment>
             {svgUrl && (
                 <div className="premium-image-media">
-                    <div id="premium-icon-svg"></div>
+                    <div id="premium-icon-svg" dangerouslySetInnerHTML={{ __html: svgUrl }}></div>
                     {/* <img src={svgUrl} className="premium-image-upload" /> */}
                     <div className="premium-image-actions">
                         <Tooltip text={__("Edit")}>

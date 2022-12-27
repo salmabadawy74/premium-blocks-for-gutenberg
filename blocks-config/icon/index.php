@@ -52,18 +52,18 @@ function get_premium_icon_css_style( $attr, $unique_id ) {
 	}
 	if ( isset( $attr['iconMargin'] ) ) {
 		$icon_margin = $attr['iconMargin'];
-		$css->set_selector( '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > .premium-icon, ' . '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > img'  );
+		$css->set_selector( '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > .premium-icon, ' . '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > img, ' . '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > #premium-icon-svg' . ' > svg'  );
 		$css->add_property( 'margin', $css->render_spacing( $icon_margin['Desktop'], $icon_margin['unit'] ) );
 	}
 	if ( isset( $attr['iconPadding'] ) ) {
 		$icon_padding = $attr['iconPadding'];
-		$css->set_selector( '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > .premium-icon, ' . '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > img'  );
+		$css->set_selector( '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > .premium-icon, ' . '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > img, ' . '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > #premium-icon-svg' . ' > svg'  );
 		$css->add_property( 'padding', $css->render_spacing( $icon_padding['Desktop'], $icon_padding['unit'] ) );
 	}
 	if ( isset( $attr['iconBorder'] ) ) {
 		$icon_border_width  = $attr['iconBorder']['borderWidth'];
 		$icon_border_radius = $attr['iconBorder']['borderRadius'];
-		$css->set_selector( '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > .premium-icon, ' . '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > img'  );
+		$css->set_selector( '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > .premium-icon, ' . '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > img, ' . '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > #premium-icon-svg' . ' > svg'  );
 		$css->add_property( 'border-width', $css->render_spacing( $icon_border_width['Desktop'], 'px' ) );
 		$css->add_property( 'border-radius', $css->render_spacing( $icon_border_radius['Desktop'], 'px' ) );
 	}
@@ -71,6 +71,13 @@ function get_premium_icon_css_style( $attr, $unique_id ) {
 	//image style
 	if ( isset( $attr['iconSize']['Desktop'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > img' );
+		$css->add_property( 'width', $css->render_range( $attr['iconSize'], 'Desktop' ) );
+		$css->add_property( 'height', $css->render_range( $attr['iconSize'], 'Desktop' ) );
+	}
+
+	//svg Style
+	if ( isset( $attr['iconSize']['Desktop'] ) ) {
+		$css->set_selector( '.' . $unique_id . ' > .premium-icon-container' . ' > .premium-icon__link' . ' > .premium-icon-hover' . ' > #premium-icon-svg' . ' > svg' );
 		$css->add_property( 'width', $css->render_range( $attr['iconSize'], 'Desktop' ) );
 		$css->add_property( 'height', $css->render_range( $attr['iconSize'], 'Desktop' ) );
 	}
@@ -215,6 +222,13 @@ function render_block_pbg_icon( $attributes, $content, $block ) {
 		'all'
 	);
 	if ( $block_helpers->it_is_not_amp() ) {
+		wp_enqueue_script(
+			'pbg-icon',
+			PREMIUM_BLOCKS_URL . 'assets/js/icon.js',
+			array( 'jquery' ),
+			PREMIUM_BLOCKS_VERSION,
+			true
+		);
 	wp_enqueue_script(
 		'pbg-lottie',
 		PREMIUM_BLOCKS_URL . 'assets/js/lottie.js',
