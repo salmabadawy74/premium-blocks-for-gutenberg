@@ -52,6 +52,10 @@
             "type": "string",
             "default": "none"
         },
+        "hoversEffect": {
+            "type": "string",
+            "default": "none"
+        },
         "iconStyles": {
             "type": "array",
             "default": [
@@ -88,9 +92,9 @@
         "iconSize": {
             "type": "object",
             "default": {
-                "Desktop": "50",
-                "Tablet": "50",
-                "Mobile": "50",
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
                 "unit": "px"
             }
         },
@@ -336,6 +340,7 @@
             }
         }
     },
+    "usesContext": ["hoversEffect"],
     "editorScript": "pbg-blocks-js",
     "editorStyle": "premium-blocks-editor-css"
 }
