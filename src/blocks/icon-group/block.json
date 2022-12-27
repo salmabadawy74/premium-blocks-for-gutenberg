@@ -41,6 +41,15 @@
             "type": "string",
             "default": "horizontal"
         },
+        "iconsSize": {
+            "type": "object",
+            "default": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            }
+        },
         "groupIconMargin": {
             "type": "object",
             "default": {
@@ -136,15 +145,6 @@
                 }
             }
         },
-        "groupIconSize": {
-            "type": "object",
-            "default": {
-                "Desktop": "50",
-                "Tablet": "50",
-                "Mobile": "50",
-                "unit": "px"
-            }
-        },
         "groupIconColor": {
             "type": "string",
             "default": ""
@@ -161,9 +161,13 @@
             "type": "string",
             "default": ""
         },
-        "hoverEffect": {
+        "hoversEffect": {
             "type": "string",
-            "default": "none"
+            "default": "none",
+            "context": true
         }
+    },
+    "providesContext": {
+        "hoversEffect": "hoversEffect"
     }
 }

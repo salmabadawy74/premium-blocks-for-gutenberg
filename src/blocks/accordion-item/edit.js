@@ -10,8 +10,7 @@ function AccordionItemEdit({
     setAttributes,
     context,
     clientId,
-    className,
-    isSelected
+    className
 }) {
     const { blockId, title, description } = attributes;
     const { titleTag, contentType, direction, arrowStyles } = context;

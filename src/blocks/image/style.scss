@@ -7,12 +7,12 @@
         justify-content: center;
 
         .premium-image-wrap {
-            // height: 400px;
-            width: 100%;
+            
             overflow: hidden;
             position: relative;
 
             img {
+                width: 100%;
                 display: block;
                 position: relative;
                 -webkit-flex-shrink: 0;

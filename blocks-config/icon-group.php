@@ -15,6 +15,11 @@ function get_premium_icon_group_css( $attr, $unique_id ) {
 	$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
 	$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 
+	// icon Size
+	if ( isset( $attr['iconsSize']['Desktop'] ) ) {
+		$css->set_selector( '.' . $unique_id . ' .premium-icon-group-container .premium-icon__container .premium-icon');
+		$css->add_property( 'font-size', $css->render_range( $attr['iconsSize'], 'Desktop' ) );
+	}
 	// Desktop Styles.
 	if ( isset( $attr['groupIconBorder'] ) ) {
 		$icon_border        = $attr['groupIconBorder'];
@@ -55,6 +60,11 @@ function get_premium_icon_group_css( $attr, $unique_id ) {
 
 	$css->start_media_query( $media_query['tablet'] );
 	// // Tablet Styles.
+	// icon Size
+	if ( isset( $attr['iconsSize']['Tablet'] ) ) {
+		$css->set_selector( '.' . $unique_id . ' .premium-icon-group-container .premium-icon__container .premium-icon');
+		$css->add_property( 'font-size', $css->render_range( $attr['iconsSize'], 'Tablet' ) );
+	}
 	if ( isset( $attr['groupIconBorder'] ) ) {
 		$icon_border        = $attr['groupIconBorder'];
 		$icon_border_width  = $icon_border['borderWidth'];
@@ -95,6 +105,12 @@ function get_premium_icon_group_css( $attr, $unique_id ) {
 	$css->stop_media_query();
 	$css->start_media_query( $media_query['mobile'] );
 	// // Mobile Styles.
+	// icon Size
+	if ( isset( $attr['iconsSize']['Mobile'] ) ) {
+		$css->set_selector( '.' . $unique_id . ' .premium-icon-group-container .premium-icon__container .premium-icon');
+		$css->add_property( 'font-size', $css->render_range( $attr['iconsSize'], 'Mobile' ) );
+	}
+
 	if ( isset( $attr['groupIconBorder'] ) ) {
 		$icon_border        = $attr['groupIconBorder'];
 		$icon_border_width  = $icon_border['borderWidth'];

@@ -9,7 +9,8 @@ import {
     SpacingComponent as SpacingControl,
     AdvancedColorControl as AdvancedPopColorControl,
     InsideTabs,
-    InsideTab
+    InsideTab,
+    ResponsiveRangeControl
 } from '@pbg/components';
 import { borderCss, paddingCss, marginCss, generateBlockId, generateCss } from '@pbg/helpers';
 
@@ -29,6 +30,7 @@ function Edit(props) {
         hideDesktop,
         hideTablet,
         hideMobile,
+        iconsSize,
         groupIconBorder,
         groupIconMargin,
         groupIconPadding,
@@ -36,7 +38,7 @@ function Edit(props) {
         groupIconBack,
         groupIconHoverColor,
         groupIconHoverBack,
-        hoverEffect
+        hoversEffect
     } = props.attributes
 
     const GroupAlign = [
@@ -150,9 +152,10 @@ function Edit(props) {
             "background-color": `${groupIconHoverBack}`,
         };
 
-        styles[` .${blockId} .premium-icon-group-container i`] = {
+        styles[` .${blockId} .premium-icon-group-container .premium-icon__container .premium-icon`] = {
             color: `${groupIconColor}`,
             "background-color": `${groupIconBack}`,
+            'font-size': `${iconsSize?.[props.deviceType]}${iconsSize.unit}`,
             'border-color': `${groupIconBorder && groupIconBorder.borderColor}`,
             'border-style': `${groupIconBorder && groupIconBorder.borderType}`,
             'border-top-width': `${groupIconBorder && groupIconBorder.borderWidth[props.deviceType].top}px`,
@@ -211,6 +214,22 @@ function Edit(props) {
                             className="premium-panel-body"
                             initialOpen={true}
                         >
+                            <ResponsiveRangeControl
+                                label={__(
+                                    "Icons Size",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                value={iconsSize}
+                                onChange={(value) =>
+                                    setAttributes({ iconsSize: value })
+                                }
+                                min={0}
+                                max={300}
+                                step={1}
+                                showUnit={true}
+                                units={["px", "em", "rem"]}
+                                defaultValue={50}
+                             />
                             <InsideTabs>
                                 <InsideTab
                                     tabTitle={__(
@@ -290,10 +309,10 @@ function Edit(props) {
                                                 "premium-blocks-for-gutenberg"
                                             )}
                                             options={EFFECTS}
-                                            value={hoverEffect}
+                                            value={hoversEffect}
                                             onChange={(newEffect) =>
                                                 setAttributes({
-                                                    hoverEffect: newEffect,
+                                                    hoversEffect: newEffect,
                                                 })
                                             }
                                         />
@@ -364,14 +383,7 @@ function Edit(props) {
             >
                 <style>{loadStyles()}</style>
                 <div
-                    className={`premium-icon-group-container premium-icon-group-${groupAlign} premium-icon__${hoverEffect}`}
-                    style={{
-                        // ...borderCss(groupIconBorder, props.deviceType),
-                        // ...paddingCss(groupIconPadding, props.deviceType),
-                        // ...marginCss(groupIconMargin, props.deviceType),
-                        // color: groupIconColor,
-                        // backgroundColor: groupIconBack
-                    }}
+                    className={`premium-icon-group-container premium-icon-group-${groupAlign}`}
                 >
                     <InnerBlocks
                         template={INNER_BLOCKS_TEMPLATE}
