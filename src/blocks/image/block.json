@@ -94,19 +94,19 @@
         "imgHeight": {
             "type": "object",
             "default": {
-                "Desktop": "400",
-                "Tablet": "400",
-                "Mobile": "400",
-                "unit": "px"
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": ""
             }
         },
         "imgWidth": {
             "type": "object",
             "default": {
-                "Desktop": "100",
-                "Tablet": "100",
-                "Mobile": "100",
-                "unit": "%"
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": ""
             }
         },
         "hoverEffect": {

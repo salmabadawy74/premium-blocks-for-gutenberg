@@ -1,5 +1,10 @@
 .premium-icon-group {
 
+    .premium-icon__container {
+        .premium-icon {
+            font-size: 30px;
+        }
+    }
     .premium-icon-group-horizontal {
         display: flex;
         flex-direction: row;
@@ -22,9 +27,5 @@
             flex-direction: column !important;
             row-gap: 12px;
         }
-    }
-
-    i {
-        font-size: 30px !important;
     }
 }

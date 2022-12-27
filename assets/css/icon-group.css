@@ -1,3 +1,6 @@
+.premium-icon-group .premium-icon__container .premium-icon {
+  font-size: 30px; }
+
 .premium-icon-group .premium-icon-group-horizontal {
   display: flex;
   flex-direction: row;
@@ -15,6 +18,3 @@
     display: flex;
     flex-direction: column !important;
     row-gap: 12px; }
-
-.premium-icon-group i {
-  font-size: 30px !important; }

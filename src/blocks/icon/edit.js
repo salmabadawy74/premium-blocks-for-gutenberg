@@ -39,7 +39,8 @@ const { InspectorControls, useBlockProps } = wp.blockEditor;
 const { withSelect } = wp.data;
 
 function Edit(props) {
-    const { setAttributes, className } = props;
+    const { setAttributes, className, context } = props;
+    const { hoversEffect } = context;
 
     useEffect(() => {
         setAttributes({
@@ -47,6 +48,8 @@ function Edit(props) {
         });
         setAttributes({ classMigrate: true });
     }, []);
+
+
 
     const {
         blockId,
@@ -632,7 +635,7 @@ function Edit(props) {
                             )}
                         </p>
                     )}
-                    <div className={`premium-icon__${hoverEffect}`}>
+                    <div className={`premium-icon__${hoverEffect !== "none" ? hoverEffect : hoversEffect}`}>
                         {"icon" === iconTypeFile && (iconType === "dash" || 1 == FontAwesomeEnabled) && (
                             <i
                                 className={`premium-icon ${selectedIcon}`}

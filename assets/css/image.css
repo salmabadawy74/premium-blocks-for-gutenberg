@@ -5,10 +5,10 @@
   align-items: center;
   justify-content: center; }
   .premium-image .premium-image-container .premium-image-wrap {
-    width: 100%;
     overflow: hidden;
     position: relative; }
     .premium-image .premium-image-container .premium-image-wrap img {
+      width: 100%;
       display: block;
       position: relative;
       -webkit-flex-shrink: 0;
