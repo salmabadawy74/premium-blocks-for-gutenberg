@@ -82,7 +82,7 @@ if ( ! class_exists( 'Pbg_Style_Generator' ) ) {
 					require_once ABSPATH . 'wp-admin/includes/file.php'; // We will probably need to load this file.
 					global $wp_filesystem;
 					WP_Filesystem(); // Initial WP file system.
-					$merged_style .= $wp_filesystem->get_contents( PREMIUM_BLOCKS_PATH . $file );
+					$merged_style .= $wp_filesystem->get_contents( $file );
 
 					$upload_dir = wp_upload_dir(); // Grab uploads folder array.
 					$dir        = trailingslashit( $upload_dir['basedir'] ) . 'premium-blocks-for-gutenberg/'; // Set storage directory path.

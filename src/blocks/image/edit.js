@@ -8,13 +8,14 @@ import {
     PremiumMediaUpload,
     PremiumFilters,
     DefaultImage,
+    RadioComponent
 } from "@pbg/components";
 import { generateBlockId, generateCss } from "@pbg/helpers";
 
 const { __ } = wp.i18n;
 const { withSelect } = wp.data;
 const { useEffect, Fragment } = wp.element;
-const { PanelBody, SelectControl } = wp.components;
+const { PanelBody, SelectControl, TextControl } = wp.components;
 const { InspectorControls, useBlockProps } = wp.blockEditor;
 
 function ImageEdit({
@@ -36,6 +37,7 @@ function ImageEdit({
         imgHeight,
         imgWidth,
         hoverEffect,
+        type
     } = attributes;
 
     const HOVER = [
@@ -127,23 +129,56 @@ function ImageEdit({
                             className="premium-panel-body"
                             initialOpen={true}
                         >
-                            <PremiumMediaUpload
-                                type="image"
-                                imageID={ImgId}
-                                imageURL={ImgUrl}
-                                onSelectMedia={(media) => {
-                                    setAttributes({
-                                        ImgId: media.id,
-                                        ImgUrl: media.url,
-                                    });
-                                }}
-                                onRemoveImage={() => {
-                                    setAttributes({
-                                        ImgId: "",
-                                        ImgUrl: "",
-                                    });
-                                }}
+                            <RadioComponent
+                                choices={[
+                                    {
+                                        value: "upload",
+                                        label: __(
+                                            "Upload",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                    },
+                                    {
+                                        value: "insert-url",
+                                        label: __(
+                                            "Insert from URL",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                    },
+                                ]}
+                                value={type}
+                                onChange={(newValue) =>
+                                    setAttributes({ type: newValue })
+                                }
+                                label={__(
+                                    "Image Src",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                             />
+                            {type === 'insert-url' && (
+                                <div className='premium-blocks__base-control'>
+                                    <TextControl label={__('Image URL', 'premium-block-pro')} value={ImgUrl} onChange={value => setAttributes({ ImgUrl: value })} />
+                                </div>
+                            )}
+                            {type === 'upload' && (
+                                <PremiumMediaUpload
+                                    type="image"
+                                    imageID={ImgId}
+                                    imageURL={type === 'upload' && ImgUrl}
+                                    onSelectMedia={(media) => {
+                                        setAttributes({
+                                            ImgId: media.id,
+                                            ImgUrl: media.url,
+                                        });
+                                    }}
+                                    onRemoveImage={() => {
+                                        setAttributes({
+                                            ImgId: "",
+                                            ImgUrl: "",
+                                        });
+                                    }}
+                                />
+                            )}
                         </PanelBody>
                     </InspectorTab>
                     <InspectorTab key={"style"}>

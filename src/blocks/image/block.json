@@ -5,12 +5,8 @@
     "title": "Image",
     "category": "premium-blocks",
     "description": "An image with advanced controls to make a visual statement.",
-    "keywords": [
-        "image"
-    ],
-    "parent": [
-        "premium/person"
-    ],
+    "keywords": ["image"],
+    "parent": ["premium/person"],
     "textdomain": "default",
     "attributes": {
         "blockId": {
@@ -27,6 +23,10 @@
         "hideMobile": {
             "type": "boolean",
             "default": ""
+        },
+        "type": {
+            "type": "string",
+            "default": "upload"
         },
         "ImgId": {
             "type": "string"

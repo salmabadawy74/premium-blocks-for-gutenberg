@@ -39080,7 +39080,8 @@ const {
 } = wp.element;
 const {
   PanelBody,
-  SelectControl
+  SelectControl,
+  TextControl
 } = wp.components;
 const {
   InspectorControls,
@@ -39106,7 +39107,8 @@ function ImageEdit(_ref) {
     imageFilter,
     imgHeight,
     imgWidth,
-    hoverEffect
+    hoverEffect,
+    type
   } = attributes;
   const HOVER = [{
     value: "none",
@@ -39182,10 +39184,31 @@ function ImageEdit(_ref) {
     title: __("General Settings", "premium-blocks-for-gutenberg"),
     className: "premium-panel-body",
     initialOpen: true
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.PremiumMediaUpload, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.RadioComponent, {
+    choices: [{
+      value: "upload",
+      label: __("Upload", "premium-blocks-for-gutenberg")
+    }, {
+      value: "insert-url",
+      label: __("Insert from URL", "premium-blocks-for-gutenberg")
+    }],
+    value: type,
+    onChange: newValue => setAttributes({
+      type: newValue
+    }),
+    label: __("Image Src", "premium-blocks-for-gutenberg")
+  }), type === 'insert-url' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "premium-blocks__base-control"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
+    label: __('Image URL', 'premium-block-pro'),
+    value: ImgUrl,
+    onChange: value => setAttributes({
+      ImgUrl: value
+    })
+  })), type === 'upload' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.PremiumMediaUpload, {
     type: "image",
     imageID: ImgId,
-    imageURL: ImgUrl,
+    imageURL: type === 'upload' && ImgUrl,
     onSelectMedia: media => {
       setAttributes({
         ImgId: media.id,
@@ -82925,7 +82948,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/image","title":"Image","category":"premium-blocks","description":"An image with advanced controls to make a visual statement.","keywords":["image"],"parent":["premium/person"],"textdomain":"default","attributes":{"blockId":{"type":"string"},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"ImgId":{"type":"string"},"ImgUrl":{"type":"string"},"imageFilter":{"type":"object","default":{"contrast":"100","blur":"0","bright":"100","saturation":"100","hue":"0"}},"imageBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"imgHeight":{"type":"object","default":{"Desktop":"400","Tablet":"400","Mobile":"400","unit":"px"}},"imgWidth":{"type":"object","default":{"Desktop":"100","Tablet":"100","Mobile":"100","unit":"%"}},"hoverEffect":{"type":"string","default":"none"}}}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/image","title":"Image","category":"premium-blocks","description":"An image with advanced controls to make a visual statement.","keywords":["image"],"parent":["premium/person"],"textdomain":"default","attributes":{"blockId":{"type":"string"},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"type":{"type":"string","default":"upload"},"ImgId":{"type":"string"},"ImgUrl":{"type":"string"},"imageFilter":{"type":"object","default":{"contrast":"100","blur":"0","bright":"100","saturation":"100","hue":"0"}},"imageBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"imgHeight":{"type":"object","default":{"Desktop":"400","Tablet":"400","Mobile":"400","unit":"px"}},"imgWidth":{"type":"object","default":{"Desktop":"100","Tablet":"100","Mobile":"100","unit":"%"}},"hoverEffect":{"type":"string","default":"none"}}}');
 
 /***/ }),
 

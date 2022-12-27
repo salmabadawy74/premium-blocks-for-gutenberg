@@ -122,11 +122,11 @@ class PBG_Blocks_Helper {
 	 * @return void
 	 */
 	public function add_blocks_editor_styles() {
-		Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/blockseditor.min.css' );
-		Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/editorpanel.min.css' );
+		Pbg_Style_Generator::pbg_add_css( PREMIUM_BLOCKS_PATH . 'assets/css/minified/blockseditor.min.css' );
+		Pbg_Style_Generator::pbg_add_css( PREMIUM_BLOCKS_PATH . 'assets/css/minified/editorpanel.min.css' );
 
 		$is_rtl = is_rtl() ? true : false;
-		$is_rtl ? Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/style-blocks-rtl.min.css' ) : '';
+		$is_rtl ? Pbg_Style_Generator::pbg_add_css( PREMIUM_BLOCKS_PATH . 'assets/css/minified/style-blocks-rtl.min.css' ) : '';
 
 		if ( is_array( self::$blocks ) && ! empty( self::$blocks ) ) {
 			foreach ( self::$blocks as $slug => $value ) {
@@ -136,21 +136,21 @@ class PBG_Blocks_Helper {
 				}
 
 				if ( 'pricing-table' === $slug ) {
-					Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/price.min.css' );
-					Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/badge.min.css' );
+					Pbg_Style_Generator::pbg_add_css( PREMIUM_BLOCKS_PATH . 'assets/css/minified/price.min.css' );
+					Pbg_Style_Generator::pbg_add_css( PREMIUM_BLOCKS_PATH . 'assets/css/minified/badge.min.css' );
 				}
 				if ( 'pricing-table' === $slug || 'icon-box' === $slug || 'person' === $slug ) {
-					Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/text.min.css' );
+					Pbg_Style_Generator::pbg_add_css( PREMIUM_BLOCKS_PATH . 'assets/css/minified/text.min.css' );
 				}
 				if ( 'person' === $slug ) {
-					Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/image.min.css' );
-					Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/icon-group.min.css' );
+					Pbg_Style_Generator::pbg_add_css( PREMIUM_BLOCKS_PATH . 'assets/css/minified/image.min.css' );
+					Pbg_Style_Generator::pbg_add_css( PREMIUM_BLOCKS_PATH . 'assets/css/minified/icon-group.min.css' );
 				}
 				if ( 'content-switcher' === $slug ) {
-					Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/switcher-child.min.css' );
+					Pbg_Style_Generator::pbg_add_css( PREMIUM_BLOCKS_PATH . 'assets/css/minified/switcher-child.min.css' );
 				}
 
-				Pbg_Style_Generator::pbg_add_css( "assets/css/minified/{$slug}.min.css" );
+				Pbg_Style_Generator::pbg_add_css( PREMIUM_BLOCKS_PATH . "assets/css/minified/{$slug}.min.css" );
 			}
 		}
 	}
