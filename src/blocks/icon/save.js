@@ -25,19 +25,33 @@ const save = props => {
         borderHoverColor,
         iconTypeFile,
         imageURL,
-        hoversEffect
+        hoversEffect,
+        svgUrl
     } = props.attributes;
 
     const loadStyles = () => {
         const styles = {};
-        styles[` .${blockId} .premium-icon-container i:hover`] = {
+        styles[` .${blockId} .premium-icon-container .premium-icon-type:hover`] = {
             'color': `${iconStyles[0].iconHoverColor} !important`,
+            fill: `${iconStyles[0].iconHoverColor} !important`,
             'background-color': `${iconStyles[0].iconHoverBack} !important`,
             "border-color": `${borderHoverColor}!important`
         };
         styles[` .${blockId} .premium-icon-container img`] = {
             'border-color': `${iconBorder && iconBorder.borderColor} !important`,
             'border-style': `${iconBorder && iconBorder.borderType} !important`,
+        };
+        styles[` .${blockId} .premium-icon-container svg`] = {
+            fill: `${iconStyles[0].iconColor}`,
+            'background-color': `${iconStyles[0].iconBack}`,
+            'border-color': `${iconBorder && iconBorder.borderColor} !important`,
+            'border-style': `${iconBorder && iconBorder.borderType} !important`,
+        };
+        styles[` .${blockId} .premium-icon-container svg path`] = {
+            fill: `${iconStyles[0].iconColor}`,
+        };
+        styles[` .${blockId} .premium-icon-container .premium-icon-type:hover path`] = {
+            fill: `${iconStyles[0].iconHoverColor} !important`
         };
         return generateCss(styles);
     }
@@ -55,6 +69,7 @@ const save = props => {
                     }
                 ),
             })}
+            data-icontype={iconTypeFile}
         >
             <style
                 dangerouslySetInnerHTML={{
@@ -75,10 +90,10 @@ const save = props => {
                     href={urlCheck && link}
                     rel="noopener noreferrer"
                     target={target ? "_blank" : "_self"}
-                > 
-                <div className={`premium-icon-hover premium-icon__${hoverEffect !== "none" ? hoverEffect : hoversEffect}`}>
+                >
+                    <div className={`premium-icon-hover premium-icon__${hoverEffect !== "none" ? hoverEffect : hoversEffect}`}>
                         {"icon" === iconTypeFile && <i
-                            className={`premium-icon ${selectedIcon}`}
+                            className={`premium-icon premium-icon-type ${selectedIcon}`}
                             style={filterJsCss({
                                 cursor: urlCheck ? 'pointer' : 'default',
                                 color: iconStyles[0].iconColor,
@@ -92,6 +107,9 @@ const save = props => {
                         {imageURL && "img" === iconTypeFile && (
                             <img src={imageURL} />
                         )}
+                        {"svg" === iconTypeFile &&
+                            <div id="premium-icon-svg" data-src={svgUrl}></div>
+                        }
                     </div>
                 </a>
             </div>

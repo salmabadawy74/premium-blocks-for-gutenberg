@@ -16,7 +16,8 @@ import {
     InsideTab,
     iconsList,
     RadioComponent,
-    PremiumMediaUpload
+    PremiumMediaUpload,
+    PremiumUploadSVG
 } from "@pbg/components";
 import {
     gradientBackground,
@@ -49,13 +50,17 @@ function Edit(props) {
         setAttributes({ classMigrate: true });
     }, []);
 
-
     useEffect(() => {
         if (hoversEffect !== attributes.hoversEffect) {
             setAttributes({ hoversEffect: hoversEffect });
         }
     }, [hoversEffect]);
 
+    useEffect(() => {
+        if (attributes.iconTypeFile === 'svg') {
+            addSVGAttributes(attributes.svgUrl)
+        }
+    }, [attributes.iconTypeFile === 'svg', attributes.svgUrl]);
 
     const {
         blockId,
@@ -84,10 +89,9 @@ function Edit(props) {
         containerShadow,
         iconShadow,
         borderHoverColor,
-        imgWidth
+        imgWidth,
+        svgUrl
     } = props.attributes;
-
-    
 
     const EFFECTS = [
         {
@@ -132,10 +136,87 @@ function Edit(props) {
         });
     };
 
+    const addCustomIconClass = (svgString, customClass = 'premium-icon-type') => {
+        if (svgString.match(/(<svg[^>]*class=["'])/)) {
+            // Svg with an existing class attribute.
+            return svgString.replace(/(<svg[^>]*class=["'])/, `$1${customClass} `)
+        } else if (svgString.match(/(<svg)/)) {
+            // Svg without a class attribute.
+            return svgString.replace(/(<svg)/, `$1 class="${customClass}"`)
+        }
+        return svgString
+    }
+
+    /**
+     * Cleans up the SVG, removes the <?xml> tag and comments
+     *
+     * @param {string} svgString The SVG in string form
+     */
+    const cleanSvgString = svgString => {
+        // Get the SVG only
+        let newSvg = svgString.replace(/(^[\s\S]*?)(<svg)/gm, '$2')
+            .replace(/(<\/svg>)([\s\S]*)/g, '$1')
+
+        // Remove simple grouping so that we can color SVGs.
+        for (let i = 0; i < 2; i++) {
+            newSvg = newSvg.replace(/\s*<g\s*>([\s\S]*?)<\/g>\s*/gm, '$1')
+        }
+
+        return newSvg
+    }
+
+    const createElementFromHTMLString = htmlString => {
+        const parentElement = document.getElementById('premium-icon-svg');
+        parentElement.innerHTML = htmlString
+        return parentElement.firstElementChild
+    }
+
+    const addSVGAttributes = (svgHTML, attributesToAdd = {}, attributesToRemove = []) => {
+        const svgNode = createElementFromHTMLString(svgHTML)
+        if (!svgNode) {
+            return ''
+        }
+
+        Object.keys(attributesToAdd).forEach(key => {
+            svgNode.setAttribute(key, attributesToAdd[key])
+        })
+
+        attributesToRemove.forEach(key => {
+            svgNode.removeAttribute(key)
+        })
+        return svgNode.outerHTML
+    }
+
+    const uploadSvg = event => {
+        event.preventDefault()
+
+        const input = document.createElement('input')
+        input.accept = 'image/svg+xml'
+        input.type = 'file'
+        input.onchange = e => {
+            const files = e.target.files
+            if (!files.length) {
+                return
+            }
+            // Read the SVG,
+            const fr = new FileReader()
+            fr.onload = function (e) {
+                const svgString = cleanSvgString(addCustomIconClass(e.target.result))
+                addSVGAttributes(svgString)
+                setAttributes({
+                    svgUrl: svgString
+                });
+            }
+            fr.readAsText(files[0])
+        }
+        input.click()
+    }
+
     const loadStyles = () => {
         const styles = {};
-        styles[` .${blockId} .premium-icon-container i:hover`] = {
+        styles[` .${blockId} .premium-icon-container .premium-icon-type:hover`] = {
             color: `${iconStyles[0].iconHoverColor} !important`,
+            fill: `${iconStyles[0].iconHoverColor} !important`,
             "background-color": `${iconStyles[0].iconHoverBack} !important`,
             "border-color": `${borderHoverColor}!important`
         };
@@ -159,6 +240,36 @@ function Edit(props) {
             "margin-right": `${iconMargin?.[props.deviceType]?.right}${iconMargin.unit}!important`,
             "margin-bottom": `${iconMargin?.[props.deviceType]?.bottom}${iconMargin.unit}!important`,
             "margin-left": `${iconMargin?.[props.deviceType]?.left}${iconMargin.unit}!important`
+        };
+        styles[` .${blockId} .premium-icon-container svg`] = {
+            width: `${iconSize[props.deviceType]}${iconSize.unit} !important`,
+            height: `${iconSize[props.deviceType]}${iconSize.unit} !important`,
+            fill: `${iconStyles[0].iconColor}`,
+            'background-color': `${iconStyles[0].iconBack}`,
+            'border-color': `${iconBorder && iconBorder.borderColor} !important`,
+            'border-style': `${iconBorder && iconBorder.borderType} !important`,
+            'border-top-width': `${iconBorder && iconBorder.borderWidth[props.deviceType].top}px!important`,
+            'border-right-width': `${iconBorder && iconBorder.borderWidth[props.deviceType].right}px!important`,
+            'border-bottom-width': `${iconBorder && iconBorder.borderWidth[props.deviceType].bottom}px!important`,
+            'border-left-width': `${iconBorder && iconBorder.borderWidth[props.deviceType].width}px!important`,
+            'border-top-left-radius': `${iconBorder?.borderRadius?.[props.deviceType]?.top || 0}px!important`,
+            'border-top-right-radius': `${iconBorder?.borderRadius?.[props.deviceType]?.right || 0}px!important`,
+            'border-bottom-left-radius': `${iconBorder?.borderRadius?.[props.deviceType]?.bottom || 0}px!important`,
+            'border-bottom-right-radius': `${iconBorder?.borderRadius?.[props.deviceType]?.left || 0}px!important`,
+            "padding-top": `${iconPadding?.[props.deviceType]?.top}${iconPadding.unit}!important`,
+            "padding-right": `${iconPadding?.[props.deviceType]?.right}${iconPadding.unit}!important`,
+            "padding-bottom": `${iconPadding?.[props.deviceType]?.bottom}${iconPadding.unit}!important`,
+            "padding-left": `${iconPadding?.[props.deviceType]?.left}${iconPadding.unit}!important`,
+            "margin-top": `${iconMargin?.[props.deviceType]?.top}${iconMargin.unit}!important`,
+            "margin-right": `${iconMargin?.[props.deviceType]?.right}${iconMargin.unit}!important`,
+            "margin-bottom": `${iconMargin?.[props.deviceType]?.bottom}${iconMargin.unit}!important`,
+            "margin-left": `${iconMargin?.[props.deviceType]?.left}${iconMargin.unit}!important`
+        };
+        styles[` .${blockId} .premium-icon-container svg path`] = {
+            fill: `${iconStyles[0].iconColor}`,
+        };
+        styles[` .${blockId} .premium-icon-container .premium-icon-type:hover path`] = {
+            fill: `${iconStyles[0].iconHoverColor} !important`
         };
         return generateCss(styles);
     };
@@ -188,7 +299,14 @@ function Edit(props) {
                                             "premium-blocks-for-gutenberg"
                                         ),
                                         value: "img",
-                                    }
+                                    },
+                                    {
+                                        label: __(
+                                            "SVG",
+                                            "premium-blocks-for-gutenberg"
+                                        ),
+                                        value: "svg",
+                                    },
                                 ]}
                                 value={iconTypeFile}
                                 onChange={(newValue) =>
@@ -241,6 +359,17 @@ function Edit(props) {
                                     }
                                 />
                             )}
+                            {"svg" === iconTypeFile &&
+                                <PremiumUploadSVG
+                                    svgUrl={svgUrl}
+                                    uploadSvg={uploadSvg}
+                                    onRemoveSVG={() =>
+                                        setAttributes({
+                                            svgUrl: ""
+                                        })
+                                    }
+                                />
+                            }
                             <ToggleControl
                                 label={__(
                                     "Link",
@@ -341,7 +470,7 @@ function Edit(props) {
                                     defaultValue={100}
                                 />
                             }
-                            {"icon" === iconTypeFile &&
+                            {("icon" === iconTypeFile || "svg" === iconTypeFile) &&
                                 <Fragment>
                                     <ResponsiveRangeControl
                                         label={__(
@@ -624,6 +753,7 @@ function Edit(props) {
                         }
                     ),
                 })}
+                data-icontype={iconTypeFile}
             >
                 <div
                     className={`premium-icon-container`}
@@ -647,7 +777,7 @@ function Edit(props) {
                     <div className={`premium-icon__${hoverEffect !== "none" ? hoverEffect : hoversEffect}`}>
                         {"icon" === iconTypeFile && (iconType === "dash" || 1 == FontAwesomeEnabled) && (
                             <i
-                                className={`premium-icon ${selectedIcon}`}
+                                className={`premium-icon premium-icon-type ${selectedIcon}`}
                                 style={{
                                     color: iconStyles[0].iconColor,
                                     backgroundColor: iconStyles[0].iconBack,
@@ -668,6 +798,9 @@ function Edit(props) {
                         {imageURL && "img" === iconTypeFile && (
                             <img src={imageURL} />
                         )}
+                        {"svg" === iconTypeFile &&
+                            <div id="premium-icon-svg" data-src={svgUrl}></div>
+                        }
                     </div>
 
                 </div>
