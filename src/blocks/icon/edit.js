@@ -39,7 +39,7 @@ const { InspectorControls, useBlockProps } = wp.blockEditor;
 const { withSelect } = wp.data;
 
 function Edit(props) {
-    const { setAttributes, className, context } = props;
+    const { setAttributes, className, context, attributes } = props;
     const { hoversEffect } = context;
 
     useEffect(() => {
@@ -49,6 +49,12 @@ function Edit(props) {
         setAttributes({ classMigrate: true });
     }, []);
 
+
+    useEffect(() => {
+        if (hoversEffect !== attributes.hoversEffect) {
+            setAttributes({ hoversEffect: hoversEffect });
+        }
+    }, [hoversEffect]);
 
 
     const {
@@ -80,6 +86,8 @@ function Edit(props) {
         borderHoverColor,
         imgWidth
     } = props.attributes;
+
+    
 
     const EFFECTS = [
         {
@@ -644,7 +652,7 @@ function Edit(props) {
                                     color: iconStyles[0].iconColor,
                                     backgroundColor: iconStyles[0].iconBack,
                                     fontSize:
-                                        (iconSize[props.deviceType] || 50) +
+                                        iconSize[props.deviceType] +
                                         iconSize.unit,
                                     cursor: urlCheck ? 'pointer' : 'default',
                                     ...borderCss(iconBorder, props.deviceType),

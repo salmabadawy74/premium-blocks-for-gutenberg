@@ -25,6 +25,7 @@ const save = props => {
         borderHoverColor,
         iconTypeFile,
         imageURL,
+        hoversEffect
     } = props.attributes;
 
     const loadStyles = () => {
@@ -74,8 +75,8 @@ const save = props => {
                     href={urlCheck && link}
                     rel="noopener noreferrer"
                     target={target ? "_blank" : "_self"}
-                >
-                    <div className={`premium-icon-hover premium-icon__${hoverEffect}`}>
+                > 
+                <div className={`premium-icon-hover premium-icon__${hoverEffect !== "none" ? hoverEffect : hoversEffect}`}>
                         {"icon" === iconTypeFile && <i
                             className={`premium-icon ${selectedIcon}`}
                             style={filterJsCss({
