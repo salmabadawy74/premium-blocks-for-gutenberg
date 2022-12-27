@@ -1,5 +1,7 @@
 import { useEntityProp, store as coreStore } from "@wordpress/core-data";
 const { __ } = wp.i18n;
+import classNames from "classnames";
+
 import { useSelect, useDispatch } from "@wordpress/data";
 import {
     generateBlockId,
@@ -19,8 +21,9 @@ import {
     InsideTabs,
     InsideTab,
 } from "@pbg/components";
-import { Fragment } from "react";
+const { useEffect, Fragment } = wp.element;
 const { PanelBody, SelectControl, ToggleControl } = wp.components;
+import { InspectorControls, useBlockProps } from "@wordpress/block-editor";
 
 function getMediaSourceUrlBySizeSlug(media, slug) {
     return media?.media_details?.sizes?.[slug]?.source_url || media?.source_url;
@@ -29,8 +32,12 @@ function Image(props) {
     const {
         context: { postId, postType: postTypeSlug, queryId },
         attributes,
+        deviceType,
+        setAttributes,
+        clientId,
     } = props;
     const {
+        blockId,
         isLink,
         rel,
         linkTarget,
@@ -42,12 +49,19 @@ function Image(props) {
         filter,
         Hoverfilter,
         colorOverlay,
-        shapeTop,
         shapeBottom,
         hideDesktop,
         hideTablet,
         hideMobile,
     } = attributes;
+
+    useEffect(() => {
+        // Set block id.
+        setAttributes({
+            blockId: "premium-post-image-" + generateBlockId(clientId),
+        });
+    }, []);
+
     const [featuredImage, setFeaturedImage] = useEntityProp(
         "postType",
         postTypeSlug,
@@ -76,7 +90,13 @@ function Image(props) {
         { slug: "large", name: __("Large") },
         { slug: "full", name: __("Full Size") },
     ];
-    console.log(imageSizes, "Media");
+    const bottomShapeClasses = classNames(
+        "premium-shape-divider",
+        "premium-bottom-shape",
+        { "premium-shape-flip": shapeBottom["flipShapeDivider"] === true },
+        { "premium-shape-above-content": shapeBottom["front"] === true },
+        { "premium-shape__invert": shapeBottom["invertShapeDivider"] === true }
+    );
 
     const imageSizeOptions = imageSizes
         .filter(({ slug }) => {
@@ -86,6 +106,38 @@ function Image(props) {
             value: slug,
             label: name,
         }));
+    const blockProps = useBlockProps({
+        className: classNames(blockId, "premium-blog-thumb-effect-wrapper", {
+            " premium-desktop-hidden": hideDesktop,
+            " premium-tablet-hidden": hideTablet,
+            " premium-mobile-hidden": hideMobile,
+        }),
+    });
+    const loadStyles = () => {
+        const styles = {};
+        styles[
+            `.${blockId}.premium-blog-entry-title__container .premium-blog-entry-title `
+        ] = {
+            ...typographyCss(Typography, deviceType),
+        };
+        styles[
+            `.${blockId}.premium-blog-entry-title__container .premium-blog-entry-title a`
+        ] = {
+            color: textColor,
+        };
+        styles[
+            `.${blockId}.premium-blog-entry-title__container .premium-blog-entry-title:hover `
+        ] = {
+            color: hoverColor,
+        };
+        styles[
+            `.${blockId}.premium-blog-entry-title__container .premium-blog-entry-title:hover a`
+        ] = {
+            color: hoverColor,
+        };
+        return generateCss(styles);
+    };
+
     if (featuredImage) {
         return (
             <Fragment>
@@ -135,40 +187,16 @@ function Image(props) {
                                     max={600}
                                     step={1}
                                 />
-                                <InsideTabs>
-                                    <InsideTab
-                                        tabTitle={__(
-                                            "Top Shape",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
-                                    >
-                                        <Shape
-                                            shapeType="top"
-                                            value={shapeTop}
-                                            responsive
-                                            onChange={(val) =>
-                                                setAttributes({ shapeTop: val })
-                                            }
-                                        />
-                                    </InsideTab>
-                                    <InsideTab
-                                        tabTitle={__(
-                                            "Bottom Shape",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
-                                    >
-                                        <Shape
-                                            shapeType="bottom"
-                                            value={shapeBottom}
-                                            responsive
-                                            onChange={(val) =>
-                                                setAttributes({
-                                                    shapeBottom: val,
-                                                })
-                                            }
-                                        />
-                                    </InsideTab>
-                                </InsideTabs>
+                                <Shape
+                                    shapeType="bottom"
+                                    value={shapeBottom}
+                                    responsive
+                                    onChange={(val) =>
+                                        setAttributes({
+                                            shapeBottom: val,
+                                        })
+                                    }
+                                />
                             </PanelBody>
                         </InspectorTab>
                         <InspectorTab key={"style"}>
@@ -249,11 +277,24 @@ function Image(props) {
                     </InspectorTabs>
                 </InspectorControls>
 
-                <div className="premium-blog-thumb-effect-wrapper">
+                <div {...blockProps}>
                     <div
-                        className={`premium-blog-thumbnail-container premium-blog-${attributes.hoverEffect}-effect`}
+                        className={`premium-blog-thumbnail-container premium-blog-${hoverEffect}-effect`}
                     >
                         <img src={mediaUrl} />
+                        {Object.entries(shapeBottom).length > 1 &&
+                            shapeBottom.openShape == 1 &&
+                            shapeBottom.style && (
+                                <div
+                                    className={bottomShapeClasses}
+                                    dangerouslySetInnerHTML={{
+                                        __html:
+                                            PremiumBlocksSettings.shapes[
+                                                shapeBottom.style
+                                            ],
+                                    }}
+                                />
+                            )}
                     </div>
                     <div className="premium-blog-thumbnail-overlay">
                         <a href={link} rel="noopener noreferrer" />

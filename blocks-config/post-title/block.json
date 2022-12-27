@@ -9,10 +9,9 @@
     "parent": ["premium/post-grid"],
     "usesContext": ["postId", "postType", "queryId"],
     "attributes": {
-                "blockId": {
+        "blockId": {
             "type": "string"
         },
-
         "textAlign": {
             "type": "string"
         },

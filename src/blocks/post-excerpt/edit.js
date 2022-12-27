@@ -2,16 +2,23 @@ import { useEntityProp } from "@wordpress/core-data";
 const { useMemo, Fragment, useEffect } = wp.element;
 import { __ } from "@wordpress/i18n";
 import { InspectorControls, useBlockProps } from "@wordpress/block-editor";
-import { generateBlockId, typographyCss, marginCss } from "@pbg/helpers";
+import {
+    generateBlockId,
+    typographyCss,
+    marginCss,
+    borderCss,
+} from "@pbg/helpers";
 import {
     ResponsiveSingleRangeControl,
     InspectorTabs,
     InspectorTab,
     PremiumResponsiveTabs,
+    ResponsiveRangeControl,
     PremiumTypo,
     SpacingComponent,
     AdvancedColorControl as AdvancedPopColorControl,
     WebfontLoader,
+    PremiumBorder,
     InsideTabs,
     InsideTab,
 } from "@pbg/components";
@@ -38,6 +45,15 @@ function Excerpt(props) {
         typography,
         margin,
         color,
+        btnTypography,
+        buttonSpacing,
+        buttonColor,
+        buttonBackground,
+        buttonhover,
+        hoverBackground,
+        btnBorder,
+        btnBorderHover,
+        btnPadding,
         hideDesktop,
         hideTablet,
         hideMobile,
@@ -124,6 +140,13 @@ function Excerpt(props) {
                 href={`#`}
                 target={`_blank`}
                 rel="noopener noreferrer"
+                style={{
+                    ...typographyCss(btnTypography, deviceType),
+                    color: buttonColor,
+                    backgroundColor: buttonBackground,
+                    marginTop: buttonSpacing[deviceType] + "px",
+                    ...borderCss(btnBorder, deviceType),
+                }}
             >
                 {readMoreTxt}
             </a>
