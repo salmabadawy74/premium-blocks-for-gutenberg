@@ -125,6 +125,15 @@ const attributes = {
             }
         }
     },
+    "groupIconSize": {
+        "type": "object",
+        "default": {
+            "Desktop": "50",
+            "Tablet": "50",
+            "Mobile": "50",
+            "unit": "px"
+        }
+    },
     "groupIconColor": {
         "type": "string",
         "default": ""

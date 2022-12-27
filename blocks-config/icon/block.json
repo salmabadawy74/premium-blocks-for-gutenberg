@@ -338,9 +338,15 @@
                 "Mobile": "",
                 "unit": "px"
             }
+        },
+        "svgUrl": {
+            "type": "string",
+            "default": ""
         }
     },
-    "usesContext": ["hoversEffect"],
+    "usesContext": [
+        "hoversEffect"
+    ],
     "editorScript": "pbg-blocks-js",
     "editorStyle": "premium-blocks-editor-css"
 }
