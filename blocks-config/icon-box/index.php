@@ -121,6 +121,16 @@ function render_block_pbg_icon_box( $attributes, $content, $block ) {
 		$unique_id = rand( 100, 10000 );
 	}
 
+	if ( $block_helpers->it_is_not_amp() ) {
+		wp_enqueue_script(
+			'pbg-accordion',
+			PREMIUM_BLOCKS_URL . 'assets/js/animation.js',
+			array( 'jquery' ),
+			PREMIUM_BLOCKS_VERSION,
+			true
+		);
+	}
+	
 	wp_enqueue_style(
 		'pbg-icon-box-style',
 		PREMIUM_BLOCKS_URL . 'assets/css/minified/icon-box.min.css',

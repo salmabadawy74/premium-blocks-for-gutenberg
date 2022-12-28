@@ -22,7 +22,7 @@ function get_premium_container_css_style( $attr, $unique_id ) {
 	$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
 	$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 
-	$css->set_selector( '.wp-block-premium-container.premium-is-root-container.premium-block-' . $unique_id . ' .premium-container-inner-blocks-wrap' );
+	$css->set_selector( '.wp-block-premium-container.premium-block-' . $unique_id . ' .premium-container-inner-blocks-wrap' );
 	if ( isset( $attr['minHeight'] ) ) {
 		$css->add_property( 'min-height', $css->render_range( $attr['minHeight'], 'Desktop' ) );
 	}
@@ -46,7 +46,7 @@ function get_premium_container_css_style( $attr, $unique_id ) {
 
 	$css->add_property( 'column-gap', isset( $attr['rowGutter']['Desktop'] ) ? $attr['columnGutter']['Desktop'] . $attr['columnGutter']['unit'] : '20px' );
 
-	$css->set_selector( '.wp-block-premium-container.premium-is-root-container  .premium-container-inner-blocks-wrap .premium-block-' . $unique_id . ' .premium-container-inner-blocks-wrap' );
+	$css->set_selector( '.wp-block-premium-container  .premium-container-inner-blocks-wrap .premium-block-' . $unique_id . ' .premium-container-inner-blocks-wrap' );
 
 	if ( isset( $attr['minHeight'] ) ) {
 		$css->add_property( 'min-height', $css->render_range( $attr['minHeight'], 'Desktop' ) );

@@ -9,6 +9,7 @@ import {
     InsideTabs,
     PremiumBackgroundControl,
     InsideTab,
+    PremiumVariation
 } from "@pbg/components";
 import {
     gradientBackground,
@@ -18,6 +19,7 @@ import {
     generateBlockId,
     generateCss,
 } from "@pbg/helpers";
+import { Variations } from './variations'
 
 const { __ } = wp.i18n;
 const { PanelBody } = wp.components;
@@ -52,6 +54,8 @@ function Edit(props) {
         containerBackground,
         containerShadow,
         containerHoverShadow,
+        variation,
+        showVariation
     } = props.attributes;
 
     const INNER_BLOCKS_TEMPLATE = [
@@ -114,7 +118,7 @@ function Edit(props) {
             className: "premium-icon-box",
         },
         {
-            template: INNER_BLOCKS_TEMPLATE,
+            template: variation.innerBlocks,
             templateLock: false,
             allowedBlocks: [
                 "premium/heading",
@@ -126,6 +130,13 @@ function Edit(props) {
             ],
         }
     );
+
+    const onSelectVariations = (v) => {
+        setAttributes({
+            variation: v,
+            showVariation: false
+        });
+    }
 
     return (
         <Fragment>
@@ -256,7 +267,13 @@ function Edit(props) {
                     }),
                 })}
             >
-                <div {...innerBlocksProps} />
+                {showVariation && <PremiumVariation
+                    setAttributes={setAttributes}
+                    variations={Variations}
+                    onSelect={onSelectVariations}
+                />
+                }
+                {!showVariation && <div {...innerBlocksProps} />}
                 <style>{loadStyles()}</style>
             </div>
         </Fragment>

@@ -16,6 +16,8 @@ const save = props => {
         containerBackground,
         containerShadow,
         containerHoverShadow,
+        variation,
+        showVariation
     } = props.attributes;
 
     const loadStyles = () => {
@@ -48,7 +50,9 @@ const save = props => {
                 ...gradientBackground(containerBackground),
             })}
         >
-            <InnerBlocks.Content />
+            {variation != {} && !showVariation &&
+                <InnerBlocks.Content />
+            }
             <style>{loadStyles()}</style>
         </div>
     );

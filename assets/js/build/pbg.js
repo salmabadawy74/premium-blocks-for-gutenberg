@@ -2599,6 +2599,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "PremiumTypo": () => (/* reexport safe */ _premium_typo__WEBPACK_IMPORTED_MODULE_13__["default"]),
 /* harmony export */   "PremiumUploadSVG": () => (/* reexport safe */ _premium_upload_svg__WEBPACK_IMPORTED_MODULE_29__["default"]),
 /* harmony export */   "PremiumUpperQuote": () => (/* reexport safe */ _testimonials_upper_quote__WEBPACK_IMPORTED_MODULE_27__["default"]),
+/* harmony export */   "PremiumVariation": () => (/* reexport safe */ _premium_variation__WEBPACK_IMPORTED_MODULE_30__["default"]),
 /* harmony export */   "RadioComponent": () => (/* reexport safe */ _radio_control__WEBPACK_IMPORTED_MODULE_14__["default"]),
 /* harmony export */   "ResponsiveRangeControl": () => (/* reexport safe */ _RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_4__["default"]),
 /* harmony export */   "ResponsiveSingleRangeControl": () => (/* reexport safe */ _RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_5__["default"]),
@@ -2640,6 +2641,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _testimonials_upper_quote__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./testimonials/upper-quote */ "./src/components/testimonials/upper-quote.js");
 /* harmony import */ var _Presets__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./Presets */ "./src/components/Presets.js");
 /* harmony import */ var _premium_upload_svg__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./premium-upload-svg */ "./src/components/premium-upload-svg.js");
+/* harmony import */ var _premium_variation__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./premium-variation */ "./src/components/premium-variation.js");
+
 
 
 
@@ -9759,6 +9762,91 @@ function PremiumUploadSVG(props) {
     className: "premium-placeholder-image"
   }, __('Upload SVG')));
 }
+
+/***/ }),
+
+/***/ "./src/components/premium-variation.js":
+/*!*********************************************!*\
+  !*** ./src/components/premium-variation.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * External dependencies
+ */
+
+const {
+  __
+} = wp.i18n;
+const {
+  Placeholder,
+  Button
+} = wp.components; // Create our own variation picker
+
+const PremiumVariation = props => {
+  const {
+    icon,
+    label = __('Choose variation'),
+    // Dev note: no text domain here since this will use WP's translation.
+    instructions = __('Select a variation to start with.'),
+    // Dev note: no text domain here since this will use WP's translation.
+    variations,
+    onSelect,
+    allowSkip
+  } = props;
+  console.log(variations);
+  const classes = classnames__WEBPACK_IMPORTED_MODULE_1___default()('block-editor-block-variation-picker', {
+    'has-many-variations': variations.length > 4
+  });
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "stk-variation-picker"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Placeholder, {
+    icon: icon,
+    label: label,
+    instructions: instructions,
+    className: classes
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
+    className: "block-editor-block-variation-picker__variations",
+    role: "list",
+    "aria-label": __('Block variations') // Dev note: no text domain here since this will use WP's translation.
+
+  }, variations.map(variation => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+    key: variation.name
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
+    variant: "secondary",
+    icon: variation.pickerIcon || variation.icon,
+    iconSize: 48,
+    isSecondary: true,
+    onClick: () => onSelect(variation),
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()('block-editor-block-variation-picker__variation', {
+      'is-premium': variation.isPremium
+    }),
+    label: variation.description || variation.pickerTitle || variation.title
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "block-editor-block-variation-picker__variation-label",
+    role: "presentation"
+  }, variation.pickerTitle || variation.title)))), allowSkip && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "block-editor-block-variation-picker__skip"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
+    variant: "link",
+    onClick: () => onSelect()
+  }, __('Skip')
+  /* Dev note: no text domain here since this will use WP's translation. */
+  ))));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PremiumVariation);
 
 /***/ }),
 

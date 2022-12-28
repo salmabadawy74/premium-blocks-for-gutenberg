@@ -35958,6 +35958,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pbg_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_pbg_components__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @pbg/helpers */ "@pbg/helpers");
 /* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _variations__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./variations */ "./src/blocks/icon-box/variations.js");
+
 
 
 
@@ -36008,7 +36010,9 @@ function Edit(props) {
     containerBorder,
     containerBackground,
     containerShadow,
-    containerHoverShadow
+    containerHoverShadow,
+    variation,
+    showVariation
   } = props.attributes;
   const INNER_BLOCKS_TEMPLATE = [["premium/icon", {
     selectedIcon: attributes === null || attributes === void 0 ? void 0 : attributes.selectedIcon
@@ -36040,10 +36044,18 @@ function Edit(props) {
     },
     className: "premium-icon-box"
   }, {
-    template: INNER_BLOCKS_TEMPLATE,
+    template: variation.innerBlocks,
     templateLock: false,
     allowedBlocks: ["premium/heading", "premium/icon", "premium/button", "premium/text", "premium/image", "premium/lottie"]
   });
+
+  const onSelectVariations = v => {
+    setAttributes({
+      variation: v,
+      showVariation: false
+    });
+  };
+
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, {
     key: "inspector"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.InspectorTabs, {
@@ -36119,7 +36131,11 @@ function Edit(props) {
       " premium-tablet-hidden": hideTablet,
       " premium-mobile-hidden": hideMobile
     })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", innerBlocksProps), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, loadStyles())));
+  }), showVariation && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.PremiumVariation, {
+    setAttributes: setAttributes,
+    variations: _variations__WEBPACK_IMPORTED_MODULE_4__.Variations,
+    onSelect: onSelectVariations
+  }), !showVariation && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", innerBlocksProps), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, loadStyles())));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (withSelect(select => {
@@ -36210,7 +36226,9 @@ const save = props => {
     containerBorder,
     containerBackground,
     containerShadow,
-    containerHoverShadow
+    containerHoverShadow,
+    variation,
+    showVariation
   } = props.attributes;
 
   const loadStyles = () => {
@@ -36234,10 +36252,85 @@ const save = props => {
       boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.gradientBackground)(containerBackground)
     })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InnerBlocks.Content, null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", null, loadStyles()));
+  }), variation != {} && !showVariation && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InnerBlocks.Content, null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", null, loadStyles()));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (save);
+
+/***/ }),
+
+/***/ "./src/blocks/icon-box/variations.js":
+/*!*******************************************!*\
+  !*** ./src/blocks/icon-box/variations.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Variations": () => (/* binding */ Variations),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const {
+  __
+} = wp.i18n;
+const Variations = [{
+  name: 'default',
+  description: __('Default'),
+  isDefault: true,
+  pickerTitle: __('Default'),
+  innerBlocks: [['premium/icon', {}], ['premium/heading', {
+    title: __("Title", "premium-blocks-for-gutenberg"),
+    titleTag: "h2",
+    style: "default"
+  }], ['premium/text', {
+    text: __("Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.", "premium-blocks-for-gutenberg")
+  }], ['premium/button', {
+    btnText: __("Click Here", "premium-blocks-for-gutenberg")
+  }]],
+  scope: ['block']
+}, {
+  name: 'horizontal',
+  description: __('Horizontal'),
+  pickerTitle: __('Horizontal'),
+  innerBlocks: [['premium/container', {
+    variationSelected: true,
+    direction: {
+      Desktop: "row",
+      Tablet: "",
+      Mobile: ""
+    },
+    wrapItems: {
+      Desktop: "",
+      Tablet: "",
+      Mobile: "wrap"
+    }
+  }, [['premium/container', {
+    variationSelected: true,
+    direction: {
+      Desktop: "column",
+      Tablet: "",
+      Mobile: ""
+    }
+  }, [['premium/icon', {}]]], ['premium/container', {
+    variationSelected: true,
+    direction: {
+      Desktop: "column",
+      Tablet: "",
+      Mobile: ""
+    }
+  }, [['premium/heading', {
+    title: __("Title", "premium-blocks-for-gutenberg"),
+    titleTag: "h2",
+    style: "default"
+  }], ['premium/text', {
+    text: __("Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.", "premium-blocks-for-gutenberg")
+  }], ['premium/button', {
+    btnText: __("Click Here", "premium-blocks-for-gutenberg")
+  }]]]]]],
+  scope: ['block']
+}];
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Variations);
 
 /***/ }),
 
@@ -85670,7 +85763,7 @@ module.exports = JSON.parse('{"apiVersion":2,"version":"0.1.0","name":"premium/s
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/text","title":"Text","category":"premium-blocks","description":"Text Description.","keywords":["text"],"parent":["premium/pricing-table","premium/icon-box","premium/person"],"textdomain":"default","attributes":{"blockId":{"type":"string"},"hideDesktop":{"type":"boolean","default":false},"hideTablet":{"type":"boolean","default":false},"hideMobile":{"type":"boolean","default":false},"text":{"type":"string"},"typography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"padding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"margin":{"type":"object","default":{"Desktop":{"top":20,"right":"","bottom":20,"left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"border":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"textShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"align":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"color":{"type":"string","default":""},"background":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"center center","backgroundRepeat":"repeat","backgroundSize":"auto","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}}}}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/text","title":"Text","category":"premium-blocks","description":"Text Description.","keywords":["text"],"parent":["premium/pricing-table","premium/icon-box","premium/person","premium/container"],"textdomain":"default","attributes":{"blockId":{"type":"string"},"hideDesktop":{"type":"boolean","default":false},"hideTablet":{"type":"boolean","default":false},"hideMobile":{"type":"boolean","default":false},"text":{"type":"string"},"typography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"padding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"margin":{"type":"object","default":{"Desktop":{"top":20,"right":"","bottom":20,"left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"border":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"textShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"align":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"color":{"type":"string","default":""},"background":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"center center","backgroundRepeat":"repeat","backgroundSize":"auto","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}}}}');
 
 /***/ })
 
