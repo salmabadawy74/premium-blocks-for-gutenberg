@@ -87,16 +87,14 @@
   .premium-icon-container .fab,
   .premium-icon-container .fa {
     display: inline !important; }
+  .premium-icon-container img {
+    width: 150px; }
 
 .premium-icon__container .premium-icon {
   font-size: 40px;
   display: inline-block !important;
   width: auto;
   height: auto; }
-
-.premium-icon__container #premium-icon-svg svg {
-  width: 40px;
-  height: 40px; }
 
 .premium-icon__container .premium-icon.fa {
   font-size: 40px;

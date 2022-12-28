@@ -127,6 +127,9 @@
     .fa {
         display: inline !important;
     }
+    img {
+        width: 150px;
+    }
 }
 
 .premium-icon__container {
@@ -136,11 +139,6 @@
         display: inline-block !important;
         width: auto;
         height: auto;
-    }
-
-    #premium-icon-svg svg {
-        width: 40px;
-        height: 40px;
     }
 
     .premium-icon.fa {

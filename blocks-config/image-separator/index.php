@@ -112,12 +112,12 @@ function get_premium_image_separator_css_style( $attr, $unique_id ) {
 	}
 
 	// Image style
-	if ( isset( $attr['iconSize']['Tablet'] ) ) {
+	if ( isset( $attr['iconSize'] ) ) {
 		$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . ' > img' );
 		$css->add_property( 'width', $css->render_range( $attr['iconSize'], 'Tablet' ) );
 	}
 
-	if ( isset( $attr['imgHeight']['Tablet'] ) ) {
+	if ( isset( $attr['imgHeight'] ) ) {
 		$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . ' > img' );
 		$css->add_property( 'height', $css->render_range( $attr['imgHeight'], 'Tablet' ) );
 	}

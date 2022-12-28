@@ -46,7 +46,7 @@ export default function save({ attributes }) {
     return <div {...blockProps}>
         <style>{loadStyles()}</style>
         <div
-            className={`premium-icon-group-container premium-icon-group-${groupAlign} premium-icon__${hoverEffect}`}
+            className={`premium-icon-group-container premium-icon-group-${groupAlign}`}
         >
             <InnerBlocks.Content />
         </div>

@@ -774,7 +774,7 @@ function Edit(props) {
                             )}
                         </p>
                     )}
-                    <div className={`premium-icon__${hoverEffect !== "none" ? hoverEffect : hoversEffect}`}>
+                    <div className={`premium-icon-content premium-icon__${hoverEffect !== "none" || !hoversEffect ? hoverEffect : hoversEffect}`}>
                         {"icon" === iconTypeFile && (iconType === "dash" || 1 == FontAwesomeEnabled) && (
                             <i
                                 className={`premium-icon premium-icon-type ${selectedIcon}`}

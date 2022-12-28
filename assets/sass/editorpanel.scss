@@ -354,9 +354,17 @@ $icon-background: #696969;
     cursor: copy;
     border-radius: 5px;
     margin-bottom: 20px !important;
+    width: 100%;
 
     span {
         margin-top: 8px;
+    }
+
+    .premium-placeholder {
+        svg {
+            fill: #ddd;
+            height: 50px;
+        }
     }
 
     .premium-placeholder-image-insert {

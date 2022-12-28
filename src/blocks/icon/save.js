@@ -91,7 +91,7 @@ const save = props => {
                     rel="noopener noreferrer"
                     target={target ? "_blank" : "_self"}
                 >
-                    <div className={`premium-icon__${hoverEffect !== "none" ? hoverEffect : hoversEffect}`}>
+                    <div className={`premium-icon-content premium-icon__${hoverEffect !== "none" || !hoversEffect ? hoverEffect : hoversEffect}`}>
                         {"icon" === iconTypeFile && <i
                             className={`premium-icon premium-icon-type ${selectedIcon}`}
                             style={filterJsCss({
