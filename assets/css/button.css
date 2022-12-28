@@ -40,10 +40,10 @@
     color: white; }
 
 .wp-block-post-content .premium-button a::where(:not(.wp-element-button)) {
-  color: #FFFFFF; }
+  color: #ffffff; }
 
 .wp-block-post-content .premium-button a::where(:not(.wp-element-button)) {
-  color: #FFFFFF; }
+  color: #ffffff; }
 
 .premium-button__before .premium-button-icon {
   margin-right: 15px; }
@@ -87,7 +87,7 @@
   .premium-button__slide .premium-button::before {
     content: "";
     position: absolute;
-    background: #bbb;
+    background: var(--pbg-global-color1, #bbb);
     z-index: -1;
     top: 0;
     left: 0;
@@ -118,7 +118,7 @@
   .premium-button__shutter .premium-button::before {
     content: "";
     position: absolute;
-    background: #bbb;
+    background: var(--pbg-global-color1, #ddd);
     z-index: -1;
     top: 0;
     left: 0;
@@ -149,7 +149,7 @@
   .premium-button__radial .premium-button::before {
     content: "";
     position: absolute;
-    background: #bbb;
+    background: var(--pbg-global-color1, #bbb);
     z-index: -1;
     top: 0;
     left: 0;
@@ -411,7 +411,7 @@
   .premium-button__slide .premium-button::before {
     content: "";
     position: absolute;
-    background: #bbb;
+    background: var(--pbg-global-color1, #bbb);
     z-index: -1;
     top: 0;
     left: 0;
@@ -442,7 +442,7 @@
   .premium-button__shutter .premium-button::before {
     content: "";
     position: absolute;
-    background: #bbb;
+    background: var(--pbg-global-color1, #bbb);
     z-index: -1;
     top: 0;
     left: 0;
@@ -473,7 +473,7 @@
   .premium-button__radial .premium-button::before {
     content: "";
     position: absolute;
-    background: #bbb;
+    background: var(--pbg-global-color1, #bbb);
     z-index: -1;
     top: 0;
     left: 0;
