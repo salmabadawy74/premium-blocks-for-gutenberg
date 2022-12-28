@@ -5,7 +5,7 @@
 **Requires at least:** 4.5  
 **Tested up to:** 6.1  
 **Requires PHP:** 5.4  
-**Stable tag:** 2.0.5  
+**Stable tag:** 2.0.6  
 **License:** GPL v3.0  
 **License URI:** https://opensource.org/licenses/GPL-3.0  
 
@@ -72,12 +72,17 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 
 ## Changelog ##
 
+### 2.0.6 ###
+- New: Upload SVG Icon for Icon block option.
+- New: Hover effect options for icon box elements.
+- Fixed: Dual Heading tags issue.
+- Fixed: Icon Group options don't work properly.
+
 ### 2.0.5 ###
 - Tweak: Update Google fonts List.
 - Tweak: Added upload image option to Icon Block.
 - Tweak: Added style options to Icon Group block.
 - Fixed: Container width option doesn't work.
-
 
 ### 2.0.4 ###
 - Tweak: Update person block preview in the editor.
