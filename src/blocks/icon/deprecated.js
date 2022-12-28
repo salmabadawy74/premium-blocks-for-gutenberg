@@ -1104,8 +1104,7 @@ const v9Attributes = {
         "default": "none"
     },
     "hoversEffect": {
-        "type": "string",
-        "default": "none"
+        "type": "string"
     },
     "iconStyles": {
         "type": "array",
@@ -1408,7 +1407,8 @@ const deprecatedContent = [
                     "Tablet": attributes.iconSize['Tablet'] ? attributes.iconSize['Tablet'] : "",
                     "Mobile": attributes.iconSize['Mobile'] ? attributes.iconSize['Mobile'] : "",
                     "unit": attributes.iconSize['unit'] ? attributes.iconSize['unit'] : "px"
-                }
+                },
+                hoversEffect: ''
             }
             return Object.assign(attributes, newAttributes)
         },
