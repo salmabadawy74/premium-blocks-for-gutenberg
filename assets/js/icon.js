@@ -1,9 +1,9 @@
 window.addEventListener("DOMContentLoaded", function (event) {
     var icons = document.querySelectorAll(".premium-icon");
     if (!icons) return;
-    console.log(icons)
+
     icons.forEach(function (icon) {
-        console.log(icon)
+
         var type = icon.getAttribute("data-icontype");
         if (type === "svg") {
             var svg = document.getElementById(
