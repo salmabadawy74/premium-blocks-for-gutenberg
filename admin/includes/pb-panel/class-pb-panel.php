@@ -60,9 +60,14 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 
 			add_action( 'wp_ajax_pb-panel-update-settings', array( $this, 'update_settings' ) );
 
+			add_action( 'wp_ajax_nopriv_pb-panel-update-global-features', array( $this, 'update_global_features' ) );
+
+			add_action( 'wp_ajax_pb-panel-update-global-features', array( $this, 'update_global_features' ) );
+
 			add_action( 'admin_menu', array( $this, 'register_custom_menu_page' ), 100 );
 			add_filter( 'pb_options', array( $this, 'add_default_options' ) );
 			add_filter( 'pb_settings', array( $this, 'add_default_setings' ) );
+			add_filter( 'pb_global_features', array( $this, 'add_default_features' ) );
 			add_action( 'admin_post_premium_gutenberg_rollback', array( $this, 'post_premium_gutenberg_rollback_new' ) );
 			add_action( 'wp_ajax_pb-mail-subscribe', array( $this, 'subscribe_mail' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'pa_admin_page_scripts' ) );
@@ -150,6 +155,19 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 			return array_merge( $default_options, $options );
 		}
 
+		/**
+		 * Global Features Default Values.
+		 *
+		 * @param  array $options
+		 * @return array
+		 */
+		public function add_default_features( $options ) {
+			$default_options = array(
+				'premium-equal-height' => true,
+			);
+
+			return array_merge( $default_options, $options );
+		}
 
 		/**
 		 * update_option
@@ -179,7 +197,32 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 			wp_send_json_error();
 		}
 
+		/**
+		 * Update Global Feature with ajax.
+		 *
+		 * @return void
+		 */
+		public function update_global_features() {
+			check_ajax_referer( 'pb-panel', 'nonce' );
 
+			$value    = isset( $_POST['value'] ) ? json_decode( stripslashes( $_POST['value'] ), true ) : array();
+			$Settings = apply_filters( 'pb_settings', get_option( 'pbg_global_features', array() ) );
+			$Settings = ! is_array( $Settings ) ? array() : $Settings;
+
+			if ( $value ) {
+				$Settings = $value;
+				update_option( 'pbg_global_features', $Settings );
+
+				wp_send_json_success(
+					array(
+						'success' => true,
+						'setting' => $Settings,
+					)
+				);
+			}
+
+			wp_send_json_error();
+		}
 
 		public function update_settings() {
 			 check_ajax_referer( 'pb-panel', 'nonce' );
@@ -540,15 +583,16 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 				'pb-panel-js',
 				'PremiumBlocksPanelData',
 				array(
-					'home_slug'    => $this->menu_slug,
-					'options'      => self::panel_options(),
-					'values'       => apply_filters( 'pb_options', get_option( 'pb_options', array() ) ),
-					'ajaxurl'      => admin_url( 'admin-ajax.php' ),
-					'nonce'        => wp_create_nonce( 'pb-panel' ),
-					'system_info'  => self::get_system_info(),
-					'images_url'   => PREMIUM_BLOCKS_PANEL_URL . 'assets/images/',
-					'apiData'      => apply_filters( 'pb_settings', get_option( 'pbg_blocks_settings', array() ) ),
-					'isBlockTheme' => wp_is_block_theme(),
+					'home_slug'      => $this->menu_slug,
+					'options'        => self::panel_options(),
+					'values'         => apply_filters( 'pb_options', get_option( 'pb_options', array() ) ),
+					'ajaxurl'        => admin_url( 'admin-ajax.php' ),
+					'nonce'          => wp_create_nonce( 'pb-panel' ),
+					'system_info'    => self::get_system_info(),
+					'images_url'     => PREMIUM_BLOCKS_PANEL_URL . 'assets/images/',
+					'apiData'        => apply_filters( 'pb_settings', get_option( 'pbg_blocks_settings', array() ) ),
+					'isBlockTheme'   => wp_is_block_theme(),
+					'globalFeatures' => apply_filters( 'pb_global_features', get_option( 'pbg_global_features', array() ) ),
 				)
 			);
 		}

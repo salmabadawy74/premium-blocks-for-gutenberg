@@ -26,13 +26,13 @@ import {
     marginCss,
     gradientValue,
 } from "@pbg/helpers";
-
+import AdvancedSelect from 'react-select';
 const { __ } = wp.i18n;
 const { createBlock } = wp.blocks;
 const { InspectorControls, InnerBlocks } = wp.blockEditor;
 const { compose } = wp.compose;
 const { select, useDispatch, withSelect } = wp.data;
-const { PanelBody, SelectControl } = wp.components;
+const { PanelBody, SelectControl, ToggleControl, TextControl } = wp.components;
 const { useEffect, Fragment } = wp.element;
 
 let defaultLayout = { Desktop: [100], Tablet: [100], Mobile: [100] };
@@ -136,12 +136,17 @@ const edit = (props) => {
             hideDesktop,
             hideMobile,
             hideTablet,
+            equalHeight,
+            equalHeightType,
+            customSelector,
+            equalHeightBlocks
         },
         clientId,
         setAttributes,
         className,
     } = props;
-
+    const enableEqualHeight = props.isParent && PremiumBlocksSettings.globalFeatures['premium-equal-height'];
+    const innerBlocksOptions = props.uniqueInnerBlocks.length ? props.uniqueInnerBlocks.map(block => ({ value: block.name, label: block.name.replace('/', ' ') })) : [];
     const blockVariationPickerOnSelect = (
         nextVariation = props.defaultVariation
     ) => {
@@ -238,9 +243,8 @@ const edit = (props) => {
             "flex-wrap": wrapItems[props.deviceType],
             "align-content": alignContent[props.deviceType],
             "row-gap": `${rowGutter[props.deviceType]}${rowGutter["unit"]}`,
-            "column-gap": `${columnGutter[props.deviceType]}${
-                columnGutter["unit"]
-            }`,
+            "column-gap": `${columnGutter[props.deviceType]}${columnGutter["unit"]
+                }`,
         };
         styles[
             ` .editor-styles-wrapper #block-${clientId}.block-editor-block-list__block`
@@ -262,24 +266,20 @@ const edit = (props) => {
         styles[
             `.editor-styles-wrapper #block-${clientId}  .premium-top-shape svg`
         ] = {
-            width: `${shapeTop.width[props.deviceType]}${
-                shapeTop.width["unit"]
-            }`,
-            height: `${shapeTop.height[props.deviceType]}${
-                shapeTop.height["unit"]
-            }`,
+            width: `${shapeTop.width[props.deviceType]}${shapeTop.width["unit"]
+                }`,
+            height: `${shapeTop.height[props.deviceType]}${shapeTop.height["unit"]
+                }`,
             fill: `${shapeTop["color"]}`,
         };
 
         styles[
             `.editor-styles-wrapper #block-${clientId} .premium-bottom-shape svg`
         ] = {
-            width: `${shapeBottom.width[props.deviceType]}${
-                shapeBottom.width["unit"]
-            }`,
-            height: `${shapeBottom.height[props.deviceType]}${
-                shapeBottom.height["unit"]
-            }`,
+            width: `${shapeBottom.width[props.deviceType]}${shapeBottom.width["unit"]
+                }`,
+            height: `${shapeBottom.height[props.deviceType]}${shapeBottom.height["unit"]
+                }`,
             fill: `${shapeBottom["color"]}`,
         };
 
@@ -320,9 +320,8 @@ const edit = (props) => {
             "background-attachment": backgroundOverlayHover["fixed"]
                 ? "fixed"
                 : "unset",
-            opacity: `${
-                backgroundOverlayHover ? hoverOverlayOpacity / 100 : 1
-            } !important`,
+            opacity: `${backgroundOverlayHover ? hoverOverlayOpacity / 100 : 1
+                } !important`,
             filter: `brightness( ${hoverOverlayFilter["bright"]}% ) contrast( ${hoverOverlayFilter["contrast"]}% ) saturate( ${hoverOverlayFilter["saturation"]}% ) blur( ${hoverOverlayFilter["blur"]}px ) hue-rotate( ${hoverOverlayFilter["hue"]}deg ) !important`,
         };
         let styleCss = "";
@@ -334,9 +333,9 @@ const edit = (props) => {
                     const value = selectorStyles[property];
                     const valueWithoutUnits = value
                         ? value
-                              .toString()
-                              .replaceAll("px", "")
-                              .replaceAll(/\s/g, "")
+                            .toString()
+                            .replaceAll("px", "")
+                            .replaceAll(/\s/g, "")
                         : "";
                     if (value && !value.toString().includes("undefined")) {
                         return `${property}: ${value};`;
@@ -824,83 +823,83 @@ const edit = (props) => {
                             />
                             {("wrap" === wrapItems[props.deviceType] ||
                                 "wrap-reverse" ===
-                                    wrapItems[props.deviceType]) && (
-                                <ResponsiveRadio
-                                    choices={[
-                                        {
-                                            value: "flex-start",
-                                            tooltip: __(
-                                                "Flex Start",
-                                                "premium-blocks-for-gutenberg"
-                                            ),
-                                            icon: renderCustomIcon(
-                                                `flex-${currentOffset}-start`
-                                            ),
-                                        },
-                                        {
-                                            value: "center",
-                                            tooltip: __(
-                                                "Center",
-                                                "premium-blocks-for-gutenberg"
-                                            ),
-                                            icon: renderCustomIcon(
-                                                `flex-${currentOffset}-center`
-                                            ),
-                                        },
-                                        {
-                                            value: "flex-end",
-                                            tooltip: __(
-                                                "Flex End",
-                                                "premium-blocks-for-gutenberg"
-                                            ),
-                                            icon: renderCustomIcon(
-                                                `flex-${currentOffset}-end`
-                                            ),
-                                        },
-                                        {
-                                            value: "space-between",
-                                            tooltip: __(
-                                                "Space Between",
-                                                "premium-blocks-for-gutenberg"
-                                            ),
-                                            icon: renderCustomIcon(
-                                                `flex-${currentOffset}-space-between`
-                                            ),
-                                        },
-                                        {
-                                            value: "space-around",
-                                            tooltip: __(
-                                                "Space Around",
-                                                "premium-blocks-for-gutenberg"
-                                            ),
-                                            icon: renderCustomIcon(
-                                                `flex-${currentOffset}-space-around`
-                                            ),
-                                        },
-                                        {
-                                            value: "space-evenly",
-                                            tooltip: __(
-                                                "Space Evenly",
-                                                "premium-blocks-for-gutenberg"
-                                            ),
-                                            icon: renderCustomIcon(
-                                                `flex-${currentOffset}-space-evenly`
-                                            ),
-                                        },
-                                    ]}
-                                    value={alignContent}
-                                    onChange={(newValue) =>
-                                        setAttributes({
-                                            alignContent: newValue,
-                                        })
-                                    }
-                                    label={__(
-                                        "Align Content",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                    showIcons={true}
-                                />
-                            )}
+                                wrapItems[props.deviceType]) && (
+                                    <ResponsiveRadio
+                                        choices={[
+                                            {
+                                                value: "flex-start",
+                                                tooltip: __(
+                                                    "Flex Start",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                                icon: renderCustomIcon(
+                                                    `flex-${currentOffset}-start`
+                                                ),
+                                            },
+                                            {
+                                                value: "center",
+                                                tooltip: __(
+                                                    "Center",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                                icon: renderCustomIcon(
+                                                    `flex-${currentOffset}-center`
+                                                ),
+                                            },
+                                            {
+                                                value: "flex-end",
+                                                tooltip: __(
+                                                    "Flex End",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                                icon: renderCustomIcon(
+                                                    `flex-${currentOffset}-end`
+                                                ),
+                                            },
+                                            {
+                                                value: "space-between",
+                                                tooltip: __(
+                                                    "Space Between",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                                icon: renderCustomIcon(
+                                                    `flex-${currentOffset}-space-between`
+                                                ),
+                                            },
+                                            {
+                                                value: "space-around",
+                                                tooltip: __(
+                                                    "Space Around",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                                icon: renderCustomIcon(
+                                                    `flex-${currentOffset}-space-around`
+                                                ),
+                                            },
+                                            {
+                                                value: "space-evenly",
+                                                tooltip: __(
+                                                    "Space Evenly",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                                icon: renderCustomIcon(
+                                                    `flex-${currentOffset}-space-evenly`
+                                                ),
+                                            },
+                                        ]}
+                                        value={alignContent}
+                                        onChange={(newValue) =>
+                                            setAttributes({
+                                                alignContent: newValue,
+                                            })
+                                        }
+                                        label={__(
+                                            "Align Content",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                        showIcons={true}
+                                    />
+                                )}
                         </PanelBody>
                     </InspectorTab>
                     <InspectorTab key={"style"}>
@@ -1178,6 +1177,76 @@ const edit = (props) => {
                                 }
                             />
                         </PanelBody>
+                        {enableEqualHeight && (
+                            <PanelBody
+                                title={__(
+                                    "Equal Height",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                initialOpen={false}
+                            >
+                                <ToggleControl
+                                    label={__(
+                                        "Enable Equal Height",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                    checked={equalHeight}
+                                    onChange={(newValue) =>
+                                        setAttributes({ equalHeight: newValue })
+                                    }
+                                />
+                                {equalHeight && (
+                                    <>
+                                        <RadioComponent
+                                            choices={[
+                                                {
+                                                    value: "blocks",
+                                                    label: __(
+                                                        "Blocks",
+                                                        "premium-blocks-for-gutenberg"
+                                                    ),
+                                                },
+                                                {
+                                                    value: "custom-selector",
+                                                    label: __(
+                                                        "Custom Selector",
+                                                        "premium-blocks-for-gutenberg"
+                                                    ),
+                                                },
+                                            ]}
+                                            value={equalHeightType}
+                                            onChange={(newValue) =>
+                                                setAttributes({ equalHeightType: newValue })
+                                            }
+                                            label={__(
+                                                "Apply on",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                            showIcons={false}
+                                        />
+                                        {equalHeightType === 'custom-selector' && (
+                                            <TextControl
+                                                label={__(
+                                                    "Selectors",
+                                                    "premium-blocks-for-gutenberg"
+                                                )}
+                                                value={customSelector}
+                                                onChange={(value) =>
+                                                    setAttributes({ customSelector: value })
+                                                }
+                                                help={__(
+                                                    "Enter selectors separated with ' , '",
+                                                    "premium-blocks-for-gutenberg"
+                                                )}
+                                            />
+                                        )}
+                                        {equalHeightType === 'blocks' && (
+                                            <AdvancedSelect value={innerBlocksOptions.filter(obj => equalHeightBlocks.includes(obj.value))} options={innerBlocksOptions} isMulti={true} onChange={(option) => setAttributes({ equalHeightBlocks: option.map(option => option.value) })} />
+                                        )}
+                                    </>
+                                )}
+                            </PanelBody>
+                        )}
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
@@ -1203,11 +1272,9 @@ const edit = (props) => {
                         ...paddingCss(padding, props.deviceType),
                         ...marginCss(margin, props.deviceType),
                         ...gradientBackground(backgroundOptions),
-                        boxShadow: `${boxShadow.horizontal || 0}px ${
-                            boxShadow.vertical || 0
-                        }px ${boxShadow.blur || 0}px ${boxShadow.color} ${
-                            boxShadow.position
-                        }`,
+                        boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical || 0
+                            }px ${boxShadow.blur || 0}px ${boxShadow.color} ${boxShadow.position
+                            }`,
                         overflow: overflow,
                     }}
                 >
@@ -1219,7 +1286,7 @@ const edit = (props) => {
                                 dangerouslySetInnerHTML={{
                                     __html:
                                         PremiumBlocksSettings.shapes[
-                                            shapeTop.style
+                                        shapeTop.style
                                         ],
                                 }}
                             />
@@ -1238,7 +1305,7 @@ const edit = (props) => {
                                 dangerouslySetInnerHTML={{
                                     __html:
                                         PremiumBlocksSettings.shapes[
-                                            shapeBottom.style
+                                        shapeBottom.style
                                         ],
                                 }}
                             />
@@ -1268,7 +1335,7 @@ const applyWithSelect = withSelect((select, props) => {
     const deviceType = __experimentalGetPreviewDeviceType
         ? __experimentalGetPreviewDeviceType()
         : null;
-    const { getBlocks } = select("core/block-editor");
+    const { getBlocks, getBlockParents, getBlock } = select("core/block-editor");
     const {
         getBlockType,
         getBlockVariations,
@@ -1278,7 +1345,25 @@ const applyWithSelect = withSelect((select, props) => {
     const { replaceInnerBlocks, removeBlock } = useDispatch(
         "core/block-editor"
     );
-
+    const hasParents = getBlockParents(props.clientId).length;
+    let uniqueInnerBlocks = [];
+    const addInnerBlocks = (block) => {
+        if (!block?.innerBlocks?.length) {
+            return;
+        }
+        for (const innerBlock of block.innerBlocks) {
+            const uniqueBlocksNames = uniqueInnerBlocks.map(block => block.name);
+            if (!uniqueBlocksNames.includes(innerBlock.name)) {
+                if (innerBlock.name !== 'premium/container') {
+                    uniqueInnerBlocks.push(innerBlock);
+                }
+                addInnerBlocks(innerBlock);
+            }
+        }
+    }
+    if (!hasParents) {
+        addInnerBlocks(getBlock(props.clientId));
+    }
     return {
         // Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
         innerBlocks,
@@ -1297,6 +1382,8 @@ const applyWithSelect = withSelect((select, props) => {
             "core/block-editor"
         ).hasSelectedInnerBlock(props.clientId, true),
         removeBlock,
+        uniqueInnerBlocks,
+        isParent: !hasParents
     };
 });
 export default compose(applyWithSelect)(edit);

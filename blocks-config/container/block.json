@@ -383,6 +383,21 @@
         },
         "transition": {
             "type": "number"
+        },
+        "equalHeight": {
+            "type": "boolean",
+            "default": false
+        },
+        "equalHeightType": {
+            "type": "string",
+            "default": "blocks"
+        },
+        "customSelector": {
+            "type": "string"
+        },
+        "equalHeightBlocks": {
+            "type": "array",
+            "default": []
         }
     },
     "editorScript": "pbg-blocks-js",
