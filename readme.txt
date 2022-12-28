@@ -73,8 +73,8 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 == Changelog ==
 
 = 2.0.6 =
-- New: Icon Block Variations.
 - New: Upload SVG Icon for Icon block option.
+- New: Hover effect options for icon box elements.
 - Fixed: Dual Heading tags issue.
 - Fixed: Icon Group options don't work properly.
 
