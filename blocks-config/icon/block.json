@@ -53,8 +53,7 @@
             "default": "none"
         },
         "hoversEffect": {
-            "type": "string",
-            "default": "none"
+            "type": "string"
         },
         "iconStyles": {
             "type": "array",
