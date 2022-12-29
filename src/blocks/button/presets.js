@@ -29,7 +29,6 @@ export const buttonsPresets = [
 
                 value: [
                     {
-                        textColor: `var(--pbg-global-color3,#333333)`,
                         textHoverColor: "",
                         backOpacity: 1,
                         backHoverColor: "",
@@ -211,7 +210,6 @@ export const buttonsPresets = [
 
                 value: [
                     {
-                        textColor: `var(--pbg-global-color3,#333333)`,
                         textHoverColor: "",
                         backOpacity: 1,
                         backHoverColor: "",
@@ -398,7 +396,6 @@ export const buttonsPresets = [
 
                 value: [
                     {
-                        textColor: `var(--pbg-global-color3,#333333)`,
                         textHoverColor: "",
                         backOpacity: 1,
                         backHoverColor: "",
@@ -570,7 +567,6 @@ export const buttonsPresets = [
 
                 value: [
                     {
-                        textColor: `var(--pbg-global-color3,#333333)`,
                         textHoverColor: "",
                         backOpacity: 1,
                         backHoverColor: "",
