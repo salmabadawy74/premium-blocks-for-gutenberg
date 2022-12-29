@@ -1,13 +1,27 @@
 import { Fragment } from "react";
+import { useSelect } from "@wordpress/data";
+import { store as coreStore } from "@wordpress/core-data";
+import { useEntityProp } from "@wordpress/core-data";
+import { __ } from "@wordpress/i18n";
 
 const { dateI18n, format, __experimentalGetSettings } = wp.date;
-import { generateBlockId, typographyCss, paddingCss, marginCss } from '@pbg/helpers';
+import {
+    generateBlockId,
+    typographyCss,
+    paddingCss,
+    marginCss,
+} from "@pbg/helpers";
 import {
     InspectorControls,
     useBlockProps,
-    RichText
+    RichText,
 } from "@wordpress/block-editor";
-import { PanelBody, TextControl } from '@wordpress/components';
+import {
+    PanelBody,
+    SelectControl,
+    TextControl,
+    ToggleControl,
+} from "@wordpress/components";
 import {
     MultiButtonsControl,
     InspectorTabs,
@@ -19,21 +33,40 @@ import {
     WebfontLoader,
     PremiumTypo,
     alignIcons,
-} from '@pbg/components';
+} from "@pbg/components";
+
 export default function Meta(props) {
-    const { isSelected,
-        context: { postType, postId, queryId },
+    const {
+        isSelected,
+        context: { postId, postType: postTypeSlug, queryId },
         attributes,
-        setAttributes, } = props;
-    const { authorId, authorDetails, authors } = useSelect(
+        setAttributes,
+    } = props;
+    const {
+        showAuther,
+        showDate,
+        showCategories,
+        showComments,
+        typography,
+        color,
+        hoverColor,
+        sepColor,
+        hideDesktop,
+        hideTablet,
+        hideMobile,
+    } = attributes;
+    const AUTHORS_QUERY = {
+        who: "authors",
+        per_page: 50,
+        _fields: "id,name",
+        context: "view", // Allows non-admins to perform requests.
+    };
+
+    const { authorId, authorDetails } = useSelect(
         (select) => {
-            const { getEditedEntityRecord, getUser, getUsers } =
-                select(coreStore);
-            const _authorId = getEditedEntityRecord(
-                'postType',
-                postType,
-                postId
-            )?.author;
+            const { getEntityRecord, getUser, getUsers } = select(coreStore);
+            const _authorId = getEntityRecord("postType", "post", postId)
+                ?.author;
 
             return {
                 authorId: _authorId,
@@ -41,25 +74,46 @@ export default function Meta(props) {
                 authors: getUsers(AUTHORS_QUERY),
             };
         },
-        [postType, postId]
+        [postTypeSlug, postId]
     );
-    const [date, setDate] = useEntityProp(
-        'postType',
-        postTypeSlug,
-        displayType,
-        postId
+    const { postDetails, setDetails } = useSelect(
+        (select) => {
+            const { getEntityRecord, getUser, getUsers } = select(coreStore);
+            const _authorId = getEntityRecord("postType", "post", postId)
+                ?.author;
+            const Category = getEntityRecord("postType", "post", postId)
+                ?.categories;
+
+            return {
+                authorId: _authorId,
+                authorDetails: _authorId ? getUser(_authorId) : null,
+                authors: getUsers(AUTHORS_QUERY),
+                categories: Category,
+            };
+        },
+        [postTypeSlug, postId]
     );
 
+    const [date, setDate] = useEntityProp(
+        "postType",
+        postTypeSlug,
+        "date",
+        postId
+    );
+    console.log(postDetails, "LLLLLL");
+
     let postDate = date ? (
-        <time dateTime={dateI18n('c', date)} ref={setPopoverAnchor}>
+        <time dateTime={dateI18n("c", date)}>
+            <span className="fa fa-clock-o"></span>
+
             {dateI18n(format || siteFormat, date)}
         </time>
     ) : (
-        __('Post Date')
+        __("Post Date")
     );
 
+    const authorName = authorDetails?.name || __("Post Author");
 
-    const authorName = authorDetails?.name || __('Post Author');
     return (
         <Fragment>
             <InspectorControls>
@@ -83,7 +137,9 @@ export default function Meta(props) {
                             label={__("Category Meta")}
                             checked={showCategories}
                             onChange={() =>
-                                setAttributes({ showCategories: !showCategories })
+                                setAttributes({
+                                    showCategories: !showCategories,
+                                })
                             }
                         />
                         <ToggleControl
@@ -96,27 +152,53 @@ export default function Meta(props) {
                     </InspectorTab>
                     <InspectorTab key={"style"}>
                         <PremiumTypo
-                            components={["responsiveSize", "weight", "family", "spacing", "style", "Upper", "line", "Decoration"]}
+                            components={[
+                                "responsiveSize",
+                                "weight",
+                                "family",
+                                "spacing",
+                                "style",
+                                "Upper",
+                                "line",
+                                "Decoration",
+                            ]}
                             value={typography}
-                            onChange={newValue => setAttributes({ typography: newValue })}
+                            onChange={(newValue) =>
+                                setAttributes({ typography: newValue })
+                            }
                         />
                         <AdvancedPopColorControl
-                            label={__("Metadata Color", "premium-blocks-for-gutenberg")}
+                            label={__(
+                                "Metadata Color",
+                                "premium-blocks-for-gutenberg"
+                            )}
                             colorValue={color}
                             colorDefault={""}
-                            onColorChange={(value) => setAttributes({ color: value })}
+                            onColorChange={(value) =>
+                                setAttributes({ color: value })
+                            }
                         />
                         <AdvancedPopColorControl
-                            label={__("Links Hover Color", "premium-blocks-for-gutenberg")}
+                            label={__(
+                                "Links Hover Color",
+                                "premium-blocks-for-gutenberg"
+                            )}
                             colorValue={hoverColor}
                             colorDefault={""}
-                            onColorChange={(value) => setAttributes({ hoverColor: value })}
+                            onColorChange={(value) =>
+                                setAttributes({ hoverColor: value })
+                            }
                         />
                         <AdvancedPopColorControl
-                            label={__("Separator Color", "premium-blocks-for-gutenberg")}
+                            label={__(
+                                "Separator Color",
+                                "premium-blocks-for-gutenberg"
+                            )}
                             colorValue={sepColor}
                             colorDefault={""}
-                            onColorChange={(value) => setAttributes({ sepColor: value })}
+                            onColorChange={(value) =>
+                                setAttributes({ sepColor: value })
+                            }
                         />
                     </InspectorTab>
                     <InspectorTab key={"advance"}>
@@ -143,28 +225,20 @@ export default function Meta(props) {
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
-            {attributes.displayPostAuthor && undefined !== post.pbg_author_info && (
+            {showAuther && (
                 <span className="premium-blog-post-author premium-blog-meta-data">
                     <span className="fa fa-user fa-fw"></span>
-                    <a
-                        target="_blank"
-                        href={post.pbg_author_info.author_link}
-                        rel="noopener noreferrer"
-                    >
+                    <a target="_blank" href={"#"} rel="noopener noreferrer">
                         {authorName}
                     </a>
                     <span className={`premium-blog-meta-separtor`}>•</span>
                 </span>
             )}
-            {attributes.displayPostDate && post.date_gmt && (
-                <div className={`premium-blog-post-time premium-blog-meta-data`}>
-                    <time
-                        dateTime={format("c", post.date_gmt)}
-                        className="uagb-post__date"
-                    >
-                        <span className="fa fa-clock-o"></span>
-                        {postDate}
-                    </time>
+            {showDate && (
+                <div
+                    className={`premium-blog-post-time premium-blog-meta-data`}
+                >
+                    {postDate}
                     <span className={`premium-blog-meta-separtor`}>•</span>
                 </div>
             )}
@@ -194,5 +268,3 @@ export default function Meta(props) {
         </Fragment>
     );
 }
-
-

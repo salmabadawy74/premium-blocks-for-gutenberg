@@ -19,8 +19,6 @@ import {
 import { Spinner } from "@wordpress/components";
 import { store as coreStore } from "@wordpress/core-data";
 
-
-
 export default function PostTemplateEdit({
     clientId,
     context: {
@@ -49,14 +47,23 @@ export default function PostTemplateEdit({
         templateSlug,
     },
 }) {
-    const TEMPLATE = [["premium/post-title"], ["premium/post-excerpt"], ["premium/post-featured-image"]]
+    const TEMPLATE = [
+        ["premium/post-title"],
+        ["premium/post-excerpt"],
+        ["premium/post-featured-image"],
+    ];
 
     const innerBlocksProps = useInnerBlocksProps(
         { className: "wp-block-post" },
         {
             template: TEMPLATE,
             templateLock: false,
-            allowedBlocks: ["premium/post-title", "premium/post-excerpt", "premium/post-featured-image"]
+            allowedBlocks: [
+                "premium/post-title",
+                "premium/post-excerpt",
+                "premium/post-featured-image",
+                "premium/post-meta",
+            ],
         }
     );
     console.log("KKKKKKKK");
@@ -185,7 +192,6 @@ export default function PostTemplateEdit({
         return <p {...blockProps}> {__("No results found.")}</p>;
     }
 
-
     return (
         <ul {...blockProps}>
             {blockContexts &&
@@ -194,7 +200,7 @@ export default function PostTemplateEdit({
                         key={blockContext.postId}
                         value={blockContext}
                     >
-                        <div  {...innerBlocksProps} />
+                        <div {...innerBlocksProps} />
                     </BlockContextProvider>
                 ))}
         </ul>

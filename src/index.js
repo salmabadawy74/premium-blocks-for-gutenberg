@@ -25,6 +25,7 @@ import {
 import "./blocks/post-title/index";
 import "./blocks/post-excerpt";
 import "./blocks/feature-image";
+import "./blocks/post-Meta";
 dualHeading ? require("./blocks/dual-heading") : "";
 accordion ? require("./blocks/accordion") : "";
 banner ? require("./blocks/banner") : "";
