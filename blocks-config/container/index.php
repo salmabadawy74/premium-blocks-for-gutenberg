@@ -226,7 +226,7 @@ function get_premium_container_css_style( $attr, $unique_id ) {
 	if ( isset( $attr['alignContent'] ) ) {
 		$css->add_property( 'align-content', $css->get_responsive_css( $attr['alignContent'], 'Mobile' ) );
 	}
-	
+
 	if ( isset( $attr['colWidth'] ) ) {
 		$css->set_selector( '.wp-block-premium-container.premium-is-root-container .premium-block-' . $unique_id );
 		$css->add_property( 'max-width', $css->render_range( $attr['colWidth'], 'Mobile' ) );
@@ -275,7 +275,9 @@ function get_premium_container_css_style( $attr, $unique_id ) {
  * @return string Returns the post content with the legacy widget added.
  */
 function render_block_pbg_container( $attributes, $content, $block ) {
-	$block_helpers = pbg_blocks_helper();
+	$block_helpers   = pbg_blocks_helper();
+	$global_features = apply_filters( 'pb_global_features', get_option( 'pbg_global_features', array() ) );
+
 	if ( isset( $attributes['block_id'] ) && ! empty( $attributes['block_id'] ) ) {
 		$unique_id = $attributes['block_id'];
 	} else {
@@ -298,6 +300,17 @@ function render_block_pbg_container( $attributes, $content, $block ) {
 		PREMIUM_BLOCKS_VERSION,
 		'all'
 	);
+	if ( $global_features['premium-equal-height'] && isset( $attributes['equalHeight'] ) && $attributes['equalHeight'] ) {
+		add_filter(
+			'premium_equal_height_localize_script',
+			function ( $data ) use ( $attributes ) {
+				$data[ $attributes['block_id'] ] = array(
+					'attributes' => $attributes,
+				);
+				return $data;
+			}
+		);
+	}
 	$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
 	if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'container', $unique_id ) ) {
 		// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.

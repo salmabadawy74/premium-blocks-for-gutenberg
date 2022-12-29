@@ -112,11 +112,43 @@ class PBG_Blocks_Helper {
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_dashicons_front_end' ) );
 
 		add_action( 'pbg_get_css_files', array( $this, 'add_blocks_editor_styles' ) );
+
+		add_filter( 'render_block_premium/container', array( $this, 'equal_height_front_script' ), 1, 2 );
 	}
 
 
 
+	/**
+	 * Equal Height Frontend
+	 *
+	 * Enqueue Frontend Assets for Premium Blocks.
+	 *
+	 * @access public
+	 *
+	 * @return void
+	 */
+	public function equal_height_front_script( $content, $block ) {
+		$global_features = apply_filters( 'pb_global_features', get_option( 'pbg_global_features', array() ) );
+		if ( $global_features['premium-equal-height'] && isset( $block['attrs']['equalHeight'] ) && $block['attrs']['equalHeight'] ) {
+			wp_enqueue_script(
+				'premium-equal-height-view',
+				PREMIUM_BLOCKS_URL . 'assets/js/build/equal-height.js',
+				array(),
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
 
+			wp_localize_script(
+				'premium-equal-height-view',
+				'PBG_EqualHeight',
+				apply_filters(
+					'premium_equal_height_localize_script',
+					array()
+				)
+			);
+		}
+		return $content;
+	}
 
 	/**
 	 * Add blocks editor style

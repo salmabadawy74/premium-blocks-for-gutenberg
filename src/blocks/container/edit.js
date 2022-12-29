@@ -26,15 +26,15 @@ import {
     marginCss,
     gradientValue,
 } from "@pbg/helpers";
-import AdvancedSelect from 'react-select';
+import AdvancedSelect, { components } from 'react-select';
 const { __ } = wp.i18n;
 const { createBlock } = wp.blocks;
 const { InspectorControls, InnerBlocks } = wp.blockEditor;
 const { compose } = wp.compose;
 const { select, useDispatch, withSelect } = wp.data;
 const { PanelBody, SelectControl, ToggleControl, TextControl } = wp.components;
-const { useEffect, Fragment } = wp.element;
-
+const { useEffect, Fragment, useRef } = wp.element;
+import { resetBlocksHeight, resetHeight, setElementsHeight, checkSelector } from "./utils";
 let defaultLayout = { Desktop: [100], Tablet: [100], Mobile: [100] };
 
 const edit = (props) => {
@@ -147,6 +147,8 @@ const edit = (props) => {
     } = props;
     const enableEqualHeight = props.isParent && PremiumBlocksSettings.globalFeatures['premium-equal-height'];
     const innerBlocksOptions = props.uniqueInnerBlocks.length ? props.uniqueInnerBlocks.map(block => ({ value: block.name, label: block.name.replace('/', ' ') })) : [];
+    const containerRef = useRef(0);
+
     const blockVariationPickerOnSelect = (
         nextVariation = props.defaultVariation
     ) => {
@@ -171,6 +173,40 @@ const edit = (props) => {
         );
     };
 
+    useEffect(() => {
+        if (props.isParent && enableEqualHeight) {
+            if (equalHeightType === 'blocks') {
+                if (customSelector) {
+                    const allElements = containerRef.current.querySelectorAll(customSelector);
+                    resetHeight(allElements);
+                }
+                if (equalHeightBlocks.length) {
+                    for (const block of equalHeightBlocks) {
+                        resetBlocksHeight(block, containerRef.current);
+                        const blockName = block.includes('core') ? block.replace('core/', '') : block.replaceAll('/', '-');
+                        const blockClass = `wp-block-${blockName}`;
+                        const allBlocksType = containerRef.current.querySelectorAll(`.${blockClass}`);
+                        setElementsHeight(allBlocksType);
+                    }
+                }
+            }
+            if (equalHeightType === 'custom-selector') {
+                if (equalHeightBlocks.length) {
+                    for (const block of equalHeightBlocks) {
+                        resetBlocksHeight(block, containerRef.current);
+                    }
+                }
+                if (customSelector?.length && checkSelector(customSelector)) {
+                    const allSelectors = customSelector.split(",");
+                    for (const selector of allSelectors) {
+                        const allElements = containerRef.current.querySelectorAll(selector);
+                        resetHeight(allElements);
+                        setElementsHeight(allElements);
+                    }
+                }
+            }
+        }
+    }, [props]);
     const topShapeClasses = classnames(
         "premium-shape-divider",
         "premium-top-shape",
@@ -392,7 +428,16 @@ const edit = (props) => {
             value: "luminosity",
         },
     ];
-
+    const MultiValue = (props) => {
+        const { innerProps } = props;
+        const newInnerProps = {
+            ...innerProps, onClick: (data) => {
+                innerProps.onClick(data);
+                resetBlocksHeight(props.data.value, containerRef.current);
+            }
+        };
+        return <components.MultiValueRemove {...props} innerProps={newInnerProps} />;
+    };
     return (
         <Fragment>
             <InspectorControls>
@@ -1241,7 +1286,9 @@ const edit = (props) => {
                                             />
                                         )}
                                         {equalHeightType === 'blocks' && (
-                                            <AdvancedSelect value={innerBlocksOptions.filter(obj => equalHeightBlocks.includes(obj.value))} options={innerBlocksOptions} isMulti={true} onChange={(option) => setAttributes({ equalHeightBlocks: option.map(option => option.value) })} />
+                                            <AdvancedSelect value={innerBlocksOptions.filter(obj => equalHeightBlocks.includes(obj.value))} options={innerBlocksOptions} isMulti={true} onChange={(option) => setAttributes({ equalHeightBlocks: option.map(option => option.value) })} components={{
+                                                MultiValueRemove: MultiValue
+                                            }} />
                                         )}
                                     </>
                                 )}
@@ -1254,6 +1301,7 @@ const edit = (props) => {
                 className="block-editor-block-list__block wp-block"
                 id={`block-${block_id}`}
                 data-block={`premium-container`}
+                ref={containerRef}
             >
                 <style
                     dangerouslySetInnerHTML={{
