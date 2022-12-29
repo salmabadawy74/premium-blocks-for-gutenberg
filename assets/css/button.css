@@ -87,7 +87,7 @@
   .premium-button__slide .premium-button::before {
     content: "";
     position: absolute;
-    background: var(--pbg-global-color1, #bbb);
+    background: var(--pbg-global-color4, #bbb);
     z-index: -1;
     top: 0;
     left: 0;
@@ -149,7 +149,7 @@
   .premium-button__radial .premium-button::before {
     content: "";
     position: absolute;
-    background: var(--pbg-global-color1, #bbb);
+    background: var(--pbg-global-color4, #bbb);
     z-index: -1;
     top: 0;
     left: 0;
@@ -411,7 +411,7 @@
   .premium-button__slide .premium-button::before {
     content: "";
     position: absolute;
-    background: var(--pbg-global-color1, #bbb);
+    background: var(--pbg-global-color4, #bbb);
     z-index: -1;
     top: 0;
     left: 0;
@@ -442,7 +442,7 @@
   .premium-button__shutter .premium-button::before {
     content: "";
     position: absolute;
-    background: var(--pbg-global-color1, #bbb);
+    background: var(--pbg-global-color4, #bbb);
     z-index: -1;
     top: 0;
     left: 0;
@@ -473,7 +473,7 @@
   .premium-button__radial .premium-button::before {
     content: "";
     position: absolute;
-    background: var(--pbg-global-color1, #bbb);
+    background: var(--pbg-global-color4, #bbb);
     z-index: -1;
     top: 0;
     left: 0;
