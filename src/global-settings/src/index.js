@@ -240,7 +240,7 @@ const loadStyles = (colorPalette, globalColors, globalTypography, applyColorsToD
             'line-height': `${heading6?.lineHeight?.[deviceType]}${heading6?.lineHeight?.unit}`,
         };
 
-        styles['.editor-styles-wrapper .wp-block-button > div, .editor-styles-wrapper .wp-block-button > .wp-block-button__link'] = {
+        styles['.wp-block-button > div, .wp-block-button > .wp-block-button__link'] = {
             'font-size': `${button?.fontSize?.[deviceType]}${button?.fontSize?.unit}`,
             'font-style': button?.fontStyle,
             'font-family': button?.fontFamily,
