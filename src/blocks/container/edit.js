@@ -16,6 +16,7 @@ import {
     PremiumFilters,
     renderCustomIcon,
     ResponsiveRangeControl,
+    PremiumResponsiveTabs,
 } from "@pbg/components";
 import {
     gradientBackground,
@@ -78,6 +79,45 @@ const edit = (props) => {
         }
     }
 
+    useEffect(() => {
+        const isBlockRootParentID = select("core/block-editor").getBlockParents(
+            props.clientId
+        );
+
+        const parentBlockName = select("core/block-editor").getBlocksByClientId(
+            isBlockRootParentID
+        );
+
+        if (
+            (parentBlockName[0] &&
+                "premium/container" !== parentBlockName[0].name) ||
+            undefined === parentBlockName[0]
+        ) {
+            props.setAttributes({ isBlockRootParent: true });
+        }
+
+        // Assigning block_id in the attribute.
+        props.setAttributes({ block_id: props.clientId.substr(0, 8) });
+
+        const iframeEl = document.querySelector(`iframe[name='editor-canvas']`);
+        let element;
+        if (iframeEl) {
+            element = iframeEl.contentDocument.getElementById(
+                "block-" + props.clientId
+            );
+        } else {
+            element = document.getElementById("block-" + props.clientId);
+        }
+
+        if (
+            0 !==
+            select("core/block-editor").getBlockParents(props.clientId).length
+        ) {
+            // if there is no parent for container when child container moved outside root then do not show variations.
+            props.setAttributes({ variationSelected: true });
+        }
+    }, []);
+
     const blockVariationPickerOnSelect = (nextVariation = defaultVariation) => {
         if (nextVariation.attributes) {
             props.setAttributes(nextVariation.attributes);
@@ -104,6 +144,9 @@ const edit = (props) => {
     };
     const removeRowBlock = () => {
         const { clientId, removeBlock } = props;
+        if (defaultVariation.attributes) {
+            props.setAttributes(defaultVariation.attributes);
+        }
         removeBlock(clientId);
     };
     const {
@@ -193,131 +236,6 @@ const edit = (props) => {
             </Fragment>
         );
     }
-    const loadStyles = () => {
-        const styles = {};
-        const containerFullWidth = "100vw";
-        styles[
-            `.editor-styles-wrapper #block-${clientId}  > .wp-block-premium-container > .premium-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout`
-        ] = {
-            "min-height": `${minHeight[props.deviceType]}${minHeight["unit"]}`,
-            "flex-direction": direction[props.deviceType],
-            "align-items": alignItems[props.deviceType],
-            "justify-content": justifyItems[props.deviceType],
-            "flex-wrap": wrapItems[props.deviceType],
-            "align-content": alignContent[props.deviceType],
-            "row-gap": `${rowGutter[props.deviceType]}${rowGutter["unit"]}`,
-            "column-gap": `${columnGutter[props.deviceType]}${
-                columnGutter["unit"]
-            }`,
-        };
-        styles[
-            ` .editor-styles-wrapper #block-${clientId}.block-editor-block-list__block`
-        ] = {
-            "min-height": `${minHeight[props.deviceType]}${minHeight["unit"]}`,
-            "flex-direction": direction[props.deviceType],
-            "align-items": alignItems[props.deviceType],
-            "justify-content": justifyItems[props.deviceType],
-            "flex-wrap": wrapItems[props.deviceType],
-            "align-content": alignContent[props.deviceType],
-        };
-
-        styles[
-            ` .editor-styles-wrapper .is-root-container > .block-editor-block-list__block .block-editor-block-list__block#block-${clientId}`
-        ] = {
-            "max-width": `${colWidth[props.deviceType]}${colWidth["unit"]}`,
-            width: `${colWidth[props.deviceType]}${colWidth["unit"]}`,
-        };
-        styles[
-            `.editor-styles-wrapper #block-${clientId}  .premium-top-shape svg`
-        ] = {
-            width: `${shapeTop.width[props.deviceType]}${
-                shapeTop.width["unit"]
-            }`,
-            height: `${shapeTop.height[props.deviceType]}${
-                shapeTop.height["unit"]
-            }`,
-            fill: `${shapeTop["color"]}`,
-        };
-
-        styles[
-            `.editor-styles-wrapper #block-${clientId} .premium-bottom-shape svg`
-        ] = {
-            width: `${shapeBottom.width[props.deviceType]}${
-                shapeBottom.width["unit"]
-            }`,
-            height: `${shapeBottom.height[props.deviceType]}${
-                shapeBottom.height["unit"]
-            }`,
-            fill: `${shapeBottom["color"]}`,
-        };
-
-        if ("boxed" === innerWidthType) {
-            styles[
-                `.editor-styles-wrapper  .is-root-container > .block-editor-block-list__block > .wp-block-premium-container.premium-block-${block_id} > .premium-container-inner-blocks-wrap`
-            ] = {
-                "--inner-content-custom-width": `min(${containerFullWidth},${innerWidth}px)`,
-                "max-width": "var(--inner-content-custom-width)",
-                "margin-left": "auto",
-                "margin-right": "auto",
-            };
-        }
-        styles[`.premium-blocks-${block_id} .premium-row__block_overlay `] = {
-            "background-color": backgroundOverlay["backgroundColor"],
-            "background-image": gradientValue(backgroundOverlay),
-            "background-repeat": backgroundOverlay["backgroundRepeat"],
-            "background-position": backgroundOverlay["backgroundPosition"],
-            "background-size": backgroundOverlay["backgroundSize"],
-            "background-attachment": backgroundOverlay["fixed"]
-                ? "fixed"
-                : "unset",
-            opacity: `${backgroundOverlay ? overlayOpacity / 100 : 1} `,
-            "mix-blend-mode": `${blend} !important`,
-            filter: `brightness( ${overlayFilter["bright"]}% ) contrast( ${overlayFilter["contrast"]}% ) saturate( ${overlayFilter["saturation"]}% ) blur( ${overlayFilter["blur"]}px ) hue-rotate( ${overlayFilter["hue"]}deg ) `,
-            "-webkit-transition": `${transition}s`,
-            "-o-transition": `${transition}s`,
-            transition: `${transition}s`,
-        };
-        styles[
-            `.premium-blocks-${block_id}:hover .premium-row__block_overlay `
-        ] = {
-            "background-color": backgroundOverlayHover["backgroundColor"],
-            "background-image": gradientValue(backgroundOverlayHover),
-            "background-repeat": backgroundOverlayHover["backgroundRepeat"],
-            "background-position": backgroundOverlayHover["backgroundPosition"],
-            "background-size": backgroundOverlayHover["backgroundSize"],
-            "background-attachment": backgroundOverlayHover["fixed"]
-                ? "fixed"
-                : "unset",
-            opacity: `${
-                backgroundOverlayHover ? hoverOverlayOpacity / 100 : 1
-            } !important`,
-            filter: `brightness( ${hoverOverlayFilter["bright"]}% ) contrast( ${hoverOverlayFilter["contrast"]}% ) saturate( ${hoverOverlayFilter["saturation"]}% ) blur( ${hoverOverlayFilter["blur"]}px ) hue-rotate( ${hoverOverlayFilter["hue"]}deg ) !important`,
-        };
-        let styleCss = "";
-
-        for (const selector in styles) {
-            const selectorStyles = styles[selector];
-            const filteredStyles = Object.keys(selectorStyles)
-                .map((property) => {
-                    const value = selectorStyles[property];
-                    const valueWithoutUnits = value
-                        ? value
-                              .toString()
-                              .replaceAll("px", "")
-                              .replaceAll(/\s/g, "")
-                        : "";
-                    if (value && !value.toString().includes("undefined")) {
-                        return `${property}: ${value};`;
-                    }
-                })
-                .filter((style) => !!style)
-                .join("\n");
-            styleCss += `${selector}{
-                    ${filteredStyles}
-                }\n`;
-        }
-        return styleCss;
-    };
     const BLEND = [
         {
             label: "Normal",
@@ -1144,6 +1062,32 @@ const edit = (props) => {
                                 }
                             />
                         </PanelBody>
+                        <PremiumResponsiveTabs
+                            Desktop={hideDesktop}
+                            Tablet={hideTablet}
+                            Mobile={hideMobile}
+                            onChangeDesktop={(value) =>
+                                setAttributes({
+                                    hideDesktop: value
+                                        ? " premium-desktop-hidden"
+                                        : "",
+                                })
+                            }
+                            onChangeTablet={(value) =>
+                                setAttributes({
+                                    hideTablet: value
+                                        ? " premium-tablet-hidden"
+                                        : "",
+                                })
+                            }
+                            onChangeMobile={(value) =>
+                                setAttributes({
+                                    hideMobile: value
+                                        ? " premium-mobile-hidden"
+                                        : "",
+                                })
+                            }
+                        />
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>

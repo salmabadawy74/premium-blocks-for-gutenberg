@@ -13,10 +13,10 @@ import {
 
 const Render = (props) => {
     props = props.parentProps;
-    const { attributes, clientId } = props;
+    const { attributes, clientId, className } = props;
 
     const {
-        blockId,
+        block_id,
         align,
         variationSelected,
         padding,
@@ -97,12 +97,168 @@ const Render = (props) => {
     const hasChildren =
         0 !== select("core/block-editor").getBlocks(clientId).length;
     const blockProps = useBlockProps({
-        className: "block-editor-block-list__block wp-block",
+        className: classnames(
+            className,
+            `block-editor-block-list__block wp-block`,
+            {
+                " premium-desktop-hidden": hideDesktop,
+                " premium-tablet-hidden": hideTablet,
+                " premium-mobile-hidden": hideMobile,
+            }
+        ),
     });
+    const loadStyles = () => {
+        const styles = {};
+        const containerFullWidth = "100vw";
+        styles[
+            `.editor-styles-wrapper #block-${clientId}  > .wp-block-premium-container > .premium-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout`
+        ] = {
+            "min-height": `${minHeight[props.deviceType]}${minHeight["unit"]}`,
+            "flex-direction": direction[props.deviceType],
+            "align-items": alignItems[props.deviceType],
+            "justify-content": justifyItems[props.deviceType],
+            "flex-wrap": wrapItems[props.deviceType],
+            "align-content": alignContent[props.deviceType],
+            "row-gap": `${rowGutter[props.deviceType]}${rowGutter["unit"]}`,
+            "column-gap": `${columnGutter[props.deviceType]}${
+                columnGutter["unit"]
+            }`,
+        };
+        styles[
+            ` .editor-styles-wrapper #block-${clientId}.block-editor-block-list__block`
+        ] = {
+            "min-height": `${minHeight[props.deviceType]}${minHeight["unit"]}`,
+            "flex-direction": direction[props.deviceType],
+            "align-items": alignItems[props.deviceType],
+            "justify-content": justifyItems[props.deviceType],
+            "flex-wrap": wrapItems[props.deviceType],
+            "align-content": alignContent[props.deviceType],
+        };
 
+        styles[
+            ` .editor-styles-wrapper .is-root-container > .block-editor-block-list__block .block-editor-block-list__block#block-${clientId}`
+        ] = {
+            "max-width": `${colWidth[props.deviceType]}${colWidth["unit"]}`,
+            width: `${colWidth[props.deviceType]}${colWidth["unit"]}`,
+        };
+        styles[
+            `.editor-styles-wrapper #block-${clientId}  .premium-top-shape svg`
+        ] = {
+            width: `${shapeTop.width[props.deviceType]}${
+                shapeTop.width["unit"]
+            }`,
+            height: `${shapeTop.height[props.deviceType]}${
+                shapeTop.height["unit"]
+            }`,
+            fill: `${shapeTop["color"]}`,
+        };
+
+        styles[
+            `.editor-styles-wrapper #block-${clientId} .premium-bottom-shape svg`
+        ] = {
+            width: `${shapeBottom.width[props.deviceType]}${
+                shapeBottom.width["unit"]
+            }`,
+            height: `${shapeBottom.height[props.deviceType]}${
+                shapeBottom.height["unit"]
+            }`,
+            fill: `${shapeBottom["color"]}`,
+        };
+
+        if ("boxed" === innerWidthType) {
+            styles[
+                `.editor-styles-wrapper  .is-root-container > .block-editor-block-list__block > .wp-block-premium-container.premium-block-${block_id} > .premium-container-inner-blocks-wrap`
+            ] = {
+                "--inner-content-custom-width": `min(${containerFullWidth},${innerWidth}px)`,
+                "max-width": "var(--inner-content-custom-width)",
+                "margin-left": "auto",
+                "margin-right": "auto",
+            };
+        }
+        styles[`.premium-blocks-${block_id} .premium-row__block_overlay `] = {
+            "background-color": backgroundOverlay["backgroundColor"],
+            "background-image": gradientValue(backgroundOverlay),
+            "background-repeat": backgroundOverlay["backgroundRepeat"],
+            "background-position": backgroundOverlay["backgroundPosition"],
+            "background-size": backgroundOverlay["backgroundSize"],
+            "background-attachment": backgroundOverlay["fixed"]
+                ? "fixed"
+                : "unset",
+            opacity: `${backgroundOverlay ? overlayOpacity / 100 : 1} `,
+            "mix-blend-mode": `${blend} !important`,
+            filter: `brightness( ${overlayFilter["bright"]}% ) contrast( ${overlayFilter["contrast"]}% ) saturate( ${overlayFilter["saturation"]}% ) blur( ${overlayFilter["blur"]}px ) hue-rotate( ${overlayFilter["hue"]}deg ) `,
+            "-webkit-transition": `${transition}s`,
+            "-o-transition": `${transition}s`,
+            transition: `${transition}s`,
+        };
+        styles[
+            `.premium-blocks-${block_id}:hover .premium-row__block_overlay `
+        ] = {
+            "background-color": backgroundOverlayHover["backgroundColor"],
+            "background-image": gradientValue(backgroundOverlayHover),
+            "background-repeat": backgroundOverlayHover["backgroundRepeat"],
+            "background-position": backgroundOverlayHover["backgroundPosition"],
+            "background-size": backgroundOverlayHover["backgroundSize"],
+            "background-attachment": backgroundOverlayHover["fixed"]
+                ? "fixed"
+                : "unset",
+            opacity: `${
+                backgroundOverlayHover ? hoverOverlayOpacity / 100 : 1
+            } !important`,
+            filter: `brightness( ${hoverOverlayFilter["bright"]}% ) contrast( ${hoverOverlayFilter["contrast"]}% ) saturate( ${hoverOverlayFilter["saturation"]}% ) blur( ${hoverOverlayFilter["blur"]}px ) hue-rotate( ${hoverOverlayFilter["hue"]}deg ) !important`,
+        };
+        let styleCss = "";
+
+        for (const selector in styles) {
+            const selectorStyles = styles[selector];
+            const filteredStyles = Object.keys(selectorStyles)
+                .map((property) => {
+                    const value = selectorStyles[property];
+                    const valueWithoutUnits = value
+                        ? value
+                              .toString()
+                              .replaceAll("px", "")
+                              .replaceAll(/\s/g, "")
+                        : "";
+                    if (value && !value.toString().includes("undefined")) {
+                        return `${property}: ${value};`;
+                    }
+                })
+                .filter((style) => !!style)
+                .join("\n");
+            styleCss += `${selector}{
+                    ${filteredStyles}
+                }\n`;
+        }
+        return styleCss;
+    };
     return (
-        <>
-            <CustomTag {...blockProps} key={blockId}>
+        <div {...blockProps}>
+            <style
+                dangerouslySetInnerHTML={{
+                    __html: loadStyles(),
+                }}
+            />
+
+            <CustomTag
+                className={classnames(
+                    "wp-block-premium-container",
+                    `premium-block-${block_id}`,
+                    `premium-blocks-${block_id}`
+                )}
+                style={{
+                    ...borderCss(border, props.deviceType),
+                    ...paddingCss(padding, props.deviceType),
+                    ...marginCss(margin, props.deviceType),
+                    ...gradientBackground(backgroundOptions),
+                    boxShadow: `${boxShadow.horizontal || 0}px ${
+                        boxShadow.vertical || 0
+                    }px ${boxShadow.blur || 0}px ${boxShadow.color} ${
+                        boxShadow.position
+                    }`,
+                    overflow: overflow,
+                }}
+            >
                 {Object.entries(shapeTop).length > 1 &&
                     shapeTop.openShape == 1 &&
                     shapeTop.style && (
@@ -147,7 +303,7 @@ const Render = (props) => {
                     />
                 </div>
             </CustomTag>
-        </>
+        </div>
     );
 };
 export default React.memo(Render);
