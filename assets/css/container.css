@@ -1807,7 +1807,10 @@
   display: flex;
   position: relative;
   z-index: 2;
-  width: 100%; }
+  box-sizing: border-box;
+  transition-property: box-shadow;
+  transition-duration: .2s;
+  transition-timing-function: ease; }
   .wp-block-premium-container .premium-row__block_overlay {
     top: 0;
     bottom: 0;
