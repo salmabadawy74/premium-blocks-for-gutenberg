@@ -31,12 +31,12 @@ const { __ } = wp.i18n;
 const { withSelect } = wp.data;
 const { PanelBody, SelectControl, TextControl, ToggleControl } = wp.components;
 
-const { InspectorControls, RichText, useBlockProps } = wp.blockEditor;
+const { InspectorControls, RichText, useBlockProps, useInnerBlocksProps } = wp.blockEditor;
 
 const { Fragment, useEffect } = wp.element;
 
 function Edit(props) {
-    const { setAttributes, className, clientId } = props;
+    const { setAttributes, className, clientId, attributes } = props;
 
     useEffect(() => {
         setAttributes({
@@ -89,7 +89,7 @@ function Edit(props) {
         iconMargin,
         titlePadding,
         titleMargin,
-    } = props.attributes;
+    } = attributes;
 
     let iconClass =
         "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
@@ -212,6 +212,83 @@ function Edit(props) {
         });
         setAttributes({ suffixStyles: newUpdate });
     };
+
+    const INNER_BLOCKS_TEMPLATE = [
+        [
+            "premium/icon",
+            {
+                selectedIcon: attributes?.selectedIcon,
+            },
+        ],
+        [
+            "premium/text",
+            {
+                text: attributes?.descText
+                    ? attributes.descText[0]
+                    : __(
+                        "Prefix",
+                        "premium-blocks-for-gutenberg"
+                    ),
+            },
+        ],
+        [
+            "premium/text",
+            {
+                text: attributes?.descText
+                    ? attributes.descText[0]
+                    : __(
+                        "500",
+                        "premium-blocks-for-gutenberg"
+                    ),
+            },
+        ],
+        [
+            "premium/text",
+            {
+                text: attributes?.descText
+                    ? attributes.descText[0]
+                    : __(
+                        "Suffix",
+                        "premium-blocks-for-gutenberg"
+                    ),
+            },
+        ],
+        [
+            "premium/heading",
+            {
+                title: attributes?.titleText
+                    ? attributes.titleText[0]
+                    : __("Premium Count Up", "premium-blocks-for-gutenberg"),
+                titleTag: attributes?.titleTag
+                    ? attributes.titleTag.toLowerCase()
+                    : "h4",
+                style: "default",
+            },
+        ]
+    ];
+
+    const innerBlocksProps = useInnerBlocksProps(
+        {
+            style: {
+                justifyContent: align?.[props.deviceType],
+                flexDirection: flexDir,
+                boxShadow: `${boxShadow?.horizontal}px ${boxShadow?.vertical}px ${boxShadow?.blur}px ${boxShadow?.color} ${boxShadow?.position}`,
+                ...borderCss(border, props.deviceType),
+                ...paddingCss(padding, props.deviceType),
+                ...gradientBackground(background),
+            }
+        },
+        {
+            template: INNER_BLOCKS_TEMPLATE,
+            templateLock: false,
+            allowedBlocks: [
+                "premium/icon",
+                "premium/text",
+                "premium/image",
+                "premium/lottie"
+            ],
+        }
+    );
 
     return (
         <Fragment>
@@ -855,16 +932,17 @@ function Edit(props) {
                         }
                     ),
                 })}
-                style={{
-                    justifyContent: align?.[props.deviceType],
-                    flexDirection: flexDir,
-                    boxShadow: `${boxShadow?.horizontal}px ${boxShadow?.vertical}px ${boxShadow?.blur}px ${boxShadow?.color} ${boxShadow?.position}`,
-                    ...borderCss(border, props.deviceType),
-                    ...paddingCss(padding, props.deviceType),
-                    ...gradientBackground(background),
-                }}
+            // style={{
+            //     justifyContent: align?.[props.deviceType],
+            //     flexDirection: flexDir,
+            //     boxShadow: `${boxShadow?.horizontal}px ${boxShadow?.vertical}px ${boxShadow?.blur}px ${boxShadow?.color} ${boxShadow?.position}`,
+            //     ...borderCss(border, props.deviceType),
+            //     ...paddingCss(padding, props.deviceType),
+            //     ...gradientBackground(background),
+            // }}
             >
-                {iconCheck && (
+                <div {...innerBlocksProps} />
+                {/* {iconCheck && (
                     <div
                         className={`premium-countup__icon_wrap`}
                         style={{
@@ -1020,7 +1098,7 @@ function Edit(props) {
                             }}
                             tagName="h4"
                         />
-                    )}
+                    )} */}
                 {loadCounterGoogleFonts}
                 {loadTitleGoogleFonts}
                 {loadSuffixGoogleFonts}
