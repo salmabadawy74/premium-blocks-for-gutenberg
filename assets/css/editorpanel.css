@@ -275,7 +275,7 @@
   transition-property: background, color, opacity, -webkit-box-shadow;
   -o-transition-property: background, color, box-shadow, opacity;
   transition-property: background, color, box-shadow, opacity;
-  transition-property: background, color, box-shadow, opacity, -webkit-box-shadow;
+  transition-property: background, color, box-shadow, opacity, -webkit-box-shadow;
   -webkit-transition-duration: 0.3s;
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
@@ -324,7 +324,7 @@
   transition-property: background, color, opacity, -webkit-box-shadow;
   -o-transition-property: background, color, box-shadow, opacity;
   transition-property: background, color, box-shadow, opacity;
-  transition-property: background, color, box-shadow, opacity, -webkit-box-shadow;
+  transition-property: background, color, box-shadow, opacity, -webkit-box-shadow;
   -webkit-transition-duration: 0.3s;
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s; }
@@ -419,7 +419,7 @@
   margin-left: 10px; }
 
 .rfipbtn {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 14px;
   line-height: 1.71429;
   vertical-align: baseline;
@@ -458,7 +458,7 @@
     font-size: 14px; }
 
 .rfipdropdown {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 14px;
   line-height: 1.71429;
   vertical-align: baseline;
@@ -3298,7 +3298,7 @@ i.fipicon-angle-left:before {
     border: 1px solid #ddd !important;
     border-radius: 3px !important;
     box-shadow: 0 0 0 0 transparent;
-    transition: box-shadow 0.1s linear, background 0.1s linear, border-radius 0.1s linear, border-color 0.1s linear; }
+    transition: box-shadow 0.1s linear, background 0.1s linear, border-radius 0.1s linear, border-color 0.1s linear; }
 
 .premium-color-popover-container .premium-advanced-color-container {
   display: flex;
