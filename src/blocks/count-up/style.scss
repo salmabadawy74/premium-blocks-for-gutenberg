@@ -1,9 +1,9 @@
 .premium-countup__wrap {
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flex;
-    display: flex;
+    // display: -ms-flexbox;
+    // display: -webkit-flex;
+    // display: -moz-flex;
+    // display: -ms-flex;
+    // display: flex;
     align-items: baseline;
     align-items: center;
     justify-content: center;
@@ -58,6 +58,10 @@
         color: #b94a48;
         background-color: #f2dede;
         border-color: #eed3d7;
+        text-align: center;
+    }
+
+    .premium-heading{
         text-align: center;
     }
 }

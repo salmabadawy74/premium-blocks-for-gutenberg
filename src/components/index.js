@@ -28,3 +28,4 @@ export { default as PremiumLowerQuote } from "./testimonials/lower-quote";
 export { default as PremiumUpperQuote } from "./testimonials/upper-quote";
 export { default as PBGPresets } from "./Presets";
 export { default as PremiumUploadSVG } from "./premium-upload-svg";
+export { default as PremiumVariation } from "./premium-variation";

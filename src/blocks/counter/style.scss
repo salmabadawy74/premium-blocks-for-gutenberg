@@ -1,0 +1,11 @@
+.premium-counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+        align-self: center;
+        &:nth-child(-n + 3) {
+            line-height: 1em;
+        }
+    }
+}

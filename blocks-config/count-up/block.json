@@ -5,7 +5,12 @@
     "name": "premium/countup",
     "title": "CountUp",
     "description": "Show off your facts and figures in an elegant way using Premium CountUp Block.",
-    "keywords": ["number", "count down", "count up", "counter"],
+    "keywords": [
+        "number",
+        "count down",
+        "count up",
+        "counter"
+    ],
     "category": "premium-blocks",
     "attributes": {
         "blockId": {
@@ -565,6 +570,14 @@
                 },
                 "unit": "px"
             }
+        },
+        "variation": {
+            "type": "object",
+            "default": {}
+        },
+        "showVariation": {
+            "type": "boolean",
+            "default": true
         }
     },
     "editorScript": "pbg-blocks-js",

@@ -3,44 +3,22 @@ import {
     gradientBackground,
     filterJsCss,
 } from '@pbg/helpers';
-const { RichText, useBlockProps } = wp.blockEditor;
+const { useBlockProps, InnerBlocks } = wp.blockEditor;
 
 const save = props => {
     const { className } = props;
     const {
         blockId,
-        increment,
-        time,
-        delay,
         flexDir,
-        prefix,
-        suffix,
-        icon,
-        imageURL,
-        iconType,
-        iconCheck,
-        iconSize,
-        iconColor,
-        titleCheck,
-        titleTxt,
-        faIcon,
         hideDesktop,
         hideTablet,
         hideMobile,
-        numberStyles,
-        titleStyles,
-        suffixStyles,
-        prefixStyles,
-        numberTypography,
-        prefixTypography,
-        suffixTypography,
-        titleTypography,
         boxShadow,
         border,
-        background
+        background,
+        variation,
+        showVariation
     } = props.attributes;
-
-    let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
 
     return (
         <div
@@ -63,111 +41,9 @@ const save = props => {
                 ...gradientBackground(background)
             })}
         >
-            {iconCheck && (
-                <div
-                    className={`premium-countup__icon_wrap`}
-                >
-                    {"icon" === icon && (
-                        <i
-                            className={`premium-countup__icon ${iconClass}`}
-                            style={{
-                                fontSize: iconSize + "px",
-                                color: iconColor
-                            }}
-                        />
-                    )}
-                    {"img" === icon && imageURL && (
-                        <img
-                            src={imageURL}
-                            style={filterJsCss({
-                                width: iconSize + "px",
-                                height: iconSize + "px"
-                            })}
-                        />
-                    )}
-                </div>
-            )}
-            <div
-                className={`premium-countup__info`}
-            >
-                <div className={`premium-countup__desc`}>
-                    {prefix && (
-                        <RichText.Content
-                            className={`premium-countup__prefix`}
-                            tagName="p"
-                            value={prefixStyles[0].prefixTxt}
-                            style={filterJsCss({
-                                color: prefixStyles[0].prefixColor,
-                                fontStyle: prefixTypography?.fontStyle,
-                                fontFamily: prefixTypography?.fontFamily,
-                                fontWeight: prefixTypography?.fontWeight,
-                                textDecoration: prefixTypography?.textDecoration,
-                                textTransform: prefixTypography?.textTransform,
-                            })}
-                        />
-                    )}
-                    <RichText.Content
-                        className={`premium-countup__increment`}
-                        value={`${increment}`}
-                        tagName="p"
-                        data-interval={time}
-                        data-delay={delay}
-                        style={filterJsCss({
-                            color: numberStyles[0].numberColor,
-                            fontStyle: numberTypography?.fontStyle,
-                            fontFamily: numberTypography?.fontFamily,
-                            fontWeight: numberTypography?.fontWeight,
-                            textDecoration: numberTypography?.textDecoration,
-                            textTransform: numberTypography?.textTransform,
-                        })}
-                    />
-                    {suffix && (
-                        <RichText.Content
-                            className={`premium-countup__suffix`}
-                            value={suffixStyles[0].suffixTxt}
-                            tagName="p"
-                            style={filterJsCss({
-                                color: suffixStyles[0].suffixColor,
-                                fontStyle: suffixTypography?.fontStyle,
-                                fontFamily: suffixTypography?.fontFamily,
-                                fontWeight: suffixTypography?.fontWeight,
-                                textDecoration: suffixTypography?.textDecoration,
-                                textTransform: suffixTypography?.textTransform,
-                            })}
-                        />
-                    )}
-                </div>
-                {titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && (
-                    <RichText.Content
-                        className={`premium-countup__title`}
-                        value={titleTxt}
-                        tagName="h4"
-                        style={filterJsCss({
-                            color: titleStyles[0].titleColor,
-                            fontStyle: titleTypography?.fontStyle,
-                            fontFamily: titleTypography?.fontFamily,
-                            fontWeight: titleTypography?.fontWeight,
-                            textDecoration: titleTypography?.textDecoration,
-                            textTransform: titleTypography?.textTransform,
-                        })}
-                    />
-                )}
-            </div>
-            {titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && (
-                <RichText.Content
-                    className={`premium-countup__title`}
-                    tagName="h4"
-                    value={titleTxt}
-                    style={filterJsCss({
-                        color: titleStyles[0].titleColor,
-                        fontStyle: titleTypography?.fontStyle,
-                        fontFamily: titleTypography?.fontFamily,
-                        fontWeight: titleTypography?.fontWeight,
-                        textDecoration: titleTypography?.textDecoration,
-                        textTransform: titleTypography?.textTransform,
-                    })}
-                />
-            )}
+            {variation != {} && !showVariation &&
+                <InnerBlocks.Content />
+            }
         </div>
     );
 };

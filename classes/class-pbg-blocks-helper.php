@@ -153,6 +153,9 @@ class PBG_Blocks_Helper
 				if ('content-switcher' === $slug) {
 					Pbg_Style_Generator::pbg_add_css('assets/css/minified/switcher-child.min.css');
 				}
+				if ('count-up' === $slug) {
+					Pbg_Style_Generator::pbg_add_css('assets/css/minified/counter.min.css');
+				}
 
 				Pbg_Style_Generator::pbg_add_css("assets/css/minified/{$slug}.min.css");
 			}
@@ -373,6 +376,9 @@ class PBG_Blocks_Helper
 				}
 			} elseif ($slug === 'content-switcher') {
 				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/switcher-child.php';
+			}
+			elseif ($slug === 'count-up') {
+				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/counter.php';
 			}
 		}
 	}
