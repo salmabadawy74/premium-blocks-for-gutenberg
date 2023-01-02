@@ -1,16 +1,26 @@
 const { SelectControl } = wp.components;
 const { __ } = wp.i18n;
 const { useState } = wp.element;
-import React, { useLayoutEffect } from "react";
+import React from "react";
 import classnames from "classnames";
 
 const PBGPresets = (props) => {
-    const { setAttributes, presets, presetInputType, label, className } = props;
+    const {
+        setAttributes,
+        presets,
+        presetInputType,
+        label,
+        className,
+        value,
+    } = props;
 
-    const [selectedPresetState, setPreset] = useState("");
+    const [selectedPresetState, setPreset] = useState(value.value);
 
     const updatePresets = (selectedPreset) => {
         setPreset(selectedPreset);
+        setAttributes({ [value.label]: selectedPreset });
+        console.log(selectedPreset, "valu", value, "PPPPPP");
+
         if (presets) {
             presets.map((preset) => {
                 if (preset.value) {

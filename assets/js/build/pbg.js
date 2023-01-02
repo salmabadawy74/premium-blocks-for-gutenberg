@@ -1773,12 +1773,17 @@ const PBGPresets = props => {
     presets,
     presetInputType,
     label,
-    className
+    className,
+    value
   } = props;
-  const [selectedPresetState, setPreset] = useState("");
+  const [selectedPresetState, setPreset] = useState(value.value);
 
   const updatePresets = selectedPreset => {
     setPreset(selectedPreset);
+    setAttributes({
+      [value.label]: selectedPreset
+    });
+    console.log(selectedPreset, "valu", value, "PPPPPP");
 
     if (presets) {
       presets.map(preset => {

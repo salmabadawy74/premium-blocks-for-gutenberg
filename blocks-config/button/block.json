@@ -286,6 +286,10 @@
         "backgroundPresets":{
             "type":"string",
             "default":""
+        },
+        "btnPreset":{
+            "type":"string",
+            "default":""
         }
 
     },

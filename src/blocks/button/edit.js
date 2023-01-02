@@ -77,6 +77,7 @@ function Edit(props) {
         iconShadow,
         backgroundOptions,
         backgroundPresets,
+        btnPreset,
     } = props.attributes;
 
     const SIZE = [
@@ -264,6 +265,10 @@ function Edit(props) {
                             <PBGPresets
                                 setAttributes={setAttributes}
                                 presets={buttonsPresets}
+                                value={{
+                                    label: "btnPreset",
+                                    value: btnPreset,
+                                }}
                                 presetInputType="radioImage"
                             />
                             <SelectControl
