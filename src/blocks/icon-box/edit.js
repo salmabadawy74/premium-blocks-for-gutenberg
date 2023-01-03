@@ -23,16 +23,17 @@ import { Variations } from './variations'
 
 const { __ } = wp.i18n;
 const { PanelBody } = wp.components;
-const { Fragment, useEffect } = wp.element;
+const { Fragment, useEffect, useState } = wp.element;
 const { withSelect } = wp.data;
 const {
     InspectorControls,
     useInnerBlocksProps,
-    useBlockProps,
+    useBlockProps
 } = wp.blockEditor;
 
 function Edit(props) {
-    const { setAttributes, className, clientId } = props;
+    const { setAttributes, className, clientId, attributes } = props;
+    const [openModal, setOpenModal] = useState({})
 
     useEffect(() => {
         setAttributes({
@@ -40,8 +41,6 @@ function Edit(props) {
         });
         setAttributes({ classMigrate: true });
     }, []);
-
-    const { attributes } = props;
 
     const {
         blockId,
@@ -56,47 +55,7 @@ function Edit(props) {
         containerHoverShadow,
         variation,
         showVariation
-    } = props.attributes;
-
-    const INNER_BLOCKS_TEMPLATE = [
-        [
-            "premium/icon",
-            {
-                selectedIcon: attributes?.selectedIcon,
-            },
-        ],
-        [
-            "premium/heading",
-            {
-                title: attributes?.titleText
-                    ? attributes.titleText[0]
-                    : __("Title", "premium-blocks-for-gutenberg"),
-                titleTag: attributes?.titleTag
-                    ? attributes.titleTag.toLowerCase()
-                    : "h2",
-                style: "default",
-            },
-        ],
-        [
-            "premium/text",
-            {
-                text: attributes?.descText
-                    ? attributes.descText[0]
-                    : __(
-                        "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.",
-                        "premium-blocks-for-gutenberg"
-                    ),
-            },
-        ],
-        [
-            "premium/button",
-            {
-                btnText: attributes?.btnText
-                    ? attributes.btnText[0]
-                    : __("Click Here", "premium-blocks-for-gutenberg"),
-            },
-        ],
-    ];
+    } = attributes;
 
     const loadStyles = () => {
         const styles = {};
@@ -132,131 +91,148 @@ function Edit(props) {
     );
 
     const onSelectVariations = (v) => {
+        console.log(v)
         setAttributes({
             variation: v,
             showVariation: false
         });
+        setOpenModal(v)
     }
 
     return (
         <Fragment>
             <InspectorControls key={"inspector"}>
-                <InspectorTabs tabs={["style", "advance"]}>
-                    <InspectorTab key={"style"}>
-                        <PanelBody
-                            title={__(
-                                "Container",
-                                "premium-blocks-for-gutenberg"
-                            )}
-                            className="premium-panel-body"
-                            initialOpen={true}
-                        >
-                            <PremiumBackgroundControl
-                                value={containerBackground}
-                                onChange={(value) =>
-                                    setAttributes({
-                                        containerBackground: value,
-                                    })
-                                }
-                            />
-                            <InsideTabs>
-                                <InsideTab
-                                    tabTitle={__(
-                                        "Normal",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                >
-                                    <PremiumShadow
-                                        value={containerShadow}
-                                        onChange={(value) =>
-                                            setAttributes({
-                                                containerShadow: value,
-                                            })
-                                        }
-                                        boxShadow={true}
-                                    />
-                                </InsideTab>
-                                <InsideTab
-                                    tabTitle={__(
-                                        "Hover",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                >
-                                    <PremiumShadow
-                                        label={__(
-                                            "Hover Box Shadow",
+                {!showVariation &&
+                    <InspectorTabs tabs={["layout", "style", "advance"]}>
+                        <InspectorTab key={"layout"}>
+                            <PanelBody
+                                title={__("Icon box", "premium-blocks-for-gutenberg")}
+                                className="premium-panel-body"
+                                initialOpen={true}
+                            >
+                                <PremiumVariation
+                                    setAttributes={setAttributes}
+                                    variations={Variations}
+                                    onSelect={onSelectVariations}
+                                />
+                            </PanelBody>
+                        </InspectorTab>
+                        <InspectorTab key={"style"}>
+                            <PanelBody
+                                title={__(
+                                    "Container",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                className="premium-panel-body"
+                                initialOpen={true}
+                            >
+                                <PremiumBackgroundControl
+                                    value={containerBackground}
+                                    onChange={(value) =>
+                                        setAttributes({
+                                            containerBackground: value,
+                                        })
+                                    }
+                                />
+                                <InsideTabs>
+                                    <InsideTab
+                                        tabTitle={__(
+                                            "Normal",
                                             "premium-blocks-for-gutenberg"
                                         )}
-                                        value={containerHoverShadow}
-                                        onChange={(value) =>
-                                            setAttributes({
-                                                containerHoverShadow: value,
-                                            })
-                                        }
-                                        boxShadow={true}
-                                    />
-                                </InsideTab>
-                            </InsideTabs>
-                            <PremiumBorder
-                                label={__(
-                                    "Border",
-                                    "premium-blocks-for-gutenberg"
-                                )}
-                                value={containerBorder}
-                                onChange={(value) =>
-                                    setAttributes({
-                                        containerBorder: value,
-                                    })
+                                    >
+                                        <PremiumShadow
+                                            value={containerShadow}
+                                            onChange={(value) =>
+                                                setAttributes({
+                                                    containerShadow: value,
+                                                })
+                                            }
+                                            boxShadow={true}
+                                        />
+                                    </InsideTab>
+                                    <InsideTab
+                                        tabTitle={__(
+                                            "Hover",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                    >
+                                        <PremiumShadow
+                                            label={__(
+                                                "Hover Box Shadow",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                            value={containerHoverShadow}
+                                            onChange={(value) =>
+                                                setAttributes({
+                                                    containerHoverShadow: value,
+                                                })
+                                            }
+                                            boxShadow={true}
+                                        />
+                                    </InsideTab>
+                                </InsideTabs>
+                                <PremiumBorder
+                                    label={__(
+                                        "Border",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                    value={containerBorder}
+                                    onChange={(value) =>
+                                        setAttributes({
+                                            containerBorder: value,
+                                        })
+                                    }
+                                />
+                                <hr />
+                                <SpacingControl
+                                    label={__(
+                                        "Margin (PX)",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                    value={containerMargin}
+                                    onChange={(value) =>
+                                        setAttributes({
+                                            containerMargin: value,
+                                        })
+                                    }
+                                    showUnits={false}
+                                    responsive={true}
+                                />
+                                <SpacingControl
+                                    label={__(
+                                        "Padding",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                    value={containerPadding}
+                                    onChange={(value) =>
+                                        setAttributes({
+                                            containerPadding: value,
+                                        })
+                                    }
+                                    showUnits={true}
+                                    responsive={true}
+                                />
+                            </PanelBody>
+                        </InspectorTab>
+                        <InspectorTab key={"advance"}>
+                            <PremiumResponsiveTabs
+                                Desktop={hideDesktop}
+                                Tablet={hideTablet}
+                                Mobile={hideMobile}
+                                onChangeDesktop={(value) =>
+                                    setAttributes({ hideDesktop: value })
+                                }
+                                onChangeTablet={(value) =>
+                                    setAttributes({ hideTablet: value })
+                                }
+                                onChangeMobile={(value) =>
+                                    setAttributes({ hideMobile: value })
                                 }
                             />
-                            <hr />
-                            <SpacingControl
-                                label={__(
-                                    "Margin (PX)",
-                                    "premium-blocks-for-gutenberg"
-                                )}
-                                value={containerMargin}
-                                onChange={(value) =>
-                                    setAttributes({
-                                        containerMargin: value,
-                                    })
-                                }
-                                showUnits={false}
-                                responsive={true}
-                            />
-                            <SpacingControl
-                                label={__(
-                                    "Padding",
-                                    "premium-blocks-for-gutenberg"
-                                )}
-                                value={containerPadding}
-                                onChange={(value) =>
-                                    setAttributes({
-                                        containerPadding: value,
-                                    })
-                                }
-                                showUnits={true}
-                                responsive={true}
-                            />
-                        </PanelBody>
-                    </InspectorTab>
-                    <InspectorTab key={"advance"}>
-                        <PremiumResponsiveTabs
-                            Desktop={hideDesktop}
-                            Tablet={hideTablet}
-                            Mobile={hideMobile}
-                            onChangeDesktop={(value) =>
-                                setAttributes({ hideDesktop: value })
-                            }
-                            onChangeTablet={(value) =>
-                                setAttributes({ hideTablet: value })
-                            }
-                            onChangeMobile={(value) =>
-                                setAttributes({ hideMobile: value })
-                            }
-                        />
-                    </InspectorTab>
-                </InspectorTabs>
+                        </InspectorTab>
+                    </InspectorTabs>
+                }
             </InspectorControls>
             <div
                 {...useBlockProps({
@@ -273,7 +249,7 @@ function Edit(props) {
                     onSelect={onSelectVariations}
                 />
                 }
-                {!showVariation && <div {...innerBlocksProps} />}
+                {!showVariation && variation != {} && <div {...innerBlocksProps} />}
                 <style>{loadStyles()}</style>
             </div>
         </Fragment>

@@ -9805,7 +9805,6 @@ const PremiumVariation = props => {
     onSelect,
     allowSkip
   } = props;
-  console.log(variations);
   const classes = classnames__WEBPACK_IMPORTED_MODULE_1___default()('block-editor-block-variation-picker', {
     'has-many-variations': variations.length > 4
   });

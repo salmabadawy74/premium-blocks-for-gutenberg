@@ -36187,7 +36187,8 @@ const {
 } = wp.components;
 const {
   Fragment,
-  useEffect
+  useEffect,
+  useState
 } = wp.element;
 const {
   withSelect
@@ -36202,8 +36203,10 @@ function Edit(props) {
   const {
     setAttributes,
     className,
-    clientId
+    clientId,
+    attributes
   } = props;
+  const [openModal, setOpenModal] = useState({});
   useEffect(() => {
     setAttributes({
       blockId: "premium-icon-box-" + (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.generateBlockId)(clientId)
@@ -36212,9 +36215,6 @@ function Edit(props) {
       classMigrate: true
     });
   }, []);
-  const {
-    attributes
-  } = props;
   const {
     blockId,
     hideDesktop,
@@ -36228,18 +36228,7 @@ function Edit(props) {
     containerHoverShadow,
     variation,
     showVariation
-  } = props.attributes;
-  const INNER_BLOCKS_TEMPLATE = [["premium/icon", {
-    selectedIcon: attributes === null || attributes === void 0 ? void 0 : attributes.selectedIcon
-  }], ["premium/heading", {
-    title: attributes !== null && attributes !== void 0 && attributes.titleText ? attributes.titleText[0] : __("Title", "premium-blocks-for-gutenberg"),
-    titleTag: attributes !== null && attributes !== void 0 && attributes.titleTag ? attributes.titleTag.toLowerCase() : "h2",
-    style: "default"
-  }], ["premium/text", {
-    text: attributes !== null && attributes !== void 0 && attributes.descText ? attributes.descText[0] : __("Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.", "premium-blocks-for-gutenberg")
-  }], ["premium/button", {
-    btnText: attributes !== null && attributes !== void 0 && attributes.btnText ? attributes.btnText[0] : __("Click Here", "premium-blocks-for-gutenberg")
-  }]];
+  } = attributes;
 
   const loadStyles = () => {
     const styles = {};
@@ -36265,17 +36254,29 @@ function Edit(props) {
   });
 
   const onSelectVariations = v => {
+    console.log(v);
     setAttributes({
       variation: v,
       showVariation: false
     });
+    setOpenModal(v);
   };
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, {
     key: "inspector"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.InspectorTabs, {
-    tabs: ["style", "advance"]
+  }, !showVariation && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.InspectorTabs, {
+    tabs: ["layout", "style", "advance"]
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.InspectorTab, {
+    key: "layout"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+    title: __("Icon box", "premium-blocks-for-gutenberg"),
+    className: "premium-panel-body",
+    initialOpen: true
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.PremiumVariation, {
+    setAttributes: setAttributes,
+    variations: _variations__WEBPACK_IMPORTED_MODULE_4__.Variations,
+    onSelect: onSelectVariations
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.InspectorTab, {
     key: "style"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
     title: __("Container", "premium-blocks-for-gutenberg"),
@@ -36350,7 +36351,7 @@ function Edit(props) {
     setAttributes: setAttributes,
     variations: _variations__WEBPACK_IMPORTED_MODULE_4__.Variations,
     onSelect: onSelectVariations
-  }), !showVariation && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", innerBlocksProps), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, loadStyles())));
+  }), !showVariation && variation != {} && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", innerBlocksProps), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, loadStyles())));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (withSelect(select => {
@@ -36362,6 +36363,75 @@ function Edit(props) {
     deviceType: deviceType
   };
 })(Edit));
+
+/***/ }),
+
+/***/ "./src/blocks/icon-box/icons.js":
+/*!**************************************!*\
+  !*** ./src/blocks/icon-box/icons.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/**
+ * Custom icons
+ */
+const Icons = {
+  'default': //Done
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    id: "Icon_Box_Vertical",
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "39.82",
+    height: "30.87",
+    viewBox: "0 0 39.82 30.87"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("defs", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, `.cls-1{fill:#828282;}`)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("rect", {
+    class: "cls-1",
+    x: "8.82",
+    y: "22.87",
+    width: "22",
+    height: "2"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("rect", {
+    class: "cls-1",
+    x: "11.82",
+    y: "28.87",
+    width: "16",
+    height: "2"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "m25.61,18.35l-5.96-3.14-5.96,3.14,1.14-6.64-4.82-4.7,6.67-.97,2.98-6.04,2.98,6.04,6.67.97-4.82,4.7,1.14,6.64Zm-11.31-9.95l2.68,2.61-.63,3.68,3.31-1.74,3.31,1.74-.63-3.68,2.68-2.61-3.7-.54-1.65-3.35-1.65,3.35-3.7.54Z"
+  })),
+  'horizontal': (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    id: "Icon_Box_Horizontal",
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "39.82",
+    height: "30.87",
+    viewBox: "0 0 39.82 30.87"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("defs", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, `.cls-1{fill:#828282;}`)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("rect", {
+    class: "cls-1",
+    x: "22.82",
+    y: "11.87",
+    width: "17",
+    height: "2"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("rect", {
+    class: "cls-1",
+    x: "22.82",
+    y: "17.87",
+    width: "12",
+    height: "2"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    class: "cls-1",
+    d: "m15.61,24.35l-5.96-3.14-5.96,3.14,1.14-6.64L0,13.01l6.67-.97,2.98-6.04,2.98,6.04,6.67.97-4.82,4.7,1.14,6.64ZM4.3,14.41l2.68,2.61-.63,3.68,3.31-1.74,3.31,1.74-.63-3.68,2.68-2.61-3.7-.54-1.65-3.35-1.65,3.35-3.7.54Z"
+  }))
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Icons);
 
 /***/ }),
 
@@ -36486,14 +36556,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Variations": () => (/* binding */ Variations),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _icons__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./icons */ "./src/blocks/icon-box/icons.js");
 const {
   __
 } = wp.i18n;
+
 const Variations = [{
   name: 'default',
   description: __('Default'),
   isDefault: true,
   pickerTitle: __('Default'),
+  icon: _icons__WEBPACK_IMPORTED_MODULE_0__["default"]["default"],
   innerBlocks: [['premium/icon', {}], ['premium/heading', {
     title: __("Title", "premium-blocks-for-gutenberg"),
     titleTag: "h2",
@@ -36508,6 +36581,7 @@ const Variations = [{
   name: 'horizontal',
   description: __('Horizontal'),
   pickerTitle: __('Horizontal'),
+  icon: _icons__WEBPACK_IMPORTED_MODULE_0__["default"].horizontal,
   innerBlocks: [['premium/container', {
     variationSelected: true,
     direction: {

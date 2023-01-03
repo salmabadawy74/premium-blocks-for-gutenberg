@@ -1,5 +1,6 @@
 
 const { __ } = wp.i18n;
+import Icons from './icons'
 
 export const Variations =
     [
@@ -8,6 +9,7 @@ export const Variations =
             description: __('Default'),
             isDefault: true,
             pickerTitle: __('Default'),
+            icon: Icons.default,
             innerBlocks: [
                 ['premium/icon', {
 
@@ -33,6 +35,7 @@ export const Variations =
             name: 'horizontal',
             description: __('Horizontal'),
             pickerTitle: __('Horizontal'),
+            icon: Icons.horizontal,
             innerBlocks: [
                 ['premium/container', {
                     variationSelected: true,

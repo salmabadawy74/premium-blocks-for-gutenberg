@@ -16,7 +16,6 @@ const PremiumVariation = props => {
         onSelect,
         allowSkip,
     } = props
-    console.log(variations)
 
     const classes = classnames('block-editor-block-variation-picker', {
         'has-many-variations': variations.length > 4,
