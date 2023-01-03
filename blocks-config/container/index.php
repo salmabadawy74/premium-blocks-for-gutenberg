@@ -66,7 +66,9 @@ function get_premium_container_css_style( $attr, $unique_id ) {
 	if ( isset( $attr['alignContent'] ) ) {
 		$css->add_property( 'align-content', $css->get_responsive_css( $attr['alignContent'], 'Desktop' ) );
 	}
+	$css->add_property( 'row-gap', isset( $attr['rowGutter']['Desktop'] ) ? $attr['rowGutter']['Desktop'] . $attr['rowGutter']['unit'] : '20px' );
 
+	$css->add_property( 'column-gap', isset( $attr['columnGutter']['Desktop'] ) ? $attr['columnGutter']['Desktop'] . $attr['columnGutter']['unit'] : '20px' );
 	if ( isset( $attr['colWidth'] ) ) {
 		$css->set_selector( '.wp-block-premium-container.premium-is-root-container .premium-block-' . $unique_id );
 		$css->add_property( 'max-width', $css->render_range( $attr['colWidth'], 'Desktop' ) );
@@ -145,6 +147,8 @@ function get_premium_container_css_style( $attr, $unique_id ) {
 	if ( isset( $attr['alignContent'] ) ) {
 		$css->add_property( 'align-content', $css->get_responsive_css( $attr['alignContent'], 'Tablet' ) );
 	}
+    $css->add_property( 'row-gap', isset( $attr['rowGutter']['Tablet'] ) ? $attr['rowGutter']['Tablet'] . $attr['rowGutter']['unit'] : '20px' );
+	$css->add_property( 'column-gap', isset( $attr['rowGutter']['Tablet'] ) ? $attr['columnGutter']['Tablet'] . $attr['columnGutter']['unit'] : '20px' );
 
 	if ( isset( $attr['colWidth'] ) ) {
 		$css->set_selector( '.wp-block-premium-container.premium-is-root-container .premium-block-' . $unique_id );
@@ -226,6 +230,9 @@ function get_premium_container_css_style( $attr, $unique_id ) {
 	if ( isset( $attr['alignContent'] ) ) {
 		$css->add_property( 'align-content', $css->get_responsive_css( $attr['alignContent'], 'Mobile' ) );
 	}
+    $css->add_property( 'row-gap', isset( $attr['rowGutter']['Mobile'] ) ? $attr['rowGutter']['Mobile'] . $attr['rowGutter']['unit'] : '20px' );
+	$css->add_property( 'column-gap', isset( $attr['rowGutter']['Mobile'] ) ? $attr['columnGutter']['Mobile'] . $attr['columnGutter']['unit'] : '20px' );
+
 	
 	if ( isset( $attr['colWidth'] ) ) {
 		$css->set_selector( '.wp-block-premium-container.premium-is-root-container .premium-block-' . $unique_id );

@@ -87,6 +87,9 @@ const Render = (props) => {
             "wp-block-premium-container",
             `premium-block-${block_id}`,
             `premium-blocks-${block_id}`,
+            isBlockRootParent
+                ? `${align} premium-is-root-container`
+                : "",
             {
                 " premium-desktop-hidden": hideDesktop,
                 " premium-tablet-hidden": hideTablet,
@@ -99,9 +102,12 @@ const Render = (props) => {
     const loadStyles = () => {
         const styles = {};
         const containerFullWidth = "100vw";
-        styles[
-            `.editor-styles-wrapper #block-${clientId}  > .wp-block-premium-container > .premium-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout`
-        ] = {
+        let containerFlexSelector = ` .editor-styles-wrapper #block-${clientId}.wp-block-premium-container > .premium-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout`;
+        if (!isBlockRootParent) {
+            containerFlexSelector = ` .editor-styles-wrapper #block-${clientId}.wp-block-premium-container > .premium-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout`;
+        }
+        console.log(isBlockRootParent, containerFlexSelector, "Styles")
+        styles[containerFlexSelector] = {
             "min-height": `${minHeight[props.deviceType]}${minHeight["unit"]}`,
             "flex-direction": direction[props.deviceType],
             "align-items": alignItems[props.deviceType],
@@ -112,25 +118,15 @@ const Render = (props) => {
             "column-gap": `${columnGutter[props.deviceType]}${columnGutter["unit"]
                 }`,
         };
-        styles[
-            ` .editor-styles-wrapper #block-${clientId}.block-editor-block-list__block`
-        ] = {
-            "min-height": `${minHeight[props.deviceType]}${minHeight["unit"]}`,
-            "flex-direction": direction[props.deviceType],
-            "align-items": alignItems[props.deviceType],
-            "justify-content": justifyItems[props.deviceType],
-            "flex-wrap": wrapItems[props.deviceType],
-            "align-content": alignContent[props.deviceType],
-        };
 
         styles[
-            ` .editor-styles-wrapper .is-root-container > #block-${clientId}`
+            `.is-root-container > .block-editor-block-list__block .block-editor-block-list__block#block-${clientId} `
         ] = {
             "max-width": `${colWidth[props.deviceType]}${colWidth["unit"]}`,
             width: `${colWidth[props.deviceType]}${colWidth["unit"]}`,
         };
         styles[
-            `.editor-styles-wrapper #block-${clientId}  .premium-top-shape svg`
+            `.is-root-container  #block-${clientId}  .premium-top-shape svg`
         ] = {
             width: `${shapeTop.width[props.deviceType]}${shapeTop.width["unit"]
                 }`,
@@ -140,7 +136,7 @@ const Render = (props) => {
         };
 
         styles[
-            `.editor-styles-wrapper #block-${clientId} .premium-bottom-shape svg`
+            `.is-root-container  #block-${clientId} .premium-bottom-shape svg`
         ] = {
             width: `${shapeBottom.width[props.deviceType]}${shapeBottom.width["unit"]
                 }`,
@@ -151,7 +147,7 @@ const Render = (props) => {
 
         if ("boxed" === innerWidthType) {
             styles[
-                `.editor-styles-wrapper  .is-root-container > .wp-block-premium-container.premium-block-${block_id} > .premium-container-inner-blocks-wrap`
+                `.is-root-container   .is-root-container > .wp-block-premium-container.premium-block-${block_id} > .premium-container-inner-blocks-wrap`
             ] = {
                 "--inner-content-custom-width": `min(${containerFullWidth},${innerWidth}px)`,
                 "max-width": "var(--inner-content-custom-width)",
