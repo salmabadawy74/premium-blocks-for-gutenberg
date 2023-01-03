@@ -57,7 +57,6 @@ const Render = (props) => {
     } = attributes;
 
     const moverDirection = "row" === direction ? "horizontal" : "vertical";
-    console.log("welcome");
     const topShapeClasses = classnames(
         "premium-shape-divider",
         "premium-top-shape",
@@ -79,32 +78,22 @@ const Render = (props) => {
     const hasChildBlocks = getBlockOrder(clientId).length > 0;
 
     const CustomTag = `${containerTag}`;
-    // const customTagLinkAttributes = {};
-    // if (htmlTag === "a") {
-    //     customTagLinkAttributes.rel = "noopener";
-    //     customTagLinkAttributes.onClick = (e) => e.preventDefault();
-    //     if (htmlTagLink?.url) {
-    //         customTagLinkAttributes.href = htmlTagLink?.url;
-    //     }
-    //     if (htmlTagLink?.opensInNewTab) {
-    //         customTagLinkAttributes.target = "_blank";
-    //     }
-    //     if (htmlTagLink?.noFollow) {
-    //         customTagLinkAttributes.rel = "nofollow noopener";
-    //     }
-    // }
+
 
     const hasChildren =
         0 !== select("core/block-editor").getBlocks(clientId).length;
     const blockProps = useBlockProps({
         className: classnames(
-            className,
-            `block-editor-block-list__block wp-block`,
+            "wp-block-premium-container",
+            `premium-block-${block_id}`,
+            `premium-blocks-${block_id}`,
             {
                 " premium-desktop-hidden": hideDesktop,
                 " premium-tablet-hidden": hideTablet,
                 " premium-mobile-hidden": hideMobile,
             }
+
+
         ),
     });
     const loadStyles = () => {
@@ -120,9 +109,8 @@ const Render = (props) => {
             "flex-wrap": wrapItems[props.deviceType],
             "align-content": alignContent[props.deviceType],
             "row-gap": `${rowGutter[props.deviceType]}${rowGutter["unit"]}`,
-            "column-gap": `${columnGutter[props.deviceType]}${
-                columnGutter["unit"]
-            }`,
+            "column-gap": `${columnGutter[props.deviceType]}${columnGutter["unit"]
+                }`,
         };
         styles[
             ` .editor-styles-wrapper #block-${clientId}.block-editor-block-list__block`
@@ -136,7 +124,7 @@ const Render = (props) => {
         };
 
         styles[
-            ` .editor-styles-wrapper .is-root-container > .block-editor-block-list__block .block-editor-block-list__block#block-${clientId}`
+            ` .editor-styles-wrapper .is-root-container > #block-${clientId}`
         ] = {
             "max-width": `${colWidth[props.deviceType]}${colWidth["unit"]}`,
             width: `${colWidth[props.deviceType]}${colWidth["unit"]}`,
@@ -144,30 +132,26 @@ const Render = (props) => {
         styles[
             `.editor-styles-wrapper #block-${clientId}  .premium-top-shape svg`
         ] = {
-            width: `${shapeTop.width[props.deviceType]}${
-                shapeTop.width["unit"]
-            }`,
-            height: `${shapeTop.height[props.deviceType]}${
-                shapeTop.height["unit"]
-            }`,
+            width: `${shapeTop.width[props.deviceType]}${shapeTop.width["unit"]
+                }`,
+            height: `${shapeTop.height[props.deviceType]}${shapeTop.height["unit"]
+                }`,
             fill: `${shapeTop["color"]}`,
         };
 
         styles[
             `.editor-styles-wrapper #block-${clientId} .premium-bottom-shape svg`
         ] = {
-            width: `${shapeBottom.width[props.deviceType]}${
-                shapeBottom.width["unit"]
-            }`,
-            height: `${shapeBottom.height[props.deviceType]}${
-                shapeBottom.height["unit"]
-            }`,
+            width: `${shapeBottom.width[props.deviceType]}${shapeBottom.width["unit"]
+                }`,
+            height: `${shapeBottom.height[props.deviceType]}${shapeBottom.height["unit"]
+                }`,
             fill: `${shapeBottom["color"]}`,
         };
 
         if ("boxed" === innerWidthType) {
             styles[
-                `.editor-styles-wrapper  .is-root-container > .block-editor-block-list__block > .wp-block-premium-container.premium-block-${block_id} > .premium-container-inner-blocks-wrap`
+                `.editor-styles-wrapper  .is-root-container > .wp-block-premium-container.premium-block-${block_id} > .premium-container-inner-blocks-wrap`
             ] = {
                 "--inner-content-custom-width": `min(${containerFullWidth},${innerWidth}px)`,
                 "max-width": "var(--inner-content-custom-width)",
@@ -202,9 +186,8 @@ const Render = (props) => {
             "background-attachment": backgroundOverlayHover["fixed"]
                 ? "fixed"
                 : "unset",
-            opacity: `${
-                backgroundOverlayHover ? hoverOverlayOpacity / 100 : 1
-            } !important`,
+            opacity: `${backgroundOverlayHover ? hoverOverlayOpacity / 100 : 1
+                } !important`,
             filter: `brightness( ${hoverOverlayFilter["bright"]}% ) contrast( ${hoverOverlayFilter["contrast"]}% ) saturate( ${hoverOverlayFilter["saturation"]}% ) blur( ${hoverOverlayFilter["blur"]}px ) hue-rotate( ${hoverOverlayFilter["hue"]}deg ) !important`,
         };
         let styleCss = "";
@@ -216,9 +199,9 @@ const Render = (props) => {
                     const value = selectorStyles[property];
                     const valueWithoutUnits = value
                         ? value
-                              .toString()
-                              .replaceAll("px", "")
-                              .replaceAll(/\s/g, "")
+                            .toString()
+                            .replaceAll("px", "")
+                            .replaceAll(/\s/g, "")
                         : "";
                     if (value && !value.toString().includes("undefined")) {
                         return `${property}: ${value};`;
@@ -233,77 +216,71 @@ const Render = (props) => {
         return styleCss;
     };
     return (
-        <div {...blockProps}>
+
+
+        <CustomTag
+
+            style={{
+                ...borderCss(border, props.deviceType),
+                ...paddingCss(padding, props.deviceType),
+                ...marginCss(margin, props.deviceType),
+                ...gradientBackground(backgroundOptions),
+                boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical || 0
+                    }px ${boxShadow.blur || 0}px ${boxShadow.color} ${boxShadow.position
+                    }`,
+                overflow: overflow,
+            }}
+        >
             <style
                 dangerouslySetInnerHTML={{
                     __html: loadStyles(),
                 }}
             />
 
-            <CustomTag
-                className={classnames(
-                    "wp-block-premium-container",
-                    `premium-block-${block_id}`,
-                    `premium-blocks-${block_id}`
-                )}
-                style={{
-                    ...borderCss(border, props.deviceType),
-                    ...paddingCss(padding, props.deviceType),
-                    ...marginCss(margin, props.deviceType),
-                    ...gradientBackground(backgroundOptions),
-                    boxShadow: `${boxShadow.horizontal || 0}px ${
-                        boxShadow.vertical || 0
-                    }px ${boxShadow.blur || 0}px ${boxShadow.color} ${
-                        boxShadow.position
-                    }`,
-                    overflow: overflow,
-                }}
-            >
-                {Object.entries(shapeTop).length > 1 &&
-                    shapeTop.openShape == 1 &&
-                    shapeTop.style && (
-                        <div
-                            className={topShapeClasses}
-                            dangerouslySetInnerHTML={{
-                                __html:
-                                    PremiumBlocksSettings.shapes[
-                                        shapeTop.style
-                                    ],
-                            }}
-                        />
-                    )}
-                {videoBackground(
-                    backgroundOptions["backgroundType"],
-                    backgroundOptions.videoSource,
-                    backgroundOptions.videoURL,
-                    backgroundOptions.bgExternalVideo
-                )}
-                {Object.entries(shapeBottom).length > 1 &&
-                    shapeBottom.openShape == 1 &&
-                    shapeBottom.style && (
-                        <div
-                            className={bottomShapeClasses}
-                            dangerouslySetInnerHTML={{
-                                __html:
-                                    PremiumBlocksSettings.shapes[
-                                        shapeBottom.style
-                                    ],
-                            }}
-                        />
-                    )}
-                <div className={`premium-row__block_overlay`}></div>
-                <div className="premium-container-inner-blocks-wrap">
-                    <InnerBlocks
-                        __experimentalMoverDirection={moverDirection}
-                        renderAppender={
-                            hasChildBlocks
-                                ? undefined
-                                : InnerBlocks.ButtonBlockAppender
-                        }
+            {Object.entries(shapeTop).length > 1 &&
+                shapeTop.openShape == 1 &&
+                shapeTop.style && (
+                    <div
+                        className={topShapeClasses}
+                        dangerouslySetInnerHTML={{
+                            __html:
+                                PremiumBlocksSettings.shapes[
+                                shapeTop.style
+                                ],
+                        }}
                     />
-                </div>
-            </CustomTag>
-        </div>
+                )}
+            {videoBackground(
+                backgroundOptions["backgroundType"],
+                backgroundOptions.videoSource,
+                backgroundOptions.videoURL,
+                backgroundOptions.bgExternalVideo
+            )}
+            {Object.entries(shapeBottom).length > 1 &&
+                shapeBottom.openShape == 1 &&
+                shapeBottom.style && (
+                    <div
+                        className={bottomShapeClasses}
+                        dangerouslySetInnerHTML={{
+                            __html:
+                                PremiumBlocksSettings.shapes[
+                                shapeBottom.style
+                                ],
+                        }}
+                    />
+                )}
+            <div className={`premium-row__block_overlay`}></div>
+            <div className="premium-container-inner-blocks-wrap">
+                <InnerBlocks
+                    __experimentalMoverDirection={moverDirection}
+                    renderAppender={
+                        hasChildBlocks
+                            ? undefined
+                            : InnerBlocks.ButtonBlockAppender
+                    }
+                />
+            </div>
+        </CustomTag>
     );
 };
 export default React.memo(Render);
