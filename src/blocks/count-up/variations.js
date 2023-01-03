@@ -39,6 +39,18 @@ export const Variations =
                         "Desktop": "center",
                         "Tablet": "center",
                         "Mobile": "center"
+                    },
+                    columnGutter: {
+                        "Desktop": 0,
+                        "Tablet": 0,
+                        "Mobile": 0,
+                        "unit": "px"
+                    },
+                    rowGutter: {
+                        "Desktop": 0,
+                        "Tablet": 0,
+                        "Mobile": 0,
+                        "unit": "px"
                     }
                 },
                     [
@@ -51,7 +63,7 @@ export const Variations =
                             },
                         }, [
                                 ['premium/icon', {
-                                    align: {
+                                    iconAlign: {
                                         "Desktop": "right",
                                         "Tablet": "right",
                                         "Mobile": "right"
@@ -66,6 +78,18 @@ export const Variations =
                                 Tablet: "",
                                 Mobile: "",
                             },
+                            columnGutter: {
+                                "Desktop": 0,
+                                "Tablet": 0,
+                                "Mobile": 0,
+                                "unit": "px"
+                            },
+                            rowGutter: {
+                                "Desktop": 0,
+                                "Tablet": 0,
+                                "Mobile": 0,
+                                "unit": "px"
+                            }
                         }, [
                                 ['premium/counter', {
                                     align: {
