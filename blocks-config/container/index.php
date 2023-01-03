@@ -44,7 +44,7 @@ function get_premium_container_css_style( $attr, $unique_id ) {
 
 	$css->add_property( 'row-gap', isset( $attr['rowGutter']['Desktop'] ) ? $attr['rowGutter']['Desktop'] . $attr['rowGutter']['unit'] : '20px' );
 
-	$css->add_property( 'column-gap', isset( $attr['rowGutter']['Desktop'] ) ? $attr['columnGutter']['Desktop'] . $attr['columnGutter']['unit'] : '20px' );
+	$css->add_property( 'column-gap', isset( $attr['columnGutter']['Desktop'] ) ? $attr['columnGutter']['Desktop'] . $attr['columnGutter']['unit'] : '20px' );
 
 	$css->set_selector( '.wp-block-premium-container.premium-is-root-container  .premium-container-inner-blocks-wrap .premium-block-' . $unique_id . ' .premium-container-inner-blocks-wrap' );
 

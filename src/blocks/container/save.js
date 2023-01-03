@@ -1,6 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 const { Fragment } = wp.element;
-const { InnerBlocks } = wp.blockEditor;
+const { InnerBlocks, useBlockProps } = wp.blockEditor;
 import classnames from "classnames";
 import {
     gradientBackground,
@@ -153,78 +153,80 @@ const Save = (props) => {
         { "premium-shape-above-content": shapeBottom["front"] === true },
         { "premium-shape__invert": shapeBottom["invertShapeDivider"] === true }
     );
+    const blockProps = useBlockProps.save();
     return (
-        <Fragment>
+
+        <CustomTag
+            id={blockProps.id}
+            className={classnames(
+                blockProps.className,
+                "wp-block-premium-container",
+                `premium-block-${block_id} `,
+                `premium-blocks-${block_id} `,
+                isBlockRootParent
+                    ? `${align} premium-is-root-container`
+                    : ""
+            )}
+            key={block_id}
+            style={{
+                ...gradientBackground(backgroundOptions),
+                boxShadow: `${boxShadow.horizontal || 0} px ${boxShadow.vertical || 0
+                    } px ${boxShadow.blur || 0} px ${boxShadow.color} ${boxShadow.position
+                    } `,
+                overflow: overflow,
+                borderStyle: border["borderType"],
+                borderColor: border["borderColor"],
+            }}
+            {...animationAttr(animation)}
+        >
             <style
                 dangerouslySetInnerHTML={{
                     __html: loadStyles(),
                 }}
             />
-            <CustomTag
-                className={classnames(
-                    "wp-block-premium-container",
-                    `premium-block-${block_id} `,
-                    `premium-blocks-${block_id} `,
-                    isBlockRootParent
-                        ? `${align} premium-is-root-container`
-                        : ""
+            {Object.entries(shapeTop).length > 1 &&
+                shapeTop.openShape == 1 &&
+                shapeTop.style && (
+                    <div
+                        className={topShapeClasses}
+                        dangerouslySetInnerHTML={{
+                            __html: PremiumBlocksSettings.shapes[
+                                shapeTop.style
+                            ],
+                        }}
+                    />
                 )}
-                key={block_id}
+            {videoBackground(
+                backgroundOptions["backgroundType"],
+                backgroundOptions.videoSource,
+                backgroundOptions.videoURL,
+                backgroundOptions.bgExternalVideo
+            )}
+            {Object.entries(shapeBottom).length > 1 &&
+                shapeBottom.openShape == 1 &&
+                shapeBottom.style && (
+                    <div
+                        className={bottomShapeClasses}
+                        dangerouslySetInnerHTML={{
+                            __html: PremiumBlocksSettings.shapes[
+                                shapeBottom.style
+                            ],
+                        }}
+                    />
+                )}
+            <div
+                className={`premium-row__block_overlay`}
                 style={{
-                    ...gradientBackground(backgroundOptions),
-                    boxShadow: `${boxShadow.horizontal || 0} px ${boxShadow.vertical || 0
-                        } px ${boxShadow.blur || 0} px ${boxShadow.color} ${boxShadow.position
+                    ...gradientBackground(backgroundOverlay),
+                    opacity: `${backgroundOverlay ? overlayOpacity / 100 : 1
                         } `,
-                    overflow: overflow,
-                    borderStyle: border["borderType"],
-                    borderColor: border["borderColor"],
+                    filter: `brightness(${overlayFilter["bright"]} % ) contrast(${overlayFilter["contrast"]} % ) saturate(${overlayFilter["saturation"]} % ) blur(${overlayFilter["blur"]}px) hue - rotate(${overlayFilter["hue"]}deg)`,
                 }}
-                {...animationAttr(animation)}
-            >
-                {Object.entries(shapeTop).length > 1 &&
-                    shapeTop.openShape == 1 &&
-                    shapeTop.style && (
-                        <div
-                            className={topShapeClasses}
-                            dangerouslySetInnerHTML={{
-                                __html: PremiumBlocksSettings.shapes[
-                                    shapeTop.style
-                                ],
-                            }}
-                        />
-                    )}
-                {videoBackground(
-                    backgroundOptions["backgroundType"],
-                    backgroundOptions.videoSource,
-                    backgroundOptions.videoURL,
-                    backgroundOptions.bgExternalVideo
-                )}
-                {Object.entries(shapeBottom).length > 1 &&
-                    shapeBottom.openShape == 1 &&
-                    shapeBottom.style && (
-                        <div
-                            className={bottomShapeClasses}
-                            dangerouslySetInnerHTML={{
-                                __html: PremiumBlocksSettings.shapes[
-                                    shapeBottom.style
-                                ],
-                            }}
-                        />
-                    )}
-                <div
-                    className={`premium-row__block_overlay`}
-                    style={{
-                        ...gradientBackground(backgroundOverlay),
-                        opacity: `${backgroundOverlay ? overlayOpacity / 100 : 1
-                            } `,
-                        filter: `brightness(${overlayFilter["bright"]} % ) contrast(${overlayFilter["contrast"]} % ) saturate(${overlayFilter["saturation"]} % ) blur(${overlayFilter["blur"]}px) hue - rotate(${overlayFilter["hue"]}deg)`,
-                    }}
-                ></div>
-                <div className="premium-container-inner-blocks-wrap">
-                    <InnerBlocks.Content />
-                </div>
-            </CustomTag>
-        </Fragment>
+            ></div>
+            <div className="premium-container-inner-blocks-wrap">
+                <InnerBlocks.Content />
+            </div>
+        </CustomTag>
     );
 };
 export default Save;

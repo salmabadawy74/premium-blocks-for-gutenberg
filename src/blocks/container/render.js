@@ -219,7 +219,7 @@ const Render = (props) => {
 
 
         <CustomTag
-
+            {...blockProps}
             style={{
                 ...borderCss(border, props.deviceType),
                 ...paddingCss(padding, props.deviceType),
