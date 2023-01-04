@@ -144,7 +144,7 @@ const Render = (props) => {
 
         if ("boxed" === innerWidthType) {
             styles[
-                `.is-root-container   .is-root-container > .wp-block-premium-container.premium-block-${block_id} > .premium-container-inner-blocks-wrap`
+                ` .is-root-container > .wp-block-premium-container.premium-block-${block_id} > .premium-container-inner-blocks-wrap`
             ] = {
                 "--inner-content-custom-width": `min(${containerFullWidth},${innerWidth}px)`,
                 "max-width": "var(--inner-content-custom-width)",
