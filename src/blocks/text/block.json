@@ -11,7 +11,8 @@
     "parent": [
         "premium/pricing-table",
         "premium/icon-box",
-        "premium/person"
+        "premium/person",
+        "premium/container"
     ],
     "textdomain": "default",
     "attributes": {
