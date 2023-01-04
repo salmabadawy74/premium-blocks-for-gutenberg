@@ -398,6 +398,10 @@
         "equalHeightBlocks": {
             "type": "array",
             "default": []
+        },
+        "customSelectors": {
+            "type": "array",
+            "default": []
         }
     },
     "editorScript": "pbg-blocks-js",

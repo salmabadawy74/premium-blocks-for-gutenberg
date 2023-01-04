@@ -1924,6 +1924,15 @@
     border: none;
     outline: none; }
 
+.pbg-equal-height-selected {
+  position: relative; }
+  .pbg-equal-height-selected .pbg-element-overlay {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    background-color: rgba(0, 124, 186, 0.3); }
+
 /************ Responsive **************/
 @media (min-width: 977px) {
   .premium-desktop-hidden {

@@ -1,5 +1,6 @@
 import classnames from "classnames";
 import variations from "./variations";
+import React from "react";
 import {
     InspectorTabs,
     InspectorTab,
@@ -33,10 +34,11 @@ const { InspectorControls, InnerBlocks } = wp.blockEditor;
 const { compose } = wp.compose;
 const { select, useDispatch, withSelect } = wp.data;
 const { PanelBody, SelectControl, ToggleControl, TextControl } = wp.components;
-const { useEffect, Fragment, useRef } = wp.element;
+const { useEffect, Fragment, useRef, useState } = wp.element;
 import { resetBlocksHeight, resetHeight, setElementsHeight, checkSelector } from "./utils";
-let defaultLayout = { Desktop: [100], Tablet: [100], Mobile: [100] };
+import BlockItemComponent from "./block-item";
 
+let defaultLayout = { Desktop: [100], Tablet: [100], Mobile: [100] };
 const edit = (props) => {
     if (props.isParentOfSelectedBlock) {
         const emptyBlockInserter = document.querySelector(
@@ -139,7 +141,8 @@ const edit = (props) => {
             equalHeight,
             equalHeightType,
             customSelector,
-            equalHeightBlocks
+            equalHeightBlocks,
+            customSelectors,
         },
         clientId,
         setAttributes,
@@ -438,6 +441,7 @@ const edit = (props) => {
         };
         return <components.MultiValueRemove {...props} innerProps={newInnerProps} />;
     };
+
     return (
         <Fragment>
             <InspectorControls>
@@ -1290,6 +1294,11 @@ const edit = (props) => {
                                                 MultiValueRemove: MultiValue
                                             }} />
                                         )}
+                                        {props.uniqueInnerBlocks?.length > 0 && (
+                                            <div className="pbg-custom-selectors-blocks">
+                                                {props.uniqueInnerBlocks.map(block => <BlockItemComponent block={block} customSelectors={customSelectors} container={containerRef.current} onChange={(value) => setAttributes(value)} />)}
+                                            </div>
+                                        )}
                                     </>
                                 )}
                             </PanelBody>
@@ -1431,7 +1440,8 @@ const applyWithSelect = withSelect((select, props) => {
         ).hasSelectedInnerBlock(props.clientId, true),
         removeBlock,
         uniqueInnerBlocks,
-        isParent: !hasParents
+        isParent: !hasParents,
+        blockData: getBlock(props.clientId)
     };
 });
 export default compose(applyWithSelect)(edit);

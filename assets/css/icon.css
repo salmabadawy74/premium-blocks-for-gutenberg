@@ -89,13 +89,13 @@
     display: inline !important; }
 
 .premium-icon__container .premium-icon {
-  font-size: 50px;
+  font-size: 40px;
   display: inline-block !important;
   width: auto;
   height: auto; }
 
 .premium-icon__container .premium-icon.fa {
-  font-size: 50px;
+  font-size: 40px;
   display: inline-block;
   width: auto;
   height: auto; }

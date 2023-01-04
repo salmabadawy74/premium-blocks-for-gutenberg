@@ -275,7 +275,7 @@
   transition-property: background, color, opacity, -webkit-box-shadow;
   -o-transition-property: background, color, box-shadow, opacity;
   transition-property: background, color, box-shadow, opacity;
-  transition-property: background, color, box-shadow, opacity, -webkit-box-shadow;
+  transition-property: background, color, box-shadow, opacity, -webkit-box-shadow;
   -webkit-transition-duration: 0.3s;
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
@@ -324,7 +324,7 @@
   transition-property: background, color, opacity, -webkit-box-shadow;
   -o-transition-property: background, color, box-shadow, opacity;
   transition-property: background, color, box-shadow, opacity;
-  transition-property: background, color, box-shadow, opacity, -webkit-box-shadow;
+  transition-property: background, color, box-shadow, opacity, -webkit-box-shadow;
   -webkit-transition-duration: 0.3s;
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s; }
@@ -419,7 +419,7 @@
   margin-left: 10px; }
 
 .rfipbtn {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 14px;
   line-height: 1.71429;
   vertical-align: baseline;
@@ -458,7 +458,7 @@
     font-size: 14px; }
 
 .rfipdropdown {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 14px;
   line-height: 1.71429;
   vertical-align: baseline;
@@ -3298,7 +3298,7 @@ i.fipicon-angle-left:before {
     border: 1px solid #ddd !important;
     border-radius: 3px !important;
     box-shadow: 0 0 0 0 transparent;
-    transition: box-shadow 0.1s linear, background 0.1s linear, border-radius 0.1s linear, border-color 0.1s linear; }
+    transition: box-shadow 0.1s linear, background 0.1s linear, border-radius 0.1s linear, border-color 0.1s linear; }
 
 .premium-color-popover-container .premium-advanced-color-container {
   display: flex;
@@ -4902,6 +4902,48 @@ input[type="number"] {
 .premium-inspector-tab input[type="number"]:focus {
   outline: none;
   box-shadow: none; }
+
+.pbg-block-item {
+  cursor: pointer; }
+  .pbg-block-item + .pbg-block-item {
+    margin-top: 10px;
+    border-top: 1px solid #f0f0f0; }
+  .pbg-block-item .pbg-block-item-name {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    outline: none;
+    width: 100%;
+    font-weight: 500;
+    text-align: left;
+    color: #1e1e1e;
+    border: none;
+    box-shadow: none;
+    transition: background 0.1s ease-in-out;
+    border-radius: 5px;
+    text-transform: capitalize; }
+    .pbg-block-item .pbg-block-item-name:hover {
+      background: #f0f0f0; }
+  .pbg-block-item .pbg-block-element {
+    padding: 5px;
+    border: 1px solid #f0f0f0; }
+    .pbg-block-item .pbg-block-element + .pbg-block-element {
+      margin-top: 5px; }
+    .pbg-block-item .pbg-block-element:hover {
+      background: #f0f0f0; }
+    .pbg-block-item .pbg-block-element.pbg-equal-height-active {
+      background: #007cba;
+      color: #fff; }
+      .pbg-block-item .pbg-block-element.pbg-equal-height-active .pbg-block-element-name {
+        color: #fff; }
+      .pbg-block-item .pbg-block-element.pbg-equal-height-active .pbg-block-element-classes {
+        color: #e2e2e2; }
+    .pbg-block-item .pbg-block-element .pbg-block-element-name {
+      color: #007cba;
+      font-weight: 500; }
+    .pbg-block-item .pbg-block-element .pbg-block-element-classes {
+      font-weight: 500;
+      color: #1e1e1e; }
 
 .premium-blocks-border__control {
   display: flex;
