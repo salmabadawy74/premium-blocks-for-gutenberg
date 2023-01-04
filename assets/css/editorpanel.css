@@ -279,7 +279,7 @@
   transition-property: background, color, opacity, -webkit-box-shadow;
   -o-transition-property: background, color, box-shadow, opacity;
   transition-property: background, color, box-shadow, opacity;
-  transition-property: background, color, box-shadow, opacity, -webkit-box-shadow;
+  transition-property: background, color, box-shadow, opacity, -webkit-box-shadow;
   -webkit-transition-duration: 0.3s;
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
@@ -328,7 +328,7 @@
   transition-property: background, color, opacity, -webkit-box-shadow;
   -o-transition-property: background, color, box-shadow, opacity;
   transition-property: background, color, box-shadow, opacity;
-  transition-property: background, color, box-shadow, opacity, -webkit-box-shadow;
+  transition-property: background, color, box-shadow, opacity, -webkit-box-shadow;
   -webkit-transition-duration: 0.3s;
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s; }
@@ -423,7 +423,7 @@
   margin-left: 10px; }
 
 .rfipbtn {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 14px;
   line-height: 1.71429;
   vertical-align: baseline;
@@ -462,7 +462,7 @@
     font-size: 14px; }
 
 .rfipdropdown {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 14px;
   line-height: 1.71429;
   vertical-align: baseline;
@@ -3302,7 +3302,7 @@ i.fipicon-angle-left:before {
     border: 1px solid #ddd !important;
     border-radius: 3px !important;
     box-shadow: 0 0 0 0 transparent;
-    transition: box-shadow 0.1s linear, background 0.1s linear, border-radius 0.1s linear, border-color 0.1s linear; }
+    transition: box-shadow 0.1s linear, background 0.1s linear, border-radius 0.1s linear, border-color 0.1s linear; }
 
 .premium-color-popover-container .premium-advanced-color-container {
   display: flex;
@@ -3684,6 +3684,24 @@ i.fipicon-angle-left:before {
 
 .premium-presets-main-wrap.border-none svg {
   border: none; }
+
+.premium-variation-picker li {
+  list-style: none;
+  margin: 0px 20px 0 0 !important;
+  width: 70px !important;
+  text-align: center; }
+  .premium-variation-picker li .block-editor-block-variation-picker__variation {
+    box-shadow: inset 0 0 0 1px #dedede; }
+    .premium-variation-picker li .block-editor-block-variation-picker__variation svg, .premium-variation-picker li .block-editor-block-variation-picker__variation .cls-1 {
+      fill: #dedede; }
+  .premium-variation-picker li .block-editor-block-variation-picker__variation:hover {
+    box-shadow: inset 0 0 0 1px #007cba; }
+    .premium-variation-picker li .block-editor-block-variation-picker__variation:hover svg:focus, .premium-variation-picker li .block-editor-block-variation-picker__variation:hover .cls-1 {
+      fill: #007cba; }
+  .premium-variation-picker li .premium-variation-picker-radio-input:checked + .block-editor-block-variation-picker__variation svg .cls-1 {
+    fill: #007cba; }
+  .premium-variation-picker li .premium-variation-picker-radio-input:checked + .block-editor-block-variation-picker__variation {
+    box-shadow: inset 0 0 0 1px #007cba; }
 
 .premium-typohraphy-value {
   display: flex;

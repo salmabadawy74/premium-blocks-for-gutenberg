@@ -18,10 +18,15 @@ export const Variations =
                     title: __("Title", "premium-blocks-for-gutenberg"),
                     titleTag: "h2",
                     style: "default",
+                    align: {
+                        "Desktop": "center",
+                        "Tablet": "center",
+                        "Mobile": "center"
+                    }
                 }],
                 ['premium/text', {
                     text: __(
-                        "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.",
+                        "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
                         "premium-blocks-for-gutenberg"
                     )
                 }],
@@ -41,6 +46,24 @@ export const Variations =
                     variationSelected: true,
                     direction: { Desktop: "row", Tablet: "", Mobile: "" },
                     wrapItems: { Desktop: "", Tablet: "", Mobile: "wrap" },
+                    isBlockRootParent: true,
+                    alignItems: {
+                        "Desktop": "center",
+                        "Tablet": "center",
+                        "Mobile": "center"
+                    },
+                    columnGutter: {
+                        "Desktop": 0,
+                        "Tablet": 0,
+                        "Mobile": 0,
+                        "unit": "px"
+                    },
+                    rowGutter: {
+                        "Desktop": 0,
+                        "Tablet": 0,
+                        "Mobile": 0,
+                        "unit": "px"
+                    }
                 },
                     [
                         ['premium/container', {
@@ -52,6 +75,11 @@ export const Variations =
                             },
                         }, [
                                 ['premium/icon', {
+                                    iconAlign: {
+                                        "Desktop": "right",
+                                        "Tablet": "right",
+                                        "Mobile": "right"
+                                    },
                                 }]
                             ]
                         ],
@@ -62,6 +90,18 @@ export const Variations =
                                 Tablet: "",
                                 Mobile: "",
                             },
+                            columnGutter: {
+                                "Desktop": 0,
+                                "Tablet": 0,
+                                "Mobile": 0,
+                                "unit": "px"
+                            },
+                            rowGutter: {
+                                "Desktop": 0,
+                                "Tablet": 0,
+                                "Mobile": 0,
+                                "unit": "px"
+                            }
                         }, [
                                 ['premium/heading', {
                                     title: __("Title", "premium-blocks-for-gutenberg"),
@@ -70,7 +110,7 @@ export const Variations =
                                 }],
                                 ['premium/text', {
                                     text: __(
-                                        "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.",
+                                        "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
                                         "premium-blocks-for-gutenberg"
                                     )
                                 }],

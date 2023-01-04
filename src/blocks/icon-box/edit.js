@@ -23,8 +23,10 @@ import { Variations } from './variations'
 
 const { __ } = wp.i18n;
 const { PanelBody } = wp.components;
-const { Fragment, useEffect, useState } = wp.element;
-const { withSelect } = wp.data;
+const { Fragment, useEffect } = wp.element;
+const { useDispatch, withSelect } = wp.data;
+const { compose } = wp.compose;
+const { createBlock } = wp.blocks;
 const {
     InspectorControls,
     useInnerBlocksProps,
@@ -33,7 +35,6 @@ const {
 
 function Edit(props) {
     const { setAttributes, className, clientId, attributes } = props;
-    const [openModal, setOpenModal] = useState({})
 
     useEffect(() => {
         setAttributes({
@@ -90,13 +91,36 @@ function Edit(props) {
         }
     );
 
+    const blockVariationPickerOnSelect = (
+        nextVariation = props.defaultVariation
+    ) => {
+        if (nextVariation.attributes) {
+            props.setAttributes(nextVariation.attributes);
+        }
+        if (nextVariation.innerBlocks) {
+            props.replaceInnerBlocks(
+                props.clientId,
+                createBlocksFromInnerBlocksTemplate(nextVariation.innerBlocks)
+            );
+        }
+    };
+
+    const createBlocksFromInnerBlocksTemplate = (innerBlocksTemplate) => {
+        return innerBlocksTemplate.map(([name, attributes, innerBlocks = []]) =>
+            createBlock(
+                name,
+                attributes,
+                createBlocksFromInnerBlocksTemplate(innerBlocks)
+            )
+        );
+    };
+
     const onSelectVariations = (v) => {
-        console.log(v)
         setAttributes({
             variation: v,
             showVariation: false
         });
-        setOpenModal(v)
+        blockVariationPickerOnSelect(v);
     }
 
     return (
@@ -114,6 +138,7 @@ function Edit(props) {
                                     setAttributes={setAttributes}
                                     variations={Variations}
                                     onSelect={onSelectVariations}
+                                    value={variation}
                                 />
                             </PanelBody>
                         </InspectorTab>
@@ -256,15 +281,40 @@ function Edit(props) {
     );
 }
 
-export default withSelect((select) => {
+const applyWithSelect = withSelect((select, props) => {
+    // eslint-disable-line no-shadow
     const { __experimentalGetPreviewDeviceType = null } = select(
         "core/edit-post"
     );
-    let deviceType = __experimentalGetPreviewDeviceType
+    const deviceType = __experimentalGetPreviewDeviceType
         ? __experimentalGetPreviewDeviceType()
         : null;
+    const { getBlocks } = select("core/block-editor");
+    const {
+        getBlockType,
+        getBlockVariations,
+        getDefaultBlockVariation,
+    } = select("core/blocks");
+    const innerBlocks = getBlocks(props.clientId);
+    const { replaceInnerBlocks, updateBlockAttributes } = useDispatch(
+        "core/block-editor"
+    );
 
     return {
-        deviceType: deviceType,
+        // Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
+        innerBlocks,
+        blockType: getBlockType(props.name),
+        defaultVariation:
+            typeof getDefaultBlockVariation === "undefined"
+                ? null
+                : getDefaultBlockVariation(props.name),
+        variations:
+            typeof getBlockVariations === "undefined"
+                ? null
+                : getBlockVariations(props.name),
+        replaceInnerBlocks,
+        updateBlockAttributes,
+        deviceType
     };
-})(Edit);
+});
+export default compose(applyWithSelect)(Edit);

@@ -5528,6 +5528,36 @@ i.fipicon-angle-left {
     }
 }
 
+// variation-picker
+.premium-variation-picker {
+    li {
+        .block-editor-block-variation-picker__variation {
+            box-shadow: inset 0 0 0 1px #dedede;
+            svg, .cls-1 {
+                fill: #dedede;
+            }
+        }
+        .block-editor-block-variation-picker__variation:hover {
+            box-shadow: inset 0 0 0 1px #007cba;
+            svg:focus, .cls-1 {
+                fill: #007cba;
+            }
+        }
+        .premium-variation-picker-radio-input:checked+.block-editor-block-variation-picker__variation svg .cls-1 {
+            fill: #007cba;
+    
+        }
+        .premium-variation-picker-radio-input:checked+.block-editor-block-variation-picker__variation  {
+            box-shadow: inset 0 0 0 1px #007cba;
+        }
+
+        list-style: none;
+        margin: 0px 20px 0 0 !important;
+        width: 70px !important;
+        text-align: center;
+    }
+}
+
 @import "./typography.scss";
 @import "./spacing.scss";
 @import "./RangeControl.scss";

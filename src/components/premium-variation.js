@@ -15,6 +15,7 @@ const PremiumVariation = props => {
         variations,
         onSelect,
         allowSkip,
+        value = { name: '' }
     } = props
 
     const classes = classnames('block-editor-block-variation-picker', {
@@ -22,7 +23,7 @@ const PremiumVariation = props => {
     })
 
     return (
-        <div className="stk-variation-picker">
+        <div className="premium-variation-picker">
             <Placeholder
                 icon={icon}
                 label={label}
@@ -37,6 +38,20 @@ const PremiumVariation = props => {
                 >
                     {variations.map(variation => (
                         <li key={variation.name}>
+                            <input
+                                key={variation.name}
+                                className={classnames("premium-variation-picker-radio-input", {
+                                    checked: value.name === variation.name,
+                                })}
+                                type="radio"
+                                value={variation.name}
+                                checked={value.name === variation.name ? true : false}
+                                onChange={() => onSelect(variation)}
+                                onClick={() => onSelect(variation)}
+                                style={{
+                                    display: "none",
+                                }}
+                            />
                             <Button
                                 variant="secondary"
                                 icon={variation.pickerIcon || variation.icon}
