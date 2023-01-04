@@ -1,5 +1,4 @@
 import classnames from "classnames";
-import variations from "./variations";
 import {
     InspectorTabs,
     InspectorTab,
@@ -17,6 +16,7 @@ import {
     PremiumFilters,
     renderCustomIcon,
     ResponsiveRangeControl,
+    PremiumResponsiveTabs,
 } from "@pbg/components";
 import {
     gradientBackground,
@@ -29,16 +29,48 @@ import {
 
 const { __ } = wp.i18n;
 const { createBlock } = wp.blocks;
-const { InspectorControls, InnerBlocks } = wp.blockEditor;
+const { InspectorControls, InnerBlocks, useBlockProps } = wp.blockEditor;
 const { compose } = wp.compose;
-const { select, useDispatch, withSelect } = wp.data;
+const { select, useDispatch, withSelect, useSelect } = wp.data;
 const { PanelBody, SelectControl } = wp.components;
-const { useEffect, Fragment } = wp.element;
-
-let defaultLayout = { Desktop: [100], Tablet: [100], Mobile: [100] };
+import React, { useEffect } from "react";
+import Render from "./render";
+const { Fragment } = wp.element;
 
 const edit = (props) => {
-    if (props.isParentOfSelectedBlock) {
+    const {
+        innerBlocks, // eslint-disable-line no-unused-vars
+        blockType, // eslint-disable-line no-unused-vars
+        isParentOfSelectedBlock,
+        variations,
+        defaultVariation,
+    } = useSelect((select) => {
+        // eslint-disable-line no-shadow
+        const { getBlocks } = select("core/block-editor");
+        const {
+            getBlockType,
+            getBlockVariations,
+            getDefaultBlockVariation,
+        } = select("core/blocks");
+
+        return {
+            innerBlocks: getBlocks(props.clientId),
+            blockType: getBlockType(props.name),
+            defaultVariation:
+                typeof getDefaultBlockVariation === "undefined"
+                    ? null
+                    : getDefaultBlockVariation(props.name),
+            variations:
+                typeof getBlockVariations === "undefined"
+                    ? null
+                    : getBlockVariations(props.name),
+            isParentOfSelectedBlock: select(
+                "core/block-editor"
+            ).hasSelectedInnerBlock(props.clientId, true),
+        };
+    });
+    const { replaceInnerBlocks } = useDispatch("core/block-editor");
+    if (isParentOfSelectedBlock) {
         const emptyBlockInserter = document.querySelector(
             ".block-editor-block-list__empty-block-inserter"
         );
@@ -48,33 +80,25 @@ const edit = (props) => {
     }
 
     useEffect(() => {
-        const isBlockRootParent =
-            0 ===
-            select("core/block-editor").getBlockParents(props.clientId).length;
-        if (isBlockRootParent) {
+        const isBlockRootParentID = select("core/block-editor").getBlockParents(
+            props.clientId
+        );
+
+        const parentBlockName = select("core/block-editor").getBlocksByClientId(
+            isBlockRootParentID
+        );
+
+        if (
+            (parentBlockName[0] &&
+                "premium/container" !== parentBlockName[0].name) ||
+            undefined === parentBlockName[0]
+        ) {
             props.setAttributes({ isBlockRootParent: true });
         }
-        // Assigning block_id in the attribute.
+
         props.setAttributes({ block_id: props.clientId });
-        const descendants = select("core/block-editor").getBlocks(
-            props.clientId
-        );
-        if (descendants.length !== props.attributes.blockDescendants.length) {
-            props.setAttributes({ blockDescendants: descendants });
-        }
-    }, []);
 
-    useEffect(() => {
-        const descendants = select("core/block-editor").getBlocks(
-            props.clientId
-        );
-        if (descendants.length !== props.attributes.blockDescendants.length) {
-            props.setAttributes({ blockDescendants: descendants });
-        }
         const iframeEl = document.querySelector(`iframe[name='editor-canvas']`);
-        const hasChildren =
-            0 !== select("core/block-editor").getBlocks(props.clientId).length;
-
         let element;
         if (iframeEl) {
             element = iframeEl.contentDocument.getElementById(
@@ -83,17 +107,44 @@ const edit = (props) => {
         } else {
             element = document.getElementById("block-" + props.clientId);
         }
-        if (element) {
-            if (props.attributes.isBlockRootParent || isBlockRootParent) {
-                element.classList.remove("alignfull");
-                element.classList.remove("alignwide");
-                element.classList.add(props.attributes.align);
-            }
-        }
-    }, [props]);
 
+        if (
+            0 !==
+            select("core/block-editor").getBlockParents(props.clientId).length
+        ) {
+            props.setAttributes({ variationSelected: true });
+        }
+    }, []);
+
+    const blockVariationPickerOnSelect = (nextVariation = defaultVariation) => {
+        if (nextVariation.attributes) {
+            props.setAttributes(nextVariation.attributes);
+        }
+
+        if (nextVariation.innerBlocks && "one-column" !== nextVariation.name) {
+            replaceInnerBlocks(
+                props.clientId,
+                createBlocksFromInnerBlocksTemplate(nextVariation.innerBlocks)
+            );
+        }
+    };
+
+    const createBlocksFromInnerBlocksTemplate = (innerBlocksTemplate) => {
+        return innerBlocksTemplate.map((
+            [name, attributes, innerBlocks = []] // eslint-disable-line no-shadow
+        ) =>
+            createBlock(
+                name,
+                attributes,
+                createBlocksFromInnerBlocksTemplate(innerBlocks)
+            )
+        );
+    };
     const removeRowBlock = () => {
         const { clientId, removeBlock } = props;
+        if (defaultVariation.attributes) {
+            props.setAttributes(defaultVariation.attributes);
+        }
         removeBlock(clientId);
     };
     const {
@@ -142,44 +193,6 @@ const edit = (props) => {
         className,
     } = props;
 
-    const blockVariationPickerOnSelect = (
-        nextVariation = props.defaultVariation
-    ) => {
-        if (nextVariation.attributes) {
-            props.setAttributes(nextVariation.attributes);
-        }
-        if (nextVariation.innerBlocks && "one-column" !== nextVariation.name) {
-            props.replaceInnerBlocks(
-                props.clientId,
-                createBlocksFromInnerBlocksTemplate(nextVariation.innerBlocks)
-            );
-        }
-    };
-
-    const createBlocksFromInnerBlocksTemplate = (innerBlocksTemplate) => {
-        return innerBlocksTemplate.map(([name, attributes, innerBlocks = []]) =>
-            createBlock(
-                name,
-                attributes,
-                createBlocksFromInnerBlocksTemplate(innerBlocks)
-            )
-        );
-    };
-
-    const topShapeClasses = classnames(
-        "premium-shape-divider",
-        "premium-top-shape",
-        { "premium-top-shape-flip": shapeTop["flipShapeDivider"] === true },
-        { "premium-shape-above-content": shapeTop["front"] === true },
-        { "premium-shape__invert": shapeTop["invertShapeDivider"] === true }
-    );
-    const bottomShapeClasses = classnames(
-        "premium-shape-divider",
-        "premium-bottom-shape",
-        { "premium-shape-flip": shapeBottom["flipShapeDivider"] === true },
-        { "premium-shape-above-content": shapeBottom["front"] === true },
-        { "premium-shape__invert": shapeBottom["invertShapeDivider"] === true }
-    );
     const currentOffset =
         "row" === direction[props.deviceType] ? "column" : "row";
 
@@ -221,136 +234,6 @@ const edit = (props) => {
             </Fragment>
         );
     }
-    const { getBlockOrder } = select("core/block-editor");
-    const hasChildBlocks = getBlockOrder(clientId).length > 0;
-    const moverDirection = "row" === direction ? "horizontal" : "vertical";
-
-    const loadStyles = () => {
-        const styles = {};
-        const containerFullWidth = "100vw";
-        styles[
-            `.editor-styles-wrapper #block-${clientId}  > .wp-block-premium-container > .premium-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout`
-        ] = {
-            "min-height": `${minHeight[props.deviceType]}${minHeight["unit"]}`,
-            "flex-direction": direction[props.deviceType],
-            "align-items": alignItems[props.deviceType],
-            "justify-content": justifyItems[props.deviceType],
-            "flex-wrap": wrapItems[props.deviceType],
-            "align-content": alignContent[props.deviceType],
-            "row-gap": `${rowGutter[props.deviceType]}${rowGutter["unit"]}`,
-            "column-gap": `${columnGutter[props.deviceType]}${
-                columnGutter["unit"]
-            }`,
-        };
-        styles[
-            ` .editor-styles-wrapper #block-${clientId}.block-editor-block-list__block`
-        ] = {
-            "min-height": `${minHeight[props.deviceType]}${minHeight["unit"]}`,
-            "flex-direction": direction[props.deviceType],
-            "align-items": alignItems[props.deviceType],
-            "justify-content": justifyItems[props.deviceType],
-            "flex-wrap": wrapItems[props.deviceType],
-            "align-content": alignContent[props.deviceType],
-        };
-
-        styles[
-            ` .editor-styles-wrapper .is-root-container > .block-editor-block-list__block .block-editor-block-list__block#block-${clientId}`
-        ] = {
-            "max-width": `${colWidth[props.deviceType]}${colWidth["unit"]}`,
-            width: `${colWidth[props.deviceType]}${colWidth["unit"]}`,
-        };
-        styles[
-            `.editor-styles-wrapper #block-${clientId}  .premium-top-shape svg`
-        ] = {
-            width: `${shapeTop.width[props.deviceType]}${
-                shapeTop.width["unit"]
-            }`,
-            height: `${shapeTop.height[props.deviceType]}${
-                shapeTop.height["unit"]
-            }`,
-            fill: `${shapeTop["color"]}`,
-        };
-
-        styles[
-            `.editor-styles-wrapper #block-${clientId} .premium-bottom-shape svg`
-        ] = {
-            width: `${shapeBottom.width[props.deviceType]}${
-                shapeBottom.width["unit"]
-            }`,
-            height: `${shapeBottom.height[props.deviceType]}${
-                shapeBottom.height["unit"]
-            }`,
-            fill: `${shapeBottom["color"]}`,
-        };
-
-        if ("boxed" === innerWidthType) {
-            styles[
-                `.editor-styles-wrapper  .is-root-container > .block-editor-block-list__block > .wp-block-premium-container.premium-block-${block_id} > .premium-container-inner-blocks-wrap`
-            ] = {
-                "--inner-content-custom-width": `min(${containerFullWidth},${innerWidth}px)`,
-                "max-width": "var(--inner-content-custom-width)",
-                "margin-left": "auto",
-                "margin-right": "auto",
-            };
-        }
-        styles[`.premium-blocks-${block_id} .premium-row__block_overlay `] = {
-            "background-color": backgroundOverlay["backgroundColor"],
-            "background-image": gradientValue(backgroundOverlay),
-            "background-repeat": backgroundOverlay["backgroundRepeat"],
-            "background-position": backgroundOverlay["backgroundPosition"],
-            "background-size": backgroundOverlay["backgroundSize"],
-            "background-attachment": backgroundOverlay["fixed"]
-                ? "fixed"
-                : "unset",
-            opacity: `${backgroundOverlay ? overlayOpacity / 100 : 1} `,
-            "mix-blend-mode": `${blend} !important`,
-            filter: `brightness( ${overlayFilter["bright"]}% ) contrast( ${overlayFilter["contrast"]}% ) saturate( ${overlayFilter["saturation"]}% ) blur( ${overlayFilter["blur"]}px ) hue-rotate( ${overlayFilter["hue"]}deg ) `,
-            "-webkit-transition": `${transition}s`,
-            "-o-transition": `${transition}s`,
-            transition: `${transition}s`,
-        };
-        styles[
-            `.premium-blocks-${block_id}:hover .premium-row__block_overlay `
-        ] = {
-            "background-color": backgroundOverlayHover["backgroundColor"],
-            "background-image": gradientValue(backgroundOverlayHover),
-            "background-repeat": backgroundOverlayHover["backgroundRepeat"],
-            "background-position": backgroundOverlayHover["backgroundPosition"],
-            "background-size": backgroundOverlayHover["backgroundSize"],
-            "background-attachment": backgroundOverlayHover["fixed"]
-                ? "fixed"
-                : "unset",
-            opacity: `${
-                backgroundOverlayHover ? hoverOverlayOpacity / 100 : 1
-            } !important`,
-            filter: `brightness( ${hoverOverlayFilter["bright"]}% ) contrast( ${hoverOverlayFilter["contrast"]}% ) saturate( ${hoverOverlayFilter["saturation"]}% ) blur( ${hoverOverlayFilter["blur"]}px ) hue-rotate( ${hoverOverlayFilter["hue"]}deg ) !important`,
-        };
-        let styleCss = "";
-
-        for (const selector in styles) {
-            const selectorStyles = styles[selector];
-            const filteredStyles = Object.keys(selectorStyles)
-                .map((property) => {
-                    const value = selectorStyles[property];
-                    const valueWithoutUnits = value
-                        ? value
-                              .toString()
-                              .replaceAll("px", "")
-                              .replaceAll(/\s/g, "")
-                        : "";
-                    if (value && !value.toString().includes("undefined")) {
-                        return `${property}: ${value};`;
-                    }
-                })
-                .filter((style) => !!style)
-                .join("\n");
-            styleCss += `${selector}{
-                    ${filteredStyles}
-                }\n`;
-        }
-        return styleCss;
-    };
-    const CustomTag = `${containerTag}`;
     const BLEND = [
         {
             label: "Normal",
@@ -393,7 +276,6 @@ const edit = (props) => {
             value: "luminosity",
         },
     ];
-
     return (
         <Fragment>
             <InspectorControls>
@@ -1159,6 +1041,32 @@ const edit = (props) => {
                         </PanelBody>
                     </InspectorTab>
                     <InspectorTab key={"advance"}>
+                        <PremiumResponsiveTabs
+                            Desktop={hideDesktop}
+                            Tablet={hideTablet}
+                            Mobile={hideMobile}
+                            onChangeDesktop={(value) =>
+                                setAttributes({
+                                    hideDesktop: value
+                                        ? " premium-desktop-hidden"
+                                        : "",
+                                })
+                            }
+                            onChangeTablet={(value) =>
+                                setAttributes({
+                                    hideTablet: value
+                                        ? " premium-tablet-hidden"
+                                        : "",
+                                })
+                            }
+                            onChangeMobile={(value) =>
+                                setAttributes({
+                                    hideMobile: value
+                                        ? " premium-mobile-hidden"
+                                        : "",
+                                })
+                            }
+                        />
                         <PanelBody
                             title={__(
                                 "Animation",
@@ -1181,122 +1089,20 @@ const edit = (props) => {
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
-            <div
-                className="block-editor-block-list__block wp-block"
-                id={`block-${block_id}`}
-                data-block={`premium-container`}
-            >
-                <style
-                    dangerouslySetInnerHTML={{
-                        __html: loadStyles(),
-                    }}
-                />
-                <CustomTag
-                    className={classnames(
-                        "wp-block-premium-container",
-                        `premium-block-${block_id}`,
-                        `premium-blocks-${block_id}`
-                    )}
-                    key={block_id}
-                    style={{
-                        ...borderCss(border, props.deviceType),
-                        ...paddingCss(padding, props.deviceType),
-                        ...marginCss(margin, props.deviceType),
-                        ...gradientBackground(backgroundOptions),
-                        boxShadow: `${boxShadow.horizontal || 0}px ${
-                            boxShadow.vertical || 0
-                        }px ${boxShadow.blur || 0}px ${boxShadow.color} ${
-                            boxShadow.position
-                        }`,
-                        overflow: overflow,
-                    }}
-                >
-                    {Object.entries(shapeTop).length > 1 &&
-                        shapeTop.openShape == 1 &&
-                        shapeTop.style && (
-                            <div
-                                className={topShapeClasses}
-                                dangerouslySetInnerHTML={{
-                                    __html:
-                                        PremiumBlocksSettings.shapes[
-                                            shapeTop.style
-                                        ],
-                                }}
-                            />
-                        )}
-                    {videoBackground(
-                        backgroundOptions["backgroundType"],
-                        backgroundOptions.videoSource,
-                        backgroundOptions.videoURL,
-                        backgroundOptions.bgExternalVideo
-                    )}
-                    {Object.entries(shapeBottom).length > 1 &&
-                        shapeBottom.openShape == 1 &&
-                        shapeBottom.style && (
-                            <div
-                                className={bottomShapeClasses}
-                                dangerouslySetInnerHTML={{
-                                    __html:
-                                        PremiumBlocksSettings.shapes[
-                                            shapeBottom.style
-                                        ],
-                                }}
-                            />
-                        )}
-                    <div className={`premium-row__block_overlay`}></div>
-                    <div className="premium-container-inner-blocks-wrap">
-                        <InnerBlocks
-                            __experimentalMoverDirection={moverDirection}
-                            renderAppender={
-                                hasChildBlocks
-                                    ? undefined
-                                    : InnerBlocks.ButtonBlockAppender
-                            }
-                        />
-                    </div>
-                </CustomTag>
-            </div>
+            <Render parentProps={props} />
         </Fragment>
     );
 };
 
-const applyWithSelect = withSelect((select, props) => {
-    // eslint-disable-line no-shadow
+export default withSelect((select) => {
     const { __experimentalGetPreviewDeviceType = null } = select(
         "core/edit-post"
     );
-    const deviceType = __experimentalGetPreviewDeviceType
+    let deviceType = __experimentalGetPreviewDeviceType
         ? __experimentalGetPreviewDeviceType()
         : null;
-    const { getBlocks } = select("core/block-editor");
-    const {
-        getBlockType,
-        getBlockVariations,
-        getDefaultBlockVariation,
-    } = select("core/blocks");
-    const innerBlocks = getBlocks(props.clientId);
-    const { replaceInnerBlocks, removeBlock } = useDispatch(
-        "core/block-editor"
-    );
 
     return {
-        // Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
-        innerBlocks,
-        blockType: getBlockType(props.name),
-        defaultVariation:
-            typeof getDefaultBlockVariation === "undefined"
-                ? null
-                : getDefaultBlockVariation(props.name),
-        variations:
-            typeof getBlockVariations === "undefined"
-                ? null
-                : getBlockVariations(props.name),
-        replaceInnerBlocks,
-        deviceType,
-        isParentOfSelectedBlock: select(
-            "core/block-editor"
-        ).hasSelectedInnerBlock(props.clientId, true),
-        removeBlock,
+        deviceType: deviceType,
     };
-});
-export default compose(applyWithSelect)(edit);
+})(edit);
