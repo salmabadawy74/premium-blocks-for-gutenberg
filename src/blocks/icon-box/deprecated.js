@@ -592,11 +592,228 @@ const new_attributes = {
     },
 }
 
+const v10Attributes = {
+    "blockId": {
+        "type": "string"
+    },
+    "hideDesktop": {
+        "type": "boolean",
+        "default": ""
+    },
+    "hideTablet": {
+        "type": "boolean",
+        "default": ""
+    },
+    "hideMobile": {
+        "type": "boolean",
+        "default": ""
+    },
+    "containerMargin": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "containerPadding": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "containerBorder": {
+        "type": "object",
+        "default": {
+            "borderColor": "",
+            "borderType": "none",
+            "borderRadius": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            },
+            "borderWidth": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            }
+        }
+    },
+    "containerBackground": {
+        "type": "object",
+        "default": {
+            "backgroundType": "",
+            "backgroundColor": "",
+            "backgroundImageID": "",
+            "backgroundImageURL": "",
+            "backgroundPosition": "",
+            "backgroundRepeat": "",
+            "backgroundSize": "",
+            "fixed": false,
+            "gradientLocationOne": "0",
+            "gradientColorTwo": "",
+            "gradientLocationTwo": "100",
+            "gradientAngle": "180",
+            "gradientPosition": "center center",
+            "gradientType": "linear"
+        }
+    },
+    "containerShadow": {
+        "type": "object",
+        "default": {
+            "color": "undefined",
+            "blur": "10",
+            "horizontal": "0",
+            "vertical": "0",
+            "position": ""
+        }
+    },
+    "containerHoverShadow": {
+        "type": "object",
+        "default": {
+            "color": "undefined",
+            "blur": "10",
+            "horizontal": "0",
+            "vertical": "0",
+            "position": ""
+        }
+    },
+    "variation": {
+        "type": "object",
+        "default": {}
+    },
+    "showVariation": {
+        "type": "boolean",
+        "default": true
+    }
+}
+
 const deprecated_attributes = Object.assign(attributes, new_attributes);
 
-
-
 const deprecatedContent = [
+    {
+        attributes: Object.assign(attributes, v10Attributes),
+        migrate: (attributes) => {
+            let newAttributes = {
+                variation: {},
+                showVariation: true
+            };
+            return Object.assign(attributes, newAttributes)
+        },
+        save: (props) => {
+            const { className } = props;
+
+            const {
+                blockId,
+                hideDesktop,
+                hideTablet,
+                hideMobile,
+                containerBorder,
+                containerBackground,
+                containerShadow,
+                containerHoverShadow,
+            } = props.attributes;
+
+            const loadStyles = () => {
+                const styles = {};
+                styles[`.${blockId}:hover`] = {
+                    'box-shadow': `${containerHoverShadow.horizontal}px ${containerHoverShadow.vertical}px ${containerHoverShadow.blur}px ${containerHoverShadow.color} ${containerHoverShadow.position} !important`,
+                };
+                return generateCss(styles);
+
+            }
+
+            return (
+                <div
+                    {...useBlockProps.save({
+                        className: classnames(
+                            className,
+                            blockId,
+                            'premium-icon-box',
+                            {
+                                " premium-desktop-hidden": hideDesktop,
+                                " premium-tablet-hidden": hideTablet,
+                                " premium-mobile-hidden": hideMobile,
+                            }
+                        ),
+                    })}
+                    style={filterJsCss({
+                        borderStyle: containerBorder.borderType,
+                        borderColor: containerBorder.borderColor,
+                        boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
+                        ...gradientBackground(containerBackground),
+                    })}
+                >
+                    <InnerBlocks.Content />
+                    <style>{loadStyles()}</style>
+                </div>
+            );
+        },
+    },
     {
         attributes: deprecated_attributes,
         migrate: (attributes) => {
