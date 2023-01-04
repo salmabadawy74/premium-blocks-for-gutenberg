@@ -9,7 +9,6 @@ import {
     InsideTabs,
     PremiumBackgroundControl,
     InsideTab,
-    PremiumVariation
 } from "@pbg/components";
 import {
     gradientBackground,
@@ -19,18 +18,15 @@ import {
     generateBlockId,
     generateCss,
 } from "@pbg/helpers";
-import { Variations } from './variations'
 
 const { __ } = wp.i18n;
 const { PanelBody } = wp.components;
 const { Fragment, useEffect } = wp.element;
-const { useDispatch, withSelect } = wp.data;
-const { compose } = wp.compose;
-const { createBlock } = wp.blocks;
+const { withSelect } = wp.data;
 const {
     InspectorControls,
     useInnerBlocksProps,
-    useBlockProps
+    useBlockProps,
 } = wp.blockEditor;
 
 function Edit(props) {
@@ -56,9 +52,47 @@ function Edit(props) {
         containerBackground,
         containerShadow,
         containerHoverShadow,
-        variation,
-        showVariation
     } = props.attributes;
+
+    const INNER_BLOCKS_TEMPLATE = [
+        [
+            "premium/icon",
+            {
+                selectedIcon: attributes?.selectedIcon,
+            },
+        ],
+        [
+            "premium/heading",
+            {
+                title: attributes?.titleText
+                    ? attributes.titleText[0]
+                    : __("Title", "premium-blocks-for-gutenberg"),
+                titleTag: attributes?.titleTag
+                    ? attributes.titleTag.toLowerCase()
+                    : "h2",
+                style: "default",
+            },
+        ],
+        [
+            "premium/text",
+            {
+                text: attributes?.descText
+                    ? attributes.descText[0]
+                    : __(
+                        "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.",
+                        "premium-blocks-for-gutenberg"
+                    ),
+            },
+        ],
+        [
+            "premium/button",
+            {
+                btnText: attributes?.btnText
+                    ? attributes.btnText[0]
+                    : __("Click Here", "premium-blocks-for-gutenberg"),
+            },
+        ],
+    ];
 
     const loadStyles = () => {
         const styles = {};
@@ -80,7 +114,7 @@ function Edit(props) {
             className: "premium-icon-box",
         },
         {
-            template: variation.innerBlocks,
+            template: INNER_BLOCKS_TEMPLATE,
             templateLock: false,
             allowedBlocks: [
                 "premium/heading",
@@ -93,56 +127,10 @@ function Edit(props) {
         }
     );
 
-    const blockVariationPickerOnSelect = (
-        nextVariation = props.defaultVariation
-    ) => {
-        if (nextVariation.attributes) {
-            props.setAttributes(nextVariation.attributes);
-        }
-        if (nextVariation.innerBlocks) {
-            props.replaceInnerBlocks(
-                props.clientId,
-                createBlocksFromInnerBlocksTemplate(nextVariation.innerBlocks)
-            );
-        }
-    };
-
-    const createBlocksFromInnerBlocksTemplate = (innerBlocksTemplate) => {
-        return innerBlocksTemplate.map(([name, attributes, innerBlocks = []]) =>
-            createBlock(
-                name,
-                attributes,
-                createBlocksFromInnerBlocksTemplate(innerBlocks)
-            )
-        );
-    };
-
-    const onSelectVariations = (v) => {
-        setAttributes({
-            variation: v,
-            showVariation: false
-        });
-        blockVariationPickerOnSelect(v);
-    }
-
     return (
         <Fragment>
             <InspectorControls key={"inspector"}>
-                <InspectorTabs tabs={["layout", "style", "advance"]}>
-                    <InspectorTab key={"layout"}>
-                        <PanelBody
-                            title={__("Icon box", "premium-blocks-for-gutenberg")}
-                            className="premium-panel-body"
-                            initialOpen={true}
-                        >
-                            <PremiumVariation
-                                setAttributes={setAttributes}
-                                variations={Variations}
-                                onSelect={onSelectVariations}
-                                value={variation}
-                            />
-                        </PanelBody>
-                    </InspectorTab>
+                <InspectorTabs tabs={["style", "advance"]}>
                     <InspectorTab key={"style"}>
                         <PanelBody
                             title={__(
@@ -268,53 +256,22 @@ function Edit(props) {
                     }),
                 })}
             >
-                {showVariation && <PremiumVariation
-                    setAttributes={setAttributes}
-                    variations={Variations}
-                    onSelect={onSelectVariations}
-                />
-                }
-                {!showVariation && variation != {} && <div {...innerBlocksProps} />}
+                <div {...innerBlocksProps} />
                 <style>{loadStyles()}</style>
             </div>
         </Fragment>
     );
 }
 
-const applyWithSelect = withSelect((select, props) => {
-    // eslint-disable-line no-shadow
+export default withSelect((select) => {
     const { __experimentalGetPreviewDeviceType = null } = select(
         "core/edit-post"
     );
-    const deviceType = __experimentalGetPreviewDeviceType
+    let deviceType = __experimentalGetPreviewDeviceType
         ? __experimentalGetPreviewDeviceType()
         : null;
-    const { getBlocks } = select("core/block-editor");
-    const {
-        getBlockType,
-        getBlockVariations,
-        getDefaultBlockVariation,
-    } = select("core/blocks");
-    const innerBlocks = getBlocks(props.clientId);
-    const { replaceInnerBlocks, updateBlockAttributes } = useDispatch(
-        "core/block-editor"
-    );
 
     return {
-        // Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
-        innerBlocks,
-        blockType: getBlockType(props.name),
-        defaultVariation:
-            typeof getDefaultBlockVariation === "undefined"
-                ? null
-                : getDefaultBlockVariation(props.name),
-        variations:
-            typeof getBlockVariations === "undefined"
-                ? null
-                : getBlockVariations(props.name),
-        replaceInnerBlocks,
-        updateBlockAttributes,
-        deviceType
+        deviceType: deviceType,
     };
-});
-export default compose(applyWithSelect)(Edit);
+})(Edit);
