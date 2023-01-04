@@ -96,8 +96,7 @@ const edit = (props) => {
             props.setAttributes({ isBlockRootParent: true });
         }
 
-        // Assigning block_id in the attribute.
-        props.setAttributes({ block_id: props.clientId.substr(0, 8) });
+        props.setAttributes({ block_id: props.clientId });
 
         const iframeEl = document.querySelector(`iframe[name='editor-canvas']`);
         let element;
@@ -113,7 +112,6 @@ const edit = (props) => {
             0 !==
             select("core/block-editor").getBlockParents(props.clientId).length
         ) {
-            // if there is no parent for container when child container moved outside root then do not show variations.
             props.setAttributes({ variationSelected: true });
         }
     }, []);
@@ -1043,25 +1041,6 @@ const edit = (props) => {
                         </PanelBody>
                     </InspectorTab>
                     <InspectorTab key={"advance"}>
-                        <PanelBody
-                            title={__(
-                                "Animation",
-                                "premium-blocks-for-gutenberg"
-                            )}
-                            initialOpen={false}
-                        >
-                            <Animation
-                                uniqueId={block_id}
-                                label={__(
-                                    "Animation",
-                                    "premium-blocks-for-gutenberg"
-                                )}
-                                value={animation}
-                                onChange={(value) =>
-                                    setAttributes({ animation: value })
-                                }
-                            />
-                        </PanelBody>
                         <PremiumResponsiveTabs
                             Desktop={hideDesktop}
                             Tablet={hideTablet}
@@ -1088,6 +1067,25 @@ const edit = (props) => {
                                 })
                             }
                         />
+                        <PanelBody
+                            title={__(
+                                "Animation",
+                                "premium-blocks-for-gutenberg"
+                            )}
+                            initialOpen={false}
+                        >
+                            <Animation
+                                uniqueId={block_id}
+                                label={__(
+                                    "Animation",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                value={animation}
+                                onChange={(value) =>
+                                    setAttributes({ animation: value })
+                                }
+                            />
+                        </PanelBody>
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>

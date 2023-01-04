@@ -9,6 +9,7 @@ import {
     paddingCss,
     marginCss,
     gradientValue,
+    generateCss,
 } from "@pbg/helpers";
 
 const Render = (props) => {
@@ -79,7 +80,6 @@ const Render = (props) => {
 
     const CustomTag = `${containerTag}`;
 
-
     const hasChildren =
         0 !== select("core/block-editor").getBlocks(clientId).length;
     const blockProps = useBlockProps({
@@ -87,26 +87,18 @@ const Render = (props) => {
             "wp-block-premium-container",
             `premium-block-${block_id}`,
             `premium-blocks-${block_id}`,
-            isBlockRootParent
-                ? `${align} premium-is-root-container`
-                : "",
+            isBlockRootParent ? `${align} premium-is-root-container` : "",
             {
                 " premium-desktop-hidden": hideDesktop,
                 " premium-tablet-hidden": hideTablet,
                 " premium-mobile-hidden": hideMobile,
             }
-
-
         ),
     });
     const loadStyles = () => {
         const styles = {};
         const containerFullWidth = "100vw";
         let containerFlexSelector = ` .editor-styles-wrapper #block-${clientId}.wp-block-premium-container > .premium-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout`;
-        if (!isBlockRootParent) {
-            containerFlexSelector = ` .editor-styles-wrapper #block-${clientId}.wp-block-premium-container > .premium-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout`;
-        }
-        console.log(isBlockRootParent, containerFlexSelector, "Styles")
         styles[containerFlexSelector] = {
             "min-height": `${minHeight[props.deviceType]}${minHeight["unit"]}`,
             "flex-direction": direction[props.deviceType],
@@ -115,8 +107,9 @@ const Render = (props) => {
             "flex-wrap": wrapItems[props.deviceType],
             "align-content": alignContent[props.deviceType],
             "row-gap": `${rowGutter[props.deviceType]}${rowGutter["unit"]}`,
-            "column-gap": `${columnGutter[props.deviceType]}${columnGutter["unit"]
-                }`,
+            "column-gap": `${columnGutter[props.deviceType]}${
+                columnGutter["unit"]
+            }`,
         };
 
         styles[
@@ -128,20 +121,24 @@ const Render = (props) => {
         styles[
             `.is-root-container  #block-${clientId}  .premium-top-shape svg`
         ] = {
-            width: `${shapeTop.width[props.deviceType]}${shapeTop.width["unit"]
-                }`,
-            height: `${shapeTop.height[props.deviceType]}${shapeTop.height["unit"]
-                }`,
+            width: `${shapeTop.width[props.deviceType]}${
+                shapeTop.width["unit"]
+            }`,
+            height: `${shapeTop.height[props.deviceType]}${
+                shapeTop.height["unit"]
+            }`,
             fill: `${shapeTop["color"]}`,
         };
 
         styles[
             `.is-root-container  #block-${clientId} .premium-bottom-shape svg`
         ] = {
-            width: `${shapeBottom.width[props.deviceType]}${shapeBottom.width["unit"]
-                }`,
-            height: `${shapeBottom.height[props.deviceType]}${shapeBottom.height["unit"]
-                }`,
+            width: `${shapeBottom.width[props.deviceType]}${
+                shapeBottom.width["unit"]
+            }`,
+            height: `${shapeBottom.height[props.deviceType]}${
+                shapeBottom.height["unit"]
+            }`,
             fill: `${shapeBottom["color"]}`,
         };
 
@@ -182,38 +179,14 @@ const Render = (props) => {
             "background-attachment": backgroundOverlayHover["fixed"]
                 ? "fixed"
                 : "unset",
-            opacity: `${backgroundOverlayHover ? hoverOverlayOpacity / 100 : 1
-                } !important`,
+            opacity: `${
+                backgroundOverlayHover ? hoverOverlayOpacity / 100 : 1
+            } !important`,
             filter: `brightness( ${hoverOverlayFilter["bright"]}% ) contrast( ${hoverOverlayFilter["contrast"]}% ) saturate( ${hoverOverlayFilter["saturation"]}% ) blur( ${hoverOverlayFilter["blur"]}px ) hue-rotate( ${hoverOverlayFilter["hue"]}deg ) !important`,
         };
-        let styleCss = "";
-
-        for (const selector in styles) {
-            const selectorStyles = styles[selector];
-            const filteredStyles = Object.keys(selectorStyles)
-                .map((property) => {
-                    const value = selectorStyles[property];
-                    const valueWithoutUnits = value
-                        ? value
-                            .toString()
-                            .replaceAll("px", "")
-                            .replaceAll(/\s/g, "")
-                        : "";
-                    if (value && !value.toString().includes("undefined")) {
-                        return `${property}: ${value};`;
-                    }
-                })
-                .filter((style) => !!style)
-                .join("\n");
-            styleCss += `${selector}{
-                    ${filteredStyles}
-                }\n`;
-        }
-        return styleCss;
+        return generateCss(styles);
     };
     return (
-
-
         <CustomTag
             {...blockProps}
             style={{
@@ -221,9 +194,11 @@ const Render = (props) => {
                 ...paddingCss(padding, props.deviceType),
                 ...marginCss(margin, props.deviceType),
                 ...gradientBackground(backgroundOptions),
-                boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical || 0
-                    }px ${boxShadow.blur || 0}px ${boxShadow.color} ${boxShadow.position
-                    }`,
+                boxShadow: `${boxShadow.horizontal || 0}px ${
+                    boxShadow.vertical || 0
+                }px ${boxShadow.blur || 0}px ${boxShadow.color} ${
+                    boxShadow.position
+                }`,
                 overflow: overflow,
             }}
         >
@@ -240,9 +215,7 @@ const Render = (props) => {
                         className={topShapeClasses}
                         dangerouslySetInnerHTML={{
                             __html:
-                                PremiumBlocksSettings.shapes[
-                                shapeTop.style
-                                ],
+                                PremiumBlocksSettings.shapes[shapeTop.style],
                         }}
                     />
                 )}
@@ -259,9 +232,7 @@ const Render = (props) => {
                         className={bottomShapeClasses}
                         dangerouslySetInnerHTML={{
                             __html:
-                                PremiumBlocksSettings.shapes[
-                                shapeBottom.style
-                                ],
+                                PremiumBlocksSettings.shapes[shapeBottom.style],
                         }}
                     />
                 )}

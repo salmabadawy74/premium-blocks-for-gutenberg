@@ -7,6 +7,7 @@ import {
     videoBackground,
     animationAttr,
     gradientValue,
+    generateCss,
 } from "@pbg/helpers";
 
 const Save = (props) => {
@@ -110,34 +111,13 @@ const Save = (props) => {
             "background-attachment": backgroundOverlayHover["fixed"]
                 ? "fixed"
                 : "unset",
-            opacity: `${backgroundOverlayHover ? hoverOverlayOpacity / 100 : 1
-                } !important`,
+            opacity: `${
+                backgroundOverlayHover ? hoverOverlayOpacity / 100 : 1
+            } !important`,
             filter: `brightness( ${hoverOverlayFilter["bright"]}% ) contrast( ${hoverOverlayFilter["contrast"]}% ) saturate( ${hoverOverlayFilter["saturation"]}% ) blur( ${hoverOverlayFilter["blur"]}px ) hue-rotate( ${hoverOverlayFilter["hue"]}deg ) !important`,
         };
 
-        let styleCss = "";
-        for (const selector in styles) {
-            const selectorStyles = styles[selector];
-            const filteredStyles = Object.keys(selectorStyles)
-                .map((property) => {
-                    const value = selectorStyles[property];
-                    const valueWithoutUnits = value
-                        ? value
-                            .toString()
-                            .replaceAll("px", "")
-                            .replaceAll(/\s/g, "")
-                        : "";
-                    if (value && !value.toString().includes("undefined")) {
-                        return `${property}: ${value}; `;
-                    }
-                })
-                .filter((style) => !!style)
-                .join("\n");
-            styleCss += `${selector} {
-                ${filteredStyles}
-            } \n`;
-        }
-        return styleCss;
+        return generateCss(styles);
     };
     const topShapeClasses = classnames(
         "premium-shape-divider",
@@ -155,7 +135,6 @@ const Save = (props) => {
     );
     const blockProps = useBlockProps.save();
     return (
-
         <CustomTag
             id={blockProps.id}
             className={classnames(
@@ -163,16 +142,16 @@ const Save = (props) => {
                 "wp-block-premium-container",
                 `premium-block-${block_id} `,
                 `premium-blocks-${block_id} `,
-                isBlockRootParent
-                    ? `${align} premium-is-root-container`
-                    : ""
+                isBlockRootParent ? `${align} premium-is-root-container` : ""
             )}
             key={block_id}
             style={{
                 ...gradientBackground(backgroundOptions),
-                boxShadow: `${boxShadow.horizontal || 0} px ${boxShadow.vertical || 0
-                    } px ${boxShadow.blur || 0} px ${boxShadow.color} ${boxShadow.position
-                    } `,
+                boxShadow: `${boxShadow.horizontal || 0} px ${
+                    boxShadow.vertical || 0
+                } px ${boxShadow.blur || 0} px ${boxShadow.color} ${
+                    boxShadow.position
+                } `,
                 overflow: overflow,
                 borderStyle: border["borderType"],
                 borderColor: border["borderColor"],
@@ -190,9 +169,8 @@ const Save = (props) => {
                     <div
                         className={topShapeClasses}
                         dangerouslySetInnerHTML={{
-                            __html: PremiumBlocksSettings.shapes[
-                                shapeTop.style
-                            ],
+                            __html:
+                                PremiumBlocksSettings.shapes[shapeTop.style],
                         }}
                     />
                 )}
@@ -208,9 +186,8 @@ const Save = (props) => {
                     <div
                         className={bottomShapeClasses}
                         dangerouslySetInnerHTML={{
-                            __html: PremiumBlocksSettings.shapes[
-                                shapeBottom.style
-                            ],
+                            __html:
+                                PremiumBlocksSettings.shapes[shapeBottom.style],
                         }}
                     />
                 )}
@@ -218,8 +195,7 @@ const Save = (props) => {
                 className={`premium-row__block_overlay`}
                 style={{
                     ...gradientBackground(backgroundOverlay),
-                    opacity: `${backgroundOverlay ? overlayOpacity / 100 : 1
-                        } `,
+                    opacity: `${backgroundOverlay ? overlayOpacity / 100 : 1} `,
                     filter: `brightness(${overlayFilter["bright"]} % ) contrast(${overlayFilter["contrast"]} % ) saturate(${overlayFilter["saturation"]} % ) blur(${overlayFilter["blur"]}px) hue - rotate(${overlayFilter["hue"]}deg)`,
                 }}
             ></div>

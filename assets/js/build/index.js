@@ -15699,11 +15699,10 @@ const edit = props => {
       props.setAttributes({
         isBlockRootParent: true
       });
-    } // Assigning block_id in the attribute.
-
+    }
 
     props.setAttributes({
-      block_id: props.clientId.substr(0, 8)
+      block_id: props.clientId
     });
     const iframeEl = document.querySelector(`iframe[name='editor-canvas']`);
     let element;
@@ -15715,7 +15714,6 @@ const edit = props => {
     }
 
     if (0 !== select("core/block-editor").getBlockParents(props.clientId).length) {
-      // if there is no parent for container when child container moved outside root then do not show variations.
       props.setAttributes({
         variationSelected: true
       });
@@ -16291,17 +16289,7 @@ const edit = props => {
     })
   }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.InspectorTab, {
     key: "advance"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-    title: __("Animation", "premium-blocks-for-gutenberg"),
-    initialOpen: false
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.Animation, {
-    uniqueId: block_id,
-    label: __("Animation", "premium-blocks-for-gutenberg"),
-    value: animation,
-    onChange: value => setAttributes({
-      animation: value
-    })
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.PremiumResponsiveTabs, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.PremiumResponsiveTabs, {
     Desktop: hideDesktop,
     Tablet: hideTablet,
     Mobile: hideMobile,
@@ -16314,7 +16302,17 @@ const edit = props => {
     onChangeMobile: value => setAttributes({
       hideMobile: value ? " premium-mobile-hidden" : ""
     })
-  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_render__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+    title: __("Animation", "premium-blocks-for-gutenberg"),
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.Animation, {
+    uniqueId: block_id,
+    label: __("Animation", "premium-blocks-for-gutenberg"),
+    value: animation,
+    onChange: value => setAttributes({
+      animation: value
+    })
+  }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_render__WEBPACK_IMPORTED_MODULE_5__["default"], {
     parentProps: props
   }));
 };
@@ -16820,12 +16818,6 @@ const Render = props => {
     const styles = {};
     const containerFullWidth = "100vw";
     let containerFlexSelector = ` .editor-styles-wrapper #block-${clientId}.wp-block-premium-container > .premium-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout`;
-
-    if (!isBlockRootParent) {
-      containerFlexSelector = ` .editor-styles-wrapper #block-${clientId}.wp-block-premium-container > .premium-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout`;
-    }
-
-    console.log(isBlockRootParent, containerFlexSelector, "Styles");
     styles[containerFlexSelector] = {
       "min-height": `${minHeight[props.deviceType]}${minHeight["unit"]}`,
       "flex-direction": direction[props.deviceType],
@@ -16884,24 +16876,7 @@ const Render = props => {
       opacity: `${backgroundOverlayHover ? hoverOverlayOpacity / 100 : 1} !important`,
       filter: `brightness( ${hoverOverlayFilter["bright"]}% ) contrast( ${hoverOverlayFilter["contrast"]}% ) saturate( ${hoverOverlayFilter["saturation"]}% ) blur( ${hoverOverlayFilter["blur"]}px ) hue-rotate( ${hoverOverlayFilter["hue"]}deg ) !important`
     };
-    let styleCss = "";
-
-    for (const selector in styles) {
-      const selectorStyles = styles[selector];
-      const filteredStyles = Object.keys(selectorStyles).map(property => {
-        const value = selectorStyles[property];
-        const valueWithoutUnits = value ? value.toString().replaceAll("px", "").replaceAll(/\s/g, "") : "";
-
-        if (value && !value.toString().includes("undefined")) {
-          return `${property}: ${value};`;
-        }
-      }).filter(style => !!style).join("\n");
-      styleCss += `${selector}{
-                    ${filteredStyles}
-                }\n`;
-    }
-
-    return styleCss;
+    return (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.generateCss)(styles);
   };
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(CustomTag, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, blockProps, {
@@ -17061,24 +17036,7 @@ const Save = props => {
       opacity: `${backgroundOverlayHover ? hoverOverlayOpacity / 100 : 1} !important`,
       filter: `brightness( ${hoverOverlayFilter["bright"]}% ) contrast( ${hoverOverlayFilter["contrast"]}% ) saturate( ${hoverOverlayFilter["saturation"]}% ) blur( ${hoverOverlayFilter["blur"]}px ) hue-rotate( ${hoverOverlayFilter["hue"]}deg ) !important`
     };
-    let styleCss = "";
-
-    for (const selector in styles) {
-      const selectorStyles = styles[selector];
-      const filteredStyles = Object.keys(selectorStyles).map(property => {
-        const value = selectorStyles[property];
-        const valueWithoutUnits = value ? value.toString().replaceAll("px", "").replaceAll(/\s/g, "") : "";
-
-        if (value && !value.toString().includes("undefined")) {
-          return `${property}: ${value}; `;
-        }
-      }).filter(style => !!style).join("\n");
-      styleCss += `${selector} {
-                ${filteredStyles}
-            } \n`;
-    }
-
-    return styleCss;
+    return (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.generateCss)(styles);
   };
 
   const topShapeClasses = classnames__WEBPACK_IMPORTED_MODULE_2___default()("premium-shape-divider", "premium-top-shape", {
