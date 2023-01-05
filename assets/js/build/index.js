@@ -36305,49 +36305,18 @@ function Edit(props) {
     allowedBlocks: ["premium/heading", "premium/icon", "premium/button", "premium/text", "premium/image", "premium/lottie"]
   });
 
-  const blockVariationPickerOnSelect = function () {
-    let nextVariation = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : props.defaultVariation;
-
-    if (nextVariation.attributes) {
-      props.setAttributes(nextVariation.attributes);
-    }
-
-    if (nextVariation.innerBlocks) {
-      props.replaceInnerBlocks(props.clientId, createBlocksFromInnerBlocksTemplate(nextVariation.innerBlocks));
-    }
-  };
-
-  const createBlocksFromInnerBlocksTemplate = innerBlocksTemplate => {
-    return innerBlocksTemplate.map(_ref => {
-      let [name, attributes, innerBlocks = []] = _ref;
-      return createBlock(name, attributes, createBlocksFromInnerBlocksTemplate(innerBlocks));
-    });
-  };
-
   const onSelectVariations = v => {
     setAttributes({
       variation: v,
       showVariation: false
     });
-    blockVariationPickerOnSelect(v);
   };
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InspectorControls, {
     key: "inspector"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.InspectorTabs, {
-    tabs: ["layout", "style", "advance"]
+  }, !showVariation && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.InspectorTabs, {
+    tabs: ["style", "advance"]
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.InspectorTab, {
-    key: "layout"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-    title: __("Icon box", "premium-blocks-for-gutenberg"),
-    className: "premium-panel-body",
-    initialOpen: true
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.PremiumVariation, {
-    setAttributes: setAttributes,
-    variations: _variations__WEBPACK_IMPORTED_MODULE_4__.Variations,
-    onSelect: onSelectVariations,
-    value: variation
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.InspectorTab, {
     key: "style"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
     title: __("Container", "premium-blocks-for-gutenberg"),
@@ -36425,37 +36394,15 @@ function Edit(props) {
   }), !showVariation && variation != {} && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", innerBlocksProps), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, loadStyles())));
 }
 
-const applyWithSelect = withSelect((select, props) => {
-  // eslint-disable-line no-shadow
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (withSelect(select => {
   const {
     __experimentalGetPreviewDeviceType = null
   } = select("core/edit-post");
-  const deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
-  const {
-    getBlocks
-  } = select("core/block-editor");
-  const {
-    getBlockType,
-    getBlockVariations,
-    getDefaultBlockVariation
-  } = select("core/blocks");
-  const innerBlocks = getBlocks(props.clientId);
-  const {
-    replaceInnerBlocks,
-    updateBlockAttributes
-  } = useDispatch("core/block-editor");
+  let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
   return {
-    // Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
-    innerBlocks,
-    blockType: getBlockType(props.name),
-    defaultVariation: typeof getDefaultBlockVariation === "undefined" ? null : getDefaultBlockVariation(props.name),
-    variations: typeof getBlockVariations === "undefined" ? null : getBlockVariations(props.name),
-    replaceInnerBlocks,
-    updateBlockAttributes,
-    deviceType
+    deviceType: deviceType
   };
-});
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (compose(applyWithSelect)(Edit));
+})(Edit));
 
 /***/ }),
 
