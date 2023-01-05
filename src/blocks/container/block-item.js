@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-const BlockItemComponent = ({ block, container, customSelectors, onChange }) => {
+const BlockItemComponent = ({ block, container, customSelectors, onChange, onRemove }) => {
     const [show, setShow] = useState(false);
-    const invalidTags = ['input', 'style', 'script'];
-    const { name } = block;
+    const invalidTags = ['input', 'style', 'script', 'br', 'hr'];
+    const { name, clientId } = block;
     const blockName = name.includes('core') ? name.replace('core/', '') : name.replaceAll('/', '-');
     const blockClass = `wp-block-${blockName}`;
     const blockElement = container ? container.querySelectorAll(`.${blockClass}`) : '';
@@ -17,7 +17,7 @@ const BlockItemComponent = ({ block, container, customSelectors, onChange }) => 
     });
 
     const getFilteredClasses = (classes) => {
-        const newClasses = Array.from(classes).filter(className => !invalidClasses.some(v => className.includes(v)));
+        const newClasses = Array.from(classes).filter(className => !invalidClasses.some(v => className.includes(v)) && !clientId.split('-').some(v => className.includes(v)) && !/\d/.test(className));
 
         return newClasses;
     }
@@ -65,6 +65,7 @@ const BlockItemComponent = ({ block, container, customSelectors, onChange }) => 
             selector += `.${getFilteredClasses(element.classList)}`;
         }
         if (customSelectors.includes(selector)) {
+            onRemove(container.querySelectorAll(selector));
             newCustomSelectors = newCustomSelectors.filter(seletorE => seletorE !== selector);
         } else {
             newCustomSelectors.push(selector);

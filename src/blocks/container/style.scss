@@ -2784,11 +2784,13 @@
 }
 .pbg-equal-height-selected {
     position: relative;
+    background-color: rgba($color: #c2cf8a, $alpha: 0.3) !important;
+    border: 1px solid #fddd9b;
     .pbg-element-overlay {
         position: absolute;
         top: 50%;
-        transform: translateY(-50%);
-        left: 0;
+        transform: translate(-50%, -50%);
+        left: 50%;
         background-color: rgba($color: #007cba, $alpha: 0.3);
     }
 }

@@ -1925,12 +1925,14 @@
     outline: none; }
 
 .pbg-equal-height-selected {
-  position: relative; }
+  position: relative;
+  background-color: rgba(194, 207, 138, 0.3) !important;
+  border: 1px solid #fddd9b; }
   .pbg-equal-height-selected .pbg-element-overlay {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
-    left: 0;
+    transform: translate(-50%, -50%);
+    left: 50%;
     background-color: rgba(0, 124, 186, 0.3); }
 
 /************ Responsive **************/

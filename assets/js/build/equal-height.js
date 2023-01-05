@@ -130,7 +130,7 @@ if (Object.keys(PBG_EqualHeight).length) {
     const containerBlock = document.querySelector(`.premium-block-${id}`);
     const {
       equalHeightType,
-      customSelector,
+      customSelectors,
       equalHeightBlocks
     } = attributes;
     if (equalHeightType === 'blocks') {
@@ -144,11 +144,12 @@ if (Object.keys(PBG_EqualHeight).length) {
       }
     }
     if (equalHeightType === 'custom-selector') {
-      if (customSelector?.length && (0,_utils__WEBPACK_IMPORTED_MODULE_0__.checkSelector)(customSelector)) {
-        const allSelectors = customSelector.split(",");
-        for (const selector of allSelectors) {
-          const allElements = containerBlock.querySelectorAll(selector);
-          (0,_utils__WEBPACK_IMPORTED_MODULE_0__.setElementsHeight)(allElements);
+      if (customSelectors?.length) {
+        for (const selector of customSelectors) {
+          if ((0,_utils__WEBPACK_IMPORTED_MODULE_0__.checkSelector)(selector)) {
+            const allElements = containerBlock.querySelectorAll(selector);
+            (0,_utils__WEBPACK_IMPORTED_MODULE_0__.setElementsHeight)(allElements);
+          }
         }
       }
     }

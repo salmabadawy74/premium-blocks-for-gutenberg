@@ -5,7 +5,7 @@ if (Object.keys(PBG_EqualHeight).length) {
     Object.keys(PBG_EqualHeight).map(id => {
         const attributes = PBG_EqualHeight[id].attributes;
         const containerBlock = document.querySelector(`.premium-block-${id}`);
-        const { equalHeightType, customSelector, equalHeightBlocks } = attributes;
+        const { equalHeightType, customSelectors, equalHeightBlocks } = attributes;
 
         if (equalHeightType === 'blocks') {
             if (equalHeightBlocks.length) {
@@ -19,11 +19,12 @@ if (Object.keys(PBG_EqualHeight).length) {
         }
 
         if (equalHeightType === 'custom-selector') {
-            if (customSelector?.length && checkSelector(customSelector)) {
-                const allSelectors = customSelector.split(",");
-                for (const selector of allSelectors) {
-                    const allElements = containerBlock.querySelectorAll(selector);
-                    setElementsHeight(allElements);
+            if (customSelectors?.length) {
+                for (const selector of customSelectors) {
+                    if (checkSelector(selector)) {
+                        const allElements = containerBlock.querySelectorAll(selector);
+                        setElementsHeight(allElements);
+                    }
                 }
             }
         }

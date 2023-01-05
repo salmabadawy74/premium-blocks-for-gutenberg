@@ -17618,12 +17618,14 @@ const BlockItemComponent = _ref => {
     block,
     container,
     customSelectors,
-    onChange
+    onChange,
+    onRemove
   } = _ref;
   const [show, setShow] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
-  const invalidTags = ['input', 'style', 'script'];
+  const invalidTags = ['input', 'style', 'script', 'br', 'hr'];
   const {
-    name
+    name,
+    clientId
   } = block;
   const blockName = name.includes('core') ? name.replace('core/', '') : name.replaceAll('/', '-');
   const blockClass = `wp-block-${blockName}`;
@@ -17640,7 +17642,7 @@ const BlockItemComponent = _ref => {
     return !invalidTags.includes(nodeName.toLowerCase()) && !parent.classList.contains('components-base-control') && !classList.contains('components-base-control') && classList[0] !== 'block-editor-block-list__block' && !classList.contains('pbg-element-overlay');
   });
   const getFilteredClasses = classes => {
-    const newClasses = Array.from(classes).filter(className => !invalidClasses.some(v => className.includes(v)));
+    const newClasses = Array.from(classes).filter(className => !invalidClasses.some(v => className.includes(v)) && !clientId.split('-').some(v => className.includes(v)) && !/\d/.test(className));
     return newClasses;
   };
   const getWidth = element => {
@@ -17679,6 +17681,7 @@ const BlockItemComponent = _ref => {
       selector += `.${getFilteredClasses(element.classList)}`;
     }
     if (customSelectors.includes(selector)) {
+      onRemove(container.querySelectorAll(selector));
       newCustomSelectors = newCustomSelectors.filter(seletorE => seletorE !== selector);
     } else {
       newCustomSelectors.push(selector);
@@ -17940,12 +17943,13 @@ const edit = props => {
             (0,_utils__WEBPACK_IMPORTED_MODULE_7__.resetBlocksHeight)(block, containerRef.current);
           }
         }
-        if (customSelector?.length && (0,_utils__WEBPACK_IMPORTED_MODULE_7__.checkSelector)(customSelector)) {
-          const allSelectors = customSelector.split(",");
-          for (const selector of allSelectors) {
-            const allElements = containerRef.current.querySelectorAll(selector);
-            (0,_utils__WEBPACK_IMPORTED_MODULE_7__.resetHeight)(allElements);
-            (0,_utils__WEBPACK_IMPORTED_MODULE_7__.setElementsHeight)(allElements);
+        if (customSelectors?.length) {
+          for (const selector of customSelectors) {
+            if ((0,_utils__WEBPACK_IMPORTED_MODULE_7__.checkSelector)(selector)) {
+              const allElements = containerRef.current.querySelectorAll(selector);
+              (0,_utils__WEBPACK_IMPORTED_MODULE_7__.resetHeight)(allElements);
+              (0,_utils__WEBPACK_IMPORTED_MODULE_7__.setElementsHeight)(allElements);
+            }
           }
         }
       }
@@ -18583,7 +18587,7 @@ const edit = props => {
       label: __("Blocks", "premium-blocks-for-gutenberg")
     }, {
       value: "custom-selector",
-      label: __("Custom Selector", "premium-blocks-for-gutenberg")
+      label: __("Elements", "premium-blocks-for-gutenberg")
     }],
     value: equalHeightType,
     onChange: newValue => setAttributes({
@@ -18591,14 +18595,15 @@ const edit = props => {
     }),
     label: __("Apply on", "premium-blocks-for-gutenberg"),
     showIcons: false
-  }), equalHeightType === 'custom-selector' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
-    label: __("Selectors", "premium-blocks-for-gutenberg"),
-    value: customSelector,
-    onChange: value => setAttributes({
-      customSelector: value
-    }),
-    help: __("Enter selectors separated with ' , '", "premium-blocks-for-gutenberg")
-  }), equalHeightType === 'blocks' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(react_select__WEBPACK_IMPORTED_MODULE_10__["default"], {
+  }), equalHeightType === 'custom-selector' && props.uniqueInnerBlocks?.length > 0 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "pbg-custom-selectors-blocks"
+  }, props.uniqueInnerBlocks.map(block => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_block_item__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    onRemove: elements => (0,_utils__WEBPACK_IMPORTED_MODULE_7__.resetHeight)(elements),
+    block: block,
+    customSelectors: customSelectors,
+    container: containerRef.current,
+    onChange: value => setAttributes(value)
+  }))), equalHeightType === 'blocks' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(react_select__WEBPACK_IMPORTED_MODULE_10__["default"], {
     value: innerBlocksOptions.filter(obj => equalHeightBlocks.includes(obj.value)),
     options: innerBlocksOptions,
     isMulti: true,
@@ -18608,14 +18613,7 @@ const edit = props => {
     components: {
       MultiValueRemove: MultiValue
     }
-  }), props.uniqueInnerBlocks?.length > 0 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "pbg-custom-selectors-blocks"
-  }, props.uniqueInnerBlocks.map(block => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_block_item__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    block: block,
-    customSelectors: customSelectors,
-    container: containerRef.current,
-    onChange: value => setAttributes(value)
-  })))))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  })))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "block-editor-block-list__block wp-block",
     id: `block-${block_id}`,
     "data-block": `premium-container`,

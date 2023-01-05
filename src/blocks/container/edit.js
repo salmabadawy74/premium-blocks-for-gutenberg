@@ -199,12 +199,13 @@ const edit = (props) => {
                         resetBlocksHeight(block, containerRef.current);
                     }
                 }
-                if (customSelector?.length && checkSelector(customSelector)) {
-                    const allSelectors = customSelector.split(",");
-                    for (const selector of allSelectors) {
-                        const allElements = containerRef.current.querySelectorAll(selector);
-                        resetHeight(allElements);
-                        setElementsHeight(allElements);
+                if (customSelectors?.length) {
+                    for (const selector of customSelectors) {
+                        if (checkSelector(selector)) {
+                            const allElements = containerRef.current.querySelectorAll(selector);
+                            resetHeight(allElements);
+                            setElementsHeight(allElements);
+                        }
                     }
                 }
             }
@@ -1258,7 +1259,7 @@ const edit = (props) => {
                                                 {
                                                     value: "custom-selector",
                                                     label: __(
-                                                        "Custom Selector",
+                                                        "Elements",
                                                         "premium-blocks-for-gutenberg"
                                                     ),
                                                 },
@@ -1273,31 +1274,15 @@ const edit = (props) => {
                                             )}
                                             showIcons={false}
                                         />
-                                        {equalHeightType === 'custom-selector' && (
-                                            <TextControl
-                                                label={__(
-                                                    "Selectors",
-                                                    "premium-blocks-for-gutenberg"
-                                                )}
-                                                value={customSelector}
-                                                onChange={(value) =>
-                                                    setAttributes({ customSelector: value })
-                                                }
-                                                help={__(
-                                                    "Enter selectors separated with ' , '",
-                                                    "premium-blocks-for-gutenberg"
-                                                )}
-                                            />
+                                        {(equalHeightType === 'custom-selector' && props.uniqueInnerBlocks?.length > 0) && (
+                                            <div className="pbg-custom-selectors-blocks">
+                                                {props.uniqueInnerBlocks.map(block => <BlockItemComponent onRemove={(elements) => resetHeight(elements)} block={block} customSelectors={customSelectors} container={containerRef.current} onChange={(value) => setAttributes(value)} />)}
+                                            </div>
                                         )}
                                         {equalHeightType === 'blocks' && (
                                             <AdvancedSelect value={innerBlocksOptions.filter(obj => equalHeightBlocks.includes(obj.value))} options={innerBlocksOptions} isMulti={true} onChange={(option) => setAttributes({ equalHeightBlocks: option.map(option => option.value) })} components={{
                                                 MultiValueRemove: MultiValue
                                             }} />
-                                        )}
-                                        {props.uniqueInnerBlocks?.length > 0 && (
-                                            <div className="pbg-custom-selectors-blocks">
-                                                {props.uniqueInnerBlocks.map(block => <BlockItemComponent block={block} customSelectors={customSelectors} container={containerRef.current} onChange={(value) => setAttributes(value)} />)}
-                                            </div>
                                         )}
                                     </>
                                 )}
