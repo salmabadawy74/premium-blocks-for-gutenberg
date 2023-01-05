@@ -93,56 +93,18 @@ function Edit(props) {
         }
     );
 
-    const blockVariationPickerOnSelect = (
-        nextVariation = props.defaultVariation
-    ) => {
-        if (nextVariation.attributes) {
-            props.setAttributes(nextVariation.attributes);
-        }
-        if (nextVariation.innerBlocks) {
-            props.replaceInnerBlocks(
-                props.clientId,
-                createBlocksFromInnerBlocksTemplate(nextVariation.innerBlocks)
-            );
-        }
-    };
-
-    const createBlocksFromInnerBlocksTemplate = (innerBlocksTemplate) => {
-        return innerBlocksTemplate.map(([name, attributes, innerBlocks = []]) =>
-            createBlock(
-                name,
-                attributes,
-                createBlocksFromInnerBlocksTemplate(innerBlocks)
-            )
-        );
-    };
 
     const onSelectVariations = (v) => {
         setAttributes({
             variation: v,
             showVariation: false
         });
-        blockVariationPickerOnSelect(v);
     }
 
     return (
         <Fragment>
             <InspectorControls key={"inspector"}>
-                <InspectorTabs tabs={["layout", "style", "advance"]}>
-                    <InspectorTab key={"layout"}>
-                        <PanelBody
-                            title={__("Icon box", "premium-blocks-for-gutenberg")}
-                            className="premium-panel-body"
-                            initialOpen={true}
-                        >
-                            <PremiumVariation
-                                setAttributes={setAttributes}
-                                variations={Variations}
-                                onSelect={onSelectVariations}
-                                value={variation}
-                            />
-                        </PanelBody>
-                    </InspectorTab>
+                {!showVariation && <InspectorTabs tabs={["style", "advance"]}>
                     <InspectorTab key={"style"}>
                         <PanelBody
                             title={__(
@@ -257,7 +219,7 @@ function Edit(props) {
                             }
                         />
                     </InspectorTab>
-                </InspectorTabs>
+                </InspectorTabs>}
             </InspectorControls>
             <div
                 {...useBlockProps({
@@ -281,40 +243,14 @@ function Edit(props) {
     );
 }
 
-const applyWithSelect = withSelect((select, props) => {
-    // eslint-disable-line no-shadow
-    const { __experimentalGetPreviewDeviceType = null } = select(
-        "core/edit-post"
-    );
-    const deviceType = __experimentalGetPreviewDeviceType
+export default withSelect((select) => {
+    const { __experimentalGetPreviewDeviceType = null } =
+        select("core/edit-post");
+    let deviceType = __experimentalGetPreviewDeviceType
         ? __experimentalGetPreviewDeviceType()
         : null;
-    const { getBlocks } = select("core/block-editor");
-    const {
-        getBlockType,
-        getBlockVariations,
-        getDefaultBlockVariation,
-    } = select("core/blocks");
-    const innerBlocks = getBlocks(props.clientId);
-    const { replaceInnerBlocks, updateBlockAttributes } = useDispatch(
-        "core/block-editor"
-    );
 
     return {
-        // Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
-        innerBlocks,
-        blockType: getBlockType(props.name),
-        defaultVariation:
-            typeof getDefaultBlockVariation === "undefined"
-                ? null
-                : getDefaultBlockVariation(props.name),
-        variations:
-            typeof getBlockVariations === "undefined"
-                ? null
-                : getBlockVariations(props.name),
-        replaceInnerBlocks,
-        updateBlockAttributes,
-        deviceType
+        deviceType: deviceType,
     };
-});
-export default compose(applyWithSelect)(Edit);
+})(Edit);
