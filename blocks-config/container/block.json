@@ -292,18 +292,18 @@
         "columnGutter": {
             "type": "object",
             "default": {
-                "Desktop": 30,
-                "Tablet": 30,
-                "Mobile": 30,
+                "Desktop": 20,
+                "Tablet": 20,
+                "Mobile": 20,
                 "unit": "px"
             }
         },
         "rowGutter": {
             "type": "object",
             "default": {
-                "Desktop": 30,
-                "Tablet": 30,
-                "Mobile": 30,
+                "Desktop": 20,
+                "Tablet": 20,
+                "Mobile": 20,
                 "unit": "px"
             }
         },
