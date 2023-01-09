@@ -48,9 +48,10 @@ export default function PostTemplateEdit({
     },
 }) {
     const TEMPLATE = [
-        ["premium/post-title"],
-        ["premium/post-excerpt"],
         ["premium/post-featured-image"],
+        ["premium/post-title"],
+        ['premium/post-meta'],
+        ["premium/post-excerpt"],
     ];
 
     const innerBlocksProps = useInnerBlocksProps(
@@ -66,7 +67,6 @@ export default function PostTemplateEdit({
             ],
         }
     );
-    console.log("KKKKKKKK");
     const [{ page }] = queryContext;
     const [activeBlockContextId, setActiveBlockContextId] = useState();
     const { posts, blocks } = useSelect(
@@ -179,7 +179,7 @@ export default function PostTemplateEdit({
         [posts]
     );
     const blockProps = useBlockProps();
-    console.log(posts, "poppppp", blocks);
+
     if (!posts) {
         return (
             <p {...blockProps}>
@@ -191,6 +191,7 @@ export default function PostTemplateEdit({
     if (!posts.length) {
         return <p {...blockProps}> {__("No results found.")}</p>;
     }
+    console.log(blockContexts)
 
     return (
         <ul {...blockProps}>
