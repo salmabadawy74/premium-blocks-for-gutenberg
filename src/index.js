@@ -52,6 +52,7 @@ import "./blocks/text";
 import "./blocks/badge";
 import "./blocks/image";
 import "./blocks/icon-group";
+import "./blocks/counter";
 
 window.PremiumOptionsSettings = {
     FontAwesomeEnabled,

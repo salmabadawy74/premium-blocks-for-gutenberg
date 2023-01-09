@@ -2,6 +2,11 @@ const className = "premium-countup";
 const { __ } = wp.i18n;
 import hexToRgba from 'hex-to-rgba'
 import classnames from 'classnames'
+import {
+    gradientBackground,
+    filterJsCss,
+} from '@pbg/helpers';
+const { RichText, useBlockProps } = wp.blockEditor;
 
 const attributes = {
     block_id: {
@@ -574,8 +579,753 @@ const v8Attributes = {
     }
 }
 
+const v9Attributes = {
+    "blockId": {
+        "type": "string"
+    },
+    "increment": {
+        "type": "string",
+        "default": 500
+    },
+    "time": {
+        "type": "string",
+        "default": 1000
+    },
+    "delay": {
+        "type": "string",
+        "default": 10
+    },
+    "align": {
+        "type": "object",
+        "default": {
+            "Desktop": "center",
+            "Tablet": "center",
+            "Mobile": "center"
+        }
+    },
+    "flexDir": {
+        "type": "string",
+        "default": "column"
+    },
+    "prefix": {
+        "type": "boolean",
+        "default": false
+    },
+    "suffix": {
+        "type": "boolean",
+        "default": false
+    },
+    "icon": {
+        "type": "string",
+        "default": "icon"
+    },
+    "imageID": {
+        "type": "string"
+    },
+    "imageURL": {
+        "type": "string"
+    },
+    "iconType": {
+        "type": "string",
+        "default": "dash"
+    },
+    "iconCheck": {
+        "type": "boolean",
+        "default": true
+    },
+    "iconSize": {
+        "type": "number",
+        "default": 40
+    },
+    "iconColor": {
+        "type": "string"
+    },
+    "selfAlign": {
+        "type": "object",
+        "default": {
+            "Desktop": "center",
+            "Tablet": "center",
+            "Mobile": "center"
+        }
+    },
+    "titleCheck": {
+        "type": "boolean",
+        "default": true
+    },
+    "titleTxt": {
+        "type": "string",
+        "default": "Premium Count Up"
+    },
+    "faIcon": {
+        "type": "string",
+        "default": "dashicons dashicons-clock"
+    },
+    "counterFamily": {
+        "type": "string",
+        "default": "Default"
+    },
+    "hideDesktop": {
+        "type": "boolean",
+        "default": false
+    },
+    "hideTablet": {
+        "type": "boolean",
+        "default": false
+    },
+    "hideMobile": {
+        "type": "boolean",
+        "default": false
+    },
+    "numberStyles": {
+        "type": "array",
+        "default": [
+            {
+                "numberColor": ""
+            }
+        ]
+    },
+    "titleStyles": {
+        "type": "array",
+        "default": [
+            {
+                "titleColor": ""
+            }
+        ]
+    },
+    "suffixStyles": {
+        "type": "array",
+        "default": [
+            {
+                "suffixTxt": "Suffix",
+                "suffixColor": ""
+            }
+        ]
+    },
+    "prefixStyles": {
+        "type": "array",
+        "default": [
+            {
+                "prefixTxt": "Prefix",
+                "prefixColor": ""
+            }
+        ]
+    },
+    "padding": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "20",
+                "right": "20",
+                "bottom": "20",
+                "left": "20"
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "numberTypography": {
+        "type": "object",
+        "default": {
+            "fontWeight": "Default",
+            "fontStyle": "",
+            "textTransform": "",
+            "fontFamily": "Default",
+            "textDecoration": "",
+            "fontSize": {
+                "Desktop": "55",
+                "Tablet": "55",
+                "Mobile": "55",
+                "unit": "px"
+            },
+            "lineHeight": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            },
+            "letterSpacing": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            }
+        }
+    },
+    "prefixTypography": {
+        "type": "object",
+        "default": {
+            "fontWeight": "Default",
+            "fontStyle": "",
+            "textTransform": "",
+            "fontFamily": "Default",
+            "textDecoration": "",
+            "fontSize": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            },
+            "lineHeight": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            },
+            "letterSpacing": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            }
+        }
+    },
+    "suffixTypography": {
+        "type": "object",
+        "default": {
+            "fontWeight": "Default",
+            "fontStyle": "",
+            "textTransform": "",
+            "fontFamily": "Default",
+            "textDecoration": "",
+            "fontSize": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            },
+            "lineHeight": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            },
+            "letterSpacing": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            }
+        }
+    },
+    "titleTypography": {
+        "type": "object",
+        "default": {
+            "fontWeight": "Default",
+            "fontStyle": "",
+            "textTransform": "",
+            "fontFamily": "Default",
+            "textDecoration": "",
+            "fontSize": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            },
+            "lineHeight": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            },
+            "letterSpacing": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            }
+        }
+    },
+    "boxShadow": {
+        "type": "object",
+        "default": {
+            "color": "undefined",
+            "blur": "10",
+            "horizontal": "0",
+            "vertical": "0",
+            "position": " "
+        }
+    },
+    "border": {
+        "type": "object",
+        "default": {
+            "borderType": "none",
+            "borderColor": "",
+            "borderWidth": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            },
+            "borderRadius": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            }
+        }
+    },
+    "background": {
+        "type": "object",
+        "default": {
+            "backgroundType": "",
+            "backgroundColor": "",
+            "backgroundImageID": "",
+            "backgroundImageURL": "",
+            "backgroundPosition": "",
+            "backgroundRepeat": "",
+            "backgroundSize": "",
+            "fixed": false,
+            "gradientLocationOne": "0",
+            "gradientColorTwo": "",
+            "gradientLocationTwo": "100",
+            "gradientAngle": "180",
+            "gradientPosition": "center center",
+            "gradientType": "linear"
+        }
+    },
+    "prefixPadding": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "prefixMargin": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "2",
+                "right": "2",
+                "bottom": "2",
+                "left": "2"
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "numberPadding": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "numberMargin": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "2",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "suffixPadding": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "suffixMargin": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": "2"
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "iconMargin": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "titlePadding": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "titleMargin": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "1",
+                "right": "",
+                "bottom": "1",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "variation": {
+        "type": "object",
+        "default": {}
+    },
+    "showVariation": {
+        "type": "boolean",
+        "default": true
+    }
+}
 
 const deprecatedContent = [
+    {
+        attributes: Object.assign(attributes, v9Attributes),
+        migrate: (attributes) => {
+            let newAttributes = {
+                variation: {},
+                showVariation: true
+            };
+            return Object.assign(attributes, newAttributes)
+        },
+        save: (props) => {
+            const { className } = props;
+
+            const {
+                blockId,
+                increment,
+                time,
+                delay,
+                flexDir,
+                prefix,
+                suffix,
+                icon,
+                imageURL,
+                iconType,
+                iconCheck,
+                iconSize,
+                iconColor,
+                titleCheck,
+                titleTxt,
+                faIcon,
+                hideDesktop,
+                hideTablet,
+                hideMobile,
+                numberStyles,
+                titleStyles,
+                suffixStyles,
+                prefixStyles,
+                numberTypography,
+                prefixTypography,
+                suffixTypography,
+                titleTypography,
+                boxShadow,
+                border,
+                background
+            } = props.attributes;
+
+            let iconClass = "fa" === iconType ? `fa fa-${faIcon}` : `dashicons ${faIcon}`;
+
+            return (
+                <div
+                    {...useBlockProps.save({
+                        className: classnames(
+                            className,
+                            `premium-countup__wrap ${blockId} premium-countup__${flexDir}`,
+                            {
+                                " premium-desktop-hidden": hideDesktop,
+                                " premium-tablet-hidden": hideTablet,
+                                " premium-mobile-hidden": hideMobile,
+                            }
+                        ),
+                    })}
+                    style={filterJsCss({
+                        flexDirection: flexDir,
+                        boxShadow: `${boxShadow?.horizontal}px ${boxShadow?.vertical}px ${boxShadow?.blur}px ${boxShadow?.color} ${boxShadow?.position}`,
+                        borderStyle: border?.borderType,
+                        borderColor: border?.borderColor,
+                        ...gradientBackground(background)
+                    })}
+                >
+                    {iconCheck && (
+                        <div
+                            className={`premium-countup__icon_wrap`}
+                        >
+                            {"icon" === icon && (
+                                <i
+                                    className={`premium-countup__icon ${iconClass}`}
+                                    style={{
+                                        fontSize: iconSize + "px",
+                                        color: iconColor
+                                    }}
+                                />
+                            )}
+                            {"img" === icon && imageURL && (
+                                <img
+                                    src={imageURL}
+                                    style={filterJsCss({
+                                        width: iconSize + "px",
+                                        height: iconSize + "px"
+                                    })}
+                                />
+                            )}
+                        </div>
+                    )}
+                    <div
+                        className={`premium-countup__info`}
+                    >
+                        <div className={`premium-countup__desc`}>
+                            {prefix && (
+                                <RichText.Content
+                                    className={`premium-countup__prefix`}
+                                    tagName="p"
+                                    value={prefixStyles[0].prefixTxt}
+                                    style={filterJsCss({
+                                        color: prefixStyles[0].prefixColor,
+                                        fontStyle: prefixTypography?.fontStyle,
+                                        fontFamily: prefixTypography?.fontFamily,
+                                        fontWeight: prefixTypography?.fontWeight,
+                                        textDecoration: prefixTypography?.textDecoration,
+                                        textTransform: prefixTypography?.textTransform,
+                                    })}
+                                />
+                            )}
+                            <RichText.Content
+                                className={`premium-countup__increment`}
+                                value={`${increment}`}
+                                tagName="p"
+                                data-interval={time}
+                                data-delay={delay}
+                                style={filterJsCss({
+                                    color: numberStyles[0].numberColor,
+                                    fontStyle: numberTypography?.fontStyle,
+                                    fontFamily: numberTypography?.fontFamily,
+                                    fontWeight: numberTypography?.fontWeight,
+                                    textDecoration: numberTypography?.textDecoration,
+                                    textTransform: numberTypography?.textTransform,
+                                })}
+                            />
+                            {suffix && (
+                                <RichText.Content
+                                    className={`premium-countup__suffix`}
+                                    value={suffixStyles[0].suffixTxt}
+                                    tagName="p"
+                                    style={filterJsCss({
+                                        color: suffixStyles[0].suffixColor,
+                                        fontStyle: suffixTypography?.fontStyle,
+                                        fontFamily: suffixTypography?.fontFamily,
+                                        fontWeight: suffixTypography?.fontWeight,
+                                        textDecoration: suffixTypography?.textDecoration,
+                                        textTransform: suffixTypography?.textTransform,
+                                    })}
+                                />
+                            )}
+                        </div>
+                        {titleCheck && ("row" === flexDir || "row-reverse" === flexDir) && (
+                            <RichText.Content
+                                className={`premium-countup__title`}
+                                value={titleTxt}
+                                tagName="h4"
+                                style={filterJsCss({
+                                    color: titleStyles[0].titleColor,
+                                    fontStyle: titleTypography?.fontStyle,
+                                    fontFamily: titleTypography?.fontFamily,
+                                    fontWeight: titleTypography?.fontWeight,
+                                    textDecoration: titleTypography?.textDecoration,
+                                    textTransform: titleTypography?.textTransform,
+                                })}
+                            />
+                        )}
+                    </div>
+                    {titleCheck && ("column" === flexDir || "column-reverse" === flexDir) && (
+                        <RichText.Content
+                            className={`premium-countup__title`}
+                            tagName="h4"
+                            value={titleTxt}
+                            style={filterJsCss({
+                                color: titleStyles[0].titleColor,
+                                fontStyle: titleTypography?.fontStyle,
+                                fontFamily: titleTypography?.fontFamily,
+                                fontWeight: titleTypography?.fontWeight,
+                                textDecoration: titleTypography?.textDecoration,
+                                textTransform: titleTypography?.textTransform,
+                            })}
+                        />
+                    )}
+                </div>
+            );
+        },
+    },
     {
         attributes: v8Attributes,
         isEligible() {
