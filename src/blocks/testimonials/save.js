@@ -5,7 +5,7 @@ import {
     DefaultImage,
 } from '@pbg/components';
 import { filterJsCss, gradientBackground } from '@pbg/helpers';
-const { RichText, useBlockProps } = wp.blockEditor;
+const { InnerBlocks, useBlockProps } = wp.blockEditor;
 
 const save = props => {
 
@@ -62,7 +62,8 @@ const save = props => {
                 <div
                     className={`premium-testimonial__content`}
                 >
-                    <div className={`premium-testimonial__img_wrap`}>
+                    <InnerBlocks.Content />
+                    {/* <div className={`premium-testimonial__img_wrap`}>
                         {authorImgUrl && (
                             <img
                                 className={`premium-testimonial__img`}
@@ -140,7 +141,7 @@ const save = props => {
                                 />
                             )}
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 <span className={`premium-testimonial__lower`}>
                     <PremiumLowerQuote

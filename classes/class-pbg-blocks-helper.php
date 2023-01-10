@@ -156,6 +156,9 @@ class PBG_Blocks_Helper
 				if ('count-up' === $slug) {
 					Pbg_Style_Generator::pbg_add_css('assets/css/minified/counter.min.css');
 				}
+				if ('testimonials' === $slug) {
+					Pbg_Style_Generator::pbg_add_css('assets/css/minified/author.min.css');
+				}
 
 				Pbg_Style_Generator::pbg_add_css("assets/css/minified/{$slug}.min.css");
 			}
@@ -379,6 +382,11 @@ class PBG_Blocks_Helper
 			}
 			elseif ($slug === 'count-up') {
 				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/counter.php';
+			}
+			elseif ($slug === 'testimonials') {
+				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/author.php';
+				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/image.php';
+				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/text.php';
 			}
 		}
 	}

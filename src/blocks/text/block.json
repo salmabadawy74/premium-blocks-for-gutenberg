@@ -12,7 +12,8 @@
         "premium/pricing-table",
         "premium/icon-box",
         "premium/person",
-        "premium/container"
+        "premium/container",
+        "premium/author"
     ],
     "textdomain": "default",
     "attributes": {

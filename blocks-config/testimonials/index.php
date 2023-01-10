@@ -23,35 +23,35 @@ function get_premium_testimonials_css_style( $attr, $unique_id ) {
 	$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 
 	// Align
-	if ( isset( $attr['align'] ) ) {
-		$css->set_selector( $unique_id . ' .premium-testimonial__content' );
-		$css->add_property( 'text-align', $css->get_responsive_css( $attr['align'], 'Desktop' ) );
-	}
+	// if ( isset( $attr['align'] ) ) {
+	// 	$css->set_selector( $unique_id . ' .premium-testimonial__content' );
+	// 	$css->add_property( 'text-align', $css->get_responsive_css( $attr['align'], 'Desktop' ) );
+	// }
 
 	// Author Style FontSize.
-	if ( isset( $attr['authorTypography'] ) ) {
-		$author_typography = $attr['authorTypography'];
-		$css->set_selector( $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . '> .premium-testimonial__author' );
-		$css->render_typography( $author_typography, 'Desktop' );
-	}
+	// if ( isset( $attr['authorTypography'] ) ) {
+	// 	$author_typography = $attr['authorTypography'];
+	// 	$css->set_selector( $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . '> .premium-testimonial__author' );
+	// 	$css->render_typography( $author_typography, 'Desktop' );
+	// }
 
-	if ( isset( $attr['imageBorder'] ) ) {
-		$image_border        = $attr['imageBorder'];
-		$image_border_width  = $image_border['borderWidth'];
-		$image_border_radius = $image_border['borderRadius'];
+	// if ( isset( $attr['imageBorder'] ) ) {
+	// 	$image_border        = $attr['imageBorder'];
+	// 	$image_border_width  = $image_border['borderWidth'];
+	// 	$image_border_radius = $image_border['borderRadius'];
 
-		$css->set_selector( $unique_id . ' .premium-testimonial__img_wrap .premium-testimonial__img' );
-		$css->add_property( 'border-width', $css->render_spacing( $image_border_width['Desktop'], 'px' ) );
-		$css->add_property( 'border-radius', $css->render_spacing( $image_border_radius['Desktop'], 'px' ) );
-	}
+	// 	$css->set_selector( $unique_id . ' .premium-testimonial__img_wrap .premium-testimonial__img' );
+	// 	$css->add_property( 'border-width', $css->render_spacing( $image_border_width['Desktop'], 'px' ) );
+	// 	$css->add_property( 'border-radius', $css->render_spacing( $image_border_radius['Desktop'], 'px' ) );
+	// }
 
 	// Company Style FontSize.
-	if ( isset( $attr['companyTypography'] ) ) {
-		$company_typography = $attr['companyTypography'];
+	// if ( isset( $attr['companyTypography'] ) ) {
+	// 	$company_typography = $attr['companyTypography'];
 
-		$css->set_selector( $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . ' > .premium-testimonial__link_wrap' . '> .premium-testimonial__author_comp' );
-		$css->render_typography( $company_typography, 'Desktop' );
-	}
+	// 	$css->set_selector( $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . ' > .premium-testimonial__link_wrap' . '> .premium-testimonial__author_comp' );
+	// 	$css->render_typography( $company_typography, 'Desktop' );
+	// }
 
 	// Body Style FontSize.
 	if ( isset( $attr['bodyTypography'] ) ) {
@@ -76,37 +76,37 @@ function get_premium_testimonials_css_style( $attr, $unique_id ) {
 	$css->start_media_query( $media_query['tablet'] );
 
 	// Align
-	if ( isset( $attr['align'] ) ) {
+	// if ( isset( $attr['align'] ) ) {
 
-		$css->set_selector( $unique_id . ' .premium-testimonial__content' );
-		$css->add_property( 'text-align', $css->get_responsive_css( $attr['align'], 'Tablet' ) );
-	}
+	// 	$css->set_selector( $unique_id . ' .premium-testimonial__content' );
+	// 	$css->add_property( 'text-align', $css->get_responsive_css( $attr['align'], 'Tablet' ) );
+	// }
 
 	// Author Style FontSize.
-	if ( isset( $attr['authorTypography'] ) ) {
-		$author_typography = $attr['authorTypography'];
+	// if ( isset( $attr['authorTypography'] ) ) {
+	// 	$author_typography = $attr['authorTypography'];
 
-		$css->set_selector( $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . '> .premium-testimonial__author' );
-		$css->render_typography( $author_typography, 'Tablet' );
-	}
+	// 	$css->set_selector( $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . '> .premium-testimonial__author' );
+	// 	$css->render_typography( $author_typography, 'Tablet' );
+	// }
 
-	if ( isset( $attr['imageBorder'] ) ) {
-		$image_border        = $attr['imageBorder'];
-		$image_border_width  = $image_border['borderWidth'];
-		$image_border_radius = $image_border['borderRadius'];
+	// if ( isset( $attr['imageBorder'] ) ) {
+	// 	$image_border        = $attr['imageBorder'];
+	// 	$image_border_width  = $image_border['borderWidth'];
+	// 	$image_border_radius = $image_border['borderRadius'];
 
-		$css->set_selector( $unique_id . ' .premium-testimonial__img_wrap .premium-testimonial__img' );
-		$css->add_property( 'border-width', $css->render_spacing( $image_border_width['Tablet'], 'px' ) );
-		$css->add_property( 'border-radius', $css->render_spacing( $image_border_radius['Tablet'], 'px' ) );
-	}
+	// 	$css->set_selector( $unique_id . ' .premium-testimonial__img_wrap .premium-testimonial__img' );
+	// 	$css->add_property( 'border-width', $css->render_spacing( $image_border_width['Tablet'], 'px' ) );
+	// 	$css->add_property( 'border-radius', $css->render_spacing( $image_border_radius['Tablet'], 'px' ) );
+	// }
 
 	// Company Style FontSize.
-	if ( isset( $attr['companyTypography'] ) ) {
-		$company_typography = $attr['companyTypography'];
+	// if ( isset( $attr['companyTypography'] ) ) {
+	// 	$company_typography = $attr['companyTypography'];
 
-		$css->set_selector( $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . ' > .premium-testimonial__link_wrap' . '> .premium-testimonial__author_comp' );
-		$css->render_typography( $company_typography, 'Tablet' );
-	}
+	// 	$css->set_selector( $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . ' > .premium-testimonial__link_wrap' . '> .premium-testimonial__author_comp' );
+	// 	$css->render_typography( $company_typography, 'Tablet' );
+	// }
 
 	// Body Style FontSize.
 	if ( isset( $attr['bodyTypography'] ) ) {
@@ -133,37 +133,37 @@ function get_premium_testimonials_css_style( $attr, $unique_id ) {
 	$css->start_media_query( $media_query['mobile'] );
 
 	// Align
-	if ( isset( $attr['align'] ) ) {
+	// if ( isset( $attr['align'] ) ) {
 
-		$css->set_selector( $unique_id . ' .premium-testimonial__content' );
-		$css->add_property( 'text-align', $css->get_responsive_css( $attr['align'], 'Mobile' ) );
-	}
+	// 	$css->set_selector( $unique_id . ' .premium-testimonial__content' );
+	// 	$css->add_property( 'text-align', $css->get_responsive_css( $attr['align'], 'Mobile' ) );
+	// }
 
 	// Author Style FontSize.
-	if ( isset( $attr['authorTypography'] ) ) {
-		$author_typography = $attr['authorTypography'];
+	// if ( isset( $attr['authorTypography'] ) ) {
+	// 	$author_typography = $attr['authorTypography'];
 
-		$css->set_selector( $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . '> .premium-testimonial__author' );
-		$css->render_typography( $author_typography, 'Mobile' );
-	}
+	// 	$css->set_selector( $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . '> .premium-testimonial__author' );
+	// 	$css->render_typography( $author_typography, 'Mobile' );
+	// }
 
-	if ( isset( $attr['imageBorder'] ) ) {
-		$image_border        = $attr['imageBorder'];
-		$image_border_width  = $image_border['borderWidth'];
-		$image_border_radius = $image_border['borderRadius'];
+	// if ( isset( $attr['imageBorder'] ) ) {
+	// 	$image_border        = $attr['imageBorder'];
+	// 	$image_border_width  = $image_border['borderWidth'];
+	// 	$image_border_radius = $image_border['borderRadius'];
 
-		$css->set_selector( $unique_id . ' .premium-testimonial__img_wrap .premium-testimonial__img' );
-		$css->add_property( 'border-width', $css->render_spacing( $image_border_width['Mobile'], 'px' ) );
-		$css->add_property( 'border-radius', $css->render_spacing( $image_border_radius['Mobile'], 'px' ) );
-	}
+	// 	$css->set_selector( $unique_id . ' .premium-testimonial__img_wrap .premium-testimonial__img' );
+	// 	$css->add_property( 'border-width', $css->render_spacing( $image_border_width['Mobile'], 'px' ) );
+	// 	$css->add_property( 'border-radius', $css->render_spacing( $image_border_radius['Mobile'], 'px' ) );
+	// }
 
 	// Company Style FontSize.
-	if ( isset( $attr['companyTypography'] ) ) {
-		$company_typography = $attr['companyTypography'];
+	// if ( isset( $attr['companyTypography'] ) ) {
+	// 	$company_typography = $attr['companyTypography'];
 
-		$css->set_selector( $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . ' > .premium-testimonial__link_wrap' . '> .premium-testimonial__author_comp' );
-		$css->render_typography( $company_typography, 'Mobile' );
-	}
+	// 	$css->set_selector( $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__info' . ' > .premium-testimonial__link_wrap' . '> .premium-testimonial__author_comp' );
+	// 	$css->render_typography( $company_typography, 'Mobile' );
+	// }
 
 	// Body Style FontSize.
 	if ( isset( $attr['bodyTypography'] ) ) {

@@ -9,7 +9,9 @@
         "image"
     ],
     "parent": [
-        "premium/person","premium/icon-box"
+        "premium/person",
+        "premium/icon-box",
+        "premium/author"
     ],
     "textdomain": "default",
     "attributes": {
