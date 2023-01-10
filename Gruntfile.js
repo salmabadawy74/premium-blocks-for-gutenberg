@@ -32,7 +32,8 @@ module.exports = function (grunt) {
         "image",
         "icon-group",
         "switcher-child",
-        "counter"
+        "counter",
+        "author"
     ];
     const sassFiles = {};
     const minifyFiles = {};

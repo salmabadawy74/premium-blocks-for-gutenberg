@@ -43,17 +43,7 @@
     color: var(--pbg-global-color1, #0085BA); }
 
 .premium-testimonial__content {
-  padding: 20px;
-  text-align: center; }
-  .premium-testimonial__content .premium-testimonial__img {
-    border-style: solid; }
-  .premium-testimonial__content .premium-testimonial__text_wrap {
-    margin: 1em 0; }
-
-.premium-testimonial__img_wrap {
-  overflow: hidden; }
-  .premium-testimonial__img_wrap .premium-testimonial__img {
-    max-width: 100%; }
+  padding: 20px; }
 
 .premium-testimonial__upper svg {
   width: 5em; }
