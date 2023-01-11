@@ -225,25 +225,25 @@ function Excerpt(props) {
                             />
                             {excerptType === "Link"
                                 ? [
-                                      <ToggleControl
-                                          label={__("Full Width")}
-                                          checked={fullWidth}
-                                          onChange={() =>
-                                              setAttributes({
-                                                  fullWidth: !fullWidth,
-                                              })
-                                          }
-                                      />,
-                                      <TextControl
-                                          label={__("Read More Text")}
-                                          value={readMoreText}
-                                          onChange={(newText) =>
-                                              setAttributes({
-                                                  readMoreText: newText,
-                                              })
-                                          }
-                                      />,
-                                  ]
+                                    <ToggleControl
+                                        label={__("Full Width")}
+                                        checked={fullWidth}
+                                        onChange={() =>
+                                            setAttributes({
+                                                fullWidth: !fullWidth,
+                                            })
+                                        }
+                                    />,
+                                    <TextControl
+                                        label={__("Read More Text")}
+                                        value={readMoreText}
+                                        onChange={(newText) =>
+                                            setAttributes({
+                                                readMoreText: newText,
+                                            })
+                                        }
+                                    />,
+                                ]
                                 : null}
                         </PanelBody>
                     </InspectorTab>

@@ -45032,7 +45032,7 @@ function PostTemplateEdit(_ref) {
       templateSlug
     }
   } = _ref;
-  const TEMPLATE = [["premium/post-title"], ["premium/post-excerpt"], ["premium/post-featured-image"]];
+  const TEMPLATE = [["premium/post-featured-image"], ["premium/post-title"], ["premium/post-meta"], ["premium/post-excerpt"]];
   const innerBlocksProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.useInnerBlocksProps)({
     className: "wp-block-post"
   }, {

@@ -48,9 +48,10 @@ export default function PostTemplateEdit({
     },
 }) {
     const TEMPLATE = [
-        ["premium/post-title"],
-        ["premium/post-excerpt"],
         ["premium/post-featured-image"],
+        ["premium/post-title"],
+        ["premium/post-meta"],
+        ["premium/post-excerpt"],
     ];
 
     const innerBlocksProps = useInnerBlocksProps(
