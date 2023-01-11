@@ -18,7 +18,7 @@ function get_premium_author_css($attributes, $unique_id) {
 	// Desktop Styles.
     if (isset($attributes['align'])) {
 		$css->set_selector('.' . $unique_id);
-		$css->add_property('justify-content', $css->get_responsive_css($attributes['align'], 'Desktop'));
+		$css->add_property('text-align', $css->get_responsive_css($attributes['align'], 'Desktop'));
 	}
 	if (isset($attributes['authorTypography'])) {
 		$css->set_selector('.' . $unique_id . ' > .premium-testimonial__author');
@@ -34,7 +34,7 @@ function get_premium_author_css($attributes, $unique_id) {
 	// Tablet Styles.
 	if (isset($attributes['align'])) {
 		$css->set_selector('.' . $unique_id);
-		$css->add_property('justify-content', $css->get_responsive_css($attributes['align'], 'Tablet'));
+		$css->add_property('text-align', $css->get_responsive_css($attributes['align'], 'Tablet'));
 	}
 	if (isset($attributes['authorTypography'])) {
 		$css->set_selector('.' . $unique_id . ' > .premium-testimonial__author');
@@ -51,7 +51,7 @@ function get_premium_author_css($attributes, $unique_id) {
 	// Mobile Styles.
 	if (isset($attributes['align'])) {
 		$css->set_selector('.' . $unique_id);
-		$css->add_property('justify-content', $css->get_responsive_css($attributes['align'], 'Mobile'));
+		$css->add_property('text-align', $css->get_responsive_css($attributes['align'], 'Mobile'));
 	}
 	if (isset($attributes['authorTypography'])) {
 		$css->set_selector('.' . $unique_id . ' > .premium-testimonial__author');
