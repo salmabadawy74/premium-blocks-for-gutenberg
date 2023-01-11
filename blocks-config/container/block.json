@@ -388,13 +388,6 @@
             "type": "boolean",
             "default": false
         },
-        "equalHeightType": {
-            "type": "string",
-            "default": "blocks"
-        },
-        "customSelector": {
-            "type": "string"
-        },
         "equalHeightBlocks": {
             "type": "array",
             "default": []

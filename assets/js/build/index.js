@@ -17890,8 +17890,6 @@ const edit = props => {
       hideMobile,
       hideTablet,
       equalHeight,
-      equalHeightType,
-      customSelector,
       equalHeightBlocks,
       customSelectors
     },
@@ -17922,34 +17920,21 @@ const edit = props => {
   };
   useEffect(() => {
     if (props.isParent && enableEqualHeight) {
-      if (equalHeightType === 'blocks') {
-        if (customSelector) {
-          const allElements = containerRef.current.querySelectorAll(customSelector);
-          (0,_utils__WEBPACK_IMPORTED_MODULE_7__.resetHeight)(allElements);
-        }
-        if (equalHeightBlocks.length) {
-          for (const block of equalHeightBlocks) {
-            (0,_utils__WEBPACK_IMPORTED_MODULE_7__.resetBlocksHeight)(block, containerRef.current);
-            const blockName = block.includes('core') ? block.replace('core/', '') : block.replaceAll('/', '-');
-            const blockClass = `wp-block-${blockName}`;
-            const allBlocksType = containerRef.current.querySelectorAll(`.${blockClass}`);
-            (0,_utils__WEBPACK_IMPORTED_MODULE_7__.setElementsHeight)(allBlocksType);
-          }
+      if (equalHeightBlocks.length) {
+        for (const block of equalHeightBlocks) {
+          (0,_utils__WEBPACK_IMPORTED_MODULE_7__.resetBlocksHeight)(block, containerRef.current);
+          const blockName = block.includes('core') ? block.replace('core/', '') : block.replaceAll('/', '-');
+          const blockClass = `wp-block-${blockName}`;
+          const allBlocksType = containerRef.current.querySelectorAll(`.${blockClass}`);
+          (0,_utils__WEBPACK_IMPORTED_MODULE_7__.setElementsHeight)(allBlocksType);
         }
       }
-      if (equalHeightType === 'custom-selector') {
-        if (equalHeightBlocks.length) {
-          for (const block of equalHeightBlocks) {
-            (0,_utils__WEBPACK_IMPORTED_MODULE_7__.resetBlocksHeight)(block, containerRef.current);
-          }
-        }
-        if (customSelectors?.length) {
-          for (const selector of customSelectors) {
-            if ((0,_utils__WEBPACK_IMPORTED_MODULE_7__.checkSelector)(selector)) {
-              const allElements = containerRef.current.querySelectorAll(selector);
-              (0,_utils__WEBPACK_IMPORTED_MODULE_7__.resetHeight)(allElements);
-              (0,_utils__WEBPACK_IMPORTED_MODULE_7__.setElementsHeight)(allElements);
-            }
+      if (customSelectors?.length) {
+        for (const selector of customSelectors) {
+          if ((0,_utils__WEBPACK_IMPORTED_MODULE_7__.checkSelector)(selector)) {
+            const allElements = containerRef.current.querySelectorAll(selector);
+            (0,_utils__WEBPACK_IMPORTED_MODULE_7__.resetHeight)(allElements);
+            (0,_utils__WEBPACK_IMPORTED_MODULE_7__.setElementsHeight)(allElements);
           }
         }
       }
@@ -18126,6 +18111,10 @@ const edit = props => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(react_select__WEBPACK_IMPORTED_MODULE_9__.c.MultiValueRemove, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
       innerProps: newInnerProps
     }));
+  };
+  const getUniqueBlock = blockName => {
+    const filterBlocks = props.uniqueInnerBlocks.filter(block => block.name === blockName);
+    return filterBlocks[0];
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_5__.InspectorTabs, {
     tabs: ["layout", "style", "advance"]
@@ -18581,29 +18570,13 @@ const edit = props => {
     onChange: newValue => setAttributes({
       equalHeight: newValue
     })
-  }), equalHeight && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_5__.RadioComponent, {
-    choices: [{
-      value: "blocks",
-      label: __("Blocks", "premium-blocks-for-gutenberg")
-    }, {
-      value: "custom-selector",
-      label: __("Elements", "premium-blocks-for-gutenberg")
-    }],
-    value: equalHeightType,
-    onChange: newValue => setAttributes({
-      equalHeightType: newValue
-    }),
-    label: __("Apply on", "premium-blocks-for-gutenberg"),
-    showIcons: false
-  }), equalHeightType === 'custom-selector' && props.uniqueInnerBlocks?.length > 0 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  }), equalHeight && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "premium-blocks__base-control"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
+    className: "premium-control-title"
+  }, __('Blocks', 'premium-blocks-pro')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "pbg-custom-selectors-blocks"
-  }, props.uniqueInnerBlocks.map(block => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_block_item__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    onRemove: elements => (0,_utils__WEBPACK_IMPORTED_MODULE_7__.resetHeight)(elements),
-    block: block,
-    customSelectors: customSelectors,
-    container: containerRef.current,
-    onChange: value => setAttributes(value)
-  }))), equalHeightType === 'blocks' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(react_select__WEBPACK_IMPORTED_MODULE_10__["default"], {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(react_select__WEBPACK_IMPORTED_MODULE_10__["default"], {
     value: innerBlocksOptions.filter(obj => equalHeightBlocks.includes(obj.value)),
     options: innerBlocksOptions,
     isMulti: true,
@@ -18613,7 +18586,19 @@ const edit = props => {
     components: {
       MultiValueRemove: MultiValue
     }
-  })))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  }))), equalHeightBlocks?.length > 0 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "premium-blocks__base-control"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
+    className: "premium-control-title"
+  }, __('Blocks Elements', 'premium-blocks-pro')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "pbg-custom-selectors-blocks"
+  }, equalHeightBlocks.map(block => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_block_item__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    onRemove: elements => (0,_utils__WEBPACK_IMPORTED_MODULE_7__.resetHeight)(elements),
+    block: getUniqueBlock(block),
+    customSelectors: customSelectors,
+    container: containerRef.current,
+    onChange: value => setAttributes(value)
+  }))))))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "block-editor-block-list__block wp-block",
     id: `block-${block_id}`,
     "data-block": `premium-container`,

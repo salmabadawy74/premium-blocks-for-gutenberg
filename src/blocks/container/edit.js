@@ -28,6 +28,7 @@ import {
     gradientValue,
 } from "@pbg/helpers";
 import AdvancedSelect, { components } from 'react-select';
+
 const { __ } = wp.i18n;
 const { createBlock } = wp.blocks;
 const { InspectorControls, InnerBlocks } = wp.blockEditor;
@@ -139,8 +140,6 @@ const edit = (props) => {
             hideMobile,
             hideTablet,
             equalHeight,
-            equalHeightType,
-            customSelector,
             equalHeightBlocks,
             customSelectors,
         },
@@ -178,34 +177,21 @@ const edit = (props) => {
 
     useEffect(() => {
         if (props.isParent && enableEqualHeight) {
-            if (equalHeightType === 'blocks') {
-                if (customSelector) {
-                    const allElements = containerRef.current.querySelectorAll(customSelector);
-                    resetHeight(allElements);
-                }
-                if (equalHeightBlocks.length) {
-                    for (const block of equalHeightBlocks) {
-                        resetBlocksHeight(block, containerRef.current);
-                        const blockName = block.includes('core') ? block.replace('core/', '') : block.replaceAll('/', '-');
-                        const blockClass = `wp-block-${blockName}`;
-                        const allBlocksType = containerRef.current.querySelectorAll(`.${blockClass}`);
-                        setElementsHeight(allBlocksType);
-                    }
+            if (equalHeightBlocks.length) {
+                for (const block of equalHeightBlocks) {
+                    resetBlocksHeight(block, containerRef.current);
+                    const blockName = block.includes('core') ? block.replace('core/', '') : block.replaceAll('/', '-');
+                    const blockClass = `wp-block-${blockName}`;
+                    const allBlocksType = containerRef.current.querySelectorAll(`.${blockClass}`);
+                    setElementsHeight(allBlocksType);
                 }
             }
-            if (equalHeightType === 'custom-selector') {
-                if (equalHeightBlocks.length) {
-                    for (const block of equalHeightBlocks) {
-                        resetBlocksHeight(block, containerRef.current);
-                    }
-                }
-                if (customSelectors?.length) {
-                    for (const selector of customSelectors) {
-                        if (checkSelector(selector)) {
-                            const allElements = containerRef.current.querySelectorAll(selector);
-                            resetHeight(allElements);
-                            setElementsHeight(allElements);
-                        }
+            if (customSelectors?.length) {
+                for (const selector of customSelectors) {
+                    if (checkSelector(selector)) {
+                        const allElements = containerRef.current.querySelectorAll(selector);
+                        resetHeight(allElements);
+                        setElementsHeight(allElements);
                     }
                 }
             }
@@ -443,6 +429,11 @@ const edit = (props) => {
         return <components.MultiValueRemove {...props} innerProps={newInnerProps} />;
     };
 
+    const getUniqueBlock = (blockName) => {
+        const filterBlocks = props.uniqueInnerBlocks.filter(block => block.name === blockName);
+
+        return filterBlocks[0];
+    }
     return (
         <Fragment>
             <InspectorControls>
@@ -1247,42 +1238,22 @@ const edit = (props) => {
                                 />
                                 {equalHeight && (
                                     <>
-                                        <RadioComponent
-                                            choices={[
-                                                {
-                                                    value: "blocks",
-                                                    label: __(
-                                                        "Blocks",
-                                                        "premium-blocks-for-gutenberg"
-                                                    ),
-                                                },
-                                                {
-                                                    value: "custom-selector",
-                                                    label: __(
-                                                        "Elements",
-                                                        "premium-blocks-for-gutenberg"
-                                                    ),
-                                                },
-                                            ]}
-                                            value={equalHeightType}
-                                            onChange={(newValue) =>
-                                                setAttributes({ equalHeightType: newValue })
-                                            }
-                                            label={__(
-                                                "Apply on",
-                                                "premium-blocks-for-gutenberg"
-                                            )}
-                                            showIcons={false}
-                                        />
-                                        {(equalHeightType === 'custom-selector' && props.uniqueInnerBlocks?.length > 0) && (
+                                        <div className='premium-blocks__base-control'>
+                                            <span className='premium-control-title'>{__('Blocks', 'premium-blocks-pro')}</span>
                                             <div className="pbg-custom-selectors-blocks">
-                                                {props.uniqueInnerBlocks.map(block => <BlockItemComponent onRemove={(elements) => resetHeight(elements)} block={block} customSelectors={customSelectors} container={containerRef.current} onChange={(value) => setAttributes(value)} />)}
+                                                <AdvancedSelect value={innerBlocksOptions.filter(obj => equalHeightBlocks.includes(obj.value))} options={innerBlocksOptions} isMulti={true} onChange={(option) => setAttributes({ equalHeightBlocks: option.map(option => option.value) })} components={{
+                                                    MultiValueRemove: MultiValue
+                                                }} />
                                             </div>
-                                        )}
-                                        {equalHeightType === 'blocks' && (
-                                            <AdvancedSelect value={innerBlocksOptions.filter(obj => equalHeightBlocks.includes(obj.value))} options={innerBlocksOptions} isMulti={true} onChange={(option) => setAttributes({ equalHeightBlocks: option.map(option => option.value) })} components={{
-                                                MultiValueRemove: MultiValue
-                                            }} />
+                                        </div>
+
+                                        {(equalHeightBlocks?.length > 0) && (
+                                            <div className='premium-blocks__base-control'>
+                                                <span className='premium-control-title'>{__('Blocks Elements', 'premium-blocks-pro')}</span>
+                                                <div className="pbg-custom-selectors-blocks">
+                                                    {equalHeightBlocks.map(block => <BlockItemComponent onRemove={(elements) => resetHeight(elements)} block={getUniqueBlock(block)} customSelectors={customSelectors} container={containerRef.current} onChange={(value) => setAttributes(value)} />)}
+                                                </div>
+                                            </div>
                                         )}
                                     </>
                                 )}
@@ -1426,7 +1397,7 @@ const applyWithSelect = withSelect((select, props) => {
         removeBlock,
         uniqueInnerBlocks,
         isParent: !hasParents,
-        blockData: getBlock(props.clientId)
+        blockData: getBlock(props.clientId),
     };
 });
 export default compose(applyWithSelect)(edit);
