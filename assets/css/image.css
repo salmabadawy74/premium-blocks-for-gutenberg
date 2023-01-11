@@ -8,6 +8,7 @@
     overflow: hidden;
     position: relative; }
     .premium-image .premium-image-container .premium-image-wrap img {
+      max-width: 100%;
       width: 100%;
       display: block;
       position: relative;

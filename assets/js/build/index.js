@@ -55532,25 +55532,117 @@ function Edit(props) {
     });
   }, []);
   const INNER_BLOCKS_TEMPLATE = [["premium/image", {
-    ImgUrl: attributes.authorImgUrl ? attributes.authorImgUrl : ""
+    ImgUrl: attributes.authorImgUrl ? attributes.authorImgUrl : "",
+    imgWidth: {
+      "Desktop": attributes.imgSize ? attributes.imgSize : "",
+      "Tablet": attributes.imgSize ? attributes.imgSize : "",
+      "Mobile": attributes.imgSize ? attributes.imgSize : "",
+      "unit": "px"
+    },
+    imageBorder: {
+      "borderType": attributes.imageBorder.borderType ? attributes.imageBorder.borderType : "none",
+      "borderColor": attributes.imageBorder.borderColor ? attributes.imageBorder.borderColor : "",
+      "borderWidth": {
+        "Desktop": {
+          "top": attributes.imageBorder.borderWidth['Desktop'].top ? attributes.imageBorder.borderWidth['Desktop'].top : "",
+          "right": attributes.imageBorder.borderWidth['Desktop'].right ? attributes.imageBorder.borderWidth['Desktop'].right : "",
+          "bottom": attributes.imageBorder.borderWidth['Desktop'].bottom ? attributes.imageBorder.borderWidth['Desktop'].bottom : "",
+          "left": attributes.imageBorder.borderWidth['Desktop'].left ? attributes.imageBorder.borderWidth['Desktop'].left : ""
+        },
+        "Tablet": {
+          "top": attributes.imageBorder.borderWidth['Tablet'].top ? attributes.imageBorder.borderWidth['Tablet'].top : "",
+          "right": attributes.imageBorder.borderWidth['Tablet'].right ? attributes.imageBorder.borderWidth['Tablet'].right : "",
+          "bottom": attributes.imageBorder.borderWidth['Tablet'].bottom ? attributes.imageBorder.borderWidth['Tablet'].bottom : "",
+          "left": attributes.imageBorder.borderWidth['Tablet'].left ? attributes.imageBorder.borderWidth['Tablet'].left : ""
+        },
+        "Mobile": {
+          "top": attributes.imageBorder.borderWidth['Mobile'].top ? attributes.imageBorder.borderWidth['Mobile'].top : "",
+          "right": attributes.imageBorder.borderWidth['Mobile'].right ? attributes.imageBorder.borderWidth['Mobile'].right : "",
+          "bottom": attributes.imageBorder.borderWidth['Mobile'].bottom ? attributes.imageBorder.borderWidth['Mobile'].bottom : "",
+          "left": attributes.imageBorder.borderWidth['Mobile'].left ? attributes.imageBorder.borderWidth['Mobile'].left : ""
+        }
+      },
+      "borderRadius": {
+        "Desktop": {
+          "top": attributes.imageBorder.borderRadius['Desktop'].top ? attributes.imageBorder.borderRadius['Desktop'].top : "",
+          "right": attributes.imageBorder.borderRadius['Desktop'].right ? attributes.imageBorder.borderRadius['Desktop'].right : "",
+          "bottom": attributes.imageBorder.borderRadius['Desktop'].bottom ? attributes.imageBorder.borderRadius['Desktop'].bottom : "",
+          "left": attributes.imageBorder.borderRadius['Desktop'].left ? attributes.imageBorder.borderRadius['Desktop'].left : ""
+        },
+        "Tablet": {
+          "top": attributes.imageBorder.borderRadius['Tablet'].top ? attributes.imageBorder.borderRadius['Tablet'].top : "",
+          "right": attributes.imageBorder.borderRadius['Tablet'].right ? attributes.imageBorder.borderRadius['Tablet'].right : "",
+          "bottom": attributes.imageBorder.borderRadius['Tablet'].bottom ? attributes.imageBorder.borderRadius['Tablet'].bottom : "",
+          "left": attributes.imageBorder.borderRadius['Tablet'].left ? attributes.imageBorder.borderRadius['Tablet'].left : ""
+        },
+        "Mobile": {
+          "top": attributes.imageBorder.borderRadius['Mobile'].top ? attributes.imageBorder.borderRadius['Mobile'].top : "",
+          "right": attributes.imageBorder.borderRadius['Mobile'].right ? attributes.imageBorder.borderRadius['Mobile'].right : "",
+          "bottom": attributes.imageBorder.borderRadius['Mobile'].bottom ? attributes.imageBorder.borderRadius['Mobile'].bottom : "",
+          "left": attributes.imageBorder.borderRadius['Mobile'].left ? attributes.imageBorder.borderRadius['Mobile'].left : ""
+        }
+      }
+    }
   }], ["premium/text", {
     text: attributes.text ? attributes.text : __("Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.", "premium-blocks-for-gutenberg"),
     align: {
       "Desktop": "center",
       "Tablet": "center",
       "Mobile": "center"
-    }
+    },
+    typography: {
+      "fontWeight": attributes.bodyTypography.fontWeight ? attributes.bodyTypography.fontWeight : "400",
+      "fontStyle": attributes.bodyTypography.fontStyle ? attributes.bodyTypography.fontStyle : "",
+      "letterSpacing": {
+        "Desktop": attributes.bodyTypography.letterSpacing['Desktop'] ? attributes.bodyTypography.letterSpacing['Desktop'] : "",
+        "Tablet": attributes.bodyTypography.letterSpacing['Tablet'] ? attributes.bodyTypography.letterSpacing['Tablet'] : "",
+        "Mobile": attributes.bodyTypography.letterSpacing['Mobile'] ? attributes.bodyTypography.letterSpacing['Mobile'] : "",
+        "unit": attributes.bodyTypography.letterSpacing['unit'] ? attributes.bodyTypography.letterSpacing['unit'] : "px"
+      },
+      "fontFamily": attributes.bodyTypography.fontFamily ? attributes.bodyTypography.fontFamily : "Default",
+      "lineHeight": {
+        "Desktop": attributes.bodyTypography.lineHeight['Desktop'] ? attributes.bodyTypography.lineHeight['Desktop'] : "",
+        "Tablet": attributes.bodyTypography.lineHeight['Tablet'] ? attributes.bodyTypography.lineHeight['Tablet'] : "",
+        "Mobile": attributes.bodyTypography.lineHeight['Mobile'] ? attributes.bodyTypography.lineHeight['Mobile'] : "",
+        "unit": attributes.bodyTypography.lineHeight['unit'] ? attributes.bodyTypography.lineHeight['unit'] : "px"
+      },
+      "textDecoration": attributes.bodyTypography.textDecoration ? attributes.bodyTypography.textDecoration : "",
+      "textTransform": attributes.bodyTypography.textTransform ? attributes.bodyTypography.textTransform : "",
+      "fontSize": {
+        "Desktop": attributes.bodyTypography.fontSize['Desktop'] ? attributes.bodyTypography.fontSize['Desktop'] : "",
+        "Tablet": attributes.bodyTypography.fontSize['Tablet'] ? attributes.bodyTypography.fontSize['Tablet'] : "",
+        "Mobile": attributes.bodyTypography.fontSize['Mobile'] ? attributes.bodyTypography.fontSize['Mobile'] : "",
+        "unit": attributes.bodyTypography.fontSize['unit'] ? attributes.bodyTypography.fontSize['unit'] : "px"
+      }
+    },
+    margin: {
+      "Desktop": {
+        "top": attributes.bodyMargin['Desktop'].top ? attributes.bodyMargin['Desktop'].top : 20,
+        "right": attributes.bodyMargin['Desktop'].right ? attributes.bodyMargin['Desktop'].right : "",
+        "bottom": attributes.bodyMargin['Desktop'].bottom ? attributes.bodyMargin['Desktop'].bottom : 20,
+        "left": attributes.bodyMargin['Desktop'].left ? attributes.bodyMargin['Desktop'].left : ""
+      },
+      "Tablet": {
+        "top": attributes.bodyMargin['Tablet'].top ? attributes.bodyMargin['Tablet'].top : 20,
+        "right": attributes.bodyMargin['Tablet'].right ? attributes.bodyMargin['Tablet'].right : "",
+        "bottom": attributes.bodyMargin['Tablet'].bottom ? attributes.bodyMargin['Tablet'].bottom : 20,
+        "left": attributes.bodyMargin['Tablet'].left ? attributes.bodyMargin['Tablet'].left : ""
+      },
+      "Mobile": {
+        "top": attributes.bodyMargin['Mobile'].top ? attributes.bodyMargin['Mobile'].top : 20,
+        "right": attributes.bodyMargin['Mobile'].right ? attributes.bodyMargin['Mobile'].right : "",
+        "bottom": attributes.bodyMargin['Mobile'].bottom ? attributes.bodyMargin['Mobile'].bottom : 20,
+        "left": attributes.bodyMargin['Mobile'].left ? attributes.bodyMargin['Mobile'].left : ""
+      },
+      "unit": attributes.bodyMargin.unit ? attributes.bodyMargin.unit : "px"
+    },
+    color: attributes.contentStyle[0].bodyColor ? attributes.contentStyle[0].bodyColor : ""
   }], ["premium/author", {
     align: {
       "Desktop": "center",
       "Tablet": "center",
       "Mobile": "center"
-    } // title: attributes.multiPersonContent[0].name
-    //     ? attributes.multiPersonContent[0].name
-    //     : __("John Doe", "premium-blocks-for-gutenberg"),
-    // titleTag: attributes.nameTag ? attributes.nameTag : "h3",
-    // style: "default",
-
+    }
   }]];
   const ALLOWED_BLOCKS = ['premium/image', 'premium/text', 'premium/author'];
   const {
