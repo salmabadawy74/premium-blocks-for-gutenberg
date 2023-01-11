@@ -127,10 +127,11 @@ function PostTitle(props) {
             </TitleTag>
         );
     }
+    console.log("FFF");
 
     return (
         <Fragment>
-            <InspectorControls key={"inspector"}>
+            <InspectorControls>
                 <InspectorTabs tabs={["layout", "style", "advance"]}>
                     <InspectorTab key={"layout"}>
                         <PanelBody

@@ -57,16 +57,8 @@ export default function PostTemplateEdit({
         { className: "wp-block-post" },
         {
             template: TEMPLATE,
-            templateLock: false,
-            allowedBlocks: [
-                "premium/post-title",
-                "premium/post-excerpt",
-                "premium/post-featured-image",
-                "premium/post-meta",
-            ],
         }
     );
-    console.log("KKKKKKKK");
     const [{ page }] = queryContext;
     const [activeBlockContextId, setActiveBlockContextId] = useState();
     const { posts, blocks } = useSelect(
@@ -179,7 +171,6 @@ export default function PostTemplateEdit({
         [posts]
     );
     const blockProps = useBlockProps();
-    console.log(posts, "poppppp", blocks);
     if (!posts) {
         return (
             <p {...blockProps}>
@@ -191,16 +182,27 @@ export default function PostTemplateEdit({
     if (!posts.length) {
         return <p {...blockProps}> {__("No results found.")}</p>;
     }
-
+    function PostTemplateInnerBlocks() {
+        const innerBlocksProps = useInnerBlocksProps(
+            { className: "wp-block-post" },
+            { template: TEMPLATE }
+        );
+        return <li {...innerBlocksProps} />;
+    }
+    console.log(blockContexts, "blockContexts");
     return (
         <ul {...blockProps}>
             {blockContexts &&
-                blockContexts.map((blockContext) => (
+                blockContexts.map((blockContext, index) => (
                     <BlockContextProvider
                         key={blockContext.postId}
                         value={blockContext}
                     >
-                        <div {...innerBlocksProps} />
+                        {blockContext.postId ===
+                        (activeBlockContextId || blockContexts[0]?.postId) ? (
+                            <PostTemplateInnerBlocks />
+                        ) : null}
+                        {/* <div {...innerBlocksProps} /> */}
                     </BlockContextProvider>
                 ))}
         </ul>

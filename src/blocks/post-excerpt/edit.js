@@ -79,7 +79,6 @@ function Excerpt(props) {
         );
         return document.body.textContent || document.body.innerText || "";
     }, [renderedExcerpt]);
-    console.log(strippedRenderedExcerpt, rawExcerpt, renderedExcerpt);
     const words = strippedRenderedExcerpt.split(" ");
     let exLength = excerptLen ? excerptLen : 25;
     let excerpt, Content;

@@ -6,8 +6,10 @@
     "category": "premium-blocks",
     "description": "Displays the title of a post, page, or any other content-type.",
     "textdomain": "default",
-    "parent": ["premium/post-grid"],
     "usesContext": ["postId", "postType", "queryId"],
+    	"supports": {
+            		"html": false
+        },
     "attributes": {
         "blockId": {
             "type": "string"

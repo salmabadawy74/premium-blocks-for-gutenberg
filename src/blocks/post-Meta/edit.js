@@ -100,7 +100,6 @@ export default function Meta(props) {
         "date",
         postId
     );
-    console.log(postDetails, "LLLLLL");
 
     let postDate = date ? (
         <time dateTime={dateI18n("c", date)}>
