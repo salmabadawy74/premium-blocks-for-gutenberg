@@ -1,6 +1,7 @@
 const { __ } = wp.i18n;
 import Icons from './icons'
-
+import countup from '../../../blocks-config/count-up/block.json'
+console.log(countup)
 export const Variations =
     [
         {
@@ -11,7 +12,9 @@ export const Variations =
             icon: Icons.vertical,
             innerBlocks: [
                 ['premium/icon', {
-
+                    iconTypeFile: countup.attributes.icon ? countup.attributes.icon : 'icon',
+                    selectedIcon: countup.attributes.iconClass ? countup.attributes.iconClass : 'dashicons dashicons-clock',
+                    imageURL: countup.attributes.imageURL ? countup.attributes.imageURL : ''
                 }],
                 ['premium/counter', {}],
                 ['premium/heading', {
@@ -76,6 +79,9 @@ export const Variations =
                                         "Tablet": "right",
                                         "Mobile": "right"
                                     },
+                                    iconTypeFile: countup.attributes.icon ? countup.attributes.icon : 'icon',
+                                    selectedIcon: countup.attributes.iconClass ? countup.attributes.iconClass : 'dashicons dashicons-clock',
+                                    imageURL: countup.attributes.imageURL ? countup.attributes.imageURL : ''
                                 }]
                             ]
                         ],

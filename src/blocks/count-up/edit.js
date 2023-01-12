@@ -6,7 +6,6 @@ import {
     PremiumBorder,
     SpacingComponent,
     PremiumShadow,
-    MultiButtonsControl,
     PremiumBackgroundControl,
     PremiumVariation
 } from "@pbg/components";
@@ -20,7 +19,7 @@ import { Variations } from './variations'
 
 const { __ } = wp.i18n;
 const { withSelect } = wp.data;
-const { PanelBody, TextControl } = wp.components;
+const { PanelBody } = wp.components;
 
 const { InspectorControls, useBlockProps, useInnerBlocksProps } = wp.blockEditor;
 
@@ -48,25 +47,6 @@ function Edit(props) {
         variation,
         showVariation
     } = attributes;
-
-    const DIRECTION = [
-        {
-            value: "row",
-            label: __("Row", "premium-blocks-for-gutenberg"),
-        },
-        {
-            value: "row-reverse",
-            label: __("Reversed Row", "premium-blocks-for-gutenberg"),
-        },
-        {
-            value: "column",
-            label: __("Column", "premium-blocks-for-gutenberg"),
-        },
-        {
-            value: "column-reverse",
-            label: __("Reversed Column", "premium-blocks-for-gutenberg"),
-        },
-    ];
 
     const onSelectVariations = (v) => {
         setAttributes({

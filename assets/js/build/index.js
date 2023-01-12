@@ -22369,8 +22369,7 @@ const {
   withSelect
 } = wp.data;
 const {
-  PanelBody,
-  TextControl
+  PanelBody
 } = wp.components;
 const {
   InspectorControls,
@@ -22409,19 +22408,6 @@ function Edit(props) {
     variation,
     showVariation
   } = attributes;
-  const DIRECTION = [{
-    value: "row",
-    label: __("Row", "premium-blocks-for-gutenberg")
-  }, {
-    value: "row-reverse",
-    label: __("Reversed Row", "premium-blocks-for-gutenberg")
-  }, {
-    value: "column",
-    label: __("Column", "premium-blocks-for-gutenberg")
-  }, {
-    value: "column-reverse",
-    label: __("Reversed Column", "premium-blocks-for-gutenberg")
-  }];
 
   const onSelectVariations = v => {
     setAttributes({
@@ -22706,17 +22692,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _icons__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./icons */ "./src/blocks/count-up/icons.js");
+/* harmony import */ var _blocks_config_count_up_block_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../blocks-config/count-up/block.json */ "./blocks-config/count-up/block.json");
 const {
   __
 } = wp.i18n;
 
+
+console.log(_blocks_config_count_up_block_json__WEBPACK_IMPORTED_MODULE_1__);
 const Variations = [{
   name: 'vertical',
   description: __('Vertical'),
   isDefault: true,
   pickerTitle: __('Vertical'),
   icon: _icons__WEBPACK_IMPORTED_MODULE_0__["default"].vertical,
-  innerBlocks: [['premium/icon', {}], ['premium/counter', {}], ['premium/heading', {
+  innerBlocks: [['premium/icon', {
+    iconTypeFile: _blocks_config_count_up_block_json__WEBPACK_IMPORTED_MODULE_1__.attributes.icon ? _blocks_config_count_up_block_json__WEBPACK_IMPORTED_MODULE_1__.attributes.icon : 'icon',
+    selectedIcon: _blocks_config_count_up_block_json__WEBPACK_IMPORTED_MODULE_1__.attributes.iconClass ? _blocks_config_count_up_block_json__WEBPACK_IMPORTED_MODULE_1__.attributes.iconClass : 'dashicons dashicons-clock',
+    imageURL: _blocks_config_count_up_block_json__WEBPACK_IMPORTED_MODULE_1__.attributes.imageURL ? _blocks_config_count_up_block_json__WEBPACK_IMPORTED_MODULE_1__.attributes.imageURL : ''
+  }], ['premium/counter', {}], ['premium/heading', {
     title: __("Premium Count Up", "premium-blocks-for-gutenberg"),
     titleTag: "h4",
     style: "default",
@@ -22779,7 +22772,10 @@ const Variations = [{
       "Desktop": "right",
       "Tablet": "right",
       "Mobile": "right"
-    }
+    },
+    iconTypeFile: _blocks_config_count_up_block_json__WEBPACK_IMPORTED_MODULE_1__.attributes.icon ? _blocks_config_count_up_block_json__WEBPACK_IMPORTED_MODULE_1__.attributes.icon : 'icon',
+    selectedIcon: _blocks_config_count_up_block_json__WEBPACK_IMPORTED_MODULE_1__.attributes.iconClass ? _blocks_config_count_up_block_json__WEBPACK_IMPORTED_MODULE_1__.attributes.iconClass : 'dashicons dashicons-clock',
+    imageURL: _blocks_config_count_up_block_json__WEBPACK_IMPORTED_MODULE_1__.attributes.imageURL ? _blocks_config_count_up_block_json__WEBPACK_IMPORTED_MODULE_1__.attributes.imageURL : ''
   }]]], ['premium/container', {
     variationSelected: true,
     direction: {
@@ -86738,6 +86734,17 @@ function _unsupportedIterableToArray(o, minLen) {
 
 "use strict";
 module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"version":"0.1.0","name":"premium/button","title":"Button","description":"Add stylish buttons to your Gutenberg page using Premium Button Block.","category":"premium-blocks","keywords":["button"],"attributes":{"blockId":{"type":"string"},"borderButton":{"type":"boolean","default":false},"btnText":{"type":"string","default":"Premium Button"},"btnSize":{"type":"string","default":"md"},"btnAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"btnLink":{"type":"string","source":"attribute","attribute":"href","selector":".premium-button"},"btnTarget":{"type":"boolean","default":false},"showIcon":{"type":"boolean","default":false},"icon":{"type":"string","default":"dashicons dashicons-admin-site"},"iconPosition":{"type":"string","default":"before"},"effect":{"type":"string","default":"none"},"effectDir":{"type":"string","default":"top"},"slideColor":{"type":"string"},"block_id":{"type":"string"},"hideDesktop":{"type":"boolean","default":false},"classMigrate":{"type":"boolean","default":false},"hideTablet":{"type":"boolean","default":false},"hideMobile":{"type":"boolean","default":false},"btnStyles":{"type":"array","default":[{"textColor":"","textHoverColor":"","backColor":"","backOpacity":1,"backHoverColor":"","borderHoverColor":""}]},"border":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"typography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"textShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"boxShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}},"padding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"iconSize":{"type":"object","default":{"Desktop":"25","Tablet":"25","Mobile":"25","unit":"px"}},"iconSpacing":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"iconColor":{"type":"string","default":""},"iconHoverColor":{"type":"string","default":""},"iconShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"backgroundOptions":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"center center","backgroundRepeat":"no-repeat","backgroundSize":"cover","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientType":"linear","gradientAngle":"180","gradientPosition":"center center"}},"backgroundPresets":{"type":"string","default":""}},"editorScript":"pbg-blocks-js","editorStyle":"premium-blocks-editor-css"}');
+
+/***/ }),
+
+/***/ "./blocks-config/count-up/block.json":
+/*!*******************************************!*\
+  !*** ./blocks-config/count-up/block.json ***!
+  \*******************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"version":"0.1.0","name":"premium/countup","title":"CountUp","description":"Show off your facts and figures in an elegant way using Premium CountUp Block.","keywords":["number","count down","count up","counter"],"category":"premium-blocks","attributes":{"blockId":{"type":"string"},"increment":{"type":"string","default":500},"time":{"type":"string","default":1000},"delay":{"type":"string","default":10},"align":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"flexDir":{"type":"string","default":"column"},"prefix":{"type":"boolean","default":false},"suffix":{"type":"boolean","default":false},"icon":{"type":"string","default":"icon"},"imageID":{"type":"string"},"imageURL":{"type":"string"},"iconType":{"type":"string","default":"dash"},"iconCheck":{"type":"boolean","default":true},"iconSize":{"type":"number","default":40},"iconColor":{"type":"string"},"selfAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"titleCheck":{"type":"boolean","default":true},"titleTxt":{"type":"string","default":"Premium Count Up"},"faIcon":{"type":"string","default":"dashicons dashicons-clock"},"counterFamily":{"type":"string","default":"Default"},"hideDesktop":{"type":"boolean","default":false},"hideTablet":{"type":"boolean","default":false},"hideMobile":{"type":"boolean","default":false},"numberStyles":{"type":"array","default":[{"numberColor":""}]},"titleStyles":{"type":"array","default":[{"titleColor":""}]},"suffixStyles":{"type":"array","default":[{"suffixTxt":"Suffix","suffixColor":""}]},"prefixStyles":{"type":"array","default":[{"prefixTxt":"Prefix","prefixColor":""}]},"padding":{"type":"object","default":{"Desktop":{"top":"20","right":"20","bottom":"20","left":"20"},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"numberTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","fontFamily":"Default","textDecoration":"","fontSize":{"Desktop":"55","Tablet":"55","Mobile":"55","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"prefixTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","fontFamily":"Default","textDecoration":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"suffixTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","fontFamily":"Default","textDecoration":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"titleTypography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","fontFamily":"Default","textDecoration":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"boxShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":" "}},"border":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"background":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}},"prefixPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"prefixMargin":{"type":"object","default":{"Desktop":{"top":"2","right":"2","bottom":"2","left":"2"},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"numberPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"numberMargin":{"type":"object","default":{"Desktop":{"top":"","right":"2","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"suffixPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"suffixMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":"2"},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"iconMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"titlePadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"titleMargin":{"type":"object","default":{"Desktop":{"top":"1","right":"","bottom":"1","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"variation":{"type":"object","default":{}},"showVariation":{"type":"boolean","default":true}},"editorScript":"pbg-blocks-js","editorStyle":"premium-blocks-editor-css"}');
 
 /***/ }),
 
