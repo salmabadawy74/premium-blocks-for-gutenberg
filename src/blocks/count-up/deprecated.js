@@ -1153,8 +1153,7 @@ const deprecatedContent = [
         attributes: Object.assign(attributes, v9Attributes),
         migrate: (attributes) => {
             let newAttributes = {
-                variation: {},
-                showVariation: true
+
             };
             return Object.assign(attributes, newAttributes)
         },
