@@ -6,9 +6,7 @@ import {
     PremiumBorder,
     SpacingComponent,
     PremiumShadow,
-    MultiButtonsControl,
-    PremiumBackgroundControl,
-    PremiumVariation
+    PremiumBackgroundControl
 } from "@pbg/components";
 import {
     gradientBackground,
@@ -16,13 +14,12 @@ import {
     paddingCss,
     generateBlockId,
 } from "@pbg/helpers";
-import { Variations } from './variations'
 
 const { __ } = wp.i18n;
 const { withSelect } = wp.data;
-const { PanelBody, TextControl } = wp.components;
+const { PanelBody } = wp.components;
 
-const { InspectorControls, useBlockProps, useInnerBlocksProps } = wp.blockEditor;
+const { InspectorControls, useBlockProps, InnerBlocks } = wp.blockEditor;
 
 const { Fragment, useEffect } = wp.element;
 
@@ -31,10 +28,78 @@ function Edit(props) {
 
     useEffect(() => {
         setAttributes({
-            blockId: "premium-countup-" + generateBlockId(clientId),
+            blockId: "premium-countup-" + generateBlockId(clientId)
         });
         setAttributes({ classMigrate: true });
     }, []);
+
+    const INNER_BLOCKS_TEMPLATE = [
+        ['premium/container', {
+            variationSelected: true,
+            direction: { Desktop: "column", Tablet: "", Mobile: "" },
+            wrapItems: { Desktop: "", Tablet: "", Mobile: "wrap" },
+            isBlockRootParent: true,
+            alignItems: {
+                "Desktop": "center",
+                "Tablet": "center",
+                "Mobile": "center"
+            },
+            columnGutter: {
+                "Desktop": 0,
+                "Tablet": 0,
+                "Mobile": 0,
+                "unit": "px"
+            },
+            rowGutter: {
+                "Desktop": 0,
+                "Tablet": 0,
+                "Mobile": 0,
+                "unit": "px"
+            },
+            align: "alignwide"
+        },
+            [[
+                "premium/icon",
+                {
+                    iconTypeFile: attributes.icon ? attributes.icon : 'icon',
+                    selectedIcon: attributes.faIcon ? attributes.faIcon : 'dashicons dashicons-clock',
+                    imageURL: attributes.imageURL ? attributes.imageURL : ''
+                },
+            ],
+            [
+                "premium/counter", {
+                    prefix: attributes.prefix ? attributes.prefix : false,
+                    suffix: attributes.suffix ? attributes.suffix : false,
+                    increment: attributes.increment ? attributes.increment : 500,
+                    suffixStyles: [
+                        {
+                            "suffixTxt": attributes.suffixStyles[0].suffixTxt ? attributes.suffixStyles[0].suffixTxt : "Suffix"
+                        }
+                    ],
+                    prefixStyles: [
+                        {
+                            "prefixTxt": attributes.prefixStyles[0].prefixTxt ? attributes.prefixStyles[0].prefixTxt : "Prefix"
+                        }
+                    ]
+                },
+            ],
+            [
+                "premium/heading",
+                {
+                    title: attributes.titleTxt ? attributes.titleTxt : __("Premium Count Up", "premium-blocks-for-gutenberg"),
+                    titleTag: "h4",
+                    style: "default",
+                    align: {
+                        "Desktop": attributes.align['Desktop'] ? attributes.align['Desktop'] : "center",
+                        "Tablet": attributes.align['Tablet'] ? attributes.align['Tablet'] : "center",
+                        "Mobile": attributes.align['Mobile'] ? attributes.align['Mobile'] : "center"
+                    }
+                },
+            ]]
+        ]
+    ];
+
+    const ALLOWED_BLOCKS = ['premium/image', 'premium/icon', 'premium/heading', 'premium/container', "premium/lottie"];
 
     const {
         blockId,
@@ -44,56 +109,13 @@ function Edit(props) {
         padding,
         boxShadow,
         border,
-        background,
-        variation,
-        showVariation
+        background
     } = attributes;
-
-    const DIRECTION = [
-        {
-            value: "row",
-            label: __("Row", "premium-blocks-for-gutenberg"),
-        },
-        {
-            value: "row-reverse",
-            label: __("Reversed Row", "premium-blocks-for-gutenberg"),
-        },
-        {
-            value: "column",
-            label: __("Column", "premium-blocks-for-gutenberg"),
-        },
-        {
-            value: "column-reverse",
-            label: __("Reversed Column", "premium-blocks-for-gutenberg"),
-        },
-    ];
-
-    const onSelectVariations = (v) => {
-        setAttributes({
-            variation: v,
-            showVariation: false
-        });
-    }
-
-    const innerBlocksProps = useInnerBlocksProps(
-        {
-        },
-        {
-            template: variation.innerBlocks,
-            templateLock: false,
-            allowedBlocks: [
-                "premium/icon",
-                "premium/heading",
-                "premium/image",
-                "premium/lottie"
-            ],
-        }
-    );
 
     return (
         <Fragment>
             <InspectorControls key={"inspector"}>
-                {!showVariation && <InspectorTabs tabs={["style", "advance"]}>
+                <InspectorTabs tabs={["style", "advance"]}>
                     <InspectorTab key={"style"}>
                         <PanelBody
                             title={__(
@@ -159,7 +181,6 @@ function Edit(props) {
                         />
                     </InspectorTab>
                 </InspectorTabs>
-                }
             </InspectorControls>
             <div
                 {...useBlockProps({
@@ -180,13 +201,11 @@ function Edit(props) {
                     ...gradientBackground(background),
                 }}
             >
-                {showVariation && <PremiumVariation
-                    setAttributes={setAttributes}
-                    variations={Variations}
-                    onSelect={onSelectVariations}
+                <InnerBlocks
+                    template={INNER_BLOCKS_TEMPLATE}
+                    templateLock={false}
+                    allowedBlocks={ALLOWED_BLOCKS}
                 />
-                }
-                {!showVariation && <div {...innerBlocksProps} />}
             </div>
         </Fragment>
     );

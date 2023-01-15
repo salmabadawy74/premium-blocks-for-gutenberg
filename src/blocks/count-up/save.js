@@ -15,9 +15,7 @@ const save = props => {
         hideMobile,
         boxShadow,
         border,
-        background,
-        variation,
-        showVariation
+        background
     } = props.attributes;
 
     return (
@@ -41,9 +39,7 @@ const save = props => {
                 ...gradientBackground(background)
             })}
         >
-            {variation != {} && !showVariation &&
-                <InnerBlocks.Content />
-            }
+            <InnerBlocks.Content />
         </div>
     );
 };
