@@ -11,7 +11,8 @@
     "parent": [
         "premium/person",
         "premium/icon-box",
-        "premium/author"
+        "premium/author",
+        "premium/container"
     ],
     "textdomain": "default",
     "attributes": {

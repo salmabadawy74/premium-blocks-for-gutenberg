@@ -22,19 +22,6 @@ function get_premium_testimonials_css_style( $attr, $unique_id ) {
 	$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
 	$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 
-	// Body Style FontSize.
-	if ( isset( $attr['bodyTypography'] ) ) {
-		$body_typography = $attr['bodyTypography'];
-		$css->set_selector( $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__text_wrap' . ' > div' . '> .premium-testimonial__text' );
-		$css->render_typography( $body_typography, 'Desktop' );
-	}
-
-	if ( isset( $attr['bodyMargin'] ) ) {
-		$margin = $attr['bodyMargin'];
-		$css->set_selector( $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__text_wrap' . ' > div' . '> .premium-testimonial__text' );
-		$css->add_property( 'margin', $css->render_spacing( $margin['Desktop'], $margin['unit'] ) );
-	}
-
 	// Container Style
 	if ( isset( $attr['padding'] ) ) {
 		$padding = $attr['padding'];
@@ -43,20 +30,6 @@ function get_premium_testimonials_css_style( $attr, $unique_id ) {
 	}
 
 	$css->start_media_query( $media_query['tablet'] );
-
-	// Body Style FontSize.
-	if ( isset( $attr['bodyTypography'] ) ) {
-		$body_typography = $attr['bodyTypography'];
-
-		$css->set_selector( $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__text_wrap' . ' > div' . '> .premium-testimonial__text' );
-		$css->render_typography( $body_typography, 'Tablet' );
-	}
-
-	if ( isset( $attr['bodyMargin'] ) ) {
-		$margin = $attr['bodyMargin'];
-		$css->set_selector( $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__text_wrap' . ' > div' . '> .premium-testimonial__text' );
-		$css->add_property( 'margin', $css->render_spacing( $margin['Tablet'], $margin['unit'] ) );
-	}
 
 	// Container Style
 	if ( isset( $attr['padding'] ) ) {
@@ -67,20 +40,6 @@ function get_premium_testimonials_css_style( $attr, $unique_id ) {
 
 	$css->stop_media_query();
 	$css->start_media_query( $media_query['mobile'] );
-
-	// Body Style FontSize.
-	if ( isset( $attr['bodyTypography'] ) ) {
-		$body_typography = $attr['bodyTypography'];
-
-		$css->set_selector( $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__text_wrap' . ' > div' . '> .premium-testimonial__text' );
-		$css->render_typography( $body_typography, 'Mobile' );
-	}
-
-	if ( isset( $attr['bodyMargin'] ) ) {
-		$margin = $attr['bodyMargin'];
-		$css->set_selector( $unique_id . '> .premium-testimonial__container' . ' > .premium-testimonial__content' . ' > .premium-testimonial__text_wrap' . ' > div' . '> .premium-testimonial__text' );
-		$css->add_property( 'margin', $css->render_spacing( $margin['Mobile'], $margin['unit'] ) );
-	}
 
 	// Container Style
 	if ( isset( $attr['padding'] ) ) {

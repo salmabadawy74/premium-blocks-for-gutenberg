@@ -2,33 +2,24 @@ import classnames from "classnames";
 import {
     generateBlockId,
     gradientBackground,
-    typographyCss,
-    paddingCss,
-    marginCss,
-    borderCss,
+    paddingCss
 } from "@pbg/helpers";
 import {
     AdvancedColorControl as AdvancedPopColorControl,
-    RadioComponent,
     InspectorTabs,
     InspectorTab,
     PremiumResponsiveTabs,
-    PremiumBorder,
     SpacingComponent,
-    MultiButtonsControl,
-    Icons,
     PremiumBackgroundControl,
     ResponsiveSingleRangeControl,
     PremiumShadow,
     WebfontLoader,
-    PremiumMediaUpload,
     PremiumUpperQuote,
-    PremiumLowerQuote,
-    DefaultImage,
-    PremiumTypo,
+    PremiumLowerQuote
 } from "@pbg/components";
+
 const { __ } = wp.i18n;
-const { PanelBody, TextControl, ToggleControl } = wp.components;
+const { PanelBody } = wp.components;
 const { InspectorControls, InnerBlocks, useBlockProps } = wp.blockEditor;
 const { useEffect, Fragment } = wp.element;
 const { withSelect } = wp.data;
@@ -44,76 +35,87 @@ function Edit(props) {
     }, []);
 
     const INNER_BLOCKS_TEMPLATE = [
-        [
-            "premium/image",
-            {
-                ImgUrl: attributes.authorImgUrl
-                    ? attributes.authorImgUrl
-                    : ""
+        ['premium/container', {
+            variationSelected: true,
+            direction: { Desktop: "column", Tablet: "", Mobile: "" },
+            wrapItems: { Desktop: "", Tablet: "", Mobile: "wrap" },
+            isBlockRootParent: true,
+            alignItems: {
+                "Desktop": "center",
+                "Tablet": "center",
+                "Mobile": "center"
             },
-        ],
-        [
-            "premium/text",
-            {
-                text: attributes.text
-                    ? attributes.text
-                    : __(
-                        "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.",
-                        "premium-blocks-for-gutenberg"
-                    ),
-                align: {
-                    "Desktop": "center",
-                    "Tablet": "center",
-                    "Mobile": "center"
-                }
+            columnGutter: {
+                "Desktop": 0,
+                "Tablet": 0,
+                "Mobile": 0,
+                "unit": "px"
             },
-        ],
-        [
-            "premium/author",
-            {
-                align: {
-                    "Desktop": "center",
-                    "Tablet": "center",
-                    "Mobile": "center"
+            rowGutter: {
+                "Desktop": 0,
+                "Tablet": 0,
+                "Mobile": 0,
+                "unit": "px"
+            },
+            align: "alignwide"
+        },
+            [[
+                "premium/image",
+                {
+                    ImgUrl: attributes.authorImgUrl
+                        ? attributes.authorImgUrl
+                        : ""
                 },
-                author: attributes.author,
-                authorCom: attributes.authorCom,
-                authorStyles: [
-                    {
-                        "authorTag": attributes.authorStyles[0].authorTag ? attributes.authorStyles[0].authorTag : "h4",
-                        "authorComTag": attributes.authorStyles[0].authorComTag ? attributes.authorStyles[0].authorComTag : "h5"
+            ],
+            [
+                "premium/text",
+                {
+                    text: attributes.text
+                        ? attributes.text
+                        : __(
+                            "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.",
+                            "premium-blocks-for-gutenberg"
+                        ),
+                    align: {
+                        "Desktop": "center",
+                        "Tablet": "center",
+                        "Mobile": "center"
                     }
-                ]
-            },
+                },
+            ],
+            [
+                "premium/author",
+                {
+                    align: {
+                        "Desktop": "center",
+                        "Tablet": "center",
+                        "Mobile": "center"
+                    },
+                    author: attributes.author ? attributes.author : 'John Doe',
+                    authorCom: attributes.authorCom ? attributes.authorCom : 'Leap13',
+                    authorStyles: [
+                        {
+                            "authorTag": attributes.authorStyles[0].authorTag ? attributes.authorStyles[0].authorTag : "h4",
+                            "authorComTag": attributes.authorStyles[0].authorComTag ? attributes.authorStyles[0].authorComTag : "h5"
+                        }
+                    ]
+                },
+            ]]
         ]
     ];
 
-    const ALLOWED_BLOCKS = ['premium/image', 'premium/text', 'premium/author'];
+    const ALLOWED_BLOCKS = ['premium/image', 'premium/text', 'premium/author', 'premium/container'];
 
     const {
         blockId,
-        align,
-        authorImgId,
-        authorImgUrl,
-        imgSize,
-        imageBorder,
-        author,
-        authorStyles,
-        text,
-        authorCom,
         hideDesktop,
         hideTablet,
         hideMobile,
-        contentStyle,
-        companyStyles,
         quoteStyles,
         padding,
         background,
         boxShadow,
-        authorTypography,
-        bodyMargin,
-        bodyTypography,
-        companyTypography,
+        bodyTypography
     } = attributes;
 
     let loadBodyGoogleFonts;
@@ -128,40 +130,6 @@ function Edit(props) {
             <WebfontLoader config={bodyConfig}></WebfontLoader>
         );
     }
-
-    const saveAuthorStyle = (value) => {
-        const newUpdate = authorStyles.map((item, index) => {
-            if (0 === index) {
-                item = { ...item, ...value };
-            }
-            return item;
-        });
-        setAttributes({
-            authorStyles: newUpdate,
-        });
-    };
-
-    const saveContentStyle = (value) => {
-        const newUpdate = contentStyle.map((item, indexx) => {
-            if (0 === indexx) {
-                item = { ...item, ...value };
-            }
-            return item;
-        });
-        setAttributes({
-            contentStyle: newUpdate,
-        });
-    };
-
-    const saveCompanyStyle = (value) => {
-        const newUpdate = companyStyles.map((item, indx) => {
-            if (0 === indx) {
-                item = { ...item, ...value };
-            }
-            return item;
-        });
-        setAttributes({ companyStyles: newUpdate });
-    };
 
     const saveQuoteStyles = (value) => {
         const newUpdate = quoteStyles.map((item, i) => {
@@ -317,107 +285,12 @@ function Edit(props) {
                     </span>
                     <div
                         className={`premium-testimonial__content`}
-                        style={{
-                            textAlign: align?.[props.deviceType],
-                        }}
                     >
                         <InnerBlocks
                             template={INNER_BLOCKS_TEMPLATE}
                             templateLock={false}
                             allowedBlocks={ALLOWED_BLOCKS}
                         />
-                        {/* <div className={`premium-testimonial__img_wrap`}>
-                            {authorImgUrl && (
-                                <img
-                                    className={`premium-testimonial__img`}
-                                    src={`${authorImgUrl}`}
-                                    alt="Author"
-                                    style={{
-                                        width: imgSize + "px",
-                                        height: imgSize + "px",
-                                        ...borderCss(
-                                            imageBorder,
-                                            props.deviceType
-                                        ),
-                                    }}
-                                />
-                            )}
-                            {!authorImgUrl && (
-                                <DefaultImage className={className} />
-                            )}
-                        </div> */}
-                        {/* <div className={`premium-testimonial__text_wrap`}>
-                            <div>
-                                <RichText
-                                    tagName="p"
-                                    className={`premium-testimonial__text`}
-                                    value={text}
-                                    // placeholder="Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus."
-                                    onChange={(newText) =>
-                                        setAttributes({ text: newText })
-                                    }
-                                    style={{
-                                        color: contentStyle[0].bodyColor,
-                                        ...typographyCss(
-                                            bodyTypography,
-                                            props.deviceType
-                                        ),
-                                        ...marginCss(
-                                            bodyMargin,
-                                            props.deviceType
-                                        ),
-                                    }}
-                                    keepPlaceholderOnFocus
-                                />
-                            </div>
-                        </div> */}
-                        {/* <div
-                            className={`premium-testimonial__info`}
-                            style={{
-                                justifyContent: align?.[props.deviceType],
-                            }}
-                        >
-                            <RichText
-                                tagName={authorStyles[0].authorTag.toLowerCase()}
-                                className={`premium-testimonial__author`}
-                                value={author}
-                                onChange={(newText) =>
-                                    setAttributes({ author: newText })
-                                }
-                                style={{
-                                    color: authorStyles[0].authorColor,
-                                    ...typographyCss(
-                                        authorTypography,
-                                        props.deviceType
-                                    ),
-                                }}
-                                keepPlaceholderOnFocus
-                            />
-                            <span
-                                className={`premium-testimonial__sep`}
-                                style={{
-                                    color: companyStyles[0].dashColor,
-                                }}
-                            >
-                                &nbsp;-&nbsp;
-                            </span>
-                            <RichText
-                                tagName={authorStyles[0].authorComTag.toLowerCase()}
-                                className={`premium-testimonial__author_comp`}
-                                onChange={(newText) =>
-                                    setAttributes({ authorCom: newText })
-                                }
-                                value={authorCom}
-                                style={{
-                                    color: companyStyles[0].authorComColor,
-                                    ...typographyCss(
-                                        companyTypography,
-                                        props.deviceType
-                                    ),
-                                }}
-                                keepPlaceholderOnFocus
-                            />
-                        </div> */}
                     </div>
                     <span className={`premium-testimonial__lower`}>
                         <PremiumLowerQuote

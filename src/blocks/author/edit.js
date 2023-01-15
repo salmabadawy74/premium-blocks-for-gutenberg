@@ -1,8 +1,5 @@
 import classnames from "classnames";
-import {
-    generateBlockId,
-    typographyCss
-} from "@pbg/helpers";
+import { generateBlockId, typographyCss } from "@pbg/helpers";
 import {
     AdvancedColorControl as AdvancedPopColorControl,
     RadioComponent,
@@ -14,6 +11,7 @@ import {
     WebfontLoader,
     PremiumTypo
 } from "@pbg/components";
+
 const { __ } = wp.i18n;
 const { PanelBody, TextControl, ToggleControl } = wp.components;
 const { InspectorControls, RichText, useBlockProps } = wp.blockEditor;
