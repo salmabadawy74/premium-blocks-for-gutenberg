@@ -10,7 +10,8 @@
     ],
     "textdomain": "default",
     "parent": [
-        "premium/testimonial"
+        "premium/testimonial",
+        "premium/container"
     ],
     "attributes": {
         "blockId": {

@@ -90,15 +90,6 @@ function render_block_pbg_author( $attributes, $content, $block ) {
 		}
 	};
 
-	// Block css file from 'assets/css' after run grunt task.
-	wp_enqueue_style(
-		'pbg-author-style',
-		PREMIUM_BLOCKS_URL . 'assets/css/minified/author.min.css',
-		array(),
-		PREMIUM_BLOCKS_VERSION,
-		'all'
-	);
-
 	return $content;
 }
 
