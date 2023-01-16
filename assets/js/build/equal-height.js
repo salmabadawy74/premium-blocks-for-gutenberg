@@ -123,32 +123,70 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils */ "./src/blocks/container/utils.js");
 
-if (Object.keys(PBG_EqualHeight).length) {
-  Object.keys(PBG_EqualHeight).map(id => {
-    const attributes = PBG_EqualHeight[id].attributes;
-    const containerBlock = document.querySelector(`.premium-block-${id}`);
+const applyEqualHeight = () => {
+  if (Object.keys(PBG_EqualHeight).length) {
     const {
-      customSelectors,
-      equalHeightBlocks
-    } = attributes;
-    if (equalHeightBlocks.length) {
-      for (const block of equalHeightBlocks) {
-        const blockName = block.includes('core') ? block.replace('core/', '') : block.replaceAll('/', '-');
-        const blockClass = `wp-block-${blockName}`;
-        const allBlocksType = containerBlock.querySelectorAll(`.${blockClass}`);
-        (0,_utils__WEBPACK_IMPORTED_MODULE_0__.setElementsHeight)(allBlocksType);
-      }
+      breakPoints
+    } = PBG_EqualHeight;
+    let device = 'desktop';
+    if (window.matchMedia(breakPoints.desktop).matches) {
+      device = 'desktop';
+    } else if (window.matchMedia(breakPoints.tablet).matches && !window.matchMedia(breakPoints.mobile).matches) {
+      device = 'tablet';
+    } else if (window.matchMedia(breakPoints.mobile).matches) {
+      device = 'mobile';
     }
-    if (customSelectors?.length) {
-      for (const selector of customSelectors) {
-        if ((0,_utils__WEBPACK_IMPORTED_MODULE_0__.checkSelector)(selector)) {
-          const allElements = containerBlock.querySelectorAll(selector);
-          (0,_utils__WEBPACK_IMPORTED_MODULE_0__.setElementsHeight)(allElements);
+    Object.keys(PBG_EqualHeight).map(id => {
+      if (id === 'breakPoints') {
+        return;
+      }
+      const attributes = PBG_EqualHeight[id].attributes;
+      const containerBlock = document.querySelector(`.premium-block-${id}`);
+      const {
+        customSelectors,
+        equalHeightBlocks,
+        equalHeightDevices
+      } = attributes;
+      if (equalHeightDevices.includes(device)) {
+        if (equalHeightBlocks.length) {
+          for (const block of equalHeightBlocks) {
+            const blockName = block.includes('core') ? block.replace('core/', '') : block.replaceAll('/', '-');
+            const blockClass = `wp-block-${blockName}`;
+            const allBlocksType = containerBlock.querySelectorAll(`.${blockClass}`);
+            (0,_utils__WEBPACK_IMPORTED_MODULE_0__.setElementsHeight)(allBlocksType);
+          }
+        }
+        if (customSelectors?.length) {
+          for (const selector of customSelectors) {
+            if ((0,_utils__WEBPACK_IMPORTED_MODULE_0__.checkSelector)(selector)) {
+              const allElements = containerBlock.querySelectorAll(selector);
+              (0,_utils__WEBPACK_IMPORTED_MODULE_0__.setElementsHeight)(allElements);
+            }
+          }
+        }
+      } else {
+        if (equalHeightBlocks.length) {
+          for (const block of equalHeightBlocks) {
+            const blockName = block.includes('core') ? block.replace('core/', '') : block.replaceAll('/', '-');
+            const blockClass = `wp-block-${blockName}`;
+            const allBlocksType = containerBlock.querySelectorAll(`.${blockClass}`);
+            (0,_utils__WEBPACK_IMPORTED_MODULE_0__.resetHeight)(allBlocksType);
+          }
+        }
+        if (customSelectors?.length) {
+          for (const selector of customSelectors) {
+            if ((0,_utils__WEBPACK_IMPORTED_MODULE_0__.checkSelector)(selector)) {
+              const allElements = containerBlock.querySelectorAll(selector);
+              (0,_utils__WEBPACK_IMPORTED_MODULE_0__.resetHeight)(allElements);
+            }
+          }
         }
       }
-    }
-  });
-}
+    });
+  }
+};
+window.addEventListener("resize", applyEqualHeight, false);
+applyEqualHeight();
 })();
 
 /******/ })()

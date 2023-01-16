@@ -142,6 +142,7 @@ const edit = (props) => {
             equalHeight,
             equalHeightBlocks,
             customSelectors,
+            equalHeightDevices
         },
         clientId,
         setAttributes,
@@ -149,6 +150,20 @@ const edit = (props) => {
     } = props;
     const enableEqualHeight = props.isParent && PremiumBlocksSettings.globalFeatures['premium-equal-height'];
     const innerBlocksOptions = props.uniqueInnerBlocks.length ? props.uniqueInnerBlocks.map(block => ({ value: block.name, label: block.name.replace('/', ' ') })) : [];
+    const equalHeightDevicesOptions = [
+        {
+            value: 'desktop',
+            label: __('Desktop', 'premium-blocks-for-gutenberg')
+        },
+        {
+            value: 'tablet',
+            label: __('Tablet', 'premium-blocks-for-gutenberg')
+        },
+        {
+            value: 'mobile',
+            label: __('Mobile', 'premium-blocks-for-gutenberg')
+        }
+    ];
     const containerRef = useRef(0);
 
     const blockVariationPickerOnSelect = (
@@ -176,7 +191,7 @@ const edit = (props) => {
     };
 
     useEffect(() => {
-        if (props.isParent && enableEqualHeight) {
+        if (props.isParent && enableEqualHeight && equalHeightDevices.includes(props.deviceType.toLowerCase())) {
             if (equalHeightBlocks.length) {
                 for (const block of equalHeightBlocks) {
                     resetBlocksHeight(block, containerRef.current);
@@ -427,6 +442,30 @@ const edit = (props) => {
             }
         };
         return <components.MultiValueRemove {...props} innerProps={newInnerProps} />;
+    };
+
+    const DeviceMultiValue = (ownProps) => {
+        const { innerProps } = ownProps;
+        const newInnerProps = {
+            ...innerProps, onClick: (data) => {
+                innerProps.onClick(data);
+                if (props.uniqueInnerBlocks?.length) {
+                    const resetBlocks = props.uniqueInnerBlocks.map(block => block.name);
+                    for (const block of resetBlocks) {
+                        resetBlocksHeight(block, containerRef.current);
+                    }
+                }
+                if (customSelectors?.length) {
+                    for (const selector of customSelectors) {
+                        if (checkSelector(selector)) {
+                            const allElements = containerRef.current.querySelectorAll(selector);
+                            resetHeight(allElements);
+                        }
+                    }
+                }
+            }
+        };
+        return <components.MultiValueRemove {...ownProps} innerProps={newInnerProps} />;
     };
 
     const getUniqueBlock = (blockName) => {
@@ -1246,7 +1285,6 @@ const edit = (props) => {
                                                 }} />
                                             </div>
                                         </div>
-
                                         {(equalHeightBlocks?.length > 0) && (
                                             <div className='premium-blocks__base-control'>
                                                 <span className='premium-control-title'>{__('Blocks Elements', 'premium-blocks-pro')}</span>
@@ -1255,6 +1293,16 @@ const edit = (props) => {
                                                 </div>
                                             </div>
                                         )}
+                                        <div className='premium-blocks__base-control'>
+                                            <span className='premium-control-title'>{__('Enable Equal Height on', 'premium-blocks-pro')}</span>
+                                            <div className="pbg-custom-selectors-blocks">
+                                                <AdvancedSelect value={equalHeightDevicesOptions.filter(obj => equalHeightDevices.includes(obj.value))} options={equalHeightDevicesOptions} isMulti={true} onChange={(option) => {
+                                                    setAttributes({ equalHeightDevices: option.map(option => option.value) })
+                                                }} components={{
+                                                    MultiValueRemove: DeviceMultiValue
+                                                }} />
+                                            </div>
+                                        </div>
                                     </>
                                 )}
                             </PanelBody>

@@ -17891,7 +17891,8 @@ const edit = props => {
       hideTablet,
       equalHeight,
       equalHeightBlocks,
-      customSelectors
+      customSelectors,
+      equalHeightDevices
     },
     clientId,
     setAttributes,
@@ -17902,6 +17903,16 @@ const edit = props => {
     value: block.name,
     label: block.name.replace('/', ' ')
   })) : [];
+  const equalHeightDevicesOptions = [{
+    value: 'desktop',
+    label: __('Desktop', 'premium-blocks-for-gutenberg')
+  }, {
+    value: 'tablet',
+    label: __('Tablet', 'premium-blocks-for-gutenberg')
+  }, {
+    value: 'mobile',
+    label: __('Mobile', 'premium-blocks-for-gutenberg')
+  }];
   const containerRef = useRef(0);
   const blockVariationPickerOnSelect = function () {
     let nextVariation = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : props.defaultVariation;
@@ -17919,7 +17930,7 @@ const edit = props => {
     });
   };
   useEffect(() => {
-    if (props.isParent && enableEqualHeight) {
+    if (props.isParent && enableEqualHeight && equalHeightDevices.includes(props.deviceType.toLowerCase())) {
       if (equalHeightBlocks.length) {
         for (const block of equalHeightBlocks) {
           (0,_utils__WEBPACK_IMPORTED_MODULE_7__.resetBlocksHeight)(block, containerRef.current);
@@ -18109,6 +18120,34 @@ const edit = props => {
       }
     };
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(react_select__WEBPACK_IMPORTED_MODULE_9__.c.MultiValueRemove, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
+      innerProps: newInnerProps
+    }));
+  };
+  const DeviceMultiValue = ownProps => {
+    const {
+      innerProps
+    } = ownProps;
+    const newInnerProps = {
+      ...innerProps,
+      onClick: data => {
+        innerProps.onClick(data);
+        if (props.uniqueInnerBlocks?.length) {
+          const resetBlocks = props.uniqueInnerBlocks.map(block => block.name);
+          for (const block of resetBlocks) {
+            (0,_utils__WEBPACK_IMPORTED_MODULE_7__.resetBlocksHeight)(block, containerRef.current);
+          }
+        }
+        if (customSelectors?.length) {
+          for (const selector of customSelectors) {
+            if ((0,_utils__WEBPACK_IMPORTED_MODULE_7__.checkSelector)(selector)) {
+              const allElements = containerRef.current.querySelectorAll(selector);
+              (0,_utils__WEBPACK_IMPORTED_MODULE_7__.resetHeight)(allElements);
+            }
+          }
+        }
+      }
+    };
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(react_select__WEBPACK_IMPORTED_MODULE_9__.c.MultiValueRemove, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, ownProps, {
       innerProps: newInnerProps
     }));
   };
@@ -18598,7 +18637,25 @@ const edit = props => {
     customSelectors: customSelectors,
     container: containerRef.current,
     onChange: value => setAttributes(value)
-  }))))))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "premium-blocks__base-control"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
+    className: "premium-control-title"
+  }, __('Enable Equal Height on', 'premium-blocks-pro')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "pbg-custom-selectors-blocks"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(react_select__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    value: equalHeightDevicesOptions.filter(obj => equalHeightDevices.includes(obj.value)),
+    options: equalHeightDevicesOptions,
+    isMulti: true,
+    onChange: option => {
+      setAttributes({
+        equalHeightDevices: option.map(option => option.value)
+      });
+    },
+    components: {
+      MultiValueRemove: DeviceMultiValue
+    }
+  })))))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "block-editor-block-list__block wp-block",
     id: `block-${block_id}`,
     "data-block": `premium-container`,

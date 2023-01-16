@@ -128,7 +128,11 @@ class PBG_Blocks_Helper {
 	 * @return void
 	 */
 	public function equal_height_front_script( $content, $block ) {
-		$global_features = apply_filters( 'pb_global_features', get_option( 'pbg_global_features', array() ) );
+		$media_query            = array();
+		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
+		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
+		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+		$global_features        = apply_filters( 'pb_global_features', get_option( 'pbg_global_features', array() ) );
 		if ( $global_features['premium-equal-height'] && isset( $block['attrs']['equalHeight'] ) && $block['attrs']['equalHeight'] ) {
 			wp_enqueue_script(
 				'premium-equal-height-view',
@@ -143,7 +147,9 @@ class PBG_Blocks_Helper {
 				'PBG_EqualHeight',
 				apply_filters(
 					'premium_equal_height_localize_script',
-					array()
+					array(
+						'breakPoints' => $media_query,
+					)
 				)
 			);
 		}
