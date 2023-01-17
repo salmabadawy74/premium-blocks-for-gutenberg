@@ -123,6 +123,36 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils */ "./src/blocks/container/utils.js");
 
+const blocksHeightHandler = function (blocks, containerBlock) {
+  let type = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'set';
+  if (blocks.length) {
+    for (const block of blocks) {
+      const blockName = block.includes('core') ? block.replace('core/', '') : block.replaceAll('/', '-');
+      const blockClass = `wp-block-${blockName}`;
+      const allBlocksType = containerBlock.querySelectorAll(`.${blockClass}`);
+      if (type === 'set') {
+        (0,_utils__WEBPACK_IMPORTED_MODULE_0__.setElementsHeight)(allBlocksType);
+        return;
+      }
+      (0,_utils__WEBPACK_IMPORTED_MODULE_0__.resetHeight)(allBlocksType);
+    }
+  }
+};
+const blocksElementsHeightHandler = function (selectors, containerBlock) {
+  let type = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'set';
+  if (selectors?.length) {
+    for (const selector of selectors) {
+      if ((0,_utils__WEBPACK_IMPORTED_MODULE_0__.checkSelector)(selector)) {
+        const allBlocksElements = containerBlock.querySelectorAll(selector);
+        if (type === 'set') {
+          (0,_utils__WEBPACK_IMPORTED_MODULE_0__.setElementsHeight)(allBlocksElements);
+          return;
+        }
+        (0,_utils__WEBPACK_IMPORTED_MODULE_0__.resetHeight)(allBlocksElements);
+      }
+    }
+  }
+};
 const applyEqualHeight = () => {
   if (Object.keys(PBG_EqualHeight).length) {
     const {
@@ -136,11 +166,12 @@ const applyEqualHeight = () => {
     } else if (window.matchMedia(breakPoints.mobile).matches) {
       device = 'mobile';
     }
-    Object.keys(PBG_EqualHeight).map(id => {
-      if (id === 'breakPoints') {
-        return;
-      }
-      const attributes = PBG_EqualHeight[id].attributes;
+    const equalHeightData = {
+      ...PBG_EqualHeight
+    };
+    delete equalHeightData.breakPoints;
+    Object.keys(equalHeightData).map(id => {
+      const attributes = equalHeightData[id].attributes;
       const containerBlock = document.querySelector(`.premium-block-${id}`);
       const {
         customSelectors,
@@ -148,39 +179,11 @@ const applyEqualHeight = () => {
         equalHeightDevices
       } = attributes;
       if (equalHeightDevices.includes(device)) {
-        if (equalHeightBlocks.length) {
-          for (const block of equalHeightBlocks) {
-            const blockName = block.includes('core') ? block.replace('core/', '') : block.replaceAll('/', '-');
-            const blockClass = `wp-block-${blockName}`;
-            const allBlocksType = containerBlock.querySelectorAll(`.${blockClass}`);
-            (0,_utils__WEBPACK_IMPORTED_MODULE_0__.setElementsHeight)(allBlocksType);
-          }
-        }
-        if (customSelectors?.length) {
-          for (const selector of customSelectors) {
-            if ((0,_utils__WEBPACK_IMPORTED_MODULE_0__.checkSelector)(selector)) {
-              const allElements = containerBlock.querySelectorAll(selector);
-              (0,_utils__WEBPACK_IMPORTED_MODULE_0__.setElementsHeight)(allElements);
-            }
-          }
-        }
+        blocksHeightHandler(equalHeightBlocks, containerBlock);
+        blocksElementsHeightHandler(customSelectors, containerBlock);
       } else {
-        if (equalHeightBlocks.length) {
-          for (const block of equalHeightBlocks) {
-            const blockName = block.includes('core') ? block.replace('core/', '') : block.replaceAll('/', '-');
-            const blockClass = `wp-block-${blockName}`;
-            const allBlocksType = containerBlock.querySelectorAll(`.${blockClass}`);
-            (0,_utils__WEBPACK_IMPORTED_MODULE_0__.resetHeight)(allBlocksType);
-          }
-        }
-        if (customSelectors?.length) {
-          for (const selector of customSelectors) {
-            if ((0,_utils__WEBPACK_IMPORTED_MODULE_0__.checkSelector)(selector)) {
-              const allElements = containerBlock.querySelectorAll(selector);
-              (0,_utils__WEBPACK_IMPORTED_MODULE_0__.resetHeight)(allElements);
-            }
-          }
-        }
+        blocksHeightHandler(equalHeightBlocks, containerBlock, 'reset');
+        blocksElementsHeightHandler(customSelectors, containerBlock, 'reset');
       }
     });
   }

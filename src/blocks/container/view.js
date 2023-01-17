@@ -1,5 +1,34 @@
 import { checkSelector, setElementsHeight, resetHeight } from "./utils";
 
+const blocksHeightHandler = (blocks, containerBlock, type = 'set') => {
+    if (blocks.length) {
+        for (const block of blocks) {
+            const blockName = block.includes('core') ? block.replace('core/', '') : block.replaceAll('/', '-');
+            const blockClass = `wp-block-${blockName}`;
+            const allBlocksType = containerBlock.querySelectorAll(`.${blockClass}`);
+            if (type === 'set') {
+                setElementsHeight(allBlocksType);
+                return;
+            }
+            resetHeight(allBlocksType);
+        }
+    }
+}
+
+const blocksElementsHeightHandler = (selectors, containerBlock, type = 'set') => {
+    if (selectors?.length) {
+        for (const selector of selectors) {
+            if (checkSelector(selector)) {
+                const allBlocksElements = containerBlock.querySelectorAll(selector);
+                if (type === 'set') {
+                    setElementsHeight(allBlocksElements);
+                    return;
+                }
+                resetHeight(allBlocksElements);
+            }
+        }
+    }
+}
 const applyEqualHeight = () => {
     if (Object.keys(PBG_EqualHeight).length) {
         const { breakPoints } = PBG_EqualHeight;
@@ -11,49 +40,19 @@ const applyEqualHeight = () => {
         } else if (window.matchMedia(breakPoints.mobile).matches) {
             device = 'mobile';
         }
-        Object.keys(PBG_EqualHeight).map(id => {
-            if (id === 'breakPoints') {
-                return;
-            }
-            const attributes = PBG_EqualHeight[id].attributes;
+        const equalHeightData = { ...PBG_EqualHeight };
+        delete equalHeightData.breakPoints;
+        Object.keys(equalHeightData).map(id => {
+            const attributes = equalHeightData[id].attributes;
             const containerBlock = document.querySelector(`.premium-block-${id}`);
             const { customSelectors, equalHeightBlocks, equalHeightDevices } = attributes;
+
             if (equalHeightDevices.includes(device)) {
-                if (equalHeightBlocks.length) {
-                    for (const block of equalHeightBlocks) {
-                        const blockName = block.includes('core') ? block.replace('core/', '') : block.replaceAll('/', '-');
-                        const blockClass = `wp-block-${blockName}`;
-                        const allBlocksType = containerBlock.querySelectorAll(`.${blockClass}`);
-                        setElementsHeight(allBlocksType);
-                    }
-                }
-
-                if (customSelectors?.length) {
-                    for (const selector of customSelectors) {
-                        if (checkSelector(selector)) {
-                            const allElements = containerBlock.querySelectorAll(selector);
-                            setElementsHeight(allElements);
-                        }
-                    }
-                }
+                blocksHeightHandler(equalHeightBlocks, containerBlock);
+                blocksElementsHeightHandler(customSelectors, containerBlock);
             } else {
-                if (equalHeightBlocks.length) {
-                    for (const block of equalHeightBlocks) {
-                        const blockName = block.includes('core') ? block.replace('core/', '') : block.replaceAll('/', '-');
-                        const blockClass = `wp-block-${blockName}`;
-                        const allBlocksType = containerBlock.querySelectorAll(`.${blockClass}`);
-                        resetHeight(allBlocksType);
-                    }
-                }
-
-                if (customSelectors?.length) {
-                    for (const selector of customSelectors) {
-                        if (checkSelector(selector)) {
-                            const allElements = containerBlock.querySelectorAll(selector);
-                            resetHeight(allElements);
-                        }
-                    }
-                }
+                blocksHeightHandler(equalHeightBlocks, containerBlock, 'reset');
+                blocksElementsHeightHandler(customSelectors, containerBlock, 'reset');
             }
         })
     }
