@@ -27,7 +27,7 @@ export const resetHeight = (elements) => {
 export const resetBlocksHeight = (block, container) => {
     const blockName = block.includes('core') ? block.replace('core/', '') : block.replaceAll('/', '-');
     const blockClass = `wp-block-${blockName}`;
-    const allBlocksType = container.querySelectorAll(`.${blockClass}`);
+    const allBlocksType = container?.querySelectorAll(`.${blockClass}`) || [];
     resetHeight(allBlocksType);
 }
 

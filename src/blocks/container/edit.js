@@ -35,8 +35,8 @@ const { createBlock } = wp.blocks;
 const { InspectorControls, InnerBlocks, useBlockProps } = wp.blockEditor;
 const { compose } = wp.compose;
 const { select, useDispatch, withSelect, useSelect } = wp.data;
-const { PanelBody, SelectControl } = wp.components;
-import React, { useEffect } from "react";
+const { PanelBody, SelectControl, ToggleControl } = wp.components;
+import React, { useEffect, useRef } from "react";
 import Render from "./render";
 const { Fragment } = wp.element;
 
@@ -1226,12 +1226,12 @@ const edit = (props) => {
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
-            <Render parentProps={props} />
+            <Render parentProps={props} ref={containerRef} />
         </Fragment>
     );
 };
 
-export default withSelect((select) => {
+export default withSelect((select, props) => {
     const { __experimentalGetPreviewDeviceType = null } = select(
         "core/edit-post"
     );
