@@ -17619,7 +17619,8 @@ const BlockItemComponent = _ref => {
     container,
     customSelectors,
     onChange,
-    onRemove
+    onRemove,
+    hasParents
   } = _ref;
   const [show, setShow] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
   const invalidTags = ['input', 'style', 'script', 'br', 'hr'];
@@ -17633,6 +17634,10 @@ const BlockItemComponent = _ref => {
   const blockChild = blockElement?.[0];
   const allChild = blockChild.querySelectorAll('*');
   const invalidClasses = ['rich', 'components-base-control', 'editor', 'pbg-equal-height-selected'];
+  const getFilteredClasses = classes => {
+    const newClasses = Array.from(classes).filter(className => !invalidClasses.some(v => className.includes(v)) && !clientId.split('-').some(v => className.includes(v)) && !/\d/.test(className) && className !== 'wp-block');
+    return newClasses;
+  };
   const filteredElements = Array.from(allChild).filter(element => {
     const {
       classList,
@@ -17641,10 +17646,6 @@ const BlockItemComponent = _ref => {
     const parent = element.parentNode;
     return !invalidTags.includes(nodeName.toLowerCase()) && !parent.classList.contains('components-base-control') && !classList.contains('components-base-control') && classList[0] !== 'block-editor-block-list__block' && !classList.contains('pbg-element-overlay');
   });
-  const getFilteredClasses = classes => {
-    const newClasses = Array.from(classes).filter(className => !invalidClasses.some(v => className.includes(v)) && !clientId.split('-').some(v => className.includes(v)) && !/\d/.test(className));
-    return newClasses;
-  };
   const getWidth = element => {
     try {
       return window.getComputedStyle(element, null).getPropertyValue('width');
@@ -17676,9 +17677,12 @@ const BlockItemComponent = _ref => {
   };
   const clickHandler = element => {
     let newCustomSelectors = [...customSelectors];
-    let selector = `.${blockClass} ${element.nodeName.toLowerCase()}`;
+    let selector = hasParents ? `.${blockClass} ` : '';
     if (getFilteredClasses(element.classList).length > 0) {
-      selector += `.${getFilteredClasses(element.classList)}`;
+      selector += `${element.nodeName.toLowerCase()}.${getFilteredClasses(element.classList).join('.')}`;
+    }
+    if (getFilteredClasses(element.classList).length <= 0) {
+      selector += `.${getFilteredClasses(element.parentNode.classList).join('.')} ${element.nodeName.toLowerCase()}`;
     }
     if (customSelectors.includes(selector)) {
       onRemove(container.querySelectorAll(selector));
@@ -17701,17 +17705,22 @@ const BlockItemComponent = _ref => {
     class: "dashicons dashicons-arrow-up-alt2"
   })), show && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pbg-block-elements"
-  }, filteredElements.map(element => {
-    let selector = `.${blockClass} ${element.nodeName.toLowerCase()}`;
+  }, filteredElements.map((element, index) => {
+    let selector = hasParents ? `.${blockClass} ` : '';
     if (getFilteredClasses(element.classList).length > 0) {
-      selector += `.${getFilteredClasses(element.classList)}`;
+      selector += `${element.nodeName.toLowerCase()}.${getFilteredClasses(element.classList)}`;
+    }
+    if (getFilteredClasses(element.classList).length <= 0) {
+      selector += `.${getFilteredClasses(element.parentNode.classList).join('.')} ${element.nodeName.toLowerCase()}`;
     }
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: `pbg-block-element${customSelectors.includes(selector) ? ' pbg-equal-height-active' : ''}`,
       onClick: () => clickHandler(element),
       onMouseOver: () => mouseLeaveHandler(element),
       onMouseOut: () => mouseEnterHandler(element)
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    }, getFilteredClasses(element.classList).length <= 0 && getFilteredClasses(element.parentNode.classList).length > 0 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      className: "pbg-block-element-classes"
+    }, `.${getFilteredClasses(element.parentNode.classList).join('.')} `), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
       className: "pbg-block-element-name"
     }, element.nodeName.toLowerCase()), getFilteredClasses(element.classList).length > 0 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
       className: "pbg-block-element-classes"
@@ -18625,18 +18634,19 @@ const edit = props => {
     components: {
       MultiValueRemove: MultiValue
     }
-  }))), equalHeightBlocks?.length > 0 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  }))), props.uniqueInnerBlocks?.length > 0 && equalHeightBlocks?.length > 0 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "premium-blocks__base-control"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
     className: "premium-control-title"
   }, __('Blocks Elements', 'premium-blocks-pro')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "pbg-custom-selectors-blocks"
-  }, equalHeightBlocks.map(block => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_block_item__WEBPACK_IMPORTED_MODULE_8__["default"], {
+  }, equalHeightBlocks.filter(block => !!getUniqueBlock(block)).map(block => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_block_item__WEBPACK_IMPORTED_MODULE_8__["default"], {
     onRemove: elements => (0,_utils__WEBPACK_IMPORTED_MODULE_7__.resetHeight)(elements),
     block: getUniqueBlock(block),
     customSelectors: customSelectors,
     container: containerRef.current,
-    onChange: value => setAttributes(value)
+    onChange: value => setAttributes(value),
+    hasParents: props.getBlockParents(block.clientId).length
   })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "premium-blocks__base-control"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
@@ -18746,7 +18756,8 @@ const applyWithSelect = withSelect((select, props) => {
     removeBlock,
     uniqueInnerBlocks,
     isParent: !hasParents,
-    blockData: getBlock(props.clientId)
+    blockData: getBlock(props.clientId),
+    getBlockParents
   };
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (compose(applyWithSelect)(edit));

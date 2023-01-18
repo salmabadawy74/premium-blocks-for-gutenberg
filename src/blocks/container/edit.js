@@ -1285,11 +1285,11 @@ const edit = (props) => {
                                                 }} />
                                             </div>
                                         </div>
-                                        {(equalHeightBlocks?.length > 0) && (
+                                        {(props.uniqueInnerBlocks?.length > 0 && equalHeightBlocks?.length > 0) && (
                                             <div className='premium-blocks__base-control'>
                                                 <span className='premium-control-title'>{__('Blocks Elements', 'premium-blocks-pro')}</span>
                                                 <div className="pbg-custom-selectors-blocks">
-                                                    {equalHeightBlocks.map(block => <BlockItemComponent onRemove={(elements) => resetHeight(elements)} block={getUniqueBlock(block)} customSelectors={customSelectors} container={containerRef.current} onChange={(value) => setAttributes(value)} />)}
+                                                    {equalHeightBlocks.filter(block => !!getUniqueBlock(block)).map(block => <BlockItemComponent onRemove={(elements) => resetHeight(elements)} block={getUniqueBlock(block)} customSelectors={customSelectors} container={containerRef.current} onChange={(value) => setAttributes(value)} hasParents={props.getBlockParents(block.clientId).length} />)}
                                                 </div>
                                             </div>
                                         )}
@@ -1446,6 +1446,7 @@ const applyWithSelect = withSelect((select, props) => {
         uniqueInnerBlocks,
         isParent: !hasParents,
         blockData: getBlock(props.clientId),
+        getBlockParents
     };
 });
 export default compose(applyWithSelect)(edit);

@@ -1,3 +1,4 @@
+import { load } from "webfontloader";
 import { checkSelector, setElementsHeight, resetHeight } from "./utils";
 
 const blocksHeightHandler = (blocks, containerBlock, type = 'set') => {

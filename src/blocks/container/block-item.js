@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const BlockItemComponent = ({ block, container, customSelectors, onChange, onRemove }) => {
+const BlockItemComponent = ({ block, container, customSelectors, onChange, onRemove, hasParents }) => {
     const [show, setShow] = useState(false);
     const invalidTags = ['input', 'style', 'script', 'br', 'hr'];
     const { name, clientId } = block;
@@ -10,17 +10,18 @@ const BlockItemComponent = ({ block, container, customSelectors, onChange, onRem
     const blockChild = blockElement?.[0];
     const allChild = blockChild.querySelectorAll('*');
     const invalidClasses = ['rich', 'components-base-control', 'editor', 'pbg-equal-height-selected'];
+
+    const getFilteredClasses = (classes) => {
+        const newClasses = Array.from(classes).filter(className => !invalidClasses.some(v => className.includes(v)) && !clientId.split('-').some(v => className.includes(v)) && !/\d/.test(className) && className !== 'wp-block');
+
+        return newClasses;
+    }
+
     const filteredElements = Array.from(allChild).filter(element => {
         const { classList, nodeName } = element;
         const parent = element.parentNode;
         return !invalidTags.includes(nodeName.toLowerCase()) && !parent.classList.contains('components-base-control') && !classList.contains('components-base-control') && classList[0] !== 'block-editor-block-list__block' && !classList.contains('pbg-element-overlay');
     });
-
-    const getFilteredClasses = (classes) => {
-        const newClasses = Array.from(classes).filter(className => !invalidClasses.some(v => className.includes(v)) && !clientId.split('-').some(v => className.includes(v)) && !/\d/.test(className));
-
-        return newClasses;
-    }
 
     const getWidth = (element) => {
         try {
@@ -60,10 +61,14 @@ const BlockItemComponent = ({ block, container, customSelectors, onChange, onRem
 
     const clickHandler = (element) => {
         let newCustomSelectors = [...customSelectors];
-        let selector = `.${blockClass} ${element.nodeName.toLowerCase()}`;
+        let selector = hasParents ? `.${blockClass} ` : '';
         if (getFilteredClasses(element.classList).length > 0) {
-            selector += `.${getFilteredClasses(element.classList)}`;
+            selector += `${element.nodeName.toLowerCase()}.${getFilteredClasses(element.classList).join('.')}`;
         }
+        if (getFilteredClasses(element.classList).length <= 0) {
+            selector += `.${getFilteredClasses(element.parentNode.classList).join('.')} ${element.nodeName.toLowerCase()}`;
+        }
+
         if (customSelectors.includes(selector)) {
             onRemove(container.querySelectorAll(selector));
             newCustomSelectors = newCustomSelectors.filter(seletorE => seletorE !== selector);
@@ -86,13 +91,19 @@ const BlockItemComponent = ({ block, container, customSelectors, onChange, onRem
         </div>
         {show && (
             <div className="pbg-block-elements">
-                {filteredElements.map(element => {
-                    let selector = `.${blockClass} ${element.nodeName.toLowerCase()}`;
+                {filteredElements.map((element, index) => {
+                    let selector = hasParents ? `.${blockClass} ` : '';
                     if (getFilteredClasses(element.classList).length > 0) {
-                        selector += `.${getFilteredClasses(element.classList)}`;
+                        selector += `${element.nodeName.toLowerCase()}.${getFilteredClasses(element.classList)}`;
+                    }
+                    if (getFilteredClasses(element.classList).length <= 0) {
+                        selector += `.${getFilteredClasses(element.parentNode.classList).join('.')} ${element.nodeName.toLowerCase()}`;
                     }
 
                     return <div className={`pbg-block-element${customSelectors.includes(selector) ? ' pbg-equal-height-active' : ''}`} onClick={() => clickHandler(element)} onMouseOver={() => mouseLeaveHandler(element)} onMouseOut={() => mouseEnterHandler(element)}>
+                        {(getFilteredClasses(element.classList).length <= 0 && getFilteredClasses(element.parentNode.classList).length > 0) && (
+                            <span className="pbg-block-element-classes">{`.${getFilteredClasses(element.parentNode.classList).join('.')} `}</span>
+                        )}
                         <span className="pbg-block-element-name">{element.nodeName.toLowerCase()}</span>
                         {getFilteredClasses(element.classList).length > 0 && (
                             <span className="pbg-block-element-classes">{`.${getFilteredClasses(element.classList).join('.')}`}</span>
