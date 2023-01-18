@@ -160,14 +160,6 @@
                 "vertical": "0",
                 "position": ""
             }
-        },
-        "variation": {
-            "type": "object",
-            "default": {}
-        },
-        "showVariation": {
-            "type": "boolean",
-            "default": true
         }
     },
     "editorScript": "pbg-blocks-js",
