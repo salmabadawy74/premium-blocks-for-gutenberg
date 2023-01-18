@@ -15,6 +15,7 @@ module.exports = {
                 type: 'window',
             },
         },
+        'equal-height': path.resolve(__dirname, 'src/blocks/container/view.js'),
     },
     externals: {
         ...defaultConfig.externals,

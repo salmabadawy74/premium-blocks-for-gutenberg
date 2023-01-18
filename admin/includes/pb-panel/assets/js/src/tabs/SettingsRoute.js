@@ -5,6 +5,8 @@ import Blocks from "./options";
 import Settings from "./setting";
 import RollBack from "./rollback";
 import System from "./system";
+import GlobalFeatures from "./GlobalFeatures";
+
 function SettingsRoute({ store }) {
     const query = new URLSearchParams(useLocation().search);
     const page = query.get("page");
@@ -31,6 +33,9 @@ function SettingsRoute({ store }) {
                 break;
             case "system":
                 routePage = <System />;
+                break;
+            case "global-features":
+                routePage = <GlobalFeatures />;
                 break;
             default:
                 routePage = <Welcome />;
