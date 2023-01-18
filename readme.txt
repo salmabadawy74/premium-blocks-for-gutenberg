@@ -72,10 +72,10 @@ Yes it will work with any WordPress theme as long as you are using Gutenberg as 
 
 == Changelog ==
 = 2.0.9 =
-New: Equal Height container element fature.
+New: Equal Height feature for elements in Container block.
 New: Change Count up Block to Powerful Nested Blocks.
 New: Change Testimonials Block to Powerful Nested Blocks.
-Fixed: Map Block console error.
+Fixed: Map block console error.
 Fixed: Container Block alignment issue.
 
 = 2.0.8 =
