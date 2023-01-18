@@ -15,6 +15,11 @@ export default function MainNav() {
             path: "blocks",
         },
         {
+            name: __("Global Features", "premium-blocks-for-gutenberg"),
+            slug: PremiumBlocksPanelData.home_slug,
+            path: "global-features",
+        },
+        {
             name: __("Settings", "premium-blocks-for-gutenberg"),
             slug: PremiumBlocksPanelData.home_slug,
             path: "settings",
@@ -44,13 +49,12 @@ export default function MainNav() {
                     <Link className={classNames("pb-main-tab", {
                         active: activePage === menu.slug && activePath === menu.path
                     })}
-                    activePath
+                        activePath
                         index={key}
                         key={`?page=${menu.slug}&path=${menu.path}`}
                         to={{
-                            search: `?page=${menu.slug}${
-                                "" !== menu.path ? "&path=" + menu.path : ""
-                            }`,
+                            search: `?page=${menu.slug}${"" !== menu.path ? "&path=" + menu.path : ""
+                                }`,
                         }}
                     >
                         {menu.name}
