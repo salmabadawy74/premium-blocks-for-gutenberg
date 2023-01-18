@@ -1,6 +1,6 @@
 import classnames from "classnames";
 import { InnerBlocks, useBlockProps } from "@wordpress/block-editor";
-import React from "react";
+import React, { forwardRef } from "react";
 import { select } from "@wordpress/data";
 import {
     gradientBackground,
@@ -12,7 +12,7 @@ import {
     generateCss,
 } from "@pbg/helpers";
 
-const Render = (props) => {
+const Render = forwardRef((props, ref) => {
     props = props.parentProps;
     const { attributes, clientId, className } = props;
 
@@ -94,6 +94,7 @@ const Render = (props) => {
                 " premium-mobile-hidden": hideMobile,
             }
         ),
+        ref
     });
     const loadStyles = () => {
         const styles = {};
@@ -107,9 +108,8 @@ const Render = (props) => {
             "flex-wrap": wrapItems[props.deviceType],
             "align-content": alignContent[props.deviceType],
             "row-gap": `${rowGutter[props.deviceType]}${rowGutter["unit"]}`,
-            "column-gap": `${columnGutter[props.deviceType]}${
-                columnGutter["unit"]
-            }`,
+            "column-gap": `${columnGutter[props.deviceType]}${columnGutter["unit"]
+                }`,
         };
 
         styles[
@@ -121,24 +121,20 @@ const Render = (props) => {
         styles[
             `.is-root-container  #block-${clientId}  .premium-top-shape svg`
         ] = {
-            width: `${shapeTop.width[props.deviceType]}${
-                shapeTop.width["unit"]
-            }`,
-            height: `${shapeTop.height[props.deviceType]}${
-                shapeTop.height["unit"]
-            }`,
+            width: `${shapeTop.width[props.deviceType]}${shapeTop.width["unit"]
+                }`,
+            height: `${shapeTop.height[props.deviceType]}${shapeTop.height["unit"]
+                }`,
             fill: `${shapeTop["color"]}`,
         };
 
         styles[
             `.is-root-container  #block-${clientId} .premium-bottom-shape svg`
         ] = {
-            width: `${shapeBottom.width[props.deviceType]}${
-                shapeBottom.width["unit"]
-            }`,
-            height: `${shapeBottom.height[props.deviceType]}${
-                shapeBottom.height["unit"]
-            }`,
+            width: `${shapeBottom.width[props.deviceType]}${shapeBottom.width["unit"]
+                }`,
+            height: `${shapeBottom.height[props.deviceType]}${shapeBottom.height["unit"]
+                }`,
             fill: `${shapeBottom["color"]}`,
         };
 
@@ -179,9 +175,8 @@ const Render = (props) => {
             "background-attachment": backgroundOverlayHover["fixed"]
                 ? "fixed"
                 : "unset",
-            opacity: `${
-                backgroundOverlayHover ? hoverOverlayOpacity / 100 : 1
-            } !important`,
+            opacity: `${backgroundOverlayHover ? hoverOverlayOpacity / 100 : 1
+                } !important`,
             filter: `brightness( ${hoverOverlayFilter["bright"]}% ) contrast( ${hoverOverlayFilter["contrast"]}% ) saturate( ${hoverOverlayFilter["saturation"]}% ) blur( ${hoverOverlayFilter["blur"]}px ) hue-rotate( ${hoverOverlayFilter["hue"]}deg ) !important`,
         };
         return generateCss(styles);
@@ -194,11 +189,9 @@ const Render = (props) => {
                 ...paddingCss(padding, props.deviceType),
                 ...marginCss(margin, props.deviceType),
                 ...gradientBackground(backgroundOptions),
-                boxShadow: `${boxShadow.horizontal || 0}px ${
-                    boxShadow.vertical || 0
-                }px ${boxShadow.blur || 0}px ${boxShadow.color} ${
-                    boxShadow.position
-                }`,
+                boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical || 0
+                    }px ${boxShadow.blur || 0}px ${boxShadow.color} ${boxShadow.position
+                    }`,
                 overflow: overflow,
             }}
         >
@@ -249,5 +242,5 @@ const Render = (props) => {
             </div>
         </CustomTag>
     );
-};
+});
 export default React.memo(Render);
