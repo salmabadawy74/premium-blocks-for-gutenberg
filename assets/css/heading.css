@@ -141,8 +141,7 @@
 .premium-title-header {
   position: relative;
   margin: 0;
-  padding-top: 10px;
-  padding-bottom: 10px; }
+  padding: 0px; }
   .premium-title-header img {
     width: 40px;
     height: 40px;
