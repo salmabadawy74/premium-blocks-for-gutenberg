@@ -5,7 +5,7 @@
 **Requires at least:** 4.5  
 **Tested up to:** 6.1  
 **Requires PHP:** 5.4  
-**Stable tag:** 2.0.7  
+**Stable tag:** 2.0.9  
 **License:** GPL v3.0  
 **License URI:** https://opensource.org/licenses/GPL-3.0  
 
@@ -71,8 +71,19 @@ No. You cannot use Premium Blocks without Gutenberg as it's a blocks plugin for 
 Yes it will work with any WordPress theme as long as you are using Gutenberg as a page editor.
 
 ## Changelog ##
+### 2.0.9 ###
+New: Equal Height container element fature.
+New: Change Count up Block to Powerful Nested Blocks.
+New: Change Testimonials Block to Powerful Nested Blocks.
+Fixed: Map Block console error.
+Fixed: Container Block alignment issue.
+
+### 2.0.8 ###
+- Fixed: Background image size doesn't work properly with container block.
+
 ### 2.0.7 ###
 - Fixed: Button block doesn't sompatible with global colors settings.
+- Fixed: Button Sizes option doesn't work.
 
 ### 2.0.6 ###
 - New: Upload SVG Icon for Icon block option.
