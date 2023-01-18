@@ -9,7 +9,6 @@ import {
     InsideTabs,
     PremiumBackgroundControl,
     InsideTab,
-    PremiumVariation
 } from "@pbg/components";
 import {
     gradientBackground,
@@ -19,18 +18,15 @@ import {
     generateBlockId,
     generateCss,
 } from "@pbg/helpers";
-import { Variations } from './variations'
 
 const { __ } = wp.i18n;
 const { PanelBody } = wp.components;
 const { Fragment, useEffect } = wp.element;
-const { useDispatch, withSelect } = wp.data;
-const { compose } = wp.compose;
-const { createBlock } = wp.blocks;
+const { withSelect } = wp.data;
 const {
     InspectorControls,
     useInnerBlocksProps,
-    useBlockProps
+    useBlockProps,
 } = wp.blockEditor;
 
 function Edit(props) {
@@ -56,9 +52,47 @@ function Edit(props) {
         containerBackground,
         containerShadow,
         containerHoverShadow,
-        variation,
-        showVariation
     } = props.attributes;
+
+    const INNER_BLOCKS_TEMPLATE = [
+        [
+            "premium/icon",
+            {
+                selectedIcon: attributes?.selectedIcon,
+            },
+        ],
+        [
+            "premium/heading",
+            {
+                title: attributes?.titleText
+                    ? attributes.titleText[0]
+                    : __("Title", "premium-blocks-for-gutenberg"),
+                titleTag: attributes?.titleTag
+                    ? attributes.titleTag.toLowerCase()
+                    : "h2",
+                style: "default",
+            },
+        ],
+        [
+            "premium/text",
+            {
+                text: attributes?.descText
+                    ? attributes.descText[0]
+                    : __(
+                        "Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.",
+                        "premium-blocks-for-gutenberg"
+                    ),
+            },
+        ],
+        [
+            "premium/button",
+            {
+                btnText: attributes?.btnText
+                    ? attributes.btnText[0]
+                    : __("Click Here", "premium-blocks-for-gutenberg"),
+            },
+        ],
+    ];
 
     const loadStyles = () => {
         const styles = {};
@@ -80,7 +114,7 @@ function Edit(props) {
             className: "premium-icon-box",
         },
         {
-            template: variation.innerBlocks,
+            template: INNER_BLOCKS_TEMPLATE,
             templateLock: false,
             allowedBlocks: [
                 "premium/heading",
@@ -93,18 +127,10 @@ function Edit(props) {
         }
     );
 
-
-    const onSelectVariations = (v) => {
-        setAttributes({
-            variation: v,
-            showVariation: false
-        });
-    }
-
     return (
         <Fragment>
             <InspectorControls key={"inspector"}>
-                {!showVariation && <InspectorTabs tabs={["style", "advance"]}>
+                <InspectorTabs tabs={["style", "advance"]}>
                     <InspectorTab key={"style"}>
                         <PanelBody
                             title={__(
@@ -219,7 +245,7 @@ function Edit(props) {
                             }
                         />
                     </InspectorTab>
-                </InspectorTabs>}
+                </InspectorTabs>
             </InspectorControls>
             <div
                 {...useBlockProps({
@@ -230,13 +256,7 @@ function Edit(props) {
                     }),
                 })}
             >
-                {showVariation && <PremiumVariation
-                    setAttributes={setAttributes}
-                    variations={Variations}
-                    onSelect={onSelectVariations}
-                />
-                }
-                {!showVariation && variation != {} && <div {...innerBlocksProps} />}
+                <div {...innerBlocksProps} />
                 <style>{loadStyles()}</style>
             </div>
         </Fragment>
@@ -244,8 +264,9 @@ function Edit(props) {
 }
 
 export default withSelect((select) => {
-    const { __experimentalGetPreviewDeviceType = null } =
-        select("core/edit-post");
+    const { __experimentalGetPreviewDeviceType = null } = select(
+        "core/edit-post"
+    );
     let deviceType = __experimentalGetPreviewDeviceType
         ? __experimentalGetPreviewDeviceType()
         : null;
