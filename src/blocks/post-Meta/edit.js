@@ -55,6 +55,14 @@ export default function Meta(props) {
         hideTablet,
         hideMobile,
     } = attributes;
+    const [rawTitle = "", setTitle, fullTitle] = useEntityProp(
+        "postType",
+        postType,
+        "author",
+        postId
+    );
+    console.log(rawTitle, "Mtttt");
+
     const AUTHORS_QUERY = {
         who: "authors",
         per_page: 50,
@@ -65,8 +73,11 @@ export default function Meta(props) {
     const { authorId, authorDetails } = useSelect(
         (select) => {
             const { getEntityRecord, getUser, getUsers } = select(coreStore);
-            const _authorId = getEntityRecord("postType", "post", postId)
-                ?.author;
+            const _authorId = getEntityRecord(
+                "postType",
+                "post",
+                postId
+            )?.author;
 
             return {
                 authorId: _authorId,
@@ -79,10 +90,16 @@ export default function Meta(props) {
     const { postDetails, setDetails } = useSelect(
         (select) => {
             const { getEntityRecord, getUser, getUsers } = select(coreStore);
-            const _authorId = getEntityRecord("postType", "post", postId)
-                ?.author;
-            const Category = getEntityRecord("postType", "post", postId)
-                ?.categories;
+            const _authorId = getEntityRecord(
+                "postType",
+                "post",
+                postId
+            )?.author;
+            const Category = getEntityRecord(
+                "postType",
+                "post",
+                postId
+            )?.categories;
 
             return {
                 authorId: _authorId,

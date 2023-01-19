@@ -1,8 +1,8 @@
 import { useEntityProp, store as coreStore } from "@wordpress/core-data";
 const { __ } = wp.i18n;
-import classNames from "classnames";
+import classnames from "classnames";
 
-import { useSelect, useDispatch } from "@wordpress/data";
+const { withSelect, withDispatch } = wp.data;
 import {
     generateBlockId,
     generateCss,
@@ -22,6 +22,8 @@ import {
     InsideTab,
     Icons,
     PremiumTypo,
+    PremiumBorder,
+    SpacingComponent as SpacingControl,
 } from "@pbg/components";
 const { useEffect, Fragment } = wp.element;
 const { PanelBody, SelectControl, ToggleControl, TextControl } = wp.components;
@@ -38,6 +40,7 @@ function Pagination(props) {
         deviceType,
         setAttributes,
         clientId,
+        className,
     } = props;
     const {
         blockId,
@@ -72,8 +75,62 @@ function Pagination(props) {
     }, []);
 
     const createPaginationItem = (content, Tag = "a", extraClass = "") => (
-        <Tag className={`page-numbers ${extraClass}`}>{content}</Tag>
+        <Tag
+            className={`page-numbers ${extraClass}`}
+            style={{
+                ...typographyCss(typography, deviceType),
+            }}
+        >
+            {content}
+        </Tag>
     );
+    const loadStyles = () => {
+        const styles = {};
+        styles[` #${blockId} .page-numbers `] = {
+            color: `${color}`,
+            "background-color": `${backgroundColor}`,
+            "border-style": border?.borderType,
+            "border-top-width": `${border?.borderWidth?.[deviceType]?.top}px`,
+            "border-right-width": `${border?.borderWidth?.[deviceType]?.right}px`,
+            "border-bottom-width": `${border?.borderWidth?.[deviceType]?.bottom}px`,
+            "border-left-width": `${border?.borderWidth?.[deviceType]?.left}px`,
+            "border-color": `${border?.borderColor}`,
+            "border-top-left-radius": `${border?.borderRadius?.[deviceType].top}px`,
+            "border-top-right-radius": `${border?.borderRadius?.[deviceType].right}px`,
+            "border-bottom-left-radius": `${border?.borderRadius?.[deviceType].bottom}px`,
+            "border-bottom-right-radius": `${border?.borderRadius?.[deviceType].left}px`,
+        };
+        styles[` #${blockId} .page-numbers:hover `] = {
+            color: `${hoverColor}`,
+            "background-color": `${hoverbackgroundColor}`,
+            "border-style": hoverBorder?.borderType,
+            "border-top-width": `${hoverBorder?.borderWidth?.[deviceType]?.top}px`,
+            "border-right-width": `${hoverBorder?.borderWidth?.[deviceType]?.right}px`,
+            "border-bottom-width": `${hoverBorder?.borderWidth?.[deviceType]?.bottom}px`,
+            "border-left-width": `${hoverBorder?.borderWidth?.[deviceType]?.left}px`,
+            "border-color": `${hoverBorder?.borderColor}`,
+            "border-top-left-radius": `${hoverBorder?.borderRadius?.[deviceType].top}px`,
+            "border-top-right-radius": `${hoverBorder?.borderRadius?.[deviceType].right}px`,
+            "border-bottom-left-radius": `${hoverBorder?.borderRadius?.[deviceType].bottom}px`,
+            "border-bottom-right-radius": `${hoverBorder?.borderRadius?.[deviceType].left}px`,
+        };
+        styles[` #${blockId} span.current `] = {
+            color: `${activeColor}`,
+            "background-color": `${activebackgroundColor}`,
+            "border-style": activeborder?.borderType,
+            "border-top-width": `${activeborder?.borderWidth?.[deviceType]?.top}px`,
+            "border-right-width": `${activeborder?.borderWidth?.[deviceType]?.right}px`,
+            "border-bottom-width": `${activeborder?.borderWidth?.[deviceType]?.bottom}px`,
+            "border-left-width": `${activeborder?.borderWidth?.[deviceType]?.left}px`,
+            "border-color": `${activeborder?.borderColor}`,
+            "border-top-left-radius": `${activeborder?.borderRadius?.[deviceType].top}px`,
+            "border-top-right-radius": `${activeborder?.borderRadius?.[deviceType].right}px`,
+            "border-bottom-left-radius": `${activeborder?.borderRadius?.[deviceType].bottom}px`,
+            "border-bottom-right-radius": `${activeborder?.borderRadius?.[deviceType].left}px`,
+        };
+
+        return generateCss(styles);
+    };
 
     return (
         <Fragment>
@@ -408,50 +465,45 @@ function Pagination(props) {
                 </InspectorTabs>
             </InspectorControls>
 
-            <div>
-                <a
-                    href="#pagination-previous-pseudo-link"
-                    onClick={(event) => event.preventDefault()}
-                    {...useBlockProps()}
-                >
-                    <PlainText
-                        __experimentalVersion={2}
-                        tagName="span"
-                        aria-label={__("Previous page link")}
-                        placeholder={__("Previous Page")}
-                        value={prevString}
-                        onChange={(newLabel) =>
-                            setAttributes({ prevString: newLabel })
+            <div
+                {...useBlockProps({
+                    className: classnames(
+                        className,
+                        `premium-blog-pagination-container`,
+                        {
+                            " premium-desktop-hidden": hideDesktop,
+                            " premium-tablet-hidden": hideTablet,
+                            " premium-mobile-hidden": hideMobile,
                         }
-                    />
-                </a>
+                    ),
+                })}
+                id={blockId}
+                style={{
+                    textAlign: alignment[deviceType],
+                    ...marginCss(margin, deviceType),
+                    ...paddingCss(padding, deviceType),
+                }}
+            >
+                <style>{loadStyles()}</style>
 
+                {createPaginationItem(prevString)}
                 {createPaginationItem(1)}
                 {createPaginationItem(2)}
                 {createPaginationItem(3, "span", "current")}
                 {createPaginationItem(4)}
-                {createPaginationItem(5)}
-                {createPaginationItem("...", "span", "dots")}
-                {createPaginationItem(8)}
-                <a
-                    href="#pagination-next-pseudo-link"
-                    onClick={(event) => event.preventDefault()}
-                    {...useBlockProps()}
-                >
-                    <PlainText
-                        __experimentalVersion={2}
-                        tagName="span"
-                        aria-label={__("Next page link")}
-                        placeholder={__("Next Page")}
-                        value={nextString}
-                        onChange={(newLabel) =>
-                            setAttributes({ nextString: newLabel })
-                        }
-                    />
-                </a>
+                {createPaginationItem(nextString)}
             </div>
         </Fragment>
     );
 }
+export default withSelect((select) => {
+    const { __experimentalGetPreviewDeviceType = null } =
+        select("core/edit-post");
+    let deviceType = __experimentalGetPreviewDeviceType
+        ? __experimentalGetPreviewDeviceType()
+        : null;
 
-export default Pagination;
+    return {
+        deviceType: deviceType,
+    };
+})(Pagination);

@@ -19,11 +19,11 @@
             "type":"boolean",
             "default":false
         },
-        "PrevString":{
+        "prevString":{
             "type":"string",
             "default":"Previous"
         },
-        "NextString":{
+        "nextString":{
             "type":"string",
             "default":"Next"
         },
