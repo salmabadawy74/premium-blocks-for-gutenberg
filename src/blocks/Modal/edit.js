@@ -14,7 +14,7 @@ const { RichText } = wp.editor;
 const Edit = props => {
 
     const [openModal, setOpenModal] = useState(false)
-    const { setAttributes, className } = props;
+    const { setAttributes, className, attributes } = props;
     const {
         blockId,
         contentStyles,
@@ -56,13 +56,24 @@ const Edit = props => {
         upperIconWidth,
         lowerIconWidth,
         triggerIconSize
-    } = props.attributes;
+    } = attributes;
 
     const currentDevice = props.deviceType;
 
     useEffect(() => {
         setAttributes({ blockId: "premium-modal-box-" + generateBlockId(props.clientId) })
     }, [])
+
+    const INNER_BLOCKS_TEMPLATE = [
+        ['premium/heading', {
+            title: attributes.contentStyles[0].titleText
+                ? attributes.contentStyles[0].titleText
+                : __("Modal Box Title", "premium-blocks-for-gutenberg"),
+            titleTag: "h3",
+            style: "default",
+        },
+        ]
+    ];
 
     const saveTriggerSettings = (value) => {
         const newUpdate = triggerSettings.map((item, index) => {
@@ -379,7 +390,8 @@ const Edit = props => {
                                         borderBottomWidth: headerBorder.borderType == 'none' ? '1px' : '',
                                         borderBottomColor: headerBorder.borderType == 'none' ? '#e5e5e5' : headerBorder.borderColor
                                     }}>
-                                    <h3 className={`premium-modal-box-modal-title`}
+                                    <div></div>
+                                    {/* <h3 className={`premium-modal-box-modal-title`}
                                         style={{
                                             ...typographyCss(headerTypography, currentDevice),
                                             color: headerStyles[0].color
@@ -418,7 +430,7 @@ const Edit = props => {
                                             </div>}
 
                                         {contentStyles[0].titleText}
-                                    </h3>
+                                    </h3> */}
                                     {contentStyles[0].showUpperClose && contentStyles[0].showHeader && (
                                         <div className="premium-modal-box-close-button-container"
                                             style={{
@@ -439,7 +451,11 @@ const Edit = props => {
                                     ...paddingCss(modalPadding, currentDevice),
                                     background: modalStyles[0].textBackColor
                                 }}>
-                                {modalStyles[0].contentType === "text" ?
+                                <InnerBlocks
+                                    template={INNER_BLOCKS_TEMPLATE}
+                                    templateLock={false}
+                                />
+                                {/* {modalStyles[0].contentType === "text" ?
                                     <RichText
                                         tagName={'p'}
                                         value={modalStyles[0].contentText}
@@ -450,7 +466,7 @@ const Edit = props => {
                                         }}
                                         keepPlaceholderOnFocus
                                     />
-                                    : <InnerBlocks />}
+                                    : <InnerBlocks />} */}
 
                             </div>
                             {contentStyles[0].showLowerClose && (

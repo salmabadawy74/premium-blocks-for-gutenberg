@@ -525,7 +525,7 @@ const Inspector = ({ attributes, setAttributes }) => {
                                 saveContentStyle({ showLowerClose: value })
                             }
                         />
-                        <SelectControl
+                        {/* <SelectControl
                             label={__(
                                 `Content to Show`,
                                 "premium-blocks-for-gutenberg"
@@ -550,7 +550,7 @@ const Inspector = ({ attributes, setAttributes }) => {
                                     ),
                                 },
                             ]}
-                        />
+                        /> */}
                         <SelectControl
                             label={__(
                                 "Animation",
@@ -849,7 +849,7 @@ const Inspector = ({ attributes, setAttributes }) => {
                             }
                         />
                     </PanelBody>
-                    {contentStyles[0].showHeader && (
+                    {/* {contentStyles[0].showHeader && (
                         <PanelBody
                             title={__("Header", "premium-blocks-for-gutenberg")}
                             className="premium-panel-body"
@@ -1007,7 +1007,7 @@ const Inspector = ({ attributes, setAttributes }) => {
                                 </Fragment>
                             )}
                         </PanelBody>
-                    )}
+                    )} */}
                     {contentStyles[0].showLowerClose && (
                         <PanelBody
                             title={__(
@@ -1080,34 +1080,34 @@ const Inspector = ({ attributes, setAttributes }) => {
                                 )}
                             {(triggerSettings[0].triggerType === "image" ||
                                 triggerSettings[0].triggerType ===
-                                    "lottie") && (
-                                <ResponsiveRangeControl
-                                    label={__(
-                                        "Size",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                    value={imageWidth}
-                                    onChange={(newValue) =>
-                                        setAttributes({ imageWidth: newValue })
-                                    }
-                                    units={["px", "em", "%"]}
-                                    showUnit={true}
-                                    min="1"
-                                    max="800"
-                                    defaultValue={0}
-                                />
-                            )}
+                                "lottie") && (
+                                    <ResponsiveRangeControl
+                                        label={__(
+                                            "Size",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                        value={imageWidth}
+                                        onChange={(newValue) =>
+                                            setAttributes({ imageWidth: newValue })
+                                        }
+                                        units={["px", "em", "%"]}
+                                        showUnit={true}
+                                        min="1"
+                                        max="800"
+                                        defaultValue={0}
+                                    />
+                                )}
                             {(triggerSettings[0].triggerType === "button" ||
                                 triggerSettings[0].triggerType === "text") && (
-                                <PremiumTypo
-                                    value={triggerTypography}
-                                    onChange={(newValue) =>
-                                        setAttributes({
-                                            triggerTypography: newValue,
-                                        })
-                                    }
-                                />
-                            )}
+                                    <PremiumTypo
+                                        value={triggerTypography}
+                                        onChange={(newValue) =>
+                                            setAttributes({
+                                                triggerTypography: newValue,
+                                            })
+                                        }
+                                    />
+                                )}
                             {triggerSettings[0].triggerType === "button" && (
                                 <InsideTabs>
                                     <InsideTab
@@ -1399,14 +1399,14 @@ const Inspector = ({ attributes, setAttributes }) => {
                             )}
                             {(triggerSettings[0].triggerType === "image" ||
                                 triggerSettings[0].triggerType ===
-                                    "button") && (
-                                <PremiumShadow
-                                    value={triggerShadow}
-                                    onChange={(value) =>
-                                        setAttributes({ triggerShadow: value })
-                                    }
-                                />
-                            )}
+                                "button") && (
+                                    <PremiumShadow
+                                        value={triggerShadow}
+                                        onChange={(value) =>
+                                            setAttributes({ triggerShadow: value })
+                                        }
+                                    />
+                                )}
                             {triggerSettings[0].triggerType === "text" && (
                                 <PremiumShadow
                                     label={__(
@@ -1423,22 +1423,22 @@ const Inspector = ({ attributes, setAttributes }) => {
                             )}
                             {(triggerSettings[0].triggerType === "button" ||
                                 triggerSettings[0].triggerType === "text") && (
-                                <SpacingControl
-                                    label={__(
-                                        "Padding",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                    value={triggerPadding}
-                                    onChange={(value) =>
-                                        setAttributes({ triggerPadding: value })
-                                    }
-                                    showUnits={true}
-                                    responsive={true}
-                                />
-                            )}
+                                    <SpacingControl
+                                        label={__(
+                                            "Padding",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                        value={triggerPadding}
+                                        onChange={(value) =>
+                                            setAttributes({ triggerPadding: value })
+                                        }
+                                        showUnits={true}
+                                        responsive={true}
+                                    />
+                                )}
                         </PanelBody>
                     )}
-                    {contentStyles[0].showHeader && (
+                    {/* {contentStyles[0].showHeader && (
                         <PanelBody
                             title={__("Header", "premium-blocks-for-gutenberg")}
                             className="premium-panel-body"
@@ -1499,7 +1499,7 @@ const Inspector = ({ attributes, setAttributes }) => {
                                 }
                             />
                         </PanelBody>
-                    )}
+                    )} */}
                     {contentStyles[0].showUpperClose &&
                         contentStyles[0].showHeader && (
                             <PanelBody
@@ -1660,7 +1660,7 @@ const Inspector = ({ attributes, setAttributes }) => {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
-                        <ResponsiveRangeControl
+                        {/* <ResponsiveRangeControl
                             label={__("Width", "premium-blocks-for-gutenberg")}
                             value={modalWidth}
                             onChange={(newValue) =>
@@ -1682,8 +1682,8 @@ const Inspector = ({ attributes, setAttributes }) => {
                             units={["px", "em", "%"]}
                             showUnit={true}
                             max={500}
-                        />
-                        {"text" == modalStyles[0].contentType && (
+                        /> */}
+                        {/* {"text" == modalStyles[0].contentType && (
                             <Fragment>
                                 <PremiumTypo
                                     value={modalTypography}
@@ -1704,21 +1704,21 @@ const Inspector = ({ attributes, setAttributes }) => {
                                         saveModalStyles({ textColor: newValue })
                                     }
                                 />
-                                <AdvancedPopColorControl
-                                    label={__(
-                                        "Content Background Color",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                    colorValue={modalStyles[0].textBackColor}
-                                    colorDefault={""}
-                                    onColorChange={(newValue) =>
-                                        saveModalStyles({
-                                            textBackColor: newValue,
-                                        })
-                                    }
-                                />
-                            </Fragment>
-                        )}
+                                </Fragment>
+                            )} */}
+                        <AdvancedPopColorControl
+                            label={__(
+                                "Content Background Color",
+                                "premium-blocks-for-gutenberg"
+                            )}
+                            colorValue={modalStyles[0].textBackColor}
+                            colorDefault={""}
+                            onColorChange={(newValue) =>
+                                saveModalStyles({
+                                    textBackColor: newValue,
+                                })
+                            }
+                        />
                         <AdvancedPopColorControl
                             label={__(
                                 "Footer Background Color",
