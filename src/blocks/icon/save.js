@@ -1,6 +1,11 @@
 import classnames from 'classnames'
 import { useBlockProps } from "@wordpress/block-editor";
 import { gradientBackground, filterJsCss, generateCss } from '@pbg/helpers';
+import {
+    GenIcon,
+    FaIco,
+    Ico
+} from "@pbg/components";
 
 const save = props => {
 
@@ -26,7 +31,8 @@ const save = props => {
         iconTypeFile,
         imageURL,
         hoversEffect,
-        svgUrl
+        svgUrl,
+        icons
     } = props.attributes;
 
     const loadStyles = () => {
@@ -92,16 +98,23 @@ const save = props => {
                     target={target ? "_blank" : "_self"}
                 >
                     <div className={`premium-icon-content premium-icon__${hoverEffect !== "none" || !hoversEffect ? hoverEffect : hoversEffect}`}>
-                        {"icon" === iconTypeFile && <i
-                            className={`premium-icon premium-icon-type ${selectedIcon}`}
-                            style={filterJsCss({
-                                cursor: urlCheck ? 'pointer' : 'default',
-                                color: iconStyles[0].iconColor,
-                                backgroundColor: iconStyles[0].iconBack,
-                                borderStyle: iconBorder.borderType,
-                                borderColor: iconBorder.borderColor,
-                                textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`
-                            })}
+                        {"icon" === iconTypeFile && 
+                        // <i
+                        //     className={`premium-icon premium-icon-type ${selectedIcon}`}
+                        //     style={filterJsCss({
+                        //         cursor: urlCheck ? 'pointer' : 'default',
+                        //         color: iconStyles[0].iconColor,
+                        //         backgroundColor: iconStyles[0].iconBack,
+                        //         borderStyle: iconBorder.borderType,
+                        //         borderColor: iconBorder.borderColor,
+                        //         textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`
+                        //     })}
+                        // />
+                        <GenIcon className={ `premium-icon premium-icon-type ${ selectedIcon }` } 
+                            name={ selectedIcon } 
+                            icon={ ( 'fa' === selectedIcon.substring( 0, 2 ) ? FaIco[ selectedIcon ] : Ico[ selectedIcon ] ) } 
+                            strokeWidth={ ( 'fe' === selectedIcon.substring( 0, 2 ) ? icons[0].width : undefined ) } 
+                           
                         />
                         }
                         {imageURL && "img" === iconTypeFile && (

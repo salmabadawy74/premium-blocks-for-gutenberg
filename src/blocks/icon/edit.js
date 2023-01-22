@@ -17,7 +17,11 @@ import {
     iconsList,
     RadioComponent,
     PremiumMediaUpload,
-    PremiumUploadSVG
+    PremiumUploadSVG,
+    GenIcon,
+    FaIco,
+    Ico,
+    IcoNames
 } from "@pbg/components";
 import {
     gradientBackground,
@@ -90,7 +94,8 @@ function Edit(props) {
         iconShadow,
         borderHoverColor,
         imgWidth,
-        svgUrl
+        svgUrl,
+        icons
     } = props.attributes;
 
     const EFFECTS = [
@@ -212,6 +217,10 @@ function Edit(props) {
         input.click()
     }
 
+    const renderSVG = svg => (
+        <GenIcon name={ svg } icon={ ( 'fa' === svg.substring( 0, 2 ) ? FaIco[ svg ] : Ico[ svg ] ) } />
+    );
+
     const loadStyles = () => {
         const styles = {};
         styles[` .${blockId} .premium-icon-container .premium-icon-type:hover`] = {
@@ -326,13 +335,14 @@ function Edit(props) {
                                         )}
                                     </p>
                                     <FontIconPicker
-                                        icons={iconsList}
+                                        icons={ IcoNames }
                                         onChange={(newIcon) =>
                                             setAttributes({ selectedIcon: newIcon })
                                         }
+                                        renderFunc={ renderSVG }
                                         value={selectedIcon}
                                         isMulti={false}
-                                        // appendTo="body"
+                                        appendTo="body"
                                         noSelectedPlaceholder={__(
                                             "Select Icon",
                                             "premium-blocks-for-gutenberg"
@@ -775,7 +785,7 @@ function Edit(props) {
                         </p>
                     )}
                     <div className={`premium-icon-content premium-icon__${hoverEffect !== "none" || !hoversEffect ? hoverEffect : hoversEffect}`}>
-                        {"icon" === iconTypeFile && (iconType === "dash" || 1 == FontAwesomeEnabled) && (
+                        {/* {"icon" === iconTypeFile && (iconType === "dash" || 1 == FontAwesomeEnabled) && (
                             <i
                                 className={`premium-icon premium-icon-type ${selectedIcon}`}
                                 style={{
@@ -794,7 +804,28 @@ function Edit(props) {
                                     textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`,
                                 }}
                             />
-                        )}
+                        )} */}
+                        { selectedIcon && (
+                            <GenIcon className={ `psvg psvg-${ selectedIcon }` } 
+                                name={ selectedIcon } 
+                                size={ iconSize[props.deviceType] +
+                                        iconSize.unit } 
+                                icon={ ( 'fa' === selectedIcon.substring( 0, 2 ) ? FaIco[ selectedIcon ] : Ico[ selectedIcon ] ) } 
+                                strokeWidth={ ( 'fe' === selectedIcon.substring( 0, 2 ) ? icons[0].width : undefined ) } 
+                                style={ {
+                                    color: iconStyles[0].iconColor,
+                                    backgroundColor: iconStyles[0].iconBack,
+                                    cursor: urlCheck ? 'pointer' : 'default',
+                                    ...borderCss(iconBorder, props.deviceType),
+                                    ...paddingCss(
+                                        iconPadding,
+                                        props.deviceType
+                                    ),
+                                    ...marginCss(iconMargin, props.deviceType),
+                                    textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`,
+                                }}
+                            />
+                        ) }
                         {imageURL && "img" === iconTypeFile && (
                             <img src={imageURL} />
                         )}

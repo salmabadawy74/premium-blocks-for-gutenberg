@@ -114,6 +114,16 @@ class PBG_Blocks_Helper {
 		add_action( 'pbg_get_css_files', array( $this, 'add_blocks_editor_styles' ) );
 
 		add_filter( 'render_block_premium/container', array( $this, 'equal_height_front_script' ), 1, 2 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'fontawesome_name_scripts' ) );
+	}
+
+	/**
+	 * Proper way to enqueue scripts and styles.
+	 */
+	public function fontawesome_name_scripts() {
+
+		wp_enqueue_script( 'script-name', PREMIUM_BLOCKS_URL . 'assets/js/fontawesome.min.js', array(), '1.0.0', true );
+
 	}
 
 	/**
