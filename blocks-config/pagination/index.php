@@ -71,4 +71,5 @@ function register_premium_pagination()
         )
     );
 }
+
 register_premium_pagination();

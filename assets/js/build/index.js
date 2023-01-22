@@ -44716,7 +44716,7 @@ const save = props => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Meta)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
@@ -44745,8 +44745,11 @@ __webpack_require__.r(__webpack_exports__);
 const {
   dateI18n,
   format,
-  __experimentalGetSettings
+  __experimentalGetSettings,
+  withSelect,
+  select
 } = wp.date;
+
 
 
 
@@ -44760,7 +44763,8 @@ function Meta(props) {
       queryId
     },
     attributes,
-    setAttributes
+    setAttributes,
+    categoriesList
   } = props;
   const {
     showAuther,
@@ -44775,8 +44779,18 @@ function Meta(props) {
     hideTablet,
     hideMobile
   } = attributes;
-  const [rawTitle = "", setTitle, fullTitle] = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__.useEntityProp)("postType", postType, "author", postId);
-  console.log(rawTitle, "Mtttt");
+  const [categories, setCategories] = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__.useEntityProp)("postType", "post", "categories", postId);
+  let categoryObject = [];
+
+  if (categoriesList) {
+    categoriesList.map((item, thisIndex) => {
+      if (categories && item.id == categories[thisIndex]) {
+        categoryObject.push(item);
+      }
+    });
+  }
+
+  console.log(categoryObject, categoriesList, "Mtttt");
   const AUTHORS_QUERY = {
     who: "authors",
     per_page: 50,
@@ -44923,6 +44937,17 @@ function Meta(props) {
     className: `premium-blog-meta-separtor`
   }, "\u2022")));
 }
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (withSelect((select, props) => {
+  const {
+    getEntityRecords
+  } = select("core");
+  let categoriesList = [];
+  categoriesList = wp.data.select("core").getEntityRecords("taxonomy", "category");
+  return {
+    categoriesList: categoriesList
+  };
+})(Meta));
 
 /***/ }),
 
@@ -45562,7 +45587,7 @@ function PostTemplateEdit(_ref) {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", innerBlocksProps);
   }
 
-  console.log(blockContexts, "blockContexts");
+  console.log(posts, "blockContexts");
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", blockProps, blockContexts && blockContexts.map((blockContext, index) => {
     var _blockContexts$;
 

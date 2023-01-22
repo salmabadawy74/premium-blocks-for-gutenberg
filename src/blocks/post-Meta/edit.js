@@ -1,10 +1,11 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { useSelect } from "@wordpress/data";
 import { store as coreStore } from "@wordpress/core-data";
 import { useEntityProp } from "@wordpress/core-data";
 import { __ } from "@wordpress/i18n";
 
-const { dateI18n, format, __experimentalGetSettings } = wp.date;
+const { dateI18n, format, __experimentalGetSettings, withSelect, select } =
+    wp.date;
 import {
     generateBlockId,
     typographyCss,
@@ -35,12 +36,13 @@ import {
     alignIcons,
 } from "@pbg/components";
 
-export default function Meta(props) {
+function Meta(props) {
     const {
         isSelected,
         context: { postId, postType: postTypeSlug, queryId },
         attributes,
         setAttributes,
+        categoriesList,
     } = props;
     const {
         showAuther,
@@ -55,13 +57,23 @@ export default function Meta(props) {
         hideTablet,
         hideMobile,
     } = attributes;
-    const [rawTitle = "", setTitle, fullTitle] = useEntityProp(
+
+    const [categories, setCategories] = useEntityProp(
         "postType",
-        postType,
-        "author",
+        "post",
+        "categories",
         postId
     );
-    console.log(rawTitle, "Mtttt");
+
+    let categoryObject = [];
+    if (categoriesList) {
+        categoriesList.map((item, thisIndex) => {
+            if (categories && item.id == categories[thisIndex]) {
+                categoryObject.push(item);
+            }
+        });
+    }
+    console.log(categoryObject, categoriesList, "Mtttt");
 
     const AUTHORS_QUERY = {
         who: "authors",
@@ -284,3 +296,14 @@ export default function Meta(props) {
         </Fragment>
     );
 }
+export default withSelect((select, props) => {
+    const { getEntityRecords } = select("core");
+    let categoriesList = [];
+    categoriesList = wp.data
+        .select("core")
+        .getEntityRecords("taxonomy", "category");
+
+    return {
+        categoriesList: categoriesList,
+    };
+})(Meta);

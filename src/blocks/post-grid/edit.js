@@ -190,7 +190,7 @@ export default function PostTemplateEdit({
         );
         return <li {...innerBlocksProps} />;
     }
-    console.log(blockContexts, "blockContexts");
+    console.log(posts, "blockContexts");
     return (
         <ul {...blockProps}>
             {blockContexts &&
