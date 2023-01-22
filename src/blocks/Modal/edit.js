@@ -87,18 +87,6 @@ const Edit = props => {
         });
     }
 
-    const saveModalStyles = (value) => {
-        const newUpdate = modalStyles.map((item, modalIndex) => {
-            if (0 === modalIndex) {
-                item = { ...item, ...value };
-            }
-            return item;
-        });
-        setAttributes({
-            modalStyles: newUpdate,
-        });
-    }
-
     const loadStyles = () => {
         const styles = {};
         styles[` .${blockId} .premium-modal-trigger-container button.premium-modal-trigger-btn:hover`] = {
@@ -161,8 +149,6 @@ const Edit = props => {
     const modalMaxHeight = modalHeight[currentDevice];
 
     let loadTriggerGoogleFonts;
-    let loadHeaderGoogleFonts;
-    let loadModalGoogleFonts;
     let loadLowerGoogleFonts;
 
     if (triggerTypography.fontFamily !== "Default") {
@@ -172,28 +158,6 @@ const Edit = props => {
             }
         };
         loadTriggerGoogleFonts = (
-            <WebfontLoader config={gconfig}></WebfontLoader>
-        );
-    }
-
-    if (headerTypography.fontFamily !== "Default") {
-        const gconfig = {
-            google: {
-                families: [headerTypography?.fontFamily]
-            }
-        };
-        loadHeaderGoogleFonts = (
-            <WebfontLoader config={gconfig}></WebfontLoader>
-        );
-    }
-
-    if (modalTypography.fontFamily !== "Default") {
-        const gconfig = {
-            google: {
-                families: [modalTypography?.fontFamily]
-            }
-        };
-        loadModalGoogleFonts = (
             <WebfontLoader config={gconfig}></WebfontLoader>
         );
     }
@@ -378,19 +342,18 @@ const Edit = props => {
                                 ...borderCss(modalBorder, currentDevice),
                                 ...marginCss(modalMargin, currentDevice),
                                 width: `${modalWidthValue}${modalWidth.unit}`,
-                                maxHeight: `${modalMaxHeight}${modalHeight.unit}`,
+                                // maxHeight: `${modalMaxHeight}${modalHeight.unit}`,
                                 boxShadow: `${modalShadow.horizontal}px ${modalShadow.vertical}px ${modalShadow.blur}px ${modalShadow.color} ${modalShadow.position}`,
                             }}>
                             {contentStyles[0].showHeader &&
                                 <div className={`premium-modal-box-modal-header`}
                                     style={{
-                                        ...borderCss(headerBorder, currentDevice),
-                                        backgroundColor: headerStyles[0].backColor,
-                                        borderBottomStyle: headerBorder.borderType == 'none' ? 'solid' : headerBorder.borderType,
-                                        borderBottomWidth: headerBorder.borderType == 'none' ? '1px' : '',
-                                        borderBottomColor: headerBorder.borderType == 'none' ? '#e5e5e5' : headerBorder.borderColor
+                                        // ...borderCss(headerBorder, currentDevice),
+                                        // backgroundColor: headerStyles[0].backColor,
+                                        // borderBottomStyle: headerBorder.borderType == 'none' ? 'solid' : headerBorder.borderType,
+                                        // borderBottomWidth: headerBorder.borderType == 'none' ? '1px' : '',
+                                        // borderBottomColor: headerBorder.borderType == 'none' ? '#e5e5e5' : headerBorder.borderColor
                                     }}>
-                                    <div></div>
                                     {/* <h3 className={`premium-modal-box-modal-title`}
                                         style={{
                                             ...typographyCss(headerTypography, currentDevice),
@@ -449,7 +412,8 @@ const Edit = props => {
                             <div className={`premium-modal-box-modal-body`}
                                 style={{
                                     ...paddingCss(modalPadding, currentDevice),
-                                    background: modalStyles[0].textBackColor
+                                    background: modalStyles[0].textBackColor,
+                                    height: `${modalMaxHeight}${modalHeight.unit}`,
                                 }}>
                                 <InnerBlocks
                                     template={INNER_BLOCKS_TEMPLATE}
@@ -494,8 +458,6 @@ const Edit = props => {
 
                 )}
                 {loadTriggerGoogleFonts}
-                {loadHeaderGoogleFonts}
-                {loadModalGoogleFonts}
                 {loadLowerGoogleFonts}
             </div >
         </Fragment>

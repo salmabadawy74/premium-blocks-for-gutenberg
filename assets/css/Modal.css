@@ -1816,6 +1816,7 @@
   z-index: 10000;
   background-color: var(--pbg-global-color5, #fff);
   min-width: 700px;
+  width: 700px;
   padding: 20px;
   max-width: 100%;
   overflow: auto;
@@ -2045,18 +2046,18 @@ button.premium-modal-box-modal-close {
   display: -moz-box;
   display: -ms-flexbox;
   display: flex;
+  justify-content: flex-end;
   -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
   -moz-box-pack: justify;
   -ms-flex-pack: justify;
-  justify-content: space-between;
   -webkit-box-align: center;
   -webkit-align-items: center;
   -moz-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   padding: 5px 5px;
-  border-bottom: 1px solid var(--pbg-global-color4); }
+  border-bottom: 1px solid var(--pbg-global-color4, #e5e5e5);
+  padding-bottom: 20px; }
   .premium-modal-box-modal-header .premium-modal-box-modal-close {
     margin-top: -2px; }
   .premium-modal-box-modal-header .premium-modal-box-modal-title {
@@ -2089,7 +2090,11 @@ button.premium-modal-box-modal-close {
 
 .premium-modal-box-modal-body {
   position: relative;
-  padding: 5px; }
+  padding: 5px;
+  max-height: 60vh;
+  overflow: auto;
+  height: 100%;
+  max-width: 100%; }
 
 .premium-modal-box-modal-footer {
   padding: 5px;

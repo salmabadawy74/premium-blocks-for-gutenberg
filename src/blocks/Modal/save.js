@@ -179,14 +179,14 @@ const save = props => {
                     })}>
                     {contentStyles[0].showHeader && <div className={`premium-modal-box-modal-header`}
                         style={filterJsCss({
-                            backgroundColor: headerStyles[0].backColor,
-                            borderStyle: headerBorder.borderType,
-                            borderColor: `${headerBorder.borderColor}`,
-                            borderBottomStyle: headerBorder.borderType == 'none' ? 'solid' : headerBorder.borderType,
-                            borderBottomWidth: headerBorder.borderType == 'none' ? '1px' : '',
-                            borderBottomColor: headerBorder.borderType == 'none' ? '#e5e5e5' : headerBorder.borderColor
+                            // backgroundColor: headerStyles[0].backColor,
+                            // borderStyle: headerBorder.borderType,
+                            // borderColor: `${headerBorder.borderColor}`,
+                            // borderBottomStyle: headerBorder.borderType == 'none' ? 'solid' : headerBorder.borderType,
+                            // borderBottomWidth: headerBorder.borderType == 'none' ? '1px' : '',
+                            // borderBottomColor: headerBorder.borderType == 'none' ? '#e5e5e5' : headerBorder.borderColor
                         })}>
-                        <h3 className={`premium-modal-box-modal-title`}
+                        {/* <h3 className={`premium-modal-box-modal-title`}
                             style={filterJsCss({
                                 color: headerStyles[0].color,
                                 fontFamily: headerTypography.fontFamily,
@@ -207,7 +207,7 @@ const save = props => {
                                 </div>
                             }
                             {contentStyles[0].titleText}
-                        </h3>
+                        </h3> */}
                         {contentStyles[0].showUpperClose && contentStyles[0].showHeader && (
                             <div className="premium-modal-box-close-button-container"
                                 style={filterJsCss({
@@ -228,7 +228,8 @@ const save = props => {
                         style={filterJsCss({
                             background: modalStyles[0].textBackColor
                         })}>
-                        {modalStyles[0].contentType === "text" ?
+                        <InnerBlocks.Content />
+                        {/* {modalStyles[0].contentType === "text" ?
                             <RichText.Content
                                 tagName={'p'}
                                 value={modalStyles[0].contentText}
@@ -242,7 +243,7 @@ const save = props => {
                                 })}
                                 keepPlaceholderOnFocus
                             />
-                            : <InnerBlocks.Content />}
+                            : <InnerBlocks.Content />} */}
 
                     </div>
                     {contentStyles[0].showLowerClose && (<div className={`premium-modal-box-modal-footer`}

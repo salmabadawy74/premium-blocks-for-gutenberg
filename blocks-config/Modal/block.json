@@ -5,7 +5,10 @@
     "name": "premium/modal",
     "title": "Modal Box",
     "description": "Easily, get creative modal popups on your WordPress website using Premium Modal Box Block.",
-    "keywords": ["modal", "popup"],
+    "keywords": [
+        "modal",
+        "popup"
+    ],
     "category": "premium-blocks",
     "attributes": {
         "blockId": {
@@ -25,7 +28,7 @@
                     "reverseLottie": false,
                     "titleText": "Modal Box Title",
                     "showUpperClose": true,
-                    "showLowerClose": true,
+                    "showLowerClose": false,
                     "lowerCloseText": "Close",
                     "animationType": "fadeInDown",
                     "animationSpeed": "normal"
@@ -689,9 +692,9 @@
         "modalWidth": {
             "type": "object",
             "default": {
-                "Desktop": "",
-                "Tablet": "",
-                "Mobile": "",
+                "Desktop": "700",
+                "Tablet": "700",
+                "Mobile": "700",
                 "unit": "px"
             }
         },
