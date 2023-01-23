@@ -51,20 +51,12 @@ function Tags(props) {
         hideTablet,
         hideMobile,
     } = attributes;
-    // const selectedTerm = useSelect(
-    //     (select) => {
-    //         const { getTaxonomy } = select(coreStore);
-    //         const taxonomy = getTaxonomy(term);
-    //         return taxonomy?.visibility?.publicly_queryable ? taxonomy : {};
-    //     },
-    //     [term]
-    // );
     const [tags, setTags] = useEntityProp("postType", postType, "tags", postId);
-    console.log(taxonomies);
+    console.log(taxonomies, tags);
     let tagName = [];
-    if (tagList) {
-        tagList.map((tag, thisIndex) => {
-            if (tag.id == post.tags[thisIndex]) {
+    if (taxonomies) {
+        taxonomies.map((tag, thisIndex) => {
+            if (tag.id == tags[thisIndex]) {
                 tagName.push(tag.name);
             }
         });
@@ -84,8 +76,12 @@ export default withSelect((select, props) => {
     const {
         context: { postId, postType, queryId },
     } = props;
+    let taxonomies;
+    taxonomies = wp.data
+        .select("core")
+        .getEntityRecords("taxonomy", "post_tag");
 
     return {
-        taxonomies: select(coreStore).getTaxonomies({ per_page: -1 }),
+        taxonomies: taxonomies,
     };
 })(Tags);

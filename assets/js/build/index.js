@@ -45082,12 +45082,13 @@ function Excerpt(props) {
   const [rawExcerpt, setExcerpt, {
     rendered: renderedExcerpt,
     protected: isProtected
-  } = {}] = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_1__.useEntityProp)("postType", postType, "excerpt", postId);
+  } = {}] = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_1__.useEntityProp)("postType", postType, "content", postId);
   const strippedRenderedExcerpt = useMemo(() => {
     if (!renderedExcerpt) return "";
     const document = new window.DOMParser().parseFromString(renderedExcerpt, "text/html");
     return document.body.textContent || document.body.innerText || "";
   }, [renderedExcerpt]);
+  console.log(strippedRenderedExcerpt);
   const words = strippedRenderedExcerpt.split(" ");
   let exLength = excerptLen ? excerptLen : 25;
   let excerpt, Content;
@@ -45459,7 +45460,7 @@ function PostTemplateEdit(_ref) {
       templateSlug
     }
   } = _ref;
-  const TEMPLATE = [["premium/post-featured-image"], ["premium/post-title"], ["premium/post-meta"], ["premium/post-excerpt"]];
+  const TEMPLATE = [["premium/post-featured-image"], ["premium/post-title"], ["premium/post-meta"], ["premium/post-excerpt"], ["premium/post-tag"]];
   const innerBlocksProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.useInnerBlocksProps)({
     className: "wp-block-post"
   }, {
@@ -45740,22 +45741,14 @@ function Tags(props) {
     hideDesktop,
     hideTablet,
     hideMobile
-  } = attributes; // const selectedTerm = useSelect(
-  //     (select) => {
-  //         const { getTaxonomy } = select(coreStore);
-  //         const taxonomy = getTaxonomy(term);
-  //         return taxonomy?.visibility?.publicly_queryable ? taxonomy : {};
-  //     },
-  //     [term]
-  // );
-
+  } = attributes;
   const [tags, setTags] = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__.useEntityProp)("postType", postType, "tags", postId);
-  console.log(taxonomies);
+  console.log(taxonomies, tags);
   let tagName = [];
 
-  if (tagList) {
-    tagList.map((tag, thisIndex) => {
-      if (tag.id == post.tags[thisIndex]) {
+  if (taxonomies) {
+    taxonomies.map((tag, thisIndex) => {
+      if (tag.id == tags[thisIndex]) {
         tagName.push(tag.name);
       }
     });
@@ -45780,10 +45773,10 @@ function Tags(props) {
       queryId
     }
   } = props;
+  let taxonomies;
+  taxonomies = wp.data.select("core").getEntityRecords("taxonomy", "post_tag");
   return {
-    taxonomies: select(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__.store).getTaxonomies({
-      per_page: -1
-    })
+    taxonomies: taxonomies
   };
 })(Tags));
 
@@ -85123,7 +85116,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/post-tag","title":"Post Tags","category":"theme","description":"Display a post\'s tags.","textdomain":"default","attributes":{"displayPostTags":{"type":"boolean","default":false},"typography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"color":{"type":"string"},"hoverColor":{"type":"string","default":""},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""}},"usesContext":["postId","postType","queryId"],"supports":{"html":false}}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/post-tag","title":"Post Tags","category":"theme","description":"Display a post\'s tags.","textdomain":"default","parent":["premium/post-grid"],"attributes":{"displayPostTags":{"type":"boolean","default":true},"typography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"color":{"type":"string"},"hoverColor":{"type":"string","default":""},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""}},"usesContext":["postId","postType","queryId"],"supports":{"html":false}}');
 
 /***/ }),
 

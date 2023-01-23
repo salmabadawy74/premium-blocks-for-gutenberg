@@ -52,6 +52,7 @@ export default function PostTemplateEdit({
         ["premium/post-title"],
         ["premium/post-meta"],
         ["premium/post-excerpt"],
+        ["premium/post-tag"],
     ];
 
     const innerBlocksProps = useInnerBlocksProps(

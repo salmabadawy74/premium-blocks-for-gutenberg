@@ -6,10 +6,12 @@
 	"category": "theme",
 	"description": "Display a post's tags.",
 	"textdomain": "default",
+            "parent": ["premium/post-grid"],
+
 	"attributes": {
 		"displayPostTags": {
 			"type": "boolean",
-            "default":false
+            "default":true
 		},
         "typography": {
             "type": "object",
