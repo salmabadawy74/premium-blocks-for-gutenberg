@@ -4,6 +4,7 @@
 	"name": "premium/pagination",
 	"title": "Pagination",
 	"category": "premium-blocks",
+    "parent": ["premium/post-grid"],
 	"description": "Displays a paginated navigation to next/previous set of posts, when applicable.",
 	"textdomain": "default",
 	"attributes": {

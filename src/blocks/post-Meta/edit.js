@@ -1,11 +1,10 @@
 import { Fragment, useEffect } from "react";
-import { useSelect } from "@wordpress/data";
+import { useSelect, withSelect, select } from "@wordpress/data";
 import { store as coreStore } from "@wordpress/core-data";
 import { useEntityProp } from "@wordpress/core-data";
 import { __ } from "@wordpress/i18n";
 
-const { dateI18n, format, __experimentalGetSettings, withSelect, select } =
-    wp.date;
+const { dateI18n, format, __experimentalGetSettings } = wp.date;
 import {
     generateBlockId,
     typographyCss,
@@ -43,6 +42,7 @@ function Meta(props) {
         attributes,
         setAttributes,
         categoriesList,
+        categories,
     } = props;
     const {
         showAuther,
@@ -57,23 +57,19 @@ function Meta(props) {
         hideTablet,
         hideMobile,
     } = attributes;
-
-    const [categories, setCategories] = useEntityProp(
-        "postType",
-        "post",
-        "categories",
-        postId
-    );
-
+    const dateFormat = __experimentalGetSettings().formats.date;
     let categoryObject = [];
     if (categoriesList) {
         categoriesList.map((item, thisIndex) => {
-            if (categories && item.id == categories[thisIndex]) {
+            console.log(item.id, categories[thisIndex], thisIndex);
+
+            if (item.id == categories[thisIndex]) {
+                console.log("welocom");
+
                 categoryObject.push(item);
             }
         });
     }
-    console.log(categoryObject, categoriesList, "Mtttt");
 
     const AUTHORS_QUERY = {
         who: "authors",
@@ -99,34 +95,17 @@ function Meta(props) {
         },
         [postTypeSlug, postId]
     );
-    const { postDetails, setDetails } = useSelect(
-        (select) => {
-            const { getEntityRecord, getUser, getUsers } = select(coreStore);
-            const _authorId = getEntityRecord(
-                "postType",
-                "post",
-                postId
-            )?.author;
-            const Category = getEntityRecord(
-                "postType",
-                "post",
-                postId
-            )?.categories;
-
-            return {
-                authorId: _authorId,
-                authorDetails: _authorId ? getUser(_authorId) : null,
-                authors: getUsers(AUTHORS_QUERY),
-                categories: Category,
-            };
-        },
-        [postTypeSlug, postId]
-    );
 
     const [date, setDate] = useEntityProp(
         "postType",
         postTypeSlug,
-        "date",
+        "date_gmt",
+        postId
+    );
+    const [comments, setComments] = useEntityProp(
+        "postType",
+        postTypeSlug,
+        "comments_num",
         postId
     );
 
@@ -134,14 +113,13 @@ function Meta(props) {
         <time dateTime={dateI18n("c", date)}>
             <span className="fa fa-clock-o"></span>
 
-            {dateI18n(format || siteFormat, date)}
+            {dateI18n(dateFormat, date)}
         </time>
     ) : (
         __("Post Date")
     );
 
     const authorName = authorDetails?.name || __("Post Author");
-
     return (
         <Fragment>
             <InspectorControls>
@@ -270,16 +248,18 @@ function Meta(props) {
                     <span className={`premium-blog-meta-separtor`}>•</span>
                 </div>
             )}
-            {/* {attributes.displayPostComment && undefined !== post.pbg_comment_info && (
-                <div className={`premium-blog-post-comments premium-blog-meta-data`}>
+            {showComments && undefined !== comments && (
+                <div
+                    className={`premium-blog-post-comments premium-blog-meta-data`}
+                >
                     <span className="premium-post__comment">
                         <span className="dashicons-admin-comments dashicons"></span>
-                        {post.pbg_comment_info}
+                        {comments}
                     </span>
                     <span className={`premium-blog-meta-separtor`}>•</span>
                 </div>
             )}
-            {attributes.displayPostCategories && "" !== categoryObject && (
+            {showCategories && "" !== categoryObject && (
                 <div
                     className={`premium-blog-post-categories premium-blog-meta-data`}
                 >
@@ -288,22 +268,33 @@ function Meta(props) {
                         {categoryObject.length === 0
                             ? "Uncategorized"
                             : categoryObject.map((category) => (
-                                <span>{category.name + " "}</span>
-                            ))}
+                                  <span>{category.name + " "}</span>
+                              ))}
                     </span>
                 </div>
-            )} */}
+            )}
         </Fragment>
     );
 }
 export default withSelect((select, props) => {
+    const {
+        context: { postId, postType, queryId },
+    } = props;
+
     const { getEntityRecords } = select("core");
     let categoriesList = [];
     categoriesList = wp.data
         .select("core")
         .getEntityRecords("taxonomy", "category");
+    const [categories, setCategories] = useEntityProp(
+        "postType",
+        postType,
+        "categories",
+        postId
+    );
 
     return {
         categoriesList: categoriesList,
+        categories: categories,
     };
 })(Meta);

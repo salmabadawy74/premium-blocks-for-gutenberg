@@ -4,6 +4,8 @@
     "name": "premium/post-title",
     "title": "Post Title",
     "category": "premium-blocks",
+        "parent": ["premium/post-grid"],
+
     "description": "Displays the title of a post, page, or any other content-type.",
     "textdomain": "default",
     "usesContext": ["postId", "postType", "queryId"],

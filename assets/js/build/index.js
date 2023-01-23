@@ -44745,9 +44745,7 @@ __webpack_require__.r(__webpack_exports__);
 const {
   dateI18n,
   format,
-  __experimentalGetSettings,
-  withSelect,
-  select
+  __experimentalGetSettings
 } = wp.date;
 
 
@@ -44764,7 +44762,8 @@ function Meta(props) {
     },
     attributes,
     setAttributes,
-    categoriesList
+    categoriesList,
+    categories
   } = props;
   const {
     showAuther,
@@ -44779,18 +44778,22 @@ function Meta(props) {
     hideTablet,
     hideMobile
   } = attributes;
-  const [categories, setCategories] = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__.useEntityProp)("postType", "post", "categories", postId);
+
+  const dateFormat = __experimentalGetSettings().formats.date;
+
   let categoryObject = [];
 
   if (categoriesList) {
     categoriesList.map((item, thisIndex) => {
-      if (categories && item.id == categories[thisIndex]) {
+      console.log(item.id, categories[thisIndex], thisIndex);
+
+      if (item.id == categories[thisIndex]) {
+        console.log("welocom");
         categoryObject.push(item);
       }
     });
   }
 
-  console.log(categoryObject, categoriesList, "Mtttt");
   const AUTHORS_QUERY = {
     who: "authors",
     per_page: 50,
@@ -44818,34 +44821,13 @@ function Meta(props) {
       authors: getUsers(AUTHORS_QUERY)
     };
   }, [postTypeSlug, postId]);
-  const {
-    postDetails,
-    setDetails
-  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.useSelect)(select => {
-    var _getEntityRecord2, _getEntityRecord3;
-
-    const {
-      getEntityRecord,
-      getUser,
-      getUsers
-    } = select(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__.store);
-
-    const _authorId = (_getEntityRecord2 = getEntityRecord("postType", "post", postId)) === null || _getEntityRecord2 === void 0 ? void 0 : _getEntityRecord2.author;
-
-    const Category = (_getEntityRecord3 = getEntityRecord("postType", "post", postId)) === null || _getEntityRecord3 === void 0 ? void 0 : _getEntityRecord3.categories;
-    return {
-      authorId: _authorId,
-      authorDetails: _authorId ? getUser(_authorId) : null,
-      authors: getUsers(AUTHORS_QUERY),
-      categories: Category
-    };
-  }, [postTypeSlug, postId]);
-  const [date, setDate] = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__.useEntityProp)("postType", postTypeSlug, "date", postId);
+  const [date, setDate] = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__.useEntityProp)("postType", postTypeSlug, "date_gmt", postId);
+  const [comments, setComments] = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__.useEntityProp)("postType", postTypeSlug, "comments_num", postId);
   let postDate = date ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("time", {
     dateTime: dateI18n("c", date)
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "fa fa-clock-o"
-  }), dateI18n(format || siteFormat, date)) : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Post Date");
+  }), dateI18n(dateFormat, date)) : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Post Date");
 
   const authorName = (authorDetails === null || authorDetails === void 0 ? void 0 : authorDetails.name) || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Post Author");
 
@@ -44935,17 +44917,40 @@ function Meta(props) {
     className: `premium-blog-post-time premium-blog-meta-data`
   }, postDate, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: `premium-blog-meta-separtor`
-  }, "\u2022")));
+  }, "\u2022")), showComments && undefined !== comments && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `premium-blog-post-comments premium-blog-meta-data`
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "premium-post__comment"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "dashicons-admin-comments dashicons"
+  }), comments), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: `premium-blog-meta-separtor`
+  }, "\u2022")), showCategories && "" !== categoryObject && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `premium-blog-post-categories premium-blog-meta-data`
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "premium-post__taxonomy"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "fa fa-align-left fa-fw"
+  }), categoryObject.length === 0 ? "Uncategorized" : categoryObject.map(category => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, category.name + " ")))));
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (withSelect((select, props) => {
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.withSelect)((select, props) => {
+  const {
+    context: {
+      postId,
+      postType,
+      queryId
+    }
+  } = props;
   const {
     getEntityRecords
   } = select("core");
   let categoriesList = [];
   categoriesList = wp.data.select("core").getEntityRecords("taxonomy", "category");
+  const [categories, setCategories] = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__.useEntityProp)("postType", postType, "categories", postId);
   return {
-    categoriesList: categoriesList
+    categoriesList: categoriesList,
+    categories: categories
   };
 })(Meta));
 
@@ -45667,6 +45672,160 @@ function QuerySave(_ref) {
   const innerBlocksProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useInnerBlocksProps.save(blockProps);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Tag, innerBlocksProps);
 }
+
+/***/ }),
+
+/***/ "./src/blocks/post-tag/edit.js":
+/*!*************************************!*\
+  !*** ./src/blocks/post-tag/edit.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/core-data */ "@wordpress/core-data");
+/* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @pbg/helpers */ "@pbg/helpers");
+/* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_pbg_helpers__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _pbg_components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @pbg/components */ "@pbg/components");
+/* harmony import */ var _pbg_components__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_pbg_components__WEBPACK_IMPORTED_MODULE_8__);
+
+
+
+
+
+
+const {
+  dateI18n,
+  format,
+  __experimentalGetSettings
+} = wp.date;
+
+
+
+
+
+function Tags(props) {
+  const {
+    isSelected,
+    context: {
+      postId,
+      postType,
+      queryId
+    },
+    attributes,
+    setAttributes,
+    taxonomies
+  } = props;
+  const {
+    displayPostTags,
+    typography,
+    color,
+    hoverColor,
+    hideDesktop,
+    hideTablet,
+    hideMobile
+  } = attributes; // const selectedTerm = useSelect(
+  //     (select) => {
+  //         const { getTaxonomy } = select(coreStore);
+  //         const taxonomy = getTaxonomy(term);
+  //         return taxonomy?.visibility?.publicly_queryable ? taxonomy : {};
+  //     },
+  //     [term]
+  // );
+
+  const [tags, setTags] = (0,_wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__.useEntityProp)("postType", postType, "tags", postId);
+  console.log(taxonomies);
+  let tagName = [];
+
+  if (tagList) {
+    tagList.map((tag, thisIndex) => {
+      if (tag.id == post.tags[thisIndex]) {
+        tagName.push(tag.name);
+      }
+    });
+  }
+
+  if (tagName.length > 0 && displayPostTags) {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: `premium-blog-post-tags-container`
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+      className: `fa fa-tags fa-fw`
+    }), tagName.join(","));
+  } else {
+    return null;
+  }
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.withSelect)((select, props) => {
+  const {
+    context: {
+      postId,
+      postType,
+      queryId
+    }
+  } = props;
+  return {
+    taxonomies: select(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__.store).getTaxonomies({
+      per_page: -1
+    })
+  };
+})(Tags));
+
+/***/ }),
+
+/***/ "./src/blocks/post-tag/index.js":
+/*!**************************************!*\
+  !*** ./src/blocks/post-tag/index.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit */ "./src/blocks/post-tag/edit.js");
+/* harmony import */ var _blocks_config_post_tag_block_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../blocks-config/post-tag/block.json */ "./blocks-config/post-tag/block.json");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__);
+/**
+ * BLOCK: Post Title
+ */
+// Import block dependencies and components
+
+ // Components
+
+ // Register block controls
+
+ // Register the block
+
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__.registerBlockType)("premium/post-tag", { ..._blocks_config_post_tag_block_json__WEBPACK_IMPORTED_MODULE_1__,
+  icon: "",
+  category: "premium-blocks",
+  keywords: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("post"), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Tag")],
+  edit: _edit__WEBPACK_IMPORTED_MODULE_0__["default"],
+  example: {},
+
+  save() {
+    return null;
+  }
+
+});
 
 /***/ }),
 
@@ -57195,6 +57354,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _blocks_icon_group__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./blocks/icon-group */ "./src/blocks/icon-group/index.js");
 /* harmony import */ var _blocks_post_grid__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./blocks/post-grid */ "./src/blocks/post-grid/index.js");
 /* harmony import */ var _blocks_pagination__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./blocks/pagination */ "./src/blocks/pagination/index.js");
+/* harmony import */ var _blocks_post_tag__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./blocks/post-tag */ "./src/blocks/post-tag/index.js");
 
 
 
@@ -57223,6 +57383,7 @@ _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.heading ? __webpack_require__(/
 _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.container ? __webpack_require__(/*! ./blocks/container */ "./src/blocks/container/index.js") : "";
 
 _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.contentSwitcher ? __webpack_require__(/*! ./blocks/content-switcher */ "./src/blocks/content-switcher/index.js") : "";
+
 
 
 
@@ -84929,7 +85090,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/pagination","title":"Pagination","category":"premium-blocks","description":"Displays a paginated navigation to next/previous set of posts, when applicable.","textdomain":"default","attributes":{"showPagnation":{"type":"boolean","default":false},"pageLimit":{"type":"number","default":5},"showPrevNext":{"type":"boolean","default":false},"prevString":{"type":"string","default":"Previous"},"nextString":{"type":"string","default":"Next"},"alignment":{"type":"object","default":{"Desktop":"right","Tablet":"right","Mobile":"right"}},"typography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"color":{"type":"string","default":""},"hoverColor":{"type":"string","default":""},"activeColor":{"type":"string","default":""},"backgroundColor":{"type":"string","default":""},"hoverbackgroundColor":{"type":"string","default":""},"activebackgroundColor":{"type":"string","default":""},"border":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"hoverBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"activeborder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"margin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"padding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"paginationArrow":{"type":"string","default":"none"}},"usesContext":["queryId","query"],"providesContext":{"paginationArrow":"paginationArrow"},"supports":{"html":false},"editorStyle":"wp-block-query-pagination-editor","style":"wp-block-query-pagination"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/pagination","title":"Pagination","category":"premium-blocks","parent":["premium/post-grid"],"description":"Displays a paginated navigation to next/previous set of posts, when applicable.","textdomain":"default","attributes":{"showPagnation":{"type":"boolean","default":false},"pageLimit":{"type":"number","default":5},"showPrevNext":{"type":"boolean","default":false},"prevString":{"type":"string","default":"Previous"},"nextString":{"type":"string","default":"Next"},"alignment":{"type":"object","default":{"Desktop":"right","Tablet":"right","Mobile":"right"}},"typography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","textTransform":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"color":{"type":"string","default":""},"hoverColor":{"type":"string","default":""},"activeColor":{"type":"string","default":""},"backgroundColor":{"type":"string","default":""},"hoverbackgroundColor":{"type":"string","default":""},"activebackgroundColor":{"type":"string","default":""},"border":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"hoverBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"activeborder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"margin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"padding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"paginationArrow":{"type":"string","default":"none"}},"usesContext":["queryId","query"],"providesContext":{"paginationArrow":"paginationArrow"},"supports":{"html":false},"editorStyle":"wp-block-query-pagination-editor","style":"wp-block-query-pagination"}');
 
 /***/ }),
 
@@ -84955,6 +85116,17 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 
 /***/ }),
 
+/***/ "./blocks-config/post-tag/block.json":
+/*!*******************************************!*\
+  !*** ./blocks-config/post-tag/block.json ***!
+  \*******************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/post-tag","title":"Post Tags","category":"theme","description":"Display a post\'s tags.","textdomain":"default","attributes":{"displayPostTags":{"type":"boolean","default":false},"typography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"color":{"type":"string"},"hoverColor":{"type":"string","default":""},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""}},"usesContext":["postId","postType","queryId"],"supports":{"html":false}}');
+
+/***/ }),
+
 /***/ "./blocks-config/post-title/block.json":
 /*!*********************************************!*\
   !*** ./blocks-config/post-title/block.json ***!
@@ -84962,7 +85134,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/post-title","title":"Post Title","category":"premium-blocks","description":"Displays the title of a post, page, or any other content-type.","textdomain":"default","usesContext":["postId","postType","queryId"],"supports":{"html":false},"attributes":{"blockId":{"type":"string"},"textAlign":{"type":"string"},"level":{"type":"string","default":"h2"},"isLink":{"type":"boolean","default":false},"rel":{"type":"string","attribute":"rel","default":""},"linkTarget":{"type":"boolean","default":false},"Typography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"textColor":{"type":"string"},"hoverColor":{"type":"string"},"bottomSpacing":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""}}}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/post-title","title":"Post Title","category":"premium-blocks","parent":["premium/post-grid"],"description":"Displays the title of a post, page, or any other content-type.","textdomain":"default","usesContext":["postId","postType","queryId"],"supports":{"html":false},"attributes":{"blockId":{"type":"string"},"textAlign":{"type":"string"},"level":{"type":"string","default":"h2"},"isLink":{"type":"boolean","default":false},"rel":{"type":"string","attribute":"rel","default":""},"linkTarget":{"type":"boolean","default":false},"Typography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"textColor":{"type":"string"},"hoverColor":{"type":"string"},"bottomSpacing":{"type":"object","default":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""}}}');
 
 /***/ }),
 

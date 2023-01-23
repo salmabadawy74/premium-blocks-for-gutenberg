@@ -57,6 +57,7 @@ import "./blocks/image";
 import "./blocks/icon-group";
 import "./blocks/post-grid";
 import "./blocks/pagination";
+import "./blocks/post-tag";
 
 window.PremiumOptionsSettings = {
     FontAwesomeEnabled,
