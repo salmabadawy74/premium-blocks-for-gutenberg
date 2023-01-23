@@ -806,7 +806,7 @@ function Edit(props) {
                             />
                         )} */}
                         { selectedIcon && (
-                            <GenIcon className={ `psvg psvg-${ selectedIcon }` } 
+                            <GenIcon className={ `premium-icon premium-icon-type ${ selectedIcon }` } 
                                 name={ selectedIcon } 
                                 size={ iconSize[props.deviceType] +
                                         iconSize.unit } 
