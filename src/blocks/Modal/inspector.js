@@ -68,6 +68,7 @@ const Inspector = ({ attributes, setAttributes }) => {
         hideMobile,
         triggerFilter,
         triggerHoverFilter,
+        containerBackground
     } = attributes;
 
     const ANIMATION = [
@@ -1624,6 +1625,17 @@ const Inspector = ({ attributes, setAttributes }) => {
                                 }
                                 colorDefault={``}
                             />
+                            <AdvancedPopColorControl
+                                label={__(
+                                    "Footer Background Color",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                colorValue={modalStyles[0].footerBackColor}
+                                colorDefault={""}
+                                onColorChange={(newValue) =>
+                                    saveModalStyles({ footerBackColor: newValue })
+                                }
+                            />
                             <PremiumBorder
                                 label={__(
                                     "Border",
@@ -1663,6 +1675,7 @@ const Inspector = ({ attributes, setAttributes }) => {
                             units={["px", "em", "%"]}
                             showUnit={true}
                             max={1500}
+                            min={100}
                         />
                         <ResponsiveRangeControl
                             label={__(
@@ -1673,9 +1686,10 @@ const Inspector = ({ attributes, setAttributes }) => {
                             onChange={(newValue) =>
                                 setAttributes({ modalHeight: newValue })
                             }
-                            units={["px", "em", "%"]}
+                            units={["px", "vh", "%"]}
                             showUnit={true}
                             max={500}
+                            min={50}
                         />
                         {/* {"text" == modalStyles[0].contentType && (
                             <Fragment>
@@ -1713,15 +1727,10 @@ const Inspector = ({ attributes, setAttributes }) => {
                                 })
                             }
                         />
-                        <AdvancedPopColorControl
-                            label={__(
-                                "Footer Background Color",
-                                "premium-blocks-for-gutenberg"
-                            )}
-                            colorValue={modalStyles[0].footerBackColor}
-                            colorDefault={""}
-                            onColorChange={(newValue) =>
-                                saveModalStyles({ footerBackColor: newValue })
+                        <PremiumBackgroundControl
+                            value={containerBackground}
+                            onChange={(value) =>
+                                setAttributes({ containerBackground: value })
                             }
                         />
                         <PremiumBackgroundControl
@@ -1745,7 +1754,7 @@ const Inspector = ({ attributes, setAttributes }) => {
                             }
                         />
                         <hr />
-                        <SpacingControl
+                        {/* <SpacingControl
                             label={__("Margin", "premium-blocks-for-gutenberg")}
                             value={modalMargin}
                             onChange={(value) =>
@@ -1753,7 +1762,7 @@ const Inspector = ({ attributes, setAttributes }) => {
                             }
                             showUnits={true}
                             responsive={true}
-                        />
+                        /> */}
                         <SpacingControl
                             label={__(
                                 "Padding",

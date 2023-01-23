@@ -2615,9 +2615,9 @@
         position: relative;
         z-index: 10000;
         background-color: var(--pbg-global-color5, #fff);
-        min-width: 700px;
+        // min-width: 700px;
         width: 700px;
-        padding: 20px;
+        padding: 15px;
         max-width: 100%;
         overflow: auto;
         border-color: var(--pbg-global-color4);
@@ -2806,7 +2806,7 @@
 
 button.premium-modal-box-modal-close {
     -webkit-appearance: none;
-    padding: 0;
+    padding: 10px;
     cursor: pointer;
     background: transparent;
     border: 0;
@@ -2907,9 +2907,8 @@ button.premium-modal-box-modal-close {
     -moz-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    padding: 5px 5px;
     border-bottom: 1px solid var(--pbg-global-color4,#e5e5e5);
-    padding-bottom: 20px;
+    padding-bottom: 15px;
 
     .premium-modal-box-modal-close {
         margin-top: -2px;
@@ -2965,7 +2964,7 @@ button.premium-modal-box-modal-close {
 }
 
 .premium-modal-box-modal-footer {
-    padding: 5px;
+    padding-top: 15px;
     text-align: right;
     border-top: 1px solid var(--pbg-global-color4, #e5e5e5);
 }

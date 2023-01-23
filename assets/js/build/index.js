@@ -3343,7 +3343,8 @@ const Edit = props => {
     align,
     upperIconWidth,
     lowerIconWidth,
-    triggerIconSize
+    triggerIconSize,
+    containerBackground
   } = attributes;
   const currentDevice = props.deviceType;
   useEffect(() => {
@@ -3596,7 +3597,7 @@ const Edit = props => {
     "data-delay": triggerSettings[0].delayTime,
     "data-animation": `${contentStyles[0].animationType} ${contentStyles[0].animationSpeed}`,
     style: { ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.borderCss)(modalBorder, currentDevice),
-      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.marginCss)(modalMargin, currentDevice),
+      // ...marginCss(modalMargin, currentDevice),
       width: `${modalWidthValue}${modalWidth.unit}`,
       // maxHeight: `${modalMaxHeight}${modalHeight.unit}`,
       boxShadow: `${modalShadow.horizontal}px ${modalShadow.vertical}px ${modalShadow.blur}px ${modalShadow.color} ${modalShadow.position}`
@@ -3624,11 +3625,29 @@ const Edit = props => {
       color: `${upperStyles[0].color}`
     },
     "data-dismiss": "premium-modal"
-  }, "\xD7"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  }, "\xD7"))) // <div style={{
+  //     width: '100%',
+  //     display: 'inline-block',
+  //     left: 0,
+  //     zIndex: 100,
+  //     position: 'absolute',
+  //     top: 0,
+  // }}>
+  //     <button role="button" className="premium-modal-box-modal-close close-button" onClick={() => setOpenModal(false)}
+  //         style={{
+  //             fontSize: `${upperIconWidth[currentDevice]}${upperIconWidth.unit}`,
+  //             color: `${upperStyles[0].color}`,
+  //             ...borderCss(upperBorder, currentDevice),
+  //             ...paddingCss(upperPadding, currentDevice),
+  //             backgroundColor: `${upperStyles[0].backColor}`
+  //         }} data-dismiss="premium-modal" >×</button>
+  // </div>
+  , (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-modal-box-modal-body`,
     style: { ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.paddingCss)(modalPadding, currentDevice),
       background: modalStyles[0].textBackColor,
-      height: `${modalMaxHeight}${modalHeight.unit}`
+      maxHeight: `${modalMaxHeight}${modalHeight.unit}`,
+      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.gradientBackground)(containerBackground)
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InnerBlocks, {
     template: INNER_BLOCKS_TEMPLATE,
@@ -3786,7 +3805,8 @@ const Inspector = _ref => {
     hideTablet,
     hideMobile,
     triggerFilter,
-    triggerHoverFilter
+    triggerHoverFilter,
+    containerBackground
   } = attributes;
   const ANIMATION = [{
     value: "none",
@@ -4467,6 +4487,13 @@ const Inspector = _ref => {
       backColor: newvalue
     }),
     colorDefault: ``
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.AdvancedColorControl, {
+    label: __("Footer Background Color", "premium-blocks-for-gutenberg"),
+    colorValue: modalStyles[0].footerBackColor,
+    colorDefault: "",
+    onColorChange: newValue => saveModalStyles({
+      footerBackColor: newValue
+    })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.PremiumBorder, {
     label: __("Border", "premium-blocks-for-gutenberg"),
     value: lowerBorder,
@@ -4493,16 +4520,18 @@ const Inspector = _ref => {
     }),
     units: ["px", "em", "%"],
     showUnit: true,
-    max: 1500
+    max: 1500,
+    min: 100
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.ResponsiveRangeControl, {
     label: __("Max Height", "premium-blocks-for-gutenberg"),
     value: modalHeight,
     onChange: newValue => setAttributes({
       modalHeight: newValue
     }),
-    units: ["px", "em", "%"],
+    units: ["px", "vh", "%"],
     showUnit: true,
-    max: 500
+    max: 500,
+    min: 50
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.AdvancedColorControl, {
     label: __("Content Background Color", "premium-blocks-for-gutenberg"),
     colorValue: modalStyles[0].textBackColor,
@@ -4510,12 +4539,10 @@ const Inspector = _ref => {
     onColorChange: newValue => saveModalStyles({
       textBackColor: newValue
     })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.AdvancedColorControl, {
-    label: __("Footer Background Color", "premium-blocks-for-gutenberg"),
-    colorValue: modalStyles[0].footerBackColor,
-    colorDefault: "",
-    onColorChange: newValue => saveModalStyles({
-      footerBackColor: newValue
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.PremiumBackgroundControl, {
+    value: containerBackground,
+    onChange: value => setAttributes({
+      containerBackground: value
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.PremiumBackgroundControl, {
     value: modalBackground,
@@ -4534,14 +4561,6 @@ const Inspector = _ref => {
       modalBorder: value
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.SpacingComponent, {
-    label: __("Margin", "premium-blocks-for-gutenberg"),
-    value: modalMargin,
-    onChange: value => setAttributes({
-      modalMargin: value
-    }),
-    showUnits: true,
-    responsive: true
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.SpacingComponent, {
     label: __("Padding", "premium-blocks-for-gutenberg"),
     value: modalPadding,
     onChange: value => setAttributes({

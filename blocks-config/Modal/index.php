@@ -196,11 +196,11 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
 		$css->add_property( 'max-height', $css->render_range( $attr['modalHeight'], 'Desktop' ) );
 	}
-	if ( isset( $attr['modalMargin'] ) ) {
-		$modal_margin = $attr['modalMargin'];
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
-		$css->add_property( 'margin', $css->render_spacing( $modal_margin['Desktop'], $modal_margin['unit'] ) );
-	}
+	// if ( isset( $attr['modalMargin'] ) ) {
+	// 	$modal_margin = $attr['modalMargin'];
+	// 	$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
+	// 	$css->add_property( 'margin', $css->render_spacing( $modal_margin['Desktop'], $modal_margin['unit'] ) );
+	// }
 	if ( isset( $attr['modalBorder'] ) ) {
 		$modal_border_width  = $attr['modalBorder']['borderWidth'];
 		$modal_border_radius = $attr['modalBorder']['borderRadius'];
@@ -396,11 +396,11 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
 		$css->add_property( 'max-height', $css->render_range( $attr['modalHeight'], 'Tablet' ) );
 	}
-	if ( isset( $attr['modalMargin'] ) ) {
-		$modal_margin = $attr['modalMargin'];
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
-		$css->add_property( 'margin', $css->render_spacing( $modal_margin['Tablet'], $modal_margin['unit'] ) );
-	}
+	// if ( isset( $attr['modalMargin'] ) ) {
+	// 	$modal_margin = $attr['modalMargin'];
+	// 	$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
+	// 	$css->add_property( 'margin', $css->render_spacing( $modal_margin['Tablet'], $modal_margin['unit'] ) );
+	// }
 	if ( isset( $attr['modalBorder'] ) ) {
 		$modal_border_width  = $attr['modalBorder']['borderWidth'];
 		$modal_border_radius = $attr['modalBorder']['borderRadius'];
@@ -597,11 +597,11 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
 		$css->add_property( 'max-height', $css->render_range( $attr['modalHeight'], 'Mobile' ) );
 	}
-	if ( isset( $attr['modalMargin'] ) ) {
-		$modal_margin = $attr['modalMargin'];
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
-		$css->add_property( 'margin', $css->render_spacing( $modal_margin['Mobile'], $modal_margin['unit'] ) );
-	}
+	// if ( isset( $attr['modalMargin'] ) ) {
+	// 	$modal_margin = $attr['modalMargin'];
+	// 	$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
+	// 	$css->add_property( 'margin', $css->render_spacing( $modal_margin['Mobile'], $modal_margin['unit'] ) );
+	// }
 	if ( isset( $attr['modalBorder'] ) ) {
 		$modal_border_width  = $attr['modalBorder']['borderWidth'];
 		$modal_border_radius = $attr['modalBorder']['borderRadius'];

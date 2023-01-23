@@ -55,7 +55,8 @@ const Edit = props => {
         align,
         upperIconWidth,
         lowerIconWidth,
-        triggerIconSize
+        triggerIconSize,
+        containerBackground
     } = attributes;
 
     const currentDevice = props.deviceType;
@@ -340,7 +341,7 @@ const Edit = props => {
                             data-animation={`${contentStyles[0].animationType} ${contentStyles[0].animationSpeed}`}
                             style={{
                                 ...borderCss(modalBorder, currentDevice),
-                                ...marginCss(modalMargin, currentDevice),
+                                // ...marginCss(modalMargin, currentDevice),
                                 width: `${modalWidthValue}${modalWidth.unit}`,
                                 // maxHeight: `${modalMaxHeight}${modalHeight.unit}`,
                                 boxShadow: `${modalShadow.horizontal}px ${modalShadow.vertical}px ${modalShadow.blur}px ${modalShadow.color} ${modalShadow.position}`,
@@ -408,12 +409,31 @@ const Edit = props => {
 
                                                 }} data-dismiss="premium-modal" >×</button>
                                         </div>)}
-                                </div>}
+                                </div>
+                                // <div style={{
+                                //     width: '100%',
+                                //     display: 'inline-block',
+                                //     left: 0,
+                                //     zIndex: 100,
+                                //     position: 'absolute',
+                                //     top: 0,
+                                // }}>
+                                //     <button role="button" className="premium-modal-box-modal-close close-button" onClick={() => setOpenModal(false)}
+                                //         style={{
+                                //             fontSize: `${upperIconWidth[currentDevice]}${upperIconWidth.unit}`,
+                                //             color: `${upperStyles[0].color}`,
+                                //             ...borderCss(upperBorder, currentDevice),
+                                //             ...paddingCss(upperPadding, currentDevice),
+                                //             backgroundColor: `${upperStyles[0].backColor}`
+                                //         }} data-dismiss="premium-modal" >×</button>
+                                // </div>
+                            }
                             <div className={`premium-modal-box-modal-body`}
                                 style={{
                                     ...paddingCss(modalPadding, currentDevice),
                                     background: modalStyles[0].textBackColor,
-                                    height: `${modalMaxHeight}${modalHeight.unit}`,
+                                    maxHeight: `${modalMaxHeight}${modalHeight.unit}`,
+                                    ...gradientBackground(containerBackground)
                                 }}>
                                 <InnerBlocks
                                     template={INNER_BLOCKS_TEMPLATE}
