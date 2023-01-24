@@ -100,7 +100,7 @@
                 "Desktop": "",
                 "Tablet": "",
                 "Mobile": "",
-                "unit": ""
+                "unit": "px"
             }
         },
         "imgWidth": {
@@ -109,7 +109,7 @@
                 "Desktop": "",
                 "Tablet": "",
                 "Mobile": "",
-                "unit": ""
+                "unit": "px"
             }
         },
         "hoverEffect": {

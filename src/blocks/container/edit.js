@@ -26,8 +26,13 @@ import {
     marginCss,
     gradientValue,
 } from "@pbg/helpers";
-import AdvancedSelect, { components } from 'react-select';
-import { resetBlocksHeight, resetHeight, setElementsHeight, checkSelector } from "./utils";
+import AdvancedSelect, { components } from "react-select";
+import {
+    resetBlocksHeight,
+    resetHeight,
+    setElementsHeight,
+    checkSelector,
+} from "./utils";
 import BlockItemComponent from "./block-item";
 
 const { __ } = wp.i18n;
@@ -193,45 +198,62 @@ const edit = (props) => {
             equalHeight,
             equalHeightBlocks,
             customSelectors,
-            equalHeightDevices
+            equalHeightDevices,
         },
         clientId,
         setAttributes,
         className,
     } = props;
 
-    const enableEqualHeight = props.isParent && PremiumBlocksSettings.globalFeatures['premium-equal-height'];
-    const innerBlocksOptions = props.uniqueInnerBlocks.length ? props.uniqueInnerBlocks.map(block => ({ value: block.name, label: block.name.replace('/', ' ') })) : [];
+    const enableEqualHeight =
+        props.isParent &&
+        PremiumBlocksSettings.globalFeatures["premium-equal-height"];
+    const innerBlocksOptions = props.uniqueInnerBlocks.length
+        ? props.uniqueInnerBlocks.map((block) => ({
+              value: block.name,
+              label: block.name.replace("/", " "),
+          }))
+        : [];
     const equalHeightDevicesOptions = [
         {
-            value: 'desktop',
-            label: __('Desktop', 'premium-blocks-for-gutenberg')
+            value: "desktop",
+            label: __("Desktop", "premium-blocks-for-gutenberg"),
         },
         {
-            value: 'tablet',
-            label: __('Tablet', 'premium-blocks-for-gutenberg')
+            value: "tablet",
+            label: __("Tablet", "premium-blocks-for-gutenberg"),
         },
         {
-            value: 'mobile',
-            label: __('Mobile', 'premium-blocks-for-gutenberg')
-        }
+            value: "mobile",
+            label: __("Mobile", "premium-blocks-for-gutenberg"),
+        },
     ];
     const containerRef = useRef(0);
     useEffect(() => {
-        if (props.isParent && enableEqualHeight && equalHeightDevices.includes(props.deviceType.toLowerCase())) {
+        if (
+            props.isParent &&
+            enableEqualHeight &&
+            equalHeightDevices.includes(props.deviceType.toLowerCase())
+        ) {
             if (equalHeightBlocks.length) {
                 for (const block of equalHeightBlocks) {
                     resetBlocksHeight(block, containerRef.current);
-                    const blockName = block.includes('core') ? block.replace('core/', '') : block.replaceAll('/', '-');
+                    const blockName = block.includes("core")
+                        ? block.replace("core/", "")
+                        : block.replaceAll("/", "-");
                     const blockClass = `wp-block-${blockName}`;
-                    const allBlocksType = containerRef.current.querySelectorAll(`.${blockClass}`);
+                    const allBlocksType = containerRef.current.querySelectorAll(
+                        `.${blockClass}`
+                    );
                     setElementsHeight(allBlocksType);
                 }
             }
             if (customSelectors?.length) {
                 for (const selector of customSelectors) {
                     if (checkSelector(selector)) {
-                        const allElements = containerRef.current.querySelectorAll(selector);
+                        const allElements = containerRef.current.querySelectorAll(
+                            selector
+                        );
                         resetHeight(allElements);
                         setElementsHeight(allElements);
                     }
@@ -326,21 +348,30 @@ const edit = (props) => {
     const MultiValue = (props) => {
         const { innerProps } = props;
         const newInnerProps = {
-            ...innerProps, onClick: (data) => {
+            ...innerProps,
+            onClick: (data) => {
                 innerProps.onClick(data);
                 resetBlocksHeight(props.data.value, containerRef.current);
-            }
+            },
         };
-        return <components.MultiValueRemove {...props} innerProps={newInnerProps} />;
+        return (
+            <components.MultiValueRemove
+                {...props}
+                innerProps={newInnerProps}
+            />
+        );
     };
 
     const DeviceMultiValue = (ownProps) => {
         const { innerProps } = ownProps;
         const newInnerProps = {
-            ...innerProps, onClick: (data) => {
+            ...innerProps,
+            onClick: (data) => {
                 innerProps.onClick(data);
                 if (props.uniqueInnerBlocks?.length) {
-                    const resetBlocks = props.uniqueInnerBlocks.map(block => block.name);
+                    const resetBlocks = props.uniqueInnerBlocks.map(
+                        (block) => block.name
+                    );
                     for (const block of resetBlocks) {
                         resetBlocksHeight(block, containerRef.current);
                     }
@@ -348,21 +379,30 @@ const edit = (props) => {
                 if (customSelectors?.length) {
                     for (const selector of customSelectors) {
                         if (checkSelector(selector)) {
-                            const allElements = containerRef.current.querySelectorAll(selector);
+                            const allElements = containerRef.current.querySelectorAll(
+                                selector
+                            );
                             resetHeight(allElements);
                         }
                     }
                 }
-            }
+            },
         };
-        return <components.MultiValueRemove {...ownProps} innerProps={newInnerProps} />;
+        return (
+            <components.MultiValueRemove
+                {...ownProps}
+                innerProps={newInnerProps}
+            />
+        );
     };
 
     const getUniqueBlock = (blockName) => {
-        const filterBlocks = props.uniqueInnerBlocks.filter(block => block.name === blockName);
+        const filterBlocks = props.uniqueInnerBlocks.filter(
+            (block) => block.name === blockName
+        );
 
         return filterBlocks[0];
-    }
+    };
     return (
         <Fragment>
             <InspectorControls>
@@ -448,7 +488,7 @@ const edit = (props) => {
                                             innerWidth: newValue,
                                         })
                                     }
-                                    defaultValue={0}
+                                    defaultValue={1200}
                                     showUnit={false}
                                 />
                             )}
@@ -793,83 +833,83 @@ const edit = (props) => {
                             />
                             {("wrap" === wrapItems[props.deviceType] ||
                                 "wrap-reverse" ===
-                                wrapItems[props.deviceType]) && (
-                                    <ResponsiveRadio
-                                        choices={[
-                                            {
-                                                value: "flex-start",
-                                                tooltip: __(
-                                                    "Flex Start",
-                                                    "premium-blocks-for-gutenberg"
-                                                ),
-                                                icon: renderCustomIcon(
-                                                    `flex-${currentOffset}-start`
-                                                ),
-                                            },
-                                            {
-                                                value: "center",
-                                                tooltip: __(
-                                                    "Center",
-                                                    "premium-blocks-for-gutenberg"
-                                                ),
-                                                icon: renderCustomIcon(
-                                                    `flex-${currentOffset}-center`
-                                                ),
-                                            },
-                                            {
-                                                value: "flex-end",
-                                                tooltip: __(
-                                                    "Flex End",
-                                                    "premium-blocks-for-gutenberg"
-                                                ),
-                                                icon: renderCustomIcon(
-                                                    `flex-${currentOffset}-end`
-                                                ),
-                                            },
-                                            {
-                                                value: "space-between",
-                                                tooltip: __(
-                                                    "Space Between",
-                                                    "premium-blocks-for-gutenberg"
-                                                ),
-                                                icon: renderCustomIcon(
-                                                    `flex-${currentOffset}-space-between`
-                                                ),
-                                            },
-                                            {
-                                                value: "space-around",
-                                                tooltip: __(
-                                                    "Space Around",
-                                                    "premium-blocks-for-gutenberg"
-                                                ),
-                                                icon: renderCustomIcon(
-                                                    `flex-${currentOffset}-space-around`
-                                                ),
-                                            },
-                                            {
-                                                value: "space-evenly",
-                                                tooltip: __(
-                                                    "Space Evenly",
-                                                    "premium-blocks-for-gutenberg"
-                                                ),
-                                                icon: renderCustomIcon(
-                                                    `flex-${currentOffset}-space-evenly`
-                                                ),
-                                            },
-                                        ]}
-                                        value={alignContent}
-                                        onChange={(newValue) =>
-                                            setAttributes({
-                                                alignContent: newValue,
-                                            })
-                                        }
-                                        label={__(
-                                            "Align Content",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
-                                        showIcons={true}
-                                    />
-                                )}
+                                    wrapItems[props.deviceType]) && (
+                                <ResponsiveRadio
+                                    choices={[
+                                        {
+                                            value: "flex-start",
+                                            tooltip: __(
+                                                "Flex Start",
+                                                "premium-blocks-for-gutenberg"
+                                            ),
+                                            icon: renderCustomIcon(
+                                                `flex-${currentOffset}-start`
+                                            ),
+                                        },
+                                        {
+                                            value: "center",
+                                            tooltip: __(
+                                                "Center",
+                                                "premium-blocks-for-gutenberg"
+                                            ),
+                                            icon: renderCustomIcon(
+                                                `flex-${currentOffset}-center`
+                                            ),
+                                        },
+                                        {
+                                            value: "flex-end",
+                                            tooltip: __(
+                                                "Flex End",
+                                                "premium-blocks-for-gutenberg"
+                                            ),
+                                            icon: renderCustomIcon(
+                                                `flex-${currentOffset}-end`
+                                            ),
+                                        },
+                                        {
+                                            value: "space-between",
+                                            tooltip: __(
+                                                "Space Between",
+                                                "premium-blocks-for-gutenberg"
+                                            ),
+                                            icon: renderCustomIcon(
+                                                `flex-${currentOffset}-space-between`
+                                            ),
+                                        },
+                                        {
+                                            value: "space-around",
+                                            tooltip: __(
+                                                "Space Around",
+                                                "premium-blocks-for-gutenberg"
+                                            ),
+                                            icon: renderCustomIcon(
+                                                `flex-${currentOffset}-space-around`
+                                            ),
+                                        },
+                                        {
+                                            value: "space-evenly",
+                                            tooltip: __(
+                                                "Space Evenly",
+                                                "premium-blocks-for-gutenberg"
+                                            ),
+                                            icon: renderCustomIcon(
+                                                `flex-${currentOffset}-space-evenly`
+                                            ),
+                                        },
+                                    ]}
+                                    value={alignContent}
+                                    onChange={(newValue) =>
+                                        setAttributes({
+                                            alignContent: newValue,
+                                        })
+                                    }
+                                    label={__(
+                                        "Align Content",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                    showIcons={true}
+                                />
+                            )}
                         </PanelBody>
                     </InspectorTab>
                     <InspectorTab key={"style"}>
@@ -1193,30 +1233,120 @@ const edit = (props) => {
                                 />
                                 {equalHeight && (
                                     <>
-                                        <div className='premium-blocks__base-control'>
-                                            <span className='premium-control-title'>{__('Blocks', 'premium-blocks-pro')}</span>
+                                        <div className="premium-blocks__base-control">
+                                            <span className="premium-control-title">
+                                                {__(
+                                                    "Blocks",
+                                                    "premium-blocks-pro"
+                                                )}
+                                            </span>
                                             <div className="pbg-custom-selectors-blocks">
-                                                <AdvancedSelect value={innerBlocksOptions.filter(obj => equalHeightBlocks.includes(obj.value))} options={innerBlocksOptions} isMulti={true} onChange={(option) => setAttributes({ equalHeightBlocks: option.map(option => option.value) })} components={{
-                                                    MultiValueRemove: MultiValue
-                                                }} />
+                                                <AdvancedSelect
+                                                    value={innerBlocksOptions.filter(
+                                                        (obj) =>
+                                                            equalHeightBlocks.includes(
+                                                                obj.value
+                                                            )
+                                                    )}
+                                                    options={innerBlocksOptions}
+                                                    isMulti={true}
+                                                    onChange={(option) =>
+                                                        setAttributes({
+                                                            equalHeightBlocks: option.map(
+                                                                (option) =>
+                                                                    option.value
+                                                            ),
+                                                        })
+                                                    }
+                                                    components={{
+                                                        MultiValueRemove: MultiValue,
+                                                    }}
+                                                />
                                             </div>
                                         </div>
-                                        {(props.uniqueInnerBlocks?.length > 0 && equalHeightBlocks?.length > 0) && (
-                                            <div className='premium-blocks__base-control'>
-                                                <span className='premium-control-title'>{__('Blocks Elements', 'premium-blocks-pro')}</span>
-                                                <div className="pbg-custom-selectors-blocks">
-                                                    {equalHeightBlocks.filter(block => !!getUniqueBlock(block)).map(block => <BlockItemComponent onRemove={(elements) => resetHeight(elements)} block={getUniqueBlock(block)} customSelectors={customSelectors} container={containerRef.current} onChange={(value) => setAttributes(value)} hasParents={props.getBlockParents(block.clientId).length} />)}
+                                        {props.uniqueInnerBlocks?.length > 0 &&
+                                            equalHeightBlocks?.length > 0 && (
+                                                <div className="premium-blocks__base-control">
+                                                    <span className="premium-control-title">
+                                                        {__(
+                                                            "Blocks Elements",
+                                                            "premium-blocks-pro"
+                                                        )}
+                                                    </span>
+                                                    <div className="pbg-custom-selectors-blocks">
+                                                        {equalHeightBlocks
+                                                            .filter(
+                                                                (block) =>
+                                                                    !!getUniqueBlock(
+                                                                        block
+                                                                    )
+                                                            )
+                                                            .map((block) => (
+                                                                <BlockItemComponent
+                                                                    onRemove={(
+                                                                        elements
+                                                                    ) =>
+                                                                        resetHeight(
+                                                                            elements
+                                                                        )
+                                                                    }
+                                                                    block={getUniqueBlock(
+                                                                        block
+                                                                    )}
+                                                                    customSelectors={
+                                                                        customSelectors
+                                                                    }
+                                                                    container={
+                                                                        containerRef.current
+                                                                    }
+                                                                    onChange={(
+                                                                        value
+                                                                    ) =>
+                                                                        setAttributes(
+                                                                            value
+                                                                        )
+                                                                    }
+                                                                    hasParents={
+                                                                        props.getBlockParents(
+                                                                            block.clientId
+                                                                        ).length
+                                                                    }
+                                                                />
+                                                            ))}
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        )}
-                                        <div className='premium-blocks__base-control'>
-                                            <span className='premium-control-title'>{__('Enable Equal Height on', 'premium-blocks-pro')}</span>
+                                            )}
+                                        <div className="premium-blocks__base-control">
+                                            <span className="premium-control-title">
+                                                {__(
+                                                    "Enable Equal Height on",
+                                                    "premium-blocks-pro"
+                                                )}
+                                            </span>
                                             <div className="pbg-custom-selectors-blocks">
-                                                <AdvancedSelect value={equalHeightDevicesOptions.filter(obj => equalHeightDevices.includes(obj.value))} options={equalHeightDevicesOptions} isMulti={true} onChange={(option) => {
-                                                    setAttributes({ equalHeightDevices: option.map(option => option.value) })
-                                                }} components={{
-                                                    MultiValueRemove: DeviceMultiValue
-                                                }} />
+                                                <AdvancedSelect
+                                                    value={equalHeightDevicesOptions.filter(
+                                                        (obj) =>
+                                                            equalHeightDevices.includes(
+                                                                obj.value
+                                                            )
+                                                    )}
+                                                    options={
+                                                        equalHeightDevicesOptions
+                                                    }
+                                                    isMulti={true}
+                                                    onChange={(option) => {
+                                                        setAttributes({
+                                                            equalHeightDevices: option.map(
+                                                                (option) =>
+                                                                    option.value
+                                                            ),
+                                                        });
+                                                    }}
+                                                    components={{
+                                                        MultiValueRemove: DeviceMultiValue,
+                                                    }}
+                                                />
                                             </div>
                                         </div>
                                     </>
@@ -1246,15 +1376,17 @@ export default withSelect((select, props) => {
             return;
         }
         for (const innerBlock of block.innerBlocks) {
-            const uniqueBlocksNames = uniqueInnerBlocks.map(block => block.name);
+            const uniqueBlocksNames = uniqueInnerBlocks.map(
+                (block) => block.name
+            );
             if (!uniqueBlocksNames.includes(innerBlock.name)) {
-                if (innerBlock.name !== 'premium/container') {
+                if (innerBlock.name !== "premium/container") {
                     uniqueInnerBlocks.push(innerBlock);
                 }
                 addInnerBlocks(innerBlock);
             }
         }
-    }
+    };
     if (!hasParents) {
         addInnerBlocks(getBlock(props.clientId));
     }
@@ -1263,6 +1395,6 @@ export default withSelect((select, props) => {
         uniqueInnerBlocks,
         isParent: !hasParents,
         blockData: getBlock(props.clientId),
-        getBlockParents
+        getBlockParents,
     };
 })(edit);
