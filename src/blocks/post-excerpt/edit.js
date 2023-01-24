@@ -79,7 +79,6 @@ function Excerpt(props) {
         );
         return document.body.textContent || document.body.innerText || "";
     }, [renderedExcerpt]);
-    console.log(strippedRenderedExcerpt);
     const words = strippedRenderedExcerpt.split(" ");
     let exLength = excerptLen ? excerptLen : 25;
     let excerpt, Content;
@@ -90,26 +89,18 @@ function Excerpt(props) {
         excerpt = truncated.join(" ");
         excerpt += " ...";
     }
-    if (showContent && displayPostExcerpt === "Post Excerpt") {
+    if (showContent) {
         Content = (
             <p
                 style={{
                     color: color,
                     ...typographyCss(typography, deviceType),
+                    ...marginCss(margin, deviceType),
                 }}
             >
-                {excerpt}
-            </p>
-        );
-    } else if (showContent && displayPostExcerpt === "Post Full Content") {
-        Content = (
-            <p
-                style={{
-                    color: color,
-                    ...typographyCss(typography, deviceType),
-                }}
-            >
-                {strippedRenderedExcerpt}
+                {displayPostExcerpt === "Post Excerpt"
+                    ? excerpt
+                    : strippedRenderedExcerpt}
             </p>
         );
     } else {
@@ -146,12 +137,33 @@ function Excerpt(props) {
                     backgroundColor: buttonBackground,
                     marginTop: buttonSpacing[deviceType] + "px",
                     ...borderCss(btnBorder, deviceType),
+                    ...paddingCss(btnPadding, deviceType),
                 }}
             >
                 {readMoreTxt}
             </a>
         </div>
     );
+    const loadStyles = () => {
+        const styles = {};
+        styles[
+            `.${blockId} .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link:hover `
+        ] = {
+            color: buttonhover,
+            backgroundColor: hoverBackground,
+            "border-style": btnBorderHover?.borderType,
+            "border-top-width": `${btnBorderHover?.borderWidth?.[deviceType]?.top}px`,
+            "border-right-width": `${btnBorderHover?.borderWidth?.[deviceType]?.right}px`,
+            "border-bottom-width": `${btnBorderHover?.borderWidth?.[deviceType]?.bottom}px`,
+            "border-left-width": `${btnBorderHover?.borderWidth?.[deviceType]?.left}px`,
+            "border-color": `${btnBorderHover?.borderColor}`,
+            "border-top-left-radius": `${btnBorderHover?.borderRadius?.[deviceType].top}px`,
+            "border-top-right-radius": `${btnBorderHover?.borderRadius?.[deviceType].right}px`,
+            "border-bottom-left-radius": `${btnBorderHover?.borderRadius?.[deviceType].bottom}px`,
+            "border-bottom-right-radius": `${btnBorderHover?.borderRadius?.[deviceType].left}px`,
+        };
+        return generateCss(styles);
+    };
 
     return (
         <Fragment>
@@ -445,7 +457,7 @@ function Excerpt(props) {
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
-            <div {...blockProps}>
+            <div {...blockProps} id={blockId}>
                 {Content}
                 {showContent && excerptType === "Link" ? readMore : null}
             </div>
@@ -453,8 +465,9 @@ function Excerpt(props) {
     );
 }
 export default withSelect((select, props) => {
-    const { __experimentalGetPreviewDeviceType = null } =
-        select("core/edit-post");
+    const { __experimentalGetPreviewDeviceType = null } = select(
+        "core/edit-post"
+    );
     let deviceType = __experimentalGetPreviewDeviceType
         ? __experimentalGetPreviewDeviceType()
         : null;

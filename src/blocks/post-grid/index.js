@@ -17,5 +17,8 @@ registerBlockType("premium/post-grid", {
     keywords: [__("post"), __("excerpt")],
     edit: PostTemplateEdit,
     example: {},
+    supports: {
+        __experimentalLayout: true,
+    },
     save,
 });

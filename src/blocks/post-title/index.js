@@ -21,5 +21,7 @@ registerBlockType("premium/post-title", {
     keywords: [__("post"), __("title")],
     edit: PostTitle,
     example: {},
-    save,
+    save: () => {
+        return null;
+    },
 });

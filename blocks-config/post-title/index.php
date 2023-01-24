@@ -41,8 +41,12 @@ function render_post_title($attributes, $content, $block)
 /**
  * Registers the `core/post-title` block on the server.
  */
-function register_block_core_post_title()
+function register_block_post_title()
 {
+    if (!function_exists('register_block_type')) {
+        return;
+    }
+
     register_block_type(
         PREMIUM_BLOCKS_PATH . '/blocks-config/post-title',
         array(
@@ -50,4 +54,4 @@ function register_block_core_post_title()
         )
     );
 }
-add_action('init', 'register_post_title');
+register_block_post_title();

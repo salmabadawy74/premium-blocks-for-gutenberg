@@ -52,15 +52,10 @@ export default function PostTemplateEdit({
         ["premium/post-title"],
         ["premium/post-meta"],
         ["premium/post-excerpt"],
-        ["premium/post-tag"],
+        // ["premium/post-tag"],
+        // ["premium/pagination"],
     ];
 
-    const innerBlocksProps = useInnerBlocksProps(
-        { className: "wp-block-post" },
-        {
-            template: TEMPLATE,
-        }
-    );
     const [{ page }] = queryContext;
     const [activeBlockContextId, setActiveBlockContextId] = useState();
     const { posts, blocks } = useSelect(
@@ -185,10 +180,9 @@ export default function PostTemplateEdit({
         return <p {...blockProps}> {__("No results found.")}</p>;
     }
     function PostTemplateInnerBlocks() {
-        const innerBlocksProps = useInnerBlocksProps(
-            { className: "wp-block-post" },
-            { template: TEMPLATE }
-        );
+        const innerBlocksProps = useInnerBlocksProps(blockProps, {
+            template: TEMPLATE,
+        });
         return <li {...innerBlocksProps} />;
     }
     console.log(posts, "blockContexts");
@@ -204,7 +198,6 @@ export default function PostTemplateEdit({
                         (activeBlockContextId || blockContexts[0]?.postId) ? (
                             <PostTemplateInnerBlocks />
                         ) : null}
-                        {/* <div {...innerBlocksProps} /> */}
                     </BlockContextProvider>
                 ))}
         </ul>
