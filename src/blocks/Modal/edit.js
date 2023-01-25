@@ -2,19 +2,17 @@ import classnames from "classnames";
 import Lottie from 'react-lottie-with-segments';
 import Inspector from "./inspector";
 import WebfontLoader from "../../components/typography/fontLoader";
-import { gradientBackground, generateBlockId, generateCss, borderCss, paddingCss, marginCss, typographyCss } from '@pbg/helpers';
+import { gradientBackground, generateBlockId, generateCss, borderCss, paddingCss, typographyCss } from '@pbg/helpers';
 
 const { __ } = wp.i18n;
 const { withSelect } = wp.data
 const { Fragment, useEffect, useState } = wp.element;
 const { InnerBlocks, MediaPlaceholder, useBlockProps } = wp.blockEditor;
-const { RichText } = wp.editor;
-
 
 const Edit = props => {
 
     const [openModal, setOpenModal] = useState(false)
-    const { setAttributes, className } = props;
+    const { setAttributes, className, attributes } = props;
     const {
         blockId,
         contentStyles,
@@ -23,27 +21,17 @@ const Edit = props => {
         triggerBorder,
         triggerBorderH,
         triggerPadding,
-        headerStyles,
-        headerBorder,
         upperStyles,
         upperBorder,
         upperPadding,
-        lowerStyles,
-        lowerBorder,
-        lowerPadding,
         modalStyles,
         modalBorder,
-        modalMargin,
         modalPadding,
         modalBackground,
         triggerShadow,
         modalShadow,
         triggerTextShadow,
         triggerTypography,
-        headerTypography,
-        lowerTypography,
-        modalTypography,
-        iconSize,
         imageWidth,
         modalWidth,
         modalHeight,
@@ -54,15 +42,26 @@ const Edit = props => {
         hideMobile,
         align,
         upperIconWidth,
-        lowerIconWidth,
-        triggerIconSize
-    } = props.attributes;
+        triggerIconSize,
+        containerBackground
+    } = attributes;
 
     const currentDevice = props.deviceType;
 
     useEffect(() => {
         setAttributes({ blockId: "premium-modal-box-" + generateBlockId(props.clientId) })
     }, [])
+
+    const INNER_BLOCKS_TEMPLATE = [
+        ['premium/heading', {
+            title: attributes.contentStyles[0].titleText
+                ? attributes.contentStyles[0].titleText
+                : __("Modal Box Title", "premium-blocks-for-gutenberg"),
+            titleTag: "h3",
+            style: "default",
+        },
+        ]
+    ];
 
     const saveTriggerSettings = (value) => {
         const newUpdate = triggerSettings.map((item, index) => {
@@ -73,18 +72,6 @@ const Edit = props => {
         });
         setAttributes({
             triggerSettings: newUpdate,
-        });
-    }
-
-    const saveModalStyles = (value) => {
-        const newUpdate = modalStyles.map((item, modalIndex) => {
-            if (0 === modalIndex) {
-                item = { ...item, ...value };
-            }
-            return item;
-        });
-        setAttributes({
-            modalStyles: newUpdate,
         });
     }
 
@@ -145,14 +132,10 @@ const Edit = props => {
         return generateCss(styles);
     }
 
-    const headerIconSize = iconSize[currentDevice];
     const modalWidthValue = modalWidth[currentDevice];
     const modalMaxHeight = modalHeight[currentDevice];
 
     let loadTriggerGoogleFonts;
-    let loadHeaderGoogleFonts;
-    let loadModalGoogleFonts;
-    let loadLowerGoogleFonts;
 
     if (triggerTypography.fontFamily !== "Default") {
         const gconfig = {
@@ -161,39 +144,6 @@ const Edit = props => {
             }
         };
         loadTriggerGoogleFonts = (
-            <WebfontLoader config={gconfig}></WebfontLoader>
-        );
-    }
-
-    if (headerTypography.fontFamily !== "Default") {
-        const gconfig = {
-            google: {
-                families: [headerTypography?.fontFamily]
-            }
-        };
-        loadHeaderGoogleFonts = (
-            <WebfontLoader config={gconfig}></WebfontLoader>
-        );
-    }
-
-    if (modalTypography.fontFamily !== "Default") {
-        const gconfig = {
-            google: {
-                families: [modalTypography?.fontFamily]
-            }
-        };
-        loadModalGoogleFonts = (
-            <WebfontLoader config={gconfig}></WebfontLoader>
-        );
-    }
-
-    if (lowerTypography.fontFamily !== "Default") {
-        const gconfig = {
-            google: {
-                families: [lowerTypography?.fontFamily]
-            }
-        };
-        loadLowerGoogleFonts = (
             <WebfontLoader config={gconfig}></WebfontLoader>
         );
     }
@@ -365,122 +315,61 @@ const Edit = props => {
                             data-animation={`${contentStyles[0].animationType} ${contentStyles[0].animationSpeed}`}
                             style={{
                                 ...borderCss(modalBorder, currentDevice),
-                                ...marginCss(modalMargin, currentDevice),
                                 width: `${modalWidthValue}${modalWidth.unit}`,
-                                maxHeight: `${modalMaxHeight}${modalHeight.unit}`,
+                                // maxHeight: `${modalMaxHeight}${modalHeight.unit}`,
                                 boxShadow: `${modalShadow.horizontal}px ${modalShadow.vertical}px ${modalShadow.blur}px ${modalShadow.color} ${modalShadow.position}`,
                             }}>
                             {contentStyles[0].showHeader &&
-                                <div className={`premium-modal-box-modal-header`}
-                                    style={{
-                                        ...borderCss(headerBorder, currentDevice),
-                                        backgroundColor: headerStyles[0].backColor,
-                                        borderBottomStyle: headerBorder.borderType == 'none' ? 'solid' : headerBorder.borderType,
-                                        borderBottomWidth: headerBorder.borderType == 'none' ? '1px' : '',
-                                        borderBottomColor: headerBorder.borderType == 'none' ? '#e5e5e5' : headerBorder.borderColor
-                                    }}>
-                                    <h3 className={`premium-modal-box-modal-title`}
+                                <div className={`premium-modal-box-modal-header`}>
+                                    <div className="premium-modal-box-close-button-container"
                                         style={{
-                                            ...typographyCss(headerTypography, currentDevice),
-                                            color: headerStyles[0].color
+                                            ...borderCss(upperBorder, currentDevice),
+                                            ...paddingCss(upperPadding, currentDevice),
+                                            backgroundColor: `${upperStyles[0].backColor}`
                                         }}>
-                                        {contentStyles[0].iconType === "icon" &&
-                                            <i
-                                                className={contentStyles[0].contentIcon}
-                                                style={{
-                                                    fontSize: `${headerIconSize}${iconSize.unit}`,
-                                                    width: `${headerIconSize}${iconSize.unit}`,
-                                                    height: `${headerIconSize}${iconSize.unit}`
-                                                }} ></i>
-                                        }
-                                        {contentStyles[0].iconType === "image" && <img src={contentStyles[0].contentImgURL} style={{
-                                            width: `${headerIconSize}${iconSize.unit}`,
-                                            height: `${headerIconSize}${iconSize.unit}`
-                                        }}></img>}
-                                        {contentStyles[0].iconType === "lottie" &&
-                                            <div className={`premium-lottie-animation`}
-                                                style={{
-                                                    width: `${headerIconSize}${iconSize.unit}`,
-                                                    height: `${headerIconSize}${iconSize.unit}`
-                                                }}
-                                            >
-                                                <Lottie
-                                                    options={{
-                                                        loop: contentStyles[0].loopLottie,
-                                                        path: contentStyles[0].lottieURL,
-                                                        rendererSettings: {
-                                                            preserveAspectRatio: 'xMidYMid',
-                                                            className: "premium-lottie-inner"
-                                                        }
-                                                    }}
-                                                    direction={(contentStyles[0].reverseLottie) ? -1 : 1}
-                                                />
-                                            </div>}
-
-                                        {contentStyles[0].titleText}
-                                    </h3>
-                                    {contentStyles[0].showUpperClose && contentStyles[0].showHeader && (
-                                        <div className="premium-modal-box-close-button-container"
+                                        <button role="button" className="premium-modal-box-modal-close close-button" onClick={() => setOpenModal(false)}
                                             style={{
-                                                ...borderCss(upperBorder, currentDevice),
-                                                ...paddingCss(upperPadding, currentDevice),
-                                                backgroundColor: `${upperStyles[0].backColor}`
-                                            }}>
-                                            <button role="button" className="premium-modal-box-modal-close close-button" onClick={() => setOpenModal(false)}
-                                                style={{
-                                                    fontSize: `${upperIconWidth[currentDevice]}${upperIconWidth.unit}`,
-                                                    color: `${upperStyles[0].color}`,
+                                                fontSize: `${upperIconWidth[currentDevice]}${upperIconWidth.unit}`,
+                                                color: `${upperStyles[0].color}`,
 
-                                                }} data-dismiss="premium-modal" >×</button>
-                                        </div>)}
-                                </div>}
+                                            }} data-dismiss="premium-modal" >×</button>
+                                    </div>
+                                </div>
+                                // <div style={{
+                                //     width: '100%',
+                                //     display: 'inline-block',
+                                //     left: 0,
+                                //     zIndex: 100,
+                                //     position: 'absolute',
+                                //     top: 0,
+                                // }}>
+                                //     <button role="button" className="premium-modal-box-modal-close close-button" onClick={() => setOpenModal(false)}
+                                //         style={{
+                                //             fontSize: `${upperIconWidth[currentDevice]}${upperIconWidth.unit}`,
+                                //             color: `${upperStyles[0].color}`,
+                                //             ...borderCss(upperBorder, currentDevice),
+                                //             ...paddingCss(upperPadding, currentDevice),
+                                //             backgroundColor: `${upperStyles[0].backColor}`
+                                //         }} data-dismiss="premium-modal" >×</button>
+                                // </div>
+                            }
                             <div className={`premium-modal-box-modal-body`}
                                 style={{
                                     ...paddingCss(modalPadding, currentDevice),
-                                    background: modalStyles[0].textBackColor
+                                    background: modalStyles[0].textBackColor,
+                                    maxHeight: `${modalMaxHeight}${modalHeight.unit}`,
+                                    ...gradientBackground(containerBackground)
                                 }}>
-                                {modalStyles[0].contentType === "text" ?
-                                    <RichText
-                                        tagName={'p'}
-                                        value={modalStyles[0].contentText}
-                                        onChange={(value) => saveModalStyles({ contentText: value })}
-                                        style={{
-                                            ...typographyCss(modalTypography, currentDevice),
-                                            color: modalStyles[0].textColor
-                                        }}
-                                        keepPlaceholderOnFocus
-                                    />
-                                    : <InnerBlocks />}
-
+                                <InnerBlocks
+                                    template={INNER_BLOCKS_TEMPLATE}
+                                    templateLock={false}
+                                />
                             </div>
-                            {contentStyles[0].showLowerClose && (
-                                <div className={`premium-modal-box-modal-footer`}
-                                    style={{
-                                        backgroundColor: modalStyles[0].footerBackColor
-                                    }}>
-                                    <button className={`premium-modal-box-modal-lower-close close-button`} role="button" data-dismiss="premium-modal"
-                                        onClick={() => setOpenModal(false)}
-                                        style={{
-                                            ...typographyCss(lowerTypography, currentDevice),
-                                            ...paddingCss(lowerPadding, currentDevice),
-                                            ...borderCss(lowerBorder, currentDevice),
-                                            width: `${lowerIconWidth[currentDevice]}${lowerIconWidth.unit}`,
-                                            color: `${lowerStyles[0].color}`,
-                                            backgroundColor: `${lowerStyles[0].backColor}`
-                                        }}
-                                    >
-                                        {contentStyles[0].lowerCloseText}
-                                    </button>
-                                </div>
-                            )}
                         </div>
                     </div>
 
                 )}
                 {loadTriggerGoogleFonts}
-                {loadHeaderGoogleFonts}
-                {loadModalGoogleFonts}
-                {loadLowerGoogleFonts}
             </div >
         </Fragment>
     ];

@@ -3292,15 +3292,13 @@ const {
   MediaPlaceholder,
   useBlockProps
 } = wp.blockEditor;
-const {
-  RichText
-} = wp.editor;
 
 const Edit = props => {
   const [openModal, setOpenModal] = useState(false);
   const {
     setAttributes,
-    className
+    className,
+    attributes
   } = props;
   const {
     blockId,
@@ -3310,27 +3308,17 @@ const Edit = props => {
     triggerBorder,
     triggerBorderH,
     triggerPadding,
-    headerStyles,
-    headerBorder,
     upperStyles,
     upperBorder,
     upperPadding,
-    lowerStyles,
-    lowerBorder,
-    lowerPadding,
     modalStyles,
     modalBorder,
-    modalMargin,
     modalPadding,
     modalBackground,
     triggerShadow,
     modalShadow,
     triggerTextShadow,
     triggerTypography,
-    headerTypography,
-    lowerTypography,
-    modalTypography,
-    iconSize,
     imageWidth,
     modalWidth,
     modalHeight,
@@ -3341,15 +3329,20 @@ const Edit = props => {
     hideMobile,
     align,
     upperIconWidth,
-    lowerIconWidth,
-    triggerIconSize
-  } = props.attributes;
+    triggerIconSize,
+    containerBackground
+  } = attributes;
   const currentDevice = props.deviceType;
   useEffect(() => {
     setAttributes({
       blockId: "premium-modal-box-" + (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.generateBlockId)(props.clientId)
     });
   }, []);
+  const INNER_BLOCKS_TEMPLATE = [['premium/heading', {
+    title: attributes.contentStyles[0].titleText ? attributes.contentStyles[0].titleText : __("Modal Box Title", "premium-blocks-for-gutenberg"),
+    titleTag: "h3",
+    style: "default"
+  }]];
 
   const saveTriggerSettings = value => {
     const newUpdate = triggerSettings.map((item, index) => {
@@ -3363,21 +3356,6 @@ const Edit = props => {
     });
     setAttributes({
       triggerSettings: newUpdate
-    });
-  };
-
-  const saveModalStyles = value => {
-    const newUpdate = modalStyles.map((item, modalIndex) => {
-      if (0 === modalIndex) {
-        item = { ...item,
-          ...value
-        };
-      }
-
-      return item;
-    });
-    setAttributes({
-      modalStyles: newUpdate
     });
   };
 
@@ -3440,13 +3418,9 @@ const Edit = props => {
     return (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.generateCss)(styles);
   };
 
-  const headerIconSize = iconSize[currentDevice];
   const modalWidthValue = modalWidth[currentDevice];
   const modalMaxHeight = modalHeight[currentDevice];
   let loadTriggerGoogleFonts;
-  let loadHeaderGoogleFonts;
-  let loadModalGoogleFonts;
-  let loadLowerGoogleFonts;
 
   if (triggerTypography.fontFamily !== "Default") {
     const gconfig = {
@@ -3455,39 +3429,6 @@ const Edit = props => {
       }
     };
     loadTriggerGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      config: gconfig
-    });
-  }
-
-  if (headerTypography.fontFamily !== "Default") {
-    const gconfig = {
-      google: {
-        families: [headerTypography === null || headerTypography === void 0 ? void 0 : headerTypography.fontFamily]
-      }
-    };
-    loadHeaderGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      config: gconfig
-    });
-  }
-
-  if (modalTypography.fontFamily !== "Default") {
-    const gconfig = {
-      google: {
-        families: [modalTypography === null || modalTypography === void 0 ? void 0 : modalTypography.fontFamily]
-      }
-    };
-    loadModalGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      config: gconfig
-    });
-  }
-
-  if (lowerTypography.fontFamily !== "Default") {
-    const gconfig = {
-      google: {
-        families: [lowerTypography === null || lowerTypography === void 0 ? void 0 : lowerTypography.fontFamily]
-      }
-    };
-    loadLowerGoogleFonts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_typography_fontLoader__WEBPACK_IMPORTED_MODULE_5__["default"], {
       config: gconfig
     });
   }
@@ -3629,54 +3570,13 @@ const Edit = props => {
     "data-delay": triggerSettings[0].delayTime,
     "data-animation": `${contentStyles[0].animationType} ${contentStyles[0].animationSpeed}`,
     style: { ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.borderCss)(modalBorder, currentDevice),
-      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.marginCss)(modalMargin, currentDevice),
       width: `${modalWidthValue}${modalWidth.unit}`,
-      maxHeight: `${modalMaxHeight}${modalHeight.unit}`,
+      // maxHeight: `${modalMaxHeight}${modalHeight.unit}`,
       boxShadow: `${modalShadow.horizontal}px ${modalShadow.vertical}px ${modalShadow.blur}px ${modalShadow.color} ${modalShadow.position}`
     }
   }, contentStyles[0].showHeader && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: `premium-modal-box-modal-header`,
-    style: { ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.borderCss)(headerBorder, currentDevice),
-      backgroundColor: headerStyles[0].backColor,
-      borderBottomStyle: headerBorder.borderType == 'none' ? 'solid' : headerBorder.borderType,
-      borderBottomWidth: headerBorder.borderType == 'none' ? '1px' : '',
-      borderBottomColor: headerBorder.borderType == 'none' ? '#e5e5e5' : headerBorder.borderColor
-    }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h3", {
-    className: `premium-modal-box-modal-title`,
-    style: { ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.typographyCss)(headerTypography, currentDevice),
-      color: headerStyles[0].color
-    }
-  }, contentStyles[0].iconType === "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("i", {
-    className: contentStyles[0].contentIcon,
-    style: {
-      fontSize: `${headerIconSize}${iconSize.unit}`,
-      width: `${headerIconSize}${iconSize.unit}`,
-      height: `${headerIconSize}${iconSize.unit}`
-    }
-  }), contentStyles[0].iconType === "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("img", {
-    src: contentStyles[0].contentImgURL,
-    style: {
-      width: `${headerIconSize}${iconSize.unit}`,
-      height: `${headerIconSize}${iconSize.unit}`
-    }
-  }), contentStyles[0].iconType === "lottie" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: `premium-lottie-animation`,
-    style: {
-      width: `${headerIconSize}${iconSize.unit}`,
-      height: `${headerIconSize}${iconSize.unit}`
-    }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(react_lottie_with_segments__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    options: {
-      loop: contentStyles[0].loopLottie,
-      path: contentStyles[0].lottieURL,
-      rendererSettings: {
-        preserveAspectRatio: 'xMidYMid',
-        className: "premium-lottie-inner"
-      }
-    },
-    direction: contentStyles[0].reverseLottie ? -1 : 1
-  })), contentStyles[0].titleText), contentStyles[0].showUpperClose && contentStyles[0].showHeader && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: `premium-modal-box-modal-header`
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "premium-modal-box-close-button-container",
     style: { ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.borderCss)(upperBorder, currentDevice),
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.paddingCss)(upperPadding, currentDevice),
@@ -3691,39 +3591,34 @@ const Edit = props => {
       color: `${upperStyles[0].color}`
     },
     "data-dismiss": "premium-modal"
-  }, "\xD7"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  }, "\xD7"))) // <div style={{
+  //     width: '100%',
+  //     display: 'inline-block',
+  //     left: 0,
+  //     zIndex: 100,
+  //     position: 'absolute',
+  //     top: 0,
+  // }}>
+  //     <button role="button" className="premium-modal-box-modal-close close-button" onClick={() => setOpenModal(false)}
+  //         style={{
+  //             fontSize: `${upperIconWidth[currentDevice]}${upperIconWidth.unit}`,
+  //             color: `${upperStyles[0].color}`,
+  //             ...borderCss(upperBorder, currentDevice),
+  //             ...paddingCss(upperPadding, currentDevice),
+  //             backgroundColor: `${upperStyles[0].backColor}`
+  //         }} data-dismiss="premium-modal" >×</button>
+  // </div>
+  , (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-modal-box-modal-body`,
     style: { ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.paddingCss)(modalPadding, currentDevice),
-      background: modalStyles[0].textBackColor
+      background: modalStyles[0].textBackColor,
+      maxHeight: `${modalMaxHeight}${modalHeight.unit}`,
+      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.gradientBackground)(containerBackground)
     }
-  }, modalStyles[0].contentType === "text" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RichText, {
-    tagName: 'p',
-    value: modalStyles[0].contentText,
-    onChange: value => saveModalStyles({
-      contentText: value
-    }),
-    style: { ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.typographyCss)(modalTypography, currentDevice),
-      color: modalStyles[0].textColor
-    },
-    keepPlaceholderOnFocus: true
-  }) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InnerBlocks, null)), contentStyles[0].showLowerClose && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: `premium-modal-box-modal-footer`,
-    style: {
-      backgroundColor: modalStyles[0].footerBackColor
-    }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
-    className: `premium-modal-box-modal-lower-close close-button`,
-    role: "button",
-    "data-dismiss": "premium-modal",
-    onClick: () => setOpenModal(false),
-    style: { ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.typographyCss)(lowerTypography, currentDevice),
-      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.paddingCss)(lowerPadding, currentDevice),
-      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.borderCss)(lowerBorder, currentDevice),
-      width: `${lowerIconWidth[currentDevice]}${lowerIconWidth.unit}`,
-      color: `${lowerStyles[0].color}`,
-      backgroundColor: `${lowerStyles[0].backColor}`
-    }
-  }, contentStyles[0].lowerCloseText)))), loadTriggerGoogleFonts, loadHeaderGoogleFonts, loadModalGoogleFonts, loadLowerGoogleFonts))];
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InnerBlocks, {
+    template: INNER_BLOCKS_TEMPLATE,
+    templateLock: false
+  })))), loadTriggerGoogleFonts))];
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (withSelect(select => {
@@ -3827,40 +3722,149 @@ const Inspector = _ref => {
     triggerBorder,
     triggerBorderH,
     triggerPadding,
-    headerStyles,
-    headerBorder,
     upperStyles,
     upperBorder,
     upperPadding,
-    lowerStyles,
-    lowerBorder,
-    lowerPadding,
     modalStyles,
     modalBackground,
     triggerShadow,
     modalBorder,
-    modalMargin,
     modalPadding,
     modalShadow,
     triggerTextShadow,
     triggerTypography,
-    headerTypography,
-    lowerTypography,
-    modalTypography,
-    iconSize,
     imageWidth,
     modalWidth,
     modalHeight,
     triggerIconSize,
     align,
     upperIconWidth,
-    lowerIconWidth,
     hideDesktop,
     hideTablet,
     hideMobile,
     triggerFilter,
-    triggerHoverFilter
+    triggerHoverFilter,
+    containerBackground
   } = attributes;
+  const ANIMATION = [{
+    value: "none",
+    label: __("None", "premium-blocks-for-gutenberg")
+  }, {
+    value: "fadeInDown",
+    label: __("Fade In Down", "premium-blocks-for-gutenberg")
+  }, {
+    value: "fadeInUp",
+    label: __("Fade In Up", "premium-blocks-for-gutenberg")
+  }, {
+    value: "fadeIn",
+    label: __("Fade In", "premium-blocks-for-gutenberg")
+  }, {
+    value: "fadeInLeft",
+    label: __("Fade In Left", "premium-blocks-for-gutenberg")
+  }, {
+    value: "fadeInRight",
+    label: __("Fade In Right", "premium-blocks-for-gutenberg")
+  }, {
+    value: "zoomInDown",
+    label: __("Zoom In Down", "premium-blocks-for-gutenberg")
+  }, {
+    value: "zoomInUp",
+    label: __("Zoom In Up", "premium-blocks-for-gutenberg")
+  }, {
+    value: "zoomIn",
+    label: __("Zoom In", "premium-blocks-for-gutenberg")
+  }, {
+    value: "zoomInLeft",
+    label: __("Zoom In Left", "premium-blocks-for-gutenberg")
+  }, {
+    value: "zoomInRight",
+    label: __("Zoom In Right", "premium-blocks-for-gutenberg")
+  }, {
+    value: "bounceInDown",
+    label: __("Bouncing In Down", "premium-blocks-for-gutenberg")
+  }, {
+    value: "bounceInUp",
+    label: __("Bouncing In Up", "premium-blocks-for-gutenberg")
+  }, {
+    value: "bounceIn",
+    label: __("Bouncing In", "premium-blocks-for-gutenberg")
+  }, {
+    value: "bounceInLeft",
+    label: __("Bouncing In Left", "premium-blocks-for-gutenberg")
+  }, {
+    value: "bounceInRight",
+    label: __("Bouncing In Right", "premium-blocks-for-gutenberg")
+  }, {
+    value: "slideInUp",
+    label: __("Slide In Up", "premium-blocks-for-gutenberg")
+  }, {
+    value: "slideInLeft",
+    label: __("Slide In Left", "premium-blocks-for-gutenberg")
+  }, {
+    value: "slideInRight",
+    label: __("Slide In Right", "premium-blocks-for-gutenberg")
+  }, {
+    value: "slideInDown",
+    label: __("Slide In Down", "premium-blocks-for-gutenberg")
+  }, {
+    value: "rotateInUpLeft",
+    label: __("Rotating Up Left", "premium-blocks-for-gutenberg")
+  }, {
+    value: "rotateInUpRight",
+    label: __("Rotating Up Right", "premium-blocks-for-gutenberg")
+  }, {
+    value: "rotateIn",
+    label: __("Rotating In", "premium-blocks-for-gutenberg")
+  }, {
+    value: "rotateInDownLeft",
+    label: __("Rotating In Left", "premium-blocks-for-gutenberg")
+  }, {
+    value: "rotateInDownRight",
+    label: __("Rotating In Right", "premium-blocks-for-gutenberg")
+  }, {
+    value: "bounce",
+    label: __("Bounce", "premium-blocks-for-gutenberg")
+  }, {
+    value: "flash",
+    label: __("Flash", "premium-blocks-for-gutenberg")
+  }, {
+    value: "pulse",
+    label: __("Pulse", "premium-blocks-for-gutenberg")
+  }, {
+    value: "rubberBand",
+    label: __("Rubber Band", "premium-blocks-for-gutenberg")
+  }, {
+    value: "headShake",
+    label: __("Head Shake", "premium-blocks-for-gutenberg")
+  }, {
+    value: "swing",
+    label: __("Swing", "premium-blocks-for-gutenberg")
+  }, {
+    value: "tada",
+    label: __("Tada", "premium-blocks-for-gutenberg")
+  }, {
+    value: "wobble",
+    label: __("Wobble", "premium-blocks-for-gutenberg")
+  }, {
+    value: "jello",
+    label: __("Jolle", "premium-blocks-for-gutenberg")
+  }, {
+    value: "lightSpeedIn",
+    label: __("Light Speed", "premium-blocks-for-gutenberg")
+  }, {
+    value: "rollIn",
+    label: __("Roll In", "premium-blocks-for-gutenberg")
+  }];
+  const DURATION = [{
+    label: __("Fast", "premium-blocks-for-gutenberg"),
+    value: "fast"
+  }, {
+    label: __("Normal", "premium-blocks-for-gutenberg"),
+    value: "normal"
+  }, {
+    label: __("Slow", "premium-blocks-for-gutenberg"),
+    value: "slow"
+  }];
 
   const saveContentStyle = value => {
     const newUpdate = contentStyles.map((item, index) => {
@@ -3907,21 +3911,6 @@ const Inspector = _ref => {
     });
   };
 
-  const saveHeaderStyles = value => {
-    const newUpdate = headerStyles.map((item, headerIndex) => {
-      if (0 === headerIndex) {
-        item = { ...item,
-          ...value
-        };
-      }
-
-      return item;
-    });
-    setAttributes({
-      headerStyles: newUpdate
-    });
-  };
-
   const saveUpperStyles = value => {
     const newUpdate = upperStyles.map((item, upperIndex) => {
       if (0 === upperIndex) {
@@ -3934,21 +3923,6 @@ const Inspector = _ref => {
     });
     setAttributes({
       upperStyles: newUpdate
-    });
-  };
-
-  const saveLowerStyles = value => {
-    const newUpdate = lowerStyles.map((item, lowerIndex) => {
-      if (0 === lowerIndex) {
-        item = { ...item,
-          ...value
-        };
-      }
-
-      return item;
-    });
-    setAttributes({
-      lowerStyles: newUpdate
     });
   };
 
@@ -4125,250 +4099,19 @@ const Inspector = _ref => {
     title: __("Content", "premium-blocks-for-gutenberg"),
     className: "premium-panel-body",
     initialOpen: false
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-    label: __("Header", "premium-blocks-for-gutenberg"),
-    checked: contentStyles[0].showHeader,
-    onChange: value => saveContentStyle({
-      showHeader: value
-    })
-  }), contentStyles[0].showHeader && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-    label: __("Upper Close Button", "premium-blocks-for-gutenberg"),
-    checked: contentStyles[0].showUpperClose,
-    onChange: value => saveContentStyle({
-      showUpperClose: value
-    })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-    label: __("Lower Close Button", "premium-blocks-for-gutenberg"),
-    checked: contentStyles[0].showLowerClose,
-    onChange: value => saveContentStyle({
-      showLowerClose: value
-    })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
-    label: __(`Content to Show`, "premium-blocks-for-gutenberg"),
-    value: modalStyles[0].contentType,
-    onChange: value => saveModalStyles({
-      contentType: value
-    }),
-    options: [{
-      value: "text",
-      label: __("Text", "premium-blocks-for-gutenberg")
-    }, {
-      value: "block",
-      label: __("Gutenberg Block", "premium-blocks-for-gutenberg")
-    }]
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
     label: __("Animation", "premium-blocks-for-gutenberg"),
     value: contentStyles[0].animationType,
     onChange: value => saveContentStyle({
       animationType: value
     }),
-    options: [{
-      value: "none",
-      label: __("None", "premium-blocks-for-gutenberg")
-    }, {
-      value: "fadeInDown",
-      label: __("Fade In Down", "premium-blocks-for-gutenberg")
-    }, {
-      value: "fadeInUp",
-      label: __("Fade In Up", "premium-blocks-for-gutenberg")
-    }, {
-      value: "fadeIn",
-      label: __("Fade In", "premium-blocks-for-gutenberg")
-    }, {
-      value: "fadeInLeft",
-      label: __("Fade In Left", "premium-blocks-for-gutenberg")
-    }, {
-      value: "fadeInRight",
-      label: __("Fade In Right", "premium-blocks-for-gutenberg")
-    }, {
-      value: "zoomInDown",
-      label: __("Zoom In Down", "premium-blocks-for-gutenberg")
-    }, {
-      value: "zoomInUp",
-      label: __("Zoom In Up", "premium-blocks-for-gutenberg")
-    }, {
-      value: "zoomIn",
-      label: __("Zoom In", "premium-blocks-for-gutenberg")
-    }, {
-      value: "zoomInLeft",
-      label: __("Zoom In Left", "premium-blocks-for-gutenberg")
-    }, {
-      value: "zoomInRight",
-      label: __("Zoom In Right", "premium-blocks-for-gutenberg")
-    }, {
-      value: "bounceInDown",
-      label: __("Bouncing In Down", "premium-blocks-for-gutenberg")
-    }, {
-      value: "bounceInUp",
-      label: __("Bouncing In Up", "premium-blocks-for-gutenberg")
-    }, {
-      value: "bounceIn",
-      label: __("Bouncing In", "premium-blocks-for-gutenberg")
-    }, {
-      value: "bounceInLeft",
-      label: __("Bouncing In Left", "premium-blocks-for-gutenberg")
-    }, {
-      value: "bounceInRight",
-      label: __("Bouncing In Right", "premium-blocks-for-gutenberg")
-    }, {
-      value: "slideInUp",
-      label: __("Slide In Up", "premium-blocks-for-gutenberg")
-    }, {
-      value: "slideInLeft",
-      label: __("Slide In Left", "premium-blocks-for-gutenberg")
-    }, {
-      value: "slideInRight",
-      label: __("Slide In Right", "premium-blocks-for-gutenberg")
-    }, {
-      value: "slideInDown",
-      label: __("Slide In Down", "premium-blocks-for-gutenberg")
-    }, {
-      value: "rotateInUpLeft",
-      label: __("Rotating Up Left", "premium-blocks-for-gutenberg")
-    }, {
-      value: "rotateInUpRight",
-      label: __("Rotating Up Right", "premium-blocks-for-gutenberg")
-    }, {
-      value: "rotateIn",
-      label: __("Rotating In", "premium-blocks-for-gutenberg")
-    }, {
-      value: "rotateInDownLeft",
-      label: __("Rotating In Left", "premium-blocks-for-gutenberg")
-    }, {
-      value: "rotateInDownRight",
-      label: __("Rotating In Right", "premium-blocks-for-gutenberg")
-    }, {
-      value: "bounce",
-      label: __("Bounce", "premium-blocks-for-gutenberg")
-    }, {
-      value: "flash",
-      label: __("Flash", "premium-blocks-for-gutenberg")
-    }, {
-      value: "pulse",
-      label: __("Pulse", "premium-blocks-for-gutenberg")
-    }, {
-      value: "rubberBand",
-      label: __("Rubber Band", "premium-blocks-for-gutenberg")
-    }, {
-      value: "headShake",
-      label: __("Head Shake", "premium-blocks-for-gutenberg")
-    }, {
-      value: "swing",
-      label: __("Swing", "premium-blocks-for-gutenberg")
-    }, {
-      value: "tada",
-      label: __("Tada", "premium-blocks-for-gutenberg")
-    }, {
-      value: "wobble",
-      label: __("Wobble", "premium-blocks-for-gutenberg")
-    }, {
-      value: "jello",
-      label: __("Jolle", "premium-blocks-for-gutenberg")
-    }, {
-      value: "lightSpeedIn",
-      label: __("Light Speed", "premium-blocks-for-gutenberg")
-    }, {
-      value: "rollIn",
-      label: __("Roll In", "premium-blocks-for-gutenberg")
-    }]
+    options: ANIMATION
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
     label: __("Animation Duration", "premium-blocks-for-gutenberg"),
     value: contentStyles[0].animationSpeed,
-    options: [{
-      label: __("Fast", "premium-blocks-for-gutenberg"),
-      value: "fast"
-    }, {
-      label: __("Normal", "premium-blocks-for-gutenberg"),
-      value: "normal"
-    }, {
-      label: __("Slow", "premium-blocks-for-gutenberg"),
-      value: "slow"
-    }],
+    options: DURATION,
     onChange: value => saveContentStyle({
       animationSpeed: value
-    })
-  })), contentStyles[0].showHeader && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-    title: __("Header", "premium-blocks-for-gutenberg"),
-    className: "premium-panel-body",
-    initialOpen: false
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
-    label: __("Title", "premium-blocks-for-gutenberg"),
-    value: contentStyles[0].titleText,
-    onChange: value => saveContentStyle({
-      titleText: value
-    })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
-    label: __("Icon Type", "premium-blocks-for-gutenberg"),
-    options: [{
-      label: __("None", "premium-blocks-for-gutenberg"),
-      value: "none"
-    }, {
-      label: __("Icon", "premium-blocks-for-gutenberg"),
-      value: "icon"
-    }, {
-      label: __("Custom Image", "premium-blocks-for-gutenberg"),
-      value: "image"
-    }, {
-      label: __("Lottie Animations", "premium-blocks-for-gutenberg"),
-      value: "lottie"
-    }],
-    value: contentStyles[0].iconType,
-    onChange: value => saveContentStyle({
-      iconType: value
-    })
-  }), contentStyles[0].iconType === "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    className: "premium-editor-paragraph"
-  }, __("Select Icon", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)((_fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_1___default()), {
-    icons: _pbg_components__WEBPACK_IMPORTED_MODULE_2__.iconsList,
-    onChange: newIcon => saveContentStyle({
-      contentIcon: newIcon
-    }),
-    value: contentStyles[0].contentIcon,
-    isMulti: false,
-    noSelectedPlaceholder: __("Select Icon", "premium-blocks-for-gutenberg")
-  })), contentStyles[0].iconType === "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.PremiumMediaUpload, {
-    type: "image",
-    imageID: contentStyles[0].contentImgID,
-    imageURL: contentStyles[0].contentImgURL,
-    onSelectMedia: media => {
-      saveContentStyle({
-        contentImgID: media.id,
-        contentImgURL: media.url
-      });
-    },
-    onRemoveImage: () => saveContentStyle({
-      contentImgID: "",
-      contentImgURL: ""
-    })
-  }), contentStyles[0].iconType === "lottie" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, _pbg_settings__WEBPACK_IMPORTED_MODULE_3__.JsonUploadEnabled == 1 ? "" : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, __('Make Sure that allow "JSON file Upload " from ', "premium-blocks-for-gutenberg"), " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ExternalLink, {
-    href: window.PremiumBlocksSettings.settingPath
-  }, "plugin Settings")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
-    label: __("Animation JSON URL", "premium-blocks-for-gutenberg"),
-    value: contentStyles[0].lottieURL,
-    onChange: value => saveContentStyle({
-      lottieURL: value
-    })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-    label: __("Loop", "premium-blocks-for-gutenberg"),
-    checked: contentStyles[0].loopLottie,
-    onChange: value => saveContentStyle({
-      loopLottie: value
-    })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-    label: __("Reverse", "premium-blocks-for-gutenberg"),
-    checked: contentStyles[0].reverseLottie,
-    onChange: value => saveContentStyle({
-      reverseLottie: value
-    })
-  }))), contentStyles[0].showLowerClose && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-    title: __("Lower Close Button", "premium-blocks-for-gutenberg"),
-    className: "premium-panel-body",
-    initialOpen: false
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TextControl, {
-    label: __("Lower Text", "premium-blocks-for-gutenberg"),
-    value: contentStyles[0].lowerCloseText,
-    onChange: value => saveContentStyle({
-      lowerCloseText: value
     })
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.InspectorTab, {
     key: "style"
@@ -4551,44 +4294,7 @@ const Inspector = _ref => {
     }),
     showUnits: true,
     responsive: true
-  })), contentStyles[0].showHeader && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-    title: __("Header", "premium-blocks-for-gutenberg"),
-    className: "premium-panel-body",
-    initialOpen: false
-  }, contentStyles[0].iconType !== "none" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.ResponsiveRangeControl, {
-    label: __("Size", "premium-blocks-for-gutenberg"),
-    value: iconSize,
-    onChange: newValue => setAttributes({
-      iconSize: newValue
-    }),
-    units: ["px", "em", "%"],
-    showUnit: true
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.PremiumTypo, {
-    value: headerTypography,
-    onChange: newValue => setAttributes({
-      headerTypography: newValue
-    })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.AdvancedColorControl, {
-    label: __("Color", "premium-blocks-for-gutenberg"),
-    colorValue: headerStyles[0].color,
-    colorDefault: "",
-    onColorChange: newValue => saveHeaderStyles({
-      color: newValue
-    })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.AdvancedColorControl, {
-    label: __("Background Color", "premium-blocks-for-gutenberg"),
-    colorValue: headerStyles[0].backColor,
-    colorDefault: "",
-    onColorChange: newValue => saveHeaderStyles({
-      backColor: newValue
-    })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.PremiumBorder, {
-    label: __("Border", "premium-blocks-for-gutenberg"),
-    value: headerBorder,
-    onChange: value => setAttributes({
-      headerBorder: value
-    })
-  })), contentStyles[0].showUpperClose && contentStyles[0].showHeader && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
     title: __("Upper Close Button", "premium-blocks-for-gutenberg"),
     className: "premium-panel-body",
     initialOpen: false
@@ -4632,57 +4338,8 @@ const Inspector = _ref => {
     }),
     showUnits: true,
     responsive: true
-  })), contentStyles[0].showLowerClose && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-    title: __("Lower Close Button", "premium-blocks-for-gutenberg"),
-    className: "premium-panel-body",
-    initialOpen: false
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.ResponsiveRangeControl, {
-    label: __("Width", "premium-blocks-for-gutenberg"),
-    value: lowerIconWidth,
-    onChange: value => setAttributes({
-      lowerIconWidth: value
-    }),
-    min: 1,
-    max: 500,
-    step: 1,
-    showUnit: true,
-    units: ["px", "em", "%"],
-    defaultValue: 0
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.PremiumTypo, {
-    value: lowerTypography,
-    onChange: newValue => setAttributes({
-      lowerTypography: newValue
-    })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.AdvancedColorControl, {
-    label: __("Color", "premium-blocks-for-gutenberg"),
-    colorValue: lowerStyles[0].color,
-    colorDefault: "",
-    onColorChange: newValue => saveLowerStyles({
-      color: newValue || "transparent"
-    })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.AdvancedColorControl, {
-    label: __(`Background Color`, "premium-blocks-for-gutenberg"),
-    colorValue: lowerStyles[0].backColor,
-    onColorChange: newvalue => saveLowerStyles({
-      backColor: newvalue
-    }),
-    colorDefault: ``
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.PremiumBorder, {
-    label: __("Border", "premium-blocks-for-gutenberg"),
-    value: lowerBorder,
-    onChange: value => setAttributes({
-      lowerBorder: value
-    })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.SpacingComponent, {
-    label: __("Padding", "premium-blocks-for-gutenberg"),
-    value: lowerPadding,
-    onChange: value => setAttributes({
-      lowerPadding: value
-    }),
-    showUnits: true,
-    responsive: true
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PanelBody, {
-    title: __("Modal Body", "premium-blocks-for-gutenberg"),
+    title: __("Container", "premium-blocks-for-gutenberg"),
     className: "premium-panel-body",
     initialOpen: false
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.ResponsiveRangeControl, {
@@ -4693,28 +4350,18 @@ const Inspector = _ref => {
     }),
     units: ["px", "em", "%"],
     showUnit: true,
-    max: 1500
+    max: 1500,
+    min: 100
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.ResponsiveRangeControl, {
     label: __("Max Height", "premium-blocks-for-gutenberg"),
     value: modalHeight,
     onChange: newValue => setAttributes({
       modalHeight: newValue
     }),
-    units: ["px", "em", "%"],
+    units: ["px", "vh", "%"],
     showUnit: true,
-    max: 500
-  }), "text" == modalStyles[0].contentType && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.PremiumTypo, {
-    value: modalTypography,
-    onChange: newValue => setAttributes({
-      modalTypography: newValue
-    })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.AdvancedColorControl, {
-    label: __("Text Color", "premium-blocks-for-gutenberg"),
-    colorValue: modalStyles[0].textColor,
-    colorDefault: "",
-    onColorChange: newValue => saveModalStyles({
-      textColor: newValue
-    })
+    max: 500,
+    min: 50
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.AdvancedColorControl, {
     label: __("Content Background Color", "premium-blocks-for-gutenberg"),
     colorValue: modalStyles[0].textBackColor,
@@ -4722,12 +4369,10 @@ const Inspector = _ref => {
     onColorChange: newValue => saveModalStyles({
       textBackColor: newValue
     })
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.AdvancedColorControl, {
-    label: __("Footer Background Color", "premium-blocks-for-gutenberg"),
-    colorValue: modalStyles[0].footerBackColor,
-    colorDefault: "",
-    onColorChange: newValue => saveModalStyles({
-      footerBackColor: newValue
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.PremiumBackgroundControl, {
+    value: containerBackground,
+    onChange: value => setAttributes({
+      containerBackground: value
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.PremiumBackgroundControl, {
     value: modalBackground,
@@ -4746,14 +4391,6 @@ const Inspector = _ref => {
       modalBorder: value
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.SpacingComponent, {
-    label: __("Margin", "premium-blocks-for-gutenberg"),
-    value: modalMargin,
-    onChange: value => setAttributes({
-      modalMargin: value
-    }),
-    showUnits: true,
-    responsive: true
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.SpacingComponent, {
     label: __("Padding", "premium-blocks-for-gutenberg"),
     value: modalPadding,
     onChange: value => setAttributes({
@@ -4809,9 +4446,6 @@ const {
   InnerBlocks,
   useBlockProps
 } = wp.blockEditor;
-const {
-  RichText
-} = wp.editor;
 
 const save = props => {
   const {
@@ -4823,12 +4457,8 @@ const save = props => {
     triggerSettings,
     triggerStyles,
     triggerBorder,
-    headerStyles,
-    headerBorder,
     upperStyles,
     upperBorder,
-    lowerStyles,
-    lowerBorder,
     modalStyles,
     modalBorder,
     triggerBorderH,
@@ -4837,9 +4467,6 @@ const save = props => {
     triggerTextShadow,
     modalShadow,
     triggerTypography,
-    headerTypography,
-    lowerTypography,
-    modalTypography,
     triggerFilter,
     triggerHoverFilter,
     hideDesktop,
@@ -4971,36 +4598,8 @@ const save = props => {
       boxShadow: `${modalShadow.horizontal}px ${modalShadow.vertical}px ${modalShadow.blur}px ${modalShadow.color} ${modalShadow.position}`
     })
   }, contentStyles[0].showHeader && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: `premium-modal-box-modal-header`,
-    style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
-      backgroundColor: headerStyles[0].backColor,
-      borderStyle: headerBorder.borderType,
-      borderColor: `${headerBorder.borderColor}`,
-      borderBottomStyle: headerBorder.borderType == 'none' ? 'solid' : headerBorder.borderType,
-      borderBottomWidth: headerBorder.borderType == 'none' ? '1px' : '',
-      borderBottomColor: headerBorder.borderType == 'none' ? '#e5e5e5' : headerBorder.borderColor
-    })
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h3", {
-    className: `premium-modal-box-modal-title`,
-    style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
-      color: headerStyles[0].color,
-      fontFamily: headerTypography.fontFamily,
-      fontWeight: headerTypography.fontWeight,
-      fontStyle: headerTypography.fontStyle,
-      textDecoration: headerTypography === null || headerTypography === void 0 ? void 0 : headerTypography.textDecoration,
-      textTransform: headerTypography === null || headerTypography === void 0 ? void 0 : headerTypography.textTransform
-    })
-  }, contentStyles[0].iconType === "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("i", {
-    className: contentStyles[0].contentIcon
-  }), contentStyles[0].iconType === "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("img", {
-    src: contentStyles[0].contentImgURL
-  }), contentStyles[0].iconType === "lottie" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: `premium-lottie-animation`,
-    "data-lottieurl": contentStyles[0].lottieURL,
-    "data-loop": contentStyles[0].loopLottie,
-    "data-reverse": contentStyles[0].reverseLottie,
-    "data-trigger": "none"
-  }), contentStyles[0].titleText), contentStyles[0].showUpperClose && contentStyles[0].showHeader && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: `premium-modal-box-modal-header`
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "premium-modal-box-close-button-container",
     style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       backgroundColor: `${upperStyles[0].backColor}`,
@@ -5019,39 +4618,7 @@ const save = props => {
     style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       background: modalStyles[0].textBackColor
     })
-  }, modalStyles[0].contentType === "text" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RichText.Content, {
-    tagName: 'p',
-    value: modalStyles[0].contentText,
-    style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
-      color: modalStyles[0].textColor,
-      fontFamily: modalTypography.fontFamily,
-      fontWeight: modalTypography.fontWeight,
-      fontStyle: modalTypography.fontStyle,
-      textDecoration: modalTypography === null || modalTypography === void 0 ? void 0 : modalTypography.textDecoration,
-      textTransform: modalTypography === null || modalTypography === void 0 ? void 0 : modalTypography.textTransform
-    }),
-    keepPlaceholderOnFocus: true
-  }) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InnerBlocks.Content, null)), contentStyles[0].showLowerClose && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: `premium-modal-box-modal-footer`,
-    style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
-      backgroundColor: modalStyles[0].footerBackColor
-    })
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
-    className: `premium-modal-box-modal-lower-close close-button`,
-    role: "button",
-    "data-dismiss": "premium-modal",
-    style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
-      fontWeight: lowerTypography.fontWeight,
-      fontFamily: lowerTypography.fontFamily,
-      fontStyle: lowerTypography.fontStyle,
-      textDecoration: lowerTypography === null || lowerTypography === void 0 ? void 0 : lowerTypography.textDecoration,
-      textTransform: lowerTypography === null || lowerTypography === void 0 ? void 0 : lowerTypography.textTransform,
-      color: `${lowerStyles[0].color}`,
-      backgroundColor: `${lowerStyles[0].backColor}`,
-      borderStyle: `${lowerBorder.borderType}`,
-      borderColor: `${lowerBorder.borderColor}`
-    })
-  }, contentStyles[0].lowerCloseText)))));
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InnerBlocks.Content, null)))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (save);
