@@ -20,11 +20,12 @@ import {
     generateCss,
 } from "@pbg/helpers";
 import { Variations } from './variations'
+import { store as blockEditorStore } from '@wordpress/block-editor';
 
 const { __ } = wp.i18n;
 const { PanelBody } = wp.components;
-const { Fragment, useEffect } = wp.element;
-const { useDispatch, withSelect } = wp.data;
+const { Fragment, useEffect, useState, useMemo } = wp.element;
+const { useDispatch, withSelect, useSelect } = wp.data;
 const { compose } = wp.compose;
 const { createBlock } = wp.blocks;
 const {
@@ -55,7 +56,8 @@ function Edit(props) {
         containerShadow,
         containerHoverShadow,
         variation,
-        showVariation
+        showVariation,
+        variationsBlocks
     } = attributes;
 
     const loadStyles = () => {
@@ -100,26 +102,72 @@ function Edit(props) {
         if (nextVariation.innerBlocks) {
             props.replaceInnerBlocks(
                 props.clientId,
-                createBlocksFromInnerBlocksTemplate(nextVariation.innerBlocks)
+                createBlocksFromInnerBlocksTemplate(variationsBlocks[nextVariation.name].length > 0 ? variationsBlocks[nextVariation.name] : nextVariation.innerBlocks)
             );
         }
     };
 
+    const [varsBlocks, setsVarBlocks] = useState(variationsBlocks);
     const createBlocksFromInnerBlocksTemplate = (innerBlocksTemplate) => {
-        return innerBlocksTemplate.map(([name, attributes, innerBlocks = []]) =>
-            createBlock(
+        innerBlocksTemplate = innerBlocksTemplate.length > 0 ? innerBlocksTemplate.map(([name, attributes, innerBlocks = []]) => {
+            const foundBlocks = recursive(modifiedInnerBlocks, name);
+            if (foundBlocks.length > 0 && name !== 'premium/container') {
+                attributes = { ...attributes, ...foundBlocks[0][1] };
+            }
+            return [name, attributes, innerBlocks];
+        }) : [];
+        return innerBlocksTemplate.map(([name, attributes, innerBlocks = []]) => {
+            return createBlock(
                 name,
                 attributes,
                 createBlocksFromInnerBlocksTemplate(innerBlocks)
             )
-        );
+        });
     };
+
+    const recursiveMap = (blocks) => {
+        return blocks.map(block => {
+            const modifiedBlock = [block.name, block.attributes];
+            if (block.innerBlocks.length) {
+                modifiedBlock.push(recursiveMap(block.innerBlocks));
+            }
+            return modifiedBlock;
+        });
+    }
+
+    const innerBlocks = useSelect(select => {
+        const { getBlocks } = select(blockEditorStore);
+        return getBlocks(clientId);
+    }, [clientId]);
+
+    const modifiedInnerBlocks = useMemo(() => recursiveMap(innerBlocks), [innerBlocks, variation]);
+
+    const recursive = (blocks, blockName) => {
+        let foundBlocks = [];
+        blocks.forEach(block => {
+            if (block[0] === blockName) {
+                foundBlocks.push(block);
+            }
+            if (block[2]) {
+                foundBlocks = [...foundBlocks, ...recursive(block[2], blockName)];
+            }
+        });
+        return foundBlocks;
+    }
+
+    useEffect(() => {
+        if (innerBlocks.length > 0) {
+            const newVarationsBlocks = { ...variationsBlocks, [variation.name]: modifiedInnerBlocks };
+            setsVarBlocks(newVarationsBlocks);
+        }
+    }, [innerBlocks, variation]);
 
     const onSelectVariations = (v) => {
         setAttributes({
             variation: v,
             showVariation: false
         });
+        setAttributes({ variationsBlocks: varsBlocks });
         blockVariationPickerOnSelect(v);
     }
 

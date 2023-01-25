@@ -5,11 +5,7 @@
     "name": "premium/icon-box",
     "title": "Icon Box",
     "description": "Add informative info boxes along with Icon, Description, and CTA using Premium Icon Box Block.yh",
-    "keywords": [
-        "Icon",
-        "Font Awesome",
-        "Box"
-    ],
+    "keywords": ["Icon", "Font Awesome", "Box"],
     "category": "premium-blocks",
     "attributes": {
         "blockId": {
@@ -168,6 +164,13 @@
         "showVariation": {
             "type": "boolean",
             "default": true
+        },
+        "variationsBlocks": {
+            "type": "object",
+            "default": {
+                "default": [],
+                "horizontal": []
+            }
         }
     },
     "editorScript": "pbg-blocks-js",
