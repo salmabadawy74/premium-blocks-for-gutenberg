@@ -24,7 +24,7 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 
 	if ( isset( $attr['align']['Desktop'] ) ) {
 		$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' );
-		$css->add_property( 'text-align', $css->get_responsive_css( $attr['align'], 'Desktop' ) );
+		$css->add_property( 'text-align', $css->get_responsive_css( $attr['align'], 'Desktop' ) . '!important' );
 	}
 
 	if ( isset( $attr['triggerIconSize']['Desktop'] ) ) {
@@ -138,7 +138,7 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 	// Width & Height for Modal
 	if ( isset( $attr['modalWidth'] ) ) {
 		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
-		$css->add_property( 'width', $css->render_range( $attr['modalWidth'], 'Desktop' ) );
+		$css->add_property( 'width', $css->render_range( $attr['modalWidth'], 'Desktop' ) . '!important' );
 	}
 
 	if ( isset( $attr['modalBorder'] ) ) {
@@ -156,14 +156,14 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 	}
 	if ( isset( $attr['modalHeight'] ) ) {
 		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . '> .premium-modal-box-modal-body' );
-		$css->add_property( 'max-height', $css->render_range( $attr['modalHeight'], 'Desktop' ) );
+		$css->add_property( 'max-height', $css->render_range( $attr['modalHeight'], 'Desktop' ) . '!important' );
 	}
 
 	$css->start_media_query( $media_query['tablet'] );
 
 	if ( isset( $attr['align']['Tablet'] ) ) {
 		$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' );
-		$css->add_property( 'text-align', $css->get_responsive_css( $attr['align'], 'Tablet' ) );
+		$css->add_property( 'text-align', $css->get_responsive_css( $attr['align'], 'Tablet' ) . '!important' );
 	}
 
 	if ( isset( $attr['triggerIconSize']['Tablet'] ) ) {
@@ -277,7 +277,7 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 	// Width & Height for Modal
 	if ( isset( $attr['modalWidth'] ) ) {
 		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
-		$css->add_property( 'width', $css->render_range( $attr['modalWidth'], 'Tablet' ) );
+		$css->add_property( 'width', $css->render_range( $attr['modalWidth'], 'Tablet' ) . '!important' );
 	}
 
 	if ( isset( $attr['modalBorder'] ) ) {
@@ -295,7 +295,7 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 	}
 	if ( isset( $attr['modalHeight'] ) ) {
 		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . '> .premium-modal-box-modal-body' );
-		$css->add_property( 'max-height', $css->render_range( $attr['modalHeight'], 'Tablet' ) );
+		$css->add_property( 'max-height', $css->render_range( $attr['modalHeight'], 'Tablet' ) . '!important' );
 	}
 
 	$css->stop_media_query();
@@ -303,7 +303,7 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 
 	if ( isset( $attr['align']['Mobile'] ) ) {
 		$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' );
-		$css->add_property( 'text-align', $css->get_responsive_css( $attr['align'], 'Mobile' ) );
+		$css->add_property( 'text-align', $css->get_responsive_css( $attr['align'], 'Mobile' ) . '!important' );
 	}
 
 	if ( isset( $attr['triggerIconSize']['Mobile'] ) ) {
@@ -417,7 +417,7 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 	// Width & Height for Modal
 	if ( isset( $attr['modalWidth'] ) ) {
 		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
-		$css->add_property( 'width', $css->render_range( $attr['modalWidth'], 'Mobile' ) );
+		$css->add_property( 'width', $css->render_range( $attr['modalWidth'], 'Mobile' ) . '!important' );
 	}
 
 	if ( isset( $attr['modalBorder'] ) ) {
@@ -435,7 +435,7 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 	}
 	if ( isset( $attr['modalHeight'] ) ) {
 		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . '> .premium-modal-box-modal-body' );
-		$css->add_property( 'max-height', $css->render_range( $attr['modalHeight'], 'Mobile' ) );
+		$css->add_property( 'max-height', $css->render_range( $attr['modalHeight'], 'Mobile' ) . '!important' );
 	}
 
 	$css->stop_media_query();
