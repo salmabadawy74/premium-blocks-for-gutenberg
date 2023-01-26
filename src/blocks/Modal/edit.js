@@ -319,40 +319,6 @@ const Edit = props => {
                                 // maxHeight: `${modalMaxHeight}${modalHeight.unit}`,
                                 boxShadow: `${modalShadow.horizontal}px ${modalShadow.vertical}px ${modalShadow.blur}px ${modalShadow.color} ${modalShadow.position}`,
                             }}>
-                            {contentStyles[0].showHeader &&
-                                <div className={`premium-modal-box-modal-header`}>
-                                    <div className="premium-modal-box-close-button-container"
-                                        style={{
-                                            ...borderCss(upperBorder, currentDevice),
-                                            ...paddingCss(upperPadding, currentDevice),
-                                            backgroundColor: `${upperStyles[0].backColor}`
-                                        }}>
-                                        <button role="button" className="premium-modal-box-modal-close close-button" onClick={() => setOpenModal(false)}
-                                            style={{
-                                                fontSize: `${upperIconWidth[currentDevice]}${upperIconWidth.unit}`,
-                                                color: `${upperStyles[0].color}`,
-
-                                            }} data-dismiss="premium-modal" >×</button>
-                                    </div>
-                                </div>
-                                // <div style={{
-                                //     width: '100%',
-                                //     display: 'inline-block',
-                                //     left: 0,
-                                //     zIndex: 100,
-                                //     position: 'absolute',
-                                //     top: 0,
-                                // }}>
-                                //     <button role="button" className="premium-modal-box-modal-close close-button" onClick={() => setOpenModal(false)}
-                                //         style={{
-                                //             fontSize: `${upperIconWidth[currentDevice]}${upperIconWidth.unit}`,
-                                //             color: `${upperStyles[0].color}`,
-                                //             ...borderCss(upperBorder, currentDevice),
-                                //             ...paddingCss(upperPadding, currentDevice),
-                                //             backgroundColor: `${upperStyles[0].backColor}`
-                                //         }} data-dismiss="premium-modal" >×</button>
-                                // </div>
-                            }
                             <div className={`premium-modal-box-modal-body`}
                                 style={{
                                     ...paddingCss(modalPadding, currentDevice),
@@ -364,6 +330,21 @@ const Edit = props => {
                                     template={INNER_BLOCKS_TEMPLATE}
                                     templateLock={false}
                                 />
+                            </div>
+                            <div className={`premium-modal-box-modal-header`}>
+                                <div className="premium-modal-box-close-button-container"
+                                    style={{
+                                        ...borderCss(upperBorder, currentDevice),
+                                        ...paddingCss(upperPadding, currentDevice),
+                                        backgroundColor: `${upperStyles[0].backColor}`
+                                    }}>
+                                    <button role="button" className="premium-modal-box-modal-close close-button" onClick={() => setOpenModal(false)}
+                                        style={{
+                                            fontSize: `${upperIconWidth[currentDevice]}${upperIconWidth.unit}`,
+                                            color: `${upperStyles[0].color}`,
+
+                                        }} data-dismiss="premium-modal" >×</button>
+                                </div>
                             </div>
                         </div>
                     </div>

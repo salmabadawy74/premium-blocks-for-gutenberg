@@ -3574,7 +3574,17 @@ const Edit = props => {
       // maxHeight: `${modalMaxHeight}${modalHeight.unit}`,
       boxShadow: `${modalShadow.horizontal}px ${modalShadow.vertical}px ${modalShadow.blur}px ${modalShadow.color} ${modalShadow.position}`
     }
-  }, contentStyles[0].showHeader && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: `premium-modal-box-modal-body`,
+    style: { ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.paddingCss)(modalPadding, currentDevice),
+      background: modalStyles[0].textBackColor,
+      maxHeight: `${modalMaxHeight}${modalHeight.unit}`,
+      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.gradientBackground)(containerBackground)
+    }
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InnerBlocks, {
+    template: INNER_BLOCKS_TEMPLATE,
+    templateLock: false
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-modal-box-modal-header`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "premium-modal-box-close-button-container",
@@ -3591,34 +3601,7 @@ const Edit = props => {
       color: `${upperStyles[0].color}`
     },
     "data-dismiss": "premium-modal"
-  }, "\xD7"))) // <div style={{
-  //     width: '100%',
-  //     display: 'inline-block',
-  //     left: 0,
-  //     zIndex: 100,
-  //     position: 'absolute',
-  //     top: 0,
-  // }}>
-  //     <button role="button" className="premium-modal-box-modal-close close-button" onClick={() => setOpenModal(false)}
-  //         style={{
-  //             fontSize: `${upperIconWidth[currentDevice]}${upperIconWidth.unit}`,
-  //             color: `${upperStyles[0].color}`,
-  //             ...borderCss(upperBorder, currentDevice),
-  //             ...paddingCss(upperPadding, currentDevice),
-  //             backgroundColor: `${upperStyles[0].backColor}`
-  //         }} data-dismiss="premium-modal" >×</button>
-  // </div>
-  , (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: `premium-modal-box-modal-body`,
-    style: { ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.paddingCss)(modalPadding, currentDevice),
-      background: modalStyles[0].textBackColor,
-      maxHeight: `${modalMaxHeight}${modalHeight.unit}`,
-      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.gradientBackground)(containerBackground)
-    }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InnerBlocks, {
-    template: INNER_BLOCKS_TEMPLATE,
-    templateLock: false
-  })))), loadTriggerGoogleFonts))];
+  }, "\xD7"))))), loadTriggerGoogleFonts))];
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (withSelect(select => {
@@ -4597,7 +4580,13 @@ const save = props => {
       borderColor: `${modalBorder.borderColor}`,
       boxShadow: `${modalShadow.horizontal}px ${modalShadow.vertical}px ${modalShadow.blur}px ${modalShadow.color} ${modalShadow.position}`
     })
-  }, contentStyles[0].showHeader && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: `premium-modal-box-modal-body`,
+    style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
+      display: 'block',
+      background: modalStyles[0].textBackColor
+    })
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InnerBlocks.Content, null)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-modal-box-modal-header`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "premium-modal-box-close-button-container",
@@ -4613,12 +4602,7 @@ const save = props => {
       color: `${upperStyles[0].color}`
     }),
     "data-dismiss": "premium-modal"
-  }, "\xD7"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: `premium-modal-box-modal-body`,
-    style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
-      background: modalStyles[0].textBackColor
-    })
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InnerBlocks.Content, null)))));
+  }, "\xD7"))))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (save);

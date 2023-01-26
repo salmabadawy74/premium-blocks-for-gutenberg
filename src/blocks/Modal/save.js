@@ -169,7 +169,14 @@ const save = props => {
                         borderColor: `${modalBorder.borderColor}`,
                         boxShadow: `${modalShadow.horizontal}px ${modalShadow.vertical}px ${modalShadow.blur}px ${modalShadow.color} ${modalShadow.position}`,
                     })}>
-                    {contentStyles[0].showHeader && <div className={`premium-modal-box-modal-header`}>
+                    <div className={`premium-modal-box-modal-body`}
+                        style={filterJsCss({
+                            display: 'block',
+                            background: modalStyles[0].textBackColor
+                        })}>
+                        <InnerBlocks.Content />
+                    </div>
+                    <div className={`premium-modal-box-modal-header`}>
                         <div className="premium-modal-box-close-button-container"
                             style={filterJsCss({
                                 backgroundColor: `${upperStyles[0].backColor}`,
@@ -183,12 +190,6 @@ const save = props => {
 
                                 })} data-dismiss="premium-modal" >×</button>
                         </div>
-                    </div>}
-                    <div className={`premium-modal-box-modal-body`}
-                        style={filterJsCss({
-                            background: modalStyles[0].textBackColor
-                        })}>
-                        <InnerBlocks.Content />
                     </div>
                 </div>
             </div>

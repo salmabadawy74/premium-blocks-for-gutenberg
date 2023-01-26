@@ -140,10 +140,6 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
 		$css->add_property( 'width', $css->render_range( $attr['modalWidth'], 'Desktop' ) );
 	}
-	if ( isset( $attr['modalHeight'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
-		$css->add_property( 'max-height', $css->render_range( $attr['modalHeight'], 'Desktop' ) );
-	}
 
 	if ( isset( $attr['modalBorder'] ) ) {
 		$modal_border_width  = $attr['modalBorder']['borderWidth'];
@@ -157,6 +153,10 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 		$modal_padding = $attr['modalPadding'];
 		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . '> .premium-modal-box-modal-body' );
 		$css->add_property( 'padding', $css->render_spacing( $modal_padding['Desktop'], $modal_padding['unit'] ) );
+	}
+	if ( isset( $attr['modalHeight'] ) ) {
+		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . '> .premium-modal-box-modal-body' );
+		$css->add_property( 'max-height', $css->render_range( $attr['modalHeight'], 'Desktop' ) );
 	}
 
 	$css->start_media_query( $media_query['tablet'] );
@@ -279,10 +279,6 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
 		$css->add_property( 'width', $css->render_range( $attr['modalWidth'], 'Tablet' ) );
 	}
-	if ( isset( $attr['modalHeight'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
-		$css->add_property( 'max-height', $css->render_range( $attr['modalHeight'], 'Tablet' ) );
-	}
 
 	if ( isset( $attr['modalBorder'] ) ) {
 		$modal_border_width  = $attr['modalBorder']['borderWidth'];
@@ -296,6 +292,10 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 		$modal_padding = $attr['modalPadding'];
 		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . '> .premium-modal-box-modal-body' );
 		$css->add_property( 'padding', $css->render_spacing( $modal_padding['Tablet'], $modal_padding['unit'] ) );
+	}
+	if ( isset( $attr['modalHeight'] ) ) {
+		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . '> .premium-modal-box-modal-body' );
+		$css->add_property( 'max-height', $css->render_range( $attr['modalHeight'], 'Tablet' ) );
 	}
 
 	$css->stop_media_query();
@@ -419,10 +419,6 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
 		$css->add_property( 'width', $css->render_range( $attr['modalWidth'], 'Mobile' ) );
 	}
-	if ( isset( $attr['modalHeight'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
-		$css->add_property( 'max-height', $css->render_range( $attr['modalHeight'], 'Mobile' ) );
-	}
 
 	if ( isset( $attr['modalBorder'] ) ) {
 		$modal_border_width  = $attr['modalBorder']['borderWidth'];
@@ -436,6 +432,10 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 		$modal_padding = $attr['modalPadding'];
 		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . '> .premium-modal-box-modal-body' );
 		$css->add_property( 'padding', $css->render_spacing( $modal_padding['Mobile'], $modal_padding['unit'] ) );
+	}
+	if ( isset( $attr['modalHeight'] ) ) {
+		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . '> .premium-modal-box-modal-body' );
+		$css->add_property( 'max-height', $css->render_range( $attr['modalHeight'], 'Mobile' ) );
 	}
 
 	$css->stop_media_query();
