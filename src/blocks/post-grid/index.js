@@ -1,6 +1,6 @@
 import PostTemplateEdit from "./edit";
 import save from "./save";
-import json from "./block.json";
+import json from "../../../blocks-config/post-grid/block.json";
 // Components
 import { __ } from "@wordpress/i18n";
 
@@ -14,7 +14,7 @@ registerBlockType("premium/post-grid", {
      */
 
     icon: "",
-    keywords: [__("post"), __("excerpt")],
+    keywords: [__("post"), __("Grid")],
     edit: PostTemplateEdit,
     example: {},
     supports: {

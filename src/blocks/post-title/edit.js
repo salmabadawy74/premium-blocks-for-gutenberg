@@ -127,7 +127,6 @@ function PostTitle(props) {
             </TitleTag>
         );
     }
-    console.log("FFF");
 
     return (
         <Fragment>
@@ -320,9 +319,8 @@ function PostTitle(props) {
     );
 }
 export default withSelect((select, props) => {
-    const { __experimentalGetPreviewDeviceType = null } = select(
-        "core/edit-post"
-    );
+    const { __experimentalGetPreviewDeviceType = null } =
+        select("core/edit-post");
     let deviceType = __experimentalGetPreviewDeviceType
         ? __experimentalGetPreviewDeviceType()
         : null;

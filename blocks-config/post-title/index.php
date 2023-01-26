@@ -17,13 +17,12 @@
  */
 function render_post_title($attributes, $content, $block)
 {
+
     if (!isset($block->context['postId'])) {
-        return '';
     }
 
     $post_ID = $block->context['postId'];
     $title   = get_the_title();
-
     if (!$title) {
         return '';
     }
@@ -43,15 +42,14 @@ function render_post_title($attributes, $content, $block)
  */
 function register_block_post_title()
 {
-    if (!function_exists('register_block_type')) {
-        return;
-    }
-
     register_block_type(
-        PREMIUM_BLOCKS_PATH . '/blocks-config/post-title',
+        'premium/post-title',
         array(
             'render_callback' => 'render_post_title',
+            'editor_style'    => 'premium-blocks-editor-css',
+            'editor_script'   => 'pbg-blocks-js',
         )
     );
 }
+
 register_block_post_title();

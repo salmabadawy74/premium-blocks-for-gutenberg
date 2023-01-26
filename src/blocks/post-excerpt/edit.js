@@ -7,6 +7,8 @@ import {
     typographyCss,
     marginCss,
     borderCss,
+    paddingCss,
+    generateCss,
 } from "@pbg/helpers";
 import {
     ResponsiveSingleRangeControl,
@@ -458,6 +460,12 @@ function Excerpt(props) {
                 </InspectorTabs>
             </InspectorControls>
             <div {...blockProps} id={blockId}>
+                <style
+                    dangerouslySetInnerHTML={{
+                        __html: loadStyles(),
+                    }}
+                />
+
                 {Content}
                 {showContent && excerptType === "Link" ? readMore : null}
             </div>
@@ -465,9 +473,8 @@ function Excerpt(props) {
     );
 }
 export default withSelect((select, props) => {
-    const { __experimentalGetPreviewDeviceType = null } = select(
-        "core/edit-post"
-    );
+    const { __experimentalGetPreviewDeviceType = null } =
+        select("core/edit-post");
     let deviceType = __experimentalGetPreviewDeviceType
         ? __experimentalGetPreviewDeviceType()
         : null;

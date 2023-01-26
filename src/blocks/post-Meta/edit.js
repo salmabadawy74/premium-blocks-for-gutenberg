@@ -61,11 +61,7 @@ function Meta(props) {
     let categoryObject = [];
     if (categoriesList) {
         categoriesList.map((item, thisIndex) => {
-            console.log(item.id, categories[thisIndex], thisIndex);
-
             if (item.id == categories[thisIndex]) {
-                console.log("welocom");
-
                 categoryObject.push(item);
             }
         });

@@ -144,7 +144,7 @@ function render_meta_taxonomy($attributes)
 function register_block_post_meta()
 {
     register_block_type(
-        PREMIUM_BLOCKS_PATH . '/blocks-config/post-title',
+        'premium/post-meta',
         array(
             'render_callback' => 'render_block_core_post_meta',
         )

@@ -1,0 +1,22 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "premium/post-template",
+	"title": "Post Template",
+	"category": "premium blocks",
+	"parent": [ "premium/post-grid" ],
+	"description": "Contains the block elements used to render a post, like the title, date, featured image, content or excerpt, and more.",
+	"textdomain": "default",
+	"usesContext": [
+		"queryId",
+		"query",
+		"queryContext"
+	],
+	"supports": {
+		"reusable": false,
+		"html": false,
+		"align": true,
+		"__experimentalLayout": {
+			"allowEditing": false
+		}
+	}}

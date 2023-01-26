@@ -41,8 +41,10 @@ function Tags(props) {
         attributes,
         setAttributes,
         taxonomies,
+        deviceType,
     } = props;
     const {
+        blockId,
         displayPostTags,
         typography,
         color,
@@ -51,8 +53,21 @@ function Tags(props) {
         hideTablet,
         hideMobile,
     } = attributes;
+    useEffect(() => {
+        // Set block id.
+        setAttributes({
+            blockId: "premium-post-tag-" + generateBlockId(clientId),
+        });
+    }, []);
+
     const [tags, setTags] = useEntityProp("postType", postType, "tags", postId);
-    console.log(taxonomies, tags);
+    const blockProps = useBlockProps({
+        className: classNames(blockId, "premium-blog-post-tags-container", {
+            " premium-desktop-hidden": hideDesktop,
+            " premium-tablet-hidden": hideTablet,
+            " premium-mobile-hidden": hideMobile,
+        }),
+    });
     let tagName = [];
     if (taxonomies) {
         taxonomies.map((tag, thisIndex) => {
@@ -61,12 +76,96 @@ function Tags(props) {
             }
         });
     }
+    const loadStyles = () => {
+        const styles = {};
+        styles[`.${blockId}.premium-blog-post-tags-container:hover `] = {
+            color: hoverColor,
+        };
+        return generateCss(styles);
+    };
+
     if (tagName.length > 0 && displayPostTags) {
         return (
-            <div className={`premium-blog-post-tags-container`}>
-                <i className={`fa fa-tags fa-fw`}></i>
-                {tagName.join(",")}
-            </div>
+            <Fragment>
+                <InspectorControls>
+                    <InspectorTabs tabs={["style", "advance"]}>
+                        <InspectorTab key={"style"}>
+                            <PremiumTypo
+                                value={typography}
+                                onChange={(newValue) =>
+                                    setAttributes({ titleTypography: newValue })
+                                }
+                            />
+                            <AdvancedPopColorControl
+                                label={__(
+                                    "Color",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                colorValue={color}
+                                colorDefault={""}
+                                onColorChange={(newValue) =>
+                                    setAttributes({ color: newValue })
+                                }
+                            />
+                            <AdvancedPopColorControl
+                                label={__(
+                                    "Hover  Color",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                colorValue={hoverColor}
+                                colorDefault={""}
+                                onColorChange={(newValue) =>
+                                    setAttributes({ color: newValue })
+                                }
+                            />
+                        </InspectorTab>
+                        <InspectorTab key={"advance"}>
+                            <PremiumResponsiveTabs
+                                Desktop={hideDesktop}
+                                Tablet={hideTablet}
+                                Mobile={hideMobile}
+                                onChangeDesktop={(value) =>
+                                    setAttributes({
+                                        hideDesktop: value
+                                            ? " premium-desktop-hidden"
+                                            : "",
+                                    })
+                                }
+                                onChangeTablet={(value) =>
+                                    setAttributes({
+                                        hideTablet: value
+                                            ? " premium-tablet-hidden"
+                                            : "",
+                                    })
+                                }
+                                onChangeMobile={(value) =>
+                                    setAttributes({
+                                        hideMobile: value
+                                            ? " premium-mobile-hidden"
+                                            : "",
+                                    })
+                                }
+                            />
+                        </InspectorTab>
+                    </InspectorTabs>
+                </InspectorControls>
+                <div
+                    {...blockProps}
+                    style={{
+                        color: color,
+                        ...typographyCss(typography, deviceType),
+                    }}
+                >
+                    <style
+                        dangerouslySetInnerHTML={{
+                            __html: loadStyles(),
+                        }}
+                    />
+
+                    <i className={`fa fa-tags fa-fw`}></i>
+                    {tagName.join(",")}
+                </div>
+            </Fragment>
         );
     } else {
         return null;
@@ -77,11 +176,18 @@ export default withSelect((select, props) => {
         context: { postId, postType, queryId },
     } = props;
     let taxonomies;
+    const { __experimentalGetPreviewDeviceType = null } =
+        select("core/edit-post");
+    let deviceType = __experimentalGetPreviewDeviceType
+        ? __experimentalGetPreviewDeviceType()
+        : null;
+
     taxonomies = wp.data
         .select("core")
         .getEntityRecords("taxonomy", "post_tag");
 
     return {
         taxonomies: taxonomies,
+        deviceType: deviceType,
     };
 })(Tags);

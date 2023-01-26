@@ -4,7 +4,7 @@
     "name": "premium/post-meta",
     "title": "Post Meta",
     "category": "premium-blocks",
-    "parent": ["premium/post-grid"],
+    "parent": ["premium/post-template"],
     "description": "Display a post's Meta.",
     "textdomain": "default",
     "attributes": {
