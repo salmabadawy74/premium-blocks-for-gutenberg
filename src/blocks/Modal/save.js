@@ -26,7 +26,8 @@ const save = props => {
         triggerHoverFilter,
         hideDesktop,
         hideTablet,
-        hideMobile
+        hideMobile,
+        containerBackground
     } = props.attributes;
 
     const loadStyles = () => {
@@ -171,8 +172,9 @@ const save = props => {
                     })}>
                     <div className={`premium-modal-box-modal-body`}
                         style={filterJsCss({
+                            ...gradientBackground(containerBackground),
                             display: 'block',
-                            background: modalStyles[0].textBackColor
+                            // background: modalStyles[0].textBackColor
                         })}>
                         <InnerBlocks.Content />
                     </div>

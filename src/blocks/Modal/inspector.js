@@ -867,21 +867,24 @@ const Inspector = ({ attributes, setAttributes }) => {
                                                     })
                                                 }
                                             />
-                                            <AdvancedPopColorControl
-                                                label={__(
-                                                    "Icon Color",
-                                                    "premium-blocks-for-gutenberg"
-                                                )}
-                                                colorValue={
-                                                    triggerStyles[0].iconColor
-                                                }
-                                                colorDefault={""}
-                                                onColorChange={(newValue) =>
-                                                    saveTriggerStyles({
-                                                        iconColor: newValue,
-                                                    })
-                                                }
-                                            />
+                                            {triggerSettings[0].triggerType === "button" &&
+                                                triggerSettings[0].showIcon &&
+                                                <AdvancedPopColorControl
+                                                    label={__(
+                                                        "Icon Color",
+                                                        "premium-blocks-for-gutenberg"
+                                                    )}
+                                                    colorValue={
+                                                        triggerStyles[0].iconColor
+                                                    }
+                                                    colorDefault={""}
+                                                    onColorChange={(newValue) =>
+                                                        saveTriggerStyles({
+                                                            iconColor: newValue,
+                                                        })
+                                                    }
+                                                />
+                                            }
                                             <AdvancedPopColorControl
                                                 label={__(
                                                     "Background Color",

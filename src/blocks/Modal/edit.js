@@ -322,7 +322,7 @@ const Edit = props => {
                             <div className={`premium-modal-box-modal-body`}
                                 style={{
                                     ...paddingCss(modalPadding, currentDevice),
-                                    background: modalStyles[0].textBackColor,
+                                    // background: modalStyles[0].textBackColor,
                                     maxHeight: `${modalMaxHeight}${modalHeight.unit}`,
                                     ...gradientBackground(containerBackground)
                                 }}>
