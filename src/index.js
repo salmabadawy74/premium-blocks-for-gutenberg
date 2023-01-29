@@ -55,10 +55,11 @@ import "./blocks/text";
 import "./blocks/badge";
 import "./blocks/image";
 import "./blocks/icon-group";
+import "./blocks/post-template";
+
 import "./blocks/post-grid";
 import "./blocks/pagination";
 import "./blocks/post-tag";
-import "./blocks/post-template";
 
 window.PremiumOptionsSettings = {
     FontAwesomeEnabled,

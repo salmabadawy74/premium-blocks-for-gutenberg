@@ -19,7 +19,13 @@ import {
 import { Spinner } from "@wordpress/components";
 import { store as coreStore } from "@wordpress/core-data";
 
-const TEMPLATE = [["premium/post-title"], ["premium/post-excerpt"]];
+const TEMPLATE = [
+    ["premium/post-featured-image"],
+    ["premium/post-title"],
+    ["premium/post-meta"],
+    ["premium/post-excerpt"],
+    ["premium/post-tag"],
+];
 
 function PostTemplateInnerBlocks() {
     const innerBlocksProps = useInnerBlocksProps(

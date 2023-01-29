@@ -12,7 +12,7 @@ import { __ } from "@wordpress/i18n";
 
 import { registerBlockType } from "@wordpress/blocks";
 
-import json from './block.json'
+import json from "../../../blocks-config/feature-image/block.json";
 // Register the block
 registerBlockType("premium/post-featured-image", {
     ...json,

@@ -1,98 +1,76 @@
 <?php
 
 /**
- * Server-side rendering of the `core/post-excerpt` block.
+ * Server-side rendering of the `premium/post-excerpt` block.
  *
  * @package WordPress
  */
 
 /**
- * Renders the `core/post-excerpt` block on the server.
+ * Renders the `premium/post-excerpt` block on the server.
  *
  * @param array    $attributes Block attributes.
  * @param string   $content    Block default content.
  * @param WP_Block $block      Block instance.
  * @return string Returns the filtered post excerpt for the current post wrapped inside "p" tags.
  */
-function get_post_content($attributes)
+function render_block_premium_post_excerpt($attributes, $content, $block)
 {
     if (!isset($block->context['postId'])) {
         return '';
     }
 
     $excerpt = get_the_excerpt();
-    $src          = $attributes['displayPostExcerpt'];
-    $excerpt_type = $attributes['excerptType'];
-    $excerpt_text = $attributes['readMoreText'];
-    $length       = $attributes['excerptLength'];
-    // Get post content.
-    if ('Post Excerpt' === $src) :
-        echo '<p class="premium-blog-post-content">';
-    endif;
-    echo wp_kses_post($this->render_post_content($src, $length, $excerpt_type, $excerpt_text));
-    if ('Post Excerpt' === $src) :
-        echo '</p>';
-    endif;
-    // Get post excerpt.
-    if ('Link' === $excerpt_type) :
-        $this->get_post_excerpt_link($excerpt_text, $attributes);
-    endif;
-}
-function render_post_content($source, $excerpt_length, $cta_type, $read_more)
-{
-    $excerpt = '';
-    if ('Post Full Content' === $source) {
-        // Print post full content.
-        the_content();
+
+    if (empty($excerpt)) {
+        return '';
+    }
+
+    $more_text           = !empty($attributes['moreText']) ? '<a class="wp-block-post-excerpt__more-link" href="' . esc_url(get_the_permalink($block->context['postId'])) . '">' . wp_kses_post($attributes['moreText']) . '</a>' : '';
+    $filter_excerpt_more = function ($more) use ($more_text) {
+        return empty($more_text) ? $more : '';
+    };
+    /**
+     * Some themes might use `excerpt_more` filter to handle the
+     * `more` link displayed after a trimmed excerpt. Since the
+     * block has a `more text` attribute we have to check and
+     * override if needed the return value from this filter.
+     * So if the block's attribute is not empty override the
+     * `excerpt_more` filter and return nothing. This will
+     * result in showing only one `read more` link at a time.
+     */
+    add_filter('excerpt_more', $filter_excerpt_more);
+    $classes = array();
+    if (isset($attributes['textAlign'])) {
+        $classes[] = 'has-text-align-' . $attributes['textAlign'];
+    }
+    if (isset($attributes['style']['elements']['link']['color']['text'])) {
+        $classes[] = 'has-link-color';
+    }
+    $wrapper_attributes = get_block_wrapper_attributes(array('class' => implode(' ', $classes)));
+
+    $content               = '<p class="wp-block-post-excerpt__excerpt">' . $excerpt;
+    $show_more_on_new_line = !isset($attributes['showMoreOnNewLine']) || $attributes['showMoreOnNewLine'];
+    if ($show_more_on_new_line && !empty($more_text)) {
+        $content .= '</p><p class="wp-block-post-excerpt__more-text">' . $more_text . '</p>';
     } else {
-        $excerpt = trim(get_the_excerpt());
-        $words   = explode(' ', $excerpt, $excerpt_length + 1);
-        if (count($words) > $excerpt_length) {
-            if (!has_excerpt()) {
-                array_pop($words);
-                if ('dots' === $cta_type) {
-                    array_push($words, '…');
-                }
-            }
-        }
-        $excerpt = implode(' ', $words);
+        $content .= " $more_text</p>";
     }
-    return $excerpt;
-}
-/**
- * Function runder Button
- *
- * @param [type] $read_more
- * @param [type] $attributes
- * @return void
- */
-function get_post_excerpt_link($read_more, $attributes)
-{
-    if (empty($read_more)) {
-        return;
-    }
-    $wrapbutton = array('premium-blog-excerpt-link-wrap', 'premium-blog-excerpt-link-' . $attributes['fullWidth']);
-?>
-    <div class="<?php echo esc_html(implode(' ', $wrapbutton)); ?>">
-        <a href="<?php the_permalink(); ?>" class="premium-blog-excerpt-link elementor-button">
-            <?php echo wp_kses_post($read_more); ?>
-        </a>
-    </div>
-
-
-<?php
+    remove_filter('excerpt_more', $filter_excerpt_more);
+    return sprintf('<div %1$s>%2$s</div>', $wrapper_attributes, $content);
 }
 
 /**
  * Registers the `core/post-excerpt` block on the server.
  */
-function register_core_post_excerpt()
+function register_block_premium_post_excerpt()
 {
     register_block_type(
-        PREMIUM_BLOCKS_PATH . '/blocks-config/post-excerpt/block.json',
+        PREMIUM_BLOCKS_PATH . '/blocks-config/post-excerpt',
         array(
-            'render_callback' => 'get_post_content',
+            'render_callback' => 'render_block_premium_post_excerpt',
         )
     );
 }
-register_core_post_excerpt();
+
+register_block_premium_post_excerpt();

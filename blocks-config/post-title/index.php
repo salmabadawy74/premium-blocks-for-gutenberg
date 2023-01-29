@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Server-side rendering of the `core/post-title` block.
+ * Server-side rendering of the `premium/post-title` block.
  *
  * @package WordPress
  */
 
 /**
- * Renders the `core/post-title` block on the server.
+ * Renders the `premium/post-title` block on the server.
  *
  * @param array    $attributes Block attributes.
  * @param string   $content    Block default content.
@@ -15,41 +15,60 @@
  *
  * @return string Returns the filtered post title for the current post wrapped inside "h1" tags.
  */
-function render_post_title($attributes, $content, $block)
+function render_block_premium_post_title($attributes, $content, $block)
 {
-
     if (!isset($block->context['postId'])) {
+        return '';
     }
 
     $post_ID = $block->context['postId'];
     $title   = get_the_title();
+
     if (!$title) {
         return '';
     }
-?>
-    <div class="premium-blog-entry-title">
-        <h2>
-            <a href="<?php the_permalink($post_ID); ?>">
-                <?php esc_html(the_title()); ?>
-            </a>
-        </h2>
-    </div>
-<?php
-}
 
-/**
- * Registers the `core/post-title` block on the server.
- */
-function register_block_post_title()
-{
-    register_block_type(
-        'premium/post-title',
-        array(
-            'render_callback' => 'render_post_title',
-            'editor_style'    => 'premium-blocks-editor-css',
-            'editor_script'   => 'pbg-blocks-js',
-        )
+    $tag_name = 'h2';
+    if (isset($attributes['level'])) {
+        $tag_name = 0 === $attributes['level'] ? 'p' : 'h' . $attributes['level'];
+    }
+
+    if (isset($attributes['isLink']) && $attributes['isLink']) {
+        $rel   = !empty($attributes['rel']) ? 'rel="' . esc_attr($attributes['rel']) . '"' : '';
+        $title = sprintf('<a href="%1$s" target="%2$s" %3$s>%4$s</a>', get_the_permalink($post_ID), esc_attr($attributes['linkTarget']), $rel, $title);
+    }
+
+    $classes = array();
+    if (isset($attributes['textAlign'])) {
+        $classes[] = 'has-text-align-' . $attributes['textAlign'];
+    }
+    if (isset($attributes['style']['elements']['link']['color']['text'])) {
+        $classes[] = 'has-link-color';
+    }
+    $wrapper_attributes = get_block_wrapper_attributes(array('class' => implode(' ', $classes)));
+
+    return sprintf(
+        '<%1$s %2$s>%3$s</%1$s>',
+        $tag_name,
+        $wrapper_attributes,
+        $title
     );
 }
 
-register_block_post_title();
+/**
+ * Registers the `premium/post-title` block on the server.
+ */
+function register_block_premium_post_title()
+{
+    if (!function_exists('register_block_type')) {
+        return;
+    }
+
+    register_block_type(
+        PREMIUM_BLOCKS_PATH . '/blocks-config/post-title',
+        array(
+            'render_callback' => 'render_block_premium_post_title',
+        )
+    );
+}
+register_block_premium_post_title();
