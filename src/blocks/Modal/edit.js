@@ -129,6 +129,12 @@ const Edit = props => {
             'border-bottom-left-radius': `${triggerBorderH?.borderRadius?.[currentDevice]?.bottom || 0}px!important`,
             'border-bottom-right-radius': `${triggerBorderH?.borderRadius?.[currentDevice]?.left || 0}px!important`,
         };
+        styles[` .${blockId} .premium-modal-box-modal-header .premium-modal-box-close-button-container:hover`] = {
+            'background-color': `${upperStyles[0].hoverBackColor} !important`
+        };
+        styles[` .${blockId} .premium-modal-box-modal-header .premium-modal-box-close-button-container:hover .premium-modal-box-modal-close`] = {
+            'color': `${upperStyles[0].hoverColor} !important`
+        };
         return generateCss(styles);
     }
 
@@ -322,7 +328,6 @@ const Edit = props => {
                             <div className={`premium-modal-box-modal-body`}
                                 style={{
                                     ...paddingCss(modalPadding, currentDevice),
-                                    // background: modalStyles[0].textBackColor,
                                     maxHeight: `${modalMaxHeight}${modalHeight.unit}`,
                                     ...gradientBackground(containerBackground)
                                 }}>

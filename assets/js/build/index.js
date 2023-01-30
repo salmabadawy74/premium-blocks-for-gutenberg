@@ -2396,6 +2396,13 @@ const v2Attributes = {
       "animationSpeed": "normal"
     }]
   },
+  "headerStyles": {
+    "type": "array",
+    "default": [{
+      "color": "",
+      "backColor": ""
+    }]
+  },
   "triggerSettings": {
     "type": "array",
     "default": [{
@@ -2431,8 +2438,57 @@ const v2Attributes = {
     "type": "array",
     "default": [{
       "color": "",
-      "backColor": ""
+      "backColor": "",
+      "hoverColor": "",
+      "hoverBackColor": ""
     }]
+  },
+  "headerBorder": {
+    "type": "object",
+    "default": {
+      "borderType": "none",
+      "borderColor": "",
+      "borderWidth": {
+        "Desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        }
+      },
+      "borderRadius": {
+        "Desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        }
+      }
+    }
   },
   "modalStyles": {
     "type": "array",
@@ -2891,8 +2947,9 @@ const v2Attributes = {
     }
   }
 };
+const deprecated_attributes2 = Object.assign(newAttributes, v2Attributes);
 const deprecated = [{
-  attributes: v2Attributes,
+  attributes: Object.assign(attributes, deprecated_attributes2),
 
   isEligible() {
     return true;
@@ -2914,7 +2971,7 @@ const deprecated = [{
       },
       containerBackground: {
         "backgroundType": "",
-        "backgroundColor": "",
+        "backgroundColor": attributes.modalStyles[0].textBackColor || "",
         "backgroundImageID": "",
         "backgroundImageURL": "",
         "backgroundPosition": "",
@@ -2927,7 +2984,13 @@ const deprecated = [{
         "gradientAngle": "180",
         "gradientPosition": "center center",
         "gradientType": "linear"
-      }
+      },
+      "upperStyles": [{
+        "color": attributes.upperStyles[0].color || "",
+        "backColor": attributes.upperStyles[0].backColor || "",
+        "hoverColor": "",
+        "hoverBackColor": ""
+      }]
     };
     return Object.assign(attributes, newAttributes);
   },
@@ -4211,6 +4274,12 @@ const Edit = props => {
       'border-bottom-left-radius': `${(triggerBorderH === null || triggerBorderH === void 0 ? void 0 : (_triggerBorderH$borde21 = triggerBorderH.borderRadius) === null || _triggerBorderH$borde21 === void 0 ? void 0 : (_triggerBorderH$borde22 = _triggerBorderH$borde21[currentDevice]) === null || _triggerBorderH$borde22 === void 0 ? void 0 : _triggerBorderH$borde22.bottom) || 0}px!important`,
       'border-bottom-right-radius': `${(triggerBorderH === null || triggerBorderH === void 0 ? void 0 : (_triggerBorderH$borde23 = triggerBorderH.borderRadius) === null || _triggerBorderH$borde23 === void 0 ? void 0 : (_triggerBorderH$borde24 = _triggerBorderH$borde23[currentDevice]) === null || _triggerBorderH$borde24 === void 0 ? void 0 : _triggerBorderH$borde24.left) || 0}px!important`
     };
+    styles[` .${blockId} .premium-modal-box-modal-header .premium-modal-box-close-button-container:hover`] = {
+      'background-color': `${upperStyles[0].hoverBackColor} !important`
+    };
+    styles[` .${blockId} .premium-modal-box-modal-header .premium-modal-box-close-button-container:hover .premium-modal-box-modal-close`] = {
+      'color': `${upperStyles[0].hoverColor} !important`
+    };
     return (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.generateCss)(styles);
   };
 
@@ -4373,7 +4442,6 @@ const Edit = props => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-modal-box-modal-body`,
     style: { ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.paddingCss)(modalPadding, currentDevice),
-      // background: modalStyles[0].textBackColor,
       maxHeight: `${modalMaxHeight}${modalHeight.unit}`,
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.gradientBackground)(containerBackground)
     }
@@ -5089,7 +5157,9 @@ const Inspector = _ref => {
     showUnit: true,
     units: ["px", "em", "%"],
     defaultValue: 0
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.AdvancedColorControl, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.InsideTabs, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.InsideTab, {
+    tabTitle: __("Normal", "premium-blocks-for-gutenberg")
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.AdvancedColorControl, {
     label: __("Color", "premium-blocks-for-gutenberg"),
     colorValue: upperStyles[0].color,
     colorDefault: "",
@@ -5103,7 +5173,23 @@ const Inspector = _ref => {
       backColor: newvalue
     }),
     colorDefault: ``
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.PremiumBorder, {
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.InsideTab, {
+    tabTitle: __("Hover", "premium-blocks-for-gutenberg")
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.AdvancedColorControl, {
+    label: __("Hover Color", "premium-blocks-for-gutenberg"),
+    colorValue: upperStyles[0].hoverColor,
+    colorDefault: "",
+    onColorChange: newValue => saveUpperStyles({
+      hoverColor: newValue || "transparent"
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.AdvancedColorControl, {
+    label: __("Background Hover Color", "premium-blocks-for-gutenberg"),
+    colorValue: upperStyles[0].hoverBackColor,
+    onColorChange: newvalue => saveUpperStyles({
+      hoverBackColor: newvalue
+    }),
+    colorDefault: ``
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.PremiumBorder, {
     label: __("Border", "premium-blocks-for-gutenberg"),
     value: upperBorder,
     onChange: value => setAttributes({
@@ -5141,19 +5227,14 @@ const Inspector = _ref => {
     showUnit: true,
     max: 500,
     min: 50
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.AdvancedColorControl, {
-    label: __("Content Background Color", "premium-blocks-for-gutenberg"),
-    colorValue: modalStyles[0].textBackColor,
-    colorDefault: "",
-    onColorChange: newValue => saveModalStyles({
-      textBackColor: newValue
-    })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.PremiumBackgroundControl, {
+    label: __("Container Type", "premium-blocks-for-gutenberg"),
     value: containerBackground,
     onChange: value => setAttributes({
       containerBackground: value
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.PremiumBackgroundControl, {
+    label: __("Otter Type", "premium-blocks-for-gutenberg"),
     value: modalBackground,
     onChange: value => setAttributes({
       modalBackground: value
@@ -5284,6 +5365,12 @@ const save = props => {
       'border-color': `${triggerBorderH && triggerBorderH.borderColor} !important`,
       'border-style': `${triggerBorderH && triggerBorderH.borderType} !important`
     };
+    styles[` .${blockId} .premium-modal-box-modal-header .premium-modal-box-close-button-container:hover`] = {
+      'background-color': `${upperStyles[0].hoverBackColor} !important`
+    };
+    styles[` .${blockId} .premium-modal-box-modal-header .premium-modal-box-close-button-container:hover .premium-modal-box-modal-close`] = {
+      'color': `${upperStyles[0].hoverColor} !important`
+    };
     return (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.generateCss)(styles);
   };
 
@@ -5380,8 +5467,7 @@ const save = props => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-modal-box-modal-body`,
     style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({ ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.gradientBackground)(containerBackground),
-      display: 'block' // background: modalStyles[0].textBackColor
-
+      display: 'block'
     })
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InnerBlocks.Content, null)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-modal-box-modal-header`

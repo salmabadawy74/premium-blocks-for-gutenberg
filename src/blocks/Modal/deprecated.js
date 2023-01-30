@@ -1042,6 +1042,15 @@ const v2Attributes = {
             }
         ]
     },
+    "headerStyles": {
+        "type": "array",
+        "default": [
+            {
+                "color": "",
+                "backColor": ""
+            }
+        ]
+    },
     "triggerSettings": {
         "type": "array",
         "default": [
@@ -1082,9 +1091,58 @@ const v2Attributes = {
         "default": [
             {
                 "color": "",
-                "backColor": ""
+                "backColor": "",
+                "hoverColor": "",
+                "hoverBackColor": ""
             }
         ]
+    },
+    "headerBorder": {
+        "type": "object",
+        "default": {
+            "borderType": "none",
+            "borderColor": "",
+            "borderWidth": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            },
+            "borderRadius": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            }
+        }
     },
     "modalStyles": {
         "type": "array",
@@ -1546,9 +1604,11 @@ const v2Attributes = {
     }
 }
 
+const deprecated_attributes2 = Object.assign(newAttributes, v2Attributes);
+
 const deprecated = [
     {
-        attributes: v2Attributes,
+        attributes: Object.assign(attributes, deprecated_attributes2),
         isEligible() {
             return true;
         },
@@ -1568,7 +1628,7 @@ const deprecated = [
                 },
                 containerBackground: {
                     "backgroundType": "",
-                    "backgroundColor": "",
+                    "backgroundColor": attributes.modalStyles[0].textBackColor || "",
                     "backgroundImageID": "",
                     "backgroundImageURL": "",
                     "backgroundPosition": "",
@@ -1581,7 +1641,15 @@ const deprecated = [
                     "gradientAngle": "180",
                     "gradientPosition": "center center",
                     "gradientType": "linear"
-                }
+                },
+                "upperStyles": [
+                    {
+                        "color": attributes.upperStyles[0].color || "",
+                        "backColor": attributes.upperStyles[0].backColor || "",
+                        "hoverColor": "",
+                        "hoverBackColor": ""
+                    }
+                ]
             }
             return Object.assign(attributes, newAttributes)
         },
