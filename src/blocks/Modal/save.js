@@ -60,6 +60,12 @@ const save = props => {
             'border-color': `${triggerBorderH && triggerBorderH.borderColor} !important`,
             'border-style': `${triggerBorderH && triggerBorderH.borderType} !important`
         };
+        styles[` .${blockId} .premium-modal-box-modal-header .premium-modal-box-close-button-container:hover`] = {
+            'background-color': `${upperStyles[0].hoverBackColor} !important`
+        };
+        styles[` .${blockId} .premium-modal-box-modal-header .premium-modal-box-close-button-container:hover .premium-modal-box-modal-close`] = {
+            'color': `${upperStyles[0].hoverColor} !important`
+        };
         return generateCss(styles);
     }
 
@@ -173,8 +179,7 @@ const save = props => {
                     <div className={`premium-modal-box-modal-body`}
                         style={filterJsCss({
                             ...gradientBackground(containerBackground),
-                            display: 'block',
-                            // background: modalStyles[0].textBackColor
+                            display: 'block'
                         })}>
                         <InnerBlocks.Content />
                     </div>

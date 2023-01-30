@@ -611,21 +611,21 @@ const Inspector = ({ attributes, setAttributes }) => {
                                 {JsonUploadEnabled == 1 ? (
                                     ""
                                 ) : (
-                                    <p>
-                                        {__(
-                                            'Make Sure that allow "JSON file Upload " from ',
-                                            "premium-blocks-for-gutenberg"
-                                        )}{" "}
-                                        <ExternalLink
-                                            href={
-                                                window.PremiumBlocksSettings
-                                                    .settingPath
-                                            }
-                                        >
-                                            plugin Settings
+                                        <p>
+                                            {__(
+                                                'Make Sure that allow "JSON file Upload " from ',
+                                                "premium-blocks-for-gutenberg"
+                                            )}{" "}
+                                            <ExternalLink
+                                                href={
+                                                    window.PremiumBlocksSettings
+                                                        .settingPath
+                                                }
+                                            >
+                                                plugin Settings
                                         </ExternalLink>
-                                    </p>
-                                )}
+                                        </p>
+                                    )}
                                 <ToggleControl
                                     label={__(
                                         "Loop",
@@ -1176,28 +1176,6 @@ const Inspector = ({ attributes, setAttributes }) => {
                                 )}
                         </PanelBody>
                     )}
-                    {/* {contentStyles[0].showHeader && (
-                        <PanelBody
-                            title={__("Header", "premium-blocks-for-gutenberg")}
-                            className="premium-panel-body"
-                            initialOpen={false}
-                        >
-                            {contentStyles[0].iconType !== "none" && (
-                                <ResponsiveRangeControl
-                                    label={__(
-                                        "Size",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                    value={iconSize}
-                                    onChange={(newValue) =>
-                                        setAttributes({ iconSize: newValue })
-                                    }
-                                    units={["px", "em", "%"]}
-                                    showUnit={true}
-                                />
-                            )}
-                        </PanelBody>
-                    )} */}
                     <PanelBody
                         title={__(
                             "Upper Close Button",
@@ -1222,30 +1200,74 @@ const Inspector = ({ attributes, setAttributes }) => {
                             units={["px", "em", "%"]}
                             defaultValue={0}
                         />
-                        <AdvancedPopColorControl
-                            label={__(
-                                "Color",
-                                "premium-blocks-for-gutenberg"
-                            )}
-                            colorValue={upperStyles[0].color}
-                            colorDefault={""}
-                            onColorChange={(newValue) =>
-                                saveUpperStyles({
-                                    color: newValue || "transparent",
-                                })
-                            }
-                        />
-                        <AdvancedPopColorControl
-                            label={__(
-                                `Background Color`,
-                                "premium-blocks-for-gutenberg"
-                            )}
-                            colorValue={upperStyles[0].backColor}
-                            onColorChange={(newvalue) =>
-                                saveUpperStyles({ backColor: newvalue })
-                            }
-                            colorDefault={``}
-                        />
+                        <InsideTabs>
+                            <InsideTab
+                                tabTitle={__(
+                                    "Normal",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                            >
+                                <Fragment>
+                                    <AdvancedPopColorControl
+                                        label={__(
+                                            "Color",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                        colorValue={upperStyles[0].color}
+                                        colorDefault={""}
+                                        onColorChange={(newValue) =>
+                                            saveUpperStyles({
+                                                color: newValue || "transparent",
+                                            })
+                                        }
+                                    />
+                                    <AdvancedPopColorControl
+                                        label={__(
+                                            `Background Color`,
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                        colorValue={upperStyles[0].backColor}
+                                        onColorChange={(newvalue) =>
+                                            saveUpperStyles({ backColor: newvalue })
+                                        }
+                                        colorDefault={``}
+                                    />
+                                </Fragment>
+                            </InsideTab>
+                            <InsideTab
+                                tabTitle={__(
+                                    "Hover",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                            >
+                                <Fragment>
+                                    <AdvancedPopColorControl
+                                        label={__(
+                                            "Hover Color",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                        colorValue={upperStyles[0].hoverColor}
+                                        colorDefault={""}
+                                        onColorChange={(newValue) =>
+                                            saveUpperStyles({
+                                                hoverColor: newValue || "transparent",
+                                            })
+                                        }
+                                    />
+                                    <AdvancedPopColorControl
+                                        label={__(
+                                            "Background Hover Color",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                        colorValue={upperStyles[0].hoverBackColor}
+                                        onColorChange={(newvalue) =>
+                                            saveUpperStyles({ hoverBackColor: newvalue })
+                                        }
+                                        colorDefault={``}
+                                    />
+                                </Fragment>
+                            </InsideTab>
+                        </InsideTabs>
                         <PremiumBorder
                             label={__(
                                 "Border",
@@ -1300,26 +1322,15 @@ const Inspector = ({ attributes, setAttributes }) => {
                             max={500}
                             min={50}
                         />
-                        <AdvancedPopColorControl
-                            label={__(
-                                "Content Background Color",
-                                "premium-blocks-for-gutenberg"
-                            )}
-                            colorValue={modalStyles[0].textBackColor}
-                            colorDefault={""}
-                            onColorChange={(newValue) =>
-                                saveModalStyles({
-                                    textBackColor: newValue,
-                                })
-                            }
-                        />
                         <PremiumBackgroundControl
+                            label={__("Container Type", "premium-blocks-for-gutenberg")}
                             value={containerBackground}
                             onChange={(value) =>
                                 setAttributes({ containerBackground: value })
                             }
                         />
                         <PremiumBackgroundControl
+                            label={__("Otter Type", "premium-blocks-for-gutenberg")}
                             value={modalBackground}
                             onChange={(value) =>
                                 setAttributes({ modalBackground: value })

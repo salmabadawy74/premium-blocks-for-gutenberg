@@ -20,6 +20,7 @@ export default function PremiumBackgroundControl({
     onChange,
     backgroundVedio = false,
     backgroundPresets = "",
+    label,
 }) {
     let defaultValues = {
         backgroundType: "",
@@ -204,7 +205,7 @@ export default function PremiumBackgroundControl({
         <Fragment>
             <div className="premium-btn-size-settings-container  premium-blocks__base-control">
                 <p className="premium-beside-btn-group">
-                    {__("Type", "premium-blocks-for-gutenberg")}
+                    {label ? label : __("Type", "premium-blocks-for-gutenberg")}
                 </p>
                 <div className={`premium-background-type__wrap`}>
                     <ButtonGroup
@@ -490,21 +491,21 @@ export default function PremiumBackgroundControl({
                             }
                         />
                     ) : (
-                        <Fragment>
-                            <p>{__("Video", "premium-blocks-for-gutenberg")}</p>
-                            <PremiumMediaUpload
-                                type="video"
-                                imageID={videoID}
-                                imageURL={videoURL}
-                                onSelectMedia={(media) =>
-                                    onChangeBackground("videoURL", media.url)
-                                }
-                                onRemoveImage={() =>
-                                    onChangeBackground("videoURL", "")
-                                }
-                            />
-                        </Fragment>
-                    )}
+                            <Fragment>
+                                <p>{__("Video", "premium-blocks-for-gutenberg")}</p>
+                                <PremiumMediaUpload
+                                    type="video"
+                                    imageID={videoID}
+                                    imageURL={videoURL}
+                                    onSelectMedia={(media) =>
+                                        onChangeBackground("videoURL", media.url)
+                                    }
+                                    onRemoveImage={() =>
+                                        onChangeBackground("videoURL", "")
+                                    }
+                                />
+                            </Fragment>
+                        )}
                 </Fragment>
             )}
         </Fragment>
