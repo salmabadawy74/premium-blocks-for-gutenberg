@@ -55,11 +55,8 @@ const edit = (props) => {
     } = useSelect((select) => {
         // eslint-disable-line no-shadow
         const { getBlocks } = select("core/block-editor");
-        const {
-            getBlockType,
-            getBlockVariations,
-            getDefaultBlockVariation,
-        } = select("core/blocks");
+        const { getBlockType, getBlockVariations, getDefaultBlockVariation } =
+            select("core/blocks");
 
         return {
             innerBlocks: getBlocks(props.clientId),
@@ -92,9 +89,10 @@ const edit = (props) => {
             props.clientId
         );
 
-        const parentBlockName = select("core/block-editor").getBlocksByClientId(
-            isBlockRootParentID
-        );
+        const parentBlockName =
+            select("core/block-editor").getBlocksByClientId(
+                isBlockRootParentID
+            );
 
         if (
             (parentBlockName[0] &&
@@ -138,22 +136,16 @@ const edit = (props) => {
     };
 
     const createBlocksFromInnerBlocksTemplate = (innerBlocksTemplate) => {
-        return innerBlocksTemplate.map((
-            [name, attributes, innerBlocks = []] // eslint-disable-line no-shadow
-        ) =>
-            createBlock(
-                name,
-                attributes,
-                createBlocksFromInnerBlocksTemplate(innerBlocks)
-            )
+        return innerBlocksTemplate.map(
+            (
+                [name, attributes, innerBlocks = []] // eslint-disable-line no-shadow
+            ) =>
+                createBlock(
+                    name,
+                    attributes,
+                    createBlocksFromInnerBlocksTemplate(innerBlocks)
+                )
         );
-    };
-    const removeRowBlock = () => {
-        const { clientId, removeBlock } = props;
-        if (defaultVariation.attributes) {
-            props.setAttributes(defaultVariation.attributes);
-        }
-        removeBlock(clientId);
     };
     const {
         attributes: {
@@ -251,9 +243,8 @@ const edit = (props) => {
             if (customSelectors?.length) {
                 for (const selector of customSelectors) {
                     if (checkSelector(selector)) {
-                        const allElements = containerRef.current.querySelectorAll(
-                            selector
-                        );
+                        const allElements =
+                            containerRef.current.querySelectorAll(selector);
                         resetHeight(allElements);
                         setElementsHeight(allElements);
                     }
@@ -272,12 +263,6 @@ const edit = (props) => {
         return (
             <Fragment>
                 <div className="premium-blocks__row_container">
-                    <button
-                        onClick={() => removeRowBlock()}
-                        className="premium-blocks-remove-button"
-                    >
-                        <span class="dashicons dashicons-no"></span>
-                    </button>
                     <div className="premium-blocks__placeholder_title">
                         {__(
                             "Select Column Layout",
@@ -379,9 +364,8 @@ const edit = (props) => {
                 if (customSelectors?.length) {
                     for (const selector of customSelectors) {
                         if (checkSelector(selector)) {
-                            const allElements = containerRef.current.querySelectorAll(
-                                selector
-                            );
+                            const allElements =
+                                containerRef.current.querySelectorAll(selector);
                             resetHeight(allElements);
                         }
                     }
@@ -1252,14 +1236,16 @@ const edit = (props) => {
                                                     isMulti={true}
                                                     onChange={(option) =>
                                                         setAttributes({
-                                                            equalHeightBlocks: option.map(
-                                                                (option) =>
-                                                                    option.value
-                                                            ),
+                                                            equalHeightBlocks:
+                                                                option.map(
+                                                                    (option) =>
+                                                                        option.value
+                                                                ),
                                                         })
                                                     }
                                                     components={{
-                                                        MultiValueRemove: MultiValue,
+                                                        MultiValueRemove:
+                                                            MultiValue,
                                                     }}
                                                 />
                                             </div>
@@ -1337,14 +1323,16 @@ const edit = (props) => {
                                                     isMulti={true}
                                                     onChange={(option) => {
                                                         setAttributes({
-                                                            equalHeightDevices: option.map(
-                                                                (option) =>
-                                                                    option.value
-                                                            ),
+                                                            equalHeightDevices:
+                                                                option.map(
+                                                                    (option) =>
+                                                                        option.value
+                                                                ),
                                                         });
                                                     }}
                                                     components={{
-                                                        MultiValueRemove: DeviceMultiValue,
+                                                        MultiValueRemove:
+                                                            DeviceMultiValue,
                                                     }}
                                                 />
                                             </div>
@@ -1362,9 +1350,8 @@ const edit = (props) => {
 };
 
 export default withSelect((select, props) => {
-    const { __experimentalGetPreviewDeviceType = null } = select(
-        "core/edit-post"
-    );
+    const { __experimentalGetPreviewDeviceType = null } =
+        select("core/edit-post");
     let deviceType = __experimentalGetPreviewDeviceType
         ? __experimentalGetPreviewDeviceType()
         : null;

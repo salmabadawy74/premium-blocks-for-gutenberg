@@ -18763,16 +18763,6 @@ const edit = props => {
       return createBlock(name, attributes, createBlocksFromInnerBlocksTemplate(innerBlocks));
     });
   };
-  const removeRowBlock = () => {
-    const {
-      clientId,
-      removeBlock
-    } = props;
-    if (defaultVariation.attributes) {
-      props.setAttributes(defaultVariation.attributes);
-    }
-    removeBlock(clientId);
-  };
   const {
     attributes: {
       block_id,
@@ -18864,12 +18854,7 @@ const edit = props => {
   if (!variationSelected && 0 === select("core/block-editor").getBlockParents(props.clientId).length) {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: "premium-blocks__row_container"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
-      onClick: () => removeRowBlock(),
-      className: "premium-blocks-remove-button"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
-      class: "dashicons dashicons-no"
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: "premium-blocks__placeholder_title"
     }, __("Select Column Layout", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: "premium-blocks__placeholder-group"
