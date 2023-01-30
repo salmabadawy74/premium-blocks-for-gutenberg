@@ -1548,7 +1548,7 @@ const v2Attributes = {
 
 const deprecated = [
     {
-        attributes: Object.assign(attributes, newAttributes),
+        attributes: v2Attributes,
         isEligible() {
             return true;
         },
