@@ -346,9 +346,9 @@
         "imgWidth": {
             "type": "object",
             "default": {
-                "Desktop": "",
-                "Tablet": "",
-                "Mobile": "",
+                "Desktop": "150",
+                "Tablet": "150",
+                "Mobile": "150",
                 "unit": "px"
             }
         },

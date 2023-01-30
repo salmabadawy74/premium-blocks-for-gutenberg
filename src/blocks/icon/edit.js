@@ -14,7 +14,6 @@ import {
     PremiumBackgroundControl,
     Icons,
     InsideTab,
-    iconsList,
     RadioComponent,
     PremiumMediaUpload,
     PremiumUploadSVG,
@@ -218,7 +217,7 @@ function Edit(props) {
     }
 
     const renderSVG = svg => (
-        <GenIcon name={ svg } icon={ ( 'fa' === svg.substring( 0, 2 ) ? FaIco[ svg ] : Ico[ svg ] ) } />
+        <GenIcon name={svg} icon={('fa' === svg.substring(0, 2) ? FaIco[svg] : Ico[svg])} />
     );
 
     const loadStyles = () => {
@@ -250,7 +249,7 @@ function Edit(props) {
             "margin-bottom": `${iconMargin?.[props.deviceType]?.bottom}${iconMargin.unit}!important`,
             "margin-left": `${iconMargin?.[props.deviceType]?.left}${iconMargin.unit}!important`
         };
-        styles[` .${blockId} .premium-icon-container svg`] = {
+        styles[` .${blockId} .premium-icon-container #premium-icon-svg svg`] = {
             width: `${iconSize[props.deviceType]}${iconSize.unit} !important`,
             height: `${iconSize[props.deviceType]}${iconSize.unit} !important`,
             fill: `${iconStyles[0].iconColor}`,
@@ -274,10 +273,10 @@ function Edit(props) {
             "margin-bottom": `${iconMargin?.[props.deviceType]?.bottom}${iconMargin.unit}!important`,
             "margin-left": `${iconMargin?.[props.deviceType]?.left}${iconMargin.unit}!important`
         };
-        styles[` .${blockId} .premium-icon-container svg path`] = {
+        styles[` .${blockId} .premium-icon-container #premium-icon-svg svg path`] = {
             fill: `${iconStyles[0].iconColor}`,
         };
-        styles[` .${blockId} .premium-icon-container .premium-icon-type:hover path`] = {
+        styles[` .${blockId} .premium-icon-container #premium-icon-svg .premium-icon-type:hover path`] = {
             fill: `${iconStyles[0].iconHoverColor} !important`
         };
         return generateCss(styles);
@@ -335,11 +334,11 @@ function Edit(props) {
                                         )}
                                     </p>
                                     <FontIconPicker
-                                        icons={ IcoNames }
+                                        icons={IcoNames}
                                         onChange={(newIcon) =>
                                             setAttributes({ selectedIcon: newIcon })
                                         }
-                                        renderFunc={ renderSVG }
+                                        renderFunc={renderSVG}
                                         value={selectedIcon}
                                         isMulti={false}
                                         appendTo="body"
@@ -587,7 +586,6 @@ function Edit(props) {
                                                         }
                                                     />
                                                 )}
-
                                             </Fragment>
                                         </InsideTab>
                                     </InsideTabs>
@@ -785,15 +783,16 @@ function Edit(props) {
                         </p>
                     )}
                     <div className={`premium-icon-content premium-icon__${hoverEffect !== "none" || !hoversEffect ? hoverEffect : hoversEffect}`}>
-                        {/* {"icon" === iconTypeFile && (iconType === "dash" || 1 == FontAwesomeEnabled) && (
-                            <i
-                                className={`premium-icon premium-icon-type ${selectedIcon}`}
+                        {"icon" === iconTypeFile && selectedIcon && (
+                            <GenIcon className={`premium-icon premium-icon-type ${selectedIcon}`}
+                                name={selectedIcon}
+                                size={iconSize[props.deviceType] +
+                                    iconSize.unit}
+                                icon={('fa' === selectedIcon.substring(0, 2) ? FaIco[selectedIcon] : Ico[selectedIcon])}
+                                strokeWidth={('fe' === selectedIcon.substring(0, 2) ? icons[0].width : undefined)}
                                 style={{
                                     color: iconStyles[0].iconColor,
                                     backgroundColor: iconStyles[0].iconBack,
-                                    fontSize:
-                                        iconSize[props.deviceType] +
-                                        iconSize.unit,
                                     cursor: urlCheck ? 'pointer' : 'default',
                                     ...borderCss(iconBorder, props.deviceType),
                                     ...paddingCss(
@@ -804,28 +803,7 @@ function Edit(props) {
                                     textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`,
                                 }}
                             />
-                        )} */}
-                        { selectedIcon && (
-                            <GenIcon className={ `premium-icon premium-icon-type ${ selectedIcon }` } 
-                                name={ selectedIcon } 
-                                size={ iconSize[props.deviceType] +
-                                        iconSize.unit } 
-                                icon={ ( 'fa' === selectedIcon.substring( 0, 2 ) ? FaIco[ selectedIcon ] : Ico[ selectedIcon ] ) } 
-                                strokeWidth={ ( 'fe' === selectedIcon.substring( 0, 2 ) ? icons[0].width : undefined ) } 
-                                style={ {
-                                    color: iconStyles[0].iconColor,
-                                    backgroundColor: iconStyles[0].iconBack,
-                                    cursor: urlCheck ? 'pointer' : 'default',
-                                    ...borderCss(iconBorder, props.deviceType),
-                                    ...paddingCss(
-                                        iconPadding,
-                                        props.deviceType
-                                    ),
-                                    ...marginCss(iconMargin, props.deviceType),
-                                    textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`,
-                                }}
-                            />
-                        ) }
+                        )}
                         {imageURL && "img" === iconTypeFile && (
                             <img src={imageURL} />
                         )}
