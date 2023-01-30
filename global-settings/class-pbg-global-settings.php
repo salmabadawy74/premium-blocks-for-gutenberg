@@ -600,7 +600,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 			$css->add_property( '--pbg-global-color2', $css->render_color( $global_colors['colors'][1]['color'] ) );
 			$css->add_property( '--pbg-global-color3', $css->render_color( $global_colors['colors'][2]['color'] ) );
 			$css->add_property( '--pbg-global-color4', $css->render_color( $global_colors['colors'][3]['color'] ) );
-			$css->add_property( '--pbg-global-color5', $css->render_color( $global_colors['colors'][3]['color'] ) );
+			$css->add_property( '--pbg-global-color5', $css->render_color( $global_colors['colors'][4]['color'] ) );
 			$css->set_selector( '[class*="wp-block-premium"]' );
 			$css->add_property( 'color', $css->render_color( 'var(--pbg-global-color3)' ) );
 			$css->set_selector( '[class*="wp-block-premium"] h1, [class*="wp-block-premium"] h2, [class*="wp-block-premium"] h3,[class*="wp-block-premium"] h4,[class*="wp-block-premium"] h5,[class*="wp-block-premium"] h6, [class*="wp-block-premium"] a:not([class*="button"]):not([class*="button"] a)' );
