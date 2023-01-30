@@ -1820,7 +1820,7 @@
   background-color: var(--pbg-global-color5, #fff);
   border-color: var(--pbg-global-color4);
   width: auto;
-  overflow: visible;
+  overflow: hidden;
   max-width: 100%;
   max-height: 100%;
   border-radius: 0;
@@ -2014,7 +2014,7 @@ button.premium-modal-box-modal-close {
   -moz-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  top: 20px;
+  top: 10px;
   margin-top: 0;
   right: 20px;
   opacity: 1;
@@ -2034,6 +2034,9 @@ button.premium-modal-box-modal-close {
   height: auto;
   padding: 0;
   display: flex; }
+  .premium-modal-box-modal-body .block-editor-inner-blocks {
+    width: 100%;
+    max-width: 100%; }
 
 .premium-modal-scrollbar-measure {
   position: absolute;

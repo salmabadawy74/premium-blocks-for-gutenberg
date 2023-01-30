@@ -773,7 +773,7 @@ const Inspector = ({ attributes, setAttributes }) => {
                             initialOpen={true}
                         >
                             {triggerSettings[0].triggerType === "button" &&
-                                triggerSettings[0].showIcon && (
+                                triggerSettings[0].showIcon && triggerSettings[0].icon != '' && (
                                     <Fragment>
                                         <ResponsiveRangeControl
                                             label={__(
@@ -868,7 +868,7 @@ const Inspector = ({ attributes, setAttributes }) => {
                                                 }
                                             />
                                             {triggerSettings[0].triggerType === "button" &&
-                                                triggerSettings[0].showIcon &&
+                                                triggerSettings[0].showIcon && triggerSettings[0].icon != '' &&
                                                 <AdvancedPopColorControl
                                                     label={__(
                                                         "Icon Color",
