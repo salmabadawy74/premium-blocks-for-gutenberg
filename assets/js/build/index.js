@@ -33808,7 +33808,6 @@ function Edit(props) {
     hideMobile,
     strokeFull,
     iconSize,
-    iconshadow,
     rotateText,
     verticalText,
     horizontalText,
@@ -33819,7 +33818,8 @@ function Edit(props) {
     stripeHeight,
     stripeWidth,
     titleTypography,
-    titleShadow
+    titleShadow,
+    icons
   } = props.attributes;
   let loadTitleGoogleFonts;
   let loadTextGoogleFonts;
@@ -34104,8 +34104,7 @@ function Edit(props) {
       "margin-top": `${IconMarginTop}${iconPadding.unit} !important`,
       "margin-right": `${IconMarginRight}${iconPadding.unit} !important`,
       "margin-bottom": `${IconMarginBottom}${iconPadding.unit} !important`,
-      "margin-left": `${IconMarginLeft}${iconPadding.unit} !important`,
-      "text-shadow": `${iconshadow.horizontal}px ${iconshadow.vertical}px ${iconshadow.blur}px ${iconshadow.color} !important`
+      "margin-left": `${IconMarginLeft}${iconPadding.unit} !important`
     };
     styles[`.${blockId} .premium-lottie-animation svg`] = {
       width: `${iconSize === null || iconSize === void 0 ? void 0 : iconSize[props.deviceType]}${iconSize === null || iconSize === void 0 ? void 0 : iconSize.unit}!important`,
@@ -34219,6 +34218,12 @@ function Edit(props) {
     });
   });
   const reverse = reversedir ? -1 : 1;
+
+  const renderSVG = svg => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_6__.GenIcon, {
+    name: svg,
+    icon: 'fa' === svg.substring(0, 2) ? _pbg_components__WEBPACK_IMPORTED_MODULE_6__.FaIco[svg] : _pbg_components__WEBPACK_IMPORTED_MODULE_6__.Ico[svg]
+  });
+
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InspectorControls, {
     key: "inspector"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_6__.InspectorTabs, {
@@ -34250,12 +34255,14 @@ function Edit(props) {
     }),
     options: ICON
   }), iconType === "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, __("Icon", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)((_fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_3___default()), {
-    icons: _pbg_components__WEBPACK_IMPORTED_MODULE_6__.iconsList,
-    value: icon,
-    onChange: value => setAttributes({
-      icon: value
+    icons: _pbg_components__WEBPACK_IMPORTED_MODULE_6__.IcoNames,
+    onChange: newIcon => setAttributes({
+      icon: newIcon
     }),
-    isMulti: false,
+    renderFunc: renderSVG,
+    value: icon,
+    isMulti: false // appendTo="body"
+    ,
     noSelectedPlaceholder: __("Select Icon", "premium-blocks-for-gutenberg")
   })), iconType === "lottie" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TextControl, {
     value: lottieURl,
@@ -34636,13 +34643,6 @@ function Edit(props) {
     onChange: value => setAttributes({
       iconBackground: value
     })
-  }), iconType === "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_6__.PremiumShadow, {
-    label: __("Icon Shadow", "premium-blocks-for-gutenberg"),
-    boxShadow: false,
-    value: iconshadow,
-    onChange: value => setAttributes({
-      iconshadow: value
-    })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_6__.PremiumBorder, {
     label: __("Border", "premium-blocks-for-gutenberg"),
     value: iconBorder,
@@ -34810,8 +34810,15 @@ function Edit(props) {
     className: `premium-title-style7-stripe-span`
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-title-style7-inner-title`
-  }, iconValue && iconType == "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("i", {
-    className: `premium-title-icon ${icon}`
+  }, iconValue && iconType == "icon" && // <i
+  //     className={`premium-title-icon ${icon}`}
+  // />
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_6__.GenIcon, {
+    className: `premium-title-icon ${icon}`,
+    name: icon,
+    size: iconSize[props.deviceType] + iconSize.unit,
+    icon: 'fa' === icon.substring(0, 2) ? _pbg_components__WEBPACK_IMPORTED_MODULE_6__.FaIco[icon] : _pbg_components__WEBPACK_IMPORTED_MODULE_6__.Ico[icon],
+    strokeWidth: 'fe' === icon.substring(0, 2) ? icons[0].width : undefined
   }), iconValue && iconType == "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("img", {
     className: `premium-title-icon`,
     src: imageURL
@@ -34845,8 +34852,15 @@ function Edit(props) {
       color: titleStyles[0].titleColor,
       textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
     }
-  }))), style === "style9" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, iconValue && iconType == "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("i", {
-    className: `premium-title-icon ${icon}`
+  }))), style === "style9" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, iconValue && iconType == "icon" && // <i
+  //     className={`premium-title-icon ${icon}`}
+  // />
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_6__.GenIcon, {
+    className: `premium-title-icon ${icon}`,
+    name: icon,
+    size: iconSize[props.deviceType] + iconSize.unit,
+    icon: 'fa' === icon.substring(0, 2) ? _pbg_components__WEBPACK_IMPORTED_MODULE_6__.FaIco[icon] : _pbg_components__WEBPACK_IMPORTED_MODULE_6__.Ico[icon],
+    strokeWidth: 'fe' === icon.substring(0, 2) ? icons[0].width : undefined
   }), iconValue && iconType == "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("img", {
     className: `premium-title-icon`,
     src: imageURL
@@ -34869,8 +34883,15 @@ function Edit(props) {
       color: titleStyles[0].titleColor,
       textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
     }
-  }, styleContainer)), style !== "style9" && style !== "style7" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, iconValue && iconType == "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("i", {
-    className: `premium-title-icon ${icon}`
+  }, styleContainer)), style !== "style9" && style !== "style7" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, iconValue && iconType == "icon" && // <i
+  //     className={`premium-title-icon ${icon}`}
+  // />
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_6__.GenIcon, {
+    className: `premium-title-icon ${icon}`,
+    name: icon,
+    size: iconSize[props.deviceType] + iconSize.unit,
+    icon: 'fa' === icon.substring(0, 2) ? _pbg_components__WEBPACK_IMPORTED_MODULE_6__.FaIco[icon] : _pbg_components__WEBPACK_IMPORTED_MODULE_6__.Ico[icon],
+    strokeWidth: 'fe' === icon.substring(0, 2) ? icons[0].width : undefined
   }), iconValue && iconType == "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("img", {
     className: `premium-title-icon`,
     src: imageURL
@@ -34973,6 +34994,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @pbg/helpers */ "@pbg/helpers");
 /* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _pbg_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @pbg/components */ "@pbg/components");
+/* harmony import */ var _pbg_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_pbg_components__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
@@ -35021,11 +35045,11 @@ function save(props) {
     hideDesktop,
     hideTablet,
     hideMobile,
-    iconshadow,
     textBackshadow,
     textTypography,
     titleTypography,
-    titleShadow
+    titleShadow,
+    icons
   } = attributes;
   const styleContainer = title.split("").map(letter => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
@@ -35126,8 +35150,7 @@ function save(props) {
       "background-size": `${iconBackground.backgroundSize} !important`,
       "background-attachment": `${iconBackground.fixed ? "fixed" : "unset"} !important`,
       "border-color": `${iconBorder.borderColor}!important`,
-      "border-style": `${iconBorder.borderType}!important`,
-      "text-shadow": `${iconshadow.horizontal}px ${iconshadow.vertical}px ${iconshadow.blur}px ${iconshadow.color} !important`
+      "border-style": `${iconBorder.borderType}!important`
     };
     styles[`.${blockId} .premium-title-bg-text:before`] = {
       content: `${BackText}`,
@@ -35192,8 +35215,14 @@ function save(props) {
     className: `premium-title-style7-stripe-span`
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-title-style7-inner-title`
-  }, iconValue && iconType == "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
-    className: `premium-title-icon ${icon}`
+  }, iconValue && iconType == "icon" && // <i
+  //     className={`premium-title-icon ${icon}`}
+  // />
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.GenIcon, {
+    className: `premium-title-icon ${icon}`,
+    name: icon,
+    icon: 'fa' === icon.substring(0, 2) ? _pbg_components__WEBPACK_IMPORTED_MODULE_3__.FaIco[icon] : _pbg_components__WEBPACK_IMPORTED_MODULE_3__.Ico[icon],
+    strokeWidth: 'fe' === icon.substring(0, 2) ? icons[0].width : undefined
   }), iconValue && iconType == "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     className: `premium-title-icon`,
     src: imageURL
@@ -35215,8 +35244,14 @@ function save(props) {
       color: titleStyles[0].titleColor,
       textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
     })
-  }))) : style === "style9" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, iconValue && iconType == "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
-    className: `premium-title-icon ${icon}`
+  }))) : style === "style9" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, iconValue && iconType == "icon" && // <i
+  //     className={`premium-title-icon ${icon}`}
+  // />
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.GenIcon, {
+    className: `premium-title-icon ${icon}`,
+    name: icon,
+    icon: 'fa' === icon.substring(0, 2) ? _pbg_components__WEBPACK_IMPORTED_MODULE_3__.FaIco[icon] : _pbg_components__WEBPACK_IMPORTED_MODULE_3__.Ico[icon],
+    strokeWidth: 'fe' === icon.substring(0, 2) ? icons[0].width : undefined
   }), iconValue && iconType == "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     className: `premium-title-icon`,
     src: imageURL
@@ -35232,8 +35267,14 @@ function save(props) {
       color: titleStyles[0].titleColor,
       textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
     })
-  }, styleContainer)) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, iconValue && iconType == "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
-    className: `premium-title-icon ${icon}`
+  }, styleContainer)) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, iconValue && iconType == "icon" && // <i
+  //     className={`premium-title-icon ${icon}`}
+  // />
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.GenIcon, {
+    className: `premium-title-icon ${icon}`,
+    name: icon,
+    icon: 'fa' === icon.substring(0, 2) ? _pbg_components__WEBPACK_IMPORTED_MODULE_3__.FaIco[icon] : _pbg_components__WEBPACK_IMPORTED_MODULE_3__.Ico[icon],
+    strokeWidth: 'fe' === icon.substring(0, 2) ? icons[0].width : undefined
   }), iconValue && iconType == "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     className: `premium-title-icon`,
     src: imageURL
@@ -42928,8 +42969,8 @@ function Edit(props) {
     }),
     renderFunc: renderSVG,
     value: selectedIcon,
-    isMulti: false,
-    appendTo: "body",
+    isMulti: false // appendTo="body"
+    ,
     noSelectedPlaceholder: __("Select Icon", "premium-blocks-for-gutenberg")
   })), "img" === iconTypeFile && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_4__.PremiumMediaUpload, {
     type: "image",

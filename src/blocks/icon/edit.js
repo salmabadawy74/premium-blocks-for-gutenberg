@@ -340,7 +340,7 @@ function Edit(props) {
                                         renderFunc={renderSVG}
                                         value={selectedIcon}
                                         isMulti={false}
-                                        appendTo="body"
+                                        // appendTo="body"
                                         noSelectedPlaceholder={__(
                                             "Select Icon",
                                             "premium-blocks-for-gutenberg"

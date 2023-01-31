@@ -25,7 +25,10 @@ import {
     PremiumBackgroundControl,
     Icons,
     WebfontLoader,
-    iconsList,
+    GenIcon,
+    FaIco,
+    Ico,
+    IcoNames
 } from "@pbg/components";
 
 const { __ } = wp.i18n;
@@ -168,7 +171,6 @@ function Edit(props) {
         hideMobile,
         strokeFull,
         iconSize,
-        iconshadow,
         rotateText,
         verticalText,
         horizontalText,
@@ -180,6 +182,7 @@ function Edit(props) {
         stripeWidth,
         titleTypography,
         titleShadow,
+        icons
     } = props.attributes;
 
     let loadTitleGoogleFonts;
@@ -656,7 +659,6 @@ function Edit(props) {
             "margin-right": `${IconMarginRight}${iconPadding.unit} !important`,
             "margin-bottom": `${IconMarginBottom}${iconPadding.unit} !important`,
             "margin-left": `${IconMarginLeft}${iconPadding.unit} !important`,
-            "text-shadow": `${iconshadow.horizontal}px ${iconshadow.vertical}px ${iconshadow.blur}px ${iconshadow.color} !important`,
         };
 
         styles[`.${blockId} .premium-lottie-animation svg`] = {
@@ -781,6 +783,10 @@ function Edit(props) {
 
     const reverse = reversedir ? -1 : 1;
 
+    const renderSVG = svg => (
+        <GenIcon name={svg} icon={('fa' === svg.substring(0, 2) ? FaIco[svg] : Ico[svg])} />
+    );
+
     return (
         <Fragment>
             <InspectorControls key={"inspector"}>
@@ -835,7 +841,7 @@ function Edit(props) {
                                                     "premium-blocks-for-gutenberg"
                                                 )}
                                             </p>
-                                            <FontIconPicker
+                                            {/* <FontIconPicker
                                                 icons={iconsList}
                                                 value={icon}
                                                 onChange={(value) =>
@@ -844,6 +850,20 @@ function Edit(props) {
                                                     })
                                                 }
                                                 isMulti={false}
+                                                noSelectedPlaceholder={__(
+                                                    "Select Icon",
+                                                    "premium-blocks-for-gutenberg"
+                                                )}
+                                            /> */}
+                                            <FontIconPicker
+                                                icons={IcoNames}
+                                                onChange={(newIcon) =>
+                                                    setAttributes({ icon: newIcon })
+                                                }
+                                                renderFunc={renderSVG}
+                                                value={icon}
+                                                isMulti={false}
+                                                // appendTo="body"
                                                 noSelectedPlaceholder={__(
                                                     "Select Icon",
                                                     "premium-blocks-for-gutenberg"
@@ -1586,19 +1606,6 @@ function Edit(props) {
                                         setAttributes({ iconBackground: value })
                                     }
                                 />
-                                {iconType === "icon" && (
-                                    <PremiumShadow
-                                        label={__(
-                                            "Icon Shadow",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
-                                        boxShadow={false}
-                                        value={iconshadow}
-                                        onChange={(value) =>
-                                            setAttributes({ iconshadow: value })
-                                        }
-                                    />
-                                )}
                                 <PremiumBorder
                                     label={__(
                                         "Border",
@@ -1904,8 +1911,15 @@ function Edit(props) {
                                             >
                                                 {iconValue &&
                                                     iconType == "icon" && (
-                                                        <i
-                                                            className={`premium-title-icon ${icon}`}
+                                                        // <i
+                                                        //     className={`premium-title-icon ${icon}`}
+                                                        // />
+                                                        <GenIcon className={`premium-title-icon ${icon}`}
+                                                            name={icon}
+                                                            size={iconSize[props.deviceType] +
+                                                                iconSize.unit}
+                                                            icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
+                                                            strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
                                                         />
                                                     )}
                                                 {iconValue &&
@@ -1976,8 +1990,15 @@ function Edit(props) {
                                         <Fragment>
                                             {iconValue &&
                                                 iconType == "icon" && (
-                                                    <i
-                                                        className={`premium-title-icon ${icon}`}
+                                                    // <i
+                                                    //     className={`premium-title-icon ${icon}`}
+                                                    // />
+                                                    <GenIcon className={`premium-title-icon ${icon}`}
+                                                        name={icon}
+                                                        size={iconSize[props.deviceType] +
+                                                            iconSize.unit}
+                                                        icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
+                                                        strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
                                                     />
                                                 )}
                                             {iconValue &&
@@ -2030,8 +2051,15 @@ function Edit(props) {
                                         <Fragment>
                                             {iconValue &&
                                                 iconType == "icon" && (
-                                                    <i
-                                                        className={`premium-title-icon ${icon}`}
+                                                    // <i
+                                                    //     className={`premium-title-icon ${icon}`}
+                                                    // />
+                                                    <GenIcon className={`premium-title-icon ${icon}`}
+                                                        name={icon}
+                                                        size={iconSize[props.deviceType] +
+                                                            iconSize.unit}
+                                                        icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
+                                                        strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
                                                     />
                                                 )}
                                             {iconValue &&

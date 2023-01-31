@@ -42,9 +42,23 @@
             "type": "string",
             "default": "icon"
         },
+        "icons": {
+            "type": "array",
+            "default": [
+                {
+                    "iconn": "fe_alignJustify",
+                    "link": "",
+                    "target": "_self",
+                    "size": "40",
+                    "width": "2",
+                    "title": "",
+                    "style": "default"
+                }
+            ]
+        },
         "icon": {
             "type": "string",
-            "default": "fa fa-bars"
+            "default": "fe_alignJustify"
         },
         "iconPosition": {
             "type": "string",
@@ -365,15 +379,6 @@
                     "iconColor": ""
                 }
             ]
-        },
-        "iconshadow": {
-            "type": "object",
-            "default": {
-                "color": "undefined",
-                "blur": "10",
-                "horizontal": "0",
-                "vertical": "0"
-            }
         },
         "iconPadding": {
             "type": "object",

@@ -74,13 +74,13 @@ function get_premium_heading_css_style( $attr, $unique_id ) {
 	// Style for icon.
 	if ( isset( $attr['iconPadding'] ) ) {
 		$icon_padding = $attr['iconPadding'];
-		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' );
+		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' . ' > svg' );
 		$css->add_property( 'padding', $css->render_spacing( $icon_padding['Desktop'], $icon_padding['unit'] ) );
 	}
 
 	if ( isset( $attr['iconMargin'] ) ) {
 		$icon_margin = $attr['iconMargin'];
-		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' );
+		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' . ' > svg' );
 		$css->add_property( 'margin', $css->render_spacing( $icon_margin['Desktop'], $icon_margin['unit'] ) );
 	}
 
@@ -97,8 +97,9 @@ function get_premium_heading_css_style( $attr, $unique_id ) {
 	if ( isset( $attr['iconSize'] ) ) {
 		$icon_size = $attr['iconSize'];
 
-		$css->set_selector( $unique_id . ' .premium-title-icon' );
-		$css->add_property( 'font-size', $css->render_range( $icon_size, 'Desktop' ) );
+		$css->set_selector( $unique_id . ' .premium-title-icon' . ' > svg' );
+		$css->add_property( 'width', $css->render_range( $icon_size, 'Desktop' ) );
+		$css->add_property( 'height', $css->render_range( $icon_size, 'Desktop' ) );
 		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-lottie-animation' . ' > svg' );
 		$css->add_property( 'width', $css->render_range( $icon_size, 'Desktop' ) );
 		$css->add_property( 'height', $css->render_range( $icon_size, 'Desktop' ) );
@@ -218,13 +219,13 @@ function get_premium_heading_css_style( $attr, $unique_id ) {
 	// Style for icon.
 	if ( isset( $attr['iconPadding'] ) ) {
 		$icon_padding = $attr['iconPadding'];
-		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' );
+		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' . ' > svg' );
 		$css->add_property( 'padding', $css->render_spacing( $icon_padding['Tablet'], $icon_padding['unit'] ) );
 	}
 
 	if ( isset( $attr['iconMargin'] ) ) {
 		$icon_margin = $attr['iconMargin'];
-		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' );
+		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' . ' > svg' );
 		$css->add_property( 'margin', $css->render_spacing( $icon_margin['Tablet'], $icon_margin['unit'] ) );
 	}
 
@@ -233,7 +234,7 @@ function get_premium_heading_css_style( $attr, $unique_id ) {
 		$icon_border_width  = $icon_border['borderWidth'];
 		$icon_border_radius = $icon_border['borderRadius'];
 
-		$css->set_selector( $unique_id . ' .premium-title-icon' );
+		$css->set_selector( $unique_id . ' .premium-title-icon');
 		$css->add_property( 'border-width', $css->render_spacing( $icon_border_width['Tablet'], 'px' ) );
 		$css->add_property( 'border-radius', $css->render_spacing( $icon_border_radius['Tablet'], 'px' ) );
 	}
@@ -241,8 +242,9 @@ function get_premium_heading_css_style( $attr, $unique_id ) {
 	if ( isset( $attr['iconSize'] ) ) {
 		$icon_size = $attr['iconSize'];
 
-		$css->set_selector( $unique_id . ' .premium-title-icon' );
-		$css->add_property( 'font-size', $css->render_range( $icon_size, 'Tablet' ) );
+		$css->set_selector( $unique_id . ' .premium-title-icon' . ' > svg' );
+		$css->add_property( 'width', $css->render_range( $icon_size, 'Desktop' ) );
+		$css->add_property( 'height', $css->render_range( $icon_size, 'Desktop' ) );
 		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-lottie-animation' . ' > svg' );
 		$css->add_property( 'width', $css->render_range( $icon_size, 'Tablet' ) );
 		$css->add_property( 'height', $css->render_range( $icon_size, 'Tablet' ) );
@@ -364,13 +366,13 @@ function get_premium_heading_css_style( $attr, $unique_id ) {
 	// Style for icon.
 	if ( isset( $attr['iconPadding'] ) ) {
 		$icon_padding = $attr['iconPadding'];
-		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' );
+		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' . ' > svg' );
 		$css->add_property( 'padding', $css->render_spacing( $icon_padding['Mobile'], $icon_padding['unit'] ) );
 	}
 
 	if ( isset( $attr['iconMargin'] ) ) {
 		$icon_margin = $attr['iconMargin'];
-		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' );
+		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' . ' > svg' );
 		$css->add_property( 'margin', $css->render_spacing( $icon_margin['Mobile'], $icon_margin['unit'] ) );
 	}
 
@@ -386,8 +388,9 @@ function get_premium_heading_css_style( $attr, $unique_id ) {
 	if ( isset( $attr['iconSize'] ) ) {
 		$icon_size = $attr['iconSize'];
 
-		$css->set_selector( $unique_id . ' .premium-title-icon' );
-		$css->add_property( 'font-size', $css->render_range( $icon_size, 'Mobile' ) );
+		$css->set_selector( $unique_id . ' .premium-title-icon' . ' > svg' );
+		$css->add_property( 'width', $css->render_range( $icon_size, 'Desktop' ) );
+		$css->add_property( 'height', $css->render_range( $icon_size, 'Desktop' ) );
 		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-lottie-animation' . ' > svg' );
 		$css->add_property( 'width', $css->render_range( $icon_size, 'Mobile' ) );
 		$css->add_property( 'height', $css->render_range( $icon_size, 'Mobile' ) );
