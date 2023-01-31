@@ -38,12 +38,12 @@ const save = (props) => {
         styles[`.${blockId} .premium-button-icon:hover`] = {
             color: `${iconHoverColor}!important`,
         };
-        styles[`.${blockId}.premium-button__wrap:hover .premium-button`] = {
+        styles[`.${blockId}.premium-button__wrap .premium-button:hover`] = {
             "background-color": `${btnStyles[0].backHoverColor}!important`,
             color: `${btnStyles[0].textHoverColor}!important`,
             "border-color": `${btnStyles[0].borderHoverColor}!important`,
         };
-        styles[`.${blockId}.premium-button__wrap:hover .premium-button a`] = {
+        styles[`.${blockId}.premium-button__wrap .premium-button:hover a`] = {
             color: `${btnStyles[0].textHoverColor}!important`,
         };
 
