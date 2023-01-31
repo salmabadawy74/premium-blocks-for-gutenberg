@@ -1,11 +1,6 @@
 import React from "react";
-const {
-    SelectControl,
-    Button,
-    ButtonGroup,
-    Tooltip,
-    TextControl,
-} = wp.components;
+const { SelectControl, Button, ButtonGroup, Tooltip, TextControl } =
+    wp.components;
 
 // import { FontAwesomeEnabled } from "../../assets/js/settings";
 import PremiumMediaUpload from "./premium-media-upload";
@@ -205,15 +200,14 @@ export default function PremiumBackgroundControl({
         <Fragment>
             <div className="premium-btn-size-settings-container  premium-blocks__base-control">
                 <p className="premium-beside-btn-group">
-                    {label ? label : __("Type", "premium-blocks-for-gutenberg")}
+                    {label
+                        ? label
+                        : __("Background Type", "premium-blocks-for-gutenberg")}
                 </p>
                 <div className={`premium-background-type__wrap`}>
                     <ButtonGroup
                         className="premium-button-size-type-options"
-                        aria-label={__(
-                            "Type",
-                            "premium-blocks-for-gutenberg"
-                        )}
+                        aria-label={__("Type", "premium-blocks-for-gutenberg")}
                     >
                         {map(bgType, ({ icon, key, tooltip }) => (
                             <Tooltip text={tooltip}>
@@ -491,21 +485,21 @@ export default function PremiumBackgroundControl({
                             }
                         />
                     ) : (
-                            <Fragment>
-                                <p>{__("Video", "premium-blocks-for-gutenberg")}</p>
-                                <PremiumMediaUpload
-                                    type="video"
-                                    imageID={videoID}
-                                    imageURL={videoURL}
-                                    onSelectMedia={(media) =>
-                                        onChangeBackground("videoURL", media.url)
-                                    }
-                                    onRemoveImage={() =>
-                                        onChangeBackground("videoURL", "")
-                                    }
-                                />
-                            </Fragment>
-                        )}
+                        <Fragment>
+                            <p>{__("Video", "premium-blocks-for-gutenberg")}</p>
+                            <PremiumMediaUpload
+                                type="video"
+                                imageID={videoID}
+                                imageURL={videoURL}
+                                onSelectMedia={(media) =>
+                                    onChangeBackground("videoURL", media.url)
+                                }
+                                onRemoveImage={() =>
+                                    onChangeBackground("videoURL", "")
+                                }
+                            />
+                        </Fragment>
+                    )}
                 </Fragment>
             )}
         </Fragment>

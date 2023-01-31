@@ -57,287 +57,170 @@ const Inspector = ({ attributes, setAttributes }) => {
         hideMobile,
         triggerFilter,
         triggerHoverFilter,
-        containerBackground
+        containerBackground,
     } = attributes;
 
     const ANIMATION = [
         {
             value: "none",
-            label: __(
-                "None",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("None", "premium-blocks-for-gutenberg"),
         },
         {
             value: "fadeInDown",
-            label: __(
-                "Fade In Down",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Fade In Down", "premium-blocks-for-gutenberg"),
         },
         {
             value: "fadeInUp",
-            label: __(
-                "Fade In Up",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Fade In Up", "premium-blocks-for-gutenberg"),
         },
         {
             value: "fadeIn",
-            label: __(
-                "Fade In",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Fade In", "premium-blocks-for-gutenberg"),
         },
         {
             value: "fadeInLeft",
-            label: __(
-                "Fade In Left",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Fade In Left", "premium-blocks-for-gutenberg"),
         },
         {
             value: "fadeInRight",
-            label: __(
-                "Fade In Right",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Fade In Right", "premium-blocks-for-gutenberg"),
         },
         {
             value: "zoomInDown",
-            label: __(
-                "Zoom In Down",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Zoom In Down", "premium-blocks-for-gutenberg"),
         },
         {
             value: "zoomInUp",
-            label: __(
-                "Zoom In Up",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Zoom In Up", "premium-blocks-for-gutenberg"),
         },
         {
             value: "zoomIn",
-            label: __(
-                "Zoom In",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Zoom In", "premium-blocks-for-gutenberg"),
         },
         {
             value: "zoomInLeft",
-            label: __(
-                "Zoom In Left",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Zoom In Left", "premium-blocks-for-gutenberg"),
         },
         {
             value: "zoomInRight",
-            label: __(
-                "Zoom In Right",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Zoom In Right", "premium-blocks-for-gutenberg"),
         },
         {
             value: "bounceInDown",
-            label: __(
-                "Bouncing In Down",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Bouncing In Down", "premium-blocks-for-gutenberg"),
         },
         {
             value: "bounceInUp",
-            label: __(
-                "Bouncing In Up",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Bouncing In Up", "premium-blocks-for-gutenberg"),
         },
         {
             value: "bounceIn",
-            label: __(
-                "Bouncing In",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Bouncing In", "premium-blocks-for-gutenberg"),
         },
         {
             value: "bounceInLeft",
-            label: __(
-                "Bouncing In Left",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Bouncing In Left", "premium-blocks-for-gutenberg"),
         },
         {
             value: "bounceInRight",
-            label: __(
-                "Bouncing In Right",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Bouncing In Right", "premium-blocks-for-gutenberg"),
         },
         {
             value: "slideInUp",
-            label: __(
-                "Slide In Up",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Slide In Up", "premium-blocks-for-gutenberg"),
         },
         {
             value: "slideInLeft",
-            label: __(
-                "Slide In Left",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Slide In Left", "premium-blocks-for-gutenberg"),
         },
         {
             value: "slideInRight",
-            label: __(
-                "Slide In Right",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Slide In Right", "premium-blocks-for-gutenberg"),
         },
         {
             value: "slideInDown",
-            label: __(
-                "Slide In Down",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Slide In Down", "premium-blocks-for-gutenberg"),
         },
         {
             value: "rotateInUpLeft",
-            label: __(
-                "Rotating Up Left",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Rotating Up Left", "premium-blocks-for-gutenberg"),
         },
         {
             value: "rotateInUpRight",
-            label: __(
-                "Rotating Up Right",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Rotating Up Right", "premium-blocks-for-gutenberg"),
         },
         {
             value: "rotateIn",
-            label: __(
-                "Rotating In",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Rotating In", "premium-blocks-for-gutenberg"),
         },
         {
             value: "rotateInDownLeft",
-            label: __(
-                "Rotating In Left",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Rotating In Left", "premium-blocks-for-gutenberg"),
         },
         {
             value: "rotateInDownRight",
-            label: __(
-                "Rotating In Right",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Rotating In Right", "premium-blocks-for-gutenberg"),
         },
         {
             value: "bounce",
-            label: __(
-                "Bounce",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Bounce", "premium-blocks-for-gutenberg"),
         },
         {
             value: "flash",
-            label: __(
-                "Flash",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Flash", "premium-blocks-for-gutenberg"),
         },
         {
             value: "pulse",
-            label: __(
-                "Pulse",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Pulse", "premium-blocks-for-gutenberg"),
         },
         {
             value: "rubberBand",
-            label: __(
-                "Rubber Band",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Rubber Band", "premium-blocks-for-gutenberg"),
         },
         {
             value: "headShake",
-            label: __(
-                "Head Shake",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Head Shake", "premium-blocks-for-gutenberg"),
         },
         {
             value: "swing",
-            label: __(
-                "Swing",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Swing", "premium-blocks-for-gutenberg"),
         },
         {
             value: "tada",
-            label: __(
-                "Tada",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Tada", "premium-blocks-for-gutenberg"),
         },
         {
             value: "wobble",
-            label: __(
-                "Wobble",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Wobble", "premium-blocks-for-gutenberg"),
         },
         {
             value: "jello",
-            label: __(
-                "Jolle",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Jolle", "premium-blocks-for-gutenberg"),
         },
         {
             value: "lightSpeedIn",
-            label: __(
-                "Light Speed",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Light Speed", "premium-blocks-for-gutenberg"),
         },
         {
             value: "rollIn",
-            label: __(
-                "Roll In",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Roll In", "premium-blocks-for-gutenberg"),
         },
     ];
 
     const DURATION = [
         {
-            label: __(
-                "Fast",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Fast", "premium-blocks-for-gutenberg"),
             value: "fast",
         },
         {
-            label: __(
-                "Normal",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Normal", "premium-blocks-for-gutenberg"),
             value: "normal",
         },
         {
-            label: __(
-                "Slow",
-                "premium-blocks-for-gutenberg"
-            ),
+            label: __("Slow", "premium-blocks-for-gutenberg"),
             value: "slow",
         },
-    ]
+    ];
 
     const saveContentStyle = (value) => {
         const newUpdate = contentStyles.map((item, index) => {
@@ -611,21 +494,21 @@ const Inspector = ({ attributes, setAttributes }) => {
                                 {JsonUploadEnabled == 1 ? (
                                     ""
                                 ) : (
-                                        <p>
-                                            {__(
-                                                'Make Sure that allow "JSON file Upload " from ',
-                                                "premium-blocks-for-gutenberg"
-                                            )}{" "}
-                                            <ExternalLink
-                                                href={
-                                                    window.PremiumBlocksSettings
-                                                        .settingPath
-                                                }
-                                            >
-                                                plugin Settings
+                                    <p>
+                                        {__(
+                                            'Make Sure that allow "JSON file Upload " from ',
+                                            "premium-blocks-for-gutenberg"
+                                        )}{" "}
+                                        <ExternalLink
+                                            href={
+                                                window.PremiumBlocksSettings
+                                                    .settingPath
+                                            }
+                                        >
+                                            plugin Settings
                                         </ExternalLink>
-                                        </p>
-                                    )}
+                                    </p>
+                                )}
                                 <ToggleControl
                                     label={__(
                                         "Loop",
@@ -773,7 +656,8 @@ const Inspector = ({ attributes, setAttributes }) => {
                             initialOpen={true}
                         >
                             {triggerSettings[0].triggerType === "button" &&
-                                triggerSettings[0].showIcon && triggerSettings[0].icon != '' && (
+                                triggerSettings[0].showIcon &&
+                                triggerSettings[0].icon != "" && (
                                     <Fragment>
                                         <ResponsiveRangeControl
                                             label={__(
@@ -815,34 +699,34 @@ const Inspector = ({ attributes, setAttributes }) => {
                                 )}
                             {(triggerSettings[0].triggerType === "image" ||
                                 triggerSettings[0].triggerType ===
-                                "lottie") && (
-                                    <ResponsiveRangeControl
-                                        label={__(
-                                            "Size",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
-                                        value={imageWidth}
-                                        onChange={(newValue) =>
-                                            setAttributes({ imageWidth: newValue })
-                                        }
-                                        units={["px", "em", "%"]}
-                                        showUnit={true}
-                                        min="1"
-                                        max="800"
-                                        defaultValue={0}
-                                    />
-                                )}
+                                    "lottie") && (
+                                <ResponsiveRangeControl
+                                    label={__(
+                                        "Size",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                    value={imageWidth}
+                                    onChange={(newValue) =>
+                                        setAttributes({ imageWidth: newValue })
+                                    }
+                                    units={["px", "em", "%"]}
+                                    showUnit={true}
+                                    min="1"
+                                    max="800"
+                                    defaultValue={0}
+                                />
+                            )}
                             {(triggerSettings[0].triggerType === "button" ||
                                 triggerSettings[0].triggerType === "text") && (
-                                    <PremiumTypo
-                                        value={triggerTypography}
-                                        onChange={(newValue) =>
-                                            setAttributes({
-                                                triggerTypography: newValue,
-                                            })
-                                        }
-                                    />
-                                )}
+                                <PremiumTypo
+                                    value={triggerTypography}
+                                    onChange={(newValue) =>
+                                        setAttributes({
+                                            triggerTypography: newValue,
+                                        })
+                                    }
+                                />
+                            )}
                             {triggerSettings[0].triggerType === "button" && (
                                 <InsideTabs>
                                     <InsideTab
@@ -867,24 +751,31 @@ const Inspector = ({ attributes, setAttributes }) => {
                                                     })
                                                 }
                                             />
-                                            {triggerSettings[0].triggerType === "button" &&
-                                                triggerSettings[0].showIcon && triggerSettings[0].icon != '' &&
-                                                <AdvancedPopColorControl
-                                                    label={__(
-                                                        "Icon Color",
-                                                        "premium-blocks-for-gutenberg"
-                                                    )}
-                                                    colorValue={
-                                                        triggerStyles[0].iconColor
-                                                    }
-                                                    colorDefault={""}
-                                                    onColorChange={(newValue) =>
-                                                        saveTriggerStyles({
-                                                            iconColor: newValue,
-                                                        })
-                                                    }
-                                                />
-                                            }
+                                            {triggerSettings[0].triggerType ===
+                                                "button" &&
+                                                triggerSettings[0].showIcon &&
+                                                triggerSettings[0].icon !=
+                                                    "" && (
+                                                    <AdvancedPopColorControl
+                                                        label={__(
+                                                            "Icon Color",
+                                                            "premium-blocks-for-gutenberg"
+                                                        )}
+                                                        colorValue={
+                                                            triggerStyles[0]
+                                                                .iconColor
+                                                        }
+                                                        colorDefault={""}
+                                                        onColorChange={(
+                                                            newValue
+                                                        ) =>
+                                                            saveTriggerStyles({
+                                                                iconColor:
+                                                                    newValue,
+                                                            })
+                                                        }
+                                                    />
+                                                )}
                                             <AdvancedPopColorControl
                                                 label={__(
                                                     "Background Color",
@@ -1137,14 +1028,14 @@ const Inspector = ({ attributes, setAttributes }) => {
                             )}
                             {(triggerSettings[0].triggerType === "image" ||
                                 triggerSettings[0].triggerType ===
-                                "button") && (
-                                    <PremiumShadow
-                                        value={triggerShadow}
-                                        onChange={(value) =>
-                                            setAttributes({ triggerShadow: value })
-                                        }
-                                    />
-                                )}
+                                    "button") && (
+                                <PremiumShadow
+                                    value={triggerShadow}
+                                    onChange={(value) =>
+                                        setAttributes({ triggerShadow: value })
+                                    }
+                                />
+                            )}
                             {triggerSettings[0].triggerType === "text" && (
                                 <PremiumShadow
                                     label={__(
@@ -1161,19 +1052,19 @@ const Inspector = ({ attributes, setAttributes }) => {
                             )}
                             {(triggerSettings[0].triggerType === "button" ||
                                 triggerSettings[0].triggerType === "text") && (
-                                    <SpacingControl
-                                        label={__(
-                                            "Padding",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
-                                        value={triggerPadding}
-                                        onChange={(value) =>
-                                            setAttributes({ triggerPadding: value })
-                                        }
-                                        showUnits={true}
-                                        responsive={true}
-                                    />
-                                )}
+                                <SpacingControl
+                                    label={__(
+                                        "Padding",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                    value={triggerPadding}
+                                    onChange={(value) =>
+                                        setAttributes({ triggerPadding: value })
+                                    }
+                                    showUnits={true}
+                                    responsive={true}
+                                />
+                            )}
                         </PanelBody>
                     )}
                     <PanelBody
@@ -1185,10 +1076,7 @@ const Inspector = ({ attributes, setAttributes }) => {
                         initialOpen={false}
                     >
                         <ResponsiveRangeControl
-                            label={__(
-                                "Width",
-                                "premium-blocks-for-gutenberg"
-                            )}
+                            label={__("Width", "premium-blocks-for-gutenberg")}
                             value={upperIconWidth}
                             onChange={(value) =>
                                 setAttributes({ upperIconWidth: value })
@@ -1217,7 +1105,8 @@ const Inspector = ({ attributes, setAttributes }) => {
                                         colorDefault={""}
                                         onColorChange={(newValue) =>
                                             saveUpperStyles({
-                                                color: newValue || "transparent",
+                                                color:
+                                                    newValue || "transparent",
                                             })
                                         }
                                     />
@@ -1228,7 +1117,9 @@ const Inspector = ({ attributes, setAttributes }) => {
                                         )}
                                         colorValue={upperStyles[0].backColor}
                                         onColorChange={(newvalue) =>
-                                            saveUpperStyles({ backColor: newvalue })
+                                            saveUpperStyles({
+                                                backColor: newvalue,
+                                            })
                                         }
                                         colorDefault={``}
                                     />
@@ -1250,7 +1141,8 @@ const Inspector = ({ attributes, setAttributes }) => {
                                         colorDefault={""}
                                         onColorChange={(newValue) =>
                                             saveUpperStyles({
-                                                hoverColor: newValue || "transparent",
+                                                hoverColor:
+                                                    newValue || "transparent",
                                             })
                                         }
                                     />
@@ -1259,9 +1151,13 @@ const Inspector = ({ attributes, setAttributes }) => {
                                             "Background Hover Color",
                                             "premium-blocks-for-gutenberg"
                                         )}
-                                        colorValue={upperStyles[0].hoverBackColor}
+                                        colorValue={
+                                            upperStyles[0].hoverBackColor
+                                        }
                                         onColorChange={(newvalue) =>
-                                            saveUpperStyles({ hoverBackColor: newvalue })
+                                            saveUpperStyles({
+                                                hoverBackColor: newvalue,
+                                            })
                                         }
                                         colorDefault={``}
                                     />
@@ -1269,10 +1165,7 @@ const Inspector = ({ attributes, setAttributes }) => {
                             </InsideTab>
                         </InsideTabs>
                         <PremiumBorder
-                            label={__(
-                                "Border",
-                                "premium-blocks-for-gutenberg"
-                            )}
+                            label={__("Border", "premium-blocks-for-gutenberg")}
                             value={upperBorder}
                             onChange={(value) =>
                                 setAttributes({ upperBorder: value })
@@ -1323,14 +1216,20 @@ const Inspector = ({ attributes, setAttributes }) => {
                             min={50}
                         />
                         <PremiumBackgroundControl
-                            label={__("Container Type", "premium-blocks-for-gutenberg")}
+                            label={__(
+                                "Background Type",
+                                "premium-blocks-for-gutenberg"
+                            )}
                             value={containerBackground}
                             onChange={(value) =>
                                 setAttributes({ containerBackground: value })
                             }
                         />
                         <PremiumBackgroundControl
-                            label={__("Otter Type", "premium-blocks-for-gutenberg")}
+                            label={__(
+                                "Background Type",
+                                "premium-blocks-for-gutenberg"
+                            )}
                             value={modalBackground}
                             onChange={(value) =>
                                 setAttributes({ modalBackground: value })
