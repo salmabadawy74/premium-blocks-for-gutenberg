@@ -26,7 +26,6 @@ const save = props => {
         containerBorder,
         containerBackground,
         containerShadow,
-        iconShadow,
         borderHoverColor,
         iconTypeFile,
         imageURL,
@@ -108,8 +107,7 @@ const save = props => {
                                     color: iconStyles[0].iconColor,
                                     backgroundColor: iconStyles[0].iconBack,
                                     borderStyle: iconBorder.borderType,
-                                    borderColor: iconBorder.borderColor,
-                                    textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`
+                                    borderColor: iconBorder.borderColor
                                 })}
                             />
                         }

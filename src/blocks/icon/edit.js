@@ -90,7 +90,6 @@ function Edit(props) {
         iconBorder,
         containerBackground,
         containerShadow,
-        iconShadow,
         borderHoverColor,
         imgWidth,
         svgUrl,
@@ -604,19 +603,6 @@ function Edit(props) {
                                     })
                                 }
                             />
-                            {"icon" === iconTypeFile && <PremiumShadow
-                                label={__(
-                                    "Text Shadow",
-                                    "premium-blocks-for-gutenberg"
-                                )}
-                                value={iconShadow}
-                                boxShadow={false}
-                                onChange={(value) =>
-                                    setAttributes({ iconShadow: value })
-                                }
-                            />
-                            }
-                            <hr />
                             <PremiumBorder
                                 label={__(
                                     "Border",
@@ -799,8 +785,7 @@ function Edit(props) {
                                         iconPadding,
                                         props.deviceType
                                     ),
-                                    ...marginCss(iconMargin, props.deviceType),
-                                    textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`,
+                                    ...marginCss(iconMargin, props.deviceType)
                                 }}
                             />
                         )}
