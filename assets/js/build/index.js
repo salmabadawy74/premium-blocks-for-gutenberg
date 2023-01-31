@@ -6507,7 +6507,7 @@ const Inspector = _ref => {
     title: __("Triger", "premium-blocks-for-gutenberg"),
     className: "premium-panel-body",
     initialOpen: true
-  }, triggerSettings[0].triggerType === "button" && triggerSettings[0].showIcon && triggerSettings[0].icon != '' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.ResponsiveRangeControl, {
+  }, triggerSettings[0].triggerType === "button" && triggerSettings[0].showIcon && triggerSettings[0].icon != "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.ResponsiveRangeControl, {
     label: __("Icon Size", "premium-blocks-for-gutenberg"),
     value: triggerIconSize,
     onChange: value => setAttributes({
@@ -6554,7 +6554,7 @@ const Inspector = _ref => {
     onColorChange: newValue => saveTriggerStyles({
       color: newValue
     })
-  }), triggerSettings[0].triggerType === "button" && triggerSettings[0].showIcon && triggerSettings[0].icon != '' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.AdvancedColorControl, {
+  }), triggerSettings[0].triggerType === "button" && triggerSettings[0].showIcon && triggerSettings[0].icon != "" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.AdvancedColorControl, {
     label: __("Icon Color", "premium-blocks-for-gutenberg"),
     colorValue: triggerStyles[0].iconColor,
     colorDefault: "",
@@ -6769,13 +6769,13 @@ const Inspector = _ref => {
     max: 500,
     min: 50
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.PremiumBackgroundControl, {
-    label: __("Container Type", "premium-blocks-for-gutenberg"),
+    label: __("Background Type", "premium-blocks-for-gutenberg"),
     value: containerBackground,
     onChange: value => setAttributes({
       containerBackground: value
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.PremiumBackgroundControl, {
-    label: __("Otter Type", "premium-blocks-for-gutenberg"),
+    label: __("Background Type", "premium-blocks-for-gutenberg"),
     value: modalBackground,
     onChange: value => setAttributes({
       modalBackground: value

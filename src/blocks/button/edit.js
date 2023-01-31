@@ -471,19 +471,6 @@ function Edit(props) {
                                                 })
                                             }
                                         />
-                                        {/* <AdvancedPopColorControl
-                      label={__(
-                        "Background Color",
-                        "premium-blocks-for-gutenberg"
-                      )}
-                      colorValue={btnStyles[0].backColor}
-                      colorDefault={""}
-                      onColorChange={(newvalue) =>
-                        saveBtnStyles({
-                          backColor: newvalue,
-                        })
-                      }
-                    /> */}
                                         <PremiumBackgroundControl
                                             value={backgroundOptions}
                                             onChange={(value) =>
@@ -558,7 +545,8 @@ function Edit(props) {
                                                 colorDefault={""}
                                                 onColorChange={(newValue) =>
                                                     saveBtnStyles({
-                                                        borderHoverColor: newValue,
+                                                        borderHoverColor:
+                                                            newValue,
                                                     })
                                                 }
                                             />
@@ -837,9 +825,8 @@ function Edit(props) {
 }
 
 export default withSelect((select) => {
-    const { __experimentalGetPreviewDeviceType = null } = select(
-        "core/edit-post"
-    );
+    const { __experimentalGetPreviewDeviceType = null } =
+        select("core/edit-post");
     let deviceType = __experimentalGetPreviewDeviceType
         ? __experimentalGetPreviewDeviceType()
         : null;
