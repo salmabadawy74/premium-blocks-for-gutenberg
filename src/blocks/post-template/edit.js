@@ -160,9 +160,6 @@ export default function PostTemplateEdit({
             if (exclude?.length) {
                 query.exclude = exclude;
             }
-            if (parents?.length) {
-                query.parent = parents;
-            }
             // If sticky is not set, it will return all posts in the results.
             // If sticky is set to `only`, it will limit the results to sticky posts only.
             // If it is anything else, it will exclude sticky posts from results. For the record the value stored is `exclude`.
@@ -170,20 +167,11 @@ export default function PostTemplateEdit({
                 query.sticky = sticky === "only";
             }
             // If `inherit` is truthy, adjust conditionally the query to create a better preview.
-            if (inherit) {
-                // Change the post-type if needed.
-                if (templateSlug?.startsWith("archive-")) {
-                    query.postType = templateSlug.replace("archive-", "");
-                    postType = query.postType;
-                } else if (templateCategory) {
-                    query.categories = templateCategory[0]?.id;
-                }
-            }
             // When we preview Query Loop blocks we should prefer the current
             // block's postType, which is passed through block context.
             const usedPostType = postType;
             return {
-                posts: getEntityRecords("postType", "post", {
+                posts: getEntityRecords("postType", usedPostType, {
                     ...query,
                     ...restQueryArgs,
                 }),
@@ -217,12 +205,16 @@ export default function PostTemplateEdit({
             })),
         [posts]
     );
-    const hasLayoutFlex = layoutType === "flex" && columns > 1;
     const blockProps = useBlockProps({
-        className: classnames(__unstableLayoutClassNames, {
-            "is-flex-container": hasLayoutFlex,
-            [`columns-${columns}`]: hasLayoutFlex,
-        }),
+        className: classnames(
+            className,
+            `${blockId} premium-blog-post-container`,
+            {
+                " premium-desktop-hidden": hideDesktop,
+                " premium-tablet-hidden": hideTablet,
+                " premium-mobile-hidden": hideMobile,
+            }
+        ),
     });
 
     if (!posts) {
@@ -242,7 +234,7 @@ export default function PostTemplateEdit({
     // This ensures that when it is displayed again, the cached rendering of the
     // block preview is used, instead of having to re-render the preview from scratch.
     return (
-        <ul {...blockProps}>
+        <div {...blockProps}>
             {blockContexts &&
                 blockContexts.map((blockContext) => (
                     <BlockContextProvider
@@ -265,6 +257,6 @@ export default function PostTemplateEdit({
                         />
                     </BlockContextProvider>
                 ))}
-        </ul>
+        </div>
     );
 }
