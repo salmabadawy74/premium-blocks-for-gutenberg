@@ -239,21 +239,21 @@ function Edit(props) {
             "font-style": `${titleTypography?.fontStyle}`,
             "text-transform": `${titleTypography?.textTransform}`,
             "text-decoration": `${titleTypography?.textDecoration}`,
-            "padding-top": `${titlePadding?.[props.deviceType]?.top}${titlePadding.unit
+            "padding-top": `${titlePadding?.[props.deviceType]?.top}${titlePadding?.unit
                 }!important`,
-            "padding-right": `${titlePadding?.[props.deviceType]?.right}${titlePadding.unit
+            "padding-right": `${titlePadding?.[props.deviceType]?.right}${titlePadding?.unit
                 }!important`,
-            "padding-bottom": `${titlePadding?.[props.deviceType]?.bottom}${titlePadding.unit
+            "padding-bottom": `${titlePadding?.[props.deviceType]?.bottom}${titlePadding?.unit
                 }!important`,
-            "padding-left": `${titlePadding?.[props.deviceType]?.left}${titlePadding.unit
+            "padding-left": `${titlePadding?.[props.deviceType]?.left}${titlePadding?.unit
                 }!important`,
-            "margin-top": `${titleMargin?.[props.deviceType]?.top}${titleMargin.unit
+            "margin-top": `${titleMargin?.[props.deviceType]?.top}${titleMargin?.unit
                 }!important`,
-            "margin-right": `${titleMargin?.[props.deviceType]?.right}${titleMargin.unit
+            "margin-right": `${titleMargin?.[props.deviceType]?.right}${titleMargin?.unit
                 }!important`,
-            "margin-bottom": `${titleMargin?.[props.deviceType]?.bottom}${titleMargin.unit
+            "margin-bottom": `${titleMargin?.[props.deviceType]?.bottom}${titleMargin?.unit
                 }!important`,
-            "margin-left": `${titleMargin?.[props.deviceType]?.left}${titleMargin.unit
+            "margin-left": `${titleMargin?.[props.deviceType]?.left}${titleMargin?.unit
                 }!important`,
         };
 
@@ -383,9 +383,9 @@ function Edit(props) {
                                         >
                                             &nbsp;
                                             {__(
-                                            "here",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
+                                                "here",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
                                         </a>,
                                     ]}
                                     onChange={(newLng) =>
@@ -647,9 +647,9 @@ function Edit(props) {
                                         >
                                             &nbsp;
                                             {__(
-                                            "here",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
+                                                "here",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
                                         </a>,
                                     ]}
                                     onChange={(newStyle) =>
@@ -936,24 +936,24 @@ function Edit(props) {
                         />
                     </div>
                 ) : (
-                        <Placeholder
-                            label={__("Maps", "premium-blocks-for-gutenberg")}
-                            className={className}
-                        >
-                            <div>
+                    <Placeholder
+                        label={__("Maps", "premium-blocks-for-gutenberg")}
+                        className={className}
+                    >
+                        <div>
+                            {__(
+                                "Premium Maps requires an API key.",
+                                "premium-blocks-for-gutenberg"
+                            )}{" "}
+                            <a target="_blank" href={setting_url}>
                                 {__(
-                                    "Premium Maps requires an API key.",
+                                    "Add API key here",
                                     "premium-blocks-for-gutenberg"
-                                )}{" "}
-                                <a target="_blank" href={setting_url}>
-                                    {__(
-                                        "Add API key here",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                </a>
-                            </div>
-                        </Placeholder>
-                    )}
+                                )}
+                            </a>
+                        </div>
+                    </Placeholder>
+                )}
                 <style>{loadStyles()}</style>
                 {loadDescriptionGoogleFonts}
                 {loadTitleGoogleFonts}

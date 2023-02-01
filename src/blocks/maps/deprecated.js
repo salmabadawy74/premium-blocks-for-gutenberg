@@ -377,7 +377,7 @@ const v3Attributes = {
     hideMobile: {
         type: 'boolean',
         default: false
-    }
+    },
 };
 
 const deprecated = [
@@ -390,10 +390,10 @@ const deprecated = [
             let newAttributes = {
                 blockId: attributes.mapID ? `premium-maps-${attributes.mapID.split('-')[6]}` : '',
                 titleTypography: {
-                    "fontWeight": '',
+                    "fontWeight": 'Default',
                     'fontStyle': '',
                     'textTransform': '',
-                    'fontFamily': '',
+                    'fontFamily': 'Default',
                     letterSpacing: {
                         Desktop: "",
                         Tablet: "",
@@ -415,10 +415,10 @@ const deprecated = [
                     }
                 },
                 descriptionTypography: {
-                    "fontWeight": '',
+                    "fontWeight": 'Default',
                     'fontStyle': '',
                     'textTransform': '',
-                    'fontFamily': '',
+                    'fontFamily': 'Default',
                     'textDecoration': '',
                     letterSpacing: {
                         Desktop: "",
@@ -481,6 +481,143 @@ const deprecated = [
                     },
                     unit: 'px'
                 },
+                "mapBoxShadow": {
+                    "color": "undefined",
+                    "blur": "10",
+                    "horizontal": "0",
+                    "vertical": "0",
+                    "position": ""
+                },
+                "mapMargin": {
+                    "Desktop": {
+                        "top": "",
+                        "right": "",
+                        "bottom": "",
+                        "left": ""
+                    },
+                    "Tablet": {
+                        "top": "",
+                        "right": "",
+                        "bottom": "",
+                        "left": ""
+                    },
+                    "Mobile": {
+                        "top": "",
+                        "right": "",
+                        "bottom": "",
+                        "left": ""
+                    },
+                    "unit": "px"
+                },
+                "mapPadding": {
+                    "Desktop": {
+                        "top": "",
+                        "right": "",
+                        "bottom": "",
+                        "left": ""
+                    },
+                    "Tablet": {
+                        "top": "",
+                        "right": "",
+                        "bottom": "",
+                        "left": ""
+                    },
+                    "Mobile": {
+                        "top": "",
+                        "right": "",
+                        "bottom": "",
+                        "left": ""
+                    },
+                    "unit": "px"
+                },
+                "mapBorder": {
+                    "borderType": "none",
+                    "borderColor": "",
+                    "borderWidth": {
+                        "Desktop": {
+                            "top": "",
+                            "right": "",
+                            "bottom": "",
+                            "left": ""
+                        },
+                        "Tablet": {
+                            "top": "",
+                            "right": "",
+                            "bottom": "",
+                            "left": ""
+                        },
+                        "Mobile": {
+                            "top": "",
+                            "right": "",
+                            "bottom": "",
+                            "left": ""
+                        }
+                    },
+                    "borderRadius": {
+                        "Desktop": {
+                            "top": "",
+                            "right": "",
+                            "bottom": "",
+                            "left": ""
+                        },
+                        "Tablet": {
+                            "top": "",
+                            "right": "",
+                            "bottom": "",
+                            "left": ""
+                        },
+                        "Mobile": {
+                            "top": "",
+                            "right": "",
+                            "bottom": "",
+                            "left": ""
+                        }
+                    },
+                    "titlePadding": {
+                        "Desktop": {
+                            "top": "",
+                            "right": "",
+                            "bottom": "",
+                            "left": ""
+                        },
+                        "Tablet": {
+                            "top": "",
+                            "right": "",
+                            "bottom": "",
+                            "left": ""
+                        },
+                        "Mobile": {
+                            "top": "",
+                            "right": "",
+                            "bottom": "",
+                            "left": ""
+                        },
+                        unit: "px"
+                    },
+                    "titleMargin": {
+                        "Desktop": {
+                            "top": "",
+                            "right": "",
+                            "bottom": "",
+                            "left": ""
+                        },
+                        "Tablet": {
+                            "top": "",
+                            "right": "",
+                            "bottom": "",
+                            "left": ""
+                        },
+                        "Mobile": {
+                            "top": "",
+                            "right": "",
+                            "bottom": "",
+                            "left": ""
+                        },
+                        unit: "px"
+                    }
+
+
+                }
             }
             return Object.assign(attributes, newAttributes)
         },
@@ -690,7 +827,6 @@ const deprecated = [
                         let mapElem = document.getElementById('${mapID}');
                         let pin = mapElem.querySelector('.${className}__marker');
                         let latlng = new google.maps.LatLng( parseFloat( ${centerLat} ) , parseFloat( ${centerLng} ) );
-
                         let map = new google.maps.Map(mapElem, {
                             zoom: ${zoom},
                             gestureHandling: 'cooperative',
@@ -710,7 +846,6 @@ const deprecated = [
                                 map			: map,
                                 icon        : ${markerCustom} ? markerIcon : ''
                             });
-
                             let infowindow = new google.maps.InfoWindow({
                                 maxWidth    : ${maxWidth},
                                 content		: pin.innerHTML
@@ -722,7 +857,6 @@ const deprecated = [
                                 infowindow.open( map, marker );
                             });
                         }
-
                     });`}
                     </script>
                 </div>
@@ -808,7 +942,6 @@ const deprecated = [
                     let mapElem = document.getElementById('${mapID}');
                     let pin = mapElem.querySelector('.${className}__marker');
                     let latlng = new google.maps.LatLng( parseFloat( ${centerLat} ) , parseFloat( ${centerLng} ) );
-
                     let map = new google.maps.Map(mapElem, {
                         zoom: ${zoom},
                         gestureHandling: 'cooperative',
@@ -828,7 +961,6 @@ const deprecated = [
                             map			: map,
                             icon        : ${markerCustom} ? markerIcon : ''
                         });
-
                         let infowindow = new google.maps.InfoWindow({
                             maxWidth    : ${maxWidth},
                             content		: pin.innerHTML
@@ -840,7 +972,6 @@ const deprecated = [
                             infowindow.open( map, marker );
                         });
                     }
-
                 });`}
                     </script>
                 </div>

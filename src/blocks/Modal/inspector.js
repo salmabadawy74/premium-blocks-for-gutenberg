@@ -699,34 +699,34 @@ const Inspector = ({ attributes, setAttributes }) => {
                                 )}
                             {(triggerSettings[0].triggerType === "image" ||
                                 triggerSettings[0].triggerType ===
-                                    "lottie") && (
-                                <ResponsiveRangeControl
-                                    label={__(
-                                        "Size",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                    value={imageWidth}
-                                    onChange={(newValue) =>
-                                        setAttributes({ imageWidth: newValue })
-                                    }
-                                    units={["px", "em", "%"]}
-                                    showUnit={true}
-                                    min="1"
-                                    max="800"
-                                    defaultValue={0}
-                                />
-                            )}
+                                "lottie") && (
+                                    <ResponsiveRangeControl
+                                        label={__(
+                                            "Size",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                        value={imageWidth}
+                                        onChange={(newValue) =>
+                                            setAttributes({ imageWidth: newValue })
+                                        }
+                                        units={["px", "em", "%"]}
+                                        showUnit={true}
+                                        min="1"
+                                        max="800"
+                                        defaultValue={0}
+                                    />
+                                )}
                             {(triggerSettings[0].triggerType === "button" ||
                                 triggerSettings[0].triggerType === "text") && (
-                                <PremiumTypo
-                                    value={triggerTypography}
-                                    onChange={(newValue) =>
-                                        setAttributes({
-                                            triggerTypography: newValue,
-                                        })
-                                    }
-                                />
-                            )}
+                                    <PremiumTypo
+                                        value={triggerTypography}
+                                        onChange={(newValue) =>
+                                            setAttributes({
+                                                triggerTypography: newValue,
+                                            })
+                                        }
+                                    />
+                                )}
                             {triggerSettings[0].triggerType === "button" && (
                                 <InsideTabs>
                                     <InsideTab
@@ -755,7 +755,7 @@ const Inspector = ({ attributes, setAttributes }) => {
                                                 "button" &&
                                                 triggerSettings[0].showIcon &&
                                                 triggerSettings[0].icon !=
-                                                    "" && (
+                                                "" && (
                                                     <AdvancedPopColorControl
                                                         label={__(
                                                             "Icon Color",
@@ -1028,14 +1028,14 @@ const Inspector = ({ attributes, setAttributes }) => {
                             )}
                             {(triggerSettings[0].triggerType === "image" ||
                                 triggerSettings[0].triggerType ===
-                                    "button") && (
-                                <PremiumShadow
-                                    value={triggerShadow}
-                                    onChange={(value) =>
-                                        setAttributes({ triggerShadow: value })
-                                    }
-                                />
-                            )}
+                                "button") && (
+                                    <PremiumShadow
+                                        value={triggerShadow}
+                                        onChange={(value) =>
+                                            setAttributes({ triggerShadow: value })
+                                        }
+                                    />
+                                )}
                             {triggerSettings[0].triggerType === "text" && (
                                 <PremiumShadow
                                     label={__(
@@ -1052,19 +1052,19 @@ const Inspector = ({ attributes, setAttributes }) => {
                             )}
                             {(triggerSettings[0].triggerType === "button" ||
                                 triggerSettings[0].triggerType === "text") && (
-                                <SpacingControl
-                                    label={__(
-                                        "Padding",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                    value={triggerPadding}
-                                    onChange={(value) =>
-                                        setAttributes({ triggerPadding: value })
-                                    }
-                                    showUnits={true}
-                                    responsive={true}
-                                />
-                            )}
+                                    <SpacingControl
+                                        label={__(
+                                            "Padding",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                        value={triggerPadding}
+                                        onChange={(value) =>
+                                            setAttributes({ triggerPadding: value })
+                                        }
+                                        showUnits={true}
+                                        responsive={true}
+                                    />
+                                )}
                         </PanelBody>
                     )}
                     <PanelBody
@@ -1227,7 +1227,7 @@ const Inspector = ({ attributes, setAttributes }) => {
                         />
                         <PremiumBackgroundControl
                             label={__(
-                                "Background Type",
+                                "Otter Background Type",
                                 "premium-blocks-for-gutenberg"
                             )}
                             value={modalBackground}
