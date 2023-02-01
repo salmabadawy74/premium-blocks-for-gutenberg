@@ -2878,7 +2878,7 @@ button.premium-modal-box-modal-close {
     padding: 0;
     display: flex;
 
-    .block-editor-inner-blocks{
+    .block-editor-inner-blocks {
         width: 100%;
         max-width: 100%;
     }
@@ -2910,6 +2910,14 @@ button.premium-modal-box-modal-close {
 
 .premium-modal-box-container[data-modal-animation*="animated-"] {
     opacity: 0;
+}
+
+.is-sidebar-opened .premium-popup__modal_content {
+    margin-right: 335px !important;
+}
+
+.interface-interface-skeleton__secondary-sidebar .premium-popup__modal_content {
+    margin-left: 350px !important;
 }
 
 @media (max-width: 600px) {
