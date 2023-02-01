@@ -6,7 +6,9 @@
     "title": "Button",
     "description": "Add stylish buttons to your Gutenberg page using Premium Button Block.",
     "category": "premium-blocks",
-    "keywords": ["button"],
+    "keywords": [
+        "button"
+    ],
     "attributes": {
         "blockId": {
             "type": "string"
@@ -47,7 +49,21 @@
         },
         "icon": {
             "type": "string",
-            "default": "dashicons dashicons-admin-site"
+            "default": "fe_aperture"
+        },
+        "icons": {
+            "type": "array",
+            "default": [
+                {
+                    "iconn": "fe_aperture",
+                    "link": "",
+                    "target": "_self",
+                    "size": "40",
+                    "width": "2",
+                    "title": "",
+                    "style": "default"
+                }
+            ]
         },
         "iconPosition": {
             "type": "string",
@@ -255,16 +271,7 @@
             "type": "string",
             "default": ""
         },
-        "iconShadow": {
-            "type": "object",
-            "default": {
-                "color": "undefined",
-                "blur": "10",
-                "horizontal": "0",
-                "vertical": "0"
-            }
-        },
-                "backgroundOptions": {
+        "backgroundOptions": {
             "type": "object",
             "default": {
                 "backgroundType": "",
@@ -283,11 +290,10 @@
                 "gradientPosition": "center center"
             }
         },
-        "backgroundPresets":{
-            "type":"string",
-            "default":""
+        "backgroundPresets": {
+            "type": "string",
+            "default": ""
         }
-
     },
     "editorScript": "pbg-blocks-js",
     "editorStyle": "premium-blocks-editor-css"

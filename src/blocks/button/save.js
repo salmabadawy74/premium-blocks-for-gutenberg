@@ -28,7 +28,6 @@ const save = (props) => {
         iconPosition,
         iconColor,
         iconHoverColor,
-        iconShadow,
         backgroundOptions,
     } = props.attributes;
 
@@ -87,8 +86,7 @@ const save = (props) => {
                             <i
                                 className={`premium-button-icon ${icon}`}
                                 style={filterJsCss({
-                                    color: iconColor,
-                                    textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`,
+                                    color: iconColor
                                 })}
                             ></i>
                         )}
@@ -112,8 +110,7 @@ const save = (props) => {
                             <i
                                 className={`premium-button-icon ${icon}`}
                                 style={filterJsCss({
-                                    color: iconColor,
-                                    textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`,
+                                    color: iconColor
                                 })}
                             ></i>
                         )}

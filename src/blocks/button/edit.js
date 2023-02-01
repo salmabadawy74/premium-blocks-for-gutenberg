@@ -28,6 +28,10 @@ import {
     InsideTab,
     iconsList,
     PBGPresets,
+    GenIcon,
+    FaIco,
+    Ico,
+    IcoNames
 } from "@pbg/components";
 
 const { __ } = wp.i18n;
@@ -74,9 +78,9 @@ function Edit(props) {
         iconSpacing,
         iconColor,
         iconHoverColor,
-        iconShadow,
         backgroundOptions,
         backgroundPresets,
+        icons
     } = props.attributes;
 
     const SIZE = [
@@ -248,6 +252,11 @@ function Edit(props) {
 
         return generateCss(styles);
     };
+
+    const renderSVG = svg => (
+        <GenIcon name={svg} icon={('fa' === svg.substring(0, 2) ? FaIco[svg] : Ico[svg])} />
+    );
+
     return (
         <Fragment>
             <InspectorControls key={"inspector"}>
@@ -343,13 +352,27 @@ function Edit(props) {
                             />
                             {showIcon && (
                                 <Fragment>
-                                    <FontIconPicker
+                                    {/* <FontIconPicker
                                         icons={iconsList}
                                         onChange={(newIcon) =>
                                             setAttributes({ icon: newIcon })
                                         }
                                         value={icon}
                                         isMulti={false}
+                                        noSelectedPlaceholder={__(
+                                            "Select Icon",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                    /> */}
+                                    <FontIconPicker
+                                        icons={IcoNames}
+                                        onChange={(newIcon) =>
+                                            setAttributes({ icon: newIcon })
+                                        }
+                                        renderFunc={renderSVG}
+                                        value={icon}
+                                        isMulti={false}
+                                        // appendTo="body"
                                         noSelectedPlaceholder={__(
                                             "Select Icon",
                                             "premium-blocks-for-gutenberg"
@@ -524,13 +547,13 @@ function Edit(props) {
                                             label={
                                                 "radial" !== effect
                                                     ? __(
-                                                          "Background Color",
-                                                          "premium-blocks-for-gutenberg"
-                                                      )
+                                                        "Background Color",
+                                                        "premium-blocks-for-gutenberg"
+                                                    )
                                                     : __(
-                                                          "Background Color",
-                                                          "premium-blocks-for-gutenberg"
-                                                      )
+                                                        "Background Color",
+                                                        "premium-blocks-for-gutenberg"
+                                                    )
                                             }
                                             colorValue={
                                                 btnStyles[0].backHoverColor
@@ -679,7 +702,7 @@ function Edit(props) {
                                         </Fragment>
                                     </InsideTab>
                                 </InsideTabs>
-                                <PremiumShadow
+                                {/* <PremiumShadow
                                     label={__(
                                         "Shadow",
                                         "premium-blocks-for-gutenberg"
@@ -688,7 +711,7 @@ function Edit(props) {
                                     onChange={(value) =>
                                         setAttributes({ iconShadow: value })
                                     }
-                                />
+                                /> */}
                                 <SpacingControl
                                     label={__(
                                         "Margin",
@@ -765,8 +788,31 @@ function Edit(props) {
                     [
                         <Fragment>
                             {showIcon && iconPosition == "before" && (
-                                <i
-                                    className={`premium-button-icon ${icon}`}
+                                // <i
+                                //     className={`premium-button-icon ${icon}`}
+                                //     style={{
+                                //         fontSize:
+                                //             iconSize[props.deviceType] +
+                                //             iconSize.unit,
+                                //         width:
+                                //             iconSize[props.deviceType] +
+                                //             iconSize.unit,
+                                //         height:
+                                //             iconSize[props.deviceType] +
+                                //             iconSize.unit,
+                                //         ...marginCss(
+                                //             iconSpacing,
+                                //             props.deviceType
+                                //         ),
+                                //         color: iconColor
+                                //     }}
+                                // ></i>
+                                <GenIcon className={`premium-button-icon ${icon}`}
+                                    name={icon}
+                                    size={iconSize[props.deviceType] +
+                                        iconSize.unit}
+                                    icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
+                                    strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
                                     style={{
                                         fontSize:
                                             iconSize[props.deviceType] +
@@ -781,10 +827,9 @@ function Edit(props) {
                                             iconSpacing,
                                             props.deviceType
                                         ),
-                                        color: iconColor,
-                                        textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`,
+                                        color: iconColor
                                     }}
-                                ></i>
+                                />
                             )}
                             <RichText
                                 value={btnText}
@@ -802,26 +847,48 @@ function Edit(props) {
                                 keepPlaceholderOnFocus
                             />
                             {showIcon && iconPosition == "after" && (
-                                <i
-                                    className={`premium-button-icon ${icon}`}
+                                <GenIcon className={`premium-button-icon ${icon}`}
+                                    name={icon}
+                                    size={iconSize[props.deviceType] +
+                                        iconSize.unit}
+                                    icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
+                                    strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
                                     style={{
-                                        fontSize:
-                                            iconSize[props.deviceType] +
-                                            iconSize.unit,
-                                        width:
-                                            iconSize[props.deviceType] +
-                                            iconSize.unit,
-                                        height:
-                                            iconSize[props.deviceType] +
-                                            iconSize.unit,
+                                        // fontSize:
+                                        //     iconSize[props.deviceType] +
+                                        //     iconSize.unit,
+                                        // width:
+                                        //     iconSize[props.deviceType] +
+                                        //     iconSize.unit,
+                                        // height:
+                                        //     iconSize[props.deviceType] +
+                                        //     iconSize.unit,
                                         ...marginCss(
                                             iconSpacing,
                                             props.deviceType
                                         ),
-                                        color: iconColor,
-                                        textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`,
+                                        color: iconColor
                                     }}
-                                ></i>
+                                />
+                                // <i
+                                //     className={`premium-button-icon ${icon}`}
+                                //     style={{
+                                //         fontSize:
+                                //             iconSize[props.deviceType] +
+                                //             iconSize.unit,
+                                //         width:
+                                //             iconSize[props.deviceType] +
+                                //             iconSize.unit,
+                                //         height:
+                                //             iconSize[props.deviceType] +
+                                //             iconSize.unit,
+                                //         ...marginCss(
+                                //             iconSpacing,
+                                //             props.deviceType
+                                //         ),
+                                //         color: iconColor
+                                //     }}
+                                // ></i>
                             )}
                         </Fragment>,
                     ]
