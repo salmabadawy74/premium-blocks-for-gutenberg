@@ -51,6 +51,10 @@
             "type": "string",
             "default": "fe_aperture"
         },
+        "iconType": {
+            "type": "string",
+            "default": "fe"
+        },
         "icons": {
             "type": "array",
             "default": [
@@ -58,7 +62,7 @@
                     "iconn": "fe_aperture",
                     "link": "",
                     "target": "_self",
-                    "size": "40",
+                    "size": "25",
                     "width": "2",
                     "title": "",
                     "style": "default"

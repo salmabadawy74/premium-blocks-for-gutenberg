@@ -29,9 +29,6 @@
   border-radius: 0%; }
   .premium-button .premium-button-icon {
     vertical-align: middle;
-    font-size: 25px;
-    width: 25px;
-    height: 25px;
     margin: 0px; }
   .premium-button a {
     text-decoration: none;
@@ -87,6 +84,12 @@
   padding: 16px 28px;
   font-size: 18px;
   line-height: 1.3333; }
+
+.editor-styles-wrapper .wp-block-button__link .fe svg {
+  fill: none; }
+
+.editor-styles-wrapper .wp-block-button__link .ic svg {
+  fill: currentColor; }
 
 .premium-button__slide .premium-button {
   display: inline-flex;
@@ -374,10 +377,7 @@
   align-items: center;
   border-radius: 0%; }
   .premium-button .premium-button-icon {
-    vertical-align: middle;
-    font-size: 30px;
-    width: 30px;
-    height: 30px; }
+    vertical-align: middle; }
   .premium-button a {
     text-decoration: none;
     white-space: normal;

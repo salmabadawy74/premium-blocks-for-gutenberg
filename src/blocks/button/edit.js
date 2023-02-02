@@ -80,7 +80,8 @@ function Edit(props) {
         iconHoverColor,
         backgroundOptions,
         backgroundPresets,
-        icons
+        icons,
+        iconType
     } = props.attributes;
 
     const SIZE = [
@@ -250,6 +251,11 @@ function Edit(props) {
             "background-color": `${slideColor}`,
         };
 
+        styles[`.${blockId}.premium-button__wrap .premium-button-icon svg`] = {
+            width: `${iconSize[props.deviceType]}${iconSize.unit} !important`,
+            height: `${iconSize[props.deviceType]}${iconSize.unit} !important`,
+        };
+
         return generateCss(styles);
     };
 
@@ -367,7 +373,7 @@ function Edit(props) {
                                     <FontIconPicker
                                         icons={IcoNames}
                                         onChange={(newIcon) =>
-                                            setAttributes({ icon: newIcon })
+                                            setAttributes({ icon: newIcon, iconType: newIcon.substring(0, 2) })
                                         }
                                         renderFunc={renderSVG}
                                         value={icon}
@@ -807,7 +813,7 @@ function Edit(props) {
                                 //         color: iconColor
                                 //     }}
                                 // ></i>
-                                <GenIcon className={`premium-button-icon ${icon}`}
+                                <GenIcon className={`premium-button-icon ${icon} ${iconType}`}
                                     name={icon}
                                     size={iconSize[props.deviceType] +
                                         iconSize.unit}
@@ -817,12 +823,12 @@ function Edit(props) {
                                         fontSize:
                                             iconSize[props.deviceType] +
                                             iconSize.unit,
-                                        width:
-                                            iconSize[props.deviceType] +
-                                            iconSize.unit,
-                                        height:
-                                            iconSize[props.deviceType] +
-                                            iconSize.unit,
+                                        // width:
+                                        //     iconSize[props.deviceType] +
+                                        //     iconSize.unit,
+                                        // height:
+                                        //     iconSize[props.deviceType] +
+                                        //     iconSize.unit,
                                         ...marginCss(
                                             iconSpacing,
                                             props.deviceType
@@ -847,7 +853,7 @@ function Edit(props) {
                                 keepPlaceholderOnFocus
                             />
                             {showIcon && iconPosition == "after" && (
-                                <GenIcon className={`premium-button-icon ${icon}`}
+                                <GenIcon className={`premium-button-icon ${icon} ${iconType}`}
                                     name={icon}
                                     size={iconSize[props.deviceType] +
                                         iconSize.unit}

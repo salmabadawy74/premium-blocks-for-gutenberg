@@ -34,9 +34,9 @@ $pbBackgroundColor: rgb(242, 242, 242);
 
     .premium-button-icon {
         vertical-align: middle;
-        font-size: 25px;
-        width: 25px;
-        height: 25px;
+        // font-size: 25px;
+        // width: 25px;
+        // height: 25px;
         margin: 0px;
     }
 
@@ -117,6 +117,14 @@ $pbBackgroundColor: rgb(242, 242, 242);
         padding: 16px 28px;
         font-size: 18px;
         line-height: 1.3333;
+    }
+
+    .fe svg {
+        fill: none;
+    }
+
+    .ic svg {
+        fill: currentColor;
     }
 }
 }
@@ -547,9 +555,9 @@ $pbBackgroundColor: rgb(242, 242, 242);
 
     .premium-button-icon {
         vertical-align: middle;
-        font-size: 30px;
-        width: 30px;
-        height: 30px;
+        // font-size: 30px;
+        // width: 30px;
+        // height: 30px;
     }
 
     a {
