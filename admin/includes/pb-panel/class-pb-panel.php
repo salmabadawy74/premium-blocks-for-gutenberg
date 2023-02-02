@@ -164,6 +164,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 		public function add_default_features( $options ) {
 			$default_options = array(
 				'premium-equal-height' => true,
+                'premium-floating-effect' => true,
 			);
 
 			return array_merge( $default_options, $options );

@@ -16,6 +16,7 @@ module.exports = {
             },
         },
         'equal-height': path.resolve(__dirname, 'src/blocks/container/view.js'),
+        'floating-effect': path.resolve(__dirname, 'src/global-features/floating-effect.js'),
     },
     externals: {
         ...defaultConfig.externals,

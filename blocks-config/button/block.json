@@ -264,7 +264,7 @@
                 "vertical": "0"
             }
         },
-                "backgroundOptions": {
+        "backgroundOptions": {
             "type": "object",
             "default": {
                 "backgroundType": "",
@@ -283,11 +283,14 @@
                 "gradientPosition": "center center"
             }
         },
-        "backgroundPresets":{
-            "type":"string",
-            "default":""
+        "backgroundPresets": {
+            "type": "string",
+            "default": ""
+        },
+        "floatingEffect": {
+            "type": "object",
+            "default": {}
         }
-
     },
     "editorScript": "pbg-blocks-js",
     "editorStyle": "premium-blocks-editor-css"

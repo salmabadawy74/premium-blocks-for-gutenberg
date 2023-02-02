@@ -287,6 +287,14 @@ class PBG_Blocks_Helper {
 			PREMIUM_BLOCKS_VERSION,
 			true
 		);
+		error_log( __( 'here' ) );
+		wp_enqueue_script(
+			'pbg-floating-effect22',
+			PREMIUM_BLOCKS_URL . 'assets/js/build/floating-effect.js',
+			array( 'wp-block-editor', 'wp-components', 'wp-compose', 'wp-element', 'wp-edit-post', 'wp-hooks', 'pbg-settings-js' ),
+			PREMIUM_BLOCKS_VERSION,
+			true
+		);
 
 		wp_localize_script(
 			'pbg-blocks-js',

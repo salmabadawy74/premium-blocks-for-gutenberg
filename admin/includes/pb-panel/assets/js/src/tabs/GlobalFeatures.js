@@ -63,6 +63,20 @@ const GlobalFeatures = props => {
                         "premium-blocks-for-gutenberg"
                     )}
                 />
+                <AdvancedSwitcher
+                    label={__(
+                        "Floating Effects",
+                        "premium-blocks-for-gutenberg"
+                    )}
+                    onChange={(checked) =>
+                        onChangeData("premium-floating-effect", checked)
+                    }
+                    checked={settings?.["premium-floating-effect"] || false}
+                    description={__(
+                        "Apply advanced floating effects on any Premium Blocks for Gutenberg block.",
+                        "premium-blocks-for-gutenberg"
+                    )}
+                />
             </div>
         </div>
     </Container>
