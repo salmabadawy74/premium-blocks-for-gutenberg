@@ -99,8 +99,29 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 		function pbg_fronend_global_styles() {
 			$colors_css     = $this->add_global_color_to_editor();
 			$typography_css = $this->add_global_typography_to_editor();
+			$block_spacing = $this->add_global_block_spacing();
 
-			printf( "<style type='text/css' class='pbg-global-inline-style'>%s</style>", "{$colors_css}{$typography_css}" );
+			printf( "<style type='text/css' class='pbg-global-inline-style'>%s</style>", "{$colors_css}{$typography_css}{$block_spacing}" );
+		}
+
+		/**
+		 * add_global_block_spacing
+		 *
+		 * @param  string $dynamic_css
+		 * @return string
+		 */
+		public function add_global_block_spacing( $dynamic_css = '' ) {
+			$global_block_spacing     = get_option( 'pbg_global_layout' );
+			$css                    = new Premium_Blocks_css();
+			if ( isset( $global_block_spacing['block_spacing'] ) ) {
+				$block_global_spacing = $global_block_spacing['block_spacing'];
+				$css->set_selector( 'body .is-layout-constrained > div' );
+				$css->add_property( 'margin-block-start', ($block_global_spacing . 'px') );
+				$css->add_property( 'margin-top', ($block_global_spacing . 'px') );
+			}
+		    $dynamic_css .= $css->css_output();
+
+			return $dynamic_css;
 		}
 
 		/**
@@ -876,6 +897,9 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 					'show_in_rest' => array(
 						'schema' => array(
 							'properties' => array(
+								'block_spacing'  => array(
+									'type' => 'number',
+								),
 								'container_width'   => array(
 									'type' => 'number',
 								),
@@ -889,6 +913,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 						),
 					),
 					'default'      => array(
+						'block_spacing'   => 20,
 						'container_width'   => 1200,
 						'tablet_breakpoint' => 1024,
 						'mobile_breakpoint' => 767,
