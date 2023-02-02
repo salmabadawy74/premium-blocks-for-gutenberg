@@ -135,6 +135,12 @@ const Edit = props => {
         styles[` .${blockId} .premium-modal-box-modal-header .premium-modal-box-close-button-container:hover .premium-modal-box-modal-close`] = {
             'color': `${upperStyles[0].hoverColor} !important`
         };
+        styles[` .${blockId} .premium-popup__modal_wrap .premium-modal-box-modal-body .block-editor-block-list__layout`] = {
+            "padding-top": `${modalPadding?.[currentDevice]?.top}${modalPadding.unit}!important`,
+            "padding-right": `${modalPadding?.[currentDevice]?.right}${modalPadding.unit}!important`,
+            "padding-bottom": `${modalPadding?.[currentDevice]?.bottom}${modalPadding.unit}!important`,
+            "padding-left": `${modalPadding?.[currentDevice]?.left}${modalPadding.unit}!important`,
+        };
         return generateCss(styles);
     }
 
@@ -327,7 +333,7 @@ const Edit = props => {
                             }}>
                             <div className={`premium-modal-box-modal-body`}
                                 style={{
-                                    ...paddingCss(modalPadding, currentDevice),
+                                    // ...paddingCss(modalPadding, currentDevice),
                                     maxHeight: `${modalMaxHeight}${modalHeight.unit}`,
                                     ...gradientBackground(containerBackground)
                                 }}>
