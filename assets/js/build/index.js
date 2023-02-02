@@ -4428,7 +4428,7 @@ const Edit = props => {
   };
 
   const loadStyles = () => {
-    var _triggerBorderH$borde, _triggerBorderH$borde2, _triggerBorderH$borde3, _triggerBorderH$borde4, _triggerBorderH$borde5, _triggerBorderH$borde6, _triggerBorderH$borde7, _triggerBorderH$borde8, _triggerBorderH$borde9, _triggerBorderH$borde10, _triggerBorderH$borde11, _triggerBorderH$borde12, _triggerBorderH$borde13, _triggerBorderH$borde14, _triggerBorderH$borde15, _triggerBorderH$borde16, _triggerBorderH$borde17, _triggerBorderH$borde18, _triggerBorderH$borde19, _triggerBorderH$borde20, _triggerBorderH$borde21, _triggerBorderH$borde22, _triggerBorderH$borde23, _triggerBorderH$borde24;
+    var _triggerBorderH$borde, _triggerBorderH$borde2, _triggerBorderH$borde3, _triggerBorderH$borde4, _triggerBorderH$borde5, _triggerBorderH$borde6, _triggerBorderH$borde7, _triggerBorderH$borde8, _triggerBorderH$borde9, _triggerBorderH$borde10, _triggerBorderH$borde11, _triggerBorderH$borde12, _triggerBorderH$borde13, _triggerBorderH$borde14, _triggerBorderH$borde15, _triggerBorderH$borde16, _triggerBorderH$borde17, _triggerBorderH$borde18, _triggerBorderH$borde19, _triggerBorderH$borde20, _triggerBorderH$borde21, _triggerBorderH$borde22, _triggerBorderH$borde23, _triggerBorderH$borde24, _modalPadding$current, _modalPadding$current2, _modalPadding$current3, _modalPadding$current4;
 
     const styles = {};
     styles[` .${blockId} .premium-modal-trigger-container button.premium-modal-trigger-btn:hover`] = {
@@ -4488,6 +4488,12 @@ const Edit = props => {
     };
     styles[` .${blockId} .premium-modal-box-modal-header .premium-modal-box-close-button-container:hover .premium-modal-box-modal-close`] = {
       'color': `${upperStyles[0].hoverColor} !important`
+    };
+    styles[` .${blockId} .premium-popup__modal_wrap .premium-modal-box-modal-body .block-editor-block-list__layout`] = {
+      "padding-top": `${modalPadding === null || modalPadding === void 0 ? void 0 : (_modalPadding$current = modalPadding[currentDevice]) === null || _modalPadding$current === void 0 ? void 0 : _modalPadding$current.top}${modalPadding.unit}!important`,
+      "padding-right": `${modalPadding === null || modalPadding === void 0 ? void 0 : (_modalPadding$current2 = modalPadding[currentDevice]) === null || _modalPadding$current2 === void 0 ? void 0 : _modalPadding$current2.right}${modalPadding.unit}!important`,
+      "padding-bottom": `${modalPadding === null || modalPadding === void 0 ? void 0 : (_modalPadding$current3 = modalPadding[currentDevice]) === null || _modalPadding$current3 === void 0 ? void 0 : _modalPadding$current3.bottom}${modalPadding.unit}!important`,
+      "padding-left": `${modalPadding === null || modalPadding === void 0 ? void 0 : (_modalPadding$current4 = modalPadding[currentDevice]) === null || _modalPadding$current4 === void 0 ? void 0 : _modalPadding$current4.left}${modalPadding.unit}!important`
     };
     return (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.generateCss)(styles);
   };
@@ -4650,7 +4656,8 @@ const Edit = props => {
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-modal-box-modal-body`,
-    style: { ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.paddingCss)(modalPadding, currentDevice),
+    style: {
+      // ...paddingCss(modalPadding, currentDevice),
       maxHeight: `${modalMaxHeight}${modalHeight.unit}`,
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.gradientBackground)(containerBackground)
     }
@@ -5443,7 +5450,7 @@ const Inspector = _ref => {
       containerBackground: value
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.PremiumBackgroundControl, {
-    label: __("Otter Background Type", "premium-blocks-for-gutenberg"),
+    label: __("Outer Background", "premium-blocks-for-gutenberg"),
     value: modalBackground,
     onChange: value => setAttributes({
       modalBackground: value

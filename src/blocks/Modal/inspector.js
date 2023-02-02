@@ -494,21 +494,21 @@ const Inspector = ({ attributes, setAttributes }) => {
                                 {JsonUploadEnabled == 1 ? (
                                     ""
                                 ) : (
-                                    <p>
-                                        {__(
-                                            'Make Sure that allow "JSON file Upload " from ',
-                                            "premium-blocks-for-gutenberg"
-                                        )}{" "}
-                                        <ExternalLink
-                                            href={
-                                                window.PremiumBlocksSettings
-                                                    .settingPath
-                                            }
-                                        >
-                                            plugin Settings
+                                        <p>
+                                            {__(
+                                                'Make Sure that allow "JSON file Upload " from ',
+                                                "premium-blocks-for-gutenberg"
+                                            )}{" "}
+                                            <ExternalLink
+                                                href={
+                                                    window.PremiumBlocksSettings
+                                                        .settingPath
+                                                }
+                                            >
+                                                plugin Settings
                                         </ExternalLink>
-                                    </p>
-                                )}
+                                        </p>
+                                    )}
                                 <ToggleControl
                                     label={__(
                                         "Loop",
@@ -1227,7 +1227,7 @@ const Inspector = ({ attributes, setAttributes }) => {
                         />
                         <PremiumBackgroundControl
                             label={__(
-                                "Otter Background Type",
+                                "Outer Background",
                                 "premium-blocks-for-gutenberg"
                             )}
                             value={modalBackground}

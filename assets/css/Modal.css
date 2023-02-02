@@ -2016,7 +2016,7 @@ button.premium-modal-box-modal-close {
   align-items: center;
   top: 10px;
   margin-top: 0;
-  right: 20px;
+  right: 10px;
   opacity: 1;
   z-index: 9999;
   pointer-events: all;
@@ -2062,10 +2062,7 @@ button.premium-modal-box-modal-close {
   opacity: 0; }
 
 .is-sidebar-opened .premium-popup__modal_content {
-  margin-right: 335px !important; }
-
-.interface-interface-skeleton__secondary-sidebar .premium-popup__modal_content {
-  margin-left: 350px !important; }
+  margin-right: 280px !important; }
 
 @media (max-width: 600px) {
   .premium-modal-box .premium-popup__modal_content {

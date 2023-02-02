@@ -178,10 +178,10 @@
             "type": "object",
             "default": {
                 "Desktop": {
-                    "top": "",
-                    "right": "",
-                    "bottom": "",
-                    "left": ""
+                    "top": "40",
+                    "right": "40",
+                    "bottom": "40",
+                    "left": "40"
                 },
                 "Tablet": {
                     "top": "",

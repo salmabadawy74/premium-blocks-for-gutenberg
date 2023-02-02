@@ -693,11 +693,11 @@
     }
 }
 
-.premium-modal-box {
-    .premium-popup__modal_wrap {
-        z-index: 2 !important;
-    }
-}
+// .premium-modal-box {
+//     .premium-popup__modal_wrap {
+//         z-index: 2 !important;
+//     }
+// }
 
 .components-panel[data-premium-tab] {
     &:not([data-premium-tab="advance"]) {
