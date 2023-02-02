@@ -1,4 +1,4 @@
-import classnames from "classnames";
+import { useSelect, useDispatch } from "@wordpress/data";
 import {
     MultiButtonsControl as ResponsiveRadioControl,
     InspectorTabs,
@@ -7,7 +7,6 @@ import {
     SpacingComponent as SpacingControl,
     AdvancedColorControl as AdvancedPopColorControl,
     Icons,
-    MultiButtonsControl as ResponsiveRadioControl,
     PremiumBackgroundControl,
     PremiumBorder,
 } from "@pbg/components";
@@ -17,8 +16,15 @@ const { __ } = wp.i18n;
 const { withSelect } = wp.data;
 const { useEffect, Fragment } = wp.element;
 const { PanelBody, ToggleControl } = wp.components;
-const { InspectorControls, useBlockProps, InnerBlocks } = wp.blockEditor;
-
+import Inspector from "./inspector";
+import {
+    BlockControls,
+    InspectorControls,
+    useBlockProps,
+    store as blockEditorStore,
+    useInnerBlocksProps,
+} from "@wordpress/block-editor";
+import { useInstanceId } from "@wordpress/compose";
 /**
  * Internal dependencies
  */
@@ -30,10 +36,7 @@ export default function QueryContent({ attributes, setAttributes }) {
     const { __unstableMarkNextChangeAsNotPersistent } =
         useDispatch(blockEditorStore);
     const instanceId = useInstanceId(QueryContent);
-    const { themeSupportsLayout } = useSelect((select) => {
-        const { getSettings } = select(blockEditorStore);
-        return { themeSupportsLayout: getSettings()?.supportsLayout };
-    }, []);
+    const blockProps = useBlockProps();
     const innerBlocksProps = useInnerBlocksProps(blockProps, {
         template: TEMPLATE,
     });
@@ -64,25 +67,10 @@ export default function QueryContent({ attributes, setAttributes }) {
     }, [queryId, instanceId]);
     const updateQuery = (newQuery) =>
         setAttributes({ query: { ...query, ...newQuery } });
-    const gridClasses = gridCheck ? "premium-blog-even" : "premium-blog-list";
-
     return (
         <Fragment>
-            <div
-                {...useBlockProps({
-                    className: classnames(
-                        className,
-                        ` ${blockId} premium-blog-post-outer-container ${gridClasses}`,
-                        {
-                            " premium-desktop-hidden": hideDesktop,
-                            " premium-tablet-hidden": hideTablet,
-                            " premium-mobile-hidden": hideMobile,
-                        }
-                    ),
-                })}
-            >
-                {...innerBlocksProps}
-            </div>
+            <Inspector attributes={attributes} setQuery={updateQuery} />
+            <div {...innerBlocksProps} />
         </Fragment>
     );
 }

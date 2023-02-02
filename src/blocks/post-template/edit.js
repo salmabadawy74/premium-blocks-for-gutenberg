@@ -30,7 +30,7 @@ const TEMPLATE = [
 function PostTemplateInnerBlocks() {
     const innerBlocksProps = useInnerBlocksProps(
         { className: "wp-block-post" },
-        { template: TEMPLATE, __unstableDisableLayoutClassNames: true }
+        { template: TEMPLATE }
     );
     return <li {...innerBlocksProps} />;
 }
@@ -206,15 +206,7 @@ export default function PostTemplateEdit({
         [posts]
     );
     const blockProps = useBlockProps({
-        className: classnames(
-            className,
-            `${blockId} premium-blog-post-container`,
-            {
-                " premium-desktop-hidden": hideDesktop,
-                " premium-tablet-hidden": hideTablet,
-                " premium-mobile-hidden": hideMobile,
-            }
-        ),
+        className: classnames(` premium-blog-post-container`),
     });
 
     if (!posts) {

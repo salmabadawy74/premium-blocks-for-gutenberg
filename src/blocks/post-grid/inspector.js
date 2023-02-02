@@ -1,7 +1,50 @@
-import React from "react";
-import { usePostTypes, useTaxonomies } from "../../utils";
+import { usePostTypes, useTaxonomies } from "./utils";
+import {
+    InspectorTabs,
+    InspectorTab,
+    PremiumResponsiveTabs,
+    SpacingComponent,
+    AdvancedColorControl as AdvancedPopColorControl,
+    Icons,
+    MultiButtonsControl as ResponsiveRadioControl,
+    PremiumBackgroundControl,
+    PremiumBorder,
+    PremiumShadow,
+} from "@pbg/components";
+import { generateBlockId, paddingCss } from "@pbg/helpers";
+import { TaxonomyControls } from "./taxonomy-controls";
+import AuthorControl from "./author-control";
+const { __ } = wp.i18n;
+const { withSelect } = wp.data;
+const { useEffect, Fragment } = wp.element;
+const { PanelBody, ToggleControl, SelectControl } = wp.components;
+const { InspectorControls, useBlockProps, InnerBlocks } = wp.blockEditor;
 
-export default function inspector() {
+export default function Inspector({ attributes, setQuery }) {
+    const {
+        query,
+        alignment,
+        containerBackground,
+        iconBorder,
+        advancedBorder,
+        advancedBorderValue,
+        boxShadow,
+        padding,
+        margin,
+        hideDesktop,
+        hideTablet,
+        hideMobile,
+    } = attributes;
+    const {
+        order,
+        orderBy,
+        author: authorIds,
+        postType,
+        sticky,
+        inherit,
+        taxQuery,
+        parents,
+    } = query;
     const { postTypesTaxonomiesMap, postTypesSelectOptions } = usePostTypes();
     const taxonomies = useTaxonomies(postType);
     const onPostTypeChange = (newValue) => {
@@ -83,6 +126,8 @@ export default function inspector() {
                                 "WordPress contains different types of content and they are divided into collections called “Post types”. By default there are a few different ones such as blog posts and pages, but plugins could add more."
                             )}
                         />
+                        <TaxonomyControls onChange={setQuery} query={query} />
+                        <AuthorControl value={authorIds} onChange={setQuery} />
                     </PanelBody>
                 </InspectorTab>
                 <InspectorTab key={"style"}>
@@ -134,7 +179,7 @@ export default function inspector() {
                                 "Border Radius",
                                 "premium-blocks-for-gutenberg"
                             )}
-                            value={iconStyles[0].advancedBorderValue}
+                            value={advancedBorderValue}
                             onChange={(value) =>
                                 setAttributes({
                                     advancedBorderValue: value,
@@ -157,11 +202,11 @@ export default function inspector() {
                         onChange={(value) => setAttributes({ padding: value })}
                     />
                     <SpacingComponent
-                        value={ma}
+                        value={margin}
                         responsive={true}
                         showUnits={true}
-                        label={__("Padding", "premium-blocks-for-gutenberg")}
-                        onChange={(value) => setAttributes({ padding: value })}
+                        label={__("Margin", "premium-blocks-for-gutenberg")}
+                        onChange={(value) => setAttributes({ margin: value })}
                     />
                 </InspectorTab>
                 <InspectorTab key={"advance"}>

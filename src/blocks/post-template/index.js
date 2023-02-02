@@ -17,8 +17,5 @@ registerBlockType("premium/post-template", {
     keywords: [__("post")],
     edit: PostTemplateEdit,
     example: {},
-    supports: {
-        __experimentalLayout: true,
-    },
     save: PostTemplateSave,
 });

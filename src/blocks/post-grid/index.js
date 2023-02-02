@@ -9,16 +9,9 @@ import { registerBlockType } from "@wordpress/blocks";
 // Register the block
 registerBlockType("premium/post-grid", {
     ...json,
-    /**
-     * @see ./edit.js
-     */
-
     icon: "",
     keywords: [__("post"), __("Grid")],
     edit: PostTemplateEdit,
     example: {},
-    supports: {
-        __experimentalLayout: true,
-    },
     save,
 });

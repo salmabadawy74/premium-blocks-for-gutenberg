@@ -58,3 +58,20 @@ export const useTaxonomies = (postType) => {
     );
     return taxonomies;
 };
+
+export const getEntitiesInfo = (entities) => {
+    const mapping = entities?.reduce(
+        (accumulator, entity) => {
+            const { mapById, mapByName, names } = accumulator;
+            mapById[entity.id] = entity;
+            mapByName[entity.name] = entity;
+            names.push(entity.name);
+            return accumulator;
+        },
+        { mapById: {}, mapByName: {}, names: [] }
+    );
+    return {
+        entities,
+        ...mapping,
+    };
+};

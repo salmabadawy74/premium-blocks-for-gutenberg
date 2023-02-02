@@ -61,7 +61,7 @@ function Meta(props) {
     let categoryObject = [];
     if (categoriesList) {
         categoriesList.map((item, thisIndex) => {
-            if (item.id == categories[thisIndex]) {
+            if (categories && item.id == categories[thisIndex]) {
                 categoryObject.push(item);
             }
         });

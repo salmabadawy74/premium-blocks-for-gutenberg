@@ -3,6 +3,7 @@ import { useSelect, withSelect, select } from "@wordpress/data";
 import { store as coreStore } from "@wordpress/core-data";
 import { useEntityProp } from "@wordpress/core-data";
 import { __ } from "@wordpress/i18n";
+import classnames from "classnames";
 
 const { dateI18n, format, __experimentalGetSettings } = wp.date;
 import {
@@ -10,6 +11,7 @@ import {
     typographyCss,
     paddingCss,
     marginCss,
+    generateCss,
 } from "@pbg/helpers";
 import {
     InspectorControls,
@@ -42,6 +44,7 @@ function Tags(props) {
         setAttributes,
         taxonomies,
         deviceType,
+        clientId,
     } = props;
     const {
         blockId,
@@ -62,7 +65,7 @@ function Tags(props) {
 
     const [tags, setTags] = useEntityProp("postType", postType, "tags", postId);
     const blockProps = useBlockProps({
-        className: classNames(blockId, "premium-blog-post-tags-container", {
+        className: classnames(blockId, "premium-blog-post-tags-container", {
             " premium-desktop-hidden": hideDesktop,
             " premium-tablet-hidden": hideTablet,
             " premium-mobile-hidden": hideMobile,
@@ -71,7 +74,7 @@ function Tags(props) {
     let tagName = [];
     if (taxonomies) {
         taxonomies.map((tag, thisIndex) => {
-            if (tag.id == tags[thisIndex]) {
+            if (tags && tag.id == tags[thisIndex]) {
                 tagName.push(tag.name);
             }
         });
