@@ -181,7 +181,9 @@ const save = props => {
                             ...gradientBackground(containerBackground),
                             display: 'block'
                         })}>
-                        <InnerBlocks.Content />
+                        <div className="premium-modal-box-modal-body-content">
+                            <InnerBlocks.Content />
+                        </div>
                     </div>
                     <div className={`premium-modal-box-modal-header`}>
                         <div className="premium-modal-box-close-button-container"

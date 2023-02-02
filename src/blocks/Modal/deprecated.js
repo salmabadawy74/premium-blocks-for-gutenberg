@@ -1253,10 +1253,10 @@ const v2Attributes = {
         "type": "object",
         "default": {
             "Desktop": {
-                "top": "",
-                "right": "",
-                "bottom": "",
-                "left": ""
+                "top": "40",
+                "right": "40",
+                "bottom": "40",
+                "left": "40"
             },
             "Tablet": {
                 "top": "",
@@ -1826,16 +1826,16 @@ const deprecated = [
         migrate: (attributes) => {
             let newAttributes = {
                 modalWidth: {
-                    "Desktop": attributes.modalWidth || '700',
-                    'Tablet': attributes.modalWidthTablet || '700',
-                    'Mobile': attributes.modalWidthMobile || '700',
-                    'unit': attributes.modalWidthUnit || 'px',
+                    "Desktop": attributes.modalWidth['Desktop'] || '700',
+                    'Tablet': attributes.modalWidth['Tablet'] || '700',
+                    'Mobile': attributes.modalWidth['Mobile'] || '700',
+                    'unit': attributes.modalWidth['unit'] || 'px',
                 },
                 modalHeight: {
-                    "Desktop": attributes.modalHeight || '50',
-                    'Tablet': attributes.modalHeightTablet || '50',
-                    'Mobile': attributes.modalHeightMobile || '50',
-                    'unit': attributes.modalHeightUnit || 'vh',
+                    "Desktop": attributes.modalHeight['Desktop'] || '50',
+                    'Tablet': attributes.modalHeight['Tablet'] || '50',
+                    'Mobile': attributes.modalHeight['Mobile'] || '50',
+                    'unit': attributes.modalHeight['unit'] || 'vh',
                 },
                 containerBackground: {
                     "backgroundType": "",
@@ -1860,7 +1860,28 @@ const deprecated = [
                         "hoverColor": "",
                         "hoverBackColor": ""
                     }
-                ]
+                ],
+                "modalPadding": {
+                    "Desktop": {
+                        "top": attributes.modalPadding['Desktop'].top || "40",
+                        "right": attributes.modalPadding['Desktop'].right || "40",
+                        "bottom": attributes.modalPadding['Desktop'].bottom || "40",
+                        "left": attributes.modalPadding['Desktop'].left || "40"
+                    },
+                    "Tablet": {
+                        "top": attributes.modalPadding['Tablet'].top || "",
+                        "right": attributes.modalPadding['Tablet'].right || "",
+                        "bottom": attributes.modalPadding['Tablet'].bottom || "",
+                        "left": attributes.modalPadding['Tablet'].left || ""
+                    },
+                    "Mobile": {
+                        "top": attributes.modalPadding['Mobile'].top || "",
+                        "right": attributes.modalPadding['Mobile'].right || "",
+                        "bottom": attributes.modalPadding['Mobile'].bottom || "",
+                        "left": attributes.modalPadding['Mobile'].left || ""
+                    },
+                    "unit": attributes.modalPadding.unit || "px"
+                }
             }
             return Object.assign(attributes, newAttributes)
         },
