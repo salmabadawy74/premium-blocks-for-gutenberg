@@ -9,7 +9,161 @@
 	"textdomain": "default",
 	"usesContext": [
 		"queryId",
-		"query"	],
+		"query","columns"	],
+		"attributes": {
+		
+        "columns":{
+            "type":"object",
+            "default":{
+                "Desktop":2,
+                "Tablet":2,
+                "Mobile":1
+            }
+        },
+		"containerBackground": {
+            "type": "object",
+            "default": {
+                "backgroundType": "",
+                "backgroundColor": "",
+                "backgroundImageID": "",
+                "backgroundImageURL": "",
+                "backgroundPosition": "",
+                "backgroundRepeat": "",
+                "backgroundSize": "",
+                "fixed": false,
+                "gradientLocationOne": "0",
+                "gradientColorTwo": "",
+                "gradientLocationTwo": "100",
+                "gradientAngle": "180",
+                "gradientPosition": "center center",
+                "gradientType": "linear"
+            }
+        },
+        "boxShadow": {
+            "type": "object",
+            "default": {
+                "color": "undefined",
+                "blur": "10",
+                "horizontal": "0",
+                "vertical": "0",
+                "position": ""
+            }
+        },
+		        "border": {
+            "type": "object",
+            "default": {
+                "borderColor": "",
+                "borderType": "none",
+                "borderRadius": {
+                    "Desktop": {
+                        "top": "",
+                        "right": "",
+                        "bottom": "",
+                        "left": ""
+                    },
+                    "Tablet": {
+                        "top": "",
+                        "right": "",
+                        "bottom": "",
+                        "left": ""
+                    },
+                    "Mobile": {
+                        "top": "",
+                        "right": "",
+                        "bottom": "",
+                        "left": ""
+                    }
+                },
+                "borderWidth": {
+                    "Desktop": {
+                        "top": "",
+                        "right": "",
+                        "bottom": "",
+                        "left": ""
+                    },
+                    "Tablet": {
+                        "top": "",
+                        "right": "",
+                        "bottom": "",
+                        "left": ""
+                    },
+                    "Mobile": {
+                        "top": "",
+                        "right": "",
+                        "bottom": "",
+                        "left": ""
+                    }
+                }
+            }
+        },
+		"margin": {
+            "type": "object",
+            "default": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "unit": "px"
+            }
+        },
+        "padding": {
+            "type": "object",
+            "default": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "unit": "px"
+            }
+        },
+		 "hideDesktop": {
+            "type": "boolean",
+            "default": ""
+        },
+        "hideTablet": {
+            "type": "boolean",
+            "default": ""
+        },
+        "hideMobile": {
+            "type": "boolean",
+            "default": ""
+        },
+		"advancedBorder":{
+			"type":"boolean",
+			"default":false
+		},
+		"advancedBorderValue":{
+			"type":"string"
+		}
+		},
 	"supports": {
 		"reusable": false,
 		"html": false,

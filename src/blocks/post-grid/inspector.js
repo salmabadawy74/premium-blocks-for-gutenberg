@@ -25,9 +25,7 @@ const { InspectorControls, useBlockProps, InnerBlocks } = wp.blockEditor;
 export default function Inspector({ attributes, setQuery, setAttributes }) {
     const {
         query,
-        offsetNum,
-        numOfPosts,
-        currentPost,
+        columns,
         alignment,
         containerBackground,
         border,
@@ -88,6 +86,21 @@ export default function Inspector({ attributes, setQuery, setAttributes }) {
                         className="premium-panel-body"
                         initialOpen={true}
                     >
+                        <ResponsiveSingleRangeControl
+                            defaultValue={4}
+                            label={__(
+                                "Number of Columns",
+                                "premium-blocks-for-gutenberg"
+                            )}
+                            onChange={(value) =>
+                                setAttributes({ columns: value })
+                            }
+                            value={columns}
+                            min={1}
+                            max={6}
+                            showUnits={false}
+                        />
+
                         <ResponsiveSingleRangeControl
                             defaultValue={4}
                             label={__(
@@ -182,54 +195,12 @@ export default function Inspector({ attributes, setQuery, setAttributes }) {
                             })
                         }
                     />
-                    {!advancedBorder && (
-                        <PremiumBorder
-                            label={__("Border", "premium-blocks-for-gutenberg")}
-                            value={border}
-                            onChange={(value) =>
-                                setAttributes({ border: value })
-                            }
-                        />
-                    )}
-                    <ToggleControl
-                        label={__(
-                            "Advanced Border Radius",
-                            "premium-blocks-for-gutenberg"
-                        )}
-                        checked={advancedBorder}
-                        onChange={(value) =>
-                            setAttributes({ advancedBorder: value })
-                        }
+                    <PremiumBorder
+                        label={__("Border", "premium-blocks-for-gutenberg")}
+                        value={border}
+                        onChange={(value) => setAttributes({ border: value })}
                     />
-                    <div>
-                        {__(
-                            "Apply custom radius values. Get the radius value from here",
-                            "premium-blocks-for-gutenberg"
-                        )}
-                        <a
-                            target={"_blank"}
-                            href={
-                                "https://9elements.github.io/fancy-border-radius/"
-                            }
-                        >
-                            {" "}
-                            Here
-                        </a>
-                    </div>
-                    {advancedBorder && (
-                        <TextControl
-                            label={__(
-                                "Border Radius",
-                                "premium-blocks-for-gutenberg"
-                            )}
-                            value={advancedBorderValue}
-                            onChange={(value) =>
-                                setAttributes({
-                                    advancedBorderValue: value,
-                                })
-                            }
-                        />
-                    )}
+
                     <PremiumShadow
                         boxShadow={true}
                         value={boxShadow}

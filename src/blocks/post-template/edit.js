@@ -3,11 +3,30 @@
  */
 import classnames from "classnames";
 
-/**
- * WordPress dependencies
- */
+import {
+    InspectorTabs,
+    InspectorTab,
+    PremiumResponsiveTabs,
+    SpacingComponent,
+    AdvancedColorControl as AdvancedPopColorControl,
+    Icons,
+    MultiButtonsControl as ResponsiveRadioControl,
+    PremiumBackgroundControl,
+    PremiumBorder,
+    PremiumShadow,
+    ResponsiveSingleRangeControl,
+} from "@pbg/components";
+import {
+    generateBlockId,
+    paddingCss,
+    borderCss,
+    marginCss,
+    gradientBackground,
+} from "@pbg/helpers";
+const { withSelect, useSelect } = wp.data;
+const { useEffect, Fragment } = wp.element;
+const { PanelBody, ToggleControl, TextControl, Spinner } = wp.components;
 import { memo, useMemo, useState } from "@wordpress/element";
-import { useSelect } from "@wordpress/data";
 import { __ } from "@wordpress/i18n";
 import {
     BlockContextProvider,
@@ -15,8 +34,8 @@ import {
     useBlockProps,
     useInnerBlocksProps,
     store as blockEditorStore,
+    InspectorControls,
 } from "@wordpress/block-editor";
-import { Spinner } from "@wordpress/components";
 import { store as coreStore } from "@wordpress/core-data";
 
 const TEMPLATE = [
@@ -57,7 +76,7 @@ function PostTemplateBlockPreview({
     };
 
     return (
-        <li
+        <div
             {...blockPreviewProps}
             tabIndex={0}
             // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
@@ -71,9 +90,10 @@ function PostTemplateBlockPreview({
 
 const MemoizedPostTemplateBlockPreview = memo(PostTemplateBlockPreview);
 
-export default function PostTemplateEdit({
+function PostTemplateEdit({
     clientId,
     context: {
+        columns,
         query: {
             perPage,
             offset = 0,
@@ -97,11 +117,25 @@ export default function PostTemplateEdit({
         } = {},
         queryContext = [{ page: 1 }],
         templateSlug,
-        displayLayout: { type: layoutType = "flex", columns = 1 } = {},
-        previewPostType,
     },
-    __unstableLayoutClassNames,
+    setAttributes,
+    attributes,
+    deviceType,
 }) {
+    const {
+        alignment,
+        containerBackground,
+        border,
+        advancedBorder,
+        advancedBorderValue,
+        boxShadow,
+        padding,
+        margin,
+        hideDesktop,
+        hideTablet,
+        hideMobile,
+    } = attributes;
+
     const [{ page }] = queryContext;
     const [activeBlockContextId, setActiveBlockContextId] = useState();
     const { posts, blocks } = useSelect(
@@ -114,40 +148,11 @@ export default function PostTemplateEdit({
                 context: "view",
             });
 
-            const templateCategory =
-                inherit &&
-                templateSlug?.startsWith("category-") &&
-                getEntityRecords("taxonomy", "category", {
-                    context: "view",
-                    per_page: 1,
-                    _fields: ["id"],
-                    slug: templateSlug.replace("category-", ""),
-                });
             const query = {
                 offset: perPage ? perPage * (page - 1) + offset : 0,
                 order,
                 orderby: orderBy,
             };
-            // There is no need to build the taxQuery if we inherit.
-            if (taxQuery && !inherit) {
-                // We have to build the tax query for the REST API and use as
-                // keys the taxonomies `rest_base` with the `term ids` as values.
-                const builtTaxQuery = Object.entries(taxQuery).reduce(
-                    (accumulator, [taxonomySlug, terms]) => {
-                        const taxonomy = taxonomies?.find(
-                            ({ slug }) => slug === taxonomySlug
-                        );
-                        if (taxonomy?.rest_base) {
-                            accumulator[taxonomy?.rest_base] = terms;
-                        }
-                        return accumulator;
-                    },
-                    {}
-                );
-                if (!!Object.keys(builtTaxQuery).length) {
-                    Object.assign(query, builtTaxQuery);
-                }
-            }
             if (perPage) {
                 query.per_page = perPage;
             }
@@ -220,40 +225,198 @@ export default function PostTemplateEdit({
     if (!posts.length) {
         return <p {...blockProps}> {__("No results found.")}</p>;
     }
+    let BorderValue = advancedBorder
+        ? { borderRadius: advancedBorderValue }
+        : borderCss(border, deviceType);
 
     // To avoid flicker when switching active block contexts, a preview is rendered
     // for each block context, but the preview for the active block context is hidden.
     // This ensures that when it is displayed again, the cached rendering of the
     // block preview is used, instead of having to re-render the preview from scratch.
     return (
-        <div {...blockProps}>
-            {blockContexts &&
-                blockContexts.map((blockContext) => (
-                    <div style={{ backgroundColor: "rosybrown" }}>
-                        <BlockContextProvider
-                            key={blockContext.postId}
-                            value={blockContext}
-                        >
-                            {blockContext.postId ===
-                            (activeBlockContextId ||
-                                blockContexts[0]?.postId) ? (
-                                <PostTemplateInnerBlocks />
-                            ) : null}
-                            <MemoizedPostTemplateBlockPreview
-                                blocks={blocks}
-                                blockContextId={blockContext.postId}
-                                setActiveBlockContextId={
-                                    setActiveBlockContextId
-                                }
-                                isHidden={
-                                    blockContext.postId ===
-                                    (activeBlockContextId ||
-                                        blockContexts[0]?.postId)
+        <Fragment>
+            <InspectorControls key={"inspector"}>
+                <InspectorTabs tabs={["style", "advance"]}>
+                    <InspectorTab key={"style"}>
+                        <PremiumBackgroundControl
+                            value={containerBackground}
+                            onChange={(value) =>
+                                setAttributes({
+                                    containerBackground: value,
+                                })
+                            }
+                        />
+                        {!advancedBorder && (
+                            <PremiumBorder
+                                label={__(
+                                    "Border",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                value={border}
+                                onChange={(value) =>
+                                    setAttributes({ border: value })
                                 }
                             />
-                        </BlockContextProvider>
-                    </div>
-                ))}
-        </div>
+                        )}
+                        <ToggleControl
+                            label={__(
+                                "Advanced Border Radius",
+                                "premium-blocks-for-gutenberg"
+                            )}
+                            checked={advancedBorder}
+                            onChange={(value) =>
+                                setAttributes({ advancedBorder: value })
+                            }
+                        />
+                        <div>
+                            {__(
+                                "Apply custom radius values. Get the radius value from here",
+                                "premium-blocks-for-gutenberg"
+                            )}
+                            <a
+                                target={"_blank"}
+                                href={
+                                    "https://9elements.github.io/fancy-border-radius/"
+                                }
+                            >
+                                {" "}
+                                Here
+                            </a>
+                        </div>
+                        {advancedBorder && (
+                            <TextControl
+                                label={__(
+                                    "Border Radius",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                value={advancedBorderValue}
+                                onChange={(value) =>
+                                    setAttributes({
+                                        advancedBorderValue: value,
+                                    })
+                                }
+                            />
+                        )}
+                        <PremiumShadow
+                            boxShadow={true}
+                            value={boxShadow}
+                            onChange={(value) =>
+                                setAttributes({ boxShadow: value })
+                            }
+                        />
+                        <SpacingComponent
+                            value={padding}
+                            responsive={true}
+                            showUnits={true}
+                            label={__(
+                                "Padding",
+                                "premium-blocks-for-gutenberg"
+                            )}
+                            onChange={(value) =>
+                                setAttributes({ padding: value })
+                            }
+                        />
+                        <SpacingComponent
+                            value={margin}
+                            responsive={true}
+                            showUnits={true}
+                            label={__("Margin", "premium-blocks-for-gutenberg")}
+                            onChange={(value) =>
+                                setAttributes({ margin: value })
+                            }
+                        />
+                    </InspectorTab>
+                    <InspectorTab key={"advance"}>
+                        <PremiumResponsiveTabs
+                            Desktop={hideDesktop}
+                            Tablet={hideTablet}
+                            Mobile={hideMobile}
+                            onChangeDesktop={(value) =>
+                                setAttributes({
+                                    hideDesktop: value
+                                        ? " premium-desktop-hidden"
+                                        : "",
+                                })
+                            }
+                            onChangeTablet={(value) =>
+                                setAttributes({
+                                    hideTablet: value
+                                        ? " premium-tablet-hidden"
+                                        : "",
+                                })
+                            }
+                            onChangeMobile={(value) =>
+                                setAttributes({
+                                    hideMobile: value
+                                        ? " premium-mobile-hidden"
+                                        : "",
+                                })
+                            }
+                        />
+                    </InspectorTab>
+                </InspectorTabs>
+            </InspectorControls>
+
+            <div
+                {...blockProps}
+                style={{
+                    display: "grid",
+                    gridTemplateColumns: `repeat(3, minmax(0, 1fr))`,
+                    rowGap: `20px`,
+                    columnGap: `20px`,
+                }}
+            >
+                {blockContexts &&
+                    blockContexts.map((blockContext) => (
+                        <div
+                            style={{
+                                ...gradientBackground(containerBackground),
+                                ...BorderValue,
+                                ...marginCss(margin, deviceType),
+                                ...paddingCss(padding, deviceType),
+                                boxShadow: `${boxShadow.horizontal || 0}px ${
+                                    boxShadow.vertical || 0
+                                }px ${boxShadow.blur || 0}px ${
+                                    boxShadow.color
+                                }`,
+                            }}
+                        >
+                            <BlockContextProvider
+                                key={blockContext.postId}
+                                value={blockContext}
+                            >
+                                {blockContext.postId ===
+                                (activeBlockContextId ||
+                                    blockContexts[0]?.postId) ? (
+                                    <PostTemplateInnerBlocks />
+                                ) : null}
+                                <MemoizedPostTemplateBlockPreview
+                                    blocks={blocks}
+                                    blockContextId={blockContext.postId}
+                                    setActiveBlockContextId={
+                                        setActiveBlockContextId
+                                    }
+                                    isHidden={
+                                        blockContext.postId ===
+                                        (activeBlockContextId ||
+                                            blockContexts[0]?.postId)
+                                    }
+                                />
+                            </BlockContextProvider>
+                        </div>
+                    ))}
+            </div>
+        </Fragment>
     );
 }
+export default withSelect((select) => {
+    const { __experimentalGetPreviewDeviceType = null } =
+        select("core/edit-post");
+    let deviceType = __experimentalGetPreviewDeviceType
+        ? __experimentalGetPreviewDeviceType()
+        : null;
+
+    return {
+        deviceType: deviceType,
+    };
+})(PostTemplateEdit);

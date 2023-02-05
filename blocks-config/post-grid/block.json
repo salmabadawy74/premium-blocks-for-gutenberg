@@ -10,6 +10,14 @@
 		"queryId": {
 			"type": "number"
 		},
+        "columns":{
+            "type":"object",
+            "default":{
+                "Desktop":2,
+                "Tablet":2,
+                "Mobile":1
+            }
+        },
 		"query": {
 			"type": "object",
 			"default": {
@@ -171,6 +179,7 @@
 	},
 	"providesContext": {
 		"queryId": "queryId",
-		"query": "query"
+		"query": "query",
+        "columns":"columns"
 	}
 }

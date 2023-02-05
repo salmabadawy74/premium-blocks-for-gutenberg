@@ -30,7 +30,6 @@ function QueryContent({ attributes, setAttributes, deviceType }) {
     const {
         queryId,
         query,
-        alignment,
         containerBackground,
         border,
         advancedBorder,
@@ -74,11 +73,6 @@ function QueryContent({ attributes, setAttributes, deviceType }) {
     const updateQuery = (newQuery) =>
         setAttributes({ query: { ...query, ...newQuery } });
 
-    let BorderValue = advancedBorder
-        ? { borderRadius: advancedBorderValue }
-        : borderCss(border, deviceType);
-
-    console.log(query, "query");
     return (
         <Fragment>
             <Inspector
@@ -91,7 +85,7 @@ function QueryContent({ attributes, setAttributes, deviceType }) {
                 {...blockProps}
                 style={{
                     ...gradientBackground(containerBackground),
-                    ...BorderValue,
+                    ...borderCss(border, deviceType),
                     ...marginCss(margin, deviceType),
                     ...paddingCss(padding, deviceType),
                     boxShadow: `${boxShadow.horizontal || 0}px ${
