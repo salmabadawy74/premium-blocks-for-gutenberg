@@ -52,15 +52,11 @@ function get_premium_button_css_style( $attr, $unique_id ) {
 	}
 	// icon styles
 	if ( isset( $attr['iconSize'] ) ) {
-		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' );
-		$css->add_property( 'font-size', $css->render_range( $attr['iconSize'], 'Desktop' ) );
-	}
-	if ( isset( $attr['iconSize'] ) ) {
-		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' );
+		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' . '> svg' );
 		$css->add_property( 'width', $css->render_range( $attr['iconSize'], 'Desktop' ) );
 	}
 	if ( isset( $attr['iconSize'] ) ) {
-		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' );
+		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' . '> svg' );
 		$css->add_property( 'height', $css->render_range( $attr['iconSize'], 'Desktop' ) );
 	}
 	if ( isset( $attr['iconSpacing'] ) ) {
@@ -103,15 +99,11 @@ function get_premium_button_css_style( $attr, $unique_id ) {
 
 	// icon styles
 	if ( isset( $attr['iconSize'] ) ) {
-		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' );
-		$css->add_property( 'font-size', $css->render_range( $attr['iconSize'], 'Tablet' ) );
-	}
-	if ( isset( $attr['iconSize'] ) ) {
-		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' );
+		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' . '> svg' );
 		$css->add_property( 'width', $css->render_range( $attr['iconSize'], 'Tablet' ) );
 	}
 	if ( isset( $attr['iconSize'] ) ) {
-		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' );
+		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' . '> svg' );
 		$css->add_property( 'height', $css->render_range( $attr['iconSize'], 'Tablet' ) );
 	}
 	if ( isset( $attr['iconSpacing'] ) ) {
@@ -155,15 +147,11 @@ function get_premium_button_css_style( $attr, $unique_id ) {
 
 	// icon styles
 	if ( isset( $attr['iconSize'] ) ) {
-		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' );
-		$css->add_property( 'font-size', $css->render_range( $attr['iconSize'], 'Mobile' ) );
-	}
-	if ( isset( $attr['iconSize'] ) ) {
-		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' );
+		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' . '> svg' );
 		$css->add_property( 'width', $css->render_range( $attr['iconSize'], 'Mobile' ) );
 	}
 	if ( isset( $attr['iconSize'] ) ) {
-		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' );
+		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' . '> svg' );
 		$css->add_property( 'height', $css->render_range( $attr['iconSize'], 'Mobile' ) );
 	}
 	if ( isset( $attr['iconSpacing'] ) ) {

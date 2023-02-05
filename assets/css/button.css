@@ -86,10 +86,10 @@
   line-height: 1.3333; }
 
 .editor-styles-wrapper .wp-block-button__link .fe svg {
-  fill: none; }
+  fill: none !important; }
 
 .editor-styles-wrapper .wp-block-button__link .ic svg {
-  fill: currentColor; }
+  fill: currentColor !important; }
 
 .premium-button__slide .premium-button {
   display: inline-flex;

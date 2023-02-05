@@ -1,5 +1,10 @@
 import classnames from "classnames";
 import { generateCss, filterJsCss, gradientBackground } from "@pbg/helpers";
+import {
+    GenIcon,
+    FaIco,
+    Ico
+} from "@pbg/components";
 const { RichText, useBlockProps } = wp.blockEditor;
 const { Fragment } = wp.element;
 
@@ -29,6 +34,8 @@ const save = (props) => {
         iconColor,
         iconHoverColor,
         backgroundOptions,
+        iconType,
+        icons
     } = props.attributes;
 
     const loadStyles = () => {
@@ -83,12 +90,20 @@ const save = (props) => {
                 [
                     <Fragment>
                         {showIcon && iconPosition == "before" && (
-                            <i
-                                className={`premium-button-icon ${icon}`}
+                            //    <i 
+                            //         className={`premium-button-icon ${icon}`}
+                            //         style={filterJsCss({
+                            //             color: iconColor
+                            //         })}
+                            //     ></i>
+                            <GenIcon className={`premium-button-icon ${icon} ${iconType}`}
+                                name={icon}
+                                icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
+                                strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
                                 style={filterJsCss({
                                     color: iconColor
                                 })}
-                            ></i>
+                            />
                         )}
                         <RichText.Content
                             tagName="a"
@@ -107,12 +122,20 @@ const save = (props) => {
                             })}
                         />
                         {showIcon && iconPosition == "after" && (
-                            <i
-                                className={`premium-button-icon ${icon}`}
+                            // <i
+                            //     className={`premium-button-icon ${icon}`}
+                            //     style={filterJsCss({
+                            //         color: iconColor
+                            //     })}
+                            // ></i>
+                            <GenIcon className={`premium-button-icon ${icon} ${iconType}`}
+                                name={icon}
+                                icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
+                                strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
                                 style={filterJsCss({
                                     color: iconColor
                                 })}
-                            ></i>
+                            />
                         )}
                     </Fragment>,
                 ]

@@ -562,6 +562,15 @@
         "titleTag": {
             "type": "string",
             "default": "h2"
+        },
+        "iconshadow": {
+            "type": "object",
+            "default": {
+                "color": "undefined",
+                "blur": "10",
+                "horizontal": "0",
+                "vertical": "0"
+            }
         }
     },
     "editorScript": "pbg-blocks-js",

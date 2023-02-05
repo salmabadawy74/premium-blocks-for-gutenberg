@@ -233,7 +233,7 @@ function Edit(props) {
     const loadStyles = () => {
         const styles = {};
 
-        styles[`.${blockId}:hover .premium-button-icon`] = {
+        styles[`.${blockId} .premium-button-icon:hover`] = {
             color: `${iconHoverColor}!important`,
         };
         styles[`.${blockId}.premium-button__wrap .premium-button:hover`] = {
@@ -358,18 +358,6 @@ function Edit(props) {
                             />
                             {showIcon && (
                                 <Fragment>
-                                    {/* <FontIconPicker
-                                        icons={iconsList}
-                                        onChange={(newIcon) =>
-                                            setAttributes({ icon: newIcon })
-                                        }
-                                        value={icon}
-                                        isMulti={false}
-                                        noSelectedPlaceholder={__(
-                                            "Select Icon",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
-                                    /> */}
                                     <FontIconPicker
                                         icons={IcoNames}
                                         onChange={(newIcon) =>
@@ -708,16 +696,6 @@ function Edit(props) {
                                         </Fragment>
                                     </InsideTab>
                                 </InsideTabs>
-                                {/* <PremiumShadow
-                                    label={__(
-                                        "Shadow",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                    value={iconShadow}
-                                    onChange={(value) =>
-                                        setAttributes({ iconShadow: value })
-                                    }
-                                /> */}
                                 <SpacingControl
                                     label={__(
                                         "Margin",
@@ -794,25 +772,6 @@ function Edit(props) {
                     [
                         <Fragment>
                             {showIcon && iconPosition == "before" && (
-                                // <i
-                                //     className={`premium-button-icon ${icon}`}
-                                //     style={{
-                                //         fontSize:
-                                //             iconSize[props.deviceType] +
-                                //             iconSize.unit,
-                                //         width:
-                                //             iconSize[props.deviceType] +
-                                //             iconSize.unit,
-                                //         height:
-                                //             iconSize[props.deviceType] +
-                                //             iconSize.unit,
-                                //         ...marginCss(
-                                //             iconSpacing,
-                                //             props.deviceType
-                                //         ),
-                                //         color: iconColor
-                                //     }}
-                                // ></i>
                                 <GenIcon className={`premium-button-icon ${icon} ${iconType}`}
                                     name={icon}
                                     size={iconSize[props.deviceType] +
@@ -823,12 +782,6 @@ function Edit(props) {
                                         fontSize:
                                             iconSize[props.deviceType] +
                                             iconSize.unit,
-                                        // width:
-                                        //     iconSize[props.deviceType] +
-                                        //     iconSize.unit,
-                                        // height:
-                                        //     iconSize[props.deviceType] +
-                                        //     iconSize.unit,
                                         ...marginCss(
                                             iconSpacing,
                                             props.deviceType
@@ -863,12 +816,6 @@ function Edit(props) {
                                         // fontSize:
                                         //     iconSize[props.deviceType] +
                                         //     iconSize.unit,
-                                        // width:
-                                        //     iconSize[props.deviceType] +
-                                        //     iconSize.unit,
-                                        // height:
-                                        //     iconSize[props.deviceType] +
-                                        //     iconSize.unit,
                                         ...marginCss(
                                             iconSpacing,
                                             props.deviceType
@@ -876,25 +823,6 @@ function Edit(props) {
                                         color: iconColor
                                     }}
                                 />
-                                // <i
-                                //     className={`premium-button-icon ${icon}`}
-                                //     style={{
-                                //         fontSize:
-                                //             iconSize[props.deviceType] +
-                                //             iconSize.unit,
-                                //         width:
-                                //             iconSize[props.deviceType] +
-                                //             iconSize.unit,
-                                //         height:
-                                //             iconSize[props.deviceType] +
-                                //             iconSize.unit,
-                                //         ...marginCss(
-                                //             iconSpacing,
-                                //             props.deviceType
-                                //         ),
-                                //         color: iconColor
-                                //     }}
-                                // ></i>
                             )}
                         </Fragment>,
                     ]
