@@ -10,22 +10,27 @@ import {
     PremiumBackgroundControl,
     PremiumBorder,
     PremiumShadow,
+    ResponsiveSingleRangeControl,
 } from "@pbg/components";
 import { generateBlockId, paddingCss } from "@pbg/helpers";
 import { TaxonomyControls } from "./taxonomy-controls";
 import AuthorControl from "./author-control";
+import OrderControl from "./order-control";
 const { __ } = wp.i18n;
 const { withSelect } = wp.data;
 const { useEffect, Fragment } = wp.element;
-const { PanelBody, ToggleControl, SelectControl } = wp.components;
+const { PanelBody, ToggleControl, SelectControl, TextControl } = wp.components;
 const { InspectorControls, useBlockProps, InnerBlocks } = wp.blockEditor;
 
-export default function Inspector({ attributes, setQuery }) {
+export default function Inspector({ attributes, setQuery, setAttributes }) {
     const {
         query,
+        offsetNum,
+        numOfPosts,
+        currentPost,
         alignment,
         containerBackground,
-        iconBorder,
+        border,
         advancedBorder,
         advancedBorderValue,
         boxShadow,
@@ -44,6 +49,9 @@ export default function Inspector({ attributes, setQuery }) {
         inherit,
         taxQuery,
         parents,
+        perPage,
+        pages,
+        offset,
     } = query;
     const { postTypesTaxonomiesMap, postTypesSelectOptions } = usePostTypes();
     const taxonomies = useTaxonomies(postType);
@@ -80,6 +88,18 @@ export default function Inspector({ attributes, setQuery }) {
                         className="premium-panel-body"
                         initialOpen={true}
                     >
+                        <ResponsiveSingleRangeControl
+                            defaultValue={4}
+                            label={__(
+                                "Number of Posts Per Page",
+                                "premium-blocks-for-gutenberg"
+                            )}
+                            onChange={(value) => setQuery({ perPage: value })}
+                            value={perPage}
+                            min={1}
+                            showUnits={false}
+                        />
+
                         <ResponsiveRadioControl
                             label={__(
                                 "Alignment",
@@ -122,12 +142,35 @@ export default function Inspector({ attributes, setQuery }) {
                             value={postType}
                             label={__("Post type")}
                             onChange={onPostTypeChange}
-                            help={__(
-                                "WordPress contains different types of content and they are divided into collections called “Post types”. By default there are a few different ones such as blog posts and pages, but plugins could add more."
-                            )}
                         />
                         <TaxonomyControls onChange={setQuery} query={query} />
                         <AuthorControl value={authorIds} onChange={setQuery} />
+                        <OrderControl
+                            {...{ order, orderBy }}
+                            onChange={setQuery}
+                        />
+                        <ToggleControl
+                            label={__(
+                                "Ignore Sticky Posts",
+                                "premium-blocks-for-gutenberg"
+                            )}
+                            checked={sticky}
+                            onChange={(value) =>
+                                setQuery({
+                                    sticky: value,
+                                })
+                            }
+                        />
+                        <ResponsiveSingleRangeControl
+                            defaultValue={0}
+                            label={__("Offset", "premium-blocks-for-gutenberg")}
+                            onChange={(newOffsetNum) =>
+                                setQuery({ offset: newOffsetNum })
+                            }
+                            value={offset}
+                            min={0}
+                            showUnits={false}
+                        />
                     </PanelBody>
                 </InspectorTab>
                 <InspectorTab key={"style"}>
@@ -142,9 +185,9 @@ export default function Inspector({ attributes, setQuery }) {
                     {!advancedBorder && (
                         <PremiumBorder
                             label={__("Border", "premium-blocks-for-gutenberg")}
-                            value={iconBorder}
+                            value={border}
                             onChange={(value) =>
-                                setAttributes({ iconBorder: value })
+                                setAttributes({ border: value })
                             }
                         />
                     )}

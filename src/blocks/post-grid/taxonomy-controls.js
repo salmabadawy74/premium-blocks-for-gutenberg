@@ -170,7 +170,6 @@ function TaxonomyItem({ taxonomy, termIds, onChange }) {
         setSuggestions(EMPTY_ARRAY);
         onChange(Array.from(newTermIds));
     };
-    console.log(suggestions, "kkkk");
     return (
         <div className="block-library-query-inspector__taxonomy-control">
             <FormTokenField

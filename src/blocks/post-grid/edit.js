@@ -1,21 +1,16 @@
 import { useSelect, useDispatch } from "@wordpress/data";
 import {
-    MultiButtonsControl as ResponsiveRadioControl,
-    InspectorTabs,
-    InspectorTab,
-    PremiumResponsiveTabs,
-    SpacingComponent as SpacingControl,
-    AdvancedColorControl as AdvancedPopColorControl,
-    Icons,
-    PremiumBackgroundControl,
-    PremiumBorder,
-} from "@pbg/components";
-import { generateBlockId, paddingCss } from "@pbg/helpers";
+    generateBlockId,
+    gradientBackground,
+    typographyCss,
+    paddingCss,
+    marginCss,
+    borderCss,
+} from "@pbg/helpers";
 
 const { __ } = wp.i18n;
 const { withSelect } = wp.data;
 const { useEffect, Fragment } = wp.element;
-const { PanelBody, ToggleControl } = wp.components;
 import Inspector from "./inspector";
 import {
     BlockControls,
@@ -31,13 +26,24 @@ import { useInstanceId } from "@wordpress/compose";
 const DEFAULTS_POSTS_PER_PAGE = 3;
 
 const TEMPLATE = [["premium/post-template"]];
-export default function QueryContent({ attributes, setAttributes }) {
-    const { queryId, query, tagName: TagName = "div" } = attributes;
+function QueryContent({ attributes, setAttributes, deviceType }) {
+    const {
+        queryId,
+        query,
+        alignment,
+        containerBackground,
+        border,
+        advancedBorder,
+        advancedBorderValue,
+        boxShadow,
+        padding,
+        margin,
+    } = attributes;
     const { __unstableMarkNextChangeAsNotPersistent } =
         useDispatch(blockEditorStore);
     const instanceId = useInstanceId(QueryContent);
     const blockProps = useBlockProps();
-    const innerBlocksProps = useInnerBlocksProps(blockProps, {
+    const innerBlocksProps = useInnerBlocksProps({
         template: TEMPLATE,
     });
     const { postsPerPage } = useSelect((select) => {
@@ -67,10 +73,45 @@ export default function QueryContent({ attributes, setAttributes }) {
     }, [queryId, instanceId]);
     const updateQuery = (newQuery) =>
         setAttributes({ query: { ...query, ...newQuery } });
+
+    let BorderValue = advancedBorder
+        ? { borderRadius: advancedBorderValue }
+        : borderCss(border, deviceType);
+
+    console.log(query, "query");
     return (
         <Fragment>
-            <Inspector attributes={attributes} setQuery={updateQuery} />
-            <div {...innerBlocksProps} />
+            <Inspector
+                attributes={attributes}
+                setQuery={updateQuery}
+                setAttributes={setAttributes}
+            />
+
+            <div
+                {...blockProps}
+                style={{
+                    ...gradientBackground(containerBackground),
+                    ...BorderValue,
+                    ...marginCss(margin, deviceType),
+                    ...paddingCss(padding, deviceType),
+                    boxShadow: `${boxShadow.horizontal || 0}px ${
+                        boxShadow.vertical || 0
+                    }px ${boxShadow.blur || 0}px ${boxShadow.color}`,
+                }}
+            >
+                <div {...innerBlocksProps} />
+            </div>
         </Fragment>
     );
 }
+export default withSelect((select) => {
+    const { __experimentalGetPreviewDeviceType = null } =
+        select("core/edit-post");
+    let deviceType = __experimentalGetPreviewDeviceType
+        ? __experimentalGetPreviewDeviceType()
+        : null;
+
+    return {
+        deviceType: deviceType,
+    };
+})(QueryContent);
