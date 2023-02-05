@@ -2614,10 +2614,11 @@
         .wp-block:not(.wp-block-premium-badge) {
             margin: 0 auto;
             padding: 0;
-            width: auto;
+            width: 100%;
         }
 
         .block-list-appender.wp-block {
+            width: auto;
             button {
                 color: #a0a7ac;
                 font-size: 62px;

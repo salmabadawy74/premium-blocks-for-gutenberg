@@ -1834,15 +1834,17 @@
   .wp-block-premium-container .block-editor-block-list__layout .wp-block:not(.wp-block-premium-badge) {
     margin: 0 auto;
     padding: 0;
+    width: 100%; }
+  .wp-block-premium-container .block-editor-block-list__layout .block-list-appender.wp-block {
     width: auto; }
-  .wp-block-premium-container .block-editor-block-list__layout .block-list-appender.wp-block button {
-    color: #a0a7ac;
-    font-size: 62px;
-    border: none;
-    box-shadow: none; }
-    .wp-block-premium-container .block-editor-block-list__layout .block-list-appender.wp-block button svg {
-      width: 36px;
-      height: 36px; }
+    .wp-block-premium-container .block-editor-block-list__layout .block-list-appender.wp-block button {
+      color: #a0a7ac;
+      font-size: 62px;
+      border: none;
+      box-shadow: none; }
+      .wp-block-premium-container .block-editor-block-list__layout .block-list-appender.wp-block button svg {
+        width: 36px;
+        height: 36px; }
   .wp-block-premium-container .premium-shape-divider {
     overflow: hidden;
     position: absolute;
