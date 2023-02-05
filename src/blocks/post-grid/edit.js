@@ -43,7 +43,7 @@ function QueryContent({ attributes, setAttributes, deviceType }) {
         useDispatch(blockEditorStore);
     const instanceId = useInstanceId(QueryContent);
     const blockProps = useBlockProps();
-    const innerBlocksProps = useInnerBlocksProps({
+    const innerBlocksProps = useInnerBlocksProps(blockProps, {
         template: TEMPLATE,
     });
     const { postsPerPage } = useSelect((select) => {

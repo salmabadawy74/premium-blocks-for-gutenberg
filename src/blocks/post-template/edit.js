@@ -32,7 +32,7 @@ function PostTemplateInnerBlocks() {
         { className: "wp-block-post" },
         { template: TEMPLATE }
     );
-    return <li {...innerBlocksProps} />;
+    return <div {...innerBlocksProps} />;
 }
 
 function PostTemplateBlockPreview({
@@ -229,25 +229,30 @@ export default function PostTemplateEdit({
         <div {...blockProps}>
             {blockContexts &&
                 blockContexts.map((blockContext) => (
-                    <BlockContextProvider
-                        key={blockContext.postId}
-                        value={blockContext}
-                    >
-                        {blockContext.postId ===
-                        (activeBlockContextId || blockContexts[0]?.postId) ? (
-                            <PostTemplateInnerBlocks />
-                        ) : null}
-                        <MemoizedPostTemplateBlockPreview
-                            blocks={blocks}
-                            blockContextId={blockContext.postId}
-                            setActiveBlockContextId={setActiveBlockContextId}
-                            isHidden={
-                                blockContext.postId ===
-                                (activeBlockContextId ||
-                                    blockContexts[0]?.postId)
-                            }
-                        />
-                    </BlockContextProvider>
+                    <div style={{ backgroundColor: "rosybrown" }}>
+                        <BlockContextProvider
+                            key={blockContext.postId}
+                            value={blockContext}
+                        >
+                            {blockContext.postId ===
+                            (activeBlockContextId ||
+                                blockContexts[0]?.postId) ? (
+                                <PostTemplateInnerBlocks />
+                            ) : null}
+                            <MemoizedPostTemplateBlockPreview
+                                blocks={blocks}
+                                blockContextId={blockContext.postId}
+                                setActiveBlockContextId={
+                                    setActiveBlockContextId
+                                }
+                                isHidden={
+                                    blockContext.postId ===
+                                    (activeBlockContextId ||
+                                        blockContexts[0]?.postId)
+                                }
+                            />
+                        </BlockContextProvider>
+                    </div>
                 ))}
         </div>
     );
