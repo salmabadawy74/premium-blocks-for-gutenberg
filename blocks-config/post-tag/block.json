@@ -1,0 +1,68 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "premium/post-tag",
+	"title": "Post Tags",
+	"category": "theme",
+	"description": "Display a post's tags.",
+	"textdomain": "default",
+            "parent": ["premium/post-template"],
+
+	"attributes": {
+		"displayPostTags": {
+			"type": "boolean",
+            "default":true
+		},
+        "typography": {
+            "type": "object",
+            "default": {
+                "fontWeight": "Default",
+                "fontStyle": "",
+                "letterSpacing": {
+                    "Desktop": "",
+                    "Tablet": "",
+                    "Mobile": "",
+                    "unit": "px"
+                },
+                "fontFamily": "Default",
+                "lineHeight": {
+                    "Desktop": "",
+                    "Tablet": "",
+                    "Mobile": "",
+                    "unit": "px"
+                },
+                "textDecoration": "",
+                "textTransform": "",
+                "fontSize": {
+                    "Desktop": "",
+                    "Tablet": "",
+                    "Mobile": "",
+                    "unit": "px"
+                }
+            }
+        },
+        "color": {
+			"type": "string"
+		},
+        "hoverColor":{
+            "type":"string",
+            "default":""
+        },
+         "hideDesktop": {
+            "type": "boolean",
+            "default": ""
+        },
+        "hideTablet": {
+            "type": "boolean",
+            "default": ""
+        },
+        "hideMobile": {
+            "type": "boolean",
+            "default": ""
+        }
+	},
+	"usesContext": [ "postId", "postType", "queryId" ],
+	"supports": {
+		"html": false
+	}
+}

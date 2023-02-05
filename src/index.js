@@ -22,7 +22,10 @@ import {
     pricingTable,
     videoBox,
 } from "../assets/js/settings";
-
+import "./blocks/post-title/index";
+import "./blocks/post-excerpt";
+import "./blocks/feature-image";
+import "./blocks/post-Meta";
 dualHeading ? require("./blocks/dual-heading") : "";
 accordion ? require("./blocks/accordion") : "";
 banner ? require("./blocks/banner") : "";
@@ -54,6 +57,11 @@ import "./blocks/image";
 import "./blocks/icon-group";
 import "./blocks/counter";
 import "./blocks/author";
+import "./blocks/post-template";
+
+import "./blocks/post-grid";
+import "./blocks/pagination";
+import "./blocks/post-tag";
 
 window.PremiumOptionsSettings = {
     FontAwesomeEnabled,

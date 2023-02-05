@@ -33,21 +33,22 @@ module.exports = function (grunt) {
         "icon-group",
         "switcher-child",
         "counter"
+        "pagination",
     ];
     const sassFiles = {};
     const minifyFiles = {};
 
     blocks.map(
         (block) =>
-        (sassFiles[
-            `./assets/css/${block}.css`
-        ] = `./src/blocks/${block}/style.scss`)
+            (sassFiles[
+                `./assets/css/${block}.css`
+            ] = `./src/blocks/${block}/style.scss`)
     );
     blocks.map(
         (block) =>
-        (minifyFiles[
-            `./assets/css/minified/${block}.min.css`
-        ] = `./assets/css/${block}.css`)
+            (minifyFiles[
+                `./assets/css/minified/${block}.min.css`
+            ] = `./assets/css/${block}.css`)
     );
 
     //Grunt Configuration
