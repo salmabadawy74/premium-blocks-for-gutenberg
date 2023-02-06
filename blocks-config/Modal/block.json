@@ -32,6 +32,7 @@
                     "btnText": "Premium Blocks",
                     "showIcon": false,
                     "icon": "",
+                    "iconType": "fe",
                     "iconPosition": "before",
                     "iconSpacing": "",
                     "btnSize": "md",
@@ -43,6 +44,20 @@
                     "triggerReverseLottie": false,
                     "triggerPlayLottie": false,
                     "delayTime": 1
+                }
+            ]
+        },
+        "icons": {
+            "type": "array",
+            "default": [
+                {
+                    "iconn": "",
+                    "link": "",
+                    "target": "_self",
+                    "size": "20",
+                    "width": "2",
+                    "title": "",
+                    "style": "default"
                 }
             ]
         },
@@ -493,9 +508,9 @@
         "triggerIconSize": {
             "type": "object",
             "default": {
-                "Desktop": "",
-                "Tablet": "",
-                "Mobile": "",
+                "Desktop": "20",
+                "Tablet": "20",
+                "Mobile": "20",
                 "unit": "px"
             }
         },

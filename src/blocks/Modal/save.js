@@ -1,5 +1,10 @@
 import classnames from 'classnames'
 import { gradientBackground, generateCss, filterJsCss } from '@pbg/helpers';
+import {
+    GenIcon,
+    FaIco,
+    Ico
+} from "@pbg/components";
 const { InnerBlocks, useBlockProps } = wp.blockEditor;
 
 const save = props => {
@@ -14,7 +19,6 @@ const save = props => {
         triggerBorder,
         upperStyles,
         upperBorder,
-        modalStyles,
         modalBorder,
         triggerBorderH,
         modalBackground,
@@ -37,7 +41,7 @@ const save = props => {
             'background-color': `${triggerStyles[0].triggerHoverBack} !important`,
             'border-style': `${triggerBorderH && triggerBorderH.borderType} !important`
         };
-        styles[` .${blockId} .premium-modal-trigger-container button.premium-modal-trigger-btn:hover i`] = {
+        styles[` .${blockId} .premium-modal-trigger-container button.premium-modal-trigger-btn:hover svg`] = {
             'color': `${triggerStyles[0].iconHoverColor} !important`
         };
         styles[` .${blockId} .premium-modal-trigger-container button.premium-modal-trigger-btn:hover span`] = {
@@ -99,12 +103,15 @@ const save = props => {
                             boxShadow: `${triggerShadow.horizontal}px ${triggerShadow.vertical}px ${triggerShadow.blur}px ${triggerShadow.color} ${triggerShadow.position}`,
                         })}>
                         {triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" &&
-                            <i
-                                className={`premium-modal-box-icon ${triggerSettings[0].icon}`}
+                            <GenIcon className={`premium-modal-box-icon ${triggerSettings[0].icon}`}
+                                name={triggerSettings[0].icon}
+                                icon={('fa' === triggerSettings[0].icon.substring(0, 2) ? FaIco[triggerSettings[0].icon] : Ico[triggerSettings[0].icon])}
+                                strokeWidth={('fe' === triggerSettings[0].icon.substring(0, 2) ? icons[0].width : undefined)}
                                 style={filterJsCss({
                                     marginRight: `${triggerSettings[0].iconSpacing}px`,
                                     color: triggerStyles[0].iconColor
-                                })}></i>
+                                })}
+                            />
                         }
                         <span
                             style={filterJsCss({
@@ -118,12 +125,15 @@ const save = props => {
                             {triggerSettings[0].btnText}
                         </span>
                         {triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "after" &&
-                            <i
-                                className={`premium-modal-box-icon ${triggerSettings[0].icon}`}
+                            <GenIcon className={`premium-modal-box-icon ${triggerSettings[0].icon}`}
+                                name={triggerSettings[0].icon}
+                                icon={('fa' === triggerSettings[0].icon.substring(0, 2) ? FaIco[triggerSettings[0].icon] : Ico[triggerSettings[0].icon])}
+                                strokeWidth={('fe' === triggerSettings[0].icon.substring(0, 2) ? icons[0].width : undefined)}
                                 style={filterJsCss({
                                     marginLeft: `${triggerSettings[0].iconSpacing}px`,
                                     color: triggerStyles[0].iconColor
-                                })}></i>
+                                })}
+                            />
                         }
                     </button>
                 }
