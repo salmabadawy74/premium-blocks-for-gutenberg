@@ -5,7 +5,10 @@
     "name": "premium/modal",
     "title": "Modal Box",
     "description": "Easily, get creative modal popups on your WordPress website using Premium Modal Box Block.",
-    "keywords": ["modal", "popup"],
+    "keywords": [
+        "modal",
+        "popup"
+    ],
     "category": "premium-blocks",
     "attributes": {
         "blockId": {
@@ -15,18 +18,7 @@
             "type": "array",
             "default": [
                 {
-                    "showHeader": true,
-                    "iconType": "none",
-                    "contentIcon": "",
-                    "contentImgID": "",
-                    "contentImgURL": "",
-                    "lottieURL": "",
-                    "loopLottie": true,
-                    "reverseLottie": false,
                     "titleText": "Modal Box Title",
-                    "showUpperClose": true,
-                    "showLowerClose": true,
-                    "lowerCloseText": "Close",
                     "animationType": "fadeInDown",
                     "animationSpeed": "normal"
                 }
@@ -67,30 +59,14 @@
                 }
             ]
         },
-        "headerStyles": {
-            "type": "array",
-            "default": [
-                {
-                    "color": "",
-                    "backColor": ""
-                }
-            ]
-        },
         "upperStyles": {
             "type": "array",
             "default": [
                 {
                     "color": "",
-                    "backColor": ""
-                }
-            ]
-        },
-        "lowerStyles": {
-            "type": "array",
-            "default": [
-                {
-                    "color": "",
-                    "backColor": ""
+                    "backColor": "",
+                    "hoverColor": "",
+                    "hoverBackColor": ""
                 }
             ]
         },
@@ -98,11 +74,7 @@
             "type": "array",
             "default": [
                 {
-                    "contentType": "text",
-                    "contentText": "Modal Box Content",
-                    "textColor": "",
-                    "textBackColor": "",
-                    "footerBackColor": ""
+                    "contentText": "Modal Box Content"
                 }
             ]
         },
@@ -182,34 +154,10 @@
             "type": "object",
             "default": {
                 "Desktop": {
-                    "top": "",
-                    "right": "",
-                    "bottom": "",
-                    "left": ""
-                },
-                "Tablet": {
-                    "top": "",
-                    "right": "",
-                    "bottom": "",
-                    "left": ""
-                },
-                "Mobile": {
-                    "top": "",
-                    "right": "",
-                    "bottom": "",
-                    "left": ""
-                },
-                "unit": "px"
-            }
-        },
-        "lowerPadding": {
-            "type": "object",
-            "default": {
-                "Desktop": {
-                    "top": "",
-                    "right": "",
-                    "bottom": "",
-                    "left": ""
+                    "top": "0",
+                    "right": "0",
+                    "bottom": "0",
+                    "left": "0"
                 },
                 "Tablet": {
                     "top": "",
@@ -230,34 +178,10 @@
             "type": "object",
             "default": {
                 "Desktop": {
-                    "top": "",
-                    "right": "",
-                    "bottom": "",
-                    "left": ""
-                },
-                "Tablet": {
-                    "top": "",
-                    "right": "",
-                    "bottom": "",
-                    "left": ""
-                },
-                "Mobile": {
-                    "top": "",
-                    "right": "",
-                    "bottom": "",
-                    "left": ""
-                },
-                "unit": "px"
-            }
-        },
-        "modalMargin": {
-            "type": "object",
-            "default": {
-                "Desktop": {
-                    "top": "",
-                    "right": "",
-                    "bottom": "",
-                    "left": ""
+                    "top": "40",
+                    "right": "40",
+                    "bottom": "40",
+                    "left": "40"
                 },
                 "Tablet": {
                     "top": "",
@@ -348,57 +272,10 @@
                 },
                 "borderRadius": {
                     "Desktop": {
-                        "top": "",
-                        "right": "",
-                        "bottom": "",
-                        "left": ""
-                    },
-                    "Tablet": {
-                        "top": "",
-                        "right": "",
-                        "bottom": "",
-                        "left": ""
-                    },
-                    "Mobile": {
-                        "top": "",
-                        "right": "",
-                        "bottom": "",
-                        "left": ""
-                    }
-                }
-            }
-        },
-        "headerBorder": {
-            "type": "object",
-            "default": {
-                "borderType": "none",
-                "borderColor": "",
-                "borderWidth": {
-                    "Desktop": {
-                        "top": "",
-                        "right": "",
-                        "bottom": "",
-                        "left": ""
-                    },
-                    "Tablet": {
-                        "top": "",
-                        "right": "",
-                        "bottom": "",
-                        "left": ""
-                    },
-                    "Mobile": {
-                        "top": "",
-                        "right": "",
-                        "bottom": "",
-                        "left": ""
-                    }
-                },
-                "borderRadius": {
-                    "Desktop": {
-                        "top": "",
-                        "right": "",
-                        "bottom": "",
-                        "left": ""
+                        "top": "0",
+                        "right": "0",
+                        "bottom": "0",
+                        "left": "0"
                     },
                     "Tablet": {
                         "top": "",
@@ -416,53 +293,6 @@
             }
         },
         "upperBorder": {
-            "type": "object",
-            "default": {
-                "borderType": "none",
-                "borderColor": "",
-                "borderWidth": {
-                    "Desktop": {
-                        "top": "",
-                        "right": "",
-                        "bottom": "",
-                        "left": ""
-                    },
-                    "Tablet": {
-                        "top": "",
-                        "right": "",
-                        "bottom": "",
-                        "left": ""
-                    },
-                    "Mobile": {
-                        "top": "",
-                        "right": "",
-                        "bottom": "",
-                        "left": ""
-                    }
-                },
-                "borderRadius": {
-                    "Desktop": {
-                        "top": "",
-                        "right": "",
-                        "bottom": "",
-                        "left": ""
-                    },
-                    "Tablet": {
-                        "top": "",
-                        "right": "",
-                        "bottom": "",
-                        "left": ""
-                    },
-                    "Mobile": {
-                        "top": "",
-                        "right": "",
-                        "bottom": "",
-                        "left": ""
-                    }
-                }
-            }
-        },
-        "lowerBorder": {
             "type": "object",
             "default": {
                 "borderType": "none",
@@ -584,90 +414,6 @@
                 }
             }
         },
-        "headerTypography": {
-            "type": "object",
-            "default": {
-                "fontWeight": "Default",
-                "fontStyle": "",
-                "textTransform": "",
-                "letterSpacing": {
-                    "Desktop": "",
-                    "Tablet": "",
-                    "Mobile": "",
-                    "unit": "px"
-                },
-                "fontFamily": "Default",
-                "lineHeight": {
-                    "Desktop": "",
-                    "Tablet": "",
-                    "Mobile": "",
-                    "unit": "px"
-                },
-                "textDecoration": "",
-                "fontSize": {
-                    "Desktop": "",
-                    "Tablet": "",
-                    "Mobile": "",
-                    "unit": "px"
-                }
-            }
-        },
-        "lowerTypography": {
-            "type": "object",
-            "default": {
-                "fontWeight": "Default",
-                "fontStyle": "",
-                "textTransform": "",
-                "letterSpacing": {
-                    "Desktop": "",
-                    "Tablet": "",
-                    "Mobile": "",
-                    "unit": "px"
-                },
-                "fontFamily": "Default",
-                "lineHeight": {
-                    "Desktop": "",
-                    "Tablet": "",
-                    "Mobile": "",
-                    "unit": "px"
-                },
-                "textDecoration": "",
-                "fontSize": {
-                    "Desktop": "",
-                    "Tablet": "",
-                    "Mobile": "",
-                    "unit": "px"
-                }
-            }
-        },
-        "modalTypography": {
-            "type": "object",
-            "default": {
-                "fontWeight": "Default",
-                "fontStyle": "",
-                "textTransform": "",
-                "letterSpacing": {
-                    "Desktop": "",
-                    "Tablet": "",
-                    "Mobile": "",
-                    "unit": "px"
-                },
-                "fontFamily": "Default",
-                "lineHeight": {
-                    "Desktop": "",
-                    "Tablet": "",
-                    "Mobile": "",
-                    "unit": "px"
-                },
-                "textDecoration": "",
-                "fontSize": {
-                    "Desktop": "",
-                    "Tablet": "",
-                    "Mobile": "",
-                    "unit": "px"
-                }
-            }
-        },
         "iconSize": {
             "type": "object",
             "default": {
@@ -689,19 +435,19 @@
         "modalWidth": {
             "type": "object",
             "default": {
-                "Desktop": "",
-                "Tablet": "",
-                "Mobile": "",
+                "Desktop": "700",
+                "Tablet": "700",
+                "Mobile": "700",
                 "unit": "px"
             }
         },
         "modalHeight": {
             "type": "object",
             "default": {
-                "Desktop": "",
-                "Tablet": "",
-                "Mobile": "",
-                "unit": "px"
+                "Desktop": "50",
+                "Tablet": "50",
+                "Mobile": "50",
+                "unit": "vh"
             }
         },
         "triggerFilter": {
@@ -762,13 +508,23 @@
                 "unit": "px"
             }
         },
-        "lowerIconWidth": {
+        "containerBackground": {
             "type": "object",
             "default": {
-                "Desktop": "",
-                "Tablet": "",
-                "Mobile": "",
-                "unit": "px"
+                "backgroundType": "",
+                "backgroundColor": "",
+                "backgroundImageID": "",
+                "backgroundImageURL": "",
+                "backgroundPosition": "",
+                "backgroundRepeat": "",
+                "backgroundSize": "",
+                "fixed": false,
+                "gradientLocationOne": "0",
+                "gradientColorTwo": "",
+                "gradientLocationTwo": "100",
+                "gradientAngle": "180",
+                "gradientPosition": "center center",
+                "gradientType": "linear"
             }
         }
     },

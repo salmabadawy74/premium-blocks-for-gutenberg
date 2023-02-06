@@ -1,7 +1,6 @@
 import classnames from 'classnames'
 import { gradientBackground, generateCss, filterJsCss } from '@pbg/helpers';
 const { InnerBlocks, useBlockProps } = wp.blockEditor;
-const { RichText } = wp.editor;
 
 const save = props => {
 
@@ -13,12 +12,8 @@ const save = props => {
         triggerSettings,
         triggerStyles,
         triggerBorder,
-        headerStyles,
-        headerBorder,
         upperStyles,
         upperBorder,
-        lowerStyles,
-        lowerBorder,
         modalStyles,
         modalBorder,
         triggerBorderH,
@@ -27,14 +22,12 @@ const save = props => {
         triggerTextShadow,
         modalShadow,
         triggerTypography,
-        headerTypography,
-        lowerTypography,
-        modalTypography,
         triggerFilter,
         triggerHoverFilter,
         hideDesktop,
         hideTablet,
-        hideMobile
+        hideMobile,
+        containerBackground
     } = props.attributes;
 
     const loadStyles = () => {
@@ -66,6 +59,12 @@ const save = props => {
         styles[` .${blockId} .premium-modal-trigger-container:hover .premium-modal-trigger-text`] = {
             'border-color': `${triggerBorderH && triggerBorderH.borderColor} !important`,
             'border-style': `${triggerBorderH && triggerBorderH.borderType} !important`
+        };
+        styles[` .${blockId} .premium-modal-box-modal-header .premium-modal-box-close-button-container:hover`] = {
+            'background-color': `${upperStyles[0].hoverBackColor} !important`
+        };
+        styles[` .${blockId} .premium-modal-box-modal-header .premium-modal-box-close-button-container:hover .premium-modal-box-modal-close`] = {
+            'color': `${upperStyles[0].hoverColor} !important`
         };
         return generateCss(styles);
     }
@@ -177,93 +176,30 @@ const save = props => {
                         borderColor: `${modalBorder.borderColor}`,
                         boxShadow: `${modalShadow.horizontal}px ${modalShadow.vertical}px ${modalShadow.blur}px ${modalShadow.color} ${modalShadow.position}`,
                     })}>
-                    {contentStyles[0].showHeader && <div className={`premium-modal-box-modal-header`}
-                        style={filterJsCss({
-                            backgroundColor: headerStyles[0].backColor,
-                            borderStyle: headerBorder.borderType,
-                            borderColor: `${headerBorder.borderColor}`,
-                            borderBottomStyle: headerBorder.borderType == 'none' ? 'solid' : headerBorder.borderType,
-                            borderBottomWidth: headerBorder.borderType == 'none' ? '1px' : '',
-                            borderBottomColor: headerBorder.borderType == 'none' ? '#e5e5e5' : headerBorder.borderColor
-                        })}>
-                        <h3 className={`premium-modal-box-modal-title`}
-                            style={filterJsCss({
-                                color: headerStyles[0].color,
-                                fontFamily: headerTypography.fontFamily,
-                                fontWeight: headerTypography.fontWeight,
-                                fontStyle: headerTypography.fontStyle,
-                                textDecoration: headerTypography?.textDecoration,
-                                textTransform: headerTypography?.textTransform,
-                            })}>
-                            {contentStyles[0].iconType === "icon" && <i className={contentStyles[0].contentIcon}></i>}
-                            {contentStyles[0].iconType === "image" && <img src={contentStyles[0].contentImgURL}></img>}
-                            {contentStyles[0].iconType === "lottie" &&
-                                <div className={`premium-lottie-animation`}
-                                    data-lottieurl={contentStyles[0].lottieURL}
-                                    data-loop={contentStyles[0].loopLottie}
-                                    data-reverse={contentStyles[0].reverseLottie}
-                                    data-trigger={"none"}
-                                >
-                                </div>
-                            }
-                            {contentStyles[0].titleText}
-                        </h3>
-                        {contentStyles[0].showUpperClose && contentStyles[0].showHeader && (
-                            <div className="premium-modal-box-close-button-container"
-                                style={filterJsCss({
-                                    backgroundColor: `${upperStyles[0].backColor}`,
-                                    borderStyle: `${upperBorder.borderType}`,
-                                    borderColor: `${upperBorder.borderColor}`,
-
-                                })}>
-                                <button type="button" className="premium-modal-box-modal-close close-button"
-                                    style={filterJsCss({
-                                        color: `${upperStyles[0].color}`,
-
-                                    })} data-dismiss="premium-modal" >×</button>
-                            </div>
-                        )}
-                    </div>}
                     <div className={`premium-modal-box-modal-body`}
                         style={filterJsCss({
-                            background: modalStyles[0].textBackColor
+                            ...gradientBackground(containerBackground),
+                            display: 'block'
                         })}>
-                        {modalStyles[0].contentType === "text" ?
-                            <RichText.Content
-                                tagName={'p'}
-                                value={modalStyles[0].contentText}
-                                style={filterJsCss({
-                                    color: modalStyles[0].textColor,
-                                    fontFamily: modalTypography.fontFamily,
-                                    fontWeight: modalTypography.fontWeight,
-                                    fontStyle: modalTypography.fontStyle,
-                                    textDecoration: modalTypography?.textDecoration,
-                                    textTransform: modalTypography?.textTransform
-                                })}
-                                keepPlaceholderOnFocus
-                            />
-                            : <InnerBlocks.Content />}
-
+                        <div className="premium-modal-box-modal-body-content">
+                            <InnerBlocks.Content />
+                        </div>
                     </div>
-                    {contentStyles[0].showLowerClose && (<div className={`premium-modal-box-modal-footer`}
-                        style={filterJsCss({
-                            backgroundColor: modalStyles[0].footerBackColor
-                        })}>
-                        <button className={`premium-modal-box-modal-lower-close close-button`} role="button" data-dismiss="premium-modal"
+                    <div className={`premium-modal-box-modal-header`}>
+                        <div className="premium-modal-box-close-button-container"
                             style={filterJsCss({
-                                fontWeight: lowerTypography.fontWeight,
-                                fontFamily: lowerTypography.fontFamily,
-                                fontStyle: lowerTypography.fontStyle,
-                                textDecoration: lowerTypography?.textDecoration,
-                                textTransform: lowerTypography?.textTransform,
-                                color: `${lowerStyles[0].color}`,
-                                backgroundColor: `${lowerStyles[0].backColor}`,
-                                borderStyle: `${lowerBorder.borderType}`,
-                                borderColor: `${lowerBorder.borderColor}`,
+                                backgroundColor: `${upperStyles[0].backColor}`,
+                                borderStyle: `${upperBorder.borderType}`,
+                                borderColor: `${upperBorder.borderColor}`,
+
                             })}>
-                            {contentStyles[0].lowerCloseText}
-                        </button>
-                    </div>)}
+                            <button type="button" className="premium-modal-box-modal-close close-button"
+                                style={filterJsCss({
+                                    color: `${upperStyles[0].color}`,
+
+                                })} data-dismiss="premium-modal" >×</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div >

@@ -1,5 +1,7 @@
 const { __ } = wp.i18n;
-const { InnerBlocks } = wp.blockEditor;
+import { gradientBackground, generateCss, filterJsCss } from '@pbg/helpers';
+const { InnerBlocks, useBlockProps } = wp.blockEditor;
+const { RichText } = wp.editor;
 import classnames from "classnames"
 
 const attributes = {
@@ -1026,7 +1028,1129 @@ const newAttributes = {
     }
 }
 
+const v2Attributes = {
+    "blockId": {
+        "type": "string"
+    },
+    "contentStyles": {
+        "type": "array",
+        "default": [
+            {
+                "showHeader": true,
+                "iconType": "none",
+                "contentIcon": "",
+                "contentImgID": "",
+                "contentImgURL": "",
+                "lottieURL": "",
+                "loopLottie": true,
+                "reverseLottie": false,
+                "titleText": "Modal Box Title",
+                "showUpperClose": true,
+                "showLowerClose": true,
+                "lowerCloseText": "Close",
+                "animationType": "fadeInDown",
+                "animationSpeed": "normal"
+            }
+        ]
+    },
+    "triggerSettings": {
+        "type": "array",
+        "default": [
+            {
+                "triggerType": "button",
+                "btnText": "Premium Blocks",
+                "showIcon": false,
+                "icon": "",
+                "iconPosition": "before",
+                "iconSpacing": "",
+                "btnSize": "md",
+                "triggerImgID": "",
+                "triggerImgURL": "",
+                "triggerText": "Premium Blocks",
+                "lottieTriggerURL": "",
+                "triggerLoopLottie": true,
+                "triggerReverseLottie": false,
+                "triggerPlayLottie": false,
+                "delayTime": 1
+            }
+        ]
+    },
+    "triggerStyles": {
+        "type": "array",
+        "default": [
+            {
+                "color": "",
+                "hoverColor": "",
+                "iconColor": "",
+                "iconHoverColor": "",
+                "triggerBack": "",
+                "triggerHoverBack": ""
+            }
+        ]
+    },
+    "headerStyles": {
+        "type": "array",
+        "default": [
+            {
+                "color": "",
+                "backColor": ""
+            }
+        ]
+    },
+    "upperStyles": {
+        "type": "array",
+        "default": [
+            {
+                "color": "",
+                "backColor": "",
+                "hoverColor": "",
+                "hoverBackColor": ""
+            }
+        ]
+    },
+    "lowerStyles": {
+        "type": "array",
+        "default": [
+            {
+                "color": "",
+                "backColor": ""
+            }
+        ]
+    },
+    "modalStyles": {
+        "type": "array",
+        "default": [
+            {
+                "contentType": "text",
+                "contentText": "Modal Box Content",
+                "textColor": "",
+                "textBackColor": "",
+                "footerBackColor": ""
+            }
+        ]
+    },
+    "modalBackground": {
+        "type": "object",
+        "default": {
+            "backgroundType": "",
+            "backgroundColor": "",
+            "backgroundImageID": "",
+            "backgroundImageURL": "",
+            "backgroundPosition": "",
+            "backgroundRepeat": "",
+            "backgroundSize": "",
+            "fixed": false,
+            "gradientLocationOne": "0",
+            "gradientColorTwo": "",
+            "gradientLocationTwo": "100",
+            "gradientAngle": "180",
+            "gradientPosition": "center center",
+            "gradientType": "linear"
+        }
+    },
+    "modalShadow": {
+        "type": "object",
+        "default": {
+            "color": "undefined",
+            "blur": "10",
+            "horizontal": "0",
+            "vertical": "0",
+            "position": " "
+        }
+    },
+    "triggerShadow": {
+        "type": "object",
+        "default": {
+            "color": "undefined",
+            "blur": "10",
+            "horizontal": "0",
+            "vertical": "0",
+            "position": " "
+        }
+    },
+    "triggerTextShadow": {
+        "type": "object",
+        "default": {
+            "color": "undefined",
+            "blur": "10",
+            "horizontal": "0",
+            "vertical": "0"
+        }
+    },
+    "triggerPadding": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "upperPadding": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "lowerPadding": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "modalPadding": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "40",
+                "right": "40",
+                "bottom": "40",
+                "left": "40"
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "modalMargin": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "triggerBorder": {
+        "type": "object",
+        "default": {
+            "borderType": "none",
+            "borderColor": "",
+            "borderWidth": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            },
+            "borderRadius": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            }
+        }
+    },
+    "triggerBorderH": {
+        "type": "object",
+        "default": {
+            "borderType": "none",
+            "borderColor": "",
+            "borderWidth": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            },
+            "borderRadius": {
+                "Desktop": {
+                    "top": "0",
+                    "right": "0",
+                    "bottom": "0",
+                    "left": "0"
+                },
+                "Tablet": {
+                    "top": "0",
+                    "right": "0",
+                    "bottom": "0",
+                    "left": "0"
+                },
+                "Mobile": {
+                    "top": "0",
+                    "right": "0",
+                    "bottom": "0",
+                    "left": "0"
+                }
+            }
+        }
+    },
+    "headerBorder": {
+        "type": "object",
+        "default": {
+            "borderType": "none",
+            "borderColor": "",
+            "borderWidth": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            },
+            "borderRadius": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            }
+        }
+    },
+    "upperBorder": {
+        "type": "object",
+        "default": {
+            "borderType": "none",
+            "borderColor": "",
+            "borderWidth": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            },
+            "borderRadius": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            }
+        }
+    },
+    "lowerBorder": {
+        "type": "object",
+        "default": {
+            "borderType": "none",
+            "borderColor": "",
+            "borderWidth": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            },
+            "borderRadius": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            }
+        }
+    },
+    "modalBorder": {
+        "type": "object",
+        "default": {
+            "borderType": "none",
+            "borderColor": "",
+            "borderWidth": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            },
+            "borderRadius": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            }
+        }
+    },
+    "triggerTypography": {
+        "type": "object",
+        "default": {
+            "fontWeight": "Default",
+            "fontStyle": "",
+            "textTransform": "",
+            "fontFamily": "Default",
+            "textDecoration": "",
+            "letterSpacing": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            },
+            "lineHeight": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            },
+            "fontSize": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            }
+        }
+    },
+    "headerTypography": {
+        "type": "object",
+        "default": {
+            "fontWeight": "Default",
+            "fontStyle": "",
+            "textTransform": "",
+            "letterSpacing": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            },
+            "fontFamily": "Default",
+            "lineHeight": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            },
+            "textDecoration": "",
+            "fontSize": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            }
+        }
+    },
+    "lowerTypography": {
+        "type": "object",
+        "default": {
+            "fontWeight": "Default",
+            "fontStyle": "",
+            "textTransform": "",
+            "letterSpacing": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            },
+            "fontFamily": "Default",
+            "lineHeight": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            },
+            "textDecoration": "",
+            "fontSize": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            }
+        }
+    },
+    "modalTypography": {
+        "type": "object",
+        "default": {
+            "fontWeight": "Default",
+            "fontStyle": "",
+            "textTransform": "",
+            "letterSpacing": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            },
+            "fontFamily": "Default",
+            "lineHeight": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            },
+            "textDecoration": "",
+            "fontSize": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            }
+        }
+    },
+    "iconSize": {
+        "type": "object",
+        "default": {
+            "Desktop": "",
+            "Tablet": "",
+            "Mobile": "",
+            "unit": "px"
+        }
+    },
+    "imageWidth": {
+        "type": "object",
+        "default": {
+            "Desktop": "",
+            "Tablet": "",
+            "Mobile": "",
+            "unit": "px"
+        }
+    },
+    "modalWidth": {
+        "type": "object",
+        "default": {
+            "Desktop": "700",
+            "Tablet": "700",
+            "Mobile": "700",
+            "unit": "px"
+        }
+    },
+    "modalHeight": {
+        "type": "object",
+        "default": {
+            "Desktop": "50",
+            "Tablet": "50",
+            "Mobile": "50",
+            "unit": "vh"
+        }
+    },
+    "triggerFilter": {
+        "type": "object",
+        "default": {
+            "contrast": "100",
+            "blur": "0",
+            "bright": "100",
+            "saturation": "100",
+            "hue": "0"
+        }
+    },
+    "triggerHoverFilter": {
+        "type": "object",
+        "default": {
+            "contrast": "100",
+            "blur": "0",
+            "bright": "100",
+            "saturation": "100",
+            "hue": "0"
+        }
+    },
+    "align": {
+        "type": "object",
+        "default": {
+            "Desktop": "center",
+            "Tablet": "center",
+            "Mobile": "center"
+        }
+    },
+    "hideDesktop": {
+        "type": "boolean",
+        "default": ""
+    },
+    "hideTablet": {
+        "type": "boolean",
+        "default": ""
+    },
+    "hideMobile": {
+        "type": "boolean",
+        "default": ""
+    },
+    "triggerIconSize": {
+        "type": "object",
+        "default": {
+            "Desktop": "",
+            "Tablet": "",
+            "Mobile": "",
+            "unit": "px"
+        }
+    },
+    "upperIconWidth": {
+        "type": "object",
+        "default": {
+            "Desktop": "",
+            "Tablet": "",
+            "Mobile": "",
+            "unit": "px"
+        }
+    },
+    "lowerIconWidth": {
+        "type": "object",
+        "default": {
+            "Desktop": "",
+            "Tablet": "",
+            "Mobile": "",
+            "unit": "px"
+        }
+    },
+    "containerBackground": {
+        "type": "object",
+        "default": {
+            "backgroundType": "",
+            "backgroundColor": "",
+            "backgroundImageID": "",
+            "backgroundImageURL": "",
+            "backgroundPosition": "",
+            "backgroundRepeat": "",
+            "backgroundSize": "",
+            "fixed": false,
+            "gradientLocationOne": "0",
+            "gradientColorTwo": "",
+            "gradientLocationTwo": "100",
+            "gradientAngle": "180",
+            "gradientPosition": "center center",
+            "gradientType": "linear"
+        }
+    }
+}
+
+const deprecated_attributes2 = Object.assign(attributes, newAttributes);
+
 const deprecated = [
+    {
+        attributes: v2Attributes,
+        isEligible() {
+            return true;
+        },
+        migrate: (attributes) => {
+            let newAttributes = {
+                modalWidth: {
+                    "Desktop": attributes.modalWidth['Desktop'] || '700',
+                    'Tablet': attributes.modalWidth['Tablet'] || '700',
+                    'Mobile': attributes.modalWidth['Mobile'] || '700',
+                    'unit': attributes.modalWidth['unit'] || 'px',
+                },
+                modalHeight: {
+                    "Desktop": attributes.modalHeight['Desktop'] || '50',
+                    'Tablet': attributes.modalHeight['Tablet'] || '50',
+                    'Mobile': attributes.modalHeight['Mobile'] || '50',
+                    'unit': attributes.modalHeight['unit'] || 'vh',
+                },
+                containerBackground: {
+                    "backgroundType": "",
+                    "backgroundColor": attributes.modalStyles[0].textBackColor || "",
+                    "backgroundImageID": "",
+                    "backgroundImageURL": "",
+                    "backgroundPosition": "",
+                    "backgroundRepeat": "",
+                    "backgroundSize": "",
+                    "fixed": false,
+                    "gradientLocationOne": "0",
+                    "gradientColorTwo": "",
+                    "gradientLocationTwo": "100",
+                    "gradientAngle": "180",
+                    "gradientPosition": "center center",
+                    "gradientType": "linear"
+                },
+                "upperStyles": [
+                    {
+                        "color": attributes.upperStyles[0].color || "",
+                        "backColor": attributes.upperStyles[0].backColor || "",
+                        "hoverColor": "",
+                        "hoverBackColor": ""
+                    }
+                ],
+                "modalPadding": {
+                    "Desktop": {
+                        "top": attributes.modalPadding['Desktop'].top || "40",
+                        "right": attributes.modalPadding['Desktop'].right || "40",
+                        "bottom": attributes.modalPadding['Desktop'].bottom || "40",
+                        "left": attributes.modalPadding['Desktop'].left || "40"
+                    },
+                    "Tablet": {
+                        "top": attributes.modalPadding['Tablet'].top || "",
+                        "right": attributes.modalPadding['Tablet'].right || "",
+                        "bottom": attributes.modalPadding['Tablet'].bottom || "",
+                        "left": attributes.modalPadding['Tablet'].left || ""
+                    },
+                    "Mobile": {
+                        "top": attributes.modalPadding['Mobile'].top || "",
+                        "right": attributes.modalPadding['Mobile'].right || "",
+                        "bottom": attributes.modalPadding['Mobile'].bottom || "",
+                        "left": attributes.modalPadding['Mobile'].left || ""
+                    },
+                    "unit": attributes.modalPadding.unit || "px"
+                }
+            }
+            return Object.assign(attributes, newAttributes)
+        },
+        save: props => {
+            const { className } = props;
+
+            const {
+                blockId,
+                contentStyles,
+                triggerSettings,
+                triggerStyles,
+                triggerBorder,
+                headerStyles,
+                headerBorder,
+                upperStyles,
+                upperBorder,
+                lowerStyles,
+                lowerBorder,
+                modalStyles,
+                modalBorder,
+                triggerBorderH,
+                modalBackground,
+                triggerShadow,
+                triggerTextShadow,
+                modalShadow,
+                triggerTypography,
+                headerTypography,
+                lowerTypography,
+                modalTypography,
+                triggerFilter,
+                triggerHoverFilter,
+                hideDesktop,
+                hideTablet,
+                hideMobile
+            } = props.attributes;
+
+            const loadStyles = () => {
+                const styles = {};
+                styles[` .${blockId} .premium-modal-trigger-container button.premium-modal-trigger-btn:hover`] = {
+                    'border-color': `${triggerBorderH && triggerBorderH.borderColor} !important`,
+                    'background-color': `${triggerStyles[0].triggerHoverBack} !important`,
+                    'border-style': `${triggerBorderH && triggerBorderH.borderType} !important`
+                };
+                styles[` .${blockId} .premium-modal-trigger-container button.premium-modal-trigger-btn:hover i`] = {
+                    'color': `${triggerStyles[0].iconHoverColor} !important`
+                };
+                styles[` .${blockId} .premium-modal-trigger-container button.premium-modal-trigger-btn:hover span`] = {
+                    'color': `${triggerStyles[0].hoverColor} !important`
+                };
+                styles[` .${blockId} .premium-modal-trigger-container:hover .premium-modal-trigger-text`] = {
+                    'color': `${triggerStyles[0].hoverColor} !important`
+                };
+                styles[` .${blockId} .premium-modal-trigger-container .premium-lottie-animation`] = {
+                    'filter': `brightness( ${triggerFilter.bright}% ) contrast( ${triggerFilter.contrast}% ) saturate( ${triggerFilter.saturation}% ) blur( ${triggerFilter.blur}px ) hue-rotate( ${triggerFilter.hue}deg ) !important`
+                };
+                styles[` .${blockId} .premium-modal-trigger-container:hover .premium-lottie-animation`] = {
+                    'filter': `brightness( ${triggerHoverFilter.bright}% ) contrast( ${triggerHoverFilter.contrast}% ) saturate( ${triggerHoverFilter.saturation}% ) blur( ${triggerHoverFilter.blur}px ) hue-rotate( ${triggerHoverFilter.hue}deg ) !important`
+                };
+                styles[` .${blockId} .premium-modal-trigger-container img:hover`] = {
+                    'border-color': `${triggerBorderH && triggerBorderH.borderColor} !important`,
+                    'border-style': `${triggerBorderH && triggerBorderH.borderType} !important`
+                };
+                styles[` .${blockId} .premium-modal-trigger-container:hover .premium-modal-trigger-text`] = {
+                    'border-color': `${triggerBorderH && triggerBorderH.borderColor} !important`,
+                    'border-style': `${triggerBorderH && triggerBorderH.borderType} !important`
+                };
+                return generateCss(styles);
+            }
+
+            return (
+                <div
+                    {...useBlockProps.save({
+                        className: classnames(
+                            className,
+                            `premium-modal-box ${blockId}`,
+                            {
+                                " premium-desktop-hidden": hideDesktop,
+                                " premium-tablet-hidden": hideTablet,
+                                " premium-mobile-hidden": hideMobile,
+                            }
+                        ),
+                    })}
+                    data-trigger={triggerSettings[0].triggerType}>
+                    <style
+                        dangerouslySetInnerHTML={{
+                            __html: loadStyles(),
+                        }}
+                    />
+                    <div className={`premium-modal-trigger-container`}
+                    >
+                        {(triggerSettings[0].triggerType === "button") &&
+                            <button className={`premium-modal-trigger-btn wp-block-button__link premium-button premium-button__${triggerSettings[0].btnSize} `}
+                                style={filterJsCss({
+                                    backgroundColor: triggerStyles[0].triggerBack,
+                                    borderStyle: triggerBorder.borderType,
+                                    borderColor: triggerBorder.borderColor,
+                                    boxShadow: `${triggerShadow.horizontal}px ${triggerShadow.vertical}px ${triggerShadow.blur}px ${triggerShadow.color} ${triggerShadow.position}`,
+                                })}>
+                                {triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" &&
+                                    <i
+                                        className={`premium-modal-box-icon ${triggerSettings[0].icon}`}
+                                        style={filterJsCss({
+                                            marginRight: `${triggerSettings[0].iconSpacing}px`,
+                                            color: triggerStyles[0].iconColor
+                                        })}></i>
+                                }
+                                <span
+                                    style={filterJsCss({
+                                        color: triggerStyles[0].color,
+                                        fontFamily: triggerTypography.fontFamily,
+                                        fontWeight: triggerTypography.fontWeight,
+                                        fontStyle: triggerTypography.fontStyle,
+                                        textDecoration: triggerTypography?.textDecoration,
+                                        textTransform: triggerTypography?.textTransform,
+                                    })}>
+                                    {triggerSettings[0].btnText}
+                                </span>
+                                {triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "after" &&
+                                    <i
+                                        className={`premium-modal-box-icon ${triggerSettings[0].icon}`}
+                                        style={filterJsCss({
+                                            marginLeft: `${triggerSettings[0].iconSpacing}px`,
+                                            color: triggerStyles[0].iconColor
+                                        })}></i>
+                                }
+                            </button>
+                        }
+                        {triggerSettings[0].triggerType === "image" && (
+                            <img src={triggerSettings[0].triggerImgURL} className={`premium-modal-trigger-img`}
+                                style={filterJsCss({
+                                    borderStyle: triggerBorder.borderType,
+                                    borderColor: triggerBorder.borderColor,
+                                    boxShadow: `${triggerShadow.horizontal}px ${triggerShadow.vertical}px ${triggerShadow.blur}px ${triggerShadow.color} ${triggerShadow.position}`,
+                                })} />
+                        )
+                        }
+                        {triggerSettings[0].triggerType === "text" && (
+                            <span className={`premium-modal-trigger-text`}
+                                style={filterJsCss({
+                                    color: triggerStyles[0].color,
+                                    borderStyle: triggerBorder.borderType,
+                                    borderColor: triggerBorder.borderColor,
+                                    textShadow: `${triggerTextShadow.horizontal}px ${triggerTextShadow.vertical}px ${triggerTextShadow.blur}px ${triggerTextShadow.color}`,
+                                    fontFamily: triggerTypography.fontFamily,
+                                    fontWeight: triggerTypography.fontWeight,
+                                    fontStyle: triggerTypography.fontStyle,
+                                    textDecoration: triggerTypography?.textDecoration,
+                                    textTransform: triggerTypography?.textTransform,
+                                })}>
+                                {triggerSettings[0].triggerText}
+                            </span>
+                        )}
+                        {triggerSettings[0].triggerType === "lottie" && (
+                            <div className={`premium-lottie-animation`}
+                                data-lottieurl={triggerSettings[0].lottieTriggerURL}
+                                data-loop={triggerSettings[0].triggerLoopLottie}
+                                data-reverse={triggerSettings[0].triggerReverseLottie}
+                                data-trigger={triggerSettings[0].triggerPlayLottie ? "hover" : "none"}
+                            >
+                            </div>
+                        )}
+                    </div>
+                    <div className="premium-popup__modal_wrap" style={{ display: "none" }} role="dialog">
+                        <div role="presentation" className="premium-popup__modal_wrap_overlay"
+                            style={filterJsCss({
+                                ...gradientBackground(modalBackground)
+                            })}>
+                        </div>
+                        <div className={`premium-popup__modal_content animated animation-${contentStyles[0].animationType} animation-${contentStyles[0].animationSpeed}`}
+                            data-delay={triggerSettings[0].delayTime}
+                            data-animation={`${contentStyles[0].animationType} ${contentStyles[0].animationSpeed}`}
+                            style={filterJsCss({
+                                borderStyle: `${modalBorder.borderType}`,
+                                borderColor: `${modalBorder.borderColor}`,
+                                boxShadow: `${modalShadow.horizontal}px ${modalShadow.vertical}px ${modalShadow.blur}px ${modalShadow.color} ${modalShadow.position}`,
+                            })}>
+                            {contentStyles[0].showHeader && <div className={`premium-modal-box-modal-header`}
+                                style={filterJsCss({
+                                    backgroundColor: headerStyles[0].backColor,
+                                    borderStyle: headerBorder.borderType,
+                                    borderColor: `${headerBorder.borderColor}`,
+                                    borderBottomStyle: headerBorder.borderType == 'none' ? 'solid' : headerBorder.borderType,
+                                    borderBottomWidth: headerBorder.borderType == 'none' ? '1px' : '',
+                                    borderBottomColor: headerBorder.borderType == 'none' ? '#e5e5e5' : headerBorder.borderColor
+                                })}>
+                                <h3 className={`premium-modal-box-modal-title`}
+                                    style={filterJsCss({
+                                        color: headerStyles[0].color,
+                                        fontFamily: headerTypography.fontFamily,
+                                        fontWeight: headerTypography.fontWeight,
+                                        fontStyle: headerTypography.fontStyle,
+                                        textDecoration: headerTypography?.textDecoration,
+                                        textTransform: headerTypography?.textTransform,
+                                    })}>
+                                    {contentStyles[0].iconType === "icon" && <i className={contentStyles[0].contentIcon}></i>}
+                                    {contentStyles[0].iconType === "image" && <img src={contentStyles[0].contentImgURL}></img>}
+                                    {contentStyles[0].iconType === "lottie" &&
+                                        <div className={`premium-lottie-animation`}
+                                            data-lottieurl={contentStyles[0].lottieURL}
+                                            data-loop={contentStyles[0].loopLottie}
+                                            data-reverse={contentStyles[0].reverseLottie}
+                                            data-trigger={"none"}
+                                        >
+                                        </div>
+                                    }
+                                    {contentStyles[0].titleText}
+                                </h3>
+                                {contentStyles[0].showUpperClose && contentStyles[0].showHeader && (
+                                    <div className="premium-modal-box-close-button-container"
+                                        style={filterJsCss({
+                                            backgroundColor: `${upperStyles[0].backColor}`,
+                                            borderStyle: `${upperBorder.borderType}`,
+                                            borderColor: `${upperBorder.borderColor}`,
+
+                                        })}>
+                                        <button type="button" className="premium-modal-box-modal-close close-button"
+                                            style={filterJsCss({
+                                                color: `${upperStyles[0].color}`,
+
+                                            })} data-dismiss="premium-modal" >×</button>
+                                    </div>
+                                )}
+                            </div>}
+                            <div className={`premium-modal-box-modal-body`}
+                                style={filterJsCss({
+                                    background: modalStyles[0].textBackColor
+                                })}>
+                                {modalStyles[0].contentType === "text" ?
+                                    <RichText.Content
+                                        tagName={'p'}
+                                        value={modalStyles[0].contentText}
+                                        style={filterJsCss({
+                                            color: modalStyles[0].textColor,
+                                            fontFamily: modalTypography.fontFamily,
+                                            fontWeight: modalTypography.fontWeight,
+                                            fontStyle: modalTypography.fontStyle,
+                                            textDecoration: modalTypography?.textDecoration,
+                                            textTransform: modalTypography?.textTransform
+                                        })}
+                                        keepPlaceholderOnFocus
+                                    />
+                                    : <InnerBlocks.Content />}
+
+                            </div>
+                            {contentStyles[0].showLowerClose && (<div className={`premium-modal-box-modal-footer`}
+                                style={filterJsCss({
+                                    backgroundColor: modalStyles[0].footerBackColor
+                                })}>
+                                <button className={`premium-modal-box-modal-lower-close close-button`} role="button" data-dismiss="premium-modal"
+                                    style={filterJsCss({
+                                        fontWeight: lowerTypography.fontWeight,
+                                        fontFamily: lowerTypography.fontFamily,
+                                        fontStyle: lowerTypography.fontStyle,
+                                        textDecoration: lowerTypography?.textDecoration,
+                                        textTransform: lowerTypography?.textTransform,
+                                        color: `${lowerStyles[0].color}`,
+                                        backgroundColor: `${lowerStyles[0].backColor}`,
+                                        borderStyle: `${lowerBorder.borderType}`,
+                                        borderColor: `${lowerBorder.borderColor}`,
+                                    })}>
+                                    {contentStyles[0].lowerCloseText}
+                                </button>
+                            </div>)}
+                        </div>
+                    </div>
+                </div >
+            )
+        }
+    },
     {
         attributes: Object.assign(attributes, newAttributes),
         isEligible() {

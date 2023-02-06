@@ -24,7 +24,7 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 
 	if ( isset( $attr['align']['Desktop'] ) ) {
 		$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' );
-		$css->add_property( 'text-align', $css->get_responsive_css( $attr['align'], 'Desktop' ) );
+		$css->add_property( 'text-align', $css->get_responsive_css( $attr['align'], 'Desktop' ) . '!important' );
 	}
 
 	if ( isset( $attr['triggerIconSize']['Desktop'] ) ) {
@@ -40,22 +40,6 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 		$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' . ' > .premium-modal-trigger-btn:hover' );
 		$css->add_property( 'border-width', $css->render_spacing( $trigger_border_width['Desktop'], 'px' ) );
 		$css->add_property( 'border-radius', $css->render_spacing( $trigger_border_radius['Desktop'], 'px' ) );
-	}
-
-	// style For Icon /Image/Lottie in Header
-	if ( isset( $attr['iconSize']['Desktop'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header h3 i' );
-		$css->add_property( 'font-size', $css->render_range( $attr['iconSize'], 'Desktop' ) );
-		$css->add_property( 'width', $css->render_range( $attr['iconSize'], 'Desktop' ) );
-		$css->add_property( 'height', $css->render_range( $attr['iconSize'], 'Desktop' ) );
-
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header h3 img' );
-		$css->add_property( 'width', $css->render_range( $attr['iconSize'], 'Desktop' ) );
-		$css->add_property( 'height', $css->render_range( $attr['iconSize'], 'Desktop' ) );
-
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header h3 .premium-lottie-animation' );
-		$css->add_property( 'width', $css->render_range( $attr['iconSize'], 'Desktop' ) );
-		$css->add_property( 'height', $css->render_range( $attr['iconSize'], 'Desktop' ) );
 	}
 
 	// Trigger Style for Image/Lottie
@@ -131,19 +115,6 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 		$css->add_property( 'border-radius', $css->render_spacing( $trigger_border_radius['Desktop'], 'px' ) );
 	}
 
-	// Style For Header in Modal
-	if ( isset( $attr['headerTypography'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header h3' );
-		$css->render_typography( $attr['headerTypography'], 'Desktop' );
-	}
-	if ( isset( $attr['headerBorder'] ) ) {
-		$header_border_width  = $attr['headerBorder']['borderWidth'];
-		$header_border_radius = $attr['headerBorder']['borderRadius'];
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header' );
-		$css->add_property( 'border-width', $css->render_spacing( $header_border_width['Desktop'], 'px' ) );
-		$css->add_property( 'border-radius', $css->render_spacing( $header_border_radius['Desktop'], 'px' ) );
-	}
-
 	// style for upper close button
 	if ( isset( $attr['upperPadding'] ) ) {
 		$upper_padding = $attr['upperPadding'];
@@ -164,43 +135,12 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 		$css->add_property( 'font-size', $css->render_range( $attr['upperIconWidth'], 'Desktop' ) );
 	}
 
-	// Style For font Size in  lower Close Button
-	if ( isset( $attr['lowerTypography'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-footer  button' );
-		$css->render_typography( $attr['lowerTypography'], 'Desktop' );
-	}
-	if ( isset( $attr['lowerBorder'] ) ) {
-		$lower_border_width  = $attr['lowerBorder']['borderWidth'];
-		$lower_border_radius = $attr['lowerBorder']['borderRadius'];
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-footer  button' );
-		$css->add_property( 'border-width', $css->render_spacing( $lower_border_width['Desktop'], 'px' ) );
-		$css->add_property( 'border-radius', $css->render_spacing( $lower_border_radius['Desktop'], 'px' ) );
-	}
-
-	if ( isset( $attr['lowerPadding'] ) ) {
-		$lower_padding = $attr['lowerPadding'];
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-footer  button' );
-		$css->add_property( 'padding', $css->render_spacing( $lower_padding['Desktop'], $lower_padding['unit'] ) );
-	}
-	if ( isset( $attr['lowerIconWidth'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-footer  button' );
-		$css->add_property( 'width', $css->render_range( $attr['lowerIconWidth'], 'Desktop' ) );
-	}
-
 	// Width & Height for Modal
 	if ( isset( $attr['modalWidth'] ) ) {
 		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
-		$css->add_property( 'width', $css->render_range( $attr['modalWidth'], 'Desktop' ) );
+		$css->add_property( 'width', $css->render_range( $attr['modalWidth'], 'Desktop' ) . '!important' );
 	}
-	if ( isset( $attr['modalHeight'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
-		$css->add_property( 'max-height', $css->render_range( $attr['modalHeight'], 'Desktop' ) );
-	}
-	if ( isset( $attr['modalMargin'] ) ) {
-		$modal_margin = $attr['modalMargin'];
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
-		$css->add_property( 'margin', $css->render_spacing( $modal_margin['Desktop'], $modal_margin['unit'] ) );
-	}
+
 	if ( isset( $attr['modalBorder'] ) ) {
 		$modal_border_width  = $attr['modalBorder']['borderWidth'];
 		$modal_border_radius = $attr['modalBorder']['borderRadius'];
@@ -209,22 +149,21 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 		$css->add_property( 'border-radius', $css->render_spacing( $modal_border_radius['Desktop'], 'px' ) );
 	}
 
-	if ( isset( $attr['modalTypography'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . '> .premium-modal-box-modal-body p' );
-		$css->render_typography( $attr['modalTypography'], 'Desktop' );
-	}
-
 	if ( isset( $attr['modalPadding'] ) ) {
 		$modal_padding = $attr['modalPadding'];
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . '> .premium-modal-box-modal-body' );
+		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . '> .premium-modal-box-modal-body' . '> .premium-modal-box-modal-body-content' );
 		$css->add_property( 'padding', $css->render_spacing( $modal_padding['Desktop'], $modal_padding['unit'] ) );
+	}
+	if ( isset( $attr['modalHeight'] ) ) {
+		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . '> .premium-modal-box-modal-body' );
+		$css->add_property( 'max-height', $css->render_range( $attr['modalHeight'], 'Desktop' ) . '!important' );
 	}
 
 	$css->start_media_query( $media_query['tablet'] );
 
 	if ( isset( $attr['align']['Tablet'] ) ) {
 		$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' );
-		$css->add_property( 'text-align', $css->get_responsive_css( $attr['align'], 'Tablet' ) );
+		$css->add_property( 'text-align', $css->get_responsive_css( $attr['align'], 'Tablet' ) . '!important' );
 	}
 
 	if ( isset( $attr['triggerIconSize']['Tablet'] ) ) {
@@ -240,22 +179,6 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 		$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' . ' > .premium-modal-trigger-btn:hover' );
 		$css->add_property( 'border-width', $css->render_spacing( $trigger_border_width['Tablet'], 'px' ) );
 		$css->add_property( 'border-radius', $css->render_spacing( $trigger_border_radius['Tablet'], 'px' ) );
-	}
-
-	// style For Icon /Image/Lottie in Header
-	if ( isset( $attr['iconSize']['Tablet'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header h3 i' );
-		$css->add_property( 'font-size', $css->render_range( $attr['iconSize'], 'Tablet' ) );
-		$css->add_property( 'width', $css->render_range( $attr['iconSize'], 'Tablet' ) );
-		$css->add_property( 'height', $css->render_range( $attr['iconSize'], 'Tablet' ) );
-
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header h3 img' );
-		$css->add_property( 'width', $css->render_range( $attr['iconSize'], 'Tablet' ) );
-		$css->add_property( 'height', $css->render_range( $attr['iconSize'], 'Tablet' ) );
-
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header h3 .premium-lottie-animation' );
-		$css->add_property( 'width', $css->render_range( $attr['iconSize'], 'Tablet' ) );
-		$css->add_property( 'height', $css->render_range( $attr['iconSize'], 'Tablet' ) );
 	}
 
 	// Trigger Style for Image/Lottie
@@ -331,19 +254,6 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 		$css->add_property( 'border-radius', $css->render_spacing( $trigger_border_radius['Tablet'], 'px' ) );
 	}
 
-	// Style For Header in Modal
-	if ( isset( $attr['headerTypography'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header h3' );
-		$css->render_typography( $attr['headerTypography'], 'Tablet' );
-	}
-	if ( isset( $attr['headerBorder'] ) ) {
-		$header_border_width  = $attr['headerBorder']['borderWidth'];
-		$header_border_radius = $attr['headerBorder']['borderRadius'];
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header' );
-		$css->add_property( 'border-width', $css->render_spacing( $header_border_width['Tablet'], 'px' ) );
-		$css->add_property( 'border-radius', $css->render_spacing( $header_border_radius['Tablet'], 'px' ) );
-	}
-
 	// style for upper close button
 	if ( isset( $attr['upperPadding'] ) ) {
 		$upper_padding = $attr['upperPadding'];
@@ -364,43 +274,12 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 		$css->add_property( 'font-size', $css->render_range( $attr['upperIconWidth'], 'Tablet' ) );
 	}
 
-	// Style For font Size in  lower Close Button
-	if ( isset( $attr['lowerTypography'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-footer  button' );
-		$css->render_typography( $attr['lowerTypography'], 'Tablet' );
-	}
-	if ( isset( $attr['lowerBorder'] ) ) {
-		$lower_border_width  = $attr['lowerBorder']['borderWidth'];
-		$lower_border_radius = $attr['lowerBorder']['borderRadius'];
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-footer  button' );
-		$css->add_property( 'border-width', $css->render_spacing( $lower_border_width['Tablet'], 'px' ) );
-		$css->add_property( 'border-radius', $css->render_spacing( $lower_border_radius['Tablet'], 'px' ) );
-	}
-
-	if ( isset( $attr['lowerPadding'] ) ) {
-		$lower_padding = $attr['lowerPadding'];
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-footer  button' );
-		$css->add_property( 'padding', $css->render_spacing( $lower_padding['Tablet'], $lower_padding['unit'] ) );
-	}
-	if ( isset( $attr['lowerIconWidth'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-footer  button' );
-		$css->add_property( 'width', $css->render_range( $attr['lowerIconWidth'], 'Tablet' ) );
-	}
-
 	// Width & Height for Modal
 	if ( isset( $attr['modalWidth'] ) ) {
 		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
-		$css->add_property( 'width', $css->render_range( $attr['modalWidth'], 'Tablet' ) );
+		$css->add_property( 'width', $css->render_range( $attr['modalWidth'], 'Tablet' ) . '!important' );
 	}
-	if ( isset( $attr['modalHeight'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
-		$css->add_property( 'max-height', $css->render_range( $attr['modalHeight'], 'Tablet' ) );
-	}
-	if ( isset( $attr['modalMargin'] ) ) {
-		$modal_margin = $attr['modalMargin'];
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
-		$css->add_property( 'margin', $css->render_spacing( $modal_margin['Tablet'], $modal_margin['unit'] ) );
-	}
+
 	if ( isset( $attr['modalBorder'] ) ) {
 		$modal_border_width  = $attr['modalBorder']['borderWidth'];
 		$modal_border_radius = $attr['modalBorder']['borderRadius'];
@@ -409,15 +288,14 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 		$css->add_property( 'border-radius', $css->render_spacing( $modal_border_radius['Tablet'], 'px' ) );
 	}
 
-	if ( isset( $attr['modalTypography'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . '> .premium-modal-box-modal-body p' );
-		$css->render_typography( $attr['modalTypography'], 'Tablet' );
-	}
-
 	if ( isset( $attr['modalPadding'] ) ) {
 		$modal_padding = $attr['modalPadding'];
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . '> .premium-modal-box-modal-body' );
+		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . '> .premium-modal-box-modal-body' . '> .premium-modal-box-modal-body-content' );
 		$css->add_property( 'padding', $css->render_spacing( $modal_padding['Tablet'], $modal_padding['unit'] ) );
+	}
+	if ( isset( $attr['modalHeight'] ) ) {
+		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . '> .premium-modal-box-modal-body' );
+		$css->add_property( 'max-height', $css->render_range( $attr['modalHeight'], 'Tablet' ) . '!important' );
 	}
 
 	$css->stop_media_query();
@@ -425,7 +303,7 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 
 	if ( isset( $attr['align']['Mobile'] ) ) {
 		$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' );
-		$css->add_property( 'text-align', $css->get_responsive_css( $attr['align'], 'Mobile' ) );
+		$css->add_property( 'text-align', $css->get_responsive_css( $attr['align'], 'Mobile' ) . '!important' );
 	}
 
 	if ( isset( $attr['triggerIconSize']['Mobile'] ) ) {
@@ -441,22 +319,6 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 		$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' . ' > .premium-modal-trigger-btn:hover' );
 		$css->add_property( 'border-width', $css->render_spacing( $trigger_border_width['Mobile'], 'px' ) );
 		$css->add_property( 'border-radius', $css->render_spacing( $trigger_border_radius['Mobile'], 'px' ) );
-	}
-
-	// style For Icon /Image/Lottie in Header
-	if ( isset( $attr['iconSize']['Mobile'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header h3 i' );
-		$css->add_property( 'font-size', $css->render_range( $attr['iconSize'], 'Mobile' ) );
-		$css->add_property( 'width', $css->render_range( $attr['iconSize'], 'Mobile' ) );
-		$css->add_property( 'height', $css->render_range( $attr['iconSize'], 'Mobile' ) );
-
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header h3 img' );
-		$css->add_property( 'width', $css->render_range( $attr['iconSize'], 'Mobile' ) );
-		$css->add_property( 'height', $css->render_range( $attr['iconSize'], 'Mobile' ) );
-
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header h3 .premium-lottie-animation' );
-		$css->add_property( 'width', $css->render_range( $attr['iconSize'], 'Mobile' ) );
-		$css->add_property( 'height', $css->render_range( $attr['iconSize'], 'Mobile' ) );
 	}
 
 	// Trigger Style for Image/Lottie
@@ -532,19 +394,6 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 		$css->add_property( 'border-radius', $css->render_spacing( $trigger_border_radius['Mobile'], 'px' ) );
 	}
 
-	// Style For Header in Modal
-	if ( isset( $attr['headerTypography'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header h3' );
-		$css->render_typography( $attr['headerTypography'], 'Mobile' );
-	}
-	if ( isset( $attr['headerBorder'] ) ) {
-		$header_border_width  = $attr['headerBorder']['borderWidth'];
-		$header_border_radius = $attr['headerBorder']['borderRadius'];
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-header' );
-		$css->add_property( 'border-width', $css->render_spacing( $header_border_width['Mobile'], 'px' ) );
-		$css->add_property( 'border-radius', $css->render_spacing( $header_border_radius['Mobile'], 'px' ) );
-	}
-
 	// style for upper close button
 	if ( isset( $attr['upperPadding'] ) ) {
 		$upper_padding = $attr['upperPadding'];
@@ -565,43 +414,12 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 		$css->add_property( 'font-size', $css->render_range( $attr['upperIconWidth'], 'Mobile' ) );
 	}
 
-	// Style For font Size in  lower Close Button
-	if ( isset( $attr['lowerTypography'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-footer  button' );
-		$css->render_typography( $attr['lowerTypography'], 'Mobile' );
-	}
-	if ( isset( $attr['lowerBorder'] ) ) {
-		$lower_border_width  = $attr['lowerBorder']['borderWidth'];
-		$lower_border_radius = $attr['lowerBorder']['borderRadius'];
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-footer  button' );
-		$css->add_property( 'border-width', $css->render_spacing( $lower_border_width['Mobile'], 'px' ) );
-		$css->add_property( 'border-radius', $css->render_spacing( $lower_border_radius['Mobile'], 'px' ) );
-	}
-
-	if ( isset( $attr['lowerPadding'] ) ) {
-		$lower_padding = $attr['lowerPadding'];
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-footer  button' );
-		$css->add_property( 'padding', $css->render_spacing( $lower_padding['Mobile'], $lower_padding['unit'] ) );
-	}
-	if ( isset( $attr['lowerIconWidth'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . ' >.premium-modal-box-modal-footer  button' );
-		$css->add_property( 'width', $css->render_range( $attr['lowerIconWidth'], 'Mobile' ) );
-	}
-
 	// Width & Height for Modal
 	if ( isset( $attr['modalWidth'] ) ) {
 		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
-		$css->add_property( 'width', $css->render_range( $attr['modalWidth'], 'Mobile' ) );
+		$css->add_property( 'width', $css->render_range( $attr['modalWidth'], 'Mobile' ) . '!important' );
 	}
-	if ( isset( $attr['modalHeight'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
-		$css->add_property( 'max-height', $css->render_range( $attr['modalHeight'], 'Mobile' ) );
-	}
-	if ( isset( $attr['modalMargin'] ) ) {
-		$modal_margin = $attr['modalMargin'];
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' );
-		$css->add_property( 'margin', $css->render_spacing( $modal_margin['Mobile'], $modal_margin['unit'] ) );
-	}
+
 	if ( isset( $attr['modalBorder'] ) ) {
 		$modal_border_width  = $attr['modalBorder']['borderWidth'];
 		$modal_border_radius = $attr['modalBorder']['borderRadius'];
@@ -610,15 +428,14 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 		$css->add_property( 'border-radius', $css->render_spacing( $modal_border_radius['Mobile'], 'px' ) );
 	}
 
-	if ( isset( $attr['modalTypography'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . '> .premium-modal-box-modal-body p' );
-		$css->render_typography( $attr['modalTypography'], 'Mobile' );
-	}
-
 	if ( isset( $attr['modalPadding'] ) ) {
 		$modal_padding = $attr['modalPadding'];
-		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . '> .premium-modal-box-modal-body' );
+		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . '> .premium-modal-box-modal-body' . '> .premium-modal-box-modal-body-content' );
 		$css->add_property( 'padding', $css->render_spacing( $modal_padding['Mobile'], $modal_padding['unit'] ) );
+	}
+	if ( isset( $attr['modalHeight'] ) ) {
+		$css->set_selector( '.' . $unique_id . '> .premium-popup__modal_wrap' . ' > .premium-popup__modal_content' . '> .premium-modal-box-modal-body' );
+		$css->add_property( 'max-height', $css->render_range( $attr['modalHeight'], 'Mobile' ) . '!important' );
 	}
 
 	$css->stop_media_query();
