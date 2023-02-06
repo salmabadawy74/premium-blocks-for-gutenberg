@@ -22,38 +22,28 @@ function render_block_core_post_meta($attributes, $content, $block)
 
     $post_ID            = $block->context['postId'];
 
-    do_action('pbg_single_post_before_meta', get_the_ID(), $attributes);
-    $meta_sequence = array('author', 'date', 'comment', 'taxonomy');
-?>
-    <div class="premium-blog-entry-meta">
-        <?php
-        foreach ($meta_sequence as $key => $sequence) {
-            switch ($sequence) {
-                case 'author':
-                    render_meta_author($attributes);
-                    break;
-                case 'date':
-                    render_meta_date($attributes);
-                    break;
-                case 'comment':
-                    render_meta_comment($attributes);
-                    break;
-                case 'taxonomy':
-                    render_meta_taxonomy($attributes);
-                    break;
-                default:
-                    break;
-            }
-        }
-        ?>
-    </div>
-<?php
-    do_action('pbg_single_post_after_meta', get_the_ID(), $attributes);
+    if (!$attributes['showDate']) {
+        return;
+    }
+    $classes = array();
+    $classes[] = 'premium-blog-post-time';
+    $classes[] = 'premium-blog-meta-data';
+    $wrapper_attributes = get_block_wrapper_attributes(array('class' => implode(' ', $classes)));
+
+    $formatted_date   = get_the_date(empty($attributes['format']) ? '' : $attributes['format'], $post_ID);
+    $unformatted_date = esc_attr(get_the_date('c', $post_ID));
+    var_dump("autho");
+    return sprintf(
+        '<div %1$s><time datetime="%2$s">%3$s</time></div>',
+        $wrapper_attributes,
+        $unformatted_date,
+        $formatted_date
+    );
 }
 
 function render_meta_author($attributes)
 {
-    if (!$attributes['displayPostAuthor']) {
+    if (!$attributes['showAuther']) {
         return;
     }
 ?>
@@ -73,19 +63,23 @@ function render_meta_author($attributes)
  */
 function render_meta_date($attributes)
 {
-    if (!$attributes['displayPostDate']) {
+    if (!$attributes['showDate']) {
         return;
     }
-    global $post;
-?>
-    <div class="premium-blog-post-time premium-blog-meta-data">
-        <time datetime="<?php echo esc_attr(get_the_date('c', $post_ID)); ?>" class="premium-blog-post-time premium-blog-meta-data">
-            <span class="dashicons-calendar dashicons"></span>
-            <?php echo esc_html(get_the_date('', $post_ID)); ?>
-        </time>
-        <span class="premium-blog-meta-separtor">.</span>
-    </div>
-<?php
+    $classes = array();
+    $classes[] = 'premium-blog-post-time';
+    $classes[] = 'premium-blog-meta-data';
+    $wrapper_attributes = get_block_wrapper_attributes(array('class' => implode(' ', $classes)));
+
+    $formatted_date   = get_the_date(empty($attributes['format']) ? '' : $attributes['format'], $post_ID);
+    $unformatted_date = esc_attr(get_the_date('c', $post_ID));
+    var_dump("autho");
+    return sprintf(
+        '<div %1$s><time datetime="%2$s">%3$s</time></div>',
+        $wrapper_attributes,
+        $unformatted_date,
+        $formatted_date
+    );
 }
 /**
  * Render Post Meta - Comment HTML.
@@ -96,7 +90,7 @@ function render_meta_date($attributes)
  */
 function render_meta_comment($attributes)
 {
-    if (!$attributes['displayPostComment']) {
+    if (!$attributes['showComments']) {
         return;
     }
 ?>
@@ -118,7 +112,7 @@ function render_meta_comment($attributes)
  */
 function render_meta_taxonomy($attributes)
 {
-    if (!$attributes['displayPostCategories']) {
+    if (!$attributes['showCategories']) {
         return;
     }
     global $post;
@@ -144,7 +138,7 @@ function render_meta_taxonomy($attributes)
 function register_block_post_meta()
 {
     register_block_type(
-        'premium/post-meta',
+        PREMIUM_BLOCKS_PATH . '/blocks-config/post-meta',
         array(
             'render_callback' => 'render_block_core_post_meta',
         )

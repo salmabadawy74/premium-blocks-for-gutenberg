@@ -30,7 +30,7 @@ function render_block_premium_post_title($attributes, $content, $block)
 
     $tag_name = 'h2';
     if (isset($attributes['level'])) {
-        $tag_name = 0 === $attributes['level'] ? 'p' : 'h' . $attributes['level'];
+        $tag_name = 0 === $attributes['level'] ? 'p' :   $attributes['level'];
     }
 
     if (isset($attributes['isLink']) && $attributes['isLink']) {
@@ -50,7 +50,7 @@ function render_block_premium_post_title($attributes, $content, $block)
     return sprintf(
         '<%1$s %2$s>%3$s</%1$s>',
         $tag_name,
-        $wrapper_attributes,
+        array(),
         $title
     );
 }
