@@ -585,7 +585,7 @@ const deprecated = {
                     "style": "default"
                 }
             ],
-            icon: attributes.icon ? attributes.icon : "fe_alignJustify"
+            icon: "fe_alignJustify"
         }
         return Object.assign(attributes, newAttributes)
     },

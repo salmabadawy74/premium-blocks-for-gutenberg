@@ -3690,7 +3690,7 @@ const deprecated = [{
         "triggerType": attributes.triggerSettings[0].triggerType ? attributes.triggerSettings[0].triggerType : "button",
         "btnText": attributes.triggerSettings[0].btnText ? attributes.triggerSettings[0].btnText : "Premium Blocks",
         "showIcon": attributes.triggerSettings[0].showIcon ? attributes.triggerSettings[0].showIcon : false,
-        "icon": attributes.triggerSettings[0].icon ? attributes.triggerSettings[0].icon : "",
+        "icon": "fe_aperture",
         "iconType": "fe",
         "iconPosition": attributes.triggerSettings[0].iconPosition ? attributes.triggerSettings[0].iconPosition : "before",
         "iconSpacing": attributes.triggerSettings[0].iconSpacing ? attributes.triggerSettings[0].iconSpacing : "",
@@ -3705,10 +3705,10 @@ const deprecated = [{
         "delayTime": attributes.triggerSettings[0].delayTime ? attributes.triggerSettings[0].delayTime : 1
       }],
       "icons": [{
-        "iconn": "",
+        "iconn": "fe_aperture",
         "link": "",
         "target": "_self",
-        "size": attributes.triggerIconSize['Desktop'] ? attributes.triggerIconSize['Desktop'] : "20",
+        "size": attributes.triggerIconSize['Desktop'] || "20",
         "width": "2",
         "title": "",
         "style": "default"
@@ -6344,7 +6344,8 @@ const save = props => {
     hideDesktop,
     hideTablet,
     hideMobile,
-    containerBackground
+    containerBackground,
+    icons
   } = props.attributes;
 
   const loadStyles = () => {
@@ -16399,15 +16400,15 @@ const v8Attrinutes = {
   }
 };
 const deprecatedContent = [{
-  attributes: Object.assign(v8Attrinutes, new_Attributes),
+  attributes: Object.assign(new_Attributes, v8Attrinutes),
   migrate: attributes => {
     let newAttributes = {
-      icon: attributes.icon ? attributes.icon : "fe_aperture",
+      icon: "fe_aperture",
       icons: [{
         "iconn": "fe_aperture",
         "link": "",
         "target": "_self",
-        "size": "25",
+        "size": attributes.iconSize['Desktop'] ? attributes.iconSize['Desktop'] : "25",
         "width": "2",
         "title": "",
         "style": "default"
@@ -17555,16 +17556,21 @@ function Edit(props) {
 
   const loadStyles = () => {
     const styles = {};
-    styles[`.${blockId} .premium-button-icon:hover`] = {
+    styles[`.${blockId}.premium-button__wrap .premium-button:hover .premium-button-icon`] = {
       color: `${iconHoverColor}!important`
+    };
+    styles[`.${blockId}.premium-button__wrap .premium-button .premium-button-icon`] = {
+      color: `${iconColor}!important`
     };
     styles[`.${blockId}.premium-button__wrap .premium-button:hover`] = {
       "background-color": `${btnStyles[0].backHoverColor}!important`,
-      color: `${btnStyles[0].textHoverColor}!important`,
       "border-color": `${btnStyles[0].borderHoverColor}!important`
     };
-    styles[`.${blockId}.premium-button__wrap .premium-button`] = {
+    styles[`.${blockId}.premium-button__wrap .premium-button .premium-button-text-edit`] = {
       color: `${btnStyles[0].textColor}!important`
+    };
+    styles[`.${blockId}.premium-button__wrap .premium-button:hover .premium-button-text-edit`] = {
+      color: `${btnStyles[0].textHoverColor}!important`
     };
     styles[`.${blockId}.premium-button__slide .premium-button::before, .${blockId}.premium-button__shutter .premium-button::before, .${blockId}.premium-button__radial .premium-button::before`] = {
       "background-color": `${slideColor}`
@@ -17848,10 +17854,11 @@ function Edit(props) {
     strokeWidth: 'fe' === icon.substring(0, 2) ? icons[0].width : undefined,
     style: {
       fontSize: iconSize[props.deviceType] + iconSize.unit,
-      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.marginCss)(iconSpacing, props.deviceType),
-      color: iconColor
+      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.marginCss)(iconSpacing, props.deviceType) // color: iconColor
+
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RichText, {
+    className: "premium-button-text-edit",
     value: btnText,
     onChange: value => setAttributes({
       btnText: value
@@ -17871,8 +17878,8 @@ function Edit(props) {
     style: { // fontSize:
       //     iconSize[props.deviceType] +
       //     iconSize.unit,
-      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.marginCss)(iconSpacing, props.deviceType),
-      color: iconColor
+      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.marginCss)(iconSpacing, props.deviceType) // color: iconColor
+
     }
   }))]), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(URLInput, {
     value: btnLink,
@@ -18643,17 +18650,30 @@ const save = props => {
 
   const loadStyles = () => {
     const styles = {};
-    styles[`.${blockId} .premium-button-icon:hover`] = {
+    styles[`.${blockId}.premium-button__wrap .premium-button:hover .premium-button-icon`] = {
       color: `${iconHoverColor}!important`
     };
-    styles[`.${blockId}.premium-button__wrap:hover .premium-button`] = {
+    styles[`.${blockId}.premium-button__wrap .premium-button .premium-button-icon`] = {
+      color: `${iconColor}!important`
+    };
+    styles[`.${blockId}.premium-button__wrap .premium-button:hover`] = {
       "background-color": `${btnStyles[0].backHoverColor}!important`,
-      color: `${btnStyles[0].textHoverColor}!important`,
       "border-color": `${btnStyles[0].borderHoverColor}!important`
     };
-    styles[`.${blockId}.premium-button__wrap:hover .premium-button a`] = {
-      color: `${btnStyles[0].textHoverColor}!important`
+    styles[`.${blockId}.premium-button__wrap .premium-button .premium-button-text-edit`] = {
+      color: `${btnStyles[0].textColor}!important`
     };
+    styles[`.${blockId}.premium-button__wrap .premium-button:hover .premium-button-text-edit`] = {
+      color: `${btnStyles[0].textHoverColor}!important`
+    }; // styles[`.${blockId}.premium-button__wrap:hover .premium-button`] = {
+    //     "background-color": `${btnStyles[0].backHoverColor}!important`,
+    //     color: `${btnStyles[0].textHoverColor}!important`,
+    //     "border-color": `${btnStyles[0].borderHoverColor}!important`,
+    // };
+    // styles[`.${blockId}.premium-button__wrap:hover .premium-button a`] = {
+    //     color: `${btnStyles[0].textHoverColor}!important`,
+    // };
+
     styles[`.${blockId}.premium-button__slide .premium-button::before, .${blockId}.premium-button__shutter .premium-button::before, .${blockId}.premium-button__radial .premium-button::before`] = {
       "background-color": `${slideColor}`
     };
@@ -18689,6 +18709,7 @@ const save = props => {
       color: iconColor
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
+    className: "premium-button-text-edit",
     tagName: "a",
     value: btnText,
     href: btnLink,
@@ -36115,7 +36136,7 @@ const deprecated = {
         "title": "",
         "style": "default"
       }],
-      icon: attributes.icon ? attributes.icon : "fe_alignJustify"
+      icon: "fe_alignJustify"
     };
     return Object.assign(attributes, newAttributes);
   },

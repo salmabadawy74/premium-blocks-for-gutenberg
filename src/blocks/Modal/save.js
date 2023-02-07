@@ -31,7 +31,8 @@ const save = props => {
         hideDesktop,
         hideTablet,
         hideMobile,
-        containerBackground
+        containerBackground,
+        icons
     } = props.attributes;
 
     const loadStyles = () => {

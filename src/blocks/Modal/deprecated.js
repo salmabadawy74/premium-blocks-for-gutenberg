@@ -2362,7 +2362,7 @@ const deprecated = [
                         "triggerType": attributes.triggerSettings[0].triggerType ? attributes.triggerSettings[0].triggerType : "button",
                         "btnText": attributes.triggerSettings[0].btnText ? attributes.triggerSettings[0].btnText : "Premium Blocks",
                         "showIcon": attributes.triggerSettings[0].showIcon ? attributes.triggerSettings[0].showIcon : false,
-                        "icon": attributes.triggerSettings[0].icon ? attributes.triggerSettings[0].icon : "",
+                        "icon": "fe_aperture",
                         "iconType": "fe",
                         "iconPosition": attributes.triggerSettings[0].iconPosition ? attributes.triggerSettings[0].iconPosition : "before",
                         "iconSpacing": attributes.triggerSettings[0].iconSpacing ? attributes.triggerSettings[0].iconSpacing : "",
@@ -2379,10 +2379,10 @@ const deprecated = [
                 ],
                 "icons": [
                     {
-                        "iconn": "",
+                        "iconn": "fe_aperture",
                         "link": "",
                         "target": "_self",
-                        "size": attributes.triggerIconSize['Desktop'] ? attributes.triggerIconSize['Desktop'] : "20",
+                        "size": attributes.triggerIconSize['Desktop'] || "20",
                         "width": "2",
                         "title": "",
                         "style": "default"
