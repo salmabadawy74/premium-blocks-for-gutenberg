@@ -8997,6 +8997,7 @@ const {
 const {
   Tooltip,
   Dropdown,
+  SlotFillProvider,
   CheckboxControl,
   ToggleControl
 } = wp.components;
@@ -9013,7 +9014,7 @@ class Shape extends Component {
       onChange,
       shapeType
     } = this.props;
-    const styleVal = type == 'style' && val == '' ? {
+    const styleVal = type == "style" && val == "" ? {
       openShape: 0
     } : {
       openShape: 1
@@ -9028,7 +9029,7 @@ class Shape extends Component {
     const {
       value
     } = this.props;
-    let shapes = ['clouds-flat', 'clouds-opacity', 'paper-torn', 'pointy-wave', 'rocky-mountain', 'single-wave', 'slope-opacity', 'slope', 'waves3-opacity', 'drip', 'turning-slope', 'hill-wave', 'hill', 'line-wave', 'swirl', 'wavy-opacity', 'zigzag-shark'];
+    let shapes = ["clouds-flat", "clouds-opacity", "paper-torn", "pointy-wave", "rocky-mountain", "single-wave", "slope-opacity", "slope", "waves3-opacity", "drip", "turning-slope", "hill-wave", "hill", "line-wave", "swirl", "wavy-opacity", "zigzag-shark"];
     if (value.style) {
       shapes = shapes.filter(item => item.toLowerCase().search(value.style.toLowerCase()) == -1);
       shapes = [value.style, ...shapes];
@@ -9037,7 +9038,7 @@ class Shape extends Component {
       className: "premium-shape-picker-options"
     }, shapes.map(item => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
       className: `premium-shape-picker-option`,
-      onClick: () => this.setSettings('style', item),
+      onClick: () => this.setSettings("style", item),
       dangerouslySetInnerHTML: {
         __html: PremiumBlocksSettings.shapes[item]
       },
@@ -9059,8 +9060,8 @@ class Shape extends Component {
       className: "premium-field-child"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "premium-field premium-shape-picker-wrapper"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Dropdown, {
-      className: `premium-field-child premium-shape-picker ${value.style ? 'has-value' : ''}`,
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SlotFillProvider, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Dropdown, {
+      className: `premium-field-child premium-shape-picker ${value.style ? "has-value" : ""}`,
       contentClassName: "premium-shape-picker-content",
       position: "bottom center",
       renderToggle: _ref => {
@@ -9085,14 +9086,14 @@ class Shape extends Component {
           className: "premium-btn-reset-wrap"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
           className: "premium-reset-btn ",
-          onClick: () => this.setSettings('style', '')
+          onClick: () => this.setSettings("style", "")
         })));
       },
       renderContent: () => this.renderShapeOptions()
-    })), value.openShape == 1 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      label: __('Color', 'premium-blocks-for-gutenberg'),
+    }))), value.openShape == 1 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      label: __("Color", "premium-blocks-for-gutenberg"),
       colorValue: value && value.color,
-      onColorChange: val => this.setSettings('color', val)
+      onColorChange: val => this.setSettings("color", val)
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_1__["default"], {
       min: 100,
       max: 1000,
@@ -9100,13 +9101,13 @@ class Shape extends Component {
       showUnit: true,
       value: value.width,
       tabletValue: value.widthTablet,
-      onChangeTablet: val => this.setSettings('widthTablet', val),
+      onChangeTablet: val => this.setSettings("widthTablet", val),
       mobileValue: value.widthMobile,
-      onChangeMobile: value => this.setSettings('widthMobile', val),
+      onChangeMobile: value => this.setSettings("widthMobile", val),
       showUnit: true,
-      label: __('Shape Width', 'premium-blocks-for-gutenberg'),
-      units: ['px', 'em', '%'],
-      onChange: val => this.setSettings('width', val)
+      label: __("Shape Width", "premium-blocks-for-gutenberg"),
+      units: ["px", "em", "%"],
+      onChange: val => this.setSettings("width", val)
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_1__["default"], {
       min: 0,
       max: 500,
@@ -9114,24 +9115,24 @@ class Shape extends Component {
       showUnit: true,
       value: value.height,
       tabletValue: value.heightTablet,
-      onChangeTablet: val => this.setSettings('heightTablet', val),
+      onChangeTablet: val => this.setSettings("heightTablet", val),
       mobileValue: value.heightMobile,
-      onChangeMobile: value => this.setSettings('heightMobile', val),
-      units: ['px', 'em', '%'],
-      label: __('Shape Height', 'premium-blocks-for-gutenberg'),
-      onChange: val => this.setSettings('height', val)
+      onChangeMobile: value => this.setSettings("heightMobile", val),
+      units: ["px", "em", "%"],
+      label: __("Shape Height", "premium-blocks-for-gutenberg"),
+      onChange: val => this.setSettings("height", val)
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __('Flip Divider', 'premium-blocks-for-gutenberg'),
+      label: __("Flip Divider", "premium-blocks-for-gutenberg"),
       checked: value.flipShapeDivider,
-      onChange: newValue => this.setSettings('flipShapeDivider', newValue)
+      onChange: newValue => this.setSettings("flipShapeDivider", newValue)
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __('Invert', 'premium-blocks-for-gutenberg'),
+      label: __("Invert", "premium-blocks-for-gutenberg"),
       checked: value.invertShapeDivider,
-      onChange: newValue => this.setSettings('invertShapeDivider', newValue)
+      onChange: newValue => this.setSettings("invertShapeDivider", newValue)
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __('Bring to front', 'premium-blocks-for-gutenberg'),
+      label: __("Bring to front", "premium-blocks-for-gutenberg"),
       checked: value.front,
-      onChange: val => this.setSettings('front', val)
+      onChange: val => this.setSettings("front", val)
     }))));
   }
 }

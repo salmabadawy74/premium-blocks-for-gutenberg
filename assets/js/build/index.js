@@ -16192,17 +16192,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var hex_to_rgba__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! hex-to-rgba */ "./node_modules/hex-to-rgba/build/index.js");
 /* harmony import */ var hex_to_rgba__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(hex_to_rgba__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
+/* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @pbg/helpers */ "@pbg/helpers");
+/* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__);
 
 
 
 
+
+const {
+  RichText,
+  useBlockProps
+} = wp.blockEditor;
 const {
   __
 } = wp.i18n;
 const className = "premium-button";
-const {
-  RichText
-} = wp.editor;
 const attributes = {
   borderButton: {
     type: "boolean",
@@ -16559,6 +16563,96 @@ const new_Attributes = {
 };
 const deprecatedContent = [{
   attributes: Object.assign(v7Attrinutes, new_Attributes),
+  save: props => {
+    const {
+      btnText,
+      btnSize,
+      btnLink,
+      btnTarget,
+      effect,
+      effectDir,
+      slideColor,
+      block_id,
+      hideDesktop,
+      hideTablet,
+      hideMobile,
+      btnStyles,
+      border,
+      typography,
+      textShadow,
+      boxShadow,
+      blockId,
+      showIcon,
+      icon,
+      iconPosition,
+      iconColor,
+      iconHoverColor,
+      iconShadow,
+      backgroundOptions
+    } = props.attributes;
+    const loadStyles = () => {
+      const styles = {};
+      styles[`.${blockId} .premium-button-icon:hover`] = {
+        color: `${iconHoverColor}!important`
+      };
+      styles[`.${blockId}.premium-button__wrap:hover .premium-button`] = {
+        "background-color": `${btnStyles[0].backHoverColor}!important`,
+        color: `${btnStyles[0].textHoverColor}!important`,
+        "border-color": `${btnStyles[0].borderHoverColor}!important`
+      };
+      styles[`.${blockId}.premium-button__wrap:hover .premium-button a`] = {
+        color: `${btnStyles[0].textHoverColor}!important`
+      };
+      styles[`.${blockId}.premium-button__slide .premium-button::before, .${blockId}.premium-button__shutter .premium-button::before, .${blockId}.premium-button__radial .premium-button::before`] = {
+        "background-color": `${slideColor}`
+      };
+      return (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.generateCss)(styles);
+    };
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", useBlockProps.save({
+      className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, `premium-button__wrap ${blockId} premium-button__${effect} premium-button__${effectDir} `, {
+        " premium-desktop-hidden": hideDesktop,
+        " premium-tablet-hidden": hideTablet,
+        " premium-mobile-hidden": hideMobile
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, loadStyles()), React.createElement("div", {
+      className: `premium-button wp-block-button__link premium-button__${btnSize} premium-button__${iconPosition}`,
+      style: {
+        boxShadow: `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`,
+        borderStyle: border?.borderType,
+        borderColor: border?.borderColor,
+        ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.gradientBackground)(backgroundOptions)
+      }
+    }, [(0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, showIcon && iconPosition == "before" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+      className: `premium-button-icon ${icon}`,
+      style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.filterJsCss)({
+        color: iconColor,
+        textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
+      tagName: "a",
+      value: btnText,
+      href: btnLink,
+      rel: "noopener noreferrer",
+      target: btnTarget ? "_blank" : "_self",
+      style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.filterJsCss)({
+        color: btnStyles[0].textColor,
+        fontStyle: typography?.fontStyle,
+        fontFamily: typography?.fontFamily,
+        fontWeight: typography?.fontWeight,
+        textDecoration: typography?.textDecoration,
+        textTransform: typography?.textTransform,
+        textShadow: `${textShadow?.horizontal}px ${textShadow?.vertical}px ${textShadow?.blur}px ${textShadow?.color}`
+      })
+    }), showIcon && iconPosition == "after" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
+      className: `premium-button-icon ${icon}`,
+      style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.filterJsCss)({
+        color: iconColor,
+        textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`
+      })
+    }))]));
+  }
+}, {
+  attributes: Object.assign(v7Attrinutes, new_Attributes),
   migrate: attributes => {
     let newAttributes = {
       blockId: attributes.block_id ? "premium-button-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.generateBlockId)(attributes.block_id) : "",
@@ -16715,9 +16809,6 @@ const deprecatedContent = [{
     return Object.assign(attributes, newAttributes);
   },
   save: props => {
-    const {
-      className
-    } = props;
     const {
       borderButton,
       btnText,
