@@ -57,15 +57,6 @@ const save = (props) => {
         styles[`.${blockId}.premium-button__wrap .premium-button:hover .premium-button-text-edit`] = {
             color: `${btnStyles[0].textHoverColor}!important`,
         };
-        // styles[`.${blockId}.premium-button__wrap:hover .premium-button`] = {
-        //     "background-color": `${btnStyles[0].backHoverColor}!important`,
-        //     color: `${btnStyles[0].textHoverColor}!important`,
-        //     "border-color": `${btnStyles[0].borderHoverColor}!important`,
-        // };
-        // styles[`.${blockId}.premium-button__wrap:hover .premium-button a`] = {
-        //     color: `${btnStyles[0].textHoverColor}!important`,
-        // };
-
         styles[
             `.${blockId}.premium-button__slide .premium-button::before, .${blockId}.premium-button__shutter .premium-button::before, .${blockId}.premium-button__radial .premium-button::before`
         ] = {
@@ -103,12 +94,6 @@ const save = (props) => {
                 [
                     <Fragment>
                         {showIcon && iconPosition == "before" && (
-                            //    <i 
-                            //         className={`premium-button-icon ${icon}`}
-                            //         style={filterJsCss({
-                            //             color: iconColor
-                            //         })}
-                            //     ></i>
                             <GenIcon className={`premium-button-icon ${icon} ${iconType}`}
                                 name={icon}
                                 icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
@@ -136,12 +121,6 @@ const save = (props) => {
                             })}
                         />
                         {showIcon && iconPosition == "after" && (
-                            // <i
-                            //     className={`premium-button-icon ${icon}`}
-                            //     style={filterJsCss({
-                            //         color: iconColor
-                            //     })}
-                            // ></i>
                             <GenIcon className={`premium-button-icon ${icon} ${iconType}`}
                                 name={icon}
                                 icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}

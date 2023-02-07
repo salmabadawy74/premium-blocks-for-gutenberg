@@ -69,7 +69,6 @@ function Edit(props) {
                 ".premium-title-container"
             );
 
-            // titleContainers.forEach(function (titleContainer) {
             if (titleContainers.classList.contains("style8")) {
                 let titleElement = titleContainers.querySelector(
                     ".premium-title-text-title"
@@ -125,7 +124,6 @@ function Edit(props) {
                     }, holdTime);
                 });
             }
-            // });
         }
     };
 
@@ -841,20 +839,6 @@ function Edit(props) {
                                                     "premium-blocks-for-gutenberg"
                                                 )}
                                             </p>
-                                            {/* <FontIconPicker
-                                                icons={iconsList}
-                                                value={icon}
-                                                onChange={(value) =>
-                                                    setAttributes({
-                                                        icon: value,
-                                                    })
-                                                }
-                                                isMulti={false}
-                                                noSelectedPlaceholder={__(
-                                                    "Select Icon",
-                                                    "premium-blocks-for-gutenberg"
-                                                )}
-                                            /> */}
                                             <FontIconPicker
                                                 icons={IcoNames}
                                                 onChange={(newIcon) =>
@@ -863,7 +847,6 @@ function Edit(props) {
                                                 renderFunc={renderSVG}
                                                 value={icon}
                                                 isMulti={false}
-                                                // appendTo="body"
                                                 noSelectedPlaceholder={__(
                                                     "Select Icon",
                                                     "premium-blocks-for-gutenberg"
@@ -1911,9 +1894,6 @@ function Edit(props) {
                                             >
                                                 {iconValue &&
                                                     iconType == "icon" && (
-                                                        // <i
-                                                        //     className={`premium-title-icon ${icon}`}
-                                                        // />
                                                         <GenIcon className={`premium-title-icon ${icon}`}
                                                             name={icon}
                                                             size={iconSize[props.deviceType] +
@@ -1990,9 +1970,6 @@ function Edit(props) {
                                         <Fragment>
                                             {iconValue &&
                                                 iconType == "icon" && (
-                                                    // <i
-                                                    //     className={`premium-title-icon ${icon}`}
-                                                    // />
                                                     <GenIcon className={`premium-title-icon ${icon}`}
                                                         name={icon}
                                                         size={iconSize[props.deviceType] +
@@ -2051,9 +2028,6 @@ function Edit(props) {
                                         <Fragment>
                                             {iconValue &&
                                                 iconType == "icon" && (
-                                                    // <i
-                                                    //     className={`premium-title-icon ${icon}`}
-                                                    // />
                                                     <GenIcon className={`premium-title-icon ${icon}`}
                                                         name={icon}
                                                         size={iconSize[props.deviceType] +

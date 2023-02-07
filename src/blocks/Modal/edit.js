@@ -206,15 +206,6 @@ const Edit = props => {
                                 boxShadow: `${triggerShadow.horizontal}px ${triggerShadow.vertical}px ${triggerShadow.blur}px ${triggerShadow.color} ${triggerShadow.position}`,
                             }}>
                             {triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" &&
-                                // <i
-                                //     className={`premium-modal-box-icon ${triggerSettings[0].icon}`}
-                                //     style={{
-                                //         fontSize: (triggerIconSize[currentDevice]) + triggerIconSize.unit,
-                                //         width: (triggerIconSize[currentDevice]) + triggerIconSize.unit,
-                                //         height: (triggerIconSize[currentDevice]) + triggerIconSize.unit,
-                                //         marginRight: `${triggerSettings[0].iconSpacing}px`,
-                                //         color: triggerStyles[0].iconColor
-                                //     }}></i>
                                 <GenIcon className={`premium-modal-box-icon ${triggerSettings[0].icon} ${triggerSettings[0].iconType}`}
                                     name={triggerSettings[0].icon}
                                     size={triggerIconSize[currentDevice] + triggerIconSize.unit}
@@ -243,15 +234,6 @@ const Edit = props => {
                                 {triggerSettings[0].btnText}
                             </span>
                             {triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "after" &&
-                                // <i
-                                //     className={`premium-modal-box-icon ${triggerSettings[0].icon}`}
-                                //     style={{
-                                //         fontSize: (triggerIconSize[currentDevice]) + triggerIconSize.unit,
-                                //         width: (triggerIconSize[currentDevice]) + triggerIconSize.unit,
-                                //         height: (triggerIconSize[currentDevice]) + triggerIconSize.unit,
-                                //         marginLeft: `${triggerSettings[0].iconSpacing}px`,
-                                //         color: triggerStyles[0].iconColor
-                                //     }} ></i>
                                 <GenIcon className={`premium-modal-box-icon ${triggerSettings[0].icon} ${triggerSettings[0].iconType}`}
                                     name={triggerSettings[0].icon}
                                     size={triggerIconSize[currentDevice] + triggerIconSize.unit}
@@ -368,7 +350,6 @@ const Edit = props => {
                             }}>
                             <div className={`premium-modal-box-modal-body`}
                                 style={{
-                                    // ...paddingCss(modalPadding, currentDevice),
                                     maxHeight: `${modalMaxHeight}${modalHeight.unit}`,
                                     ...gradientBackground(containerBackground)
                                 }}>

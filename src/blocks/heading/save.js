@@ -330,9 +330,6 @@ export default function save(props) {
                                         >
                                             {iconValue &&
                                                 iconType == "icon" && (
-                                                    // <i
-                                                    //     className={`premium-title-icon ${icon}`}
-                                                    // />
                                                     <GenIcon className={`premium-title-icon ${icon}`}
                                                         name={icon}
                                                         icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
@@ -382,9 +379,6 @@ export default function save(props) {
                                 ) : style === "style9" ? (
                                     <Fragment>
                                         {iconValue && iconType == "icon" && (
-                                            // <i
-                                            //     className={`premium-title-icon ${icon}`}
-                                            // />
                                             <GenIcon className={`premium-title-icon ${icon}`}
                                                 name={icon}
                                                 icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
@@ -419,9 +413,6 @@ export default function save(props) {
                                 ) : (
                                     <Fragment>
                                         {iconValue && iconType == "icon" && (
-                                            // <i
-                                            //     className={`premium-title-icon ${icon}`}
-                                            // />
                                             <GenIcon className={`premium-title-icon ${icon}`}
                                                 name={icon}
                                                 icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}

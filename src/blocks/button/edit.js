@@ -26,7 +26,6 @@ import {
     PremiumBackgroundControl,
     InsideTabs,
     InsideTab,
-    iconsList,
     PBGPresets,
     GenIcon,
     FaIco,
@@ -492,19 +491,6 @@ function Edit(props) {
                                                 })
                                             }
                                         />
-                                        {/* <AdvancedPopColorControl
-                      label={__(
-                        "Background Color",
-                        "premium-blocks-for-gutenberg"
-                      )}
-                      colorValue={btnStyles[0].backColor}
-                      colorDefault={""}
-                      onColorChange={(newvalue) =>
-                        saveBtnStyles({
-                          backColor: newvalue,
-                        })
-                      }
-                    /> */}
                                         <PremiumBackgroundControl
                                             value={backgroundOptions}
                                             onChange={(value) =>
@@ -789,8 +775,7 @@ function Edit(props) {
                                         ...marginCss(
                                             iconSpacing,
                                             props.deviceType
-                                        ),
-                                        // color: iconColor
+                                        )
                                     }}
                                 />
                             )}
@@ -818,14 +803,13 @@ function Edit(props) {
                                     icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
                                     strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
                                     style={{
-                                        // fontSize:
-                                        //     iconSize[props.deviceType] +
-                                        //     iconSize.unit,
+                                        fontSize:
+                                            iconSize[props.deviceType] +
+                                            iconSize.unit,
                                         ...marginCss(
                                             iconSpacing,
                                             props.deviceType
-                                        ),
-                                        // color: iconColor
+                                        )
                                     }}
                                 />
                             )}

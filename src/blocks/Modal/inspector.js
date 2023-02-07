@@ -41,7 +41,6 @@ const Inspector = ({ attributes, setAttributes }) => {
         upperStyles,
         upperBorder,
         upperPadding,
-        modalStyles,
         modalBackground,
         triggerShadow,
         modalBorder,
@@ -369,7 +368,6 @@ const Inspector = ({ attributes, setAttributes }) => {
                                             renderFunc={renderSVG}
                                             value={triggerSettings[0].icon}
                                             isMulti={false}
-                                            // appendTo="body"
                                             noSelectedPlaceholder={__(
                                                 "Select Icon",
                                                 "premium-blocks-for-gutenberg"
