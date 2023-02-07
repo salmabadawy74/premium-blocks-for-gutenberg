@@ -26,7 +26,7 @@ export default function Inspector({ attributes, setQuery, setAttributes }) {
     const {
         query,
         columns,
-        alignment,
+        equalHeight,
         containerBackground,
         border,
         advancedBorder,
@@ -113,42 +113,17 @@ export default function Inspector({ attributes, setQuery, setAttributes }) {
                             showUnits={false}
                         />
 
-                        <ResponsiveRadioControl
+                        <ToggleControl
                             label={__(
-                                "Alignment",
+                                "Equal Height",
                                 "premium-blocks-for-gutenberg"
                             )}
-                            choices={[
-                                {
-                                    value: "left",
-                                    label: __(
-                                        "Left",
-                                        "premium-blocks-for-gutenberg"
-                                    ),
-                                    icon: Icons.alignLeft,
-                                },
-                                {
-                                    value: "center",
-                                    label: __(
-                                        "Center",
-                                        "premium-blocks-for-gutenberg"
-                                    ),
-                                    icon: Icons.alignCenter,
-                                },
-                                {
-                                    value: "right",
-                                    label: __(
-                                        "Right",
-                                        "premium-blocks-for-gutenberg"
-                                    ),
-                                    icon: Icons.alignRight,
-                                },
-                            ]}
-                            value={alignment}
-                            onChange={(newValue) =>
-                                setAttributes({ alignment: newValue })
+                            checked={equalHeight}
+                            onChange={(value) =>
+                                setAttributes({
+                                    equalHeight: value,
+                                })
                             }
-                            showIcons={true}
                         />
                         <SelectControl
                             options={postTypesSelectOptions}

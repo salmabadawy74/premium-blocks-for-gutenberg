@@ -26,37 +26,45 @@ function render_block_premium_post_featured_image($attributes, $content, $block)
     if (!in_the_loop() && have_posts()) {
         the_post();
     }
+    if (!get_the_post_thumbnail_url()) {
+        return;
+    }
 
     $is_link        = isset($attributes['isLink']) && $attributes['isLink'];
-    $size_slug      = isset($attributes['sizeSlug']) ? $attributes['sizeSlug'] : 'post-thumbnail';
-    $attr           = get_block_premium_post_featured_image_border_attributes($attributes);
-    $overlay_markup = get_block_premium_post_featured_image_overlay_element_markup($attributes);
+    $size_slug      = isset($attributes['imageSize']) ? $attributes['imageSize'] : 'post-thumbnail';
 
     if ($is_link) {
         $attr['alt'] = trim(strip_tags(get_the_title($post_ID)));
     }
 
 
-    $featured_image = get_the_post_thumbnail($post_ID, $size_slug, $attr);
+    $featured_image = get_the_post_thumbnail($post_ID, $size_slug);
     if (!$featured_image) {
         return '';
     }
-    if ($is_link) {
-        $link_target    = $attributes['linkTarget'];
-        $rel            = !empty($attributes['rel']) ? 'rel="' . esc_attr($attributes['rel']) . '"' : '';
-        $featured_image = sprintf(
-            '<a href="%1$s" target="%2$s" %3$s %4$s>%5$s%6$s</a>',
-            get_the_permalink($post_ID),
-            esc_attr($link_target),
-            $rel,
-            $featured_image,
-            $overlay_markup
-        );
-    } else {
-        $featured_image = $featured_image . $overlay_markup;
-    }
 
-    return "<figure>{$featured_image}</figure>";
+
+    // return $featured_image;
+    $wrapImage       = array(
+        'premium-blog-thumbnail-container',
+        'premium-blog-' .
+            $attributes['hoverEffect'] .
+            '-effect',
+    );
+
+    ob_start(); ?>
+    <div class="premium-blog-thumb-effect-wrapper">
+        <div class="<?php echo esc_html(implode(' ', $wrapImage)); ?>">
+            <?php echo wp_get_attachment_image(get_post_thumbnail_id(), $attributes['imageSize']); ?>
+        </div>
+        <div class='premium-blog-thumbnail-overlay'>
+            <a href="<?php the_permalink(); ?>">
+
+            </a>
+        </div>
+    </div>
+<?php
+    return ob_get_clean();
 }
 
 /**

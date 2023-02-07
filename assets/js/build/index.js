@@ -53298,18 +53298,9 @@ function PostTemplateEdit(_ref2) {
     if (search) {
       query.search = search;
     }
-    if (exclude?.length) {
-      query.exclude = exclude;
-    }
-    // If sticky is not set, it will return all posts in the results.
-    // If sticky is set to `only`, it will limit the results to sticky posts only.
-    // If it is anything else, it will exclude sticky posts from results. For the record the value stored is `exclude`.
     if (sticky) {
-      query.sticky = sticky === "only";
+      query.sticky = sticky === "exclude";
     }
-    // If `inherit` is truthy, adjust conditionally the query to create a better preview.
-    // When we preview Query Loop blocks we should prefer the current
-    // block's postType, which is passed through block context.
     const usedPostType = postType;
     return {
       posts: getEntityRecords("postType", usedPostType, {
@@ -53318,7 +53309,7 @@ function PostTemplateEdit(_ref2) {
       }),
       blocks: getBlocks(clientId)
     };
-  }, [perPage, page, offset, order, orderBy, clientId, author, search, postType, exclude, sticky, inherit, taxQuery, parents, restQueryArgs]);
+  }, [perPage, page, offset, order, orderBy, clientId, author, search, postType, exclude, sticky]);
   const blockContexts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => posts?.map(post => ({
     postType: post.type,
     postId: post.id
@@ -53335,11 +53326,6 @@ function PostTemplateEdit(_ref2) {
   let BorderValue = advancedBorder ? {
     borderRadius: advancedBorderValue
   } : (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.borderCss)(border, deviceType);
-
-  // To avoid flicker when switching active block contexts, a preview is rendered
-  // for each block context, but the preview for the active block context is hidden.
-  // This ensures that when it is displayed again, the cached rendering of the
-  // block preview is used, instead of having to re-render the preview from scratch.
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__.InspectorControls, {
     key: "inspector"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.InspectorTabs, {
@@ -101629,7 +101615,9 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 			}
 /******/ 			var notFulfilled = Infinity;
 /******/ 			for (var i = 0; i < deferred.length; i++) {
-/******/ 				var [chunkIds, fn, priority] = deferred[i];
+/******/ 				var chunkIds = deferred[i][0];
+/******/ 				var fn = deferred[i][1];
+/******/ 				var priority = deferred[i][2];
 /******/ 				var fulfilled = true;
 /******/ 				for (var j = 0; j < chunkIds.length; j++) {
 /******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
@@ -101727,7 +101715,9 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 		
 /******/ 		// install a JSONP callback for chunk loading
 /******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
-/******/ 			var [chunkIds, moreModules, runtime] = data;
+/******/ 			var chunkIds = data[0];
+/******/ 			var moreModules = data[1];
+/******/ 			var runtime = data[2];
 /******/ 			// add "moreModules" to the modules object,
 /******/ 			// then flag all "chunkIds" as loaded and fire callback
 /******/ 			var moduleId, chunkId, i = 0;
@@ -101750,7 +101740,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
 /******/ 		
-/******/ 		var chunkLoadingGlobal = globalThis["webpackChunkpremium_blocks_for_gutenberg"] = globalThis["webpackChunkpremium_blocks_for_gutenberg"] || [];
+/******/ 		var chunkLoadingGlobal = self["webpackChunkpremium_blocks_for_gutenberg"] = self["webpackChunkpremium_blocks_for_gutenberg"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();

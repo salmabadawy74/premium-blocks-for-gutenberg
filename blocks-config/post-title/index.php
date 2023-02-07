@@ -39,20 +39,15 @@ function render_block_premium_post_title($attributes, $content, $block)
     }
 
     $classes = array();
-    if (isset($attributes['textAlign'])) {
-        $classes[] = 'has-text-align-' . $attributes['textAlign'];
-    }
-    if (isset($attributes['style']['elements']['link']['color']['text'])) {
-        $classes[] = 'has-link-color';
-    }
+    $classes[] = "premium-blog-entry-title";
     $wrapper_attributes = get_block_wrapper_attributes(array('class' => implode(' ', $classes)));
 
-    return sprintf(
-        '<%1$s %2$s>%3$s</%1$s>',
+    $content = sprintf(
+        '<%1$s >%2$s</%1$s>',
         $tag_name,
-        array(),
         $title
     );
+    return sprintf('<div %1$s>%2$s</div>', $wrapper_attributes, $content);
 }
 
 /**

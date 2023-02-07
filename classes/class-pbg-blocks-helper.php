@@ -407,6 +407,7 @@ class PBG_Blocks_Helper
 		require_once PREMIUM_BLOCKS_PATH . 'blocks-config/post-excerpt/index.php';
 
 		require_once PREMIUM_BLOCKS_PATH . 'blocks-config/post-Meta/index.php';
+		require_once PREMIUM_BLOCKS_PATH . 'blocks-config/post-tag/index.php';
 
 
 		foreach (self::$blocks as $slug => $value) {

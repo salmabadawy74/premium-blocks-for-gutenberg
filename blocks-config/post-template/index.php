@@ -62,14 +62,8 @@ function render_block_premium_post_template($attributes, $content, $block)
     }
 
     $classnames = '';
-    if (isset($block->context['displayLayout']) && isset($block->context['query'])) {
-        if (isset($block->context['displayLayout']['type']) && 'flex' === $block->context['displayLayout']['type']) {
-            $classnames = "is-flex-container columns-{$block->context['displayLayout']['columns']}";
-        }
-    }
-    if (isset($attributes['style']['elements']['link']['color']['text'])) {
-        $classnames .= ' has-link-color';
-    }
+    $classnames .= ' premium-blog-wrap ';
+
 
     $wrapper_attributes = get_block_wrapper_attributes(array('class' => trim($classnames)));
 
@@ -96,8 +90,8 @@ function render_block_premium_post_template($attributes, $content, $block)
         )->render(array('dynamic' => false));
 
         // Wrap the render inner blocks in a `li` element with the appropriate post classes.
-        $post_classes = implode(' ', get_post_class('wp-block-post'));
-        $content     .= '<li class="' . esc_attr($post_classes) . '">' . $block_content . '</li>';
+        $post_classes = implode(' ', get_post_class('premium-blog-post-outer-container'));
+        $content     .= '<div class="' . esc_attr($post_classes) . '">' . $block_content . '</div>';
     }
 
     /*
@@ -107,7 +101,7 @@ function render_block_premium_post_template($attributes, $content, $block)
 	*/
     wp_reset_postdata();
     return sprintf(
-        '<ul %1$s>%2$s</ul>',
+        '<div %1$s>%2$s</div>',
         $wrapper_attributes,
         $content
     );

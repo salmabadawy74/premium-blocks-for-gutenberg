@@ -3,20 +3,13 @@ const { __ } = wp.i18n;
 import classNames from "classnames";
 
 import { useSelect, useDispatch } from "@wordpress/data";
-import {
-    generateBlockId,
-    generateCss,
-    typographyCss,
-    paddingCss,
-    marginCss,
-} from "@pbg/helpers";
+import { generateBlockId, generateCss, typographyCss } from "@pbg/helpers";
 import {
     ResponsiveRangeControl,
     InspectorTabs,
     InspectorTab,
     PremiumResponsiveTabs,
     AdvancedColorControl as AdvancedPopColorControl,
-    Shape,
     PremiumFilters,
     InsideTabs,
     InsideTab,
@@ -187,16 +180,6 @@ function Image(props) {
                                     max={600}
                                     step={1}
                                 />
-                                <Shape
-                                    shapeType="bottom"
-                                    value={shapeBottom}
-                                    responsive
-                                    onChange={(val) =>
-                                        setAttributes({
-                                            shapeBottom: val,
-                                        })
-                                    }
-                                />
                             </PanelBody>
                         </InspectorTab>
                         <InspectorTab key={"style"}>
@@ -282,19 +265,6 @@ function Image(props) {
                         className={`premium-blog-thumbnail-container premium-blog-${hoverEffect}-effect`}
                     >
                         <img src={mediaUrl} />
-                        {Object.entries(shapeBottom).length > 1 &&
-                            shapeBottom.openShape == 1 &&
-                            shapeBottom.style && (
-                                <div
-                                    className={bottomShapeClasses}
-                                    dangerouslySetInnerHTML={{
-                                        __html:
-                                            PremiumBlocksSettings.shapes[
-                                                shapeBottom.style
-                                            ],
-                                    }}
-                                />
-                            )}
                     </div>
                     <div className="premium-blog-thumbnail-overlay">
                         <a href={link} rel="noopener noreferrer" />

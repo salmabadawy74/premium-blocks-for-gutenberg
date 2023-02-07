@@ -162,18 +162,9 @@ function PostTemplateEdit({
             if (search) {
                 query.search = search;
             }
-            if (exclude?.length) {
-                query.exclude = exclude;
-            }
-            // If sticky is not set, it will return all posts in the results.
-            // If sticky is set to `only`, it will limit the results to sticky posts only.
-            // If it is anything else, it will exclude sticky posts from results. For the record the value stored is `exclude`.
             if (sticky) {
-                query.sticky = sticky === "only";
+                query.sticky = sticky === "exclude";
             }
-            // If `inherit` is truthy, adjust conditionally the query to create a better preview.
-            // When we preview Query Loop blocks we should prefer the current
-            // block's postType, which is passed through block context.
             const usedPostType = postType;
             return {
                 posts: getEntityRecords("postType", usedPostType, {
@@ -195,10 +186,6 @@ function PostTemplateEdit({
             postType,
             exclude,
             sticky,
-            inherit,
-            taxQuery,
-            parents,
-            restQueryArgs,
         ]
     );
 
@@ -229,10 +216,6 @@ function PostTemplateEdit({
         ? { borderRadius: advancedBorderValue }
         : borderCss(border, deviceType);
 
-    // To avoid flicker when switching active block contexts, a preview is rendered
-    // for each block context, but the preview for the active block context is hidden.
-    // This ensures that when it is displayed again, the cached rendering of the
-    // block preview is used, instead of having to re-render the preview from scratch.
     return (
         <Fragment>
             <InspectorControls key={"inspector"}>
