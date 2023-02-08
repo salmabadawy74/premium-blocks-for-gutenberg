@@ -46,7 +46,7 @@
             "type": "array",
             "default": [
                 {
-                    "iconn": "fe_alignJustify",
+                    "iconn": "fe_aperture",
                     "link": "",
                     "target": "_self",
                     "size": "40",
@@ -58,7 +58,7 @@
         },
         "icon": {
             "type": "string",
-            "default": "fe_alignJustify"
+            "default": "fe_aperture"
         },
         "iconPosition": {
             "type": "string",

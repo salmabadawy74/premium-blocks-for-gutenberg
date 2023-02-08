@@ -2574,6 +2574,14 @@
         line-height: 1.3333;
     }
 
+    .premium-button__before .premium-modal-box-icon {
+        margin-right: 15px;
+    }
+
+    .premium-button__after .premium-modal-box-icon {
+        margin-left: 15px;
+    }
+
     .premium-popup__modal_wrap {
         .premium-popup__modal_wrap_overlay {
             background-color: rgba(0, 0, 0, 0.5);

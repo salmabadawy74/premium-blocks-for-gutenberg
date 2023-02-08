@@ -96,7 +96,7 @@ const save = props => {
             <div className={`premium-modal-trigger-container`}
             >
                 {(triggerSettings[0].triggerType === "button") &&
-                    <button className={`premium-modal-trigger-btn wp-block-button__link premium-button premium-button__${triggerSettings[0].btnSize} `}
+                    <button className={`premium-modal-trigger-btn wp-block-button__link premium-button premium-button__${triggerSettings[0].btnSize} premium-button__${triggerSettings[0].iconPosition}`}
                         style={filterJsCss({
                             backgroundColor: triggerStyles[0].triggerBack,
                             borderStyle: triggerBorder.borderType,

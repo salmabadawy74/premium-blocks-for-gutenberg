@@ -1786,6 +1786,12 @@
   font-size: 18px;
   line-height: 1.3333; }
 
+.premium-modal-box .premium-button__before .premium-modal-box-icon {
+  margin-right: 15px; }
+
+.premium-modal-box .premium-button__after .premium-modal-box-icon {
+  margin-left: 15px; }
+
 .premium-modal-box .premium-popup__modal_wrap {
   position: fixed;
   top: 0;
@@ -1919,10 +1925,6 @@
     transition: all 0.3s ease-in-out;
     width: 30px;
     height: 30px; }
-  .premium-modal-trigger-btn .fe svg {
-    fill: none !important; }
-  .premium-modal-trigger-btn .ic svg {
-    fill: currentColor !important; }
   .premium-modal-trigger-btn .premium-modal-box-icon {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out; }

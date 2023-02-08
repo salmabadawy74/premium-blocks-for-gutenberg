@@ -1836,7 +1836,7 @@ const v3Attributes = {
                 "triggerType": "button",
                 "btnText": "Premium Blocks",
                 "showIcon": false,
-                "icon": "",
+                "icon": "fe_aperture",
                 "iconType": "fe",
                 "iconPosition": "before",
                 "iconSpacing": "",
@@ -1856,10 +1856,10 @@ const v3Attributes = {
         "type": "array",
         "default": [
             {
-                "iconn": "",
+                "iconn": "fe_aperture",
                 "link": "",
                 "target": "_self",
-                "size": "20",
+                "size": "25",
                 "width": "2",
                 "title": "",
                 "style": "default"
@@ -2313,9 +2313,9 @@ const v3Attributes = {
     "triggerIconSize": {
         "type": "object",
         "default": {
-            "Desktop": "20",
-            "Tablet": "20",
-            "Mobile": "20",
+            "Desktop": "25",
+            "Tablet": "25",
+            "Mobile": "25",
             "unit": "px"
         }
     },
@@ -2382,16 +2382,16 @@ const deprecated = [
                         "iconn": attributes.triggerSettings[0].icon ? attributes.triggerSettings[0].icon : "fe_aperture",
                         "link": "",
                         "target": "_self",
-                        "size": attributes.triggerIconSize['Desktop'] || "20",
+                        "size": attributes.triggerIconSize['Desktop'] || "25",
                         "width": "2",
                         "title": "",
                         "style": "default"
                     }
                 ],
                 "triggerIconSize": {
-                    "Desktop": attributes.triggerIconSize['Desktop'] ? attributes.triggerIconSize['Desktop'] : "20",
-                    "Tablet": attributes.triggerIconSize['Tablet'] ? attributes.triggerIconSize['Tablet'] : "20",
-                    "Mobile": attributes.triggerIconSize['Mobile'] ? attributes.triggerIconSize['Mobile'] : "20",
+                    "Desktop": attributes.triggerIconSize['Desktop'] ? attributes.triggerIconSize['Desktop'] : "25",
+                    "Tablet": attributes.triggerIconSize['Tablet'] ? attributes.triggerIconSize['Tablet'] : "25",
+                    "Mobile": attributes.triggerIconSize['Mobile'] ? attributes.triggerIconSize['Mobile'] : "25",
                     "unit": attributes.triggerIconSize['unit'] ? attributes.triggerIconSize['unit'] : "px"
                 }
             }

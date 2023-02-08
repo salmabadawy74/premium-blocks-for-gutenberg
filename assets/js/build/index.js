@@ -3174,7 +3174,7 @@ const v3Attributes = {
       "triggerType": "button",
       "btnText": "Premium Blocks",
       "showIcon": false,
-      "icon": "",
+      "icon": "fe_aperture",
       "iconType": "fe",
       "iconPosition": "before",
       "iconSpacing": "",
@@ -3192,10 +3192,10 @@ const v3Attributes = {
   "icons": {
     "type": "array",
     "default": [{
-      "iconn": "",
+      "iconn": "fe_aperture",
       "link": "",
       "target": "_self",
-      "size": "20",
+      "size": "25",
       "width": "2",
       "title": "",
       "style": "default"
@@ -3642,9 +3642,9 @@ const v3Attributes = {
   "triggerIconSize": {
     "type": "object",
     "default": {
-      "Desktop": "20",
-      "Tablet": "20",
-      "Mobile": "20",
+      "Desktop": "25",
+      "Tablet": "25",
+      "Mobile": "25",
       "unit": "px"
     }
   },
@@ -3708,15 +3708,15 @@ const deprecated = [{
         "iconn": attributes.triggerSettings[0].icon ? attributes.triggerSettings[0].icon : "fe_aperture",
         "link": "",
         "target": "_self",
-        "size": attributes.triggerIconSize['Desktop'] || "20",
+        "size": attributes.triggerIconSize['Desktop'] || "25",
         "width": "2",
         "title": "",
         "style": "default"
       }],
       "triggerIconSize": {
-        "Desktop": attributes.triggerIconSize['Desktop'] ? attributes.triggerIconSize['Desktop'] : "20",
-        "Tablet": attributes.triggerIconSize['Tablet'] ? attributes.triggerIconSize['Tablet'] : "20",
-        "Mobile": attributes.triggerIconSize['Mobile'] ? attributes.triggerIconSize['Mobile'] : "20",
+        "Desktop": attributes.triggerIconSize['Desktop'] ? attributes.triggerIconSize['Desktop'] : "25",
+        "Tablet": attributes.triggerIconSize['Tablet'] ? attributes.triggerIconSize['Tablet'] : "25",
+        "Mobile": attributes.triggerIconSize['Mobile'] ? attributes.triggerIconSize['Mobile'] : "25",
         "unit": attributes.triggerIconSize['unit'] ? attributes.triggerIconSize['unit'] : "px"
       }
     };
@@ -5309,7 +5309,7 @@ const Edit = props => {
       textAlign: align[currentDevice]
     }
   }, (triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === "load") && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
-    className: `premium-modal-trigger-btn wp-block-button__link premium-button premium-button__${triggerSettings[0].btnSize} `,
+    className: `premium-modal-trigger-btn wp-block-button__link premium-button premium-button__${triggerSettings[0].btnSize} premium-button__${triggerSettings[0].iconPosition}`,
     onClick: () => setOpenModal(true),
     style: { ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_7__.paddingCss)(triggerPadding, currentDevice),
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_7__.borderCss)(triggerBorder, currentDevice),
@@ -5966,7 +5966,7 @@ const Inspector = _ref => {
     step: 1,
     showUnit: true,
     units: ["px", "em", "rem"],
-    defaultValue: 20
+    defaultValue: 25
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.ResponsiveSingleRangeControl, {
     label: __("Icon Spacing", "premium-blocks-for-gutenberg"),
     value: triggerSettings[0].iconSpacing,
@@ -6381,7 +6381,7 @@ const save = props => {
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-modal-trigger-container`
   }, triggerSettings[0].triggerType === "button" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
-    className: `premium-modal-trigger-btn wp-block-button__link premium-button premium-button__${triggerSettings[0].btnSize} `,
+    className: `premium-modal-trigger-btn wp-block-button__link premium-button premium-button__${triggerSettings[0].btnSize} premium-button__${triggerSettings[0].iconPosition}`,
     style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       backgroundColor: triggerStyles[0].triggerBack,
       borderStyle: triggerBorder.borderType,
@@ -35556,7 +35556,7 @@ const attributes = {
   "icons": {
     "type": "array",
     "default": [{
-      "iconn": "fe_alignJustify",
+      "iconn": "fe_aperture",
       "link": "",
       "target": "_self",
       "size": "40",
@@ -35567,7 +35567,7 @@ const attributes = {
   },
   "icon": {
     "type": "string",
-    "default": "fe_alignJustify"
+    "default": "fe_aperture"
   },
   "iconPosition": {
     "type": "string",
@@ -36084,7 +36084,7 @@ const deprecated = {
   migrate: attributes => {
     let newAttributes = {
       "icons": [{
-        "iconn": attributes.icon ? attributes.icon : "fe_alignJustify",
+        "iconn": attributes.icon ? attributes.icon : "fe_aperture",
         "link": "",
         "target": "_self",
         "size": "40",
@@ -36092,7 +36092,7 @@ const deprecated = {
         "title": "",
         "style": "default"
       }],
-      icon: attributes.icon ? attributes.icon : "fe_alignJustify"
+      icon: attributes.icon ? attributes.icon : "fe_aperture"
     };
     return Object.assign(attributes, newAttributes);
   },

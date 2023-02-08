@@ -31,7 +31,7 @@
                     "triggerType": "button",
                     "btnText": "Premium Blocks",
                     "showIcon": false,
-                    "icon": "",
+                    "icon": "fe_aperture",
                     "iconType": "fe",
                     "iconPosition": "before",
                     "iconSpacing": "",
@@ -51,10 +51,10 @@
             "type": "array",
             "default": [
                 {
-                    "iconn": "",
+                    "iconn": "fe_aperture",
                     "link": "",
                     "target": "_self",
-                    "size": "20",
+                    "size": "25",
                     "width": "2",
                     "title": "",
                     "style": "default"
@@ -508,9 +508,9 @@
         "triggerIconSize": {
             "type": "object",
             "default": {
-                "Desktop": "20",
-                "Tablet": "20",
-                "Mobile": "20",
+                "Desktop": "25",
+                "Tablet": "25",
+                "Mobile": "25",
                 "unit": "px"
             }
         },

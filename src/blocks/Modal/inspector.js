@@ -668,7 +668,7 @@ const Inspector = ({ attributes, setAttributes }) => {
                                             step={1}
                                             showUnit={true}
                                             units={["px", "em", "rem"]}
-                                            defaultValue={20}
+                                            defaultValue={25}
                                         />
                                         <ResponsiveSingleRangeControl
                                             label={__(
