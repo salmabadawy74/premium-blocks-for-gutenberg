@@ -576,7 +576,7 @@ const deprecated = {
         let newAttributes = {
             "icons": [
                 {
-                    "iconn": "fe_alignJustify",
+                    "iconn": attributes.icon ? attributes.icon : "fe_alignJustify",
                     "link": "",
                     "target": "_self",
                     "size": "40",
@@ -585,7 +585,7 @@ const deprecated = {
                     "style": "default"
                 }
             ],
-            icon: "fe_alignJustify"
+            icon: attributes.icon ? attributes.icon : "fe_alignJustify"
         }
         return Object.assign(attributes, newAttributes)
     },

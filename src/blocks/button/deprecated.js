@@ -665,10 +665,10 @@ const deprecatedContent = [
         attributes: Object.assign(new_Attributes, v8Attrinutes),
         migrate: (attributes) => {
             let newAttributes = {
-                icon: "fe_aperture",
+                icon: attributes.icon ? attributes.icon : "fe_aperture",
                 icons: [
                     {
-                        "iconn": "fe_aperture",
+                        "iconn": attributes.icon ? attributes.icon : "fe_aperture",
                         "link": "",
                         "target": "_self",
                         "size": attributes.iconSize['Desktop'] ? attributes.iconSize['Desktop'] : "25",

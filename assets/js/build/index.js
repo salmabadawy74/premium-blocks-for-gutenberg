@@ -3690,7 +3690,7 @@ const deprecated = [{
         "triggerType": attributes.triggerSettings[0].triggerType ? attributes.triggerSettings[0].triggerType : "button",
         "btnText": attributes.triggerSettings[0].btnText ? attributes.triggerSettings[0].btnText : "Premium Blocks",
         "showIcon": attributes.triggerSettings[0].showIcon ? attributes.triggerSettings[0].showIcon : false,
-        "icon": "fe_aperture",
+        "icon": attributes.triggerSettings[0].icon ? attributes.triggerSettings[0].icon : "fe_aperture",
         "iconType": "fe",
         "iconPosition": attributes.triggerSettings[0].iconPosition ? attributes.triggerSettings[0].iconPosition : "before",
         "iconSpacing": attributes.triggerSettings[0].iconSpacing ? attributes.triggerSettings[0].iconSpacing : "",
@@ -3705,7 +3705,7 @@ const deprecated = [{
         "delayTime": attributes.triggerSettings[0].delayTime ? attributes.triggerSettings[0].delayTime : 1
       }],
       "icons": [{
-        "iconn": "fe_aperture",
+        "iconn": attributes.triggerSettings[0].icon ? attributes.triggerSettings[0].icon : "fe_aperture",
         "link": "",
         "target": "_self",
         "size": attributes.triggerIconSize['Desktop'] || "20",
@@ -16382,9 +16382,9 @@ const deprecatedContent = [{
   attributes: Object.assign(new_Attributes, v8Attrinutes),
   migrate: attributes => {
     let newAttributes = {
-      icon: "fe_aperture",
+      icon: attributes.icon ? attributes.icon : "fe_aperture",
       icons: [{
-        "iconn": "fe_aperture",
+        "iconn": attributes.icon ? attributes.icon : "fe_aperture",
         "link": "",
         "target": "_self",
         "size": attributes.iconSize['Desktop'] ? attributes.iconSize['Desktop'] : "25",
@@ -36084,7 +36084,7 @@ const deprecated = {
   migrate: attributes => {
     let newAttributes = {
       "icons": [{
-        "iconn": "fe_alignJustify",
+        "iconn": attributes.icon ? attributes.icon : "fe_alignJustify",
         "link": "",
         "target": "_self",
         "size": "40",
@@ -36092,7 +36092,7 @@ const deprecated = {
         "title": "",
         "style": "default"
       }],
-      icon: "fe_alignJustify"
+      icon: attributes.icon ? attributes.icon : "fe_alignJustify"
     };
     return Object.assign(attributes, newAttributes);
   },
