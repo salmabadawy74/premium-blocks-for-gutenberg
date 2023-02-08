@@ -41922,35 +41922,56 @@ function Edit(props) {
     label: __("Wobble", "premium-blocks-for-gutenberg")
   }];
   const INNER_BLOCKS_TEMPLATE = [["premium/icon", {
-    selectedIcon: 'dashicons dashicons-facebook-alt',
+    selectedIcon: 'fa_facebook-f',
     iconSize: {
-      default: {
-        Desktop: "30",
-        Tablet: "30",
-        Mobile: "30",
-        unit: "px"
-      }
-    }
+      Desktop: "30",
+      Tablet: "30",
+      Mobile: "30",
+      unit: "px"
+    },
+    icons: [{
+      "iconn": "fa_facebook-f",
+      "link": "",
+      "target": "_self",
+      "size": "30",
+      "width": "2",
+      "title": "",
+      "style": "default"
+    }]
   }], ["premium/icon", {
-    selectedIcon: 'fab fa-instagram',
+    selectedIcon: 'fa_instagram',
     iconSize: {
-      default: {
-        Desktop: "30",
-        Tablet: "30",
-        Mobile: "30",
-        unit: "px"
-      }
-    }
+      Desktop: "30",
+      Tablet: "30",
+      Mobile: "30",
+      unit: "px"
+    },
+    icons: [{
+      "iconn": "fa_instagram",
+      "link": "",
+      "target": "_self",
+      "size": "30",
+      "width": "2",
+      "title": "",
+      "style": "default"
+    }]
   }], ["premium/icon", {
-    selectedIcon: 'dashicons dashicons-twitter',
+    selectedIcon: 'fa_twitter',
     iconSize: {
-      default: {
-        Desktop: "30",
-        Tablet: "30",
-        Mobile: "30",
-        unit: "px"
-      }
-    }
+      Desktop: "30",
+      Tablet: "30",
+      Mobile: "30",
+      unit: "px"
+    },
+    icons: [{
+      "iconn": "fa_twitter",
+      "link": "",
+      "target": "_self",
+      "size": "30",
+      "width": "2",
+      "title": "",
+      "style": "default"
+    }]
   }]];
   useEffect(() => {
     setAttributes({
@@ -41972,9 +41993,13 @@ function Edit(props) {
       'align-items': `${align[props.deviceType] == 'left' ? 'flex-start' : align[props.deviceType] == 'right' ? 'flex-end' : 'center'} !important`,
       'justify-content': `${align[props.deviceType]} !important`
     };
-    styles[` .${blockId} .premium-icon-group-container i:hover`] = {
+    styles[` .${blockId} .premium-icon-group-container .premium-icon__container .premium-icon:hover`] = {
       color: `${groupIconHoverColor}`,
       "background-color": `${groupIconHoverBack}`
+    };
+    styles[` .${blockId} .premium-icon-group-container .premium-icon__container .premium-icon svg`] = {
+      'width': `${iconsSize === null || iconsSize === void 0 ? void 0 : iconsSize[props.deviceType]}${iconsSize.unit}`,
+      'height': `${iconsSize === null || iconsSize === void 0 ? void 0 : iconsSize[props.deviceType]}${iconsSize.unit}`
     };
     styles[` .${blockId} .premium-icon-group-container .premium-icon__container .premium-icon`] = {
       color: `${groupIconColor}`,
@@ -42256,11 +42281,11 @@ function save(_ref) {
 
   const loadStyles = () => {
     const styles = {};
-    styles[` .${blockId} .premium-icon-group-container i:hover`] = {
+    styles[` .${blockId} .premium-icon-group-container .premium-icon__container .premium-icon:hover`] = {
       color: `${groupIconHoverColor}`,
       "background-color": `${groupIconHoverBack}`
     };
-    styles[` .${blockId} .premium-icon-group-container i`] = {
+    styles[` .${blockId} .premium-icon-group-container .premium-icon__container .premium-icon`] = {
       color: `${groupIconColor}`,
       "background-color": `${groupIconBack}`,
       'border-color': `${groupIconBorder && groupIconBorder.borderColor}`,

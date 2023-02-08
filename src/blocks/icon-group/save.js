@@ -28,12 +28,12 @@ export default function save({ attributes }) {
     const loadStyles = () => {
         const styles = {};
 
-        styles[` .${blockId} .premium-icon-group-container i:hover`] = {
+        styles[` .${blockId} .premium-icon-group-container .premium-icon__container .premium-icon:hover`] = {
             color: `${groupIconHoverColor}`,
-            "background-color": `${groupIconHoverBack}`
+            "background-color": `${groupIconHoverBack}`,
         };
 
-        styles[` .${blockId} .premium-icon-group-container i`] = {
+        styles[` .${blockId} .premium-icon-group-container .premium-icon__container .premium-icon`] = {
             color: `${groupIconColor}`,
             "background-color": `${groupIconBack}`,
             'border-color': `${groupIconBorder && groupIconBorder.borderColor}`,
