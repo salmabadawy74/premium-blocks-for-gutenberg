@@ -91,7 +91,7 @@
         },
         "faIcon": {
             "type": "string",
-            "default": "dashicons dashicons-clock"
+            "default": "fe_clock"
         },
         "counterFamily": {
             "type": "string",

@@ -25952,7 +25952,7 @@ function Edit(props) {
     align: "alignwide"
   }, [["premium/icon", {
     iconTypeFile: attributes.icon ? attributes.icon : 'icon',
-    selectedIcon: attributes.faIcon ? attributes.faIcon : 'dashicons dashicons-clock',
+    selectedIcon: attributes.faIcon ? attributes.faIcon : 'fe_clock',
     imageURL: attributes.imageURL ? attributes.imageURL : ''
   }], ["premium/counter", {
     prefix: attributes.prefix ? attributes.prefix : false,
