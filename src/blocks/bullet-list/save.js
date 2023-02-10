@@ -34,7 +34,7 @@ export default function save(props) {
     const loadStyles = () => {
         const styles = {};
 
-        styles[`.${blockId} .premium-bullet-list__content-icon i, .${blockId} .premium-bullet-list__content-icon img`] = {
+        styles[`.${blockId} .premium-bullet-list__content-icon .premium-bullet-list-icon, .${blockId} .premium-bullet-list__content-icon img`] = {
             'overflow': 'hidden',
             'color': bulletIconStyles[0].bulletIconColor,
             'background-color': bulletIconStyles[0].bulletIconBackgroundColor,
@@ -64,7 +64,7 @@ export default function save(props) {
             'text-transform': titleTypography?.textTransform,
         };
 
-        styles[`.${blockId} .premium-bullet-list__wrapper:hover i`] = {
+        styles[`.${blockId} .premium-bullet-list__wrapper:hover .premium-bullet-list-icon`] = {
             'color': `${bulletIconStyles?.[0]?.bulletIconHoverColor}!important`,
             'background-color': `${bulletIconStyles?.[0]?.bulletIconHoverBackgroundColor}!important`
         };

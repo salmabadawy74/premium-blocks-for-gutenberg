@@ -14931,13 +14931,13 @@ function Edit(props) {
   } = props.attributes;
   const INNER_BLOCKS_TEMPLATE = [["premium/list-item", {
     title: __("Title #1", "premium-blocks-for-gutenberg"),
-    icon: "fa fa-arrow-circle-right"
+    icon: "ic_circleRight"
   }], ["premium/list-item", {
     title: __("Title #2", "premium-blocks-for-gutenberg"),
-    icon: "fa fa-arrow-circle-right"
+    icon: "ic_circleRight"
   }], ["premium/list-item", {
     title: __("Title #3", "premium-blocks-for-gutenberg"),
-    icon: "fa fa-arrow-circle-right"
+    icon: "ic_circleRight"
   }]];
   const innerBlocksTemplate = (_props$attributes = props.attributes) !== null && _props$attributes !== void 0 && (_props$attributes$rep = _props$attributes.repeaterBulletList) !== null && _props$attributes$rep !== void 0 && _props$attributes$rep.length ? props.insertOnlyAllowedBlock() : INNER_BLOCKS_TEMPLATE;
   useEffect(() => {
@@ -15063,7 +15063,7 @@ function Edit(props) {
     var _bulletIconBorder$bor, _bulletIconBorder$bor2, _bulletIconBorder$bor3, _bulletIconBorder$bor4, _bulletIconBorder$bor5, _bulletIconBorder$bor6, _bulletIconBorder$bor7, _bulletIconBorder$bor8, _bulletIconBorder$bor9, _bulletIconBorder$bor10, _bulletIconBorder$bor11, _bulletIconBorder$bor12, _bulletIconpadding$cu, _bulletIconpadding$cu2, _bulletIconpadding$cu3, _bulletIconpadding$cu4, _generalBorder$border, _generalBorder$border2, _generalBorder$border3, _generalBorder$border4, _generalBorder$border5, _generalBorder$border6, _generalBorder$border7, _generalBorder$border8, _generalBorder$border9, _generalBorder$border10, _generalBorder$border11, _generalBorder$border12, _generalpadding$curre, _generalpadding$curre2, _generalpadding$curre3, _generalpadding$curre4, _generalmargin$curren, _generalmargin$curren2, _generalmargin$curren3, _generalmargin$curren4, _bulletIconmargin$cur, _bulletIconmargin$cur2, _bulletIconmargin$cur3, _bulletIconmargin$cur4, _titlemargin$currentD, _titlemargin$currentD2, _titlemargin$currentD3, _titlemargin$currentD4, _titleTypography$font, _titleTypography$font2, _titleTypography$lett, _titleTypography$lett2, _titleTypography$line, _titleTypography$line2, _bulletIconStyles$, _bulletIconStyles$2, _titleStyles$, _generalStyles$, _dividerStyles$, _dividerStyles$2;
 
     const styles = {};
-    styles[`.${blockId} .premium-bullet-list__content-icon i, .${blockId} .premium-bullet-list__content-icon img`] = {
+    styles[`.${blockId} .premium-bullet-list__content-icon .premium-bullet-list-icon, .${blockId} .premium-bullet-list__content-icon img`] = {
       overflow: "hidden",
       "font-size": `${BulletIconSize}${bulletIconFontSize.unit}`,
       color: bulletIconStyles[0].bulletIconColor,
@@ -15084,7 +15084,10 @@ function Edit(props) {
       "padding-bottom": `${bulletIconpadding === null || bulletIconpadding === void 0 ? void 0 : (_bulletIconpadding$cu3 = bulletIconpadding[currentDevice]) === null || _bulletIconpadding$cu3 === void 0 ? void 0 : _bulletIconpadding$cu3.bottom}${bulletIconpadding === null || bulletIconpadding === void 0 ? void 0 : bulletIconpadding.unit}`,
       "padding-left": `${bulletIconpadding === null || bulletIconpadding === void 0 ? void 0 : (_bulletIconpadding$cu4 = bulletIconpadding[currentDevice]) === null || _bulletIconpadding$cu4 === void 0 ? void 0 : _bulletIconpadding$cu4.left}${bulletIconpadding === null || bulletIconpadding === void 0 ? void 0 : bulletIconpadding.unit}`
     };
-    styles[`.${blockId} .premium-bullet-list__wrapper`] = {
+    styles[`.${blockId} .premium-bullet-list__content-icon .premium-bullet-list-icon svg`] = {
+      "width": `${BulletIconSize}${bulletIconFontSize.unit}`,
+      "height": `${BulletIconSize}${bulletIconFontSize.unit}`
+    }, styles[`.${blockId} .premium-bullet-list__wrapper`] = {
       "border-style": generalBorder === null || generalBorder === void 0 ? void 0 : generalBorder.borderType,
       "border-top-width": `${generalBorder === null || generalBorder === void 0 ? void 0 : (_generalBorder$border = generalBorder.borderWidth) === null || _generalBorder$border === void 0 ? void 0 : (_generalBorder$border2 = _generalBorder$border[currentDevice]) === null || _generalBorder$border2 === void 0 ? void 0 : _generalBorder$border2.top}px`,
       "border-right-width": `${generalBorder === null || generalBorder === void 0 ? void 0 : (_generalBorder$border3 = generalBorder.borderWidth) === null || _generalBorder$border3 === void 0 ? void 0 : (_generalBorder$border4 = _generalBorder$border3[currentDevice]) === null || _generalBorder$border4 === void 0 ? void 0 : _generalBorder$border4.right}px`,
@@ -15142,7 +15145,7 @@ function Edit(props) {
       "text-transform": titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textTransform,
       "line-height": `${titleTypography === null || titleTypography === void 0 ? void 0 : (_titleTypography$line = titleTypography.lineHeight) === null || _titleTypography$line === void 0 ? void 0 : _titleTypography$line[currentDevice]}${titleTypography === null || titleTypography === void 0 ? void 0 : (_titleTypography$line2 = titleTypography.lineHeight) === null || _titleTypography$line2 === void 0 ? void 0 : _titleTypography$line2.unit}`
     };
-    styles[`.${blockId} .premium-bullet-list__wrapper:hover i`] = {
+    styles[`.${blockId} .premium-bullet-list__wrapper:hover .premium-bullet-list-icon`] = {
       color: `${bulletIconStyles === null || bulletIconStyles === void 0 ? void 0 : (_bulletIconStyles$ = bulletIconStyles[0]) === null || _bulletIconStyles$ === void 0 ? void 0 : _bulletIconStyles$.bulletIconHoverColor}!important`,
       "background-color": `${bulletIconStyles === null || bulletIconStyles === void 0 ? void 0 : (_bulletIconStyles$2 = bulletIconStyles[0]) === null || _bulletIconStyles$2 === void 0 ? void 0 : _bulletIconStyles$2.bulletIconHoverBackgroundColor}!important`
     };
@@ -15641,7 +15644,7 @@ function save(props) {
     var _bulletIconStyles$, _bulletIconStyles$2, _titleStyles$, _generalStyles$, _dividerStyles$, _dividerStyles$2;
 
     const styles = {};
-    styles[`.${blockId} .premium-bullet-list__content-icon i, .${blockId} .premium-bullet-list__content-icon img`] = {
+    styles[`.${blockId} .premium-bullet-list__content-icon .premium-bullet-list-icon, .${blockId} .premium-bullet-list__content-icon img`] = {
       'overflow': 'hidden',
       'color': bulletIconStyles[0].bulletIconColor,
       'background-color': bulletIconStyles[0].bulletIconBackgroundColor,
@@ -15667,7 +15670,7 @@ function save(props) {
       'text-decoration': titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textDecoration,
       'text-transform': titleTypography === null || titleTypography === void 0 ? void 0 : titleTypography.textTransform
     };
-    styles[`.${blockId} .premium-bullet-list__wrapper:hover i`] = {
+    styles[`.${blockId} .premium-bullet-list__wrapper:hover .premium-bullet-list-icon`] = {
       'color': `${bulletIconStyles === null || bulletIconStyles === void 0 ? void 0 : (_bulletIconStyles$ = bulletIconStyles[0]) === null || _bulletIconStyles$ === void 0 ? void 0 : _bulletIconStyles$.bulletIconHoverColor}!important`,
       'background-color': `${bulletIconStyles === null || bulletIconStyles === void 0 ? void 0 : (_bulletIconStyles$2 = bulletIconStyles[0]) === null || _bulletIconStyles$2 === void 0 ? void 0 : _bulletIconStyles$2.bulletIconHoverBackgroundColor}!important`
     };
@@ -47663,14 +47666,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const {
+  withSelect
+} = wp.data;
 
-function Edit(_ref) {
-  let {
-    clientId,
-    attributes,
+function Edit(props) {
+  const {
     setAttributes,
-    context
-  } = _ref;
+    clientId,
+    context,
+    attributes
+  } = props;
   const {
     blockId,
     hideDesktop,
@@ -47688,7 +47694,8 @@ function Edit(_ref) {
   } = attributes;
   const {
     layoutPos,
-    divider
+    divider,
+    bulletIconFontSize
   } = context;
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
     if (layoutPos !== attributes.layoutPos) {
@@ -47702,7 +47709,13 @@ function Edit(_ref) {
         divider: divider
       });
     }
-  }, [layoutPos, divider]);
+
+    if (bulletIconFontSize !== attributes.bulletIconFontSize) {
+      setAttributes({
+        bulletIconFontSize: bulletIconFontSize
+      });
+    }
+  }, [layoutPos, divider, bulletIconFontSize]);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
     // Set block id.
     setAttributes({
@@ -47734,6 +47747,11 @@ function Edit(_ref) {
       imageID: ''
     });
   };
+
+  const renderSVG = svg => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_6__.GenIcon, {
+    name: svg,
+    icon: 'fa' === svg.substring(0, 2) ? _pbg_components__WEBPACK_IMPORTED_MODULE_6__.FaIco[svg] : _pbg_components__WEBPACK_IMPORTED_MODULE_6__.Ico[svg]
+  });
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_6__.InspectorTabs, {
     tabs: ["layout", "advance"]
@@ -47773,13 +47791,15 @@ function Edit(_ref) {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "premium-control-title"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__.__)("Icon", 'premium-blocks-for-gutenberg')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)((_fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_3___default()), {
-    icons: _pbg_components__WEBPACK_IMPORTED_MODULE_6__.iconsList,
-    value: icon,
-    onChange: valueIcon => setAttributes({
-      icon: valueIcon
+    icons: _pbg_components__WEBPACK_IMPORTED_MODULE_6__.IcoNames,
+    onChange: newIcon => setAttributes({
+      icon: newIcon
     }),
-    isMulti: false,
-    noSelectedPlaceholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__.__)("Select Icon", 'premium-blocks-for-gutenberg')
+    renderFunc: renderSVG,
+    value: icon,
+    isMulti: false // appendTo="body"
+    ,
+    noSelectedPlaceholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__.__)("Select Icon", "premium-blocks-for-gutenberg")
   })), iconType === 'image' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_6__.PremiumMediaUpload, {
     type: "image",
     imageID: imageID,
@@ -47825,8 +47845,13 @@ function Edit(_ref) {
     className: "premium-bullet-list__icon-wrap"
   }, iconType === 'icon' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "premium-bullet-list__content-icon"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
-    className: icon
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_6__.GenIcon, {
+    className: `premium-bullet-list-icon ${icon}`,
+    name: icon // size={bulletIconFontSize[props.deviceType] +
+    //     bulletIconFontSize.unit}
+    ,
+    icon: 'fa' === icon.substring(0, 2) ? _pbg_components__WEBPACK_IMPORTED_MODULE_6__.FaIco[icon] : _pbg_components__WEBPACK_IMPORTED_MODULE_6__.Ico[icon],
+    strokeWidth: 'fe' === icon.substring(0, 2) ? icons[0].width : undefined
   })), iconType === 'image' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: imageURL,
     alt: title
@@ -47851,7 +47876,15 @@ function Edit(_ref) {
   }));
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Edit);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (withSelect(select => {
+  const {
+    __experimentalGetPreviewDeviceType = null
+  } = select("core/edit-post");
+  let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+  return {
+    deviceType: deviceType
+  };
+})(Edit));
 
 /***/ }),
 
@@ -47915,6 +47948,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _pbg_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @pbg/components */ "@pbg/components");
+/* harmony import */ var _pbg_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_pbg_components__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 
@@ -47937,7 +47973,8 @@ function save(_ref) {
     openInNewTab,
     imageURL,
     divider,
-    layoutPos
+    layoutPos,
+    icons
   } = attributes;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
     className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(blockId, 'premium-bullet-list__wrapper', {
@@ -47952,8 +47989,13 @@ function save(_ref) {
     className: "premium-bullet-list__icon-wrap"
   }, iconType === 'icon' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "premium-bullet-list__content-icon"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
-    className: icon
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_4__.GenIcon, {
+    className: `premium-bullet-list-icon ${icon}`,
+    name: icon // size={bulletIconFontSize[props.deviceType] +
+    //     bulletIconFontSize.unit}
+    ,
+    icon: 'fa' === icon.substring(0, 2) ? _pbg_components__WEBPACK_IMPORTED_MODULE_4__.FaIco[icon] : _pbg_components__WEBPACK_IMPORTED_MODULE_4__.Ico[icon],
+    strokeWidth: 'fe' === icon.substring(0, 2) ? icons[0].width : undefined
   })), iconType === 'image' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: imageURL,
     alt: title
@@ -97700,7 +97742,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/list-item","title":"List Item","category":"premium-blocks","description":"List Item Description.","parent":["premium/bullet-list"],"keywords":["list-item"],"textdomain":"default","attributes":{"blockId":{"type":"string"},"hideDesktop":{"type":"boolean","default":false},"hideTablet":{"type":"boolean","default":false},"hideMobile":{"type":"boolean","default":false},"showIcon":{"type":"boolean","default":true},"title":{"type":"string"},"iconType":{"type":"string","default":"icon"},"icon":{"type":"string","default":"fa fa-arrow-circle-right"},"enableLink":{"type":"boolean","default":false},"linkURL":{"type":"string","default":"#"},"openInNewTab":{"type":"boolean","default":false},"imageID":{"type":"string"},"imageURL":{"type":"string"},"layoutPos":{"type":"string"},"divider":{"type":"boolean","default":false}},"usesContext":["layoutPos","divider"]}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/list-item","title":"List Item","category":"premium-blocks","description":"List Item Description.","parent":["premium/bullet-list"],"keywords":["list-item"],"textdomain":"default","attributes":{"blockId":{"type":"string"},"hideDesktop":{"type":"boolean","default":false},"hideTablet":{"type":"boolean","default":false},"hideMobile":{"type":"boolean","default":false},"showIcon":{"type":"boolean","default":true},"title":{"type":"string"},"iconType":{"type":"string","default":"icon"},"icon":{"type":"string","default":"ic_circleRight"},"enableLink":{"type":"boolean","default":false},"linkURL":{"type":"string","default":"#"},"openInNewTab":{"type":"boolean","default":false},"imageID":{"type":"string"},"imageURL":{"type":"string"},"layoutPos":{"type":"string"},"divider":{"type":"boolean","default":false},"bulletIconFontSize":{"type":"object","default":{"Desktop":20,"Tablet":20,"Mobile":20,"unit":"px"}},"icons":{"type":"array","default":[{"iconn":"ic_circleRight","link":"","target":"_self","size":"20","width":"2","title":"","style":"default"}]}},"usesContext":["layoutPos","divider","bulletIconFontSize"]}');
 
 /***/ }),
 

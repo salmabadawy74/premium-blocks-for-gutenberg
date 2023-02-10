@@ -70,21 +70,21 @@ function Edit(props) {
             "premium/list-item",
             {
                 title: __("Title #1", "premium-blocks-for-gutenberg"),
-                icon: "fa fa-arrow-circle-right",
+                icon: "ic_circleRight",
             },
         ],
         [
             "premium/list-item",
             {
                 title: __("Title #2", "premium-blocks-for-gutenberg"),
-                icon: "fa fa-arrow-circle-right",
+                icon: "ic_circleRight",
             },
         ],
         [
             "premium/list-item",
             {
                 title: __("Title #3", "premium-blocks-for-gutenberg"),
-                icon: "fa fa-arrow-circle-right",
+                icon: "ic_circleRight",
             },
         ],
     ];
@@ -218,7 +218,7 @@ function Edit(props) {
         const styles = {};
 
         styles[
-            `.${blockId} .premium-bullet-list__content-icon i, .${blockId} .premium-bullet-list__content-icon img`
+            `.${blockId} .premium-bullet-list__content-icon .premium-bullet-list-icon, .${blockId} .premium-bullet-list__content-icon img`
         ] = {
             overflow: "hidden",
             "font-size": `${BulletIconSize}${bulletIconFontSize.unit}`,
@@ -245,35 +245,38 @@ function Edit(props) {
             "padding-bottom": `${bulletIconpadding?.[currentDevice]?.bottom}${bulletIconpadding?.unit}`,
             "padding-left": `${bulletIconpadding?.[currentDevice]?.left}${bulletIconpadding?.unit}`,
         };
-
-        styles[`.${blockId} .premium-bullet-list__wrapper`] = {
-            "border-style": generalBorder?.borderType,
-            "border-top-width": `${generalBorder?.borderWidth?.[currentDevice]?.top}px`,
-            "border-right-width": `${generalBorder?.borderWidth?.[currentDevice]?.right}px`,
-            "border-bottom-width": `${generalBorder?.borderWidth?.[currentDevice]?.bottom}px`,
-            "border-left-width": `${generalBorder?.borderWidth?.[currentDevice]?.left}px`,
-            "border-color": `${generalBorder?.borderColor}`,
-            "border-top-left-radius": `${generalBorder?.borderRadius?.[currentDevice].top}px`,
-            "border-top-right-radius": `${generalBorder?.borderRadius?.[currentDevice].right}px`,
-            "border-bottom-left-radius": `${generalBorder?.borderRadius?.[currentDevice].bottom}px`,
-            "border-bottom-right-radius": `${generalBorder?.borderRadius?.[currentDevice].left}px`,
-            "padding-top": `${generalpadding?.[currentDevice]?.top}${generalpadding?.unit}`,
-            "padding-right": `${generalpadding?.[currentDevice]?.right}${generalpadding?.unit}`,
-            "padding-bottom": `${generalpadding?.[currentDevice]?.bottom}${generalpadding?.unit}`,
-            "padding-left": `${generalpadding?.[currentDevice]?.left}${generalpadding?.unit}`,
-            "margin-top": `${generalmargin?.[currentDevice]?.top}${generalmargin?.unit}`,
-            "margin-right": `${generalmargin?.[currentDevice]?.right}${generalmargin?.unit}`,
-            "margin-bottom": `${generalmargin?.[currentDevice]?.bottom}${generalmargin?.unit}`,
-            "margin-left": `${generalmargin?.[currentDevice]?.left}${generalmargin?.unit}`,
-            "text-align": align?.[currentDevice],
-            overflow: "hidden",
-            "justify-content":
-                align?.[currentDevice] == "right"
-                    ? "flex-end"
-                    : align?.[currentDevice],
-            "background-color": generalStyles[0].generalBackgroundColor,
-            "box-shadow": `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`,
-        };
+        styles[`.${blockId} .premium-bullet-list__content-icon .premium-bullet-list-icon svg`] = {
+            "width": `${BulletIconSize}${bulletIconFontSize.unit}`,
+            "height": `${BulletIconSize}${bulletIconFontSize.unit}`,
+        },
+            styles[`.${blockId} .premium-bullet-list__wrapper`] = {
+                "border-style": generalBorder?.borderType,
+                "border-top-width": `${generalBorder?.borderWidth?.[currentDevice]?.top}px`,
+                "border-right-width": `${generalBorder?.borderWidth?.[currentDevice]?.right}px`,
+                "border-bottom-width": `${generalBorder?.borderWidth?.[currentDevice]?.bottom}px`,
+                "border-left-width": `${generalBorder?.borderWidth?.[currentDevice]?.left}px`,
+                "border-color": `${generalBorder?.borderColor}`,
+                "border-top-left-radius": `${generalBorder?.borderRadius?.[currentDevice].top}px`,
+                "border-top-right-radius": `${generalBorder?.borderRadius?.[currentDevice].right}px`,
+                "border-bottom-left-radius": `${generalBorder?.borderRadius?.[currentDevice].bottom}px`,
+                "border-bottom-right-radius": `${generalBorder?.borderRadius?.[currentDevice].left}px`,
+                "padding-top": `${generalpadding?.[currentDevice]?.top}${generalpadding?.unit}`,
+                "padding-right": `${generalpadding?.[currentDevice]?.right}${generalpadding?.unit}`,
+                "padding-bottom": `${generalpadding?.[currentDevice]?.bottom}${generalpadding?.unit}`,
+                "padding-left": `${generalpadding?.[currentDevice]?.left}${generalpadding?.unit}`,
+                "margin-top": `${generalmargin?.[currentDevice]?.top}${generalmargin?.unit}`,
+                "margin-right": `${generalmargin?.[currentDevice]?.right}${generalmargin?.unit}`,
+                "margin-bottom": `${generalmargin?.[currentDevice]?.bottom}${generalmargin?.unit}`,
+                "margin-left": `${generalmargin?.[currentDevice]?.left}${generalmargin?.unit}`,
+                "text-align": align?.[currentDevice],
+                overflow: "hidden",
+                "justify-content":
+                    align?.[currentDevice] == "right"
+                        ? "flex-end"
+                        : align?.[currentDevice],
+                "background-color": generalStyles[0].generalBackgroundColor,
+                "box-shadow": `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`,
+            };
 
         styles[`.${blockId} .premium-bullet-list__content-wrap`] = {
             "justify-content":
@@ -332,7 +335,7 @@ function Edit(props) {
             "line-height": `${titleTypography?.lineHeight?.[currentDevice]}${titleTypography?.lineHeight?.unit}`,
         };
 
-        styles[`.${blockId} .premium-bullet-list__wrapper:hover i`] = {
+        styles[`.${blockId} .premium-bullet-list__wrapper:hover .premium-bullet-list-icon`] = {
             color: `${bulletIconStyles?.[0]?.bulletIconHoverColor}!important`,
             "background-color": `${bulletIconStyles?.[0]?.bulletIconHoverBackgroundColor}!important`,
         };
@@ -491,46 +494,46 @@ function Edit(props) {
                                         showIcons={true}
                                     />
                                 ) : (
-                                        <MultiButtonsControl
-                                            choices={[
-                                                {
-                                                    value: "left",
-                                                    label: __(
-                                                        "Left",
-                                                        "premium-blocks-for-gutenberg"
-                                                    ),
-                                                    icon: Icons.alignLeft,
-                                                },
-                                                {
-                                                    value: "center",
-                                                    label: __(
-                                                        "Center",
-                                                        "premium-blocks-for-gutenberg"
-                                                    ),
-                                                    icon: Icons.alignCenter,
-                                                },
-                                                {
-                                                    value: "right",
-                                                    label: __(
-                                                        "Right",
-                                                        "premium-blocks-for-gutenberg"
-                                                    ),
-                                                    icon: Icons.alignRight,
-                                                },
-                                            ]}
-                                            value={bulletAlign}
-                                            onChange={(alignn) =>
-                                                setAttributes({
-                                                    bulletAlign: alignn,
-                                                })
-                                            }
-                                            label={__(
-                                                "Align Content",
-                                                "premium-blocks-for-gutenberg"
-                                            )}
-                                            showIcons={true}
-                                        />
-                                    )}
+                                    <MultiButtonsControl
+                                        choices={[
+                                            {
+                                                value: "left",
+                                                label: __(
+                                                    "Left",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                                icon: Icons.alignLeft,
+                                            },
+                                            {
+                                                value: "center",
+                                                label: __(
+                                                    "Center",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                                icon: Icons.alignCenter,
+                                            },
+                                            {
+                                                value: "right",
+                                                label: __(
+                                                    "Right",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                                icon: Icons.alignRight,
+                                            },
+                                        ]}
+                                        value={bulletAlign}
+                                        onChange={(alignn) =>
+                                            setAttributes({
+                                                bulletAlign: alignn,
+                                            })
+                                        }
+                                        label={__(
+                                            "Align Content",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                        showIcons={true}
+                                    />
+                                )}
                             </div>
                             <SelectControl
                                 label={__(

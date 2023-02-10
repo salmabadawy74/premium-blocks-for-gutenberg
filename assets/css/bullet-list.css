@@ -266,9 +266,6 @@
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s; }
 
-.premium-bullet-list-icon {
-  margin-right: 10px; }
-
 .bullet-list-button-list {
   display: flex;
   justify-content: space-between; }
