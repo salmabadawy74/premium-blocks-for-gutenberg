@@ -319,146 +319,17 @@
 .premium-blocks-advanced-range-control {
     padding-bottom: 20px;
 }
-.premium-blocks-advanced-range-control .noUi-target,
-.premium-blocks-advanced-range-control .noUi-target * {
-    -webkit-touch-callout: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-user-select: none;
-    -ms-touch-action: none;
-    touch-action: none;
-    -ms-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-.premium-blocks-advanced-range-control .noUi-target {
-    position: relative;
-}
-.premium-blocks-advanced-range-control .noUi-base,
-.premium-blocks-advanced-range-control .noUi-connects {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    z-index: 1;
-}
-/* Wrapper for all connect elements.
-  */
-.premium-blocks-advanced-range-control .noUi-connects {
-    overflow: hidden;
-    z-index: 0;
-}
 .premium-blocks-advanced-range-control .scales {
     position: absolute;
     display: flex;
     justify-content: space-evenly;
     width: 100%;
-    margin-top: 31px;
+    margin-top: 40px;
 }
 .premium-blocks-advanced-range-control .scale {
     width: 1px;
     height: 21px;
     background-color: #a4afb7;
-}
-.premium-blocks-advanced-range-control .noUi-connect,
-.premium-blocks-advanced-range-control .noUi-origin {
-    will-change: transform;
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    right: 0;
-    -ms-transform-origin: 0 0;
-    -webkit-transform-origin: 0 0;
-    -webkit-transform-style: preserve-3d;
-    transform-origin: 0 0;
-    transform-style: flat;
-}
-.premium-blocks-advanced-range-control .noUi-connect {
-    height: 100%;
-    width: 100%;
-}
-.premium-blocks-advanced-range-control .noUi-origin {
-    height: 10%;
-    width: 10%;
-}
-.premium-blocks-advanced-range-control .noUi-target {
-    -webkit-box-flex: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    height: 4px;
-    background-color: #d5dadf;
-    border-radius: 5px;
-    position: relative;
-    cursor: pointer;
-}
-.premium-blocks-advanced-range-control .noUi-handle:after {
-    content: "";
-    position: absolute;
-    top: 2px;
-    height: 12px;
-    width: 11px;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-    background-color: #fff;
-    border-radius: 3px;
-}
-.premium-blocks-advanced-range-control .noUi-handle-lower:after {
-    left: 5px;
-    -webkit-box-shadow: 2px -2px 3px 0px rgba(0, 0, 0, 0.1);
-    box-shadow: 2px -2px 3px 0px rgba(0, 0, 0, 0.1);
-}
-.premium-blocks-advanced-range-control .noUi-handle-upper:after {
-    right: 5px;
-    -webkit-box-shadow: -2px 2px 3px 0px rgba(0, 0, 0, 0.1);
-    box-shadow: -2px 2px 3px 0px rgba(0, 0, 0, 0.1);
-}
-.premium-blocks-advanced-range-control .noUi-handle {
-    height: 16px;
-    width: 16px;
-    background-color: #fff;
-    right: 0;
-    -webkit-transform: translateY(calc(50% - 14px)) translateX(8px);
-    -ms-transform: translateY(calc(50% - 14px)) translateX(8px);
-    transform: translateY(calc(50% - 14px)) translateX(8px);
-    position: absolute;
-    -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
-    border-radius: 50%;
-}
-.premium-blocks-advanced-range-control .noUi-connects {
-    position: absolute;
-    width: 100%;
-    height: 4px;
-}
-.premium-blocks-advanced-range-control .noUi-connect {
-    position: absolute;
-    z-index: 0;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    will-change: transform;
-    -webkit-transform-origin: 0 0;
-    -ms-transform-origin: 0 0;
-    transform-origin: 0 0;
-    background-color: #a4afb7;
-}
-.premium-blocks-advanced-range-control .noUi-tooltip {
-    position: absolute;
-    top: calc(100% + 5px);
-    left: calc(50% - 4px);
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
-    font-size: 10px;
-}
-.premium-blocks-advanced-range-control .noUi-handle {
-    border-radius: 0;
-    width: 10px !important;
-    -webkit-transform: translateY(calc(50% - 14px)) translateX(4px);
-    -ms-transform: translateY(calc(50% - 14px)) translateX(4px);
-    transform: translateY(calc(50% - 14px)) translateX(4px);
 }
 .pbg-description {
     font-size: 11px;

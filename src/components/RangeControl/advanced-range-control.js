@@ -1,5 +1,25 @@
-import Nouislider from "nouislider-react";
 import { __ } from '@wordpress/i18n';
+import Slider, { SliderTooltip } from 'rc-slider';
+import './slider.css';
+
+const { createSliderWithTooltip } = Slider;
+const Range = createSliderWithTooltip(Slider.Range);
+const { Handle } = Slider;
+
+const handle = props => {
+    const { value, dragging, index, ...restProps } = props;
+    return (
+        <SliderTooltip
+            prefixCls="rc-slider-tooltip"
+            overlay={`${value} %`}
+            visible={dragging}
+            placement="top"
+            key={index}
+        >
+            <Handle value={value} {...restProps} />
+        </SliderTooltip>
+    );
+};
 
 export default function AdvancedRangeControl({
     label,
@@ -47,17 +67,14 @@ export default function AdvancedRangeControl({
                 </div>
             </div>
         </header>
-        <Nouislider
-            connect={true}
-            start={[value.from, value.to]}
-            range={{
-                min: min,
-                max: max
-            }}
-            step={step}
-            tooltips={[tooltipsFormat, tooltipsFormat]}
-            format={format}
+        <Range
+            value={[value.from, value.to]}
             onChange={changeHandler}
+            min={min}
+            max={max}
+            step={step}
+            handle={handle}
+            tipFormatter={val => `${val}${value.unit}`}
         />
     </div>;
 }

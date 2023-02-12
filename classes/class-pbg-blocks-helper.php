@@ -83,6 +83,13 @@ class PBG_Blocks_Helper {
 	public static $current_block_list = array();
 
 	/**
+	 * An array of blocks that have a floating effect
+	 *
+	 * @var array
+	 */
+	public $floating_effect_blocks = array();
+
+	/**
 	 * Constructor for the class
 	 */
 	public function __construct() {
@@ -114,6 +121,69 @@ class PBG_Blocks_Helper {
 		add_action( 'pbg_get_css_files', array( $this, 'add_blocks_editor_styles' ) );
 
 		add_filter( 'render_block_premium/container', array( $this, 'equal_height_front_script' ), 1, 2 );
+
+		add_filter( 'render_block', array( $this, 'add_data_effect_attribute' ), 10, 2 );
+
+		add_filter( 'render_block', array( $this, 'register_block_floating_effect' ), 10, 2 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_floating_effect_script' ), 10 );
+	}
+
+	/**
+	 * Registers blocks with floating effect.
+	 *
+	 * @param string $block_content The block content.
+	 * @param array  $block         The block attributes.
+	 *
+	 * @return string $block_content The block content.
+	 */
+	public function register_block_floating_effect( $block_content, $block ) {
+		$global_features = apply_filters( 'pb_global_features', get_option( 'pbg_global_features', array() ) );
+
+		if ( $global_features['premium-floating-effect'] && isset( $block['attrs']['floatingEffect'] ) && $block['attrs']['floatingEffect']['enable'] ) {
+			$this->floating_effect_blocks[ $block['attrs']['floatingEffect']['clientId'] ] = $block['attrs']['floatingEffect'];
+		}
+
+		return $block_content;
+	}
+
+	/**
+	 * Enqueues floating effect scripts.
+	 */
+	public function enqueue_floating_effect_script() {
+		if ( ! empty( $this->floating_effect_blocks ) ) {
+			wp_enqueue_script(
+				'premium-floating-effect-view',
+				PREMIUM_BLOCKS_URL . 'assets/js/build/floating-effect-front.js',
+				array(),
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
+
+			wp_localize_script(
+				'premium-floating-effect-view',
+				'PBG_FloatingEffect',
+				$this->floating_effect_blocks
+			);
+		}
+	}
+
+	/**
+	 * Add the clientId attribute to the block element.
+	 *
+	 * @param string $block_content The HTML content of the block.
+	 * @param array  $block The block data.
+	 *
+	 * @return string The updated HTML content of the block.
+	 */
+	function add_data_effect_attribute( $block_content, $block ) {
+		$global_features = apply_filters( 'pb_global_features', get_option( 'pbg_global_features', array() ) );
+		if ( $global_features['premium-floating-effect'] && isset( $block['attrs']['floatingEffect'] ) && $block['attrs']['floatingEffect']['enable'] ) {
+			preg_match( '/<([\w]+)(?![^<]*(style|script))/', $block_content, $matches );
+			$parent_tag    = $matches[1];
+			$block_content = str_replace( '<' . $parent_tag, '<' . $parent_tag . ' data-effect="' . $block['attrs']['floatingEffect']['clientId'] . '"', $block_content );
+		}
+
+		return $block_content;
 	}
 
 	/**
@@ -162,6 +232,7 @@ class PBG_Blocks_Helper {
 	public function add_blocks_editor_styles() {
 		Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/blockseditor.min.css' );
 		Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/editorpanel.min.css' );
+		Pbg_Style_Generator::pbg_add_css( 'assets/js/build/pbg.css' );
 
 		$is_rtl = is_rtl() ? true : false;
 		$is_rtl ? Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/style-blocks-rtl.min.css' ) : '';
@@ -287,9 +358,9 @@ class PBG_Blocks_Helper {
 			PREMIUM_BLOCKS_VERSION,
 			true
 		);
-		error_log( __( 'here' ) );
+
 		wp_enqueue_script(
-			'pbg-floating-effect22',
+			'pbg-floating-effect',
 			PREMIUM_BLOCKS_URL . 'assets/js/build/floating-effect.js',
 			array( 'wp-block-editor', 'wp-components', 'wp-compose', 'wp-element', 'wp-edit-post', 'wp-hooks', 'pbg-settings-js' ),
 			PREMIUM_BLOCKS_VERSION,
@@ -345,6 +416,27 @@ class PBG_Blocks_Helper {
 		$is_maps_enabled = self::$blocks['maps'];
 
 		$is_rtl = is_rtl() ? true : false;
+
+		$global_features = apply_filters( 'pb_global_features', get_option( 'pbg_global_features', array() ) );
+
+		// if ( $global_features['premium-floating-effect'] ) {
+		// wp_enqueue_script(
+		// 'premium-floating-effect-view',
+		// PREMIUM_BLOCKS_URL . 'assets/js/build/floating-effect-front.js',
+		// array(),
+		// PREMIUM_BLOCKS_VERSION,
+		// true
+		// );
+
+		// wp_localize_script(
+		// 'premium-floating-effect-view',
+		// 'PBG_FloatingEffect',
+		// apply_filters(
+		// 'premium_floating_effect_localize_script',
+		// array()
+		// )
+		// );
+		// }
 
 		if ( $is_rtl ) {
 			wp_enqueue_style(

@@ -3,9 +3,12 @@ const path = require('path');
 
 module.exports = {
     ...defaultConfig,
-    plugins: [
-        ...defaultConfig.plugins,
-    ],
+    plugins: defaultConfig.plugins.map(p => {
+        if (p.patterns) {
+            p.patterns = p.patterns.filter(pattern => pattern.from !== '**/block.json');
+        }
+        return p;
+    }),
     entry: {
         index: path.resolve(__dirname, 'src/index.js'),
         pbg: {
@@ -17,6 +20,7 @@ module.exports = {
         },
         'equal-height': path.resolve(__dirname, 'src/blocks/container/view.js'),
         'floating-effect': path.resolve(__dirname, 'src/global-features/floating-effect.js'),
+        'floating-effect-front': path.resolve(__dirname, 'src/global-features/floating-effect-front.js'),
     },
     externals: {
         ...defaultConfig.externals,

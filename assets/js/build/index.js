@@ -66791,6 +66791,10 @@ module.exports = invariant;
     this.updaFrameModifier();
   };
 
+  AnimationItem.prototype.setLoop = function (isLooping) {
+    this.loop = isLooping;
+  };
+
   AnimationItem.prototype.setVolume = function (val, name) {
     if (name && this.name !== name) {
       return;
@@ -69689,7 +69693,7 @@ module.exports = invariant;
   lottie.useWebWorker = setWebWorker;
   lottie.setIDPrefix = setPrefix;
   lottie.__getFactory = getFactory;
-  lottie.version = '5.10.0';
+  lottie.version = '5.10.2';
 
   function checkReady() {
     if (document.readyState === 'complete') {
@@ -72658,6 +72662,19 @@ module.exports = invariant;
     }
   };
 
+  BaseRenderer.prototype.getElementById = function (ind) {
+    var i;
+    var len = this.elements.length;
+
+    for (i = 0; i < len; i += 1) {
+      if (this.elements[i].data.ind === ind) {
+        return this.elements[i];
+      }
+    }
+
+    return null;
+  };
+
   BaseRenderer.prototype.getElementByPath = function (path) {
     var pathValue = path.shift();
     var element;
@@ -73064,11 +73081,17 @@ module.exports = invariant;
 
   var featureSupport = function () {
     var ob = {
-      maskType: true
+      maskType: true,
+      svgLumaHidden: true,
+      offscreenCanvas: typeof OffscreenCanvas !== 'undefined'
     };
 
     if (/MSIE 10/i.test(navigator.userAgent) || /MSIE 9/i.test(navigator.userAgent) || /rv:11.0/i.test(navigator.userAgent) || /Edge\/\d./i.test(navigator.userAgent)) {
       ob.maskType = false;
+    }
+
+    if (/firefox/i.test(navigator.userAgent)) {
+      ob.svgLumaHidden = false;
     }
 
     return ob;
@@ -73147,13 +73170,11 @@ module.exports = invariant;
 
       if (this.data.td) {
         this.matteMasks = {};
-        var symbolElement = createNS('symbol');
-        symbolElement.setAttribute('id', this.layerId);
         var gg = createNS('g');
+        gg.setAttribute('id', this.layerId);
         gg.appendChild(this.layerElement);
-        symbolElement.appendChild(gg);
         layerElementParent = gg;
-        this.globalData.defs.appendChild(symbolElement);
+        this.globalData.defs.appendChild(gg);
       } else if (this.data.tt) {
         this.matteElement.appendChild(this.layerElement);
         layerElementParent = this.matteElement;
@@ -73226,6 +73247,13 @@ module.exports = invariant;
       this.renderableEffectsManager = new SVGEffects(this);
     },
     getMatte: function getMatte(matteType) {
+      // This should not be a common case. But for backward compatibility, we'll create the matte object.
+      // It solves animations that have two consecutive layers marked as matte masks.
+      // Which is an undefined behavior in AE.
+      if (!this.matteMasks) {
+        this.matteMasks = {};
+      }
+
       if (!this.matteMasks[matteType]) {
         var id = this.layerId + '_' + matteType;
         var filId;
@@ -77040,6 +77068,64 @@ module.exports = invariant;
     this.cO = 1;
   };
 
+  CVContextData.prototype.popTransform = function () {
+    var popped = this.saved[this.cArrPos];
+    var i;
+    var arr = this.cTr.props;
+
+    for (i = 0; i < 16; i += 1) {
+      arr[i] = popped[i];
+    }
+
+    return popped;
+  };
+
+  CVContextData.prototype.popOpacity = function () {
+    var popped = this.savedOp[this.cArrPos];
+    this.cO = popped;
+    return popped;
+  };
+
+  CVContextData.prototype.pop = function () {
+    this.cArrPos -= 1;
+    var transform = this.popTransform();
+    var opacity = this.popOpacity();
+    return {
+      transform: transform,
+      opacity: opacity
+    };
+  };
+
+  CVContextData.prototype.push = function () {
+    var props = this.cTr.props;
+
+    if (this._length <= this.cArrPos) {
+      this.duplicate();
+    }
+
+    var i;
+    var arr = this.saved[this.cArrPos];
+
+    for (i = 0; i < 16; i += 1) {
+      arr[i] = props[i];
+    }
+
+    this.savedOp[this.cArrPos] = this.cO;
+    this.cArrPos += 1;
+  };
+
+  CVContextData.prototype.getTransform = function () {
+    return this.cTr;
+  };
+
+  CVContextData.prototype.getOpacity = function () {
+    return this.cO;
+  };
+
+  CVContextData.prototype.setOpacity = function (value) {
+    this.cO = value;
+  };
+
   function ShapeTransformManager() {
     this.sequences = {};
     this.sequenceList = [];
@@ -77109,6 +77195,104 @@ module.exports = invariant;
       return '_' + this.transform_key_count;
     }
   };
+
+  var lumaLoader = function lumaLoader() {
+    var id = '__lottie_element_luma_buffer';
+    var lumaBuffer = null;
+    var lumaBufferCtx = null;
+    var svg = null; // This alternate solution has a slight delay before the filter is applied, resulting in a flicker on the first frame.
+    // Keeping this here for reference, and in the future, if offscreen canvas supports url filters, this can be used.
+    // For now, neither of them work for offscreen canvas, so canvas workers can't support the luma track matte mask.
+    // Naming it solution 2 to mark the extra comment lines.
+
+    /*
+    var svgString = [
+      '<svg xmlns="http://www.w3.org/2000/svg">',
+      '<filter id="' + id + '">',
+      '<feColorMatrix type="matrix" color-interpolation-filters="sRGB" values="',
+      '0.3, 0.3, 0.3, 0, 0, ',
+      '0.3, 0.3, 0.3, 0, 0, ',
+      '0.3, 0.3, 0.3, 0, 0, ',
+      '0.3, 0.3, 0.3, 0, 0',
+      '"/>',
+      '</filter>',
+      '</svg>',
+    ].join('');
+    var blob = new Blob([svgString], { type: 'image/svg+xml' });
+    var url = URL.createObjectURL(blob);
+    */
+
+    function createLumaSvgFilter() {
+      var _svg = createNS('svg');
+
+      var fil = createNS('filter');
+      var matrix = createNS('feColorMatrix');
+      fil.setAttribute('id', id);
+      matrix.setAttribute('type', 'matrix');
+      matrix.setAttribute('color-interpolation-filters', 'sRGB');
+      matrix.setAttribute('values', '0.3, 0.3, 0.3, 0, 0, 0.3, 0.3, 0.3, 0, 0, 0.3, 0.3, 0.3, 0, 0, 0.3, 0.3, 0.3, 0, 0');
+      fil.appendChild(matrix);
+
+      _svg.appendChild(fil);
+
+      _svg.setAttribute('id', id + '_svg');
+
+      if (featureSupport.svgLumaHidden) {
+        _svg.style.display = 'none';
+      }
+
+      return _svg;
+    }
+
+    function loadLuma() {
+      if (!lumaBuffer) {
+        svg = createLumaSvgFilter();
+        document.body.appendChild(svg);
+        lumaBuffer = createTag('canvas');
+        lumaBufferCtx = lumaBuffer.getContext('2d'); // lumaBufferCtx.filter = `url('${url}#__lottie_element_luma_buffer')`; // part of solution 2
+
+        lumaBufferCtx.filter = 'url(#' + id + ')';
+        lumaBufferCtx.fillStyle = 'rgba(0,0,0,0)';
+        lumaBufferCtx.fillRect(0, 0, 1, 1);
+      }
+    }
+
+    function getLuma(canvas) {
+      if (!lumaBuffer) {
+        loadLuma();
+      }
+
+      lumaBuffer.width = canvas.width;
+      lumaBuffer.height = canvas.height; // lumaBufferCtx.filter = `url('${url}#__lottie_element_luma_buffer')`; // part of solution 2
+
+      lumaBufferCtx.filter = 'url(#' + id + ')';
+      return lumaBuffer;
+    }
+
+    return {
+      load: loadLuma,
+      get: getLuma
+    };
+  };
+
+  function createCanvas(width, height) {
+    if (featureSupport.offscreenCanvas) {
+      return new OffscreenCanvas(width, height);
+    }
+
+    var canvas = createTag('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    return canvas;
+  }
+
+  var assetLoader = function () {
+    return {
+      loadLumaCanvas: lumaLoader.load,
+      getLumaCanvas: lumaLoader.get,
+      createCanvas: createCanvas
+    };
+  }();
 
   function CVEffects() {}
 
@@ -77190,11 +77374,36 @@ module.exports = invariant;
 
   function CVBaseElement() {}
 
+  var operationsMap = {
+    1: 'source-in',
+    2: 'source-out',
+    3: 'source-in',
+    4: 'source-out'
+  };
   CVBaseElement.prototype = {
     createElements: function createElements() {},
     initRendererElement: function initRendererElement() {},
     createContainerElements: function createContainerElements() {
+      // If the layer is masked we will use two buffers to store each different states of the drawing
+      // This solution is not ideal for several reason. But unfortunately, because of the recursive
+      // nature of the render tree, it's the only simple way to make sure one inner mask doesn't override an outer mask.
+      // TODO: try to reduce the size of these buffers to the size of the composition contaning the layer
+      // It might be challenging because the layer most likely is transformed in some way
+      if (this.data.tt >= 1) {
+        this.buffers = [];
+        var canvasContext = this.globalData.canvasContext;
+        var bufferCanvas = assetLoader.createCanvas(canvasContext.canvas.width, canvasContext.canvas.height);
+        this.buffers.push(bufferCanvas);
+        var bufferCanvas2 = assetLoader.createCanvas(canvasContext.canvas.width, canvasContext.canvas.height);
+        this.buffers.push(bufferCanvas2);
+
+        if (this.data.tt >= 3 && !document._isProxy) {
+          assetLoader.loadLumaCanvas();
+        }
+      }
+
       this.canvasContext = this.globalData.canvasContext;
+      this.transformCanvas = this.globalData.transformCanvas;
       this.renderableEffectsManager = new CVEffects(this);
     },
     createContent: function createContent() {},
@@ -77222,8 +77431,72 @@ module.exports = invariant;
         this.maskManager._isFirstFrame = true;
       }
     },
-    renderFrame: function renderFrame() {
+    clearCanvas: function clearCanvas(canvasContext) {
+      canvasContext.clearRect(this.transformCanvas.tx, this.transformCanvas.ty, this.transformCanvas.w * this.transformCanvas.sx, this.transformCanvas.h * this.transformCanvas.sy);
+    },
+    prepareLayer: function prepareLayer() {
+      if (this.data.tt >= 1) {
+        var buffer = this.buffers[0];
+        var bufferCtx = buffer.getContext('2d');
+        this.clearCanvas(bufferCtx); // on the first buffer we store the current state of the global drawing
+
+        bufferCtx.drawImage(this.canvasContext.canvas, 0, 0); // The next four lines are to clear the canvas
+        // TODO: Check if there is a way to clear the canvas without resetting the transform
+
+        this.currentTransform = this.canvasContext.getTransform();
+        this.canvasContext.setTransform(1, 0, 0, 1, 0, 0);
+        this.clearCanvas(this.canvasContext);
+        this.canvasContext.setTransform(this.currentTransform);
+      }
+    },
+    exitLayer: function exitLayer() {
+      if (this.data.tt >= 1) {
+        var buffer = this.buffers[1]; // On the second buffer we store the current state of the global drawing
+        // that only contains the content of this layer
+        // (if it is a composition, it also includes the nested layers)
+
+        var bufferCtx = buffer.getContext('2d');
+        this.clearCanvas(bufferCtx);
+        bufferCtx.drawImage(this.canvasContext.canvas, 0, 0); // We clear the canvas again
+
+        this.canvasContext.setTransform(1, 0, 0, 1, 0, 0);
+        this.clearCanvas(this.canvasContext);
+        this.canvasContext.setTransform(this.currentTransform); // We draw the mask
+
+        var mask = this.comp.getElementById('tp' in this.data ? this.data.tp : this.data.ind - 1);
+        mask.renderFrame(true); // We draw the second buffer (that contains the content of this layer)
+
+        this.canvasContext.setTransform(1, 0, 0, 1, 0, 0); // If the mask is a Luma matte, we need to do two extra painting operations
+        // the _isProxy check is to avoid drawing a fake canvas in workers that will throw an error
+
+        if (this.data.tt >= 3 && !document._isProxy) {
+          // We copy the painted mask to a buffer that has a color matrix filter applied to it
+          // that applies the rgb values to the alpha channel
+          var lumaBuffer = assetLoader.getLumaCanvas(this.canvasContext.canvas);
+          var lumaBufferCtx = lumaBuffer.getContext('2d');
+          lumaBufferCtx.drawImage(this.canvasContext.canvas, 0, 0);
+          this.clearCanvas(this.canvasContext); // we repaint the context with the mask applied to it
+
+          this.canvasContext.drawImage(lumaBuffer, 0, 0);
+        }
+
+        this.canvasContext.globalCompositeOperation = operationsMap[this.data.tt];
+        this.canvasContext.drawImage(buffer, 0, 0); // We finally draw the first buffer (that contains the content of the global drawing)
+        // We use destination-over to draw the global drawing below the current layer
+
+        this.canvasContext.globalCompositeOperation = 'destination-over';
+        this.canvasContext.drawImage(this.buffers[0], 0, 0);
+        this.canvasContext.setTransform(this.currentTransform); // We reset the globalCompositeOperation to source-over, the standard type of operation
+
+        this.canvasContext.globalCompositeOperation = 'source-over';
+      }
+    },
+    renderFrame: function renderFrame(forceRender) {
       if (this.hidden || this.data.hd) {
+        return;
+      }
+
+      if (this.data.td === 1 && !forceRender) {
         return;
       }
 
@@ -77231,11 +77504,13 @@ module.exports = invariant;
       this.renderRenderable();
       this.setBlendMode();
       var forceRealStack = this.data.ty === 0;
+      this.prepareLayer();
       this.globalData.renderer.save(forceRealStack);
       this.globalData.renderer.ctxTransform(this.finalTransform.mat.props);
       this.globalData.renderer.ctxOpacity(this.finalTransform.mProp.o.v);
       this.renderInnerContent();
       this.globalData.renderer.restore(forceRealStack);
+      this.exitLayer();
 
       if (this.maskManager.hasMasks) {
         this.globalData.renderer.restore(true);
@@ -78194,14 +78469,19 @@ module.exports = invariant;
     if (!this.renderConfig.clearCanvas) {
       this.canvasContext.transform(props[0], props[1], props[4], props[5], props[12], props[13]);
       return;
-    }
+    } // Resetting the canvas transform matrix to the new transform
 
-    this.transformMat.cloneFromProps(props);
-    var cProps = this.contextData.cTr.props;
-    this.transformMat.transform(cProps[0], cProps[1], cProps[2], cProps[3], cProps[4], cProps[5], cProps[6], cProps[7], cProps[8], cProps[9], cProps[10], cProps[11], cProps[12], cProps[13], cProps[14], cProps[15]); // this.contextData.cTr.transform(props[0],props[1],props[2],props[3],props[4],props[5],props[6],props[7],props[8],props[9],props[10],props[11],props[12],props[13],props[14],props[15]);
 
-    this.contextData.cTr.cloneFromProps(this.transformMat.props);
-    var trProps = this.contextData.cTr.props;
+    this.transformMat.cloneFromProps(props); // Taking the last transform value from the stored stack of transforms
+
+    var currentTransform = this.contextData.getTransform();
+    var cProps = currentTransform.props; // Applying the last transform value after the new transform to respect the order of transformations
+
+    this.transformMat.transform(cProps[0], cProps[1], cProps[2], cProps[3], cProps[4], cProps[5], cProps[6], cProps[7], cProps[8], cProps[9], cProps[10], cProps[11], cProps[12], cProps[13], cProps[14], cProps[15]); // Storing the new transformed value in the stored transform
+
+    currentTransform.cloneFromProps(this.transformMat.props);
+    var trProps = currentTransform.props; // Applying the new transform to the canvas
+
     this.canvasContext.setTransform(trProps[0], trProps[1], trProps[4], trProps[5], trProps[12], trProps[13]);
   };
 
@@ -78209,17 +78489,20 @@ module.exports = invariant;
     /* if(op === 1){
           return;
       } */
+    var currentOpacity = this.contextData.getOpacity();
+
     if (!this.renderConfig.clearCanvas) {
       this.canvasContext.globalAlpha *= op < 0 ? 0 : op;
-      this.globalData.currentGlobalAlpha = this.contextData.cO;
+      this.globalData.currentGlobalAlpha = currentOpacity;
       return;
     }
 
-    this.contextData.cO *= op < 0 ? 0 : op;
+    currentOpacity *= op < 0 ? 0 : op;
+    this.contextData.setOpacity(currentOpacity);
 
-    if (this.globalData.currentGlobalAlpha !== this.contextData.cO) {
-      this.canvasContext.globalAlpha = this.contextData.cO;
-      this.globalData.currentGlobalAlpha = this.contextData.cO;
+    if (this.globalData.currentGlobalAlpha !== currentOpacity) {
+      this.canvasContext.globalAlpha = currentOpacity;
+      this.globalData.currentGlobalAlpha = currentOpacity;
     }
   };
 
@@ -78242,21 +78525,7 @@ module.exports = invariant;
       this.canvasContext.save();
     }
 
-    var props = this.contextData.cTr.props;
-
-    if (this.contextData._length <= this.contextData.cArrPos) {
-      this.contextData.duplicate();
-    }
-
-    var i;
-    var arr = this.contextData.saved[this.contextData.cArrPos];
-
-    for (i = 0; i < 16; i += 1) {
-      arr[i] = props[i];
-    }
-
-    this.contextData.savedOp[this.contextData.cArrPos] = this.contextData.cO;
-    this.contextData.cArrPos += 1;
+    this.contextData.push();
   };
 
   CanvasRendererBase.prototype.restore = function (actionFlag) {
@@ -78270,22 +78539,14 @@ module.exports = invariant;
       this.globalData.blendMode = 'source-over';
     }
 
-    this.contextData.cArrPos -= 1;
-    var popped = this.contextData.saved[this.contextData.cArrPos];
-    var i;
-    var arr = this.contextData.cTr.props;
+    var popped = this.contextData.pop();
+    var transform = popped.transform;
+    var opacity = popped.opacity;
+    this.canvasContext.setTransform(transform[0], transform[1], transform[4], transform[5], transform[12], transform[13]);
 
-    for (i = 0; i < 16; i += 1) {
-      arr[i] = popped[i];
-    }
-
-    this.canvasContext.setTransform(popped[0], popped[1], popped[4], popped[5], popped[12], popped[13]);
-    popped = this.contextData.savedOp[this.contextData.cArrPos];
-    this.contextData.cO = popped;
-
-    if (this.globalData.currentGlobalAlpha !== popped) {
-      this.canvasContext.globalAlpha = popped;
-      this.globalData.currentGlobalAlpha = popped;
+    if (this.globalData.currentGlobalAlpha !== opacity) {
+      this.canvasContext.globalAlpha = opacity;
+      this.globalData.currentGlobalAlpha = opacity;
     }
   };
 
@@ -81352,11 +81613,19 @@ module.exports = invariant;
           var stringValue = elem.textProperty.currentData.t;
 
           if (stringValue !== _prevValue) {
-            elem.textProperty.currentData.t = _prevValue;
+            _prevValue = elem.textProperty.currentData.t;
             _sourceText = new String(stringValue); // eslint-disable-line no-new-wrappers
             // If stringValue is an empty string, eval returns undefined, so it has to be returned as a String primitive
 
             _sourceText.value = stringValue || new String(stringValue); // eslint-disable-line no-new-wrappers
+
+            Object.defineProperty(_sourceText, 'style', {
+              get: function get() {
+                return {
+                  fillColor: elem.textProperty.currentData.fc
+                };
+              }
+            });
           }
 
           return _sourceText;
@@ -83252,12 +83521,15 @@ module.exports = invariant;
     }
   };
 
+  var linearFilterValue = '0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0';
+
   function SVGTintFilter(filter, filterManager, elem, id, source) {
     this.filterManager = filterManager;
     var feColorMatrix = createNS('feColorMatrix');
     feColorMatrix.setAttribute('type', 'matrix');
     feColorMatrix.setAttribute('color-interpolation-filters', 'linearRGB');
-    feColorMatrix.setAttribute('values', '0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0');
+    feColorMatrix.setAttribute('values', linearFilterValue + ' 1 0');
+    this.linearFilter = feColorMatrix;
     feColorMatrix.setAttribute('result', id + '_tint_1');
     filter.appendChild(feColorMatrix);
     feColorMatrix = createNS('feColorMatrix');
@@ -83278,7 +83550,8 @@ module.exports = invariant;
       var colorBlack = this.filterManager.effectElements[0].p.v;
       var colorWhite = this.filterManager.effectElements[1].p.v;
       var opacity = this.filterManager.effectElements[2].p.v / 100;
-      this.matrixFilter.setAttribute('values', colorWhite[0] - colorBlack[0] + ' 0 0 0 ' + colorBlack[0] + ' ' + (colorWhite[1] - colorBlack[1]) + ' 0 0 0 ' + colorBlack[1] + ' ' + (colorWhite[2] - colorBlack[2]) + ' 0 0 0 ' + colorBlack[2] + ' 0 0 0 ' + opacity + ' 0');
+      this.linearFilter.setAttribute('values', linearFilterValue + ' ' + opacity + ' 0');
+      this.matrixFilter.setAttribute('values', colorWhite[0] - colorBlack[0] + ' 0 0 0 ' + colorBlack[0] + ' ' + (colorWhite[1] - colorBlack[1]) + ' 0 0 0 ' + colorBlack[1] + ' ' + (colorWhite[2] - colorBlack[2]) + ' 0 0 0 ' + colorBlack[2] + ' 0 0 0 1 0');
     }
   };
 
@@ -95277,20 +95550,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "shift": () => (/* binding */ shift),
 /* harmony export */   "size": () => (/* binding */ size)
 /* harmony export */ });
-function getSide(placement) {
-  return placement.split('-')[0];
-}
-
 function getAlignment(placement) {
   return placement.split('-')[1];
 }
 
-function getMainAxisFromPlacement(placement) {
-  return ['top', 'bottom'].includes(getSide(placement)) ? 'x' : 'y';
-}
-
 function getLengthFromAxis(axis) {
   return axis === 'y' ? 'height' : 'width';
+}
+
+function getSide(placement) {
+  return placement.split('-')[0];
+}
+
+function getMainAxisFromPlacement(placement) {
+  return ['top', 'bottom'].includes(getSide(placement)) ? 'x' : 'y';
 }
 
 function computeCoordsFromPlacement(_ref, placement, rtl) {
@@ -95561,19 +95834,20 @@ function within(min$1, value, max$1) {
 }
 
 /**
- * Positions an inner element of the floating element such that it is centered
- * to the reference element.
+ * A data provider that provides data to position an inner element of the
+ * floating element (usually a triangle or caret) so that it is centered to the
+ * reference element.
  * @see https://floating-ui.com/docs/arrow
  */
 const arrow = options => ({
   name: 'arrow',
   options,
   async fn(middlewareArguments) {
-    // Since `element` is required, we don't Partial<> the type
+    // Since `element` is required, we don't Partial<> the type.
     const {
       element,
       padding = 0
-    } = options != null ? options : {};
+    } = options || {};
     const {
       x,
       y,
@@ -95607,7 +95881,7 @@ const arrow = options => ({
     const centerToReference = endDiff / 2 - startDiff / 2;
 
     // Make sure the arrow doesn't overflow the floating element if the center
-    // point is outside the floating element's bounds
+    // point is outside the floating element's bounds.
     const min = paddingObject[minProp];
     const max = clientSize - arrowDimensions[length] - paddingObject[maxProp];
     const center = clientSize / 2 - arrowDimensions[length] / 2 + centerToReference;
@@ -95629,14 +95903,17 @@ const arrow = options => ({
   }
 });
 
-const hash$1 = {
+const sides = ['top', 'right', 'bottom', 'left'];
+const allPlacements = /*#__PURE__*/sides.reduce((acc, side) => acc.concat(side, side + "-start", side + "-end"), []);
+
+const oppositeSideMap = {
   left: 'right',
   right: 'left',
   bottom: 'top',
   top: 'bottom'
 };
 function getOppositePlacement(placement) {
-  return placement.replace(/left|right|bottom|top/g, matched => hash$1[matched]);
+  return placement.replace(/left|right|bottom|top/g, side => oppositeSideMap[side]);
 }
 
 function getAlignmentSides(placement, rects, rtl) {
@@ -95656,16 +95933,13 @@ function getAlignmentSides(placement, rects, rtl) {
   };
 }
 
-const hash = {
+const oppositeAlignmentMap = {
   start: 'end',
   end: 'start'
 };
 function getOppositeAlignmentPlacement(placement) {
-  return placement.replace(/start|end/g, matched => hash[matched]);
+  return placement.replace(/start|end/g, alignment => oppositeAlignmentMap[alignment]);
 }
-
-const sides = ['top', 'right', 'bottom', 'left'];
-const allPlacements = /*#__PURE__*/sides.reduce((acc, side) => acc.concat(side, side + "-start", side + "-end"), []);
 
 function getPlacementList(alignment, autoAlignment, allowedPlacements) {
   const allowedPlacementsSortedByAlignment = alignment ? [...allowedPlacements.filter(placement => getAlignment(placement) === alignment), ...allowedPlacements.filter(placement => getAlignment(placement) !== alignment)] : allowedPlacements.filter(placement => getSide(placement) === placement);
@@ -95688,10 +95962,8 @@ const autoPlacement = function (options) {
     name: 'autoPlacement',
     options,
     async fn(middlewareArguments) {
-      var _middlewareData$autoP, _middlewareData$autoP2, _middlewareData$autoP3, _middlewareData$autoP4, _placementsSortedByLe;
+      var _middlewareData$autoP, _middlewareData$autoP2, _placementsThatFitOnE;
       const {
-        x,
-        y,
         rects,
         middlewareData,
         placement,
@@ -95699,6 +95971,7 @@ const autoPlacement = function (options) {
         elements
       } = middlewareArguments;
       const {
+        crossAxis = false,
         alignment,
         allowedPlacements = allPlacements,
         autoAlignment = true,
@@ -95706,7 +95979,7 @@ const autoPlacement = function (options) {
       } = options;
       const placements = alignment !== undefined || allowedPlacements === allPlacements ? getPlacementList(alignment || null, autoAlignment, allowedPlacements) : allowedPlacements;
       const overflow = await detectOverflow(middlewareArguments, detectOverflowOptions);
-      const currentIndex = (_middlewareData$autoP = (_middlewareData$autoP2 = middlewareData.autoPlacement) == null ? void 0 : _middlewareData$autoP2.index) != null ? _middlewareData$autoP : 0;
+      const currentIndex = ((_middlewareData$autoP = middlewareData.autoPlacement) == null ? void 0 : _middlewareData$autoP.index) || 0;
       const currentPlacement = placements[currentIndex];
       if (currentPlacement == null) {
         return {};
@@ -95716,24 +95989,22 @@ const autoPlacement = function (options) {
         cross
       } = getAlignmentSides(currentPlacement, rects, await (platform.isRTL == null ? void 0 : platform.isRTL(elements.floating)));
 
-      // Make `computeCoords` start from the right place
+      // Make `computeCoords` start from the right place.
       if (placement !== currentPlacement) {
         return {
-          x,
-          y,
           reset: {
             placement: placements[0]
           }
         };
       }
       const currentOverflows = [overflow[getSide(currentPlacement)], overflow[main], overflow[cross]];
-      const allOverflows = [...((_middlewareData$autoP3 = (_middlewareData$autoP4 = middlewareData.autoPlacement) == null ? void 0 : _middlewareData$autoP4.overflows) != null ? _middlewareData$autoP3 : []), {
+      const allOverflows = [...(((_middlewareData$autoP2 = middlewareData.autoPlacement) == null ? void 0 : _middlewareData$autoP2.overflows) || []), {
         placement: currentPlacement,
         overflows: currentOverflows
       }];
       const nextPlacement = placements[currentIndex + 1];
 
-      // There are more placements to check
+      // There are more placements to check.
       if (nextPlacement) {
         return {
           data: {
@@ -95745,14 +96016,19 @@ const autoPlacement = function (options) {
           }
         };
       }
-      const placementsSortedByLeastOverflow = allOverflows.slice().sort((a, b) => a.overflows[0] - b.overflows[0]);
-      const placementThatFitsOnAllSides = (_placementsSortedByLe = placementsSortedByLeastOverflow.find(_ref => {
-        let {
-          overflows
-        } = _ref;
-        return overflows.every(overflow => overflow <= 0);
-      })) == null ? void 0 : _placementsSortedByLe.placement;
-      const resetPlacement = placementThatFitsOnAllSides != null ? placementThatFitsOnAllSides : placementsSortedByLeastOverflow[0].placement;
+      const placementsSortedByMostSpace = allOverflows.map(d => {
+        const alignment = getAlignment(d.placement);
+        return [d.placement, alignment && crossAxis ?
+        // Check along the mainAxis and main crossAxis side.
+        d.overflows.slice(0, 2).reduce((acc, v) => acc + v, 0) :
+        // Check only the mainAxis.
+        d.overflows[0], d.overflows];
+      }).sort((a, b) => a[1] - b[1]);
+      const placementsThatFitOnEachSide = placementsSortedByMostSpace.filter(d => d[2].slice(0,
+      // Aligned placements should not check their opposite crossAxis
+      // side.
+      getAlignment(d[0]) ? 2 : 3).every(v => v <= 0));
+      const resetPlacement = ((_placementsThatFitOnE = placementsThatFitOnEachSide[0]) == null ? void 0 : _placementsThatFitOnE[0]) || placementsSortedByMostSpace[0][0];
       if (resetPlacement !== placement) {
         return {
           data: {
@@ -95774,9 +96050,42 @@ function getExpandedPlacements(placement) {
   return [getOppositeAlignmentPlacement(placement), oppositePlacement, getOppositeAlignmentPlacement(oppositePlacement)];
 }
 
+function getSideList(side, isStart, rtl) {
+  const lr = ['left', 'right'];
+  const rl = ['right', 'left'];
+  const tb = ['top', 'bottom'];
+  const bt = ['bottom', 'top'];
+  switch (side) {
+    case 'top':
+    case 'bottom':
+      if (rtl) return isStart ? rl : lr;
+      return isStart ? lr : rl;
+    case 'left':
+    case 'right':
+      return isStart ? tb : bt;
+    default:
+      return [];
+  }
+}
+function getOppositeAxisPlacements(placement, flipAlignment, direction, rtl) {
+  const alignment = getAlignment(placement);
+  let list = getSideList(getSide(placement), direction === 'start', rtl);
+  if (alignment) {
+    list = list.map(side => side + "-" + alignment);
+    if (flipAlignment) {
+      list = list.concat(list.map(getOppositeAlignmentPlacement));
+    }
+  }
+  return list;
+}
+
 /**
- * Changes the placement of the floating element to one that will fit if the
- * initially specified `placement` does not.
+ * A visibility optimizer that changes the placement of the floating element in
+ * order to keep it in view. By default, only the opposite placement is tried.
+ *
+ * It has the ability to flip to any placement, not just the opposite one. You
+ * can use a series of “fallback” placements, where each placement is
+ * progressively tried until the one that fits can be used.
  * @see https://floating-ui.com/docs/flip
  */
 const flip = function (options) {
@@ -95801,12 +96110,17 @@ const flip = function (options) {
         crossAxis: checkCrossAxis = true,
         fallbackPlacements: specifiedFallbackPlacements,
         fallbackStrategy = 'bestFit',
+        fallbackAxisSideDirection = 'none',
         flipAlignment = true,
         ...detectOverflowOptions
       } = options;
       const side = getSide(placement);
-      const isBasePlacement = side === initialPlacement;
+      const isBasePlacement = getSide(initialPlacement) === initialPlacement;
+      const rtl = await (platform.isRTL == null ? void 0 : platform.isRTL(elements.floating));
       const fallbackPlacements = specifiedFallbackPlacements || (isBasePlacement || !flipAlignment ? [getOppositePlacement(initialPlacement)] : getExpandedPlacements(initialPlacement));
+      if (!specifiedFallbackPlacements && fallbackAxisSideDirection !== 'none') {
+        fallbackPlacements.push(...getOppositeAxisPlacements(initialPlacement, flipAlignment, fallbackAxisSideDirection, rtl));
+      }
       const placements = [initialPlacement, ...fallbackPlacements];
       const overflow = await detectOverflow(middlewareArguments, detectOverflowOptions);
       const overflows = [];
@@ -95818,7 +96132,7 @@ const flip = function (options) {
         const {
           main,
           cross
-        } = getAlignmentSides(placement, rects, await (platform.isRTL == null ? void 0 : platform.isRTL(elements.floating)));
+        } = getAlignmentSides(placement, rects, rtl);
         overflows.push(overflow[main], overflow[cross]);
       }
       overflowsData = [...overflowsData, {
@@ -95826,13 +96140,13 @@ const flip = function (options) {
         overflows
       }];
 
-      // One or more sides is overflowing
+      // One or more sides is overflowing.
       if (!overflows.every(side => side <= 0)) {
-        var _middlewareData$flip$, _middlewareData$flip2;
-        const nextIndex = ((_middlewareData$flip$ = (_middlewareData$flip2 = middlewareData.flip) == null ? void 0 : _middlewareData$flip2.index) != null ? _middlewareData$flip$ : 0) + 1;
+        var _middlewareData$flip2, _overflowsData$filter;
+        const nextIndex = (((_middlewareData$flip2 = middlewareData.flip) == null ? void 0 : _middlewareData$flip2.index) || 0) + 1;
         const nextPlacement = placements[nextIndex];
         if (nextPlacement) {
-          // Try next placement and re-run the lifecycle
+          // Try next placement and re-run the lifecycle.
           return {
             data: {
               index: nextIndex,
@@ -95843,20 +96157,27 @@ const flip = function (options) {
             }
           };
         }
-        let resetPlacement = 'bottom';
-        switch (fallbackStrategy) {
-          case 'bestFit':
-            {
-              var _overflowsData$map$so;
-              const placement = (_overflowsData$map$so = overflowsData.map(d => [d, d.overflows.filter(overflow => overflow > 0).reduce((acc, overflow) => acc + overflow, 0)]).sort((a, b) => a[1] - b[1])[0]) == null ? void 0 : _overflowsData$map$so[0].placement;
-              if (placement) {
-                resetPlacement = placement;
+
+        // First, find the candidates that fit on the mainAxis side of overflow,
+        // then find the placement that fits the best on the main crossAxis side.
+        let resetPlacement = (_overflowsData$filter = overflowsData.filter(d => d.overflows[0] <= 0).sort((a, b) => a.overflows[1] - b.overflows[1])[0]) == null ? void 0 : _overflowsData$filter.placement;
+
+        // Otherwise fallback.
+        if (!resetPlacement) {
+          switch (fallbackStrategy) {
+            case 'bestFit':
+              {
+                var _overflowsData$map$so;
+                const placement = (_overflowsData$map$so = overflowsData.map(d => [d.placement, d.overflows.filter(overflow => overflow > 0).reduce((acc, overflow) => acc + overflow, 0)]).sort((a, b) => a[1] - b[1])[0]) == null ? void 0 : _overflowsData$map$so[0];
+                if (placement) {
+                  resetPlacement = placement;
+                }
+                break;
               }
+            case 'initialPlacement':
+              resetPlacement = initialPlacement;
               break;
-            }
-          case 'initialPlacement':
-            resetPlacement = initialPlacement;
-            break;
+          }
         }
         if (placement !== resetPlacement) {
           return {
@@ -95883,8 +96204,9 @@ function isAnySideFullyClipped(overflow) {
   return sides.some(side => overflow[side] >= 0);
 }
 /**
- * Provides data to hide the floating element in applicable situations, such as
- * when it is not in the same clipping context as the reference element.
+ * A data provider that allows you to hide the floating element in applicable
+ * situations, usually when it’s not within the same clipping context as the
+ * reference element.
  * @see https://floating-ui.com/docs/hide
  */
 const hide = function (options) {
@@ -95940,6 +96262,113 @@ const hide = function (options) {
   };
 };
 
+/**
+ * Provides improved positioning for inline reference elements that can span
+ * over multiple lines, such as hyperlinks or range selections.
+ * @see https://floating-ui.com/docs/inline
+ */
+const inline = function (options) {
+  if (options === void 0) {
+    options = {};
+  }
+  return {
+    name: 'inline',
+    options,
+    async fn(middlewareArguments) {
+      const {
+        placement,
+        elements,
+        rects,
+        platform,
+        strategy
+      } = middlewareArguments;
+      // A MouseEvent's client{X,Y} coords can be up to 2 pixels off a
+      // ClientRect's bounds, despite the event listener being triggered. A
+      // padding of 2 seems to handle this issue.
+      const {
+        padding = 2,
+        x,
+        y
+      } = options;
+      const fallback = rectToClientRect(platform.convertOffsetParentRelativeRectToViewportRelativeRect ? await platform.convertOffsetParentRelativeRectToViewportRelativeRect({
+        rect: rects.reference,
+        offsetParent: await (platform.getOffsetParent == null ? void 0 : platform.getOffsetParent(elements.floating)),
+        strategy
+      }) : rects.reference);
+      const clientRects = (await (platform.getClientRects == null ? void 0 : platform.getClientRects(elements.reference))) || [];
+      const paddingObject = getSideObjectFromPadding(padding);
+      function getBoundingClientRect() {
+        // There are two rects and they are disjoined.
+        if (clientRects.length === 2 && clientRects[0].left > clientRects[1].right && x != null && y != null) {
+          // Find the first rect in which the point is fully inside.
+          return clientRects.find(rect => x > rect.left - paddingObject.left && x < rect.right + paddingObject.right && y > rect.top - paddingObject.top && y < rect.bottom + paddingObject.bottom) || fallback;
+        }
+
+        // There are 2 or more connected rects.
+        if (clientRects.length >= 2) {
+          if (getMainAxisFromPlacement(placement) === 'x') {
+            const firstRect = clientRects[0];
+            const lastRect = clientRects[clientRects.length - 1];
+            const isTop = getSide(placement) === 'top';
+            const top = firstRect.top;
+            const bottom = lastRect.bottom;
+            const left = isTop ? firstRect.left : lastRect.left;
+            const right = isTop ? firstRect.right : lastRect.right;
+            const width = right - left;
+            const height = bottom - top;
+            return {
+              top,
+              bottom,
+              left,
+              right,
+              width,
+              height,
+              x: left,
+              y: top
+            };
+          }
+          const isLeftSide = getSide(placement) === 'left';
+          const maxRight = max(...clientRects.map(rect => rect.right));
+          const minLeft = min(...clientRects.map(rect => rect.left));
+          const measureRects = clientRects.filter(rect => isLeftSide ? rect.left === minLeft : rect.right === maxRight);
+          const top = measureRects[0].top;
+          const bottom = measureRects[measureRects.length - 1].bottom;
+          const left = minLeft;
+          const right = maxRight;
+          const width = right - left;
+          const height = bottom - top;
+          return {
+            top,
+            bottom,
+            left,
+            right,
+            width,
+            height,
+            x: left,
+            y: top
+          };
+        }
+        return fallback;
+      }
+      const resetRects = await platform.getElementRects({
+        reference: {
+          getBoundingClientRect
+        },
+        floating: elements.floating,
+        strategy
+      });
+      if (rects.reference.x !== resetRects.reference.x || rects.reference.y !== resetRects.reference.y || rects.reference.width !== resetRects.reference.width || rects.reference.height !== resetRects.reference.height) {
+        return {
+          reset: {
+            rects: resetRects
+          }
+        };
+      }
+      return {};
+    }
+  };
+};
+
 async function convertValueToCoords(middlewareArguments, value) {
   const {
     placement,
@@ -95982,7 +96411,10 @@ async function convertValueToCoords(middlewareArguments, value) {
 }
 
 /**
- * Displaces the floating element from its reference element.
+ * A placement modifier that translates the floating element along the specified
+ * axes.
+ * A number (shorthand for `mainAxis` or distance), or an axes configuration
+ * object may be passed.
  * @see https://floating-ui.com/docs/offset
  */
 const offset = function (value) {
@@ -96012,8 +96444,8 @@ function getCrossAxis(axis) {
 }
 
 /**
- * Shifts the floating element in order to keep it in view when it will overflow
- * a clipping boundary.
+ * A visibility optimizer that shifts the floating element along the specified
+ * axes in order to keep it in view.
  * @see https://floating-ui.com/docs/shift
  */
 const shift = function (options) {
@@ -96134,11 +96566,11 @@ const limitShift = function (options) {
         }
       }
       if (checkCrossAxis) {
-        var _middlewareData$offse, _middlewareData$offse2, _middlewareData$offse3, _middlewareData$offse4;
+        var _middlewareData$offse, _middlewareData$offse2;
         const len = mainAxis === 'y' ? 'width' : 'height';
         const isOriginSide = ['top', 'left'].includes(getSide(placement));
-        const limitMin = rects.reference[crossAxis] - rects.floating[len] + (isOriginSide ? (_middlewareData$offse = (_middlewareData$offse2 = middlewareData.offset) == null ? void 0 : _middlewareData$offse2[crossAxis]) != null ? _middlewareData$offse : 0 : 0) + (isOriginSide ? 0 : computedOffset.crossAxis);
-        const limitMax = rects.reference[crossAxis] + rects.reference[len] + (isOriginSide ? 0 : (_middlewareData$offse3 = (_middlewareData$offse4 = middlewareData.offset) == null ? void 0 : _middlewareData$offse4[crossAxis]) != null ? _middlewareData$offse3 : 0) - (isOriginSide ? computedOffset.crossAxis : 0);
+        const limitMin = rects.reference[crossAxis] - rects.floating[len] + (isOriginSide ? ((_middlewareData$offse = middlewareData.offset) == null ? void 0 : _middlewareData$offse[crossAxis]) || 0 : 0) + (isOriginSide ? 0 : computedOffset.crossAxis);
+        const limitMax = rects.reference[crossAxis] + rects.reference[len] + (isOriginSide ? 0 : ((_middlewareData$offse2 = middlewareData.offset) == null ? void 0 : _middlewareData$offse2[crossAxis]) || 0) - (isOriginSide ? computedOffset.crossAxis : 0);
         if (crossAxisCoord < limitMin) {
           crossAxisCoord = limitMin;
         } else if (crossAxisCoord > limitMax) {
@@ -96180,6 +96612,12 @@ const size = function (options) {
       const overflow = await detectOverflow(middlewareArguments, detectOverflowOptions);
       const side = getSide(placement);
       const alignment = getAlignment(placement);
+      const axis = getMainAxisFromPlacement(placement);
+      const isXAxis = axis === 'x';
+      const {
+        width,
+        height
+      } = rects.floating;
       let heightSide;
       let widthSide;
       if (side === 'top' || side === 'bottom') {
@@ -96189,132 +96627,40 @@ const size = function (options) {
         widthSide = side;
         heightSide = alignment === 'end' ? 'top' : 'bottom';
       }
-      const xMin = max(overflow.left, 0);
-      const xMax = max(overflow.right, 0);
-      const yMin = max(overflow.top, 0);
-      const yMax = max(overflow.bottom, 0);
-      const dimensions = {
-        availableHeight: rects.floating.height - (['left', 'right'].includes(placement) ? 2 * (yMin !== 0 || yMax !== 0 ? yMin + yMax : max(overflow.top, overflow.bottom)) : overflow[heightSide]),
-        availableWidth: rects.floating.width - (['top', 'bottom'].includes(placement) ? 2 * (xMin !== 0 || xMax !== 0 ? xMin + xMax : max(overflow.left, overflow.right)) : overflow[widthSide])
-      };
+      const overflowAvailableHeight = height - overflow[heightSide];
+      const overflowAvailableWidth = width - overflow[widthSide];
+      let availableHeight = overflowAvailableHeight;
+      let availableWidth = overflowAvailableWidth;
+      if (isXAxis) {
+        availableWidth = min(
+        // Maximum clipping viewport width
+        width - overflow.right - overflow.left, overflowAvailableWidth);
+      } else {
+        availableHeight = min(
+        // Maximum clipping viewport height
+        height - overflow.bottom - overflow.top, overflowAvailableHeight);
+      }
+      if (!middlewareArguments.middlewareData.shift && !alignment) {
+        const xMin = max(overflow.left, 0);
+        const xMax = max(overflow.right, 0);
+        const yMin = max(overflow.top, 0);
+        const yMax = max(overflow.bottom, 0);
+        if (isXAxis) {
+          availableWidth = width - 2 * (xMin !== 0 || xMax !== 0 ? xMin + xMax : max(overflow.left, overflow.right));
+        } else {
+          availableHeight = height - 2 * (yMin !== 0 || yMax !== 0 ? yMin + yMax : max(overflow.top, overflow.bottom));
+        }
+      }
       await apply({
         ...middlewareArguments,
-        ...dimensions
+        availableWidth,
+        availableHeight
       });
       const nextDimensions = await platform.getDimensions(elements.floating);
-      if (rects.floating.width !== nextDimensions.width || rects.floating.height !== nextDimensions.height) {
+      if (width !== nextDimensions.width || height !== nextDimensions.height) {
         return {
           reset: {
             rects: true
-          }
-        };
-      }
-      return {};
-    }
-  };
-};
-
-/**
- * Provides improved positioning for inline reference elements that can span
- * over multiple lines, such as hyperlinks or range selections.
- * @see https://floating-ui.com/docs/inline
- */
-const inline = function (options) {
-  if (options === void 0) {
-    options = {};
-  }
-  return {
-    name: 'inline',
-    options,
-    async fn(middlewareArguments) {
-      var _await$platform$getCl;
-      const {
-        placement,
-        elements,
-        rects,
-        platform,
-        strategy
-      } = middlewareArguments;
-      // A MouseEvent's client{X,Y} coords can be up to 2 pixels off a
-      // ClientRect's bounds, despite the event listener being triggered. A
-      // padding of 2 seems to handle this issue.
-      const {
-        padding = 2,
-        x,
-        y
-      } = options;
-      const fallback = rectToClientRect(platform.convertOffsetParentRelativeRectToViewportRelativeRect ? await platform.convertOffsetParentRelativeRectToViewportRelativeRect({
-        rect: rects.reference,
-        offsetParent: await (platform.getOffsetParent == null ? void 0 : platform.getOffsetParent(elements.floating)),
-        strategy
-      }) : rects.reference);
-      const clientRects = (_await$platform$getCl = await (platform.getClientRects == null ? void 0 : platform.getClientRects(elements.reference))) != null ? _await$platform$getCl : [];
-      const paddingObject = getSideObjectFromPadding(padding);
-      function getBoundingClientRect() {
-        // There are two rects and they are disjoined
-        if (clientRects.length === 2 && clientRects[0].left > clientRects[1].right && x != null && y != null) {
-          var _clientRects$find;
-          // Find the first rect in which the point is fully inside
-          return (_clientRects$find = clientRects.find(rect => x > rect.left - paddingObject.left && x < rect.right + paddingObject.right && y > rect.top - paddingObject.top && y < rect.bottom + paddingObject.bottom)) != null ? _clientRects$find : fallback;
-        }
-
-        // There are 2 or more connected rects
-        if (clientRects.length >= 2) {
-          if (getMainAxisFromPlacement(placement) === 'x') {
-            const firstRect = clientRects[0];
-            const lastRect = clientRects[clientRects.length - 1];
-            const isTop = getSide(placement) === 'top';
-            const top = firstRect.top;
-            const bottom = lastRect.bottom;
-            const left = isTop ? firstRect.left : lastRect.left;
-            const right = isTop ? firstRect.right : lastRect.right;
-            const width = right - left;
-            const height = bottom - top;
-            return {
-              top,
-              bottom,
-              left,
-              right,
-              width,
-              height,
-              x: left,
-              y: top
-            };
-          }
-          const isLeftSide = getSide(placement) === 'left';
-          const maxRight = max(...clientRects.map(rect => rect.right));
-          const minLeft = min(...clientRects.map(rect => rect.left));
-          const measureRects = clientRects.filter(rect => isLeftSide ? rect.left === minLeft : rect.right === maxRight);
-          const top = measureRects[0].top;
-          const bottom = measureRects[measureRects.length - 1].bottom;
-          const left = minLeft;
-          const right = maxRight;
-          const width = right - left;
-          const height = bottom - top;
-          return {
-            top,
-            bottom,
-            left,
-            right,
-            width,
-            height,
-            x: left,
-            y: top
-          };
-        }
-        return fallback;
-      }
-      const resetRects = await platform.getElementRects({
-        reference: {
-          getBoundingClientRect
-        },
-        floating: elements.floating,
-        strategy
-      });
-      if (rects.reference.x !== resetRects.reference.x || rects.reference.y !== resetRects.reference.y || rects.reference.width !== resetRects.reference.width || rects.reference.height !== resetRects.reference.height) {
-        return {
-          reset: {
-            rects: resetRects
           }
         };
       }
@@ -96365,6 +96711,28 @@ function getComputedStyle$1(element) {
   return getWindow(element).getComputedStyle(element);
 }
 
+const min = Math.min;
+const max = Math.max;
+const round = Math.round;
+
+function getCssDimensions(element) {
+  const css = getComputedStyle$1(element);
+  let width = parseFloat(css.width);
+  let height = parseFloat(css.height);
+  const offsetWidth = element.offsetWidth;
+  const offsetHeight = element.offsetHeight;
+  const shouldFallback = round(width) !== offsetWidth || round(height) !== offsetHeight;
+  if (shouldFallback) {
+    width = offsetWidth;
+    height = offsetHeight;
+  }
+  return {
+    width,
+    height,
+    fallback: shouldFallback
+  };
+}
+
 function getNodeName(node) {
   return isNode(node) ? (node.nodeName || '').toLowerCase() : '';
 }
@@ -96392,7 +96760,7 @@ function isNode(value) {
   return value instanceof getWindow(value).Node;
 }
 function isShadowRoot(node) {
-  // Browsers without `ShadowRoot` support
+  // Browsers without `ShadowRoot` support.
   if (typeof ShadowRoot === 'undefined') {
     return false;
   }
@@ -96412,7 +96780,7 @@ function isTableElement(element) {
   return ['table', 'td', 'th'].includes(getNodeName(element));
 }
 function isContainingBlock(element) {
-  // TODO: Try and use feature detection here instead
+  // TODO: Try to use feature detection here instead.
   const isFirefox = /firefox/i.test(getUAString());
   const css = getComputedStyle$1(element);
   const backdropFilter = css.backdropFilter || css.WebkitBackdropFilter;
@@ -96420,47 +96788,31 @@ function isContainingBlock(element) {
   // This is non-exhaustive but covers the most common CSS properties that
   // create a containing block.
   // https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#identifying_the_containing_block
-  return css.transform !== 'none' || css.perspective !== 'none' || (backdropFilter ? backdropFilter !== 'none' : false) || isFirefox && css.willChange === 'filter' || isFirefox && (css.filter ? css.filter !== 'none' : false) || ['transform', 'perspective'].some(value => css.willChange.includes(value)) || ['paint', 'layout', 'strict', 'content'].some(
-  // TS 4.1 compat
-  value => {
+  return css.transform !== 'none' || css.perspective !== 'none' || (backdropFilter ? backdropFilter !== 'none' : false) || isFirefox && css.willChange === 'filter' || isFirefox && (css.filter ? css.filter !== 'none' : false) || ['transform', 'perspective'].some(value => css.willChange.includes(value)) || ['paint', 'layout', 'strict', 'content'].some(value => {
+    // Add type check for old browsers.
     const contain = css.contain;
     return contain != null ? contain.includes(value) : false;
   });
 }
-function isLayoutViewport() {
-  // Not Safari
-  return !/^((?!chrome|android).)*safari/i.test(getUAString());
-  // Feature detection for this fails in various ways
-  // • Always-visible scrollbar or not
-  // • Width of <html>, etc.
-  // const vV = win.visualViewport;
-  // return vV ? Math.abs(win.innerWidth / vV.scale - vV.width) < 0.5 : true;
-}
 
+/**
+ * Determines whether or not `.getBoundingClientRect()` is affected by visual
+ * viewport offsets. In Safari, the `x`/`y` offsets are values relative to the
+ * visual viewport, while in other engines, they are values relative to the
+ * layout viewport.
+ */
+function isClientRectVisualViewportBased() {
+  // TODO: Try to use feature detection here instead. Feature detection for
+  // this can fail in various ways, making the userAgent check the most
+  // reliable:
+  // • Always-visible scrollbar or not
+  // • Width of <html>
+
+  // Is Safari.
+  return /^((?!chrome|android).)*safari/i.test(getUAString());
+}
 function isLastTraversableNode(node) {
   return ['html', 'body', '#document'].includes(getNodeName(node));
-}
-
-const min = Math.min;
-const max = Math.max;
-const round = Math.round;
-
-function getCssDimensions(element) {
-  const css = getComputedStyle$1(element);
-  let width = parseFloat(css.width);
-  let height = parseFloat(css.height);
-  const offsetWidth = element.offsetWidth;
-  const offsetHeight = element.offsetHeight;
-  const shouldFallback = round(width) !== offsetWidth || round(height) !== offsetHeight;
-  if (shouldFallback) {
-    width = offsetWidth;
-    height = offsetHeight;
-  }
-  return {
-    width,
-    height,
-    fallback: shouldFallback
-  };
 }
 
 function unwrapElement(element) {
@@ -96520,7 +96872,7 @@ function getBoundingClientRect(element, includeScale, isFixedStrategy, offsetPar
     }
   }
   const win = domElement ? getWindow(domElement) : window;
-  const addVisualOffsets = !isLayoutViewport() && isFixedStrategy;
+  const addVisualOffsets = isClientRectVisualViewportBased() && isFixedStrategy;
   let x = (clientRect.left + (addVisualOffsets ? ((_win$visualViewport = win.visualViewport) == null ? void 0 : _win$visualViewport.offsetLeft) || 0 : 0)) / scale.x;
   let y = (clientRect.top + (addVisualOffsets ? ((_win$visualViewport2 = win.visualViewport) == null ? void 0 : _win$visualViewport2.offsetTop) || 0 : 0)) / scale.y;
   let width = clientRect.width / scale.x;
@@ -96573,96 +96925,6 @@ function getNodeScroll(element) {
   };
 }
 
-function getWindowScrollBarX(element) {
-  // If <html> has a CSS width greater than the viewport, then this will be
-  // incorrect for RTL.
-  return getBoundingClientRect(getDocumentElement(element)).left + getNodeScroll(element).scrollLeft;
-}
-
-function getRectRelativeToOffsetParent(element, offsetParent, strategy) {
-  const isOffsetParentAnElement = isHTMLElement(offsetParent);
-  const documentElement = getDocumentElement(offsetParent);
-  const rect = getBoundingClientRect(element, true, strategy === 'fixed', offsetParent);
-  let scroll = {
-    scrollLeft: 0,
-    scrollTop: 0
-  };
-  const offsets = {
-    x: 0,
-    y: 0
-  };
-  if (isOffsetParentAnElement || !isOffsetParentAnElement && strategy !== 'fixed') {
-    if (getNodeName(offsetParent) !== 'body' || isOverflowElement(documentElement)) {
-      scroll = getNodeScroll(offsetParent);
-    }
-    if (isHTMLElement(offsetParent)) {
-      const offsetRect = getBoundingClientRect(offsetParent, true);
-      offsets.x = offsetRect.x + offsetParent.clientLeft;
-      offsets.y = offsetRect.y + offsetParent.clientTop;
-    } else if (documentElement) {
-      offsets.x = getWindowScrollBarX(documentElement);
-    }
-  }
-  return {
-    x: rect.left + scroll.scrollLeft - offsets.x,
-    y: rect.top + scroll.scrollTop - offsets.y,
-    width: rect.width,
-    height: rect.height
-  };
-}
-
-function getParentNode(node) {
-  if (getNodeName(node) === 'html') {
-    return node;
-  }
-  const result =
-  // Step into the shadow DOM of the parent of a slotted node
-  node.assignedSlot ||
-  // DOM Element detected
-  node.parentNode || (
-  // ShadowRoot detected
-  isShadowRoot(node) ? node.host : null) ||
-  // Fallback
-  getDocumentElement(node);
-  return isShadowRoot(result) ? result.host : result;
-}
-
-function getTrueOffsetParent(element) {
-  if (!isHTMLElement(element) || getComputedStyle$1(element).position === 'fixed') {
-    return null;
-  }
-  return element.offsetParent;
-}
-function getContainingBlock(element) {
-  let currentNode = getParentNode(element);
-  while (isHTMLElement(currentNode) && !isLastTraversableNode(currentNode)) {
-    if (isContainingBlock(currentNode)) {
-      return currentNode;
-    } else {
-      currentNode = getParentNode(currentNode);
-    }
-  }
-  return null;
-}
-
-// Gets the closest ancestor positioned element. Handles some edge cases,
-// such as table ancestors and cross browser bugs.
-function getOffsetParent(element) {
-  const window = getWindow(element);
-  let offsetParent = getTrueOffsetParent(element);
-  while (offsetParent && isTableElement(offsetParent) && getComputedStyle$1(offsetParent).position === 'static') {
-    offsetParent = getTrueOffsetParent(offsetParent);
-  }
-  if (offsetParent && (getNodeName(offsetParent) === 'html' || getNodeName(offsetParent) === 'body' && getComputedStyle$1(offsetParent).position === 'static' && !isContainingBlock(offsetParent))) {
-    return window;
-  }
-  return offsetParent || getContainingBlock(element) || window;
-}
-
-function getDimensions(element) {
-  return getCssDimensions(element);
-}
-
 function convertOffsetParentRelativeRectToViewportRelativeRect(_ref) {
   let {
     rect,
@@ -96696,12 +96958,7 @@ function convertOffsetParentRelativeRectToViewportRelativeRect(_ref) {
       offsets.x = offsetRect.x + offsetParent.clientLeft;
       offsets.y = offsetRect.y + offsetParent.clientTop;
     }
-    // This doesn't appear to need to be negated.
-    // else if (documentElement) {
-    //   offsets.x = getWindowScrollBarX(documentElement);
-    // }
   }
-
   return {
     width: rect.width * scale.x,
     height: rect.height * scale.y,
@@ -96710,22 +96967,24 @@ function convertOffsetParentRelativeRectToViewportRelativeRect(_ref) {
   };
 }
 
-function getViewportRect(element, strategy) {
-  const win = getWindow(element);
+function getWindowScrollBarX(element) {
+  // If <html> has a CSS width greater than the viewport, then this will be
+  // incorrect for RTL.
+  return getBoundingClientRect(getDocumentElement(element)).left + getNodeScroll(element).scrollLeft;
+}
+
+// Gets the entire size of the scrollable document area, even extending outside
+// of the `<html>` and `<body>` rect bounds if horizontally scrollable.
+function getDocumentRect(element) {
   const html = getDocumentElement(element);
-  const visualViewport = win.visualViewport;
-  let width = html.clientWidth;
-  let height = html.clientHeight;
-  let x = 0;
-  let y = 0;
-  if (visualViewport) {
-    width = visualViewport.width;
-    height = visualViewport.height;
-    const layoutViewport = isLayoutViewport();
-    if (layoutViewport || !layoutViewport && strategy === 'fixed') {
-      x = visualViewport.offsetLeft;
-      y = visualViewport.offsetTop;
-    }
+  const scroll = getNodeScroll(element);
+  const body = element.ownerDocument.body;
+  const width = max(html.scrollWidth, html.clientWidth, body.scrollWidth, body.clientWidth);
+  const height = max(html.scrollHeight, html.clientHeight, body.scrollHeight, body.clientHeight);
+  let x = -scroll.scrollLeft + getWindowScrollBarX(element);
+  const y = -scroll.scrollTop;
+  if (getComputedStyle$1(body).direction === 'rtl') {
+    x += max(html.clientWidth, body.clientWidth) - width;
   }
   return {
     width,
@@ -96735,33 +96994,28 @@ function getViewportRect(element, strategy) {
   };
 }
 
-// Gets the entire size of the scrollable document area, even extending outside
-// of the `<html>` and `<body>` rect bounds if horizontally scrollable
-function getDocumentRect(element) {
-  var _element$ownerDocumen;
-  const html = getDocumentElement(element);
-  const scroll = getNodeScroll(element);
-  const body = (_element$ownerDocumen = element.ownerDocument) == null ? void 0 : _element$ownerDocumen.body;
-  const width = max(html.scrollWidth, html.clientWidth, body ? body.scrollWidth : 0, body ? body.clientWidth : 0);
-  const height = max(html.scrollHeight, html.clientHeight, body ? body.scrollHeight : 0, body ? body.clientHeight : 0);
-  let x = -scroll.scrollLeft + getWindowScrollBarX(element);
-  const y = -scroll.scrollTop;
-  if (getComputedStyle$1(body || html).direction === 'rtl') {
-    x += max(html.clientWidth, body ? body.clientWidth : 0) - width;
+function getParentNode(node) {
+  if (getNodeName(node) === 'html') {
+    return node;
   }
-  return {
-    width,
-    height,
-    x,
-    y
-  };
+  const result =
+  // Step into the shadow DOM of the parent of a slotted node.
+  node.assignedSlot ||
+  // DOM Element detected.
+  node.parentNode ||
+  // ShadowRoot detected.
+  isShadowRoot(node) && node.host ||
+  // Fallback.
+  getDocumentElement(node);
+  return isShadowRoot(result) ? result.host : result;
 }
 
 function getNearestOverflowAncestor(node) {
   const parentNode = getParentNode(node);
   if (isLastTraversableNode(parentNode)) {
-    // @ts-ignore assume body is always available
-    return node.ownerDocument.body;
+    // `getParentNode` will never return a `Document` due to the fallback
+    // check, so it's either the <html> or <body> element.
+    return parentNode.ownerDocument.body;
   }
   if (isHTMLElement(parentNode) && isOverflowElement(parentNode)) {
     return parentNode;
@@ -96783,7 +97037,32 @@ function getOverflowAncestors(node, list) {
   return list.concat(scrollableAncestor, getOverflowAncestors(scrollableAncestor));
 }
 
-// Returns the inner client rect, subtracting scrollbars if present
+function getViewportRect(element, strategy) {
+  const win = getWindow(element);
+  const html = getDocumentElement(element);
+  const visualViewport = win.visualViewport;
+  let width = html.clientWidth;
+  let height = html.clientHeight;
+  let x = 0;
+  let y = 0;
+  if (visualViewport) {
+    width = visualViewport.width;
+    height = visualViewport.height;
+    const visualViewportBased = isClientRectVisualViewportBased();
+    if (!visualViewportBased || visualViewportBased && strategy === 'fixed') {
+      x = visualViewport.offsetLeft;
+      y = visualViewport.offsetTop;
+    }
+  }
+  return {
+    width,
+    height,
+    x,
+    y
+  };
+}
+
+// Returns the inner client rect, subtracting scrollbars if present.
 function getInnerBoundingClientRect(element, strategy) {
   const clientRect = getBoundingClientRect(element, true, strategy === 'fixed');
   const top = clientRect.top + element.clientTop;
@@ -96797,24 +97076,33 @@ function getInnerBoundingClientRect(element, strategy) {
   const x = left * scale.x;
   const y = top * scale.y;
   return {
-    top: y,
-    left: x,
-    right: x + width,
-    bottom: y + height,
-    x,
-    y,
     width,
-    height
+    height,
+    x,
+    y
   };
 }
 function getClientRectFromClippingAncestor(element, clippingAncestor, strategy) {
+  let rect;
   if (clippingAncestor === 'viewport') {
-    return (0,_floating_ui_core__WEBPACK_IMPORTED_MODULE_0__.rectToClientRect)(getViewportRect(element, strategy));
+    rect = getViewportRect(element, strategy);
+  } else if (clippingAncestor === 'document') {
+    rect = getDocumentRect(getDocumentElement(element));
+  } else if (isElement(clippingAncestor)) {
+    rect = getInnerBoundingClientRect(clippingAncestor, strategy);
+  } else {
+    const mutableRect = {
+      ...clippingAncestor
+    };
+    if (isClientRectVisualViewportBased()) {
+      var _win$visualViewport, _win$visualViewport2;
+      const win = getWindow(element);
+      mutableRect.x -= ((_win$visualViewport = win.visualViewport) == null ? void 0 : _win$visualViewport.offsetLeft) || 0;
+      mutableRect.y -= ((_win$visualViewport2 = win.visualViewport) == null ? void 0 : _win$visualViewport2.offsetTop) || 0;
+    }
+    rect = mutableRect;
   }
-  if (isElement(clippingAncestor)) {
-    return getInnerBoundingClientRect(clippingAncestor, strategy);
-  }
-  return (0,_floating_ui_core__WEBPACK_IMPORTED_MODULE_0__.rectToClientRect)(getDocumentRect(getDocumentElement(element)));
+  return (0,_floating_ui_core__WEBPACK_IMPORTED_MODULE_0__.rectToClientRect)(rect);
 }
 
 // A "clipping ancestor" is an `overflow` element with the characteristic of
@@ -96836,10 +97124,10 @@ function getClippingElementAncestors(element, cache) {
     const containingBlock = isContainingBlock(currentNode);
     const shouldDropCurrentNode = elementIsFixed ? !containingBlock && !currentContainingBlockComputedStyle : !containingBlock && computedStyle.position === 'static' && !!currentContainingBlockComputedStyle && ['absolute', 'fixed'].includes(currentContainingBlockComputedStyle.position);
     if (shouldDropCurrentNode) {
-      // Drop non-containing blocks
+      // Drop non-containing blocks.
       result = result.filter(ancestor => ancestor !== currentNode);
     } else {
-      // Record last containing block for next iteration
+      // Record last containing block for next iteration.
       currentContainingBlockComputedStyle = computedStyle;
     }
     currentNode = getParentNode(currentNode);
@@ -96849,7 +97137,7 @@ function getClippingElementAncestors(element, cache) {
 }
 
 // Gets the maximum area that the element is visible in due to any number of
-// clipping ancestors
+// clipping ancestors.
 function getClippingRect(_ref) {
   let {
     element,
@@ -96873,6 +97161,80 @@ function getClippingRect(_ref) {
     height: clippingRect.bottom - clippingRect.top,
     x: clippingRect.left,
     y: clippingRect.top
+  };
+}
+
+function getDimensions(element) {
+  if (isHTMLElement(element)) {
+    return getCssDimensions(element);
+  }
+  return element.getBoundingClientRect();
+}
+
+function getTrueOffsetParent(element, polyfill) {
+  if (!isHTMLElement(element) || getComputedStyle$1(element).position === 'fixed') {
+    return null;
+  }
+  if (polyfill) {
+    return polyfill(element);
+  }
+  return element.offsetParent;
+}
+function getContainingBlock(element) {
+  let currentNode = getParentNode(element);
+  while (isHTMLElement(currentNode) && !isLastTraversableNode(currentNode)) {
+    if (isContainingBlock(currentNode)) {
+      return currentNode;
+    } else {
+      currentNode = getParentNode(currentNode);
+    }
+  }
+  return null;
+}
+
+// Gets the closest ancestor positioned element. Handles some edge cases,
+// such as table ancestors and cross browser bugs.
+function getOffsetParent(element, polyfill) {
+  const window = getWindow(element);
+  let offsetParent = getTrueOffsetParent(element, polyfill);
+  while (offsetParent && isTableElement(offsetParent) && getComputedStyle$1(offsetParent).position === 'static') {
+    offsetParent = getTrueOffsetParent(offsetParent, polyfill);
+  }
+  if (offsetParent && (getNodeName(offsetParent) === 'html' || getNodeName(offsetParent) === 'body' && getComputedStyle$1(offsetParent).position === 'static' && !isContainingBlock(offsetParent))) {
+    return window;
+  }
+  return offsetParent || getContainingBlock(element) || window;
+}
+
+function getRectRelativeToOffsetParent(element, offsetParent, strategy) {
+  const isOffsetParentAnElement = isHTMLElement(offsetParent);
+  const documentElement = getDocumentElement(offsetParent);
+  const rect = getBoundingClientRect(element, true, strategy === 'fixed', offsetParent);
+  let scroll = {
+    scrollLeft: 0,
+    scrollTop: 0
+  };
+  const offsets = {
+    x: 0,
+    y: 0
+  };
+  if (isOffsetParentAnElement || !isOffsetParentAnElement && strategy !== 'fixed') {
+    if (getNodeName(offsetParent) !== 'body' || isOverflowElement(documentElement)) {
+      scroll = getNodeScroll(offsetParent);
+    }
+    if (isHTMLElement(offsetParent)) {
+      const offsetRect = getBoundingClientRect(offsetParent, true);
+      offsets.x = offsetRect.x + offsetParent.clientLeft;
+      offsets.y = offsetRect.y + offsetParent.clientTop;
+    } else if (documentElement) {
+      offsets.x = getWindowScrollBarX(documentElement);
+    }
+  }
+  return {
+    x: rect.left + scroll.scrollLeft - offsets.x,
+    y: rect.top + scroll.scrollTop - offsets.y,
+    width: rect.width,
+    height: rect.height
   };
 }
 
@@ -98218,7 +98580,9 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 			}
 /******/ 			var notFulfilled = Infinity;
 /******/ 			for (var i = 0; i < deferred.length; i++) {
-/******/ 				var [chunkIds, fn, priority] = deferred[i];
+/******/ 				var chunkIds = deferred[i][0];
+/******/ 				var fn = deferred[i][1];
+/******/ 				var priority = deferred[i][2];
 /******/ 				var fulfilled = true;
 /******/ 				for (var j = 0; j < chunkIds.length; j++) {
 /******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
@@ -98316,7 +98680,9 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 		
 /******/ 		// install a JSONP callback for chunk loading
 /******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
-/******/ 			var [chunkIds, moreModules, runtime] = data;
+/******/ 			var chunkIds = data[0];
+/******/ 			var moreModules = data[1];
+/******/ 			var runtime = data[2];
 /******/ 			// add "moreModules" to the modules object,
 /******/ 			// then flag all "chunkIds" as loaded and fire callback
 /******/ 			var moduleId, chunkId, i = 0;
@@ -98339,7 +98705,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
 /******/ 		
-/******/ 		var chunkLoadingGlobal = globalThis["webpackChunkpremium_blocks_for_gutenberg"] = globalThis["webpackChunkpremium_blocks_for_gutenberg"] || [];
+/******/ 		var chunkLoadingGlobal = self["webpackChunkpremium_blocks_for_gutenberg"] = self["webpackChunkpremium_blocks_for_gutenberg"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();

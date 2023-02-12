@@ -15,7 +15,8 @@ export const floatingEffectDefaults = {
             unit: 'px'
         },
         duration: 1000,
-        delay: ''
+        delay: '',
+        flag: false
     },
     rotate: {
         enable: false,

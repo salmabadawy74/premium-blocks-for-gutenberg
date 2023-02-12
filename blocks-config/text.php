@@ -58,7 +58,7 @@ function get_premium_text_css( $attributes, $unique_id ) {
 	// Tablet Styles.
 	if ( isset( $attributes['align'] ) ) {
 		$align = $css->get_responsive_css( $attributes['align'], 'Tablet' );
-		error_log( wp_json_encode( $align ) );
+
 		$css->set_selector( ".{$unique_id} p" );
 		$css->add_property( 'text-align', $align );
 	}
