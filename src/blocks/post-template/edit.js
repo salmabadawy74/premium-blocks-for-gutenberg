@@ -192,18 +192,18 @@ function PostTemplateEdit({
     useEffect(() => {
         if (equalHeight) {
             let heights = [],
-                contentWrapper = this.getSettings("selectors").contentWrapper,
-                $blogWrapper = this.$element.find(contentWrapper);
-
-            $blogWrapper.each(function (index, post) {
-                var height = $(post).outerHeight();
+                contentWrapper = document.querySelectorAll('.premium-blog-post-outer-container');
+            const contentWrap = [...contentWrapper]
+            contentWrap.map((postContent) => {
+                var height = postContent.clientHeight;
 
                 heights.push(height);
-            });
-
-            var maxHeight = Math.max.apply(null, heights);
-
-            $blogWrapper.css("height", maxHeight + "px");
+            })
+            let maxHeight = Math.max(...heights);
+            console.log(maxHeight, heights)
+            contentWrap.map((postContent) => {
+                postContent.style.height = maxHeight + 'px';
+            })
         }
     }, [equalHeight]);
     const blockContexts = useMemo(
@@ -244,93 +244,102 @@ function PostTemplateEdit({
             <InspectorControls key={"inspector"}>
                 <InspectorTabs tabs={["style", "advance"]}>
                     <InspectorTab key={"style"}>
-                        <PremiumBackgroundControl
-                            value={containerBackground}
-                            onChange={(value) =>
-                                setAttributes({
-                                    containerBackground: value,
-                                })
-                            }
-                        />
-                        {!advancedBorder && (
-                            <PremiumBorder
-                                label={__(
-                                    "Border",
-                                    "premium-blocks-for-gutenberg"
-                                )}
-                                value={border}
-                                onChange={(value) =>
-                                    setAttributes({ border: value })
-                                }
-                            />
-                        )}
-                        <ToggleControl
-                            label={__(
-                                "Advanced Border Radius",
+                        <PanelBody
+                            title={__(
+                                "Style",
                                 "premium-blocks-for-gutenberg"
                             )}
-                            checked={advancedBorder}
-                            onChange={(value) =>
-                                setAttributes({ advancedBorder: value })
-                            }
-                        />
-                        <div>
-                            {__(
-                                "Apply custom radius values. Get the radius value from here",
-                                "premium-blocks-for-gutenberg"
-                            )}
-                            <a
-                                target={"_blank"}
-                                href={
-                                    "https://9elements.github.io/fancy-border-radius/"
-                                }
-                            >
-                                {" "}
-                                Here
-                            </a>
-                        </div>
-                        {advancedBorder && (
-                            <TextControl
-                                label={__(
-                                    "Border Radius",
-                                    "premium-blocks-for-gutenberg"
-                                )}
-                                value={advancedBorderValue}
+                            className="premium-panel-body"
+                            initialOpen={true}
+                        >
+                            <PremiumBackgroundControl
+                                value={containerBackground}
                                 onChange={(value) =>
                                     setAttributes({
-                                        advancedBorderValue: value,
+                                        containerBackground: value,
                                     })
                                 }
                             />
-                        )}
-                        <PremiumShadow
-                            boxShadow={true}
-                            value={boxShadow}
-                            onChange={(value) =>
-                                setAttributes({ boxShadow: value })
-                            }
-                        />
-                        <SpacingComponent
-                            value={padding}
-                            responsive={true}
-                            showUnits={true}
-                            label={__(
-                                "Padding",
-                                "premium-blocks-for-gutenberg"
+                            {!advancedBorder && (
+                                <PremiumBorder
+                                    label={__(
+                                        "Border",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                    value={border}
+                                    onChange={(value) =>
+                                        setAttributes({ border: value })
+                                    }
+                                />
                             )}
-                            onChange={(value) =>
-                                setAttributes({ padding: value })
-                            }
-                        />
-                        <SpacingComponent
-                            value={margin}
-                            responsive={true}
-                            showUnits={true}
-                            label={__("Margin", "premium-blocks-for-gutenberg")}
-                            onChange={(value) =>
-                                setAttributes({ margin: value })
-                            }
-                        />
+                            <ToggleControl
+                                label={__(
+                                    "Advanced Border Radius",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                checked={advancedBorder}
+                                onChange={(value) =>
+                                    setAttributes({ advancedBorder: value })
+                                }
+                            />
+                            <div>
+                                {__(
+                                    "Apply custom radius values. Get the radius value from here",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                <a
+                                    target={"_blank"}
+                                    href={
+                                        "https://9elements.github.io/fancy-border-radius/"
+                                    }
+                                >
+                                    {" "}
+                                    Here
+                                </a>
+                            </div>
+                            {advancedBorder && (
+                                <TextControl
+                                    label={__(
+                                        "Border Radius",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                    value={advancedBorderValue}
+                                    onChange={(value) =>
+                                        setAttributes({
+                                            advancedBorderValue: value,
+                                        })
+                                    }
+                                />
+                            )}
+                            <PremiumShadow
+                                boxShadow={true}
+                                value={boxShadow}
+                                onChange={(value) =>
+                                    setAttributes({ boxShadow: value })
+                                }
+                            />
+                            <SpacingComponent
+                                value={padding}
+                                responsive={true}
+                                showUnits={true}
+                                label={__(
+                                    "Padding",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                onChange={(value) =>
+                                    setAttributes({ padding: value })
+                                }
+                            />
+                            <SpacingComponent
+                                value={margin}
+                                responsive={true}
+                                showUnits={true}
+                                label={__("Margin", "premium-blocks-for-gutenberg")}
+                                onChange={(value) =>
+                                    setAttributes({ margin: value })
+                                }
+                            />
+                        </PanelBody>
                     </InspectorTab>
                     <InspectorTab key={"advance"}>
                         <PremiumResponsiveTabs
@@ -372,11 +381,9 @@ function PostTemplateEdit({
                                 ...BorderValue,
                                 ...marginCss(margin, deviceType),
                                 ...paddingCss(padding, deviceType),
-                                boxShadow: `${boxShadow.horizontal || 0}px ${
-                                    boxShadow.vertical || 0
-                                }px ${boxShadow.blur || 0}px ${
-                                    boxShadow.color
-                                }`,
+                                boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical || 0
+                                    }px ${boxShadow.blur || 0}px ${boxShadow.color
+                                    }`,
                             }}
                         >
                             <BlockContextProvider
@@ -384,8 +391,8 @@ function PostTemplateEdit({
                                 value={blockContext}
                             >
                                 {blockContext.postId ===
-                                (activeBlockContextId ||
-                                    blockContexts[0]?.postId) ? (
+                                    (activeBlockContextId ||
+                                        blockContexts[0]?.postId) ? (
                                     <PostTemplateInnerBlocks
                                         deviceType={deviceType}
                                     />

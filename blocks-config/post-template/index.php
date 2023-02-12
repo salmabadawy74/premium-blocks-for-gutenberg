@@ -5,7 +5,7 @@
  *
  * @package WordPress
  */
-function get_premium_feature_image_css_style($attr, $unique_id)
+function get_premium_post_tag_css_style($attributes, $unique_id)
 {
     $css                    = new Premium_Blocks_css();
     $media_query            = array();
@@ -19,7 +19,6 @@ function get_premium_feature_image_css_style($attr, $unique_id)
         $css->add_property('object-fit', $attr['thumbnail']);
     }
     if (isset($attributes['height'])) {
-        var_dump($attr["height"]);
         $css->set_selector('.premium-blog-post-outer-container  .premium-blog-thumb-effect-wrapper .premium-blog-thumbnail-container img');
         $css->add_property('height', $css->render_range($attr['height'], 'Desktop'));
     }
@@ -54,7 +53,7 @@ function get_premium_feature_image_css_style($attr, $unique_id)
     return $css->css_output();
 }
 
-function get_premium_post_title_css_style($attr, $unique_id)
+function get_premium_feature_image_css_style($attr, $unique_id)
 {
     $css                    = new Premium_Blocks_css();
     $media_query            = array();
@@ -63,47 +62,96 @@ function get_premium_post_title_css_style($attr, $unique_id)
     $media_query['desktop'] = apply_filters('Premium_BLocks_tablet_media_query', '(min-width: 1025px)');
 
 
-    if (isset($attributes['typography'])) {
-        $css->set_selector('.' . $unique_id . '.premium-blog-entry-title__container .premium-blog-entry-title ');
-        $css->render_typography($attributes['typography'], 'Desktop');
+    if (isset($attributes['thumbnail'])) {
+        $css->set_selector('.premium-blog-post-outer-container .premium-blog-thumbnail-container img ');
+        $css->add_property('object-fit', $attr['thumbnail']);
     }
-    if (isset($attributes['bottomSpacing'])) {
-        $css->set_selector('.' . $unique_id . '.premium-blog-entry-title__container .premium-blog-entry-title ');
-        $css->add_property('margin-bottom', $css->get_responsive_css($attr['bottomSpacing'], 'Desktop'));
+    if (isset($attributes['height'])) {
+        $css->set_selector('.premium-blog-post-outer-container  .premium-blog-thumb-effect-wrapper .premium-blog-thumbnail-container img');
+        $css->add_property('height', $css->render_range($attr['height'], 'Desktop'));
     }
-    if (isset($attributes['textColor'])) {
-        $css->set_selector('.' . $unique_id . '.premium-blog-entry-title__container .premium-blog-entry-title  a');
-        $css->add_property('color', $css->render_color($attr["textColor"]));
+    if (isset($attributes['filter'])) {
+        $css->set_selector('.premium-blog-post-outer-container .premium-blog-thumbnail-container img');
+        $css->add_property(
+            'filter',
+            'brightness(' . $attr['filter']['bright'] . '%)' . 'contrast(' .  $attr['filter']['contrast'] . '%) ' . 'saturate(' . $attr['filter']['saturation'] . '%) ' . 'blur(' . $attr['filter']['blur'] . 'px) ' . 'hue-rotate(' . $attr['filter']['hue'] . 'deg)'
+        );
     }
-    if (isset($attributes['hoverColor'])) {
-        $css->set_selector('.' . $unique_id . '.premium-blog-entry-title__container:hover .premium-blog-entry-title  a');
-        $css->add_property('color', $css->render_color($attr["hoverColor"]));
+    if (isset($attributes['Hoverfilter'])) {
+        $css->set_selector('.' . $unique_id . '.premium-blog-thumbnail-container:hover img');
+        $css->add_property(
+            'filter',
+            'brightness(' . $attr['Hoverfilter']['bright'] . '%)' . 'contrast(' .  $attr['Hoverfilter']['contrast'] . '%) ' . 'saturate(' . $attr['Hoverfilter']['saturation'] . '%) ' . 'blur(' . $attr['Hoverfilter']['blur'] . 'px) ' . 'hue-rotate(' . $attr['Hoverfilter']['hue'] . 'deg)'
+        );
     }
 
 
     $css->start_media_query($media_query['tablet']);
-    if (isset($attributes['typography'])) {
-        $css->set_selector('.' . $unique_id . '.premium-blog-entry-title__container .premium-blog-entry-title ');
-        $css->render_typography($attributes['typography'], 'Tablet');
-    }
-    if (isset($attributes['bottomSpacing'])) {
-        $css->set_selector('.' . $unique_id . '.premium-blog-entry-title__container .premium-blog-entry-title ');
-        $css->add_property('margin-bottom', $css->get_responsive_css($attr['bottomSpacing'], 'Tablet'));
+    if (isset($attributes['height'])) {
+        $css->set_selector('.' . $unique_id . '.premium-blog-thumbnail-container img');
+        $css->add_property('height', $css->render_range($attr['height'], 'Tablet'));
     }
     $css->stop_media_query();
     $css->start_media_query($media_query['mobile']);
-    if (isset($attributes['typography'])) {
-        $css->set_selector('.' . $unique_id . '.premium-blog-entry-title__container .premium-blog-entry-title ');
-        $css->render_typography($attributes['typography'], 'Mobile');
-    }
-    if (isset($attributes['bottomSpacing'])) {
-        $css->set_selector('.' . $unique_id . '.premium-blog-entry-title__container .premium-blog-entry-title ');
-        $css->add_property('margin-bottom', $css->get_responsive_css($attr['bottomSpacing'], 'Mobile'));
+    if (isset($attributes['height'])) {
+        $css->set_selector('.' . $unique_id . '.premium-blog-thumbnail-container img');
+        $css->add_property('height', $css->render_range($attr['height'], 'Mobile'));
     }
     $css->stop_media_query();
     return $css->css_output();
 }
-function get_premium_post_meta_css_style($attr, $unique_id)
+
+function get_premium_post_title_css_style($attributes, $unique_id)
+{
+
+    $css                    = new Premium_Blocks_css();
+    $media_query            = array();
+    $media_query['mobile']  = apply_filters('Premium_BLocks_mobile_media_query', '(max-width: 767px)');
+    $media_query['tablet']  = apply_filters('Premium_BLocks_tablet_media_query', '(max-width: 1024px)');
+    $media_query['desktop'] = apply_filters('Premium_BLocks_tablet_media_query', '(min-width: 1025px)');
+
+
+    if (isset($attributes['Typography'])) {
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-entry-title > * ');
+        $css->render_typography($attributes['Typography'], 'Desktop');
+    }
+    if (isset($attributes['bottomSpacing'])) {
+        $css->set_selector('.' . $unique_id . ' .premium-blog-entry-title ');
+        $css->add_property('margin-bottom', $css->get_responsive_css($attributes['bottomSpacing'], 'Desktop'));
+    }
+    if (isset($attributes['textColor'])) {
+        $css->set_selector('.premium-blog-post-outer-container'. ' .premium-blog-entry-title  > *');
+        $css->add_property('color', $css->render_color($attributes["textColor"]));
+    }
+    if (isset($attributes['hoverColor'])) {
+        $css->set_selector('.premium-blog-post-outer-container'. ' .premium-blog-entry-title:hover  > *');
+        $css->add_property('color', $css->render_color($attributes["hoverColor"]));
+    }
+
+
+    $css->start_media_query($media_query['tablet']);
+    if (isset($attributes['Typography'])) {
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-entry-title > * ');
+        $css->render_typography($attributes['Typography'], 'Tablet');
+    }
+    if (isset($attributes['bottomSpacing'])) {
+        $css->set_selector('.' . $unique_id . ' .premium-blog-entry-title ');
+        $css->add_property('margin-bottom', $css->get_responsive_css($attributes['bottomSpacing'], 'Tablet'));
+    }
+    $css->stop_media_query();
+    $css->start_media_query($media_query['mobile']);
+    if (isset($attributes['Typography'])) {
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-entry-title > * ');
+        $css->render_typography($attributes['Typography'], 'Mobile');
+    }
+    if (isset($attributes['bottomSpacing'])) {
+        $css->set_selector('.' . $unique_id . ' .premium-blog-entry-title ');
+        $css->add_property('margin-bottom', $css->get_responsive_css($attributes['bottomSpacing'], 'Mobile'));
+    }
+    $css->stop_media_query();
+   return $css->css_output();
+}
+function get_premium_post_meta_css_style($attributes, $unique_id)
 {
     $css                    = new Premium_Blocks_css();
     $media_query            = array();
@@ -113,33 +161,33 @@ function get_premium_post_meta_css_style($attr, $unique_id)
 
 
     if (isset($attributes['typography'])) {
-        $css->set_selector('.' . $unique_id . ' .premium-blog-meta-data');
+        $css->set_selector('.premium-blog-post-outer-container' . ' .premium-blog-meta-data');
         $css->render_typography($attributes['typography'], 'Desktop');
     }
     if (isset($attributes['color'])) {
-        $css->set_selector('.' . $unique_id . ' .premium-blog-meta-data');
-        $css->add_property('color', $css->render_color($attr["color"]));
+        $css->set_selector('.premium-blog-post-outer-container' .  ' .wp-block-premium-post-meta .premium-blog-meta-data');
+        $css->add_property('color', $css->render_color($attributes["color"]));
     }
     if (isset($attributes['hoverColor'])) {
-        $css->set_selector('.' . $unique_id . ' .premium-blog-meta-data:hover ');
-        $css->add_property('color', $css->render_color($attr["hoverColor"]));
+        $css->set_selector('.premium-blog-post-outer-container' .  ' .premium-blog-meta-data:hover ');
+        $css->add_property('color', $css->render_color($attributes["hoverColor"]));
     }
 
     if (isset($attributes['sepColor'])) {
-        $css->set_selector('.' . $unique_id . ' .premium-blog-meta-separtor');
-        $css->add_property('color', $css->render_color($attr["sepColor"]));
+        $css->set_selector('.premium-blog-post-outer-container' .  ' .premium-blog-meta-separtor');
+        $css->add_property('color', $css->render_color($attributes["sepColor"]));
     }
 
     $css->start_media_query($media_query['tablet']);
     if (isset($attributes['typography'])) {
-        $css->set_selector('.' . $unique_id . ' .premium-blog-meta-data');
+        $css->set_selector('.premium-blog-post-outer-container' .  ' .premium-blog-meta-data');
         $css->render_typography($attributes['typography'], 'Tablet');
     }
 
     $css->stop_media_query();
     $css->start_media_query($media_query['mobile']);
     if (isset($attributes['typography'])) {
-        $css->set_selector('.' . $unique_id . ' .premium-blog-meta-data');
+        $css->set_selector('.premium-blog-post-outer-container' .  ' .premium-blog-meta-data');
         $css->render_typography($attributes['typography'], 'Mobile');
     }
     $css->stop_media_query();
@@ -194,7 +242,8 @@ function get_premium_post_template_css_style($attr, $unique_id)
         $css->add_property('margin-bottom', $css->get_responsive_css($attr['bottomSpacing'], 'Mobile'));
     }
     $css->stop_media_query();
-    return $css->css_output();
+
+   $css->css_output();
 }
 
 /**
@@ -276,6 +325,8 @@ function render_block_premium_post_template($attributes, $content, $block)
         // Set the block name to one that does not correspond to an existing registered block.
         // This ensures that for the inner instances of the Post Template block, we do not render any block supports.
         $block_instance['blockName'] = 'premium/null';
+        $css  = '';
+
         if (isset($block_instance['innerBlocks'])) {
             foreach ($block_instance['innerBlocks'] as $j => $inner_block) {
                 $name = $inner_block['blockName'];
@@ -290,22 +341,24 @@ function render_block_premium_post_template($attributes, $content, $block)
                     }
                 }
                 switch ($name) {
-                    case 'premium/post-featured-image':
-                        $css[] =   get_premium_feature_image_css_style($blockattr, $block_id);
-                        break;
-                    case 'premium/post-title':
-                        $css[] = get_premium_post_title_css_style($blockattr, $block_id);
-                        break;
-                    case 'premium/post-meta':
-                        $css[] =     get_premium_post_meta_css_style($blockattr, $block_id);
-                        break;
+                     case 'premium/post-featured-image':
+                        $css .= get_premium_feature_image_css_style($blockattr, $block_id);
+                      break;
+                  case 'premium/post-title':
+                       $css .= get_premium_post_title_css_style($blockattr, $block_id);
+                     break;
+                 case 'premium/post-meta':
+                      $css .= get_premium_post_meta_css_style($blockattr, $block_id);
+                       break;
+                    //    case 'premium/post-tag':
+                    //     $css .= get_premium_post_tag_css_style($blockattr, $block_id);
+                    //      break;
                     default:
                         // Nothing to do here.
                         break;
                 }
             }
         }
-        var_dump($css);
         // `render_callback` and ensure that no wrapper markup is included.
         $block_content = (new WP_Block(
             $block_instance,
@@ -318,7 +371,7 @@ function render_block_premium_post_template($attributes, $content, $block)
         )->render(array('dynamic' => true));
         // Wrap the render inner blocks in a `li` element with the appropriate post classes.
         $post_classes = implode(' ', get_post_class('premium-blog-post-outer-container'));
-        $content     .= '<div class="' . esc_attr($post_classes) . '">' . $block_content . '</div>';
+        $content     .= '<div class="' . esc_attr($post_classes) . '">'.'<style id="pbg-blocks-style' . esc_attr($unique_id) . '">' . $css . '</style>'.  $block_content . '</div>';
     }
 
     /*

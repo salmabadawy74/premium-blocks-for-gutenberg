@@ -32633,13 +32633,15 @@ function Image(props) {
       " premium-mobile-hidden": hideMobile
     })
   });
-  console.log(height);
   const loadStyles = () => {
     const styles = {};
     styles[`.${blockId} .premium-blog-thumbnail-container img `] = {
       "object-fit": `${thumbnail}`,
-      height: `${height[deviceType]}${height["unit"]}!important`,
+      height: `100%`,
       filter: `brightness( ${filter.bright}% ) contrast( ${filter.contrast}% ) saturate( ${filter.saturation}% ) blur( ${filter.blur}px ) hue-rotate( ${filter.hue}deg )`
+    };
+    styles[`.${blockId} .premium-blog-thumbnail-container `] = {
+      height: `${height[deviceType]}${height["unit"]}!important`
     };
     styles[`.${blockId} .premium-blog-post-outer-container:hover img `] = {
       filter: `brightness( ${hoverEffect.bright}% ) contrast( ${Hoverfilter.contrast}% ) saturate( ${Hoverfilter.saturation}% ) blur( ${Hoverfilter.blur}px ) hue-rotate( ${Hoverfilter.hue}deg )`
@@ -32742,7 +32744,8 @@ function Image(props) {
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: `premium-blog-thumbnail-container premium-blog-${hoverEffect}-effect`
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-      src: mediaUrl
+      src: mediaUrl,
+      style: {}
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "premium-blog-thumbnail-overlay",
       style: {
@@ -32756,7 +32759,15 @@ function Image(props) {
     return null;
   }
 }
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Image);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.withSelect)(select => {
+  const {
+    __experimentalGetPreviewDeviceType = null
+  } = select("core/edit-post");
+  let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+  return {
+    deviceType: deviceType
+  };
+})(Image));
 
 /***/ }),
 
@@ -53382,14 +53393,17 @@ function PostTemplateEdit(_ref2) {
   useEffect(() => {
     if (equalHeight) {
       let heights = [],
-        contentWrapper = this.getSettings("selectors").contentWrapper,
-        $blogWrapper = this.$element.find(contentWrapper);
-      $blogWrapper.each(function (index, post) {
-        var height = $(post).outerHeight();
+        contentWrapper = document.querySelectorAll('.premium-blog-post-outer-container');
+      const contentWrap = [...contentWrapper];
+      contentWrap.map(postContent => {
+        var height = postContent.clientHeight;
         heights.push(height);
       });
-      var maxHeight = Math.max.apply(null, heights);
-      $blogWrapper.css("height", maxHeight + "px");
+      let maxHeight = Math.max(...heights);
+      console.log(maxHeight, heights);
+      contentWrap.map(postContent => {
+        postContent.style.height = maxHeight + 'px';
+      });
     }
   }, [equalHeight]);
   const blockContexts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => posts?.map(post => ({
@@ -53420,6 +53434,10 @@ function PostTemplateEdit(_ref2) {
     tabs: ["style", "advance"]
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.InspectorTab, {
     key: "style"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)("Style", "premium-blocks-for-gutenberg"),
+    className: "premium-panel-body",
+    initialOpen: true
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.PremiumBackgroundControl, {
     value: containerBackground,
     onChange: value => setAttributes({
@@ -53468,7 +53486,7 @@ function PostTemplateEdit(_ref2) {
     onChange: value => setAttributes({
       margin: value
     })
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.InspectorTab, {
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.InspectorTab, {
     key: "advance"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.PremiumResponsiveTabs, {
     Desktop: hideDesktop,

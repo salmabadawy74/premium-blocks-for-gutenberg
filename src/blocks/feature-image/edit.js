@@ -2,7 +2,7 @@ import { useEntityProp, store as coreStore } from "@wordpress/core-data";
 const { __ } = wp.i18n;
 import classNames from "classnames";
 
-import { useSelect, useDispatch } from "@wordpress/data";
+import { useSelect, withSelect, useDispatch } from "@wordpress/data";
 import { generateBlockId, generateCss, typographyCss } from "@pbg/helpers";
 import {
     ResponsiveRangeControl,
@@ -130,15 +130,16 @@ function Image(props) {
             " premium-mobile-hidden": hideMobile,
         }),
     });
-    console.log(height);
     const loadStyles = () => {
         const styles = {};
         styles[`.${blockId} .premium-blog-thumbnail-container img `] = {
             "object-fit": `${thumbnail}`,
-            height: `${height[deviceType]}${height["unit"]}!important`,
+            height: `100%`,
             filter: `brightness( ${filter.bright}% ) contrast( ${filter.contrast}% ) saturate( ${filter.saturation}% ) blur( ${filter.blur}px ) hue-rotate( ${filter.hue}deg )`,
         };
-
+        styles[`.${blockId} .premium-blog-thumbnail-container `] = {
+            height: `${height[deviceType]}${height["unit"]}!important`,
+        };
         styles[`.${blockId} .premium-blog-post-outer-container:hover img `] = {
             filter: `brightness( ${hoverEffect.bright}% ) contrast( ${Hoverfilter.contrast}% ) saturate( ${Hoverfilter.saturation}% ) blur( ${Hoverfilter.blur}px ) hue-rotate( ${Hoverfilter.hue}deg )`,
         };
@@ -301,7 +302,8 @@ function Image(props) {
                     <div
                         className={`premium-blog-thumbnail-container premium-blog-${hoverEffect}-effect`}
                     >
-                        <img src={mediaUrl} />
+                        <img src={mediaUrl} style={{
+                        }} />
                     </div>
                     <div
                         className="premium-blog-thumbnail-overlay"
@@ -319,4 +321,14 @@ function Image(props) {
     }
 }
 
-export default Image;
+export default withSelect((select) => {
+    const { __experimentalGetPreviewDeviceType = null } =
+        select("core/edit-post");
+    let deviceType = __experimentalGetPreviewDeviceType
+        ? __experimentalGetPreviewDeviceType()
+        : null;
+
+    return {
+        deviceType: deviceType,
+    };
+})(Image);

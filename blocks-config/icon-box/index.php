@@ -16,6 +16,7 @@
  * @param string $unique_id option For block ID.
  */
 function get_premium_icon_box_css_style( $attr, $unique_id ) {
+    var_dump($attr); 
 	$css                    = new Premium_Blocks_css();
 	$media_query            = array();
 	$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
