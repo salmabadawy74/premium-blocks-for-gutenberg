@@ -18,9 +18,9 @@
         "align": {
             "type": "object",
             "default": {
-                "Desktop": "",
-                "Tablet": "",
-                "Mobile": ""
+                "Desktop": "left",
+                "Tablet": "left",
+                "Mobile": "left"
             }
         },
         "repeaterBulletList": {
@@ -479,5 +479,10 @@
         }
     },
     "editorScript": "pbg-blocks-js",
-    "editorStyle": "premium-blocks-editor-css"
+    "editorStyle": "premium-blocks-editor-css",
+    "providesContext": {
+        "layoutPos": "layoutPos",
+        "divider": "divider",
+        "bulletIconFontSize": "bulletIconFontSize"
+    }
 }

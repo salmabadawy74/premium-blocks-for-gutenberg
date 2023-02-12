@@ -11,7 +11,6 @@ import {
     InspectorTabs,
     InspectorTab,
     PremiumResponsiveTabs,
-    iconsList,
     PremiumMediaUpload,
     GenIcon,
     FaIco,
@@ -124,13 +123,6 @@ function Edit(props) {
                                 {iconType === 'icon' && (
                                     <div className='premium-blocks__base-control'>
                                         <span className='premium-control-title'>{__("Icon", 'premium-blocks-for-gutenberg')}</span>
-                                        {/* <FontIconPicker
-                                            icons={iconsList}
-                                            value={icon}
-                                            onChange={valueIcon => setAttributes({ icon: valueIcon })}
-                                            isMulti={false}
-                                            noSelectedPlaceholder={__("Select Icon", 'premium-blocks-for-gutenberg')}
-                                        /> */}
                                         <FontIconPicker
                                             icons={IcoNames}
                                             onChange={(newIcon) =>
@@ -212,8 +204,8 @@ function Edit(props) {
                                 {/* <i className={icon} /> */}
                                 <GenIcon className={`premium-bullet-list-icon ${icon}`}
                                     name={icon}
-                                    // size={bulletIconFontSize[props.deviceType] +
-                                    //     bulletIconFontSize.unit}
+                                    size={bulletIconFontSize[props.deviceType] +
+                                        bulletIconFontSize.unit}
                                     icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
                                     strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
                                 />

@@ -43,11 +43,8 @@ export default function save({ attributes }) {
 
                         {iconType === 'icon' && (
                             <span className='premium-bullet-list__content-icon'>
-                                {/* <i className={icon} /> */}
                                 <GenIcon className={`premium-bullet-list-icon ${icon}`}
                                     name={icon}
-                                    // size={bulletIconFontSize[props.deviceType] +
-                                    //     bulletIconFontSize.unit}
                                     icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
                                     strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
                                 />

@@ -47847,9 +47847,8 @@ function Edit(props) {
     className: "premium-bullet-list__content-icon"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_6__.GenIcon, {
     className: `premium-bullet-list-icon ${icon}`,
-    name: icon // size={bulletIconFontSize[props.deviceType] +
-    //     bulletIconFontSize.unit}
-    ,
+    name: icon,
+    size: bulletIconFontSize[props.deviceType] + bulletIconFontSize.unit,
     icon: 'fa' === icon.substring(0, 2) ? _pbg_components__WEBPACK_IMPORTED_MODULE_6__.FaIco[icon] : _pbg_components__WEBPACK_IMPORTED_MODULE_6__.Ico[icon],
     strokeWidth: 'fe' === icon.substring(0, 2) ? icons[0].width : undefined
   })), iconType === 'image' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
@@ -47991,9 +47990,7 @@ function save(_ref) {
     className: "premium-bullet-list__content-icon"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_4__.GenIcon, {
     className: `premium-bullet-list-icon ${icon}`,
-    name: icon // size={bulletIconFontSize[props.deviceType] +
-    //     bulletIconFontSize.unit}
-    ,
+    name: icon,
     icon: 'fa' === icon.substring(0, 2) ? _pbg_components__WEBPACK_IMPORTED_MODULE_4__.FaIco[icon] : _pbg_components__WEBPACK_IMPORTED_MODULE_4__.Ico[icon],
     strokeWidth: 'fe' === icon.substring(0, 2) ? icons[0].width : undefined
   })), iconType === 'image' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {

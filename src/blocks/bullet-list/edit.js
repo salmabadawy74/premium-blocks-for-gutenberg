@@ -1,5 +1,4 @@
 import classnames from "classnames";
-
 import {
     InspectorTabs,
     InspectorTab,
