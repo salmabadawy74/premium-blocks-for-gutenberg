@@ -1488,7 +1488,9 @@ const floatingEffectDefaults = {
   loop: 'infinite',
   customNumber: 3,
   easing: 'linear',
-  disableOnSafari: false
+  disableOnSafari: false,
+  steps: 5,
+  customSelector: ''
 };
 
 /***/ }),
@@ -1501,6 +1503,8 @@ const floatingEffectDefaults = {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "checkSafariBrowser": () => (/* binding */ checkSafariBrowser),
+/* harmony export */   "checkSelector": () => (/* binding */ checkSelector),
 /* harmony export */   "getAnimationObj": () => (/* binding */ getAnimationObj)
 /* harmony export */ });
 const getAnimationObj = floatingEffect => {
@@ -1524,116 +1528,138 @@ const getAnimationObj = floatingEffect => {
   if (translate.enable) {
     animeObj.translateX = {
       value: [translate?.x?.from || 0, translate?.x?.to || 0],
-      delay: translate.delay || 1000,
-      duration: translate.duration || 2000
+      delay: translate.delay || 0,
+      duration: translate.duration || 1000
     };
     animeObj.translateY = {
       value: [translate?.y?.from || 0, translate?.y?.to || 0],
-      delay: translate.delay || 1000,
-      duration: translate.duration || 2000
+      delay: translate.delay || 0,
+      duration: translate.duration || 1000
     };
   }
   if (rotate.enable) {
     animeObj.rotateX = {
       value: [rotate?.x?.from || 0, rotate?.x?.to || 0],
-      delay: rotate.delay || 1000,
-      duration: rotate.duration || 2000
+      delay: rotate.delay || 0,
+      duration: rotate.duration || 1000
     };
     animeObj.rotateY = {
       value: [rotate?.y?.from || 0, rotate?.y?.to || 0],
-      delay: rotate.delay || 1000,
-      duration: rotate.duration || 2000
+      delay: rotate.delay || 0,
+      duration: rotate.duration || 1000
     };
     animeObj.rotateZ = {
       value: [rotate?.z?.from || 0, rotate?.z?.to || 0],
-      delay: rotate.delay || 1000,
-      duration: rotate.duration || 2000
+      delay: rotate.delay || 0,
+      duration: rotate.duration || 1000
     };
   }
   if (scale.enable) {
     animeObj.scaleX = {
       value: [scale?.x?.from || 0, scale?.x?.to || 0],
-      delay: scale.delay || 1000,
-      duration: scale.duration || 2000
+      delay: scale.delay || 0,
+      duration: scale.duration || 1000
     };
     animeObj.scaleY = {
       value: [scale?.y?.from || 0, scale?.y?.to || 0],
-      delay: scale.delay || 1000,
-      duration: scale.duration || 2000
+      delay: scale.delay || 0,
+      duration: scale.duration || 1000
     };
   }
   if (skew.enable) {
     animeObj.skewX = {
       value: [skew?.x?.from || 0, skew?.x?.to || 0],
-      delay: skew.delay || 1000,
-      duration: skew.duration || 2000
+      delay: skew.delay || 0,
+      duration: skew.duration || 1000
     };
     animeObj.skewY = {
       value: [skew?.y?.from || 0, skew?.y?.to || 0],
-      delay: skew.delay || 1000,
-      duration: skew.duration || 2000
+      delay: skew.delay || 0,
+      duration: skew.duration || 1000
     };
   }
   if (opacity.enable) {
     animeObj.opacity = {
       value: [opacity?.value?.from || 0, opacity?.value?.to || 0],
-      duration: opacity.duration || 2000,
-      delay: opacity.delay || 1000 || 0
+      duration: opacity.duration || 1000,
+      delay: opacity.delay || 0
     };
   }
   if (background.enable) {
     animeObj.backgroundColor = {
       value: [background?.value?.from || 0, background?.value?.to || 0],
-      duration: background.duration || 2000,
-      delay: background?.delay || 1000 || 0
+      duration: background.duration || 1000,
+      delay: background?.delay || 0
     };
   }
   if (blur.enable) {
     filters.push({
       value: [`blur(${blur?.value?.from}${blur?.value?.unit})` || 0, `blur(${blur?.value?.to}${blur?.value?.unit})` || 0],
-      duration: blur.duration || 2000,
-      delay: blur.delay || 1000 || 0
+      duration: blur.duration || 1000,
+      delay: blur.delay || 0
     });
   }
   if (contrast.enable) {
     filters.push({
       value: [`contrast(${contrast?.value?.from}${contrast?.value?.unit})` || 0, `contrast(${contrast?.value?.to}${contrast?.value?.unit})` || 0],
-      duration: contrast.duration || 2000,
-      delay: contrast.delay || 1000 || 0
+      duration: contrast.duration || 1000,
+      delay: contrast.delay || 0
     });
   }
   if (grayscale.enable) {
     filters.push({
       value: [`grayscale(${grayscale?.value?.from}${grayscale?.value?.unit})` || 0, `grayscale(${grayscale?.value?.to}${grayscale?.value?.unit})` || 0],
-      duration: grayscale.duration || 2000,
-      delay: grayscale.delay || 1000 || 0
+      duration: grayscale.duration || 1000,
+      delay: grayscale.delay || 0
     });
   }
   if (hue.enable) {
     filters.push({
       value: [`hue-rotate(${hue?.value?.from}${hue?.value?.unit})` || 0, `hue-rotate(${hue?.value?.to}${hue?.value?.unit})` || 0],
-      duration: hue.duration || 2000,
-      delay: hue.delay || 1000 || 0
+      duration: hue.duration || 1000,
+      delay: hue.delay || 0
     });
   }
   if (brightness.enable) {
     filters.push({
       value: [`brightness(${brightness?.value?.from}${brightness?.value?.unit})` || 0, `brightness(${brightness?.value?.to}${brightness?.value?.unit})` || 0],
-      duration: brightness.duration || 2000,
-      delay: brightness.delay || 1000 || 0
+      duration: brightness.duration || 1000,
+      delay: brightness.delay || 0
     });
   }
   if (saturation.enable) {
     filters.push({
       value: [`saturate(${saturation?.value?.from}${saturation?.value?.unit})` || 0, `saturate(${saturation?.value?.to}${saturation?.value?.unit})` || 0],
-      duration: saturation.duration || 2000,
-      delay: saturation.delay || 1000 || 0
+      duration: saturation.duration || 1000,
+      delay: saturation.delay || 0
     });
   }
   if (filters.length > 0) {
     animeObj.filter = filters;
   }
   return animeObj;
+};
+const checkSafariBrowser = () => {
+  const iOS = /iP(hone|ad|od)/i.test(navigator.userAgent) && !window.MSStream;
+  if (iOS) {
+    const allowedBrowser = /(Chrome|CriOS|OPiOS|FxiOS)/.test(navigator.userAgent);
+    if (!allowedBrowser) {
+      const isFireFox = '' === navigator.vendor;
+      allowedBrowser = allowedBrowser || isFireFox;
+    }
+    const isSafari = /WebKit/i.test(navigator.userAgent) && !allowedBrowser;
+  } else {
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+  }
+  return isSafari ? true : false;
+};
+const checkSelector = selector => {
+  try {
+    const checker = document.querySelector(selector);
+    return true;
+  } catch (e) {
+    return false;
+  }
 };
 
 /***/ }),
@@ -1867,7 +1893,9 @@ const FloatingEffect = _ref => {
     loop,
     customNumber,
     easing,
-    disableOnSafari
+    disableOnSafari,
+    steps,
+    customSelector
   } = value;
   const changeHandler = newVal => {
     const newValue = {
@@ -1895,7 +1923,14 @@ const FloatingEffect = _ref => {
     onChange: value => changeHandler({
       enable: value
     })
-  }), enable && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_5__.RadioComponent, {
+  }), enable && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Custom CSS Selector', "premium-blocks-for-gutenberg"),
+    value: customSelector,
+    onChange: value => changeHandler({
+      customSelector: value
+    }),
+    help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Set this option if you want to apply floating effects on specfic selector inside your Block. For example, .premium-dheading-block__first', "premium-blocks-for-gutenberg")
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_5__.RadioComponent, {
     choices: [{
       value: "motion",
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)("Motion", "premium-blocks-for-gutenberg")
@@ -2374,12 +2409,17 @@ const FloatingEffect = _ref => {
     defaultValue: 0,
     max: 10000,
     step: 1
-  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
-    class: "premium-control-title"
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
+    class: "premium-control-title",
+    style: {
+      fontWeight: 700,
+      marginBottom: 10,
+      display: 'inline-block'
+    }
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('General Settings', 'premium-blocks-for-gutenberg')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)("Direction", "premium-blocks-for-gutenberg"),
     value: direction,
-    onChange: newValue => setAttributes({
+    onChange: newValue => changeHandler({
       direction: newValue
     }),
     options: [{
@@ -2405,14 +2445,16 @@ const FloatingEffect = _ref => {
       value: "custom",
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)("Custom", "premium-blocks-for-gutenberg")
     }]
-  }), console.log(loop), loop === 'custom' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalNumberControl, {
+  }), loop === 'custom' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "premium-blocks__base-control"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
+    className: "premium-control-title"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Custom Number', 'premium-blocks-pro')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalNumberControl, {
+    value: customNumber,
     onChange: value => changeHandler({
       customNumber: value
-    }),
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Custom Number'),
-    value: customNumber,
-    min: 1
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+    })
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)("Easing", "premium-blocks-for-gutenberg"),
     value: easing,
     onChange: newValue => changeHandler({
@@ -2437,6 +2479,9 @@ const FloatingEffect = _ref => {
       value: "easeInOutBack",
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)("easeInOutBack", "premium-blocks-for-gutenberg")
     }, {
+      value: "steps",
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)("Steps", "premium-blocks-for-gutenberg")
+    }, {
       value: "easeInElastic(1, .6)",
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)("Elastic In", "premium-blocks-for-gutenberg")
     }, {
@@ -2446,7 +2491,22 @@ const FloatingEffect = _ref => {
       value: "easeInOutElastic(1, .6)",
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)("Elastic In Out", "premium-blocks-for-gutenberg")
     }]
-  }));
+  }), easing === 'steps' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "premium-blocks__base-control"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
+    className: "premium-control-title"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Steps', 'premium-blocks-pro')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalNumberControl, {
+    value: steps,
+    onChange: value => changeHandler({
+      steps: value
+    })
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)("Disable Floating Effects On Safari", "premium-blocks-for-gutenberg"),
+    checked: disableOnSafari,
+    onChange: value => changeHandler({
+      disableOnSafari: value
+    })
+  })));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FloatingEffect);
 const FloatingEffectControl = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__.createHigherOrderComponent)(BlockEdit => {
@@ -2463,18 +2523,35 @@ const FloatingEffectControl = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__
       if (!floatingEffect?.enable) {
         return;
       }
-      const blockElement = document.querySelectorAll(`[data-effect="${floatingEffect.clientId}"]`);
+      if (floatingEffect?.disableOnSafari && (0,_helpers_helpers__WEBPACK_IMPORTED_MODULE_9__.checkSafariBrowser)()) {
+        return;
+      }
+      let blockElement = document.querySelectorAll(`[data-effect="${floatingEffect.clientId}"]`);
+      let targets;
+      if (floatingEffect.customSelector && (0,_helpers_helpers__WEBPACK_IMPORTED_MODULE_9__.checkSelector)(floatingEffect.customSelector)) {
+        blockElement = document.querySelector(`[data-effect="${floatingEffect.clientId}"]`);
+        targets = blockElement.querySelectorAll(floatingEffect.customSelector);
+      }
       const animeSettings = {
-        targets: blockElement,
+        targets: targets?.length > 0 ? targets : blockElement,
         loop: floatingEffect.loop === 'infinite' ? true : floatingEffect.customNumber,
         direction: floatingEffect.direction,
-        easing: floatingEffect.easing
+        easing: floatingEffect.easing !== 'steps' ? floatingEffect.easing : `steps(${floatingEffect?.steps || 5})`
       };
       const animeObj = (0,_helpers_helpers__WEBPACK_IMPORTED_MODULE_9__.getAnimationObj)(floatingEffect);
-      (0,animejs_lib_anime_es_js__WEBPACK_IMPORTED_MODULE_10__["default"])({
-        ...animeSettings,
-        ...animeObj
-      });
+      let animationInstance = null;
+      if (Object.keys(animeObj).length) {
+        animationInstance = (0,animejs_lib_anime_es_js__WEBPACK_IMPORTED_MODULE_10__["default"])({
+          ...animeSettings,
+          ...animeObj
+        });
+      }
+      return () => {
+        if (animationInstance) {
+          animationInstance.pause();
+          animationInstance.reset();
+        }
+      };
     }, [isSelected, floatingEffect]);
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(BlockEdit, props), isSelected && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(FloatingEffect, {
       value: floatingEffect,

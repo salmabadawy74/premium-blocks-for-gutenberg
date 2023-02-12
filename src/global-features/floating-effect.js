@@ -1,4 +1,4 @@
-import { PanelBody, ToggleControl, SelectControl, __experimentalNumberControl as NumberControl } from '@wordpress/components';
+import { PanelBody, ToggleControl, SelectControl, __experimentalNumberControl as NumberControl, TextControl } from '@wordpress/components';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { Fragment, useRef, useEffect } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
@@ -6,7 +6,7 @@ import { AdvancedRangeControl, RadioComponent, ResponsiveSingleRangeControl, Adv
 import { __ } from '@wordpress/i18n';
 import { addFilter } from '@wordpress/hooks';
 import { floatingEffectDefaults } from './helpers/defaults';
-import { getAnimationObj } from './helpers/helpers';
+import { checkSafariBrowser, checkSelector, getAnimationObj } from './helpers/helpers';
 import anime from 'animejs/lib/anime.es.js';
 
 const FloatingEffect = ({ value, onChange }) => {
@@ -29,7 +29,9 @@ const FloatingEffect = ({ value, onChange }) => {
         loop,
         customNumber,
         easing,
-        disableOnSafari
+        disableOnSafari,
+        steps,
+        customSelector
     } = value;
 
     const changeHandler = (newVal) => {
@@ -55,6 +57,12 @@ const FloatingEffect = ({ value, onChange }) => {
         />
         {enable && (
             <>
+                <TextControl
+                    label={__('Custom CSS Selector', "premium-blocks-for-gutenberg")}
+                    value={customSelector}
+                    onChange={value => changeHandler({ customSelector: value })}
+                    help={__('Set this option if you want to apply floating effects on specfic selector inside your Block. For example, .premium-dheading-block__first', "premium-blocks-for-gutenberg")}
+                />
                 <RadioComponent
                     choices={[
                         {
@@ -548,110 +556,126 @@ const FloatingEffect = ({ value, onChange }) => {
                         )}
                     </>
                 )}
+                <span class="premium-control-title" style={{
+                    fontWeight: 700,
+                    marginBottom: 10,
+                    display: 'inline-block'
+                }}>{__('General Settings', 'premium-blocks-for-gutenberg')}</span>
+                <SelectControl
+                    label={__(
+                        "Direction",
+                        "premium-blocks-for-gutenberg"
+                    )}
+                    value={direction}
+                    onChange={(newValue) =>
+                        changeHandler({ direction: newValue })
+                    }
+                    options={[
+                        {
+                            value: "normal",
+                            label: __("Normal", "premium-blocks-for-gutenberg"),
+                        },
+                        {
+                            value: "reverse",
+                            label: __("Reverse", "premium-blocks-for-gutenberg"),
+                        },
+                        {
+                            value: "alternate",
+                            label: __("Alternate", "premium-blocks-for-gutenberg"),
+                        },
+                    ]}
+                />
+                <SelectControl
+                    label={__(
+                        "Loop",
+                        "premium-blocks-for-gutenberg"
+                    )}
+                    value={loop}
+                    onChange={(newValue) =>
+                        changeHandler({ loop: newValue })
+                    }
+                    options={[
+                        {
+                            value: "infinite",
+                            label: __("Infinite", "premium-blocks-for-gutenberg"),
+                        },
+                        {
+                            value: "custom",
+                            label: __("Custom", "premium-blocks-for-gutenberg"),
+                        },
+                    ]}
+                />
+                {loop === 'custom' && (
+                    <div className='premium-blocks__base-control'>
+                        <span className='premium-control-title'>{__('Custom Number', 'premium-blocks-pro')}</span>
+                        <NumberControl value={customNumber} onChange={value => changeHandler({ customNumber: value })} />
+                    </div>
+                )}
+                <SelectControl
+                    label={__(
+                        "Easing",
+                        "premium-blocks-for-gutenberg"
+                    )}
+                    value={easing}
+                    onChange={(newValue) =>
+                        changeHandler({ easing: newValue })
+                    }
+                    options={[
+                        {
+                            value: "linear",
+                            label: __("Linear", "premium-blocks-for-gutenberg"),
+                        },
+                        {
+                            value: "easeInOutSine",
+                            label: __("easeInOutSine", "premium-blocks-for-gutenberg"),
+                        },
+                        {
+                            value: "easeInOutExpo",
+                            label: __("easeInOutExpo", "premium-blocks-for-gutenberg"),
+                        },
+                        {
+                            value: "easeInOutQuart",
+                            label: __("easeInOutQuart", "premium-blocks-for-gutenberg"),
+                        },
+                        {
+                            value: "easeInOutCirc",
+                            label: __("easeInOutCirc", "premium-blocks-for-gutenberg"),
+                        },
+                        {
+                            value: "easeInOutBack",
+                            label: __("easeInOutBack", "premium-blocks-for-gutenberg"),
+                        },
+                        {
+                            value: "steps",
+                            label: __("Steps", "premium-blocks-for-gutenberg"),
+                        },
+                        {
+                            value: "easeInElastic(1, .6)",
+                            label: __("Elastic In", "premium-blocks-for-gutenberg"),
+                        },
+                        {
+                            value: "easeOutElastic(1, .6)",
+                            label: __("Elastic Out", "premium-blocks-for-gutenberg"),
+                        },
+                        {
+                            value: "easeInOutElastic(1, .6)",
+                            label: __("Elastic In Out", "premium-blocks-for-gutenberg"),
+                        },
+                    ]}
+                />
+                {easing === 'steps' && (
+                    <div className='premium-blocks__base-control'>
+                        <span className='premium-control-title'>{__('Steps', 'premium-blocks-pro')}</span>
+                        <NumberControl value={steps} onChange={value => changeHandler({ steps: value })} />
+                    </div>
+                )}
+                <ToggleControl
+                    label={__("Disable Floating Effects On Safari", "premium-blocks-for-gutenberg")}
+                    checked={disableOnSafari}
+                    onChange={value => changeHandler({ disableOnSafari: value })}
+                />
             </>
         )}
-        <span class="premium-control-title">{__('General Settings', 'premium-blocks-for-gutenberg')}</span>
-        <SelectControl
-            label={__(
-                "Direction",
-                "premium-blocks-for-gutenberg"
-            )}
-            value={direction}
-            onChange={(newValue) =>
-                setAttributes({ direction: newValue })
-            }
-            options={[
-                {
-                    value: "normal",
-                    label: __("Normal", "premium-blocks-for-gutenberg"),
-                },
-                {
-                    value: "reverse",
-                    label: __("Reverse", "premium-blocks-for-gutenberg"),
-                },
-                {
-                    value: "alternate",
-                    label: __("Alternate", "premium-blocks-for-gutenberg"),
-                },
-            ]}
-        />
-        <SelectControl
-            label={__(
-                "Loop",
-                "premium-blocks-for-gutenberg"
-            )}
-            value={loop}
-            onChange={(newValue) =>
-                changeHandler({ loop: newValue })
-            }
-            options={[
-                {
-                    value: "infinite",
-                    label: __("Infinite", "premium-blocks-for-gutenberg"),
-                },
-                {
-                    value: "custom",
-                    label: __("Custom", "premium-blocks-for-gutenberg"),
-                },
-            ]}
-        />
-        {console.log(loop)}
-        {loop === 'custom' && (
-            <NumberControl
-                onChange={value => changeHandler({ customNumber: value })}
-                label={__('Custom Number')}
-                value={customNumber}
-                min={1}
-            />
-        )}
-        <SelectControl
-            label={__(
-                "Easing",
-                "premium-blocks-for-gutenberg"
-            )}
-            value={easing}
-            onChange={(newValue) =>
-                changeHandler({ easing: newValue })
-            }
-            options={[
-                {
-                    value: "linear",
-                    label: __("Linear", "premium-blocks-for-gutenberg"),
-                },
-                {
-                    value: "easeInOutSine",
-                    label: __("easeInOutSine", "premium-blocks-for-gutenberg"),
-                },
-                {
-                    value: "easeInOutExpo",
-                    label: __("easeInOutExpo", "premium-blocks-for-gutenberg"),
-                },
-                {
-                    value: "easeInOutQuart",
-                    label: __("easeInOutQuart", "premium-blocks-for-gutenberg"),
-                },
-                {
-                    value: "easeInOutCirc",
-                    label: __("easeInOutCirc", "premium-blocks-for-gutenberg"),
-                },
-                {
-                    value: "easeInOutBack",
-                    label: __("easeInOutBack", "premium-blocks-for-gutenberg"),
-                },
-                {
-                    value: "easeInElastic(1, .6)",
-                    label: __("Elastic In", "premium-blocks-for-gutenberg"),
-                },
-                {
-                    value: "easeOutElastic(1, .6)",
-                    label: __("Elastic Out", "premium-blocks-for-gutenberg"),
-                },
-                {
-                    value: "easeInOutElastic(1, .6)",
-                    label: __("Elastic In Out", "premium-blocks-for-gutenberg"),
-                },
-            ]}
-        />
     </PanelBody>
 }
 
@@ -666,16 +690,32 @@ const FloatingEffectControl = createHigherOrderComponent((BlockEdit) => {
             if (!floatingEffect?.enable) {
                 return;
             }
-            const blockElement = document.querySelectorAll(`[data-effect="${floatingEffect.clientId}"]`);
+            if (floatingEffect?.disableOnSafari && checkSafariBrowser()) {
+                return;
+            }
+            let blockElement = document.querySelectorAll(`[data-effect="${floatingEffect.clientId}"]`);
+            let targets;
+            if (floatingEffect.customSelector && checkSelector(floatingEffect.customSelector)) {
+                blockElement = document.querySelector(`[data-effect="${floatingEffect.clientId}"]`);
+                targets = blockElement.querySelectorAll(floatingEffect.customSelector);
+            }
             const animeSettings = {
-                targets: blockElement,
+                targets: targets?.length > 0 ? targets : blockElement,
                 loop: floatingEffect.loop === 'infinite' ? true : floatingEffect.customNumber,
                 direction: floatingEffect.direction,
-                easing: floatingEffect.easing,
+                easing: floatingEffect.easing !== 'steps' ? floatingEffect.easing : `steps(${floatingEffect?.steps || 5})`,
             };
             const animeObj = getAnimationObj(floatingEffect);
-
-            anime({ ...animeSettings, ...animeObj });
+            let animationInstance = null;
+            if (Object.keys(animeObj).length) {
+                animationInstance = anime({ ...animeSettings, ...animeObj });
+            }
+            return () => {
+                if (animationInstance) {
+                    animationInstance.pause();
+                    animationInstance.reset();
+                }
+            };
         }, [isSelected, floatingEffect]);
 
         return (

@@ -180,10 +180,26 @@ class PBG_Blocks_Helper {
 		if ( $global_features['premium-floating-effect'] && isset( $block['attrs']['floatingEffect'] ) && $block['attrs']['floatingEffect']['enable'] ) {
 			preg_match( '/<([\w]+)(?![^<]*(style|script))/', $block_content, $matches );
 			$parent_tag    = $matches[1];
-			$block_content = str_replace( '<' . $parent_tag, '<' . $parent_tag . ' data-effect="' . $block['attrs']['floatingEffect']['clientId'] . '"', $block_content );
+			$block_content = $this->str_replace_first( '<' . $parent_tag, '<' . $parent_tag . ' data-effect="' . $block['attrs']['floatingEffect']['clientId'] . '"', $block_content );
 		}
 
 		return $block_content;
+	}
+
+	/**
+	 * str_replace_first
+	 *
+	 * @param  string $search
+	 * @param  string $replace
+	 * @param  string $subject
+	 * @return string
+	 */
+	function str_replace_first( $search, $replace, $subject ) {
+		$pos = strpos( $subject, $search );
+		if ( $pos !== false ) {
+			return substr_replace( $subject, $replace, $pos, strlen( $search ) );
+		}
+		return $subject;
 	}
 
 	/**

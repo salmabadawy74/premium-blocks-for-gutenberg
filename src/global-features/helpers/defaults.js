@@ -151,5 +151,7 @@ export const floatingEffectDefaults = {
     loop: 'infinite',
     customNumber: 3,
     easing: 'linear',
-    disableOnSafari: false
+    disableOnSafari: false,
+    steps: 5,
+    customSelector: ''
 };
