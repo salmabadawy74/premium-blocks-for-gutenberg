@@ -46719,7 +46719,7 @@ function Edit(props) {
     hideMobile,
     iconBorder,
     iconPadding,
-    iconShadow
+    icons
   } = props.attributes;
   const ICON = [{
     value: "icon",
@@ -46749,7 +46749,7 @@ function Edit(props) {
     styles[`.${blockId} .premium-image-separator-container:hover img`] = {
       filter: `brightness(${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.bright}% ) contrast(${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.contrast}% ) saturate(${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.saturation}% ) blur(${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.blur}px) hue-rotate(${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.hue}deg)!important`
     };
-    styles[`.${blockId} .premium-image-separator-container i:hover`] = {
+    styles[`.${blockId} .premium-image-separator-container .premium-image-separator-icon:hover`] = {
       color: `${iconStyles[0].iconColorHover} !important`,
       "background-color": `${iconStyles[0].iconBGColorHover} !important`
     };
@@ -46759,6 +46759,12 @@ function Edit(props) {
   let BorderValue = iconStyles[0].advancedBorder ? {
     borderRadius: iconStyles[0].advancedBorderValue
   } : (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_5__.borderCss)(iconBorder, props.deviceType);
+
+  const renderSVG = svg => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_4__.GenIcon, {
+    name: svg,
+    icon: 'fa' === svg.substring(0, 2) ? _pbg_components__WEBPACK_IMPORTED_MODULE_4__.FaIco[svg] : _pbg_components__WEBPACK_IMPORTED_MODULE_4__.Ico[svg]
+  });
+
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_4__.InspectorTabs, {
     tabs: ["layout", "style", "advance"]
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_4__.InspectorTab, {
@@ -46775,13 +46781,14 @@ function Edit(props) {
     }),
     options: ICON
   }), iconType === "icon" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, __("Icon", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)((_fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_3___default()), {
-    icons: _pbg_components__WEBPACK_IMPORTED_MODULE_4__.iconsList,
-    value: iconStyles[0].icon,
-    onChange: value => saveIconStyle({
-      icon: value
+    icons: _pbg_components__WEBPACK_IMPORTED_MODULE_4__.IcoNames,
+    onChange: newIcon => saveIconStyle({
+      icon: newIcon
     }),
-    isMulti: false,
-    appendTo: "body",
+    renderFunc: renderSVG,
+    value: iconStyles[0].icon,
+    isMulti: false // appendTo="body"
+    ,
     noSelectedPlaceholder: __("Select Icon", "premium-blocks-for-gutenberg")
   })) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_4__.PremiumMediaUpload, {
     type: "image",
@@ -46989,13 +46996,7 @@ function Edit(props) {
       iconBGColorHover: newValue
     }),
     colorDefault: ""
-  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_4__.PremiumShadow, {
-    label: __("Text Shadow", "premium-blocks-for-gutenberg"),
-    value: iconShadow,
-    onChange: value => setAttributes({
-      iconShadow: value
-    })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_4__.SpacingComponent, {
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_4__.SpacingComponent, {
     label: __("Padding", "premium-blocks-for-gutenberg"),
     value: iconPadding,
     onChange: value => setAttributes({
@@ -47060,13 +47061,29 @@ function Edit(props) {
       transform: `translateY(${gutter}%)`,
       filter: iconType === "image" ? `brightness( ${imgFilter === null || imgFilter === void 0 ? void 0 : imgFilter.bright}% ) contrast( ${imgFilter === null || imgFilter === void 0 ? void 0 : imgFilter.contrast}% ) saturate( ${imgFilter === null || imgFilter === void 0 ? void 0 : imgFilter.saturation}% ) blur( ${imgFilter === null || imgFilter === void 0 ? void 0 : imgFilter.blur}px ) hue-rotate( ${imgFilter === null || imgFilter === void 0 ? void 0 : imgFilter.hue}deg )` : ""
     }
-  }, iconType === "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("i", {
-    className: `${iconStyles[0].icon}`,
+  }, iconType === "icon" && // <i
+  //     className={`${iconStyles[0].icon}`}
+  //     style={{
+  //         ...paddingCss(iconPadding, props.deviceType),
+  //         fontSize: (iconSize[props.deviceType] || 200) + iconSize.unit,
+  //         color: iconStyles[0].iconColor,
+  //         backgroundColor: iconStyles[0].iconBGColor,
+  //         textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical || 0
+  //             }px ${iconShadow.blur || 0}px ${iconShadow.color
+  //             }`,
+  //         ...BorderValue,
+  //     }}
+  // />
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_4__.GenIcon, {
+    className: `premium-image-separator-icon ${iconStyles[0].icon}`,
+    name: iconStyles[0].icon,
+    size: iconSize[props.deviceType] + iconSize.unit,
+    icon: 'fa' === iconStyles[0].icon.substring(0, 2) ? _pbg_components__WEBPACK_IMPORTED_MODULE_4__.FaIco[iconStyles[0].icon] : _pbg_components__WEBPACK_IMPORTED_MODULE_4__.Ico[iconStyles[0].icon],
+    strokeWidth: 'fe' === iconStyles[0].icon.substring(0, 2) ? icons[0].width : undefined,
     style: { ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_5__.paddingCss)(iconPadding, props.deviceType),
       fontSize: (iconSize[props.deviceType] || 200) + iconSize.unit,
       color: iconStyles[0].iconColor,
       backgroundColor: iconStyles[0].iconBGColor,
-      textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical || 0}px ${iconShadow.blur || 0}px ${iconShadow.color}`,
       ...BorderValue
     }
   }), iconType === "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, imageURL ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("img", {
@@ -47171,6 +47188,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @pbg/helpers */ "@pbg/helpers");
 /* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _pbg_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @pbg/components */ "@pbg/components");
+/* harmony import */ var _pbg_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_pbg_components__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
@@ -47197,10 +47217,10 @@ function save(props) {
     maskSize,
     maskPosition,
     iconBorder,
-    iconShadow,
     hideDesktop,
     hideTablet,
-    hideMobile
+    hideMobile,
+    icons
   } = props.attributes;
   let target = linkTarget ? "_blank" : "_self";
 
@@ -47209,7 +47229,7 @@ function save(props) {
     styles[`.${blockId} .premium-image-separator-container:hover img`] = {
       'filter': `brightness(${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.bright}% ) contrast(${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.contrast}% ) saturate(${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.saturation}%) blur(${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.blur}px) hue - rotate(${imgFilterHover === null || imgFilterHover === void 0 ? void 0 : imgFilterHover.hue}deg)!important`
     };
-    styles[` .${blockId} .premium-image-separator-container i:hover`] = {
+    styles[` .${blockId} .premium-image-separator-container .premium-image-separator-icon:hover`] = {
       'color': `${iconStyles[0].iconColorHover} !important`,
       'background-color': `${iconStyles[0].iconBGColorHover} !important`
     };
@@ -47237,14 +47257,24 @@ function save(props) {
     href: link && url,
     target: target,
     rel: "noopener noreferrer"
-  }, iconType === 'icon' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("i", {
-    className: `${iconStyles[0].icon}`,
+  }, iconType === 'icon' && // <i
+  //     className={`${iconStyles[0].icon}`}
+  //     style={filterJsCss({
+  //         color: iconStyles[0].iconColor,
+  //         backgroundColor: iconStyles[0].iconBGColor,
+  //         borderColor: iconBorder.borderColor,
+  //         borderStyle: iconBorder.borderType
+  //     })} />
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.GenIcon, {
+    className: `premium-image-separator-icon ${iconStyles[0].icon}`,
+    name: iconStyles[0].icon,
+    icon: 'fa' === iconStyles[0].icon.substring(0, 2) ? _pbg_components__WEBPACK_IMPORTED_MODULE_3__.FaIco[iconStyles[0].icon] : _pbg_components__WEBPACK_IMPORTED_MODULE_3__.Ico[iconStyles[0].icon],
+    strokeWidth: 'fe' === iconStyles[0].icon.substring(0, 2) ? icons[0].width : undefined,
     style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       color: iconStyles[0].iconColor,
       backgroundColor: iconStyles[0].iconBGColor,
       borderColor: iconBorder.borderColor,
-      borderStyle: iconBorder.borderType,
-      textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical || 0}px ${iconShadow.blur || 0}px ${iconShadow.color}`
+      borderStyle: iconBorder.borderType
     })
   }), iconType === 'image' && imageURL && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: imageURL,

@@ -13,10 +13,13 @@ import {
     InsideTabs,
     Icons,
     InsideTab,
-    iconsList,
     ResponsiveSingleRangeControl,
     PremiumMediaUpload,
-    PremiumFilters
+    PremiumFilters,
+    GenIcon,
+    FaIco,
+    Ico,
+    IcoNames
 } from '@pbg/components';
 import { borderCss, paddingCss, generateBlockId, generateCss } from '@pbg/helpers';
 
@@ -62,7 +65,7 @@ function Edit(props) {
         hideMobile,
         iconBorder,
         iconPadding,
-        iconShadow,
+        icons
     } = props.attributes;
 
     const ICON = [
@@ -91,7 +94,7 @@ function Edit(props) {
         styles[`.${blockId} .premium-image-separator-container:hover img`] = {
             filter: `brightness(${imgFilterHover?.bright}% ) contrast(${imgFilterHover?.contrast}% ) saturate(${imgFilterHover?.saturation}% ) blur(${imgFilterHover?.blur}px) hue-rotate(${imgFilterHover?.hue}deg)!important`,
         };
-        styles[`.${blockId} .premium-image-separator-container i:hover`] = {
+        styles[`.${blockId} .premium-image-separator-container .premium-image-separator-icon:hover`] = {
             color: `${iconStyles[0].iconColorHover} !important`,
             "background-color": `${iconStyles[0].iconBGColorHover} !important`
         };
@@ -101,6 +104,10 @@ function Edit(props) {
     let BorderValue = iconStyles[0].advancedBorder
         ? { borderRadius: iconStyles[0].advancedBorderValue }
         : borderCss(iconBorder, props.deviceType);
+
+    const renderSVG = svg => (
+        <GenIcon name={svg} icon={('fa' === svg.substring(0, 2) ? FaIco[svg] : Ico[svg])} />
+    );
 
     return (
         <Fragment>
@@ -121,13 +128,27 @@ function Edit(props) {
                             {iconType === "icon" ? (
                                 <Fragment>
                                     <p>{__("Icon", "premium-blocks-for-gutenberg")}</p>
-                                    <FontIconPicker
+                                    {/* <FontIconPicker
                                         icons={iconsList}
                                         value={iconStyles[0].icon}
                                         onChange={(value) => saveIconStyle({ icon: value })}
                                         isMulti={false}
                                         appendTo="body"
                                         noSelectedPlaceholder={__("Select Icon", "premium-blocks-for-gutenberg")}
+                                    /> */}
+                                    <FontIconPicker
+                                        icons={IcoNames}
+                                        onChange={(newIcon) =>
+                                            saveIconStyle({ icon: newIcon })
+                                        }
+                                        renderFunc={renderSVG}
+                                        value={iconStyles[0].icon}
+                                        isMulti={false}
+                                        // appendTo="body"
+                                        noSelectedPlaceholder={__(
+                                            "Select Icon",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                     />
                                 </Fragment>
                             ) : (
@@ -458,18 +479,6 @@ function Edit(props) {
                                             </Fragment>
                                         </InsideTab>
                                     </InsideTabs>
-                                    <PremiumShadow
-                                        label={__(
-                                            "Text Shadow",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
-                                        value={iconShadow}
-                                        onChange={(value) =>
-                                            setAttributes({
-                                                iconShadow: value,
-                                            })
-                                        }
-                                    />
                                     <SpacingControl
                                         label={__(
                                             "Padding",
@@ -589,16 +598,30 @@ function Edit(props) {
                     }}
                 >
                     {iconType === "icon" && (
-                        <i
-                            className={`${iconStyles[0].icon}`}
+                        // <i
+                        //     className={`${iconStyles[0].icon}`}
+                        //     style={{
+                        //         ...paddingCss(iconPadding, props.deviceType),
+                        //         fontSize: (iconSize[props.deviceType] || 200) + iconSize.unit,
+                        //         color: iconStyles[0].iconColor,
+                        //         backgroundColor: iconStyles[0].iconBGColor,
+                        //         textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical || 0
+                        //             }px ${iconShadow.blur || 0}px ${iconShadow.color
+                        //             }`,
+                        //         ...BorderValue,
+                        //     }}
+                        // />
+                        <GenIcon className={`premium-image-separator-icon ${iconStyles[0].icon}`}
+                            name={iconStyles[0].icon}
+                            size={iconSize[props.deviceType] +
+                                iconSize.unit}
+                            icon={('fa' === iconStyles[0].icon.substring(0, 2) ? FaIco[iconStyles[0].icon] : Ico[iconStyles[0].icon])}
+                            strokeWidth={('fe' === iconStyles[0].icon.substring(0, 2) ? icons[0].width : undefined)}
                             style={{
                                 ...paddingCss(iconPadding, props.deviceType),
                                 fontSize: (iconSize[props.deviceType] || 200) + iconSize.unit,
                                 color: iconStyles[0].iconColor,
                                 backgroundColor: iconStyles[0].iconBGColor,
-                                textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical || 0
-                                    }px ${iconShadow.blur || 0}px ${iconShadow.color
-                                    }`,
                                 ...BorderValue,
                             }}
                         />
