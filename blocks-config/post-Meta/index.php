@@ -5,6 +5,48 @@
  *
  * @package WordPress
  */
+// function get_premium_post_meta_css_style($attr, $unique_id)
+// {
+//     $css                    = new Premium_Blocks_css();
+//     $media_query            = array();
+//     $media_query['mobile']  = apply_filters('Premium_BLocks_mobile_media_query', '(max-width: 767px)');
+//     $media_query['tablet']  = apply_filters('Premium_BLocks_tablet_media_query', '(max-width: 1024px)');
+//     $media_query['desktop'] = apply_filters('Premium_BLocks_tablet_media_query', '(min-width: 1025px)');
+
+
+//     if (isset($attributes['typography'])) {
+//         $css->set_selector('.' . $unique_id . ' .premium-blog-meta-data');
+//         $css->render_typography($attributes['typography'], 'Desktop');
+//     }
+//     if (isset($attributes['color'])) {
+//         $css->set_selector('.' . $unique_id . ' .premium-blog-meta-data');
+//         $css->add_property('color', $css->render_color($attr["color"]));
+//     }
+//     if (isset($attributes['hoverColor'])) {
+//         $css->set_selector('.' . $unique_id . ' .premium-blog-meta-data:hover ');
+//         $css->add_property('color', $css->render_color($attr["hoverColor"]));
+//     }
+
+//     if (isset($attributes['sepColor'])) {
+//         $css->set_selector('.' . $unique_id . ' .premium-blog-meta-separtor');
+//         $css->add_property('color', $css->render_color($attr["sepColor"]));
+//     }
+
+//     $css->start_media_query($media_query['tablet']);
+//     if (isset($attributes['typography'])) {
+//         $css->set_selector('.' . $unique_id . ' .premium-blog-meta-data');
+//         $css->render_typography($attributes['typography'], 'Tablet');
+//     }
+
+//     $css->stop_media_query();
+//     $css->start_media_query($media_query['mobile']);
+//     if (isset($attributes['typography'])) {
+//         $css->set_selector('.' . $unique_id . ' .premium-blog-meta-data');
+//         $css->render_typography($attributes['typography'], 'Mobile');
+//     }
+//     $css->stop_media_query();
+//     return $css->css_output();
+// }
 
 /**
  * Renders the `core/post-date` block on the server.
@@ -19,6 +61,25 @@ function render_block_core_post_meta($attributes, $content, $block)
     if (!isset($block->context['postId'])) {
         return '';
     }
+    if (
+        isset($attributes['blockId']) && !empty($attributes['blockId'])
+    ) {
+        $unique_id = ".{$attributes['blockId']}";
+    }
+
+    $style_id = 'pbg-blocks-style' . esc_attr($unique_id);
+    if (
+        !wp_style_is($style_id, 'enqueued') && apply_filters('Premium_BLocks_blocks_render_inline_css', true, 'lottie', $unique_id)
+    ) {
+        $css = get_premium_post_meta_css_style($attributes, $unique_id);
+        if (!empty($css)) {
+            if ($block_helpers->should_render_inline('post-meta', $unique_id)) {
+                $content = '<style id="pbg-blocks-style' . esc_attr($unique_id) . '">' . $css . '</style>' . $content;
+            } else {
+                $block_helpers->render_inline_css($css, $style_id, true);
+            }
+        }
+    };
 
     $post_ID            = $block->context['postId'];
     $classes = [];

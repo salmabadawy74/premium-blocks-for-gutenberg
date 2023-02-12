@@ -13,7 +13,7 @@
         "columns":{
             "type":"object",
             "default":{
-                "Desktop":2,
+                "Desktop":3,
                 "Tablet":2,
                 "Mobile":1
             }
@@ -184,6 +184,7 @@
 	"providesContext": {
 		"queryId": "queryId",
 		"query": "query",
-        "columns":"columns"
+        "columns":"columns",
+        "equalHeight":"equalHeight"
 	}
 }

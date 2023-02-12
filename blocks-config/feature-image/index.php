@@ -5,6 +5,55 @@
  *
  * @package WordPress
  */
+// function get_premium_feature_image_css_style($attr, $unique_id)
+// {
+//     $css                    = new Premium_Blocks_css();
+//     $media_query            = array();
+//     $media_query['mobile']  = apply_filters('Premium_BLocks_mobile_media_query', '(max-width: 767px)');
+//     $media_query['tablet']  = apply_filters('Premium_BLocks_tablet_media_query', '(max-width: 1024px)');
+//     $media_query['desktop'] = apply_filters('Premium_BLocks_tablet_media_query', '(min-width: 1025px)');
+
+
+//     if (isset($attributes['thumbnail'])) {
+//         $css->set_selector('.premium-blog-post-outer-container .premium-blog-thumbnail-container img ');
+//         $css->add_property('object-fit', $attr['thumbnail']);
+//     }
+//     if (isset($attributes['height'])) {
+//         var_dump($attr["height"]);
+//         $css->set_selector('.premium-blog-post-outer-container  .premium-blog-thumb-effect-wrapper .premium-blog-thumbnail-container img');
+//         $css->add_property('height', $css->render_range($attr['height'], 'Desktop'));
+//     }
+//     if (isset($attributes['filter'])) {
+//         $css->set_selector('.premium-blog-post-outer-container .premium-blog-thumbnail-container img');
+//         $css->add_property(
+//             'filter',
+//             'brightness(' . $attr['filter']['bright'] . '%)' . 'contrast(' .  $attr['filter']['contrast'] . '%) ' . 'saturate(' . $attr['filter']['saturation'] . '%) ' . 'blur(' . $attr['filter']['blur'] . 'px) ' . 'hue-rotate(' . $attr['filter']['hue'] . 'deg)'
+//         );
+//     }
+//     if (isset($attributes['Hoverfilter'])) {
+//         $css->set_selector('.' . $unique_id . '.premium-blog-thumbnail-container:hover img');
+//         $css->add_property(
+//             'filter',
+//             'brightness(' . $attr['Hoverfilter']['bright'] . '%)' . 'contrast(' .  $attr['Hoverfilter']['contrast'] . '%) ' . 'saturate(' . $attr['Hoverfilter']['saturation'] . '%) ' . 'blur(' . $attr['Hoverfilter']['blur'] . 'px) ' . 'hue-rotate(' . $attr['Hoverfilter']['hue'] . 'deg)'
+//         );
+//     }
+
+
+//     $css->start_media_query($media_query['tablet']);
+//     if (isset($attributes['height'])) {
+//         $css->set_selector('.' . $unique_id . '.premium-blog-thumbnail-container img');
+//         $css->add_property('height', $css->render_range($attr['height'], 'Tablet'));
+//     }
+//     $css->stop_media_query();
+//     $css->start_media_query($media_query['mobile']);
+//     if (isset($attributes['height'])) {
+//         $css->set_selector('.' . $unique_id . '.premium-blog-thumbnail-container img');
+//         $css->add_property('height', $css->render_range($attr['height'], 'Mobile'));
+//     }
+//     $css->stop_media_query();
+//     return $css->css_output();
+// }
+
 
 /**
  * Renders the `premium/post-featured-image` block on the server.
@@ -20,6 +69,27 @@ function render_block_premium_post_featured_image($attributes, $content, $block)
         return '';
     }
     $post_ID = $block->context['postId'];
+    if (
+        isset($attributes['blockId']) && !empty($attributes['blockId'])
+    ) {
+        $unique_id = ".{$attributes['blockId']}";
+    }
+
+    $style_id = 'pbg-blocks-style' . esc_attr($unique_id);
+    if (
+        !wp_style_is($style_id, 'enqueued') && apply_filters('Premium_BLocks_blocks_render_inline_css', true, 'feature-image', $unique_id)
+    ) {
+
+        $css = get_premium_feature_image_css_style($attributes, $unique_id);
+        if (!empty($css)) {
+
+            if ($block_helpers->should_render_inline('feature-image', $unique_id)) {
+                $content = '<style id="pbg-blocks-style' . esc_attr($unique_id) . '">' . $css . '</style>' . $content;
+            } else {
+                $block_helpers->render_inline_css($css, $style_id, true);
+            }
+        }
+    };
 
     // Check is needed for backward compatibility with third-party plugins
     // that might rely on the `in_the_loop` check; calling `the_post` sets it to true.
@@ -74,64 +144,6 @@ function render_block_premium_post_featured_image($attributes, $content, $block)
  *
  * @return string HTML markup in string format.
  */
-function get_block_premium_post_featured_image_overlay_element_markup($attributes)
-{
-    $has_dim_background  = isset($attributes['dimRatio']) && $attributes['dimRatio'];
-    $has_gradient        = isset($attributes['gradient']) && $attributes['gradient'];
-    $has_custom_gradient = isset($attributes['customGradient']) && $attributes['customGradient'];
-    $has_solid_overlay   = isset($attributes['overlayColor']) && $attributes['overlayColor'];
-    $has_custom_overlay  = isset($attributes['customOverlayColor']) && $attributes['customOverlayColor'];
-    $class_names         = array('wp-block-post-featured-image__overlay');
-    $styles              = array();
-
-    if (!$has_dim_background) {
-        return '';
-    }
-
-    // Apply border classes and styles.
-    $border_attributes = get_block_premium_post_featured_image_border_attributes($attributes);
-
-    if (!empty($border_attributes['class'])) {
-        $class_names[] = $border_attributes['class'];
-    }
-
-    if (!empty($border_attributes['style'])) {
-        $styles[] = $border_attributes['style'];
-    }
-
-    // Apply overlay and gradient classes.
-    if ($has_dim_background) {
-        $class_names[] = 'has-background-dim';
-        $class_names[] = "has-background-dim-{$attributes['dimRatio']}";
-    }
-
-    if ($has_solid_overlay) {
-        $class_names[] = "has-{$attributes['overlayColor']}-background-color";
-    }
-
-    if ($has_gradient || $has_custom_gradient) {
-        $class_names[] = 'has-background-gradient';
-    }
-
-    if ($has_gradient) {
-        $class_names[] = "has-{$attributes['gradient']}-gradient-background";
-    }
-
-    // Apply background styles.
-    if ($has_custom_gradient) {
-        $styles[] = sprintf('background-image: %s;', $attributes['customGradient']);
-    }
-
-    if ($has_custom_overlay) {
-        $styles[] = sprintf('background-color: %s;', $attributes['customOverlayColor']);
-    }
-
-    return sprintf(
-        '<span class="%s" style="%s" aria-hidden="true"></span>',
-        esc_attr(implode(' ', $class_names)),
-        esc_attr(safecss_filter_attr(implode(' ', $styles)))
-    );
-}
 
 /**
  * Generates class names and styles to apply the border support styles for
@@ -140,51 +152,6 @@ function get_block_premium_post_featured_image_overlay_element_markup($attribute
  * @param array $attributes The block attributes.
  * @return array The border-related classnames and styles for the block.
  */
-function get_block_premium_post_featured_image_border_attributes($attributes)
-{
-    $border_styles = array();
-    $sides         = array('top', 'right', 'bottom', 'left');
-
-    // Border radius.
-    if (isset($attributes['style']['border']['radius'])) {
-        $border_styles['radius'] = $attributes['style']['border']['radius'];
-    }
-
-    // Border style.
-    if (isset($attributes['style']['border']['style'])) {
-        $border_styles['style'] = $attributes['style']['border']['style'];
-    }
-
-    // Border width.
-    if (isset($attributes['style']['border']['width'])) {
-        $border_styles['width'] = $attributes['style']['border']['width'];
-    }
-
-    // Border color.
-    $preset_color           = array_key_exists('borderColor', $attributes) ? "var:preset|color|{$attributes['borderColor']}" : null;
-    $custom_color           = _wp_array_get($attributes, array('style', 'border', 'color'), null);
-    $border_styles['color'] = $preset_color ? $preset_color : $custom_color;
-
-    // Individual border styles e.g. top, left etc.
-    foreach ($sides as $side) {
-        $border                 = _wp_array_get($attributes, array('style', 'border', $side), null);
-        $border_styles[$side] = array(
-            'color' => isset($border['color']) ? $border['color'] : null,
-            'style' => isset($border['style']) ? $border['style'] : null,
-            'width' => isset($border['width']) ? $border['width'] : null,
-        );
-    }
-
-    $styles     = wp_style_engine_get_styles(array('border' => $border_styles));
-    $attributes = array();
-    if (!empty($styles['classnames'])) {
-        $attributes['class'] = $styles['classnames'];
-    }
-    if (!empty($styles['css'])) {
-        $attributes['style'] = $styles['css'];
-    }
-    return $attributes;
-}
 
 /**
  * Registers the `premium/post-featured-image` block on the server.

@@ -9,6 +9,9 @@
     "parent": ["premium/post-template"],
 
     "attributes": {
+        "blockId":{
+            "type":"string"
+        },
         "isLink": {
             "type": "boolean",
             "default": false
@@ -43,12 +46,8 @@
         },
 
         "thumbnail": {
-            "type": "object",
-            "default": {
-                "Desktop": "cover",
-                "Tablet": "cover",
-                "Mobile": "cover"
-            }
+            "type": "string",
+            "default": "cover"
         },
         "imageSize": {
             "type": "string",

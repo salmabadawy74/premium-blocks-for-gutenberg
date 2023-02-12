@@ -47,7 +47,31 @@ function Image(props) {
         hideTablet,
         hideMobile,
     } = attributes;
-
+    const hoverEffects = [
+        { label: "None", value: "None" },
+        { label: "Zoom in", value: "zoomin" },
+        { label: "Zoom out", value: "zoomout" },
+        { label: "Scale", value: "scale" },
+        { label: "GrayScale", value: "gray" },
+        { label: "Blur", value: "blur" },
+        { label: "Bright", value: "bright" },
+        { label: "Sepia", value: "sepia" },
+        { label: "Translate", value: "trans" },
+    ];
+    const ThumbnailSelect = [
+        {
+            label: "Cover",
+            value: "cover",
+        },
+        {
+            label: "Fill",
+            value: "fill",
+        },
+        {
+            label: "Contain",
+            value: "contain",
+        },
+    ];
     useEffect(() => {
         // Set block id.
         setAttributes({
@@ -106,27 +130,17 @@ function Image(props) {
             " premium-mobile-hidden": hideMobile,
         }),
     });
+    console.log(height);
     const loadStyles = () => {
         const styles = {};
-        styles[
-            `.${blockId}.premium-blog-entry-title__container .premium-blog-entry-title `
-        ] = {
-            ...typographyCss(Typography, deviceType),
+        styles[`.${blockId} .premium-blog-thumbnail-container img `] = {
+            "object-fit": `${thumbnail}`,
+            height: `${height[deviceType]}${height["unit"]}!important`,
+            filter: `brightness( ${filter.bright}% ) contrast( ${filter.contrast}% ) saturate( ${filter.saturation}% ) blur( ${filter.blur}px ) hue-rotate( ${filter.hue}deg )`,
         };
-        styles[
-            `.${blockId}.premium-blog-entry-title__container .premium-blog-entry-title a`
-        ] = {
-            color: textColor,
-        };
-        styles[
-            `.${blockId}.premium-blog-entry-title__container .premium-blog-entry-title:hover `
-        ] = {
-            color: hoverColor,
-        };
-        styles[
-            `.${blockId}.premium-blog-entry-title__container .premium-blog-entry-title:hover a`
-        ] = {
-            color: hoverColor,
+
+        styles[`.${blockId} .premium-blog-post-outer-container:hover img `] = {
+            filter: `brightness( ${hoverEffect.bright}% ) contrast( ${Hoverfilter.contrast}% ) saturate( ${Hoverfilter.saturation}% ) blur( ${Hoverfilter.blur}px ) hue-rotate( ${Hoverfilter.hue}deg )`,
         };
         return generateCss(styles);
     };
@@ -156,6 +170,16 @@ function Image(props) {
                                     }
                                 />
                                 <SelectControl
+                                    label={__("Hover Effect")}
+                                    options={hoverEffects}
+                                    value={hoverEffect}
+                                    onChange={(newEffect) =>
+                                        setAttributes({
+                                            hoverEffect: newEffect,
+                                        })
+                                    }
+                                />
+                                <SelectControl
                                     label={__("Image Size")}
                                     options={imageSizeOptions}
                                     value={imageSize}
@@ -179,6 +203,14 @@ function Image(props) {
                                     min={0}
                                     max={600}
                                     step={1}
+                                />
+                                <SelectControl
+                                    options={ThumbnailSelect}
+                                    label={__("Thumbnail Fit")}
+                                    value={thumbnail}
+                                    onChange={(value) =>
+                                        setAttributes({ thumbnail: value })
+                                    }
                                 />
                             </PanelBody>
                         </InspectorTab>
@@ -261,12 +293,22 @@ function Image(props) {
                 </InspectorControls>
 
                 <div {...blockProps}>
+                    <style
+                        dangerouslySetInnerHTML={{
+                            __html: loadStyles(),
+                        }}
+                    />
                     <div
                         className={`premium-blog-thumbnail-container premium-blog-${hoverEffect}-effect`}
                     >
                         <img src={mediaUrl} />
                     </div>
-                    <div className="premium-blog-thumbnail-overlay">
+                    <div
+                        className="premium-blog-thumbnail-overlay"
+                        style={{
+                            backgroundColor: colorOverlay,
+                        }}
+                    >
                         <a href={link} rel="noopener noreferrer" />
                     </div>
                 </div>

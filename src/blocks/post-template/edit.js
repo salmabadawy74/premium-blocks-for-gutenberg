@@ -46,7 +46,7 @@ const TEMPLATE = [
     ["premium/post-tag"],
 ];
 
-function PostTemplateInnerBlocks() {
+function PostTemplateInnerBlocks(props) {
     const innerBlocksProps = useInnerBlocksProps(
         { className: "wp-block-post" },
         { template: TEMPLATE }
@@ -92,8 +92,10 @@ const MemoizedPostTemplateBlockPreview = memo(PostTemplateBlockPreview);
 
 function PostTemplateEdit({
     clientId,
+
     context: {
         columns,
+        equalHeight,
         query: {
             perPage,
             offset = 0,
@@ -108,12 +110,6 @@ function PostTemplateEdit({
             taxQuery,
             parents,
             pages,
-            // We gather extra query args to pass to the REST API call.
-            // This way extenders of Query Loop can add their own query args,
-            // and have accurate previews in the editor.
-            // Noting though that these args should either be supported by the
-            // REST API or be handled by custom REST filters like `rest_{$this->post_type}_query`.
-            ...restQueryArgs
         } = {},
         queryContext = [{ page: 1 }],
         templateSlug,
@@ -123,7 +119,7 @@ function PostTemplateEdit({
     deviceType,
 }) {
     const {
-        alignment,
+        blockId,
         containerBackground,
         border,
         advancedBorder,
@@ -135,6 +131,12 @@ function PostTemplateEdit({
         hideTablet,
         hideMobile,
     } = attributes;
+    useEffect(() => {
+        // Set block id.
+        setAttributes({
+            blockId: "premium-post-template-" + generateBlockId(clientId),
+        });
+    }, []);
 
     const [{ page }] = queryContext;
     const [activeBlockContextId, setActiveBlockContextId] = useState();
@@ -169,7 +171,6 @@ function PostTemplateEdit({
             return {
                 posts: getEntityRecords("postType", usedPostType, {
                     ...query,
-                    ...restQueryArgs,
                 }),
                 blocks: getBlocks(clientId),
             };
@@ -188,7 +189,23 @@ function PostTemplateEdit({
             sticky,
         ]
     );
+    useEffect(() => {
+        if (equalHeight) {
+            let heights = [],
+                contentWrapper = this.getSettings("selectors").contentWrapper,
+                $blogWrapper = this.$element.find(contentWrapper);
 
+            $blogWrapper.each(function (index, post) {
+                var height = $(post).outerHeight();
+
+                heights.push(height);
+            });
+
+            var maxHeight = Math.max.apply(null, heights);
+
+            $blogWrapper.css("height", maxHeight + "px");
+        }
+    }, [equalHeight]);
     const blockContexts = useMemo(
         () =>
             posts?.map((post) => ({
@@ -199,6 +216,12 @@ function PostTemplateEdit({
     );
     const blockProps = useBlockProps({
         className: classnames(` premium-blog-post-container`),
+        style: {
+            display: "grid",
+            gridTemplateColumns: `repeat(${columns[deviceType]}, minmax(0, 1fr))`,
+            rowGap: `20px`,
+            columnGap: `20px`,
+        },
     });
 
     if (!posts) {
@@ -339,19 +362,11 @@ function PostTemplateEdit({
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
-
-            <div
-                {...blockProps}
-                style={{
-                    display: "grid",
-                    gridTemplateColumns: `repeat(3, minmax(0, 1fr))`,
-                    rowGap: `20px`,
-                    columnGap: `20px`,
-                }}
-            >
+            <div {...blockProps}>
                 {blockContexts &&
                     blockContexts.map((blockContext) => (
                         <div
+                            className="premium-blog-post-outer-container"
                             style={{
                                 ...gradientBackground(containerBackground),
                                 ...BorderValue,
@@ -371,7 +386,9 @@ function PostTemplateEdit({
                                 {blockContext.postId ===
                                 (activeBlockContextId ||
                                     blockContexts[0]?.postId) ? (
-                                    <PostTemplateInnerBlocks />
+                                    <PostTemplateInnerBlocks
+                                        deviceType={deviceType}
+                                    />
                                 ) : null}
                                 <MemoizedPostTemplateBlockPreview
                                     blocks={blocks}

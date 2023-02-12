@@ -8,6 +8,9 @@
     "description": "Display a post's Meta.",
     "textdomain": "default",
     "attributes": {
+        "blockId":{
+            "type":"string"
+        },
         "showAuther": {
             "type": "boolean",
             "default": true

@@ -7,11 +7,11 @@
 	"parent": [ "premium/post-grid" ],
 	"description": "Contains the block elements used to render a post, like the title, date, featured image, content or excerpt, and more.",
 	"textdomain": "default",
-	"usesContext": [
-		"queryId",
-		"query","columns"	],
+	"usesContext": ["queryId","query","columns"	,"equalHeight"],
 		"attributes": {
-		
+		"blockId":{
+            "type":"string"
+        },
         "columns":{
             "type":"object",
             "default":{

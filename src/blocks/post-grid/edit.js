@@ -30,10 +30,9 @@ function QueryContent({ attributes, setAttributes, deviceType }) {
     const {
         queryId,
         query,
+        columns,
         containerBackground,
         border,
-        advancedBorder,
-        advancedBorderValue,
         boxShadow,
         padding,
         margin,
@@ -62,8 +61,6 @@ function QueryContent({ attributes, setAttributes, deviceType }) {
             updateQuery(newQuery);
         }
     }, [query.perPage]);
-    // We need this for multi-query block pagination.
-    // Query parameters for each block are scoped to their ID.
     useEffect(() => {
         if (!Number.isFinite(queryId)) {
             __unstableMarkNextChangeAsNotPersistent();

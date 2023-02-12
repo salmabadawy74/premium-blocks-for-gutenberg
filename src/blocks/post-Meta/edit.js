@@ -3,6 +3,7 @@ import { useSelect, withSelect, select } from "@wordpress/data";
 import { store as coreStore } from "@wordpress/core-data";
 import { useEntityProp } from "@wordpress/core-data";
 import { __ } from "@wordpress/i18n";
+import classNames from "classnames";
 
 const { dateI18n, format, __experimentalGetSettings } = wp.date;
 import {
@@ -10,6 +11,7 @@ import {
     typographyCss,
     paddingCss,
     marginCss,
+    generateCss,
 } from "@pbg/helpers";
 import {
     InspectorControls,
@@ -43,8 +45,11 @@ function Meta(props) {
         setAttributes,
         categoriesList,
         categories,
+        clientId,
+        deviceType,
     } = props;
     const {
+        blockId,
         showAuther,
         showDate,
         showCategories,
@@ -66,6 +71,34 @@ function Meta(props) {
             }
         });
     }
+    useEffect(() => {
+        // Set block id.
+        setAttributes({
+            blockId: "premium-post-meta-" + generateBlockId(clientId),
+        });
+    }, []);
+
+    const blockProps = useBlockProps({
+        className: classNames(blockId, {
+            " premium-desktop-hidden": hideDesktop,
+            " premium-tablet-hidden": hideTablet,
+            " premium-mobile-hidden": hideMobile,
+        }),
+    });
+    const loadStyles = () => {
+        const styles = {};
+        styles[`.${blockId} .premium-blog-meta-data `] = {
+            ...typographyCss(typography, deviceType),
+            color: color,
+        };
+        styles[`.${blockId} .premium-blog-meta-data:hover `] = {
+            color: hoverColor,
+        };
+        styles[`.${blockId} .premium-blog-meta-separtor`] = {
+            color: sepColor,
+        };
+        return generateCss(styles);
+    };
 
     const AUTHORS_QUERY = {
         who: "authors",
@@ -227,52 +260,64 @@ function Meta(props) {
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
-            {showAuther && (
-                <span className="premium-blog-post-author premium-blog-meta-data">
-                    <span className="fa fa-user fa-fw"></span>
-                    <a target="_blank" href={"#"} rel="noopener noreferrer">
-                        {authorName}
-                    </a>
-                    <span className={`premium-blog-meta-separtor`}>•</span>
-                </span>
-            )}
-            {showDate && (
-                <div
-                    className={`premium-blog-post-time premium-blog-meta-data`}
-                >
-                    {postDate}
-                    <span className={`premium-blog-meta-separtor`}>•</span>
-                </div>
-            )}
-            {showComments && undefined !== comments && (
-                <div
-                    className={`premium-blog-post-comments premium-blog-meta-data`}
-                >
-                    <span className="premium-post__comment">
-                        <span className="dashicons-admin-comments dashicons"></span>
-                        {comments}
+            <div {...blockProps}>
+                <style
+                    dangerouslySetInnerHTML={{
+                        __html: loadStyles(),
+                    }}
+                />
+                {showAuther && (
+                    <span className="premium-blog-post-author premium-blog-meta-data">
+                        <span className="fa fa-user fa-fw"></span>
+                        <a target="_blank" href={"#"} rel="noopener noreferrer">
+                            {authorName}
+                        </a>
+                        <span className={`premium-blog-meta-separtor`}>•</span>
                     </span>
-                    <span className={`premium-blog-meta-separtor`}>•</span>
-                </div>
-            )}
-            {showCategories && "" !== categoryObject && (
-                <div
-                    className={`premium-blog-post-categories premium-blog-meta-data`}
-                >
-                    <span className="premium-post__taxonomy">
-                        <span className="fa fa-align-left fa-fw"></span>
-                        {categoryObject.length === 0
-                            ? "Uncategorized"
-                            : categoryObject.map((category) => (
-                                  <span>{category.name + " "}</span>
-                              ))}
-                    </span>
-                </div>
-            )}
+                )}
+                {showDate && (
+                    <div
+                        className={`premium-blog-post-time premium-blog-meta-data`}
+                    >
+                        {postDate}
+                        <span className={`premium-blog-meta-separtor`}>•</span>
+                    </div>
+                )}
+                {showComments && undefined !== comments && (
+                    <div
+                        className={`premium-blog-post-comments premium-blog-meta-data`}
+                    >
+                        <span className="premium-post__comment">
+                            <span className="dashicons-admin-comments dashicons"></span>
+                            {comments}
+                        </span>
+                        <span className={`premium-blog-meta-separtor`}>•</span>
+                    </div>
+                )}
+                {showCategories && "" !== categoryObject && (
+                    <div
+                        className={`premium-blog-post-categories premium-blog-meta-data`}
+                    >
+                        <span className="premium-post__taxonomy">
+                            <span className="fa fa-align-left fa-fw"></span>
+                            {categoryObject.length === 0
+                                ? "Uncategorized"
+                                : categoryObject.map((category) => (
+                                      <span>{category.name + " "}</span>
+                                  ))}
+                        </span>
+                    </div>
+                )}
+            </div>
         </Fragment>
     );
 }
 export default withSelect((select, props) => {
+    const { __experimentalGetPreviewDeviceType = null } =
+        select("core/edit-post");
+    let deviceType = __experimentalGetPreviewDeviceType
+        ? __experimentalGetPreviewDeviceType()
+        : null;
     const {
         context: { postId, postType, queryId },
     } = props;
@@ -292,5 +337,6 @@ export default withSelect((select, props) => {
     return {
         categoriesList: categoriesList,
         categories: categories,
+        deviceType: deviceType,
     };
 })(Meta);

@@ -11,6 +11,7 @@ import {
     PremiumBorder,
     PremiumShadow,
     ResponsiveSingleRangeControl,
+    ResponsiveRangeControl,
 } from "@pbg/components";
 import { generateBlockId, paddingCss } from "@pbg/helpers";
 import { TaxonomyControls } from "./taxonomy-controls";
@@ -86,8 +87,8 @@ export default function Inspector({ attributes, setQuery, setAttributes }) {
                         className="premium-panel-body"
                         initialOpen={true}
                     >
-                        <ResponsiveSingleRangeControl
-                            defaultValue={4}
+                        <ResponsiveRangeControl
+                            defaultValue={3}
                             label={__(
                                 "Number of Columns",
                                 "premium-blocks-for-gutenberg"
