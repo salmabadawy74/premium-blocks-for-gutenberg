@@ -227,6 +227,13 @@ function Edit(props) {
             "background-color": `${iconStyles[0].iconHoverBack} !important`,
             "border-color": `${borderHoverColor}!important`
         };
+        styles[` .${blockId} .premium-icon-container .premium-icon-type svg`] = {
+            width: `${iconSize[props.deviceType]}${iconSize.unit} !important`,
+            height: `${iconSize[props.deviceType]}${iconSize.unit} !important`,
+        };
+        styles[` .${blockId} .premium-icon-container .premium-icon-type`] = {
+            'font-size': `${iconSize[props.deviceType]}${iconSize.unit} !important`,
+        };
         styles[` .${blockId} .premium-icon-container img`] = {
             width: `${imgWidth[props.deviceType]}${imgWidth.unit} !important`,
             'border-color': `${iconBorder && iconBorder.borderColor} !important`,

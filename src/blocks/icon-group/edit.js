@@ -89,9 +89,9 @@ function Edit(props) {
             {
                 selectedIcon: 'fa_facebook-f',
                 iconSize: {
-                    Desktop: "30",
-                    Tablet: "30",
-                    Mobile: "30",
+                    Desktop: "",
+                    Tablet: "",
+                    Mobile: "",
                     unit: "px"
                 },
                 icons: [
@@ -112,9 +112,9 @@ function Edit(props) {
             {
                 selectedIcon: 'fa_instagram',
                 iconSize: {
-                    Desktop: "30",
-                    Tablet: "30",
-                    Mobile: "30",
+                    Desktop: "",
+                    Tablet: "",
+                    Mobile: "",
                     unit: "px"
                 },
                 icons: [
@@ -135,9 +135,9 @@ function Edit(props) {
             {
                 selectedIcon: 'fa_twitter',
                 iconSize: {
-                    Desktop: "30",
-                    Tablet: "30",
-                    Mobile: "30",
+                    Desktop: "",
+                    Tablet: "",
+                    Mobile: "",
                     unit: "px"
                 },
                 icons: [

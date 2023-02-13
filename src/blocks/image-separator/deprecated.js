@@ -1,5 +1,7 @@
 const { __ } = wp.i18n;
 import classnames from "classnames"
+import { filterJsCss, generateCss } from '@pbg/helpers';
+const { useBlockProps } = wp.blockEditor;
 
 const attributes = {
     block_id: {
@@ -262,7 +264,353 @@ let newAttributes = {
     }
 }
 
+const newAttributes_v2 = {
+    "blockId": {
+        "type": "string"
+    },
+    "iconAlign": {
+        "type": "object",
+        "default": {
+            "Desktop": "center",
+            "Tablet": "center",
+            "Mobile": "center"
+        }
+    },
+    "iconType": {
+        "type": "string",
+        "default": "image"
+    },
+    "imageID": {
+        "type": "number"
+    },
+    "imageURL": {
+        "type": "string",
+        "source": "attribute",
+        "attribute": "src",
+        "selector": ".premium-image-separator-container img"
+    },
+    "link": {
+        "type": "boolean"
+    },
+    "url": {
+        "type": "string"
+    },
+    "gutter": {
+        "type": "number",
+        "default": -50
+    },
+    "imgFilter": {
+        "type": "object",
+        "default": {
+            "contrast": "100",
+            "blur": "0",
+            "bright": "100",
+            "saturation": "100",
+            "hue": "0"
+        }
+    },
+    "imgFilterHover": {
+        "type": "object",
+        "default": {
+            "contrast": "100",
+            "blur": "0",
+            "bright": "100",
+            "saturation": "100",
+            "hue": "0"
+        }
+    },
+    "linkTarget": {
+        "type": "boolean",
+        "default": false
+    },
+    "imgFit": {
+        "type": "string",
+        "value": "fill"
+    },
+    "imgMask": {
+        "type": "boolean",
+        "default": false
+    },
+    "imgMaskURL": {
+        "type": "string"
+    },
+    "imgMaskID": {
+        "type": "number"
+    },
+    "maskSize": {
+        "type": "string",
+        "default": "contain"
+    },
+    "maskPosition": {
+        "type": "string",
+        "default": "center center"
+    },
+    "iconStyles": {
+        "type": "array",
+        "default": [
+            {
+                "advancedBorder": false,
+                "icon": "fe_aperture",
+                "iconColor": "",
+                "iconBGColor": "",
+                "iconColorHover": "",
+                "iconBGColorHover": "",
+                "advancedBorderValue": "",
+                "imgHeightType": "px"
+            }
+        ]
+    },
+    "icons": {
+        "type": "array",
+        "default": [
+            {
+                "iconn": "fe_aperture",
+                "link": "",
+                "target": "_self",
+                "size": "200",
+                "width": "2",
+                "title": "",
+                "style": "default"
+            }
+        ]
+    },
+    "iconSize": {
+        "type": "object",
+        "default": {
+            "Desktop": "200",
+            "Tablet": "200",
+            "Mobile": "200",
+            "unit": "px"
+        }
+    },
+    "imgHeight": {
+        "type": "object",
+        "default": {
+            "Desktop": "200",
+            "unit": "px"
+        }
+    },
+    "iconBorder": {
+        "type": "object",
+        "default": {
+            "borderType": "none",
+            "borderColor": "",
+            "borderWidth": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            },
+            "borderRadius": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            }
+        }
+    },
+    "hideDesktop": {
+        "type": "boolean",
+        "default": ""
+    },
+    "hideTablet": {
+        "type": "boolean",
+        "default": ""
+    },
+    "hideMobile": {
+        "type": "boolean",
+        "default": ""
+    },
+    "iconPadding": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": ".1",
+                "right": ".1",
+                "bottom": ".1",
+                "left": ".1"
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "em"
+        }
+    },
+    iconShadow: {
+        type: "object",
+        default: {
+            "color": "undefined",
+            "blur": "10",
+            "horizontal": "0",
+            "vertical": "0"
+        }
+    }
+}
+
 const deprecated = [
+    {
+        attributes: newAttributes_v2,
+        isEligible() {
+            return true;
+        },
+        migrate: (attributes) => {
+            let newAttributes = {
+                "icons": [
+                    {
+                        "iconn": "fe_aperture",
+                        "link": "",
+                        "target": "_self",
+                        "size": attributes.iconSize['Desktop'] ? attributes.iconSize['Desktop'] : "200",
+                        "width": "2",
+                        "title": "",
+                        "style": "default"
+                    }
+                ],
+                "iconStyles": [
+                    {
+                        "advancedBorder": attributes.iconStyles[0].advancedBorder ? attributes.iconStyles[0].advancedBorder : false,
+                        "icon": "fe_aperture",
+                        "iconColor": attributes.iconStyles[0].iconColor ? attributes.iconStyles[0].iconColor : "",
+                        "iconBGColor": attributes.iconStyles[0].iconBGColor ? attributes.iconStyles[0].iconBGColor : "",
+                        "iconColorHover": attributes.iconStyles[0].iconColorHover ? attributes.iconStyles[0].iconColorHover : "",
+                        "iconBGColorHover": attributes.iconStyles[0].iconBGColorHover ? attributes.iconStyles[0].iconBGColorHover : "",
+                        "advancedBorderValue": attributes.iconStyles[0].advancedBorderValue ? attributes.iconStyles[0].advancedBorderValue : "",
+                        "imgHeightType": attributes.iconStyles[0].imgHeightType ? attributes.iconStyles[0].imgHeightType : "px"
+                    }
+                ]
+            }
+            return Object.assign(attributes, newAttributes)
+        },
+        save: props => {
+            const { attributes, className } = props
+
+            const {
+                blockId,
+                iconType,
+                imageURL,
+                link,
+                url,
+                gutter,
+                imgFilter,
+                imgFilterHover,
+                linkTarget,
+                iconStyles,
+                imgFit,
+                imgMaskURL,
+                maskSize,
+                maskPosition,
+                iconBorder,
+                iconShadow,
+                hideDesktop,
+                hideTablet,
+                hideMobile
+            } = attributes;
+
+            let target = (linkTarget) ? "_blank" : "_self";
+
+            const loadStyles = () => {
+                const styles = {};
+                styles[`.${blockId} .premium-image-separator-container:hover img`] = {
+                    'filter': `brightness(${imgFilterHover?.bright}% ) contrast(${imgFilterHover?.contrast}% ) saturate(${imgFilterHover?.saturation}%) blur(${imgFilterHover?.blur}px) hue - rotate(${imgFilterHover?.hue}deg)!important`
+                };
+                styles[` .${blockId} .premium-image-separator-container i:hover`] = {
+                    'color': `${iconStyles[0].iconColorHover} !important`,
+                    'background-color': `${iconStyles[0].iconBGColorHover} !important`
+                };
+                return generateCss(styles);
+            }
+
+            return (
+                <div
+                    {...useBlockProps.save({
+                        className: classnames(
+                            className,
+                            `premium-image-separator ${blockId}`,
+                            {
+                                " premium-desktop-hidden": hideDesktop,
+                                " premium-tablet-hidden": hideTablet,
+                                " premium-mobile-hidden": hideMobile,
+                            }
+                        ),
+                    })}
+                >
+                    <style dangerouslySetInnerHTML={{ __html: loadStyles() }} />
+                    <div
+                        className={`premium-image-separator-container`}
+                        style={filterJsCss({
+                            transform: `translateY(${gutter}%)`,
+                            filter: iconType === 'image' ? `brightness( ${imgFilter?.bright}% ) contrast( ${imgFilter?.contrast}% ) saturate( ${imgFilter?.saturation}% ) blur( ${imgFilter?.blur}px ) hue-rotate( ${imgFilter?.hue}deg )` : ""
+                        })}
+                    >
+                        <a className="premium-image-separator-link" href={link && url} target={target} rel="noopener noreferrer">
+                            {iconType === 'icon' &&
+                                <i
+                                    className={`${iconStyles[0].icon}`}
+                                    style={filterJsCss({
+                                        color: iconStyles[0].iconColor,
+                                        backgroundColor: iconStyles[0].iconBGColor,
+                                        borderColor: iconBorder.borderColor,
+                                        borderStyle: iconBorder.borderType,
+                                        textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical || 0}px ${iconShadow.blur || 0}px ${iconShadow.color}`,
+                                    })} />
+                            }
+                            {iconType === 'image' && imageURL && < img
+                                src={imageURL}
+                                style={filterJsCss({
+                                    borderColor: iconStyles[0].advancedBorder ? "" : iconBorder.borderColor,
+                                    borderStyle: iconStyles[0].advancedBorder ? "" : iconBorder.borderType,
+                                    maskSize: `${maskSize}`,
+                                    maskPosition: `${maskPosition}`,
+                                    maskImage: imgMaskURL ? `url("${imgMaskURL}")` : '',
+                                    WebkitMaskImage: imgMaskURL ? `url("${imgMaskURL}")` : '',
+                                    WebkitMaskSize: `${maskSize}`,
+                                    WebkitMaskPosition: `${maskPosition}`,
+                                    objectFit: `${imgFit}`,
+                                })} />
+                            }
+                        </a>
+                    </div>
+                </div>
+            );
+        }
+    },
     {
         attributes: Object.assign(attributes, newAttributes),
         isEligible() {
