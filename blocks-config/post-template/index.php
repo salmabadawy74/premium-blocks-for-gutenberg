@@ -367,7 +367,6 @@ function render_block_premium_post_template($attributes, $content, $block)
 
     $style_css .= get_premium_post_template_css_style($attributes, $unique_id, $columns);
 
-    var_dump($style_css);
 
     while ($query->have_posts()) {
         $query->the_post();
@@ -424,7 +423,7 @@ function render_block_premium_post_template($attributes, $content, $block)
         )->render(array('dynamic' => true));
         // Wrap the render inner blocks in a `li` element with the appropriate post classes.
         $post_classes = implode(' ', get_post_class('premium-blog-post-outer-container'));
-        $content     .= '<div class="' . esc_attr($post_classes) . '">' . '<style id="pbg-blocks-style22741">' . $style_css . '</style>' .  $block_content . '</div>';
+        $content     .= '<div class="' . esc_attr($post_classes) . '">' . '<style id=' . $style_id . '>' . $style_css . '</style>' .  $block_content . '</div>';
     }
 
     /*
