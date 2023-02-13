@@ -70,7 +70,7 @@ function get_premium_icon_group_css($attr, $unique_id) {
 		$css->set_selector( '.' . $unique_id . ' .premium-icon-group-container .premium-icon__container .premium-icon');
 		$css->add_property( 'font-size', $css->render_range( $attr['iconsSize'], 'Tablet' ) );
 	}
-	if ( isset( $attr['iconsSize']['Desktop'] ) ) {
+	if ( isset( $attr['iconsSize']['Tablet'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' .premium-icon-group-container .premium-icon__container .premium-icon svg');
 		$css->add_property( 'width', $css->render_range( $attr['iconsSize'], 'Tablet' ) );
 		$css->add_property( 'height', $css->render_range( $attr['iconsSize'], 'Tablet' ) );
@@ -121,7 +121,7 @@ function get_premium_icon_group_css($attr, $unique_id) {
 		$css->add_property( 'font-size', $css->render_range( $attr['iconsSize'], 'Mobile' ) );
 	}
 
-	if ( isset( $attr['iconsSize']['Desktop'] ) ) {
+	if ( isset( $attr['iconsSize']['Mobile'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' .premium-icon-group-container .premium-icon__container .premium-icon svg');
 		$css->add_property( 'width', $css->render_range( $attr['iconsSize'], 'Mobile' ) );
 		$css->add_property( 'height', $css->render_range( $attr['iconsSize'], 'Mobile' ) );
