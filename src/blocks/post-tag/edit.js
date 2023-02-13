@@ -82,7 +82,7 @@ function Tags(props) {
     const loadStyles = () => {
         const styles = {};
         styles[`.${blockId}.premium-blog-post-tags-container:hover `] = {
-            color: hoverColor,
+            color: `${hoverColor}!important`,
         };
         return generateCss(styles);
     };
@@ -96,7 +96,7 @@ function Tags(props) {
                             <PremiumTypo
                                 value={typography}
                                 onChange={(newValue) =>
-                                    setAttributes({ titleTypography: newValue })
+                                    setAttributes({ typography: newValue })
                                 }
                             />
                             <AdvancedPopColorControl
@@ -118,7 +118,7 @@ function Tags(props) {
                                 colorValue={hoverColor}
                                 colorDefault={""}
                                 onColorChange={(newValue) =>
-                                    setAttributes({ color: newValue })
+                                    setAttributes({ hoverColor: newValue })
                                 }
                             />
                         </InspectorTab>

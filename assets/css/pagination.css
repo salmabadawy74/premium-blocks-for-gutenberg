@@ -122,7 +122,8 @@
   row-gap: 20px;
   column-gap: 20px; }
   .premium-blog-wrap .premium-blog-thumbnail-container {
-    overflow: hidden; }
+    overflow: hidden;
+    height: 300px; }
     .premium-blog-wrap .premium-blog-thumbnail-container img {
       width: 100%;
       height: 100%;
@@ -641,7 +642,8 @@
   .premium-blog-meta-data a {
     color: inherit;
     -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out; }
+    transition: all 0.3s ease-in-out;
+    text-decoration: none; }
   .premium-blog-meta-data span {
     color: inherit;
     -webkit-transition: all 0.3s ease-in-out;

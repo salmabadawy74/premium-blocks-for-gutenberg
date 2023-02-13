@@ -14,40 +14,30 @@ function get_premium_post_tag_css_style($attributes, $unique_id)
     $media_query['desktop'] = apply_filters('Premium_BLocks_tablet_media_query', '(min-width: 1025px)');
 
 
-    if (isset($attributes['thumbnail'])) {
-        $css->set_selector('.premium-blog-post-outer-container .premium-blog-thumbnail-container img ');
-        $css->add_property('object-fit', $attr['thumbnail']);
+    if (isset($attributes['typography'])) {
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-post-tags-container > * a ');
+        $css->render_typography($attributes['typography'], 'Desktop');
     }
-    if (isset($attributes['height'])) {
-        $css->set_selector('.premium-blog-post-outer-container  .premium-blog-thumb-effect-wrapper .premium-blog-thumbnail-container img');
-        $css->add_property('height', $css->render_range($attr['height'], 'Desktop'));
+    if (isset($attributes['color'])) {
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-post-tags-container > * a ');
+        $css->add_property('color', $css->render_color($attributes["color"]));
     }
-    if (isset($attributes['filter'])) {
-        $css->set_selector('.premium-blog-post-outer-container .premium-blog-thumbnail-container img');
-        $css->add_property(
-            'filter',
-            'brightness(' . $attr['filter']['bright'] . '%)' . 'contrast(' .  $attr['filter']['contrast'] . '%) ' . 'saturate(' . $attr['filter']['saturation'] . '%) ' . 'blur(' . $attr['filter']['blur'] . 'px) ' . 'hue-rotate(' . $attr['filter']['hue'] . 'deg)'
-        );
-    }
-    if (isset($attributes['Hoverfilter'])) {
-        $css->set_selector('.' . $unique_id . '.premium-blog-thumbnail-container:hover img');
-        $css->add_property(
-            'filter',
-            'brightness(' . $attr['Hoverfilter']['bright'] . '%)' . 'contrast(' .  $attr['Hoverfilter']['contrast'] . '%) ' . 'saturate(' . $attr['Hoverfilter']['saturation'] . '%) ' . 'blur(' . $attr['Hoverfilter']['blur'] . 'px) ' . 'hue-rotate(' . $attr['Hoverfilter']['hue'] . 'deg)'
-        );
+    if (isset($attributes['hoverColor'])) {
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-post-tags-container > * a ');
+        $css->add_property('color', $css->render_color($attributes["hoverColor"]));
     }
 
 
     $css->start_media_query($media_query['tablet']);
-    if (isset($attributes['height'])) {
-        $css->set_selector('.' . $unique_id . '.premium-blog-thumbnail-container img');
-        $css->add_property('height', $css->render_range($attr['height'], 'Tablet'));
+    if (isset($attributes['typography'])) {
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-post-tags-container > * a ');
+        $css->render_typography($attributes['typography'], 'Tablet');
     }
     $css->stop_media_query();
     $css->start_media_query($media_query['mobile']);
-    if (isset($attributes['height'])) {
-        $css->set_selector('.' . $unique_id . '.premium-blog-thumbnail-container img');
-        $css->add_property('height', $css->render_range($attr['height'], 'Mobile'));
+    if (isset($attributes['typography'])) {
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-post-tags-container > * a ');
+        $css->render_typography($attributes['typography'], 'Mobile');
     }
     $css->stop_media_query();
     return $css->css_output();
@@ -402,9 +392,9 @@ function render_block_premium_post_template($attributes, $content, $block)
                     case 'premium/post-meta':
                         $style_css .= get_premium_post_meta_css_style($blockattr, $block_id);
                         break;
-                        //    case 'premium/post-tag':
-                        //     $css .= get_premium_post_tag_css_style($blockattr, $block_id);
-                        //      break;
+                    case 'premium/post-tag':
+                        $style_css .= get_premium_post_tag_css_style($blockattr, $block_id);
+                        break;
                     default:
                         // Nothing to do here.
                         break;

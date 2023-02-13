@@ -150,6 +150,7 @@ $border-color_1: rgba(255, 255, 255, 0.45);
 .premium-blog-wrap {
     .premium-blog-thumbnail-container {
         overflow: hidden;
+        height: 300px;
 
         img {
             width: 100%;
@@ -869,9 +870,10 @@ $border-color_1: rgba(255, 255, 255, 0.45);
     }
 
     a {
-        color: $color_4;
+        color: $color_4 ;
         -webkit-transition: all 0.3s ease-in-out;
         transition: all 0.3s ease-in-out;
+        text-decoration: none;
     }
 
     span {

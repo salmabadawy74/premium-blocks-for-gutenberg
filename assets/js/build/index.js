@@ -53091,7 +53091,7 @@ function Tags(props) {
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_10__.PremiumTypo, {
       value: typography,
       onChange: newValue => setAttributes({
-        titleTypography: newValue
+        typography: newValue
       })
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_10__.AdvancedColorControl, {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)("Color", "premium-blocks-for-gutenberg"),
@@ -53105,7 +53105,7 @@ function Tags(props) {
       colorValue: hoverColor,
       colorDefault: "",
       onColorChange: newValue => setAttributes({
-        color: newValue
+        hoverColor: newValue
       })
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_10__.InspectorTab, {
       key: "advance"
