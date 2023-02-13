@@ -269,9 +269,7 @@ function Meta(props) {
                 {showAuther && (
                     <span className="premium-blog-post-author premium-blog-meta-data">
                         <span className="fa fa-user fa-fw"></span>
-                        <a target="_blank" href={"#"} rel="noopener noreferrer">
-                            {authorName}
-                        </a>
+                        {authorName}
                         <span className={`premium-blog-meta-separtor`}>•</span>
                     </span>
                 )}

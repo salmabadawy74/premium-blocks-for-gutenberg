@@ -69,28 +69,6 @@ function render_block_premium_post_featured_image($attributes, $content, $block)
         return '';
     }
     $post_ID = $block->context['postId'];
-    if (
-        isset($attributes['blockId']) && !empty($attributes['blockId'])
-    ) {
-        $unique_id = ".{$attributes['blockId']}";
-    }
-
-    $style_id = 'pbg-blocks-style' . esc_attr($unique_id);
-    if (
-        !wp_style_is($style_id, 'enqueued') && apply_filters('Premium_BLocks_blocks_render_inline_css', true, 'feature-image', $unique_id)
-    ) {
-
-        $css = get_premium_feature_image_css_style($attributes, $unique_id);
-        if (!empty($css)) {
-
-            if ($block_helpers->should_render_inline('feature-image', $unique_id)) {
-                $content = '<style id="pbg-blocks-style' . esc_attr($unique_id) . '">' . $css . '</style>' . $content;
-            } else {
-                $block_helpers->render_inline_css($css, $style_id, true);
-            }
-        }
-    };
-
     // Check is needed for backward compatibility with third-party plugins
     // that might rely on the `in_the_loop` check; calling `the_post` sets it to true.
     if (!in_the_loop() && have_posts()) {

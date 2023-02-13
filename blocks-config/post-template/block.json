@@ -12,14 +12,6 @@
 		"blockId":{
             "type":"string"
         },
-        "columns":{
-            "type":"object",
-            "default":{
-                "Desktop":2,
-                "Tablet":2,
-                "Mobile":1
-            }
-        },
 		"containerBackground": {
             "type": "object",
             "default": {

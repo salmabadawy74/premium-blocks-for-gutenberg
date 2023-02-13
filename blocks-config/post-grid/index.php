@@ -6,7 +6,7 @@
  * @package WordPress
  */
 
-function get_premium_post_grid_css_style($attr, $unique_id)
+function get_premium_post_grid_css_style($attributes, $unique_id)
 {
     $css                    = new Premium_Blocks_css();
     $media_query            = array();
@@ -14,43 +14,114 @@ function get_premium_post_grid_css_style($attr, $unique_id)
     $media_query['tablet']  = apply_filters('Premium_BLocks_tablet_media_query', '(max-width: 1024px)');
     $media_query['desktop'] = apply_filters('Premium_BLocks_tablet_media_query', '(min-width: 1025px)');
 
-    if (isset($attributes['typography'])) {
-        $css->set_selector('.' . $unique_id . '.premium-blog-entry-title__container .premium-blog-entry-title ');
-        $css->render_typography($attributes['typography'], 'Desktop');
+    if (isset($attributes['columns'])) {
+        $css->set_selector('.premium-blog-wrap');
+        $css->add_property('grid-template-columns', 'repeat(' . $attributes['columns']['Desktop'] . ',minmax(0,1fr))');
     }
-    if (isset($attributes['bottomSpacing'])) {
-        $css->set_selector('.' . $unique_id . '.premium-blog-entry-title__container .premium-blog-entry-title ');
-        $css->add_property('margin-bottom', $css->get_responsive_css($attr['bottomSpacing'], 'Desktop'));
+    if (isset($attributes['rowGap'])) {
+        $css->set_selector('.premium-blog-wrap');
+        $css->add_property('row-gap', $attributes['rowGap'] . 'px');
     }
-    if (isset($attributes['textColor'])) {
-        $css->set_selector('.' . $unique_id . '.premium-blog-entry-title__container .premium-blog-entry-title  a');
-        $css->add_property('color', $css->render_color($attr["textColor"]));
+
+    if (isset($attributes['columnGap'])) {
+        $css->set_selector('.premium-blog-wrap');
+        $css->add_property('column-gap', $attributes['columnGap'] . 'px');
     }
-    if (isset($attributes['hoverColor'])) {
-        $css->set_selector('.' . $unique_id . '.premium-blog-entry-title__container:hover .premium-blog-entry-title  a');
-        $css->add_property('color', $css->render_color($attr["hoverColor"]));
+    if (isset($attributes['border'])) {
+        $content_border_width  = $attributes['border']['borderWidth'];
+        $content_border_radius = $attributes['border']['borderRadius'];
+        $content_border_color = $attributes['border']['borderColor'];
+        $content_border_type = $attributes['border']['borderType'];
+
+        $css->set_selector('.premium-blog-wrap');
+        $css->add_property('border-color', $css->render_color($content_border_color));
+        $css->add_property('border-style', $content_border_type);
+        $css->add_property('border-width', $css->render_spacing($content_border_width['Desktop'], 'px'));
+        $css->add_property('border-radius', $css->render_spacing($content_border_radius['Desktop'], 'px'));
+    }
+    if (isset($attributes['margin'])) {
+        $content_margin = $attributes['margin'];
+        $css->set_selector('.premium-blog-wrap');
+        $css->add_property('padding', $css->render_spacing($content_margin['Desktop'], $content_margin['unit']));
+    }
+    if (isset($attr['padding'])) {
+        $content_padding = $attributes['padding'];
+        $css->set_selector('.premium-blog-wrap');
+        $css->add_property('padding', $css->render_spacing($content_padding['Desktop'], $content_padding['unit']));
+    }
+    if (isset($attributes['containerBackground'])) {
+        $background = $attributes['containerBackground'];
+        error_log(wp_json_encode($background));
+        $container_grid  = '';
+        $container_grid2 = '';
+        $container_bg    = '';
+        if ('gradient' === $background['backgroundType']) {
+            $container_grid  = $background['backgroundColor'] ? $background['backgroundColor'] : 'rgba(255,255,255,0)';
+            $container_grid2 = $background['gradientColorTwo'] ? $background['gradientColorTwo'] : '.777';
+            if ('radial' === $background['gradientType']) {
+                $container_bg = 'radial-gradient(at ' . $background['gradientPosition'] . ', ' . $container_grid . ' ' . $background['gradientLocationOne'] . '%, ' . $container_grid2 . ' ' . $background['gradientLocationTwo'] . '%)';
+            } elseif ('radial' !== $background['backgroundType']) {
+                $container_bg = 'linear-gradient(' . $background['gradientAngle'] . 'deg, ' . $container_grid . ' ' . $background['gradientLocationOne'] . '%, ' . $container_grid2 . ' ' . $background['gradientLocationTwo'] . '%)';
+            }
+        } else {
+            $container_bg = $background['backgroundImageURL'] ? 'url(' . $background['backgroundImageURL'] . ');' : '';
+        }
+
+        $css->set_selector('.premium-blog-wrap');
+        $css->add_property('background-color', $css->render_color('solid' === $background['backgroundType'] ? $background['backgroundColor'] : ''));
+        $css->add_property('background-image', $css->render_color($container_bg));
+        $css->add_property('background-repeat', $css->render_color($background['backgroundRepeat']));
+        $css->add_property('background-size', $css->render_color($background['backgroundSize']));
+        $css->add_property('background-attachment', $css->render_color($background['fixed'] ? 'fixed' : 'unset'));
+        $css->add_property('background-position', $css->render_color($background['backgroundPosition']));
+    }
+    if (isset($attr['boxShadow'])) {
+        $css->set_selector('.premium-blog-wrap');
+        $css->add_property('box-shadow', $css->render_shadow($attributes['boxShadow']));
     }
 
 
     $css->start_media_query($media_query['tablet']);
-    if (isset($attributes['typography'])) {
-        $css->set_selector('.' . $unique_id . '.premium-blog-entry-title__container .premium-blog-entry-title ');
-        $css->render_typography($attributes['typography'], 'Tablet');
+    if (isset($attributes['border'])) {
+        $content_border_width  = $attributes['border']['borderWidth'];
+        $content_border_radius = $attributes['border']['borderRadius'];
+
+        $css->set_selector('.premium-blog-wrap');
+        $css->add_property('border-width', $css->render_spacing($content_border_width['Tablet'], 'px'));
+        $css->add_property('border-radius', $css->render_spacing($content_border_radius['Tablet'], 'px'));
     }
-    if (isset($attributes['bottomSpacing'])) {
-        $css->set_selector('.' . $unique_id . '.premium-blog-entry-title__container .premium-blog-entry-title ');
-        $css->add_property('margin-bottom', $css->get_responsive_css($attr['bottomSpacing'], 'Tablet'));
+    if (isset($attributes['margin'])) {
+        $content_margin = $attributes['margin'];
+        $css->set_selector('.premium-blog-wrap');
+        $css->add_property('padding', $css->render_spacing($content_margin['Tablet'], $content_margin['unit']));
     }
+    if (isset($attr['padding'])) {
+        $content_padding = $attributes['padding'];
+        $css->set_selector('.premium-blog-wrap');
+        $css->add_property('padding', $css->render_spacing($content_padding['Tablet'], $content_padding['unit']));
+    }
+
     $css->stop_media_query();
     $css->start_media_query($media_query['mobile']);
-    if (isset($attributes['typography'])) {
-        $css->set_selector('.' . $unique_id . '.premium-blog-entry-title__container .premium-blog-entry-title ');
-        $css->render_typography($attributes['typography'], 'Mobile');
+    if (isset($attributes['border'])) {
+        $content_border_width  = $attributes['border']['borderWidth'];
+        $content_border_radius = $attributes['border']['borderRadius'];
+
+        $css->set_selector('.premium-blog-wrap');
+        $css->add_property('border-width', $css->render_spacing($content_border_width['Mobile'], 'px'));
+        $css->add_property('border-radius', $css->render_spacing($content_border_radius['Mobile'], 'px'));
     }
-    if (isset($attributes['bottomSpacing'])) {
-        $css->set_selector('.' . $unique_id . '.premium-blog-entry-title__container .premium-blog-entry-title ');
-        $css->add_property('margin-bottom', $css->get_responsive_css($attr['bottomSpacing'], 'Mobile'));
+    if (isset($attributes['margin'])) {
+        $content_margin = $attributes['margin'];
+        $css->set_selector('.premium-blog-wrap');
+        $css->add_property('padding', $css->render_spacing($content_margin['Mobile'], $content_margin['unit']));
     }
+    if (isset($attr['padding'])) {
+        $content_padding = $attributes['padding'];
+        $css->set_selector('.premium-blog-wrap');
+        $css->add_property('padding', $css->render_spacing($content_padding['Mobile'], $content_padding['unit']));
+    }
+
     $css->stop_media_query();
     return $css->css_output();
 }
@@ -73,9 +144,6 @@ function get_post_grid_content($attributes, $content, $block)
     );
     $style_id = 'pbg-blocks-style' . esc_attr($unique_id);
     if (!wp_style_is($style_id, 'enqueued') && apply_filters('Premium_BLocks_blocks_render_inline_css', true, 'post-grid', $unique_id)) {
-        // If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
-        // $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
-        // $attributes=array_merge($attributes,)
         $css = get_premium_post_grid_css_style($attributes, $unique_id);
         if (!empty($css)) {
             if ($block_helpers->should_render_inline('icon-box', $unique_id)) {

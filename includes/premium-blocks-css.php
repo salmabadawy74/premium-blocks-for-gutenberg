@@ -585,6 +585,34 @@ class Premium_Blocks_css
 		return $size_string;
 	}
 
+	public function render_shadow($shadow)
+	{
+		if (empty($shadow)) {
+			return false;
+		}
+		if (!isset($shadow['color'])) {
+			return false;
+		}
+		if (!isset($shadow['horizontal'])) {
+			return false;
+		}
+		if (!isset($shadow['vertical'])) {
+			return false;
+		}
+		if (!isset($shadow['blur'])) {
+			return false;
+		}
+		if (!isset($shadow['position'])) {
+			return false;
+		}
+		if ($shadow['position'] === "inset") {
+			$shadow_string = 'inset ' . (!empty($shadow['horizontal']) ? $shadow['horizontal'] : '0') . 'px ' . (!empty($shadow['vertical']) ? $shadow['vertical'] : '0') . 'px ' . (!empty($shadow['blur']) ? $shadow['blur'] : '0') . 'px '   . (!empty($shadow['color']) ? $this->render_color($shadow['color'], $shadow['opacity']) : $this->render_color('#000000'));
+		} else {
+			$shadow_string =  (!empty($shadow['horizontal']) ? $shadow['horizontal'] : '0') . 'px ' . (!empty($shadow['vertical']) ? $shadow['vertical'] : '0') . 'px ' . (!empty($shadow['blur']) ? $shadow['blur'] : '0') . 'px '  . (!empty($shadow['color']) ? $this->render_color($shadow['color']) : $this->render_color('#000000'));
+		}
+
+		return $shadow_string;
+	}
 
 
 

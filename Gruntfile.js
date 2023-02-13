@@ -32,7 +32,6 @@ module.exports = function (grunt) {
         "image",
         "icon-group",
         "switcher-child",
-        "counter"
         "pagination",
     ];
     const sassFiles = {};

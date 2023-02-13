@@ -192,18 +192,20 @@ function PostTemplateEdit({
     useEffect(() => {
         if (equalHeight) {
             let heights = [],
-                contentWrapper = document.querySelectorAll('.premium-blog-post-outer-container');
-            const contentWrap = [...contentWrapper]
+                contentWrapper = document.querySelectorAll(
+                    ".premium-blog-post-outer-container"
+                );
+            const contentWrap = [...contentWrapper];
             contentWrap.map((postContent) => {
                 var height = postContent.clientHeight;
 
                 heights.push(height);
-            })
+            });
             let maxHeight = Math.max(...heights);
-            console.log(maxHeight, heights)
+            console.log(maxHeight, heights);
             contentWrap.map((postContent) => {
-                postContent.style.height = maxHeight + 'px';
-            })
+                postContent.style.height = maxHeight + "px";
+            });
         }
     }, [equalHeight]);
     const blockContexts = useMemo(
@@ -245,10 +247,7 @@ function PostTemplateEdit({
                 <InspectorTabs tabs={["style", "advance"]}>
                     <InspectorTab key={"style"}>
                         <PanelBody
-                            title={__(
-                                "Style",
-                                "premium-blocks-for-gutenberg"
-                            )}
+                            title={__("Style", "premium-blocks-for-gutenberg")}
                             className="premium-panel-body"
                             initialOpen={true}
                         >
@@ -334,7 +333,10 @@ function PostTemplateEdit({
                                 value={margin}
                                 responsive={true}
                                 showUnits={true}
-                                label={__("Margin", "premium-blocks-for-gutenberg")}
+                                label={__(
+                                    "Margin",
+                                    "premium-blocks-for-gutenberg"
+                                )}
                                 onChange={(value) =>
                                     setAttributes({ margin: value })
                                 }
@@ -381,9 +383,11 @@ function PostTemplateEdit({
                                 ...BorderValue,
                                 ...marginCss(margin, deviceType),
                                 ...paddingCss(padding, deviceType),
-                                boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical || 0
-                                    }px ${boxShadow.blur || 0}px ${boxShadow.color
-                                    }`,
+                                boxShadow: `${boxShadow.horizontal || 0}px ${
+                                    boxShadow.vertical || 0
+                                }px ${boxShadow.blur || 0}px ${
+                                    boxShadow.color
+                                }`,
                             }}
                         >
                             <BlockContextProvider
@@ -391,8 +395,8 @@ function PostTemplateEdit({
                                 value={blockContext}
                             >
                                 {blockContext.postId ===
-                                    (activeBlockContextId ||
-                                        blockContexts[0]?.postId) ? (
+                                (activeBlockContextId ||
+                                    blockContexts[0]?.postId) ? (
                                     <PostTemplateInnerBlocks
                                         deviceType={deviceType}
                                     />

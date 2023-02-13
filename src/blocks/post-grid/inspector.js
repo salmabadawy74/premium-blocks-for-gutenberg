@@ -30,8 +30,6 @@ export default function Inspector({ attributes, setQuery, setAttributes }) {
         equalHeight,
         containerBackground,
         border,
-        advancedBorder,
-        advancedBorderValue,
         boxShadow,
         padding,
         margin,
@@ -163,41 +161,56 @@ export default function Inspector({ attributes, setQuery, setAttributes }) {
                     </PanelBody>
                 </InspectorTab>
                 <InspectorTab key={"style"}>
-                    <PremiumBackgroundControl
-                        value={containerBackground}
-                        onChange={(value) =>
-                            setAttributes({
-                                containerBackground: value,
-                            })
-                        }
-                    />
-                    <PremiumBorder
-                        label={__("Border", "premium-blocks-for-gutenberg")}
-                        value={border}
-                        onChange={(value) => setAttributes({ border: value })}
-                    />
+                    <PanelBody
+                        title={__("Container ", "premium-blocks-for-gutenberg")}
+                        className="premium-panel-body"
+                        initialOpen={true}
+                    >
+                        <PremiumBackgroundControl
+                            value={containerBackground}
+                            onChange={(value) =>
+                                setAttributes({
+                                    containerBackground: value,
+                                })
+                            }
+                        />
+                        <PremiumBorder
+                            label={__("Border", "premium-blocks-for-gutenberg")}
+                            value={border}
+                            onChange={(value) =>
+                                setAttributes({ border: value })
+                            }
+                        />
 
-                    <PremiumShadow
-                        boxShadow={true}
-                        value={boxShadow}
-                        onChange={(value) =>
-                            setAttributes({ boxShadow: value })
-                        }
-                    />
-                    <SpacingComponent
-                        value={padding}
-                        responsive={true}
-                        showUnits={true}
-                        label={__("Padding", "premium-blocks-for-gutenberg")}
-                        onChange={(value) => setAttributes({ padding: value })}
-                    />
-                    <SpacingComponent
-                        value={margin}
-                        responsive={true}
-                        showUnits={true}
-                        label={__("Margin", "premium-blocks-for-gutenberg")}
-                        onChange={(value) => setAttributes({ margin: value })}
-                    />
+                        <PremiumShadow
+                            boxShadow={true}
+                            value={boxShadow}
+                            onChange={(value) =>
+                                setAttributes({ boxShadow: value })
+                            }
+                        />
+                        <SpacingComponent
+                            value={padding}
+                            responsive={true}
+                            showUnits={true}
+                            label={__(
+                                "Padding",
+                                "premium-blocks-for-gutenberg"
+                            )}
+                            onChange={(value) =>
+                                setAttributes({ padding: value })
+                            }
+                        />
+                        <SpacingComponent
+                            value={margin}
+                            responsive={true}
+                            showUnits={true}
+                            label={__("Margin", "premium-blocks-for-gutenberg")}
+                            onChange={(value) =>
+                                setAttributes({ margin: value })
+                            }
+                        />
+                    </PanelBody>
                 </InspectorTab>
                 <InspectorTab key={"advance"}>
                     <PremiumResponsiveTabs

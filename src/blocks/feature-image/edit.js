@@ -140,8 +140,8 @@ function Image(props) {
         styles[`.${blockId} .premium-blog-thumbnail-container `] = {
             height: `${height[deviceType]}${height["unit"]}!important`,
         };
-        styles[`.${blockId} .premium-blog-post-outer-container:hover img `] = {
-            filter: `brightness( ${hoverEffect.bright}% ) contrast( ${Hoverfilter.contrast}% ) saturate( ${Hoverfilter.saturation}% ) blur( ${Hoverfilter.blur}px ) hue-rotate( ${Hoverfilter.hue}deg )`,
+        styles[`.${blockId}  .premium-blog-thumbnail-container:hover img `] = {
+            filter: `brightness( ${Hoverfilter.bright}% ) contrast( ${Hoverfilter.contrast}% ) saturate( ${Hoverfilter.saturation}% ) blur( ${Hoverfilter.blur}px ) hue-rotate( ${Hoverfilter.hue}deg )`,
         };
         return generateCss(styles);
     };
@@ -302,8 +302,7 @@ function Image(props) {
                     <div
                         className={`premium-blog-thumbnail-container premium-blog-${hoverEffect}-effect`}
                     >
-                        <img src={mediaUrl} style={{
-                        }} />
+                        <img src={mediaUrl} style={{}} />
                     </div>
                     <div
                         className="premium-blog-thumbnail-overlay"

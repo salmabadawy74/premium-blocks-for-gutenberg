@@ -18,6 +18,15 @@
                 "Mobile":1
             }
         },
+        "rowGap":{
+            "type":"number",
+            "default":20
+
+        },
+        "columnGap":{
+            "type":"number",
+            "default":20
+        },
         "equalHeight":{
             "type":"boolean",
             "default":false
@@ -185,6 +194,8 @@
 		"queryId": "queryId",
 		"query": "query",
         "columns":"columns",
-        "equalHeight":"equalHeight"
+        "equalHeight":"equalHeight",
+        "rowGap":"rowGap",
+        "columnGap" :"columnGap"
 	}
 }
