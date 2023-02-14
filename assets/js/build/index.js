@@ -49052,7 +49052,8 @@ function Edit(props) {
     linkURL,
     openInNewTab,
     imageID,
-    imageURL
+    imageURL,
+    icons
   } = attributes;
   const {
     layoutPos,
