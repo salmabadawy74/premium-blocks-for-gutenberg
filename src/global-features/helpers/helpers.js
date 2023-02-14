@@ -1,4 +1,4 @@
-export const getAnimationObj = (floatingEffect) => {
+export const getAnimationObj = (floatingEffect, deviceType = 'Desktop') => {
     const {
         type,
         translate,
@@ -19,53 +19,53 @@ export const getAnimationObj = (floatingEffect) => {
     const filters = [];
     if (translate.enable) {
         animeObj.translateX = {
-            value: [translate?.x?.from || 0, translate?.x?.to || 0],
+            value: [translate?.x?.[deviceType]?.from || 0, translate?.x?.[deviceType]?.to || 0],
             delay: translate.delay || 0,
             duration: translate.duration || 1000
         };
         animeObj.translateY = {
-            value: [translate?.y?.from || 0, translate?.y?.to || 0],
+            value: [translate?.y?.[deviceType]?.from || 0, translate?.y?.[deviceType]?.to || 0],
             delay: translate.delay || 0,
             duration: translate.duration || 1000
         };
     }
     if (rotate.enable) {
         animeObj.rotateX = {
-            value: [rotate?.x?.from || 0, rotate?.x?.to || 0],
+            value: [rotate?.x?.[deviceType]?.from || 0, rotate?.x?.[deviceType]?.to || 0],
             delay: rotate.delay || 0,
             duration: rotate.duration || 1000
         };
         animeObj.rotateY = {
-            value: [rotate?.y?.from || 0, rotate?.y?.to || 0],
+            value: [rotate?.y?.[deviceType]?.from || 0, rotate?.y?.[deviceType]?.to || 0],
             delay: rotate.delay || 0,
             duration: rotate.duration || 1000
         };
         animeObj.rotateZ = {
-            value: [rotate?.z?.from || 0, rotate?.z?.to || 0],
+            value: [rotate?.z?.[deviceType]?.from || 0, rotate?.z?.[deviceType]?.to || 0],
             delay: rotate.delay || 0,
             duration: rotate.duration || 1000
         };
     }
     if (scale.enable) {
         animeObj.scaleX = {
-            value: [scale?.x?.from || 0, scale?.x?.to || 0],
+            value: [scale?.x?.[deviceType]?.from || 0, scale?.x?.[deviceType]?.to || 0],
             delay: scale.delay || 0,
             duration: scale.duration || 1000
         };
         animeObj.scaleY = {
-            value: [scale?.y?.from || 0, scale?.y?.to || 0],
+            value: [scale?.y?.[deviceType]?.from || 0, scale?.y?.[deviceType]?.to || 0],
             delay: scale.delay || 0,
             duration: scale.duration || 1000
         };
     }
     if (skew.enable) {
         animeObj.skewX = {
-            value: [skew?.x?.from || 0, skew?.x?.to || 0],
+            value: [skew?.x?.[deviceType]?.from || 0, skew?.x?.[deviceType]?.to || 0],
             delay: skew.delay || 0,
             duration: skew.duration || 1000
         };
         animeObj.skewY = {
-            value: [skew?.y?.from || 0, skew?.y?.to || 0],
+            value: [skew?.y?.[deviceType]?.from || 0, skew?.y?.[deviceType]?.to || 0],
             delay: skew.delay || 0,
             duration: skew.duration || 1000
         };

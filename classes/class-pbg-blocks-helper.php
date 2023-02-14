@@ -151,6 +151,12 @@ class PBG_Blocks_Helper {
 	 */
 	public function enqueue_floating_effect_script() {
 		if ( ! empty( $this->floating_effect_blocks ) ) {
+			$media_query            = array();
+			$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
+			$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
+			$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+
+			$this->floating_effect_blocks['breakPoints'] = $media_query;
 			wp_enqueue_script(
 				'premium-floating-effect-view',
 				PREMIUM_BLOCKS_URL . 'assets/js/build/floating-effect-front.js',

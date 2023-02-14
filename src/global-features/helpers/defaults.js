@@ -5,14 +5,38 @@ export const floatingEffectDefaults = {
     translate: {
         enable: false,
         x: {
-            from: -5,
-            to: 5,
-            unit: 'px'
+            Desktop: {
+                from: -5,
+                to: 5,
+                unit: 'px'
+            },
+            Tablet: {
+                from: -5,
+                to: 5,
+                unit: 'px'
+            },
+            Mobile: {
+                from: -5,
+                to: 5,
+                unit: 'px'
+            },
         },
         y: {
-            from: -5,
-            to: 5,
-            unit: 'px'
+            Desktop: {
+                from: -5,
+                to: 5,
+                unit: 'px'
+            },
+            Tablet: {
+                from: -5,
+                to: 5,
+                unit: 'px'
+            },
+            Mobile: {
+                from: -5,
+                to: 5,
+                unit: 'px'
+            },
         },
         duration: 1000,
         delay: '',
@@ -21,19 +45,55 @@ export const floatingEffectDefaults = {
     rotate: {
         enable: false,
         x: {
-            from: 0,
-            to: 45,
-            unit: 'deg'
+            Desktop: {
+                from: 0,
+                to: 45,
+                unit: 'deg'
+            },
+            Tablet: {
+                from: 0,
+                to: 45,
+                unit: 'deg'
+            },
+            Mobile: {
+                from: 0,
+                to: 45,
+                unit: 'deg'
+            },
         },
         y: {
-            from: 0,
-            to: 45,
-            unit: 'deg'
+            Desktop: {
+                from: 0,
+                to: 45,
+                unit: 'deg'
+            },
+            Tablet: {
+                from: 0,
+                to: 45,
+                unit: 'deg'
+            },
+            Mobile: {
+                from: 0,
+                to: 45,
+                unit: 'deg'
+            },
         },
         z: {
-            from: 0,
-            to: 45,
-            unit: 'deg'
+            Desktop: {
+                from: 0,
+                to: 45,
+                unit: 'deg'
+            },
+            Tablet: {
+                from: 0,
+                to: 45,
+                unit: 'deg'
+            },
+            Mobile: {
+                from: 0,
+                to: 45,
+                unit: 'deg'
+            },
         },
         duration: 1000,
         delay: ''
@@ -41,14 +101,38 @@ export const floatingEffectDefaults = {
     scale: {
         enable: false,
         x: {
-            from: 1,
-            to: 1.2,
-            unit: 'px'
+            Desktop: {
+                from: 1,
+                to: 1.2,
+                unit: 'px'
+            },
+            Tablet: {
+                from: 1,
+                to: 1.2,
+                unit: 'px'
+            },
+            Mobile: {
+                from: 1,
+                to: 1.2,
+                unit: 'px'
+            },
         },
         y: {
-            from: 1,
-            to: 1.2,
-            unit: 'px'
+            Desktop: {
+                from: 1,
+                to: 1.2,
+                unit: 'px'
+            },
+            Tablet: {
+                from: 1,
+                to: 1.2,
+                unit: 'px'
+            },
+            Mobile: {
+                from: 1,
+                to: 1.2,
+                unit: 'px'
+            },
         },
         duration: 1000,
         delay: ''
@@ -56,14 +140,38 @@ export const floatingEffectDefaults = {
     skew: {
         enable: false,
         x: {
-            from: 0,
-            to: 20,
-            unit: 'deg'
+            Desktop: {
+                from: 0,
+                to: 20,
+                unit: 'deg'
+            },
+            Tablet: {
+                from: 0,
+                to: 20,
+                unit: 'deg'
+            },
+            Mobile: {
+                from: 0,
+                to: 20,
+                unit: 'deg'
+            },
         },
         y: {
-            from: 0,
-            to: 20,
-            unit: 'deg'
+            Desktop: {
+                from: 0,
+                to: 20,
+                unit: 'deg'
+            },
+            Tablet: {
+                from: 0,
+                to: 20,
+                unit: 'deg'
+            },
+            Mobile: {
+                from: 0,
+                to: 20,
+                unit: 'deg'
+            },
         },
         duration: 1000,
         delay: ''

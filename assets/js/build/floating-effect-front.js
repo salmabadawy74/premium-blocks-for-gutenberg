@@ -1338,7 +1338,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "checkSelector": () => (/* binding */ checkSelector),
 /* harmony export */   "getAnimationObj": () => (/* binding */ getAnimationObj)
 /* harmony export */ });
-const getAnimationObj = floatingEffect => {
+const getAnimationObj = function (floatingEffect) {
+  let deviceType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Desktop';
   const {
     type,
     translate,
@@ -1358,53 +1359,53 @@ const getAnimationObj = floatingEffect => {
   const filters = [];
   if (translate.enable) {
     animeObj.translateX = {
-      value: [translate?.x?.from || 0, translate?.x?.to || 0],
+      value: [translate?.x?.[deviceType]?.from || 0, translate?.x?.[deviceType]?.to || 0],
       delay: translate.delay || 0,
       duration: translate.duration || 1000
     };
     animeObj.translateY = {
-      value: [translate?.y?.from || 0, translate?.y?.to || 0],
+      value: [translate?.y?.[deviceType]?.from || 0, translate?.y?.[deviceType]?.to || 0],
       delay: translate.delay || 0,
       duration: translate.duration || 1000
     };
   }
   if (rotate.enable) {
     animeObj.rotateX = {
-      value: [rotate?.x?.from || 0, rotate?.x?.to || 0],
+      value: [rotate?.x?.[deviceType]?.from || 0, rotate?.x?.[deviceType]?.to || 0],
       delay: rotate.delay || 0,
       duration: rotate.duration || 1000
     };
     animeObj.rotateY = {
-      value: [rotate?.y?.from || 0, rotate?.y?.to || 0],
+      value: [rotate?.y?.[deviceType]?.from || 0, rotate?.y?.[deviceType]?.to || 0],
       delay: rotate.delay || 0,
       duration: rotate.duration || 1000
     };
     animeObj.rotateZ = {
-      value: [rotate?.z?.from || 0, rotate?.z?.to || 0],
+      value: [rotate?.z?.[deviceType]?.from || 0, rotate?.z?.[deviceType]?.to || 0],
       delay: rotate.delay || 0,
       duration: rotate.duration || 1000
     };
   }
   if (scale.enable) {
     animeObj.scaleX = {
-      value: [scale?.x?.from || 0, scale?.x?.to || 0],
+      value: [scale?.x?.[deviceType]?.from || 0, scale?.x?.[deviceType]?.to || 0],
       delay: scale.delay || 0,
       duration: scale.duration || 1000
     };
     animeObj.scaleY = {
-      value: [scale?.y?.from || 0, scale?.y?.to || 0],
+      value: [scale?.y?.[deviceType]?.from || 0, scale?.y?.[deviceType]?.to || 0],
       delay: scale.delay || 0,
       duration: scale.duration || 1000
     };
   }
   if (skew.enable) {
     animeObj.skewX = {
-      value: [skew?.x?.from || 0, skew?.x?.to || 0],
+      value: [skew?.x?.[deviceType]?.from || 0, skew?.x?.[deviceType]?.to || 0],
       delay: skew.delay || 0,
       duration: skew.duration || 1000
     };
     animeObj.skewY = {
-      value: [skew?.y?.from || 0, skew?.y?.to || 0],
+      value: [skew?.y?.[deviceType]?.from || 0, skew?.y?.[deviceType]?.to || 0],
       delay: skew.delay || 0,
       duration: skew.duration || 1000
     };
@@ -1562,30 +1563,47 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var animejs_lib_anime_es_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! animejs/lib/anime.es.js */ "./node_modules/animejs/lib/anime.es.js");
 
 
-if (Object.keys(PBG_FloatingEffect).length > 0) {
-  Object.keys(PBG_FloatingEffect).map(clientId => {
-    const floatingEffect = PBG_FloatingEffect[clientId];
-    if (floatingEffect?.disableOnSafari && checkSafariBrowser()) {
-      return;
-    }
-    let blockElement = document.querySelectorAll(`[data-effect="${floatingEffect.clientId}"]`);
-    let targets;
-    if (floatingEffect.customSelector && (0,_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__.checkSelector)(floatingEffect.customSelector)) {
-      blockElement = document.querySelector(`[data-effect="${floatingEffect.clientId}"]`);
-      targets = blockElement.querySelectorAll(floatingEffect.customSelector);
-    }
-    const animeSettings = {
-      targets: targets?.length > 0 ? targets : blockElement,
-      loop: floatingEffect.loop === 'infinite' ? true : floatingEffect.customNumber,
-      direction: floatingEffect.direction,
-      easing: floatingEffect.easing
-    };
-    const animeObj = (0,_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__.getAnimationObj)(floatingEffect);
-    (0,animejs_lib_anime_es_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
-      ...animeSettings,
-      ...animeObj
+let blocksElement = document.querySelectorAll(`[data-effect]`);
+if (blocksElement.length > 0) {
+  const addBlockFloatingEffect = () => {
+    blocksElement.forEach(blockElement => {
+      const {
+        effect: clientId
+      } = blockElement.dataset;
+      const floatingEffect = PBG_FloatingEffect[clientId];
+      if (floatingEffect?.disableOnSafari && checkSafariBrowser()) {
+        return;
+      }
+      let device = 'Desktop';
+      const {
+        breakPoints
+      } = PBG_FloatingEffect;
+      if (window.matchMedia(breakPoints.desktop).matches) {
+        device = 'Desktop';
+      } else if (window.matchMedia(breakPoints.tablet).matches && !window.matchMedia(breakPoints.mobile).matches) {
+        device = 'Tablet';
+      } else if (window.matchMedia(breakPoints.mobile).matches) {
+        device = 'Mobile';
+      }
+      let targets;
+      if (floatingEffect.customSelector && (0,_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__.checkSelector)(floatingEffect.customSelector)) {
+        targets = blockElement.querySelectorAll(floatingEffect.customSelector);
+      }
+      const animeSettings = {
+        targets: targets?.length > 0 ? targets : [blockElement],
+        loop: floatingEffect.loop === 'infinite' ? true : floatingEffect.customNumber,
+        direction: floatingEffect.direction,
+        easing: floatingEffect.easing
+      };
+      const animeObj = (0,_helpers_helpers__WEBPACK_IMPORTED_MODULE_0__.getAnimationObj)(floatingEffect, device);
+      (0,animejs_lib_anime_es_js__WEBPACK_IMPORTED_MODULE_1__["default"])({
+        ...animeSettings,
+        ...animeObj
+      });
     });
-  });
+  };
+  window.addEventListener("resize", () => addBlockFloatingEffect(), false);
+  addBlockFloatingEffect();
 }
 })();
 

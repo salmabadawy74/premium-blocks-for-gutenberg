@@ -8,6 +8,9 @@ import { addFilter } from '@wordpress/hooks';
 import { floatingEffectDefaults } from './helpers/defaults';
 import { checkSafariBrowser, checkSelector, getAnimationObj } from './helpers/helpers';
 import anime from 'animejs/lib/anime.es.js';
+import ResponsiveAdvancedRangeControl from './../components/RangeControl/responsive-advanced-range-control';
+import { useSelect } from '@wordpress/data';
+import { useState } from '@wordpress/element';
 
 const FloatingEffect = ({ value, onChange }) => {
     const {
@@ -102,14 +105,14 @@ const FloatingEffect = ({ value, onChange }) => {
                         />
                         {translate.enable && (
                             <>
-                                <AdvancedRangeControl
+                                <ResponsiveAdvancedRangeControl
                                     label={__("Translate X", "premium-blocks-for-gutenberg")}
                                     value={translate.x}
                                     min={-150}
                                     max={150}
                                     onChange={(value) => onChangeEffect('translate', { x: value })}
                                 />
-                                <AdvancedRangeControl
+                                <ResponsiveAdvancedRangeControl
                                     label={__("Translate Y", "premium-blocks-for-gutenberg")}
                                     value={translate.y}
                                     min={-150}
@@ -143,21 +146,21 @@ const FloatingEffect = ({ value, onChange }) => {
                         />
                         {rotate.enable && (
                             <>
-                                <AdvancedRangeControl
+                                <ResponsiveAdvancedRangeControl
                                     label={__("Rotate X", "premium-blocks-for-gutenberg")}
                                     value={rotate.x}
                                     min={-180}
                                     max={180}
                                     onChange={(value) => onChangeEffect('rotate', { x: value })}
                                 />
-                                <AdvancedRangeControl
+                                <ResponsiveAdvancedRangeControl
                                     label={__("Rotate Y", "premium-blocks-for-gutenberg")}
                                     value={rotate.y}
                                     min={-180}
                                     max={180}
                                     onChange={(value) => onChangeEffect('rotate', { y: value })}
                                 />
-                                <AdvancedRangeControl
+                                <ResponsiveAdvancedRangeControl
                                     label={__("Rotate Z", "premium-blocks-for-gutenberg")}
                                     value={rotate.z}
                                     min={-180}
@@ -191,7 +194,7 @@ const FloatingEffect = ({ value, onChange }) => {
                         />
                         {scale.enable && (
                             <>
-                                <AdvancedRangeControl
+                                <ResponsiveAdvancedRangeControl
                                     label={__("Scale X", "premium-blocks-for-gutenberg")}
                                     value={scale.x}
                                     min={0}
@@ -199,7 +202,7 @@ const FloatingEffect = ({ value, onChange }) => {
                                     step={0.1}
                                     onChange={(value) => onChangeEffect('scale', { x: value })}
                                 />
-                                <AdvancedRangeControl
+                                <ResponsiveAdvancedRangeControl
                                     label={__("Scale Y", "premium-blocks-for-gutenberg")}
                                     value={scale.y}
                                     min={0}
@@ -234,14 +237,14 @@ const FloatingEffect = ({ value, onChange }) => {
                         />
                         {skew.enable && (
                             <>
-                                <AdvancedRangeControl
+                                <ResponsiveAdvancedRangeControl
                                     label={__("Skew X", "premium-blocks-for-gutenberg")}
                                     value={skew.x}
                                     min={-180}
                                     max={180}
                                     onChange={(value) => onChangeEffect('skew', { x: value })}
                                 />
-                                <AdvancedRangeControl
+                                <ResponsiveAdvancedRangeControl
                                     label={__("Skew Y", "premium-blocks-for-gutenberg")}
                                     value={skew.y}
                                     min={-180}
@@ -685,18 +688,58 @@ const FloatingEffectControl = createHigherOrderComponent((BlockEdit) => {
     return (props) => {
         const { attributes, setAttributes, isSelected } = props;
         const { floatingEffect = {} } = attributes;
+        const deviceType = useSelect((select) => {
+            const { __experimentalGetPreviewDeviceType = null } = select(
+                "core/edit-post"
+            );
+            return __experimentalGetPreviewDeviceType
+                ? __experimentalGetPreviewDeviceType()
+                : "Desktop";
+        }, []);
+        const [editorElement, setEditorElement] = useState(null);
 
         useEffect(() => {
-            if (!floatingEffect?.enable) {
+            const postEditorDom = document.querySelector(`.editor-styles-wrapper`);
+            if (postEditorDom) {
+                setEditorElement(postEditorDom);
+                return;
+            }
+
+            let interval = null;
+            let siteEditorDom = document.querySelector(`iframe[name="editor-canvas"]`);
+
+            if (siteEditorDom && siteEditorDom.contentDocument?.body?.childNodes?.length !== 0) {
+                const editorBody = siteEditorDom.contentDocument.body;
+                setEditorElement(editorBody);
+            } else {
+                interval = setInterval(() => {
+                    siteEditorDom = document.querySelector(`iframe[name="editor-canvas"]`);
+                    if (siteEditorDom) {
+                        const editorBody = siteEditorDom.contentDocument.body;
+                        if (editorBody && editorBody?.childNodes?.length !== 0) {
+                            setEditorElement(editorBody);
+                        }
+                    }
+                }, 200)
+            }
+
+            return () => {
+                clearInterval(interval)
+            }
+        }, [isSelected, floatingEffect, deviceType]);
+
+        useEffect(() => {
+            if (!floatingEffect?.enable || !editorElement) {
                 return;
             }
             if (floatingEffect?.disableOnSafari && checkSafariBrowser()) {
                 return;
             }
-            let blockElement = document.querySelectorAll(`[data-effect="${floatingEffect.clientId}"]`);
+            let blockElement = editorElement.querySelectorAll(`[data-effect="${floatingEffect.clientId}"]`);
+
             let targets;
             if (floatingEffect.customSelector && checkSelector(floatingEffect.customSelector)) {
-                blockElement = document.querySelector(`[data-effect="${floatingEffect.clientId}"]`);
+                blockElement = editorElement.querySelector(`[data-effect="${floatingEffect.clientId}"]`);
                 targets = blockElement.querySelectorAll(floatingEffect.customSelector);
             }
             const animeSettings = {
@@ -705,7 +748,7 @@ const FloatingEffectControl = createHigherOrderComponent((BlockEdit) => {
                 direction: floatingEffect.direction,
                 easing: floatingEffect.easing !== 'steps' ? floatingEffect.easing : `steps(${floatingEffect?.steps || 5})`,
             };
-            const animeObj = getAnimationObj(floatingEffect);
+            const animeObj = getAnimationObj(floatingEffect, deviceType);
             let animationInstance = null;
             if (Object.keys(animeObj).length) {
                 animationInstance = anime({ ...animeSettings, ...animeObj });
@@ -716,7 +759,7 @@ const FloatingEffectControl = createHigherOrderComponent((BlockEdit) => {
                     animationInstance.reset();
                 }
             };
-        }, [isSelected, floatingEffect]);
+        }, [isSelected, floatingEffect, deviceType, editorElement]);
 
         return (
             <Fragment>
