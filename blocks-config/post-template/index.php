@@ -185,7 +185,7 @@ function get_premium_post_meta_css_style($attributes, $unique_id)
 }
 
 
-function get_premium_post_template_css_style($attributes, $unique_id, $columns)
+function get_premium_post_template_css_style($attributes, $unique_id)
 {
     $css                    = new Premium_Blocks_css();
     $media_query            = array();
@@ -235,7 +235,7 @@ function get_premium_post_template_css_style($attributes, $unique_id, $columns)
             $container_bg = $background['backgroundImageURL'] ? 'url(' . $background['backgroundImageURL'] . ');' : '';
         }
 
-        $css->set_selector('.premium-blog-wrap');
+        $css->set_selector('.premium-blog-post-outer-container');
         $css->add_property('background-color', $css->render_color('solid' === $background['backgroundType'] ? $background['backgroundColor'] : ''));
         $css->add_property('background-image', $css->render_color($container_bg));
         $css->add_property('background-repeat', $css->render_color($background['backgroundRepeat']));
@@ -244,7 +244,7 @@ function get_premium_post_template_css_style($attributes, $unique_id, $columns)
         $css->add_property('background-position', $css->render_color($background['backgroundPosition']));
     }
     if (isset($attr['boxShadow'])) {
-        $css->set_selector('.premium-blog-wrap');
+        $css->set_selector('.premium-blog-post-outer-container');
         $css->add_property('box-shadow', $css->render_shadow($attributes['boxShadow']));
     }
 
@@ -320,7 +320,6 @@ function render_block_premium_post_template($attributes, $content, $block)
     $page_key = isset($block->context['queryId']) ? 'query-' . $block->context['queryId'] . '-page' : 'query-page';
     $page     = empty($_GET[$page_key]) ? 1 : (int) $_GET[$page_key];
 
-    $columns = isset($block->context['columns']) ?  $block->context['columns'] : 3;
 
 
     $query_args = build_query_vars_from_query_block($block, $page);
@@ -355,7 +354,7 @@ function render_block_premium_post_template($attributes, $content, $block)
 
     $style_id = 'pbg-blocks-style' . esc_attr($unique_id);
 
-    $style_css .= get_premium_post_template_css_style($attributes, $unique_id, $columns);
+    $style_css .= get_premium_post_template_css_style($attributes, $unique_id);
 
 
     while ($query->have_posts()) {
@@ -372,7 +371,6 @@ function render_block_premium_post_template($attributes, $content, $block)
             foreach ($block_instance['innerBlocks'] as $j => $inner_block) {
                 $name = $inner_block['blockName'];
                 $block_id = '';
-                $css = '';
                 if (!isset($name)) {
                     return;
                 }

@@ -28,11 +28,11 @@ export default function Inspector({ attributes, setQuery, setAttributes }) {
         query,
         columns,
         equalHeight,
-        containerBackground,
-        border,
-        boxShadow,
-        padding,
-        margin,
+        blogContainerBackground,
+        blogBorder,
+        blogBoxShadow,
+        blogPadding,
+        blogMargin,
         hideDesktop,
         hideTablet,
         hideMobile,
@@ -167,30 +167,30 @@ export default function Inspector({ attributes, setQuery, setAttributes }) {
                         initialOpen={true}
                     >
                         <PremiumBackgroundControl
-                            value={containerBackground}
+                            value={blogContainerBackground}
                             onChange={(value) =>
                                 setAttributes({
-                                    containerBackground: value,
+                                    blogContainerBackground: value,
                                 })
                             }
                         />
                         <PremiumBorder
                             label={__("Border", "premium-blocks-for-gutenberg")}
-                            value={border}
+                            value={blogBorder}
                             onChange={(value) =>
-                                setAttributes({ border: value })
+                                setAttributes({ blogBorder: value })
                             }
                         />
 
                         <PremiumShadow
                             boxShadow={true}
-                            value={boxShadow}
+                            value={blogBoxShadow}
                             onChange={(value) =>
-                                setAttributes({ boxShadow: value })
+                                setAttributes({ blogBoxShadow: value })
                             }
                         />
                         <SpacingComponent
-                            value={padding}
+                            value={blogPadding}
                             responsive={true}
                             showUnits={true}
                             label={__(
@@ -198,16 +198,16 @@ export default function Inspector({ attributes, setQuery, setAttributes }) {
                                 "premium-blocks-for-gutenberg"
                             )}
                             onChange={(value) =>
-                                setAttributes({ padding: value })
+                                setAttributes({ blogPadding: value })
                             }
                         />
                         <SpacingComponent
-                            value={margin}
+                            value={blogMargin}
                             responsive={true}
                             showUnits={true}
                             label={__("Margin", "premium-blocks-for-gutenberg")}
                             onChange={(value) =>
-                                setAttributes({ margin: value })
+                                setAttributes({ blogMargin: value })
                             }
                         />
                     </PanelBody>

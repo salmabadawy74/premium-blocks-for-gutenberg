@@ -145,27 +145,7 @@ function Pagination(props) {
                             className="premium-panel-body"
                             initialOpen={true}
                         >
-                            <ToggleControl
-                                label={__(
-                                    "Enable Pagination",
-                                    "premium-blocks-for-gutenberg"
-                                )}
-                                checked={showPagnation}
-                                onChange={(value) =>
-                                    setAttributes({ showPagnation: value })
-                                }
-                            />
-                            {/* <SelectControl
-                                label={__("Image Size")}
-                                options={imageSizeOptions}
-                                value={imageSize}
-                                onChange={(newSizeImage) =>
-                                    setAttributes({
-                                        imageSize: newSizeImage,
-                                    })
-                                }
-                            /> */}
-                            <ResponsiveRangeControl
+                            {/* <ResponsiveRangeControl
                                 label={__(
                                     "Page Limit",
                                     "premium-blocks-for-gutenberg"
@@ -177,7 +157,7 @@ function Pagination(props) {
                                 showUnit={false}
                                 min={1}
                                 step={1}
-                            />
+                            /> */}
                             <ToggleControl
                                 label={__(
                                     "Enable Pagination Next/Prev Strings",
@@ -486,12 +466,12 @@ function Pagination(props) {
             >
                 <style>{loadStyles()}</style>
 
-                {createPaginationItem(prevString)}
+                {showPrevNext && createPaginationItem(prevString)}
                 {createPaginationItem(1)}
                 {createPaginationItem(2)}
                 {createPaginationItem(3, "span", "current")}
                 {createPaginationItem(4)}
-                {createPaginationItem(nextString)}
+                {showPrevNext && createPaginationItem(nextString)}
             </div>
         </Fragment>
     );

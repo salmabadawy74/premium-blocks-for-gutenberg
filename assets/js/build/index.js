@@ -32659,13 +32659,7 @@ function Image(props) {
       title: __("Featured Image", "premium-blocks-for-gutenberg"),
       className: "premium-panel-body",
       initialOpen: true
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
-      label: __("Show Featured Image", "premium-blocks-for-gutenberg"),
-      checked: showImage,
-      onChange: value => setAttributes({
-        showImage: value
-      })
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SelectControl, {
       label: __("Hover Effect"),
       options: hoverEffects,
       value: hoverEffect,
@@ -49984,21 +49978,6 @@ function Pagination(props) {
     className: "premium-panel-body",
     initialOpen: true
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ToggleControl, {
-    label: __("Enable Pagination", "premium-blocks-for-gutenberg"),
-    checked: showPagnation,
-    onChange: value => setAttributes({
-      showPagnation: value
-    })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_5__.ResponsiveRangeControl, {
-    label: __("Page Limit", "premium-blocks-for-gutenberg"),
-    value: pageLimit,
-    onChange: newValue => setAttributes({
-      pageLimit: newValue
-    }),
-    showUnit: false,
-    min: 1,
-    step: 1
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ToggleControl, {
     label: __("Enable Pagination Next/Prev Strings", "premium-blocks-for-gutenberg"),
     checked: showPrevNext,
     onChange: value => setAttributes({
@@ -50154,7 +50133,7 @@ function Pagination(props) {
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.marginCss)(margin, deviceType),
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.paddingCss)(padding, deviceType)
     }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", null, loadStyles()), createPaginationItem(prevString), createPaginationItem(1), createPaginationItem(2), createPaginationItem(3, "span", "current"), createPaginationItem(4), createPaginationItem(nextString)));
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", null, loadStyles()), showPrevNext && createPaginationItem(prevString), createPaginationItem(1), createPaginationItem(2), createPaginationItem(3, "span", "current"), createPaginationItem(4), showPrevNext && createPaginationItem(nextString)));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (withSelect(select => {
   const {
@@ -52210,7 +52189,7 @@ const {
  * Internal dependencies
  */
 const DEFAULTS_POSTS_PER_PAGE = 3;
-const TEMPLATE = [["premium/post-template"]];
+const TEMPLATE = [["premium/post-template"], ["premium/pagination"]];
 function QueryContent(_ref) {
   let {
     attributes,
@@ -52221,11 +52200,11 @@ function QueryContent(_ref) {
     queryId,
     query,
     columns,
-    containerBackground,
-    border,
-    boxShadow,
-    padding,
-    margin
+    blogContainerBackground,
+    blogBorder,
+    blogBoxShadow,
+    blogPadding,
+    blogMargin
   } = attributes;
   const {
     __unstableMarkNextChangeAsNotPersistent
@@ -52275,11 +52254,11 @@ function QueryContent(_ref) {
     setAttributes: setAttributes
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, blockProps, {
     style: {
-      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.gradientBackground)(containerBackground),
-      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.borderCss)(border, deviceType),
-      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.marginCss)(margin, deviceType),
-      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.paddingCss)(padding, deviceType),
-      boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical || 0}px ${boxShadow.blur || 0}px ${boxShadow.color}`
+      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.gradientBackground)(blogContainerBackground),
+      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.borderCss)(blogBorder, deviceType),
+      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.marginCss)(blogMargin, deviceType),
+      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.paddingCss)(blogPadding, deviceType),
+      boxShadow: `${blogBoxShadow.horizontal || 0}px ${blogBoxShadow.vertical || 0}px ${blogBoxShadow.blur || 0}px ${blogBoxShadow.color}`
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", innerBlocksProps)));
 }
@@ -52388,11 +52367,11 @@ function Inspector(_ref) {
     query,
     columns,
     equalHeight,
-    containerBackground,
-    border,
-    boxShadow,
-    padding,
-    margin,
+    blogContainerBackground,
+    blogBorder,
+    blogBoxShadow,
+    blogPadding,
+    blogMargin,
     hideDesktop,
     hideTablet,
     hideMobile
@@ -52507,37 +52486,37 @@ function Inspector(_ref) {
     className: "premium-panel-body",
     initialOpen: true
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.PremiumBackgroundControl, {
-    value: containerBackground,
+    value: blogContainerBackground,
     onChange: value => setAttributes({
-      containerBackground: value
+      blogContainerBackground: value
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.PremiumBorder, {
     label: __("Border", "premium-blocks-for-gutenberg"),
-    value: border,
+    value: blogBorder,
     onChange: value => setAttributes({
-      border: value
+      blogBorder: value
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.PremiumShadow, {
     boxShadow: true,
-    value: boxShadow,
+    value: blogBoxShadow,
     onChange: value => setAttributes({
-      boxShadow: value
+      blogBoxShadow: value
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.SpacingComponent, {
-    value: padding,
+    value: blogPadding,
     responsive: true,
     showUnits: true,
     label: __("Padding", "premium-blocks-for-gutenberg"),
     onChange: value => setAttributes({
-      padding: value
+      blogPadding: value
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.SpacingComponent, {
-    value: margin,
+    value: blogMargin,
     responsive: true,
     showUnits: true,
     label: __("Margin", "premium-blocks-for-gutenberg"),
     onChange: value => setAttributes({
-      margin: value
+      blogMargin: value
     })
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.InspectorTab, {
     key: "advance"
@@ -53079,7 +53058,7 @@ function Tags(props) {
   const loadStyles = () => {
     const styles = {};
     styles[`.${blockId}.premium-blog-post-tags-container:hover `] = {
-      color: hoverColor
+      color: `${hoverColor}!important`
     };
     return (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_7__.generateCss)(styles);
   };
@@ -101510,7 +101489,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/post-grid","title":"Post Grid","category":"premium-blocks","description":"An advanced block that allows displaying post types based on different query parameters and visual configurations.","textdomain":"default","attributes":{"queryId":{"type":"number"},"columns":{"type":"object","default":{"Desktop":3,"Tablet":2,"Mobile":1}},"rowGap":{"type":"number","default":20},"columnGap":{"type":"number","default":20},"equalHeight":{"type":"boolean","default":false},"query":{"type":"object","default":{"perPage":null,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":""}},"containerBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}},"boxShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}},"border":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"margin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"padding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"advancedBorder":{"type":"boolean","default":false},"advancedBorderValue":{"type":"string"}},"providesContext":{"queryId":"queryId","query":"query","columns":"columns","equalHeight":"equalHeight","rowGap":"rowGap","columnGap":"columnGap"}}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/post-grid","title":"Post Grid","category":"premium-blocks","description":"An advanced block that allows displaying post types based on different query parameters and visual configurations.","textdomain":"default","attributes":{"queryId":{"type":"number"},"columns":{"type":"object","default":{"Desktop":3,"Tablet":2,"Mobile":1}},"rowGap":{"type":"number","default":20},"columnGap":{"type":"number","default":20},"equalHeight":{"type":"boolean","default":false},"query":{"type":"object","default":{"perPage":null,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":""}},"blogContainerBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}},"blogBoxShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}},"blogBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"blogMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"blogPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"advancedBorder":{"type":"boolean","default":false},"advancedBorderValue":{"type":"string"}},"providesContext":{"queryId":"queryId","query":"query","columns":"columns","equalHeight":"equalHeight","rowGap":"rowGap","columnGap":"columnGap"}}');
 
 /***/ }),
 

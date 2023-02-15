@@ -400,6 +400,7 @@ class PBG_Blocks_Helper
 		}
 		require_once PREMIUM_BLOCKS_PATH . 'blocks-config/post-grid/index.php';
 		require_once PREMIUM_BLOCKS_PATH . 'blocks-config/post-template/index.php';
+		require_once PREMIUM_BLOCKS_PATH . 'blocks-config/pagination/index.php';
 
 		require_once PREMIUM_BLOCKS_PATH . 'blocks-config/post-title/index.php';
 		require_once PREMIUM_BLOCKS_PATH . 'blocks-config/feature-image/index.php';

@@ -822,6 +822,25 @@
     margin: 0;
     padding: 0; }
 
+.premium-blog-pagination-container span {
+  cursor: default; }
+  .premium-blog-pagination-container span.current {
+    color: #6ec1e4;
+    background-color: #54595f; }
+
+.premium-blog-pagination-container .page-numbers {
+  display: inline-block;
+  color: #000;
+  background-color: #6ec1e4;
+  line-height: 1;
+  font-size: 1em;
+  font-weight: 400;
+  text-decoration: none;
+  padding: .75em;
+  margin: 0 .4em .4em 0;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out; }
+
 @media (max-width: 768px) {
   .premium-blog-content-wrapper {
     top: 0;

@@ -160,16 +160,6 @@ function Image(props) {
                                 className="premium-panel-body"
                                 initialOpen={true}
                             >
-                                <ToggleControl
-                                    label={__(
-                                        "Show Featured Image",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                    checked={showImage}
-                                    onChange={(value) =>
-                                        setAttributes({ showImage: value })
-                                    }
-                                />
                                 <SelectControl
                                     label={__("Hover Effect")}
                                     options={hoverEffects}

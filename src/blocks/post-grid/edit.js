@@ -25,17 +25,17 @@ import { useInstanceId } from "@wordpress/compose";
  */
 const DEFAULTS_POSTS_PER_PAGE = 3;
 
-const TEMPLATE = [["premium/post-template"]];
+const TEMPLATE = [["premium/post-template"], ["premium/pagination"]];
 function QueryContent({ attributes, setAttributes, deviceType }) {
     const {
         queryId,
         query,
         columns,
-        containerBackground,
-        border,
-        boxShadow,
-        padding,
-        margin,
+        blogContainerBackground,
+        blogBorder,
+        blogBoxShadow,
+        blogPadding,
+        blogMargin,
     } = attributes;
     const { __unstableMarkNextChangeAsNotPersistent } =
         useDispatch(blockEditorStore);
@@ -81,13 +81,13 @@ function QueryContent({ attributes, setAttributes, deviceType }) {
             <div
                 {...blockProps}
                 style={{
-                    ...gradientBackground(containerBackground),
-                    ...borderCss(border, deviceType),
-                    ...marginCss(margin, deviceType),
-                    ...paddingCss(padding, deviceType),
-                    boxShadow: `${boxShadow.horizontal || 0}px ${
-                        boxShadow.vertical || 0
-                    }px ${boxShadow.blur || 0}px ${boxShadow.color}`,
+                    ...gradientBackground(blogContainerBackground),
+                    ...borderCss(blogBorder, deviceType),
+                    ...marginCss(blogMargin, deviceType),
+                    ...paddingCss(blogPadding, deviceType),
+                    boxShadow: `${blogBoxShadow.horizontal || 0}px ${
+                        blogBoxShadow.vertical || 0
+                    }px ${blogBoxShadow.blur || 0}px ${blogBoxShadow.color}`,
                 }}
             >
                 <div {...innerBlocksProps} />

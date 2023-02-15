@@ -46,7 +46,7 @@
 				"sticky": ""
 			}
 		},
-		"containerBackground": {
+		"blogContainerBackground": {
             "type": "object",
             "default": {
                 "backgroundType": "",
@@ -65,7 +65,7 @@
                 "gradientType": "linear"
             }
         },
-        "boxShadow": {
+        "blogBoxShadow": {
             "type": "object",
             "default": {
                 "color": "undefined",
@@ -75,7 +75,7 @@
                 "position": ""
             }
         },
-		        "border": {
+		"blogBorder": {
             "type": "object",
             "default": {
                 "borderColor": "",
@@ -122,7 +122,7 @@
                 }
             }
         },
-		"margin": {
+		"blogMargin": {
             "type": "object",
             "default": {
                 "Desktop": {
@@ -146,7 +146,7 @@
                 "unit": "px"
             }
         },
-        "padding": {
+        "blogPadding": {
             "type": "object",
             "default": {
                 "Desktop": {
