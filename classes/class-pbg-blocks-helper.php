@@ -90,6 +90,13 @@ class PBG_Blocks_Helper {
 	public $floating_effect_blocks = array();
 
 	/**
+	 * An array of blocks that have a floating effect
+	 *
+	 * @var array
+	 */
+	public $entrance_animation_blocks = array();
+
+	/**
 	 * Constructor for the class
 	 */
 	public function __construct() {
@@ -143,6 +150,10 @@ class PBG_Blocks_Helper {
 			$this->floating_effect_blocks[ $block['attrs']['floatingEffect']['clientId'] ] = $block['attrs']['floatingEffect'];
 		}
 
+		if ( $global_features['premium-entrance-animation'] && isset( $block['attrs']['entranceAnimation'] ) && $block['attrs']['entranceAnimation']['enable'] ) {
+			$this->entrance_animation_blocks[ $block['attrs']['entranceAnimation']['clientId'] ] = $block['attrs']['entranceAnimation'];
+		}
+
 		return $block_content;
 	}
 
@@ -150,12 +161,11 @@ class PBG_Blocks_Helper {
 	 * Enqueues floating effect scripts.
 	 */
 	public function enqueue_floating_effect_script() {
+		$media_query            = array();
+		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
+		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
+		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 		if ( ! empty( $this->floating_effect_blocks ) ) {
-			$media_query            = array();
-			$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
-			$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
-			$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
-
 			$this->floating_effect_blocks['breakPoints'] = $media_query;
 			wp_enqueue_script(
 				'premium-floating-effect-view',
@@ -168,6 +178,22 @@ class PBG_Blocks_Helper {
 			wp_localize_script(
 				'premium-floating-effect-view',
 				'PBG_FloatingEffect',
+				$this->floating_effect_blocks
+			);
+		}
+		if ( ! empty( $this->entrance_animation_blocks ) ) {
+			$this->entrance_animation_blocks['breakPoints'] = $media_query;
+			wp_enqueue_script(
+				'premium-entrance-animation-view',
+				PREMIUM_BLOCKS_URL . 'assets/js/build/entrance-animation-front.js',
+				array(),
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
+
+			wp_localize_script(
+				'premium-entrance-animation-view',
+				'PBG_EntranceAnimation',
 				$this->floating_effect_blocks
 			);
 		}
@@ -364,6 +390,7 @@ class PBG_Blocks_Helper {
 			'admin_url'         => admin_url(),
 			'globalFeatures'    => apply_filters( 'pb_global_features', get_option( 'pbg_global_features', array() ) ),
 		);
+		$global_features     = apply_filters( 'pb_global_features', get_option( 'pbg_global_features', array() ) );
 
 		wp_register_script(
 			'pbg-settings-js',
@@ -381,13 +408,25 @@ class PBG_Blocks_Helper {
 			true
 		);
 
-		wp_enqueue_script(
-			'pbg-floating-effect',
-			PREMIUM_BLOCKS_URL . 'assets/js/build/floating-effect.js',
-			array( 'wp-block-editor', 'wp-components', 'wp-compose', 'wp-element', 'wp-edit-post', 'wp-hooks', 'pbg-settings-js' ),
-			PREMIUM_BLOCKS_VERSION,
-			true
-		);
+		if ( $global_features['premium-floating-effect'] ) {
+			wp_enqueue_script(
+				'pbg-floating-effect',
+				PREMIUM_BLOCKS_URL . 'assets/js/build/floating-effect.js',
+				array( 'wp-block-editor', 'wp-components', 'wp-compose', 'wp-element', 'wp-edit-post', 'wp-hooks', 'pbg-settings-js' ),
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
+		}
+
+		if ( $global_features['premium-entrance-animation'] ) {
+			wp_enqueue_script(
+				'pbg-entrance-animation',
+				PREMIUM_BLOCKS_URL . 'assets/js/build/entrance-animation.js',
+				array( 'wp-block-editor', 'wp-components', 'wp-compose', 'wp-element', 'wp-edit-post', 'wp-hooks', 'pbg-settings-js' ),
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
+		}
 
 		wp_localize_script(
 			'pbg-blocks-js',
@@ -438,27 +477,6 @@ class PBG_Blocks_Helper {
 		$is_maps_enabled = self::$blocks['maps'];
 
 		$is_rtl = is_rtl() ? true : false;
-
-		$global_features = apply_filters( 'pb_global_features', get_option( 'pbg_global_features', array() ) );
-
-		// if ( $global_features['premium-floating-effect'] ) {
-		// wp_enqueue_script(
-		// 'premium-floating-effect-view',
-		// PREMIUM_BLOCKS_URL . 'assets/js/build/floating-effect-front.js',
-		// array(),
-		// PREMIUM_BLOCKS_VERSION,
-		// true
-		// );
-
-		// wp_localize_script(
-		// 'premium-floating-effect-view',
-		// 'PBG_FloatingEffect',
-		// apply_filters(
-		// 'premium_floating_effect_localize_script',
-		// array()
-		// )
-		// );
-		// }
 
 		if ( $is_rtl ) {
 			wp_enqueue_style(
