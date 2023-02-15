@@ -263,3 +263,14 @@ export const floatingEffectDefaults = {
     steps: 5,
     customSelector: ''
 };
+
+export const entranceAnimationDefaults = {
+    enable: false,
+    animation: {
+        Desktop: 'none',
+        Tablet: '',
+        Mobile: ''
+    },
+    duration: 'normal',
+    delay: ''
+}

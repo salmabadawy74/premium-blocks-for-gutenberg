@@ -21,6 +21,8 @@ module.exports = {
         'equal-height': path.resolve(__dirname, 'src/blocks/container/view.js'),
         'floating-effect': path.resolve(__dirname, 'src/global-features/floating-effect.js'),
         'floating-effect-front': path.resolve(__dirname, 'src/global-features/floating-effect-front.js'),
+        'entrance-animation': path.resolve(__dirname, 'src/global-features/entrance-animation.js'),
+        'entrance-animation-front': path.resolve(__dirname, 'src/global-features/entrance-animation-front.js'),
     },
     externals: {
         ...defaultConfig.externals,

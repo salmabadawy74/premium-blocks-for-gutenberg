@@ -1672,6 +1672,7 @@ function Responsive(props) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "entranceAnimationDefaults": () => (/* binding */ entranceAnimationDefaults),
 /* harmony export */   "floatingEffectDefaults": () => (/* binding */ floatingEffectDefaults)
 /* harmony export */ });
 const floatingEffectDefaults = {
@@ -1937,6 +1938,16 @@ const floatingEffectDefaults = {
   disableOnSafari: false,
   steps: 5,
   customSelector: ''
+};
+const entranceAnimationDefaults = {
+  enable: false,
+  animation: {
+    Desktop: 'none',
+    Tablet: '',
+    Mobile: ''
+  },
+  duration: 'normal',
+  delay: ''
 };
 
 /***/ }),
