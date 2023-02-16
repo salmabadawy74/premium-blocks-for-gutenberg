@@ -39,7 +39,7 @@ const attributes = {
         "type": "array",
         "default": [
             {
-                "iconn": "fe_aperture",
+                "iconn": "dashicons admin-site",
                 "link": "",
                 "target": "_self",
                 "size": "40",
@@ -51,7 +51,7 @@ const attributes = {
     },
     "icon": {
         "type": "string",
-        "default": "fe_aperture"
+        "default": "dashicons admin-site"
     },
     "iconPosition": {
         "type": "string",
@@ -576,7 +576,7 @@ const deprecated = {
         let newAttributes = {
             "icons": [
                 {
-                    "iconn": attributes.icon ? attributes.icon : "fe_aperture",
+                    "iconn": attributes.icon ? attributes.icon : "dashicons admin-site",
                     "link": "",
                     "target": "_self",
                     "size": "40",
@@ -585,7 +585,7 @@ const deprecated = {
                     "style": "default"
                 }
             ],
-            icon: attributes.icon ? attributes.icon : "fe_aperture"
+            icon: attributes.icon ? attributes.icon : "dashicons admin-site"
         }
         return Object.assign(attributes, newAttributes)
     },

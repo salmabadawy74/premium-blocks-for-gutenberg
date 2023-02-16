@@ -1836,7 +1836,7 @@ const v3Attributes = {
                 "triggerType": "button",
                 "btnText": "Premium Blocks",
                 "showIcon": false,
-                "icon": "fe_aperture",
+                "icon": "dashicons admin-site",
                 "iconType": "fe",
                 "iconPosition": "before",
                 "iconSpacing": "",
@@ -1856,7 +1856,7 @@ const v3Attributes = {
         "type": "array",
         "default": [
             {
-                "iconn": "fe_aperture",
+                "iconn": "dashicons admin-site",
                 "link": "",
                 "target": "_self",
                 "size": "25",
@@ -2362,7 +2362,7 @@ const deprecated = [
                         "triggerType": attributes.triggerSettings[0].triggerType ? attributes.triggerSettings[0].triggerType : "button",
                         "btnText": attributes.triggerSettings[0].btnText ? attributes.triggerSettings[0].btnText : "Premium Blocks",
                         "showIcon": attributes.triggerSettings[0].showIcon ? attributes.triggerSettings[0].showIcon : false,
-                        "icon": attributes.triggerSettings[0].icon ? attributes.triggerSettings[0].icon : "fe_aperture",
+                        "icon": attributes.triggerSettings[0].icon ? attributes.triggerSettings[0].icon : "dashicons admin-site",
                         "iconType": "fe",
                         "iconPosition": attributes.triggerSettings[0].iconPosition ? attributes.triggerSettings[0].iconPosition : "before",
                         "iconSpacing": attributes.triggerSettings[0].iconSpacing ? attributes.triggerSettings[0].iconSpacing : "",
@@ -2379,7 +2379,7 @@ const deprecated = [
                 ],
                 "icons": [
                     {
-                        "iconn": attributes.triggerSettings[0].icon ? attributes.triggerSettings[0].icon : "fe_aperture",
+                        "iconn": attributes.triggerSettings[0].icon ? attributes.triggerSettings[0].icon : "dashicons admin-site",
                         "link": "",
                         "target": "_self",
                         "size": attributes.triggerIconSize['Desktop'] || "25",

@@ -1425,7 +1425,7 @@ const v10Attributes = {
         "type": "array",
         "default": [
             {
-                "iconn": "fe_aperture",
+                "iconn": "dashicons admin-site",
                 "link": "",
                 "target": "_self",
                 "size": "50",
@@ -1437,7 +1437,7 @@ const v10Attributes = {
     },
     "selectedIcon": {
         "type": "string",
-        "default": "fe_aperture"
+        "default": "dashicons admin-site"
     },
     "iconAlign": {
         "type": "object",
@@ -1751,7 +1751,7 @@ const deprecatedContent = [
             let newAttributes = {
                 "icons": [
                     {
-                        "iconn": attributes.selectedIcon ? attributes.selectedIcon : "fe_aperture",
+                        "iconn": attributes.selectedIcon ? attributes.selectedIcon : "dashicons admin-site",
                         "link": "",
                         "target": "_self",
                         "size": attributes.iconSize['Desktop'] ? attributes.iconSize['Desktop'] : "50",
@@ -1760,7 +1760,7 @@ const deprecatedContent = [
                         "style": "default"
                     }
                 ],
-                selectedIcon: attributes.selectedIcon ? attributes.selectedIcon : "fe_aperture",
+                selectedIcon: attributes.selectedIcon ? attributes.selectedIcon : "dashicons admin-site",
                 "iconSize": {
                     "Desktop": attributes.iconSize['Desktop'] ? attributes.iconSize['Desktop'] : "50",
                     "Tablet": attributes.iconSize['Tablet'] ? attributes.iconSize['Tablet'] : "",

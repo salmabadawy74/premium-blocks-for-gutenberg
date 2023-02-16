@@ -31,7 +31,7 @@
                     "triggerType": "button",
                     "btnText": "Premium Blocks",
                     "showIcon": false,
-                    "icon": "fe_aperture",
+                    "icon": "dashicons admin-site",
                     "iconType": "fe",
                     "iconPosition": "before",
                     "iconSpacing": "",
@@ -51,7 +51,7 @@
             "type": "array",
             "default": [
                 {
-                    "iconn": "fe_aperture",
+                    "iconn": "dashicons admin-site",
                     "link": "",
                     "target": "_self",
                     "size": "25",

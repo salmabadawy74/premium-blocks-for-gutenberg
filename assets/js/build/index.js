@@ -3174,7 +3174,7 @@ const v3Attributes = {
       "triggerType": "button",
       "btnText": "Premium Blocks",
       "showIcon": false,
-      "icon": "fe_aperture",
+      "icon": "dashicons admin-site",
       "iconType": "fe",
       "iconPosition": "before",
       "iconSpacing": "",
@@ -3192,7 +3192,7 @@ const v3Attributes = {
   "icons": {
     "type": "array",
     "default": [{
-      "iconn": "fe_aperture",
+      "iconn": "dashicons admin-site",
       "link": "",
       "target": "_self",
       "size": "25",
@@ -3690,7 +3690,7 @@ const deprecated = [{
         "triggerType": attributes.triggerSettings[0].triggerType ? attributes.triggerSettings[0].triggerType : "button",
         "btnText": attributes.triggerSettings[0].btnText ? attributes.triggerSettings[0].btnText : "Premium Blocks",
         "showIcon": attributes.triggerSettings[0].showIcon ? attributes.triggerSettings[0].showIcon : false,
-        "icon": attributes.triggerSettings[0].icon ? attributes.triggerSettings[0].icon : "fe_aperture",
+        "icon": attributes.triggerSettings[0].icon ? attributes.triggerSettings[0].icon : "dashicons admin-site",
         "iconType": "fe",
         "iconPosition": attributes.triggerSettings[0].iconPosition ? attributes.triggerSettings[0].iconPosition : "before",
         "iconSpacing": attributes.triggerSettings[0].iconSpacing ? attributes.triggerSettings[0].iconSpacing : "",
@@ -3705,7 +3705,7 @@ const deprecated = [{
         "delayTime": attributes.triggerSettings[0].delayTime ? attributes.triggerSettings[0].delayTime : 1
       }],
       "icons": [{
-        "iconn": attributes.triggerSettings[0].icon ? attributes.triggerSettings[0].icon : "fe_aperture",
+        "iconn": attributes.triggerSettings[0].icon ? attributes.triggerSettings[0].icon : "dashicons admin-site",
         "link": "",
         "target": "_self",
         "size": attributes.triggerIconSize['Desktop'] || "25",
@@ -16679,7 +16679,7 @@ const v8Attrinutes = {
   },
   "icon": {
     "type": "string",
-    "default": "fe_aperture"
+    "default": "dashicons admin-site"
   },
   "iconType": {
     "type": "string",
@@ -16688,7 +16688,7 @@ const v8Attrinutes = {
   "icons": {
     "type": "array",
     "default": [{
-      "iconn": "fe_aperture",
+      "iconn": "dashicons admin-site",
       "link": "",
       "target": "_self",
       "size": "25",
@@ -16929,9 +16929,9 @@ const deprecatedContent = [{
   attributes: Object.assign(new_Attributes, v8Attrinutes),
   migrate: attributes => {
     let newAttributes = {
-      icon: attributes.icon ? attributes.icon : "fe_aperture",
+      icon: attributes.icon ? attributes.icon : "dashicons admin-site",
       icons: [{
-        "iconn": attributes.icon ? attributes.icon : "fe_aperture",
+        "iconn": attributes.icon ? attributes.icon : "dashicons admin-site",
         "link": "",
         "target": "_self",
         "size": attributes.iconSize['Desktop'] ? attributes.iconSize['Desktop'] : "25",
@@ -36103,7 +36103,7 @@ const attributes = {
   "icons": {
     "type": "array",
     "default": [{
-      "iconn": "fe_aperture",
+      "iconn": "dashicons admin-site",
       "link": "",
       "target": "_self",
       "size": "40",
@@ -36114,7 +36114,7 @@ const attributes = {
   },
   "icon": {
     "type": "string",
-    "default": "fe_aperture"
+    "default": "dashicons admin-site"
   },
   "iconPosition": {
     "type": "string",
@@ -36631,7 +36631,7 @@ const deprecated = {
   migrate: attributes => {
     let newAttributes = {
       "icons": [{
-        "iconn": attributes.icon ? attributes.icon : "fe_aperture",
+        "iconn": attributes.icon ? attributes.icon : "dashicons admin-site",
         "link": "",
         "target": "_self",
         "size": "40",
@@ -36639,7 +36639,7 @@ const deprecated = {
         "title": "",
         "style": "default"
       }],
-      icon: attributes.icon ? attributes.icon : "fe_aperture"
+      icon: attributes.icon ? attributes.icon : "dashicons admin-site"
     };
     return Object.assign(attributes, newAttributes);
   },
@@ -44528,7 +44528,7 @@ const v10Attributes = {
   "icons": {
     "type": "array",
     "default": [{
-      "iconn": "fe_aperture",
+      "iconn": "dashicons admin-site",
       "link": "",
       "target": "_self",
       "size": "50",
@@ -44539,7 +44539,7 @@ const v10Attributes = {
   },
   "selectedIcon": {
     "type": "string",
-    "default": "fe_aperture"
+    "default": "dashicons admin-site"
   },
   "iconAlign": {
     "type": "object",
@@ -44848,7 +44848,7 @@ const deprecatedContent = [{
   migrate: attributes => {
     let newAttributes = {
       "icons": [{
-        "iconn": attributes.selectedIcon ? attributes.selectedIcon : "fe_aperture",
+        "iconn": attributes.selectedIcon ? attributes.selectedIcon : "dashicons admin-site",
         "link": "",
         "target": "_self",
         "size": attributes.iconSize['Desktop'] ? attributes.iconSize['Desktop'] : "50",
@@ -44856,7 +44856,7 @@ const deprecatedContent = [{
         "title": "",
         "style": "default"
       }],
-      selectedIcon: attributes.selectedIcon ? attributes.selectedIcon : "fe_aperture",
+      selectedIcon: attributes.selectedIcon ? attributes.selectedIcon : "dashicons admin-site",
       "iconSize": {
         "Desktop": attributes.iconSize['Desktop'] ? attributes.iconSize['Desktop'] : "50",
         "Tablet": attributes.iconSize['Tablet'] ? attributes.iconSize['Tablet'] : "",
@@ -47331,7 +47331,7 @@ const newAttributes_v2 = {
     "type": "array",
     "default": [{
       "advancedBorder": false,
-      "icon": "fe_aperture",
+      "icon": "dashicons admin-site",
       "iconColor": "",
       "iconBGColor": "",
       "iconColorHover": "",
@@ -47343,7 +47343,7 @@ const newAttributes_v2 = {
   "icons": {
     "type": "array",
     "default": [{
-      "iconn": "fe_aperture",
+      "iconn": "dashicons admin-site",
       "link": "",
       "target": "_self",
       "size": "200",
@@ -47471,7 +47471,7 @@ const deprecated = [{
   migrate: attributes => {
     let newAttributes = {
       "icons": [{
-        "iconn": "fe_aperture",
+        "iconn": "dashicons admin-site",
         "link": "",
         "target": "_self",
         "size": attributes.iconSize['Desktop'] ? attributes.iconSize['Desktop'] : "200",
@@ -47481,7 +47481,7 @@ const deprecated = [{
       }],
       "iconStyles": [{
         "advancedBorder": attributes.iconStyles[0].advancedBorder ? attributes.iconStyles[0].advancedBorder : false,
-        "icon": "fe_aperture",
+        "icon": "dashicons admin-site",
         "iconColor": attributes.iconStyles[0].iconColor ? attributes.iconStyles[0].iconColor : "",
         "iconBGColor": attributes.iconStyles[0].iconBGColor ? attributes.iconStyles[0].iconBGColor : "",
         "iconColorHover": attributes.iconStyles[0].iconColorHover ? attributes.iconStyles[0].iconColorHover : "",
@@ -99017,7 +99017,7 @@ function _unsupportedIterableToArray(o, minLen) {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"version":"0.1.0","name":"premium/button","title":"Button","description":"Add stylish buttons to your Gutenberg page using Premium Button Block.","category":"premium-blocks","keywords":["button"],"attributes":{"blockId":{"type":"string"},"borderButton":{"type":"boolean","default":false},"btnText":{"type":"string","default":"Premium Button"},"btnSize":{"type":"string","default":"md"},"btnAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"btnLink":{"type":"string","source":"attribute","attribute":"href","selector":".premium-button"},"btnTarget":{"type":"boolean","default":false},"showIcon":{"type":"boolean","default":false},"icon":{"type":"string","default":"fe_aperture"},"iconType":{"type":"string","default":"fe"},"icons":{"type":"array","default":[{"iconn":"fe_aperture","link":"","target":"_self","size":"25","width":"2","title":"","style":"default"}]},"iconPosition":{"type":"string","default":"before"},"effect":{"type":"string","default":"none"},"effectDir":{"type":"string","default":"top"},"slideColor":{"type":"string"},"block_id":{"type":"string"},"hideDesktop":{"type":"boolean","default":false},"classMigrate":{"type":"boolean","default":false},"hideTablet":{"type":"boolean","default":false},"hideMobile":{"type":"boolean","default":false},"btnStyles":{"type":"array","default":[{"textColor":"","textHoverColor":"","backColor":"","backOpacity":1,"backHoverColor":"","borderHoverColor":""}]},"border":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"typography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"textShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"boxShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}},"padding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"iconSize":{"type":"object","default":{"Desktop":"25","Tablet":"25","Mobile":"25","unit":"px"}},"iconSpacing":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"iconColor":{"type":"string","default":""},"iconHoverColor":{"type":"string","default":""},"backgroundOptions":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"center center","backgroundRepeat":"no-repeat","backgroundSize":"cover","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientType":"linear","gradientAngle":"180","gradientPosition":"center center"}},"backgroundPresets":{"type":"string","default":""}},"editorScript":"pbg-blocks-js","editorStyle":"premium-blocks-editor-css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"version":"0.1.0","name":"premium/button","title":"Button","description":"Add stylish buttons to your Gutenberg page using Premium Button Block.","category":"premium-blocks","keywords":["button"],"attributes":{"blockId":{"type":"string"},"borderButton":{"type":"boolean","default":false},"btnText":{"type":"string","default":"Premium Button"},"btnSize":{"type":"string","default":"md"},"btnAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"btnLink":{"type":"string","source":"attribute","attribute":"href","selector":".premium-button"},"btnTarget":{"type":"boolean","default":false},"showIcon":{"type":"boolean","default":false},"icon":{"type":"string","default":"dashicons admin-site"},"iconType":{"type":"string","default":"fe"},"icons":{"type":"array","default":[{"iconn":"dashicons admin-site","link":"","target":"_self","size":"25","width":"2","title":"","style":"default"}]},"iconPosition":{"type":"string","default":"before"},"effect":{"type":"string","default":"none"},"effectDir":{"type":"string","default":"top"},"slideColor":{"type":"string"},"block_id":{"type":"string"},"hideDesktop":{"type":"boolean","default":false},"classMigrate":{"type":"boolean","default":false},"hideTablet":{"type":"boolean","default":false},"hideMobile":{"type":"boolean","default":false},"btnStyles":{"type":"array","default":[{"textColor":"","textHoverColor":"","backColor":"","backOpacity":1,"backHoverColor":"","borderHoverColor":""}]},"border":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"typography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"textShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"boxShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}},"padding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"iconSize":{"type":"object","default":{"Desktop":"25","Tablet":"25","Mobile":"25","unit":"px"}},"iconSpacing":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"iconColor":{"type":"string","default":""},"iconHoverColor":{"type":"string","default":""},"backgroundOptions":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"center center","backgroundRepeat":"no-repeat","backgroundSize":"cover","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientType":"linear","gradientAngle":"180","gradientPosition":"center center"}},"backgroundPresets":{"type":"string","default":""}},"editorScript":"pbg-blocks-js","editorStyle":"premium-blocks-editor-css"}');
 
 /***/ }),
 

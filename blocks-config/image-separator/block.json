@@ -96,7 +96,7 @@
             "default": [
                 {
                     "advancedBorder": false,
-                    "icon": "fe_aperture",
+                    "icon": "dashicons admin-site",
                     "iconColor": "",
                     "iconBGColor": "",
                     "iconColorHover": "",
@@ -110,7 +110,7 @@
             "type": "array",
             "default": [
                 {
-                    "iconn": "fe_aperture",
+                    "iconn": "dashicons admin-site",
                     "link": "",
                     "target": "_self",
                     "size": "200",

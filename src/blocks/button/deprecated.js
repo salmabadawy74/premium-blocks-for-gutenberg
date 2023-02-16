@@ -409,7 +409,7 @@ const v8Attrinutes = {
     },
     "icon": {
         "type": "string",
-        "default": "fe_aperture"
+        "default": "dashicons admin-site"
     },
     "iconType": {
         "type": "string",
@@ -419,7 +419,7 @@ const v8Attrinutes = {
         "type": "array",
         "default": [
             {
-                "iconn": "fe_aperture",
+                "iconn": "dashicons admin-site",
                 "link": "",
                 "target": "_self",
                 "size": "25",
@@ -665,10 +665,10 @@ const deprecatedContent = [
         attributes: Object.assign(new_Attributes, v8Attrinutes),
         migrate: (attributes) => {
             let newAttributes = {
-                icon: attributes.icon ? attributes.icon : "fe_aperture",
+                icon: attributes.icon ? attributes.icon : "dashicons admin-site",
                 icons: [
                     {
-                        "iconn": attributes.icon ? attributes.icon : "fe_aperture",
+                        "iconn": attributes.icon ? attributes.icon : "dashicons admin-site",
                         "link": "",
                         "target": "_self",
                         "size": attributes.iconSize['Desktop'] ? attributes.iconSize['Desktop'] : "25",

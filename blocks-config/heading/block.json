@@ -46,7 +46,7 @@
             "type": "array",
             "default": [
                 {
-                    "iconn": "fe_aperture",
+                    "iconn": "dashicons admin-site",
                     "link": "",
                     "target": "_self",
                     "size": "40",
@@ -58,7 +58,7 @@
         },
         "icon": {
             "type": "string",
-            "default": "fe_aperture"
+            "default": "dashicons admin-site"
         },
         "iconPosition": {
             "type": "string",

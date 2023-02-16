@@ -350,7 +350,7 @@ const newAttributes_v2 = {
         "default": [
             {
                 "advancedBorder": false,
-                "icon": "fe_aperture",
+                "icon": "dashicons admin-site",
                 "iconColor": "",
                 "iconBGColor": "",
                 "iconColorHover": "",
@@ -364,7 +364,7 @@ const newAttributes_v2 = {
         "type": "array",
         "default": [
             {
-                "iconn": "fe_aperture",
+                "iconn": "dashicons admin-site",
                 "link": "",
                 "target": "_self",
                 "size": "200",
@@ -494,7 +494,7 @@ const deprecated = [
             let newAttributes = {
                 "icons": [
                     {
-                        "iconn": "fe_aperture",
+                        "iconn": "dashicons admin-site",
                         "link": "",
                         "target": "_self",
                         "size": attributes.iconSize['Desktop'] ? attributes.iconSize['Desktop'] : "200",
@@ -506,7 +506,7 @@ const deprecated = [
                 "iconStyles": [
                     {
                         "advancedBorder": attributes.iconStyles[0].advancedBorder ? attributes.iconStyles[0].advancedBorder : false,
-                        "icon": "fe_aperture",
+                        "icon": "dashicons admin-site",
                         "iconColor": attributes.iconStyles[0].iconColor ? attributes.iconStyles[0].iconColor : "",
                         "iconBGColor": attributes.iconStyles[0].iconBGColor ? attributes.iconStyles[0].iconBGColor : "",
                         "iconColorHover": attributes.iconStyles[0].iconColorHover ? attributes.iconStyles[0].iconColorHover : "",

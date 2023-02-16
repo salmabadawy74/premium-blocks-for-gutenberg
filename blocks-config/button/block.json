@@ -49,7 +49,7 @@
         },
         "icon": {
             "type": "string",
-            "default": "fe_aperture"
+            "default": "dashicons admin-site"
         },
         "iconType": {
             "type": "string",
@@ -59,7 +59,7 @@
             "type": "array",
             "default": [
                 {
-                    "iconn": "fe_aperture",
+                    "iconn": "dashicons admin-site",
                     "link": "",
                     "target": "_self",
                     "size": "25",
