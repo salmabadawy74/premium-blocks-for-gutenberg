@@ -5,7 +5,7 @@ Donate link: https://leap13.com
 Requires at least: 4.5
 Tested up to: 6.1
 Requires PHP: 5.4
-Stable tag: 2.0.11
+Stable tag: 2.0.12
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -71,6 +71,10 @@ No. You cannot use Premium Blocks without Gutenberg as it's a blocks plugin for 
 Yes it will work with any WordPress theme as long as you are using Gutenberg as a page editor.
 
 == Changelog ==
+= 2.0.12 =
+Fixed: Scroll issue in Premium Modal box Block.
+Fixed: Scroll issue in Premium container block with fixed background option.
+
 = 2.0.11 =
 New: New Global option to control the block spacing in editor area and frontend.
 New: Change Premium Modal Box Block to Powerful Nested Blocks.
