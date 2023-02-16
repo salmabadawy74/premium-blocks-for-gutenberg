@@ -191,10 +191,18 @@ class PBG_Blocks_Helper {
 				true
 			);
 
+			wp_enqueue_style(
+				'pbg-entrance-animation-css',
+				PREMIUM_BLOCKS_URL . 'assets/js/build/entrance-animation.css',
+				array(),
+				PREMIUM_BLOCKS_VERSION,
+				'all'
+			);
+
 			wp_localize_script(
 				'premium-entrance-animation-view',
 				'PBG_EntranceAnimation',
-				$this->floating_effect_blocks
+				$this->entrance_animation_blocks
 			);
 		}
 	}
@@ -213,6 +221,30 @@ class PBG_Blocks_Helper {
 			preg_match( '/<([\w]+)(?![^<]*(style|script))/', $block_content, $matches );
 			$parent_tag    = $matches[1];
 			$block_content = $this->str_replace_first( '<' . $parent_tag, '<' . $parent_tag . ' data-effect="' . $block['attrs']['floatingEffect']['clientId'] . '"', $block_content );
+		}
+
+		if ( $global_features['premium-entrance-animation'] && isset( $block['attrs']['entranceAnimation'] ) && $block['attrs']['entranceAnimation']['enable'] ) {
+			preg_match( '/<([\w]+)(?![^<]*(style|script))/', $block_content, $matches );
+			$parent_tag    = $matches[1];
+			$block_content = $this->str_replace_first( '<' . $parent_tag, '<' . $parent_tag . ' data-animation="' . $block['attrs']['entranceAnimation']['clientId'] . '"', $block_content );
+
+			preg_match( '/class=["\']([^"\']*)["\']/', $block_content, $classes_matches );
+			$class_attr = isset( $classes_matches[1] ) ? $classes_matches[1] : '';
+			if ( ! $class_attr ) {
+				$block_content = $this->str_replace_first( '<' . $parent_tag, '<' . $parent_tag . ' class="pbg-animated ' . $block['attrs']['entranceAnimation']['animation']['Desktop'] . '"', $block_content );
+
+				return $block_content;
+			}
+			if ( $class_attr ) {
+				// Add the new class to the existing class attribute value.
+				$new_class  = $block['attrs']['entranceAnimation']['animation']['Desktop'];
+				$class_attr = implode( ' ', array_unique( array_filter( array_merge( explode( ' ', $class_attr ), array( $new_class, 'pbg-animated' ) ) ) ) );
+
+				// Replace the class attribute in the opening tag.
+				$block_content = $this->str_replace_first( '<' . $parent_tag, '<' . $parent_tag . ' class="' . $class_attr . '"', $block_content );
+
+				return $block_content;
+			}
 		}
 
 		return $block_content;
@@ -281,6 +313,7 @@ class PBG_Blocks_Helper {
 		Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/blockseditor.min.css' );
 		Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/editorpanel.min.css' );
 		Pbg_Style_Generator::pbg_add_css( 'assets/js/build/pbg.css' );
+		Pbg_Style_Generator::pbg_add_css( 'assets/js/build/entrance-animation.css' );
 
 		$is_rtl = is_rtl() ? true : false;
 		$is_rtl ? Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/style-blocks-rtl.min.css' ) : '';

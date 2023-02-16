@@ -4,10 +4,11 @@ import { __ } from '@wordpress/i18n';
 import { addFilter } from '@wordpress/hooks';
 import { entranceAnimationDefaults } from "./helpers/defaults";
 import { useSelect } from '@wordpress/data';
-import { useState } from '@wordpress/element';
+import { Fragment } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
 import ResponsiveSelectControl from "../components/responsive-select-control";
 import { ResponsiveSingleRangeControl } from '@pbg/components';
+import './animation.scss';
 
 const EntranceAnimation = ({ value, onChange, deviceType }) => {
     const {
@@ -217,3 +218,34 @@ addFilter(
     addEntranceAnimationAttribute
 );
 
+const withClientId = createHigherOrderComponent(
+    (BlockListBlock) => {
+        return (props) => {
+            const { attributes, isSelected } = props;
+            const wrapperProps = {
+                ...props.wrapperProps,
+            };
+            const deviceType = useSelect((select) => {
+                const { __experimentalGetPreviewDeviceType = null } = select(
+                    "core/edit-post"
+                );
+                return __experimentalGetPreviewDeviceType
+                    ? __experimentalGetPreviewDeviceType()
+                    : "Desktop";
+            }, []);
+            if (attributes?.entranceAnimation?.enable) {
+                attributes.entranceAnimation.clientId = props.clientId.split("-")[4];
+                wrapperProps.className = attributes.entranceAnimation.animation?.[deviceType] !== 'none' ? attributes.entranceAnimation.animation?.[deviceType] : '';
+            }
+
+            return <BlockListBlock {...props} wrapperProps={wrapperProps} />;
+        };
+    },
+    'withClientId'
+);
+
+addFilter(
+    'editor.BlockListBlock',
+    'pbg/entrance-animation-client-id',
+    withClientId
+);
