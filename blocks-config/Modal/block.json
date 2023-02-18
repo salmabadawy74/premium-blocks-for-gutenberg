@@ -31,7 +31,8 @@
                     "triggerType": "button",
                     "btnText": "Premium Blocks",
                     "showIcon": false,
-                    "icon": "",
+                    "icon": "dashicons admin-site",
+                    "iconType": "fe",
                     "iconPosition": "before",
                     "iconSpacing": "",
                     "btnSize": "md",
@@ -43,6 +44,20 @@
                     "triggerReverseLottie": false,
                     "triggerPlayLottie": false,
                     "delayTime": 1
+                }
+            ]
+        },
+        "icons": {
+            "type": "array",
+            "default": [
+                {
+                    "iconn": "dashicons admin-site",
+                    "link": "",
+                    "target": "_self",
+                    "size": "25",
+                    "width": "2",
+                    "title": "",
+                    "style": "default"
                 }
             ]
         },
@@ -493,9 +508,9 @@
         "triggerIconSize": {
             "type": "object",
             "default": {
-                "Desktop": "",
-                "Tablet": "",
-                "Mobile": "",
+                "Desktop": "20",
+                "Tablet": "20",
+                "Mobile": "20",
                 "unit": "px"
             }
         },

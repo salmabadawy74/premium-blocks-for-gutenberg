@@ -36,6 +36,7 @@
     ul {
         padding: 0 !important;
         margin: 10px;
+
         li {
             margin-right: 10px;
         }
@@ -373,7 +374,7 @@
 }
 
 .premium-bullet-list-icon {
-    margin-right: 10px;
+    // margin-right: 10px;
 }
 
 .bullet-list-button-list {
@@ -575,7 +576,7 @@
         width: 50%;
     }
 
-    > div {
+    >div {
         margin: 0.2em 0 1.5em 0;
         z-index: 2;
     }

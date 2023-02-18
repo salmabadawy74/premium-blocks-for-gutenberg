@@ -11,14 +11,19 @@ import {
     InspectorTabs,
     InspectorTab,
     PremiumResponsiveTabs,
-    iconsList,
-    PremiumMediaUpload
+    PremiumMediaUpload,
+    GenIcon,
+    FaIco,
+    Ico,
+    IcoNames
 } from '@pbg/components';
 import { Fragment } from 'react';
 import classnames from "classnames";
 import { __ } from '@wordpress/i18n';
+const { withSelect } = wp.data;
 
-function Edit({ clientId, attributes, setAttributes, context }) {
+function Edit(props) {
+    const { setAttributes, clientId, context, attributes } = props;
     const {
         blockId,
         hideDesktop,
@@ -32,9 +37,10 @@ function Edit({ clientId, attributes, setAttributes, context }) {
         linkURL,
         openInNewTab,
         imageID,
-        imageURL
+        imageURL,
+        icons
     } = attributes;
-    const { layoutPos, divider } = context;
+    const { layoutPos, divider, bulletIconFontSize } = context;
 
     useEffect(() => {
         if (layoutPos !== attributes.layoutPos) {
@@ -43,7 +49,10 @@ function Edit({ clientId, attributes, setAttributes, context }) {
         if (divider !== attributes.divider) {
             setAttributes({ divider: divider });
         }
-    }, [layoutPos, divider]);
+        if (bulletIconFontSize !== attributes.bulletIconFontSize) {
+            setAttributes({ bulletIconFontSize: bulletIconFontSize });
+        }
+    }, [layoutPos, divider, bulletIconFontSize]);
 
     useEffect(() => {
         // Set block id.
@@ -70,6 +79,10 @@ function Edit({ clientId, attributes, setAttributes, context }) {
         setAttributes({ imageURL: '' });
         setAttributes({ imageID: '' });
     }
+
+    const renderSVG = svg => (
+        <GenIcon name={svg} icon={('fa' === svg.substring(0, 2) ? FaIco[svg] : Ico[svg])} />
+    );
 
     return <Fragment>
         <InspectorControls>
@@ -112,11 +125,18 @@ function Edit({ clientId, attributes, setAttributes, context }) {
                                     <div className='premium-blocks__base-control'>
                                         <span className='premium-control-title'>{__("Icon", 'premium-blocks-for-gutenberg')}</span>
                                         <FontIconPicker
-                                            icons={iconsList}
+                                            icons={IcoNames}
+                                            onChange={(newIcon) =>
+                                                setAttributes({ icon: newIcon })
+                                            }
+                                            renderFunc={renderSVG}
                                             value={icon}
-                                            onChange={valueIcon => setAttributes({ icon: valueIcon })}
                                             isMulti={false}
-                                            noSelectedPlaceholder={__("Select Icon", 'premium-blocks-for-gutenberg')}
+                                            // appendTo="body"
+                                            noSelectedPlaceholder={__(
+                                                "Select Icon",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
                                         />
                                     </div>
                                 )}
@@ -182,7 +202,14 @@ function Edit({ clientId, attributes, setAttributes, context }) {
                     <div className='premium-bullet-list__icon-wrap'>
                         {iconType === 'icon' && (
                             <span className='premium-bullet-list__content-icon'>
-                                <i className={icon} />
+                                {/* <i className={icon} /> */}
+                                <GenIcon className={`premium-bullet-list-icon ${icon}`}
+                                    name={icon}
+                                    size={bulletIconFontSize[props.deviceType] +
+                                        bulletIconFontSize.unit}
+                                    icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
+                                    strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
+                                />
                             </span>
                         )}
                         {iconType === 'image' && (
@@ -211,6 +238,14 @@ function Edit({ clientId, attributes, setAttributes, context }) {
     </Fragment>;
 }
 
-export default Edit
+export default withSelect((select) => {
+    const { __experimentalGetPreviewDeviceType = null } =
+        select("core/edit-post");
+    let deviceType = __experimentalGetPreviewDeviceType
+        ? __experimentalGetPreviewDeviceType()
+        : null;
 
-
+    return {
+        deviceType: deviceType,
+    };
+})(Edit);

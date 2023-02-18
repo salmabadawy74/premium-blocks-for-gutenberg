@@ -36,9 +36,23 @@
         "imageURL": {
             "type": "string"
         },
+        "icons": {
+            "type": "array",
+            "default": [
+                {
+                    "iconn": "dashicons admin-site",
+                    "link": "",
+                    "target": "_self",
+                    "size": "50",
+                    "width": "2",
+                    "title": "",
+                    "style": "default"
+                }
+            ]
+        },
         "selectedIcon": {
             "type": "string",
-            "default": "dashicons dashicons-admin-site"
+            "default": "dashicons admin-site"
         },
         "iconAlign": {
             "type": "object",
@@ -91,9 +105,9 @@
         "iconSize": {
             "type": "object",
             "default": {
-                "Desktop": "",
-                "Tablet": "",
-                "Mobile": "",
+                "Desktop": "50",
+                "Tablet": "50",
+                "Mobile": "50",
                 "unit": "px"
             }
         },
@@ -332,9 +346,9 @@
         "imgWidth": {
             "type": "object",
             "default": {
-                "Desktop": "",
-                "Tablet": "",
-                "Mobile": "",
+                "Desktop": "150",
+                "Tablet": "150",
+                "Mobile": "150",
                 "unit": "px"
             }
         },

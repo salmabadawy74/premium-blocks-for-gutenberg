@@ -366,7 +366,439 @@ const new_Attributes = {
     },
 };
 
+const v8Attrinutes = {
+    "blockId": {
+        "type": "string"
+    },
+    "borderButton": {
+        "type": "boolean",
+        "default": false
+    },
+    "btnText": {
+        "type": "string",
+        "default": "Premium Button"
+    },
+    "btnSize": {
+        "type": "string",
+        "default": "md"
+    },
+    "btnAlign": {
+        "type": "object",
+        "default": {
+            "Desktop": "center",
+            "Tablet": "center",
+            "Mobile": "center"
+        }
+    },
+    "btnLink": {
+        "type": "string",
+        "source": "attribute",
+        "attribute": "href",
+        "selector": ".premium-button"
+    },
+    "btnTarget": {
+        "type": "boolean",
+        "default": false
+    },
+    "showIcon": {
+        "type": "boolean",
+        "default": false
+    },
+    "icon": {
+        "type": "string",
+        "default": "dashicons admin-site"
+    },
+    "iconType": {
+        "type": "string",
+        "default": "fe"
+    },
+    "icons": {
+        "type": "array",
+        "default": [
+            {
+                "iconn": "dashicons admin-site",
+                "link": "",
+                "target": "_self",
+                "size": "25",
+                "width": "2",
+                "title": "",
+                "style": "default"
+            }
+        ]
+    },
+    "iconPosition": {
+        "type": "string",
+        "default": "before"
+    },
+    "effect": {
+        "type": "string",
+        "default": "none"
+    },
+    "effectDir": {
+        "type": "string",
+        "default": "top"
+    },
+    "slideColor": {
+        "type": "string"
+    },
+    "block_id": {
+        "type": "string"
+    },
+    "hideDesktop": {
+        "type": "boolean",
+        "default": false
+    },
+    "classMigrate": {
+        "type": "boolean",
+        "default": false
+    },
+    "hideTablet": {
+        "type": "boolean",
+        "default": false
+    },
+    "hideMobile": {
+        "type": "boolean",
+        "default": false
+    },
+    "btnStyles": {
+        "type": "array",
+        "default": [
+            {
+                "textColor": "",
+                "textHoverColor": "",
+                "backColor": "",
+                "backOpacity": 1,
+                "backHoverColor": "",
+                "borderHoverColor": ""
+            }
+        ]
+    },
+    "border": {
+        "type": "object",
+        "default": {
+            "borderType": "none",
+            "borderColor": "",
+            "borderWidth": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            },
+            "borderRadius": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            }
+        }
+    },
+    "typography": {
+        "type": "object",
+        "default": {
+            "fontWeight": "Default",
+            "fontStyle": "",
+            "letterSpacing": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            },
+            "fontFamily": "Default",
+            "lineHeight": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            },
+            "textDecoration": "",
+            "textTransform": "",
+            "fontSize": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            }
+        }
+    },
+    "textShadow": {
+        "type": "object",
+        "default": {
+            "color": "undefined",
+            "blur": "10",
+            "horizontal": "0",
+            "vertical": "0"
+        }
+    },
+    "boxShadow": {
+        "type": "object",
+        "default": {
+            "color": "undefined",
+            "blur": "10",
+            "horizontal": "0",
+            "vertical": "0",
+            "position": ""
+        }
+    },
+    "padding": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "iconSize": {
+        "type": "object",
+        "default": {
+            "Desktop": "25",
+            "Tablet": "25",
+            "Mobile": "25",
+            "unit": "px"
+        }
+    },
+    "iconSpacing": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "iconColor": {
+        "type": "string",
+        "default": ""
+    },
+    "iconHoverColor": {
+        "type": "string",
+        "default": ""
+    },
+    "backgroundOptions": {
+        "type": "object",
+        "default": {
+            "backgroundType": "",
+            "backgroundColor": "",
+            "backgroundImageID": "",
+            "backgroundImageURL": "",
+            "backgroundPosition": "center center",
+            "backgroundRepeat": "no-repeat",
+            "backgroundSize": "cover",
+            "fixed": false,
+            "gradientLocationOne": "0",
+            "gradientColorTwo": "",
+            "gradientLocationTwo": "100",
+            "gradientType": "linear",
+            "gradientAngle": "180",
+            "gradientPosition": "center center"
+        }
+    },
+    "backgroundPresets": {
+        "type": "string",
+        "default": ""
+    }
+}
+
 const deprecatedContent = [
+    {
+        attributes: Object.assign(new_Attributes, v8Attrinutes),
+        migrate: (attributes) => {
+            let newAttributes = {
+                icon: attributes.icon ? attributes.icon : "dashicons admin-site",
+                icons: [
+                    {
+                        "iconn": attributes.icon ? attributes.icon : "dashicons admin-site",
+                        "link": "",
+                        "target": "_self",
+                        "size": attributes.iconSize['Desktop'] ? attributes.iconSize['Desktop'] : "25",
+                        "width": "2",
+                        "title": "",
+                        "style": "default"
+                    }
+                ],
+                iconType: "fe"
+            };
+            return Object.assign(attributes, newAttributes);
+        },
+        save: (props) => {
+            const { className } = props;
+            const {
+                btnText,
+                btnSize,
+                btnLink,
+                btnTarget,
+                effect,
+                effectDir,
+                slideColor,
+                block_id,
+                hideDesktop,
+                hideTablet,
+                hideMobile,
+                btnStyles,
+                border,
+                typography,
+                textShadow,
+                boxShadow,
+                blockId,
+                showIcon,
+                icon,
+                iconPosition,
+                iconColor,
+                iconHoverColor,
+                iconShadow,
+                backgroundOptions,
+            } = props.attributes;
+            const loadStyles = () => {
+                const styles = {};
+
+                styles[`.${blockId} .premium-button-icon:hover`] = {
+                    color: `${iconHoverColor}!important`,
+                };
+                styles[`.${blockId}.premium-button__wrap .premium-button:hover`] = {
+                    "background-color": `${btnStyles[0].backHoverColor}!important`,
+                    color: `${btnStyles[0].textHoverColor}!important`,
+                    "border-color": `${btnStyles[0].borderHoverColor}!important`,
+                };
+                styles[`.${blockId}.premium-button__wrap .premium-button:hover a`] = {
+                    color: `${btnStyles[0].textHoverColor}!important`,
+                };
+
+                styles[
+                    `.${blockId}.premium-button__slide .premium-button::before, .${blockId}.premium-button__shutter .premium-button::before, .${blockId}.premium-button__radial .premium-button::before`
+                ] = {
+                    "background-color": `${slideColor}`,
+                };
+
+                return generateCss(styles);
+            };
+
+            return (
+                <div
+                    {...useBlockProps.save({
+                        className: classnames(
+                            className,
+                            `premium-button__wrap ${blockId} premium-button__${effect} premium-button__${effectDir} `,
+                            {
+                                " premium-desktop-hidden": hideDesktop,
+                                " premium-tablet-hidden": hideTablet,
+                                " premium-mobile-hidden": hideMobile,
+                            }
+                        ),
+                    })}
+                >
+                    <style>{loadStyles()}</style>
+                    {React.createElement(
+                        "div",
+                        {
+                            className: `premium-button wp-block-button__link premium-button__${btnSize} premium-button__${iconPosition}`,
+                            style: {
+                                boxShadow: `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`,
+                                borderStyle: border?.borderType,
+                                borderColor: border?.borderColor,
+                                ...gradientBackground(backgroundOptions),
+                            },
+                        },
+                        [
+                            <Fragment>
+                                {showIcon && iconPosition == "before" && (
+                                    <i
+                                        className={`premium-button-icon ${icon}`}
+                                        style={filterJsCss({
+                                            color: iconColor,
+                                            textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`,
+                                        })}
+                                    ></i>
+                                )}
+                                <RichText.Content
+                                    tagName="a"
+                                    value={btnText}
+                                    href={btnLink}
+                                    rel="noopener noreferrer"
+                                    target={btnTarget ? "_blank" : "_self"}
+                                    style={filterJsCss({
+                                        color: btnStyles[0].textColor,
+                                        fontStyle: typography?.fontStyle,
+                                        fontFamily: typography?.fontFamily,
+                                        fontWeight: typography?.fontWeight,
+                                        textDecoration: typography?.textDecoration,
+                                        textTransform: typography?.textTransform,
+                                        textShadow: `${textShadow?.horizontal}px ${textShadow?.vertical}px ${textShadow?.blur}px ${textShadow?.color}`,
+                                    })}
+                                />
+                                {showIcon && iconPosition == "after" && (
+                                    <i
+                                        className={`premium-button-icon ${icon}`}
+                                        style={filterJsCss({
+                                            color: iconColor,
+                                            textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`,
+                                        })}
+                                    ></i>
+                                )}
+                            </Fragment>,
+                        ]
+                    )}
+                </div>
+            );
+        },
+    },
     {
         attributes: Object.assign(v7Attrinutes, new_Attributes),
         save: (props) => {

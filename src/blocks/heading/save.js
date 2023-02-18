@@ -1,5 +1,10 @@
 import classnames from "classnames";
 import { generateCss, filterJsCss } from "@pbg/helpers";
+import {
+    GenIcon,
+    FaIco,
+    Ico
+} from "@pbg/components";
 const { Fragment } = wp.element;
 const { RichText, useBlockProps } = wp.blockEditor;
 export default function save(props) {
@@ -38,11 +43,11 @@ export default function save(props) {
         hideDesktop,
         hideTablet,
         hideMobile,
-        iconshadow,
         textBackshadow,
         textTypography,
         titleTypography,
         titleShadow,
+        icons
     } = attributes;
 
     const styleContainer = title.split("").map((letter) => {
@@ -218,8 +223,7 @@ export default function save(props) {
             "background-attachment": `${iconBackground.fixed ? "fixed" : "unset"
                 } !important`,
             "border-color": `${iconBorder.borderColor}!important`,
-            "border-style": `${iconBorder.borderType}!important`,
-            "text-shadow": `${iconshadow.horizontal}px ${iconshadow.vertical}px ${iconshadow.blur}px ${iconshadow.color} !important`,
+            "border-style": `${iconBorder.borderType}!important`
         };
 
         styles[`.${blockId} .premium-title-bg-text:before`] = {
@@ -325,8 +329,10 @@ export default function save(props) {
                                         >
                                             {iconValue &&
                                                 iconType == "icon" && (
-                                                    <i
-                                                        className={`premium-title-icon ${icon}`}
+                                                    <GenIcon className={`premium-title-icon ${icon}`}
+                                                        name={icon}
+                                                        icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
+                                                        strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
                                                     />
                                                 )}
                                             {iconValue &&
@@ -372,8 +378,10 @@ export default function save(props) {
                                 ) : style === "style9" ? (
                                     <Fragment>
                                         {iconValue && iconType == "icon" && (
-                                            <i
-                                                className={`premium-title-icon ${icon}`}
+                                            <GenIcon className={`premium-title-icon ${icon}`}
+                                                name={icon}
+                                                icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
+                                                strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
                                             />
                                         )}
                                         {iconValue && iconType == "image" && (
@@ -402,39 +410,41 @@ export default function save(props) {
                                         </span>
                                     </Fragment>
                                 ) : (
-                                            <Fragment>
-                                                {iconValue && iconType == "icon" && (
-                                                    <i
-                                                        className={`premium-title-icon ${icon}`}
-                                                    />
-                                                )}
-                                                {iconValue && iconType == "image" && (
-                                                    <img
-                                                        className={`premium-title-icon`}
-                                                        src={imageURL}
-                                                    />
-                                                )}
-                                                {iconValue && iconType == "lottie" && (
-                                                    <div
-                                                        className="premium-title-icon premium-lottie-animation"
-                                                        data-loop={loop}
-                                                        data-lottieurl={`${lottieURl}`}
-                                                        data-reverse={reversedir}
-                                                        data-trigger={"none"}
-                                                    ></div>
-                                                )}
-                                                <RichText.Content
-                                                    tagName="span"
-                                                    className={`premium-title-text-title`}
-                                                    value={title}
-                                                    style={filterJsCss({
-                                                        minHeight: "15px",
-                                                        color: titleStyles[0].titleColor,
-                                                        textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`,
-                                                    })}
-                                                />
-                                            </Fragment>
+                                    <Fragment>
+                                        {iconValue && iconType == "icon" && (
+                                            <GenIcon className={`premium-title-icon ${icon}`}
+                                                name={icon}
+                                                icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
+                                                strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
+                                            />
                                         )}
+                                        {iconValue && iconType == "image" && (
+                                            <img
+                                                className={`premium-title-icon`}
+                                                src={imageURL}
+                                            />
+                                        )}
+                                        {iconValue && iconType == "lottie" && (
+                                            <div
+                                                className="premium-title-icon premium-lottie-animation"
+                                                data-loop={loop}
+                                                data-lottieurl={`${lottieURl}`}
+                                                data-reverse={reversedir}
+                                                data-trigger={"none"}
+                                            ></div>
+                                        )}
+                                        <RichText.Content
+                                            tagName="span"
+                                            className={`premium-title-text-title`}
+                                            value={title}
+                                            style={filterJsCss({
+                                                minHeight: "15px",
+                                                color: titleStyles[0].titleColor,
+                                                textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`,
+                                            })}
+                                        />
+                                    </Fragment>
+                                )}
                                 {link && url !== " " && (
                                     <a
                                         rel="noopener noreferrer"

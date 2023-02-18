@@ -18,6 +18,10 @@ import {
     PremiumFilters,
     PremiumBackgroundControl,
     PremiumTypo,
+    GenIcon,
+    FaIco,
+    Ico,
+    IcoNames
 } from "@pbg/components";
 import { JsonUploadEnabled } from "@pbg/settings";
 
@@ -270,17 +274,9 @@ const Inspector = ({ attributes, setAttributes }) => {
         });
     };
 
-    const saveModalStyles = (value) => {
-        const newUpdate = modalStyles.map((item, modalIndex) => {
-            if (0 === modalIndex) {
-                item = { ...item, ...value };
-            }
-            return item;
-        });
-        setAttributes({
-            modalStyles: newUpdate,
-        });
-    };
+    const renderSVG = svg => (
+        <GenIcon name={svg} icon={('fa' === svg.substring(0, 2) ? FaIco[svg] : Ico[svg])} />
+    );
 
     return (
         <InspectorControls key={"inspector"}>
@@ -367,12 +363,11 @@ const Inspector = ({ attributes, setAttributes }) => {
                                 {triggerSettings[0].showIcon && (
                                     <Fragment>
                                         <FontIconPicker
-                                            icons={iconsList}
+                                            icons={IcoNames}
                                             onChange={(newIcon) =>
-                                                saveTriggerSettings({
-                                                    icon: newIcon,
-                                                })
+                                                saveTriggerSettings({ icon: newIcon, iconType: newIcon.substring(0, 2) })
                                             }
+                                            renderFunc={renderSVG}
                                             value={triggerSettings[0].icon}
                                             isMulti={false}
                                             noSelectedPlaceholder={__(
@@ -494,21 +489,21 @@ const Inspector = ({ attributes, setAttributes }) => {
                                 {JsonUploadEnabled == 1 ? (
                                     ""
                                 ) : (
-                                        <p>
-                                            {__(
-                                                'Make Sure that allow "JSON file Upload " from ',
-                                                "premium-blocks-for-gutenberg"
-                                            )}{" "}
-                                            <ExternalLink
-                                                href={
-                                                    window.PremiumBlocksSettings
-                                                        .settingPath
-                                                }
-                                            >
-                                                plugin Settings
+                                    <p>
+                                        {__(
+                                            'Make Sure that allow "JSON file Upload " from ',
+                                            "premium-blocks-for-gutenberg"
+                                        )}{" "}
+                                        <ExternalLink
+                                            href={
+                                                window.PremiumBlocksSettings
+                                                    .settingPath
+                                            }
+                                        >
+                                            plugin Settings
                                         </ExternalLink>
-                                        </p>
-                                    )}
+                                    </p>
+                                )}
                                 <ToggleControl
                                     label={__(
                                         "Loop",

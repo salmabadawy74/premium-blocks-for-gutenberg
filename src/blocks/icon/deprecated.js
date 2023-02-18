@@ -1395,8 +1395,501 @@ const v9Attributes = {
     }
 }
 
+const v10Attributes = {
+    "blockId": {
+        "type": "string"
+    },
+    "classMigrate": {
+        "type": "boolean",
+        "default": false
+    },
+    "wrapBorder": {
+        "type": "boolean",
+        "default": false
+    },
+    "iconType": {
+        "type": "string",
+        "default": "dash"
+    },
+    "iconTypeFile": {
+        "type": "string",
+        "default": "icon"
+    },
+    "imageID": {
+        "type": "string"
+    },
+    "imageURL": {
+        "type": "string"
+    },
+    "icons": {
+        "type": "array",
+        "default": [
+            {
+                "iconn": "dashicons admin-site",
+                "link": "",
+                "target": "_self",
+                "size": "50",
+                "width": "2",
+                "title": "",
+                "style": "default"
+            }
+        ]
+    },
+    "selectedIcon": {
+        "type": "string",
+        "default": "dashicons admin-site"
+    },
+    "iconAlign": {
+        "type": "object",
+        "default": {
+            "Desktop": "center",
+            "Tablet": "center",
+            "Mobile": "center"
+        }
+    },
+    "hoverEffect": {
+        "type": "string",
+        "default": "none"
+    },
+    "hoversEffect": {
+        "type": "string"
+    },
+    "iconStyles": {
+        "type": "array",
+        "default": [
+            {
+                "iconColor": "",
+                "iconBack": "",
+                "iconHoverColor": "",
+                "iconHoverBack": "",
+                "iconOpacity": "1"
+            }
+        ]
+    },
+    "urlCheck": {
+        "type": "boolean"
+    },
+    "link": {
+        "type": "string"
+    },
+    "target": {
+        "type": "boolean"
+    },
+    "hideDesktop": {
+        "type": "boolean",
+        "default": ""
+    },
+    "hideTablet": {
+        "type": "boolean",
+        "default": ""
+    },
+    "hideMobile": {
+        "type": "boolean",
+        "default": ""
+    },
+    "iconSize": {
+        "type": "object",
+        "default": {
+            "Desktop": "50",
+            "Tablet": "",
+            "Mobile": "",
+            "unit": "px"
+        }
+    },
+    "iconMargin": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "iconPadding": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "wrapMargin": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "wrapPadding": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "iconBorder": {
+        "type": "object",
+        "default": {
+            "borderColor": "",
+            "borderType": "",
+            "borderRadius": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            },
+            "borderWidth": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            }
+        }
+    },
+    "containerBorder": {
+        "type": "object",
+        "default": {
+            "borderColor": "",
+            "borderType": "none",
+            "borderRadius": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            },
+            "borderWidth": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            }
+        }
+    },
+    "containerBackground": {
+        "type": "object",
+        "default": {
+            "backgroundType": "",
+            "backgroundColor": "",
+            "backgroundImageID": "",
+            "backgroundImageURL": "",
+            "backgroundPosition": "",
+            "backgroundRepeat": "",
+            "backgroundSize": "",
+            "fixed": false,
+            "gradientLocationOne": "0",
+            "gradientColorTwo": "",
+            "gradientLocationTwo": "100",
+            "gradientAngle": "180",
+            "gradientPosition": "center center",
+            "gradientType": "linear"
+        }
+    },
+    "containerShadow": {
+        "type": "object",
+        "default": {
+            "color": "undefined",
+            "blur": "10",
+            "horizontal": "0",
+            "vertical": "0",
+            "position": ""
+        }
+    },
+    "iconShadow": {
+        "type": "object",
+        "default": {
+            "color": "undefined",
+            "blur": "10",
+            "horizontal": "0",
+            "vertical": "0"
+        }
+    },
+    "borderHoverColor": {
+        "type": "string",
+        "default": ""
+    },
+    "imgWidth": {
+        "type": "object",
+        "default": {
+            "Desktop": "150",
+            "Tablet": "150",
+            "Mobile": "150",
+            "unit": "px"
+        }
+    },
+    "svgUrl": {
+        "type": "string",
+        "default": ""
+    }
+}
+
 const deprecated_attributes = Object.assign(attributes, new_attributes);
 const deprecatedContent = [
+    {
+        attributes: Object.assign(attributes, v10Attributes),
+        migrate: (attributes) => {
+            let newAttributes = {
+                "icons": [
+                    {
+                        "iconn": attributes.selectedIcon ? attributes.selectedIcon : "dashicons admin-site",
+                        "link": "",
+                        "target": "_self",
+                        "size": attributes.iconSize['Desktop'] ? attributes.iconSize['Desktop'] : "50",
+                        "width": "2",
+                        "title": "",
+                        "style": "default"
+                    }
+                ],
+                selectedIcon: attributes.selectedIcon ? attributes.selectedIcon : "dashicons admin-site",
+                "iconSize": {
+                    "Desktop": attributes.iconSize['Desktop'] ? attributes.iconSize['Desktop'] : "50",
+                    "Tablet": attributes.iconSize['Tablet'] ? attributes.iconSize['Tablet'] : "",
+                    "Mobile": attributes.iconSize['Mobile'] ? attributes.iconSize['Mobile'] : "",
+                    "unit": attributes.iconSize['unit'] ? attributes.iconSize['unit'] : "px"
+                },
+                "imgWidth": {
+                    "Desktop": attributes.imgWidth['Desktop'] ? attributes.imgWidth['Desktop'] : "150",
+                    "Tablet": attributes.imgWidth['Tablet'] ? attributes.imgWidth['Tablet'] : "150",
+                    "Mobile": attributes.imgWidth['Mobile'] ? attributes.imgWidth['Mobile'] : "150",
+                    "unit": attributes.imgWidth['unit'] ? attributes.imgWidth['unit'] : "px"
+                },
+            }
+            return Object.assign(attributes, newAttributes)
+        },
+        save: props => {
+            const { attributes, className } = props;
+
+            const {
+                blockId,
+                iconBorder,
+                selectedIcon,
+                hoverEffect,
+                iconStyles,
+                urlCheck,
+                link,
+                target,
+                hideDesktop,
+                hideTablet,
+                hideMobile,
+                containerBorder,
+                containerBackground,
+                containerShadow,
+                iconShadow,
+                borderHoverColor,
+                iconTypeFile,
+                imageURL,
+                hoversEffect,
+                svgUrl
+            } = attributes;
+
+            const loadStyles = () => {
+                const styles = {};
+                styles[` .${blockId} .premium-icon-container .premium-icon-type:hover`] = {
+                    'color': `${iconStyles[0].iconHoverColor} !important`,
+                    fill: `${iconStyles[0].iconHoverColor} !important`,
+                    'background-color': `${iconStyles[0].iconHoverBack} !important`,
+                    "border-color": `${borderHoverColor}!important`
+                };
+                styles[` .${blockId} .premium-icon-container img`] = {
+                    'border-color': `${iconBorder && iconBorder.borderColor} !important`,
+                    'border-style': `${iconBorder && iconBorder.borderType} !important`,
+                };
+                styles[` .${blockId} .premium-icon-container svg`] = {
+                    fill: `${iconStyles[0].iconColor}`,
+                    'background-color': `${iconStyles[0].iconBack}`,
+                    'border-color': `${iconBorder && iconBorder.borderColor} !important`,
+                    'border-style': `${iconBorder && iconBorder.borderType} !important`,
+                };
+                styles[` .${blockId} .premium-icon-container svg path`] = {
+                    fill: `${iconStyles[0].iconColor}`,
+                };
+                styles[` .${blockId} .premium-icon-container .premium-icon-type:hover path`] = {
+                    fill: `${iconStyles[0].iconHoverColor} !important`
+                };
+                return generateCss(styles);
+            }
+
+            return (
+                <div
+                    {...useBlockProps.save({
+                        className: classnames(
+                            className,
+                            `premium-icon ${blockId} premium-icon__container`,
+                            {
+                                " premium-desktop-hidden": hideDesktop,
+                                " premium-tablet-hidden": hideTablet,
+                                " premium-mobile-hidden": hideMobile,
+                            }
+                        ),
+                    })}
+                    data-icontype={iconTypeFile}
+                >
+                    <style
+                        dangerouslySetInnerHTML={{
+                            __html: loadStyles()
+                        }}
+                    />
+                    <div
+                        className={`premium-icon-container`}
+                        style={filterJsCss({
+                            ...gradientBackground(containerBackground),
+                            borderStyle: containerBorder.borderType,
+                            borderColor: containerBorder.borderColor,
+                            boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`
+                        })}
+                    >
+                        <a
+                            className={`premium-icon__link`}
+                            href={urlCheck && link}
+                            rel="noopener noreferrer"
+                            target={target ? "_blank" : "_self"}
+                        >
+                            <div className={`premium-icon-content premium-icon__${hoverEffect !== "none" || !hoversEffect ? hoverEffect : hoversEffect}`}>
+                                {"icon" === iconTypeFile && <i
+                                    className={`premium-icon premium-icon-type ${selectedIcon}`}
+                                    style={filterJsCss({
+                                        cursor: urlCheck ? 'pointer' : 'default',
+                                        color: iconStyles[0].iconColor,
+                                        backgroundColor: iconStyles[0].iconBack,
+                                        borderStyle: iconBorder.borderType,
+                                        borderColor: iconBorder.borderColor,
+                                        textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`
+                                    })}
+                                />
+                                }
+                                {imageURL && "img" === iconTypeFile && (
+                                    <img src={imageURL} />
+                                )}
+                                {"svg" === iconTypeFile &&
+                                    <div id="premium-icon-svg" data-src={svgUrl}></div>
+                                }
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            );
+        }
+    },
     {
         attributes: Object.assign(attributes, v9Attributes),
         migrate: (attributes) => {

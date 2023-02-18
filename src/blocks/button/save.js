@@ -1,5 +1,10 @@
 import classnames from "classnames";
 import { generateCss, filterJsCss, gradientBackground } from "@pbg/helpers";
+import {
+    GenIcon,
+    FaIco,
+    Ico
+} from "@pbg/components";
 const { RichText, useBlockProps } = wp.blockEditor;
 const { Fragment } = wp.element;
 
@@ -13,7 +18,6 @@ const save = (props) => {
         effect,
         effectDir,
         slideColor,
-        block_id,
         hideDesktop,
         hideTablet,
         hideMobile,
@@ -28,30 +32,36 @@ const save = (props) => {
         iconPosition,
         iconColor,
         iconHoverColor,
-        iconShadow,
         backgroundOptions,
+        iconType,
+        icons
     } = props.attributes;
 
     const loadStyles = () => {
         const styles = {};
 
-        styles[`.${blockId} .premium-button-icon:hover`] = {
+        styles[`.${blockId}.premium-button__wrap .premium-button:hover .premium-button-icon`] = {
             color: `${iconHoverColor}!important`,
+        };
+        styles[`.${blockId}.premium-button__wrap .premium-button .premium-button-icon`] = {
+            color: `${iconColor}!important`,
         };
         styles[`.${blockId}.premium-button__wrap .premium-button:hover`] = {
             "background-color": `${btnStyles[0].backHoverColor}!important`,
-            color: `${btnStyles[0].textHoverColor}!important`,
             "border-color": `${btnStyles[0].borderHoverColor}!important`,
         };
-        styles[`.${blockId}.premium-button__wrap .premium-button:hover a`] = {
+        styles[`.${blockId}.premium-button__wrap .premium-button .premium-button-text-edit`] = {
+            color: `${btnStyles[0].textColor}!important`,
+        };
+        styles[`.${blockId}.premium-button__wrap .premium-button:hover .premium-button-text-edit`] = {
             color: `${btnStyles[0].textHoverColor}!important`,
         };
-
         styles[
             `.${blockId}.premium-button__slide .premium-button::before, .${blockId}.premium-button__shutter .premium-button::before, .${blockId}.premium-button__radial .premium-button::before`
         ] = {
             "background-color": `${slideColor}`,
         };
+
 
         return generateCss(styles);
     };
@@ -84,13 +94,14 @@ const save = (props) => {
                 [
                     <Fragment>
                         {showIcon && iconPosition == "before" && (
-                            <i
-                                className={`premium-button-icon ${icon}`}
+                            <GenIcon className={`premium-button-icon ${icon} ${iconType}`}
+                                name={icon}
+                                icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
+                                strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
                                 style={filterJsCss({
-                                    color: iconColor,
-                                    textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`,
+                                    color: iconColor
                                 })}
-                            ></i>
+                            />
                         )}
                         <RichText.Content
                             tagName="a"
@@ -109,13 +120,14 @@ const save = (props) => {
                             })}
                         />
                         {showIcon && iconPosition == "after" && (
-                            <i
-                                className={`premium-button-icon ${icon}`}
+                            <GenIcon className={`premium-button-icon ${icon} ${iconType}`}
+                                name={icon}
+                                icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
+                                strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
                                 style={filterJsCss({
-                                    color: iconColor,
-                                    textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`,
+                                    color: iconColor
                                 })}
-                            ></i>
+                            />
                         )}
                     </Fragment>,
                 ]

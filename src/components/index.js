@@ -29,3 +29,7 @@ export { default as PremiumUpperQuote } from "./testimonials/upper-quote";
 export { default as PBGPresets } from "./Presets";
 export { default as PremiumUploadSVG } from "./premium-upload-svg";
 export { default as PremiumVariation } from "./premium-variation";
+export { default as GenIcon } from "./genicon";
+export { default as IcoNames } from "./svgiconsnames";
+export { default as FaIco } from "./faicons";
+export { default as Ico } from "./svgicons";

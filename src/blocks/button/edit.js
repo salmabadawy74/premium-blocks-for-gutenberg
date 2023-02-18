@@ -26,8 +26,11 @@ import {
     PremiumBackgroundControl,
     InsideTabs,
     InsideTab,
-    iconsList,
     PBGPresets,
+    GenIcon,
+    FaIco,
+    Ico,
+    IcoNames
 } from "@pbg/components";
 
 const { __ } = wp.i18n;
@@ -74,9 +77,10 @@ function Edit(props) {
         iconSpacing,
         iconColor,
         iconHoverColor,
-        iconShadow,
         backgroundOptions,
         backgroundPresets,
+        icons,
+        iconType
     } = props.attributes;
 
     const SIZE = [
@@ -228,26 +232,40 @@ function Edit(props) {
     const loadStyles = () => {
         const styles = {};
 
-        styles[`.${blockId}:hover .premium-button-icon`] = {
+        styles[`.${blockId}.premium-button__wrap .premium-button:hover .premium-button-icon`] = {
             color: `${iconHoverColor}!important`,
+        };
+        styles[`.${blockId}.premium-button__wrap .premium-button .premium-button-icon`] = {
+            color: `${iconColor}!important`,
         };
         styles[`.${blockId}.premium-button__wrap .premium-button:hover`] = {
             "background-color": `${btnStyles[0].backHoverColor}!important`,
-            color: `${btnStyles[0].textHoverColor}!important`,
             "border-color": `${btnStyles[0].borderHoverColor}!important`,
         };
-        styles[`.${blockId}.premium-button__wrap .premium-button`] = {
+        styles[`.${blockId}.premium-button__wrap .premium-button .premium-button-text-edit`] = {
             color: `${btnStyles[0].textColor}!important`,
         };
-
+        styles[`.${blockId}.premium-button__wrap .premium-button:hover .premium-button-text-edit`] = {
+            color: `${btnStyles[0].textHoverColor}!important`,
+        };
         styles[
             `.${blockId}.premium-button__slide .premium-button::before, .${blockId}.premium-button__shutter .premium-button::before, .${blockId}.premium-button__radial .premium-button::before`
         ] = {
             "background-color": `${slideColor}`,
         };
 
+        styles[`.${blockId}.premium-button__wrap .premium-button-icon svg`] = {
+            width: `${iconSize[props.deviceType]}${iconSize.unit} !important`,
+            height: `${iconSize[props.deviceType]}${iconSize.unit} !important`,
+        };
+
         return generateCss(styles);
     };
+
+    const renderSVG = svg => (
+        <GenIcon name={svg} icon={('fa' === svg.substring(0, 2) ? FaIco[svg] : Ico[svg])} />
+    );
+
     return (
         <Fragment>
             <InspectorControls key={"inspector"}>
@@ -344,12 +362,14 @@ function Edit(props) {
                             {showIcon && (
                                 <Fragment>
                                     <FontIconPicker
-                                        icons={iconsList}
+                                        icons={IcoNames}
                                         onChange={(newIcon) =>
-                                            setAttributes({ icon: newIcon })
+                                            setAttributes({ icon: newIcon, iconType: newIcon.substring(0, 2) })
                                         }
+                                        renderFunc={renderSVG}
                                         value={icon}
                                         isMulti={false}
+                                        // appendTo="body"
                                         noSelectedPlaceholder={__(
                                             "Select Icon",
                                             "premium-blocks-for-gutenberg"
@@ -511,13 +531,13 @@ function Edit(props) {
                                             label={
                                                 "radial" !== effect
                                                     ? __(
-                                                          "Background Color",
-                                                          "premium-blocks-for-gutenberg"
-                                                      )
+                                                        "Background Color",
+                                                        "premium-blocks-for-gutenberg"
+                                                    )
                                                     : __(
-                                                          "Background Color",
-                                                          "premium-blocks-for-gutenberg"
-                                                      )
+                                                        "Background Color",
+                                                        "premium-blocks-for-gutenberg"
+                                                    )
                                             }
                                             colorValue={
                                                 btnStyles[0].backHoverColor
@@ -667,16 +687,6 @@ function Edit(props) {
                                         </Fragment>
                                     </InsideTab>
                                 </InsideTabs>
-                                <PremiumShadow
-                                    label={__(
-                                        "Shadow",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                    value={iconShadow}
-                                    onChange={(value) =>
-                                        setAttributes({ iconShadow: value })
-                                    }
-                                />
                                 <SpacingControl
                                     label={__(
                                         "Margin",
@@ -753,26 +763,22 @@ function Edit(props) {
                     [
                         <Fragment>
                             {showIcon && iconPosition == "before" && (
-                                <i
-                                    className={`premium-button-icon ${icon}`}
+                                <GenIcon className={`premium-button-icon ${icon} ${iconType}`}
+                                    name={icon}
+                                    size={iconSize[props.deviceType] +
+                                        iconSize.unit}
+                                    icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
+                                    strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
                                     style={{
                                         fontSize:
-                                            iconSize[props.deviceType] +
-                                            iconSize.unit,
-                                        width:
-                                            iconSize[props.deviceType] +
-                                            iconSize.unit,
-                                        height:
                                             iconSize[props.deviceType] +
                                             iconSize.unit,
                                         ...marginCss(
                                             iconSpacing,
                                             props.deviceType
-                                        ),
-                                        color: iconColor,
-                                        textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`,
+                                        )
                                     }}
-                                ></i>
+                                />
                             )}
                             <RichText
                                 value={btnText}
@@ -790,26 +796,22 @@ function Edit(props) {
                                 keepPlaceholderOnFocus
                             />
                             {showIcon && iconPosition == "after" && (
-                                <i
-                                    className={`premium-button-icon ${icon}`}
+                                <GenIcon className={`premium-button-icon ${icon} ${iconType}`}
+                                    name={icon}
+                                    size={iconSize[props.deviceType] +
+                                        iconSize.unit}
+                                    icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
+                                    strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
                                     style={{
                                         fontSize:
-                                            iconSize[props.deviceType] +
-                                            iconSize.unit,
-                                        width:
-                                            iconSize[props.deviceType] +
-                                            iconSize.unit,
-                                        height:
                                             iconSize[props.deviceType] +
                                             iconSize.unit,
                                         ...marginCss(
                                             iconSpacing,
                                             props.deviceType
-                                        ),
-                                        color: iconColor,
-                                        textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`,
+                                        )
                                     }}
-                                ></i>
+                                />
                             )}
                         </Fragment>,
                     ]
