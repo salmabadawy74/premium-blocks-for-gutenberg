@@ -34,9 +34,9 @@ $pbBackgroundColor: rgb(242, 242, 242);
 
     .premium-button-icon {
         vertical-align: middle;
-        font-size: 25px;
-        width: 25px;
-        height: 25px;
+        // font-size: 25px;
+        // width: 25px;
+        // height: 25px;
         margin: 0px;
     }
 
@@ -57,6 +57,7 @@ $pbBackgroundColor: rgb(242, 242, 242);
         }
     }
 }
+
 .wp-block-post-content {
     .premium-button {
         a {
@@ -66,6 +67,7 @@ $pbBackgroundColor: rgb(242, 242, 242);
         }
     }
 }
+
 .premium-button__before .premium-button-icon {
     margin-right: 15px;
 }
@@ -73,6 +75,7 @@ $pbBackgroundColor: rgb(242, 242, 242);
 .premium-button__after .premium-button-icon {
     margin-left: 15px;
 }
+
 .wp-block-button__link {
     &.premium-button__sm {
         padding: 12px 24px;
@@ -91,6 +94,7 @@ $pbBackgroundColor: rgb(242, 242, 242);
         font-size: 18px;
         line-height: 1.3333;
     }
+
     &.premium-button__block {
         font-size: 15px;
         line-height: 1;
@@ -99,26 +103,35 @@ $pbBackgroundColor: rgb(242, 242, 242);
         text-align: center;
     }
 }
+
 .editor-styles-wrapper {
-.wp-block-button__link {
-    &.premium-button__sm {
-        padding: 12px 24px;
-        font-size: 14px;
-        line-height: 1;
-    }
+    .wp-block-button__link {
+        &.premium-button__sm {
+            padding: 12px 24px;
+            font-size: 14px;
+            line-height: 1;
+        }
 
-    &.premium-button__md {
-        padding: 14px 26px;
-        font-size: 16px;
-        line-height: 1.2;
-    }
+        &.premium-button__md {
+            padding: 14px 26px;
+            font-size: 16px;
+            line-height: 1.2;
+        }
 
-    &.premium-button__lg {
-        padding: 16px 28px;
-        font-size: 18px;
-        line-height: 1.3333;
+        &.premium-button__lg {
+            padding: 16px 28px;
+            font-size: 18px;
+            line-height: 1.3333;
+        }
+
+        .fe svg {
+            fill: none !important;
+        }
+
+        .ic svg {
+            fill: currentColor !important;
+        }
     }
-}
 }
 
 
@@ -547,9 +560,9 @@ $pbBackgroundColor: rgb(242, 242, 242);
 
     .premium-button-icon {
         vertical-align: middle;
-        font-size: 30px;
-        width: 30px;
-        height: 30px;
+        // font-size: 30px;
+        // width: 30px;
+        // height: 30px;
     }
 
     a {

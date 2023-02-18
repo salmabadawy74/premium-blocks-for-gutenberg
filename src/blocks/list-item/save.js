@@ -1,6 +1,11 @@
 import { useBlockProps, RichText } from "@wordpress/block-editor";
 import classnames from "classnames";
 import { Fragment } from "react";
+import {
+    GenIcon,
+    FaIco,
+    Ico
+} from "@pbg/components";
 
 export default function save({ attributes }) {
     const {
@@ -17,7 +22,8 @@ export default function save({ attributes }) {
         openInNewTab,
         imageURL,
         divider,
-        layoutPos
+        layoutPos,
+        icons
     } = attributes;
 
     const blockProps = useBlockProps.save({
@@ -37,7 +43,11 @@ export default function save({ attributes }) {
 
                         {iconType === 'icon' && (
                             <span className='premium-bullet-list__content-icon'>
-                                <i className={icon} />
+                                <GenIcon className={`premium-bullet-list-icon ${icon}`}
+                                    name={icon}
+                                    icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
+                                    strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
+                                />
                             </span>
                         )}
                         {iconType === 'image' && (
@@ -62,6 +72,3 @@ export default function save({ attributes }) {
         )}
     </Fragment>;
 }
-
-
-

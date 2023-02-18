@@ -5,8 +5,12 @@
     "title": "List Item",
     "category": "premium-blocks",
     "description": "List Item Description.",
-    "parent": ["premium/bullet-list"],
-    "keywords": ["list-item"],
+    "parent": [
+        "premium/bullet-list"
+    ],
+    "keywords": [
+        "list-item"
+    ],
     "textdomain": "default",
     "attributes": {
         "blockId": {
@@ -37,7 +41,7 @@
         },
         "icon": {
             "type": "string",
-            "default": "fa fa-arrow-circle-right"
+            "default": "ic_circleRight"
         },
         "enableLink": {
             "type": "boolean",
@@ -63,7 +67,34 @@
         "divider": {
             "type": "boolean",
             "default": false
+        },
+        "bulletIconFontSize": {
+            "type": "object",
+            "default": {
+                "Desktop": 20,
+                "Tablet": 20,
+                "Mobile": 20,
+                "unit": "px"
+            }
+        },
+        "icons": {
+            "type": "array",
+            "default": [
+                {
+                    "iconn": "ic_circleRight",
+                    "link": "",
+                    "target": "_self",
+                    "size": "20",
+                    "width": "2",
+                    "title": "",
+                    "style": "default"
+                }
+            ]
         }
     },
-    "usesContext": ["layoutPos", "divider"]
+    "usesContext": [
+        "layoutPos",
+        "divider",
+        "bulletIconFontSize"
+    ]
 }

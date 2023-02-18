@@ -3,6 +3,11 @@ import Lottie from 'react-lottie-with-segments';
 import Inspector from "./inspector";
 import WebfontLoader from "../../components/typography/fontLoader";
 import { gradientBackground, generateBlockId, generateCss, borderCss, paddingCss, typographyCss } from '@pbg/helpers';
+import {
+    GenIcon,
+    FaIco,
+    Ico
+} from "@pbg/components";
 
 const { __ } = wp.i18n;
 const { withSelect } = wp.data
@@ -24,7 +29,6 @@ const Edit = props => {
         upperStyles,
         upperBorder,
         upperPadding,
-        modalStyles,
         modalBorder,
         modalPadding,
         modalBackground,
@@ -43,7 +47,8 @@ const Edit = props => {
         align,
         upperIconWidth,
         triggerIconSize,
-        containerBackground
+        containerBackground,
+        icons
     } = attributes;
 
     const currentDevice = props.deviceType;
@@ -90,8 +95,12 @@ const Edit = props => {
             'border-bottom-left-radius': `${triggerBorderH?.borderRadius?.[currentDevice]?.bottom || 0}px!important`,
             'border-bottom-right-radius': `${triggerBorderH?.borderRadius?.[currentDevice]?.left || 0}px!important`,
         };
-        styles[` .${blockId} .premium-modal-trigger-container button.premium-modal-trigger-btn:hover i`] = {
+        styles[` .${blockId} .premium-modal-trigger-container button.premium-modal-trigger-btn:hover svg`] = {
             'color': `${triggerStyles[0].iconHoverColor} !important`
+        };
+        styles[` .${blockId} .premium-modal-trigger-container button.premium-modal-trigger-btn svg`] = {
+            width: `${triggerIconSize[currentDevice]}${triggerIconSize.unit} !important`,
+            height: `${triggerIconSize[currentDevice]}${triggerIconSize.unit} !important`,
         };
         styles[` .${blockId} .premium-modal-trigger-container button.premium-modal-trigger-btn:hover span`] = {
             'color': `${triggerStyles[0].hoverColor} !important`
@@ -187,7 +196,7 @@ const Edit = props => {
                 <div className={`premium-modal-trigger-container`} style={{ textAlign: align[currentDevice] }}>
                     {(triggerSettings[0].triggerType === "button" || triggerSettings[0].triggerType === "load") &&
                         <button
-                            className={`premium-modal-trigger-btn wp-block-button__link premium-button premium-button__${triggerSettings[0].btnSize} `}
+                            className={`premium-modal-trigger-btn wp-block-button__link premium-button premium-button__${triggerSettings[0].btnSize} premium-button__${triggerSettings[0].iconPosition}`}
                             onClick={() => setOpenModal(true)}
                             style={{
                                 ...paddingCss(triggerPadding, currentDevice),
@@ -197,15 +206,19 @@ const Edit = props => {
                                 boxShadow: `${triggerShadow.horizontal}px ${triggerShadow.vertical}px ${triggerShadow.blur}px ${triggerShadow.color} ${triggerShadow.position}`,
                             }}>
                             {triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" &&
-                                <i
-                                    className={`premium-modal-box-icon ${triggerSettings[0].icon}`}
+                                <GenIcon className={`premium-modal-box-icon ${triggerSettings[0].icon} ${triggerSettings[0].iconType}`}
+                                    name={triggerSettings[0].icon}
+                                    size={triggerIconSize[currentDevice] + triggerIconSize.unit}
+                                    icon={('fa' === triggerSettings[0].icon.substring(0, 2) ? FaIco[triggerSettings[0].icon] : Ico[triggerSettings[0].icon])}
+                                    strokeWidth={('fe' === triggerSettings[0].icon.substring(0, 2) ? icons[0].width : undefined)}
                                     style={{
                                         fontSize: (triggerIconSize[currentDevice]) + triggerIconSize.unit,
                                         width: (triggerIconSize[currentDevice]) + triggerIconSize.unit,
                                         height: (triggerIconSize[currentDevice]) + triggerIconSize.unit,
                                         marginRight: `${triggerSettings[0].iconSpacing}px`,
                                         color: triggerStyles[0].iconColor
-                                    }}></i>
+                                    }}
+                                />
                             }
                             <span
                                 style={{
@@ -221,15 +234,19 @@ const Edit = props => {
                                 {triggerSettings[0].btnText}
                             </span>
                             {triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "after" &&
-                                <i
-                                    className={`premium-modal-box-icon ${triggerSettings[0].icon}`}
+                                <GenIcon className={`premium-modal-box-icon ${triggerSettings[0].icon} ${triggerSettings[0].iconType}`}
+                                    name={triggerSettings[0].icon}
+                                    size={triggerIconSize[currentDevice] + triggerIconSize.unit}
+                                    icon={('fa' === triggerSettings[0].icon.substring(0, 2) ? FaIco[triggerSettings[0].icon] : Ico[triggerSettings[0].icon])}
+                                    strokeWidth={('fe' === triggerSettings[0].icon.substring(0, 2) ? icons[0].width : undefined)}
                                     style={{
                                         fontSize: (triggerIconSize[currentDevice]) + triggerIconSize.unit,
                                         width: (triggerIconSize[currentDevice]) + triggerIconSize.unit,
                                         height: (triggerIconSize[currentDevice]) + triggerIconSize.unit,
                                         marginLeft: `${triggerSettings[0].iconSpacing}px`,
                                         color: triggerStyles[0].iconColor
-                                    }} ></i>
+                                    }}
+                                />
                             }
                         </button>
                     }

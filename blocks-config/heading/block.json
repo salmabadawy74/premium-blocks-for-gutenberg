@@ -42,9 +42,23 @@
             "type": "string",
             "default": "icon"
         },
+        "icons": {
+            "type": "array",
+            "default": [
+                {
+                    "iconn": "dashicons admin-site",
+                    "link": "",
+                    "target": "_self",
+                    "size": "40",
+                    "width": "2",
+                    "title": "",
+                    "style": "default"
+                }
+            ]
+        },
         "icon": {
             "type": "string",
-            "default": "fa fa-bars"
+            "default": "dashicons admin-site"
         },
         "iconPosition": {
             "type": "string",

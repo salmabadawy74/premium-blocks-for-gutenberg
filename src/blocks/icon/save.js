@@ -1,6 +1,11 @@
 import classnames from 'classnames'
 import { useBlockProps } from "@wordpress/block-editor";
 import { gradientBackground, filterJsCss, generateCss } from '@pbg/helpers';
+import {
+    GenIcon,
+    FaIco,
+    Ico
+} from "@pbg/components";
 
 const save = props => {
 
@@ -26,7 +31,8 @@ const save = props => {
         iconTypeFile,
         imageURL,
         hoversEffect,
-        svgUrl
+        svgUrl,
+        icons
     } = props.attributes;
 
     const loadStyles = () => {
@@ -41,16 +47,16 @@ const save = props => {
             'border-color': `${iconBorder && iconBorder.borderColor} !important`,
             'border-style': `${iconBorder && iconBorder.borderType} !important`,
         };
-        styles[` .${blockId} .premium-icon-container svg`] = {
+        styles[` .${blockId} .premium-icon-container #premium-icon-svg svg`] = {
             fill: `${iconStyles[0].iconColor}`,
             'background-color': `${iconStyles[0].iconBack}`,
             'border-color': `${iconBorder && iconBorder.borderColor} !important`,
             'border-style': `${iconBorder && iconBorder.borderType} !important`,
         };
-        styles[` .${blockId} .premium-icon-container svg path`] = {
+        styles[` .${blockId} .premium-icon-container #premium-icon-svg svg path`] = {
             fill: `${iconStyles[0].iconColor}`,
         };
-        styles[` .${blockId} .premium-icon-container .premium-icon-type:hover path`] = {
+        styles[` .${blockId} .premium-icon-container #premium-icon-svg .premium-icon-type:hover path`] = {
             fill: `${iconStyles[0].iconHoverColor} !important`
         };
         return generateCss(styles);
@@ -92,17 +98,19 @@ const save = props => {
                     target={target ? "_blank" : "_self"}
                 >
                     <div className={`premium-icon-content premium-icon__${hoverEffect !== "none" || !hoversEffect ? hoverEffect : hoversEffect}`}>
-                        {"icon" === iconTypeFile && <i
-                            className={`premium-icon premium-icon-type ${selectedIcon}`}
-                            style={filterJsCss({
-                                cursor: urlCheck ? 'pointer' : 'default',
-                                color: iconStyles[0].iconColor,
-                                backgroundColor: iconStyles[0].iconBack,
-                                borderStyle: iconBorder.borderType,
-                                borderColor: iconBorder.borderColor,
-                                textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`
-                            })}
-                        />
+                        {"icon" === iconTypeFile &&
+                            <GenIcon className={`premium-icon premium-icon-type ${selectedIcon}`}
+                                name={selectedIcon}
+                                icon={('fa' === selectedIcon.substring(0, 2) ? FaIco[selectedIcon] : Ico[selectedIcon])}
+                                strokeWidth={('fe' === selectedIcon.substring(0, 2) ? icons[0].width : undefined)}
+                                style={filterJsCss({
+                                    cursor: urlCheck ? 'pointer' : 'default',
+                                    color: iconStyles[0].iconColor,
+                                    backgroundColor: iconStyles[0].iconBack,
+                                    borderStyle: iconBorder.borderType,
+                                    borderColor: iconBorder.borderColor
+                                })}
+                            />
                         }
                         {imageURL && "img" === iconTypeFile && (
                             <img src={imageURL} />
