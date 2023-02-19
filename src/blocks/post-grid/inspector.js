@@ -18,10 +18,9 @@ import { TaxonomyControls } from "./taxonomy-controls";
 import AuthorControl from "./author-control";
 import OrderControl from "./order-control";
 const { __ } = wp.i18n;
-const { withSelect } = wp.data;
-const { useEffect, Fragment } = wp.element;
+import { useSelect, useDispatch, select } from "@wordpress/data";
 const { PanelBody, ToggleControl, SelectControl, TextControl } = wp.components;
-const { InspectorControls, useBlockProps, InnerBlocks } = wp.blockEditor;
+const { InspectorControls } = wp.blockEditor;
 
 export default function Inspector({ attributes, setQuery, setAttributes }) {
     const {
@@ -36,6 +35,7 @@ export default function Inspector({ attributes, setQuery, setAttributes }) {
         hideDesktop,
         hideTablet,
         hideMobile,
+        currentPost,
     } = attributes;
     const {
         order,
@@ -48,6 +48,7 @@ export default function Inspector({ attributes, setQuery, setAttributes }) {
         parents,
         perPage,
         pages,
+        exclude,
         offset,
     } = query;
     const { postTypesTaxonomiesMap, postTypesSelectOptions } = usePostTypes();
@@ -75,7 +76,15 @@ export default function Inspector({ attributes, setQuery, setAttributes }) {
         updateQuery.parents = [];
         setQuery(updateQuery);
     };
-
+    const handleCurrentPost = (value) => {
+        setAttributes({ currentPost: value });
+        console.log(value);
+        let newQuery = { ...query };
+        if (currentPost) {
+            newQuery.exclude = select("core/editor").getCurrentPostId;
+        }
+        setQuery(newQuery);
+    };
     return (
         <InspectorControls key={"inspector"}>
             <InspectorTabs tabs={["layout", "style", "advance"]}>
@@ -99,7 +108,6 @@ export default function Inspector({ attributes, setQuery, setAttributes }) {
                             max={6}
                             showUnits={false}
                         />
-
                         <ResponsiveSingleRangeControl
                             defaultValue={4}
                             label={__(
@@ -111,7 +119,6 @@ export default function Inspector({ attributes, setQuery, setAttributes }) {
                             min={1}
                             showUnits={false}
                         />
-
                         <ToggleControl
                             label={__(
                                 "Equal Height",
@@ -157,6 +164,16 @@ export default function Inspector({ attributes, setQuery, setAttributes }) {
                             value={offset}
                             min={0}
                             showUnits={false}
+                        />
+                        <ToggleControl
+                            label={__("Exclude Current Post")}
+                            checked={currentPost}
+                            help={
+                                currentPost
+                                    ? "This option will remove the current post from the query. "
+                                    : " "
+                            }
+                            onChange={(value) => handleCurrentPost(value)}
                         />
                     </PanelBody>
                 </InspectorTab>

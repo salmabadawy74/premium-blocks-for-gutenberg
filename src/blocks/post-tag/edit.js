@@ -86,7 +86,6 @@ function Tags(props) {
         };
         return generateCss(styles);
     };
-
     if (tagName.length > 0 && displayPostTags) {
         return (
             <Fragment>
@@ -166,7 +165,9 @@ function Tags(props) {
                     />
 
                     <i className={`fa fa-tags fa-fw`}></i>
-                    {tagName.join(",")}
+                    {tagName.map((tag) => (
+                        <a>{tag}</a>
+                    ))}
                 </div>
             </Fragment>
         );

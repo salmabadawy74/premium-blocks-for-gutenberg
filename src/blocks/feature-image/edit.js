@@ -214,7 +214,7 @@ function Image(props) {
                                 colorValue={colorOverlay}
                                 colorDefault={""}
                                 onColorChange={(newValue) =>
-                                    setAttributes({ titleColor: newValue })
+                                    setAttributes({ colorOverlay: newValue })
                                 }
                             />
                             <InsideTabs>

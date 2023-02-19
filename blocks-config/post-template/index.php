@@ -74,6 +74,10 @@ function get_premium_feature_image_css_style($attr, $unique_id)
             'brightness(' . $attr['Hoverfilter']['bright'] . '%)' . 'contrast(' .  $attr['Hoverfilter']['contrast'] . '%) ' . 'saturate(' . $attr['Hoverfilter']['saturation'] . '%) ' . 'blur(' . $attr['Hoverfilter']['blur'] . 'px) ' . 'hue-rotate(' . $attr['Hoverfilter']['hue'] . 'deg)'
         );
     }
+    if (isset($attr['colorOverlay'])) {
+        $css->set_selector('.premium-blog-post-outer-container .premium-blog-thumb-effect-wrapper .premium-blog-thumbnail-overlay ');
+        $css->add_property('background-color', $css->render_color($attr["colorOverlay"]));
+    }
 
 
     $css->start_media_query($media_query['tablet']);
@@ -334,7 +338,7 @@ function render_block_premium_post_template($attributes, $content, $block)
     }
 
     $classnames = '';
-    $classnames .= ' premium-blog-wrap ';
+    $classnames .= ' premium-blog-post-container ';
 
 
     $wrapper_attributes = get_block_wrapper_attributes(array('class' => trim($classnames)));

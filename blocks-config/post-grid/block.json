@@ -31,6 +31,10 @@
             "type":"boolean",
             "default":false
         },
+        "currentPost":{
+            "type":"boolean",
+            "default":false
+        },
 		"query": {
 			"type": "object",
 			"default": {
@@ -195,7 +199,7 @@
 		"query": "query",
         "columns":"columns",
         "equalHeight":"equalHeight",
-        "rowGap":"rowGap",
-        "columnGap" :"columnGap"
+    
+        "currentPost":"currentPost"
 	}
 }

@@ -41,9 +41,22 @@ function QueryContent({ attributes, setAttributes, deviceType }) {
         useDispatch(blockEditorStore);
     const instanceId = useInstanceId(QueryContent);
     const blockProps = useBlockProps();
-    const innerBlocksProps = useInnerBlocksProps(blockProps, {
-        template: TEMPLATE,
-    });
+    const innerBlocksProps = useInnerBlocksProps(
+        {
+            style: {
+                ...gradientBackground(blogContainerBackground),
+                ...borderCss(blogBorder, deviceType),
+                ...marginCss(blogMargin, deviceType),
+                ...paddingCss(blogPadding, deviceType),
+                boxShadow: `${blogBoxShadow.horizontal || 0}px ${
+                    blogBoxShadow.vertical || 0
+                }px ${blogBoxShadow.blur || 0}px ${blogBoxShadow.color}`,
+            },
+        },
+        {
+            template: TEMPLATE,
+        }
+    );
     const { postsPerPage } = useSelect((select) => {
         const { getSettings } = select(blockEditorStore);
         return {
@@ -78,18 +91,7 @@ function QueryContent({ attributes, setAttributes, deviceType }) {
                 setAttributes={setAttributes}
             />
 
-            <div
-                {...blockProps}
-                style={{
-                    ...gradientBackground(blogContainerBackground),
-                    ...borderCss(blogBorder, deviceType),
-                    ...marginCss(blogMargin, deviceType),
-                    ...paddingCss(blogPadding, deviceType),
-                    boxShadow: `${blogBoxShadow.horizontal || 0}px ${
-                        blogBoxShadow.vertical || 0
-                    }px ${blogBoxShadow.blur || 0}px ${blogBoxShadow.color}`,
-                }}
-            >
+            <div {...blockProps}>
                 <div {...innerBlocksProps} />
             </div>
         </Fragment>

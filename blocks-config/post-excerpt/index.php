@@ -20,44 +20,58 @@ function render_block_premium_post_excerpt($attributes, $content, $block)
         return '';
     }
 
-    $excerpt = get_the_excerpt();
-
-    if (empty($excerpt)) {
-        return '';
+    if (!$attributes['showContent']) {
+        return;
     }
+    $src          = $attributes['displayPostExcerpt'];
+    $excerpt_type = $attributes['excerptType'];
+    $excerpt_text = $attributes['readMoreText'];
+    $length       = $attributes['excerptLen'];
+    $content = "";
+    $content .=   '<p class="premium-blog-post-content">' . render_post_content($src, $length, $excerpt_type, $excerpt_text) . "</p>";
 
-    $more_text           = !empty($attributes['moreText']) ? '<a class="wp-block-post-excerpt__more-link" href="' . esc_url(get_the_permalink($block->context['postId'])) . '">' . wp_kses_post($attributes['moreText']) . '</a>' : '';
-    $filter_excerpt_more = function ($more) use ($more_text) {
-        return empty($more_text) ? $more : '';
-    };
-    /**
-     * Some themes might use `excerpt_more` filter to handle the
-     * `more` link displayed after a trimmed excerpt. Since the
-     * block has a `more text` attribute we have to check and
-     * override if needed the return value from this filter.
-     * So if the block's attribute is not empty override the
-     * `excerpt_more` filter and return nothing. This will
-     * result in showing only one `read more` link at a time.
-     */
-    add_filter('excerpt_more', $filter_excerpt_more);
-    $classes = array();
-    if (isset($attributes['textAlign'])) {
-        $classes[] = 'has-text-align-' . $attributes['textAlign'];
-    }
-    if (isset($attributes['style']['elements']['link']['color']['text'])) {
-        $classes[] = 'has-link-color';
-    }
-    $wrapper_attributes = get_block_wrapper_attributes(array('class' => implode(' ', $classes)));
 
-    $content               = '<p class="wp-block-post-excerpt__excerpt">' . $excerpt;
-    $show_more_on_new_line = !isset($attributes['showMoreOnNewLine']) || $attributes['showMoreOnNewLine'];
-    if ($show_more_on_new_line && !empty($more_text)) {
-        $content .= '</p><p class="wp-block-post-excerpt__more-text">' . $more_text . '</p>';
+    if ('Link' === $excerpt_type) {
+        if (empty($excerpt_text)) {
+            return;
+        }
+        $wrapbutton = 'premium-blog-excerpt-link-wrap';
+        $wrapbutton .= ' premium-blog-excerpt-link-' . $attributes['fullWidth'];
+        $wrapper_class
+            = get_block_wrapper_attributes(array('class' => trim($wrapbutton)));
+        $button_content = '<a class="premium-blog-excerpt-link " href="' . esc_url(get_the_permalink($block->context['postId'])) . '">' . wp_kses_post($attributes['readMoreText']) . '</a>';
+        $content .=   sprintf(
+            '<div %1$s>%2$s</div>',
+            $wrapper_class,
+            $button_content
+        );
+    }
+    return  $content;
+}
+
+
+function render_post_content($source, $excerpt_length, $cta_type)
+{
+
+    $excerpt = '';
+    if ('Post Full Content' === $source) {
+        // Print post full content.
+        $excerpt = get_the_content();
     } else {
-        $content .= " $more_text</p>";
+
+        $excerpt = trim(get_the_excerpt());
+        $words   = explode(' ', $excerpt, $excerpt_length + 1);
+        if (count($words) > $excerpt_length) {
+            if (!has_excerpt()) {
+                array_pop($words);
+                if ('dots' === $cta_type) {
+                    array_push($words, '…');
+                }
+            }
+        }
+        $excerpt = implode(' ', $words);
     }
-    remove_filter('excerpt_more', $filter_excerpt_more);
-    return sprintf('<div %1$s>%2$s</div>', $wrapper_attributes, $content);
+    return $excerpt;
 }
 
 /**

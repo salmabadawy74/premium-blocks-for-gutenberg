@@ -3,11 +3,11 @@
 	"apiVersion": 2,
 	"name": "premium/post-template",
 	"title": "Post Template",
-	"category": "premium blocks",
+	"category": "premium-blocks",
 	"parent": [ "premium/post-grid" ],
 	"description": "Contains the block elements used to render a post, like the title, date, featured image, content or excerpt, and more.",
 	"textdomain": "default",
-	"usesContext": ["queryId","query","columns"	,"equalHeight"],
+	"usesContext": ["queryId","query","columns"	,"equalHeight","currentPost"],
 		"attributes": {
 		"blockId":{
             "type":"string"
@@ -15,8 +15,8 @@
 		"containerBackground": {
             "type": "object",
             "default": {
-                "backgroundType": "",
-                "backgroundColor": "",
+                "backgroundType": "solid",
+                "backgroundColor": "#f5f5f5",
                 "backgroundImageID": "",
                 "backgroundImageURL": "",
                 "backgroundPosition": "",

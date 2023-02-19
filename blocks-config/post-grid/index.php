@@ -197,7 +197,7 @@ function get_premium_post_grid_css_style($attributes, $unique_id)
     $media_query['desktop'] = apply_filters('Premium_BLocks_tablet_media_query', '(min-width: 1025px)');
 
     if (isset($attributes['columns'])) {
-        $css->set_selector('.premium-blog-wrap');
+        $css->set_selector('.premium-blog-post-container');
         $css->add_property('grid-template-columns', 'repeat(' . $attributes['columns']['Desktop'] . ',minmax(0,1fr))');
     }
     if (isset($attributes['blogBorder'])) {

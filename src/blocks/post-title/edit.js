@@ -114,7 +114,7 @@ function PostTitle(props) {
 
     if (isLink && postType && postId) {
         titleElement = (
-            <TitleTag className={`premium-blog-entry-title`}>
+            <TitleTag>
                 <a
                     href={link}
                     target={linkTarget}
@@ -313,7 +313,7 @@ function PostTitle(props) {
                         __html: loadStyles(),
                     }}
                 />
-                {titleElement}
+                <div className={`premium-blog-entry-title`}>{titleElement}</div>
             </div>
         </Fragment>
     );

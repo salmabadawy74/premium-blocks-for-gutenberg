@@ -94,6 +94,7 @@ function Excerpt(props) {
     if (showContent) {
         Content = (
             <p
+                className={"premium-blog-post-content"}
                 style={{
                     color: color,
                     ...typographyCss(typography, deviceType),

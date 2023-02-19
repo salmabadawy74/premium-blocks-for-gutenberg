@@ -112,7 +112,6 @@ function PostTemplateEdit({
             pages,
         } = {},
         queryContext = [{ page: 1 }],
-        templateSlug,
     },
     setAttributes,
     attributes,
@@ -166,6 +165,9 @@ function PostTemplateEdit({
             }
             if (sticky) {
                 query.sticky = sticky === "exclude";
+            }
+            if (exclude) {
+                query.exclude = exclude;
             }
             const usedPostType = postType;
             return {
