@@ -31,7 +31,7 @@
       outline: none !important;
       border: none !important;
       text-decoration: none !important; }
-  .premium-image-separator-container i {
+  .premium-image-separator-container .premium-image-separator-icon {
     padding: 0.1em;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;

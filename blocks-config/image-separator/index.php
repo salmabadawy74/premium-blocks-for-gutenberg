@@ -35,19 +35,25 @@ function get_premium_image_separator_css_style( $attr, $unique_id ) {
 
 	// Icon Style.
 	if ( isset( $attr['iconSize'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . '>i' );
+		$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . '> .premium-image-separator-icon' );
 		$css->add_property( 'font-size', $css->render_range( $attr['iconSize'], 'Desktop' ) );
 	}
 
+	if ( isset( $attr['iconSize'] ) ) {
+		$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . '> .premium-image-separator-icon svg' );
+		$css->add_property( 'width', $css->render_range( $attr['iconSize'], 'Desktop' ) );
+		$css->add_property( 'height', $css->render_range( $attr['iconSize'], 'Desktop' ) );
+	}
+
 	if ( isset( $attr['iconPadding'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . '> i' );
+		$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . '> .premium-image-separator-icon' );
 		$css->add_property( 'padding', $css->render_spacing( $attr['iconPadding']['Desktop'], ( isset( $attr['iconPadding']['unit'] ) ? $attr['iconPadding']['unit'] : 'px' ) ) );
 	}
 
 	if ( isset( $attr['iconBorder'] ) && ( isset( $attr['iconStyles'] ) && ( $attr['iconStyles'][0]['advancedBorder'] ) == false ) ) {
 		$title_border_width  = $attr['iconBorder']['borderWidth'];
 		$title_border_radius = $attr['iconBorder']['borderRadius'];
-		$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . '> i' );
+		$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . '> .premium-image-separator-icon' );
 		$css->add_property( 'border-width', $css->render_spacing( $title_border_width['Desktop'], 'px' ) );
 		$css->add_property( 'border-radius', $css->render_spacing( $title_border_radius['Desktop'], 'px' ) );
 	}
@@ -75,7 +81,7 @@ function get_premium_image_separator_css_style( $attr, $unique_id ) {
 	}
 
 	if ( isset( $attr['iconStyles'][0]['advancedBorder'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . '> i' );
+		$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . '> .premium-image-separator-icon' );
 		$css->add_property( 'border-radius', $attr['iconStyles'][0]['advancedBorder'] ? $attr['iconStyles'][0]['advancedBorderValue'] . '!important' : '' );
 	}
 
@@ -94,19 +100,25 @@ function get_premium_image_separator_css_style( $attr, $unique_id ) {
 
 	// Icon Style.
 	if ( isset( $attr['iconSize'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . '>i' );
+		$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . '>.premium-image-separator-icon' );
 		$css->add_property( 'font-size', $css->render_range( $attr['iconSize'], 'Tablet' ) );
 	}
 
+	if ( isset( $attr['iconSize'] ) ) {
+		$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . '> .premium-image-separator-icon svg' );
+		$css->add_property( 'width', $css->render_range( $attr['iconSize'], 'Tablet' ) );
+		$css->add_property( 'height', $css->render_range( $attr['iconSize'], 'Tablet' ) );
+	}
+
 	if ( isset( $attr['iconPadding'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . '> i' );
+		$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . '> .premium-image-separator-icon' );
 		$css->add_property( 'padding', $css->render_spacing( $attr['iconPadding']['Tablet'], ( isset( $attr['iconPadding']['unit'] ) ? $attr['iconPadding']['unit'] : 'px' ) ) );
 	}
 
 	if ( isset( $attr['iconBorder'] ) ) {
 		$title_border_width  = $attr['iconBorder']['borderWidth'];
 		$title_border_radius = $attr['iconBorder']['borderRadius'];
-		$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . '> i' );
+		$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . '> .premium-image-separator-icon' );
 		$css->add_property( 'border-width', $css->render_spacing( $title_border_width['Tablet'], 'px' ) );
 		$css->add_property( 'border-radius', $css->render_spacing( $title_border_radius['Tablet'], 'px' ) );
 	}
@@ -146,19 +158,25 @@ function get_premium_image_separator_css_style( $attr, $unique_id ) {
 
 	// Icon Style.
 	if ( isset( $attr['iconSize'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . '>i' );
+		$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . '> .premium-image-separator-icon' );
 		$css->add_property( 'font-size', $css->render_range( $attr['iconSize'], 'Mobile' ) );
 	}
 
+	if ( isset( $attr['iconSize'] ) ) {
+		$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . '> .premium-image-separator-icon svg' );
+		$css->add_property( 'width', $css->render_range( $attr['iconSize'], 'Mobile' ) );
+		$css->add_property( 'height', $css->render_range( $attr['iconSize'], 'Mobile' ) );
+	}
+
 	if ( isset( $attr['iconPadding'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . '> i' );
+		$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . '> .premium-image-separator-icon' );
 		$css->add_property( 'padding', $css->render_spacing( $attr['iconPadding']['Mobile'], ( isset( $attr['iconPadding']['unit'] ) ? $attr['iconPadding']['unit'] : 'px' ) ) );
 	}
 
 	if ( isset( $attr['iconBorder'] ) ) {
 		$title_border_width  = $attr['iconBorder']['borderWidth'];
 		$title_border_radius = $attr['iconBorder']['borderRadius'];
-		$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . '> i' );
+		$css->set_selector( '.' . $unique_id . '> .premium-image-separator-container' . ' > .premium-image-separator-link' . '> .premium-image-separator-icon' );
 		$css->add_property( 'border-width', $css->render_spacing( $title_border_width['Mobile'], 'px' ) );
 		$css->add_property( 'border-radius', $css->render_spacing( $title_border_radius['Mobile'], 'px' ) );
 	}

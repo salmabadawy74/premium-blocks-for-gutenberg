@@ -1,5 +1,10 @@
 import classnames from "classnames";
 import { filterJsCss, generateCss } from '@pbg/helpers';
+import {
+    GenIcon,
+    FaIco,
+    Ico
+} from "@pbg/components";
 const { useBlockProps } = wp.blockEditor;
 
 export default function save(props) {
@@ -22,10 +27,10 @@ export default function save(props) {
         maskSize,
         maskPosition,
         iconBorder,
-        iconShadow,
         hideDesktop,
         hideTablet,
-        hideMobile
+        hideMobile,
+        icons
     } = props.attributes
 
     let target = (linkTarget) ? "_blank" : "_self";
@@ -35,7 +40,7 @@ export default function save(props) {
         styles[`.${blockId} .premium-image-separator-container:hover img`] = {
             'filter': `brightness(${imgFilterHover?.bright}% ) contrast(${imgFilterHover?.contrast}% ) saturate(${imgFilterHover?.saturation}%) blur(${imgFilterHover?.blur}px) hue - rotate(${imgFilterHover?.hue}deg)!important`
         };
-        styles[` .${blockId} .premium-image-separator-container i:hover`] = {
+        styles[` .${blockId} .premium-image-separator-container .premium-image-separator-icon:hover`] = {
             'color': `${iconStyles[0].iconColorHover} !important`,
             'background-color': `${iconStyles[0].iconBGColorHover} !important`
         };
@@ -66,15 +71,17 @@ export default function save(props) {
             >
                 <a className="premium-image-separator-link" href={link && url} target={target} rel="noopener noreferrer">
                     {iconType === 'icon' &&
-                        <i
-                            className={`${iconStyles[0].icon}`}
+                        <GenIcon className={`premium-image-separator-icon ${iconStyles[0].icon}`}
+                            name={iconStyles[0].icon}
+                            icon={('fa' === iconStyles[0].icon.substring(0, 2) ? FaIco[iconStyles[0].icon] : Ico[iconStyles[0].icon])}
+                            strokeWidth={('fe' === iconStyles[0].icon.substring(0, 2) ? icons[0].width : undefined)}
                             style={filterJsCss({
                                 color: iconStyles[0].iconColor,
                                 backgroundColor: iconStyles[0].iconBGColor,
                                 borderColor: iconBorder.borderColor,
-                                borderStyle: iconBorder.borderType,
-                                textShadow: `${iconShadow.horizontal || 0}px ${iconShadow.vertical || 0}px ${iconShadow.blur || 0}px ${iconShadow.color}`,
-                            })} />
+                                borderStyle: iconBorder.borderType
+                            })}
+                        />
                     }
                     {iconType === 'image' && imageURL && < img
                         src={imageURL}

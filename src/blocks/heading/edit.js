@@ -69,7 +69,6 @@ function Edit(props) {
                 ".premium-title-container"
             );
 
-            // titleContainers.forEach(function (titleContainer) {
             if (titleContainers.classList.contains("style8")) {
                 let titleElement = titleContainers.querySelector(
                     ".premium-title-text-title"
@@ -125,7 +124,6 @@ function Edit(props) {
                     }, holdTime);
                 });
             }
-            // });
         }
     };
 

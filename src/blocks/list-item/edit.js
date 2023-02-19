@@ -132,7 +132,6 @@ function Edit(props) {
                                             renderFunc={renderSVG}
                                             value={icon}
                                             isMulti={false}
-                                            // appendTo="body"
                                             noSelectedPlaceholder={__(
                                                 "Select Icon",
                                                 "premium-blocks-for-gutenberg"
@@ -202,7 +201,6 @@ function Edit(props) {
                     <div className='premium-bullet-list__icon-wrap'>
                         {iconType === 'icon' && (
                             <span className='premium-bullet-list__content-icon'>
-                                {/* <i className={icon} /> */}
                                 <GenIcon className={`premium-bullet-list-icon ${icon}`}
                                     name={icon}
                                     size={bulletIconFontSize[props.deviceType] +

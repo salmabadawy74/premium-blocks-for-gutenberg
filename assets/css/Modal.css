@@ -1786,6 +1786,12 @@
   font-size: 18px;
   line-height: 1.3333; }
 
+.premium-modal-box .premium-button__before .premium-modal-box-icon {
+  margin-right: 15px; }
+
+.premium-modal-box .premium-button__after .premium-modal-box-icon {
+  margin-left: 15px; }
+
 .premium-modal-box .premium-popup__modal_wrap {
   position: fixed;
   top: 0;

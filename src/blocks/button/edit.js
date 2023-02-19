@@ -369,7 +369,6 @@ function Edit(props) {
                                         renderFunc={renderSVG}
                                         value={icon}
                                         isMulti={false}
-                                        // appendTo="body"
                                         noSelectedPlaceholder={__(
                                             "Select Icon",
                                             "premium-blocks-for-gutenberg"
@@ -781,6 +780,7 @@ function Edit(props) {
                                 />
                             )}
                             <RichText
+                                className="premium-button-text-edit"
                                 value={btnText}
                                 onChange={(value) =>
                                     setAttributes({ btnText: value })

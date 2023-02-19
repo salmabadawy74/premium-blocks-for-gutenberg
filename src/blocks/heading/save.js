@@ -7,6 +7,7 @@ import {
 } from "@pbg/components";
 const { Fragment } = wp.element;
 const { RichText, useBlockProps } = wp.blockEditor;
+
 export default function save(props) {
     const { attributes, className } = props;
 
@@ -410,41 +411,41 @@ export default function save(props) {
                                         </span>
                                     </Fragment>
                                 ) : (
-                                    <Fragment>
-                                        {iconValue && iconType == "icon" && (
-                                            <GenIcon className={`premium-title-icon ${icon}`}
-                                                name={icon}
-                                                icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
-                                                strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
-                                            />
+                                            <Fragment>
+                                                {iconValue && iconType == "icon" && (
+                                                    <GenIcon className={`premium-title-icon ${icon}`}
+                                                        name={icon}
+                                                        icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
+                                                        strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
+                                                    />
+                                                )}
+                                                {iconValue && iconType == "image" && (
+                                                    <img
+                                                        className={`premium-title-icon`}
+                                                        src={imageURL}
+                                                    />
+                                                )}
+                                                {iconValue && iconType == "lottie" && (
+                                                    <div
+                                                        className="premium-title-icon premium-lottie-animation"
+                                                        data-loop={loop}
+                                                        data-lottieurl={`${lottieURl}`}
+                                                        data-reverse={reversedir}
+                                                        data-trigger={"none"}
+                                                    ></div>
+                                                )}
+                                                <RichText.Content
+                                                    tagName="span"
+                                                    className={`premium-title-text-title`}
+                                                    value={title}
+                                                    style={filterJsCss({
+                                                        minHeight: "15px",
+                                                        color: titleStyles[0].titleColor,
+                                                        textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`,
+                                                    })}
+                                                />
+                                            </Fragment>
                                         )}
-                                        {iconValue && iconType == "image" && (
-                                            <img
-                                                className={`premium-title-icon`}
-                                                src={imageURL}
-                                            />
-                                        )}
-                                        {iconValue && iconType == "lottie" && (
-                                            <div
-                                                className="premium-title-icon premium-lottie-animation"
-                                                data-loop={loop}
-                                                data-lottieurl={`${lottieURl}`}
-                                                data-reverse={reversedir}
-                                                data-trigger={"none"}
-                                            ></div>
-                                        )}
-                                        <RichText.Content
-                                            tagName="span"
-                                            className={`premium-title-text-title`}
-                                            value={title}
-                                            style={filterJsCss({
-                                                minHeight: "15px",
-                                                color: titleStyles[0].titleColor,
-                                                textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`,
-                                            })}
-                                        />
-                                    </Fragment>
-                                )}
                                 {link && url !== " " && (
                                     <a
                                         rel="noopener noreferrer"
