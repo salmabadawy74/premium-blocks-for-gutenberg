@@ -53338,7 +53338,8 @@ function PostTemplateInnerBlocks(props) {
   const innerBlocksProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__.useInnerBlocksProps)({
     className: "wp-block-post"
   }, {
-    template: TEMPLATE
+    template: TEMPLATE,
+    templateLock: true
   });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", innerBlocksProps);
 }

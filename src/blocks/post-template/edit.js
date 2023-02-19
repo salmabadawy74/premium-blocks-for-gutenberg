@@ -49,7 +49,7 @@ const TEMPLATE = [
 function PostTemplateInnerBlocks(props) {
     const innerBlocksProps = useInnerBlocksProps(
         { className: "wp-block-post" },
-        { template: TEMPLATE }
+        { template: TEMPLATE, templateLock: true }
     );
     return <div {...innerBlocksProps} />;
 }
