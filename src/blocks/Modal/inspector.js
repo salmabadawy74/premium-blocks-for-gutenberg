@@ -12,7 +12,6 @@ import {
     InsideTabs,
     Icons,
     InsideTab,
-    iconsList,
     ResponsiveSingleRangeControl,
     PremiumMediaUpload,
     PremiumFilters,
@@ -42,7 +41,6 @@ const Inspector = ({ attributes, setAttributes }) => {
         upperStyles,
         upperBorder,
         upperPadding,
-        modalStyles,
         modalBackground,
         triggerShadow,
         modalBorder,
@@ -61,7 +59,7 @@ const Inspector = ({ attributes, setAttributes }) => {
         hideMobile,
         triggerFilter,
         triggerHoverFilter,
-        containerBackground,
+        containerBackground
     } = attributes;
 
     const ANIMATION = [
@@ -489,21 +487,21 @@ const Inspector = ({ attributes, setAttributes }) => {
                                 {JsonUploadEnabled == 1 ? (
                                     ""
                                 ) : (
-                                    <p>
-                                        {__(
-                                            'Make Sure that allow "JSON file Upload " from ',
-                                            "premium-blocks-for-gutenberg"
-                                        )}{" "}
-                                        <ExternalLink
-                                            href={
-                                                window.PremiumBlocksSettings
-                                                    .settingPath
-                                            }
-                                        >
-                                            plugin Settings
+                                        <p>
+                                            {__(
+                                                'Make Sure that allow "JSON file Upload " from ',
+                                                "premium-blocks-for-gutenberg"
+                                            )}{" "}
+                                            <ExternalLink
+                                                href={
+                                                    window.PremiumBlocksSettings
+                                                        .settingPath
+                                                }
+                                            >
+                                                plugin Settings
                                         </ExternalLink>
-                                    </p>
-                                )}
+                                        </p>
+                                    )}
                                 <ToggleControl
                                     label={__(
                                         "Loop",
@@ -670,7 +668,7 @@ const Inspector = ({ attributes, setAttributes }) => {
                                             step={1}
                                             showUnit={true}
                                             units={["px", "em", "rem"]}
-                                            defaultValue={20}
+                                            defaultValue={25}
                                         />
                                         <ResponsiveSingleRangeControl
                                             label={__(

@@ -1,6 +1,10 @@
 .premium-icon-group .premium-icon__container .premium-icon {
   font-size: 30px; }
 
+.premium-icon-group .premium-icon__container svg {
+  width: 30px;
+  height: 30px; }
+
 .premium-icon-group .premium-icon-group-horizontal {
   display: flex;
   flex-direction: row;

@@ -508,9 +508,9 @@
         "triggerIconSize": {
             "type": "object",
             "default": {
-                "Desktop": "20",
-                "Tablet": "20",
-                "Mobile": "20",
+                "Desktop": "25",
+                "Tablet": "25",
+                "Mobile": "25",
                 "unit": "px"
             }
         },

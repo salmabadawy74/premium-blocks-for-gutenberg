@@ -104,6 +104,7 @@ const save = (props) => {
                             />
                         )}
                         <RichText.Content
+                            className="premium-button-text-edit"
                             tagName="a"
                             value={btnText}
                             href={btnLink}

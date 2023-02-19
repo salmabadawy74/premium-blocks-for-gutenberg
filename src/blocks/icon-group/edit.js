@@ -12,7 +12,7 @@ import {
     InsideTab,
     ResponsiveRangeControl
 } from '@pbg/components';
-import { borderCss, paddingCss, marginCss, generateBlockId, generateCss } from '@pbg/helpers';
+import { generateBlockId, generateCss } from '@pbg/helpers';
 
 const { withSelect } = wp.data
 const { __ } = wp.i18n
@@ -87,44 +87,71 @@ function Edit(props) {
         [
             "premium/icon",
             {
-                selectedIcon: 'dashicons dashicons-facebook-alt',
+                selectedIcon: 'dashicons facebook-alt',
                 iconSize: {
-                    default: {
-                        Desktop: "30",
-                        Tablet: "30",
-                        Mobile: "30",
-                        unit: "px"
-                    }
+                    Desktop: "",
+                    Tablet: "",
+                    Mobile: "",
+                    unit: "px"
                 },
+                icons: [
+                    {
+                        "iconn": "dashicons facebook-alt",
+                        "link": "",
+                        "target": "_self",
+                        "size": "30",
+                        "width": "2",
+                        "title": "",
+                        "style": "default"
+                    }
+                ]
             }
         ],
         [
             "premium/icon",
             {
-                selectedIcon: 'fab fa-instagram',
+                selectedIcon: 'fa_instagram',
                 iconSize: {
-                    default: {
-                        Desktop: "30",
-                        Tablet: "30",
-                        Mobile: "30",
-                        unit: "px"
-                    }
+                    Desktop: "",
+                    Tablet: "",
+                    Mobile: "",
+                    unit: "px"
                 },
+                icons: [
+                    {
+                        "iconn": "fa_instagram",
+                        "link": "",
+                        "target": "_self",
+                        "size": "30",
+                        "width": "2",
+                        "title": "",
+                        "style": "default"
+                    }
+                ]
             }
         ],
         [
             "premium/icon",
             {
-                selectedIcon: 'dashicons dashicons-twitter',
+                selectedIcon: 'dashicons twitter',
                 iconSize: {
-                    default: {
-                        Desktop: "30",
-                        Tablet: "30",
-                        Mobile: "30",
-                        unit: "px"
-                    }
+                    Desktop: "",
+                    Tablet: "",
+                    Mobile: "",
+                    unit: "px"
                 },
-            }
+                icons: [
+                    {
+                        "iconn": "dashicons twitter",
+                        "link": "",
+                        "target": "_self",
+                        "size": "30",
+                        "width": "2",
+                        "title": "",
+                        "style": "default"
+                    }
+                ]
+            },
         ],
     ];
 
@@ -147,11 +174,14 @@ function Edit(props) {
             'justify-content': `${align[props.deviceType]} !important`
         };
 
-        styles[` .${blockId} .premium-icon-group-container i:hover`] = {
+        styles[` .${blockId} .premium-icon-group-container .premium-icon__container .premium-icon:hover`] = {
             color: `${groupIconHoverColor}`,
             "background-color": `${groupIconHoverBack}`,
         };
-
+        styles[` .${blockId} .premium-icon-group-container .premium-icon__container .premium-icon svg`] = {
+            'width': `${iconsSize?.[props.deviceType]}${iconsSize.unit}`,
+            'height': `${iconsSize?.[props.deviceType]}${iconsSize.unit}`
+        };
         styles[` .${blockId} .premium-icon-group-container .premium-icon__container .premium-icon`] = {
             color: `${groupIconColor}`,
             "background-color": `${groupIconBack}`,
@@ -229,7 +259,7 @@ function Edit(props) {
                                 showUnit={true}
                                 units={["px", "em", "rem"]}
                                 defaultValue={50}
-                             />
+                            />
                             <InsideTabs>
                                 <InsideTab
                                     tabTitle={__(

@@ -5,7 +5,10 @@
     "name": "premium/image-separator",
     "title": "Image Separator",
     "description": "Separate between your Gutenberg sections using Premium Image Separator Block.",
-    "keywords": ["image", "seperator"],
+    "keywords": [
+        "image",
+        "seperator"
+    ],
     "category": "premium-blocks",
     "attributes": {
         "blockId": {
@@ -93,13 +96,27 @@
             "default": [
                 {
                     "advancedBorder": false,
-                    "icon": "fa fa-bars",
+                    "icon": "dashicons admin-site",
                     "iconColor": "",
                     "iconBGColor": "",
                     "iconColorHover": "",
                     "iconBGColorHover": "",
                     "advancedBorderValue": "",
                     "imgHeightType": "px"
+                }
+            ]
+        },
+        "icons": {
+            "type": "array",
+            "default": [
+                {
+                    "iconn": "dashicons admin-site",
+                    "link": "",
+                    "target": "_self",
+                    "size": "200",
+                    "width": "2",
+                    "title": "",
+                    "style": "default"
                 }
             ]
         },
@@ -200,15 +217,6 @@
                     "left": ""
                 },
                 "unit": "em"
-            }
-        },
-        "iconShadow": {
-            "type": "object",
-            "default": {
-                "color": "undefined",
-                "blur": "10",
-                "horizontal": "0",
-                "vertical": "0"
             }
         }
     },
