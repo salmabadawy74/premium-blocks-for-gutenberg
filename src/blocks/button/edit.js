@@ -241,13 +241,11 @@ function Edit(props) {
         styles[`.${blockId}.premium-button__wrap .premium-button:hover`] = {
             "background-color": `${btnStyles[0].backHoverColor}!important`,
             "border-color": `${btnStyles[0].borderHoverColor}!important`,
-        };
-        styles[`.${blockId}.premium-button__wrap .premium-button .premium-button-text-edit`] = {
-            color: `${btnStyles[0].textColor}!important`,
-        };
-        styles[`.${blockId}.premium-button__wrap .premium-button:hover .premium-button-text-edit`] = {
             color: `${btnStyles[0].textHoverColor}!important`,
         };
+        // styles[`.${blockId}.premium-button__wrap .premium-button .premium-button-text-edit`] = {
+        //     color: `${btnStyles[0].textColor}!important`,
+        // };
         styles[
             `.${blockId}.premium-button__slide .premium-button::before, .${blockId}.premium-button__shutter .premium-button::before, .${blockId}.premium-button__radial .premium-button::before`
         ] = {
@@ -757,6 +755,7 @@ function Edit(props) {
                             ...paddingCss(padding, props.deviceType),
                             ...borderCss(border, props.deviceType),
                             ...gradientBackground(backgroundOptions),
+                            color: `${btnStyles[0].textColor}`,
                         },
                     },
                     [
@@ -769,9 +768,9 @@ function Edit(props) {
                                     icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
                                     strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
                                     style={{
-                                        fontSize:
-                                            iconSize[props.deviceType] +
-                                            iconSize.unit,
+                                        fontSize: iconSize[props.deviceType] + iconSize.unit,
+                                        width: iconSize[props.deviceType] + iconSize.unit,
+                                        height: iconSize[props.deviceType] + iconSize.unit,
                                         ...marginCss(
                                             iconSpacing,
                                             props.deviceType
@@ -806,6 +805,8 @@ function Edit(props) {
                                         fontSize:
                                             iconSize[props.deviceType] +
                                             iconSize.unit,
+                                        width: iconSize[props.deviceType] + iconSize.unit,
+                                        height: iconSize[props.deviceType] + iconSize.unit,
                                         ...marginCss(
                                             iconSpacing,
                                             props.deviceType

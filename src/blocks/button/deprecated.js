@@ -3,6 +3,8 @@ import hexToRgba from "hex-to-rgba";
 import { generateBlockId } from "../../components/HelperFunction";
 import { generateCss, filterJsCss, gradientBackground } from "@pbg/helpers";
 const { RichText, useBlockProps } = wp.blockEditor;
+const { Fragment } = wp.element;
+
 const { __ } = wp.i18n;
 const className = "premium-button";
 

@@ -5203,6 +5203,7 @@ const Edit = props => {
 
     const styles = {};
     styles[` .${blockId} .premium-modal-trigger-container button.premium-modal-trigger-btn:hover`] = {
+      'color': `${triggerStyles[0].hoverColor} !important`,
       'border-color': `${triggerBorderH && triggerBorderH.borderColor} !important`,
       'background-color': `${triggerStyles[0].triggerHoverBack} !important`,
       'border-style': `${triggerBorderH && triggerBorderH.borderType} !important`,
@@ -5313,6 +5314,7 @@ const Edit = props => {
     onClick: () => setOpenModal(true),
     style: { ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.paddingCss)(triggerPadding, currentDevice),
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_6__.borderCss)(triggerBorder, currentDevice),
+      color: triggerStyles[0].color,
       fontSize: `${triggerTypography.fontSize[currentDevice]}${triggerTypography.fontSize.unit}`,
       backgroundColor: triggerStyles[0].triggerBack,
       boxShadow: `${triggerShadow.horizontal}px ${triggerShadow.vertical}px ${triggerShadow.blur}px ${triggerShadow.color} ${triggerShadow.position}`
@@ -6331,6 +6333,7 @@ const save = props => {
   const loadStyles = () => {
     const styles = {};
     styles[` .${blockId} .premium-modal-trigger-container button.premium-modal-trigger-btn:hover`] = {
+      'color': `${triggerStyles[0].hoverColor} !important`,
       'border-color': `${triggerBorderH && triggerBorderH.borderColor} !important`,
       'background-color': `${triggerStyles[0].triggerHoverBack} !important`,
       'border-style': `${triggerBorderH && triggerBorderH.borderType} !important`
@@ -6384,6 +6387,7 @@ const save = props => {
   }, triggerSettings[0].triggerType === "button" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
     className: `premium-modal-trigger-btn wp-block-button__link premium-button premium-button__${triggerSettings[0].btnSize} premium-button__${triggerSettings[0].iconPosition}`,
     style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
+      color: triggerStyles[0].color,
       backgroundColor: triggerStyles[0].triggerBack,
       borderStyle: triggerBorder.borderType,
       borderColor: triggerBorder.borderColor,
@@ -16280,6 +16284,9 @@ const {
   useBlockProps
 } = wp.blockEditor;
 const {
+  Fragment
+} = wp.element;
+const {
   __
 } = wp.i18n;
 const className = "premium-button";
@@ -18177,14 +18184,12 @@ function Edit(props) {
     };
     styles[`.${blockId}.premium-button__wrap .premium-button:hover`] = {
       "background-color": `${btnStyles[0].backHoverColor}!important`,
-      "border-color": `${btnStyles[0].borderHoverColor}!important`
-    };
-    styles[`.${blockId}.premium-button__wrap .premium-button .premium-button-text-edit`] = {
-      color: `${btnStyles[0].textColor}!important`
-    };
-    styles[`.${blockId}.premium-button__wrap .premium-button:hover .premium-button-text-edit`] = {
+      "border-color": `${btnStyles[0].borderHoverColor}!important`,
       color: `${btnStyles[0].textHoverColor}!important`
-    };
+    }; // styles[`.${blockId}.premium-button__wrap .premium-button .premium-button-text-edit`] = {
+    //     color: `${btnStyles[0].textColor}!important`,
+    // };
+
     styles[`.${blockId}.premium-button__slide .premium-button::before, .${blockId}.premium-button__shutter .premium-button::before, .${blockId}.premium-button__radial .premium-button::before`] = {
       "background-color": `${slideColor}`
     };
@@ -18456,7 +18461,8 @@ function Edit(props) {
       boxShadow: `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`,
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.paddingCss)(padding, props.deviceType),
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.borderCss)(border, props.deviceType),
-      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.gradientBackground)(backgroundOptions)
+      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.gradientBackground)(backgroundOptions),
+      color: `${btnStyles[0].textColor}`
     }
   }, [(0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, showIcon && iconPosition == "before" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_5__.GenIcon, {
     className: `premium-button-icon ${icon} ${iconType}`,
@@ -18466,6 +18472,8 @@ function Edit(props) {
     strokeWidth: 'fe' === icon.substring(0, 2) ? icons[0].width : undefined,
     style: {
       fontSize: iconSize[props.deviceType] + iconSize.unit,
+      width: iconSize[props.deviceType] + iconSize.unit,
+      height: iconSize[props.deviceType] + iconSize.unit,
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.marginCss)(iconSpacing, props.deviceType)
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RichText, {
@@ -18488,6 +18496,8 @@ function Edit(props) {
     strokeWidth: 'fe' === icon.substring(0, 2) ? icons[0].width : undefined,
     style: {
       fontSize: iconSize[props.deviceType] + iconSize.unit,
+      width: iconSize[props.deviceType] + iconSize.unit,
+      height: iconSize[props.deviceType] + iconSize.unit,
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.marginCss)(iconSpacing, props.deviceType)
     }
   }))]), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(URLInput, {
@@ -19266,10 +19276,8 @@ const save = props => {
     };
     styles[`.${blockId}.premium-button__wrap .premium-button:hover`] = {
       "background-color": `${btnStyles[0].backHoverColor}!important`,
-      "border-color": `${btnStyles[0].borderHoverColor}!important`
-    };
-    styles[`.${blockId}.premium-button__wrap .premium-button .premium-button-text-edit`] = {
-      color: `${btnStyles[0].textColor}!important`
+      "border-color": `${btnStyles[0].borderHoverColor}!important`,
+      color: `${btnStyles[0].textHoverColor}!important`
     };
     styles[`.${blockId}.premium-button__wrap .premium-button:hover .premium-button-text-edit`] = {
       color: `${btnStyles[0].textHoverColor}!important`
@@ -19292,7 +19300,8 @@ const save = props => {
       boxShadow: `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`,
       borderStyle: border === null || border === void 0 ? void 0 : border.borderType,
       borderColor: border === null || border === void 0 ? void 0 : border.borderColor,
-      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.gradientBackground)(backgroundOptions)
+      ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.gradientBackground)(backgroundOptions),
+      color: `${btnStyles[0].textColor}`
     }
   }, [(0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, showIcon && iconPosition == "before" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.GenIcon, {
     className: `premium-button-icon ${icon} ${iconType}`,
