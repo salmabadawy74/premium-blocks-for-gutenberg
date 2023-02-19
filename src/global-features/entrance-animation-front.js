@@ -5,7 +5,7 @@ if (blocksElement.length > 0) {
         blocksElement.forEach(blockElement => {
             const { animation: clientId } = blockElement.dataset;
             const entranceAnimation = PBG_EntranceAnimation[clientId];
-            console.log(PBG_EntranceAnimation);
+
             let device = 'Desktop';
             const { breakPoints } = PBG_EntranceAnimation;
             if (window.matchMedia(breakPoints.desktop).matches) {
@@ -18,8 +18,12 @@ if (blocksElement.length > 0) {
 
             if (entranceAnimation.enable) {
                 blockElement.classList.add(entranceAnimation.animation[device]);
+                blockElement.style.animationTimingFunction = entranceAnimation.curve;
+                blockElement.style.animationDuration = entranceAnimation.duration ? `${entranceAnimation.duration}ms` : '';
+                blockElement.style.animationDelay = entranceAnimation.delay ? `${entranceAnimation.delay}ms` : '';
             }
         })
     }
     window.addEventListener("resize", () => addBlockEntranceAnimation(), false);
+    addBlockEntranceAnimation();
 }

@@ -11,7 +11,6 @@ if (blocksElement.length > 0) {
         animation: clientId
       } = blockElement.dataset;
       const entranceAnimation = PBG_EntranceAnimation[clientId];
-      console.log(PBG_EntranceAnimation);
       let device = 'Desktop';
       const {
         breakPoints
@@ -25,10 +24,14 @@ if (blocksElement.length > 0) {
       }
       if (entranceAnimation.enable) {
         blockElement.classList.add(entranceAnimation.animation[device]);
+        blockElement.style.animationTimingFunction = entranceAnimation.curve;
+        blockElement.style.animationDuration = entranceAnimation.duration ? `${entranceAnimation.duration}ms` : '';
+        blockElement.style.animationDelay = entranceAnimation.delay ? `${entranceAnimation.delay}ms` : '';
       }
     });
   };
   window.addEventListener("resize", () => addBlockEntranceAnimation(), false);
+  addBlockEntranceAnimation();
 }
 /******/ })()
 ;

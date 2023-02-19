@@ -4,7 +4,7 @@ import { __ } from '@wordpress/i18n';
 import { addFilter } from '@wordpress/hooks';
 import { entranceAnimationDefaults } from "./helpers/defaults";
 import { useSelect } from '@wordpress/data';
-import { Fragment } from '@wordpress/element';
+import { Fragment, useState, useEffect } from '@wordpress/element';
 import { InspectorControls } from '@wordpress/block-editor';
 import ResponsiveSelectControl from "../components/responsive-select-control";
 import { ResponsiveSingleRangeControl } from '@pbg/components';
@@ -15,7 +15,8 @@ const EntranceAnimation = ({ value, onChange, deviceType }) => {
         enable,
         animation,
         duration,
-        delay
+        delay,
+        curve
     } = value;
 
     const changeHandler = (newVal) => {
@@ -25,7 +26,6 @@ const EntranceAnimation = ({ value, onChange, deviceType }) => {
     }
 
     const options = [
-        { label: 'None', value: 'none' },
         {
             label: 'Fading',
             options: [
@@ -104,7 +104,7 @@ const EntranceAnimation = ({ value, onChange, deviceType }) => {
         }
     ];
     return <PanelBody
-        title={__("Motion Effects", 'premium-blocks-for-gutenberg')}
+        title={__("Entrance Animation", 'premium-blocks-for-gutenberg')}
         className="premium-panel-body"
         initialOpen={false}
     >
@@ -128,27 +128,29 @@ const EntranceAnimation = ({ value, onChange, deviceType }) => {
                     <>
                         <SelectControl
                             label={__(
-                                "Duration",
+                                "Easing",
                                 "premium-blocks-for-gutenberg"
                             )}
-                            value={duration}
+                            value={curve}
                             onChange={(newValue) =>
-                                changeHandler({ duration: newValue })
+                                changeHandler({ curve: newValue })
                             }
                             options={[
-                                {
-                                    value: "slow",
-                                    label: __("Slow", "premium-blocks-for-gutenberg"),
-                                },
-                                {
-                                    value: "normal",
-                                    label: __("Normal", "premium-blocks-for-gutenberg"),
-                                },
-                                {
-                                    value: "fast",
-                                    label: __("Fast", "premium-blocks-for-gutenberg"),
-                                },
+                                { value: 'ease-in-out', label: 'ease-in-out' },
+                                { value: 'ease', label: 'ease' },
+                                { value: 'ease-in', label: 'ease-in' },
+                                { value: 'ease-out', label: 'ease-out' },
+                                { value: 'linear', label: 'linear' },
                             ]}
+                        />
+                        <ResponsiveSingleRangeControl
+                            label={__("Duration", 'premium-blocks-for-gutenberg')}
+                            value={duration}
+                            onChange={newValue => changeHandler({ duration: newValue })}
+                            showUnit={false}
+                            defaultValue={0}
+                            max={10000}
+                            step={1}
                         />
                         <ResponsiveSingleRangeControl
                             label={__("Delay", 'premium-blocks-for-gutenberg')}
@@ -180,6 +182,47 @@ const EntranceAnimationControl = createHigherOrderComponent((BlockEdit) => {
                 ? __experimentalGetPreviewDeviceType()
                 : "Desktop";
         }, []);
+        const [editorElement, setEditorElement] = useState(null);
+
+        useEffect(() => {
+            const postEditorDom = document.querySelector(`.editor-styles-wrapper`);
+            if (postEditorDom) {
+                setEditorElement(postEditorDom);
+                return;
+            }
+
+            let interval = null;
+            let siteEditorDom = document.querySelector(`iframe[name="editor-canvas"]`);
+
+            if (siteEditorDom && siteEditorDom.contentDocument?.body?.childNodes?.length !== 0) {
+                const editorBody = siteEditorDom.contentDocument.body;
+                setEditorElement(editorBody);
+            } else {
+                interval = setInterval(() => {
+                    siteEditorDom = document.querySelector(`iframe[name="editor-canvas"]`);
+                    if (siteEditorDom) {
+                        const editorBody = siteEditorDom.contentDocument.body;
+                        if (editorBody && editorBody?.childNodes?.length !== 0) {
+                            setEditorElement(editorBody);
+                        }
+                    }
+                }, 200)
+            }
+
+            return () => {
+                clearInterval(interval)
+            }
+        }, [isSelected, entranceAnimation, deviceType]);
+
+        useEffect(() => {
+            if (!entranceAnimation?.enable || !editorElement) {
+                return;
+            }
+            let blockElement = editorElement.querySelector(`[data-animation="${entranceAnimation.clientId}"]`);
+            blockElement.style.animationTimingFunction = entranceAnimation.curve;
+            blockElement.style.animationDuration = entranceAnimation.duration ? `${entranceAnimation.duration}ms` : '';
+            blockElement.style.animationDelay = entranceAnimation.delay ? `${entranceAnimation.delay}ms` : '';
+        }, [isSelected, entranceAnimation, deviceType, editorElement]);
 
         return (
             <Fragment>
@@ -235,7 +278,11 @@ const withClientId = createHigherOrderComponent(
             }, []);
             if (attributes?.entranceAnimation?.enable) {
                 attributes.entranceAnimation.clientId = props.clientId.split("-")[4];
-                wrapperProps.className = attributes.entranceAnimation.animation?.[deviceType] !== 'none' ? attributes.entranceAnimation.animation?.[deviceType] : '';
+                wrapperProps['data-animation'] = attributes.entranceAnimation.clientId;
+                const animationClass = attributes.entranceAnimation.animation?.[deviceType];
+                if (animationClass) {
+                    props.className += ` ${animationClass}`;
+                }
             }
 
             return <BlockListBlock {...props} wrapperProps={wrapperProps} />;

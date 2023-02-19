@@ -65,7 +65,7 @@ const GlobalFeatures = props => {
                 />
                 <AdvancedSwitcher
                     label={__(
-                        "Floating Effects",
+                        "Entrance Animation",
                         "premium-blocks-for-gutenberg"
                     )}
                     onChange={(checked) =>
@@ -74,6 +74,20 @@ const GlobalFeatures = props => {
                     checked={settings?.["premium-floating-effect"] || false}
                     description={__(
                         "Apply advanced floating effects on any Premium Blocks for Gutenberg block.",
+                        "premium-blocks-for-gutenberg"
+                    )}
+                />
+                <AdvancedSwitcher
+                    label={__(
+                        "Entrance Animation",
+                        "premium-blocks-for-gutenberg"
+                    )}
+                    onChange={(checked) =>
+                        onChangeData("premium-entrance-animation", checked)
+                    }
+                    checked={settings?.["premium-entrance-animation"] || false}
+                    description={__(
+                        "Apply entrance animation on any Premium Blocks for Gutenberg block.",
                         "premium-blocks-for-gutenberg"
                     )}
                 />

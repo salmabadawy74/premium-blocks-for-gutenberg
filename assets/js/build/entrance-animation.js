@@ -2622,8 +2622,9 @@ const entranceAnimationDefaults = {
     Tablet: '',
     Mobile: ''
   },
-  duration: 'normal',
-  delay: ''
+  duration: '1000',
+  delay: '',
+  curve: 'linear'
 };
 
 /***/ }),
@@ -11028,7 +11029,8 @@ const EntranceAnimation = _ref => {
     enable,
     animation,
     duration,
-    delay
+    delay,
+    curve
   } = value;
   const changeHandler = newVal => {
     const newValue = {
@@ -11038,9 +11040,6 @@ const EntranceAnimation = _ref => {
     onChange(newValue);
   };
   const options = [{
-    label: 'None',
-    value: 'none'
-  }, {
     label: 'Fading',
     options: [{
       label: 'Fade In',
@@ -11174,7 +11173,7 @@ const EntranceAnimation = _ref => {
     }]
   }];
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Motion Effects", 'premium-blocks-for-gutenberg'),
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Entrance Animation", 'premium-blocks-for-gutenberg'),
     className: "premium-panel-body",
     initialOpen: false
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
@@ -11191,21 +11190,37 @@ const EntranceAnimation = _ref => {
       animation: option
     })
   }), animation?.[deviceType] !== 'none' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Duration", "premium-blocks-for-gutenberg"),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Easing", "premium-blocks-for-gutenberg"),
+    value: curve,
+    onChange: newValue => changeHandler({
+      curve: newValue
+    }),
+    options: [{
+      value: 'ease-in-out',
+      label: 'ease-in-out'
+    }, {
+      value: 'ease',
+      label: 'ease'
+    }, {
+      value: 'ease-in',
+      label: 'ease-in'
+    }, {
+      value: 'ease-out',
+      label: 'ease-out'
+    }, {
+      value: 'linear',
+      label: 'linear'
+    }]
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_10__.ResponsiveSingleRangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Duration", 'premium-blocks-for-gutenberg'),
     value: duration,
     onChange: newValue => changeHandler({
       duration: newValue
     }),
-    options: [{
-      value: "slow",
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Slow", "premium-blocks-for-gutenberg")
-    }, {
-      value: "normal",
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Normal", "premium-blocks-for-gutenberg")
-    }, {
-      value: "fast",
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Fast", "premium-blocks-for-gutenberg")
-    }]
+    showUnit: false,
+    defaultValue: 0,
+    max: 10000,
+    step: 1
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_10__.ResponsiveSingleRangeControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Delay", 'premium-blocks-for-gutenberg'),
     value: delay,
@@ -11235,6 +11250,42 @@ const EntranceAnimationControl = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_
       } = select("core/edit-post");
       return __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : "Desktop";
     }, []);
+    const [editorElement, setEditorElement] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(null);
+    (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+      const postEditorDom = document.querySelector(`.editor-styles-wrapper`);
+      if (postEditorDom) {
+        setEditorElement(postEditorDom);
+        return;
+      }
+      let interval = null;
+      let siteEditorDom = document.querySelector(`iframe[name="editor-canvas"]`);
+      if (siteEditorDom && siteEditorDom.contentDocument?.body?.childNodes?.length !== 0) {
+        const editorBody = siteEditorDom.contentDocument.body;
+        setEditorElement(editorBody);
+      } else {
+        interval = setInterval(() => {
+          siteEditorDom = document.querySelector(`iframe[name="editor-canvas"]`);
+          if (siteEditorDom) {
+            const editorBody = siteEditorDom.contentDocument.body;
+            if (editorBody && editorBody?.childNodes?.length !== 0) {
+              setEditorElement(editorBody);
+            }
+          }
+        }, 200);
+      }
+      return () => {
+        clearInterval(interval);
+      };
+    }, [isSelected, entranceAnimation, deviceType]);
+    (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+      if (!entranceAnimation?.enable || !editorElement) {
+        return;
+      }
+      let blockElement = editorElement.querySelector(`[data-animation="${entranceAnimation.clientId}"]`);
+      blockElement.style.animationTimingFunction = entranceAnimation.curve;
+      blockElement.style.animationDuration = entranceAnimation.duration ? `${entranceAnimation.duration}ms` : '';
+      blockElement.style.animationDelay = entranceAnimation.delay ? `${entranceAnimation.delay}ms` : '';
+    }, [isSelected, entranceAnimation, deviceType, editorElement]);
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(BlockEdit, props), isSelected && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_8__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(EntranceAnimation, {
       value: entranceAnimation,
       deviceType: deviceType,
@@ -11274,7 +11325,11 @@ const withClientId = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__.createHi
     }, []);
     if (attributes?.entranceAnimation?.enable) {
       attributes.entranceAnimation.clientId = props.clientId.split("-")[4];
-      wrapperProps.className = attributes.entranceAnimation.animation?.[deviceType] !== 'none' ? attributes.entranceAnimation.animation?.[deviceType] : '';
+      wrapperProps['data-animation'] = attributes.entranceAnimation.clientId;
+      const animationClass = attributes.entranceAnimation.animation?.[deviceType];
+      if (animationClass) {
+        props.className += ` ${animationClass}`;
+      }
     }
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(BlockListBlock, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
       wrapperProps: wrapperProps

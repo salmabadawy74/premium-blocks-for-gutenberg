@@ -1,7 +1,23 @@
 /*!***********************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/scss/pb-panel.scss ***!
   \***********************************************************************************************************************************************************************************************************************************************/
+@-webkit-keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 @keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes rotate {
   from {
     transform: rotate(0deg);
   }
@@ -178,6 +194,14 @@
 #pb-dashboard .components-panel__body {
   margin-top: 25px;
 }
+@-webkit-keyframes animateright {
+  from {
+    right: -200px;
+  }
+  to {
+    right: 50px;
+  }
+}
 @keyframes animateright {
   from {
     right: -200px;
@@ -193,7 +217,8 @@
   position: fixed;
   background-color: #fff;
   top: 150px;
-  animation: animateright 1s;
+  -webkit-animation: animateright 1s;
+          animation: animateright 1s;
   right: 50px;
   width: 200px;
   display: flex;
@@ -334,7 +359,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
-  animation: spin 2s infinite linear;
+  -webkit-animation: spin 2s infinite linear;
+          animation: spin 2s infinite linear;
   vertical-align: sub;
   margin-left: 5px;
 }

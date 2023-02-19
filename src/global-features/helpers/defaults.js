@@ -271,6 +271,7 @@ export const entranceAnimationDefaults = {
         Tablet: '',
         Mobile: ''
     },
-    duration: 'normal',
-    delay: ''
+    duration: '1000',
+    delay: '',
+    curve: 'linear',
 }
