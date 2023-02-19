@@ -93,7 +93,11 @@
 .premium-icon__container .premium-icon {
   display: inline-block !important;
   width: auto;
-  height: auto; }
+  height: auto;
+  font-size: 40px; }
+  .premium-icon__container .premium-icon svg {
+    width: 40px;
+    height: 40px; }
 
 .premium-icon__container .premium-icon.fa {
   font-size: 40px;

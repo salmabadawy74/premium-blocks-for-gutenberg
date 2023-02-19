@@ -54,6 +54,8 @@ function get_premium_button_css_style( $attr, $unique_id ) {
 	if ( isset( $attr['iconSize'] ) ) {
 		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' );
 		$css->add_property( 'font-size', $css->render_range( $attr['iconSize'], 'Desktop' ) );
+		$css->add_property( 'width', $css->render_range( $attr['iconSize'], 'Desktop' ) );
+		$css->add_property( 'height', $css->render_range( $attr['iconSize'], 'Desktop' ) );
 	}
 	if ( isset( $attr['iconSize'] ) ) {
 		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' . '> svg' );
@@ -105,6 +107,8 @@ function get_premium_button_css_style( $attr, $unique_id ) {
 	if ( isset( $attr['iconSize'] ) ) {
 		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' );
 		$css->add_property( 'font-size', $css->render_range( $attr['iconSize'], 'Tablet' ) );
+		$css->add_property( 'width', $css->render_range( $attr['iconSize'], 'Tablet' ) );
+		$css->add_property( 'height', $css->render_range( $attr['iconSize'], 'Tablet' ) );
 	}
 	if ( isset( $attr['iconSize'] ) ) {
 		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' . '> svg' );
@@ -157,6 +161,8 @@ function get_premium_button_css_style( $attr, $unique_id ) {
 	if ( isset( $attr['iconSize'] ) ) {
 		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' );
 		$css->add_property( 'font-size', $css->render_range( $attr['iconSize'], 'Mobile' ) );
+		$css->add_property( 'width', $css->render_range( $attr['iconSize'], 'Mobile' ) );
+		$css->add_property( 'height', $css->render_range( $attr['iconSize'], 'Mobile' ) );
 	}
 	if ( isset( $attr['iconSize'] ) ) {
 		$css->set_selector( $unique_id . '> .premium-button' . '> .premium-button-icon' . '> svg' );

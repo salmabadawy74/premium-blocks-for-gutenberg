@@ -28,8 +28,13 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 	}
 
 	if ( isset( $attr['triggerIconSize']['Desktop'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' . ' > .premium-modal-trigger-btn svg' );
+		$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' . ' > .premium-modal-trigger-btn' . ' > .premium-modal-box-icon' );
 		$css->add_property( 'font-size', $css->render_range( $attr['triggerIconSize'], 'Desktop' ) );
+		$css->add_property( 'width', $css->render_range( $attr['triggerIconSize'], 'Desktop' ) );
+		$css->add_property( 'height', $css->render_range( $attr['triggerIconSize'], 'Desktop' ) );
+	}
+	if ( isset( $attr['triggerIconSize']['Desktop'] ) ) {
+		$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' . ' > .premium-modal-trigger-btn svg' );
 		$css->add_property( 'width', $css->render_range( $attr['triggerIconSize'], 'Desktop' ) );
 		$css->add_property( 'height', $css->render_range( $attr['triggerIconSize'], 'Desktop' ) );
 	}
@@ -167,8 +172,13 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 	}
 
 	if ( isset( $attr['triggerIconSize']['Tablet'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' . ' > .premium-modal-trigger-btn svg' );
+		$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' . ' > .premium-modal-trigger-btn' . ' > .premium-modal-box-icon' );
 		$css->add_property( 'font-size', $css->render_range( $attr['triggerIconSize'], 'Tablet' ) );
+		$css->add_property( 'width', $css->render_range( $attr['triggerIconSize'], 'Tablet' ) );
+		$css->add_property( 'height', $css->render_range( $attr['triggerIconSize'], 'Tablet' ) );
+	}
+	if ( isset( $attr['triggerIconSize']['Tablet'] ) ) {
+		$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' . ' > .premium-modal-trigger-btn svg' );
 		$css->add_property( 'width', $css->render_range( $attr['triggerIconSize'], 'Tablet' ) );
 		$css->add_property( 'height', $css->render_range( $attr['triggerIconSize'], 'Tablet' ) );
 	}
@@ -307,8 +317,13 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 	}
 
 	if ( isset( $attr['triggerIconSize']['Mobile'] ) ) {
-		$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' . ' > .premium-modal-trigger-btn svg' );
+		$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' . ' > .premium-modal-trigger-btn' . ' > .premium-modal-box-icon' );
 		$css->add_property( 'font-size', $css->render_range( $attr['triggerIconSize'], 'Mobile' ) );
+		$css->add_property( 'width', $css->render_range( $attr['triggerIconSize'], 'Mobile' ) );
+		$css->add_property( 'height', $css->render_range( $attr['triggerIconSize'], 'Mobile' ) );
+	}
+	if ( isset( $attr['triggerIconSize']['Mobile'] ) ) {
+		$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' . ' > .premium-modal-trigger-btn svg' );
 		$css->add_property( 'width', $css->render_range( $attr['triggerIconSize'], 'Mobile' ) );
 		$css->add_property( 'height', $css->render_range( $attr['triggerIconSize'], 'Mobile' ) );
 	}

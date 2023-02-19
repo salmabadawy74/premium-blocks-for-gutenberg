@@ -83,6 +83,7 @@ const Edit = props => {
     const loadStyles = () => {
         const styles = {};
         styles[` .${blockId} .premium-modal-trigger-container button.premium-modal-trigger-btn:hover`] = {
+            'color': `${triggerStyles[0].hoverColor} !important`,
             'border-color': `${triggerBorderH && triggerBorderH.borderColor} !important`,
             'background-color': `${triggerStyles[0].triggerHoverBack} !important`,
             'border-style': `${triggerBorderH && triggerBorderH.borderType} !important`,
@@ -201,6 +202,7 @@ const Edit = props => {
                             style={{
                                 ...paddingCss(triggerPadding, currentDevice),
                                 ...borderCss(triggerBorder, currentDevice),
+                                color: triggerStyles[0].color,
                                 fontSize: `${triggerTypography.fontSize[currentDevice]}${triggerTypography.fontSize.unit}`,
                                 backgroundColor: triggerStyles[0].triggerBack,
                                 boxShadow: `${triggerShadow.horizontal}px ${triggerShadow.vertical}px ${triggerShadow.blur}px ${triggerShadow.color} ${triggerShadow.position}`,

@@ -49,9 +49,7 @@ const save = (props) => {
         styles[`.${blockId}.premium-button__wrap .premium-button:hover`] = {
             "background-color": `${btnStyles[0].backHoverColor}!important`,
             "border-color": `${btnStyles[0].borderHoverColor}!important`,
-        };
-        styles[`.${blockId}.premium-button__wrap .premium-button .premium-button-text-edit`] = {
-            color: `${btnStyles[0].textColor}!important`,
+            color: `${btnStyles[0].textHoverColor}!important`,
         };
         styles[`.${blockId}.premium-button__wrap .premium-button:hover .premium-button-text-edit`] = {
             color: `${btnStyles[0].textHoverColor}!important`,
@@ -89,6 +87,7 @@ const save = (props) => {
                         borderStyle: border?.borderType,
                         borderColor: border?.borderColor,
                         ...gradientBackground(backgroundOptions),
+                        color: `${btnStyles[0].textColor}`,
                     },
                 },
                 [

@@ -38,6 +38,7 @@ const save = props => {
     const loadStyles = () => {
         const styles = {};
         styles[` .${blockId} .premium-modal-trigger-container button.premium-modal-trigger-btn:hover`] = {
+            'color': `${triggerStyles[0].hoverColor} !important`,
             'border-color': `${triggerBorderH && triggerBorderH.borderColor} !important`,
             'background-color': `${triggerStyles[0].triggerHoverBack} !important`,
             'border-style': `${triggerBorderH && triggerBorderH.borderType} !important`
@@ -98,6 +99,7 @@ const save = props => {
                 {(triggerSettings[0].triggerType === "button") &&
                     <button className={`premium-modal-trigger-btn wp-block-button__link premium-button premium-button__${triggerSettings[0].btnSize} premium-button__${triggerSettings[0].iconPosition}`}
                         style={filterJsCss({
+                            color: triggerStyles[0].color,
                             backgroundColor: triggerStyles[0].triggerBack,
                             borderStyle: triggerBorder.borderType,
                             borderColor: triggerBorder.borderColor,
