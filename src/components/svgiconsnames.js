@@ -1,3 +1,5 @@
+import { FontAwesomeEnabled } from "../../assets/js/settings";
+
 const IcoNames = {
 	'Dashicons': [
 		"dashicons admin-appearance",
@@ -213,7 +215,7 @@ const IcoNames = {
 		"dashicons wordpress",
 		"dashicons yes"
 	],
-	'Line Icons': [
+	'Line Icons': FontAwesomeEnabled == 1 ? [
 		'fe_activity',
 		'fe_airplay',
 		'fe_alertCircle',
@@ -480,8 +482,8 @@ const IcoNames = {
 		'fe_zapOff',
 		'fe_zoomIn',
 		'fe_zoomOut',
-	],
-	'Solid Icons': [
+	] : [],
+	'Solid Icons': FontAwesomeEnabled == 1 ? [
 		'ic_alignBottom',
 		'ic_alignCenter',
 		'ic_alignTop',
@@ -1824,6 +1826,6 @@ const IcoNames = {
 		'fas_wrench',
 		'fas_x-ray',
 		'fas_yen-sign',
-	],
+	] : [],
 };
 export default IcoNames;
