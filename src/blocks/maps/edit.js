@@ -38,7 +38,7 @@ function Edit(props) {
     const contentRef = React.createRef();
     const setting_url =
         PremiumBlocksSettings.admin_url +
-        "admin.php?page=pb_panel&tab=settings";
+        "admin.php?page=pb_panel&path=settings";
 
     useEffect(() => {
         setAttributes({
@@ -383,9 +383,9 @@ function Edit(props) {
                                         >
                                             &nbsp;
                                             {__(
-                                                "here",
-                                                "premium-blocks-for-gutenberg"
-                                            )}
+                                            "here",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         </a>,
                                     ]}
                                     onChange={(newLng) =>
@@ -647,9 +647,9 @@ function Edit(props) {
                                         >
                                             &nbsp;
                                             {__(
-                                                "here",
-                                                "premium-blocks-for-gutenberg"
-                                            )}
+                                            "here",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
                                         </a>,
                                     ]}
                                     onChange={(newStyle) =>
@@ -936,24 +936,24 @@ function Edit(props) {
                         />
                     </div>
                 ) : (
-                    <Placeholder
-                        label={__("Maps", "premium-blocks-for-gutenberg")}
-                        className={className}
-                    >
-                        <div>
-                            {__(
-                                "Premium Maps requires an API key.",
-                                "premium-blocks-for-gutenberg"
-                            )}{" "}
-                            <a target="_blank" href={setting_url}>
+                        <Placeholder
+                            label={__("Maps", "premium-blocks-for-gutenberg")}
+                            className={className}
+                        >
+                            <div>
                                 {__(
-                                    "Add API key here",
+                                    "Premium Maps requires an API key.",
                                     "premium-blocks-for-gutenberg"
-                                )}
-                            </a>
-                        </div>
-                    </Placeholder>
-                )}
+                                )}{" "}
+                                <a target="_blank" href={setting_url}>
+                                    {__(
+                                        "Add API key here",
+                                        "premium-blocks-for-gutenberg"
+                                    )}
+                                </a>
+                            </div>
+                        </Placeholder>
+                    )}
                 <style>{loadStyles()}</style>
                 {loadDescriptionGoogleFonts}
                 {loadTitleGoogleFonts}

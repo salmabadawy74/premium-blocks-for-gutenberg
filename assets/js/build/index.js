@@ -26584,7 +26584,7 @@ function Edit(props) {
     align: "alignwide"
   }, [["premium/icon", {
     iconTypeFile: attributes.icon ? attributes.icon : 'icon',
-    selectedIcon: attributes.faIcon ? attributes.faIcon : 'fe_clock',
+    selectedIcon: attributes.faIcon ? attributes.faIcon : 'dashicons clock',
     imageURL: attributes.imageURL ? attributes.imageURL : ''
   }], ["premium/counter", {
     prefix: attributes.prefix ? attributes.prefix : false,
@@ -46321,6 +46321,7 @@ function Edit(props) {
   const {
     hoversEffect
   } = context;
+  const setting_url = PremiumBlocksSettings.admin_url + "admin.php?page=pb_panel&path=settings";
   useEffect(() => {
     setAttributes({
       blockId: "premium-icon-" + (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_5__.generateBlockId)(props.clientId)
@@ -46842,9 +46843,12 @@ function Edit(props) {
     }
   }, "icon" === iconTypeFile && (iconType === "fe" || iconType === "ic") && 1 != _pbg_settings__WEBPACK_IMPORTED_MODULE_6__.FontAwesomeEnabled && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", {
     className: `premium-icon__alert`
-  }, __("Please Enable Font Awesome Icons from Plugin settings", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  }, __("Please Enable Font Awesome Icons from ", "premium-blocks-for-gutenberg"), " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
+    target: "_blank",
+    href: setting_url
+  }, __("Plugin settings", "premium-blocks-for-gutenberg"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-icon-content premium-icon__${hoverEffect !== "none" || !hoversEffect ? hoverEffect : hoversEffect}`
-  }, "icon" === iconTypeFile && selectedIcon && (iconType === "dash" || 1 == _pbg_settings__WEBPACK_IMPORTED_MODULE_6__.FontAwesomeEnabled) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_4__.GenIcon, {
+  }, "icon" === iconTypeFile && (iconType === "da" || 1 == _pbg_settings__WEBPACK_IMPORTED_MODULE_6__.FontAwesomeEnabled) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_4__.GenIcon, {
     className: `premium-icon premium-icon-type ${selectedIcon}`,
     name: selectedIcon,
     size: iconSize[props.deviceType] + iconSize.unit,
@@ -51892,7 +51896,7 @@ function Edit(props) {
   const [thisMap, setMap] = useState(null);
   const [thisInfo, setInfo] = useState(null);
   const contentRef = React.createRef();
-  const setting_url = PremiumBlocksSettings.admin_url + "admin.php?page=pb_panel&tab=settings";
+  const setting_url = PremiumBlocksSettings.admin_url + "admin.php?page=pb_panel&path=settings";
   useEffect(() => {
     setAttributes({
       blockId: "premium-map-" + (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.generateBlockId)(clientId)

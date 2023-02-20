@@ -46,6 +46,7 @@ const { withSelect } = wp.data;
 function Edit(props) {
     const { setAttributes, className, context, attributes } = props;
     const { hoversEffect } = context;
+    const setting_url = PremiumBlocksSettings.admin_url + "admin.php?page=pb_panel&path=settings";
 
     useEffect(() => {
         setAttributes({
@@ -774,13 +775,20 @@ function Edit(props) {
                     {"icon" === iconTypeFile && (iconType === "fe" || iconType === "ic") && 1 != FontAwesomeEnabled && (
                         <p className={`premium-icon__alert`}>
                             {__(
-                                "Please Enable Font Awesome Icons from Plugin settings",
+                                "Please Enable Font Awesome Icons from ",
                                 "premium-blocks-for-gutenberg"
                             )}
+                            {" "}
+                            <a target="_blank" href={setting_url}>
+                                {__(
+                                    "Plugin settings",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                            </a>
                         </p>
                     )}
                     <div className={`premium-icon-content premium-icon__${hoverEffect !== "none" || !hoversEffect ? hoverEffect : hoversEffect}`}>
-                        {"icon" === iconTypeFile && selectedIcon && (iconType === "dash" || 1 == FontAwesomeEnabled) && (
+                        {"icon" === iconTypeFile && (iconType === "da" || 1 == FontAwesomeEnabled) && (
                             <GenIcon className={`premium-icon premium-icon-type ${selectedIcon}`}
                                 name={selectedIcon}
                                 size={iconSize[props.deviceType] +

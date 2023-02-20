@@ -62,7 +62,7 @@ function Edit(props) {
                 "premium/icon",
                 {
                     iconTypeFile: attributes.icon ? attributes.icon : 'icon',
-                    selectedIcon: attributes.faIcon ? attributes.faIcon : 'fe_clock',
+                    selectedIcon: attributes.faIcon ? attributes.faIcon : 'dashicons clock',
                     imageURL: attributes.imageURL ? attributes.imageURL : ''
                 },
             ],
