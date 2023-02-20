@@ -42,7 +42,6 @@ function render_block_premium_post_featured_image($attributes, $content, $block)
         return '';
     }
 
-
     // return $featured_image;
     $wrapImage       = array(
         'premium-blog-thumbnail-container',
@@ -55,6 +54,8 @@ function render_block_premium_post_featured_image($attributes, $content, $block)
     <div class="premium-blog-thumb-effect-wrapper">
         <div class="<?php echo esc_html(implode(' ', $wrapImage)); ?>">
             <?php echo wp_get_attachment_image(get_post_thumbnail_id(), $attributes['imageSize']); ?>
+            <?php ?>
+
         </div>
         <div class='premium-blog-thumbnail-overlay'>
             <a href="<?php the_permalink(); ?>">

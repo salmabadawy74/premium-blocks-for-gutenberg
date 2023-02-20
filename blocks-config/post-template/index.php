@@ -5,6 +5,46 @@
  *
  * @package WordPress
  */
+function get_premium_post_excerpt_css_style($attributes, $unique_id)
+{
+    $css                    = new Premium_Blocks_css();
+    $media_query            = array();
+    $media_query['mobile']  = apply_filters('Premium_BLocks_mobile_media_query', '(max-width: 767px)');
+    $media_query['tablet']  = apply_filters('Premium_BLocks_tablet_media_query', '(max-width: 1024px)');
+    $media_query['desktop'] = apply_filters('Premium_BLocks_tablet_media_query', '(min-width: 1025px)');
+
+
+    if (isset($attributes['typography'])) {
+        var_dump("kkkk");
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-post-content');
+        $css->render_typography($attributes['typography'], 'Desktop');
+    }
+    if (isset($attributes['color'])) {
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-post-content');
+        $css->add_property('color', $css->render_color($attributes["color"]));
+    }
+    if (isset($attributes['margin'])) {
+        $content_margin = $attributes['margin'];
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-post-content');
+        $css->add_property('margin', $css->render_spacing($content_margin['Desktop'], $content_margin['unit']));
+    }
+
+
+    $css->start_media_query($media_query['tablet']);
+    if (isset($attributes['typography'])) {
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-post-tags-container > * a ');
+        $css->render_typography($attributes['typography'], 'Tablet');
+    }
+    $css->stop_media_query();
+    $css->start_media_query($media_query['mobile']);
+    if (isset($attributes['typography'])) {
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-post-tags-container > * a ');
+        $css->render_typography($attributes['typography'], 'Mobile');
+    }
+    $css->stop_media_query();
+    return $css->css_output();
+}
+
 function get_premium_post_tag_css_style($attributes, $unique_id)
 {
     $css                    = new Premium_Blocks_css();
@@ -394,6 +434,8 @@ function render_block_premium_post_template($attributes, $content, $block)
                     case 'premium/post-meta':
                         $style_css .= get_premium_post_meta_css_style($blockattr, $block_id);
                         break;
+                    case "premium/post-excerpt":
+                        $style_css .= get_premium_post_excerpt_css_style($blockattr, $block_id);
                     case 'premium/post-tag':
                         $style_css .= get_premium_post_tag_css_style($blockattr, $block_id);
                         break;

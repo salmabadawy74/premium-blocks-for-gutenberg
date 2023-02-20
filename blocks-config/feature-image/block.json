@@ -77,26 +77,6 @@
             "type": "string",
             "default": ""
         },
-        "shapeTop": {
-            "type": "object",
-            "default": {
-                "openShape": 0,
-                "color": "#006fbf",
-                "shapeType": "top",
-                "width": {
-                    "Desktop": "",
-                    "Tablet": "",
-                    "Mobile": "",
-                    "unit": "%"
-                },
-                "height": {
-                    "Desktop": "",
-                    "Tablet": "",
-                    "Mobile": "",
-                    "unit": "px"
-                }
-            }
-        },
         "shapeBottom": {
             "type": "object",
             "default": {
@@ -114,12 +94,10 @@
                     "Tablet": "",
                     "Mobile": "",
                     "unit": "px"
-                },
-                         "hideDesktop": {
-            "type": "boolean",
-            "default": ""
+                }
+            }
         },
-        "hideTablet": {
+                "hideTablet": {
             "type": "boolean",
             "default": ""
         },
@@ -128,9 +106,9 @@
             "default": ""
         }
 
-            }
-        }
-    },
+            },
+        
+    
     "usesContext": ["postId", "postType", "queryId"],
     "supports": {
         "align": ["left", "right", "center", "wide", "full"]

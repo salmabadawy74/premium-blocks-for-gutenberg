@@ -40,7 +40,7 @@ function QueryContent({ attributes, setAttributes, deviceType }) {
     const { __unstableMarkNextChangeAsNotPersistent } =
         useDispatch(blockEditorStore);
     const instanceId = useInstanceId(QueryContent);
-    const blockProps = useBlockProps();
+    const blockProps = useBlockProps({ className: "alignwide" });
     const innerBlocksProps = useInnerBlocksProps(
         {
             style: {

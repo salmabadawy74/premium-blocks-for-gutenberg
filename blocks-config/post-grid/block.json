@@ -199,7 +199,6 @@
 		"query": "query",
         "columns":"columns",
         "equalHeight":"equalHeight",
-    
         "currentPost":"currentPost"
 	}
 }

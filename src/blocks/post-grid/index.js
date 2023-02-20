@@ -11,6 +11,10 @@ registerBlockType("premium/post-grid", {
     ...json,
     icon: "",
     keywords: [__("post"), __("Grid")],
+    supports: {
+        align: ["center", "wide", "full"],
+        anchor: true,
+    },
     edit: PostTemplateEdit,
     example: {},
     save,

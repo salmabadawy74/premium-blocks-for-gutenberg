@@ -267,14 +267,11 @@ function Excerpt(props) {
                         <PremiumTypo
                             value={typography}
                             onChange={(newValue) =>
-                                setAttributes({ titleTypography: newValue })
+                                setAttributes({ typography: newValue })
                             }
                         />
                         <AdvancedPopColorControl
-                            label={__(
-                                "Overlay Color",
-                                "premium-blocks-for-gutenberg"
-                            )}
+                            label={__("Color", "premium-blocks-for-gutenberg")}
                             colorValue={color}
                             colorDefault={""}
                             onColorChange={(newValue) =>

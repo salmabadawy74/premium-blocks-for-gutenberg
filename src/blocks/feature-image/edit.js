@@ -13,6 +13,7 @@ import {
     PremiumFilters,
     InsideTabs,
     InsideTab,
+    Shape,
 } from "@pbg/components";
 const { useEffect, Fragment } = wp.element;
 const { PanelBody, SelectControl, ToggleControl } = wp.components;
@@ -132,6 +133,13 @@ function Image(props) {
     });
     const loadStyles = () => {
         const styles = {};
+        styles[
+            `.${blockId} .premium-blog-thumbnail-container .premium-bottom-shape svg`
+        ] = {
+            width: `${shapeBottom.width[deviceType]}${shapeBottom.width["unit"]}`,
+            height: `${shapeBottom.height[deviceType]}${shapeBottom.height["unit"]}`,
+            fill: `${shapeBottom["color"]}`,
+        };
         styles[`.${blockId} .premium-blog-thumbnail-container img `] = {
             "object-fit": `${thumbnail}`,
             height: `100%`,
@@ -201,6 +209,13 @@ function Image(props) {
                                     value={thumbnail}
                                     onChange={(value) =>
                                         setAttributes({ thumbnail: value })
+                                    }
+                                />
+                                <Shape
+                                    shapeType="bottom"
+                                    value={shapeBottom}
+                                    onChange={(val) =>
+                                        setAttributes({ shapeBottom: val })
                                     }
                                 />
                             </PanelBody>
@@ -293,6 +308,18 @@ function Image(props) {
                         className={`premium-blog-thumbnail-container premium-blog-${hoverEffect}-effect`}
                     >
                         <img src={mediaUrl} style={{}} />
+                        {Object.entries(shapeBottom).length > 1 &&
+                            shapeBottom.openShape == 1 &&
+                            shapeBottom.style && (
+                                <div
+                                    className={bottomShapeClasses}
+                                    dangerouslySetInnerHTML={{
+                                        __html: PremiumBlocksSettings.shapes[
+                                            shapeBottom.style
+                                        ],
+                                    }}
+                                />
+                            )}
                     </div>
                     <div
                         className="premium-blog-thumbnail-overlay"
