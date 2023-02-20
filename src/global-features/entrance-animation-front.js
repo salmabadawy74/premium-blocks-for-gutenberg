@@ -16,7 +16,7 @@ if (blocksElement.length > 0) {
                 device = 'Mobile';
             }
 
-            if (entranceAnimation.enable) {
+            if (entranceAnimation?.animation[device]) {
                 blockElement.classList.add(entranceAnimation.animation[device]);
                 blockElement.style.animationTimingFunction = entranceAnimation.curve;
                 blockElement.style.animationDuration = entranceAnimation.duration ? `${entranceAnimation.duration}ms` : '';

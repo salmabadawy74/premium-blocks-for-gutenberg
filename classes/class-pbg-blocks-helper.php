@@ -129,28 +129,85 @@ class PBG_Blocks_Helper {
 
 		add_filter( 'render_block_premium/container', array( $this, 'equal_height_front_script' ), 1, 2 );
 
-		add_filter( 'render_block', array( $this, 'add_data_effect_attribute' ), 10, 2 );
+		add_filter( 'render_block', array( $this, 'add_effect_data_attribute' ), 10, 2 );
+		add_filter( 'render_block', array( $this, 'add_animation_data_attribute' ), 10, 2 );
+		add_filter( 'render_block', array( $this, 'register_block_floating' ), 10, 2 );
+		add_filter( 'render_block', array( $this, 'register_block_animation' ), 10, 2 );
 
-		add_filter( 'render_block', array( $this, 'register_block_floating_effect' ), 10, 2 );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_floating_effect_script' ), 10 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_features_script' ), 10 );
 	}
 
 	/**
-	 * Registers blocks with floating effect.
+	 * Check if any value in an array is not empty.
+	 *
+	 * @param array $array An array of key-value pairs to check for non-empty values.
+	 * @return bool Whether any of the values in the array are not empty.
+	 */
+	function check_if_any_value_not_empty( $array ) {
+		if ( ! is_array( $array ) ) {
+			return false;
+		}
+		foreach ( $array as $key => $value ) {
+			if ( ! empty( $value ) ) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Check if a block name is a premium block.
+	 *
+	 * @param string $block_name The name of the block to check.
+	 *
+	 * @return bool True if the block name starts with "premium/", false otherwise.
+	 */
+	function is_premium_block( $block_name ) {
+		if ( strpos( $block_name, 'premium/' ) !== false ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	/**
+	 * Registers blocks with features.
 	 *
 	 * @param string $block_content The block content.
 	 * @param array  $block         The block attributes.
 	 *
 	 * @return string $block_content The block content.
 	 */
-	public function register_block_floating_effect( $block_content, $block ) {
+	public function register_block_floating( $block_content, $block ) {
 		$global_features = apply_filters( 'pb_global_features', get_option( 'pbg_global_features', array() ) );
+
+		if ( ! $global_features['premium-floating-effect-all-blocks'] && ! $this->is_premium_block( $block['blockName'] ) ) {
+			return $block_content;
+		}
 
 		if ( $global_features['premium-floating-effect'] && isset( $block['attrs']['floatingEffect'] ) && $block['attrs']['floatingEffect']['enable'] ) {
 			$this->floating_effect_blocks[ $block['attrs']['floatingEffect']['clientId'] ] = $block['attrs']['floatingEffect'];
 		}
 
-		if ( $global_features['premium-entrance-animation'] && isset( $block['attrs']['entranceAnimation'] ) && $block['attrs']['entranceAnimation']['enable'] ) {
+		return $block_content;
+	}
+
+	/**
+	 * Registers blocks with features.
+	 *
+	 * @param string $block_content The block content.
+	 * @param array  $block         The block attributes.
+	 *
+	 * @return string $block_content The block content.
+	 */
+	public function register_block_animation( $block_content, $block ) {
+		$global_features = apply_filters( 'pb_global_features', get_option( 'pbg_global_features', array() ) );
+
+		if ( ! $global_features['premium-entrance-animation-all-blocks'] && ! $this->is_premium_block( $block['blockName'] ) ) {
+			return $block_content;
+		}
+
+		if ( $global_features['premium-entrance-animation'] && isset( $block['attrs']['entranceAnimation'] ) && $this->check_if_any_value_not_empty( $block['attrs']['entranceAnimation']['animation'] ) ) {
 			$this->entrance_animation_blocks[ $block['attrs']['entranceAnimation']['clientId'] ] = $block['attrs']['entranceAnimation'];
 		}
 
@@ -158,9 +215,9 @@ class PBG_Blocks_Helper {
 	}
 
 	/**
-	 * Enqueues floating effect scripts.
+	 * Enqueues features scripts.
 	 */
-	public function enqueue_floating_effect_script() {
+	public function enqueue_features_script() {
 		$media_query            = array();
 		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
 		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
@@ -215,15 +272,39 @@ class PBG_Blocks_Helper {
 	 *
 	 * @return string The updated HTML content of the block.
 	 */
-	function add_data_effect_attribute( $block_content, $block ) {
+	function add_effect_data_attribute( $block_content, $block ) {
 		$global_features = apply_filters( 'pb_global_features', get_option( 'pbg_global_features', array() ) );
-		if ( $global_features['premium-floating-effect'] && isset( $block['attrs']['floatingEffect'] ) && $block['attrs']['floatingEffect']['enable'] ) {
-			preg_match( '/<([\w]+)(?![^<]*(style|script))/', $block_content, $matches );
-			$parent_tag    = $matches[1];
-			$block_content = $this->str_replace_first( '<' . $parent_tag, '<' . $parent_tag . ' data-effect="' . $block['attrs']['floatingEffect']['clientId'] . '"', $block_content );
+
+		if ( ! $global_features['premium-floating-effect-all-blocks'] && ! $this->is_premium_block( $block['blockName'] ) ) {
+			return $block_content;
+		}
+		if ( $global_features['premium-floating-effect'] ) {
+			if ( isset( $block['attrs']['floatingEffect'] ) && $block['attrs']['floatingEffect']['enable'] ) {
+				preg_match( '/<([\w]+)(?![^<]*(style|script))/', $block_content, $matches );
+				$parent_tag    = $matches[1];
+				$block_content = $this->str_replace_first( '<' . $parent_tag, '<' . $parent_tag . ' data-effect="' . $block['attrs']['floatingEffect']['clientId'] . '"', $block_content );
+			}
 		}
 
-		if ( $global_features['premium-entrance-animation'] && isset( $block['attrs']['entranceAnimation'] ) && $block['attrs']['entranceAnimation']['enable'] ) {
+		return $block_content;
+	}
+
+	/**
+	 * Add the clientId attribute to the block element.
+	 *
+	 * @param string $block_content The HTML content of the block.
+	 * @param array  $block The block data.
+	 *
+	 * @return string The updated HTML content of the block.
+	 */
+	function add_animation_data_attribute( $block_content, $block ) {
+		$global_features = apply_filters( 'pb_global_features', get_option( 'pbg_global_features', array() ) );
+
+		if ( ! $global_features['premium-entrance-animation-all-blocks'] && ! $this->is_premium_block( $block['blockName'] ) ) {
+			return $block_content;
+		}
+
+		if ( $global_features['premium-entrance-animation'] && isset( $block['attrs']['entranceAnimation'] ) && $this->check_if_any_value_not_empty( $block['attrs']['entranceAnimation']['animation'] ) ) {
 			preg_match( '/<([\w]+)(?![^<]*(style|script))/', $block_content, $matches );
 			$parent_tag    = $matches[1];
 			$block_content = $this->str_replace_first( '<' . $parent_tag, '<' . $parent_tag . ' data-animation="' . $block['attrs']['entranceAnimation']['clientId'] . '"', $block_content );
@@ -431,6 +512,13 @@ class PBG_Blocks_Helper {
 				PREMIUM_BLOCKS_VERSION,
 				true
 			);
+			wp_localize_script(
+				'pbg-floating-effect',
+				'PremiumFloatingEffect',
+				array(
+					'allBlocks' => $global_features['premium-floating-effect-all-blocks'],
+				)
+			);
 		}
 
 		if ( $global_features['premium-entrance-animation'] ) {
@@ -440,6 +528,13 @@ class PBG_Blocks_Helper {
 				array( 'wp-block-editor', 'wp-components', 'wp-compose', 'wp-element', 'wp-edit-post', 'wp-hooks', 'pbg-settings-js' ),
 				PREMIUM_BLOCKS_VERSION,
 				true
+			);
+			wp_localize_script(
+				'pbg-entrance-animation',
+				'PremiumAnimation',
+				array(
+					'allBlocks' => $global_features['premium-entrance-animation-all-blocks'],
+				)
 			);
 		}
 

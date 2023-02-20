@@ -265,9 +265,8 @@ export const floatingEffectDefaults = {
 };
 
 export const entranceAnimationDefaults = {
-    enable: false,
     animation: {
-        Desktop: 'none',
+        Desktop: '',
         Tablet: '',
         Mobile: ''
     },

@@ -161,3 +161,7 @@ export const checkSelector = (selector) => {
         return false;
     }
 }
+
+export const isPremiumBlock = (blockName) => {
+    return blockName.startsWith('premium/');
+}

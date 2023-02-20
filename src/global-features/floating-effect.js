@@ -11,6 +11,7 @@ import anime from 'animejs/lib/anime.es.js';
 import ResponsiveAdvancedRangeControl from './../components/RangeControl/responsive-advanced-range-control';
 import { useSelect } from '@wordpress/data';
 import { useState } from '@wordpress/element';
+import { isPremiumBlock } from './helpers/helpers';
 
 const FloatingEffect = ({ value, onChange }) => {
     const {
@@ -686,6 +687,9 @@ export default FloatingEffect
 
 const FloatingEffectControl = createHigherOrderComponent((BlockEdit) => {
     return (props) => {
+        if (!PremiumFloatingEffect.allBlocks && !isPremiumBlock(props.name)) {
+            return <BlockEdit {...props} />;
+        }
         const { attributes, setAttributes, isSelected } = props;
         const { floatingEffect = {} } = attributes;
         const deviceType = useSelect((select) => {
@@ -739,8 +743,11 @@ const FloatingEffectControl = createHigherOrderComponent((BlockEdit) => {
 
             let targets;
             if (floatingEffect.customSelector && checkSelector(floatingEffect.customSelector)) {
+                anime.remove(blockElement);
                 blockElement = editorElement.querySelector(`[data-effect="${floatingEffect.clientId}"]`);
                 targets = blockElement.querySelectorAll(floatingEffect.customSelector);
+            } else {
+                anime.remove(blockElement[0].querySelectorAll('*'));
             }
             const animeSettings = {
                 targets: targets?.length > 0 ? targets : blockElement,
@@ -781,6 +788,9 @@ addFilter(
 );
 
 const addFloatingAttribute = (settings, name) => {
+    if (!PremiumFloatingEffect.allBlocks && !isPremiumBlock(name)) {
+        return settings;
+    }
     if (typeof settings.attributes !== 'undefined') {
         settings.attributes = Object.assign(settings.attributes, {
             floatingEffect: {
@@ -801,7 +811,9 @@ addFilter(
 const withClientId = createHigherOrderComponent(
     (BlockListBlock) => {
         return (props) => {
-            const blockRef = useRef(null);
+            if (!PremiumFloatingEffect.allBlocks && !isPremiumBlock(props.name)) {
+                return <BlockListBlock {...props} />;
+            }
             const { attributes, isSelected } = props;
             const wrapperProps = {
                 ...props.wrapperProps,

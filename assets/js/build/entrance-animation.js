@@ -2616,15 +2616,188 @@ const floatingEffectDefaults = {
   customSelector: ''
 };
 const entranceAnimationDefaults = {
-  enable: false,
   animation: {
-    Desktop: 'none',
+    Desktop: '',
     Tablet: '',
     Mobile: ''
   },
   duration: '1000',
   delay: '',
   curve: 'linear'
+};
+
+/***/ }),
+
+/***/ "./src/global-features/helpers/helpers.js":
+/*!************************************************!*\
+  !*** ./src/global-features/helpers/helpers.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "checkSafariBrowser": () => (/* binding */ checkSafariBrowser),
+/* harmony export */   "checkSelector": () => (/* binding */ checkSelector),
+/* harmony export */   "getAnimationObj": () => (/* binding */ getAnimationObj),
+/* harmony export */   "isPremiumBlock": () => (/* binding */ isPremiumBlock)
+/* harmony export */ });
+const getAnimationObj = function (floatingEffect) {
+  let deviceType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Desktop';
+  const {
+    type,
+    translate,
+    rotate,
+    scale,
+    skew,
+    opacity,
+    background,
+    blur,
+    contrast,
+    grayscale,
+    hue,
+    brightness,
+    saturation
+  } = floatingEffect;
+  const animeObj = {};
+  const filters = [];
+  if (translate.enable) {
+    animeObj.translateX = {
+      value: [translate?.x?.[deviceType]?.from || 0, translate?.x?.[deviceType]?.to || 0],
+      delay: translate.delay || 0,
+      duration: translate.duration || 1000
+    };
+    animeObj.translateY = {
+      value: [translate?.y?.[deviceType]?.from || 0, translate?.y?.[deviceType]?.to || 0],
+      delay: translate.delay || 0,
+      duration: translate.duration || 1000
+    };
+  }
+  if (rotate.enable) {
+    animeObj.rotateX = {
+      value: [rotate?.x?.[deviceType]?.from || 0, rotate?.x?.[deviceType]?.to || 0],
+      delay: rotate.delay || 0,
+      duration: rotate.duration || 1000
+    };
+    animeObj.rotateY = {
+      value: [rotate?.y?.[deviceType]?.from || 0, rotate?.y?.[deviceType]?.to || 0],
+      delay: rotate.delay || 0,
+      duration: rotate.duration || 1000
+    };
+    animeObj.rotateZ = {
+      value: [rotate?.z?.[deviceType]?.from || 0, rotate?.z?.[deviceType]?.to || 0],
+      delay: rotate.delay || 0,
+      duration: rotate.duration || 1000
+    };
+  }
+  if (scale.enable) {
+    animeObj.scaleX = {
+      value: [scale?.x?.[deviceType]?.from || 0, scale?.x?.[deviceType]?.to || 0],
+      delay: scale.delay || 0,
+      duration: scale.duration || 1000
+    };
+    animeObj.scaleY = {
+      value: [scale?.y?.[deviceType]?.from || 0, scale?.y?.[deviceType]?.to || 0],
+      delay: scale.delay || 0,
+      duration: scale.duration || 1000
+    };
+  }
+  if (skew.enable) {
+    animeObj.skewX = {
+      value: [skew?.x?.[deviceType]?.from || 0, skew?.x?.[deviceType]?.to || 0],
+      delay: skew.delay || 0,
+      duration: skew.duration || 1000
+    };
+    animeObj.skewY = {
+      value: [skew?.y?.[deviceType]?.from || 0, skew?.y?.[deviceType]?.to || 0],
+      delay: skew.delay || 0,
+      duration: skew.duration || 1000
+    };
+  }
+  if (opacity.enable) {
+    animeObj.opacity = {
+      value: [opacity?.value?.from || 0, opacity?.value?.to || 0],
+      duration: opacity.duration || 1000,
+      delay: opacity.delay || 0
+    };
+  }
+  if (background.enable) {
+    animeObj.backgroundColor = {
+      value: [background?.value?.from || 0, background?.value?.to || 0],
+      duration: background.duration || 1000,
+      delay: background?.delay || 0
+    };
+  }
+  if (blur.enable) {
+    filters.push({
+      value: [`blur(${blur?.value?.from}${blur?.value?.unit})` || 0, `blur(${blur?.value?.to}${blur?.value?.unit})` || 0],
+      duration: blur.duration || 1000,
+      delay: blur.delay || 0
+    });
+  }
+  if (contrast.enable) {
+    filters.push({
+      value: [`contrast(${contrast?.value?.from}${contrast?.value?.unit})` || 0, `contrast(${contrast?.value?.to}${contrast?.value?.unit})` || 0],
+      duration: contrast.duration || 1000,
+      delay: contrast.delay || 0
+    });
+  }
+  if (grayscale.enable) {
+    filters.push({
+      value: [`grayscale(${grayscale?.value?.from}${grayscale?.value?.unit})` || 0, `grayscale(${grayscale?.value?.to}${grayscale?.value?.unit})` || 0],
+      duration: grayscale.duration || 1000,
+      delay: grayscale.delay || 0
+    });
+  }
+  if (hue.enable) {
+    filters.push({
+      value: [`hue-rotate(${hue?.value?.from}${hue?.value?.unit})` || 0, `hue-rotate(${hue?.value?.to}${hue?.value?.unit})` || 0],
+      duration: hue.duration || 1000,
+      delay: hue.delay || 0
+    });
+  }
+  if (brightness.enable) {
+    filters.push({
+      value: [`brightness(${brightness?.value?.from}${brightness?.value?.unit})` || 0, `brightness(${brightness?.value?.to}${brightness?.value?.unit})` || 0],
+      duration: brightness.duration || 1000,
+      delay: brightness.delay || 0
+    });
+  }
+  if (saturation.enable) {
+    filters.push({
+      value: [`saturate(${saturation?.value?.from}${saturation?.value?.unit})` || 0, `saturate(${saturation?.value?.to}${saturation?.value?.unit})` || 0],
+      duration: saturation.duration || 1000,
+      delay: saturation.delay || 0
+    });
+  }
+  if (filters.length > 0) {
+    animeObj.filter = filters;
+  }
+  return animeObj;
+};
+const checkSafariBrowser = () => {
+  const iOS = /iP(hone|ad|od)/i.test(navigator.userAgent) && !window.MSStream;
+  if (iOS) {
+    const allowedBrowser = /(Chrome|CriOS|OPiOS|FxiOS)/.test(navigator.userAgent);
+    if (!allowedBrowser) {
+      const isFireFox = '' === navigator.vendor;
+      allowedBrowser = allowedBrowser || isFireFox;
+    }
+    const isSafari = /WebKit/i.test(navigator.userAgent) && !allowedBrowser;
+  } else {
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+  }
+  return isSafari ? true : false;
+};
+const checkSelector = selector => {
+  try {
+    const checker = document.querySelector(selector);
+    return true;
+  } catch (e) {
+    return false;
+  }
+};
+const isPremiumBlock = blockName => {
+  return blockName.startsWith('premium/');
 };
 
 /***/ }),
@@ -11006,6 +11179,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pbg_components__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @pbg/components */ "@pbg/components");
 /* harmony import */ var _pbg_components__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_pbg_components__WEBPACK_IMPORTED_MODULE_10__);
 /* harmony import */ var _animation_scss__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./animation.scss */ "./src/global-features/animation.scss");
+/* harmony import */ var _helpers_helpers__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./helpers/helpers */ "./src/global-features/helpers/helpers.js");
+
 
 
 
@@ -11026,7 +11201,6 @@ const EntranceAnimation = _ref => {
     deviceType
   } = _ref;
   const {
-    enable,
     animation,
     duration,
     delay,
@@ -11040,6 +11214,9 @@ const EntranceAnimation = _ref => {
     onChange(newValue);
   };
   const options = [{
+    label: 'None',
+    value: ''
+  }, {
     label: 'Fading',
     options: [{
       label: 'Fade In',
@@ -11176,20 +11353,14 @@ const EntranceAnimation = _ref => {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Entrance Animation", 'premium-blocks-for-gutenberg'),
     className: "premium-panel-body",
     initialOpen: false
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Entrance Animation", "premium-blocks-for-gutenberg"),
-    checked: enable,
-    onChange: value => changeHandler({
-      enable: value
-    })
-  }), enable && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_responsive_select_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_responsive_select_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
     value: animation,
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Animation", "premium-blocks-for-gutenberg"),
     options: options,
     onChange: option => changeHandler({
       animation: option
     })
-  }), animation?.[deviceType] !== 'none' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+  }), animation?.[deviceType] && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Easing", "premium-blocks-for-gutenberg"),
     value: curve,
     onChange: newValue => changeHandler({
@@ -11231,11 +11402,14 @@ const EntranceAnimation = _ref => {
     defaultValue: 0,
     max: 10000,
     step: 1
-  }))));
+  })));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EntranceAnimation);
 const EntranceAnimationControl = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__.createHigherOrderComponent)(BlockEdit => {
   return props => {
+    if (!PremiumAnimation.allBlocks && !(0,_helpers_helpers__WEBPACK_IMPORTED_MODULE_12__.isPremiumBlock)(props.name)) {
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(BlockEdit, props);
+    }
     const {
       attributes,
       setAttributes,
@@ -11278,7 +11452,7 @@ const EntranceAnimationControl = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_
       };
     }, [isSelected, entranceAnimation, deviceType]);
     (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
-      if (!entranceAnimation?.enable || !editorElement) {
+      if (!entranceAnimation?.animation[deviceType] || !editorElement) {
         return;
       }
       let blockElement = editorElement.querySelector(`[data-animation="${entranceAnimation.clientId}"]`);
@@ -11297,6 +11471,9 @@ const EntranceAnimationControl = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_
 }, 'EntranceAnimationControl');
 (0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_5__.addFilter)('editor.BlockEdit', 'pbg/entrance-animation-attribute', EntranceAnimationControl);
 const addEntranceAnimationAttribute = (settings, name) => {
+  if (!PremiumAnimation.allBlocks && !(0,_helpers_helpers__WEBPACK_IMPORTED_MODULE_12__.isPremiumBlock)(name)) {
+    return settings;
+  }
   if (typeof settings.attributes !== 'undefined') {
     settings.attributes = Object.assign(settings.attributes, {
       entranceAnimation: {
@@ -11310,6 +11487,9 @@ const addEntranceAnimationAttribute = (settings, name) => {
 (0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_5__.addFilter)('blocks.registerBlockType', 'pbg/entrance-animation-attribute', addEntranceAnimationAttribute);
 const withClientId = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__.createHigherOrderComponent)(BlockListBlock => {
   return props => {
+    if (!PremiumAnimation.allBlocks && !(0,_helpers_helpers__WEBPACK_IMPORTED_MODULE_12__.isPremiumBlock)(props.name)) {
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(BlockListBlock, props);
+    }
     const {
       attributes,
       isSelected
@@ -11323,7 +11503,7 @@ const withClientId = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__.createHi
       } = select("core/edit-post");
       return __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : "Desktop";
     }, []);
-    if (attributes?.entranceAnimation?.enable) {
+    if (attributes?.entranceAnimation && attributes.entranceAnimation.animation?.[deviceType]) {
       attributes.entranceAnimation.clientId = props.clientId.split("-")[4];
       wrapperProps['data-animation'] = attributes.entranceAnimation.clientId;
       const animationClass = attributes.entranceAnimation.animation?.[deviceType];

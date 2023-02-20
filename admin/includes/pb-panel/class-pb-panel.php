@@ -163,9 +163,11 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 		 */
 		public function add_default_features( $options ) {
 			$default_options = array(
-				'premium-equal-height'       => true,
-				'premium-floating-effect'    => true,
-				'premium-entrance-animation' => true,
+				'premium-equal-height'                  => true,
+				'premium-floating-effect'               => true,
+				'premium-entrance-animation'            => true,
+				'premium-floating-effect-all-blocks'    => false,
+				'premium-entrance-animation-all-blocks' => false,
 			);
 
 			return array_merge( $default_options, $options );

@@ -1336,7 +1336,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "checkSafariBrowser": () => (/* binding */ checkSafariBrowser),
 /* harmony export */   "checkSelector": () => (/* binding */ checkSelector),
-/* harmony export */   "getAnimationObj": () => (/* binding */ getAnimationObj)
+/* harmony export */   "getAnimationObj": () => (/* binding */ getAnimationObj),
+/* harmony export */   "isPremiumBlock": () => (/* binding */ isPremiumBlock)
 /* harmony export */ });
 const getAnimationObj = function (floatingEffect) {
   let deviceType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Desktop';
@@ -1492,6 +1493,9 @@ const checkSelector = selector => {
   } catch (e) {
     return false;
   }
+};
+const isPremiumBlock = blockName => {
+  return blockName.startsWith('premium/');
 };
 
 /***/ })

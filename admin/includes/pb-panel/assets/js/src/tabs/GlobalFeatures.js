@@ -65,7 +65,7 @@ const GlobalFeatures = props => {
                 />
                 <AdvancedSwitcher
                     label={__(
-                        "Entrance Animation",
+                        "Floating Effect",
                         "premium-blocks-for-gutenberg"
                     )}
                     onChange={(checked) =>
@@ -76,6 +76,24 @@ const GlobalFeatures = props => {
                         "Apply advanced floating effects on any Premium Blocks for Gutenberg block.",
                         "premium-blocks-for-gutenberg"
                     )}
+                />
+                <AdvancedSwitcher
+                    label={__(
+                        "Apply Floating Effect to All Gutenberg Blocks",
+                        "premium-blocks-for-gutenberg"
+                    )}
+                    onChange={(checked) =>
+                        onChangeData("premium-floating-effect-all-blocks", checked)
+                    }
+                    checked={settings?.["premium-floating-effect-all-blocks"] || false}
+                    description={__(
+                        "This option will be used to Apply Floating Effect to All Gutenberg Blocks.",
+                        "premium-blocks-for-gutenberg"
+                    )}
+                    style={{
+                        opacity: !settings?.["premium-floating-effect"] && '0.4',
+                        pointerEvents: !settings?.["premium-floating-effect"] && 'none',
+                    }}
                 />
                 <AdvancedSwitcher
                     label={__(
@@ -90,6 +108,24 @@ const GlobalFeatures = props => {
                         "Apply entrance animation on any Premium Blocks for Gutenberg block.",
                         "premium-blocks-for-gutenberg"
                     )}
+                />
+                <AdvancedSwitcher
+                    label={__(
+                        "Apply Entrance Animation to All Gutenberg Blocks",
+                        "premium-blocks-for-gutenberg"
+                    )}
+                    onChange={(checked) =>
+                        onChangeData("premium-entrance-animation-all-blocks", checked)
+                    }
+                    checked={settings?.["premium-entrance-animation-all-blocks"] || false}
+                    description={__(
+                        "This option will be used to Apply Entrance Animation to All Gutenberg Blocks.",
+                        "premium-blocks-for-gutenberg"
+                    )}
+                    style={{
+                        opacity: !settings?.["premium-entrance-animation"] && '0.4',
+                        pointerEvents: !settings?.["premium-entrance-animation"] && 'none',
+                    }}
                 />
             </div>
         </div>

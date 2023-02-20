@@ -1940,9 +1940,8 @@ const floatingEffectDefaults = {
   customSelector: ''
 };
 const entranceAnimationDefaults = {
-  enable: false,
   animation: {
-    Desktop: 'none',
+    Desktop: '',
     Tablet: '',
     Mobile: ''
   },
@@ -1964,7 +1963,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "checkSafariBrowser": () => (/* binding */ checkSafariBrowser),
 /* harmony export */   "checkSelector": () => (/* binding */ checkSelector),
-/* harmony export */   "getAnimationObj": () => (/* binding */ getAnimationObj)
+/* harmony export */   "getAnimationObj": () => (/* binding */ getAnimationObj),
+/* harmony export */   "isPremiumBlock": () => (/* binding */ isPremiumBlock)
 /* harmony export */ });
 const getAnimationObj = function (floatingEffect) {
   let deviceType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Desktop';
@@ -2120,6 +2120,9 @@ const checkSelector = selector => {
   } catch (e) {
     return false;
   }
+};
+const isPremiumBlock = blockName => {
+  return blockName.startsWith('premium/');
 };
 
 /***/ }),
@@ -12635,6 +12638,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 const FloatingEffect = _ref => {
   let {
     value,
@@ -13277,6 +13281,9 @@ const FloatingEffect = _ref => {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FloatingEffect);
 const FloatingEffectControl = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__.createHigherOrderComponent)(BlockEdit => {
   return props => {
+    if (!PremiumFloatingEffect.allBlocks && !(0,_helpers_helpers__WEBPACK_IMPORTED_MODULE_9__.isPremiumBlock)(props.name)) {
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(BlockEdit, props);
+    }
     const {
       attributes,
       setAttributes,
@@ -13328,8 +13335,11 @@ const FloatingEffectControl = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__
       let blockElement = editorElement.querySelectorAll(`[data-effect="${floatingEffect.clientId}"]`);
       let targets;
       if (floatingEffect.customSelector && (0,_helpers_helpers__WEBPACK_IMPORTED_MODULE_9__.checkSelector)(floatingEffect.customSelector)) {
+        animejs_lib_anime_es_js__WEBPACK_IMPORTED_MODULE_10__["default"].remove(blockElement);
         blockElement = editorElement.querySelector(`[data-effect="${floatingEffect.clientId}"]`);
         targets = blockElement.querySelectorAll(floatingEffect.customSelector);
+      } else {
+        animejs_lib_anime_es_js__WEBPACK_IMPORTED_MODULE_10__["default"].remove(blockElement[0].querySelectorAll('*'));
       }
       const animeSettings = {
         targets: targets?.length > 0 ? targets : blockElement,
@@ -13362,6 +13372,9 @@ const FloatingEffectControl = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__
 }, 'FloatingEffectControl');
 (0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_7__.addFilter)('editor.BlockEdit', 'pbg/floating-effect-attribute', FloatingEffectControl);
 const addFloatingAttribute = (settings, name) => {
+  if (!PremiumFloatingEffect.allBlocks && !(0,_helpers_helpers__WEBPACK_IMPORTED_MODULE_9__.isPremiumBlock)(name)) {
+    return settings;
+  }
   if (typeof settings.attributes !== 'undefined') {
     settings.attributes = Object.assign(settings.attributes, {
       floatingEffect: {
@@ -13375,7 +13388,9 @@ const addFloatingAttribute = (settings, name) => {
 (0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_7__.addFilter)('blocks.registerBlockType', 'pbg/floating-effect-attribute', addFloatingAttribute);
 const withClientId = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__.createHigherOrderComponent)(BlockListBlock => {
   return props => {
-    const blockRef = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
+    if (!PremiumFloatingEffect.allBlocks && !(0,_helpers_helpers__WEBPACK_IMPORTED_MODULE_9__.isPremiumBlock)(props.name)) {
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(BlockListBlock, props);
+    }
     const {
       attributes,
       isSelected
