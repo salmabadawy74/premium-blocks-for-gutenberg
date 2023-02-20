@@ -14,6 +14,7 @@ registerBlockType("premium/post-grid", {
     supports: {
         align: ["center", "wide", "full"],
         anchor: true,
+        alignWide: true,
     },
     edit: PostTemplateEdit,
     example: {},

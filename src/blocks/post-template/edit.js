@@ -40,10 +40,45 @@ import { store as coreStore } from "@wordpress/core-data";
 
 const TEMPLATE = [
     ["premium/post-featured-image"],
-    ["premium/post-title"],
-    ["premium/post-meta"],
-    ["premium/post-excerpt"],
-    ["premium/post-tag"],
+
+    [
+        "premium/section",
+        {
+            className: "premium-blog-content-wrapper",
+            attributes: {
+                padding: {
+                    type: "object",
+                    default: {
+                        Desktop: {
+                            top: "30",
+                            right: "30",
+                            bottom: "30",
+                            left: "30",
+                        },
+                        Tablet: {
+                            top: "20",
+                            right: "20",
+                            bottom: "20",
+                            left: "20",
+                        },
+                        Mobile: {
+                            top: "10",
+                            right: "10",
+                            bottom: "10",
+                            left: "10",
+                        },
+                        unit: "px",
+                    },
+                },
+            },
+        },
+        [
+            ["premium/post-title"],
+            ["premium/post-meta"],
+            ["premium/post-excerpt"],
+            ["premium/post-tag"],
+        ],
+    ],
 ];
 
 function PostTemplateInnerBlocks(props) {

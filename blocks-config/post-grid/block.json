@@ -7,6 +7,11 @@
 	"description": "An advanced block that allows displaying post types based on different query parameters and visual configurations.",
 	"textdomain": "default",
 	"attributes": {
+                "align": {
+            "type": "string",
+            "default": "alignwide"
+        },
+
 		"queryId": {
 			"type": "number"
 		},

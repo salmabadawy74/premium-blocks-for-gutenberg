@@ -265,17 +265,19 @@ function Meta(props) {
                 {showAuther && (
                     <span className="premium-blog-post-author premium-blog-meta-data">
                         <svg
-                            viewBox="0 0 20 20"
+                            width="800px"
+                            height="800px"
+                            viewBox="0 0 24 24"
+                            fill="none"
                             xmlns="http://www.w3.org/2000/svg"
                         >
-                            <defs></defs>
-                            <title />
-                            <g data-name="Layer 7" id="Layer_7">
-                                <path
-                                    class="cls-1"
-                                    d="M19.75,15.67a6,6,0,1,0-7.51,0A11,11,0,0,0,5,26v1H27V26A11,11,0,0,0,19.75,15.67ZM12,11a4,4,0,1,1,4,4A4,4,0,0,1,12,11ZM7.06,25a9,9,0,0,1,17.89,0Z"
-                                />
-                            </g>
+                            <path
+                                d="M18 18.7023C18 15.6706 14.5 15 12 15C9.5 15 6 15.6706 6 18.7023M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM15 9C15 10.6569 13.6569 12 12 12C10.3431 12 9 10.6569 9 9C9 7.34315 10.3431 6 12 6C13.6569 6 15 7.34315 15 9Z"
+                                stroke="#000000"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
                         </svg>{" "}
                         {authorName}
                         <span className={`premium-blog-meta-separtor`}>•</span>
@@ -286,83 +288,20 @@ function Meta(props) {
                         className={`premium-blog-post-time premium-blog-meta-data`}
                     >
                         <svg
-                            height="20px"
-                            id="Layer_1"
-                            version="1.1"
-                            viewBox="0 0 20 20"
-                            width="20px"
+                            width="800px"
+                            height="800px"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
                         >
-                            <g id="calendar_1_">
-                                <path
-                                    d="M29.334,3H25V1c0-0.553-0.447-1-1-1s-1,0.447-1,1v2h-6V1c0-0.553-0.448-1-1-1s-1,0.447-1,1v2H9V1   c0-0.553-0.448-1-1-1S7,0.447,7,1v2H2.667C1.194,3,0,4.193,0,5.666v23.667C0,30.806,1.194,32,2.667,32h26.667   C30.807,32,32,30.806,32,29.333V5.666C32,4.193,30.807,3,29.334,3z M30,29.333C30,29.701,29.701,30,29.334,30H2.667   C2.299,30,2,29.701,2,29.333V5.666C2,5.299,2.299,5,2.667,5H7v2c0,0.553,0.448,1,1,1s1-0.447,1-1V5h6v2c0,0.553,0.448,1,1,1   s1-0.447,1-1V5h6v2c0,0.553,0.447,1,1,1s1-0.447,1-1V5h4.334C29.701,5,30,5.299,30,5.666V29.333z"
-                                    fill="#333332"
-                                />
-                                <rect
-                                    fill="#333332"
-                                    height="3"
-                                    width="4"
-                                    x="7"
-                                    y="12"
-                                />
-                                <rect
-                                    fill="#333332"
-                                    height="3"
-                                    width="4"
-                                    x="7"
-                                    y="17"
-                                />
-                                <rect
-                                    fill="#333332"
-                                    height="3"
-                                    width="4"
-                                    x="7"
-                                    y="22"
-                                />
-                                <rect
-                                    fill="#333332"
-                                    height="3"
-                                    width="4"
-                                    x="14"
-                                    y="22"
-                                />
-                                <rect
-                                    fill="#333332"
-                                    height="3"
-                                    width="4"
-                                    x="14"
-                                    y="17"
-                                />
-                                <rect
-                                    fill="#333332"
-                                    height="3"
-                                    width="4"
-                                    x="14"
-                                    y="12"
-                                />
-                                <rect
-                                    fill="#333332"
-                                    height="3"
-                                    width="4"
-                                    x="21"
-                                    y="22"
-                                />
-                                <rect
-                                    fill="#333332"
-                                    height="3"
-                                    width="4"
-                                    x="21"
-                                    y="17"
-                                />
-                                <rect
-                                    fill="#333332"
-                                    height="3"
-                                    width="4"
-                                    x="21"
-                                    y="12"
-                                />
-                            </g>
+                            <path
+                                d="M20 11H4M20 11V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V7C4 5.89543 4.89543 5 6 5H18C19.1046 5 20 5.89543 20 7V11ZM15 3V7M9 3V7"
+                                stroke="#000000"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
                         </svg>
-
                         {postDate}
                         <span className={`premium-blog-meta-separtor`}>•</span>
                     </div>
@@ -373,13 +312,30 @@ function Meta(props) {
                     >
                         <span className="premium-post__comment">
                             <svg
-                                height="20"
-                                viewBox="0 0 20 20"
-                                width="20"
+                                width="800px"
+                                height="800px"
+                                viewBox="0 0 24 24"
+                                fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                             >
-                                <path d="M43.98 8c0-2.21-1.77-4-3.98-4h-32c-2.21 0-4 1.79-4 4v24c0 2.21 1.79 4 4 4h28l8 8-.02-36zm-7.98 20h-24v-4h24v4zm0-6h-24v-4h24v4zm0-6h-24v-4h24v4z" />
-                                <path d="M0 0h48v48h-48z" fill="none" />
+                                <g clip-path="url(#clip0_429_11233)">
+                                    <path
+                                        d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 13.4876 3.36093 14.891 4 16.1272L3 21L7.8728 20C9.10904 20.6391 10.5124 21 12 21Z"
+                                        stroke="#292929"
+                                        stroke-width="2.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_429_11233">
+                                        <rect
+                                            width="24"
+                                            height="24"
+                                            fill="white"
+                                        />
+                                    </clipPath>
+                                </defs>
                             </svg>{" "}
                             {comments}
                         </span>
@@ -392,13 +348,13 @@ function Meta(props) {
                     >
                         <span className="premium-post__taxonomy">
                             <svg
-                                height="20"
-                                viewBox="0 0 20 20"
-                                width="20"
+                                fill="#000000"
+                                width="800px"
+                                height="800px"
+                                viewBox="0 0 16 16"
                                 xmlns="http://www.w3.org/2000/svg"
                             >
-                                <path d="M30 30h-24v4h24v-4zm0-16h-24v4h24v-4zm-24 12h36v-4h-36v4zm0 16h36v-4h-36v4zm0-36v4h36v-4h-36z" />
-                                <path d="M0 0h48v48h-48z" fill="none" />
+                                <path d="M.5 9h9.75v1.25H.5zm0-3.25h15V7H.5zm0 6.5h15v1.25H.5zm0-9.75h9.75v1.25H.5z" />
                             </svg>{" "}
                             {categoryObject.length === 0
                                 ? "Uncategorized"

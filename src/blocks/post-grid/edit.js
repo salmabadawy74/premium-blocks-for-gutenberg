@@ -31,6 +31,7 @@ function QueryContent({ attributes, setAttributes, deviceType }) {
         queryId,
         query,
         columns,
+        align,
         blogContainerBackground,
         blogBorder,
         blogBoxShadow,
@@ -40,7 +41,7 @@ function QueryContent({ attributes, setAttributes, deviceType }) {
     const { __unstableMarkNextChangeAsNotPersistent } =
         useDispatch(blockEditorStore);
     const instanceId = useInstanceId(QueryContent);
-    const blockProps = useBlockProps({ className: "alignwide" });
+    const blockProps = useBlockProps({ className: `${align}` });
     const innerBlocksProps = useInnerBlocksProps(
         {
             style: {

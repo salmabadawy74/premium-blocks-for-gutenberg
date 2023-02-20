@@ -3,8 +3,8 @@
  */
 import { useInnerBlocksProps, useBlockProps } from "@wordpress/block-editor";
 
-export default function QuerySave({ attributes: { tagName: Tag = "div" } }) {
-    const blockProps = useBlockProps.save();
+export default function QuerySave({ attributes: { align } }) {
+    const blockProps = useBlockProps.save({ className: `${align}` });
     const innerBlocksProps = useInnerBlocksProps.save(blockProps);
-    return <Tag {...innerBlocksProps} />;
+    return <div {...innerBlocksProps} />;
 }

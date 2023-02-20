@@ -31,9 +31,9 @@
         "alignment":{
             "type":"object",
             "default":{
-                "Desktop":"right",
-                "Tablet":"right",
-                "Mobile":"right"
+                "Desktop":"left",
+                "Tablet":"left",
+                "Mobile":"left"
             }
         },
                 "typography": {
