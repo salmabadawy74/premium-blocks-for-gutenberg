@@ -344,7 +344,7 @@ function Edit(props) {
                                     <FontIconPicker
                                         icons={IcoNames}
                                         onChange={(newIcon) =>
-                                            setAttributes({ selectedIcon: newIcon })
+                                            setAttributes({ selectedIcon: newIcon, iconType: newIcon.substring(0, 2) })
                                         }
                                         renderFunc={renderSVG}
                                         value={selectedIcon}
@@ -771,7 +771,7 @@ function Edit(props) {
                         boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
                     }}
                 >
-                    {"icon" === iconTypeFile && iconType === "fa" && 1 != FontAwesomeEnabled && (
+                    {"icon" === iconTypeFile && (iconType === "fe" || iconType === "ic") && 1 != FontAwesomeEnabled && (
                         <p className={`premium-icon__alert`}>
                             {__(
                                 "Please Enable Font Awesome Icons from Plugin settings",
