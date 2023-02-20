@@ -19,6 +19,7 @@ class Shape extends Component {
 
     setSettings(type, val) {
         const { value, onChange, shapeType } = this.props;
+        console.log(value, "vvvv");
         const styleVal =
             type == "style" && val == "" ? { openShape: 0 } : { openShape: 1 };
         onChange(
@@ -143,7 +144,6 @@ class Shape extends Component {
                                 }
                             />
                             <ResponsiveRangeControl
-                                min={100}
                                 max={1000}
                                 step={1}
                                 showUnit={true}
@@ -154,9 +154,8 @@ class Shape extends Component {
                                 }
                                 mobileValue={value.widthMobile}
                                 onChangeMobile={(value) =>
-                                    this.setSettings("widthMobile", val)
+                                    this.setSettings("widthMobile", value)
                                 }
-                                showUnit={true}
                                 label={__(
                                     "Shape Width",
                                     "premium-blocks-for-gutenberg"
@@ -178,7 +177,7 @@ class Shape extends Component {
                                 }
                                 mobileValue={value.heightMobile}
                                 onChangeMobile={(value) =>
-                                    this.setSettings("heightMobile", val)
+                                    this.setSettings("heightMobile", value)
                                 }
                                 units={["px", "em", "%"]}
                                 label={__(
