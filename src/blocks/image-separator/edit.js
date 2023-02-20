@@ -590,7 +590,7 @@ function Edit(props) {
                     }}
                 >
                     {iconType === "icon" && (
-                        <GenIcon className={`premium-image-separator-icon ${iconStyles[0].icon}`}
+                        <GenIcon className={`premium-image-separator-icon ${iconStyles[0].icon} premium-image-separator-${iconStyles[0].advancedBorder}`}
                             name={iconStyles[0].icon}
                             size={iconSize[props.deviceType] +
                                 iconSize.unit}

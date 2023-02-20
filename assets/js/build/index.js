@@ -5216,6 +5216,9 @@ const Edit = props => {
       'border-bottom-left-radius': `${(triggerBorderH === null || triggerBorderH === void 0 ? void 0 : (_triggerBorderH$borde5 = triggerBorderH.borderRadius) === null || _triggerBorderH$borde5 === void 0 ? void 0 : (_triggerBorderH$borde6 = _triggerBorderH$borde5[currentDevice]) === null || _triggerBorderH$borde6 === void 0 ? void 0 : _triggerBorderH$borde6.bottom) || 0}px!important`,
       'border-bottom-right-radius': `${(triggerBorderH === null || triggerBorderH === void 0 ? void 0 : (_triggerBorderH$borde7 = triggerBorderH.borderRadius) === null || _triggerBorderH$borde7 === void 0 ? void 0 : (_triggerBorderH$borde8 = _triggerBorderH$borde7[currentDevice]) === null || _triggerBorderH$borde8 === void 0 ? void 0 : _triggerBorderH$borde8.left) || 0}px!important`
     };
+    styles[` .${blockId} .premium-modal-trigger-container button.premium-modal-trigger-btn .premium-modal-box-icon`] = {
+      'color': `${triggerStyles[0].iconColor} !important`
+    };
     styles[` .${blockId} .premium-modal-trigger-container button.premium-modal-trigger-btn:hover svg`] = {
       'color': `${triggerStyles[0].iconHoverColor} !important`
     };
@@ -5334,7 +5337,7 @@ const Edit = props => {
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
     style: {
-      color: triggerStyles[0].color,
+      // color: triggerStyles[0].color,
       fontFamily: triggerTypography === null || triggerTypography === void 0 ? void 0 : triggerTypography.fontFamily,
       fontWeight: triggerTypography === null || triggerTypography === void 0 ? void 0 : triggerTypography.fontWeight,
       fontStyle: triggerTypography === null || triggerTypography === void 0 ? void 0 : triggerTypography.fontStyle,
@@ -16578,6 +16581,16 @@ const v7Attrinutes = {
       padding: "",
       paddingU: "px"
     }]
+  },
+  "boxShadow": {
+    "type": "object",
+    "default": {
+      "color": "undefined",
+      "blur": "10",
+      "horizontal": "0",
+      "vertical": "0",
+      "position": ""
+    }
   }
 };
 const new_Attributes = {
@@ -17136,7 +17149,7 @@ const deprecatedContent = [{
 }, {
   attributes: Object.assign(v7Attrinutes, new_Attributes),
   migrate: attributes => {
-    var _attributes$textStyle, _attributes$textStyle2, _attributes$textStyle3, _attributes$textStyle4, _attributes$textStyle5, _attributes$textStyle6, _attributes$textStyle7, _attributes$textStyle8, _attributes$textStyle9, _attributes$textStyle10, _attributes$textStyle11, _attributes$textStyle12, _attributes$textStyle13, _attributes$textStyle14, _attributes$textStyle15, _attributes$textStyle16, _attributes$textStyle17, _attributes$textStyle18, _attributes$textStyle19, _attributes$textStyle20, _attributes$btnStyles, _attributes$btnStyles2, _attributes$btnStyles3, _attributes$btnStyles4, _attributes$btnStyles5, _attributes$btnStyles6, _attributes$btnStyles7, _attributes$btnStyles8, _attributes$btnStyles9, _attributes$btnStyles10;
+    var _attributes$textStyle, _attributes$textStyle2, _attributes$textStyle3, _attributes$textStyle4, _attributes$textStyle5, _attributes$textStyle6, _attributes$textStyle7, _attributes$textStyle8, _attributes$textStyle9, _attributes$textStyle10, _attributes$textStyle11, _attributes$textStyle12, _attributes$textStyle13, _attributes$textStyle14, _attributes$textStyle15, _attributes$textStyle16, _attributes$textStyle17, _attributes$textStyle18, _attributes$btnStyles, _attributes$btnStyles2, _attributes$btnStyles3, _attributes$btnStyles4, _attributes$btnStyles5, _attributes$btnStyles6, _attributes$btnStyles7, _attributes$btnStyles8, _attributes$btnStyles9, _attributes$btnStyles10;
 
     let newAttributes = {
       blockId: attributes.block_id ? "premium-button-" + (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.generateBlockId)(attributes.block_id) : "",
@@ -17193,34 +17206,32 @@ const deprecatedContent = [{
         fontWeight: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle = attributes.textStyles[0]) === null || _attributes$textStyle === void 0 ? void 0 : _attributes$textStyle.textWeight) || "Default",
         fontStyle: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle2 = attributes.textStyles[0]) === null || _attributes$textStyle2 === void 0 ? void 0 : _attributes$textStyle2.textStyle) || "",
         textTransform: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle3 = attributes.textStyles[0]) === null || _attributes$textStyle3 === void 0 ? void 0 : _attributes$textStyle3.textUpper) || "",
-        letterSpacing: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle4 = attributes.textStyles[0]) === null || _attributes$textStyle4 === void 0 ? void 0 : _attributes$textStyle4.textLetter) || "",
-        fontFamily: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle5 = attributes.textStyles[0]) === null || _attributes$textStyle5 === void 0 ? void 0 : _attributes$textStyle5.textFontFamily) || "Default",
-        lineHeight: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle6 = attributes.textStyles[0]) === null || _attributes$textStyle6 === void 0 ? void 0 : _attributes$textStyle6.textLine) || "",
+        fontFamily: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle4 = attributes.textStyles[0]) === null || _attributes$textStyle4 === void 0 ? void 0 : _attributes$textStyle4.textFontFamily) || "Default",
         textDecoration: "",
         letterSpacing: {
-          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle7 = attributes.textStyles[0]) === null || _attributes$textStyle7 === void 0 ? void 0 : _attributes$textStyle7.textLetter) || "",
-          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle8 = attributes.textStyles[0]) === null || _attributes$textStyle8 === void 0 ? void 0 : _attributes$textStyle8.textLetter) || "",
-          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle9 = attributes.textStyles[0]) === null || _attributes$textStyle9 === void 0 ? void 0 : _attributes$textStyle9.textLetter) || "",
+          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle5 = attributes.textStyles[0]) === null || _attributes$textStyle5 === void 0 ? void 0 : _attributes$textStyle5.textLetter) || "",
+          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle6 = attributes.textStyles[0]) === null || _attributes$textStyle6 === void 0 ? void 0 : _attributes$textStyle6.textLetter) || "",
+          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle7 = attributes.textStyles[0]) === null || _attributes$textStyle7 === void 0 ? void 0 : _attributes$textStyle7.textLetter) || "",
           unit: "px"
         },
         lineHeight: {
-          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle10 = attributes.textStyles[0]) === null || _attributes$textStyle10 === void 0 ? void 0 : _attributes$textStyle10.textLine) || "",
-          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle11 = attributes.textStyles[0]) === null || _attributes$textStyle11 === void 0 ? void 0 : _attributes$textStyle11.textLine) || "",
-          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle12 = attributes.textStyles[0]) === null || _attributes$textStyle12 === void 0 ? void 0 : _attributes$textStyle12.textLine) || "",
+          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle8 = attributes.textStyles[0]) === null || _attributes$textStyle8 === void 0 ? void 0 : _attributes$textStyle8.textLine) || "",
+          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle9 = attributes.textStyles[0]) === null || _attributes$textStyle9 === void 0 ? void 0 : _attributes$textStyle9.textLine) || "",
+          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle10 = attributes.textStyles[0]) === null || _attributes$textStyle10 === void 0 ? void 0 : _attributes$textStyle10.textLine) || "",
           unit: "px"
         },
         fontSize: {
-          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle13 = attributes.textStyles[0]) === null || _attributes$textStyle13 === void 0 ? void 0 : _attributes$textStyle13.textSize) || "",
-          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle14 = attributes.textStyles[0]) === null || _attributes$textStyle14 === void 0 ? void 0 : _attributes$textStyle14.textSizeTablet) || "",
-          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle15 = attributes.textStyles[0]) === null || _attributes$textStyle15 === void 0 ? void 0 : _attributes$textStyle15.textSizeMobile) || "",
-          unit: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle16 = attributes.textStyles[0]) === null || _attributes$textStyle16 === void 0 ? void 0 : _attributes$textStyle16.textSizeUnit) || "px"
+          Desktop: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle11 = attributes.textStyles[0]) === null || _attributes$textStyle11 === void 0 ? void 0 : _attributes$textStyle11.textSize) || "",
+          Tablet: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle12 = attributes.textStyles[0]) === null || _attributes$textStyle12 === void 0 ? void 0 : _attributes$textStyle12.textSizeTablet) || "",
+          Mobile: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle13 = attributes.textStyles[0]) === null || _attributes$textStyle13 === void 0 ? void 0 : _attributes$textStyle13.textSizeMobile) || "",
+          unit: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle14 = attributes.textStyles[0]) === null || _attributes$textStyle14 === void 0 ? void 0 : _attributes$textStyle14.textSizeUnit) || "px"
         }
       },
       textShadow: {
-        color: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle17 = attributes.textStyles[0]) === null || _attributes$textStyle17 === void 0 ? void 0 : _attributes$textStyle17.shadowColor) || "",
-        blur: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle18 = attributes.textStyles[0]) === null || _attributes$textStyle18 === void 0 ? void 0 : _attributes$textStyle18.shadowBlur) || "",
-        horizontal: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle19 = attributes.textStyles[0]) === null || _attributes$textStyle19 === void 0 ? void 0 : _attributes$textStyle19.shadowHorizontal) || "",
-        vertical: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle20 = attributes.textStyles[0]) === null || _attributes$textStyle20 === void 0 ? void 0 : _attributes$textStyle20.shadowVertical) || ""
+        color: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle15 = attributes.textStyles[0]) === null || _attributes$textStyle15 === void 0 ? void 0 : _attributes$textStyle15.shadowColor) || "",
+        blur: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle16 = attributes.textStyles[0]) === null || _attributes$textStyle16 === void 0 ? void 0 : _attributes$textStyle16.shadowBlur) || "",
+        horizontal: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle17 = attributes.textStyles[0]) === null || _attributes$textStyle17 === void 0 ? void 0 : _attributes$textStyle17.shadowHorizontal) || "",
+        vertical: (attributes === null || attributes === void 0 ? void 0 : (_attributes$textStyle18 = attributes.textStyles[0]) === null || _attributes$textStyle18 === void 0 ? void 0 : _attributes$textStyle18.shadowVertical) || ""
       },
       boxShadow: {
         color: (attributes === null || attributes === void 0 ? void 0 : (_attributes$btnStyles = attributes.btnStyles[0]) === null || _attributes$btnStyles === void 0 ? void 0 : _attributes$btnStyles.btnShadowColor) || "",
@@ -17283,11 +17294,10 @@ const deprecatedContent = [{
       iconColor: "",
       iconHoverColor: "",
       iconShadow: {
-        color: "",
-        blur: "",
-        horizontal: "",
-        vertical: "",
-        position: ""
+        color: "undefined",
+        blur: "10",
+        horizontal: "0",
+        vertical: "0"
       }
     };
     return Object.assign(attributes, newAttributes);
@@ -18186,10 +18196,7 @@ function Edit(props) {
       "background-color": `${btnStyles[0].backHoverColor}!important`,
       "border-color": `${btnStyles[0].borderHoverColor}!important`,
       color: `${btnStyles[0].textHoverColor}!important`
-    }; // styles[`.${blockId}.premium-button__wrap .premium-button .premium-button-text-edit`] = {
-    //     color: `${btnStyles[0].textColor}!important`,
-    // };
-
+    };
     styles[`.${blockId}.premium-button__slide .premium-button::before, .${blockId}.premium-button__shutter .premium-button::before, .${blockId}.premium-button__radial .premium-button::before`] = {
       "background-color": `${slideColor}`
     };
@@ -18474,6 +18481,7 @@ function Edit(props) {
       fontSize: iconSize[props.deviceType] + iconSize.unit,
       width: iconSize[props.deviceType] + iconSize.unit,
       height: iconSize[props.deviceType] + iconSize.unit,
+      color: `${iconColor}!important`,
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.marginCss)(iconSpacing, props.deviceType)
     }
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RichText, {
@@ -18498,6 +18506,7 @@ function Edit(props) {
       fontSize: iconSize[props.deviceType] + iconSize.unit,
       width: iconSize[props.deviceType] + iconSize.unit,
       height: iconSize[props.deviceType] + iconSize.unit,
+      color: `${iconColor}!important`,
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.marginCss)(iconSpacing, props.deviceType)
     }
   }))]), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(URLInput, {
@@ -46593,7 +46602,8 @@ function Edit(props) {
   }, __("Select Icon", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)((_fonticonpicker_react_fonticonpicker__WEBPACK_IMPORTED_MODULE_3___default()), {
     icons: _pbg_components__WEBPACK_IMPORTED_MODULE_4__.IcoNames,
     onChange: newIcon => setAttributes({
-      selectedIcon: newIcon
+      selectedIcon: newIcon,
+      iconType: newIcon.substring(0, 2)
     }),
     renderFunc: renderSVG,
     value: selectedIcon,
@@ -46830,7 +46840,7 @@ function Edit(props) {
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_5__.marginCss)(wrapMargin, props.deviceType),
       boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`
     }
-  }, "icon" === iconTypeFile && iconType === "fa" && 1 != _pbg_settings__WEBPACK_IMPORTED_MODULE_6__.FontAwesomeEnabled && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", {
+  }, "icon" === iconTypeFile && (iconType === "fe" || iconType === "ic") && 1 != _pbg_settings__WEBPACK_IMPORTED_MODULE_6__.FontAwesomeEnabled && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", {
     className: `premium-icon__alert`
   }, __("Please Enable Font Awesome Icons from Plugin settings", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-icon-content premium-icon__${hoverEffect !== "none" || !hoversEffect ? hoverEffect : hoversEffect}`
@@ -48270,7 +48280,7 @@ function Edit(props) {
       filter: iconType === "image" ? `brightness( ${imgFilter === null || imgFilter === void 0 ? void 0 : imgFilter.bright}% ) contrast( ${imgFilter === null || imgFilter === void 0 ? void 0 : imgFilter.contrast}% ) saturate( ${imgFilter === null || imgFilter === void 0 ? void 0 : imgFilter.saturation}% ) blur( ${imgFilter === null || imgFilter === void 0 ? void 0 : imgFilter.blur}px ) hue-rotate( ${imgFilter === null || imgFilter === void 0 ? void 0 : imgFilter.hue}deg )` : ""
     }
   }, iconType === "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_4__.GenIcon, {
-    className: `premium-image-separator-icon ${iconStyles[0].icon}`,
+    className: `premium-image-separator-icon ${iconStyles[0].icon} premium-image-separator-${iconStyles[0].advancedBorder}`,
     name: iconStyles[0].icon,
     size: iconSize[props.deviceType] + iconSize.unit,
     icon: 'fa' === iconStyles[0].icon.substring(0, 2) ? _pbg_components__WEBPACK_IMPORTED_MODULE_4__.FaIco[iconStyles[0].icon] : _pbg_components__WEBPACK_IMPORTED_MODULE_4__.Ico[iconStyles[0].icon],
@@ -48453,7 +48463,7 @@ function save(props) {
     target: target,
     rel: "noopener noreferrer"
   }, iconType === 'icon' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.GenIcon, {
-    className: `premium-image-separator-icon ${iconStyles[0].icon}`,
+    className: `premium-image-separator-icon ${iconStyles[0].icon} premium-image-separator-${iconStyles[0].advancedBorder}`,
     name: iconStyles[0].icon,
     icon: 'fa' === iconStyles[0].icon.substring(0, 2) ? _pbg_components__WEBPACK_IMPORTED_MODULE_3__.FaIco[iconStyles[0].icon] : _pbg_components__WEBPACK_IMPORTED_MODULE_3__.Ico[iconStyles[0].icon],
     strokeWidth: 'fe' === iconStyles[0].icon.substring(0, 2) ? icons[0].width : undefined,

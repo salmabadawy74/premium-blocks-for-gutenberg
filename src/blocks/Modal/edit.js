@@ -96,6 +96,9 @@ const Edit = props => {
             'border-bottom-left-radius': `${triggerBorderH?.borderRadius?.[currentDevice]?.bottom || 0}px!important`,
             'border-bottom-right-radius': `${triggerBorderH?.borderRadius?.[currentDevice]?.left || 0}px!important`,
         };
+        styles[` .${blockId} .premium-modal-trigger-container button.premium-modal-trigger-btn .premium-modal-box-icon`] = {
+            'color': `${triggerStyles[0].iconColor} !important`
+        };
         styles[` .${blockId} .premium-modal-trigger-container button.premium-modal-trigger-btn:hover svg`] = {
             'color': `${triggerStyles[0].iconHoverColor} !important`
         };
@@ -224,7 +227,7 @@ const Edit = props => {
                             }
                             <span
                                 style={{
-                                    color: triggerStyles[0].color,
+                                    // color: triggerStyles[0].color,
                                     fontFamily: triggerTypography?.fontFamily,
                                     fontWeight: triggerTypography?.fontWeight,
                                     fontStyle: triggerTypography?.fontStyle,

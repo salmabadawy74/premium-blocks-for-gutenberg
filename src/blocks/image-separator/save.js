@@ -71,7 +71,7 @@ export default function save(props) {
             >
                 <a className="premium-image-separator-link" href={link && url} target={target} rel="noopener noreferrer">
                     {iconType === 'icon' &&
-                        <GenIcon className={`premium-image-separator-icon ${iconStyles[0].icon}`}
+                        <GenIcon className={`premium-image-separator-icon ${iconStyles[0].icon} premium-image-separator-${iconStyles[0].advancedBorder}`}
                             name={iconStyles[0].icon}
                             icon={('fa' === iconStyles[0].icon.substring(0, 2) ? FaIco[iconStyles[0].icon] : Ico[iconStyles[0].icon])}
                             strokeWidth={('fe' === iconStyles[0].icon.substring(0, 2) ? icons[0].width : undefined)}

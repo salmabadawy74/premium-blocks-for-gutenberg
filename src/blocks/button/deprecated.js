@@ -302,6 +302,16 @@ const v7Attrinutes = {
             },
         ],
     },
+    "boxShadow": {
+        "type": "object",
+        "default": {
+            "color": "undefined",
+            "blur": "10",
+            "horizontal": "0",
+            "vertical": "0",
+            "position": ""
+        }
+    },
 };
 const new_Attributes = {
     showIcon: {
@@ -990,10 +1000,8 @@ const deprecatedContent = [
                         attributes?.textStyles[0]?.textWeight || "Default",
                     fontStyle: attributes?.textStyles[0]?.textStyle || "",
                     textTransform: attributes?.textStyles[0]?.textUpper || "",
-                    letterSpacing: attributes?.textStyles[0]?.textLetter || "",
                     fontFamily:
                         attributes?.textStyles[0]?.textFontFamily || "Default",
-                    lineHeight: attributes?.textStyles[0]?.textLine || "",
                     textDecoration: "",
                     letterSpacing: {
                         Desktop: attributes?.textStyles[0]?.textLetter || "",
@@ -1083,11 +1091,10 @@ const deprecatedContent = [
                 iconColor: "",
                 iconHoverColor: "",
                 iconShadow: {
-                    color: "",
-                    blur: "",
-                    horizontal: "",
-                    vertical: "",
-                    position: "",
+                    color: "undefined",
+                    blur: "10",
+                    horizontal: "0",
+                    vertical: "0",
                 },
             };
             return Object.assign(attributes, newAttributes);

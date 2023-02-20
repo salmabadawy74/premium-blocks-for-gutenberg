@@ -243,9 +243,6 @@ function Edit(props) {
             "border-color": `${btnStyles[0].borderHoverColor}!important`,
             color: `${btnStyles[0].textHoverColor}!important`,
         };
-        // styles[`.${blockId}.premium-button__wrap .premium-button .premium-button-text-edit`] = {
-        //     color: `${btnStyles[0].textColor}!important`,
-        // };
         styles[
             `.${blockId}.premium-button__slide .premium-button::before, .${blockId}.premium-button__shutter .premium-button::before, .${blockId}.premium-button__radial .premium-button::before`
         ] = {
@@ -771,6 +768,7 @@ function Edit(props) {
                                         fontSize: iconSize[props.deviceType] + iconSize.unit,
                                         width: iconSize[props.deviceType] + iconSize.unit,
                                         height: iconSize[props.deviceType] + iconSize.unit,
+                                        color: `${iconColor}!important`,
                                         ...marginCss(
                                             iconSpacing,
                                             props.deviceType
@@ -807,6 +805,7 @@ function Edit(props) {
                                             iconSize.unit,
                                         width: iconSize[props.deviceType] + iconSize.unit,
                                         height: iconSize[props.deviceType] + iconSize.unit,
+                                        color: `${iconColor}!important`,
                                         ...marginCss(
                                             iconSpacing,
                                             props.deviceType
