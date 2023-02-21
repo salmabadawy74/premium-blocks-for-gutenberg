@@ -68,8 +68,10 @@ export default function save(props) {
             'color': `${bulletIconStyles?.[0]?.bulletIconHoverColor}!important`,
             'background-color': `${bulletIconStyles?.[0]?.bulletIconHoverBackgroundColor}!important`
         };
-        styles[`.${blockId} .premium-bullet-list__label-wrap .premium-bullet-list__label:hover`] = {
-            'color': `${titleStyles?.[0]?.titleHoverColor}!important`
+        styles[
+            `.${blockId} .premium-bullet-list__wrapper:hover .premium-bullet-list__label-wrap .premium-bullet-list__label`
+        ] = {
+            color: `${titleStyles?.[0]?.titleHoverColor}!important`,
         };
         styles[`.${blockId} .premium-bullet-list__wrapper:hover`] = {
             'background-color': `${generalStyles?.[0]?.generalHoverBackgroundColor}!important`,

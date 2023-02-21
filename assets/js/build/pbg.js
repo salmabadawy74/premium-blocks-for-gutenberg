@@ -2339,9 +2339,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "GenIcon": () => (/* binding */ GenIcon),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../assets/js/settings */ "./assets/js/settings.js");
 
+
+const {
+  __
+} = wp.i18n;
 const {
   createElement
 } = wp.element;
@@ -2394,6 +2399,7 @@ const GenIcon = props => {
   const strokeLinecap = lineIcon ? 'round' : undefined;
   const strokeLinejoin = lineIcon ? 'round' : undefined;
   const HtmlTagOut = htmltag ? htmltag : 'div';
+  const setting_url = PremiumBlocksSettings.admin_url + "admin.php?page=pb_panel&path=settings";
   return createElement(HtmlTagOut, {
     style: {
       display: 'inline-flex',
@@ -2402,7 +2408,12 @@ const GenIcon = props => {
       ...style
     },
     className: className
-  }, createElement("svg", {
+  }, (type === "fe" || type === "ic") && 1 != _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.FontAwesomeEnabled ? createElement("p", {
+    className: `premium-icon__alert`
+  }, __("Please Enable Font Awesome Icons from ", "premium-blocks-for-gutenberg"), " ", createElement("a", {
+    target: "_blank",
+    href: setting_url
+  }, __("Plugin settings", "premium-blocks-for-gutenberg"))) : createElement("svg", {
     style: {
       display: 'inline-block',
       verticalAlign: 'middle'
@@ -2425,10 +2436,10 @@ GenIcon.defaultProps = {
   htmltag: 'div'
 };
 GenIcon.propTypes = {
-  icon: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string.isRequired),
-  size: prop_types__WEBPACK_IMPORTED_MODULE_0___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_0___default().number), (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string)]),
-  style: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().object),
-  className: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string)
+  icon: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string.isRequired),
+  size: prop_types__WEBPACK_IMPORTED_MODULE_1___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_1___default().number), (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string)]),
+  style: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().object),
+  className: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string)
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (GenIcon);
 
@@ -9298,6 +9309,7 @@ class Shape extends Component {
       onChange,
       shapeType
     } = this.props;
+    console.log(value, "vvvv");
     const styleVal = type == "style" && val == "" ? {
       openShape: 0
     } : {
@@ -9358,7 +9370,6 @@ class Shape extends Component {
       colorValue: value && value.color,
       onColorChange: val => this.setSettings("color", val)
     }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      min: 100,
       max: 1000,
       step: 1,
       showUnit: true,
@@ -9366,8 +9377,7 @@ class Shape extends Component {
       tabletValue: value.widthTablet,
       onChangeTablet: val => this.setSettings("widthTablet", val),
       mobileValue: value.widthMobile,
-      onChangeMobile: value => this.setSettings("widthMobile", val),
-      showUnit: true,
+      onChangeMobile: value => this.setSettings("widthMobile", value),
       label: __("Shape Width", "premium-blocks-for-gutenberg"),
       units: ["px", "em", "%"],
       onChange: val => this.setSettings("width", val)
@@ -9380,7 +9390,7 @@ class Shape extends Component {
       tabletValue: value.heightTablet,
       onChangeTablet: val => this.setSettings("heightTablet", val),
       mobileValue: value.heightMobile,
-      onChangeMobile: value => this.setSettings("heightMobile", val),
+      onChangeMobile: value => this.setSettings("heightMobile", value),
       units: ["px", "em", "%"],
       label: __("Shape Height", "premium-blocks-for-gutenberg"),
       onChange: val => this.setSettings("height", val)

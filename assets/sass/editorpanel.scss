@@ -5566,6 +5566,12 @@ i.fipicon-angle-left {
     }
 }
 
+.interface-interface-skeleton__sidebar {
+    .premium-icon__alert{
+        display: none;
+    }
+}
+
 @import "./typography.scss";
 @import "./spacing.scss";
 @import "./RangeControl.scss";
