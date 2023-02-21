@@ -341,6 +341,16 @@ function get_post_grid_content($attributes, $content, $block)
         PREMIUM_BLOCKS_VERSION,
         'all'
     );
+    if (isset($attributes['equalHeight']) && $attributes['equalHeight'] == true) {
+
+        wp_enqueue_script(
+            'pbg-post',
+            PREMIUM_BLOCKS_URL . 'assets/js/post-grid.js',
+            array('jquery'),
+            PREMIUM_BLOCKS_VERSION,
+            true
+        );
+    }
     $style_id = 'pbg-blocks-style' . esc_attr($unique_id);
     if (!wp_style_is($style_id, 'enqueued') && apply_filters('Premium_BLocks_blocks_render_inline_css', true, 'post-grid', $unique_id)) {
         $style_css .= get_premium_post_grid_css_style($attributes, $unique_id);

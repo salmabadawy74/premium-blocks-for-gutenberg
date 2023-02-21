@@ -70,6 +70,14 @@ const TEMPLATE = [
                         unit: "px",
                     },
                 },
+                horAlign: {
+                    type: "object",
+                    default: {
+                        Desktop: "left",
+                        Tablet: "left",
+                        Mobile: "left",
+                    },
+                },
             },
         },
         [
@@ -227,21 +235,24 @@ function PostTemplateEdit({
         ]
     );
     useEffect(() => {
-        if (equalHeight) {
-            let heights = [],
-                contentWrapper = document.querySelectorAll(
-                    ".premium-blog-post-outer-container"
-                );
-            const contentWrap = [...contentWrapper];
-            contentWrap.map((postContent) => {
-                var height = postContent.clientHeight;
+        let heights = [],
+            contentWrapper = document.querySelectorAll(
+                ".premium-blog-content-wrapper"
+            );
+        const contentWrap = [...contentWrapper];
+        contentWrap.map((postContent) => {
+            var height = postContent.clientHeight;
 
-                heights.push(height);
-            });
-            let maxHeight = Math.max(...heights);
-            console.log(maxHeight, heights);
+            heights.push(height);
+        });
+        let maxHeight = Math.max(...heights);
+        if (equalHeight) {
             contentWrap.map((postContent) => {
                 postContent.style.height = maxHeight + "px";
+            });
+        } else {
+            contentWrap.map((postContent) => {
+                postContent.style.height = "auto";
             });
         }
     }, [equalHeight]);

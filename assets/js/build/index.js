@@ -53343,6 +53343,14 @@ const TEMPLATE = [["premium/post-featured-image"], ["premium/section", {
         },
         unit: "px"
       }
+    },
+    horAlign: {
+      type: "object",
+      default: {
+        Desktop: "left",
+        Tablet: "left",
+        Mobile: "left"
+      }
     }
   }
 }, [["premium/post-title"], ["premium/post-meta"], ["premium/post-excerpt"], ["premium/post-tag"]]]];
@@ -53482,18 +53490,21 @@ function PostTemplateEdit(_ref2) {
     };
   }, [perPage, page, offset, order, orderBy, clientId, author, search, postType, exclude, sticky]);
   useEffect(() => {
+    let heights = [],
+      contentWrapper = document.querySelectorAll(".premium-blog-content-wrapper");
+    const contentWrap = [...contentWrapper];
+    contentWrap.map(postContent => {
+      var height = postContent.clientHeight;
+      heights.push(height);
+    });
+    let maxHeight = Math.max(...heights);
     if (equalHeight) {
-      let heights = [],
-        contentWrapper = document.querySelectorAll(".premium-blog-post-outer-container");
-      const contentWrap = [...contentWrapper];
-      contentWrap.map(postContent => {
-        var height = postContent.clientHeight;
-        heights.push(height);
-      });
-      let maxHeight = Math.max(...heights);
-      console.log(maxHeight, heights);
       contentWrap.map(postContent => {
         postContent.style.height = maxHeight + "px";
+      });
+    } else {
+      contentWrap.map(postContent => {
+        postContent.style.height = "auto";
       });
     }
   }, [equalHeight]);
