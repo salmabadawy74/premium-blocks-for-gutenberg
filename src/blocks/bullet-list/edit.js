@@ -24,7 +24,7 @@ const { withSelect, withDispatch } = wp.data;
 
 const { __ } = wp.i18n;
 
-const { useEffect, Fragment } = wp.element;
+const { useEffect, Fragment, useRef } = wp.element;
 
 const { InspectorControls, useBlockProps, useInnerBlocksProps } =
     wp.blockEditor;
@@ -33,6 +33,15 @@ const { PanelBody, SelectControl, ToggleControl } = wp.components;
 
 function Edit(props) {
     const { setAttributes, className, clientId } = props;
+
+    // const contentRef = useRef(null);
+
+    // useEffect(() => {
+    //     if (contentRef.current) {
+    //         console.log(contentRef.current.children[contentRef.current.children.length - 1)
+    //         contentRef.current.children[5].style.display = "none"
+    //     }
+    // });
 
     const {
         blockId,
@@ -265,10 +274,10 @@ function Edit(props) {
                 "padding-right": `${generalpadding?.[currentDevice]?.right}${generalpadding?.unit}`,
                 "padding-bottom": `${generalpadding?.[currentDevice]?.bottom}${generalpadding?.unit}`,
                 "padding-left": `${generalpadding?.[currentDevice]?.left}${generalpadding?.unit}`,
-                "margin-top": `${generalmargin?.[currentDevice]?.top}${generalmargin?.unit}`,
-                "margin-right": `${generalmargin?.[currentDevice]?.right}${generalmargin?.unit}`,
-                "margin-bottom": `${generalmargin?.[currentDevice]?.bottom}${generalmargin?.unit}`,
-                "margin-left": `${generalmargin?.[currentDevice]?.left}${generalmargin?.unit}`,
+                "margin-top": `${generalmargin?.[currentDevice]?.top}${generalmargin?.unit} !important`,
+                "margin-right": `${generalmargin?.[currentDevice]?.right}${generalmargin?.unit} !important`,
+                "margin-bottom": `${generalmargin?.[currentDevice]?.bottom}${generalmargin?.unit} !important`,
+                "margin-left": `${generalmargin?.[currentDevice]?.left}${generalmargin?.unit} !important`,
                 "text-align": align?.[currentDevice],
                 overflow: "hidden",
                 "justify-content":
@@ -341,7 +350,7 @@ function Edit(props) {
             "background-color": `${bulletIconStyles?.[0]?.bulletIconHoverBackgroundColor}!important`,
         };
         styles[
-            `.${blockId} .premium-bullet-list__label-wrap .premium-bullet-list__label:hover`
+            `.${blockId} .premium-bullet-list__wrapper:hover .premium-bullet-list__label-wrap .premium-bullet-list__label`
         ] = {
             color: `${titleStyles?.[0]?.titleHoverColor}!important`,
         };
@@ -495,46 +504,46 @@ function Edit(props) {
                                         showIcons={true}
                                     />
                                 ) : (
-                                    <MultiButtonsControl
-                                        choices={[
-                                            {
-                                                value: "left",
-                                                label: __(
-                                                    "Left",
-                                                    "premium-blocks-for-gutenberg"
-                                                ),
-                                                icon: Icons.alignLeft,
-                                            },
-                                            {
-                                                value: "center",
-                                                label: __(
-                                                    "Center",
-                                                    "premium-blocks-for-gutenberg"
-                                                ),
-                                                icon: Icons.alignCenter,
-                                            },
-                                            {
-                                                value: "right",
-                                                label: __(
-                                                    "Right",
-                                                    "premium-blocks-for-gutenberg"
-                                                ),
-                                                icon: Icons.alignRight,
-                                            },
-                                        ]}
-                                        value={bulletAlign}
-                                        onChange={(alignn) =>
-                                            setAttributes({
-                                                bulletAlign: alignn,
-                                            })
-                                        }
-                                        label={__(
-                                            "Align Content",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
-                                        showIcons={true}
-                                    />
-                                )}
+                                        <MultiButtonsControl
+                                            choices={[
+                                                {
+                                                    value: "left",
+                                                    label: __(
+                                                        "Left",
+                                                        "premium-blocks-for-gutenberg"
+                                                    ),
+                                                    icon: Icons.alignLeft,
+                                                },
+                                                {
+                                                    value: "center",
+                                                    label: __(
+                                                        "Center",
+                                                        "premium-blocks-for-gutenberg"
+                                                    ),
+                                                    icon: Icons.alignCenter,
+                                                },
+                                                {
+                                                    value: "right",
+                                                    label: __(
+                                                        "Right",
+                                                        "premium-blocks-for-gutenberg"
+                                                    ),
+                                                    icon: Icons.alignRight,
+                                                },
+                                            ]}
+                                            value={bulletAlign}
+                                            onChange={(alignn) =>
+                                                setAttributes({
+                                                    bulletAlign: alignn,
+                                                })
+                                            }
+                                            label={__(
+                                                "Align Content",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
+                                            showIcons={true}
+                                        />
+                                    )}
                             </div>
                             <SelectControl
                                 label={__(

@@ -1,4 +1,6 @@
 import PropTypes from 'prop-types';
+import { FontAwesomeEnabled } from "../../assets/js/settings";
+const { __ } = wp.i18n;
 const { createElement } = wp.element;
 
 const walkChildren = (children) => {
@@ -33,14 +35,32 @@ export const GenIcon = (props) => {
     const strokeLinecap = (lineIcon ? 'round' : undefined);
     const strokeLinejoin = (lineIcon ? 'round' : undefined);
     const HtmlTagOut = (htmltag ? htmltag : 'div');
+    const setting_url = PremiumBlocksSettings.admin_url + "admin.php?page=pb_panel&path=settings";
     return (
         <HtmlTagOut style={{ display: 'inline-flex', justifyContent: 'center', alignItems: 'center', ...style }} className={className}>
-            <svg style={{ display: 'inline-block', verticalAlign: 'middle' }} viewBox={(!props.icon ? '0 0 24 24' : props.icon.vB)} height={props.size} width={props.size} fill={fill} stroke={stroke} xmlns={props.xmlns} stroke-width={strokeWidth} stroke-linecap={strokeLinecap} stroke-linejoin={strokeLinejoin} >
-                {props.title ? <title>{props.title}</title> : null}
-                {props.icon && (
-                    walkChildren(props.icon.cD)
-                )}
-            </svg>
+            {((type === "fe" || type === "ic") && 1 != FontAwesomeEnabled) ? (
+                <p className={`premium-icon__alert`}>
+                    {__(
+                        "Please Enable Font Awesome Icons from ",
+                        "premium-blocks-for-gutenberg"
+                    )}
+                    {" "}
+                    <a target="_blank" href={setting_url}>
+                        {__(
+                            "Plugin settings",
+                            "premium-blocks-for-gutenberg"
+                        )}
+                    </a>
+                </p>
+            )
+                :
+                <svg style={{ display: 'inline-block', verticalAlign: 'middle' }} viewBox={(!props.icon ? '0 0 24 24' : props.icon.vB)} height={props.size} width={props.size} fill={fill} stroke={stroke} xmlns={props.xmlns} stroke-width={strokeWidth} stroke-linecap={strokeLinecap} stroke-linejoin={strokeLinejoin} >
+                    {props.title ? <title>{props.title}</title> : null}
+                    {props.icon && (
+                        walkChildren(props.icon.cD)
+                    )}
+                </svg>
+            }
         </HtmlTagOut>
     );
 };

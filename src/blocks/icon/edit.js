@@ -46,7 +46,7 @@ const { withSelect } = wp.data;
 function Edit(props) {
     const { setAttributes, className, context, attributes } = props;
     const { hoversEffect } = context;
-    const setting_url = PremiumBlocksSettings.admin_url + "admin.php?page=pb_panel&path=settings";
+    // const setting_url = PremiumBlocksSettings.admin_url + "admin.php?page=pb_panel&path=settings";
 
     useEffect(() => {
         setAttributes({
@@ -772,7 +772,7 @@ function Edit(props) {
                         boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
                     }}
                 >
-                    {"icon" === iconTypeFile && (iconType === "fe" || iconType === "ic") && 1 != FontAwesomeEnabled && (
+                    {/* {"icon" === iconTypeFile && (iconType === "fe" || iconType === "ic") && 1 != FontAwesomeEnabled && (
                         <p className={`premium-icon__alert`}>
                             {__(
                                 "Please Enable Font Awesome Icons from ",
@@ -786,9 +786,9 @@ function Edit(props) {
                                 )}
                             </a>
                         </p>
-                    )}
+                    )} */}
                     <div className={`premium-icon-content premium-icon__${hoverEffect !== "none" || !hoversEffect ? hoverEffect : hoversEffect}`}>
-                        {"icon" === iconTypeFile && (iconType === "da" || 1 == FontAwesomeEnabled) && (
+                        {"icon" === iconTypeFile && (
                             <GenIcon className={`premium-icon premium-icon-type ${selectedIcon}`}
                                 name={selectedIcon}
                                 size={iconSize[props.deviceType] +

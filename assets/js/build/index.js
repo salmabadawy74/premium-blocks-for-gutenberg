@@ -15430,7 +15430,8 @@ const {
 } = wp.i18n;
 const {
   useEffect,
-  Fragment
+  Fragment,
+  useRef
 } = wp.element;
 const {
   InspectorControls,
@@ -15450,7 +15451,14 @@ function Edit(props) {
     setAttributes,
     className,
     clientId
-  } = props;
+  } = props; // const contentRef = useRef(null);
+  // useEffect(() => {
+  //     if (contentRef.current) {
+  //         console.log(contentRef.current.children[contentRef.current.children.length - 1)
+  //         contentRef.current.children[5].style.display = "none"
+  //     }
+  // });
+
   const {
     blockId,
     layoutPos,
@@ -15654,10 +15662,10 @@ function Edit(props) {
       "padding-right": `${generalpadding === null || generalpadding === void 0 ? void 0 : (_generalpadding$curre2 = generalpadding[currentDevice]) === null || _generalpadding$curre2 === void 0 ? void 0 : _generalpadding$curre2.right}${generalpadding === null || generalpadding === void 0 ? void 0 : generalpadding.unit}`,
       "padding-bottom": `${generalpadding === null || generalpadding === void 0 ? void 0 : (_generalpadding$curre3 = generalpadding[currentDevice]) === null || _generalpadding$curre3 === void 0 ? void 0 : _generalpadding$curre3.bottom}${generalpadding === null || generalpadding === void 0 ? void 0 : generalpadding.unit}`,
       "padding-left": `${generalpadding === null || generalpadding === void 0 ? void 0 : (_generalpadding$curre4 = generalpadding[currentDevice]) === null || _generalpadding$curre4 === void 0 ? void 0 : _generalpadding$curre4.left}${generalpadding === null || generalpadding === void 0 ? void 0 : generalpadding.unit}`,
-      "margin-top": `${generalmargin === null || generalmargin === void 0 ? void 0 : (_generalmargin$curren = generalmargin[currentDevice]) === null || _generalmargin$curren === void 0 ? void 0 : _generalmargin$curren.top}${generalmargin === null || generalmargin === void 0 ? void 0 : generalmargin.unit}`,
-      "margin-right": `${generalmargin === null || generalmargin === void 0 ? void 0 : (_generalmargin$curren2 = generalmargin[currentDevice]) === null || _generalmargin$curren2 === void 0 ? void 0 : _generalmargin$curren2.right}${generalmargin === null || generalmargin === void 0 ? void 0 : generalmargin.unit}`,
-      "margin-bottom": `${generalmargin === null || generalmargin === void 0 ? void 0 : (_generalmargin$curren3 = generalmargin[currentDevice]) === null || _generalmargin$curren3 === void 0 ? void 0 : _generalmargin$curren3.bottom}${generalmargin === null || generalmargin === void 0 ? void 0 : generalmargin.unit}`,
-      "margin-left": `${generalmargin === null || generalmargin === void 0 ? void 0 : (_generalmargin$curren4 = generalmargin[currentDevice]) === null || _generalmargin$curren4 === void 0 ? void 0 : _generalmargin$curren4.left}${generalmargin === null || generalmargin === void 0 ? void 0 : generalmargin.unit}`,
+      "margin-top": `${generalmargin === null || generalmargin === void 0 ? void 0 : (_generalmargin$curren = generalmargin[currentDevice]) === null || _generalmargin$curren === void 0 ? void 0 : _generalmargin$curren.top}${generalmargin === null || generalmargin === void 0 ? void 0 : generalmargin.unit} !important`,
+      "margin-right": `${generalmargin === null || generalmargin === void 0 ? void 0 : (_generalmargin$curren2 = generalmargin[currentDevice]) === null || _generalmargin$curren2 === void 0 ? void 0 : _generalmargin$curren2.right}${generalmargin === null || generalmargin === void 0 ? void 0 : generalmargin.unit} !important`,
+      "margin-bottom": `${generalmargin === null || generalmargin === void 0 ? void 0 : (_generalmargin$curren3 = generalmargin[currentDevice]) === null || _generalmargin$curren3 === void 0 ? void 0 : _generalmargin$curren3.bottom}${generalmargin === null || generalmargin === void 0 ? void 0 : generalmargin.unit} !important`,
+      "margin-left": `${generalmargin === null || generalmargin === void 0 ? void 0 : (_generalmargin$curren4 = generalmargin[currentDevice]) === null || _generalmargin$curren4 === void 0 ? void 0 : _generalmargin$curren4.left}${generalmargin === null || generalmargin === void 0 ? void 0 : generalmargin.unit} !important`,
       "text-align": align === null || align === void 0 ? void 0 : align[currentDevice],
       overflow: "hidden",
       "justify-content": (align === null || align === void 0 ? void 0 : align[currentDevice]) == "right" ? "flex-end" : align === null || align === void 0 ? void 0 : align[currentDevice],
@@ -15701,7 +15709,7 @@ function Edit(props) {
       color: `${bulletIconStyles === null || bulletIconStyles === void 0 ? void 0 : (_bulletIconStyles$ = bulletIconStyles[0]) === null || _bulletIconStyles$ === void 0 ? void 0 : _bulletIconStyles$.bulletIconHoverColor}!important`,
       "background-color": `${bulletIconStyles === null || bulletIconStyles === void 0 ? void 0 : (_bulletIconStyles$2 = bulletIconStyles[0]) === null || _bulletIconStyles$2 === void 0 ? void 0 : _bulletIconStyles$2.bulletIconHoverBackgroundColor}!important`
     };
-    styles[`.${blockId} .premium-bullet-list__label-wrap .premium-bullet-list__label:hover`] = {
+    styles[`.${blockId} .premium-bullet-list__wrapper:hover .premium-bullet-list__label-wrap .premium-bullet-list__label`] = {
       color: `${titleStyles === null || titleStyles === void 0 ? void 0 : (_titleStyles$ = titleStyles[0]) === null || _titleStyles$ === void 0 ? void 0 : _titleStyles$.titleHoverColor}!important`
     };
     styles[`.${blockId} .premium-bullet-list__wrapper:hover`] = {
@@ -16226,8 +16234,8 @@ function save(props) {
       'color': `${bulletIconStyles === null || bulletIconStyles === void 0 ? void 0 : (_bulletIconStyles$ = bulletIconStyles[0]) === null || _bulletIconStyles$ === void 0 ? void 0 : _bulletIconStyles$.bulletIconHoverColor}!important`,
       'background-color': `${bulletIconStyles === null || bulletIconStyles === void 0 ? void 0 : (_bulletIconStyles$2 = bulletIconStyles[0]) === null || _bulletIconStyles$2 === void 0 ? void 0 : _bulletIconStyles$2.bulletIconHoverBackgroundColor}!important`
     };
-    styles[`.${blockId} .premium-bullet-list__label-wrap .premium-bullet-list__label:hover`] = {
-      'color': `${titleStyles === null || titleStyles === void 0 ? void 0 : (_titleStyles$ = titleStyles[0]) === null || _titleStyles$ === void 0 ? void 0 : _titleStyles$.titleHoverColor}!important`
+    styles[`.${blockId} .premium-bullet-list__wrapper:hover .premium-bullet-list__label-wrap .premium-bullet-list__label`] = {
+      color: `${titleStyles === null || titleStyles === void 0 ? void 0 : (_titleStyles$ = titleStyles[0]) === null || _titleStyles$ === void 0 ? void 0 : _titleStyles$.titleHoverColor}!important`
     };
     styles[`.${blockId} .premium-bullet-list__wrapper:hover`] = {
       'background-color': `${generalStyles === null || generalStyles === void 0 ? void 0 : (_generalStyles$ = generalStyles[0]) === null || _generalStyles$ === void 0 ? void 0 : _generalStyles$.generalHoverBackgroundColor}!important`,
@@ -46320,8 +46328,8 @@ function Edit(props) {
   } = props;
   const {
     hoversEffect
-  } = context;
-  const setting_url = PremiumBlocksSettings.admin_url + "admin.php?page=pb_panel&path=settings";
+  } = context; // const setting_url = PremiumBlocksSettings.admin_url + "admin.php?page=pb_panel&path=settings";
+
   useEffect(() => {
     setAttributes({
       blockId: "premium-icon-" + (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_5__.generateBlockId)(props.clientId)
@@ -46841,14 +46849,9 @@ function Edit(props) {
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_5__.marginCss)(wrapMargin, props.deviceType),
       boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`
     }
-  }, "icon" === iconTypeFile && (iconType === "fe" || iconType === "ic") && 1 != _pbg_settings__WEBPACK_IMPORTED_MODULE_6__.FontAwesomeEnabled && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", {
-    className: `premium-icon__alert`
-  }, __("Please Enable Font Awesome Icons from ", "premium-blocks-for-gutenberg"), " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
-    target: "_blank",
-    href: setting_url
-  }, __("Plugin settings", "premium-blocks-for-gutenberg"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-icon-content premium-icon__${hoverEffect !== "none" || !hoversEffect ? hoverEffect : hoversEffect}`
-  }, "icon" === iconTypeFile && (iconType === "da" || 1 == _pbg_settings__WEBPACK_IMPORTED_MODULE_6__.FontAwesomeEnabled) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_4__.GenIcon, {
+  }, "icon" === iconTypeFile && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_4__.GenIcon, {
     className: `premium-icon premium-icon-type ${selectedIcon}`,
     name: selectedIcon,
     size: iconSize[props.deviceType] + iconSize.unit,

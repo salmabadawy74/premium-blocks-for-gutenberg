@@ -309,10 +309,23 @@ $pbBorderColor: #e1e1e1;
     }
 }
 
+.premium-title-default__wrap {
+    -js-display: inline-flex;
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -moz-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+}
+
 .premium-title-style1__wrap {
     border-left: 3px solid var(--pbg-global-color1, #0085BA) !important;
     display: -webkit-inline-box;
     display: -moz-inline-box;
+    display: -webkit-inline-flex;
+    display: -moz-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
 }
 
 .before {
