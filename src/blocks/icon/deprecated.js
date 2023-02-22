@@ -1754,7 +1754,7 @@ const deprecatedContent = [
                         "iconn": attributes.selectedIcon ? attributes.selectedIcon : "dashicons admin-site",
                         "link": "",
                         "target": "_self",
-                        "size": attributes.iconSize['Desktop'] ? attributes.iconSize['Desktop'] : "50",
+                        "size": attributes.iconSize['Desktop'] ? attributes.iconSize['Desktop'] : "",
                         "width": "2",
                         "title": "",
                         "style": "default"
@@ -1762,7 +1762,7 @@ const deprecatedContent = [
                 ],
                 selectedIcon: attributes.selectedIcon ? attributes.selectedIcon : "dashicons admin-site",
                 "iconSize": {
-                    "Desktop": attributes.iconSize['Desktop'] ? attributes.iconSize['Desktop'] : "50",
+                    "Desktop": attributes.iconSize['Desktop'] ? attributes.iconSize['Desktop'] : "",
                     "Tablet": attributes.iconSize['Tablet'] ? attributes.iconSize['Tablet'] : "",
                     "Mobile": attributes.iconSize['Mobile'] ? attributes.iconSize['Mobile'] : "",
                     "unit": attributes.iconSize['unit'] ? attributes.iconSize['unit'] : "px"

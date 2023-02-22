@@ -384,7 +384,12 @@ function Edit(props) {
         };
         styles[`.${blockId} .premium-title-header`] = {
             "--shadow-color": `${titleStyles[0].blurColor}!important`,
-            "--shadow-value": `${titleStyles[0].blurShadow}px!important`
+            "--shadow-value": `${titleStyles[0].blurShadow}px!important`,
+            "align-items": iconAlign?.[props.deviceType] == "left"
+                ? "flex-start !important"
+                : iconAlign?.[props.deviceType] == "right"
+                    ? "flex-end !important"
+                    : "center !important",
         };
         styles[`.${blockId} .premium-title .default .premium-title-header`] = {
             "border-color": `${titleBorder.borderColor}!important`,
@@ -1864,7 +1869,8 @@ function Edit(props) {
                                         : ""
                                     }`,
                                 "data-blur-delay": `${titleStyles[0].animateDelay}`,
-                                "data-shiny-dur": `${titleStyles[0].animateduration}`
+                                "data-shiny-dur": `${titleStyles[0].animateduration}`,
+                                // style: { alignItems: iconAlign[props.deviceType] }
                             },
                             [
                                 <Fragment>

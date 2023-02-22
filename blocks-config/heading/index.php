@@ -72,6 +72,14 @@ function get_premium_heading_css_style( $attr, $unique_id ) {
 	}
 
 	// Style for icon.
+	if ( isset( $attr['iconAlign'] ) ) {
+		$align      = $css->get_responsive_css( $attr['iconAlign'], 'Desktop' );
+		$flex_align = 'left' === $align ? 'flex-start' : 'center';
+		$flex_align = 'right' === $align ? 'flex-end' : $flex_align;
+
+		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' );
+		$css->add_property( 'align-items', $flex_align );
+	}
 	if ( isset( $attr['iconPadding'] ) ) {
 		$icon_padding = $attr['iconPadding'];
 		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' . ' > svg' );
@@ -217,6 +225,14 @@ function get_premium_heading_css_style( $attr, $unique_id ) {
 	}
 
 	// Style for icon.
+	if ( isset( $attr['iconAlign'] ) ) {
+		$align      = $css->get_responsive_css( $attr['iconAlign'], 'Tablet' );
+		$flex_align = 'left' === $align ? 'flex-start' : 'center';
+		$flex_align = 'right' === $align ? 'flex-end' : $flex_align;
+
+		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' );
+		$css->add_property( 'align-items', $flex_align );
+	}
 	if ( isset( $attr['iconPadding'] ) ) {
 		$icon_padding = $attr['iconPadding'];
 		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' . ' > svg' );
@@ -364,6 +380,14 @@ function get_premium_heading_css_style( $attr, $unique_id ) {
 	}
 
 	// Style for icon.
+	if ( isset( $attr['iconAlign'] ) ) {
+		$align      = $css->get_responsive_css( $attr['iconAlign'], 'Mobile' );
+		$flex_align = 'left' === $align ? 'flex-start' : 'center';
+		$flex_align = 'right' === $align ? 'flex-end' : $flex_align;
+
+		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' );
+		$css->add_property( 'align-items', $flex_align );
+	}
 	if ( isset( $attr['iconPadding'] ) ) {
 		$icon_padding = $attr['iconPadding'];
 		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' . ' > svg' );
