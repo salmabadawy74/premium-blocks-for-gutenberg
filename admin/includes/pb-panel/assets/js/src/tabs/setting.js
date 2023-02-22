@@ -1,6 +1,7 @@
 import { useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import AdvancedSwitcher from "../common/AdvancedSwitcher";
+import CheckBox from "../common/checkBox";
 import Container from "../common/Container";
 import { useDispatch, useSelector } from "react-redux";
 import { updateSettings } from "../features/settings/index";
@@ -50,7 +51,7 @@ const Setting = () => {
         <Container>
             <div className="pb-settings">
                 <div className="pb-api-settings">
-                    <div className="pb-advanced-input">
+                    <div className="pb-advanced-input-contain-subTitle">
                         <div>
                             <h2>
                                 {__(
@@ -92,7 +93,7 @@ const Setting = () => {
                         </div>
                         <button
                             type="button"
-                            className="pb-button secondary primary"
+                            className="pb-button secondary primary pb-button-save-map"
                             onClick={() =>
                                 onChangeData("premium-map-key", mapApi)
                             }
@@ -100,22 +101,24 @@ const Setting = () => {
                             Save
                         </button>
                     </div>
+                    <div className="pb-advanced-input-subTitle">
+                        <CheckBox
+                            label={__(
+                                "Enable Maps API JS File",
+                                "premium-blocks-for-gutenberg"
+                            )}
+                            onChange={(checked) =>
+                                onChangeData("premium-map-api", checked)
+                            }
+                            checked={settings?.["premium-map-api"] || false}
+                            description={__(
+                                "This will Enable the API JS file if it's not included by another theme or plugin.",
+                                "premium-blocks-for-gutenberg"
+                            )}
+                        />
+                    </div>
                 </div>
                 <div className="pb-setting-options">
-                    <AdvancedSwitcher
-                        label={__(
-                            "Enable Maps API JS File",
-                            "premium-blocks-for-gutenberg"
-                        )}
-                        onChange={(checked) =>
-                            onChangeData("premium-map-api", checked)
-                        }
-                        checked={settings?.["premium-map-api"] || false}
-                        description={__(
-                            "This will Enable the API JS file if it's not included by another theme or plugin.",
-                            "premium-blocks-for-gutenberg"
-                        )}
-                    />
                     <AdvancedSwitcher
                         label={__(
                             "Enable Font Awesome Icons",
