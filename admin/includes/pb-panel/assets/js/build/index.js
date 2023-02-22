@@ -2484,6 +2484,49 @@ const PBG_Block_Icons = {
 
 /***/ }),
 
+/***/ "./src/common/checkBox.js":
+/*!********************************!*\
+  !*** ./src/common/checkBox.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+const CheckBox = props => {
+  const {
+    label,
+    description,
+    onChange,
+    checked = true,
+    style
+  } = props;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pb-advanced-check-box",
+    style: style
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pb-checkbox"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.CheckboxControl, {
+    label: label,
+    help: description,
+    checked: checked,
+    onChange: onChange
+  })));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CheckBox);
+
+/***/ }),
+
 /***/ "./src/common/logo.js":
 /*!****************************!*\
   !*** ./src/common/logo.js ***!
@@ -3719,10 +3762,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _common_AdvancedSwitcher__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/AdvancedSwitcher */ "./src/common/AdvancedSwitcher.js");
-/* harmony import */ var _common_Container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/Container */ "./src/common/Container.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _features_settings_index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../features/settings/index */ "./src/features/settings/index.js");
-/* harmony import */ var _features_Alert_AlertSlice__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../features/Alert/AlertSlice */ "./src/features/Alert/AlertSlice.js");
+/* harmony import */ var _common_checkBox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/checkBox */ "./src/common/checkBox.js");
+/* harmony import */ var _common_Container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common/Container */ "./src/common/Container.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _features_settings_index__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../features/settings/index */ "./src/features/settings/index.js");
+/* harmony import */ var _features_Alert_AlertSlice__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../features/Alert/AlertSlice */ "./src/features/Alert/AlertSlice.js");
+
 
 
 
@@ -3735,15 +3780,15 @@ __webpack_require__.r(__webpack_exports__);
 const Setting = () => {
   var _PremiumBlocksPanelDa;
 
-  const settings = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useSelector)(state => state.settingStates.apiSettings);
+  const settings = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useSelector)(state => state.settingStates.apiSettings);
   const [mapApi, setMapApi] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(settings === null || settings === void 0 ? void 0 : settings["premium-map-key"]);
-  const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useDispatch)();
+  const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useDispatch)();
 
   const onChangeData = async (key, value) => {
     const updatedData = { ...settings
     };
     updatedData[key] = value;
-    dispatch((0,_features_settings_index__WEBPACK_IMPORTED_MODULE_5__.updateSettings)(updatedData));
+    dispatch((0,_features_settings_index__WEBPACK_IMPORTED_MODULE_6__.updateSettings)(updatedData));
     const body = new FormData();
     body.append("action", "pb-panel-update-settings");
     body.append("nonce", PremiumBlocksPanelData.nonce);
@@ -3762,7 +3807,7 @@ const Setting = () => {
         } = await response.json();
 
         if (success && data.setting) {
-          dispatch(_features_Alert_AlertSlice__WEBPACK_IMPORTED_MODULE_6__.actions.createAlert({
+          dispatch(_features_Alert_AlertSlice__WEBPACK_IMPORTED_MODULE_7__.actions.createAlert({
             message: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Settings saved.", "premium-blocks-for-gutenberg"),
             type: "success"
           }));
@@ -3770,19 +3815,19 @@ const Setting = () => {
       }
     } catch (e) {
       console.log(e);
-      dispatch(_features_Alert_AlertSlice__WEBPACK_IMPORTED_MODULE_6__.actions.createAlert({
+      dispatch(_features_Alert_AlertSlice__WEBPACK_IMPORTED_MODULE_7__.actions.createAlert({
         message: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("An unknown error occurred.", ""),
         type: "error"
       }));
     }
   };
 
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_Container__WEBPACK_IMPORTED_MODULE_3__["default"], null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_Container__WEBPACK_IMPORTED_MODULE_4__["default"], null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pb-settings"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pb-api-settings"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "pb-advanced-input"
+    className: "pb-advanced-input-contain-subTitle"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Google Maps API Key:", "premium-blocks-for-gutenberg")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Premium Maps Block requires Google API key to be entered below. If you don’t have one,", "premium-blocks-for-gutenberg"), " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: "https://developers.google.com/maps/documentation/javascript/get-api-key",
     target: "_blank",
@@ -3794,16 +3839,18 @@ const Setting = () => {
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("API Key", "premium-blocks-for-gutenberg")
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     type: "button",
-    className: "pb-button secondary primary",
+    className: "pb-button secondary primary pb-button-save-map",
     onClick: () => onChangeData("premium-map-key", mapApi)
-  }, "Save"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "pb-setting-options"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_AdvancedSwitcher__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, "Save")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pb-advanced-input-subTitle"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_checkBox__WEBPACK_IMPORTED_MODULE_3__["default"], {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Enable Maps API JS File", "premium-blocks-for-gutenberg"),
     onChange: checked => onChangeData("premium-map-api", checked),
     checked: (settings === null || settings === void 0 ? void 0 : settings["premium-map-api"]) || false,
     description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("This will Enable the API JS file if it's not included by another theme or plugin.", "premium-blocks-for-gutenberg")
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_AdvancedSwitcher__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pb-setting-options"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_AdvancedSwitcher__WEBPACK_IMPORTED_MODULE_2__["default"], {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Enable Font Awesome Icons", "premium-blocks-for-gutenberg"),
     onChange: checked => onChangeData("premium-fa-css", checked),
     checked: (settings === null || settings === void 0 ? void 0 : settings["premium-fa-css"]) || false,
