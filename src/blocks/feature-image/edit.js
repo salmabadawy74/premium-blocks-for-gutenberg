@@ -153,7 +153,6 @@ function Image(props) {
         };
         return generateCss(styles);
     };
-
     if (featuredImage) {
         return (
             <Fragment>

@@ -169,8 +169,9 @@ const Save = (props) => {
                     <div
                         className={topShapeClasses}
                         dangerouslySetInnerHTML={{
-                            __html:
-                                PremiumBlocksSettings.shapes[shapeTop.style],
+                            __html: PremiumBlocksSettings.shapes[
+                                shapeTop.style
+                            ],
                         }}
                     />
                 )}
@@ -186,8 +187,9 @@ const Save = (props) => {
                     <div
                         className={bottomShapeClasses}
                         dangerouslySetInnerHTML={{
-                            __html:
-                                PremiumBlocksSettings.shapes[shapeBottom.style],
+                            __html: PremiumBlocksSettings.shapes[
+                                shapeBottom.style
+                            ],
                         }}
                     />
                 )}

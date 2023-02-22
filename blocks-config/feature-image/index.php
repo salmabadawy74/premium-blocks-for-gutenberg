@@ -35,13 +35,13 @@ function render_block_premium_post_featured_image($attributes, $content, $block)
     if ($is_link) {
         $attr['alt'] = trim(strip_tags(get_the_title($post_ID)));
     }
-
+    $block_helpers = pbg_blocks_helper();
+    $shapes = $block_helpers->getSvgShapes();
 
     $featured_image = get_the_post_thumbnail($post_ID, $size_slug);
     if (!$featured_image) {
         return '';
     }
-
     // return $featured_image;
     $wrapImage       = array(
         'premium-blog-thumbnail-container',
@@ -49,13 +49,29 @@ function render_block_premium_post_featured_image($attributes, $content, $block)
             $attributes['hoverEffect'] .
             '-effect',
     );
+    $bottomShapeClasses = "premium-shape-divider premium-bottom-shape";
+    if (isset($attributes['shapeBottom']) && isset($attributes["shapeBottom"]['flipShapeDivider'])) {
+        $bottomShapeClasses .= " premium-shape-flip";
+    }
+    if (isset($attributes['shapeBottom']) && isset($attributes["shapeBottom"]['front'])) {
+        $bottomShapeClasses .= " premium-shape-above-content";
+    }
+    if (isset($attributes['shapeBottom']) && isset($attributes["shapeBottom"]['invertShapeDivider'])) {
+        $bottomShapeClasses .= " premium-shape__invert";
+    }
+
 
     ob_start(); ?>
     <div class="premium-blog-thumb-effect-wrapper">
         <div class="<?php echo esc_html(implode(' ', $wrapImage)); ?>">
-            <?php echo wp_get_attachment_image(get_post_thumbnail_id(), $attributes['imageSize']); ?>
-            <?php ?>
-
+            <?php echo wp_get_attachment_image(get_post_thumbnail_id(), $attributes['imageSize']);
+            if (isset($attributes['shapeBottom']) && isset($attributes["shapeBottom"]['style'])) { ?>
+                <div class="<?php echo ($bottomShapeClasses) ?>">
+                    <?php echo ($shapes[$attributes["shapeBottom"]['style']]);
+                    ?>
+                </div>
+            <?php }
+            ?>
         </div>
         <div class='premium-blog-thumbnail-overlay'>
             <a href="<?php the_permalink(); ?>">

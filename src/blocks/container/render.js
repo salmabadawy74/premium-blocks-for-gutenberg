@@ -84,6 +84,7 @@ const Render = forwardRef((props, ref) => {
         0 !== select("core/block-editor").getBlocks(clientId).length;
     const blockProps = useBlockProps({
         className: classnames(
+            className,
             "wp-block-premium-container",
             `premium-block-${block_id}`,
             `premium-blocks-${block_id}`,
@@ -94,7 +95,7 @@ const Render = forwardRef((props, ref) => {
                 " premium-mobile-hidden": hideMobile,
             }
         ),
-        ref
+        ref,
     });
     const loadStyles = () => {
         const styles = {};
@@ -108,8 +109,9 @@ const Render = forwardRef((props, ref) => {
             "flex-wrap": wrapItems[props.deviceType],
             "align-content": alignContent[props.deviceType],
             "row-gap": `${rowGutter[props.deviceType]}${rowGutter["unit"]}`,
-            "column-gap": `${columnGutter[props.deviceType]}${columnGutter["unit"]
-                }`,
+            "column-gap": `${columnGutter[props.deviceType]}${
+                columnGutter["unit"]
+            }`,
         };
 
         styles[
@@ -121,20 +123,24 @@ const Render = forwardRef((props, ref) => {
         styles[
             `.is-root-container  #block-${clientId}  .premium-top-shape svg`
         ] = {
-            width: `${shapeTop.width[props.deviceType]}${shapeTop.width["unit"]
-                }`,
-            height: `${shapeTop.height[props.deviceType]}${shapeTop.height["unit"]
-                }`,
+            width: `${shapeTop.width[props.deviceType]}${
+                shapeTop.width["unit"]
+            }`,
+            height: `${shapeTop.height[props.deviceType]}${
+                shapeTop.height["unit"]
+            }`,
             fill: `${shapeTop["color"]}`,
         };
 
         styles[
             `.is-root-container  #block-${clientId} .premium-bottom-shape svg`
         ] = {
-            width: `${shapeBottom.width[props.deviceType]}${shapeBottom.width["unit"]
-                }`,
-            height: `${shapeBottom.height[props.deviceType]}${shapeBottom.height["unit"]
-                }`,
+            width: `${shapeBottom.width[props.deviceType]}${
+                shapeBottom.width["unit"]
+            }`,
+            height: `${shapeBottom.height[props.deviceType]}${
+                shapeBottom.height["unit"]
+            }`,
             fill: `${shapeBottom["color"]}`,
         };
 
@@ -175,8 +181,9 @@ const Render = forwardRef((props, ref) => {
             "background-attachment": backgroundOverlayHover["fixed"]
                 ? "fixed"
                 : "unset",
-            opacity: `${backgroundOverlayHover ? hoverOverlayOpacity / 100 : 1
-                } !important`,
+            opacity: `${
+                backgroundOverlayHover ? hoverOverlayOpacity / 100 : 1
+            } !important`,
             filter: `brightness( ${hoverOverlayFilter["bright"]}% ) contrast( ${hoverOverlayFilter["contrast"]}% ) saturate( ${hoverOverlayFilter["saturation"]}% ) blur( ${hoverOverlayFilter["blur"]}px ) hue-rotate( ${hoverOverlayFilter["hue"]}deg ) !important`,
         };
         return generateCss(styles);
@@ -189,9 +196,11 @@ const Render = forwardRef((props, ref) => {
                 ...paddingCss(padding, props.deviceType),
                 ...marginCss(margin, props.deviceType),
                 ...gradientBackground(backgroundOptions),
-                boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical || 0
-                    }px ${boxShadow.blur || 0}px ${boxShadow.color} ${boxShadow.position
-                    }`,
+                boxShadow: `${boxShadow.horizontal || 0}px ${
+                    boxShadow.vertical || 0
+                }px ${boxShadow.blur || 0}px ${boxShadow.color} ${
+                    boxShadow.position
+                }`,
                 overflow: overflow,
             }}
         >
@@ -207,8 +216,9 @@ const Render = forwardRef((props, ref) => {
                     <div
                         className={topShapeClasses}
                         dangerouslySetInnerHTML={{
-                            __html:
-                                PremiumBlocksSettings.shapes[shapeTop.style],
+                            __html: PremiumBlocksSettings.shapes[
+                                shapeTop.style
+                            ],
                         }}
                     />
                 )}
@@ -224,8 +234,9 @@ const Render = forwardRef((props, ref) => {
                     <div
                         className={bottomShapeClasses}
                         dangerouslySetInnerHTML={{
-                            __html:
-                                PremiumBlocksSettings.shapes[shapeBottom.style],
+                            __html: PremiumBlocksSettings.shapes[
+                                shapeBottom.style
+                            ],
                         }}
                     />
                 )}

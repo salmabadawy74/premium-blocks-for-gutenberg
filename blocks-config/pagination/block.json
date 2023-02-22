@@ -233,7 +233,7 @@
             "type": "object",
             "default": {
                 "Desktop": {
-                    "top": "",
+                    "top": "15",
                     "right": "",
                     "bottom": "",
                     "left": ""

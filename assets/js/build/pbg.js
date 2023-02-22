@@ -321,6 +321,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "lottie": () => (/* binding */ lottie),
 /* harmony export */   "maps": () => (/* binding */ maps),
 /* harmony export */   "person": () => (/* binding */ person),
+/* harmony export */   "postGrid": () => (/* binding */ postGrid),
 /* harmony export */   "pricingTable": () => (/* binding */ pricingTable),
 /* harmony export */   "section": () => (/* binding */ section),
 /* harmony export */   "testimonials": () => (/* binding */ testimonials),
@@ -351,7 +352,8 @@ const {
   [`icon-box`]: iconBox,
   [`image-separator`]: imageSeparator,
   [`pricing-table`]: pricingTable,
-  [`video-box`]: videoBox
+  [`video-box`]: videoBox,
+  [`post-grid`]: postGrid
 } = PremiumBlocksSettings.activeBlocks;
 
 //Plugin Config Keys

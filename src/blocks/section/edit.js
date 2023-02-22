@@ -94,7 +94,7 @@ const edit = (props) => {
             label: __("Bottom", "premium-blocks-for-gutenberg"),
         },
     ];
-
+    console.log(horAlign, props.deviceType, "console from section");
     return [
         <Fragment>
             <InspectorControls key="inspector">

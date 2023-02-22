@@ -615,6 +615,52 @@ class Premium_Blocks_css
 	}
 
 
+	public function render_background($background, $css)
+	{
+		if (empty($background)) {
+			return false;
+		}
+		if (!is_array($background)) {
+			return false;
+		}
+		$background_string = '';
+		$type              = (isset($background['type']) && !empty($background['type']) ? $background['type'] : 'transparent');
+		$color_type        = '';
+		if (isset($background['backgroundColor']) && !empty($background['backgroundColor']) && $type == "solid") {
+
+			$color_type = $background['color'];
+		}
+		if ('solid' === $type && isset($background['backgroundImageURL'])) {
+			$image_url = (isset($background['backgroundImageURL']) && !empty($background['backgroundImageURL']) ? $background['backgroundImageURL'] : '');
+			if (!empty($image_url)) {
+				$repeat            = (isset($background['image']['repeat']) && !empty($background['image']['repeat']) ? $background['image']['repeat'] : '');
+				$size              = (isset($background['image']['size']) && !empty($background['image']['size']) ? $background['image']['size'] : '');
+				$position          = (isset($background['image']['position']) && is_array($background['image']['position']) && isset($background['image']['position']['x']) && !empty($background['image']['position']['x']) && isset($background['image']['position']['y']) && !empty($background['image']['position']['y']) ? ($background['image']['position']['x'] * 100) . '% ' . ($background['image']['position']['y'] * 100) . '%' : 'center');
+				$attachement       = (isset($background['image']['attachment']) && !empty($background['image']['attachment']) ? $background['image']['attachment'] : '');
+				$background_string = (!empty($color_type) ? $color_type . ' ' : '') . $image_url . (!empty($repeat) ? ' ' . $repeat : '') . (!empty($position) ? ' ' . $position : '') . (!empty($size) ? ' ' . $size : '') . (!empty($attachement) ? ' ' . $attachement : '');
+				$css->add_property('background-color', $color_type);
+				$css->add_property('background-image', $image_url);
+				$css->add_property('background-repeat', $repeat);
+				$css->add_property('background-position', $position);
+				$css->add_property('background-size', $size);
+				$css->add_property('background-attachment', $attachement);
+			} else {
+				if (!empty($color_type)) {
+					$background_string = $color_type;
+					$css->add_property('background-color', $color_type);
+				}
+			}
+		} elseif ('gradient' === $type && isset($background['gradient']) && !empty($background['gradient'])) {
+			$css->add_property('background', $background['gradient']);
+		} else {
+			if (!empty($color_type)) {
+				$background_string = $color_type;
+				$css->add_property('background', $color_type);
+			}
+		}
+	}
+
+
 
 	/**
 	 * Resets the css variable

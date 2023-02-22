@@ -15,13 +15,8 @@ function get_premium_post_excerpt_css_style($attributes, $unique_id)
 
 
     if (isset($attributes['typography'])) {
-        var_dump("kkkk");
         $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-post-content');
         $css->render_typography($attributes['typography'], 'Desktop');
-    }
-    if (isset($attributes['color'])) {
-        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-post-content');
-        $css->add_property('color', $css->render_color($attributes["color"]));
     }
     if (isset($attributes['margin'])) {
         $content_margin = $attributes['margin'];
@@ -29,17 +24,32 @@ function get_premium_post_excerpt_css_style($attributes, $unique_id)
         $css->add_property('margin', $css->render_spacing($content_margin['Desktop'], $content_margin['unit']));
     }
 
+    if (isset($attributes['color'])) {
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-post-content');
+        $css->add_property('color', $css->render_color($attributes["color"]));
+    }
+
 
     $css->start_media_query($media_query['tablet']);
     if (isset($attributes['typography'])) {
-        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-post-tags-container > * a ');
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-post-content');
         $css->render_typography($attributes['typography'], 'Tablet');
+    }
+    if (isset($attributes['margin'])) {
+        $content_margin = $attributes['margin'];
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-post-content');
+        $css->add_property('margin', $css->render_spacing($content_margin['Tablet'], $content_margin['unit']));
     }
     $css->stop_media_query();
     $css->start_media_query($media_query['mobile']);
     if (isset($attributes['typography'])) {
-        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-post-tags-container > * a ');
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-post-content');
         $css->render_typography($attributes['typography'], 'Mobile');
+    }
+    if (isset($attributes['margin'])) {
+        $content_margin = $attributes['margin'];
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-post-content');
+        $css->add_property('margin', $css->render_spacing($content_margin['Mobile'], $content_margin['unit']));
     }
     $css->stop_media_query();
     return $css->css_output();
@@ -250,6 +260,11 @@ function get_premium_post_template_css_style($attributes, $unique_id)
         $css->add_property('border-width', $css->render_spacing($content_border_width['Desktop'], 'px'));
         $css->add_property('border-radius', $css->render_spacing($content_border_radius['Desktop'], 'px'));
     }
+    if (isset($attributes['advancedBorder']) && !empty($attributes["advancedBorderValue"])) {
+        $css->set_selector('.premium-blog-post-outer-container');
+        $css->add_property('border-radius', $attributes['advancedBorder'] ? $attributes['advancedBorderValue'] . '!important' : '');
+    }
+
     if (isset($attributes['margin'])) {
         $content_margin = $attributes['margin'];
         $css->set_selector('.premium-blog-post-outer-container');

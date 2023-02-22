@@ -38,9 +38,9 @@
         "height": {
             "type": "object",
             "default": {
-                "Desktop": "300",
-                "Tablet": "300",
-                "Mobile": "300",
+                "Desktop": "200",
+                "Tablet": "200",
+                "Mobile": "200",
                 "unit": "px"
             }
         },

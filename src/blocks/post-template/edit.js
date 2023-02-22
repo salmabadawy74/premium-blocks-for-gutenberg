@@ -41,52 +41,10 @@ import { store as coreStore } from "@wordpress/core-data";
 const TEMPLATE = [
     ["premium/post-featured-image"],
 
-    [
-        "premium/section",
-        {
-            className: "premium-blog-content-wrapper",
-            attributes: {
-                padding: {
-                    type: "object",
-                    default: {
-                        Desktop: {
-                            top: "30",
-                            right: "30",
-                            bottom: "30",
-                            left: "30",
-                        },
-                        Tablet: {
-                            top: "20",
-                            right: "20",
-                            bottom: "20",
-                            left: "20",
-                        },
-                        Mobile: {
-                            top: "10",
-                            right: "10",
-                            bottom: "10",
-                            left: "10",
-                        },
-                        unit: "px",
-                    },
-                },
-                horAlign: {
-                    type: "object",
-                    default: {
-                        Desktop: "left",
-                        Tablet: "left",
-                        Mobile: "left",
-                    },
-                },
-            },
-        },
-        [
-            ["premium/post-title"],
-            ["premium/post-meta"],
-            ["premium/post-excerpt"],
-            ["premium/post-tag"],
-        ],
-    ],
+    ["premium/post-title"],
+    ["premium/post-meta"],
+    ["premium/post-excerpt"],
+    ["premium/post-tag"],
 ];
 
 function PostTemplateInnerBlocks(props) {
@@ -237,7 +195,7 @@ function PostTemplateEdit({
     useEffect(() => {
         let heights = [],
             contentWrapper = document.querySelectorAll(
-                ".premium-blog-content-wrapper"
+                ".premium-blog-post-outer-container"
             );
         const contentWrap = [...contentWrapper];
         contentWrap.map((postContent) => {

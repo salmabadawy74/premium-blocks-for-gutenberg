@@ -15,8 +15,8 @@
 		"containerBackground": {
             "type": "object",
             "default": {
-                "backgroundType": "solid",
-                "backgroundColor": "#f5f5f5",
+                "backgroundType": "",
+                "backgroundColor": "",
                 "backgroundImageID": "",
                 "backgroundImageURL": "",
                 "backgroundPosition": "",

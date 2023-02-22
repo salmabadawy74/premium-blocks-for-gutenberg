@@ -278,7 +278,7 @@ function Meta(props) {
                                 stroke-linecap="round"
                                 stroke-linejoin="round"
                             />
-                        </svg>{" "}
+                        </svg>
                         {authorName}
                         <span className={`premium-blog-meta-separtor`}>•</span>
                     </span>
@@ -336,10 +336,10 @@ function Meta(props) {
                                         />
                                     </clipPath>
                                 </defs>
-                            </svg>{" "}
+                            </svg>
                             {comments}
                         </span>
-                        <span className={`premium-blog-meta-separtor`}>•</span>
+                        <span className={`premium-blog-meta-separtor`}>• </span>
                     </div>
                 )}
                 {showCategories && "" !== categoryObject && (
