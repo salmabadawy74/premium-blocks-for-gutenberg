@@ -51,7 +51,7 @@ const Setting = () => {
         <Container>
             <div className="pb-settings">
                 <div className="pb-api-settings">
-                    <div className="pb-advanced-input-contain-subTitle">
+                    <div className="pb-advanced-input pb-advanced-input-contain-subTitle">
                         <div>
                             <h2>
                                 {__(
@@ -61,7 +61,7 @@ const Setting = () => {
                             </h2>
                             <span>
                                 {__(
-                                    "Premium Maps Block requires Google API key to be entered below. If you don’t have one,",
+                                    "Premium Maps Block requires Google API key to be entered. If you don’t have one,",
                                     "premium-blocks-for-gutenberg"
                                 )}{" "}
                                 <a

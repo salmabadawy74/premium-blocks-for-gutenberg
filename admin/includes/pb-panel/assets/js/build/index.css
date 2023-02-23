@@ -371,7 +371,6 @@
 }
 #pb-dashboard .pb-button.pb-button-save-map {
   padding: 11px 20px !important;
-  margin-bottom: 15px;
 }
 
 .pb-options {
@@ -647,7 +646,7 @@
 }
 .pb-settings .pb-setting-options,
 .pb-settings .pb-api-settings {
-  width: 80%;
+  width: 100%;
 }
 .pb-settings .pb-setting-options > div,
 .pb-settings .pb-api-settings > div {
@@ -672,6 +671,10 @@
   margin-bottom: 0px;
   padding-bottom: 0px;
 }
+.pb-settings .pb-setting-options .pb-advanced-input-contain-subTitle input[type=text],
+.pb-settings .pb-api-settings .pb-advanced-input-contain-subTitle input[type=text] {
+  margin: 0 !important;
+}
 .pb-settings .pb-setting-options .pb-advanced-input-subTitle,
 .pb-settings .pb-api-settings .pb-advanced-input-subTitle {
   -moz-column-gap: 20px;
@@ -689,8 +692,10 @@
   margin-top: 0px;
   margin-bottom: 7px;
   color: #252525;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 400;
+  vertical-align: baseline;
+  margin-left: 3px;
 }
 .pb-settings .pb-setting-options .pb-advanced-input-subTitle .pb-checkbox svg,
 .pb-settings .pb-api-settings .pb-advanced-input-subTitle .pb-checkbox svg {
