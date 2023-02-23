@@ -453,7 +453,6 @@
 
         &.pb-button-save-map {
             padding: 11px 20px !important;
-            margin-bottom: 15px;
         }
     }
 }
@@ -800,7 +799,7 @@
 
     .pb-setting-options,
     .pb-api-settings {
-        width: 80%;
+        width: 100%;
 
         >div {
             column-gap: 20px;
@@ -822,6 +821,10 @@
             border: none;
             margin-bottom: 0px;
             padding-bottom: 0px;
+
+            input[type=text] {
+                margin: 0 !important;
+            }
         }
 
         .pb-advanced-input-subTitle {
@@ -839,8 +842,10 @@
                     margin-top: 0px;
                     margin-bottom: 7px;
                     color: #252525;
-                    font-size: 16px;
-                    font-weight: 600;
+                    font-size: 14px;
+                    font-weight: 400;
+                    vertical-align: baseline;
+                    margin-left: 3px;
                 }
 
                 svg {
