@@ -84,10 +84,6 @@
 
 .premium-icon-container {
   text-align: center; }
-  .premium-icon-container .dashicons,
-  .premium-icon-container .fab,
-  .premium-icon-container .fa {
-    display: inline !important; }
   .premium-icon-container img {
     width: 150px; }
 
