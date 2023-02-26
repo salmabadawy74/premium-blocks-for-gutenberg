@@ -13,8 +13,6 @@ const { withSelect } = wp.data;
 const { useEffect, Fragment } = wp.element;
 import Inspector from "./inspector";
 import {
-    BlockControls,
-    InspectorControls,
     useBlockProps,
     store as blockEditorStore,
     useInnerBlocksProps,
@@ -37,11 +35,16 @@ function QueryContent({ attributes, setAttributes, deviceType }) {
         blogBoxShadow,
         blogPadding,
         blogMargin,
+        equalHeight,
     } = attributes;
+    const equalHeightClass = equalHeight ? "premium-post__equal-height" : "";
+
     const { __unstableMarkNextChangeAsNotPersistent } =
         useDispatch(blockEditorStore);
     const instanceId = useInstanceId(QueryContent);
-    const blockProps = useBlockProps({ className: `${align}` });
+    const blockProps = useBlockProps({
+        className: `${align} ${equalHeightClass}`,
+    });
     const innerBlocksProps = useInnerBlocksProps(
         {
             style: {

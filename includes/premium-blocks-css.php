@@ -624,34 +624,39 @@ class Premium_Blocks_css
 			return false;
 		}
 		$background_string = '';
-		$type              = (isset($background['type']) && !empty($background['type']) ? $background['type'] : 'transparent');
+		$type              = (isset($background['backgroundType']) && !empty($background['backgroundType']) ? $background['backgroundType'] : 'transparent');
 		$color_type        = '';
 		if (isset($background['backgroundColor']) && !empty($background['backgroundColor']) && $type == "solid") {
 
-			$color_type = $background['color'];
+			$color_type = $background['backgroundColor'];
 		}
 		if ('solid' === $type && isset($background['backgroundImageURL'])) {
 			$image_url = (isset($background['backgroundImageURL']) && !empty($background['backgroundImageURL']) ? $background['backgroundImageURL'] : '');
 			if (!empty($image_url)) {
-				$repeat            = (isset($background['image']['repeat']) && !empty($background['image']['repeat']) ? $background['image']['repeat'] : '');
-				$size              = (isset($background['image']['size']) && !empty($background['image']['size']) ? $background['image']['size'] : '');
-				$position          = (isset($background['image']['position']) && is_array($background['image']['position']) && isset($background['image']['position']['x']) && !empty($background['image']['position']['x']) && isset($background['image']['position']['y']) && !empty($background['image']['position']['y']) ? ($background['image']['position']['x'] * 100) . '% ' . ($background['image']['position']['y'] * 100) . '%' : 'center');
-				$attachement       = (isset($background['image']['attachment']) && !empty($background['image']['attachment']) ? $background['image']['attachment'] : '');
+				$repeat            = (isset($background['backgroundRepeat']) && !empty($background['backgroundRepeat']) ? $background['backgroundRepeat'] : '');
+				$size              = (isset($background['backgroundSize']) && !empty($background['backgroundSize']) ? $background['backgroundSize'] : '');
+				$position          = (isset($background['backgroundPosition']) && is_array($background['backgroundPosition']) && isset($background['backgroundPosition']['x']) && !empty($background['image']['position']['x']) && isset($background['image']['position']['y']) && !empty($background['image']['position']['y']) ? ($background['image']['position']['x'] * 100) . '% ' . ($background['image']['position']['y'] * 100) . '%' : 'center');
 				$background_string = (!empty($color_type) ? $color_type . ' ' : '') . $image_url . (!empty($repeat) ? ' ' . $repeat : '') . (!empty($position) ? ' ' . $position : '') . (!empty($size) ? ' ' . $size : '') . (!empty($attachement) ? ' ' . $attachement : '');
 				$css->add_property('background-color', $color_type);
 				$css->add_property('background-image', $image_url);
 				$css->add_property('background-repeat', $repeat);
 				$css->add_property('background-position', $position);
 				$css->add_property('background-size', $size);
-				$css->add_property('background-attachment', $attachement);
 			} else {
 				if (!empty($color_type)) {
 					$background_string = $color_type;
 					$css->add_property('background-color', $color_type);
 				}
 			}
-		} elseif ('gradient' === $type && isset($background['gradient']) && !empty($background['gradient'])) {
-			$css->add_property('background', $background['gradient']);
+		} elseif ('gradient' === $type) {
+			$first_grid  = $background['backgroundColor'] ? $background['backgroundColor'] : 'rgba(255,255,255,0)';
+			$second_grid = $background['gradientColorTwo'] ? $background['gradientColorTwo'] : '.777';
+			if ('radial' === $background['gradientType']) {
+				$container_bg = 'radial-gradient(at ' . $background['gradientPosition'] . ', ' . $first_grid . ' ' . $background['gradientLocationOne'] . '%, ' . $second_grid . ' ' . $background['gradientLocationTwo'] . '%)';
+			} elseif ('radial' !== $background['backgroundType']) {
+				$container_bg = 'linear-gradient(' . $background['gradientAngle'] . 'deg, ' . $first_grid . ' ' . $background['gradientLocationOne'] . '%, ' . $second_grid . ' ' . $background['gradientLocationTwo'] . '%)';
+			}
+			$css->add_property('background', $container_bg);
 		} else {
 			if (!empty($color_type)) {
 				$background_string = $color_type;

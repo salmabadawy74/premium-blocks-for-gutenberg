@@ -18,15 +18,15 @@
         },
         "showPrevNext":{
             "type":"boolean",
-            "default":false
+            "default":true
         },
         "prevString":{
             "type":"string",
-            "default":"Previous"
+            "default":"Previous Page"
         },
         "nextString":{
             "type":"string",
-            "default":"Next"
+            "default":"Next Page"
         },
         "alignment":{
             "type":"object",

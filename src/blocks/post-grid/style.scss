@@ -418,68 +418,7 @@ body .is-layout-flow>* {
         top: 0;
     }
 
-    &:not(.premium-blog-skin-classic) {
-        &:not(.premium-blog-skin-side) {
-            &:not(.premium-blog-skin-banner) {
-                .premium-blog-thumbnail-container {
-                    &:before {
-                        position: absolute;
-                        content: "";
-                        z-index: 1;
-                        top: 50%;
-                        left: 50%;
-                        opacity: 0;
-                        -webkit-transform: translate(-50%, -50%);
-                        -ms-transform: translate(-50%, -50%);
-                        transform: translate(-50%, -50%);
-                        -webkit-transition: all 0.4s linear 0s;
-                        transition: all 0.4s linear 0s;
-                        height: 1px;
-                        width: 100%;
-                        background-color: $background-color_2;
-                        width: 1px;
-                        height: 100%;
-                    }
 
-                    &:after {
-                        position: absolute;
-                        content: "";
-                        z-index: 1;
-                        top: 50%;
-                        left: 50%;
-                        opacity: 0;
-                        -webkit-transform: translate(-50%, -50%);
-                        -ms-transform: translate(-50%, -50%);
-                        transform: translate(-50%, -50%);
-                        -webkit-transition: all 0.4s linear 0s;
-                        transition: all 0.4s linear 0s;
-                        height: 1px;
-                        width: 100%;
-                        background-color: $background-color_2;
-                    }
-                }
-
-                &:hover {
-                    .premium-blog-thumbnail-container {
-                        &:after {
-                            width: 20px;
-                            opacity: 1;
-                        }
-
-                        &:before {
-                            height: 20px;
-                            opacity: 1;
-                        }
-                    }
-                }
-
-                .premium-blog-content-wrapper {
-                    margin: 0px 10px 20px;
-                    clear: both;
-                }
-            }
-        }
-    }
 
     .premium-blog-cats-container {
         ul.post-categories {
@@ -1184,7 +1123,6 @@ body .is-layout-flow>* {
     .page-numbers {
         display: inline-block;
         color: #000;
-        background-color: #6ec1e4;
         line-height: 1;
         font-size: 1em;
         font-weight: 400;

@@ -46,7 +46,7 @@ function render_premium_pagination($attributes, $content, $block)
         if (1 !== $page) {
             if ($show_Next_Prev) {
                 $content .= sprintf(
-                    '<a  class="prev page-numbers" href="%1$s" %2$s>%2$s</a>',
+                    '<div  class="page-numbers Prevstring" href="%1$s" %2$s>%2$s</div>',
                     esc_url(add_query_arg($page_key, $page - 1)),
                     $prev_Label
                 );
@@ -65,7 +65,7 @@ function render_premium_pagination($attributes, $content, $block)
         if ($show_Next_Prev) {
 
             $content .= sprintf(
-                '<a class="next page-numbers" href="%1$s" %2$s>%2$s</a>',
+                '<div class="page-numbers Nextstring" href="%1$s" %2$s>%2$s</div>',
                 esc_url(add_query_arg($page_key, $page + 1)),
                 $next_Label
             );

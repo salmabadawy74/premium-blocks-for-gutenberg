@@ -263,25 +263,28 @@ function Meta(props) {
                     }}
                 />
                 {showAuther && (
-                    <span className="premium-blog-post-author premium-blog-meta-data">
-                        <svg
-                            width="800px"
-                            height="800px"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                d="M18 18.7023C18 15.6706 14.5 15 12 15C9.5 15 6 15.6706 6 18.7023M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM15 9C15 10.6569 13.6569 12 12 12C10.3431 12 9 10.6569 9 9C9 7.34315 10.3431 6 12 6C13.6569 6 15 7.34315 15 9Z"
-                                stroke="#000000"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                        </svg>
-                        {authorName}
+                    <div className="premium-blog-post-author premium-blog-meta-data">
+                        <span>
+                            {" "}
+                            <svg
+                                width="800px"
+                                height="800px"
+                                viewBox="0 0 25 17"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M18 18.7023C18 15.6706 14.5 15 12 15C9.5 15 6 15.6706 6 18.7023M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM15 9C15 10.6569 13.6569 12 12 12C10.3431 12 9 10.6569 9 9C9 7.34315 10.3431 6 12 6C13.6569 6 15 7.34315 15 9Z"
+                                    stroke="#000000"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                            {authorName}
+                        </span>
                         <span className={`premium-blog-meta-separtor`}>•</span>
-                    </span>
+                    </div>
                 )}
                 {showDate && (
                     <div
@@ -306,6 +309,29 @@ function Meta(props) {
                         <span className={`premium-blog-meta-separtor`}>•</span>
                     </div>
                 )}
+                {showCategories && "" !== categoryObject && (
+                    <div
+                        className={`premium-blog-post-categories premium-blog-meta-data`}
+                    >
+                        <span className="premium-post__taxonomy">
+                            <svg
+                                fill="#000000"
+                                width="800px"
+                                height="800px"
+                                viewBox="0 0 16 16"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path d="M.5 9h9.75v1.25H.5zm0-3.25h15V7H.5zm0 6.5h15v1.25H.5zm0-9.75h9.75v1.25H.5z" />
+                            </svg>{" "}
+                            {categoryObject.length === 0
+                                ? "Uncategorized"
+                                : categoryObject.map((category) => (
+                                      <span>{category.name + " "}</span>
+                                  ))}
+                        </span>
+                        <span className={`premium-blog-meta-separtor`}>• </span>
+                    </div>
+                )}
                 {showComments && undefined !== comments && (
                     <div
                         className={`premium-blog-post-comments premium-blog-meta-data`}
@@ -314,7 +340,7 @@ function Meta(props) {
                             <svg
                                 width="800px"
                                 height="800px"
-                                viewBox="0 0 24 24"
+                                viewBox="0 0 24 20"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                             >
@@ -338,29 +364,6 @@ function Meta(props) {
                                 </defs>
                             </svg>
                             {comments}
-                        </span>
-                        <span className={`premium-blog-meta-separtor`}>• </span>
-                    </div>
-                )}
-                {showCategories && "" !== categoryObject && (
-                    <div
-                        className={`premium-blog-post-categories premium-blog-meta-data`}
-                    >
-                        <span className="premium-post__taxonomy">
-                            <svg
-                                fill="#000000"
-                                width="800px"
-                                height="800px"
-                                viewBox="0 0 16 16"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path d="M.5 9h9.75v1.25H.5zm0-3.25h15V7H.5zm0 6.5h15v1.25H.5zm0-9.75h9.75v1.25H.5z" />
-                            </svg>{" "}
-                            {categoryObject.length === 0
-                                ? "Uncategorized"
-                                : categoryObject.map((category) => (
-                                      <span>{category.name + " "}</span>
-                                  ))}
                         </span>
                     </div>
                 )}

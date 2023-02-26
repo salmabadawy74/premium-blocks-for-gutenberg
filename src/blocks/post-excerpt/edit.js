@@ -127,7 +127,9 @@ function Excerpt(props) {
     let readMoreTxt = readMoreText ? readMoreText : __("Read More");
     const readMore = (
         <div
-            className={`premium-blog-excerpt-link-wrap premium-blog-excerpt-link-${fullWidth} `}
+            className={classNames("premium-blog-excerpt-link-wrap ", {
+                "premium-blog-full-link": fullWidth,
+            })}
         >
             <a
                 className={`premium-blog-excerpt-link `}
@@ -150,7 +152,7 @@ function Excerpt(props) {
     const loadStyles = () => {
         const styles = {};
         styles[
-            `.${blockId} .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link:hover `
+            `.${blockId} .premium-blog-excerpt-link-wrap:hover .premium-blog-excerpt-link `
         ] = {
             color: buttonhover,
             backgroundColor: hoverBackground,

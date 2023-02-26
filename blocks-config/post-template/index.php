@@ -28,6 +28,63 @@ function get_premium_post_excerpt_css_style($attributes, $unique_id)
         $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-post-content');
         $css->add_property('color', $css->render_color($attributes["color"]));
     }
+    if (isset($attributes["btnTypography"])) {
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link');
+        $css->render_typography($attributes['btnTypography'], 'Desktop');
+    }
+    if (isset($attributes["buttonSpacing"])) {
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link');
+        $css->add_property('margin-top', $css->render_range($attributes["buttonSpacing"], "Desktop"));
+    }
+    if (isset($attributes['btnBorder'])) {
+        $content_border_width  = $attributes['btnBorder']['borderWidth'];
+        $content_border_radius = $attributes['btnBorder']['borderRadius'];
+        $content_border_color = $attributes['btnBorder']['borderColor'];
+        $content_border_type = $attributes['btnBorder']['borderType'];
+
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link');
+        $css->add_property('border-color', $css->render_color($content_border_color));
+        $css->add_property('border-style', $content_border_type);
+
+        $css->add_property('border-width', $css->render_spacing($content_border_width['Desktop'], 'px'));
+        $css->add_property('border-radius', $css->render_spacing($content_border_radius['Desktop'], 'px'));
+    }
+    if (isset($attributes['btnBorderHover'])) {
+        $content_border_width  = $attributes['btnBorderHover']['borderWidth'];
+        $content_border_radius = $attributes['btnBorderHover']['borderRadius'];
+        $content_border_color = $attributes['btnBorderHover']['borderColor'];
+        $content_border_type = $attributes['btnBorderHover']['borderType'];
+
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-excerpt-link-wrap  .premium-blog-excerpt-link:hover');
+        $css->add_property('border-color', $css->render_color($content_border_color));
+        $css->add_property('border-style', $content_border_type);
+
+        $css->add_property('border-width', $css->render_spacing($content_border_width['Desktop'], 'px'));
+        $css->add_property('border-radius', $css->render_spacing($content_border_radius['Desktop'], 'px'));
+    }
+    if (isset($attributes['btnPadding'])) {
+        $button_padding = $attributes['btnPadding'];
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link');
+        $css->add_property('padding', $css->render_spacing($button_padding['Desktop'], $button_padding['unit']));
+    }
+
+    if (isset($attributes['buttonColor'])) {
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link');
+        $css->add_property('color', $css->render_color($attributes["buttonColor"]));
+    }
+    if (isset($attributes['buttonBackground'])) {
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link');
+        $css->add_property('background-color', $css->render_color($attributes["buttonBackground"]));
+    }
+    if (isset($attributes['buttonhover'])) {
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link:hover');
+        $css->add_property('color', $css->render_color($attributes["buttonhover"]));
+    }
+    if (isset($attributes['hoverBackground'])) {
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link:hover');
+        $css->add_property('background-color', $css->render_color($attributes["hoverBackground"]));
+    }
+
 
 
     $css->start_media_query($media_query['tablet']);
@@ -40,6 +97,37 @@ function get_premium_post_excerpt_css_style($attributes, $unique_id)
         $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-post-content');
         $css->add_property('margin', $css->render_spacing($content_margin['Tablet'], $content_margin['unit']));
     }
+    if (isset($attributes["btnTypography"])) {
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link');
+        $css->render_typography($attributes['btnTypography'], 'Tablet');
+    }
+    if (isset($attributes["buttonSpacing"])) {
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link');
+        $css->add_property('margin-top', $css->render_range($attributes["buttonSpacing"], "Tablet"));
+    }
+    if (isset($attributes['btnBorder'])) {
+        $content_border_width  = $attributes['btnBorder']['borderWidth'];
+        $content_border_radius = $attributes['btnBorder']['borderRadius'];
+
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link');
+
+        $css->add_property('border-width', $css->render_spacing($content_border_width['Tablet'], 'px'));
+        $css->add_property('border-radius', $css->render_spacing($content_border_radius['Tablet'], 'px'));
+    }
+    if (isset($attributes['btnBorderHover'])) {
+        $content_border_width  = $attributes['btnBorderHover']['borderWidth'];
+        $content_border_radius = $attributes['btnBorderHover']['borderRadius'];
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-excerpt-link-wrap  .premium-blog-excerpt-link:hover');
+
+        $css->add_property('border-width', $css->render_spacing($content_border_width['Tablet'], 'px'));
+        $css->add_property('border-radius', $css->render_spacing($content_border_radius['Tablet'], 'px'));
+    }
+    if (isset($attributes['btnPadding'])) {
+        $button_padding = $attributes['btnPadding'];
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link');
+        $css->add_property('padding', $css->render_spacing($button_padding['Tablet'], $button_padding['unit']));
+    }
+
     $css->stop_media_query();
     $css->start_media_query($media_query['mobile']);
     if (isset($attributes['typography'])) {
@@ -51,6 +139,37 @@ function get_premium_post_excerpt_css_style($attributes, $unique_id)
         $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-post-content');
         $css->add_property('margin', $css->render_spacing($content_margin['Mobile'], $content_margin['unit']));
     }
+    if (isset($attributes["btnTypography"])) {
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link');
+        $css->render_typography($attributes['btnTypography'], 'Mobile');
+    }
+    if (isset($attributes["buttonSpacing"])) {
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link');
+        $css->add_property('margin-top', $css->render_range($attributes["buttonSpacing"], "Mobile"));
+    }
+    if (isset($attributes['btnBorder'])) {
+        $content_border_width  = $attributes['btnBorder']['borderWidth'];
+        $content_border_radius = $attributes['btnBorder']['borderRadius'];
+
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link');
+
+        $css->add_property('border-width', $css->render_spacing($content_border_width['Mobile'], 'px'));
+        $css->add_property('border-radius', $css->render_spacing($content_border_radius['Mobile'], 'px'));
+    }
+    if (isset($attributes['btnBorderHover'])) {
+        $content_border_width  = $attributes['btnBorderHover']['borderWidth'];
+        $content_border_radius = $attributes['btnBorderHover']['borderRadius'];
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-excerpt-link-wrap  .premium-blog-excerpt-link:hover');
+
+        $css->add_property('border-width', $css->render_spacing($content_border_width['Mobile'], 'px'));
+        $css->add_property('border-radius', $css->render_spacing($content_border_radius['Mobile'], 'px'));
+    }
+    if (isset($attributes['btnPadding'])) {
+        $button_padding = $attributes['btnPadding'];
+        $css->set_selector('.premium-blog-post-outer-container' . '  .premium-blog-excerpt-link-wrap .premium-blog-excerpt-link');
+        $css->add_property('padding', $css->render_spacing($button_padding['Mobile'], $button_padding['unit']));
+    }
+
     $css->stop_media_query();
     return $css->css_output();
 }
@@ -228,6 +347,7 @@ function get_premium_post_meta_css_style($attributes, $unique_id)
         $css->render_typography($attributes['typography'], 'Tablet');
     }
 
+
     $css->stop_media_query();
     $css->start_media_query($media_query['mobile']);
     if (isset($attributes['typography'])) {
@@ -268,7 +388,7 @@ function get_premium_post_template_css_style($attributes, $unique_id)
     if (isset($attributes['margin'])) {
         $content_margin = $attributes['margin'];
         $css->set_selector('.premium-blog-post-outer-container');
-        $css->add_property('padding', $css->render_spacing($content_margin['Desktop'], $content_margin['unit']));
+        $css->add_property('margin', $css->render_spacing($content_margin['Desktop'], $content_margin['unit']));
     }
     if (isset($attr['padding'])) {
         $content_padding = $attributes['padding'];

@@ -197,13 +197,18 @@
 		},
 		"advancedBorderValue":{
 			"type":"string"
-		}
+		},
+        "postDisplaytext":{
+            "type":"string",
+            "default":"No post found!"
+        }
 	},
 	"providesContext": {
 		"queryId": "queryId",
 		"query": "query",
         "columns":"columns",
         "equalHeight":"equalHeight",
-        "currentPost":"currentPost"
+        "currentPost":"currentPost",
+        "postDisplaytext":"postDisplaytext"
 	}
 }

@@ -36,7 +36,7 @@ function render_block_premium_post_excerpt($attributes, $content, $block)
             return;
         }
         $wrapbutton = 'premium-blog-excerpt-link-wrap';
-        $wrapbutton .= ' premium-blog-excerpt-link-' . $attributes['fullWidth'];
+        $wrapbutton .= (isset($attributes['fullWidth']) && $attributes["fullWidth"]) ? " premium-blog-full-link" : '';
         $wrapper_class
             = get_block_wrapper_attributes(array('class' => trim($wrapbutton)));
         $button_content = '<a class="premium-blog-excerpt-link " href="' . esc_url(get_the_permalink($block->context['postId'])) . '">' . wp_kses_post($attributes['readMoreText']) . '</a>';

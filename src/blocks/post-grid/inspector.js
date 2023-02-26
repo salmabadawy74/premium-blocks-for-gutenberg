@@ -36,6 +36,7 @@ export default function Inspector({ attributes, setQuery, setAttributes }) {
         hideTablet,
         hideMobile,
         currentPost,
+        postDisplaytext,
     } = attributes;
     const {
         order,
@@ -174,6 +175,22 @@ export default function Inspector({ attributes, setQuery, setAttributes }) {
                                     : " "
                             }
                             onChange={(value) => handleCurrentPost(value)}
+                        />
+                        <h2>
+                            {__(
+                                "If Posts Not Found",
+                                "premium-blocks-for-gutenberg"
+                            )}
+                        </h2>
+                        <TextControl
+                            label={__(
+                                "Display Message",
+                                "premium-blocks-for-gutenberg"
+                            )}
+                            value={postDisplaytext}
+                            onChange={(value) =>
+                                setAttributes({ postDisplaytext: value })
+                            }
                         />
                     </PanelBody>
                 </InspectorTab>

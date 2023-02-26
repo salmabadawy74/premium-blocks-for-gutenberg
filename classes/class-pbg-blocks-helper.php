@@ -398,17 +398,6 @@ class PBG_Blocks_Helper
 		if (!function_exists('register_block_type')) {
 			return;
 		}
-		require_once PREMIUM_BLOCKS_PATH . 'blocks-config/post-grid/index.php';
-		require_once PREMIUM_BLOCKS_PATH . 'blocks-config/post-template/index.php';
-		require_once PREMIUM_BLOCKS_PATH . 'blocks-config/pagination/index.php';
-
-		require_once PREMIUM_BLOCKS_PATH . 'blocks-config/post-title/index.php';
-		require_once PREMIUM_BLOCKS_PATH . 'blocks-config/feature-image/index.php';
-
-		require_once PREMIUM_BLOCKS_PATH . 'blocks-config/post-excerpt/index.php';
-
-		require_once PREMIUM_BLOCKS_PATH . 'blocks-config/post-Meta/index.php';
-		require_once PREMIUM_BLOCKS_PATH . 'blocks-config/post-tag/index.php';
 
 
 		foreach (self::$blocks as $slug => $value) {
@@ -436,6 +425,18 @@ class PBG_Blocks_Helper
 				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/author.php';
 				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/image.php';
 				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/text.php';
+			} elseif ($slug === 'post-grid') {
+				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/post-grid/index.php';
+				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/post-template/index.php';
+				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/pagination/index.php';
+
+				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/post-title/index.php';
+				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/feature-image/index.php';
+
+				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/post-excerpt/index.php';
+
+				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/post-Meta/index.php';
+				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/post-tag/index.php';
 			}
 		}
 	}

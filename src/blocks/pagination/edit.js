@@ -1,7 +1,7 @@
 import { useEntityProp, store as coreStore } from "@wordpress/core-data";
 const { __ } = wp.i18n;
 import classnames from "classnames";
-
+import { paginationPresets } from "./presets";
 const { withSelect, withDispatch } = wp.data;
 import {
     generateBlockId,
@@ -24,6 +24,7 @@ import {
     PremiumTypo,
     PremiumBorder,
     SpacingComponent as SpacingControl,
+    PBGPresets,
 } from "@pbg/components";
 const { useEffect, Fragment } = wp.element;
 const { PanelBody, SelectControl, ToggleControl, TextControl } = wp.components;
@@ -79,6 +80,8 @@ function Pagination(props) {
             className={`page-numbers ${extraClass}`}
             style={{
                 ...typographyCss(typography, deviceType),
+                ...marginCss(margin, deviceType),
+                ...paddingCss(padding, deviceType),
             }}
         >
             {content}
@@ -145,19 +148,11 @@ function Pagination(props) {
                             className="premium-panel-body"
                             initialOpen={true}
                         >
-                            {/* <ResponsiveRangeControl
-                                label={__(
-                                    "Page Limit",
-                                    "premium-blocks-for-gutenberg"
-                                )}
-                                value={pageLimit}
-                                onChange={(newValue) =>
-                                    setAttributes({ pageLimit: newValue })
-                                }
-                                showUnit={false}
-                                min={1}
-                                step={1}
-                            /> */}
+                            <PBGPresets
+                                setAttributes={setAttributes}
+                                presets={paginationPresets}
+                                presetInputType="radioImage"
+                            />
                             <ToggleControl
                                 label={__(
                                     "Enable Pagination Next/Prev Strings",
@@ -460,18 +455,22 @@ function Pagination(props) {
                 id={blockId}
                 style={{
                     textAlign: alignment[deviceType],
-                    ...marginCss(margin, deviceType),
-                    ...paddingCss(padding, deviceType),
                 }}
             >
                 <style>{loadStyles()}</style>
 
-                {showPrevNext && createPaginationItem(prevString)}
+                {showPrevNext &&
+                    createPaginationItem(prevString, "div", "Prevstring")}
                 {createPaginationItem(1)}
                 {createPaginationItem(2)}
                 {createPaginationItem(3, "span", "current")}
                 {createPaginationItem(4)}
-                {showPrevNext && createPaginationItem(nextString)}
+                {createPaginationItem(5)}
+                {createPaginationItem("...", "a", "dits")}
+                {createPaginationItem(8)}
+
+                {showPrevNext &&
+                    createPaginationItem(nextString, "div", "Nextstring")}
             </div>
         </Fragment>
     );

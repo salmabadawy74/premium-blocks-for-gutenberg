@@ -96,7 +96,7 @@ function PostTemplateEdit({
 
     context: {
         columns,
-        equalHeight,
+        postDisplaytext,
         query: {
             perPage,
             offset = 0,
@@ -192,28 +192,6 @@ function PostTemplateEdit({
             sticky,
         ]
     );
-    useEffect(() => {
-        let heights = [],
-            contentWrapper = document.querySelectorAll(
-                ".premium-blog-post-outer-container"
-            );
-        const contentWrap = [...contentWrapper];
-        contentWrap.map((postContent) => {
-            var height = postContent.clientHeight;
-
-            heights.push(height);
-        });
-        let maxHeight = Math.max(...heights);
-        if (equalHeight) {
-            contentWrap.map((postContent) => {
-                postContent.style.height = maxHeight + "px";
-            });
-        } else {
-            contentWrap.map((postContent) => {
-                postContent.style.height = "auto";
-            });
-        }
-    }, [equalHeight]);
     const blockContexts = useMemo(
         () =>
             posts?.map((post) => ({
@@ -241,7 +219,7 @@ function PostTemplateEdit({
     }
 
     if (!posts.length) {
-        return <p {...blockProps}> {__("No results found.")}</p>;
+        return <p {...blockProps}> {postDisplaytext}</p>;
     }
     let BorderValue = advancedBorder
         ? { borderRadius: advancedBorderValue }
