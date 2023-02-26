@@ -1210,7 +1210,7 @@ const Inspector = ({ attributes, setAttributes }) => {
                         />
                         <PremiumBackgroundControl
                             label={__(
-                                "Background Type",
+                                "Type",
                                 "premium-blocks-for-gutenberg"
                             )}
                             value={containerBackground}

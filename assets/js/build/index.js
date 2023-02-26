@@ -7552,7 +7552,7 @@ const Inspector = _ref => {
     max: 500,
     min: 50
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_2__.PremiumBackgroundControl, {
-    label: __("Background Type", "premium-blocks-for-gutenberg"),
+    label: __("Type", "premium-blocks-for-gutenberg"),
     value: containerBackground,
     onChange: value => setAttributes({
       containerBackground: value
@@ -32046,7 +32046,7 @@ function Edit(props) {
       hideMobile: value ? " premium-mobile-hidden" : ""
     })
   })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, useBlockProps({
-    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, `premium-dheading-block__container ${blockId}`, {
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, `${blockId} premium-dheading-block__container`, {
       " premium-desktop-hidden": hideDesktop,
       " premium-tablet-hidden": hideTablet,
       " premium-mobile-hidden": hideMobile
@@ -32209,7 +32209,7 @@ const save = props => {
     secondShadow
   } = props.attributes;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, useBlockProps.save({
-    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, `premium-dheading-block__container ${blockId}`, {
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, `${blockId} premium-dheading-block__container`, {
       " premium-desktop-hidden": hideDesktop,
       " premium-tablet-hidden": hideTablet,
       " premium-mobile-hidden": hideMobile

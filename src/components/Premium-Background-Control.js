@@ -202,7 +202,7 @@ export default function PremiumBackgroundControl({
                 <p className="premium-beside-btn-group">
                     {label
                         ? label
-                        : __("Background Type", "premium-blocks-for-gutenberg")}
+                        : __("Type", "premium-blocks-for-gutenberg")}
                 </p>
                 <div className={`premium-background-type__wrap`}>
                     <ButtonGroup
@@ -485,21 +485,21 @@ export default function PremiumBackgroundControl({
                             }
                         />
                     ) : (
-                        <Fragment>
-                            <p>{__("Video", "premium-blocks-for-gutenberg")}</p>
-                            <PremiumMediaUpload
-                                type="video"
-                                imageID={videoID}
-                                imageURL={videoURL}
-                                onSelectMedia={(media) =>
-                                    onChangeBackground("videoURL", media.url)
-                                }
-                                onRemoveImage={() =>
-                                    onChangeBackground("videoURL", "")
-                                }
-                            />
-                        </Fragment>
-                    )}
+                            <Fragment>
+                                <p>{__("Video", "premium-blocks-for-gutenberg")}</p>
+                                <PremiumMediaUpload
+                                    type="video"
+                                    imageID={videoID}
+                                    imageURL={videoURL}
+                                    onSelectMedia={(media) =>
+                                        onChangeBackground("videoURL", media.url)
+                                    }
+                                    onRemoveImage={() =>
+                                        onChangeBackground("videoURL", "")
+                                    }
+                                />
+                            </Fragment>
+                        )}
                 </Fragment>
             )}
         </Fragment>
