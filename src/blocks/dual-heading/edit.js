@@ -736,7 +736,7 @@ function Edit(props) {
                 {...useBlockProps({
                     className: classnames(
                         className,
-                        `premium-dheading-block__container ${blockId}`,
+                        `${blockId} premium-dheading-block__container`,
                         {
                             " premium-desktop-hidden": hideDesktop,
                             " premium-tablet-hidden": hideTablet,
@@ -753,19 +753,16 @@ function Edit(props) {
                 <div className={`premium-dheading-block__wrap`}>
                     <div className={`premium-dheading-block__title`}>
                         <RichText
-                            className={`premium-dheading-block__first${
-                                firstStyles?.[0]?.firstClip
+                            className={`premium-dheading-block__first${firstStyles?.[0]?.firstClip
                                     ? ` premium-headingc-${firstStyles?.[0]?.firstClip}`
                                     : ""
-                            }${
-                                firstStyles?.[0]?.firstAnim
+                                }${firstStyles?.[0]?.firstAnim
                                     ? ` premium-headinga-${firstStyles?.[0]?.firstAnim}`
                                     : ""
-                            }${
-                                firstStyles?.[0]?.firstStroke
+                                }${firstStyles?.[0]?.firstStroke
                                     ? ` premium-headings-${firstStyles?.[0]?.firstStroke}`
                                     : ""
-                            }`}
+                                }`}
                             value={firstHeading}
                             onChange={(value) =>
                                 setAttributes({ firstHeading: value })
@@ -791,19 +788,16 @@ function Edit(props) {
                             tagName={firstTag}
                         />
                         <RichText
-                            className={`premium-dheading-block__second${
-                                secondStyles?.[0]?.secondClip
+                            className={`premium-dheading-block__second${secondStyles?.[0]?.secondClip
                                     ? `${` premium-headingc-${secondStyles?.[0]?.secondClip}`}`
                                     : ""
-                            }${
-                                secondStyles?.[0]?.secondAnim
+                                }${secondStyles?.[0]?.secondAnim
                                     ? ` ${`premium-headinga-${secondStyles?.[0]?.secondAnim} `}`
                                     : ""
-                            }${
-                                secondStyles?.[0]?.secondStroke
+                                }${secondStyles?.[0]?.secondStroke
                                     ? ` premium-headings-${secondStyles?.[0]?.secondStroke}`
                                     : ""
-                            }`}
+                                }`}
                             value={secondHeading}
                             onChange={(value) =>
                                 setAttributes({ secondHeading: value })
