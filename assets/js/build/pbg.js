@@ -10493,7 +10493,7 @@ Ico['dashicons admin-collapse'] = {
   }]
 };
 Ico['dashicons admin-comments'] = {
-  'vB': '0 0 21 21',
+  'vB': '0 0 19 19',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10547,7 +10547,7 @@ Ico['dashicons admin-network'] = {
   }]
 };
 Ico['dashicons admin-page'] = {
-  'vB': '0 0 21 21',
+  'vB': '0 0 19 19',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10556,7 +10556,7 @@ Ico['dashicons admin-page'] = {
   }]
 };
 Ico['dashicons admin-plugins'] = {
-  'vB': '0 0 21 21',
+  'vB': '0 0 19 19',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10565,7 +10565,7 @@ Ico['dashicons admin-plugins'] = {
   }]
 };
 Ico['dashicons admin-post'] = {
-  'vB': '0 0 21 21',
+  'vB': '0 0 19 19',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10601,7 +10601,7 @@ Ico['dashicons admin-tools'] = {
   }]
 };
 Ico['dashicons admin-users'] = {
-  'vB': '0 0 21 21',
+  'vB': '0 0 19 19',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10664,7 +10664,7 @@ Ico['dashicons archive'] = {
   }]
 };
 Ico['dashicons arrow-down-alt'] = {
-  'vB': '0 0 21 21',
+  'vB': '0 0 19 19',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10673,7 +10673,7 @@ Ico['dashicons arrow-down-alt'] = {
   }]
 };
 Ico['dashicons arrow-down-alt2'] = {
-  'vB': '0 0 21 21',
+  'vB': '0 0 19 19',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10691,7 +10691,7 @@ Ico['dashicons arrow-down'] = {
   }]
 };
 Ico['dashicons arrow-left-alt'] = {
-  'vB': '0 0 21 21',
+  'vB': '0 0 19 19',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10700,7 +10700,7 @@ Ico['dashicons arrow-left-alt'] = {
   }]
 };
 Ico['dashicons arrow-left-alt2'] = {
-  'vB': '0 0 21 21',
+  'vB': '0 0 19 19',
   'cD': [{
     'nE': 'path',
     'aBs': {
