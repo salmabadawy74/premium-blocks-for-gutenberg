@@ -1,0 +1,328 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "premium/price",
+  "title": "Price",
+  "category": "premium-blocks",
+  "description": "Price Description.",
+  "keywords": [
+    "price"
+  ],
+  "textdomain": "default",
+  "parent": [
+    "premium/pricing-table"
+  ],
+  "attributes": {
+    "blockId": {
+      "type": "string"
+    },
+    "hideDesktop": {
+      "type": "boolean",
+      "default": false
+    },
+    "hideTablet": {
+      "type": "boolean",
+      "default": false
+    },
+    "hideMobile": {
+      "type": "boolean",
+      "default": false
+    },
+    "slashedPriceText": {
+      "type": "string",
+      "default": ""
+    },
+    "currencyText": {
+      "type": "string",
+      "default": "$"
+    },
+    "priceText": {
+      "type": "string",
+      "default": "99"
+    },
+    "dividerText": {
+      "type": "string",
+      "default": "/"
+    },
+    "durationText": {
+      "type": "string",
+      "default": "m"
+    },
+    "padding": {
+      "type": "object",
+      "default": {
+        "Desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "unit": "px"
+      }
+    },
+    "margin": {
+      "type": "object",
+      "default": {
+        "Desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "unit": "px"
+      }
+    },
+    "align": {
+      "type": "object",
+      "default": {
+        "Desktop": "center",
+        "Tablet": "center",
+        "Mobile": "center"
+      }
+    },
+    "slashedTypography": {
+      "type": "object",
+      "default": {
+        "fontWeight": "400",
+        "fontStyle": "",
+        "letterSpacing": {
+          "Desktop": "",
+          "Tablet": "",
+          "Mobile": "",
+          "unit": "px"
+        },
+        "fontFamily": "Default",
+        "lineHeight": {
+          "Desktop": "",
+          "Tablet": "",
+          "Mobile": "",
+          "unit": "px"
+        },
+        "textDecoration": "",
+        "textTransform": "",
+        "fontSize": {
+          "Desktop": "",
+          "Tablet": "",
+          "Mobile": "",
+          "unit": "px"
+        }
+      }
+    },
+    "slashedColor": {
+      "type": "string",
+      "default": ""
+    },
+    "slashedAlign": {
+      "type": "object",
+      "default": {
+        "Desktop": "center",
+        "Tablet": "",
+        "Mobile": ""
+      }
+    },
+    "slashedBgColor": {
+      "type": "string",
+      "default": ""
+    },
+    "currencyTypography": {
+      "type": "object",
+      "default": {
+        "fontWeight": "400",
+        "fontStyle": "",
+        "letterSpacing": {
+          "Desktop": "",
+          "Tablet": "",
+          "Mobile": "",
+          "unit": "px"
+        },
+        "fontFamily": "Default",
+        "lineHeight": {
+          "Desktop": "",
+          "Tablet": "",
+          "Mobile": "",
+          "unit": "px"
+        },
+        "textDecoration": "",
+        "textTransform": "",
+        "fontSize": {
+          "Desktop": "",
+          "Tablet": "",
+          "Mobile": "",
+          "unit": "px"
+        }
+      }
+    },
+    "currencyColor": {
+      "type": "string",
+      "default": ""
+    },
+    "currencyAlign": {
+      "type": "object",
+      "default": {
+        "Desktop": "center",
+        "Tablet": "",
+        "Mobile": ""
+      }
+    },
+    "currencyBgColor": {
+      "type": "string",
+      "default": ""
+    },
+    "priceTypography": {
+      "type": "object",
+      "default": {
+        "fontWeight": "400",
+        "fontStyle": "",
+        "letterSpacing": {
+          "Desktop": "",
+          "Tablet": "",
+          "Mobile": "",
+          "unit": "px"
+        },
+        "fontFamily": "Default",
+        "lineHeight": {
+          "Desktop": "",
+          "Tablet": "",
+          "Mobile": "",
+          "unit": "px"
+        },
+        "textDecoration": "",
+        "textTransform": "",
+        "fontSize": {
+          "Desktop": "",
+          "Tablet": "",
+          "Mobile": "",
+          "unit": "px"
+        }
+      }
+    },
+    "priceColor": {
+      "type": "string",
+      "default": ""
+    },
+    "priceAlign": {
+      "type": "object",
+      "default": {
+        "Desktop": "center",
+        "Tablet": "",
+        "Mobile": ""
+      }
+    },
+    "priceBgColor": {
+      "type": "string",
+      "default": ""
+    },
+    "dividerTypography": {
+      "type": "object",
+      "default": {
+        "fontWeight": "400",
+        "fontStyle": "",
+        "letterSpacing": {
+          "Desktop": "",
+          "Tablet": "",
+          "Mobile": "",
+          "unit": "px"
+        },
+        "fontFamily": "Default",
+        "lineHeight": {
+          "Desktop": "",
+          "Tablet": "",
+          "Mobile": "",
+          "unit": "px"
+        },
+        "textDecoration": "",
+        "textTransform": "",
+        "fontSize": {
+          "Desktop": "",
+          "Tablet": "",
+          "Mobile": "",
+          "unit": "px"
+        }
+      }
+    },
+    "dividerColor": {
+      "type": "string",
+      "default": ""
+    },
+    "dividerAlign": {
+      "type": "object",
+      "default": {
+        "Desktop": "center",
+        "Tablet": "",
+        "Mobile": ""
+      }
+    },
+    "dividerBgColor": {
+      "type": "string",
+      "default": ""
+    },
+    "durationTypography": {
+      "type": "object",
+      "default": {
+        "fontWeight": "400",
+        "fontStyle": "",
+        "letterSpacing": {
+          "Desktop": "",
+          "Tablet": "",
+          "Mobile": "",
+          "unit": "px"
+        },
+        "fontFamily": "Default",
+        "lineHeight": {
+          "Desktop": "",
+          "Tablet": "",
+          "Mobile": "",
+          "unit": "px"
+        },
+        "textDecoration": "",
+        "textTransform": "",
+        "fontSize": {
+          "Desktop": "",
+          "Tablet": "",
+          "Mobile": "",
+          "unit": "px"
+        }
+      }
+    },
+    "durationColor": {
+      "type": "string",
+      "default": ""
+    },
+    "durationAlign": {
+      "type": "object",
+      "default": {
+        "Desktop": "center",
+        "Tablet": "",
+        "Mobile": ""
+      }
+    },
+    "durationBgColor": {
+      "type": "string",
+      "default": ""
+    }
+  }
+}

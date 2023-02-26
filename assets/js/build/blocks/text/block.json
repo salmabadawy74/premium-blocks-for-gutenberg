@@ -1,0 +1,202 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "premium/text",
+  "title": "Text",
+  "category": "premium-blocks",
+  "description": "Text Description.",
+  "keywords": [
+    "text"
+  ],
+  "parent": [
+    "premium/pricing-table",
+    "premium/icon-box",
+    "premium/person",
+    "premium/container",
+    "premium/author"
+  ],
+  "textdomain": "default",
+  "attributes": {
+    "blockId": {
+      "type": "string"
+    },
+    "hideDesktop": {
+      "type": "boolean",
+      "default": false
+    },
+    "hideTablet": {
+      "type": "boolean",
+      "default": false
+    },
+    "hideMobile": {
+      "type": "boolean",
+      "default": false
+    },
+    "text": {
+      "type": "string"
+    },
+    "typography": {
+      "type": "object",
+      "default": {
+        "fontWeight": "400",
+        "fontStyle": "",
+        "letterSpacing": {
+          "Desktop": "",
+          "Tablet": "",
+          "Mobile": "",
+          "unit": "px"
+        },
+        "fontFamily": "Default",
+        "lineHeight": {
+          "Desktop": "",
+          "Tablet": "",
+          "Mobile": "",
+          "unit": "px"
+        },
+        "textDecoration": "",
+        "textTransform": "",
+        "fontSize": {
+          "Desktop": "",
+          "Tablet": "",
+          "Mobile": "",
+          "unit": "px"
+        }
+      }
+    },
+    "padding": {
+      "type": "object",
+      "default": {
+        "Desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "unit": "px"
+      }
+    },
+    "margin": {
+      "type": "object",
+      "default": {
+        "Desktop": {
+          "top": 20,
+          "right": "",
+          "bottom": 20,
+          "left": ""
+        },
+        "Tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "unit": "px"
+      }
+    },
+    "border": {
+      "type": "object",
+      "default": {
+        "borderColor": "",
+        "borderType": "none",
+        "borderRadius": {
+          "Desktop": {
+            "top": "",
+            "right": "",
+            "bottom": "",
+            "left": ""
+          },
+          "Tablet": {
+            "top": "",
+            "right": "",
+            "bottom": "",
+            "left": ""
+          },
+          "Mobile": {
+            "top": "",
+            "right": "",
+            "bottom": "",
+            "left": ""
+          }
+        },
+        "borderWidth": {
+          "Desktop": {
+            "top": "",
+            "right": "",
+            "bottom": "",
+            "left": ""
+          },
+          "Tablet": {
+            "top": "",
+            "right": "",
+            "bottom": "",
+            "left": ""
+          },
+          "Mobile": {
+            "top": "",
+            "right": "",
+            "bottom": "",
+            "left": ""
+          }
+        }
+      }
+    },
+    "textShadow": {
+      "type": "object",
+      "default": {
+        "color": "undefined",
+        "blur": "10",
+        "horizontal": "0",
+        "vertical": "0"
+      }
+    },
+    "align": {
+      "type": "object",
+      "default": {
+        "Desktop": "center",
+        "Tablet": "center",
+        "Mobile": "center"
+      }
+    },
+    "color": {
+      "type": "string",
+      "default": ""
+    },
+    "background": {
+      "type": "object",
+      "default": {
+        "backgroundType": "",
+        "backgroundColor": "",
+        "backgroundImageID": "",
+        "backgroundImageURL": "",
+        "backgroundPosition": "center center",
+        "backgroundRepeat": "repeat",
+        "backgroundSize": "auto",
+        "fixed": false,
+        "gradientLocationOne": "0",
+        "gradientColorTwo": "",
+        "gradientLocationTwo": "100",
+        "gradientAngle": "180",
+        "gradientPosition": "center center",
+        "gradientType": "linear"
+      }
+    }
+  }
+}

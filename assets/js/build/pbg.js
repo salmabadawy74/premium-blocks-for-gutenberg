@@ -15,10 +15,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 
-
 function renderCustomIcon(svg) {
   let customSVG = "";
-
   switch (svg) {
     // Flex Row
     case "flex-column-start":
@@ -32,7 +30,6 @@ function renderCustomIcon(svg) {
         d: "M8 0c0.672 0 1.248 0.512 1.312 1.184l0.032 0.16v29.312c0 0.736-0.608 1.344-1.344 1.344-0.672 0-1.248-0.512-1.312-1.184l-0.032-0.16v-29.312c0-0.736 0.608-1.344 1.344-1.344zM15.616 5.344c0.96 0 1.728 0.768 1.728 1.728v17.856c0 0.96-0.768 1.728-1.728 1.728h-1.888c-0.96 0-1.728-0.768-1.728-1.728v-17.856c0-0.96 0.768-1.728 1.728-1.728h1.888zM23.616 5.344c0.96 0 1.728 0.768 1.728 1.728v17.856c0 0.96-0.768 1.728-1.728 1.728h-1.888c-0.96 0-1.728-0.768-1.728-1.728v-17.856c0-0.96 0.768-1.728 1.728-1.728h1.888z"
       }));
       break;
-
     case "flex-column-end":
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
@@ -44,7 +41,6 @@ function renderCustomIcon(svg) {
         d: "M24 0c0.672 0 1.248 0.512 1.312 1.184l0.032 0.16v29.312c0 0.736-0.608 1.344-1.344 1.344-0.672 0-1.248-0.512-1.312-1.184l-0.032-0.16v-29.312c0-0.736 0.608-1.344 1.344-1.344zM18.272 5.344c0.96 0 1.728 0.768 1.728 1.728v17.856c0 0.96-0.768 1.728-1.728 1.728h-1.856c-0.96 0-1.76-0.768-1.76-1.728v-17.856c0-0.96 0.8-1.728 1.76-1.728h1.856zM10.272 5.344c0.96 0 1.728 0.768 1.728 1.728v17.856c0 0.96-0.768 1.728-1.728 1.728h-1.856c-0.96 0-1.76-0.768-1.76-1.728v-17.856c0-0.96 0.8-1.728 1.76-1.728h1.856z"
       }));
       break;
-
     case "flex-column-center":
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
@@ -56,7 +52,6 @@ function renderCustomIcon(svg) {
         d: "M16 0c0.672 0 1.248 0.512 1.312 1.184l0.032 0.16v29.312c0 0.736-0.608 1.344-1.344 1.344-0.672 0-1.248-0.512-1.312-1.184l-0.032-0.16v-29.312c0-0.736 0.608-1.344 1.344-1.344zM23.616 5.344c0.96 0 1.728 0.768 1.728 1.728v17.856c0 0.96-0.768 1.728-1.728 1.728h-1.888c-0.96 0-1.728-0.768-1.728-1.728v-17.856c0-0.96 0.768-1.728 1.728-1.728h1.888zM10.272 5.344c0.96 0 1.728 0.768 1.728 1.728v17.856c0 0.96-0.768 1.728-1.728 1.728h-1.856c-0.96 0-1.76-0.768-1.76-1.728v-17.856c0-0.96 0.8-1.728 1.76-1.728h1.856z"
       }));
       break;
-
     case "flex-column-strech":
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
@@ -68,7 +63,6 @@ function renderCustomIcon(svg) {
         d: "M16 0c0.736 0 1.344 0.608 1.344 1.344v29.312c0 0.736-0.608 1.344-1.344 1.344s-1.344-0.608-1.344-1.344v-29.312c0-0.736 0.608-1.344 1.344-1.344zM26.368 8.672c0.256 0.032 0.48 0.16 0.704 0.384 0.16 0.224 0.256 0.48 0.256 0.8v3.488h2.816c1.024 0 1.856 0.832 1.856 1.856v1.6c0 1.024-0.832 1.856-1.856 1.856h-2.816v3.616c-0.032 0.32-0.16 0.608-0.384 0.8-0.224 0.16-0.448 0.256-0.704 0.256-0.256-0.032-0.48-0.16-0.704-0.384l-5.216-6.080-0.128-0.16c-0.16-0.224-0.224-0.48-0.192-0.8s0.128-0.576 0.32-0.768l5.344-6.208c0.192-0.192 0.416-0.288 0.704-0.256zM5.632 8.672c0.224-0.032 0.448 0.032 0.608 0.16l0.128 0.096 5.344 6.176c0.16 0.224 0.288 0.48 0.288 0.8 0.032 0.256 0 0.448-0.096 0.64l-0.064 0.16-0.128 0.16-5.248 6.080c-0.192 0.224-0.416 0.352-0.704 0.384-0.224 0-0.48-0.096-0.704-0.256-0.16-0.16-0.288-0.352-0.352-0.608l-0.032-0.192v-3.616h-2.816c-1.024 0-1.856-0.832-1.856-1.856v-1.6c0-1.024 0.832-1.856 1.856-1.856h2.816v-3.488c0-0.256 0.064-0.48 0.16-0.672l0.096-0.128c0.192-0.224 0.448-0.352 0.704-0.384z"
       }));
       break;
-
     case "flex-column-space-between":
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
@@ -80,7 +74,6 @@ function renderCustomIcon(svg) {
         d: "M1.344 0c0.672 0 1.248 0.512 1.312 1.184v29.472c0 0.736-0.576 1.344-1.312 1.344-0.704 0-1.248-0.512-1.344-1.184v-29.472c0-0.736 0.608-1.344 1.344-1.344zM30.656 0c0.704 0 1.28 0.512 1.344 1.184v29.472c0 0.736-0.608 1.344-1.344 1.344-0.672 0-1.248-0.512-1.312-1.184v-29.472c0-0.736 0.576-1.344 1.312-1.344zM8.8 5.344c1.024 0 1.856 0.832 1.856 1.856v17.6c0 1.024-0.832 1.856-1.856 1.856h-3.456v-21.312h3.456zM26.656 5.344v21.312h-3.456c-1.024 0-1.856-0.832-1.856-1.856v-17.6c0-1.024 0.832-1.856 1.856-1.856h3.456z"
       }));
       break;
-
     case "flex-column-space-around":
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
@@ -92,7 +85,6 @@ function renderCustomIcon(svg) {
         d: "M30.656 0c0.704 0 1.28 0.512 1.344 1.184v29.472c0 0.736-0.608 1.344-1.344 1.344-0.672 0-1.248-0.512-1.312-1.184v-29.472c0-0.736 0.576-1.344 1.312-1.344zM1.344 0c0.672 0 1.248 0.512 1.312 1.184v29.472c0 0.736-0.576 1.344-1.312 1.344-0.704 0-1.248-0.512-1.344-1.184v-29.472c0-0.736 0.608-1.344 1.344-1.344zM20.8 5.344c1.024 0 1.856 0.832 1.856 1.856v17.6c0 1.024-0.832 1.856-1.856 1.856h-1.6c-1.024 0-1.856-0.832-1.856-1.856v-17.6c0-1.024 0.832-1.856 1.856-1.856h1.6zM12.8 5.344c1.024 0 1.856 0.832 1.856 1.856v17.6c0 1.024-0.832 1.856-1.856 1.856h-1.6c-1.024 0-1.856-0.832-1.856-1.856v-17.6c0-1.024 0.832-1.856 1.856-1.856h1.6z"
       }));
       break;
-
     case "flex-column-space-evenly":
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
@@ -105,7 +97,6 @@ function renderCustomIcon(svg) {
       }));
       break;
     // Flex Column
-
     case "flex-row-start":
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
@@ -117,7 +108,6 @@ function renderCustomIcon(svg) {
         d: "M24.928 20c0.96 0 1.728 0.768 1.728 1.728v1.856c0 0.96-0.768 1.76-1.728 1.76h-17.856c-0.96 0-1.728-0.8-1.728-1.76v-1.856c0-0.96 0.768-1.728 1.728-1.728h17.856zM24.928 12c0.96 0 1.728 0.768 1.728 1.728v1.856c0 0.96-0.768 1.76-1.728 1.76h-17.856c-0.96 0-1.728-0.8-1.728-1.76v-1.856c0-0.96 0.768-1.728 1.728-1.728h17.856zM30.656 6.656c0.736 0 1.344 0.608 1.344 1.344 0 0.672-0.512 1.248-1.184 1.312l-0.16 0.032h-29.312c-0.736 0-1.344-0.608-1.344-1.344 0-0.672 0.512-1.248 1.184-1.312l0.16-0.032h29.312z"
       }));
       break;
-
     case "flex-row-end":
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
@@ -129,7 +119,6 @@ function renderCustomIcon(svg) {
         d: "M30.656 22.656c0.736 0 1.344 0.608 1.344 1.344 0 0.672-0.512 1.248-1.184 1.312l-0.16 0.032h-29.312c-0.736 0-1.344-0.608-1.344-1.344 0-0.672 0.512-1.248 1.184-1.312l0.16-0.032h29.312zM24.928 14.656c0.96 0 1.728 0.768 1.728 1.728v1.888c0 0.96-0.768 1.728-1.728 1.728h-17.856c-0.96 0-1.728-0.768-1.728-1.728v-1.888c0-0.96 0.768-1.728 1.728-1.728h17.856zM24.928 6.656c0.96 0 1.728 0.768 1.728 1.728v1.888c0 0.96-0.768 1.728-1.728 1.728h-17.856c-0.96 0-1.728-0.768-1.728-1.728v-1.888c0-0.96 0.768-1.728 1.728-1.728h17.856z"
       }));
       break;
-
     case "flex-row-center":
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
@@ -141,7 +130,6 @@ function renderCustomIcon(svg) {
         d: "M24.928 20c0.96 0 1.728 0.768 1.728 1.728v1.856c0 0.96-0.768 1.76-1.728 1.76h-17.856c-0.96 0-1.728-0.8-1.728-1.76v-1.856c0-0.96 0.768-1.728 1.728-1.728h17.856zM30.656 14.656c0.736 0 1.344 0.608 1.344 1.344 0 0.672-0.512 1.248-1.184 1.312l-0.16 0.032h-29.312c-0.736 0-1.344-0.608-1.344-1.344 0-0.672 0.512-1.248 1.184-1.312l0.16-0.032h29.312zM24.928 6.656c0.96 0 1.728 0.768 1.728 1.728v1.888c0 0.96-0.768 1.728-1.728 1.728h-17.856c-0.96 0-1.728-0.768-1.728-1.728v-1.888c0-0.96 0.768-1.728 1.728-1.728h17.856z"
       }));
       break;
-
     case "flex-row-strech":
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
@@ -153,7 +141,6 @@ function renderCustomIcon(svg) {
         d: "M1.344 0c0.736 0 1.312 0.608 1.312 1.344v29.312c0 0.736-0.576 1.344-1.312 1.344s-1.344-0.608-1.344-1.344v-29.312c0-0.736 0.608-1.344 1.344-1.344zM30.656 0c0.736 0 1.344 0.608 1.344 1.344v29.312c0 0.736-0.608 1.344-1.344 1.344s-1.312-0.608-1.312-1.344v-29.312c0-0.736 0.576-1.344 1.312-1.344zM20.96 8.672c0.224-0.032 0.448 0.032 0.64 0.16l0.096 0.096 5.344 6.176c0.16 0.224 0.288 0.48 0.32 0.8 0 0.256-0.032 0.448-0.128 0.64l-0.064 0.16-0.128 0.16-5.248 6.080c-0.192 0.224-0.416 0.352-0.672 0.384-0.256 0-0.512-0.096-0.736-0.256-0.16-0.16-0.288-0.352-0.352-0.608l-0.032-0.192v-3.616h-8v3.616c-0.064 0.32-0.16 0.608-0.384 0.8-0.224 0.16-0.48 0.256-0.736 0.256-0.224-0.032-0.48-0.16-0.672-0.384l-5.248-6.080-0.096-0.16c-0.16-0.224-0.224-0.48-0.192-0.8s0.128-0.576 0.288-0.768l5.376-6.208c0.192-0.192 0.416-0.288 0.704-0.256 0.256 0.032 0.48 0.16 0.704 0.384 0.16 0.224 0.256 0.48 0.256 0.8v3.488h8v-3.488c0-0.256 0.064-0.48 0.16-0.672l0.096-0.128c0.224-0.224 0.448-0.352 0.704-0.384z"
       }));
       break;
-
     case "flex-row-space-between":
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
@@ -165,7 +152,6 @@ function renderCustomIcon(svg) {
         d: "M30.656 29.344c0.736 0 1.344 0.576 1.344 1.312 0 0.704-0.512 1.28-1.184 1.344h-29.472c-0.736 0-1.344-0.608-1.344-1.344 0-0.672 0.512-1.248 1.184-1.312h29.472zM24.8 21.344c1.024 0 1.856 0.832 1.856 1.856v3.456h-21.312v-3.456c0-1.024 0.832-1.856 1.856-1.856h17.6zM26.656 5.344v3.456c0 1.024-0.832 1.856-1.856 1.856h-17.6c-1.024 0-1.856-0.832-1.856-1.856v-3.456h21.312zM30.656 0c0.736 0 1.344 0.608 1.344 1.344 0 0.672-0.512 1.248-1.184 1.312h-29.472c-0.736 0-1.344-0.576-1.344-1.312 0-0.704 0.512-1.28 1.184-1.344h29.472z"
       }));
       break;
-
     case "flex-row-space-around":
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
@@ -177,7 +163,6 @@ function renderCustomIcon(svg) {
         d: "M30.656 29.344c0.736 0 1.344 0.576 1.344 1.312 0 0.704-0.512 1.28-1.184 1.344h-29.472c-0.736 0-1.344-0.608-1.344-1.344 0-0.672 0.512-1.248 1.184-1.312h29.472zM24.8 17.344c1.024 0 1.856 0.832 1.856 1.856v1.6c0 1.024-0.832 1.856-1.856 1.856h-17.6c-1.024 0-1.856-0.832-1.856-1.856v-1.6c0-1.024 0.832-1.856 1.856-1.856h17.6zM24.8 9.344c1.024 0 1.856 0.832 1.856 1.856v1.6c0 1.024-0.832 1.856-1.856 1.856h-17.6c-1.024 0-1.856-0.832-1.856-1.856v-1.6c0-1.024 0.832-1.856 1.856-1.856h17.6zM30.656 0c0.736 0 1.344 0.608 1.344 1.344 0 0.672-0.512 1.248-1.184 1.312h-29.472c-0.736 0-1.344-0.576-1.344-1.312 0-0.704 0.512-1.28 1.184-1.344h29.472z"
       }));
       break;
-
     case "flex-row-space-evenly":
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
@@ -190,7 +175,6 @@ function renderCustomIcon(svg) {
       }));
       break;
     // Flex Direction
-
     case "flex-direction-row":
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
@@ -202,7 +186,6 @@ function renderCustomIcon(svg) {
         d: "M23.616 17.472l-5.088 5.184c-0.8 0.8-0.8 2.016 0 2.816s2.016 0.8 2.816 0l8.672-8.928c0.8-0.8 0.8-2.016 0-2.816l-8.544-8.384c-0.8-0.8-2.016-0.8-2.816 0s-0.8 1.984 0 2.784l5.472 5.344-20.8-0.128c-1.056 0-1.984 0.928-1.984 1.984s0.928 2.016 1.984 2.016l20.288 0.128z"
       }));
       break;
-
     case "flex-direction-column":
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
@@ -214,7 +197,6 @@ function renderCustomIcon(svg) {
         d: "M13.216 23.584l-5.216-5.056c-0.8-0.8-1.984-0.8-2.784 0s-0.8 2.016 0 2.816l8.928 8.672c0.8 0.8 1.984 0.8 2.784 0l8.416-8.544c0.8-0.8 0.8-2.016 0-2.816s-2.016-0.8-2.816 0l-5.312 5.472 0.128-20.8c0-1.056-0.928-1.984-2.016-1.984-1.056 0-1.984 0.928-1.984 1.984l-0.128 20.256z"
       }));
       break;
-
     case "flex-direction-row-reverse":
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
@@ -226,7 +208,6 @@ function renderCustomIcon(svg) {
         d: "M8.416 17.472l5.056 5.184c0.8 0.8 0.8 2.016 0 2.816s-2.016 0.8-2.816 0l-8.64-8.928c-0.8-0.8-0.8-2.016 0-2.816l8.512-8.384c0.8-0.96 2.016-0.8 2.816 0s0.8 1.984 0 2.784l-5.472 5.344 20.8-0.128c1.056 0 1.984 0.928 1.984 1.984s-0.928 2.016-1.984 2.016l-20.256 0.128z"
       }));
       break;
-
     case "flex-direction-column-reverse":
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
@@ -239,7 +220,6 @@ function renderCustomIcon(svg) {
       }));
       break;
     // Flex Wrap
-
     case "flex-wrap":
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
@@ -251,7 +231,6 @@ function renderCustomIcon(svg) {
         d: "M1.344 0c0.736 0 1.312 0.608 1.312 1.344v29.312c0 0.736-0.576 1.344-1.312 1.344s-1.344-0.608-1.344-1.344v-29.312c0-0.736 0.608-1.344 1.344-1.344zM21.728 5.344c6.656 0 10.272 3.648 10.272 9.312 0 5.568-3.488 9.184-9.888 9.344h-7.648v4.032c0 0.288-0.064 0.544-0.224 0.768l-0.096 0.096c-0.256 0.256-0.544 0.416-0.864 0.448-0.288 0.032-0.544-0.064-0.768-0.192l-0.128-0.096-6.688-6.752c-0.224-0.224-0.32-0.512-0.384-0.864-0.032-0.256 0.032-0.512 0.128-0.736l0.256-0.32 6.528-6.624c0.256-0.256 0.544-0.416 0.864-0.416s0.608 0.096 0.896 0.288c0.192 0.16 0.352 0.384 0.416 0.64l0.064 0.192v4.192h7.232c3.712 0 4.96-1.248 4.96-4 0-2.624-1.184-3.904-4.608-4h-16.704v-5.312h16.384z"
       }));
       break;
-
     case "flex-no-wrap":
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         version: "1.1",
@@ -263,7 +242,6 @@ function renderCustomIcon(svg) {
         d: "M1.344 0c0.736 0 1.344 0.608 1.344 1.344v29.312c0 0.704-0.512 1.28-1.184 1.344h-0.16c-0.736 0-1.344-0.608-1.344-1.344v-29.312c0-0.704 0.512-1.28 1.184-1.344h0.16zM24 8c0.288-0.032 0.544 0.032 0.768 0.192l0.128 0.096 6.72 6.752c0.224 0.224 0.352 0.512 0.384 0.864 0.032 0.256-0.032 0.48-0.128 0.704l-0.096 0.16-0.16 0.192-6.56 6.624c-0.256 0.256-0.544 0.384-0.864 0.416-0.32 0-0.64-0.096-0.896-0.288-0.224-0.192-0.352-0.416-0.448-0.672l-0.032-0.192v-4.192h-15.616c-1.024 0-1.856-0.832-1.856-1.856v-1.6c0-1.024 0.832-1.856 1.856-1.856h15.616v-4.064c0-0.288 0.064-0.544 0.224-0.736l0.096-0.128c0.256-0.224 0.544-0.384 0.864-0.416z"
       }));
       break;
-
     case "button-fill":
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         xmlns: "http://www.w3.org/2000/svg",
@@ -285,7 +263,6 @@ function renderCustomIcon(svg) {
         fill: "white"
       }), " ");
       break;
-
     case "button-outline":
       customSVG = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
         xmlns: "http://www.w3.org/2000/svg",
@@ -310,10 +287,8 @@ function renderCustomIcon(svg) {
         fill: "#959595"
       }), " ");
   }
-
   return customSVG;
 }
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (renderCustomIcon);
 
 /***/ }),
@@ -353,6 +328,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /*import premiumLogo from "./logo";
 wp.blocks.updateCategory("premium-blocks", { icon: premiumLogo });*/
+
 //Blocks Keys
 const {
   Modal,
@@ -376,8 +352,9 @@ const {
   [`image-separator`]: imageSeparator,
   [`pricing-table`]: pricingTable,
   [`video-box`]: videoBox
-} = PremiumBlocksSettings.activeBlocks; //Plugin Config Keys
+} = PremiumBlocksSettings.activeBlocks;
 
+//Plugin Config Keys
 const {
   FontAwesomeEnabled
 } = FontAwesomeConfig;
@@ -422,7 +399,6 @@ const defaultData = {
   delay: 0,
   curve: 'ease-in-out'
 };
-
 class Animation extends Component {
   constructor() {
     super(...arguments);
@@ -430,11 +406,9 @@ class Animation extends Component {
       isAnimate: false
     };
   }
-
   componentWillMount() {
     this.props.onChange(Object.assign({}, defaultData, this.props.value || {}));
   }
-
   setSettings(type, val) {
     const openAnimation = val == '' ? {
       openAnimation: 0
@@ -450,7 +424,6 @@ class Animation extends Component {
     data.name = data.animation + data.direction;
     this.props.onChange(data);
   }
-
   _valueChange(value, type) {
     let returnData = value == 'rotate' ? [{
       label: __('DownLeft', "premium-blocks-for-gutenberg"),
@@ -492,35 +465,29 @@ class Animation extends Component {
       label: __('Down', "premium-blocks-for-gutenberg"),
       value: 'Down'
     }];
-
     if (type == 'data') {
       return returnData;
     } else {
       return returnData[0].value;
     }
   }
-
   doAnimate() {
     const {
       value,
       uniqueId
     } = this.props;
-
     if (typeof uniqueId !== 'undefined') {
       const {
         isAnimate
       } = this.state;
       const blockId = document.querySelector(`.premium-blocks-${uniqueId}`);
-
       if (isAnimate && value.repeat !== 'once') {
         blockId.style.animationName = '';
       } else {
         blockId.style.animationName = '';
-
         if (typeof this.timer !== 'undefined' && this.timer > 0) {
           clearTimeout(this.timer);
         }
-
         this.timer = setTimeout(() => {
           blockId.style.animationName = value.name;
           blockId.style.animationTimingFunction = value.curve;
@@ -529,13 +496,11 @@ class Animation extends Component {
           blockId.style.animationIterationCount = value.repeat === 'once' ? 1 : 'infinite';
         }, 300);
       }
-
       this.setState({
         isAnimate: !isAnimate
       });
     }
   }
-
   render() {
     const {
       value,
@@ -631,9 +596,7 @@ class Animation extends Component {
       className: "components-button is-button is-default is-primary is-large"
     }, " ", this.state.isAnimate && value.repeat === 'loop' ? "Stop" : "Animate", " ")));
   }
-
 }
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Animation);
 
 /***/ }),
@@ -680,7 +643,6 @@ const {
   withSelect
 } = wp.data;
 
-
 class AdvancedColorControl extends Component {
   constructor() {
     super(...arguments);
@@ -691,7 +653,6 @@ class AdvancedColorControl extends Component {
       defaultColor: ""
     };
   }
-
   componentDidMount() {
     if ("transparent" === this.props.colorDefault) {
       this.setState({
@@ -709,7 +670,6 @@ class AdvancedColorControl extends Component {
       });
     }
   }
-
   render() {
     const toggleVisible = () => {
       if ("transparent" === this.props.colorDefault) {
@@ -721,12 +681,10 @@ class AdvancedColorControl extends Component {
           currentColor: undefined === this.props.colorValue || "" === this.props.colorValue ? this.props.colorDefault : this.props.colorValue
         });
       }
-
       this.setState({
         isVisible: true
       });
     };
-
     const toggleClose = () => {
       if (this.state.isVisible === true) {
         this.setState({
@@ -734,21 +692,16 @@ class AdvancedColorControl extends Component {
         });
       }
     };
-
     const normalizeColor = color => {
       const parsedColor = (0,colord__WEBPACK_IMPORTED_MODULE_4__.colord)(color);
-
       if (!parsedColor.parsed) {
         return color;
       }
-
       if (parsedColor.rgba.a === 1) {
         return parsedColor.toHex();
       }
-
       return parsedColor.toRgbString();
     };
-
     const isNew = wp.components.GradientPicker;
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "premium-color-popover-container"
@@ -770,7 +723,6 @@ class AdvancedColorControl extends Component {
         this.setState({
           currentColor: color.hex
         });
-
         if (color.rgb) {
           this.props.onColorChange(color.rgb.a != 1 ? "rgba(" + color.rgb.r + "," + color.rgb.g + "," + color.rgb.b + "," + color.rgb.a + ")" : color.hex);
         }
@@ -847,9 +799,7 @@ class AdvancedColorControl extends Component {
       }
     }))));
   }
-
 }
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (withSelect((select, ownProps) => {
   const settings = select("core/block-editor").getSettings();
   const colors = lodash_get__WEBPACK_IMPORTED_MODULE_1___default()(settings, ["colors"], []);
@@ -903,11 +853,9 @@ const gradientBackground = value => {
     backgroundImageURL
   } = value;
   let btnGrad, btnGrad2, btnbg;
-
   if (undefined !== backgroundType && "gradient" === backgroundType) {
     btnGrad = "transparent" === backgroundColor || undefined === backgroundColor ? "rgba(255,255,255,0)" : backgroundColor;
     btnGrad2 = undefined !== gradientColorTwo && undefined !== gradientColorTwo && "" !== gradientColorTwo ? gradientColorTwo : "#777";
-
     if ("radial" === gradientType) {
       btnbg = `radial-gradient(at ${gradientPosition}, ${btnGrad} ${gradientLocationOne}%, ${btnGrad2} ${gradientLocationTwo}%)`;
     } else if ("radial" !== gradientType) {
@@ -916,7 +864,6 @@ const gradientBackground = value => {
   } else {
     btnbg = backgroundImageURL ? `url('${backgroundImageURL}')` : "";
   }
-
   return {
     backgroundColor: backgroundType === "transparent" ? "transparent" : backgroundColor,
     backgroundImage: gradientValue(value),
@@ -927,53 +874,45 @@ const gradientBackground = value => {
   };
 };
 const borderCss = (value, device) => {
-  var _value$borderWidth, _value$borderWidth$de, _value$borderWidth2, _value$borderWidth2$d, _value$borderWidth3, _value$borderWidth3$d, _value$borderWidth4, _value$borderWidth4$d, _value$borderRadius, _value$borderRadius$d, _value$borderRadius2, _value$borderRadius2$, _value$borderRadius3, _value$borderRadius3$, _value$borderRadius4, _value$borderRadius4$;
-
   return {
-    borderStyle: value === null || value === void 0 ? void 0 : value.borderType,
-    borderTopWidth: value === null || value === void 0 ? void 0 : (_value$borderWidth = value.borderWidth) === null || _value$borderWidth === void 0 ? void 0 : (_value$borderWidth$de = _value$borderWidth[device]) === null || _value$borderWidth$de === void 0 ? void 0 : _value$borderWidth$de.top,
-    borderRightWidth: value === null || value === void 0 ? void 0 : (_value$borderWidth2 = value.borderWidth) === null || _value$borderWidth2 === void 0 ? void 0 : (_value$borderWidth2$d = _value$borderWidth2[device]) === null || _value$borderWidth2$d === void 0 ? void 0 : _value$borderWidth2$d.right,
-    borderBottomWidth: value === null || value === void 0 ? void 0 : (_value$borderWidth3 = value.borderWidth) === null || _value$borderWidth3 === void 0 ? void 0 : (_value$borderWidth3$d = _value$borderWidth3[device]) === null || _value$borderWidth3$d === void 0 ? void 0 : _value$borderWidth3$d.bottom,
-    borderLeftWidth: value === null || value === void 0 ? void 0 : (_value$borderWidth4 = value.borderWidth) === null || _value$borderWidth4 === void 0 ? void 0 : (_value$borderWidth4$d = _value$borderWidth4[device]) === null || _value$borderWidth4$d === void 0 ? void 0 : _value$borderWidth4$d.left,
-    borderColor: value === null || value === void 0 ? void 0 : value.borderColor,
-    borderTopLeftRadius: `${value === null || value === void 0 ? void 0 : (_value$borderRadius = value.borderRadius) === null || _value$borderRadius === void 0 ? void 0 : (_value$borderRadius$d = _value$borderRadius[device]) === null || _value$borderRadius$d === void 0 ? void 0 : _value$borderRadius$d.top}px`,
-    borderTopRightRadius: `${value === null || value === void 0 ? void 0 : (_value$borderRadius2 = value.borderRadius) === null || _value$borderRadius2 === void 0 ? void 0 : (_value$borderRadius2$ = _value$borderRadius2[device]) === null || _value$borderRadius2$ === void 0 ? void 0 : _value$borderRadius2$.right}px`,
-    borderBottomLeftRadius: `${value === null || value === void 0 ? void 0 : (_value$borderRadius3 = value.borderRadius) === null || _value$borderRadius3 === void 0 ? void 0 : (_value$borderRadius3$ = _value$borderRadius3[device]) === null || _value$borderRadius3$ === void 0 ? void 0 : _value$borderRadius3$.bottom}px`,
-    borderBottomRightRadius: `${value === null || value === void 0 ? void 0 : (_value$borderRadius4 = value.borderRadius) === null || _value$borderRadius4 === void 0 ? void 0 : (_value$borderRadius4$ = _value$borderRadius4[device]) === null || _value$borderRadius4$ === void 0 ? void 0 : _value$borderRadius4$.left}px`
+    borderStyle: value?.borderType,
+    borderTopWidth: value?.borderWidth?.[device]?.top,
+    borderRightWidth: value?.borderWidth?.[device]?.right,
+    borderBottomWidth: value?.borderWidth?.[device]?.bottom,
+    borderLeftWidth: value?.borderWidth?.[device]?.left,
+    borderColor: value?.borderColor,
+    borderTopLeftRadius: `${value?.borderRadius?.[device]?.top}px`,
+    borderTopRightRadius: `${value?.borderRadius?.[device]?.right}px`,
+    borderBottomLeftRadius: `${value?.borderRadius?.[device]?.bottom}px`,
+    borderBottomRightRadius: `${value?.borderRadius?.[device]?.left}px`
   };
 };
 const paddingCss = (value, device) => {
-  var _value$device, _value$device2, _value$device3, _value$device4, _value$device5, _value$device6, _value$device7, _value$device8;
-
   return {
-    paddingTop: (value === null || value === void 0 ? void 0 : (_value$device = value[device]) === null || _value$device === void 0 ? void 0 : _value$device.top) && `${value === null || value === void 0 ? void 0 : (_value$device2 = value[device]) === null || _value$device2 === void 0 ? void 0 : _value$device2.top}${value === null || value === void 0 ? void 0 : value.unit}`,
-    paddingRight: (value === null || value === void 0 ? void 0 : (_value$device3 = value[device]) === null || _value$device3 === void 0 ? void 0 : _value$device3.right) && `${value === null || value === void 0 ? void 0 : (_value$device4 = value[device]) === null || _value$device4 === void 0 ? void 0 : _value$device4.right}${value === null || value === void 0 ? void 0 : value.unit}`,
-    paddingBottom: (value === null || value === void 0 ? void 0 : (_value$device5 = value[device]) === null || _value$device5 === void 0 ? void 0 : _value$device5.bottom) && `${value === null || value === void 0 ? void 0 : (_value$device6 = value[device]) === null || _value$device6 === void 0 ? void 0 : _value$device6.bottom}${value === null || value === void 0 ? void 0 : value.unit}`,
-    paddingLeft: (value === null || value === void 0 ? void 0 : (_value$device7 = value[device]) === null || _value$device7 === void 0 ? void 0 : _value$device7.left) && `${value === null || value === void 0 ? void 0 : (_value$device8 = value[device]) === null || _value$device8 === void 0 ? void 0 : _value$device8.left}${value === null || value === void 0 ? void 0 : value.unit}`
+    paddingTop: value?.[device]?.top && `${value?.[device]?.top}${value?.unit}`,
+    paddingRight: value?.[device]?.right && `${value?.[device]?.right}${value?.unit}`,
+    paddingBottom: value?.[device]?.bottom && `${value?.[device]?.bottom}${value?.unit}`,
+    paddingLeft: value?.[device]?.left && `${value?.[device]?.left}${value?.unit}`
   };
 };
 const marginCss = (value, device) => {
-  var _value$device9, _value$device10, _value$device11, _value$device12, _value$device13, _value$device14, _value$device15, _value$device16;
-
   return {
-    marginTop: (value === null || value === void 0 ? void 0 : (_value$device9 = value[device]) === null || _value$device9 === void 0 ? void 0 : _value$device9.top) && `${value === null || value === void 0 ? void 0 : (_value$device10 = value[device]) === null || _value$device10 === void 0 ? void 0 : _value$device10.top}${value === null || value === void 0 ? void 0 : value.unit}`,
-    marginRight: (value === null || value === void 0 ? void 0 : (_value$device11 = value[device]) === null || _value$device11 === void 0 ? void 0 : _value$device11.right) && `${value === null || value === void 0 ? void 0 : (_value$device12 = value[device]) === null || _value$device12 === void 0 ? void 0 : _value$device12.right}${value === null || value === void 0 ? void 0 : value.unit}`,
-    marginBottom: (value === null || value === void 0 ? void 0 : (_value$device13 = value[device]) === null || _value$device13 === void 0 ? void 0 : _value$device13.bottom) && `${value === null || value === void 0 ? void 0 : (_value$device14 = value[device]) === null || _value$device14 === void 0 ? void 0 : _value$device14.bottom}${value === null || value === void 0 ? void 0 : value.unit}`,
-    marginLeft: (value === null || value === void 0 ? void 0 : (_value$device15 = value[device]) === null || _value$device15 === void 0 ? void 0 : _value$device15.left) && `${value === null || value === void 0 ? void 0 : (_value$device16 = value[device]) === null || _value$device16 === void 0 ? void 0 : _value$device16.left}${value === null || value === void 0 ? void 0 : value.unit}`
+    marginTop: value?.[device]?.top && `${value?.[device]?.top}${value?.unit}`,
+    marginRight: value?.[device]?.right && `${value?.[device]?.right}${value?.unit}`,
+    marginBottom: value?.[device]?.bottom && `${value?.[device]?.bottom}${value?.unit}`,
+    marginLeft: value?.[device]?.left && `${value?.[device]?.left}${value?.unit}`
   };
 };
 const typographyCss = (value, device) => {
-  var _value$fontSize;
-
   return {
-    fontSize: (value === null || value === void 0 ? void 0 : value.fontSize[device]) && `${value === null || value === void 0 ? void 0 : value.fontSize[device]}${value === null || value === void 0 ? void 0 : (_value$fontSize = value.fontSize) === null || _value$fontSize === void 0 ? void 0 : _value$fontSize.unit}`,
-    fontStyle: value === null || value === void 0 ? void 0 : value.fontStyle,
-    fontFamily: value === null || value === void 0 ? void 0 : value.fontFamily,
-    fontWeight: value === null || value === void 0 ? void 0 : value.fontWeight,
-    letterSpacing: (value === null || value === void 0 ? void 0 : value.letterSpacing[device]) && `${value === null || value === void 0 ? void 0 : value.letterSpacing[device]}px`,
-    textDecoration: value === null || value === void 0 ? void 0 : value.textDecoration,
-    textTransform: value === null || value === void 0 ? void 0 : value.textTransform,
-    lineHeight: (value === null || value === void 0 ? void 0 : value.lineHeight[device]) && `${value === null || value === void 0 ? void 0 : value.lineHeight[device]}px`
+    fontSize: value?.fontSize[device] && `${value?.fontSize[device]}${value?.fontSize?.unit}`,
+    fontStyle: value?.fontStyle,
+    fontFamily: value?.fontFamily,
+    fontWeight: value?.fontWeight,
+    letterSpacing: value?.letterSpacing[device] && `${value?.letterSpacing[device]}px`,
+    textDecoration: value?.textDecoration,
+    textTransform: value?.textTransform,
+    lineHeight: value?.lineHeight[device] && `${value?.lineHeight[device]}px`
   };
 };
 const generateBlockId = clientId => {
@@ -981,13 +920,11 @@ const generateBlockId = clientId => {
 };
 const generateCss = styles => {
   let styleCss = "";
-
   for (const selector in styles) {
     const selectorStyles = styles[selector];
     const filteredStyles = Object.keys(selectorStyles).map(property => {
       const value = selectorStyles[property];
       const valueWithoutUnits = value ? value.toString().replaceAll(/px|em|rem|!important|%/g, "").replaceAll(/\s/g, "") : "";
-
       if (value && !value.toString().includes("undefined") && valueWithoutUnits) {
         return `${property}: ${value};`;
       }
@@ -996,7 +933,6 @@ const generateCss = styles => {
                     ${filteredStyles}
                 }\n`;
   }
-
   return styleCss;
 };
 const filterJsCss = styles => {
@@ -1025,27 +961,22 @@ const videoBackground = (backgroundType, videoSource, videoURL, bgExternalVideo)
         })));
       }
     }
-
     if (videoSource == "external") {
       if (bgExternalVideo) {
         let video = bgExternalVideo,
-            src = "";
-
+          src = "";
         if (video.match("youtube|youtu.be")) {
           let id = 0;
-
           if (video.match("embed") && video.split(/embed\//)[1]) {
             id = video.split(/embed\//)[1].split('"')[0];
           } else if (video.split(/v\/|v=|youtu\.be\//)[1]) {
             id = video.split(/v\/|v=|youtu\.be\//)[1].split(/[?&]/)[0];
           }
-
           src = "//www.youtube.com/embed/" + id + "?playlist=" + id + "&iv_load_policy=3&enablejsapi=1&disablekb=1&autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&wmode=transparent&widgetid=1";
         } else if (video.match("vimeo.com")) {
           let id = video.split(/video\/|https:\/\/vimeo\.com\//)[1].split(/[?&]/)[0];
           src = "//player.vimeo.com/video/" + id + "?autoplay=1&loop=1&title=0&byline=0&portrait=0";
         }
-
         return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
           className: "premium-blocks-video-bg-wrap"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("iframe", {
@@ -1079,11 +1010,9 @@ const gradientValue = value => {
     backgroundImageURL
   } = value;
   let btnGrad, btnGrad2, btnbg;
-
   if (undefined !== backgroundType && "gradient" === backgroundType) {
     btnGrad = "transparent" === backgroundColor || undefined === backgroundColor ? "rgba(255,255,255,0)" : backgroundColor;
     btnGrad2 = undefined !== gradientColorTwo && undefined !== gradientColorTwo && "" !== gradientColorTwo ? gradientColorTwo : "#777";
-
     if ("radial" === gradientType) {
       btnbg = `radial-gradient(at ${gradientPosition}, ${btnGrad} ${gradientLocationOne}%, ${btnGrad2} ${gradientLocationTwo}%)`;
     } else if ("radial" !== gradientType) {
@@ -1092,7 +1021,6 @@ const gradientValue = value => {
   } else {
     btnbg = backgroundImageURL ? `url('${backgroundImageURL}')` : "";
   }
-
   return btnbg;
 };
 
@@ -1116,7 +1044,6 @@ const {
   Component,
   Fragment
 } = wp.element;
-
 class InsideTab extends Component {
   render() {
     const {
@@ -1126,9 +1053,7 @@ class InsideTab extends Component {
     onTabChange && onTabChange();
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, " ", Array.isArray(children) ? children.map(item => item) : children, " ");
   }
-
 }
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (InsideTab);
 
 /***/ }),
@@ -1168,27 +1093,24 @@ class InsideTabs extends Component {
       activeTab: this.props.children[0].props.tabTitle
     };
   }
-
   render() {
     let TEMPTAG = Fragment;
     const tabs = this.props.children,
-          {
-      activeTab
-    } = this.state,
-          {
-      label,
-      panelGroup
-    } = this.props;
+      {
+        activeTab
+      } = this.state,
+      {
+        label,
+        panelGroup
+      } = this.props;
     const className = classnames__WEBPACK_IMPORTED_MODULE_1___default()('premium-field', 'premium-field-tabs', {
       'panel-group': panelGroup
     }, {
       'premium-has-label': typeof label !== 'undefined'
     });
-
     if (panelGroup) {
       TEMPTAG = 'Div';
     }
-
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: `${className} premium-blocks__base-control`
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -1227,7 +1149,6 @@ class InsideTabs extends Component {
       className: "premium-field-tab-items"
     }, tabs.map(tab => tab.props.tabTitle === activeTab ? tab : '')));
   }
-
 }
 
 /***/ }),
@@ -1261,8 +1182,9 @@ const {
   ButtonGroup,
   Tooltip,
   TextControl
-} = wp.components; // import { FontAwesomeEnabled } from "../../assets/js/settings";
+} = wp.components;
 
+// import { FontAwesomeEnabled } from "../../assets/js/settings";
 
 
 
@@ -1306,19 +1228,19 @@ function PremiumBackgroundControl(_ref) {
     bgVideoFallbackID: "",
     bgVideoFallbackURL: ""
   };
-  value = value ? { ...defaultValues,
+  value = value ? {
+    ...defaultValues,
     ...value
   } : defaultValues;
   const [state, setState] = useState(value);
-
   const onChangeBackground = (item, value) => {
-    const updatedState = { ...state
+    const updatedState = {
+      ...state
     };
     updatedState[item] = value;
     setState(updatedState);
     onChange(updatedState);
   };
-
   const {
     backgroundType,
     backgroundColor,
@@ -1417,7 +1339,6 @@ function PremiumBackgroundControl(_ref) {
     })),
     tooltip: __("Gradient", "premium-blocks-for-gutenberg")
   }];
-
   if (backgroundVedio) {
     bgType.push({
       key: "video",
@@ -1439,7 +1360,6 @@ function PremiumBackgroundControl(_ref) {
       tooltip: __("Video", "premium-blocks-for-gutenberg")
     });
   }
-
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-btn-size-settings-container  premium-blocks__base-control"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
@@ -1650,19 +1570,19 @@ function PremiumShadow(_ref) {
     vertical: "",
     position: ""
   };
-  value = value ? { ...defaultValues,
+  value = value ? {
+    ...defaultValues,
     ...value
   } : defaultValues;
   const [state, setState] = useState(value);
-
   const onChangeShadow = (item, value) => {
-    const updatedState = { ...state
+    const updatedState = {
+      ...state
     };
     updatedState[item] = value;
     setState(updatedState);
     onChange(updatedState);
   };
-
   const POSITION = [{
     value: "inset",
     label: __("Inset", "premium-blocks-for-gutenberg")
@@ -1767,7 +1687,6 @@ const {
 } = wp.element;
 
 
-
 const PBGPresets = props => {
   const {
     setAttributes,
@@ -1777,10 +1696,8 @@ const PBGPresets = props => {
     className
   } = props;
   const [selectedPresetState, setPreset] = useState("");
-
   const updatePresets = selectedPreset => {
     setPreset(selectedPreset);
-
     if (presets) {
       presets.map(preset => {
         if (preset.value) {
@@ -1792,15 +1709,10 @@ const PBGPresets = props => {
               return presetItem;
             });
           }
-
           if (preset.value && preset.value === selectedPreset && preset.attributes) {
-            var _presets$, _presets$$attributes;
-
-            (_presets$ = presets[1]) === null || _presets$ === void 0 ? void 0 : (_presets$$attributes = _presets$.attributes) === null || _presets$$attributes === void 0 ? void 0 : _presets$$attributes.map(presetItem => {
-              var _presets$2, _presets$2$defaultAtt;
-
+            presets[1]?.attributes?.map(presetItem => {
               setAttributes({
-                [presetItem.label]: (_presets$2 = presets[0]) === null || _presets$2 === void 0 ? void 0 : (_presets$2$defaultAtt = _presets$2.defaultAttributes[presetItem.label]) === null || _presets$2$defaultAtt === void 0 ? void 0 : _presets$2$defaultAtt.default
+                [presetItem.label]: presets[0]?.defaultAttributes[presetItem.label]?.default
               });
               return presetItem;
             });
@@ -1812,17 +1724,14 @@ const PBGPresets = props => {
             });
           }
         }
-
         return preset;
       });
     }
   };
-
   const presetRadioImageOptions = presets.map(preset => {
     if (!preset.value) {
       return "";
     }
-
     const key = preset.value;
     const checked = selectedPresetState === key ? true : false;
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -1877,7 +1786,6 @@ const PBGPresets = props => {
     className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, "premium-presets-main-wrap", "components-base-control")
   }, "dropdown" === presetInputType && presetDropdown, "radioImage" === presetInputType && presetRadioImage);
 };
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (react__WEBPACK_IMPORTED_MODULE_1___default().memo(PBGPresets));
 
 /***/ }),
@@ -1910,20 +1818,16 @@ function PremiumRange(_ref) {
     help = "",
     defaultValue
   } = _ref;
-
   const onChangInput = event => {
     if (event.target.value === "") {
       onChange(undefined);
       return;
     }
-
     const newValue = Number(event.target.value);
-
     if (newValue === "") {
       onChange(undefined);
       return;
     }
-
     if (min < -0.1) {
       if (newValue > max) {
         onChange(max);
@@ -1942,7 +1846,6 @@ function PremiumRange(_ref) {
       }
     }
   };
-
   return [onChange && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "wrapper"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -2028,16 +1931,15 @@ function ResponsiveRangeControl(_ref) {
     Mobile: "",
     unit: "px"
   };
-  value = value ? { ...defaultValues,
+  value = value ? {
+    ...defaultValues,
     ...value
   } : defaultValues;
   const [state, setState] = useState(value);
   const [deviceType, setDeviceType] = useState("Desktop");
-
   let customSetPreviewDeviceType = device => {
     setDeviceType(device);
   };
-
   if (wp.data.select("core/edit-post")) {
     const theDevice = useSelect(select => {
       const {
@@ -2045,40 +1947,34 @@ function ResponsiveRangeControl(_ref) {
       } = select("core/edit-post");
       return __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : "Desktop";
     }, []);
-
     if (theDevice !== deviceType) {
       setDeviceType(theDevice);
     }
-
     const {
       __experimentalSetPreviewDeviceType = null
     } = useDispatch("core/edit-post");
-
     customSetPreviewDeviceType = device => {
       __experimentalSetPreviewDeviceType(device);
-
       setDeviceType(device);
     };
   }
-
   const devices = ["Desktop", "Tablet", "Mobile"];
-
   const onChangeValue = (value, device) => {
-    const updatedState = { ...state
+    const updatedState = {
+      ...state
     };
     updatedState[device] = value;
     setState(updatedState);
     onChange(updatedState);
   };
-
   const onChangeUnit = value => {
-    const updatedState = { ...state
+    const updatedState = {
+      ...state
     };
     updatedState["unit"] = value;
     setState(updatedState);
     onChange(updatedState);
   };
-
   const output = {};
   output.Mobile = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_single_range_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
     device: "mobile",
@@ -2307,7 +2203,6 @@ class DefaultImage extends Component {
       className: this.props.className
     });
   }
-
 }
 
 /***/ }),
@@ -2350,30 +2245,28 @@ const {
 const {
   createElement
 } = wp.element;
-
 const walkChildren = children => {
   return children.map((child, idx) => {
     const {
       nE,
       aBs: attribsMap,
       children: gchildren = null
-    } = child; //fill, stroke
+    } = child;
 
+    //fill, stroke
     const attribs = Object.keys(attribsMap).filter(key => key !== 'fill' && key !== 'stroke' && attribsMap[key] !== 'none').reduce((partial, key) => {
       //partial[camelcase(key)] = attribsMap[key];
       partial[key] = attribsMap[key];
       return partial;
-    }, {}); //special case, it has fill and stroke at the same time
-
+    }, {});
+    //special case, it has fill and stroke at the same time
     let merge = {};
-
     if (attribsMap.fill === 'none' && attribsMap.stroke) {
       merge = {
         fill: 'none',
         stroke: 'currentColor'
       };
     }
-
     return createElement(nE, {
       key: idx,
       ...attribs,
@@ -2381,7 +2274,6 @@ const walkChildren = children => {
     }, gchildren === null ? gchildren : walkChildren(gchildren));
   });
 };
-
 const GenIcon = props => {
   const {
     style,
@@ -2839,7 +2731,6 @@ __webpack_require__.r(__webpack_exports__);
 const {
   Fragment
 } = wp.element;
-
 const InspectorTab = props => {
   const {
     children,
@@ -2853,7 +2744,6 @@ const InspectorTab = props => {
     className: "premium-inspector-tab"
   }, Array.isArray(children) ? children.map(item => item) : children);
 };
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (InspectorTab);
 
 /***/ }),
@@ -2887,23 +2777,22 @@ const {
   Tooltip
 } = wp.components;
 const {
-  useState,
-  useRef,
-  useEffect
-} = wp.element,
-      LAYOUT = 'layout',
-      STYLE = 'style',
-      ADVANCE = 'advance';
-
+    useState,
+    useRef,
+    useEffect
+  } = wp.element,
+  LAYOUT = 'layout',
+  STYLE = 'style',
+  ADVANCE = 'advance';
 const InspectorTabs = props => {
   const {
-    defaultTab,
-    children,
-    tabs
-  } = props,
-        [currentTab, setCurrentTab] = useState(defaultTab ? defaultTab : tabs[0]),
-        tabContainer = useRef(),
-        offset = useRef(undefined);
+      defaultTab,
+      children,
+      tabs
+    } = props,
+    [currentTab, setCurrentTab] = useState(defaultTab ? defaultTab : tabs[0]),
+    tabContainer = useRef(),
+    offset = useRef(undefined);
   let sidebarPanel;
   useEffect(() => {
     sidebarPanel = tabContainer.current.closest('.components-panel');
@@ -2913,17 +2802,17 @@ const InspectorTabs = props => {
     return e.target.classList.toggle('premium-is-sticky', e.intersectionRatio < 1);
   }, {
     threshold: [1]
-  }); // component did mount
+  });
 
+  // component did mount
   useEffect(() => {
     // sticky tabs menu
     const container = document.querySelector('.premium-inspector-tabs-container');
-
     if (container) {
       observer.observe(container);
-    } // component will unmount
+    }
 
-
+    // component will unmount
     return () => {
       sidebarPanel && sidebarPanel.removeAttribute('data-premium-tab');
     };
@@ -2931,12 +2820,10 @@ const InspectorTabs = props => {
   useEffect(() => {
     sidebarPanel && sidebarPanel.setAttribute('data-premium-tab', defaultTab);
   }, [defaultTab]);
-
   const _onTabChange = tab => {
     setCurrentTab(tab);
     sidebarPanel && sidebarPanel.setAttribute('data-premium-tab', tab);
   };
-
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: 'premium-inspector-tabs-container'
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -3030,14 +2917,12 @@ const InspectorTabs = props => {
       throw new Error('props.key not found in <InspectorTab />, you must use `key` prop');
       return;
     }
-
     return cloneElement(child, {
       index,
       isActive: child.key === currentTab
     });
   }));
 };
-
 InspectorTabs.defaultProps = {
   defaultTab: null,
   tabs: ['layout', 'style', 'advance']
@@ -3262,7 +3147,6 @@ const {
   useState,
   useEffect
 } = wp.element;
-
 const PremiumBorder = props => {
   let value = props.value;
   let directions = {
@@ -3285,7 +3169,8 @@ const PremiumBorder = props => {
       Mobile: directions
     }
   };
-  value = value ? { ...defaultValues,
+  value = value ? {
+    ...defaultValues,
     ...value
   } : defaultValues;
   const [borderValue, setBorderValue] = useState(value);
@@ -3303,15 +3188,14 @@ const PremiumBorder = props => {
       setBorderValue(value);
     }
   }, [props]);
-
   const onChangeBorder = (item, value) => {
-    const inialState = { ...borderValue
+    const inialState = {
+      ...borderValue
     };
     inialState[item] = value;
     onChange(inialState);
     setBorderValue(inialState);
   };
-
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: " premium-blocks__base-control"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -3344,7 +3228,8 @@ const PremiumBorder = props => {
     value: borderWidth,
     responsive: true,
     showUnits: false,
-    onChange: value => onChangeBorder('borderWidth', { ...value
+    onChange: value => onChangeBorder('borderWidth', {
+      ...value
     })
   }), ("none" != borderType || "" !== borderType) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_1__["default"], {
     label: __("Border Color", 'premium-blocks-for-gutenberg'),
@@ -3356,11 +3241,11 @@ const PremiumBorder = props => {
     value: borderRadius,
     responsive: true,
     showUnits: false,
-    onChange: value => onChangeBorder('borderRadius', { ...value
+    onChange: value => onChangeBorder('borderRadius', {
+      ...value
     })
   })));
 };
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PremiumBorder);
 
 /***/ }),
@@ -3405,19 +3290,19 @@ function PremiumFilters(_ref) {
     'saturation': '100',
     'hue': '0'
   };
-  value = value ? { ...defaultValues,
+  value = value ? {
+    ...defaultValues,
     ...value
   } : defaultValues;
   const [state, setState] = useState(value);
-
   const onChangeFilter = (item, value) => {
-    const updatedState = { ...state
+    const updatedState = {
+      ...state
     };
     updatedState[item] = value;
     setState(updatedState);
     onChange(updatedState);
   };
-
   const {
     contrast,
     blur,
@@ -8998,7 +8883,6 @@ const {
 } = wp.data;
 
 
-
 const SpacingComponent = props => {
   let {
     value,
@@ -9023,7 +8907,8 @@ const SpacingComponent = props => {
     unit: defaultValue.unit
   };
   let defaultValues = responsive ? ResDefaultParam : defaultValue.value;
-  value = value ? { ...defaultValues,
+  value = value ? {
+    ...defaultValues,
     ...value
   } : defaultValues;
   const [state, setState] = useState(value);
@@ -9033,14 +8918,15 @@ const SpacingComponent = props => {
       setState(value);
     }
   }, [props]);
-
   const onSpacingChange = (v, choiceID) => {
-    let updateState = { ...state
+    let updateState = {
+      ...state
     };
-    let deviceUpdateState = responsive ? { ...updateState[device]
-    } : { ...updateState
+    let deviceUpdateState = responsive ? {
+      ...updateState[device]
+    } : {
+      ...updateState
     };
-
     if (link) {
       deviceUpdateState['top'] = v;
       deviceUpdateState['right'] = v;
@@ -9049,30 +8935,28 @@ const SpacingComponent = props => {
     } else {
       deviceUpdateState[choiceID] = v;
     }
-
     responsive ? updateState[device] = deviceUpdateState : updateState = deviceUpdateState;
     props.onChange(updateState);
     setState(updateState);
   };
-
   const onLinkClickHandler = () => {
     let linkValue = responsive ? state[device]['top'] : state['top'];
-    let updateState = { ...state
+    let updateState = {
+      ...state
     };
-    let deviceUpdateState = responsive ? { ...updateState[device]
-    } : { ...updateState
+    let deviceUpdateState = responsive ? {
+      ...updateState[device]
+    } : {
+      ...updateState
     };
     const choices = ['top', 'right', 'bottom', "left"];
-
     for (let choice in choices) {
       deviceUpdateState[choices[choice]] = linkValue;
     }
-
     responsive ? updateState[device] = deviceUpdateState : updateState = deviceUpdateState;
     props.onChange(updateState);
     setState(updateState);
   };
-
   const renderInputHtml = function (device) {
     let active = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
     let htmlChoices;
@@ -9105,7 +8989,6 @@ const SpacingComponent = props => {
       }[side]));
     });
     let linkHtml = '';
-
     if (link) {
       linkHtml = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
         className: `premium-spacing-input-item`
@@ -9126,24 +9009,21 @@ const SpacingComponent = props => {
         }
       }));
     }
-
     ;
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
       className: `premium-spacing-wrapper ${device} ${active}`
     }, htmlChoices, linkHtml);
   };
-
   let inputHtml = null;
   inputHtml = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, renderInputHtml(device, "active"));
-
   const onUnitChange = unitValue => {
-    let updateState = { ...state
+    let updateState = {
+      ...state
     };
     updateState[`unit`] = unitValue;
     props.onChange(updateState);
     setState(updateState);
   };
-
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-spacing-responsive premium-blocks__base-control"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("header", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -9175,7 +9055,6 @@ const SpacingComponent = props => {
     }
   }))));
 };
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SpacingComponent);
 
 /***/ }),
@@ -9201,7 +9080,6 @@ const {
   PanelBody,
   ToggleControl
 } = wp.components;
-
 function PremiumResponsiveTabs(props) {
   const {
     onChangeDesktop = () => {},
@@ -9229,7 +9107,6 @@ function PremiumResponsiveTabs(props) {
     onChange: onChangeMobile
   }));
 }
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PremiumResponsiveTabs);
 
 /***/ }),
@@ -9245,12 +9122,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RangeControl/responsive-range-control */ "./src/components/RangeControl/responsive-range-control.js");
-/* harmony import */ var _Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Color Control/ColorComponent */ "./src/components/Color Control/ColorComponent.js");
-
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RangeControl/responsive-range-control */ "./src/components/RangeControl/responsive-range-control.js");
+/* harmony import */ var _Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Color Control/ColorComponent */ "./src/components/Color Control/ColorComponent.js");
 
 
 
@@ -9268,41 +9143,13 @@ const {
   CheckboxControl,
   ToggleControl
 } = wp.components;
-
 class Shape extends Component {
   constructor(props) {
     super(props);
-
-    (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "renderShapeOptions", () => {
-      const {
-        value
-      } = this.props;
-      let shapes = ["clouds-flat", "clouds-opacity", "paper-torn", "pointy-wave", "rocky-mountain", "single-wave", "slope-opacity", "slope", "waves3-opacity", "drip", "turning-slope", "hill-wave", "hill", "line-wave", "swirl", "wavy-opacity", "zigzag-shark"];
-
-      if (value.style) {
-        shapes = shapes.filter(item => item.toLowerCase().search(value.style.toLowerCase()) == -1);
-        shapes = [value.style, ...shapes];
-      }
-
-      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("ul", {
-        className: "premium-shape-picker-options"
-      }, shapes.map(item => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("li", {
-        className: `premium-shape-picker-option`,
-        onClick: () => this.setSettings("style", item),
-        dangerouslySetInnerHTML: {
-          __html: PremiumBlocksSettings.shapes[item]
-        },
-        style: value.style == item ? {
-          fill: value.color
-        } : {}
-      })));
-    });
-
     this.state = {
       showShapeOptions: false
     };
   }
-
   setSettings(type, val) {
     const {
       value,
@@ -9321,7 +9168,28 @@ class Shape extends Component {
       [type]: val
     }));
   }
-
+  renderShapeOptions = () => {
+    const {
+      value
+    } = this.props;
+    let shapes = ["clouds-flat", "clouds-opacity", "paper-torn", "pointy-wave", "rocky-mountain", "single-wave", "slope-opacity", "slope", "waves3-opacity", "drip", "turning-slope", "hill-wave", "hill", "line-wave", "swirl", "wavy-opacity", "zigzag-shark"];
+    if (value.style) {
+      shapes = shapes.filter(item => item.toLowerCase().search(value.style.toLowerCase()) == -1);
+      shapes = [value.style, ...shapes];
+    }
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
+      className: "premium-shape-picker-options"
+    }, shapes.map(item => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+      className: `premium-shape-picker-option`,
+      onClick: () => this.setSettings("style", item),
+      dangerouslySetInnerHTML: {
+        __html: PremiumBlocksSettings.shapes[item]
+      },
+      style: value.style == item ? {
+        fill: value.color
+      } : {}
+    })));
+  };
   render() {
     const {
       value
@@ -9329,13 +9197,13 @@ class Shape extends Component {
     const {
       showShapeOptions
     } = this.state;
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "premium-field-shape premium-field"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "premium-field-child"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "premium-field premium-shape-picker-wrapper"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(SlotFillProvider, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Dropdown, {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(SlotFillProvider, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Dropdown, {
       className: `premium-field-child premium-shape-picker ${value.style ? "has-value" : ""}`,
       contentClassName: "premium-shape-picker-content",
       position: "bottom center",
@@ -9344,32 +9212,32 @@ class Shape extends Component {
           isOpen,
           onToggle
         } = _ref;
-        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
           className: "shape-divider-options"
-        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
+        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
           isPrimary: true,
           onClick: onToggle,
           "aria-expanded": isOpen
-        }, value.style ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+        }, value.style ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
           className: "premium-field-shape-value",
           dangerouslySetInnerHTML: {
             __html: PremiumBlocksSettings.shapes[value.style]
           }
-        }) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+        }) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
           className: "premium-field-shape-placeholder"
-        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, "Select Shape"))), value.style && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "Select Shape"))), value.style && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
           className: "premium-btn-reset-wrap"
-        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
+        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
           className: "premium-reset-btn ",
           onClick: () => this.setSettings("style", "")
         })));
       },
       renderContent: () => this.renderShapeOptions()
-    }))), value.openShape == 1 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    }))), value.openShape == 1 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
       label: __("Color", "premium-blocks-for-gutenberg"),
       colorValue: value && value.color,
       onColorChange: val => this.setSettings("color", val)
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_1__["default"], {
       max: 1000,
       step: 1,
       showUnit: true,
@@ -9381,7 +9249,7 @@ class Shape extends Component {
       label: __("Shape Width", "premium-blocks-for-gutenberg"),
       units: ["px", "em", "%"],
       onChange: val => this.setSettings("width", val)
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_1__["default"], {
       min: 0,
       max: 500,
       step: 1,
@@ -9394,23 +9262,21 @@ class Shape extends Component {
       units: ["px", "em", "%"],
       label: __("Shape Height", "premium-blocks-for-gutenberg"),
       onChange: val => this.setSettings("height", val)
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ToggleControl, {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
       label: __("Flip Divider", "premium-blocks-for-gutenberg"),
       checked: value.flipShapeDivider,
       onChange: newValue => this.setSettings("flipShapeDivider", newValue)
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ToggleControl, {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
       label: __("Invert", "premium-blocks-for-gutenberg"),
       checked: value.invertShapeDivider,
       onChange: newValue => this.setSettings("invertShapeDivider", newValue)
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ToggleControl, {
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
       label: __("Bring to front", "premium-blocks-for-gutenberg"),
       checked: value.front,
       onChange: val => this.setSettings("front", val)
     }))));
   }
-
 }
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Shape);
 
 /***/ }),
@@ -9436,11 +9302,9 @@ function PremiumSizeUnits(props) {
     onChangeSizeUnit = unit => {}
   } = props;
   let sizeUnits = ["px", "em", "%"];
-
   if (undefined !== units) {
     sizeUnits = units;
   }
-
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
     className: "premium-slider-units"
   }, sizeUnits.map((unit, index) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
@@ -9485,34 +9349,26 @@ const {
   SelectControl,
   Popover
 } = wp.components;
-
 function fuzzysearch(needle, haystack) {
   var hlen = haystack.length;
   var nlen = needle.length;
-
   if (nlen > hlen) {
     return false;
   }
-
   if (nlen === hlen) {
     return needle === haystack;
   }
-
   outer: for (var i = 0, j = 0; i < nlen; i++) {
     var nch = needle.charCodeAt(i);
-
     while (j < hlen) {
       if (haystack.charCodeAt(j++) === nch) {
         continue outer;
       }
     }
-
     return false;
   }
-
   return true;
 }
-
 class PremiumTypo extends Component {
   constructor() {
     super(...arguments);
@@ -9552,17 +9408,14 @@ class PremiumTypo extends Component {
       defaultValue: defaultValues
     };
   }
-
   componentDidUpdate(prevProps) {
     let previewDevice = wp.data && wp.data.select && wp.data.select("core/edit-post") && wp.data.select("core/edit-post").__experimentalGetPreviewDeviceType ? wp.data.select("core/edit-post").__experimentalGetPreviewDeviceType() : "Desktop";
-
     if (this.state.device !== previewDevice) {
       this.setState({
         device: previewDevice
       });
     }
   }
-
   render() {
     const {
       onChange
@@ -9619,23 +9472,19 @@ class PremiumTypo extends Component {
         weight: _premium_fonts__WEBPACK_IMPORTED_MODULE_1__["default"][k].weight,
         google: true
       });
-
       if (k === value["fontFamily"]) {
         fontWeight = _premium_fonts__WEBPACK_IMPORTED_MODULE_1__["default"][k].weight;
       }
     });
-
     if (fontWeight === "") {
       fontWeight = fonts[0].weight;
     }
-
     const toggleVisible = v => {
       this.setState({
         isVisible: true,
         currentView: v
       });
     };
-
     const toggleClose = () => {
       if (this.state.isVisible === true) {
         this.setState({
@@ -9644,7 +9493,6 @@ class PremiumTypo extends Component {
         });
       }
     };
-
     const renderVariations = fonts.map((item, index) => {
       if (item.value == value["fontFamily"]) {
         return (item.weight || []).map((weights, i) => {
@@ -9658,9 +9506,9 @@ class PremiumTypo extends Component {
         });
       }
     });
-
     const changeTypography = (item, v) => {
-      let initialState = { ...value
+      let initialState = {
+        ...value
       };
       initialState[item] = v;
       this.setState({
@@ -9668,7 +9516,6 @@ class PremiumTypo extends Component {
       });
       onChange(initialState);
     };
-
     const linearFonts = fonts.filter(family => fuzzysearch(search.toLowerCase(), family["value"].toLowerCase()));
     const fontSize = value["fontSize"][device];
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -9834,7 +9681,6 @@ class PremiumTypo extends Component {
       className: "premium-typography-variations"
     }, renderVariations)))))))));
   }
-
 }
 
 /***/ }),
@@ -9878,23 +9724,19 @@ function PremiumUploadSVG(props) {
       setstate(data);
     }
   }, [svgUrl]);
-
   const createElementFromHTMLString = htmlString => {
     const parentElement = document.getElementById('premium-icon-svg');
     var new_str = htmlString.replace(/''/g, '');
     parentElement.innerHTML = new_str;
     return parentElement;
   };
-
   const addSVGAttributes = function (svgHTML) {
     let attributesToAdd = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
     let attributesToRemove = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
     const svgNode = createElementFromHTMLString(svgHTML);
-
     if (!svgNode) {
       return '';
     }
-
     Object.keys(attributesToAdd).forEach(key => {
       svgNode.setAttribute(key, attributesToAdd[key]);
     });
@@ -9903,7 +9745,6 @@ function PremiumUploadSVG(props) {
     });
     return svgNode.outerHTML;
   };
-
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, svgUrl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "premium-image-media"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -9972,7 +9813,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
 
-
 /**
  * External dependencies
  */
@@ -9983,8 +9823,9 @@ const {
 const {
   Placeholder,
   Button
-} = wp.components; // Create our own variation picker
+} = wp.components;
 
+// Create our own variation picker
 const PremiumVariation = props => {
   const {
     icon,
@@ -10013,7 +9854,6 @@ const PremiumVariation = props => {
     className: "block-editor-block-variation-picker__variations",
     role: "list",
     "aria-label": __('Block variations') // Dev note: no text domain here since this will use WP's translation.
-
   }, variations.map(variation => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
     key: variation.name
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
@@ -10047,9 +9887,7 @@ const PremiumVariation = props => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
     variant: "link",
     onClick: () => onSelect()
-  }, __('Skip')
-  /* Dev note: no text domain here since this will use WP's translation. */
-  ))));
+  }, __('Skip') /* Dev note: no text domain here since this will use WP's translation. */))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PremiumVariation);
@@ -10081,7 +9919,6 @@ const {
   ButtonGroup,
   Button
 } = wp.components;
-
 const RadioComponent = _ref => {
   let {
     value,
@@ -10090,16 +9927,13 @@ const RadioComponent = _ref => {
     choices,
     showIcons = false
   } = _ref;
-
   const HandleChange = newVal => {
     setState(newVal);
     onChange(newVal);
   };
-
   let defaultVal = '';
   value = value ? value : defaultVal;
   const [state, setState] = useState(value);
-
   const renderButtons = () => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, choices.map(choice => {
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
@@ -10111,7 +9945,6 @@ const RadioComponent = _ref => {
       }, showIcons ? choice.icon : choice.label);
     }));
   };
-
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-blocks__base-control`
   }, label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
@@ -10120,7 +9953,6 @@ const RadioComponent = _ref => {
     className: "premium-radio-container-control"
   }, renderButtons()));
 };
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (React.memo(RadioComponent));
 
 /***/ }),
@@ -10149,7 +9981,6 @@ const {
 } = wp.element;
 
 
-
 const ResponsiveRadio = _ref => {
   let {
     choices,
@@ -10163,20 +9994,20 @@ const ResponsiveRadio = _ref => {
     'Tablet': '',
     'Mobile': ''
   };
-  const [state, setState] = useState(value ? { ...defaultValue,
+  const [state, setState] = useState(value ? {
+    ...defaultValue,
     ...value
   } : defaultValue);
   const [device, setDevice] = useState("Desktop");
   const output = {};
-
   const handleChange = (val, dev) => {
-    const updatedState = { ...state
+    const updatedState = {
+      ...state
     };
     updatedState[dev] = val;
     setState(updatedState);
     onChange(updatedState);
   };
-
   output.Desktop = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_radio_control__WEBPACK_IMPORTED_MODULE_2__["default"], {
     choices: choices,
     showIcons: showIcons,
@@ -10207,7 +10038,6 @@ const ResponsiveRadio = _ref => {
     onChange: newDevice => setDevice(newDevice)
   })), output[device] ? output[device] : output.Desktop);
 };
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (react__WEBPACK_IMPORTED_MODULE_1___default().memo(ResponsiveRadio));
 
 /***/ }),
@@ -10233,14 +10063,11 @@ const {
   useSelect,
   useDispatch
 } = wp.data;
-
 function Responsive(props) {
   let previewDevice = wp.customize ? wp.customize.previewedDevice.get() : wp.data && wp.data.select && wp.data.select('core/edit-post') && wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType ? wp.data.select('core/edit-post').__experimentalGetPreviewDeviceType() : 'Desktop';
-
   let customSetPreviewDeviceType = device => {
     props.onChange(device);
   };
-
   if (wp.data.select('core/edit-post')) {
     const theDevice = useSelect(select => {
       const {
@@ -10248,22 +10075,17 @@ function Responsive(props) {
       } = select('core/edit-post');
       return __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : 'Desktop';
     }, []);
-
     if (theDevice !== props.deviceType) {
       props.onChange(theDevice);
     }
-
     const {
       __experimentalSetPreviewDeviceType = null
     } = useDispatch('core/edit-post');
-
     customSetPreviewDeviceType = device => {
       __experimentalSetPreviewDeviceType(device);
-
       props.onChange(device);
     };
   }
-
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
     className: "premium-blocks-device"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
@@ -10319,7 +10141,6 @@ function Responsive(props) {
     d: "M272 0H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h224c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zM160 480c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm112-108c0 6.6-5.4 12-12 12H60c-6.6 0-12-5.4-12-12V60c0-6.6 5.4-12 12-12h200c6.6 0 12 5.4 12 12v312z"
   }))));
 }
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Responsive);
 
 /***/ }),
@@ -10654,7 +10475,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 const Ico = {};
 Ico['dashicons admin-appearance'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10663,7 +10484,7 @@ Ico['dashicons admin-appearance'] = {
   }]
 };
 Ico['dashicons admin-collapse'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10672,7 +10493,7 @@ Ico['dashicons admin-collapse'] = {
   }]
 };
 Ico['dashicons admin-comments'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10681,7 +10502,7 @@ Ico['dashicons admin-comments'] = {
   }]
 };
 Ico['dashicons admin-generic'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10690,7 +10511,7 @@ Ico['dashicons admin-generic'] = {
   }]
 };
 Ico['dashicons admin-home'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10699,7 +10520,7 @@ Ico['dashicons admin-home'] = {
   }]
 };
 Ico['dashicons admin-links'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10708,7 +10529,7 @@ Ico['dashicons admin-links'] = {
   }]
 };
 Ico['dashicons admin-media'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10717,7 +10538,7 @@ Ico['dashicons admin-media'] = {
   }]
 };
 Ico['dashicons admin-network'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10726,7 +10547,7 @@ Ico['dashicons admin-network'] = {
   }]
 };
 Ico['dashicons admin-page'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10735,7 +10556,7 @@ Ico['dashicons admin-page'] = {
   }]
 };
 Ico['dashicons admin-plugins'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10744,7 +10565,7 @@ Ico['dashicons admin-plugins'] = {
   }]
 };
 Ico['dashicons admin-post'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10753,7 +10574,7 @@ Ico['dashicons admin-post'] = {
   }]
 };
 Ico['dashicons admin-settings'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10762,7 +10583,7 @@ Ico['dashicons admin-settings'] = {
   }]
 };
 Ico['dashicons admin-site'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10771,7 +10592,7 @@ Ico['dashicons admin-site'] = {
   }]
 };
 Ico['dashicons admin-tools'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10780,7 +10601,7 @@ Ico['dashicons admin-tools'] = {
   }]
 };
 Ico['dashicons admin-users'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10789,7 +10610,7 @@ Ico['dashicons admin-users'] = {
   }]
 };
 Ico['dashicons align-center'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10798,7 +10619,7 @@ Ico['dashicons align-center'] = {
   }]
 };
 Ico['dashicons align-left'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10807,7 +10628,7 @@ Ico['dashicons align-left'] = {
   }]
 };
 Ico['dashicons align-none'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10816,7 +10637,7 @@ Ico['dashicons align-none'] = {
   }]
 };
 Ico['dashicons align-right'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10825,7 +10646,7 @@ Ico['dashicons align-right'] = {
   }]
 };
 Ico['dashicons analytics'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10834,7 +10655,7 @@ Ico['dashicons analytics'] = {
   }]
 };
 Ico['dashicons archive'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10843,7 +10664,7 @@ Ico['dashicons archive'] = {
   }]
 };
 Ico['dashicons arrow-down-alt'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10852,7 +10673,7 @@ Ico['dashicons arrow-down-alt'] = {
   }]
 };
 Ico['dashicons arrow-down-alt2'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10861,7 +10682,7 @@ Ico['dashicons arrow-down-alt2'] = {
   }]
 };
 Ico['dashicons arrow-down'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10870,7 +10691,7 @@ Ico['dashicons arrow-down'] = {
   }]
 };
 Ico['dashicons arrow-left-alt'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10879,7 +10700,7 @@ Ico['dashicons arrow-left-alt'] = {
   }]
 };
 Ico['dashicons arrow-left-alt2'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10888,7 +10709,7 @@ Ico['dashicons arrow-left-alt2'] = {
   }]
 };
 Ico['dashicons arrow-left'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10897,7 +10718,7 @@ Ico['dashicons arrow-left'] = {
   }]
 };
 Ico['dashicons arrow-right-alt'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10906,7 +10727,7 @@ Ico['dashicons arrow-right-alt'] = {
   }]
 };
 Ico['dashicons arrow-right-alt2'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10915,7 +10736,7 @@ Ico['dashicons arrow-right-alt2'] = {
   }]
 };
 Ico['dashicons arrow-right'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10924,7 +10745,7 @@ Ico['dashicons arrow-right'] = {
   }]
 };
 Ico['dashicons arrow-up-alt'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10933,7 +10754,7 @@ Ico['dashicons arrow-up-alt'] = {
   }]
 };
 Ico['dashicons arrow-up-alt2'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10942,7 +10763,7 @@ Ico['dashicons arrow-up-alt2'] = {
   }]
 };
 Ico['dashicons arrow-up'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10951,7 +10772,7 @@ Ico['dashicons arrow-up'] = {
   }]
 };
 Ico['dashicons art'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10960,7 +10781,7 @@ Ico['dashicons art'] = {
   }]
 };
 Ico['dashicons awards'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10969,7 +10790,7 @@ Ico['dashicons awards'] = {
   }]
 };
 Ico['dashicons backup'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10978,7 +10799,7 @@ Ico['dashicons backup'] = {
   }]
 };
 Ico['dashicons book-alt'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10987,7 +10808,7 @@ Ico['dashicons book-alt'] = {
   }]
 };
 Ico['dashicons book'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -10996,7 +10817,7 @@ Ico['dashicons book'] = {
   }]
 };
 Ico['dashicons buddicons-activity'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11005,7 +10826,7 @@ Ico['dashicons buddicons-activity'] = {
   }]
 };
 Ico['dashicons buddicons-bbpress-logo'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11014,7 +10835,7 @@ Ico['dashicons buddicons-bbpress-logo'] = {
   }]
 };
 Ico['dashicons buddicons-buddypress-logo'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11023,7 +10844,7 @@ Ico['dashicons buddicons-buddypress-logo'] = {
   }]
 };
 Ico['dashicons buddicons-community'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11032,7 +10853,7 @@ Ico['dashicons buddicons-community'] = {
   }]
 };
 Ico['dashicons buddicons-forums'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11041,7 +10862,7 @@ Ico['dashicons buddicons-forums'] = {
   }]
 };
 Ico['dashicons buddicons-friends'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11050,7 +10871,7 @@ Ico['dashicons buddicons-friends'] = {
   }]
 };
 Ico['dashicons buddicons-groups'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11059,7 +10880,7 @@ Ico['dashicons buddicons-groups'] = {
   }]
 };
 Ico['dashicons buddicons-pm'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11068,7 +10889,7 @@ Ico['dashicons buddicons-pm'] = {
   }]
 };
 Ico['dashicons buddicons-replies'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11077,7 +10898,7 @@ Ico['dashicons buddicons-replies'] = {
   }]
 };
 Ico['dashicons buddicons-topics'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11086,7 +10907,7 @@ Ico['dashicons buddicons-topics'] = {
   }]
 };
 Ico['dashicons buddicons-tracking'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11095,7 +10916,7 @@ Ico['dashicons buddicons-tracking'] = {
   }]
 };
 Ico['dashicons businessman'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11104,7 +10925,7 @@ Ico['dashicons businessman'] = {
   }]
 };
 Ico['dashicons calendar-alt'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11113,7 +10934,7 @@ Ico['dashicons calendar-alt'] = {
   }]
 };
 Ico['dashicons calendar'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11122,7 +10943,7 @@ Ico['dashicons calendar'] = {
   }]
 };
 Ico['dashicons camera'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11131,7 +10952,7 @@ Ico['dashicons camera'] = {
   }]
 };
 Ico['dashicons carrot'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11140,7 +10961,7 @@ Ico['dashicons carrot'] = {
   }]
 };
 Ico['dashicons cart'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11149,7 +10970,7 @@ Ico['dashicons cart'] = {
   }]
 };
 Ico['dashicons category'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11158,7 +10979,7 @@ Ico['dashicons category'] = {
   }]
 };
 Ico['dashicons chart-area'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11167,7 +10988,7 @@ Ico['dashicons chart-area'] = {
   }]
 };
 Ico['dashicons chart-bar'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11176,7 +10997,7 @@ Ico['dashicons chart-bar'] = {
   }]
 };
 Ico['dashicons chart-line'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11185,7 +11006,7 @@ Ico['dashicons chart-line'] = {
   }]
 };
 Ico['dashicons chart-pie'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11194,7 +11015,7 @@ Ico['dashicons chart-pie'] = {
   }]
 };
 Ico['dashicons clipboard'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11203,7 +11024,7 @@ Ico['dashicons clipboard'] = {
   }]
 };
 Ico['dashicons clock'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11212,7 +11033,7 @@ Ico['dashicons clock'] = {
   }]
 };
 Ico['dashicons cloud'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11221,7 +11042,7 @@ Ico['dashicons cloud'] = {
   }]
 };
 Ico['dashicons code'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11230,7 +11051,7 @@ Ico['dashicons code'] = {
   }]
 };
 Ico['dashicons dashboard'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11239,7 +11060,7 @@ Ico['dashicons dashboard'] = {
   }]
 };
 Ico['dashicons desktop'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11248,7 +11069,7 @@ Ico['dashicons desktop'] = {
   }]
 };
 Ico['dashicons dismiss'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11257,7 +11078,7 @@ Ico['dashicons dismiss'] = {
   }]
 };
 Ico['dashicons download'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11266,7 +11087,7 @@ Ico['dashicons download'] = {
   }]
 };
 Ico['dashicons edit'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11275,7 +11096,7 @@ Ico['dashicons edit'] = {
   }]
 };
 Ico['dashicons editor-aligncenter'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11284,7 +11105,7 @@ Ico['dashicons editor-aligncenter'] = {
   }]
 };
 Ico['dashicons editor-alignleft'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11293,7 +11114,7 @@ Ico['dashicons editor-alignleft'] = {
   }]
 };
 Ico['dashicons editor-alignright'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11302,7 +11123,7 @@ Ico['dashicons editor-alignright'] = {
   }]
 };
 Ico['dashicons editor-bold'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11311,7 +11132,7 @@ Ico['dashicons editor-bold'] = {
   }]
 };
 Ico['dashicons editor-break'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11320,7 +11141,7 @@ Ico['dashicons editor-break'] = {
   }]
 };
 Ico['dashicons editor-code'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11329,7 +11150,7 @@ Ico['dashicons editor-code'] = {
   }]
 };
 Ico['dashicons editor-contract'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11338,7 +11159,7 @@ Ico['dashicons editor-contract'] = {
   }]
 };
 Ico['dashicons editor-customchar'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11347,7 +11168,7 @@ Ico['dashicons editor-customchar'] = {
   }]
 };
 Ico['dashicons editor-expand'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11356,7 +11177,7 @@ Ico['dashicons editor-expand'] = {
   }]
 };
 Ico['dashicons editor-help'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11365,7 +11186,7 @@ Ico['dashicons editor-help'] = {
   }]
 };
 Ico['dashicons editor-indent'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11374,7 +11195,7 @@ Ico['dashicons editor-indent'] = {
   }]
 };
 Ico['dashicons editor-insertmore'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11383,7 +11204,7 @@ Ico['dashicons editor-insertmore'] = {
   }]
 };
 Ico['dashicons editor-italic'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11392,7 +11213,7 @@ Ico['dashicons editor-italic'] = {
   }]
 };
 Ico['dashicons editor-justify'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11401,7 +11222,7 @@ Ico['dashicons editor-justify'] = {
   }]
 };
 Ico['dashicons editor-kitchensink'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11410,7 +11231,7 @@ Ico['dashicons editor-kitchensink'] = {
   }]
 };
 Ico['dashicons editor-ol'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11419,7 +11240,7 @@ Ico['dashicons editor-ol'] = {
   }]
 };
 Ico['dashicons editor-outdent'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11428,7 +11249,7 @@ Ico['dashicons editor-outdent'] = {
   }]
 };
 Ico['dashicons editor-paragraph'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11437,7 +11258,7 @@ Ico['dashicons editor-paragraph'] = {
   }]
 };
 Ico['dashicons editor-paste-text'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11446,7 +11267,7 @@ Ico['dashicons editor-paste-text'] = {
   }]
 };
 Ico['dashicons editor-paste-word'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11455,7 +11276,7 @@ Ico['dashicons editor-paste-word'] = {
   }]
 };
 Ico['dashicons editor-quote'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11464,7 +11285,7 @@ Ico['dashicons editor-quote'] = {
   }]
 };
 Ico['dashicons editor-removeformatting'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11473,7 +11294,7 @@ Ico['dashicons editor-removeformatting'] = {
   }]
 };
 Ico['dashicons editor-rtl'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11482,7 +11303,7 @@ Ico['dashicons editor-rtl'] = {
   }]
 };
 Ico['dashicons editor-spellcheck'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11491,7 +11312,7 @@ Ico['dashicons editor-spellcheck'] = {
   }]
 };
 Ico['dashicons editor-strikethrough'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11500,7 +11321,7 @@ Ico['dashicons editor-strikethrough'] = {
   }]
 };
 Ico['dashicons editor-textcolor'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11509,7 +11330,7 @@ Ico['dashicons editor-textcolor'] = {
   }]
 };
 Ico['dashicons editor-ul'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11518,7 +11339,7 @@ Ico['dashicons editor-ul'] = {
   }]
 };
 Ico['dashicons editor-underline'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11527,7 +11348,7 @@ Ico['dashicons editor-underline'] = {
   }]
 };
 Ico['dashicons editor-unlink'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11536,7 +11357,7 @@ Ico['dashicons editor-unlink'] = {
   }]
 };
 Ico['dashicons editor-video'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11545,7 +11366,7 @@ Ico['dashicons editor-video'] = {
   }]
 };
 Ico['dashicons email-alt'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11554,7 +11375,7 @@ Ico['dashicons email-alt'] = {
   }]
 };
 Ico['dashicons email'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11563,7 +11384,7 @@ Ico['dashicons email'] = {
   }]
 };
 Ico['dashicons exerpt-view'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11572,7 +11393,7 @@ Ico['dashicons exerpt-view'] = {
   }]
 };
 Ico['dashicons external'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11581,7 +11402,7 @@ Ico['dashicons external'] = {
   }]
 };
 Ico['dashicons facebook-alt'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11590,7 +11411,7 @@ Ico['dashicons facebook-alt'] = {
   }]
 };
 Ico['dashicons facebook'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11599,7 +11420,7 @@ Ico['dashicons facebook'] = {
   }]
 };
 Ico['dashicons feedback'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11608,7 +11429,7 @@ Ico['dashicons feedback'] = {
   }]
 };
 Ico['dashicons flag'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11617,7 +11438,7 @@ Ico['dashicons flag'] = {
   }]
 };
 Ico['dashicons format-aside'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11626,7 +11447,7 @@ Ico['dashicons format-aside'] = {
   }]
 };
 Ico['dashicons format-audio'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11635,7 +11456,7 @@ Ico['dashicons format-audio'] = {
   }]
 };
 Ico['dashicons format-chat'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11644,7 +11465,7 @@ Ico['dashicons format-chat'] = {
   }]
 };
 Ico['dashicons format-gallery'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11653,7 +11474,7 @@ Ico['dashicons format-gallery'] = {
   }]
 };
 Ico['dashicons format-image'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11662,7 +11483,7 @@ Ico['dashicons format-image'] = {
   }]
 };
 Ico['dashicons format-quote'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11671,7 +11492,7 @@ Ico['dashicons format-quote'] = {
   }]
 };
 Ico['dashicons format-status'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11680,7 +11501,7 @@ Ico['dashicons format-status'] = {
   }]
 };
 Ico['dashicons format-video'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11689,7 +11510,7 @@ Ico['dashicons format-video'] = {
   }]
 };
 Ico['dashicons forms'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11698,7 +11519,7 @@ Ico['dashicons forms'] = {
   }]
 };
 Ico['dashicons googleplus'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11707,7 +11528,7 @@ Ico['dashicons googleplus'] = {
   }]
 };
 Ico['dashicons grid-view'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11716,7 +11537,7 @@ Ico['dashicons grid-view'] = {
   }]
 };
 Ico['dashicons groups'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11725,7 +11546,7 @@ Ico['dashicons groups'] = {
   }]
 };
 Ico['dashicons hammer'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11734,7 +11555,7 @@ Ico['dashicons hammer'] = {
   }]
 };
 Ico['dashicons heart'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11743,7 +11564,7 @@ Ico['dashicons heart'] = {
   }]
 };
 Ico['dashicons id-alt'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11752,7 +11573,7 @@ Ico['dashicons id-alt'] = {
   }]
 };
 Ico['dashicons id'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11761,7 +11582,7 @@ Ico['dashicons id'] = {
   }]
 };
 Ico['dashicons image-crop'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11770,7 +11591,7 @@ Ico['dashicons image-crop'] = {
   }]
 };
 Ico['dashicons image-flip-horizontal'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11779,7 +11600,7 @@ Ico['dashicons image-flip-horizontal'] = {
   }]
 };
 Ico['dashicons image-flip-vertical'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11788,7 +11609,7 @@ Ico['dashicons image-flip-vertical'] = {
   }]
 };
 Ico['dashicons image-rotate-left'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11797,7 +11618,7 @@ Ico['dashicons image-rotate-left'] = {
   }]
 };
 Ico['dashicons image-rotate-right'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11806,7 +11627,7 @@ Ico['dashicons image-rotate-right'] = {
   }]
 };
 Ico['dashicons images-alt'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11815,7 +11636,7 @@ Ico['dashicons images-alt'] = {
   }]
 };
 Ico['dashicons index-card'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11824,7 +11645,7 @@ Ico['dashicons index-card'] = {
   }]
 };
 Ico['dashicons info'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11833,7 +11654,7 @@ Ico['dashicons info'] = {
   }]
 };
 Ico['dashicons leftright'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11842,7 +11663,7 @@ Ico['dashicons leftright'] = {
   }]
 };
 Ico['dashicons lightbulb'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11851,7 +11672,7 @@ Ico['dashicons lightbulb'] = {
   }]
 };
 Ico['dashicons list-view'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11860,7 +11681,7 @@ Ico['dashicons list-view'] = {
   }]
 };
 Ico['dashicons location-alt'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11869,7 +11690,7 @@ Ico['dashicons location-alt'] = {
   }]
 };
 Ico['dashicons location'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11878,7 +11699,7 @@ Ico['dashicons location'] = {
   }]
 };
 Ico['dashicons lock'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11887,7 +11708,7 @@ Ico['dashicons lock'] = {
   }]
 };
 Ico['dashicons marker'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11896,7 +11717,7 @@ Ico['dashicons marker'] = {
   }]
 };
 Ico['dashicons media-archive'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11905,7 +11726,7 @@ Ico['dashicons media-archive'] = {
   }]
 };
 Ico['dashicons media-audio'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11914,7 +11735,7 @@ Ico['dashicons media-audio'] = {
   }]
 };
 Ico['dashicons media-code'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11923,7 +11744,7 @@ Ico['dashicons media-code'] = {
   }]
 };
 Ico['dashicons media-default'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11932,7 +11753,7 @@ Ico['dashicons media-default'] = {
   }]
 };
 Ico['dashicons media-document'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11941,7 +11762,7 @@ Ico['dashicons media-document'] = {
   }]
 };
 Ico['dashicons media-interactive'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11950,7 +11771,7 @@ Ico['dashicons media-interactive'] = {
   }]
 };
 Ico['dashicons media-spreadsheet'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11959,7 +11780,7 @@ Ico['dashicons media-spreadsheet'] = {
   }]
 };
 Ico['dashicons media-text'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11968,7 +11789,7 @@ Ico['dashicons media-text'] = {
   }]
 };
 Ico['dashicons media-video'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11977,7 +11798,7 @@ Ico['dashicons media-video'] = {
   }]
 };
 Ico['dashicons megaphone'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11986,7 +11807,7 @@ Ico['dashicons megaphone'] = {
   }]
 };
 Ico['dashicons menu'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -11995,7 +11816,7 @@ Ico['dashicons menu'] = {
   }]
 };
 Ico['dashicons microphone'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12004,7 +11825,7 @@ Ico['dashicons microphone'] = {
   }]
 };
 Ico['dashicons migrate'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12013,7 +11834,7 @@ Ico['dashicons migrate'] = {
   }]
 };
 Ico['dashicons minus'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12022,7 +11843,7 @@ Ico['dashicons minus'] = {
   }]
 };
 Ico['dashicons nametag'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12031,7 +11852,7 @@ Ico['dashicons nametag'] = {
   }]
 };
 Ico['dashicons networking'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12040,7 +11861,7 @@ Ico['dashicons networking'] = {
   }]
 };
 Ico['dashicons no-alt'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12049,7 +11870,7 @@ Ico['dashicons no-alt'] = {
   }]
 };
 Ico['dashicons no'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12058,7 +11879,7 @@ Ico['dashicons no'] = {
   }]
 };
 Ico['dashicons performance'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12067,7 +11888,7 @@ Ico['dashicons performance'] = {
   }]
 };
 Ico['dashicons playlist-audio'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12076,7 +11897,7 @@ Ico['dashicons playlist-audio'] = {
   }]
 };
 Ico['dashicons playlist-video'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12085,7 +11906,7 @@ Ico['dashicons playlist-video'] = {
   }]
 };
 Ico['dashicons plus-alt'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12094,7 +11915,7 @@ Ico['dashicons plus-alt'] = {
   }]
 };
 Ico['dashicons plus'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12103,7 +11924,7 @@ Ico['dashicons plus'] = {
   }]
 };
 Ico['dashicons portfolio'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12112,7 +11933,7 @@ Ico['dashicons portfolio'] = {
   }]
 };
 Ico['dashicons post-status'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12121,7 +11942,7 @@ Ico['dashicons post-status'] = {
   }]
 };
 Ico['dashicons pressthis'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12130,7 +11951,7 @@ Ico['dashicons pressthis'] = {
   }]
 };
 Ico['dashicons products'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12139,7 +11960,7 @@ Ico['dashicons products'] = {
   }]
 };
 Ico['dashicons randomize'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12148,7 +11969,7 @@ Ico['dashicons randomize'] = {
   }]
 };
 Ico['dashicons redo'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12157,7 +11978,7 @@ Ico['dashicons redo'] = {
   }]
 };
 Ico['dashicons rss'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12166,7 +11987,7 @@ Ico['dashicons rss'] = {
   }]
 };
 Ico['dashicons schedule'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12175,7 +11996,7 @@ Ico['dashicons schedule'] = {
   }]
 };
 Ico['dashicons screenoptions'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12184,7 +12005,7 @@ Ico['dashicons screenoptions'] = {
   }]
 };
 Ico['dashicons search'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12193,7 +12014,7 @@ Ico['dashicons search'] = {
   }]
 };
 Ico['dashicons share-alt'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12202,7 +12023,7 @@ Ico['dashicons share-alt'] = {
   }]
 };
 Ico['dashicons share-alt2'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12211,7 +12032,7 @@ Ico['dashicons share-alt2'] = {
   }]
 };
 Ico['dashicons share'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12220,7 +12041,7 @@ Ico['dashicons share'] = {
   }]
 };
 Ico['dashicons shield-alt'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12229,7 +12050,7 @@ Ico['dashicons shield-alt'] = {
   }]
 };
 Ico['dashicons shield'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12238,7 +12059,7 @@ Ico['dashicons shield'] = {
   }]
 };
 Ico['dashicons slides'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12247,7 +12068,7 @@ Ico['dashicons slides'] = {
   }]
 };
 Ico['dashicons smartphone'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12256,7 +12077,7 @@ Ico['dashicons smartphone'] = {
   }]
 };
 Ico['dashicons smiley'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12265,7 +12086,7 @@ Ico['dashicons smiley'] = {
   }]
 };
 Ico['dashicons sort'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12274,7 +12095,7 @@ Ico['dashicons sort'] = {
   }]
 };
 Ico['dashicons sos'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12283,7 +12104,7 @@ Ico['dashicons sos'] = {
   }]
 };
 Ico['dashicons star-empty'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12292,7 +12113,7 @@ Ico['dashicons star-empty'] = {
   }]
 };
 Ico['dashicons star-filled'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12301,7 +12122,7 @@ Ico['dashicons star-filled'] = {
   }]
 };
 Ico['dashicons star-half'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12310,7 +12131,7 @@ Ico['dashicons star-half'] = {
   }]
 };
 Ico['dashicons tablet'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12319,7 +12140,7 @@ Ico['dashicons tablet'] = {
   }]
 };
 Ico['dashicons tag'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12328,7 +12149,7 @@ Ico['dashicons tag'] = {
   }]
 };
 Ico['dashicons tagcloud'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12337,7 +12158,7 @@ Ico['dashicons tagcloud'] = {
   }]
 };
 Ico['dashicons testimonial'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12346,7 +12167,7 @@ Ico['dashicons testimonial'] = {
   }]
 };
 Ico['dashicons text'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12355,7 +12176,7 @@ Ico['dashicons text'] = {
   }]
 };
 Ico['dashicons tickets'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12364,7 +12185,7 @@ Ico['dashicons tickets'] = {
   }]
 };
 Ico['dashicons translation'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12373,7 +12194,7 @@ Ico['dashicons translation'] = {
   }]
 };
 Ico['dashicons trash'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12382,7 +12203,7 @@ Ico['dashicons trash'] = {
   }]
 };
 Ico['dashicons twitter'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12391,7 +12212,7 @@ Ico['dashicons twitter'] = {
   }]
 };
 Ico['dashicons undo'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12400,7 +12221,7 @@ Ico['dashicons undo'] = {
   }]
 };
 Ico['dashicons universal-access-alt'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12409,7 +12230,7 @@ Ico['dashicons universal-access-alt'] = {
   }]
 };
 Ico['dashicons universal-access'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12418,7 +12239,7 @@ Ico['dashicons universal-access'] = {
   }]
 };
 Ico['dashicons update'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12427,7 +12248,7 @@ Ico['dashicons update'] = {
   }]
 };
 Ico['dashicons upload'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12436,7 +12257,7 @@ Ico['dashicons upload'] = {
   }]
 };
 Ico['dashicons vault'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12445,7 +12266,7 @@ Ico['dashicons vault'] = {
   }]
 };
 Ico['dashicons video-alt'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12454,7 +12275,7 @@ Ico['dashicons video-alt'] = {
   }]
 };
 Ico['dashicons video-alt2'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12463,7 +12284,7 @@ Ico['dashicons video-alt2'] = {
   }]
 };
 Ico['dashicons video-alt3'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12472,7 +12293,7 @@ Ico['dashicons video-alt3'] = {
   }]
 };
 Ico['dashicons visibility'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12481,7 +12302,7 @@ Ico['dashicons visibility'] = {
   }]
 };
 Ico['dashicons welcome-add-page'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12490,7 +12311,7 @@ Ico['dashicons welcome-add-page'] = {
   }]
 };
 Ico['dashicons welcome-comments'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12499,7 +12320,7 @@ Ico['dashicons welcome-comments'] = {
   }]
 };
 Ico['dashicons welcome-learn-more'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12508,7 +12329,7 @@ Ico['dashicons welcome-learn-more'] = {
   }]
 };
 Ico['dashicons welcome-view-site'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12517,7 +12338,7 @@ Ico['dashicons welcome-view-site'] = {
   }]
 };
 Ico['dashicons welcome-widgets-menus'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12526,7 +12347,7 @@ Ico['dashicons welcome-widgets-menus'] = {
   }]
 };
 Ico['dashicons welcome-write-blog'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12535,7 +12356,7 @@ Ico['dashicons welcome-write-blog'] = {
   }]
 };
 Ico['dashicons wordpress-alt'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12544,7 +12365,7 @@ Ico['dashicons wordpress-alt'] = {
   }]
 };
 Ico['dashicons wordpress'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -12553,7 +12374,7 @@ Ico['dashicons wordpress'] = {
   }]
 };
 Ico['dashicons yes'] = {
-  'vB': '0 0 24 24',
+  'vB': '0 0 21 21',
   'cD': [{
     'nE': 'path',
     'aBs': {
@@ -20314,7 +20135,6 @@ class PremiumUpperQuote extends Component {
   shouldComponentUpdate(nextProps) {
     return this.props.size !== nextProps.size || this.props.color !== nextProps.color || this.props.opacity !== nextProps.opacity;
   }
-
   render() {
     const {
       size,
@@ -20338,7 +20158,6 @@ class PremiumUpperQuote extends Component {
       d: "M464 32H336c-26.5 0-48 21.5-48 48v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48zm-288 0H48C21.5 32 0 53.5 0 80v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48z"
     }));
   }
-
 }
 
 /***/ }),
@@ -20364,7 +20183,6 @@ class PremiumLowerQuote extends Component {
   shouldComponentUpdate(nextProps) {
     return this.props.size !== nextProps.size || this.props.color !== nextProps.color || this.props.opacity !== nextProps.opacity;
   }
-
   render() {
     const {
       size,
@@ -20388,7 +20206,6 @@ class PremiumLowerQuote extends Component {
       d: "M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z"
     }));
   }
-
 }
 
 /***/ }),
@@ -20422,7 +20239,6 @@ const {
   __
 } = wp.i18n;
 let loadedFonts = [];
-
 const loadGoogleFonts = font_families => {
   if (font_families.length === 0) return;
   loadedFonts = [...loadedFonts, ...font_families.map(_ref => {
@@ -20431,9 +20247,9 @@ const loadGoogleFonts = font_families => {
     } = _ref;
     return family;
   })];
-
   if (font_families.length > 0) {
-    webfontloader__WEBPACK_IMPORTED_MODULE_2___default().load({ ...(font_families.length > 0 ? {
+    webfontloader__WEBPACK_IMPORTED_MODULE_2___default().load({
+      ...(font_families.length > 0 ? {
         google: {
           families: font_families
         }
@@ -20443,7 +20259,6 @@ const loadGoogleFonts = font_families => {
     });
   }
 };
-
 const SingleFont = _ref2 => {
   let {
     family,
@@ -20465,7 +20280,6 @@ const SingleFont = _ref2 => {
     className: "premium-font-preview"
   }, "Simply dummy text"));
 };
-
 const FontsList = _ref3 => {
   let {
     value,
@@ -20481,14 +20295,12 @@ const FontsList = _ref3 => {
   }, []);
   let systemFonts = linearFontsList.filter(family => family.google === false);
   let googleFonts = linearFontsList.filter(family => family.google === true);
-
   const onScroll = () => {
     scrollTimer && clearTimeout(scrollTimer);
     setScrollTimer(setTimeout(() => {
       if (!listRef.current) {
         return;
       }
-
       let overscanStartIndex = Math.ceil(listRef.current.scrollTop / 85);
       const perPage = 25;
       const startingPage = Math.ceil((overscanStartIndex + 1) / perPage);
@@ -20496,7 +20308,6 @@ const FontsList = _ref3 => {
       loadGoogleFonts(pageItems);
     }, 10));
   };
-
   useEffect(() => {
     onScroll();
   }, [linearFontsList]);
@@ -20519,7 +20330,6 @@ const FontsList = _ref3 => {
     value
   })))));
 };
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FontsList);
 
 /***/ }),
@@ -20540,7 +20350,6 @@ __webpack_require__.r(__webpack_exports__);
 if (googlefonts === undefined) {
   var googlefonts = [];
 }
-
 const {
   Component
 } = wp.element;
@@ -20550,9 +20359,7 @@ const statuses = {
   active: "active",
   loading: "loading"
 };
-
 const noop = () => {};
-
 class WebfontLoader extends Component {
   constructor(props) {
     super(props);
@@ -20560,35 +20367,31 @@ class WebfontLoader extends Component {
       status: undefined,
       mounted: false
     };
-
     this.handleLoading = () => {
       this.setState({
         status: statuses.loading
       });
     };
-
     this.addFont = font => {
       if (!googlefonts.includes(font)) {
         googlefonts.push(font);
       }
     };
-
     this.handleActive = () => {
       this.setState({
         status: statuses.active
       });
     };
-
     this.handleInactive = () => {
       this.setState({
         status: statuses.inactive
       });
     };
-
     this.loadFonts = () => {
       if (this.state.mounted) {
         if (!googlefonts.includes(this.props.config.google.families[0])) {
-          webfontloader__WEBPACK_IMPORTED_MODULE_0___default().load({ ...this.props.config,
+          webfontloader__WEBPACK_IMPORTED_MODULE_0___default().load({
+            ...this.props.config,
             loading: this.handleLoading,
             active: this.handleActive,
             inactive: this.handleInactive,
@@ -20599,44 +20402,36 @@ class WebfontLoader extends Component {
       }
     };
   }
-
   componentDidMount() {
     this.setState({
       mounted: true
     });
     this.loadFonts();
   }
-
   componentDidUpdate(prevProps, prevState) {
     const {
       onStatus,
       config
     } = this.props;
-
     if (prevState.status !== this.state.status) {
       onStatus(this.state.status);
     }
-
     if (prevProps.config !== config) {
       this.loadFonts();
     }
   }
-
   componentWillUnmount() {
     this.setState({
       mounted: false
     });
   }
-
   render() {
     const {
       children
     } = this.props;
     return children || null;
   }
-
 }
-
 WebfontLoader.defaultProps = {
   onStatus: noop
 };
@@ -20651,9 +20446,9 @@ WebfontLoader.defaultProps = {
 /***/ ((module, exports) => {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-  Copyright (c) 2018 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
+	Copyright (c) 2018 Jed Watson.
+	Licensed under the MIT License (MIT), see
+	http://jedwatson.github.io/classnames
 */
 /* global define */
 
@@ -20661,6 +20456,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 	'use strict';
 
 	var hasOwn = {}.hasOwnProperty;
+	var nativeCodeString = '[native code]';
 
 	function classNames() {
 		var classes = [];
@@ -20681,14 +20477,15 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 					}
 				}
 			} else if (argType === 'object') {
-				if (arg.toString === Object.prototype.toString) {
-					for (var key in arg) {
-						if (hasOwn.call(arg, key) && arg[key]) {
-							classes.push(key);
-						}
-					}
-				} else {
+				if (arg.toString !== Object.prototype.toString && !arg.toString.toString().includes('[native code]')) {
 					classes.push(arg.toString());
+					continue;
+				}
+
+				for (var key in arg) {
+					if (hasOwn.call(arg, key) && arg[key]) {
+						classes.push(key);
+					}
 				}
 			}
 		}
@@ -25340,7 +25137,7 @@ module.exports = checkPropTypes;
 
 
 
-var ReactIs = __webpack_require__(/*! react-is */ "./node_modules/react-is/index.js");
+var ReactIs = __webpack_require__(/*! react-is */ "./node_modules/prop-types/node_modules/react-is/index.js");
 var assign = __webpack_require__(/*! object-assign */ "./node_modules/object-assign/index.js");
 
 var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ "./node_modules/prop-types/lib/ReactPropTypesSecret.js");
@@ -25959,7 +25756,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
  */
 
 if (true) {
-  var ReactIs = __webpack_require__(/*! react-is */ "./node_modules/react-is/index.js");
+  var ReactIs = __webpack_require__(/*! react-is */ "./node_modules/prop-types/node_modules/react-is/index.js");
 
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
@@ -26004,10 +25801,10 @@ module.exports = Function.call.bind(Object.prototype.hasOwnProperty);
 
 /***/ }),
 
-/***/ "./node_modules/react-is/cjs/react-is.development.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/react-is/cjs/react-is.development.js ***!
-  \***********************************************************/
+/***/ "./node_modules/prop-types/node_modules/react-is/cjs/react-is.development.js":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/prop-types/node_modules/react-is/cjs/react-is.development.js ***!
+  \***********************************************************************************/
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -26196,17 +25993,17 @@ exports.typeOf = typeOf;
 
 /***/ }),
 
-/***/ "./node_modules/react-is/index.js":
-/*!****************************************!*\
-  !*** ./node_modules/react-is/index.js ***!
-  \****************************************/
+/***/ "./node_modules/prop-types/node_modules/react-is/index.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/prop-types/node_modules/react-is/index.js ***!
+  \****************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
 if (false) {} else {
-  module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ "./node_modules/react-is/cjs/react-is.development.js");
+  module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ "./node_modules/prop-types/node_modules/react-is/cjs/react-is.development.js");
 }
 
 
@@ -26259,34 +26056,6 @@ module.exports = window["React"];
 
 "use strict";
 module.exports = window["wp"]["element"];
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/esm/defineProperty.js ***!
-  \*******************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ _defineProperty)
-/* harmony export */ });
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
 
 /***/ }),
 
