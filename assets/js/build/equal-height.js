@@ -18,12 +18,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 const getBiggestHeight = elements => {
   let maxHeight = 0;
+
   for (const element of elements) {
     const elementHeight = element.getBoundingClientRect().height;
+
     if (elementHeight > maxHeight) {
       maxHeight = elementHeight;
     }
   }
+
   return maxHeight;
 };
 const setElementsHeight = elements => {
@@ -44,7 +47,7 @@ const resetHeight = elements => {
 const resetBlocksHeight = (block, container) => {
   const blockName = block.includes('core') ? block.replace('core/', '') : block.replaceAll('/', '-');
   const blockClass = `wp-block-${blockName}`;
-  const allBlocksType = container?.querySelectorAll(`.${blockClass}`) || [];
+  const allBlocksType = (container === null || container === void 0 ? void 0 : container.querySelectorAll(`.${blockClass}`)) || [];
   resetHeight(allBlocksType);
 };
 const checkSelector = selector => {
@@ -58,10 +61,10 @@ const checkSelector = selector => {
 
 /***/ }),
 
-/***/ "./src/blocks/node_modules/webfontloader/webfontloader.js":
-/*!****************************************************************!*\
-  !*** ./src/blocks/node_modules/webfontloader/webfontloader.js ***!
-  \****************************************************************/
+/***/ "./node_modules/webfontloader/webfontloader.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/webfontloader/webfontloader.js ***!
+  \*****************************************************/
 /***/ ((module, exports, __webpack_require__) => {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;/* Web Font Loader v1.6.28 - (c) Adobe Systems, Google. License: Apache 2.0 */(function(){function aa(a,b,c){return a.call.apply(a.bind,arguments)}function ba(a,b,c){if(!a)throw Error();if(2<arguments.length){var d=Array.prototype.slice.call(arguments,2);return function(){var c=Array.prototype.slice.call(arguments);Array.prototype.unshift.apply(c,d);return a.apply(b,c)}}return function(){return a.apply(b,arguments)}}function p(a,b,c){p=Function.prototype.bind&&-1!=Function.prototype.bind.toString().indexOf("native code")?aa:ba;return p.apply(null,arguments)}var q=Date.now||function(){return+new Date};function ca(a,b){this.a=a;this.o=b||a;this.c=this.o.document}var da=!!window.FontFace;function t(a,b,c,d){b=a.c.createElement(b);if(c)for(var e in c)c.hasOwnProperty(e)&&("style"==e?b.style.cssText=c[e]:b.setAttribute(e,c[e]));d&&b.appendChild(a.c.createTextNode(d));return b}function u(a,b,c){a=a.c.getElementsByTagName(b)[0];a||(a=document.documentElement);a.insertBefore(c,a.lastChild)}function v(a){a.parentNode&&a.parentNode.removeChild(a)}
@@ -162,47 +165,57 @@ var __webpack_exports__ = {};
   !*** ./src/blocks/container/view.js ***!
   \**************************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var webfontloader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! webfontloader */ "./src/blocks/node_modules/webfontloader/webfontloader.js");
+/* harmony import */ var webfontloader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! webfontloader */ "./node_modules/webfontloader/webfontloader.js");
 /* harmony import */ var webfontloader__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(webfontloader__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils */ "./src/blocks/container/utils.js");
 
 
+
 const blocksHeightHandler = function (blocks, containerBlock) {
   let type = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'set';
+
   if (blocks.length) {
     for (const block of blocks) {
       const blockName = block.includes('core') ? block.replace('core/', '') : block.replaceAll('/', '-');
       const blockClass = `wp-block-${blockName}`;
       const allBlocksType = containerBlock.querySelectorAll(`.${blockClass}`);
+
       if (type === 'set') {
         (0,_utils__WEBPACK_IMPORTED_MODULE_1__.setElementsHeight)(allBlocksType);
         return;
       }
+
       (0,_utils__WEBPACK_IMPORTED_MODULE_1__.resetHeight)(allBlocksType);
     }
   }
 };
+
 const blocksElementsHeightHandler = function (selectors, containerBlock) {
   let type = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'set';
-  if (selectors?.length) {
+
+  if (selectors !== null && selectors !== void 0 && selectors.length) {
     for (const selector of selectors) {
       if ((0,_utils__WEBPACK_IMPORTED_MODULE_1__.checkSelector)(selector)) {
         const allBlocksElements = containerBlock.querySelectorAll(selector);
+
         if (type === 'set') {
           (0,_utils__WEBPACK_IMPORTED_MODULE_1__.setElementsHeight)(allBlocksElements);
           return;
         }
+
         (0,_utils__WEBPACK_IMPORTED_MODULE_1__.resetHeight)(allBlocksElements);
       }
     }
   }
 };
+
 const applyEqualHeight = () => {
   if (Object.keys(PBG_EqualHeight).length) {
     const {
       breakPoints
     } = PBG_EqualHeight;
     let device = 'desktop';
+
     if (window.matchMedia(breakPoints.desktop).matches) {
       device = 'desktop';
     } else if (window.matchMedia(breakPoints.tablet).matches && !window.matchMedia(breakPoints.mobile).matches) {
@@ -210,8 +223,8 @@ const applyEqualHeight = () => {
     } else if (window.matchMedia(breakPoints.mobile).matches) {
       device = 'mobile';
     }
-    const equalHeightData = {
-      ...PBG_EqualHeight
+
+    const equalHeightData = { ...PBG_EqualHeight
     };
     delete equalHeightData.breakPoints;
     Object.keys(equalHeightData).map(id => {
@@ -222,6 +235,7 @@ const applyEqualHeight = () => {
         equalHeightBlocks,
         equalHeightDevices
       } = attributes;
+
       if (equalHeightDevices.includes(device)) {
         blocksHeightHandler(equalHeightBlocks, containerBlock);
         blocksElementsHeightHandler(customSelectors, containerBlock);
@@ -232,6 +246,7 @@ const applyEqualHeight = () => {
     });
   }
 };
+
 window.addEventListener("resize", applyEqualHeight, false);
 applyEqualHeight();
 })();

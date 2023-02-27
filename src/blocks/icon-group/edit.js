@@ -87,7 +87,7 @@ function Edit(props) {
         [
             "premium/icon",
             {
-                selectedIcon: 'dashicons facebook-alt',
+                selectedIcon: 'fa_facebook-f',
                 iconSize: {
                     Desktop: "",
                     Tablet: "",
@@ -96,7 +96,7 @@ function Edit(props) {
                 },
                 icons: [
                     {
-                        "iconn": "dashicons facebook-alt",
+                        "iconn": "fa_facebook-f",
                         "link": "",
                         "target": "_self",
                         "size": "30",
@@ -133,7 +133,7 @@ function Edit(props) {
         [
             "premium/icon",
             {
-                selectedIcon: 'dashicons twitter',
+                selectedIcon: 'fa_twitter',
                 iconSize: {
                     Desktop: "",
                     Tablet: "",
@@ -142,7 +142,7 @@ function Edit(props) {
                 },
                 icons: [
                     {
-                        "iconn": "dashicons twitter",
+                        "iconn": "fa_twitter",
                         "link": "",
                         "target": "_self",
                         "size": "30",
