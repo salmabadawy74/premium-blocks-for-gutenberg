@@ -5,7 +5,11 @@
     "name": "premium/dheading-block",
     "title": "Dual Heading",
     "description": "Use Premium Dual Heading Block to create one heading with two different styles.",
-    "keywords": ["title", "heading", "text"],
+    "keywords": [
+        "title",
+        "heading",
+        "text"
+    ],
     "category": "premium-blocks",
     "attributes": {
         "blockId": {
@@ -39,7 +43,10 @@
             "type": "string",
             "default": "h2"
         },
-
+        "headingTag": {
+            "type": "string",
+            "default": "h2"
+        },
         "display": {
             "type": "string",
             "default": "inline"

@@ -1,5 +1,7 @@
 .premium-price {
   display: flex;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 20px; }
   .premium-price span {
     align-self: center; }

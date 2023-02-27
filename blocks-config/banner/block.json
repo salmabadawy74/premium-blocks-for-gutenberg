@@ -6,7 +6,10 @@
     "title": "Banner",
     "description": "Create attractive banners along with Heading, Description, and CTA using Premium Banner.",
     "category": "premium-blocks",
-    "keywords": ["image", "photo"],
+    "keywords": [
+        "image",
+        "photo"
+    ],
     "attributes": {
         "blockId": {
             "type": "string"
@@ -76,7 +79,7 @@
             }
         },
         "title": {
-            "type": "array",
+            "type": "string",
             "source": "children",
             "selector": ".premium-banner__title",
             "default": "Awesome Title"
@@ -86,7 +89,7 @@
             "default": "h3"
         },
         "desc": {
-            "type": "array",
+            "type": "string",
             "source": "children",
             "selector": ".premium-banner__desc",
             "default": "Cool Description!!"

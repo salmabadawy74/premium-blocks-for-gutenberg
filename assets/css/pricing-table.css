@@ -9,7 +9,8 @@
   overflow: hidden;
   padding: 20px;
   border: 1px solid var(--pbg-global-color4, #e1e1e1);
-  text-align: center; }
+  text-align: center;
+  justify-content: center; }
 
 /************ Responsive **************/
 @media (min-width: 977px) {
