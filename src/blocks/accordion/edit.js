@@ -1,4 +1,5 @@
 import classnames from "classnames";
+import { applyFilters } from '@wordpress/hooks';
 import {
     InspectorTabs,
     InspectorTab,
@@ -743,6 +744,7 @@ function PremiumAccordion(props) {
                                 })
                             }
                         />
+                        {applyFilters('Pbg.AdvancedTab', props)}
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
@@ -760,14 +762,19 @@ function PremiumAccordion(props) {
                     ),
                 })}
             >
-                <style>{loadStyles()}</style>
-                <InnerBlocks
-                    template={innerBlocksTemplate}
-                    templateLock={false}
-                    allowedBlocks={["premium/accordion-item"]}
-                />
-                {loadTitleGoogleFonts}
-                {loadDescGoogleFonts}
+                {applyFilters('Pbg.BlockContent',
+                    <>
+                        <style>{loadStyles()}</style>
+                        <InnerBlocks
+                            template={innerBlocksTemplate}
+                            templateLock={false}
+                            allowedBlocks={["premium/accordion-item"]}
+                        />
+                        {loadTitleGoogleFonts}
+                        {loadDescGoogleFonts}
+                    </>,
+                    props
+                )}
             </div>
         </Fragment>
     );

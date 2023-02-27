@@ -13279,6 +13279,72 @@ const FloatingEffect = _ref => {
   })));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FloatingEffect);
+const Test = props => {
+  const {
+    attributes,
+    setAttributes,
+    isSelected
+  } = props;
+  const {
+    floatingEffect = {}
+  } = attributes;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(FloatingEffect, {
+    value: floatingEffect,
+    onChange: value => setAttributes({
+      floatingEffect: value
+    })
+  });
+};
+(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_7__.addFilter)('Pbg.AdvancedTab', 'pbg/entrance-animation-attribute', Test);
+const TestContent = (content, props) => {
+  const {
+    attributes,
+    setAttributes,
+    isSelected
+  } = props;
+  const {
+    floatingEffect = {}
+  } = attributes;
+  const deviceType = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_12__.useSelect)(select => {
+    const {
+      __experimentalGetPreviewDeviceType = null
+    } = select("core/edit-post");
+    return __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : "Desktop";
+  }, []);
+  const blockRef = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+    if (!floatingEffect?.enable) {
+      return;
+    }
+    if (floatingEffect?.disableOnSafari && (0,_helpers_helpers__WEBPACK_IMPORTED_MODULE_9__.checkSafariBrowser)()) {
+      return;
+    }
+    const animeSettings = {
+      targets: [blockRef.current],
+      loop: floatingEffect.loop === 'infinite' ? true : floatingEffect.customNumber,
+      direction: floatingEffect.direction,
+      easing: floatingEffect.easing !== 'steps' ? floatingEffect.easing : `steps(${floatingEffect?.steps || 5})`
+    };
+    const animeObj = (0,_helpers_helpers__WEBPACK_IMPORTED_MODULE_9__.getAnimationObj)(floatingEffect, deviceType);
+    let animationInstance = null;
+    if (Object.keys(animeObj).length) {
+      animationInstance = (0,animejs_lib_anime_es_js__WEBPACK_IMPORTED_MODULE_10__["default"])({
+        ...animeSettings,
+        ...animeObj
+      });
+    }
+    return () => {
+      if (animationInstance) {
+        animationInstance.reset();
+      }
+    };
+  }, [isSelected, floatingEffect, deviceType]);
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "pbg-floating-effect",
+    ref: blockRef
+  }, content);
+};
+(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_7__.addFilter)('Pbg.BlockContent', 'pbg/entrance-animation-attribute', TestContent);
 const FloatingEffectControl = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__.createHigherOrderComponent)(BlockEdit => {
   return props => {
     if (!PremiumFloatingEffect.allBlocks && !(0,_helpers_helpers__WEBPACK_IMPORTED_MODULE_9__.isPremiumBlock)(props.name)) {
@@ -13370,7 +13436,13 @@ const FloatingEffectControl = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__
     })));
   };
 }, 'FloatingEffectControl');
-(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_7__.addFilter)('editor.BlockEdit', 'pbg/floating-effect-attribute', FloatingEffectControl);
+
+// addFilter(
+//     'editor.BlockEdit',
+//     'pbg/floating-effect-attribute',
+//     FloatingEffectControl
+// );
+
 const addFloatingAttribute = (settings, name) => {
   if (!PremiumFloatingEffect.allBlocks && !(0,_helpers_helpers__WEBPACK_IMPORTED_MODULE_9__.isPremiumBlock)(name)) {
     return settings;

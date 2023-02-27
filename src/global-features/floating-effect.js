@@ -685,6 +685,67 @@ const FloatingEffect = ({ value, onChange }) => {
 
 export default FloatingEffect
 
+const Test = (props) => {
+    const { attributes, setAttributes, isSelected } = props;
+    const { floatingEffect = {} } = attributes;
+
+    return <FloatingEffect value={floatingEffect} onChange={(value) => setAttributes({ floatingEffect: value })} />
+}
+
+addFilter(
+    'Pbg.AdvancedTab',
+    'pbg/entrance-animation-attribute',
+    Test
+);
+
+
+const TestContent = (content, props) => {
+    const { attributes, setAttributes, isSelected } = props;
+    const { floatingEffect = {} } = attributes;
+    const deviceType = useSelect((select) => {
+        const { __experimentalGetPreviewDeviceType = null } = select(
+            "core/edit-post"
+        );
+        return __experimentalGetPreviewDeviceType
+            ? __experimentalGetPreviewDeviceType()
+            : "Desktop";
+    }, []);
+    const blockRef = useRef(null);
+    useEffect(() => {
+        if (!floatingEffect?.enable) {
+            return;
+        }
+        if (floatingEffect?.disableOnSafari && checkSafariBrowser()) {
+            return;
+        }
+        const animeSettings = {
+            targets: [blockRef.current],
+            loop: floatingEffect.loop === 'infinite' ? true : floatingEffect.customNumber,
+            direction: floatingEffect.direction,
+            easing: floatingEffect.easing !== 'steps' ? floatingEffect.easing : `steps(${floatingEffect?.steps || 5})`,
+        };
+        const animeObj = getAnimationObj(floatingEffect, deviceType);
+        let animationInstance = null;
+        if (Object.keys(animeObj).length) {
+            animationInstance = anime({ ...animeSettings, ...animeObj });
+        }
+        return () => {
+            if (animationInstance) {
+                animationInstance.reset();
+            }
+        };
+    }, [isSelected, floatingEffect, deviceType]);
+
+    return <div className='pbg-floating-effect' ref={blockRef}>
+        {content}
+    </div>;
+}
+addFilter(
+    'Pbg.BlockContent',
+    'pbg/entrance-animation-attribute',
+    TestContent
+);
+
 const FloatingEffectControl = createHigherOrderComponent((BlockEdit) => {
     return (props) => {
         if (!PremiumFloatingEffect.allBlocks && !isPremiumBlock(props.name)) {
@@ -781,11 +842,11 @@ const FloatingEffectControl = createHigherOrderComponent((BlockEdit) => {
     };
 }, 'FloatingEffectControl');
 
-addFilter(
-    'editor.BlockEdit',
-    'pbg/floating-effect-attribute',
-    FloatingEffectControl
-);
+// addFilter(
+//     'editor.BlockEdit',
+//     'pbg/floating-effect-attribute',
+//     FloatingEffectControl
+// );
 
 const addFloatingAttribute = (settings, name) => {
     if (!PremiumFloatingEffect.allBlocks && !isPremiumBlock(name)) {
