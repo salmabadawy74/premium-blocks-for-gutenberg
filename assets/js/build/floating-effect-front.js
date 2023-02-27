@@ -1337,7 +1337,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "checkSafariBrowser": () => (/* binding */ checkSafariBrowser),
 /* harmony export */   "checkSelector": () => (/* binding */ checkSelector),
 /* harmony export */   "getAnimationObj": () => (/* binding */ getAnimationObj),
-/* harmony export */   "isPremiumBlock": () => (/* binding */ isPremiumBlock)
+/* harmony export */   "isPremiumBlock": () => (/* binding */ isPremiumBlock),
+/* harmony export */   "resetStyles": () => (/* binding */ resetStyles)
 /* harmony export */ });
 const getAnimationObj = function (floatingEffect) {
   let deviceType = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Desktop';
@@ -1413,7 +1414,7 @@ const getAnimationObj = function (floatingEffect) {
   }
   if (opacity.enable) {
     animeObj.opacity = {
-      value: [opacity?.value?.from || 0, opacity?.value?.to || 0],
+      value: [opacity?.value?.from / 100 || 0, opacity?.value?.to / 100 || 0],
       duration: opacity.duration || 1000,
       delay: opacity.delay || 0
     };
@@ -1497,6 +1498,21 @@ const checkSelector = selector => {
 const isPremiumBlock = blockName => {
   return blockName.startsWith('premium/');
 };
+const resetStyles = elements => {
+  Array.from(elements).forEach(element => {
+    if (!element) {
+      return;
+    }
+    const styles = element.getAttribute('style');
+    if (styles) {
+      const filteredStyles = styles.split(';').filter(style => {
+        const property = style.trim().split(":")[0];
+        return !['transform', 'opacity', 'background-color', 'filter'].includes(property);
+      }).map(style => style.trim()).join(';');
+      element.setAttribute('style', filteredStyles);
+    }
+  });
+};
 
 /***/ })
 
@@ -1559,11 +1575,11 @@ const isPremiumBlock = blockName => {
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-/*!******************************************************!*\
-  !*** ./src/global-features/floating-effect-front.js ***!
-  \******************************************************/
+/*!************************************************************!*\
+  !*** ./src/global-features/floating-effect/front/index.js ***!
+  \************************************************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _helpers_helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers/helpers */ "./src/global-features/helpers/helpers.js");
+/* harmony import */ var _helpers_helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/helpers */ "./src/global-features/helpers/helpers.js");
 /* harmony import */ var animejs_lib_anime_es_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! animejs/lib/anime.es.js */ "./node_modules/animejs/lib/anime.es.js");
 
 

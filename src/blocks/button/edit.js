@@ -29,7 +29,7 @@ import {
     iconsList,
     PBGPresets,
 } from "@pbg/components";
-
+import { applyFilters, doAction } from '@wordpress/hooks';
 const { __ } = wp.i18n;
 
 const { PanelBody, SelectControl, ToggleControl } = wp.components;
@@ -511,13 +511,13 @@ function Edit(props) {
                                             label={
                                                 "radial" !== effect
                                                     ? __(
-                                                          "Background Color",
-                                                          "premium-blocks-for-gutenberg"
-                                                      )
+                                                        "Background Color",
+                                                        "premium-blocks-for-gutenberg"
+                                                    )
                                                     : __(
-                                                          "Background Color",
-                                                          "premium-blocks-for-gutenberg"
-                                                      )
+                                                        "Background Color",
+                                                        "premium-blocks-for-gutenberg"
+                                                    )
                                             }
                                             colorValue={
                                                 btnStyles[0].backHoverColor
@@ -695,7 +695,7 @@ function Edit(props) {
                         )}
                     </InspectorTab>
                     <InspectorTab key={"advance"}>
-                        <PremiumResponsiveTabs
+                        {applyFilters('Pbg.AdvancedTab', <PremiumResponsiveTabs
                             Desktop={hideDesktop}
                             Tablet={hideTablet}
                             Mobile={hideMobile}
@@ -720,7 +720,7 @@ function Edit(props) {
                                         : "",
                                 })
                             }
-                        />
+                        />, props)}
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
@@ -739,81 +739,85 @@ function Edit(props) {
                 style={{ textAlign: btnAlign[props.deviceType] }}
             >
                 <style>{loadStyles()}</style>
-                {React.createElement(
-                    "div",
-                    {
-                        className: `premium-button wp-block-button__link premium-button__${btnSize} premium-button__${iconPosition}`,
-                        style: {
-                            boxShadow: `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`,
-                            ...paddingCss(padding, props.deviceType),
-                            ...borderCss(border, props.deviceType),
-                            ...gradientBackground(backgroundOptions),
+                {applyFilters('Pbg.BlockContent',
+                    React.createElement(
+                        "div",
+                        {
+                            className: `premium-button wp-block-button__link premium-button__${btnSize} premium-button__${iconPosition}`,
+                            style: {
+                                boxShadow: `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`,
+                                ...paddingCss(padding, props.deviceType),
+                                ...borderCss(border, props.deviceType),
+                                ...gradientBackground(backgroundOptions),
+                            },
                         },
-                    },
-                    [
-                        <Fragment>
-                            {showIcon && iconPosition == "before" && (
-                                <i
-                                    className={`premium-button-icon ${icon}`}
+                        [
+                            <Fragment>
+                                {showIcon && iconPosition == "before" && (
+                                    <i
+                                        className={`premium-button-icon ${icon}`}
+                                        style={{
+                                            fontSize:
+                                                iconSize[props.deviceType] +
+                                                iconSize.unit,
+                                            width:
+                                                iconSize[props.deviceType] +
+                                                iconSize.unit,
+                                            height:
+                                                iconSize[props.deviceType] +
+                                                iconSize.unit,
+                                            ...marginCss(
+                                                iconSpacing,
+                                                props.deviceType
+                                            ),
+                                            color: iconColor,
+                                            textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`,
+                                        }}
+                                    ></i>
+                                )}
+                                <RichText
+                                    value={btnText}
+                                    onChange={(value) =>
+                                        setAttributes({ btnText: value })
+                                    }
                                     style={{
-                                        fontSize:
-                                            iconSize[props.deviceType] +
-                                            iconSize.unit,
-                                        width:
-                                            iconSize[props.deviceType] +
-                                            iconSize.unit,
-                                        height:
-                                            iconSize[props.deviceType] +
-                                            iconSize.unit,
-                                        ...marginCss(
-                                            iconSpacing,
+                                        textShadow: `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`,
+                                        ...typographyCss(
+                                            typography,
                                             props.deviceType
                                         ),
-                                        color: iconColor,
-                                        textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`,
+                                        display: "inline",
                                     }}
-                                ></i>
-                            )}
-                            <RichText
-                                value={btnText}
-                                onChange={(value) =>
-                                    setAttributes({ btnText: value })
-                                }
-                                style={{
-                                    textShadow: `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`,
-                                    ...typographyCss(
-                                        typography,
-                                        props.deviceType
-                                    ),
-                                    display: "inline",
-                                }}
-                                keepPlaceholderOnFocus
-                            />
-                            {showIcon && iconPosition == "after" && (
-                                <i
-                                    className={`premium-button-icon ${icon}`}
-                                    style={{
-                                        fontSize:
-                                            iconSize[props.deviceType] +
-                                            iconSize.unit,
-                                        width:
-                                            iconSize[props.deviceType] +
-                                            iconSize.unit,
-                                        height:
-                                            iconSize[props.deviceType] +
-                                            iconSize.unit,
-                                        ...marginCss(
-                                            iconSpacing,
-                                            props.deviceType
-                                        ),
-                                        color: iconColor,
-                                        textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`,
-                                    }}
-                                ></i>
-                            )}
-                        </Fragment>,
-                    ]
+                                    keepPlaceholderOnFocus
+                                />
+                                {showIcon && iconPosition == "after" && (
+                                    <i
+                                        className={`premium-button-icon ${icon}`}
+                                        style={{
+                                            fontSize:
+                                                iconSize[props.deviceType] +
+                                                iconSize.unit,
+                                            width:
+                                                iconSize[props.deviceType] +
+                                                iconSize.unit,
+                                            height:
+                                                iconSize[props.deviceType] +
+                                                iconSize.unit,
+                                            ...marginCss(
+                                                iconSpacing,
+                                                props.deviceType
+                                            ),
+                                            color: iconColor,
+                                            textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`,
+                                        }}
+                                    ></i>
+                                )}
+                            </Fragment>,
+                        ]
+                    ),
+                    props
                 )}
+
                 <URLInput
                     value={btnLink}
                     onChange={(newLink) => setAttributes({ btnLink: newLink })}

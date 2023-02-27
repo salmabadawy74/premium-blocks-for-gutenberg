@@ -30,3 +30,5 @@ export { default as PBGPresets } from "./Presets";
 export { default as PremiumUploadSVG } from "./premium-upload-svg";
 export { default as PremiumVariation } from "./premium-variation";
 export { default as AdvancedRangeControl } from "./RangeControl/advanced-range-control"
+export { default as ResponsiveSelectControl } from "./responsive-select-control"
+export { default as ResponsiveAdvancedRangeControl } from "./RangeControl/responsive-advanced-range-control"

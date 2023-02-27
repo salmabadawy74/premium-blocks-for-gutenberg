@@ -72,7 +72,7 @@ export const getAnimationObj = (floatingEffect, deviceType = 'Desktop') => {
     }
     if (opacity.enable) {
         animeObj.opacity = {
-            value: [opacity?.value?.from || 0, opacity?.value?.to || 0],
+            value: [opacity?.value?.from / 100 || 0, opacity?.value?.to / 100 || 0],
             duration: opacity.duration || 1000,
             delay: opacity.delay || 0
         };
@@ -164,4 +164,24 @@ export const checkSelector = (selector) => {
 
 export const isPremiumBlock = (blockName) => {
     return blockName.startsWith('premium/');
+}
+
+export const resetStyles = (elements) => {
+    Array.from(elements).forEach(element => {
+        if (!element) {
+            return;
+        }
+        const styles = element.getAttribute('style');
+        if (styles) {
+            const filteredStyles = styles
+                .split(';')
+                .filter(style => {
+                    const property = style.trim().split(":")[0];
+                    return !['transform', 'opacity', 'background-color', 'filter'].includes(property);
+                })
+                .map(style => style.trim())
+                .join(';');
+            element.setAttribute('style', filteredStyles);
+        }
+    })
 }

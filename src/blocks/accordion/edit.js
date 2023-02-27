@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import { applyFilters } from '@wordpress/hooks';
+import { applyFilters, doAction } from '@wordpress/hooks';
 import {
     InspectorTabs,
     InspectorTab,
@@ -718,7 +718,7 @@ function PremiumAccordion(props) {
                         </PanelBody>
                     </InspectorTab>
                     <InspectorTab key={"advance"}>
-                        <PremiumResponsiveTabs
+                        {applyFilters('Pbg.AdvancedTab', <PremiumResponsiveTabs
                             Desktop={hideDesktop}
                             Tablet={hideTablet}
                             Mobile={hideMobile}
@@ -743,8 +743,7 @@ function PremiumAccordion(props) {
                                         : "",
                                 })
                             }
-                        />
-                        {applyFilters('Pbg.AdvancedTab', props)}
+                        />, props)}
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
@@ -762,19 +761,17 @@ function PremiumAccordion(props) {
                     ),
                 })}
             >
+                <style>{loadStyles()}</style>
                 {applyFilters('Pbg.BlockContent',
-                    <>
-                        <style>{loadStyles()}</style>
-                        <InnerBlocks
-                            template={innerBlocksTemplate}
-                            templateLock={false}
-                            allowedBlocks={["premium/accordion-item"]}
-                        />
-                        {loadTitleGoogleFonts}
-                        {loadDescGoogleFonts}
-                    </>,
+                    <InnerBlocks
+                        template={innerBlocksTemplate}
+                        templateLock={false}
+                        allowedBlocks={["premium/accordion-item"]}
+                    />,
                     props
                 )}
+                {loadTitleGoogleFonts}
+                {loadDescGoogleFonts}
             </div>
         </Fragment>
     );

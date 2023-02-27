@@ -1,8 +1,8 @@
 /******/ (() => { // webpackBootstrap
 var __webpack_exports__ = {};
-/*!*********************************************************!*\
-  !*** ./src/global-features/entrance-animation-front.js ***!
-  \*********************************************************/
+/*!***************************************************************!*\
+  !*** ./src/global-features/entrance-animation/front/index.js ***!
+  \***************************************************************/
 let blocksElement = document.querySelectorAll(`[data-animation]`);
 if (blocksElement.length > 0) {
   const addBlockEntranceAnimation = () => {

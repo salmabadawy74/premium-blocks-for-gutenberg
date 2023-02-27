@@ -9293,7 +9293,7 @@ function PremiumAccordion(props) {
     showUnit: false
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_4__.InspectorTab, {
     key: "advance"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_4__.PremiumResponsiveTabs, {
+  }, (0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_3__.applyFilters)('Pbg.AdvancedTab', (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_4__.PremiumResponsiveTabs, {
     Desktop: hideDesktop,
     Tablet: hideTablet,
     Mobile: hideMobile,
@@ -9306,7 +9306,7 @@ function PremiumAccordion(props) {
     onChangeMobile: value => setAttributes({
       hideMobile: value ? " premium-mobile-hidden" : ""
     })
-  }), (0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_3__.applyFilters)('Pbg.AdvancedTab', props)))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+  }), props)))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     ref: accordionRef
   }, useBlockProps({
     className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, `premium-accordion ${blockId}`, {
@@ -9314,11 +9314,11 @@ function PremiumAccordion(props) {
       " premium-tablet-hidden": hideTablet,
       " premium-mobile-hidden": hideMobile
     })
-  })), (0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_3__.applyFilters)('Pbg.BlockContent', (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", null, loadStyles()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InnerBlocks, {
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", null, loadStyles()), (0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_3__.applyFilters)('Pbg.BlockContent', (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InnerBlocks, {
     template: innerBlocksTemplate,
     templateLock: false,
     allowedBlocks: ["premium/accordion-item"]
-  }), loadTitleGoogleFonts, loadDescGoogleFonts), props)));
+  }), props), loadTitleGoogleFonts, loadDescGoogleFonts));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_6__.compose)([withSelect(select => {
   const {
@@ -17372,7 +17372,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _pbg_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @pbg/components */ "@pbg/components");
 /* harmony import */ var _pbg_components__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_pbg_components__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _presets__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./presets */ "./src/blocks/button/presets.js");
+/* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/hooks */ "@wordpress/hooks");
+/* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _presets__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./presets */ "./src/blocks/button/presets.js");
+
 
 
 
@@ -17593,7 +17596,7 @@ function Edit(props) {
     initialOpen: true
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_5__.PBGPresets, {
     setAttributes: setAttributes,
-    presets: _presets__WEBPACK_IMPORTED_MODULE_6__.buttonsPresets,
+    presets: _presets__WEBPACK_IMPORTED_MODULE_7__.buttonsPresets,
     presetInputType: "radioImage"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(SelectControl, {
     options: EFFECTS,
@@ -17812,7 +17815,7 @@ function Edit(props) {
     responsive: true
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_5__.InspectorTab, {
     key: "advance"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_5__.PremiumResponsiveTabs, {
+  }, (0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_6__.applyFilters)('Pbg.AdvancedTab', (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_5__.PremiumResponsiveTabs, {
     Desktop: hideDesktop,
     Tablet: hideTablet,
     Mobile: hideMobile,
@@ -17825,7 +17828,7 @@ function Edit(props) {
     onChangeMobile: value => setAttributes({
       hideMobile: value ? " premium-mobile-hidden" : ""
     })
-  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, useBlockProps({
+  }), props)))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, useBlockProps({
     className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, `premium-button__wrap ${blockId} premium-button__${effect} premium-button__${effectDir}`, {
       " premium-desktop-hidden": hideDesktop,
       " premium-tablet-hidden": hideTablet,
@@ -17835,7 +17838,7 @@ function Edit(props) {
     style: {
       textAlign: btnAlign[props.deviceType]
     }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", null, loadStyles()), React.createElement("div", {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", null, loadStyles()), (0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_6__.applyFilters)('Pbg.BlockContent', React.createElement("div", {
     className: `premium-button wp-block-button__link premium-button__${btnSize} premium-button__${iconPosition}`,
     style: {
       boxShadow: `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`,
@@ -17874,7 +17877,7 @@ function Edit(props) {
       color: iconColor,
       textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`
     }
-  }))]), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(URLInput, {
+  }))]), props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(URLInput, {
     value: btnLink,
     onChange: newLink => setAttributes({
       btnLink: newLink
