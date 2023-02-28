@@ -35,9 +35,7 @@
         },
         "btnLink": {
             "type": "string",
-            "source": "attribute",
-            "attribute": "href",
-            "selector": ".premium-button"
+            "default": ""
         },
         "btnTarget": {
             "type": "boolean",

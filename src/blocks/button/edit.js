@@ -35,14 +35,14 @@ import {
 
 const { __ } = wp.i18n;
 
-const { PanelBody, SelectControl, ToggleControl } = wp.components;
+const { PanelBody, SelectControl, ToggleControl, TextControl } = wp.components;
 const { Fragment, useEffect } = wp.element;
 const { InspectorControls, RichText, URLInput, useBlockProps } = wp.blockEditor;
 const { withSelect } = wp.data;
 import { buttonsPresets } from "./presets";
 
 function Edit(props) {
-    const { setAttributes, className, clientId } = props;
+    const { setAttributes, className, clientId, isSelected } = props;
 
     useEffect(() => {
         setAttributes({
@@ -399,6 +399,16 @@ function Edit(props) {
                                     />
                                 </Fragment>
                             )}
+                            <TextControl
+                                label={__(
+                                    "URL",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                value={btnLink}
+                                onChange={(newLink) =>
+                                    setAttributes({ btnLink: newLink })
+                                }
+                            />
                             <ToggleControl
                                 label={__(
                                     "Open link in new tab",
@@ -814,10 +824,10 @@ function Edit(props) {
                         </Fragment>,
                     ]
                 )}
-                <URLInput
+                {isSelected && <URLInput
                     value={btnLink}
                     onChange={(newLink) => setAttributes({ btnLink: newLink })}
-                />
+                />}
                 {loadBtnGoogleFonts}
             </div>
         </Fragment>
