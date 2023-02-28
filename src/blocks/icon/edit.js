@@ -791,8 +791,7 @@ function Edit(props) {
                         {"icon" === iconTypeFile && (
                             <GenIcon className={`premium-icon premium-icon-type ${selectedIcon}`}
                                 name={selectedIcon}
-                                size={iconSize[props.deviceType] +
-                                    iconSize.unit}
+                                size={iconSize[props.deviceType]}
                                 icon={('fa' === selectedIcon.substring(0, 2) ? FaIco[selectedIcon] : Ico[selectedIcon])}
                                 strokeWidth={('fe' === selectedIcon.substring(0, 2) ? icons[0].width : undefined)}
                                 style={{

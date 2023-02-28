@@ -1902,8 +1902,7 @@ function Edit(props) {
                                                     iconType == "icon" && (
                                                         <GenIcon className={`premium-title-icon ${icon}`}
                                                             name={icon}
-                                                            size={iconSize[props.deviceType] +
-                                                                iconSize.unit}
+                                                            size={iconSize[props.deviceType]}
                                                             icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
                                                             strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
                                                         />
@@ -1978,8 +1977,7 @@ function Edit(props) {
                                                 iconType == "icon" && (
                                                     <GenIcon className={`premium-title-icon ${icon}`}
                                                         name={icon}
-                                                        size={iconSize[props.deviceType] +
-                                                            iconSize.unit}
+                                                        size={iconSize[props.deviceType]}
                                                         icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
                                                         strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
                                                     />
@@ -2036,8 +2034,7 @@ function Edit(props) {
                                                 iconType == "icon" && (
                                                     <GenIcon className={`premium-title-icon ${icon}`}
                                                         name={icon}
-                                                        size={iconSize[props.deviceType] +
-                                                            iconSize.unit}
+                                                        size={iconSize[props.deviceType]}
                                                         icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
                                                         strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
                                                     />
