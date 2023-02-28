@@ -36,6 +36,7 @@ export const GenIcon = (props) => {
     const strokeLinejoin = (lineIcon ? 'round' : undefined);
     const HtmlTagOut = (htmltag ? htmltag : 'div');
     const setting_url = PremiumBlocksSettings.admin_url + "admin.php?page=pb_panel&path=settings";
+
     return (
         <HtmlTagOut style={{ display: 'inline-flex', justifyContent: 'center', alignItems: 'center', ...style }} className={className}>
             {((type === "fe" || type === "ic") && 1 != FontAwesomeEnabled) ? (
@@ -54,7 +55,7 @@ export const GenIcon = (props) => {
                 </p>
             )
                 :
-                <svg style={{ display: 'inline-block', verticalAlign: 'middle' }} viewBox={(!props.icon ? '0 0 24 24' : props.icon.vB)} height={props.size} width={props.size} fill={fill} stroke={stroke} xmlns={props.xmlns} stroke-width={strokeWidth} stroke-linecap={strokeLinecap} stroke-linejoin={strokeLinejoin} >
+                <svg style={{ display: 'inline-block', verticalAlign: 'middle' }} viewBox={(!props.icon ? '0 0 24 24' : props.icon.vB)} height={props.size ? props.size : '30'} width={props.size ? props.size : '30'} fill={fill} stroke={stroke} xmlns={props.xmlns} stroke-width={strokeWidth} stroke-linecap={strokeLinecap} stroke-linejoin={strokeLinejoin} >
                     {props.title ? <title>{props.title}</title> : null}
                     {props.icon && (
                         walkChildren(props.icon.cD)

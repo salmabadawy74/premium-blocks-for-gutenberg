@@ -34,7 +34,7 @@ function get_premium_price_css( $attributes, $unique_id ) {
 		$align = $css->get_responsive_css( $attributes['align'], 'Desktop' );
 
 		$css->set_selector( ".{$unique_id}" );
-		$css->add_property( 'justify-content', $align );
+		$css->add_property( 'justify-content', $align . '!important' );
 	}
 	// Slashed Price.
 	if ( isset( $attributes['slashedTypography'] ) ) {
@@ -127,7 +127,7 @@ function get_premium_price_css( $attributes, $unique_id ) {
 		$align = $css->get_responsive_css( $attributes['align'], 'Tablet' );
 
 		$css->set_selector( ".{$unique_id}" );
-		$css->add_property( 'justify-content', $align );
+		$css->add_property( 'justify-content', $align . '!important' );
 	}
 	// Slashed Price.
 	if ( isset( $attributes['slashedTypography'] ) ) {
@@ -221,7 +221,7 @@ function get_premium_price_css( $attributes, $unique_id ) {
 		$align = $css->get_responsive_css( $attributes['align'], 'Mobile' );
 
 		$css->set_selector( ".{$unique_id}" );
-		$css->add_property( 'justify-content', $align );
+		$css->add_property( 'justify-content', $align . '!important' );
 	}
 	// Slashed Price.
 	if ( isset( $attributes['slashedTypography'] ) ) {

@@ -213,7 +213,7 @@ const Edit = props => {
                             {triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "before" &&
                                 <GenIcon className={`premium-modal-box-icon ${triggerSettings[0].icon} ${triggerSettings[0].iconType}`}
                                     name={triggerSettings[0].icon}
-                                    size={triggerIconSize[currentDevice] + triggerIconSize.unit}
+                                    size={triggerIconSize[currentDevice]}
                                     icon={('fa' === triggerSettings[0].icon.substring(0, 2) ? FaIco[triggerSettings[0].icon] : Ico[triggerSettings[0].icon])}
                                     strokeWidth={('fe' === triggerSettings[0].icon.substring(0, 2) ? icons[0].width : undefined)}
                                     style={{
@@ -241,7 +241,7 @@ const Edit = props => {
                             {triggerSettings[0].showIcon && triggerSettings[0].iconPosition == "after" &&
                                 <GenIcon className={`premium-modal-box-icon ${triggerSettings[0].icon} ${triggerSettings[0].iconType}`}
                                     name={triggerSettings[0].icon}
-                                    size={triggerIconSize[currentDevice] + triggerIconSize.unit}
+                                    size={triggerIconSize[currentDevice]}
                                     icon={('fa' === triggerSettings[0].icon.substring(0, 2) ? FaIco[triggerSettings[0].icon] : Ico[triggerSettings[0].icon])}
                                     strokeWidth={('fe' === triggerSettings[0].icon.substring(0, 2) ? icons[0].width : undefined)}
                                     style={{

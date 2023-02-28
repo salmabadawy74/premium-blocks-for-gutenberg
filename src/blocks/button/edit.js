@@ -760,8 +760,7 @@ function Edit(props) {
                             {showIcon && iconPosition == "before" && (
                                 <GenIcon className={`premium-button-icon ${icon} ${iconType}`}
                                     name={icon}
-                                    size={iconSize[props.deviceType] +
-                                        iconSize.unit}
+                                    size={iconSize[props.deviceType]}
                                     icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
                                     strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
                                     style={{
@@ -795,8 +794,7 @@ function Edit(props) {
                             {showIcon && iconPosition == "after" && (
                                 <GenIcon className={`premium-button-icon ${icon} ${iconType}`}
                                     name={icon}
-                                    size={iconSize[props.deviceType] +
-                                        iconSize.unit}
+                                    size={iconSize[props.deviceType]}
                                     icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
                                     strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
                                     style={{
