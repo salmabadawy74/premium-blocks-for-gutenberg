@@ -1494,7 +1494,570 @@ const v10Attributes = {
     }
 }
 
+const v11Attributes = {
+    "blockId": {
+        "type": "string"
+    },
+    "align": {
+        "type": "object",
+        "default": {
+            "Desktop": "center",
+            "Tablet": "center",
+            "Mobile": "center"
+        }
+    },
+    "firstHeading": {
+        "type": "array",
+        "source": "children",
+        "default": "Premium ",
+        "selector": ".premium-dheading-block__first"
+    },
+    "secondHeading": {
+        "type": "array",
+        "source": "children",
+        "default": "Blocks",
+        "selector": ".premium-dheading-block__second"
+    },
+    "firstTag": {
+        "type": "string",
+        "default": "h2"
+    },
+    "secondTag": {
+        "type": "string",
+        "default": "h2"
+    },
+    "headingTag": {
+        "type": "string",
+        "default": "h2"
+    },
+    "display": {
+        "type": "string",
+        "default": "inline"
+    },
+    "firstStyles": {
+        "type": "array",
+        "default": [
+            {
+                "firstClip": false,
+                "firstAnim": false,
+                "firstStroke": false,
+                "firstColor": "",
+                "firstBackground": "",
+                "firstOpacity": "1",
+                "firstClipColor": "#54595f"
+            }
+        ]
+    },
+    "firstShadow": {
+        "type": "object",
+        "default": {
+            "color": "undefined",
+            "blur": "10",
+            "horizontal": "0",
+            "vertical": "0"
+        }
+    },
+    "firstTypography": {
+        "type": "object",
+        "default": {
+            "fontWeight": "Default",
+            "fontStyle": "",
+            "fontFamily": "Default",
+            "textDecoration": "",
+            "textTransform": "",
+            "fontSize": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            },
+            "letterSpacing": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            },
+            "lineHeight": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            }
+        }
+    },
+    "secondStyles": {
+        "type": "array",
+        "default": [
+            {
+                "secondClip": false,
+                "secondAnim": false,
+                "secondStroke": false,
+                "secondColor": "var(--pbg-global-color1,#0085BA)",
+                "secondBackground": "",
+                "secondOpacity": "",
+                "secondClipColor": "#6ec1e4",
+                "secondMarginL": "0",
+                "secondMarginR": "0",
+                "secondPadding": "0"
+            }
+        ]
+    },
+    "secondShadow": {
+        "type": "object",
+        "default": {
+            "color": "undefined",
+            "blur": "10",
+            "horizontal": "0",
+            "vertical": "0"
+        }
+    },
+    "secondTypography": {
+        "type": "object",
+        "default": {
+            "fontWeight": "Default",
+            "fontStyle": "",
+            "textTransform": "",
+            "fontFamily": "Default",
+            "textDecoration": "",
+            "fontSize": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            },
+            "letterSpacing": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            },
+            "lineHeight": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            }
+        }
+    },
+    "background": {
+        "type": "object",
+        "default": {
+            "backgroundType": "",
+            "backgroundColor": "",
+            "backgroundImageID": "",
+            "backgroundImageURL": "",
+            "backgroundPosition": "",
+            "backgroundRepeat": "",
+            "backgroundSize": "",
+            "fixed": false,
+            "gradientLocationOne": "0",
+            "gradientColorTwo": "",
+            "gradientLocationTwo": "100",
+            "gradientAngle": "180",
+            "gradientPosition": "center center",
+            "gradientType": "linear"
+        }
+    },
+    "link": {
+        "type": "boolean",
+        "default": false
+    },
+    "target": {
+        "type": "boolean",
+        "default": false
+    },
+    "headingURL": {
+        "type": "string"
+    },
+    "hideDesktop": {
+        "type": "boolean",
+        "default": ""
+    },
+    "hideTablet": {
+        "type": "boolean",
+        "default": ""
+    },
+    "hideMobile": {
+        "type": "boolean",
+        "default": ""
+    },
+    "firstBorder": {
+        "type": "object",
+        "default": {
+            "borderType": "none",
+            "borderColor": "",
+            "borderWidth": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            },
+            "borderRadius": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            }
+        }
+    },
+    "secondBorder": {
+        "type": "object",
+        "default": {
+            "borderType": "none",
+            "borderColor": "",
+            "borderWidth": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            },
+            "borderRadius": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            }
+        }
+    },
+    "containerBorder": {
+        "type": "object",
+        "default": {
+            "borderType": "none",
+            "borderColor": "",
+            "borderWidth": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            },
+            "borderRadius": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            }
+        }
+    },
+    "firstPadding": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "firstMargin": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "secondPadding": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "secondMargin": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    }
+}
+
 const deprecatedContent = [
+    {
+        attributes: v11Attributes,
+        migrate: (attributes) => {
+            let newAttributes = {
+                headingTag: 'h2'
+            }
+            return Object.assign(attributes, newAttributes)
+        },
+        save: props => {
+            const { className } = props;
+
+            const {
+                blockId,
+                firstHeading,
+                secondHeading,
+                display,
+                firstTag,
+                secondTag,
+                firstStyles,
+                secondStyles,
+                link,
+                target,
+                headingURL,
+                hideDesktop,
+                hideTablet,
+                hideMobile,
+                firstBorder,
+                secondBorder,
+                containerBorder,
+                firstTypography,
+                secondTypography,
+                background,
+                firstShadow,
+                secondShadow,
+            } = props.attributes;
+
+            return (
+                <div
+                    {...useBlockProps.save({
+                        className: classnames(
+                            className,
+                            `premium-dheading-block__container ${blockId}`,
+                            {
+                                " premium-desktop-hidden": hideDesktop,
+                                " premium-tablet-hidden": hideTablet,
+                                " premium-mobile-hidden": hideMobile,
+                            }
+                        ),
+                    })}
+                    style={{
+                        borderStyle: containerBorder && containerBorder.borderType,
+                        borderColor: containerBorder && containerBorder.borderColor,
+                        ...gradientBackground(background),
+                    }}
+                >
+                    <div className={`premium-dheading-block__wrap`}>
+                        <div className={`premium-dheading-block__title`}>
+                            <RichText.Content
+                                className={`premium-dheading-block__first${firstStyles?.[0]?.firstClip
+                                    ? ` premium-headingc-${firstStyles?.[0]?.firstClip}`
+                                    : ""
+                                    }${firstStyles?.[0]?.firstAnim
+                                        ? ` premium-headinga-${firstStyles?.[0]?.firstAnim}`
+                                        : ""
+                                    }${firstStyles?.[0]?.firstStroke
+                                        ? ` premium-headings-${firstStyles?.[0]?.firstStroke}`
+                                        : ""
+                                    }`}
+                                value={firstHeading}
+                                tagName={firstTag}
+                                style={filterJsCss({
+                                    display: display,
+                                    color: firstStyles[0].firstColor,
+                                    backgroundColor: firstStyles[0].firstClip
+                                        ? "none"
+                                        : firstStyles[0].firstBackground,
+                                    backgroundImage: firstStyles[0].firstClip
+                                        ? `linear-gradient(to left, ${firstStyles[0].firstColor}, ${firstStyles[0].firstClipColor})`
+                                        : "none",
+                                    fontStyle: firstTypography?.fontStyle,
+                                    fontFamily: firstTypography?.fontFamily,
+                                    fontWeight: firstTypography?.fontWeight,
+                                    textDecoration: firstTypography?.textDecoration,
+                                    textTransform: firstTypography?.textTransform,
+                                    borderStyle: firstBorder && firstBorder.borderType,
+                                    borderColor: firstBorder && firstBorder.borderColor,
+                                    textShadow: `${firstShadow?.horizontal}px ${firstShadow?.vertical}px ${firstShadow?.blur}px ${firstShadow?.color}`,
+                                })}
+                            />
+                            <RichText.Content
+                                className={`premium-dheading-block__second${secondStyles?.[0]?.secondClip
+                                    ? `${` premium-headingc-${secondStyles?.[0]?.secondClip}`}`
+                                    : ""
+                                    }${secondStyles?.[0]?.secondAnim
+                                        ? ` ${`premium-headinga-${secondStyles?.[0]?.secondAnim} `}`
+                                        : ""
+                                    }${secondStyles?.[0]?.secondStroke
+                                        ? ` premium-headings-${secondStyles?.[0]?.secondStroke}`
+                                        : ""
+                                    }`}
+                                tagName={secondTag}
+                                value={secondHeading}
+                                style={filterJsCss({
+                                    display: display,
+                                    color: secondStyles[0].secondColor,
+                                    backgroundColor: secondStyles[0].secondClip
+                                        ? "none"
+                                        : secondStyles[0].secondBackground,
+                                    backgroundImage: secondStyles[0].secondClip
+                                        ? `linear-gradient(to left, ${secondStyles[0].secondColor}, ${secondStyles[0].secondClipColor})`
+                                        : "none",
+                                    fontStyle: secondTypography?.fontStyle,
+                                    fontFamily: secondTypography?.fontFamily,
+                                    fontWeight: secondTypography?.fontWeight,
+                                    textDecoration: secondTypography?.textDecoration,
+                                    textTransform: secondTypography?.textTransform,
+                                    borderStyle:
+                                        secondBorder && secondBorder.borderType,
+                                    borderColor:
+                                        secondBorder && secondBorder.borderColor,
+                                    textShadow: `${secondShadow?.horizontal}px ${secondShadow?.vertical}px ${secondShadow?.blur}px ${secondShadow?.color}`,
+                                })}
+                            />
+                        </div>
+                        {link && headingURL && (
+                            <a
+                                className={`premium-dheading-block__link`}
+                                href={link && headingURL}
+                                target={target && "_blank"}
+                                rel="noopener noreferrer"
+                            />
+                        )}
+                    </div>
+                </div>
+            );
+        }
+    },
     {
         attributes: v10Attributes,
         migrate: (attributes) => {
