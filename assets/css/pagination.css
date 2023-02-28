@@ -835,11 +835,8 @@ body .is-layout-flow > * {
 .premium-blog-pagination-container {
   margin-top: 15px; }
   .premium-blog-pagination-container div.Prevstring {
-    opacity: .62;
     padding-left: 0px;
     margin-left: 0px; }
-  .premium-blog-pagination-container div.Nextstring {
-    opacity: .62; }
   .premium-blog-pagination-container span {
     cursor: default; }
   .premium-blog-pagination-container .page-numbers {

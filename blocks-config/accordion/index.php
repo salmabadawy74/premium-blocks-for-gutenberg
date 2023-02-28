@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Server-side rendering of the `pbg/accordion` block.
  *
@@ -15,195 +16,196 @@
  * @param string $attr option attribute.
  * @param string $unique_id option For block ID.
  */
-function get_premium_accordion_css_style( $attr, $unique_id ) {
+function get_premium_accordion_css_style($attr, $unique_id)
+{
 	$css                    = new Premium_Blocks_css();
 	$media_query            = array();
-	$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
-	$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
-	$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+	$media_query['mobile']  = apply_filters('Premium_BLocks_mobile_media_query', '(max-width: 767px)');
+	$media_query['tablet']  = apply_filters('Premium_BLocks_tablet_media_query', '(max-width: 1024px)');
+	$media_query['desktop'] = apply_filters('Premium_BLocks_tablet_media_query', '(min-width: 1025px)');
 	// Style.
-	if ( isset( $attr['titleTypography'] ) ) {
+	if (isset($attr['titleTypography'])) {
 		$title_typography = $attr['titleTypography'];
 
-		$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text' );
-		$css->render_typography( $title_typography, 'Desktop' );
+		$css->set_selector('.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text');
+		$css->render_typography($title_typography, 'Desktop');
 	}
 
-	if ( isset( $attr['titlePadding'] ) ) {
+	if (isset($attr['titlePadding'])) {
 		$title_padding = $attr['titlePadding'];
-		$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
-		$css->add_property( 'padding', $css->render_spacing( $title_padding['Desktop'], $title_padding['unit'] ) );
+		$css->set_selector('.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap');
+		$css->add_property('padding', $css->render_spacing($title_padding['Desktop'], $title_padding['unit']));
 	}
 
-	if ( isset( $attr['titleMargin'] ) ) {
+	if (isset($attr['titleMargin'])) {
 		$title_margin = $attr['titleMargin'];
-		$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' );
-		$css->add_property( 'margin-bottom', $css->render_range( $title_margin, 'Desktop' ) . '!important' );
+		$css->set_selector('.' . $unique_id . '> .premium-accordion__content_wrap');
+		$css->add_property('margin-bottom', $css->render_range($title_margin, 'Desktop') . '!important');
 	}
 
-	if ( isset( $attr['titleBorder'] ) ) {
+	if (isset($attr['titleBorder'])) {
 		$title_border        = $attr['titleBorder'];
 		$title_border_width  = $title_border['borderWidth'];
 		$title_border_radius = $title_border['borderRadius'];
 
-		$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
-		$css->add_property( 'border-width', $css->render_spacing( $title_border_width['Desktop'], 'px' ) );
-		$css->add_property( 'border-radius', $css->render_spacing( $title_border_radius['Desktop'], 'px' ) );
+		$css->set_selector('.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap');
+		$css->add_property('border-width', $css->render_spacing($title_border_width['Desktop'], 'px'));
+		$css->add_property('border-radius', $css->render_spacing($title_border_radius['Desktop'], 'px'));
 	}
 
 	// Desc Style
-	if ( isset( $attr['descTypography'] ) ) {
+	if (isset($attr['descTypography'])) {
 		$desc_typography = $attr['descTypography'];
 
-		$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
-		$css->render_typography( $desc_typography, 'Desktop' );
+		$css->set_selector('.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc');
+		$css->render_typography($desc_typography, 'Desktop');
 	}
 
-	if ( isset( $attr['descPadding'] ) ) {
+	if (isset($attr['descPadding'])) {
 		$desc_padding = $attr['descPadding'];
-		$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
-		$css->add_property( 'padding', $css->render_spacing( $desc_padding['Desktop'], $desc_padding['unit'] ) );
+		$css->set_selector('.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap');
+		$css->add_property('padding', $css->render_spacing($desc_padding['Desktop'], $desc_padding['unit']));
 	}
 
-	if ( isset( $attr['descBorder'] ) ) {
+	if (isset($attr['descBorder'])) {
 		$desc_border        = $attr['descBorder'];
 		$desc_border_width  = $desc_border['borderWidth'];
 		$desc_border_radius = $desc_border['borderRadius'];
 
-		$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
-		$css->add_property( 'border-width', $css->render_spacing( $desc_border_width['Desktop'], 'px' ) );
-		$css->add_property( 'border-radius', $css->render_spacing( $desc_border_radius['Desktop'], 'px' ) );
+		$css->set_selector('.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap');
+		$css->add_property('border-width', $css->render_spacing($desc_border_width['Desktop'], 'px'));
+		$css->add_property('border-radius', $css->render_spacing($desc_border_radius['Desktop'], 'px'));
 	}
 	// content.
-	if ( isset( $attr['descAlign'] ) ) {
+	if (isset($attr['descAlign'])) {
 		$align = $attr['descAlign'];
 
-		$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
-		$css->add_property( 'text-align', $css->get_responsive_css( $align, 'Desktop' ) );
+		$css->set_selector('.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap');
+		$css->add_property('text-align', $css->get_responsive_css($align, 'Desktop'));
 	}
 
-	$css->start_media_query( $media_query['tablet'] );
+	$css->start_media_query($media_query['tablet']);
 
-	if ( isset( $attr['titleTypography'] ) ) {
+	if (isset($attr['titleTypography'])) {
 		$title_typography = $attr['titleTypography'];
 
-		$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text' );
-		$css->render_typography( $title_typography, 'Tablet' );
+		$css->set_selector('.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text');
+		$css->render_typography($title_typography, 'Tablet');
 	}
 
-	if ( isset( $attr['titlePadding'] ) ) {
+	if (isset($attr['titlePadding'])) {
 		$title_padding = $attr['titlePadding'];
-		$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
-		$css->add_property( 'padding', $css->render_spacing( $title_padding['Tablet'], $title_padding['unit'] ) );
+		$css->set_selector('.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap');
+		$css->add_property('padding', $css->render_spacing($title_padding['Tablet'], $title_padding['unit']));
 	}
 
-	if ( isset( $attr['titleMargin'] ) ) {
+	if (isset($attr['titleMargin'])) {
 		$title_margin = $attr['titleMargin'];
-		$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' );
-		$css->add_property( 'margin-bottom', $css->render_range( $title_margin, 'Tablet' ) . '!important' );
+		$css->set_selector('.' . $unique_id . '> .premium-accordion__content_wrap');
+		$css->add_property('margin-bottom', $css->render_range($title_margin, 'Tablet') . '!important');
 	}
 
-	if ( isset( $attr['titleBorder'] ) ) {
+	if (isset($attr['titleBorder'])) {
 		$title_border        = $attr['titleBorder'];
 		$title_border_width  = $title_border['borderWidth'];
 		$title_border_radius = $title_border['borderRadius'];
 
-		$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
-		$css->add_property( 'border-width', $css->render_spacing( $title_border_width['Tablet'], 'px' ) );
-		$css->add_property( 'border-radius', $css->render_spacing( $title_border_radius['Tablet'], 'px' ) );
+		$css->set_selector('.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap');
+		$css->add_property('border-width', $css->render_spacing($title_border_width['Tablet'], 'px'));
+		$css->add_property('border-radius', $css->render_spacing($title_border_radius['Tablet'], 'px'));
 	}
 
 	// Desc Style
-	if ( isset( $attr['descTypography'] ) ) {
+	if (isset($attr['descTypography'])) {
 		$desc_typography = $attr['descTypography'];
 
-		$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
-		$css->render_typography( $desc_typography, 'Tablet' );
+		$css->set_selector('.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc');
+		$css->render_typography($desc_typography, 'Tablet');
 	}
 
-	if ( isset( $attr['descPadding'] ) ) {
+	if (isset($attr['descPadding'])) {
 		$desc_padding = $attr['descPadding'];
-		$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
-		$css->add_property( 'padding', $css->render_spacing( $desc_padding['Tablet'], $desc_padding['unit'] ) );
+		$css->set_selector('.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap');
+		$css->add_property('padding', $css->render_spacing($desc_padding['Tablet'], $desc_padding['unit']));
 	}
 
-	if ( isset( $attr['descBorder'] ) ) {
+	if (isset($attr['descBorder'])) {
 		$desc_border        = $attr['descBorder'];
 		$desc_border_width  = $desc_border['borderWidth'];
 		$desc_border_radius = $desc_border['borderRadius'];
 
-		$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
-		$css->add_property( 'border-width', $css->render_spacing( $desc_border_width['Tablet'], 'px' ) );
-		$css->add_property( 'border-radius', $css->render_spacing( $desc_border_radius['Tablet'], 'px' ) );
+		$css->set_selector('.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap');
+		$css->add_property('border-width', $css->render_spacing($desc_border_width['Tablet'], 'px'));
+		$css->add_property('border-radius', $css->render_spacing($desc_border_radius['Tablet'], 'px'));
 	}
 	// content.
-	if ( isset( $attr['descAlign'] ) ) {
+	if (isset($attr['descAlign'])) {
 		$align = $attr['descAlign'];
 
-		$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
-		$css->add_property( 'text-align', $css->get_responsive_css( $align, 'Tablet' ) );
+		$css->set_selector('.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap');
+		$css->add_property('text-align', $css->get_responsive_css($align, 'Tablet'));
 	}
 
 	$css->stop_media_query();
-	$css->start_media_query( $media_query['mobile'] );
-	if ( isset( $attr['titleTypography'] ) ) {
+	$css->start_media_query($media_query['mobile']);
+	if (isset($attr['titleTypography'])) {
 		$title_typography = $attr['titleTypography'];
 
-		$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text' );
-		$css->render_typography( $title_typography, 'Mobile' );
+		$css->set_selector('.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' . ' > .premium-accordion__title' . ' > .premium-accordion__title_text');
+		$css->render_typography($title_typography, 'Mobile');
 	}
 
-	if ( isset( $attr['titlePadding'] ) ) {
+	if (isset($attr['titlePadding'])) {
 		$title_padding = $attr['titlePadding'];
-		$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
-		$css->add_property( 'padding', $css->render_spacing( $title_padding['Mobile'], $title_padding['unit'] ) );
+		$css->set_selector('.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap');
+		$css->add_property('padding', $css->render_spacing($title_padding['Mobile'], $title_padding['unit']));
 	}
 
-	if ( isset( $attr['titleMargin'] ) ) {
+	if (isset($attr['titleMargin'])) {
 		$title_margin = $attr['titleMargin'];
-		$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' );
-		$css->add_property( 'margin-bottom', $css->render_range( $title_margin, 'Mobile' ) . '!important' );
+		$css->set_selector('.' . $unique_id . '> .premium-accordion__content_wrap');
+		$css->add_property('margin-bottom', $css->render_range($title_margin, 'Mobile') . '!important');
 	}
 
-	if ( isset( $attr['titleBorder'] ) ) {
+	if (isset($attr['titleBorder'])) {
 		$title_border        = $attr['titleBorder'];
 		$title_border_width  = $title_border['borderWidth'];
 		$title_border_radius = $title_border['borderRadius'];
 
-		$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap' );
-		$css->add_property( 'border-width', $css->render_spacing( $title_border_width['Mobile'], 'px' ) );
-		$css->add_property( 'border-radius', $css->render_spacing( $title_border_radius['Mobile'], 'px' ) );
+		$css->set_selector('.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__title_wrap');
+		$css->add_property('border-width', $css->render_spacing($title_border_width['Mobile'], 'px'));
+		$css->add_property('border-radius', $css->render_spacing($title_border_radius['Mobile'], 'px'));
 	}
 
 	// Desc Style
-	if ( isset( $attr['descTypography'] ) ) {
+	if (isset($attr['descTypography'])) {
 		$desc_typography = $attr['descTypography'];
 
-		$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc' );
-		$css->render_typography( $desc_typography, 'Mobile' );
+		$css->set_selector('.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' . ' > .premium-accordion__desc');
+		$css->render_typography($desc_typography, 'Mobile');
 	}
 
-	if ( isset( $attr['descPadding'] ) ) {
+	if (isset($attr['descPadding'])) {
 		$desc_padding = $attr['descPadding'];
-		$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
-		$css->add_property( 'padding', $css->render_spacing( $desc_padding['Mobile'], $desc_padding['unit'] ) );
+		$css->set_selector('.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap');
+		$css->add_property('padding', $css->render_spacing($desc_padding['Mobile'], $desc_padding['unit']));
 	}
 
-	if ( isset( $attr['descBorder'] ) ) {
+	if (isset($attr['descBorder'])) {
 		$desc_border        = $attr['descBorder'];
 		$desc_border_width  = $desc_border['borderWidth'];
 		$desc_border_radius = $desc_border['borderRadius'];
 
-		$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
-		$css->add_property( 'border-width', $css->render_spacing( $desc_border_width['Mobile'], 'px' ) );
-		$css->add_property( 'border-radius', $css->render_spacing( $desc_border_radius['Mobile'], 'px' ) );
+		$css->set_selector('.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap');
+		$css->add_property('border-width', $css->render_spacing($desc_border_width['Mobile'], 'px'));
+		$css->add_property('border-radius', $css->render_spacing($desc_border_radius['Mobile'], 'px'));
 	}
 	// content.
-	if ( isset( $attr['descAlign'] ) ) {
+	if (isset($attr['descAlign'])) {
 		$align = $attr['descAlign'];
 
-		$css->set_selector( '.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap' );
-		$css->add_property( 'text-align', $css->get_responsive_css( $align, 'Mobile' ) );
+		$css->set_selector('.' . $unique_id . '> .premium-accordion__content_wrap' . ' > .premium-accordion__desc_wrap');
+		$css->add_property('text-align', $css->get_responsive_css($align, 'Mobile'));
 	}
 
 	$css->stop_media_query();
@@ -219,18 +221,19 @@ function get_premium_accordion_css_style( $attr, $unique_id ) {
  *
  * @return string Returns the post content with the legacy widget added.
  */
-function render_block_pbg_accordion( $attributes, $content, $block ) {
+function render_block_pbg_accordion($attributes, $content, $block)
+{
 	$block_helpers = pbg_blocks_helper();
-	if ( isset( $attributes['blockId'] ) && ! empty( $attributes['blockId'] ) ) {
+	if (isset($attributes['blockId']) && !empty($attributes['blockId'])) {
 		$unique_id = $attributes['blockId'];
 	} else {
-		$unique_id = rand( 100, 10000 );
+		$unique_id = rand(100, 10000);
 	}
-	if ( $block_helpers->it_is_not_amp() ) {
+	if ($block_helpers->it_is_not_amp()) {
 		wp_enqueue_script(
 			'pbg-accordion',
 			PREMIUM_BLOCKS_URL . 'assets/js/accordion.js',
-			array( 'jquery' ),
+			array('jquery'),
 			PREMIUM_BLOCKS_VERSION,
 			true
 		);
@@ -242,16 +245,16 @@ function render_block_pbg_accordion( $attributes, $content, $block ) {
 		PREMIUM_BLOCKS_VERSION,
 		'all'
 	);
-	$style_id = 'pbg-blocks-style' . esc_attr( $unique_id );
-	if ( ! wp_style_is( $style_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'accordion', $unique_id ) ) {
+	$style_id = 'pbg-blocks-style' . esc_attr($unique_id);
+	if (!wp_style_is($style_id, 'enqueued') && apply_filters('Premium_BLocks_blocks_render_inline_css', true, 'accordion', $unique_id)) {
 		// If filter didn't run in header (which would have enqueued the specific css id ) then filter attributes for easier dynamic css.
 		// $attributes = apply_filters( 'Premium_BLocks_blocks_column_render_block_attributes', $attributes );
-		$css = get_premium_accordion_css_style( $attributes, $unique_id );
-		if ( ! empty( $css ) ) {
-			if ( $block_helpers->should_render_inline( 'accordion', $unique_id ) ) {
-				$content = '<style id="pbg-blocks-style' . esc_attr( $unique_id ) . '">' . $css . '</style>' . $content;
+		$css = get_premium_accordion_css_style($attributes, $unique_id);
+		if (!empty($css)) {
+			if ($block_helpers->should_render_inline('accordion', $unique_id)) {
+				$content = '<style id="pbg-blocks-style' . esc_attr($unique_id) . '">' . $css . '</style>' . $content;
 			} else {
-				$block_helpers->render_inline_css( $css, $style_id, true );
+				$block_helpers->render_inline_css($css, $style_id, true);
 			}
 		}
 	};
@@ -268,8 +271,9 @@ function render_block_pbg_accordion( $attributes, $content, $block ) {
  * @uses render_block_pbg_accordion()
  * @throws WP_Error An WP_Error exception parsing the block definition.
  */
-function register_block_pbg_accordion() {
-	if ( ! function_exists( 'register_block_type' ) ) {
+function register_block_pbg_accordion()
+{
+	if (!function_exists('register_block_type')) {
 		return;
 	}
 	register_block_type(
