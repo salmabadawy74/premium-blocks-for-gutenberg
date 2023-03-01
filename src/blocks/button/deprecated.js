@@ -404,9 +404,7 @@ const v8Attrinutes = {
     },
     "btnLink": {
         "type": "string",
-        "source": "attribute",
-        "attribute": "href",
-        "selector": ".premium-button"
+        "default": ""
     },
     "btnTarget": {
         "type": "boolean",
@@ -686,7 +684,8 @@ const deprecatedContent = [
                         "style": "default"
                     }
                 ],
-                iconType: "fe"
+                iconType: "fe",
+                btnLink: attributes.btnLink ? attributes.btnLink : ""
             };
             return Object.assign(attributes, newAttributes);
         },
