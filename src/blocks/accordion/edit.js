@@ -15,9 +15,11 @@ import {
     PremiumTypo,
     SpacingComponent,
     ResponsiveRangeControl,
+    BlockContent
 } from "@pbg/components";
 import { generateCss, generateBlockId } from "@pbg/helpers";
 import { compose } from "@wordpress/compose";
+import AdvancedTabOptions from "../../components/AdvancedTabOptions";
 
 const { useEffect, Fragment } = wp.element;
 const { __ } = wp.i18n;
@@ -744,6 +746,7 @@ function PremiumAccordion(props) {
                                 })
                             }
                         />, props)}
+                        {/* <AdvancedTabOptions /> */}
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
@@ -762,14 +765,13 @@ function PremiumAccordion(props) {
                 })}
             >
                 <style>{loadStyles()}</style>
-                {applyFilters('Pbg.BlockContent',
+                <BlockContent blockProps={props}>
                     <InnerBlocks
                         template={innerBlocksTemplate}
                         templateLock={false}
                         allowedBlocks={["premium/accordion-item"]}
-                    />,
-                    props
-                )}
+                    />
+                </BlockContent>
                 {loadTitleGoogleFonts}
                 {loadDescGoogleFonts}
             </div>

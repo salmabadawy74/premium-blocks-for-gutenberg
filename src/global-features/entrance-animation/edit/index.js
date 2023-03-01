@@ -36,9 +36,6 @@ const withClientId = createHigherOrderComponent(
                 return <BlockListBlock {...props} />;
             }
             const { attributes } = props;
-            const wrapperProps = {
-                ...props.wrapperProps,
-            };
             const deviceType = useSelect((select) => {
                 const { __experimentalGetPreviewDeviceType = null } = select(
                     "core/edit-post"
@@ -50,13 +47,9 @@ const withClientId = createHigherOrderComponent(
 
             if (attributes?.entranceAnimation && attributes.entranceAnimation.animation?.[deviceType]) {
                 attributes.entranceAnimation.clientId = props.clientId.split("-")[4];
-                const animationClass = attributes.entranceAnimation.animation?.[deviceType];
-                if (animationClass) {
-                    props.className += ` ${animationClass}`;
-                }
             }
 
-            return <BlockListBlock {...props} wrapperProps={wrapperProps} />;
+            return <BlockListBlock {...props} />;
         };
     },
     'withClientId'

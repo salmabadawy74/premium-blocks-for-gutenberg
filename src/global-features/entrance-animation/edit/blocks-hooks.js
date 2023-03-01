@@ -7,6 +7,7 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { isPremiumBlock } from '../../helpers/helpers';
 import { useRef } from 'react';
 import EntranceAnimation from './components/EntranceAnimation';
+import { TestFill } from '../../../components/AdvancedTabOptions';
 
 const EntranceAnimationControl = createHigherOrderComponent((BlockEdit) => {
     return (props) => {
@@ -34,11 +35,18 @@ const EntranceAnimationControl = createHigherOrderComponent((BlockEdit) => {
             blockElement.style.animationDelay = entranceAnimation.delay ? `${entranceAnimation.delay}ms` : '';
         }, [isSelected, entranceAnimation, deviceType]);
 
-        return (
-            <Fragment>
-                <div className='pbg-entrance-animation' ref={blockRef}>
+        const BlockContent = () => {
+            if (attributes?.entranceAnimation?.animation?.[deviceType]) {
+                return <div className={`pbg-entrance-animation ${attributes?.entranceAnimation?.animation?.[deviceType]}`} ref={blockRef}>
                     <BlockEdit {...props} />
                 </div>
+            }
+
+            return <BlockEdit {...props} />
+        }
+        return (
+            <Fragment>
+                <BlockContent />
                 {isSelected &&
                     <InspectorControls>
                         <EntranceAnimation value={entranceAnimation} deviceType={deviceType} onChange={(value) => setAttributes({ entranceAnimation: value })} />

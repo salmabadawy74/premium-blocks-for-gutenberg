@@ -28,10 +28,11 @@ import {
     InsideTab,
     iconsList,
     PBGPresets,
+    BlockContent
 } from "@pbg/components";
 import { applyFilters, doAction } from '@wordpress/hooks';
 const { __ } = wp.i18n;
-
+import AdvancedTabOptions from "../../components/AdvancedTabOptions";
 const { PanelBody, SelectControl, ToggleControl } = wp.components;
 const { Fragment, useEffect } = wp.element;
 const { InspectorControls, RichText, URLInput, useBlockProps } = wp.blockEditor;
@@ -695,7 +696,7 @@ function Edit(props) {
                         )}
                     </InspectorTab>
                     <InspectorTab key={"advance"}>
-                        {applyFilters('Pbg.AdvancedTab', <PremiumResponsiveTabs
+                        <PremiumResponsiveTabs
                             Desktop={hideDesktop}
                             Tablet={hideTablet}
                             Mobile={hideMobile}
@@ -720,7 +721,9 @@ function Edit(props) {
                                         : "",
                                 })
                             }
-                        />, props)}
+                        />
+                        {applyFilters('Pbg.AdvancedTab', props)}
+                        <AdvancedTabOptions />
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
@@ -739,8 +742,8 @@ function Edit(props) {
                 style={{ textAlign: btnAlign[props.deviceType] }}
             >
                 <style>{loadStyles()}</style>
-                {applyFilters('Pbg.BlockContent',
-                    React.createElement(
+                <BlockContent blockProps={props}>
+                    {React.createElement(
                         "div",
                         {
                             className: `premium-button wp-block-button__link premium-button__${btnSize} premium-button__${iconPosition}`,
@@ -814,10 +817,8 @@ function Edit(props) {
                                 )}
                             </Fragment>,
                         ]
-                    ),
-                    props
-                )}
-
+                    )}
+                </BlockContent>
                 <URLInput
                     value={btnLink}
                     onChange={(newLink) => setAttributes({ btnLink: newLink })}

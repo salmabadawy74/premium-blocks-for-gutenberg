@@ -8827,6 +8827,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_pbg_helpers__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
 /* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _components_AdvancedTabOptions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/AdvancedTabOptions */ "./src/components/AdvancedTabOptions.js");
+
 
 
 
@@ -9314,11 +9316,13 @@ function PremiumAccordion(props) {
       " premium-tablet-hidden": hideTablet,
       " premium-mobile-hidden": hideMobile
     })
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", null, loadStyles()), (0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_3__.applyFilters)('Pbg.BlockContent', (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InnerBlocks, {
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", null, loadStyles()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_4__.BlockContent, {
+    blockProps: props
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(InnerBlocks, {
     template: innerBlocksTemplate,
     templateLock: false,
     allowedBlocks: ["premium/accordion-item"]
-  }), props), loadTitleGoogleFonts, loadDescGoogleFonts));
+  })), loadTitleGoogleFonts, loadDescGoogleFonts));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_6__.compose)([withSelect(select => {
   const {
@@ -17374,7 +17378,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pbg_components__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_pbg_components__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/hooks */ "@wordpress/hooks");
 /* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _presets__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./presets */ "./src/blocks/button/presets.js");
+/* harmony import */ var _components_AdvancedTabOptions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/AdvancedTabOptions */ "./src/components/AdvancedTabOptions.js");
+/* harmony import */ var _presets__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./presets */ "./src/blocks/button/presets.js");
 
 
 
@@ -17385,6 +17390,7 @@ __webpack_require__.r(__webpack_exports__);
 const {
   __
 } = wp.i18n;
+
 const {
   PanelBody,
   SelectControl,
@@ -17596,7 +17602,7 @@ function Edit(props) {
     initialOpen: true
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_5__.PBGPresets, {
     setAttributes: setAttributes,
-    presets: _presets__WEBPACK_IMPORTED_MODULE_7__.buttonsPresets,
+    presets: _presets__WEBPACK_IMPORTED_MODULE_8__.buttonsPresets,
     presetInputType: "radioImage"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(SelectControl, {
     options: EFFECTS,
@@ -17815,7 +17821,7 @@ function Edit(props) {
     responsive: true
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_5__.InspectorTab, {
     key: "advance"
-  }, (0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_6__.applyFilters)('Pbg.AdvancedTab', (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_5__.PremiumResponsiveTabs, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_5__.PremiumResponsiveTabs, {
     Desktop: hideDesktop,
     Tablet: hideTablet,
     Mobile: hideMobile,
@@ -17828,7 +17834,7 @@ function Edit(props) {
     onChangeMobile: value => setAttributes({
       hideMobile: value ? " premium-mobile-hidden" : ""
     })
-  }), props)))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, useBlockProps({
+  }), (0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_6__.applyFilters)('Pbg.AdvancedTab', props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_AdvancedTabOptions__WEBPACK_IMPORTED_MODULE_7__["default"], null)))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, useBlockProps({
     className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, `premium-button__wrap ${blockId} premium-button__${effect} premium-button__${effectDir}`, {
       " premium-desktop-hidden": hideDesktop,
       " premium-tablet-hidden": hideTablet,
@@ -17838,7 +17844,9 @@ function Edit(props) {
     style: {
       textAlign: btnAlign[props.deviceType]
     }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", null, loadStyles()), (0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_6__.applyFilters)('Pbg.BlockContent', React.createElement("div", {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("style", null, loadStyles()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_5__.BlockContent, {
+    blockProps: props
+  }, React.createElement("div", {
     className: `premium-button wp-block-button__link premium-button__${btnSize} premium-button__${iconPosition}`,
     style: {
       boxShadow: `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`,
@@ -17877,7 +17885,7 @@ function Edit(props) {
       color: iconColor,
       textShadow: `${iconShadow.horizontal}px ${iconShadow.vertical}px ${iconShadow.blur}px ${iconShadow.color}`
     }
-  }))]), props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(URLInput, {
+  }))])), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(URLInput, {
     value: btnLink,
     onChange: newLink => setAttributes({
       btnLink: newLink
@@ -61226,6 +61234,69 @@ const save = props => {
   })));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (save);
+
+/***/ }),
+
+/***/ "./src/components/AdvancedTabOptions.js":
+/*!**********************************************!*\
+  !*** ./src/components/AdvancedTabOptions.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "TestFill": () => (/* binding */ TestFill),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+
+// /**
+//  * WordPress dependencies
+//  */
+// import { withFilters } from '@wordpress/components';
+// import { forwardRef } from 'react';
+
+// const AdvancedTabOptions = forwardRef((props, ref) => {
+//     const { extraOptions = [], children, blockProps } = props;
+//     const Extra = withFilters('pbg.AdvancedTabOptionsExtra')(props => props.children);
+
+//     const extraChildren = extraOptions.map((option, index) => {
+//         return (
+//             <Extra key={`extra-${index}`} blockProps={blockProps}>
+//                 {option}
+//             </Extra>
+//         );
+//     });
+
+//     return (
+//         <>
+//             {children}
+//             {extraChildren}
+//         </>
+//     );
+// });
+
+// export default AdvancedTabOptions;
+
+/**
+ * WordPress dependencies
+ */
+
+const {
+  Fill,
+  Slot
+} = (0,_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.createSlotFill)('MyControls');
+const TestFill = props => {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fill, null, props.children);
+};
+const MyComponent = () => {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Slot, null);
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyComponent);
 
 /***/ }),
 
