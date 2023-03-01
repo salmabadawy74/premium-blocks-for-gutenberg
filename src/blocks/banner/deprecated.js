@@ -808,7 +808,524 @@ const v9Attributes = {
     }
 }
 
+const v10Attributes = {
+    "blockId": {
+        "type": "string"
+    },
+    "borderBanner": {
+        "type": "boolean",
+        "default": false
+    },
+    "imageID": {
+        "type": "number"
+    },
+    "imageURL": {
+        "type": "string"
+    },
+    "titleStyles": {
+        "type": "array",
+        "default": [
+            {
+                "titleColor": "",
+                "titleBack": ""
+            }
+        ]
+    },
+    "titleTextShadow": {
+        "type": "object",
+        "default": {
+            "color": "undefined",
+            "blur": "10",
+            "horizontal": "0",
+            "vertical": "0"
+        }
+    },
+    "descStyles": {
+        "type": "array",
+        "default": [
+            {
+                "descColor": ""
+            }
+        ]
+    },
+    "descTextShadow": {
+        "type": "object",
+        "default": {
+            "color": "undefined",
+            "blur": "10",
+            "horizontal": "0",
+            "vertical": "0",
+            "position": " "
+        }
+    },
+    "containerStyles": {
+        "type": "array",
+        "default": [
+            {
+                "paddingU": "px"
+            }
+        ]
+    },
+    "containerShadow": {
+        "type": "object",
+        "default": {
+            "color": "undefined",
+            "blur": "10",
+            "horizontal": "0",
+            "vertical": "0",
+            "position": " "
+        }
+    },
+    "title": {
+        "type": "string",
+        "source": "children",
+        "selector": ".premium-banner__title",
+        "default": "Awesome Title"
+    },
+    "titleTag": {
+        "type": "string",
+        "default": "h3"
+    },
+    "desc": {
+        "type": "string",
+        "source": "children",
+        "selector": ".premium-banner__desc",
+        "default": "Cool Description!!"
+    },
+    "contentAlign": {
+        "type": "object",
+        "default": {
+            "Desktop": "left",
+            "Tablet": "left",
+            "Mobile": "left"
+        }
+    },
+    "effect": {
+        "type": "string",
+        "default": "effect1"
+    },
+    "hoverEffect": {
+        "type": "string",
+        "default": "none"
+    },
+    "height": {
+        "type": "string",
+        "default": "default"
+    },
+    "minHeight": {
+        "type": "number"
+    },
+    "verAlign": {
+        "type": "string",
+        "default": "baseline"
+    },
+    "hovered": {
+        "type": "boolean",
+        "default": false
+    },
+    "responsive": {
+        "type": "boolean",
+        "default": false
+    },
+    "background": {
+        "type": "string",
+        "default": ""
+    },
+    "urlCheck": {
+        "type": "boolean",
+        "default": false
+    },
+    "target": {
+        "type": "boolean",
+        "default": false
+    },
+    "url": {
+        "type": "string",
+        "source": "attribute",
+        "attribute": "href",
+        "selector": ".premium-banner__link"
+    },
+    "sepColor": {
+        "type": "string"
+    },
+    "filter": {
+        "type": "object",
+        "default": {
+            "contrast": "100",
+            "blur": "0",
+            "bright": "100",
+            "saturation": "100",
+            "hue": "0"
+        }
+    },
+    "hideDesktop": {
+        "type": "boolean",
+        "default": ""
+    },
+    "hideTablet": {
+        "type": "boolean",
+        "default": ""
+    },
+    "hideMobile": {
+        "type": "boolean",
+        "default": ""
+    },
+    "classMigrate": {
+        "type": "boolean",
+        "default": false
+    },
+    "padding": {
+        "type": "object",
+        "default": {
+            "Desktop": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Tablet": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "Mobile": {
+                "top": "",
+                "right": "",
+                "bottom": "",
+                "left": ""
+            },
+            "unit": "px"
+        }
+    },
+    "border": {
+        "type": "object",
+        "default": {
+            "borderType": "none",
+            "borderColor": "",
+            "borderWidth": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            },
+            "borderRadius": {
+                "Desktop": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Tablet": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                },
+                "Mobile": {
+                    "top": "",
+                    "right": "",
+                    "bottom": "",
+                    "left": ""
+                }
+            }
+        }
+    },
+    "titleTypography": {
+        "type": "object",
+        "default": {
+            "fontWeight": "",
+            "fontStyle": "",
+            "letterSpacing": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            },
+            "fontFamily": "Default",
+            "lineHeight": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            },
+            "textDecoration": "",
+            "textTransform": "",
+            "fontSize": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            }
+        }
+    },
+    "descTypography": {
+        "type": "object",
+        "default": {
+            "fontWeight": "",
+            "fontStyle": "",
+            "textTransform": "",
+            "letterSpacing": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            },
+            "fontFamily": "Default",
+            "lineHeight": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            },
+            "textDecoration": "",
+            "fontSize": {
+                "Desktop": "",
+                "Tablet": "",
+                "Mobile": "",
+                "unit": "px"
+            }
+        }
+    },
+    "hoverBackground": {
+        "type": "string",
+        "default": ""
+    }
+}
+
 const deprecatedContent = [
+    {
+        attributes: v10Attributes,
+        migrate: attributes => {
+            let newAttributes = {
+                verAlign: 'baseline',
+                titleTypography: {
+                    "fontWeight": "",
+                    "fontStyle": attributes.titleTypography.fontStyle ? attributes.titleTypography.fontStyle : "",
+                    "letterSpacing": {
+                        "Desktop": attributes.titleTypography.letterSpacing['Desktop'] ? attributes.titleTypography.letterSpacing['Desktop'] : "",
+                        "Tablet": attributes.titleTypography.letterSpacing['Tablet'] ? attributes.titleTypography.letterSpacing['Tablet'] : "",
+                        "Mobile": attributes.titleTypography.letterSpacing['Mobile'] ? attributes.titleTypography.letterSpacing['Mobile'] : "",
+                        "unit": attributes.titleTypography.letterSpacing['unit'] ? attributes.titleTypography.letterSpacing['unit'] : "px"
+                    },
+                    "fontFamily": attributes.titleTypography.fontFamily ? attributes.titleTypography.fontFamily : "Default",
+                    "lineHeight": {
+                        "Desktop": attributes.titleTypography.lineHeight['Desktop'] ? attributes.titleTypography.lineHeight['Desktop'] : "",
+                        "Tablet": attributes.titleTypography.lineHeight['Tablet'] ? attributes.titleTypography.lineHeight['Tablet'] : "",
+                        "Mobile": attributes.titleTypography.lineHeight['Mobile'] ? attributes.titleTypography.lineHeight['Mobile'] : "",
+                        "unit": attributes.titleTypography.lineHeight['unit'] ? attributes.titleTypography.lineHeight['unit'] : "px"
+                    },
+                    "textDecoration": attributes.titleTypography.textDecoration ? attributes.titleTypography.textDecoration : "",
+                    "textTransform": attributes.titleTypography.textTransform ? attributes.titleTypography.textTransform : "",
+                    "fontSize": {
+                        "Desktop": attributes.titleTypography.fontSize['Desktop'] ? attributes.titleTypography.fontSize['Desktop'] : "",
+                        "Tablet": attributes.titleTypography.fontSize['Tablet'] ? attributes.titleTypography.fontSize['Tablet'] : "",
+                        "Mobile": attributes.titleTypography.fontSize['Mobile'] ? attributes.titleTypography.fontSize['Mobile'] : "",
+                        "unit": attributes.titleTypography.fontSize['unit'] ? attributes.titleTypography.fontSize['unit'] : "px"
+                    }
+                },
+                descTypography: {
+                    "fontWeight": "",
+                    "fontStyle": attributes.descTypography.fontStyle ? attributes.descTypography.fontStyle : "",
+                    "letterSpacing": {
+                        "Desktop": attributes.descTypography.letterSpacing['Desktop'] ? attributes.descTypography.letterSpacing['Desktop'] : "",
+                        "Tablet": attributes.descTypography.letterSpacing['Tablet'] ? attributes.descTypography.letterSpacing['Tablet'] : "",
+                        "Mobile": attributes.descTypography.letterSpacing['Mobile'] ? attributes.descTypography.letterSpacing['Mobile'] : "",
+                        "unit": attributes.descTypography.letterSpacing['unit'] ? attributes.descTypography.letterSpacing['unit'] : "px"
+                    },
+                    "fontFamily": attributes.descTypography.fontFamily ? attributes.descTypography.fontFamily : "Default",
+                    "lineHeight": {
+                        "Desktop": attributes.descTypography.lineHeight['Desktop'] ? attributes.descTypography.lineHeight['Desktop'] : "",
+                        "Tablet": attributes.descTypography.lineHeight['Tablet'] ? attributes.descTypography.lineHeight['Tablet'] : "",
+                        "Mobile": attributes.descTypography.lineHeight['Mobile'] ? attributes.descTypography.lineHeight['Mobile'] : "",
+                        "unit": attributes.descTypography.lineHeight['unit'] ? attributes.descTypography.lineHeight['unit'] : "px"
+                    },
+                    "textDecoration": attributes.descTypography.textDecoration ? attributes.descTypography.textDecoration : "",
+                    "textTransform": attributes.descTypography.textTransform ? attributes.descTypography.textTransform : "",
+                    "fontSize": {
+                        "Desktop": attributes.descTypography.fontSize['Desktop'] ? attributes.descTypography.fontSize['Desktop'] : "",
+                        "Tablet": attributes.descTypography.fontSize['Tablet'] ? attributes.descTypography.fontSize['Tablet'] : "",
+                        "Mobile": attributes.descTypography.fontSize['Mobile'] ? attributes.descTypography.fontSize['Mobile'] : "",
+                        "unit": attributes.descTypography.fontSize['unit'] ? attributes.descTypography.fontSize['unit'] : "px"
+                    }
+                }
+            }
+            return Object.assign(attributes, newAttributes)
+        },
+        save: props => {
+            const { className } = props;
+            const {
+                imageURL,
+                titleStyles,
+                descStyles,
+                title,
+                titleTag,
+                desc,
+                effect,
+                hoverEffect,
+                height,
+                minHeight,
+                verAlign,
+                hovered,
+                responsive,
+                background,
+                urlCheck,
+                target,
+                url,
+                sepColor,
+                filter,
+                hideDesktop,
+                hideTablet,
+                hideMobile,
+                border,
+                titleTypography,
+                descTypography,
+                titleTextShadow,
+                descTextShadow,
+                containerShadow,
+                blockId,
+                hoverBackground
+            } = props.attributes;
+
+            const loadStyles = () => {
+                const styles = {};
+
+                styles[
+                    `.${blockId} .premium-banner__effect3 .premium-banner__title_wrap::after`
+                ] = {
+                    background: sepColor,
+                };
+
+                styles[
+                    `.${blockId} .premium-banner__inner:hover .premium-banner__bg-overlay`
+                ] = {
+                    "background-color": `${hoverBackground ? hoverBackground : ''} !important`,
+                };
+
+                return generateCss(styles);
+            };
+
+            return (
+                imageURL && (
+                    <div
+                        {...useBlockProps.save({
+                            className: classnames(
+                                className,
+                                `premium-banner ${blockId} premium-banner__responsive_${responsive}`,
+                                {
+                                    " premium-desktop-hidden": hideDesktop,
+                                    " premium-tablet-hidden": hideTablet,
+                                    " premium-mobile-hidden": hideMobile,
+                                }
+                            ),
+                        })}
+                    >
+                        <style>{loadStyles()}</style>
+                        <div
+                            className={`premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`}
+                            style={filterJsCss({
+                                boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
+                                borderStyle: border && border.borderType,
+                                borderColor: border && border.borderColor,
+                                minHeight: height == "custom" ? minHeight : "",
+                            })}
+                        >
+                            <div
+                                className={`premium-banner__bg-overlay ${(hoverBackground == "" || hoverBackground == undefined) ? 'premium-banner-hover-overlay' : ''}`}
+                                style={filterJsCss({
+                                    backgroundColor: `${background}`,
+                                })}
+                            ></div>
+                            <div
+                                className={`premium-banner__img_wrap premium-banner__${height}`}
+                                style={filterJsCss({
+                                    // minHeight: minHeight,
+                                    alignItems: verAlign,
+                                })}
+                            >
+                                <img
+                                    className={`premium-banner__img`}
+                                    alt="Banner Image"
+                                    src={imageURL}
+                                    style={filterJsCss({
+                                        filter: `brightness( ${filter?.bright}% ) contrast( ${filter?.contrast}% ) saturate( ${filter?.saturation}% ) blur( ${filter?.blur}px ) hue-rotate( ${filter?.hue}deg )`,
+                                    })}
+                                />
+                            </div>
+
+                            <div
+                                className={`premium-banner__content`}
+                                style={filterJsCss({
+                                    background:
+                                        "effect2" === effect
+                                            ? titleStyles[0].titleBack
+                                            : "transparent",
+                                })}
+                            >
+                                <div className={`premium-banner__title_wrap`}>
+                                    <RichText.Content
+                                        tagName={titleTag.toLowerCase()}
+                                        className={`premium-banner__title`}
+                                        value={title}
+                                        style={filterJsCss({
+                                            color: titleStyles[0].titleColor,
+                                            fontStyle: titleTypography.fontStyle,
+                                            fontFamily: titleTypography.fontFamily,
+                                            fontWeight: titleTypography.fontWeight,
+                                            textDecoration:
+                                                titleTypography.textDecoration,
+                                            textTransform:
+                                                titleTypography.textTransform,
+                                            textShadow: `${titleTextShadow.horizontal}px ${titleTextShadow.vertical}px ${titleTextShadow.blur}px ${titleTextShadow.color}`,
+                                        })}
+                                    />
+                                </div>
+                                <div className={`premium-banner__desc_wrap`}>
+                                    <RichText.Content
+                                        tagName="p"
+                                        className={`premium-banner__desc`}
+                                        value={desc}
+                                        style={filterJsCss({
+                                            color: descStyles[0].descColor,
+                                            fontStyle: descTypography.fontStyle,
+                                            fontFamily: descTypography.fontFamily,
+                                            fontWeight: descTypography.fontWeight,
+                                            textDecoration:
+                                                descTypography.textDecoration,
+                                            textTransform: descTypography.textTransform,
+                                            textShadow: `${descTextShadow.horizontal}px ${descTextShadow.vertical}px ${descTextShadow.blur}px ${descTextShadow.color}`,
+                                        })}
+                                    />
+                                </div>
+                            </div>
+                            {urlCheck && "" !== url && (
+                                <a
+                                    className={`premium-banner__link`}
+                                    href={url}
+                                    target={target && "_blank"}
+                                    rel="noopener"
+                                />
+                            )}
+                        </div>
+                    </div>
+                )
+            );
+        }
+    },
     {
         attributes: Object.assign(v8Attributes, v9Attributes),
         migrate: attributes => {
