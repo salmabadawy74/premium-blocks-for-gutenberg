@@ -222,7 +222,7 @@
         "titleTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "Default",
+                "fontWeight": "",
                 "fontStyle": "",
                 "textTransform": "",
                 "fontFamily": "Default",
@@ -250,7 +250,7 @@
         "descTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "Default",
+                "fontWeight": "",
                 "fontStyle": "",
                 "textTransform": "",
                 "fontFamily": "Default",

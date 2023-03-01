@@ -404,7 +404,7 @@
         "triggerTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "Default",
+                "fontWeight": "",
                 "fontStyle": "",
                 "textTransform": "",
                 "fontFamily": "Default",

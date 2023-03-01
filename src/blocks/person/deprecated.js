@@ -408,7 +408,7 @@ const deprecated = [
                     }
                 },
                 nameTypography: {
-                    'fontWeight': attributes.nameStyles[0].nameWeight || "Default",
+                    'fontWeight': attributes.nameStyles[0].nameWeight || "normal",
                     'fontStyle': attributes.nameStyles[0].nameStyle,
                     'textTransform': attributes.nameStyles[0].nameUpper,
                     'letterSpacing': {
@@ -432,7 +432,7 @@ const deprecated = [
                     }
                 },
                 titleTypography: {
-                    'fontWeight': attributes.titleStyles[0].titleWeight || 'Default',
+                    'fontWeight': attributes.titleStyles[0].titleWeight || 'normal',
                     'fontStyle': attributes.titleStyles[0].titleStyle,
                     'textTransform': attributes.titleStyles[0].titleUpper,
                     'letterSpacing': {
@@ -456,7 +456,7 @@ const deprecated = [
                     }
                 },
                 descTypography: {
-                    'fontWeight': attributes.descStyles[0].descWeight || "Default",
+                    'fontWeight': attributes.descStyles[0].descWeight || "normal",
                     'fontStyle': attributes.descStyles[0].descStyle,
                     'textTransform': attributes.descStyles[0].descUpper,
                     'letterSpacing': {

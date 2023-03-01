@@ -92,7 +92,7 @@ const save = (props) => {
                     <div
                         className={`premium-banner__img_wrap premium-banner__${height}`}
                         style={filterJsCss({
-                            // minHeight: minHeight,
+                            minHeight: height == "custom" ? minHeight : "",
                             alignItems: verAlign,
                         })}
                     >

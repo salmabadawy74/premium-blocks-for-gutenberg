@@ -823,7 +823,7 @@ function Edit(props) {
                             <div
                                 className={`premium-banner__img_wrap premium-banner__${height}`}
                                 style={{
-                                    // minHeight: minHeight,
+                                    minHeight: height == "custom" ? minHeight : "",
                                     alignItems: verAlign,
                                 }}
                             >

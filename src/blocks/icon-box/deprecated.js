@@ -872,7 +872,7 @@ const deprecatedContent = [
                     'position': attributes.containerStyles[0].hoverShadowPosition
                 },
                 titleTypography: {
-                    'fontWeight': attributes.titleStyles[0].titleWeight || "Default",
+                    'fontWeight': attributes.titleStyles[0].titleWeight || "normal",
                     'fontStyle': attributes.titleStyles[0].titleStyle,
                     'textTransform': attributes.titleStyles[0].titleUpper,
                     'letterSpacing': {
@@ -896,7 +896,7 @@ const deprecatedContent = [
                     }
                 },
                 descTypography: {
-                    'fontWeight': attributes.descStyles[0].descWeight || "Default",
+                    'fontWeight': attributes.descStyles[0].descWeight || "normal",
                     'fontStyle': '',
                     'textTransform': '',
                     'letterSpacing': {
@@ -920,7 +920,7 @@ const deprecatedContent = [
                     }
                 },
                 btnTypography: {
-                    'fontWeight': attributes.btnStyles[0].btnWeight || "Default",
+                    'fontWeight': attributes.btnStyles[0].btnWeight || "normal",
                     'fontStyle': attributes.btnStyles[0].btnStyle,
                     'textTransform': attributes.btnStyles[0].btnUpper,
                     'letterSpacing': {

@@ -166,7 +166,7 @@
         "typography": {
             "type": "object",
             "default": {
-                "fontWeight": "Default",
+                "fontWeight": "",
                 "fontStyle": "",
                 "letterSpacing": {
                     "Desktop": "",

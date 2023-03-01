@@ -136,7 +136,7 @@
         "prefixTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "Default",
+                "fontWeight": "",
                 "fontStyle": "",
                 "letterSpacing": {
                     "Desktop": "",
@@ -164,7 +164,7 @@
         "fancyTextTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "Default",
+                "fontWeight": "",
                 "fontStyle": "",
                 "letterSpacing": {
                     "Desktop": "",

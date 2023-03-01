@@ -233,7 +233,7 @@
         "firstLabelTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "Default",
+                "fontWeight": "",
                 "fontStyle": "",
                 "textTransform": "",
                 "textDecoration": "",
@@ -308,7 +308,7 @@
         "secondLabelTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "Default",
+                "fontWeight": "",
                 "fontStyle": "",
                 "textTransform": "",
                 "textDecoration": "",

@@ -119,7 +119,7 @@
         },
         "verAlign": {
             "type": "string",
-            "default": "top"
+            "default": "baseline"
         },
         "hovered": {
             "type": "boolean",
@@ -250,7 +250,7 @@
         "titleTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "Default",
+                "fontWeight": "",
                 "fontStyle": "",
                 "letterSpacing": {
                     "Desktop": "",
@@ -278,7 +278,7 @@
         "descTypography": {
             "type": "object",
             "default": {
-                "fontWeight": "Default",
+                "fontWeight": "",
                 "fontStyle": "",
                 "textTransform": "",
                 "letterSpacing": {
