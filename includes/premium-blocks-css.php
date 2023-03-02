@@ -504,6 +504,7 @@ class Premium_Blocks_css
 		if (isset($font['textTransform']) &&  !empty($font['textTransform'])) {
 			$this->add_property('text-transform', $font['textTransform']);
 		}
+     
 
 
 		$family = (isset($font['fontFamily']) && !empty($font['fontFamily']) && 'Default' !== $font['fontFamily'] ? $font['fontFamily'] : '');
@@ -514,6 +515,8 @@ class Premium_Blocks_css
 					'fontFamily' => $family,
 				)
 			);
+            $this->add_property('font-family',$font["fontFamily"]);
+
 		}
 	}
 
