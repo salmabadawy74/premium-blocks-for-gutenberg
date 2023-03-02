@@ -58,6 +58,7 @@ import "./blocks/icon-group";
 import "./blocks/counter";
 import "./blocks/author";
 import "./blocks/post-template";
+import "./blocks/post-carousel";
 
 import "./blocks/post-grid";
 import "./blocks/pagination";

@@ -367,11 +367,9 @@ function PostTemplateEdit({
                                 ...BorderValue,
                                 ...marginCss(margin, deviceType),
                                 ...paddingCss(padding, deviceType),
-                                boxShadow: `${boxShadow.horizontal || 0}px ${
-                                    boxShadow.vertical || 0
-                                }px ${boxShadow.blur || 0}px ${
-                                    boxShadow.color
-                                }`,
+                                boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical || 0
+                                    }px ${boxShadow.blur || 0}px ${boxShadow.color
+                                    }`,
                             }}
                         >
                             <BlockContextProvider
@@ -379,8 +377,8 @@ function PostTemplateEdit({
                                 value={blockContext}
                             >
                                 {blockContext.postId ===
-                                (activeBlockContextId ||
-                                    blockContexts[0]?.postId) ? (
+                                    (activeBlockContextId ||
+                                        blockContexts[0]?.postId) ? (
                                     <PostTemplateInnerBlocks
                                         deviceType={deviceType}
                                     />

@@ -21,9 +21,10 @@ import { useInstanceId } from "@wordpress/compose";
 /**
  * Internal dependencies
  */
+const DEFAULTS_POSTS_PER_PAGE = 3;
 
 const TEMPLATE = [["premium/post-template"]];
-function QueryContent({ attributes, setAttributes, deviceType }) {
+function PostCarousel({ attributes, setAttributes, deviceType }) {
     const {
         queryId,
         query,
@@ -40,7 +41,7 @@ function QueryContent({ attributes, setAttributes, deviceType }) {
 
     const { __unstableMarkNextChangeAsNotPersistent } =
         useDispatch(blockEditorStore);
-    const instanceId = useInstanceId(QueryContent);
+    const instanceId = useInstanceId(PostCarousel);
     const blockProps = useBlockProps({
         className: `${align} ${equalHeightClass}`,
     });
@@ -51,9 +52,8 @@ function QueryContent({ attributes, setAttributes, deviceType }) {
                 ...borderCss(blogBorder, deviceType),
                 ...marginCss(blogMargin, deviceType),
                 ...paddingCss(blogPadding, deviceType),
-                boxShadow: `${blogBoxShadow.horizontal || 0}px ${
-                    blogBoxShadow.vertical || 0
-                }px ${blogBoxShadow.blur || 0}px ${blogBoxShadow.color}`,
+                boxShadow: `${blogBoxShadow.horizontal || 0}px ${blogBoxShadow.vertical || 0
+                    }px ${blogBoxShadow.blur || 0}px ${blogBoxShadow.color}`,
             },
         },
         {
@@ -69,9 +69,9 @@ function QueryContent({ attributes, setAttributes, deviceType }) {
     }, []);
     useEffect(() => {
         const newQuery = {};
-        if (!query.perPage && postsPerPage) {
-            newQuery.perPage = postsPerPage;
-        }
+        // if (!query.perPage && postsPerPage) {
+        //     newQuery.perPage = postsPerPage;
+        // }
         if (!!Object.keys(newQuery).length) {
             __unstableMarkNextChangeAsNotPersistent();
             updateQuery(newQuery);
@@ -94,7 +94,7 @@ function QueryContent({ attributes, setAttributes, deviceType }) {
                 setAttributes={setAttributes}
             /> */}
 
-            <Slider {...blockProps}>
+            <Slider >
                 <div {...innerBlocksProps} />
             </Slider>
         </Fragment>
@@ -110,4 +110,4 @@ export default withSelect((select) => {
     return {
         deviceType: deviceType,
     };
-})(QueryContent);
+})(PostCarousel);
