@@ -137,6 +137,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 				'person'           => true,
 				'container'        => true,
 				'content-switcher' => true,
+				'button-group'           => true,
 			);
 
 			return array_merge( $default_options, $options );
@@ -550,6 +551,17 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 						'all',
 						'content',
 						'creative',
+					),
+				),
+				'button-group' => array(
+					'type'     => 'pb-button',
+					'label'    => __( 'Button Group', 'premium-blocks-for-gutenberg' ),
+					'icon'     => 'button_group',
+					'category' => array(
+						'all',
+						'creative',
+						'marketing',
+						'content',
 					),
 				),
 			);

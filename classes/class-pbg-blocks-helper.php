@@ -193,6 +193,9 @@ class PBG_Blocks_Helper {
 				if ( 'testimonials' === $slug ) {
 					Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/author.min.css' );
 				}
+				if ( 'button-group' === $slug ) {
+					Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/button.min.css' );
+				}
 
 				Pbg_Style_Generator::pbg_add_css( "assets/css/minified/{$slug}.min.css" );
 			}
@@ -388,6 +391,7 @@ class PBG_Blocks_Helper {
 		}
 
 		foreach ( self::$blocks as $slug => $value ) {
+			
 			if ( false === $value ) {
 				continue;
 			}

@@ -38,7 +38,14 @@ function get_premium_button_css_style( $attr, $unique_id ) {
 		$padding = $attr['padding'];
 
 		$css->set_selector( $unique_id . '> .premium-button' );
-		$css->add_property( 'padding', $css->render_spacing( $padding['Desktop'], $padding['unit'] ) );
+		$css->add_property( 'padding', $css->render_spacing( $padding['Desktop'], $padding['unit'] ) . '!important' );
+	}
+
+	if ( isset( $attr['margin'] ) ) {
+		$margin = $attr['margin'];
+
+		$css->set_selector( $unique_id . '> .premium-button' );
+		$css->add_property( 'margin', $css->render_spacing( $margin['Desktop'], $margin['unit'] ) . '!important' );
 	}
 
 	if ( isset( $attr['border'] ) ) {
@@ -90,7 +97,14 @@ function get_premium_button_css_style( $attr, $unique_id ) {
 		$padding = $attr['padding'];
 
 		$css->set_selector( $unique_id . '> .premium-button' );
-		$css->add_property( 'padding', $css->render_spacing( $padding['Tablet'], $padding['unit'] ) );
+		$css->add_property( 'padding', $css->render_spacing( $padding['Tablet'], $padding['unit'] ) . '!important' );
+	}
+
+	if ( isset( $attr['margin'] ) ) {
+		$margin = $attr['margin'];
+
+		$css->set_selector( $unique_id . '> .premium-button' );
+		$css->add_property( 'margin', $css->render_spacing( $margin['Tablet'], $margin['unit'] ) . '!important' );
 	}
 
 	if ( isset( $attr['border'] ) ) {
@@ -144,7 +158,14 @@ function get_premium_button_css_style( $attr, $unique_id ) {
 		$padding = $attr['padding'];
 
 		$css->set_selector( $unique_id . '> .premium-button' );
-		$css->add_property( 'padding', $css->render_spacing( $padding['Mobile'], $padding['unit'] ) );
+		$css->add_property( 'padding', $css->render_spacing( $padding['Mobile'], $padding['unit'] ) . '!important' );
+	}
+
+	if ( isset( $attr['margin'] ) ) {
+		$margin = $attr['margin'];
+
+		$css->set_selector( $unique_id . '> .premium-button' );
+		$css->add_property( 'margin', $css->render_spacing( $margin['Mobile'], $margin['unit'] ) . '!important' );
 	}
 
 	if ( isset( $attr['border'] ) ) {
