@@ -52422,9 +52422,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _blocks_config_post_grid_block_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../blocks-config/post-grid/block.json */ "./blocks-config/post-grid/block.json");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_4__);
 
 
 
@@ -52432,17 +52431,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 // Register the block
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_5__.registerBlockType)("premium/post-grid", {
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_4__.registerBlockType)("premium/post-grid", {
   ..._blocks_config_post_grid_block_json__WEBPACK_IMPORTED_MODULE_2__,
   icon: "",
-  keywords: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("post"), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Grid")],
+  keywords: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("post"), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("grid")],
   supports: {
     align: ["center", "wide", "full"],
     anchor: true,
-    alignWide: true,
-    inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_4__.postGrid
+    alignWide: true
   },
   edit: _edit__WEBPACK_IMPORTED_MODULE_0__["default"],
   example: {},
@@ -53829,10 +53826,10 @@ function PostTitle(props) {
     styles[`.${blockId}.premium-blog-entry-title__container .premium-blog-entry-title `] = {
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.typographyCss)(Typography, deviceType)
     };
-    styles[`.${blockId}.premium-blog-entry-title__container .premium-blog-entry-title a`] = {
+    styles[`.${blockId}.premium-blog-entry-title__container .premium-blog-entry-title > *`] = {
       color: textColor
     };
-    styles[`.${blockId}.premium-blog-entry-title__container .premium-blog-entry-title:hover `] = {
+    styles[`.${blockId}.premium-blog-entry-title__container .premium-blog-entry-title:hover > * `] = {
       color: hoverColor
     };
     styles[`.${blockId}.premium-blog-entry-title__container .premium-blog-entry-title:hover a`] = {

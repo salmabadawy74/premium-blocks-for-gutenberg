@@ -84,12 +84,12 @@ function PostTitle(props) {
             ...typographyCss(Typography, deviceType),
         };
         styles[
-            `.${blockId}.premium-blog-entry-title__container .premium-blog-entry-title a`
+            `.${blockId}.premium-blog-entry-title__container .premium-blog-entry-title > *`
         ] = {
             color: textColor,
         };
         styles[
-            `.${blockId}.premium-blog-entry-title__container .premium-blog-entry-title:hover `
+            `.${blockId}.premium-blog-entry-title__container .premium-blog-entry-title:hover > * `
         ] = {
             color: hoverColor,
         };
