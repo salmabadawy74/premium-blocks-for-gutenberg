@@ -11,6 +11,7 @@ import Slider from "react-slick";
 const { __ } = wp.i18n;
 const { withSelect } = wp.data;
 const { useEffect, Fragment } = wp.element;
+import Inspector from "./inspector";
 // import Inspector from "./inspector";
 import {
     useBlockProps,
@@ -69,9 +70,9 @@ function PostCarousel({ attributes, setAttributes, deviceType }) {
     }, []);
     useEffect(() => {
         const newQuery = {};
-        // if (!query.perPage && postsPerPage) {
-        //     newQuery.perPage = postsPerPage;
-        // }
+        if (!query.perPage && postsPerPage) {
+            newQuery.perPage = postsPerPage;
+        }
         if (!!Object.keys(newQuery).length) {
             __unstableMarkNextChangeAsNotPersistent();
             updateQuery(newQuery);
@@ -88,11 +89,11 @@ function PostCarousel({ attributes, setAttributes, deviceType }) {
 
     return (
         <Fragment>
-            {/* <Inspector
+            <Inspector
                 attributes={attributes}
                 setQuery={updateQuery}
                 setAttributes={setAttributes}
-            /> */}
+            />
 
             <Slider >
                 <div {...innerBlocksProps} />

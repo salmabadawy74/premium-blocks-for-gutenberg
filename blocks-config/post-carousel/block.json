@@ -200,6 +200,38 @@
         "postDisplaytext": {
             "type": "string",
             "default": "No post found!"
+        },
+        "Autoplay": {
+            "type": "boolean",
+            "default": false
+        },
+        "slideToScroll": {
+            "type": "number",
+            "default": "1"
+        },
+        "autoplaySpeed": {
+            "type": "number",
+            "default": "500"
+        },
+        "centerMode": {
+            "type": "number",
+            "default": false
+        },
+        "slideSpacing": {
+            "type": "number",
+            "default": "10"
+        },
+        "navigationDots": {
+            "type": "boolean",
+            "default": true
+        },
+        "navigationArrow": {
+            "type": "boolean",
+            "default": true
+        },
+        "arrowPosition": {
+            "type": "number",
+            "default": "0"
         }
     },
     "providesContext": {
