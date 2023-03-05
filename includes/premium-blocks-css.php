@@ -504,8 +504,12 @@ class Premium_Blocks_css
 		if (isset($font['textTransform']) &&  !empty($font['textTransform'])) {
 			$this->add_property('text-transform', $font['textTransform']);
 		}
-
-
+        if(isset($font['fontWeight']) && !empty($font['fontWeight']) && 'Default' !== $font['fontWeight']){
+            $this->add_property('font-weight', $font['fontWeight']);
+        }
+        if(isset($font['fontStyle']) && !empty($font['fontStyle']) ){
+            $this->add_property('font-style', $font['fontStyle']);
+        }
 		$family = (isset($font['fontFamily']) && !empty($font['fontFamily']) && 'Default' !== $font['fontFamily'] ? $font['fontFamily'] : '');
 		if (!empty($family)) {
 

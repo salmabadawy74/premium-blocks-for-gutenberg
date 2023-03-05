@@ -17456,7 +17456,6 @@ function save(props) {
       'color': titleStyles[0].titleColor,
       'text-shadow': `${titlesTextShadow.horizontal}px ${titlesTextShadow.vertical}px ${titlesTextShadow.blur}px ${titlesTextShadow.color}`,
       'font-style': titleTypography?.fontStyle,
-      'font-family': titleTypography?.fontFamily,
       'font-weight': titleTypography?.fontWeight,
       'text-decoration': titleTypography?.textDecoration,
       'text-transform': titleTypography?.textTransform
@@ -20554,8 +20553,6 @@ const save = props => {
     style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       color: btnStyles[0].textColor,
       fontStyle: typography?.fontStyle,
-      fontFamily: typography?.fontFamily,
-      fontWeight: typography?.fontWeight,
       textDecoration: typography?.textDecoration,
       textTransform: typography?.textTransform,
       textShadow: `${textShadow?.horizontal}px ${textShadow?.vertical}px ${textShadow?.blur}px ${textShadow?.color}`

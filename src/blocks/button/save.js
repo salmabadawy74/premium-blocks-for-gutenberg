@@ -112,8 +112,7 @@ const save = (props) => {
                             style={filterJsCss({
                                 color: btnStyles[0].textColor,
                                 fontStyle: typography?.fontStyle,
-                                fontFamily: typography?.fontFamily,
-                                fontWeight: typography?.fontWeight,
+
                                 textDecoration: typography?.textDecoration,
                                 textTransform: typography?.textTransform,
                                 textShadow: `${textShadow?.horizontal}px ${textShadow?.vertical}px ${textShadow?.blur}px ${textShadow?.color}`,
