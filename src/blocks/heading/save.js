@@ -231,8 +231,6 @@ export default function save(props) {
             content: `${BackText}`,
             width: `${textWidth}`,
             color: `${textStyles[0].textBackColor}`,
-            "font-family": `${textTypography?.fontFamily}`,
-            "font-weight": `${textTypography?.fontWeight}`,
             "font-style": `${textTypography?.fontStyle}`,
             "text-transform": `${textTypography?.textTransform}`,
             "text-decoration": `${textTypography?.textDecoration}`,
@@ -249,10 +247,6 @@ export default function save(props) {
         styles[
             `.${blockId} .premium-title-style9__wrap .premium-letters-container`
         ] = {
-            "font-family": `${titleTypography?.fontFamily}`,
-            "font-weight": `${titleTypography?.fontWeight}`,
-            "letter-spacing": `${titleTypography?.letterSpacing}`,
-            "line-height": `${titleTypography?.lineHeight}`,
             "font-style": `${titleTypography?.fontStyle}`,
             "text-shadow": `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color} !important`,
         };
@@ -260,10 +254,6 @@ export default function save(props) {
         styles[
             `.${blockId} .premium-title-text-title`
         ] = {
-            "font-family": `${titleTypography?.fontFamily}`,
-            "font-weight": `${titleTypography?.fontWeight}`,
-            "letter-spacing": `${titleTypography?.letterSpacing}`,
-            "line-height": `${titleTypography?.lineHeight}`,
             "font-style": `${titleTypography?.fontStyle}`,
             "text-shadow": `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color} !important`,
         };
