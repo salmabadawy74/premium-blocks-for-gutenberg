@@ -101,7 +101,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 			$typography_css = $this->add_global_typography_to_editor();
 			$block_spacing = $this->add_global_block_spacing();
 
-			printf( "<style type='text/css' class='pbg-global-inline-style'>%s</style>", "{$colors_css}{$typography_css}{$block_spacing}" );
+			printf( "<style class='pbg-global-inline-style'>%s</style>", "{$colors_css}{$typography_css}{$block_spacing}" );
 		}
 
 		/**
