@@ -228,7 +228,6 @@ export default function save(props) {
         };
 
         styles[`.${blockId} .premium-title-bg-text:before`] = {
-            content: `${BackText}`,
             width: `${textWidth}`,
             color: `${textStyles[0].textBackColor}`,
             "font-style": `${textTypography?.fontStyle}`,
