@@ -113,6 +113,18 @@
                 },
                 "unit": "px"
             }
+        },
+        "groupAlign": {
+            "type": "string",
+            "default": "horizontal"
+        },
+        "buttonGap": {
+            "type": "object",
+            "default": {
+                "Desktop": "10",
+                "Tablet": "10",
+                "Mobile": "10"
+            }
         }
     },
     "editorScript": "pbg-blocks-js",

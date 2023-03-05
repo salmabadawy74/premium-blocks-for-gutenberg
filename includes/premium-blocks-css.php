@@ -514,6 +514,7 @@ class Premium_Blocks_css
 					'fontFamily' => $family,
 				)
 			);
+			$this->add_property('font-family', $font['fontFamily']);
 		}
 	}
 

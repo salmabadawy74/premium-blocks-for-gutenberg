@@ -28,8 +28,26 @@ function get_premium_button_group_css_style($attr, $unique_id) {
 	}
 
 	if (isset($attr['align'])) {
-		$css->set_selector($unique_id . '> .premium-button-group_wrap');
+		$css->set_selector($unique_id . ' > .premium-button-group-horizontal');
 		$css->add_property('justify-content', $css->get_responsive_css($attr['align'], 'Desktop'));
+		$css->add_property('column-gap', $css->get_responsive_css($attr['buttonGap'], 'Desktop') . 'px !important');
+	}
+
+	if (isset($attr['align'])) {
+		$content_align      = $css->get_responsive_css($attr['align'], 'Desktop');
+		$content_flex_align = 'left' === $content_align ? 'flex-start' : 'center';
+		$content_flex_align = 'right' === $content_align ? 'flex-end' : $content_flex_align;
+
+		$css->set_selector($unique_id . ' > .premium-button-group-vertical' );
+		$css->add_property('align-items', $content_flex_align);
+		$css->add_property('justify-content', $content_flex_align);
+		$css->add_property('row-gap', $css->get_responsive_css($attr['buttonGap'], 'Desktop') . 'px !important');
+	}
+
+	if (isset($attr['typography'])) {
+		$typography = $attr['typography'];
+		$css->set_selector($unique_id . '> .premium-button-group_wrap' . '> .premium-button__wrap' . '> .premium-button' . '> .premium-button-text-edit');
+		$css->render_typography( $typography, 'Desktop' );
 	}
 
 	if (isset( $attr['groupPadding'])) {
@@ -53,8 +71,26 @@ function get_premium_button_group_css_style($attr, $unique_id) {
 	}
 
 	if (isset($attr['align'])) {
-		$css->set_selector($unique_id . '> .premium-button-group_wrap');
+		$css->set_selector($unique_id . ' > .premium-button-group-horizontal');
 		$css->add_property('justify-content', $css->get_responsive_css($attr['align'], 'Tablet'));
+		$css->add_property('column-gap', $css->get_responsive_css($attr['buttonGap'], 'Tablet') . 'px !important');
+	}
+
+	if (isset($attr['align'])) {
+		$content_align      = $css->get_responsive_css($attr['align'], 'Tablet');
+		$content_flex_align = 'left' === $content_align ? 'flex-start' : 'center';
+		$content_flex_align = 'right' === $content_align ? 'flex-end' : $content_flex_align;
+
+		$css->set_selector($unique_id . ' > .premium-button-group-vertical' );
+		$css->add_property('align-items', $content_flex_align);
+		$css->add_property('justify-content', $content_flex_align);
+		$css->add_property('row-gap', $css->get_responsive_css($attr['buttonGap'], 'Tablet') . 'px !important');
+	}
+
+	if (isset($attr['typography'])) {
+		$typography = $attr['typography'];
+		$css->set_selector($unique_id . '> .premium-button-group_wrap' . '> .premium-button__wrap' . '> .premium-button' . '> .premium-button-text-edit');
+		$css->render_typography( $typography, 'Tablet' );
 	}
 
 	if (isset($attr['groupPadding'])) {
@@ -79,8 +115,26 @@ function get_premium_button_group_css_style($attr, $unique_id) {
 	}
 
 	if (isset($attr['align'])) {
-		$css->set_selector($unique_id . '> .premium-button-group_wrap');
+		$css->set_selector($unique_id . ' > .premium-button-group-horizontal');
 		$css->add_property('justify-content', $css->get_responsive_css($attr['align'], 'Mobile'));
+		$css->add_property('column-gap', $css->get_responsive_css($attr['buttonGap'], 'Mobile') . 'px !important');
+	}
+
+	if (isset($attr['align'])) {
+		$content_align      = $css->get_responsive_css($attr['align'], 'Mobile');
+		$content_flex_align = 'left' === $content_align ? 'flex-start' : 'center';
+		$content_flex_align = 'right' === $content_align ? 'flex-end' : $content_flex_align;
+
+		$css->set_selector($unique_id . ' > .premium-button-group-vertical' );
+		$css->add_property('align-items', $content_flex_align);
+		$css->add_property('justify-content', $content_flex_align);
+		$css->add_property('row-gap', $css->get_responsive_css($attr['buttonGap'], 'Mobile') . 'px !important');
+	}
+
+	if (isset($attr['typography'])) {
+		$typography = $attr['typography'];
+		$css->set_selector($unique_id . '> .premium-button-group_wrap' . '> .premium-button__wrap' . '> .premium-button' . '> .premium-button-text-edit');
+		$css->render_typography( $typography, 'Mobile' );
 	}
 
 	if (isset($attr['groupPadding'])) {

@@ -29,9 +29,14 @@ function get_premium_button_css_style( $attr, $unique_id ) {
 	}
 	if ( isset( $attr['typography'] ) ) {
 		$typography = $attr['typography'];
+		$font_size  = $typography['fontSize'];
+		$line_height = $typography['lineHeight'];
+		$letter_spacing = $typography['letterSpacing'];
 
 		$css->set_selector( $unique_id . '> .premium-button' . '> a' );
-		$css->render_typography( $typography, 'Desktop' );
+		$css->add_property( 'font-size', $css->render_range( $font_size, 'Desktop' ) . '!important' );
+		$css->add_property( 'line-height', $css->render_range( $line_height, 'Desktop' ) . '!important' );
+		$css->add_property( 'letter-spacing', $css->render_range( $letter_spacing, 'Desktop' ) . '!important' );
 	}
 
 	if ( isset( $attr['padding'] ) ) {
@@ -88,9 +93,14 @@ function get_premium_button_css_style( $attr, $unique_id ) {
 	}
 	if ( isset( $attr['typography'] ) ) {
 		$typography = $attr['typography'];
+		$font_size  = $typography['fontSize'];
+		$line_height = $typography['lineHeight'];
+		$letter_spacing = $typography['letterSpacing'];
 
 		$css->set_selector( $unique_id . '> .premium-button' . '> a' );
-		$css->render_typography( $typography, 'Tablet' );
+		$css->add_property( 'font-size', $css->render_range( $font_size, 'Tablet' ) . '!important' );
+		$css->add_property( 'line-height', $css->render_range( $line_height, 'Tablet' ) . '!important' );
+		$css->add_property( 'letter-spacing', $css->render_range( $letter_spacing, 'Tablet' ) . '!important' );
 	}
 
 	if ( isset( $attr['padding'] ) ) {
@@ -149,9 +159,14 @@ function get_premium_button_css_style( $attr, $unique_id ) {
 	}
 	if ( isset( $attr['typography'] ) ) {
 		$typography = $attr['typography'];
+		$font_size  = $typography['fontSize'];
+		$line_height = $typography['lineHeight'];
+		$letter_spacing = $typography['letterSpacing'];
 
 		$css->set_selector( $unique_id . '> .premium-button' . '> a' );
-		$css->render_typography( $typography, 'Mobile' );
+		$css->add_property( 'font-size', $css->render_range( $font_size, 'Mobile' ) . '!important' );
+		$css->add_property( 'line-height', $css->render_range( $line_height, 'Mobile' ) . '!important' );
+		$css->add_property( 'letter-spacing', $css->render_range( $letter_spacing, 'Mobile' ) . '!important' );
 	}
 
 	if ( isset( $attr['padding'] ) ) {

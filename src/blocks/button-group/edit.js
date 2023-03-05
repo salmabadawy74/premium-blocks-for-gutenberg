@@ -32,21 +32,19 @@ function Edit(props) {
         align,
         typography,
         groupMargin,
-        groupPadding
+        groupPadding,
+        groupAlign,
+        buttonGap
     } = props.attributes
 
-    const SIZE = [
+    const GroupAlign = [
         {
-            value: "sm",
-            label: __("Small", "premium-blocks-for-gutenberg"),
+            value: "horizontal",
+            label: __("Horizontal", "premium-blocks-for-gutenberg"),
         },
         {
-            value: "md",
-            label: __("Medium", "premium-blocks-for-gutenberg"),
-        },
-        {
-            value: "lg",
-            label: __("Large", "premium-blocks-for-gutenberg"),
+            value: "vertical",
+            label: __("Vertical", "premium-blocks-for-gutenberg"),
         }
     ];
 
@@ -108,6 +106,19 @@ function Edit(props) {
             "line-height": `${typography?.lineHeight[props.deviceType]}${typography?.lineHeight.unit}`,
         };
 
+        styles[` .${blockId} .premium-button-group-vertical`] = {
+            'align-items': `${align[props.deviceType] == 'left' ? 'flex-start' : align[props.deviceType] == 'right' ? 'flex-end' : 'center'} !important`,
+            'justify-content': `${align[props.deviceType]} !important`
+        };
+
+        styles[` .${blockId} .premium-button-group-vertical .block-editor-block-list__layout`] = {
+            'row-gap': `${buttonGap[props.deviceType]}px !important`
+        };
+
+        styles[` .${blockId} .premium-button-group-horizontal .block-editor-block-list__layout`] = {
+            'column-gap': `${buttonGap[props.deviceType]}px !important`,
+        };
+
         return generateCss(styles);
     }
 
@@ -121,6 +132,20 @@ function Edit(props) {
                             className="premium-panel-body"
                             initialOpen={true}
                         >
+                            <ResponsiveRangeControl
+                                label={__(
+                                    "Gap Between Buttons",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                value={buttonGap}
+                                onChange={(value) =>
+                                    setAttributes({ buttonGap: value })
+                                }
+                                showUnit={false}
+                                min={0}
+                                max={100}
+                                defaultValue={10}
+                            />
                             <ResponsiveRadioControl
                                 label={__("Alignment", "premium-blocks-for-gutenberg")}
                                 choices={[
@@ -131,6 +156,12 @@ function Edit(props) {
                                 value={align}
                                 onChange={(newValue) => setAttributes({ align: newValue })}
                                 showIcons={true}
+                            />
+                            <SelectControl
+                                label={__("Group Alignment", "premium-blocks-for-gutenberg")}
+                                options={GroupAlign}
+                                value={groupAlign}
+                                onChange={(newEffect) => setAttributes({ groupAlign: newEffect })}
                             />
                         </PanelBody>
                     </InspectorTab>
@@ -204,7 +235,7 @@ function Edit(props) {
             >
                 <style>{loadStyles()}</style>
                 <div
-                    className={`premium-button-group_wrap`}
+                    className={`premium-button-group_wrap premium-button-group-${groupAlign}`}
                     style={{
                         justifyContent: align[props.deviceType]
                     }}

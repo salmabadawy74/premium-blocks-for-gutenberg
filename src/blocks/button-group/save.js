@@ -8,7 +8,7 @@ export default function save({ attributes }) {
         hideDesktop,
         hideTablet,
         hideMobile,
-        align,
+        groupAlign,
         typography
     } = attributes;
 
@@ -37,7 +37,7 @@ export default function save({ attributes }) {
     return <div {...blockProps}>
         <style>{loadStyles()}</style>
         <div
-            className={`premium-button-group_wrap`}
+            className={`premium-button-group_wrap premium-button-group-${groupAlign}`}
         >
             <InnerBlocks.Content />
         </div>

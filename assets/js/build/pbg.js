@@ -910,7 +910,7 @@ const typographyCss = (value, device) => {
     fontSize: value?.fontSize[device] && `${value?.fontSize[device]}${value?.fontSize?.unit}`,
     fontStyle: value?.fontStyle,
     fontFamily: value?.fontFamily,
-    fontWeight: value?.fontWeight,
+    fontWeight: value?.fontWeight === "Default" ? ' ' : value?.fontWeight,
     letterSpacing: value?.letterSpacing[device] && `${value?.letterSpacing[device]}px`,
     textDecoration: value?.textDecoration,
     textTransform: value?.textTransform,
