@@ -25,8 +25,6 @@ export default function save({ attributes }) {
 
         styles[` .${blockId} .premium-button-group_wrap .premium-button .premium-button-text-edit`] = {
             "font-style": typography?.fontStyle,
-            "font-family": typography?.fontFamily,
-            "font-weight": typography?.fontWeight,
             "text-decoration": typography?.textDecoration,
             "text-transform": typography?.textTransform
         };

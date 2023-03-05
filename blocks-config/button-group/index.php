@@ -46,19 +46,19 @@ function get_premium_button_group_css_style($attr, $unique_id) {
 
 	if (isset($attr['typography'])) {
 		$typography = $attr['typography'];
-		$css->set_selector($unique_id . '> .premium-button-group_wrap' . '> .premium-button__wrap' . '> .premium-button' . '> .premium-button-text-edit');
+		$css->set_selector($unique_id . ' .premium-button-text-edit');
 		$css->render_typography( $typography, 'Desktop' );
 	}
 
 	if (isset( $attr['groupPadding'])) {
 		$groupPadding = $attr['groupPadding'];
-		$css->set_selector($unique_id . '> .premium-button-group_wrap' . '> .premium-button__wrap' . '> .premium-button');
+		$css->set_selector($unique_id . ' .premium-button');
 		$css->add_property('padding', $css->render_spacing($groupPadding['Desktop'], $groupPadding['unit']));
 	}
 
 	if (isset( $attr['groupMargin'])) {
 		$groupMargin = $attr['groupMargin'];
-		$css->set_selector($unique_id . '> .premium-button-group_wrap' . '> .premium-button__wrap' . '> .premium-button');
+		$css->set_selector($unique_id . ' .premium-button');
 		$css->add_property('margin', $css->render_spacing($groupMargin['Desktop'], $groupMargin['unit']));
 	}
 
@@ -89,19 +89,19 @@ function get_premium_button_group_css_style($attr, $unique_id) {
 
 	if (isset($attr['typography'])) {
 		$typography = $attr['typography'];
-		$css->set_selector($unique_id . '> .premium-button-group_wrap' . '> .premium-button__wrap' . '> .premium-button' . '> .premium-button-text-edit');
+		$css->set_selector($unique_id . ' .premium-button-text-edit');
 		$css->render_typography( $typography, 'Tablet' );
 	}
 
-	if (isset($attr['groupPadding'])) {
+	if (isset( $attr['groupPadding'])) {
 		$groupPadding = $attr['groupPadding'];
-		$css->set_selector($unique_id . '> .premium-button-group_wrap' . '> .premium-button__wrap' . '> .premium-button');
+		$css->set_selector($unique_id . ' .premium-button');
 		$css->add_property('padding', $css->render_spacing($groupPadding['Tablet'], $groupPadding['unit']));
 	}
 
 	if (isset( $attr['groupMargin'])) {
 		$groupMargin = $attr['groupMargin'];
-		$css->set_selector($unique_id . '> .premium-button-group_wrap' . '> .premium-button__wrap' . '> .premium-button');
+		$css->set_selector($unique_id . ' .premium-button');
 		$css->add_property('margin', $css->render_spacing($groupMargin['Tablet'], $groupMargin['unit']));
 	}
 
@@ -133,19 +133,19 @@ function get_premium_button_group_css_style($attr, $unique_id) {
 
 	if (isset($attr['typography'])) {
 		$typography = $attr['typography'];
-		$css->set_selector($unique_id . '> .premium-button-group_wrap' . '> .premium-button__wrap' . '> .premium-button' . '> .premium-button-text-edit');
+		$css->set_selector($unique_id . ' .premium-button-text-edit');
 		$css->render_typography( $typography, 'Mobile' );
 	}
 
-	if (isset($attr['groupPadding'])) {
+	if (isset( $attr['groupPadding'])) {
 		$groupPadding = $attr['groupPadding'];
-		$css->set_selector($unique_id . '> .premium-button-group_wrap' . '> .premium-button__wrap' . '> .premium-button');
+		$css->set_selector($unique_id . ' .premium-button');
 		$css->add_property('padding', $css->render_spacing($groupPadding['Mobile'], $groupPadding['unit']));
 	}
 
 	if (isset( $attr['groupMargin'])) {
 		$groupMargin = $attr['groupMargin'];
-		$css->set_selector($unique_id . '> .premium-button-group_wrap' . '> .premium-button__wrap' . '> .premium-button');
+		$css->set_selector($unique_id . ' .premium-button');
 		$css->add_property('margin', $css->render_spacing($groupMargin['Mobile'], $groupMargin['unit']));
 	}
 

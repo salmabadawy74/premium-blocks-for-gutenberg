@@ -83,11 +83,11 @@ const save = (props) => {
                 {
                     className: `premium-button wp-block-button__link premium-button__${btnSize} premium-button__${iconPosition}`,
                     style: {
-                        boxShadow: `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`,
+                        boxShadow: `${boxShadow?.horizontal}px ${boxShadow?.vertical}px ${boxShadow?.blur}px ${boxShadow?.color} ${boxShadow?.position}`,
                         borderStyle: border?.borderType,
                         borderColor: border?.borderColor,
                         ...gradientBackground(backgroundOptions),
-                        color: `${btnStyles[0].textColor}`,
+                        color: btnStyles[0]?.textColor
                     },
                 },
                 [
@@ -110,10 +110,8 @@ const save = (props) => {
                             rel="noopener noreferrer"
                             target={btnTarget ? "_blank" : "_self"}
                             style={filterJsCss({
-                                color: btnStyles[0].textColor,
+                                color: btnStyles[0]?.textColor,
                                 fontStyle: typography?.fontStyle,
-                                fontFamily: typography?.fontFamily,
-                                fontWeight: typography?.fontWeight,
                                 textDecoration: typography?.textDecoration,
                                 textTransform: typography?.textTransform,
                                 textShadow: `${textShadow?.horizontal}px ${textShadow?.vertical}px ${textShadow?.blur}px ${textShadow?.color}`,

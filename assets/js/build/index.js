@@ -17458,8 +17458,8 @@ function save(props) {
       'color': titleStyles[0].titleColor,
       'text-shadow': `${titlesTextShadow.horizontal}px ${titlesTextShadow.vertical}px ${titlesTextShadow.blur}px ${titlesTextShadow.color}`,
       'font-style': titleTypography?.fontStyle,
-      'font-family': titleTypography?.fontFamily,
-      'font-weight': titleTypography?.fontWeight,
+      // 'font-family': titleTypography?.fontFamily,
+      // 'font-weight': titleTypography?.fontWeight,
       'text-decoration': titleTypography?.textDecoration,
       'text-transform': titleTypography?.textTransform
     };
@@ -17827,8 +17827,6 @@ function save(_ref) {
     const styles = {};
     styles[` .${blockId} .premium-button-group_wrap .premium-button .premium-button-text-edit`] = {
       "font-style": typography?.fontStyle,
-      "font-family": typography?.fontFamily,
-      "font-weight": typography?.fontWeight,
       "text-decoration": typography?.textDecoration,
       "text-transform": typography?.textTransform
     };
@@ -20886,11 +20884,11 @@ const save = props => {
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, loadStyles()), React.createElement("div", {
     className: `premium-button wp-block-button__link premium-button__${btnSize} premium-button__${iconPosition}`,
     style: {
-      boxShadow: `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`,
+      boxShadow: `${boxShadow?.horizontal}px ${boxShadow?.vertical}px ${boxShadow?.blur}px ${boxShadow?.color} ${boxShadow?.position}`,
       borderStyle: border?.borderType,
       borderColor: border?.borderColor,
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.gradientBackground)(backgroundOptions),
-      color: `${btnStyles[0].textColor}`
+      color: btnStyles[0]?.textColor
     }
   }, [(0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, showIcon && iconPosition == "before" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.GenIcon, {
     className: `premium-button-icon ${icon} ${iconType}`,
@@ -20908,10 +20906,8 @@ const save = props => {
     rel: "noopener noreferrer",
     target: btnTarget ? "_blank" : "_self",
     style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
-      color: btnStyles[0].textColor,
+      color: btnStyles[0]?.textColor,
       fontStyle: typography?.fontStyle,
-      fontFamily: typography?.fontFamily,
-      fontWeight: typography?.fontWeight,
       textDecoration: typography?.textDecoration,
       textTransform: typography?.textTransform,
       textShadow: `${textShadow?.horizontal}px ${textShadow?.vertical}px ${textShadow?.blur}px ${textShadow?.color}`

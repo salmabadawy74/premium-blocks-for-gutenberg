@@ -27,30 +27,23 @@ function get_premium_button_css_style( $attr, $unique_id ) {
 		$css->set_selector( $unique_id );
 		$css->add_property( 'text-align', $css->get_responsive_css( $attr['btnAlign'], 'Desktop' ) );
 	}
+
 	if ( isset( $attr['typography'] ) ) {
 		$typography = $attr['typography'];
-		$font_size  = $typography['fontSize'];
-		$line_height = $typography['lineHeight'];
-		$letter_spacing = $typography['letterSpacing'];
-
 		$css->set_selector( $unique_id . '> .premium-button' . '> a' );
-		$css->add_property( 'font-size', $css->render_range( $font_size, 'Desktop' ) . '!important' );
-		$css->add_property( 'line-height', $css->render_range( $line_height, 'Desktop' ) . '!important' );
-		$css->add_property( 'letter-spacing', $css->render_range( $letter_spacing, 'Desktop' ) . '!important' );
+		$css->render_typography( $typography, 'Desktop' );
 	}
 
 	if ( isset( $attr['padding'] ) ) {
 		$padding = $attr['padding'];
-
 		$css->set_selector( $unique_id . '> .premium-button' );
-		$css->add_property( 'padding', $css->render_spacing( $padding['Desktop'], $padding['unit'] ) . '!important' );
+		$css->add_property( 'padding', $css->render_spacing( $padding['Desktop'], $padding['unit'] )  );
 	}
 
 	if ( isset( $attr['margin'] ) ) {
 		$margin = $attr['margin'];
-
 		$css->set_selector( $unique_id . '> .premium-button' );
-		$css->add_property( 'margin', $css->render_spacing( $margin['Desktop'], $margin['unit'] ) . '!important' );
+		$css->add_property( 'margin', $css->render_spacing( $margin['Desktop'], $margin['unit'] )  );
 	}
 
 	if ( isset( $attr['border'] ) ) {
@@ -93,26 +86,18 @@ function get_premium_button_css_style( $attr, $unique_id ) {
 	}
 	if ( isset( $attr['typography'] ) ) {
 		$typography = $attr['typography'];
-		$font_size  = $typography['fontSize'];
-		$line_height = $typography['lineHeight'];
-		$letter_spacing = $typography['letterSpacing'];
-
 		$css->set_selector( $unique_id . '> .premium-button' . '> a' );
-		$css->add_property( 'font-size', $css->render_range( $font_size, 'Tablet' ) . '!important' );
-		$css->add_property( 'line-height', $css->render_range( $line_height, 'Tablet' ) . '!important' );
-		$css->add_property( 'letter-spacing', $css->render_range( $letter_spacing, 'Tablet' ) . '!important' );
+		$css->render_typography( $typography, 'Tablet' );
 	}
 
 	if ( isset( $attr['padding'] ) ) {
 		$padding = $attr['padding'];
-
 		$css->set_selector( $unique_id . '> .premium-button' );
 		$css->add_property( 'padding', $css->render_spacing( $padding['Tablet'], $padding['unit'] ) . '!important' );
 	}
 
 	if ( isset( $attr['margin'] ) ) {
 		$margin = $attr['margin'];
-
 		$css->set_selector( $unique_id . '> .premium-button' );
 		$css->add_property( 'margin', $css->render_spacing( $margin['Tablet'], $margin['unit'] ) . '!important' );
 	}
@@ -159,26 +144,18 @@ function get_premium_button_css_style( $attr, $unique_id ) {
 	}
 	if ( isset( $attr['typography'] ) ) {
 		$typography = $attr['typography'];
-		$font_size  = $typography['fontSize'];
-		$line_height = $typography['lineHeight'];
-		$letter_spacing = $typography['letterSpacing'];
-
 		$css->set_selector( $unique_id . '> .premium-button' . '> a' );
-		$css->add_property( 'font-size', $css->render_range( $font_size, 'Mobile' ) . '!important' );
-		$css->add_property( 'line-height', $css->render_range( $line_height, 'Mobile' ) . '!important' );
-		$css->add_property( 'letter-spacing', $css->render_range( $letter_spacing, 'Mobile' ) . '!important' );
+		$css->render_typography( $typography, 'Mobile' );
 	}
 
 	if ( isset( $attr['padding'] ) ) {
 		$padding = $attr['padding'];
-
 		$css->set_selector( $unique_id . '> .premium-button' );
 		$css->add_property( 'padding', $css->render_spacing( $padding['Mobile'], $padding['unit'] ) . '!important' );
 	}
 
 	if ( isset( $attr['margin'] ) ) {
 		$margin = $attr['margin'];
-
 		$css->set_selector( $unique_id . '> .premium-button' );
 		$css->add_property( 'margin', $css->render_spacing( $margin['Mobile'], $margin['unit'] ) . '!important' );
 	}
