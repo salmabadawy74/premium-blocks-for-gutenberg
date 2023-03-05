@@ -1,4 +1,4 @@
-import { useSelect, useDispatch } from "@wordpress/data";
+import { useSelect, useDispatch, select } from "@wordpress/data";
 import {
     generateBlockId,
     gradientBackground,
@@ -25,10 +25,26 @@ import { useInstanceId } from "@wordpress/compose";
 const DEFAULTS_POSTS_PER_PAGE = 3;
 
 const TEMPLATE = [["premium/post-template"]];
-function PostCarousel({ attributes, setAttributes, deviceType }) {
+function PostCarousel({ attributes, setAttributes, deviceType, clientId }) {
     const {
         queryId,
-        query,
+        query: {
+            perPage,
+            offset = 0,
+            postType,
+            order,
+            orderBy,
+            author,
+            search,
+            exclude,
+            sticky,
+            inherit,
+            taxQuery,
+            parents,
+            pages,
+        } = {},
+        queryContext = [{ page: 1 }],
+
         columns,
         align,
         blogContainerBackground,
@@ -46,6 +62,8 @@ function PostCarousel({ attributes, setAttributes, deviceType }) {
     const blockProps = useBlockProps({
         className: `${align} ${equalHeightClass}`,
     });
+    const [{ page }] = queryContext;
+
     const innerBlocksProps = useInnerBlocksProps(
         {
             style: {
@@ -70,14 +88,14 @@ function PostCarousel({ attributes, setAttributes, deviceType }) {
     }, []);
     useEffect(() => {
         const newQuery = {};
-        if (!query.perPage && postsPerPage) {
+        if (!perPage && postsPerPage) {
             newQuery.perPage = postsPerPage;
         }
         if (!!Object.keys(newQuery).length) {
             __unstableMarkNextChangeAsNotPersistent();
             updateQuery(newQuery);
         }
-    }, [query.perPage]);
+    }, [perPage]);
     useEffect(() => {
         if (!Number.isFinite(queryId)) {
             __unstableMarkNextChangeAsNotPersistent();
@@ -86,7 +104,58 @@ function PostCarousel({ attributes, setAttributes, deviceType }) {
     }, [queryId, instanceId]);
     const updateQuery = (newQuery) =>
         setAttributes({ query: { ...query, ...newQuery } });
+    const { posts, blocks } = useSelect(
+        (select) => {
+            const { getEntityRecords, getTaxonomies } = select(coreStore);
+            const { getBlocks } = select(blockEditorStore);
+            const taxonomies = getTaxonomies({
+                type: postType,
+                per_page: -1,
+                context: "view",
+            });
 
+            const query = {
+                offset: perPage ? perPage * (page - 1) + offset : 0,
+                order,
+                orderby: orderBy,
+            };
+            if (perPage) {
+                query.per_page = perPage;
+            }
+            if (author) {
+                query.author = author;
+            }
+            if (search) {
+                query.search = search;
+            }
+            if (sticky) {
+                query.sticky = sticky === "exclude";
+            }
+            if (exclude) {
+                query.exclude = exclude;
+            }
+            const usedPostType = postType;
+            return {
+                posts: getEntityRecords("postType", "post", {
+                    ...query,
+                }),
+            };
+        },
+        [
+            perPage,
+            page,
+            offset,
+            order,
+            orderBy,
+            clientId,
+            author,
+            search,
+            postType,
+            exclude,
+            sticky,
+        ]
+    );
+    console.log(posts)
     return (
         <Fragment>
             <Inspector
@@ -95,9 +164,9 @@ function PostCarousel({ attributes, setAttributes, deviceType }) {
                 setAttributes={setAttributes}
             />
 
-            <Slider >
+            <div >
                 <div {...innerBlocksProps} />
-            </Slider>
+            </div>
         </Fragment>
     );
 }

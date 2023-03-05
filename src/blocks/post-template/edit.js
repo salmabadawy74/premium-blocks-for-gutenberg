@@ -147,7 +147,6 @@ function PostTemplateEdit({
             isBlockRootParentID
         );
     // console.log(parentBlockName[0].name);
-    const Tag = parentBlockName[0].name === "premium/post-carousel" ? "Slider" : "div"
     const [{ page }] = queryContext;
     const [activeBlockContextId, setActiveBlockContextId] = useState();
     const { posts, blocks } = useSelect(
@@ -220,6 +219,7 @@ function PostTemplateEdit({
         },
     });
 
+
     if (!posts) {
         return (
             <p {...blockProps}>
@@ -234,6 +234,36 @@ function PostTemplateEdit({
     let BorderValue = advancedBorder
         ? { borderRadius: advancedBorderValue }
         : borderCss(border, deviceType);
+    const settings = {
+        arrows: navigationArrow,
+        dots: navigationDots,
+        centerMode: centerMode,
+        centerPadding: slideSpacing,
+        slideToScroll: slideToScroll,
+        infinite: true,
+        autoplay: Autoplay,
+        speed: autoplaySpeed,
+        speed: autoplaySpeed,
+        slidesToShow: columns,
+        centerPadding: slideSpacing + "px",
+        draggable: true,
+
+        responsive: [
+            {
+                breakpoint: 976,
+                settings: {
+                    slidesToShow: tcolumns,
+                },
+            },
+            {
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: mcolumns,
+                },
+            },
+        ],
+    };
+
 
     return (
         <Fragment>

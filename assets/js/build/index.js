@@ -51806,11 +51806,29 @@ function PostCarousel(_ref) {
   let {
     attributes,
     setAttributes,
-    deviceType
+    deviceType,
+    clientId
   } = _ref;
   const {
     queryId,
-    query,
+    query: {
+      perPage,
+      offset = 0,
+      postType,
+      order,
+      orderBy,
+      author,
+      search,
+      exclude,
+      sticky,
+      inherit,
+      taxQuery,
+      parents,
+      pages
+    } = {},
+    queryContext = [{
+      page: 1
+    }],
     columns,
     align,
     blogContainerBackground,
@@ -51828,6 +51846,9 @@ function PostCarousel(_ref) {
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.useBlockProps)({
     className: `${align} ${equalHeightClass}`
   });
+  const [{
+    page
+  }] = queryContext;
   const innerBlocksProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.useInnerBlocksProps)({
     style: {
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.gradientBackground)(blogContainerBackground),
@@ -51851,14 +51872,14 @@ function PostCarousel(_ref) {
   }, []);
   useEffect(() => {
     const newQuery = {};
-    if (!query.perPage && postsPerPage) {
+    if (!perPage && postsPerPage) {
       newQuery.perPage = postsPerPage;
     }
     if (!!Object.keys(newQuery).length) {
       __unstableMarkNextChangeAsNotPersistent();
       updateQuery(newQuery);
     }
-  }, [query.perPage]);
+  }, [perPage]);
   useEffect(() => {
     if (!Number.isFinite(queryId)) {
       __unstableMarkNextChangeAsNotPersistent();
@@ -51873,11 +51894,55 @@ function PostCarousel(_ref) {
       ...newQuery
     }
   });
+  const {
+    posts,
+    blocks
+  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.useSelect)(select => {
+    const {
+      getEntityRecords,
+      getTaxonomies
+    } = select(coreStore);
+    const {
+      getBlocks
+    } = select(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.store);
+    const taxonomies = getTaxonomies({
+      type: postType,
+      per_page: -1,
+      context: "view"
+    });
+    const query = {
+      offset: perPage ? perPage * (page - 1) + offset : 0,
+      order,
+      orderby: orderBy
+    };
+    if (perPage) {
+      query.per_page = perPage;
+    }
+    if (author) {
+      query.author = author;
+    }
+    if (search) {
+      query.search = search;
+    }
+    if (sticky) {
+      query.sticky = sticky === "exclude";
+    }
+    if (exclude) {
+      query.exclude = exclude;
+    }
+    const usedPostType = postType;
+    return {
+      posts: getEntityRecords("postType", "post", {
+        ...query
+      })
+    };
+  }, [perPage, page, offset, order, orderBy, clientId, author, search, postType, exclude, sticky]);
+  console.log(posts);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_inspector__WEBPACK_IMPORTED_MODULE_4__["default"], {
     attributes: attributes,
     setQuery: updateQuery,
     setAttributes: setAttributes
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_slick__WEBPACK_IMPORTED_MODULE_3__["default"], null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", innerBlocksProps)));
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", innerBlocksProps)));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (withSelect(select => {
   const {
@@ -54013,7 +54078,6 @@ function PostTemplateEdit(_ref2) {
   const isBlockRootParentID = select("core/block-editor").getBlockParents(clientId);
   const parentBlockName = select("core/block-editor").getBlocksByClientId(isBlockRootParentID);
   // console.log(parentBlockName[0].name);
-  const Tag = parentBlockName[0].name === "premium/post-carousel" ? "Slider" : "div";
   const [{
     page
   }] = queryContext;
@@ -54084,6 +54148,31 @@ function PostTemplateEdit(_ref2) {
   let BorderValue = advancedBorder ? {
     borderRadius: advancedBorderValue
   } : (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_5__.borderCss)(border, deviceType);
+  const settings = {
+    arrows: navigationArrow,
+    dots: navigationDots,
+    centerMode: centerMode,
+    centerPadding: slideSpacing,
+    slideToScroll: slideToScroll,
+    infinite: true,
+    autoplay: Autoplay,
+    speed: autoplaySpeed,
+    speed: autoplaySpeed,
+    slidesToShow: columns,
+    centerPadding: slideSpacing + "px",
+    draggable: true,
+    responsive: [{
+      breakpoint: 976,
+      settings: {
+        slidesToShow: tcolumns
+      }
+    }, {
+      breakpoint: 767,
+      settings: {
+        slidesToShow: mcolumns
+      }
+    }]
+  };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_7__.InspectorControls, {
     key: "inspector"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_4__.InspectorTabs, {
