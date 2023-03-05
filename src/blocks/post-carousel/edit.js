@@ -10,39 +10,59 @@ import {
 import Slider from "react-slick";
 const { __ } = wp.i18n;
 const { withSelect } = wp.data;
-const { useEffect, Fragment } = wp.element;
+const { useEffect, Fragment, useMemo } = wp.element;
 import Inspector from "./inspector";
 // import Inspector from "./inspector";
 import {
     useBlockProps,
     store as blockEditorStore,
     useInnerBlocksProps,
+    BlockContextProvider
 } from "@wordpress/block-editor";
 import { useInstanceId } from "@wordpress/compose";
+import { store as coreStore } from "@wordpress/core-data";
+
+const { PanelBody, ToggleControl, TextControl, Spinner } = wp.components;
+
 /**
  * Internal dependencies
  */
 const DEFAULTS_POSTS_PER_PAGE = 3;
 
-const TEMPLATE = [["premium/post-template"]];
+const TEMPLATE = [["premium/container", {
+    variationSelected: true,
+    direction: { Desktop: "column", Tablet: "", Mobile: "" },
+    wrapItems: { Desktop: "", Tablet: "", Mobile: "wrap" },
+    isBlockRootParent: true,
+    alignItems: {
+        "Desktop": "center",
+        "Tablet": "center",
+        "Mobile": "center"
+    },
+    columnGutter: {
+        "Desktop": 20,
+        "Tablet": 20,
+        "Mobile": 20,
+        "unit": "px"
+    },
+    rowGutter: {
+        "Desktop": 20,
+        "Tablet": 20,
+        "Mobile": 20,
+        "unit": "px"
+    }
+}, [
+        ["premium/post-featured-image"],
+        ["premium/post-title"],
+        ["premium/post-meta"],
+        ["premium/post-excerpt"],
+        ["premium/post-tag"],
+    ]
+]];
 function PostCarousel({ attributes, setAttributes, deviceType, clientId }) {
     const {
         queryId,
-        query: {
-            perPage,
-            offset = 0,
-            postType,
-            order,
-            orderBy,
-            author,
-            search,
-            exclude,
-            sticky,
-            inherit,
-            taxQuery,
-            parents,
-            pages,
-        } = {},
+        query,
         queryContext = [{ page: 1 }],
 
         columns,
@@ -55,15 +75,28 @@ function PostCarousel({ attributes, setAttributes, deviceType, clientId }) {
         equalHeight,
     } = attributes;
     const equalHeightClass = equalHeight ? "premium-post__equal-height" : "";
+    const {
+        perPage,
+        offset = 0,
+        postType,
+        order,
+        orderBy,
+        author,
+        search,
+        exclude,
+        sticky,
+        inherit,
+        taxQuery,
+        parents,
+        pages,
+    } = query
 
-    const { __unstableMarkNextChangeAsNotPersistent } =
-        useDispatch(blockEditorStore);
-    const instanceId = useInstanceId(PostCarousel);
     const blockProps = useBlockProps({
         className: `${align} ${equalHeightClass}`,
     });
     const [{ page }] = queryContext;
-
+    const { __unstableMarkNextChangeAsNotPersistent } =
+        useDispatch(blockEditorStore);
     const innerBlocksProps = useInnerBlocksProps(
         {
             style: {
@@ -99,9 +132,9 @@ function PostCarousel({ attributes, setAttributes, deviceType, clientId }) {
     useEffect(() => {
         if (!Number.isFinite(queryId)) {
             __unstableMarkNextChangeAsNotPersistent();
-            setAttributes({ queryId: instanceId });
+            setAttributes({ queryId: clientId });
         }
-    }, [queryId, instanceId]);
+    }, [queryId]);
     const updateQuery = (newQuery) =>
         setAttributes({ query: { ...query, ...newQuery } });
     const { posts, blocks } = useSelect(
@@ -135,10 +168,12 @@ function PostCarousel({ attributes, setAttributes, deviceType, clientId }) {
                 query.exclude = exclude;
             }
             const usedPostType = postType;
+            console.log(query, "query")
             return {
                 posts: getEntityRecords("postType", "post", {
                     ...query,
                 }),
+                blocks: getBlocks(clientId),
             };
         },
         [
@@ -147,7 +182,6 @@ function PostCarousel({ attributes, setAttributes, deviceType, clientId }) {
             offset,
             order,
             orderBy,
-            clientId,
             author,
             search,
             postType,
@@ -155,7 +189,26 @@ function PostCarousel({ attributes, setAttributes, deviceType, clientId }) {
             sticky,
         ]
     );
+    const blockContexts = useMemo(
+        () =>
+            posts?.map((post) => ({
+                postType: post.type,
+                postId: post.id,
+            })),
+        [posts]
+    );
     console.log(posts)
+    if (!posts) {
+        return (
+            <p {...blockProps}>
+                <Spinner />
+            </p>
+        );
+    }
+
+    if (!posts.length) {
+        return <p {...blockProps}> {__("No Posts Found")}</p>;
+    }
     return (
         <Fragment>
             <Inspector
@@ -164,9 +217,17 @@ function PostCarousel({ attributes, setAttributes, deviceType, clientId }) {
                 setAttributes={setAttributes}
             />
 
-            <div >
-                <div {...innerBlocksProps} />
-            </div>
+            <Slider >
+                {blockContexts.map((blockContext) =>
+                    <BlockContextProvider
+                        key={blockContext.postId}
+                        value={blockContext}
+                    >
+                        <div {...innerBlocksProps} />
+
+                    </BlockContextProvider>
+                )}
+            </Slider>
         </Fragment>
     );
 }
