@@ -154,7 +154,7 @@ function get_premium_heading_css_style( $attr, $unique_id ) {
 		$css->add_property( 'left', $css->render_range( $horizontal_text, 'Desktop' ) );
 	}
 
-	if ( isset( $attr['rotateText'] ) ) {
+	if ( isset( $attr['rotateText'] ) &&  $attr['backgroundText'] ) {
 		$rotate_text = $attr['rotateText'];
 		$value       = $css->render_range( $rotate_text, 'Desktop' );
 		$css->set_selector( $unique_id . ' > .premium-title-bg-text:before' );
@@ -307,7 +307,7 @@ function get_premium_heading_css_style( $attr, $unique_id ) {
 		$css->add_property( 'left', $css->render_range( $horizontal_text, 'Tablet' ) );
 	}
 
-	if ( isset( $attr['rotateText'] ) ) {
+	if ( isset( $attr['rotateText'] ) && $attr['backgroundText'] ) {
 		$rotate_text = $attr['rotateText'];
 		$value       = $css->render_range( $rotate_text, 'Tablet' );
 		$css->set_selector( $unique_id . ' > .premium-title-bg-text:before' );
@@ -461,7 +461,7 @@ function get_premium_heading_css_style( $attr, $unique_id ) {
 		$css->add_property( 'left', $css->render_range( $horizontal_text, 'Mobile' ) );
 	}
 
-	if ( isset( $attr['rotateText'] ) ) {
+	if ( isset( $attr['rotateText'] ) && $attr['backgroundText'] ) {
 		$rotate_text = $attr['rotateText'];
 		$value       = $css->render_range( $rotate_text, 'Mobile' );
 		$css->set_selector( $unique_id . ' > .premium-title-bg-text:before' );

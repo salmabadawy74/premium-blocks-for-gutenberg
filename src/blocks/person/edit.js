@@ -61,9 +61,9 @@ function Edit(props) {
                 text: attributes.multiPersonContent[0].desc
                     ? attributes.multiPersonContent[0].desc
                     : __(
-                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla",
-                          "premium-blocks-for-gutenberg"
-                      ),
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla",
+                        "premium-blocks-for-gutenberg"
+                    ),
             },
         ],
         [

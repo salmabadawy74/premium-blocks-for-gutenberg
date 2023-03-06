@@ -26,7 +26,6 @@ const save = props => {
         containerBorder,
         containerBackground,
         containerShadow,
-        iconShadow,
         borderHoverColor,
         iconTypeFile,
         imageURL,
@@ -93,7 +92,7 @@ const save = props => {
             >
                 <a
                     className={`premium-icon__link`}
-                    href={urlCheck && link}
+                    href={urlCheck ? link : ""}
                     rel="noopener noreferrer"
                     target={target ? "_blank" : "_self"}
                 >
