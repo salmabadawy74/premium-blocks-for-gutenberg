@@ -80,7 +80,8 @@ function Edit(props) {
         backgroundOptions,
         backgroundPresets,
         icons,
-        iconType
+        iconType,
+        margin
     } = props.attributes;
 
     const SIZE = [
@@ -608,6 +609,18 @@ function Edit(props) {
                             />
                             <hr />
                             <SpacingComponent
+                                value={margin}
+                                responsive={true}
+                                showUnits={true}
+                                label={__(
+                                    "Margin",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                onChange={(value) =>
+                                    setAttributes({ margin: value })
+                                }
+                            />
+                            <SpacingComponent
                                 value={padding}
                                 responsive={true}
                                 showUnits={true}
@@ -760,6 +773,7 @@ function Edit(props) {
                         style: {
                             boxShadow: `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`,
                             ...paddingCss(padding, props.deviceType),
+                            ...marginCss(margin, props.deviceType),
                             ...borderCss(border, props.deviceType),
                             ...gradientBackground(backgroundOptions),
                             color: `${btnStyles[0].textColor}`,

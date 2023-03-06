@@ -23,7 +23,8 @@ export const {
     [`icon-box`]: iconBox,
     [`image-separator`]: imageSeparator,
     [`pricing-table`]: pricingTable,
-    [`video-box`]: videoBox
+    [`video-box`]: videoBox,
+    [`button-group`]: buttonGroup
 
 } = PremiumBlocksSettings.activeBlocks;
 

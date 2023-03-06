@@ -27,18 +27,23 @@ function get_premium_button_css_style( $attr, $unique_id ) {
 		$css->set_selector( $unique_id );
 		$css->add_property( 'text-align', $css->get_responsive_css( $attr['btnAlign'], 'Desktop' ) );
 	}
+
 	if ( isset( $attr['typography'] ) ) {
 		$typography = $attr['typography'];
-
 		$css->set_selector( $unique_id . '> .premium-button' . '> a' );
 		$css->render_typography( $typography, 'Desktop' );
 	}
 
-	if ( isset( $attr['padding'] ) ) {
+	if (isset($attr['padding'])) {
 		$padding = $attr['padding'];
+		$css->set_selector($unique_id . '> .premium-button');
+		$css->add_property('padding', $css->render_spacing($padding['Desktop'], $padding['unit']));
+	}
 
-		$css->set_selector( $unique_id . '> .premium-button' );
-		$css->add_property( 'padding', $css->render_spacing( $padding['Desktop'], $padding['unit'] ) );
+	if (isset($attr['margin'])) {
+		$margin = $attr['margin'];
+		$css->set_selector($unique_id . '> .premium-button');
+		$css->add_property('margin', $css->render_spacing($margin['Desktop'], $margin['unit']));
 	}
 
 	if ( isset( $attr['border'] ) ) {
@@ -81,16 +86,20 @@ function get_premium_button_css_style( $attr, $unique_id ) {
 	}
 	if ( isset( $attr['typography'] ) ) {
 		$typography = $attr['typography'];
-
 		$css->set_selector( $unique_id . '> .premium-button' . '> a' );
 		$css->render_typography( $typography, 'Tablet' );
 	}
 
-	if ( isset( $attr['padding'] ) ) {
+	if (isset($attr['padding'])) {
 		$padding = $attr['padding'];
+		$css->set_selector($unique_id . '> .premium-button');
+		$css->add_property('padding', $css->render_spacing($padding['Tablet'], $padding['unit']));
+	}
 
-		$css->set_selector( $unique_id . '> .premium-button' );
-		$css->add_property( 'padding', $css->render_spacing( $padding['Tablet'], $padding['unit'] ) );
+	if (isset($attr['margin'])) {
+		$margin = $attr['margin'];
+		$css->set_selector($unique_id . '> .premium-button');
+		$css->add_property('margin', $css->render_spacing($margin['Tablet'], $margin['unit']));
 	}
 
 	if ( isset( $attr['border'] ) ) {
@@ -135,16 +144,20 @@ function get_premium_button_css_style( $attr, $unique_id ) {
 	}
 	if ( isset( $attr['typography'] ) ) {
 		$typography = $attr['typography'];
-
 		$css->set_selector( $unique_id . '> .premium-button' . '> a' );
 		$css->render_typography( $typography, 'Mobile' );
 	}
 
-	if ( isset( $attr['padding'] ) ) {
+	if (isset($attr['padding'])) {
 		$padding = $attr['padding'];
+		$css->set_selector($unique_id . '> .premium-button');
+		$css->add_property('padding', $css->render_spacing($padding['Mobile'], $padding['unit']));
+	}
 
-		$css->set_selector( $unique_id . '> .premium-button' );
-		$css->add_property( 'padding', $css->render_spacing( $padding['Mobile'], $padding['unit'] ) );
+	if (isset($attr['margin'])) {
+		$margin = $attr['margin'];
+		$css->set_selector($unique_id . '> .premium-button');
+		$css->add_property('margin', $css->render_spacing($margin['Mobile'], $margin['unit']));
 	}
 
 	if ( isset( $attr['border'] ) ) {

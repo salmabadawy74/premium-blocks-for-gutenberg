@@ -21,6 +21,7 @@ import {
     imageSeparator,
     pricingTable,
     videoBox,
+    buttonGroup
 } from "../assets/js/settings";
 
 dualHeading ? require("./blocks/dual-heading") : "";
@@ -45,6 +46,7 @@ heading ? require("./blocks/heading") : "";
 container ? require("./blocks/container") : "";
 import "./blocks/switcher-child";
 contentSwitcher ? require("./blocks/content-switcher") : "";
+buttonGroup ? require("./blocks/button-group") : "";
 import "./blocks/accordion-item";
 import "./blocks/price";
 import "./blocks/list-item";
