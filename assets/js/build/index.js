@@ -17859,6 +17859,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/HelperFunction */ "./src/components/HelperFunction.js");
 /* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @pbg/helpers */ "@pbg/helpers");
 /* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _pbg_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @pbg/components */ "@pbg/components");
+/* harmony import */ var _pbg_components__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_pbg_components__WEBPACK_IMPORTED_MODULE_5__);
+
 
 
 
@@ -18523,7 +18526,450 @@ const v8Attrinutes = {
     "default": ""
   }
 };
+const v9Attrinutes = {
+  "blockId": {
+    "type": "string"
+  },
+  "borderButton": {
+    "type": "boolean",
+    "default": false
+  },
+  "btnText": {
+    "type": "string",
+    "default": "Premium Button"
+  },
+  "btnSize": {
+    "type": "string",
+    "default": "md"
+  },
+  "btnAlign": {
+    "type": "object",
+    "default": {
+      "Desktop": "center",
+      "Tablet": "center",
+      "Mobile": "center"
+    }
+  },
+  "btnLink": {
+    "type": "string",
+    "default": ""
+  },
+  "btnTarget": {
+    "type": "boolean",
+    "default": false
+  },
+  "showIcon": {
+    "type": "boolean",
+    "default": false
+  },
+  "icon": {
+    "type": "string",
+    "default": "dashicons admin-site"
+  },
+  "iconType": {
+    "type": "string",
+    "default": "fe"
+  },
+  "icons": {
+    "type": "array",
+    "default": [{
+      "iconn": "dashicons admin-site",
+      "link": "",
+      "target": "_self",
+      "size": "25",
+      "width": "2",
+      "title": "",
+      "style": "default"
+    }]
+  },
+  "iconPosition": {
+    "type": "string",
+    "default": "before"
+  },
+  "effect": {
+    "type": "string",
+    "default": "none"
+  },
+  "effectDir": {
+    "type": "string",
+    "default": "top"
+  },
+  "slideColor": {
+    "type": "string"
+  },
+  "block_id": {
+    "type": "string"
+  },
+  "hideDesktop": {
+    "type": "boolean",
+    "default": false
+  },
+  "classMigrate": {
+    "type": "boolean",
+    "default": false
+  },
+  "hideTablet": {
+    "type": "boolean",
+    "default": false
+  },
+  "hideMobile": {
+    "type": "boolean",
+    "default": false
+  },
+  "btnStyles": {
+    "type": "array",
+    "default": [{
+      "textColor": "",
+      "textHoverColor": "",
+      "backColor": "",
+      "backOpacity": 1,
+      "backHoverColor": "",
+      "borderHoverColor": ""
+    }]
+  },
+  "border": {
+    "type": "object",
+    "default": {
+      "borderType": "none",
+      "borderColor": "",
+      "borderWidth": {
+        "Desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        }
+      },
+      "borderRadius": {
+        "Desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        }
+      }
+    }
+  },
+  "typography": {
+    "type": "object",
+    "default": {
+      "fontWeight": "Default",
+      "fontStyle": "",
+      "letterSpacing": {
+        "Desktop": "",
+        "Tablet": "",
+        "Mobile": "",
+        "unit": "px"
+      },
+      "fontFamily": "Default",
+      "lineHeight": {
+        "Desktop": "",
+        "Tablet": "",
+        "Mobile": "",
+        "unit": "px"
+      },
+      "textDecoration": "",
+      "textTransform": "",
+      "fontSize": {
+        "Desktop": "",
+        "Tablet": "",
+        "Mobile": "",
+        "unit": "px"
+      }
+    }
+  },
+  "textShadow": {
+    "type": "object",
+    "default": {
+      "color": "undefined",
+      "blur": "10",
+      "horizontal": "0",
+      "vertical": "0"
+    }
+  },
+  "boxShadow": {
+    "type": "object",
+    "default": {
+      "color": "undefined",
+      "blur": "10",
+      "horizontal": "0",
+      "vertical": "0",
+      "position": ""
+    }
+  },
+  "padding": {
+    "type": "object",
+    "default": {
+      "Desktop": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Tablet": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Mobile": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "unit": "px"
+    }
+  },
+  "iconSize": {
+    "type": "object",
+    "default": {
+      "Desktop": "25",
+      "Tablet": "25",
+      "Mobile": "25",
+      "unit": "px"
+    }
+  },
+  "iconSpacing": {
+    "type": "object",
+    "default": {
+      "Desktop": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Tablet": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Mobile": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "unit": "px"
+    }
+  },
+  "iconColor": {
+    "type": "string",
+    "default": ""
+  },
+  "iconHoverColor": {
+    "type": "string",
+    "default": ""
+  },
+  "iconShadow": {
+    "type": "object",
+    "default": {
+      "color": "undefined",
+      "blur": "10",
+      "horizontal": "0",
+      "vertical": "0"
+    }
+  },
+  "backgroundOptions": {
+    "type": "object",
+    "default": {
+      "backgroundType": "",
+      "backgroundColor": "",
+      "backgroundImageID": "",
+      "backgroundImageURL": "",
+      "backgroundPosition": "center center",
+      "backgroundRepeat": "no-repeat",
+      "backgroundSize": "cover",
+      "fixed": false,
+      "gradientLocationOne": "0",
+      "gradientColorTwo": "",
+      "gradientLocationTwo": "100",
+      "gradientType": "linear",
+      "gradientAngle": "180",
+      "gradientPosition": "center center"
+    }
+  },
+  "backgroundPresets": {
+    "type": "string",
+    "default": ""
+  },
+  "margin": {
+    "type": "object",
+    "default": {
+      "Desktop": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Tablet": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "Mobile": {
+        "top": "",
+        "right": "",
+        "bottom": "",
+        "left": ""
+      },
+      "unit": "px"
+    }
+  }
+};
 const deprecatedContent = [{
+  attributes: Object.assign(new_Attributes, v9Attrinutes),
+  migrate: attributes => {
+    let newAttributes = {
+      margin: {
+        "Desktop": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Tablet": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "Mobile": {
+          "top": "",
+          "right": "",
+          "bottom": "",
+          "left": ""
+        },
+        "unit": "px"
+      }
+    };
+    return Object.assign(attributes, newAttributes);
+  },
+  save: props => {
+    const {
+      className
+    } = props;
+    const {
+      btnText,
+      btnSize,
+      btnLink,
+      btnTarget,
+      effect,
+      effectDir,
+      slideColor,
+      hideDesktop,
+      hideTablet,
+      hideMobile,
+      btnStyles,
+      border,
+      typography,
+      textShadow,
+      boxShadow,
+      blockId,
+      showIcon,
+      icon,
+      iconPosition,
+      iconColor,
+      iconHoverColor,
+      backgroundOptions,
+      iconType,
+      icons
+    } = props.attributes;
+    const loadStyles = () => {
+      const styles = {};
+      styles[`.${blockId}.premium-button__wrap .premium-button:hover .premium-button-icon`] = {
+        color: `${iconHoverColor}!important`
+      };
+      styles[`.${blockId}.premium-button__wrap .premium-button .premium-button-icon`] = {
+        color: `${iconColor}!important`
+      };
+      styles[`.${blockId}.premium-button__wrap .premium-button:hover`] = {
+        "background-color": `${btnStyles[0].backHoverColor}!important`,
+        "border-color": `${btnStyles[0].borderHoverColor}!important`,
+        color: `${btnStyles[0].textHoverColor}!important`
+      };
+      styles[`.${blockId}.premium-button__wrap .premium-button:hover .premium-button-text-edit`] = {
+        color: `${btnStyles[0].textHoverColor}!important`
+      };
+      styles[`.${blockId}.premium-button__slide .premium-button::before, .${blockId}.premium-button__shutter .premium-button::before, .${blockId}.premium-button__radial .premium-button::before`] = {
+        "background-color": `${slideColor}`
+      };
+      return (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.generateCss)(styles);
+    };
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", useBlockProps.save({
+      className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, `premium-button__wrap ${blockId} premium-button__${effect} premium-button__${effectDir} `, {
+        " premium-desktop-hidden": hideDesktop,
+        " premium-tablet-hidden": hideTablet,
+        " premium-mobile-hidden": hideMobile
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, loadStyles()), React.createElement("div", {
+      className: `premium-button wp-block-button__link premium-button__${btnSize} premium-button__${iconPosition}`,
+      style: {
+        boxShadow: `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`,
+        borderStyle: border?.borderType,
+        borderColor: border?.borderColor,
+        ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.gradientBackground)(backgroundOptions),
+        color: `${btnStyles[0].textColor}`
+      }
+    }, [(0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, showIcon && iconPosition == "before" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_5__.GenIcon, {
+      className: `premium-button-icon ${icon} ${iconType}`,
+      name: icon,
+      icon: 'fa' === icon.substring(0, 2) ? _pbg_components__WEBPACK_IMPORTED_MODULE_5__.FaIco[icon] : _pbg_components__WEBPACK_IMPORTED_MODULE_5__.Ico[icon],
+      strokeWidth: 'fe' === icon.substring(0, 2) ? icons[0].width : undefined,
+      style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.filterJsCss)({
+        color: iconColor
+      })
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RichText.Content, {
+      className: "premium-button-text-edit",
+      tagName: "a",
+      value: btnText,
+      href: btnLink,
+      rel: "noopener noreferrer",
+      target: btnTarget ? "_blank" : "_self",
+      style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.filterJsCss)({
+        color: btnStyles[0].textColor,
+        fontStyle: typography?.fontStyle,
+        textDecoration: typography?.textDecoration,
+        textTransform: typography?.textTransform,
+        textShadow: `${textShadow?.horizontal}px ${textShadow?.vertical}px ${textShadow?.blur}px ${textShadow?.color}`
+      })
+    }), showIcon && iconPosition == "after" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_5__.GenIcon, {
+      className: `premium-button-icon ${icon} ${iconType}`,
+      name: icon,
+      icon: 'fa' === icon.substring(0, 2) ? _pbg_components__WEBPACK_IMPORTED_MODULE_5__.FaIco[icon] : _pbg_components__WEBPACK_IMPORTED_MODULE_5__.Ico[icon],
+      strokeWidth: 'fe' === icon.substring(0, 2) ? icons[0].width : undefined,
+      style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.filterJsCss)({
+        color: iconColor
+      })
+    }))]));
+  }
+}, {
   attributes: Object.assign(new_Attributes, v8Attrinutes),
   migrate: attributes => {
     let newAttributes = {
@@ -20883,13 +21329,13 @@ const save = props => {
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, loadStyles()), React.createElement("div", {
     className: `premium-button wp-block-button__link premium-button__${btnSize} premium-button__${iconPosition}`,
-    style: {
+    style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       boxShadow: `${boxShadow?.horizontal}px ${boxShadow?.vertical}px ${boxShadow?.blur}px ${boxShadow?.color} ${boxShadow?.position}`,
       borderStyle: border?.borderType,
       borderColor: border?.borderColor,
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.gradientBackground)(backgroundOptions),
       color: btnStyles[0]?.textColor
-    }
+    })
   }, [(0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, showIcon && iconPosition == "before" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.GenIcon, {
     className: `premium-button-icon ${icon} ${iconType}`,
     name: icon,

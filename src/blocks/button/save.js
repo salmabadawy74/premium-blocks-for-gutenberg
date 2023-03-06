@@ -82,13 +82,13 @@ const save = (props) => {
                 "div",
                 {
                     className: `premium-button wp-block-button__link premium-button__${btnSize} premium-button__${iconPosition}`,
-                    style: {
+                    style: filterJsCss({
                         boxShadow: `${boxShadow?.horizontal}px ${boxShadow?.vertical}px ${boxShadow?.blur}px ${boxShadow?.color} ${boxShadow?.position}`,
                         borderStyle: border?.borderType,
                         borderColor: border?.borderColor,
                         ...gradientBackground(backgroundOptions),
                         color: btnStyles[0]?.textColor
-                    },
+                    })
                 },
                 [
                     <Fragment>
