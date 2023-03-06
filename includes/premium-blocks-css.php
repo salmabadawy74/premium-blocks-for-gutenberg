@@ -577,12 +577,11 @@ class Premium_Blocks_css
 	 * @param bool   $render_zero if 0 should be rendered or not.
 	 * @return string
 	 */
-	public function render_range($size, $device)
-	{
+	public function render_range($size, $device){
 		if (empty($size)) {
 			return false;
 		}
-		if (!isset($size[$device])) {
+		if (!isset($size[$device]) || empty($size[$device])) {
 			return false;
 		}
 		$size_type   = (isset($size['unit']) && !empty($size['unit']) ? $size['unit'] : 'px');
