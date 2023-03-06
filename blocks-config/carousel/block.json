@@ -1,0 +1,13 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 2,
+    "version": "0.1.0",
+    "name": "premium/carousel",
+    "title": "carousel",
+    "description": "Engage your Gutenberg blocks using Premium carousel Block.",
+    "keywords": ["section"],
+    "category": "premium-blocks",
+    "attributes": {},
+    "editorScript": "pbg-blocks-js",
+    "editorStyle": "premium-blocks-editor-css"
+}

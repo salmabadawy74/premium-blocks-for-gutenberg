@@ -2,7 +2,6 @@
  * External dependencies
  */
 import classnames from "classnames";
-import Slider from "react-slick";
 import {
     InspectorTabs,
     InspectorTab,
@@ -138,15 +137,7 @@ function PostTemplateEdit({
         });
 
     }, []);
-    const isBlockRootParentID = select("core/block-editor").getBlockParents(
-        clientId
-    );
 
-    const parentBlockName =
-        select("core/block-editor").getBlocksByClientId(
-            isBlockRootParentID
-        );
-    // console.log(parentBlockName[0].name);
     const [{ page }] = queryContext;
     const [activeBlockContextId, setActiveBlockContextId] = useState();
     const { posts, blocks } = useSelect(
@@ -234,35 +225,6 @@ function PostTemplateEdit({
     let BorderValue = advancedBorder
         ? { borderRadius: advancedBorderValue }
         : borderCss(border, deviceType);
-    const settings = {
-        arrows: navigationArrow,
-        dots: navigationDots,
-        centerMode: centerMode,
-        centerPadding: slideSpacing,
-        slideToScroll: slideToScroll,
-        infinite: true,
-        autoplay: Autoplay,
-        speed: autoplaySpeed,
-        speed: autoplaySpeed,
-        slidesToShow: columns,
-        centerPadding: slideSpacing + "px",
-        draggable: true,
-
-        responsive: [
-            {
-                breakpoint: 976,
-                settings: {
-                    slidesToShow: tcolumns,
-                },
-            },
-            {
-                breakpoint: 767,
-                settings: {
-                    slidesToShow: mcolumns,
-                },
-            },
-        ],
-    };
 
 
     return (
@@ -397,91 +359,48 @@ function PostTemplateEdit({
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
-            {(parentBlockName[0].name === 'premium/post-carousel') ?
-                (<Slider >
-                    {blockContexts &&
-                        blockContexts.map((blockContext) => (
-                            <div
-                                className="premium-blog-post-outer-container"
-                                style={{
-                                    ...gradientBackground(containerBackground),
-                                    ...BorderValue,
-                                    ...marginCss(margin, deviceType),
-                                    ...paddingCss(padding, deviceType),
-                                    boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical || 0
-                                        }px ${boxShadow.blur || 0}px ${boxShadow.color
-                                        }`,
-                                }}
+            <div {...blockProps}>
+                {blockContexts &&
+                    blockContexts.map((blockContext) => (
+                        <div
+                            className="premium-blog-post-outer-container"
+                            style={{
+                                ...gradientBackground(containerBackground),
+                                ...BorderValue,
+                                ...marginCss(margin, deviceType),
+                                ...paddingCss(padding, deviceType),
+                                boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical || 0
+                                    }px ${boxShadow.blur || 0}px ${boxShadow.color
+                                    }`,
+                            }}
+                        >
+                            <BlockContextProvider
+                                key={blockContext.postId}
+                                value={blockContext}
                             >
-                                <BlockContextProvider
-                                    key={blockContext.postId}
-                                    value={blockContext}
-                                >
-                                    {blockContext.postId ===
-                                        (activeBlockContextId ||
-                                            blockContexts[0]?.postId) ? (
-                                        <PostTemplateInnerBlocks
-                                            deviceType={deviceType}
-                                        />
-                                    ) : null}
-                                    <MemoizedPostTemplateBlockPreview
-                                        blocks={blocks}
-                                        blockContextId={blockContext.postId}
-                                        setActiveBlockContextId={
-                                            setActiveBlockContextId
-                                        }
-                                        isHidden={
-                                            blockContext.postId ===
-                                            (activeBlockContextId ||
-                                                blockContexts[0]?.postId)
-                                        }
+                                {blockContext.postId ===
+                                    (activeBlockContextId ||
+                                        blockContexts[0]?.postId) ? (
+                                    <PostTemplateInnerBlocks
+                                        deviceType={deviceType}
                                     />
-                                </BlockContextProvider>
-                            </div>
-                        ))}
-                </Slider>) : (<div {...blockProps}>
-                    {blockContexts &&
-                        blockContexts.map((blockContext) => (
-                            <div
-                                className="premium-blog-post-outer-container"
-                                style={{
-                                    ...gradientBackground(containerBackground),
-                                    ...BorderValue,
-                                    ...marginCss(margin, deviceType),
-                                    ...paddingCss(padding, deviceType),
-                                    boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical || 0
-                                        }px ${boxShadow.blur || 0}px ${boxShadow.color
-                                        }`,
-                                }}
-                            >
-                                <BlockContextProvider
-                                    key={blockContext.postId}
-                                    value={blockContext}
-                                >
-                                    {blockContext.postId ===
+                                ) : null}
+                                <MemoizedPostTemplateBlockPreview
+                                    blocks={blocks}
+                                    blockContextId={blockContext.postId}
+                                    setActiveBlockContextId={
+                                        setActiveBlockContextId
+                                    }
+                                    isHidden={
+                                        blockContext.postId ===
                                         (activeBlockContextId ||
-                                            blockContexts[0]?.postId) ? (
-                                        <PostTemplateInnerBlocks
-                                            deviceType={deviceType}
-                                        />
-                                    ) : null}
-                                    <MemoizedPostTemplateBlockPreview
-                                        blocks={blocks}
-                                        blockContextId={blockContext.postId}
-                                        setActiveBlockContextId={
-                                            setActiveBlockContextId
-                                        }
-                                        isHidden={
-                                            blockContext.postId ===
-                                            (activeBlockContextId ||
-                                                blockContexts[0]?.postId)
-                                        }
-                                    />
-                                </BlockContextProvider>
-                            </div>
-                        ))}
-                </div>)
-            }
+                                            blockContexts[0]?.postId)
+                                    }
+                                />
+                            </BlockContextProvider>
+                        </div>
+                    ))}
+            </div>
 
         </Fragment >
     );
