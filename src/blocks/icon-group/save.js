@@ -1,6 +1,6 @@
 import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
 import classnames from "classnames";
-import { filterJsCss, generateCss } from '@pbg/helpers';
+import { generateCss } from '@pbg/helpers';
 
 export default function save({ attributes }) {
     const {
@@ -13,8 +13,7 @@ export default function save({ attributes }) {
         groupIconColor,
         groupIconBack,
         groupIconHoverColor,
-        groupIconHoverBack,
-        hoverEffect
+        groupIconHoverBack
     } = attributes;
 
     const blockProps = useBlockProps.save({

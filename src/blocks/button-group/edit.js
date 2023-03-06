@@ -3,14 +3,10 @@ import {
     InspectorTabs,
     InspectorTab,
     Icons,
-    PremiumBorder,
     PremiumResponsiveTabs,
     MultiButtonsControl as ResponsiveRadioControl,
     SpacingComponent as SpacingControl,
-    AdvancedColorControl as AdvancedPopColorControl,
     PremiumTypo,
-    InsideTabs,
-    InsideTab,
     ResponsiveRangeControl
 } from '@pbg/components';
 import { generateBlockId, generateCss } from '@pbg/helpers';
@@ -51,26 +47,7 @@ function Edit(props) {
     const INNER_BLOCKS_TEMPLATE = [
         [
             "premium/button",
-            {
-                // selectedIcon: 'fa_facebook-f',
-                // iconSize: {
-                //     Desktop: "",
-                //     Tablet: "",
-                //     Mobile: "",
-                //     unit: "px"
-                // },
-                // icons: [
-                //     {
-                //         "iconn": "fa_facebook-f",
-                //         "link": "",
-                //         "target": "_self",
-                //         "size": "30",
-                //         "width": "2",
-                //         "title": "",
-                //         "style": "default"
-                //     }
-                // ]
-            }
+            {}
         ]
     ];
 

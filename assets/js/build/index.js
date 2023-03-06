@@ -17565,26 +17565,7 @@ function Edit(props) {
     value: "vertical",
     label: __("Vertical", "premium-blocks-for-gutenberg")
   }];
-  const INNER_BLOCKS_TEMPLATE = [["premium/button", {
-    // selectedIcon: 'fa_facebook-f',
-    // iconSize: {
-    //     Desktop: "",
-    //     Tablet: "",
-    //     Mobile: "",
-    //     unit: "px"
-    // },
-    // icons: [
-    //     {
-    //         "iconn": "fa_facebook-f",
-    //         "link": "",
-    //         "target": "_self",
-    //         "size": "30",
-    //         "width": "2",
-    //         "title": "",
-    //         "style": "default"
-    //     }
-    // ]
-  }]];
+  const INNER_BLOCKS_TEMPLATE = [["premium/button", {}]];
   useEffect(() => {
     setAttributes({
       blockId: "premium-button-group-" + (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.generateBlockId)(clientId)
@@ -45417,8 +45398,7 @@ function save(_ref) {
     groupIconColor,
     groupIconBack,
     groupIconHoverColor,
-    groupIconHoverBack,
-    hoverEffect
+    groupIconHoverBack
   } = attributes;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
     className: classnames__WEBPACK_IMPORTED_MODULE_2___default()('premium-icon-group', blockId, {
