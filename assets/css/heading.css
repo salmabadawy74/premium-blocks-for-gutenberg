@@ -307,7 +307,8 @@
   display: -moz-box;
   display: flex;
   margin-top: 0px;
-  margin-bottom: 0px; }
+  margin-bottom: 0px;
+  width: -webkit-fill-available; }
 
 .premium-title-style7-stripe-span {
   background-color: var(--pbg-global-color1, #0085BA);

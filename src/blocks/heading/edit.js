@@ -1895,13 +1895,14 @@ function Edit(props) {
                                                     ></span>
                                                 </span>
                                             )}
-                                            <div
+                                            <span
                                                 className={`premium-title-style7-inner-title`}
                                             >
                                                 {iconValue &&
                                                     iconType == "icon" && (
                                                         <GenIcon className={`premium-title-icon ${icon}`}
                                                             name={icon}
+                                                            htmltag={'span'}
                                                             size={iconSize[props.deviceType]}
                                                             icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
                                                             strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
@@ -1917,7 +1918,7 @@ function Edit(props) {
                                                 {iconValue &&
                                                     iconType == "lottie" &&
                                                     lottieURl && (
-                                                        <div className=" premium-title-icon premium-lottie-animation">
+                                                        <span className=" premium-title-icon premium-lottie-animation">
                                                             <Lottie
                                                                 options={{
                                                                     loop: loop,
@@ -1932,7 +1933,7 @@ function Edit(props) {
                                                                     reverse
                                                                 }
                                                             />
-                                                        </div>
+                                                        </span>
                                                     )}
                                                 {iconValue &&
                                                     iconPosition === "top" && (
@@ -1968,7 +1969,7 @@ function Edit(props) {
                                                         textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`,
                                                     }}
                                                 />
-                                            </div>
+                                            </span>
                                         </Fragment>
                                     )}
                                     {style === "style9" && (
@@ -1977,6 +1978,7 @@ function Edit(props) {
                                                 iconType == "icon" && (
                                                     <GenIcon className={`premium-title-icon ${icon}`}
                                                         name={icon}
+                                                        htmltag={'span'}
                                                         size={iconSize[props.deviceType]}
                                                         icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
                                                         strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
@@ -1992,7 +1994,7 @@ function Edit(props) {
                                             {iconValue &&
                                                 iconType == "lottie" &&
                                                 lottieURl && (
-                                                    <div className=" premium-title-icon premium-lottie-animation">
+                                                    <span className=" premium-title-icon premium-lottie-animation">
                                                         <Lottie
                                                             options={{
                                                                 loop: loop,
@@ -2005,7 +2007,7 @@ function Edit(props) {
                                                             }}
                                                             direction={reverse}
                                                         />
-                                                    </div>
+                                                    </span>
                                                 )}
 
                                             <span
@@ -2034,6 +2036,7 @@ function Edit(props) {
                                                 iconType == "icon" && (
                                                     <GenIcon className={`premium-title-icon ${icon}`}
                                                         name={icon}
+                                                        htmltag={'span'}
                                                         size={iconSize[props.deviceType]}
                                                         icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
                                                         strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
@@ -2049,7 +2052,7 @@ function Edit(props) {
                                             {iconValue &&
                                                 iconType == "lottie" &&
                                                 lottieURl && (
-                                                    <div className=" premium-title-icon premium-lottie-animation">
+                                                    <span className=" premium-title-icon premium-lottie-animation">
                                                         <Lottie
                                                             options={{
                                                                 loop: loop,
@@ -2062,7 +2065,7 @@ function Edit(props) {
                                                             }}
                                                             direction={reverse}
                                                         />
-                                                    </div>
+                                                    </span>
                                                 )}
                                             <RichText
                                                 tagName="span"

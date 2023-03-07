@@ -40475,18 +40475,19 @@ function Edit(props) {
     className: `premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign?.["Desktop"]} premium-stripe-tablet-${stripeAlign?.["Tablet"]} premium-stripe-mobile-${stripeAlign?.["Mobile"]}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
     className: `premium-title-style7-stripe-span`
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
     className: `premium-title-style7-inner-title`
   }, iconValue && iconType == "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_6__.GenIcon, {
     className: `premium-title-icon ${icon}`,
     name: icon,
+    htmltag: 'span',
     size: iconSize[props.deviceType],
     icon: 'fa' === icon.substring(0, 2) ? _pbg_components__WEBPACK_IMPORTED_MODULE_6__.FaIco[icon] : _pbg_components__WEBPACK_IMPORTED_MODULE_6__.Ico[icon],
     strokeWidth: 'fe' === icon.substring(0, 2) ? icons[0].width : undefined
   }), iconValue && iconType == "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("img", {
     className: `premium-title-icon`,
     src: imageURL
-  }), iconValue && iconType == "lottie" && lottieURl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  }), iconValue && iconType == "lottie" && lottieURl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
     className: " premium-title-icon premium-lottie-animation"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(react_lottie_with_segments__WEBPACK_IMPORTED_MODULE_4__["default"], {
     options: {
@@ -40519,13 +40520,14 @@ function Edit(props) {
   }))), style === "style9" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, iconValue && iconType == "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_6__.GenIcon, {
     className: `premium-title-icon ${icon}`,
     name: icon,
+    htmltag: 'span',
     size: iconSize[props.deviceType],
     icon: 'fa' === icon.substring(0, 2) ? _pbg_components__WEBPACK_IMPORTED_MODULE_6__.FaIco[icon] : _pbg_components__WEBPACK_IMPORTED_MODULE_6__.Ico[icon],
     strokeWidth: 'fe' === icon.substring(0, 2) ? icons[0].width : undefined
   }), iconValue && iconType == "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("img", {
     className: `premium-title-icon`,
     src: imageURL
-  }), iconValue && iconType == "lottie" && lottieURl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  }), iconValue && iconType == "lottie" && lottieURl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
     className: " premium-title-icon premium-lottie-animation"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(react_lottie_with_segments__WEBPACK_IMPORTED_MODULE_4__["default"], {
     options: {
@@ -40548,13 +40550,14 @@ function Edit(props) {
   }, styleContainer)), style !== "style9" && style !== "style7" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, iconValue && iconType == "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_6__.GenIcon, {
     className: `premium-title-icon ${icon}`,
     name: icon,
+    htmltag: 'span',
     size: iconSize[props.deviceType],
     icon: 'fa' === icon.substring(0, 2) ? _pbg_components__WEBPACK_IMPORTED_MODULE_6__.FaIco[icon] : _pbg_components__WEBPACK_IMPORTED_MODULE_6__.Ico[icon],
     strokeWidth: 'fe' === icon.substring(0, 2) ? icons[0].width : undefined
   }), iconValue && iconType == "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("img", {
     className: `premium-title-icon`,
     src: imageURL
-  }), iconValue && iconType == "lottie" && lottieURl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  }), iconValue && iconType == "lottie" && lottieURl && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", {
     className: " premium-title-icon premium-lottie-animation"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(react_lottie_with_segments__WEBPACK_IMPORTED_MODULE_4__["default"], {
     options: {
@@ -40856,17 +40859,18 @@ function save(props) {
     className: `premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign?.["Desktop"]} premium-stripe-tablet-${stripeAlign?.["Tablet"]} premium-stripe-mobile-${stripeAlign?.["Mobile"]}`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: `premium-title-style7-stripe-span`
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: `premium-title-style7-inner-title`
   }, iconValue && iconType == "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.GenIcon, {
     className: `premium-title-icon ${icon}`,
     name: icon,
+    htmltag: 'span',
     icon: 'fa' === icon.substring(0, 2) ? _pbg_components__WEBPACK_IMPORTED_MODULE_3__.FaIco[icon] : _pbg_components__WEBPACK_IMPORTED_MODULE_3__.Ico[icon],
     strokeWidth: 'fe' === icon.substring(0, 2) ? icons[0].width : undefined
   }), iconValue && iconType == "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     className: `premium-title-icon`,
     src: imageURL
-  }), iconValue && iconType == "lottie" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), iconValue && iconType == "lottie" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "premium-title-icon premium-lottie-animation",
     "data-loop": loop,
     "data-lottieurl": `${lottieURl}`,
@@ -40887,12 +40891,13 @@ function save(props) {
   }))) : style === "style9" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, iconValue && iconType == "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.GenIcon, {
     className: `premium-title-icon ${icon}`,
     name: icon,
+    htmltag: 'span',
     icon: 'fa' === icon.substring(0, 2) ? _pbg_components__WEBPACK_IMPORTED_MODULE_3__.FaIco[icon] : _pbg_components__WEBPACK_IMPORTED_MODULE_3__.Ico[icon],
     strokeWidth: 'fe' === icon.substring(0, 2) ? icons[0].width : undefined
   }), iconValue && iconType == "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     className: `premium-title-icon`,
     src: imageURL
-  }), iconValue && iconType == "lottie" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), iconValue && iconType == "lottie" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "premium-title-icon premium-lottie-animation",
     "data-loop": loop,
     "data-lottieurl": `${lottieURl}`,
@@ -40907,12 +40912,13 @@ function save(props) {
   }, styleContainer)) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, iconValue && iconType == "icon" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_3__.GenIcon, {
     className: `premium-title-icon ${icon}`,
     name: icon,
+    htmltag: 'span',
     icon: 'fa' === icon.substring(0, 2) ? _pbg_components__WEBPACK_IMPORTED_MODULE_3__.FaIco[icon] : _pbg_components__WEBPACK_IMPORTED_MODULE_3__.Ico[icon],
     strokeWidth: 'fe' === icon.substring(0, 2) ? icons[0].width : undefined
   }), iconValue && iconType == "image" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     className: `premium-title-icon`,
     src: imageURL
-  }), iconValue && iconType == "lottie" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), iconValue && iconType == "lottie" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "premium-title-icon premium-lottie-animation",
     "data-loop": loop,
     "data-lottieurl": `${lottieURl}`,
@@ -64155,9 +64161,9 @@ function save(_ref) {
     value: text,
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       color: color,
-      fontFamily: typography?.fontFamily,
+      // fontFamily: typography?.fontFamily,
       fontStyle: typography?.fontStyle,
-      fontWeight: typography?.fontWeight,
+      // fontWeight: typography?.fontWeight,
       textDecoration: typography?.textDecoration,
       textTransform: typography?.textTransform,
       textShadow: `${textShadow?.horizontal}px ${textShadow?.vertical}px ${textShadow?.blur}px ${textShadow?.color}`

@@ -366,9 +366,9 @@
         "rotateText": {
             "type": "object",
             "default": {
-                "Desktop": 0,
-                "Tablet": 0,
-                "Mobile": 0,
+                "Desktop": 1,
+                "Tablet": 1,
+                "Mobile": 1,
                 "unit": "deg"
             }
         },

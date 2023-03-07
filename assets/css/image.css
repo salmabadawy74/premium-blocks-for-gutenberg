@@ -1,13 +1,13 @@
-.premium-image .premium-image-container {
+.premium-image-container {
   position: relative;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center; }
-  .premium-image .premium-image-container .premium-image-wrap {
+  .premium-image-container .premium-image-wrap {
     overflow: hidden;
     position: relative; }
-    .premium-image .premium-image-container .premium-image-wrap img {
+    .premium-image-container .premium-image-wrap img {
       max-width: 100%;
       width: 100%;
       display: block;
@@ -22,42 +22,42 @@
       object-fit: cover;
       -webkit-transition: all .5s ease-in-out;
       transition: all .5s ease-in-out; }
-  .premium-image .premium-image-container .premium-image-wrap-translate img {
+  .premium-image-container .premium-image-wrap-translate img {
     -webkit-transform: translateX(-15px) scale(1.1);
     -ms-transform: translateX(-15px) scale(1.1);
     transform: translateX(-15px) scale(1.1); }
-  .premium-image .premium-image-container .premium-image-wrap-translate:hover img {
+  .premium-image-container .premium-image-wrap-translate:hover img {
     -webkit-transform: translateX(0) scale(1.1);
     -ms-transform: translateX(0) scale(1.1);
     transform: translateX(0) scale(1.1); }
-  .premium-image .premium-image-container .premium-image-wrap-zoomin:hover img {
+  .premium-image-container .premium-image-wrap-zoomin:hover img {
     -webkit-transform: scale(1.2);
     -ms-transform: scale(1.2);
     transform: scale(1.2); }
-  .premium-image .premium-image-container .premium-image-wrap-zoomout:hover img {
+  .premium-image-container .premium-image-wrap-zoomout:hover img {
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
     transform: scale(1.1); }
-  .premium-image .premium-image-container .premium-image-wrap-zoomout img {
+  .premium-image-container .premium-image-wrap-zoomout img {
     -webkit-transform: scale(1.2);
     -ms-transform: scale(1.2);
     transform: scale(1.2); }
-  .premium-image .premium-image-container .premium-image-wrap-scale:hover img {
+  .premium-image-container .premium-image-wrap-scale:hover img {
     -webkit-transform: translate3d(0, 0, 0) scale(1.2) rotate(5deg);
     transform: translate3d(0, 0, 0) scale(1.2) rotate(5deg) !important; }
-  .premium-image .premium-image-container .premium-image-wrap-scale img {
+  .premium-image-container .premium-image-wrap-scale img {
     -webkit-transform: scale(1.2);
     -ms-transform: scale(1.2);
     transform: scale(1.2); }
-  .premium-image .premium-image-container .premium-image-wrap-gray:hover img {
+  .premium-image-container .premium-image-wrap-gray:hover img {
     -webkit-filter: grayscale(100%);
     filter: grayscale(100%); }
-  .premium-image .premium-image-container .premium-image-wrap-blur:hover img {
+  .premium-image-container .premium-image-wrap-blur:hover img {
     -webkit-filter: blur(3px);
     filter: blur(3px); }
-  .premium-image .premium-image-container .premium-image-wrap-sepia:hover img {
+  .premium-image-container .premium-image-wrap-sepia:hover img {
     -webkit-filter: sepia(30%);
     filter: sepia(30%); }
-  .premium-image .premium-image-container .premium-image-wrap-bright:hover img {
+  .premium-image-container .premium-image-wrap-bright:hover img {
     -webkit-filter: brightness(1.2);
     filter: brightness(1.2); }

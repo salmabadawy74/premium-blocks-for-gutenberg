@@ -314,13 +314,14 @@ export default function save(props) {
                                                 ></span>
                                             </span>
                                         )}
-                                        <div
+                                        <span
                                             className={`premium-title-style7-inner-title`}
                                         >
                                             {iconValue &&
                                                 iconType == "icon" && (
                                                     <GenIcon className={`premium-title-icon ${icon}`}
                                                         name={icon}
+                                                        htmltag={'span'}
                                                         icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
                                                         strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
                                                     />
@@ -334,7 +335,7 @@ export default function save(props) {
                                                 )}
                                             {iconValue &&
                                                 iconType == "lottie" && (
-                                                    <div
+                                                    <span
                                                         className="premium-title-icon premium-lottie-animation"
                                                         data-loop={loop}
                                                         data-lottieurl={`${lottieURl}`}
@@ -342,7 +343,7 @@ export default function save(props) {
                                                             reversedir
                                                         }
                                                         data-trigger={"none"}
-                                                    ></div>
+                                                    ></span>
                                                 )}
 
                                             {iconPosition === "top" && (
@@ -363,13 +364,14 @@ export default function save(props) {
                                                     textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`,
                                                 })}
                                             />
-                                        </div>
+                                        </span>
                                     </Fragment>
                                 ) : style === "style9" ? (
                                     <Fragment>
                                         {iconValue && iconType == "icon" && (
                                             <GenIcon className={`premium-title-icon ${icon}`}
                                                 name={icon}
+                                                htmltag={'span'}
                                                 icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
                                                 strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
                                             />
@@ -381,13 +383,13 @@ export default function save(props) {
                                             />
                                         )}
                                         {iconValue && iconType == "lottie" && (
-                                            <div
+                                            <span
                                                 className="premium-title-icon premium-lottie-animation"
                                                 data-loop={loop}
                                                 data-lottieurl={`${lottieURl}`}
                                                 data-reverse={reversedir}
                                                 data-trigger={"none"}
-                                            ></div>
+                                            ></span>
                                         )}
                                         <span
                                             className={`premium-letters-container`}
@@ -404,6 +406,7 @@ export default function save(props) {
                                                 {iconValue && iconType == "icon" && (
                                                     <GenIcon className={`premium-title-icon ${icon}`}
                                                         name={icon}
+                                                        htmltag={'span'}
                                                         icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
                                                         strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
                                                     />
@@ -415,13 +418,13 @@ export default function save(props) {
                                                     />
                                                 )}
                                                 {iconValue && iconType == "lottie" && (
-                                                    <div
+                                                    <span
                                                         className="premium-title-icon premium-lottie-animation"
                                                         data-loop={loop}
                                                         data-lottieurl={`${lottieURl}`}
                                                         data-reverse={reversedir}
                                                         data-trigger={"none"}
-                                                    ></div>
+                                                    ></span>
                                                 )}
                                                 <RichText.Content
                                                     tagName="span"

@@ -7,74 +7,74 @@
  * @package WordPress
  */
 
-function get_premium_image_css( $attr, $unique_id ) {
+function get_premium_image_css($attr, $unique_id) {
 	$block_helpers          = pbg_blocks_helper();
 	$css                    = new Premium_Blocks_css();
 	$media_query            = array();
-	$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
-	$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
-	$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+	$media_query['mobile']  = apply_filters('Premium_BLocks_mobile_media_query', '(max-width: 767px)');
+	$media_query['tablet']  = apply_filters('Premium_BLocks_tablet_media_query', '(max-width: 1024px)');
+	$media_query['desktop'] = apply_filters('Premium_BLocks_tablet_media_query', '(min-width: 1025px)');
 
 	// Desktop Styles.
-	if ( isset( $attr['imageBorder'] ) ) {
+	if (isset($attr['imageBorder'])) {
 		$image_border        = $attr['imageBorder'];
 		$image_border_width  = $image_border['borderWidth'];
 		$image_border_radius = $image_border['borderRadius'];
 
-		$css->set_selector( '.' . $unique_id . ' > .premium-image-container' . ' > .premium-image-wrap' . ' > img' );
-		$css->add_property( 'border-radius', $css->render_spacing( $image_border_radius['Desktop'], 'px' ) );
-		$css->add_property( 'border-width', $css->render_spacing( $image_border_width['Desktop'], 'px' ) );
+		$css->set_selector('.' . $unique_id . ' > .premium-image-container' . ' > .premium-image-wrap' . ' > img');
+		$css->add_property('border-radius', $css->render_spacing($image_border_radius['Desktop'], 'px'));
+		$css->add_property('border-width', $css->render_spacing($image_border_width['Desktop'], 'px'));
 	}
 
-	if ( isset( $attr['imgHeight']['Desktop'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-image-container' . ' > .premium-image-wrap' . ' > img' );
-		$css->add_property( 'height', $css->render_range( $attr['imgHeight'], 'Desktop' ) . '!important' );
+	if (isset($attr['imgHeight'])) {
+		$css->set_selector('.' . $unique_id . ' > .premium-image-container' . ' > .premium-image-wrap' . ' > img');
+		$css->add_property('height', $css->render_range($attr['imgHeight'], 'Desktop'));
 	}
 
-	if ( isset( $attr['imgWidth']['Desktop'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-image-container' . ' > .premium-image-wrap' . ' > img' );
-		$css->add_property( 'width', $css->render_range( $attr['imgWidth'], 'Desktop' ) . '!important' );
+	if (isset($attr['imgWidth'])) {
+		$css->set_selector('.' . $unique_id . ' > .premium-image-container' . ' > .premium-image-wrap' . ' > img');
+		$css->add_property('width', $css->render_range($attr['imgWidth'], 'Desktop'));
 	}
 
-	$css->start_media_query( $media_query['tablet'] );
+	$css->start_media_query($media_query['tablet']);
 	// // Tablet Styles.
-	if ( isset( $attr['imageBorder'] ) ) {
+	if (isset($attr['imageBorder'])) {
 		$image_border        = $attr['imageBorder'];
 		$image_border_width  = $image_border['borderWidth'];
 		$image_border_radius = $image_border['borderRadius'];
 
-		$css->set_selector( '.' . $unique_id . ' > .premium-image-container' . ' > .premium-image-wrap' . ' > img' );
-		$css->add_property( 'border-radius', $css->render_spacing( $image_border_radius['Tablet'], 'px' ) );
-		$css->add_property( 'border-width', $css->render_spacing( $image_border_width['Tablet'], 'px' ) );
+		$css->set_selector('.' . $unique_id . ' > .premium-image-container' . ' > .premium-image-wrap' . ' > img');
+		$css->add_property('border-radius', $css->render_spacing($image_border_radius['Tablet'], 'px' ) );
+		$css->add_property('border-width', $css->render_spacing($image_border_width['Tablet'], 'px' ) );
 	}
-	if ( isset( $attr['imgHeight']['Tablet'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-image-container' . ' > .premium-image-wrap' . ' > img' );
-		$css->add_property( 'height', $css->render_range( $attr['imgHeight'], 'Tablet' ) . '!important' );
+	if (isset($attr['imgHeight'])) {
+		$css->set_selector('.' . $unique_id . ' > .premium-image-container' . ' > .premium-image-wrap' . ' > img');
+		$css->add_property('height', $css->render_range($attr['imgHeight'], 'Tablet' ));
 	}
-	if ( isset( $attr['imgWidth']['Tablet'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-image-container' . ' > .premium-image-wrap' . ' > img' );
-		$css->add_property( 'width', $css->render_range( $attr['imgWidth'], 'Tablet' ) . '!important' );
+	if (isset($attr['imgWidth'])) {
+		$css->set_selector('.' . $unique_id . ' > .premium-image-container' . ' > .premium-image-wrap' . ' > img');
+		$css->add_property('width', $css->render_range($attr['imgWidth'], 'Tablet' ));
 	}
 
 	$css->stop_media_query();
-	$css->start_media_query( $media_query['mobile'] );
+	$css->start_media_query($media_query['mobile']);
 	// // Mobile Styles.
-	if ( isset( $attr['imageBorder'] ) ) {
+	if (isset($attr['imageBorder'])) {
 		$image_border        = $attr['imageBorder'];
 		$image_border_width  = $image_border['borderWidth'];
 		$image_border_radius = $image_border['borderRadius'];
 
-		$css->set_selector( '.' . $unique_id . ' > .premium-image-container' . ' > .premium-image-wrap' . ' > img' );
-		$css->add_property( 'border-radius', $css->render_spacing( $image_border_radius['Mobile'], 'px' ) );
-		$css->add_property( 'border-width', $css->render_spacing( $image_border_width['Mobile'], 'px' ) );
+		$css->set_selector('.' . $unique_id . ' > .premium-image-container' . ' > .premium-image-wrap' . ' > img');
+		$css->add_property('border-radius', $css->render_spacing($image_border_radius['Mobile'], 'px'));
+		$css->add_property('border-width', $css->render_spacing($image_border_width['Mobile'], 'px'));
 	}
-	if ( isset( $attr['imgHeight'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-image-container' . ' > .premium-image-wrap' . ' > img' );
-		$css->add_property( 'height', $css->render_range( $attr['imgHeight'], 'Mobile' ) . '!important' );
+	if (isset($attr['imgHeight'])) {
+		$css->set_selector('.' . $unique_id . ' > .premium-image-container' . ' > .premium-image-wrap' . ' > img');
+		$css->add_property('height', $css->render_range($attr['imgHeight'], 'Mobile' ));
 	}
-	if ( isset( $attr['imgWidth'] ) ) {
-		$css->set_selector( '.' . $unique_id . ' > .premium-image-container' . ' > .premium-image-wrap' . ' > img' );
-		$css->add_property( 'width', $css->render_range( $attr['imgWidth'], 'Mobile' ) . '!important' );
+	if (isset($attr['imgWidth'])) {
+		$css->set_selector('.' . $unique_id . ' > .premium-image-container' . ' > .premium-image-wrap' . ' > img');
+		$css->add_property('width', $css->render_range($attr['imgWidth'], 'Mobile'));
 	}
 
 	$css->stop_media_query();
@@ -91,7 +91,7 @@ function get_premium_image_css( $attr, $unique_id ) {
  *
  * @return string Returns the post content with the legacy widget added.
  */
-function render_block_pbg_image( $attributes, $content, $block ) {
+function render_block_pbg_image($attributes, $content, $block) {
 
 	$unique_id = rand( 100, 10000 );
 	$id        = 'premium-image-' . esc_attr( $unique_id );
