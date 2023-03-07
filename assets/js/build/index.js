@@ -10256,8 +10256,6 @@ const save = props => {
     styles[`.${blockId} .premium-accordion__title_wrap .premium-accordion__title_text`] = {
       color: titleStyles[0].titleColor,
       'font-style': titleTypography.fontStyle,
-      'font-family': titleTypography.fontFamily,
-      'font-weight': titleTypography.fontWeight,
       'text-decoration': titleTypography.textDecoration,
       'text-transform': titleTypography.textTransform,
       'text-shadow': `${titleTextShadow.horizontal}px ${titleTextShadow.vertical}px ${titleTextShadow.blur}px ${titleTextShadow.color}`
@@ -10271,8 +10269,6 @@ const save = props => {
     styles[`.${blockId} .premium-accordion__desc_wrap .premium-accordion__desc`] = {
       color: descStyles[0].descColor,
       'font-style': descTypography.fontStyle,
-      'font-family': descTypography.fontFamily,
-      'font-weight': descTypography.fontWeight,
       'text-decoration': descTypography.textDecoration,
       'text-transform': descTypography.textTransform,
       'text-shadow': `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`
