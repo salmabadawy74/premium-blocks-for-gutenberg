@@ -8,6 +8,8 @@ import {
     SpacingComponent,
     AdvancedColorControl as AdvancedPopColorControl,
     PremiumShadow,
+    BlockContent,
+    AdvancedTabOptions
 } from "@pbg/components";
 
 const { withSelect } = wp.data;
@@ -221,6 +223,7 @@ function PremiumPricingTable(props) {
                                 })
                             }
                         />
+                        <AdvancedTabOptions {...props} />
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
@@ -233,7 +236,9 @@ function PremiumPricingTable(props) {
                     }),
                 })}
             >
-                <div {...innerBlocksProps} />
+                <BlockContent blockProps={props}>
+                    <div {...innerBlocksProps} />
+                </BlockContent>
             </div>
         </Fragment>
     );

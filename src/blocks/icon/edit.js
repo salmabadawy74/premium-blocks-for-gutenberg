@@ -21,7 +21,9 @@ import {
     GenIcon,
     FaIco,
     Ico,
-    IcoNames
+    IcoNames,
+    BlockContent,
+    AdvancedTabOptions
 } from "@pbg/components";
 import {
     gradientBackground,
@@ -739,6 +741,7 @@ function Edit(props) {
                                 })
                             }
                         />
+                        <AdvancedTabOptions {...props} />
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
@@ -761,18 +764,19 @@ function Edit(props) {
                 })}
                 data-icontype={iconTypeFile}
             >
-                <div
-                    className={`premium-icon-container`}
-                    style={{
-                        textAlign: iconAlign[props.deviceType],
-                        ...gradientBackground(containerBackground),
-                        ...borderCss(containerBorder, props.deviceType),
-                        ...paddingCss(wrapPadding, props.deviceType),
-                        ...marginCss(wrapMargin, props.deviceType),
-                        boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
-                    }}
-                >
-                    {/* {"icon" === iconTypeFile && (iconType === "fe" || iconType === "ic") && 1 != FontAwesomeEnabled && (
+                <BlockContent blockProps={props}>
+                    <div
+                        className={`premium-icon-container`}
+                        style={{
+                            textAlign: iconAlign[props.deviceType],
+                            ...gradientBackground(containerBackground),
+                            ...borderCss(containerBorder, props.deviceType),
+                            ...paddingCss(wrapPadding, props.deviceType),
+                            ...marginCss(wrapMargin, props.deviceType),
+                            boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
+                        }}
+                    >
+                        {/* {"icon" === iconTypeFile && (iconType === "fe" || iconType === "ic") && 1 != FontAwesomeEnabled && (
                         <p className={`premium-icon__alert`}>
                             {__(
                                 "Please Enable Font Awesome Icons from ",
@@ -787,35 +791,35 @@ function Edit(props) {
                             </a>
                         </p>
                     )} */}
-                    <div className={`premium-icon-content premium-icon__${hoverEffect !== "none" || !hoversEffect ? hoverEffect : hoversEffect}`}>
-                        {"icon" === iconTypeFile && (
-                            <GenIcon className={`premium-icon premium-icon-type ${selectedIcon}`}
-                                name={selectedIcon}
-                                size={iconSize[props.deviceType]}
-                                icon={('fa' === selectedIcon.substring(0, 2) ? FaIco[selectedIcon] : Ico[selectedIcon])}
-                                strokeWidth={('fe' === selectedIcon.substring(0, 2) ? icons[0].width : undefined)}
-                                style={{
-                                    color: iconStyles[0].iconColor,
-                                    backgroundColor: iconStyles[0].iconBack,
-                                    cursor: urlCheck ? 'pointer' : 'default',
-                                    ...borderCss(iconBorder, props.deviceType),
-                                    ...paddingCss(
-                                        iconPadding,
-                                        props.deviceType
-                                    ),
-                                    ...marginCss(iconMargin, props.deviceType)
-                                }}
-                            />
-                        )}
-                        {imageURL && "img" === iconTypeFile && (
-                            <img src={imageURL} />
-                        )}
-                        {"svg" === iconTypeFile &&
-                            <div id="premium-icon-svg" data-src={svgUrl}></div>
-                        }
+                        <div className={`premium-icon-content premium-icon__${hoverEffect !== "none" || !hoversEffect ? hoverEffect : hoversEffect}`}>
+                            {"icon" === iconTypeFile && (
+                                <GenIcon className={`premium-icon premium-icon-type ${selectedIcon}`}
+                                    name={selectedIcon}
+                                    size={iconSize[props.deviceType]}
+                                    icon={('fa' === selectedIcon.substring(0, 2) ? FaIco[selectedIcon] : Ico[selectedIcon])}
+                                    strokeWidth={('fe' === selectedIcon.substring(0, 2) ? icons[0].width : undefined)}
+                                    style={{
+                                        color: iconStyles[0].iconColor,
+                                        backgroundColor: iconStyles[0].iconBack,
+                                        cursor: urlCheck ? 'pointer' : 'default',
+                                        ...borderCss(iconBorder, props.deviceType),
+                                        ...paddingCss(
+                                            iconPadding,
+                                            props.deviceType
+                                        ),
+                                        ...marginCss(iconMargin, props.deviceType)
+                                    }}
+                                />
+                            )}
+                            {imageURL && "img" === iconTypeFile && (
+                                <img src={imageURL} />
+                            )}
+                            {"svg" === iconTypeFile &&
+                                <div id="premium-icon-svg" data-src={svgUrl}></div>
+                            }
+                        </div>
                     </div>
-
-                </div>
+                </BlockContent>
             </div>
         </Fragment>
     );

@@ -16,6 +16,8 @@ import {
     InsideTab,
     PremiumTypo,
     PremiumMediaUpload,
+    BlockContent,
+    AdvancedTabOptions
 } from "@pbg/components";
 import {
     borderCss,
@@ -726,6 +728,7 @@ function Edit(props) {
                                 })
                             }
                         />
+                        <AdvancedTabOptions {...props} />
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
@@ -749,191 +752,193 @@ function Edit(props) {
                         }`,
                 }}
             >
-                <div
-                    className={`premium-video-box ${blockId} video-overlay-${overlay} premium-aspect-ratio-${ratioValue}`}
-                    ref={videoboxRef}
-                    data-type={videoType}
-                >
-                    {!videoURL && "self" !== videoType && (
-                        <Placeholder
-                            label={__(
-                                "Video Box ",
-                                "premium-blocks-for-gutenberg"
-                            )}
-                            instructions={__(
-                                "Enter video ID, for example: z1hQgVpfTKU or Embed URL",
-                                "premium-blocks-for-gutenberg"
-                            )}
-                            className={className}
-                        >
-                            <form
-                                onSubmit={() =>
-                                    setAttributes({ videoURL: url })
-                                }
+                <BlockContent blockProps={props}>
+                    <div
+                        className={`premium-video-box ${blockId} video-overlay-${overlay} premium-aspect-ratio-${ratioValue}`}
+                        ref={videoboxRef}
+                        data-type={videoType}
+                    >
+                        {!videoURL && "self" !== videoType && (
+                            <Placeholder
+                                label={__(
+                                    "Video Box ",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                instructions={__(
+                                    "Enter video ID, for example: z1hQgVpfTKU or Embed URL",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                className={className}
                             >
-                                <input
-                                    type="url"
-                                    value={url}
-                                    className="components-placeholder__input"
-                                    aria-label={__(
-                                        "Video Box",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                    placeholder={__(
-                                        "Enter URL to embed here…",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                    onChange={(e) => setUrl(e.target.value)}
+                                <form
+                                    onSubmit={() =>
+                                        setAttributes({ videoURL: url })
+                                    }
+                                >
+                                    <input
+                                        type="url"
+                                        value={url}
+                                        className="components-placeholder__input"
+                                        aria-label={__(
+                                            "Video Box",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                        placeholder={__(
+                                            "Enter URL to embed here…",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                        onChange={(e) => setUrl(e.target.value)}
+                                    />
+                                    <Button isPrimary disabled={!url} type="submit">
+                                        {__(
+                                            "Embed",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                    </Button>
+                                </form>
+                            </Placeholder>
+                        )}
+                        {!videoURL && "self" === videoType && (
+                            <p>
+                                {__(
+                                    "Please Click Insert to Select Video ",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                            </p>
+                        )}
+                        {videoURL && (
+                            <div>
+                                <style
+                                    dangerouslySetInnerHTML={{
+                                        __html: loadStyles(),
+                                    }}
                                 />
-                                <Button isPrimary disabled={!url} type="submit">
-                                    {__(
-                                        "Embed",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                </Button>
-                            </form>
-                        </Placeholder>
-                    )}
-                    {!videoURL && "self" === videoType && (
-                        <p>
-                            {__(
-                                "Please Click Insert to Select Video ",
-                                "premium-blocks-for-gutenberg"
-                            )}
-                        </p>
-                    )}
-                    {videoURL && (
-                        <div>
-                            <style
-                                dangerouslySetInnerHTML={{
-                                    __html: loadStyles(),
-                                }}
-                            />
-                            <div className={`premium-video-box__container`}>
-                                <div>
-                                    <div
-                                        className={`premium-video-box-inner-wrap`}
-                                    >
+                                <div className={`premium-video-box__container`}>
+                                    <div>
                                         <div
-                                            className={`premium-video-box-video-container`}
+                                            className={`premium-video-box-inner-wrap`}
                                         >
-                                            {"self" !== videoType && (
-                                                <iframe
-                                                    src={`${onChangeVideoURL(
-                                                        videoType,
-                                                        videoURL
-                                                    )}?autoplay=${overlay ? 0 : autoPlay
-                                                        }&loop=${loopVideo()}&mute${"vimeo" == videoType
-                                                            ? "d"
-                                                            : ""
-                                                        }=${mute}&rel="0"&controls=${controls ? "1" : "0"
-                                                        }`}
-                                                    frameborder="0"
-                                                    gesture="media"
-                                                    allow="encrypted-media"
-                                                    allowfullscreen
-                                                />
-                                            )}
-                                            {"self" === videoType && (
-                                                <video
-                                                    src={videoURL}
-                                                    loop={loop ? true : false}
-                                                    muted={mute ? true : false}
-                                                    autoplay={
-                                                        overlay
-                                                            ? false
-                                                            : autoPlay
-                                                    }
-                                                    controls={
-                                                        controls ? true : false
-                                                    }
-                                                />
-                                            )}
+                                            <div
+                                                className={`premium-video-box-video-container`}
+                                            >
+                                                {"self" !== videoType && (
+                                                    <iframe
+                                                        src={`${onChangeVideoURL(
+                                                            videoType,
+                                                            videoURL
+                                                        )}?autoplay=${overlay ? 0 : autoPlay
+                                                            }&loop=${loopVideo()}&mute${"vimeo" == videoType
+                                                                ? "d"
+                                                                : ""
+                                                            }=${mute}&rel="0"&controls=${controls ? "1" : "0"
+                                                            }`}
+                                                        frameborder="0"
+                                                        gesture="media"
+                                                        allow="encrypted-media"
+                                                        allowfullscreen
+                                                    />
+                                                )}
+                                                {"self" === videoType && (
+                                                    <video
+                                                        src={videoURL}
+                                                        loop={loop ? true : false}
+                                                        muted={mute ? true : false}
+                                                        autoplay={
+                                                            overlay
+                                                                ? false
+                                                                : autoPlay
+                                                        }
+                                                        controls={
+                                                            controls ? true : false
+                                                        }
+                                                    />
+                                                )}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            {overlay && overlayStyles[0].overlayImgURL && (
-                                <div
-                                    className={`premium-video-box__overlay`}
-                                    style={{
-                                        backgroundImage: `url('${overlayStyles[0].overlayImgURL}')`,
-                                        filter: `brightness( ${overlayFilter.bright}% ) contrast( ${overlayFilter.contrast}% ) saturate( ${overlayFilter.saturation}% ) blur( ${overlayFilter.blur}px ) hue-rotate( ${overlayFilter.hue}deg )`,
-                                    }}
-                                />
-                            )}
-                            {overlay &&
-                                playIcon &&
-                                !overlayStyles[0].overlayImgURL && (
-                                    <DefaultImage className="premium-video-box-image-container" />
-                                )}
-                            {overlay && playIcon && (
-                                <div
-                                    className={`premium-video-box__play`}
-                                    style={{
-                                        ...borderCss(
-                                            playBorder,
-                                            props.deviceType
-                                        ),
-                                        ...paddingCss(
-                                            playPadding,
-                                            props.deviceType
-                                        ),
-                                        top: playStyles[0].playTop + "%",
-                                        left: playLeft + "%",
-                                        color: playStyles[0].playColor,
-                                        backgroundColor: playStyles[0].playBack,
-                                    }}
-                                >
-                                    <i
-                                        className={`premium-video-box__play_icon dashicons dashicons-controls-play`}
+                                {overlay && overlayStyles[0].overlayImgURL && (
+                                    <div
+                                        className={`premium-video-box__overlay`}
                                         style={{
-                                            fontSize:
-                                                playStyles[0].playSize + "px",
+                                            backgroundImage: `url('${overlayStyles[0].overlayImgURL}')`,
+                                            filter: `brightness( ${overlayFilter.bright}% ) contrast( ${overlayFilter.contrast}% ) saturate( ${overlayFilter.saturation}% ) blur( ${overlayFilter.blur}px ) hue-rotate( ${overlayFilter.hue}deg )`,
                                         }}
                                     />
-                                </div>
-                            )}
-                            <div
-                                className={`premium-video-box__desc`}
-                                style={{
-                                    ...paddingCss(
-                                        descPadding,
-                                        props.deviceType
-                                    ),
-                                    backgroundColor:
-                                        descStyles[0].videoDescBack,
-                                    borderRadius:
-                                        descStyles[0].videoDescBorderRadius,
-                                    top: descStyles[0].descTop + "%",
-                                    left: descStyles[0].descLeft + "%",
-                                }}
-                            >
-                                <RichText
-                                    tagName="p"
-                                    className={`premium-video-box__desc_text`}
-                                    value={descStyles[0].videoDescText}
-                                    placeholder="Add caption"
-                                    onChange={(newText) =>
-                                        saveDescritionStyle({
-                                            videoDescText: newText,
-                                        })
-                                    }
+                                )}
+                                {overlay &&
+                                    playIcon &&
+                                    !overlayStyles[0].overlayImgURL && (
+                                        <DefaultImage className="premium-video-box-image-container" />
+                                    )}
+                                {overlay && playIcon && (
+                                    <div
+                                        className={`premium-video-box__play`}
+                                        style={{
+                                            ...borderCss(
+                                                playBorder,
+                                                props.deviceType
+                                            ),
+                                            ...paddingCss(
+                                                playPadding,
+                                                props.deviceType
+                                            ),
+                                            top: playStyles[0].playTop + "%",
+                                            left: playLeft + "%",
+                                            color: playStyles[0].playColor,
+                                            backgroundColor: playStyles[0].playBack,
+                                        }}
+                                    >
+                                        <i
+                                            className={`premium-video-box__play_icon dashicons dashicons-controls-play`}
+                                            style={{
+                                                fontSize:
+                                                    playStyles[0].playSize + "px",
+                                            }}
+                                        />
+                                    </div>
+                                )}
+                                <div
+                                    className={`premium-video-box__desc`}
                                     style={{
-                                        ...typographyCss(
-                                            videoDescTypography,
+                                        ...paddingCss(
+                                            descPadding,
                                             props.deviceType
                                         ),
-                                        color: descStyles[0].videoDescColor,
-                                        textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`,
+                                        backgroundColor:
+                                            descStyles[0].videoDescBack,
+                                        borderRadius:
+                                            descStyles[0].videoDescBorderRadius,
+                                        top: descStyles[0].descTop + "%",
+                                        left: descStyles[0].descLeft + "%",
                                     }}
-                                    keepPlaceholderOnFocus
-                                />
+                                >
+                                    <RichText
+                                        tagName="p"
+                                        className={`premium-video-box__desc_text`}
+                                        value={descStyles[0].videoDescText}
+                                        placeholder="Add caption"
+                                        onChange={(newText) =>
+                                            saveDescritionStyle({
+                                                videoDescText: newText,
+                                            })
+                                        }
+                                        style={{
+                                            ...typographyCss(
+                                                videoDescTypography,
+                                                props.deviceType
+                                            ),
+                                            color: descStyles[0].videoDescColor,
+                                            textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`,
+                                        }}
+                                        keepPlaceholderOnFocus
+                                    />
+                                </div>
                             </div>
-                        </div>
-                    )}
-                    {loadDescriptionGoogleFonts}
-                </div>
+                        )}
+                        {loadDescriptionGoogleFonts}
+                    </div>
+                </BlockContent>
             </div>
         </Fragment>
     );

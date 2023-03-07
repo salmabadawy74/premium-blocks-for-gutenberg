@@ -13,6 +13,8 @@ import {
     ResponsiveSingleRangeControl,
     PremiumMediaUpload,
     PremiumTypo,
+    BlockContent,
+    AdvancedTabOptions
 } from "@pbg/components";
 import { generateBlockId, generateCss, marginCss } from "@pbg/helpers";
 
@@ -383,9 +385,9 @@ function Edit(props) {
                                         >
                                             &nbsp;
                                             {__(
-                                            "here",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
+                                                "here",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
                                         </a>,
                                     ]}
                                     onChange={(newLng) =>
@@ -647,9 +649,9 @@ function Edit(props) {
                                         >
                                             &nbsp;
                                             {__(
-                                            "here",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
+                                                "here",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
                                         </a>,
                                     ]}
                                     onChange={(newStyle) =>
@@ -910,6 +912,7 @@ function Edit(props) {
                                     })
                                 }
                             />
+                            <AdvancedTabOptions {...props} />
                         </InspectorTab>
                     </InspectorTabs>
                 </InspectorControls>
@@ -926,16 +929,17 @@ function Edit(props) {
                     ...marginCss(mapMargin, props.deviceType),
                 }}
             >
-                {typeof google !== "undefined" ? (
-                    <div ref={contentRef}>
-                        <div
-                            className="map-container"
-                            style={{
-                                height: height + "px",
-                            }}
-                        />
-                    </div>
-                ) : (
+                <BlockContent blockProps={props}>
+                    {typeof google !== "undefined" ? (
+                        <div ref={contentRef}>
+                            <div
+                                className="map-container"
+                                style={{
+                                    height: height + "px",
+                                }}
+                            />
+                        </div>
+                    ) : (
                         <Placeholder
                             label={__("Maps", "premium-blocks-for-gutenberg")}
                             className={className}
@@ -954,6 +958,7 @@ function Edit(props) {
                             </div>
                         </Placeholder>
                     )}
+                </BlockContent>
                 <style>{loadStyles()}</style>
                 {loadDescriptionGoogleFonts}
                 {loadTitleGoogleFonts}

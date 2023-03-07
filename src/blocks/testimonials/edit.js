@@ -15,7 +15,9 @@ import {
     PremiumShadow,
     WebfontLoader,
     PremiumUpperQuote,
-    PremiumLowerQuote
+    PremiumLowerQuote,
+    BlockContent,
+    AdvancedTabOptions
 } from "@pbg/components";
 
 const { __ } = wp.i18n;
@@ -254,6 +256,7 @@ function Edit(props) {
                                 })
                             }
                         />
+                        <AdvancedTabOptions {...props} />
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
@@ -275,31 +278,33 @@ function Edit(props) {
                     ...paddingCss(padding, props.deviceType),
                 }}
             >
-                <div className={`premium-testimonial__container`}>
-                    <span className={`premium-testimonial__upper`}>
-                        <PremiumUpperQuote
-                            size={quoteStyles[0].quotSize}
-                            color={quoteStyles[0].quotColor}
-                            opacity={quoteStyles[0].quotOpacity}
-                        />
-                    </span>
-                    <div
-                        className={`premium-testimonial__content`}
-                    >
-                        <InnerBlocks
-                            template={INNER_BLOCKS_TEMPLATE}
-                            templateLock={false}
-                            allowedBlocks={ALLOWED_BLOCKS}
-                        />
+                <BlockContent blockProps={props}>
+                    <div className={`premium-testimonial__container`}>
+                        <span className={`premium-testimonial__upper`}>
+                            <PremiumUpperQuote
+                                size={quoteStyles[0].quotSize}
+                                color={quoteStyles[0].quotColor}
+                                opacity={quoteStyles[0].quotOpacity}
+                            />
+                        </span>
+                        <div
+                            className={`premium-testimonial__content`}
+                        >
+                            <InnerBlocks
+                                template={INNER_BLOCKS_TEMPLATE}
+                                templateLock={false}
+                                allowedBlocks={ALLOWED_BLOCKS}
+                            />
+                        </div>
+                        <span className={`premium-testimonial__lower`}>
+                            <PremiumLowerQuote
+                                size={quoteStyles[0].quotSize}
+                                color={quoteStyles[0].quotColor}
+                                opacity={quoteStyles[0].quotOpacity}
+                            />
+                        </span>
                     </div>
-                    <span className={`premium-testimonial__lower`}>
-                        <PremiumLowerQuote
-                            size={quoteStyles[0].quotSize}
-                            color={quoteStyles[0].quotColor}
-                            opacity={quoteStyles[0].quotOpacity}
-                        />
-                    </span>
-                </div>
+                </BlockContent>
                 {loadBodyGoogleFonts}
             </div>
         </Fragment>

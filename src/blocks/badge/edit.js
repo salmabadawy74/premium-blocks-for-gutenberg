@@ -21,11 +21,14 @@ import {
     WebfontLoader,
     PremiumTypo,
     ResponsiveSingleRangeControl,
-    RadioComponent
+    RadioComponent,
+    BlockContent,
+    AdvancedTabOptions
 } from "@pbg/components";
 import { generateBlockId, typographyCss } from '@pbg/helpers';
 
-function Edit({ clientId, attributes, setAttributes, deviceType }) {
+function Edit(props) {
+    const { clientId, attributes, setAttributes, deviceType } = props;
     const {
         blockId,
         hideDesktop,
@@ -197,6 +200,7 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                             })
                         }
                     />
+                    <AdvancedTabOptions {...props} />
                 </InspectorTab>
             </InspectorTabs>
         </InspectorControls>
@@ -209,18 +213,20 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
                 borderRightWidth: `${badgeSize}px`,
                 borderTopWidth: "left" === position && `${badgeSize}px`,
             }}>
-                <RichText
-                    tagName='span'
-                    onChange={newText => saveBadgeStyles({ badgeText: newText })}
-                    placeholder={__("Popular", 'premium-blocks-for-gutenberg')}
-                    value={text}
-                    style={{
-                        ...typographyCss(typography, deviceType),
-                        color: color,
-                        width: `${textWidth}px`,
-                    }}
-                    keepPlaceholderOnFocus
-                />
+                <BlockContent blockProps={props}>
+                    <RichText
+                        tagName='span'
+                        onChange={newText => saveBadgeStyles({ badgeText: newText })}
+                        placeholder={__("Popular", 'premium-blocks-for-gutenberg')}
+                        value={text}
+                        style={{
+                            ...typographyCss(typography, deviceType),
+                            color: color,
+                            width: `${textWidth}px`,
+                        }}
+                        keepPlaceholderOnFocus
+                    />
+                </BlockContent>
             </div>
         </div>
         {loadGoogleFonts}

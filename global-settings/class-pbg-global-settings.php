@@ -38,7 +38,7 @@ if ( ! class_exists( 'Pbg_Global_Settings' ) ) {
 		public function __construct() {
 			add_action( 'enqueue_block_editor_assets', array( $this, 'script_enqueue' ) );
 			add_action( 'init', array( $this, 'register_pbg_global_settings' ) );
-			add_action( 'wp_footer', array( $this, 'pbg_fronend_global_styles' ) );
+			add_action( 'wp_head', array( $this, 'pbg_fronend_global_styles' ) );
 			add_filter( 'render_block', array( $this, 'add_data_attr_to_native_blocks' ), 10, 2 );
 		}
 

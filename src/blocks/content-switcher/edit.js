@@ -18,6 +18,8 @@ import {
     Icons,
     WebfontLoader,
     ResponsiveRangeControl,
+    BlockContent,
+    AdvancedTabOptions
 } from "@pbg/components";
 import {
     gradientBackground,
@@ -799,6 +801,7 @@ function Edit(props) {
                                 setAttributes({ hideMobile: value })
                             }
                         />
+                        <AdvancedTabOptions {...props} />
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
@@ -823,160 +826,162 @@ function Edit(props) {
                     textAlign: align[props.deviceType],
                 }}
             >
-                <div
-                    className={`premium-content-switcher`}
-                    style={{
-                        ...borderCss(containerborder, props.deviceType),
-                        ...paddingCss(containerPadding, props.deviceType),
-                        ...marginCss(containerMargin, props.deviceType),
-                        ...gradientBackground(containerBackground),
-                        textAlign: align[props.deviceType],
-                        boxShadow: `${containerBoxShadow.horizontal || 0}px ${containerBoxShadow.vertical || 0
-                            }px ${containerBoxShadow.blur || 0}px ${containerBoxShadow.color
-                            } ${containerBoxShadow.position} `,
-                    }}
-                >
+                <BlockContent blockProps={props}>
                     <div
-                        className={`premium-content-switcher-toggle-${display} `}
+                        className={`premium-content-switcher`}
                         style={{
+                            ...borderCss(containerborder, props.deviceType),
+                            ...paddingCss(containerPadding, props.deviceType),
+                            ...marginCss(containerMargin, props.deviceType),
+                            ...gradientBackground(containerBackground),
                             textAlign: align[props.deviceType],
-                            justifyContent:
-                                align[props.deviceType] == "right"
-                                    ? "flex-end"
-                                    : align[props.deviceType] == "left"
-                                        ? "flex-start"
-                                        : align[props.deviceType],
-                            alignItems:
-                                display == "inline"
-                                    ? "center"
-                                    : align[props.deviceType] == "right"
+                            boxShadow: `${containerBoxShadow.horizontal || 0}px ${containerBoxShadow.vertical || 0
+                                }px ${containerBoxShadow.blur || 0}px ${containerBoxShadow.color
+                                } ${containerBoxShadow.position} `,
+                        }}
+                    >
+                        <div
+                            className={`premium-content-switcher-toggle-${display} `}
+                            style={{
+                                textAlign: align[props.deviceType],
+                                justifyContent:
+                                    align[props.deviceType] == "right"
                                         ? "flex-end"
                                         : align[props.deviceType] == "left"
                                             ? "flex-start"
                                             : align[props.deviceType],
-                        }}
-                    >
-                        {showLabel && (
-                            <div className="premium-content-switcher-first-label">
-                                <RichText
-                                    tagName={labelTag.toLowerCase()}
-                                    className={`premium-content-switcher-${display}-editing`}
-                                    onChange={(newValue) =>
-                                        setAttributes({ firstLabel: newValue })
-                                    }
-                                    value={firstLabel}
-                                    ref={primaryRef}
-                                    style={{
-                                        ...typographyCss(
-                                            firstLabelTypography,
-                                            props.deviceType
-                                        ),
-                                        ...borderCss(
-                                            firstLabelborder,
-                                            props.deviceType
-                                        ),
-                                        ...paddingCss(
-                                            firstLabelPadding,
-                                            props.deviceType
-                                        ),
-                                        margin: 0,
-                                        color: labelStyles.firstLabelColor,
-                                        background:
-                                            labelStyles.firstLabelBGColor,
-                                        textShadow: `${firstLabelShadow.horizontal || 0
-                                            }px ${firstLabelShadow.vertical || 0
-                                            }px ${firstLabelShadow.blur || 0}px ${firstLabelShadow.color
-                                            } `,
-                                        boxShadow: `${firstLabelBoxShadow.horizontal || 0
-                                            }px ${firstLabelBoxShadow.vertical || 0
-                                            }px ${firstLabelBoxShadow.blur || 0
-                                            }px ${firstLabelBoxShadow.color} ${firstLabelBoxShadow.position
-                                            } `,
-                                    }}
-                                />
-                            </div>
-                        )}
-                        <div
-                            className="premium-content-switcher-toggle-switch"
-                            style={{
-                                fontSize:
-                                    (switchSize[props.deviceType] || 15) + "px",
+                                alignItems:
+                                    display == "inline"
+                                        ? "center"
+                                        : align[props.deviceType] == "right"
+                                            ? "flex-end"
+                                            : align[props.deviceType] == "left"
+                                                ? "flex-start"
+                                                : align[props.deviceType],
                             }}
                         >
-                            <label
-                                className={`premium-content-switcher-toggle-switch-label`}
+                            {showLabel && (
+                                <div className="premium-content-switcher-first-label">
+                                    <RichText
+                                        tagName={labelTag.toLowerCase()}
+                                        className={`premium-content-switcher-${display}-editing`}
+                                        onChange={(newValue) =>
+                                            setAttributes({ firstLabel: newValue })
+                                        }
+                                        value={firstLabel}
+                                        ref={primaryRef}
+                                        style={{
+                                            ...typographyCss(
+                                                firstLabelTypography,
+                                                props.deviceType
+                                            ),
+                                            ...borderCss(
+                                                firstLabelborder,
+                                                props.deviceType
+                                            ),
+                                            ...paddingCss(
+                                                firstLabelPadding,
+                                                props.deviceType
+                                            ),
+                                            margin: 0,
+                                            color: labelStyles.firstLabelColor,
+                                            background:
+                                                labelStyles.firstLabelBGColor,
+                                            textShadow: `${firstLabelShadow.horizontal || 0
+                                                }px ${firstLabelShadow.vertical || 0
+                                                }px ${firstLabelShadow.blur || 0}px ${firstLabelShadow.color
+                                                } `,
+                                            boxShadow: `${firstLabelBoxShadow.horizontal || 0
+                                                }px ${firstLabelBoxShadow.vertical || 0
+                                                }px ${firstLabelBoxShadow.blur || 0
+                                                }px ${firstLabelBoxShadow.color} ${firstLabelBoxShadow.position
+                                                } `,
+                                        }}
+                                    />
+                                </div>
+                            )}
+                            <div
+                                className="premium-content-switcher-toggle-switch"
+                                style={{
+                                    fontSize:
+                                        (switchSize[props.deviceType] || 15) + "px",
+                                }}
                             >
-                                <input
-                                    onClick={() => initToggleBox()}
-                                    type="checkbox"
-                                    className={`premium-content-switcher-toggle-switch-input ${props.clientId} `}
-                                />
-                                <span
-                                    className="premium-content-switcher-toggle-switch-slider round"
-                                    style={{
-                                        ...gradientBackground(
-                                            switcherBackground
-                                        ),
-                                    }}
-                                ></span>
-                            </label>
+                                <label
+                                    className={`premium-content-switcher-toggle-switch-label`}
+                                >
+                                    <input
+                                        onClick={() => initToggleBox()}
+                                        type="checkbox"
+                                        className={`premium-content-switcher-toggle-switch-input ${props.clientId} `}
+                                    />
+                                    <span
+                                        className="premium-content-switcher-toggle-switch-slider round"
+                                        style={{
+                                            ...gradientBackground(
+                                                switcherBackground
+                                            ),
+                                        }}
+                                    ></span>
+                                </label>
+                            </div>
+                            {showLabel && (
+                                <div className="premium-content-switcher-second-label">
+                                    <RichText
+                                        tagName={labelTag.toLowerCase()}
+                                        className={`premium-content-switcher-${display}-editing`}
+                                        onChange={(newValue) =>
+                                            setAttributes({ secondLabel: newValue })
+                                        }
+                                        value={secondLabel}
+                                        ref={secondaryRef}
+                                        style={{
+                                            ...typographyCss(
+                                                secondLabelTypography,
+                                                props.deviceType
+                                            ),
+                                            ...borderCss(
+                                                secondLabelborder,
+                                                props.deviceType
+                                            ),
+                                            ...paddingCss(
+                                                secondLabelPadding,
+                                                props.deviceType
+                                            ),
+                                            margin: 0,
+                                            color: labelStyles.secondLabelColor,
+                                            background:
+                                                labelStyles.secondLabelBGColor,
+                                            textShadow: `${secondLabelShadow.horizontal || 0
+                                                }px ${secondLabelShadow.vertical || 0
+                                                }px ${secondLabelShadow.blur || 0} px ${secondLabelShadow.color
+                                                } `,
+                                            boxShadow: `${secondLabelBoxShadow.horizontal || 0
+                                                }px ${secondLabelBoxShadow.vertical || 0
+                                                }px ${secondLabelBoxShadow.blur || 0
+                                                }px ${secondLabelBoxShadow.color} ${secondLabelBoxShadow.position
+                                                } `,
+                                        }}
+                                    />
+                                </div>
+                            )}
                         </div>
-                        {showLabel && (
-                            <div className="premium-content-switcher-second-label">
-                                <RichText
-                                    tagName={labelTag.toLowerCase()}
-                                    className={`premium-content-switcher-${display}-editing`}
-                                    onChange={(newValue) =>
-                                        setAttributes({ secondLabel: newValue })
-                                    }
-                                    value={secondLabel}
-                                    ref={secondaryRef}
-                                    style={{
-                                        ...typographyCss(
-                                            secondLabelTypography,
-                                            props.deviceType
-                                        ),
-                                        ...borderCss(
-                                            secondLabelborder,
-                                            props.deviceType
-                                        ),
-                                        ...paddingCss(
-                                            secondLabelPadding,
-                                            props.deviceType
-                                        ),
-                                        margin: 0,
-                                        color: labelStyles.secondLabelColor,
-                                        background:
-                                            labelStyles.secondLabelBGColor,
-                                        textShadow: `${secondLabelShadow.horizontal || 0
-                                            }px ${secondLabelShadow.vertical || 0
-                                            }px ${secondLabelShadow.blur || 0} px ${secondLabelShadow.color
-                                            } `,
-                                        boxShadow: `${secondLabelBoxShadow.horizontal || 0
-                                            }px ${secondLabelBoxShadow.vertical || 0
-                                            }px ${secondLabelBoxShadow.blur || 0
-                                            }px ${secondLabelBoxShadow.color} ${secondLabelBoxShadow.position
-                                            } `,
-                                    }}
+                        <div className={`premium-content-switcher-list`}>
+                            <div
+                                className="premium-content-switcher-two-content"
+                                ref={contentRef}
+                            >
+                                <InnerBlocks
+                                    template={[
+                                        ["premium/switcher-child"],
+                                        ["premium/switcher-child"],
+                                    ]}
+                                    templateLock="all"
                                 />
                             </div>
-                        )}
-                    </div>
-                    <div className={`premium-content-switcher-list`}>
-                        <div
-                            className="premium-content-switcher-two-content"
-                            ref={contentRef}
-                        >
-                            <InnerBlocks
-                                template={[
-                                    ["premium/switcher-child"],
-                                    ["premium/switcher-child"],
-                                ]}
-                                templateLock="all"
-                            />
                         </div>
                     </div>
-                </div>
+                </BlockContent>
                 {loadFirstLabelGoogleFonts}
                 {loadSecondLabelGoogleFonts}
             </div>

@@ -10,7 +10,9 @@ import {
     AdvancedColorControl as AdvancedPopColorControl,
     InsideTabs,
     InsideTab,
-    ResponsiveRangeControl
+    ResponsiveRangeControl,
+    BlockContent,
+    AdvancedTabOptions
 } from '@pbg/components';
 import { generateBlockId, generateCss } from '@pbg/helpers';
 
@@ -393,6 +395,7 @@ function Edit(props) {
                                 })
                             }
                         />
+                        <AdvancedTabOptions {...props} />
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls >
@@ -416,11 +419,13 @@ function Edit(props) {
                 <div
                     className={`premium-icon-group-container premium-icon-group-${groupAlign}`}
                 >
-                    <InnerBlocks
-                        template={INNER_BLOCKS_TEMPLATE}
-                        templateLock={false}
-                        allowedBlocks={["premium/icon"]}
-                    />
+                    <BlockContent blockProps={props}>
+                        <InnerBlocks
+                            template={INNER_BLOCKS_TEMPLATE}
+                            templateLock={false}
+                            allowedBlocks={["premium/icon"]}
+                        />
+                    </BlockContent>
                 </div>
             </div>
         </Fragment>

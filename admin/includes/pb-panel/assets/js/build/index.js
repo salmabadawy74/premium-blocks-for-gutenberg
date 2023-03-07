@@ -3421,6 +3421,20 @@ const GlobalFeatures = props => {
     onChange: checked => onChangeData("premium-equal-height", checked),
     checked: (settings === null || settings === void 0 ? void 0 : settings["premium-equal-height"]) || false,
     description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Make your blocks the same height with just ONE click.", "premium-blocks-for-gutenberg")
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_AdvancedSwitcher__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Entrance Animation", "premium-blocks-for-gutenberg"),
+    onChange: checked => onChangeData("premium-entrance-animation", checked),
+    checked: (settings === null || settings === void 0 ? void 0 : settings["premium-entrance-animation"]) || false,
+    description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Apply entrance animation on any Premium Blocks for Gutenberg block.", "premium-blocks-for-gutenberg")
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_AdvancedSwitcher__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Apply Entrance Animation to All Gutenberg Blocks", "premium-blocks-for-gutenberg"),
+    onChange: checked => onChangeData("premium-entrance-animation-all-blocks", checked),
+    checked: (settings === null || settings === void 0 ? void 0 : settings["premium-entrance-animation-all-blocks"]) || false,
+    description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("This option will be used to Apply Entrance Animation to All Gutenberg Blocks.", "premium-blocks-for-gutenberg"),
+    style: {
+      opacity: !(settings !== null && settings !== void 0 && settings["premium-entrance-animation"]) && '0.4',
+      pointerEvents: !(settings !== null && settings !== void 0 && settings["premium-entrance-animation"]) && 'none'
+    }
   }))));
 };
 

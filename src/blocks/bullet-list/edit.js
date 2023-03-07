@@ -15,7 +15,9 @@ import {
     SpacingComponent,
     InsideTabs,
     InsideTab,
-    ResponsiveRangeControl
+    ResponsiveRangeControl,
+    BlockContent,
+    AdvancedTabOptions
 } from "@pbg/components";
 import { generateBlockId, generateCss } from "@pbg/helpers";
 import { compose } from "@wordpress/compose";
@@ -504,46 +506,46 @@ function Edit(props) {
                                         showIcons={true}
                                     />
                                 ) : (
-                                        <MultiButtonsControl
-                                            choices={[
-                                                {
-                                                    value: "left",
-                                                    label: __(
-                                                        "Left",
-                                                        "premium-blocks-for-gutenberg"
-                                                    ),
-                                                    icon: Icons.alignLeft,
-                                                },
-                                                {
-                                                    value: "center",
-                                                    label: __(
-                                                        "Center",
-                                                        "premium-blocks-for-gutenberg"
-                                                    ),
-                                                    icon: Icons.alignCenter,
-                                                },
-                                                {
-                                                    value: "right",
-                                                    label: __(
-                                                        "Right",
-                                                        "premium-blocks-for-gutenberg"
-                                                    ),
-                                                    icon: Icons.alignRight,
-                                                },
-                                            ]}
-                                            value={bulletAlign}
-                                            onChange={(alignn) =>
-                                                setAttributes({
-                                                    bulletAlign: alignn,
-                                                })
-                                            }
-                                            label={__(
-                                                "Align Content",
-                                                "premium-blocks-for-gutenberg"
-                                            )}
-                                            showIcons={true}
-                                        />
-                                    )}
+                                    <MultiButtonsControl
+                                        choices={[
+                                            {
+                                                value: "left",
+                                                label: __(
+                                                    "Left",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                                icon: Icons.alignLeft,
+                                            },
+                                            {
+                                                value: "center",
+                                                label: __(
+                                                    "Center",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                                icon: Icons.alignCenter,
+                                            },
+                                            {
+                                                value: "right",
+                                                label: __(
+                                                    "Right",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                                icon: Icons.alignRight,
+                                            },
+                                        ]}
+                                        value={bulletAlign}
+                                        onChange={(alignn) =>
+                                            setAttributes({
+                                                bulletAlign: alignn,
+                                            })
+                                        }
+                                        label={__(
+                                            "Align Content",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                        showIcons={true}
+                                    />
+                                )}
                             </div>
                             <SelectControl
                                 label={__(
@@ -1002,6 +1004,7 @@ function Edit(props) {
                                 })
                             }
                         />
+                        <AdvancedTabOptions {...props} />
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
@@ -1020,7 +1023,9 @@ function Edit(props) {
                 style={{ textAlign: align?.[props.deviceType] }}
             >
                 <style>{loadStyles()}</style>
-                <ul {...innerBlocksProps} />
+                <BlockContent blockProps={props}>
+                    <ul {...innerBlocksProps} />
+                </BlockContent>
                 {loadTitleGoogleFonts}
             </div>
         </Fragment>

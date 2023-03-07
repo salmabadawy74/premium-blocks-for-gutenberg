@@ -9,6 +9,8 @@ import {
     InsideTabs,
     PremiumBackgroundControl,
     InsideTab,
+    BlockContent,
+    AdvancedTabOptions
 } from "@pbg/components";
 import {
     gradientBackground,
@@ -244,6 +246,7 @@ function Edit(props) {
                                 setAttributes({ hideMobile: value })
                             }
                         />
+                        <AdvancedTabOptions {...props} />
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
@@ -256,7 +259,9 @@ function Edit(props) {
                     }),
                 })}
             >
-                <div {...innerBlocksProps} />
+                <BlockContent blockProps={props}>
+                    <div {...innerBlocksProps} />
+                </BlockContent>
                 <style>{loadStyles()}</style>
             </div>
         </Fragment>

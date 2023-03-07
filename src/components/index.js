@@ -33,3 +33,7 @@ export { default as GenIcon } from "./genicon";
 export { default as IcoNames } from "./svgiconsnames";
 export { default as FaIco } from "./faicons";
 export { default as Ico } from "./svgicons";
+export { default as BlockContent } from "./BlockContent";
+export { PBGAdvancedInspectorControls as PBGAdvancedInspectorControls } from "./AdvancedTabOptions";
+export { default as ResponsiveSelectControl } from "./responsive-select-control"
+export { default as AdvancedTabOptions } from "./AdvancedTabOptions";

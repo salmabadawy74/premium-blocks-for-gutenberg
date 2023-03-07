@@ -16,6 +16,8 @@ module.exports = {
             },
         },
         'equal-height': path.resolve(__dirname, 'src/blocks/container/view.js'),
+        'entrance-animation': path.resolve(__dirname, 'src/global-features/entrance-animation/edit/index.js'),
+        'entrance-animation-front': path.resolve(__dirname, 'src/global-features/entrance-animation/front/index.js'),
     },
     externals: {
         ...defaultConfig.externals,

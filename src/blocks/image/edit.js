@@ -8,6 +8,8 @@ import {
     PremiumMediaUpload,
     PremiumFilters,
     DefaultImage,
+    BlockContent,
+    AdvancedTabOptions
 } from "@pbg/components";
 import { generateBlockId, generateCss } from "@pbg/helpers";
 
@@ -239,6 +241,7 @@ function ImageEdit({
                                 })
                             }
                         />
+                        <AdvancedTabOptions {...props} />
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
@@ -248,20 +251,22 @@ function ImageEdit({
                         __html: loadStyles(),
                     }}
                 />
-                <div className={`premium-image-container`}>
-                    <div
-                        className={`premium-image-wrap premium-image-wrap-${hoverEffect}`}
-                    >
-                        {ImgUrl && (
-                            <img
-                                className={`premium-image-img`}
-                                src={`${ImgUrl}`}
-                                alt="image"
-                            />
-                        )}
-                        {!ImgUrl && <DefaultImage className={className} />}
+                <BlockContent blockProps={props}>
+                    <div className={`premium-image-container`}>
+                        <div
+                            className={`premium-image-wrap premium-image-wrap-${hoverEffect}`}
+                        >
+                            {ImgUrl && (
+                                <img
+                                    className={`premium-image-img`}
+                                    src={`${ImgUrl}`}
+                                    alt="image"
+                                />
+                            )}
+                            {!ImgUrl && <DefaultImage className={className} />}
+                        </div>
                     </div>
-                </div>
+                </BlockContent>
             </div>
         </Fragment>
     );

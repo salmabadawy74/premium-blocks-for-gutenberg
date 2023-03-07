@@ -7,6 +7,8 @@ import {
     SpacingComponent as SpacingControl,
     AdvancedColorControl as AdvancedPopColorControl,
     Icons,
+    BlockContent,
+    AdvancedTabOptions
 } from "@pbg/components";
 import { generateBlockId, paddingCss } from "@pbg/helpers";
 
@@ -61,9 +63,9 @@ function Edit(props) {
                 text: attributes.multiPersonContent[0].desc
                     ? attributes.multiPersonContent[0].desc
                     : __(
-                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla",
-                          "premium-blocks-for-gutenberg"
-                      ),
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla",
+                        "premium-blocks-for-gutenberg"
+                    ),
             },
         ],
         [
@@ -211,6 +213,7 @@ function Edit(props) {
                                 })
                             }
                         />
+                        <AdvancedTabOptions {...props} />
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
@@ -232,10 +235,12 @@ function Edit(props) {
                     ...paddingCss(contentPadding, props.deviceType),
                 }}
             >
-                <InnerBlocks
-                    template={INNER_BLOCKS_TEMPLATE}
-                    templateLock={false}
-                />
+                <BlockContent blockProps={props}>
+                    <InnerBlocks
+                        template={INNER_BLOCKS_TEMPLATE}
+                        templateLock={false}
+                    />
+                </BlockContent>
             </div>
         </Fragment>
     );

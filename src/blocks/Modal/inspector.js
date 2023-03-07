@@ -20,7 +20,8 @@ import {
     GenIcon,
     FaIco,
     Ico,
-    IcoNames
+    IcoNames,
+    AdvancedTabOptions
 } from "@pbg/components";
 import { JsonUploadEnabled } from "@pbg/settings";
 
@@ -487,21 +488,21 @@ const Inspector = ({ attributes, setAttributes }) => {
                                 {JsonUploadEnabled == 1 ? (
                                     ""
                                 ) : (
-                                        <p>
-                                            {__(
-                                                'Make Sure that allow "JSON file Upload " from ',
-                                                "premium-blocks-for-gutenberg"
-                                            )}{" "}
-                                            <ExternalLink
-                                                href={
-                                                    window.PremiumBlocksSettings
-                                                        .settingPath
-                                                }
-                                            >
-                                                plugin Settings
+                                    <p>
+                                        {__(
+                                            'Make Sure that allow "JSON file Upload " from ',
+                                            "premium-blocks-for-gutenberg"
+                                        )}{" "}
+                                        <ExternalLink
+                                            href={
+                                                window.PremiumBlocksSettings
+                                                    .settingPath
+                                            }
+                                        >
+                                            plugin Settings
                                         </ExternalLink>
-                                        </p>
-                                    )}
+                                    </p>
+                                )}
                                 <ToggleControl
                                     label={__(
                                         "Loop",
@@ -1284,6 +1285,7 @@ const Inspector = ({ attributes, setAttributes }) => {
                             })
                         }
                     />
+                    <AdvancedTabOptions {...props} />
                 </InspectorTab>
             </InspectorTabs>
         </InspectorControls>

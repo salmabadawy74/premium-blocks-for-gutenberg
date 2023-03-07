@@ -13,6 +13,8 @@ import {
     Icons,
     WebfontLoader,
     RadioComponent,
+    BlockContent,
+    AdvancedTabOptions
 } from "@pbg/components";
 import {
     gradientBackground,
@@ -674,6 +676,7 @@ function Edit(props) {
                                 })
                             }
                         />
+                        <AdvancedTabOptions {...props} />
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
@@ -696,88 +699,90 @@ function Edit(props) {
                     ...borderCss(containerBorder, props.deviceType),
                 }}
             >
-                <div className={`premium-dheading-block__wrap`}>
-                    {React.createElement(
-                        headingTag,
-                        {
-                            className: `premium-dheading-block__title`
-                        },
-                        [
-                            <Fragment>
-                                <RichText
-                                    className={`premium-dheading-block__first${firstStyles?.[0]?.firstClip
-                                        ? ` premium-headingc-${firstStyles?.[0]?.firstClip}`
-                                        : ""
-                                        }${firstStyles?.[0]?.firstAnim
-                                            ? ` premium-headinga-${firstStyles?.[0]?.firstAnim}`
+                <BlockContent blockProps={props}>
+                    <div className={`premium-dheading-block__wrap`}>
+                        {React.createElement(
+                            headingTag,
+                            {
+                                className: `premium-dheading-block__title`
+                            },
+                            [
+                                <Fragment>
+                                    <RichText
+                                        className={`premium-dheading-block__first${firstStyles?.[0]?.firstClip
+                                            ? ` premium-headingc-${firstStyles?.[0]?.firstClip}`
                                             : ""
-                                        }${firstStyles?.[0]?.firstStroke
-                                            ? ` premium-headings-${firstStyles?.[0]?.firstStroke}`
+                                            }${firstStyles?.[0]?.firstAnim
+                                                ? ` premium-headinga-${firstStyles?.[0]?.firstAnim}`
+                                                : ""
+                                            }${firstStyles?.[0]?.firstStroke
+                                                ? ` premium-headings-${firstStyles?.[0]?.firstStroke}`
+                                                : ""
+                                            }`}
+                                        value={firstHeading}
+                                        onChange={(value) =>
+                                            setAttributes({ firstHeading: value })
+                                        }
+                                        style={{
+                                            display: display,
+                                            color: firstStyles?.[0]?.firstColor,
+                                            backgroundColor: firstStyles?.[0]?.firstClip
+                                                ? "none"
+                                                : firstStyles?.[0]?.firstBackground,
+                                            backgroundImage: firstStyles?.[0]?.firstClip
+                                                ? `linear-gradient(to left, ${firstStyles?.[0]?.firstColor}, ${firstStyles?.[0]?.firstClipColor})`
+                                                : "none",
+                                            textShadow: `${firstShadow?.horizontal}px ${firstShadow?.vertical}px ${firstShadow?.blur}px ${firstShadow?.color}`,
+                                            ...typographyCss(
+                                                firstTypography,
+                                                props.deviceType
+                                            ),
+                                            ...marginCss(firstMargin, props.deviceType),
+                                            ...paddingCss(firstPadding, props.deviceType),
+                                            ...borderCss(firstBorder, props.deviceType),
+                                        }}
+                                        tagName={'span'}
+                                    />
+                                    <RichText
+                                        className={`premium-dheading-block__second${secondStyles?.[0]?.secondClip
+                                            ? `${` premium-headingc-${secondStyles?.[0]?.secondClip}`}`
                                             : ""
-                                        }`}
-                                    value={firstHeading}
-                                    onChange={(value) =>
-                                        setAttributes({ firstHeading: value })
-                                    }
-                                    style={{
-                                        display: display,
-                                        color: firstStyles?.[0]?.firstColor,
-                                        backgroundColor: firstStyles?.[0]?.firstClip
-                                            ? "none"
-                                            : firstStyles?.[0]?.firstBackground,
-                                        backgroundImage: firstStyles?.[0]?.firstClip
-                                            ? `linear-gradient(to left, ${firstStyles?.[0]?.firstColor}, ${firstStyles?.[0]?.firstClipColor})`
-                                            : "none",
-                                        textShadow: `${firstShadow?.horizontal}px ${firstShadow?.vertical}px ${firstShadow?.blur}px ${firstShadow?.color}`,
-                                        ...typographyCss(
-                                            firstTypography,
-                                            props.deviceType
-                                        ),
-                                        ...marginCss(firstMargin, props.deviceType),
-                                        ...paddingCss(firstPadding, props.deviceType),
-                                        ...borderCss(firstBorder, props.deviceType),
-                                    }}
-                                    tagName={'span'}
-                                />
-                                <RichText
-                                    className={`premium-dheading-block__second${secondStyles?.[0]?.secondClip
-                                        ? `${` premium-headingc-${secondStyles?.[0]?.secondClip}`}`
-                                        : ""
-                                        }${secondStyles?.[0]?.secondAnim
-                                            ? ` ${`premium-headinga-${secondStyles?.[0]?.secondAnim} `}`
-                                            : ""
-                                        }${secondStyles?.[0]?.secondStroke
-                                            ? ` premium-headings-${secondStyles?.[0]?.secondStroke}`
-                                            : ""
-                                        }`}
-                                    value={secondHeading}
-                                    onChange={(value) =>
-                                        setAttributes({ secondHeading: value })
-                                    }
-                                    style={{
-                                        display: display,
-                                        color: secondStyles?.[0]?.secondColor,
-                                        backgroundColor: secondStyles?.[0]?.secondClip
-                                            ? "none"
-                                            : secondStyles?.[0]?.secondBackground,
-                                        backgroundImage: secondStyles?.[0]?.secondClip
-                                            ? `linear-gradient(to left, ${secondStyles?.[0]?.secondColor}, ${secondStyles?.[0]?.secondClipColor})`
-                                            : "none",
-                                        textShadow: `${secondShadow?.horizontal}px ${secondShadow?.vertical}px ${secondShadow?.blur}px ${secondShadow?.color}`,
-                                        ...typographyCss(
-                                            secondTypography,
-                                            props.deviceType
-                                        ),
-                                        ...marginCss(secondMargin, props.deviceType),
-                                        ...paddingCss(secondPadding, props.deviceType),
-                                        ...borderCss(secondBorder, props.deviceType),
-                                    }}
-                                    tagName={'span'}
-                                />
-                            </Fragment>
-                        ]
-                    )}
-                </div>
+                                            }${secondStyles?.[0]?.secondAnim
+                                                ? ` ${`premium-headinga-${secondStyles?.[0]?.secondAnim} `}`
+                                                : ""
+                                            }${secondStyles?.[0]?.secondStroke
+                                                ? ` premium-headings-${secondStyles?.[0]?.secondStroke}`
+                                                : ""
+                                            }`}
+                                        value={secondHeading}
+                                        onChange={(value) =>
+                                            setAttributes({ secondHeading: value })
+                                        }
+                                        style={{
+                                            display: display,
+                                            color: secondStyles?.[0]?.secondColor,
+                                            backgroundColor: secondStyles?.[0]?.secondClip
+                                                ? "none"
+                                                : secondStyles?.[0]?.secondBackground,
+                                            backgroundImage: secondStyles?.[0]?.secondClip
+                                                ? `linear-gradient(to left, ${secondStyles?.[0]?.secondColor}, ${secondStyles?.[0]?.secondClipColor})`
+                                                : "none",
+                                            textShadow: `${secondShadow?.horizontal}px ${secondShadow?.vertical}px ${secondShadow?.blur}px ${secondShadow?.color}`,
+                                            ...typographyCss(
+                                                secondTypography,
+                                                props.deviceType
+                                            ),
+                                            ...marginCss(secondMargin, props.deviceType),
+                                            ...paddingCss(secondPadding, props.deviceType),
+                                            ...borderCss(secondBorder, props.deviceType),
+                                        }}
+                                        tagName={'span'}
+                                    />
+                                </Fragment>
+                            ]
+                        )}
+                    </div>
+                </BlockContent>
                 {link && (
                     <URLInput
                         value={headingURL}

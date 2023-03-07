@@ -6,7 +6,9 @@ import {
     PremiumBorder,
     SpacingComponent,
     PremiumShadow,
-    PremiumBackgroundControl
+    PremiumBackgroundControl,
+    BlockContent,
+    AdvancedTabOptions
 } from "@pbg/components";
 import {
     gradientBackground,
@@ -179,6 +181,7 @@ function Edit(props) {
                                 setAttributes({ hideMobile: value })
                             }
                         />
+                        <AdvancedTabOptions {...props} />
                     </InspectorTab>
                 </InspectorTabs>
             </InspectorControls>
@@ -201,11 +204,13 @@ function Edit(props) {
                     ...gradientBackground(background),
                 }}
             >
-                <InnerBlocks
-                    template={INNER_BLOCKS_TEMPLATE}
-                    templateLock={false}
-                    allowedBlocks={ALLOWED_BLOCKS}
-                />
+                <BlockContent blockProps={props}>
+                    <InnerBlocks
+                        template={INNER_BLOCKS_TEMPLATE}
+                        templateLock={false}
+                        allowedBlocks={ALLOWED_BLOCKS}
+                    />
+                </BlockContent>
             </div>
         </Fragment>
     );
