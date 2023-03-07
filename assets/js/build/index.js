@@ -33496,11 +33496,11 @@ const save = props => {
       " premium-mobile-hidden": hideMobile
     })
   }), {
-    style: {
+    style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       borderStyle: containerBorder && containerBorder.borderType,
       borderColor: containerBorder && containerBorder.borderColor,
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.gradientBackground)(background)
-    }
+    })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-dheading-block__wrap`
   }, React.createElement(headingTag, {
@@ -33515,8 +33515,6 @@ const save = props => {
       backgroundColor: firstStyles[0].firstClip ? "none" : firstStyles[0].firstBackground,
       backgroundImage: firstStyles[0].firstClip ? `linear-gradient(to left, ${firstStyles[0].firstColor}, ${firstStyles[0].firstClipColor})` : "none",
       fontStyle: firstTypography?.fontStyle,
-      fontFamily: firstTypography?.fontFamily,
-      fontWeight: firstTypography?.fontWeight,
       textDecoration: firstTypography?.textDecoration,
       textTransform: firstTypography?.textTransform,
       borderStyle: firstBorder && firstBorder.borderType,
@@ -33533,8 +33531,6 @@ const save = props => {
       backgroundColor: secondStyles[0].secondClip ? "none" : secondStyles[0].secondBackground,
       backgroundImage: secondStyles[0].secondClip ? `linear-gradient(to left, ${secondStyles[0].secondColor}, ${secondStyles[0].secondClipColor})` : "none",
       fontStyle: secondTypography?.fontStyle,
-      fontFamily: secondTypography?.fontFamily,
-      fontWeight: secondTypography?.fontWeight,
       textDecoration: secondTypography?.textDecoration,
       textTransform: secondTypography?.textTransform,
       borderStyle: secondBorder && secondBorder.borderType,
@@ -64161,9 +64157,7 @@ function save(_ref) {
     value: text,
     style: (0,_components_HelperFunction__WEBPACK_IMPORTED_MODULE_3__.filterJsCss)({
       color: color,
-      // fontFamily: typography?.fontFamily,
       fontStyle: typography?.fontStyle,
-      // fontWeight: typography?.fontWeight,
       textDecoration: typography?.textDecoration,
       textTransform: typography?.textTransform,
       textShadow: `${textShadow?.horizontal}px ${textShadow?.vertical}px ${textShadow?.blur}px ${textShadow?.color}`

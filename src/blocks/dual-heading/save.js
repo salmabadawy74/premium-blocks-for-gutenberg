@@ -47,11 +47,11 @@ const save = (props) => {
                     }
                 ),
             })}
-            style={{
+            style={filterJsCss({
                 borderStyle: containerBorder && containerBorder.borderType,
                 borderColor: containerBorder && containerBorder.borderColor,
                 ...gradientBackground(background),
-            }}
+            })}
         >
             <div className={`premium-dheading-block__wrap`}>
                 {React.createElement(
@@ -84,8 +84,6 @@ const save = (props) => {
                                         ? `linear-gradient(to left, ${firstStyles[0].firstColor}, ${firstStyles[0].firstClipColor})`
                                         : "none",
                                     fontStyle: firstTypography?.fontStyle,
-                                    fontFamily: firstTypography?.fontFamily,
-                                    fontWeight: firstTypography?.fontWeight,
                                     textDecoration: firstTypography?.textDecoration,
                                     textTransform: firstTypography?.textTransform,
                                     borderStyle: firstBorder && firstBorder.borderType,
@@ -116,8 +114,6 @@ const save = (props) => {
                                         ? `linear-gradient(to left, ${secondStyles[0].secondColor}, ${secondStyles[0].secondClipColor})`
                                         : "none",
                                     fontStyle: secondTypography?.fontStyle,
-                                    fontFamily: secondTypography?.fontFamily,
-                                    fontWeight: secondTypography?.fontWeight,
                                     textDecoration: secondTypography?.textDecoration,
                                     textTransform: secondTypography?.textTransform,
                                     borderStyle:

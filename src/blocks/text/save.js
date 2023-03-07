@@ -35,9 +35,7 @@ export default function save({ attributes }) {
             value={text}
             style={filterJsCss({
                 color: color,
-                // fontFamily: typography?.fontFamily,
                 fontStyle: typography?.fontStyle,
-                // fontWeight: typography?.fontWeight,
                 textDecoration: typography?.textDecoration,
                 textTransform: typography?.textTransform,
                 textShadow: `${textShadow?.horizontal}px ${textShadow?.vertical}px ${textShadow?.blur}px ${textShadow?.color}`,
