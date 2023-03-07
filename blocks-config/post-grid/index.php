@@ -300,7 +300,7 @@ function get_premium_post_grid_css_style($attributes, $unique_id)
 }
 
 function get_post_grid_content($attributes, $content, $block)
-{
+{var_dump($content);
     $block_instance = $block->parsed_block;
     $style_css = '';
     if (isset($block_instance['innerBlocks'])) {

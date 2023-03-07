@@ -23,12 +23,12 @@ import { useInstanceId } from "@wordpress/compose";
  */
 const DEFAULTS_POSTS_PER_PAGE = 3;
 
-const TEMPLATE = [["premium/post-template", {}, [["premium/post-featured-image"],
-
-["premium/post-title"],
-["premium/post-meta"],
-["premium/post-excerpt"],
-["premium/post-tag"]]
+import Slider from "react-slick";
+const TEMPLATE = [["premium/post-template", {}, [
+    ["premium/post-title"],
+    ["premium/post-meta"],
+    ["premium/post-excerpt"],
+    ["premium/post-tag"]]
 ]];
 function QueryContent({ attributes, setAttributes, deviceType }) {
     const {

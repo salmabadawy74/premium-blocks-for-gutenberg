@@ -18727,171 +18727,6 @@ const save = props => {
 
 /***/ }),
 
-/***/ "./src/blocks/carousel/edit.js":
-/*!*************************************!*\
-  !*** ./src/blocks/carousel/edit.js ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _pbg_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @pbg/components */ "@pbg/components");
-/* harmony import */ var _pbg_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_pbg_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @pbg/helpers */ "@pbg/helpers");
-/* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_slick__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-slick */ "./node_modules/react-slick/lib/index.js");
-
-
-
-
-
-const {
-  __
-} = wp.i18n;
-const {
-  PanelBody,
-  ToggleControl,
-  SelectControl
-} = wp.components;
-const {
-  Fragment,
-  useEffect
-} = wp.element;
-const {
-  withSelect
-} = wp.data;
-const {
-  InnerBlocks,
-  InspectorControls,
-  useBlockProps
-} = wp.blockEditor;
-const CONTENT = [["core/paragraph", {
-  content: __("Insert your text or select a block ", "premium-blocks-for-gutenberg")
-}]];
-const edit = props => {
-  useEffect(() => {
-    setAttributes({
-      blockId: "premium-carousel-" + (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_3__.generateBlockId)(props.clientId)
-    });
-  }, []);
-  const {
-    className,
-    setAttributes
-  } = props;
-  const {
-    stretchSection,
-    innerWidthType,
-    horAlign,
-    height,
-    innerWidth,
-    minHeight,
-    minHeightUnit,
-    vPos,
-    blockId,
-    hideDesktop,
-    hideTablet,
-    hideMobile,
-    border,
-    padding,
-    margin,
-    background,
-    boxShadow
-  } = props.attributes;
-  return [(0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_slick__WEBPACK_IMPORTED_MODULE_4__["default"], null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InnerBlocks, {
-    template: CONTENT
-  })))];
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (withSelect(select => {
-  const {
-    __experimentalGetPreviewDeviceType = null
-  } = select("core/edit-post");
-  let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
-  return {
-    deviceType: deviceType
-  };
-})(edit));
-
-/***/ }),
-
-/***/ "./src/blocks/carousel/index.js":
-/*!**************************************!*\
-  !*** ./src/blocks/carousel/index.js ***!
-  \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit */ "./src/blocks/carousel/edit.js");
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/carousel/save.js");
-/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
-/* harmony import */ var _blocks_config_carousel_block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../blocks-config/carousel/block.json */ "./blocks-config/carousel/block.json");
-
-
-
-
-
-const {
-  __
-} = wp.i18n;
-const {
-  registerBlockType
-} = wp.blocks;
-registerBlockType("premium/carousel", {
-  ..._blocks_config_carousel_block_json__WEBPACK_IMPORTED_MODULE_4__,
-  supports: {
-    align: true
-  },
-  example: {},
-  edit: _edit__WEBPACK_IMPORTED_MODULE_1__["default"],
-  save: _save__WEBPACK_IMPORTED_MODULE_2__["default"]
-});
-
-/***/ }),
-
-/***/ "./src/blocks/carousel/save.js":
-/*!*************************************!*\
-  !*** ./src/blocks/carousel/save.js ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @pbg/helpers */ "@pbg/helpers");
-/* harmony import */ var _pbg_helpers__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_slick__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-slick */ "./node_modules/react-slick/lib/index.js");
-
-
-
-const {
-  InnerBlocks,
-  useBlockProps
-} = wp.blockEditor;
-
-const save = props => {
-  const {
-    className
-  } = props;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_slick__WEBPACK_IMPORTED_MODULE_3__["default"], null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(InnerBlocks.Content, null));
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (save);
-
-/***/ }),
-
 /***/ "./src/blocks/container/block-item.js":
 /*!********************************************!*\
   !*** ./src/blocks/container/block-item.js ***!
@@ -51943,6 +51778,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
 /* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_slick__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-slick */ "./node_modules/react-slick/lib/index.js");
 
 
 
@@ -51963,7 +51799,8 @@ const {
  * Internal dependencies
  */
 const DEFAULTS_POSTS_PER_PAGE = 3;
-const TEMPLATE = [["premium/post-template", {}, [["premium/post-featured-image"], ["premium/post-title"], ["premium/post-meta"], ["premium/post-excerpt"], ["premium/post-tag"]]]];
+
+const TEMPLATE = [["premium/post-template", {}, [["premium/post-title"], ["premium/post-meta"], ["premium/post-excerpt"], ["premium/post-tag"]]]];
 function QueryContent(_ref) {
   let {
     attributes,
@@ -52039,7 +51876,7 @@ function QueryContent(_ref) {
     attributes: attributes,
     setQuery: updateQuery,
     setAttributes: setAttributes
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Slider, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", innerBlocksProps)));
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_slick__WEBPACK_IMPORTED_MODULE_6__["default"], null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", innerBlocksProps)));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (withSelect(select => {
   const {
@@ -53104,10 +52941,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit */ "./src/blocks/post-grid/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./save */ "./src/blocks/post-grid/save.js");
 /* harmony import */ var _blocks_config_post_grid_block_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../blocks-config/post-grid/block.json */ "./blocks-config/post-grid/block.json");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_5__);
+
+
 
 
 
@@ -53116,14 +52956,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // Register the block
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_4__.registerBlockType)("premium/post-grid", {
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_5__.registerBlockType)("premium/post-grid", {
   ..._blocks_config_post_grid_block_json__WEBPACK_IMPORTED_MODULE_2__,
   icon: "",
-  keywords: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("post"), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("grid")],
+  keywords: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("post"), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("grid")],
   supports: {
     align: ["center", "wide", "full"],
     anchor: true,
-    alignWide: true
+    alignWide: true,
+    inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_3__.postGrid
   },
   edit: _edit__WEBPACK_IMPORTED_MODULE_0__["default"],
   example: {},
@@ -65881,7 +65722,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _blocks_post_grid__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./blocks/post-grid */ "./src/blocks/post-grid/index.js");
 /* harmony import */ var _blocks_pagination__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./blocks/pagination */ "./src/blocks/pagination/index.js");
 /* harmony import */ var _blocks_post_tag__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./blocks/post-tag */ "./src/blocks/post-tag/index.js");
-/* harmony import */ var _blocks_carousel__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./blocks/carousel */ "./src/blocks/carousel/index.js");
 
 
 
@@ -65910,7 +65750,6 @@ _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.heading ? __webpack_require__(/
 _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.container ? __webpack_require__(/*! ./blocks/container */ "./src/blocks/container/index.js") : "";
 
 _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.contentSwitcher ? __webpack_require__(/*! ./blocks/content-switcher */ "./src/blocks/content-switcher/index.js") : "";
-
 
 
 
@@ -106971,17 +106810,6 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 
 /***/ }),
 
-/***/ "./blocks-config/carousel/block.json":
-/*!*******************************************!*\
-  !*** ./blocks-config/carousel/block.json ***!
-  \*******************************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"version":"0.1.0","name":"premium/carousel","title":"carousel","description":"Engage your Gutenberg blocks using Premium carousel Block.","keywords":["section"],"category":"premium-blocks","attributes":{},"editorScript":"pbg-blocks-js","editorStyle":"premium-blocks-editor-css"}');
-
-/***/ }),
-
 /***/ "./blocks-config/feature-image/block.json":
 /*!************************************************!*\
   !*** ./blocks-config/feature-image/block.json ***!
@@ -107022,7 +106850,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/post-carousel","title":"Post Carousel","category":"premium-blocks","description":"An advanced block that allows displaying post types based on different query parameters and visual configurations.","textdomain":"default","attributes":{"align":{"type":"string","default":"alignwide"},"queryId":{"type":"number"},"columns":{"type":"object","default":{"Desktop":3,"Tablet":2,"Mobile":1}},"rowGap":{"type":"number","default":20},"columnGap":{"type":"number","default":20},"equalHeight":{"type":"boolean","default":false},"currentPost":{"type":"boolean","default":false},"query":{"type":"object","default":{"perPage":null,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":""}},"blogContainerBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}},"blogBoxShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}},"blogBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"blogMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"blogPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"advancedBorder":{"type":"boolean","default":false},"advancedBorderValue":{"type":"string"},"postDisplaytext":{"type":"string","default":"No post found!"},"Autoplay":{"type":"boolean","default":false},"slideToScroll":{"type":"number","default":"1"},"autoplaySpeed":{"type":"number","default":"500"},"centerMode":{"type":"number","default":false},"slideSpacing":{"type":"number","default":"10"},"navigationDots":{"type":"boolean","default":true},"navigationArrow":{"type":"boolean","default":true},"arrowPosition":{"type":"number","default":"0"}},"providesContext":{"queryId":"queryId","query":"query","columns":"columns","equalHeight":"equalHeight","currentPost":"currentPost","postDisplaytext":"postDisplaytext"}}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/post-carousel","title":"Post Carousel","category":"premium-blocks","description":"Display your posts in a sliding carousel layout.","textdomain":"default","attributes":{"align":{"type":"string","default":"alignwide"},"queryId":{"type":"number"},"columns":{"type":"object","default":{"Desktop":3,"Tablet":2,"Mobile":1}},"rowGap":{"type":"number","default":20},"columnGap":{"type":"number","default":20},"equalHeight":{"type":"boolean","default":false},"currentPost":{"type":"boolean","default":false},"query":{"type":"object","default":{"perPage":null,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":""}},"blogContainerBackground":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"","backgroundRepeat":"","backgroundSize":"","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientAngle":"180","gradientPosition":"center center","gradientType":"linear"}},"blogBoxShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}},"blogBorder":{"type":"object","default":{"borderColor":"","borderType":"none","borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"blogMargin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"blogPadding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"hideDesktop":{"type":"boolean","default":""},"hideTablet":{"type":"boolean","default":""},"hideMobile":{"type":"boolean","default":""},"advancedBorder":{"type":"boolean","default":false},"advancedBorderValue":{"type":"string"},"postDisplaytext":{"type":"string","default":"No post found!"},"Autoplay":{"type":"boolean","default":false},"slideToScroll":{"type":"number","default":"1"},"autoplaySpeed":{"type":"number","default":"500"},"centerMode":{"type":"number","default":false},"slideSpacing":{"type":"number","default":"10"},"navigationDots":{"type":"boolean","default":true},"navigationArrow":{"type":"boolean","default":true},"arrowPosition":{"type":"number","default":"0"}},"providesContext":{"queryId":"queryId","query":"query","columns":"columns","equalHeight":"equalHeight","currentPost":"currentPost","postDisplaytext":"postDisplaytext"}}');
 
 /***/ }),
 

@@ -63,7 +63,6 @@ import "./blocks/post-carousel";
 import "./blocks/post-grid";
 import "./blocks/pagination";
 import "./blocks/post-tag";
-import "./blocks/carousel"
 
 window.PremiumOptionsSettings = {
     FontAwesomeEnabled,
