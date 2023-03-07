@@ -8,6 +8,7 @@ import {
     animationAttr,
     gradientValue,
     generateCss,
+    filterJsCss
 } from "@pbg/helpers";
 
 const Save = (props) => {
@@ -111,9 +112,8 @@ const Save = (props) => {
             "background-attachment": backgroundOverlayHover["fixed"]
                 ? "fixed"
                 : "unset",
-            opacity: `${
-                backgroundOverlayHover ? hoverOverlayOpacity / 100 : 1
-            } !important`,
+            opacity: `${backgroundOverlayHover ? hoverOverlayOpacity / 100 : 1
+                } !important`,
             filter: `brightness( ${hoverOverlayFilter["bright"]}% ) contrast( ${hoverOverlayFilter["contrast"]}% ) saturate( ${hoverOverlayFilter["saturation"]}% ) blur( ${hoverOverlayFilter["blur"]}px ) hue-rotate( ${hoverOverlayFilter["hue"]}deg ) !important`,
         };
 
@@ -145,17 +145,15 @@ const Save = (props) => {
                 isBlockRootParent ? `${align} premium-is-root-container` : ""
             )}
             key={block_id}
-            style={{
+            style={filterJsCss({
                 ...gradientBackground(backgroundOptions),
-                boxShadow: `${boxShadow.horizontal || 0} px ${
-                    boxShadow.vertical || 0
-                } px ${boxShadow.blur || 0} px ${boxShadow.color} ${
-                    boxShadow.position
-                } `,
+                boxShadow: `${boxShadow.horizontal || 0}px ${boxShadow.vertical || 0
+                    }px ${boxShadow.blur || 0}px ${boxShadow.color} ${boxShadow.position
+                    } `,
                 overflow: overflow,
                 borderStyle: border["borderType"],
                 borderColor: border["borderColor"],
-            }}
+            })}
             {...animationAttr(animation)}
         >
             <style
@@ -193,11 +191,11 @@ const Save = (props) => {
                 )}
             <div
                 className={`premium-row__block_overlay`}
-                style={{
+                style={filterJsCss({
                     ...gradientBackground(backgroundOverlay),
                     opacity: `${backgroundOverlay ? overlayOpacity / 100 : 1} `,
-                    filter: `brightness(${overlayFilter["bright"]} % ) contrast(${overlayFilter["contrast"]} % ) saturate(${overlayFilter["saturation"]} % ) blur(${overlayFilter["blur"]}px) hue - rotate(${overlayFilter["hue"]}deg)`,
-                }}
+                    filter: `brightness( ${overlayFilter["bright"]}% ) contrast( ${overlayFilter["contrast"]}% ) saturate( ${overlayFilter["saturation"]}% ) blur( ${overlayFilter["blur"]}px ) hue-rotate( ${overlayFilter["hue"]}deg ) `,
+                })}
             ></div>
             <div className="premium-container-inner-blocks-wrap">
                 <InnerBlocks.Content />

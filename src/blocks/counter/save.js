@@ -43,8 +43,6 @@ const save = props => {
                         style={filterJsCss({
                             color: prefixStyles[0].prefixColor,
                             fontStyle: prefixTypography?.fontStyle,
-                            fontFamily: prefixTypography?.fontFamily,
-                            fontWeight: prefixTypography?.fontWeight,
                             textDecoration: prefixTypography?.textDecoration,
                             textTransform: prefixTypography?.textTransform,
                         })}
@@ -59,8 +57,6 @@ const save = props => {
                     style={filterJsCss({
                         color: numberStyles[0].numberColor,
                         fontStyle: numberTypography?.fontStyle,
-                        fontFamily: numberTypography?.fontFamily,
-                        fontWeight: numberTypography?.fontWeight,
                         textDecoration: numberTypography?.textDecoration,
                         textTransform: numberTypography?.textTransform,
                     })}
@@ -73,8 +69,6 @@ const save = props => {
                         style={filterJsCss({
                             color: suffixStyles[0].suffixColor,
                             fontStyle: suffixTypography?.fontStyle,
-                            fontFamily: suffixTypography?.fontFamily,
-                            fontWeight: suffixTypography?.fontWeight,
                             textDecoration: suffixTypography?.textDecoration,
                             textTransform: suffixTypography?.textTransform,
                         })}
