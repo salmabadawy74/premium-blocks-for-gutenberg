@@ -40,8 +40,6 @@ const save = props => {
                 style={filterJsCss({
                     color: authorStyles[0].authorColor,
                     fontStyle: authorTypography?.fontStyle,
-                    fontFamily: authorTypography?.fontFamily,
-                    fontWeight: authorTypography?.fontWeight,
                     textDecoration: authorTypography?.textDecoration,
                     textTransform: authorTypography?.textTransform,
                 })}
@@ -62,8 +60,6 @@ const save = props => {
                     style={filterJsCss({
                         color: companyStyles[0].authorComColor,
                         fontStyle: companyTypography?.fontStyle,
-                        fontFamily: companyTypography?.fontFamily,
-                        fontWeight: companyTypography?.fontWeight,
                         textDecoration: companyTypography?.textDecoration,
                         textTransform: companyTypography?.textTransform,
                     })}
