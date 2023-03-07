@@ -47,8 +47,6 @@ export default function save({ attributes }) {
                     color: color,
                     width: `${textWidth}px`,
                     fontStyle: typography?.fontStyle,
-                    fontFamily: typography?.fontFamily,
-                    fontWeight: typography?.fontWeight,
                     textDecoration: typography?.textDecoration,
                     textTransform: typography?.textTransform,
                 })}

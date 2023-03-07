@@ -46,8 +46,6 @@ export default function save({ attributes }) {
                 color: slashedColor,
                 backgroundColor: slashedBgColor,
                 fontStyle: slashedTypography?.fontStyle,
-                fontFamily: slashedTypography?.fontFamily,
-                fontWeight: slashedTypography?.fontWeight,
                 textDecoration: slashedTypography?.textDecoration,
                 textTransform: slashedTypography?.textTransform,
             })}
@@ -60,8 +58,6 @@ export default function save({ attributes }) {
                 color: currencyColor,
                 backgroundColor: currencyBgColor,
                 fontStyle: currencyTypography?.fontStyle,
-                fontFamily: currencyTypography?.fontFamily,
-                fontWeight: currencyTypography?.fontWeight,
                 textDecoration: currencyTypography?.textDecoration,
                 textTransform: currencyTypography?.textTransform,
             })}
@@ -74,8 +70,6 @@ export default function save({ attributes }) {
                 color: priceColor,
                 backgroundColor: priceBgColor,
                 fontStyle: priceTypography?.fontStyle,
-                fontFamily: priceTypography?.fontFamily,
-                fontWeight: priceTypography?.fontWeight,
                 textDecoration: priceTypography?.textDecoration,
                 textTransform: priceTypography?.textTransform,
             })}
@@ -88,8 +82,6 @@ export default function save({ attributes }) {
                 color: dividerColor,
                 backgroundColor: dividerBgColor,
                 fontStyle: dividerTypography?.fontStyle,
-                fontFamily: dividerTypography?.fontFamily,
-                fontWeight: dividerTypography?.fontWeight,
                 textDecoration: dividerTypography?.textDecoration,
                 textTransform: dividerTypography?.textTransform,
             })}
@@ -102,8 +94,6 @@ export default function save({ attributes }) {
                 color: durationColor,
                 backgroundColor: durationBgColor,
                 fontStyle: durationTypography?.fontStyle,
-                fontFamily: durationTypography?.fontFamily,
-                fontWeight: durationTypography?.fontWeight,
                 textDecoration: durationTypography?.textDecoration,
                 textTransform: durationTypography?.textTransform,
             })}

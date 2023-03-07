@@ -11277,8 +11277,6 @@ function save(_ref) {
       color: color,
       width: `${textWidth}px`,
       fontStyle: typography?.fontStyle,
-      fontFamily: typography?.fontFamily,
-      fontWeight: typography?.fontWeight,
       textDecoration: typography?.textDecoration,
       textTransform: typography?.textTransform
     })
@@ -17450,7 +17448,6 @@ function save(props) {
       'color': titleStyles[0].titleColor,
       'text-shadow': `${titlesTextShadow.horizontal}px ${titlesTextShadow.vertical}px ${titlesTextShadow.blur}px ${titlesTextShadow.color}`,
       'font-style': titleTypography?.fontStyle,
-      'font-weight': titleTypography?.fontWeight,
       'text-decoration': titleTypography?.textDecoration,
       'text-transform': titleTypography?.textTransform
     };
@@ -51455,6 +51452,7 @@ function Edit(props) {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_6__.GenIcon, {
     className: `premium-bullet-list-icon ${icon}`,
     name: icon,
+    htmltag: 'span',
     size: bulletIconFontSize[props.deviceType],
     icon: 'fa' === icon.substring(0, 2) ? _pbg_components__WEBPACK_IMPORTED_MODULE_6__.FaIco[icon] : _pbg_components__WEBPACK_IMPORTED_MODULE_6__.Ico[icon],
     strokeWidth: 'fe' === icon.substring(0, 2) ? icons[0].width : undefined
@@ -51599,6 +51597,7 @@ function save(_ref) {
     className: "premium-bullet-list__content-icon"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_pbg_components__WEBPACK_IMPORTED_MODULE_4__.GenIcon, {
     className: `premium-bullet-list-icon ${icon}`,
+    htmltag: 'span',
     name: icon,
     icon: 'fa' === icon.substring(0, 2) ? _pbg_components__WEBPACK_IMPORTED_MODULE_4__.FaIco[icon] : _pbg_components__WEBPACK_IMPORTED_MODULE_4__.Ico[icon],
     strokeWidth: 'fe' === icon.substring(0, 2) ? icons[0].width : undefined
@@ -56489,8 +56488,6 @@ function save(_ref) {
       color: slashedColor,
       backgroundColor: slashedBgColor,
       fontStyle: slashedTypography?.fontStyle,
-      fontFamily: slashedTypography?.fontFamily,
-      fontWeight: slashedTypography?.fontWeight,
       textDecoration: slashedTypography?.textDecoration,
       textTransform: slashedTypography?.textTransform
     })
@@ -56502,8 +56499,6 @@ function save(_ref) {
       color: currencyColor,
       backgroundColor: currencyBgColor,
       fontStyle: currencyTypography?.fontStyle,
-      fontFamily: currencyTypography?.fontFamily,
-      fontWeight: currencyTypography?.fontWeight,
       textDecoration: currencyTypography?.textDecoration,
       textTransform: currencyTypography?.textTransform
     })
@@ -56515,8 +56510,6 @@ function save(_ref) {
       color: priceColor,
       backgroundColor: priceBgColor,
       fontStyle: priceTypography?.fontStyle,
-      fontFamily: priceTypography?.fontFamily,
-      fontWeight: priceTypography?.fontWeight,
       textDecoration: priceTypography?.textDecoration,
       textTransform: priceTypography?.textTransform
     })
@@ -56528,8 +56521,6 @@ function save(_ref) {
       color: dividerColor,
       backgroundColor: dividerBgColor,
       fontStyle: dividerTypography?.fontStyle,
-      fontFamily: dividerTypography?.fontFamily,
-      fontWeight: dividerTypography?.fontWeight,
       textDecoration: dividerTypography?.textDecoration,
       textTransform: dividerTypography?.textTransform
     })
@@ -56541,8 +56532,6 @@ function save(_ref) {
       color: durationColor,
       backgroundColor: durationBgColor,
       fontStyle: durationTypography?.fontStyle,
-      fontFamily: durationTypography?.fontFamily,
-      fontWeight: durationTypography?.fontWeight,
       textDecoration: durationTypography?.textDecoration,
       textTransform: durationTypography?.textTransform
     })

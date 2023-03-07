@@ -44,6 +44,7 @@ export default function save({ attributes }) {
                         {iconType === 'icon' && (
                             <span className='premium-bullet-list__content-icon'>
                                 <GenIcon className={`premium-bullet-list-icon ${icon}`}
+                                    htmltag={'span'}
                                     name={icon}
                                     icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
                                     strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}

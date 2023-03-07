@@ -58,7 +58,6 @@ export default function save(props) {
             'color': titleStyles[0].titleColor,
             'text-shadow': `${titlesTextShadow.horizontal}px ${titlesTextShadow.vertical}px ${titlesTextShadow.blur}px ${titlesTextShadow.color}`,
             'font-style': titleTypography?.fontStyle,
-            'font-weight': titleTypography?.fontWeight,
             'text-decoration': titleTypography?.textDecoration,
             'text-transform': titleTypography?.textTransform,
         };
