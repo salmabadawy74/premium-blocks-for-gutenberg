@@ -123,8 +123,6 @@ const save = (props) => {
                                 style={filterJsCss({
                                     color: titleStyles[0].titleColor,
                                     fontStyle: titleTypography.fontStyle,
-                                    fontFamily: titleTypography.fontFamily,
-                                    fontWeight: titleTypography.fontWeight,
                                     textDecoration:
                                         titleTypography.textDecoration,
                                     textTransform:
@@ -141,8 +139,6 @@ const save = (props) => {
                                 style={filterJsCss({
                                     color: descStyles[0].descColor,
                                     fontStyle: descTypography.fontStyle,
-                                    fontFamily: descTypography.fontFamily,
-                                    fontWeight: descTypography.fontWeight,
                                     textDecoration:
                                         descTypography.textDecoration,
                                     textTransform: descTypography.textTransform,

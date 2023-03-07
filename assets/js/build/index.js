@@ -14210,8 +14210,6 @@ const save = props => {
     style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       color: titleStyles[0].titleColor,
       fontStyle: titleTypography.fontStyle,
-      fontFamily: titleTypography.fontFamily,
-      fontWeight: titleTypography.fontWeight,
       textDecoration: titleTypography.textDecoration,
       textTransform: titleTypography.textTransform,
       textShadow: `${titleTextShadow.horizontal}px ${titleTextShadow.vertical}px ${titleTextShadow.blur}px ${titleTextShadow.color}`
@@ -14225,8 +14223,6 @@ const save = props => {
     style: (0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_2__.filterJsCss)({
       color: descStyles[0].descColor,
       fontStyle: descTypography.fontStyle,
-      fontFamily: descTypography.fontFamily,
-      fontWeight: descTypography.fontWeight,
       textDecoration: descTypography.textDecoration,
       textTransform: descTypography.textTransform,
       textShadow: `${descTextShadow.horizontal}px ${descTextShadow.vertical}px ${descTextShadow.blur}px ${descTextShadow.color}`
