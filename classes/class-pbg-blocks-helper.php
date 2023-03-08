@@ -114,6 +114,9 @@ class PBG_Blocks_Helper {
 		add_action( 'pbg_get_css_files', array( $this, 'add_blocks_editor_styles' ) );
 
 		add_filter( 'render_block_premium/container', array( $this, 'equal_height_front_script' ), 1, 2 );
+
+		add_action( 'wp_head', array( $this, 'output_custom_block_css' ), 90 );
+
 	}
 
 	/**
@@ -669,6 +672,31 @@ class PBG_Blocks_Helper {
 			return true;
 		}
 		return false;
+	}
+
+	public function add_custom_block_css($css) {
+		// Generate a unique ID for the style tag
+		$unique_id = uniqid();
+		
+		// Add the CSS code to the global array
+		global $custom_block_css;
+		$custom_block_css[$unique_id] = $css;
+		
+		// Register a function to output the CSS code in the head of the page
+		
+	}
+	
+	public function output_custom_block_css() {
+		global $custom_block_css;
+		
+		// Combine all CSS code into one string
+		$combined_css = '';
+		foreach ( $custom_block_css as $unique_id => $css ) {
+			$combined_css .= "\n/* Custom block ID: $unique_id */\n$css";
+		}
+		
+		// Output the combined CSS code in a single style tag
+		echo '<style id="pbg-blocks-style">' . $combined_css . '</style>';
 	}
 
 	/**
