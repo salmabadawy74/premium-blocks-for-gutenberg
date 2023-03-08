@@ -176,6 +176,27 @@ class PBG_Blocks_Helper {
 	}
 
 	/**
+	 * Get the first non-script style tag from a given HTML string.
+	 *
+	 * @param string $html The HTML string to search for style tags.
+	 *
+	 * @return string|null The first non-script style tag found in the given HTML, or null if none was found.
+	 */
+	function get_first_non_script_style_tag( $block_content ) {
+		$matches = array();
+		preg_match_all( '/<([\w]+)(?![^<]*(?:style|script))/', $block_content, $matches );
+		$tags = $matches[1];
+
+		foreach ( $tags as $tag ) {
+			if ( $tag !== 'script' && $tag !== 'style' ) {
+				return $tag;
+			}
+		}
+
+		return '';
+	}
+
+	/**
 	 * Add the clientId attribute to the block element.
 	 *
 	 * @param string $block_content The HTML content of the block.
@@ -191,8 +212,8 @@ class PBG_Blocks_Helper {
 		}
 
 		if ( $global_features['premium-entrance-animation'] && isset( $block['attrs']['entranceAnimation'] ) && $this->check_if_any_value_not_empty( $block['attrs']['entranceAnimation']['animation'] ) ) {
-			preg_match( '/<([\w]+)(?![^<]*(style|script))/', $block_content, $matches );
-			$parent_tag    = $matches[1];
+			preg_match( '/^<(?!\s*(?:style|script)\b)\w+\b[^>]*>/i', $block_content, $matches );
+			$parent_tag    = $this->get_first_non_script_style_tag( $block_content );
 			$block_content = $this->str_replace_first( '<' . $parent_tag, '<' . $parent_tag . ' data-animation="' . $block['attrs']['entranceAnimation']['clientId'] . '"', $block_content );
 		}
 
