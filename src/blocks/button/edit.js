@@ -30,7 +30,8 @@ import {
     GenIcon,
     FaIco,
     Ico,
-    IcoNames
+    IcoNames,
+    BlockContent
 } from "@pbg/components";
 
 const { __ } = wp.i18n;
@@ -766,78 +767,80 @@ function Edit(props) {
                 style={{ textAlign: btnAlign[props.deviceType] }}
             >
                 <style>{loadStyles()}</style>
-                {React.createElement(
-                    "div",
-                    {
-                        className: `premium-button wp-block-button__link premium-button__${btnSize} premium-button__${iconPosition}`,
-                        style: {
-                            boxShadow: `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`,
-                            ...paddingCss(padding, props.deviceType),
-                            ...marginCss(margin, props.deviceType),
-                            ...borderCss(border, props.deviceType),
-                            ...gradientBackground(backgroundOptions),
-                            color: `${btnStyles[0].textColor}`,
+                <BlockContent blockProps={props}>
+                    {React.createElement(
+                        "div",
+                        {
+                            className: `premium-button wp-block-button__link premium-button__${btnSize} premium-button__${iconPosition}`,
+                            style: {
+                                boxShadow: `${boxShadow.horizontal}px ${boxShadow.vertical}px ${boxShadow.blur}px ${boxShadow.color} ${boxShadow.position}`,
+                                ...paddingCss(padding, props.deviceType),
+                                ...marginCss(margin, props.deviceType),
+                                ...borderCss(border, props.deviceType),
+                                ...gradientBackground(backgroundOptions),
+                                color: `${btnStyles[0].textColor}`,
+                            },
                         },
-                    },
-                    [
-                        <Fragment>
-                            {showIcon && iconPosition == "before" && (
-                                <GenIcon className={`premium-button-icon ${icon} ${iconType}`}
-                                    name={icon}
-                                    size={iconSize[props.deviceType]}
-                                    icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
-                                    strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
+                        [
+                            <Fragment>
+                                {showIcon && iconPosition == "before" && (
+                                    <GenIcon className={`premium-button-icon ${icon} ${iconType}`}
+                                        name={icon}
+                                        size={iconSize[props.deviceType]}
+                                        icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
+                                        strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
+                                        style={{
+                                            fontSize: iconSize[props.deviceType] + iconSize.unit,
+                                            width: iconSize[props.deviceType] + iconSize.unit,
+                                            height: iconSize[props.deviceType] + iconSize.unit,
+                                            color: `${iconColor}!important`,
+                                            ...marginCss(
+                                                iconSpacing,
+                                                props.deviceType
+                                            )
+                                        }}
+                                    />
+                                )}
+                                <RichText
+                                    className="premium-button-text-edit"
+                                    value={btnText}
+                                    onChange={(value) =>
+                                        setAttributes({ btnText: value })
+                                    }
                                     style={{
-                                        fontSize: iconSize[props.deviceType] + iconSize.unit,
-                                        width: iconSize[props.deviceType] + iconSize.unit,
-                                        height: iconSize[props.deviceType] + iconSize.unit,
-                                        color: `${iconColor}!important`,
-                                        ...marginCss(
-                                            iconSpacing,
+                                        textShadow: `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`,
+                                        ...typographyCss(
+                                            typography,
                                             props.deviceType
-                                        )
+                                        ),
+                                        display: "inline",
                                     }}
+                                    keepPlaceholderOnFocus
                                 />
-                            )}
-                            <RichText
-                                className="premium-button-text-edit"
-                                value={btnText}
-                                onChange={(value) =>
-                                    setAttributes({ btnText: value })
-                                }
-                                style={{
-                                    textShadow: `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`,
-                                    ...typographyCss(
-                                        typography,
-                                        props.deviceType
-                                    ),
-                                    display: "inline",
-                                }}
-                                keepPlaceholderOnFocus
-                            />
-                            {showIcon && iconPosition == "after" && (
-                                <GenIcon className={`premium-button-icon ${icon} ${iconType}`}
-                                    name={icon}
-                                    size={iconSize[props.deviceType]}
-                                    icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
-                                    strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
-                                    style={{
-                                        fontSize:
-                                            iconSize[props.deviceType] +
-                                            iconSize.unit,
-                                        width: iconSize[props.deviceType] + iconSize.unit,
-                                        height: iconSize[props.deviceType] + iconSize.unit,
-                                        color: `${iconColor}!important`,
-                                        ...marginCss(
-                                            iconSpacing,
-                                            props.deviceType
-                                        )
-                                    }}
-                                />
-                            )}
-                        </Fragment>,
-                    ]
-                )}
+                                {showIcon && iconPosition == "after" && (
+                                    <GenIcon className={`premium-button-icon ${icon} ${iconType}`}
+                                        name={icon}
+                                        size={iconSize[props.deviceType]}
+                                        icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
+                                        strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
+                                        style={{
+                                            fontSize:
+                                                iconSize[props.deviceType] +
+                                                iconSize.unit,
+                                            width: iconSize[props.deviceType] + iconSize.unit,
+                                            height: iconSize[props.deviceType] + iconSize.unit,
+                                            color: `${iconColor}!important`,
+                                            ...marginCss(
+                                                iconSpacing,
+                                                props.deviceType
+                                            )
+                                        }}
+                                    />
+                                )}
+                            </Fragment>,
+                        ]
+                    )}
+                </BlockContent>
                 {isSelected && <URLInput
                     value={btnLink}
                     onChange={(newLink) => setAttributes({ btnLink: newLink })}

@@ -7,7 +7,8 @@ import {
     MultiButtonsControl as ResponsiveRadioControl,
     SpacingComponent as SpacingControl,
     PremiumTypo,
-    ResponsiveRangeControl
+    ResponsiveRangeControl,
+    BlockContent
 } from '@pbg/components';
 import { generateBlockId, generateCss } from '@pbg/helpers';
 
@@ -217,11 +218,13 @@ function Edit(props) {
                         justifyContent: align[props.deviceType]
                     }}
                 >
-                    <InnerBlocks
-                        template={INNER_BLOCKS_TEMPLATE}
-                        templateLock={false}
-                        allowedBlocks={["premium/button"]}
-                    />
+                    <BlockContent blockProps={props}>
+                        <InnerBlocks
+                            template={INNER_BLOCKS_TEMPLATE}
+                            templateLock={false}
+                            allowedBlocks={["premium/button"]}
+                        />
+                    </BlockContent>
                 </div>
             </div>
         </Fragment>

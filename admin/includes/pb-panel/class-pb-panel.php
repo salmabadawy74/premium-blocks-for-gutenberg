@@ -164,7 +164,9 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 		 */
 		public function add_default_features( $options ) {
 			$default_options = array(
-				'premium-equal-height' => true,
+				'premium-equal-height'                  => true,
+				'premium-entrance-animation'            => true,
+				'premium-entrance-animation-all-blocks' => false,
 			);
 
 			return array_merge( $default_options, $options );
@@ -553,7 +555,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 						'creative',
 					),
 				),
-				'button-group' => array(
+				'button-group'     => array(
 					'type'     => 'pb-button',
 					'label'    => __( 'Button Group', 'premium-blocks-for-gutenberg' ),
 					'icon'     => 'button_group',

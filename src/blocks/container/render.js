@@ -11,7 +11,9 @@ import {
     gradientValue,
     generateCss,
 } from "@pbg/helpers";
-
+import {
+    BlockContent
+} from "@pbg/components";
 const Render = forwardRef((props, ref) => {
     props = props.parentProps;
     const { attributes, clientId, className } = props;
@@ -231,14 +233,16 @@ const Render = forwardRef((props, ref) => {
                 )}
             <div className={`premium-row__block_overlay`}></div>
             <div className="premium-container-inner-blocks-wrap">
-                <InnerBlocks
-                    __experimentalMoverDirection={moverDirection}
-                    renderAppender={
-                        hasChildBlocks
-                            ? undefined
-                            : InnerBlocks.ButtonBlockAppender
-                    }
-                />
+                <BlockContent blockProps={props}>
+                    <InnerBlocks
+                        __experimentalMoverDirection={moverDirection}
+                        renderAppender={
+                            hasChildBlocks
+                                ? undefined
+                                : InnerBlocks.ButtonBlockAppender
+                        }
+                    />
+                </BlockContent>
             </div>
         </CustomTag>
     );

@@ -20,7 +20,8 @@ import {
     GenIcon,
     FaIco,
     Ico,
-    IcoNames
+    IcoNames,
+    BlockContent
 } from '@pbg/components';
 import { borderCss, paddingCss, generateBlockId, generateCss } from '@pbg/helpers';
 
@@ -144,26 +145,26 @@ function Edit(props) {
                                     />
                                 </Fragment>
                             ) : (
-                                    <Fragment>
-                                        <PremiumMediaUpload
-                                            type="image"
-                                            imageID={imageID}
-                                            imageURL={imageURL}
-                                            onSelectMedia={(media) => {
-                                                setAttributes({
-                                                    imageID: media.id,
-                                                    imageURL: media.url,
-                                                });
-                                            }}
-                                            onRemoveImage={() =>
-                                                setAttributes({
-                                                    imageURL: "",
-                                                    imageID: "",
-                                                })
-                                            }
-                                        />
-                                    </Fragment>
-                                )}
+                                <Fragment>
+                                    <PremiumMediaUpload
+                                        type="image"
+                                        imageID={imageID}
+                                        imageURL={imageURL}
+                                        onSelectMedia={(media) => {
+                                            setAttributes({
+                                                imageID: media.id,
+                                                imageURL: media.url,
+                                            });
+                                        }}
+                                        onRemoveImage={() =>
+                                            setAttributes({
+                                                imageURL: "",
+                                                imageID: "",
+                                            })
+                                        }
+                                    />
+                                </Fragment>
+                            )}
                             <ResponsiveRangeControl
                                 label={__(
                                     "Width/Size",
@@ -388,105 +389,105 @@ function Edit(props) {
                                     </InsideTab>
                                 </InsideTabs>
                             ) : (
-                                    <Fragment>
-                                        <InsideTabs>
-                                            <InsideTab tabTitle={__("Normal", "premium-blocks-for-gutenberg")}>
-                                                <Fragment>
-                                                    <AdvancedPopColorControl
-                                                        label={__(
-                                                            "Color",
-                                                            "premium-blocks-for-gutenberg"
-                                                        )}
-                                                        colorDefault={""}
-                                                        colorValue={
-                                                            iconStyles[0]
-                                                                .iconColor
-                                                        }
-                                                        onColorChange={(
-                                                            newValue
-                                                        ) =>
-                                                            saveIconStyle({
-                                                                iconColor: newValue,
-                                                            })
-                                                        }
-                                                    />
-                                                    <AdvancedPopColorControl
-                                                        label={__(
-                                                            "Background Color",
-                                                            "premium-blocks-for-gutenberg"
-                                                        )}
-                                                        colorDefault={""}
-                                                        colorValue={
-                                                            iconStyles[0]
-                                                                .iconBGColor
-                                                        }
-                                                        onColorChange={(
-                                                            newValue
-                                                        ) =>
-                                                            saveIconStyle({
-                                                                iconBGColor: newValue,
-                                                            })
-                                                        }
-                                                    />
-                                                </Fragment>
-                                            </InsideTab>
-                                            <InsideTab tabTitle={__("Hover", "premium-blocks-for-gutenberg")}>
-                                                <Fragment>
-                                                    <AdvancedPopColorControl
-                                                        label={__(
-                                                            "Hover Color",
-                                                            "premium-blocks-for-gutenberg"
-                                                        )}
-                                                        colorValue={
-                                                            iconStyles[0]
-                                                                .iconColorHover
-                                                        }
-                                                        onColorChange={(
-                                                            newValue
-                                                        ) =>
-                                                            saveIconStyle({
-                                                                iconColorHover: newValue,
-                                                            })
-                                                        }
-                                                        colorDefault={""}
-                                                    />
-                                                    <AdvancedPopColorControl
-                                                        label={__(
-                                                            "Hover Background Color",
-                                                            "premium-blocks-for-gutenberg"
-                                                        )}
-                                                        colorValue={
-                                                            iconStyles[0]
-                                                                .iconBGColorHover
-                                                        }
-                                                        onColorChange={(
-                                                            newValue
-                                                        ) =>
-                                                            saveIconStyle({
-                                                                iconBGColorHover: newValue,
-                                                            })
-                                                        }
-                                                        colorDefault={""}
-                                                    />
-                                                </Fragment>
-                                            </InsideTab>
-                                        </InsideTabs>
-                                        <SpacingControl
-                                            label={__(
-                                                "Padding",
-                                                "premium-blocks-for-gutenberg"
-                                            )}
-                                            value={iconPadding}
-                                            onChange={(value) =>
-                                                setAttributes({
-                                                    iconPadding: value,
-                                                })
-                                            }
-                                            showUnits={true}
-                                            responsive={true}
-                                        />
-                                    </Fragment>
-                                )}
+                                <Fragment>
+                                    <InsideTabs>
+                                        <InsideTab tabTitle={__("Normal", "premium-blocks-for-gutenberg")}>
+                                            <Fragment>
+                                                <AdvancedPopColorControl
+                                                    label={__(
+                                                        "Color",
+                                                        "premium-blocks-for-gutenberg"
+                                                    )}
+                                                    colorDefault={""}
+                                                    colorValue={
+                                                        iconStyles[0]
+                                                            .iconColor
+                                                    }
+                                                    onColorChange={(
+                                                        newValue
+                                                    ) =>
+                                                        saveIconStyle({
+                                                            iconColor: newValue,
+                                                        })
+                                                    }
+                                                />
+                                                <AdvancedPopColorControl
+                                                    label={__(
+                                                        "Background Color",
+                                                        "premium-blocks-for-gutenberg"
+                                                    )}
+                                                    colorDefault={""}
+                                                    colorValue={
+                                                        iconStyles[0]
+                                                            .iconBGColor
+                                                    }
+                                                    onColorChange={(
+                                                        newValue
+                                                    ) =>
+                                                        saveIconStyle({
+                                                            iconBGColor: newValue,
+                                                        })
+                                                    }
+                                                />
+                                            </Fragment>
+                                        </InsideTab>
+                                        <InsideTab tabTitle={__("Hover", "premium-blocks-for-gutenberg")}>
+                                            <Fragment>
+                                                <AdvancedPopColorControl
+                                                    label={__(
+                                                        "Hover Color",
+                                                        "premium-blocks-for-gutenberg"
+                                                    )}
+                                                    colorValue={
+                                                        iconStyles[0]
+                                                            .iconColorHover
+                                                    }
+                                                    onColorChange={(
+                                                        newValue
+                                                    ) =>
+                                                        saveIconStyle({
+                                                            iconColorHover: newValue,
+                                                        })
+                                                    }
+                                                    colorDefault={""}
+                                                />
+                                                <AdvancedPopColorControl
+                                                    label={__(
+                                                        "Hover Background Color",
+                                                        "premium-blocks-for-gutenberg"
+                                                    )}
+                                                    colorValue={
+                                                        iconStyles[0]
+                                                            .iconBGColorHover
+                                                    }
+                                                    onColorChange={(
+                                                        newValue
+                                                    ) =>
+                                                        saveIconStyle({
+                                                            iconBGColorHover: newValue,
+                                                        })
+                                                    }
+                                                    colorDefault={""}
+                                                />
+                                            </Fragment>
+                                        </InsideTab>
+                                    </InsideTabs>
+                                    <SpacingControl
+                                        label={__(
+                                            "Padding",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                        value={iconPadding}
+                                        onChange={(value) =>
+                                            setAttributes({
+                                                iconPadding: value,
+                                            })
+                                        }
+                                        showUnits={true}
+                                        responsive={true}
+                                    />
+                                </Fragment>
+                            )}
                             {!iconStyles[0].advancedBorder && (
                                 <PremiumBorder
                                     label={__("Border", "premium-blocks-for-gutenberg")}
@@ -578,59 +579,60 @@ function Edit(props) {
                 })}
                 style={{ textAlign: iconAlign[props.deviceType] }}
             >
-                <div
-                    className={`premium-image-separator-container`}
-                    style={{
-                        textAlign: iconAlign[props.deviceType],
-                        transform: `translateY(${gutter}%)`,
-                        filter:
-                            iconType === "image"
-                                ? `brightness( ${imgFilter?.bright}% ) contrast( ${imgFilter?.contrast}% ) saturate( ${imgFilter?.saturation}% ) blur( ${imgFilter?.blur}px ) hue-rotate( ${imgFilter?.hue}deg )`
-                                : "",
-                    }}
-                >
-                    {iconType === "icon" && (
-                        <GenIcon className={`premium-image-separator-icon ${iconStyles[0].icon} premium-image-separator-${iconStyles[0].advancedBorder}`}
-                            name={iconStyles[0].icon}
-                            size={iconSize[props.deviceType]}
-                            icon={('fa' === iconStyles[0].icon.substring(0, 2) ? FaIco[iconStyles[0].icon] : Ico[iconStyles[0].icon])}
-                            strokeWidth={('fe' === iconStyles[0].icon.substring(0, 2) ? icons[0].width : undefined)}
-                            style={{
-                                ...paddingCss(iconPadding, props.deviceType),
-                                fontSize: (iconSize[props.deviceType] || 200) + iconSize.unit,
-                                color: iconStyles[0].iconColor,
-                                backgroundColor: iconStyles[0].iconBGColor,
-                                ...BorderValue,
-                            }}
-                        />
-                    )}
-                    {iconType === "image" && (
-                        <Fragment>
-                            {imageURL ? (
-                                <img
-                                    src={imageURL}
-                                    style={{
-                                        ...BorderValue,
-                                        maskSize: `${maskSize}`,
-                                        maskPosition: `${maskPosition}`,
-                                        maskImage: imgMaskURL
-                                            ? `url("${imgMaskURL}")`
-                                            : "",
-                                        WebkitMaskImage: imgMaskURL
-                                            ? `url("${imgMaskURL}")`
-                                            : "",
-                                        WebkitMaskSize: `${maskSize}`,
-                                        WebkitMaskPosition: `${maskPosition}`,
-                                        objectFit: `${imgFit}`,
-                                        height:
-                                            (imgHeight[props.deviceType] ||
-                                                200) + iconSize.unit,
-                                        width:
-                                            (iconSize[props.deviceType] ||
-                                                200) + iconSize.unit,
-                                    }}
-                                />
-                            ) : (
+                <BlockContent blockProps={props}>
+                    <div
+                        className={`premium-image-separator-container`}
+                        style={{
+                            textAlign: iconAlign[props.deviceType],
+                            transform: `translateY(${gutter}%)`,
+                            filter:
+                                iconType === "image"
+                                    ? `brightness( ${imgFilter?.bright}% ) contrast( ${imgFilter?.contrast}% ) saturate( ${imgFilter?.saturation}% ) blur( ${imgFilter?.blur}px ) hue-rotate( ${imgFilter?.hue}deg )`
+                                    : "",
+                        }}
+                    >
+                        {iconType === "icon" && (
+                            <GenIcon className={`premium-image-separator-icon ${iconStyles[0].icon} premium-image-separator-${iconStyles[0].advancedBorder}`}
+                                name={iconStyles[0].icon}
+                                size={iconSize[props.deviceType]}
+                                icon={('fa' === iconStyles[0].icon.substring(0, 2) ? FaIco[iconStyles[0].icon] : Ico[iconStyles[0].icon])}
+                                strokeWidth={('fe' === iconStyles[0].icon.substring(0, 2) ? icons[0].width : undefined)}
+                                style={{
+                                    ...paddingCss(iconPadding, props.deviceType),
+                                    fontSize: (iconSize[props.deviceType] || 200) + iconSize.unit,
+                                    color: iconStyles[0].iconColor,
+                                    backgroundColor: iconStyles[0].iconBGColor,
+                                    ...BorderValue,
+                                }}
+                            />
+                        )}
+                        {iconType === "image" && (
+                            <Fragment>
+                                {imageURL ? (
+                                    <img
+                                        src={imageURL}
+                                        style={{
+                                            ...BorderValue,
+                                            maskSize: `${maskSize}`,
+                                            maskPosition: `${maskPosition}`,
+                                            maskImage: imgMaskURL
+                                                ? `url("${imgMaskURL}")`
+                                                : "",
+                                            WebkitMaskImage: imgMaskURL
+                                                ? `url("${imgMaskURL}")`
+                                                : "",
+                                            WebkitMaskSize: `${maskSize}`,
+                                            WebkitMaskPosition: `${maskPosition}`,
+                                            objectFit: `${imgFit}`,
+                                            height:
+                                                (imgHeight[props.deviceType] ||
+                                                    200) + iconSize.unit,
+                                            width:
+                                                (iconSize[props.deviceType] ||
+                                                    200) + iconSize.unit,
+                                        }}
+                                    />
+                                ) : (
                                     <MediaPlaceholder
                                         labels={{
                                             title: __(
@@ -656,15 +658,16 @@ function Edit(props) {
                                         }}
                                     />
                                 )}
-                        </Fragment>
-                    )}
-                    {link && (
-                        <a
-                            className="premium-image-separator-link"
-                            href={`${url}`}
-                        ></a>
-                    )}
-                </div>
+                            </Fragment>
+                        )}
+                        {link && (
+                            <a
+                                className="premium-image-separator-link"
+                                href={`${url}`}
+                            ></a>
+                        )}
+                    </div>
+                </BlockContent>
             </div>
         </Fragment>
     );

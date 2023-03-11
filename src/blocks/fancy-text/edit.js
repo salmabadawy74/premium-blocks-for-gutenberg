@@ -15,6 +15,7 @@ import {
     PremiumShadow,
     Icons,
     WebfontLoader,
+    BlockContent
 } from "@pbg/components";
 import { typographyCss, generateBlockId, generateCss } from "@pbg/helpers";
 const { __ } = wp.i18n;
@@ -52,9 +53,8 @@ const SortableItem = SortableElement(
                     )}
                 </span>
                 <div
-                    className={`premium-repeater-row-controls premium-repeater-fancy ${
-                        value.edit ? "editable" : ""
-                    }`}
+                    className={`premium-repeater-row-controls premium-repeater-fancy ${value.edit ? "editable" : ""
+                        }`}
                 >
                     <TextControl
                         label={__(
@@ -302,9 +302,8 @@ function Edit(props) {
         };
         styles[` .${blockId} .typed-cursor`] = {
             color: `${fancyStyles[0].cursorColor} !important`,
-            "font-size": `${fancyTextTypography.fontSize[props.deviceType]}${
-                fancyTextTypography.fontSize.unit
-            } !important`,
+            "font-size": `${fancyTextTypography.fontSize[props.deviceType]}${fancyTextTypography.fontSize.unit
+                } !important`,
         };
         styles[` .${blockId} .premium-fancy-text-suffix-prefix`] = {
             color: `${PreStyles[0].textColor} !important`,
@@ -833,125 +832,127 @@ function Edit(props) {
                         __html: loadStyles(),
                     }}
                 />
-                {effect === "typing" ? (
-                    <h4
-                        id={`${blockId}`}
-                        className={`premium-fancy-text`}
-                        data-effect={`${effect}`}
-                        data-strings={`${repeaterFancyText.map((item) => {
-                            return item.title;
-                        })}`}
-                        data-typespeed={`${typeSpeed}`}
-                        data-backspeed={`${backSpeed}`}
-                        data-startdelay={`${startdelay}`}
-                        data-backdelay={`${backdelay}`}
-                        data-loop={`${loop}`}
-                        data-cursorshow={`${cursorShow}`}
-                        data-cursormark={`${cursorMark}`}
-                        style={{
-                            textAlign: fancyContentAlign[props.deviceType],
-                        }}
-                    >
-                        <span
-                            className={`premium-fancy-text-suffix-prefix premium-fancy-text-prefix-text`}
+                <BlockContent blockProps={props}>
+                    {effect === "typing" ? (
+                        <h4
+                            id={`${blockId}`}
+                            className={`premium-fancy-text`}
+                            data-effect={`${effect}`}
+                            data-strings={`${repeaterFancyText.map((item) => {
+                                return item.title;
+                            })}`}
+                            data-typespeed={`${typeSpeed}`}
+                            data-backspeed={`${backSpeed}`}
+                            data-startdelay={`${startdelay}`}
+                            data-backdelay={`${backdelay}`}
+                            data-loop={`${loop}`}
+                            data-cursorshow={`${cursorShow}`}
+                            data-cursormark={`${cursorMark}`}
                             style={{
-                                ...typographyCss(
-                                    prefixTypography,
-                                    props.deviceType
-                                ),
+                                textAlign: fancyContentAlign[props.deviceType],
                             }}
                         >
-                            {prefix}{" "}
-                        </span>
-                        <span
-                            className={`premium-fancy-text-title premium-fancy-text-title-type`}
-                            ref={el}
-                            style={{
-                                ...typographyCss(
-                                    fancyTextTypography,
-                                    props.deviceType
-                                ),
-                                textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`,
-                            }}
-                        >
-                            {" "}
-                        </span>
-                        <span
-                            className={`premium-fancy-text-suffix-prefix premium-fancy-text-suffix-text`}
-                            style={{
-                                ...typographyCss(
-                                    prefixTypography,
-                                    props.deviceType
-                                ),
-                            }}
-                        >
-                            {" "}
-                            {suffix}
-                        </span>
-                    </h4>
-                ) : (
-                    <h4
-                        id={`${blockId}`}
-                        className={`premium-fancy-text premium-fancy-slide`}
-                        data-effect={`${effect}`}
-                        data-strings={`${repeaterFancyText.map((item) => {
-                            return item.title;
-                        })}`}
-                        data-animationspeed={`${animationSpeed}`}
-                        data-pausetime={`${pauseTime}`}
-                        data-hoverpause={`${hoverPause}`}
-                    >
-                        <span
-                            className={`premium-fancy-text-suffix-prefix premium-fancy-text-prefix-text`}
-                            style={{
-                                ...typographyCss(
-                                    prefixTypography,
-                                    props.deviceType
-                                ),
-                            }}
-                        >
-                            {prefix}{" "}
-                        </span>
-                        <div
-                            className={`premium-fancy-text-title premium-fancy-text-title-slide`}
-                            style={{
-                                textAlign: fancyTextAlign[props.deviceType],
-                            }}
-                        >
-                            <ul
-                                className={`premium-fancy-text-title-slide-list`}
+                            <span
+                                className={`premium-fancy-text-suffix-prefix premium-fancy-text-prefix-text`}
+                                style={{
+                                    ...typographyCss(
+                                        prefixTypography,
+                                        props.deviceType
+                                    ),
+                                }}
                             >
-                                {repeaterFancyText.map((item) => {
-                                    return (
-                                        <li
-                                            style={{
-                                                ...typographyCss(
-                                                    fancyTextTypography,
-                                                    props.deviceType
-                                                ),
-                                                textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`,
-                                            }}
-                                        >
-                                            {item.title}
-                                        </li>
-                                    );
-                                })}
-                            </ul>
-                        </div>
-                        <span
-                            className={`premium-fancy-text-suffix-prefix premium-fancy-text-suffix-text`}
-                            style={{
-                                ...typographyCss(
-                                    prefixTypography,
-                                    props.deviceType
-                                ),
-                            }}
+                                {prefix}{" "}
+                            </span>
+                            <span
+                                className={`premium-fancy-text-title premium-fancy-text-title-type`}
+                                ref={el}
+                                style={{
+                                    ...typographyCss(
+                                        fancyTextTypography,
+                                        props.deviceType
+                                    ),
+                                    textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`,
+                                }}
+                            >
+                                {" "}
+                            </span>
+                            <span
+                                className={`premium-fancy-text-suffix-prefix premium-fancy-text-suffix-text`}
+                                style={{
+                                    ...typographyCss(
+                                        prefixTypography,
+                                        props.deviceType
+                                    ),
+                                }}
+                            >
+                                {" "}
+                                {suffix}
+                            </span>
+                        </h4>
+                    ) : (
+                        <h4
+                            id={`${blockId}`}
+                            className={`premium-fancy-text premium-fancy-slide`}
+                            data-effect={`${effect}`}
+                            data-strings={`${repeaterFancyText.map((item) => {
+                                return item.title;
+                            })}`}
+                            data-animationspeed={`${animationSpeed}`}
+                            data-pausetime={`${pauseTime}`}
+                            data-hoverpause={`${hoverPause}`}
                         >
-                            {" "}
-                            {suffix}
-                        </span>
-                    </h4>
-                )}
+                            <span
+                                className={`premium-fancy-text-suffix-prefix premium-fancy-text-prefix-text`}
+                                style={{
+                                    ...typographyCss(
+                                        prefixTypography,
+                                        props.deviceType
+                                    ),
+                                }}
+                            >
+                                {prefix}{" "}
+                            </span>
+                            <div
+                                className={`premium-fancy-text-title premium-fancy-text-title-slide`}
+                                style={{
+                                    textAlign: fancyTextAlign[props.deviceType],
+                                }}
+                            >
+                                <ul
+                                    className={`premium-fancy-text-title-slide-list`}
+                                >
+                                    {repeaterFancyText.map((item) => {
+                                        return (
+                                            <li
+                                                style={{
+                                                    ...typographyCss(
+                                                        fancyTextTypography,
+                                                        props.deviceType
+                                                    ),
+                                                    textShadow: `${fancyTextShadow.horizontal}px ${fancyTextShadow.vertical}px ${fancyTextShadow.blur}px ${fancyTextShadow.color}`,
+                                                }}
+                                            >
+                                                {item.title}
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
+                            </div>
+                            <span
+                                className={`premium-fancy-text-suffix-prefix premium-fancy-text-suffix-text`}
+                                style={{
+                                    ...typographyCss(
+                                        prefixTypography,
+                                        props.deviceType
+                                    ),
+                                }}
+                            >
+                                {" "}
+                                {suffix}
+                            </span>
+                        </h4>
+                    )}
+                </BlockContent>
                 {loadFancyGoogleFonts}
                 {loadPrefixGoogleFonts}
             </div>

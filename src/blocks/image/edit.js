@@ -8,6 +8,7 @@ import {
     PremiumMediaUpload,
     PremiumFilters,
     DefaultImage,
+    BlockContent
 } from "@pbg/components";
 import { generateBlockId, generateCss } from "@pbg/helpers";
 
@@ -17,13 +18,14 @@ const { useEffect, Fragment } = wp.element;
 const { PanelBody, SelectControl } = wp.components;
 const { InspectorControls, useBlockProps } = wp.blockEditor;
 
-function ImageEdit({
-    attributes,
-    setAttributes,
-    deviceType,
-    clientId,
-    className,
-}) {
+function ImageEdit(props) {
+    const {
+        attributes,
+        setAttributes,
+        deviceType,
+        clientId,
+        className,
+    } = props;
     const {
         blockId,
         hideDesktop,
@@ -248,20 +250,22 @@ function ImageEdit({
                         __html: loadStyles(),
                     }}
                 />
-                <div className={`premium-image-container`}>
-                    <div
-                        className={`premium-image-wrap premium-image-wrap-${hoverEffect}`}
-                    >
-                        {ImgUrl && (
-                            <img
-                                className={`premium-image-img`}
-                                src={`${ImgUrl}`}
-                                alt="image"
-                            />
-                        )}
-                        {!ImgUrl && <DefaultImage className={className} />}
+                <BlockContent blockProps={props}>
+                    <div className={`premium-image-container`}>
+                        <div
+                            className={`premium-image-wrap premium-image-wrap-${hoverEffect}`}
+                        >
+                            {ImgUrl && (
+                                <img
+                                    className={`premium-image-img`}
+                                    src={`${ImgUrl}`}
+                                    alt="image"
+                                />
+                            )}
+                            {!ImgUrl && <DefaultImage className={className} />}
+                        </div>
                     </div>
-                </div>
+                </BlockContent>
             </div>
         </Fragment>
     );

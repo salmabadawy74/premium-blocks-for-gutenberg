@@ -21,12 +21,14 @@ import {
     PremiumTypo,
     MultiButtonsControl,
     Icons,
-    PremiumBackgroundControl
+    PremiumBackgroundControl,
+    BlockContent
 } from '@pbg/components';
 import { __ } from '@wordpress/i18n';
 import { PanelBody } from '@wordpress/components';
 
-function Edit({ clientId, attributes, setAttributes, deviceType }) {
+function Edit(props) {
+    const { clientId, attributes, setAttributes, deviceType } = props;
     const {
         blockId,
         hideDesktop,
@@ -157,19 +159,21 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
             </InspectorTabs>
         </InspectorControls>
         <div {...blockProps}>
-            <RichText
-                tagName='p'
-                onChange={newText => setAttributes({ text: newText })}
-                placeholder={__("Type", 'premium-blocks-for-gutenberg')}
-                value={text}
-                style={{
-                    textAlign: align?.[deviceType],
-                    color: color,
-                    textShadow: `${textShadow?.horizontal}px ${textShadow?.vertical}px ${textShadow?.blur}px ${textShadow?.color}`,
-                    ...typographyCss(typography, deviceType),
-                }}
-                keepPlaceholderOnFocus
-            />
+            <BlockContent blockProps={props}>
+                <RichText
+                    tagName='p'
+                    onChange={newText => setAttributes({ text: newText })}
+                    placeholder={__("Type", 'premium-blocks-for-gutenberg')}
+                    value={text}
+                    style={{
+                        textAlign: align?.[deviceType],
+                        color: color,
+                        textShadow: `${textShadow?.horizontal}px ${textShadow?.vertical}px ${textShadow?.blur}px ${textShadow?.color}`,
+                        ...typographyCss(typography, deviceType),
+                    }}
+                    keepPlaceholderOnFocus
+                />
+            </BlockContent>
             {loadGoogleFonts}
         </div>
     </Fragment>;

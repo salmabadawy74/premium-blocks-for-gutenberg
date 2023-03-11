@@ -14,6 +14,7 @@ import {
     PremiumTypo,
     SpacingComponent,
     ResponsiveRangeControl,
+    BlockContent
 } from "@pbg/components";
 import { generateCss, generateBlockId } from "@pbg/helpers";
 import { compose } from "@wordpress/compose";
@@ -761,11 +762,13 @@ function PremiumAccordion(props) {
                 })}
             >
                 <style>{loadStyles()}</style>
-                <InnerBlocks
-                    template={innerBlocksTemplate}
-                    templateLock={false}
-                    allowedBlocks={["premium/accordion-item"]}
-                />
+                <BlockContent blockProps={props}>
+                    <InnerBlocks
+                        template={innerBlocksTemplate}
+                        templateLock={false}
+                        allowedBlocks={["premium/accordion-item"]}
+                    />
+                </BlockContent>
                 {loadTitleGoogleFonts}
                 {loadDescGoogleFonts}
             </div>

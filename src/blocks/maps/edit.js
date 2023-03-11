@@ -13,6 +13,7 @@ import {
     ResponsiveSingleRangeControl,
     PremiumMediaUpload,
     PremiumTypo,
+    BlockContent
 } from "@pbg/components";
 import { generateBlockId, generateCss, marginCss } from "@pbg/helpers";
 
@@ -383,9 +384,9 @@ function Edit(props) {
                                         >
                                             &nbsp;
                                             {__(
-                                            "here",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
+                                                "here",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
                                         </a>,
                                     ]}
                                     onChange={(newLng) =>
@@ -647,9 +648,9 @@ function Edit(props) {
                                         >
                                             &nbsp;
                                             {__(
-                                            "here",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
+                                                "here",
+                                                "premium-blocks-for-gutenberg"
+                                            )}
                                         </a>,
                                     ]}
                                     onChange={(newStyle) =>
@@ -927,33 +928,35 @@ function Edit(props) {
                 }}
             >
                 {typeof google !== "undefined" ? (
-                    <div ref={contentRef}>
-                        <div
-                            className="map-container"
-                            style={{
-                                height: height + "px",
-                            }}
-                        />
-                    </div>
+                    <BlockContent blockProps={props}>
+                        <div ref={contentRef}>
+                            <div
+                                className="map-container"
+                                style={{
+                                    height: height + "px",
+                                }}
+                            />
+                        </div>
+                    </BlockContent>
                 ) : (
-                        <Placeholder
-                            label={__("Maps", "premium-blocks-for-gutenberg")}
-                            className={className}
-                        >
-                            <div>
+                    <Placeholder
+                        label={__("Maps", "premium-blocks-for-gutenberg")}
+                        className={className}
+                    >
+                        <div>
+                            {__(
+                                "Premium Maps requires an API key.",
+                                "premium-blocks-for-gutenberg"
+                            )}{" "}
+                            <a target="_blank" href={setting_url}>
                                 {__(
-                                    "Premium Maps requires an API key.",
+                                    "Add API key here",
                                     "premium-blocks-for-gutenberg"
-                                )}{" "}
-                                <a target="_blank" href={setting_url}>
-                                    {__(
-                                        "Add API key here",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                </a>
-                            </div>
-                        </Placeholder>
-                    )}
+                                )}
+                            </a>
+                        </div>
+                    </Placeholder>
+                )}
                 <style>{loadStyles()}</style>
                 {loadDescriptionGoogleFonts}
                 {loadTitleGoogleFonts}

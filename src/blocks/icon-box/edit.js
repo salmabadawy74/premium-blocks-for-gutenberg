@@ -9,6 +9,7 @@ import {
     InsideTabs,
     PremiumBackgroundControl,
     InsideTab,
+    BlockContent
 } from "@pbg/components";
 import {
     gradientBackground,
@@ -256,7 +257,9 @@ function Edit(props) {
                     }),
                 })}
             >
-                <div {...innerBlocksProps} />
+                <BlockContent blockProps={props}>
+                    <div {...innerBlocksProps} />
+                </BlockContent>
                 <style>{loadStyles()}</style>
             </div>
         </Fragment>

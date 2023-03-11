@@ -98,7 +98,8 @@ const InspectorTabs = props => {
                     }
                     return cloneElement(child, {
                         index,
-                        isActive: child.key === currentTab
+                        isActive: child.key === currentTab,
+                        tabKey: child.key
                     })
 
                 })

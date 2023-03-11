@@ -16,14 +16,15 @@ import {
     WebfontLoader,
     PremiumTypo,
     MultiButtonsControl,
-    Icons
+    Icons,
+    BlockContent
 } from '@pbg/components';
 import { Fragment } from 'react';
 import classnames from "classnames";
 import { __ } from '@wordpress/i18n';
 
-function Edit({ clientId, attributes, setAttributes, deviceType }) {
-
+function Edit(props) {
+    const { clientId, attributes, setAttributes, deviceType } = props;
     const {
         blockId,
         increment,
@@ -409,78 +410,80 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
             </InspectorTabs>
         </InspectorControls>
         <div {...blockProps}>
-            <div className={`premium-countup__desc`}>
-                {prefix && (
+            <BlockContent blockProps={props}>
+                <div className={`premium-countup__desc`}>
+                    {prefix && (
+                        <RichText
+                            className={`premium-countup__prefix`}
+                            value={prefixStyles[0].prefixTxt}
+                            onChange={(value) =>
+                                savePrefixStyle({ prefixTxt: value })
+                            }
+                            style={{
+                                color: prefixStyles[0].prefixColor,
+                                marginRight: `${prefixStyles[0].prefixGap}px`,
+                                ...typographyCss(
+                                    prefixTypography,
+                                    deviceType
+                                ),
+                                ...marginCss(
+                                    prefixMargin,
+                                    deviceType
+                                ),
+                                ...paddingCss(
+                                    prefixPadding,
+                                    deviceType
+                                ),
+                            }}
+                            tagName="p"
+                        />
+                    )}
                     <RichText
-                        className={`premium-countup__prefix`}
-                        value={prefixStyles[0].prefixTxt}
+                        className={`premium-countup__increment`}
+                        value={`${increment}`}
                         onChange={(value) =>
-                            savePrefixStyle({ prefixTxt: value })
+                            setAttributes({ increment: value })
                         }
                         style={{
-                            color: prefixStyles[0].prefixColor,
-                            marginRight: `${prefixStyles[0].prefixGap}px`,
+                            color: numberStyles[0].numberColor,
                             ...typographyCss(
-                                prefixTypography,
+                                numberTypography,
                                 deviceType
                             ),
-                            ...marginCss(
-                                prefixMargin,
-                                deviceType
-                            ),
-                            ...paddingCss(
-                                prefixPadding,
-                                deviceType
-                            ),
+                            ...marginCss(numberMargin, deviceType),
+                            ...paddingCss(numberPadding, deviceType),
                         }}
                         tagName="p"
+                        data-interval={time}
+                        data-delay={delay}
                     />
-                )}
-                <RichText
-                    className={`premium-countup__increment`}
-                    value={`${increment}`}
-                    onChange={(value) =>
-                        setAttributes({ increment: value })
-                    }
-                    style={{
-                        color: numberStyles[0].numberColor,
-                        ...typographyCss(
-                            numberTypography,
-                            deviceType
-                        ),
-                        ...marginCss(numberMargin, deviceType),
-                        ...paddingCss(numberPadding, deviceType),
-                    }}
-                    tagName="p"
-                    data-interval={time}
-                    data-delay={delay}
-                />
-                {suffix && (
-                    <RichText
-                        className={`premium-countup__suffix`}
-                        value={suffixStyles[0].suffixTxt}
-                        onChange={(value) =>
-                            saveSuffixStyle({ suffixTxt: value })
-                        }
-                        style={{
-                            color: suffixStyles[0].suffixColor,
-                            ...typographyCss(
-                                suffixTypography,
-                                deviceType
-                            ),
-                            ...marginCss(
-                                suffixMargin,
-                                deviceType
-                            ),
-                            ...paddingCss(
-                                suffixPadding,
-                                deviceType
-                            ),
-                        }}
-                        tagName="p"
-                    />
-                )}
-            </div>
+                    {suffix && (
+                        <RichText
+                            className={`premium-countup__suffix`}
+                            value={suffixStyles[0].suffixTxt}
+                            onChange={(value) =>
+                                saveSuffixStyle({ suffixTxt: value })
+                            }
+                            style={{
+                                color: suffixStyles[0].suffixColor,
+                                ...typographyCss(
+                                    suffixTypography,
+                                    deviceType
+                                ),
+                                ...marginCss(
+                                    suffixMargin,
+                                    deviceType
+                                ),
+                                ...paddingCss(
+                                    suffixPadding,
+                                    deviceType
+                                ),
+                            }}
+                            tagName="p"
+                        />
+                    )}
+                </div>
+            </BlockContent>
             {loadGoogleFonts}
         </div>
     </Fragment>;

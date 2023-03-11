@@ -6,7 +6,8 @@ import {
     PremiumBorder,
     SpacingComponent,
     PremiumShadow,
-    PremiumBackgroundControl
+    PremiumBackgroundControl,
+    BlockContent
 } from "@pbg/components";
 import {
     gradientBackground,
@@ -201,11 +202,13 @@ function Edit(props) {
                     ...gradientBackground(background),
                 }}
             >
-                <InnerBlocks
-                    template={INNER_BLOCKS_TEMPLATE}
-                    templateLock={false}
-                    allowedBlocks={ALLOWED_BLOCKS}
-                />
+                <BlockContent blockProps={props}>
+                    <InnerBlocks
+                        template={INNER_BLOCKS_TEMPLATE}
+                        templateLock={false}
+                        allowedBlocks={ALLOWED_BLOCKS}
+                    />
+                </BlockContent>
             </div>
         </Fragment>
     );

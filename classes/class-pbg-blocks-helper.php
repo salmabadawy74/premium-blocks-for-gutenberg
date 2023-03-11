@@ -83,9 +83,20 @@ class PBG_Blocks_Helper {
 	public static $current_block_list = array();
 
 	/**
+	 * Global features
+	 *
+	 * @since 1.8.2
+	 *
+	 * @var array
+	 */
+	public $global_features;
+
+	/**
 	 * Constructor for the class
 	 */
 	public function __construct() {
+		// Global Features.
+		$this->global_features = apply_filters( 'pb_global_features', get_option( 'pbg_global_features', array() ) );
 		 // Gets Active Blocks.
 		self::$blocks = apply_filters( 'pb_options', get_option( 'pb_options', array() ) );
 		// Gets Plugin Admin Settings.
@@ -117,6 +128,157 @@ class PBG_Blocks_Helper {
 
 		add_action( 'wp_head', array( $this, 'output_custom_block_css' ), 90 );
 
+		add_filter( 'render_block', array( $this, 'add_animation_data_attribute' ), 10, 2 );
+		add_filter( 'render_block', array( $this, 'register_block_animation' ), 10, 2 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_features_script' ), 10 );
+
+	}
+
+	  /**
+	   * Check if any value in an array is not empty.
+	   *
+	   * @param array $array An array of key-value pairs to check for non-empty values.
+	   * @return bool Whether any of the values in the array are not empty.
+	   */
+	public function check_if_any_value_not_empty( $array ) {
+		if ( ! is_array( $array ) ) {
+			return false;
+		}
+		foreach ( $array as $key => $value ) {
+			if ( ! empty( $value ) ) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Check if a block name is a premium block.
+	 *
+	 * @param string $block_name The name of the block to check.
+	 *
+	 * @return bool True if the block name starts with "premium/", false otherwise.
+	 */
+	public function is_premium_block( $block_name ) {
+		if ( strpos( $block_name, 'premium/' ) !== false ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	/**
+	 * str_replace_first
+	 *
+	 * @param  string $search
+	 * @param  string $replace
+	 * @param  string $subject
+	 * @return string
+	 */
+	public function str_replace_first( $search, $replace, $subject ) {
+		$pos = strpos( $subject, $search );
+		if ( $pos !== false ) {
+			return substr_replace( $subject, $replace, $pos, strlen( $search ) );
+		}
+		return $subject;
+	}
+
+	/**
+	 * Get the first non-script style tag from a given HTML string.
+	 *
+	 * @param string $html The HTML string to search for style tags.
+	 *
+	 * @return string|null The first non-script style tag found in the given HTML, or null if none was found.
+	 */
+	function get_first_non_script_style_tag( $block_content ) {
+		$matches = array();
+		preg_match_all( '/<([\w]+)(?![^<]*(?:style|script))/', $block_content, $matches );
+		$tags = $matches[1];
+
+		foreach ( $tags as $tag ) {
+			if ( $tag !== 'script' && $tag !== 'style' ) {
+				return $tag;
+			}
+		}
+
+		return '';
+	}
+
+	/**
+	 * Add the clientId attribute to the block element.
+	 *
+	 * @param string $block_content The HTML content of the block.
+	 * @param array  $block The block data.
+	 *
+	 * @return string The updated HTML content of the block.
+	 */
+	public function add_animation_data_attribute( $block_content, $block ) {
+		if ( ! $this->global_features['premium-entrance-animation-all-blocks'] && ! $this->is_premium_block( $block['blockName'] ) ) {
+			return $block_content;
+		}
+
+		if ( $this->global_features['premium-entrance-animation'] && isset( $block['attrs']['entranceAnimation'] ) && $this->check_if_any_value_not_empty( $block['attrs']['entranceAnimation']['animation'] ) ) {
+			preg_match( '/^<(?!\s*(?:style|script)\b)\w+\b[^>]*>/i', $block_content, $matches );
+			$parent_tag    = $this->get_first_non_script_style_tag( $block_content );
+			$block_content = $this->str_replace_first( '<' . $parent_tag, '<' . $parent_tag . ' data-animation="' . $block['attrs']['entranceAnimation']['clientId'] . '"', $block_content );
+		}
+
+		return $block_content;
+	}
+
+	/**
+	 * Registers blocks with features.
+	 *
+	 * @param string $block_content The block content.
+	 * @param array  $block         The block attributes.
+	 *
+	 * @return string $block_content The block content.
+	 */
+	public function register_block_animation( $block_content, $block ) {
+		if ( ! $this->global_features['premium-entrance-animation-all-blocks'] && ! $this->is_premium_block( $block['blockName'] ) ) {
+			return $block_content;
+		}
+
+		if ( $this->global_features['premium-entrance-animation'] && isset( $block['attrs']['entranceAnimation'] ) && $this->check_if_any_value_not_empty( $block['attrs']['entranceAnimation']['animation'] ) ) {
+			$this->entrance_animation_blocks[ $block['attrs']['entranceAnimation']['clientId'] ] = $block['attrs']['entranceAnimation'];
+		}
+
+		return $block_content;
+	}
+
+	/**
+	 * Enqueues features scripts.
+	 */
+	public function enqueue_features_script() {
+		$media_query            = array();
+		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
+		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
+		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+
+		if ( ! empty( $this->entrance_animation_blocks ) ) {
+			$this->entrance_animation_blocks['breakPoints'] = $media_query;
+			wp_enqueue_script(
+				'premium-entrance-animation-view',
+				PREMIUM_BLOCKS_URL . 'assets/js/build/entrance-animation-front.js',
+				array(),
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
+
+			wp_enqueue_style(
+				'pbg-entrance-animation-css',
+				PREMIUM_BLOCKS_URL . 'assets/js/build/entrance-animation.css',
+				array(),
+				PREMIUM_BLOCKS_VERSION,
+				'all'
+			);
+
+			wp_localize_script(
+				'premium-entrance-animation-view',
+				'PBG_EntranceAnimation',
+				$this->entrance_animation_blocks
+			);
+		}
 	}
 
 	/**
@@ -133,8 +295,7 @@ class PBG_Blocks_Helper {
 		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
 		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
 		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
-		$global_features        = apply_filters( 'pb_global_features', get_option( 'pbg_global_features', array() ) );
-		if ( $global_features['premium-equal-height'] && isset( $block['attrs']['equalHeight'] ) && $block['attrs']['equalHeight'] ) {
+		if ( $this->global_features['premium-equal-height'] && isset( $block['attrs']['equalHeight'] ) && $block['attrs']['equalHeight'] ) {
 			wp_enqueue_script(
 				'premium-equal-height-view',
 				PREMIUM_BLOCKS_URL . 'assets/js/build/equal-height.js',
@@ -163,6 +324,9 @@ class PBG_Blocks_Helper {
 	 * @return void
 	 */
 	public function add_blocks_editor_styles() {
+		if ( $this->global_features['premium-entrance-animation'] ) {
+			Pbg_Style_Generator::pbg_add_css( 'assets/js/build/entrance-animation.css' );
+		}
 		Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/blockseditor.min.css' );
 		Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/editorpanel.min.css' );
 
@@ -275,7 +439,7 @@ class PBG_Blocks_Helper {
 			'mobile_breakpoint' => PBG_MOBILE_BREAKPOINT,
 			'shapes'            => $this->getSvgShapes(),
 			'admin_url'         => admin_url(),
-			'globalFeatures'    => apply_filters( 'pb_global_features', get_option( 'pbg_global_features', array() ) ),
+			'globalFeatures'    => $this->global_features,
 		);
 
 		wp_register_script(
@@ -320,6 +484,23 @@ class PBG_Blocks_Helper {
 				'JsonUploadEnabled' => $allow_json,
 			)
 		);
+
+		if ( $this->global_features['premium-entrance-animation'] ) {
+			wp_enqueue_script(
+				'pbg-entrance-animation',
+				PREMIUM_BLOCKS_URL . 'assets/js/build/entrance-animation.js',
+				array( 'wp-block-editor', 'wp-components', 'wp-compose', 'wp-element', 'wp-edit-post', 'wp-hooks', 'pbg-settings-js' ),
+				PREMIUM_BLOCKS_VERSION,
+				true
+			);
+			wp_localize_script(
+				'pbg-entrance-animation',
+				'PremiumAnimation',
+				array(
+					'allBlocks' => $this->global_features['premium-entrance-animation-all-blocks'],
+				)
+			);
+		}
 	}
 
 
@@ -674,27 +855,26 @@ class PBG_Blocks_Helper {
 		return false;
 	}
 
-	public function add_custom_block_css($css) {
+	public function add_custom_block_css( $css ) {
 		// Generate a unique ID for the style tag
 		$unique_id = uniqid();
-		
+
 		// Add the CSS code to the global array
 		global $custom_block_css;
-		$custom_block_css[$unique_id] = $css;
-		
+		$custom_block_css[ $unique_id ] = $css;
+
 		// Register a function to output the CSS code in the head of the page
-		
 	}
-	
+
 	public function output_custom_block_css() {
 		global $custom_block_css;
-		
+
 		// Combine all CSS code into one string
 		$combined_css = '';
 		foreach ( $custom_block_css as $unique_id => $css ) {
 			$combined_css .= "\n/* Custom block ID: $unique_id */\n$css";
 		}
-		
+
 		// Output the combined CSS code in a single style tag
 		echo '<style id="pbg-blocks-style">' . $combined_css . '</style>';
 	}

@@ -28,7 +28,8 @@ import {
     GenIcon,
     FaIco,
     Ico,
-    IcoNames
+    IcoNames,
+    BlockContent
 } from "@pbg/components";
 
 const { __ } = wp.i18n;
@@ -1847,37 +1848,47 @@ function Edit(props) {
                     textAlign: align?.[props.deviceType],
                 }}
             >
-                <div
-                    className={`premium-title  ${backgroundText ? "premium-title-bg-text" : ""
-                        }`}
-                    style={{
-                        textAlign: align?.[props.deviceType],
-                    }}
-                    data-backgroundText={BackText}
-                >
+                <BlockContent blockProps={props}>
                     <div
-                        className={`premium-title-container ${style}`}
-                        data-blur-delay={titleStyles[0].animateDelay}
-                        data-shiny-dur={titleStyles[0].animateduration}
+                        className={`premium-title  ${backgroundText ? "premium-title-bg-text" : ""
+                            }`}
+                        style={{
+                            textAlign: align?.[props.deviceType],
+                        }}
+                        data-backgroundText={BackText}
                     >
-                        {React.createElement(
-                            titleTag,
-                            {
-                                className: `premium-title-header premium-title-${style}__wrap ${iconValue ? iconPosition : ""
-                                    } ${iconPosition == "top"
-                                        ? `premium-title-${iconAlign?.["Desktop"]} premium-title-tablet-${iconAlign?.["Tablet"]} premium-title-mobile-${iconAlign?.["Mobile"]}`
-                                        : ""
-                                    }`,
-                                "data-blur-delay": `${titleStyles[0].animateDelay}`,
-                                "data-shiny-dur": `${titleStyles[0].animateduration}`,
-                                // style: { alignItems: iconAlign[props.deviceType] }
-                            },
-                            [
-                                <Fragment>
-                                    {style === "style7" && (
-                                        <Fragment>
-                                            {iconPosition != "top" &&
-                                                iconValue && (
+                        <div
+                            className={`premium-title-container ${style}`}
+                            data-blur-delay={titleStyles[0].animateDelay}
+                            data-shiny-dur={titleStyles[0].animateduration}
+                        >
+                            {React.createElement(
+                                titleTag,
+                                {
+                                    className: `premium-title-header premium-title-${style}__wrap ${iconValue ? iconPosition : ""
+                                        } ${iconPosition == "top"
+                                            ? `premium-title-${iconAlign?.["Desktop"]} premium-title-tablet-${iconAlign?.["Tablet"]} premium-title-mobile-${iconAlign?.["Mobile"]}`
+                                            : ""
+                                        }`,
+                                    "data-blur-delay": `${titleStyles[0].animateDelay}`,
+                                    "data-shiny-dur": `${titleStyles[0].animateduration}`,
+                                    // style: { alignItems: iconAlign[props.deviceType] }
+                                },
+                                [
+                                    <Fragment>
+                                        {style === "style7" && (
+                                            <Fragment>
+                                                {iconPosition != "top" &&
+                                                    iconValue && (
+                                                        <span
+                                                            className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign?.["Desktop"]} premium-stripe-tablet-${stripeAlign?.["Tablet"]} premium-stripe-mobile-${stripeAlign?.["Mobile"]}`}
+                                                        >
+                                                            <span
+                                                                className={`premium-title-style7-stripe-span`}
+                                                            ></span>
+                                                        </span>
+                                                    )}
+                                                {!iconValue && (
                                                     <span
                                                         className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign?.["Desktop"]} premium-stripe-tablet-${stripeAlign?.["Tablet"]} premium-stripe-mobile-${stripeAlign?.["Mobile"]}`}
                                                     >
@@ -1886,18 +1897,85 @@ function Edit(props) {
                                                         ></span>
                                                     </span>
                                                 )}
-                                            {!iconValue && (
                                                 <span
-                                                    className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign?.["Desktop"]} premium-stripe-tablet-${stripeAlign?.["Tablet"]} premium-stripe-mobile-${stripeAlign?.["Mobile"]}`}
+                                                    className={`premium-title-style7-inner-title`}
                                                 >
-                                                    <span
-                                                        className={`premium-title-style7-stripe-span`}
-                                                    ></span>
+                                                    {iconValue &&
+                                                        iconType == "icon" && (
+                                                            <GenIcon className={`premium-title-icon ${icon}`}
+                                                                name={icon}
+                                                                htmltag={'span'}
+                                                                size={iconSize[props.deviceType]}
+                                                                icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
+                                                                strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
+                                                            />
+                                                        )}
+                                                    {iconValue &&
+                                                        iconType == "image" && (
+                                                            <img
+                                                                className={`premium-title-icon`}
+                                                                src={imageURL}
+                                                            />
+                                                        )}
+                                                    {iconValue &&
+                                                        iconType == "lottie" &&
+                                                        lottieURl && (
+                                                            <span className=" premium-title-icon premium-lottie-animation">
+                                                                <Lottie
+                                                                    options={{
+                                                                        loop: loop,
+                                                                        path: lottieURl,
+                                                                        rendererSettings:
+                                                                        {
+                                                                            preserveAspectRatio:
+                                                                                "xMidYMid",
+                                                                        },
+                                                                    }}
+                                                                    direction={
+                                                                        reverse
+                                                                    }
+                                                                />
+                                                            </span>
+                                                        )}
+                                                    {iconValue &&
+                                                        iconPosition === "top" && (
+                                                            <span
+                                                                className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}
+                                                            >
+                                                                <span
+                                                                    className={`premium-title-style7-stripe-span`}
+                                                                ></span>
+                                                            </span>
+                                                        )}
+                                                    <RichText
+                                                        tagName="span"
+                                                        className={`premium-title-text-title`}
+                                                        value={title}
+                                                        onChange={(newText) =>
+                                                            setAttributes({
+                                                                title: newText,
+                                                            })
+                                                        }
+                                                        style={{
+                                                            minHeight: "15px",
+                                                            ...paddingCss(
+                                                                titlePadding,
+                                                                props.deviceType
+                                                            ),
+                                                            ...marginCss(titleMargin, props.deviceType),
+                                                            ...typographyCss(
+                                                                titleTypography,
+                                                                props.deviceType
+                                                            ),
+                                                            color: titleStyles[0].titleColor,
+                                                            textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`,
+                                                        }}
+                                                    />
                                                 </span>
-                                            )}
-                                            <span
-                                                className={`premium-title-style7-inner-title`}
-                                            >
+                                            </Fragment>
+                                        )}
+                                        {style === "style9" && (
+                                            <Fragment>
                                                 {iconValue &&
                                                     iconType == "icon" && (
                                                         <GenIcon className={`premium-title-icon ${icon}`}
@@ -1929,31 +2007,77 @@ function Edit(props) {
                                                                             "xMidYMid",
                                                                     },
                                                                 }}
-                                                                direction={
-                                                                    reverse
-                                                                }
+                                                                direction={reverse}
                                                             />
                                                         </span>
                                                     )}
+
+                                                <span
+                                                    className={`premium-letters-container`}
+                                                    style={{
+                                                        ...paddingCss(
+                                                            titlePadding,
+                                                            props.deviceType
+                                                        ),
+                                                        ...marginCss(titleMargin, props.deviceType),
+                                                        ...typographyCss(
+                                                            titleTypography,
+                                                            props.deviceType
+                                                        ),
+                                                        color: titleStyles[0].titleColor,
+                                                        textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
+                                                    }}
+                                                >
+                                                    {styleContainer}
+                                                </span>
+                                            </Fragment>
+                                        )}
+                                        {(style !== "style9" && style !== "style7") && (
+                                            <Fragment>
                                                 {iconValue &&
-                                                    iconPosition === "top" && (
-                                                        <span
-                                                            className={`premium-title-style7-stripe__wrap premium-stripe-${stripePosition} premium-stripe-${stripeAlign}`}
-                                                        >
-                                                            <span
-                                                                className={`premium-title-style7-stripe-span`}
-                                                            ></span>
+                                                    iconType == "icon" && (
+                                                        <GenIcon className={`premium-title-icon ${icon}`}
+                                                            name={icon}
+                                                            htmltag={'span'}
+                                                            size={iconSize[props.deviceType]}
+                                                            icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
+                                                            strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
+                                                        />
+                                                    )}
+                                                {iconValue &&
+                                                    iconType == "image" && (
+                                                        <img
+                                                            className={`premium-title-icon`}
+                                                            src={imageURL}
+                                                        />
+                                                    )}
+                                                {iconValue &&
+                                                    iconType == "lottie" &&
+                                                    lottieURl && (
+                                                        <span className=" premium-title-icon premium-lottie-animation">
+                                                            <Lottie
+                                                                options={{
+                                                                    loop: loop,
+                                                                    path: lottieURl,
+                                                                    rendererSettings:
+                                                                    {
+                                                                        preserveAspectRatio:
+                                                                            "xMidYMid",
+                                                                    },
+                                                                }}
+                                                                direction={reverse}
+                                                            />
                                                         </span>
                                                     )}
                                                 <RichText
                                                     tagName="span"
                                                     className={`premium-title-text-title`}
-                                                    value={title}
-                                                    onChange={(newText) =>
+                                                    onChange={(newValue) =>
                                                         setAttributes({
-                                                            title: newText,
+                                                            title: newValue,
                                                         })
                                                     }
+                                                    value={title}
                                                     style={{
                                                         minHeight: "15px",
                                                         ...paddingCss(
@@ -1969,142 +2093,21 @@ function Edit(props) {
                                                         textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`,
                                                     }}
                                                 />
-                                            </span>
-                                        </Fragment>
-                                    )}
-                                    {style === "style9" && (
-                                        <Fragment>
-                                            {iconValue &&
-                                                iconType == "icon" && (
-                                                    <GenIcon className={`premium-title-icon ${icon}`}
-                                                        name={icon}
-                                                        htmltag={'span'}
-                                                        size={iconSize[props.deviceType]}
-                                                        icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
-                                                        strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
-                                                    />
-                                                )}
-                                            {iconValue &&
-                                                iconType == "image" && (
-                                                    <img
-                                                        className={`premium-title-icon`}
-                                                        src={imageURL}
-                                                    />
-                                                )}
-                                            {iconValue &&
-                                                iconType == "lottie" &&
-                                                lottieURl && (
-                                                    <span className=" premium-title-icon premium-lottie-animation">
-                                                        <Lottie
-                                                            options={{
-                                                                loop: loop,
-                                                                path: lottieURl,
-                                                                rendererSettings:
-                                                                {
-                                                                    preserveAspectRatio:
-                                                                        "xMidYMid",
-                                                                },
-                                                            }}
-                                                            direction={reverse}
-                                                        />
-                                                    </span>
-                                                )}
-
-                                            <span
-                                                className={`premium-letters-container`}
-                                                style={{
-                                                    ...paddingCss(
-                                                        titlePadding,
-                                                        props.deviceType
-                                                    ),
-                                                    ...marginCss(titleMargin, props.deviceType),
-                                                    ...typographyCss(
-                                                        titleTypography,
-                                                        props.deviceType
-                                                    ),
-                                                    color: titleStyles[0].titleColor,
-                                                    textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`
-                                                }}
-                                            >
-                                                {styleContainer}
-                                            </span>
-                                        </Fragment>
-                                    )}
-                                    {(style !== "style9" && style !== "style7") && (
-                                        <Fragment>
-                                            {iconValue &&
-                                                iconType == "icon" && (
-                                                    <GenIcon className={`premium-title-icon ${icon}`}
-                                                        name={icon}
-                                                        htmltag={'span'}
-                                                        size={iconSize[props.deviceType]}
-                                                        icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
-                                                        strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
-                                                    />
-                                                )}
-                                            {iconValue &&
-                                                iconType == "image" && (
-                                                    <img
-                                                        className={`premium-title-icon`}
-                                                        src={imageURL}
-                                                    />
-                                                )}
-                                            {iconValue &&
-                                                iconType == "lottie" &&
-                                                lottieURl && (
-                                                    <span className=" premium-title-icon premium-lottie-animation">
-                                                        <Lottie
-                                                            options={{
-                                                                loop: loop,
-                                                                path: lottieURl,
-                                                                rendererSettings:
-                                                                {
-                                                                    preserveAspectRatio:
-                                                                        "xMidYMid",
-                                                                },
-                                                            }}
-                                                            direction={reverse}
-                                                        />
-                                                    </span>
-                                                )}
-                                            <RichText
-                                                tagName="span"
-                                                className={`premium-title-text-title`}
-                                                onChange={(newValue) =>
-                                                    setAttributes({
-                                                        title: newValue,
-                                                    })
-                                                }
-                                                value={title}
-                                                style={{
-                                                    minHeight: "15px",
-                                                    ...paddingCss(
-                                                        titlePadding,
-                                                        props.deviceType
-                                                    ),
-                                                    ...marginCss(titleMargin, props.deviceType),
-                                                    ...typographyCss(
-                                                        titleTypography,
-                                                        props.deviceType
-                                                    ),
-                                                    color: titleStyles[0].titleColor,
-                                                    textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`,
-                                                }}
-                                            />
-                                        </Fragment>
-                                    )}
-                                    {link && url !== " " && (
-                                        <a
-                                            rel="noopener noreferrer"
-                                            target={"_self"}
-                                            href={`${url}`}
-                                        ></a>
-                                    )}
-                                </Fragment>,
-                            ]
-                        )}
+                                            </Fragment>
+                                        )}
+                                        {link && url !== " " && (
+                                            <a
+                                                rel="noopener noreferrer"
+                                                target={"_self"}
+                                                href={`${url}`}
+                                            ></a>
+                                        )}
+                                    </Fragment>,
+                                ]
+                            )}
+                        </div>
                     </div>
-                </div>
+                </BlockContent>
                 {loadTextGoogleFonts}
                 {loadTitleGoogleFonts}
             </div>

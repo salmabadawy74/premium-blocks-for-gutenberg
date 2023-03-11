@@ -202,9 +202,9 @@ const edit = (props) => {
         PremiumBlocksSettings.globalFeatures["premium-equal-height"];
     const innerBlocksOptions = props.uniqueInnerBlocks.length
         ? props.uniqueInnerBlocks.map((block) => ({
-              value: block.name,
-              label: block.name.replace("/", " "),
-          }))
+            value: block.name,
+            label: block.name.replace("/", " "),
+        }))
         : [];
     const equalHeightDevicesOptions = [
         {
@@ -817,83 +817,83 @@ const edit = (props) => {
                             />
                             {("wrap" === wrapItems[props.deviceType] ||
                                 "wrap-reverse" ===
-                                    wrapItems[props.deviceType]) && (
-                                <ResponsiveRadio
-                                    choices={[
-                                        {
-                                            value: "flex-start",
-                                            tooltip: __(
-                                                "Flex Start",
-                                                "premium-blocks-for-gutenberg"
-                                            ),
-                                            icon: renderCustomIcon(
-                                                `flex-${currentOffset}-start`
-                                            ),
-                                        },
-                                        {
-                                            value: "center",
-                                            tooltip: __(
-                                                "Center",
-                                                "premium-blocks-for-gutenberg"
-                                            ),
-                                            icon: renderCustomIcon(
-                                                `flex-${currentOffset}-center`
-                                            ),
-                                        },
-                                        {
-                                            value: "flex-end",
-                                            tooltip: __(
-                                                "Flex End",
-                                                "premium-blocks-for-gutenberg"
-                                            ),
-                                            icon: renderCustomIcon(
-                                                `flex-${currentOffset}-end`
-                                            ),
-                                        },
-                                        {
-                                            value: "space-between",
-                                            tooltip: __(
-                                                "Space Between",
-                                                "premium-blocks-for-gutenberg"
-                                            ),
-                                            icon: renderCustomIcon(
-                                                `flex-${currentOffset}-space-between`
-                                            ),
-                                        },
-                                        {
-                                            value: "space-around",
-                                            tooltip: __(
-                                                "Space Around",
-                                                "premium-blocks-for-gutenberg"
-                                            ),
-                                            icon: renderCustomIcon(
-                                                `flex-${currentOffset}-space-around`
-                                            ),
-                                        },
-                                        {
-                                            value: "space-evenly",
-                                            tooltip: __(
-                                                "Space Evenly",
-                                                "premium-blocks-for-gutenberg"
-                                            ),
-                                            icon: renderCustomIcon(
-                                                `flex-${currentOffset}-space-evenly`
-                                            ),
-                                        },
-                                    ]}
-                                    value={alignContent}
-                                    onChange={(newValue) =>
-                                        setAttributes({
-                                            alignContent: newValue,
-                                        })
-                                    }
-                                    label={__(
-                                        "Align Content",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                    showIcons={true}
-                                />
-                            )}
+                                wrapItems[props.deviceType]) && (
+                                    <ResponsiveRadio
+                                        choices={[
+                                            {
+                                                value: "flex-start",
+                                                tooltip: __(
+                                                    "Flex Start",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                                icon: renderCustomIcon(
+                                                    `flex-${currentOffset}-start`
+                                                ),
+                                            },
+                                            {
+                                                value: "center",
+                                                tooltip: __(
+                                                    "Center",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                                icon: renderCustomIcon(
+                                                    `flex-${currentOffset}-center`
+                                                ),
+                                            },
+                                            {
+                                                value: "flex-end",
+                                                tooltip: __(
+                                                    "Flex End",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                                icon: renderCustomIcon(
+                                                    `flex-${currentOffset}-end`
+                                                ),
+                                            },
+                                            {
+                                                value: "space-between",
+                                                tooltip: __(
+                                                    "Space Between",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                                icon: renderCustomIcon(
+                                                    `flex-${currentOffset}-space-between`
+                                                ),
+                                            },
+                                            {
+                                                value: "space-around",
+                                                tooltip: __(
+                                                    "Space Around",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                                icon: renderCustomIcon(
+                                                    `flex-${currentOffset}-space-around`
+                                                ),
+                                            },
+                                            {
+                                                value: "space-evenly",
+                                                tooltip: __(
+                                                    "Space Evenly",
+                                                    "premium-blocks-for-gutenberg"
+                                                ),
+                                                icon: renderCustomIcon(
+                                                    `flex-${currentOffset}-space-evenly`
+                                                ),
+                                            },
+                                        ]}
+                                        value={alignContent}
+                                        onChange={(newValue) =>
+                                            setAttributes({
+                                                alignContent: newValue,
+                                            })
+                                        }
+                                        label={__(
+                                            "Align Content",
+                                            "premium-blocks-for-gutenberg"
+                                        )}
+                                        showIcons={true}
+                                    />
+                                )}
                         </PanelBody>
                     </InspectorTab>
                     <InspectorTab key={"style"}>

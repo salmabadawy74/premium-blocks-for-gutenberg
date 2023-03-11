@@ -10,7 +10,8 @@ import {
     AdvancedColorControl as AdvancedPopColorControl,
     InsideTabs,
     InsideTab,
-    ResponsiveRangeControl
+    ResponsiveRangeControl,
+    BlockContent
 } from '@pbg/components';
 import { generateBlockId, generateCss } from '@pbg/helpers';
 
@@ -413,15 +414,17 @@ function Edit(props) {
                 }}
             >
                 <style>{loadStyles()}</style>
-                <div
-                    className={`premium-icon-group-container premium-icon-group-${groupAlign}`}
-                >
-                    <InnerBlocks
-                        template={INNER_BLOCKS_TEMPLATE}
-                        templateLock={false}
-                        allowedBlocks={["premium/icon"]}
-                    />
-                </div>
+                <BlockContent blockProps={props}>
+                    <div
+                        className={`premium-icon-group-container premium-icon-group-${groupAlign}`}
+                    >
+                        <InnerBlocks
+                            template={INNER_BLOCKS_TEMPLATE}
+                            templateLock={false}
+                            allowedBlocks={["premium/icon"]}
+                        />
+                    </div>
+                </BlockContent>
             </div>
         </Fragment>
     );

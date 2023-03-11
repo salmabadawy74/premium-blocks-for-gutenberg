@@ -15,6 +15,7 @@ import {
     InsideTab,
     ResponsiveSingleRangeControl,
     PremiumFilters,
+    BlockContent
 } from '@pbg/components';
 import { generateCss, generateBlockId } from '@pbg/helpers';
 import { JsonUploadEnabled } from '@pbg/settings';
@@ -665,42 +666,44 @@ function Edit(props) {
                         __html: loadStyles()
                     }}
                 />
-                <div
-                    className={`premium-lottie-animation`}
-                    onMouseEnter={
-                        "hover" === trigger
-                            ? handleLottieMouseEnter
-                            : () => (stopAnimation = true)
-                    }
-                    onMouseLeave={
-                        "hover" === trigger
-                            ? handleLottieMouseLeave
-                            : () => (stopAnimation = true)
-                    }
-                >
-                    <Lottie
-                        ref={lottieplayer}
-                        options={{
-                            loop: loop,
-                            path: lottieURl,
-                            rendererSettings: {
-                                preserveAspectRatio: "xMidYMid",
-                                className: "premium-lottie-inner",
-                            },
-                        }}
-                        isStopped={stopAnimation}
-                        speed={speed === "" ? 1 : speed}
-                        isClickToPauseDisabled={true}
-                        direction={reversedir}
-                    />
-                    {link && url !== " " && (
-                        <a
-                            rel="noopener noreferrer"
-                            target={target ? "_blank" : "_self"}
-                            href={"javascript:void(0)"}
-                        ></a>
-                    )}
-                </div>
+                <BlockContent blockProps={props}>
+                    <div
+                        className={`premium-lottie-animation`}
+                        onMouseEnter={
+                            "hover" === trigger
+                                ? handleLottieMouseEnter
+                                : () => (stopAnimation = true)
+                        }
+                        onMouseLeave={
+                            "hover" === trigger
+                                ? handleLottieMouseLeave
+                                : () => (stopAnimation = true)
+                        }
+                    >
+                        <Lottie
+                            ref={lottieplayer}
+                            options={{
+                                loop: loop,
+                                path: lottieURl,
+                                rendererSettings: {
+                                    preserveAspectRatio: "xMidYMid",
+                                    className: "premium-lottie-inner",
+                                },
+                            }}
+                            isStopped={stopAnimation}
+                            speed={speed === "" ? 1 : speed}
+                            isClickToPauseDisabled={true}
+                            direction={reversedir}
+                        />
+                        {link && url !== " " && (
+                            <a
+                                rel="noopener noreferrer"
+                                target={target ? "_blank" : "_self"}
+                                href={"javascript:void(0)"}
+                            ></a>
+                        )}
+                    </div>
+                </BlockContent>
             </div>
         </Fragment>
     );

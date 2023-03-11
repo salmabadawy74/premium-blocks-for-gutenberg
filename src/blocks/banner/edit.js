@@ -16,6 +16,7 @@ import {
     PremiumFilters,
     InsideTabs,
     InsideTab,
+    BlockContent
 } from "@pbg/components";
 import {
     borderCss,
@@ -215,9 +216,8 @@ function Edit(props) {
         styles[
             `.${blockId} .premium-banner__inner:hover .premium-banner__bg-overlay`
         ] = {
-            "background-color": `${
-                hoverBackground ? hoverBackground : ""
-            } !important`,
+            "background-color": `${hoverBackground ? hoverBackground : ""
+                } !important`,
         };
 
         return generateCss(styles);
@@ -789,119 +789,119 @@ function Edit(props) {
                     />
                 )}
                 {imageURL && (
-                    <div
-                        style={{
-                            ...paddingCss(padding, props.deviceType),
-                        }}
-                    >
-                        <style
-                            dangerouslySetInnerHTML={{
-                                __html: loadStyles(),
-                            }}
-                        />
+                    <BlockContent blockProps={props}>
                         <div
-                            className={`premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`}
                             style={{
-                                boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
-                                ...borderCss(border, props.deviceType),
-                                minHeight: height == "custom" ? minHeight : "",
+                                ...paddingCss(padding, props.deviceType),
                             }}
                         >
+                            <style
+                                dangerouslySetInnerHTML={{
+                                    __html: loadStyles(),
+                                }}
+                            />
                             <div
-                                className={`premium-banner__bg-overlay ${
-                                    hoverBackground == "" ||
-                                    hoverBackground == undefined
+                                className={`premium-banner__inner premium-banner__min premium-banner__${effect} premium-banner__${hoverEffect} hover_${hovered}`}
+                                style={{
+                                    boxShadow: `${containerShadow.horizontal}px ${containerShadow.vertical}px ${containerShadow.blur}px ${containerShadow.color} ${containerShadow.position}`,
+                                    ...borderCss(border, props.deviceType),
+                                    minHeight: height == "custom" ? minHeight : "",
+                                }}
+                            >
+                                <div
+                                    className={`premium-banner__bg-overlay ${hoverBackground == "" ||
+                                        hoverBackground == undefined
                                         ? "premium-banner-hover-overlay"
                                         : ""
-                                }`}
-                                style={{
-                                    backgroundColor: `${
-                                        background ? background : ""
-                                    } `,
-                                }}
-                            ></div>
-                            <div
-                                className={`premium-banner__img_wrap premium-banner__${height}`}
-                                style={{
-                                    // minHeight: minHeight,
-                                    alignItems: verAlign,
-                                }}
-                            >
-                                <img
-                                    className={`premium-banner__img`}
-                                    alt="Banner Image"
-                                    src={imageURL}
+                                        }`}
                                     style={{
-                                        filter: `brightness( ${filter?.bright}% ) contrast( ${filter?.contrast}% ) saturate( ${filter?.saturation}% ) blur( ${filter?.blur}px ) hue-rotate( ${filter?.hue}deg )`,
+                                        backgroundColor: `${background ? background : ""
+                                            } `,
                                     }}
-                                />
-                            </div>
+                                ></div>
+                                <div
+                                    className={`premium-banner__img_wrap premium-banner__${height}`}
+                                    style={{
+                                        // minHeight: minHeight,
+                                        alignItems: verAlign,
+                                    }}
+                                >
+                                    <img
+                                        className={`premium-banner__img`}
+                                        alt="Banner Image"
+                                        src={imageURL}
+                                        style={{
+                                            filter: `brightness( ${filter?.bright}% ) contrast( ${filter?.contrast}% ) saturate( ${filter?.saturation}% ) blur( ${filter?.blur}px ) hue-rotate( ${filter?.hue}deg )`,
+                                        }}
+                                    />
+                                </div>
 
-                            <div
-                                className={`premium-banner__content`}
-                                style={{
-                                    background:
-                                        "effect2" === effect
-                                            ? titleStyles[0].titleBack
-                                            : "transparent",
-                                }}
-                            >
                                 <div
-                                    className={`premium-banner__title_wrap`}
+                                    className={`premium-banner__content`}
                                     style={{
-                                        textAlign:
-                                            contentAlign[props.deviceType],
+                                        background:
+                                            "effect2" === effect
+                                                ? titleStyles[0].titleBack
+                                                : "transparent",
                                     }}
                                 >
-                                    <RichText
-                                        tagName={titleTag.toLowerCase()}
-                                        className={`premium-banner__title`}
-                                        value={title}
-                                        placeholder={__("Awesome Title")}
-                                        isSelected={false}
-                                        onChange={(newText) =>
-                                            setAttributes({ title: newText })
-                                        }
+                                    <div
+                                        className={`premium-banner__title_wrap`}
                                         style={{
-                                            color: titleStyles[0].titleColor,
-                                            ...typographyCss(
-                                                titleTypography,
-                                                props.deviceType
-                                            ),
-                                            textShadow: `${titleTextShadow?.horizontal}px ${titleTextShadow?.vertical}px ${titleTextShadow?.blur}px ${titleTextShadow?.color}`,
+                                            textAlign:
+                                                contentAlign[props.deviceType],
                                         }}
-                                    />
-                                </div>
-                                <div
-                                    className={`premium-banner__desc_wrap`}
-                                    style={{
-                                        textAlign:
-                                            contentAlign[props.deviceType],
-                                    }}
-                                >
-                                    <RichText
-                                        tagName="p"
-                                        className={`premium-banner__desc`}
-                                        value={desc}
-                                        isSelected={false}
-                                        onChange={(newText) =>
-                                            setAttributes({ desc: newText })
-                                        }
+                                    >
+                                        <RichText
+                                            tagName={titleTag.toLowerCase()}
+                                            className={`premium-banner__title`}
+                                            value={title}
+                                            placeholder={__("Awesome Title")}
+                                            isSelected={false}
+                                            onChange={(newText) =>
+                                                setAttributes({ title: newText })
+                                            }
+                                            style={{
+                                                color: titleStyles[0].titleColor,
+                                                ...typographyCss(
+                                                    titleTypography,
+                                                    props.deviceType
+                                                ),
+                                                textShadow: `${titleTextShadow?.horizontal}px ${titleTextShadow?.vertical}px ${titleTextShadow?.blur}px ${titleTextShadow?.color}`,
+                                            }}
+                                        />
+                                    </div>
+                                    <div
+                                        className={`premium-banner__desc_wrap`}
                                         style={{
-                                            color: descStyles[0].descColor,
-                                            ...typographyCss(
-                                                descTypography,
-                                                props.deviceType
-                                            ),
-                                            textShadow: `${descTextShadow.horizontal}px ${descTextShadow.vertical}px ${descTextShadow.blur}px ${descTextShadow.color}`,
+                                            textAlign:
+                                                contentAlign[props.deviceType],
                                         }}
-                                    />
+                                    >
+                                        <RichText
+                                            tagName="p"
+                                            className={`premium-banner__desc`}
+                                            value={desc}
+                                            isSelected={false}
+                                            onChange={(newText) =>
+                                                setAttributes({ desc: newText })
+                                            }
+                                            style={{
+                                                color: descStyles[0].descColor,
+                                                ...typographyCss(
+                                                    descTypography,
+                                                    props.deviceType
+                                                ),
+                                                textShadow: `${descTextShadow.horizontal}px ${descTextShadow.vertical}px ${descTextShadow.blur}px ${descTextShadow.color}`,
+                                            }}
+                                        />
+                                    </div>
                                 </div>
                             </div>
+                            {loadTitleGoogleFonts}
+                            {loadDesciptionGoogleFonts}
                         </div>
-                        {loadTitleGoogleFonts}
-                        {loadDesciptionGoogleFonts}
-                    </div>
+                    </BlockContent>
                 )}
             </div>
         </Fragment>

@@ -7,6 +7,7 @@ import {
     SpacingComponent as SpacingControl,
     AdvancedColorControl as AdvancedPopColorControl,
     Icons,
+    BlockContent
 } from "@pbg/components";
 import { generateBlockId, paddingCss } from "@pbg/helpers";
 
@@ -232,10 +233,12 @@ function Edit(props) {
                     ...paddingCss(contentPadding, props.deviceType),
                 }}
             >
-                <InnerBlocks
-                    template={INNER_BLOCKS_TEMPLATE}
-                    templateLock={false}
-                />
+                <BlockContent blockProps={props}>
+                    <InnerBlocks
+                        template={INNER_BLOCKS_TEMPLATE}
+                        templateLock={false}
+                    />
+                </BlockContent>
             </div>
         </Fragment>
     );

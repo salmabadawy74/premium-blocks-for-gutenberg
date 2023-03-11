@@ -9,7 +9,8 @@ import {
     MultiButtonsControl,
     Icons,
     WebfontLoader,
-    PremiumTypo
+    PremiumTypo,
+    BlockContent
 } from "@pbg/components";
 
 const { __ } = wp.i18n;
@@ -405,47 +406,48 @@ function Edit(props) {
                     justifyContent: align?.[props.deviceType],
                 }}
             >
-                <RichText
-                    tagName={authorStyles[0].authorTag.toLowerCase()}
-                    className={`premium-testimonial__author`}
-                    value={author}
-                    onChange={(newText) =>
-                        setAttributes({ author: newText })
-                    }
-                    style={{
-                        color: authorStyles[0].authorColor,
-                        ...typographyCss(
-                            authorTypography,
-                            props.deviceType
-                        ),
-                    }}
-                    keepPlaceholderOnFocus
-                />
-                <span
-                    className={`premium-testimonial__sep`}
-                    style={{
-                        color: companyStyles[0].dashColor,
-                    }}
-                >
-                    &nbsp;-&nbsp;
-                </span>
-                <RichText
-                    tagName={authorStyles[0].authorComTag.toLowerCase()}
-                    className={`premium-testimonial__author_comp`}
-                    onChange={(newText) =>
-                        setAttributes({ authorCom: newText })
-                    }
-                    value={authorCom}
-                    style={{
-                        color: companyStyles[0].authorComColor,
-                        ...typographyCss(
-                            companyTypography,
-                            props.deviceType
-                        ),
-                    }}
-                    keepPlaceholderOnFocus
-                />
-
+                <BlockContent blockProps={props}>
+                    <RichText
+                        tagName={authorStyles[0].authorTag.toLowerCase()}
+                        className={`premium-testimonial__author`}
+                        value={author}
+                        onChange={(newText) =>
+                            setAttributes({ author: newText })
+                        }
+                        style={{
+                            color: authorStyles[0].authorColor,
+                            ...typographyCss(
+                                authorTypography,
+                                props.deviceType
+                            ),
+                        }}
+                        keepPlaceholderOnFocus
+                    />
+                    <span
+                        className={`premium-testimonial__sep`}
+                        style={{
+                            color: companyStyles[0].dashColor,
+                        }}
+                    >
+                        &nbsp;-&nbsp;
+                    </span>
+                    <RichText
+                        tagName={authorStyles[0].authorComTag.toLowerCase()}
+                        className={`premium-testimonial__author_comp`}
+                        onChange={(newText) =>
+                            setAttributes({ authorCom: newText })
+                        }
+                        value={authorCom}
+                        style={{
+                            color: companyStyles[0].authorComColor,
+                            ...typographyCss(
+                                companyTypography,
+                                props.deviceType
+                            ),
+                        }}
+                        keepPlaceholderOnFocus
+                    />
+                </BlockContent>
                 {loadAuthorGoogleFonts}
                 {loadCompanyGoogleFonts}
             </div>

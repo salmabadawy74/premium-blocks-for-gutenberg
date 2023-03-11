@@ -19,12 +19,14 @@ import {
     WebfontLoader,
     PremiumTypo,
     alignIcons,
+    BlockContent
 } from '@pbg/components';
 import { Fragment } from 'react';
 import classnames from "classnames";
 import { __ } from '@wordpress/i18n';
 
-function Edit({ clientId, attributes, setAttributes, deviceType }) {
+function Edit(props) {
+    const { clientId, attributes, setAttributes, deviceType } = props;
     const {
         blockId,
         hideDesktop,
@@ -350,71 +352,73 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
             </InspectorTabs>
         </InspectorControls>
         <div {...blockProps}>
-            <RichText
-                tagName="strike"
-                value={slashedPriceText}
-                className='premium-pricing-slash'
-                onChange={(val) => setAttributes({ slashedPriceText: val })}
-                multiline={false}
-                style={{
-                    color: slashedColor,
-                    backgroundColor: slashedBgColor,
-                    ...typographyCss(slashedTypography, deviceType),
-                    alignSelf: slashedAlign?.[deviceType]
-                }}
-            />
-            <RichText
-                tagName="span"
-                value={currencyText}
-                className='premium-pricing-currency'
-                onChange={(val) => setAttributes({ currencyText: val })}
-                multiline={false}
-                style={{
-                    color: currencyColor,
-                    backgroundColor: currencyBgColor,
-                    ...typographyCss(currencyTypography, deviceType),
-                    alignSelf: currencyAlign?.[deviceType]
-                }}
-            />
-            <RichText
-                tagName="span"
-                value={priceText}
-                className='premium-pricing-val'
-                onChange={(val) => setAttributes({ priceText: val })}
-                multiline={false}
-                style={{
-                    color: priceColor,
-                    backgroundColor: priceBgColor,
-                    ...typographyCss(priceTypography, deviceType),
-                    alignSelf: priceAlign?.[deviceType]
-                }}
-            />
-            <RichText
-                tagName="span"
-                value={dividerText}
-                className='premium-pricing-divider'
-                onChange={(val) => setAttributes({ dividerText: val })}
-                multiline={false}
-                style={{
-                    color: dividerColor,
-                    backgroundColor: dividerBgColor,
-                    ...typographyCss(dividerTypography, deviceType),
-                    alignSelf: dividerAlign?.[deviceType]
-                }}
-            />
-            <RichText
-                tagName="span"
-                value={durationText}
-                className='premium-pricing-dur'
-                onChange={(val) => setAttributes({ durationText: val })}
-                multiline={false}
-                style={{
-                    color: durationColor,
-                    backgroundColor: durationBgColor,
-                    ...typographyCss(durationTypography, deviceType),
-                    alignSelf: durationAlign?.[deviceType]
-                }}
-            />
+            <BlockContent blockProps={props}>
+                <RichText
+                    tagName="strike"
+                    value={slashedPriceText}
+                    className='premium-pricing-slash'
+                    onChange={(val) => setAttributes({ slashedPriceText: val })}
+                    multiline={false}
+                    style={{
+                        color: slashedColor,
+                        backgroundColor: slashedBgColor,
+                        ...typographyCss(slashedTypography, deviceType),
+                        alignSelf: slashedAlign?.[deviceType]
+                    }}
+                />
+                <RichText
+                    tagName="span"
+                    value={currencyText}
+                    className='premium-pricing-currency'
+                    onChange={(val) => setAttributes({ currencyText: val })}
+                    multiline={false}
+                    style={{
+                        color: currencyColor,
+                        backgroundColor: currencyBgColor,
+                        ...typographyCss(currencyTypography, deviceType),
+                        alignSelf: currencyAlign?.[deviceType]
+                    }}
+                />
+                <RichText
+                    tagName="span"
+                    value={priceText}
+                    className='premium-pricing-val'
+                    onChange={(val) => setAttributes({ priceText: val })}
+                    multiline={false}
+                    style={{
+                        color: priceColor,
+                        backgroundColor: priceBgColor,
+                        ...typographyCss(priceTypography, deviceType),
+                        alignSelf: priceAlign?.[deviceType]
+                    }}
+                />
+                <RichText
+                    tagName="span"
+                    value={dividerText}
+                    className='premium-pricing-divider'
+                    onChange={(val) => setAttributes({ dividerText: val })}
+                    multiline={false}
+                    style={{
+                        color: dividerColor,
+                        backgroundColor: dividerBgColor,
+                        ...typographyCss(dividerTypography, deviceType),
+                        alignSelf: dividerAlign?.[deviceType]
+                    }}
+                />
+                <RichText
+                    tagName="span"
+                    value={durationText}
+                    className='premium-pricing-dur'
+                    onChange={(val) => setAttributes({ durationText: val })}
+                    multiline={false}
+                    style={{
+                        color: durationColor,
+                        backgroundColor: durationBgColor,
+                        ...typographyCss(durationTypography, deviceType),
+                        alignSelf: durationAlign?.[deviceType]
+                    }}
+                />
+            </BlockContent>
             {loadGoogleFonts}
         </div>
     </Fragment>;

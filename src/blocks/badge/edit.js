@@ -21,11 +21,13 @@ import {
     WebfontLoader,
     PremiumTypo,
     ResponsiveSingleRangeControl,
-    RadioComponent
+    RadioComponent,
+    BlockContent
 } from "@pbg/components";
 import { generateBlockId, typographyCss } from '@pbg/helpers';
 
-function Edit({ clientId, attributes, setAttributes, deviceType }) {
+function Edit(props) {
+    const { clientId, attributes, setAttributes, deviceType } = props;
     const {
         blockId,
         hideDesktop,
@@ -201,27 +203,29 @@ function Edit({ clientId, attributes, setAttributes, deviceType }) {
             </InspectorTabs>
         </InspectorControls>
         <div {...blockProps}>
-            <div className='premium-badge-wrap' style={{
-                borderRightColor:
-                    "right" === position ? backgroundColor : "transparent",
-                borderTopColor: "left" === position ? backgroundColor : "transparent",
-                borderBottomWidth: "right" === position && `${badgeSize}px`,
-                borderRightWidth: `${badgeSize}px`,
-                borderTopWidth: "left" === position && `${badgeSize}px`,
-            }}>
-                <RichText
-                    tagName='span'
-                    onChange={newText => saveBadgeStyles({ badgeText: newText })}
-                    placeholder={__("Popular", 'premium-blocks-for-gutenberg')}
-                    value={text}
-                    style={{
-                        ...typographyCss(typography, deviceType),
-                        color: color,
-                        width: `${textWidth}px`,
-                    }}
-                    keepPlaceholderOnFocus
-                />
-            </div>
+            <BlockContent blockProps={props}>
+                <div className='premium-badge-wrap' style={{
+                    borderRightColor:
+                        "right" === position ? backgroundColor : "transparent",
+                    borderTopColor: "left" === position ? backgroundColor : "transparent",
+                    borderBottomWidth: "right" === position && `${badgeSize}px`,
+                    borderRightWidth: `${badgeSize}px`,
+                    borderTopWidth: "left" === position && `${badgeSize}px`,
+                }}>
+                    <RichText
+                        tagName='span'
+                        onChange={newText => saveBadgeStyles({ badgeText: newText })}
+                        placeholder={__("Popular", 'premium-blocks-for-gutenberg')}
+                        value={text}
+                        style={{
+                            ...typographyCss(typography, deviceType),
+                            color: color,
+                            width: `${textWidth}px`,
+                        }}
+                        keepPlaceholderOnFocus
+                    />
+                </div>
+            </BlockContent>
         </div>
         {loadGoogleFonts}
     </Fragment>;
