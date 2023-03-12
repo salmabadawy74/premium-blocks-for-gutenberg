@@ -438,7 +438,7 @@ function render_block_pbg_content_switcher( $attributes, $content ) {
 		if ( ! empty( $css ) ) {
 			$block_helpers = pbg_blocks_helper();
 			if ( should_render_inline( 'content-switcher', $unique_id ) ) {
-				$content = '<style id="pbg-blocks-style' . esc_attr( $unique_id ) . '">' . $css . '</style>' . $content;
+				$block_helpers->add_custom_block_css( $css );
 			} else {
 				$block_helpers->render_inline_css( $css, $style_id, true );
 			}

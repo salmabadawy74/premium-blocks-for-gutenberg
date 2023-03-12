@@ -34,16 +34,16 @@ function get_premium_button_css_style( $attr, $unique_id ) {
 		$css->render_typography( $typography, 'Desktop' );
 	}
 
-	if (isset($attr['padding'])) {
+	if ( isset( $attr['padding'] ) ) {
 		$padding = $attr['padding'];
-		$css->set_selector($unique_id . '> .premium-button');
-		$css->add_property('padding', $css->render_spacing($padding['Desktop'], $padding['unit']));
+		$css->set_selector( $unique_id . '> .premium-button' );
+		$css->add_property( 'padding', $css->render_spacing( $padding['Desktop'], $padding['unit'] ) );
 	}
 
-	if (isset($attr['margin'])) {
+	if ( isset( $attr['margin'] ) ) {
 		$margin = $attr['margin'];
-		$css->set_selector($unique_id . '> .premium-button');
-		$css->add_property('margin', $css->render_spacing($margin['Desktop'], $margin['unit']));
+		$css->set_selector( $unique_id . '> .premium-button' );
+		$css->add_property( 'margin', $css->render_spacing( $margin['Desktop'], $margin['unit'] ) );
 	}
 
 	if ( isset( $attr['border'] ) ) {
@@ -90,16 +90,16 @@ function get_premium_button_css_style( $attr, $unique_id ) {
 		$css->render_typography( $typography, 'Tablet' );
 	}
 
-	if (isset($attr['padding'])) {
+	if ( isset( $attr['padding'] ) ) {
 		$padding = $attr['padding'];
-		$css->set_selector($unique_id . '> .premium-button');
-		$css->add_property('padding', $css->render_spacing($padding['Tablet'], $padding['unit']));
+		$css->set_selector( $unique_id . '> .premium-button' );
+		$css->add_property( 'padding', $css->render_spacing( $padding['Tablet'], $padding['unit'] ) );
 	}
 
-	if (isset($attr['margin'])) {
+	if ( isset( $attr['margin'] ) ) {
 		$margin = $attr['margin'];
-		$css->set_selector($unique_id . '> .premium-button');
-		$css->add_property('margin', $css->render_spacing($margin['Tablet'], $margin['unit']));
+		$css->set_selector( $unique_id . '> .premium-button' );
+		$css->add_property( 'margin', $css->render_spacing( $margin['Tablet'], $margin['unit'] ) );
 	}
 
 	if ( isset( $attr['border'] ) ) {
@@ -148,16 +148,16 @@ function get_premium_button_css_style( $attr, $unique_id ) {
 		$css->render_typography( $typography, 'Mobile' );
 	}
 
-	if (isset($attr['padding'])) {
+	if ( isset( $attr['padding'] ) ) {
 		$padding = $attr['padding'];
-		$css->set_selector($unique_id . '> .premium-button');
-		$css->add_property('padding', $css->render_spacing($padding['Mobile'], $padding['unit']));
+		$css->set_selector( $unique_id . '> .premium-button' );
+		$css->add_property( 'padding', $css->render_spacing( $padding['Mobile'], $padding['unit'] ) );
 	}
 
-	if (isset($attr['margin'])) {
+	if ( isset( $attr['margin'] ) ) {
 		$margin = $attr['margin'];
-		$css->set_selector($unique_id . '> .premium-button');
-		$css->add_property('margin', $css->render_spacing($margin['Mobile'], $margin['unit']));
+		$css->set_selector( $unique_id . '> .premium-button' );
+		$css->add_property( 'margin', $css->render_spacing( $margin['Mobile'], $margin['unit'] ) );
 	}
 
 	if ( isset( $attr['border'] ) ) {
@@ -228,7 +228,7 @@ function render_block_pbg_button( $attributes, $content, $block ) {
 		$css = get_premium_button_css_style( $attributes, $unique_id );
 		if ( ! empty( $css ) ) {
 			if ( $block_helpers->should_render_inline( 'button', $unique_id ) ) {
-				$content = '<style id="pbg-blocks-style' . esc_attr( $unique_id ) . '">' . $css . '</style>' . $content;
+				$block_helpers->add_custom_block_css( $css );
 			} else {
 				$block_helpers->render_inline_css( $css, $style_id, true );
 			}

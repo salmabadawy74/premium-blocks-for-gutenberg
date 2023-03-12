@@ -139,7 +139,7 @@ function render_block_pbg_count_up( $attributes, $content, $block ) {
 		$css = get_premium_count_up_css_style( $attributes, $unique_id );
 		if ( ! empty( $css ) ) {
 			if ( $block_helpers->should_render_inline( 'count-up', $unique_id ) ) {
-				$content = '<style id="pbg-blocks-style' . esc_attr( $unique_id ) . '">' . $css . '</style>' . $content;
+				$block_helpers->add_custom_block_css( $css );
 			} else {
 				$block_helpers->render_inline_css( $css, $style_id, true );
 			}

@@ -3139,9 +3139,11 @@ const generateCss = styles => {
         return `${property}: ${value};`;
       }
     }).filter(style => !!style).join("\n");
-    styleCss += `${selector}{
+    if (filteredStyles) {
+      styleCss += `${selector}{
                     ${filteredStyles}
                 }\n`;
+    }
   }
   return styleCss;
 };
