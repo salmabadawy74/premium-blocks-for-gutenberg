@@ -1,4 +1,7 @@
 export { default as AdvancedColorControl } from "./Color Control/ColorComponent";
+export { default as OrderControl } from './order-control';
+export { TaxonomyControls } from './taxonomy-controls';
+export { default as AuthorControl } from './authorControl';
 export { default as InsideTabs } from "./InsideTabs";
 export { default as InsideTab } from "./InsideTab";
 export { default as PremiumShadow } from "./PremiumShadow";

@@ -56,7 +56,7 @@ import "./blocks/image";
 import "./blocks/icon-group";
 import "./blocks/counter";
 import "./blocks/author";
-
+import "./blocks/post/post-carousel";
 window.PremiumOptionsSettings = {
     FontAwesomeEnabled,
 };

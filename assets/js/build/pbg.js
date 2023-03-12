@@ -2180,6 +2180,119 @@ icons.vertical_bottom = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.creat
 
 /***/ }),
 
+/***/ "./src/components/authorControl.js":
+/*!*****************************************!*\
+  !*** ./src/components/authorControl.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/core-data */ "@wordpress/core-data");
+/* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_4__);
+
+/**
+ * WordPress dependencies
+ */
+
+
+
+
+
+/**
+ * Internal dependencies
+ */
+
+const AUTHORS_QUERY = {
+  who: "authors",
+  per_page: -1,
+  _fields: "id,name",
+  context: "view"
+};
+const getEntitiesInfo = entities => {
+  const mapping = entities?.reduce((accumulator, entity) => {
+    const {
+      mapById,
+      mapByName,
+      names
+    } = accumulator;
+    mapById[entity.id] = entity;
+    mapByName[entity.name] = entity;
+    names.push(entity.name);
+    return accumulator;
+  }, {
+    mapById: {},
+    mapByName: {},
+    names: []
+  });
+  return {
+    entities,
+    ...mapping
+  };
+};
+function AuthorControl(_ref) {
+  let {
+    value,
+    onChange
+  } = _ref;
+  const authorsList = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.useSelect)(select => {
+    const {
+      getUsers
+    } = select(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_4__.store);
+    return getUsers(AUTHORS_QUERY);
+  }, []);
+  if (!authorsList) {
+    return null;
+  }
+  const authorsInfo = getEntitiesInfo(authorsList);
+  const normalizedValue = !value ? [] : value.toString().split(",");
+  const sanitizedValue = normalizedValue.reduce((accumulator, authorId) => {
+    const author = authorsInfo.mapById[authorId];
+    if (author) {
+      accumulator.push({
+        id: authorId,
+        value: author.name
+      });
+    }
+    return accumulator;
+  }, []);
+  const getIdByValue = (entitiesMappedByName, authorValue) => {
+    const id = authorValue?.id || entitiesMappedByName[authorValue]?.id;
+    if (id) return id;
+  };
+  const onAuthorChange = newValue => {
+    const ids = Array.from(newValue.reduce((accumulator, author) => {
+      const id = getIdByValue(authorsInfo.mapByName, author);
+      if (id) accumulator.add(id);
+      return accumulator;
+    }, new Set()));
+    onChange({
+      author: ids.join(",")
+    });
+  };
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FormTokenField, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Authors"),
+    value: sanitizedValue,
+    suggestions: authorsInfo.names,
+    onChange: onAuthorChange,
+    __experimentalShowHowTo: false
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AuthorControl);
+
+/***/ }),
+
 /***/ "./src/components/default-image.js":
 /*!*****************************************!*\
   !*** ./src/components/default-image.js ***!
@@ -2609,76 +2722,85 @@ const Icons = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AdvancedColorControl": () => (/* reexport safe */ _Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_0__["default"]),
-/* harmony export */   "Animation": () => (/* reexport safe */ _Animation__WEBPACK_IMPORTED_MODULE_19__["default"]),
-/* harmony export */   "DefaultImage": () => (/* reexport safe */ _default_image__WEBPACK_IMPORTED_MODULE_18__["default"]),
-/* harmony export */   "FaIco": () => (/* reexport safe */ _faicons__WEBPACK_IMPORTED_MODULE_33__["default"]),
-/* harmony export */   "GenIcon": () => (/* reexport safe */ _genicon__WEBPACK_IMPORTED_MODULE_31__["default"]),
-/* harmony export */   "Ico": () => (/* reexport safe */ _svgicons__WEBPACK_IMPORTED_MODULE_34__["default"]),
-/* harmony export */   "IcoNames": () => (/* reexport safe */ _svgiconsnames__WEBPACK_IMPORTED_MODULE_32__["default"]),
-/* harmony export */   "Icons": () => (/* reexport safe */ _icons__WEBPACK_IMPORTED_MODULE_6__["default"]),
-/* harmony export */   "InsideTab": () => (/* reexport safe */ _InsideTab__WEBPACK_IMPORTED_MODULE_2__["default"]),
-/* harmony export */   "InsideTabs": () => (/* reexport safe */ _InsideTabs__WEBPACK_IMPORTED_MODULE_1__["default"]),
-/* harmony export */   "InspectorTab": () => (/* reexport safe */ _inspectorTab__WEBPACK_IMPORTED_MODULE_9__["default"]),
-/* harmony export */   "InspectorTabs": () => (/* reexport safe */ _inspectorTabs__WEBPACK_IMPORTED_MODULE_8__["default"]),
-/* harmony export */   "MultiButtonsControl": () => (/* reexport safe */ _responsive_radio__WEBPACK_IMPORTED_MODULE_15__["default"]),
-/* harmony export */   "PBGPresets": () => (/* reexport safe */ _Presets__WEBPACK_IMPORTED_MODULE_28__["default"]),
-/* harmony export */   "PremiumBackgroundControl": () => (/* reexport safe */ _Premium_Background_Control__WEBPACK_IMPORTED_MODULE_10__["default"]),
-/* harmony export */   "PremiumBorder": () => (/* reexport safe */ _premium_border__WEBPACK_IMPORTED_MODULE_11__["default"]),
-/* harmony export */   "PremiumFilters": () => (/* reexport safe */ _premium_filters__WEBPACK_IMPORTED_MODULE_20__["default"]),
-/* harmony export */   "PremiumLowerQuote": () => (/* reexport safe */ _testimonials_lower_quote__WEBPACK_IMPORTED_MODULE_26__["default"]),
-/* harmony export */   "PremiumMediaUpload": () => (/* reexport safe */ _premium_media_upload__WEBPACK_IMPORTED_MODULE_16__["default"]),
-/* harmony export */   "PremiumResponsiveTabs": () => (/* reexport safe */ _premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_17__["default"]),
-/* harmony export */   "PremiumShadow": () => (/* reexport safe */ _PremiumShadow__WEBPACK_IMPORTED_MODULE_3__["default"]),
-/* harmony export */   "PremiumTypo": () => (/* reexport safe */ _premium_typo__WEBPACK_IMPORTED_MODULE_13__["default"]),
-/* harmony export */   "PremiumUploadSVG": () => (/* reexport safe */ _premium_upload_svg__WEBPACK_IMPORTED_MODULE_29__["default"]),
-/* harmony export */   "PremiumUpperQuote": () => (/* reexport safe */ _testimonials_upper_quote__WEBPACK_IMPORTED_MODULE_27__["default"]),
-/* harmony export */   "PremiumVariation": () => (/* reexport safe */ _premium_variation__WEBPACK_IMPORTED_MODULE_30__["default"]),
-/* harmony export */   "RadioComponent": () => (/* reexport safe */ _radio_control__WEBPACK_IMPORTED_MODULE_14__["default"]),
-/* harmony export */   "ResponsiveRangeControl": () => (/* reexport safe */ _RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_4__["default"]),
-/* harmony export */   "ResponsiveSingleRangeControl": () => (/* reexport safe */ _RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_5__["default"]),
-/* harmony export */   "Shape": () => (/* reexport safe */ _premium_shape__WEBPACK_IMPORTED_MODULE_21__["default"]),
-/* harmony export */   "Social": () => (/* reexport safe */ _social_media__WEBPACK_IMPORTED_MODULE_22__["default"]),
-/* harmony export */   "SpacingComponent": () => (/* reexport safe */ _premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_12__["default"]),
-/* harmony export */   "WebfontLoader": () => (/* reexport safe */ _typography_fontLoader__WEBPACK_IMPORTED_MODULE_23__["default"]),
-/* harmony export */   "alignIcons": () => (/* reexport safe */ _align__WEBPACK_IMPORTED_MODULE_7__["default"]),
-/* harmony export */   "iconsList": () => (/* reexport safe */ _premium_icons_list__WEBPACK_IMPORTED_MODULE_24__["default"]),
-/* harmony export */   "renderCustomIcon": () => (/* reexport safe */ _assets_icons_renderIcon__WEBPACK_IMPORTED_MODULE_25__["default"])
+/* harmony export */   "Animation": () => (/* reexport safe */ _Animation__WEBPACK_IMPORTED_MODULE_22__["default"]),
+/* harmony export */   "AuthorControl": () => (/* reexport safe */ _authorControl__WEBPACK_IMPORTED_MODULE_3__["default"]),
+/* harmony export */   "DefaultImage": () => (/* reexport safe */ _default_image__WEBPACK_IMPORTED_MODULE_21__["default"]),
+/* harmony export */   "FaIco": () => (/* reexport safe */ _faicons__WEBPACK_IMPORTED_MODULE_36__["default"]),
+/* harmony export */   "GenIcon": () => (/* reexport safe */ _genicon__WEBPACK_IMPORTED_MODULE_34__["default"]),
+/* harmony export */   "Ico": () => (/* reexport safe */ _svgicons__WEBPACK_IMPORTED_MODULE_37__["default"]),
+/* harmony export */   "IcoNames": () => (/* reexport safe */ _svgiconsnames__WEBPACK_IMPORTED_MODULE_35__["default"]),
+/* harmony export */   "Icons": () => (/* reexport safe */ _icons__WEBPACK_IMPORTED_MODULE_9__["default"]),
+/* harmony export */   "InsideTab": () => (/* reexport safe */ _InsideTab__WEBPACK_IMPORTED_MODULE_5__["default"]),
+/* harmony export */   "InsideTabs": () => (/* reexport safe */ _InsideTabs__WEBPACK_IMPORTED_MODULE_4__["default"]),
+/* harmony export */   "InspectorTab": () => (/* reexport safe */ _inspectorTab__WEBPACK_IMPORTED_MODULE_12__["default"]),
+/* harmony export */   "InspectorTabs": () => (/* reexport safe */ _inspectorTabs__WEBPACK_IMPORTED_MODULE_11__["default"]),
+/* harmony export */   "MultiButtonsControl": () => (/* reexport safe */ _responsive_radio__WEBPACK_IMPORTED_MODULE_18__["default"]),
+/* harmony export */   "OrderControl": () => (/* reexport safe */ _order_control__WEBPACK_IMPORTED_MODULE_1__["default"]),
+/* harmony export */   "PBGPresets": () => (/* reexport safe */ _Presets__WEBPACK_IMPORTED_MODULE_31__["default"]),
+/* harmony export */   "PremiumBackgroundControl": () => (/* reexport safe */ _Premium_Background_Control__WEBPACK_IMPORTED_MODULE_13__["default"]),
+/* harmony export */   "PremiumBorder": () => (/* reexport safe */ _premium_border__WEBPACK_IMPORTED_MODULE_14__["default"]),
+/* harmony export */   "PremiumFilters": () => (/* reexport safe */ _premium_filters__WEBPACK_IMPORTED_MODULE_23__["default"]),
+/* harmony export */   "PremiumLowerQuote": () => (/* reexport safe */ _testimonials_lower_quote__WEBPACK_IMPORTED_MODULE_29__["default"]),
+/* harmony export */   "PremiumMediaUpload": () => (/* reexport safe */ _premium_media_upload__WEBPACK_IMPORTED_MODULE_19__["default"]),
+/* harmony export */   "PremiumResponsiveTabs": () => (/* reexport safe */ _premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_20__["default"]),
+/* harmony export */   "PremiumShadow": () => (/* reexport safe */ _PremiumShadow__WEBPACK_IMPORTED_MODULE_6__["default"]),
+/* harmony export */   "PremiumTypo": () => (/* reexport safe */ _premium_typo__WEBPACK_IMPORTED_MODULE_16__["default"]),
+/* harmony export */   "PremiumUploadSVG": () => (/* reexport safe */ _premium_upload_svg__WEBPACK_IMPORTED_MODULE_32__["default"]),
+/* harmony export */   "PremiumUpperQuote": () => (/* reexport safe */ _testimonials_upper_quote__WEBPACK_IMPORTED_MODULE_30__["default"]),
+/* harmony export */   "PremiumVariation": () => (/* reexport safe */ _premium_variation__WEBPACK_IMPORTED_MODULE_33__["default"]),
+/* harmony export */   "RadioComponent": () => (/* reexport safe */ _radio_control__WEBPACK_IMPORTED_MODULE_17__["default"]),
+/* harmony export */   "ResponsiveRangeControl": () => (/* reexport safe */ _RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_7__["default"]),
+/* harmony export */   "ResponsiveSingleRangeControl": () => (/* reexport safe */ _RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_8__["default"]),
+/* harmony export */   "Shape": () => (/* reexport safe */ _premium_shape__WEBPACK_IMPORTED_MODULE_24__["default"]),
+/* harmony export */   "Social": () => (/* reexport safe */ _social_media__WEBPACK_IMPORTED_MODULE_25__["default"]),
+/* harmony export */   "SpacingComponent": () => (/* reexport safe */ _premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_15__["default"]),
+/* harmony export */   "TaxonomyControls": () => (/* reexport safe */ _taxonomy_controls__WEBPACK_IMPORTED_MODULE_2__.TaxonomyControls),
+/* harmony export */   "WebfontLoader": () => (/* reexport safe */ _typography_fontLoader__WEBPACK_IMPORTED_MODULE_26__["default"]),
+/* harmony export */   "alignIcons": () => (/* reexport safe */ _align__WEBPACK_IMPORTED_MODULE_10__["default"]),
+/* harmony export */   "iconsList": () => (/* reexport safe */ _premium_icons_list__WEBPACK_IMPORTED_MODULE_27__["default"]),
+/* harmony export */   "renderCustomIcon": () => (/* reexport safe */ _assets_icons_renderIcon__WEBPACK_IMPORTED_MODULE_28__["default"])
 /* harmony export */ });
 /* harmony import */ var _Color_Control_ColorComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Color Control/ColorComponent */ "./src/components/Color Control/ColorComponent.js");
-/* harmony import */ var _InsideTabs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InsideTabs */ "./src/components/InsideTabs.js");
-/* harmony import */ var _InsideTab__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./InsideTab */ "./src/components/InsideTab.js");
-/* harmony import */ var _PremiumShadow__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PremiumShadow */ "./src/components/PremiumShadow.js");
-/* harmony import */ var _RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./RangeControl/responsive-range-control */ "./src/components/RangeControl/responsive-range-control.js");
-/* harmony import */ var _RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./RangeControl/single-range-control */ "./src/components/RangeControl/single-range-control.js");
-/* harmony import */ var _icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./icons */ "./src/components/icons.js");
-/* harmony import */ var _align__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./align */ "./src/components/align.js");
-/* harmony import */ var _inspectorTabs__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./inspectorTabs */ "./src/components/inspectorTabs.js");
-/* harmony import */ var _inspectorTab__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./inspectorTab */ "./src/components/inspectorTab.js");
-/* harmony import */ var _Premium_Background_Control__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Premium-Background-Control */ "./src/components/Premium-Background-Control.js");
-/* harmony import */ var _premium_border__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./premium-border */ "./src/components/premium-border.js");
-/* harmony import */ var _premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./premium-responsive-spacing */ "./src/components/premium-responsive-spacing.js");
-/* harmony import */ var _premium_typo__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./premium-typo */ "./src/components/premium-typo.js");
-/* harmony import */ var _radio_control__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./radio-control */ "./src/components/radio-control.js");
-/* harmony import */ var _responsive_radio__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./responsive-radio */ "./src/components/responsive-radio.js");
-/* harmony import */ var _premium_media_upload__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./premium-media-upload */ "./src/components/premium-media-upload.js");
-/* harmony import */ var _premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./premium-responsive-tabs */ "./src/components/premium-responsive-tabs.js");
-/* harmony import */ var _default_image__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./default-image */ "./src/components/default-image.js");
-/* harmony import */ var _Animation__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./Animation */ "./src/components/Animation.js");
-/* harmony import */ var _premium_filters__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./premium-filters */ "./src/components/premium-filters.js");
-/* harmony import */ var _premium_shape__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./premium-shape */ "./src/components/premium-shape.js");
-/* harmony import */ var _social_media__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./social-media */ "./src/components/social-media.js");
-/* harmony import */ var _typography_fontLoader__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./typography/fontLoader */ "./src/components/typography/fontLoader.js");
-/* harmony import */ var _premium_icons_list__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./premium-icons-list */ "./src/components/premium-icons-list.js");
-/* harmony import */ var _assets_icons_renderIcon__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../../assets/icons/renderIcon */ "./assets/icons/renderIcon.js");
-/* harmony import */ var _testimonials_lower_quote__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./testimonials/lower-quote */ "./src/components/testimonials/lower-quote.js");
-/* harmony import */ var _testimonials_upper_quote__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./testimonials/upper-quote */ "./src/components/testimonials/upper-quote.js");
-/* harmony import */ var _Presets__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./Presets */ "./src/components/Presets.js");
-/* harmony import */ var _premium_upload_svg__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./premium-upload-svg */ "./src/components/premium-upload-svg.js");
-/* harmony import */ var _premium_variation__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./premium-variation */ "./src/components/premium-variation.js");
-/* harmony import */ var _genicon__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./genicon */ "./src/components/genicon.js");
-/* harmony import */ var _svgiconsnames__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./svgiconsnames */ "./src/components/svgiconsnames.js");
-/* harmony import */ var _faicons__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./faicons */ "./src/components/faicons.js");
-/* harmony import */ var _svgicons__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./svgicons */ "./src/components/svgicons.js");
+/* harmony import */ var _order_control__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./order-control */ "./src/components/order-control.js");
+/* harmony import */ var _taxonomy_controls__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./taxonomy-controls */ "./src/components/taxonomy-controls.js");
+/* harmony import */ var _authorControl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./authorControl */ "./src/components/authorControl.js");
+/* harmony import */ var _InsideTabs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./InsideTabs */ "./src/components/InsideTabs.js");
+/* harmony import */ var _InsideTab__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./InsideTab */ "./src/components/InsideTab.js");
+/* harmony import */ var _PremiumShadow__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./PremiumShadow */ "./src/components/PremiumShadow.js");
+/* harmony import */ var _RangeControl_responsive_range_control__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./RangeControl/responsive-range-control */ "./src/components/RangeControl/responsive-range-control.js");
+/* harmony import */ var _RangeControl_single_range_control__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./RangeControl/single-range-control */ "./src/components/RangeControl/single-range-control.js");
+/* harmony import */ var _icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./icons */ "./src/components/icons.js");
+/* harmony import */ var _align__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./align */ "./src/components/align.js");
+/* harmony import */ var _inspectorTabs__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./inspectorTabs */ "./src/components/inspectorTabs.js");
+/* harmony import */ var _inspectorTab__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./inspectorTab */ "./src/components/inspectorTab.js");
+/* harmony import */ var _Premium_Background_Control__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./Premium-Background-Control */ "./src/components/Premium-Background-Control.js");
+/* harmony import */ var _premium_border__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./premium-border */ "./src/components/premium-border.js");
+/* harmony import */ var _premium_responsive_spacing__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./premium-responsive-spacing */ "./src/components/premium-responsive-spacing.js");
+/* harmony import */ var _premium_typo__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./premium-typo */ "./src/components/premium-typo.js");
+/* harmony import */ var _radio_control__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./radio-control */ "./src/components/radio-control.js");
+/* harmony import */ var _responsive_radio__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./responsive-radio */ "./src/components/responsive-radio.js");
+/* harmony import */ var _premium_media_upload__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./premium-media-upload */ "./src/components/premium-media-upload.js");
+/* harmony import */ var _premium_responsive_tabs__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./premium-responsive-tabs */ "./src/components/premium-responsive-tabs.js");
+/* harmony import */ var _default_image__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./default-image */ "./src/components/default-image.js");
+/* harmony import */ var _Animation__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./Animation */ "./src/components/Animation.js");
+/* harmony import */ var _premium_filters__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./premium-filters */ "./src/components/premium-filters.js");
+/* harmony import */ var _premium_shape__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./premium-shape */ "./src/components/premium-shape.js");
+/* harmony import */ var _social_media__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./social-media */ "./src/components/social-media.js");
+/* harmony import */ var _typography_fontLoader__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./typography/fontLoader */ "./src/components/typography/fontLoader.js");
+/* harmony import */ var _premium_icons_list__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./premium-icons-list */ "./src/components/premium-icons-list.js");
+/* harmony import */ var _assets_icons_renderIcon__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ../../assets/icons/renderIcon */ "./assets/icons/renderIcon.js");
+/* harmony import */ var _testimonials_lower_quote__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./testimonials/lower-quote */ "./src/components/testimonials/lower-quote.js");
+/* harmony import */ var _testimonials_upper_quote__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./testimonials/upper-quote */ "./src/components/testimonials/upper-quote.js");
+/* harmony import */ var _Presets__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./Presets */ "./src/components/Presets.js");
+/* harmony import */ var _premium_upload_svg__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./premium-upload-svg */ "./src/components/premium-upload-svg.js");
+/* harmony import */ var _premium_variation__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./premium-variation */ "./src/components/premium-variation.js");
+/* harmony import */ var _genicon__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./genicon */ "./src/components/genicon.js");
+/* harmony import */ var _svgiconsnames__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./svgiconsnames */ "./src/components/svgiconsnames.js");
+/* harmony import */ var _faicons__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./faicons */ "./src/components/faicons.js");
+/* harmony import */ var _svgicons__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./svgicons */ "./src/components/svgicons.js");
+
+
+
 
 
 
@@ -2931,6 +3053,78 @@ InspectorTabs.defaultProps = {
   tabs: ['layout', 'style', 'advance']
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (InspectorTabs);
+
+/***/ }),
+
+/***/ "./src/components/order-control.js":
+/*!*****************************************!*\
+  !*** ./src/components/order-control.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+
+/**
+ * WordPress dependencies
+ */
+
+
+const orderOptions = [{
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Newest to Oldest", "premium-blocks-for-gutenberg"),
+  value: "date/desc"
+}, {
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Oldest to Newest", "premium-blocks-for-gutenberg"),
+  value: "date/asc"
+}, {
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("A → Z", "premium-blocks-for-gutenberg"),
+  value: "title/asc"
+}, {
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Z → A", "premium-blocks-for-gutenberg"),
+  value: "title/desc"
+}, {
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Last Modified to Oldest", "premium-blocks-for-gutenberg"),
+  value: "modified/desc"
+}, {
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Oldest Modified to Last", "premium-blocks-for-gutenberg"),
+  value: "modified/asc"
+}, {
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Menu Order", "premium-blocks-for-gutenberg"),
+  value: "menu_order/asc"
+}, {
+  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Random", "premium-blocks-for-gutenberg"),
+  value: "rand/desc"
+}];
+function OrderControl(_ref) {
+  let {
+    order,
+    orderBy,
+    onChange
+  } = _ref;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
+    __nextHasNoMarginBottom: true,
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Order by"),
+    value: `${orderBy}/${order}`,
+    options: orderOptions,
+    onChange: value => {
+      const [newOrderBy, newOrder] = value.split("/");
+      onChange({
+        order: newOrder,
+        orderBy: newOrderBy
+      });
+    }
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OrderControl);
 
 /***/ }),
 
@@ -20117,6 +20311,221 @@ const IcoNames = {
 
 /***/ }),
 
+/***/ "./src/components/taxonomy-controls.js":
+/*!*********************************************!*\
+  !*** ./src/components/taxonomy-controls.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "TaxonomyControls": () => (/* binding */ TaxonomyControls)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/core-data */ "@wordpress/core-data");
+/* harmony import */ var _wordpress_core_data__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
+/* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_4__);
+
+/**
+ * WordPress dependencies
+ */
+
+
+
+
+
+
+/**
+ * Internal dependencies
+ */
+const useTaxonomies = postType => {
+  const taxonomies = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.useSelect)(select => {
+    const {
+      getTaxonomies
+    } = select(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__.store);
+    const filteredTaxonomies = getTaxonomies({
+      type: postType,
+      per_page: -1,
+      context: "view"
+    });
+    return filteredTaxonomies;
+  }, [postType]);
+  return taxonomies;
+};
+const EMPTY_ARRAY = [];
+const BASE_QUERY = {
+  order: "asc",
+  _fields: "id,name",
+  context: "view"
+};
+
+// Helper function to get the term id based on user input in terms `FormTokenField`.
+const getTermIdByTermValue = (terms, termValue) => {
+  // First we check for exact match by `term.id` or case sensitive `term.name` match.
+  const termId = termValue?.id || terms.find(term => term.name === termValue)?.id;
+  if (termId) {
+    return termId;
+  }
+
+  /**
+   * Here we make an extra check for entered terms in a non case sensitive way,
+   * to match user expectations, due to `FormTokenField` behaviour that shows
+   * suggestions which are case insensitive.
+   *
+   * Although WP tries to discourage users to add terms with the same name (case insensitive),
+   * it's still possible if you manually change the name, as long as the terms have different slugs.
+   * In this edge case we always apply the first match from the terms list.
+   */
+  const termValueLower = termValue.toLocaleLowerCase();
+  return terms.find(term => term.name.toLocaleLowerCase() === termValueLower)?.id;
+};
+function TaxonomyControls(_ref) {
+  let {
+    onChange,
+    query
+  } = _ref;
+  const {
+    postType,
+    taxQuery
+  } = query;
+  const taxonomies = useTaxonomies(postType);
+  if (!taxonomies || taxonomies.length === 0) {
+    return null;
+  }
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, taxonomies.map(taxonomy => {
+    const termIds = taxQuery?.[taxonomy.slug] || [];
+    const handleChange = newTermIds => onChange({
+      taxQuery: {
+        ...taxQuery,
+        [taxonomy.slug]: newTermIds
+      }
+    });
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(TaxonomyItem, {
+      key: taxonomy.slug,
+      taxonomy: taxonomy,
+      termIds: termIds,
+      onChange: handleChange
+    });
+  }));
+}
+
+/**
+ * Renders a `FormTokenField` for a given taxonomy.
+ *
+ * @param {Object}   props          The props for the component.
+ * @param {Object}   props.taxonomy The taxonomy object.
+ * @param {number[]} props.termIds  An array with the block's term ids for the given taxonomy.
+ * @param {Function} props.onChange Callback `onChange` function.
+ * @return {JSX.Element} The rendered component.
+ */
+function TaxonomyItem(_ref2) {
+  let {
+    taxonomy,
+    termIds,
+    onChange
+  } = _ref2;
+  const [search, setSearch] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)("");
+  const [value, setValue] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(EMPTY_ARRAY);
+  const [suggestions, setSuggestions] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(EMPTY_ARRAY);
+  const debouncedSearch = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_4__.useDebounce)(setSearch, 250);
+  const {
+    searchResults,
+    searchHasResolved
+  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.useSelect)(select => {
+    if (!search) {
+      return {
+        searchResults: EMPTY_ARRAY,
+        searchHasResolved: true
+      };
+    }
+    const {
+      getEntityRecords,
+      hasFinishedResolution
+    } = select(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__.store);
+    const selectorArgs = ["taxonomy", taxonomy.slug, {
+      ...BASE_QUERY,
+      search,
+      orderby: "name",
+      exclude: termIds,
+      per_page: 20
+    }];
+    return {
+      searchResults: getEntityRecords(...selectorArgs),
+      searchHasResolved: hasFinishedResolution("getEntityRecords", selectorArgs)
+    };
+  }, [search, termIds]);
+  // `existingTerms` are the ones fetched from the API and their type is `{ id: number; name: string }`.
+  // They are used to extract the terms' names to populate the `FormTokenField` properly
+  // and to sanitize the provided `termIds`, by setting only the ones that exist.
+  const existingTerms = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.useSelect)(select => {
+    if (!termIds?.length) return EMPTY_ARRAY;
+    const {
+      getEntityRecords
+    } = select(_wordpress_core_data__WEBPACK_IMPORTED_MODULE_3__.store);
+    return getEntityRecords("taxonomy", taxonomy.slug, {
+      ...BASE_QUERY,
+      include: termIds,
+      per_page: termIds.length
+    });
+  }, [termIds]);
+  // Update the `value` state only after the selectors are resolved
+  // to avoid emptying the input when we're changing terms.
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    if (!termIds?.length) {
+      setValue(EMPTY_ARRAY);
+    }
+    if (!existingTerms?.length) return;
+    // Returns only the existing entity ids. This prevents the component
+    // from crashing in the editor, when non existing ids are provided.
+    const sanitizedValue = termIds.reduce((accumulator, id) => {
+      const entity = existingTerms.find(term => term.id === id);
+      if (entity) {
+        accumulator.push({
+          id,
+          value: entity.name
+        });
+      }
+      return accumulator;
+    }, []);
+    setValue(sanitizedValue);
+  }, [termIds, existingTerms]);
+  // Update suggestions only when the query has resolved.
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    if (!searchHasResolved) return;
+    setSuggestions(searchResults.map(result => result.name));
+  }, [searchResults, searchHasResolved]);
+  const onTermsChange = newTermValues => {
+    const newTermIds = new Set();
+    for (const termValue of newTermValues) {
+      const termId = getTermIdByTermValue(searchResults, termValue);
+      if (termId) {
+        newTermIds.add(termId);
+      }
+    }
+    setSuggestions(EMPTY_ARRAY);
+    onChange(Array.from(newTermIds));
+  };
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "block-library-query-inspector__taxonomy-control"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.FormTokenField, {
+    label: taxonomy.name,
+    value: value,
+    onInputChange: debouncedSearch,
+    suggestions: suggestions,
+    onChange: onTermsChange,
+    __experimentalShowHowTo: false
+  }));
+}
+
+/***/ }),
+
 /***/ "./src/components/testimonials/lower-quote.js":
 /*!****************************************************!*\
   !*** ./src/components/testimonials/lower-quote.js ***!
@@ -26051,6 +26460,50 @@ module.exports = window["React"];
 
 /***/ }),
 
+/***/ "@wordpress/components":
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = window["wp"]["components"];
+
+/***/ }),
+
+/***/ "@wordpress/compose":
+/*!*********************************!*\
+  !*** external ["wp","compose"] ***!
+  \*********************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = window["wp"]["compose"];
+
+/***/ }),
+
+/***/ "@wordpress/core-data":
+/*!**********************************!*\
+  !*** external ["wp","coreData"] ***!
+  \**********************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = window["wp"]["coreData"];
+
+/***/ }),
+
+/***/ "@wordpress/data":
+/*!******************************!*\
+  !*** external ["wp","data"] ***!
+  \******************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = window["wp"]["data"];
+
+/***/ }),
+
 /***/ "@wordpress/element":
 /*!*********************************!*\
   !*** external ["wp","element"] ***!
@@ -26059,6 +26512,17 @@ module.exports = window["React"];
 
 "use strict";
 module.exports = window["wp"]["element"];
+
+/***/ }),
+
+/***/ "@wordpress/i18n":
+/*!******************************!*\
+  !*** external ["wp","i18n"] ***!
+  \******************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = window["wp"]["i18n"];
 
 /***/ }),
 
