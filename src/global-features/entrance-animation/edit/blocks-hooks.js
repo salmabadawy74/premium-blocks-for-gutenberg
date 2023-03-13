@@ -7,14 +7,21 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { isPremiumBlock } from '../../helpers/helpers';
 import { useRef } from 'react';
 import EntranceAnimation from './components/EntranceAnimation';
-import { PBGAdvancedInspectorControls } from '../../../components/AdvancedTabOptions';
+import { hasBlockSupport } from '@wordpress/blocks';
 
 const EntranceAnimationControl = createHigherOrderComponent((BlockEdit) => {
     return (props) => {
-        if (!PremiumAnimation.allBlocks || isPremiumBlock(props.name)) {
+        const hasCustomClassName = hasBlockSupport(
+            props.name,
+            'customClassName',
+            true
+        );
+
+        if (!PremiumAnimation.allBlocks || isPremiumBlock(props.name) || !hasCustomClassName) {
             return <BlockEdit {...props} />;
         }
-        const { attributes, setAttributes, isSelected } = props;
+
+        const { attributes, setAttributes, isSelected, clientId } = props;
         const { entranceAnimation = {} } = attributes;
         const deviceType = useSelect((select) => {
             const { __experimentalGetPreviewDeviceType = null } = select(
@@ -35,23 +42,14 @@ const EntranceAnimationControl = createHigherOrderComponent((BlockEdit) => {
             blockElement.style.animationDelay = entranceAnimation.delay ? `${entranceAnimation.delay}ms` : '';
         }, [isSelected, entranceAnimation, deviceType]);
 
-        const BlockContent = () => {
-            if (attributes?.entranceAnimation?.animation?.[deviceType]) {
-                return <div className={`pbg-entrance-animation ${attributes?.entranceAnimation?.animation?.[deviceType]}`} ref={blockRef}>
-                    <BlockEdit {...props} />
-                </div>
-            }
-
-            return <BlockEdit {...props} />
-        }
         return (
             <Fragment>
-                <BlockContent />
-                {isSelected &&
-                    <InspectorControls>
-                        <EntranceAnimation value={entranceAnimation} deviceType={deviceType} onChange={(value) => setAttributes({ entranceAnimation: value })} />
-                    </InspectorControls>
-                }
+                <div className={`pbg-entrance-animation ${attributes?.entranceAnimation?.animation?.[deviceType]}`} ref={blockRef}>
+                    <BlockEdit {...props} />
+                </div>
+                <InspectorControls>
+                    <EntranceAnimation value={entranceAnimation} deviceType={deviceType} onChange={(value) => setAttributes({ entranceAnimation: value })} />
+                </InspectorControls>
             </Fragment>
         );
     };

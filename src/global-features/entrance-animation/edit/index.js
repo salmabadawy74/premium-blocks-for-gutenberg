@@ -1,7 +1,9 @@
 import { __ } from '@wordpress/i18n';
-import { createHigherOrderComponent } from '@wordpress/compose';
-import { useSelect } from '@wordpress/data';
 import { addFilter } from '@wordpress/hooks';
+import { useEffect } from 'react';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import { hasBlockSupport } from '@wordpress/blocks';
+import { useSelect } from '@wordpress/data';
 import { isPremiumBlock } from '../../helpers/helpers';
 import { entranceAnimationDefaults } from "../../helpers/defaults";
 import './animation.scss';
@@ -30,12 +32,16 @@ addFilter(
 );
 
 const withClientId = createHigherOrderComponent(
-    (BlockListBlock) => {
+    (BlockEdit) => {
         return (props) => {
-            if (!PremiumAnimation.allBlocks && !isPremiumBlock(props.name)) {
-                return <BlockListBlock {...props} />;
-            }
-            const { attributes } = props;
+            const hasCustomClassName = hasBlockSupport(
+                props.name,
+                'customClassName',
+                true
+            );
+            const { attributes, setAttributes, clientId, className = '' } = props;
+            const { entranceAnimation = {} } = attributes;
+            const { animation } = entranceAnimation;
             const deviceType = useSelect((select) => {
                 const { __experimentalGetPreviewDeviceType = null } = select(
                     "core/edit-post"
@@ -45,18 +51,29 @@ const withClientId = createHigherOrderComponent(
                     : "Desktop";
             }, []);
 
-            if (attributes?.entranceAnimation && attributes.entranceAnimation.animation?.[deviceType]) {
-                attributes.entranceAnimation.clientId = props.clientId.split("-")[4];
-            }
+            useEffect(() => {
+                const entranceAnimationId = clientId.split("-")[4];
+                if ((!PremiumAnimation.allBlocks && !isPremiumBlock(props.name)) || !hasCustomClassName) {
+                    setAttributes({ className: className.replace(`pbg-animation-${entranceAnimationId}`, '') });
+                    return;
+                }
 
-            return <BlockListBlock {...props} />;
+                if (!attributes?.entranceAnimation?.animation?.[deviceType]) {
+                    setAttributes({ className: className.replace(`pbg-animation-${entranceAnimationId}`, '') });
+                    return;
+                }
+                setAttributes({ className: `pbg-animation-${entranceAnimationId}` });
+                setAttributes({ entranceAnimation: { ...entranceAnimation, clientId: entranceAnimationId } });
+            }, [animation]);
+
+            return <BlockEdit {...props} />;
         };
     },
     'withClientId'
 );
 
 addFilter(
-    'editor.BlockListBlock',
+    'editor.BlockEdit',
     'pbg/entrance-animation-client-id',
     withClientId
 );
