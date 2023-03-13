@@ -101,7 +101,7 @@ const Render = forwardRef((props, ref) => {
     const loadStyles = () => {
         const styles = {};
         const containerFullWidth = "100vw";
-        let containerFlexSelector = ` .editor-styles-wrapper #block-${clientId}.wp-block-premium-container > .premium-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout`;
+        let containerFlexSelector = ` .editor-styles-wrapper #block-${clientId}.wp-block-premium-container > .premium-container-inner-blocks-wrap > .pbg-content-wrap >.block-editor-inner-blocks > .block-editor-block-list__layout`;
         styles[containerFlexSelector] = {
             "min-height": `${minHeight[props.deviceType]}${minHeight["unit"]}`,
             "flex-direction": direction[props.deviceType],
@@ -142,7 +142,7 @@ const Render = forwardRef((props, ref) => {
 
         if ("boxed" === innerWidthType) {
             styles[
-                ` .is-root-container > .wp-block-premium-container.premium-block-${block_id} > .premium-container-inner-blocks-wrap`
+                ` .is-root-container > .wp-block-premium-container.premium-block-${block_id} > .premium-container-inner-blocks-wrap .pbg-content-wrap`
             ] = {
                 "--inner-content-custom-width": `min(${containerFullWidth},${innerWidth}px)`,
                 "max-width": "var(--inner-content-custom-width)",
