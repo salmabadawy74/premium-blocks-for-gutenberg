@@ -15,8 +15,6 @@ const save = props => {
         hideTablet,
         hideMobile,
         companyStyles,
-        authorTypography,
-        companyTypography,
     } = props.attributes;
 
     return (
@@ -38,10 +36,7 @@ const save = props => {
                 className={`premium-testimonial__author`}
                 value={author}
                 style={filterJsCss({
-                    color: authorStyles[0].authorColor,
-                    fontStyle: authorTypography?.fontStyle,
-                    textDecoration: authorTypography?.textDecoration,
-                    textTransform: authorTypography?.textTransform,
+                    color: authorStyles[0].authorColor
                 })}
             />
             <span
@@ -58,10 +53,7 @@ const save = props => {
                     className={`premium-testimonial__author_comp`}
                     value={authorCom}
                     style={filterJsCss({
-                        color: companyStyles[0].authorComColor,
-                        fontStyle: companyTypography?.fontStyle,
-                        textDecoration: companyTypography?.textDecoration,
-                        textTransform: companyTypography?.textTransform,
+                        color: companyStyles[0].authorComColor
                     })}
                 />
                 {companyStyles[0].urlCheck && (

@@ -26,8 +26,6 @@ const save = (props) => {
         firstBorder,
         secondBorder,
         containerBorder,
-        firstTypography,
-        secondTypography,
         background,
         firstShadow,
         secondShadow,
@@ -83,9 +81,6 @@ const save = (props) => {
                                     backgroundImage: firstStyles[0].firstClip
                                         ? `linear-gradient(to left, ${firstStyles[0].firstColor}, ${firstStyles[0].firstClipColor})`
                                         : "none",
-                                    fontStyle: firstTypography?.fontStyle,
-                                    textDecoration: firstTypography?.textDecoration,
-                                    textTransform: firstTypography?.textTransform,
                                     borderStyle: firstBorder && firstBorder.borderType,
                                     borderColor: firstBorder && firstBorder.borderColor,
                                     textShadow: `${firstShadow?.horizontal}px ${firstShadow?.vertical}px ${firstShadow?.blur}px ${firstShadow?.color}`,
@@ -113,9 +108,6 @@ const save = (props) => {
                                     backgroundImage: secondStyles[0].secondClip
                                         ? `linear-gradient(to left, ${secondStyles[0].secondColor}, ${secondStyles[0].secondClipColor})`
                                         : "none",
-                                    fontStyle: secondTypography?.fontStyle,
-                                    textDecoration: secondTypography?.textDecoration,
-                                    textTransform: secondTypography?.textTransform,
                                     borderStyle:
                                         secondBorder && secondBorder.borderType,
                                     borderColor:

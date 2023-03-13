@@ -31,8 +31,6 @@ const save = (props) => {
         hideTablet,
         hideMobile,
         border,
-        titleTypography,
-        descTypography,
         titleTextShadow,
         descTextShadow,
         containerShadow,
@@ -122,11 +120,6 @@ const save = (props) => {
                                 value={title}
                                 style={filterJsCss({
                                     color: titleStyles[0].titleColor,
-                                    fontStyle: titleTypography.fontStyle,
-                                    textDecoration:
-                                        titleTypography.textDecoration,
-                                    textTransform:
-                                        titleTypography.textTransform,
                                     textShadow: `${titleTextShadow.horizontal}px ${titleTextShadow.vertical}px ${titleTextShadow.blur}px ${titleTextShadow.color}`,
                                 })}
                             />
@@ -138,10 +131,6 @@ const save = (props) => {
                                 value={desc}
                                 style={filterJsCss({
                                     color: descStyles[0].descColor,
-                                    fontStyle: descTypography.fontStyle,
-                                    textDecoration:
-                                        descTypography.textDecoration,
-                                    textTransform: descTypography.textTransform,
                                     textShadow: `${descTextShadow.horizontal}px ${descTextShadow.vertical}px ${descTextShadow.blur}px ${descTextShadow.color}`,
                                 })}
                             />

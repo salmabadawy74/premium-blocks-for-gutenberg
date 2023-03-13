@@ -25,7 +25,6 @@ const save = props => {
         triggerShadow,
         triggerTextShadow,
         modalShadow,
-        triggerTypography,
         triggerFilter,
         triggerHoverFilter,
         hideDesktop,
@@ -118,12 +117,7 @@ const save = props => {
                         }
                         <span
                             style={filterJsCss({
-                                color: triggerStyles[0].color,
-                                fontFamily: triggerTypography.fontFamily,
-                                fontWeight: triggerTypography.fontWeight,
-                                fontStyle: triggerTypography.fontStyle,
-                                textDecoration: triggerTypography?.textDecoration,
-                                textTransform: triggerTypography?.textTransform,
+                                color: triggerStyles[0].color
                             })}>
                             {triggerSettings[0].btnText}
                         </span>
@@ -155,12 +149,7 @@ const save = props => {
                             color: triggerStyles[0].color,
                             borderStyle: triggerBorder.borderType,
                             borderColor: triggerBorder.borderColor,
-                            textShadow: `${triggerTextShadow.horizontal}px ${triggerTextShadow.vertical}px ${triggerTextShadow.blur}px ${triggerTextShadow.color}`,
-                            fontFamily: triggerTypography.fontFamily,
-                            fontWeight: triggerTypography.fontWeight,
-                            fontStyle: triggerTypography.fontStyle,
-                            textDecoration: triggerTypography?.textDecoration,
-                            textTransform: triggerTypography?.textTransform,
+                            textShadow: `${triggerTextShadow.horizontal}px ${triggerTextShadow.vertical}px ${triggerTextShadow.blur}px ${triggerTextShadow.color}`
                         })}>
                         {triggerSettings[0].triggerText}
                     </span>

@@ -12,7 +12,6 @@ const save = props => {
         descStyles,
         titleBorder,
         descBorder,
-        titleTypography,
         descTypography,
         textShadow,
         titleTextShadow,
@@ -44,9 +43,6 @@ const save = props => {
 
         styles[`.${blockId} .premium-accordion__title_wrap .premium-accordion__title_text`] = {
             color: titleStyles[0].titleColor,
-            'font-style': titleTypography.fontStyle,
-            'text-decoration': titleTypography.textDecoration,
-            'text-transform': titleTypography.textTransform,
             'text-shadow': `${titleTextShadow.horizontal}px ${titleTextShadow.vertical}px ${titleTextShadow.blur}px ${titleTextShadow.color}`
         };
 

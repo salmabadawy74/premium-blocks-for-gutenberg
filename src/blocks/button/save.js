@@ -23,7 +23,6 @@ const save = (props) => {
         hideMobile,
         btnStyles,
         border,
-        typography,
         textShadow,
         boxShadow,
         blockId,
@@ -111,9 +110,6 @@ const save = (props) => {
                             target={btnTarget ? "_blank" : "_self"}
                             style={filterJsCss({
                                 color: btnStyles[0]?.textColor,
-                                fontStyle: typography?.fontStyle,
-                                textDecoration: typography?.textDecoration,
-                                textTransform: typography?.textTransform,
                                 textShadow: `${textShadow?.horizontal}px ${textShadow?.vertical}px ${textShadow?.blur}px ${textShadow?.color}`,
                             })}
                         />

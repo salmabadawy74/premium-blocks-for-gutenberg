@@ -23,8 +23,6 @@ export default function save(props) {
         containerShadow,
         firstLabelShadow,
         firstLabelBoxShadow,
-        firstLabelTypography,
-        secondLabelTypography,
         secondLabelShadow,
         secondLabelBoxShadow,
         secondLabelborder,
@@ -106,13 +104,6 @@ export default function save(props) {
                                 className={`premium-content-switcher-${display}-editing`}
                                 value={firstLabel}
                                 style={filterJsCss({
-                                    fontStyle: firstLabelTypography?.fontStyle,
-                                    fontWeight:
-                                        firstLabelTypography?.fontWeight,
-                                    textDecoration:
-                                        firstLabelTypography?.textDecoration,
-                                    textTransform:
-                                        firstLabelTypography?.textTransform,
                                     margin: 0,
                                     color: labelStyles?.firstLabelColor,
                                     background: labelStyles?.firstLabelBGColor,
@@ -152,15 +143,6 @@ export default function save(props) {
                                 className={`premium-content-switcher-${display}-editing`}
                                 value={secondLabel}
                                 style={filterJsCss({
-                                    fontStyle: secondLabelTypography?.fontStyle,
-                                    fontFamily:
-                                        secondLabelTypography?.fontFamily,
-                                    fontWeight:
-                                        secondLabelTypography?.fontWeight,
-                                    textDecoration:
-                                        secondLabelTypography?.textDecoration,
-                                    textTransform:
-                                        secondLabelTypography?.textTransform,
                                     margin: 0,
                                     color: labelStyles?.secondLabelColor,
                                     background: labelStyles?.secondLabelBGColor,

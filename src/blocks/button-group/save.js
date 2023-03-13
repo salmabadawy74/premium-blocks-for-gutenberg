@@ -1,6 +1,5 @@
 import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
 import classnames from "classnames";
-import { generateCss } from '@pbg/helpers';
 
 export default function save({ attributes }) {
     const {
@@ -8,8 +7,7 @@ export default function save({ attributes }) {
         hideDesktop,
         hideTablet,
         hideMobile,
-        groupAlign,
-        typography
+        groupAlign
     } = attributes;
 
     const blockProps = useBlockProps.save({
@@ -20,20 +18,7 @@ export default function save({ attributes }) {
         })
     })
 
-    const loadStyles = () => {
-        const styles = {};
-
-        styles[` .${blockId} .premium-button-group_wrap .premium-button .premium-button-text-edit`] = {
-            "font-style": typography?.fontStyle,
-            "text-decoration": typography?.textDecoration,
-            "text-transform": typography?.textTransform
-        };
-
-        return generateCss(styles);
-    }
-
     return <div {...blockProps}>
-        <style>{loadStyles()}</style>
         <div
             className={`premium-button-group_wrap premium-button-group-${groupAlign}`}
         >

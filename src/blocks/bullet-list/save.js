@@ -25,7 +25,6 @@ export default function save(props) {
         titlesTextShadow,
         boxShadow,
         hoverBoxShadow,
-        titleTypography,
         hideDesktop,
         hideTablet,
         hideMobile,
@@ -56,10 +55,7 @@ export default function save(props) {
 
         styles[`.${blockId} .premium-bullet-list__label`] = {
             'color': titleStyles[0].titleColor,
-            'text-shadow': `${titlesTextShadow.horizontal}px ${titlesTextShadow.vertical}px ${titlesTextShadow.blur}px ${titlesTextShadow.color}`,
-            'font-style': titleTypography?.fontStyle,
-            'text-decoration': titleTypography?.textDecoration,
-            'text-transform': titleTypography?.textTransform,
+            'text-shadow': `${titlesTextShadow.horizontal}px ${titlesTextShadow.vertical}px ${titlesTextShadow.blur}px ${titlesTextShadow.color}`
         };
 
         styles[`.${blockId} .premium-bullet-list__wrapper:hover .premium-bullet-list-icon`] = {

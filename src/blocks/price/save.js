@@ -13,22 +13,18 @@ export default function save({ attributes }) {
         priceText,
         dividerText,
         durationText,
-        slashedTypography,
         slashedColor,
         slashedBgColor,
-        currencyTypography,
         currencyColor,
         currencyBgColor,
-        priceTypography,
         priceColor,
         priceBgColor,
-        dividerTypography,
         dividerColor,
         dividerBgColor,
-        durationTypography,
         durationColor,
         durationBgColor,
     } = attributes;
+
     const blockProps = useBlockProps.save({
         className: classnames('premium-price', blockId, {
             ['premium-desktop-hidden']: hideDesktop,
@@ -44,10 +40,7 @@ export default function save({ attributes }) {
             className='premium-pricing-slash'
             style={filterJsCss({
                 color: slashedColor,
-                backgroundColor: slashedBgColor,
-                fontStyle: slashedTypography?.fontStyle,
-                textDecoration: slashedTypography?.textDecoration,
-                textTransform: slashedTypography?.textTransform,
+                backgroundColor: slashedBgColor
             })}
         />
         <RichText.Content
@@ -56,10 +49,7 @@ export default function save({ attributes }) {
             className='premium-pricing-currency'
             style={filterJsCss({
                 color: currencyColor,
-                backgroundColor: currencyBgColor,
-                fontStyle: currencyTypography?.fontStyle,
-                textDecoration: currencyTypography?.textDecoration,
-                textTransform: currencyTypography?.textTransform,
+                backgroundColor: currencyBgColor
             })}
         />
         <RichText.Content
@@ -68,10 +58,7 @@ export default function save({ attributes }) {
             className='premium-pricing-val'
             style={filterJsCss({
                 color: priceColor,
-                backgroundColor: priceBgColor,
-                fontStyle: priceTypography?.fontStyle,
-                textDecoration: priceTypography?.textDecoration,
-                textTransform: priceTypography?.textTransform,
+                backgroundColor: priceBgColor
             })}
         />
         <RichText.Content
@@ -80,10 +67,7 @@ export default function save({ attributes }) {
             className='premium-pricing-divider'
             style={filterJsCss({
                 color: dividerColor,
-                backgroundColor: dividerBgColor,
-                fontStyle: dividerTypography?.fontStyle,
-                textDecoration: dividerTypography?.textDecoration,
-                textTransform: dividerTypography?.textTransform,
+                backgroundColor: dividerBgColor
             })}
         />
         <RichText.Content
@@ -92,10 +76,7 @@ export default function save({ attributes }) {
             className='premium-pricing-dur'
             style={filterJsCss({
                 color: durationColor,
-                backgroundColor: durationBgColor,
-                fontStyle: durationTypography?.fontStyle,
-                textDecoration: durationTypography?.textDecoration,
-                textTransform: durationTypography?.textTransform,
+                backgroundColor: durationBgColor
             })}
         />
     </div>;

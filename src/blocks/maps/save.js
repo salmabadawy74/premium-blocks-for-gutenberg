@@ -30,8 +30,6 @@ export default function save(props) {
         hideDesktop,
         hideTablet,
         hideMobile,
-        titleTypography,
-        descriptionTypography,
         mapBorder,
         mapBoxShadow,
     } = props.attributes;
@@ -67,12 +65,7 @@ export default function save(props) {
                                 <h3
                                     className={`${className}__title`}
                                     style={filterJsCss({
-                                        color: titleColor,
-                                        fontStyle: titleTypography?.fontStyle,
-                                        fontFamily: titleTypography?.fontFamily,
-                                        fontWeight: titleTypography?.fontWeight,
-                                        textDecoration: titleTypography?.textDecoration,
-                                        textTransform: titleTypography?.textTransform,
+                                        color: titleColor
                                     })}
                                 >
                                     {markerTitle}
@@ -82,12 +75,7 @@ export default function save(props) {
                                 <div
                                     className={`${className}__desc`}
                                     style={filterJsCss({
-                                        color: descColor,
-                                        fontStyle: descriptionTypography?.fontStyle,
-                                        fontFamily: descriptionTypography?.fontFamily,
-                                        fontWeight: descriptionTypography?.fontWeight,
-                                        textDecoration: descriptionTypography?.textDecoration,
-                                        textTransform: descriptionTypography?.textTransform,
+                                        color: descColor
                                     })}
                                 >
                                     {markerDesc}

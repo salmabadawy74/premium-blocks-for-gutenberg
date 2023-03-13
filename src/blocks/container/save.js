@@ -1,5 +1,4 @@
 /* eslint-disable react/react-in-jsx-scope */
-const { Fragment } = wp.element;
 const { InnerBlocks, useBlockProps } = wp.blockEditor;
 import classnames from "classnames";
 import {

@@ -18,10 +18,7 @@ const save = props => {
         hideMobile,
         numberStyles,
         suffixStyles,
-        prefixStyles,
-        numberTypography,
-        prefixTypography,
-        suffixTypography
+        prefixStyles
     } = props.attributes;
 
     const blockProps = useBlockProps.save({
@@ -41,10 +38,7 @@ const save = props => {
                         tagName="p"
                         value={prefixStyles[0].prefixTxt}
                         style={filterJsCss({
-                            color: prefixStyles[0].prefixColor,
-                            fontStyle: prefixTypography?.fontStyle,
-                            textDecoration: prefixTypography?.textDecoration,
-                            textTransform: prefixTypography?.textTransform,
+                            color: prefixStyles[0].prefixColor
                         })}
                     />
                 )}
@@ -55,10 +49,7 @@ const save = props => {
                     data-interval={time}
                     data-delay={delay}
                     style={filterJsCss({
-                        color: numberStyles[0].numberColor,
-                        fontStyle: numberTypography?.fontStyle,
-                        textDecoration: numberTypography?.textDecoration,
-                        textTransform: numberTypography?.textTransform,
+                        color: numberStyles[0].numberColor
                     })}
                 />
                 {suffix && (
@@ -67,10 +58,7 @@ const save = props => {
                         value={suffixStyles[0].suffixTxt}
                         tagName="p"
                         style={filterJsCss({
-                            color: suffixStyles[0].suffixColor,
-                            fontStyle: suffixTypography?.fontStyle,
-                            textDecoration: suffixTypography?.textDecoration,
-                            textTransform: suffixTypography?.textTransform,
+                            color: suffixStyles[0].suffixColor
                         })}
                     />
                 )}

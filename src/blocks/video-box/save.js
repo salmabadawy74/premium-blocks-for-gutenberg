@@ -31,7 +31,6 @@ const save = props => {
         overlayStyles,
         playStyles,
         descStyles,
-        videoDescTypography,
         playBorder,
         boxBorder,
         descShadow,
@@ -97,8 +96,8 @@ const save = props => {
                                             }&loop=${loopVideo()}&mute${"vimeo" == videoType ? "d" : ""
                                             }=${mute}&rel="0"&controls=${controls ? "1" : "0"
                                             }`}
-                                        frameborder="0"
-                                        gesture="media"
+                                        // frameborder="0"
+                                        // gesture="media"
                                         allow="encrypted-media"
                                         allowfullscreen
                                     />
@@ -161,11 +160,6 @@ const save = props => {
                         value={descStyles[0].videoDescText}
                         placeholder="Add caption"
                         style={filterJsCss({
-                            fontStyle: videoDescTypography?.fontStyle,
-                            fontFamily: videoDescTypography?.fontFamily,
-                            fontWeight: videoDescTypography?.fontWeight,
-                            textDecoration: videoDescTypography?.textDecoration,
-                            textTransform: videoDescTypography?.textTransform,
                             color: descStyles[0].videoDescColor,
                             textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`
                         })}

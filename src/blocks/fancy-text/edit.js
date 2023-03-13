@@ -446,7 +446,7 @@ function Edit(props) {
                         </PanelBody>
                         <PanelBody
                             title={__(
-                                "Advanced Settings",
+                                "Additional Settings",
                                 "premium-blocks-for-gutenberg"
                             )}
                             className="premium-panel-body"

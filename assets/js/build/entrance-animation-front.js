@@ -4,6 +4,7 @@ var __webpack_exports__ = {};
   !*** ./src/global-features/entrance-animation/front/index.js ***!
   \***************************************************************/
 let blocksElement = document.querySelectorAll(`[data-animation]`);
+
 if (blocksElement.length > 0) {
   const addBlockEntranceAnimation = () => {
     blocksElement.forEach(blockElement => {
@@ -15,6 +16,7 @@ if (blocksElement.length > 0) {
       const {
         breakPoints
       } = PBG_EntranceAnimation;
+
       if (window.matchMedia(breakPoints.desktop).matches) {
         device = 'Desktop';
       } else if (window.matchMedia(breakPoints.tablet).matches && !window.matchMedia(breakPoints.mobile).matches) {
@@ -22,7 +24,8 @@ if (blocksElement.length > 0) {
       } else if (window.matchMedia(breakPoints.mobile).matches) {
         device = 'Mobile';
       }
-      if (entranceAnimation?.animation[device]) {
+
+      if (entranceAnimation !== null && entranceAnimation !== void 0 && entranceAnimation.animation[device]) {
         blockElement.classList.add(entranceAnimation.animation[device]);
         blockElement.style.animationTimingFunction = entranceAnimation.curve;
         blockElement.style.animationDuration = entranceAnimation.duration ? `${entranceAnimation.duration}ms` : '';
@@ -30,6 +33,7 @@ if (blocksElement.length > 0) {
       }
     });
   };
+
   window.addEventListener("resize", () => addBlockEntranceAnimation(), false);
   addBlockEntranceAnimation();
 }
