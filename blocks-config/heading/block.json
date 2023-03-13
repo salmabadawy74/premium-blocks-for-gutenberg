@@ -111,7 +111,7 @@
                     "titleColor": "",
                     "shinyColor": "#fff",
                     "blurColor": "#000",
-                    "BGColor": "#DDD0EF",
+                    "BGColor": "#EAEAEA",
                     "lineColor": "var(--pbg-global-color1,#0085BA)",
                     "triangleColor": "var(--pbg-global-color1,#0085BA)",
                     "stripeColor": "var(--pbg-global-color1,#0085BA)",
