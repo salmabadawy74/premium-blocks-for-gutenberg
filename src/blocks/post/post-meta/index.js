@@ -8,7 +8,7 @@ function Meta(props) {
     const cat = post.categories;
     const categoriesName = [];
 
-    if (list !== undefined && cat !== undefined) {
+    if (list && list !== undefined && cat !== undefined) {
         for (let j = 0; j < list.length; j++) {
             for (let i = 0; i < cat.length; i++) {
                 if (list[j].id === cat[i]) {
@@ -71,22 +71,20 @@ function Meta(props) {
                 <div
                     className={`premium-blog-post-categories premium-blog-meta-data`}
                 >
-                    <span className="premium-post__taxonomy">
-                        <svg
-                            fill="#000000"
-                            width="800px"
-                            height="800px"
-                            viewBox="0 0 16 16"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path d="M.5 9h9.75v1.25H.5zm0-3.25h15V7H.5zm0 6.5h15v1.25H.5zm0-9.75h9.75v1.25H.5z" />
-                        </svg>{" "}
-                        <div
-                            dangerouslySetInnerHTML={{
-                                __html: categoriesName.join(', '),
-                            }}
-                        ></div>
-                    </span>
+                    <svg
+                        fill="#000000"
+                        width="800px"
+                        height="800px"
+                        viewBox="0 0 16 16"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path d="M.5 9h9.75v1.25H.5zm0-3.25h15V7H.5zm0 6.5h15v1.25H.5zm0-9.75h9.75v1.25H.5z" />
+                    </svg>{" "}
+                    <div
+                        dangerouslySetInnerHTML={{
+                            __html: categoriesName.join(', '),
+                        }}
+                    ></div>
                     <span className={`premium-blog-meta-separtor`}>• </span>
                 </div>
             )}
@@ -94,35 +92,33 @@ function Meta(props) {
                 <div
                     className={`premium-blog-post-comments premium-blog-meta-data`}
                 >
-                    <span className="premium-post__comment">
-                        <svg
-                            width="800px"
-                            height="800px"
-                            viewBox="0 0 24 20"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <g clip-path="url(#clip0_429_11233)">
-                                <path
-                                    d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 13.4876 3.36093 14.891 4 16.1272L3 21L7.8728 20C9.10904 20.6391 10.5124 21 12 21Z"
-                                    stroke="#292929"
-                                    stroke-width="2.5"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
+                    <svg
+                        width="800px"
+                        height="800px"
+                        viewBox="0 0 24 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <g clip-path="url(#clip0_429_11233)">
+                            <path
+                                d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 13.4876 3.36093 14.891 4 16.1272L3 21L7.8728 20C9.10904 20.6391 10.5124 21 12 21Z"
+                                stroke="#292929"
+                                stroke-width="2.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_429_11233">
+                                <rect
+                                    width="24"
+                                    height="24"
+                                    fill="white"
                                 />
-                            </g>
-                            <defs>
-                                <clipPath id="clip0_429_11233">
-                                    <rect
-                                        width="24"
-                                        height="24"
-                                        fill="white"
-                                    />
-                                </clipPath>
-                            </defs>
-                        </svg>
-                        {post.uagb_comment_info}
-                    </span>
+                            </clipPath>
+                        </defs>
+                    </svg>
+                    {post.uagb_comment_info}
                 </div>
             )}
         </div>

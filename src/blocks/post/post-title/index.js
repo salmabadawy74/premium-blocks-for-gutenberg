@@ -1,6 +1,6 @@
 import React from 'react'
 
-function PostTitle() {
+function PostTitle(props) {
     const { attributes, post } = props;
     const Tag = attributes.titleTag;
 

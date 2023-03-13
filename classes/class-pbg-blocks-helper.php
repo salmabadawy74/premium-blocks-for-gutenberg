@@ -162,6 +162,8 @@ class PBG_Blocks_Helper {
 	public function add_blocks_editor_styles() {
 		Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/blockseditor.min.css' );
 		Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/editorpanel.min.css' );
+		Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/post.min.css' );
+
 
 		$is_rtl = is_rtl() ? true : false;
 		$is_rtl ? Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/style-blocks-rtl.min.css' ) : '';

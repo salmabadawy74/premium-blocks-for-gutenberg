@@ -5,14 +5,12 @@ import Excerpt from "../post-excerpt/index";
 import Button from "../post-button/index";
 import Image from "../post-image/index"
 const { withSelect, useSelect, select } = wp.data;
-const { useEffect, Fragment } = wp.element;
+const { useEffect, Fragment, useMemo } = wp.element;
 import { __ } from "@wordpress/i18n";
-import {
-    __experimentalUseBlockPreview as useBlockPreview,
-    store as blockEditorStore,
-} from "@wordpress/block-editor";
+import { __experimentalUseBlockPreview as useBlockPreview, store as blockEditorStore } from "@wordpress/block-editor";
 import { store as coreStore } from "@wordpress/core-data";
 import Inspector from "./inspector";
+import PostTitle from "../post-title";
 const { Spinner } = wp.components;
 const { decodeEntities } = wp.htmlEntities;
 function edit({ clientId, setAttributes, attributes, deviceType }) {
@@ -23,7 +21,16 @@ function edit({ clientId, setAttributes, attributes, deviceType }) {
     //     });
 
     // }, []);
-    const { query } = attributes;
+    const { query,
+        navigationArrow,
+        navigationDots,
+        centerMode,
+        slideToScroll,
+        Autoplay,
+        autoplaySpeed,
+        columns,
+        slideSpacing,
+    } = attributes;
     const { perPage,
         offset = 0,
         postType,
@@ -96,7 +103,15 @@ function edit({ clientId, setAttributes, attributes, deviceType }) {
             sticky,
         ]
     );
-    console.log(posts, blocks, taxonomies, categoriesList);
+    const blockContexts = useMemo(
+        () =>
+            posts?.map((post) => ({
+                postType: post.type,
+                postId: post.id,
+            })),
+        [posts]
+    );
+    console.log(posts)
     if (!posts) {
         return (
             <p >
@@ -110,6 +125,20 @@ function edit({ clientId, setAttributes, attributes, deviceType }) {
     }
     const updateQuery = (newQuery) =>
         setAttributes({ query: { ...query, ...newQuery } });
+    const settings = {
+        arrows: navigationArrow,
+        dots: navigationDots,
+        centerMode: centerMode,
+        centerPadding: slideSpacing,
+        slideToScroll: slideToScroll,
+        infinite: true,
+        autoplay: Autoplay,
+        speed: autoplaySpeed,
+        speed: autoplaySpeed,
+        slidesToShow: columns[deviceType],
+        centerPadding: slideSpacing + "px",
+        draggable: true,
+    };
     return (<Fragment>
         <Inspector
             attributes={attributes}
@@ -120,48 +149,37 @@ function edit({ clientId, setAttributes, attributes, deviceType }) {
             className={`premium-blog premium-blog-carousel`}
 
         >
-            <Slider >
-                {posts.map((post, i) => (
+            <Slider className={'premium-blog-wrap premium-blog-even'}{...settings}>
+                {blockContexts.map((post, i) => (
                     <div className={`premium-blog-post-outer-container`} key={i}>
                         <div
                             className={`premium-blog-post-container`}
-                        //    style={{
-                        //         marginRight: `${slideSpacing}px`,
-                        //         marginLeft:  `${slideSpacing}px`,
-                        //     }}
+                            style={{
+                                marginRight: `${slideSpacing}px`,
+                                marginLeft: `${slideSpacing}px`,
+                            }}
                         >
                             <Image post={post} attributes={attributes} />
-                            <div className={`premium-blog-content-wrapper empty-thumb`}>
-                                <div className={`premium-blog-content-wrapper empty-thumb `}>
-                                    <div className={`premium-blog-content-wrapper-inner`}>
-                                        <div className={`premium-blog-inner-container`}>
-                                            <div className="premium-blog-entry-container">
-                                                <div className="premium-blog-entry-title">
-                                                    <h2>
-                                                        <a href={post.link}>
-                                                            {undefined == post.title
-                                                                ? post.value
-                                                                : decodeEntities(
-                                                                    post.title.rendered.trim()
-                                                                ) || __("(Untitled)")}
-                                                        </a>
-                                                    </h2>
-                                                </div>
-                                                <div className="premium-blog-entry-meta">
-                                                    <Meta
-                                                        post={post}
-                                                        categoriesList={categoriesList}
-                                                        attributes={attributes}
-                                                    />
-                                                </div>
-                                            </div>
+                            {/* <div className={`premium-blog-content-wrapper empty-thumb`}>
+                                <div className={`premium-blog-content-wrapper-inner`}>
+                                    <div className={`premium-blog-inner-container`}>
+                                        <div className="premium-blog-entry-container">
+                                            <PostTitle
+                                                post={post}
+                                                attributes={attributes}
+                                            />
+                                            <Meta
+                                                post={post}
+                                                categoriesList={categoriesList}
+                                                attributes={attributes}
+                                            />
                                         </div>
-                                        <Excerpt attributes={attributes} post={post} />
-                                        <Button attributes={attributes} post={post} />
-
                                     </div>
+                                    <Excerpt attributes={attributes} post={post} />
+                                    <Button attributes={attributes} post={post} />
+
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 ))}
@@ -171,4 +189,12 @@ function edit({ clientId, setAttributes, attributes, deviceType }) {
     )
 }
 
-export default edit
+export default withSelect((select, props) => {
+    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
+    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+
+    return {
+        // Editor preview device.
+        deviceType: deviceType
+    }
+})(edit)
