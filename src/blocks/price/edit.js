@@ -354,7 +354,7 @@ function Edit(props) {
         <div {...blockProps}>
             <BlockContent blockProps={props}>
                 <RichText
-                    tagName="strike"
+                    tagName="span"
                     value={slashedPriceText}
                     className='premium-pricing-slash'
                     onChange={(val) => setAttributes({ slashedPriceText: val })}

@@ -2,7 +2,7 @@ $pbBorderColor: #e1e1e1;
 
 .premium-text {
     border-color: var(--pbg-global-color4, $pbBorderColor);
-    p {
+    .premium-text-wrap {
         margin: 20px 0;
     }
 }

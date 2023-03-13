@@ -935,42 +935,46 @@ const edit = (props) => {
                                         }
                                         backgroundVedio={false}
                                     />
-                                    <ResponsiveSingleRangeControl
-                                        label={__(
-                                            "Opacity",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
-                                        value={overlayOpacity}
-                                        min="1"
-                                        max="100"
-                                        onChange={(newValue) =>
-                                            setAttributes({
-                                                overlayOpacity:
-                                                    newValue === undefined
-                                                        ? 50
-                                                        : newValue,
-                                            })
-                                        }
-                                        defaultValue={""}
-                                        showUnit={false}
-                                    />
-                                    <PremiumFilters
-                                        label={__("CSS Filters")}
-                                        value={overlayFilter}
-                                        onChange={(newValue) =>
-                                            setAttributes({
-                                                overlayFilter: newValue,
-                                            })
-                                        }
-                                    />
-                                    <SelectControl
-                                        label={__("Blend Mode ")}
-                                        value={blend}
-                                        onChange={(newSelect) =>
-                                            setAttributes({ blend: newSelect })
-                                        }
-                                        options={BLEND}
-                                    />
+                                    {(backgroundOverlay['backgroundType'] == 'solid' || backgroundOverlay['backgroundType'] == "gradient") &&
+                                        <Fragment>
+                                            <ResponsiveSingleRangeControl
+                                                label={__(
+                                                    "Opacity",
+                                                    "premium-blocks-for-gutenberg"
+                                                )}
+                                                value={overlayOpacity}
+                                                min="1"
+                                                max="100"
+                                                onChange={(newValue) =>
+                                                    setAttributes({
+                                                        overlayOpacity:
+                                                            newValue === undefined
+                                                                ? 50
+                                                                : newValue,
+                                                    })
+                                                }
+                                                defaultValue={""}
+                                                showUnit={false}
+                                            />
+                                            <PremiumFilters
+                                                label={__("CSS Filters")}
+                                                value={overlayFilter}
+                                                onChange={(newValue) =>
+                                                    setAttributes({
+                                                        overlayFilter: newValue,
+                                                    })
+                                                }
+                                            />
+                                            <SelectControl
+                                                label={__("Blend Mode ")}
+                                                value={blend}
+                                                onChange={(newSelect) =>
+                                                    setAttributes({ blend: newSelect })
+                                                }
+                                                options={BLEND}
+                                            />
+                                        </Fragment>
+                                    }
                                 </InsideTab>
                                 <InsideTab
                                     tabTitle={__(
@@ -987,51 +991,55 @@ const edit = (props) => {
                                         }
                                         backgroundVedio={false}
                                     />
-                                    <ResponsiveSingleRangeControl
-                                        label={__(
-                                            "Opacity",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
-                                        value={hoverOverlayOpacity}
-                                        min="1"
-                                        max="100"
-                                        onChange={(newValue) =>
-                                            setAttributes({
-                                                hoverOverlayOpacity:
-                                                    newValue === undefined
-                                                        ? 50
-                                                        : newValue,
-                                            })
-                                        }
-                                        defaultValue={""}
-                                        showUnit={false}
-                                    />
-                                    <PremiumFilters
-                                        label={__("CSS Filters")}
-                                        value={hoverOverlayFilter}
-                                        onChange={(newValue) =>
-                                            setAttributes({
-                                                hoverOverlayFilter: newValue,
-                                            })
-                                        }
-                                    />
-                                    <ResponsiveSingleRangeControl
-                                        label={__(
-                                            "Transition Duration",
-                                            "premium-blocks-for-gutenberg"
-                                        )}
-                                        value={transition}
-                                        min="0"
-                                        max="3"
-                                        step={0.1}
-                                        onChange={(newValue) =>
-                                            setAttributes({
-                                                transition: newValue,
-                                            })
-                                        }
-                                        defaultValue={""}
-                                        showUnit={false}
-                                    />
+                                    {(backgroundOverlayHover['backgroundType'] == 'solid' || backgroundOverlayHover['backgroundType'] == "gradient") &&
+                                        <Fragment>
+                                            <ResponsiveSingleRangeControl
+                                                label={__(
+                                                    "Opacity",
+                                                    "premium-blocks-for-gutenberg"
+                                                )}
+                                                value={hoverOverlayOpacity}
+                                                min="1"
+                                                max="100"
+                                                onChange={(newValue) =>
+                                                    setAttributes({
+                                                        hoverOverlayOpacity:
+                                                            newValue === undefined
+                                                                ? 50
+                                                                : newValue,
+                                                    })
+                                                }
+                                                defaultValue={""}
+                                                showUnit={false}
+                                            />
+                                            <PremiumFilters
+                                                label={__("CSS Filters")}
+                                                value={hoverOverlayFilter}
+                                                onChange={(newValue) =>
+                                                    setAttributes({
+                                                        hoverOverlayFilter: newValue,
+                                                    })
+                                                }
+                                            />
+                                            <ResponsiveSingleRangeControl
+                                                label={__(
+                                                    "Transition Duration",
+                                                    "premium-blocks-for-gutenberg"
+                                                )}
+                                                value={transition}
+                                                min="0"
+                                                max="3"
+                                                step={0.1}
+                                                onChange={(newValue) =>
+                                                    setAttributes({
+                                                        transition: newValue,
+                                                    })
+                                                }
+                                                defaultValue={""}
+                                                showUnit={false}
+                                            />
+                                        </Fragment>
+                                    }
                                 </InsideTab>
                             </InsideTabs>
                         </PanelBody>

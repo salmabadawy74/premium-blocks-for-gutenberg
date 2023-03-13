@@ -35,7 +35,7 @@ export default function save({ attributes }) {
 
     return <div {...blockProps}>
         <RichText.Content
-            tagName="strike"
+            tagName="span"
             value={slashedPriceText}
             className='premium-pricing-slash'
             style={filterJsCss({

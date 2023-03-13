@@ -9,7 +9,7 @@ export default function save({ attributes }) {
         hideTablet,
         hideMobile,
         text,
-        typography,
+        textTag,
         border,
         textShadow,
         color,
@@ -31,8 +31,9 @@ export default function save({ attributes }) {
 
     return <div {...blockProps}>
         <RichText.Content
-            tagName="p"
+            tagName={textTag}
             value={text}
+            className="premium-text-wrap"
             style={filterJsCss({
                 color: color,
                 textShadow: `${textShadow?.horizontal}px ${textShadow?.vertical}px ${textShadow?.blur}px ${textShadow?.color}`,

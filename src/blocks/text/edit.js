@@ -22,7 +22,8 @@ import {
     MultiButtonsControl,
     Icons,
     PremiumBackgroundControl,
-    BlockContent
+    BlockContent,
+    RadioComponent
 } from '@pbg/components';
 import { __ } from '@wordpress/i18n';
 import { PanelBody } from '@wordpress/components';
@@ -42,7 +43,8 @@ function Edit(props) {
         textShadow,
         align,
         color,
-        background
+        background,
+        textTag
     } = attributes;
     useEffect(() => {
         // Set block id.
@@ -88,10 +90,85 @@ function Edit(props) {
                         className="premium-panel-body"
                         initialOpen={true}
                     >
+                        <RadioComponent
+                            choices={[
+                                {
+                                    value: "h1",
+                                    label: __(
+                                        "H1",
+                                        "premium-blocks-for-gutenberg"
+                                    ),
+                                },
+                                {
+                                    value: "h2",
+                                    label: __(
+                                        "H2",
+                                        "premium-blocks-for-gutenberg"
+                                    ),
+                                },
+                                {
+                                    value: "h3",
+                                    label: __(
+                                        "H3",
+                                        "premium-blocks-for-gutenberg"
+                                    ),
+                                },
+                                {
+                                    value: "h4",
+                                    label: __(
+                                        "H4",
+                                        "premium-blocks-for-gutenberg"
+                                    ),
+                                },
+                                {
+                                    value: "h5",
+                                    label: __(
+                                        "H5",
+                                        "premium-blocks-for-gutenberg"
+                                    ),
+                                },
+                                {
+                                    value: "h6",
+                                    label: __(
+                                        "H6",
+                                        "premium-blocks-for-gutenberg"
+                                    ),
+                                },
+                                {
+                                    value: "div",
+                                    label: __(
+                                        "DIV",
+                                        "premium-blocks-for-gutenberg"
+                                    ),
+                                },
+                                {
+                                    value: "span",
+                                    label: __(
+                                        "SPAN",
+                                        "premium-blocks-for-gutenberg"
+                                    ),
+                                },
+                                {
+                                    value: "p",
+                                    label: __(
+                                        "P",
+                                        "premium-blocks-for-gutenberg"
+                                    ),
+                                },
+                            ]}
+                            value={textTag}
+                            onChange={(newValue) =>
+                                setAttributes({ textTag: newValue })
+                            }
+                            label={__(
+                                "Text Tag",
+                                "premium-blocks-for-gutenberg"
+                            )}
+                        />
                         <MultiButtonsControl
                             choices={[{ value: 'left', label: __('Left', "premium-blocks-for-gutenberg"), icon: Icons.alignLeft }, { value: 'center', label: __('Center', "premium-blocks-for-gutenberg"), icon: Icons.alignCenter }, { value: 'right', label: __('Right', "premium-blocks-for-gutenberg"), icon: Icons.alignRight }]}
                             value={align}
-                            onChange={(align) => setAttributes({ align: align })}
+                            onChange={(alignn) => setAttributes({ align: alignn })}
                             label={__("Text Align", "premium-blocks-for-gutenberg")}
                             showIcons={true} />
                     </PanelBody>
@@ -161,10 +238,11 @@ function Edit(props) {
         <div {...blockProps}>
             <BlockContent blockProps={props}>
                 <RichText
-                    tagName='p'
+                    tagName={textTag}
                     onChange={newText => setAttributes({ text: newText })}
                     placeholder={__("Type", 'premium-blocks-for-gutenberg')}
                     value={text}
+                    className="premium-text-wrap"
                     style={{
                         textAlign: align?.[deviceType],
                         color: color,

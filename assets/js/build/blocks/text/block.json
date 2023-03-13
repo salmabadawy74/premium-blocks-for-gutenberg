@@ -197,6 +197,10 @@
         "gradientPosition": "center center",
         "gradientType": "linear"
       }
+    },
+    "textTag": {
+      "type": "string",
+      "default": "p"
     }
   }
 }

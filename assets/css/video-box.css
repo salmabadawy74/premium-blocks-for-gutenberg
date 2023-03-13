@@ -103,7 +103,8 @@
   .premium-video-box .premium-video-box__desc {
     position: relative;
     z-index: 1;
-    padding: 5px; }
+    padding: 5px;
+    text-align: center; }
   .premium-video-box .premium-video-box__play_icon {
     display: block;
     font-size: 20px; }

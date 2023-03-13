@@ -93,7 +93,7 @@ const Save = (props) => {
             "background-attachment": backgroundOverlay["fixed"]
                 ? "fixed"
                 : "unset",
-            opacity: `${backgroundOverlay ? overlayOpacity / 100 : 1} `,
+            opacity: `${(backgroundOverlay['backgroundType'] == 'solid' || backgroundOverlay['backgroundType'] == "gradient") ? overlayOpacity / 100 : 1} `,
             "mix-blend-mode": `${blend} !important`,
             filter: `brightness( ${overlayFilter["bright"]}% ) contrast( ${overlayFilter["contrast"]}% ) saturate( ${overlayFilter["saturation"]}% ) blur( ${overlayFilter["blur"]}px ) hue-rotate( ${overlayFilter["hue"]}deg ) `,
             "-webkit-transition": `${transition}s`,
@@ -111,7 +111,7 @@ const Save = (props) => {
             "background-attachment": backgroundOverlayHover["fixed"]
                 ? "fixed"
                 : "unset",
-            opacity: `${backgroundOverlayHover ? hoverOverlayOpacity / 100 : 1
+            opacity: `${(backgroundOverlayHover['backgroundType'] == 'solid' || backgroundOverlayHover['backgroundType'] == "gradient") ? hoverOverlayOpacity / 100 : 1
                 } !important`,
             filter: `brightness( ${hoverOverlayFilter["bright"]}% ) contrast( ${hoverOverlayFilter["contrast"]}% ) saturate( ${hoverOverlayFilter["saturation"]}% ) blur( ${hoverOverlayFilter["blur"]}px ) hue-rotate( ${hoverOverlayFilter["hue"]}deg ) !important`,
         };
@@ -190,11 +190,11 @@ const Save = (props) => {
                 )}
             <div
                 className={`premium-row__block_overlay`}
-                style={filterJsCss({
-                    ...gradientBackground(backgroundOverlay),
-                    opacity: `${backgroundOverlay ? overlayOpacity / 100 : 1} `,
-                    filter: `brightness( ${overlayFilter["bright"]}% ) contrast( ${overlayFilter["contrast"]}% ) saturate( ${overlayFilter["saturation"]}% ) blur( ${overlayFilter["blur"]}px ) hue-rotate( ${overlayFilter["hue"]}deg ) `,
-                })}
+            // style={filterJsCss({
+            //     ...gradientBackground(backgroundOverlay),
+            //     opacity: `${(backgroundOverlay['backgroundType'] == 'solid' || backgroundOverlay['backgroundType'] == "gradient") ? overlayOpacity / 100 : 1} `,
+            //     filter: `brightness( ${overlayFilter["bright"]}% ) contrast( ${overlayFilter["contrast"]}% ) saturate( ${overlayFilter["saturation"]}% ) blur( ${overlayFilter["blur"]}px ) hue-rotate( ${overlayFilter["hue"]}deg ) `,
+            // })}
             ></div>
             <div className="premium-container-inner-blocks-wrap">
                 <InnerBlocks.Content />

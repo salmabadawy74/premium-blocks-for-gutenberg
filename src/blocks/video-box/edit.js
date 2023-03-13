@@ -912,7 +912,7 @@ function Edit(props) {
                                     }}
                                 >
                                     <RichText
-                                        tagName="p"
+                                        tagName="span"
                                         className={`premium-video-box__desc_text`}
                                         value={descStyles[0].videoDescText}
                                         placeholder="Add caption"

@@ -19,14 +19,14 @@ function get_premium_text_css( $attributes, $unique_id ) {
 	if ( isset( $attributes['align'] ) ) {
 		$align = $css->get_responsive_css( $attributes['align'], 'Desktop' );
 
-		$css->set_selector( ".{$unique_id} p" );
+		$css->set_selector( ".{$unique_id} .premium-text-wrap" );
 		$css->add_property( 'text-align', $align );
 	}
 
 	if ( isset( $attributes['typography'] ) ) {
 		$typography = $attributes['typography'];
 
-		$css->set_selector( ".{$unique_id} p" );
+		$css->set_selector( ".{$unique_id} .premium-text-wrap" );
 		$css->render_typography( $typography, 'Desktop' );
 	}
 
@@ -59,7 +59,7 @@ function get_premium_text_css( $attributes, $unique_id ) {
 	if ( isset( $attributes['align'] ) ) {
 		$align = $css->get_responsive_css( $attributes['align'], 'Tablet' );
 		error_log( wp_json_encode( $align ) );
-		$css->set_selector( ".{$unique_id} p" );
+		$css->set_selector( ".{$unique_id} .premium-text-wrap" );
 		$css->add_property( 'text-align', $align );
 	}
 
@@ -75,7 +75,7 @@ function get_premium_text_css( $attributes, $unique_id ) {
 		$border_width  = $attributes['border']['borderWidth'];
 		$border_radius = $attributes['border']['borderRadius'];
 
-		$css->set_selector( ".{$unique_id} p" );
+		$css->set_selector( ".{$unique_id} .premium-text-wrap" );
 		$css->add_property( 'border-width', $css->render_spacing( $border_width['Tablet'], 'px' ) );
 		$css->add_property( 'border-radius', $css->render_spacing( $border_radius['Tablet'], 'px' ) );
 	}
@@ -100,14 +100,14 @@ function get_premium_text_css( $attributes, $unique_id ) {
 	if ( isset( $attributes['align'] ) ) {
 		$align = $css->get_responsive_css( $attributes['align'], 'Mobile' );
 
-		$css->set_selector( ".{$unique_id} p" );
+		$css->set_selector( ".{$unique_id} .premium-text-wrap" );
 		$css->add_property( 'text-align', $align );
 	}
 
 	if ( isset( $attributes['typography'] ) ) {
 		$typography = $attributes['typography'];
 
-		$css->set_selector( ".{$unique_id} p" );
+		$css->set_selector( ".{$unique_id} .premium-text-wrap" );
 		$css->render_typography( $typography, 'Mobile' );
 	}
 
