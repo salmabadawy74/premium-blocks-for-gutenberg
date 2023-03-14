@@ -1853,6 +1853,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _checkBox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./checkBox */ "./src/common/checkBox.js");
+
 
 
 
@@ -1862,7 +1864,8 @@ const AdvancedSwitcher = props => {
     description,
     onChange,
     checked = true,
-    style
+    style,
+    childOption
   } = props;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pb-advanced-switcher",
@@ -1871,7 +1874,14 @@ const AdvancedSwitcher = props => {
     className: "pb-title"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
     className: "pb-swticher-label"
-  }, label), description, " "), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, label), description, " ", childOption && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pb-advanced-input-subTitle"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_checkBox__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    label: childOption.label,
+    onChange: childOption.onChange,
+    checked: childOption.checked,
+    description: childOption.description
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pb-switcher"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
     checked: checked,
@@ -3425,15 +3435,12 @@ const GlobalFeatures = props => {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Entrance Animation", "premium-blocks-for-gutenberg"),
     onChange: checked => onChangeData("premium-entrance-animation", checked),
     checked: (settings === null || settings === void 0 ? void 0 : settings["premium-entrance-animation"]) || false,
-    description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Apply entrance animation on any Premium Blocks for Gutenberg block.", "premium-blocks-for-gutenberg")
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_common_AdvancedSwitcher__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Apply Entrance Animation to All Gutenberg Blocks", "premium-blocks-for-gutenberg"),
-    onChange: checked => onChangeData("premium-entrance-animation-all-blocks", checked),
-    checked: (settings === null || settings === void 0 ? void 0 : settings["premium-entrance-animation-all-blocks"]) || false,
-    description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("This option will be used to Apply Entrance Animation to All Gutenberg Blocks.", "premium-blocks-for-gutenberg"),
-    style: {
-      opacity: !(settings !== null && settings !== void 0 && settings["premium-entrance-animation"]) && '0.4',
-      pointerEvents: !(settings !== null && settings !== void 0 && settings["premium-entrance-animation"]) && 'none'
+    description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Apply entrance animation on any Premium Blocks for Gutenberg block.", "premium-blocks-for-gutenberg"),
+    childOption: {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Apply to All Gutenberg Blocks", "premium-blocks-for-gutenberg"),
+      onChange: checked => onChangeData("premium-entrance-animation-all-blocks", checked),
+      checked: (settings === null || settings === void 0 ? void 0 : settings["premium-entrance-animation-all-blocks"]) || false,
+      description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("This option will be used to Apply Entrance Animation to All Gutenberg Blocks.", "premium-blocks-for-gutenberg")
     }
   }))));
 };

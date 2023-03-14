@@ -84,6 +84,10 @@ const GlobalFeatures = props => {
                         onChange: (checked) =>
                             onChangeData("premium-entrance-animation-all-blocks", checked),
                         checked: settings?.["premium-entrance-animation-all-blocks"] || false,
+                        description: __(
+                            "This option will be used to Apply Entrance Animation to All Gutenberg Blocks.",
+                            "premium-blocks-for-gutenberg"
+                        )
                     }}
                 />
             </div>

@@ -1,4 +1,5 @@
 import { ToggleControl, CheckboxControl } from "@wordpress/components";
+import CheckBox from "./checkBox";
 
 const AdvancedSwitcher = (props) => {
     const { label, description, onChange, checked = true, style, childOption } = props;
@@ -9,10 +10,13 @@ const AdvancedSwitcher = (props) => {
                 <h2 className="pb-swticher-label">{label}</h2>
                 {description}{" "}
                 {childOption && (
-                    <div className={`pbg-checkbox`}>
-                        <input type={'checkbox'} value={childOption.checked} checked={childOption.checked} />
-                        <label className="pbg-checkbox-input" onClick={() => childOption.onChange(!childOption.checked)}></label>
-                        <span className="pbg-checkbox-label">{childOption.label}</span>
+                    <div className="pb-advanced-input-subTitle">
+                        <CheckBox
+                            label={childOption.label}
+                            onChange={childOption.onChange}
+                            checked={childOption.checked}
+                            description={childOption.description}
+                        />
                     </div>
                 )}
             </div>

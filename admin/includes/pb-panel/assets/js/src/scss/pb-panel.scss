@@ -34,47 +34,6 @@
     width: 95%;
     margin: 0px auto;
 
-    .pbg-checkbox {
-        margin-top: 5px;
-        .pbg-checkbox-input {
-            position: relative;
-            background: #ebebeb;
-            height: 16px;
-            width: 16px;
-            display: inline-block;
-            padding: 0;
-            margin-right: 5px;
-            border-radius: 4px;
-        }
-        input[type="checkbox"] {
-            display: none;
-            &:checked + label {
-                background: #00a5e5;
-                height: 16px;
-                width: 16px;
-                display: inline-block;
-                padding: 0;
-                &:before {
-                    position: absolute;
-                    content: "✔";
-                    color: #fff;
-                    font-size: 12px;
-                    top: 0;
-                    right: 0;
-                    width: 100%;
-                    height: 100%;
-                    text-align: center;
-                    margin-top: -1px;
-                }
-            }
-        }
-        .pbg-checkbox-label {
-            line-height: 1.4em;
-            font-size: 13px;
-            vertical-align: middle;
-            font-weight: 600;
-        }
-    }
     h2 {
         margin-top: 0px;
         margin-bottom: 7px;
