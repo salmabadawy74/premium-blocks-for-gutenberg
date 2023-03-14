@@ -84,7 +84,7 @@ const loadStyles = (colorPalette, globalColors, globalTypography, applyColorsToD
         css += generateCss(styles);
     }
     // Block Spacing
-    styles['.editor-styles-wrapper .is-layout-constrained > * + *, .editor-styles-wrapper > .block-editor-block-list__layout.is-root-container > .wp-block + .wp-block'] = {
+    styles['.editor-styles-wrapper .is-layout-constrained > * + *, .editor-styles-wrapper > .block-editor-block-list__layout.is-root-container > .wp-block + .wp-block, .edit-post-visual-editor .editor-styles-wrapper .edit-post-visual-editor__post-title-wrapper > * + *, .edit-post-visual-editor .editor-styles-wrapper .block-editor-block-list__layout.is-root-container > * + *'] = {
         'margin-block-start': `${layoutSettings?.block_spacing + 'px'}`,
         'margin-top': `${layoutSettings?.block_spacing + 'px'}`,
     };
