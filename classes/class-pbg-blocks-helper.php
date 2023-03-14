@@ -823,17 +823,20 @@ class PBG_Blocks_Helper {
 	}
 
 	public function output_custom_block_css() {
-		global $custom_block_css;
 
-		// Combine all CSS code into one string
-		$combined_css = '';
-		foreach ( $custom_block_css as $unique_id => $css ) {
-			$combined_css .= "\n/* Custom block ID: $unique_id */\n$css";
-		}
+        global $custom_block_css;
 
-		// Output the combined CSS code in a single style tag
-		echo '<style id="pbg-blocks-style">' . $combined_css . '</style>';
-	}
+        // Combine all CSS code into one string
+        $combined_css = '';
+
+        if (is_array($custom_block_css) && !empty($custom_block_css)) {
+            foreach ($custom_block_css as $unique_id => $css) {
+                $combined_css .= "\n/* Custom block ID: $unique_id */\n$css";
+            }
+        }
+        // Output the combined CSS code in a single style tag
+        echo '<style id="pbg-blocks-style">' . $combined_css . '</style>';
+    }
 
 	/**
 	 * Converts color value from Hex to RGBA

@@ -1855,7 +1855,7 @@ function Edit(props) {
                         style={{
                             textAlign: align?.[props.deviceType],
                         }}
-                        data-backgroundText={BackText}
+                        data-backgroundText={backgroundText ? BackText : ''}
                     >
                         <div
                             className={`premium-title-container ${style}`}

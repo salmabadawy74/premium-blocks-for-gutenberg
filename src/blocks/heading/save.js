@@ -267,7 +267,7 @@ export default function save(props) {
             <div
                 className={`premium-title   ${backgroundText ? "premium-title-bg-text" : ""
                     }`}
-                data-backgroundText={BackText}
+                data-backgroundText={backgroundText ? BackText : ''}
             >
                 <div
                     className={`premium-title-container ${style}`}

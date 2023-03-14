@@ -40255,7 +40255,7 @@ function Edit(props) {
     style: {
       textAlign: align === null || align === void 0 ? void 0 : align[props.deviceType]
     },
-    "data-backgroundText": BackText
+    "data-backgroundText": backgroundText ? BackText : ''
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: `premium-title-container ${style}`,
     "data-blur-delay": titleStyles[0].animateDelay,
@@ -40637,7 +40637,7 @@ function save(props) {
     })
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, loadStyles()), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-title   ${backgroundText ? "premium-title-bg-text" : ""}`,
-    "data-backgroundText": BackText
+    "data-backgroundText": backgroundText ? BackText : ''
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `premium-title-container ${style}`,
     "data-blur-delay": titleStyles[0].animateDelay,

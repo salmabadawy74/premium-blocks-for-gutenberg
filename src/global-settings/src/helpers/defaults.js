@@ -3,7 +3,7 @@ import { __ } from '@wordpress/i18n';
 const defaults = {
     typography: {
         heading1: {
-            "fontWeight": "400",
+            "fontWeight": "Default",
             "fontStyle": "",
             "textTransform": "",
             "fontFamily": "Default",
@@ -28,7 +28,7 @@ const defaults = {
             }
         },
         heading2: {
-            "fontWeight": "400",
+            "fontWeight": "Default",
             "fontStyle": "",
             "textTransform": "",
             "fontFamily": "Default",
@@ -53,7 +53,7 @@ const defaults = {
             }
         },
         heading3: {
-            "fontWeight": "400",
+            "fontWeight": "Default",
             "fontStyle": "",
             "textTransform": "none",
             "fontFamily": "Default",
@@ -78,7 +78,7 @@ const defaults = {
             }
         },
         heading4: {
-            "fontWeight": "400",
+            "fontWeight": "Default",
             "fontStyle": "",
             "textTransform": "",
             "fontFamily": "Default",
@@ -103,7 +103,7 @@ const defaults = {
             }
         },
         heading5: {
-            "fontWeight": "400",
+            "fontWeight": "Default",
             "fontStyle": "",
             "textTransform": "",
             "fontFamily": "Default",
@@ -128,7 +128,7 @@ const defaults = {
             }
         },
         heading6: {
-            "fontWeight": "400",
+            "fontWeight": "Default",
             "fontStyle": "",
             "textTransform": "",
             "fontFamily": "Default",
@@ -153,7 +153,7 @@ const defaults = {
             }
         },
         button: {
-            "fontWeight": "400",
+            "fontWeight": "Default",
             "fontStyle": "",
             "textTransform": "",
             "fontFamily": "Default",
@@ -178,7 +178,7 @@ const defaults = {
             }
         },
         paragraph: {
-            "fontWeight": "400",
+            "fontWeight": "Default",
             "fontStyle": "",
             "textTransform": "",
             "fontFamily": "Default",
