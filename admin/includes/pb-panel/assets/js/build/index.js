@@ -1867,25 +1867,32 @@ const AdvancedSwitcher = props => {
     style,
     childOption
   } = props;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  const styleObj = {
+    margin: '0',
+    padding: '0',
+    border: '0'
+  };
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pb-advanced-switcher",
-    style: style
+    style: childOption ? { ...styleObj,
+      ...style
+    } : style
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pb-title"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
     className: "pb-swticher-label"
-  }, label), description, " ", childOption && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, label), description, " "), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pb-switcher"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+    checked: checked,
+    onChange: onChange
+  }))), childOption && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pb-advanced-input-subTitle"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_checkBox__WEBPACK_IMPORTED_MODULE_2__["default"], {
     label: childOption.label,
     onChange: childOption.onChange,
     checked: childOption.checked,
     description: childOption.description
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "pb-switcher"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
-    checked: checked,
-    onChange: onChange
   })));
 };
 
