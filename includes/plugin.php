@@ -87,6 +87,7 @@ if (!class_exists('PBG_Plugin')) {
 		public function load_plugin()
 		{
 			require_once PREMIUM_BLOCKS_PATH . 'includes/premium-blocks-css.php';
+            require_once PREMIUM_BLOCKS_PATH . 'classes/class-rest-api.php';
 		}
 
 		/**

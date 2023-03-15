@@ -1,11 +1,12 @@
 import React from 'react'
+import classNames from "classnames";
 
 function Button(props) {
     const { post, attributes } = props;
     if (attributes.displayPostExcerpt === "Post Full Content") {
         return null;
     }
-    if (attributes.displayPostContent && attributes.excerptType === "Link") {
+    if (attributes.showContent && attributes.excerptType === "Link") {
         let readMoreText = attributes.readMoreText
             ? attributes.readMoreText
             : __("Read More");

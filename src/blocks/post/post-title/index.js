@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { decodeEntities } from '@wordpress/html-entities';
 function PostTitle(props) {
     const { attributes, post } = props;
     const Tag = attributes.titleTag;

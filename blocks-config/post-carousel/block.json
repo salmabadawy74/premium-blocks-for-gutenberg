@@ -178,6 +178,10 @@
                 "unit": "px"
             }
         },
+        "displayPostTitle": {
+            "type": "boolean",
+            "default": true
+        },
         "titleTypography": {
             "type": "object",
             "default": {
@@ -316,7 +320,10 @@
                 "unit": "px"
             }
         },
-
+        "displayPostImage": {
+            "type": "boolean",
+            "default": true
+        },
         "thumbnail": {
             "type": "string",
             "default": "cover"
@@ -422,30 +429,7 @@
                 }
             }
         },
-        "margin": {
-            "type": "object",
-            "default": {
-                "Desktop": {
-                    "top": "",
-                    "right": "",
-                    "bottom": "",
-                    "left": ""
-                },
-                "Tablet": {
-                    "top": "",
-                    "right": "",
-                    "bottom": "",
-                    "left": ""
-                },
-                "Mobile": {
-                    "top": "",
-                    "right": "",
-                    "bottom": "",
-                    "left": ""
-                },
-                "unit": "px"
-            }
-        },
+
         "color": {
             "type": "string"
         },

@@ -659,6 +659,85 @@ class PBG_Blocks_Helper {
 			}
 		}
 	}
+    /**
+		 * Get size information for all currently-registered image sizes.
+		 *
+		 * @global $_wp_additional_image_sizes
+		 * @uses   get_intermediate_image_sizes()
+		 * @link   https://codex.wordpress.org/Function_Reference/get_intermediate_image_sizes
+		 * @since  1.9.0
+		 * @return array $sizes Data for all currently-registered image sizes.
+		 */
+		public static function get_image_sizes() {
+
+			global $_wp_additional_image_sizes;
+
+			$sizes       = get_intermediate_image_sizes();
+			$image_sizes = array();
+
+			$image_sizes[] = array(
+				'value' => 'full',
+				'label' => esc_html__( 'Full', 'premium-blocks-for-gutenberg' ),
+			);
+
+			foreach ( $sizes as $size ) {
+				if ( in_array( $size, array( 'thumbnail', 'medium', 'medium_large', 'large' ), true ) ) {
+					$image_sizes[] = array(
+						'value' => $size,
+						'label' => ucwords( trim( str_replace( array( '-', '_' ), array( ' ', ' ' ), $size ) ) ),
+					);
+				} else {
+					$image_sizes[] = array(
+						'value' => $size,
+						'label' => sprintf(
+							'%1$s (%2$sx%3$s)',
+							ucwords( trim( str_replace( array( '-', '_' ), array( ' ', ' ' ), $size ) ) ),
+							$_wp_additional_image_sizes[ $size ]['width'],
+							$_wp_additional_image_sizes[ $size ]['height']
+						),
+					);
+				}
+			}
+
+			$image_sizes = apply_filters( 'pbg_post_featured_image_sizes', $image_sizes );
+
+			return $image_sizes;
+		}
+
+
+        /**
+		 * Get Post Types.
+		 *
+		 * @since 1.11.0
+		 * @access public
+		 */
+		public static function get_post_types() {
+
+			$post_types = get_post_types(
+				array(
+					'public'       => true,
+					'show_in_rest' => true,
+				),
+				'objects'
+			);
+
+			$options = array();
+
+			foreach ( $post_types as $post_type ) {
+
+				if ( 'attachment' === $post_type->name ) {
+					continue;
+				}
+
+				$options[] = array(
+					'value' => $post_type->name,
+					'label' => $post_type->label,
+				);
+			}
+
+			return apply_filters( 'pbg_loop_post_types', $options );
+		}
+
 
 	/**
 	 * Check if block should render inline.

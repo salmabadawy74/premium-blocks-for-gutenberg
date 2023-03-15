@@ -103,14 +103,7 @@ function edit({ clientId, setAttributes, attributes, deviceType }) {
             sticky,
         ]
     );
-    const blockContexts = useMemo(
-        () =>
-            posts?.map((post) => ({
-                postType: post.type,
-                postId: post.id,
-            })),
-        [posts]
-    );
+
     console.log(posts)
     if (!posts) {
         return (
@@ -125,6 +118,44 @@ function edit({ clientId, setAttributes, attributes, deviceType }) {
     }
     const updateQuery = (newQuery) =>
         setAttributes({ query: { ...query, ...newQuery } });
+
+    function NextArrow() {
+        return (
+            <button
+                type="button"
+                data-role="none"
+                className="slick-next slick-arrow"
+                aria-label="Next"
+                tabIndex="0"
+                style={{
+                    borderColor: arrowColor,
+                    borderRadius: arrowBorderRadius,
+                    borderWidth: arrowBorderSizeFallback,
+                }}
+            >
+                {UAGB_Block_Icons.carousel_right}
+            </button>
+        );
+    }
+
+    function PrevArrow() {
+        return (
+            <button
+                type="button"
+                data-role="none"
+                className="slick-prev slick-arrow"
+                aria-label="Previous"
+                tabIndex="0"
+                style={{
+                    borderColor: arrowColor,
+                    borderRadius: arrowBorderRadius,
+                    borderWidth: arrowBorderSizeFallback,
+                }}
+            >
+                {UAGB_Block_Icons.carousel_left}
+            </button>
+        );
+    }
     const settings = {
         arrows: navigationArrow,
         dots: navigationDots,
@@ -138,6 +169,8 @@ function edit({ clientId, setAttributes, attributes, deviceType }) {
         slidesToShow: columns[deviceType],
         centerPadding: slideSpacing + "px",
         draggable: true,
+        nextArrow: <NextArrow arrowSize={arrowSizeFallback} />,
+        prevArrow: <PrevArrow arrowSize={arrowSizeFallback} />,
     };
     return (<Fragment>
         <Inspector
@@ -150,7 +183,7 @@ function edit({ clientId, setAttributes, attributes, deviceType }) {
 
         >
             <Slider className={'premium-blog-wrap premium-blog-even'}{...settings}>
-                {blockContexts.map((post, i) => (
+                {posts.map((post, i) => (
                     <div className={`premium-blog-post-outer-container`} key={i}>
                         <div
                             className={`premium-blog-post-container`}
@@ -160,7 +193,7 @@ function edit({ clientId, setAttributes, attributes, deviceType }) {
                             }}
                         >
                             <Image post={post} attributes={attributes} />
-                            {/* <div className={`premium-blog-content-wrapper empty-thumb`}>
+                            <div className={`premium-blog-content-wrapper empty-thumb`}>
                                 <div className={`premium-blog-content-wrapper-inner`}>
                                     <div className={`premium-blog-inner-container`}>
                                         <div className="premium-blog-entry-container">
@@ -179,7 +212,7 @@ function edit({ clientId, setAttributes, attributes, deviceType }) {
                                     <Button attributes={attributes} post={post} />
 
                                 </div>
-                            </div> */}
+                            </div>
                         </div>
                     </div>
                 ))}

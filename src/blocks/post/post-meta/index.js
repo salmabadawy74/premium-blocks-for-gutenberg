@@ -20,7 +20,7 @@ function Meta(props) {
 
     return (
         <div className="premium-blog-entry-meta">
-            {attributes.showAuthor && undefined !== post.uagb_author_info && (
+            {attributes.showAuthor && undefined !== post.pbg_author_info && (
                 <div className="premium-blog-post-author premium-blog-meta-data">
                     <span>
                         {" "}
@@ -39,7 +39,7 @@ function Meta(props) {
                                 stroke-linejoin="round"
                             />
                         </svg>
-                        {post.uagb_author_info.display_name}
+                        {post.pbg_author_info.display_name}
                     </span>
                     <span className={`premium-blog-meta-separtor`}>•</span>
                 </div>
@@ -88,7 +88,7 @@ function Meta(props) {
                     <span className={`premium-blog-meta-separtor`}>• </span>
                 </div>
             )}
-            {attributes.showComments && undefined !== post.uagb_comment_info && (
+            {attributes.showComments && undefined !== post.pbg_comment_info && (
                 <div
                     className={`premium-blog-post-comments premium-blog-meta-data`}
                 >
@@ -118,7 +118,7 @@ function Meta(props) {
                             </clipPath>
                         </defs>
                     </svg>
-                    {post.uagb_comment_info}
+                    {post.pbg_comment_info}
                 </div>
             )}
         </div>

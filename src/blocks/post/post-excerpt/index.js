@@ -17,7 +17,7 @@ function PostExcerpt(props) {
         excerpt += " ...";
     }
     if (
-        attributes.displayPostContent &&
+        attributes.showContent &&
         attributes.displayPostExcerpt === "Post Excerpt"
     ) {
         return <p dangerouslySetInnerHTML={{ __html: excerpt }} />;
