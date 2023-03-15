@@ -1114,7 +1114,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "banner": () => (/* binding */ banner),
 /* harmony export */   "bulletList": () => (/* binding */ bulletList),
 /* harmony export */   "button": () => (/* binding */ button),
-/* harmony export */   "buttonGroup": () => (/* binding */ buttonGroup),
 /* harmony export */   "container": () => (/* binding */ container),
 /* harmony export */   "contentSwitcher": () => (/* binding */ contentSwitcher),
 /* harmony export */   "countUp": () => (/* binding */ countUp),
@@ -1156,8 +1155,7 @@ const {
   [`icon-box`]: iconBox,
   [`image-separator`]: imageSeparator,
   [`pricing-table`]: pricingTable,
-  [`video-box`]: videoBox,
-  [`button-group`]: buttonGroup
+  [`video-box`]: videoBox
 } = PremiumBlocksSettings.activeBlocks; //Plugin Config Keys
 
 const {
