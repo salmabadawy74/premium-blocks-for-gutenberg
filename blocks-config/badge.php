@@ -59,10 +59,10 @@ function get_premium_badge_css( $attributes, $unique_id ) {
 function render_block_pbg_badge( $attributes, $content, $block ) {
 
 	$unique_id = rand( 100, 10000 );
-	$id        = 'premium-navigation-' . esc_attr( $unique_id );
+	$id        = 'premium-badge-' . esc_attr( $unique_id );
 	$block_id  = ( ! empty( $attributes['blockId'] ) ) ? $attributes['blockId'] : $id;
 
-	if ( ! wp_style_is( $unique_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'column', $unique_id ) ) {
+	if ( ! wp_style_is( $unique_id, 'enqueued' ) && apply_filters( 'Premium_BLocks_blocks_render_inline_css', true, 'badge', $unique_id ) ) {
 		$css = get_premium_badge_css( $attributes, $block_id );
 		if ( ! empty( $css ) ) {
 			$block_helpers = pbg_blocks_helper();
