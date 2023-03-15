@@ -12,7 +12,6 @@ const save = props => {
         descStyles,
         titleBorder,
         descBorder,
-        descTypography,
         textShadow,
         titleTextShadow,
         hideDesktop,
@@ -55,9 +54,6 @@ const save = props => {
 
         styles[`.${blockId} .premium-accordion__desc_wrap .premium-accordion__desc`] = {
             color: descStyles[0].descColor,
-            'font-style': descTypography.fontStyle,
-            'text-decoration': descTypography.textDecoration,
-            'text-transform': descTypography.textTransform,
             'text-shadow': `${textShadow.horizontal}px ${textShadow.vertical}px ${textShadow.blur}px ${textShadow.color}`
         };
         return generateCss(styles);

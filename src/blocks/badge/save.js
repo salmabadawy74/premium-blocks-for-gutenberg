@@ -45,10 +45,7 @@ export default function save({ attributes }) {
                 value={text}
                 style={filterJsCss({
                     color: color,
-                    width: `${textWidth}px`,
-                    fontStyle: typography?.fontStyle,
-                    textDecoration: typography?.textDecoration,
-                    textTransform: typography?.textTransform,
+                    width: `${textWidth}px`
                 })}
             />
         </div>

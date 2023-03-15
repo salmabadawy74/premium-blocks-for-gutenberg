@@ -11,10 +11,6 @@ const save = (props) => {
         firstHeading,
         secondHeading,
         display,
-        titleTag,
-        firstTag,
-        secondTag,
-
         firstStyles,
         secondStyles,
         link,
