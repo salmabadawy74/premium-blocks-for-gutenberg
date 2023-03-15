@@ -40,14 +40,10 @@ __webpack_require__.r(__webpack_exports__);
 
 const EntranceAnimationControl = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_1__.createHigherOrderComponent)(BlockEdit => {
   return props => {
-    var _attributes$entranceA3, _attributes$entranceA4;
-
     const hasCustomClassName = (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_9__.hasBlockSupport)(props.name, 'customClassName', true);
-
     if (!PremiumAnimation.allBlocks || (0,_helpers_helpers__WEBPACK_IMPORTED_MODULE_6__.isPremiumBlock)(props.name) || !hasCustomClassName) {
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(BlockEdit, props);
     }
-
     const {
       attributes,
       setAttributes,
@@ -65,19 +61,16 @@ const EntranceAnimationControl = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_
     }, []);
     const blockRef = (0,react__WEBPACK_IMPORTED_MODULE_7__.useRef)(null);
     (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-      var _attributes$entranceA, _attributes$entranceA2;
-
-      if (!(attributes !== null && attributes !== void 0 && (_attributes$entranceA = attributes.entranceAnimation) !== null && _attributes$entranceA !== void 0 && (_attributes$entranceA2 = _attributes$entranceA.animation) !== null && _attributes$entranceA2 !== void 0 && _attributes$entranceA2[deviceType])) {
+      if (!attributes?.entranceAnimation?.animation?.[deviceType]) {
         return;
       }
-
       let blockElement = blockRef.current;
       blockElement.style.animationTimingFunction = entranceAnimation.curve;
       blockElement.style.animationDuration = entranceAnimation.duration ? `${entranceAnimation.duration}ms` : '';
       blockElement.style.animationDelay = entranceAnimation.delay ? `${entranceAnimation.delay}ms` : '';
     }, [isSelected, entranceAnimation, deviceType]);
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `pbg-entrance-animation ${attributes === null || attributes === void 0 ? void 0 : (_attributes$entranceA3 = attributes.entranceAnimation) === null || _attributes$entranceA3 === void 0 ? void 0 : (_attributes$entranceA4 = _attributes$entranceA3.animation) === null || _attributes$entranceA4 === void 0 ? void 0 : _attributes$entranceA4[deviceType]}`,
+      className: `pbg-entrance-animation ${attributes?.entranceAnimation?.animation?.[deviceType]}`,
       ref: blockRef
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(BlockEdit, props)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_EntranceAnimation__WEBPACK_IMPORTED_MODULE_8__["default"], {
       value: entranceAnimation,
@@ -114,7 +107,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const EntranceAnimation = _ref => {
   let {
     value,
@@ -127,14 +119,13 @@ const EntranceAnimation = _ref => {
     delay,
     curve
   } = value;
-
   const changeHandler = newVal => {
-    const newValue = { ...value,
+    const newValue = {
+      ...value,
       ...newVal
     };
     onChange(newValue);
   };
-
   const options = [{
     label: 'None',
     value: ''
@@ -282,7 +273,7 @@ const EntranceAnimation = _ref => {
     onChange: option => changeHandler({
       animation: option
     })
-  }), (animation === null || animation === void 0 ? void 0 : animation[deviceType]) && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
+  }), animation?.[deviceType] && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Easing", "premium-blocks-for-gutenberg"),
     value: curve,
     onChange: newValue => changeHandler({
@@ -326,7 +317,6 @@ const EntranceAnimation = _ref => {
     step: 1
   })));
 };
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EntranceAnimation);
 
 /***/ }),
@@ -390,8 +380,6 @@ const EntranceAnimationAdvancedOption = (0,_wordpress_compose__WEBPACK_IMPORTED_
 (0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_3__.addFilter)('Pbg.AdvancedTab', 'pbg/entrance-animation-option', EntranceAnimationAdvancedOption);
 const PbgEntranceAnimationContent = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_6__.createHigherOrderComponent)(BlockContent => {
   return props => {
-    var _attributes$entranceA3, _attributes$entranceA4;
-
     const {
       attributes,
       setAttributes,
@@ -408,19 +396,16 @@ const PbgEntranceAnimationContent = (0,_wordpress_compose__WEBPACK_IMPORTED_MODU
     }, []);
     const blockRef = (0,react__WEBPACK_IMPORTED_MODULE_5__.useRef)(null);
     (0,react__WEBPACK_IMPORTED_MODULE_5__.useEffect)(() => {
-      var _attributes$entranceA, _attributes$entranceA2;
-
-      if (!(attributes !== null && attributes !== void 0 && (_attributes$entranceA = attributes.entranceAnimation) !== null && _attributes$entranceA !== void 0 && (_attributes$entranceA2 = _attributes$entranceA.animation) !== null && _attributes$entranceA2 !== void 0 && _attributes$entranceA2[deviceType])) {
+      if (!attributes?.entranceAnimation?.animation?.[deviceType]) {
         return;
       }
-
       let blockElement = blockRef.current;
       blockElement.style.animationTimingFunction = entranceAnimation.curve;
       blockElement.style.animationDuration = entranceAnimation.duration ? `${entranceAnimation.duration}ms` : '';
       blockElement.style.animationDelay = entranceAnimation.delay ? `${entranceAnimation.delay}ms` : '';
     }, [isSelected, entranceAnimation, deviceType]);
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(BlockContent, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
-      className: attributes === null || attributes === void 0 ? void 0 : (_attributes$entranceA3 = attributes.entranceAnimation) === null || _attributes$entranceA3 === void 0 ? void 0 : (_attributes$entranceA4 = _attributes$entranceA3.animation) === null || _attributes$entranceA4 === void 0 ? void 0 : _attributes$entranceA4[deviceType],
+      className: attributes?.entranceAnimation?.animation?.[deviceType],
       ref: blockRef
     }));
   };
@@ -603,14 +588,12 @@ function _extends() {
   _extends = Object.assign ? Object.assign.bind() : function (target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
-
       for (var key in source) {
         if (Object.prototype.hasOwnProperty.call(source, key)) {
           target[key] = source[key];
         }
       }
     }
-
     return target;
   };
   return _extends.apply(this, arguments);
@@ -724,12 +707,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 const addEntranceAnimationAttribute = (settings, name) => {
   if (!PremiumAnimation.allBlocks && !(0,_helpers_helpers__WEBPACK_IMPORTED_MODULE_7__.isPremiumBlock)(name)) {
     return settings;
   }
-
   if (typeof settings.attributes !== 'undefined') {
     settings.attributes = Object.assign(settings.attributes, {
       entranceAnimation: {
@@ -738,10 +719,8 @@ const addEntranceAnimationAttribute = (settings, name) => {
       }
     });
   }
-
   return settings;
 };
-
 (0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_2__.addFilter)('blocks.registerBlockType', 'pbg/entrance-animation-attribute', addEntranceAnimationAttribute);
 const withClientId = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_4__.createHigherOrderComponent)(BlockEdit => {
   return props => {
@@ -765,29 +744,25 @@ const withClientId = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_4__.createHi
       return __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : "Desktop";
     }, []);
     (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
-      var _attributes$entranceA, _attributes$entranceA2;
-
       const entranceAnimationId = clientId.split("-")[4];
-
       if (!PremiumAnimation.allBlocks && !(0,_helpers_helpers__WEBPACK_IMPORTED_MODULE_7__.isPremiumBlock)(props.name) || !hasCustomClassName) {
         setAttributes({
           className: className.replace(`pbg-animation-${entranceAnimationId}`, '')
         });
         return;
       }
-
-      if (!(attributes !== null && attributes !== void 0 && (_attributes$entranceA = attributes.entranceAnimation) !== null && _attributes$entranceA !== void 0 && (_attributes$entranceA2 = _attributes$entranceA.animation) !== null && _attributes$entranceA2 !== void 0 && _attributes$entranceA2[deviceType])) {
+      if (!attributes?.entranceAnimation?.animation?.[deviceType]) {
         setAttributes({
           className: className.replace(`pbg-animation-${entranceAnimationId}`, '')
         });
         return;
       }
-
       setAttributes({
         className: `pbg-animation-${entranceAnimationId}`
       });
       setAttributes({
-        entranceAnimation: { ...entranceAnimation,
+        entranceAnimation: {
+          ...entranceAnimation,
           clientId: entranceAnimationId
         }
       });

@@ -130,9 +130,11 @@ export const generateCss = (styles) => {
             })
             .filter((style) => !!style)
             .join("\n");
-        styleCss += `${selector}{
+        if (filteredStyles) {
+            styleCss += `${selector}{
                     ${filteredStyles}
                 }\n`;
+        }
     }
 
     return styleCss;

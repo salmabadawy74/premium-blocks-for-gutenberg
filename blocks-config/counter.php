@@ -15,8 +15,8 @@ function get_premium_counter_css( $attributes, $unique_id ) {
 	$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
 	$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 
-    // Desktop Styles.
-    if ( isset( $attributes['align'] ) ) {
+	// Desktop Styles.
+	if ( isset( $attributes['align'] ) ) {
 		$css->set_selector( '.' . $unique_id );
 		$css->add_property( 'justify-content', $css->get_responsive_css( $attributes['align'], 'Desktop' ) . ' !important' );
 	}
@@ -34,9 +34,9 @@ function get_premium_counter_css( $attributes, $unique_id ) {
 		$number_padding = $attributes['numberPadding'];
 		$css->set_selector( '.' . $unique_id . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
 		$css->add_property( 'padding', $css->render_spacing( $number_padding['Desktop'], $number_padding['unit'] ) );
-    }
+	}
 
-    // Prefix Style
+	// Prefix Style
 	if ( isset( $attributes['prefixTypography'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
 		$css->render_typography( $attributes['prefixTypography'], 'Desktop' );
@@ -69,8 +69,8 @@ function get_premium_counter_css( $attributes, $unique_id ) {
 	}
 
 	$css->start_media_query( $media_query['tablet'] );
-    // Tablet Styles.
-    if ( isset( $attributes['align'] ) ) {
+	// Tablet Styles.
+	if ( isset( $attributes['align'] ) ) {
 		$css->set_selector( '.' . $unique_id );
 		$css->add_property( 'justify-content', $css->get_responsive_css( $attributes['align'], 'Tablet' ) . ' !important' );
 	}
@@ -88,9 +88,9 @@ function get_premium_counter_css( $attributes, $unique_id ) {
 		$number_padding = $attributes['numberPadding'];
 		$css->set_selector( '.' . $unique_id . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
 		$css->add_property( 'padding', $css->render_spacing( $number_padding['Tablet'], $number_padding['unit'] ) );
-    }
+	}
 
-    // Prefix Style
+	// Prefix Style
 	if ( isset( $attributes['prefixTypography'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
 		$css->render_typography( $attributes['prefixTypography'], 'Tablet' );
@@ -124,8 +124,8 @@ function get_premium_counter_css( $attributes, $unique_id ) {
 
 	$css->stop_media_query();
 	$css->start_media_query( $media_query['mobile'] );
-    // Mobile Styles.
-    if ( isset( $attributes['align'] ) ) {
+	// Mobile Styles.
+	if ( isset( $attributes['align'] ) ) {
 		$css->set_selector( '.' . $unique_id );
 		$css->add_property( 'justify-content', $css->get_responsive_css( $attributes['align'], 'Mobile' ) . ' !important' );
 	}
@@ -143,9 +143,9 @@ function get_premium_counter_css( $attributes, $unique_id ) {
 		$number_padding = $attributes['numberPadding'];
 		$css->set_selector( '.' . $unique_id . ' > .premium-countup__desc' . ' > .premium-countup__increment' );
 		$css->add_property( 'padding', $css->render_spacing( $number_padding['Mobile'], $number_padding['unit'] ) );
-    }
-    
-    // Prefix Style
+	}
+
+	// Prefix Style
 	if ( isset( $attributes['prefixTypography'] ) ) {
 		$css->set_selector( '.' . $unique_id . ' > .premium-countup__desc' . ' > .premium-countup__prefix' );
 		$css->render_typography( $attributes['prefixTypography'], 'Mobile' );
@@ -201,30 +201,30 @@ function render_block_pbg_counter( $attributes, $content, $block ) {
 		$css = get_premium_counter_css( $attributes, $block_id );
 		if ( ! empty( $css ) ) {
 			$block_helpers = pbg_blocks_helper();
-			$block_helpers->render_inline_css( $css, $unique_id, true );
+			$block_helpers->add_custom_block_css( $css );
 		}
-    };
-    
+	};
+
 		// wp_enqueue_script(
-		// 	'pbg-waypoints',
-		// 	PREMIUM_BLOCKS_URL . 'assets/js/lib/jquery.waypoints.js',
-		// 	array( 'jquery' ),
-		// 	PREMIUM_BLOCKS_VERSION,
-		// 	true
+		// 'pbg-waypoints',
+		// PREMIUM_BLOCKS_URL . 'assets/js/lib/jquery.waypoints.js',
+		// array( 'jquery' ),
+		// PREMIUM_BLOCKS_VERSION,
+		// true
 		// );
 		// wp_enqueue_script(
-		// 	'pbg-count',
-		// 	PREMIUM_BLOCKS_URL . 'assets/js/lib/countUpmin.js',
-		// 	array( 'jquery' ),
-		// 	PREMIUM_BLOCKS_VERSION,
-		// 	true
+		// 'pbg-count',
+		// PREMIUM_BLOCKS_URL . 'assets/js/lib/countUpmin.js',
+		// array( 'jquery' ),
+		// PREMIUM_BLOCKS_VERSION,
+		// true
 		// );
 		// wp_enqueue_script(
-		// 	'pbg-countup',
-		// 	PREMIUM_BLOCKS_URL . 'assets/js/countup.js',
-		// 	array( 'jquery' ),
-		// 	PREMIUM_BLOCKS_VERSION,
-		// 	true
+		// 'pbg-countup',
+		// PREMIUM_BLOCKS_URL . 'assets/js/countup.js',
+		// array( 'jquery' ),
+		// PREMIUM_BLOCKS_VERSION,
+		// true
 		// );
 
 	// Block css file from "assets/css" after run grunt task.

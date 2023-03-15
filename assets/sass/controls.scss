@@ -31,6 +31,10 @@
         outline: none;
         box-shadow: none;
     }
+
+    input#react-select-2-input {
+        box-shadow: none !important;
+    }
 }
 
 .premium-inspector-tab {

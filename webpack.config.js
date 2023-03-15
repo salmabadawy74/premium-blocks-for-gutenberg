@@ -3,9 +3,12 @@ const path = require('path');
 
 module.exports = {
     ...defaultConfig,
-    plugins: [
-        ...defaultConfig.plugins,
-    ],
+    plugins: defaultConfig.plugins.map(p => {
+        if (p.patterns) {
+            p.patterns = p.patterns.filter(pattern => pattern.from !== '**/block.json');
+        }
+        return p;
+    }),
     entry: {
         index: path.resolve(__dirname, 'src/index.js'),
         pbg: {

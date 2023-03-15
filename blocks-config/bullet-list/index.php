@@ -36,13 +36,13 @@ function get_premium_bullet_list_css_style( $attr, $unique_id ) {
 	}
 
 	if ( isset( $attr['align'] ) ) {
-		$icon_position = $attr['iconPosition'];
+		$icon_position      = $attr['iconPosition'];
 		$content_align      = $css->get_responsive_css( $attr['align'], 'Desktop' );
 		$content_flex_align = 'left' === $content_align ? 'flex-start' : 'center';
 		$content_flex_align = 'right' === $content_align ? 'flex-end' : $content_flex_align;
 
-		$content_flex_direction =  'right' === $content_align ? 'column' : 'column';
-		$content_flex_position =  'after' === $icon_position ? 'row-reverse' : '';
+		$content_flex_direction = 'right' === $content_align ? 'column' : 'column';
+		$content_flex_position  = 'after' === $icon_position ? 'row-reverse' : '';
 		$content_flex_direction = 'top' === $icon_position ? $content_flex_direction : $content_flex_position;
 
 		$css->set_selector( '.' . $unique_id );
@@ -80,24 +80,24 @@ function get_premium_bullet_list_css_style( $attr, $unique_id ) {
 	}
 
 	// Style for icon.
-	if (isset($attr['bulletIconFontSize'])) {
+	if ( isset( $attr['bulletIconFontSize'] ) ) {
 		$bullet_icon_size = $attr['bulletIconFontSize'];
 
-		$css->set_selector('.' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > .premium-bullet-list-icon');
-		$css->add_property('font-size', $css->render_range($bullet_icon_size, 'Desktop'));
-		$css->set_selector('.' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > .premium-bullet-list-icon');
-		$css->add_property('font-size', $css->render_range($bullet_icon_size, 'Desktop'));
+		$css->set_selector( '.' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > .premium-bullet-list-icon' );
+		$css->add_property( 'font-size', $css->render_range( $bullet_icon_size, 'Desktop' ) );
+		$css->set_selector( '.' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > .premium-bullet-list-icon' );
+		$css->add_property( 'font-size', $css->render_range( $bullet_icon_size, 'Desktop' ) );
 	}
 
-	if (isset($attr['bulletIconFontSize'])) {
+	if ( isset( $attr['bulletIconFontSize'] ) ) {
 		$bullet_icon_size = $attr['bulletIconFontSize'];
 
-		$css->set_selector('.' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > .premium-bullet-list-icon' . ' > svg');
-		$css->add_property('width', $css->render_range($bullet_icon_size, 'Desktop'));
-		$css->add_property('height', $css->render_range($bullet_icon_size, 'Desktop'));
-		$css->set_selector('.' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > .premium-bullet-list-icon' . ' > svg');
-		$css->add_property('height', $css->render_range($bullet_icon_size, 'Desktop'));
-		$css->add_property('width', $css->render_range($bullet_icon_size, 'Desktop'));
+		$css->set_selector( '.' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > .premium-bullet-list-icon' . ' > svg' );
+		$css->add_property( 'width', $css->render_range( $bullet_icon_size, 'Desktop' ) );
+		$css->add_property( 'height', $css->render_range( $bullet_icon_size, 'Desktop' ) );
+		$css->set_selector( '.' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > .premium-bullet-list-icon' . ' > svg' );
+		$css->add_property( 'height', $css->render_range( $bullet_icon_size, 'Desktop' ) );
+		$css->add_property( 'width', $css->render_range( $bullet_icon_size, 'Desktop' ) );
 	}
 
 	if ( isset( $attr['bulletIconFontSize'] ) ) {
@@ -204,8 +204,8 @@ function get_premium_bullet_list_css_style( $attr, $unique_id ) {
 		$content_flex_align = 'left' === $content_align ? 'flex-start' : 'center';
 		$content_flex_align = 'right' === $content_align ? 'flex-end' : $content_flex_align;
 
-		$content_flex_direction =  'right' === $content_align ? 'column' : 'column';
-		$content_flex_position =  'after' === $icon_position ? 'row-reverse' : '';
+		$content_flex_direction = 'right' === $content_align ? 'column' : 'column';
+		$content_flex_position  = 'after' === $icon_position ? 'row-reverse' : '';
 		$content_flex_direction = 'top' === $icon_position ? $content_flex_direction : $content_flex_position;
 
 		$css->set_selector( '.' . $unique_id );
@@ -251,15 +251,15 @@ function get_premium_bullet_list_css_style( $attr, $unique_id ) {
 		$css->add_property( 'font-size', $css->render_range( $bullet_icon_size, 'Tablet' ) );
 	}
 
-	if (isset($attr['bulletIconFontSize'])) {
+	if ( isset( $attr['bulletIconFontSize'] ) ) {
 		$bullet_icon_size = $attr['bulletIconFontSize'];
 
-		$css->set_selector('.' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > .premium-bullet-list-icon' . ' > svg');
-		$css->add_property('width', $css->render_range($bullet_icon_size, 'Tablet'));
-		$css->add_property('height', $css->render_range($bullet_icon_size, 'Tablet'));
-		$css->set_selector('.' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > .premium-bullet-list-icon' . ' > svg');
-		$css->add_property('height', $css->render_range($bullet_icon_size, 'Tablet'));
-		$css->add_property('width', $css->render_range($bullet_icon_size, 'Tablet'));
+		$css->set_selector( '.' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > .premium-bullet-list-icon' . ' > svg' );
+		$css->add_property( 'width', $css->render_range( $bullet_icon_size, 'Tablet' ) );
+		$css->add_property( 'height', $css->render_range( $bullet_icon_size, 'Tablet' ) );
+		$css->set_selector( '.' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > .premium-bullet-list-icon' . ' > svg' );
+		$css->add_property( 'height', $css->render_range( $bullet_icon_size, 'Tablet' ) );
+		$css->add_property( 'width', $css->render_range( $bullet_icon_size, 'Tablet' ) );
 	}
 
 	if ( isset( $attr['bulletIconFontSize'] ) ) {
@@ -369,8 +369,8 @@ function get_premium_bullet_list_css_style( $attr, $unique_id ) {
 		$content_flex_align = 'left' === $content_align ? 'flex-start' : 'center';
 		$content_flex_align = 'right' === $content_align ? 'flex-end' : $content_flex_align;
 
-		$content_flex_direction =  'right' === $content_align ? 'column' : 'column';
-		$content_flex_position =  'after' === $icon_position ? 'row-reverse' : '';
+		$content_flex_direction = 'right' === $content_align ? 'column' : 'column';
+		$content_flex_position  = 'after' === $icon_position ? 'row-reverse' : '';
 		$content_flex_direction = 'top' === $icon_position ? $content_flex_direction : $content_flex_position;
 
 		$css->set_selector( '.' . $unique_id );
@@ -418,15 +418,15 @@ function get_premium_bullet_list_css_style( $attr, $unique_id ) {
 		$css->add_property( 'font-size', $css->render_range( $bullet_icon_size, 'Mobile' ) );
 	}
 
-	if (isset($attr['bulletIconFontSize'])) {
+	if ( isset( $attr['bulletIconFontSize'] ) ) {
 		$bullet_icon_size = $attr['bulletIconFontSize'];
 
-		$css->set_selector('.' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > .premium-bullet-list-icon' . ' > svg');
-		$css->add_property('width', $css->render_range($bullet_icon_size, 'Mobile'));
-		$css->add_property('height', $css->render_range($bullet_icon_size, 'Mobile'));
-		$css->set_selector('.' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > .premium-bullet-list-icon' . ' > svg');
-		$css->add_property('height', $css->render_range($bullet_icon_size, 'Mobile'));
-		$css->add_property('width', $css->render_range($bullet_icon_size, 'Mobile'));
+		$css->set_selector( '.' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > .premium-bullet-list-icon' . ' > svg' );
+		$css->add_property( 'width', $css->render_range( $bullet_icon_size, 'Mobile' ) );
+		$css->add_property( 'height', $css->render_range( $bullet_icon_size, 'Mobile' ) );
+		$css->set_selector( '.' . $unique_id . ' > .premium-bullet-list' . '> .premium-bullet-list__wrapper' . ' > a' . ' > .premium-bullet-list__content-wrap' . ' > .premium-bullet-list__icon-wrap' . ' > .premium-bullet-list__content-icon' . ' > .premium-bullet-list-icon' . ' > svg' );
+		$css->add_property( 'height', $css->render_range( $bullet_icon_size, 'Mobile' ) );
+		$css->add_property( 'width', $css->render_range( $bullet_icon_size, 'Mobile' ) );
 	}
 
 	if ( isset( $attr['bulletIconFontSize'] ) ) {
@@ -547,7 +547,7 @@ function render_block_pbg_bullet_list( $attributes, $content, $block ) {
 		$css = get_premium_bullet_list_css_style( $attributes, $unique_id );
 		if ( ! empty( $css ) ) {
 			if ( $block_helpers->should_render_inline( 'bullet-list', $unique_id ) ) {
-				$content = '<style id="pbg-blocks-style' . esc_attr( $unique_id ) . '">' . $css . '</style>' . $content;
+				$block_helpers->add_custom_block_css( $css );
 			} else {
 				$block_helpers->render_inline_css( $css, $style_id, true );
 			}

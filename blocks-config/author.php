@@ -7,7 +7,7 @@
  * @package WordPress
  */
 
-function get_premium_author_css($attributes, $unique_id) {
+function get_premium_author_css( $attributes, $unique_id ) {
 	$block_helpers          = pbg_blocks_helper();
 	$css                    = new Premium_Blocks_css();
 	$media_query            = array();
@@ -16,50 +16,50 @@ function get_premium_author_css($attributes, $unique_id) {
 	$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 
 	// Desktop Styles.
-    if (isset($attributes['align'])) {
-		$css->set_selector('.' . $unique_id);
-		$css->add_property('text-align', $css->get_responsive_css($attributes['align'], 'Desktop'));
+	if ( isset( $attributes['align'] ) ) {
+		$css->set_selector( '.' . $unique_id );
+		$css->add_property( 'text-align', $css->get_responsive_css( $attributes['align'], 'Desktop' ) );
 	}
-	if (isset($attributes['authorTypography'])) {
-		$css->set_selector('.' . $unique_id . ' > .premium-testimonial__author');
-		$css->render_typography($attributes['authorTypography'], 'Desktop');
+	if ( isset( $attributes['authorTypography'] ) ) {
+		$css->set_selector( '.' . $unique_id . ' > .premium-testimonial__author' );
+		$css->render_typography( $attributes['authorTypography'], 'Desktop' );
 	}
-    if (isset($attributes['companyTypography'])) {
-		$css->set_selector('.' . $unique_id . ' > .premium-testimonial__author_comp');
-		$css->render_typography($attributes['companyTypography'], 'Desktop');
+	if ( isset( $attributes['companyTypography'] ) ) {
+		$css->set_selector( '.' . $unique_id . ' > .premium-testimonial__author_comp' );
+		$css->render_typography( $attributes['companyTypography'], 'Desktop' );
 	}
 
-	$css->start_media_query($media_query['tablet']);
+	$css->start_media_query( $media_query['tablet'] );
 
 	// Tablet Styles.
-	if (isset($attributes['align'])) {
-		$css->set_selector('.' . $unique_id);
-		$css->add_property('text-align', $css->get_responsive_css($attributes['align'], 'Tablet'));
+	if ( isset( $attributes['align'] ) ) {
+		$css->set_selector( '.' . $unique_id );
+		$css->add_property( 'text-align', $css->get_responsive_css( $attributes['align'], 'Tablet' ) );
 	}
-	if (isset($attributes['authorTypography'])) {
-		$css->set_selector('.' . $unique_id . ' > .premium-testimonial__author');
-		$css->render_typography($attributes['authorTypography'], 'Tablet');
+	if ( isset( $attributes['authorTypography'] ) ) {
+		$css->set_selector( '.' . $unique_id . ' > .premium-testimonial__author' );
+		$css->render_typography( $attributes['authorTypography'], 'Tablet' );
 	}
-    if (isset($attributes['companyTypography'])) {
-		$css->set_selector('.' . $unique_id . ' > .premium-testimonial__author_comp');
-		$css->render_typography($attributes['companyTypography'], 'Tablet');
+	if ( isset( $attributes['companyTypography'] ) ) {
+		$css->set_selector( '.' . $unique_id . ' > .premium-testimonial__author_comp' );
+		$css->render_typography( $attributes['companyTypography'], 'Tablet' );
 	}
 
 	$css->stop_media_query();
 	$css->start_media_query( $media_query['mobile'] );
 
 	// Mobile Styles.
-	if (isset($attributes['align'])) {
-		$css->set_selector('.' . $unique_id);
-		$css->add_property('text-align', $css->get_responsive_css($attributes['align'], 'Mobile'));
+	if ( isset( $attributes['align'] ) ) {
+		$css->set_selector( '.' . $unique_id );
+		$css->add_property( 'text-align', $css->get_responsive_css( $attributes['align'], 'Mobile' ) );
 	}
-	if (isset($attributes['authorTypography'])) {
-		$css->set_selector('.' . $unique_id . ' > .premium-testimonial__author');
-		$css->render_typography($attributes['authorTypography'], 'Mobile');
+	if ( isset( $attributes['authorTypography'] ) ) {
+		$css->set_selector( '.' . $unique_id . ' > .premium-testimonial__author' );
+		$css->render_typography( $attributes['authorTypography'], 'Mobile' );
 	}
-    if (isset($attributes['companyTypography'])) {
-		$css->set_selector('.' . $unique_id . ' > .premium-testimonial__author_comp');
-		$css->render_typography($attributes['companyTypography'], 'Mobile');
+	if ( isset( $attributes['companyTypography'] ) ) {
+		$css->set_selector( '.' . $unique_id . ' > .premium-testimonial__author_comp' );
+		$css->render_typography( $attributes['companyTypography'], 'Mobile' );
 	}
 
 	$css->stop_media_query();
@@ -86,7 +86,7 @@ function render_block_pbg_author( $attributes, $content, $block ) {
 		$css = get_premium_author_css( $attributes, $block_id );
 		if ( ! empty( $css ) ) {
 			$block_helpers = pbg_blocks_helper();
-			$block_helpers->render_inline_css( $css, $unique_id, true );
+			$block_helpers->add_custom_block_css( $css );
 		}
 	};
 

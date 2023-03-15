@@ -128,17 +128,43 @@ class PBG_Blocks_Helper {
 
 		add_action( 'wp_head', array( $this, 'output_custom_block_css' ), 90 );
 
+		add_filter( 'render_block', array( $this, 'add_block_style' ), 9, 2 );
 		add_filter( 'render_block', array( $this, 'register_block_animation' ), 10, 2 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_features_script' ), 10 );
 
 	}
 
-	  /**
-	   * Check if any value in an array is not empty.
-	   *
-	   * @param array $array An array of key-value pairs to check for non-empty values.
-	   * @return bool Whether any of the values in the array are not empty.
-	   */
+	/**
+	 * Add the clientId attribute to the block element.
+	 *
+	 * @param string $block_content The HTML content of the block.
+	 * @param array  $block The block data.
+	 *
+	 * @return string The updated HTML content of the block.
+	 */
+	public function add_block_style( $block_content, $block ) {
+		if ( $this->is_premium_block( $block['blockName'] ) ) {
+			// Find the style tag and its contents.
+			preg_match( '/<style(?:\s+(?:class|id)="[^"]*")*>(.*?)<\/style>/s', $block_content, $matches );
+
+			// If a style tag was found, store its contents.
+			if ( ! empty( $matches ) ) {
+				$style_content = $matches[1];
+				$this->add_custom_block_css( $style_content );
+				// Remove all style tags and their contents from the block content.
+				$block_content = preg_replace( '/<style(?:\s+(?:class|id)="[^"]*")*>(.*?)<\/style>/s', '', $block_content );
+			}
+		}
+
+		return $block_content;
+	}
+
+	/**
+	 * Check if any value in an array is not empty.
+	 *
+	 * @param array $array An array of key-value pairs to check for non-empty values.
+	 * @return bool Whether any of the values in the array are not empty.
+	 */
 	public function check_if_any_value_not_empty( $array ) {
 		if ( ! is_array( $array ) ) {
 			return false;
@@ -824,19 +850,19 @@ class PBG_Blocks_Helper {
 
 	public function output_custom_block_css() {
 
-        global $custom_block_css;
+		global $custom_block_css;
 
-        // Combine all CSS code into one string
-        $combined_css = '';
+		// Combine all CSS code into one string
+		$combined_css = '';
 
-        if (is_array($custom_block_css) && !empty($custom_block_css)) {
-            foreach ($custom_block_css as $unique_id => $css) {
-                $combined_css .= "\n/* Custom block ID: $unique_id */\n$css";
-            }
-        }
-        // Output the combined CSS code in a single style tag
-        echo '<style id="pbg-blocks-style">' . $combined_css . '</style>';
-    }
+		if ( is_array( $custom_block_css ) && ! empty( $custom_block_css ) ) {
+			foreach ( $custom_block_css as $unique_id => $css ) {
+				$combined_css .= "\n/* Custom block ID: $unique_id */\n$css";
+			}
+		}
+		// Output the combined CSS code in a single style tag
+		echo '<style id="pbg-blocks-style">' . $combined_css . '</style>';
+	}
 
 	/**
 	 * Converts color value from Hex to RGBA
