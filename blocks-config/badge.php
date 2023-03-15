@@ -66,7 +66,7 @@ function render_block_pbg_badge( $attributes, $content, $block ) {
 		$css = get_premium_badge_css( $attributes, $block_id );
 		if ( ! empty( $css ) ) {
 			$block_helpers = pbg_blocks_helper();
-			$block_helpers->render_inline_css( $css, $unique_id, true );
+			$block_helpers->add_custom_block_css( $css );
 		}
 	};
 
