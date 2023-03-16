@@ -10,6 +10,7 @@ import PBG_Block_Icons from '../../../assets/icons/block-icons'
 import json from './block.json';
 import edit from './edit';
 import save from './save';
+import deprecated from './deprecated'
 
 const { name } = json;
 
@@ -20,5 +21,6 @@ registerBlockType(name, {
      */
     icon: PBG_Block_Icons?.counter_icon,
     edit,
-    save
+    save,
+    deprecated
 });
