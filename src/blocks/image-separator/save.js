@@ -38,7 +38,7 @@ export default function save(props) {
     const loadStyles = () => {
         const styles = {};
         styles[`.${blockId} .premium-image-separator-container:hover img`] = {
-            'filter': `brightness(${imgFilterHover?.bright}% ) contrast(${imgFilterHover?.contrast}% ) saturate(${imgFilterHover?.saturation}%) blur(${imgFilterHover?.blur}px) hue - rotate(${imgFilterHover?.hue}deg)!important`
+            'filter': `brightness(${imgFilterHover?.bright}% ) contrast(${imgFilterHover?.contrast}% ) saturate(${imgFilterHover?.saturation}%) blur(${imgFilterHover?.blur}px) hue-rotate(${imgFilterHover?.hue}deg) !important`
         };
         styles[` .${blockId} .premium-image-separator-container .premium-image-separator-icon:hover`] = {
             'color': `${iconStyles[0].iconColorHover} !important`,
@@ -69,7 +69,7 @@ export default function save(props) {
                     filter: iconType === 'image' ? `brightness( ${imgFilter?.bright}% ) contrast( ${imgFilter?.contrast}% ) saturate( ${imgFilter?.saturation}% ) blur( ${imgFilter?.blur}px ) hue-rotate( ${imgFilter?.hue}deg )` : ""
                 })}
             >
-                <a className="premium-image-separator-link" href={link && url} target={target} rel="noopener noreferrer">
+                <a className="premium-image-separator-link" href={link ? url : ''} target={target} rel="noopener noreferrer">
                     {iconType === 'icon' &&
                         <GenIcon className={`premium-image-separator-icon ${iconStyles[0].icon} premium-image-separator-${iconStyles[0].advancedBorder}`}
                             name={iconStyles[0].icon}
@@ -85,6 +85,7 @@ export default function save(props) {
                     }
                     {iconType === 'image' && imageURL && < img
                         src={imageURL}
+                        alt="image"
                         style={filterJsCss({
                             borderColor: iconStyles[0].advancedBorder ? "" : iconBorder.borderColor,
                             borderStyle: iconStyles[0].advancedBorder ? "" : iconBorder.borderType,

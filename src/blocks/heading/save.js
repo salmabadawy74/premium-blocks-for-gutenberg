@@ -271,8 +271,8 @@ export default function save(props) {
             >
                 <div
                     className={`premium-title-container ${style}`}
-                    data-blur-delay={titleStyles[0].animateDelay}
-                    data-shiny-dur={titleStyles[0].animateduration}
+                    data-blur-delay={(style === "style8" || style === "style9") ? titleStyles[0].animateDelay : ''}
+                    data-shiny-dur={(style === "style8" || style === "style9") ? titleStyles[0].animateduration : ''}
                 >
                     {React.createElement(
                         titleTag,
@@ -282,8 +282,8 @@ export default function save(props) {
                                     ? `premium-title-${iconAlign?.["Desktop"]} premium-title-tablet-${iconAlign?.["Tablet"]} premium-title-mobile-${iconAlign?.["Mobile"]}`
                                     : ""
                                 }`,
-                            "data-blur-delay": `${titleStyles[0].animateDelay}`,
-                            "data-shiny-dur": `${titleStyles[0].animateduration}`
+                            "data-blur-delay": `${(style === "style8" || style === "style9") ? titleStyles[0].animateDelay : ''}`,
+                            "data-shiny-dur": `${(style === "style8" || style === "style9") ? titleStyles[0].animateduration : ''}`
                         },
                         [
                             <Fragment>
@@ -395,42 +395,42 @@ export default function save(props) {
                                         </span>
                                     </Fragment>
                                 ) : (
-                                    <Fragment>
-                                        {iconValue && iconType == "icon" && (
-                                            <GenIcon className={`premium-title-icon ${icon}`}
-                                                name={icon}
-                                                htmltag={'span'}
-                                                icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
-                                                strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
-                                            />
+                                            <Fragment>
+                                                {iconValue && iconType == "icon" && (
+                                                    <GenIcon className={`premium-title-icon ${icon}`}
+                                                        name={icon}
+                                                        htmltag={'span'}
+                                                        icon={('fa' === icon.substring(0, 2) ? FaIco[icon] : Ico[icon])}
+                                                        strokeWidth={('fe' === icon.substring(0, 2) ? icons[0].width : undefined)}
+                                                    />
+                                                )}
+                                                {iconValue && iconType == "image" && (
+                                                    <img
+                                                        className={`premium-title-icon`}
+                                                        src={imageURL}
+                                                    />
+                                                )}
+                                                {iconValue && iconType == "lottie" && (
+                                                    <span
+                                                        className="premium-title-icon premium-lottie-animation"
+                                                        data-loop={loop}
+                                                        data-lottieurl={`${lottieURl}`}
+                                                        data-reverse={reversedir}
+                                                        data-trigger={"none"}
+                                                    ></span>
+                                                )}
+                                                <RichText.Content
+                                                    tagName="span"
+                                                    className={`premium-title-text-title`}
+                                                    value={title}
+                                                    style={filterJsCss({
+                                                        minHeight: "15px",
+                                                        color: titleStyles[0].titleColor,
+                                                        textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`,
+                                                    })}
+                                                />
+                                            </Fragment>
                                         )}
-                                        {iconValue && iconType == "image" && (
-                                            <img
-                                                className={`premium-title-icon`}
-                                                src={imageURL}
-                                            />
-                                        )}
-                                        {iconValue && iconType == "lottie" && (
-                                            <span
-                                                className="premium-title-icon premium-lottie-animation"
-                                                data-loop={loop}
-                                                data-lottieurl={`${lottieURl}`}
-                                                data-reverse={reversedir}
-                                                data-trigger={"none"}
-                                            ></span>
-                                        )}
-                                        <RichText.Content
-                                            tagName="span"
-                                            className={`premium-title-text-title`}
-                                            value={title}
-                                            style={filterJsCss({
-                                                minHeight: "15px",
-                                                color: titleStyles[0].titleColor,
-                                                textShadow: `${titleShadow.horizontal}px ${titleShadow.vertical}px ${titleShadow.blur}px ${titleShadow.color}`,
-                                            })}
-                                        />
-                                    </Fragment>
-                                )}
                                 {link && url !== " " && (
                                     <a
                                         rel="noopener noreferrer"

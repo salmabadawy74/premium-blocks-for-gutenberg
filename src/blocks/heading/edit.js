@@ -391,6 +391,11 @@ function Edit(props) {
                 : iconAlign?.[props.deviceType] == "right"
                     ? "flex-end !important"
                     : "center !important",
+            "justify-content": align?.[props.deviceType] == "left"
+                ? "flex-start !important"
+                : align?.[props.deviceType] == "right"
+                    ? "flex-end !important"
+                    : "center !important",
         };
         styles[`.${blockId} .premium-title .default .premium-title-header`] = {
             "border-color": `${titleBorder.borderColor}!important`,
@@ -1859,8 +1864,8 @@ function Edit(props) {
                     >
                         <div
                             className={`premium-title-container ${style}`}
-                            data-blur-delay={titleStyles[0].animateDelay}
-                            data-shiny-dur={titleStyles[0].animateduration}
+                            data-blur-delay={(style === "style8" || style === "style9") ? titleStyles[0].animateDelay : ''}
+                            data-shiny-dur={(style === "style8" || style === "style9") ? titleStyles[0].animateduration : ''}
                         >
                             {React.createElement(
                                 titleTag,
@@ -1870,9 +1875,8 @@ function Edit(props) {
                                             ? `premium-title-${iconAlign?.["Desktop"]} premium-title-tablet-${iconAlign?.["Tablet"]} premium-title-mobile-${iconAlign?.["Mobile"]}`
                                             : ""
                                         }`,
-                                    "data-blur-delay": `${titleStyles[0].animateDelay}`,
-                                    "data-shiny-dur": `${titleStyles[0].animateduration}`,
-                                    // style: { alignItems: iconAlign[props.deviceType] }
+                                    "data-blur-delay": `${(style === "style8" || style === "style9") ? titleStyles[0].animateDelay : ''}`,
+                                    "data-shiny-dur": `${(style === "style8" || style === "style9") ? titleStyles[0].animateduration : ''}`
                                 },
                                 [
                                     <Fragment>

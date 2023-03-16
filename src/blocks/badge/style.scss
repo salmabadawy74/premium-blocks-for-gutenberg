@@ -43,4 +43,10 @@
             border-right: 150px solid transparent;
         }
     }
+
+    .block-editor-warning__action {
+        position: inherit !important;
+        transform: initial !important;
+        width: 100% !important;
+    }
 }

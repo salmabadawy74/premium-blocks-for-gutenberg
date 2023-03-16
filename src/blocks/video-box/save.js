@@ -158,7 +158,6 @@ const save = props => {
                         tagName="span"
                         className={`premium-video-box__desc_text`}
                         value={descStyles[0].videoDescText}
-                        placeholder="Add caption"
                         style={filterJsCss({
                             color: descStyles[0].videoDescColor,
                             textShadow: `${descShadow.horizontal}px ${descShadow.vertical}px ${descShadow.blur}px ${descShadow.color}`

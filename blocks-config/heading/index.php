@@ -80,6 +80,14 @@ function get_premium_heading_css_style( $attr, $unique_id ) {
 		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' );
 		$css->add_property( 'align-items', $flex_align );
 	}
+	if ( isset( $attr['align'] ) ) {
+		$align      = $css->get_responsive_css( $attr['align'], 'Desktop' );
+		$flex_align = 'left' === $align ? 'flex-start' : 'center';
+		$flex_align = 'right' === $align ? 'flex-end' : $flex_align;
+
+		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' );
+		$css->add_property( 'justify-content', $flex_align );
+	}
 	if ( isset( $attr['iconPadding'] ) ) {
 		$icon_padding = $attr['iconPadding'];
 		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' . ' > .premium-title-icon' . ' > svg' );
@@ -232,6 +240,14 @@ function get_premium_heading_css_style( $attr, $unique_id ) {
 
 		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' );
 		$css->add_property( 'align-items', $flex_align );
+	}
+	if ( isset( $attr['align'] ) ) {
+		$align      = $css->get_responsive_css( $attr['align'], 'Tablet' );
+		$flex_align = 'left' === $align ? 'flex-start' : 'center';
+		$flex_align = 'right' === $align ? 'flex-end' : $flex_align;
+
+		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' );
+		$css->add_property( 'justify-content', $flex_align );
 	}
 	if ( isset( $attr['iconPadding'] ) ) {
 		$icon_padding = $attr['iconPadding'];
@@ -387,6 +403,14 @@ function get_premium_heading_css_style( $attr, $unique_id ) {
 
 		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' );
 		$css->add_property( 'align-items', $flex_align );
+	}
+	if ( isset( $attr['align'] ) ) {
+		$align      = $css->get_responsive_css( $attr['align'], 'Mobile' );
+		$flex_align = 'left' === $align ? 'flex-start' : 'center';
+		$flex_align = 'right' === $align ? 'flex-end' : $flex_align;
+
+		$css->set_selector( $unique_id . ' > .premium-title' . '> .premium-title-container' . ' > .premium-title-header' );
+		$css->add_property( 'justify-content', $flex_align );
 	}
 	if ( isset( $attr['iconPadding'] ) ) {
 		$icon_padding = $attr['iconPadding'];

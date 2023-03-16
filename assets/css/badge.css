@@ -31,3 +31,7 @@
       border-top: 150px solid;
       border-top-color: currentcolor;
       border-right: 150px solid transparent; }
+  .wp-block-premium-badge .block-editor-warning__action {
+    position: inherit !important;
+    transform: initial !important;
+    width: 100% !important; }
