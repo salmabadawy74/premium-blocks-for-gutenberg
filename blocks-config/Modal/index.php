@@ -16,11 +16,7 @@
  * @param string $unique_id option For block ID.
  */
 function get_premium_modal_css_style( $attr, $unique_id ) {
-	$css                    = new Premium_Blocks_css();
-	$media_query            = array();
-	$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
-	$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
-	$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+	$css = new Premium_Blocks_css();
 
 	if ( isset( $attr['align']['Desktop'] ) ) {
 		$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' );
@@ -164,7 +160,7 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 		$css->add_property( 'max-height', $css->render_range( $attr['modalHeight'], 'Desktop' ) . '!important' );
 	}
 
-	$css->start_media_query( $media_query['tablet'] );
+	$css->start_media_query( 'tablet' );
 
 	if ( isset( $attr['align']['Tablet'] ) ) {
 		$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' );
@@ -309,7 +305,7 @@ function get_premium_modal_css_style( $attr, $unique_id ) {
 	}
 
 	$css->stop_media_query();
-	$css->start_media_query( $media_query['mobile'] );
+	$css->start_media_query( 'mobile' );
 
 	if ( isset( $attr['align']['Mobile'] ) ) {
 		$css->set_selector( '.' . $unique_id . '> .premium-modal-trigger-container' );

@@ -65,7 +65,7 @@ class Premium_Blocks_css {
 	 * The string that holds all of the css to output
 	 *
 	 * @access protected
-	 * @var string
+	 * @var array
 	 */
 	protected $_output = '';
 
@@ -88,6 +88,11 @@ class Premium_Blocks_css {
 	public function __construct() {
 		add_action( 'wp_head', array( $this, 'frontend_gfonts' ), 90 );
 		add_action( 'wp_footer', array( $this, 'frontend_footer_gfonts' ), 90 );
+		$this->_output = array(
+			'desktop' => '',
+			'tablet'  => '',
+			'mobile'  => '',
+		);
 	}
 
 
@@ -360,7 +365,9 @@ class Premium_Blocks_css {
 	 */
 	private function add_media_query_rules_to_output() {
 		if ( ! empty( $this->_media_query_output ) ) {
-			$this->_output .= sprintf( '@media all and %1$s{%2$s}', $this->get_media_query(), $this->_media_query_output );
+			// Add the current media query's rules to the output.
+			$media_query_output                   = $this->get_media_query();
+			$this->_output[ $media_query_output ] = $this->_media_query_output;
 
 			// Reset the media query output string.
 			$this->_media_query_output = '';
@@ -383,10 +390,12 @@ class Premium_Blocks_css {
 			$selector_output = sprintf( '%1$s{%2$s}', $this->_selector_output, $this->_css );
 
 			if ( $this->has_media_query() ) {
+				// Add the current selector's rules to the media query output.
 				$this->_media_query_output .= $selector_output;
 				$this->reset_css();
 			} else {
-				$this->_output .= $selector_output;
+				// Add the current selector's rules to the desktop output.
+				$this->_output['desktop'] .= $selector_output;
 			}
 
 			// Reset the css.
@@ -692,8 +701,6 @@ class Premium_Blocks_css {
 	public function css_output() {
 		// Add current selector's rules to output
 		$this->add_selector_rules_to_output();
-
-		$this->_output .= $this->_css_string;
 
 		// Output minified css
 		return $this->_output;

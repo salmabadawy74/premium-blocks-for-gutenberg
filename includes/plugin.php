@@ -1,18 +1,18 @@
 <?php
 
 // Exit if accessed directly
-if (!defined('ABSPATH')) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 // Define class 'PBG_Plugin' if not Exists
-if (!class_exists('PBG_Plugin')) {
+if ( ! class_exists( 'PBG_Plugin' ) ) {
 
 	/**
 	 * Define PBG_Plugin class
 	 */
-	class PBG_Plugin
-	{
+	class PBG_Plugin {
+
 
 
 
@@ -29,14 +29,13 @@ if (!class_exists('PBG_Plugin')) {
 		/**
 		 * Constructor for the class
 		 */
-		public function __construct()
-		{
-			// Enqueue the required files
+		public function __construct() {
+			 // Enqueue the required files
 			$this->pbg_setup();
-			add_filter('plugin_action_links_' . PREMIUM_BLOCKS_BASENAME, array($this, 'add_action_links'), 10, 2);
-			add_action('plugins_loaded', array($this, 'load_plugin'));
+			add_filter( 'plugin_action_links_' . PREMIUM_BLOCKS_BASENAME, array( $this, 'add_action_links' ), 10, 2 );
+			add_action( 'plugins_loaded', array( $this, 'load_plugin' ) );
 
-			if (!$this->is_gutenberg_active()) {
+			if ( ! $this->is_gutenberg_active() ) {
 				return;
 			}
 		}
@@ -49,16 +48,14 @@ if (!class_exists('PBG_Plugin')) {
 		 *
 		 * @return void
 		 */
-		public function pbg_setup()
-		{
+		public function pbg_setup() {
 			$this->load_domain();
 
 			$this->init_files();
 		}
 
-		public function add_action_links($links)
-		{
-			$new_links[] = sprintf('<a href="%1$s">%2$s</a>', admin_url('admin.php?page=' . $this->page_slug . '&path=welcome'), __('Settings', 'premium-blocks-for-gutenberg'));
+		public function add_action_links( $links ) {
+			$new_links[] = sprintf( '<a href="%1$s">%2$s</a>', admin_url( 'admin.php?page=' . $this->page_slug . '&path=welcome' ), __( 'Settings', 'premium-blocks-for-gutenberg' ) );
 
 			return $new_links + $links;
 		}
@@ -71,9 +68,8 @@ if (!class_exists('PBG_Plugin')) {
 		 *
 		 * @return void
 		 */
-		public function load_domain()
-		{
-			load_plugin_textdomain('premium-blocks-for-gutenberg', false, dirname(PREMIUM_BLOCKS_BASENAME) . '/languages/');
+		public function load_domain() {
+			 load_plugin_textdomain( 'premium-blocks-for-gutenberg', false, dirname( PREMIUM_BLOCKS_BASENAME ) . '/languages/' );
 		}
 
 		/*
@@ -84,9 +80,8 @@ if (!class_exists('PBG_Plugin')) {
 		 *
 		 * @return void
 		 */
-		public function load_plugin()
-		{
-			require_once PREMIUM_BLOCKS_PATH . 'includes/premium-blocks-css.php';
+		public function load_plugin() {
+			 require_once PREMIUM_BLOCKS_PATH . 'includes/premium-blocks-css.php';
 		}
 
 		/**
@@ -94,25 +89,23 @@ if (!class_exists('PBG_Plugin')) {
 		 *
 		 * @return void
 		 */
-		public function is_gutenberg_active()
-		{
-			return function_exists('register_block_type');
+		public function is_gutenberg_active() {
+			 return function_exists( 'register_block_type' );
 		}
 
-		public function init_files()
-		{
-			require_once PREMIUM_BLOCKS_PATH . 'classes/class-pbg-style-generator.php';
+		public function init_files() {
+			require_once PREMIUM_BLOCKS_PATH . 'classes/class-pbg-assets-generator.php';
 
-			if (is_admin()) {
+			if ( is_admin() ) {
 				require_once PREMIUM_BLOCKS_PATH . 'admin/includes/rollback.php';
 			}
 			require_once PREMIUM_BLOCKS_PATH . 'admin/includes/pb-panel/class-pb-panel.php';
 
 			require_once PREMIUM_BLOCKS_PATH . 'classes/class-pbg-blocks-helper.php';
 
-			$settings = apply_filters('pb_settings', get_option('pbg_blocks_settings', array()));
+			$settings = apply_filters( 'pb_settings', get_option( 'pbg_blocks_settings', array() ) );
 
-			if (isset($settings['enable-post-editor-sidebar']) && $settings['enable-post-editor-sidebar']) {
+			if ( isset( $settings['enable-post-editor-sidebar'] ) && $settings['enable-post-editor-sidebar'] ) {
 				require_once PREMIUM_BLOCKS_PATH . 'global-settings/class-pbg-global-settings.php';
 			}
 		}
@@ -124,9 +117,8 @@ if (!class_exists('PBG_Plugin')) {
 		 * @access public
 		 * return object
 		 */
-		public static function get_instance()
-		{
-			if (self::$instance == null) {
+		public static function get_instance() {
+			if ( self::$instance == null ) {
 				self::$instance = new self();
 			}
 
@@ -135,7 +127,7 @@ if (!class_exists('PBG_Plugin')) {
 	}
 }
 
-if (!function_exists('pbg_plugin')) {
+if ( ! function_exists( 'pbg_plugin' ) ) {
 
 	/**
 	 * Returns an instance of the plugin class.
@@ -143,9 +135,8 @@ if (!function_exists('pbg_plugin')) {
 	 * @since  1.0.0
 	 * @return object
 	 */
-	function pbg_plugin()
-	{
-		return PBG_Plugin::get_instance();
+	function pbg_plugin() {
+		 return PBG_Plugin::get_instance();
 	}
 }
 

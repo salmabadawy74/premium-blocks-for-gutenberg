@@ -92,15 +92,25 @@ class PBG_Blocks_Helper {
 	public $global_features;
 
 	/**
+	 * Blocks Frontend Assets
+	 *
+	 * @since 1.8.2
+	 *
+	 * @var Pbg_Assets_Generator
+	 */
+	public $blocks_frondend_assets;
+
+	/**
 	 * Constructor for the class
 	 */
 	public function __construct() {
+		// Blocks Frontend Assets.
+		$this->blocks_frondend_assets = new Pbg_Assets_Generator( 'frontend' );
 		// Global Features.
 		$this->global_features = apply_filters( 'pb_global_features', get_option( 'pbg_global_features', array() ) );
-		 // Gets Active Blocks.
+		// Gets Active Blocks.
 		self::$blocks = apply_filters( 'pb_options', get_option( 'pb_options', array() ) );
 		// Gets Plugin Admin Settings.
-
 		self::$config = apply_filters( 'pb_settings', get_option( 'pbg_blocks_settings', array() ) );
 		$allow_json   = isset( self::$config['premium-upload-json'] ) ? self::$config['premium-upload-json'] : true;
 		if ( $allow_json ) {
@@ -112,6 +122,8 @@ class PBG_Blocks_Helper {
 		add_action( 'enqueue_block_editor_assets', array( $this, 'pbg_editor' ) );
 		// Enqueue Frontend Styles.
 		add_action( 'enqueue_block_assets', array( $this, 'pbg_frontend' ) );
+		// Enqueue Frontend Scripts.
+		add_action( 'enqueue_block_assets', array( $this, 'add_blocks_frontend_assets' ) );
 		// Register Premium Blocks category.
 		add_filter( 'block_categories_all', array( $this, 'register_premium_category' ), 10, 2 );
 		// Generate Blocks Stylesheet.
@@ -122,7 +134,7 @@ class PBG_Blocks_Helper {
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_dashicons_front_end' ) );
 
-		add_action( 'pbg_get_css_files', array( $this, 'add_blocks_editor_styles' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'add_blocks_editor_styles' ) );
 
 		add_filter( 'render_block_premium/container', array( $this, 'equal_height_front_script' ), 1, 2 );
 
@@ -132,6 +144,49 @@ class PBG_Blocks_Helper {
 		add_filter( 'render_block', array( $this, 'register_block_animation' ), 10, 2 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_features_script' ), 10 );
 
+	}
+
+	/**
+	 * Generate assets files feature.
+	 *
+	 * @return bool
+	 */
+	public function generate_assets_files() {
+		return $this->global_features['generate-assets-files'] ?? true;
+	}
+
+	/**
+	 * Add block css file to the frontend assets.
+	 *
+	 * @param string $src The css file url.
+	 */
+	public function add_block_css( $src ) {
+		$this->blocks_frondend_assets->pbg_add_css( $src );
+	}
+
+	/**
+	 * Add block js file to the frontend assets.
+	 *
+	 * @param string $src The js file url.
+	 */
+	public function add_block_js( $src ) {
+		$this->blocks_frondend_assets->pbg_add_js( $src );
+	}
+
+	/**
+	 * Enqueue frontend assets.
+	 */
+	public function add_blocks_frontend_assets() {
+		$css_url = $this->blocks_frondend_assets->get_css_url();
+		$js_url  = $this->blocks_frondend_assets->get_js_url();
+
+		if ( ! empty( $css_url ) ) {
+			wp_enqueue_style( 'pbg-blocks-frontend', $css_url, array(), PREMIUM_BLOCKS_VERSION );
+		}
+
+		if ( ! empty( $js_url ) ) {
+			wp_enqueue_script( 'pbg-blocks-frontend', $js_url, array(), PREMIUM_BLOCKS_VERSION, true );
+		}
 	}
 
 	/**
@@ -306,14 +361,15 @@ class PBG_Blocks_Helper {
 	 * @return void
 	 */
 	public function add_blocks_editor_styles() {
+		$generate_css = new Pbg_Assets_Generator( 'editor' );
 		if ( $this->global_features['premium-entrance-animation'] ) {
-			Pbg_Style_Generator::pbg_add_css( 'assets/js/build/entrance-animation.css' );
+			$generate_css->pbg_add_css( 'assets/js/build/entrance-animation.css' );
 		}
-		Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/blockseditor.min.css' );
-		Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/editorpanel.min.css' );
+		$generate_css->pbg_add_css( 'assets/css/minified/blockseditor.min.css' );
+		$generate_css->pbg_add_css( 'assets/css/minified/editorpanel.min.css' );
 
 		$is_rtl = is_rtl() ? true : false;
-		$is_rtl ? Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/style-blocks-rtl.min.css' ) : '';
+		$is_rtl ? $generate_css->pbg_add_css( 'assets/css/minified/style-blocks-rtl.min.css' ) : '';
 
 		if ( is_array( self::$blocks ) && ! empty( self::$blocks ) ) {
 			foreach ( self::$blocks as $slug => $value ) {
@@ -323,29 +379,93 @@ class PBG_Blocks_Helper {
 				}
 
 				if ( 'pricing-table' === $slug ) {
-					Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/price.min.css' );
-					Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/badge.min.css' );
+					$generate_css->pbg_add_css( 'assets/css/minified/price.min.css' );
+					$generate_css->pbg_add_css( 'assets/css/minified/badge.min.css' );
 				}
 				if ( 'pricing-table' === $slug || 'icon-box' === $slug || 'person' === $slug ) {
-					Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/text.min.css' );
+					$generate_css->pbg_add_css( 'assets/css/minified/text.min.css' );
 				}
 				if ( 'person' === $slug ) {
-					Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/image.min.css' );
-					Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/icon-group.min.css' );
+					$generate_css->pbg_add_css( 'assets/css/minified/image.min.css' );
+					$generate_css->pbg_add_css( 'assets/css/minified/icon-group.min.css' );
 				}
 				if ( 'content-switcher' === $slug ) {
-					Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/switcher-child.min.css' );
+					$generate_css->pbg_add_css( 'assets/css/minified/switcher-child.min.css' );
 				}
 				if ( 'count-up' === $slug ) {
-					Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/counter.min.css' );
+					$generate_css->pbg_add_css( 'assets/css/minified/counter.min.css' );
 				}
 				if ( 'testimonials' === $slug ) {
-					Pbg_Style_Generator::pbg_add_css( 'assets/css/minified/author.min.css' );
+					$generate_css->pbg_add_css( 'assets/css/minified/author.min.css' );
 				}
 
-				Pbg_Style_Generator::pbg_add_css( "assets/css/minified/{$slug}.min.css" );
+				$generate_css->pbg_add_css( "assets/css/minified/{$slug}.min.css" );
 			}
 		}
+
+		// Add dynamic css.
+		$css_url = $generate_css->get_css_url();
+
+		// Enqueue editor styles.
+		if ( false != $css_url ) {
+			wp_register_style( 'premium-blocks-editor-css', $css_url, array(), PREMIUM_BLOCKS_VERSION, 'all' );
+			wp_add_inline_style( 'premium-blocks-editor-css', apply_filters( 'pbg_dynamic_css', '' ) );
+		}
+
+	}
+
+	/**
+	 * Add blocks frontend style
+	 *
+	 * @return void
+	 */
+	public function add_blocks_frontend_styles() {
+		$generate_css = new Pbg_Assets_Generator( 'frontend' );
+		$generate_css->pbg_add_css( 'assets/css/minified/style-blocks.min.css' );
+		$is_rtl = is_rtl() ? true : false;
+		$is_rtl ? $generate_css->pbg_add_css( 'assets/css/minified/style-blocks-rtl.min.css' ) : '';
+
+		if ( is_array( self::$blocks ) && ! empty( self::$blocks ) ) {
+			foreach ( self::$blocks as $slug => $value ) {
+
+				if ( false === $value ) {
+					continue;
+				}
+
+				if ( 'pricing-table' === $slug ) {
+					$generate_css->pbg_add_css( 'assets/css/minified/price.min.css' );
+					$generate_css->pbg_add_css( 'assets/css/minified/badge.min.css' );
+				}
+				if ( 'pricing-table' === $slug || 'icon-box' === $slug || 'person' === $slug ) {
+					$generate_css->pbg_add_css( 'assets/css/minified/text.min.css' );
+				}
+				if ( 'person' === $slug ) {
+					$generate_css->pbg_add_css( 'assets/css/minified/image.min.css' );
+					$generate_css->pbg_add_css( 'assets/css/minified/icon-group.min.css' );
+				}
+				if ( 'content-switcher' === $slug ) {
+					$generate_css->pbg_add_css( 'assets/css/minified/switcher-child.min.css' );
+				}
+				if ( 'count-up' === $slug ) {
+					$generate_css->pbg_add_css( 'assets/css/minified/counter.min.css' );
+				}
+				if ( 'testimonials' === $slug ) {
+					$generate_css->pbg_add_css( 'assets/css/minified/author.min.css' );
+				}
+
+				$generate_css->pbg_add_css( "assets/css/minified/{$slug}.min.css" );
+			}
+		}
+
+		// Add dynamic css.
+		$css_url = $generate_css->get_css_url();
+
+		// Enqueue editor styles.
+		if ( false != $css_url ) {
+			wp_register_style( 'premium-blocks-frontend-css', $css_url, array(), PREMIUM_BLOCKS_VERSION, 'all' );
+			wp_add_inline_style( 'premium-blocks-frontend-css', apply_filters( 'pbg_dynamic_css', '' ) );
+		}
+
 	}
 
 	function load_dashicons_front_end() {
@@ -848,15 +968,45 @@ class PBG_Blocks_Helper {
 	public function output_custom_block_css() {
 
 		global $custom_block_css;
+		// Get the media queries.
+		$media_query            = array();
+		$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
+		$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
+		$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
 
 		// Combine all CSS code into one string
+		$combined_css_array = array(
+			'desktop' => '',
+			'tablet'  => '',
+			'mobile'  => '',
+		);
+
 		$combined_css = '';
 
 		if ( is_array( $custom_block_css ) && ! empty( $custom_block_css ) ) {
 			foreach ( $custom_block_css as $unique_id => $css ) {
-				$combined_css .= "\n/* Custom block ID: $unique_id */\n$css";
+				if ( ! is_array( $css ) ) {
+					$combined_css_array['desktop'] .= $css;
+					continue;
+				}
+				$combined_css_array['desktop'] .= $css['desktop'];
+				$combined_css_array['tablet']  .= $css['tablet'];
+				$combined_css_array['mobile']  .= $css['mobile'];
 			}
 		}
+
+		if ( ! empty( $combined_css_array['desktop'] ) ) {
+			$combined_css .= "\n@media all and {$media_query['desktop']} {\n" . $combined_css_array['desktop'] . "\n}\n";
+		}
+
+		if ( ! empty( $combined_css_array['tablet'] ) ) {
+			$combined_css .= "\n@media all and {$media_query['tablet']} {\n" . $combined_css_array['tablet'] . "\n}\n";
+		}
+
+		if ( ! empty( $combined_css_array['mobile'] ) ) {
+			$combined_css .= "\n@media all and {$media_query['mobile']} {\n" . $combined_css_array['mobile'] . "\n}\n";
+		}
+
 		// Output the combined CSS code in a single style tag
 		echo '<style id="pbg-blocks-style">' . $combined_css . '</style>';
 	}

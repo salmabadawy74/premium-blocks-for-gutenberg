@@ -8,12 +8,8 @@
  */
 
 function get_premium_image_css( $attr, $unique_id ) {
-	$block_helpers          = pbg_blocks_helper();
-	$css                    = new Premium_Blocks_css();
-	$media_query            = array();
-	$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
-	$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
-	$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+	$block_helpers = pbg_blocks_helper();
+	$css           = new Premium_Blocks_css();
 
 	// Desktop Styles.
 	if ( isset( $attr['imageBorder'] ) ) {
@@ -36,7 +32,7 @@ function get_premium_image_css( $attr, $unique_id ) {
 		$css->add_property( 'width', $css->render_range( $attr['imgWidth'], 'Desktop' ) );
 	}
 
-	$css->start_media_query( $media_query['tablet'] );
+	$css->start_media_query( 'tablet' );
 	// // Tablet Styles.
 	if ( isset( $attr['imageBorder'] ) ) {
 		$image_border        = $attr['imageBorder'];
@@ -57,7 +53,7 @@ function get_premium_image_css( $attr, $unique_id ) {
 	}
 
 	$css->stop_media_query();
-	$css->start_media_query( $media_query['mobile'] );
+	$css->start_media_query( 'mobile' );
 	// // Mobile Styles.
 	if ( isset( $attr['imageBorder'] ) ) {
 		$image_border        = $attr['imageBorder'];

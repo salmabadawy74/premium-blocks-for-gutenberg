@@ -150,6 +150,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 				'premium-upload-json'        => false,
 				'enable-post-editor-sidebar' => true,
 				'enable-site-editor-sidebar' => false,
+				'generate-assets-files'      => true,
 			);
 
 			return array_merge( $default_options, $options );
@@ -553,7 +554,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 						'content',
 						'creative',
 					),
-				)
+				),
 			);
 			return apply_filters( 'pb_panel_options', $options );
 		}

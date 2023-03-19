@@ -16,11 +16,7 @@
  * @param string $unique_id option For block ID.
  */
 function get_premium_heading_css_style( $attr, $unique_id ) {
-	$css                    = new Premium_Blocks_css();
-	$media_query            = array();
-	$media_query['mobile']  = apply_filters( 'Premium_BLocks_mobile_media_query', '(max-width: 767px)' );
-	$media_query['tablet']  = apply_filters( 'Premium_BLocks_tablet_media_query', '(max-width: 1024px)' );
-	$media_query['desktop'] = apply_filters( 'Premium_BLocks_tablet_media_query', '(min-width: 1025px)' );
+	$css = new Premium_Blocks_css();
 
 	// Align.
 	if ( isset( $attr['align'] ) ) {
@@ -162,7 +158,7 @@ function get_premium_heading_css_style( $attr, $unique_id ) {
 		$css->add_property( 'left', $css->render_range( $horizontal_text, 'Desktop' ) );
 	}
 
-	if ( isset( $attr['rotateText'] ) &&  $attr['backgroundText'] ) {
+	if ( isset( $attr['rotateText'] ) && $attr['backgroundText'] ) {
 		$rotate_text = $attr['rotateText'];
 		$value       = $css->render_range( $rotate_text, 'Desktop' );
 		$css->set_selector( $unique_id . ' > .premium-title-bg-text:before' );
@@ -181,7 +177,7 @@ function get_premium_heading_css_style( $attr, $unique_id ) {
 		$css->render_typography( $text_typography, 'Desktop' );
 	}
 
-	$css->start_media_query( $media_query['tablet'] );
+	$css->start_media_query( 'tablet' );
 
 	// Align.
 	if ( isset( $attr['align'] ) ) {
@@ -266,7 +262,7 @@ function get_premium_heading_css_style( $attr, $unique_id ) {
 		$icon_border_width  = $icon_border['borderWidth'];
 		$icon_border_radius = $icon_border['borderRadius'];
 
-		$css->set_selector( $unique_id . ' .premium-title-icon');
+		$css->set_selector( $unique_id . ' .premium-title-icon' );
 		$css->add_property( 'border-width', $css->render_spacing( $icon_border_width['Tablet'], 'px' ) );
 		$css->add_property( 'border-radius', $css->render_spacing( $icon_border_radius['Tablet'], 'px' ) );
 	}
@@ -344,7 +340,7 @@ function get_premium_heading_css_style( $attr, $unique_id ) {
 
 	$css->stop_media_query();
 
-	$css->start_media_query( $media_query['mobile'] );
+	$css->start_media_query( 'mobile' );
 
 	// Align.
 	if ( isset( $attr['align'] ) ) {
@@ -545,6 +541,18 @@ function render_block_pbg_heading( $attributes, $content, $block ) {
 		);
 	}
 
+	if ( $block_helpers->generate_assets_files() ) {
+		$block_helpers->add_block_css( 'assets/css/heading.css' );
+	} else {
+		wp_enqueue_style(
+			'pbg-heading-style',
+			PREMIUM_BLOCKS_URL . 'assets/css/heading.css',
+			array(),
+			PREMIUM_BLOCKS_VERSION,
+			'all'
+		);
+	}
+
 	wp_enqueue_style(
 		'pbg-heading-style',
 		PREMIUM_BLOCKS_URL . 'assets/css/minified/heading.min.css',
@@ -559,8 +567,8 @@ function render_block_pbg_heading( $attributes, $content, $block ) {
 		$css = get_premium_heading_css_style( $attributes, $unique_id );
 		if ( ! empty( $css ) ) {
 			if ( $block_helpers->should_render_inline( 'heading', $unique_id ) ) {
-				//$content = '<style id="pbg-blocks-style' . esc_attr( $unique_id ) . '">' . $css . '</style>' . $content;
-				$block_helpers->add_custom_block_css($css);
+				// $content = '<style id="pbg-blocks-style' . esc_attr( $unique_id ) . '">' . $css . '</style>' . $content;
+				$block_helpers->add_custom_block_css( $css );
 			} else {
 				$block_helpers->render_inline_css( $css, $style_id, true );
 			}
