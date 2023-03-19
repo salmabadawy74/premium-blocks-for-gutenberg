@@ -2,7 +2,7 @@ import React from 'react'
 import { decodeEntities } from '@wordpress/html-entities';
 function PostTitle(props) {
     const { attributes, post } = props;
-    const Tag = attributes.titleTag;
+    const Tag = attributes.level;
 
     const target = attributes.newTab ? '_blank' : '_self';
 
@@ -14,7 +14,7 @@ function PostTitle(props) {
 
         return (
             <div className="premium-blog-entry-title">
-                <h2>
+                <Tag>
                     <a href={post.link}>
                         {undefined == post.title
                             ? post.value
@@ -22,7 +22,7 @@ function PostTitle(props) {
                                 post.title.rendered.trim()
                             ) || __("(Untitled)")}
                     </a>
-                </h2>
+                </Tag>
             </div>)
     }
     return null;

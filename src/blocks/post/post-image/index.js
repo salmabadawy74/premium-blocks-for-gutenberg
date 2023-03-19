@@ -27,7 +27,7 @@ function Image(props) {
                     className={`premium-blog-thumbnail-container premium-blog-${attributes.hoverEffect}-effect`}
                 >
                     <img
-                        src={src}
+                        src={src[0]}
 
                     />
                     {Object.entries(attributes.shapeBottom).length > 1 &&

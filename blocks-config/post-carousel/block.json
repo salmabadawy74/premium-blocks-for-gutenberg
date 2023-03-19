@@ -182,6 +182,10 @@
             "type": "boolean",
             "default": true
         },
+        "level":{
+            "type":"string",
+            "default":"h2"
+        },
         "titleTypography": {
             "type": "object",
             "default": {
@@ -302,10 +306,6 @@
         },
         "sepColor": {
             "type": "string"
-        },
-        "featuredImage": {
-            "type": "boolean",
-            "default": true
         },
         "hoverEffect": {
             "type": "string",
@@ -604,7 +604,7 @@
         },
         "Autoplay": {
             "type": "boolean",
-            "default": false
+            "default": true
         },
         "slideToScroll": {
             "type": "number",
@@ -633,6 +633,39 @@
         "arrowPosition": {
             "type": "number",
             "default": "0"
+        },
+        "pauseOnHover":{
+            "type":"boolean",
+            "default":true
+        },
+        "infiniteLoop":{
+            "type":"boolean",
+            "default":true
+        },
+        "dotsColor":{
+            "type":"string"
+        },
+        "dotsActiveColor":{
+            "type":"string"
+        },
+        "arrowColor":{
+            "type":"string"
+        },
+        "arrowSize":{
+            "type":"number"
+        },
+        "arrowBack":{
+            "type":"string"
+        },
+        "arrowBorderRadius":{
+            "type":"number"
+        },
+        "arrowPadding":{
+            "type":"number"
+        },
+        "pauseOnHover ":{
+            "type":"boolean",
+            "default":true
         }
     }
 }

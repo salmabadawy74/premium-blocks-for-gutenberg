@@ -7,20 +7,28 @@ import Image from "../post-image/index"
 const { withSelect, useSelect, select } = wp.data;
 const { useEffect, Fragment, useMemo } = wp.element;
 import { __ } from "@wordpress/i18n";
-import { __experimentalUseBlockPreview as useBlockPreview, store as blockEditorStore } from "@wordpress/block-editor";
+import { __experimentalUseBlockPreview as useBlockPreview, store as blockEditorStore,useBlockProps } from "@wordpress/block-editor";
 import { store as coreStore } from "@wordpress/core-data";
 import Inspector from "./inspector";
 import PostTitle from "../post-title";
 const { Spinner } = wp.components;
 const { decodeEntities } = wp.htmlEntities;
-function edit({ clientId, setAttributes, attributes, deviceType }) {
-    // useEffect(() => {
-    //     // Set block id.
-    //     setAttributes({
-    //         blockId: "premium-post-carousel-" + generateBlockId(clientId),
-    //     });
+import {
+    borderCss,
+    gradientBackground,
+    marginCss,
+    paddingCss,
+    generateBlockId,
+} from "@pbg/helpers";
 
-    // }, []);
+function edit({ clientId, setAttributes, attributes, deviceType }) {
+    useEffect(() => {
+        // Set block id.
+        setAttributes({
+            blockId: "premium-post-carousel-" + generateBlockId(clientId),
+        });
+
+    }, []);
     const { query,
         navigationArrow,
         navigationDots,
@@ -30,6 +38,18 @@ function edit({ clientId, setAttributes, attributes, deviceType }) {
         autoplaySpeed,
         columns,
         slideSpacing,
+        blockId,
+        hideDesktop,
+        hideTablet,
+        hideMobile,
+        dotsColor,
+        dotsActiveColor,
+        arrowColor,
+        arrowSize,
+        arrowBack,
+        arrowBorderRadius,
+        arrowPadding,
+        pauseOnHover
     } = attributes;
     const { perPage,
         offset = 0,
@@ -64,6 +84,23 @@ function edit({ clientId, setAttributes, attributes, deviceType }) {
                 order,
                 orderby: orderBy,
             };
+            if ( taxQuery && ! inherit) {
+				const builtTaxQuery = Object.entries( taxQuery ).reduce(
+					( accumulator, [ taxonomySlug, terms ] ) => {
+						const taxonomy = taxonomies?.find(
+							( { slug } ) => slug === taxonomySlug
+						);
+						if ( taxonomy?.rest_base ) {
+							accumulator[ taxonomy?.rest_base ] = terms;
+						}
+						return accumulator;
+					},
+					{}
+				);
+				if ( !! Object.keys( builtTaxQuery ).length ) {
+					Object.assign( query, builtTaxQuery );
+				}
+			}
             if (perPage) {
                 query.per_page = perPage;
             }
@@ -101,6 +138,8 @@ function edit({ clientId, setAttributes, attributes, deviceType }) {
             postType,
             exclude,
             sticky,
+            taxQuery,
+
         ]
     );
 
@@ -130,10 +169,11 @@ function edit({ clientId, setAttributes, attributes, deviceType }) {
                 style={{
                     borderColor: arrowColor,
                     borderRadius: arrowBorderRadius,
-                    borderWidth: arrowBorderSizeFallback,
+                    backgroundColor:arrowBack,
+                    padding:arrowPadding
                 }}
             >
-                {UAGB_Block_Icons.carousel_right}
+<svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" ><path d="M7,24a1,1,0,0,1-.71-.29,1,1,0,0,1,0-1.42l8.17-8.17a3,3,0,0,0,0-4.24L6.29,1.71A1,1,0,0,1,7.71.29l8.17,8.17a5,5,0,0,1,0,7.08L7.71,23.71A1,1,0,0,1,7,24Z"/></svg>
             </button>
         );
     }
@@ -149,10 +189,11 @@ function edit({ clientId, setAttributes, attributes, deviceType }) {
                 style={{
                     borderColor: arrowColor,
                     borderRadius: arrowBorderRadius,
-                    borderWidth: arrowBorderSizeFallback,
-                }}
+                    backgroundColor:arrowBack,
+                    padding:arrowPadding
+                                }}
             >
-                {UAGB_Block_Icons.carousel_left}
+<svg xmlns="http://www.w3.org/2000/svg" id="Bold" viewBox="0 0 24 24" ><path d="M17.921,1.505a1.5,1.5,0,0,1-.44,1.06L9.809,10.237a2.5,2.5,0,0,0,0,3.536l7.662,7.662a1.5,1.5,0,0,1-2.121,2.121L7.688,15.9a5.506,5.506,0,0,1,0-7.779L15.36.444a1.5,1.5,0,0,1,2.561,1.061Z"/></svg>
             </button>
         );
     }
@@ -165,13 +206,15 @@ function edit({ clientId, setAttributes, attributes, deviceType }) {
         infinite: true,
         autoplay: Autoplay,
         speed: autoplaySpeed,
-        speed: autoplaySpeed,
         slidesToShow: columns[deviceType],
         centerPadding: slideSpacing + "px",
         draggable: true,
-        nextArrow: <NextArrow arrowSize={arrowSizeFallback} />,
-        prevArrow: <PrevArrow arrowSize={arrowSizeFallback} />,
+		pauseOnHover,
+
+        nextArrow: <NextArrow  arrowSize={arrowSize} />,
+        prevArrow: <PrevArrow  arrowSize={arrowSize} />,
     };
+    console.log(query);
     return (<Fragment>
         <Inspector
             attributes={attributes}
@@ -179,9 +222,15 @@ function edit({ clientId, setAttributes, attributes, deviceType }) {
             setAttributes={setAttributes}
         />
         <div
-            className={`premium-blog premium-blog-carousel`}
+    className={    classNames(blockId,'premium-blog premium-blog-carousel',{
+        
+            " premium-desktop-hidden": hideDesktop,
+            " premium-tablet-hidden": hideTablet,
+            " premium-mobile-hidden": hideMobile,
 
-        >
+
+})
+}>
             <Slider className={'premium-blog-wrap premium-blog-even'}{...settings}>
                 {posts.map((post, i) => (
                     <div className={`premium-blog-post-outer-container`} key={i}>

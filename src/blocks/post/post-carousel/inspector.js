@@ -58,7 +58,7 @@ export default function Inspector({ attributes, setQuery, setAttributes }) {
         metaColor,
         metaHoverColor,
         sepColor,
-        featuredImage,
+        displayPostImage ,
         hoverEffect,
         height,
         thumbnail,
@@ -92,7 +92,16 @@ export default function Inspector({ attributes, setQuery, setAttributes }) {
         slideSpacing,
         navigationDots,
         navigationArrow,
-        arrowPosition
+        arrowPosition,
+        dotsColor,
+        dotsActiveColor,
+        arrowColor,
+        arrowSize,
+        arrowBack,
+        arrowBorderRadius,
+        arrowPadding,
+        pauseOnHover ,
+        infiniteLoop
     } = attributes;
     const {
         order,
@@ -285,19 +294,23 @@ export default function Inspector({ attributes, setQuery, setAttributes }) {
                         className="premium-panel-body"
                         initialOpen={false}
                     >
+                        				<ToggleControl
+					label={ __(
+						'Pause On Hover',
+						'premium-blocks-for-gutenberg'
+					) }
+					checked={ pauseOnHover }
+					onChange={ () =>
+						setAttributes( { pauseOnHover: ! pauseOnHover } )
+					}
+				/>
+
                         <ToggleControl
                             label={__("Auto Play", "premium-blocks-for-gutenberg")}
                             checked={Autoplay}
                             onChange={() => setAttributes({ Autoplay: !Autoplay })}
                         />
-                        <ResponsiveSingleRangeControl
-                            label={__("Slides To Scroll", "premium-blocks-for-gutenberg")}
-                            value={slideToScroll}
-                            onChange={(newSlideScroll) =>
-                                setAttributes({ slideToScroll: newSlideScroll })
-                            }
-                        />
-                        <ResponsiveSingleRangeControl
+                        {Autoplay&&                        <ResponsiveSingleRangeControl
                             label={__("Autoplay Speed", "premium-blocks-for-gutenberg")}
                             value={autoplaySpeed}
                             onChange={(newSpeed) =>
@@ -305,6 +318,26 @@ export default function Inspector({ attributes, setQuery, setAttributes }) {
                             }
                             min={100}
                             max={2000}
+                        />
+                        
+}
+<ToggleControl
+					label={ __(
+						'Infinite Loop',
+						'ultimate-addons-for-gutenberg'
+					) }
+					checked={ infiniteLoop }
+					onChange={ () =>
+						setAttributes( { infiniteLoop: ! infiniteLoop } )
+					}
+				/>
+
+                        <ResponsiveSingleRangeControl
+                            label={__("Slides To Scroll", "premium-blocks-for-gutenberg")}
+                            value={slideToScroll}
+                            onChange={(newSlideScroll) =>
+                                setAttributes({ slideToScroll: newSlideScroll })
+                            }
                         />
                         <ToggleControl
                             label={__("Center Mode", "premium-blocks-for-gutenberg")}
@@ -341,6 +374,70 @@ export default function Inspector({ attributes, setQuery, setAttributes }) {
                                 setAttributes({ arrowPosition: arrowPositionValue })
                             }
                         />}
+                    </PanelBody>
+                    <PanelBody
+                        title={__(
+                            "Featured Image",
+                            "premium-blocks-for-gutenberg"
+                        )}
+                        className="premium-panel-body"
+                        initialOpen={false}
+                    >
+                        <ToggleControl
+                            label={__("Show Feature Image")}
+                            checked={displayPostImage}
+                            onChange={(value) => setAttributes({ displayPostImage: value })}
+                        />
+                        <SelectControl
+                            label={__("Hover Effect")}
+                            options={hoverEffects}
+                            value={hoverEffect}
+                            onChange={(newEffect) =>
+                                setAttributes({
+                                    hoverEffect: newEffect,
+                                })
+                            }
+                        />
+                        <SelectControl
+                            label={__("Image Size")}
+                            options={imageSizes}
+                            value={imageSize}
+                            onChange={(newSizeImage) =>
+                                setAttributes({
+                                    imageSize: newSizeImage,
+                                })
+                            }
+                        />
+                        <ResponsiveRangeControl
+                            label={__(
+                                "Height",
+                                "premium-blocks-for-gutenberg"
+                            )}
+                            value={height}
+                            onChange={(newValue) =>
+                                setAttributes({ height: newValue })
+                            }
+                            units={["px", "em"]}
+                            showUnit={true}
+                            min={0}
+                            max={600}
+                            step={1}
+                        />
+                        <SelectControl
+                            options={ThumbnailSelect}
+                            label={__("Thumbnail Fit")}
+                            value={thumbnail}
+                            onChange={(value) =>
+                                setAttributes({ thumbnail: value })
+                            }
+                        />
+                        <Shape
+                            shapeType="bottom"
+                            value={shapeBottom}
+                            onChange={(val) =>
+                                setAttributes({ shapeBottom: val })
+                            }
+                        />
                     </PanelBody>
                     <PanelBody
                         title={__("Title", "premium-blocks-for-gutenberg")}
@@ -397,119 +494,84 @@ export default function Inspector({ attributes, setQuery, setAttributes }) {
                                 setAttributes({ level: newValue })
                             }
                             label={__(
-                                "Title Tag",
+                                "Display Options",
                                 "premium-blocks-for-gutenberg"
                             )}
                         />
-
-                        <ToggleControl
-                            label={__(
-                                "Link",
-                                "premium-blocks-for-gutenberg"
-                            )}
-                            checked={isLink}
-                            onChange={(value) =>
-                                setAttributes({ isLink: value })
-                            }
-                        />
-                        {isLink && (
-                            <Fragment>
-                                <p>
-                                    {__(
-                                        "URL",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                </p>
-                                <TextControl
-                                    value={rel}
-                                    onChange={(value) =>
-                                        setAttributes({ rel: value })
+                            <ResponsiveRangeControl
+                                label={__(
+                                    "Column Spacing",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                value={columnGutter}
+                                min="0"
+                                max="100"
+                                onChange={(newValue) =>
+                                    setAttributes({ columnGutter: newValue })
+                                }
+                                defaultValue={0}
+                                showUnit={true}
+                            />
+                            <ResponsiveRangeControl
+                                label={__(
+                                    "Row Spacing",
+                                    "premium-blocks-for-gutenberg"
+                                )}
+                                value={rowGutter}
+                                min="0"
+                                max="100"
+                                onChange={(newValue) =>
+                                    setAttributes({ rowGutter: newValue })
+                                }
+                                defaultValue={0}
+                                showUnit={true}
+                            />
+                                                            <MultiButtonsControl
+                                    choices={[
+                                        {
+                                            value: "left",
+                                            label: __(
+                                                "Left",
+                                                "premium-blocks-for-gutenberg"
+                                            ),
+                                            icon: Icons.alignLeft,
+                                        },
+                                        {
+                                            value: "center",
+                                            label: __(
+                                                "Center",
+                                                "premium-blocks-for-gutenberg"
+                                            ),
+                                            icon: Icons.alignCenter,
+                                        },
+                                        {
+                                            value: "right",
+                                            label: __(
+                                                "Right",
+                                                "premium-blocks-for-gutenberg"
+                                            ),
+                                            icon: Icons.alignRight,
+                                        },
+                                    ]}
+                                    value={align}
+                                    onChange={(newAlign) =>
+                                        setAttributes({
+                                            btnAlign: newAlign,
+                                        })
                                     }
-                                    placeholder={__(
-                                        "Enter URL",
-                                        "premium-blocks-for-gutenberg"
-                                    )}
-                                />
-                                <ToggleControl
-                                    checked={linkTarget}
                                     label={__(
-                                        "Open Link in new Tab",
+                                        "Alignment",
                                         "premium-blocks-for-gutenberg"
                                     )}
-                                    onChange={(value) =>
-                                        setAttributes({ linkTarget: value })
-                                    }
+                                    showIcons={true}
                                 />
-                            </Fragment>
-                        )}
+
+
                     </PanelBody>
+
                     <PanelBody
                         title={__(
-                            "Featured Image",
-                            "premium-blocks-for-gutenberg"
-                        )}
-                        className="premium-panel-body"
-                        initialOpen={false}
-                    >
-                        <ToggleControl
-                            label={__("Show Feature Image")}
-                            checked={featuredImage}
-                            onChange={(value) => setAttributes({ featuredImage: value })}
-                        />
-                        <SelectControl
-                            label={__("Hover Effect")}
-                            options={hoverEffects}
-                            value={hoverEffect}
-                            onChange={(newEffect) =>
-                                setAttributes({
-                                    hoverEffect: newEffect,
-                                })
-                            }
-                        />
-                        <SelectControl
-                            label={__("Image Size")}
-                            options={imageSizes}
-                            value={imageSize}
-                            onChange={(newSizeImage) =>
-                                setAttributes({
-                                    imageSize: newSizeImage,
-                                })
-                            }
-                        />
-                        <ResponsiveRangeControl
-                            label={__(
-                                "Height",
-                                "premium-blocks-for-gutenberg"
-                            )}
-                            value={height}
-                            onChange={(newValue) =>
-                                setAttributes({ height: newValue })
-                            }
-                            units={["px", "em"]}
-                            showUnit={true}
-                            min={0}
-                            max={600}
-                            step={1}
-                        />
-                        <SelectControl
-                            options={ThumbnailSelect}
-                            label={__("Thumbnail Fit")}
-                            value={thumbnail}
-                            onChange={(value) =>
-                                setAttributes({ thumbnail: value })
-                            }
-                        />
-                        <Shape
-                            shapeType="bottom"
-                            value={shapeBottom}
-                            onChange={(val) =>
-                                setAttributes({ shapeBottom: val })
-                            }
-                        />
-                    </PanelBody>
-                    <PanelBody
-                        title={__(
-                            "Meta ",
+                            "Post Options ",
                             "premium-blocks-for-gutenberg"
                         )}
                         className="premium-panel-body"
@@ -543,6 +605,13 @@ export default function Inspector({ attributes, setQuery, setAttributes }) {
                             checked={showComments}
                             onChange={() =>
                                 setAttributes({ showComments: !showComments })
+                            }
+                        />
+                                                <ToggleControl
+                            label={__("Links in New Tab                            ")}
+                            checked={newTab}
+                            onChange={() =>
+                                setAttributes({ newTab: !newTab })
                             }
                         />
                     </PanelBody>
@@ -1007,6 +1076,101 @@ export default function Inspector({ attributes, setQuery, setAttributes }) {
                             }
                         />
                     </PanelBody>
+                    <PanelBody  
+                         title={__("Carousel Dots", "premium-blocks-for-gutenberg")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+>
+<AdvancedPopColorControl
+                            label={__("Color", "premium-blocks-for-gutenberg")}
+                            colorValue={dotsColor}
+                            colorDefault={""}
+                            onColorChange={(newValue) =>
+                                setAttributes({ dotsColor: newValue })
+                            }
+                        />
+<AdvancedPopColorControl
+                            label={__("Active Color", "premium-blocks-for-gutenberg")}
+                            colorValue={dotsActiveColor}
+                            colorDefault={""}
+                            onColorChange={(newValue) =>
+                                setAttributes({ dotsActiveColor: newValue })
+                            }
+                        />
+
+                    </PanelBody>
+                    <PanelBody  
+                         title={__("Carousel Arrows", "premium-blocks-for-gutenberg")}
+                        className="premium-panel-body"
+                        initialOpen={false}
+>
+                        <AdvancedPopColorControl
+                            label={__("Color", "premium-blocks-for-gutenberg")}
+                            colorValue={arrowColor}
+                            colorDefault={""}
+                            onColorChange={(newValue) =>
+                                setAttributes({ arrowColor: newValue })
+                            }
+                        />
+                        <ResponsiveSingleRangeControl
+                                                    label={__(
+                                                        "Size",
+                                                        "premium-blocks-for-gutenberg"
+                                                    )}
+                                                    value={arrowSize}
+                                                    min="1"
+                                                    max="1600"
+                                                    onChange={(newValue) =>
+                                                        setAttributes({
+                                                            arrowSize: newValue,
+                                                        })
+                                                    }
+                                                    defaultValue={""}
+                                                    showUnit={true}
+                        
+                        />
+<AdvancedPopColorControl
+                            label={__("Background Color", "premium-blocks-for-gutenberg")}
+                            colorValue={arrowBack}
+                            colorDefault={""}
+                            onColorChange={(newValue) =>
+                                setAttributes({ arrowBack: newValue })
+                            }
+                        />
+                        <ResponsiveSingleRangeControl                                                     label={__(
+                                                        "Border Radius",
+                                                        "premium-blocks-for-gutenberg"
+                                                    )}
+                                                    value={arrowBorderRadius}
+                                                    min="1"
+                                                    max="100"
+                                                    onChange={(newValue) =>
+                                                        setAttributes({
+                                                            arrowBorderRadius: newValue,
+                                                        })
+                                                    }
+                                                    defaultValue={""}
+                                                    showUnit={true}
+ />
+                        <ResponsiveSingleRangeControl   
+                        
+                       label={__( "Padding",
+                                                        "premium-blocks-for-gutenberg"
+                                                    )}
+                                                    value={arrowPadding}
+                                                    min="1"
+                                                    max="100"
+                                                    onChange={(newValue) =>
+                                                        setAttributes({
+                                                            arrowPadding: newValue,
+                                                        })
+                                                    }
+                                                    defaultValue={""}
+                                                    showUnit={true}
+ />
+
+                    </PanelBody>
+
                 </InspectorTab>
                 <InspectorTab key={"advance"}>
                     <PremiumResponsiveTabs
