@@ -19424,12 +19424,7 @@ function Edit(props) {
       color: `${iconColor}!important`,
       ...(0,_pbg_helpers__WEBPACK_IMPORTED_MODULE_4__.marginCss)(iconSpacing, props.deviceType)
     }
-  }))])), isSelected && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(URLInput, {
-    value: btnLink,
-    onChange: newLink => setAttributes({
-      btnLink: newLink
-    })
-  }), loadBtnGoogleFonts));
+  }))])), loadBtnGoogleFonts));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (withSelect(select => {

@@ -841,10 +841,6 @@ function Edit(props) {
                         ]
                     )}
                 </BlockContent>
-                {isSelected && <URLInput
-                    value={btnLink}
-                    onChange={(newLink) => setAttributes({ btnLink: newLink })}
-                />}
                 {loadBtnGoogleFonts}
             </div>
         </Fragment>
