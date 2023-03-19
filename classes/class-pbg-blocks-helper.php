@@ -581,6 +581,8 @@ class PBG_Blocks_Helper {
 				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/author.php';
 				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/image.php';
 				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/text.php';
+			} elseif ( $slug === 'button-group' ) {
+				require_once PREMIUM_BLOCKS_PATH . 'blocks-config/button.php';
 			}
 		}
 	}

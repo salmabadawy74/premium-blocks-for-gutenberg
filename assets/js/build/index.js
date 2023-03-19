@@ -1290,7 +1290,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "accordion": () => (/* binding */ accordion),
 /* harmony export */   "banner": () => (/* binding */ banner),
 /* harmony export */   "bulletList": () => (/* binding */ bulletList),
-/* harmony export */   "button": () => (/* binding */ button),
 /* harmony export */   "buttonGroup": () => (/* binding */ buttonGroup),
 /* harmony export */   "container": () => (/* binding */ container),
 /* harmony export */   "contentSwitcher": () => (/* binding */ contentSwitcher),
@@ -1317,7 +1316,7 @@ const {
   accordion,
   banner,
   heading,
-  button,
+  // button,
   icon,
   lottie,
   maps,
@@ -16635,10 +16634,11 @@ function Edit(props) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit */ "./src/blocks/button-group/edit.js");
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/blocks/button-group/save.js");
-// import { button } from "../../../assets/js/settings";
+/* harmony import */ var _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../assets/js/settings */ "./assets/js/settings.js");
+/* harmony import */ var _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../assets/icons/block-icons */ "./assets/icons/block-icons.js");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/blocks/button-group/edit.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/blocks/button-group/save.js");
+
 
 
 
@@ -16649,13 +16649,13 @@ const {
   registerBlockType
 } = wp.blocks;
 registerBlockType("premium/button-group", {
-  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_0__["default"].button_group,
-  // supports: {
-  //     inserter: button
-  // },
+  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].button,
+  supports: {
+    inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.buttonGroup
+  },
   example: {},
-  edit: _edit__WEBPACK_IMPORTED_MODULE_1__["default"],
-  save: _save__WEBPACK_IMPORTED_MODULE_2__["default"]
+  edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
+  save: _save__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 
 /***/ }),
@@ -19457,6 +19457,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/blocks/button/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/blocks/button/save.js");
 /* harmony import */ var _deprecated__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./deprecated */ "./src/blocks/button/deprecated.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./block.json */ "./src/blocks/button/block.json");
+
 
 
 
@@ -19468,12 +19470,15 @@ const {
 const {
   registerBlockType
 } = wp.blocks;
-registerBlockType("premium/button", {
-  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].button,
-  supports: {
-    inserter: _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.button
-  },
-  example: {},
+const {
+  name
+} = _block_json__WEBPACK_IMPORTED_MODULE_5__;
+registerBlockType(name, { ..._block_json__WEBPACK_IMPORTED_MODULE_5__,
+  icon: _assets_icons_block_icons__WEBPACK_IMPORTED_MODULE_1__["default"].single_button,
+  // supports: {
+  //     inserter: button
+  // },
+  // example: {},
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
   save: _save__WEBPACK_IMPORTED_MODULE_3__["default"],
   deprecated: _deprecated__WEBPACK_IMPORTED_MODULE_4__["default"]
@@ -19492,13 +19497,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "buttonsPresets": () => (/* binding */ buttonsPresets)
 /* harmony export */ });
-/* harmony import */ var _blocks_config_button_block_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../blocks-config/button/block.json */ "./blocks-config/button/block.json");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./block.json */ "./src/blocks/button/block.json");
 
 const {
   __
 } = wp.i18n;
 const buttonsPresets = [{
-  attributes: _blocks_config_button_block_json__WEBPACK_IMPORTED_MODULE_0__.attributes
+  attributes: _block_json__WEBPACK_IMPORTED_MODULE_0__.attributes
 }, {
   defaultPresetAttributes: [{
     label: "backgroundPresets"
@@ -67309,12 +67314,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _blocks_icon_group__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./blocks/icon-group */ "./src/blocks/icon-group/index.js");
 /* harmony import */ var _blocks_counter__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./blocks/counter */ "./src/blocks/counter/index.js");
 /* harmony import */ var _blocks_author__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./blocks/author */ "./src/blocks/author/index.js");
+/* harmony import */ var _blocks_button__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./blocks/button */ "./src/blocks/button/index.js");
 
 
 _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.dualHeading ? __webpack_require__(/*! ./blocks/dual-heading */ "./src/blocks/dual-heading/index.js") : "";
 _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.accordion ? __webpack_require__(/*! ./blocks/accordion */ "./src/blocks/accordion/index.js") : "";
-_assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.banner ? __webpack_require__(/*! ./blocks/banner */ "./src/blocks/banner/index.js") : "";
-_assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.button ? __webpack_require__(/*! ./blocks/button */ "./src/blocks/button/index.js") : "";
+_assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.banner ? __webpack_require__(/*! ./blocks/banner */ "./src/blocks/banner/index.js") : ""; // button ? require("./blocks/button") : "";
+
 _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.countUp ? __webpack_require__(/*! ./blocks/count-up */ "./src/blocks/count-up/index.js") : "";
 _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.icon ? __webpack_require__(/*! ./blocks/icon */ "./src/blocks/icon/index.js") : "";
 _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.iconBox ? __webpack_require__(/*! ./blocks/icon-box */ "./src/blocks/icon-box/index.js") : "";
@@ -67334,6 +67340,7 @@ _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.container ? __webpack_require__
 
 _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.contentSwitcher ? __webpack_require__(/*! ./blocks/content-switcher */ "./src/blocks/content-switcher/index.js") : "";
 _assets_js_settings__WEBPACK_IMPORTED_MODULE_0__.buttonGroup ? __webpack_require__(/*! ./blocks/button-group */ "./src/blocks/button-group/index.js") : "";
+
 
 
 
@@ -101452,17 +101459,6 @@ function _unsupportedIterableToArray(o, minLen) {
 
 /***/ }),
 
-/***/ "./blocks-config/button/block.json":
-/*!*****************************************!*\
-  !*** ./blocks-config/button/block.json ***!
-  \*****************************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"version":"0.1.0","name":"premium/button","title":"Button","description":"Add stylish buttons to your Gutenberg page using Premium Button Block.","category":"premium-blocks","keywords":["button"],"attributes":{"blockId":{"type":"string"},"borderButton":{"type":"boolean","default":false},"btnText":{"type":"string","default":"Premium Button"},"btnSize":{"type":"string","default":"md"},"btnAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"btnLink":{"type":"string","default":""},"btnTarget":{"type":"boolean","default":false},"showIcon":{"type":"boolean","default":false},"icon":{"type":"string","default":"dashicons admin-site"},"iconType":{"type":"string","default":"fe"},"icons":{"type":"array","default":[{"iconn":"dashicons admin-site","link":"","target":"_self","size":"25","width":"2","title":"","style":"default"}]},"iconPosition":{"type":"string","default":"before"},"effect":{"type":"string","default":"none"},"effectDir":{"type":"string","default":"top"},"slideColor":{"type":"string"},"block_id":{"type":"string"},"hideDesktop":{"type":"boolean","default":false},"classMigrate":{"type":"boolean","default":false},"hideTablet":{"type":"boolean","default":false},"hideMobile":{"type":"boolean","default":false},"btnStyles":{"type":"array","default":[{"textColor":"","textHoverColor":"","backColor":"","backOpacity":1,"backHoverColor":"","borderHoverColor":""}]},"border":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"typography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"textShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"boxShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}},"padding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"iconSize":{"type":"object","default":{"Desktop":"25","Tablet":"25","Mobile":"25","unit":"px"}},"iconSpacing":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"iconColor":{"type":"string","default":""},"iconHoverColor":{"type":"string","default":""},"iconShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"backgroundOptions":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"center center","backgroundRepeat":"no-repeat","backgroundSize":"cover","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientType":"linear","gradientAngle":"180","gradientPosition":"center center"}},"backgroundPresets":{"type":"string","default":""},"margin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}}},"editorScript":"pbg-blocks-js","editorStyle":"premium-blocks-editor-css"}');
-
-/***/ }),
-
 /***/ "./blocks-config/video-box/block.json":
 /*!********************************************!*\
   !*** ./blocks-config/video-box/block.json ***!
@@ -101504,6 +101500,17 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 
 "use strict";
 module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"premium/badge","title":"Badge","category":"premium-blocks","description":"Badge Description.","keywords":["badge"],"textdomain":"default","parent":["premium/pricing-table"],"attributes":{"blockId":{"type":"string"},"hideDesktop":{"type":"boolean","default":false},"hideTablet":{"type":"boolean","default":false},"hideMobile":{"type":"boolean","default":false},"typography":{"type":"object","default":{"fontWeight":"400","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"color":{"type":"string","default":"#fff"},"backgroundColor":{"type":"string","default":"var(--pbg-global-color1,#0085BA)"},"text":{"type":"string","default":"Popular"},"textWidth":{"type":"number"},"badgeSize":{"type":"number"},"position":{"type":"string","default":"right"},"vOffset":{"type":"number"},"hOffset":{"type":"number"}}}');
+
+/***/ }),
+
+/***/ "./src/blocks/button/block.json":
+/*!**************************************!*\
+  !*** ./src/blocks/button/block.json ***!
+  \**************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"version":"0.1.0","name":"premium/button","title":"Button","description":"Add stylish buttons to your Gutenberg page using Premium Button Block.","category":"premium-blocks","keywords":["button"],"parent":["premium/button-group"],"attributes":{"blockId":{"type":"string"},"borderButton":{"type":"boolean","default":false},"btnText":{"type":"string","default":"Premium Button"},"btnSize":{"type":"string","default":"md"},"btnAlign":{"type":"object","default":{"Desktop":"center","Tablet":"center","Mobile":"center"}},"btnLink":{"type":"string","default":""},"btnTarget":{"type":"boolean","default":false},"showIcon":{"type":"boolean","default":false},"icon":{"type":"string","default":"dashicons admin-site"},"iconType":{"type":"string","default":"fe"},"icons":{"type":"array","default":[{"iconn":"dashicons admin-site","link":"","target":"_self","size":"25","width":"2","title":"","style":"default"}]},"iconPosition":{"type":"string","default":"before"},"effect":{"type":"string","default":"none"},"effectDir":{"type":"string","default":"top"},"slideColor":{"type":"string"},"block_id":{"type":"string"},"hideDesktop":{"type":"boolean","default":false},"classMigrate":{"type":"boolean","default":false},"hideTablet":{"type":"boolean","default":false},"hideMobile":{"type":"boolean","default":false},"btnStyles":{"type":"array","default":[{"textColor":"","textHoverColor":"","backColor":"","backOpacity":1,"backHoverColor":"","borderHoverColor":""}]},"border":{"type":"object","default":{"borderType":"none","borderColor":"","borderWidth":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}},"borderRadius":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""}}}},"typography":{"type":"object","default":{"fontWeight":"Default","fontStyle":"","letterSpacing":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"fontFamily":"Default","lineHeight":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"},"textDecoration":"","textTransform":"","fontSize":{"Desktop":"","Tablet":"","Mobile":"","unit":"px"}}},"textShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"boxShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0","position":""}},"padding":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"iconSize":{"type":"object","default":{"Desktop":"25","Tablet":"25","Mobile":"25","unit":"px"}},"iconSpacing":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}},"iconColor":{"type":"string","default":""},"iconHoverColor":{"type":"string","default":""},"iconShadow":{"type":"object","default":{"color":"undefined","blur":"10","horizontal":"0","vertical":"0"}},"backgroundOptions":{"type":"object","default":{"backgroundType":"","backgroundColor":"","backgroundImageID":"","backgroundImageURL":"","backgroundPosition":"center center","backgroundRepeat":"no-repeat","backgroundSize":"cover","fixed":false,"gradientLocationOne":"0","gradientColorTwo":"","gradientLocationTwo":"100","gradientType":"linear","gradientAngle":"180","gradientPosition":"center center"}},"backgroundPresets":{"type":"string","default":""},"margin":{"type":"object","default":{"Desktop":{"top":"","right":"","bottom":"","left":""},"Tablet":{"top":"","right":"","bottom":"","left":""},"Mobile":{"top":"","right":"","bottom":"","left":""},"unit":"px"}}},"editorScript":"pbg-blocks-js","editorStyle":"premium-blocks-editor-css"}');
 
 /***/ }),
 

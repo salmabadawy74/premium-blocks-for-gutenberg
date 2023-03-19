@@ -118,7 +118,7 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 			$default_options = array(
 				'accordion'        => true,
 				'banner'           => true,
-				'button'           => true,
+				// 'button'           => true,
 				'count-up'         => true,
 				'dual-heading'     => true,
 				'heading'          => true,
@@ -374,17 +374,17 @@ if ( ! class_exists( 'Pb_Panel' ) ) {
 						'marketing',
 					),
 				),
-				'button'           => array(
-					'type'     => 'pb-button',
-					'label'    => __( 'Button', 'premium-blocks-for-gutenberg' ),
-					'icon'     => 'button',
-					'category' => array(
-						'all',
-						'creative',
-						'marketing',
-						'content',
-					),
-				),
+				// 'button'           => array(
+				// 	'type'     => 'pb-button',
+				// 	'label'    => __( 'Button', 'premium-blocks-for-gutenberg' ),
+				// 	'icon'     => 'button',
+				// 	'category' => array(
+				// 		'all',
+				// 		'creative',
+				// 		'marketing',
+				// 		'content',
+				// 	),
+				// ),
 				'count-up'         => array(
 					'type'     => 'pb-button',
 					'label'    => __( 'Count Up', 'premium-blocks-for-gutenberg' ),

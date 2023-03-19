@@ -4,7 +4,7 @@ import {
     accordion,
     banner,
     heading,
-    button,
+    // button,
     icon,
     lottie,
     maps,
@@ -27,7 +27,7 @@ import {
 dualHeading ? require("./blocks/dual-heading") : "";
 accordion ? require("./blocks/accordion") : "";
 banner ? require("./blocks/banner") : "";
-button ? require("./blocks/button") : "";
+// button ? require("./blocks/button") : "";
 countUp ? require("./blocks/count-up") : "";
 icon ? require("./blocks/icon") : "";
 iconBox ? require("./blocks/icon-box") : "";
@@ -56,6 +56,7 @@ import "./blocks/image";
 import "./blocks/icon-group";
 import "./blocks/counter";
 import "./blocks/author";
+import "./blocks/button";
 
 window.PremiumOptionsSettings = {
     FontAwesomeEnabled,

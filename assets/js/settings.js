@@ -7,7 +7,7 @@ export const {
     accordion,
     banner,
     heading,
-    button,
+    // button,
     icon,
     lottie,
     maps,
